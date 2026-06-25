@@ -1,9 +1,9 @@
 # 设置应用内主题换肤
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lushi871202-->
-<!--Designer: @lushi871202-->
-<!--Tester: @sally__-->
+<!--Owner: @fangzhiyuan1-->
+<!--Designer: @fangzhiyuan1-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
@@ -313,10 +313,11 @@ dark.json数据示例：
     }
   ```
 
-  <!-- @[with_theme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/pages/Theme3/Theme3.ets) -->
+  <!-- @[with_theme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/pages/Theme3/Theme3.ets) --> 
   
   ``` TypeScript
   import { ThemeControl } from '@kit.ArkUI';
+  
   ThemeControl.setDefaultTheme(undefined);
   
   @Entry
@@ -344,6 +345,7 @@ dark.json数据示例：
         }
         .backgroundColor($r('sys.color.background_primary'))
         .height('100%')
+        // 扩展安全区，实现沉浸式深浅色变更效果
         .expandSafeArea(
           [SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.END, SafeAreaEdge.BOTTOM, SafeAreaEdge.START])
       }

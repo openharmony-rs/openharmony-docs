@@ -1,18 +1,18 @@
 # 渐变样式
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
 >  **说明：**
 >  从API version 4开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
-组件普遍支持在style或css中设置可以平稳过渡两个或多个指定的颜色。
+组件普遍支持在style或css中设置可以平滑过渡两个或多个指定的颜色。
 
 
-开发框架支持线性渐变 (linear-gradient)和重复线性渐变 (repeating-linear-gradient)两种渐变效果。
+开发框架支持线性渐变（linear-gradient）和重复线性渐变（repeating-linear-gradient）两种渐变效果。
 
 
 ## 线性渐变/重复线性渐变
@@ -23,9 +23,9 @@
 ### 过渡方向
 
 通过direction或者angle指定过渡方向。
-- direction：进行方向渐变。
+- direction：指定方向进行渐变。
 
-- angle：进行角度渐变。
+- angle：指定角度进行渐变。
 
 ```js
 // xxx.js
@@ -59,7 +59,7 @@ background: repeating-linear-gradient(direction/angle, color, color, ...);
    ```
 
    
-   ![zh-cn_image_0000001190934502](figures/zh-cn_image_0000001190934502.png)
+   ![Transition-Color01](figures/Transition-Color01.png)
 
 2. 45度夹角渐变。
 
@@ -70,7 +70,7 @@ background: repeating-linear-gradient(direction/angle, color, color, ...);
 
    
 
-   ![zh-cn_image_0000001189854534](figures/zh-cn_image_0000001189854534.png)
+   ![Transition-Color](figures/Transition-Color.png)
 
 3. 设置方向从左向右渐变。
 
@@ -79,7 +79,7 @@ background: repeating-linear-gradient(direction/angle, color, color, ...);
    background: linear-gradient(to right, rgb(255,0,0) 90px, rgb(0, 255, 0) 60%);
    ```
 
-   ![zh-cn_image_0000001236694521](figures/zh-cn_image_0000001236694521.png)
+   ![linearGradientHorizontal](figures/linearGradientHorizontal.png)
 
 4. 重复渐变。
 
@@ -88,4 +88,4 @@ background: repeating-linear-gradient(direction/angle, color, color, ...);
    background: repeating-linear-gradient(to right, rgba(255, 255, 0, 1) 30px,rgba(0, 0, 255, .5) 60px);
    ```
 
-   ![zh-cn_image_0000001237134475](figures/zh-cn_image_0000001237134475.png)
+   ![gradient](figures/gradient.png)

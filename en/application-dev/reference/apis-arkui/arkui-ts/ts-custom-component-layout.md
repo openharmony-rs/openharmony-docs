@@ -89,13 +89,13 @@ Provides the child component layout information.
 | Name        | Type      | Read-Only|Optional|  Description                                                     |
 |--------------|---------------------------------- | ------|-----------------------------------------------------|---------------------|
 | measureResult| [MeasureResult](#measureresult10) |   No|No| Measurement result of the child component.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>Unit: vp    |
-| uniqueId<sup>18+</sup>| number | No|Yes| Unique ID that the system assigns to the child component.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| uniqueId<sup>18+</sup>| number | No|Yes| Unique ID that the system assigns to the child component.<br>Value range: [0, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
-### layout
+### layout<sup>10+</sup>
 
 layout(position: Position): void
 
-Applies the specified position information to the child component.
+Applies the specified position constraints to the child component.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -318,7 +318,7 @@ Invoked when the custom component needs to determine its size. Through this call
 
 ## LayoutChild<sup>(deprecated)</sup>
 
-Provides child component layout information.
+Provides the child component layout information.
 
 > **NOTE**
 >
@@ -362,7 +362,7 @@ Applies specified size constraints to child components.
 
 layout(childLayoutInfo: LayoutInfo)
 
-Applies specified layout constraints to child components.
+Applies the specified layout constraints to the child component.
 
 > **NOTE**
 >
@@ -376,7 +376,7 @@ Applies specified layout constraints to child components.
 
 | Name       | Type    |Mandatory| Description              |
 |------------|-----------|------|------------------|
-| childLayoutInfo   | [LayoutInfo](#layoutinfodeprecated) | Yes |Layout information of a child component.|
+| childLayoutInfo   | [LayoutInfo](#layoutinfodeprecated) | Yes |Layout information of the child component.|
 
 ## LayoutBorderInfo<sup>(deprecated)</sup>
 
@@ -398,7 +398,7 @@ Provides the border information of the child component.
 
 ## LayoutInfo<sup>(deprecated)</sup>
 
-Provides the layout information of a child component.
+Provides the child component layout information.
 
 > **NOTE**
 >
@@ -731,67 +731,3 @@ struct CustomLayoutText {
 }
 ```
 ![custom_layout_demo4.jpg](figures/custom_layout_demo4.jpg)
-
-### Example 5: Modifying the Layout Through layout
-This example shows how to modify a layout through **layout**.
-<!--deprecated_code_no_check-->
-```ts
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  build() {
-    Column() {
-      CustomLayout() {
-        ForEach([1, 2, 3], (index: number) => {
-          Text('Sub' + index)
-            .fontSize(30)
-            .borderWidth(2)
-        })
-      }
-    }
-  }
-}
-
-@Component
-struct CustomLayout {
-  @Builder
-  doNothingBuilder() {
-  };
-
-  @BuilderParam
-  builder: () => void = this.doNothingBuilder;
-  result: SizeResult = {
-    width: 0,
-    height: 0
-  };
-
-  onPlaceChildren(selfLayoutInfo: GeometryInfo, children: Array<Layoutable>, constraint: ConstraintSizeOptions) {
-    let pos = 0;
-    children.forEach((child) => {
-      child.layout({ x: pos, y: pos })
-      pos += 70;
-    })
-  }
-
-  onMeasureSize(selfLayoutInfo: GeometryInfo, children: Array<Measurable>, constraint: ConstraintSizeOptions) {
-    let size = 100;
-    children.forEach((child) => {
-      child.measure({
-        minHeight: size,
-        minWidth: size,
-        maxWidth: size,
-        maxHeight: size
-      })
-      size += 50;
-    })
-    return this.result;
-  }
-
-  build() {
-    this.builder()
-  }
-}
-```
-
-![en-us_image_0000001511900496](figures/en-us_image_0000001511900496.png)

@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 EnvironmentCallback模块提供对系统环境变化监听回调的能力。
 
@@ -61,7 +61,7 @@ onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 
   | 参数名 | 类型 | 必填 | 说明 | 
   | -------- | -------- | -------- | -------- |
-  | level | [AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel) | 是 | 回调返回整机可用的内存级别，显示当前整机可用内存的等级。|
+  | level | [AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel) | 是 | 整机可用内存级别，对应的触发场景详见[AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel)。|
 
 **示例：**
 

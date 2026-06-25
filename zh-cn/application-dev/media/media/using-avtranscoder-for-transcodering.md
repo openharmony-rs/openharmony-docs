@@ -12,7 +12,7 @@
 
 ## 开发步骤及注意事项
 
-详细的API说明请参考[AVTranscoder API参考](../../reference/apis-media-kit/arkts-apis-media-AVTranscoder.md)。
+详细的API说明请参考[AVTranscoder](../../reference/apis-media-kit/arkts-apis-media-AVTranscoder.md)。
 
 > **说明：**
 >
@@ -38,7 +38,7 @@
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
    import { media } from '@kit.MediaKit';
    private currentProgress: number = 0;
    private avTranscoder: media.AVTranscoder | undefined = undefined;
@@ -75,9 +75,17 @@
        if (this.avTranscoder != undefined) {
          // 1.释放转码实例。
          await this.avTranscoder.release();
+         let lastFdDst = this.avTranscoder.fdDst;
+         let lastFdSrc = this.avTranscoder.fdSrc;
          this.avTranscoder = undefined;
          // 2.关闭转码目标文件fd。
-         fs.closeSync(this.avTranscoder!.fdDst);
+         if (lastFdDst != undefined) {
+           fs.closeSync(lastFdDst);
+         }
+         // 3.关闭转码源文件fd。
+         if (lastFdSrc != undefined) {
+           fs.closeSync(lastFdSrc.fd);
+         }
        }
      }
    }
@@ -92,9 +100,9 @@
    > 
    > - 如果使用本地资源转码，必须确认资源文件可用，并使用应用沙箱路径访问对应资源，参考[获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。应用沙箱的介绍及如何向应用沙箱推送文件，请参考[文件管理](../../file-management/app-sandbox-directory.md)。
    > 
-   > - 应通过Context属性获取应用文件路径，建议使用getUIContext获取UIContext实例，并使用getHostContext调用绑定实例的getContext，请参考[获取Context](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12)。
+   > - 应通过Context属性获取应用文件路径，建议使用getUIContext获取UIContext实例，并使用getHostContext调用绑定实例的getContext，请参考[getHostContext](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12)。
    >
-   > - 如果使用ResourceManager.getRawFd()打开HAP资源文件描述符，使用方法可参考[ResourceManager API参考](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)。
+   > - 如果使用ResourceManager.getRawFd()打开HAP资源文件描述符，使用方法可参考ResourceManager中的[getRawFd](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)。
 
    ```ts
    // 导入来自于ets/transcoder/AVTranscoderManager.ets文件。
@@ -161,7 +169,7 @@
    > 转码输出文件fd（即示例里fdDst），形式为number。需要调用基础文件操作接口（[Core File Kit的ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md)）实现应用文件访问能力，获取方式参考[应用文件访问与管理](../../file-management/app-file-access.md)。
    
    ```ts
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
    import { media } from '@kit.MediaKit';
    private avTranscoder: media.AVTranscoder | undefined = undefined;
    private context: Context | undefined;
@@ -178,7 +186,7 @@
        // 设置输出目标文件的沙箱路径。
        let outputFilePath = this.context.filesDir + "/output.mp4";
        // 文件不存在时创建并打开文件，文件存在时打开文件。
-       let file = fs.openSync(outputFilePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+       let file = fileIo.openSync(outputFilePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
        // 设置转码的目标文件属性fdDst。
        this.avTranscoder.fdDst = file.fd; // 参考应用文件访问与管理中的开发示例获取创建的视频文件fd填入此处。
      }
@@ -267,27 +275,27 @@
          await this.avTranscoder.release();
          this.avTranscoder = undefined;
          // 2.关闭转码目标文件fd。
-         fs.closeSync(this.avTranscoder!.fdDst);
+         fileIo.closeSync(this.avTranscoder!.fdDst);
        }
      }
    }
    ```
 10. 完整的【开始转码-暂停转码-恢复转码-转码完成】流程
 
-   ```ts
-   async avTranscoderDemo() {
-     await this.startTranscoderingProcess(); // 开始转码。
-     await this.pauseTranscoderingProcess(); // 暂停转码。
-     await this.resumeTranscoderingProcess(); // 恢复转码。
-   }
-   ```
+    ```ts
+    async avTranscoderDemo() {
+      await this.startTranscoderingProcess(); // 开始转码。
+      await this.pauseTranscoderingProcess(); // 暂停转码。
+      await this.resumeTranscoderingProcess(); // 恢复转码。
+    }
+    ```
 
 ## 运行示例工程
 
 参考以下示例，完成“开始转码-暂停转码-恢复转码-转码完成”的完整流程。
   
 1. 新建工程，下载[完整示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVTranscoder/AVTranscoderArkTS)，并将示例工程的资源复制到对应目录。
-    ```
+    ```txt
     AVTranscoderArkTS
     entry/src/main/ets/
     └── pages

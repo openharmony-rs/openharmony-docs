@@ -18,8 +18,8 @@
 | ------------------------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Accelerometer             | 加速度       | 可获取设备X、Y、Z轴方向的加速度数据。                                                                                                                    |
 | Gyroscope                 | 陀螺仪       | 可获取设备X、Y、Z轴方向的角速度数据。                                                                                                                    |
-| AbsoluteOrientationSensor | 绝对定位     | 可获取表示设备绝对定位方向的四元数，包含X、Y、Z和W分量。                                                                                                 |
-| RelativeOrientationSensor | 相对定位     | 可获取表示设备相对定位方向的四元数，包含X、Y、Z和W分量。                                                                                                 |
+| AbsoluteOrientationSensor | 绝对定向     | 可获取表示设备绝对定位方向的四元数，包含X、Y、Z和W分量。                                                                                                 |
+| RelativeOrientationSensor | 相对定向     | 可获取表示设备相对定位方向的四元数，包含X、Y、Z和W分量。                                                                                                 |
 | DeviceMotionEvent         | 设备运动事件 | 通过监听该事件，可获取设备在X、Y、Z轴方向上的加速度数据，设备在X、Y、Z轴方向上包含重力的加速度数据，以及设备在alpha、beta、gamma轴方向上旋转的速率数据。 |
 | DeviceOrientationEvent    | 设备方向事件 | 通过监听该事件，可获取设备绕X、Y、Z轴的角度。                                                                                                            |
 
@@ -28,7 +28,7 @@
 使用加速度、陀螺仪及设备运动事件接口时，需在配置文件module.json5中声明相应的传感器权限。具体配置方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
 
-```json
+``` JSON5
     "requestPermissions":[
       {
         "name" : "ohos.permission.ACCELEROMETER" // 加速度权限

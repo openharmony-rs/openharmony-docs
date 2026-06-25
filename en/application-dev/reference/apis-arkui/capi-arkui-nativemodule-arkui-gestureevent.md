@@ -12,7 +12,7 @@ typedef struct ArkUI_GestureEvent ArkUI_GestureEvent
 
 ## Overview
 
-Defines the gesture event.
+Defines a gesture event.
 
 **Since**: 12
 

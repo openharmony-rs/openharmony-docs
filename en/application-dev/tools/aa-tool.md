@@ -13,7 +13,7 @@ Ability Assistant (aa) is a tool used to start applications and test cases. It p
 
 Before using this tool, you need to obtain [hdc](../dfx/hdc.md) and run the **hdc shell** command.
 
-The commands in this topic are used in the interactive CLI. To run the hdc shell [aa command] directly, use quotation marks ("") to wrap the aa command to ensure that the input parameters in the command can be correctly identified. The sample code is as follows:
+The commands in this topic are used in the interactive CLI. To run the **hdc shell [aa command]** directly, use quotation marks ("") to wrap the aa command to ensure that the input parameters in the command can be correctly identified. The sample code is as follows:
 
 ```bash
 # The start command:
@@ -29,7 +29,7 @@ hdc shell "aa process -b com.example.myapplication -a EntryAbility -p perf-cmd"
 |--------|--------|
 | -h/help |  Displays the help information of the aa tool.|
 | start |  Starts an application component. The target component can be the PageAbility and ServiceAbility components of the FA model or the UIAbility and ServiceExtensionAbility components of the Stage model. The **exported** tag in the configuration file of the target component cannot be set to **false**.|
-| stop-service | Stops an application component. The target component can be the ServiceAbility component of the FA model or the ExtensionAbility component of the Stage model.|
+| stop-service | Stops the service. Stops an application component. The target component can be the **ServiceAbility** component of the FA model or the **ExtensionAbility** component of the Stage model.|
 | dump<sup>(deprecated)</sup> |  Prints information about an application component.|
 | force-stop |  Forcibly stops a process based on the bundle name.|
 | test |  Starts the test framework based on the carried parameters.|
@@ -88,7 +88,7 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c]
   | -N | Whether to enable debugging during the startup phase. This parameter is optional.       |
   | -C | Whether to enable ASan debugging. This parameter is optional.       |
   | -p | Optimization mode. This parameter is optional. This command can be customized.       |
-  | -W | Optimization mode. This parameter is optional. It measures the time taken for a UIAbility to launch and transition to the foreground.<br>**NOTE**<br>&emsp; - This parameter is supported since API version 20.<br>&emsp; - This parameter is valid only when the UIAbility starts explicitly (the **-b** and **-a** parameters must be passed in).<br>**In normal cases, the following information is displayed**:<br>&emsp; - **StartMode**: UIAbility startup mode. The value can be **Cold** or **Hot**.<br>&emsp; - **BundleName**: bundle name of the target application.<br>&emsp; - **AbilityName**: ability name of the target application.<br>&emsp; - **ModuleName**: module name of the target application. If the command contains the **-m** parameter, **moduleName** is printed.<br>&emsp; - **TotalTime**:<br>&emsp;&emsp;&emsp;Cold start scenario: duration from when the system receives the request for starting the UIAbility from AA to when the first frame of the UIAbility is drawn, in ms.<br>&emsp;&emsp;&emsp;Hot start scenario: duration from when the system receives the request for starting the UIAbility from AA to when the UIAbility is switched to the foreground, in ms.<br>&emsp; - **WaitTime**: duration from when the command starts to when the command execution is complete, in ms.<br>**If an exception occurs, the following information is displayed**:<br>&emsp; - "The wait option does not support starting implicit": Implicit startup is not supported.<br>&emsp; - "The wait option does not support starting non-uiability": Non-UIAbility components cannot be started.  |
+  | -W | Optimization mode. This parameter is optional. It measures the time taken for a UIAbility to launch and transition to the foreground.<br>**NOTE**<br>&emsp; - This parameter is supported since API version 20.<br>&emsp; - This parameter is valid only when the UIAbility starts explicitly (the **-b** and **-a** parameters must be passed in).<br>**In normal cases, the following information is displayed**:<br>&emsp; - **StartMode**: UIAbility startup mode. The value can be **Cold** or **Hot**.<br>&emsp; - **BundleName**: bundle name of the target application.<br>&emsp; - **AbilityName**: ability name of the target application.<br>&emsp; - **ModuleName**: module name of the target application. If the command contains the **-m** parameter, **moduleName** is printed.<br>&emsp; - **TotalTime**:<br>&emsp;&emsp;&emsp;Cold start scenario: duration from when the system receives the request for starting the UIAbility from AA to when the first frame of the UIAbility is drawn, in ms.<br>&emsp;&emsp;&emsp;Hot start scenario: duration from when the system receives the request for starting the UIAbility from AA to when the UIAbility is switched to the foreground, in ms.<br>&emsp; - **WaitTime**: duration from when the command starts to when the command execution is complete, in ms.<br>**If an exception occurs, the following information is displayed**:<br>&emsp; - "The wait option does not support starting implicit": Implicit startup is not supported.<br>&emsp; - "The wait option does not support starting non-uiability": Non-**UIAbility** components cannot be started.  |
 
   **Return value**
 
@@ -193,7 +193,7 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c]
 
 ## stop-service
 
-Stops an application component. The target component can be the ServiceAbility component of the FA model or the ExtensionAbility component of the Stage model.
+Stops the service. Stops an application component. The target component can be the **ServiceAbility** component of the FA model or the **ExtensionAbility** component of the Stage model.
 
 ```bash
 aa stop-service [-d <deviceId>] -a <abilityName> -b <bundleName> [-m <moduleName>]
@@ -210,7 +210,7 @@ aa stop-service [-d <deviceId>] -a <abilityName> -b <bundleName> [-m <moduleName
 
   **Return value**
 
-  "stop service ability successfully." is returned if the ServiceAbility or ExtensionAbility is stopped; "error: failed to stop service ability." is returned otherwise.
+  "stop service ability successfully." is returned if the **ServiceAbility** or **ExtensionAbility** is stopped; "error: failed to stop service ability." is returned otherwise.
 
   **Error codes**
 
@@ -741,7 +741,7 @@ The target application is signed by the release certificate.
 
 **Solution**
 
-Use the debug signing certificate to sign the application again. After the HAP is signed, run the command again.
+Use the signing certificate of the **debug** type and install the newly signed HAP. Then, run the command again.
 
 ### 10100101 Failed to Obtain Application Information
 
@@ -891,11 +891,13 @@ The application is controlled by the application market.
 
 **Possible Causes**
 
-The target application is suspected to have malicious behavior and is not allowed to start due to application market control.
+- The target application is suspected to have malicious behavior and is not allowed to start due to application market control.
+- The target application is a pre-installed system application, and it is overwritten by a locally compiled version.
 
 **Solution**
 
-It is recommended that end users uninstall the application.
+- For possible cause 1, you are advised to uninstall the application.
+- For possible cause 2, you need to uninstall the application and then install it using the locally compiled version.
 
 ### 10106106 The Target Application Is Managed by EDM
 
@@ -1129,6 +1131,6 @@ The value of the **type** parameter in the signing tool is not **debug**.
 
 **Solution**
 
-Use the debug signature certificate to sign the application again. After the HAP is signed, run the command again.
+Use the signing certificate of the **debug** type and install the newly signed HAP. Then, run the command again.
 
 For details about the signing tool and certificate, see [Signing Your App/Atomic Service](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing).

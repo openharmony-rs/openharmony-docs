@@ -13,7 +13,7 @@ struct WebSocket {...}
 
 ## Overview
 
-Defines the WebSocket client structure.
+Defines the WebSocket client struct.
 
 **Since**: 11
 

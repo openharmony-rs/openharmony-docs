@@ -3,7 +3,7 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--Designer: @junjie_shi-->
+<!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -166,7 +166,7 @@ hiAppEvent.addWatcher({
     for (const eventGroup of appEventGroups) {
       hilog.info(0x0000, 'hiAppEvent', `eventName=${eventGroup.name}`);
       for (const eventInfo of eventGroup.appEventInfos) {
-        hilog.info(0x0000, 'hiAppEvent', `event=${JSON.stringify(eventInfo)}`, );
+        hilog.info(0x0000, 'hiAppEvent', `event=${JSON.stringify(eventInfo)}`);
       }
     }
   }
@@ -279,8 +279,12 @@ setEventConfig(name: string, config: Record&lt;string, ParamType&gt;): Promise&l
 
 事件相关的配置参数设置方法，使用Promise方式作为异步回调。在同一生命周期中，可以通过事件名称，设置事件相关的配置参数。<br />不同的事件有不同的配置项，目前仅支持以下事件：
 - MAIN_THREAD_JANK（参数配置详见[主线程超时事件检测](../../dfx/hiappevent-watcher-mainthreadjank-events.md#seteventconfig接口参数设置说明)）
-- APP_CRASH（参数配置详见[崩溃日志配置参数设置介绍](../../dfx/hiappevent-watcher-crash-events.md#崩溃日志规格自定义参数设置)）
+- APP_CRASH（参数配置详见[崩溃日志配置参数设置介绍](../../dfx/hiappevent-watcher-crash-events.md#自定义规格设置)）
 - RESOURCE_OVERLIMIT（参数配置详见[资源泄漏事件检测](../../dfx/hiappevent-watcher-resourceleak-events.md#自定义规格设置)）
+
+ > **说明：**
+ >
+ > 从API版本26.0.0开始，configEventPolicy已支持本接口所有设置，推荐使用[configEventPolicy](#hiappeventconfigeventpolicy22)。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -325,7 +329,7 @@ let params: Record<string, hiAppEvent.ParamType> = {
 hiAppEvent.setEventConfig(hiAppEvent.event.MAIN_THREAD_JANK, params).then(() => {
   hilog.info(0x0000, 'hiAppEvent', `Successfully set sampling stack parameters.`);
 }).catch((err: BusinessError) => {
-hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err.code}, message: ${err.message}`);
+  hilog.error(0x0000, 'hiAppEvent', `Failed to set sample stack value. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -363,13 +367,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let policy: hiAppEvent.EventPolicy = {
-  "mainThreadJankPolicy":{
-    "logType": 1,
-    "sampleInterval": 100,
-    "ignoreStartupTime": 11,
-    "sampleCount": 21,
-    "reportTimesPerApp": 3,
-    "autoStopSampling": true
+  mainThreadJankPolicy:{
+    logType: 1,
+    sampleInterval: 100,
+    ignoreStartupTime: 11,
+    sampleCount: 21,
+    reportTimesPerApp: 3,
+    autoStopSampling: true
   }
 };
 hiAppEvent.configEventPolicy(policy).then(() => {
@@ -397,7 +401,7 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 
 > **说明：**
 >
-> 不建议在回调函数中执行[移除观察者](#hiappeventremovewatcher)的操作，watcher一旦被移除，则其原有的订阅回调功能也会随之失效，可能会造成某些事件发生后无订阅回调情况。
+> 不建议在回调函数中执行[removeWatcher](#hiappeventremovewatcher)的操作，watcher一旦被移除，则其原有的订阅回调功能也会随之失效，可能会造成某些事件发生后无订阅回调情况。
 
 ## TriggerCondition
 
@@ -464,7 +468,7 @@ hiAppEvent.addWatcher({
       domain: hiAppEvent.domain.OS,
     }
   ],
-  });
+});
 
 // 创建订阅数据持有者实例，holder1持有的数据为上述addWatcher中添加的观察者“Watcher1”监听到的事件
 let holder1: hiAppEvent.AppEventPackageHolder = new hiAppEvent.AppEventPackageHolder("Watcher1");
@@ -784,13 +788,13 @@ addProcessor(processor: Processor): number
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-    let processor: hiAppEvent.Processor = {
-      name: 'analytics_demo'
-    };
-    let id: number = hiAppEvent.addProcessor(processor);
-    hilog.info(0x0000, 'hiAppEvent', `addProcessor event was successful, id=${id}`);
+  let processor: hiAppEvent.Processor = {
+    name: 'analytics_demo'
+  };
+  let id: number = hiAppEvent.addProcessor(processor);
+  hilog.info(0x0000, 'hiAppEvent', `addProcessor event was successful, id=${id}`);
 } catch (error) {
-    hilog.error(0x0000, 'hiAppEvent', `failed to addProcessor event, code=${error.code}`);
+  hilog.error(0x0000, 'hiAppEvent', `failed to addProcessor event, code=${error.code}`);
 }
 ```
 
@@ -873,14 +877,14 @@ removeProcessor(id: number): void
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-    let processor: hiAppEvent.Processor = {
-      name: 'analytics_demo'
-    };
-    let id: number = hiAppEvent.addProcessor(processor);
-    // 根据添加数据处理者返回的标识id移除特定数据处理者
-    hiAppEvent.removeProcessor(id);
+  let processor: hiAppEvent.Processor = {
+    name: 'analytics_demo'
+  };
+  let id: number = hiAppEvent.addProcessor(processor);
+  // 根据添加数据处理者返回的标识id移除特定数据处理者
+  hiAppEvent.removeProcessor(id);
 } catch (error) {
-    hilog.error(0x0000, 'hiAppEvent', `failed to removeProcessor event, code=${error.code}`);
+  hilog.error(0x0000, 'hiAppEvent', `failed to removeProcessor event, code=${error.code}`);
 }
 ```
 
@@ -900,7 +904,7 @@ setUserId(name: string, value: string): void
 | 参数名     | 类型                      | 必填 | 说明           |
 | --------- | ------------------------- | ---- | -------------  |
 | name      | string                    | 是   | 用户ID的key。只能包含大小写字母、数字、下划线和 $，不能以数字开头，长度非空且不超过256个字符。   |
-| value     | string                    | 是   | 用户ID的值。长度不超过256，当值为null或空字符串时，则清除用户ID。 |
+| value     | string                    | 是   | 用户ID的值。长度不超过256个字符，当值为null或空字符串时，则清除用户ID。 |
 
 **错误码：**
 
@@ -983,7 +987,7 @@ setUserProperty(name: string, value: string): void
 | 参数名     | 类型                      | 必填 | 说明           |
 | --------- | ------------------------- | ---- | -------------- |
 | name      | string                    | 是   | 用户属性的key。只能包含大小写字母、数字、下划线和 $，不能以数字开头，长度非空且不超过256个字符。  |
-| value     | string                    | 是   | 用户属性的值。长度不超过1024，当值为null或空字符串时，则清除用户属性。  |
+| value     | string                    | 是   | 用户属性的值。长度不超过1024个字符，当值为null或空字符串时，则清除用户属性。  |
 
 **错误码：**
 
@@ -1128,14 +1132,16 @@ hiAppEvent.configure(config2);
 
 提供系统事件配置策略的定义，用于使用[configEventPolicy](#hiappeventconfigeventpolicy22)设置事件配置策略。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
 | 名称       | 类型    | 只读 | 可选 | 说明                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------ |
-| mainThreadJankPolicy | [MainThreadJankPolicy](#mainthreadjankpolicy22) | 否 | 是   | 主线程超时事件配置策略。 |
-| cpuUsageHighPolicy | [CpuUsageHighPolicy](#cpuusagehighpolicy22) | 否 | 是   | CPU高负载事件配置策略。 |
+| mainThreadJankPolicy | [MainThreadJankPolicy](#mainthreadjankpolicy22) | 否 | 是   | 主线程超时事件配置策略。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| cpuUsageHighPolicy | [CpuUsageHighPolicy](#cpuusagehighpolicy22) | 否 | 是   | CPU高负载事件配置策略。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| appCrashPolicy<sup>24+</sup> | [AppCrashPolicy](#appcrashpolicy24) | 否 | 是   | 崩溃事件配置策略。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| appFreezePolicy<sup>24+</sup> | [AppFreezePolicy](#appfreezepolicy24) | 否 | 是   | 应用冻屏事件配置策略。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| resourceOverlimitPolicy<sup>24+</sup> | [ResourceOverlimitPolicy](#resourceoverlimitpolicy24) | 否 | 是   | 资源泄漏事件配置策略。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| addressSanitizerPolicy<sup>24+</sup> | [AddressSanitizerPolicy](#addresssanitizerpolicy24) | 否 | 是   | 地址越界事件配置策略。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 
 
 ## MainThreadJankPolicy<sup>22+</sup>
@@ -1164,7 +1170,7 @@ hiAppEvent.configure(config2);
 > 
 > 该接口被调用后，会将设置值持久化。后续重复调用该接口时，若不设置对应参数，则取上一次系统取用的值。
  
-**原子化服务API：** 从API version 22开始，该接口支持在应用中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
  
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
  
@@ -1176,6 +1182,53 @@ hiAppEvent.configure(config2);
 | perfLogCaptureCount | number  | 否 | 是   | 采样栈每日采集次数。一旦系统检测到当前异常日志的采集次数超过设置值，系统仍会正常上报事件，但异常事件中的external_log字段，将不再附加日志文件路径信息。<br> Debug版本应用，阈值范围：[-1, 100]；<br> Release版本应用，阈值范围：[0, 20]。<br> 单位：次，默认值：1。<br> 若设置值在阈值范围外，系统将取用默认值1。<br>**说明**：<br> 1. 值为-1，表示不限制采集日志次数。<br> 2. 值为0，表示不采集日志。<br> 3. 值大于0，表示每日采集次数上限。 |
 | threadLoadInterval | number  | 否 | 是   | 应用线程CPU高负载异常检测周期，阈值范围：[5, 3600]，单位：秒，默认值：60。<br>若设置值在阈值范围外，系统将取用默认值60。 |
 
+## AppCrashPolicy<sup>24+</sup>
+
+提供崩溃事件配置策略的定义。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+| 名称       | 类型    | 只读 | 可选 | 说明     |
+| ---------- | ------- | ---- | ---- | ------------- |
+| pageSwitchLogEnable    | boolean | 否 | 是   | 是否使能崩溃事件的页面切换日志。<br/>true：使能崩溃事件的页面切换日志。<br/>false：不使能崩溃事件的页面切换日志。<br/>默认值：false。<br>**说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| extendPcLrPrinting    | boolean | 否 | 是   | 设置崩溃日志中是否打印pc和lr寄存器前后的内存值。<br/>true：64位系统打印pc和lr寄存器地址向前248字节、向后256字节范围的内存值。32位系统打印pc和lr寄存器地址向前124字节、向后128字节范围的内存值。<br/>false：64位系统打印pc和lr寄存器地址向前16字节、向后232字节范围的内存值。32位系统打印pc和lr寄存器地址向前8字节、向后116字节范围的内存值。<br/>默认值：false。<br/>**起始版本**：26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| logFileCutoffSzBytes    | number | 否 | 是   | 设置崩溃日志截断大小。单位为byte，取值范围为[0, 5242880]。默认值取0，表示不截断崩溃日志。<br/>**起始版本**：26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| simplifyVmaPrinting    | boolean | 否 | 是   | 设置崩溃日志是否打印所有VMA（Virtual Memory Area，虚拟内存空间）的映射信息，即崩溃日志中Maps。<br/>true：只打印崩溃日志中出现的地址所属的VMA映射信息，以减小日志大小。<br/>false：打印所有VMA映射信息。<br/>默认值：false。<br/>**起始版本**：26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+
+## AppFreezePolicy<sup>24+</sup>
+
+提供应用冻屏事件配置策略的定义。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+| 名称       | 类型    | 只读 | 可选 | 说明     |
+| ---------- | ------- | ---- | ---- | ------------- |
+| pageSwitchLogEnable    | boolean | 否 | 是   | 是否使能应用冻屏事件的页面切换日志。<br/>true：使能应用冻屏事件的页面切换日志。<br/>false：不使能应用冻屏事件的页面切换日志。<br/>默认值：false。<br>**说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。 |
+
+## ResourceOverlimitPolicy<sup>24+</sup>
+
+提供资源泄漏事件配置策略的定义。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+| 名称       | 类型    | 只读 | 可选 | 说明     |
+| ---------- | ------- | ---- | ---- | ------------- |
+| pageSwitchLogEnable    | boolean | 否 | 是   | 是否使能资源泄漏事件的页面切换日志。<br/>true：使能资源泄漏事件的页面切换日志。<br/>false：不使能资源泄漏事件的页面切换日志。<br/>默认值：false。<br>**说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| jsHeapLogtype    | string | 否 | 是   | 设置传递堆快照规格。<br/>"event"：应用发生oom时，不传递堆快照。<br/>"event_rawheap"：应用发生oom时，系统生成并传递堆快照。<br/>**说明**：<br/>- 当前仅接收以上二值，如果传入其他内容，方法将调用失败，不会产生任何效果。<br/>- 参数值为"event_rawheap"，无法确保成功生成堆快照文件。原因是生成堆快照时，应用可能因性能问题触发冻屏而提前退出。<br/>- 应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。<br/>**起始版本**：26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+
+## AddressSanitizerPolicy<sup>24+</sup>
+
+提供地址越界事件配置策略的定义。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+| 名称       | 类型    | 只读 | 可选 | 说明     |
+| ---------- | ------- | ---- | ---- | ------------- |
+| pageSwitchLogEnable    | boolean | 否 | 是   | 是否使能地址越界事件的页面切换日志。<br/>true：使能地址越界事件的页面切换日志。<br/>false：不使能地址越界事件的页面切换日志。<br/>默认值：false。<br>**说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。 |
 
 ## Processor<sup>11+</sup>
 
@@ -1252,6 +1305,8 @@ type ParamType = number | string | boolean | Array&lt;string&gt;
 
 ## hiAppEvent.domain<sup>11+</sup>
 
+### 常量
+
 提供领域名称常量。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -1264,6 +1319,8 @@ type ParamType = number | string | boolean | Array&lt;string&gt;
 
 
 ## hiAppEvent.event
+
+### 常量
 
 提供事件名称常量。包含系统事件名称常量和应用事件名称常量，其中应用事件名称常量是为开发者在调用[Write](#hiappeventwrite-1)接口进行应用事件打点时预留的可选自定义事件名称。
 
@@ -1287,8 +1344,11 @@ type ParamType = number | string | boolean | Array&lt;string&gt;
 | APP_HICOLLIE<sup>21+</sup> | string | 是 | 应用任务执行超时事件。系统事件名称常量。<br>**原子化服务API：** 从API version 21开始，该参数支持在原子化服务中使用。 |
 | AUDIO_JANK_FRAME<sup>21+</sup> | string | 是 | 应用音频卡顿事件。系统事件名称常量。<br>**原子化服务API：** 从API version 21开始，该参数支持在原子化服务中使用。 |
 | SCROLL_ARKWEB_FLING_JANK<sup>23+</sup> | string | 是 | ArkWeb抛滑丢帧事件。系统事件名称常量。<br>**原子化服务API：** 从API version 23开始，该参数支持在原子化服务中使用。 |
+| appFreezeWarning | string | 是 | 应用冻屏告警事件。系统事件名称常量。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## hiAppEvent.param
+
+### 常量
 
 提供参数名称常量。
 

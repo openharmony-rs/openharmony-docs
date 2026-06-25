@@ -16,7 +16,7 @@
 
 ## 接口说明
 
-地理围栏所使用的接口如下，详细说明参见：[Location Kit](../../reference/apis-location-kit/js-apis-geoLocationManager.md)。
+地理围栏所使用的接口如下，详细说明参见Location Kit：[@ohos.geoLocationManager (位置服务)](../../reference/apis-location-kit/js-apis-geoLocationManager.md)。
 
 | 接口名 | 功能描述 | 
 | -------- | -------- |

@@ -107,7 +107,7 @@ libEGL.so
 
 - [NDK开发参考](../../napi/ndk-development-overview.md)
 
-- [NodeAPI参考](./napi.md)
+- [Node-API参考](./napi.md)
 
 - [XComponentNode参考](../apis-arkui/js-apis-arkui-xcomponentNode.md)
 

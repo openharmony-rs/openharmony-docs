@@ -22,7 +22,7 @@
 
 本示例使用的是worker线程的方式来实现异步线程进行转码，worker线程的详细使用方式，可以参见文档:
 
-- [Worker线程使用说明](../../reference/apis-arkts/js-apis-worker.md)
+- [@ohos.worker (启动一个Worker)](../../reference/apis-arkts/js-apis-worker.md)
 - [Worker简介](../../arkts-utils/worker-introduction.md)
 
 ### 开发步骤
@@ -80,7 +80,7 @@
    ```ts
    import { sendableContextManager } from '@kit.AbilityKit';
 
-   //发送的参数必须加上@Sendable标注。
+   // 发送的参数必须加上@Sendable标注。
    @Sendable
    export class SendableObject {
      constructor(sendableContext: sendableContextManager.SendableContext, data: string = '') {
@@ -127,7 +127,7 @@
      sendableObject.getSendableContext() as sendableContextManager.SendableContext;
    const context: common.Context =
      sendableContextManager.convertToContext(sendableContext) as common.Context;
-   //执行转码逻辑。
+   // 执行转码逻辑。
    await doSome(context);
    // 向主线程发送消息。
    workerPort.postMessage('start end');
@@ -143,14 +143,24 @@
        // 转码完成回调函数。
        transcoder.on('complete', async () => {
          console.info(`transcode complete`);
-         fs.closeSync(transcoder.fdDst); // 关闭fdDst。
          await transcoder?.release()
+         if (transcoder.fdDst != undefined) {
+           fs.closeSync(transcoder.fdDst);
+         }
+         if (transcoder.fdSrc != undefined) {
+           fs.closeSync(transcoder.fdSrc.fd);
+         }
          workerPort.postMessage('complete');
        })
        // 转码错误回调函数。
        transcoder.on('error', async (err: BusinessError) => {
-         fs.closeSync(transcoder.fdDst);
          await transcoder?.release();
+         if (transcoder.fdDst != undefined) {
+           fs.closeSync(transcoder.fdDst);
+         }
+         if (transcoder.fdSrc != undefined) {
+           fs.closeSync(transcoder.fdSrc.fd);
+         }
        })
        // 转码进度更新回调函数。
        transcoder.on('progressUpdate', (progress: number) => {
@@ -167,7 +177,7 @@
        }
        // 设置输出文件路径，context.filesDir为应用的沙箱路径。
        let fdPath = context.filesDir + "/" + "VID_" + Date.parse(new Date().toString()) + ".mp4";
-       let file = fs.openSync(fdPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+       let file = fileIo.openSync(fdPath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
        let fd = file.fd;
        console.info(`file fd ${fd}`);
        transcoder.fdDst = file.fd;
@@ -192,7 +202,7 @@
    // 转码完成回调函数。
    transcoder.on('complete', async () => {
      console.info(`transcode complete`);
-     fs.closeSync(transcoder.fdDst); // 关闭fdDst。
+     fileIo.closeSync(transcoder.fdDst); // 关闭fdDst。
      await transcoder?.release()
      workerPort.postMessage('complete');
    })

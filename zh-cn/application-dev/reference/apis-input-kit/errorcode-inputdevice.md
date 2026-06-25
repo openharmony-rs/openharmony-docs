@@ -5,11 +5,11 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 > **说明：**
 >
-> - 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> - 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码](../errorcode-universal.md)。
 
 <!--Del-->
 ## 3900001 指定的设备不存在
@@ -80,7 +80,7 @@ Input service exception. Possible causes: 1. Memory allocation failure. 2. Threa
 
 **可能原因**
 
-内存分配失败，线程繁忙，服务异常退出等非预期错误。
+内存分配失败，线程繁忙，服务运行异常等非预期错误。
 
 **处理步骤**
 

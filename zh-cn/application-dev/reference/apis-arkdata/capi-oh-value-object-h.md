@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 ## 概述
@@ -26,5 +26,5 @@
 
 | 名称                             | typedef关键字 | 描述               |
 | -------------------------------- | ------------- | ------------------ |
-| [OH_VObject](capi-rdb-oh-vobject.md) | OH_VObject    | 提供类型转换方法。 |
+| [OH_VObject](capi-rdb-oh-vobject.md) | OH_VObject    | 表示允许的数据字段类型。 |
 

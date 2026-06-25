@@ -57,7 +57,7 @@ ArkWeb的网络协议栈错误列表
 |ERR_BLOCKED_BY_RESPONSE | -27 | 请求失败，因为响应不满足要求（例如“X-Frame-Options”和“Content Security Policy”检查以及“Cross Origin Resource Policy”）。|
 |ERR_CLEARTEXT_NOT_PERMITTED | -29 | 该请求被系统策略阻止，不允许部分或全部明文请求。|
 |ERR_BLOCKED_BY_CSP | -30 | 请求被内容安全策略阻止。 |
-|ERR_H2_OR_QUIC_REQUIRED | -31 |  由于没有H/2或QUIC会话，请求被阻止。|
+|ERR_H2_OR_QUIC_REQUIRED | -31 |  由于没有HTTP/2或QUIC会话，请求被阻止。|
 |ERR_BLOCKED_BY_ORB | -32 | 请求被 CORB 或 ORB 阻止。 |
 |ERR_CONNECTION_CLOSED | -100 |  连接已关闭（对应于TCP FIN）。|
 |ERR_CONNECTION_RESET | -101 |  连接被重置（对应于TCP RST）。|
@@ -136,7 +136,7 @@ ArkWeb的网络协议栈错误列表
 |ERR_CERT_AUTHORITY_INVALID | -202 | 未信任的证书签发机构。这可能意味着：1.攻击者用真实证书代替了包含其公钥并由其表亲签名的证书。2.服务器操作员拥有来自本端不知道但应该信任的CA的合法证书。3.服务器提供了一个自签名证书，无法抵御主动攻击者。 |
 |ERR_CERT_CONTAINS_ERRORS | -203 | 证书中包含错误。 |
 |ERR_CERT_NO_REVOCATION_MECHANISM | -204 |证书无撤销机制，实际上，此证书不能被吊销。|
-|ERR_CERT_UNABLE_TO_CHECK_REVOCATION | -205 | 此网站的安全证书的吊销信息不可用。这可能意味着：1。一个攻击者破坏了证书中的私钥，并阻止了本端发现证书已被吊销的尝试。2.证书未被吊销，但吊销服务器正忙或不可用。|
+|ERR_CERT_UNABLE_TO_CHECK_REVOCATION | -205 | 此网站的安全证书的吊销信息不可用。这可能意味着：1.一个攻击者破坏了证书中的私钥，并阻止了本端发现证书已被吊销的尝试。2.证书未被吊销，但吊销服务器正忙或不可用。|
 |ERR_CERT_REVOKED | -206 | 证书已撤销。本端有能力忽略这个错误，但这可能不是本端应该做的事情。|
 |ERR_CERT_INVALID | -207 |  证书非法。  |
 |ERR_CERT_WEAK_SIGNATURE_ALGORITHM | -208 | 服务器以使用弱签名算法签名的证书作为响应。|
@@ -149,7 +149,7 @@ ArkWeb的网络协议栈错误列表
 |ERR_CERT_KNOWN_INTERCEPTION_BLOCKED | -217 | 已知该证书被设备所有者以外的实体用于拦截。|
 |ERR_SSL_OBSOLETE_VERSION_OR_CIPHER | -218 | 连接使用过时版本的 SSL/TLS 或密码。|
 |ERR_CERT_END | -219 | 紧跟在上一个证书错误代码之后的值。|
-|ERR_INVALID_URL | -300 | 非法 url。 |
+|ERR_INVALID_URL | -300 | 非法URL。 |
 |ERR_DISALLOWED_URL_SCHEME | -301 |  不允许使用的URL scheme。 |
 |ERR_UNKNOWN_URL_SCHEME | -302 | 未知 scheme。 |
 |ERR_INVALID_REDIRECT | -303 | 试图加载URL导致重定向到无效的URL。|
@@ -178,7 +178,7 @@ ArkWeb的网络协议栈错误列表
 |ERR_MISSING_AUTH_CREDENTIALS | -341 | 缺少身份验证凭据。 |
 |ERR_UNEXPECTED_SECURITY_LIBRARY_STATUS | -342 | 意外的安全库状态。 |
 |ERR_MISCONFIGURED_AUTH_ENVIRONMENT | -343 | 配置错误的身份验证环境。 |
-|ERR_UNDOCUMENTED_SECURITY_LIBRARY_STATUS | -344 | 取消文档安全库状态。 |
+|ERR_UNDOCUMENTED_SECURITY_LIBRARY_STATUS | -344 | 未记录的SSPI或GSSAPI状态码。 |
 |ERR_RESPONSE_BODY_TOO_BIG_TO_DRAIN | -345 | 响应体太大。|
 |ERR_RESPONSE_HEADERS_MULTIPLE_CONTENT_LENGTH | -346 | 响应 headers 多个内容长度。 |
 |ERR_INCOMPLETE_HTTP2_HEADERS | -347 | 不完整的 HTTP/2 headers。 |

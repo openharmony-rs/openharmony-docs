@@ -122,7 +122,7 @@ A custom global build function is accessible throughout the application. If ther
 2. [Popup Control](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md)
 3. [@Builder Decorator: Custom Builder Function](../ui/state-management/arkts-builder.md)
 
-## What should I do if there are white and dark lines between two adjacent components of the same color? (API version 11)
+## What are the white and dark lines between two adjacent components of the same color? How can I fix this issue? (API version 11)
 
 **Solution**
 

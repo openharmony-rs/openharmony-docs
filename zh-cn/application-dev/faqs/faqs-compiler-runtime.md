@@ -39,7 +39,7 @@
 
 **解决方案**
 
-调用NAPI接口理论上都有可能产生异常；所以在业务的关键流程需要对接口调用的返结果进行判断，查看否有异常产生。比如：
+调用NAPI接口理论上都有可能产生异常；所以在业务的关键流程需要对接口调用的返回结果进行判断，查看是否有异常产生。比如：
 ```cpp
 napi_status status = napi_create_object(env, &object);
 if (status != napi_ok) {
@@ -48,7 +48,7 @@ if (status != napi_ok) {
 }
 ```
 
-## 使用HSP的多包场景下场景，直接崩溃并产生cppcrash异常日志，错误信息为resolveBufferCallback get buffer failed
+## 使用HSP的多包场景下，直接崩溃并产生cppcrash异常日志，错误信息为resolveBufferCallback get buffer failed
 
 **解决方案**
 
@@ -97,7 +97,7 @@ bar()
 开发者可以通过IDE中Code Linter检查工具识别应用代码中的循环依赖并进行代码重构，消除循环依赖影响，工具详情请参考[Deveco Studio代码Code Linter检查](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-code-linter-V5)。操作步骤如下：
 
 1. 在工程根目录下创建code-linter.json5配置文件，配置如下：
-    ```json
+    ```json5
     {
       "files": [ // 用于表示配置适用的文件范围的 glob 模式数组。
         "**/*.js",
@@ -124,11 +124,11 @@ bar()
 **定位方案**
 
 在windows上，可以打开事件管理器，Windows日志，应用程序，找到对应的时间，如果能找到es2abc.exe的崩溃日志，同时异常代码为 0xc00000fd, 那么表示该编译由于爆栈导致崩溃。<br>
-![事件查看器](compiler/WinCrashLog.png)<br>
+![事件查看器](figures/WinCrashLog.png)<br>
 在mac上，可以进入控制台，点击崩溃报告，找到es2abc,双击查看崩溃日志。<br>
-![控制台](compiler/MacConsole.png)<br>
+![控制台](figures/MacConsole.png)<br>
 如果出现下图中所示，调用栈出现大量反复的调用相同的函数，那么极有可能是出现了大量递归导致爆栈。<br>
-![崩溃日志](compiler/CrashLog.png)
+![崩溃日志](figures/CrashLog.png)
 
 **解决方案**
 

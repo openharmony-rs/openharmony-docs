@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangchensu1-->
-<!--Designer: @xiang-shouxing-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -159,6 +159,25 @@ The current FrameNode is not on the main tree.
 
 将当前节点挂载到主节点树上，再执行当前操作。
 
+## 100029 BuilderNode中，状态管理V2尚未支持组件复用功能
+
+**错误信息**
+
+Reuse/Recycle not implemented for ViewV2, yet.
+
+**错误描述**
+
+BuilderNode中，[状态管理V2](../../ui/state-management/arkts-state-management-overview.md#状态管理v2)暂不支持[组件复用](./js-apis-arkui-builderNode.md#reuse12)。
+
+**可能原因**
+
+BuilderNode中，状态管理V2暂不支持组件复用。
+
+**处理步骤**
+
+使用状态管理V2时，不在BuilderNode节点上使用组件复用相关功能。从API版本26.0.0开始，BuilderNode中的自定义组件支持V2组件复用。
+
+
 ## 106103 对应的操作不支持ArkTS创建的节点
 
 **错误信息**
@@ -208,11 +227,10 @@ Operation on passed in nodes in non UI threads is not supported.
 **可能原因**
 
 1. 接口只支持在UI线程调用。
-2. 接口支持多线程调用，但是传入的节点已挂载到UI主树上。
-3. 接口支持多线程调用，但是传入的节点不是通过支持多线程的[createNode](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口创建的。
+2. 接口支持多线程调用，但是接口操作的节点处于Attached状态。
 
 **处理步骤**
 
 1. 调整函数调用时机，确保接口在UI线程调用。
-2. 将传入的节点从UI主树上卸载后再调用接口。
-3. 使用支持多线程调用[createNode](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口创建节点后再调用接口。
+2. 确认节点是由多线程[createNode](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口创建的。
+3. 参考[多线程NDK接口调用规范](../../ui/ndk-build-on-multi-thread.md#多线程ndk接口调用规范)，将组件所在组件树中所有不可转换的Attached组件移除。

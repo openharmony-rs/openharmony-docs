@@ -1,8 +1,8 @@
 # @ohos.curves (Interpolation Calculation)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -249,6 +249,8 @@ Creates an interpolating spring curve animated from 0 to 1. The actual animation
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -280,6 +282,8 @@ Creates a custom curve.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -310,7 +314,7 @@ Represents a curve object. Different types of curve objects can be created using
 
 ### interpolate<sup>9+</sup>
 
-interpolate(fraction: number): number
+interpolate(fraction:&nbsp;number): number
 
 Calculates the interpolated value along the curve at the specified normalized time point.
 
@@ -477,4 +481,4 @@ struct ImageComponent {
 }
 ```
 
-![en-us_image_0000001174104410](figures/en-us_image_0000001174104410.gif)
+![curves-spring-example](figures/curves-spring-example.gif)

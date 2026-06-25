@@ -1,8 +1,8 @@
 # SystemSoundPlayer (音效播放器)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -48,7 +48,7 @@ load(soundType: systemSoundManager.SystemSoundType): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -92,7 +92,7 @@ play(soundType: systemSoundManager.SystemSoundType): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -136,7 +136,7 @@ unload(soundType: systemSoundManager.SystemSoundType): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -173,7 +173,7 @@ release(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |

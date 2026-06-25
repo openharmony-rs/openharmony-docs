@@ -8,7 +8,7 @@
 
 用户首选项为应用提供Key-Value键值型的数据处理能力，支持应用持久化轻量级数据，并对其修改和查询。
 
-数据存储采用键值对形式，键为字符串类型，值可为数字、字符串、布尔类型及其对应的数组。
+数据存储采用键值对形式，键为字符串类型，值可为数字、字符串、布尔类型、数组、Uint8Array、object或bigint。
 
 用户首选项的持久化文件存储在[preferencesDir](../../application-models/application-context-stage.md#获取应用文件路径)路径下，创建preferences对象前，需要保证preferencesDir路径可读写。持久化文件存储路径中的[加密等级](../apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode)会影响文件的可读写状态，路径访问限制详见[应用文件目录与应用文件路径](../../file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)。
 
@@ -40,7 +40,9 @@ import { preferences } from '@kit.ArkData';
 
 getPreferences(context: Context, name: string, callback: AsyncCallback&lt;Preferences&gt;): void
 
-获取Preferences实例，使用callback异步回调。
+获取Preferences实例，通过name进行参数设置，使用callback异步回调。
+
+应用首次调用该接口获取某个Preferences实例后，该实例会被缓存起来，后续再次调用时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -51,7 +53,7 @@ getPreferences(context: Context, name: string, callback: AsyncCallback&lt;Prefer
 | 参数名   | 类型                                             | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | context  | Context            | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。                                                 |
-| name     | string                                           | 是   | Preferences实例的名称。                                      |
+| name     | string                                           | 是   | Preferences实例的名称。名称长度需大于零且小于等于255字节，名称中不能包含'/'且不能以'/'结尾。 |
 | callback | AsyncCallback&lt;[Preferences](#preferences)&gt; | 是   | 回调函数。当获取Preferences实例成功，err为undefined，返回Preferences实例；否则err为错误对象。 |
 
 **错误码：**
@@ -77,7 +79,7 @@ let dataPreferences: preferences.Preferences | null = null;
 
 preferences.getPreferences(context, 'myStore', (err: BusinessError, val: preferences.Preferences) => {
   if (err) {
-    console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
     return;
   }
   dataPreferences = val;
@@ -98,7 +100,7 @@ class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     preferences.getPreferences(this.context, 'myStore', (err: BusinessError, val: preferences.Preferences) => {
       if (err) {
-        console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+        console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
         return;
       }
       dataPreferences = val;
@@ -112,7 +114,9 @@ class EntryAbility extends UIAbility {
 
 getPreferences(context: Context, name: string): Promise&lt;Preferences&gt;
 
-获取Preferences实例，使用Promise异步回调。
+获取Preferences实例，通过name进行参数设置，使用Promise异步回调。
+
+应用首次调用该接口获取某个Preferences实例后，该实例会被缓存起来，后续再次调用时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -123,7 +127,7 @@ getPreferences(context: Context, name: string): Promise&lt;Preferences&gt;
 | 参数名  | 类型                                  | 必填 | 说明                    |
 | ------- | ------------------------------------- | ---- | ----------------------- |
 | context | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。            |
-| name    | string                                | 是   | Preferences实例的名称。 |
+| name    | string                                | 是   | Preferences实例的名称。名称长度需大于零且小于等于255字节，名称中不能包含'/'且不能以'/'结尾。 |
 
 **返回值：**
 
@@ -153,12 +157,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let context = featureAbility.getContext();
 
 let dataPreferences: preferences.Preferences | null = null;
-let promise = preferences.getPreferences(context, 'myStore');
-promise.then((object: preferences.Preferences) => {
+let sp = preferences.getPreferences(context, 'myStore');
+sp.then((object: preferences.Preferences) => {
   dataPreferences = object;
   console.info("Succeeded in getting preferences.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
 })
 ```
 
@@ -173,12 +177,12 @@ let dataPreferences: preferences.Preferences | null = null;
 
 class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
-    let promise = preferences.getPreferences(this.context, 'myStore');
-    promise.then((object: preferences.Preferences) => {
+    let sp = preferences.getPreferences(this.context, 'myStore');
+    sp.then((object: preferences.Preferences) => {
       dataPreferences = object;
       console.info("Succeeded in getting preferences.");
     }).catch((err: BusinessError) => {
-      console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+      console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
     })
   }
 }
@@ -188,7 +192,9 @@ class EntryAbility extends UIAbility {
 
 getPreferences(context: Context, options: Options, callback: AsyncCallback&lt;Preferences&gt;): void
 
-获取Preferences实例，使用callback异步回调。
+获取Preferences实例，通过Options进行参数设置，使用callback异步回调。
+
+应用首次调用该接口获取某个Preferences实例后，该实例会被缓存起来，后续再次调用时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -199,7 +205,7 @@ getPreferences(context: Context, options: Options, callback: AsyncCallback&lt;Pr
 | 参数名   | 类型                                          | 必填 | 说明                                                                                                                                                                           |
 | -------- | --------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | context  | Context                                       | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| options  | [Options](#options10)                              | 是   | 与Preferences实例相关的配置选项。                                                                                                                                              |
+| options  | [Options](#options10)                              | 是   | 与Preferences实例相关的配置选项。name字段为必填字段，名称长度需大于零且小于等于255字节，名称中不能包含'/'且不能以'/'结尾。dataGroupId和storageType为可选字段。                                                                                                                                              |
 | callback | AsyncCallback&lt;[Preferences](#preferences)&gt; | 是   | 回调函数。当获取Preferences实例成功，err为undefined，返回Preferences实例；否则err为错误对象。                                                                                    |
 
 **错误码：**
@@ -230,7 +236,7 @@ let dataPreferences: preferences.Preferences | null = null;
 let options: preferences.Options = { name: 'myStore' };
 preferences.getPreferences(context, options, (err: BusinessError, val: preferences.Preferences) => {
   if (err) {
-    console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
     return;
   }
   dataPreferences = val;
@@ -253,7 +259,7 @@ class EntryAbility extends UIAbility {
     let options: preferences.Options = { name: 'myStore' };
     preferences.getPreferences(this.context, options, (err: BusinessError, val: preferences.Preferences) => {
       if (err) {
-        console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+        console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
         return;
       }
       dataPreferences = val;
@@ -267,7 +273,9 @@ class EntryAbility extends UIAbility {
 
 getPreferences(context: Context, options: Options): Promise&lt;Preferences&gt;
 
-获取Preferences实例，使用Promise异步回调。
+获取Preferences实例，通过Options进行参数设置，使用Promise异步回调。
+
+应用首次调用该接口获取某个Preferences实例后，该实例会被缓存起来，后续再次调用时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -312,12 +320,12 @@ let context = featureAbility.getContext();
 
 let dataPreferences: preferences.Preferences | null = null;
 let options: preferences.Options = { name: 'myStore' };
-let promise = preferences.getPreferences(context, options);
-promise.then((object: preferences.Preferences) => {
+let sp = preferences.getPreferences(context, options);
+sp.then((object: preferences.Preferences) => {
   dataPreferences = object;
   console.info("Succeeded in getting preferences.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
 })
 ```
 
@@ -333,12 +341,12 @@ let dataPreferences: preferences.Preferences | null = null;
 class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     let options: preferences.Options = { name: 'myStore' };
-    let promise = preferences.getPreferences(this.context, options);
-    promise.then((object: preferences.Preferences) => {
+    let sp = preferences.getPreferences(this.context, options);
+    sp.then((object: preferences.Preferences) => {
       dataPreferences = object;
       console.info("Succeeded in getting preferences.");
     }).catch((err: BusinessError) => {
-      console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+      console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
     })
   }
 }
@@ -349,6 +357,8 @@ class EntryAbility extends UIAbility {
 getPreferencesSync(context: Context, options: Options): Preferences
 
 获取Preferences实例，此为同步接口。
+
+应用首次调用该接口获取某个Preferences实例后，该实例会被缓存起来，后续再次调用时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -415,7 +425,7 @@ class EntryAbility extends UIAbility {
 
 deletePreferences(context: Context, name: string, callback: AsyncCallback&lt;void&gt;): void
 
-从缓存中删除指定的Preferences实例，若Preferences实例有对应的持久化文件，则同时删除其持久化文件。使用callback异步回调。
+从缓存中删除指定的Preferences实例，若Preferences实例有对应的持久化文件，则同时删除其持久化文件。通过name进行参数设置，使用callback异步回调。
 
 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会导致数据一致性问题，应将Preferences实例置为null，系统会统一回收。
 
@@ -430,7 +440,7 @@ deletePreferences(context: Context, name: string, callback: AsyncCallback&lt;voi
 | 参数名   | 类型                                  | 必填 | 说明                                                 |
 | -------- | ------------------------------------- | ---- | ---------------------------------------------------- |
 | context  | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。                                         |
-| name     | string                                | 是   | Preferences实例的名称。                              |
+| name     | string                                | 是   | Preferences实例的名称。名称长度需大于零且小于等于255字节，名称中不能包含'/'且不能以'/'结尾。 |
 | callback | AsyncCallback&lt;void&gt;             | 是   | 回调函数。当移除成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -457,7 +467,7 @@ let context = featureAbility.getContext();
 
 preferences.deletePreferences(context, 'myStore', (err: BusinessError) => {
   if (err) {
-    console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to delete preferences. Code = " + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in deleting preferences.");
@@ -475,7 +485,7 @@ class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     preferences.deletePreferences(this.context, 'myStore', (err: BusinessError) => {
       if (err) {
-        console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+        console.error("Failed to delete preferences. Code = " + err.code + ", message = " + err.message);
         return;
       }
       console.info("Succeeded in deleting preferences.");
@@ -488,7 +498,7 @@ class EntryAbility extends UIAbility {
 
 deletePreferences(context: Context, name: string): Promise&lt;void&gt;
 
-从缓存中删除指定的Preferences实例，若Preferences实例有对应的持久化文件，则同时删除其持久化文件。使用Promise异步回调。
+从缓存中删除指定的Preferences实例，若Preferences实例有对应的持久化文件，则同时删除其持久化文件。通过name进行参数设置，使用Promise异步回调。
 
 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会导致数据一致性问题，应将Preferences实例置为null，系统会统一回收。
 
@@ -503,7 +513,7 @@ deletePreferences(context: Context, name: string): Promise&lt;void&gt;
 | 参数名  | 类型                                  | 必填 | 说明                    |
 | ------- | ------------------------------------- | ---- | ----------------------- |
 | context | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。            |
-| name    | string                                | 是   | Preferences实例的名称。 |
+| name    | string                                | 是   | Preferences实例的名称。名称长度需大于零且小于等于255字节，名称中不能包含'/'且不能以'/'结尾。 |
 
 **返回值：**
 
@@ -533,11 +543,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let context = featureAbility.getContext();
 
-let promise = preferences.deletePreferences(context, 'myStore');
-promise.then(() => {
+let sp = preferences.deletePreferences(context, 'myStore');
+sp.then(() => {
   console.info("Succeeded in deleting preferences.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to delete preferences. Code = " + err.code + ", message = " + err.message);
 })
 ```
 
@@ -550,11 +560,11 @@ import { window } from '@kit.ArkUI';
 
 class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
-    let promise = preferences.deletePreferences(this.context, 'myStore');
-    promise.then(() => {
+    let sp = preferences.deletePreferences(this.context, 'myStore');
+    sp.then(() => {
       console.info("Succeeded in deleting preferences.");
     }).catch((err: BusinessError) => {
-      console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+      console.error("Failed to delete preferences. code =" + err.code + ", message = " + err.message);
     })
   }
 }
@@ -564,7 +574,7 @@ class EntryAbility extends UIAbility {
 
 deletePreferences(context: Context, options: Options, callback: AsyncCallback&lt;void&gt;): void
 
-从缓存中删除指定的Preferences实例，若Preferences实例有对应的持久化文件，则同时删除其持久化文件。使用callback异步回调。
+从缓存中删除指定的Preferences实例，若Preferences实例有对应的持久化文件，则同时删除其持久化文件。通过Options进行参数设置，使用callback异步回调。
 
 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会导致数据一致性问题，应将Preferences实例置为null，系统会统一回收。
 
@@ -610,7 +620,7 @@ let context = featureAbility.getContext();
 let options: preferences.Options = { name: 'myStore' };
 preferences.deletePreferences(context, options, (err: BusinessError) => {
   if (err) {
-    console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to delete preferences. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in deleting preferences.");
@@ -629,7 +639,7 @@ class EntryAbility extends UIAbility {
     let options: preferences.Options = { name: 'myStore' };
     preferences.deletePreferences(this.context, options, (err: BusinessError) => {
       if (err) {
-        console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+        console.error("Failed to delete preferences. code =" + err.code + ", message = " + err.message);
         return;
       }
       console.info("Succeeded in deleting preferences.");
@@ -643,7 +653,7 @@ class EntryAbility extends UIAbility {
 
 deletePreferences(context: Context, options: Options): Promise&lt;void&gt;
 
-从缓存中删除指定的Preferences实例，若Preferences实例有对应的持久化文件，则同时删除其持久化文件。使用Promise异步回调。
+从缓存中删除指定的Preferences实例，若Preferences实例有对应的持久化文件，则同时删除其持久化文件。通过Options进行参数设置，使用Promise异步回调。
 
 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会导致数据一致性问题，应将Preferences实例置为null，系统会统一回收。
 
@@ -692,11 +702,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let context = featureAbility.getContext();
 
 let options: preferences.Options = { name: 'myStore' };
-let promise = preferences.deletePreferences(context, options);
-promise.then(() => {
+let sp = preferences.deletePreferences(context, options);
+sp.then(() => {
   console.info("Succeeded in deleting preferences.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to delete preferences. code =" + err.code + ", message = " + err.message);
 })
 ```
 
@@ -710,11 +720,11 @@ import { window } from '@kit.ArkUI';
 class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     let options: preferences.Options = { name: 'myStore' };
-    let promise = preferences.deletePreferences(this.context, options);
-    promise.then(() => {
+    let sp = preferences.deletePreferences(this.context, options);
+    sp.then(() => {
       console.info("Succeeded in deleting preferences.");
     }).catch((err: BusinessError) => {
-      console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+      console.error("Failed to delete preferences. code =" + err.code + ", message = " + err.message);
     })
   }
 }
@@ -725,7 +735,7 @@ class EntryAbility extends UIAbility {
 
 removePreferencesFromCache(context: Context, name: string, callback: AsyncCallback&lt;void&gt;): void
 
-从缓存中移除指定的Preferences实例，使用callback异步回调。
+从缓存中移除指定的Preferences实例，通过name进行参数设置，使用callback异步回调。
 
 应用首次调用[getPreferences](#preferencesgetpreferences)接口获取某个Preferences实例后，该实例会被缓存起来，后续调用[getPreferences](#preferencesgetpreferences)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移除缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
 
@@ -742,7 +752,7 @@ removePreferencesFromCache(context: Context, name: string, callback: AsyncCallba
 | 参数名   | 类型                                  | 必填 | 说明                                                 |
 | -------- | ------------------------------------- | ---- | ---------------------------------------------------- |
 | context  | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。                                         |
-| name     | string                                | 是   | Preferences实例的名称。                              |
+| name     | string                                | 是   | Preferences实例的名称。名称长度需大于零且小于等于255字节，名称中不能包含'/'且不能以'/'结尾。 |
 | callback | AsyncCallback&lt;void&gt;             | 是   | 回调函数。当移除成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -767,7 +777,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let context = featureAbility.getContext();
 preferences.removePreferencesFromCache(context, 'myStore', (err: BusinessError) => {
   if (err) {
-    console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to remove preferences. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in removing preferences.");
@@ -785,7 +795,7 @@ class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     preferences.removePreferencesFromCache(this.context, 'myStore', (err: BusinessError) => {
       if (err) {
-        console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+        console.error("Failed to remove preferences. code =" + err.code + ", message = " + err.message);
         return;
       }
       console.info("Succeeded in removing preferences.");
@@ -798,7 +808,7 @@ class EntryAbility extends UIAbility {
 
 removePreferencesFromCache(context: Context, name: string): Promise&lt;void&gt;
 
-从缓存中移除指定的Preferences实例，使用Promise异步回调。
+从缓存中移除指定的Preferences实例，通过name进行参数设置，使用Promise异步回调。
 
 应用首次调用[getPreferences](#preferencesgetpreferences)接口获取某个Preferences实例后，该实例会被缓存起来，后续调用[getPreferences](#preferencesgetpreferences)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移除缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
 
@@ -815,7 +825,7 @@ removePreferencesFromCache(context: Context, name: string): Promise&lt;void&gt;
 | 参数名  | 类型                                  | 必填 | 说明                    |
 | ------- | ------------------------------------- | ---- | ----------------------- |
 | context | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。            |
-| name    | string                                | 是   | Preferences实例的名称。 |
+| name    | string                                | 是   | Preferences实例的名称。名称长度需大于零且小于等于255字节，名称中不能包含'/'且不能以'/'结尾。 |
 
 **返回值：**
 
@@ -843,11 +853,11 @@ import { featureAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let context = featureAbility.getContext();
-let promise = preferences.removePreferencesFromCache(context, 'myStore');
-promise.then(() => {
+let sp = preferences.removePreferencesFromCache(context, 'myStore');
+sp.then(() => {
   console.info("Succeeded in removing preferences.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to remove preferences. code =" + err.code + ", message = " + err.message);
 })
 ```
 
@@ -860,11 +870,11 @@ import { window } from '@kit.ArkUI';
 
 class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
-    let promise = preferences.removePreferencesFromCache(this.context, 'myStore');
-    promise.then(() => {
+    let sp = preferences.removePreferencesFromCache(this.context, 'myStore');
+    sp.then(() => {
       console.info("Succeeded in removing preferences.");
     }).catch((err: BusinessError) => {
-      console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+      console.error("Failed to remove preferences. code =" + err.code + ", message = " + err.message);
     })
   }
 }
@@ -874,7 +884,7 @@ class EntryAbility extends UIAbility {
 
 removePreferencesFromCacheSync(context: Context, name: string): void
 
-从缓存中移除指定的Preferences实例，此为同步接口。
+从缓存中移除指定的Preferences实例，通过name进行参数设置，此为同步接口。
 
 应用首次调用[getPreferences](#preferencesgetpreferences)接口获取某个Preferences实例后，该实例会被缓存起来，后续调用[getPreferences](#preferencesgetpreferences)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移除缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
 
@@ -891,7 +901,7 @@ removePreferencesFromCacheSync(context: Context, name: string): void
 | 参数名  | 类型                                  | 必填 | 说明                    |
 | ------- | ------------------------------------- | ---- | ----------------------- |
 | context | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。            |
-| name    | string                                | 是   | Preferences实例的名称。 |
+| name    | string                                | 是   | Preferences实例的名称。名称长度需大于零且小于等于255字节，名称中不能包含'/'且不能以'/'结尾。 |
 
 **错误码：**
 
@@ -910,6 +920,7 @@ FA模型示例：
 ```ts
 // 获取context
 import { featureAbility } from '@kit.AbilityKit';
+
 let context = featureAbility.getContext();
 preferences.removePreferencesFromCacheSync(context, 'myStore');
 ```
@@ -931,7 +942,7 @@ class EntryAbility extends UIAbility {
 
 removePreferencesFromCache(context: Context, options: Options, callback: AsyncCallback&lt;void&gt;): void
 
-从缓存中移除指定的Preferences实例，使用callback异步回调。
+从缓存中移除指定的Preferences实例，通过Options进行参数设置，使用callback异步回调。
 
 应用首次调用[getPreferences](#preferencesgetpreferences)接口获取某个Preferences实例后，该实例会被缓存起来，后续调用[getPreferences](#preferencesgetpreferences)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移除缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
 
@@ -977,7 +988,7 @@ let context = featureAbility.getContext();
 let options: preferences.Options = { name: 'myStore' };
 preferences.removePreferencesFromCache(context, options, (err: BusinessError) => {
   if (err) {
-    console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to remove preferences. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in removing preferences.");
@@ -996,7 +1007,7 @@ class EntryAbility extends UIAbility {
     let options: preferences.Options = { name: 'myStore' };
     preferences.removePreferencesFromCache(this.context, options, (err: BusinessError) => {
       if (err) {
-        console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+        console.error("Failed to remove preferences. code =" + err.code + ", message = " + err.message);
         return;
       }
       console.info("Succeeded in removing preferences.");
@@ -1009,7 +1020,7 @@ class EntryAbility extends UIAbility {
 
 removePreferencesFromCache(context: Context, options: Options): Promise&lt;void&gt;
 
-从缓存中移除指定的Preferences实例，使用Promise异步回调。
+从缓存中移除指定的Preferences实例，通过Options进行参数设置，使用Promise异步回调。
 
 应用首次调用[getPreferences](#preferencesgetpreferences)接口获取某个Preferences实例后，该实例会被缓存起来，后续调用[getPreferences](#preferencesgetpreferences)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移除缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
 
@@ -1058,11 +1069,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let context = featureAbility.getContext();
 let options: preferences.Options = { name: 'myStore' };
-let promise = preferences.removePreferencesFromCache(context, options);
-promise.then(() => {
+let sp = preferences.removePreferencesFromCache(context, options);
+sp.then(() => {
   console.info("Succeeded in removing preferences.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to remove preferences. code =" + err.code + ", message = " + err.message);
 })
 ```
 
@@ -1076,11 +1087,11 @@ import { window } from '@kit.ArkUI';
 class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     let options: preferences.Options = { name: 'myStore' };
-    let promise = preferences.removePreferencesFromCache(this.context, options);
-    promise.then(() => {
+    let sp = preferences.removePreferencesFromCache(this.context, options);
+    sp.then(() => {
       console.info("Succeeded in removing preferences.");
     }).catch((err: BusinessError) => {
-      console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+      console.error("Failed to remove preferences. code =" + err.code + ", message = " + err.message);
     })
   }
 }
@@ -1088,9 +1099,9 @@ class EntryAbility extends UIAbility {
 
 ## preferences.removePreferencesFromCacheSync<sup>10+</sup>
 
-removePreferencesFromCacheSync(context: Context, options: Options):void
+removePreferencesFromCacheSync(context: Context, options: Options): void
 
-从缓存中移除指定的Preferences实例，此为同步接口。
+从缓存中移除指定的Preferences实例，通过Options进行参数设置，此为同步接口。
 
 应用首次调用[getPreferences](#preferencesgetpreferences)接口获取某个Preferences实例后，该实例会被缓存起来，后续调用[getPreferences](#preferencesgetpreferences)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移除缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
 
@@ -1129,6 +1140,7 @@ FA模型示例：
 ```ts
 // 获取context
 import { featureAbility } from '@kit.AbilityKit';
+
 let context = featureAbility.getContext();
 let options: preferences.Options = { name: 'myStore' };
 preferences.removePreferencesFromCacheSync(context, options);
@@ -1157,13 +1169,13 @@ Preferences的存储模式枚举。
 
 | 名称 | 值   | 说明 |
 | ---- | ---- | ---- |
-| XML |  0    | 表示[XML存储模式](../../database/data-persistence-by-preferences.md#xml存储)，这是Preferences的默认存储模式。<br>**特点：** 数据XML格式进行存储。对数据的操作发生在内存中，需要调用flush接口进行落盘。     |
-| GSKV |  1    |表示[GSKV存储模式](../../database/data-persistence-by-preferences.md#gskv存储)。<br>**特点：** 数据以GSKV数据库模式进行存储。对数据的操作实时落盘，无需调用flush接口对数据进行落盘。      |
+| XML |  0    | 表示[XML存储模式](../../database/data-persistence-by-preferences.md#xml存储)，这是Preferences的默认存储模式。<br>**特点：** 数据以XML格式进行存储。对数据的操作发生在内存中，需要调用[flush](#flush)接口进行落盘。     |
+| GSKV |  1    |表示[GSKV存储模式](../../database/data-persistence-by-preferences.md#gskv存储)。<br>**特点：** 数据以GSKV数据库模式进行存储。对数据的操作实时落盘，无需调用[flush](#flush)接口对数据进行落盘。      |
 
 
 > **说明：**
->   - 在选择存储模式前，建议调用isStorageTypeSupported检查当前平台是否支持对应存储模式。
->   - 当选择某一模式通过getPreferences接口获取实例后，不允许中途切换模式。
+>   - 在选择存储模式前，建议调用[isStorageTypeSupported](#preferencesisstoragetypesupported18)检查当前平台是否支持对应存储模式。
+>   - 当选择某一模式通过[preferences.getPreferences](#preferencesgetpreferences)接口获取实例后，不允许中途切换模式。
 >   - 首选项不支持不同模式间数据的迁移，若需将数据从一种模式切换至另一种模式，需通过读写首选项的形式进行数据迁移。
 >   - 若需要变更首选项的存储路径，不能通过移动或覆盖文件的方式进行，需通过读写首选项的形式进行数据迁移。
 
@@ -1216,9 +1228,9 @@ Preferences实例配置选项。
 
 | 名称        | 类型   | 只读 | 可选| 说明                                                         |
 | ----------- | ------ | ---- | ----| ------------------------------------------------------------ |
-| name        | string | 否  | 否 | Preferences实例的名称。名称长度需大于零且小于等于255字节，名称中不能包含'/'且不能以'/'结尾。 <br/>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。 <br/>                                    |
-| dataGroupId | string\|null\|undefined | 否  | 是 | 应用组ID，<!--RP1-->暂不支持指定dataGroupId在对应共享沙箱路径下创建Preferences实例。<!--RP1End--><br/>为可选参数。指定在此dataGroupId对应的沙箱路径下创建Preferences实例。当此参数不填时，默认在本应用沙箱目录下创建Preferences实例。<br/> **模型约束：** 此属性仅在Stage模型下可用。<br/>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。 <br/> |
-| storageType<sup>18+</sup> | [StorageType](#storagetype18)\|null\|undefined | 否 | 是 | 存储模式，为可选参数。表示当前Preferences实例需要使用的存储模式。当此参数不填时，默认使用XML存储模式。当选择某种存储模式创建Preferences后，不支持中途切换存储模式。 <br/>**原子化服务API：** 从API version 18开始，该参数支持在原子化服务中使用。 <br/> |
+| name        | string | 否  | 否 | Preferences实例的名称。名称长度需大于零且小于等于255字节，名称中不能包含'/'且不能以'/'结尾。 <br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。                                    |
+| dataGroupId | string\|null\|undefined | 否  | 是 | 应用组ID，<!--RP1-->暂不支持指定dataGroupId在对应共享沙箱路径下创建Preferences实例。<!--RP1End--><br>为可选参数。指定在此dataGroupId对应的沙箱路径下创建Preferences实例。当此参数不填时，默认在本应用沙箱目录下创建Preferences实例。<br> **模型约束：** 此属性仅在Stage模型下可用。<br>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。 |
+| storageType<sup>18+</sup> | [StorageType](#storagetype18)\|null\|undefined | 否 | 是 | 存储模式，为可选参数。表示当前Preferences实例需要使用的存储模式。当此参数不填时，默认使用XML存储模式。当选择某种存储模式创建Preferences后，不支持中途切换存储模式。 <br>**原子化服务API：** 从API version 18开始，该参数支持在原子化服务中使用。 |
 
 
 ## Preferences
@@ -1262,10 +1274,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 dataPreferences.get('startup', 'default', (err: BusinessError, val: preferences.ValueType) => {
   if (err) {
-    console.error("Failed to get value of 'startup'. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to get value of 'startup'. code =" + err.code + ", message = " + err.message);
     return;
   }
-  console.info("Succeeded in getting value of 'startup'. val： " + val);
+  console.info("Succeeded in getting value of 'startup'. val: " + val);
 })
 ```
 
@@ -1306,11 +1318,11 @@ get(key: string, defValue: ValueType): Promise&lt;ValueType&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let promise = dataPreferences.get('startup', 'default');
-promise.then((data: preferences.ValueType) => {
+let data = dataPreferences.get('startup', 'default');
+data.then((data: preferences.ValueType) => {
   console.info("Succeeded in getting value of 'startup'. Data: " + data);
 }).catch((err: BusinessError) => {
-  console.error("Failed to get value of 'startup'. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to get value of 'startup'. code =" + err.code + ", message = " + err.message);
 })
 ```
 
@@ -1391,7 +1403,7 @@ function getObjKeys(obj: Object): string[] {
 
 dataPreferences.getAll((err: BusinessError, value: Object) => {
   if (err) {
-    console.error("Failed to get all key-values. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to get all key-values. code =" + err.code + ", message = " + err.message);
     return;
   }
   let allKeys = getObjKeys(value);
@@ -1405,7 +1417,7 @@ dataPreferences.getAll((err: BusinessError, value: Object) => {
 
 getAll(): Promise&lt;Object&gt;
 
-获取缓存的Preferences实例中的所有键值数据。
+获取缓存的Preferences实例中的所有键值数据，使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1437,13 +1449,13 @@ function getObjKeys(obj: Object): string[] {
   return keys;
 }
 
-let promise = dataPreferences.getAll();
-promise.then((value: Object) => {
+let allData = dataPreferences.getAll();
+allData.then((value: Object) => {
   let allKeys = getObjKeys(value);
   console.info('getAll keys = ' + allKeys);
   console.info("getAll object = " + JSON.stringify(value));
 }).catch((err: BusinessError) => {
-  console.error("Failed to get all key-values. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to get all key-values. code =" + err.code + ", message = " + err.message);
 })
 ```
 
@@ -1527,7 +1539,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 dataPreferences.put('startup', 'auto', (err: BusinessError) => {
   if (err) {
-    console.error("Failed to put value of 'startup'. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to put value of 'startup'. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in putting value of 'startup'.");
@@ -1578,11 +1590,11 @@ put(key: string, value: ValueType): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let promise = dataPreferences.put('startup', 'auto');
-promise.then(() => {
+let putStartupPref = dataPreferences.put('startup', 'auto');
+putStartupPref.then(() => {
   console.info("Succeeded in putting value of 'startup'.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to put value of 'startup'. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to put value of 'startup'. code =" + err.code + ", message = " + err.message);
 })
 ```
 
@@ -1640,8 +1652,8 @@ has(key: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名   | 类型                         | 必填 | 说明                                                         |
 | -------- | ---------------------------- | ---- | ------------------------------------------------------------ |
-| key      | string                       | 是   | 要检查的存储key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。                              |
-| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。返回Preferences实例是否包含给定key的存储键值对，true表示存在，false表示不存在。 |
+| key      | string                       | 是   | 要检查的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。                              |
+| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。返回Preferences实例是否包含给定Key的存储键值对，true表示存在，false表示不存在。 |
 
 **错误码：**
 
@@ -1659,7 +1671,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 dataPreferences.has('startup', (err: BusinessError, val: boolean) => {
   if (err) {
-    console.error("Failed to check the key 'startup'. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to check the key 'startup'. code =" + err.code + ", message = " + err.message);
     return;
   }
   if (val) {
@@ -1685,13 +1697,13 @@ has(key: string): Promise&lt;boolean&gt;
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | 是   | 要检查的存储key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
+| key    | string | 是   | 要检查的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
 
 **返回值：**
 
 | 类型                   | 说明                                                         |
 | ---------------------- | ------------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise对象。返回Preferences实例是否包含给定key的存储键值对，true表示存在，false表示不存在。 |
+| Promise&lt;boolean&gt; | Promise对象。返回Preferences实例是否包含给定Key的存储键值对，true表示存在，false表示不存在。 |
 
 **错误码：**
 
@@ -1707,15 +1719,15 @@ has(key: string): Promise&lt;boolean&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let promise = dataPreferences.has('startup');
-promise.then((val: boolean) => {
+let isStartupSet = dataPreferences.has('startup');
+isStartupSet.then((val: boolean) => {
   if (val) {
     console.info("The key 'startup' is contained.");
   } else {
     console.info("The key 'startup' does not contain.");
   }
 }).catch((err: BusinessError) => {
-  console.error("Failed to check the key 'startup'. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to check the key 'startup'. code =" + err.code + ", message = " + err.message);
 })
 ```
 
@@ -1734,13 +1746,13 @@ hasSync(key: string): boolean
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | 是   | 要检查的存储key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
+| key    | string | 是   | 要检查的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
 
 **返回值：**
 
 | 类型                   | 说明                                                         |
 | ---------------------- | ------------------------------------------------------------ |
-| boolean | 返回Preferences实例是否包含给定key的存储键值对，true表示存在，false表示不存在。 |
+| boolean | 返回Preferences实例是否包含给定Key的存储键值对，true表示存在，false表示不存在。 |
 
 **错误码：**
 
@@ -1796,7 +1808,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 dataPreferences.delete('startup', (err: BusinessError) => {
   if (err) {
-    console.error("Failed to delete the key 'startup'. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to delete the key 'startup'. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in deleting the key 'startup'.");
@@ -1818,7 +1830,7 @@ delete(key: string): Promise&lt;void&gt;
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | 是   | 要删除的存储key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
+| key    | string | 是   | 要删除的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
 
 **返回值：**
 
@@ -1840,11 +1852,11 @@ delete(key: string): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let promise = dataPreferences.delete('startup');
-promise.then(() => {
+let deleteStartupPromise = dataPreferences.delete('startup');
+deleteStartupPromise.then(() => {
   console.info("Succeeded in deleting the key 'startup'.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to delete the key 'startup'. code =" + err.code +", message =" + err.message);
+  console.error("Failed to delete the key 'startup'. code =" + err.code +", message = " + err.message);
 })
 ```
 
@@ -1863,7 +1875,7 @@ deleteSync(key: string): void
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | 是   | 要删除的存储key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
+| key    | string | 是   | 要删除的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
 
 **错误码：**
 
@@ -1919,7 +1931,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 dataPreferences.flush((err: BusinessError) => {
   if (err) {
-    console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to flush. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
@@ -1962,11 +1974,11 @@ flush(): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let promise = dataPreferences.flush();
-promise.then(() => {
+let flushResult = dataPreferences.flush();
+flushResult.then(() => {
   console.info("Succeeded in flushing.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to flush. code =" + err.code + ", message = " + err.message);
 })
 ```
 
@@ -2030,7 +2042,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 dataPreferences.clear((err: BusinessError) =>{
   if (err) {
-    console.error("Failed to clear. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to clear. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in clearing.");
@@ -2071,7 +2083,7 @@ let promise = dataPreferences.clear();
 promise.then(() => {
   console.info("Succeeded in clearing.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to clear. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to clear. code =" + err.code + ", message = " + err.message);
 })
 ```
 
@@ -2097,7 +2109,14 @@ dataPreferences.clearSync();
 
 on(type: 'change', callback: Callback&lt;string&gt;): void
 
-订阅数据变更，订阅的Key的值发生变更后，在执行[flush](#flush)方法后，触发callback回调。
+订阅数据变更，订阅的Key的值发生变更后，并且在执行[flush](#flush)方法后，触发callback回调。
+
+> **不同订阅方法的对比：**
+> - on('change')：订阅所有Key变化，适合全局数据变化感知需求。
+> - on('dataChange')：精确订阅指定Key的变化，适合关注特定数据场景，可回调返回具体值。
+> - on('multiProcessChange')：订阅多进程数据变化，适合多进程共享同一首选项文件的场景。
+> 
+> **选取建议：** 单进程应用推荐使用on('change')或on('dataChange')；多进程数据同步时使用on('multiProcessChange')；需要精确知道特定Key变化并获取新值时使用on('dataChange')。
 
   > **说明：**
   >
@@ -2112,7 +2131,7 @@ on(type: 'change', callback: Callback&lt;string&gt;): void
 | 参数名   | 类型     | 必填 | 说明                                     |
 | -------- | -------- | ---- | ---------------------------------------- |
 | type     | string   | 是   | 事件类型，固定值'change'，表示数据变更。 |
-| callback | Callback&lt;string&gt; | 是   | 回调函数。     |
+| callback | Callback&lt;string&gt; | 是   | 回调函数，用于接收数据变更通知，回调参数为Key字符串，表示发生变更的键名称。     |
 
 **错误码：**
 
@@ -2135,7 +2154,7 @@ dataPreferences.on('change', observer);
 dataPreferences.putSync('startup', 'manual');
 dataPreferences.flush((err: BusinessError) => {
   if (err) {
-    console.error("Failed to flush. Cause: " + err);
+    console.error("Failed to flush. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
@@ -2148,11 +2167,11 @@ on(type: 'multiProcessChange', callback: Callback&lt;string&gt;): void
 
 订阅进程间数据变更，多个进程持有同一个首选项文件时，在任意一个进程（包括本进程）执行[flush](#flush)方法，持久化文件发生变更后，触发callback回调。
 
-本接口提供给申请了[dataGroupId](#options10)的应用进行使用，未申请的应用不推荐使用，多进程操作可能会损坏持久化文件，导致数据丢失。
+本接口提供给申请了[dataGroupId](#options10)的应用进行使用，未申请的应用不推荐使用（监听不到数据变更），多进程操作可能会损坏持久化文件，导致数据丢失。
 
   > **说明：**
   >
-  > 同一持久化文件在当前进程订阅进程间数据变更的最大数量为50次，超过最大限制后会订阅失败。建议在触发callback回调后及时取消订阅。
+  > 同一持久化文件在当前进程对多进程数据变更订阅的最大数量为50次，超过最大限制后订阅会失败。建议在触发callback回调后及时取消订阅。
   >
   > 当调用[removePreferencesFromCache](#preferencesremovepreferencesfromcache)或[deletePreferences](#preferencesdeletepreferences)后，订阅的数据变更会主动取消订阅，在重新[getPreferences](#preferencesgetpreferences)后需要重新订阅数据变更。
 
@@ -2165,7 +2184,7 @@ on(type: 'multiProcessChange', callback: Callback&lt;string&gt;): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 事件类型，固定值'multiProcessChange'，表示多进程间的数据变更。 |
-| callback | Callback&lt;string&gt; | 是   | 回调函数。                         |
+| callback | Callback&lt;string&gt; | 是   | 多进程间数据变更时触发的回调函数，回调参数为发生变更的Key字符串。                         |
 
 **错误码：**
 
@@ -2189,7 +2208,7 @@ dataPreferences.on('multiProcessChange', observer);
 dataPreferences.putSync('startup', 'manual');
 dataPreferences.flush((err: BusinessError) => {
   if (err) {
-    console.error("Failed to flush. Cause: " + err);
+    console.error("Failed to flush. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
@@ -2200,7 +2219,7 @@ dataPreferences.flush((err: BusinessError) => {
 
 on(type: 'dataChange', keys: Array&lt;string&gt;,  callback: Callback&lt;Record&lt;string, ValueType&gt;&gt;): void
 
-精确订阅数据变更，只有被订阅的key值发生变更后，在执行[flush](#flush)方法后，触发callback回调。
+精确订阅数据变更，只有被订阅的Key值发生变更后，在执行[flush](#flush)方法后，触发callback回调。
 
   > **说明：**
   >
@@ -2215,8 +2234,8 @@ on(type: 'dataChange', keys: Array&lt;string&gt;,  callback: Callback&lt;Record&
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件类型，固定值'dataChange'，表示精确的数据变更。           |
-| keys     | Array&lt;string&gt;                                          | 是   | 需要订阅的key集合。                                          |
-| callback | Callback&lt;Record&lt;string, [ValueType](#valuetype)&gt;&gt; | 是   | 回调函数。回调支持返回多个键值对，其中键为发生变更的订阅key，值为变更后的数据：支持number、string、boolean、Array\<number>、Array\<string>、Array\<boolean>、Uint8Array、object类型。 |
+| keys     | Array&lt;string&gt;                                          | 是   | 需要订阅的Key集合。                                          |
+| callback | Callback&lt;Record&lt;string, [ValueType](#valuetype)&gt;&gt; | 是   | 回调函数。回调支持返回多个键值对，其中键为发生变更的订阅Key，类型为string；值为变更后的数据，类型为[ValueType](#valuetype)。 |
 
 **错误码：**
 
@@ -2244,7 +2263,7 @@ dataPreferences.putSync('name', 'xiaohong');
 dataPreferences.putSync('weight', 125);
 dataPreferences.flush((err: BusinessError) => {
   if (err) {
-    console.error("Failed to flush. Cause: " + err);
+    console.error("Failed to flush. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
@@ -2266,7 +2285,7 @@ off(type: 'change', callback?: Callback&lt;string&gt;): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 事件类型，固定值'change'，表示数据变更。                     |
-| callback | Callback&lt;string&gt; | 否   | 需要取消的回调函数，不填写则全部取消。 |
+| callback | Callback&lt;string&gt; | 否   | 需要取消的回调函数，若不填写，表示取消所有已注册的回调函数；若填写，表示只取消指定的回调函数。 |
 
 **错误码：**
 
@@ -2289,7 +2308,7 @@ dataPreferences.on('change', observer);
 dataPreferences.putSync('startup', 'auto');
 dataPreferences.flush((err: BusinessError) => {
   if (err) {
-    console.error("Failed to flush. Cause: " + err);
+    console.error("Failed to flush. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
@@ -2303,7 +2322,7 @@ off(type: 'multiProcessChange', callback?: Callback&lt;string&gt;): void
 
 取消订阅进程间数据变更。
 
-本接口提供给申请了[dataGroupId](#options10)的应用进行使用，未申请的应用不推荐使用，多进程操作可能会损坏持久化文件，导致数据丢失。
+本接口提供给申请了[dataGroupId](#options10)的应用进行使用，未申请的应用不推荐使用（监听不到数据变更），多进程操作可能会损坏持久化文件，导致数据丢失。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2314,7 +2333,7 @@ off(type: 'multiProcessChange', callback?: Callback&lt;string&gt;): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 事件类型，固定值'multiProcessChange'，表示多进程间的数据变更。 |
-| callback | Callback&lt;string&gt; | 否   | 需要取消的回调函数，不填写则全部取消。 |
+| callback | Callback&lt;string&gt; | 否   | 需要取消的回调函数，若不填写，表示取消所有已注册的回调函数；若填写，表示只取消指定的回调函数。 |
 
 **错误码：**
 
@@ -2337,7 +2356,7 @@ dataPreferences.on('multiProcessChange', observer);
 dataPreferences.putSync('startup', 'auto');
 dataPreferences.flush((err: BusinessError) => {
   if (err) {
-    console.error("Failed to flush. Cause: " + err);
+    console.error("Failed to flush. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
@@ -2350,6 +2369,10 @@ off(type: 'dataChange', keys: Array&lt;string&gt;,  callback?: Callback&lt;Recor
 
 取消精确订阅数据变更。
 
+**配对调用：**
+- 与[on('dataChange')](#ondatachange12)成对使用，用于取消精确数据变更订阅。
+- 如果不需要监听特定Key的数据变更，建议及时调用off取消订阅。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
@@ -2359,8 +2382,8 @@ off(type: 'dataChange', keys: Array&lt;string&gt;,  callback?: Callback&lt;Recor
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件类型，固定值'dataChange'，表示精确的数据变更。           |
-| keys     | Array&lt;string&gt;                                          | 是   | 需要取消订阅的key集合，当keys为空数组时，表示取消订阅全部key；当keys为非空数组时，表示只取消订阅key集合中的key。 |
-| callback | Callback&lt;Record&lt;string, [ValueType](#valuetype)&gt;&gt; | 否   | 需要取消的回调函数，若callback不填写，表示所有的callback都需要处理；若callback填写，表示只处理该callback。 |
+| keys     | Array&lt;string&gt;                                          | 是   | 需要取消订阅的Key集合，当Keys为空数组时，表示取消订阅全部Key；当Keys为非空数组时，表示只取消订阅Key集合中的Key。 |
+| callback | Callback&lt;Record&lt;string, [ValueType](#valuetype)&gt;&gt; | 否   | 需要取消的回调函数，若不填写，表示取消所有已注册的回调函数；若填写，表示只取消指定的回调函数。 |
 
 **错误码：**
 
@@ -2388,7 +2411,7 @@ dataPreferences.putSync('name', 'xiaohong');
 dataPreferences.putSync('weight', 125);
 dataPreferences.flush((err: BusinessError) => {
   if (err) {
-    console.error("Failed to flush. Cause: " + err);
+    console.error("Failed to flush. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in flushing.");

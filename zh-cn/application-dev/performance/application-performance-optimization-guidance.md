@@ -33,7 +33,7 @@
 
 在日常开发过程中经常会碰到这样的问题：主页的开发场景中有多个Tab页展示不同内容，在首次加载完主页后，切换到第二个Tab页时需要加载和处理网络数据，导致第二个Tab页的页面显示较慢，有较大的完成时延。
 
-碰到此类问题，可以在生命周期aboutToAppear中，使用多线程并发、[高效并发编程](efficient-concurrent-programming.md)、[多线程能力场景化示例实践](multi_thread_capability.md)的方法执行第二个Tab页的网络数据访问解析、数据加载等耗时操作，既可以提前完成数据加载，也不会影响主线程UI绘制和渲染。
+碰到此类问题，可以在生命周期aboutToAppear中，使用[多线程并发](../arkts-utils/multi-thread-concurrency-overview.md)、[高效并发编程](efficient-concurrent-programming.md)、[多线程能力场景化示例实践](multi_thread_capability.md)的方法执行第二个Tab页的网络数据访问解析、数据加载等耗时操作，既可以提前完成数据加载，也不会影响主线程UI绘制和渲染。
 
 使用TaskPool进行耗时操作的示例代码如下：
 
@@ -385,6 +385,7 @@ export struct IconItem {
 **使用显隐控制进行页面缓存**
 
 控制元素显示与隐藏是一种常见的场景，使用Visibility.None、if条件判断等都能够实现该效果。其中if条件判断控制的是组件的创建、布局阶段，Visibility属性控制的是元素在布局阶段是否参与布局渲染。使用时如果使用的方式不当，将引起性能上的问题。
+
 如果会频繁响应显示与隐藏的交互效果，建议使用切换Visibility.None和Visibility.Visible来[合理控制元素显示与隐藏](proper-choice-between-if-and-visibility.md)，在组件无需展示的时候进行缓存，提高性能。
 
 示例代码如下：
@@ -1262,7 +1263,9 @@ struct Page {
   }
 }
 ```
+
 抓取Trace图如下：    
+
 ![](./figures/unnecessarystate.png)  
 
 正例代码：
@@ -1290,7 +1293,9 @@ struct Page {
   }
 }
 ```
+
 抓取Trace图如下：  
+
 ![](./figures/necessarystate.png)
 
 由此可见，使用普通变量代替状态变量在For/while循环中读取，可以减少耗时，因此在For/while循环中频繁读取变量时，可使用普通变量代替状态变量。

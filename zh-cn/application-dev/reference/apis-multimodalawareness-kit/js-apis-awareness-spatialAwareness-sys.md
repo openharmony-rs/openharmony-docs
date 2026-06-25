@@ -30,7 +30,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 | WIFI_RSSI           | 1    | 表示WIFI强度。      |
 | ULTRASOUND          | 2    | 表示超声强度。      |
 | NEAR_LINK           | 3    | 表示星闪强度。  |
-| BLE_WIFI_RSSI       | 4    | 表示蓝牙和WIFI强度。|
+| WIFI_BLE_RSSI       | 4    | 表示WIFI和蓝牙强度。|
 
 ## spatialAwareness.ReportingMode
 
@@ -71,7 +71,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 ## spatialAwareness.PositionRelativeToDoor
 
-门内外识接口返回结果中表示门内或门外位置的枚举。
+门内外识别接口返回结果中表示门内或门外位置的枚举。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -129,6 +129,7 @@ onDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback: Callb
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
+| 202      | Not system application. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 35100001 | Service exception. |
 | 35100002 | Subscription failed. |
@@ -170,7 +171,7 @@ offDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback?: Cal
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
 | configParams | DistanceMeasurementConfigParams | 是 | 测距接口配置参数 |
-| callback | Callback&lt;[DistanceMeasurementResponse](#spatialawarenessdistancemeasurementresponse)&gt; | 否   | 回调函数，返回测距结果。                                 |
+| callback | Callback&lt;[DistanceMeasurementResponse](#spatialawarenessdistancemeasurementresponse)&gt; | 否   | 表示取消指定的callback通知。如果输入空、undefined或null，则取消configParams订阅的所有测距通知事件。                                 |
 
 **错误码**：
 
@@ -179,6 +180,7 @@ offDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback?: Cal
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
+| 202      | Not system application. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 35100001 | Service exception. |
 | 35100003 | Unsubscription failed. |
@@ -229,6 +231,7 @@ onIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callbac
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
+| 202      | Not system application. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 35100001 | Service exception. |
 | 35100002 | Subscription failed. |
@@ -270,7 +273,7 @@ offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callba
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
 | configParams | DistanceMeasurementConfigParams | 是 | 测距接口配置参数 |
-| callback | Callback&lt;[DoorPositionResponse](#spatialawarenessdoorpositionresponse)&gt; | 否   | 回调函数，返回门内外信息。                                   |
+| callback | Callback&lt;[DoorPositionResponse](#spatialawarenessdoorpositionresponse)&gt; | 否   | 表示取消指定的callback通知。如果输入空、undefined或null，则取消configParams订阅的所有门内外识别通知事件。                                   |
 
 **错误码**：
 
@@ -279,6 +282,7 @@ offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callba
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
+| 202      | Not system application. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 35100001 | Service exception. |
 | 35100003 | Unsubscription failed. |

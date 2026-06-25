@@ -1,8 +1,8 @@
 # @ohos.application.StaticSubscriberExtensionAbility (StaticSubscriberExtensionAbility) (System API)
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -26,7 +26,7 @@ import { StaticSubscriberExtensionAbility } from '@kit.BasicServicesKit';
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**System API**: This is a system API and cannot be called by third-party applications.
+**System API**: This is a system API.
 
 | Name   | Type                                                        | Read Only| Optional| Description    |
 | ------- | ------------------------------------------------------------ | ---- | ---- | -------- |

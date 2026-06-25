@@ -110,7 +110,7 @@ You can use the color gradient APIs to apply a background color gradient effect 
   }
   ```
 
-![en-us_image_0000001641176829](figures/en-us_image_0000001641176829.png)
+![color-linear-gradient](figures/color-linear-gradient.png)
 
 
 ## Applying Sweep Gradient Effect
@@ -226,7 +226,7 @@ You can use the color gradient APIs to apply a background color gradient effect 
     }
   }
   ```
-![en-us_image_0000001641177073](figures/en-us_image_0000001641177073.png)
+![color-sweep-gradient](figures/color-sweep-gradient.png)
 
 
 ## Applying Radial Gradient Effect
@@ -336,4 +336,4 @@ You can use the color gradient APIs to apply a background color gradient effect 
     }
   }
   ```
-![en-us_image_0000001592904050](figures/en-us_image_0000001592904050.png)
+![color-radial-gradient](figures/color-radial-gradient.png)

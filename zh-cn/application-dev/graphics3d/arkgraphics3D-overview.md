@@ -35,3 +35,6 @@ ArkGraphics 3D以自定义场景模式为核心能力，支持开发者自行构
 ## 约束限制
 
 使用ArkGraphics 3D模块需要硬件设备支持OpenGL ES 3.2以上或者Vulkan 1.0以上的GPU驱动。
+
+<!--RP1-->
+<!--RP1End-->

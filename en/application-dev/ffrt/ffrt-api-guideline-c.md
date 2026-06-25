@@ -280,7 +280,7 @@ Description
 **Example**
 
 ```c
-// Submit a common task. The task name is sample_task, the QoS is background, the scheduling delay is 1 ms, and the coroutine stack size is 2 MB.
+// Submit a common task. The task name is "sample_task", the QoS is background, the scheduling delay is 1 ms, and the coroutine stack size is 2 MB.
 ffrt_task_attr_t attr;
 ffrt_task_attr_init(&attr);
 ffrt_task_attr_set_name(&attr, "sample_task");
@@ -1403,7 +1403,7 @@ int ffrt_mutexattr_destroy(ffrt_mutexattr_t* attr);
 
 **Description**
 
-- Provides performance implementation similar to pthread mutex.
+- Provides performance implementation similar to pthread mutexattr.
 
 **Methods**
 
@@ -1519,11 +1519,11 @@ int ffrt_mutex_destroy(ffrt_mutex_t* mutex);
 
 - This API can be called inside or outside an FFRT task.
 - The traditional function `pthread_mutex_t` may cause unexpected kernel mode trap when it fails to lock a mutex. **ffrt_mutex_t** solves this problem and therefore provides better performance if used properly.
-- `ffrt_mutexattr_t` in the C API needs to be created and destroyed by calling `ffrt_mutexattr_init` and `ffrt_mutexattr_destroy`. Otherwise, undefined behavior may occur.
+- `ffrt_mutexattr_t` in the C API needs to be explicitly created and destroyed by calling `ffrt_mutexattr_init` and `ffrt_mutexattr_destroy`. Otherwise, undefined behavior may occur.
 - `ffrt_mutex_t` in the C API needs to be explicitly created and destroyed by calling `ffrt_mutex_init` and `ffrt_mutex_destroy`. Otherwise, undefined behavior may occur.
 - You need to set the `ffrt_mutex_t` object in the C code to null or destroy the object. For the same `ffrt_mutex_t` object, `ffrt_mutex_destroy` can be called only once. Otherwise, undefined behavior may occur.
 - The same `ffrt_mutexattr_t` in the C API can call `ffrt_mutexattr_init` and `ffrt_mutexattr_destroy` only once. Repeated calling may cause undefined behavior.
-- You need to explicitly call `ffrt_mutex_destroy` after `ffrt_mutex_init` and before `ffrt_mutexattr_destroy`.
+- You need to explicitly call `ffrt_mutexattr_destroy` after `ffrt_mutex_init` and before `ffrt_mutex_destroy`.
 - If `ffrt_mutex_t` is accessed after `ffrt_mutex_destroy`, undefined behavior may occur.
 
 **Methods**

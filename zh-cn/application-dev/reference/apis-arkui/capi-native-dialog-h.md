@@ -41,6 +41,7 @@
 | [ArkUI_DismissReason](#arkui_dismissreason) | ArkUI_DismissReason | 弹窗关闭的触发方式。 |
 | [ArkUI_LevelMode](#arkui_levelmode) | ArkUI_LevelMode | 设置弹窗显示层级。 |
 | [ArkUI_ImmersiveMode](#arkui_immersivemode) | ArkUI_ImmersiveMode | 指定嵌入式弹窗的蒙层覆盖区域。 |
+| [ArkUI_DialogDisplayMode](#arkui_dialogdisplaymode) | ArkUI_DialogDisplayMode | 弹窗在子窗口中的显示模式。 |
 | [ArkUI_DialogState](#arkui_dialogstate) | ArkUI_DialogState | 枚举对话框的状态。 |
 
 ### 函数
@@ -48,14 +49,14 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [typedef bool (\*ArkUI_OnWillDismissEvent)(int32_t reason)](#arkui_onwilldismissevent) | ArkUI_OnWillDismissEvent | 弹窗关闭的回调函数。 |
-| [void OH_ArkUI_DialogDismissEvent_SetShouldBlockDismiss(ArkUI_DialogDismissEvent* event, bool shouldBlockDismiss)](#oh_arkui_dialogdismissevent_setshouldblockdismiss) | - | 设置是否需要屏蔽系统关闭弹窗行为，true表示屏蔽系统行为不关闭弹窗，false表示不屏蔽。 |
+| [void OH_ArkUI_DialogDismissEvent_SetShouldBlockDismiss(ArkUI_DialogDismissEvent* event, bool shouldBlockDismiss)](#oh_arkui_dialogdismissevent_setshouldblockdismiss) | - | 设置是否需要屏蔽系统关闭弹窗行为，true表示屏蔽系统行为，不关闭弹窗，false表示不屏蔽。 |
 | [void* OH_ArkUI_DialogDismissEvent_GetUserData(ArkUI_DialogDismissEvent* event)](#oh_arkui_dialogdismissevent_getuserdata) | - | 获取弹窗关闭事件对象中的用户自定义数据指针。 |
 | [int32_t OH_ArkUI_DialogDismissEvent_GetDismissReason(ArkUI_DialogDismissEvent* event)](#oh_arkui_dialogdismissevent_getdismissreason) | - | 获取交互式关闭事件指针中的关闭原因。 |
 | [int32_t OH_ArkUI_CustomDialog_OpenDialog(ArkUI_CustomDialogOptions* options, void (\*callback)(int32_t dialogId))](#oh_arkui_customdialog_opendialog) | - | 弹出自定义弹窗。 |
 | [int32_t OH_ArkUI_CustomDialog_UpdateDialog(ArkUI_CustomDialogOptions* options, void (*callback)(int32_t dialogId))](#oh_arkui_customdialog_updatedialog) | - | 更新自定义弹窗。 |
 | [int32_t OH_ArkUI_CustomDialog_CloseDialog(int32_t dialogId)](#oh_arkui_customdialog_closedialog) | - | 关闭自定义弹窗。 |
-| [ArkUI_CustomDialogOptions* OH_ArkUI_CustomDialog_CreateOptions(ArkUI_NodeHandle content)](#oh_arkui_customdialog_createoptions) | - | 创建自定义弹窗options。 |
-| [void OH_ArkUI_CustomDialog_DisposeOptions(ArkUI_CustomDialogOptions* options)](#oh_arkui_customdialog_disposeoptions) | - | 销毁自定义弹窗options. |
+| [ArkUI_CustomDialogOptions* OH_ArkUI_CustomDialog_CreateOptions(ArkUI_NodeHandle content)](#oh_arkui_customdialog_createoptions) | - | 创建自定义弹窗配置。 |
+| [void OH_ArkUI_CustomDialog_DisposeOptions(ArkUI_CustomDialogOptions* options)](#oh_arkui_customdialog_disposeoptions) | - | 销毁自定义弹窗配置。 |
 | [int32_t OH_ArkUI_CustomDialog_SetLevelMode(ArkUI_CustomDialogOptions* options, ArkUI_LevelMode levelMode)](#oh_arkui_customdialog_setlevelmode) | - | 设置弹窗的显示层级。 |
 | [int32_t OH_ArkUI_CustomDialog_SetLevelUniqueId(ArkUI_CustomDialogOptions* options, int32_t uniqueId)](#oh_arkui_customdialog_setleveluniqueid) | - | 设置弹窗显示层级页面下的节点id。 |
 | [int32_t OH_ArkUI_CustomDialog_SetImmersiveMode(ArkUI_CustomDialogOptions* options, ArkUI_ImmersiveMode immersiveMode)](#oh_arkui_customdialog_setimmersivemode) | - | 设置嵌入式弹窗蒙层的显示区域。 |
@@ -73,6 +74,9 @@
 | [int32_t OH_ArkUI_CustomDialog_SetModalMode(ArkUI_CustomDialogOptions* options, bool isModal)](#oh_arkui_customdialog_setmodalmode) | - | 设置自定义弹窗是否开启模态样式的弹窗。 |
 | [int32_t OH_ArkUI_CustomDialog_SetAutoCancel(ArkUI_CustomDialogOptions* options, bool autoCancel)](#oh_arkui_customdialog_setautocancel) | - | 设置自定义弹窗是否允许点击遮罩层退出。 |
 | [int32_t OH_ArkUI_CustomDialog_SetSubwindowMode(ArkUI_CustomDialogOptions* options, bool showInSubwindow)](#oh_arkui_customdialog_setsubwindowmode) | - | 设置弹窗是否在子窗口显示此弹窗。 |
+| [int32_t OH_ArkUI_CustomDialog_SetDisplayModeInSubWindow(ArkUI_CustomDialogOptions* options, ArkUI_DialogDisplayMode displayMode)](#oh_arkui_customdialog_setdisplaymodeinsubwindow) | - | 设置弹窗在子窗口中的显示模式。 |
+| [int32_t OH_ArkUI_NativeModule_CustomDialog_SetSystemMaterial(ArkUI_NativeDialogHandle handle, ArkUI_ImmersiveMaterialHandle material)](#oh_arkui_nativemodule_customdialog_setsystemmaterial) | - | 设置指定弹窗的沉浸式材质。|
+| [int32_t OH_ArkUI_NativeModule_CustomDialog_SetSystemMaterialInOptions(ArkUI_CustomDialogOptions* options, ArkUI_ImmersiveMaterialHandle material)](#oh_arkui_nativemodule_customdialog_setsystemmaterialinoptions) | - | 设置弹窗参数的沉浸式材质属性。 |
 | [int32_t OH_ArkUI_CustomDialog_SetMask(ArkUI_CustomDialogOptions* options, uint32_t maskColor, const ArkUI_Rect* maskRect)](#oh_arkui_customdialog_setmask) | - | 设置自定义弹窗遮罩属性。 |
 | [int32_t OH_ArkUI_CustomDialog_SetKeyboardAvoidMode(ArkUI_CustomDialogOptions* options, ArkUI_KeyboardAvoidMode keyboardAvoidMode)](#oh_arkui_customdialog_setkeyboardavoidmode) | - | 设置弹窗避让键盘的模式。 |
 | [int32_t OH_ArkUI_CustomDialog_SetHoverModeEnabled(ArkUI_CustomDialogOptions* options, bool enabled)](#oh_arkui_customdialog_sethovermodeenabled) | - | 设置弹窗是否响应悬停态。 |
@@ -103,7 +107,7 @@ enum ArkUI_DismissReason
 
 | 枚举项 | 描述 |
 | -- | -- |
-| DIALOG_DISMISS_BACK_PRESS = 0 | 系统定义的返回操作、键盘ESC触发。 |
+| DIALOG_DISMISS_BACK_PRESS = 0 | 点击三键back、侧滑（左滑/右滑）、键盘ESC触发。 |
 | DIALOG_DISMISS_TOUCH_OUTSIDE = 1 | 点击遮障层触发。 |
 | DIALOG_DISMISS_CLOSE_BUTTON = 2 | 点击关闭按钮。 |
 | DIALOG_DISMISS_SLIDE_DOWN = 3 | 下拉关闭。 |
@@ -143,6 +147,24 @@ enum ArkUI_ImmersiveMode
 | -- | -- |
 | ARKUI_IMMERSIVE_MODE_DEFAULT = 0 | 弹窗蒙层按照显示页面给定的布局约束显示。 |
 | ARKUI_IMMERSIVE_MODE_EXTEND = 1 | 弹窗蒙层可扩展至覆盖状态栏和导航条。 |
+
+### ArkUI_DialogDisplayMode
+
+```c
+enum ArkUI_DialogDisplayMode
+```
+
+**描述：**
+
+
+弹窗在子窗口中的显示模式。
+
+**起始版本：** 26.0.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_DIALOG_DISPLAY_MODE_SCREEN_BASED = 0 | 弹窗在屏幕居中显示。 |
+| ARKUI_DIALOG_DISPLAY_MODE_WINDOW_BASED = 1 | 弹窗在应用窗口居中显示。 |
 
 ### ArkUI_DialogState
 
@@ -203,7 +225,7 @@ void OH_ArkUI_DialogDismissEvent_SetShouldBlockDismiss(ArkUI_DialogDismissEvent*
 **描述：**
 
 
-设置是否需要屏蔽系统关闭弹窗行为，true表示屏蔽系统行为不关闭弹窗，false表示不屏蔽。
+设置是否需要屏蔽系统关闭弹窗行为，true表示屏蔽系统行为，不关闭弹窗，false表示不屏蔽。
 
 **起始版本：** 12
 
@@ -265,7 +287,7 @@ int32_t OH_ArkUI_DialogDismissEvent_GetDismissReason(ArkUI_DialogDismissEvent* e
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 关闭原因，异常情况返回-1。<br>         [DIALOG_DISMISS_BACK_PRESS](capi-native-dialog-h.md#arkui_dismissreason) 对应点击三键back、侧滑（左滑/右滑）、键盘ESC关闭。<br>         [DIALOG_DISMISS_TOUCH_OUTSIDE](capi-native-dialog-h.md#arkui_dismissreason) 点击遮障层时。<br>         [DIALOG_DISMISS_CLOSE_BUTTON](capi-native-dialog-h.md#arkui_dismissreason) 点击关闭按钮。<br>         [DIALOG_DISMISS_SLIDE_DOWN](capi-native-dialog-h.md#arkui_dismissreason) 下拉关闭。 |
+| int32_t | 关闭原因，异常情况返回-1。<br>         [DIALOG_DISMISS_BACK_PRESS](capi-native-dialog-h.md#arkui_dismissreason) 点击三键back、侧滑（左滑/右滑）、键盘ESC关闭。<br>         [DIALOG_DISMISS_TOUCH_OUTSIDE](capi-native-dialog-h.md#arkui_dismissreason) 点击遮障层时。<br>         [DIALOG_DISMISS_CLOSE_BUTTON](capi-native-dialog-h.md#arkui_dismissreason) 点击关闭按钮。<br>         [DIALOG_DISMISS_SLIDE_DOWN](capi-native-dialog-h.md#arkui_dismissreason) 下拉关闭。 |
 
 ### OH_ArkUI_CustomDialog_OpenDialog()
 
@@ -286,7 +308,7 @@ int32_t OH_ArkUI_CustomDialog_OpenDialog(ArkUI_CustomDialogOptions* options, voi
 | 参数项                                    | 描述 |
 |----------------------------------------| -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
-| callback                               | 开启弹窗的回调，返回入参是弹窗ID。 |
+| void (*callback)(int32_t dialogId)                               | 开启弹窗的回调，返回入参是弹窗ID。 |
 
 **返回：**
 
@@ -313,7 +335,7 @@ int32_t OH_ArkUI_CustomDialog_UpdateDialog(ArkUI_CustomDialogOptions* options, v
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
-| callback                               | 更新弹窗的回调，返回入参是弹窗ID。 |
+| void (*callback)(int32_t dialogId)                               | 更新弹窗的回调，返回入参是弹窗ID。 |
 
 **返回：**
 
@@ -356,7 +378,7 @@ ArkUI_CustomDialogOptions* OH_ArkUI_CustomDialog_CreateOptions(ArkUI_NodeHandle 
 **描述：**
 
 
-创建自定义弹窗options。
+创建自定义弹窗配置。
 
 **起始版本：** 19
 
@@ -371,7 +393,7 @@ ArkUI_CustomDialogOptions* OH_ArkUI_CustomDialog_CreateOptions(ArkUI_NodeHandle 
 
 | 类型                             | 说明 |
 |--------------------------------| -- |
-| [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* | 自定义弹窗options的指针。 |
+| [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* | 自定义弹窗配置的指针。 |
 
 ### OH_ArkUI_CustomDialog_DisposeOptions()
 
@@ -382,7 +404,7 @@ void OH_ArkUI_CustomDialog_DisposeOptions(ArkUI_CustomDialogOptions* options)
 **描述：**
 
 
-销毁自定义弹窗options。
+销毁自定义弹窗配置。
 
 **起始版本：** 19
 
@@ -391,7 +413,7 @@ void OH_ArkUI_CustomDialog_DisposeOptions(ArkUI_CustomDialogOptions* options)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 自定义弹窗options的指针。 |
+| [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 自定义弹窗配置的指针。 |
 
 ### OH_ArkUI_CustomDialog_SetLevelMode()
 
@@ -528,10 +550,10 @@ int32_t OH_ArkUI_CustomDialog_SetCornerRadius(ArkUI_CustomDialogOptions* options
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
-| float topLeft | 弹窗左上角的圆角半径，单位：vp。 |
-| float topRight | 弹窗右上角的圆角半径，单位：vp。 |
-| float bottomLeft | 弹窗左下角的圆角半径，单位：vp。 |
-| float bottomRight | 弹窗右下角的圆角半径，单位：vp。 |
+| float topLeft | 弹窗左上角的圆角半径，单位：vp。默认值：从API version 12开始，为32vp。API version 11及之前版本，为24vp。 |
+| float topRight | 弹窗右上角的圆角半径，单位：vp。默认值：从API version 12开始，为32vp。API version 11及之前版本，为24vp。 |
+| float bottomLeft | 弹窗左下角的圆角半径，单位：vp。默认值：从API version 12开始，为32vp。API version 11及之前版本，为24vp。 |
+| float bottomRight | 弹窗右下角的圆角半径，单位：vp。默认值：从API version 12开始，为32vp。API version 11及之前版本，为24vp。 |
 
 **返回：**
 
@@ -705,7 +727,7 @@ int32_t OH_ArkUI_CustomDialog_SetShadow(ArkUI_CustomDialogOptions* options, ArkU
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
-| [ArkUI_ShadowStyle](capi-native-type-h.md#arkui_shadowstyle) shadow | 弹窗的背板阴影样式，枚举值。 |
+| [ArkUI_ShadowStyle](capi-native-type-visual-h.md#arkui_shadowstyle) shadow | 弹窗的背板阴影样式，枚举值。 |
 
 **返回：**
 
@@ -759,7 +781,7 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundBlurStyle(ArkUI_CustomDialogOptions* 
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
-| [ArkUI_BlurStyle](capi-native-type-h.md#arkui_blurstyle) blurStyle | 弹窗的背板模糊材质，枚举值。 |
+| [ArkUI_BlurStyle](capi-native-type-visual-h.md#arkui_blurstyle) blurStyle | 弹窗的背板模糊材质，枚举值。 |
 
 **返回：**
 
@@ -869,7 +891,94 @@ int32_t OH_ArkUI_CustomDialog_SetSubwindowMode(ArkUI_CustomDialogOptions* option
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
-| bool showInSubwindow | 设置弹窗需要显示在主窗口之外时，是否在子窗口显示此弹窗。默认false，弹窗显示在应用内，而非独立子窗口。值为true时，可以显示在主窗口外。 |
+| bool showInSubwindow | 设置弹窗需要显示在主窗口之外时，是否在子窗口显示此弹窗。值为true：弹窗可以显示在主窗口外，独立子窗口。值为false：弹窗显示在应用内，非独立子窗口。<br/>默认值：false|
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_NativeModule_CustomDialog_SetSystemMaterial()
+
+```c
+int32_t OH_ArkUI_NativeModule_CustomDialog_SetSystemMaterial(ArkUI_NativeDialogHandle handle, ArkUI_ImmersiveMaterialHandle material)
+```
+
+**描述：**
+
+
+设置指定弹窗的沉浸式材质。沉浸式材质根据设备算力等级分为不同等级。材质等级由[ArkUI_MaterialLevel](./capi-native-material-h.md#arkui_materiallevel)定义，可通过[OH_ArkUI_NativeModule_GetGlobalMaterialLevel](./capi-native-material-h.md#oh_arkui_nativemodule_getglobalmateriallevel)获取。在高算力和中算力设备上，会影响材质层的滤镜效果和阴影（[OH_ArkUI_CustomDialog_SetShadow](./capi-native-dialog-h.md#oh_arkui_customdialog_setshadow)或[OH_ArkUI_CustomDialog_SetCustomShadow](./capi-native-dialog-h.md#oh_arkui_customdialog_setcustomshadow)）、背景模糊[OH_ArkUI_CustomDialog_SetBackgroundBlurStyle](./capi-native-dialog-h.md#oh_arkui_customdialog_setbackgroundblurstyle)、背景效果[OH_ArkUI_CustomDialog_SetBackgroundEffect](./capi-native-dialog-h.md#oh_arkui_customdialog_setbackgroundeffect)效果。在低算力设备上，会影响背景颜色[OH_ArkUI_CustomDialog_SetBackgroundColor](./capi-native-dialog-h.md#oh_arkui_customdialog_setbackgroundcolor)、背景模糊[OH_ArkUI_CustomDialog_SetBackgroundBlurStyle](./capi-native-dialog-h.md#oh_arkui_customdialog_setbackgroundblurstyle)、背景效果[OH_ArkUI_CustomDialog_SetBackgroundEffect](./capi-native-dialog-h.md#oh_arkui_customdialog_setbackgroundeffect)、边框颜色[OH_ArkUI_CustomDialog_SetBorderColor](./capi-native-dialog-h.md#oh_arkui_customdialog_setbordercolor)、边框宽度[OH_ArkUI_CustomDialog_SetBorderWidth](./capi-native-dialog-h.md#oh_arkui_customdialog_setborderwidth)和阴影（[OH_ArkUI_CustomDialog_SetShadow](./capi-native-dialog-h.md#oh_arkui_customdialog_setshadow)或[OH_ArkUI_CustomDialog_SetCustomShadow](./capi-native-dialog-h.md#oh_arkui_customdialog_setcustomshadow)）效果。依据设备算力档位自动生效交互形变和流光效果，高算力设备生效交互形变和流光效果，中算力设备生效交互形变效果，低算力设备不生效。
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
+| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) material | 指向沉浸式材质对象的指针。|
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_NativeModule_CustomDialog_SetSystemMaterialInOptions()
+
+```c
+int32_t OH_ArkUI_NativeModule_CustomDialog_SetSystemMaterialInOptions(ArkUI_CustomDialogOptions* options, ArkUI_ImmersiveMaterialHandle material)
+```
+
+**描述：**
+
+
+设置弹窗参数的沉浸式材质属性。
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 指向弹窗参数对象的指针。 |
+| [ArkUI_ImmersiveMaterialHandle](capi-arkui-nativemodule-arkui-immersivematerialhandle.md) material | 指向沉浸式材质对象的指针。|
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_CustomDialog_SetDisplayModeInSubWindow()
+
+```c
+int32_t OH_ArkUI_CustomDialog_SetDisplayModeInSubWindow(ArkUI_CustomDialogOptions* options, ArkUI_DialogDisplayMode displayMode)
+```
+
+**描述：**
+
+
+设置弹窗在子窗口中的显示模式。
+
+> **说明：**
+>
+> 本方法需要在调用[OH_ArkUI_CustomDialog_OpenDialog](#oh_arkui_customdialog_opendialog)方法之前调用。
+>
+> 本方法仅在弹窗通过[OH_ArkUI_CustomDialog_SetSubwindowMode](#oh_arkui_customdialog_setsubwindowmode)设置为子窗口显示时生效。
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
+| [ArkUI_DialogDisplayMode](capi-native-dialog-h.md#arkui_dialogdisplaymode) displayMode | 弹窗在子窗口中的显示模式，类型为[ArkUI_DialogDisplayMode](capi-native-dialog-h.md#arkui_dialogdisplaymode)。<br/>默认值：ARKUI_DIALOG_DISPLAY_MODE_SCREEN_BASED |
 
 **返回：**
 
@@ -1006,7 +1115,7 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnWillDismissCallback(ArkUI_CustomDialogOp
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
 | void* userData | 用户自定义数据指针。 |
-| callback | 监听自定义弹窗关闭的回调事件。<br> - event: 回调函数的入参，捕获关闭原因。 |
+| void (\*callback)(ArkUI_DialogDismissEvent\* event) | 监听自定义弹窗关闭的回调事件。<br> - event: 回调函数的入参，捕获关闭原因。 |
 
 **返回：**
 
@@ -1034,7 +1143,7 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnWillAppearCallback(ArkUI_CustomDialogOpt
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
 | void* userData | 用户自定义数据指针。 |
-| callback | 弹窗显示动效前的事件回调。 |
+| void (\*callback)(void\* userData) | 弹窗显示动效前的事件回调。 |
 
 **返回：**
 
@@ -1062,7 +1171,7 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnDidAppearCallback(ArkUI_CustomDialogOpti
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
 | void* userData | 用户自定义数据指针。 |
-| callback | 弹窗弹出后的事件回调。 |
+| void (\*callback)(void\* userData) | 弹窗弹出后的事件回调。 |
 
 **返回：**
 
@@ -1090,7 +1199,7 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnWillDisappearCallback(ArkUI_CustomDialog
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
 | void* userData | 用户自定义数据指针。 |
-| callback | 弹窗退出动效前的事件回调。 |
+| void (\*callback)(void\* userData) | 弹窗退出动效前的事件回调。 |
 
 **返回：**
 
@@ -1118,7 +1227,7 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnDidDisappearCallback(ArkUI_CustomDialogO
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
 | void* userData | 用户自定义数据指针。 |
-| callback | 弹窗消失时的事件回调。 |
+| void (\*callback)(void\* userData) | 弹窗消失时的事件回调。 |
 
 **返回：**
 
@@ -1172,7 +1281,7 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundBlurStyleOptions(ArkUI_CustomDialogOp
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
-| [const ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)* backgroundBlurStyleOptions | 弹窗的背景模糊效果。参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>        .value[0].i32 表示深浅色模式，取[ArkUI_ColorMode](capi-native-type-h.md#arkui_colormode)枚举值。<br>        .value[1]?.i32 表示取色模式，取[ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor)枚举值。<br>        .value[2]?.f32 表示模糊效果程度，取[0.0,1.0]范围内的值。<br>        .value[3]?.u32 表示灰阶模糊参数，对黑色的提亮程度，有效值范围为[0,127]。<br>        .value[4]?.u32 表示灰阶模糊参数，对白色的压暗程度，有效值范围为[0,127]。<br>        .value[5]?.i32 表示模糊激活策略，取[ArkUI_BlurStyleActivePolicy](capi-native-type-h.md#arkui_blurstyleactivepolicy)枚举值。<br>        .value[6]?.u32 表示窗口失焦后，窗口内控件模糊效果会被移除，此时控件背板的颜色，0xargb类型。 |
+| [const ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)* backgroundBlurStyleOptions | 弹窗的背景模糊效果。参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>        .value[0].i32：表示深浅色模式，取[ArkUI_ColorMode](capi-native-type-h.md#arkui_colormode)枚举值。<br>        .value[1]?.i32：表示取色模式，取[ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor)枚举值。<br>        .value[2]?.f32：表示模糊效果程度，取[0.0,1.0]范围内的值，超出有效值区间时取边界值。<br>        .value[3]?.u32：表示灰阶模糊参数，对黑色的提亮程度，有效值范围为[0,127]，超出有效值范围，取0。<br>        .value[4]?.u32：表示灰阶模糊参数，对白色的压暗程度，有效值范围为[0,127]，超出有效值范围，取0。<br>        .value[5]?.i32：表示模糊激活策略，取[ArkUI_BlurStyleActivePolicy](capi-native-type-visual-h.md#arkui_blurstyleactivepolicy)枚举值。<br>        .value[6]?.u32：表示窗口失焦后，窗口内控件模糊效果会被移除，此时控件背板的颜色，0xargb类型。 |
 
 **返回：**
 
@@ -1199,7 +1308,7 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundEffect(ArkUI_CustomDialogOptions* opt
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
-| [const ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)* backgroundEffect | 弹窗的背景效果参数。参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>        .value[0].f32 表示模糊半径，单位为vp。<br>        .value[1]?.f32 表示饱和度。<br>        .value[2]?.f32 表示亮度。<br>        .value[3]?.u32 表示颜色，0xargb类型。<br>        .value[4]?.i32 表示取色模式，取[ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor)枚举值。<br>        .value[5]?.u32 表示灰阶模糊参数，对黑色的提亮程度，有效值范围为[0,127]。<br>        .value[6]?.u32 表示灰阶模糊参数，对白色的压暗程度，有效值范围为[0,127]。<br>        .value[7]?.i32 表示模糊激活策略，取[ArkUI_BlurStyleActivePolicy](capi-native-type-h.md#arkui_blurstyleactivepolicy)枚举值。<br>        .value[8]?.u32 表示窗口失焦后，窗口内控件模糊效果会被移除，此时控件背板的颜色，0xargb类型。 |
+| [const ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)* backgroundEffect | 弹窗的背景效果参数。参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：<br>        .value[0].f32：表示模糊半径，单位为vp。<br>        .value[1]?.f32：表示饱和度。<br>        .value[2]?.f32：表示亮度。<br>        .value[3]?.u32：表示颜色，0xargb类型。<br>        .value[4]?.i32：表示取色模式，取[ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor)枚举值。<br>        .value[5]?.u32：表示灰阶模糊参数，对黑色的提亮程度，有效值范围为[0,127]，超出有效值范围，取0。<br>        .value[6]?.u32：表示灰阶模糊参数，对白色的压暗程度，有效值范围为[0,127]，超出有效值范围，取0。<br>        .value[7]?.i32：表示模糊激活策略，取[ArkUI_BlurStyleActivePolicy](capi-native-type-visual-h.md#arkui_blurstyleactivepolicy)枚举值。<br>        .value[8]?.u32：表示窗口失焦后，窗口内控件模糊效果会被移除，此时控件背板的颜色，0xargb类型。 |
 
 **返回：**
 

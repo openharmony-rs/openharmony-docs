@@ -91,10 +91,6 @@ In the following table, the options included in the square brackets ([]) are mut
 
 For example, if the asymmetric key type is **RSA2048**, the padding mode is **PKCS1_OAEP**, the MD algorithm is **SHA256**, and the mask digest algorithm is **MGF1_SHA256**, the string parameter is **RSA2048|PKCS1_OAEP|SHA256|MGF1\_SHA256**.
 
-> **NOTE**
->
-> The input data length must meet the following requirement: Input data length (bytes) < RSA key length – MD length – mgf1_md length – 2<br> For example, if the RSA key is of 512 bits, **SHA512** cannot be used.
-
 | Asymmetric Key Type| Padding Mode| MD Algorithm| Mask Digest Algorithm| API Version| 
 | -------- | -------- | -------- | -------- | -------- |
 | RSA512 | PKCS1_OAEP | MD5 | [MGF1_MD5\|MGF1_SHA1\|MGF1_SHA224\|MGF1_SHA256] | 9+ | 

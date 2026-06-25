@@ -1,10 +1,12 @@
 # @ohos.file.sendablePhotoAccessHelper (Album Management Based on a Sendable Object)
+
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=b4558baf2653dbc4e06627859cd656768663a602 translatedAt=2026-06-23T07:35:07.246Z pushedAt=2026-06-23T09:25:46.754Z -->
 
 The module provides APIs for album management, including creating an album and accessing and modifying media data in an album, based on a [Sendable](../../arkts-utils/arkts-sendable.md) object.
 
@@ -34,7 +36,7 @@ Obtains a PhotoAccessHelper instance, which can be used for accessing and modify
 
 | Name | Type                                                        | Mandatory| Description                      |
 | ------- | ------------------------------------------------------------ | ---- | -------------------------- |
-| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Context of the ability instance.|
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Mandatory | Context of the Ability instance. |
 
 **Return value**
 
@@ -73,6 +75,8 @@ struct Index {
 ```
 
 ## PhotoAccessHelper
+
+Provides APIs for operating system media resource.
 
 ### getAssets
 
@@ -113,6 +117,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [sendablePhotoAccessHelper.getPhotoAccessHelper](#sendablephotoaccesshelpergetphotoaccesshelper).
 
 <!--code_no_check-->
+
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -153,7 +158,7 @@ Obtains resources of burst photos. This API uses a promise to return the result.
 
 | Name  | Type                                                     | Mandatory| Description                                                        |
 | -------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| burstKey | string                                                    | Yes  | Universally Unique Identifier (UUID) of a group of burst photos, that is, **BURST_KEY** of [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys). The value is a string of 36 characters.|
+| burstKey | string                                                    | Yes  | Universally Unique Identifier (UUID) of a group of burst photos, that is, **BURST_KEY** of [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys). The string contains 36 bytes.|
 | options  | [photoAccessHelper.FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions) | Yes  | Retrieval options.                                          |
 
 **Return value**
@@ -177,6 +182,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [sendablePhotoAccessHelper.getPhotoAccessHelper](#sendablephotoaccesshelpergetphotoaccesshelper).
 
 <!--code_no_check-->
+
 ```ts
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { dataSharePredicates } from '@kit.ArkData';
@@ -231,7 +237,7 @@ If you do not have the **ohos.permission.WRITE_IMAGEVIDEO** permission, you can 
 | Name   | Type                                                       | Mandatory| Description                                |
 | --------- | ----------------------------------------------------------- | ---- | ------------------------------------ |
 | photoType | [PhotoType](#phototype)                                     | Yes  | Type of the file to create, which can be **IMAGE** or **VIDEO**.|
-| extension | string                                                      | Yes  | File name extension, for example, **'jpg'**. The value contains 1 to 255 characters.       |
+| extension | string                                                      | Yes  | File name extension, for example, **'jpg'**. The string length ranges from 1 to 255.       |
 | options   | [photoAccessHelper.CreateOptions](arkts-apis-photoAccessHelper-i.md#createoptions) | No  | Options for creating the media asset, for example, **{title: 'testPhoto'}**.<br>The file name must not contain any invalid characters.<br>Starting from API version 18, the following characters are considered invalid: \ / : * ? " < > \| <br>For API versions 10 to 17, the following characters are considered invalid: . .. \ / : * ? " ' ` < > \| { } [ ]|
 
 **Return value**
@@ -255,6 +261,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [sendablePhotoAccessHelper.getPhotoAccessHelper](#sendablephotoaccesshelpergetphotoaccesshelper).
 
 <!--code_no_check-->
+
 ```ts
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
@@ -316,6 +323,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [sendablePhotoAccessHelper.getPhotoAccessHelper](#sendablephotoaccesshelpergetphotoaccesshelper).
 
 <!--code_no_check-->
+
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -383,6 +391,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [sendablePhotoAccessHelper.getPhotoAccessHelper](#sendablephotoaccesshelpergetphotoaccesshelper).
 
 <!--code_no_check-->
+
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -438,6 +447,7 @@ For details about the error codes, see [File Management Error Codes](../apis-cor
 For details about how to create a phAccessHelper instance, see the example provided in [sendablePhotoAccessHelper.getPhotoAccessHelper](#sendablephotoaccesshelpergetphotoaccesshelper).
 
 <!--code_no_check-->
+
 ```ts
 async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper) {
   console.info('releaseDemo');
@@ -468,7 +478,7 @@ Provides APIs for encapsulating file asset attributes.
 | ----------- | ----------------------- | ---- | ---- | ------------------------------------------------------------ |
 | uri<sup>12+</sup>         | string                  | Yes  | No  | Media asset URI, for example, **file://media/Photo/1/IMG_datetime_0001/displayName.jpg**. For details, see [Media File URI](../../file-management/user-file-uri-intro.md#media-file-uri).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | photoType   | [PhotoType](#phototype) | Yes  | No  | Type of the file.                                              |
-| displayName | string                  | Yes  | No  | File name, including the file name extension, to display. The value contains 1 to 255 characters.                                    |
+| displayName | string                  | Yes  | No  | File name, including the file name extension, to display. The string length ranges from 1 to 255.                                    |
 
 ### convertToPhotoAsset
 
@@ -498,6 +508,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [sendablePhotoAccessHelper.getPhotoAccessHelper](#sendablephotoaccesshelpergetphotoaccesshelper).
 
 <!--code_no_check-->
+
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -524,7 +535,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 get(member: string): photoAccessHelper.MemberType
 
-Obtains a **PhotoAsset** member parameter.
+Obtains the value of a **PhotoAsset** member parameter.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -553,6 +564,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [sendablePhotoAccessHelper.getPhotoAccessHelper](#sendablephotoaccesshelpergetphotoaccesshelper).
 
 <!--code_no_check-->
+
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -592,8 +604,8 @@ Sets a **PhotoAsset** member parameter.
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| member | string | Yes  | Name of the parameter to set, for example, [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE. The value contains 1 to 255 characters.|
-| value  | string | Yes  | Value to set. Only the value of [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE can be changed. The title must meet the following requirements:<br>- It must not contain a file name extension.<br>- The total length of the file name, which is in the format of title+file name extension, must be between 1 and 255 characters.<br>- It must not contain any invalid characters, which are:\ / : * ? " ' ` < > \| { } [ ]  |
+| member | string | Yes  | Name of the parameter to set, for example, [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE. The string length ranges from 1 to 255.|
+| value  | string | Yes  | Value to set. Only the value of [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE can be changed. The title must meet the following requirements:<br>- It must not contain a file name extension.<br>- The string length ranges from 1 to 255. (The asset file name is in the format of title + file name extension.)<br>- It must not contain any invalid characters, which are:\ / : * ? " ' ` < > \| { } [ ]  |
 
 **Error codes**
 
@@ -608,6 +620,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [sendablePhotoAccessHelper.getPhotoAccessHelper](#sendablephotoaccesshelpergetphotoaccesshelper).
 
 <!--code_no_check-->
+
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -663,6 +676,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [sendablePhotoAccessHelper.getPhotoAccessHelper](#sendablephotoaccesshelpergetphotoaccesshelper).
 
 <!--code_no_check-->
+
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -727,6 +741,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [sendablePhotoAccessHelper.getPhotoAccessHelper](#sendablephotoaccesshelpergetphotoaccesshelper).
 
 <!--code_no_check-->
+
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { image } from '@kit.ImageKit';
@@ -787,6 +802,7 @@ For details about the error codes, see [File Management Error Codes](../apis-cor
 For details about how to create a phAccessHelper instance, see the example provided in [sendablePhotoAccessHelper.getPhotoAccessHelper](#sendablephotoaccesshelpergetphotoaccesshelper).
 
 <!--code_no_check-->
+
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -816,7 +832,7 @@ Checks whether the cursor is in the last row of the result set.
 
 | Type   | Description                                                       |
 | ------- | ----------------------------------------------------------- |
-| boolean | Returns **true** if the cursor is in the last row of the result set; returns **false** otherwise.|
+| boolean | Returns **true** when the cursor is in the last row of the result set; returns **false** otherwise.|
 
 **Error codes**
 
@@ -831,6 +847,7 @@ For details about the error codes, see [File Management Error Codes](../apis-cor
 For details about how to create a phAccessHelper instance, see the example provided in [sendablePhotoAccessHelper.getPhotoAccessHelper](#sendablephotoaccesshelpergetphotoaccesshelper).
 
 <!--code_no_check-->
+
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -857,7 +874,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 close(): void
 
-Closes this FetchResult instance to invalidate it. After this instance is closed, the APIs in this instance cannot be invoked.
+Releases a **FetchResult** instance to invalidate it. After it is released, other methods cannot be called.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -874,6 +891,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [sendablePhotoAccessHelper.getPhotoAccessHelper](#sendablephotoaccesshelpergetphotoaccesshelper).
 
 <!--code_no_check-->
+
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -922,6 +940,7 @@ For details about the error codes, see [File Management Error Codes](../apis-cor
 For details about how to create a phAccessHelper instance, see the example provided in [sendablePhotoAccessHelper.getPhotoAccessHelper](#sendablephotoaccesshelpergetphotoaccesshelper).
 
 <!--code_no_check-->
+
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -968,6 +987,7 @@ For details about the error codes, see [File Management Error Codes](../apis-cor
 For details about how to create a phAccessHelper instance, see the example provided in [sendablePhotoAccessHelper.getPhotoAccessHelper](#sendablephotoaccesshelpergetphotoaccesshelper).
 
 <!--code_no_check-->
+
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -1013,6 +1033,7 @@ For details about the error codes, see [File Management Error Codes](../apis-cor
 For details about how to create a phAccessHelper instance, see the example provided in [sendablePhotoAccessHelper.getPhotoAccessHelper](#sendablephotoaccesshelpergetphotoaccesshelper).
 
 <!--code_no_check-->
+
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -1064,6 +1085,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [sendablePhotoAccessHelper.getPhotoAccessHelper](#sendablephotoaccesshelpergetphotoaccesshelper).
 
 <!--code_no_check-->
+
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -1108,6 +1130,7 @@ For details about the error codes, see [File Management Error Codes](../apis-cor
 For details about how to create a phAccessHelper instance, see the example provided in [sendablePhotoAccessHelper.getPhotoAccessHelper](#sendablephotoaccesshelpergetphotoaccesshelper).
 
 <!--code_no_check-->
+
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -1172,6 +1195,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [sendablePhotoAccessHelper.getPhotoAccessHelper](#sendablephotoaccesshelpergetphotoaccesshelper).
 
 <!--code_no_check-->
+
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1236,6 +1260,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [sendablePhotoAccessHelper.getPhotoAccessHelper](#sendablephotoaccesshelpergetphotoaccesshelper).
 
 <!--code_no_check-->
+
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1292,6 +1317,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 For details about how to create a phAccessHelper instance, see the example provided in [sendablePhotoAccessHelper.getPhotoAccessHelper](#sendablephotoaccesshelpergetphotoaccesshelper).
 
 <!--code_no_check-->
+
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';

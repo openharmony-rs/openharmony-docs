@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45; @liusu23-->
 <!--Designer: @ccllee1; @xukeke-->
-<!--Tester: @lixueqing513; @lusq-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang; @lusq-->
+<!--Adviser: @HelloCrease-->
 
 ## uris标签说明
 当在[module.json5](../quick-start/module-configuration-file.md)文件的[skills字段](../quick-start/module-configuration-file.md#skills标签)中声明uris时，主要包含如下字段。
@@ -60,14 +60,15 @@
     |Navigation|指示导航功能。使用场景详见[拉起导航类应用](./start-navigation-apps.md)。|
     |RoutePlan|指示路线规划功能。使用场景详见[拉起导航类应用](./start-navigation-apps.md)。|
     |PlaceSearch|指示地点搜索功能。使用场景详见[拉起导航类应用](./start-navigation-apps.md)。|
+    |DetailLocation|指示地点详情功能。使用场景详见[拉起导航类应用](./start-navigation-apps.md)。|
     |Transfer|指示转账汇款功能。使用场景详见[拉起金融类应用](./start-finance-apps.md)。|
     |CreditCardRepayment|指示信用卡还款功能。使用场景详见[拉起金融类应用](./start-finance-apps.md)。|
     |ComposeMail|指示撰写邮件功能。使用场景详见[拉起邮件类应用](./start-email-apps.md)。|
     |QueryByFlightNo|指示按航班号查询航班功能。使用场景详见[拉起航班类应用](./start-flight-apps.md)。|
     |QueryByLocation|指示按起降地查询航班功能。使用场景详见[拉起航班类应用](./start-flight-apps.md)。|
-    |QueryExpress|指示快递查询功能。使用场景详见[拉起类应用](./start-express-apps.md)。|    
-    |AppNotificationMgmt|指示应用内通知设置的功能。|
-
+    |QueryExpress|指示快递查询功能。使用场景详见[拉起快递类应用](./start-express-apps.md)。|    
+    |AppNotificationMgmt|指示应用内通知设置的功能。<!--RP1--><!--RP1End-->|
+    |PrimaryContactMgmt|从API version 23开始，新增支持该字段。指示社交通讯类应用“重要联系人列表”的设置功能。<!--RP2--><!--RP2End-->|
 2. 指定类型的应用被拉起时免跳转弹框：正常情况下，拉起指定类型的应用时，都会弹出确认是否打开应用的弹窗。如果您的应用有向其他应用提供登录/分享/支付的功能，可以在应用中声明对应的LinkFeature（取值参见下表）。应用通过上架审核后，当其他应用拉起您的应用时将不再弹窗提示。
 
     ![exempted-dialog-between-apps](figures/exempted-dialog-between-apps.png)

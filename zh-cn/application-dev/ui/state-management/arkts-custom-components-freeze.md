@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -18,7 +18,7 @@
 >
 > 从API version 18开始，支持自定义组件冻结混用场景。
 > 
-> 从API version 20开始，通过配置[BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md)的[inheritFreezeOptions](../../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)接口为true，实现BuilderNode继承冻结的能力。具体示例见[BuilderNode对象继承组件冻结](../../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)。
+> 从API version 20开始，通过配置[BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md)的[inheritFreezeOptions](../../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)接口为true，实现BuilderNode继承冻结的能力。
 
 
 ## 概述
@@ -93,7 +93,7 @@ struct PageOne {
 ```
 
 页面2：
-<!-- @[arkts_custom_components_freeze2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/PageTwo.ets) -->
+<!-- @[arkts_custom_components_freeze2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/PageTwo.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -116,6 +116,7 @@ struct PageTwo {
         .onClick(() => {
           this.getUIContext().getRouter().back();
         })
+      // 点击Button修改storageLink，观察页面1隐藏时会不会触发first回调
       Button('second page storageLink + 2').fontSize(30)
         .onClick(() => {
           this.storageLink += 2;
@@ -131,7 +132,7 @@ struct PageTwo {
 
 2.在页面1中点击`go to next page`，跳转到页面2，页面1隐藏，状态由active变为inactive。
 
-3.在页面2中点击`this.storageLink2 += 2`，只会回调页面2中@Watch注册的方法second，因为页面1的状态变量此时已被冻结。
+3.在页面2中点击`second page storageLink + 2`，只会回调页面2中@Watch注册的方法second，因为页面1的状态变量此时已被冻结。
 
 4.在页面2中点击`back`，页面2被销毁，页面1的状态由inactive变为active，重新刷新在inactive时被冻结的状态变量，页面1中@Watch注册的方法first被再次调用。
 
@@ -145,7 +146,7 @@ struct PageTwo {
 图示如下：
 
 ![freezeWithTab](./figures/freezewithTabs.png)
-<!-- @[arkts_custom_components_freeze3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/TabContentTest.ets) -->
+<!-- @[arkts_custom_components_freeze3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/TabContentTest.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -165,6 +166,7 @@ struct TabContentTest {
   build() {
     Row() {
       Column() {
+        // 点击Button修改message，触发可见TabContent的onMessageUpdated回调
         Button('change message').onClick(() => {
           this.message++;
         })
@@ -360,7 +362,7 @@ struct FreezeChild {
 
 在上面的示例中：
 
-1.点击`change message`更改message的值，当前正在显示的ListItem中的子组件@Watch注册的方法onMessageUpdated被触发。缓存节点中@Watch注册的方法不会被触发。（如果不加组件冻结，当前正在显示的ListItem和cachecount缓存节点中@Watch注册的方法onMessageUpdated都会被触发。）
+1.点击`change message`更改message的值，当前正在显示的ListItem中的子组件@Watch注册的方法onMessageUpdated被触发。缓存节点中@Watch注册的方法不会被触发。（如果不加组件冻结，当前正在显示的ListItem和cacheCount缓存节点中@Watch注册的方法onMessageUpdated都会被触发。）
 
 2.List区域外的ListItem滑动到List区域内，状态由inactive变为active，对应的@Watch注册的方法onMessageUpdated被触发。
 
@@ -373,7 +375,7 @@ struct FreezeChild {
 当NavDestination不可见时，会将其子自定义组件设置成非激活态，修改状态变量不会触发冻结组件的刷新。当返回该页面时，其子自定义组件重新恢复成激活态，触发@Watch回调进行刷新。
 
 在下面例子中，NavigationContentMsgStack会被设置成非激活态，将不再响应状态变量的变化，也不会触发组件刷新。
-<!-- @[arkts_custom_components_freeze5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/MyNavigationTestStack.ets) -->
+<!-- @[arkts_custom_components_freeze5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/MyNavigationTestStack.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -418,7 +420,7 @@ struct MyNavigationTestStack {
             .height(40)
             .margin(20)
             .onClick(() => {
-              this.pageInfo.pushPath({ name: 'pageOne' }); //将name指定的NavDestination页面信息入栈
+              this.pageInfo.pushPath({ name: 'pageOne' }); // 将name指定的NavDestination页面信息入栈
             })
         }
       }.title('NavIndex')
@@ -596,7 +598,7 @@ struct NavigationContentMsgStack {
 **组件复用、if和组件冻结混用场景**
 
 下面是组件复用、if组件和组件冻结混合使用场景的例子，if组件绑定的状态变量变化成false时，触发子组件`ChildComponent`的下树，由于`ChildComponent`被标记了组件复用，所以不会被销毁，而是进入复用池，这个时候如果同时开启了组件冻结，则可以使在复用池里不再刷新。
-<!-- @[arkts_custom_components_freeze6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentReuse.ets) -->
+<!-- @[arkts_custom_components_freeze6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentReuse.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -618,6 +620,7 @@ struct ChildComponent {
   }
 
   aboutToRecycle(): void {
+    // 输出recycled提示，确认组件进入复用池
     hilog.info(DOMAIN, TAG, `ChildComponent has been recycled`);
   }
 
@@ -1045,7 +1048,7 @@ struct Page {
 **Navigation和TabContent的混用**
 
 代码示例如下：
-<!-- @[arkts_custom_components_freeze9](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentMixing.ets) -->    
+<!-- @[arkts_custom_components_freeze9](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentMixing.ets) --> 
 
 ``` TypeScript
 // index.ets
@@ -1161,7 +1164,7 @@ struct MyNavigationTestStack {
             .height(40)
             .margin(20)
             .onClick(() => {
-              this.pageInfo.pushPath({ name: 'pageOne' }); //将name指定的NavDestination页面信息入栈
+              this.pageInfo.pushPath({ name: 'pageOne' }); // 将name指定的NavDestination页面信息入栈
             })
         }
       }.title('NavIndex')
@@ -1440,7 +1443,7 @@ struct Page {
 
 在API version 20之前，BuilderNode无法继承父组件冻结。如下面的例子所示，FreezeBuildNode中使用了自定义节点[BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md)。BuilderNode可以通过命令式动态挂载组件，而组件冻结又是强依赖父子关系来通知是否开启组件冻结。如果父组件使用组件冻结，且组件树的中间层级上又启用了BuilderNode，则BuilderNode的子组件将无法被冻结。
 
-在API version 20及以后，开发者可以通过配置BuilderNode的inheritFreezeOptions接口为true，实现BuilderNode继承冻结的能力。具体示例见[BuilderNode对象继承组件冻结](../../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)。
+在API version 20及以后，开发者可以通过配置BuilderNode的inheritFreezeOptions接口为true，实现BuilderNode继承冻结的能力。
 <!-- @[arkts_custom_components_freeze11](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/Constraints.ets) -->
 
 ``` TypeScript
@@ -1559,6 +1562,7 @@ struct FreezeBuildNode {
 ### 组件冻结与组件复用混用时解冻不会触发Watch
 
 在以下示例中，子组件`ChildComponent`开启了组件冻结且被标记了组件复用，当`if`组件绑定的状态变量`condition`修改为`false`时，子组件`ChildComponent`下树并进入复用池。由于子组件开启了组件冻结，所以进入复用池时，该组件也会被冻结。在复用池内，若修改状态变量`count`，该组件因处于`inactive`状态，即不会刷新也不会触发`Watch`回调。
+
 当`if`组件绑定的状态变量`condition`修改为`true`时，子组件`ChildComponent`出复用池并被标记为`active`状态，但不会触发状态变量`count`绑定的`Watch`回调。这是因为组件复用的执行逻辑早于组件解冻的执行逻辑。子组件被复用时会将[脏节点刷新](./arkts-state-management-introduce.md#触发更新)（包括在冻结期间需要延迟刷新的[变量绑定的系统组件](./arkts-state-management-introduce.md#收集依赖)），并清空脏节点列表。在子组件被复用后，重新被标记为`active`状态，此时子组件执行解冻逻辑，由于复用时清空了脏节点列表，所以此时判断冻结期间无变量改变，不会触发`Watch`回调。
 
 <!-- @[Freeze_and_Reuse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/FreezeReuse.ets) --> 

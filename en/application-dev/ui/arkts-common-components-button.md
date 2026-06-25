@@ -33,7 +33,7 @@ You can create a button using the following methods:
     .height(40)
   ```
 
-  ![en-us_image_0000001562820757](figures/en-us_image_0000001562820757.png)
+  ![button-code](figures/button-code.png)
 
 
 - Creating a button with child components using [ButtonOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttonoptions)<br> For example, using **type** and **stateEffect** in **ButtonOptions**:
@@ -56,7 +56,7 @@ You can create a button using the following methods:
   }.borderRadius(8).backgroundColor(0x317aff).width(90).height(40)
   ```
 
-  ![en-us_image_0000001511421216](figures/en-us_image_0000001511421216.png)
+  ![button-create](figures/button-create.png)
 
 
 ## Setting the Button Type
@@ -77,7 +77,7 @@ Buttons comes in four types, set using the **type** parameter: Capsule, Circle, 
     .height(40)
   ```
 
-  ![en-us_image_0000001511421208](figures/en-us_image_0000001511421208.png)
+  ![button-set-type](figures/button-set-type.png)
 
 
 - Circle button
@@ -93,7 +93,7 @@ Buttons comes in four types, set using the **type** parameter: Capsule, Circle, 
     .height(90)
   ```
 
-  ![en-us_image_0000001511740428](figures/en-us_image_0000001511740428.png)
+  ![button-type](figures/button-type.png)
 
 - Normal button
 
@@ -109,7 +109,7 @@ Buttons comes in four types, set using the **type** parameter: Capsule, Circle, 
     .height(40)
   ```
 
-  ![en-us_image_0000001563060641](figures/en-us_image_0000001563060641.png)
+  ![button-submit](figures/button-submit.png)
 
 - Rounded rectangle button
 
@@ -124,7 +124,7 @@ Buttons comes in four types, set using the **type** parameter: Capsule, Circle, 
     .height(40)
   ```
 
-  ![en-us_image_0000001563060641](figures/en-us_image_0000001511421208.png)
+  ![button-set-type](figures/button-set-type.png)
 
 ## Setting Styles
 
@@ -140,7 +140,7 @@ Buttons comes in four types, set using the **type** parameter: Capsule, Circle, 
     .height(40)
   ```
 
-  ![en-us_image_0000001511900392](figures/en-us_image_0000001511900392.png)
+  ![button-style](figures/button-style.png)
 
 
 - Setting the text style
@@ -156,7 +156,7 @@ Buttons comes in four types, set using the **type** parameter: Capsule, Circle, 
     .fontWeight(800)
   ```
 
-  ![en-us_image_0000001511580828](figures/en-us_image_0000001511580828.png)
+  ![button-capsule](figures/button-capsule.png)
 
 
 - Setting the background color
@@ -169,7 +169,7 @@ Buttons comes in four types, set using the **type** parameter: Capsule, Circle, 
   Button('background color').backgroundColor(0xF55A42)
   ```
 
-  ![en-us_image_0000001562940477](figures/en-us_image_0000001562940477.png)
+  ![button-bgcolor](figures/button-bgcolor.png)
 
 
 - Assigning a function to the button
@@ -184,7 +184,7 @@ Buttons comes in four types, set using the **type** parameter: Capsule, Circle, 
   }.width(55).height(55).margin({ 'left': 20 }).backgroundColor(0xF55A42)
   ```
 
-  ![en-us_image_0000001511740436](figures/en-us_image_0000001511740436.png)
+  ![button-round](figures/button-round.png)
 
 
 ## Adding Events
@@ -332,7 +332,7 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
   }
   ```
 
-  ![en-us_image_0000001562700393](figures/en-us_image_0000001562940814.gif)
+  ![button-full-example](figures/button-full-example.gif)
 
 
 - Using the button for submitting forms
@@ -362,7 +362,7 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
   }
   ```
 
-  ![en-us_image_0000001562940473](figures/en-us_image_0000001562940473.png)
+  ![button-example](figures/button-example.png)
 
 - Configuring the button to float
 

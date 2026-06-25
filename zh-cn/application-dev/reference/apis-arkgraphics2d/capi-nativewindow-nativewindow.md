@@ -1,7 +1,7 @@
 # NativeWindow
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Felix-fangyang; @BruceXu; @dingpy-->
+<!--Owner: @Felix-fangyang-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->

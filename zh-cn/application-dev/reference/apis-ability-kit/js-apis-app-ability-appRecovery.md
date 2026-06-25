@@ -11,7 +11,13 @@ appRecovery模块提供了应用在故障状态下的恢复能力。
 
 > **说明：**
 > 
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。API9仅支持单进程中单Ability的应用恢复。API10支持进程中包含多个Ability的场景。
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> API9仅支持单进程中单Ability的应用恢复。
+>
+> API10支持进程中包含多个Ability的场景。
+>
+> API24支持发生CPP_CRASH时应用恢复。
 
 ## 导入模块
 ```ts
@@ -22,16 +28,16 @@ import { appRecovery } from '@kit.AbilityKit';
 
 应用重启标志，[enableAppRecovery](#apprecoveryenableapprecovery)接口重启选项参数，该类型为枚举。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 | 名称       | 值   | 说明       |
 | ---------- | ---- | ---------- |
-| ALWAYS_RESTART   | 0    | 总是重启应用。 |
-| RESTART_WHEN_JS_CRASH   | 0x0001    | 发生JS_CRASH时重启应用。 |
-| RESTART_WHEN_APP_FREEZE   | 0x0002    | 发生APP_FREEZE时重启应用。 |
-| NO_RESTART           | 0xFFFF    | 总是不重启应用。 |
+| ALWAYS_RESTART   | 0    | 总是重启应用。 <br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。|
+| RESTART_WHEN_JS_CRASH   | 0x0001    | 发生JS_CRASH时重启应用。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| RESTART_WHEN_APP_FREEZE   | 0x0002    | 发生APP_FREEZE时重启应用。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| RESTART_WHEN_CPP_CRASH<sup>24+</sup>    | 0x0004    | 发生CPP_CRASH时重启应用。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。|
+| NO_RESTART           | 0xFFFF    | 总是不重启应用。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## SaveOccasionFlag
 
@@ -75,9 +81,9 @@ enableAppRecovery(restart?: [RestartFlag](#restartflag), saveOccasion?: [SaveOcc
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| restart | [RestartFlag](#restartflag) | 否 | 枚举类型，发生对应故障时是否重启，默认为重启。 |
-| saveOccasion | [SaveOccasionFlag](#saveoccasionflag) | 否 | 枚举类型，状态保存时机，默认为故障时保存。 |
-| saveMode | [SaveModeFlag](#savemodeflag) | 否 | 枚举类型，状态保存方式， 默认为文件缓存。 |
+| restart | [RestartFlag](#restartflag) | 否 | 枚举类型，发生对应故障时是否重启。默认值为ALWAYS_RESTART，即总是重启应用。|
+| saveOccasion | [SaveOccasionFlag](#saveoccasionflag) | 否 | 枚举类型，用于指定状态保存的触发条件。默认值为SAVE_WHEN_ERROR，即当发生应用故障时保存。|
+| saveMode | [SaveModeFlag](#savemodeflag) | 否 | 枚举类型，用于指定状态保存的实现方式。默认值为SAVE_WITH_FILE，即每次状态保存都会写入到本地文件缓存。|
 
 **示例：**
     
@@ -101,7 +107,7 @@ restartApp(): void
 
 重启当前进程，并拉起应用启动时第一个Ability，如果该Ability存在已经保存的状态，这些状态数据会在Ability的onCreate生命周期回调的want参数中作为wantParam属性传入。
 
-API10时将启动由[setRestartWant](#apprecoverysetrestartwant10)指定的Ability。如果没有指定则按以下规则启动：
+从API version 10开始将启动由[setRestartWant](#apprecoverysetrestartwant10)指定的Ability。如果没有指定则按以下规则启动：
 
 如果当前应用前台的Ability支持恢复，则重新拉起该Ability。
 
@@ -142,7 +148,7 @@ try {
 
 saveAppState(): boolean
 
-保存当前App状态，可以配合[errorManager](js-apis-app-ability-errorManager.md)相关接口使用。
+保存当前应用的状态数据（包括Ability的状态信息等），这些数据将在应用恢复时使用。可以配合[errorManager](js-apis-app-ability-errorManager.md)相关接口使用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -192,7 +198,7 @@ saveAppState(context?: UIAbilityContext): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| context | [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)| 否 | 需要保存状态的UIAbility所对应的context。 |
+| context | [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)| 否 | 需要保存状态的UIAbility所对应的context。|
 
 **返回值：**
 
@@ -209,6 +215,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let observer: errorManager.ErrorObserver = {
   onUnhandledException(errorMsg) {
     console.error('onUnhandledException, errorMsg: ', errorMsg);
+    // context为UIAbility实例的context，需使用箭头函数或在回调外预先保存。
     appRecovery.saveAppState(this.context);
   }
 };
@@ -224,7 +231,7 @@ try {
 
 setRestartWant(want: Want): void
 
-设置下次恢复主动拉起场景下的Ability。该Ability必须为当前包下的UIAbility。
+设置下次应用恢复时要启动的Ability。该Ability必须为当前包下的UIAbility。通过[restartApp](#apprecoveryrestartapp)方法或应用故障恢复时，将拉起此处设置的Ability。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -236,7 +243,7 @@ setRestartWant(want: Want): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md)| 是 | 通过设置Want中"bundleName"和"abilityName"字段来指定恢复重启的Ability。 |
+| want | [Want](js-apis-app-ability-want.md)| 是 | 通过设置Want中"bundleName"和"abilityName"字段来指定恢复重启的Ability。需配合enableAppRecovery接口设置适当的RestartFlag，以确定何时触发重启。setRestartWant仅指定重启拉起的Ability，是否重启由RestartFlag决定。 |
 
 **示例：**
 
@@ -250,7 +257,7 @@ struct Index {
     Button("启动到恢复Ability")
       .fontSize(40)
       .fontWeight(FontWeight.Bold)
-      .onClick(()=> {
+      .onClick(() => {
         // set restart want
         let want: Want = {
           bundleName: "ohos.samples.recovery",

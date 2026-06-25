@@ -26,7 +26,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | ------------------------- | ------------------------ | ---- | ---- | ------------------------------------------------------ |
 | uri                       | string                   | 是   | 否   | 媒体文件资源URI（如：file://media/Photo/1/IMG_datetime_0001/displayName.jpg），详情参见用户文件URI介绍中的[媒体文件URI](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。         |
 | photoType   | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | 是   | 否   | 媒体文件类型。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                                               |
-| displayName               | string                   | 是   | 否   | 显示文件名，包含后缀名。字符串长度为1~255。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。           |
+| displayName               | string                   | 是   | 否   | 显示文件名，包含后缀名。字符串长度的取值范围为[1, 255]。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。           |
 
 ## get
 
@@ -97,8 +97,8 @@ set(member: string, value: string): void
 
 | 参数名      | 类型                        | 必填   | 说明    |
 | -------- | ------------------------- | ---- | ----- |
-| member | string | 是    | 成员参数名称例如：[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE。字符串长度为1~255。 |
-| value | string | 是    | 设置成员参数名称，只能修改[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE的值。title的参数规格为：<br>- 不应包含扩展名。<br>- 文件名字符串长度为1~255（资产文件名为标题+扩展名）。<br>- 不允许出现的非法英文字符，包括：. \ / : * ? " ' ` < > \| { } [ ]  |
+| member | string | 是    | 成员参数名称例如：[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE。字符串长度的取值范围为[1, 255]。 |
+| value | string | 是    | 设置成员参数名称，只能修改[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE的值。title的参数规格为：<br>- 不应包含扩展名。<br>- 文件名字符串长度的取值范围为[1, 255]（资产文件名为标题+扩展名）。<br>- 不允许出现的非法英文字符，包括：. \ / : * ? " ' ` < > \| { } [ ]  |
 
 **错误码：**
 
@@ -275,7 +275,7 @@ close(fd: number, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 11开始废弃，建议使用[fs.close](../apis-core-file-kit/js-apis-file-fs.md#fsclose-1)替代。
+> 从API version 10开始支持，从API version 11开始废弃，建议使用[fileIo.close](../apis-core-file-kit/js-apis-file-fs.md#fileioclose-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -336,7 +336,7 @@ close(fd: number): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 11开始废弃，建议使用[fs.close](../apis-core-file-kit/js-apis-file-fs.md#fsclose)替代。
+> 从API version 10开始支持，从API version 11开始废弃，建议使用[fileIo.close](../apis-core-file-kit/js-apis-file-fs.md#fileioclose)替代。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -591,7 +591,7 @@ clone(title: string): Promise&lt;PhotoAsset&gt;
 
 | 参数名        | 类型      | 必填   | 说明                                 |
 | ---------- | ------- | ---- | ---------------------------------- |
-| title| string | 是    | 克隆后资产的标题。参数规格为：<br>- 不应包含扩展名。<br>- 文件名字符串长度为1~255（资产文件名为标题+扩展名）。<br>- 不允许出现的非法英文字符，包括：. \ / : * ? " ' ` < > \| { } [ ] |
+| title| string | 是    | 克隆后资产的标题。参数规格为：<br>- 不应包含扩展名。<br>- 文件名字符串长度的取值范围为[1, 255]（资产文件名为标题+扩展名）。<br>- 不允许出现的非法英文字符，包括：. \ / : * ? " ' ` < > \| { } [ ] |
 
 **返回值：**
 
@@ -645,7 +645,7 @@ getReadOnlyFd(callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 11开始废弃，建议使用[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen-1)替代。
+> 从API version 10开始支持，从API version 11开始废弃，建议使用[fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen-1)替代。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -708,7 +708,7 @@ getReadOnlyFd(): Promise&lt;number&gt;
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 11开始废弃，建议使用[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen)替代。
+> 从API version 10开始支持，从API version 11开始废弃，建议使用[fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen)替代。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 

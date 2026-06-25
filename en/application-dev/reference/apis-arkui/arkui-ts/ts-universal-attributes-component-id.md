@@ -31,7 +31,7 @@ Sets a unique identifier for this component, with uniqueness guaranteed by the u
 
 | Name  | Type     | Mandatory| Description                      |
 | ------ | -------- | -----|---------------------- |
-| value  | string   |  Yes | Unique ID you assigned to the component.|
+| value  | string   |  Yes | Unique ID you assigned for the component.|
 
 **Return value**
 
@@ -45,7 +45,7 @@ key(value: string): T
 
 Sets a unique identifier for this component, with uniqueness guaranteed by the user.
 
-This API is used only for test purposes. When this attribute is used in conjunction with **id**, the last assigned value takes effect. You are advised to set only **id**.
+This API is used only for test purposes. When this attribute is used with **id**, the last assigned value takes effect. You are advised to set only **id**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -55,7 +55,7 @@ This API is used only for test purposes. When this attribute is used in conjunct
 
 | Name  | Type     | Mandatory| Description                      |
 | ------ | -------- | -----|---------------------- |
-| value   | string   | Yes| Unique ID assigned to the component.<br>Default value: **''**<br>|
+| value   | string   | Yes| Unique ID you assigned for the component.<br>Default value: **''**<br>|
 
 **Return value**
 
@@ -282,18 +282,21 @@ class Utils {
   static rect_value: Record<string, number>;
 
   // Obtain the coordinates of the rectangular area occupied by the component.
-  static getComponentRect(key:string):Record<string, number> {
+  static getComponentRect(key: string): Record<string, number> {
     let strJson = getInspectorByKey(key);
-    let obj:Record<string, string> = JSON.parse(strJson);
+    let obj: Record<string, string> = JSON.parse(strJson);
     console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(obj));
-    let rectInfo:string[] = JSON.parse('[' + obj.$rect + ']');
+    let rectInfo: string[] = JSON.parse('[' + obj.$rect + ']');
     console.info("[getInspectorByKey] rectInfo is: " + rectInfo);
-    Utils.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0];     // Horizontal coordinate relative to the upper left corner of the component.
-    Utils.rect_top = JSON.parse('[' + rectInfo[0] + ']')[1];     // Vertical coordinate relative to the upper left corner of the component.
-    Utils.rect_right = JSON.parse('[' + rectInfo[1] + ']')[0];    // Horizontal coordinate relative to the lower right corner of the component.
-    Utils.rect_bottom = JSON.parse('[' + rectInfo[1] + ']')[1];   // Vertical coordinate relative to the lower right corner of the component.
+    Utils.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0]; // Horizontal coordinate relative to the upper left corner of the component.
+    Utils.rect_top = JSON.parse('[' + rectInfo[0] + ']')[1]; // Vertical coordinate relative to the upper left corner of the component.
+    Utils.rect_right = JSON.parse('[' + rectInfo[1] + ']')[0]; // Horizontal coordinate relative to the lower right corner of the component.
+    Utils.rect_bottom = JSON.parse('[' + rectInfo[1] + ']')[1]; // Vertical coordinate relative to the lower right corner of the component.
     return Utils.rect_value = {
-      "left": Utils.rect_left, "top": Utils.rect_top, "right": Utils.rect_right, "bottom": Utils.rect_bottom
+      "left": Utils.rect_left,
+      "top": Utils.rect_top,
+      "right": Utils.rect_right,
+      "bottom": Utils.rect_bottom
     };
   };
 }
@@ -329,28 +332,28 @@ struct IdExample {
         Text('longClick').fontSize(25).fontWeight(FontWeight.Bold)
       }.margin({ top: 20 }).backgroundColor('#0D9FFB')
       .gesture(
-      LongPressGesture().onActionEnd(() => {
-        console.info('long clicked');
-        this.text = "Button 'longClick' is longclicked";
-        setTimeout(() => {
-          let rect = Utils.getComponentRect('onTouch'); // Obtain the coordinates of the rectangular area occupied by the component whose ID is "onTouch".
-          let touchPoint: TouchObject = {
-            id: 1,
-            type: TouchType.Down,
-            x: rect.left + (rect.right - rect.left) / 2, // X coordinate relative to the upper left corner of the component.
-            y: rect.top + (rect.bottom - rect.top) / 2, // Y coordinate relative to the upper left corner of the component.
-            screenX: rect.left + (rect.right - rect.left) / 2, // X coordinate relative to the upper left corner of the application window. This API is deprecated since API version 10. Use windowX instead.
-            screenY: rect.top + (rect.bottom - rect.top) / 2, // Y-coordinate relative to the upper left corner of the application window. This API is deprecated since API version 10. Use windowY instead.
-            windowX: rect.left + (rect.right - rect.left) / 2, // X coordinate relative to the upper left corner of the application window.
-            windowY: rect.top + (rect.bottom - rect.top), // Y-coordinate relative to the upper left corner of the application window.
-            displayX: rect.left + (rect.right - rect.left) / 2, // X coordinate relative to the upper left corner of the device screen.
-            displayY: rect.top + (rect.bottom - rect.top) / 2, // Y-coordinate relative to the upper left corner of the device screen.
-          };
-          sendTouchEvent(touchPoint); // Send a touch event.
-          touchPoint.type = TouchType.Up;
-          sendTouchEvent(touchPoint); // Send a touch event.
-        }, 2000)
-      })).id('longClick')
+        LongPressGesture().onActionEnd(() => {
+          console.info('long clicked');
+          this.text = "Button 'longClick' is longclicked";
+          setTimeout(() => {
+            let rect = Utils.getComponentRect('onTouch'); // Obtain the coordinates of the rectangular area occupied by the component whose ID is "onTouch".
+            let touchPoint: TouchObject = {
+              id: 1,
+              type: TouchType.Down,
+              x: rect.left + (rect.right - rect.left) / 2, // X coordinate relative to the upper left corner of the component.
+              y: rect.top + (rect.bottom - rect.top) / 2, // Y coordinate relative to the upper left corner of the component.
+              screenX: rect.left + (rect.right - rect.left) / 2, // X coordinate relative to the upper left corner of the application window. This API is deprecated since API version 10. Use windowX instead.
+              screenY: rect.top + (rect.bottom - rect.top) / 2, // Y-coordinate relative to the upper left corner of the application window. This API is deprecated since API version 10. Use windowY instead.
+              windowX: rect.left + (rect.right - rect.left) / 2, // X coordinate relative to the upper left corner of the application window.
+              windowY: rect.top + (rect.bottom - rect.top), // Y-coordinate relative to the upper left corner of the application window.
+              displayX: rect.left + (rect.right - rect.left) / 2, // X coordinate relative to the upper left corner of the device screen.
+              displayY: rect.top + (rect.bottom - rect.top) / 2, // Y-coordinate relative to the upper left corner of the device screen.
+            };
+            sendTouchEvent(touchPoint); // Send a touch event.
+            touchPoint.type = TouchType.Up;
+            sendTouchEvent(touchPoint); // Send a touch event.
+          }, 2000)
+        })).id('longClick')
 
       Button() {
         Text('onTouch').fontSize(25).fontWeight(FontWeight.Bold)

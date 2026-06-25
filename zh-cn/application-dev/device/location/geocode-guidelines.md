@@ -18,7 +18,7 @@
 
 ## 接口说明
 
-进行经纬度坐标和地理编码的相互转化，所使用的接口说明如下，详细信息参见：[Location Kit API参考](../../reference/apis-location-kit/js-apis-geoLocationManager.md)。
+进行经纬度坐标和地理编码的相互转化，所使用的接口说明如下，详细信息参见Location Kit API参考：[@ohos.geoLocationManager (位置服务)](../../reference/apis-location-kit/js-apis-geoLocationManager.md)。
 
 | 接口名 | 功能描述 | 
 | -------- | -------- |
@@ -38,7 +38,7 @@
    ```
 
 2. 查询正地理编码与逆地理编码服务是否可用。
-   - 调用isGeoServiceAvailable查询正地理编码与逆地理编码服务是否可用，如果服务可用再继续进行步骤3。如果服务不可用，说明该设备不具备地理编码与逆地理编码能力，请勿使用相关接口。
+   - 调用isGeocoderAvailable查询正地理编码与逆地理编码服务是否可用，如果服务可用再继续进行步骤3。如果服务不可用，说明该设备不具备地理编码与逆地理编码能力，请勿使用相关接口。
      
       ```ts
       import { geoLocationManager } from '@kit.LocationKit';

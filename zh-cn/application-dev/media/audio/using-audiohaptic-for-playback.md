@@ -10,7 +10,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
 ## 开发指导
 
-使用AudioHaptic播放音频并同步开启振动，涉及到音频及振动资源的管理、音频时延模式及音频流使用类型的配置、音振播放器的创建及管理等。本开发指导将以一次音振协同播放的过程为例，向开发者讲解如何使用AudioHaptic进行音振协同播放，建议配合[AudioHaptic的API说明](../../reference/apis-audio-kit/js-apis-audioHaptic.md)阅读。
+使用AudioHaptic播放音频并同步开启振动，涉及到音频及振动资源的管理、音频时延模式及音频流使用类型的配置、音振播放器的创建及管理等。本开发指导将以一次音振协同播放的过程为例，向开发者讲解如何使用AudioHaptic进行音振协同播放，建议配合[audioHaptic](../../reference/apis-audio-kit/js-apis-audioHaptic.md)的API说明阅读。
 
 ### 权限申请
 

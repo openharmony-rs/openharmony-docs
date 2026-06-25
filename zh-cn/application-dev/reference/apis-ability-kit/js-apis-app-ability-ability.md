@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 Ability类是应用生命周期调度的基本单元，是[UIAbility](js-apis-app-ability-uiAbility.md)和[ExtensionAbility](js-apis-app-ability-extensionAbility.md)的基类，提供系统配置更新回调和系统内存级别变化回调能力。该基类不支持开发者直接继承，开发者应根据具体的业务场景选择使用[UIAbility](js-apis-app-ability-uiAbility.md)或[ExtensionAbility](js-apis-app-ability-extensionAbility.md)，相关指南参见[Ability Kit简介](../../application-models/abilitykit-overview.md)。
 
@@ -82,7 +82,7 @@ onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| level | [AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel) | 是 | 整机可用内存变化到的级别。<br>**说明：**<br>不同产品的触发条件可能存在差异。以12G内存的标准设备为例：<br>- 当整机可用内存下降至1700MB~1800MB时，会触发MEMORY_LEVEL_MODERATE类型(整机可用内存适中)的onMemoryLevel回调。<br>- 当整机可用内存下降至1600MB~1700MB时，会触发MEMORY_LEVEL_LOW类型(整机可用内存低)的onMemoryLevel回调。<br>- 当整机可用内存下降至1600MB以下时，会触发MEMORY_LEVEL_CRITICAL类型(整机可用内存极低)的onMemoryLevel回调。|
+| level | [AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel) | 是 | 整机可用内存级别，对应的触发场景详见[AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel)。|
 
 **示例：**
 

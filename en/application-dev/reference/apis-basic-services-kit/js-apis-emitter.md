@@ -1,9 +1,8 @@
 # @ohos.events.emitter (Emitter)
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -251,7 +250,7 @@ After this API is used to unsubscribe from an event, the event that has been pub
 **Example**
 
 ```ts
-// Unregister the callbacks of all events whose eventID is 1.
+// Unregister all callbacks for events whose **eventId** is **1**.
 emitter.off(1);
 ```
 
@@ -276,8 +275,8 @@ After this API is used to unsubscribe from an event, the event that has been pub
 **Example**
 
 ```ts
-// Unregister the callbacks of all events whose event ID is eventId.
-emitter.off("eventId");
+// Unregister all callbacks for events whose **eventId** is **eventId1**.
+emitter.off("eventId1");
 ```
 
 ## emitter.off<sup>10+</sup>
@@ -307,7 +306,7 @@ import { Callback } from '@kit.BasicServicesKit';
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
 }
-// Unregister the callback of the event whose eventID is 1. The callback object must be the registered object.
+// Unregister all callbacks for events whose **eventId** is **1**. The callback object must be the object used during registration.
 // If the callback has not been registered, no processing is performed.
 emitter.off(1, callback);
 ```
@@ -339,9 +338,9 @@ import { Callback } from '@kit.BasicServicesKit';
 let callback: Callback<emitter.EventData> = (eventData: emitter.EventData) => {
   console.info(`eventData: ${JSON.stringify(eventData)}`);
 }
-// Unregister the callback of the event whose event ID is eventId. The callback object must be the registered object.
+// Unregister all callbacks for events whose **eventId** is **eventId1**. The callback object must be the object used during registration.
 // If the callback has not been registered, no processing is performed.
-emitter.off("eventId", callback);
+emitter.off("eventId1", callback);
 ```
 
 ## emitter.off<sup>12+</sup>
@@ -385,9 +384,9 @@ let callback: Callback<emitter.GenericEventData<Sample>> = (eventData: emitter.G
     eventData?.data?.printCount();
   }
 }
-// Unregister the callback of the event whose event ID is eventId. The callback object must be the registered object.
+// Unregister all callbacks for events whose **eventId** is **eventId1**. The callback object must be the object used during registration.
 // If the callback has not been registered, no processing is performed.
-emitter.off("eventId", callback);
+emitter.off("eventId1", callback);
 ```
 
 ## emitter.emit
@@ -409,7 +408,7 @@ After an event is published using this API, the event may not be executed immedi
 | Name| Type                     | Mandatory| Description          |
 | ------ | ------------------------- | ---- | ------------- |
 | event  | [InnerEvent](#innerevent) | Yes  | Event to emit, where [EventPriority](#eventpriority) specifies the emit priority of the event.|
-| data   | [EventData](#eventdata)   | No  | Data passed in the event.|
+| data   | [EventData](#eventdata)   | No  | Data carried by the event. This parameter is left empty by default.|
 
 **Example**
 
@@ -448,7 +447,7 @@ After an event is published using this API, the event may not be executed immedi
 | Name | Type                   | Mandatory| Description            |
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.  |
-| data    | [EventData](#eventdata) | No  | Data passed in the event.|
+| data    | [EventData](#eventdata) | No  | Data carried by the event. This parameter is left empty by default.|
 
 **Example**
 
@@ -482,7 +481,7 @@ After an event is published using this API, the event may not be executed immedi
 | Name | Type                   | Mandatory| Description            |
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.  |
-| data    | [GenericEventData<T\>](#genericeventdatat12) | No  | Data passed in the event.|
+| data    | [GenericEventData<T\>](#genericeventdatat12) | No  | Data carried by the event. This parameter is left empty by default.|
 
 **Example**
 
@@ -524,7 +523,7 @@ After an event is published using this API, the event may not be executed immedi
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.  |
 | options | [Options](#options11)   | Yes  | Event emit priority.    |
-| data    | [EventData](#eventdata) | No  | Data passed in the event.|
+| data    | [EventData](#eventdata) | No  | Data carried by the event. This parameter is left empty by default.|
 
 **Example**
 
@@ -563,7 +562,7 @@ After an event is published using this API, the event may not be executed immedi
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.  |
 | options | [Options](#options11)   | Yes  | Event emit priority.    |
-| data    | [GenericEventData<T\>](#genericeventdatat12) | No  | Data passed in the event.|
+| data    | [GenericEventData<T\>](#genericeventdatat12) | No  | Data carried by the event. This parameter is left empty by default.|
 
 **Example**
 
@@ -648,7 +647,7 @@ Describes an event to subscribe to or emit. The **EventPriority** settings do no
 
 ## EventData
 
-Describes the data carried by the emitted event.
+Describes data carried by the emitted event.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -985,7 +984,7 @@ After an event is published using this API, the event may not be executed immedi
 | Name | Type                   | Mandatory| Description            |
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.  |
-| data    | [EventData](#eventdata) | No  | Data passed in the event.|
+| data    | [EventData](#eventdata) | No  | Data carried by the event. This parameter is left empty by default.|
 
 **Example**
 
@@ -1020,7 +1019,7 @@ After an event is published using this API, the event may not be executed immedi
 | Name | Type                   | Mandatory| Description            |
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.|
-| data    | [GenericEventData<T\>](#genericeventdatat12) | No  | Data passed in the event.|
+| data    | [GenericEventData<T\>](#genericeventdatat12) | No  | Data carried by the event. This parameter is left empty by default.|
 
 **Example**
 
@@ -1065,7 +1064,7 @@ After an event is published using this API, the event may not be executed immedi
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.  |
 | options | [Options](#options11)   | Yes  | Event emit priority.    |
-| data    | [EventData](#eventdata) | No  | Data passed in the event.|
+| data    | [EventData](#eventdata) | No  | Data carried by the event. This parameter is left empty by default.|
 
 **Example**
 
@@ -1105,7 +1104,7 @@ After an event is published using this API, the event may not be executed immedi
 | ------- | ----------------------- | ---- | ---------------- |
 | eventId | string                  | Yes  | Event ID, which is a custom string with a maximum of 10240 bytes. The value cannot be empty.  |
 | options | [Options](#options11)   | Yes  | Event emit priority.    |
-| data    | [GenericEventData<T\>](#genericeventdatat12) | No  | Data passed in the event.|
+| data    | [GenericEventData<T\>](#genericeventdatat12) | No  | Data carried by the event. This parameter is left empty by default.|
 
 **Example**
 

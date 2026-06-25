@@ -8,9 +8,11 @@
 
 日历选择器组件，提供下拉日历弹窗，可以让用户选择日期。
 
->  **说明：**
+> **说明：**
 >
-> 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 该组件从API版本26.0.0开始支持[WithTheme](./ts-container-with-theme.md)。
 
 ## 子组件
 
@@ -23,6 +25,8 @@ CalendarPicker(options?: CalendarOptions)
 日历选择器。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +50,8 @@ edgeAlign(alignType: CalendarAlign, offset?: Offset)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
@@ -65,6 +71,8 @@ edgeAlign(alignType: Optional\<CalendarAlign>, offset?: Offset)
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
@@ -73,7 +81,7 @@ edgeAlign(alignType: Optional\<CalendarAlign>, offset?: Offset)
 
 | 参数名    | 类型                                                         | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| alignType | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[CalendarAlign](#calendaralign枚举说明)> | 是   | 对齐方式的类型。<br/>默认值：CalendarAlign.END<br/>当alignType的值为undefined时，使用默认值。 |
+| alignType | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CalendarAlign](#calendaralign枚举说明)> | 是   | 对齐方式的类型。<br/>默认值：CalendarAlign.END<br/>当alignType的值为undefined时，使用默认值。 |
 | offset    | [Offset](ts-types.md#offset)                                 | 否   | 按照对齐方式对齐后，选择器相对入口组件的偏移量。<br/>默认值：{dx: 0, dy: 0} |
 
 ### textStyle
@@ -83,6 +91,8 @@ textStyle(value: PickerTextStyle)
 入口区的文本颜色、字号、字体粗细。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,6 +112,8 @@ textStyle(style: Optional\<PickerTextStyle>)
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
@@ -110,7 +122,7 @@ textStyle(style: Optional\<PickerTextStyle>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明)> | 是   | 设置入口区的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '16fp', <br/>weight: FontWeight.Regular<br/>}<br/>}<br/>当style的值为undefined时，使用默认值。 |
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明)> | 是   | 设置入口区的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '16fp', <br/>weight: FontWeight.Regular<br/>}<br/>}<br/>当style的值为undefined时，使用默认值。 |
 
 ### markToday<sup>19+</sup>
 
@@ -119,6 +131,8 @@ markToday(enabled: boolean)
 设置日历选择器中系统当前日期是否保持高亮显示。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -142,6 +156,8 @@ onChange(callback: Callback\<Date>)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
@@ -164,6 +180,8 @@ onChange(callback: Optional\<Callback\<Date>>)
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
@@ -172,11 +190,13 @@ onChange(callback: Optional\<Callback\<Date>>)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[Callback](ts-types.md#callback12)\<Date>> | 是   | 选中的日期值。<br>当callback的值为undefined时，不使用回调函数。 |
+| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Callback](ts-types.md#callback12)\<Date>> | 是   | 选中的日期值。<br>当callback的值为undefined时，不使用回调函数。 |
 
 ##  CalendarOptions对象说明
 
 日历选择器组件的参数说明。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -206,6 +226,8 @@ onChange(callback: Optional\<Callback\<Date>>)
 对齐方式类型。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

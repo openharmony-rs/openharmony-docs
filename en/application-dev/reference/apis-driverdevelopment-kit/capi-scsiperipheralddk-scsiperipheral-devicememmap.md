@@ -1,10 +1,11 @@
 # ScsiPeripheral_DeviceMemMap
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=a30d46aa87725f954a8669c5a6106a0f5fa2de6d translatedAt=2026-06-22T10:48:30.543Z pushedAt=2026-06-22T11:21:11.397Z -->
 
 ```c
 typedef struct ScsiPeripheral_DeviceMemMap {...} ScsiPeripheral_DeviceMemMap
@@ -30,4 +31,4 @@ Represents the device memory mapping created by calling **OH_ScsiPeripheral_Crea
 | const size_t size | Buffer size.|
 | uint32_t offset | Offset of the used buffer. The default value is **0**, indicating that there is no offset and the buffer starts from the specified address.|
 | uint32_t bufferLength | Length of the used buffer. By default, the value is equal to the size of the buffer, indicating that the entire buffer is used.|
-| uint32_t transferredLength | Length of the data to be transferred.|
+| uint32_t transferredLength | Length of the transferred data.|

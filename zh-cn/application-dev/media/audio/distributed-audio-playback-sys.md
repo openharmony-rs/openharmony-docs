@@ -2,7 +2,7 @@
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Designer: @zhanganxiang1-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -26,7 +26,7 @@
 | DISTRIBUTED_INPUT_DEVICES_FLAG<sup>9+</sup> | 分布式输入设备。&nbsp;此接口为系统接口。 | 
 | ALL_DISTRIBUTED_DEVICES_FLAG<sup>9+</sup> | 分布式输入输出设备。&nbsp;此接口为系统接口。 | 
 
-具体接口说明请参考[AudioRoutingManager API文档](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md)。
+具体接口说明请参考API文档：[AudioRoutingManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md)。
 
 ### 投播所有音频
 
@@ -57,7 +57,7 @@ let outputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
   displayName: ""
 }];
 
-async function selectOutputDevice(): Promise<void> {
+async function exampleSelectOutputDevice(): Promise<void> {
   audioRoutingManager.selectOutputDevice(outputAudioDeviceDescriptor, (err: BusinessError) => {
     if (err) {
       console.error(`Invoke selectOutputDevice failed, code is ${err.code}, message is ${err.message}`);
@@ -90,7 +90,7 @@ let outputAudioRendererFilter: audio.AudioRendererFilter  = {
     usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
     rendererFlags: 0 // 音频渲染器标志。
   } as audio.AudioRendererInfo,
-  rendererId: 0
+  rendererId: 0 // 此值为示例，使用时需替换为实际ID值。
 };
 
 let outputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
@@ -108,7 +108,7 @@ let outputAudioDeviceDescriptor: audio.AudioDeviceDescriptors = [{
   displayName: ""
 }];
 
-async function selectOutputDeviceByFilter(): Promise<void> {
+async function exampleSelectOutputDeviceByFilter(): Promise<void> {
   audioRoutingManager.selectOutputDeviceByFilter(outputAudioRendererFilter, outputAudioDeviceDescriptor, (err: BusinessError) => {
     if (err) {
       console.error(`Invoke selectOutputDeviceByFilter failed, code is ${err.code}, message is ${err.message}`);

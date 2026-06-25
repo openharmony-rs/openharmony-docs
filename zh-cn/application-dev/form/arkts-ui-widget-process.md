@@ -1,9 +1,9 @@
 # ArkTS卡片进程模型
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 本文主要介绍，卡片从创建到显示整个过程中各个进程的含义。具体请参考卡片进程模型。

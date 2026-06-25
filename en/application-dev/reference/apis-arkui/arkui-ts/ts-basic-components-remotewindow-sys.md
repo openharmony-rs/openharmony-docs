@@ -10,7 +10,7 @@
 **RemoteWindow** is a component used to control the application window, providing the component animator and application window animation linkage during application startup and exit.
 
 >  **NOTE**
->  
+>
 >  This component is supported since API version 9. Updates will be marked with a superscript to indicate their earliest API version.
 >
 >  The APIs provided by this module are system APIs.
@@ -162,7 +162,7 @@ import WindowAnimationControllerImpl from './WindowAnimationControllerImpl';
 @Component
 export default struct RemoteWindowExample {
   @State target:WindowAnimationTarget | undefined = undefined // Obtained through windowAnimationManager.
-  
+
   aboutToAppear(): void {
     let controller: WindowAnimationControllerImpl = new WindowAnimationControllerImpl();
     windowAnimationManager.setController(controller);
@@ -175,7 +175,7 @@ export default struct RemoteWindowExample {
     Column() {
       if(this.target){
         RemoteWindow(this.target)
-          .scale({ x: 0.5, y: 0.5}) // Used for demonstration purposes only. .In general cases, scale({ x: 1, y: 1 }) is required.
+          .scale({ x: 0.5, y: 0.5 }) // Used for demonstration purposes only. In general cases, scale({ x: 1, y: 1 }) is required.
           .position({ x: this.getUIContext().px2vp(this.target?.windowBounds.left), y: this.getUIContext().px2vp(this.target?.windowBounds.top) })
           .width(this.getUIContext().px2vp(this.target?.windowBounds.width))
           .height(this.getUIContext().px2vp(this.target?.windowBounds.height))

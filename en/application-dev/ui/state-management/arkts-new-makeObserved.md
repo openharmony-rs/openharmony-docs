@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -49,7 +49,7 @@ To change the unobservable data to observable data, you can use the [makeObserve
   let rawInfo: Info = UIUtils.makeObserved(new Info()); // Correct usage.
   ```
 
-- makeObserved does not support instances of classes decorated with [@ObservedV2](./arkts-new-observedV2-and-trace.md) or [@Observed](./arkts-observed-and-objectlink.md), nor proxy data already encapsulated by makeObserved. To prevent double-proxying, makeObserved returns the input parameter directly if it belongs to any of these types.
+- **makeObserved** does not support passing in instances of classes decorated with [@ObservedV2](./arkts-new-observedV2-and-trace.md) or [@Observed](./arkts-observed-and-objectlink.md), nor proxy data that has been wrapped by **makeObserved**. To prevent data from being double-proxied, **makeObserved** directly returns the input parameter when it is one of the preceding types.
   ```ts
   import { UIUtils } from '@kit.ArkUI';
   @ObservedV2
@@ -112,7 +112,7 @@ To change the unobservable data to observable data, you can use the [makeObserve
  - Click **change id** to re-render the UI.
  - Click **change Info** to set **this.message** to unobservable data. Click **change id** again, UI cannot be re-rendered.
  - Click **change Info1** to set **this.message** to observable data. Click **change id** again, UI can be re-rendered.
-  <!-- @[MakeObserved_only_applies_to_input_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page2.ets) -->
+  <!-- @[MakeObserved_only_applies_to_input_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page2.ets) --> 
   
   ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
@@ -125,6 +125,7 @@ To change the unobservable data to observable data, you can use the [makeObserve
   @Entry
   @ComponentV2
   struct Page2 {
+    // message is initialized with the return value of makeObserved, providing deep observability
     @Local message: Info = UIUtils.makeObserved(new Info(20));
     build() {
       Column() {
@@ -192,7 +193,7 @@ export class SendableData  {
 }
 ```
 
-<!-- @[function threadGetData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page3.ets) -->
+<!-- @[function_threadGetData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page3.ets) -->
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
@@ -242,7 +243,7 @@ struct Page3 {
 Note: Data construction and processing can be done in the child thread, but observable data cannot be passed to the child thread (observable data can only be manipulated in the main thread). Therefore, in the preceding example, only the **name** attribute of **this.send** is passed to the subthread.
 
 ### Using makeObserved and collections.Array/collections.Set/collections.Map Together
-**collections** provide ArkTS container sets for high-performance data passing in concurrent scenarios. For details, see [@arkts.collections (ArkTS Collections)](../../reference/apis-arkts/arkts-apis-arkts-collections.md).
+**collections** provide ArkTS container sets for high-performance data passing in concurrent scenarios. For details, see [@arkts.collections (ArkTS containers)](../../reference/apis-arkts/arkts-apis-arkts-collections.md).
 
 makeObserved enables importing observable collections into ArkUI, but is incompatible with state management V1 decorators like, such as @State and [@Prop](./arkts-prop.md). Combining them will result in runtime exceptions.
 
@@ -253,7 +254,7 @@ The following APIs can trigger UI re-rendering:
 - Changing the array items: sort and fill
 
 Other APIs do not change the original array. Therefore, the UI re-rendering is not triggered.
-<!-- @[makeObserved_collections_Array_Set_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page4.ets) --> 
+<!-- @[makeObserved_collections_Array_Set_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page4.ets) -->
 
 ``` TypeScript
 import { collections } from '@kit.ArkTS';
@@ -302,11 +303,9 @@ struct Page4 {
         .color('blue')
         .margin(5)
 
-      /****************************APIs for Changing the Data Length**************************/
+      // APIs for changing the data length.
       Scroll(this.scroller) {
         Column({ space: 10 }) {
-          // Divider()
-          //   .color('blue')
           // push: adds a new element.
           Button('push')
             .width('50%')
@@ -354,7 +353,7 @@ struct Page4 {
           Divider()
             .color('blue')
 
-          /****************************************APIs for Changing the Array Item*****************/
+          // Change the array items.
           // sort: arranging the Array item in descending order.
           Button('sort')
             .width('50%')
@@ -368,7 +367,7 @@ struct Page4 {
               this.arrCollect.fill(new Info(5), 0, 2);
             })
 
-          /*****************************APIs for Not Changing the Array Item***************************/
+          // APIs that do not change the array.
           // slice: returns a new array. The original array is copied using Array.slice(start,end), which does not change the original array. Therefore, directly invoking slice does not trigger UI re-rendering.
           // You can construct a case to assign the return data of the shallow copy to this.arrCollect. Note that makeObserved must be called here. Otherwise, the observation capability will be lost after this.arr is assigned a value by a common variable.
           Button('slice')
@@ -550,7 +549,7 @@ struct Page6 {
 
 ### Input Parameter of makeObserved Is the Return Value of JSON.parse
 **JSON.parse** returns an object which cannot be decorated by @Trace. You can use **makeObserved** to make it observable.
-<!-- @[makeObserved_JSON.parse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page7.ets) -->
+<!-- @[makeObserved_JSON.parse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page7.ets) --> 
 
 ``` TypeScript
 import { JSON } from '@kit.ArkTS';
@@ -572,6 +571,7 @@ let test2JsonStr: string = JSON.stringify(test2);
 @Entry
 @ComponentV2
 struct Page7 {
+  // The object returned by JSON.parse is converted into observable data using makeObserved 
   message: Record<string, number> = 
         UIUtils.makeObserved<Record<string, number>>(JSON.parse(testJsonStr) as Record<string, number>);
   message2: Record<string, Info> = 

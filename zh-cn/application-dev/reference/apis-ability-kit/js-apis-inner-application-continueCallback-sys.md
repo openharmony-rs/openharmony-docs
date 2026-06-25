@@ -4,7 +4,7 @@
 <!--Owner: @hobbycao-->
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 表示跨设备迁移Mission完成后，返回迁移结果的回调函数，迁移Mission详见：[continueMission接口](js-apis-distributedMissionManager-sys.md#distributedmissionmanagercontinuemission)。
 
@@ -19,6 +19,8 @@
 onContinueDone(result: number): void;
 
 Mission迁移完成后调用，返回迁移结果。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
 
 **系统接口**：此接口为系统接口。
 

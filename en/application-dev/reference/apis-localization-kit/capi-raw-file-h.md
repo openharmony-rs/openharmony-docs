@@ -5,7 +5,7 @@
 <!--Owner: @liule_123-->
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
 ## Overview
 
@@ -41,7 +41,7 @@ Provides functions related to rawfiles, including searching for, reading, and cl
 | [long OH_ResourceManager_GetRawFileSize(RawFile *rawFile)](#oh_resourcemanager_getrawfilesize) | Obtains the length of the rawfile, in long.|
 | [long OH_ResourceManager_GetRawFileRemainingLength(const RawFile *rawFile)](#oh_resourcemanager_getrawfileremaininglength) | Obtains the remaining length of the rawfile, in long.|
 | [void OH_ResourceManager_CloseRawFile(RawFile *rawFile)](#oh_resourcemanager_closerawfile) | Closes a [RawFile](capi-rawfile-rawfile.md) and releases all associated resources.|
-| [long OH_ResourceManager_GetRawFileOffset(const RawFile *rawFile)](#oh_resourcemanager_getrawfileoffset) | Obtains the current offset of a rawfile, in long. Current offset of the rawfile.|
+| [long OH_ResourceManager_GetRawFileOffset(const RawFile *rawFile)](#oh_resourcemanager_getrawfileoffset) | Obtains the current offset of a rawfile, in long.|
 | [bool OH_ResourceManager_GetRawFileDescriptor(const RawFile *rawFile, RawFileDescriptor &descriptor)](#oh_resourcemanager_getrawfiledescriptor) | Opens a rawfile based on the specified offset (in long) and file length (in long) and obtains the file descriptor. The file descriptor obtained can be used to read the file. (It is deprecated in API version 12.)|
 | [bool OH_ResourceManager_GetRawFileDescriptorData(const RawFile *rawFile, RawFileDescriptor *descriptor)](#oh_resourcemanager_getrawfiledescriptordata) | Opens a rawfile based on the specified offset (in long) and file length (in long) and obtains the file descriptor. The file descriptor obtained can be used to read the file.|
 | [bool OH_ResourceManager_ReleaseRawFileDescriptor(const RawFileDescriptor &descriptor)](#oh_resourcemanager_releaserawfiledescriptor) | Releases the file descriptor of a rawfile. To prevent file descriptor leakage, you are advised to release a rawfile descriptor immediately after use. (It is deprecated in API version 12.)|
@@ -193,7 +193,7 @@ long OH_ResourceManager_GetRawFileOffset(const RawFile *rawFile)
 
 **Description**
 
-Obtains the current offset of a rawfile, in long. Current offset of the rawfile.
+Obtains the current offset of a rawfile, in long.
 
 **Since**: 8
 

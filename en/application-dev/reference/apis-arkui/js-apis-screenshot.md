@@ -67,7 +67,7 @@ Obtains this screenshot. Currently, only the screenshot of the display whose ID 
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called on PC/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Return value**
 
@@ -115,7 +115,7 @@ This API allows you to take screenshots of different screens by setting various 
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
-**Device behavior differences**: In versions earlier than API version 21, this API can be properly called on 2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned. Starting from API version 21, this API can be properly called on phones, 2-in-1 devices, and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: In versions earlier than API version 21, this API can be properly called on PC/2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned. Starting from API version 21, this API can be properly called on phones, 2-in-1 devices, and tablets. If it is called on other device types, error code 801 is returned.
 
 **Required permissions**: ohos.permission.CUSTOM_SCREEN_CAPTURE (for versions earlier than API version 22); ohos.permission.CUSTOM_SCREEN_CAPTURE or ohos.permission.CUSTOM_SCREEN_RECORDING (since API version 22)
 
@@ -138,7 +138,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 401     | Parameter error. Possible causes: 1.Incorrect parameter types. 2.Parameter verification failed.|
 | 801 | Capability not supported on this device.|
 | 1400003 | This display manager service works abnormally.|
 

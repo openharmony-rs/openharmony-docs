@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 列表包含一系列相同宽度的列表项。适合连续、多行呈现同类数据，例如图片和文本。
@@ -36,7 +36,7 @@
 | scrollend | - | 列表滑动已经结束。 |
 | click | - | 点击动作触发该事件。 |
 | longpress | - | 长按动作触发该事件。 |
-| swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md) | 组件上快速滑动后触发。 |
+| swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md#swipeevent) | 组件上快速滑动后触发。 |
 | scrolltop<sup>8+</sup> | - | 当前列表已滑动到顶部位置。 |
 | scrollbottom<sup>8+</sup> | - | 当前列表已滑动到底部位置。 |
 
@@ -58,7 +58,7 @@
 | background-color | &lt;color&gt; | - | 否 | 设置背景颜色。 |
 | opacity<sup>5+</sup> | number | 1 | 否 | 元素的透明度，取值范围为0到1，1表示为不透明，0表示为完全透明。 |
 | display | string | flex | 否 | 确定一个元素所产生的框的类型，可选值为：<br/>-&nbsp;flex：弹性布局。<br/>-&nbsp;none：不渲染此元素。 |
-| [left\|top] | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>6+</sup> | - | 否 | left\|top确定元素的偏移位置。<br/>-&nbsp;left属性规定元素的左边缘。该属性定义了定位元素左外边距边界与其包含块左边界之间的偏移。<br/>-&nbsp;top属性规定元素的顶部边缘。该属性定义了一个定位元素的上外边距边界与其包含块上边界之间的偏移。 |
+| [left\|top] | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>6+</sup> | - | 否 | left\|top规定元素的偏移位置。<br/>-&nbsp;left属性规定元素的左边缘。该属性定义了定位元素左外边距边界与其包含块左边界之间的偏移。<br/>-&nbsp;top属性规定元素的顶部边缘。该属性定义了一个定位元素的上外边距边界与其包含块上边界之间的偏移。 |
 
 
 ## 方法
@@ -111,6 +111,9 @@ export default {
     },
     onShow() {
         this.$refs.listObj.rotation({focus: true})
+    },
+    onHide() {
+        this.$refs.listObj.rotation({focus: false})
     }
 }
 ```

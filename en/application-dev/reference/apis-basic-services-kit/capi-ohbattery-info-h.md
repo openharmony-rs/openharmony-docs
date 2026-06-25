@@ -5,7 +5,7 @@
 <!--Owner: @zhang-yinglie; @volcano_wang-->
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 ## Overview
 
@@ -33,7 +33,7 @@ Declares the battery APIs that are used to obtain the current battery capacity a
 
 | Name| Description|
 | -- | -- |
-| [int32_t OH_BatteryInfo_GetCapacity()](#oh_batteryinfo_getcapacity) | Obtains the current battery capacity.|
+| [int32_t OH_BatteryInfo_GetCapacity()](#oh_batteryinfo_getcapacity) | Obtains the current battery capacity, in percentage.|
 | [BatteryInfo_BatteryPluggedType OH_BatteryInfo_GetPluggedType()](#oh_batteryinfo_getpluggedtype) | Obtains the battery plugged type.|
 
 ### Variables
@@ -64,7 +64,7 @@ Enumerates the battery plugged types.
 | PLUGGED_TYPE_AC = 1 | AC charging.|
 | PLUGGED_TYPE_USB = 2 | USB DC charging.|
 | PLUGGED_TYPE_WIRELESS = 3 | Wireless charging.|
-| PLUGGED_TYPE_BUTT = 4 | Reserved.|
+| PLUGGED_TYPE_BUTT = 4 | Unknown type.|
 
 
 ## Function Description
@@ -77,7 +77,7 @@ int32_t OH_BatteryInfo_GetCapacity()
 
 **Description**
 
-Obtains the current battery capacity.
+Obtains the current battery capacity, in percentage.
 
 **System capability**: SystemCapability.PowerManager.BatteryManager.Core
 
@@ -107,4 +107,4 @@ Obtains the battery plugged type.
 
 | Type| Description|
 | -- | -- |
-| [BatteryInfo_BatteryPluggedType](#batteryinfo_batterypluggedtype) | Returns [PLUGGED_TYPE_NONE](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the power supply is removed;<br>returns [PLUGGED_TYPE_AC](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the power supply is in AC charging mode;<br>returns [PLUGGED_TYPE_USB](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the power supply is in USB DC charging mode;<br>returns [PLUGGED_TYPE_WIRELESS](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the power supply is in wireless charging mode;<br>returns [PLUGGED_TYPE_BUTT](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the battery plugged type is unknown.|
+| [BatteryInfo_BatteryPluggedType](#batteryinfo_batterypluggedtype) | Returns [PLUGGED_TYPE_NONE](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the power supply is removed;<br>         returns [PLUGGED_TYPE_AC](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the power supply is in AC charging mode;<br>         returns [PLUGGED_TYPE_USB](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the power supply is in USB DC charging mode;<br>         returns [PLUGGED_TYPE_WIRELESS](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the power supply is in wireless charging mode;<br>         returns [PLUGGED_TYPE_BUTT](capi-ohbattery-info-h.md#batteryinfo_batterypluggedtype) if the battery plugged type is unknown.|

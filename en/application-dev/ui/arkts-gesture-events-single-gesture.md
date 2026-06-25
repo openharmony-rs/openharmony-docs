@@ -1,7 +1,7 @@
 # Single Gesture
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -173,7 +173,7 @@ export struct LongPress {
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
-    // Replace $r('app.string.singlegesture_LongPressGesture_title') with the actual resource file. In this example, the value in the resource file is "LongPress."
+    // Replace $r('app.string.singlegesture_LongPressGesture_title') with the actual resource file. In this example, the value in the resource file is "LongPressGesture."
     .title($r('app.string.singlegesture_LongPressGesture_title'))
   }
 }
@@ -338,7 +338,7 @@ export struct Pinch {
             PinchGesture({ fingers: 3 })
               .onActionStart((event: GestureEvent | undefined) => {
                 console.info('Pinch start');
-              // When the pinch gesture is triggered, obtain the scale factor from the callback and apply it to the component.
+              })// When the pinch gesture is triggered, obtain the scale factor from the callback and apply it to the component.
               .onActionUpdate((event: GestureEvent | undefined) => {
                 if (event) {
                   this.scaleValue = this.pinchValue * event.scale;
@@ -435,7 +435,7 @@ export struct Rotation {
 ```
 
 
-![rotation](figures/rotation.png)
+
 
 
 ## Swipe Gesture (SwipeGesture)

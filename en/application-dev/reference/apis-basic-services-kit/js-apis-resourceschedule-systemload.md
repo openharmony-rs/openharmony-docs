@@ -4,7 +4,7 @@
 <!--Owner: @baiheng-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @fang-jinxu-->
 
 The **systemload** module allows the system to determine the system load level based on the current temperature, load, and scenario, and notifies registered applications of level changes, if any.
 
@@ -14,7 +14,7 @@ The **systemload** module allows the system to determine the system load level b
 
 ## Modules to Import
 
-```
+```ts
 import { systemLoad } from '@kit.BasicServicesKit';
 ```
 
@@ -37,7 +37,7 @@ Enables listening for system load level changes. This API uses an asynchronous c
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 401 | Parameter error. Possible cause: 1. Callback parameter error; 2. Register a exist callback type; 3. Parameter verification failed. |
 
@@ -77,7 +77,7 @@ Disables listening for system load level changes. This API uses an asynchronous 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID | Error Message            |
+| Error Code | Error Message            |
 | ---- | --------------------- |
 | 401 | Parameter error. Possible cause: 1. Callback parameter error; 2. Unregister type has not register; 3. Parameter verification failed. |
 

@@ -2,8 +2,8 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
-<!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Designer: @Hu_ZeQi-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 
@@ -98,7 +98,7 @@ Tabs() {
 ![底部导航](figures/底部导航.gif)
 
 
-导航栏位置使用Tabs的barPosition参数进行设置。默认情况下，导航栏位于顶部，此时，barPosition为BarPosition.Start。设置为底部导航时，需要将barPosition设置为BarPosition.End。
+导航栏位置使用Tabs的[barPosition](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#tabsoptions15)属性进行设置。默认情况下，导航栏位于顶部，此时，barPosition为BarPosition.Start。设置为底部导航时，需要将barPosition设置为BarPosition.End。
 
 
 <!-- @[bottom_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/BottomTabBar.ets) -->
@@ -110,7 +110,7 @@ Tabs({ barPosition: BarPosition.End }) {
 }
 ```
 
-底部导航栏可通过设置TabContent的[BottomTabBarStyle](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#bottomtabbarstyle9)来实现底部页签样式，详细示例请参考：[示例9（设置底部页签使用symbol图标）](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#示例9设置底部页签使用symbol图标)。
+底部导航栏可通过设置TabContent的[BottomTabBarStyle](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#bottomtabbarstyle9)来实现底部页签样式，详细示例请参考：[示例8（设置底部页签使用symbol图标）](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#示例8设置底部页签使用symbol图标)。
 
 
 ## 顶部导航
@@ -176,7 +176,7 @@ Tabs({ barPosition: BarPosition.Start }) {
 ![限制导航](figures/限制导航.gif)
 
 
-控制滑动切换的属性为scrollable，默认值为true，表示可以滑动，若要限制滑动切换页签则需要设置为false。
+控制滑动切换的属性为[scrollable](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#scrollable)，默认值为true，表示可以滑动，若要限制滑动切换页签则需要设置为false。
 
 <!-- @[swipe_locked_tab_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/SwipeLockedTabBar.ets) -->
 
@@ -317,7 +317,9 @@ TabContent() {
 <!-- @[content_page_tab_linkage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/ContentPageNoAndTabLinkage.ets) -->
 
 ``` TypeScript
-@Entry
+
+// 如需作为页面入口，请取消@Entry的注释并删除export关键字
+// @Entry
 @Component
 export struct ContentPageNoAndTabLinkage {
 
@@ -337,7 +339,7 @@ export struct ContentPageNoAndTabLinkage {
               // app.string.homepage_content资源文件中的value值为“首页内容”
               Text($r('app.string.homepage_content')).width('100%').height('100%').backgroundColor('rgb(213,213,213)')
                 .fontSize(40).fontColor(Color.Black).textAlign(TextAlign.Center)
-            //app.string.homepage资源文件中的value值为“首页”
+            // app.string.homepage资源文件中的value值为“首页”
             }.tabBar(this.tabBuilder($r('app.string.homepage'), 0))
 
             TabContent() {
@@ -438,16 +440,16 @@ export struct ContentPageNoAndTabLinkage {
 <!-- @[custom_page_toggle_interception_events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/ContentWillChange.ets) -->
 
 ``` TypeScript
-  Tabs({ barPosition: BarPosition.End, index: this.currentIndex, controller: this.controllerTwo }) {
-    // ···
+Tabs({ barPosition: BarPosition.End, index: this.currentIndex, controller: this.controllerTwo }) {
+  // ...
+}
+// ...
+.onContentWillChange((currentIndex, comingIndex) => {
+  if (comingIndex === 2) {
+    return false;
   }
-// ···
-  .onContentWillChange((currentIndex, comingIndex) => {
-    if (comingIndex == 2) {
-      return false;
-    }
-    return true;
-  })
+  return true;
+})
 ```
   **图13** 支持开发者自定义页面切换拦截事件 
 
@@ -459,7 +461,7 @@ export struct ContentPageNoAndTabLinkage {
 
 >  **说明：** 
 >
-> 弹窗只适用于底部页签BottomTabBarStyle。
+> 弹窗只适用于底部页签[BottomTabBarStyle](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#bottomtabbarstyle9)。
 
 **图14** 在适老化场景下通过长按底部页签显示适老化弹窗。
 
@@ -476,7 +478,9 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
 const TAG: string = 'AgeFriendlyTabs';
-@Entry
+
+// 如需作为页面入口，请取消@Entry的注释并删除export关键字
+// @Entry
 @Component
 export struct AgeFriendlyTabs {
   @State fontColor: string = '#182431';
@@ -644,11 +648,13 @@ export struct AgeFriendlyTabs {
 <!-- @[number_of_caches_tabBar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/NumberOfCachesTabBar.ets) -->
 
 ``` TypeScript
-@Entry
+
+// 如需作为页面入口，请取消@Entry的注释并删除export关键字
+// @Entry
 @Component
 export struct NumberOfCachesTabBar {
   build() {
-    // ···
+    // ...
           Tabs({ barPosition: BarPosition.Start }) {
             TabContent() {
               MyComponent({ color: '#00CB87' })
@@ -674,7 +680,7 @@ export struct NumberOfCachesTabBar {
           .height(296)
           .backgroundColor('#F1F3F5')
           .cachedMaxCount(1, TabsCacheMode.CACHE_BOTH_SIDE)
-        // ···
+          // ...
   }
 }
 
@@ -700,7 +706,7 @@ struct MyComponent {
 ```
 基于以上示例代码为例，不同场景下的缓存策略如下：
 
-1. 如图16所示，使用默认翻页动画，CACHE_BOTH_SIDE模式，n设置为2，点击TabBar切换到yellow页，TabContent1~3被缓存。再切换到red页，TabContent1~2释放，TabContent3~5被缓存。
+1. 如图16所示，使用默认翻页动画，CACHE_BOTH_SIDE模式，n设置为2，点击TabBar切换到yellow页，TabContent1\~3被缓存。再切换到red页，TabContent1、2释放，TabContent3\~5被缓存。
 
    **图16** 默认翻页动画，CACHE_BOTH_SIDE模式示意图
 

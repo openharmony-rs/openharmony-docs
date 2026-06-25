@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -134,7 +134,7 @@ EXTERN_C_END
 
 ### Native接口调用
 
-具体接口说明请参考[API文档](../../reference/apis-image-kit/capi-image.md)。
+具体接口说明请参考[Image](../../reference/apis-image-kit/capi-image.md)。
 
 在hello.cpp文件中获取JS的资源对象，并转为Native的资源对象，即可调用Native接口，调用方式示例代码如下：
 
@@ -172,11 +172,10 @@ static napi_value createFromReceiver(napi_env env, napi_callback_info info)
    OhosImageSize size;
    OH_Image_Receiver_GetSize(imgReceiver_c, &size);
    OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "[receiver]", "OH_Image_Receiver_GetSize  width: %{public}d, height:%{public}d", size.width, size.height);
-   
-   int32_t ret;
+
    napi_value nextImage;
    // 或调用 OH_Image_Receiver_ReadNextImage(imgReceiver_c, &nextImage);
-   ret = OH_Image_Receiver_ReadLatestImage(imgReceiver_c, &nextImage);
+   OH_Image_Receiver_ReadLatestImage(imgReceiver_c, &nextImage);
    
    ImageNative * nextImage_native = OH_Image_InitImageNative(env, nextImage);
 
@@ -185,12 +184,12 @@ static napi_value createFromReceiver(napi_env env, napi_callback_info info)
    OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "[receiver]", "OH_Image_Size  width: %{public}d, height:%{public}d", imageSize.width, imageSize.height);
 
    OhosImageComponent imgComponent;
-   ret = OH_Image_GetComponent(nextImage_native, 4, &imgComponent); // 4=jpeg
+   OH_Image_GetComponent(nextImage_native, 4, &imgComponent); // 4=jpeg
    
    uint8_t *img_buffer = imgComponent.byteBuffer;
    
-   ret = OH_Image_Release(nextImage_native);
-   ret = OH_Image_Receiver_Release(imgReceiver_c);
+   OH_Image_Release(nextImage_native);
+   OH_Image_Receiver_Release(imgReceiver_c);
    return nextImage;
 }
 ```

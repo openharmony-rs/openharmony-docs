@@ -11,7 +11,7 @@
 
 当应用需要获取当前设备状态时，可以调用Stationary模块，例如：需要判断当前设备处于绝对静止状态或者相对静止状态。
 
-详细的接口介绍请参考[Stationary接口](../../reference/apis-multimodalawareness-kit/js-apis-stationary.md)。
+详细的接口介绍请参考[@ohos.stationary (设备状态感知框架)](../../reference/apis-multimodalawareness-kit/js-apis-stationary.md)。
 
 ## 设备状态类型参数说明
 
@@ -51,7 +51,7 @@
 
 如需相对静止和绝对静止能力，则具体算法需要开发者自己在device_status/libs/src/algorithm实现，可参考案例如下：
 
-   ```ts
+   ```C++
    algoPara_.resultantAcc =
       sqrt((algoPara_.x * algoPara_.x) + (algoPara_.y * algoPara_.y) + (algoPara_.z * algoPara_.z));
    if ((algoPara_.resultantAcc > RESULTANT_ACC_LOW_THRHD) && (algoPara_.resultantAcc < RESULTANT_ACC_UP_THRHD)) {
@@ -76,11 +76,15 @@
 
 1. 订阅绝对静止的进入事件，1秒上报一次。
 
+   <!-- @[import_the_stationary_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
+
+   <!-- @[stationary_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
+
    ```ts
    import { stationary } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
 
-   let reportLatencyNs = 1000000000;
+   let reportLatencyNs = 1000000000; // 单位：纳秒
    try {
       stationary.on('still', stationary.ActivityEvent.ENTER, reportLatencyNs, (data) => {
          console.info('data=' + JSON.stringify(data));
@@ -90,11 +94,12 @@
       console.error('stationary on failed:' + message);
    }
    ```
-   <!-- @[import_the_stationary_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
-
-   <!-- @[stationary_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
 
 2. 查询绝对静止状态的进入事件。
+
+   <!-- @[import_the_stationary_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
+
+   <!-- @[stationary_getStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
 
    ```ts
    import { stationary } from '@kit.MultimodalAwarenessKit';
@@ -109,12 +114,13 @@
       console.error('stationary once failed:' + message);
    }
    ```
-   <!-- @[import_the_stationary_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
-
-   <!-- @[stationary_getStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
 
 3. 取消订阅绝对静止状态的进入事件。
 
+   <!-- @[import_the_stationary_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
+
+   <!-- @[stationary_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
+   
    ```ts
    import { stationary } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -128,6 +134,3 @@
       console.error('stationary off failed:' + message);
    }
    ```
-   <!-- @[import_the_stationary_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->
-
-   <!-- @[stationary_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) -->

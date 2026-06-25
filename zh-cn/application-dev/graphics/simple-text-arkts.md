@@ -1,7 +1,7 @@
 # 简单文本绘制与显示（ArkTS）
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
@@ -29,7 +29,7 @@
    ```
    <!-- -->
 
-2. 初始化文本样式，此处设置字体颜色为红色，字体大小为50。
+2. 初始化文本样式，此处设置字体颜色为红色，字体大小为100px。
 
    <!-- @[arkts_drawing_simple_text_create_text_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SimpleTextDrawing/entry/src/main/ets/pages/Index.ets) -->
    

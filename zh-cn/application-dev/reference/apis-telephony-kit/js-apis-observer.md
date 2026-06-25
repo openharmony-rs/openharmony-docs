@@ -96,6 +96,19 @@ type CallState = call.CallState
 | [call.CallState](js-apis-call.md#callstate) | 通话状态码（去电过程仅通知CALL_STATE_OFFHOOK状态）。 |
 
 
+## CCallState<sup>23+</sup>
+
+type CCallState = call.CCallState
+
+运营商通话状态码。
+
+**系统能力**：SystemCapability.Telephony.StateRegistry
+
+|       类型       |            说明             |
+| ---------------- | --------------------------- |
+| [call.CCallState](js-apis-call.md#ccallstate23) | 通话状态码（运营商通话状态码）。 |
+
+
 ## CardType
 
 type CardType = sim.CardType
@@ -149,11 +162,11 @@ on\(type: \'networkStateChange\', callback: Callback\<NetworkState\>\): void
 | 参数名   | 类型                                                      | 必填 | 说明                                                              |
 | -------- | --------------------------------------------------------- | ---- | ---------------------------------------------------------------- |
 | type     | string                                                    | 是   | 网络状态变化事件，参数固定为'networkStateChange'。                 |
-| callback | Callback\<[NetworkState](js-apis-radio.md#networkstate)\> | 是   | 以callback形式异步返回结果。参考radio的[NetworkState](js-apis-radio.md#networkstate)。|
+| callback | Callback\<[NetworkState](js-apis-radio.md#networkstate)\> | 是   | 回调函数，返回网络状态对象。参考radio的[NetworkState](js-apis-radio.md#networkstate)。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -189,11 +202,11 @@ on\(type: \'networkStateChange\', options: ObserverOptions, callback: Callback\<
 | -------- | --------------------------------------------------------- | ---- | ---------------------------------------------------------------- |
 | type     | string                                                    | 是   | 网络状态变化事件，参数固定为'networkStateChange'。                 |
 | options  | [ObserverOptions](#observeroptions11)                     | 是   | 电话相关事件订阅参数可选项。                                        |
-| callback | Callback\<[NetworkState](js-apis-radio.md#networkstate)\> | 是   | 以callback形式异步返回结果，参考radio的[NetworkState](js-apis-radio.md#networkstate)。 |
+| callback | Callback\<[NetworkState](js-apis-radio.md#networkstate)\> | 是   | 回调函数，返回网络状态对象。参考radio的[NetworkState](js-apis-radio.md#networkstate)。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -233,11 +246,11 @@ off\(type: \'networkStateChange\', callback?: Callback\<NetworkState\>\): void
 | 参数名   | 类型                                                      | 必填 | 说明                                                         |
 | -------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                    | 是   | 网络状态变化事件，参数固定为'networkStateChange'。                 |
-| callback | Callback\<[NetworkState](js-apis-radio.md#networkstate)\> | 否   | 以callback形式异步返回结果，参考radio的[NetworkState](js-apis-radio.md#networkstate)。 |
+| callback | Callback\<[NetworkState](js-apis-radio.md#networkstate)\> | 否   | 回调函数，返回网络状态对象。参考radio的[NetworkState](js-apis-radio.md#networkstate)。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -272,11 +285,11 @@ on\(type: \'signalInfoChange\', callback: Callback\<Array\<SignalInformation\>\>
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
 | type     | string                                                       | 是   | 信号状态变化事件，参数固定为'signalInfoChange'。              |
-| callback | Callback\<Array\<[SignalInformation](js-apis-radio.md#signalinformation)\>\> | 是   | 以callback形式异步返回结果，参考radio的[SignalInformation](js-apis-radio.md#signalinformation)。 |
+| callback | Callback\<Array\<[SignalInformation](js-apis-radio.md#signalinformation)\>\> | 是   | 回调函数，返回信号强度对象。参考radio的[SignalInformation](js-apis-radio.md#signalinformation)。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                     |
 | -------- | -------------------------------------------- |
@@ -311,11 +324,11 @@ on\(type: \'signalInfoChange\', options: ObserverOptions, callback: Callback\<Ar
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
 | type     | string                                                       | 是   | 信号状态变化事件，参数固定为'signalInfoChange'。              |
 | options  | [ObserverOptions](#observeroptions11)                        | 是   | 电话相关事件订阅参数可选项。                                   |
-| callback | Callback\<Array\<[SignalInformation](js-apis-radio.md#signalinformation)\>\> | 是   | 以callback形式异步返回结果，参考radio的[SignalInformation](js-apis-radio.md#signalinformation)。 |
+| callback | Callback\<Array\<[SignalInformation](js-apis-radio.md#signalinformation)\>\> | 是   | 回调函数，返回信号强度对象。参考radio的[SignalInformation](js-apis-radio.md#signalinformation)。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -356,11 +369,11 @@ off\(type: \'signalInfoChange\', callback?: Callback\<Array\<SignalInformation\>
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 信号状态变化事件，参数固定为'signalInfoChange'。              |
-| callback | Callback\<Array\<[SignalInformation](js-apis-radio.md#signalinformation)\>\> | 否   | 以callback形式异步返回结果，参考radio的[SignalInformation](js-apis-radio.md#signalinformation)。 |
+| callback | Callback\<Array\<[SignalInformation](js-apis-radio.md#signalinformation)\>\> | 否   | 回调函数，返回信号强度对象。参考radio的[SignalInformation](js-apis-radio.md#signalinformation)。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -398,11 +411,11 @@ on(type: 'callStateChange', callback: Callback\<CallStateInfo\>): void
 | 参数名   | 类型                                           | 必填 | 说明                                                        |
 | -------- | --------------------------------------------- | ---- | ----------------------------------------------------------- |
 | type     | string                                        | 是   | 通话状态变化事件，参数固定为'callStateChange'。                |
-| callback | Callback\<[CallStateInfo](#callstateinfo11)\> | 是   | 以callback形式异步返回结果。<br/>应用可获取到CallStateInfo。<br/>其中，三方应用仅能获取state通话状态。number受系统权限管控，仅面向系统应用开放。 |
+| callback | Callback\<[CallStateInfo](#callstateinfo11)\> | 是   | 回调函数，返回通话状态信息对象。<br/>应用可获取到CallStateInfo。<br/>其中，三方应用仅能获取state通话状态。number受系统权限管控，仅面向系统应用开放。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -435,11 +448,11 @@ on(type: 'callStateChange', options: ObserverOptions, callback: Callback\<CallSt
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
 | type     | string                                                       | 是   | 通话状态变化事件，参数固定为'callStateChange'。               |
 | options  | [ObserverOptions](#observeroptions11)                        | 是   | 电话相关事件订阅参数可选项。                                  |
-| callback | Callback\<[CallStateInfo](#callstateinfo11)\>                | 是   | 以callback形式异步返回结果。<br/>应用可获取到CallStateInfo。<br/>其中，三方应用仅能获取state通话状态。number受系统权限管控，仅面向系统应用开放。 |
+| callback | Callback\<[CallStateInfo](#callstateinfo11)\>                | 是   | 回调函数，返回通话状态信息对象。<br/>应用可获取到CallStateInfo。<br/>其中，三方应用仅能获取state通话状态。number受系统权限管控，仅面向系统应用开放。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -478,11 +491,11 @@ off(type: 'callStateChange', callback?: Callback\<CallStateInfo\>): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
 | type     | string                                                       | 是   | 通话状态变化事件，参数固定为'callStateChange'。               |
-| callback | Callback\<[CallStateInfo](#callstateinfo11)\>                | 否   | 以callback形式异步返回结果，参考call的[CallState](js-apis-call.md#callstate)。<br />number：电话号码。 |
+| callback | Callback\<[CallStateInfo](#callstateinfo11)\>                | 否   | 回调函数，返回通话状态信息对象。参考call的[CallState](js-apis-call.md#callstate)。<br />number：电话号码。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -518,12 +531,12 @@ on(type: 'callStateChangeEx', callback: Callback\<TelCallState\>, options?: Obse
 | 参数名   | 类型                                           | 必填 | 说明                                                        |
 | -------- | --------------------------------------------- | ---- | ----------------------------------------------------------- |
 | type     | string                                        | 是   | 通话状态变化事件，参数固定为'callStateChangeEx'。                |
-| callback | Callback\<[TelCallState](js-apis-call.md#telcallstate21)\> | 是   | 以callback形式异步返回结果。<br/>应用可获取到TelCallState。<br/> |
+| callback | Callback\<[TelCallState](js-apis-call.md#telcallstate21)\> | 是   | 回调函数，返回通话状态对象。<br/>应用可获取到TelCallState。<br/> |
 | options  | [ObserverOptions](#observeroptions11)                              | 否 | 电话相关事件订阅参数可选项。                |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -566,11 +579,11 @@ off(type: 'callStateChangeEx', callback?: Callback\<TelCallState\>): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
 | type     | string                                                       | 是   | 通话状态变化事件，参数固定为'callStateChange'。               |
-| callback | Callback\<[TelCallState](js-apis-call.md#telcallstate21)\>                | 否   | 以callback形式异步返回结果，参考call的[TelCallState](js-apis-call.md#telcallstate21)。<br /> |
+| callback | Callback\<[TelCallState](js-apis-call.md#telcallstate21)\>                | 否   | 回调函数，返回通话状态对象。参考call的[TelCallState](js-apis-call.md#telcallstate21)。<br /> |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -606,11 +619,11 @@ on\(type: 'cellularDataConnectionStateChange', callback: Callback\<DataConnectio
 | 参数名   | 类型                               | 必填 | 说明                                                                 |
 | -------- | --------------------------------- | ---- | -------------------------------------------------------------------- |
 | type     | string                            | 是   | 蜂窝数据链路连接状态事件，参数固定为'cellularDataConnectionStateChange'。|
-| callback | Callback\<[DataConnectionStateInfo](#dataconnectionstateinfo11)\>  | 是   | 以callback形式异步返回结果，参考data的[DataConnectState](js-apis-telephony-data.md#dataconnectstate)，radio的[RadioTechnology](js-apis-radio.md#radiotechnology)。 |
+| callback | Callback\<[DataConnectionStateInfo](#dataconnectionstateinfo11)\>  | 是   | 回调函数，返回蜂窝数据链路连接状态信息对象。参考data的[DataConnectState](js-apis-telephony-data.md#dataconnectstate)，radio的[RadioTechnology](js-apis-radio.md#radiotechnology)。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -643,11 +656,11 @@ on\(type: 'cellularDataConnectionStateChange', options: ObserverOptions, callbac
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 蜂窝数据链路连接状态事件，参数固定为'cellularDataConnectionStateChange'。|
 | options  | [ObserverOptions](#observeroptions11)                        | 是   | 电话相关事件订阅参数可选项。             |
-| callback | Callback\<[DataConnectionStateInfo](#dataconnectionstateinfo11)\> | 是   | 以callback形式异步返回结果，参考data的[DataConnectState](js-apis-telephony-data.md#dataconnectstate)，radio的[RadioTechnology](js-apis-radio.md#radiotechnology)。 |
+| callback | Callback\<[DataConnectionStateInfo](#dataconnectionstateinfo11)\> | 是   | 回调函数，返回蜂窝数据链路连接状态信息对象。参考data的[DataConnectState](js-apis-telephony-data.md#dataconnectstate)，radio的[RadioTechnology](js-apis-radio.md#radiotechnology)。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -686,11 +699,11 @@ off\(type: 'cellularDataConnectionStateChange',  callback?: Callback\<DataConnec
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 蜂窝数据链路连接状态事件，参数固定为'cellularDataConnectionStateChange'。|
-| callback | Callback\<[DataConnectionStateInfo](#dataconnectionstateinfo11)\> | 否   | 以callback形式异步返回结果，参考data的[DataConnectState](js-apis-telephony-data.md#dataconnectstate)，radio的[RadioTechnology](js-apis-radio.md#radiotechnology)。 |
+| callback | Callback\<[DataConnectionStateInfo](#dataconnectionstateinfo11)\> | 否   | 回调函数，返回蜂窝数据链路连接状态信息对象。参考data的[DataConnectState](js-apis-telephony-data.md#dataconnectstate)，radio的[RadioTechnology](js-apis-radio.md#radiotechnology)。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -726,11 +739,11 @@ on\(type: 'cellularDataFlowChange', callback: Callback\<DataFlowType\>\): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是  | 蜂窝数据业务的上下行数据流状态事件，参数固定为'cellularDataFlowChange'。         |
-| callback | Callback\<[DataFlowType](js-apis-telephony-data.md#dataflowtype)\> | 是   | 以callback形式异步返回结果，参考data的[DataFlowType](js-apis-telephony-data.md#dataflowtype)。 |
+| callback | Callback\<[DataFlowType](js-apis-telephony-data.md#dataflowtype)\> | 是   | 回调函数，返回数据流状态对象。参考data的[DataFlowType](js-apis-telephony-data.md#dataflowtype)。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -765,11 +778,11 @@ on\(type: 'cellularDataFlowChange', options: ObserverOptions,  callback: Callbac
 | -------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                     | 是   | 蜂窝数据业务的上下行数据流状态事件，参数固定为'cellularDataFlowChange'。         |
 | options   | [ObserverOptions](#observeroptions11)                     | 是   | 电话相关事件订阅参数可选项。                                                   |
-| callback | Callback\<[DataFlowType](js-apis-telephony-data.md#dataflowtype)\> | 是   | 以callback形式异步返回结果，参考data的[DataFlowType](js-apis-telephony-data.md#dataflowtype)。 |
+| callback | Callback\<[DataFlowType](js-apis-telephony-data.md#dataflowtype)\> | 是   | 回调函数，返回数据流状态对象。参考data的[DataFlowType](js-apis-telephony-data.md#dataflowtype)。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -810,11 +823,11 @@ off\(type: 'cellularDataFlowChange', callback?: Callback\<DataFlowType\>\): void
 | 参数名   | 类型                                                                | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                             | 是   | 蜂窝数据业务的上下行数据流状态事件，参数固定为'cellularDataFlowChange'。   |
-| callback | Callback\<[DataFlowType](js-apis-telephony-data.md#dataflowtype)\> | 否   | 以callback形式异步返回结果，参考data的[DataFlowType](js-apis-telephony-data.md#dataflowtype)。 |
+| callback | Callback\<[DataFlowType](js-apis-telephony-data.md#dataflowtype)\> | 否   | 回调函数，返回数据流状态对象。参考data的[DataFlowType](js-apis-telephony-data.md#dataflowtype)。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -856,11 +869,11 @@ on\(type: 'simStateChange', callback: Callback\<SimStateData\>\): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
 | type     | string                                                       | 是   | sim状态更改事件，参数固定为'simStateChange'。                 |
-| callback | Callback\<[SimStateData](#simstatedata7)\> | 是   | 以callback形式异步返回结果。 |
+| callback | Callback\<[SimStateData](#simstatedata7)\> | 是   | 回调函数，返回卡状态数据对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -893,11 +906,11 @@ on\(type: 'simStateChange', options: ObserverOptions, callback: Callback\<SimSta
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | sim状态更改事件，参数固定为'simStateChange'。                 |
 | options   | [ObserverOptions](#observeroptions11)                       | 是   | 电话相关事件订阅参数可选项。                                  |
-| callback | Callback\<[SimStateData](#simstatedata7)\> | 是   | 以callback形式异步返回结果。 |
+| callback | Callback\<[SimStateData](#simstatedata7)\> | 是   | 回调函数，返回卡状态数据对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -936,11 +949,11 @@ off\(type: 'simStateChange', callback?: Callback\<SimStateData\>\): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | sim状态更改事件，参数固定为'simStateChange'。                 |
-| callback | Callback\<[SimStateData](#simstatedata7)\> | 否   | 以callback形式异步返回结果。 |
+| callback | Callback\<[SimStateData](#simstatedata7)\> | 否   | 回调函数，返回卡状态数据对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -975,11 +988,11 @@ on\(type: 'iccAccountInfoChange', callback: Callback\<void\>\): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 卡帐户变化事件，参数固定为'iccAccountInfoChange'。                 |
-| callback | Callback\<void\> | 是   | 以callback形式异步返回结果。 |
+| callback | Callback\<void\> | 是   | 回调函数。当卡账户改变成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1015,11 +1028,11 @@ off\(type: 'iccAccountInfoChange', callback?: Callback\<void\>\): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 卡帐户变化事件，参数固定为'iccAccountInfoChange'。                 |
-| callback | Callback\<void\> | 否   | 以callback形式异步返回结果。 |
+| callback | Callback\<void\> | 否   | 回调函数。当卡账户改变成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1056,12 +1069,12 @@ SIM卡激活状态变化的监听，使用callback方式作为异步方法。
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| slotId   | number            | 否    | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。    |
-|callback  | Callback&lt;boolean&gt;|否| 以callback形式返回结果。<br/>- true：激活。<br/>- false：未激活。|
+| slotId   | number            | 是    | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。    |
+|callback  | Callback&lt;boolean&gt;|是| 回调函数，返回SIM卡是否激活。<br/>- true：激活。<br/>- false：未激活。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1098,11 +1111,11 @@ offGetSimActiveState\(callback?: Callback\<boolean\>\): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-|callback  | Callback&lt;boolean&gt;|否| 以callback形式返回结果。<br/>- true：激活。<br/>- false：未激活。|
+|callback  | Callback&lt;boolean&gt;|否| 回调函数，返回SIM卡是否激活。<br/>- true：激活。<br/>- false：未激活。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1132,31 +1145,33 @@ onCCallStateChange\(callback: Callback\<CCallStateInfo\>, options?: ObserverOpti
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
+**需要权限**：ohos.permission.MANAGE_CALL_FOR_DEVICES
+
 **参数：**
 
-|     名称            |         类型      | 必填 | 说明                                    |
+|     参数名            |         类型      | 必填 | 说明                                    |
 | ------------------- | ------------------| ---- | --------------------------------------- |
-| callback | Callback\<[CCallState](js-apis-call.md#ccallstate23)\> | 是   | 以callback形式异步返回结果。<br/>应用可获取到CCallState。<br/> |
+| callback | Callback\<[CCallStateInfo](js-apis-observer.md#ccallstateinfo23)\> | 是   | 回调函数，返回通话状态信息对象。<br/>应用可获取到CCallState。<br/> |
 | options  | [ObserverOptions](#observeroptions11)                  | 否 | 电话相关事件订阅参数可选项。                |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied                         |
-| 8300001  | Invalid parameter value.                     |
-| 8300002  | Service connection failed.                   |
-| 8300003  | System internal error.                       |
-| 8300999  | Unknown error.                               |
+| 8800001  | Invalid parameter value.                     |
+| 8800002  | Service connection failed.                   |
+| 8800003  | System internal error.                       |
+| 8800999  | Unknown error.                               |
 
 **示例：**
 
 ```ts
-import { call } from '@kit.TelephonyKit';
+import { call, observer } from '@kit.TelephonyKit';
 
-let callback: (data: call.CCallStateInfo) => void = (data: call.CCallStateInfo) => {
+let callback: (data: observer.CCallStateInfo) => void = (data: observer.CCallStateInfo) => {
     console.info("onCCallStateChange, data:" + JSON.stringify(data));
 }
 let options: observer.ObserverOptions = {
@@ -1169,40 +1184,43 @@ observer.onCCallStateChange(callback);
 
 ## observer.offCCallStateChange<sup>23+</sup>
 
-offCCallStateChange\(callback: Callback\<CCallStateInfo\>\): void
+offCCallStateChange\(callback?: Callback\<CCallStateInfo\>\): void
 
 取消三方应用监听运营商通话状态并获取通话号码，使用callback方式作为异步方法。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
+**需要权限**：ohos.permission.MANAGE_CALL_FOR_DEVICES
+
 **参数：**
 
-|     名称            |         类型      | 必填 | 说明                                    |
+|     参数名            |         类型      | 必填 | 说明                                    |
 | ------------------- | ------------------| ---- | --------------------------------------- |
-| callback | Callback\<[CCallState](js-apis-call.md#ccallstate23)\> | 是   | 以callback形式异步返回结果。<br/>应用可获取到CCallState。<br/> |
+| callback | Callback\<[CCallStateInfo](js-apis-observer.md#ccallstateinfo23)\> | 否   | 回调函数，返回通话状态信息对象。<br/>应用可获取到CCallState。<br/> |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied                         |
-| 8300001  | Invalid parameter value.                     |
-| 8300002  | Service connection failed.                   |
-| 8300003  | System internal error.                       |
-| 8300999  | Unknown error.                               |
+| 8800001  | Invalid parameter value.                     |
+| 8800002  | Service connection failed.                   |
+| 8800003  | System internal error.                       |
+| 8800999  | Unknown error.                               |
 
 **示例：**
 
 ```ts
-import { call } from '@kit.TelephonyKit';
+import { call, observer } from '@kit.TelephonyKit';
 
-let callback: (data: call.CCallStateInfo) => void = (data: call.CCallStateInfo) => {
+let callback: (data: observer.CCallStateInfo) => void = (data: observer.CCallStateInfo) => {
     console.info("onCCallStateChange, data:" + JSON.stringify(data));
 }
 
-observer.off(callback);
+observer.offCCallStateChange(callback);
+observer.offCCallStateChange();
 ```
 
 ## LockReason<sup>8+</sup>
@@ -1253,6 +1271,18 @@ SIM卡类型和状态。
 | number              | string                                 | 否   | 否   | 电话号码。 |
 
 
+## CCallStateInfo<sup>23+</sup>
+
+通话状态相关信息。
+
+**系统能力**：SystemCapability.Telephony.StateRegistry
+
+|     名称            |                 类型                    | 只读 | 可选 | 说明     |
+| ------------------- | -------------------------------------- | ---- | ---- | -------- |
+| state               | [CCallState](js-apis-call.md#ccallstate23) | 否   | 否   | 通话类型。 |
+| teleNumber              | string                                 | 否   | 否   | 电话号码。 |
+
+
 ## DataConnectionStateInfo<sup>11+</sup>
 
 数据连接状态相关信息。
@@ -1263,7 +1293,7 @@ SIM卡类型和状态。
 | 名称 | 类型                                   |  只读 | 可选 | 说明 |
 | ----- |--------------------------------------| ----- | ---- | -----|
 |  state   | [DataConnectState](js-apis-telephony-data.md#dataconnectstate) |  否  |  否  | 数据连接状态。 |
-| network | [RatType](js-apis-radio.md#radiotechnology)  |  否  |  否  | 网络类型。 |
+| network | [RatType](#rattype)  |  否  |  否  | 网络类型。 |
 
 ## ObserverOptions<sup>11+</sup>
 

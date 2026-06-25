@@ -114,6 +114,24 @@ The node with the specified **targetId** is not mounted in the component tree.
 
 2. Check whether the node corresponding to the provided **targetId** has been mounted to the main node tree. You can do so using the [isAttached()](./js-apis-arkui-frameNode.md#isattached12) API of the content node.
 
+## 103307 Failed to Open the Overlay Due to a System Pop-up Window
+
+**Error Message**
+
+The overlay cannot be opened due to the system pop-up window.
+
+**Description**
+
+This error code is reported when the overlay cannot be opened due to a system pop-up window.
+
+**Possible Causes**
+
+A system pop-up window exists on the current page, blocking the display of the overlay.
+
+**Solution**
+
+Wait until the user closes the system pop-up window and try to open the overlay again.
+
 ## 103401 Toast Not Found
 
 **Error Message**

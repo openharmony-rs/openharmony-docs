@@ -15,16 +15,16 @@
 > **说明：**
 >
 > 在大量子组件的场景下，LazyForEach与缓存列表项、动态预加载、组件复用等方法配合使用，可以进一步提升滑动帧率并降低应用内存占用。最佳实践请参考[长列表加载丢帧优化](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-best-practices-long-list)。
-> [Repeat](./arkts-new-rendering-control-repeat.md)组件也提供了循环渲染能力。相较于LazyForEach，Repeat基于状态管理监听数据源变化，使用更加便利。同时，Repeat具有子组件复用能力，UI渲染效率更高。建议开发者优先使用Repeat。开发者也可参考[LazyForEach迁移Repeat指南](./arkts-lazyforeach-repeat-migration-guide.md)，将现有的LazyForEach组件迁移至Repeat组件。
+> [Repeat](./arkts-new-rendering-control-repeat.md)组件也提供了循环渲染能力。相较于LazyForEach，Repeat基于状态管理监听数据源变化，使用更加便利。同时，Repeat具有子组件复用能力，UI渲染效率更高。建议开发者优先使用Repeat。开发者也可参考[循环渲染迁移](../state-management/arkts-v1-v2-migration-rendering-control-repeat.md)，将现有的LazyForEach组件迁移至Repeat组件。
 
 ## 使用限制
 
 - LazyForEach必须在容器组件内使用，仅有[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)、[ListItemGroup](../../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md)、[Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[Swiper](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md)以及[WaterFlow](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)组件支持数据懒加载（可配置cachedCount属性，即只加载可视部分以及其前后少量数据用于缓冲），其他组件仍然是一次性加载所有的数据。支持数据懒加载的父组件根据自身及子组件的高度或宽度计算可视区域内需布局的子节点数量，高度或宽度的缺失会导致部分场景[懒加载失效](#子组件尺寸缺失导致懒加载失效)。
 - LazyForEach依赖生成的键值判断是否刷新子组件，键值不变则不触发刷新。
-- 容器组件内只能包含一个LazyForEach。以List为例，不建议同时包含ListItem、ForEach、LazyForEach，不建议同时包含多个LazyForEach。
+- 容器组件内只能包含一个LazyForEach。以List为例，不建议同时包含[ListItem](../../reference/apis-arkui/arkui-ts/ts-container-listitem.md)、[ForEach](./arkts-rendering-control-foreach.md)、LazyForEach，不建议同时包含多个LazyForEach。
 - LazyForEach在每次迭代中，必须创建且只允许创建一个子组件；即LazyForEach的子组件生成函数有且只有一个根组件。
 - 生成的子组件必须是允许包含在LazyForEach父容器组件中的子组件。
-- 允许LazyForEach包含在if/else条件渲染语句中，也允许LazyForEach中出现if/else条件渲染语句。
+- 允许LazyForEach包含在[if/else](./arkts-rendering-control-ifelse.md)条件渲染语句中，也允许LazyForEach中出现if/else条件渲染语句。
 - 键值生成器必须针对每个数据生成唯一的值，如果键值相同，将导致键值相同的UI组件渲染出现问题。
 - LazyForEach必须使用一个数据变化监听器DataChangeListener对象进行更新（具体参数使用参考[LazyForEach](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)），重新赋值第一个参数dataSource会导致异常；dataSource使用状态变量时，状态变量改变不会触发LazyForEach的UI刷新。
 - 为了高性能渲染，使用DataChangeListener对象的onDataChange方法更新UI时，需要生成不同于原来的键值来触发组件刷新。
@@ -109,7 +109,7 @@ struct InitialRendering {
           Row() {
             Text(item).fontSize(50)
               .onAppear(() => {
-                hilog.info(DOMAIN, TAG, 'appear: ${item}');
+                hilog.info(DOMAIN, TAG, `appear: ${item}`);
               })
           }.margin({ left: 10, right: 10 })
         }
@@ -134,7 +134,7 @@ struct InitialRendering {
 BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
 ```ts
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
+// BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码。
 import { BasicDataSource } from './BasicDataSource';
 
 class MyDataSource extends BasicDataSource {
@@ -197,7 +197,7 @@ LazyForEach(this.data, (item: string) => {
     Row() {
       Text(item).fontSize(50)
         .onAppear(() => {
-          hilog.info(DOMAIN, TAG, 'appear: ${item}');
+          hilog.info(DOMAIN, TAG, `appear: ${item}`);
         })
     }.margin({ left: 10, right: 10 })
   }
@@ -337,7 +337,7 @@ struct DataDeletion {
           Row() {
             Text(item).fontSize(50)
               .onAppear(() => {
-                hilog.info(DOMAIN, TAG, 'appear: ${item}');
+                hilog.info(DOMAIN, TAG, `appear: ${item}`);
               })
           }.margin({ left: 10, right: 10 })
         }
@@ -418,7 +418,7 @@ struct SwappingData {
           Row() {
             Text(item).fontSize(50)
               .onAppear(() => {
-                hilog.info(DOMAIN, TAG, 'appear: ${item}');
+                hilog.info(DOMAIN, TAG, `appear: ${item}`);
               })
           }.margin({ left: 10, right: 10 })
         }
@@ -496,7 +496,7 @@ struct ModifyingIndividualDataItems {
           Row() {
             Text(item).fontSize(50)
               .onAppear(() => {
-                hilog.info(DOMAIN, TAG, 'appear: ${item}');
+                hilog.info(DOMAIN, TAG, `appear: ${item}`);
               })
           }.margin({ left: 10, right: 10 })
         }
@@ -574,7 +574,7 @@ struct ModifyingMultipleDataItems {
           Row() {
             Text(item).fontSize(50)
               .onAppear(() => {
-                hilog.info(DOMAIN, TAG, 'appear: ${item}');
+                hilog.info(DOMAIN, TAG, `appear: ${item}`);
               })
           }.margin({ left: 10, right: 10 })
         }
@@ -667,7 +667,7 @@ struct PreciselyModifyingData {
             Row() {
               Text(item).fontSize(35)
                 .onAppear(() => {
-                  hilog.info(DOMAIN, TAG, 'appear: ${item}');
+                  hilog.info(DOMAIN, TAG, `appear: ${item}`);
                 })
             }.margin({ left: 10, right: 10 })
           }
@@ -750,7 +750,7 @@ struct PreciselyModifyingDataTwo {
             Row() {
               Text(item).fontSize(35)
                 .onAppear(() => {
-                  hilog.info(DOMAIN, TAG, 'appear: ${item}');
+                  hilog.info(DOMAIN, TAG, `appear: ${item}`);
                 })
             }.margin({ left: 10, right: 10 })
           }
@@ -1208,7 +1208,7 @@ struct DragandDropSorting {
 BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
 ```ts
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
+// BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码。
 import { BasicDataSource } from './BasicDataSource';
 
 class MyDataSource extends BasicDataSource {
@@ -1327,7 +1327,7 @@ struct UnexpectedRenderingResults {
           Row() {
             Text(item).fontSize(50)
               .onAppear(() => {
-                hilog.info(DOMAIN, TAG, 'appear: ${item}');
+                hilog.info(DOMAIN, TAG, `appear: ${item}`);
               })
           }.margin({ left: 10, right: 10 })
         }
@@ -1354,7 +1354,7 @@ struct UnexpectedRenderingResults {
 GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: [泛型数组的BasicDataSource代码](#泛型数组的basicdatasource代码)。
 
 ```ts
-/** GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码 **/
+// GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码。
 import { GenericBasicDataSource } from './GenericBasicDataSource';
 
 class MyDataSource extends GenericBasicDataSource<StringData> {
@@ -1508,7 +1508,7 @@ struct ImageFlickeringChildComponent {
     Column() {
       Text(this.data.message).fontSize(50)
         .onAppear(() => {
-          hilog.info(DOMAIN, TAG, 'appear: ${this.data.message}');
+          hilog.info(DOMAIN, TAG, `appear: ${this.data.message}`);
         })
       Image(this.data.imgSrc)
         .width(500)
@@ -1526,7 +1526,7 @@ struct ImageFlickeringChildComponent {
 GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: [泛型数组的BasicDataSource代码](#泛型数组的basicdatasource代码)。
 
 ```ts
-/** GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码 **/
+// GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码。
 import { GenericBasicDataSource } from './GenericBasicDataSource';
 
 class MyDataSource extends GenericBasicDataSource<StringData> {
@@ -1699,12 +1699,12 @@ struct UINotRerenderedChildComponent {
 ![LazyForEach-ObjectLink-NotRenderUI-Repair](figures/LazyForEach-ObjectLink-NotRenderUI-Repair.gif)
 
 ### 在List内使用屏幕闪烁
-在List的onScrollIndex方法中调用onDataReloaded可能会导致屏幕闪烁。
+在[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)的[onScrollIndex](../../reference/apis-arkui/arkui-ts/ts-container-list.md#onscrollindex)方法中调用onDataReloaded可能会导致屏幕闪烁。
 
 BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
 ```ts
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
+// BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码。
 import { BasicDataSource } from './BasicDataSource';
 
 class MyDataSource extends BasicDataSource {
@@ -1836,7 +1836,7 @@ struct ScreenFlickeringInList {
               .height(80)
               .backgroundColor(Color.Gray)
               .onAppear(() => {
-                hilog.info(DOMAIN, TAG, 'appear: ${item}');
+                hilog.info(DOMAIN, TAG, `appear: ${item}`);
               })
           }.margin({ left: 10, right: 10 })
         }
@@ -1857,12 +1857,12 @@ struct ScreenFlickeringInList {
 
 ### 组件复用渲染异常
 
-`@Reusable装饰器`与[\@ComponentV2装饰器](../state-management/arkts-create-custom-components.md#componentv2)混用会导致组件渲染异常。
+[\@Reusable装饰器](../state-management/arkts-reusable.md)与[\@ComponentV2装饰器](../state-management/arkts-create-custom-components.md#componentv2)混用会导致组件渲染异常。
 
 GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: [泛型数组的BasicDataSource代码](#泛型数组的basicdatasource代码)。
 
 ```ts
-/** GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码 **/
+// GenericBasicDataSource代码见文档末尾BasicDataSource示例代码: 泛型数组的BasicDataSource代码。
 import { GenericBasicDataSource } from './GenericBasicDataSource';
 
 class MyDataSource extends GenericBasicDataSource<StringData> {
@@ -1954,7 +1954,7 @@ struct ChildComponent {
 BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
 ```ts
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
+// BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码。
 import { BasicDataSource } from './BasicDataSource';
 
 class MyDataSource extends BasicDataSource {
@@ -2033,7 +2033,7 @@ LazyForEach(this.data, (item: string) => {
 BasicDataSource代码见文档末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](#string类型数组的basicdatasource代码)。
 
 ```ts
-/** BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码 **/
+// BasicDataSource代码见文档末尾BasicDataSource示例代码: string类型数组的BasicDataSource代码。
 import { BasicDataSource } from './BasicDataSource';
 
 class MyDataSource extends BasicDataSource {
@@ -2109,10 +2109,9 @@ LazyForEach(this.data, (item: string, index: number) => {
 
 ### string类型数组的BasicDataSource代码
 
-<!-- @[basic_data_source_string](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/BasicDataSource.ets) -->    
+<!-- @[basic_data_source_string](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/BasicDataSource.ets) -->
 
 ``` TypeScript
-// BasicDataSource.ets
 // BasicDataSource实现了IDataSource接口，用于管理listener监听，以及通知LazyForEach数据更新
 export class BasicDataSource implements IDataSource {
   private listeners: DataChangeListener[] = [];
@@ -2177,7 +2176,7 @@ export class BasicDataSource implements IDataSource {
     this.listeners.forEach(listener => {
       listener.onDataMove(from, to);
       // 写法2：listener.onDatasetChange(
-      //         [{type: DataOperationType.EXCHANGE, index: {start: from, end: to}}]);
+      // [{type: DataOperationType.EXCHANGE, index: {start: from, end: to}}]);
     });
   }
 
@@ -2194,7 +2193,6 @@ export class BasicDataSource implements IDataSource {
 <!-- @[generic_basic_data_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/GenericBasicDataSource.ets) -->
 
 ``` TypeScript
-// GenericBasicDataSource.ets
 // GenericBasicDataSource实现了IDataSource接口，用于管理listener监听，以及通知LazyForEach数据更新
 export class GenericBasicDataSource<T> implements IDataSource {
   private listeners: DataChangeListener[] = [];

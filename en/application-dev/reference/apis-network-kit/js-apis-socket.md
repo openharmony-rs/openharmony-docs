@@ -196,7 +196,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
   console.info('bind success');
 });
 let netAddress: socket.NetAddress = {
-  address: '192.168.xx.xxx', // Peer IP address
+  address: '192.168.xx.xxx',  // Peer IP address
   port: 8080
 }
 let sendOptions: socket.UDPSendOptions = {
@@ -231,7 +231,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
   console.info('bind success');
 });
 let netAddress: socket.NetAddress = {
-  address: '192.168.xx.xxx', // Peer IP address
+  address: '192.168.xx.xxx',  // Peer IP address
   port: 8080
 }
 let socks5Server: socket.NetAddress = {
@@ -886,7 +886,7 @@ Subscribes to **listening** events or **close** events of the **UDPSocket** obje
 
 | Name  | Type            | Mandatory| Description                                                        |
 | -------- | ---------------- | ---- | ------------------------------------------------------------ |
-| type     | string           | Yes  | Event type.<br>- **listening**: data packet message event.<br>- **close**: close event.|
+| type     | string           | Yes  | Event type.<br/><br>- **listening**: data packet message event.<br>- **close**: close event.|
 | callback | Callback\<void\> | Yes  | Callback used to return the result.            |
 
 **Example**
@@ -1008,7 +1008,7 @@ Defines the destination address.
 
 | Name  | Type                                          | Read-Only| Optional|Description                   |
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
-| address<sup>11+</sup> | string | No  | No  | Bound IP address.                                          |
+| address<sup>11+</sup> | string | No  | No  | IP address.                                          |
 | port    | number | No  | No  | Port number. The value ranges from **0** to **65535**. If this parameter is not specified, the system randomly allocates a port.          |
 | family  | number | No  | No  | Network protocol type.<br>- **1**: IPv4 The default value is **1**.<br>- **2**: IPv6 For an IPv6 address, this field must be explicitly set to **2**.<br>- **3**: domain address<sup>18+</sup> For a domain address, this field must be explicitly set to **3**. Currently, only [TCPSocket.connect](#connect) and [TLSSocket.connect](#connect9) are supported.|
 
@@ -1089,7 +1089,7 @@ Defines information about the socket connection.
 
 | Name  | Type                                          | Read-Only| Optional|Description                   |
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
-| address | string | No  | No  | Bound IP address.                                          |
+| address | string | No  | No  | Peer IP address.                                          |
 | family  | 'IPv4' \| 'IPv6' | No  | No | Network protocol type.<br>- IPv4<br>- IPv6<br>The default value is **IPv4**.|
 | port    | number | No  | No | Port number. The value ranges from **0** to **65535**.                                       |
 | size    | number | No  | No | Length of the server response message, in bytes.                                  |
@@ -1123,6 +1123,62 @@ let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance(
 ## MulticastSocket<sup>11+</sup>
 
 Defines a **MulticastSocket** connection. Before calling MulticastSocket APIs, you need to call [socket.constructMulticastSocketInstance](#socketconstructmulticastsocketinstance11) to create a **MulticastSocket** object.
+
+### setReuseAddress
+
+setReuseAddress(reuse: boolean): void
+
+Sets whether the multicast socket supports address reuse. This API is called in synchronous mode.
+
+> **NOTE**
+> This API is used to control whether to enable address reuse when a multicast socket is bound to a port.
+> To bind an occupied port, ensure that the address reuse capability is enabled for the party that occupies the port. In addition, the service needs to call this API before calling [bind](#bind) to enable the address reuse capability.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Communication.NetStack
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name        | Type   | Mandatory| Description                        |
+| ------------- | ------- | ---- | ---------------------------- |
+| reuse         | boolean |  Yes | Whether to enable address reuse. **true** to enable, **false** otherwise.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                |
+| ------- | ----------------------- |
+| 401     | Parameter error.        |
+
+**Example**
+
+```ts
+import { socket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
+let bindAddr: socket.NetAddress = {
+  // 0.0.0.0 indicates that port 8080 on all IPv4 network APIs of the local host is bound. This is commonly used to receive data from this port in multicast scenarios.
+  address: '0.0.0.0',
+  port: 8080
+}
+
+try {
+  multicast.setReuseAddress(true);
+  multicast.bind(bindAddr).then(() => {
+    console.info('setReuseAddress success');
+  }).catch((err: BusinessError) => {
+    console.error(`bind failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`setReuseAddress failed, code is ${error.code}, message is ${error.message}`);
+}
+```
 
 ### addMembership<sup>11+</sup>
 
@@ -2640,7 +2696,8 @@ tcp.connect(tcpconnectoptions, () => {
     receiveBufferSize: 8192,
     sendBufferSize: 8192,
     reuseAddress: true,
-    socketTimeout: 3000
+    socketTimeout: 3000,
+    tcpFastOpen: false
   }
   tcp.setExtraOptions(tcpExtraOptions, (err: BusinessError) => {
     if (err) {
@@ -2717,7 +2774,8 @@ tcp.connect(tcpconnectoptions, () => {
     receiveBufferSize: 8192,
     sendBufferSize: 8192,
     reuseAddress: true,
-    socketTimeout: 3000
+    socketTimeout: 3000,
+    tcpFastOpen: false
   }
   tcp.setExtraOptions(tcpExtraOptions).then(() => {
     console.info('setExtraOptions success');
@@ -2863,7 +2921,7 @@ Subscribes to **connect** or **close** events of the **TCPSocket** object. This 
 
 | Name  | Type            | Mandatory| Description                                                        |
 | -------- | ---------------- | ---- | ------------------------------------------------------------ |
-| type     | string           | Yes  | Event type.<br>- **connect**: connection event.<br>- **close**: close event.|
+| type     | string           | Yes  | Event type.<br/><br>- **connect**: connection event.<br>- **close**: close event.|
 | callback | Callback\<void\> | Yes  | Callback used to return the result.             |
 
 **Example**
@@ -2998,7 +3056,7 @@ Defines the parameters for sending data over a TCP socket connection.
 | Name  | Type                                          | Read-Only| Optional|Description                   |
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
 | data     | string\| ArrayBuffer  | No  | No  | Data to send.                                                |
-| encoding | string | No  | Yes  | Character encoding format. The options are as follows: **UTF-8**, **UTF-16BE**, **UTF-16LE**, **UTF-16**, **US-AECII**, and **ISO-8859-1**. The default value is **UTF-8**.|
+| encoding | string | No  | Yes  | Character encoding format. The options are as follows: **UTF-8**, **UTF-16BE**, **UTF-16LE**, **UTF-16**, **US-ASCII**, and **ISO-8859-1**. The default value is **UTF-8**.|
 
 ## TCPExtraOptions
 
@@ -3006,12 +3064,13 @@ Defines other properties of the **TCPSocket** object. This object is inherited f
 
 **System capability**: SystemCapability.Communication.NetStack
 
-| Name  | Type                                          | Read-Only| Optional|Description                   |
-| -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
-| keepAlive         | boolean | No  | Yes  | Whether to keep the connection alive. The default value is **false**. The value **true** means to keep the connection alive, and the value **false** indicates the opposite.                                 |
-| OOBInline         | boolean | No  | Yes  | Whether to enable OOBInline. The default value is **false**. The value **true** means to enable OOBInline, and the value **false** indicates the opposite.                                |
-| TCPNoDelay        | boolean | No  | Yes  | Whether to enable no-delay on the TCP socket connection. The default value is **false**. The value **true** means to enable no-delay on the TCP socket connection, and the value **false** indicates the opposite.                      |
-| socketLinger      | \{on:boolean, linger:number\}  | No  | Yes  | Socket linger.<br>- **on**: whether to enable socket linger. The value true means to enable socket linger and false means the opposite.<br>- **linger**: linger time, in ms. The value ranges from **0** to **65535**.<br>Specify this parameter only when **on** is set to **true**.|
+| Name  | Type                                          | Read-Only| Optional| Description                                                                                                                                                         |
+| -------- | ---------------------------------------------- | ---- | --- |-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| keepAlive         | boolean | No  | Yes  | Whether to keep the connection alive. The default value is **false**. The value **true** means to keep the connection alive, and the value **false** indicates the opposite.                                                                                                                      |
+| OOBInline         | boolean | No  | Yes  | Whether to enable OOBInline. The default value is **false**. The value **true** means to enable OOBInline, and the value **false** indicates the opposite.                                                                                                               |
+| TCPNoDelay        | boolean | No  | Yes  | Whether to enable no-delay on the TCP socket connection. The default value is **false**. The value **true** means to enable no-delay on the TCP socket connection, and the value **false** indicates the opposite.                                                                                                              |
+| socketLinger      | \{on:boolean, linger:number\}  | No  | Yes  | Socket linger.<br>- **on**: whether to enable socket linger. The value true means to enable socket linger and false means the opposite.<br>- **linger**: linger time, in ms. The value ranges from **0** to **65535**.<br>Specify this parameter only when **on** is set to **true**.                                       |
+| tcpFastOpen<sup>24+</sup> | boolean                        | No | Yes | Whether to enable TCP Fast Open (TFO) in the TCP socket connection. This function allows the client to carry data during the first handshake, reducing the connection setup delay and improving the performance in high-frequency short connection scenarios. The default value is **false**. **true**: yes; **false**: no.<br>Currently, this parameter can be configured only on the client.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## socket.constructTCPSocketServerInstance<sup>10+</sup>
 
@@ -5951,7 +6010,7 @@ Sends data through a local socket connection. This API uses a promise to return 
 
 | Name | Type                             | Mandatory| Description                                                        |
 | ------- | --------------------------------- | ---- | -------------------------------------- |
-| options | [LocalSendOptions](#localsendoptions11) | Yes  | Defines the parameters for sending data over a local socket connection.|
+| options | [LocalSendOptions](#localsendoptions11) | Yes  | Parameters for sending data over a local socket connection.|
 
 **Return value**
 
@@ -6746,7 +6805,8 @@ let tcpExtraOptions: socket.TCPExtraOptions = {
   receiveBufferSize: 8192,
   sendBufferSize: 8192,
   reuseAddress: true,
-  socketTimeout: 3000
+  socketTimeout: 3000,
+  tcpFastOpen: false
 }
 tls.setExtraOptions(tcpExtraOptions, (err: BusinessError) => {
   if (err) {
@@ -6819,7 +6879,8 @@ let tcpExtraOptions: socket.TCPExtraOptions = {
   receiveBufferSize: 8192,
   sendBufferSize: 8192,
   reuseAddress: true,
-  socketTimeout: 3000
+  socketTimeout: 3000,
+  tcpFastOpen: false
 }
 tls.setExtraOptions(tcpExtraOptions).then(() => {
   console.info('setExtraOptions success');
@@ -6945,7 +7006,7 @@ Subscribes to **connect** or **close** events of the **TLSSocket** object. This 
 
 | Name  | Type            | Mandatory| Description                                                        |
 | -------- | ---------------- | ---- | ------------------------------------------------------------ |
-| type     | string           | Yes  | Event type.<br>- **connect**: connection event.<br>- **close**: close event.|
+| type     | string           | Yes  | Event type.<br/><br>- **connect**: connection event.<br>- **close**: close event.|
 | callback | Callback\<void\> | Yes  | Callback used to return the result.                                                    |
 
 **Error codes**
@@ -6992,7 +7053,7 @@ Unsubscribes from **connect** or **close** events of the **TLSSocket** object. T
 
 | Name  | Type            | Mandatory| Description                                                        |
 | -------- | ---------------- | ---- | ------------------------------------------------------------ |
-| type     | string           | Yes  | Event type.<br>- **connect**: connection event.<br>- **close**: close event.|
+| type     | string           | Yes  | Event type.<br/><br>- **connect**: connection event.<br>- **close**: close event.|
 | callback | Callback\<void\> | No  | Callback used to return the result.           |
 
 **Error codes**
@@ -7174,7 +7235,7 @@ let twoWayNetAddr: socket.NetAddress = {
 }
 let twoWaySecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -7245,7 +7306,7 @@ let socks5Server: socket.NetAddress = {
 }
 let twoWaySecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -7374,7 +7435,7 @@ let twoWayNetAddr: socket.NetAddress = {
 }
 let twoWaySecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -7449,7 +7510,7 @@ let socks5Server: socket.NetAddress = {
 }
 let twoWaySecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -8229,7 +8290,7 @@ TLS security options. When **cert** (local certificate) and **key** (private key
 | Name  | Type                                          | Read-Only| Optional|Description                   |
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
 | ca                    | string \| Array\<string\> | No  | Yes| CA certificate of the server, which is used to authenticate the digital certificate of the server. The default value is the preset CA certificate<sup>12+</sup>. A maximum of 1000 certificates can be set.|
-| cert                  | string                                                              | No  | Yes| Digital certificate of the local client.                |
+| cert                  | string \| Array\<string\>         | No  | Yes| Digital certificate of the local client. An array can be passed since API version 24. A maximum of 1000 certificates can be set.                |
 | key                   | string                                                  | No  | Yes| Private key of the local digital certificate.                  |
 | password                | string                                                  | No  | Yes| Password for reading the private key.                     |
 | protocols             | [Protocol](#protocol9) \|Array\<[Protocol](#protocol9)\> | No  | Yes| TLS protocol version. The default value is **TLSv1.2**.                 |
@@ -8339,7 +8400,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -8410,7 +8471,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -8469,7 +8530,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -8533,7 +8594,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -8603,7 +8664,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -8667,7 +8728,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -8754,7 +8815,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -8835,7 +8896,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -8903,7 +8964,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -8969,7 +9030,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9034,7 +9095,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9135,7 +9196,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9196,7 +9257,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9261,7 +9322,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9322,7 +9383,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9391,7 +9452,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9471,7 +9532,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9545,7 +9606,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9610,7 +9671,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9676,7 +9737,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9738,7 +9799,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9801,7 +9862,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9864,7 +9925,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9930,7 +9991,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -9996,7 +10057,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10061,7 +10122,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10123,7 +10184,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10186,7 +10247,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10251,7 +10312,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10324,7 +10385,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10385,7 +10446,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10453,7 +10514,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10525,7 +10586,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10584,7 +10645,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10648,7 +10709,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,
@@ -10708,7 +10769,7 @@ let netAddress: socket.NetAddress = {
 }
 let tlsSecureOptions: socket.TLSSecureOptions = {
   key: "xxxx",
-  cert: "xxxx",
+  cert: ["xxxx"],
   ca: ["xxxx"],
   password: "xxxx",
   protocols: socket.Protocol.TLSv12,

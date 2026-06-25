@@ -1,8 +1,8 @@
 # 动画
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -67,7 +67,7 @@
 
 **图1** 静态动画效果图
 
-![zh-cn_image_0000001071134933](figures/zh-cn_image_0000001071134933.png)
+![Static-Animation](figures/Static-Animation.png)
 
 
 ## 连续动画
@@ -166,4 +166,4 @@ export default {
 
 **图2** 连续动画效果图
 
-![zh-cn_image_0000001063148757](figures/zh-cn_image_0000001063148757.gif)
+![Continuous-Animation](figures/Continuous-Animation.gif)

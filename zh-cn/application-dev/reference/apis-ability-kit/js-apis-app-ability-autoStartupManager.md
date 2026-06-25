@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zhu-feimo; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 autoStartupManager模块提供获取自身应用的开机自启状态。
 
@@ -65,6 +65,39 @@ export default class EntryAbility extends UIAbility {
       let msg = (err as BusinessError).message;
       console.error(`getAutoStartupStatusForSelf failed, err code: ${code}, err msg: ${msg}.`);
     }
+  }
+}
+```
+
+## autoStartupManager.isAutoStartupSupported
+
+isAutoStartupSupported(): boolean
+
+检查当前设备是否支持开机自启动。
+
+> **说明：**
+>
+>  建议在调用[autoStartupManager.getAutoStartupStatusForSelf](#autostartupmanagergetautostartupstatusforself) 之前，先调用该接口检查设备能力。如果返回false，则表明当前设备不支持开机自启动。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型  | 说明                                  |
+| -------- | -------------------------------------------- |
+| boolean | 当前设备是否支持开机自启动。true：支持，false：不支持。|
+
+**示例**：
+
+```ts
+import { autoStartupManager, UIAbility } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    const isSupported: boolean = autoStartupManager.isAutoStartupSupported();
+    console.info(`isAutoStartupSupported: ${isSupported}.`);
   }
 }
 ```

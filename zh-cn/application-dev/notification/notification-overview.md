@@ -1,13 +1,12 @@
 # Notification Kit简介
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-Notification Kit（用户通知服务）为开发者提供本地通知发布通道，开发者可借助Notification Kit将应用产生的通知直接在客户端本地推送给用户，本地通知根据通知类型及发布场景会产生对应的铃声、震动、横幅、锁屏、息屏、通知栏提醒和显示。
+Notification Kit（用户通知服务）为开发者提供本地通知发布通道，开发者可借助Notification Kit将应用产生的通知直接在客户端本地推送给用户，本地通知根据通知类型及发布场景会产生对应的铃声、振动、横幅、锁屏、自动亮屏、状态栏图标和通知中心的显示。
 
 ## 使用场景
 当应用进程处于运行时，开发者可以使用Notification Kit向用户发布通知。<!--RP1--><!--RP1End-->
@@ -68,3 +67,5 @@ Notification Kit中常用的通知样式如下：
 - Notification Kit创建的通知会即时显示在通知中心等系统入口。如果开发者希望在应用退到后台或进程终止后仍然有一些提醒用户的定时类通知，例如购物类应用抢购提醒等，可通过[`Background Tasks Kit`](../task-management/background-task-overview.md)创建。目前支持基于倒计时、日历、闹钟等类型的通知提醒功能。
 - 开发者可通过[`Ability Kit`](../application-models/abilitykit-overview.md)的[`getWantAgent`](../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagentgetwantagent)接口设置用户点击通知后的行为意图。<!--RP2-->
 <!--RP2End-->
+
+<!--RP4--><!--RP4End-->

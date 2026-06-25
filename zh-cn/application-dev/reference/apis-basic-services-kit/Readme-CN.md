@@ -17,6 +17,7 @@
     <!--DelEnd-->
   - 设备管理<!--device-management-arkts-->
     - [@ohos.batteryInfo (电量信息)](js-apis-battery-info.md)
+    - [@ohos.busManager.serial (串口通信管理)](js-apis-busmanager-serial.md)
     - [@ohos.deviceInfo (设备信息)](js-apis-device-info.md)
     - [@ohos.power (系统电源管理)](js-apis-power.md)
     - [@ohos.runningLock (Runninglock锁)](js-apis-runninglock.md)
@@ -27,6 +28,7 @@
     - [@ohos.batteryInfo (电量信息)(系统接口)](js-apis-battery-info-sys.md)
     - [@ohos.batteryStatistics (耗电统计)(系统接口)](js-apis-batteryStatistics-sys.md)
     - [@ohos.brightness (屏幕亮度)(系统接口)](js-apis-brightness-sys.md)
+    - [@ohos.busManager.serial (串口通信管理)(系统接口)](js-apis-busmanager-serial-sys.md)
     - [@ohos.charger (充电类型)(系统接口)](js-apis-charger-sys.md)
     - [@ohos.deviceAttest (设备证明)(系统接口)](js-apis-deviceAttest-sys.md)
     - [@ohos.power (系统电源管理)(系统接口)](js-apis-power-sys.md)
@@ -58,12 +60,12 @@
   - 进程线程通信<!--process-thread-communi-arkts-->
     - [系统定义的公共事件](common_event/commonEventManager-definitions.md)
     <!--Del-->
-    - [系统定义的公共事件定义 (系统接口)](common_event/commonEventManager-definitions-sys.md)
+    - [系统定义的公共事件(系统接口)](common_event/commonEventManager-definitions-sys.md)
     <!--DelEnd-->
     - [@ohos.commonEventManager (公共事件模块)](js-apis-commonEventManager.md)
     - [@ohos.events.emitter (Emitter)](js-apis-emitter.md)
     <!--Del-->
-    - [@ohos.commonEventManager (公共事件模块)(系统接口)](js-apis-commonEventManager-sys.md)
+    - [@ohos.commonEventManager (公共事件模块)(系统应用)](js-apis-commonEventManager-sys.md)
     - [@ohos.application.StaticSubscriberExtensionAbility (StaticSubscriberExtensionAbility)(系统接口)](js-apis-application-staticSubscriberExtensionAbility-sys.md)
     - [@ohos.application.StaticSubscriberExtensionContext (StaticSubscriberExtensionContext)(系统接口)](js-apis-application-StaticSubscriberExtensionContext-sys.md)
     <!--DelEnd-->
@@ -77,12 +79,13 @@
     - [@ohos.ai.intelligentVoice (智能语音)(系统接口)](js-apis-intelligentVoice-sys.md)
     <!--DelEnd-->
     - [@ohos.base (公共回调信息)](js-apis-base.md)
-    - [@ohos.annotation (系统注解)](js-apis-annotation.md)
+    - [@ohos.annotation (注解)](js-apis-annotation.md)
     - [@ohos.customization.customConfig (定制配置)](js-apis-customization-customConfig.md)
     - [@ohos.settings (设置数据项名称)](js-apis-settings.md)
     - [@ohos.wallpaper (壁纸)](js-apis-wallpaper.md)
     - [@ohos.resourceschedule.systemload (性能功耗热融合档位)](js-apis-resourceschedule-systemload.md)
     - [@ohos.systemDateTime (系统时间、时区)](js-apis-date-time.md)
+    - [@ohos.intelligentScene (情景模式)](js-apis-intelligentScene.md)
     <!--Del-->
     - [@ohos.configPolicy (配置策略)(系统接口)](js-apis-configPolicy-sys.md)
     - [@ohos.settings (设置数据项名称)(系统接口)](js-apis-settings-sys.md)
@@ -91,7 +94,6 @@
     - [@ohos.wallpaper (壁纸)(系统接口)](js-apis-wallpaper-sys.md)
     - [@ohos.WallpaperExtensionAbility (WallpaperExtensionAbility)(系统接口)](js-apis-WallpaperExtensionAbility-sys.md)
     - [@ohos.systemTimer (系统定时器)(系统接口)](js-apis-system-timer-sys.md)
-    - [@ohos.intelligentScene (情景模式)](js-apis-intelligentScene.md)
     <!--DelEnd-->
   - 已停止维护的接口<!--basic-services-arkts-dep-->
     - [系统公共事件定义](common_event/commonEvent-definitions.md)
@@ -103,11 +105,11 @@
     - [@system.request (上传下载)](js-apis-system-request.md)
     - [@ohos.screenLock (锁屏管理)](js-apis-screen-lock.md)
     <!--Del-->
-    - [@ohos.commonEvent (公共事件模块)(系统接口)](js-apis-commonEvent-sys.md)
+    - [@ohos.commonEvent (公共事件模块)(系统应用)(已废弃)](js-apis-commonEvent-sys.md)
     - [@ohos.usb (USB管理)(系统接口)](js-apis-usb-deprecated-sys.md)
     - [@ohos.systemParameter (系统属性)(系统接口)](js-apis-system-parameter-sys.md)
     <!--DelEnd-->
-    - [@ohos.systemTime(系统时间、时区)](js-apis-system-time.md)
+    - [@ohos.systemTime (系统时间、时区)](js-apis-system-time.md)
 - C API<!--basic-services-c-->
   - 模块<!--basic-services-module-->
     - [OH_CommonEvent](capi-oh-commonevent.md)
@@ -156,6 +158,7 @@
     - [Scan_ScannerOptions](capi-oh-scan-scan-scanneroptions.md)
 - 错误码<!--basic-services-arkts-errcode-->
   - [USB服务错误码](errorcode-usb.md)
+  - [串口管理错误码](errorcode-busmanager-serial.md)
   - [RunningLock锁错误码](errorcode-runninglock.md)
   - [zlib子系统错误码](errorcode-zlib.md)
   <!--Del-->
@@ -168,7 +171,7 @@
   <!--DelEnd-->
   - [热管理错误码](errorcode-thermal.md)
   - [上传下载错误码](errorcode-request.md)
-  - [时间时区错误码](errorcode-time.md)
+  - [时间时区服务错误码](errorcode-time.md)
   - [事件错误码](errorcode-CommonEventService.md)
   <!--Del-->
   - [系统参数错误码](errorcode-system-parameterV9.md)
@@ -181,9 +184,10 @@
   - [打印服务错误码](errorcode-print.md)
   - [设置数据项错误码](errorcode-settings.md)
   - [划词服务错误码](errorcode-selection.md)
+  - [情景模式错误码](errorcode-intelligentScene.md)
   <!--Del-->
   - [锁屏服务错误码](errorcode-screenlock.md)
   - [设备证明错误码](errorcode-deviceAttest.md)
   - [智能语音错误码](errorcode-intelligentVoice.md)
-  - [情景模式错误码](errorcode-intelligentScene.md)
   <!--DelEnd-->
+  - [deviceInfo错误码](errorcode-device-info.md)

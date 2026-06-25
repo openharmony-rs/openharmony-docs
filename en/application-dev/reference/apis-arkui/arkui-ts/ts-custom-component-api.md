@@ -1,8 +1,8 @@
 # Custom Component Built-in APIs
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -152,7 +152,7 @@ Queries the information of the nearest **NavDestination** component (a navigatio
 
 | Name| Type                                         | Mandatory| Description                                         |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| isInner  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to search inward for the nearest **NavDestination** component in the navigation stack.<br>**true**: Search inward.<br>**false**: Search outward.|
+| isInner  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to search inward for the nearest **NavDestination** component in the navigation stack.<br>**true**: Search inward.<br>**false**: Search outward.|
 
 **Return value**
 
@@ -177,7 +177,7 @@ struct NavigationExample {
           .height(40)
           .margin(20)
           .onClick(() => {
-            this.pageInfo.pushPath({ name: 'pageOne' }); // Push the navigation destination page specified by name to the navigation stack.
+            this.pageInfo.pushPath({ name: 'pageOne' }); // Push the NavDestination page specified by name to the navigation path stack.
           })
       }
     }.title('NavIndex')
@@ -210,7 +210,7 @@ export struct PageOneComponent {
             this.navDesInfo = this.queryNavDestinationInfo(true);
             this.text = JSON.stringify(this.navDesInfo?.name).toString();
           })
-        Text('The NavDestination component found inward is:' + this.text)
+        Text('The NavDestination component found inward is: ' + this.text)
           .width('80%')
           .height(50)
           .margin(50)
@@ -238,7 +238,7 @@ struct MyComponent {
           this.navDesInfo = this.queryNavDestinationInfo(false);
           this.text = JSON.stringify(this.navDesInfo?.name).toString();
         })
-      Text('The NavDestination component found outward is:' + this.text)
+      Text('The NavDestination component found outward is: ' + this.text)
         .width('80%')
         .height(50)
         .margin(50)
@@ -249,7 +249,7 @@ struct MyComponent {
 ```
 
 ```ts
-//route_map.json
+// route_map.json
 {
   "routerMap": [
     {

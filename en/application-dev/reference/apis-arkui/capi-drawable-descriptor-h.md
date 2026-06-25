@@ -28,9 +28,9 @@ Declares the APIs of **NativeDrawableDescriptor**.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md) | ArkUI_DrawableDescriptor | Defines a struct for the **DrawableDescriptor** object.|
+| [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md) | ArkUI_DrawableDescriptor | Defines a **DrawableDescriptor** object.|
 | [OH_PixelmapNative](../apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md) | - | Defines an **OH_PixelmapNative** object on the native side using Image Kit.|
-| [OH_PixelmapNative*](capi-arkui-nativemodule-oh-pixelmapnative8h.md) | OH_PixelmapNativeHandle | Defines a struct for the pointer to an **OH_PixelmapNative** object.|
+| [OH_PixelmapNative*](capi-arkui-nativemodule-oh-pixelmapnative8h.md) | OH_PixelmapNativeHandle | Defines the pointer to an **OH_PixelmapNative** object.|
 | [ArkUI_Node](capi-arkui-nativemodule-arkui-node-descriptor.md) | - | Defines the ArkUI native component instance object.<br>**Since**: 22|
 | [ArkUI_Node*](capi-arkui-nativemodule-arkui-node8h.md) | ArkUI_NodeHandle | Defines the pointer type for an ArkUI native component instance object.<br>**Since**: 22|
 | [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptoranimationcontroller.md) | ArkUI_DrawableDescriptor_AnimationController | Defines the DrawableDescriptor animation controller object.<br>**Since**: 22|
@@ -40,6 +40,7 @@ Declares the APIs of **NativeDrawableDescriptor**.
 | Name                                                                 | typedef Keyword                     | Description                               |
 |---------------------------------------------------------------------|---------------------------------|-----------------------------------|
 | [DrawableDescriptor_AnimationStatus](#drawabledescriptor_animationstatus) | DrawableDescriptor_AnimationStatus | Enumerates the playback states of DrawableDescriptor animations.          |
+| [DrawableDescriptor_AnimationStopMode](#drawabledescriptor_animationstopmode) | DrawableDescriptor_AnimationStopMode | Enumerates the stop modes of [DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md) animations.<br>**Since**: 24|
 
 ### Functions
 
@@ -48,10 +49,10 @@ Declares the APIs of **NativeDrawableDescriptor**.
 | -- | -- |
 | [ArkUI_DrawableDescriptor* OH_ArkUI_DrawableDescriptor_CreateFromPixelMap(OH_PixelmapNativeHandle pixelMap)](#oh_arkui_drawabledescriptor_createfrompixelmap) | Creates a **DrawableDescriptor** object from a **PixelMap** object.|
 | [ArkUI_DrawableDescriptor* OH_ArkUI_DrawableDescriptor_CreateFromAnimatedPixelMap(OH_PixelmapNativeHandle* array, int32_t size)](#oh_arkui_drawabledescriptor_createfromanimatedpixelmap) | Creates a **DrawableDescriptor** object from an array of **PixelMap** objects.|
-| [void OH_ArkUI_DrawableDescriptor_Dispose(ArkUI_DrawableDescriptor* drawableDescriptor)](#oh_arkui_drawabledescriptor_dispose) | Disposes the pointer to a **DrawableDescriptor** object.|
+| [void OH_ArkUI_DrawableDescriptor_Dispose(ArkUI_DrawableDescriptor* drawableDescriptor)](#oh_arkui_drawabledescriptor_dispose) | Disposes of the pointer to a **DrawableDescriptor** object.|
 | [OH_PixelmapNativeHandle OH_ArkUI_DrawableDescriptor_GetStaticPixelMap(ArkUI_DrawableDescriptor* drawableDescriptor)](#oh_arkui_drawabledescriptor_getstaticpixelmap) | Obtains the pointer to a **PixelMap** object.|
 | [OH_PixelmapNativeHandle* OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArray(ArkUI_DrawableDescriptor* drawableDescriptor)](#oh_arkui_drawabledescriptor_getanimatedpixelmaparray) | Obtains an array of **PixelMap** objects for playing an animation.|
-| [int32_t OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArraySize(ArkUI_DrawableDescriptor* drawableDescriptor)](#oh_arkui_drawabledescriptor_getanimatedpixelmaparraysize) | Obtains an array of **PixelMap** objects for playing an animation.|
+| [int32_t OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArraySize(ArkUI_DrawableDescriptor* drawableDescriptor)](#oh_arkui_drawabledescriptor_getanimatedpixelmaparraysize) | Obtains the size of the **PixelMap** object array for playing an animation.|
 | [void OH_ArkUI_DrawableDescriptor_SetAnimationDuration(ArkUI_DrawableDescriptor* drawableDescriptor, int32_t duration)](#oh_arkui_drawabledescriptor_setanimationduration) | Sets the total playback duration for an array of **PixelMap** objects.|
 | [int32_t OH_ArkUI_DrawableDescriptor_GetAnimationDuration(ArkUI_DrawableDescriptor* drawableDescriptor)](#oh_arkui_drawabledescriptor_getanimationduration) | Obtains the total playback duration for an array of **PixelMap** objects.|
 | [void OH_ArkUI_DrawableDescriptor_SetAnimationIteration(ArkUI_DrawableDescriptor* drawableDescriptor, int32_t iteration)](#oh_arkui_drawabledescriptor_setanimationiteration) | Sets the number of times that an array of **PixelMap** objects is played.|
@@ -60,8 +61,10 @@ Declares the APIs of **NativeDrawableDescriptor**.
 | [int32_t OH_ArkUI_DrawableDescriptor_GetAnimationFrameDurations(ArkUI_DrawableDescriptor* drawableDescriptor, uint32_t* durations, size_t* size)](#oh_arkui_drawabledescriptor_getanimationframedurations) | Obtains the duration of each frame in a DrawableDescriptor animation.|
 | [int32_t OH_ArkUI_DrawableDescriptor_SetAnimationAutoPlay(ArkUI_DrawableDescriptor* drawableDescriptor, uint32_t autoPlay)](#oh_arkui_drawabledescriptor_setanimationautoplay) | Specifies whether to enable autoplay for a DrawableDescriptor animation.|
 | [int32_t OH_ArkUI_DrawableDescriptor_GetAnimationAutoPlay(ArkUI_DrawableDescriptor* drawableDescriptor, uint32_t* autoPlay)](#oh_arkui_drawabledescriptor_getanimationautoplay) | Checks whether autoplay is enabled for a DrawableDescriptor animation.|
+| [int32_t OH_ArkUI_DrawableDescriptor_SetAnimationStopMode(ArkUI_DrawableDescriptor* drawableDescriptor, DrawableDescriptor_AnimationStopMode mode)](#oh_arkui_drawabledescriptor_setanimationstopmode) | Sets the stop mode for an animation.|
+| [int32_t OH_ArkUI_DrawableDescriptor_GetAnimationStopMode(const ArkUI_DrawableDescriptor* drawableDescriptor, DrawableDescriptor_AnimationStopMode* mode)](#oh_arkui_drawabledescriptor_getanimationstopmode) | Obtains the stop mode of an animation.|
 | [int32_t OH_ArkUI_DrawableDescriptor_CreateAnimationController(ArkUI_DrawableDescriptor* drawableDescriptor, ArkUI_NodeHandle node, ArkUI_DrawableDescriptor_AnimationController\*\* controller)](#oh_arkui_drawabledescriptor_createanimationcontroller) | Creates an animation controller for the DrawableDescriptor.|
-| [void OH_ArkUI_DrawableDescriptor_DisposeAnimationController( ArkUI_DrawableDescriptor_AnimationController* controller)](#oh_arkui_drawabledescriptor_disposeanimationcontroller) | Disposes the DrawableDescriptor animation controller.|
+| [void OH_ArkUI_DrawableDescriptor_DisposeAnimationController( ArkUI_DrawableDescriptor_AnimationController* controller)](#oh_arkui_drawabledescriptor_disposeanimationcontroller) | Disposes of the DrawableDescriptor animation controller.|
 | [int32_t OH_ArkUI_DrawableDescriptor_StartAnimation(ArkUI_DrawableDescriptor_AnimationController* controller)](#oh_arkui_drawabledescriptor_startanimation) | Starts the DrawableDescriptor animation from the first frame.|
 | [int32_t OH_ArkUI_DrawableDescriptor_StopAnimation(ArkUI_DrawableDescriptor_AnimationController* controller)](#oh_arkui_drawabledescriptor_stopanimation) | Stops the DrawableDescriptor animation and returns to the first frame.|
 | [int32_t OH_ArkUI_DrawableDescriptor_ResumeAnimation(ArkUI_DrawableDescriptor_AnimationController* controller)](#oh_arkui_drawabledescriptor_resumeanimation) | Resumes the DrawableDescriptor animation from the current frame.|
@@ -90,6 +93,23 @@ Enumerates the playback states of DrawableDescriptor animations.
 | DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_PAUSED = 2 | The animation is paused.|
 | DRAWABLE_DESCRIPTOR_ANIMATION_STATUS_STOPPED = 3 | The animation is stopped.|
 
+### DrawableDescriptor_AnimationStopMode
+
+```c
+enum DrawableDescriptor_AnimationStopMode
+```
+
+**Description**
+
+Enumerates the stop modes of [DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md) animations.
+
+**Since**: 24
+
+| Value| Description|
+| -- | -- |
+| DRAWABLE_DESCRIPTOR_ANIMATION_FIRST_FRAME = 0 | The animation returns to the first frame when it stops.|
+| DRAWABLE_DESCRIPTOR_ANIMATION_LAST_FRAME = 1 | The animation stays at the last frame when it stops.|
+
 ## Function Description
 
 ### OH_ArkUI_DrawableDescriptor_CreateFromPixelMap()
@@ -101,7 +121,7 @@ ArkUI_DrawableDescriptor* OH_ArkUI_DrawableDescriptor_CreateFromPixelMap(OH_Pixe
 **Description**
 
 
-Creates a **DrawableDescriptor** object using [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md).
+Creates a **DrawableDescriptor** object from a **PixelMap** object.
 
 **Since**: 12
 
@@ -110,7 +130,7 @@ Creates a **DrawableDescriptor** object using [PixelMap](../apis-image-kit/arkts
 
 | Name| Description|
 | -- | -- |
-| [OH_PixelmapNativeHandle](capi-arkui-nativemodule-oh-pixelmapnative8h.md) pixelMap | Pointer to a **PixelMap** object.|
+| [OH_PixelmapNativeHandle](capi-arkui-nativemodule-oh-pixelmapnative8h.md) pixelMap | Pointer to the [OH_PixelmapNative](./capi-struct.md) object.|
 
 **Return value**
 
@@ -154,7 +174,7 @@ void OH_ArkUI_DrawableDescriptor_Dispose(ArkUI_DrawableDescriptor* drawableDescr
 **Description**
 
 
-Disposes the pointer to a **DrawableDescriptor** object.
+Disposes of the pointer to a **DrawableDescriptor** object.
 
 **Since**: 12
 
@@ -189,7 +209,7 @@ Obtains the pointer to a **PixelMap** object.
 
 | Type| Description|
 | -- | -- |
-| [OH_PixelmapNativeHandle](capi-arkui-nativemodule-oh-pixelmapnative8h.md) | Pointer to a **PixelMap** object.|
+| [OH_PixelmapNativeHandle](capi-arkui-nativemodule-oh-pixelmapnative8h.md) | Pointer to the [OH_PixelmapNative](./capi-struct.md) object.|
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArray()
 
@@ -226,7 +246,7 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArraySize(ArkUI_DrawableD
 **Description**
 
 
-Obtains an array of **PixelMap** objects for playing an animation.
+Obtains the size of the **PixelMap** object array for playing an animation.
 
 **Since**: 12
 
@@ -262,7 +282,7 @@ Sets the total playback duration for an array of **PixelMap** objects.
 | Name| Description|
 | -- | -- |
 | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | Pointer to a **DrawableDescriptor** object.|
-| int32_t duration | Total playback duration, in milliseconds.|
+| int32_t duration | Total playback duration, in ms. Value range: [0, +∞). If a negative value is passed in, **0** is used.|
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimationDuration()
 
@@ -288,7 +308,7 @@ Obtains the total playback duration for an array of **PixelMap** objects.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Total playback duration, in milliseconds.|
+| int32_t | Total playback duration, in ms.|
 
 ### OH_ArkUI_DrawableDescriptor_SetAnimationIteration()
 
@@ -309,7 +329,7 @@ Sets the number of times that an array of **PixelMap** objects is played.
 | Name| Description|
 | -- | -- |
 | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | Pointer to a **DrawableDescriptor** object.|
-| int32_t iteration | Number of playback times.|
+| int32_t iteration | Number of playback times. Value range: [0, +∞). The value **0** indicates infinite playback. If a negative value is passed in, **0** is used.|
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimationIteration()
 
@@ -354,7 +374,7 @@ Sets the duration for each frame in a DrawableDescriptor animation.
 | Name| Description|
 | -- | -- |
 | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | Pointer to a **DrawableDescriptor** object.|
-| uint32_t* durations | Duration for each frame in the DrawableDescriptor animation, in milliseconds.<br>If this parameter is not set, the playback follows the total duration. The setting of this parameter takes precedence over that of **duration**. If both [duration](js-apis-animator.md#duration18) and **frameDurations** are set, **duration** does not take effect.<br>The array size must match the number of frames in the PixelMap image array.<br>Valid range for each frame's playback duration: [0, +∞).|
+| uint32_t* durations | Array of the playback durations for each frame in the animation, in ms.<br>If this parameter is not set, the playback follows the total duration. This parameter takes precedence over [OH_ArkUI_DrawableDescriptor_SetAnimationDuration](#oh_arkui_drawabledescriptor_setanimationduration). That is, if both **OH_ArkUI_DrawableDescriptor_SetAnimationDuration** and **OH_ArkUI_DrawableDescriptor_SetAnimationFrameDurations** are set, **OH_ArkUI_DrawableDescriptor_SetAnimationDuration** does not take effect.<br>The array size must match the number of frames in the PixelMap image array.<br>Valid range for each frame's playback duration: [0, +∞). Default value: evenly distributed total duration.|
 | size_t size | Array size.|
 
 **Return value**
@@ -380,7 +400,7 @@ Obtains the duration of each frame in a DrawableDescriptor animation.
 | Name| Description|
 | -- | -- |
 | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | Pointer to a **DrawableDescriptor** object.|
-| uint32_t* durations | Array of the playback durations for each frame in the animation, in milliseconds.|
+| uint32_t* durations | Array of the playback durations for each frame in the animation, in ms.|
 | size_t* size | Array size.|
 
 **Return value**
@@ -440,6 +460,56 @@ Checks whether autoplay is enabled for a DrawableDescriptor animation.
 | -- | -- |
 | int32_t | Result code.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
+### OH_ArkUI_DrawableDescriptor_SetAnimationStopMode()
+
+```c
+int32_t OH_ArkUI_DrawableDescriptor_SetAnimationStopMode(ArkUI_DrawableDescriptor* drawableDescriptor, DrawableDescriptor_AnimationStopMode mode)
+```
+
+**Description**
+
+Sets the stop mode for an animation.
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | Pointer to the [DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md) object.|
+| [DrawableDescriptor_AnimationStopMode](#drawabledescriptor_animationstopmode) mode | Stop mode of an animation.<br>The value is an enumerated value of [DrawableDescriptor_AnimationStopMode](#drawabledescriptor_animationstopmode). The default value is [DRAWABLE_DESCRIPTOR_ANIMATION_FIRST_FRAME](#drawabledescriptor_animationstopmode).|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Result code.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_DrawableDescriptor_GetAnimationStopMode()
+
+```c
+int32_t OH_ArkUI_DrawableDescriptor_GetAnimationStopMode(const ArkUI_DrawableDescriptor* drawableDescriptor, DrawableDescriptor_AnimationStopMode* mode)
+```
+
+**Description**
+
+Obtains the stop mode of an animation.
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | Pointer to the [DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md) object.|
+| [DrawableDescriptor_AnimationStopMode](#drawabledescriptor_animationstopmode)* mode | Stop mode of an animation.<br>For details about the values, see [DrawableDescriptor_AnimationStopMode](#drawabledescriptor_animationstopmode).|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Result code.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
 ### OH_ArkUI_DrawableDescriptor_CreateAnimationController()
 
 ```c
@@ -475,7 +545,7 @@ void OH_ArkUI_DrawableDescriptor_DisposeAnimationController(ArkUI_DrawableDescri
 
 **Description**
 
-Disposes the DrawableDescriptor animation controller.
+Disposes of the DrawableDescriptor animation controller.
 
 **Since**: 22
 
@@ -488,7 +558,7 @@ Disposes the DrawableDescriptor animation controller.
 ### OH_ArkUI_DrawableDescriptor_StartAnimation()
 
 ```c
-int32_t OH_ArkUI_DrawableDescriptor_StartAnimation(ArkUI_DrawableDescriptor_AnimationController* controller);
+int32_t OH_ArkUI_DrawableDescriptor_StartAnimation(ArkUI_DrawableDescriptor_AnimationController* controller)
 ```
 
 **Description**
@@ -512,7 +582,7 @@ Starts playback from the first frame.
 ### OH_ArkUI_DrawableDescriptor_StopAnimation()
 
 ```c
-int32_t OH_ArkUI_DrawableDescriptor_StopAnimation(ArkUI_DrawableDescriptor_AnimationController* controller);
+int32_t OH_ArkUI_DrawableDescriptor_StopAnimation(ArkUI_DrawableDescriptor_AnimationController* controller)
 ```
 
 **Description**
@@ -536,7 +606,7 @@ Stops the DrawableDescriptor animation and returns to the first frame.
 ### OH_ArkUI_DrawableDescriptor_ResumeAnimation()
 
 ```c
-int32_t OH_ArkUI_DrawableDescriptor_ResumeAnimation(ArkUI_DrawableDescriptor_AnimationController* controller);
+int32_t OH_ArkUI_DrawableDescriptor_ResumeAnimation(ArkUI_DrawableDescriptor_AnimationController* controller)
 ```
 
 **Description**
@@ -560,7 +630,7 @@ Resumes the DrawableDescriptor animation from the current frame.
 ### OH_ArkUI_DrawableDescriptor_PauseAnimation()
 
 ```c
-int32_t OH_ArkUI_DrawableDescriptor_PauseAnimation(ArkUI_DrawableDescriptor_AnimationController* controller);
+int32_t OH_ArkUI_DrawableDescriptor_PauseAnimation(ArkUI_DrawableDescriptor_AnimationController* controller)
 ```
 
 **Description**
@@ -584,7 +654,7 @@ Pauses playback on the current frame.
 ### OH_ArkUI_DrawableDescriptor_GetAnimationStatus()
 
 ```c
-int32_t OH_ArkUI_DrawableDescriptor_GetAnimationStatus(ArkUI_DrawableDescriptor_AnimationController* controller, DrawableDescriptor_AnimationStatus* status);
+int32_t OH_ArkUI_DrawableDescriptor_GetAnimationStatus(ArkUI_DrawableDescriptor_AnimationController* controller, DrawableDescriptor_AnimationStatus* status)
 ```
 
 **Description**

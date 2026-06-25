@@ -2,8 +2,8 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @lu-tao-->
-<!--Designer: @martin-duan-->
+<!--Owner: @Lutao98-->
+<!--Designer: @martin_duan-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -31,6 +31,7 @@ Provides the constants of all rule types.
 | RULE_CAUTION_PRINT_LOG                           | bigint   | 1ULL << 63 | Alarm rule, which is programmed to print a log when an alarm is generated.                           |
 | RULE_CAUTION_TRIGGER_CRASH                       | bigint   | 1ULL << 62 | Alarm rule, which is programmed to force the application to exit when an alarm is generated.                         |
 | RULE_THREAD_CHECK_SLOW_PROCESS                   | bigint   | 1ULL       | Caution rule, which is programmed to detect whether any time-consuming function is invoked.                     |
+| RULE_THREAD_CHECK_NETWORK_USAGE                  | bigint   | 1ULL << 1  | Caution rule, which is programmed to detect whether the thread invokes a time-consuming network API.<br>**Since:** 26.0.0 |
 | RULE_CHECK_ABILITY_CONNECTION_LEAK               | bigint   | 1ULL << 33 | Caution rule, which is programmed to detect whether ability leakage has occurred.                     |
 | RULE_CHECK_ARKUI_PERFORMANCE<sup>11+</sup>       | bigint   | 1ULL << 34 | Caution rule, which is programmed to detect the ArkUI performance.                              |
 
@@ -228,7 +229,7 @@ Obtains a collection of thread, process, and alarm rules that have been added.
 hichecker.addCheckRule(hichecker.RULE_CAUTION_PRINT_LOG);
 
 // Obtain the collection of added rules.
-hichecker.getRule();   // return 1n;
+hichecker.getRule(); // return 1n;
 ```
 
 ## hichecker.contains<sup>(deprecated)</sup>

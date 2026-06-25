@@ -1,8 +1,8 @@
 # 公共事件简介
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -12,7 +12,7 @@ CES（Common Event Service，公共事件服务）为应用程序提供订阅、
 公共事件从系统角度可分为：系统公共事件和自定义公共事件。
 
 
-- 系统公共事件：CES内部定义的公共事件，当前仅支持系统应用和系统服务发布，例如HAP安装、更新、卸载等公共事件。目前支持的系统公共事件请参见[系统公共事件列表](../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md)。
+- 系统公共事件：CES内部定义的公共事件，当前仅支持系统应用和系统服务发布，例如HAP安装、更新、卸载等公共事件。目前支持的系统公共事件请参见[系统定义的公共事件](../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md)。
 - 自定义公共事件：应用定义的公共事件，可用于实现跨进程的事件通信能力。
 
 
@@ -46,3 +46,5 @@ CES（Common Event Service，公共事件服务）为应用程序提供订阅、
   - 通过[CommonEventSubscribeInfo](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventSubscribeInfo.md)中的publisherPermission参数指定发布者所需权限。
   - 通过[CommonEventSubscribeInfo](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventSubscribeInfo.md)中的publisherBundleName参数指定发布者的包名。
 - 自定义公共事件名称应确保全局唯一，否则可能与其他公共事件冲突。
+
+<!--RP1--><!--RP1End-->

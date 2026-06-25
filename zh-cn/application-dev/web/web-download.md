@@ -12,7 +12,7 @@
 
 通过[setDownloadDelegate()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setdownloaddelegate11)向Web组件注册一个DownloadDelegate来监听页面触发的下载任务。资源由Web组件来下载，Web组件会通过DownloadDelegate将下载的进度通知给应用。
 
-下面的示例中，在应用的rawfile中创建index.html以及download.html。应用启动后会创建一个Web组件并加载index.html，点击setDownloadDelegate按钮向Web组件注册一个DownloadDelegate，点击页面里的下载按钮的时候会触发一个下载任务，在DownloadDelegate中可以监听到下载的进度。
+下面的示例中，在应用的rawfile中创建index.html。应用启动后会创建一个Web组件并加载index.html，点击setDownloadDelegate按钮向Web组件注册一个DownloadDelegate，点击页面里的下载按钮的时候会触发一个下载任务，在DownloadDelegate中可以监听到下载的进度。
 
 默认路径在应用沙箱的web目录内，用户无法查看。如果希望用户能够查看，需要将下载路径修改到有访问权限的目录，比如Download目录，请参考[使用Web组件发起一个下载任务](#使用web组件发起一个下载任务)。
 
@@ -76,23 +76,12 @@ struct WebComponent {
 <!DOCTYPE html>
 <html>
 <body>
-// 点击视频右下方菜单的下载按钮会触发下载任务。
+<!-- 点击视频右下方菜单的下载按钮会触发下载任务。-->
 <video controls="controls" width="800px" height="580px"
        src="http://vjs.zencdn.net/v/oceans.mp4"
        type="video/mp4">
 </video>
 <a href='data:text/html,%3Ch1%3EHello%2C%20World%21%3C%2Fh1%3E' download='download.html'>下载download.html</a>
-</body>
-</html>
-```
-
-待下载的html文件。
-```html
-<!-- download.html -->
-<!DOCTYPE html>
-<html>
-<body>
-<h1>download test</h1>
 </body>
 </html>
 ```
@@ -356,7 +345,7 @@ struct WebComponent {
 
 ``` TypeScript
 import { util } from '@kit.ArkTS';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 const helper = new util.Base64Helper();
 
@@ -386,7 +375,7 @@ export namespace  DownloadUtil {
 
   export function fileExists(filePath: string): boolean {
     try {
-      return fs.accessSync(filePath);
+      return fileIo.accessSync(filePath);
     } catch (error) {
       return false;
     }
@@ -394,19 +383,19 @@ export namespace  DownloadUtil {
 
   export function mkDirectorySync(directoryPath: string, recursion?: boolean): void {
     try {
-      fs.mkdirSync(directoryPath, recursion ?? false);
+      fileIo.mkdirSync(directoryPath, recursion ?? false);
     } catch (error) {
       console.error(`mk dir error. err message: ${error.message}, err code: ${error.code}`);
     }
   }
 
   export function writeToFileSync(dir: string, fileName: string, msg: string): void {
-    let file = fs.openSync(dir + '/' + fileName, fs.OpenMode.WRITE_ONLY | fs.OpenMode.CREATE);
-    fs.writeSync(file.fd, msg);
+    let file = fileIo.openSync(dir + '/' + fileName, fileIo.OpenMode.WRITE_ONLY | fileIo.OpenMode.CREATE);
+    fileIo.writeSync(file.fd, msg);
   }
 
   export function readFileSync(dir: string, fileName: string): string {
-    return fs.readTextSync(dir + '/' + fileName);
+    return fileIo.readTextSync(dir + '/' + fileName);
   }
 
 }

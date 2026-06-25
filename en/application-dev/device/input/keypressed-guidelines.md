@@ -13,12 +13,12 @@ Each system function key has a default function, which is fixedly implemented by
 
 ## Constraints
 
-- The preferential response takes effect only when the application is in focus.
+- The preferential response feature takes effect only when the application window is the foreground focused window.
 - After an application selects specific system function keys to take precedence over the system's default response, the keys' default behavior is disabled. Therefore, the application must ensure the custom function is activated only when it intends to respond.
 
 ## Available APIs
 
-The following table lists the APIs related to key press event listening. For details about the APIs, see [ohos.multimodalInput.inputConsumer](../../reference/apis-input-kit/js-apis-inputconsumer.md).
+The following table lists common APIs for key press events. For details, see [@ohos.multimodalInput.inputConsumer (Global Shortcut Keys)](../../reference/apis-input-kit/js-apis-inputconsumer.md).
 
 | API | Description|
 | ------------------------------------------------------------ | -------------------------- |

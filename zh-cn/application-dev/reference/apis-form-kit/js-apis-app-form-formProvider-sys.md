@@ -1,9 +1,9 @@
 # @ohos.app.form.formProvider (formProvider)(系统接口)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 formProvider模块提供了获取卡片信息、更新卡片、设置卡片更新时间、请求发布卡片等能力。
@@ -338,6 +338,8 @@ activateSceneAnimation(formId: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Ability.Form
 
+**设备行为差异：** 该接口支持Phone中的部分机型，不支持的设备调用会返回[801](../errorcode-universal.md#801-该设备不支持此api)错误码。
+
 **系统接口：** 此接口为系统接口。
 
 **参数：**
@@ -394,6 +396,8 @@ deactivateSceneAnimation(formId: string): Promise&lt;void&gt;
 互动卡片请求切换到非激活态，只针对[场景动效类型互动卡片](../../form/arkts-ui-widget-configuration.md#sceneanimationparams标签)生效，使用Promise异步回调。互动卡片状态分为激活态和非激活态，非激活态下，互动卡片同普通卡片一致；激活态下，互动卡片支持拉起卡片提供方所开发的LiveFormExtensionAbility进程，实现互动卡片动效。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**设备行为差异：** 该接口支持Phone中的部分机型，不支持的设备调用会返回[801](../errorcode-universal.md#801-该设备不支持此api)错误码。
 
 **系统接口：** 此接口为系统接口。
 
@@ -460,7 +464,7 @@ updateTemplateFormDetailInfo(templateFormInfo: Array&lt;formInfo.TemplateFormDet
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- |-------|
-| templateFormInfo | Array&lt;[formInfo.TemplateFormDetailInfo](js-apis-app-form-formInfo.md#forminfo)&gt; | 是 | 指定的模板卡片静态配置信息。|
+| templateFormInfo | Array&lt;[formInfo.TemplateFormDetailInfo](js-apis-app-form-formInfo-sys.md#templateformdetailinfo23)&gt; | 是 | 指定的模板卡片静态配置信息。|
 
 **返回值：**
 
@@ -523,7 +527,7 @@ onPublishFormCrossBundleControl(callback: formInfo.PublishFormCrossBundleControl
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- |-------|
-| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo.md#forminfo) | 是 | 回调函数，返回跨应用加桌管控回调。|
+| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo-sys.md#publishformcrossbundlecontrolcallback23) | 是 | 回调函数，返回跨应用加桌管控回调。|
 
 **错误码：**
 
@@ -570,7 +574,7 @@ offPublishFormCrossBundleControl(callback?: formInfo.PublishFormCrossBundleContr
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- |-------|
-| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo.md#forminfo) | 否 | 回调函数，返回跨应用加桌管控回调。|
+| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo-sys.md#publishformcrossbundlecontrolcallback23) | 否 | 回调函数，返回跨应用加桌管控回调。|
 
 **错误码：**
 

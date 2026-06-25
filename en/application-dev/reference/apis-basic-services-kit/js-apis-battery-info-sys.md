@@ -5,7 +5,7 @@
 <!--Owner: @zhang-yinglie; @volcano_wang-->
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 The **batteryInfo** module provides APIs for querying the charger type, battery health status, and battery charging status.
 
@@ -49,7 +49,7 @@ Sets the battery configuration based on the specified scenario.
 
 For details about the error codes, see [Battery Info Error Codes](errorcode-battery-info.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 5100101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
@@ -93,7 +93,7 @@ Obtains the battery configuration based on the specified scenario.
 
 For details about the error codes, see [Battery Info Error Codes](errorcode-battery-info.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 5100101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
@@ -136,7 +136,7 @@ Checks whether the battery configuration is enabled based on the specified scena
 
 For details about the error codes, see [Battery Info Error Codes](errorcode-battery-info.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 5100101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |

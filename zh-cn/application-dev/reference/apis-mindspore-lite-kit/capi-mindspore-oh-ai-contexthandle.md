@@ -13,7 +13,7 @@ typedef void *OH_AI_ContextHandle
 
 ## 概述
 
-MindSpore的上下文信息的指针，该指针会指向Context。
+MindSpore上下文信息的指针，该指针会指向Context。
 
 **起始版本：** 9
 

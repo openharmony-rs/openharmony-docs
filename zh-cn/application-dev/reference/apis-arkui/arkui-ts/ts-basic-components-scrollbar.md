@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @shengu_lancer; @yylong-->
+<!--Owner: @shengu_lancer; @yylong; @rongShao-Z-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 滚动条组件ScrollBar，用于配合可滚动组件使用，如[ArcList](ts-container-arclist.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)、[WaterFlow](ts-container-waterflow.md)。
@@ -48,13 +48,15 @@ enableNestedScroll(enabled: Optional\<boolean>)
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                  |
 | ------ | ------- | ---- | ------------------------------------- |
-| enabled  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否执行嵌套滚动。设置为true执行嵌套滚动，设置为false不嵌套滚动。 <br/>默认值：false |
+| enabled  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 是否执行嵌套滚动。设置为true执行嵌套滚动，设置为false不嵌套滚动。 <br/>默认值：false |
 
 >  **说明：**
 >
@@ -72,17 +74,26 @@ scrollBarColor(color: Optional\<ColorMetrics\>)
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| color  |  [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)\> | 是   | 滚动条的颜色。<br/>默认值：ColorMetrics.numeric(0x66182431)   |
+| color  |  [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)\> | 是   | 滚动条的颜色。<br/>默认值：ColorMetrics.numeric(0x66182431)   |
 
 ## ScrollBarOptions对象说明
 
 滚动条组件参数。
+
+>  **说明：**
+>
+>  - ScrollBar组件负责定义可滚动区域的行为样式，ScrollBar的子节点负责定义滚动条的行为样式。
+>  - 滚动条组件与可滚动组件通过Scroller进行绑定，且只有当两者方向相同时，才能联动，ScrollBar与可滚动组件仅支持一对一绑定。
+>  - 从API version 12开始，ScrollBar组件没有子节点时，支持显示默认样式的滚动条。
+>  - ScrollBar组件的显隐是通过BarState设置，组件内部会自动根据BarState设置调整opacity来控制显隐，因此ScrollBar组件设置[opacity](./ts-universal-attributes-opacity.md#opacity18)属性不生效。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -93,14 +104,6 @@ scrollBarColor(color: Optional\<ColorMetrics\>)
 | scroller | [Scroller](ts-container-scroll.md#scroller) | 否 | 否 | 可滚动组件的控制器。用于与可滚动组件进行绑定。 |
 | direction | [ScrollBarDirection](#scrollbardirection枚举说明) | 否 | 是 | 滚动条的方向，控制可滚动组件对应方向的滚动。<br/>默认值：ScrollBarDirection.Vertical |
 | state | [BarState](ts-appendix-enums.md#barstate) | 否 | 是 | 滚动条状态。<br/>默认值：BarState.Auto |
-
->  **说明：**
->
-> ScrollBar组件负责定义可滚动区域的行为样式，ScrollBar的子节点负责定义滚动条的行为样式。
-> 
-> 滚动条组件与可滚动组件通过Scroller进行绑定，且只有当两者方向相同时，才能联动，ScrollBar与可滚动组件仅支持一对一绑定。
->
-> 从API version 12开始，ScrollBar组件没有子节点时，支持显示默认样式的滚动条。
 
 ## ScrollBarDirection枚举说明
 
@@ -164,7 +167,7 @@ struct ScrollBarExample {
 }
 ```
 
-![zh-cn_image_0000001232775585](figures/zh-cn_image_0000001232775585.gif)
+![scrollBar](figures/scrollBar.gif)
 
 ## 示例2（不设置子节点）
 
@@ -211,7 +214,7 @@ struct ScrollBarExample {
 }
 ```
 
-![zh-cn_image_scrollbar](figures/zh-cn_image_scrollbar.gif)
+![zh-cn_image_scrollbar](figures/image-scrollbar.gif)
 
 ## 示例3（支持嵌套滚动）
 

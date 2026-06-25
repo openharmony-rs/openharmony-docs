@@ -1,8 +1,8 @@
 # getContext
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -43,7 +43,7 @@ Obtains the **Context** object associated with an ability on the page.
 
 ## Context
 
-type Context = Context
+type Context = import('../api/application/Context').default
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -53,7 +53,7 @@ type Context = Context
 
 | Type| Description                            |
 | ------ | ------------------------------- |
-| [Context](../../application-models/application-context-stage.md)  | Context of the ability. The context type depends on the ability type. For example, if this API is called on a page of the UIAbility, the return value type is UIAbilityContext; if this API is called on a page of the ExtensionAbility, the return value type is ExtensionContext.   |
+| import('../api/application/[Context](../../application-models/application-context-stage.md)').default  | [Context](../../application-models/application-context-stage.md) of the ability where the current component is located. The specific type of the context is the context object associated with the current ability. For example, if this API is called on a page of the UIAbility, the return value type is UIAbilityContext; if this API is called on a page of the ExtensionAbility, the return value type is ExtensionContext.   |
 
 > **NOTE**
 > 

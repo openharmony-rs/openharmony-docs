@@ -1,12 +1,17 @@
 # @ohos.matrix4 (矩阵变换)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-本模块提供矩阵变换功能，支持对图形进行平移、旋转和缩放等。
+用于对组件进行[图形变换](arkui-ts/ts-universal-attributes-transformation.md)的各种操作，为组件提供矩阵变换能力，支持对图形进行平移、旋转和缩放等。
+
+Matrix4的使用场景包括：
+
+[图形变换](arkui-ts/ts-universal-attributes-transformation.md)中的[transform](arkui-ts/ts-universal-attributes-transformation.md#transform18)接口通过使用图形变换矩阵Matrix4对象显示二维变换时的矩阵变换，[transform3D](arkui-ts/ts-universal-attributes-transformation.md#transform3d20)接口通过使用图形变换矩阵Matrix4对象设置组件的三维变换矩阵。
+
 
 > **说明：**
 >
@@ -202,7 +207,8 @@ struct Test {
 }
 ```
 
-![zh-cn_image_0000001219744181](figures/h-cn_image_0000001219744185.png)
+![matrix4-copy](figures/matrix4-copy.png)
+
 ### combine
 
 combine(options: Matrix4Transit): Matrix4Transit
@@ -257,7 +263,7 @@ struct Test {
 }
 ```
 
-![zh-cn_image_0000001118642902](figures/zh-cn_image_0000001118642902.png)
+![zh-cn_image_0000001118642902](figures/Matrix4-combine.png)
 
 
 ### invert
@@ -352,7 +358,7 @@ struct Test {
 }
 ```
 
-![zh-cn_image_0000001219662645](figures/zh-cn_image_0000001219662645.png)
+![zh-cn_image_0000001219662645](figures/Matrix4-translate.png)
 
 
 ### scale
@@ -406,7 +412,7 @@ struct Test {
 }
 ```
 
-![zh-cn_image_0000001219864131](figures/zh-cn_image_0000001219864131.png)
+![zh-cn_image_0000001219864131](figures/Matrix4-scale.png)
 
 
 ### skew<sup>12+</sup>
@@ -416,6 +422,8 @@ skew(x: number, y: number): Matrix4Transit
 Matrix的倾斜函数，可以为当前矩阵增加x轴/y轴倾斜效果。会改变调用该函数的原始矩阵。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -458,7 +466,7 @@ struct Test {
 }
 ```
 
-![zh-cn_image_0000001219864132](figures/zh-cn_image_0000001219864132.jpeg)
+![zh-cn_image_0000001219864132](figures/Matrix4-skew.jpeg)
 
 
 ### rotate
@@ -511,7 +519,7 @@ struct Test {
 }
 ```
 
-![zh-cn_image_0000001174422898](figures/zh-cn_image_0000001174422898.png)
+![zh-cn_image_0000001174422898](figures/Matrix4-rotate.png)
 
 
 ### transformPoint
@@ -573,7 +581,7 @@ struct Test {
 }
 ```
 
-![zh-cn_image_0000001219864133](figures/zh-cn_image_0000001219864133.PNG)
+![zh-cn_image_0000001219864133](figures/Matrix4-Matrix4.PNG)
 
 ### setPolyToPoly<sup>12+</sup>
 
@@ -582,6 +590,8 @@ setPolyToPoly(options: PolyToPolyOptions): Matrix4Transit
 将一个多边形的顶点坐标映射到另外一个多边形的顶点坐标。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -682,6 +692,8 @@ struct Index {
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                                        |
@@ -697,6 +709,8 @@ struct Index {
 坐标点的数据结构。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -756,7 +770,7 @@ struct Test {
 }
 ```
 
-![zh-cn_image_0000001219744181](figures/zh-cn_image_0000001219744181.png)
+![zh-cn_image_0000001219744181](figures/Matrix4-copy-01.png)
 
 ## matrix4.invert<sup>(deprecated)</sup>
 

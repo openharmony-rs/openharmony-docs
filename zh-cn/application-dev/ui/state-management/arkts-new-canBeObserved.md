@@ -2,11 +2,11 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了判断对象是否为可被观察对象和获取对象关联的组件信息，开发者可以使用[canBeObserved接口](../../reference/apis-arkui/js-apis-stateManagement.md#canbeobserved23)。
+为了判断对象是否为可被观察对象和获取对象关联的组件信息，开发者可以使用[canBeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#canbeobserved23)。
 
 在使用该接口前，建议开发者对状态管理框架有基本的了解。提前阅读：[状态管理概述](./arkts-state-management-overview.md)。
 
@@ -283,7 +283,7 @@ V2组件中，对象可被观察场景如下：
 
 其中状态管理V2装饰器指的是：[@Local](./arkts-new-local.md)、[@Param](./arkts-new-param.md)、[@Provider](./arkts-new-provider-and-consumer.md)、[@Consumer](./arkts-new-provider-and-consumer.md)。
 
-V2组件收集装饰器的规格与V1组件不同，V2组件收集装饰器信息时，是按照对象的@Trace装饰的属性进行分类收集的。示例如下：
+V2组件收集装饰器的规格与V1组件不同，V2组件收集装饰器信息时，是按照对象的@Trace装饰的属性进行分类收集的。以下面的TestClass为例，@Trace将以属性为单位展示关联组件的信息：
 ``` TypeScript
 // 定义Class
 @ObservedV2
@@ -310,8 +310,8 @@ class TestClass {
         "owningComponentId": -1,
         // 同一个@Trace属性关联的组件信息集合在一起
         "dependentInfo": [{
-            "elementName": "Text",
-            "elementId": 5
+            "elementId": 5,
+            "elementName": "Text"
         }]
     },{
         "decoratorName": "@Trace",
@@ -320,8 +320,8 @@ class TestClass {
         "owningComponentId": -1,
         // 同一个@Trace属性关联的组件信息集合在一起
         "dependentInfo": [{
-            "elementName": "Text",
-            "elementId": 6
+            "elementId": 6,
+            "elementName": "Text"
         }]
     },{
         "decoratorName": "@Trace",
@@ -330,8 +330,8 @@ class TestClass {
         "owningComponentId": -1,
         // 同一个@Trace属性关联的组件信息集合在一起
         "dependentInfo": [{
-            "elementName": "Text",
-            "elementId": 7
+            "elementId": 7,
+            "elementName": "Text"
         }]
     }]
 }
@@ -618,7 +618,7 @@ reduceVolume(balloon: Balloon) {
 }
 ```
 
-两个方法调用canBeObserved接口返回结果一样（如下所示），表示两个方法接收的入参都是都是可被观察对象，且被UI组件所使用，UI可以正常刷新。
+两个方法调用canBeObserved接口返回结果一样（如下所示），表示两个方法接收的入参都是可被观察对象，且被UI组件所使用，UI可以正常刷新。
 
 ``` json5
 {

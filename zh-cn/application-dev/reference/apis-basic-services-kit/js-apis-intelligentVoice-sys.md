@@ -1069,7 +1069,7 @@ if (enrollIntelligentVoiceEngine != null) {
     if (err) {
       console.error(`Failed to initialize enrollIntelligentVoice engine. Code:${err.code}, message:${err.message}`);
     } else {
-      console.info(`Succeeded in initialzing enrollIntelligentVoice engine.`);
+      console.info(`Succeeded in initializing enrollIntelligentVoice engine.`);
     }
   });
 }
@@ -1154,6 +1154,7 @@ enrollForResult(isLast: boolean, callback: AsyncCallback&lt;EnrollCallbackInfo&g
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 22700107 | System error.                             |
 
 **示例：**
 
@@ -1204,6 +1205,7 @@ enrollForResult(isLast: boolean): Promise&lt;EnrollCallbackInfo&gt;
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 22700107 | System error.                             |
 
 **示例：**
 

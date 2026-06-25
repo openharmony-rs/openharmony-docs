@@ -12,7 +12,7 @@ typedef struct ArkUI_DragPreviewOption ArkUI_DragPreviewOption
 
 ## Overview
 
-Defines a struct for custom drag preview options.
+Sets a custom drag preview option.
 
 **Since**: 12
 

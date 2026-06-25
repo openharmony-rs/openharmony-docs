@@ -1,8 +1,8 @@
 # ArkUI_ColorStop
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@ typedef struct {...} ArkUI_ColorStop
 
 ## Overview
 
-Defines the gradient color stop structure.
+Defines a gradient color stop.
 
 **Since**: 12
 

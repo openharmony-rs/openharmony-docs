@@ -110,7 +110,7 @@ let want = {
  uri: 'detail'
   }
 };
-let context = getContext(this) as common.UIAbilityContext;
+let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 context.startAbility(want);
 ```
 
@@ -145,7 +145,7 @@ context.startAbility(want);
 2. 这两个权限的授权方式均为user_grant，因此需要调用requestPermissionsFromUser接口，以动态弹窗的方式向用户申请授权。
 
    ```ts
-   let context = getContext(this) as common.UIAbilityContext;
+   let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
    let atManager = abilityAccessCtrl.createAtManager();
    let permissions: Array<Permissions> = ['ohos.permission.READ_MEDIA','ohos.permission.WRITE_MEDIA']
    atManager.requestPermissionsFromUser(context, permissions)

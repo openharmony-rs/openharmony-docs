@@ -1,10 +1,11 @@
 # Functions
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=4b1a2f751fcd33c52248528ed8c23a9b2935126b translatedAt=2026-06-23T01:03:32.697Z pushedAt=2026-06-23T06:12:23.661Z -->
 
 > **NOTE**
 >
@@ -126,7 +127,7 @@ Creates an AVRecorder instance. This API uses an asynchronous callback to return
 
 | Name  | Type                                      | Mandatory| Description                                                        |
 | -------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback\<[AVRecorder](arkts-apis-media-AVRecorder.md)> | Yes  | Callback used to return the result. If the operation is successful, an AVRecorder instance is returned; otherwise, **null** is returned. The instance can be used to record audio and video.|
+| callback | AsyncCallback\<[AVRecorder](arkts-apis-media-AVRecorder.md)> | Yes  | Callback function, which returns an **AVRecorder** instance for recording audio and video. Otherwise, **null** is returned.|
 
 **Error codes**
 
@@ -143,7 +144,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let avRecorder: media.AVRecorder;
 
 media.createAVRecorder((error: BusinessError, recorder: media.AVRecorder) => {
-  if (recorder != null) {
+  if (recorder) {
     avRecorder = recorder;
     console.info('Succeeded in creating AVRecorder');
   } else {
@@ -170,7 +171,7 @@ Creates an AVRecorder instance. This API uses a promise to return the result.
 
 | Type                                | Description                                                        |
 | ------------------------------------ | ------------------------------------------------------------ |
-| Promise\<[AVRecorder](arkts-apis-media-AVRecorder.md)> | Promise used to return the result. If the operation is successful, an AVRecorder instance is returned; otherwise, **null** is returned. The instance can be used to record audio and video.|
+| Promise\<[AVRecorder](arkts-apis-media-AVRecorder.md)> | Promise used to return an **AVRecorder** instance, which can be used to record audio and video. Otherwise, **null** is returned.|
 
 **Error codes**
 
@@ -186,7 +187,7 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 import { BusinessError } from '@kit.BasicServicesKit';
 let avRecorder: media.AVRecorder;
 media.createAVRecorder().then((recorder: media.AVRecorder) => {
-  if (recorder != null) {
+  if (recorder) {
     avRecorder = recorder;
     console.info('Succeeded in creating AVRecorder');
   } else {
@@ -232,7 +233,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let avTranscoder: media.AVTranscoder | undefined = undefined;
 media.createAVTranscoder().then((transcoder: media.AVTranscoder) => {
-  if (transcoder != null) {
+  if (transcoder) {
     avTranscoder = transcoder;
     console.info('Succeeded in creating AVTranscoder');
   } else {
@@ -272,7 +273,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let avMetadataExtractor: media.AVMetadataExtractor;
 media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetadataExtractor) => {
-  if (extractor != null) {
+  if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
   } else {
@@ -310,7 +311,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let avMetadataExtractor: media.AVMetadataExtractor;
 media.createAVMetadataExtractor().then((extractor: media.AVMetadataExtractor) => {
-  if (extractor != null) {
+  if (extractor) {
     avMetadataExtractor = extractor;
     console.info('Succeeded in creating AVMetadataExtractor');
   } else {
@@ -419,7 +420,7 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 };
 
 media.createSoundPool(5, audioRendererInfo).then((soundpool_: media.SoundPool) => {
-  if (soundpool_ != null) {
+  if (soundpool_) {
     soundPool = soundpool_;
     console.info('Succeeded in creating SoundPool');
   } else {
@@ -446,6 +447,8 @@ Creates an AVScreenCaptureRecorder instance. This API uses a promise to return t
 
 **Error codes**
 
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
+
 | ID| Error Message                      |
 | -------- | ------------------------------ |
 | 5400101  | No memory. Return by promise. |
@@ -457,7 +460,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let avScreenCaptureRecorder: media.AVScreenCaptureRecorder;
 media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
-  if (captureRecorder != null) {
+  if (captureRecorder) {
     avScreenCaptureRecorder = captureRecorder;
     console.info('Succeeded in createAVScreenCaptureRecorder');
   } else {
@@ -497,7 +500,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let avImageGenerator: media.AVImageGenerator;
 media.createAVImageGenerator((error: BusinessError, generator: media.AVImageGenerator) => {
-  if (generator != null) {
+  if (generator) {
     avImageGenerator = generator;
     console.info('Succeeded in creating AVImageGenerator');
   } else {
@@ -535,7 +538,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let avImageGenerator: media.AVImageGenerator;
 media.createAVImageGenerator().then((generator: media.AVImageGenerator) => {
-  if (generator != null) {
+  if (generator) {
     avImageGenerator = generator;
     console.info('Succeeded in creating AVImageGenerator');
   } else {
@@ -561,7 +564,7 @@ Creates a media source for streaming media to be pre-downloaded.
 | Name  | Type    | Mandatory| Description                |
 | -------- | -------- | ---- | -------------------- |
 | url | string | Yes  | - URL of the media source. The following streaming media formats are supported: HLS, HTTP-FLV, DASH, and HTTPS.<br> - FD path of the local M3U8 file. |
-| headers | Record\<string, string> | No  | HTTP header customized for streaming media pre-download.|
+| headers | Record\<string, string> | No  | HTTP header customized for streaming media pre-download. If this parameter is not passed, the default HTTP header of the network request is used.|
 
 **Return value**
 
@@ -571,7 +574,7 @@ Creates a media source for streaming media to be pre-downloaded.
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -639,6 +642,94 @@ streams.push({url: "http://xxx/480p.flv", width: 854, height: 480, bitrate: 8000
 streams.push({url: "http://xxx/720p.flv", width: 1280, height: 720, bitrate: 2000000});
 streams.push({url: "http://xxx/1080p.flv", width: 1920, height: 1080, bitrate: 2000000});
 let mediaSource : media.MediaSource = media.createMediaSourceWithStreamData(streams);
+```
+
+## media.createMediaSourceWithFd
+
+createMediaSourceWithFd(fdSrc: AVFileDescriptor): MediaSource | undefined
+
+Creates a media source using a file descriptor.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
+
+**Parameters**
+
+| Name | Type                                | Mandatory| Description                                                 |
+| ------- | ------------------------------------ | ---- | ----------------------------------------------------- |
+| fdSrc | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9) | Yes| Media file descriptor.|
+
+**Return value**
+
+| Type                         | Description               |
+| ----------------------------- | ------------------- |
+| [MediaSource](arkts-apis-media-MediaSource.md) \| undefined | MediaSource instance.|
+
+**Example**
+
+```ts
+import { common } from '@kit.AbilityKit';
+
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let fdSrc = await context.resourceManager.getRawFd('xxx.mp4');
+let mediaSource : media.MediaSource | undefined = media.createMediaSourceWithFd(fdSrc);
+```
+
+## media.createMediaSourceWithDataSource
+
+createMediaSourceWithDataSource(dataSrc: AVDataSrcDescriptor): MediaSource | undefined
+
+Creates a media source using the custom data source.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
+
+**Parameters**
+
+| Name | Type                                | Mandatory| Description                                                 |
+| ------- | ------------------------------------ | ---- | ----------------------------------------------------- |
+| dataSrc | [AVDataSrcDescriptor](arkts-apis-media-i.md#avdatasrcdescriptor10) | Yes| Streaming media resource descriptor.|
+
+**Return value**
+
+| Type                         | Description               |
+| ----------------------------- | ------------------- |
+| [MediaSource](arkts-apis-media-MediaSource.md) \| undefined | MediaSource instance.|
+
+**Example**
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { fileIo as fs, ReadOptions } from '@kit.CoreFileKit';
+
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let fileDescriptor = await context.resourceManager.getRawFd('xxx.mp4');
+let file = fs.openSync("xxx.mp4");
+let dataSrc: media.AVDataSrcDescriptor = {
+  fileSize: fileDescriptor.length,
+  callback: (buf: ArrayBuffer, length: number, pos?: number) => {
+    let readLen = 0;
+    if (pos) {
+      let option: ReadOptions = {
+        offset: pos,
+        length: length,
+      };
+      readLen = fs.readSync(file.fd, buf, option);
+    }
+    return readLen > 0 ? readLen : -1;
+  }
+}
+let mediaSource : media.MediaSource | undefined =  media.createMediaSourceWithDataSource(dataSrc);
 ```
 
 ## media.createAudioPlayer<sup>(deprecated)</sup>

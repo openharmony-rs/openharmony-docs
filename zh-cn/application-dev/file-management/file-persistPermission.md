@@ -3,16 +3,16 @@
 <!--Subsystem: FileManagement-->
 <!--Owner: @lvzhenjie; @hongjin-li_admin-->
 <!--Designer: @chenxi0605; @JerryH1011-->
-<!--Tester: @leiyuqian-->
+<!--Tester: @leiyuqian; @zsyztt; @yue-ye2-->
 <!--Adviser: @jinqiuheng-->
 
 ## 场景介绍
 
-应用通过Picker获取临时授权，临时授权在应用退出后或者设备重启后会清除。如果应用重启或者设备重启后需要直接访问之前已访问过的文件，则对文件进行持久化授权。
+应用可以通过Picker[选择文件](select-user-file.md)或[保存文件](save-user-file.md)获取到临时授权，临时授权在应用退出后或者设备重启后会清除。如果应用重启或者设备重启后需要直接访问之前已访问过的文件，则需要对文件进行持久化授权。
 
 ## 通过Picker获取临时授权并进行授权持久化
 
-通过Picker选择文件或文件夹进行临时授权，然后应用可以按需通过文件分享接口（[ohos.fileshare](../reference/apis-core-file-kit/js-apis-fileShare.md)）进行持久化授权。
+通过Picker选择文件或文件夹进行临时授权，该方式获取到的URI只具有**临时读写权限**。应用后续可按需通过文件分享接口（[ohos.fileshare](../reference/apis-core-file-kit/js-apis-fileShare.md)）进行持久化授权。
 
 1.应用仅临时需要访问公共目录的数据，例如：通讯类应用需要发送用户的文件或者图片。应用调用Picker的([select](../reference/apis-core-file-kit/js-apis-file-picker.md#select-3))接口选择需要发送的文件或者图片，此时应用获取到是该文件的临时访问权限，应用重启或者设备重启后，再次访问该文件则仍需使用Picker进行文件选择。
 
@@ -45,6 +45,8 @@ export async function persistPermissionExample() {
     let documentSelectOptions = new picker.DocumentSelectOptions();
     let documentPicker = new picker.DocumentViewPicker();
     let uris = await documentPicker.select(documentSelectOptions);
+    // 可以组合授予多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE。
+    // 注意：只能对已获取到的临时权限进行持久化授权操作，否则会报错。
     let policyInfo: fileShare.PolicyInfo = {
       uri: uris[0],
       operationMode: fileShare.OperationMode.READ_MODE,
@@ -69,13 +71,13 @@ export async function persistPermissionExample() {
 }
 ```
 
-
 > **注意**
 >
 > 1. 持久化授权文件信息建议应用在本地存储数据，供后续按需激活持久化文件。
 > 2. 持久化授权的数据存储在系统的数据库中，应用或者设备重启后需要激活已持久化的授权才可以正常使用[激活持久化授权](#激活已经持久化的权限访问文件或目录)。
 > 3. 持久化权限接口(可以使用canIUse接口进行校验能力是否可用)，且需要申请对应的权限。
 > 4. 应用在卸载时会将之前的授权数据全部清除，重新安装后需要重新授权。
+> 5. 只能对已获取到的临时权限进行持久化授权操作，否则会报错。
 
 **备注**：C/C++持久化授权接口说明及开发指南具体参考：[OH_FileShare_PersistPermission持久化授权接口](native-fileshare-guidelines.md)。
 
@@ -97,6 +99,8 @@ import { fileShare } from '@kit.CoreFileKit';
 export async function revokePermissionExample() {
   try {
     let uri = 'file://docs/storage/Users/username/tmp.txt';
+    // 可以组合取消多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE。
+    // 注意：只能对已获取到的持久化权限进行取消持久化授权操作，否则会报错。
     let policyInfo: fileShare.PolicyInfo = {
       uri: uri,
       operationMode: fileShare.OperationMode.READ_MODE,
@@ -121,11 +125,10 @@ export async function revokePermissionExample() {
 }
 ```
 
-
 > **注意**
 >
 > 1. 示例中的URI来源自应用存储的持久化数据中。
-> 2. 建议按照使用需求去激活对应的持久化权限，不要盲目的全量激活。
+> 2. 只能对已获取到的持久化权限进行取消持久化授权操作，建议按照使用需求去取消对应的持久化权限。
 > 3. 持久化权限接口(可以使用canIUse接口进行校验能力是否可用)，且需要申请对应的权限。
 
 **备注**：C/C++去持久化授权接口说明及开发指南具体参考：[OH_FileShare_RevokePermission去持久化授权接口](native-fileshare-guidelines.md)。
@@ -150,6 +153,8 @@ import { fileShare } from '@kit.CoreFileKit';
 export async function activatePermissionExample() {
   try {
     let uri = 'file://docs/storage/Users/username/tmp.txt';
+    // 可以组合激活多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE。
+    // 注意：只能对已获取到的持久化权限进行激活持久化授权操作，否则会报错。
     let policyInfo: fileShare.PolicyInfo = {
       uri: uri,
       operationMode: fileShare.OperationMode.READ_MODE,
@@ -165,7 +170,7 @@ export async function activatePermissionExample() {
           console.error('error uri : ' + JSON.stringify(err.data[i].uri));
           console.error('error reason : ' + JSON.stringify(err.data[i].message));
           if (err.data[i].code == fileShare.PolicyErrorCode.PERMISSION_NOT_PERSISTED) {
-            //可以选择进行持久化后再激活。
+          // 可以选择进行持久化后再激活。
           }
         }
       }
@@ -177,7 +182,6 @@ export async function activatePermissionExample() {
 }
 ```
 
-
 > **注意**
 >
 > 1. 示例中的URI来源自应用存储的持久化数据中。
@@ -186,3 +190,32 @@ export async function activatePermissionExample() {
 > 4. 持久化权限接口可以使用canIUse接口进行校验能力是否可用，且需要申请对应的权限。
 
 **备注**：C/C++持久化授权激活接口说明及开发指南具体参考：[OH_FileShare_ActivatePermission持久化授权激活接口](native-fileshare-guidelines.md)。
+
+## 持久化权限保留配置
+
+从API version 24开始，系统新增支持持久化权限保留能力。应用卸载时根据ohos.fileshare.supportPreservePersistentPermission标签保留持久化。再次安装时恢复上次已保留的持久化权限。
+
+### 配置方式
+
+开发者可在应用模块级配置文件[src/main/module.json5](../quick-start/module-configuration-file.md)的module标签中metadata里配置ohos.fileshare.supportPreservePersistentPermission标签，以启用持久化权限保留能力。
+
+**metadata标签配置示例**
+
+``` JSON5
+{
+  "module": {
+    // ...
+    "metadata": [
+      {
+        "name": "ohos.fileshare.supportPreservePersistentPermission"
+      }
+    ],
+    // ...
+  }
+}
+```
+**ohos.fileshare.supportPreservePersistentPermission标签说明**
+
+| 属性名称 | 含义 | 数据类型 | 是否可缺省 |
+| -------- | -------- | -------- | -------- |
+| name | 标识元信息名称，固定值为ohos.fileshare.supportPreservePersistentPermission。 | 字符串 | 该标签不可缺省。 |

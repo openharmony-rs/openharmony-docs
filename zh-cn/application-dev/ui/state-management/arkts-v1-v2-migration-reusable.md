@@ -2,7 +2,7 @@
 <!--Kit: ArkUI--> 
 <!--Subsystem: ArkUI--> 
 <!--Owner: @jiyujia926--> 
-<!--Designer: @s10021109--> 
+<!--Designer: @zhangboren--> 
 <!--Tester: @zhangwenhan12--> 
 <!--Adviser: @zhang_yixin13-->
 
@@ -32,7 +32,7 @@
 
 **迁移规则**
 
-- [aboutToRecyle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)生命周期无需改动，可保留原实现。
+- [aboutToRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)生命周期无需改动，可保留原实现。
 
 - [aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse18)生命周期在组件复用V2中进行了优化，去除了参数的同时，在复用前会自动重置各状态变量（详情参考[复用前的组件内状态变量重置](./arkts-new-reusableV2.md#复用前的组件内状态变量重置)），无需开发者在aboutToReuse中手动赋值回初始值。
 
@@ -68,11 +68,11 @@ struct ReusableV2Component {
   @Require @Param @Once param: string;
   aboutToRecycle(): void {
     // aboutToRecycle无需改动
-    console.info('ReusableComponent aboutToRecycle called');
+    console.info('ReusableV2Component aboutToRecycle called');
   }
   aboutToReuse(): void { // aboutToReuse不再有参数
     // aboutToReuse执行时@Local已重置回'Hello World'，@Param @Once已经重置回外部传入值
-    console.info('ReusableComponent aboutToReuse called');
+    console.info('ReusableV2Component aboutToReuse called');
     this.val = 'Hello ArkUI'; // 可以在复用阶段修改为其他值
     this.param = 'Hello ArkUI'; // @Param @Once可本地修改
   }
@@ -136,17 +136,17 @@ class Message {
 @Entry
 @ComponentV2
 struct Index {
-  @Local switch: boolean = true;
+  @Local isSwitch: boolean = true;
 
   build() {
     Column() {
       Button('Hello')
-        .fontSize(30)
+        .fontSize(24)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
-          this.switch = !this.switch;
+          this.isSwitch = !this.isSwitch;
         })
-      if (this.switch) {
+      if (this.isSwitch) {
         // 如果只有一个复用的组件，可以不用设置reuse
         Child({ message: new Message('Child') })
           .reuse({ reuseId: () => 'Child' })
@@ -171,13 +171,15 @@ struct Child {
     Column() {
       Text(this.message.value)
         .fontSize(30)
+        .margin(20)
     }
     .borderWidth(1)
+    .margin({ top: 10 })
     .height(100)
   }
 }
 ```
-
+![](figures/v1_v2_reusable_if.gif)
 
 ### 列表滚动-Repeat使用场景
 
@@ -216,7 +218,7 @@ struct ReuseV2Demo {
 @ReusableV2
 @ComponentV2
 export struct CardViewV2 {
-  // 被@State修饰的变量item才能更新，未被@State修饰的变量不会更新
+  // 使用@Param @Once接收外部传入变量并观察变化
   @Param @Once item: string = '';
 
   aboutToReuse(): void {
@@ -233,7 +235,7 @@ export struct CardViewV2 {
   }
 }
 ```
-
+![](figures/v1_v2_reusable_repeat.gif)
 
 ### 列表滚动-if使用场景
 
@@ -324,7 +326,7 @@ export struct OneMoment {
   }
 }
 ```
-
+![](figures/v1_v2_reusable_if_two.gif)
 
 ### 列表滚动-Repeat全量加载使用场景
 
@@ -339,7 +341,6 @@ export struct OneMoment {
 @Entry
 @ComponentV2
 struct Index {
-  @Local isShow: boolean = true;
   @Local dataSource: ListItemObject[] = [];
 
   build() {
@@ -384,7 +385,7 @@ struct ListItemView {
   @Require @Param obj: ListItemObject;
 
   aboutToAppear(): void {
-    // 点击 update，首次进入，上下滑动，由于ForEach全展开属性，无法复用
+    // 点击 update，首次进入，上下滑动，由于Repeat全量加载属性，无法复用
     console.info('=====aboutToAppear=====ListItemView==创建了==');
   }
 
@@ -428,7 +429,7 @@ class ListItemObject {
   @Trace isExpand: boolean = false;
 }
 ```
-
+![](figures/v1_v2_reusable_repeat_two.gif)
 
 ### Grid使用场景
 
@@ -476,9 +477,6 @@ struct MyComponent {
 struct ReusableV2ChildComponent {
   @Param item: number = 0;
 
-  aboutToAppear() {
-  }
-
   build() {
     Column() {
       // 开发者可自行替换显示图片的内容，此处以app.media.startIcon为例
@@ -495,7 +493,7 @@ struct ReusableV2ChildComponent {
   }
 }
 ```
-
+![](figures/v1_v2_reusable_grid.png)
 
 ### WaterFlow使用场景
 
@@ -577,13 +575,13 @@ struct Index {
                 }
               })
             })
-        }
+        }.margin({ left: 160, top: 10 })
       }
     }
   }
 }
 ```
-
+![](figures/v1_v2_reusable_waterflow.gif)
 
 ### Swiper使用场景
 
@@ -680,6 +678,7 @@ struct QuestionSwiperItem {
   }
 }
 ```
+![](figures/v1_v2_reusable_swiper.gif)
 
 
 ### 列表滚动-ListItemGroup使用场景
@@ -698,15 +697,15 @@ struct ListItemGroupAndReusable {
   itemHead(text: string) {
     Text(text)
       .fontSize(20)
-      .backgroundColor(0xAABBCC)
+      .backgroundColor(0xff519db4)
       .width('100%')
       .padding(10)
   }
 
   aboutToAppear() {
-    for (let i = 0; i < 10000; i++) {
+    for (let i = 0; i < 10000; i++) { // 循环10000次
       let data = new DataSrc();
-      for (let j = 0; j < 12; j++) {
+      for (let j = 0; j < 12; j++) { // 循环12次
         data.dataScr1.push(`测试条目数据: ${i} - ${j}`);
       }
       this.dataSource.push(data);
@@ -751,7 +750,7 @@ class DataSrc {
   @Trace dataScr1: string[] = [];
 }
 ```
-
+![](figures/v1_v2_reusable_listitemgroup.gif)
 
 ### 多种条目类型使用场景
 
@@ -825,6 +824,7 @@ struct ReusableV2Component {
   }
 }
 ```
+![](figures/v1_v2_reusable_limit.png)
 
 **组合型**
 
@@ -979,3 +979,4 @@ struct ChildComponentD {
   }
 }
 ```
+![](figures/v1_v2_reusable_group.png)

@@ -12,7 +12,7 @@ typedef struct ArkUI_GestureInterruptInfo ArkUI_GestureInterruptInfo
 
 ## Overview
 
-Defines the gesture interruption information.
+Defines gesture interruption information.
 
 **Since**: 12
 

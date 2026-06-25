@@ -2,8 +2,8 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @qq_437963121-->
-<!--Designer: @kutcherzhou1; @MontSaintMichel-->
+<!--Owner: @yu_haoqiaida-->
+<!--Designer: @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -108,24 +108,25 @@ HiTraceMeter打点接口主要分为三类：同步时间片跟踪接口、异�
    ```
 
 2. 在“entry &gt; src &gt; main &gt; cpp &gt; CMakeLists.txt”文件中新增libhitrace_ndk.z.so和libhilog_ndk.z.so动态链接库，完整的文件内容如下。
-
-   ```cmake
-   # the minimum version of CMake.
-   cmake_minimum_required(VERSION 3.5.0)
-   project(HiTraceChainTest03)
-   
-   set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
-   
-   if(DEFINED PACKAGE_FIND_FILE)
-       include(${PACKAGE_FIND_FILE})
-   endif()
-   
-   include_directories(${NATIVERENDER_ROOT_PATH}
-                       ${NATIVERENDER_ROOT_PATH}/include)
-   
-   add_library(entry SHARED napi_init.cpp)
-   target_link_libraries(entry PUBLIC libace_napi.z.so libhitrace_ndk.z.so libhilog_ndk.z.so)
-   ```
+    <!-- @[hitracemeter_ndk_cmake_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_NDK/entry/src/main/cpp/CMakeLists.txt) -->
+    
+    ``` Text
+    # the minimum version of CMake.
+    cmake_minimum_required(VERSION 3.5.0)
+    project(HiTraceChainTest03)
+    
+    set(NATIVERENDER_ROOT_PATH &#36;{CMAKE_CURRENT_SOURCE_DIR})
+    
+    if(DEFINED PACKAGE_FIND_FILE)
+        include(&#36;{PACKAGE_FIND_FILE})
+    endif()
+    
+    include_directories(&#36;{NATIVERENDER_ROOT_PATH}
+                        &#36;{NATIVERENDER_ROOT_PATH}/include)
+    
+    add_library(entry SHARED napi_init.cpp)
+    target_link_libraries(entry PUBLIC libace_napi.z.so libhitrace_ndk.z.so libhilog_ndk.z.so)
+    ```
 
 3. 编辑“entry &gt; src &gt; main &gt; cpp &gt; napi_init.cpp”文件，在Add函数中调用HiTraceMeter NDK_C接口进行性能打点跟踪，完整的示例代码如下。
 

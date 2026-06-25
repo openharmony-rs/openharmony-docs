@@ -196,7 +196,7 @@ target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
 5. 设置转码输出视频的文件描述符：调用OH_AVTranscoderConfig_SetDstFD()设置目标视频文件描述符。
 
     ```c++
-    OH_AVTranscoderConfig_SetDstFD(config, dstFd); // 设置转码的目标文件属dstFd。
+    OH_AVTranscoderConfig_SetDstFD(config, dstFd); // 设置转码的目标文件描述符dstFd。
     ```
 
 6. （可选）设置转码输出视频的编码格式：调用OH_AVTranscoderConfig_SetDstVideoType()设置输出视频的编码格式。
@@ -221,7 +221,7 @@ target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
 
     ```c++
     const std::int32_t AUDIO_BITRATE = 200000;
-    OH_AVTranscoderConfig_SetDstAudioBitrate(config, AUDIO_BITRATE); // 音频比特率，可选。
+    OH_AVTranscoderConfig_SetDstAudioBitrate(config, AUDIO_BITRATE); // 参考avcodec音频编码器码率设置，具体根据实际需要设置。
     ```
 
 10. （可选）设置转码输出视频的码率：调用OH_AVTranscoderConfig_SetDstVideoBitrate()设置输出视频的码率。

@@ -17,7 +17,8 @@ You must declare permissions in the requestPermissions tag of the [module.json5 
 | -------- | -------- | -------- | -------- |
 | name | Name of the permission to request.| String| This field is mandatory. The value must be a permission defined in the system. For details, see [Application Permissions](app-permissions.md).|
 | reason | Reason for requesting the permission.| String| This field is optional. It is used for application release verification. It must be specified for a user_grant or manual_settings permission and support multilingual adaptation.<br><br>It can be referenced as a string resource in $string: \*\*\* format.<br> To configure the string resource reference, add the **"name": "reason"** tag to the **string.json** file. For details, see [Resource File Examples](../../quick-start/resource-categories-and-access.md#resource-file-examples).<br>For details about how to set **reason**, see [Specifications for reason](#specifications-for-reason).|
-| usedScene | Use case of the permission. This field is used for application release verification. It has two parameters:<br>- **abilities**: names of the abilities (UIAbility or ExtensionAbility) that use the permission.<br>- **when**: when the permission is used.| Object| **usedScene** is mandatory when your application requests a user_grant or manual_settings permission and is optional in other cases.<br> <br>- **abilities** is optional. The value is a string array of multiple UIAbility or ExtensionAbility names<br>- **when** is optional. Set it to **inuse** or **always**. It cannot be empty when set.<br>You are advised to set this parameter when your application requests a user_grant or manual_settings permission.|
+| usedScene | Use case of the permission. This field is used for application release verification. It has two parameters:<br>- **abilities**: names of the abilities (UIAbility or ExtensionAbility) that use the permission.<br>- **when**: when the permission is used.| Object| **usedScene** is mandatory when your application requests a user_grant or manual_settings permission and is optional in other cases.<br>- **abilities**: array of **UIAbility** or **ExtensionAbility** names.<br>- **when**: This parameter can only be set to a fixed value, either **inuse** (when in use) or **always**. It cannot be left empty.|
+| <!--DelRow-->requiredFeature | Device feature required for the permission declaration to take effect. If the device does not support this feature, the permission will not be declared.| String| **Optional.** This attribute is valid only for system applications. The value can contain a maximum of 64 characters, including only letters, digits, and periods (.), and must start with a letter.<br>**Since**: 26.0.0|
 
 > **NOTE**<br>
 >
@@ -31,7 +32,7 @@ Declare permissions in the requestPermissions tag of the [module.json5 configura
 
 > **NOTE**<br>
 >
-> The value of "name" is for reference only. Set permissions to match your case.
+> The value of **"name"** is for reference only. Set permissions to match your case.
 
 <!-- @[request_permission_json](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/module.json5) -->
 

@@ -3,7 +3,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zany_pink-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -15,7 +15,7 @@
 
 ## 概述
 
-与状态管理V1不同的是，状态管理V2修改完状态变量后不会立即[标脏](./arkts-state-management-glossary.md#标脏mark-dirty)，而是抛出一个Promise微任务（优先级低于宏任务），该微任务在当前宏任务执行完成后才会处理自定义组件标脏，具体差异可参考[V1状态变量更新和V2状态变量更新差异](./arkts-v1-v2-update-difference.md#v1状态变量更新和v2状态变量更新差异)。而animateTo动效会立刻刷新已标脏节点来决定动效首帧。如果动效中使用了V2状态变量，并且在动效前修改了该状态变量，由于调用animateTo时状态变量的变化尚未标脏，这会导致animateTo的动效首帧不符合预期。为此，引入applySync、flushUpdates和flushUIUpdates接口，实现状态管理V2的同步标脏，确保动效达到预期效果。
+与状态管理V1不同的是，状态管理V2修改完状态变量后不会立即[标脏](./arkts-state-management-glossary.md#mark-dirty标脏)，而是抛出一个Promise微任务，该微任务在当前宏任务（如点击事件）执行完成后才会处理自定义组件标脏，具体差异可参考[V1状态变量更新和V2状态变量更新差异](./arkts-v1-v2-update-difference.md#v1状态变量更新和v2状态变量更新差异)。而animateTo动效会立刻刷新已标脏节点来决定动效首帧。如果动效中使用了V2状态变量，并且在动效前修改了该状态变量，由于调用animateTo时状态变量的变化尚未标脏，这会导致animateTo的动效首帧不符合预期。为此，引入applySync、flushUpdates和flushUIUpdates接口，实现状态管理V2的同步标脏，确保动效达到预期效果。
 
 使用applySync/flushUpdates/flushUIUpdates接口需要导入UIUtils工具。
 
@@ -160,9 +160,7 @@ import { UIUtils } from '@kit.ArkUI';
           .margin(20)
           .onClick(() => {
             // test1：调用applySync接口，日志打印两次
-            // UIUtils.applySync(() => {
-            //   this.message = 'Hello World';
-            // })
+            // UIUtils.applySync(() => { this.message = 'Hello World'; });
   
             // test2：调用flushUpdates接口，日志打印两次
             // this.message = 'Hello World';
@@ -229,7 +227,7 @@ import { UIUtils } from '@kit.ArkUI';
 
 - 在applySync闭包函数中调用flushUpdates或flushUIUpdates接口将不起作用。同时打印出对应警告信息`UIUtils.flushUpdates will be skipped when called within UIUtils.applySync`/`UIUtils.flushUIUpdates will be skipped when called within UIUtils.applySync`。
   
-  <!-- @[ApplySyncNestOthers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/ApplySyncNestOthers.ets) -->
+  <!-- @[ApplySyncNestOthers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/ApplySyncNestOthers.ets) --> 
   
   ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';
@@ -252,7 +250,7 @@ import { UIUtils } from '@kit.ArkUI';
               UIUtils.flushUIUpdates(); // 在applySync中，flushUIUpdates被忽略
             });
             this.h = 100;
-            UIUtils.flushUpdates(); //会生效
+            UIUtils.flushUpdates(); // 会生效
   
             this.getUIContext().animateTo({
               duration: 1000
@@ -273,7 +271,7 @@ import { UIUtils } from '@kit.ArkUI';
   }
   ```
   
-- 不支持在@Computed装饰的getter方法中调用applySync、flushUpdates和flushUIUpdates接口，否则运行时会报错。错误信息为`The function is not allowed to be called in @Computed`，错误码为[`140001`](../../reference/apis-arkui/errorcode-stateManagement.md#140001-applysyncflushupdatesflushuiupdates非法调用)。
+- 不支持在@Computed装饰的getter方法中调用applySync、flushUpdates和flushUIUpdates接口，否则运行时会报错。错误信息为`The function is not allowed to be called in @Computed`，错误码为[140001](../../reference/apis-arkui/errorcode-stateManagement.md#140001-applysyncflushupdatesflushuiupdates非法调用)。
   
   <!-- @[CallInComputed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/CallInComputed.ets) -->
   
@@ -311,7 +309,7 @@ import { UIUtils } from '@kit.ArkUI';
   }
   ```
 
-- 不支持在@Monitor回调函数中调用flushUpdates和flushUIUpdates接口，否则运行时会报错。错误信息为`The function is not allowed to be called in @Monitor`，错误码为[`140002`](../../reference/apis-arkui/errorcode-stateManagement.md#140002-flushupdatesflushuiupdates非法调用)。
+- 不支持在@Monitor回调函数中调用flushUpdates和flushUIUpdates接口，否则运行时会报错。错误信息为`The function is not allowed to be called in @Monitor`，错误码为[140002](../../reference/apis-arkui/errorcode-stateManagement.md#140002-flushupdatesflushuiupdates非法调用)。
   
   <!-- @[CallInMonitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/CallInMonitor.ets) -->
   
@@ -337,7 +335,7 @@ import { UIUtils } from '@kit.ArkUI';
         Text(`${this.count}`)
         Button('change count')
           .onClick(() => {
-          this.count++;
+            this.count++;
           })
           // ...
       }
@@ -409,7 +407,7 @@ struct Index {
 
 ### 路由场景
 
-在路由场景下设置[共享元素转场动效](../../reference/apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md#sharedtransition)，使用applySync接口可以使得转场时同步刷新name值，实现转场动效效果。在如下示例代码中，从Index页面向PageTransitionTwo页面跳转时，两个页面的id值不匹配，没有转场动效。从PageTransitionTwo页面返回Index页面时，两个页面的id值匹配，有转场动效。
+在路由场景下设置[共享元素转场](../../reference/apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md)，使用applySync接口可以使得转场时同步刷新name值，实现转场动效效果。在如下示例代码中，从Index页面向PageTransitionTwo页面跳转时，两个页面的id值不匹配，没有转场动效。从PageTransitionTwo页面返回Index页面时，两个页面的id值匹配，有转场动效。
 
 <!-- @[PageUse_PageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/PageUse.ets) -->
 

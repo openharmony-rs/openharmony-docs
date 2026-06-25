@@ -61,13 +61,14 @@ libnative_rdb_ndk.z.so
 
 **头文件**
 
-<!--@[vector_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->
+<!--@[vector_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->   
 
-``` C
+``` C++
 #include <hilog/log.h>
 #include <database/data/oh_data_values.h>
 #include <database/rdb/oh_cursor.h>
 #include <database/rdb/relational_store.h>
+#include <database/rdb/relational_store_error_code.h>
 ```
 
 1. 判断当前系统是否支持向量数据库，若不支持，则表示当前系统不具备向量数据库能力。示例代码如下：
@@ -97,7 +98,7 @@ libnative_rdb_ndk.z.so
    // 数据库是否加密
    OH_Rdb_SetEncrypted(config, false);
    // 数据库文件安全等级
-   OH_Rdb_SetSecurityLevel(config,   OH_Rdb_SecurityLevel::S1);
+   OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S1);
    // 数据库文件存放的安全区域
    OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL1);
    // 数据库类型
@@ -181,7 +182,7 @@ libnative_rdb_ndk.z.so
        OH_LOG_ERROR(LOG_APP, "Query failed.");
        return;
    }
-   // getRowCount会导致性能冗余。建议仅在调试或者维测时再使用
+   // getRowCount会遍历全表获取行数，存在性能开销。请根据实际场景合理使用。
    int rowCount = 0;
    cursor->getRowCount(cursor, &rowCount);
    while (cursor->goToNextRow(cursor) == OH_Rdb_ErrCode::RDB_OK) {
@@ -350,7 +351,7 @@ libnative_rdb_ndk.z.so
    <!--@[vector_OH_Rdb_ExecuteV2_create_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->    
    
    ``` C++
-   // 基础用法，创建的索引名称为diskann_l2_idx，索引列为repr，类型为gsdiskann，距离度量类型为L2
+   // 基础用法，创建的索引名称为diskann_l2_idx，索引列为data1，类型为gsdiskann，距离度量类型为L2
    OH_Rdb_ExecuteV2(store_, "CREATE INDEX diskann_l2_idx ON test USING GSDISKANN(data1 L2);", nullptr, nullptr);
    
    // 删除表test中的diskann_l2_idx索引

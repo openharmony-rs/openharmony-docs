@@ -28,7 +28,7 @@
 
 ## 开发指导
 
-详细的API说明请参考[API文档](../../reference/apis-avcodec-kit/capi-native-avcodec-audiocodec-h.md)。
+详细的API说明请参考[native_avcodec_audiocodec.h](../../reference/apis-avcodec-kit/capi-native-avcodec-audiocodec-h.md)。
 
 参考以下示例代码，完成音频解码的全流程，包括：创建解码器、设置解码参数（采样率/码率/声道数等）、开始、刷新、重置、销毁资源。
 
@@ -230,7 +230,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    MediaKeySession *session = nullptr;
    DRM_ContentProtectionLevel contentProtectionLevel = CONTENT_PROTECTION_LEVEL_SW_CRYPTO;
    ret = OH_MediaKeySystem_CreateMediaKeySession(system, &contentProtectionLevel, &session);
-   if (ret != DRM_OK) {
+   if (ret != DRM_ERR_OK) {
        // 如创建失败，请查看DRM接口文档及日志信息。
        printf("create media key session failed.");
        return;
@@ -259,7 +259,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    ![Audio decoder format range description](figures/decoder_format.png)
    <!--RP7End-->
 
-   从API version 20开始，支持[采样率范围](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapability_getaudiosupportedsamplerateranges)能力查询，以下几种音频解码类型支持对范围内的任意采样率进行解码：
+   从API version 20开始，支持通过[OH_AVCapability_GetAudioSupportedSampleRateRanges](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapability_getaudiosupportedsamplerateranges)接口进行采样率范围能力查询，以下几种音频解码类型支持对范围内的任意采样率进行解码：
 
    | 音频解码类型 |    采样率(Hz)   |
    | ----------- | --------------- |
@@ -268,6 +268,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    | APE         | 1 ~ 2147483647  |
 
    ```cpp
+   // 以下配置的值仅为示例值，开发者需根据实际解码能力动态设置。
    // 配置音频采样率（必须）。
    constexpr uint32_t DEFAULT_SAMPLERATE = 44100;
    // 配置音频码率（可选）。

@@ -17,10 +17,11 @@
 | const.product.software.version | const&nbsp;char\*&nbsp;GetDisplayVersion(void) | 返回当前设备用户可见的软件版本号 |
 | const.product.bootloader.version | const&nbsp;char\*&nbsp;GetBootloaderVersion(void) | 返回当前设备Bootloader版本号 |
 | const.product.udid | int&nbsp;GetDevUdid(char&nbsp;\*udid,&nbsp;int&nbsp;size) | 获取设备udid（先通过参数获取，获取失败通过计算获取） |
-| | const char *AclGetSerial(void) | 返回当前设备序列号（SN号）（带访问权限检查） |
-| | int AclGetDevUdid(char *udid, int size) | 获取设备udid（带访问权限检查） |
+| NA| const char *AclGetSerial(void) | 返回当前设备序列号（SN号）（带访问权限检查） |
+| NA| int AclGetDevUdid(char *udid, int size) | 获取设备udid（带访问权限检查） |
 | ohos.boot.hardware | const&nbsp;char\*&nbsp;GetChipType(void) | 返回当前设备芯片型号 |
 | persist.startup.bootcount | int GetBootCount(void)| 返回当前设备开机次数，获取失败时返回-1 |
+| ohos.boot.backcolor | const&nbsp;char\*&nbsp;GetDeviceColor(void) | 返回当前设备颜色 |
 
 ## 设备信息来源
 
@@ -28,7 +29,7 @@
 
 - OHOS 固定值参数：
 
-  ```
+  ``` go
   const.ohos.version.security_patch
   const.ohos.releasetype
   const.ohos.apiversion
@@ -43,7 +44,7 @@
 
 - 厂商固定值参数：
 
-  ```
+  ```go
   const.product.devicetype
   const.product.manufacturer
   const.product.brand
@@ -67,7 +68,7 @@
 
   - 标准系统以RK3568为例，在`/vendor/hihope/rk3568/etc/para/hardware_rk3568.para`中适配，并安装到指定目录。
 
-    ```
+    ```go
     ohos_prebuilt_etc("para_for_chip_prod") {
         source = "./para/hardware_rk3568.para"
         install_images = [ chip_prod_base_dir ]
@@ -78,7 +79,7 @@
 
   - 轻量系统与小型系统在产品对应的`hals/utils/sys_param/vendor.para`文件中配置。例如：
 
-    ```
+    ```go
     const.product.manufacturer=Talkweb
 
     const.product.brand=Talkweb
@@ -111,7 +112,7 @@
 
 2. 编译宏定义的形式获取参数，目前主要在轻量系统与小型系统中用到，例如：
 
-     ```
+     ```go
      defines = [
          "INCREMENTAL_VERSION=\"${ohos_version}\"",
          "BUILD_TYPE=\"${ohos_build_type}\"",
@@ -123,7 +124,7 @@
      ```
 3. 在BUILD.gn中定义，可参考文件`/base/startup/init/services/etc/BUILD.gn`，例如：
 
-     ```
+     ```go
      if (target_cpu == "arm64") {
          extra_paras += [ "const.product.cpu.abilist=arm64-v8a" ]
      }
@@ -151,7 +152,7 @@
 
 1. 小型系统的产品需要在`hals/utils/sys_param/BUILD.gn`中添加vendor.para的编译，具体如下：
 
-      ```
+      ```go
       copy("vendor.para") {
           sources = [ "./vendor.para" ]
           outputs = [ "$root_out_dir/vendor/etc/param/vendor.para" ]

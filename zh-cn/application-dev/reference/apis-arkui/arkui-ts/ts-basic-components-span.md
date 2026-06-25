@@ -85,7 +85,7 @@ letterSpacing(value: number | ResourceStr)
 
 | 参数名 | 类型     | 必填 |  说明   |
 | ------ | ------- | ---- | -------------- |
-| value  | number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是   | 文本字符间距。<br/>单位：[fp](ts-pixel-units.md) <br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。|
+| value  | number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是   | 文本字符间距。<br/>单位：[fp](ts-pixel-units.md#基本像素单位) <br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。|
 
 ### textCase
 
@@ -121,7 +121,7 @@ fontColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明       |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 字体颜色。<br/>默认值：'e6182431'<br/>Wearable设备上默认值为：'#c5ffffff' |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 字体颜色。<br/>默认值：'#e6182431'<br/>Wearable设备上默认值为：'#c5ffffff' |
 
 ### fontSize
 
@@ -177,6 +177,27 @@ fontWeight(value: number | FontWeight | ResourceStr)
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是   | 文本的字体粗细，number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。<br/>默认值：FontWeight.Normal <br>从API version 20开始，支持[Resource](ts-types.md#resource)类型。|
 
+### fontWeight<sup>24+</sup>
+
+fontWeight(weight: number | FontWeight | ResourceStr, fontWeightConfigs?: FontWeightConfigs)
+
+设置文本的字体粗细。
+
+**卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| weight  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | 是   | 文本的字体粗细，number类型取值[100,&nbsp;900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。<br/>默认值：FontWeight.Normal |
+| fontWeightConfigs  | [FontWeightConfigs](ts-text-common.md#fontweightconfigs24对象说明) | 否   | 字体粗细配置。默认值继承[FontWeightConfigs](ts-text-common.md#fontweightconfigs24对象说明)。 |
+
 ### fontFamily
 
 fontFamily(value: string | Resource)
@@ -207,6 +228,8 @@ lineHeight(value: Length)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -223,13 +246,34 @@ font(value: Font)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                     | 必填 | 说明       |
 | ------ | ------------------------ | ---- | ---------- |
 | value  | [Font](ts-types.md#font) | 是   | 文本样式。 |
+
+### font<sup>24+</sup>
+
+font(value: Font, fontConfigs?: FontConfigs)
+
+设置文本样式。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                     | 必填 | 说明       |
+| ------ | ------------------------ | ---- | ---------- |
+| value  | [Font](ts-types.md#font) | 是   | 文本样式，包括字体大小、字体粗细、字体族和字体风格。 |
+| fontConfigs  | [FontConfigs](ts-text-common.md#fontconfigs24对象说明) | 否   | 字体配置。默认值继承[FontConfigs](ts-text-common.md#fontconfigs24对象说明)。 |
 
 ### textShadow<sup>11+</sup>
 
@@ -239,6 +283,8 @@ textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt;)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -246,6 +292,26 @@ textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt;)
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ----- | ---- | --- |
 | value  | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)> | 是   | 文字阴影效果。 |
+
+### fontVariations
+
+fontVariations(fontVariations: Array&lt;FontVariation&gt;)
+
+设置可变字体的属性。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                                          | 必填 | 说明                                          |
+| ------ | --------------------------------------------- | ---- | --------------------------------------------- |
+| fontVariations | Array&lt;[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation)&gt; | 是 | 可变字体的属性数组，数组成员为可变字体的各种属性。fontVariations属性的优先级高于[fontWeight](#fontweight24)。 |
 
 ## 事件
 
@@ -267,9 +333,11 @@ textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt;)
 
 textBackgroundStyle(style: TextBackgroundStyle): T
 
-设置背景样式。作为[ContainerSpan](ts-basic-components-containerspan.md)的子组件时可以继承它的此属性值，优先使用其自身的此属性。
+设置文本背景样式。作为[ContainerSpan](ts-basic-components-containerspan.md)的子组件时可以继承它的此属性值，优先使用其自身的此属性。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -277,7 +345,7 @@ textBackgroundStyle(style: TextBackgroundStyle): T
 
 | 参数名 | 类型  | 必填 | 说明 |
 | ----- | ---- | ---- | ---- |
-| style  | [TextBackgroundStyle](#textbackgroundstyle11对象说明) | 是   | 背景样式。<br />默认值:<br />{<br />  color: Color.Transparent,<br />  radius: 0<br />} |
+| style  | [TextBackgroundStyle](#textbackgroundstyle11对象说明) | 是   | 文本背景样式。<br />默认值：<br />{<br />  color: Color.Transparent,<br />  radius: 0<br />} |
 
 **返回值：**
 
@@ -292,6 +360,8 @@ baselineOffset(value: LengthMetrics): T
 设置Span基线的偏移量。此属性与父组件的baselineOffset是共存的。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -310,6 +380,8 @@ baselineOffset(value: LengthMetrics): T
 ## TextBackgroundStyle<sup>11+</sup>对象说明
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -443,6 +515,39 @@ struct SpanExample {
           })
       }
 
+      // 文本字体配置设置。从API version 24开始新增支持fontConfigs属性。
+      Text('Font with FontConfigs').fontSize(9).fontColor(0xCCCCCC).margin({ top: 12 })
+      Text() {
+        Span('span font with configs')
+          .font({
+            size: 14,
+            weight: 550,
+            style: FontStyle.Normal,
+            family: "HarmonyOS Sans"
+          }, {
+            fontWeightConfigs: {
+              enableVariableFontWeight: true
+            }
+          })
+      }
+
+      // 文本字体粗细配置设置。从API version 24开始新增支持fontWeightConfigs属性。
+      Text('FontWeight with FontWeightConfigs').fontSize(9).fontColor(0xCCCCCC).margin({ top: 12 })
+      Text() {
+        Span('span fontWeight 850 with configs')
+          .fontWeight(850, {
+            enableVariableFontWeight: true,
+            enableDeviceFontWeightCategory: false
+          })
+      }
+      Text() {
+        Span('span fontWeight 600 with configs')
+          .fontWeight(600, {
+            enableVariableFontWeight: false,
+            enableDeviceFontWeightCategory: true
+          })
+      }
+
       // span点击事件设置
       Text('span click event').fontSize(9).fontColor(0xCCCCCC).margin({ top: 12 })
       Text() {
@@ -572,3 +677,35 @@ struct SpanExample {
 
 ![SpanBaselineOffset](figures/SpanBaselineOffset.png)
 
+### 示例5（设置文本可变字体的属性）
+
+该示例通过[fontVariations](#fontvariations)属性设置可变字体的属性。
+
+从API版本26.0.0开始，新增[fontVariations](#fontvariations)接口。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct SpanExample {
+  @State weightValue: number = 400;
+
+  build() {
+    Column() {
+      Text() {
+        Span('Hello World !')
+          // wght代表可变字体的字重属性
+          .fontVariations([{ axis: 'wght', value: this.weightValue }])
+      }
+
+      Button('字重: ' + this.weightValue)
+        .margin(10)
+        .onClick(() => {
+          this.weightValue += 100;
+        })
+    }.width('100%')
+  }
+}
+```
+
+![SpanFontVariations](figures/FontVariations.gif)

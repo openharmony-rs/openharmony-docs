@@ -122,7 +122,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
   })
 })
 ```
-![image_Top_Proportion_Colors_And_Percentages.png](figures/image_Top_Proportion_Colors_And_Percentages.png)
+![Top-Proportion-Colors-And-Percentages.png](figures/Top-Proportion-Colors-And-Percentages.png)
 
 ### getShadeDegree<sup>22+</sup>
 
@@ -248,7 +248,7 @@ Obtains the proportion of completely transparent pixels in an image.
 
 | Type                                    | Description                                           |
 | :--------------------------------------- | :---------------------------------------------- |
-| number | Proportion of completely transparent pixels in an image. The value range is [0,1].|
+| number | Proportion of completely transparent pixels in an image. The value range is [0, 1].|
 
 **Error codes**
 

@@ -97,7 +97,7 @@ Checks whether the SIM card in the specified slot is activated.
 
 | Type                 | Description                              |
 | --------------------- | ---------------------------------- |
-| boolean | which indicates whether the SIM card in the specified slot is activated.<br>**true**: activated.<br>**false**: not activated.|
+| boolean | Whether the SIM card in the specified slot is activated.<br>**true**: activated.<br>**false**: not activated.|
 
 **Example**
 
@@ -174,7 +174,7 @@ Checks whether the application (caller) has been granted the operator permission
 | Name  | Type                    | Mandatory| Description                                    |
 | -------- | ------------------------ | ---- | ---------------------------------------- |
 | slotId   | number                   | Yes  | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
-| callback | AsyncCallback\<boolean\> | Yes  | Callback used to return the result, which indicates whether the application (caller) has been granted the operator permission.<br>- **true**: The application (caller) has been granted the operator permission.<br>**false**: The application (caller) has not been granted the operator permission.                             |
+| callback | AsyncCallback\<boolean\> | Yes  | Callback used to return the result, which indicates whether the application (caller) has been granted the operator permission.<br>- **true**: The application (caller) has been granted the operator permission.<br>- **false**: The application (caller) has not been granted the operator permission (no SIM card inserted or the SIM card is invalid).  |
 
 **Error codes**
 
@@ -217,7 +217,7 @@ Checks whether the application (caller) has been granted the operator permission
 
 | Type              | Description                                                       |
 | :----------------- | :---------------------------------------------------------- |
-| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that the application (caller) has been granted the carrier permission, and the value **false** indicates the opposite.|
+| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that the application (caller) has been granted the carrier permission, and the value **false** indicates the opposite.<br>- **true**: The application (caller) has been granted the operator permission.<br>- **false**: The application (caller) has not been granted the operator permission (no SIM card inserted or the SIM card is invalid).|
 
 **Error codes**
 
@@ -1128,7 +1128,7 @@ Obtains the list of activated SIM card accounts. This API uses a promise to retu
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1454,7 +1454,7 @@ Obtains the default slot ID of the SIM card that provides voice services. This A
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1483,7 +1483,9 @@ promise.then((data: number) => {
 
 getSimLabel(slotId: number, callback: AsyncCallback\<SimLabel\>): void
 
-Obtains the SIM card label. Slot 1 corresponds to SIM card 1 or SIM card 2, and slot 2 corresponds to SIM card 2 or eSIM X.
+Checks the mapping between card slot IDs and SIM cards.
+- Slot 1 corresponds to SIM card 1 or SIM card 2.
+- Slot 2 corresponds to SIM card 2 or eSIMX.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
@@ -1660,7 +1662,7 @@ Defines the ICC account information.
 | ---------- | ------- | ---- |--- |---------------- |
 | simId      | number  |  No|No| SIM card ID.         |
 | slotIndex  | number  |  No |No| Card slot ID.          |
-| isEsim     | boolean |  No| No| Whether the SIM card is an eSim.<br>- **true**: The SIM card is an eSim.<br>- **false**: The SIM card is not an eSim.|
+| isEsim     | boolean |  No| No| Whether the SIM card is an eSIM.<br>- **true**: The SIM card is an eSIM.<br>- **false**: The SIM card is not an eSIM.|
 | isActive   | boolean |  No| No| Whether the card is activated.<br>**true**: activated.<br>**false**: not activated. |
 | iccId      | string  |  No| No| ICCID number.       |
 | showName   | string  |  No| No| SIM card display name.   |

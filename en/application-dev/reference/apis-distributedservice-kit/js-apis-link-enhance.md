@@ -4,7 +4,8 @@
 <!--Owner: @wangJE-->
 <!--Designer: @lee_jet520-->
 <!--Tester: @Ytt-test-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
+
 The **linkEnhance** module delivers highly efficient Bluetooth connectivity and data transmission capabilities, significantly enhancing the cross-device connection stability. By employing a multi-channel merging algorithm, it not only increases the number of available cross-device connections but also strengthens cross-device data transmission capabilities, thereby improving the overall user experience.
 
 > **NOTE**
@@ -50,6 +51,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
+| 801      | Capability not supported because the linkEnhance function has been trimmed. <br>Applicable versions: 26.0.0+|
 | 32390203      | Duplicate server name.|
 | 32390206 | Invalid parameter.  |
 
@@ -64,11 +66,11 @@ const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   // Construct a Server object using the specified name.
   let server: linkEnhance.Server = linkEnhance.createServer(name);
 } catch (err) {
-  hilog.info(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -105,6 +107,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
+| 801      | Capability not supported because the linkEnhance function has been trimmed. <br>Applicable versions: 26.0.0+|
 | 32390206 | Invalid parameter.  |
 
 **Example**
@@ -120,16 +123,20 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
 } catch (err) {
-  hilog.info(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
 ## Server
 
 Represents a **Server** object, which provides methods for starting, stopping, and closing the server, and registering or unregistering event callbacks.
+
+**System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Model restriction**: This API can be used only in the stage model.
 
 The following APIs are used on the server.
 
@@ -166,11 +173,11 @@ const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   let server: linkEnhance.Server = linkEnhance.createServer(name);
   server.start();
 } catch (err) {
-  hilog.error(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -205,12 +212,12 @@ const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   let server: linkEnhance.Server = linkEnhance.createServer(name);
   server.start();
   server.stop();
 } catch (err) {
-  hilog.error(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -246,12 +253,12 @@ const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   let server: linkEnhance.Server = linkEnhance.createServer(name);
   server.start();
   server.close();
 } catch (err) {
-  hilog.error(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -293,7 +300,7 @@ const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   // Construct a Server object using the specified name.
   let server: linkEnhance.Server = linkEnhance.createServer(name);
 
@@ -304,7 +311,7 @@ try {
   // Start the server.
   server.start();
 } catch (err) {
-  hilog.info(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -347,7 +354,7 @@ const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   // Construct a Server object using the specified name.
   let server: linkEnhance.Server = linkEnhance.createServer(name);
   server.on('connectionAccepted', (connection: linkEnhance.Connection): void => {
@@ -358,7 +365,7 @@ try {
     hilog.info(0x0000, TAG, 'accept new connection');
   });
 } catch (err) {
-  hilog.error(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -402,7 +409,7 @@ const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   // Construct a Server object using the specified name.
   let server: linkEnhance.Server = linkEnhance.createServer(name);
 
@@ -413,7 +420,7 @@ try {
   // Start the server.
   server.start();
 } catch (err) {
-  hilog.error(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -457,7 +464,7 @@ const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   // Construct a Server object using the specified name.
   let server: linkEnhance.Server = linkEnhance.createServer(name);
   server.on('serverStopped', (reason: number): void => {
@@ -468,7 +475,7 @@ try {
     hilog.info(0x0000, TAG, 'serverStopped, reason= ' + reason);
   });
 } catch (err) {
-  hilog.info(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -489,6 +496,10 @@ Represents the connection result, which is returned after the client calls **con
 ## Connection
 
 Represents a **Connection** object, which provides methods for connecting to and disconnecting from a peer device, obtaining the device's ID, sending data, and registering or unregistering event callbacks.
+
+**System capability**: SystemCapability.DistributedSched.AppCollaboration
+
+**Model restriction**: This API can be used only in the stage model.
 
 ### connect()
 
@@ -525,7 +536,7 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   // Subscribe to connectResult events.
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
@@ -570,7 +581,7 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
     hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
@@ -617,7 +628,7 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
     hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
@@ -669,7 +680,7 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   connection.getPeerDeviceId();
   hilog.info(0x0000, TAG, "peerDeviceId=%{public}s" + connection.getPeerDeviceId());
@@ -719,7 +730,7 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
     hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
@@ -777,7 +788,7 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   // Subscribe to connectResult events.
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
@@ -831,7 +842,7 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
     hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
@@ -885,14 +896,14 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   // Subscribe to disconnected events.
   connection.on('disconnected', (number: number) => {
     hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
   });
 } catch (err) {
-  hilog.info(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -936,7 +947,7 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   connection.on('disconnected', (number: number) => {
     hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
@@ -990,9 +1001,11 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
+  // Initiate a connection.
   connection.connect();
+  // Subscribe to data receiving notifications.
   connection.on('dataReceived', (data: ArrayBuffer) => {
     hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
   });
@@ -1040,11 +1053,13 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
+  // Subscribe to data receiving notifications.
   connection.on('dataReceived', (data: ArrayBuffer) => {
     hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
   });
+  // Unsubscribe from data receiving notifications.
   connection.off('dataReceived', (data: ArrayBuffer) => {
     hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
   });

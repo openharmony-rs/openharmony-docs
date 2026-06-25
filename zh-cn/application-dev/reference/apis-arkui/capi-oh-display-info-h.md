@@ -38,7 +38,7 @@
 
 | 名称  | 描述   |
 |--------------|-----------|
-| [OH_DISPLAY_NAME_LENGTH](#oh_display_name_length)  32 | 屏幕名称的最大长度。 |
+| OH_DISPLAY_NAME_LENGTH 32| 屏幕名称的最大长度。<br>**起始版本：** 14 |
 
 ### 枚举
 
@@ -50,20 +50,6 @@
 | [NativeDisplayManager_FoldDisplayMode](#nativedisplaymanager_folddisplaymode) | NativeDisplayManager_FoldDisplayMode | 可折叠设备的显示模式枚举。 |
 | [NativeDisplayManager_DisplayState](#nativedisplaymanager_displaystate) | NativeDisplayManager_DisplayState | 显示设备的状态枚举。 |
 | [NativeDisplayManager_SourceMode](#nativedisplaymanager_sourcemode) | NativeDisplayManager_SourceMode | 设备的显示模式枚举。 |
-
-## 宏定义说明
-
-### OH_DISPLAY_NAME_LENGTH
-
-```c
-#define OH_DISPLAY_NAME_LENGTH 32
-```
-
-**描述**
-
-屏幕名称的最大长度。
-
-**起始版本：** 14
 
 ## 枚举类型说明
 
@@ -128,7 +114,7 @@ enum NativeDisplayManager_ErrorCode
 | DISPLAY_MANAGER_ERROR_INVALID_SCREEN = 1400001 | 操作的显示设备无效。 |
 | DISPLAY_MANAGER_ERROR_INVALID_CALL = 1400002 | 当前操作对象无操作权限。 |
 | DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL = 1400003 | 系统服务工作异常。 |
-| DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM = 1400004 |  非法参数。<br>**起始版本：** 20 |
+| DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM = 1400004 | 非法参数。<br>**起始版本：** 20 |
 
 ### NativeDisplayManager_FoldDisplayMode
 

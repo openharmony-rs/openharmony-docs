@@ -5,7 +5,7 @@
 <!--Owner: @zhang-yinglie; @volcano_wang-->
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 The **power** module provides APIs for rebooting and shutting down the system, as well as querying the screen status.
 
@@ -29,7 +29,7 @@ Shuts down the system.
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.REBOOT
+**Required permissions**: ohos.permission.REBOOT
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -43,7 +43,7 @@ Shuts down the system.
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
@@ -69,7 +69,7 @@ Reboots a device.
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.REBOOT
+**Required permissions**: ohos.permission.REBOOT
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -77,13 +77,13 @@ Reboots a device.
 
 | Name| Type  | Mandatory| Description      |
 | ------ | ------ | ---- | ---------- |
-| reason | string | Yes  | Reboot reason. The value must be a string.|
+| reason | string | Yes  | Reason for system reboot. For example, **updater** indicates that the device enters the update mode after reboot. If this parameter is not specified, the system enters the normal mode after reboot.|
 
 **Error codes**
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
@@ -124,7 +124,7 @@ For API version 9 to 18, no permission is required; since API version 19, this p
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
@@ -166,12 +166,12 @@ For API version 9 to 18, no permission is required; since API version 19, this p
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
-| 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
+| 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
 
 **Example**
 
@@ -191,7 +191,7 @@ Sets the power mode of a device. This API uses an asynchronous callback to retur
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.POWER_OPTIMIZATION
+**Required permissions**: ohos.permission.POWER_OPTIMIZATION
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -206,7 +206,7 @@ Sets the power mode of a device. This API uses an asynchronous callback to retur
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4900301 | Setting the power mode failed. |
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
@@ -233,7 +233,7 @@ Sets the power mode of a device. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.POWER_OPTIMIZATION
+**Required permissions**: ohos.permission.POWER_OPTIMIZATION
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -253,7 +253,7 @@ Sets the power mode of a device. This API uses a promise to return the result.
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4900301 | Setting the power mode failed. |
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
@@ -296,7 +296,7 @@ For API version 12 to 18, no permission is required; since API version 19, this 
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
@@ -337,12 +337,12 @@ For API version 12 to 18, no permission is required; since API version 19, this 
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
-| 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
+| 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
 
 **Example**
 
@@ -378,7 +378,7 @@ This API takes effect only when the device is active. For details about the devi
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 4900201 |The device activity is being refreshed too frequently; the minimum time interval is 100 ms. |
@@ -419,7 +419,7 @@ For details about the power key filtering strategy, see [power.PowerKeyFiltering
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
@@ -443,7 +443,7 @@ Registers a callback to be invoked when the device is shut down or rebooted. Thi
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.REBOOT
+**Required permissions**: ohos.permission.REBOOT
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -457,7 +457,7 @@ Registers a callback to be invoked when the device is shut down or rebooted. Thi
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
@@ -484,7 +484,7 @@ Unregisters the callback to be invoked when the device is shut down or rebooted.
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.REBOOT
+**Required permissions**: ohos.permission.REBOOT
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -498,7 +498,7 @@ Unregisters the callback to be invoked when the device is shut down or rebooted.
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
@@ -514,5 +514,102 @@ try {
     console.info('unregister shutdown callback success.');
 } catch(err) {
     console.error('unregister shutdown callback failed, err: ' + err);
+}
+```
+
+## power.getPowerConfig
+
+getPowerConfig(sceneName: string): string
+
+Obtains the power configuration based on the specified scenario.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.POWER_CONFIG
+
+**System capability**: SystemCapability.PowerManager.PowerManager.Core
+
+**Parameters**
+
+| Name   | Type    | Mandatory  | Description   |
+| ------ | ------ | ---- | ----- |
+| sceneName | string | Yes   | Name of the power configuration scenario. The name can contain a maximum of 128 bytes.|
+
+**Return value**
+
+| Type    | Description        |
+| ------ | ------------ |
+| string | Power configuration value.|
+
+**Error codes**
+
+For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| Error Code  | Error Message   |
+|---------|---------|
+| 4900101 | Failed to connect to the service. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API.  |
+| 4900400 | Invalid parameter. Possible causes: <br>1. The sceneName parameter is an empty string; <br>2. The length of sceneName parameter exceeds 128 bytes. |
+| 4900501 | Failed to read the power configuration value. |
+
+**Example**
+
+```js
+try {
+    let configVal = power.getPowerConfig('scene_name_test');
+    console.info('get power config success, configVal: ' + configVal);
+} catch(err) {
+    console.error('get power config failed, err: ' + err);
+}
+```
+
+## power.setPowerConfig
+
+setPowerConfig(sceneName: string, value: string): void
+
+Sets the power configuration based on the specified scenario.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.POWER_CONFIG
+
+**System capability**: SystemCapability.PowerManager.PowerManager.Core
+
+**Parameters**
+
+| Name   | Type    | Mandatory  | Description   |
+| ------ | ------ | ---- | ----- |
+| sceneName | string | Yes   | Name of the power configuration scenario. The name can contain a maximum of 128 bytes.|
+| value | string | Yes   | Power configuration value. The name can contain a maximum of 128 bytes.|
+
+**Error codes**
+
+For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| Error Code  | Error Message   |
+|---------|---------|
+| 4900101 | Failed to connect to the service. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API.  |
+| 4900400 | Invalid parameter. Possible causes: <br>1. The sceneName or value parameter is an empty string; <br>2. The length of sceneName parameter exceeds 128 bytes; <br>3. The length of value parameter exceeds 128 bytes. |
+| 4900601 | Failed to write the power configuration value. |
+
+**Example**
+
+```js
+try {
+    power.setPowerConfig('scene_name_test', 'value_test');
+    console.info('set power config success');
+} catch(err) {
+    console.error('set power config failed, err: ' + err);
 }
 ```

@@ -1,9 +1,9 @@
 # RenderNode
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **RenderNode** module provides APIs for creating a RenderNode in custom drawing settings with C APIs.
@@ -11,8 +11,12 @@ The **RenderNode** module provides APIs for creating a RenderNode in custom draw
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> 
+>
+> - The APIs of this module can be used only in the stage model.
+>
 > - Avoid modifying RenderNodes in [BuilderNode](./js-apis-arkui-builderNode.md). The [FrameNode](./js-apis-arkui-frameNode.md) associated with BuilderNode is designed solely for mounting the BuilderNode as a child component. Modifying attributes or operations on the FrameNode's child nodes or their corresponding RenderNodes may lead to undefined behavior, including display, event handling, and stability issues.
+>
+> - RenderNode objects do not support JSON serialization.
 
 ## Modules to Import
 
@@ -35,10 +39,15 @@ Constructor used to create a RenderNode.
 **Example**
 
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 100, height: 100 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 100,
+  height: 100
+};
 renderNode.backgroundColor = 0xffff0000;
 
 // Implement a custom UI controller by extending NodeController.
@@ -97,13 +106,23 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 **Example**
 
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 100, height: 100 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 100,
+  height: 100
+};
 renderNode.backgroundColor = 0xffff0000;
 const child = new RenderNode();
-child.frame = { x: 10, y: 10, width: 50, height: 50 };
+child.frame = {
+  x: 10,
+  y: 10,
+  width: 50,
+  height: 50
+};
 child.backgroundColor = 0xff00ff00;
 renderNode.appendChild(child);
 
@@ -165,20 +184,35 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 **Example**
 
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 200, height: 350 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 200,
+  height: 350
+};
 renderNode.backgroundColor = 0xffff0000;
 for (let i = 0; i < 5; i++) {
   const node = new RenderNode();
-  node.frame = { x: 10, y: 10 + 60 * i, width: 50, height: 50 };
+  node.frame = {
+    x: 10,
+    y: 10 + 60 * i,
+    width: 50,
+    height: 50
+  };
   node.backgroundColor = 0xff00ff00;
   renderNode.appendChild(node);
 }
 
 const child = new RenderNode();
-child.frame = { x: 70, y: 70, width: 50, height: 50 };
+child.frame = {
+  x: 70,
+  y: 70,
+  width: 50,
+  height: 50
+};
 child.backgroundColor = 0xffffff00;
 const sibling = renderNode.getChild(1);
 // Insert a child node after the sibling node.
@@ -231,14 +265,24 @@ Deletes the specified child node from this RenderNode.
 
 **Example**
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 200, height: 350 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 200,
+  height: 350
+};
 renderNode.backgroundColor = 0xffff0000;
 for (let i = 0; i < 5; i++) {
   const node = new RenderNode();
-  node.frame = { x: 10, y: 10 + 60 * i, width: 50, height: 50 };
+  node.frame = {
+    x: 10,
+    y: 10 + 60 * i,
+    width: 50,
+    height: 50
+  };
   node.backgroundColor = 0xff00ff00;
   renderNode.appendChild(node);
 }
@@ -438,14 +482,24 @@ Obtains the first child node of this RenderNode.
 **Example**
 
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 200, height: 350 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 200,
+  height: 350
+};
 renderNode.backgroundColor = 0xffff0000;
 for (let i = 0; i < 5; i++) {
   const node = new RenderNode();
-  node.frame = { x: 10, y: 10 + 60 * i, width: 50, height: 50 };
+  node.frame = {
+    x: 10,
+    y: 10 + 60 * i,
+    width: 50,
+    height: 50
+  };
   node.backgroundColor = 0xff00ff00;
   renderNode.appendChild(node);
 }
@@ -509,14 +563,24 @@ Obtains the next sibling node of this RenderNode.
 
 **Example**
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 200, height: 350 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 200,
+  height: 350
+};
 renderNode.backgroundColor = 0xffff0000;
 for (let i = 0; i < 5; i++) {
   const node = new RenderNode();
-  node.frame = { x: 10, y: 10 + 60 * i, width: 50, height: 50 };
+  node.frame = {
+    x: 10,
+    y: 10 + 60 * i,
+    width: 50,
+    height: 50
+  };
   node.backgroundColor = 0xff00ff00;
   renderNode.appendChild(node);
 }
@@ -553,10 +617,9 @@ struct Index {
           // Obtain the child node at index 1 of the renderNode, and then obtain its next sibling node.
           const nextSibling = child!.getNextSibling()
           if (nextSibling === null || child === null) {
-            console.info('the child or nextChild is null');
+            console.error('the child or nextChild is null');
           } else {
-            console.info(`the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
-              `the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`);
+            console.info(`the position of child is x: ${child.position.x}, y: ${child.position.y}, the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`);
           }
         })
     }
@@ -582,14 +645,24 @@ Obtains the previous sibling node of this RenderNode.
 
 **Example**
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 200, height: 350 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 200,
+  height: 350
+};
 renderNode.backgroundColor = 0xffff0000;
 for (let i = 0; i < 5; i++) {
   const node = new RenderNode();
-  node.frame = { x: 10, y: 10 + 60 * i, width: 50, height: 50 };
+  node.frame = {
+    x: 10,
+    y: 10 + 60 * i,
+    width: 50,
+    height: 50
+  };
   node.backgroundColor = 0xff00ff00;
   renderNode.appendChild(node);
 }
@@ -628,8 +701,7 @@ struct Index {
           if (child === null || previousSibling === null) {
             console.error('the child or previousChild is null');
           } else {
-            console.info(`the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
-              `the position of previousSibling is x: ${previousSibling.position.x}, y: ${previousSibling.position.y}`);
+            console.info(`the position of child is x: ${child.position.x}, y: ${child.position.y}, the position of previousSibling is x: ${previousSibling.position.x}, y: ${previousSibling.position.y}`);
           }
         })
     }
@@ -1176,7 +1248,7 @@ renderNode.backgroundColor = 0xffff0000;
 renderNode.frame = { x: 10, y: 10, width: 100, height: 100 };
 // Set the scale factor of the RenderNode.
 renderNode.scale = { x: 0.5, y: 1 };
-// Obtain the pivot of the renderNode.
+// Obtain the scaling factor of the RenderNode.
 const scale = renderNode.scale;
 
 // Implement a custom UI controller by extending NodeController.
@@ -1546,9 +1618,9 @@ renderNode.backgroundColor = 0xffff0000;
 renderNode.frame = { x: 10, y: 10, width: 100, height: 100 };
 renderNode.shadowElevation = 10;
 renderNode.shadowColor = 0XFF00FF00;
-// Set the shadow color of the renderNode.
+// Set the shadow offset of the renderNode.
 renderNode.shadowOffset = { x: 10, y: 10 };
-// Obtain the shadow color of the renderNode.
+// Obtain the shadow offset of the renderNode.
 const shadowOffset = renderNode.shadowOffset;
 
 // Implement a custom UI controller by extending NodeController.
@@ -1608,7 +1680,7 @@ Obtains the label of this RenderNode.
 
 | Type  | Description                                          |
 | ------ | ---------------------------------------------- |
-| string | Label of the current RenderNode.<br>Default value: **""**|
+| string | Label of the current RenderNode. Default value: **""**|
 
 **Example**
 
@@ -1913,7 +1985,7 @@ Code in ArkTS:
 
 ```ts
 // Index.ets
-import bridge from "libentry.so" // This .so file is compiled from your Node-API implementation.
+import bridge from "libentry.so"; // This .so file is compiled from your Node-API implementation.
 import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
 
 // Extend RenderNode to implement custom drawing.
@@ -2083,7 +2155,7 @@ Triggers the re-rendering of this RenderNode.
 **Example**
 
 ```ts
-import bridge from "libentry.so" // This .so file is compiled from your Node-API implementation.
+import bridge from "libentry.so"; // This .so file is compiled from your Node-API implementation.
 import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
 
 // Extend RenderNode to implement custom drawing.
@@ -2237,7 +2309,7 @@ Sets the border width for this RenderNode.
 
 | Name| Type                                               | Mandatory| Description                  |
 | ------ | --------------------------------------------------- | ---- | ---------------------- |
-| width  | [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) | Yes  | Border width of the RenderNode, in vp.|
+| width  | [Edges](./js-apis-arkui-graphics.md#edgest12)\<number> | Yes  | Border width of the RenderNode, in vp.|
 
 get borderWidth(): Edges\<number>
 
@@ -2251,7 +2323,7 @@ Obtains the border width of this RenderNode.
 
 | Type                                               | Description                  |
 | --------------------------------------------------- | ---------------------- |
-| [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) | Border width of the RenderNode. The default width of all borders is 0 vp.|
+| [Edges](./js-apis-arkui-graphics.md#edgest12)\<number> | Border width of the RenderNode. The default width of all borders is 0 vp.|
 
 **Example**
 
@@ -2310,7 +2382,7 @@ Sets the border color for this RenderNode.
 
 | Name| Type                                               | Mandatory| Description                  |
 | ------ | --------------------------------------------------- | ---- | ---------------------- |
-| color  | [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) | Yes  | Border color of the RenderNode.|
+| color  | [Edges](./js-apis-arkui-graphics.md#edgest12)\<number> | Yes  | Border color of the RenderNode.|
 
 get borderColor(): Edges\<number>
 
@@ -2324,7 +2396,7 @@ Obtains the border color of this RenderNode.
 
 | Type                                               | Description                  |
 | --------------------------------------------------- | ---------------------- |
-| [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) | Border color of the RenderNode. By default, the color of all borders is 0XFF000000.|
+| [Edges](./js-apis-arkui-graphics.md#edgest12)\<number> | Border color of the RenderNode. By default, the color of all borders is 0XFF000000.|
 
 **Example**
 
@@ -2335,7 +2407,7 @@ const renderNode = new RenderNode();
 renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
 renderNode.backgroundColor = 0XFF00FF00;
 renderNode.borderWidth = { left: 8, top: 8, right: 8, bottom: 8 };
-// Set the border style of the renderNode.
+// Set the border color of the renderNode.
 renderNode.borderColor = { left: 0xFF0000FF, top: 0xFF0000FF, right: 0xFF0000FF, bottom: 0xFF0000FF };
 // Obtain the border color of the renderNode.
 const borderColor = renderNode.borderColor;
@@ -2996,3 +3068,335 @@ struct Index {
 ```
 
 ![](figures/RenderNode_isDisposed.gif)
+
+### backgroundBlur
+
+set backgroundBlur(blurValue: BackgroundBlur | undefined)
+
+Sets a background blur effect.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type                                                        | Mandatory| Description                                          |
+| ------- | ------------------------------------------------------------ | ---- | ---------------------------------------------- |
+| blurValue | [BackgroundBlur](./js-apis-arkui-graphics.md#backgroundblur) \| undefined | Yes  | Background blur effect. The value **undefined** indicates that no background blur effect is applied.|
+
+get backgroundBlur(): BackgroundBlur
+
+Obtains the background blur effect.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type                                                        | Description                                    |
+| ------------------------------------------------------------ | ---------------------------------------- |
+| [BackgroundBlur](./js-apis-arkui-graphics.md#backgroundblur) | Background blur effect. The default value is **{radius: 0}**.|
+
+**Example**
+
+```ts
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    let frameNode = new FrameNode(uiContext);
+    frameNode.commonAttribute
+      .width(200)
+      .height(200)
+      .backgroundColor('0xffd5d5d5')
+      .backgroundImage($r('app.media.img')) // Replace it with the image resource file you use.
+      .backgroundImagePosition({ x: 25, y: 25 })
+      .backgroundImageSize({ width: 150, height: 100 });
+    this.rootNode.appendChild(frameNode);
+    let blurRenderNode = frameNode.getRenderNode();
+    // Set a background blur effect.
+    if (blurRenderNode != null) {
+      blurRenderNode.backgroundBlur = {
+        radius: 20,
+        grayscale: [10, 10]
+      };
+      const backgroundBlur = blurRenderNode.backgroundBlur;
+      console.info(`background blur radius: ${backgroundBlur.radius} grayscale: [${backgroundBlur.grayscale}]`);
+    }
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column() {
+      NodeContainer(this.myNodeController)
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+  }
+}
+```
+
+![](figures/backgroundBlur.png)
+
+### contentBlur
+
+set contentBlur(blurValue: ContentBlur | undefined)
+
+Sets a content blur effect.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type                                                      | Mandatory| Description                                          |
+| ------- | ---------------------------------------------------------- | ---- | ---------------------------------------------- |
+| blurValue | [ContentBlur](./js-apis-arkui-graphics.md#contentblur) \| undefined | Yes  | Content blur effect. The value **undefined** indicates that no content blur effect is applied.|
+
+get contentBlur(): ContentBlur
+
+Obtains the content blur effect.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type                                                      | Description                                    |
+| ---------------------------------------------------------- | ---------------------------------------- |
+| [ContentBlur](./js-apis-arkui-graphics.md#contentblur) | Content blur effect. The default value is **{radius: 0}**.|
+
+**Example**
+
+```ts
+import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+// Extend RenderNode to implement custom drawing.
+class MyRenderNode extends RenderNode {
+  uiContext: UIContext;
+
+  constructor(uiContext: UIContext) {
+    super();
+    this.uiContext = uiContext;
+    this.frame = {
+      x: 25,
+      y: 25,
+      width: 150,
+      height: 150
+    };
+  }
+
+  // Invoked when the RenderNode undergoes drawing operations.
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({
+      alpha: 255,
+      red: 39,
+      green: 135,
+      blue: 217
+    });
+    canvas.attachBrush(brush);
+    canvas.drawRect({
+      left: 100,
+      right: 300,
+      top: 100,
+      bottom: 300
+    });
+    canvas.detachBrush();
+  }
+}
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    this.rootNode.commonAttribute
+      .width(200)
+      .height(200);
+    let renderNode = this.rootNode.getRenderNode();
+    if (renderNode != null) {
+      let myRenderNode = new MyRenderNode(uiContext);
+      // Set a content blur effect.
+      myRenderNode.contentBlur = {
+        radius: 20,
+        grayscale: [10, 10]
+      };
+      renderNode.appendChild(myRenderNode)
+      const contentBlurConfig = myRenderNode.contentBlur;
+      console.info(`content blur radius: ${contentBlurConfig.radius} grayscale: [${contentBlurConfig.grayscale}]`);
+    }
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column() {
+      NodeContainer(this.myNodeController)
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+  }
+}
+```
+
+![](figures/contentBlur.png)
+
+### foregroundBlur
+
+set foregroundBlur(blurValue: ForegroundBlur | undefined)
+
+Sets a foreground blur effect.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type                                                          | Mandatory| Description                                        |
+| ------- | -------------------------------------------------------------- | ---- | -------------------------------------------- |
+| blurValue | [ForegroundBlur](./js-apis-arkui-graphics.md#foregroundblur) \| undefined | Yes  | Foreground blur effect. The value **undefined** indicates that no foreground blur effect is applied.|
+
+get foregroundBlur(): ForegroundBlur
+
+Obtains the foreground blur effect.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type                                                          | Description                                  |
+| -------------------------------------------------------------- | -------------------------------------- |
+| [ForegroundBlur](./js-apis-arkui-graphics.md#foregroundblur) | Foreground blur effect. The default value is **{radius: 0}**.|
+
+**Example**
+
+```ts
+import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+// Extend RenderNode to implement custom drawing.
+class MyRenderNode extends RenderNode {
+  uiContext: UIContext;
+
+  constructor(uiContext: UIContext) {
+    super();
+    this.uiContext = uiContext;
+    this.frame = {
+      x: 25,
+      y: 25,
+      width: 150,
+      height: 150
+    };
+  }
+
+  // Invoked when the RenderNode undergoes drawing operations.
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({
+      alpha: 255,
+      red: 39,
+      green: 135,
+      blue: 217
+    });
+    canvas.attachBrush(brush);
+    canvas.drawRect({
+      left: 100,
+      right: 300,
+      top: 100,
+      bottom: 300
+    });
+    canvas.detachBrush();
+  }
+}
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    this.rootNode.commonAttribute
+      .width(200)
+      .height(200);
+    let renderNode = this.rootNode.getRenderNode();
+    if (renderNode != null) {
+      let myRenderNode = new MyRenderNode(uiContext);
+      // Set a foreground blur effect.
+      myRenderNode.foregroundBlur = {
+        radius: 20
+      };
+      renderNode.appendChild(myRenderNode);
+      const foregroundBlur = myRenderNode.foregroundBlur;
+      console.info(`foreground blur radius: ${foregroundBlur.radius}`);
+    }
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column() {
+      NodeContainer(this.myNodeController)
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+  }
+}
+```
+
+![](figures/foregroundBlur.png)

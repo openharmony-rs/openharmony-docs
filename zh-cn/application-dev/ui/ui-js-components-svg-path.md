@@ -33,7 +33,7 @@
 ```
 
 
-![zh-cn_image_0000001181511962](figures/zh-cn_image_0000001181511962.png)
+![Path-Drawing](figures/Path-Drawing.png)
 
 
 > **说明：**

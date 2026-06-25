@@ -1,7 +1,7 @@
 # 使用AVPlayer播放流媒体(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xushubo; @chennotfound-->
+<!--Owner: @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
@@ -55,7 +55,7 @@
 
 5. 准备播放：调用prepare()，使AVPlayer进入prepared状态，此时可获取duration，设置缩放模式、音量等。
 
-6. 进行视频播控：播放play()，暂停pause()，跳转seek()，停止stop() 等操作。
+6. 进行视频播放控制：播放play()，暂停pause()，跳转seek()，停止stop() 等操作。
 
 7. （可选）更换资源：调用reset()重置资源，使AVPlayer重新进入idle状态，允许更换资源url。
 
@@ -67,7 +67,7 @@
 
 ### 流媒体缓冲状态
 
-当下载速率低于片源的码率时，会出现卡顿。此时，播放器检测到缓冲区数据不足，会先缓冲一些数据再播放，避免连续卡顿。一次卡顿对应的缓冲事件上报过程为：BUFFERING_START-> BUFFERING_PERCENT 0 -> ... -> BUFFERING_PERCENT 100 -> BUFFERING_END。CACHED_DURATION在卡顿过程和播放过程中都会持续上报，直至下载至资源末尾。详见[BufferingInfoType缓冲事件类型枚举](../../reference/apis-media-kit/arkts-apis-media-e.md#bufferinginfotype8)。
+当下载速率低于片源的码率时，会出现卡顿。此时，播放器检测到缓冲区数据不足，会先缓冲一些数据再播放，避免连续卡顿。一次卡顿对应的缓冲事件上报过程为：BUFFERING_START-> BUFFERING_PERCENT 0 -> ... -> BUFFERING_PERCENT 100 -> BUFFERING_END。CACHED_DURATION在卡顿过程和播放过程中都会持续上报，直至下载至资源末尾。详见[BufferingInfoType](../../reference/apis-media-kit/arkts-apis-media-e.md#bufferinginfotype8)缓冲事件类型枚举。
 
 监听当前bufferingUpdate缓冲状态示例代码：
 

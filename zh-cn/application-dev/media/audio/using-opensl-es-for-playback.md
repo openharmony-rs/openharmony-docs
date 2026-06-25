@@ -1,8 +1,8 @@
 # 使用OpenSL ES开发音频播放功能(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -103,6 +103,9 @@ target_link_libraries(sample PUBLIC libOpenSLES.so)
 4. 配置播放器信息，创建AudioPlayer。
      
    ```cpp
+   SLObjectItf outputMixObject = nullptr;
+   (*engineEngine)->CreateOutputMix(engineEngine, &outputMixObject, 0, nullptr, nullptr);
+   (*outputMixObject)->Realize(outputMixObject, SL_BOOLEAN_FALSE);
    SLDataLocator_BufferQueue slBufferQueue = {
        SL_DATALOCATOR_BUFFERQUEUE,
        1
@@ -119,8 +122,16 @@ target_link_libraries(sample PUBLIC libOpenSLES.so)
        SL_BYTEORDER_LITTLEENDIAN
    };
    SLDataSource slSource = {
-      &slBufferQueue,
-      &pcmFormat
+       &slBufferQueue,
+       &pcmFormat
+   };
+   SLDataLocator_OutputMix slOutputMix = {
+       SL_DATALOCATOR_OUTPUTMIX,
+       outputMixObject
+   };
+   SLDataSink slSink = {
+       &slOutputMix,
+       nullptr
    };
    SLObjectItf pcmPlayerObject = nullptr;
    (*engineEngine)->CreateAudioPlayer(engineEngine,
@@ -155,7 +166,7 @@ target_link_libraries(sample PUBLIC libOpenSLES.so)
    (*bufferQueueItf)->RegisterCallback(bufferQueueItf, BufferQueueCallback, pContext);
    ```
 
-7. 获取接口SL_PLAYSTATE_PLAYING的playItf实例，开始播放。
+7. 获取接口SL_IID_PLAY的playItf实例，开始播放。
      
    ```cpp
    SLPlayItf playItf = nullptr;

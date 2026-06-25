@@ -2,8 +2,8 @@
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @anxuesm-->
-<!--Designer: @qyhuo32-->
+<!--Owner: @oatuwwutao-->
+<!--Designer: @oatuwwutao; @cy917474985-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -592,8 +592,8 @@ class C {
   }
 }
 
-let s: C = new C(-2);   //抛出异常
-let t: C = { value: -2 }; //ArkTS不支持
+let s: C = new C(-2);   // 抛出异常
+let t: C = { value: -2 }; // ArkTS不支持
 ```
 
 如果允许使用`C`来标注object literal的类型，变量`t`会导致行为的二义性。ArkTS禁止通过object literal绕过这一行为。
@@ -862,6 +862,7 @@ test.foo('', option);
 **原因**
 
 对象字面量缺少类型，根据`test.foo`分析可以得知，`option`的类型来源于声明文件，那么只需要将类型导入即可。
+
 在`test.d.ets`中，`I`定义在namespace中。在ets文件中，先导入namespace，再通过名称获取相应的类型。
 
 ### object literal传参给Object类型
@@ -1753,7 +1754,7 @@ let entries = new Map([
 ]);
 
 let obj: Record<string, Object> = {};
-entries.forEach((key, value) => {
+entries.forEach((value, key) => {
   if (key != undefined && key != null) {
     obj[key] = value;
   }
@@ -1865,19 +1866,19 @@ a?.bar();
 1.一般情况下，**建议按照业务逻辑**在声明时初始化属性，或者在构造函数中为属性赋值。如：
 
 ```typescript
-//code with error
+// code with error
 class Test {
   value: number
   flag: boolean
 }
 
-//方式一，在声明时初始化
+// 方式一，在声明时初始化
 class Test {
   value: number = 0
   flag: boolean = false
 }
 
-//方式二，在构造函数中赋值
+// 方式二，在构造函数中赋值
 class Test {
   value: number
   flag: boolean
@@ -1906,7 +1907,7 @@ class Test {
 ```typescript
 function foo(fn: (value?: string) => void, value: string): void {}
 
-foo((value: string) => {}, ''); //error
+foo((value: string) => {}, ''); // error
 ```
 
 **建议改法**
@@ -2559,232 +2560,5 @@ function deepCopy(obj: object): object {
     }
   }
   return newObj;
-}
-```
-
-## 状态管理使用典型场景
-
-### Struct组件外使用状态变量
-
-由于`struct`和`class`的不同，不建议将`this`作为参数传递到`struct`外部使用，以避免实例引用无法释放，导致内存泄露。建议传递状态变量对象到`struct`外部使用，通过修改对象的属性来触发UI刷新。
-
-**不推荐用法**
-
-```typescript
-export class MyComponentController {
-  item: MyComponent = null;
-
-  setItem(item: MyComponent) {
-    this.item = item;
-  }
-
-  changeText(value: string) {
-    this.item.value = value;
-  }
-}
-
-@Component
-export default struct MyComponent {
-  public controller: MyComponentController = null;
-  @State value: string = 'Hello World';
-
-  build() {
-    Column() {
-      Text(this.value)
-        .fontSize(50)
-    }
-  }
-
-  aboutToAppear() {
-    if (this.controller)
-      this.controller.setItem(this); // 不建议把this作为参数传递到struct外部使用
-  }
-}
-
-@Entry
-@Component
-struct ObjThisOldPage {
-  controller = new MyComponentController();
-
-  build() {
-    Column() {
-      MyComponent({ controller: this.controller })
-      Button('change value').onClick(() => {
-        this.controller.changeText('Text');
-      })
-    }
-  }
-}
-```
-
-**推荐用法**
-
-<!-- @[using_state_variables_outside_of_structs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/UsingStateVariablesOutsideOfStructs.ets) -->  
-
-``` TypeScript
-class CC {
-  public value: string = '1';
-
-  constructor(value: string) {
-    this.value = value;
-  }
-}
-
-export class MyComponentController {
-  public item: CC = new CC('1');
-
-  setItem(item: CC) {
-    this.item = item;
-  }
-
-  changeText(value: string) {
-    this.item.value = value;
-  }
-}
-
-@Component
-export default struct MyComponent {
-  public controller: MyComponentController | null = null;
-  @State value: CC = new CC('Hello World');
-
-  build() {
-    Column() {
-      Text(`${this.value.value}`)
-        .fontSize(50)
-    }
-  }
-
-  aboutToAppear() {
-    if (this.controller) {
-      this.controller.setItem(this.value);
-    }
-  }
-}
-
-@Entry
-@Component
-struct StyleExample {
-  controller: MyComponentController = new MyComponentController();
-
-  build() {
-    Column() {
-      MyComponent({ controller: this.controller })
-      Button('change value').onClick(() => {
-        this.controller.changeText('Text');
-      })
-    }
-  }
-}
-```
-
-### Struct支持联合类型的方案
-
-下面这段代码有arkts-no-any-unknown的报错，由于struct不支持泛型，建议使用联合类型，实现自定义组件类似泛型的功能。
-
-**不推荐用法**
-
-```typescript
-class Data {
-  aa: number = 11;
-}
-
-@Entry
-@Component
-struct DatauionOldPage {
-  @State array: Data[] = [new Data(), new Data(), new Data()];
-
-  @Builder
-  componentCloser(data: Data) {
-    Text(data.aa + '').fontSize(50)
-  }
-
-  build() {
-    Row() {
-      Column() {
-        ForEachCom({ arrayList: this.array, closer: this.componentCloser })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-
-@Component
-export struct ForEachCom {
-  arrayList: any[]; // struct不支持泛型，有arkts-no-any-unknown报错
-  @BuilderParam closer: (data: any) => void = this.componentCloser; // struct不支持泛型，有arkts-no-any-unknown报错
-
-  @Builder
-  componentCloser() {
-  }
-
-  build() {
-    Column() {
-      ForEach(this.arrayList, (item: any) => { // struct不支持泛型，有arkts-no-any-unknown报错
-        Row() {
-          this.closer(item)
-        }.width('100%').height(200).backgroundColor('#eee')
-      })
-    }
-  }
-}
-```
-
-**推荐用法**
-
-<!-- @[using_union_types_in_structs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/UsingUnionTypesInStructs.ets) -->  
-
-``` TypeScript
-class Data {
-  public aa: number = 11;
-}
-
-class Model {
-  public aa: string = '11';
-}
-
-type UnionData = Data | Model;
-
-@Entry
-@Component
-struct DatauionPage {
-  array: UnionData[] = [new Data(), new Data(), new Data()];
-
-  @Builder
-  componentCloser(data: UnionData) {
-    if (data instanceof Data) {
-      Text(data.aa + '').fontSize(50)
-    }
-  }
-
-  build() {
-    Row() {
-      Column() {
-        ForEachCom({ arrayList: this.array, closer: this.componentCloser })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-
-@Component
-export struct ForEachCom {
-  arrayList: UnionData[] = [new Data(), new Data(), new Data()];
-  @BuilderParam closer: (data: UnionData) => void = this.componentCloser;
-
-  @Builder
-  componentCloser() {
-  }
-
-  build() {
-    Column() {
-      ForEach(this.arrayList, (item: UnionData) => {
-        Row() {
-          this.closer(item)
-        }.width('100%').height(200).backgroundColor('#eee')
-      })
-    }
-  }
 }
 ```

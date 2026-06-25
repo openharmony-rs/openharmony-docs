@@ -37,7 +37,7 @@ isSupported\(slotId: number\): boolean
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| boolean | 返回指定卡槽是否支持eSIM功能，如果支持返回true。 |
+| boolean | 返回指定卡槽是否支持eSIM功能，如果支持返回true，不支持返回false。 |
 
 **错误码：**
 

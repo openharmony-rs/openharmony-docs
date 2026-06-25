@@ -30,20 +30,25 @@ ArrayBuffer可以用来表示图片等资源，在应用开发中，处理图片
 
 最后，UI主线程接收到Task执行完毕后返回的ArrayBuffer数据，进行拼接并展示。
 
-```ts
-// Index.ets
+<!-- @[copy_arraybuffer_transfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/ArrayBufferObject.ets) --> 
+
+``` TypeScript
 import { taskpool } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 在Task执行的处理函数，用于处理ArrayBuffer数据
 @Concurrent
 function adjustImageValue(arrayBuffer: ArrayBuffer): ArrayBuffer {
   // 对arrayBuffer进行操作，返回值默认转移
   return arrayBuffer;
 }
 
+/*
+ * 创建一个Task，用于将ArrayBuffer传入Task执行
+ * isParamsByTransfer用于控制ArrayBuffer是“拷贝”还是“转移”传递
+ */
 function createImageTask(arrayBuffer: ArrayBuffer, isParamsByTransfer: boolean): taskpool.Task {
   let task: taskpool.Task = new taskpool.Task(adjustImageValue, arrayBuffer);
-  // 是否使用转移方式
   if (!isParamsByTransfer) {
     // 传递空数组[]，全部arrayBuffer参数传递均采用拷贝方式
     task.setTransferList([]);
@@ -67,21 +72,24 @@ struct Index {
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
         .onClick(() => {
+          // 创建待处理的ArrayBuffer，并按taskNum进行切分
           let taskNum = 4;
           let arrayBuffer = new ArrayBuffer(1024 * 1024);
           let taskPoolGroup = new taskpool.TaskGroup();
           // 创建taskNum个Task
           for (let i: number = 0; i < taskNum; i++) {
-            let arrayBufferSlice: ArrayBuffer = arrayBuffer.slice(arrayBuffer.byteLength / taskNum * i, arrayBuffer.byteLength / taskNum * (i + 1));
-            // 使用拷贝方式传入ArrayBuffer，所以isParamsByTransfer为false
+            let arrayBufferSlice: ArrayBuffer =
+              arrayBuffer.slice(arrayBuffer.byteLength / taskNum * i, arrayBuffer.byteLength / taskNum * (i + 1));
+            // 使用拷贝方式传入ArrayBuffer，所以isParamsByTransfer为false，改成true，就可以实现转移方式的传输
             taskPoolGroup.addTask(createImageTask(arrayBufferSlice, false));
           }
-          // 执行Task
+          // 执行Task，UI主线程接收处理完成后的结果
           taskpool.execute(taskPoolGroup).then((data) => {
-            // 返回结果，对数组拼接，获得最终结果
+            // 将各Task返回的ArrayBuffer数据进行拼接
           }).catch((e: BusinessError) => {
             console.error(e.message);
           })
+          // ...
         })
     }
     .height('100%')
@@ -89,7 +97,6 @@ struct Index {
   }
 }
 ```
-<!-- @[copy_arraybuffer_transfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/CommunicationObjects/entry/src/main/ets/managers/ArrayBufferObject.ets) -->
 
 ## ArrayBuffer转移传输方式
 

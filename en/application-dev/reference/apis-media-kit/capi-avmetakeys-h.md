@@ -1,8 +1,8 @@
 # avmetakeys.h
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -26,7 +26,7 @@ Defines audio and video metadata keys.
 
 | Name| Description|
 | -- | -- |
-| const char * OH_AVMETA_KEY_TRACK_INDEX | Track index. The value type is int32_t.<br>**Since**: 23<br>**System capability**: SystemCapability.Multimedia.Media.Core|
+| const char * OH_AVMETA_KEY_TRACK_INDEX | Track index. The value type is int32_t.<br>**Since**: 23|
 | const char * OH_AVMETA_KEY_TRACK_TYPE | Track type. The value type is int32_t.<br>**Since**: 23|
 | const char * OH_AVMETA_KEY_MIME_TYPE | MIME type of the codec. The value type is string.<br>**Since**: 23|
 | const char * OH_AVMETA_KEY_DURATION | Media duration, in microseconds. The value type is int64_t.<br>**Since**: 23|

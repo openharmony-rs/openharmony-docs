@@ -1,10 +1,10 @@
 # @ohos.enterprise.networkManager（网络管理）
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 本模块提供设备网络管理能力，包括查询设备IP地址、MAC地址信息等。
 
@@ -194,7 +194,7 @@ try {
 
 ## networkManager.isNetworkInterfaceDisabledSync
 
-isNetworkInterfaceDisabledSync(admin: Want, networkInterface: string): boolean
+isNetworkInterfaceDisabledSync(admin: Want | null, networkInterface: string): boolean
 
 查询指定网络接口是否被禁用。
 
@@ -208,7 +208,7 @@ isNetworkInterfaceDisabledSync(admin: Want, networkInterface: string): boolean
 
 | 参数名           | 类型                                                    | 必填 | 说明           |
 | ---------------- | ------------------------------------------------------- | ---- | -------------- |
-| admin            | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
 | networkInterface | string                                                  | 是   | 指定网络接口。 |
 
 **返回值：**
@@ -452,7 +452,7 @@ getGlobalProxySync(admin: Want): connection.HttpProxy
 
 | 类型                                                         | 说明                           |
 | ------------------------------------------------------------ | ------------------------------ |
-| [connection.HttpProxy](../apis-network-kit/js-apis-net-connection.md#httpproxy10) | 返回网络全局Http代理配置信息。 |
+| [connection.HttpProxy](../apis-network-kit/js-apis-net-connection.md#httpproxy10) | 返回网络全局HTTP代理配置信息。 |
 
 **错误码**：
 
@@ -1102,12 +1102,12 @@ import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };
 let apnInfo: Record<string, string> = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   "apnName": "CTNET",
   "apn": "CTNET",
   "mnc": "11",
@@ -1159,11 +1159,11 @@ import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };
-let apnId: string = "1"; //需根据实际情况进行替换
+let apnId: string = "1"; // 需根据实际情况进行替换
 try {
   networkManager.deleteApn(wantTemp, apnId);
   console.info(`Succeeded in deleting apn.`);
@@ -1211,18 +1211,18 @@ import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };
 let apnInfo: Record<string, string> = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   "apnName": "CTNET",
   "apn": "CTNET",
   "mnc": "11",
   "mcc": "460",
 };
-let apnId: string = "1"; //需根据实际情况进行替换
+let apnId: string = "1"; // 需根据实际情况进行替换
 try {
   networkManager.updateApn(wantTemp, apnInfo, apnId);
   console.info(`Succeeded in updating apn.`);
@@ -1269,11 +1269,11 @@ import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };
-let apnId: string = "1"; //需根据实际情况进行替换
+let apnId: string = "1"; // 需根据实际情况进行替换
 try {
   networkManager.setPreferredApn(wantTemp, apnId);
   console.info(`Succeeded in setting preferred apn.`);
@@ -1324,12 +1324,12 @@ import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };
 let apnInfo: Record<string, string> = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   "apnName": "CTNET",
   "apn": "CTNET",
   "mnc": "11",
@@ -1385,11 +1385,11 @@ import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };
-let apnId: string = "1"; //需根据实际情况进行替换
+let apnId: string = "1"; // 需根据实际情况进行替换
 try {
   let queryResult: Record<string, string> = networkManager.queryApn(wantTemp, apnId);
   console.info(`Succeeded in querying apn, result : ${JSON.stringify(queryResult)}`);
@@ -1497,7 +1497,7 @@ API version 21及之前版本，仅支持IPv4。从API version 22开始，支持
 
 | 名称       | 类型              | 只读 | 可选 | 说明                                                         |
 | ---------- | ----------------- | ---- | ---- | ------------------------------------------------------------ |
-| domainName | string            | 否   | 是 |域名。添加域名过滤规则时必填。支持域名分段匹配，例如，domainName传入"example.com"，那么"example.com"、"www.example.com"、"www.test.example.com"会被匹配，"linkexample.com"不会被匹配。                               |
+| domainName | string            | 否   | 是 |域名。添加域名过滤规则时必填。支持域名分段匹配，例如，domainName传入`example.com`，那么`example.com`、`www.example.com`、`www.test.example.com`会被匹配，`linkexample.com`不会被匹配。                               |
 | appUid     | string            | 否   | 是 |应用uid。                                                    |
 | action     | [Action](#action) | 否   | 是 |接收或者丢弃数据包。<br/>添加域名过滤规则时必填；<br/>移除域名过滤规则时非必填，当值为空时，表示清空所有的匹配[Action](#action)规则的链，且domainName，appUid也必须传入空值。 |
 | direction<sup>15+</sup> | [Direction](#direction) | 否 | 是 |规则链。<br/>添加域名过滤规则时非必填；当值设为输出链或输入链时，实际效果为输出链。设为转发链时，appUid需设置为空，否则会报401错误码。<br/>移除域名过滤规则时非必填，当值为空时，表示清空所有的[Direction](#direction)链，且domainName，appUid也必须传入空值。|

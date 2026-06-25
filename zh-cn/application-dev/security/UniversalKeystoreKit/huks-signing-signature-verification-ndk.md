@@ -14,7 +14,7 @@
 - 密钥算法为SM2、摘要算法为NoDigest，请见开发案例：[SM2/NoDigest](#sm2nodigest)
 - 密钥算法为RSA、摘要算法为SHA256、填充模式为PSS，请见开发案例：[RSA/SHA256/PSS](#rsasha256pss)
 - 密钥算法为RSA、摘要算法为SHA256、填充模式为PKCS1_V1_5，请见开发案例：[RSA/SHA256/PKCS1_V1_5](#rsasha256pkcs1_v1_5)
-- 密钥算法为RSA、摘要算法为SHA384、填充模式为PSS，请见开发案例：[RSA2048/SHA384/PSS](#rsa2048sha384pss)
+- 密钥算法为RSA、摘要算法为SHA384、填充模式为PSS，请见开发案例：[RSA/SHA384/PSS](#rsasha384pss)
 <!--RP1--><!--RP1End-->
 
 具体的场景介绍及支持的算法规格，请参考[签名/验签支持的算法](huks-signing-signature-verification-overview.md#支持的算法)。
@@ -922,7 +922,7 @@ napi_value SignVerifyKeyRsaSha256Pkcs1V15(napi_env env, napi_callback_info info)
     return ret;
 }
 ```
-### RSA2048/SHA384/PSS
+### RSA/SHA384/PSS
 <!-- @[key_algorithm_rsa_sha384_pss_sign_verify_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/SigningVerification/entry/src/main/cpp/rsa_sha384_pss_sign_verify.cpp) -->
 
 ``` C++

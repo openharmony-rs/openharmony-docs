@@ -1,9 +1,8 @@
 # @ohos.commonEventManager (公共事件模块)
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -37,7 +36,7 @@ publish(event: string, callback: AsyncCallback\<void>): void
 
 | 参数名     | 类型                 | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
-| event    | string               | 是   | 表示要发送的公共事件。详见[系统公共事件定义](./common_event/commonEventManager-definitions.md)。 |
+| event    | string               | 是   | 表示要发送的公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions.md)。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当公共事件发布成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -46,7 +45,7 @@ publish(event: string, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- | 
-| 1500003  | The common event sending frequency too high. |
+| 1500003  | The common event sending frequency too high.<br> 适用版本：20+ |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
 | 1500009  | Failed to obtain system parameters.  |
@@ -85,7 +84,7 @@ publish(event: string, options: CommonEventPublishData, callback: AsyncCallback\
 
 | 参数名     | 类型                   | 必填 | 说明                   |
 | -------- | ---------------------- | ---- | ---------------------- |
-| event    | string                 | 是   | 表示要发布的公共事件。详见[系统公共事件定义](./common_event/commonEventManager-definitions.md)。  |
+| event    | string                 | 是   | 表示要发布的公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions.md)。  |
 | options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | 是   | 表示发布公共事件的属性。 |
 | callback | AsyncCallback\<void>   | 是   | 回调函数。当公共事件发布成功时，err为undefined，否则为错误对象。  |
 
@@ -95,7 +94,7 @@ publish(event: string, options: CommonEventPublishData, callback: AsyncCallback\
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 1500003  | The common event sending frequency too high. |
+| 1500003  | The common event sending frequency too high.<br> 适用版本：20+ |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
 | 1500009  | Failed to obtain system parameters.  |
@@ -150,7 +149,7 @@ createSubscriber(subscribeInfo: CommonEventSubscribeInfo, callback: AsyncCallbac
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.    | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.    | 
 
 **示例：**
 
@@ -208,7 +207,7 @@ createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise\<CommonEventS
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.      | 
 
 **示例：**
 
@@ -257,7 +256,7 @@ createSubscriber的同步接口。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.      | 
 
 **示例：**
 
@@ -305,7 +304,7 @@ subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback\<CommonEven
 | 801  | capability not supported.               |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
-| 1500010  | The count of subscriber exceed system specification. |
+| 1500010  | The count of subscriber exceed system specification. <br> 适用版本：20+|
 
 **示例：**
 
@@ -372,7 +371,7 @@ unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback\<void>):
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.      | 
 | 801  | capability not supported.               |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |

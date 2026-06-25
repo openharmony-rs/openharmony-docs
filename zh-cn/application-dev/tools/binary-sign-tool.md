@@ -6,13 +6,15 @@
 <!--Tester: @rongwei-->
 <!--Adviser: @zengyawen-->
 
-Binary Sign Tool （二进制签名工具），用于对二进制文件进行代码签名，支持通过命令行的方式对标准ELF文件进行代码签名或打印已签名ELF的权限、证书信息。
+Binary Sign Tool（二进制签名工具），用于对二进制文件进行代码签名，支持通过命令行的方式对标准ELF文件进行代码签名或打印已签名ELF的权限、证书信息。
 
 ## 命令行工具获取
 
 - 支持运行在Linux平台的工具：下载最新的[Command Line Tools](command-line-tools-overview.md)，可以在SDK库openHarmony/toolchains/lib中找到，文件名为binary-sign-tool。
 
 - 支持运行在OpenHarmony PC/2in1平台的工具：从应用商店下载安装DevBox软件，无需额外配置，即可在终端窗口中执行binary-sign-tool命令。
+
+- 支持运行在Java平台的工具：下载API 24及以上版本的[Command Line Tools](command-line-tools-overview.md)，可以在SDK库openHarmony/toolchains/lib中找到，文件名为binary-sign-tool.jar。此工具运行要求JDK 8及以上版本。
 
 ## 二进制签名工具命令列表
 
@@ -25,7 +27,10 @@ Binary Sign Tool （二进制签名工具），用于对二进制文件进行代
 ## 帮助命令（help）
 
 ```bash
-# 显示帮助信息
+# Java版本命令实例：
+java -jar binary-sign-tool.jar -help
+
+# C++版本命令实例：
 binary-sign-tool -help
 ```
 
@@ -51,10 +56,20 @@ binary-sign-tool -help
 **示例**：
 
 ```bash
-# 使用证书对二进制文件签名
+# 1. 使用证书对二进制文件签名
+# Java版本命令实例：
+java -jar binary-sign-tool.jar sign -keyAlias "oh-app1-key-v1" -signAlg "SHA256withECDSA" -appCertFile "app1.pem" -profileFile "app1-profile.p7b" -profileSigned "1" -inFile "unsigned-elf" -keystoreFile "ohtest.p12" -outFile "signed-elf" -keyPwd "123456" -keystorePwd "123456" -moduleFile "module.json"
+
+# C++版本命令实例：
 binary-sign-tool sign -keyAlias "oh-app1-key-v1" -signAlg "SHA256withECDSA" -appCertFile "app1.pem" -profileFile "app1-profile.p7b" -profileSigned "1" -inFile "unsigned-elf" -keystoreFile "ohtest.p12" -outFile "signed-elf" -keyPwd "123456" -keystorePwd "123456" -moduleFile "module.json"
-# 无证书对二进制文件自签名
+
+# 2. 自签名模式对二进制文件签名
+# Java版本命令实例：
+java -jar binary-sign-tool.jar sign -inFile "unsigned-elf" -outFile "signed-elf" -selfSign "1"
+
+# C++版本命令实例：
 binary-sign-tool sign -inFile "unsigned-elf" -outFile "signed-elf" -selfSign "1"
+
 # 执行结果
 write code sign data success.
 ```
@@ -70,8 +85,12 @@ write code sign data success.
 **示例**：
 
 ```bash
-# 打印二进制文件签名证书信息
+# Java版本命令实例：
+java -jar binary-sign-tool.jar display-sign -inFile "signed-elf"
+
+# C++版本命令实例：
 binary-sign-tool display-sign -inFile "signed-elf"
+
 # 执行结果 
 # 权限信息输出
 # 1. 无权限信息

@@ -5,7 +5,7 @@
 <!--Owner: @hwymlgitcode-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 ## 场景介绍
 
@@ -22,7 +22,7 @@
 
 - SDK版本配置：
 
-  扩展外设管理提供的ArkTs接口，所需SDK版本为API16及以上才可使用。
+  扩展外设管理提供的ArkTS接口，所需SDK版本为API 16及以上才可使用。
 
 
 - HDC配置：
@@ -44,7 +44,7 @@
 |-------------------------------------------------------------------------------------------------------------------|-----------------------|
 | bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, timeout ?: number): Promise&lt;number&gt;  | 批量传输。                 |
 
-更多关于设备管理和传输模式的详细接口介绍，请查阅[API参考文档](../../../../reference/apis-basic-services-kit/js-apis-usbManager.md)。
+更多关于设备管理和传输模式的详细接口介绍，请查阅[@ohos.usbManager](../../../../reference/apis-basic-services-kit/js-apis-usbManager.md)。
 
 ### 开发步骤
 
@@ -134,7 +134,7 @@
        ]
      }
    ]
-   */
+    */
    this.deviceList_ = deviceList;
    ```
 
@@ -189,7 +189,7 @@
    /*
     打开对应接口，在设备信息（deviceList）中选取对应的interface。
    interface1为设备配置中的一个接口。
-   */
+    */
    usbManager.claimInterface(pipe, interface1, true);
    this.pipe_ = pipe;
    this.interface_ = interface1;
@@ -219,7 +219,7 @@
    /*
    读取数据，在device信息中选取对应数据接收的endpoint来做数据传输
    （endpoint.direction == 0x80）；dataUint8Array是要读取的数据，类型为Uint8Array。
-   */
+    */
    let inEndpoint: usbManager.USBEndpoint = interface1.endpoints?.[1];
    let outEndpoint: usbManager.USBEndpoint = interface1.endpoints?.[0];
    let dataUint8Array: Uint8Array = new Uint8Array(1024);

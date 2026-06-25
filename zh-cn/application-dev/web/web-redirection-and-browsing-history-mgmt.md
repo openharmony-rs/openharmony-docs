@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-为了提高页面访问速度，浏览记录导航允许用户通过“前进”和“后退”按钮在历史记录的页面之间切换。Web组件允许用户能够跳转到应用内其他页面或者进行跨应用跳转。
+为了提高页面访问速度，浏览记录导航允许用户通过“前进”和“后退”按钮在历史记录的页面之间切换。Web组件支持用户跳转到应用内其他页面或者进行跨应用跳转。
 
 ## 历史记录导航
 
@@ -53,7 +53,7 @@ struct WebComponent {
 
 当点击页面中的链接需要跳转到应用内其他页面时，可以通过使用Web组件的[onLoadIntercept()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onloadintercept10)接口来实现。
 
-在下面的示例中，应用首页Index.ets加载前端页面route.html，在route.html页面点击'个人中心'超链接，可跳转到应用的ProfilePage.ets页面。
+在下面的示例中，应用首页Index.ets加载前端页面route.html，在route.html页面点击“个人中心”超链接，可跳转到应用的ProfilePage.ets页面。
 
 - 应用首页Index.ets页面代码。
   <!-- @[index_load_route_link_to_profile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/ManagePageRedirectNav/entry/src/main/ets/pages/PageRedirection.ets) -->

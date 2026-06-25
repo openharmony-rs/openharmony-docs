@@ -1,8 +1,8 @@
 # 设置自定义节点跨语言属性
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -325,7 +325,7 @@ struct CrossLanguage {
     }
     } // namespace NativeModule
 
-    #endif //MYAPPLICATION_CROSSLANGUAGEEXAMPLE_H
+    #endif // MYAPPLICATION_CROSSLANGUAGEEXAMPLE_H
     ```
 
 3. 在`NativeEntry.cpp`中，挂载Native节点。
@@ -334,7 +334,6 @@ struct CrossLanguage {
 
 
     #include <arkui/native_node_napi.h>
-    #include <hilog/log.h>
     #include <js_native_api.h>
     #include "NativeEntry.h"
     #include "CrossLanguageExample.h"

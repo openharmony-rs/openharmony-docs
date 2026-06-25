@@ -1,9 +1,9 @@
 # @ohos.app.form.formObserver (formObserver)(系统接口)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 formObserver模块提供了卡片监听方相关接口的能力，包括对同一用户下安装的卡片新增、删除、可见性变化事件的订阅和取消订阅，获取正在运行的卡片信息等。
@@ -102,7 +102,7 @@ formObserver.on('formAdd', bundleName, callback);
 
 off(type: 'formAdd', hostBundleName?: string, observerCallback?: Callback<formInfo.RunningFormInfo>): void;
 
-取消订阅卡片新增事件。使用callback异步回调，返回当前新增卡片的信息。
+取消订阅卡片新增事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
 
@@ -984,7 +984,7 @@ try {
 
 getRunningFormInfoById(formId: string, callback: AsyncCallback&lt;formInfo.RunningFormInfo&gt;): void
 
-根据提供方信息查询已添加的卡片信息。使用callback异步回调。
+根据formId查询已添加的卡片信息。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

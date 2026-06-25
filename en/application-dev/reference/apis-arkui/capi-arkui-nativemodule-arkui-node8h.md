@@ -1,8 +1,8 @@
 # ArkUI_Node*
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@ typedef struct ArkUI_Node* ArkUI_NodeHandle
 
 ## Overview
 
-Defines the pointer type for an ArkUI native component instance object.
+Defines the pointer to an ArkUI native component object.
 
 **Since**: 12
 

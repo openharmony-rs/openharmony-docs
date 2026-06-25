@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-**PhotoOutput** implements output information used in a photo session. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
+PhotoOutput implements output information used in a photo session. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
 
 > **NOTE**
 >
@@ -228,7 +228,7 @@ Subscribes to the events of returning available photos. This API uses an asynchr
 | Name    | Type     | Mandatory| Description                                 |
 | -------- | ---------- | --- | ------------------------------------ |
 | type     | string     | Yes  | Event type. The value is fixed at **'photoAvailable'**. The event can be listened for when a **photoOutput** instance is created.|
-| callback | AsyncCallback\<[Photo](arkts-apis-camera-Photo.md)\> | Yes  | Callback used to listen for the events of returning available photos.|
+| callback | AsyncCallback\<[Photo](arkts-apis-camera-Photo.md)\> | Yes  | Callback used to listen for the event of returning available photos.|
 
 **Example**
 
@@ -264,7 +264,7 @@ Unsubscribes from the events of returning available photos.
 
 | Name     | Type                   | Mandatory| Description                                      |
 | -------- | ---------------------- | ---- | ------------------------------------------ |
-| type     | string                 | Yes  | Event type. The value is fixed at **'photoAvailable'**. The event can be listened for when a photoOutput instance is created.|
+| type     | string                 | Yes  | Event type. The value is fixed at **'photoAvailable'**. The event can be listened for when a **photoOutput** instance is created.|
 | callback | AsyncCallback\<[Photo](arkts-apis-camera-Photo.md)\> | No  | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.|
 
 **Example**
@@ -308,7 +308,7 @@ Subscribes to the events of returning full-quality images and uncompressed image
 
 | Name    | Type     | Mandatory| Description                                 |
 | -------- | ---------- | --- | ------------------------------------ |
-| callback | Callback\<[CapturePhoto](arkts-apis-camera-CapturePhoto.md)\> | Yes  | Callback used to listen for the events of returning full-quality images and uncompressed images.|
+| callback | Callback\<[CapturePhoto](arkts-apis-camera-CapturePhoto.md)\> | Yes  | Callback used to listen for the event of returning full-quality images and uncompressed images.|
 
 **Example**
 
@@ -482,7 +482,7 @@ Enables or disables the feature of taking moving photos.
 
 | Name     | Type                   | Mandatory| Description                                      |
 | -------- | ---------------------- | ---- | ------------------------------------------ |
-| enabled  | boolean                | Yes  | Whether to enable the feature of taking moving photos. **true** to enable, **false** otherwise.    |
+| enabled  | boolean                | Yes  | Enables or disables the feature of taking moving photos. **true** to enable, **false** otherwise.    |
 
 **Error codes**
 
@@ -605,7 +605,7 @@ function isMirrorSupported(photoOutput: camera.PhotoOutput): boolean {
 
 enableMirror(enabled: boolean): void
 
-Enables or disables mirroring photo capture.
+Enables or disables dynamic photo capture.
 
 Before calling this API, check whether moving photo capture is supported by calling [isMovingPhotoSupported](#ismovingphotosupported12) and whether mirroring is supported by calling [isMirrorSupported](#ismirrorsupported).
 
@@ -617,7 +617,7 @@ Before calling this API, check whether moving photo capture is supported by call
 
 | Name     | Type                   | Mandatory| Description                       |
 |----------| ---------------------- | ---- |---------------------------|
-| enabled | boolean                | Yes  | Whether to enable mirroring photo capture. **true** to enable, **false** otherwise.|
+| enabled | boolean                | Yes  | Enables or disables dynamic photo capture. **true** to enable, **false** otherwise.|
 
 **Error codes**
 
@@ -693,7 +693,7 @@ Sets a video codec type for moving photos.
 
 | Name       | Type                                 | Mandatory|  Description               |
 | ------------- |-------------------------------------|-------| ------------        |
-| codecType     | [VideoCodecType](arkts-apis-camera-e.md#videocodectype13) |  Yes   | Video codec type. |
+| codecType     | [VideoCodecType](arkts-apis-camera-e.md#videocodectype13) |  Yes   | Video codec type.<br>If the value is not within the enumerated value range, this parameter does not take effect. |
 
 **Error codes**
 
@@ -1137,7 +1137,7 @@ getPhotoRotation(deviceDegree?: number): ImageRotation
 
 Obtains the photo rotation angle.
 
-- Device's natural orientation: the default orientation for using a device. For example, the default orientation of the bar-type phone is in portrait mode, with the charging port facing downward.
+- Device' natural orientation: the default orientation for using a device. For example, the default orientation of the bar-type phone is in portrait mode, with the charging port facing downward.
 - Camera lens angle: equivalent to the angle at which the camera is rotated clockwise to match the device's natural orientation. For example, the rear camera sensor of a bar-type phone is installed in landscape mode. Therefore, it needs to be rotated by 90 degrees clockwise to match the device's natural orientation.
 
 **Model restriction**: This API can be used only in the stage model.

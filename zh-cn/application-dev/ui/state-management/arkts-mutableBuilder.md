@@ -53,7 +53,7 @@ struct Index {
 
 ## 接口说明
 
-mutableBuilder是一个模板函数，返回一个[MutableBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-mutableBuilder.md#mutablebuilder-2)对象。相比[WrappedBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder)，MuableBuilder可以实现动态切换全局@Builder。
+mutableBuilder是一个模板函数，返回一个[MutableBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-mutableBuilder.md#mutablebuilder-2)对象。相比[WrappedBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder)，MutableBuilder可以实现动态切换全局@Builder。
 ```ts
 declare function mutableBuilder<Args extends Object[]>(builder: BuilderCallback): MutableBuilder<Args>;
 ```
@@ -162,7 +162,7 @@ let builderArr: MutableBuilder<[string, number]>[] = [mutableBuilder(MyBuilder)]
    @State switchingBuilder: MutableBuilder<[MutableBinding]> = mutableBuilder(textBuilder);
    
    Button(`MutableBuilder`).onClick(() => {
-     // 赋值会将wrapBuilder中textBuilder中动态切换成buttonBuilder
+      // 赋值会将textBuilder动态切换成buttonBuilder
      this.switchingBuilder = mutableBuilder(buttonBuilder); // 推荐用法
    })
    ```
@@ -247,6 +247,7 @@ struct Index {
               .borderRadius(10)
               .backgroundColor(0xFFFFFF)
           }
+          // 使用mutableBuilder显示弹出菜单
           .bindMenu(this.mutableBuilderMenu.builder)
         }, (item: number) => JSON.stringify(item))
       }
@@ -314,5 +315,5 @@ struct MyApp {
 
 ![arkts-mutableBuilder-dynamic-demo2](figures/mutableBuilder-dynamic-demo2.gif)
 
-点击`Click to change`按钮将`textBuilder`动态切换为`buttonBuilder`时，@Monitor将监听到全局@Builder的变化，并打印日志`@Builder changed. is buttonBuilder: true`。
+点击`Click to change`按钮将`textBuilder`动态切换为`buttonBuilder`时，@Monitor将监听到全局@Builder的变化，并打印日志`Builder changed. is buttonBuilder: true`。
 

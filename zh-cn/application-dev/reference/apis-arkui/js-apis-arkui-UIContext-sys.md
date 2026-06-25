@@ -1,8 +1,8 @@
 # @ohos.arkui.UIContext (UIContext)(系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,11 +10,13 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 本模块接口仅可在Stage模型下使用。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.arkui.UIContext (UIContext)](arkts-apis-uicontext-uicontext.md)。
+> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[Class (UIContext)](arkts-apis-uicontext-uicontext.md)。
 
 ## UIContext
 
@@ -32,6 +34,8 @@ setDynamicDimming(id: string, value: number): void
 > 设置该属性后设置其他效果类属性会导致效果冲突。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -70,6 +74,8 @@ freezeUINode(id: string, isFrozen: boolean): void
 通过id设置组件冻结状态，防止组件被标记为脏从而触发布局更新。
 
 **原子化服务API:** 从API version 18 开始，该接口支持在原子化服务中使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -188,6 +194,8 @@ freezeUINode(uniqueId: number, isFrozen: boolean): void
 通过uniqueId设置组件的冻结状态，防止组件被标记为脏从而触发布局更新。
 
 **原子化服务API:** 从API version 18 开始，该接口支持在原子化服务中使用。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -321,7 +329,7 @@ struct Index {
 
 setKeyboardAppearanceConfig(uniqueId: number, config: KeyboardAppearanceConfig): void
 
-设置键盘样式，包括模糊效果和流光效果，仅在沉浸式模式下生效，沉浸式定义可参见[KeyboardAppearance枚举说明](../apis-arkui/arkui-ts/ts-text-common.md#keyboardappearance15枚举说明)。其中，流光效果依赖于模糊效果，若需启用流光效果，则需同时开启模糊效果，最终显示效果取决于输入法处理。
+设置键盘样式，包括模糊效果和流光效果，仅在沉浸式模式下生效，沉浸式定义可参见[KeyboardAppearance](../apis-arkui/arkui-ts/ts-text-common.md#keyboardappearance15枚举说明)。其中，流光效果依赖于模糊效果，若需启用流光效果，则需同时开启模糊效果，最终显示效果取决于输入法处理。
 
 **系统接口：** 此接口为系统接口。
 
@@ -437,100 +445,6 @@ getLuminanceSampler(target: TargetInfo): LuminanceSampler | undefined
 
 参考[offBackgroundLuminanceChange](arkts-apis-uicontext-luminancesampler-sys.md#offbackgroundluminancechange23)接口的示例。
 
-## ComponentSnapshot<sup>12+</sup>
-
-以下API需先使用UIContext中的[getComponentSnapshot()](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取ComponentSnapshot对象，再通过此实例调用对应方法。
-
-缩放、平移、旋转等图形变换属性只对被截图组件的子组件生效；对目标组件本身应用图形变换属性不生效，显示的是还是图形变换前的效果。
-
-### getWithRange<sup>20+</sup>
-getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>;
-
-传入两个组件的ID，获取范围内的组件的截图，并通过Promise返回结果。
-
-> **说明：**
->
-> start对应的组件和end对应的组件必须为同一棵组件树上的组件，且start对应的组件需要为end对应的组件的祖先组件。
-
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名  | 类型     | 必填   | 说明                                       |
-| ---- | ------ | ---- | ------- |
-| start   | [NodeIdentity](arkts-apis-uicontext-t.md#nodeidentity20) | 是    | 范围开始的组件的ID。 |
-| end   | [NodeIdentity](arkts-apis-uicontext-t.md#nodeidentity20) | 是    | 范围结束的组件的ID。 |
-| isStartRect   | boolean | 是    | 范围是否以开始组件的外接矩形为准。<br/>true表示以开始组件的外接矩形为准，false表示以结束组件的外接矩形为准。<br/>默认值为true。 |
-| options       | [componentSnapshot.SnapshotOptions](js-apis-arkui-componentSnapshot.md#snapshotoptions12)            | 否    | 截图相关的自定义参数，不支持region参数。 |
-
-**返回值：**
-
-| 类型                            | 说明       |
-| -------- | -------- |
-| image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 截图返回的结果。 |
-
-**错误码：** 
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[截图错误码](errorcode-snapshot.md)和[接口调用异常错误码](errorcode-internal.md)。
-
-| 错误码ID  | 错误信息                |
-| ------ | ------- |
-| 202    | The caller is not a system application. |
-| 100001 | Invalid ID detected. |
-| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
-
-**示例：** 
-
-```ts
-import { image } from '@kit.ImageKit';
-
-@Entry
-@Component
-struct SnapshotExample {
-  @State pixmap: image.PixelMap | undefined = undefined
-  build() {
-    Column() {
-      Row() {
-        Row() {
-          Row() {
-            Column() {
-              Text('Text1').id('text1')
-              Text('Text2').id('text2')
-              Row() {
-                Text('Text3').id('text3')
-              }.id('root5').backgroundColor('#E4E8F0')
-            }.width('80%').height('80%').justifyContent(FlexAlign.SpaceAround).backgroundColor('#C1D1F0').id('root4')
-          }.width('80%').height('80%').justifyContent(FlexAlign.Center).backgroundColor('#FFEEF0').id('root3')
-          .backgroundBlurStyle(BlurStyle.Thin, { colorMode: ThemeColorMode.LIGHT })
-        }.width('80%').height('80%').justifyContent(FlexAlign.Center).backgroundColor('#D5D5D5').id('root2')
-      }.width('50%').height('50%').justifyContent(FlexAlign.Center).backgroundColor('#E4E8F0').id('root1')
-      Row() {
-        Button("getWithRange")
-          .onClick(() => {
-            this.getUIContext().getComponentSnapshot().getWithRange('root2', 'root4', true)
-              .then((pixmap: image.PixelMap) => {
-                this.pixmap = pixmap
-              }).catch((err:Error) => {
-              console.error("error: " + err)
-            })
-          }).margin(10)
-      }.justifyContent(FlexAlign.SpaceAround)
-      Row() {
-        Image(this.pixmap).width(200).height(300).border({ color: Color.Black, width: 2 }).margin(5)
-      }.justifyContent(FlexAlign.SpaceAround)
-    }
-    .id('root')
-    .width('100%')
-    .height('100%')
-    .alignItems(HorizontalAlign.Center)
-  }
-}
-```
-
-![zh-cn_image_getWithRange](figures/zh-cn_image_getWithRange.gif)
-
 ### recycleInvisibleImageMemory<sup>23+</sup>
 
 recycleInvisibleImageMemory(enabled: boolean): void
@@ -574,3 +488,126 @@ struct ImageRecycleSample {
   }
 }
 ```
+
+## ComponentSnapshot<sup>12+</sup>
+
+以下API需先使用UIContext中的[getComponentSnapshot()](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取ComponentSnapshot对象，再通过此实例调用对应方法。
+
+缩放、平移、旋转等图形变换属性只对被截图组件的子组件生效；对目标组件本身应用图形变换属性不生效，显示的是还是图形变换前的效果。
+
+### getWithRange<sup>20+</sup>
+getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>;
+
+传入两个组件的ID，获取范围内的组件的截图，并通过Promise返回结果。
+
+> **说明：**
+>
+> start对应的组件和end对应的组件必须为同一棵组件树上的组件，且start对应的组件需要为end对应的组件的祖先组件。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名  | 类型     | 必填   | 说明                                       |
+| ---- | ------ | ---- | ------- |
+| start   | [NodeIdentity](arkts-apis-uicontext-t.md#nodeidentity20) | 是    | 范围开始的组件的ID。 |
+| end   | [NodeIdentity](arkts-apis-uicontext-t.md#nodeidentity20) | 是    | 范围结束的组件的ID。 |
+| isStartRect   | boolean | 是    | 范围是否以开始组件的外接矩形为准。<br/>true表示以开始组件的外接矩形为准，false表示以结束组件的外接矩形为准。<br/>默认值为true。 |
+| options       | [componentSnapshot.SnapshotOptions](js-apis-arkui-componentSnapshot.md#snapshotoptions12)            | 否    | 截图相关的自定义参数，不支持region参数。 |
+
+**返回值：**
+
+| 类型                            | 说明       |
+| -------- | -------- |
+| image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 截图返回的结果。 |
+
+**错误码：** 
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[截图错误码](errorcode-snapshot.md)和[接口调用异常错误码](errorcode-internal.md)。
+
+| 错误码ID  | 错误信息                |
+| ------ | ------- |
+| 202    | The caller is not a system application. |
+| 100001 | Invalid ID detected. |
+| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
+
+**示例：** 
+
+```ts
+import { image } from '@kit.ImageKit';
+
+@Entry
+@Component
+struct SnapshotExample {
+  @State pixmap: image.PixelMap | undefined = undefined
+
+  build() {
+    Column() {
+      Row() {
+        Row() {
+          Row() {
+            Column() {
+              Text('Text1').id('text1')
+              Text('Text2').id('text2')
+              Row() {
+                Text('Text3').id('text3')
+              }.id('root5').backgroundColor('#E4E8F0')
+            }
+            .width('80%')
+            .height('80%')
+            .justifyContent(FlexAlign.SpaceAround)
+            .backgroundColor('#C1D1F0')
+            .id('root4')
+          }
+          .width('80%')
+          .height('80%')
+          .justifyContent(FlexAlign.Center)
+          .backgroundColor('#FFEEF0')
+          .id('root3')
+          .backgroundBlurStyle(BlurStyle.Thin, { colorMode: ThemeColorMode.LIGHT })
+        }
+        .width('80%')
+        .height('80%')
+        .justifyContent(FlexAlign.Center)
+        .backgroundColor('#D5D5D5')
+        .id('root2')
+      }
+      .width('50%')
+      .height('50%')
+      .justifyContent(FlexAlign.Center)
+      .backgroundColor('#E4E8F0')
+      .id('root1')
+
+      Row() {
+        Button("getWithRange")
+          .onClick(() => {
+            this.getUIContext()
+              .getComponentSnapshot()
+              .getWithRange('root2', 'root4', true)
+              .then((pixmap: image.PixelMap) => {
+                this.pixmap = pixmap
+              })
+              .catch((err: Error) => {
+                console.error("error: " + err)
+              })
+          }).margin(10)
+      }.justifyContent(FlexAlign.SpaceAround)
+
+      Row() {
+        Image(this.pixmap).width(200).height(300).border({ color: Color.Black, width: 2 }).margin(5)
+      }.justifyContent(FlexAlign.SpaceAround)
+    }
+    .id('root')
+    .width('100%')
+    .height('100%')
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+```
+
+![zh-cn_image_getWithRange](figures/image-getWithRange.gif)
+

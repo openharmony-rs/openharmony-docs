@@ -108,7 +108,7 @@
     }
     ```
 
-2. 创建NatvieImage对象作为OHNativeBuffer的消费端，并根据NativeImage对象获取对应的NativeWindow对象，将NativeWindow句柄传给视频编解码，作为OHNativeBuffer的生产端，用于生产视频帧内容。
+2. 创建NativeImage对象作为OHNativeBuffer的消费端，并根据NativeImage对象获取对应的NativeWindow对象，将NativeWindow句柄传给视频编解码，作为OHNativeBuffer的生产端，用于生产视频帧内容。
     ```c++
     bool VulkanRenderThread::CreateNativeImage() {
         nativeImage_ = OH_ConsumerSurface_Create();
@@ -189,7 +189,7 @@
         VkSurfaceCreateInfoOHOS surfaceCreateInfo{};
         surfaceCreateInfo.sType = VK_STRUCTURE_TYPE_SURFACE_CREATE_INFO_OHOS;
         if (nativeWindow_ == nullptr) {
-            OH_LOG_INFO(LOG_APP, "nativeWindow_ is nulptr.Failed to create surface !");
+            OH_LOG_INFO(LOG_APP, "nativeWindow_ is nullptr.Failed to create surface !");
             return false;
         }
         surfaceCreateInfo.window = nativeWindow_;
@@ -424,7 +424,7 @@
         VkMemoryDedicatedAllocateInfo dedicatedAllocateInfo = {
             .sType = VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO,
             .pNext = &importBufferInfo,
-            .image = VK_NULL_HANDLE, // wiLl be set later
+            .image = VK_NULL_HANDLE, // will be set later
             .buffer = VK_NULL_HANDLE
         };
 
@@ -595,7 +595,7 @@
         vkUpdateDescriptorSets(device, 2, gfxPipelineInfo.descWrites, 0, nullptr);
 
         createGraphicsPipeline();
-        createOtherStaff();
+        createOtherStuff();
 
         recordCommandBuffer();
         OH_LOG_INFO(LOG_APP, "hwBufferToTexture end");

@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供应用信息查询能力，支持[包信息](js-apis-bundle-BundleInfo.md)、[应用信息](js-apis-bundle-ApplicationInfo.md)、[Ability组件信息](js-apis-bundle-AbilityInfo.md)等信息的查询，以及应用禁用状态的查询、设置等。
 
@@ -1451,7 +1451,7 @@ bundle.getAbilityIcon(bundleName, abilityName, (err, data) => {
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[errorcode-bundle](errorcode-bundle.md)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[包管理子系统通用错误码](errorcode-bundle.md)替代。
 
  **系统能力：** SystemCapability.BundleManager.BundleFramework
 

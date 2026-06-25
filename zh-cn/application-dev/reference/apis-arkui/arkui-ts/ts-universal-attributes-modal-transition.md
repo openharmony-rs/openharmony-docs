@@ -1,8 +1,8 @@
 # 全屏模态转场
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,11 +10,13 @@
 
 >  **说明：**
 >
->  从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  不支持横竖屏切换。
+> - 本模块接口仅可在Stage模型下使用。
 >
->  不支持路由跳转。
+> - 不支持横竖屏切换。
+>
+> - 不支持路由跳转。
 
 ## bindContentCover
 
@@ -191,7 +193,7 @@ struct ModalTransitionExample {
 }
 ```
 
-![zh-cn_full_screen_modal_none_1](figures/zh-cn_full_screen_modal_none_1.gif)
+![fullScreenModalNone1](figures/fullScreenModalNone1.gif)
 
 ### 示例2（自定义转场动画）
 
@@ -305,7 +307,7 @@ struct ModalTransitionExample {
 }
 ```
 
-![zh-cn_full_screen_modal_none_2](figures/zh-cn_full_screen_modal_none_2.gif)
+![fullScreenModalNone2](figures/fullScreenModalNone2.gif)
 
 ### 示例3（上下切换转场）
 
@@ -403,7 +405,7 @@ struct ModalTransitionExample {
 }
 ```
 
-![zh-cn_full_screen_modal_default](figures/zh-cn_full_screen_modal_default.gif)
+![fullScreenModalDefault](figures/fullScreenModalDefault.gif)
 
 ### 示例4（透明度渐变转场）
 
@@ -502,7 +504,7 @@ struct ModalTransitionExample {
 }
 ```
 
-![zh-cn_full_screen_modal_alpha](figures/zh-cn_full_screen_modal_alpha.gif)
+![fullScreenModalAlpha](figures/fullScreenModalAlpha.gif)
 
 ### 示例5（设置不同效果的自定义转场）
 
@@ -618,11 +620,11 @@ struct ModalTransitionExample {
 }
 ```
 
-![zh-cn_full_screen_modal_alpha](figures/zh-cn_full_screen_modal_transition.gif)
+![fullScreenModalTransition](figures/fullScreenModalTransition.gif)
 
-### 示例6（设置全模态适配安全区）
+### 示例6（设置全屏模态适配安全区）
 
-从API version 20开始，该示例主要演示通过设置enableSafeArea = true时，全模态适配安全区后，其内容效果。全模态容器其背景色为浅蓝色，内容颜色为灰色，内容在安全区内布局。
+从API version 20开始，该示例主要演示设置enableSafeArea为true后全屏模态适配安全区的内容效果。全屏模态容器其背景色为浅蓝色，内容颜色为灰色，内容在安全区内布局。
 
 ```ts
 // xxx.ets
@@ -681,4 +683,4 @@ struct SafeAreaController {
 }
 ```
 
-![zh-cn-enableSafeArea](figures/zh-cn-enablesafearea.png)
+![enableSafeArea](figures/enableSafeArea.png)

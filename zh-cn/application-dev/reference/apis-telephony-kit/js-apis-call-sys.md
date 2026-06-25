@@ -43,7 +43,7 @@ dialCall\(phoneNumber: string, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -94,7 +94,7 @@ dialCall\(phoneNumber: string, options: DialCallOptions, callback: AsyncCallback
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -156,7 +156,7 @@ dialCall\(phoneNumber: string, options?: DialCallOptions\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -209,7 +209,7 @@ muteRinger\(callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -256,7 +256,7 @@ muteRinger\(\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -300,7 +300,7 @@ answerCall\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -343,7 +343,7 @@ answerCall(callId?: number\): Promise\<void\>
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| callId | number | 否   | 呼叫Id。可以通过订阅callDetailsChange事件获得。从API Version 9开始为可选参数。<br/>不填该参数则接通最近一通正在响铃的来电。|
+| callId | number | 否   | 呼叫Id。可以通过订阅callDetailsChange事件获得。从API version 9开始为可选参数。<br/>不填该参数则接通最近一通正在响铃的来电。|
 
 **返回值：**
 
@@ -353,7 +353,7 @@ answerCall(callId?: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -398,7 +398,7 @@ hangUpCall\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -441,7 +441,7 @@ hangUpCall\(callId?: number\): Promise\<void\>
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| callId | number | 否   | 呼叫Id。可以通过订阅callDetailsChange事件获得。从API Version 9开始为可选参数。</br>不填该参数则挂断最近一通正在进行/拨号/连接的通话。|
+| callId | number | 否   | 呼叫Id。可以通过订阅callDetailsChange事件获得。从API version 9开始为可选参数。</br>不填该参数则挂断最近一通正在进行/拨号/连接的通话。|
 
 **返回值：**
 
@@ -451,7 +451,7 @@ hangUpCall\(callId?: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -497,7 +497,7 @@ rejectCall\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -547,7 +547,7 @@ rejectCall\(callId: number, options: RejectMessageOptions, callback: AsyncCallba
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -593,7 +593,7 @@ rejectCall\(callId?: number, options?: RejectMessageOptions\): Promise\<void\>
 
 | 参数名  | 类型                                           | 必填 | 说明                                                         |
 | ------- | ---------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callId  | number                                         | 否   | 呼叫Id。可以通过订阅callDetailsChange事件获得。从API Version 9开始为可选参数。<br/>不填该参数则拒接最近一通正在响铃的来电。|
+| callId  | number                                         | 否   | 呼叫Id。可以通过订阅callDetailsChange事件获得。从API version 9开始为可选参数。<br/>不填该参数则拒接最近一通正在响铃的来电。|
 | options | [RejectMessageOptions](#rejectmessageoptions7) | 否   | 拒绝消息选项。不填该参数则不会发送拒接短信。|
 
 **返回值：**
@@ -604,7 +604,7 @@ rejectCall\(callId?: number, options?: RejectMessageOptions\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -652,7 +652,7 @@ rejectCall\(options: RejectMessageOptions, callback: AsyncCallback\<void\>\): vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -703,7 +703,7 @@ holdCall\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -756,7 +756,7 @@ holdCall\(callId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -801,7 +801,7 @@ unHoldCall\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -854,7 +854,7 @@ unHoldCall\(callId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -899,7 +899,7 @@ switchCall\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -952,7 +952,7 @@ switchCall\(callId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -995,7 +995,7 @@ combineConference\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1046,7 +1046,7 @@ combineConference\(callId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1091,7 +1091,7 @@ kickOutFromConference\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1143,7 +1143,7 @@ kickOutFromConference\(callId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1186,7 +1186,7 @@ getMainCallId\(callId: number, callback: AsyncCallback\<number\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1237,7 +1237,7 @@ getMainCallId\(callId: number\): Promise\<number\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1280,7 +1280,7 @@ getSubCallIdList\(callId: number, callback: AsyncCallback\<Array\<string\>\>\): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1330,7 +1330,7 @@ getSubCallIdList\(callId: number\): Promise\<Array\<string\>\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1372,7 +1372,7 @@ getCallIdListForConference\(callId: number, callback: AsyncCallback\<Array\<stri
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1422,7 +1422,7 @@ getCallIdListForConference\(callId: number\): Promise\<Array\<string\>\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1466,7 +1466,7 @@ getCallWaitingStatus\(slotId: number, callback: AsyncCallback\<CallWaitingStatus
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1519,7 +1519,7 @@ getCallWaitingStatus\(slotId: number\): Promise\<CallWaitingStatus\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1565,7 +1565,7 @@ setCallWaiting\(slotId: number, activate: boolean, callback: AsyncCallback\<void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1619,7 +1619,7 @@ setCallWaiting\(slotId: number, activate: boolean\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1665,7 +1665,7 @@ startDTMF\(callId: number, character: string, callback: AsyncCallback\<void\>\):
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1716,7 +1716,7 @@ startDTMF\(callId: number, character: string\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1760,7 +1760,7 @@ stopDTMF\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1810,7 +1810,7 @@ stopDTMF\(callId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1857,7 +1857,7 @@ postDialProceed\(callId: number, proceed: boolean, callback: AsyncCallback\<void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1909,7 +1909,7 @@ postDialProceed\(callId: number, proceed: boolean\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1953,7 +1953,7 @@ isInEmergencyCall\(callback: AsyncCallback\<boolean\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2000,7 +2000,7 @@ isInEmergencyCall\(\): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2043,7 +2043,7 @@ on\(type: 'callDetailsChange', callback: Callback\<CallAttributeOptions\>\): voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2084,7 +2084,7 @@ on\(type: 'callEventChange', callback: Callback\<CallEventOptions\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2125,7 +2125,7 @@ on\(type: 'callDisconnectedCause', callback: Callback\<DisconnectedDetails\>\): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2166,7 +2166,7 @@ on\(type: 'mmiCodeResult', callback: Callback\<MmiCodeResults\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2207,7 +2207,7 @@ off\(type: 'callDetailsChange', callback?: Callback\<CallAttributeOptions\>\): v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2248,7 +2248,7 @@ off\(type: 'callEventChange', callback?: Callback\<CallEventOptions\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2289,7 +2289,7 @@ off\(type: 'callDisconnectedCause', callback?: Callback\<DisconnectedDetails\>\)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2330,7 +2330,7 @@ off\(type: 'mmiCodeResult', callback?: Callback\<MmiCodeResults\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2372,7 +2372,7 @@ on\(type: 'audioDeviceChange', callback: Callback\<AudioDeviceCallbackInfo\>\): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2414,7 +2414,7 @@ off\(type: 'audioDeviceChange', callback?: Callback\<AudioDeviceCallbackInfo\>\)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2455,7 +2455,7 @@ on\(type: 'postDialDelay', callback: Callback\<string\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2496,7 +2496,7 @@ off\(type: 'postDialDelay', callback?: Callback\<string\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2534,7 +2534,7 @@ isNewCallAllowed\(callback: AsyncCallback\<boolean\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2578,7 +2578,7 @@ isNewCallAllowed\(\): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2620,7 +2620,7 @@ separateConference\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2671,7 +2671,7 @@ separateConference\(callId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2717,7 +2717,7 @@ getCallRestrictionStatus\(slotId: number, type: CallRestrictionType, callback: A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2771,7 +2771,7 @@ getCallRestrictionStatus\(slotId: number, type: CallRestrictionType\): Promise\<
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2817,7 +2817,7 @@ setCallRestriction\(slotId: number, info: CallRestrictionInfo, callback: AsyncCa
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2876,7 +2876,7 @@ setCallRestriction\(slotId: number, info: CallRestrictionInfo\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2928,7 +2928,7 @@ setCallRestrictionPassword\(slotId: number, oldPassword: string, newPassword: st
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2982,7 +2982,7 @@ setCallRestrictionPassword\(slotId: number, oldPassword: string, newPassword: st
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -3023,12 +3023,12 @@ getCallTransferInfo\(slotId: number, type: CallTransferType, callback: AsyncCall
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | slotId   | number                                                       | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
-| type     | [CallTransferType](#calltransfertype8)                       | 是   | 呼叫转移类型。                         |
-| callback | AsyncCallback&lt;[CallTransferResult](#calltransferresult8)&gt; | 是   | 回调函数。返回呼叫转移信息。           |
+| type     | [CallTransferType](js-apis-call.md#calltransfertype)                       | 是   | 呼叫转移类型。                         |
+| callback | AsyncCallback&lt;[CallTransferResult](js-apis-call.md#calltransferresult)&gt; | 是   | 回调函数。返回呼叫转移信息。           |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -3072,17 +3072,17 @@ getCallTransferInfo\(slotId: number, type: CallTransferType\): Promise\<CallTran
 | 参数名 | 类型                                   | 必填 | 说明                                   |
 | ------ | -------------------------------------- | ---- | -------------------------------------- |
 | slotId | number                                 | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
-| type   | [CallTransferType](#calltransfertype8) | 是   | 呼叫转移类型。                         |
+| type   | [CallTransferType](js-apis-call.md#calltransfertype) | 是   | 呼叫转移类型。                         |
 
 **返回值：**
 
 | 类型                                                      | 说明                        |
 | --------------------------------------------------------- | --------------------------- |
-| Promise&lt;[CallTransferResult](#calltransferresult8)&gt; | 以Promise形式异步返回结果。 |
+| Promise&lt;[CallTransferResult](js-apis-call.md#calltransferresult)&gt; | 以Promise形式异步返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -3128,7 +3128,7 @@ setCallTransfer\(slotId: number, info: CallTransferInfo, callback: AsyncCallback
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -3187,7 +3187,7 @@ setCallTransfer\(slotId: number, info: CallTransferInfo\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -3236,7 +3236,7 @@ isRinging\(callback: AsyncCallback\<boolean\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -3283,7 +3283,7 @@ isRinging\(\): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -3323,7 +3323,7 @@ setMuted\(callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3367,7 +3367,7 @@ setMuted\(\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3406,7 +3406,7 @@ cancelMuted\(callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3450,7 +3450,7 @@ cancelMuted\(\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3492,7 +3492,7 @@ setAudioDevice\(device: AudioDevice, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3547,7 +3547,7 @@ setAudioDevice\(device: AudioDevice): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3594,7 +3594,7 @@ joinConference\(mainCallId: number, callNumberList: Array\<string\>, callback: A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3647,7 +3647,7 @@ joinConference\(mainCallId: number, callNumberList: Array\<string\>\): Promise\<
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3695,7 +3695,7 @@ updateImsCallMode\(callId: number, mode: ImsCallMode, callback: AsyncCallback\<v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3745,7 +3745,7 @@ updateImsCallMode\(callId: number, mode: ImsCallMode\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3789,7 +3789,7 @@ enableImsSwitch\(slotId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -3841,7 +3841,7 @@ enableImsSwitch\(slotId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -3886,7 +3886,7 @@ disableImsSwitch\(slotId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -3938,7 +3938,7 @@ disableImsSwitch\(slotId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3981,7 +3981,7 @@ isImsSwitchEnabled\(slotId: number, callback: AsyncCallback\<boolean\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -4030,7 +4030,7 @@ isImsSwitchEnabled\(slotId: number\): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -4077,7 +4077,7 @@ isImsSwitchEnabledSync\(slotId: number\): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -4123,7 +4123,7 @@ closeUnfinishedUssd\(slotId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -4176,7 +4176,7 @@ closeUnfinishedUssd\(slotId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                     |
 | -------- | -------------------------------------------- |
@@ -4224,7 +4224,7 @@ setVoNRState\(slotId: number, state: VoNRState, callback: AsyncCallback\<void\>\
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                     |
 | -------- | -------------------------------------------- |
@@ -4280,7 +4280,7 @@ setVoNRState\(slotId: number, state: VoNRState\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                     |
 | -------- | -------------------------------------------- |
@@ -4328,7 +4328,7 @@ getVoNRState\(slotId: number, callback: AsyncCallback\<VoNRState\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                     |
 | -------- | -------------------------------------------- |
@@ -4382,7 +4382,7 @@ getVoNRState\(slotId: number\): Promise\<VoNRState\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                     |
 | -------- | -------------------------------------------- |
@@ -4429,7 +4429,7 @@ canSetCallTransferTime\(slotId: number, callback: AsyncCallback\<boolean\>\): vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                     |
 | -------- | -------------------------------------------- |
@@ -4483,7 +4483,7 @@ canSetCallTransferTime\(slotId: number\): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                     |
 | -------- | -------------------------------------------- |
@@ -4530,7 +4530,7 @@ inputDialerSpecialCode\(inputCode: string, callback: AsyncCallback\<void\>\): vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -4581,7 +4581,7 @@ inputDialerSpecialCode\(inputCode: string\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -4626,7 +4626,7 @@ removeMissedIncomingCallNotification\(callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -4672,7 +4672,7 @@ removeMissedIncomingCallNotification\(\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -4721,7 +4721,7 @@ sendCallUiEvent\(callId: number, eventName: string\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -4744,6 +4744,59 @@ call.sendCallUiEvent(callId, 'eventName').then(() => {
 }).catch((err: BusinessError) => {
     console.error(`sendCallUiEvent fail, promise: err->${JSON.stringify(err)}`);
 });
+```
+
+## call.sendUssdResponse
+
+sendUssdResponse\(slotId: number, content: string\): void
+
+用于向运营商发送USSD业务（Unstructured Supplementary Service Data，非结构化补充数据业务）的响应消息。
+
+**起始版本**: 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+**参数：**
+
+| 参数名    | 类型   | 必填 | 说明     |
+| --------- | ------ | ---- | -------- |
+| slotId    | number    | 是   | 表示发送响应的卡槽ID。 |
+| content   | string | 是   | 表示响应内容。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { call } from '@kit.TelephonyKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+function testSendUssdResponse() {
+    const slotId: number = 0;
+    const content: string = "OK";
+
+    try {
+        call.sendUssdResponse(slotId, content);
+    } catch (error) {
+        const err = error as BusinessError;
+        hilog.error(0x0000, 'testTag', `Failed to send USSD response. Code: ${err.code}, Message: ${err.message}`);
+    }
+}
 ```
 
 ## DialOptions
@@ -4773,6 +4826,7 @@ call.sendCallUiEvent(callId, 'eventName').then(() => {
 | videoState <sup>9+</sup> | [VideoStateType](#videostatetype7) | 否   | 视频状态类型。                               |
 | dialScene <sup>9+</sup>  | [DialScene](#dialscene8)           | 否   | 拨号场景。                                   |
 | dialType <sup>9+</sup>   | [DialType](#dialtype8)             | 否   | 拨号类型。                                   |
+| xCallType                | [xCallType](#xcalltype)            | 否   | XCALL类型。 <br>**起始版本:** 26.0.0         |
 
 
 ## ImsCallMode<sup>8+</sup>
@@ -4844,9 +4898,10 @@ IP多媒体系统调用模式。
 
 |                名称               |                  类型                 | 必填  |        说明      |
 | --------------------------------- | ------------------------------------- | ---- | ---------------- |
-| audioDeviceList   | [Array\<AudioDevice\>](#audiodevice10) | 是   | 音频设备列表。    |
+| audioDeviceList   | Array\<[AudioDevice](#audiodevice10)\> | 是   | 音频设备列表。    |
 | currentAudioDevice | [AudioDevice](#audiodevice10)          | 是   | 当前音频设备。    |
 | isMuted            | boolean                               | 是   | 是否静音。        |
+| isMicDisabled<sup>24+</sup>     |  boolean                                | 否    | 是否禁用麦克风。<br/>- true：禁用麦克风 <br/>- false：启用麦克风 |
 
 
 ## CallRestrictionType<sup>8+</sup>
@@ -4879,27 +4934,13 @@ IP多媒体系统调用模式。
 |          名称            | 类型                                                 | 必填 | 说明             |
 | ------------------------ | ---------------------------------------------------- | ---- | ---------------- |
 | transferNum              | string                                               | 是   | 转移编号。         |
-| type                     | [CallTransferType](#calltransfertype8)               | 是   | 呼叫转移类型。     |
+| type                     | [CallTransferType](js-apis-call.md#calltransfertype)               | 是   | 呼叫转移类型。     |
 | settingType              | [CallTransferSettingType](#calltransfersettingtype8) | 是   | 设置呼叫转移类型。 |
 | startHour<sup>9+</sup>   | number                                               | 否   | 开始时间的小时数。 |
 | startMinute<sup>9+</sup> | number                                               | 否   | 开始时间的分钟数。 |
 | endHour<sup>9+</sup>     | number                                               | 否   | 结束时间的小时数。 |
 | endMinute<sup>9+</sup>   | number                                               | 否   | 结束时间的分钟数。 |
 
-## CallTransferType<sup>8+</sup>
-
-呼叫转移类型。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力**：SystemCapability.Telephony.CallManager
-
-| 名称                        | 值   | 说明         |
-| --------------------------- | ---- | ------------ |
-| TRANSFER_TYPE_UNCONDITIONAL | 0    | 无条件转移。   |
-| TRANSFER_TYPE_BUSY          | 1    | 忙线转移。     |
-| TRANSFER_TYPE_NO_REPLY      | 2    | 无回复转移。   |
-| TRANSFER_TYPE_NOT_REACHABLE | 3    | 无法访问转移。 |
 
 ## CallTransferSettingType<sup>8+</sup>
 
@@ -4941,6 +4982,7 @@ IP多媒体系统调用模式。
 | originalCallType<sup>11+</sup> | number                    | 是   | 视频彩振原始呼叫类型。|
 | numberLocation<sup>12+</sup> | string | 否 | 号码归属地信息 |
 | numberMarkInfo<sup>12+</sup> | [NumberMarkInfo](#numbermarkinfo12) | 否 | 号码标记信息。 |
+| xCallType | [xCallType](#xcalltype) | 否 | XCALL类型。 <br>**起始版本:** 26.0.0|
 
 ## VoipCallAttribute<sup>11+</sup>
 
@@ -4992,6 +5034,7 @@ VoIP通话信息。
 | TYPE_OTT      | 2    | OTT通话。      |
 | TYPE_ERR_CALL | 3    | 其他类型通话。 |
 | TYPE_VOIP<sup>11+</sup> | 4    | VoIP通话。 |
+| TYPE_XCALL | 5 | XCALL通话。 <br>**起始版本:** 26.0.0|
 
 ## VideoStateType<sup>7+</sup>
 
@@ -5114,6 +5157,7 @@ VoIP通话信息。
 | DIAL_CARRIER_TYPE    | 0    | 载波拨号类型。     |
 | DIAL_VOICE_MAIL_TYPE | 1    | 语音邮件拨号类型。 |
 | DIAL_OTT_TYPE        | 2    | OTT拨号类型。      |
+| DIAL_XCALL_TYPE | 3 | XCALL拨号类型。 <br>**起始版本:** 26.0.0|
 
 ## RejectMessageOptions<sup>7+</sup>
 
@@ -5137,12 +5181,7 @@ VoIP通话信息。
 
 |          名称            |                 类型               | 必填 |       说明       |
 | ------------------------ | ---------------------------------- | ---- | ---------------- |
-| status                   | [TransferStatus](#transferstatus8) |  是  | 转移状态。         |
 | number                   | string                             |  是  | 号码。             |
-| startHour<sup>9+</sup>   | number                             |  是  | 开始时间的小时数。 |
-| startMinute<sup>9+</sup> | number                             |  是  | 开始时间的分钟数。 |
-| endHour<sup>9+</sup>     | number                             |  是  | 结束时间的小时数。 |
-| endMinute<sup>9+</sup>   | number                             |  是  | 结束时间的分钟数。 |
 
 ## CallWaitingStatus<sup>7+</sup>
 
@@ -5169,19 +5208,6 @@ VoIP通话信息。
 | ------------------- | ---- | -------- |
 | RESTRICTION_DISABLE | 0    | 禁用限制。 |
 | RESTRICTION_ENABLE  | 1    | 启用限制。 |
-
-## TransferStatus<sup>8+</sup>
-
-转移状态。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力**：SystemCapability.Telephony.CallManager
-
-| 名称             | 值   | 说明     |
-| ---------------- | ---- | -------- |
-| TRANSFER_DISABLE | 0    | 禁用转移。 |
-| TRANSFER_ENABLE  | 1    | 启用转移。 |
 
 ## DisconnectedDetails<sup>9+</sup>
 
@@ -5339,7 +5365,7 @@ answerCall(videoState: VideoStateType, callId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -5389,7 +5415,7 @@ cancelCallUpgrade\(callId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -5430,7 +5456,7 @@ controlCamera\(callId: number, cameraId: string\): Promise\<void\>
 | 参数名 | 类型                         | 必填 | 说明           |
 | ------ | ---------------------------- | ---- | -------------- |
 | callId | number                       | 是   | 呼叫Id。可以通过订阅callDetailsChange事件获得。       |
-| cameraId | string                     | 是   | 相机Id。cameraId获取方式可参考[相机管理](../apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)。|
+| cameraId | string                     | 是   | 相机ID。cameraId获取方式可参考相机管理[getSupportedCameras](../apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)接口。|
 
 **返回值：**
 
@@ -5440,7 +5466,7 @@ controlCamera\(callId: number, cameraId: string\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -5491,7 +5517,7 @@ setPreviewSurface\(callId: number, surfaceId: string\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -5542,7 +5568,7 @@ setDisplaySurface\(callId: number, surfaceId: string\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -5593,7 +5619,7 @@ setDeviceDirection\(callId: number, deviceDirection: DeviceDirection\): Promise\
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -5634,11 +5660,11 @@ on\(type: 'imsCallModeChange', callback: Callback\<ImsCallModeInfo\>\): void
 | 参数名   | 类型                                        | 必填 | 说明                       |
 | -------- | ------------------------------------------ | ---- | -------------------------- |
 | type     | string                                     | 是   | 视频通话时监听通话模式的变化，参数固定为'imsCallModeChange'。 |
-| callback | Callback<[ImsCallModeInfo](#imscallmode8)> | 是   | 以回调函数的方式返回订阅imsCallModeChange事件的结果。         |
+| callback | Callback<[ImsCallModeInfo](#imscallmodeinfo11)> | 是   | 以回调函数的方式返回订阅imsCallModeChange事件的结果。         |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -5677,11 +5703,11 @@ off\(type: 'imsCallModeChange', callback?: Callback\<ImsCallModeInfo\>\): void
 | 参数名   | 类型                                        | 必填 | 说明                               |
 | -------- | ------------------------------------------ | ---- | ---------------------------------- |
 | type     | string                                     | 是   | 视频通话时取消监听通话模式的变化，参数固定为'imsCallModeChange'。 |
-| callback | Callback<[ImsCallModeInfo](#imscallmode8)> | 否   | 回调函数。不填该参数将不会收到取消订阅的处理结果。 |
+| callback | Callback<[ImsCallModeInfo](#imscallmodeinfo11)> | 否   | 回调函数。不填该参数将不会收到取消订阅的处理结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -5724,7 +5750,7 @@ on\(type: 'callSessionEvent', callback: Callback\<CallSessionEvent\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -5767,7 +5793,7 @@ off\(type: 'callSessionEvent', callback?: Callback\<CallSessionEvent\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -5810,7 +5836,7 @@ on\(type: 'peerDimensionsChange', callback: Callback\<PeerDimensionsDetail\>\): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -5853,7 +5879,7 @@ off\(type: 'peerDimensionsChange', callback?: Callback\<PeerDimensionsDetail\>\)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -5896,7 +5922,7 @@ on\(type: 'cameraCapabilitiesChange', callback: Callback\<CameraCapabilities\>\)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -5937,7 +5963,7 @@ off\(type: 'cameraCapabilitiesChange', callback?: Callback\<CameraCapabilities\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -6101,3 +6127,19 @@ call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
 | MARK_TYPE_OTHERS | 9 | 其他。 |
 | MARK_TYPE_YELLOW_PAGE | 10 | 黄页。 |
 | MARK_TYPE_ENTERPRISE<sup>14+</sup> | 11 | 企业联系人。 |
+
+## XCallType
+
+表示XCall的类型。
+
+**起始版本**: 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+| 名称                           | 值     | 说明     |
+| ------------------------------ | ------ | --------|
+| XCALL_ECALL_TYPE | 0      | 表示XCall是ECall。 |
+| XCALL_BCALL_TYPE | 1      | 表示XCall是BCall。 |
+| XCALL_ICALL_TYPE | 2      | 表示XCall是ICall。 |

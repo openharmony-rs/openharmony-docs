@@ -149,7 +149,7 @@ makeCall\(phoneNumber: string, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -198,7 +198,7 @@ makeCall\(phoneNumber: string\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -219,6 +219,59 @@ call.makeCall("138xxxxxxxx").then(() => {
     console.error(`makeCall fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+
+## call.makeCall<sup>24+</sup>
+
+makeCall\(phoneNumber: string, options?: MakeCallOptions\): Promise\<void\>
+
+跳转到拨号界面，并显示待拨出的号码。使用Promise异步回调。只支持在UIAbility中调用。
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Applications.Contacts
+
+**参数：**
+
+| 参数名      | 类型   | 必填 | 说明       |
+| ----------- | ------ | ---- | ---------- |
+| phoneNumber | string | 是   | 电话号码。 |
+| options | [MakeCallOptions](#makecalloptions24) | 否   | 通话参数。 |
+
+**返回值：**
+
+| 类型                | 说明                              |
+| ------------------- | --------------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+
+**示例：**
+
+```ts
+import { call } from '@kit.TelephonyKit';
+
+// 设置通话结束后是否返回当前App
+let makeOptions: call.MakeCallOptions = {
+  isHideDialScreen: true
+}
+
+call.makeCall("138xxxxxxxx", makeOptions).then(() => {
+    console.info(`makeCall success`);
+}).catch((err: BusinessError) => {
+    console.error(`makeCall fail, promise: err->${JSON.stringify(err)}`);
+});
+```
+
 
 ## call.makeCall<sup>12+</sup>
 
@@ -245,7 +298,7 @@ makeCall\(context: Context, phoneNumber: string\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -461,7 +514,7 @@ isEmergencyPhoneNumber\(phoneNumber: string, callback: AsyncCallback\<boolean\>\
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -504,7 +557,7 @@ isEmergencyPhoneNumber\(phoneNumber: string, options: EmergencyNumberOptions, ca
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -553,7 +606,7 @@ isEmergencyPhoneNumber\(phoneNumber: string, options?: EmergencyNumberOptions\):
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -582,7 +635,7 @@ formatPhoneNumber\(phoneNumber: string, callback: AsyncCallback\<string\>\): voi
 
 格式化电话号码。使用callback异步回调。
 
-电话号码格式化后为标准数字字串，例如：“138 xxxx xxxx”、“0755 xxxx xxxx”。
+电话号码格式化后为标准数字字符串，例如：“138 xxxx xxxx”、“0755 xxxx xxxx”。
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
@@ -595,7 +648,7 @@ formatPhoneNumber\(phoneNumber: string, callback: AsyncCallback\<string\>\): voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -625,7 +678,7 @@ formatPhoneNumber\(phoneNumber: string, options: NumberFormatOptions, callback: 
 
 格式化电话号码，可设置格式化参数。使用callback异步回调。
 
-电话号码格式化后为标准数字字串，例如：“138 xxxx xxxx”、“0755 xxxx xxxx”。
+电话号码格式化后为标准数字字符串，例如：“138 xxxx xxxx”、“0755 xxxx xxxx”。
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
@@ -639,7 +692,7 @@ formatPhoneNumber\(phoneNumber: string, options: NumberFormatOptions, callback: 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -673,7 +726,7 @@ formatPhoneNumber\(phoneNumber: string, options?: NumberFormatOptions\): Promise
 
 格式化电话号码，可设置格式化参数。使用Promise异步回调。
 
-电话号码格式化后为标准数字字串，例如：“138 xxxx xxxx”、“0755 xxxx xxxx”。
+电话号码格式化后为标准数字字符串，例如：“138 xxxx xxxx”、“0755 xxxx xxxx”。
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
@@ -692,7 +745,7 @@ formatPhoneNumber\(phoneNumber: string, options?: NumberFormatOptions\): Promise
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -737,7 +790,7 @@ formatPhoneNumberToE164\(phoneNumber: string, countryCode: string, callback: Asy
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -789,7 +842,7 @@ formatPhoneNumberToE164\(phoneNumber: string, countryCode: string\): Promise\<st
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -832,12 +885,11 @@ answerCall\(callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.                           |
-| 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service. |
@@ -879,12 +931,11 @@ hangUpCall\(callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.                           |
-| 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service. |
@@ -927,12 +978,11 @@ rejectCall\(callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.                           |
-| 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service. |
@@ -951,6 +1001,63 @@ call.rejectCall((err: BusinessError) => {
         console.info(`rejectCall success.`);
     }
 });
+```
+
+## call.getCallTransferInfo
+
+getCallTransferInfo\(type: CallTransferType, number: string\): Promise\<CallTransferResult\>
+
+获取带有电话号码的呼叫转移信息。使用Promise异步回调。
+
+**起始版本**: 26.0.0
+
+**需要权限**：ohos.permission.GET_CALL_TRANSFER_INFO
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明                                                         |
+| -------- | -------------------- | ---- | ------------------------------------------------------------ |
+| type   | [CallTransferType](#calltransfertype)               | 是   | 指示要获取哪种类型的呼叫转移。  |
+| number | string              | 是   | 指示用于获取呼叫转移状态的号码。 |
+
+**返回值：**
+
+| 类型                | 说明                        |
+| ------------------- | --------------------------- |
+| Promise&lt;[CallTransferResult](#calltransferresult)&gt; | Promise对象，返回呼叫转移结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 801      | Capability not supported.                    |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8401002  | Invalid input call number.                   |
+| 8401003  | Operation too frequent.                      |
+
+**示例：**
+
+```ts
+import { call } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let type: call.CallTransferType = call.CallTransferType.TRANSFER_TYPE_UNCONDITIONAL;
+let number: string = "138xxxxxxxx";
+
+call.getCallTransferInfo(type, number)
+    .then((data: call.CallTransferResult) => {
+        console.info(`getCallTransferInfo success, data->${JSON.stringify(data)}`);
+    })
+    .catch((err:BusinessError) => {
+        console.error(`getCallTransferInfo fail, err->${JSON.stringify(err)}`);
+    });
 ```
 
 
@@ -977,6 +1084,19 @@ call.rejectCall((err: BusinessError) => {
 | CALL_STATE_RINGING | 1    | 表示来电正在振铃或等待。                                     |
 | CALL_STATE_OFFHOOK | 2    | 表示至少有一个呼叫处于拨号、通话中或呼叫保持状态，并且没有新的来电振铃或等待。 |
 | CALL_STATE_ANSWERED<sup>11+</sup> | 3    | 表示来电已经接听。 |
+
+
+## MakeCallOptions<sup>24+</sup>
+
+拨打电话的可选参数。
+
+**系统能力**：SystemCapability.Applications.Contacts
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+|        名称              | 类型                               | 只读 | 可选 | 说明                                                                                             |
+| ------------------------ | ---------------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------------- |
+| isHideDialScreen               | boolean                            | 否   | 是   | 是否隐藏拨号界面，true表示隐藏，false表示不隐藏。   |
 
 
 ## TelCallState<sup>21+</sup>
@@ -1034,3 +1154,47 @@ call.rejectCall((err: BusinessError) => {
 |    名称     | 类型   | 只读 | 可选 | 说明                                                       |
 | ----------- | ------ | ---- | ---- | ---------------------------------------------------------- |
 | countryCode | string | 否   | 是   | 国家码，支持所有国家的国家码，如：CN（中国）。默认为：CN。 |
+
+## TransferStatus
+
+转移状态。
+
+**起始版本**: 26.0.0
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+| 名称             | 值   | 说明     |
+| ---------------- | ---- | -------- |
+| TRANSFER_DISABLE | 0    | 禁用转移。 |
+| TRANSFER_ENABLE  | 1    | 启用转移。 |
+
+## CallTransferType
+
+呼叫转移类型。
+
+**起始版本**: 26.0.0
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+| 名称                        | 值   | 说明         |
+| --------------------------- | ---- | ------------ |
+| TRANSFER_TYPE_UNCONDITIONAL | 0    | 无条件转移。   |
+| TRANSFER_TYPE_BUSY          | 1    | 忙线转移。     |
+| TRANSFER_TYPE_NO_REPLY      | 2    | 无回复转移。   |
+| TRANSFER_TYPE_NOT_REACHABLE | 3    | 无法访问转移。 |
+
+## CallTransferResult
+
+呼叫转移结果。
+
+**起始版本**: 26.0.0
+
+**系统能力**：SystemCapability.Telephony.CallManager
+
+|          名称            |                 类型               | 必填 |       说明       |
+| ------------------------ | ---------------------------------- | ---- | ---------------- |
+| status                   | [TransferStatus](#transferstatus) |  是  | 转移状态。         |
+| startHour   | number                             |  是  | 开始时间的小时数。 |
+| startMinute | number                             |  是  | 开始时间的分钟数。 |
+| endHour     | number                             |  是  | 结束时间的小时数。 |
+| endMinute   | number                             |  是  | 结束时间的分钟数。 |

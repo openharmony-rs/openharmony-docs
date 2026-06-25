@@ -133,7 +133,7 @@ For example, the cell at the second row and fourth column in the table indicates
 
 Taking the scenario where the entry module loads a Worker thread file from a source-code HAR package as an example, the detailed steps are as follows:
 
-1. Create an HAR. For details, see [HAR](../quick-start/har-package.md).
+1. Create a HAR. For details, see [HAR](../quick-start/har-package.md).
 
 2. Create the Worker thread file in the HAR.
 

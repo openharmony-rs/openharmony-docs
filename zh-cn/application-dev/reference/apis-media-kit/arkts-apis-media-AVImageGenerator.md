@@ -1,8 +1,8 @@
 # Interface (AVImageGenerator)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -48,7 +48,7 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
@@ -77,7 +77,7 @@ let param: media.PixelMapParams = {
 
 // 获取缩略图。
 media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
-  if (generator != null) {
+  if (generator) {
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
     avImageGenerator.fetchFrameByTime(timeUs, queryOption, param, (error: BusinessError, pixelMap) => {
@@ -117,7 +117,7 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -146,7 +146,7 @@ let param: media.PixelMapParams = {
 
 // 获取缩略图。
 media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
-  if (generator != null) {
+  if (generator) {
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
     avImageGenerator.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {
@@ -184,7 +184,7 @@ fetchScaledFrameByTime(timeUs: number, queryMode: AVImageQueryOptions, outputSiz
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -209,7 +209,7 @@ let outputSize: media.OutputSize = {
 };
 // 获取缩略图。
 media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
-  if (generator != null) {
+  if (generator) {
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
     avImageGenerator.fetchScaledFrameByTime(timeUs, queryOption, outputSize).then((pixelMap: image.PixelMap) => {
@@ -239,7 +239,7 @@ release(callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
@@ -255,7 +255,7 @@ let avImageGenerator: media.AVImageGenerator | undefined = undefined;
 
 // 释放资源。
 media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
-  if (generator != null) {
+  if (generator) {
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
     avImageGenerator.release((error: BusinessError) => {
@@ -287,7 +287,7 @@ release(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -303,7 +303,7 @@ let avImageGenerator: media.AVImageGenerator | undefined = undefined;
 
 // 释放资源。
 media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
-  if (generator != null) {
+  if (generator) {
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
     avImageGenerator.release().then(() => {

@@ -1,10 +1,10 @@
 # Hid_EventTypeArray
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ```c
 typedef struct Hid_EventTypeArray {...} Hid_EventTypeArray
@@ -26,7 +26,7 @@ typedef struct Hid_EventTypeArray {...} Hid_EventTypeArray
 
 | 名称 | 描述 |
 | -- | -- |
-| Hid_EventType* hidEventType | 事件类型编码 |
-| uint16_t length | 数组长度 |
+| [Hid_EventType](capi-hid-ddk-types-h.md#hid_eventtype)* hidEventType | 事件类型编码 |
+| uint16_t length | 数组的有效长度 |
 
 

@@ -12,7 +12,7 @@ When performing route switching using the [router](../js-apis-router.md), you ca
 >
 > This feature is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> To achieve a better transition effect, you are advised to use the [Navigation](../../../ui/arkts-navigation-navigation.md) component and [modal transition](../../../ui/arkts-modal-transition.md).
+> To achieve a better transition effect, you are advised to use the [Navigation](../../../ui/arkts-navigation-architecture.md) component and [modal transition](../../../ui/arkts-modal-transition.md).
 
 ## PageTransitionEnter
 
@@ -104,6 +104,8 @@ Invoked on a per-frame basis until the exit animation is complete, with the **pr
 
 ## PageTransitionOptions
 
+Parameters of the exit or entrance animation.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -112,7 +114,7 @@ Invoked on a per-frame basis until the exit animation is complete, with the **pr
 | -------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | type     | [RouteType](#routetype)                              | No  | Yes  | Route type for the page transition effect to take effect.<br>Default value: **RouteType.None**   |
 | duration | number                                                       | No  | Yes  | Animation duration.<br>Unit: ms<br>Default value: **1000**<br>Value range: [0, +∞)                |
-| curve    | [Curve](ts-appendix-enums.md#curve) \| string \| [ICurve](../js-apis-curve.md#icurve9)<sup>10+</sup> | No  | Yes  | Animation curve.<br>You are advised to specify the curve using the **Curve** or **ICurve** type.<br>For the string type, this parameter indicates an animation interpolation curve. For available values, see the **curve** parameter in [AnimateParam](./ts-explicit-animation.md#animateparam).<br>Default value: **Curve.Linear**|
+| curve    | [Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[ICurve](../js-apis-curve.md#icurve9)<sup>10+</sup> | No  | Yes  | Animation curve.<br>You are advised to specify the curve using the **Curve** or **ICurve** type.<br>For the string type, this parameter indicates an animation interpolation curve. For available values, see the **curve** parameter in [AnimateParam](./ts-explicit-animation.md#animateparam).<br>Default value: **Curve.Linear**|
 | delay    | number                                                       | No  | Yes  | Animation delay.<br>Unit: ms<br>Default value: **0**<br>**NOTE**<br>If no match is found, the default page transition effect is used (which may vary according to the device). To disable the default page transition effect, set **duration** to **0**.|
 
 ## CommonTransition
@@ -149,6 +151,12 @@ Sets the slide-in and slide-out effects for page transitions.
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value   | [SlideEffect](#slideeffect) | Yes  | Slide-in and slide-out effects for page transitions.|
 
+**Return value**
+
+| Type  | Description                    |
+| ------ | ------------------------ |
+| T | Current component.|
+
 ### translate
 
 translate(value: TranslateOptions): T
@@ -164,6 +172,12 @@ Sets the translation effect for page transitions.
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [TranslateOptions](ts-universal-attributes-transformation.md#translateoptions) | Yes  | Translation effect for page transitions, specifying the start value for entrance and the end value for exit. When this parameter is set together with **slide**, the latter takes effect by default.<br>- **x**: translation distance along the x-axis.<br>- **y**: translation distance along the y-axis.<br>- **z**: translation distance along the y-axis.|
+
+**Return value**
+
+| Type  | Description                    |
+| ------ | ------------------------ |
+| T | Current component.|
 
 ### scale
 
@@ -181,6 +195,12 @@ Sets the scaling effect for page transitions.
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [ScaleOptions](ts-universal-attributes-transformation.md#scaleoptions) | Yes  | Scaling effect for page transitions, specifying the start value for entrance and the end value for exit.<br>- **x**: scale factor along the x-axis.<br>- **y**: scale factor along the y-axis.<br>- **z**: scale factor along the z-axis.<br>- **centerX** and **centerY**: scaling center. The default values are both **"50%"**, meaning the center of the page is used as the scaling center by default.<br>- If the center point is (0, 0), it refers to the upper left corner of the component.|
 
+**Return value**
+
+| Type  | Description                    |
+| ------ | ------------------------ |
+| T | Current component.|
+
 ### opacity
 
 opacity(value: number): T
@@ -197,6 +217,12 @@ Sets the starting opacity value for entrance or the ending opacity value for exi
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value   | number | Yes  | Starting opacity value for entrance or the ending opacity value for exit.<br>Value range: [0, 1]|
 
+**Return value**
+
+| Type  | Description                    |
+| ------ | ------------------------ |
+| T | Current component.|
+
 ## PageTransitionCallback<sup>18+</sup>
 
 type PageTransitionCallback = (type: RouteType, progress: number) => void
@@ -212,33 +238,36 @@ Represents the callback for page transition events.
 | type | [RouteType](#routetype) | Yes|  Type of page transition.|
 | progress | number | Yes| Transition progress, ranging from 0 to 1.|
 
- ## RouteType
+## RouteType
+
+Sets the type of page transition.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-
-| Name| Description                                                        |
-| ---- | ------------------------------------------------------------ |
-| Pop  | Redirects to a specified page. To redirect the user from page B back to page A, set **RouteType** of **PageTransitionExit** to **None** or **Pop** for page B and set **RouteType** of **PageTransitionEnter** to **None** or **Pop** for page A.|
-| Push | Redirects to the next page. To redirect the user from page A to page B, set **RouteType** of **PageTransitionExit** to **None** or **Push** for page A and set **RouteType** of **PageTransitionEnter** to **None** or **Push** for page B.|
-| None | The page is not redirected. The animation specified by **PageTransitionEnter** takes effect for page entrance, and the animation specified by **PageTransitionExit** takes effect for page exit.|
+| Name| Value| Description                                                        |
+| ---- | ---- | -------------------------------------------------------- |
+| None | 0 | The page is not redirected. The animation specified by **PageTransitionEnter** takes effect for page entrance, and the animation specified by **PageTransitionExit** takes effect for page exit.|
+| Push | 1 | Redirects to the next page. To redirect the user from page A to page B, set **RouteType** of **PageTransitionExit** to **None** or **Push** for page A and set **RouteType** of **PageTransitionEnter** to **None** or **Push** for page B.|
+| Pop  | 2 | Redirects to a specified page. To redirect the user from page B back to page A, set **RouteType** of **PageTransitionExit** to **None** or **Pop** for page B and set **RouteType** of **PageTransitionEnter** to **None** or **Pop** for page A.|
 
 ## SlideEffect
 
+Slide-in and slide-out effects for page transitions.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name               | Description                                                        |
-| ------------------- | ------------------------------------------------------------ |
-| Left                | When set to Enter, slides in from the left. When set to Exit, slides out to the left.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| Right               | When set to Enter, slides in from the right. When set to Exit, slides out to the right.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| Top                 | When set to Enter, slides in from the top. When set to Exit, slides out to the top.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| Bottom              | When set to Enter, slides in from the bottom. When set to Exit, slides out to the bottom.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| START<sup>12+</sup> | Left-to-right scripts: When set to Enter, slides in from the left; when set to Exit, slides out to the left. Right-to-left scripts: When set to Enter, slides in from the right; when set to Exit, slides out to the right.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| END<sup>12+</sup>   | Left-to-right scripts: When set to Enter, slides in from the right; when set to Exit, slides out to the right. Right-to-left scripts: When set to Enter, slides in from the left; when set to Exit, slides out to the left.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| Name               | Value| Description                                                        |
+| ------------------- | ---- | -------------------------------------------------------- |
+| Left                | 1 | When set to Enter, slides in from the left. When set to Exit, slides out to the left.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| Right               | 2 | When set to Enter, slides in from the right. When set to Exit, slides out to the right.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| Top                 | 3 | When set to Enter, slides in from the top. When set to Exit, slides out to the top.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| Bottom              | 4 | When set to Enter, slides in from the bottom. When set to Exit, slides out to the bottom.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| START<sup>12+</sup> | 5 |  Left-to-right scripts: When set to Enter, slides in from the left; when set to Exit, slides out to the left. Right-to-left scripts: When set to Enter, slides in from the right; when set to Exit, slides out to the right.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| END<sup>12+</sup>   | 6 | Left-to-right scripts: When set to Enter, slides in from the right; when set to Exit, slides out to the right. Right-to-left scripts: When set to Enter, slides in from the left; when set to Exit, slides out to the left.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ## Example
 
@@ -330,7 +359,7 @@ struct Page1 {
 
 ![pageTransition1](figures/pageTransition1.gif)
 
-Customization method 2: The entrance animation of the current page is configured to slide in from the left, and the exit animation is configured to translate with opacity change.
+Method 2: The entrance animation of the current page is configured to slide in from the left, and the exit animation is configured to translate with opacity change.
 
 ```ts
 // Index.ets 
@@ -392,7 +421,7 @@ struct Page1 {
 
 ### Example 2: Setting Translation Effects for Entrance and Exit
 
-Customization method 1: Configure the various entrance and exit translation effects provided, with the system language layout mode set to right-to-left (RTL).
+Method 1: Configure the various entrance and exit translation effects provided, with the system language layout mode set to right-to-left (RTL).
 
 ```ts
 // Index.ets
@@ -423,7 +452,7 @@ struct Index {
     .justifyContent(FlexAlign.Center)
   }
 
-  // Customization method 2: Use the default effects provided by the system, such as translation, scaling, and opacity.
+  // Method 2: Use the default effects provided by the system, such as translation, scaling, and opacity.
   pageTransition() {
     // Set the entrance animation.
     PageTransitionEnter({ duration: 200 })
@@ -464,7 +493,7 @@ struct Page1 {
     .justifyContent(FlexAlign.Center)
   }
 
-  // Customization method 2: Use the default effects provided by the system, such as translation, scaling, and opacity.
+  // Method 2: Use the default effects provided by the system, such as translation, scaling, and opacity.
   pageTransition() {
     PageTransitionEnter({ duration: 200 })
       .slide(SlideEffect.END) //Right

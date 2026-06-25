@@ -1,8 +1,8 @@
 # Integrating with ArkTS Pages
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -327,10 +327,9 @@ Sample code directory structure:
     // NativeEntry.cpp
     
     #include <arkui/native_node_napi.h>
-    #include <hilog/log.h>
     #include <js_native_api.h>
     #include "NativeEntry.h"
-    #include "NormalTextListExample.h"
+    #include "NormalNodeExample.h"
     
     namespace NativeModule {
     
@@ -346,11 +345,11 @@ Sample code directory structure:
         OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
         NativeEntry::GetInstance()->SetContentHandle(contentHandle);
     
-        // Create a text list.
-        auto list = CreateTextListExample();
+        // Create a component node.
+        auto node = CreateExample();
     
         // Keep the native side object in the management class to maintain its lifecycle.
-        NativeEntry::GetInstance()->SetRootNode(list);
+        NativeEntry::GetInstance()->SetRootNode(node);
         return nullptr;
     }
     
@@ -543,6 +542,48 @@ Sample code directory structure:
             ArkUI_AttributeItem item = {value, 1};
             nativeModule_->setAttribute(handle_, NODE_BACKGROUND_COLOR, &item);
         }
+        void SetMargin(float top, float right, float bottom, float left)
+        {
+            ArkUI_NumberValue value[] = {{top}, {right}, {bottom}, {left}};
+            ArkUI_AttributeItem item = {value, 4};
+            nativeModule_->setAttribute(handle_, NODE_MARGIN, &item);
+        }
+        void SetPadding(float top, float right, float bottom, float left)
+        {
+            ArkUI_NumberValue value[] = {{top}, {right}, {bottom}, {left}};
+            ArkUI_AttributeItem item = {value, 4};
+            nativeModule_->setAttribute(handle_, NODE_PADDING, &item);
+        }
+        void SetBorderWidth(float width)
+        {
+            ArkUI_NumberValue value[] = {{.f32 = width}};
+            ArkUI_AttributeItem item = {value, 1};
+            nativeModule_->setAttribute(handle_, NODE_BORDER_WIDTH, &item);
+        }
+        void SetBorderColor(uint32_t color)
+        {
+            ArkUI_NumberValue value[] = {{.u32 = color}};
+            ArkUI_AttributeItem item = {value, 1};
+            nativeModule_->setAttribute(handle_, NODE_BORDER_COLOR, &item);
+        }
+        void SetBorderRadius(float radius)
+        {
+            ArkUI_NumberValue value[] = {{.f32 = radius}};
+            ArkUI_AttributeItem item = {value, 1};
+            nativeModule_->setAttribute(handle_, NODE_BORDER_RADIUS, &item);
+        }
+        void SetOpacity(float opacity)
+        {
+            ArkUI_NumberValue value[] = {{.f32 = opacity}};
+            ArkUI_AttributeItem item = {value, 1};
+            nativeModule_->setAttribute(handle_, NODE_OPACITY, &item);
+        }
+        void SetScale(float x, float y)
+        {
+            ArkUI_NumberValue value[] = {{x}, {y}};
+            ArkUI_AttributeItem item = {value, 2};
+            nativeModule_->setAttribute(handle_, NODE_SCALE, &item);
+        }
     
     protected:
         // Implement class docking for component tree operations.
@@ -684,7 +725,6 @@ Sample code directory structure:
     #include "ArkUIListItemNode.h"
     #include "ArkUIListNode.h"
     #include "ArkUITextNode.h"
-    #include <hilog/log.h>
     
     namespace NativeModule {
     
@@ -698,7 +738,7 @@ Sample code directory structure:
         list->SetScrollBarState(true);
         const int itemCount = 30;
         const int fontSizes = 16;
-        const int screenWidth = 300;
+        const float screenWidth = 1;
         const int defaultHeight = 100;
         // 2: Create a ListItem child component and mount it to the List component.
         for (int32_t i = 0; i < itemCount; ++i) {
@@ -706,9 +746,9 @@ Sample code directory structure:
             auto textNode = std::make_shared<ArkUITextNode>();
             textNode->SetTextContent(std::to_string(i));
             textNode->SetFontSize(fontSizes);
-            textNode->SetFontColor(0xFFff00ff);
+            textNode->SetFontColor(0xFF000000);
             textNode->SetPercentWidth(1);
-            textNode->SetWidth(screenWidth);
+            textNode->SetPercentWidth(screenWidth);
             textNode->SetHeight(defaultHeight);
             textNode->SetBackgroundColor(0xFFfffacd);
             textNode->SetTextAlign(ARKUI_TEXT_ALIGNMENT_CENTER);

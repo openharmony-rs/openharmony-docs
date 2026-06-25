@@ -1,8 +1,8 @@
 # 外描边设置
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,9 @@
 
 >  **说明：**
 >
->  从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## outline
 
@@ -54,7 +56,7 @@ outline(options: Optional\<OutlineOptions>): T
 
 | 参数名 | 类型                                      | 必填 | 说明 |
 | ------ | ----------------------------------------- | ---- | ---- |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[OutlineOptions](ts-types.md#outlineoptions11对象说明)> | 是   |   外描边样式。<br/>当options的值为undefined时，恢复为无外边框效果。   |
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OutlineOptions](ts-types.md#outlineoptions11对象说明)> | 是   |   外描边样式。<br/>当options的值为undefined时，恢复为无外边框效果。   |
 
 **返回值：**
 
@@ -62,7 +64,7 @@ outline(options: Optional\<OutlineOptions>): T
 | ------ | ------------------------ |
 | T | 返回当前组件。 |
 
-## OutlineStyle<sup>11+</sup>枚举说明
+## OutlineStyle枚举说明
 
 外描边样式。
 
@@ -94,7 +96,7 @@ outlineStyle(value: OutlineStyle | EdgeOutlineStyles): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                  |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
-| value  | [OutlineStyle](#outlinestyle11枚举说明)&nbsp;\|&nbsp;[EdgeOutlineStyles](ts-types.md#edgeoutlinestyles11对象说明) | 是   | 设置元素的外描边样式。|
+| value  | [OutlineStyle](#outlinestyle枚举说明)&nbsp;\|&nbsp;[EdgeOutlineStyles](ts-types.md#edgeoutlinestyles11对象说明) | 是   | 设置元素的外描边样式。|
 
 **返回值：**
 
@@ -118,7 +120,7 @@ outlineStyle(style: Optional\<OutlineStyle | EdgeOutlineStyles>): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[OutlineStyle](#outlinestyle11枚举说明)&nbsp;\|&nbsp;[EdgeOutlineStyles](ts-types.md#edgeoutlinestyles11对象说明)> | 是   | 设置元素的外描边样式。<br/>当style的值为undefined时，恢复为无外描边样式的效果。 |
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OutlineStyle](#outlinestyle枚举说明)&nbsp;\|&nbsp;[EdgeOutlineStyles](ts-types.md#edgeoutlinestyles11对象说明)> | 是   | 设置元素的外描边样式。<br/>当style的值为undefined时，恢复为无外描边样式的效果。 |
 
 **返回值：**
 
@@ -166,7 +168,7 @@ outlineWidth(width: Optional\<Dimension | EdgeOutlineWidths>): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](ts-types.md#edgeoutlinewidths11对象说明)> | 是   | 设置元素的外描边宽度，不支持百分比。<br/>当width的值为undefined时，恢复为无外描边宽度的效果。 |
+| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](ts-types.md#edgeoutlinewidths11对象说明)> | 是   | 设置元素的外描边宽度，不支持百分比。<br/>当width的值为undefined时，恢复为无外描边宽度的效果。 |
 
 **返回值：**
 
@@ -214,7 +216,7 @@ outlineColor(color: Optional\<ResourceColor | EdgeColors | LocalizedEdgeColors>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](ts-types.md#edgecolors9)&nbsp;\|&nbsp;[LocalizedEdgeColors](ts-types.md#localizededgecolors12)> | 是   | 设置元素的外描边颜色。<br/>当color的值为undefined时，恢复为描边颜色为Color.Black的效果。 |
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](ts-types.md#edgecolors9)&nbsp;\|&nbsp;[LocalizedEdgeColors](ts-types.md#localizededgecolors12)> | 是   | 设置元素的外描边颜色。<br/>当color的值为undefined时，恢复为描边颜色为Color.Black的效果。 |
 
 **返回值：**
 
@@ -262,7 +264,7 @@ outlineRadius(radius: Optional\<Dimension | OutlineRadiuses>): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| radius | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[OutlineRadiuses](ts-types.md#outlineradiuses11对象说明)> | 是   | 设置元素的外描边圆角半径，不支持百分比。<br/>最大生效值：组件width/2 + outlineWidth或组件height/2 + outlineWidth。<br/>当radius的值为undefined时，恢复为外描边圆角半径为0的效果。 |
+| radius | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[OutlineRadiuses](ts-types.md#outlineradiuses11对象说明)> | 是   | 设置元素的外描边圆角半径，不支持百分比。<br/>最大生效值：组件width/2 + outlineWidth或组件height/2 + outlineWidth。<br/>当radius的值为undefined时，恢复为外描边圆角半径为0的效果。 |
 
 **返回值：**
 
@@ -317,7 +319,7 @@ struct OutlineExample {
 }
 ```
 
-![zh-cn_image_0000001219982706](figures/zh-cn_image_0000001219982706.png)
+![outlineRadius](figures/outlineRadius.png)
 
 ### 示例2（使用LocalizedEdgeColors类型）
 
@@ -367,8 +369,8 @@ struct OutlineExample {
 
 从左至右显示语言示例图
 
-![zh-cm_image_outling_ltr](figures/zh-cm_image_outling_ltr.png)
+![zh-cm_image_outling_ltr](figures/image-outling-ltr.png)
 
 从右至左显示语言示例图
 
-![zh-cm_image_outling_rtl](figures/zh-cm_image_outling_rtl.png)
+![zh-cm_image_outling_rtl](figures/image-outling-rtl.png)

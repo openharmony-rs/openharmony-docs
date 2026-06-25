@@ -22,6 +22,8 @@ voiceButton(options: Optional\<VoiceButtonOptions\>)
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
@@ -30,7 +32,7 @@ voiceButton(options: Optional\<VoiceButtonOptions\>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ----- | ----- | ---- | ---- |
-| options | [Optional](ts-universal-attributes-custom-property.md#optionalt12)<[VoiceButtonOptions](./ts-text-common-sys.md#voicebuttonoptions23)> | 是  | 语音按钮选项参数。 |
+| options | [Optional](ts-universal-attributes-custom-property.md#optionalt)<[VoiceButtonOptions](./ts-text-common-sys.md#voicebuttonoptions23)> | 是  | 语音按钮选项参数。 |
 
 
 ## 示例

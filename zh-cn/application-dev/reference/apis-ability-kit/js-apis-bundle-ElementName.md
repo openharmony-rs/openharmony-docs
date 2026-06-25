@@ -4,9 +4,9 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
-ElementName信息，通过接口[Context.getElementName](js-apis-inner-app-context.md)获取。
+ElementName信息，通过接口[Context.getElementName](js-apis-inner-app-context.md#contextgetelementname7)获取。
 
 > **说明：**
 > 
@@ -20,7 +20,7 @@ ElementName信息，通过接口[Context.getElementName](js-apis-inner-app-conte
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[bundleManager-ElementName](js-apis-bundleManager-elementName.md#elementname-1)替代。
 
-ElementName信息，标识Ability的基本信息，通过接口[Context.getElementName](js-apis-inner-app-context.md)获取。
+ElementName信息，标识Ability的基本信息，通过接口[Context.getElementName](js-apis-inner-app-context.md#contextgetelementname7)获取。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 

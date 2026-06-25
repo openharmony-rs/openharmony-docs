@@ -1,7 +1,7 @@
 # inputmethod_text_editor_proxy_capi.h
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
@@ -137,7 +137,7 @@ Function called when the input method deletes the text on the right of the curso
 
 | Name| Description|
 | -- | -- |
-| [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) *textEditorProxy | Pointer to the [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) instance to be set.in. |
+| [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) *textEditorProxy | Pointer to the [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) instance to be set.|
 |  int32_t length | Length of the characters to be deleted.|
 
 ### OH_TextEditorProxy_DeleteBackwardFunc()
@@ -156,7 +156,7 @@ Function called when the input method deletes the text on the left of the cursor
 
 | Name| Description|
 | -- | -- |
-| [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) *textEditorProxy | Pointer to the [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) instance to be set.in. |
+| [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) *textEditorProxy | Pointer to the [InputMethod_TextEditorProxy](capi-inputmethod-inputmethod-texteditorproxy.md) instance to be set.|
 |  int32_t length | Length of the characters to be deleted.|
 
 ### OH_TextEditorProxy_SendKeyboardStatusFunc()

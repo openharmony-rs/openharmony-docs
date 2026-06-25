@@ -1,7 +1,7 @@
 # 设备使用信息统计（仅对系统应用开放）<!--device-usage-statistics-->
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->

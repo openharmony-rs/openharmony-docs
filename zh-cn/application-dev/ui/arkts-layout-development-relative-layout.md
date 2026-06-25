@@ -109,7 +109,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   }
   ```
 
-  ![zh-cn_image_0000001562820901](figures/zh-cn_image_0000001562820901.png)
+  ![relativeContainerParentComponentId](figures/relativeContainerParentComponentId.png)
 
 - 以兄弟元素为锚点。
 
@@ -158,7 +158,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
   }
   ```
 
-  ![zh-cn_image_0000001562940613](figures/zh-cn_image_0000001562940613.png)
+  ![relativeContainerSiblingComponentId](figures/relativeContainerSiblingComponentId.png)
 
 - 子组件锚点可以任意选择，但需注意不要相互依赖。
 
@@ -247,7 +247,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 
 ### 子组件位置偏移
 
-子组件经过相对位置对齐后，可能尚未达到目标位置。开发者可根据需要设置额外偏移（offset）。当使用offset调整位置的组件作为锚点时，对齐位置为设置offset之前的位置。从API Version 11开始，新增了[Bias](../reference/apis-arkui/arkui-ts/ts-types.md#bias对象说明)对象，建议API Version 11及以后的版本使用bias来设置额外偏移。使用bias的示例可以参考[示例4（设置偏移）](../reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md#示例4设置偏移)。
+子组件经过相对位置对齐后，可能尚未达到目标位置。开发者可根据需要设置额外偏移（offset）。当使用offset调整位置的组件作为锚点时，对齐位置为设置offset之前的位置。从API Version 11开始，新增了[Bias](../reference/apis-arkui/arkui-ts/ts-types.md#bias11对象说明)对象，建议API Version 11及以后的版本使用bias来设置额外偏移。使用bias的示例可以参考[示例4（设置偏移）](../reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md#示例4设置偏移)。
 
   <!-- @[RelativeContainerChildComponentOffset_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerChildComponentOffset.ets) -->
   
@@ -371,7 +371,7 @@ RelativeContainer是一种采用相对布局的容器，支持容器内部的子
 
 ## 多种组件的对齐布局
 
-Row、Column、Flex、Stack等多种布局组件，可按照RelativeContainer组件规则进行对齐排布。
+[Row](../reference/apis-arkui/arkui-ts/ts-container-row.md)、[Column](../reference/apis-arkui/arkui-ts/ts-container-column.md)、[Flex](../reference/apis-arkui/arkui-ts/ts-container-flex.md)、[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)等多种布局组件，可按照RelativeContainer组件规则进行对齐排布。
 
   <!-- @[RelativeContainerDifferentComponentId_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerDifferentComponentId.ets) -->
   
@@ -557,9 +557,9 @@ struct RelativeAlignRulesExample {
 
 ## 多个组件形成链
 
-链的形成依赖于组件之间的关联关系。以组件A和组件B构成的最简水平链为例，其依赖关系为：锚点1 <-- 组件A <---> 组件B --> 锚点2，即A具有left锚点，B具有right锚点，同时A的right锚点与B的HorizontalAlign.Start对齐，B的left锚点与A的HorizontalAlign.End对齐。
+链的形成依赖于组件之间的关联关系。以组件A和组件B构成的最简水平链为例，其依赖关系为：锚点1 <-- 组件A <---> 组件B --> 锚点2，即A具有left锚点，B具有right锚点，同时A的right锚点与B的[HorizontalAlign](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#horizontalalign).Start对齐，B的left锚点与A的[HorizontalAlign](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#horizontalalign).End对齐。
 * 链的方向和格式在链头组件的[chainMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#chainmode12)接口中声明；链内元素的bias属性全部失效，链头元素的bias属性作为整个链的bias生效。链头是指在满足成链规则时链的第一个组件（在水平方向上，从左边开始，镜像语言中从右边开始；在垂直方向上，从上边开始）。
-* 如果链内所有元素的size超出链的锚点约束，超出部分将被均匀分配到链的两侧。在[PACKED](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#chainstyle12)链中，可以通过[Bias](../reference/apis-arkui/arkui-ts/ts-types.md#bias对象说明)设置超出部分的分布。
+* 如果链内所有元素的size超出链的锚点约束，超出部分将被均匀分配到链的两侧。在[PACKED](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#chainstyle12)链中，可以通过[Bias](../reference/apis-arkui/arkui-ts/ts-types.md#bias11对象说明)设置超出部分的分布。
 
 在以下示例代码中，通过alignRules和chainMode将九个在容器内的Row组件分为三组水平链式排列。组件row1、组件row2和组件row3顶部对齐，水平方向成SPREAD链，链内组件在锚点间均匀分布。组件row4、组件row5、组件row6垂直方向基于容器居中，水平方向成SPREAD_INSIDE链，链内除首尾2个组件对齐锚点外，其他组件在链中均匀分布。组件row7、组件row8、组件row9底部对齐，水平方向组成PACKED链，链内组件无间隙。
 
@@ -757,11 +757,13 @@ struct RelativeGuideLineExample {
 
 ## 多个组件的屏障
 
-屏障（barrier）是容器内一组指定组件在指定方向上的公共最远边界。例如，一组组件下方的屏障是它们底部最靠下的位置，可以理解为坐标取min/max。使用屏障可以实现组件不与一组参考组件中的任何一个重叠等效果。
+屏障（barrier）是容器的一种动态参考边界，它基于一组指定组件的实际位置，计算出它们在特定方向上的公共最远边界。当需要让某个组件参照多个组件的集体边界时使用，例如实现“位于这些组件右侧”或“不与其他任何组件重叠”等效果。
 
 屏障可以有上下左右四个方向。垂直方向（TOP，BOTTOM）的屏障仅能作为组件的水平方向锚点，用作垂直方向锚点时值为0；水平方向（LEFT，RIGHT）的屏障仅能作为组件的垂直方向锚点，用作水平方向锚点时值为0。
 
-如下代码定义了两个屏障，分别是参考组件row1和row2各自右侧边界与底部边界。使用这两个屏障作为row3和row4的锚点，可以方便地避免组件间出现不必要的重叠。
+与静态的guideline不同，barrier会随参照组件位置变化而自动更新，只需定义实际需要的方向即可。
+
+在下列示例代码中，item1，item2，item3三个组件可以视为由一个隐形的矩形区域包围着，outer1基于这个“隐形区域”的底部边界进行布局，位于该区域的下方；outer2基于这个“隐形区域”的右侧边界进行布局，位于该区域的右侧。
 
 <!-- @[testRelativeContainerComponentBarrier_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerComponentBarrier.ets) -->
 
@@ -770,66 +772,115 @@ struct RelativeGuideLineExample {
 @Component
 struct Index {
   build() {
-    Row() {
-      RelativeContainer() {
-        Row() {
-          Text('row1')
-        }
-        .justifyContent(FlexAlign.Center)
-        .width(100)
-        .height(100)
+    RelativeContainer() {
+      Text('item 1')
+        .width(80)
+        .height(80)
+        .textAlign(TextAlign.Center)
         .backgroundColor('#a3cf62')
-        .id('row1')
-
-        Row() {
-          Text('row2')
-        }
-        .justifyContent(FlexAlign.Center)
-        .width(100)
-        .height(100)
+        .id('item1')
+        .alignRules({
+          top: {
+            anchor: '__container__',
+            align: VerticalAlign.Top
+          },
+          left: {
+            anchor: '__container__',
+            align: HorizontalAlign.Start
+          }
+        })
+      Text('item 2')
+        .width(80)
+        .height(80)
+        .textAlign(TextAlign.Center)
+        .backgroundColor('#a3cf62')
+        .id('item2')
+        .alignRules({
+          top: {
+            anchor: 'item1',
+            align: VerticalAlign.Bottom
+          },
+          left: {
+            anchor: 'item1',
+            align: HorizontalAlign.End
+          }
+        })
+      Text('item 3')
+        .width(80)
+        .height(80)
+        .textAlign(TextAlign.Center)
+        .backgroundColor('#a3cf62')
+        .id('item3')
+        .alignRules({
+          bottom: {
+            anchor: 'item2',
+            align: VerticalAlign.Top
+          },
+          left: {
+            anchor: 'item2',
+            align: HorizontalAlign.End
+          }
+        })
+      Text('outer 1')
+        .width(80)
+        .height(80)
+        .textAlign(TextAlign.Center)
         .backgroundColor('#00ae9d')
+        // 定义其位置
         .alignRules({
-          middle: { anchor: 'row1', align: HorizontalAlign.End },
-          top: { anchor: 'row1', align: VerticalAlign.Bottom }
+          top: {
+            anchor: 'barrier_bottom',
+            align: VerticalAlign.Top
+          },
+          left: {
+            anchor: 'barrier_left',
+            align: HorizontalAlign.Start
+          }
         })
-        .id('row2')
 
-        Row() {
-          Text('row3')
-        }
-        .justifyContent(FlexAlign.Center)
-        .width(100)
-        .height(100)
-        .backgroundColor('#0a59f7')
+      Text('outer 2')
+        .width(80)
+        .height(80)
+        .textAlign(TextAlign.Center)
+        .backgroundColor('#00ae9d')
+        // 定义其位置
         .alignRules({
-          left: { anchor: 'barrier1', align: HorizontalAlign.End },
-          top: { anchor: 'row1', align: VerticalAlign.Top }
+          top: {
+            anchor: 'barrier_top',
+            align: VerticalAlign.Top
+          },
+          left: {
+            anchor: 'barrier_right',
+            align: HorizontalAlign.Start
+          }
         })
-        .id('row3')
-
-        Row() {
-          Text('row4')
-        }
-        .justifyContent(FlexAlign.Center)
-        .width(50)
-        .height(50)
-        .backgroundColor('#2ca9e0')
-        .alignRules({
-          left: { anchor: 'row1', align: HorizontalAlign.Start },
-          top: { anchor: 'barrier2', align: VerticalAlign.Bottom }
-        })
-        .id('row4')
-      }
-      .width(300)
-      .height(300)
-      .margin({ left: 50 })
-      .border({ width: 2, color: '#6699FF' })
-      .barrier([{ id: 'barrier1', direction: BarrierDirection.RIGHT, referencedId: ['row1', 'row2'] },
-        { id: 'barrier2', direction: BarrierDirection.BOTTOM, referencedId: ['row1', 'row2'] }])
     }
-    .height('100%')
+    .width('100%')
+    .padding(10)
+    .barrier([
+      {
+        id: 'barrier_left',
+        direction: BarrierDirection.LEFT,
+        referencedId: ['item1', 'item2', 'item3']
+      },
+      {
+        id: 'barrier_right',
+        direction: BarrierDirection.RIGHT,
+        referencedId: ['item1', 'item2', 'item3']
+      },
+      {
+        id: 'barrier_top',
+        direction: BarrierDirection.TOP,
+        referencedId: ['item1', 'item2', 'item3']
+      },
+      {
+        id: 'barrier_bottom',
+        direction: BarrierDirection.BOTTOM,
+        referencedId: ['item1', 'item2', 'item3']
+      },
+    ])
   }
 }
 ```
 
-![relative container](figures/relativecontainer5.png)
+![relative container](figures/relativecontainer10.png)

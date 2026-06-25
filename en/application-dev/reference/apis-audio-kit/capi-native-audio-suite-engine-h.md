@@ -260,14 +260,15 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_RenderFrame(OH_AudioSuitePipeline* audi
 
 Obtains the processed audio data from the pipeline (for single-output effect nodes).
 
->**NOTE**
->Applications need to call this function to obtain audio data that has been processed by effects.
- * When this function is called, the pipeline pulls data backward from the output node, apply effect processing,
- * and fill the processed data into the **audioData** pointer provided by the application.
- * The system attempts to fill the data based on the size specified by **requestFrameSize**, and the actual size of the processed data is returned to the application via **responseSize**.
- * When the application has prepared data for all input nodes and submits the last data through a callback, it should set the finish flag in the callback.
- * Once all inputs in the pipeline have passed the finish flag, the pipeline notifies the application through **finishedFlag** after processing is complete.
- * If **finishedFlag** is **true**, the application should not call this function again.
+> **NOTE**
+>
+> Applications need to call this function to obtain audio data that has been processed by effects.
+> * When this function is called, the pipeline pulls data backward from the output node, apply effect processing,
+> * and fill the processed data into the **audioData** pointer provided by the application.
+> * The system attempts to fill the data based on the size specified by **requestFrameSize**, and the actual size of the processed data is returned to the application via **responseSize**.
+> * When the application has prepared data for all input nodes and submits the last data through a callback, it should set the finish flag in the callback.
+> * Once all inputs in the pipeline have passed the finish flag, the pipeline notifies the application through **finishedFlag** after processing is complete.
+> * If **finishedFlag** is **true**, the application should not call this function again.
 
 **Since**: 22
 
@@ -278,7 +279,7 @@ Obtains the processed audio data from the pipeline (for single-output effect nod
 | [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | Audio creation pipeline handle, which is obtained by calling [OH_AudioSuiteEngine_CreatePipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createpipeline).|
 | void* audioData | Pointer to the address for writing the obtained audio data.|
 | int32_t requestFrameSize | Byte size of the memory allocated for **audioData**. The value must be greater than 0.|
-| int32_t* responseSize | Pointer to the size of the audio data written to **audioData** by the pipeline. The value cannot be greater than **requestFrameSize**.|
+| int32_t* responseSize | Pointer to the size of the audio data written to **audioData** by the pipeline. The value cannot be greater than **requestFrameSize**. The unit is bytes.|
 | bool* finishedFlag | Pointer to the flag indicating whether the current pipeline has completed rendering.|
 
 **Returns**
@@ -305,7 +306,7 @@ Renders the pipeline and obtains the processed audio data. For pipelines with mu
 | -- | -- |
 | [OH_AudioSuitePipeline](capi-ohaudiosuite-oh-audiosuitepipelinestruct.md)* audioSuitePipeline | Audio creation pipeline handle, which is obtained by calling [OH_AudioSuiteEngine_CreatePipeline](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createpipeline).|
 | [OH_AudioDataArray](capi-ohaudiosuite-oh-audiodataarray.md)* audioDataArray | Pointer to the array used by the user to read audio data. Each element of the array must be of the same size.|
-| int32_t* responseSize | Pointer to the size of the audio data written into each element of **audioDataArray** by the pipeline. The system ensures consistent data size across all elements.|
+| int32_t* responseSize | Pointer to the size of the audio data written into each element of **audioDataArray** by the pipeline. The system ensures consistent data size across all elements. The unit is bytes.|
 | bool* finishedFlag | Pointer to the flag indicating whether the current pipeline has completed rendering.|
 
 **Returns**
@@ -446,11 +447,12 @@ typedef int32_t (*OH_InputNode_RequestDataCallback)(OH_AudioNode* audioNode, voi
 
 Sets a callback function for the input node to request data.
 
->**NOTE**
->Applications should write the PCM audio data to be processed to **audioData**, from which OHAudioSuite obtains the data for audio creation.
- * Applications should write data to **audioData** that does not exceed the size specified by **audioDataSize**.
- * Once all data has been passed to the pipeline through this callback, the application should set **finished** to **true** in the last callback. After this, the pipeline will no longer call this function.
- * Only input nodes require this configuration; other nodes do not.
+> **NOTE**
+>  
+> Applications should write the PCM audio data to be processed to **audioData**, from which OHAudioSuite obtains the data for audio creation.
+> * Applications should write data to **audioData** that does not exceed the size specified by **audioDataSize**.
+> * Once all data has been passed to the pipeline through this callback, the application should set **finished** to **true** in the last callback. After this, the pipeline will no longer call this function.
+> * Only input nodes require this configuration; other nodes do not.
 
 **Since**: 22
 
@@ -738,7 +740,7 @@ Sets the configuration parameters for the sound field effect node.
 | Name| Description|
 | -- | -- |
 | [OH_AudioNode](capi-ohaudiosuite-oh-audionodestruct.md)* audioNode | Audio creation node handle, which is obtained by calling [OH_AudioSuiteEngine_CreateNode](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_createnode).|
-| [OH_SoundFieldType](capi-native-audio-suite-base-h.md#oh_soundfieldtype) soundFieldType | Configuration parameter of the sound field effect node.|
+| [OH_SoundFieldType](capi-native-audio-suite-base-h.md#oh_soundfieldtype) soundFieldType | Configuration parameters of the sound field effect node.|
 
 **Returns**
 
@@ -1197,4 +1199,3 @@ Obtains the configuration parameters of the general voice change node.
 | Type| Description|
 | -- | -- |
 | [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | **AUDIOSUITE_SUCCESS**: The function is executed successfully.<br>         **AUDIOSUITE_ERROR_NODE_NOT_EXIST**: The node does not exist or has been destroyed.<br>         **AUDIOSUITE_ERROR_UNSUPPORTED_OPERATION**: The **audioNode** node type is not a general voice change effect node.<br>         **AUDIOSUITE_ERROR_INVALID_PARAM**: Invalid parameters. For example, **audioNode** is nullptr.<br>         **AUDIOSUITE_ERROR_TIMEOUT**: The operation times out.<br>         **AUDIOSUITE_ERROR_SYSTEM**: Other system exceptions occur.|
-<!--no_check-->
