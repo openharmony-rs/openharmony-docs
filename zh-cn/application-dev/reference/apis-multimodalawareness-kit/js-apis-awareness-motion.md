@@ -55,6 +55,11 @@ on(type: 'operatingHandChanged', callback: Callback&lt;OperatingHandStatus&gt;):
 
 **需要权限**：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
 
+|权限名称|起始版本|权限级别|授权方式|演进说明|
+| -------|-------- | ------ | -------|------- |
+|ohos.permission.ACTIVITY_MOTION |15|normal|user_grant|API 15~19 需要申请。自 API 20 起，与ohos.permission.DETECT_GESTURE构成“或”关系，可被权限ohos.permission.DETECT_GESTURE替代。|
+|ohos.permission.DETECT_GESTURE |20|normal|system_grant|自 API 20 新增引入。在 API 20+ 设备上，与权限ohos.permission.ACTIVITY_MOTION任选其一声明持有一方即可。|
+
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
 **参数**：
@@ -102,6 +107,11 @@ off(type: 'operatingHandChanged', callback?: Callback&lt;OperatingHandStatus&gt;
 
 **需要权限**：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
 
+|权限名称|起始版本|权限级别|授权方式|演进说明|
+| -------|-------- | ------ | -------|------- |
+|ohos.permission.ACTIVITY_MOTION |15|normal|user_grant|API 15~19 需要申请。自 API 20 起，与ohos.permission.DETECT_GESTURE构成“或”关系，可被权限ohos.permission.DETECT_GESTURE替代。|
+|ohos.permission.DETECT_GESTURE |20|normal|system_grant|自 API 20 新增引入。在 API 20+ 设备上，与权限ohos.permission.ACTIVITY_MOTION任选其一声明持有一方即可。|
+
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
 **参数**：
@@ -144,6 +154,11 @@ getRecentOperatingHandStatus(): OperatingHandStatus
 获取最新触控操作手状态。
 
 **需要权限**：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
+
+|权限名称|起始版本|权限级别|授权方式|演进说明|
+| -------|-------- | ------ | -------|------- |
+|ohos.permission.ACTIVITY_MOTION |15|normal|user_grant|API 15~19 需要申请。自 API 20 起，与ohos.permission.DETECT_GESTURE构成“或”关系，可被权限ohos.permission.DETECT_GESTURE替代。|
+|ohos.permission.DETECT_GESTURE |20|normal|system_grant|自 API 20 新增引入。在 API 20+ 设备上，与权限ohos.permission.ACTIVITY_MOTION任选其一声明持有一方即可。|
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
