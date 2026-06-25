@@ -139,6 +139,7 @@ struct Index {
     private pageId: number = this.getUniqueId(); // 获取当前页面Id。
     private para: Record<string, number> = { 'PropA': 47 };
     private localStorage: LocalStorage = new LocalStorage(this.para);
+    private res: boolean = this.localStorage.setOrCreate('PropB', 121);
     private defaultWindowSizeType: number = 1; // 指定画中画第一次拉起窗口为小窗口。
     private cornerAdsorptionEnabled: boolean = true;
     private config: PiPWindow.PiPConfiguration = {
