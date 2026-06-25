@@ -203,7 +203,7 @@ import { BusinessError } from '@ohos.base';
 
 const callback = (err: BusinessError, data: void) => {
   if (err) {
-    console.error(`Operation startBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
+    console.error(`Operation startBackgroundRunning failed. code is ${err.code} message is ${err.message}`);
   } else {
     console.info('Operation startBackgroundRunning succeeded');
   }
@@ -240,7 +240,7 @@ import { BusinessError } from '@ohos.base';
 
 const callback = (err: BusinessError, data: void) => {
   if (err) {
-    console.error(`Operation startBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
+    console.error(`Operation startBackgroundRunning failed. code is ${err.code} message is ${err.message}`);
   } else {
     console.info('Operation startBackgroundRunning succeeded');
   }
@@ -322,7 +322,7 @@ wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
     backgroundTaskManager.BackgroundMode.LOCATION, wantAgentObj).then(() => {
     console.info('Operation startBackgroundRunning succeeded');
   }).catch((err: BusinessError) => {
-    console.error(`Operation startBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
+    console.error(`Operation startBackgroundRunning failed. code is ${err.code} message is ${err.message}`);
   });
 });
 ```
@@ -358,7 +358,7 @@ export default class EntryAbility extends UIAbility {
         backgroundTaskManager.BackgroundMode.LOCATION, wantAgentObj).then(() => {
         console.info('Operation startBackgroundRunning succeeded');
       }).catch((err: BusinessError) => {
-        console.error(`Operation startBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
+        console.error(`Operation startBackgroundRunning failed. code is ${err.code} message is ${err.message}`);
       });
     });
   }
@@ -394,7 +394,7 @@ import { BusinessError } from '@ohos.base';
 
 const callback = (err: BusinessError, data: void) => {
   if (err) {
-    console.error(`Operation stopBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
+    console.error(`Operation stopBackgroundRunning failed. code is ${err.code} message is ${err.message}`);
   } else {
     console.info('Operation stopBackgroundRunning succeeded');
   }
@@ -415,7 +415,7 @@ import { BusinessError } from '@ohos.base';
 
 const callback = (err: BusinessError, data: void) => {
   if (err) {
-    console.error(`Operation stopBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
+    console.error(`Operation stopBackgroundRunning failed. code is ${err.code} message is ${err.message}`);
   } else {
     console.info('Operation stopBackgroundRunning succeeded');
   }
@@ -464,7 +464,7 @@ import { BusinessError } from '@ohos.base';
 backgroundTaskManager.stopBackgroundRunning(featureAbility.getContext()).then(() => {
   console.info('Operation stopBackgroundRunning succeeded');
 }).catch((err: BusinessError) => {
-  console.error(`Operation stopBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
+  console.error(`Operation stopBackgroundRunning failed. code is ${err.code} message is ${err.message}`);
 });
 
 ```
@@ -484,7 +484,7 @@ export default class EntryAbility extends UIAbility {
     backgroundTaskManager.stopBackgroundRunning(this.context).then(() => {
       console.info('Operation stopBackgroundRunning succeeded');
     }).catch((err: BusinessError) => {
-      console.error(`Operation stopBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
+      console.error(`Operation stopBackgroundRunning failed. code is ${err.code} message is ${err.message}`);
     });
   }
 };
