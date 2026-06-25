@@ -1085,10 +1085,11 @@
 // xxx.ets
 import { image } from '@kit.ImageKit';
 import { LengthMetrics } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
 @Component
-export struct StyledStringHtml {
+struct StyledStringHtml {
   imagePixelMap: image.PixelMap | undefined = undefined;
   @State html: string | undefined = undefined;
   @State styledString: StyledString | undefined = undefined;
@@ -1097,18 +1098,23 @@ export struct StyledStringHtml {
   private uiContext: UIContext = this.getUIContext();
 
   async aboutToAppear() {
-    console.info('aboutToAppear initial imagePixelMap');
+    hilog.info(0x0000, 'testTag', 'aboutToAppear initial imagePixelMap');
     this.imagePixelMap = await this.getPixmapFromMedia($r('app.media.startIcon'));
   }
 
   private async getPixmapFromMedia(resource: Resource) {
-    let unit8Array = await this.uiContext.getHostContext()?.resourceManager?.getMediaContent(resource.id);
-    let imageSource = image.createImageSource(unit8Array?.buffer.slice(0, unit8Array.buffer.byteLength));
-    let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
-      desiredPixelFormat: image.PixelMapFormat.RGBA_8888
-    });
-    await imageSource.release();
-    return createPixelMap;
+    try {
+      let unit8Array = await this.uiContext.getHostContext()?.resourceManager?.getMediaContent(resource.id);
+      let imageSource = image.createImageSource(unit8Array?.buffer?.slice(0, unit8Array?.buffer?.byteLength));
+      let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
+        desiredPixelFormat: image.PixelMapFormat.RGBA_8888
+      });
+      await imageSource.release();
+      return createPixelMap;
+    } catch (error) {
+      hilog.error(0x0000, 'testTag', `Get Pixmap failed. error code: ${error.code}, error message: ${error.message}`);
+    }
+    return undefined;
   }
 
   build() {
