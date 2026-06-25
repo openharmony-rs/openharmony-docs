@@ -284,7 +284,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 32390206 | Parameter invalid.  |
+| 32390206 | Invalid parameter.  |
 
 **Example**
 
@@ -338,7 +338,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 32390206 | Parameter invalid.  |
+| 32390206 | Invalid parameter.  |
 
 **Example**
 
@@ -393,7 +393,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 32390206 | Parameter invalid.  |
+| 32390206 | Invalid parameter.  |
 
 **Example**
 
@@ -448,7 +448,7 @@ For details about the error codes, see [Link Enhancement Error Codes](errorcode-
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 32390206 | Parameter invalid.  |
+| 32390206 | Invalid parameter.  |
 
 **Example**
 
