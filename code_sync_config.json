@@ -22293,16 +22293,6 @@
 						"end_line":67,
 						"name":"state_scene_type_class",
 						"start_line":16
-					},
-					{
-						"end_line":81,
-						"name":"state_scene_type_class_local_init",
-						"start_line":76
-					},
-					{
-						"end_line":88,
-						"name":"state_scene_type_class_out_value_init",
-						"start_line":83
 					}
 				]
 			},
