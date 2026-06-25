@@ -26,6 +26,11 @@ createServer(name:&nbsp;string):&nbsp;Server
 
 在服务端设备上，应用创建服务。通过start()开启后，该设备可作为服务端被其他设备连接。
 
+生命周期管理：
+1. 创建服务后，需调用start()开启服务
+2. 使用完毕后，需调用close()销毁Server对象释放资源
+3. 若需重新使用，需重新创建Server对象
+
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC，该权限为用户授权权限，申请方式请参考[权限申请指导](../../security/AccessToken/AccessToken-user-guidelines.md)。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -34,10 +39,6 @@ createServer(name:&nbsp;string):&nbsp;Server
 
 **模型约束**：此接口仅可在Stage模型下使用
 
-**生命周期管理：**
-1. 创建服务后，需调用start()开启服务
-2. 使用完毕后，需调用close()销毁Server对象释放资源
-3. 若需重新使用，需重新创建Server对象
 **参数：**
 
 | 参数名       | 类型                                       | 必填   | 说明       |
@@ -87,6 +88,18 @@ createConnection(deviceId:&nbsp;string,&nbsp;name:&nbsp;string):&nbsp;Connection
 
 作为客户端的设备创建连接对象。
 
+调用顺序：
+1. 创建Connection对象后，需调用connect()方法向服务端设备发起连接
+2. 建议先通过on('connectResult')注册回调监听，再调用connect()获取连接结果
+3. 连接成功后，可通过sendData()发送数据
+4. 使用完毕后，需调用close()销毁连接对象释放资源
+
+相关方法：
+- connect()：发起连接
+- on('connectResult')：监听连接结果
+- sendData()：发送数据
+- close()：销毁连接对象
+
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -94,18 +107,6 @@ createConnection(deviceId:&nbsp;string,&nbsp;name:&nbsp;string):&nbsp;Connection
 **设备行为差异**: 该接口在不支持分布式业务的Wearable设备上调用会返回错误码801，在其他设备类型中可正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用
-
-**调用顺序：**
-1. 创建Connection对象后，需调用connect()方法向服务端设备发起连接
-2. 建议先通过on('connectResult')注册回调监听，再调用connect()获取连接结果
-3. 连接成功后，可通过sendData()发送数据
-4. 使用完毕后，需调用close()销毁连接对象释放资源
-
-**相关方法：**
-- connect()：发起连接
-- on('connectResult')：监听连接结果
-- sendData()：发送数据
-- close()：销毁连接对象
 
 **参数：**
 
@@ -166,6 +167,14 @@ start():&nbsp;void
 
 创建服务成功后，需要调用start()开启该服务，方可被客户端连接，最大服务个数为10。
 
+配对调用：
+- 服务开启后，可通过stop()停止服务
+- 服务使用完毕后，需调用close()销毁Server对象释放资源
+
+状态说明：
+- start()后服务进入运行状态，可接受客户端连接
+- stop()后服务进入停止状态，可重新start()
+
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -173,14 +182,6 @@ start():&nbsp;void
 **设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，企业管控设备调用会返回错误码32390300，其他设备类型可正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用
-
-**配对调用：**
-- 服务开启后，可通过stop()停止服务
-- 服务使用完毕后，需调用close()销毁Server对象释放资源
-
-**状态说明：**
-- start()后服务进入运行状态，可接受客户端连接
-- stop()后服务进入停止状态，可重新start()
 
 **错误码：**
 
@@ -260,6 +261,8 @@ close():&nbsp;void
 
 当业务执行完毕，服务端清理资源时，调用close()方法，销毁Server对象，释放相关资源。之后如果再次与对端设备交互，需要重新创建Server对象。
 
+与stop()的区别：stop()仅停止服务，Server对象仍可重新启动；close()会销毁Server对象并释放资源，之后需重新创建Server对象。如果还需要重新启动服务，使用stop()；如果业务完全结束，使用close()。
+
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -267,8 +270,6 @@ close():&nbsp;void
 **设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用
-
-**与stop()的区别**：stop()仅停止服务，Server对象仍可重新启动；close()会销毁Server对象并释放资源，之后需重新创建Server对象。如果还需要重新启动服务，使用stop()；如果业务完全结束，使用close()。
 
 **错误码：**
 
@@ -553,6 +554,17 @@ connect():&nbsp;void
 
 创建Connection对象成功后，在客户端执行，向服务端设备发起连接，最大连接个数限制为10。
 
+调用顺序：
+1. 必须先调用createConnection()创建连接对象
+2. 建议先通过on('connectResult')注册回调监听，再调用本方法获取连接结果
+3. 连接成功后，可通过sendData()发送数据
+
+相关方法：
+- createConnection()：创建连接对象
+- on('connectResult')：监听连接结果
+- disconnect()：断开连接
+- close()：销毁连接对象
+
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -560,17 +572,6 @@ connect():&nbsp;void
 **设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用返回错误码32390300，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用
-
-**调用顺序：**
-1. 必须先调用createConnection()创建连接对象
-2. 建议先通过on('connectResult')注册回调监听，再调用本方法获取连接结果
-3. 连接成功后，可通过sendData()发送数据
-
-**相关方法：**
-- createConnection()：创建连接对象
-- on('connectResult')：监听连接结果
-- disconnect()：断开连接
-- close()：销毁连接对象
   
 **错误码：**
 
@@ -663,6 +664,8 @@ close():&nbsp;void
 
 业务执行完毕后，任意设备可调用该接口销毁connection对象，释放资源。若需再次与对端设备交互，必须重新创建connection对象并调用`connect()`发起连接。
 
+与disconnect()的区别：disconnect()仅断开连接，Connection对象仍可重新连接；close()会销毁Connection对象并释放资源，之后需重新创建Connection对象。如果还需要重新连接，使用disconnect()；如果业务完全结束，使用close()。
+
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -670,8 +673,6 @@ close():&nbsp;void
 **设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用
-
-**与disconnect()的区别**：disconnect()仅断开连接，Connection对象仍可重新连接；close()会销毁Connection对象并释放资源，之后需重新创建Connection对象。如果还需要重新连接，使用disconnect()；如果业务完全结束，使用close()。
   
 **错误码：**
 
@@ -823,6 +824,12 @@ on(type: 'connectResult', callback: Callback&lt;ConnectResult&gt;): void
 
 注册connect事件的回调监听，通过回调函数获取连接结果。使用callback进行异步回调。
 
+调用顺序：
+- 必须在调用connect()之前注册此监听，否则无法获取连接结果
+
+配对调用：
+- 使用完毕后，建议调用off('connectResult')取消监听，避免内存泄漏
+
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
@@ -830,12 +837,6 @@ on(type: 'connectResult', callback: Callback&lt;ConnectResult&gt;): void
 **设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用
-
-**调用顺序：**
-- 必须在调用connect()之前注册此监听，否则无法获取连接结果
-
-**配对调用：**
-- 使用完毕后，建议调用off('connectResult')取消监听，避免内存泄漏
 
 **参数：**
 
@@ -1007,7 +1008,7 @@ off(type: 'disconnected', callback?: Callback&lt;number&gt;): void
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'disconnected'，连接被动断开或底层异常断开时，触发该事件。   |
-| callback | Callback&lt;number&gt; | 否   | 注册的回调函数。number为返回的错误码。   |
+| callback | Callback&lt;number&gt; | 否   | 注册的回调函数，连接被动断开或底层异常断开时触发，number为返回的错误码。   |
 
 **错误码：**
 
@@ -1117,7 +1118,7 @@ off(type: 'dataReceived', callback?: Callback&lt;ArrayBuffer&gt;): void
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'dataReceived'，收到数据时，触发该事件。   |
-| callback | Callback&lt;[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)&gt; | 否    | 注册的回调函数。 |
+| callback | Callback&lt;[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)&gt; | 否    | 回调函数，用于接收对端设备发送的数据。回调参数data为接收到的数据，类型为ArrayBuffer。 |
 
 **错误码：**
 
