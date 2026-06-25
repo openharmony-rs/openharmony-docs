@@ -70,12 +70,12 @@ try {
   let delayInfo = backgroundTaskManager.requestSuspendDelay(myReason, () => {
   // 回调函数。应用申请的短时任务即将超时，通过此函数回调应用，执行一些清理和标注工作，并取消短时任务
   // 此处回调与应用的业务功能不耦合，短时任务申请成功后，正常执行应用本身的业务
-    console.info("Request suspension delay will time out.");
+    console.info('Request suspension delay will time out.');
   })
   let id = delayInfo.requestId;
   let time = delayInfo.actualDelayTime;
-  console.info("The requestId is: " + id);
-  console.info("The actualDelayTime is: " + time);
+  console.info('The requestId is: ' + id);
+  console.info('The actualDelayTime is: ' + time);
 } catch (error) {
   console.error(`requestSuspendDelay failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 }
@@ -312,7 +312,7 @@ const callback = (error: BusinessError, data: void) => {
   if (error) {
     console.error(`Operation startBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
   } else {
-    console.info("Operation startBackgroundRunning succeeded");
+    console.info('Operation startBackgroundRunning succeeded');
   }
 }
 
@@ -322,8 +322,8 @@ export default class EntryAbility extends UIAbility {
       // 点击通知后，将要执行的动作列表
       wants: [
         {
-          bundleName: "com.example.myapplication",
-          abilityName: "EntryAbility"
+          bundleName: 'com.example.myapplication',
+          abilityName: 'EntryAbility'
         }
       ],
       // 点击通知后，动作类型
@@ -410,8 +410,8 @@ export default class EntryAbility extends UIAbility {
       // 点击通知后，将要执行的动作列表
       wants: [
         {
-          bundleName: "com.example.myapplication",
-          abilityName: "EntryAbility"
+          bundleName: 'com.example.myapplication',
+          abilityName: 'EntryAbility'
         }
       ],
       // 点击通知后，动作类型
@@ -429,7 +429,7 @@ export default class EntryAbility extends UIAbility {
         try {
           backgroundTaskManager.startBackgroundRunning(this.context,
             backgroundTaskManager.BackgroundMode.AUDIO_PLAYBACK, wantAgentObj).then(() => {
-              console.info("Operation startBackgroundRunning succeeded");
+              console.info('Operation startBackgroundRunning succeeded');
             }).catch((error: BusinessError) => {
               console.error(`Operation startBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
             });
@@ -504,8 +504,8 @@ export default class EntryAbility extends UIAbility {
       // 点击通知后，将要执行的动作列表
       wants: [
         {
-          bundleName: "com.example.myapplication",
-          abilityName: "EntryAbility"
+          bundleName: 'com.example.myapplication',
+          abilityName: 'EntryAbility'
         }
       ],
       // 点击通知后，动作类型
@@ -522,10 +522,10 @@ export default class EntryAbility extends UIAbility {
       wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
         try {
           // 当长时任务类型包含数据传输(dataTransfer)时，应用需要更新进度，其他类型不需要
-          let list: Array<string> = ["dataTransfer"];
-          // 在原子化服务中，let list: Array<string> = ["audioPlayback"];
+          let list: Array<string> = ['dataTransfer'];
+          // 在原子化服务中，let list: Array<string> = ['audioPlayback'];
           backgroundTaskManager.startBackgroundRunning(this.context, list, wantAgentObj).then((res: backgroundTaskManager.ContinuousTaskNotification) => {
-            console.info("Operation startBackgroundRunning succeeded");
+            console.info('Operation startBackgroundRunning succeeded');
             // 对于上传下载类的长时任务，应用可以使用res中返回的notificationId来更新通知，比如发送带进度条的模板通知
             this.id = res.notificationId;
           }).catch((error: BusinessError) => {
@@ -557,8 +557,8 @@ export default class EntryAbility extends UIAbility {
         notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_SYSTEM_LIVE_VIEW,
         systemLiveView: {
           typeCode: 8, // 数据传输(dataTransfer)类型需要填写 8，当前仅支持此类型。保持不变
-          title: "test", // 应用自定义
-          text: "test", // 应用自定义
+          title: 'test', // 应用自定义
+          text: 'test', // 应用自定义
         }
       },
       id: this.id, // 必须是申请长时任务返回的id，否则应用更新通知失败
@@ -568,7 +568,7 @@ export default class EntryAbility extends UIAbility {
 
     try {
       notificationManager.publish(request).then(() => {
-        console.info("publish success, id= " + this.id);
+        console.info('publish success, id= ' + this.id);
       }).catch((err: BusinessError) => {
         console.error(`publish fail: ${JSON.stringify(err)}`);
       });
@@ -634,8 +634,8 @@ export default class EntryAbility extends UIAbility {
       // 请开发者替换为实际被拉起应用的bundleName和abilityName
       wants: [
         {
-          bundleName: "com.example.myapplication",
-          abilityName: "EntryAbility"
+          bundleName: 'com.example.myapplication',
+          abilityName: 'EntryAbility'
         }
       ],
       // 设置点击通知后的动作类型
@@ -722,7 +722,7 @@ const callback = (error: BusinessError, data: void) => {
   if (error) {
     console.error(`Operation stopBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
   } else {
-    console.info("Operation stopBackgroundRunning succeeded");
+    console.info('Operation stopBackgroundRunning succeeded');
   }
 }
 
@@ -785,7 +785,7 @@ export default class EntryAbility extends UIAbility {
   onCreate() {
     try {
       backgroundTaskManager.stopBackgroundRunning(this.context).then(() => {
-        console.info("Operation stopBackgroundRunning succeeded");
+        console.info('Operation stopBackgroundRunning succeeded');
       }).catch((error: BusinessError) => {
         console.error(`Operation stopBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
       });
@@ -843,7 +843,7 @@ export default class EntryAbility extends UIAbility {
   onCreate() {
     try {
       backgroundTaskManager.stopBackgroundRunning(this.context, this.continuousTaskId).then(() => {
-        console.info("Operation stopBackgroundRunning succeeded");
+        console.info('Operation stopBackgroundRunning succeeded');
       }).catch((error: BusinessError) => {
         console.error(`Operation stopBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
       });
@@ -906,9 +906,9 @@ export default class EntryAbility extends UIAbility {
   onCreate() {
     try {
       // 必须先执行startBackgroundRunning，才能调用updateBackgroundRunning，这里假设已经申请过
-      let list: Array<string> = ["audioPlayback"];
+      let list: Array<string> = ['audioPlayback'];
       backgroundTaskManager.updateBackgroundRunning(this.context, list).then(() => {
-        console.info("Operation updateBackgroundRunning succeeded");
+        console.info('Operation updateBackgroundRunning succeeded');
       }).catch((error: BusinessError) => {
         console.error(`Operation updateBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
       });
@@ -979,8 +979,8 @@ export default class EntryAbility extends UIAbility {
       // 添加需要被拉起应用的bundleName和abilityName, 请开发者替换为实际的bundleName和abilityName
       wants: [
         {
-          bundleName: "com.example.myapplication",
-          abilityName: "EntryAbility"
+          bundleName: 'com.example.myapplication',
+          abilityName: 'EntryAbility'
         }
       ],
       // 设置点击通知后的动作类型
@@ -1006,7 +1006,7 @@ export default class EntryAbility extends UIAbility {
           continuousTaskRequest.combinedTaskNotification = false;
           continuousTaskRequest.continuousTaskId = this.continuousTaskId; // 对于更新接口，长时任务ID必须要传且为存在的ID，否则更新失败
           backgroundTaskManager.updateBackgroundRunning(this.context, continuousTaskRequest).then((res: backgroundTaskManager.ContinuousTaskNotification) => {
-            console.info("Operation updateBackgroundRunning succeeded");
+            console.info('Operation updateBackgroundRunning succeeded');
             this.notificationId = res.notificationId;
           }).catch((error: BusinessError) => {
             console.error(`Operation updateBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
@@ -1176,7 +1176,7 @@ const callback = (info: backgroundTaskManager.ContinuousTaskCancelInfo) => {
 export default class EntryAbility extends UIAbility {
   onCreate() {
     try {
-      backgroundTaskManager.on("continuousTaskCancel", callback);
+      backgroundTaskManager.on('continuousTaskCancel', callback);
     } catch (error) {
       console.error(`Operation onContinuousTaskCancel failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
@@ -1224,7 +1224,7 @@ const callback = (info: backgroundTaskManager.ContinuousTaskCancelInfo) => {
 export default class EntryAbility extends UIAbility {
   onCreate() {
     try {
-      backgroundTaskManager.off("continuousTaskCancel", callback);
+      backgroundTaskManager.off('continuousTaskCancel', callback);
     } catch (error) {
       console.error(`Operation offContinuousTaskCancel failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
@@ -1274,7 +1274,7 @@ const callback = (info: backgroundTaskManager.ContinuousTaskSuspendInfo) => {
 export default class EntryAbility extends UIAbility {
   onCreate() {
     try {
-      backgroundTaskManager.on("continuousTaskSuspend", callback);
+      backgroundTaskManager.on('continuousTaskSuspend', callback);
     } catch (error) {
       console.error(`Operation onContinuousTaskSuspend failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
@@ -1323,7 +1323,7 @@ const callback = (info: backgroundTaskManager.ContinuousTaskSuspendInfo) => {
 export default class EntryAbility extends UIAbility {
   onCreate() {
     try {
-      backgroundTaskManager.off("continuousTaskSuspend", callback);
+      backgroundTaskManager.off('continuousTaskSuspend', callback);
     } catch (error) {
       console.error(`Operation offContinuousTaskSuspend failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
@@ -1370,7 +1370,7 @@ const callback = (info: backgroundTaskManager.ContinuousTaskActiveInfo) => {
 export default class EntryAbility extends UIAbility {
   onCreate() {
     try {
-      backgroundTaskManager.on("continuousTaskActive", callback);
+      backgroundTaskManager.on('continuousTaskActive', callback);
     } catch (error) {
       console.error(`Operation onContinuousTaskActive failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
@@ -1417,7 +1417,7 @@ const callback = (info: backgroundTaskManager.ContinuousTaskActiveInfo) => {
 export default class EntryAbility extends UIAbility {
   onCreate() {
     try {
-      backgroundTaskManager.off("continuousTaskActive", callback);
+      backgroundTaskManager.off('continuousTaskActive', callback);
     } catch (error) {
       console.error(`Operation offContinuousTaskActive failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }

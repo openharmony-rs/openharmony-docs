@@ -65,13 +65,13 @@ import backgroundTaskManager from '@ohos.backgroundTaskManager';
 let myReason = 'test requestSuspendDelay';
 // 申请延迟任务
 let delayInfo = backgroundTaskManager.requestSuspendDelay(myReason, () => {
-  console.info("Request suspension delay will time out.");
+  console.info('Request suspension delay will time out.');
 })
 // 打印延迟任务信息
 let id = delayInfo.requestId;
 let time = delayInfo.actualDelayTime;
-console.info("The requestId is: " + id);
-console.info("The actualDelayTime is: " + time);
+console.info('The requestId is: ' + id);
+console.info('The actualDelayTime is: ' + time);
 ```
 
 ## backgroundTaskManager.getRemainingDelayTime<sup>(deprecated)</sup>
