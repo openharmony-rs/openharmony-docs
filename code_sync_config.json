@@ -12188,6 +12188,46 @@
 						"start_line":19
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderMutableBindingNoSetter.ets",
+				"functions":[
+					{
+						"end_line":67,
+						"name":"BuilderMutableBindingNoSetter",
+						"start_line":19
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderChangeVariableRight.ets",
+				"functions":[
+					{
+						"end_line":103,
+						"name":"BuilderChangeVariableRight",
+						"start_line":19
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/WatchCorrectUsage.ets",
+				"functions":[
+					{
+						"end_line":43,
+						"name":"executing_builder_function_watch_correct_usage",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderCallInWatch.ets",
+				"functions":[
+					{
+						"end_line":53,
+						"name":"BuilderCallInWatch",
+						"start_line":19
+					}
+				]
 			}
 		]
 	},
