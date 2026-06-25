@@ -2,12 +2,12 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @rr_cn-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
-ErrorManager模块提供对应用运行时各类异常的全局观测能力，包括注册和注销错误观测器，主要用于监测应用崩溃（JS_CRASH）、应用冻结（AppFreeze）、未捕获的Promise异常、资源超基线等错误场景。通过设置监听器，开发者可以实时捕获异常信息、追踪问题根源、记录关键指标，从而提高应用的稳定性监控能力，加快故障排查和定位效率，提升应用质量和用户体验。
+ErrorManager模块提供对应用运行时各类异常的全局观测能力，包括注册和注销错误观测器，主要用于监测应用崩溃（JS_CRASH）、应用冻屏（APP_FREEZE）、未捕获的Promise异常、资源超基线等错误场景。通过设置监听器，开发者可以实时捕获异常信息、追踪问题根源、记录关键指标，从而提高应用的稳定性监控能力，加快故障排查和定位效率，提升应用质量和用户体验。
 
 > **说明**：
 > 
@@ -108,7 +108,7 @@ on(type: 'globalErrorOccurred', observer: GlobalObserver): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16200001 | If the caller is invalid. |
 
 **示例**：
@@ -117,13 +117,13 @@ on(type: 'globalErrorOccurred', observer: GlobalObserver): void
 import { errorManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function errorFunc(observer: errorManager.GlobalError) {
+const errorFunc = (observer: errorManager.GlobalError) => {
   console.info('result name :' + observer.name);
   console.info('result message :' + observer.message);
   console.info('result stack :' + observer.stack);
   console.info('result instanceName :' + observer.instanceName);
   console.info('result instanceType :' + observer.instanceType);
-}
+};
 
 try {
   errorManager.on('globalErrorOccurred', errorFunc);
@@ -161,7 +161,7 @@ off(type: 'globalErrorOccurred', observer?: GlobalObserver): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.   |
 | 16200001 | If the caller is invalid. |
 | 16300004 | If the observer does not exist. |
 
@@ -171,12 +171,12 @@ off(type: 'globalErrorOccurred', observer?: GlobalObserver): void
 import { errorManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function errorFunc(observer: errorManager.GlobalError) {
-  console.info("result name :" + observer.name);
-  console.info("result message :" + observer.message);
-  console.info("result stack :" + observer.stack);
-  console.info("result instanceName :" + observer.instanceName);
-  console.info("result instanceType :" + observer.instanceType);
+const errorFunc = (observer: errorManager.GlobalError) => {
+  console.info('result name :' + observer.name);
+  console.info('result message :' + observer.message);
+  console.info('result stack :' + observer.stack);
+  console.info('result instanceName :' + observer.instanceName);
+  console.info('result instanceType :' + observer.instanceType);
 }
 
 try {
@@ -216,7 +216,7 @@ off(type: 'error', observerId: number, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.   |
 | 16000003 | The specified ID does not exist. |
 
 **示例**：
@@ -227,11 +227,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let observerId = 100;
 
-function unregisterErrorObserverCallback(err: BusinessError) {
+const unregisterErrorObserverCallback = (err: BusinessError) => {
   if (err) {
     console.error('------------ unregisterErrorObserverCallback ------------', err);
   }
-}
+};
 
 try {
   errorManager.off('error', observerId, unregisterErrorObserverCallback);
@@ -275,7 +275,7 @@ off(type: 'error', observerId: number): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000003 | The specified ID does not exist. |
 
 **示例**：
@@ -331,7 +331,7 @@ on(type: 'loopObserver', timeout: number, observer: LoopObserver): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
     
@@ -346,7 +346,7 @@ let observer: errorManager.LoopObserver = {
 };
 
 try {
-  errorManager.on("loopObserver", 1, observer);
+  errorManager.on('loopObserver', 1, observer);
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
   let message = (paramError as BusinessError).message;
@@ -379,7 +379,7 @@ on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.  |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 | 16200001 | If the caller is invalid. |
 
 **示例**：
@@ -387,19 +387,19 @@ on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void
 ```ts
 import { errorManager } from '@kit.AbilityKit';
 
-function promiseFunc(observer: errorManager.GlobalError) {
+const promiseFunc = (observer: errorManager.GlobalError) => {
   console.info('result name :' + observer.name);
   console.info('result message :' + observer.message);
   console.info('result stack :' + observer.stack);
   console.info('result instanceName :' + observer.instanceName);
   console.info('result instanceType :' + observer.instanceType);
-}
+};
 
-errorManager.on("globalUnhandledRejectionDetected", promiseFunc);
+errorManager.on('globalUnhandledRejectionDetected', promiseFunc);
 // 建议在抛出promise异常时，使用async抛出异常。
-async function throwError() {
-  throw new Error("uncaught error");
-}
+const throwError = async () => {
+  throw new Error('uncaught error');
+};
 
 let promise1 = new Promise<void>(() => {}).then(() => {
   throwError();
@@ -433,7 +433,7 @@ on(type: 'unhandledRejection', observer: UnhandledRejectionObserver): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16200001 | If the caller is invalid. |
 
 **示例**：
@@ -445,17 +445,17 @@ let observer: errorManager.UnhandledRejectionObserver = (reason: Error, promise:
   if (promise === promise1) {
     console.info('promise1 is rejected');
   }
-  console.info("reason.name: ", reason.name);
-  console.info("reason.message: ", reason.message);
+  console.info('reason.name: ', reason.name);
+  console.info('reason.message: ', reason.message);
   if (reason.stack) {
     console.info('reason.stack: ', reason.stack);
   }
 };
 
-errorManager.on("unhandledRejection", observer);
+errorManager.on('unhandledRejection', observer);
 
 let promise1 = new Promise<void>(() => {}).then(() => {
-  throw new Error("uncaught error");
+  throw new Error('uncaught error');
 });
 ```
 ## errorManager.on('freeze')<sup>18+</sup>
@@ -499,11 +499,11 @@ on(type: 'freeze', observer: FreezeObserver): void
 import { errorManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function freezeCallback() {
-  console.info("freezecallback");
-}
+const freezeCallback = () => {
+  console.info('freezecallback');
+};
 try {
-  errorManager.on("freeze", freezeCallback);
+  errorManager.on('freeze', freezeCallback);
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
   let message = (paramError as BusinessError).message;
@@ -538,14 +538,20 @@ off(type: 'loopObserver', observer?: LoopObserver): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
     
 ```ts
 import { errorManager } from '@kit.AbilityKit';
 
-errorManager.off("loopObserver");
+try {
+  errorManager.off('loopObserver');
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`error: ${code}, ${message}`);
+}
 ```
 
 ## errorManager.off('globalUnhandledRejectionDetected')<sup>18+</sup>
@@ -575,7 +581,7 @@ off(type: 'globalUnhandledRejectionDetected', observer?: GlobalObserver): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16200001 | If the caller is invalid. |
 | 16300004 | If the observer does not exist. |
 
@@ -584,25 +590,25 @@ off(type: 'globalUnhandledRejectionDetected', observer?: GlobalObserver): void
 ```ts
 import { errorManager } from '@kit.AbilityKit';
 
-function promiseFunc(observer: errorManager.GlobalError) {
-  console.info("result name :" + observer.name);
-  console.info("result message :" + observer.message);
-  console.info("result stack :" + observer.stack);
-  console.info("result instanceName :" + observer.instanceName);
-  console.info("result instanceType :" + observer.instanceType);
-}
+const promiseFunc = (observer: errorManager.GlobalError) => {
+  console.info('result name :' + observer.name);
+  console.info('result message :' + observer.message);
+  console.info('result stack :' + observer.stack);
+  console.info('result instanceName :' + observer.instanceName);
+  console.info('result instanceType :' + observer.instanceType);
+};
 
-errorManager.on("globalUnhandledRejectionDetected", promiseFunc);
+errorManager.on('globalUnhandledRejectionDetected', promiseFunc);
 
-async function throwError() {
-  throw new Error("uncaught error");
-}
+const throwError = async () => {
+  throw new Error('uncaught error');
+};
 
 let promise1 = new Promise<void>(() => {}).then(() => {
   throwError();
 });
 
-errorManager.off("globalUnhandledRejectionDetected", promiseFunc);
+errorManager.off('globalUnhandledRejectionDetected', promiseFunc);
 ```
 
 ## errorManager.off('unhandledRejection')<sup>12+</sup>
@@ -632,7 +638,7 @@ off(type: 'unhandledRejection', observer?: UnhandledRejectionObserver): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16200001 | If the caller is invalid. |
 | 16300004 | If the observer does not exist. |
 
@@ -652,13 +658,13 @@ let observer: errorManager.UnhandledRejectionObserver = (reason: Error, promise:
   }
 };
 
-errorManager.on("unhandledRejection", observer);
+errorManager.on('unhandledRejection', observer);
 
 let promise1 = new Promise<void>(() => {}).then(() => {
-  throw new Error("uncaught error")
+  throw new Error('uncaught error')
 })
 
-errorManager.off("unhandledRejection");
+errorManager.off('unhandledRejection');
 ```
 或者
 ```ts
@@ -675,13 +681,13 @@ let observer: errorManager.UnhandledRejectionObserver = (reason: Error, promise:
   }
 };
 
-errorManager.on("unhandledRejection", observer);
+errorManager.on('unhandledRejection', observer);
 
 let promise1 = new Promise<void>(() => {}).then(() => {
-  throw new Error("uncaught error")
+  throw new Error('uncaught error')
 })
 
-errorManager.off("unhandledRejection", observer);
+errorManager.off('unhandledRejection', observer);
 ```
 
 ## errorManager.off('freeze')<sup>18+</sup>
@@ -720,12 +726,19 @@ off(type: 'freeze', observer?: FreezeObserver): void
     
 ```ts
 import { errorManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-function freezeCallback() {
+const freezeCallback = () => {
   console.info('freezecallback');
+};
+try {
+  errorManager.on('freeze', freezeCallback);
+  errorManager.off('freeze', freezeCallback);
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`error: ${code}, ${message}`);
 }
-errorManager.on("freeze", freezeCallback);
-errorManager.off("freeze", freezeCallback);
 ```
 
 ## errorManager.setDefaultErrorHandler<sup>21+</sup>
