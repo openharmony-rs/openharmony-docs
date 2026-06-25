@@ -39,7 +39,7 @@ export function DialogNavDestinationBuilder() {
 @Component
 export struct DialogNavDestination {
   stack: NavPathStack = AppStorage.get<NavPathStack>('basicNavigationStack')!;
-  @State backColor: ResourceColor = '#0000000';
+  @State backColor: ResourceColor = '#00000000';
 
   build() {
     NavDestination() {

@@ -225,7 +225,7 @@ Router模块提供了两种跳转模式，分别是[pushUrl](../reference/apis-a
   
   @Entry
   @Component
-  struct Login {
+  struct Setting {
     // 在Setting页面中
     onJumpClick(): void {
       this.getUIContext().getRouter().pushUrl({
@@ -315,7 +315,7 @@ Router模块提供了两种跳转模式，分别是[pushUrl](../reference/apis-a
           hilog.error(DOMAIN, TAG, `Invoke replaceUrl failed, code is ${err.code}, message is ${err.message}`);
           return;
         }
-        hilog.error(DOMAIN, TAG, 'Invoke replaceUrl succeeded.');
+        hilog.info(DOMAIN, TAG, 'Invoke replaceUrl succeeded.');
       });
     }
   
@@ -1050,7 +1050,7 @@ ArkTS-Dyn示例：
 <!-- @[page_showDialog1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/pageTransition/ShowDialog.ets) -->
 
 ``` TypeScript
-import { promptAction} from '@kit.ArkUI';
+import { promptAction } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 const DOMAIN = 0xF811;
