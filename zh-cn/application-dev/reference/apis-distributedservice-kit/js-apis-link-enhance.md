@@ -406,7 +406,7 @@ off(type: 'connectionAccepted', callback?: Callback&lt;Connection&gt;): void
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'connectionAccepted'，收到对端连接，触发该事件。   |
-| callback | Callback&lt;[Connection](#connection)&gt; | 否 | 注册的回调函数，参数为连接对象[Connection](#connection)。 |
+| callback | Callback&lt;[Connection](#connection)&gt; | 否 | 回调函数，用于接收服务端连接事件。回调参数connection为建立连接的连接对象，类型为[Connection](#connection)。 |
 
 **错误码：**
 
@@ -655,7 +655,7 @@ offConnectionAccepted(callback?: Callback&lt;Connection&gt;): void
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
-| callback | Callback&lt;[Connection](#connection)&gt; | 否 | 注册的回调函数，参数为连接对象[Connection](#connection)。 |
+| callback | Callback&lt;[Connection](#connection)&gt; | 否 | 回调函数，用于接收服务端连接事件。回调参数connection为建立连接的连接对象，类型为[Connection](#connection)。 |
 
 **错误码：**
 
@@ -1336,7 +1336,7 @@ off(type: 'disconnected', callback?: Callback&lt;number&gt;): void
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'disconnected'，连接被动断开或底层异常断开时，触发该事件。   |
-| callback | Callback&lt;number&gt; | 否   | 注册的回调函数。number为返回的错误码。   |
+| callback | Callback&lt;number&gt; | 否   | 注册的回调函数，连接被动断开或底层异常断开时触发，number为返回的错误码。   |
 
 **错误码：**
 
@@ -1458,7 +1458,7 @@ off(type: 'dataReceived', callback?: Callback&lt;ArrayBuffer&gt;): void
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'dataReceived'，收到数据时，触发该事件。   |
-| callback | Callback&lt;[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)&gt; | 否    | 注册的回调函数。 |
+| callback | Callback&lt;[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)&gt; | 否    | 回调函数，用于接收对端设备发送的数据。回调参数data为接收到的数据，类型为ArrayBuffer。 |
 
 **错误码：**
 
@@ -1708,7 +1708,7 @@ offDisconnected(callback?: Callback&lt;int&gt;): void
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
-| callback | Callback&lt;int&gt; | 否   | 注册的回调函数。int为返回的错误码。   |
+| callback | Callback&lt;int&gt; | 否   | 注册的回调函数，连接被动断开或底层异常断开时触发，int为返回的错误码。   |
 
 **错误码：**
 
