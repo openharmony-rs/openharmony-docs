@@ -96,7 +96,7 @@ ArkTS-Sta: setBackgroundColor(color:Nullable<Color | int | string>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------ |
-| color | ArkTS-Dyn: Nullable\<[Color](arkui-ts/ts-appendix-enums.md#color) \| number \| string> <br>ArkTS-Sta: Nullable\<[Color](arkui-ts/ts-appendix-enums.md#color) \| int \| string>  | 是 | 通过该方法设置原子化服务menuBar的背景颜色，undefined代表使用默认颜色。number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。|
+| color | ArkTS-Dyn: Nullable\<[Color](arkui-ts/ts-appendix-enums.md#color) \| number \| string> <br>ArkTS-Sta: Nullable\<[Color](arkui-ts/ts-appendix-enums.md#color) \| int \| string>  | 是 | 原子化服务menuBar的背景颜色，undefined代表使用默认颜色。number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。|
 
 **示例：**
 
