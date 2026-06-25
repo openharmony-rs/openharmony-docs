@@ -115,7 +115,7 @@ TabSegmentButtonV2({
 });
 ```
 
-**装饰器类型：** @ComponentV2
+**装饰器类型：** [@ComponentV2](./ts-custom-component-decorator-componentv2-static.md#componentv2)
 
 ### 属性
 
@@ -125,9 +125,9 @@ TabSegmentButtonV2({
 
 | 名称                             | 类型                                                                                                                                                           | 必填 | 装饰器类型         | 说明                                                                                                                                                                                                                                                                                                                                                                |
 | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| items                            | [SegmentButtonV2Items](#segmentbuttonv2items)                                                                                                                  | 是   | @Require<br>@Param | 配置分段按钮的选项集合信息。<br>ArkTS-Dyn:  值为undefined时，不显示选项信息。<br>ArkTS-Sta: 不支持设置undefined<br>该成员只读，不支持更改。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                     |
+| items                            | [SegmentButtonV2Items](#segmentbuttonv2items)                                                                                                                  | 是   | [@Require](./ts-universal-require-dynamic.md)<br>[@Param](./ts-state-management-param.md) | 配置分段按钮的选项集合信息。<br>ArkTS-Dyn:  值为undefined时，不显示选项信息。<br>ArkTS-Sta: 不支持设置undefined<br>该成员只读，不支持更改。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                     |
 | selectedIndex                    | ArkTS-Dyn:  number <br>ArkTS-Sta: int                                                                                                                           | 是   | @Require<br>@Param | 配置分段按钮被选中的选项下标，第一项的编号为0，之后顺序增加。<br>ArkTS-Dyn:  值为undefined时，不选中任何选项，其他非正数值，默认选项下标为0。<br>ArkTS-Sta: 不支持设置undefined<br>该成员只读，不支持更改。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23                                                                                                                                                   |
-| $selectedIndex                   | [OnSelectedIndexChange](#onselectedindexchange)                                                                                                                | 否   | @Event             | 配置分段按钮选中项变更时触发的回调函数。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                            |
+| $selectedIndex                   | [OnSelectedIndexChange](#onselectedindexchange)                                                                                                                | 否   | [@Event](./ts-state-management-event.md)             | 配置分段按钮选中项变更时触发的回调函数。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                            |
 | onItemClicked                    | ArkTS-Dyn:  Callback\<number> <br>ArkTS-Sta: Callback\<int>                                                                                                     | 否   | @Event             | 配置分段按钮选项被单击时触发的回调函数。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                            |
 | buttonBackgroundColor            | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                                                                                                    | 否   | @Param             | 配置分段按钮背板颜色。<br>默认值：`ColorMetrics.resourceColor($r('sys.color.segment_button_v2_tab_button_background'))`<br>值为undefined时，按默认值处理。<br>该成员只读，不支持更改。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23                                                                                                                                                                                                        |
 | buttonBackgroundBlurStyle        | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)                                                                                                  | 否   | @Param             | 配置分段按钮背板模糊材质。<br>默认值：undefined<br>该成员只读，不支持更改。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                       |
@@ -454,7 +454,7 @@ build函数用于构造MultiCapsuleSegmentButtonV2高级组件。
 
 继承自Array\<[SegmentButtonV2Item](#segmentbuttonv2item)>
 
-**装饰器类型：** @ObservedV2
+**装饰器类型：** [@ObservedV2](../../../ui/state-management-static/arkts-static-new-observedV2-and-trace.md)
 
 ### constructor<sup>23+</sup>
 
@@ -882,7 +882,7 @@ struct TabSegmentButtonV2Example {
   ]);
   @Local freeSelectedIndex: int = 0;
 
-  build() {
+  build(): void {
     Scroll() {
       Column({ space: 12 } as ColumnOptions) {
         VCard({ title: '纯文本选项' }) {
@@ -953,7 +953,7 @@ export struct VCard {
   @PropRef title: ResourceStr;
   @BuilderParam content: () => void = Noop;
 
-  build() {
+  build(): void {
     Column({ space: 8 } as ColumnOptions) {
       if (this.title) {
         Text(this.title)
@@ -1166,7 +1166,7 @@ struct CapsuleSegmentButtonV2Example {
   ]);
   @Local freeSelectedIndex: int = 0;
 
-  build() {
+  build(): void {
     Scroll() {
       Column({ space: 12 } as ColumnOptions) {
         VCard({ title: '纯文本选项' }) {
@@ -1238,7 +1238,7 @@ export struct VCard {
   @PropRef title: ResourceStr;
   @BuilderParam content: () => void = Noop;
 
-  build() {
+  build(): void {
     Column({ space: 8 } as ColumnOptions) {
       if (this.title) {
         Text(this.title)
@@ -1455,7 +1455,7 @@ struct MultiCapsuleSegmentButtonV2Example {
   ]);
   @Local freeSelectedIndexes: int[] = [0];
 
-  build() {
+  build(): void {
     Scroll() {
       Column({ space: 12 } as ColumnOptions) {
         VCard({ title: '纯文本选项' }) {
@@ -1527,7 +1527,7 @@ export struct VCard {
   @PropRef title: ResourceStr;
   @BuilderParam content: () => void = Noop;
 
-  build() {
+  build(): void {
     Column({ space: 8 } as ColumnOptions) {
       if (this.title) {
         Text(this.title)
@@ -1686,7 +1686,7 @@ struct SegmentButtonV2Example {
   @Local textSelectedIndex: int = 0;
   @Local freeSelectedIndex: int[] = [0];
 
-  build() {
+  build(): void {
     Column() {
       VCard({ title: 'TabSegmentButtonV2' }) {
         TabSegmentButtonV2({
@@ -1735,7 +1735,7 @@ export struct VCard {
   @PropRef title: ResourceStr;
   @BuilderParam content: () => void = Noop;
 
-  build() {
+  build(): void {
     Column({ space: 8 } as ColumnOptions) {
       if (this.title) {
         Text(this.title)
@@ -1894,7 +1894,7 @@ struct SegmentButtonV2Example {
   @Local imageSelectedIndex: int = 0;
   @Local currentSelectedIndex: int = 0; // 切换选中项的索引计数器
 
-  build() {
+  build(): void {
     Column() {
       Stack() {
         Column({ space: 12 } as ColumnOptions) {
@@ -1948,7 +1948,7 @@ export struct VCard {
   @PropRef title: ResourceStr;
   @BuilderParam content: () => void = Noop;
 
-  build() {
+  build(): void {
     Column({ space: 8 } as ColumnOptions) {
       if (this.title) {
         Text(this.title)
