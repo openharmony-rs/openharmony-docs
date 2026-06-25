@@ -393,18 +393,19 @@ moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
 **示例：**
 
 ```ts
- import { BusinessError } from '@kit.BasicServicesKit';
- try {
-   windowClass.moveWindowTo(300, 300, (err: BusinessError) => {
-      const errCode: number = err.code;
-      if (errCode) {
-         console.error(`Failed to move the window. Cause code: ${err.code}, message: ${err.message}`);
-         return;
-     }
-     console.info('Succeeded in moving the window.');
-    });
-  } catch (exception) {
-    console.error(`Failed to move the window. Cause code: ${exception.code}, message: ${exception.message}`);
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  windowClass.moveWindowTo(300, 300, (err: BusinessError) => {
+    const errCode: number = err.code;
+    if (errCode) {
+      console.error(`Failed to move the window. Cause code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in moving the window.');
+  });
+} catch (exception) {
+  console.error(`Failed to move the window. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 
