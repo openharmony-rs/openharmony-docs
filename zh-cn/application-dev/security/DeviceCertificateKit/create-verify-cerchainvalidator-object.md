@@ -30,7 +30,7 @@
 
 4. 调用[CertChainValidator.validate](../../reference/apis-device-certificate-kit/js-apis-cert.md#validate)校验证书链数据。
 
-<!-- @[certificate_chain_validator_object_creation_and_validation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateVerifyCerchainvalidatorObject.ets) --> 
+<!-- @[certificate_chain_validator_object_creation_and_validation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateVerifyCerchainvalidatorObject.ets) -->
 
 ``` TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
