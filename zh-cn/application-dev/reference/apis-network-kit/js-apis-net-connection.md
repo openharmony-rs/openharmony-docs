@@ -3737,7 +3737,7 @@ SOCKS5代理配置信息。
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
 | netCapabilities         | [NetCapabilities](#netcapabilities) |  否 | 否  | 存储数据网络的传输能力和承载类型。                                |
-| bearerPrivateIdentifier | string                              |  否 | 是  |  网络标识符，蜂窝网络的标识符是simId，可以通过[sim.getSimAccountInfo](../apis-telephony-kit/js-apis-sim.md#simgetsimaccountinfo10)接口获取相应卡槽对应的simId,例如"simId1"，其中，1表示当前SIM卡的索引。从API12开始可以通过传递注册的WLAN热点信息表示应用希望激活的指定的WLAN网络。 |
+| bearerPrivateIdentifier | string                              |  否 | 是  |  网络标识符，蜂窝网络的标识符是simId，可以通过[sim.getSimAccountInfo](../apis-telephony-kit/js-apis-sim.md#simgetsimaccountinfo10)接口获取相应卡槽对应的simId，例如"simId1"，其中，1表示当前SIM卡的索引；WIFI网络的标识符是wlan0。从API12开始可以通过传递注册的WLAN热点信息表示应用希望激活的指定的WLAN网络。 |
 
 **示例：**
 
