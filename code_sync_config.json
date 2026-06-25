@@ -33419,7 +33419,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/RulesAndRestrictions/templatetype/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":33,
+						"end_line":27,
 						"name":"counter_example",
 						"start_line":17
 					}
