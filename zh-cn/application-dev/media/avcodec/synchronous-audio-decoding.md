@@ -11,7 +11,7 @@
 
 开发者可以调用本模块的Native API接口，完成同步模式的音频解码，即将媒体数据解码为PCM码流。
 
-具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec)。
+具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)。
 
 支持的解码能力请参考[AVCodec支持的格式](avcodec-support-formats.md#音频解码)。
 
