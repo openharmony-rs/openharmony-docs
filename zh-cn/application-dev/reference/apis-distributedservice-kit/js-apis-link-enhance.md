@@ -256,6 +256,7 @@ close():&nbsp;void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
 **设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
@@ -267,7 +268,6 @@ close():&nbsp;void
 **错误码：**
 
 以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)。
-
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
@@ -1472,7 +1472,7 @@ try {
 
 onConnectResult(callback: Callback&lt;ConnectResult&gt;): void
 
-注册connect事件的回调监听，通过回调函数获取连接结果。使用callback进行异步回调。
+注册connect事件的回调监听，通过回调函数获取连接结果。使用callback进行异步回调。须在调用connect()之前注册此监听，否则无法获取连接结果；使用完毕后，建议调用off('connectResult')取消监听，避免内存泄漏。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1483,12 +1483,6 @@ onConnectResult(callback: Callback&lt;ConnectResult&gt;): void
 **设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
-
-**调用顺序：**
-- 必须在调用connect()之前注册此监听，否则无法获取连接结果。
-
-**配对调用：**
-- 使用完毕后，建议调用off('connectResult')取消监听，避免内存泄漏。
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[on('connectResult')](#onconnectresult)。
 
