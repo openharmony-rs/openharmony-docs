@@ -361,7 +361,7 @@ makeCallWithToken\(phoneNumber: string, options?: MakeCallOptions\): Promise\<st
 
 > **说明**:
 > 
-> 该接口返回校验token，应用可以利用phoneNumber和token去实现特定能力，比如蜂窝下行流的录制。
+> 该接口返回校验token，应用可以利用phoneNumber和token实现特定能力，比如蜂窝下行流的录制。
  
 **原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
  
