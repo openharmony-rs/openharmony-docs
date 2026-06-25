@@ -190,7 +190,7 @@ Transmission timeout.
 
 3. 检查串口通信参数（波特率等）是否与对端一致。
 
-4. 在确保串口正常打开的情况下，可降低写入频率或在每次写入之间调用[drain](js-apis-busmanager-serial.md#drain)接口（需确保）等待前次数据发送完成后再发送，避免硬件缓冲区拥塞。
+4. 在确保串口正常打开的情况下，可降低写入频率或在每次写入之间调用[drain](js-apis-busmanager-serial.md#drain)接口等待前次数据发送完成后再发送，避免硬件缓冲区拥塞。
 
 **write和drain的配合使用：**
 - drain()用于等待串口发送缓冲区中的数据全部发送完成
