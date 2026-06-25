@@ -92,7 +92,7 @@ on(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;C
 
 **错误码：**
 
-以下错误码的详细原因和处理步骤请参考[通用错误码](../errorcode-universal.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -294,19 +294,7 @@ sendImage(sessionId:&nbsp;number,&nbsp;image:&nbsp;image.PixelMap,&nbsp;quality?
 
 createStream(sessionId:&nbsp;number,&nbsp;param:&nbsp;StreamParam):&nbsp;Promise&lt;number&gt;
 
-应用连接成功后，设备A或设备B可创建传输流用于发送图片和视频流。传输流是基于协同会话创建的数据通道，用于实现跨设备音视频数据的实时传输。创建成功后返回流ID，可用于后续流操作。业务结束后应及时销毁传输流，否则会增加系统功耗。使用Promise异步回调。
-
-**使用场景**：跨设备视频通话、屏幕共享、远程协作等需要实时传输音视频数据时，创建传输流通道。
-
-**调用顺序：**
-1. 调用createStream()创建传输流，获取streamId
-2. （视频流可选）调用getSurfaceId()获取surfaceId
-3. （视频流可选）调用setSurfaceId()绑定Surface
-4. 调用startStream()启动传输流
-5. 使用完毕后调用stopStream()停止传输流
-6. 最后调用destroyStream()销毁传输流
-
-**配对调用：** createStream()需与destroyStream()配对使用，业务结束后必须调用destroyStream()释放资源。
+应用连接成功后，设备A或设备B可创建传输流用于发送图片和视频流。传输流是基于协同会话创建的数据通道，用于实现跨设备音视频数据的实时传输。创建成功后返回流ID，可用于后续流操作。业务结束后应及时销毁传输流，否则会增加系统功耗。使用Promise异步回调。适用于跨设备视频通话、屏幕共享或远程协作等实时传输场景。调用时先通过createStream()获取流ID，若为视频流则需获取SurfaceId并绑定，再调用startStream()启动传输；业务完成后依次调用stopStream()和destroyStream()释放资源。需特别注意，createStream()必须与destroyStream()配对使用，确保资源及时回收，避免功耗开销。
 
 **设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
