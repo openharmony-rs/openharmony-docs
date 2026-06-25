@@ -31,7 +31,7 @@ createServer(name:&nbsp;string):&nbsp;Server
 2. 使用完毕后，需调用close()销毁Server对象释放资源
 3. 若需重新使用，需重新创建Server对象
 
-**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC，该权限为用户授权权限，申请方式请参考[权限申请指导](../../security/AccessToken/AccessToken-user-guidelines.md)。
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
