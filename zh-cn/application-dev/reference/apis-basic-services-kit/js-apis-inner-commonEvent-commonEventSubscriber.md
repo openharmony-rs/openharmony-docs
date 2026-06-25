@@ -25,7 +25,7 @@
 
 ### 使用说明
 
-在使用CommonEventSubscriber的功能前，需要通过[commonEventManager.createSubscriberSync](js-apis-commonEventManager.md#commoneventmanagercreatesubscribersync10)获取subscriber对象。
+在使用CommonEventSubscriber的功能前，需要通过[commonEventManager.createSubscriber](js-apis-commonEventManager.md#commoneventmanagercreatesubscriber-1)获取subscriber对象。
 
 <!--code_no_check-->
 ```ts
