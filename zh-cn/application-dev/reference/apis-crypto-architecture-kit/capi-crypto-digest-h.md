@@ -60,7 +60,7 @@ OH_Crypto_ErrCode OH_CryptoDigest_Create(const char *algoName, OH_CryptoDigest *
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *algoName | [in] 摘要算法名称，不能为NULL。取值如下：- 从API version 12开始支持"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"、"MD5"、"SM3"。- 从API version 22开始支持"SHA3-256"、"SHA3-384"、"SHA3-512"。 |
+| const char *algoName | [in] 摘要算法名称，不能为NULL。取值如下：<br>- 从API version 12开始支持"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"、"MD5"、"SM3"。- 从API version 22开始支持"SHA3-256"、"SHA3-384"、"SHA3-512"。 |
 | [OH_CryptoDigest](capi-cryptodigestapi-oh-cryptodigest.md) **ctx | [out] 指向摘要上下文指针的指针。ctx不能为NULL，*ctx必须为NULL。 |
 
 **返回：**

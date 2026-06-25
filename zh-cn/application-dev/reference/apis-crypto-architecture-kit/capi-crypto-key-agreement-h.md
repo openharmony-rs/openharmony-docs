@@ -57,7 +57,7 @@ OH_Crypto_ErrCode OH_CryptoKeyAgreement_Create(const char *algoName, OH_CryptoKe
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *algoName | [in] 密钥协商算法名称，不能为NULL。取值如下：- 从API version 20开始支持ECDH系列："ECC224"、"ECC256"、"ECC384"、"ECC521"。- 从API version 20开始支持ECDH BrainPool系列："ECC_BrainPoolP160r1"、"ECC_BrainPoolP160t1"、"ECC_BrainPoolP192r1"、"ECC_BrainPoolP192t1"、"ECC_BrainPoolP224r1"、"ECC_BrainPoolP224t1"、"ECC_BrainPoolP256r1"、"ECC_BrainPoolP256t1"、"ECC_BrainPoolP320r1"、"ECC_BrainPoolP320t1"、"ECC_BrainPoolP384r1"、"ECC_BrainPoolP384t1"、"ECC_BrainPoolP512r1"、"ECC_BrainPoolP512t1"。- 从API version 20开始支持"ECC_Secp256k1"。- 从API version 20开始支持"X25519"。- 从API version 20开始支持DH系列："DH_modp1536"、"DH_modp2048"、"DH_modp3072"、"DH_modp4096"、"DH_modp6144"、"DH_modp8192"、"DH_ffdhe2048"、"DH_ffdhe3072"、"DH_ffdhe4096"、"DH_ffdhe6144"、"DH_ffdhe8192"。- 从API版本26.0.0开始支持"ECC192"。 |
+| const char *algoName | [in] 密钥协商算法名称，不能为NULL。取值如下：<br>- 从API version 20开始支持ECDH系列："ECC224"、"ECC256"、"ECC384"、"ECC521"。<br>- 从API version 20开始支持ECDH BrainPool系列："ECC_BrainPoolP160r1"、"ECC_BrainPoolP160t1"、"ECC_BrainPoolP192r1"、"ECC_BrainPoolP192t1"、"ECC_BrainPoolP224r1"、"ECC_BrainPoolP224t1"、"ECC_BrainPoolP256r1"、"ECC_BrainPoolP256t1"、"ECC_BrainPoolP320r1"、"ECC_BrainPoolP320t1"、"ECC_BrainPoolP384r1"、"ECC_BrainPoolP384t1"、"ECC_BrainPoolP512r1"、"ECC_BrainPoolP512t1"。<br>- 从API version 20开始支持"ECC_Secp256k1"。<br>- 从API version 20开始支持"X25519"。<br>- 从API version 20开始支持DH系列："DH_modp1536"、"DH_modp2048"、"DH_modp3072"、"DH_modp4096"、"DH_modp6144"、"DH_modp8192"、"DH_ffdhe2048"、"DH_ffdhe3072"、"DH_ffdhe4096"、"DH_ffdhe6144"、"DH_ffdhe8192"。<br>- 从API版本26.0.0开始支持"ECC192"。 |
 | [OH_CryptoKeyAgreement](capi-cryptokeyagreementapi-oh-cryptokeyagreement.md) **ctx | [out] 指向密钥协商上下文指针的指针。ctx不能为NULL，*ctx必须为NULL。 |
 
 **返回：**
