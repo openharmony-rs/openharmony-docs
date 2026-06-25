@@ -164,7 +164,7 @@
 
    配置解码选项参数进行解码：
 
-   <!-- @[create_pixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+   <!-- @[create_pixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->     
    
    ``` TypeScript
    async createPixelMap(imageSource: image.ImageSource | undefined): Promise<image.PixelMap | undefined> {
