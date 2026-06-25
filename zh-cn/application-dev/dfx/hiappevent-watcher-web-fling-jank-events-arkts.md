@@ -132,7 +132,6 @@
    
    ``` TypeScript
    @Provide('navPathStack') navPathStack: NavPathStack = new NavPathStack();
-   
    @Builder
    PageMap(name: string) {
      if (name === 'ArkWebPage') {
