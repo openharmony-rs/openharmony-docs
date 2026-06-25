@@ -58,7 +58,9 @@ usbFunctionsFromString(funcs: string): number
 **示例：**
 
 ```ts
+// 定义USB功能字符串
 let funcs: string = "acm";
+// 将字符串转化为数字掩码
 let ret: number = usbManager.usbFunctionsFromString(funcs);
 ```
 
@@ -100,7 +102,9 @@ usbFunctionsToString(funcs: FunctionType): string
 **示例：**
 
 ```ts
-let funcs: number = usbManager.FunctionType.ACM | usbManager.FunctionType.ECM; //定义USB功能类型组合
+// 定义USB功能类型组合
+let funcs: number = usbManager.FunctionType.ACM | usbManager.FunctionType.ECM;
+// 将数字掩码转化为字符串
 let ret: string = usbManager.usbFunctionsToString(funcs);
 ```
 
@@ -143,7 +147,9 @@ setCurrentFunctions(funcs: FunctionType): Promise\<void\>
 
 ```ts
 import {BusinessError} from '@kit.BasicServicesKit';
+// 设置USB功能类型为HDC
 let funcs: number = usbManager.FunctionType.HDC;
+// 异步设置当前USB功能
 usbManager.setCurrentFunctions(funcs).then(() => {
     console.info('usb setCurrentFunctions successfully.');
 }).catch((err: BusinessError) => {
@@ -183,6 +189,7 @@ getCurrentFunctions(): FunctionType
 **示例：**
 
 ```ts
+// 获取当前USB功能的数字掩码
 let ret: number = usbManager.getCurrentFunctions();
 ```
 
@@ -218,6 +225,7 @@ getPorts(): Array\<USBPort\>
 **示例：**
 
 ```ts
+// 获取所有USB端口描述信息
 let ret: Array<usbManager.USBPort> = usbManager.getPorts();
 ```
 
@@ -259,6 +267,7 @@ getSupportedModes(portId: number): PortModeType
 **示例：**
 
 ```ts
+// 获取端口ID为0的端口支持的模式
 let ret: number = usbManager.getSupportedModes(0);
 ```
 
@@ -302,7 +311,9 @@ setPortRoles(portId: number, powerRole: PowerRoleType, dataRole: DataRoleType): 
 
 ```ts
 import {BusinessError} from '@kit.BasicServicesKit';
+// 定义端口号
 let portId: number = 1;
+// 设置端口角色：充电角色为SOURCE，数据角色为HOST
 usbManager.setPortRoles(portId, usbManager.PowerRoleType.SOURCE, usbManager.DataRoleType.HOST).then(() => {
     console.info('usb setPortRoles successfully.');
 }).catch((err: BusinessError) => {
@@ -357,15 +368,21 @@ addDeviceAccessRight(tokenId: string, deviceName: string): boolean
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+// 定义设备名称
 let devicesName: string = "1-1";
+// 定义tokenId变量
 let tokenId: string = "";
 
   try {
+    // 获取bundle信息标志
     let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT;
+    // 异步获取当前应用的bundle信息
     bundleManager.getBundleInfoForSelf(bundleFlags).then((bundleInfo) => {
       console.info('testTag', 'getBundleInfoForSelf successfully. Data: %{public}s', JSON.stringify(bundleInfo));
+      // 获取应用的accessTokenId
       let token = bundleInfo.appInfo.accessTokenId;
       tokenId = token.toString();
+      // 添加设备访问权限
       if (usbManager.addDeviceAccessRight(tokenId, devicesName)) {
         console.info(`Succeed in adding right`);
       }
@@ -419,7 +436,9 @@ getFunctionsFromString(funcs: string): number
 **示例：**
 
 ```ts
+// 定义USB功能字符串
 let funcs: string = "acm";
+// 将字符串转化为数字掩码
 let ret: number = usbManager.getFunctionsFromString(funcs);
 ```
 
@@ -465,7 +484,9 @@ getStringFromFunctions(funcs: FunctionType): string
 **示例：**
 
 ```ts
+// 定义USB功能类型组合
 let funcs: number = usbManager.FunctionType.ACM | usbManager.FunctionType.ECM;
+// 将数字掩码转化为字符串
 let ret: string = usbManager.getStringFromFunctions(funcs);
 ```
 
@@ -514,7 +535,9 @@ setDeviceFunctions(funcs: FunctionType): Promise\<void\>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+// 设置USB功能类型为HDC
 let funcs: number = usbManager.FunctionType.HDC;
+// 异步设置设备功能
 usbManager.setDeviceFunctions(funcs).then(() => {
     console.info('usb setDeviceFunctions successfully.');
 }).catch((err : BusinessError) => {
@@ -557,6 +580,7 @@ getDeviceFunctions(): FunctionType
 **示例：**
 
 ```ts
+// 获取当前USB设备的数字掩码
 let ret: number = usbManager.getDeviceFunctions();
 ```
 
@@ -595,6 +619,7 @@ getPortList(): Array\<USBPort\>
 **示例：**
 
 ```ts
+// 获取USB端口列表
 let ret: Array<usbManager.USBPort> = usbManager.getPortList();
 ```
 
@@ -603,6 +628,10 @@ let ret: Array<usbManager.USBPort> = usbManager.getPortList();
 getPortSupportModes(portId: number): PortModeType
 
 获取指定的端口支持的模式列表的组合掩码。适用于系统应用需要查询USB-C端口能力判断是否支持特定模式（如Host，Device或DRP模式）的场景。
+
+> **说明：**
+>
+> 从 API version 12开始支持。
 
 **系统接口：** 此接口为系统接口。
 
@@ -636,6 +665,7 @@ getPortSupportModes(portId: number): PortModeType
 **示例：**
 
 ```ts
+// 获取端口ID为0的支持模式
 let ret: number = usbManager.getPortSupportModes(0);
 ```
 
@@ -686,7 +716,9 @@ setPortRoleTypes(portId: number, powerRole: PowerRoleType, dataRole: DataRoleTyp
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 定义端口号
 let portId: number = 1;
+// 设置端口角色类型：充电角色为SOURCE，数据角色为HOST
 usbManager.setPortRoleTypes(portId, usbManager.PowerRoleType.SOURCE, usbManager.DataRoleType.HOST).then(() => {
   console.info('usb setPortRoleTypes successfully.');
 }).catch((err : BusinessError) => {
@@ -702,6 +734,10 @@ addAccessoryRight(tokenId: number, accessory: USBAccessory): void
 
 usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessoryRight不会触发弹窗，而是直接添加应用程序访问设备的权限。
 
+> **说明：**
+>
+> 从 API version 14开始支持。
+
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.MANAGE_USB_CONFIG
@@ -714,6 +750,12 @@ usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessory
 | --------- | ------------ | ---- | ------------------------ |
 | tokenId   | number       | 是   | 应用程序的唯一标识符，可通过[bundleManager.getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取。 |
 | accessory | [USBAccessory](js-apis-usbManager.md#usbaccessory14) | 是   | USB配件。可通过[getAccessoryList](js-apis-usbManager.md#usbmanagergetaccessorylist14)获取配件列表后获得。|
+
+**返回值：**
+
+| 类型      | 说明          |
+| --------- | ------------- |
+| void      | 调用成功时无返回值，调用失败时抛出异常。 |
 
 **错误码：**
 
@@ -735,11 +777,16 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { bundleManager } from '@kit.AbilityKit';
 
 try {
+  // 获取USB配件列表
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
+  // 设置bundle信息标志
   let flags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION |
   bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY
+  // 异步获取当前应用的bundle信息
   let bundleInfo = await bundleManager.getBundleInfoForSelf(flags)
+  // 获取应用的tokenId
   let tokenId: number = bundleInfo.appInfo.accessTokenId
+  // 为应用添加USB配件访问权限
   usbManager.addAccessoryRight(tokenId, accList[0])
   hilog.info(0, 'testTag ui', `addAccessoryRight success`)
 } catch (error: BusinessError) {
