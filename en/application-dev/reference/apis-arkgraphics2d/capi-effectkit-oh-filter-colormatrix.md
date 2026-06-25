@@ -8,7 +8,7 @@
 <!--Adviser: @ge-yafang-->
 
 ```
-struct OH_Filter_ColorMatrix {...}
+typedef struct OH_Filter_ColorMatrix {...}
 ```
 
 ## Overview
