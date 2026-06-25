@@ -82,7 +82,7 @@
 
 ## Rect<sup>7+</sup>
 
-窗口矩形区域，单位：px。
+窗口矩形区域。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
