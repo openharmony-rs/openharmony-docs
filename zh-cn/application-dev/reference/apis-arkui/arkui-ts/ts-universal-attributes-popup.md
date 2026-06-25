@@ -155,7 +155,7 @@ bindPopup(show: boolean, popup: PopupOptions | CustomPopupOptions): T
 <!--Table: 25%; 20%; 8%; 8%; 39%-->
 | 名称                           | 类型                                       | 只读 | 可选 | 说明                                       |
 | ---------------------------- | ---------------------------------------- | ---- | ---------------------------------------- | ---------------------------------------- |
-| builder                      | [CustomBuilder](ts-types.md#custombuilder8) | 否   | 否   | 提示气泡内容的构造器。<br />**说明：**<br />1. Popup为通用属性，自定义Popup中不支持再次弹出Popup。对builder下的第一层容器组件不支持使用position属性，如果使用将导致气泡不显示。<br/>2. builder中若使用自定义组件，自定义组件的aboutToAppear和aboutToDisappear生命周期与Popup气泡的显隐无关，不能使用其生命周期判断Popup气泡的显隐。<br/>3. 该构造器的builder仅支持定义在UI组件中，例如可以定义在Builder函数、方法或者[build](ts-custom-component-lifecycle.md#build)方法里。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                              |
+| builder                      | [CustomBuilder](ts-types.md#custombuilder8) | 否   | 否   | 提示气泡内容的构造器。<br />**说明：**<br />1. Popup为通用属性，自定义Popup中不支持再次弹出Popup。对builder下的第一层容器组件不支持使用[Position](ts-types.md#position)属性，如果使用将导致气泡不显示。<br/>2. builder中若使用自定义组件，自定义组件的[aboutToAppear](./ts-custom-component-lifecycle.md#abouttoappear)和[aboutToDisappear](./ts-custom-component-lifecycle.md#abouttodisappear)生命周期与Popup气泡的显隐无关，不能使用其生命周期判断Popup气泡的显隐。<br/>3. 该构造器的builder仅支持定义在UI组件中，例如可以定义在Builder函数、方法或者[build](ts-custom-component-lifecycle.md#build)方法里。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                              |
 | placement                    | [Placement](ts-appendix-enums.md#placement8) | 否    | 是   | 气泡组件优先显示的位置，当前位置显示不下时，会自动调整位置。<br/>默认值：Placement.Bottom<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | popupColor                   | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;number | 否    | 是   | 气泡的颜色。如需去除模糊背景填充效果，需将backgroundBlurStyle设置为BlurStyle.NONE。<br/>API version 10，默认值：'#4d4d4d'<br />API version 11及以后，默认值：透明色[TRANSPARENT](ts-appendix-enums.md#color)加模糊背景填充效果[COMPONENT_ULTRA_THICK](ts-universal-attributes-background.md#blurstyle9)<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | autoCancel                   | boolean                                  | 否    | 是   | 页面有操作时，气泡是否自动关闭。<br/>true：自动关闭气泡；false：气泡不会自动关闭。<br/>默认值：true<br />**说明：**<br />如果要实现点击气泡内消失需要在builder中先放一个布局组件，然后再将Popup高级组件放在布局组件里面，再在布局组件的onClick事件中修改控制显隐的状态变量show为false。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -354,7 +354,7 @@ struct PopupExample {
 
   build() {
     Flex({ direction: FlexDirection.Column }) {
-      // PopupOptions 类型设置弹框内容
+      // PopupOptions类型设置弹框内容
       Button('PopupOptions')
         .onClick(() => {
           this.handlePopup = !this.handlePopup;
@@ -389,7 +389,7 @@ struct PopupExample {
         .position({ x: 100, y: 150 })
 
 
-      // CustomPopupOptions 类型设置弹框内容
+      // CustomPopupOptions类型设置弹框内容
       Button('CustomPopupOptions')
         .onClick(() => {
           this.customPopup = !this.customPopup;
@@ -533,7 +533,7 @@ struct PopupExample {
 
   build() {
     Flex({ direction: FlexDirection.Column }) {
-      // PopupOptions 类型设置弹框内容
+      // PopupOptions类型设置弹框内容
       Button('PopupOptions')
         .onClick(() => {
           this.handlePopup = !this.handlePopup;
@@ -556,7 +556,7 @@ struct PopupExample {
         })
         .position({ x: 100, y: 150 })
 
-      // CustomPopupOptions 类型设置弹框内容
+      // CustomPopupOptions类型设置弹框内容
       Button('CustomPopupOptions')
         .onClick(() => {
           this.customPopup = !this.customPopup;
@@ -616,6 +616,10 @@ struct PopupExample {
               this.handlePopup = false;
             }
           },
+          /**
+           * 气泡即将关闭前拦截回调
+           * dismissPopupAction：气泡关闭行为对象，包含关闭原因与关闭方法
+           */
           onWillDismiss: (
             (dismissPopupAction: DismissPopupAction) => {
               console.info("dismissReason:" + JSON.stringify(dismissPopupAction.reason));
@@ -663,6 +667,7 @@ struct PopupExample {
           placement: Placement.Bottom,
           enableArrow: false,
           targetSpace: '15vp',
+          // 气泡跟随按钮的平移、缩放等变换同步变动
           followTransformOfTarget: true,
           onStateChange: (e) => {
             let timer = setTimeout(() => {
@@ -673,6 +678,7 @@ struct PopupExample {
               clearTimeout(timer);
             }
           },
+          // 不响应点击、侧滑（左滑/右滑）、三键back、路由跳转或键盘ESC退出事件，仅当设置“气泡显示状态”参数值为false时才退出
           onWillDismiss: false
         })
     }.margin(20)
@@ -701,6 +707,16 @@ struct PopupExample {
         .onClick(() => {
           this.handlePopup = !this.handlePopup
         })
+        /**
+         * 为按钮绑定气泡
+         * 第一个参数：气泡显隐控制变量
+         * message：气泡内部展示文本
+         * placement.Top：气泡从按钮上方弹出
+         * outlineWidth：外描边线宽度1vp
+         * outlineLinearGradient：外描边垂直从上到下黄到绿线性渐变
+         * borderWidth：弹窗内部边框宽度1vp
+         * borderLinearGradient：内边框垂直从下到上红到蓝线性渐变
+         */
         .bindPopup(this.handlePopup!!, {
           message: 'This is a popup with PopupOptions',
           placement: Placement.Top,
@@ -745,6 +761,7 @@ struct PopupExample {
         .bindPopup(this.handlePopup!!, {
           message: 'popup message '.repeat(200),
           placement: Placement.Top,
+          // 气泡在剩余显示空间不足的情况下，在最大空间处压缩显示
           avoidTarget: AvoidanceMode.AVOID_AROUND_TARGET,
         })
         .position({ x: 100, y: 150 }) 
@@ -775,6 +792,14 @@ struct PopupExample {
         .onClick(() => {
           this.handlePopup = !this.handlePopup
         })
+        /**
+         * 绑定气泡至按钮
+         * 第一个参数：气泡显示控制布尔值
+         * message：气泡内展示文本
+         * placement.Top：气泡弹出位置在按钮上方
+         * systemMaterial：为气泡配置沉浸式磨砂材质
+         * ImmersiveStyle.THIN：薄款磨砂，中等通透度
+         */
         .bindPopup(this.handlePopup!!, {
           message: 'This is a popup with PopupOptions',
           placement: Placement.Top,
@@ -818,6 +843,15 @@ struct PopupExample {
         .onClick(() => {
           this.handlePopup = !this.handlePopup
         })
+        /**
+         * 绑定气泡，使用系统标准化磨砂模糊样式
+         * message：气泡长文本内容，重复拼接加长文本用于测试换行与模糊透出效果
+         * backgroundBlurStyleOptions：系统沉浸式模糊配置项
+         * colorMode.LIGHT：浅色主题调色模式
+         * adaptiveColor.AVERAGE：取底层背景平均色作为磨砂底色
+         * scale：磨砂通透缩放系数0.5
+         * blurOptions.grayscale：灰度滤镜区间[最小值,最大值]
+         */
         .bindPopup(this.handlePopup!!, {
           message: 'popup message '.repeat(20),
           backgroundBlurStyleOptions: {
@@ -833,6 +867,14 @@ struct PopupExample {
         .onClick(() => {
           this.handlePopup = !this.handlePopup
         })
+        /**
+         * 绑定气泡，使用完全自定义混合背景特效
+         * radius：背景模糊半径60，模糊程度更高
+         * saturation：饱和度0，画面去色黑白化
+         * brightness：亮度1，保持原始亮度不变
+         * color：叠加粉色底色
+         * blurOptions.grayscale：灰度滤镜参数
+         */
         .bindPopup(this.handlePopup!!, {
           message: 'popup message '.repeat(20),
           backgroundEffect: {
@@ -873,18 +915,41 @@ struct PopupExample {
       Button('PopupOptions EMBEDDED')
         .id('targetButton')
         .onClick(() => {
+          // 切换气泡显示/隐藏状态
           this.handlePopup = !this.handlePopup;
           setTimeout(() => {
-            // pages/PageTwo 需要开发者替换为实际路由名称
-            this.getUIContext().getRouter().pushUrl({ url: 'pages/PageTwo'})
+            // pages/PageTwo需要开发者替换为实际路由名称
+            this.getUIContext().getRouter().pushUrl({ url: 'pages/PageTwo'}).catch(() => {
+              console.error("route to PageTwo error!")
+            })
           }, 500)
         })
+        /**
+         * 绑定气泡到当前按钮
+         * 第一个参数：气泡显示控制布尔值
+         * message：气泡内展示文本
+         * levelMode: EMBEDDED 嵌入式模式，气泡隶属于当前页面，页面跳转气泡同步销毁
+         */
         .bindPopup(this.handlePopup!!, {
           message: 'This is an embedded popup',
           levelMode: LevelMode.EMBEDDED,
         })
         .position({ x: 60, y: 300 })
     }.width('100%').padding({ top: 5 })
+  }
+}
+```
+
+PageTwo页面：
+``` ts
+@Entry
+@Component
+struct PageTwo {
+  build() {
+    Column() {
+      Text("This is next page")
+    }
+    .position({ x: 120, y: 300 })
   }
 }
 ```
