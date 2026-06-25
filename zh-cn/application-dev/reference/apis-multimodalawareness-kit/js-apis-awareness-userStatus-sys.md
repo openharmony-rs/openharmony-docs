@@ -417,7 +417,7 @@ const moodFeatureId = userStatus.UserStatusFeature.USER_MOOD;
 const configData: ConfigDetail = {
   params: [
     { description: "isRealTime", value: [1] },
-    { description: "report_time", value: [1000] }
+    { description: "atomicCapabilities", value: [5] }
   ]
 };
 try {
