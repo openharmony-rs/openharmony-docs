@@ -14,6 +14,7 @@
 >
 > - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canIUse()](../common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此SysCap及对应接口。
 
+
 **闪控球和闪控窗对比**
 
 - 共同点：闪控球和[闪控窗](js-apis-floatView.md)均为一种特殊的应用辅助窗口，具备在应用主窗口和对应UIAbility退至后台后仍然可以在前台显示的能力。可以用于应用退至后台后，使用其继续显示UI。
@@ -146,7 +147,7 @@ startFloatingBall(params: FloatingBallParams): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| params | [FloatingBallParams](#floatingballparams) | 是 | 启动闪控球的参数，用于配置闪控球的标题、内容或背景色等。详见[FloatingBallParams](#floatingballparams)。 |
+| params | [FloatingBallParams](#floatingballparams) | 是 | 启动闪控球的参数，用于配置闪控球的标题、内容或背景色等。 |
 
 **返回值：**
 
@@ -205,7 +206,7 @@ updateFloatingBall(params: FloatingBallParams): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| params | [FloatingBallParams](#floatingballparams) | 是 | 更新闪控球的参数，用于更新闪控球的标题、内容或背景色等。详见[FloatingBallParams](#floatingballparams)。注意：更新时模板类型不可更改。 |
+| params | [FloatingBallParams](#floatingballparams) | 是 | 更新闪控球的参数，用于更新闪控球的标题、内容或背景色等。调用此接口更新闪控球时，模板类型template字段不可更改。 |
 
 **返回值：**
 
@@ -730,9 +731,9 @@ try {
 | 名称 | 值 | 说明 |
 |------------|------------|------------|
 | STATIC | 1 | 静态布局，支持标题和图标。使用此模板时，FloatingBallParams中的title参数和icon参数必传。 |
-| NORMAL | 2 | 普通文本布局，支持标题和内容。使用此模板时，FloatingBallParams中的title参数必传，icon参数可选。 |
-| EMPHATIC | 3 | 强调文本布局，支持图标、标题和内容。使用此模板时，FloatingBallParams中的title参数必传，icon参数可选。 |
-| SIMPLE | 4 | 纯文本布局，只支持标题。使用此模板时，FloatingBallParams中的title参数必传，icon参数可选。 |
+| NORMAL | 2 | 普通文本布局，支持标题和内容。使用此模板时，FloatingBallParams中的title参数必传。 |
+| EMPHATIC | 3 | 强调文本布局，支持图标、标题和内容。使用此模板时，FloatingBallParams中的title参数必传。 |
+| SIMPLE | 4 | 纯文本布局，只支持标题。使用此模板时，FloatingBallParams中的title参数必传。 |
 
 ## FloatingBallWindowInfo
 
