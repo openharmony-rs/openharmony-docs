@@ -1,4 +1,4 @@
-﻿# 应用快启
+# 应用快启
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @SHASAI-->
