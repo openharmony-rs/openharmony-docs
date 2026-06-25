@@ -430,7 +430,7 @@ ArkTS-Dyn: setAttribute(portId: number, attribute: [SerialAttribute](#serialattr
 
 ArkTS-Sta: setAttribute(portId: int, attribute: [SerialAttribute](#serialattribute)): void
 
-设置串口的配置参数。如果未调用该方法，使用默认配置参数(波特率:9600bps;数据位:8;校验位:0;停止位:1)。需先调用[open](#serialmanageropen)打开串口后才能设置配置。通常在设备初始化时、切换通信协议时、或设备需要非默认配置参数时调用此接口。
+设置串口的配置参数。如果未调用该方法，使用默认配置参数（波特率：9600bps；数据位：8；校验位：0；停止位：1）。需先调用[open](#serialmanageropen)打开串口后才能设置配置。通常在设备初始化时、切换通信协议时、或设备需要非默认配置参数时调用此接口。
 
 **前置条件：**
 - 需要先调用[getPortList](#serialmanagergetportlist)获取端口号
@@ -557,8 +557,6 @@ ArkTS-Sta: read(portId: int, buffer: Uint8Array, timeout?: int): Promise&lt;int&
 | ArkTS-Dyn: Promise&lt;number&gt;<br> ArkTS-Sta: Promise&lt;int&gt; | 返回实际读取到的数据长度，即成功读取的字节数。 |
 
 **错误码：**
-
-以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
@@ -857,7 +855,7 @@ ArkTS-Dyn: writeSync(portId: number, buffer: Uint8Array, timeout?: number): numb
 
 ArkTS-Sta: writeSync(portId: int, buffer: Uint8Array, timeout?: int): int
 
-向串口设备异步写数据，使用前需先调用[open](#serialmanageropen)打开串口设备。每次写入数据长度不超过4KB，数据过大会导致数据丢失，长数据建议分包写入。使用Promise异步回调。适用于需要阻塞式等待写入完成、发送重要指令、或对写入顺序有严格要求的场景。
+向串口设备同步写数据，使用前需先调用[open](#serialmanageropen)打开串口设备。每次写入数据长度不超过4KB，数据过大会导致数据丢失，长数据建议分包写入。使用Promise异步回调。适用于需要阻塞式等待写入完成、发送重要指令、或对写入顺序有严格要求的场景。
 
 **系统能力：**  SystemCapability.USB.USBManager.Serial
 
