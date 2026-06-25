@@ -166,6 +166,7 @@ function connectDevice() {
   usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   console.info(`devicepipe = ${devicepipe}`);
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -366,6 +367,9 @@ function claimInterface() {
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   let ret: number= usbManager.claimInterface(devicepipe, interfaces);
   console.info(`claimInterface = ${ret}`);
+  ret = usbManager.releaseInterface(devicepipe, interfaces);
+  console.info(`releaseInterface = ${ret}`);
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -420,6 +424,7 @@ function releaseInterface() {
   let ret: number = usbManager.claimInterface(devicepipe, interfaces);
   ret = usbManager.releaseInterface(devicepipe, interfaces);
   console.info(`releaseInterface = ${ret}`);
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -469,6 +474,7 @@ function setConfiguration() {
   let config: usbManager.USBConfiguration = device.configs?.[0];
   let ret: number= usbManager.setConfiguration(devicepipe, config);
   console.info(`setConfiguration = ${ret}`);
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -525,6 +531,7 @@ function setInterface() {
   let ret: number = usbManager.claimInterface(devicepipe, interfaces);
   ret = usbManager.setInterface(devicepipe, interfaces);
   console.info(`setInterface = ${ret}`);
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -570,6 +577,7 @@ function getRawDescriptor() {
   usbManager.requestRight(devicesList?.[0]?.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   usbManager.getRawDescriptor(devicepipe);
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -655,15 +663,6 @@ usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, ti
 **示例：**
 
 ```ts
-class PARA {
-  bmRequestType: number = 0
-  bRequest: number = 0
-  wValue: number = 0
-  wIndex: number = 0
-  wLength: number = 0
-  data: Uint8Array = new Uint8Array()
-}
-
 let param: usbManager.USBDeviceRequestParams = {
   bmRequestType: 0x80,
   bRequest: 0x06,
@@ -686,6 +685,7 @@ function usbControlTransfer() {
   usbManager.usbControlTransfer(devicepipe, param).then((ret: number) => {
   console.info(`usbControlTransfer = ${ret}`);
   })
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -734,7 +734,7 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 > 以下示例代码只是调用bulkTransfer接口的必要流程，实际调用时，设备开发者需要遵循设备相关协议进行调用，确保数据的正确传输和设备的兼容性。
 
 ```ts
-// usbManager.getDevices returns a data collection, take one device object and get permission.
+// usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
 // 把获取到的设备对象作为参数传入usbManager.connectDevice;当usbManager.connectDevice接口成功返回之后；
 // 才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
 function bulkTransfer() {
@@ -764,6 +764,7 @@ function bulkTransfer() {
       });
     }
   }
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -808,7 +809,7 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 
 <!--code_no_check-->
 ```ts
-// usbManager.getDevices returns a data collection, take one device object and get permission.
+// usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
 // 把获取到的设备对象作为参数传入usbManager.connectDevice;当usbManager.connectDevice接口成功返回之后；
 // 才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
 function usbSubmitTransfer() {
@@ -824,11 +825,11 @@ function usbSubmitTransfer() {
     return;
   }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-  // Get the endpoint address.
+  // 获取endpoint端点地址
   let endpoint = device.configs?.[0]?.interfaces?.[0]?.endpoints.find((value) => {
     return value.direction === 0 && value.type === 2
   })
-  // Get the first id of the device.
+  // 获取设备的第一个id。
   usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
 
   let transferParams: usbManager.UsbDataTransferParams = {
@@ -853,6 +854,7 @@ function usbSubmitTransfer() {
   } catch (error) {
     console.error('USB transfer failed:', error);
   }
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -895,7 +897,7 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 
 <!--code_no_check-->
 ```ts
-// usbManager.getDevices returns a data collection, take one device object and get permission.
+// usbManager.getDevices 接口返回数据集合，取其中一个设备对象，并获取权限。
 // 把获取到的设备对象作为参数传入usbManager.connectDevice;当usbManager.connectDevice接口成功返回之后；
 // 才可以调用第三个接口usbManager.claimInterface.当usbManager.claimInterface 调用成功以后,再调用该接口。
 function usbCancelTransfer() {
@@ -911,7 +913,7 @@ function usbCancelTransfer() {
     console.info(`connect device fail`);
     return;
   }
-  // Get the endpoint address.
+  // 获取endpoint端点地址。
   let endpoint = device.configs?.[0]?.interfaces?.[0]?.endpoints.find((value) => {
     return value.direction === 0 && value.type === 2
   })
@@ -919,7 +921,7 @@ function usbCancelTransfer() {
     console.info(`invalid endpoint`);
     return;
   }
-  // Get the first id of the device.
+  // 获取设备的第一个id。
   usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
   let transferParams: usbManager.UsbDataTransferParams = {
     devPipe: devicepipe,
@@ -944,6 +946,7 @@ function usbCancelTransfer() {
   } catch (error) {
     console.error('USB transfer failed:', error);
   }
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -1126,6 +1129,9 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
   let flag = usbManager.requestAccessoryRight(accList?.[0])
+  if (!flag) {
+    return
+  }
   usbManager.cancelAccessoryRight(accList?.[0])
   hilog.info(0, 'testTag ui', `cancelAccessoryRight success`)
 } catch (error) {
@@ -1212,6 +1218,9 @@ import { fileIo } from '@kit.CoreFileKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
   let flag = usbManager.requestAccessoryRight(accList?.[0])
+  if (!flag) {
+    return
+  }
   let handle = usbManager.openAccessory(accList?.[0])
   hilog.info(0, 'testTag ui', `openAccessory success`)
   let arrayBuffer = new ArrayBuffer(4096);
@@ -1255,6 +1264,9 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
   let flag = usbManager.requestAccessoryRight(accList?.[0])
+  if (!flag) {
+    return
+  }
   let handle = usbManager.openAccessory(accList?.[0])
   usbManager.closeAccessory(handle)
   hilog.info(0, 'testTag ui', `closeAccessory success`)
@@ -1318,6 +1330,7 @@ function resetUsbDevice() {
   } catch (err) {
     console.error(`resetUsbDevice failed: ` + err);
   }
+  usbManager.closePipe(devicepipe);
 }
 ```
 
@@ -1358,15 +1371,6 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: 
 **示例：**
 
 ```ts
-class PARA {
-  request: number = 0
-  reqType: usbManager.USBControlRequestType = 0
-  target: usbManager.USBRequestTargetType = 0
-  value: number = 0
-  index: number = 0
-  data: Uint8Array = new Uint8Array()
-}
-
 let param: usbManager.USBControlParams = {
   request: 0x06,
   reqType: 0x80,
@@ -1388,6 +1392,7 @@ function controlTransfer() {
   usbManager.controlTransfer(devicepipe, param).then((ret: number) => {
   console.info(`controlTransfer = ${ret}`);
   })
+  usbManager.closePipe(devicepipe);
 }
 ```
 
