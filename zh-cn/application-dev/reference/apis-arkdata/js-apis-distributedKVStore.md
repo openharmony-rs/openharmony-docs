@@ -35,7 +35,7 @@ import { distributedKVStore } from '@kit.ArkData';
 | 名称     | 类型              | 只读 | 可选 | 说明                                                         |
 | ---------- | ---------------|----- | ---- | ------------------------------------------------------------ |
 | context    | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md)    | 否   | 否   | 应用的上下文。 <br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。<br>从API version 10开始，context的参数类型为[BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md)。 |
-| bundleName | string          | 否   | 否   | 调用方的包名，不可为空且长度范围1-256字节。                                               |
+| bundleName | string          | 否   | 否   | 调用方的包名，不可为空且长度范围为1-256字节。                                               |
 
 ## Constants
 
@@ -76,7 +76,7 @@ import { distributedKVStore } from '@kit.ArkData';
 | 名称  | 类型   | 只读 | 可选 | 说明                                                               |
 | ----- | -------|-----|-----|------------------------------------------------------------------|
 | type | [ValueType](#valuetype) | 否    | 否   | 值类型。                                                             |
-| value | Uint8Array \| string \| number \| boolean| 否    | 否   | 键值对中的值。Uint8Array、string类型的长度范围0-[MAX_VALUE_LENGTH](#constants)，number和boolean类型的取值范围由其自身类型决定。 |
+| value | Uint8Array \| string \| number \| boolean| 否    | 否   | 键值对中的值。Uint8Array、string类型的长度范围为0-[MAX_VALUE_LENGTH](#constants)，number和boolean类型的取值范围由其自身类型决定。 |
 
 ## Entry
 
@@ -86,7 +86,7 @@ import { distributedKVStore } from '@kit.ArkData';
 
 | 名称  | 类型        | 只读 | 可选 | 说明     |
 | ----- | ---------- |-- | ---- | -------- |
-| key   | string          | 否    | 否   | 表示键名。不能为空且长度范围1-[MAX_KEY_LENGTH](#constants)。   |
+| key   | string          | 否    | 否   | 表示键名。不能为空且长度范围为1-[MAX_KEY_LENGTH](#constants)。   |
 | value | [Value](#value) | 否    | 否   | 值对象。 |
 
 ## ChangeNotification
@@ -237,11 +237,11 @@ schema.skip = 0;
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
-| 名称     | 类型    | 只读 | 可选 | 说明                                                         |
-| -------- | ------- | ---- | ---- | ------------------------------------------------------------ |
-| nullable | boolean | 否   | 否   | 表示数据库字段是否可以为空。true表示此节点数据可以为空，false表示此节点数据不能为空。 |
-| default  | string  | 否   | 否   | 表示FieldNode的默认值。default需传入type对应类型可解析的字符串字面量，确保内容类型与type字段类型一致。|
-| type     | number  | 否   | 否   | 表示指定节点对应的数据类型，取值为[ValueType](#valuetype)对应的枚举值。注意：BYTE_ARRAY类型在Schema的FieldNode中暂不支持，使用此类型会导致[getKVStore](#getkvstore)失败，但在其他场景（如直接存储Value对象）中BYTE_ARRAY类型可用。 |
+| 名称     | 类型    | 只读 | 可选 | 说明                                                                                                     |
+| -------- | ------- | ---- | ---- |--------------------------------------------------------------------------------------------------------|
+| nullable | boolean | 否   | 否   | 表示数据库字段是否可以为空。true表示此节点数据可以为空，false表示此节点数据不能为空。                                                        |
+| default  | string  | 否   | 否   | 表示FieldNode的默认值。default需传入type对应类型可解析的字符串字面量，确保内容类型与type字段类型一致。                                        |
+| type     | number  | 否   | 否   | 表示指定节点对应的数据类型，取值为[ValueType](#valuetype)对应的枚举值。注意：暂不支持BYTE_ARRAY，使用此类型会导致[getKVStore](#getkvstore)失败。  |
 
 ### constructor
 
@@ -255,7 +255,7 @@ constructor(name: string)
 
 | 参数名 | 类型 | 必填 | 说明            |
 | ------ | -------- | ---- | --------------- |
-| name   | string   | 是   | FieldNode的值，不能为空，长度范围1-64个字符。|
+| name   | string   | 是   | FieldNode的值，不能为空，长度范围为1-64个字符。|
 
 **错误码：**
 
@@ -426,7 +426,7 @@ getKVStore&lt;T&gt;(storeId: string, options: Options, callback: AsyncCallback&l
 
 | 参数名   | 类型               | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| storeId  | string                 | 是   | 数据库唯一标识符，长度范围1-[MAX_STORE_ID_LENGTH](#constants)，且只能包含字母数字或下划线_。|
+| storeId  | string                 | 是   | 数据库唯一标识符，长度范围为1-[MAX_STORE_ID_LENGTH](#constants)，且只能包含字母数字或下划线_。|
 | options  | [Options](#options)    | 是   | 创建分布式键值实例的配置信息。                               |
 | callback | AsyncCallback&lt;T&gt; | 是   | 回调函数。返回创建的分布式键值数据库实例（根据kvStoreType的不同，可以创建SingleKVStore实例和DeviceKVStore实例）。 |
 
@@ -489,7 +489,7 @@ getKVStore&lt;T&gt;(storeId: string, options: Options): Promise&lt;T&gt;
 
 | 参数名  | 类型            | 必填 | 说明                                                         |
 | ------- | ------------------- | ---- | ------------------------------------------------------------ |
-| storeId | string              | 是   | 数据库唯一标识符，长度范围1-[MAX_STORE_ID_LENGTH](#constants)，且只能包含字母数字或下划线_。|
+| storeId | string              | 是   | 数据库唯一标识符，长度范围为1-[MAX_STORE_ID_LENGTH](#constants)，且只能包含字母数字或下划线_。|
 | options | [Options](#options) | 是   | 创建分布式键值实例的配置信息。                               |
 
 **返回值：**
@@ -549,8 +549,8 @@ closeKVStore(appId: string, storeId: string, callback: AsyncCallback&lt;void&gt;
 
 | 参数名   | 类型                  | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| appId    | string                    | 是   | 应用的BundleName，不可为空且长度范围1-256字节。                                      |
-| storeId  | string                    | 是   | 要关闭的数据库唯一标识符，长度范围1-[MAX_STORE_ID_LENGTH](#constants)，且只能包含字母数字或下划线_。 |
+| appId    | string                    | 是   | 应用的BundleName，不可为空且长度范围为1-256字节。                                      |
+| storeId  | string                    | 是   | 要关闭的数据库唯一标识符，长度范围为1-[MAX_STORE_ID_LENGTH](#constants)，且只能包含字母数字或下划线_。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当要关闭的数据库成功关闭，err为undefined，否则为错误对象。     |
 
 **错误码：**
@@ -615,8 +615,8 @@ closeKVStore(appId: string, storeId: string, kvConfig?: Options): Promise&lt;voi
 
 | 参数名  | 类型 | 必填 | 说明                                                         |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| appId   | string   | 是   | 应用的BundleName，不可为空且长度范围1-256字节。                           |
-| storeId | string   | 是   | 要关闭的数据库唯一标识符，长度范围1-[MAX_STORE_ID_LENGTH](#constants)，且只能包含字母数字或下划线_。 |
+| appId   | string   | 是   | 应用的BundleName，不可为空且长度范围为1-256字节。                           |
+| storeId | string   | 是   | 要关闭的数据库唯一标识符，长度范围为1-[MAX_STORE_ID_LENGTH](#constants)，且只能包含字母数字或下划线_。 |
 | kvConfig<sup>24+</sup> | [Options](#options)  | 否   | 要关闭的数据库的配置信息，默认为空。 |
 
 **返回值：**
@@ -686,8 +686,8 @@ deleteKVStore(appId: string, storeId: string, callback: AsyncCallback&lt;void&gt
 
 | 参数名   | 类型                  | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| appId    | string                    | 是   | 应用的BundleName，不可为空且长度范围1-256字节。                                      |
-| storeId  | string                    | 是   | 要删除的数据库唯一标识符，长度范围1-[MAX_STORE_ID_LENGTH](#constants)，且只能包含字母数字或下划线_。 |
+| appId    | string                    | 是   | 应用的BundleName，不可为空且长度范围为1-256字节。                                      |
+| storeId  | string                    | 是   | 要删除的数据库唯一标识符，长度范围为1-[MAX_STORE_ID_LENGTH](#constants)，且只能包含字母数字或下划线_。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当要删除的数据库成功删除，err为undefined，否则为错误对象。     |
 
 **错误码：**
@@ -754,8 +754,8 @@ deleteKVStore(appId: string, storeId: string, kvConfig?: Options): Promise&lt;vo
 
 | 参数名  | 类型 | 必填 | 说明                                                         |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| appId   | string   | 是   | 应用的BundleName，不可为空且长度范围1-256字节。                           |
-| storeId | string   | 是   | 要删除的数据库唯一标识符，长度范围1-[MAX_STORE_ID_LENGTH](#constants)，且只能包含字母数字或下划线_。 |
+| appId   | string   | 是   | 应用的BundleName，不可为空且长度范围为1-256字节。                           |
+| storeId | string   | 是   | 要删除的数据库唯一标识符，长度范围为1-[MAX_STORE_ID_LENGTH](#constants)，且只能包含字母数字或下划线_。 |
 | kvConfig<sup>24+</sup> | [Options](#options)  | 否   | 要删除的数据库的配置信息，默认为空。 |
 
 **返回值：**
@@ -826,7 +826,7 @@ getAllKVStoreId(appId: string, callback: AsyncCallback&lt;string[]&gt;): void
 
 | 参数名   | 类型                      | 必填 | 说明                                                |
 | -------- | ----------------------------- | ---- | --------------------------------------------------- |
-| appId    | string                        | 是   | 应用的BundleName，不可为空且长度范围1-256字节。                              |
+| appId    | string                        | 是   | 应用的BundleName，不可为空且长度范围为1-256字节。                              |
 | callback | AsyncCallback&lt;string[]&gt; | 是   | 回调函数。返回所有创建的分布式键值数据库的storeId。 |
 
 **错误码：**
@@ -870,7 +870,7 @@ getAllKVStoreId(appId: string): Promise&lt;string[]&gt;
 
 | 参数名 | 类型 | 必填 | 说明                   |
 | ------ | -------- | ---- | ---------------------- |
-| appId  | string   | 是   | 应用的BundleName，不可为空且长度范围1-256字节。 |
+| appId  | string   | 是   | 应用的BundleName，不可为空且长度范围为1-256字节。 |
 
 **返回值：**
 
@@ -2588,7 +2588,7 @@ prefixKey(prefix: string): Query
 
 | 参数名 | 类型 | 必填 | 说明               |
 | ------ | -------- | ---- | ------------------ |
-| prefix | string   | 是   | 表示指定的键前缀，长度范围0-[MAX_KEY_LENGTH](#constants)，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
+| prefix | string   | 是   | 表示指定的键前缀，长度范围为0-[MAX_KEY_LENGTH](#constants)，不能包含'^'。包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
 
 **返回值：**
 
@@ -2768,8 +2768,8 @@ put(key: string, value: Uint8Array | string | number | boolean, callback: AsyncC
 
 | 参数名  | 类型 | 必填  | 说明                                                                                                     |
 | -----  | ------  | ----  |--------------------------------------------------------------------------------------------------------|
-| key    | string  | 是    | 要添加数据的Key，不能为空且长度范围1-[MAX_KEY_LENGTH](#constants)。                                                     |
-| value  | Uint8Array \| string \| number \| boolean | 是    | 要添加数据的value，支持Uint8Array、string、number、boolean，Uint8Array、string的长度范围0-[MAX_VALUE_LENGTH](#constants)。 |
+| key    | string  | 是    | 要添加数据的Key，不能为空且长度范围为1-[MAX_KEY_LENGTH](#constants)。                                                     |
+| value  | Uint8Array \| string \| number \| boolean | 是    | 要添加数据的value，支持Uint8Array、string、number、boolean，Uint8Array、string的长度范围为0-[MAX_VALUE_LENGTH](#constants)。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。数据添加成功，err为undefined，否则为错误对象。                                                                     |
 
 **错误码：**
@@ -2821,8 +2821,8 @@ put(key: string, value: Uint8Array | string | number | boolean): Promise&lt;void
 
 | 参数名  | 类型 | 必填  | 说明                                                                                                     |
 | -----  | ------  | ----  |--------------------------------------------------------------------------------------------------------|
-| key    | string  | 是    | 要添加数据的Key，不能为空且长度范围1-[MAX_KEY_LENGTH](#constants)。                                                     |
-| value  | Uint8Array \| string \| number \| boolean | 是    | 要添加数据的value，支持Uint8Array、string、number、boolean，Uint8Array、string的长度范围0-[MAX_VALUE_LENGTH](#constants)。 |
+| key    | string  | 是    | 要添加数据的Key，不能为空且长度范围为1-[MAX_KEY_LENGTH](#constants)。                                                     |
+| value  | Uint8Array \| string \| number \| boolean | 是    | 要添加数据的value，支持Uint8Array、string、number、boolean，Uint8Array、string的长度范围为0-[MAX_VALUE_LENGTH](#constants)。 |
 
 **返回值：**
 
@@ -3026,7 +3026,7 @@ delete(key: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                  | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| key      | string                    | 是   | 要删除数据的Key，不能为空且长度范围1-[MAX_KEY_LENGTH](#constants)。 |
+| key      | string                    | 是   | 要删除数据的Key，不能为空且长度范围为1-[MAX_KEY_LENGTH](#constants)。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。删除指定的数据成功，err为undefined，否则为错误对象。         |
 
 **错误码：**
@@ -3087,7 +3087,7 @@ delete(key: string): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明                                                         |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
-| key    | string   | 是   | 要删除数据的Key，不能为空且长度范围1-[MAX_KEY_LENGTH](#constants)。 |
+| key    | string   | 是   | 要删除数据的Key，不能为空且长度范围为1-[MAX_KEY_LENGTH](#constants)。 |
 
 **返回值：**
 
@@ -3149,7 +3149,7 @@ deleteBatch(keys: string[], callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                  | 必填 | 说明                     |
 | -------- | ------------------------- | ---- | ------------------------ |
-| keys     | string[]                  | 是   | 表示要批量删除的键名列表，不能为空，数组中每个元素的长度范围1-[MAX_KEY_LENGTH](#constants)。 |
+| keys     | string[]                  | 是   | 表示要批量删除的键名列表，不能为空，数组中每个元素的长度范围为1-[MAX_KEY_LENGTH](#constants)。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。批量删除指定的数据成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -3223,7 +3223,7 @@ deleteBatch(keys: string[]): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明                     |
 | ------ | -------- | ---- | ------------------------ |
-| keys   | string[] | 是   | 表示要批量删除的键名列表，不能为空，数组中每个元素的长度范围1-[MAX_KEY_LENGTH](#constants)。 |
+| keys   | string[] | 是   | 表示要批量删除的键名列表，不能为空，数组中每个元素的长度范围为1-[MAX_KEY_LENGTH](#constants)。 |
 
 **返回值：**
 
@@ -3429,7 +3429,7 @@ get(key: string, callback: AsyncCallback&lt;boolean | string | number | Uint8Arr
 
 | 参数名  | 类型 | 必填  | 说明                                              |
 | -----  | ------  | ----  |-------------------------------------------------|
-| key    |string   | 是    | 要查询数据的Key，不能为空且长度范围1-[MAX_KEY_LENGTH](#constants)。 |
+| key    |string   | 是    | 要查询数据的Key，不能为空且长度范围为1-[MAX_KEY_LENGTH](#constants)。 |
 | callback  |AsyncCallback&lt;boolean \| string \| number \| Uint8Array&gt; | 是    | 回调函数。返回获取查询的值，值的类型取决于存储时的数据类型。  |
 
 **错误码：**
@@ -3486,7 +3486,7 @@ get(key: string): Promise&lt;boolean | string | number | Uint8Array&gt;
 
 | 参数名 | 类型 | 必填 | 说明                                                         |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
-| key    | string   | 是   | 要查询数据的Key，不能为空且长度范围1-[MAX_KEY_LENGTH](#constants)。 |
+| key    | string   | 是   | 要查询数据的Key，不能为空且长度范围为1-[MAX_KEY_LENGTH](#constants)。 |
 
 **返回值：**
 
@@ -3544,7 +3544,7 @@ getEntries(keyPrefix: string, callback: AsyncCallback&lt;Entry[]&gt;): void
 
 | 参数名    | 类型                               | 必填 | 说明                                                                                  |
 | --------- | -------------------------------------- | ---- |-------------------------------------------------------------------------------------|
-| keyPrefix | string                                 | 是   | 表示要匹配的键前缀，长度范围1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
+| keyPrefix | string                                 | 是   | 表示要匹配的键前缀，长度范围为1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
 | callback  | AsyncCallback&lt;[Entry](#entry)[]&gt; | 是   | 回调函数。返回匹配指定前缀的键值对列表。                                                                |
 
 **错误码：**
@@ -3612,7 +3612,7 @@ getEntries(keyPrefix: string): Promise&lt;Entry[]&gt;
 
 | 参数名    | 类型 | 必填 | 说明                                                                                  |
 | --------- | -------- | ---- |-------------------------------------------------------------------------------------|
-| keyPrefix | string   | 是   | 表示要匹配的键前缀，长度范围1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
+| keyPrefix | string   | 是   | 表示要匹配的键前缀，长度范围为1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
 
 **返回值：**
 
@@ -3823,7 +3823,7 @@ getResultSet(keyPrefix: string, callback: AsyncCallback&lt;KVStoreResultSet&gt;)
 
 | 参数名    | 类型                                                   | 必填 | 说明                                                                                  |
 | --------- | ---------------------------------------------------------- | ---- |-------------------------------------------------------------------------------------|
-| keyPrefix | string                                 | 是   | 表示要匹配的键前缀，长度范围1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
+| keyPrefix | string                                 | 是   | 表示要匹配的键前缀，长度范围为1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
 | callback  | AsyncCallback&lt;[KVStoreResultSet](#kvstoreresultset)&gt; | 是   | 回调函数。返回具有指定前缀的结果集。                                                                  |
 
 **错误码：**
@@ -3901,7 +3901,7 @@ getResultSet(keyPrefix: string): Promise&lt;KVStoreResultSet&gt;
 
 | 参数名    | 类型 | 必填 | 说明                                                                                  |
 | --------- | -------- | ---- |-------------------------------------------------------------------------------------|
-| keyPrefix | string   | 是   | 表示要匹配的键前缀，长度范围1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
+| keyPrefix | string   | 是   | 表示要匹配的键前缀，长度范围为1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
 
 **返回值：**
 
@@ -5851,7 +5851,7 @@ get(key: string, callback: AsyncCallback&lt;boolean | string | number | Uint8Arr
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| key      | string                                                       | 是   | 要查询数据的Key，不能为空且长度范围1-[MAX_KEY_LENGTH](#constants)。 |
+| key      | string                                                       | 是   | 要查询数据的Key，不能为空且长度范围为1-[MAX_KEY_LENGTH](#constants)。 |
 | callback | AsyncCallback&lt;boolean \| string \| number \| Uint8Array&gt; | 是   | 回调函数。返回获取查询的值。                                 |
 
 **错误码：**
@@ -5907,7 +5907,7 @@ get(key: string): Promise&lt;boolean | string | number | Uint8Array&gt;
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| key    | string | 是   | 要查询数据的Key，不能为空且长度范围1-[MAX_KEY_LENGTH](#constants)。 |
+| key    | string | 是   | 要查询数据的Key，不能为空且长度范围为1-[MAX_KEY_LENGTH](#constants)。 |
 
 **返回值：**
 
@@ -5969,7 +5969,7 @@ get(deviceId: string, key: string, callback: AsyncCallback&lt;boolean | string |
 | 参数名  | 类型 | 必填  | 说明                    |
 | -----  | ------   | ----  | ----------------------- |
 | deviceId  |string  | 是    |设备的networkId，标识要查询其数据的设备，不能为空。    |
-| key       |string  | 是    |要查询数据的键名，不能为空且长度范围1-[MAX_KEY_LENGTH](#constants)。    |
+| key       |string  | 是    |要查询数据的键名，不能为空且长度范围为1-[MAX_KEY_LENGTH](#constants)。    |
 | callback  |AsyncCallback&lt;boolean \| string \| number \| Uint8Array&gt;  | 是    |回调函数。成功时返回匹配给定条件的值（值的类型取决于存储时的数据类型），失败时返回错误对象。    |
 
 **错误码：**
@@ -6030,7 +6030,7 @@ get(deviceId: string, key: string): Promise&lt;boolean | string | number | Uint8
 | 参数名   | 类型 | 必填 | 说明                     |
 | -------- | -------- | ---- | ------------------------ |
 | deviceId | string   | 是   | 设备的networkId，标识要查询其数据的设备，不能为空。 |
-| key      | string   | 是   | 表示要查询Key值的键，不能为空且长度范围1-[MAX_KEY_LENGTH](#constants)。    |
+| key      | string   | 是   | 表示要查询Key值的键，不能为空且长度范围为1-[MAX_KEY_LENGTH](#constants)。    |
 
 **返回值：**
 
@@ -6087,7 +6087,7 @@ getEntries(keyPrefix: string, callback: AsyncCallback&lt;Entry[]&gt;): void
 
 | 参数名    | 类型                                   | 必填 | 说明                                     |
 | --------- | -------------------------------------- | ---- | ---------------------------------------- |
-| keyPrefix | string                                 | 是   | 表示要匹配的键前缀，长度范围1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
+| keyPrefix | string                                 | 是   | 表示要匹配的键前缀，长度范围为1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
 | callback  | AsyncCallback&lt;[Entry](#entry)[]&gt; | 是   | 回调函数。返回匹配指定前缀的键值对列表。 |
 
 **错误码：**
@@ -6155,7 +6155,7 @@ getEntries(keyPrefix: string): Promise&lt;Entry[]&gt;
 
 | 参数名    | 类型   | 必填 | 说明                 |
 | --------- | ------ | ---- | -------------------- |
-| keyPrefix | string | 是   | 表示要匹配的键前缀，长度范围1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
+| keyPrefix | string | 是   | 表示要匹配的键前缀，长度范围为1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
 
 **返回值：**
 
@@ -6228,7 +6228,7 @@ getEntries(deviceId: string, keyPrefix: string, callback: AsyncCallback&lt;Entry
 | 参数名    | 类型                               | 必填 | 说明                                           |
 | --------- | -------------------------------------- | ---- | ---------------------------------------------- |
 | deviceId  | string                                 | 是   | 设备的networkId，标识要查询其数据的设备，不能为空。                       |
-| keyPrefix | string                                 | 是   | 表示要匹配的键前缀，长度范围1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
+| keyPrefix | string                                 | 是   | 表示要匹配的键前缀，长度范围为1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
 | callback  | AsyncCallback&lt;[Entry](#entry)[]&gt; | 是   | 回调函数，返回满足给定条件的所有键值对的列表。 |
 
 **错误码：**
@@ -6301,7 +6301,7 @@ getEntries(deviceId: string, keyPrefix: string): Promise&lt;Entry[]&gt;
 | 参数名    | 类型 | 必填 | 说明                     |
 | --------- | -------- | ---- | ------------------------ |
 | deviceId  | string   | 是   | 设备的networkId，标识要查询其数据的设备，不能为空。 |
-| keyPrefix | string   | 是   | 表示要匹配的键前缀，长度范围1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。|
+| keyPrefix | string   | 是   | 表示要匹配的键前缀，长度范围为1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。|
 
 **返回值：**
 
@@ -6671,7 +6671,7 @@ getResultSet(keyPrefix: string, callback: AsyncCallback&lt;KVStoreResultSet&gt;)
 
 | 参数名    | 类型                                                       | 必填 | 说明                                                                                 |
 | --------- | ---------------------------------------------------------- | ---- |------------------------------------------------------------------------------------|
-| keyPrefix | string   | 是   | 表示要匹配的键前缀，长度范围1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
+| keyPrefix | string   | 是   | 表示要匹配的键前缀，长度范围为1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
 | callback  | AsyncCallback&lt;[KVStoreResultSet](#kvstoreresultset)&gt; | 是   | 回调函数。返回具有指定前缀的结果集。                                                                 |
 
 **错误码：**
@@ -6748,7 +6748,7 @@ getResultSet(keyPrefix: string): Promise&lt;KVStoreResultSet&gt;
 
 | 参数名    | 类型   | 必填 | 说明                 |
 | --------- | ------ | ---- | -------------------- |
-| keyPrefix | string | 是   | 表示要匹配的键前缀，长度范围1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
+| keyPrefix | string | 是   | 表示要匹配的键前缀，长度范围为1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
 
 **返回值：**
 
@@ -6827,7 +6827,7 @@ getResultSet(deviceId: string, keyPrefix: string, callback: AsyncCallback&lt;KVS
 | 参数名    | 类型                                                     | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | deviceId  | string                                                       | 是   | 设备的networkId，标识要查询其数据的设备，不能为空。                                     |
-| keyPrefix | string                                                       | 是   | 表示要匹配的键前缀，长度范围1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
+| keyPrefix | string                                                       | 是   | 表示要匹配的键前缀，长度范围为1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
 | callback  | AsyncCallback&lt;[KVStoreResultSet](#kvstoreresultset)&gt; | 是   | 回调函数。返回与指定设备ID和Key前缀匹配的KVStoreResultSet对象。 |
 
 **错误码：**
@@ -6888,7 +6888,7 @@ getResultSet(deviceId: string, keyPrefix: string): Promise&lt;KVStoreResultSet&g
 | 参数名    | 类型 | 必填 | 说明                     |
 | --------- | -------- | ---- | ------------------------ |
 | deviceId  | string   | 是   | 设备的networkId，标识要查询其数据的设备，不能为空。 |
-| keyPrefix | string   | 是   | 表示要匹配的键前缀，长度范围1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
+| keyPrefix | string   | 是   | 表示要匹配的键前缀，长度范围为1-[MAX_KEY_LENGTH](#constants)。不能包含'^'，包含'^'将导致谓词失效，查询结果会返回数据库中的所有数据。 |
 
 **返回值：**
 
