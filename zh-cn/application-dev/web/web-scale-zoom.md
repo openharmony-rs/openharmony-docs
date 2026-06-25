@@ -400,7 +400,7 @@ factor = 100 * targetFactor / pageFactor
 ```
 
 ArkTS-Dyn示例：
-<!-- @[ControlZoomToFixedRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlZoomToFixedRatio.ets) -->
+<!-- @[ControlZoomToFixedRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlZoomToFixedRatio.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
