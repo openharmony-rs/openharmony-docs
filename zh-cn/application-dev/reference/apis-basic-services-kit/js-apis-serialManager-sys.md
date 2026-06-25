@@ -63,6 +63,7 @@ addSerialRight(tokenId: number, portId: number): void
 | 14400005 | Database operation exception. | 数据库操作异常，请检查数据库状态后重试。 |
 | 31400001 | Serial port management exception. | 串口管理异常，请检查串口设备状态。 |
 | 31400003 | PortId does not exist. | 端口号不存在，请检查端口号是否正确。 |
+
 **示例：**
 ```ts
 import { bundleManager } from '@kit.AbilityKit';

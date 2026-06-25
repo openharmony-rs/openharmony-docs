@@ -66,7 +66,7 @@ getPortList(): Readonly&lt;SerialPort&gt;[]
 import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
-// Get serial port device list 
+// 获取串口设备清单 
 function getPortList() {
   let portList: serialManager.SerialPort[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
@@ -151,7 +151,7 @@ requestSerialRight(portId: number): Promise&lt;boolean&gt;
 
 | 参数名    | 类型     | 必填 | 说明                                  |
 |--------|--------|----|-------------------------------------|
-| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的SerialPort对象。 |
+| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象。 |
 
 **返回值：**
 
@@ -233,6 +233,10 @@ open(portId: number): void
 | 类型 | 说明 |
 | ---- | ---- |
 | void | 无返回值。打开串口设备成功时无返回，失败时抛出异常，可通过错误码表格了解失败原因。 |
+
+**错误码：**
+
+以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     | 说明 |
 | -------- | ------------------------------------------------------------ | --- |
@@ -386,12 +390,12 @@ function getAttribute() {
   }
 
   // 关闭串口
-    try {
-      serialManager.close(portId);
-      console.info('close usbSerial success, portId: ' + portId);
-    } catch (error) {
-      console.error('close usbSerial error, ' + JSON.stringify(error));
-    }
+  try {
+    serialManager.close(portId);
+    console.info('close usbSerial success, portId: ' + portId);
+  } catch (error) {
+    console.error('close usbSerial error, ' + JSON.stringify(error));
+  }
 }
 ```
 
@@ -412,7 +416,7 @@ setAttribute(portId: number, attribute: SerialAttribute): void
 
 | 参数名       | 类型                                  | 必填 | 说明          |
 |-----------|-------------------------------------|----|-------------|
-| portId    | number                              | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数SerialPort。 |
+| portId    | number                              | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象。 |
 | attribute | [SerialAttribute](#serialattribute) | 是  | 串口配置参数对象，包含波特率（baudRate，必填）、数据位（dataBits，可选，默认8）、校验位（parity，可选，默认None）、停止位（stopBits，可选，默认1）等配置项。     |
 
 **错误码：**
@@ -616,7 +620,7 @@ readSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
 | 参数名     | 类型         | 必填 | 说明               |
 |---------|------------|----|------------------|
-| portId  | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数[SerialPort](#serialport)中。|
+| portId  | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数[SerialPort](#serialport)。|
 | buffer  | Uint8Array | 是  | 读取数据的缓冲区，用于存储从串口设备读取的二进制数据。缓冲区大小应根据预期读取的数据量确定。读取成功后，返回值表示实际读取的数据长度。 |
 | timeout | number     | 否  | 超时时间（单位：毫秒）。API在目标端口缓冲区无数据时，等待指定时间后返回。取值范围≥0，默认值0表示不等待直接返回。传入负数时抛出参数错误异常。建议取值范围≥0，具体值需根据设备响应速度和数据量合理设置。 |
 
@@ -801,18 +805,18 @@ function write() {
 }
 ```
 
-## serialManager.writeSync
-
-writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
-
-向串口设备异步写数据，使用前需先调用[open](#serialmanageropen)打开串口设备。每次写入数据长度不超过4KB，数据过大会导致数据丢失，长数据建议分包写入。使用Promise异步回调。适用于需要阻塞式等待写入完成、发送重要指令、或对写入顺序有严格要求的场景。
-
 ## write与writeSync差异说明
 
 - write：异步写入，使用Promise异步回调，不会阻塞主线程，适合需要非阻塞操作或并行处理多个任务的场景。
 - writeSync：同步写入，会阻塞当前线程直到写入完成或超时，适合简单场景或需要顺序执行的场景。
 
 根据应用架构和性能需求选择合适的写入方式。
+
+## serialManager.writeSync
+
+writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
+
+向串口设备异步写数据，使用前需先调用[open](#serialmanageropen)打开串口设备。每次写入数据长度不超过4KB，数据过大会导致数据丢失，长数据建议分包写入。使用Promise异步回调。适用于需要阻塞式等待写入完成、发送重要指令、或对写入顺序有严格要求的场景。
 
 **前置条件：**
 - 需要先调用[getPortList](#serialmanagergetportlist)获取端口号
@@ -899,7 +903,8 @@ function writeSync() {
   } catch (error) {
     console.error('writeSync usbSerial error, ' + JSON.stringify(error));
   }
-
+  
+  //关闭串口
   try {
     serialManager.close(portId);
     console.info('close usbSerial success, portId: ' + portId);
@@ -1022,13 +1027,14 @@ cancelSerialRight(portId: number): void
 
 | 参数名    | 类型     | 必填 | 说明                                  |
 |--------|--------|----|-------------------------------------|
-| portId | number | 是  | 来自[getPortList](#serialmanagergetportlist)获取的串口参数[SerialPort](#serialport)。 |
+| portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数[SerialPort](#serialport)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | ---- | ---- |
 | void | 无返回值。取消权限成功时无返回，失败时抛出异常，可通过错误码表格了解失败原因。 |
+
 **错误码：**
 
 以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
