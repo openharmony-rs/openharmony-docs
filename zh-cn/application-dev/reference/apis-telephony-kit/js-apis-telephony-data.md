@@ -762,8 +762,7 @@ data.showSystemApnSettings(context).then(() => {
     console.info("showSystemApnSettings success");
 }).catch(() => {
     console.error("showSystemApnSettings failed");
-    }
-)
+});
 ```
 
 ## DataFlowType
