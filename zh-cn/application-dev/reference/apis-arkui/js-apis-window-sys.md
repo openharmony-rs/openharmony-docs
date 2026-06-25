@@ -4560,7 +4560,7 @@ disableWindowDecor(): void
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API. <br>适用版本：12+ |
 | 1300002 | This window state is abnormal. |
 | 1300005 | This window stage is abnormal. |
 
