@@ -1,7 +1,7 @@
 # Interfaces (其他)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin; @liyi0903; @mayaolll-->
+<!--Owner: @yihao-lin; @liyi0903; @huangxiaolinabc-->
 <!--Designer: @piggyguy; @liyi0903; @jiangdayuan-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->

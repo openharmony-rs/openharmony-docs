@@ -9,7 +9,7 @@
 
 The **print** module provides APIs for basic print operations.
 
-> **NOTE** 
+> **NOTE**
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
@@ -486,11 +486,17 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 }
 ```
 
-## print.print
+## print.print<sup>(deprecated)</sup>
 
 print(files: Array&lt;string&gt;, callback: AsyncCallback&lt;PrintTask&gt;): void
 
 Prints files. This API uses an asynchronous callback to return the result. To start the system print preview page, call the [print](#printprint11-1) API and pass in context.
+
+**Since:** 10
+
+**Deprecated from**: 26.0.0
+
+**Substitute**: [print](#printprint11)
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -533,11 +539,17 @@ print.print([fileUri.getUriFromPath(filePath)], (err: BusinessError, printTask: 
 })
 ```
 
-## print.print
+## print.print<sup>(deprecated)</sup>
 
 print(files: Array&lt;string&gt;): Promise&lt;PrintTask&gt;
 
 Prints files. This API uses a promise to return the result. To start the system print preview page, call the [print](#printprint11-1) API and pass in context.
+
+**Since:** 10
+
+**Deprecated from**: 26.0.0
+
+**Substitute**: [print](#printprint11)
 
 **Required permissions**: ohos.permission.PRINT
 
@@ -1796,7 +1808,7 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo } from '@kit.CoreFileKit';
 
-let tempPath = '/data/stroage/el2/base/haps/entry/files/note.jpg';
+let tempPath = '/data/storage/el2/base/haps/entry/files/note.jpg';
 let file: fileIo.File;
 file = fileIo.openSync(tempPath, 4);
 
@@ -2035,7 +2047,7 @@ let state : print.PrintJobState = print.PrintJobState.PRINT_JOB_PREPARE;
 let subState : print.PrintJobSubState = print.PrintJobSubState.PRINT_JOB_COMPLETED_SUCCESS;
 print.updatePrintJobState(jobId, state, subState, (err: BusinessError) => {
     if (err) {
-        console.error('updataPrintJobState failed, because : ' + JSON.stringify(err));
+        console.error('updatePrintJobState failed, because : ' + JSON.stringify(err));
     } else {
         console.info('updatePrintJobState success');
     }
@@ -2402,7 +2414,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let watermarkCallback: print.WatermarkCallback = (jobId: string, fd: number) => {
     console.info('Watermark callback triggered, jobId: ' + jobId + ', fd: ' + fd);
-    
+
     try {
         // Notify the system that the watermark processing is successful.
         print.notifyWatermarkComplete(jobId, print.WatermarkHandleResult.WATERMARK_HANDLE_SUCCESS);

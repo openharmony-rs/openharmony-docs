@@ -87,7 +87,7 @@ Registers a function for filtering multimodal key events.
 
 | Type| Description|
 | -- | -- |
-| [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode) | Status code defined in [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
+| [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode) | Execution result of the function.<br> **OK**: The API is successfully called.<br> **INVAILD_WINDOW_ID**: The **windowId** parameter is invalid.<br> **WINDOW_MANAGER_ERRORCODE_INVALID_PARAM**: The **keyEventFilter** parameter is invalid.<br> **SERVICE_ERROR**: The window management service is abnormal.|
 
 ### OH_NativeWindowManager_UnregisterKeyEventFilter()
 
@@ -112,7 +112,7 @@ Unregisters a function for filtering multimodal key events.
 
 | Type| Description|
 | -- | -- |
-| [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode) | Status code defined in [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
+| [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode) | Execution result of the function.<br> **OK**: The API is successfully called.<br> **INVAILD_WINDOW_ID**: The **windowId** parameter is invalid.<br> **SERVICE_ERROR**: The window management service is abnormal.|
 
 ### OH_NativeWindowManager_MouseEventFilter()
 
@@ -163,7 +163,7 @@ Registers a function for filtering multimodal mouse events.
 
 | Type| Description|
 | -- | -- |
-| [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode) | Status code defined in [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
+| [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode) | Execution result of the function.<br> **OK**: The API is successfully called.<br> **INVAILD_WINDOW_ID**: The **windowId** parameter is invalid.<br> **WINDOW_MANAGER_ERRORCODE_INVALID_PARAM**: The **mouseEventFilter** parameter is invalid.<br> **SERVICE_ERROR**: The window management service is abnormal.|
 
 ### OH_NativeWindowManager_UnregisterMouseEventFilter()
 
@@ -188,7 +188,7 @@ Unregisters a function for filtering multimodal mouse events.
 
 | Type| Description|
 | -- | -- |
-| [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode) | Status code defined in [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
+| [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode) | Execution result of the function.<br> **OK**: The API is successfully called.<br> **INVAILD_WINDOW_ID**: The **windowId** parameter is invalid.<br> **SERVICE_ERROR**: The window management service is abnormal.|
 
 ### OH_NativeWindowManager_TouchEventFilter()
 
@@ -233,7 +233,7 @@ Registers a function for filtering multimodal touch events.
 | Parameter| Description|
 | -- | -- |
 | int32_t windowId | ID of the window for which the function is registered.|
-| [OH_NativeWindowManager_TouchEventFilter](#oh_nativewindowmanager_toucheventfilter) touchEventFilter | Function to register.|
+| [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode) | Execution result of the function.<br> **OK**: The API is successfully called.<br> **INVAILD_WINDOW_ID**: The **windowId** parameter is invalid.<br> **WINDOW_MANAGER_ERRORCODE_INVALID_PARAM**: The **touchEventFilter** parameter is invalid.<br> **SERVICE_ERROR**: The window management service is abnormal.|
 
 **Return value**
 
@@ -264,4 +264,4 @@ Unregisters a function for filtering multimodal touch events.
 
 | Type| Description|
 | -- | -- |
-| [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode) | Status code defined in [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode).|
+| [WindowManager_ErrorCode](capi-oh-window-comm-h.md#windowmanager_errorcode) | Execution result of the function.<br> **OK**: The API is successfully called.<br> **INVAILD_WINDOW_ID**: The **windowId** parameter is invalid.<br> **SERVICE_ERROR**: The window management service is abnormal.|

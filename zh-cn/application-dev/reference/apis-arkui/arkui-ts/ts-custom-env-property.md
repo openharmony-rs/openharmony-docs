@@ -29,13 +29,14 @@ CustomEnv\<T\>(key: CustomEnvKey\<S\>): PropertyDecorator
 
 **示例：**
 
-```ts
+``` TypeScript
 const custom = CustomEnvKey.create<string>();
 
 @Entry
 @Component
 struct Index {
-  @CustomEnv(custom) message: string = 'hello world';
+  // @CustomEnv装饰的变量设置本地默认值
+  @CustomEnv(custom) customVarName: string = 'hello world';
 
   build() {
   }
@@ -78,7 +79,7 @@ static create\<T\>()
 
 **示例：**
 
-```ts
+``` TypeScript
 const custom = CustomEnvKey.create<string>();
 ```
 

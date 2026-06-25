@@ -3930,6 +3930,8 @@
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
 **是否支持证书授权**：true
 
 **起始版本**：12
@@ -4458,7 +4460,7 @@
 
 允许系统应用创建虚拟键盘窗口。
 
-系统应用获取此权限后，才可以成功创建虚拟键盘窗口。当前仅2in1设备系统应用可申请此权限。
+系统应用获取此权限后，才可以成功创建虚拟键盘窗口。当前仅PC/2in1设备系统应用可申请此权限。
 
 **权限级别**：system_basic
 
@@ -4467,6 +4469,8 @@
 **是否支持证书授权**：true
 
 **起始版本**：15
+
+**支持设备**：PC/2in1
 
 ## ohos.permission.GET_FAMILY_INFO
 
@@ -5329,6 +5333,20 @@
 
 **起始版本**：20
 
+## ohos.permission.READ_DIAGNOSTIC_LOGS
+
+允许应用读取诊断日志。
+
+应用默认无法获取hilog日志，获取该权限后，工具类应用可以获取hilog实时输出的日志。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：21
+
 ## ohos.permission.ACCESS_ANCO_APP_DATA
 
 允许应用访问兼容应用目录。
@@ -5833,6 +5851,20 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.vehicle.ACCESS_DFT_LOG
+
+允许系统应用读取车机日志服务、蓝牙、稳定性、升级等日志目录。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
 ## ohos.permission.vehicle.AUTO_UPDATER
 
 允许应用向车机设备发送升级指令。
@@ -6068,6 +6100,20 @@
 **是否支持证书授权**：true
 
 **支持设备**：General
+
+**起始版本**：26.0.0
+
+## ohos.permission.CAMERA_SHARED
+
+允许系统应用与其他应用共享访问一台相机。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
 
 **起始版本**：26.0.0
 
@@ -6470,6 +6516,20 @@
 **是否支持证书授权**：true
 
 **支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.HDC_REPORT_INFO
+
+允许系统应用订阅hdc事件。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.0.0
 

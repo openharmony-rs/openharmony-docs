@@ -86,11 +86,12 @@ struct Index {
           let task = new taskpool.Task(treeSetTestFunc, treeSet);
           // 3. 执行任务
           taskpool.execute(task).then(() => {
+            this.message = 'success';
             console.info('taskpool: execute task success!');
           }).catch((e: BusinessError) => {
+            this.message = 'failed';
             console.error(`taskpool: execute task: Code: ${e.code}, message: ${e.message}`);
           })
-          this.message = 'success';
         })
     }
     .height('100%')

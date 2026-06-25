@@ -1,4 +1,4 @@
-# Converged Short-Range Service Development Overview
+# Converged Short-Range Service Development
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
@@ -6,7 +6,7 @@
 <!--Designer: @chengguohong; @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:38:21.726Z pushedAt=2026-06-18T08:05:30.348Z -->
+<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:38:21.726Z pushedAt=2026-06-22T07:23:33.820Z -->
 
 ## Overview
 

@@ -88,14 +88,8 @@ Defines options for the save button, including icon, text, and button type.
 
 > **NOTE**
 >
-> - You are advised to specify at least one of **icon** or **text**.<br>
-> - If neither **icon** nor **text** is specified, **SaveButton** is created with default styles as follows:
->
->     - The default value of **SaveIconStyle** is **FULL_FILLED**.
->
->     - The default value of **SaveDescription** is **DOWNLOAD**.
->
->     - The default value of **ButtonType** is **Capsule**.
+> - You are advised to specify at least one of **icon** or **text**.
+> - If neither **icon** nor **text** is specified, **SaveButton** is created with default styles as follows: **SaveIconStyle** defaults to **FULL_FILLED**, **SaveDescription** to **DOWNLOAD**, and **ButtonType** to **Capsule**.
 > - The **icon**, **text**, and **buttonType** parameters do not support dynamic modification.
 
 **Model restriction:** This API can be used only in the stage model.

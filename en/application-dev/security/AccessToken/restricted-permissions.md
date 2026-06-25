@@ -1373,3 +1373,17 @@ With this permission, the application can import the user's digital identity cre
 **Supported devices**: phones | tablets
 
 **Since**: 26.0.0
+
+## ohos.permission.CAPTURE_PLAYBACK_DOWNLINK
+
+Allows an application to record downlink data of cellular calls.
+
+<!--RP95--><!--RP95End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | tablets
+
+**Since**: 26.0.0

@@ -231,7 +231,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name| Description|
 | -- | -- |
 | .value[0].i32 | Index of the child component.|
-| .value[1]?.i32 | Switching animation mode. The parameter type is [ArkUI_SwiperAnimationMode](capi-native-type-h.md#arkui_swiperanimationmode). The setting is only effective for the current call.<br>This parameter is supported since API version 15.|
+| .value[1]?.i32 | Switching animation mode. The parameter type is [ArkUI_SwiperAnimationMode](capi-swiper-h.md#arkui_swiperanimationmode). The setting is only effective for the current call.<br>This parameter is supported since API version 15.|
 
 **Returns**
 
@@ -306,14 +306,14 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Whether to show the arrow when the mouse pointer hovers over the navigation indicator. The parameter type is [ArkUI_SwiperArrow](capi-native-type-h.md#arkui_swiperarrow). The default value is **ARKUI_SWIPER_ARROW_HIDE**.|
+| .value[0].i32 | Whether to show the arrow when the mouse pointer hovers over the navigation indicator. The parameter type is [ArkUI_SwiperArrow](capi-swiper-h.md#arkui_swiperarrow). The default value is **ARKUI_SWIPER_ARROW_HIDE**.|
 | .?object | Style of the arrow displayed when the mouse pointer hovers over the navigation indicator. The parameter type is [ArkUI_SwiperArrowStyle](capi-arkui-nativemodule-arkui-swiperarrowstyle.md). This parameter is supported since API version 19.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Whether the arrow is shown when the mouse pointer hovers over the navigation indicator. The parameter type is [ArkUI_SwiperArrow](capi-native-type-h.md#arkui_swiperarrow).|
+| .value[0].i32 | Whether the arrow is shown when the mouse pointer hovers over the navigation indicator. The parameter type is [ArkUI_SwiperArrow](capi-swiper-h.md#arkui_swiperarrow).|
 | .object | Style of the arrow displayed when the mouse pointer hovers over the navigation indicator. The parameter type is [ArkUI_SwiperArrowStyle](capi-arkui-nativemodule-arkui-swiperarrowstyle.md). This parameter is supported since API version 19.|
 
 ## NODE_SWIPER_EDGE_EFFECT_MODE
@@ -460,14 +460,14 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Navigation indicator type. The parameter type is [ArkUI_SwiperIndicatorType](capi-native-type-h.md#arkui_swiperindicatortype).|
+| .value[0].i32 | Navigation indicator type. The parameter type is [ArkUI_SwiperIndicatorType](capi-swiper-h.md#arkui_swiperindicatortype).|
 | .object | Additional configuration for the navigation indicator, depending on the type. For **ARKUI_SWIPER_INDICATOR_TYPE_DOT**, the parameter type is [ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md).<br>For **ARKUI_SWIPER_INDICATOR_TYPE_DIGIT**, the parameter type is [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md).<br>The **ArkUI_SwiperDigitIndicator** type is supported since API version 19.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Navigation indicator type. The parameter type is [ArkUI_SwiperIndicatorType](capi-native-type-h.md#arkui_swiperindicatortype).|
+| .value[0].i32 | Navigation indicator type. The parameter type is [ArkUI_SwiperIndicatorType](capi-swiper-h.md#arkui_swiperindicatortype).|
 | .object | Additional configuration for the navigation indicator, depending on the type. For **ARKUI_SWIPER_INDICATOR_TYPE_DOT**, the parameter type is [ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md).<br>For **ARKUI_SWIPER_INDICATOR_TYPE_DIGIT**, the parameter type is [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md).<br>The **ArkUI_SwiperDigitIndicator** type is supported since API version 19.|
 
 ## NODE_SWIPER_NESTED_SCROLL
@@ -486,13 +486,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Nested scrolling mode of the **Swiper** component and its parent component. The parameter type is [ArkUI_SwiperNestedScrollMode](capi-native-type-h.md#arkui_swipernestedscrollmode).<br>The default value is **ARKUI_SWIPER_NESTED_SRCOLL_SELF_ONLY**.|
+| .value[0].i32 | Nested scrolling mode of the **Swiper** component and its parent component. The parameter type is [ArkUI_SwiperNestedScrollMode](capi-swiper-h.md#arkui_swipernestedscrollmode).<br>The default value is **ARKUI_SWIPER_NESTED_SRCOLL_SELF_ONLY**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Nested scrolling mode of the **Swiper** component and its parent component. The parameter type is [ArkUI_SwiperNestedScrollMode](capi-native-type-h.md#arkui_swipernestedscrollmode).|
+| .value[0].i32 | Nested scrolling mode of the **Swiper** component and its parent component. The parameter type is [ArkUI_SwiperNestedScrollMode](capi-swiper-h.md#arkui_swipernestedscrollmode).|
 
 ## NODE_SWIPER_SWIPE_TO_INDEX
 
@@ -544,7 +544,7 @@ NODE_SWIPER_PAGE_FLIP_MODE = 1001021
 ```
 
 Page flipping mode using the mouse wheel.<br>
-The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value [ArkUI_PageFlipMode](capi-native-type-h.md#arkui_pageflipmode) are as follows.
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value [ArkUI_PageFlipMode](capi-swiper-h.md#arkui_pageflipmode) are as follows.
 
 **Since**: 15
 
@@ -553,7 +553,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Page flipping mode using the mouse wheel. The parameter type is [ArkUI_PageFlipMode](capi-native-type-h.md#arkui_pageflipmode).|
+| .value[0].i32 | Page flipping mode using the mouse wheel. The parameter type is [ArkUI_PageFlipMode](capi-swiper-h.md#arkui_pageflipmode).|
 
 **Returns**
 
