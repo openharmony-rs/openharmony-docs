@@ -108,7 +108,7 @@
 
 - 当数据已使用V2观察能力，即调用UIUtils.enableV2Compatibility后，会将新的数据默认使用V2观察能力，但需要开发者确保新增数据是\@Observed装饰的class，或者是makeV1Observed的返回值。完整例子可见[传递嵌套类型（V1->V2）](#传递嵌套类型v1-v2)、[传递嵌套类型（V2->V1）](#传递嵌套类型v2-v1)。  
   ```ts
-  let arr: Array<ArrayItem> = UIUtils.enableV2Compatibility(UIUtils.makeV1Observed(new ArrayItem()));
+  let arr: Array<ArrayItem> = UIUtils.enableV2Compatibility(UIUtils.makeV1Observed(new Array<ArrayItem>()));
   
   arr.push(new ArrayItem()); // 新增数据不是V1状态变量，所以不会具有V2观察能力
   arr.push(UIUtils.makeV1Observed(new ArrayItem())); // 新增数据是V1的状态变量，默认在V2中可观察

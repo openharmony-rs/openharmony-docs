@@ -798,7 +798,7 @@ struct IndexFive {
 
 
 
-**定义\@ObserveV2修饰的class**
+**定义\@ObservedV2修饰的class**
 
 V1装饰器不能和\@ObservedV2一起使用。在以下示例代码中，InfoNine类被\@ObservedV2装饰，V1组件接收变量时，info变量不能被V1装饰器修饰，但通过修改可以刷新UI，依赖的是\@ObservedV2+\@Trace的观测能力。
 
