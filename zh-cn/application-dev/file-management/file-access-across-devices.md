@@ -147,7 +147,6 @@
 
 4. B设备访问跨设备文件完成，断开链路。
 
-   ```ts
    <!--@[access_DisConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->        
    
    ``` TypeScript
