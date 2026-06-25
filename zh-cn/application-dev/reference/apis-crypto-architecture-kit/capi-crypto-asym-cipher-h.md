@@ -92,7 +92,7 @@ OH_Crypto_ErrCode OH_CryptoAsymCipher_Create(const char *algoName, OH_CryptoAsym
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *algoName | [in] 非对称加解密算法名称，不能为NULL。取值如下：- RSA算法PKCS1填充模式：取值为"RSA\|PKCS1"。- RSA算法OAEP填充模式：格式为"RSA\|PKCS1_OAEP\|摘要\|MGF1摘要"，示例："RSA\|PKCS1_OAEP\|SHA256\|MGF1_SHA256"。摘要支持"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。MGF1摘要支持"MGF1_SHA1"、"MGF1_SHA224"、"MGF1_SHA256"、"MGF1_SHA384"、"MGF1_SHA512"。- RSA算法NoPadding填充模式：取值为"RSA\|NoPadding"。- SM2算法：格式为"SM2\|摘要"，示例："SM2\|SM3"。摘要支持"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"、"SM3"。 |
+| const char *algoName | [in] 非对称加解密算法名称，不能为NULL。取值如下：<br>- RSA算法PKCS1填充模式：取值为"RSA\|PKCS1"。<br>- RSA算法OAEP填充模式：格式为"RSA\|PKCS1_OAEP\|摘要\|MGF1摘要"，示例："RSA\|PKCS1_OAEP\|SHA256\|MGF1_SHA256"。摘要支持"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。MGF1摘要支持"MGF1_SHA1"、"MGF1_SHA224"、"MGF1_SHA256"、"MGF1_SHA384"、"MGF1_SHA512"。<br>- RSA算法NoPadding填充模式：取值为"RSA\|NoPadding"。<br>- SM2算法：格式为"SM2\|摘要"，示例："SM2\|SM3"。摘要支持"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"、"SM3"。 |
 | [OH_CryptoAsymCipher](capi-cryptoasymcipherapi-oh-cryptoasymcipher.md) **ctx | [out] 指向非对称加解密上下文指针的指针。ctx不能为NULL，*ctx必须为NULL。 |
 
 **返回：**

@@ -54,8 +54,6 @@ enum OH_Crypto_ErrCode
 
 枚举错误码。
 
-**起始版本：** 12
-
 | 枚举项 | 描述 |
 | -- | -- |
 | CRYPTO_SUCCESS = 0 | 表示操作成功。<br>**起始版本：** 12 |
@@ -80,8 +78,8 @@ enum Crypto_CipherMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CRYPTO_ENCRYPT_MODE = 0 | 表示加密操作。<br>**起始版本：** 12 |
-| CRYPTO_DECRYPT_MODE = 1 | 表示解密操作。<br>**起始版本：** 12 |
+| CRYPTO_ENCRYPT_MODE = 0 | 表示加密操作。 |
+| CRYPTO_DECRYPT_MODE = 1 | 表示解密操作。 |
 
 
 ## 函数说明

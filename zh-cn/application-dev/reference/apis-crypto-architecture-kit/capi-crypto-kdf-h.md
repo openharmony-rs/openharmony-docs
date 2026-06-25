@@ -63,14 +63,14 @@ enum CryptoKdf_ParamType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CRYPTO_KDF_KEY_DATABLOB = 0 | 表示KDF的密钥或密码。<br>**起始版本：** 20 |
-| CRYPTO_KDF_SALT_DATABLOB = 1 | 表示KDF的盐值。<br>**起始版本：** 20 |
-| CRYPTO_KDF_INFO_DATABLOB = 2 | 表示KDF的Info信息。<br>**起始版本：** 20 |
-| CRYPTO_KDF_ITER_COUNT_INT = 3 | 表示PBKDF2的迭代次数。<br>**起始版本：** 20 |
-| CRYPTO_KDF_SCRYPT_N_UINT64 = 4 | 表示SCRYPT KDF的n参数。<br>**起始版本：** 20 |
-| CRYPTO_KDF_SCRYPT_R_UINT64 = 5 | 表示SCRYPT KDF的r参数。<br>**起始版本：** 20 |
-| CRYPTO_KDF_SCRYPT_P_UINT64 = 6 | 表示SCRYPT KDF的p参数。<br>**起始版本：** 20 |
-| CRYPTO_KDF_SCRYPT_MAX_MEM_UINT64 = 7 | 表示SCRYPT KDF的最大内存参数。<br>**起始版本：** 20 |
+| CRYPTO_KDF_KEY_DATABLOB = 0 | 表示KDF的密钥或密码。 |
+| CRYPTO_KDF_SALT_DATABLOB = 1 | 表示KDF的盐值。 |
+| CRYPTO_KDF_INFO_DATABLOB = 2 | 表示KDF的Info信息。 |
+| CRYPTO_KDF_ITER_COUNT_INT = 3 | 表示PBKDF2的迭代次数。 |
+| CRYPTO_KDF_SCRYPT_N_UINT64 = 4 | 表示SCRYPT KDF的n参数。 |
+| CRYPTO_KDF_SCRYPT_R_UINT64 = 5 | 表示SCRYPT KDF的r参数。 |
+| CRYPTO_KDF_SCRYPT_P_UINT64 = 6 | 表示SCRYPT KDF的p参数。 |
+| CRYPTO_KDF_SCRYPT_MAX_MEM_UINT64 = 7 | 表示SCRYPT KDF的最大内存参数。 |
 
 
 ## 函数说明
@@ -93,7 +93,7 @@ OH_Crypto_ErrCode OH_CryptoKdfParams_Create(const char *algoName, OH_CryptoKdfPa
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *algoName | [in] KDF参数算法名称，不能为NULL。取值如下：- 从API version 20开始支持"HKDF"、"PBKDF2"、"SCRYPT"。- 从API version 22开始支持"X963KDF"。 |
+| const char *algoName | [in] KDF参数算法名称，不能为NULL。取值如下：<br>- 从API version 20开始支持"HKDF"、"PBKDF2"、"SCRYPT"。<br>- 从API version 22开始支持"X963KDF"。 |
 | [OH_CryptoKdfParams](capi-cryptokdfapi-oh-cryptokdfparams.md) **params | [out] 指向KDF参数指针的指针。params不能为NULL，*params必须为NULL。 |
 
 **返回：**
@@ -169,7 +169,7 @@ OH_Crypto_ErrCode OH_CryptoKdf_Create(const char *algoName, OH_CryptoKdf **ctx)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *algoName | [in] KDF算法名称。不能为NULL。格式为"KDF类型\|摘要算法"，取值如下：- 从API version 20开始支持"PBKDF2\|SHA1"、"PBKDF2\|SHA224"、"PBKDF2\|SHA256"、"PBKDF2\|SHA384"、"PBKDF2\|SHA512"、"PBKDF2\|SM3"。从API version 26.0.0开始支持"PBKDF2\|SHA3-256"、"PBKDF2\|SHA3-384"、"PBKDF2\|SHA3-512"。- 从API version 20开始支持"HKDF\|SHA1"、"HKDF\|SHA224"、"HKDF\|SHA256"、"HKDF\|SHA384"、"HKDF\|SHA512"、"HKDF\|SM3"。HKDF支持可选的第三个参数指定模式："EXTRACT_AND_EXPAND"（默认）、"EXTRACT_ONLY"、"EXPAND_ONLY"，示例："HKDF\|SHA256\|EXTRACT_ONLY"。从API version 26.0.0开始支持"HKDF\|SHA3-256"、"HKDF\|SHA3-384"、"HKDF\|SHA3-512"。- 从API version 20开始支持"SCRYPT"。- 从API version 22开始支持"X963KDF\|SHA1"、"X963KDF\|SHA224"、"X963KDF\|SHA256"、"X963KDF\|SHA384"、"X963KDF\|SHA512"。从API version 26.0.0开始支持"X963KDF\|SHA3-256"、"X963KDF\|SHA3-384"、"X963KDF\|SHA3-512"。 |
+| const char *algoName | [in] KDF算法名称。不能为NULL。格式为"KDF类型\|摘要算法"，取值如下：<br>- 从API version 20开始支持"PBKDF2\|SHA1"、"PBKDF2\|SHA224"、"PBKDF2\|SHA256"、"PBKDF2\|SHA384"、"PBKDF2\|SHA512"、"PBKDF2\|SM3"。从API version 26.0.0开始支持"PBKDF2\|SHA3-256"、"PBKDF2\|SHA3-384"、"PBKDF2\|SHA3-512"。<br>- 从API version 20开始支持"HKDF\|SHA1"、"HKDF\|SHA224"、"HKDF\|SHA256"、"HKDF\|SHA384"、"HKDF\|SHA512"、"HKDF\|SM3"。HKDF支持可选的第三个参数指定模式："EXTRACT_AND_EXPAND"（默认）、"EXTRACT_ONLY"、"EXPAND_ONLY"，示例："HKDF\|SHA256\|EXTRACT_ONLY"。从API version 26.0.0开始支持"HKDF\|SHA3-256"、"HKDF\|SHA3-384"、"HKDF\|SHA3-512"。<br>- 从API version 20开始支持"SCRYPT"。<br>- 从API version 22开始支持"X963KDF\|SHA1"、"X963KDF\|SHA224"、"X963KDF\|SHA256"、"X963KDF\|SHA384"、"X963KDF\|SHA512"。从API version 26.0.0开始支持"X963KDF\|SHA3-256"、"X963KDF\|SHA3-384"、"X963KDF\|SHA3-512"。 |
 | [OH_CryptoKdf](capi-cryptokdfapi-oh-cryptokdf.md) **ctx | [out] 指向KDF上下文指针的指针。ctx不能为NULL，*ctx必须为NULL。 |
 
 **返回：**

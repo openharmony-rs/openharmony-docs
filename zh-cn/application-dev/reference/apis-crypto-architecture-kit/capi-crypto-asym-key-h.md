@@ -63,7 +63,7 @@
 | [OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_Create(OH_CryptoPrivKeyEncodingParams **ctx)](#oh_cryptoprivkeyencodingparams_create) | 创建私钥编码参数。<br> 注意：创建的资源必须通过[OH_CryptoPrivKeyEncodingParams_Destroy](capi-crypto-asym-key-h.md#oh_cryptoprivkeyencodingparams_destroy)销毁。 |
 | [OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_SetParam(OH_CryptoPrivKeyEncodingParams *ctx, CryptoPrivKeyEncoding_ParamType type, Crypto_DataBlob *value)](#oh_cryptoprivkeyencodingparams_setparam) | 设置私钥编码参数。 |
 | [void OH_CryptoPrivKeyEncodingParams_Destroy(OH_CryptoPrivKeyEncodingParams *ctx)](#oh_cryptoprivkeyencodingparams_destroy) | 销毁私钥编码参数。 |
-| [OH_Crypto_ErrCode OH_CryptoPrivKey_Encode(OH_CryptoPrivKey *key, Crypto_EncodingType type, const char *encodingStandard, OH_CryptoPrivKeyEncodingParams *params, Crypto_DataBlob *out)](#oh_cryptoprivkey_encode) | 对私钥进行编码。 |
+| [OH_Crypto_ErrCode OH_CryptoPrivKey_Encode(OH_CryptoPrivKey *key, Crypto_EncodingType type, const char *encodingStandard, OH_CryptoPrivKeyEncodingParams *params, Crypto_DataBlob *out)](#oh_cryptoprivkey_encode) | 对私钥进行编码。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放out内存。  |
 | [OH_Crypto_ErrCode OH_CryptoPrivKey_GetParam(OH_CryptoPrivKey *key, CryptoAsymKey_ParamType item, Crypto_DataBlob *value)](#oh_cryptoprivkey_getparam) | 获取私钥的指定参数。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放out内存。 |
 | [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenEcCommonParamsSpec(const char *curveName, OH_CryptoAsymKeySpec **spec)](#oh_cryptoasymkeyspec_geneccommonparamsspec) | 生成EC通用参数规格。<br> 注意：使用完成后必须通过[OH_CryptoAsymKeySpec_Destroy](capi-crypto-asym-key-h.md#oh_cryptoasymkeyspec_destroy)销毁spec内存。  |
 | [OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenDhCommonParamsSpec(int pLen, int skLen, OH_CryptoAsymKeySpec **spec)](#oh_cryptoasymkeyspec_gendhcommonparamsspec) | 生成DH通用参数规格。<br> 注意：使用完成后必须通过[OH_CryptoAsymKeySpec_Destroy](capi-crypto-asym-key-h.md#oh_cryptoasymkeyspec_destroy)销毁spec内存。  |
@@ -78,7 +78,7 @@
 | [OH_Crypto_ErrCode OH_CryptoEcPoint_Create(const char *curveName, Crypto_DataBlob *ecKeyData, OH_CryptoEcPoint **point)](#oh_cryptoecpoint_create) | 创建椭圆曲线点。<br> 注意：创建的资源必须通过[OH_CryptoEcPoint_Destroy](capi-crypto-asym-key-h.md#oh_cryptoecpoint_destroy)销毁。 |
 | [OH_Crypto_ErrCode OH_CryptoEcPoint_GetCoordinate(OH_CryptoEcPoint *point, Crypto_DataBlob *x, Crypto_DataBlob *y)](#oh_cryptoecpoint_getcoordinate) | 获取椭圆曲线点的x和y坐标。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放x和y内存。 |
 | [OH_Crypto_ErrCode OH_CryptoEcPoint_SetCoordinate(OH_CryptoEcPoint *point, Crypto_DataBlob *x, Crypto_DataBlob *y)](#oh_cryptoecpoint_setcoordinate) | 设置椭圆曲线点的x和y坐标。 |
-| [OH_Crypto_ErrCode OH_CryptoEcPoint_Encode(OH_CryptoEcPoint *point, const char *format, Crypto_DataBlob *out)](#oh_cryptoecpoint_encode) | 将椭圆曲线点编码为指定格式。 |
+| [OH_Crypto_ErrCode OH_CryptoEcPoint_Encode(OH_CryptoEcPoint *point, const char *format, Crypto_DataBlob *out)](#oh_cryptoecpoint_encode) | 将椭圆曲线点编码为指定格式。<br> 注意：使用完成后必须通过[OH_Crypto_FreeDataBlob](capi-crypto-common-h.md#oh_crypto_freedatablob)释放out内存。  |
 | [void OH_CryptoEcPoint_Destroy(OH_CryptoEcPoint *point)](#oh_cryptoecpoint_destroy) | 销毁椭圆曲线点。 |
 
 ## 枚举类型说明
@@ -97,36 +97,36 @@ enum CryptoAsymKey_ParamType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CRYPTO_DSA_P_DATABLOB = 101 | 表示DSA算法的素数p。<br>**起始版本：** 12 |
-| CRYPTO_DSA_Q_DATABLOB = 102 | 表示DSA算法的子素数q。<br>**起始版本：** 12 |
-| CRYPTO_DSA_G_DATABLOB = 103 | 表示DSA算法的基g。<br>**起始版本：** 12 |
-| CRYPTO_DSA_SK_DATABLOB = 104 | 表示DSA算法的私钥。<br>**起始版本：** 12 |
-| CRYPTO_DSA_PK_DATABLOB = 105 | 表示DSA算法的公钥。<br>**起始版本：** 12 |
-| CRYPTO_ECC_FP_P_DATABLOB = 201 | 表示椭圆曲线(EC)素数域的素数p。<br>**起始版本：** 12 |
-| CRYPTO_ECC_A_DATABLOB = 202 | 表示椭圆曲线的第一个系数a。<br>**起始版本：** 12 |
-| CRYPTO_ECC_B_DATABLOB = 203 | 表示椭圆曲线的第二个系数b。<br>**起始版本：** 12 |
-| CRYPTO_ECC_G_X_DATABLOB = 204 | 表示基点g的仿射x坐标。<br>**起始版本：** 12 |
-| CRYPTO_ECC_G_Y_DATABLOB = 205 | 表示基点g的仿射y坐标。<br>**起始版本：** 12 |
-| CRYPTO_ECC_N_DATABLOB = 206 | 表示基点g的阶。<br>**起始版本：** 12 |
-| CRYPTO_ECC_H_INT = 207 | 表示椭圆曲线的余因子。<br>**起始版本：** 12 |
-| CRYPTO_ECC_SK_DATABLOB = 208 | 表示ECC私钥的私钥值。<br>**起始版本：** 12 |
-| CRYPTO_ECC_PK_X_DATABLOB = 209 | 表示ECC公钥中公钥点的仿射x坐标。<br>**起始版本：** 12 |
-| CRYPTO_ECC_PK_Y_DATABLOB = 210 | 表示ECC公钥中公钥点的仿射y坐标。<br>**起始版本：** 12 |
-| CRYPTO_ECC_FIELD_TYPE_STR = 211 | 表示椭圆曲线有限域类型。<br>**起始版本：** 12 |
-| CRYPTO_ECC_FIELD_SIZE_INT = 212 | 表示有限域的比特长度。<br>**起始版本：** 12 |
-| CRYPTO_ECC_CURVE_NAME_STR = 213 | 表示SECG标准的曲线名称。<br>**起始版本：** 12 |
-| CRYPTO_RSA_N_DATABLOB = 301 | 表示RSA算法的模数n。<br>**起始版本：** 12 |
-| CRYPTO_RSA_D_DATABLOB = 302 | 表示RSA算法的私钥指数d。<br>**起始版本：** 12 |
-| CRYPTO_RSA_E_DATABLOB = 303 | 表示RSA算法的公钥指数e。<br>**起始版本：** 12 |
-| CRYPTO_DH_P_DATABLOB = 401 | 表示DH算法的素数p。<br>**起始版本：** 12 |
-| CRYPTO_DH_G_DATABLOB = 402 | 表示DH算法的生成元g。<br>**起始版本：** 12 |
-| CRYPTO_DH_L_INT = 403 | 表示DH算法中私钥长度的比特数。<br>**起始版本：** 12 |
-| CRYPTO_DH_SK_DATABLOB = 404 | 表示DH私钥的私钥值。<br>**起始版本：** 12 |
-| CRYPTO_DH_PK_DATABLOB = 405 | 表示DH公钥的公钥值。<br>**起始版本：** 12 |
-| CRYPTO_ED25519_SK_DATABLOB = 501 | 表示ED25519私钥的私钥值。<br>**起始版本：** 12 |
-| CRYPTO_ED25519_PK_DATABLOB = 502 | 表示ED25519公钥的公钥值。<br>**起始版本：** 12 |
-| CRYPTO_X25519_SK_DATABLOB = 601 | 表示X25519私钥的私钥值。<br>**起始版本：** 12 |
-| CRYPTO_X25519_PK_DATABLOB = 602 | 表示X25519公钥的公钥值。<br>**起始版本：** 12 |
+| CRYPTO_DSA_P_DATABLOB = 101 | 表示DSA算法的素数p。 |
+| CRYPTO_DSA_Q_DATABLOB = 102 | 表示DSA算法的子素数q。 |
+| CRYPTO_DSA_G_DATABLOB = 103 | 表示DSA算法的基g。 |
+| CRYPTO_DSA_SK_DATABLOB = 104 | 表示DSA算法的私钥。 |
+| CRYPTO_DSA_PK_DATABLOB = 105 | 表示DSA算法的公钥。 |
+| CRYPTO_ECC_FP_P_DATABLOB = 201 | 表示椭圆曲线(EC)素数域的素数p。 |
+| CRYPTO_ECC_A_DATABLOB = 202 | 表示椭圆曲线的第一个系数a。 |
+| CRYPTO_ECC_B_DATABLOB = 203 | 表示椭圆曲线的第二个系数b。 |
+| CRYPTO_ECC_G_X_DATABLOB = 204 | 表示基点g的仿射x坐标。 |
+| CRYPTO_ECC_G_Y_DATABLOB = 205 | 表示基点g的仿射y坐标。 |
+| CRYPTO_ECC_N_DATABLOB = 206 | 表示基点g的阶。 |
+| CRYPTO_ECC_H_INT = 207 | 表示椭圆曲线的余因子。 |
+| CRYPTO_ECC_SK_DATABLOB = 208 | 表示ECC私钥的私钥值。 |
+| CRYPTO_ECC_PK_X_DATABLOB = 209 | 表示ECC公钥中公钥点的仿射x坐标。 |
+| CRYPTO_ECC_PK_Y_DATABLOB = 210 | 表示ECC公钥中公钥点的仿射y坐标。 |
+| CRYPTO_ECC_FIELD_TYPE_STR = 211 | 表示椭圆曲线有限域类型。 |
+| CRYPTO_ECC_FIELD_SIZE_INT = 212 | 表示有限域的比特长度。 |
+| CRYPTO_ECC_CURVE_NAME_STR = 213 | 表示SECG标准的曲线名称。 |
+| CRYPTO_RSA_N_DATABLOB = 301 | 表示RSA算法的模数n。 |
+| CRYPTO_RSA_D_DATABLOB = 302 | 表示RSA算法的私钥指数d。 |
+| CRYPTO_RSA_E_DATABLOB = 303 | 表示RSA算法的公钥指数e。 |
+| CRYPTO_DH_P_DATABLOB = 401 | 表示DH算法的素数p。 |
+| CRYPTO_DH_G_DATABLOB = 402 | 表示DH算法的生成元g。 |
+| CRYPTO_DH_L_INT = 403 | 表示DH算法中私钥长度的比特数。 |
+| CRYPTO_DH_SK_DATABLOB = 404 | 表示DH私钥的私钥值。 |
+| CRYPTO_DH_PK_DATABLOB = 405 | 表示DH公钥的公钥值。 |
+| CRYPTO_ED25519_SK_DATABLOB = 501 | 表示ED25519私钥的私钥值。 |
+| CRYPTO_ED25519_PK_DATABLOB = 502 | 表示ED25519公钥的公钥值。 |
+| CRYPTO_X25519_SK_DATABLOB = 601 | 表示X25519私钥的私钥值。 |
+| CRYPTO_X25519_PK_DATABLOB = 602 | 表示X25519公钥的公钥值。 |
 
 ### Crypto_EncodingType
 
@@ -142,8 +142,8 @@ enum Crypto_EncodingType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CRYPTO_PEM = 0 | PEM格式。<br>**起始版本：** 12 |
-| CRYPTO_DER = 1 | DER格式。<br>**起始版本：** 12 |
+| CRYPTO_PEM = 0 | PEM格式。 |
+| CRYPTO_DER = 1 | DER格式。 |
 
 ### CryptoPrivKeyEncoding_ParamType
 
@@ -159,8 +159,8 @@ enum CryptoPrivKeyEncoding_ParamType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CRYPTO_PRIVATE_KEY_ENCODING_PASSWORD_STR = 0 | 表示密码字符串。<br>**起始版本：** 20 |
-| CRYPTO_PRIVATE_KEY_ENCODING_SYMMETRIC_CIPHER_STR = 1 | 对称加密算法名称，通过[OH_CryptoPrivKeyEncodingParams_SetParam](capi-crypto-asym-key-h.md#oh_cryptoprivkeyencodingparams_setparam)设置。取值："DES-EDE3-CBC"、"AES-128-CBC"、"AES-192-CBC"、"AES-256-CBC"。<br>**起始版本：** 20 |
+| CRYPTO_PRIVATE_KEY_ENCODING_PASSWORD_STR = 0 | 表示密码字符串。 |
+| CRYPTO_PRIVATE_KEY_ENCODING_SYMMETRIC_CIPHER_STR = 1 | 对称加密算法名称，通过[OH_CryptoPrivKeyEncodingParams_SetParam](capi-crypto-asym-key-h.md#oh_cryptoprivkeyencodingparams_setparam)设置。取值："DES-EDE3-CBC"、"AES-128-CBC"、"AES-192-CBC"、"AES-256-CBC"。 |
 
 ### CryptoAsymKeySpec_Type
 
@@ -176,10 +176,10 @@ enum CryptoAsymKeySpec_Type
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CRYPTO_ASYM_KEY_COMMON_PARAMS_SPEC = 0 | 通用参数规格。<br>**起始版本：** 20 |
-| CRYPTO_ASYM_KEY_PRIVATE_KEY_SPEC = 1 | 私钥规格。<br>**起始版本：** 20 |
-| CRYPTO_ASYM_KEY_PUBLIC_KEY_SPEC = 2 | 公钥规格。<br>**起始版本：** 20 |
-| CRYPTO_ASYM_KEY_KEY_PAIR_SPEC = 3 | 密钥对规格。<br>**起始版本：** 20 |
+| CRYPTO_ASYM_KEY_COMMON_PARAMS_SPEC = 0 | 通用参数规格。 |
+| CRYPTO_ASYM_KEY_PRIVATE_KEY_SPEC = 1 | 私钥规格。 |
+| CRYPTO_ASYM_KEY_PUBLIC_KEY_SPEC = 2 | 公钥规格。 |
+| CRYPTO_ASYM_KEY_KEY_PAIR_SPEC = 3 | 密钥对规格。 |
 
 
 ## 函数说明
@@ -202,7 +202,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Create(const char *algoName, OH_Cryp
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *algoName | [in] 非对称密钥算法名称，不能为NULL。取值如下：- 从API version 12开始支持RSA系列："RSA512"、"RSA768"、"RSA1024"、"RSA2048"、"RSA3072"、"RSA4096"、"RSA8192"。支持多素数格式，示例："RSA1024\|PRIMES_3"、"RSA4096\|PRIMES_4"、"RSA8192\|PRIMES_5"。- 从API version 12开始支持ECC系列："ECC224"、"ECC256"、"ECC384"、"ECC521"。- 从API version 12开始支持ECC BrainPool系列："ECC_BrainPoolP160r1"、"ECC_BrainPoolP160t1"、"ECC_BrainPoolP192r1"、"ECC_BrainPoolP192t1"、"ECC_BrainPoolP224r1"、"ECC_BrainPoolP224t1"、"ECC_BrainPoolP256r1"、"ECC_BrainPoolP256t1"、"ECC_BrainPoolP320r1"、"ECC_BrainPoolP320t1"、"ECC_BrainPoolP384r1"、"ECC_BrainPoolP384t1"、"ECC_BrainPoolP512r1"、"ECC_BrainPoolP512t1"。- 从API version 12开始支持"SM2_256"、"Ed25519"、"X25519"。- 从API version 12开始支持DSA系列："DSA1024"、"DSA2048"、"DSA3072"。- 从API version 12开始支持DH系列："DH_modp1536"、"DH_modp2048"、"DH_modp3072"、"DH_modp4096"、"DH_modp6144"、"DH_modp8192"、"DH_ffdhe2048"、"DH_ffdhe3072"、"DH_ffdhe4096"、"DH_ffdhe6144"、"DH_ffdhe8192"。- 从API version 14开始支持"ECC_Secp256k1"。- 从API版本26.0.0开始支持"ECC192"。 |
+| const char *algoName | [in] 非对称密钥算法名称，不能为NULL。取值如下：<br>- 从API version 12开始支持RSA系列："RSA512"、"RSA768"、"RSA1024"、"RSA2048"、"RSA3072"、"RSA4096"、"RSA8192"。支持多素数格式，示例："RSA1024\|PRIMES_3"、"RSA4096\|PRIMES_4"、"RSA8192\|PRIMES_5"。<br>- 从API version 12开始支持ECC系列："ECC224"、"ECC256"、"ECC384"、"ECC521"。<br>- 从API version 12开始支持ECC BrainPool系列："ECC_BrainPoolP160r1"、"ECC_BrainPoolP160t1"、"ECC_BrainPoolP192r1"、"ECC_BrainPoolP192t1"、"ECC_BrainPoolP224r1"、"ECC_BrainPoolP224t1"、"ECC_BrainPoolP256r1"、"ECC_BrainPoolP256t1"、"ECC_BrainPoolP320r1"、"ECC_BrainPoolP320t1"、"ECC_BrainPoolP384r1"、"ECC_BrainPoolP384t1"、"ECC_BrainPoolP512r1"、"ECC_BrainPoolP512t1"。<br>- 从API version 12开始支持"SM2_256"、"Ed25519"、"X25519"。<br>- 从API version 12开始支持DSA系列："DSA1024"、"DSA2048"、"DSA3072"。<br>- 从API version 12开始支持DH系列："DH_modp1536"、"DH_modp2048"、"DH_modp3072"、"DH_modp4096"、"DH_modp6144"、"DH_modp8192"、"DH_ffdhe2048"、"DH_ffdhe3072"、"DH_ffdhe4096"、"DH_ffdhe6144"、"DH_ffdhe8192"。<br>- 从API version 14开始支持"ECC_Secp256k1"。<br>- 从API版本26.0.0开始支持"ECC192"。 |
 | [OH_CryptoAsymKeyGenerator](capi-cryptoasymkeyapi-oh-cryptoasymkeygenerator.md) **ctx | [out] 指向非对称密钥生成器指针的指针。ctx不能为NULL，*ctx必须为NULL。 |
 
 **返回：**
@@ -672,7 +672,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeySpec_Create(const char *algoName, CryptoAsymKe
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *algoName | [in] 非对称密钥规格算法名称，不能为NULL。取值如下：- 从API version 20开始支持"RSA"、"ECC"、"DSA"、"SM2"、"Ed25519"、"X25519"、"DH"。 |
+| const char *algoName | [in] 非对称密钥规格算法名称，不能为NULL。取值如下：<br>- 从API version 20开始支持"RSA"、"ECC"、"DSA"、"SM2"、"Ed25519"、"X25519"、"DH"。 |
 | [CryptoAsymKeySpec_Type](capi-crypto-asym-key-h.md#cryptoasymkeyspec_type) type | [in] 非对称密钥规格类型。 |
 | [OH_CryptoAsymKeySpec](capi-cryptoasymkeyapi-oh-cryptoasymkeyspec.md) **spec | [out] 指向非对称密钥规格指针的指针。spec不能为NULL，*spec必须为NULL。 |
 

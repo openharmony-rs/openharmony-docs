@@ -80,12 +80,12 @@ enum CryptoSignature_ParamType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| CRYPTO_PSS_MD_NAME_STR = 100 | 表示消息摘要函数的算法名称。<br>**起始版本：** 12 |
-| CRYPTO_PSS_MGF_NAME_STR = 101 | 表示掩码生成函数的算法名称。<br>**起始版本：** 12 |
-| CRYPTO_PSS_MGF1_NAME_STR = 102 | 表示MGF1掩码生成函数的消息摘要参数。<br>**起始版本：** 12 |
-| CRYPTO_PSS_SALT_LEN_INT = 103 | 表示盐值的字节长度。<br>**起始版本：** 12 |
-| CRYPTO_PSS_TRAILER_FIELD_INT = 104 | 表示尾部字段的值。<br>**起始版本：** 12 |
-| CRYPTO_SM2_USER_ID_DATABLOB = 105 | 表示SM2算法的用户ID值。<br>**起始版本：** 12 |
+| CRYPTO_PSS_MD_NAME_STR = 100 | 表示消息摘要函数的算法名称。 |
+| CRYPTO_PSS_MGF_NAME_STR = 101 | 表示掩码生成函数的算法名称。 |
+| CRYPTO_PSS_MGF1_NAME_STR = 102 | 表示MGF1掩码生成函数的消息摘要参数。 |
+| CRYPTO_PSS_SALT_LEN_INT = 103 | 表示盐值的字节长度。 |
+| CRYPTO_PSS_TRAILER_FIELD_INT = 104 | 表示尾部字段的值。 |
+| CRYPTO_SM2_USER_ID_DATABLOB = 105 | 表示SM2算法的用户ID值。 |
 
 
 ## 函数说明
@@ -108,7 +108,7 @@ OH_Crypto_ErrCode OH_CryptoVerify_Create(const char *algoName, OH_CryptoVerify *
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *algoName | [in] 验签算法名称，不能为NULL。取值如下：- RSA PKCS1模式：格式为"RSA\|PKCS1\|摘要"，示例："RSA\|PKCS1\|SHA256"、"RSA\|PKCS1\|SHA512"。摘要支持"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。- RSA PSS模式：格式为"RSA\|PSS\|摘要\|MGF1摘要"，示例："RSA\|PSS\|SHA256\|MGF1_SHA256"。摘要支持"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。MGF1摘要支持"MGF1_MD5"、"MGF1_SHA1"、"MGF1_SHA224"、"MGF1_SHA256"、"MGF1_SHA384"、"MGF1_SHA512"。- RSA验签恢复：格式为"RSA\|PKCS1\|摘要\|Recover"，示例："RSA\|PKCS1\|SHA256\|Recover"、"RSA\|PKCS1\|SHA512\|Recover"。摘要支持"NoHash"、"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。- ECDSA算法：格式为"ECC\|摘要"，示例："ECC\|SHA256"、"ECC\|SHA384"。摘要支持"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。- DSA算法：格式为"DSA\|摘要"，示例："DSA\|SHA256"、"DSA\|SHA384"。摘要支持"NoHash"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。- SM2算法：取值为"SM2\|SM3"。- Ed25519算法：取值为"Ed25519"。 |
+| const char *algoName | [in] 验签算法名称，不能为NULL。取值如下：<br>- RSA PKCS1模式：格式为"RSA\|PKCS1\|摘要"，示例："RSA\|PKCS1\|SHA256"、"RSA\|PKCS1\|SHA512"。摘要支持"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。<br>- RSA PSS模式：格式为"RSA\|PSS\|摘要\|MGF1摘要"，示例："RSA\|PSS\|SHA256\|MGF1_SHA256"。摘要支持"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。MGF1摘要支持"MGF1_MD5"、"MGF1_SHA1"、"MGF1_SHA224"、"MGF1_SHA256"、"MGF1_SHA384"、"MGF1_SHA512"。<br>- RSA验签恢复：格式为"RSA\|PKCS1\|摘要\|Recover"，示例："RSA\|PKCS1\|SHA256\|Recover"、"RSA\|PKCS1\|SHA512\|Recover"。摘要支持"NoHash"、"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。<br>- ECDSA算法：格式为"ECC\|摘要"，示例："ECC\|SHA256"、"ECC\|SHA384"。摘要支持"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。<br>- DSA算法：格式为"DSA\|摘要"，示例："DSA\|SHA256"、"DSA\|SHA384"。摘要支持"NoHash"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。<br>- SM2算法：取值为"SM2\|SM3"。<br>- Ed25519算法：取值为"Ed25519"。 |
 | [OH_CryptoVerify](capi-cryptosignatureapi-oh-cryptoverify.md) **verify | [out] 指向验签上下文指针的指针。verify不能为NULL，*verify必须为NULL。 |
 
 **返回：**
@@ -354,7 +354,7 @@ OH_Crypto_ErrCode OH_CryptoSign_Create(const char *algoName, OH_CryptoSign **sig
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *algoName | [in] 签名算法名称，不能为NULL。取值如下：- RSA PKCS1模式：格式为"RSA\|PKCS1\|摘要"，示例："RSA\|PKCS1\|SHA256"、"RSA\|PKCS1\|SHA512"。摘要支持"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。- RSA PSS模式：格式为"RSA\|PSS\|摘要\|MGF1摘要"，示例："RSA\|PSS\|SHA256\|MGF1_SHA256"。摘要支持"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。MGF1摘要支持"MGF1_MD5"、"MGF1_SHA1"、"MGF1_SHA224"、"MGF1_SHA256"、"MGF1_SHA384"、"MGF1_SHA512"。- RSA仅签名：格式为"RSA\|PKCS1\|摘要\|OnlySign"，示例："RSA\|PKCS1\|SHA256\|OnlySign"、"RSA\|PKCS1\|SHA512\|OnlySign"。摘要支持"NoHash"、"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。- ECDSA算法：格式为"ECC\|摘要"，示例："ECC\|SHA256"、"ECC\|SHA384"。摘要支持"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。- DSA算法：格式为"DSA\|摘要"，示例："DSA\|SHA256"、"DSA\|SHA384"。摘要支持"NoHash"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。- SM2算法：取值为"SM2\|SM3"。- Ed25519算法：取值为"Ed25519"。 |
+| const char *algoName | [in] 签名算法名称，不能为NULL。取值如下：<br>- RSA PKCS1模式：格式为"RSA\|PKCS1\|摘要"，示例："RSA\|PKCS1\|SHA256"、"RSA\|PKCS1\|SHA512"。摘要支持"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。<br>- RSA PSS模式：格式为"RSA\|PSS\|摘要\|MGF1摘要"，示例："RSA\|PSS\|SHA256\|MGF1_SHA256"。摘要支持"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。MGF1摘要支持"MGF1_MD5"、"MGF1_SHA1"、"MGF1_SHA224"、"MGF1_SHA256"、"MGF1_SHA384"、"MGF1_SHA512"。<br>- RSA仅签名：格式为"RSA\|PKCS1\|摘要\|OnlySign"，示例："RSA\|PKCS1\|SHA256\|OnlySign"、"RSA\|PKCS1\|SHA512\|OnlySign"。摘要支持"NoHash"、"MD5"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。<br>- ECDSA算法：格式为"ECC\|摘要"，示例："ECC\|SHA256"、"ECC\|SHA384"。摘要支持"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。<br>- DSA算法：格式为"DSA\|摘要"，示例："DSA\|SHA256"、"DSA\|SHA384"。摘要支持"NoHash"、"SHA1"、"SHA224"、"SHA256"、"SHA384"、"SHA512"。<br>- SM2算法：取值为"SM2\|SM3"。<br>- Ed25519算法：取值为"Ed25519"。 |
 | [OH_CryptoSign](capi-cryptosignatureapi-oh-cryptosign.md) **sign | [out] 指向签名上下文指针的指针。sign不能为NULL，*sign必须为NULL。 |
 
 **返回：**
@@ -691,5 +691,7 @@ void OH_CryptoEccSignatureSpec_Destroy(OH_CryptoEccSignatureSpec *spec)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_CryptoEccSignatureSpec](capi-cryptosignatureapi-oh-cryptoeccsignaturespec.md) *spec | [in] ECC签名规格。 |
+
+
 
 

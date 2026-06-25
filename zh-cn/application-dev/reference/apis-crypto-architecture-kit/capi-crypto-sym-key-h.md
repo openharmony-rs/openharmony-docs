@@ -61,7 +61,7 @@ OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Create(const char *algoName, OH_Crypt
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *algoName | [in] 对称密钥算法名称，不能为NULL。取值如下：- 从API version 12开始支持"AES128"、"AES192"、"AES256"、"3DES192"、"HMAC\|SHA1"、"HMAC\|SHA224"、"HMAC\|SHA256"、"HMAC\|SHA384"、"HMAC\|SHA512"、"HMAC\|SM3"、"HMAC\|MD5"。从API version 26.0.0开始支持"HMAC\|SHA3-256"、"HMAC\|SHA3-384"、"HMAC\|SHA3-512"。- 从API version 12开始支持"SM4_128"。- 从API version 20开始支持"DES64"。- 从API version 22开始支持"ChaCha20"。- 从API version 26.0.0开始支持"RC2"、"RC4"、"Blowfish"、"CAST"。注意仅支持将对称密钥数据转换为对称密钥，不支持随机生成。 |
+| const char *algoName | [in] 对称密钥算法名称，不能为NULL。取值如下：<br>- 从API version 12开始支持"AES128"、"AES192"、"AES256"、"3DES192"、"HMAC\|SHA1"、"HMAC\|SHA224"、"HMAC\|SHA256"、"HMAC\|SHA384"、"HMAC\|SHA512"、"HMAC\|SM3"、"HMAC\|MD5"。从API version 26.0.0开始支持"HMAC\|SHA3-256"、"HMAC\|SHA3-384"、"HMAC\|SHA3-512"。<br>- 从API version 12开始支持"SM4_128"。<br>- 从API version 20开始支持"DES64"。<br>- 从API version 22开始支持"ChaCha20"。<br>- 从API version 26.0.0开始支持"RC2"、"RC4"、"Blowfish"、"CAST"。注意仅支持将对称密钥数据转换为对称密钥，不支持随机生成。 |
 | [OH_CryptoSymKeyGenerator](capi-cryptosymkeyapi-oh-cryptosymkeygenerator.md) **ctx | [out] 指向对称密钥生成器指针的指针。ctx不能为NULL，*ctx必须为NULL。 |
 
 **返回：**
