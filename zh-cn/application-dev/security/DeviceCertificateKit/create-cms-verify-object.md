@@ -109,7 +109,12 @@ async function createX509Cert(inStream: string): Promise<cert.X509Cert> {
     encodingFormat: cert.EncodingFormat.FORMAT_PEM
 
   };
-  let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
+  let x509Cert: cert.X509Cert = {} as cert.X509Cert;
+  try {
+    x509Cert = await cert.createX509Cert(encodingBlob);
+  } catch (error) {
+    console.error(`createX509Cert failed: errCode: ${error.code}, message: ${error.message}`);
+  }
 
   return x509Cert;
 }
