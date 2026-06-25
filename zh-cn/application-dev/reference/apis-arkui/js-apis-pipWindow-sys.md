@@ -67,7 +67,7 @@ try {
     return;
   }
   let isSupported: boolean = this.pipController!.isPiPSupported();
-  console.info('isPiPSupported:' + isSupported);
+  console.info('isPiPSupported: ' + isSupported);
 } catch (exception) {
   console.error(`Failed to check if pip is supported. Cause code: ${exception.code}, message: ${exception.message}`);
 }
