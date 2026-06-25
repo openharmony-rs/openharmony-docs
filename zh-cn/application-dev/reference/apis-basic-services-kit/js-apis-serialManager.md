@@ -904,7 +904,7 @@ function writeSync() {
     console.error('writeSync usbSerial error, ' + JSON.stringify(error));
   }
   
-  //关闭串口
+  // 关闭串口
   try {
     serialManager.close(portId);
     console.info('close usbSerial success, portId: ' + portId);
