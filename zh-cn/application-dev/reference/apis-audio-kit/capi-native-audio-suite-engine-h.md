@@ -647,7 +647,7 @@ OH_AudioSuite_Result OH_AudioSuiteEngine_ConnectNodes(OH_AudioNode* sourceAudioN
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioSuite_Result](capi-native-audio-suite-base-h.md#oh_audiosuite_result) | AUDIOSUITE_SUCCESS：函数执行成功。<br>         AUDIOSUITE_ERROR_INVALID_PARAM：参数sourceAudioNode或destAudioNode为空指针。<br>         AUDIOSUITE_ERROR_NODE_NOT_EXIST：节点不存在或者当前节点已经被销毁。<br>         AUDIOSUITE_ERROR_UNSUPPORTED_CONNECT：节点之间不支持连接。<br>         可能的原因如下：<br>         1. 参数sourceAudioNode类型为输出类型节点；<br>         2. 参数destAudioNode为类型为输入类型节点；<br>         3. 参数sourceAudioNode和destAudioNode为同一个节点；<br>         4. 参数sourceAudioNode为音源分离类型，但是destAudioNode类型不为输出类型节点；<br>         5. 参数sourceAudioNode和destAudioNode不为同一个管线中的节点；<br>         6. 管线状态为运行状态，但是destAudioNode不为mix类型节点；<br>         7. 管线状态为运行状态，destAudioNode为mix类型节点，但是sourceAudioNode节点未连接输入类型节点。<br>         AUDIOSUITE_ERROR_INVALID_STATE：管线为无效状态。例如，无法找到输出节点。<br>         AUDIOSUITE_ERROR_TIMEOUT：操作处理超时。<br>         AUDIOSUITE_ERROR_SYSTEM：系统发生其他异常。 |
+         2. 参数destAudioNode类型为输入类型节点；
 
 ### OH_AudioSuiteEngine_DisconnectNodes()
 
