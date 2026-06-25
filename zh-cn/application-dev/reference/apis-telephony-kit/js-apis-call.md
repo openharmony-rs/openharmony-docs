@@ -331,9 +331,9 @@ makeCallWithToken\(phoneNumber: string, options?: MakeCallOptions\): Promise\<st
 
 跳转到拨号界面，并显示待拨出的号码。使用Promise异步回调。
 
-**说明**:
-
-该接口返回校验token，应用可以利用phoneNumber和token去实现特定能力，比如蜂窝下行流的录制。
+> **说明**:
+>
+> 该接口返回校验token，应用可以利用phoneNumber和token去实现特定能力，比如蜂窝下行流的录制。
 
 **起始版本**: 26.0.0
 
