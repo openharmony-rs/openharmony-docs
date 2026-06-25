@@ -13248,7 +13248,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/grid/GridEts.ets",
 				"functions":[
 					{
-						"end_line":280,
+						"end_line":281,
 						"name":"grid_start",
 						"start_line":148
 					},
@@ -13268,17 +13268,17 @@
 						"start_line":165
 					},
 					{
-						"end_line":338,
+						"end_line":339,
 						"name":"grid_previewData_start",
 						"start_line":60
 					},
 					{
-						"end_line":339,
+						"end_line":340,
 						"name":"grid_styles_start",
 						"start_line":71
 					},
 					{
-						"end_line":340,
+						"end_line":341,
 						"name":"grid_numberBadge_start",
 						"start_line":64
 					},
@@ -13778,7 +13778,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/singlegesture/TapGesture.ets",
 				"functions":[
 					{
-						"end_line":56,
+						"end_line":61,
 						"name":"catch_click_twice_event",
 						"start_line":18
 					}
@@ -14008,7 +14008,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/MouseWheel/MouseWheel.ets",
 				"functions":[
 					{
-						"end_line":77,
+						"end_line":73,
 						"name":"mouse_wheel",
 						"start_line":17
 					}
