@@ -637,9 +637,19 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 
 组件属性方法参数可使用CustomBuilder类型来自定义UI描述。
 
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            | 类型定义                   | 描述                                       |
 | ------------- | ---------------------- | ---------------------------------------- |
-| CustomBuilder | (()&nbsp;=&gt;&nbsp;any) \| void | 生成用户自定义组件，在使用时结合[@Builder](../../../ui/state-management/arkts-builder.md)使用。 |
+| CustomBuilder | **ArkTS-Dyn：**(()&nbsp;=&gt;&nbsp;any) \| void<br>**ArkTS-Sta：**@Builder (() => void) | 生成用户自定义组件，在使用时结合[@Builder](../../../ui/state-management/arkts-builder.md)使用。 |
 
 ## CustomBuilderT\<T><sup>23+</sup>
 
