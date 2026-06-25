@@ -1,4 +1,4 @@
-# 媒体数据解析
+# 媒体数据解封装
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
@@ -11,7 +11,7 @@
 
 当前支持的数据输入类型有：远程连接(http协议)和文件描述符(fd)。
 
-当前支持的解封装格式请参考[AVCodec支持的格式](avcodec-support-formats.md#媒体数据解析)。
+当前支持的解封装格式请参考[AVCodec支持的格式](avcodec-support-formats.md#媒体数据解封装)。
 
 **适用场景**：
 
@@ -82,9 +82,9 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
       printf("get stat failed");
       return;
    }
-   // 注意：offset（文件起始偏移）、fileSize（文件大小）需与待解析文件匹配。
-   // fd 指向单个资源文件时，offset为0、fileSize为资源文件大小。
-   // fd 指向多个连续拼接的资源文件时（如多个mp3二进制拼接）：offset、fileSize 按待解析文件实际偏移和大小设置。
+   // 注意：offset（文件起始偏移）、fileSize（文件大小）需与待解封装文件匹配。
+   // fd指向单个资源文件时，offset为0、fileSize为资源文件大小。
+   // fd指向多个连续拼接的资源文件时（如多个mp3二进制拼接）：offset、fileSize按待解封装文件实际偏移和大小设置。
    OH_AVSource *source = OH_AVSource_CreateWithFD(fd, 0, fileSize);
    if (source == nullptr) {
       printf("create source failed");
@@ -422,7 +422,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 ### 文件级别属性支持范围
 
 > **说明：**
-> - 正常解析时才可以获取对应属性数据，如果文件信息错误或缺失，将导致解析异常，无法获取数据。
+> - 正常解封装时才可以获取对应属性数据，如果文件信息错误或缺失，将导致解封装异常，无法获取数据。
 > - 当前GBK格式字符集数据会转换为UTF8提供，其他类型字符集如果需要转换为UTF8格式使用，需要调用方自行转换，参考[icu4c](../../reference/native-lib/icu4c.md)。
 > - 从API version 23开始，部分OGG格式资源，如OH_MD_KEY_TITLE、OH_MD_KEY_ARTIST和OH_MD_KEY_ALBUM存在于轨道属性中，可从轨道级别属性中获取。
 > - 数据类型及详细取值范围参考[媒体数据键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)。
@@ -448,7 +448,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 ### 轨道级别属性支持范围
 
 > **说明：**
-> 正常解析时才可以获取对应属性数据；如果文件信息错误或缺失，将导致解析异常，无法获取数据。
+> 正常解封装时才可以获取对应属性数据；如果文件信息错误或缺失，将导致解封装异常，无法获取数据。
 > 辅助轨属性范围与实际媒体类型（音频、视频）保持一致。
 > 
 > 数据类型及详细取值范围参考[媒体数据键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)。
