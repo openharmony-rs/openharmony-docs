@@ -355,7 +355,7 @@ call.makeCall(context, "138xxxxxxxx").then(() => {
 
 ## call.makeCallWithToken
  	 
-makeCallWithToken\(phoneNumber: string, options?: MakeCallOptions\): Promise\<string\>;
+makeCallWithToken\(phoneNumber: string, options?: MakeCallOptions\): Promise\<string\>
  	 
 跳转到拨号界面，并显示待拨出的号码。使用Promise异步回调。
  	 
