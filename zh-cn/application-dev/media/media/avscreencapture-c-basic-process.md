@@ -192,18 +192,18 @@ void OnStateChange(struct OH_AVScreenCapture *capture, OH_AVScreenCaptureStateCo
 {
     if (stateCode == OH_SCREEN_CAPTURE_STATE_STARTED) {
         OH_LOG_INFO(LOG_APP, "==ScreenCaptureSample== ScreenCapture OnStateChange started");
-        // 处理状态变更。
-        // 可选，配置录屏旋转。
+        // 处理状态变更
+        // 可选 配置录屏旋转
         int32_t ret = OH_AVScreenCapture_SetCanvasRotation(capture, true);
-        // 可选，修改Canvas分辨率。
+        // 可选 修改Canvas分辨率
         ret = OH_AVScreenCapture_ResizeCanvas(g_avCapture, CANVAS_RESIZE_WIDTH, CANVAS_RESIZE_HEIGHT);
-        // 可选，设置是否显示光标。
+        // 可选 设置是否显示光标
         ret = OH_AVScreenCapture_ShowCursor(g_avCapture, true);
-        // 可选，设置视频最大帧率。
+        // 可选 设置视频最大帧率
         ret = OH_AVScreenCapture_SetMaxVideoFrameRate(g_avCapture, CAPTURE_VIDEO_FRAME_RATE);
     }
     if (stateCode == OH_SCREEN_CAPTURE_STATE_INTERRUPTED_BY_OTHER) {
-        // 处理状态变更。
+        // 处理状态变更
     }
     (void)userData;
 }
@@ -261,13 +261,13 @@ void OnBufferAvailable(OH_AVScreenCapture *capture, OH_AVBuffer *buffer, OH_AVSc
     OH_LOG_INFO(LOG_APP, "==ScreenCaptureSample== ScreenCapture OnBufferAvailable bufferType is %{public}d",
         bufferType);
     if (bufferType == OH_SCREEN_CAPTURE_BUFFERTYPE_VIDEO) {
-        // 处理视频buffer。
+        // 处理视频buffer
         HandleVideoBuffer(buffer);
     } else if (bufferType == OH_SCREEN_CAPTURE_BUFFERTYPE_AUDIO_INNER) {
-        // 处理内录buffer。
+        // 处理内录buffer
         HandleAudioBuffer(buffer, g_innerFile, "ScreenCapture OnBufferAvailable inner audio");
     } else if (bufferType == OH_SCREEN_CAPTURE_BUFFERTYPE_AUDIO_MIC) {
-        // 处理麦克风buffer。
+        // 处理麦克风buffer
         HandleAudioBuffer(buffer, g_micFile, "ScreenCapture OnBufferAvailable mic audio");
     }
     return;
