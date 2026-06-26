@@ -200,7 +200,7 @@ try {
 
 setUsbStorageDeviceAccessPolicy(admin: Want, usbPolicy: UsbPolicy): void
 
-设置USB存储设备访问策略。
+设置USB存储设备（baseClass = 0X08）访问策略。
 
 > **说明**：
 > 在调用接口前，确保已暂停USB存储设备的读写操作，保证操作的稳定性和数据的完整性，否则可能出现不可预期的异常。
@@ -270,7 +270,7 @@ try {
 
 getUsbStorageDeviceAccessPolicy(admin: Want): UsbPolicy
 
-获取USB存储设备访问策略。
+获取USB存储设备（baseClass = 0X08）访问策略。
 
 **需要权限：** API版本26.0.0之前：ohos.permission.ENTERPRISE_MANAGE_USB，API版本26.0.0开始：ohos.permission.ENTERPRISE_MANAGE_USB 或者 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS（应用[激活为自带设备管理应用](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)）。
 
