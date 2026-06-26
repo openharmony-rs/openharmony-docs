@@ -3411,7 +3411,7 @@ startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&l
   import { geoLocationManager } from '@kit.LocationKit';
 
   let request: geoLocationManager.BluetoothSearchRequestParams = {
-    'rssiThreshold': -10000,
+    'rssiThreshold': -55,
     'deviceIdArray': ['XX:XX:XX:XX:XX:XX','YY:YY:YY:YY:YY:YY','ZZ:ZZ:ZZ:ZZ:ZZ:ZZ']
   };
   try {
@@ -3461,7 +3461,7 @@ stopBluetoothSearch(callback?: Callback&lt;BluetoothScanResult&gt;): void
   import { geoLocationManager } from '@kit.LocationKit';
 
   let request: geoLocationManager.BluetoothSearchRequestParams = {
-    'rssiThreshold': -10000,
+    'rssiThreshold': -55,
     'deviceIdArray': ['XX:XX:XX:XX:XX:XX','YY:YY:YY:YY:YY:YY','ZZ:ZZ:ZZ:ZZ:ZZ:ZZ']
   };
   let callback = (bluetoothScanResult: geoLocationManager.BluetoothScanResult) => {
