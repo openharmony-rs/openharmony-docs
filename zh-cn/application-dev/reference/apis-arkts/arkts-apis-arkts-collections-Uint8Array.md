@@ -1103,7 +1103,7 @@ set(array: ArrayLike\<number>, offset?: number): void
 **参数：**
 | 参数名    | 类型   | 必填 | 说明                                                 |
 | --------- | ------ | ---- | ---------------------------------------------------- |
-| array | ArrayLike\<number> | 是  | 用于设置的ArrayLike对象。，数值元素的取值范围为0~255，超出范围的值会被截断处理。 |
+| array | ArrayLike\<number> | 是  | 用于设置的ArrayLike对象。数值元素的取值范围为0~255，超出范围的值会被截断处理。 |
 | offset | number | 否  | 写入的起始位置，取值为非负整数，且offset与array.length之和不能超过ArkTS Uint8Array的长度。默认为0。 |
 
 **错误码：**
