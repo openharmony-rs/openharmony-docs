@@ -82,7 +82,7 @@ int32_t OH_BackgroundTaskManager_GetRemainingDelayTime(int32_t requestId, int32_
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t requestId | 短时任务的请求ID。为[OH_BackgroundTaskManager_RequestSuspendDelay](#oh_backgroundtaskmanager_requestsuspenddelay)成功返回的requestID。|
+| int32_t requestId | 短时任务的请求ID。为[OH_BackgroundTaskManager_RequestSuspendDelay](#oh_backgroundtaskmanager_requestsuspenddelay)成功返回的requestId。|
 | int32_t *delayTime | 短时任务的剩余时间，单位：ms。 |
 
 **返回：**
