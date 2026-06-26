@@ -12,8 +12,9 @@
 >
 > - 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canIUse()](../common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此SysCap及对应接口。
-
+> - 在OpenHarmony 7.0.0之前，支持在Tablet设备的非[电脑模式](../../windowmanager/freeform-window-overview.md#电脑模式)、Phone设备使用闪控球功能，其他设备不可用；从OpenHarmony 7.0.0开始，支持在Phone、PC/2in1、Tablet设备使用闪控球功能，其他设备不可用。
+>
+> - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canIUse()](../common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。
 
 **闪控球和闪控窗对比**
 
@@ -63,7 +64,7 @@ create(config: FloatingBallConfiguration): Promise&lt;FloatingBallController&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在Tablet设备的非电脑模式、Phone设备下可正常调用，在其他设备、Tablet设备的电脑模式下调用返回801错误码。
+**设备行为差异：** 在OpenHarmony 7.0.0之前，该接口在Tablet设备的非[电脑模式](../../windowmanager/freeform-window-overview.md#电脑模式)、Phone设备下可正常调用，在其他设备、Tablet设备的[电脑模式](../../windowmanager/freeform-window-overview.md#电脑模式)下调用返回801错误码。从OpenHarmony 7.0.0开始，支持在Phone、PC/2in1、Tablet设备使用，其他设备调用返回801错误码。
 
 **参数：**
 
