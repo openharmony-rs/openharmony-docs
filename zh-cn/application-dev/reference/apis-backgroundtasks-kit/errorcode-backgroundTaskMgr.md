@@ -214,7 +214,7 @@ Transient task verification failed.
 
 1. 调用[requestSuspendDelay](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerrequestsuspenddelay)方法传递的callback对象已存在。
 2. 调用[cancelSuspendDelay](./js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagercancelsuspenddelay)方法传递的callback对象不存在。
-3. 应用退入后台后5s内允许申请短时任务，超过此时间限制会导致校验失败。 
+3. 应用退入后台后5s内允许申请短时任务，超过此时间限制会导致校验失败。
 4. 应用申请短时任务数量不能超过3个。
 5. 应用申请短时任务每日剩余配额不足。
 

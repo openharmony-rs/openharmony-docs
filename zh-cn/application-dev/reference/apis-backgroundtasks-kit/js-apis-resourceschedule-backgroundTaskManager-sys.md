@@ -639,7 +639,7 @@ onContinuousTaskStop(info: ContinuousTaskInfo): void
 |------| ------- | ---- |-------------------|
 | info | [ContinuousTaskInfo](./js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20) | 是    | 长时任务回调信息，长时任务ID、长时任务类型等。 |
 
-**示例**：
+**示例：**
 
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
