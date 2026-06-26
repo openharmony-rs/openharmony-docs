@@ -33,28 +33,83 @@ Operation failed.
 
 ## 2501000 STA内部异常
 
-**错误信息**
-
-Operation failed.
-
 **错误描述**
 
 WIFI服务内部执行STA相关操作时出现未知错误。
 
 **可能原因**
 
-1. 和WIFI服务建立通信异常，WIFI芯片通信异常。错误信息：Operation failed。
-2. 飞行模式开启导致功能异常。错误信息：Flight mode is enabled。
-3. 省电模式开启导致功能异常。错误信息：Power saving mode is enabled。
-4. 服务正在关闭导致功能异常。错误信息：Operation failed because the service is being closed。
-5. 扫描服务未开启导致功能异常。错误信息：Scanning service is not enabled。
-6. AP服务未开启导致功能异常。错误信息：Ap service is not enabled。
-7. 配置无效导致功能异常。错误信息：Configuration is invalid。
-8. P2P MAC地址未找到导致功能异常。错误信息：P2P MAC address not found。
-9. P2P MAC地址格式错误导致功能异常。错误信息：P2P MAC address format error。
-10. P2P内部服务异常导致功能异常。错误信息：P2P Internal service exception。
-11. P2P参数大小错误导致功能异常。错误信息：P2P wrong parameter size。
-12. 移动冻结扫描控制导致功能异常。错误信息：moving freeze scanning control。
+### 和WIFI服务建立通信异常，WIFI芯片通信异常。
+
+**错误信息**
+
+Operation failed
+
+### 飞行模式开启导致功能异常。
+
+**错误信息**
+
+Flight mode is enabled
+
+### 省电模式开启导致功能异常
+
+**错误信息**
+
+Power saving mode is enabled。
+
+### 服务正在关闭导致功能异常
+
+**错误信息**
+
+Operation failed because the service is being closed
+
+### 扫描服务未开启导致功能异常
+
+**错误信息**
+
+Ap service is not enabled
+
+### AP服务未开启导致功能异常
+
+**错误信息**
+
+Ap service is not enabled
+
+### 配置无效导致功能异常
+
+**错误信息**
+
+Configuration is invalid
+
+### P2P MAC地址未找到导致功能异常。
+
+**错误信息**
+
+P2P MAC address not found
+
+### P2P MAC地址格式错误导致功能异常
+
+**错误信息**
+
+P2P MAC address format error
+
+### P2P内部服务异常导致功能异常
+
+**错误信息**
+
+P2P Internal service exception
+
+### P2P参数大小错误导致功能异常
+
+**错误信息**
+
+P2P wrong parameter size
+
+### 移动冻结扫描控制导致功能异常
+
+**错误信息**
+
+moving freeze scanning control
 
 **处理步骤**
 
