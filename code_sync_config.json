@@ -17068,6 +17068,26 @@
 						"start_line":17
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/MediaQueryExample.ets",
+				"functions":[
+					{
+						"end_line":105,
+						"name":"obtain_mediaquery_all",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MediaQuerySample/entry/src/main/ets/pages/MediaQuerySample.ets",
+				"functions":[
+					{
+						"end_line":120,
+						"name":"obtain_mediaquery_all",
+						"start_line":17
+					}
+				]
 			}
 		]
 	},
