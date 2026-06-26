@@ -4581,7 +4581,7 @@ syncContacts(context: Context, mode: ContactSyncMode, progress: ContactSyncProgr
 
 | 类型                  | 说明                              |
 | --------------------- | --------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回联系人创建结果的数组。有效的联系人ID表示创建成功。 |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回联系人创建结果的数组。有效的联系人ID表示创建成功。 |
 
 **错误码：**
 
@@ -4594,7 +4594,7 @@ syncContacts(context: Context, mode: ContactSyncMode, progress: ContactSyncProgr
 | 16700002      | Invalid parameter value. |
 | 16700003      | Background usage is prohibited. |
 | 16700004      | The number of contacts exceeds the limit. |
-| 16700103      | User canceled. |
+| 16700103      | User cancel. |
 
 **示例：**
 
@@ -4660,7 +4660,7 @@ queryContactSyncInfo(context: Context): Promise&lt;Array&lt;ContactSyncInfo&gt;&
 
 **原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
-**需要权限**：ohos.permission.WRITE_CONTACTS
+**需要权限**：ohos.permission.READ_CONTACTS
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -4740,7 +4740,7 @@ importContactsViaUI(context: Context, contacts: Array&lt;Contact&gt;): Promise&l
 | 16700001      | General error. |
 | 16700002      | Invalid parameter value. |
 | 16700004      | The number of contacts exceeds the limit. |
-| 16700103      | User canceled. |
+| 16700103      | User cancel. |
 
 **示例：**
 
@@ -5540,12 +5540,14 @@ let website: contact.Website = {
 
 **原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Applications.ContactsData
 
 | 名称                  | 值 | 说明                               |
 | --------------------- | ---- | ---------------------------------- |
-| MODE_INCREMENTAL    | 1 | 表示将在数据库中插入或更新云端和本地之间不同的联系人。<br/>**系统能力**：SystemCapability.Applications.Contacts |
-| MODE_CLOUD_BASED            | 2 | 表示所有本地联系人将被云联系人替换。当使用云覆盖本地模式进行批量同步时，在第一次批量同步期间会删除所有本地联系人（第三方联系人除外）。<br/>**系统能力**：SystemCapability.Applications.Contacts                 |
+| MODE_INCREMENTAL    | 1 | 表示将在数据库中插入或更新云端和本地之间不同的联系人。 |
+| MODE_CLOUD_BASED            | 2 | 表示所有本地联系人将被云联系人替换。当使用云覆盖本地模式进行批量同步时，在第一次批量同步期间会删除所有本地联系人（第三方联系人除外）。                 |
 
 ## ContactSyncProgress
 
@@ -5555,7 +5557,9 @@ let website: contact.Website = {
 
 **原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Applications.Contacts
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
 
 |                名称               |                  类型                 |  只读  | 可选    |        说明      |
 | --------------------------------- | ------------------------------------- | ---- | ---- | ---------------- |
@@ -5571,7 +5575,9 @@ let website: contact.Website = {
 
 **原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
-**系统能力**：SystemCapability.Applications.Contacts
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
 
 |                名称               |                  类型                 |  只读  | 可选    |        说明      |
 | --------------------------------- | ------------------------------------- | ---- | ---- | ---------------- |
