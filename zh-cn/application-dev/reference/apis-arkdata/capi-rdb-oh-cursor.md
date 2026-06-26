@@ -253,7 +253,7 @@ int (*getText)(OH_Cursor *cursor, int32_t columnIndex, char *value, int length)
 
 | 参数项              | 描述                                                         |
 | ------------------- | ------------------------------------------------------------ |
-| OH_Cursor *cursor   | 表示指向OH_Cursor实例的指针                                  |
+| OH_Cursor *cursor   | 表示指向OH_Cursor实例的指针。                                  |
 | int32_t columnIndex | 表示结果集中指定列的索引，索引值从0开始。                  |
 | char *value         | 该参数是输出参数，结果集中指定列的值会以字符串形式写入该变量。 |
 | int length          | 该参数是输入参数，表示value的长度，该值可通过getSize获取。   |
