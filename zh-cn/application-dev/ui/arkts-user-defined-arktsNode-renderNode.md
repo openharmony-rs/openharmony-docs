@@ -42,7 +42,7 @@ renderNode.frame = {
   width: 200,
   height: 350
 };
-renderNode.backgroundColor = 0xffff0000;
+renderNode.backgroundColor = 0xfff5f5f5;
 for (let i = 0; i < 5; i++) {
   const node = new RenderNode();
   // 设置node节点的Frame大小
@@ -53,7 +53,7 @@ for (let i = 0; i < 5; i++) {
     height: 50
   };
   // 设置node节点的背景颜色
-  node.backgroundColor = 0xff00ff00;
+  node.backgroundColor = 0xff00bfff;
   // 将新增节点挂载在renderNode上
   renderNode.appendChild(node);
 }
@@ -88,16 +88,21 @@ export struct OperationNodeTree {
         Button('getNextSibling')
           .onClick(() => {
             const child = renderNode.getChild(1);
-            const nextSibling = child!.getNextSibling()
-            if (child === null || nextSibling === null) {
-              hilog.info(DOMAIN, TEST_TAG, ' the child or nextChild is null');
-              this.myLog = 'the child or nextChild is null';
-            } else {
-              // 获取子节点的位置信息
-              hilog.info(DOMAIN, TEST_TAG, `the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
-                `the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`);
-              this.myLog = `the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
-                `the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`;
+            if (child === null) {
+              hilog.info(DOMAIN, TEST_TAG, ' the child is null');
+              this.myLog = 'the child is null';
+            } else{
+              const nextSibling = child!.getNextSibling()
+              if (nextSibling === null) {
+                hilog.info(DOMAIN, TEST_TAG, ' the nextSibling is null');
+                this.myLog = 'the nextSibling is null';
+              } else {
+                // 获取子节点的位置信息
+                hilog.info(DOMAIN, TEST_TAG, `the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
+                  `the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`);
+                this.myLog = `the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
+                  `the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`;
+              }
             }
           });
       }.width(300).margin({ left: 20 });
