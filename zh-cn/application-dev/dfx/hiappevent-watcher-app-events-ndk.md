@@ -59,7 +59,7 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[h
        │   │   └── pages
        │   │       └── Index.ets        // 主页
    ```
-   该示例工程中jsoncpp库文件对应的源码来自[三方开源库jsoncpp](https://github.com/open-source-parsers/jsoncpp/archive/refs/tags/1.9.6.tar.gz)。
+   该示例工程中jsoncpp库文件对应的源码来自[三方开源库jsoncpp](https://codeload.github.com/open-source-parsers/jsoncpp/tar.gz/refs/tags/1.9.6)。
 
 2. 编辑“CMakeLists.txt”文件，添加所需的源文件和动态库。
 
