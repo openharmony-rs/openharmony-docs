@@ -53,9 +53,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     fetchColumns: [],
     predicates: predicates
   };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> |null = null;
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
-      await phAccessHelper.getAssets(fetchOptions);
+    fetchResult = await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     console.info('getAssets photoAsset.uri : ' + photoAsset.uri);
     let onCallback = (changeData: photoAccessHelper.ChangeData) => {
@@ -107,13 +107,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     fetchColumns: [],
     predicates: predicates
   };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> |null = null;
 
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = 
-      await phAccessHelper.getAlbums(
-        photoAccessHelper.AlbumType.USER, 
-        photoAccessHelper.AlbumSubtype.USER_GENERIC, 
-        fetchOptions);
+    fetchResult = await phAccessHelper.getAlbums(
+      photoAccessHelper.AlbumType.USER, 
+      photoAccessHelper.AlbumSubtype.USER_GENERIC, 
+      fetchOptions);
         
     let album: photoAccessHelper.Album = await fetchResult.getFirstObject();
     console.info('getAlbums successfully, albumUri: ' + album.albumUri);
@@ -175,9 +175,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     fetchColumns: [],
     predicates: predicates
   };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> |null = null;
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> =
-      await phAccessHelper.getAssets(fetchOptions);
+    fetchResult = await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     console.info('getAssets photoAsset.uri : ' + photoAsset.uri);
     await photoAccessHelper.MediaAssetChangeRequest.deleteAssets(context, [photoAsset]);
@@ -223,9 +223,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     fetchColumns: [],
     predicates: predicates
   };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> |null = null;
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
-      await phAccessHelper.getAssets(fetchOptions);
+    fetchResult = await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     console.info('getAssets photoAsset.uri : ' + photoAsset.uri);
     let onCallback1 = (changeData: photoAccessHelper.ChangeData) => {
