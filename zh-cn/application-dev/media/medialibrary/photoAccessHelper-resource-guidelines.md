@@ -52,7 +52,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     fetchColumns: [],
     predicates: predicates
   };
-  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> |null = null;
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | null = null;
   try {
     fetchResult = await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
@@ -62,7 +62,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.error('getAssets failed with err: ' + err);
     // ...
   } finally {
-    fetchResult.close();
+    if (fetchResult != null) {
+      fetchResult.close();
+    }
   }
 }
 ```
@@ -106,7 +108,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     predicates: predicates
   };
 
-  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> |null = null;
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | null = null;
   try {
     fetchResult = await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
@@ -120,7 +122,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.error('getThumbnail failed with err: ' + err);
     // ...
   } finally {
-    fetchResult.close();
+    if (fetchResult != null) {
+      fetchResult.close();
+    }
   }
 }
 ```
@@ -210,7 +214,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   };
   let newTitle: string = 'newTestPhoto';
 
-  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> |null = null;
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | null = null;
   try {
     fetchResult = await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
@@ -223,7 +227,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.error(`rename failed with error: ${err.code}, ${err.message}`);
     // ...
   } finally {
-    fetchResult.close();
+    if (fetchResult != null) {
+      fetchResult.close();
+    }
   }
 }
 ```
@@ -263,7 +269,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     predicates: predicates
   };
 
-  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> |null = null;
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | null = null;
   try {
     fetchResult = await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
@@ -273,7 +279,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     console.error(`deleteAssets failed with error: ${err.code}, ${err.message}`);
     // ...
   } finally {
-    fetchResult.close();
+    if (fetchResult != null) {
+      fetchResult.close();
+    }
   }
 }
 ```
