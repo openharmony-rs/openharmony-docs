@@ -24569,5 +24569,25 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/arkts-new-binding.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArkUI_Binding/entry/src/main/ets/pages/Binding_Star_Param_Event.ets",
+				"functions":[
+					{
+						"end_line":31,
+						"name":"ArkUI_Star_binding1",
+						"start_line":29
+					},
+					{
+						"end_line":55,
+						"name":"ArkUI_Star_binding4",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
