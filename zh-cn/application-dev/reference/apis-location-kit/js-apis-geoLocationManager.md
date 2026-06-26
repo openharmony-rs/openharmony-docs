@@ -728,6 +728,7 @@ on(type: 'locationChange', request: LocationRequest | ContinuousLocationRequest,
   }
   ```
 
+  
 ## geoLocationManager.off('locationChange')
 
 off(type: 'locationChange', callback?: Callback&lt;Location&gt;): void
@@ -781,6 +782,7 @@ off(type: 'locationChange', callback?: Callback&lt;Location&gt;): void
   }
   ```
 
+  
 ## geoLocationManager.on('locationError')<sup>12+</sup>
 
 on(type: 'locationError', callback: Callback&lt;LocationError&gt;): void
