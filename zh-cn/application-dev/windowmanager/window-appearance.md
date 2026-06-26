@@ -55,7 +55,61 @@ ArkTS-Dyn示例：
 <!-- @[setWindowMaskSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/EventDistribution/setWindowMask/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-import { window } from '@kit.ArkUI';
+<!-- @[setWindowMaskSample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ArkUIWindowSamples/EventDistribution/setWindowMask/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import window from '@ohos.window';
+import { Entry, Component, Column, Row, Text, Button, Scroll, TextAlign, ButtonType, FontWeight } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct Index {
+  // ...
+  private windowMaskSub: window.Window | undefined = undefined;
+
+  // ...
+  setWindowMask(window: window.Window | undefined) {
+    let windowMask: Uint8Array = new Uint8Array(this.winWidth * this.winHeight);
+    for (let i = 0; i < this.winHeight; i++) {
+      for (let k = 0; k < this.winWidth; k++) {
+        if ((i + k) < (this.winHeight + this.winWidth) / 2) {
+          windowMask[i * this.winWidth + k] = 0;
+        } else {
+          windowMask[i * this.winWidth + k] = 255;
+        }
+      }
+    }
+    window?.setWindowMaskWithAlpha(windowMask, this.winWidth, this.winHeight);
+  }
+
+  build() {
+    Row() {
+      Scroll(){
+        Column() {
+          // ...
+          Row() {
+            Button('setWindowMask for Sub Window')
+              .width('90%')
+              .type(ButtonType.Capsule)
+              .margin({
+                top: 10
+              }).fontSize(18)
+              .onClick(() => {
+                if(this.windowMaskSub) {
+                  this.setWindowMask(this.windowMaskSub);
+                }
+              })
+          }
+        }
+        .width('100%')
+      }
+    }
+    .height('100%')
+  }
+
+}
+```
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
