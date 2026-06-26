@@ -123,10 +123,6 @@
 | [ArkUI_ScrollEdge](#arkui_scrolledge)                               | ArkUI_ScrollEdge                | 定义滚动到的边缘位置。                       |
 | [ArkUI_ScrollAlignment](#arkui_scrollalignment)                     | ArkUI_ScrollAlignment           | 滚动到具体item时的对齐方式。                  |
 | [ArkUI_ScrollState](#arkui_scrollstate)                             | ArkUI_ScrollState               | 定义当前滚动状态。                         |
-| [ArkUI_SliderBlockStyle](#arkui_sliderblockstyle)                   | ArkUI_SliderBlockStyle          | 定义滑块形状。                           |
-| [ArkUI_SliderDirection](#arkui_sliderdirection)                     | ArkUI_SliderDirection           | 定义滑动条滑动方向。                        |
-| [ArkUI_SliderStyle](#arkui_sliderstyle)                             | ArkUI_SliderStyle               | 定义滑块与滑轨显示样式。                      |
-| [ArkUI_CheckboxShape](#arkui_checkboxshape)                         | ArkUI_CheckboxShape             | 定义CheckBox组件形状。                   |
 | [ArkUI_AdaptiveColor](#arkui_adaptivecolor)                         | ArkUI_AdaptiveColor             | 定义取色模式。                           |
 | [ArkUI_ColorMode](#arkui_colormode)                                 | ArkUI_ColorMode                 | 定义深浅色模式。                          |
 | [ArkUI_SystemColorMode](#arkui_systemcolormode)                     | ArkUI_SystemColorMode           | 定义系统深浅色模式。                        |
@@ -140,7 +136,6 @@
 | [ArkUI_TextInputStyle](#arkui_textinputstyle)                       | ArkUI_TextInputStyle            | 定义输入框风格。                          |
 | [ArkUI_KeyboardAppearance](#arkui_keyboardappearance)               | ArkUI_KeyboardAppearance        | 定义输入框拉起的键盘样式。                     |
 | [ArkUI_TextDataDetectorType](#arkui_textdatadetectortype)           | ArkUI_TextDataDetectorType      | 定义文本识别的实体类型。                      |
-| [ArkUI_ButtonType](#arkui_buttontype)                               | ArkUI_ButtonType                | 定义按钮样式枚举值。                        |
 | [ArkUI_ListItemSwipeActionState](#arkui_listitemswipeactionstate)   | ArkUI_ListItemSwipeActionState  | 定义[Listitem](./arkui-ts/ts-container-listitem.md#listitem10)组件[swipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9)方法的显隐模式。 |
 | [ArkUI_ListItemSwipeEdgeEffect](#arkui_listitemswipeedgeeffect)     | ArkUI_ListItemSwipeEdgeEffect   | 定义[Listitem](./arkui-ts/ts-container-listitem.md#listitem10)组件[swipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9)方法的滚动模式。 |
 | [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) | ArkUI_ListItemSwipeActionDirection | ListItem划出菜单的展开方向。 |
@@ -1237,80 +1232,6 @@ enum ArkUI_ScrollState
 | ARKUI_SCROLL_STATE_SCROLL = 1 | 滚动状态。使用手指拖动容器滚动时触发。 |
 | ARKUI_SCROLL_STATE_FLING = 2 | 惯性滚动状态。快速划动松手后进行惯性滚动和划动到边缘回弹时触发。 |
 
-### ArkUI_SliderBlockStyle
-
-```c
-enum ArkUI_SliderBlockStyle
-```
-
-**描述：**
-
-
-定义滑块形状。
-
-**起始版本：** 12
-
-| 枚举项 | 描述 |
-| -- | -- |
-| ARKUI_SLIDER_BLOCK_STYLE_DEFAULT = 0 | 使用默认滑块（圆形）。 |
-| ARKUI_SLIDER_BLOCK_STYLE_IMAGE = 1 | 使用图片资源作为滑块。 |
-| ARKUI_SLIDER_BLOCK_STYLE_SHAPE = 2 | 使用自定义形状作为滑块。 |
-
-### ArkUI_SliderDirection
-
-```c
-enum ArkUI_SliderDirection
-```
-
-**描述：**
-
-
-定义滑动条滑动方向。
-
-**起始版本：** 12
-
-| 枚举项 | 描述 |
-| -- | -- |
-| ARKUI_SLIDER_DIRECTION_VERTICAL = 0 | 方向为纵向。 |
-| ARKUI_SLIDER_DIRECTION_HORIZONTAL = 1 | 方向为横向。 |
-
-### ArkUI_SliderStyle
-
-```c
-enum ArkUI_SliderStyle
-```
-
-**描述：**
-
-
-定义滑块与滑轨显示样式。
-
-**起始版本：** 12
-
-| 枚举项 | 描述 |
-| -- | -- |
-| ARKUI_SLIDER_STYLE_OUT_SET = 0 | 滑块在滑轨上。 |
-| ARKUI_SLIDER_STYLE_IN_SET = 1 | 滑块在滑轨内。 |
-| ARKUI_SLIDER_STYLE_NONE = 2 | 无滑块。 |
-
-### ArkUI_CheckboxShape
-
-```c
-enum ArkUI_CheckboxShape
-```
-
-**描述：**
-
-
-定义CheckBox组件形状。
-
-**起始版本：** 12
-
-| 枚举项 | 描述 |
-| -- | -- |
-| ArkUI_CHECKBOX_SHAPE_CIRCLE = 0 | 圆形。 |
-| ArkUI_CHECKBOX_SHAPE_ROUNDED_SQUARE = 1 | 圆角方形。 |
-
 ### ArkUI_AdaptiveColor
 
 ```c
@@ -1593,26 +1514,6 @@ enum ArkUI_TextDataDetectorType
 | ARKUI_TEXT_DATA_DETECTOR_TYPE_URL | 链接。 |
 | ARKUI_TEXT_DATA_DETECTOR_TYPE_EMAIL | 邮箱。 |
 | ARKUI_TEXT_DATA_DETECTOR_TYPE_ADDRESS | 地址。 |
-
-### ArkUI_ButtonType
-
-```c
-enum ArkUI_ButtonType
-```
-
-**描述：**
-
-
-定义按钮样式枚举值。
-
-**起始版本：** 12
-
-| 枚举项 | 描述                      |
-| -- |-------------------------|
-| ARKUI_BUTTON_TYPE_NORMAL = 0 | 普通按钮，默认不带圆角。            |
-| ARKUI_BUTTON_TYPE_CAPSULE = 1 | 胶囊型按钮，圆角默认为高度的一半。       |
-| ARKUI_BUTTON_TYPE_CIRCLE = 2 | 圆形按钮。                   |
-| ARKUI_BUTTON_ROUNDED_RECTANGLE = 8 | 圆角矩形按钮。<br>**起始版本：** 19 |
 
 ### ArkUI_ListItemSwipeActionState
 
