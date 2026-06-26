@@ -12,7 +12,7 @@ typedef struct CloudDisk_ResultList {...} CloudDisk_ResultList
 
 ## 概述
 
-表示一个文件同步操作的结果。该结构体包含文件的绝对路径、同步结果，以及同步状态或失败原因。
+表示一个文件同步操作的结果。该结构体包含文件路径信息、操作结果（成功或失败）、同步状态或失败原因。适用于查询文件同步操作结果的场景，开发者可通过isSuccess判断操作是否成功，并根据syncState或errorReason获取详细状态或失败原因。
 
 **起始版本：** 21
 
@@ -28,7 +28,7 @@ typedef struct CloudDisk_ResultList {...} CloudDisk_ResultList
 | -- | -- |
 | [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) pathInfo | 文件的绝对路径信息。 |
 | bool isSuccess{false} | 表示操作是否成功。true：表示操作成功；false：表示操作失败。默认值为false。 |
-| [CloudDisk_SyncState](capi-oh-cloud-disk-manager-h.md#clouddisk_syncstate) syncState | 文件的同步状态。当isSuccess为true时才生效。 |
-| [CloudDisk_ErrorReason](capi-oh-cloud-disk-manager-h.md#clouddisk_errorreason) errorReason | 文件同步状态获取失败的原因。当isSuccess为false时才生效。 |
+| [CloudDisk_SyncState](capi-oh-cloud-disk-manager-h.md#clouddisk_syncstate) syncState | 文件的同步状态，具体取值及含义参见[CloudDisk_SyncState](capi-oh-cloud-disk-manager-h.md#clouddisk_syncstate)。当isSuccess为true时才生效。 |
+| [CloudDisk_ErrorReason](capi-oh-cloud-disk-manager-h.md#clouddisk_errorreason) errorReason | 文件同步操作失败的原因，具体错误类型及含义参见[CloudDisk_ErrorReason](capi-oh-cloud-disk-manager-h.md#clouddisk_errorreason)。当isSuccess为false时才生效。 |
 
 

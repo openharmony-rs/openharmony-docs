@@ -12,7 +12,7 @@ typedef struct CloudDisk_FileSyncState {...} CloudDisk_FileSyncState
 
 ## 概述
 
-文件的同步状态。
+文件的同步状态信息，用于描述指定文件路径对应的云盘同步状态。
 
 **起始版本：** 21
 
@@ -27,6 +27,6 @@ typedef struct CloudDisk_FileSyncState {...} CloudDisk_FileSyncState
 | 名称 | 描述 |
 | -- | -- |
 | [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) filePathInfo | 文件的路径信息。 |
-| [CloudDisk_SyncState](capi-oh-cloud-disk-manager-h.md#clouddisk_syncstate) syncState | 文件的同步状态。 |
+| [CloudDisk_SyncState](capi-oh-cloud-disk-manager-h.md#clouddisk_syncstate) syncState | 文件的同步状态，具体取值及含义参见[CloudDisk_SyncState](capi-oh-cloud-disk-manager-h.md#clouddisk_syncstate)。 |
 
 
