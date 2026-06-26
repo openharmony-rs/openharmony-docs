@@ -23318,6 +23318,16 @@
 						"start_line":56
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets",
+				"functions":[
+					{
+						"end_line":68,
+						"name":"AppEvent_Crash_ArkTS_Add_Watcher",
+						"start_line":40
+					}
+				]
 			}
 		]
 	},
@@ -23396,6 +23406,21 @@
 						"end_line":110,
 						"name":"AppEvent_CPP_Button",
 						"start_line":90
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":36,
+						"name":"EventSub_napi_Header",
+						"start_line":24
+					},
+					{
+						"end_line":1470,
+						"name":"AppEvent_C++_Init",
+						"start_line":1398
 					}
 				]
 			}
