@@ -88,7 +88,7 @@ class Model {
 @Prop title: Model;
 // Top-level property changes are observable.
 this.title.value = 'Hi';
-// Nested property changes are observable.
+// Nested property changes are not observable.
 this.title.info.value = 'ArkUI';
 ```
 
