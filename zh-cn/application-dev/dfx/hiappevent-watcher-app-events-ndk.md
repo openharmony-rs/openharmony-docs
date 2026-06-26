@@ -232,9 +232,6 @@ API接口的使用说明，包括参数使用限制和取值范围，请参考[h
    <!-- @[AppEvent_C++_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
-   
-   // ...
-   
    static napi_value Init(napi_env env, napi_value exports)
    {
        napi_property_descriptor desc[] = {
