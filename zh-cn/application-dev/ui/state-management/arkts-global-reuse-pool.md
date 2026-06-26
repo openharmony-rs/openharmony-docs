@@ -62,7 +62,9 @@
 
 **ArkTS-Dyn:**
 
-```ts
+<!-- @[GlobalReuseDefault](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReuseDefault.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct Index {
@@ -178,16 +180,18 @@ struct ReusableComponent { // 复用组件
 
 **ArkTS-Dyn:**
 
-```ts
+<!-- @[GlobalReusePool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePool.ets) -->
+
+``` TypeScript
 @ReusableV2
 @ComponentV2
 struct ReusableComponent { // 复用组件
   aboutToRecycle() {
     // 在Index组件中if分支切换时，该组件由上层组件Index声明的全局复用池接纳，并复用到ChildComponentB中的ReusableComponent创建过程中
-    console.info('Reusable component is being recycled'); 
+    console.info('Reusable component is being recycled');
   }
   aboutToDisappear() {
-    console.info('Reusable component is being destroyed'); 
+    console.info('Reusable component is being destroyed');
   }
   build() {
     Text('ReusableComponent')
@@ -197,7 +201,7 @@ struct ReusableComponent { // 复用组件
 @ComponentV2({
   reusePool: 'shared', // 配置全局复用池模式，使能全局复用能力
   poolAccepts: [ReusableComponent], // 配置全局复用池接纳名称为ReusableComponent的自定义组件
-  freezeWhenInactive: false // 组件冻结默认配置 
+  freezeWhenInactive: false // 组件冻结默认配置
 })
 struct Index {
   @Local componentSwitch: boolean = false;
@@ -382,7 +386,9 @@ struct ReusableComponent { // 复用组件
 
 **ArkTS-Dyn:**
 
-```typescript
+<!-- @[GlobalReusePoolShared](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolShared.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct Parent {
@@ -411,9 +417,15 @@ struct Parent {
 
       Column({ space: 10 }) {
         // 使用if切换触发复用。
-        if (this.show[0]) CompA({ label: 'A1' })
-        if (this.show[1]) CompA({ label: 'A2' })
-        if (this.show[2]) CompA({ label: 'A3' })
+        if (this.show[0]) {
+          CompA({ label: 'A1' })
+        }
+        if (this.show[1]) {
+          CompA({ label: 'A2' })
+        }
+        if (this.show[2]) {
+          CompA({ label: 'A3' })
+        }
       }
     }
     .width('100%')
@@ -458,8 +470,8 @@ struct CompA {
       ReusableCompA({ value: 1 })
       ReusableCompA({ value: 2 })
     }
-      .border({ width: 1, color: Color.Gray })
-      .padding(5)
+    .border({ width: 1, color: Color.Gray })
+    .padding(5)
   }
 }
 ```
@@ -596,7 +608,9 @@ ReusableCompA aboutToDisappear (×6, 所有缓存实例被永久销毁)
 
 **ArkTS-Dyn:**
 
-```typescript
+<!-- @[GlobalReusePoolPerInstance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolPerInstance.ets) -->
+
+``` TypeScript
 @ReusableV2
 @ComponentV2
 struct ReusableChild {
@@ -846,7 +860,9 @@ SubChild aboutToReuse          // 子树级联
 
 **ArkTS-Dyn:**
 
-```typescript
+<!-- @[GlobalReusePoolGet](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolGet.ets) -->
+
+``` TypeScript
 import { UIUtils, IReusableInfo } from '@kit.ArkUI';
 
 @ReusableV2
@@ -1257,7 +1273,9 @@ getReusableInfo(LegacyComp): count=0, maxCount=0
 
 **ArkTS-Dyn:**
 
-```typescript
+<!-- @[GlobalReusePoolReuseID](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolReuseID.ets) -->
+
+``` TypeScript
 import { UIUtils, IReusableInfo } from '@kit.ArkUI';
 
 @ReusableV2
@@ -1483,7 +1501,9 @@ struct PoolOwner {
 
 **ArkTS-Dyn:**
 
-```typescript
+<!-- @[GlobalReusePoolMultiLevel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolMultiLevel.ets) -->
+
+``` TypeScript
 @ReusableV2
 @ComponentV2
 struct ChildA {
@@ -1572,7 +1592,7 @@ struct ParentA {
         .fontSize(16)
         .fontWeight(FontWeight.Bold)
       Button('切换 ChildA')
-        .onClick(() => { 
+        .onClick(() => {
           // 修改if条件触发子组件ChildA复用
           this.showChild = !this.showChild;
         })
@@ -1719,7 +1739,9 @@ ReusableLeaf aboutToReuse       // 从EntryComp的复用池中取出
 
 **ArkTS-Dyn:**
 
-```typescript
+<!-- @[GlobalReusePoolPrerender](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolPrerender.ets) -->
+
+``` TypeScript
 import { UIUtils, IReusableInfo } from '@kit.ArkUI';
 
 @ReusableV2
@@ -1741,7 +1763,7 @@ struct ReusableComponent {
   }
 }
 
-@Builder 
+@Builder
 function preRenderBuilder() {
   ReusableComponent()
 }
