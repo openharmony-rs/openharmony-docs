@@ -8,12 +8,12 @@
 
 Stack基于数组的数据结构实现，特点是先进后出，只能在一端进行数据的插入和删除。
 
-Stack和[Queue](js-apis-queue.md)相比，Queue基于循环队列实现，在尾部增加元素在头部删除元素；而Stack只在一端进行操作。
+Stack和[Queue](js-apis-queue.md)相比，Queue基于循环队列实现，在尾部增加元素在头部删除元素；而Stack只在一端进行插入和删除操作。
 
-**推荐使用场景：** 一般符合先进后出的场景可以使用Stack。
+**推荐使用场景：** 一般符合先进后出的场景可以使用Stack，例如撤销/重做操作的历史记录管理、函数调用栈模拟等。
 
-文档中使用了泛型，涉及以下泛型标记符：
-- T：Type，类
+文档中使用了泛型，涉及以下泛型类型参数：
+- T：Type，泛型类型参数，可以是任意类型
 
 > **说明：**
 >
@@ -51,7 +51,7 @@ import { Stack } from '@kit.ArkTS';
 
 constructor()
 
-Stack的构造函数。
+Stack的构造函数。调用后创建一个空的Stack实例对象，初始length为0。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -74,6 +74,7 @@ Stack的构造函数。
 ArkTS-Dyn示例：
 
 ```ts
+// 创建Stack实例
 let stack = new Stack<number | string | Object>();
 ```
 
