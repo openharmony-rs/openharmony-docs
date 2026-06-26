@@ -167,7 +167,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-应用还可以调用MediaAssetChangeRequest.addResource接口指定媒体资源内容的数据来源，具体包括[应用沙箱](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#addresource11)，[ArrayBuffer](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#addresource11-1)和[PhotoProxy](../../reference/apis-media-library-kit/js-apis-photoAccessHelper-sys.md#addresource11)。
+应用还可以调用[MediaAssetChangeRequest.addResource](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#addresource11)接口指定媒体资源内容的数据来源。
 <!--DelEnd-->
 
 ## 重命名媒体资源
