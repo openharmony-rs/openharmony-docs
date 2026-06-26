@@ -34696,7 +34696,7 @@
 						"start_line":238
 					},
 					{
-						"end_line":231,
+						"end_line":238,
 						"name":"vibrator_js_vibrator_by_type_file_example",
 						"start_line":204
 					},
@@ -34731,12 +34731,12 @@
 						"start_line":451
 					},
 					{
-						"end_line":480,
+						"end_line":487,
 						"name":"vibrator_js_vibrator_on_state_change_example",
 						"start_line":90
 					},
 					{
-						"end_line":497,
+						"end_line":504,
 						"name":"vibrator_js_vibrator_off_state_change_example",
 						"start_line":89
 					},
