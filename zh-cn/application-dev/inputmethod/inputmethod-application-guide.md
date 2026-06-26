@@ -1643,7 +1643,7 @@
      aboutToAppear(): void {
        // 感知是否设置沉浸模式，如果是沉浸模式选择沉浸模式类型
        inputMethodEngine.getKeyboardDelegate().on("editorAttributeChanged", (attr : inputMethodEngine.EditorAttribute) => {
-         if (attr.immersiveMode == 1) {
+         if (attr.immersiveMode == inputMethodEngine.ImmersiveMode.DARK_IMMERSIVE) {
            this.panel?.setImmersiveMode(inputMethodEngine.ImmersiveMode.DARK_IMMERSIVE);
          }
        })
