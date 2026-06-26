@@ -81,7 +81,7 @@ Web组件的创建会触发Web内核的初始化。另外ArkWeb还提供了initi
 
 在NDK中可以在ets侧先调用testNapi.registerCustomSchemes注册自定义协议，然后调用[initializeWebEngine](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine)初始化Web内核，示例如下：
 
-<!-- @[register_init_scheme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/entryability/EntryAbility.ets) -->
+<!-- @[register_init_scheme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/entryability/EntryAbility.ets) -->    
 
 ``` TypeScript
 export default class EntryAbility extends UIAbility {

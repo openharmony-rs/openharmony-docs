@@ -16,7 +16,7 @@
 
   在下面的示例中，在Web组件的onAppear中对要加载的页面进行预连接。
 
-<!-- @[previously_connect_in_onAppear_to_pages_being_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry1/src/main/ets/pages/Index.ets) -->
+<!-- @[previously_connect_in_onAppear_to_pages_being_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry1/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -75,7 +75,7 @@ export default class EntryAbility extends UIAbility {
 
 在下面的示例中，在onPageEnd的时候触发下一个要访问的页面的预加载。
   
-<!-- @[on_page_end_triggers_preload_of_next_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry2/src/main/ets/pages/Prefetching.ets) -->
+<!-- @[on_page_end_triggers_preload_of_next_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry2/src/main/ets/pages/Prefetching.ets) -->    
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -103,7 +103,7 @@ struct WebComponent {
 
   以下示例，在Web组件onAppear中，对要加载页面中的POST请求进行预获取。在onPageEnd中，可以清除预获取的POST请求缓存。
 
-<!-- @[prefetch_post_request_on_page_end_clear_cache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry2/src/main/ets/pages/PrefetchingAPOSTRequest_one.ets) -->
+<!-- @[prefetch_post_request_on_page_end_clear_cache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry2/src/main/ets/pages/PrefetchingAPOSTRequest_one.ets) -->    
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -143,7 +143,7 @@ struct WebComponent {
 
   以下示例，在onPageEnd中，触发预获取一个要访问页面的POST请求。
 
-<!-- @[on_page_end_trigger_prefetch_post_request_access_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry2/src/main/ets/pages/PrefetchingAPOSTRequest_three.ets) -->
+<!-- @[on_page_end_trigger_prefetch_post_request_access_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry2/src/main/ets/pages/PrefetchingAPOSTRequest_three.ets) -->    
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -238,7 +238,7 @@ export default class EntryAbility extends UIAbility {
 
 2. 编写动态组件所需基础代码。
 
-   <!-- @[underlying_code_required_for_dynamic_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/DynamicComponent.ets) -->
+   <!-- @[underlying_code_required_for_dynamic_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/DynamicComponent.ets) -->    
    
    ``` TypeScript
    import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
@@ -291,7 +291,7 @@ export default class EntryAbility extends UIAbility {
 
 3. 编写用于生成字节码缓存的组件，本例中的本地JavaScript资源内容通过文件读取接口读取rawfile目录下的本地文件。
 
-   <!-- @[read_local_js_resource_from_rawfile_dir_via_file_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/PrecompileWebview.ets) -->
+   <!-- @[read_local_js_resource_from_rawfile_dir_via_file_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/PrecompileWebview.ets) -->    
    
    ``` TypeScript
    import { BuilderData } from './DynamicComponent';
@@ -338,7 +338,7 @@ export default class EntryAbility extends UIAbility {
 
 4. 编写业务用组件代码。
 
-   <!-- @[write_code_for_business_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/BusinessWebview.ets) -->
+   <!-- @[write_code_for_business_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/BusinessWebview.ets) -->    
    
    ``` TypeScript
    import { BuilderData } from './DynamicComponent';
@@ -355,7 +355,7 @@ export default class EntryAbility extends UIAbility {
 
 5. 编写资源配置信息。
 
-   <!-- @[compile_resource_allocation_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/PrecompileConfig.ets) -->
+   <!-- @[compile_resource_allocation_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/PrecompileConfig.ets) -->    
    
    ``` TypeScript
    import { webview } from '@kit.ArkWeb'
@@ -382,7 +382,7 @@ export default class EntryAbility extends UIAbility {
 
 6. 在页面中使用。
 
-   <!-- @[dynamic_webview_component_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/Index.ets) -->
+   <!-- @[dynamic_webview_component_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/Index.ets) -->    
    
    ``` TypeScript
    import { webview } from '@kit.ArkWeb';
@@ -457,7 +457,7 @@ export default class EntryAbility extends UIAbility {
 
 2. 编写动态组件所需基础代码。
 
-   <!-- @[underlying_code_required_for_dynamic_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/DynamicComponent.ets) -->
+   <!-- @[underlying_code_required_for_dynamic_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/DynamicComponent.ets) -->    
    
    ``` TypeScript
    import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
@@ -510,7 +510,7 @@ export default class EntryAbility extends UIAbility {
 
 3. 编写用于注入资源的组件代码，本例中的本地资源内容通过文件读取接口读取rawfile目录下的本地文件。
 
-   <!-- @[local_resources_content_read_from_rawfile_directory_by_file_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/InjectWebview.ets) -->
+   <!-- @[local_resources_content_read_from_rawfile_directory_by_file_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/InjectWebview.ets) -->    
    
    ``` TypeScript
    import { webview } from '@kit.ArkWeb';
@@ -564,7 +564,7 @@ export default class EntryAbility extends UIAbility {
 
 4. 编写业务用组件代码。
 
-   <!-- @[write_code_for_business_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/BusinessWebview.ets) -->
+   <!-- @[write_code_for_business_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/BusinessWebview.ets) -->    
    
    ``` TypeScript
    import { BuilderData } from './DynamicComponent';
@@ -581,7 +581,7 @@ export default class EntryAbility extends UIAbility {
 
 5. 编写资源配置信息。
 
-   <!-- @[compile_resource_allocation_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/Resource.ets) -->
+   <!-- @[compile_resource_allocation_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/Resource.ets) -->    
    
    ``` TypeScript
    import { webview } from '@kit.ArkWeb';
@@ -622,7 +622,7 @@ export default class EntryAbility extends UIAbility {
    ```
 
 6. 在页面中使用。
-   <!-- @[dynamic_webview_component_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/Index.ets) -->
+   <!-- @[dynamic_webview_component_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/Index.ets) -->    
    
    ``` TypeScript
    import { webview } from '@kit.ArkWeb';

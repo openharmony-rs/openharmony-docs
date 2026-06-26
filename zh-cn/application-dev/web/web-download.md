@@ -341,7 +341,7 @@ struct WebComponent {
 ```
 
 下载任务信息持久化工具类文件。
-<!-- @[task_info_persistence_util](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/downloadUtil.ets) -->
+<!-- @[task_info_persistence_util](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/downloadUtil.ets) -->    
 
 ``` TypeScript
 import { util } from '@kit.ArkTS';

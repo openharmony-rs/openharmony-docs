@@ -22,7 +22,7 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
 
   以下结合示例说明如何使用http或者https等协议解决本地资源跨域访问失败的问题。其中，index.html和js/script.js置于工程中的rawfile目录下。当使用resource协议访问index.html时，js/script.js将因跨域而被拦截，无法加载。在示例中，使用https:\//www\.example.com/域名替换了原本的resource协议，同时利用onInterceptRequest接口替换资源，使得js/script.js可以成功加载，从而解决了跨域拦截的问题。
 
-  <!-- @[cors_loccross_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/LocCrossOriginResAccSol_one.ets) -->
+  <!-- @[cors_loccross_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/LocCrossOriginResAccSol_one.ets) -->    
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -98,7 +98,7 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
   </html>
   ```
   <!---->
-  <!-- @[cors_script_raw](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/resources/rawfile/js/script.js)-->
+  <!-- @[cors_script_raw](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/resources/rawfile/js/script.js)-->    
   
   ``` JavaScript
   const body = document.body;
@@ -136,7 +136,7 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
 
   当路径列表中的任一路径不满足上述条件时，系统将抛出异常码401，并判定路径列表设置失败。如果路径列表设置为空，file协议的可访问范围将遵循[fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess)规则，具体示例如下。
 
-  <!-- @[cors_loccross_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/LocCrossOriginResAccSol_two.ets) -->
+  <!-- @[cors_loccross_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/LocCrossOriginResAccSol_two.ets) -->    
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -218,7 +218,7 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
   </html>
   ```
  <!---->
- <!-- @[cors_script](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/resources/resfile/js/script.js) -->
+ <!-- @[cors_script](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/resources/resfile/js/script.js) -->    
  
  ``` JavaScript
  const body = document.body;
