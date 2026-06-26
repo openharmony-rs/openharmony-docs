@@ -3365,34 +3365,36 @@ findMatchingWlan(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, nee
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| deviceIdArray | Array&lt;string&gt; | 否 | 否 | 表示设备ID列表，用于过滤扫描结果。单个字符串的长度不超过64，数组的长度不超过1000。 |
-| rssiThreshold | number | 否 | 是 | 表示RSSI阈值，只扫描RSSI大于此阈值的设备。取值范围为-10000至10000（单位：dBm）。 |
+| deviceIdArray | Array&lt;string&gt; | 否 | 否 | 表示设备ID列表，用于过滤扫描结果。单个字符串的长度不超过64，数组的长度不超过1000。
+  仅当扫描到的蓝牙设备ID与该数组中的一个设备ID相同时才通过callback返回该蓝牙设备信息。当传入空数组（数组长度为0）时，不会返回任何蓝牙扫描结果。
+  数组中每个元素的格式如下："11:22:33:44:55:66"。|
+| rssiThreshold | number | 否 | 是 | 表示RSSI阈值，只扫描RSSI大于此阈值的设备。取值范围为-10000至10000（单位：dBm）。默认是-1000 |
   
 
 ## geoLocationManager.startBluetoothSearch<sup>26+</sup>
 
 startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&lt;BluetoothScanResult&gt;): void
 
-启动蓝牙扫描，使用callback异步回调。
+启动蓝牙扫描并查找指定的蓝牙设备，仅当扫描到的蓝牙设备满足入参 BluetoothSearchRequestParams指定的条件时，设备信息通过callback异步回调
 
-本API会启动蓝牙扫描，为了避免产生较多功耗，需要开发者在适当的时机调用 [geoLocationManager.stopBluetoothSearch](#geolocationmanagerstopbluetoothsearch26)接口停止蓝牙扫描。
-
-当前仅支持扫描BLE设备。
 
 **起始版本：** 26.0.0
 
 **原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
-**需要权限**：ohos.permission.APPROXIMATELY_LOCATION 和 ohos.permission.LOCATION
+**需要权限**：ohos.permission.APPROXIMATELY_LOCATION 和 ohos.permission.LOCATION  
 
 **系统能力**：SystemCapability.Location.Location.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
 
 **参数**：
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | request | [BluetoothSearchRequestParams](#bluetoothsearchrequestparams) | 是 | 设置蓝牙扫描请求参数。 |
-  | callback | Callback&lt;[BluetoothScanResult](#bluetoothscanresult16)&gt; | 是 | 回调函数，返回蓝牙扫描结果。 |
+  | callback | Callback&lt;[BluetoothScanResult](#bluetoothscanresult16)&gt; | 是 | 回调函数，用于返回蓝牙扫描结果。 |
 
 **错误码**：
 
@@ -3400,7 +3402,8 @@ startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&l
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.              | 
+|401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 | 
 |801 | Capability not supported. Failed to call ${geoLocationManager.startBluetoothSearch} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
 |3301800 | Failed to start Bluetooth scanning.                                        |
@@ -3411,15 +3414,17 @@ startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&l
   import { geoLocationManager } from '@kit.LocationKit';
 
   let request: geoLocationManager.BluetoothSearchRequestParams = {
-    'rssiThreshold': -55,
-    'deviceIdArray': ['XX:XX:XX:XX:XX:XX','YY:YY:YY:YY:YY:YY','ZZ:ZZ:ZZ:ZZ:ZZ:ZZ']
+    'rssiThreshold': -1000,
+    'deviceIdArray': ['98:56:07:E6:AA:46','4E:E6:D2:02:27:F9']
   };
   try {
-    geoLocationManager.startBluetoothSearch(request, (bluetoothScanResult: geoLocationManager.BluetoothScanResult) => {
+    let callback = (bluetoothScanResult: geoLocationManager.BluetoothScanResult) => {
       if (bluetoothScanResult) {
-        console.info('startBluetoothSearch: deviceId=' + bluetoothScanResult.deviceId);
+        console.info('bluetoothScanResult: deviceId=' + bluetoothScanResult.deviceId);
+        geoLocationManager.stopBluetoothSearch(callback);
       }
-    });
+    };
+    geoLocationManager.startBluetoothSearch(request, callback);
   } catch (err) {
     console.error("errCode:" + err.code + ", message:" + err.message);
   }
@@ -3430,7 +3435,7 @@ startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&l
 
 stopBluetoothSearch(callback?: Callback&lt;BluetoothScanResult&gt;): void
 
-停止蓝牙扫描。
+该回调函数需要与startBluetoothSearch接口传入的回调函数保持一致。若无此参数，则取消当前类型的所有订阅。
 
 **起始版本：** 26.0.0
 
@@ -3440,11 +3445,13 @@ stopBluetoothSearch(callback?: Callback&lt;BluetoothScanResult&gt;): void
 
 **系统能力**：SystemCapability.Location.Location.Core
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **参数**：
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | Callback&lt;[BluetoothScanResult](#bluetoothscanresult16)&gt; | 否 | 回调函数，返回蓝牙扫描结果。 |
+  | callback | Callback&lt;[BluetoothScanResult](#bluetoothscanresult16)&gt; | 否 | 取消订阅的回调函数。该回调函数需要与on接口传入的回调函数保持一致。若无此参数，则取消当前类型的所有订阅。 |
 
 **错误码**：
 
@@ -3452,6 +3459,7 @@ stopBluetoothSearch(callback?: Callback&lt;BluetoothScanResult&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
+|401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                               | 
 |801 | Capability not supported. Failed to call ${geoLocationManager.stopBluetoothSearch} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
 
@@ -3461,8 +3469,8 @@ stopBluetoothSearch(callback?: Callback&lt;BluetoothScanResult&gt;): void
   import { geoLocationManager } from '@kit.LocationKit';
 
   let request: geoLocationManager.BluetoothSearchRequestParams = {
-    'rssiThreshold': -55,
-    'deviceIdArray': ['XX:XX:XX:XX:XX:XX','YY:YY:YY:YY:YY:YY','ZZ:ZZ:ZZ:ZZ:ZZ:ZZ']
+    'rssiThreshold': -1000,
+    'deviceIdArray': ['98:56:07:E6:AA:46','4E:E6:D2:02:27:F9']
   };
   let callback = (bluetoothScanResult: geoLocationManager.BluetoothScanResult) => {
     if (bluetoothScanResult) {
