@@ -6,7 +6,7 @@
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
 
-本模块提供当前设备的信息。
+本模块提供当前设备的信息，通过读取系统配置获取设备品牌、型号、生产商、屏幕参数等基础信息，供开发者进行设备适配和功能判断。
 
 > **说明：**
 >
@@ -21,29 +21,35 @@
 ## 导入模块
 
 ```typescript
-import device from '@system.device';
+import Device from '@system.device';
 ```
-
-## device.getInfo<sup>(deprecated)</sup>
+## Device
+### Device.getInfo<sup>(deprecated)</sup>
 
 getInfo(options?: GetDeviceOptions): void
 
-获取当前设备的信息。
+获取当前设备的信息。该方法异步读取系统设备信息，通过回调函数返回设备品牌、型号、屏幕参数等数据。由于设备信息在系统启动时初始化，建议在首页onShow生命周期之后调用以确保数据完整性。
 
 > **说明：**<br>
 > 在首页的onShow生命周期之前不建议调用device.getInfo接口。
 
 **系统能力：** SystemCapability.Startup.SystemInfo.Lite
 
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| void | 无返回值，设备信息通过回调函数返回。 |
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [GetDeviceOptions](#getdeviceoptionsdeprecated) | 否 | 定义设备信息获取的参数选项。 |
+| options | [GetDeviceOptions](#getdeviceoptionsdeprecated) | 否 | 定义设备信息获取的参数选项。省略时使用默认配置获取设备基本信息。 |
 
 **示例：**
 
-ArkTS示例：
+ArkTS（方舟编程语言）示例：
 
 ```typescript
 export default class Page {
@@ -53,12 +59,12 @@ export default class Page {
     }
 
     try {
-      device.getInfo({
+      Device.getInfo({
         success: (data: DeviceData) => {
           console.info('Device information obtained successfully. Device brand:' + data.brand);
         },
         fail: (data: string, code: number) => {
-          console.info('Failed to obtain device information. Error code:' + code + '; Error information: ' + data);
+          console.error(`Failed to obtain device information. Code: ${code}, message: ${data}`);
         },
       });
     } catch (error) {
@@ -119,30 +125,30 @@ JS示例：
 
 ```js
 //xxx.js
-import device from '@system.device';
+import Device from '@system.device';
 
 export default {
-    data: {
-        brandInfo: 'Click the button to get device brand'
-    },
-    
-    getDeviceInfo() {
-        try {
-            device.getInfo({
-                success: (data) => {
-                    console.info('Device information obtained successfully. Device brand:' + data.brand);
-                    this.brandInfo = 'Device brand: ' + data.brand;
-                },
-                fail: (data, code) => {
-                    console.info('Failed to obtain device information. Error code:' + code + '; Error information: ' + data);
-                    this.brandInfo = 'Failed to obtain, error code: ' + code;
-                },
-            });
-        } catch (error) {
-            console.error('Device information API is not supported');
-            this.brandInfo = 'Current device does not support this API';
-        }
+  data: {
+    brandInfo: 'Click the button to get device brand'
+  },
+  
+  getDeviceInfo() {
+    try {
+      Device.getInfo({
+        success: (data) => {
+          console.info('Device information obtained successfully. Device brand:' + data.brand);
+          this.brandInfo = 'Device brand: ' + data.brand;
+        },
+        fail: (data, code) => {
+          console.error(`Failed to obtain device information. Code: ${code}, message: ${data}`);
+          this.brandInfo = 'Failed to obtain, error code: ' + code;
+        },
+      });
+    } catch (error) {
+      console.error('Device information API is not supported');
+      this.brandInfo = 'Current device does not support this API';
     }
+  }
 }
 ```
 
@@ -154,9 +160,9 @@ export default {
 
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| success | (data: DeviceResponse) => void | 否 | 接口调用成功的回调函数。 data为成功返回的设备信息，具体参考[DeviceResponse](#deviceresponsedeprecated)。|
-| fail | (data: any,code:number)=> void | 否 | 接口调用失败的回调函数。 code为失败返回的错误码。<br>code:200，表示返回结果中存在无法获得的信息。|
-| complete | () => void | 否 | 接口调用结束的回调函数。 |
+| success | (data: [DeviceResponse](#deviceresponsedeprecated)) => void | 否 | 接口调用成功的回调函数，在接口调用成功时执行。data 为成功返回的设备信息。不传入时无法获取设备信息，建议设置此回调。|
+| fail | (data: any, code: number) => void | 否 | 接口调用失败的回调函数。 code为失败返回的错误码。<br>code:200，表示返回结果中存在无法获得的信息。|
+| complete | () => void | 否 | 接口调用结束的回调函数，在接口调用完成后（无论成功或失败）执行，适用于需执行清理或收尾工作的场景。不传入时不执行结束回调。 |
 
 ## DeviceResponse<sup>(deprecated)</sup>
 
@@ -175,6 +181,6 @@ export default {
 | windowWidth | number | 可使用的窗口宽度，单位px。 |
 | windowHeight | number | 可使用的窗口高度，单位px。 |
 | screenDensity<sup>4+</sup> | number | 屏幕密度，单位dpi。 |
-| screenShape<sup>4+</sup> | string | 屏幕形状。可取值：<br/>-&nbsp;rect：方形屏；<br/>-&nbsp;circle：圆形屏。 |
+| screenShape<sup>4+</sup> | string | 屏幕形状。可取值：<br>-&nbsp;rect：方形屏；<br>-&nbsp;circle：圆形屏。 |
 | apiVersion<sup>4+</sup> | number | 系统API版本号。 |
 | deviceType<sup>4+</sup> | string | 设备类型。 |

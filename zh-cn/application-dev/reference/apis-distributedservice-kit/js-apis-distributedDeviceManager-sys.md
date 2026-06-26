@@ -667,6 +667,27 @@ getDeviceProfileInfoList(filterOptions: DeviceProfileInfoFilterOptions): Promise
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    dmInstance.getDeviceProfileInfoList({"isCloud": false}).then((data: Array<distributedDeviceManager.DeviceProfileInfo>) => {
+      console.info('getDeviceProfileInfoList' + JSON.stringify(data));
+    }).catch((err: BusinessError) => {
+      let e: BusinessError = err as BusinessError;
+      console.error(`getDeviceProfileInfoList errCode: ${e.code}, errMessage: ${e.message}`);
+    });
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`getDeviceProfileInfoList errCode: ${e.code}, errMessage: ${e.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -811,6 +832,38 @@ getDeviceIconInfo(filterOptions: DeviceIconInfoFilterOptions): Promise&lt;Device
 | 11600106 | Get data from cloud fail. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    let productIds:Array<string> = ['M0D2', 'M0D3', 'M0D5', 'M0AB', 'M0BD', 'M0E9', 'M0BC', 'M0EA'];
+    let options:distributedDeviceManager.DeviceIconInfoFilterOptions = {
+      productId: 'P14U',
+      imageType: 'ID',
+      specName: 'lg',
+    };
+    if (productIds.indexOf(options.productId) != -1) {
+      options.internalModel = '';
+    } else {
+      options.subProductId = '';
+    }
+    dmInstance.getDeviceIconInfo(options).then((data: distributedDeviceManager.DeviceIconInfo) => {
+      console.info('getDeviceIconInfo' + JSON.stringify(data));
+    }).catch((err: BusinessError) => {
+      let e: BusinessError = err as BusinessError;
+      console.error(`getDeviceIconInfo errCode: ${e.code}, errMessage: ${e.message}`);
+    });
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`getDeviceIconInfo errCode: ${e.code}, errMessage: ${e.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1145,6 +1198,31 @@ getDeviceNetworkIdList(filterOptions: NetworkIdQueryFilter): Promise&lt;Array&lt
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let queryFiler: distributedDeviceManager.NetworkIdQueryFilter = {
+      wiseDeviceId: '',
+      onlineStatus: 1,
+    }
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    dmInstance.getDeviceNetworkIdList(queryFiler).then((data:Array<string>) => {
+      console.info('getDeviceNetworkIdList name:' + JSON.stringify(data));
+    }).catch((err: BusinessError) => {
+      let e: BusinessError = err as BusinessError;
+      console.error(`getDeviceNetworkIdList errCode: ${e.code}, errMessage: ${e.message}`);
+    })
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`getDeviceNetworkIdList errCode: ${e.code}, errMessage: ${e.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1212,27 +1290,16 @@ getIdentificationByDeviceIds(deviceIds: Array&lt;string&gt;): Array&lt;DeviceIde
 
   ```ts
 
-  private idsLists: undefined|Array<distributedDeviceManager.DeviceIdentification> = [];
-  getDeviceUdids(deviceIds: Array<string>): void {
-    let deviceManager: distributedDeviceManager.DeviceManager | null = null;
-    try {
-      deviceManager = distributedDeviceManager.createDeviceManager('com.example.myapplication');
-      this.idsLists = deviceManager?.getIdentificationByDeviceIds(deviceIds);
-      console.info("Successfully retrieved UDID list");
-    } catch (error) {
-      console.error('Get device UDID failed:', error);
-      this.idsLists = [];
-    } finally {
-      if (deviceManager) {
-        try {
-          distributedDeviceManager.releaseDeviceManager(deviceManager);
-          console.info("deviceManager released successfully");
-        } catch (releaseError) {
-          console.error('Release device manager failed:', releaseError);
-        }
-      }
-    }
-  }
+  let idsLists: undefined|Array<distributedDeviceManager.DeviceIdentification> = [];
+  let deviceIds: Array<string> = [];
+  try {
+    let deviceManager = distributedDeviceManager.createDeviceManager('com.example.myapplication');
+    idsLists = deviceManager?.getIdentificationByDeviceIds(deviceIds);
+    console.info("Successfully retrieved UDID list");
+  } catch (error) {
+    console.error('Get device UDID failed:', error);
+    idsLists = [];
+  } 
   ```
 
 ### restoreLocalDeviceName<sup>24+</sup>

@@ -260,7 +260,7 @@ type GestureCollectInterceptCallback = (recognizers: Array\<GestureRecognizer\>,
 
 | 类型     | 说明        |
 | ------ | --------- |
-| [GestureCollectIntervention](./ts-appendix-enums.md#gesturecollectintervention) | 手势收集干预结果。 |
+| [GestureCollectIntervention](./ts-appendix-enums.md#gesturecollectintervention) | 手势收集干预结果。<br/>取值为异常值时按照GestureCollectIntervention.[CONTINUE](./ts-appendix-enums.md#gesturecollectintervention)处理。 |
 
 ## shouldRecognizerParallelWith
 
@@ -665,7 +665,7 @@ struct Index {
 
  ![example](figures/gesture_recognizer_obtain_attributes.gif)
 
- ### 示例4（手势触发成功时取消子组件上的Touch事件）
+### 示例4（手势触发成功时取消子组件上的Touch事件）
 
 该示例通过配置onGestureRecognizerJudgeBegin判定手势，在父容器手势触发成功时，调用cancelTouch()强制取消子组件上的Touch事件，实现父子组件手势控制的精准切换。
 
@@ -863,7 +863,7 @@ struct FatherControlChild {
 ```
 ![example](figures/canceltouch.gif)
 
- ### 示例5（自定义手势识别器是否参与手势处理）
+### 示例5（自定义手势识别器是否参与手势处理）
 
 从API version 20开始，该示例通过配置[onTouchTestDone](#ontouchtestdone20)指定手势识别器不参与后续手势处理，触发回调时，调用[preventBegin](./ts-gesture-common.md#preventbegin20)阻止手势识别器参与后续处理。点击Tap2和Tap1的重合区域，不调用preventBegin时，触发Tap2对应的手势；调用preventBegin阻止Tap2时，触发Tap1对应的手势。
 
@@ -951,13 +951,14 @@ struct TouchTestDoneExample {
 ```
 ![example](figures/touchTestDone.gif)
 
- ### 示例6（自定义干预事件和手势的收集结果）
+### 示例6（自定义干预事件和手势的收集结果）
 
 该示例通过配置[onGestureCollectIntercept](#ongesturecollectintercept)指定手势识别器或者触摸识别器是否透传到其他节点。点击button2时，不透传触摸事件到Column。点击button1时，透传触摸事件到Column，Column变色。
 
 从API版本26.0.0开始，新增onGestureCollectIntercept接口。
 
 ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -972,6 +973,7 @@ struct Index {
     Column() {
       Column() {
         Row({ space: 20 } as RowOptions) {
+          // 组件button1未设置点击事件
           Button('button1')
             .width('30%')
             .height(40)
@@ -980,12 +982,16 @@ struct Index {
               this.backgroundColorButton1 = '#E5E5E5';
             })
             .backgroundColor(this.backgroundColorButton1)
+          // 组件button2设置了点击事件
           Button('button2')
             .width('30%')
             .height(40)
             .id('button2')
             .onTouch((e?: TouchEvent) => {
               this.backgroundColorButton2 = '#E5E5E5';
+            })
+            .onClick((e?: ClickEvent) => {
+              console.info("button2 is clicked")
             })
             .backgroundColor(this.backgroundColorButton2)
         }
@@ -1004,6 +1010,7 @@ struct Index {
           } else {
             for (let i = 0; i < touchRecognizers.length; i++) {
               let id = touchRecognizers[i].getEventTargetInfo().getId();
+              //当命中存在点击事件区域button2时，事件无需透传给Column
               if (id == 'button2') {
                 return GestureCollectIntervention.DISCARD_LOWER;
               }
@@ -1046,6 +1053,7 @@ struct Index {
     Column() {
       Column() {
         Row({ space: 20 } as RowOptions) {
+          // 组件button1未设置点击事件
           Button('button1')
             .width('30%')
             .height(40)
@@ -1054,12 +1062,16 @@ struct Index {
               this.backgroundColorButton1 = '#E5E5E5';
             })
             .backgroundColor(this.backgroundColorButton1)
+          // 组件button2设置了点击事件
           Button('button2')
             .width('30%')
             .height(40)
             .id('button2')
             .onTouch((e?: TouchEvent) => {
               this.backgroundColorButton2 = '#E5E5E5';
+            })
+            .onClick((e?: ClickEvent) => {
+              console.info("button2 is clicked")
             })
             .backgroundColor(this.backgroundColorButton2)
         }
@@ -1078,6 +1090,7 @@ struct Index {
           } else {
             for (let i = 0; i < touchRecognizers.length; i++) {
               let id = touchRecognizers[i].getEventTargetInfo().getId();
+              //当命中存在点击事件区域button2时，事件无需透传给Column
               if (id == 'button2') {
                 return GestureCollectIntervention.DISCARD_LOWER;
               }
@@ -1101,6 +1114,21 @@ struct Index {
 }
 ```
 ![example](figures/gestureCollectIntercept.gif)
+
+示例对应的组件树如下图所示。
+```mermaid
+graph TD
+    A((Column))
+    B((Column))
+    C((Row))
+    D((Button1))
+    E((Button2))
+
+    A --> B
+    A --> C
+    C --> D
+    C --> E
+```
 
 ### 示例7（非内置手势嵌套滚动）
 

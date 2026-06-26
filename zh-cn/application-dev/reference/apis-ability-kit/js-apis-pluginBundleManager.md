@@ -139,3 +139,83 @@ pluginBundleManager.uninstallLocalPlugin(pluginBundleName)
   console.error(`uninstallLocalPlugin errData is errCode:${err.code}  message:${err.message}`);
 });
 ```
+
+## pluginBundleManager.getAllLocalPluginInfoForSelf
+
+getAllLocalPluginInfoForSelf(): Promise\<Array\<PluginBundleInfo>>
+
+查询当前应用中所有自分发插件的信息。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.kernel.SUPPORT_LOCAL_PLUGIN
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型                                                         | 说明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Promise<Array\<[PluginBundleInfo](js-apis-bundleManager-pluginBundleInfo.md#pluginbundleinfo-1)>> | Promise对象，返回当前应用已安装的所有本地插件信息列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                 |
+| -------- | ---------------------------------------- |
+| 201 | Calling interface without permission 'ohos.permission.kernel.SUPPORT_LOCAL_PLUGIN'. |
+
+**示例：**
+
+```ts
+import { pluginBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+pluginBundleManager.getAllLocalPluginInfoForSelf().then((data): void => {
+  console.info('getAllLocalPluginInfoForSelf plugin data is' + JSON.stringify(data));
+}).catch((err: Error): void => {
+  const businessErr = err as BusinessError;
+  console.error(`getAllLocalPluginInfoForSelf errData is errCode:${businessErr.code}  message:${businessErr.message}`);
+});
+```
+
+## PluginBundleInfo
+
+type PluginBundleInfo = _PluginBundleInfo
+
+插件信息。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 类型                                                         | 说明           |
+| ------------------------------------------------------------ | -------------- |
+| [_PluginBundleInfo](js-apis-bundleManager-pluginBundleInfo.md#pluginbundleinfo-1) |插件信息。 |
+
+## PluginModuleInfo
+
+type PluginModuleInfo = _PluginModuleInfo
+
+插件的模块信息。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 类型                                                         | 说明           |
+| ------------------------------------------------------------ | -------------- |
+| [_PluginModuleInfo](js-apis-bundleManager-pluginBundleInfo.md#pluginmoduleinfo) |插件的模块信息。 |

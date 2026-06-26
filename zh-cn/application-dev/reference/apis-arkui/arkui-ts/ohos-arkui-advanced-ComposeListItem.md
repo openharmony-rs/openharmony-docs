@@ -254,7 +254,7 @@ struct ComposeListItemExample {
 }
 ```
 
-![示例1-ComposeListItem示例 左右元素+文本](figures/zh-cn_image_composelistitem_demo_01.jpg)
+![示例1-ComposeListItem示例 左右元素+文本](figures/image-composelistitem-demo-01.jpg)
 
 ### 示例2（设置右侧不同元素自定义播报）
 从API version 18开始，该示例通过设置属性accessibilityText、accessibilityDescription、accessibilityLevel，实现右侧图标、按钮、单选框自定义屏幕朗读播报文本。
@@ -420,7 +420,7 @@ struct ComposeListItemExample {
 }
 ```
 
-![示例2-ComposeListItem示例2 设置右侧元素自定义播报](figures/zh-cn_image_composelistitem_demo_02.png)
+![示例2-ComposeListItem示例2 设置右侧元素自定义播报](figures/image-composelistitem-demo-02.png)
 
 ### 示例3（设置Symbol类型图标）
 
@@ -576,4 +576,4 @@ struct ComposeListItemExample {
 }
 ```
 
-![示例3-ComposeListItem示例3 设置Symbol类型图标](figures/zh-cn_image_composelistitem_demo_03.png)
+![示例3-ComposeListItem示例3 设置Symbol类型图标](figures/image-composelistitem-demo-03.png)

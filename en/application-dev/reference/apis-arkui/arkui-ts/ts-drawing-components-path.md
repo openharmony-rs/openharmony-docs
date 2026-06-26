@@ -381,7 +381,7 @@ struct PathExample {
 }
 ```
 
-![en-us_image_0000001219744193](figures/en-us_image_0000001219744193.png)
+![path1](figures/path1.png)
 
 ### Example 2: Drawing a Path Using Different Parameter Types
 

@@ -758,7 +758,7 @@ struct Index {
 }
 ```
 
-![zh-cn\_image\_toolbar\_example01](figures/zh-cn_image_toolbar_example01.png)
+![zh-cn\_image\_toolbar\_example01](figures/image-toolbar-example01.png)
 
 ### 示例2（设置工具栏自定义样式）
 
@@ -1020,7 +1020,7 @@ struct Index {
 }
 ```
 
-![zh-cn\_image\_toolbar\_example02](figures/zh-cn_image_toolbar_example02.png)
+![zh-cn\_image\_toolbar\_example02](figures/image-toolbar-example02.png)
 
 ### 示例3（设置工具栏自定义播报）
 
@@ -1270,4 +1270,4 @@ struct Index {
 }
 ```
 
-![zh-cn\_image\_toolbar\_example01](figures/zh-cn_image_toolbar_example01.png)
+![zh-cn\_image\_toolbar\_example01](figures/image-toolbar-example01.png)

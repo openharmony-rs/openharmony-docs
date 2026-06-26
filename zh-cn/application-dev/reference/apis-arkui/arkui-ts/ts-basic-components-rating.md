@@ -528,6 +528,7 @@ struct RatingExample {
       }.width(360).height(113).backgroundColor('#FFFFFF').margin({ top: 68 })
 
       Row() {
+        // 'common/testImage.jpg'需要替换为开发者所需的图像资源文件。
         Image('common/testImage.jpg')
           .width(40)
           .height(40)
@@ -817,6 +818,7 @@ struct RatingExample {
         .stars(5)
         .stepSize(0.5)
         .starStyle({
+          // $r('app.media.xxx')需要替换为开发者所需的图像资源文件。
           backgroundUri: $r('app.media.imag1'),
           foregroundUri: $r('app.media.imag2'),
           secondaryUri: $r('app.media.imag3')
@@ -842,7 +844,7 @@ struct RatingExample {
 
 > **说明**
 >
-> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2开始，新建工程或者模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOptions > resOptions > copyCodeResource > enable设置为true，详见[resOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)中相关介绍。
+> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2开始，新建工程或者模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOptions > resOptions > copyCodeResource > enable设置为true，详见[resOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)中相关介绍。
 
 ArkTS-Dyn示例：
 

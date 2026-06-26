@@ -159,7 +159,7 @@ getExternalOptions(): CustomDialogControllerExternalOptions
 
 ## PromptActionCommonState<sup>20+</sup>
 
-type PromptActionCommonState = promptAction.CommonState
+type PromptActionCommonState = import('../api/@ohos.promptAction').promptAction.CommonState
 
 自定义弹窗的状态。
 
@@ -177,7 +177,7 @@ type PromptActionCommonState = promptAction.CommonState
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [promptAction.CommonState](../js-apis-promptAction.md#commonstate20枚举说明) | 返回对应的弹窗状态。 |
+| import('../api/@ohos.promptAction').[promptAction.CommonState](../js-apis-promptAction.md#commonstate20枚举说明) | 返回对应的弹窗状态。 |
 
 ## CustomDialogControllerOptions对象说明
 
@@ -414,7 +414,7 @@ struct CustomDialogUser {
 }
 ```
 
-![zh-cn_image_custom](figures/zh-cn_image_custom.gif)
+![image-custom](figures/image-custom.gif)
 
 ### 示例2（可在主窗外弹出的弹窗）
 
@@ -503,7 +503,7 @@ struct CustomDialogUser {
 }
 ```
 
-![zh-cn_image_custom-showinsubwindow](figures/zh-cn_image_custom-showinsubwindow.jpg)
+![image-custom-showinsubwindow](figures/image-custom-showinsubwindow.jpg)
 
 ### 示例3（设置弹窗的样式）
 该示例定义了CustomDialog的样式，包括宽度、高度、背景色、阴影等。
@@ -593,7 +593,7 @@ struct CustomDialogUser {
 }
 ```
 
-![zh-cn_image_custom_style](figures/zh-cn_image_custom_style.gif)
+![zh-cn_image_custom_style](figures/image-custom-style.gif)
 
 ### 示例4（悬停态弹窗）
 
@@ -1262,7 +1262,7 @@ struct Example3 {
 }
 ```
 
-![zh-cn_image_custom_lifecycle](figures/zh-cn_image_custom_lifecycle.gif)
+![zh-cn_image_custom_lifecycle](figures/image-custom-lifecycle.gif)
 
 ### 示例10（不同customStyle下的弹窗示例）
 
@@ -1409,7 +1409,7 @@ struct CustomDialogUser {
 }
 ```
 
-![zh-cn_image_custom-backgroundBlurStyleOptions](figures/zh-cn_image_custom-backgroundBlurStyleOptions.png)
+![image-custom-backgroundBlurStyleOptions](figures/image-custom-backgroundBlurStyleOptions.png)
 
 ### 示例12（自定义背景效果参数）
 
@@ -1472,7 +1472,7 @@ struct CustomDialogUser {
 }
 ```
 
-![zh-cn_image_custom-backgroundEffect](figures/zh-cn_image_custom-backgroundEffect.png)
+![image-custom-backgroundEffect](figures/image-custom-backgroundEffect.png)
 
 ### 示例13（自定义弹窗动态刷新宽度）
 
@@ -1539,4 +1539,4 @@ struct CustomDialogUser {
 }
 ```
 
-![zh-cn_image_custom-backgroundEffect](figures/zh-cn_image_dynamicRefreshwidth.gif)
+![zh-cn_image_custom-backgroundEffect](figures/image-dynamicRefreshwidth.gif)

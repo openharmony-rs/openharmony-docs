@@ -630,5 +630,5 @@ struct SnapshotExample {
 }
 ```
 
-![zh-cn_image_getWithRange](figures/zh-cn_image_getWithRange.gif)
+![zh-cn_image_getWithRange](figures/image-getWithRange.gif)
 

@@ -242,7 +242,7 @@ defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
 
 ## defaultAppManager.getDefaultApplication
 
-getDefaultApplication(type: string, callback: AsyncCallback\<BundleInfo>) : void
+getDefaultApplication(type: string, callback: AsyncCallback\<BundleInfo>): void
 
 根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型获取默认应用信息。使用callback异步回调。
 
@@ -562,7 +562,7 @@ defaultAppManager.setDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
 
 ## defaultAppManager.setDefaultApplication
 
-ArkTS-Dyn: setDefaultApplication(type: string, elementName: ElementName, userId: number, callback: AsyncCallback\<void>) : void
+ArkTS-Dyn: setDefaultApplication(type: string, elementName: ElementName, userId: number, callback: AsyncCallback\<void>): void
 
 ArkTS-Sta: setDefaultApplication(type: string, elementName: ElementName, userId: int, callback: AsyncCallback\<void>): void
 
@@ -695,7 +695,7 @@ defaultAppManager.setDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
 
 ## defaultAppManager.setDefaultApplication
 
-setDefaultApplication(type: string, elementName: ElementName, callback: AsyncCallback\<void>) : void
+setDefaultApplication(type: string, elementName: ElementName, callback: AsyncCallback\<void>): void
 
 根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型设置默认应用。使用callback异步回调。
 
@@ -1028,7 +1028,7 @@ defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.
 
 ArkTS-Dyn: resetDefaultApplication(type: string, userId: number, callback: AsyncCallback\<void>): void
 
-ArkTS-Sta: resetDefaultApplication(type: string, userId: int, callback: AsyncCallback\<void>) : void
+ArkTS-Sta: resetDefaultApplication(type: string, userId: int, callback: AsyncCallback\<void>): void
 
 根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型重置默认应用。使用callback异步回调。
 
@@ -1135,7 +1135,7 @@ defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.
 
 ## defaultAppManager.resetDefaultApplication
 
-resetDefaultApplication(type: string, callback: AsyncCallback\<void>) : void
+resetDefaultApplication(type: string, callback: AsyncCallback\<void>): void
 
 根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型重置默认应用。使用callback异步回调。
 
@@ -1302,7 +1302,9 @@ try {
 
 ## defaultAppManager.setDefaultApplicationForAppClone<sup>23+</sup>
 
-setDefaultApplicationForAppClone(type: string, elementName: ElementName, appIndex: number, userId?: number): void
+ArkTS-Dyn: setDefaultApplicationForAppClone(type: string, elementName: ElementName, appIndex: number, userId?: number): void
+
+ArkTS-Sta: setDefaultApplicationForAppClone(type: string, elementName: ElementName, appIndex: int, userId?: int): void
 
 以同步方法将分身应用设置为打开相应type类型的默认应用。
 
@@ -1314,14 +1316,18 @@ setDefaultApplicationForAppClone(type: string, elementName: ElementName, appInde
 
 **系统接口：**  此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                                      |
 | ----------- | ------ | ---- | --------------------------------------- |
 | type        | string | 是   | 要设置的应用类型，支持取值包括：[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值、[MIMEType](../../database/uniform-data-type-list.md#基础类型)类型、或[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。|
 | elementName | [ElementName](js-apis-bundleManager-elementName.md#elementname-1) | 是 | 要设置为默认应用的组件信息，仅使用其中的bundleName、abilityName、moduleName属性，且三个属性必须设置。                           |
-| appIndex    | number | 是   | 表示分身应用的索引。<br>取值范围：1、2、3、4、5。 |
-| userId      | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。<br>默认值：调用方所在用户ID。                           |
+| appIndex    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示分身应用的索引。<br>取值范围：1、2、3、4、5。 |
+| userId      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。<br>默认值：调用方所在用户ID。                           |
 
 **错误码：**
 

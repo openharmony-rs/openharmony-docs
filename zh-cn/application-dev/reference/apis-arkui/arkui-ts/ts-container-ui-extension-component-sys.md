@@ -96,7 +96,7 @@ onReceive(callback: ReceiveCallback)
 
 onResult(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<{code: number; want?: Want}>)
 
-被拉起的Ability扩展调用terminateSelfWithResult时会先触发本回调函数，再触发OnRelease。
+被拉起的Ability扩展调用terminateSelfWithResult时会先触发本回调函数，再触发onRelease。
 
 本回调内可处理对端Ability的结果数据，可参考[AbilityResult](../../apis-ability-kit/js-apis-inner-ability-abilityResult.md)。
 
@@ -111,8 +111,7 @@ onResult(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#call
 
 | 参数名                       | 类型   | 必填 |说明                                                         |
 | ---------------------------- | ------ | ------ | ------------------------------------------------------------ |
-| code                        | number | 是 | 收到来自对端Ability的处理结果code。                          |
-| want                        | Want | 否 |收到来自对端Ability的处理结果[Want](../../apis-ability-kit/js-apis-app-ability-want.md)。 |
+| callback                        | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<{code: number; want?: [Want](../../apis-ability-kit/js-apis-app-ability-want.md)}> | 是 | 回调函数，被拉起的Ability扩展调用terminateSelfWithResult时返回的结果数据。                          |
 
 ### onRelease<sup>(deprecated)</sup>
 
@@ -295,7 +294,7 @@ sendSync(data: Record\<string, Object\>): Record\<string, Object\>
 
 **返回值：**
 
-| 类型 | 描述 |
+| 类型 | 说明 |
 | ---- | ----|
 | Record\<string, Object\> | 扩展Ability回复的数据。 |
 

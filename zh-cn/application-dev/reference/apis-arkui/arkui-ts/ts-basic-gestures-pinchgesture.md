@@ -231,7 +231,7 @@ struct PinchGestureExample {
 }
 ```
 
- ![zh-cn_image_0000001174582848](figures/zh-cn_image_0000001174582848.png)
+ ![pinchGesture](figures/pinchGesture.png)
 
 ### 示例2（实现图片跟手缩放）
 

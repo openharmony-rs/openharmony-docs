@@ -170,7 +170,7 @@ startOffset属性动画，文本绘制时起点偏移从10%运动到40%，不绘
 </div>
 ```
 
-![zh-cn_image_0000001127125118](figures/zh-cn_image_0000001127125118.gif)
+![onTextPath](figures/onTextPath.gif)
 
 textpath与tspan组合属性动画与效果图
 

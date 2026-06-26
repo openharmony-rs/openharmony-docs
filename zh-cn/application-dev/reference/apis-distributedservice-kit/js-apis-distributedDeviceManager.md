@@ -393,6 +393,27 @@ getAvailableDeviceList(): Promise&lt;Array&lt;DeviceBasicInfo&gt;&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try{
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    dmInstance.getAvailableDeviceList().then((data: Array<distributedDeviceManager.DeviceBasicInfo>) => {
+      console.info('get available device info: ' + JSON.stringify(data));
+      }).catch((err: BusinessError) => {
+        let e: BusinessError = err as BusinessError;
+        console.error(`getAvailableDeviceList errCode: ${e.code}, errMessage: ${e.message}`);
+    });
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`getAvailableDeviceList errCode: ${e.code}, errMessage: ${e.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -906,7 +927,7 @@ ArkTS-Dyn参数：
   | 参数名     | 类型                                                | 必填  | 说明         |
   | ---------- | --------------------------------------------------- | ----- | ------------ |
   | deviceId   | string                                              | 是    | 设备标识。长度范围1~255字符。   |
-  | bindParam  | {[key:&nbsp;string]:&nbsp;Object;}                             | 是    | 认证参数。由开发者自行决定传入的键值对。默认会携带以下key值：<br>bindType 此值是绑定的类型，必填。 <br /> 1：PIN码。<br>targetPkgName 绑定目标的包名。<br>appName 尝试绑定目标的应用程序名称。<br>appOperation 应用程序要绑定目标的原因。<br>customDescription 操作的详细说明。   |
+  | bindParam  | {[key:&nbsp;string]:&nbsp;Object;}                             | 是    | 认证参数。由开发者自行决定传入的键值对。默认会携带以下key值：<br>bindType 此值是绑定的类型，必填。 <br /> - 1：PIN码。<br>targetPkgName 绑定目标的包名。<br>appName 尝试绑定目标的应用程序名称。<br>appOperation 应用程序要绑定目标的原因。<br>customDescription 操作的详细说明。   |
   | callback   | AsyncCallback&lt;{deviceId:&nbsp;string;&nbsp;}&gt; | 是    | 认证结果回调。 |
 
 ArkTS-Sta参数：

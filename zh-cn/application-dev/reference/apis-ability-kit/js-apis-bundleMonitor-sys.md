@@ -79,8 +79,8 @@ on(type: BundleChangedEvent, callback: Callback\<BundleChangedInfo>): void
 
 | 参数名                       | 类型     | 必填 | 说明               |
 | ---------------------------- | -------- | ---- | ------------------ |
-| type| [BundleChangedEvent](js-apis-bundleMonitor-sys.md#bundlechangedevent)| 是   | 注册监听的事件类型。 |
-| callback | callback\<BundleChangedInfo>| 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#callback)，当回调成功时，err为undefined，data为应用变更信息；否则为错误对象。 |
+| type | [BundleChangedEvent](#bundlechangedevent) | 是   | 注册监听的事件类型。 |
+| callback | Callback\<[BundleChangedInfo](#bundlechangedinfo)> | 是   | 注册监听的[Callback](../apis-basic-services-kit/js-apis-base.md#callback)。 |
 
 **错误码：**
 
@@ -135,7 +135,7 @@ onAdd(callback: Callback\<BundleChangedInfo>): void
 
 | 参数名                       | 类型     | 必填 | 说明               |
 | ---------------------------- | -------- | ---- | ------------------ |
-| callback | callback\<BundleChangedInfo>| 是   | 注册监听的AsyncCallback(../apis-basic-services-kit/js-apis-base.md#asynccallback)。 |
+| callback | Callback\<[BundleChangedInfo](#bundlechangedinfo)> | 是   | 注册监听的[Callback](../apis-basic-services-kit/js-apis-base.md#callback)。 |
 
 **错误码：**
 
@@ -172,7 +172,7 @@ onUpdate(callback: Callback\<BundleChangedInfo>): void
 注册监听应用的更新。
 >**说明：**
 >
->该方法需要与[bundleMonitor.offupdate](#bundlemonitoroffupdate23)配合使用，在组件、页面、应用的生命周期结束时，使用[bundleMonitor.offupdate](#bundlemonitoroffupdate23)注销对应用的更新事件的监听。
+>该方法需要与[bundleMonitor.offUpdate](#bundlemonitoroffupdate23)配合使用，在组件、页面、应用的生命周期结束时，使用[bundleMonitor.offUpdate](#bundlemonitoroffupdate23)注销对应用的更新事件的监听。
 
 **需要权限：** ohos.permission.LISTEN_BUNDLE_CHANGE
 
@@ -190,7 +190,7 @@ onUpdate(callback: Callback\<BundleChangedInfo>): void
 
 | 参数名                       | 类型     | 必填 | 说明               |
 | ---------------------------- | -------- | ---- | ------------------ |
-| callback | callback\<BundleChangedInfo>| 是   | 注册监听的AsyncCallback(../apis-basic-services-kit/js-apis-base.md#asynccallback)。 |
+| callback | Callback\<[BundleChangedInfo](#bundlechangedinfo)> | 是   | 注册监听的[Callback](../apis-basic-services-kit/js-apis-base.md#callback)。 |
 
 **错误码：**
 
@@ -245,7 +245,7 @@ onRemove(callback: Callback\<BundleChangedInfo>): void
 
 | 参数名                       | 类型     | 必填 | 说明               |
 | ---------------------------- | -------- | ---- | ------------------ |
-| callback | callback\<BundleChangedInfo>| 是   | 注册监听的AsyncCallback(../apis-basic-services-kit/js-apis-base.md#asynccallback)。 |
+| callback | Callback\<[BundleChangedInfo](#bundlechangedinfo)> | 是   | 注册监听的[Callback](../apis-basic-services-kit/js-apis-base.md#callback)。 |
 
 **错误码：**
 
@@ -295,8 +295,8 @@ off(type: BundleChangedEvent, callback?: Callback\<BundleChangedInfo>): void
 
 | 参数名                       | 类型     | 必填 | 说明                                                       |
 | ---------------------------- | -------- | ---- | ---------------------------------------------------------- |
-| type| [BundleChangedEvent](js-apis-bundleMonitor-sys.md#bundlechangedevent)| 是   | 注销监听的事件类型。                                         |
-| callback | callback\<BundleChangedInfo>| 否   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#callback)，当回调成功时，err为undefined，data为应用变更信息；否则为错误对象。 |
+| type | [BundleChangedEvent](#bundlechangedevent) | 是   | 注销监听的事件类型。                                         |
+| callback | Callback\<[BundleChangedInfo](#bundlechangedinfo)> | 否   | 注销监听的[Callback](../apis-basic-services-kit/js-apis-base.md#callback)。 |
 
 **错误码：**
 
@@ -350,7 +350,7 @@ offAdd(callback?: Callback\<BundleChangedInfo>): void
 
 | 参数名                       | 类型     | 必填 | 说明                                                       |
 | ---------------------------- | -------- | ---- | ---------------------------------------------------------- |
-| callback | callback\<BundleChangedInfo>| 否   | 注销监听的AsyncCallback(../apis-basic-services-kit/js-apis-base.md#asynccallback)，默认值：注销当前事件的所有callback。 |
+| callback | Callback\<[BundleChangedInfo](#bundlechangedinfo)> | 否   | 注销监听的[Callback](../apis-basic-services-kit/js-apis-base.md#callback)。 |
 
 **错误码：**
 
@@ -400,7 +400,7 @@ offUpdate(callback?: Callback\<BundleChangedInfo>): void
 
 | 参数名                       | 类型     | 必填 | 说明                                                       |
 | ---------------------------- | -------- | ---- | ---------------------------------------------------------- |
-| callback | callback\<BundleChangedInfo>| 否   | 注销监听的AsyncCallback(../apis-basic-services-kit/js-apis-base.md#asynccallback)，默认值：注销当前事件的所有callback。 |
+| callback | Callback\<[BundleChangedInfo](#bundlechangedinfo)> | 否   | 注销监听的[Callback](../apis-basic-services-kit/js-apis-base.md#callback)。 |
 
 **错误码：**
 
@@ -450,7 +450,7 @@ offRemove(callback?: Callback\<BundleChangedInfo>): void
 
 | 参数名                       | 类型     | 必填 | 说明                                                       |
 | ---------------------------- | -------- | ---- | ---------------------------------------------------------- |
-| callback | callback\<BundleChangedInfo>| 否   | 注销监听的AsyncCallback(../apis-basic-services-kit/js-apis-base.md#asynccallback)，默认值：注销当前事件的所有callback。 |
+| callback | Callback\<[BundleChangedInfo](#bundlechangedinfo)> | 否   | 注销监听的[Callback](../apis-basic-services-kit/js-apis-base.md#callback)。 |
 
 **错误码：**
 

@@ -266,6 +266,7 @@ struct Index {
     Column() {
       Child({ arr: this.arr })
     }
+    .width('100%')
   }
 }
 @Component
@@ -274,16 +275,29 @@ struct Child {
   build() {
     Column() {
       Text(`${this.arr}`)
-      Button(`change arr[0]: ${this.arr[0]}`).onClick((e: ClickEvent) => {
+        .fontSize(20)
+        .margin(10)
+      Button(`change arr[0]: ${this.arr[0]}`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 修改arr变量中元素的值，触发UI刷新
           this.arr[0]++;
       })
-      Button(`push item: ${this.arr.length}`).onClick((e: ClickEvent) => {
+      Button(`push item: ${this.arr.length}`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 向arr变量中添加元素，触发UI刷新
           this.arr.push(Double.toInt(this.arr.length));
       })
     }
+    .width('100%')
   }
 }
 ```
+
+![propref-array](../figures/propref4.gif)
 
 ### 装饰Map类型
 
@@ -301,6 +315,7 @@ struct Index {
     Column() {
       Child({ map: this.map })
     }
+    .width('100%')
   }
 }
 @Component
@@ -309,16 +324,29 @@ struct Child {
   build() {
     Column() {
       Text(`${this.map}`)
-      Button(`change map[0]: ${this.map.get(0)}`).onClick((e: ClickEvent) => {
+        .fontSize(20)
+        .margin(10)
+      Button(`change map[0]: ${this.map.get(0)}`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 更新键值对，触发UI刷新
           this.map.set(0, this.map.get(0)! + 1);
       })
-      Button(`add item: ${this.map.size}`).onClick((e: ClickEvent) => {
+      Button(`add item: ${this.map.size}`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 新增键值对，触发UI刷新
           this.map.set(this.map.size, this.map.size);
       })
     }
+    .width('100%')
   }
 }
 ```
+
+![propref-map](../figures/propref5.gif)
 
 ### 装饰Set类型
 
@@ -336,6 +364,7 @@ struct Index {
     Column() {
       Child({ set: this.set })
     }
+    .width('100%')
   }
 }
 @Component
@@ -343,23 +372,43 @@ struct Child {
   @PropRef set: Set<int>;
   build() {
     Column() {
-      Text(`${this.set}`)
-      Button('init set').onClick((e: ClickEvent) => {
-        this.set = new Set<int>([0, 1, 2, 3, 4]);
+      Text(`${Array.from(this.set)}`)
+        .fontSize(20)
+        .margin(10)
+      Button('init set')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          this.set = new Set<int>([0, 1, 2, 3, 4]);
       })
-      Button('set new one').onClick((e: ClickEvent) => {
-        this.set.add(5);
+      Button('set new one')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 新增元素，触发UI刷新
+          this.set.add(5);
       })
-      Button('clear').onClick((e: ClickEvent) => {
-        this.set.clear();
+      Button('clear')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 清空Set，触发UI刷新
+          this.set.clear();
       })
-      Button('delete the first one').onClick((e: ClickEvent) => {
-        this.set.delete(0);
+      Button('delete the first one')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 删除元素，触发UI刷新
+          this.set.delete(0);
       })
     }
+    .width('100%')
   }
 }
 ```
+
+![propref-set](../figures/propref6.gif)
 
 ### 装饰Date类型
 
@@ -377,6 +426,7 @@ struct Index {
     Column() {
       Child({ date: this.date })
     }
+    .width('100%')
   }
 }
 @Component
@@ -385,19 +435,40 @@ struct Child {
   build() {
     Column() {
       Text(`${this.date}`)
-      Button(`change update`).onClick((e: ClickEvent) => {
-        this.date = new Date('2023-09-09');
+        .fontSize(20)
+        .margin(10)
+      Button(`change update`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 通过给date重新赋值新的Date实例，触发UI刷新
+          this.date = new Date('2023-09-09');
       })
-      Button('increase the year by 1').onClick((e: ClickEvent) => {
-        this.date.setFullYear(this.date.getFullYear() + 1);
+      Button('increase the year by 1')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 调用Date的setFullYear接口修改年份，触发UI刷新
+          this.date.setFullYear(this.date.getFullYear() + 1);
       })
-      Button('increase the month by 1').onClick((e: ClickEvent) => {
-        this.date.setMonth(this.date.getMonth() + 1);
+      Button('increase the month by 1')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 调用Date的setMonth接口修改月份，触发UI刷新
+          this.date.setMonth(this.date.getMonth() + 1);
       })
-      Button('parent increase the day by 1').onClick((e: ClickEvent) => {
-        this.date.setDate(this.date.getDate() + 1);
+      Button('increase the day by 1')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 调用Date的setDate接口修改日期，触发UI刷新
+          this.date.setDate(this.date.getDate() + 1);
       })
     }
+    .width('100%')
   }
 }
 ```
+
+![propref-date](../figures/propref7.gif)

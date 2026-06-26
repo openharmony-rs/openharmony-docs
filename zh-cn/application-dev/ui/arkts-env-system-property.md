@@ -1,4 +1,4 @@
-# \@Env：环境变量
+# \@Env：环境变量 (ArkTS-Dyn)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
@@ -23,9 +23,9 @@
   - [SystemProperties.WINDOW_SIZE_PX<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)，用于获取窗口的大小信息，单位为px。
   - [SystemProperties.WINDOW_AVOID_AREA<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)，用于获取窗口的避让区域信息，单位为vp。
   - [SystemProperties.WINDOW_AVOID_AREA_PX<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)，用于获取窗口的避让区域信息，单位为px。
-  - [WritableSystemEnvKey.FONT_SCALE](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#属性-1)，用于为后代组件提供局部字体缩放比例，从API版本26.0.0开始支持。
-  - [WritableSystemEnvKey.DIRECTION](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#属性-1)，用于获取窗口所在屏幕的布局方向，从API版本26.0.0开始支持。
-  - 系统环境变量改变时，通知\@Env装饰的变量更新，并触发\@Env关联组件刷新，以实现界面内容的同步更新，\@Env的参数为WritableSystemEnvKey.FONT_SCALE和WritableSystemEnvKey.DIRECTION时，父组件可通过[WithEnv](../reference/apis-arkui/arkui-ts/ts-container-with-env.md)中的[.env](../reference/apis-arkui/arkui-ts/ts-container-with-env.md#env)方法向子组件中的\@Env传值。
+  - [WritableEnvKey.FONT_SCALE](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#属性-1)，用于为后代组件提供局部字体缩放比例，从API版本26.0.0开始支持。
+  - [WritableEnvKey.DIRECTION](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#属性-1)，用于获取窗口所在屏幕的布局方向，从API版本26.0.0开始支持。
+  - 系统环境变量改变时，通知\@Env装饰的变量更新，并触发\@Env关联组件刷新，以实现界面内容的同步更新，\@Env的参数为WritableEnvKey.FONT_SCALE和WritableEnvKey.DIRECTION时，父组件可通过[WithEnv](../reference/apis-arkui/arkui-ts/ts-container-with-env.md)中的[.env](../reference/apis-arkui/arkui-ts/ts-container-with-env.md#env)方法向子组件中的\@Env传值。
   - \@Env装饰的变量不允许开发者初始化。
     - 当\@Env装饰的类型是复杂类型时，\@Env会返回给开发者可观察的环境变量类（由[\@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md)装饰，且其由属性[\@Trace](./state-management/arkts-new-observedV2-and-trace.md)装饰）的实例。开发者如果想监听环境变量的变化，可以使用[addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md)，具体示例见[在\@ComponentV2中使用\@Env](#在componentv2中使用env)。
     - 当\@Env装饰的类型是简单类型时，开发者可以在\@Component中使用[\@Watch](state-management/arkts-watch.md)，在\@ComponentV2中使用\@Monitor监听变化，具体示例见[\@Watch与\@Monitor监听\@Env装饰的变量](#watch与monitor监听env装饰的变量)。
@@ -105,8 +105,8 @@
   - \@Env使用`SystemProperties.WINDOW_SIZE_PX`时，装饰的变量类型必须为`window.Size`类型。
   - \@Env使用`SystemProperties.WINDOW_AVOID_AREA`时，装饰的变量类型必须为`window.UIEnvWindowAvoidAreaInfoVP`类型。
   - \@Env使用`SystemProperties.WINDOW_AVOID_AREA_PX`时，装饰的变量类型必须为`window.UIEnvWindowAvoidAreaInfoPX`类型。
-  - \@Env使用`WritableSystemEnvKey.FONT_SCALE`时，装饰的变量类型必须为`number`类型。
-  - \@Env使用`WritableSystemEnvKey.DIRECTION`时，装饰的变量类型必须为`Direction`类型。
+  - \@Env使用`WritableEnvKey.FONT_SCALE`时，装饰的变量类型必须为`number`类型。
+  - \@Env使用`WritableEnvKey.DIRECTION`时，装饰的变量类型必须为`Direction`类型。
   ```ts
   import { uiObserver } from '@kit.ArkUI';
 
@@ -930,7 +930,7 @@ struct Comp {
 ### \@Watch与\@Monitor监听\@Env装饰的变量
 从API版本26.0.0开始，在\@Component中，可通过[\@Watch](state-management/arkts-watch.md)监听\@Env装饰变量的变化。需要注意的是，仅当\@Env装饰的变量被整体赋值时才会触发\@Watch监听回调，其内部属性的变化不会触发回调。
 ```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
+import { WithEnv } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
@@ -977,7 +977,7 @@ struct ChildV1 {
 
 在\@ComponentV2中，可通过\@Monitor监听\@Env装饰变量的变化。需要注意的是，仅当\@Env装饰的变量被整体赋值时才会触发\@Monitor监听回调，其内部属性的变化不会触发回调。
 ```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
+import { WithEnv } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 

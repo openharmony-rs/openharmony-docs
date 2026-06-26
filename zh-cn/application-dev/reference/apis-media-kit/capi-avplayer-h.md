@@ -1,7 +1,7 @@
 # avplayer.h
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xushubo; @chennotfound-->
+<!--Owner: @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
@@ -116,6 +116,8 @@
 | [OH_AVErrCode OH_AVPlayer_SetPCMOutputCallback(OH_AVPlayer *player, OH_AVPlayerPCMOutputCallback callback, void *userData)](#oh_avplayer_setpcmoutputcallback) | - | 设置音频PCM数据输出回调。当播放处于idle或initialized状态时，可调用此接口。 |
 | [OH_AVPlayerVideoOutput* OH_AVPlayer_SetVideoSideOutput(OH_AVPlayer *player, OHNativeWindow *window)](#oh_avplayer_setvideosideoutput) | - | 设置视频解码帧输出回调。当播放处于idle或initialized状态时，可调用此接口。 |
 | [OH_VideoOutputResult OH_AVPlayerVideoOutput_GetNewestVideoSample(OH_AVPlayerVideoOutput *videoOutput)](#oh_avplayervideooutput_getnewestvideosample) | - | 获得一个视频解码帧。当播放处于paused或playing状态时，可调用此接口。 |
+| [OH_AVErrCode OH_AVPlayer_SetPCMProcessorCallback(OH_AVPlayer *player, OH_AVPlayerPCMProcessorCallback callback, void *userData)](#oh_avplayer_setpcmprocessorcallback) | - | 设置音频PCM数据后处理回调。当播放处于idle或initialized状态时，可调用此接口。 |
+| [OH_AVErrCode OH_AVPlayer_SetPCMProcessorMaxLen(OH_AVPlayer *player, int32_t maxProcessedPCMLen)](#oh_avplayer_setpcmprocessormaxlen) | - | 设置音频后处理回调函数单次可返回的最大数据量。允许缓存部分数据，并与下一次返回的PCM数据一并输出。<br> 当播放处于idle或initialized状态时，可调用此接口。 |
 
 ## 函数说明
 
@@ -2187,5 +2189,56 @@ OH_VideoOutputResult OH_AVPlayerVideoOutput_GetNewestVideoSample(OH_AVPlayerVide
 | 类型 | 说明 |
 | -- | -- |
 | [OH_VideoOutputResult](capi-avplayer-base-h.md#oh_videooutputresult) | OH_VIDEO_OUTPUT_OK：获得一个视频解码帧。<br>         OH_VIDEO_OUTPUT_NO_IMAGE：没有可渲染的帧。 |
+
+### OH_AVPlayer_SetPCMProcessorCallback()
+
+```c
+OH_AVErrCode OH_AVPlayer_SetPCMProcessorCallback(OH_AVPlayer *player, OH_AVPlayerPCMProcessorCallback callback, void *userData)
+```
+
+**描述**
+
+设置音频PCM数据后处理回调。当播放处于idle或initialized状态时，可调用此接口。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
+| [OH_AVPlayerPCMProcessorCallback](capi-avplayer-base-h.md#oh_avplayerpcmprocessorcallback) callback | 回调函数指针，nullptr表示取消注册回调。 |
+| void *userData | 指向用户指定数据的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| OH_AVErrCode | 函数执行结果。<br>         AV_ERR_OK：表示执行成功。<br>         AV_ERR_INVALID_VAL：表示输入的player为空指针，或player SetPCMProcessorCallback失败。<br>         AV_ERR_OPERATE_NOT_PERMIT：表示在不支持的状态下调用。 |
+
+### OH_AVPlayer_SetPCMProcessorMaxLen()
+
+```c
+OH_AVErrCode OH_AVPlayer_SetPCMProcessorMaxLen(OH_AVPlayer *player, int32_t maxProcessedPCMLen)
+```
+
+**描述**
+
+设置音频后处理回调函数单次可返回的最大数据量。允许缓存部分数据，并与下一次返回的PCM数据一并输出。<br> 当播放处于idle或initialized状态时，可调用此接口。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | 指向OH_AVPlayer实例的指针。 |
+| int32_t maxProcessedPCMLen | 单次可返回的最大数据量。单位为字节（Byte），范围为(0, 5MB]。<br> OH_AVPlayerPCMProcessorCallback保证返回的AVBuffer的容量不小于该值。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| OH_AVErrCode | 函数执行结果。<br>         AV_ERR_OK：表示执行成功。<br>         AV_ERR_INVALID_VAL：表示输入的player为空指针，或maxProcessedPCMLen参数无效。<br>         AV_ERR_OPERATE_NOT_PERMIT：表示在不支持的状态下调用。 |
 
 

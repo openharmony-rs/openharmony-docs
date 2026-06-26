@@ -560,7 +560,7 @@ beginAxis(axis: Axis, value: number): Promise&lt;void&gt;
 | ---- | --------------------- |
 | 201  | Permission verification failed. The application does not have the permission required to call the API.  |
 | 3800001  | Input service exception.  |
-| 4300001  | The axis event in progress.  |
+| 4300001  | The axis event is in progress.  |
 
 **示例：**
 

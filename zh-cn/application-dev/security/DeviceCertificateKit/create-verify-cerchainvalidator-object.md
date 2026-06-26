@@ -22,7 +22,7 @@
    import { cert } from '@kit.DeviceCertificateKit';
    ```
 
-2. [cert.createCertChainValidator](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatecertchainvalidator)创建证书链校验器对象。
+2. 调用[cert.createCertChainValidator](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatecertchainvalidator)创建证书链校验器对象。
 
 3. 基于已有的证书数据，创建证书链数据对象[CertChainData](../../reference/apis-device-certificate-kit/js-apis-cert.md#certchaindata)。
    
@@ -89,7 +89,13 @@ function certChainValidatorSample(): void {
   let algorithm = 'PKIX';
 
   // 创建一个证书链校验器实例。
-  let validator = cert.createCertChainValidator(algorithm);
+  let validator: cert.CertChainValidator;
+  try {
+    validator = cert.createCertChainValidator(algorithm);
+  } catch (err) {
+    console.error(`createCertChainValidator failed, errCode: ${err.code}, errMsg: ${err.message}`);
+    return;
+  }
 
   // CA证书数据。
   let uint8ArrayOfCaCertData = textEncoder.encodeInto(caCertData);

@@ -24,7 +24,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 Enumerates the error codes used in the certificate management APIs.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
@@ -38,7 +38,7 @@ Obtains all private credentials. This API uses an asynchronous callback to retur
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
 
@@ -91,7 +91,7 @@ Obtains all private credentials. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
 
@@ -142,7 +142,7 @@ Obtains all system credentials. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
 
@@ -193,7 +193,7 @@ Obtains details about a CA certificate trusted by the system. This API is called
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
 
@@ -253,7 +253,7 @@ Obtains the list of CA certificates trusted by the system. This API is called on
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
 
@@ -306,7 +306,7 @@ Sets the status of a CA certificate. Currently, only the status of a user's CA c
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_USER_TRUSTED_CERT
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
 
@@ -364,7 +364,7 @@ Uninstalls all CA certificates trusted by the user. This API is called only by t
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_USER_TRUSTED_CERT
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
 
@@ -410,7 +410,7 @@ Installs the public credential of the user. This API is called only by the certi
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
 
@@ -474,7 +474,7 @@ Uninstalls the public credential of the user. This API is called only by the cer
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
 
@@ -530,7 +530,7 @@ Obtains the public credentials of all users. This API is called only by the cert
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
 
@@ -584,7 +584,7 @@ Grants the permission for an application to use the public credentials of a user
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
 
@@ -643,7 +643,7 @@ Obtains the list of authorized applications of a user's public credential. This 
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
 
@@ -704,7 +704,7 @@ Removes the permission for an application to use the public credentials of a use
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
 
@@ -762,7 +762,7 @@ Obtains all private credentials of a specified application. This API is called o
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
 
@@ -823,7 +823,7 @@ Installs the system application credential. This API is called only by the certi
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_SYSTEM_APP_CERT
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
 
@@ -887,7 +887,7 @@ Obtains the credential details of the system application. This API is called onl
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_SYSTEM_APP_CERT
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
 
@@ -948,7 +948,7 @@ Uninstalls the credential of the system application. This API is called only by 
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_SYSTEM_APP_CERT
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
 
@@ -1004,7 +1004,7 @@ Uninstalls all system application credentials and public user credentials. This 
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER, ohos.permission.ACCESS_CERT_MANAGER_INTERNAL, and ohos.permission.ACCESS_SYSTEM_APP_CERT
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
 

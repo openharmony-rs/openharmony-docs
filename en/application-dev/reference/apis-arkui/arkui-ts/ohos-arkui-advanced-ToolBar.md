@@ -295,7 +295,7 @@ struct Index {
 }
 ```
 
-![en-us_image_toolbar_example01](figures/en-us_image_toolbar_example01.png)
+![en-us_image_toolbar_example01](figures/image-toolbar-example01.png)
 
 ### Example 2: Customizing the Toolbar Style
 This example demonstrates how to customize the toolbar's height, background color, and other styles using **ToolBarModifier**. This functionality is supported since API version 13.
@@ -393,7 +393,7 @@ struct Index {
 }
 ```
 
-![en-us_image_toolbar_example02](figures/en-us_image_toolbar_example02.png)
+![en-us_image_toolbar_example02](figures/image-toolbar-example02.png)
 
 
 ### Example 3: Implementing Screen Reader Announcement
@@ -469,4 +469,4 @@ struct Index {
   }
 }
 ```
-![en-us_image_toolbar_example01](figures/en-us_image_toolbar_example01.png)
+![en-us_image_toolbar_example01](figures/image-toolbar-example01.png)

@@ -60,6 +60,7 @@ ArkTS-Dyn示例：
 
 ```js
 import { infraredEmitter } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -142,6 +143,7 @@ ArkTS-Dyn示例：
 
 ```js
 import { infraredEmitter } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component

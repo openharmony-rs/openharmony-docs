@@ -404,7 +404,7 @@ ArkTS-Sta: transform3D(transform: Matrix4Transit | undefined): this
 
 ## Matrix4Transit<sup>20+</sup>
 
-ArkTS-Dyn: type Matrix4Transit = Matrix4Transit
+ArkTS-Dyn: type Matrix4Transit = import('../api/@ohos.matrix4').default.Matrix4Transit
 
 ArkTS-Sta: type Matrix4Transit = matrix4.Matrix4Transit
 
@@ -420,7 +420,7 @@ ArkTS-Sta: type Matrix4Transit = matrix4.Matrix4Transit
 
 | 类型                              | 说明           |
 | --------------------------------- | -------------- |
-| ArkTS-Dyn: [Matrix4Transit](../js-apis-matrix4.md#matrix4transit)<br/>ArkTS-Sta: matrix4.[Matrix4Transit](../js-apis-matrix4.md#matrix4transit)     | 单位矩阵对象。 |
+| ArkTS-Dyn: import('../api/@ohos.matrix4').default.[Matrix4Transit](../js-apis-matrix4.md#matrix4transit)<br/>ArkTS-Sta: matrix4.[Matrix4Transit](../js-apis-matrix4.md#matrix4transit)     | 单位矩阵对象。 |
 
 ## RotateOptions对象说明
 

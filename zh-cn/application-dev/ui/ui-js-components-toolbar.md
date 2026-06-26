@@ -1,7 +1,7 @@
 # toolbar开发指导
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @huangxiaolinabc-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -40,7 +40,7 @@ toolbar-item{
 }
 ```
 
-![zh-cn_image_0000001175668970](figures/zh-cn_image_0000001175668970.gif)
+![toolbar-Component](figures/toolbar-Component.gif)
 
 
 ## 添加子组件
@@ -77,7 +77,7 @@ toolbar-item{
 }
 ```
 
-![zh-cn_image_0000001175828962](figures/zh-cn_image_0000001175828962.gif)
+![toolbar](figures/toolbar.gif)
 
 
 ## 设置样式
@@ -114,7 +114,7 @@ toolbar-item{
 ```
 
 
-![zh-cn_image_0000001218279254](figures/zh-cn_image_0000001218279254.png)
+![Setting-Styles-2](figures/Setting-Styles-2.png)
 
 
 ## 绑定事件
@@ -168,7 +168,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001218439306](figures/zh-cn_image_0000001218439306.gif)
+![Binding-Event-4](figures/Binding-Event-4.gif)
 
 > **说明：** 
 >
@@ -226,4 +226,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001263279105](figures/zh-cn_image_0000001263279105.gif)
+![Example-Scenario-12](figures/Example-Scenario-12.gif)

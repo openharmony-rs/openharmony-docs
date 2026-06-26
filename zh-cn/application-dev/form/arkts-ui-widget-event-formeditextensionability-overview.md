@@ -643,6 +643,8 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
 1. [创建卡片](./arkts-ui-widget-creation.md)。
 2. 开发者需要新增EntryEditAbility.ets文件，继承[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)组件，实现[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)和[onNewWant](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)回调函数。卡片使用方会通过[Want](../reference/apis-ability-kit/js-apis-app-ability-want.md)的parameters字段把被编辑的卡片ID带进来。并且需要再form_config.json文件中配置[formConfigAbility](./arkts-ui-widget-configuration.md#配置文件字段说明)字段。
    - 实现编辑页面的Ability。
+
+   ArkTS-Dyn示例：
    <!-- @[FormEditUIAbility_EntryEditAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/entryability/EntryEditAbility.ets) -->
    
    ``` TypeScript
@@ -720,8 +722,106 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    }
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[FormEditUIAbilitySta_EntryEditAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormEditUlAbilitySta/entry/src/main/ets/entryability/EntryEditAbility.ets) -->
+   
+   ``` TypeScript
+   // entry/src/main/ets/entryability/EntryEditAbility.ets
+   import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import { window } from '@kit.ArkUI';
+   import { PreferencesUtil } from '../common/PreferencesUtil';
+   import preferences from '@ohos.data.preferences';
+   import { AppStorage } from '@ohos.arkui.stateManagement';
+   
+   const DOMAIN = 0x0000;
+   const TAG: string = 'EntryEditAbility';
+   
+   export default class EntryEditAbility extends UIAbility {
+     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+       const formId: string | undefined = want?.parameters?.['formId'] as string;
+   
+       hilog.info(DOMAIN, 'testTag', 'onCreate form id is' + formId)
+       if (formId) {
+         // 存储被编辑的卡片ID，后续编辑卡片会用
+         let util = PreferencesUtil.getInstance();
+         let preferences = util.getPreferences(this.context) as preferences.Preferences;
+         util.preferencesPut(preferences, formId);
+       }
+       try {
+         this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
+       } catch (err) {
+         hilog.error(DOMAIN, TAG, `Failed to set colorMode. code: ${err?.code}, message: ${err?.message}`);
+       }
+       hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onCreate');
+     }
+   
+     onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam) {
+       // 热启动编辑页时刷新被编辑的卡片ID
+       const formId: string | undefined = want?.parameters?.['formId'] as string;
+       hilog.info(DOMAIN, TAG, 'onNewWant form id is' + formId)
+       if (formId) {
+         // 初始化首选项数据库
+         let util = PreferencesUtil.getInstance();
+         let preferences = util.getPreferences(this.context) as preferences.Preferences;
+         util.preferencesPut(preferences, formId);
+       }
+     }
+   
+     onDestroy(): void {
+       hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onDestroy');
+     }
+   
+     onWindowStageCreate(windowStage: window.WindowStage): void {
+       hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageCreate');
+   
+       windowStage.loadContent('pages/FormEditIndex', (err) => {
+         if (err && err.code) {
+           hilog.error(DOMAIN, TAG, `Failed to load the content. Code: ${err?.code}, message: ${err?.message}`);
+           return;
+         }
+         hilog.info(DOMAIN, TAG, 'Succeeded in loading the content.');
+       });
+       AppStorage.setOrCreate('windowStage', this.context);
+     }
+   
+     onWindowStageDestroy(): void {
+       hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onWindowStageDestroy');
+     }
+   
+     onForeground(): void {
+       hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onForeground');
+     }
+   
+     onBackground(): void {
+       hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onBackground');
+     }
+   }
+   ```
+
    - 新增EntryEditAbility需要在module.json5配置，配置如下。
+
+   ArkTS-Dyn示例：
    <!-- @[FormEditUIAbility_modulejson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/module.json5) --> 
+   
+   ``` JSON5
+   "abilities": [
+     // ...
+     {
+       "name": "FormEditAbility",
+       "srcEntry": "./ets/entryability/EntryEditAbility.ets",
+       "description": "$string:EntryAbility_desc",
+       "icon": "$media:layered_image",
+       "label": "$string:EntryAbility_label",
+       "startWindowIcon": "$media:startIcon",
+       "startWindowBackground": "$color:start_window_background",
+       "exported": true,
+     }
+   ],
+   ```
+
+   ArkTS-Sta示例：
+   <!-- @[FormEditUIAbilitySta_modulejson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormEditUlAbilitySta/entry/src/main/module.json5) --> 
    
    ``` JSON5
    "abilities": [
@@ -766,6 +866,8 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    ```
 
 3. 新增FormEditIndex.ets文件实现全屏编辑页布局，通过[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口去刷新被编辑卡片的信息。
+
+   ArkTS-Dyn示例：
    <!-- @[FormEditUIAbility_FormEditIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/pages/FormEditIndex.ets) --> 
    
    ``` TypeScript
@@ -839,6 +941,95 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    }
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[FormEditUIAbilitySta_FormEditIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormEditUlAbilitySta/entry/src/main/ets/pages/FormEditIndex.ets) --> 
+   
+   ``` TypeScript
+   // entry/src/main/ets/pages/FormEditIndex.ets
+   import { formBindingData, formProvider } from '@kit.FormKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { PreferencesUtil } from '../common/PreferencesUtil';
+   import preferences from '@ohos.data.preferences';
+   import hilog from '@ohos.hilog';
+   import {
+     Entry,
+     Column,
+     Component,
+     Button,
+     Row,
+     $r,
+     FlexAlign,
+     ButtonType
+   } from '@ohos.arkui.component';
+   import { State } from '@ohos.arkui.stateManagement';
+   import { common } from '@kit.AbilityKit';
+   
+   const TAG: string = 'FormEditIndex';
+   const DOMAIN = 0x0000;
+   
+   @Entry
+   @Component
+   struct FormEditIndex {
+     @State message: string = 'Hello World';
+     @State message1: string = '北京';
+     @State message2: string = '上海';
+   
+     updateForm(message: string) {
+       // 通过数据库获取当前需要编辑的卡片ID
+       let util = PreferencesUtil.getInstance();
+       let preferences =
+         util.getPreferences(this.getUIContext().getHostContext() as common.Context) as preferences.Preferences;
+       let formId: string = util.getValue(preferences) as string;
+       if (!formId) {
+         return;
+       }
+       hilog.info(DOMAIN, TAG, `formId: ${formId}, message: ${message}`)
+       let param: Record<string, string> = {
+         'message': message
+       }
+       let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
+       try {
+         formProvider.updateForm(formId, obj, (error) => {
+           if (error) {
+             hilog.error(DOMAIN, TAG, `callback error. code: ${error?.code}, message: ${error?.message}`);
+             return;
+           }
+           hilog.info(DOMAIN, TAG, `formProvider updateForm success`);
+         });
+       } catch (error) {
+         hilog.error(DOMAIN, TAG, `catch error. code: ${error?.code}, message: ${error?.message}`);
+       }
+     }
+   
+     build() {
+       Row() {
+         Column() {
+           Button($r('app.string.button_one'))
+             .width('80%')
+             .type(ButtonType.Capsule)
+             .margin({
+               top: 20
+             })
+             .onClick(() => {
+               this.updateForm(this.message1);
+             })
+           Button($r('app.string.button_two'))
+             .width('80%')
+             .type(ButtonType.Capsule)
+             .margin({
+               top: 20
+             })
+             .onClick(() => {
+               this.updateForm(this.message2);
+             })
+         }
+       }
+       .justifyContent(FlexAlign.Center)
+       .width('100%')
+     }
+   }
+   ```
+
    - 加载全屏编辑页布局文件。
    ```json5
    // entry/src/main/resources/base/profile/main_pages.json
@@ -851,6 +1042,8 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    ```
 
    - 卡片布局文件如下。
+
+   ArkTS-Dyn示例：
    <!-- @[FormEditUIAbility_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/widget/pages/WidgetCard.ets) --> 
    
    ``` TypeScript
@@ -890,7 +1083,49 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    }
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[FormEditUIAbilitySta_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormEditUlAbilitySta/entry/src/main/ets/widget/pages/WidgetCard.ets) --> 
+   
+   ``` TypeScript
+   // entry/src/main/ets/widget/pages/WidgetCard.ets
+   @Entry
+   @Component
+   struct WidgetCard {
+     @LocalStorageProp('message') title: string = 'Hello World';
+     readonly actionType: string = 'router';
+     readonly abilityName: string = 'EntryAbility';
+     readonly message: string = 'add detail';
+     readonly fullWidthPercent: string = '100%';
+     readonly fullHeightPercent: string = '100%';
+   
+     build() {
+       Row() {
+         Column() {
+           Text(this.title)
+             .fontSize($r('app.float.font_size'))
+             .fontWeight(FontWeight.Medium)
+             .fontColor($r('sys.color.font'))
+         }
+         .width(this.fullWidthPercent)
+       }
+       .height(this.fullHeightPercent)
+       .backgroundColor($r('sys.color.comp_background_primary'))
+       .onClick(() => {
+         postCardAction(this, {
+           action: this.actionType,
+           abilityName: this.abilityName,
+           params: {
+             message: this.message
+           }
+         });
+       })
+     }
+   }
+   ```
+
 4. 新增PreferencesUtil文件，主要是来封装[Preferences](../database/data-persistence-by-preferences.md)首选项，供业务做持久化数据使用。
+
+   ArkTS-Dyn示例：
    <!-- @[FormEditUIAbility_PreferencesUtil](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/common/PreferencesUtil.ets) --> 
    
    ``` TypeScript
@@ -971,6 +1206,95 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
          }
        } catch (error) {
          console.error(TAG, `Failed to get preferences. Code:${error.code}, message:${error.message}`);
+       }
+     }
+   }
+   ```
+
+   ArkTS-Dyn示例：
+   <!-- @[FormEditUIAbilitySta_PreferencesUtil](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormEditUlAbilitySta/entry/src/main/ets/common/PreferencesUtil.ets) --> 
+   
+   ``` TypeScript
+   // entry/src/main/ets/common/PreferencesUtil.ets
+   import preferences from '@ohos.data.preferences';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { common } from '@kit.AbilityKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   const TAG: string = 'PreferencesUtil';
+   const MY_STORE: string = 'myStore';
+   const key: string = 'formID';
+   const DOMAIN = 0x0000;
+   
+   export class PreferencesUtil {
+     private static preferencesUtil: PreferencesUtil | null = null;
+   
+     public static getInstance(): PreferencesUtil {
+       if (!PreferencesUtil.preferencesUtil) {
+         PreferencesUtil.preferencesUtil = new PreferencesUtil();
+       }
+       return PreferencesUtil.preferencesUtil!;
+     }
+   
+     getPreferences(context: common.Context): preferences.Preferences | undefined {
+       try {
+         preferences.removePreferencesFromCacheSync(context, MY_STORE);
+         return preferences.getPreferencesSync(context, { name: MY_STORE });
+       } catch (error) {
+         let err = error as BusinessError;
+         hilog.error(DOMAIN, TAG, `getPreferences failed. code: ${error?.code}, message: ${error?.message}`);
+         return undefined;
+       }
+     }
+   
+     preferencesFlush(preferences: preferences.Preferences) {
+       preferences.flushSync();
+     }
+   
+     preferencesPut(preferences: preferences.Preferences, formID: string): void {
+       try {
+         preferences.putSync(key, formID);
+         preferences.flushSync();
+       } catch (error) {
+         let err = error as BusinessError;
+         hilog.error(DOMAIN, TAG, `preferencesPut failed. code: ${error?.code}, message: ${error?.message}`);
+       }
+     }
+   
+     removePreferencesFromCache(context: common.Context): void {
+       preferences.removePreferencesFromCache(context, MY_STORE).catch((err) => {
+         hilog.error(DOMAIN, TAG, `removePreferencesFromCache failed. code: ${err?.code}, message: ${err?.message}`);
+       });
+     }
+   
+     getValue(preferences: preferences.Preferences): string | undefined {
+       if (preferences === null) {
+         hilog.error(DOMAIN, TAG, `preferences is null`);
+         return undefined;
+       }
+       try {
+         return preferences.getSync(key, '') as string
+       } catch (error) {
+         let err = error as BusinessError;
+         hilog.error(DOMAIN, TAG, `getSync failed. code: ${error?.code}, message: ${error?.message}`);
+         return undefined;
+       }
+     }
+   
+     removeFormId(context: common.Context) {
+       try {
+         let preferences = this.getPreferences(context);
+         if (!preferences) {
+           hilog.error(DOMAIN, TAG, `preferences is null`);
+           return;
+         }
+         if (preferences.hasSync(key)) {
+           preferences.deleteSync(key);
+           preferences.flushSync();
+           hilog.info(DOMAIN, TAG, `deleteSync done.`)
+         }
+       } catch (error) {
+         hilog.error(DOMAIN, TAG, `Failed to get preferences. code: ${error?.code}, message: ${error?.message}`);
        }
      }
    }

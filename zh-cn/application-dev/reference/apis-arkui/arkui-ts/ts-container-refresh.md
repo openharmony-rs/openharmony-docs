@@ -4,7 +4,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @yylong; @rongShao-Z; @yangcan18-->
 <!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
  可以进行页面下拉操作并显示刷新动效的容器组件。 
@@ -499,7 +499,7 @@ struct RefreshExample {
 }
 ```
 
-![zh-cn_image_refresh_default](figures/zh-cn_image_refresh_default.gif)
+![zh-cn_image_refresh_default](figures/image-refresh-default.gif)
 
 ### 示例2（设置刷新区域显示文本）
 
@@ -622,7 +622,7 @@ struct RefreshExample {
 }
 ```
 
-![zh-cn_image_refresh_prompttext](figures/zh-cn_image_refresh_prompttext.gif)
+![zh-cn_image_refresh_prompttext](figures/image-refresh-prompttext.gif)
 
 ### 示例3（自定义刷新区域显示内容-builder）
 
@@ -768,7 +768,7 @@ struct RefreshExample {
 }
 ```
 
-![zh-cn_image_refresh_builder](figures/zh-cn_image_refresh_builder.gif)
+![zh-cn_image_refresh_builder](figures/image-refresh-builder.gif)
 
 ### 示例4（自定义刷新区域显示内容-refreshingContent）
 
@@ -956,7 +956,7 @@ struct RefreshExample {
 }
 ```
 
-![zh-cn_image_refresh_refreshingcontent](figures/zh-cn_image_refresh_refreshingcontent.gif)
+![zh-cn_image_refresh_refreshingcontent](figures/image-refresh-refreshingcontent.gif)
 
 ### 示例5（实现最大下拉距离）
 
@@ -1127,7 +1127,7 @@ struct RefreshExample {
 }
 ```
 
-![zh-cn_image_refresh_maxrefreshingheight](figures/zh-cn_image_refresh_maxrefreshingheight.gif)
+![zh-cn_image_refresh_maxrefreshingheight](figures/image-refresh-maxrefreshingheight.gif)
 
 ### 示例6（实现下拉刷新上拉加载更多）
 

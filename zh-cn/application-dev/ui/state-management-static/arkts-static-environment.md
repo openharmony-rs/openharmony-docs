@@ -90,23 +90,40 @@ struct Index {
       Column() {
         // 输出当前设备的languageCode
         Text(`Device languageCode is ${this.languageCode}`)
+          .fontSize(20)
+          .margin(10)
         // 输出当前设备的layoutDirection
         Text(`Device layoutDirection is ${this.layoutDirection}`)
+          .fontSize(20)
+          .margin(10)
         // 输出当前设备的colorMode
         Text(`Device colorMode is ${this.colorMode}`)
+          .fontSize(20)
+          .margin(10)
         // 输出当前设备的accessibilityEnabled
         Text(`Device accessibilityEnabled is ${this.accessibilityEnabled}`)
+          .fontSize(20)
+          .margin(10)
         // 输出当前设备的fontScale
         Text(`Device fontScale is ${this.fontScale}`)
+          .fontSize(20)
+          .margin(10)
         // 输出当前设备的fontWeightScale
         Text(`Device fontWeightScale is ${this.fontWeightScale}`)
+          .fontSize(20)
+          .margin(10)
         // 自己设置的info变量
         Text(`info value is ${this.info}`)
+          .fontSize(20)
+          .margin(10)
       }
+      .width('100%')
     }
   }
 }
 ```
+
+![environment-ui](../figures/environment_1.gif)
 
 ## 限制条件
 

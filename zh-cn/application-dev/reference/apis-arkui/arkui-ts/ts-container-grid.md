@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zcdqs; @rongShao-Z; @guozejun-->
+<!--Owner: @rongShao-Z; @guozejun-->
 <!--Designer: @zcdqs-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 网格容器，由“行”和“列”分割的单元格所组成，通过指定“项目”所在的单元格做出各种各样的布局。
@@ -1536,7 +1536,7 @@ struct GridExample {
 }
 ```
 
-![zh-cn_image_0000001219744183](figures/zh-cn_image_0000001219744183.gif)
+![grid](figures/grid.gif)
 
 ### 示例2（可滚动Grid和滚动事件）
 

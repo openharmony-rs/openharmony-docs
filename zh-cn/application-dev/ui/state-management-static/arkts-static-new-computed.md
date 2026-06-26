@@ -214,21 +214,38 @@ import { Computed } from '@kit.ArkUI';
      build() {
        Column() {
          Text(this.lastName + ' ' + this.firstName)
+           .fontSize(20)
+           .margin(10)
          Text(this.lastName + ' ' + this.firstName)
+           .fontSize(20)
+           .margin(10)
          Divider()
          Text(this.fullName)
+           .fontSize(20)
+           .margin(10)
          Text(this.fullName)
-         Button('changed lastName').onClick((e: ClickEvent) => {
+           .fontSize(20)
+           .margin(10)
+         Button('changed lastName')
+           .width(300)
+           .margin(10)
+           .onClick((e: ClickEvent) => {
            this.lastName += 'a';
          })
    
-         Button('changed age').onClick((e: ClickEvent) => {
+         Button('changed age')
+           .width(300)
+           .margin(10)
+           .onClick((e: ClickEvent) => {
            this.age++;  // 无法触发Computed
          })
        }
+       .width('100%')
      }
    }
    ```
+
+    ![computed-component](../figures/computed_1.gif)
 
     计算属性本身会带来性能开销，在实际应用开发中需要注意：
     - 对于简单的计算逻辑，可以不使用计算属性。
@@ -264,14 +281,24 @@ import { Computed } from '@kit.ArkUI';
      build() {
        Column() {
          Text(this.name1.fullName)
+           .fontSize(20)
+           .margin(10)
          Text(this.name1.fullName)
-         Button('changed lastName').onClick((e: ClickEvent) => {
+           .fontSize(20)
+           .margin(10)
+         Button('changed lastName')
+           .width(300)
+           .margin(10)
+           .onClick((e: ClickEvent) => {
            this.name1.lastName += 'a';
          })
        }
+       .width('100%')
      }
    }
    ```
+
+    ![computed-observedv2](../figures/computed_2.gif)
 
 ### \@Computed装饰的属性可以被\@Monitor监听变化
 如何使用计算属性求解fahrenheit和kelvin。示例如下：
@@ -305,27 +332,35 @@ import { Computed } from '@kit.ArkUI';
    
      build() {
        Column() {
-         Row() {
-           Button('-')
-             .onClick((e: ClickEvent) => {
-               this.celsius--;
-             })
+          Button('-')
+            .margin(10)
+            .onClick((e: ClickEvent) => {
+              this.celsius--;
+            })
+  
+          Text(`Celsius ${this.celsius.toFixed(1)}`)
+            .fontSize(20)
+            .margin(10)
+  
+          Button('+')
+            .margin(10)
+            .onClick((e: ClickEvent) => {
+              this.celsius++;
+            })
    
-           Text(`Celsius ${this.celsius.toFixed(1)}`).fontSize(50)
-   
-           Button('+')
-             .onClick((e: ClickEvent) => {
-               this.celsius++;
-             })
-         }
-   
-         Text(`Fahrenheit ${this.fahrenheit.toFixed(2)}`).fontSize(50)
-         Text(`Kelvin ${this.kelvin.toFixed(2)}`).fontSize(50)
+         Text(`Fahrenheit ${this.fahrenheit.toFixed(2)}`)
+           .fontSize(20)
+           .margin(10)
+         Text(`Kelvin ${this.kelvin.toFixed(2)}`)
+           .fontSize(20)
+           .margin(10)
        }
        .width('100%')
      }
    }
    ```
+
+  ![computed-monitor](../figures/computed_3.gif)
 
 ### \@Computed装饰的属性可以初始化\@Param
 下面的例子使用\@Computed初始化\@Param。
@@ -333,73 +368,105 @@ import { Computed } from '@kit.ArkUI';
 - `quantity`的改变会触发`total`和`qualifiesForDiscount`重新计算，计算商品总价和是否可以享有优惠。
 - `total`和`qualifiesForDiscount`的改变会触发子组件`Child`对应Text组件刷新。
 
-   <!-- @[ComputedInitParam](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComputedDecorator/entry/src/main/ets/pages/ComputedInitParam.ets) -->
+  <!-- @[ComputedInitParam](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComputedDecorator/entry/src/main/ets/pages/ComputedInitParam.ets) -->
    
-   ``` TypeScript
-   import { Button, ClickEvent, Column, ComponentV2, Divider, Entry,
-            ForEach, HorizontalAlign, Row, Text } from '@kit.ArkUI';
-   import { Computed, Local, ObservedV2, Param, Trace } from '@kit.ArkUI';
-   
-   @ObservedV2
-   class Article {
-     @Trace quantity: number = 0;
-     unitPrice: number = 0;
-   
-     constructor(quantity: number, unitPrice: number) {
-       this.quantity = quantity;
-       this.unitPrice = unitPrice;
-     }
-   }
-   
-   @Entry
-   @ComponentV2
-   struct Index {
-     @Local shoppingBasket: Article[] = [new Article(1, 20), new Article(5, 2)];
-   
-     @Computed
-     get total(): number {
-       return this.shoppingBasket.reduce((acc: number, item: Article) => acc + (item.quantity * item.unitPrice), 0);
-     }
-   
-     @Computed
-     get qualifiesForDiscount(): boolean {
-       return this.total >= 100;
-     }
-   
-     build() {
-       Column() {
-         Text(`Shopping List: `).fontSize(30)
-         ForEach(this.shoppingBasket, (item: Article) => {
-           Row() {
-             Text(`unitPrice: ${item.unitPrice}`)
-             Button('-').onClick((e: ClickEvent) => {
-               if (item.quantity > 0) {
-                 item.quantity--;
-               }
-             })
-             Text(`quantity: ${item.quantity}`)
-             Button('+').onClick((e: ClickEvent) => {
-               item.quantity++;
-             })
-           }
-   
-           Divider()
-         })
-         Child({ total: this.total, qualifiesForDiscount: this.qualifiesForDiscount })
-       }.alignItems(HorizontalAlign.Start)
-     }
-   }
-   
-   @ComponentV2
-   struct Child {
-     @Param total: number = 0;
-     @Param qualifiesForDiscount: boolean = false;
-   
-     build() {
-       Row() {
-         Text(`Total: ${this.total} `).fontSize(30)
-         Text(`Discount: ${this.qualifiesForDiscount} `).fontSize(30)
-       }
-     }
-   }
-   ```
+  ``` TypeScript
+  import {
+    Button,
+    ClickEvent,
+    Column,
+    ComponentV2,
+    Divider,
+    Entry,
+    ForEach,
+    HorizontalAlign,
+    Row,
+    Text
+  } from '@kit.ArkUI';
+  import { Computed, Local, ObservedV2, Param, Trace } from '@kit.ArkUI';
+
+  @ObservedV2
+  class Article {
+    @Trace quantity: number = 0;
+    unitPrice: number = 0;
+
+    constructor(quantity: number, unitPrice: number) {
+      this.quantity = quantity;
+      this.unitPrice = unitPrice;
+    }
+  }
+
+  @Entry
+  @ComponentV2
+  struct Index {
+    @Local shoppingBasket: Article[] = [new Article(1, 20), new Article(5, 2)];
+
+    @Computed
+    get total(): number {
+      return this.shoppingBasket.reduce((acc: number, item: Article) => acc + (item.quantity * item.unitPrice), 0);
+    }
+
+    @Computed
+    get qualifiesForDiscount(): boolean {
+      return this.total >= 100;
+    }
+
+    build() {
+      Column() {
+        Column() {
+          Text(`Shopping List: `)
+            .fontSize(20)
+            .margin(10)
+        }
+        .width('100%')
+
+        ForEach(this.shoppingBasket, (item: Article) => {
+          Column() {
+            Text(`unitPrice: ${item.unitPrice}`)
+              .fontSize(20)
+              .margin(10)
+            Button('-')
+              .margin(10)
+              .onClick((e: ClickEvent) => {
+                if (item.quantity > 0) {
+                  item.quantity--;
+                }
+              })
+            Text(`quantity: ${item.quantity}`)
+              .fontSize(20)
+              .margin(10)
+            Button('+')
+              .margin(10)
+              .onClick((e: ClickEvent) => {
+                item.quantity++;
+              })
+          }
+          .width('100%')
+
+          Divider()
+        })
+        Child({ total: this.total, qualifiesForDiscount: this.qualifiesForDiscount })
+      }
+    }
+  }
+
+  @ComponentV2
+  struct Child {
+    @Param total: number = 0;
+    @Param qualifiesForDiscount: boolean = false;
+
+    build() {
+      Column() {
+        Text(`Total: ${this.total} `)
+          .fontSize(20)
+          .margin(10)
+        Text(`Discount: ${this.qualifiesForDiscount} `)
+          .fontSize(20)
+          .margin(10)
+      }
+      .width('100%')
+    }
+  }
+  ```
+
+  ![computed-init-param](../figures/computed_4.gif)

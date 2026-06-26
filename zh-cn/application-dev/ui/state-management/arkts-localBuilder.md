@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-当开发者使用局部\@Builder进行引用数据传递时，需要考虑组件的父子关系。然而在使用.bind(this)的方式更改函数调用上下文后，会出现组件的父子关系与状态管理的父子关系不一致的问题。为了解决这一问题，引入[\@LocalBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-localbuilder.md)装饰器。\@LocalBuilder拥有和局部\@Builder相同的功能，且比局部\@Builder能够更好的确定组件的父子关系和状态管理的父子关系。
+当开发者使用局部\@Builder进行引用数据传递时，需要考虑组件的父子关系。然而在使用.bind(this)的方式更改函数调用上下文后，会出现组件的父子关系与状态管理的父子关系不一致的问题。为了解决这一问题，引入\@LocalBuilder装饰器。\@LocalBuilder拥有和局部\@Builder相同的功能，且比局部\@Builder能够更好的确定组件的父子关系和状态管理的父子关系。装饰器详情参见[\@LocalBuilder装饰器：维持组件关系](../../reference/apis-arkui/arkui-ts/ts-universal-localbuilder.md)。
 
 在阅读本文档前，建议提前阅读：[@Builder](./arkts-builder.md)。
 
@@ -49,7 +49,7 @@ this.myBuilderFunction()
 
 跨组件传递局部\@Builder函数时，会使用.bind(this)更改函数上下文，但这可能会导致组件的父子关系与状态管理的父子关系不一致。而\@LocalBuilder无论是否使用.bind(this)，都不会改变组件的父子关系，即\@LocalBuilder中定义组件所属的父组件是确定的，无法被改变。
 
-![zh-cn_image_compatible_localBuilder](figures/zh-cn_image_compatible_localBuilder.png)
+![zh-cn_image_compatible_localBuilder](figures/image-compatible-localBuilder.png)
 
 > **说明：**
 >
@@ -121,7 +121,7 @@ struct Parent {
 
 ### 按回调传递参数
 
-从API version 20开始，开发者可以通过使用`UIUtils.makeBinding()`函数、`Binding`类和`MutableBinding`类实现\@Builder函数中状态变量的刷新。详情请参考[状态管理API文档](../../reference/apis-arkui/js-apis-stateManagement.md#makebinding20)。
+从API version 20开始，开发者可以通过使用`UIUtils.makeBinding()`函数、`Binding`类和`MutableBinding`类实现\@Builder函数中状态变量的刷新。详情请参考[makeBinding](../../reference/apis-arkui/js-apis-stateManagement.md#makebinding20)。
 <!-- @[builder_make_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/BuilderMakeBinding.ets) --> 
 
 ``` TypeScript
@@ -141,7 +141,7 @@ struct Parent {
 
   build() {
     Column() {
-      // 通过UIUtils.makeBinding()方法和Binding类，实现@Builder函数中状态变量的刷新
+      // 通过UIUtils.makeBinding()方法和Binding类，实现@LocalBuilder函数中状态变量的刷新
       this.citeLocalBuilder(UIUtils.makeBinding<string>(() => this.variableValue))
       Button('Click me')
         .onClick(() => {
@@ -415,7 +415,7 @@ struct ParentPage {
       Text(`info1: ${this.info1.name}  ${this.info1.age}`) // Text1
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
-      this.privateBuilder() // 调用局部@Builder
+      this.privateBuilder() // 调用局部@LocalBuilder
       Line()
         .width('100%')
         .height(10)
@@ -424,7 +424,7 @@ struct ParentPage {
       Text(`info2: ${this.info2.name}  ${this.info2.age}`) // Text2
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
-      this.privateBuilderSecond() // 调用局部@Builder
+      this.privateBuilderSecond() // 调用局部@LocalBuilder
       Line()
         .width('100%')
         .height(10)

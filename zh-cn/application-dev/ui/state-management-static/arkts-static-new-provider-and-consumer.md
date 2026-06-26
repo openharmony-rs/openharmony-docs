@@ -255,11 +255,14 @@ struct Parent {
   build() {
     Column() {
       Button(this.str)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.str += '0';
         })
       Child()
     }
+    .width('100%')
   }
 }
 
@@ -271,13 +274,19 @@ struct Child {
   build() {
     Column() {
       Button(this.str)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.str += '0';
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![ProviderConsumer_5](../figures/Provider_Consumer_5.gif)
+
 **未建立双向绑定**
 
 以下示例中，由于别名不同，\@Provider和\@Consumer无法建立双向同步关系。
@@ -301,11 +310,14 @@ struct Parent {
   build() {
     Column() {
       Button(this.str1)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.str1 += '0';
         })
       Child()
     }
+    .width('100%')
   }
 }
 
@@ -317,13 +329,18 @@ struct Child {
   build() {
     Column() {
       Button(this.str)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.str += '0';
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![ProviderConsumer_6](../figures/Provider_Consumer_6.gif)
 
 ### 装饰字面量类型变量
 
@@ -413,15 +430,22 @@ struct Child {
   build() {
     Column() {
       Button('child change arr item')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
+          // 修改arr变量中元素，触发UI刷新
           this.arr[0]++;
           this.arr[1] += 2;
         })
       Button('child reverse arr')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
+          // 翻转arr变量，触发UI刷新
           this.arr.reverse();
         })
     }
+    .width('100%')
   }
 }
 
@@ -433,22 +457,33 @@ struct Parent {
   build() {
     Column() {
       Button('parent change whole arr')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
+          // 赋值arr变量，触发UI刷新
           this.arr = [100, 200, 300];
         })
       Button('parent push new item')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
+          // 向arr变量中添加元素，触发UI刷新
           this.arr.push(111);
         })   
       Child()
       ForEach(this.arr,
         (item: number) => {
           Text(`${item}`)
+            .fontSize(20)
+            .margin(10)
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![ProviderConsumer_7](../figures/Provider_Consumer_7.gif)
 
 ### 装饰Date类型变量
 
@@ -467,16 +502,25 @@ struct Parent {
   build() {
     Column() {
       Text(`parent: ${this.SelectedDate}`)
+        .fontSize(20)
+        .margin(10)
       Button('parent update the new date')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
+          // 通过给SelectedDate重新赋值新的Date实例，触发UI刷新
           this.SelectedDate = new Date('2023-07-07');
         })
       Button('parent increase the year by 1')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
+          // 调用Date的setFullYear接口修改年份，触发UI刷新
           this.SelectedDate.setFullYear(this.SelectedDate.getFullYear() + 1);
         })
       Child()
     }
+    .width('100%')
   }
 }
 
@@ -487,22 +531,35 @@ struct Child {
   build() {
     Column() {
       Text(`child: ${this.SelectedDate}`)
+        .fontSize(20)
+        .margin(10)
       Button('child update the new date')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.SelectedDate = new Date('2025-01-01');
         })
       Button('child increase the month by 1')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
+          // 调用Date的setMonth接口修改月份，触发UI刷新
           this.SelectedDate.setMonth(this.SelectedDate.getMonth() + 1);
         })
       Button('child increase the day by 1')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
+          // 调用Date的setDate接口修改日期，触发UI刷新
           this.SelectedDate.setDate(this.SelectedDate.getDate() + 1);
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![ProviderConsumer_8](../figures/Provider_Consumer_8.gif)
 
 ### 装饰Map类型变量
 
@@ -521,21 +578,38 @@ struct Parent {
   build() {
     Column() {
       ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
-        Text(`${item[0]}`).fontSize(30)
-        Text(`${item[1]}`).fontSize(30)
+        Text(`${item[0]}`)
+          .fontSize(20)
+          .margin(10)
+        Text(`${item[1]}`)
+          .fontSize(20)
+          .margin(10)
         Divider()
       })
-      Button('parent init map').onClick((e: ClickEvent) => {
-        this.message = new Map<number, string>([[0, 'aa'], [1, 'bb'], [2, 'cc']]);
+      Button('parent init map')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 赋值message变量，触发UI刷新
+          this.message = new Map<number, string>([[0, 'aa'], [1, 'bb'], [2, 'cc']]);
       })
-      Button('parent set new one').onClick((e: ClickEvent) => {
-        this.message.set(4, 'd');
+      Button('parent set new one')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 新增键值对，触发UI刷新
+          this.message.set(4, 'd');
       })
-      Button('clear').onClick((e: ClickEvent) => {
-        this.message.clear();
+      Button('clear')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 清空Map，触发UI刷新
+          this.message.clear();
       })
       Child()
     }
+    .width('100%')
   }
 }
 
@@ -545,19 +619,34 @@ struct Child {
 
   build() {
     Column() {
-      Button('child init map').onClick((e: ClickEvent) => {
-        this.message = new Map<number, string>([[0, 'dd'], [1, 'ee'], [2, 'ff']]);
+      Button('child init map')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 赋值message变量，触发UI刷新
+          this.message = new Map<number, string>([[0, 'dd'], [1, 'ee'], [2, 'ff']]);
       })
-      Button('child replace the first one').onClick((e: ClickEvent) => {
-        this.message.set(0, 'a*');
+      Button('child replace the first one')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 更新键值对，触发UI刷新
+          this.message.set(0, 'a*');
       })
-      Button('child delete the first one').onClick((e: ClickEvent) => {
-        this.message.delete(0);
+      Button('child delete the first one')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 删除键值对，触发UI刷新
+          this.message.delete(0);
       })
     }
+    .width('100%')
   }
 }
 ```
+
+![ProviderConsumer_9](../figures/Provider_Consumer_9.gif)
 
 ### 装饰Set类型变量
 
@@ -576,17 +665,27 @@ struct Parent {
   build() {
     Column() {
       ForEach(Array.from(this.message.entries()), (item: [number, number]) => {
-        Text(`${item[0]}`).fontSize(30)
+        Text(`${item[0]}`)
+          .fontSize(20)
+          .margin(10)
         Divider()
       })
-      Button('parent init set').onClick((e: ClickEvent) => {
-        this.message = new Set<number>([1, 2, 3, 4]);
+      Button('parent init set')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          this.message = new Set<number>([1, 2, 3, 4]);
       })
-      Button('parent set new one').onClick((e: ClickEvent) => {
-        this.message.add(5);
+      Button('parent set new one')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 新增元素，触发UI刷新
+          this.message.add(5);
       })
       Child()
     }
+    .width('100%')
   }
 }
 
@@ -596,19 +695,33 @@ struct Child {
 
   build() {
     Column() {
-      Button('child init set').onClick((e: ClickEvent) => {
-        this.message = new Set<number>([1, 2, 3, 4, 5, 6]);
+      Button('child init set')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          this.message = new Set<number>([1, 2, 3, 4, 5, 6]);
       })
-      Button('child clear').onClick((e: ClickEvent) => {
-        this.message.clear();
+      Button('child clear')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 清空Set，触发UI刷新
+          this.message.clear();
       })
-      Button('child delete the first one').onClick((e: ClickEvent) => {
-        this.message.delete(1);
+      Button('child delete the first one')
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 删除元素，触发UI刷新
+          this.message.delete(1);
       })
     }
+    .width('100%')
   }
 }
 ```
+
+![ProviderConsumer_10](../figures/Provider_Consumer_10.gif)
 
 ### \@Provider和\@Consumer装饰箭头函数
 
@@ -779,6 +892,7 @@ struct Index {
     Column() {
       Parent()
     }
+    .width('100%')
   }
 }
 
@@ -789,9 +903,13 @@ struct Parent {
 
   build() {
     Column() {
-      Text(`${this.val2}`)
+      Text(`val2 value is ${this.val2}`)
+        .fontColor('#87CEEB')
+        .fontSize(30)
+        .margin(10)
       Child()
     }
+    .width('100%')
   }
 }
 
@@ -801,11 +919,17 @@ struct Child {
 
   build() {
     Column() {
-      Text(`${this.val}`)
+      Text(`val value is ${this.val}`)
+        .fontColor('#87CEEB')
+        .fontSize(30)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
+
+![ProviderConsumer_11](../figures/Provider_Consumer_11.gif)
 
 以上示例中：
 
@@ -814,13 +938,13 @@ struct Child {
 
 ### \@Provider和\@Consumer初始化\@Param
 
-- 点击Text(\`Parent @Consumer val: ${this.val}\`)，触发`@Consumer() val`的变化，变化同步给Index中`@Provider() val`，从而触发子组件`Text(Parent @Param val2: ${this.val2})`的刷新。
+- 点击Button(\`Parent @Consumer val: ${this.val}\`)，触发`@Consumer() val`的变化，变化同步给Index中`@Provider() val`，从而触发子组件`Text(Parent @Param val2: ${this.val2})`的刷新。
 - `Parent @Consumer() val`的变化同步给Child，从而触发`Text(Child @Param val ${this.val})`的刷新。
 
 <!-- @[ProviderConsumerInitParam](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ProviderConsumer/entry/src/main/ets/pages/ProviderConsumerInitParam.ets) -->
 
 ``` TypeScript
-import { ClickEvent, Color, Column, ComponentV2, Consumer, Entry, Param, Provider, Text } from '@kit.ArkUI';
+import { ClickEvent, Color, Column, ComponentV2, Consumer, Entry, Param, Provider, Text, Button } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -831,6 +955,7 @@ struct Index {
     Column() {
       Parent({ val2: this.val })
     }
+    .width('100%')
   }
 }
 
@@ -841,12 +966,18 @@ struct Parent {
 
   build() {
     Column() {
-      Text(`Parent @Consumer val: ${this.val}`).fontSize(30).onClick((e: ClickEvent) => {
+      Button(`Parent @Consumer val: ${this.val}`)
+        .fontSize(20)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
         this.val++;
       })
-      Text(`Parent @Param val2: ${this.val2}`).fontSize(30)
+      Text(`Parent @Param val2: ${this.val2}`)
+        .fontSize(20)
+        .margin(10)
       Child({ val: this.val })
-    }.border({ width: 2, color: Color.Green })
+    }
   }
 }
 
@@ -856,8 +987,12 @@ struct Child {
 
   build() {
     Column() {
-      Text(`Child @Param val ${this.val}`).fontSize(30)
-    }.border({ width: 2, color: Color.Pink })
+      Text(`Child @Param val ${this.val}`)
+        .fontSize(20)
+        .margin(10)
+    }
   }
 }
 ```
+
+![ProviderConsumer_12](../figures/Provider_Consumer_12.gif)

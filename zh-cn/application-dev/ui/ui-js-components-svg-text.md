@@ -33,7 +33,7 @@ svg组件还可以绘制文本。
 </div>
 ```
 
-![zh-cn_image_0000001227151887](figures/zh-cn_image_0000001227151887.png)
+![Text](figures/Text.png)
 
 
 ## 沿路径绘制文本
@@ -55,4 +55,4 @@ textpath文本内容沿着属性path中的路径绘制文本。
 </div>
 ```
 
-![zh-cn_image_0000001181354262](figures/zh-cn_image_0000001181354262.png)
+![Drawing-Text-Along](figures/Drawing-Text-Along.png)

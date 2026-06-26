@@ -87,4 +87,4 @@ struct RowSplitExample {
 }
 ```
 
-![en-us_image_0000001219982729](figures/en-us_image_0000001219982729.gif)
+![rowSplit](figures/rowSplit.gif)

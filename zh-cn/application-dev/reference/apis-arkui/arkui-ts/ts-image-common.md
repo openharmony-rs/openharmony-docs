@@ -15,7 +15,7 @@
 
 ## PixelMap
 
-ArkTS-Dyn: type PixelMap = PixelMap
+ArkTS-Dyn: type PixelMap = import('../api/@ohos.multimedia.image').default.PixelMap
 
 ArkTS-Sta: type PixelMap = image.PixelMap
 
@@ -31,7 +31,7 @@ ArkTS-Sta: type PixelMap = image.PixelMap
 
 | 类型                                                         | 说明                                       |
 | ------------------------------------------------------------ | ------------------------------------------ |
-| ArkTS-Dyn: [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)<br/>ArkTS-Sta: image.[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 图像像素类，用于读取或写入图像数据以及获取图像信息。 |
+| ArkTS-Dyn: import('../api/@ohos.multimedia.image').default.[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)<br/>ArkTS-Sta: image.[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 图像像素类，用于读取或写入图像数据以及获取图像信息。 |
 
 ## ImageAnalyzerConfig<sup>12+</sup>
 

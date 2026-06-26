@@ -6,7 +6,11 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-本模块提供Web控制能力，网页显示的能力请参考[组件描述](arkts-basic-components-web.md)。
+WebView模块是HarmonyOS ArkWeb框架提供的Web控制能力模块，用于在应用侧对Web组件的行为进行编程式控制。该模块不涉及网页的显示渲染（显示能力由Web组件提供），而是聚焦于Web组件运行过程中的控制逻辑，包括页面加载与导航、JavaScript脚本执行与双向消息通信、Cookie与存储管理、下载任务管理、网络请求拦截与自定义响应、代理配置、地理位置权限管理、广告过滤、前进后退缓存、媒体播放托管、PDF生成等能力。
+
+开发者在使用Web组件展示网页内容时，如需在应用侧对网页行为进行干预、监听或扩展（例如：向网页发送消息、拦截特定Scheme请求并返回本地资源、管理下载流程、配置代理、控制缓存策略等），应通过本模块提供的Controller和各类Manager/Delegate来实现。
+
+网页显示的能力请参考[组件描述](arkts-basic-components-web.md)。
 
 <!--RP1--><!--RP1End-->
 

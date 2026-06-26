@@ -674,6 +674,8 @@ struct Index {
 }
 ```
 
+![ArkTSNode-FrameNode01](figures/ArkTSNode-FrameNode01.gif)
+
 ## 使用moveTo移动命令式节点
 
 使用[moveTo](../reference/apis-arkui/js-apis-arkui-frameNode.md#moveto18)接口可以将FrameNode节点移动到新的父节点下，从而按需改变节点树结构。
@@ -1240,6 +1242,8 @@ struct Index {
 }
 ```
 
+![ArkTSNode-FrameNode02](figures/ArkTSNode-FrameNode02.gif)
+
 ## 自定义测量布局与绘制
 
 通过重写[onDraw](../reference/apis-arkui/js-apis-arkui-frameNode.md#ondraw12)方法，可以自定义FrameNode的绘制内容。[invalidate](../reference/apis-arkui/js-apis-arkui-frameNode.md#invalidate12)接口可以主动触发节点的重新绘制。
@@ -1560,6 +1564,8 @@ struct Index {
 }
 ```
 
+![ArkTSNode-FrameNode03](figures/ArkTSNode-FrameNode03.jpg)
+
 ## 查找节点及获取基础信息
 
 FrameNode提供了查询接口用于返回实体节点的基础信息。具体返回的信息内容参考FrameNode中提供的接口。
@@ -1851,6 +1857,8 @@ struct Index {
   }
 }
 ```
+
+![ArkTSNode-FrameNode04](figures/ArkTSNode-FrameNode04.jpg)
 
 ## 通过typeNode创建具体类型的FrameNode节点
 
@@ -2484,6 +2492,8 @@ struct Index {
 }
 ```
 
+![ArkTSNode-FrameNode05](figures/ArkTSNode-FrameNode05.jpg)
+
 ## 解除当前FrameNode对象对实体FrameNode节点的引用关系
 
 使用[dispose](../reference/apis-arkui/js-apis-arkui-frameNode.md#dispose12)接口可以立即解除当前FrameNode对象对实体FrameNode节点的引用关系。
@@ -2739,6 +2749,8 @@ struct Index {
 }
 ```
 
+![ArkTSNode-FrameNode06](figures/ArkTSNode-FrameNode06.gif)
+
 ## 查询当前FrameNode是否解除引用
 
 前端节点均绑定有相应的后端实体节点，当节点调用dispose接口解除绑定后，再次调用接口可能会出现crash、返回默认值的情况。
@@ -2893,6 +2905,8 @@ struct Index {
   }
 }
 ```
+
+![ArkTSNode-FrameNode07](figures/ArkTSNode-FrameNode07.gif)
 
 ## FrameNode的数据懒加载能力
 
@@ -3352,6 +3366,9 @@ struct Index {
   }
 }
 ```
+
+![ArkTSNode-FrameNode08](figures/ArkTSNode-FrameNode08.jpg)
+
 ## 查询LazyForEach中的FrameNode节点信息
 
 如果FrameNode子节点中包含[LazyForEach](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)节点，[getChild](../reference/apis-arkui/js-apis-arkui-frameNode.md#getchild15)接口支持指定子节点展开模式[ExpandMode](../reference/apis-arkui/js-apis-arkui-frameNode.md#expandmode15)，以不同展开模式获取子节点。
@@ -3927,6 +3944,9 @@ struct Index {
   }
 }
 ```
+
+![ArkTSNode-FrameNode09](figures/ArkTSNode-FrameNode09.jpg)
+
 ## 调整自定义绘制Canvas的变换矩阵
 
 从API version 12开始，通过重写FrameNode的[onDraw](../reference/apis-arkui/js-apis-arkui-frameNode.md#ondraw12)方法，可以重写默认绘制方法。
@@ -4242,13 +4262,15 @@ struct Index {
 
 从API version 21开始，通过使用frameNode的[invalidateAttributes](../reference/apis-arkui/js-apis-arkui-frameNode.md#invalidateattributes21)方法，可以在当前帧触发节点更新，避免组件切换过程中出现闪烁。
 
+<!-- @[frameNodeInvalidateAttributes_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeInvalidateAttributes.ets) --> 
+
 ``` TypeScript
 import { FrameNode, NodeController, typeNode, NodeContent } from '@kit.ArkUI';
 
 // 继承NodeController实现自定义NodeAdapter控制器
 class MyNodeAdapterController extends NodeController {
-  rootNode: FrameNode | null = null;
-  imageUrl: string = "";
+  public rootNode: FrameNode | null = null;
+  public imageUrl: string = '';
 
   constructor(imageUrl: string) {
     super();
@@ -4256,7 +4278,7 @@ class MyNodeAdapterController extends NodeController {
   }
 
   makeNode(uiContext: UIContext): FrameNode | null {
-    let imageNode = typeNode.createNode(uiContext, "Image");
+    let imageNode = typeNode.createNode(uiContext, 'Image');
     imageNode.initialize($r(this.imageUrl))
     imageNode.commonAttribute.margin({ left: 100 })
     imageNode.attribute.syncLoad(true).width(100).height(100);
@@ -4273,7 +4295,7 @@ struct NodeComponent3 {
 
   aboutToAppear(): void {
     const uiContext = this.getUIContext();
-    let imageNode = typeNode.createNode(uiContext, "Image");
+    let imageNode = typeNode.createNode(uiContext, 'Image');
     imageNode.initialize($r('app.media.startIcon'))
     imageNode.attribute.syncLoad(true).width(100).height(100);
     imageNode.invalidateAttributes();
@@ -4292,7 +4314,7 @@ struct NodeComponent4 {
 
   aboutToAppear(): void {
     const uiContext = this.getUIContext();
-    let imageNode = typeNode.createNode(uiContext, "Image");
+    let imageNode = typeNode.createNode(uiContext, 'Image');
     imageNode.initialize($r('app.media.startIcon'))
     imageNode.attribute.syncLoad(true).width(100).height(100);
     imageNode.invalidateAttributes();
@@ -4312,13 +4334,13 @@ struct ListNodeTest {
 
   build() {
     Column() {
-      Text("NodeComponent")
+      Text('NodeComponent')
       if (this.flag) {
         NodeComponent3()
       } else {
         NodeComponent4()
       }
-      Text("NodeContainer").margin({ top: 20 })
+      Text('NodeContainer').margin({ top: 20 })
       if (this.flag) {
         NodeContainer(this.adapterController)
           .width(300).height(100)
@@ -4331,15 +4353,18 @@ struct ListNodeTest {
         this.flag = !this.flag;
       }).margin({ top: 20 })
     }
-    .width("100%")
+    .width('100%')
   }
 }
- ```
- ![invalidateAttributes](./figures/invalidateAttributes.png)
+
+```
+![invalidateAttributes](./figures/invalidateAttributes.png)
 
  ## 判断节点是否处于渲染状态
 
 从API version 23开始，通过使用FrameNode的[isInRenderState](../reference/apis-arkui/js-apis-arkui-frameNode.md#isinrenderstate23)方法，判断FrameNode节点是否处于渲染状态。
+
+<!-- @[frameNodeIsInRenderState_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeIsInRenderState.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -4353,7 +4378,7 @@ struct Index {
 
   // 监听状态变化后打印是否处于渲染状态
   change() {
-    let buttonNode = this.getUIContext().getFrameNodeById("testButton");
+    let buttonNode = this.getUIContext().getFrameNodeById('testButton');
     if (buttonNode == null) {
       return;
     }
@@ -4385,14 +4410,14 @@ struct Index {
       }
       .width('30%')
       .alignSelf(ItemAlign.Center)
-      .height("10%")
+      .height('10%')
       .onReachEnd(() => {
-        let textNode8 = this.getUIContext().getFrameNodeById("hello8");
+        let textNode8 = this.getUIContext().getFrameNodeById('hello8');
         if (textNode8 != null) {
           let isOnRenderTree = textNode8!.isInRenderState();
           hilog.info(1, 'frameNode', 'is hello8 on RenderTree: %{public}s', isOnRenderTree);
         }
-        let textNode1 = this.getUIContext().getFrameNodeById("hello1");
+        let textNode1 = this.getUIContext().getFrameNodeById('hello1');
         if (textNode1 != null) {
           let isOnRenderTree = textNode1!.isInRenderState();
           isOnRenderTree ? this.message = 'is on render tree' : 'is not no render tree'
@@ -4404,5 +4429,6 @@ struct Index {
     .width('100%')
   }
 }
- ```
- ![isInRenderState](./figures/isInRenderState.png)
+
+```
+![isInRenderState](./figures/isInRenderState.png)

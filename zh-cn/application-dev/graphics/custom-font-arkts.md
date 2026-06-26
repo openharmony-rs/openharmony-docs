@@ -31,10 +31,21 @@
 
 1. 导入依赖的相关模块。
 
+   ArkTS-Dyn示例：
    <!-- @[arkts_custom_font_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
+   import { UIContext } from '@kit.ArkUI'
+   import { text } from '@kit.ArkGraphics2D'
+   ```
+   ArkTS-Sta示例：
+   <!-- @[arkts_custom_font_include](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/CustomFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import { Entry, Text, Column, Component, Button, Row, $r, NodeContainer, Color, ShadowStyle, FlexAlign, VerticalAlign } from '@ohos.arkui.component'
+   import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
+   import { State } from '@ohos.arkui.stateManagement'
    import { UIContext } from '@kit.ArkUI'
    import { text } from '@kit.ArkGraphics2D'
    ```
@@ -74,6 +85,7 @@
 
 4. 创建段落样式，并使用字体管理器实例构造段落生成器ParagraphBuilder实例。
 
+   ArkTS-Dyn示例：
    <!-- @[arkts_custom_font_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
@@ -81,6 +93,19 @@
    let myParagraphStyle: text.ParagraphStyle = {
      textStyle: myTextStyle,
      align: 3,
+     wordBreak: text.WordBreak.NORMAL
+   };
+   // 创建一个段落生成器
+   let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection)
+   ```
+   ArkTS-Sta示例：
+   <!-- @[arkts_custom_font_step4](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkGraphics2D/TextEngineSta/CustomFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 创建一个段落样式对象，以设置排版风格
+   let myParagraphStyle: text.ParagraphStyle = {
+     textStyle: myTextStyle,
+     align: text.TextAlign.JUSTIFY,
      wordBreak: text.WordBreak.NORMAL
    };
    // 创建一个段落生成器

@@ -209,7 +209,7 @@ struct AddLog {
 <!-- @[TrackCustomComponent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TrackWatch/entry/src/main/ets/pages/TrackCustomComponent.ets) -->
 
 ``` TypeScript
-import { Column, Component, Entry, FontWeight, Row, State, Text, Track } from '@kit.ArkUI';
+import { Column, Component, Entry, FontWeight, Row, State, Text, Track, Button } from '@kit.ArkUI';
 
 class Log {
   @Track logInfo: string;
@@ -237,9 +237,9 @@ struct AddLog {
   build() {
     Row() {
       Column() {
-        Text(this.log.logInfo)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
+        Button('Change log')
+          .width(300)
+          .margin(10)
           .onClick((e) => {
             // 没有被@Track装饰的属性可以在点击事件中使用。
             console.info('owner: ' + this.log.owner +
@@ -252,16 +252,21 @@ struct AddLog {
 
             this.log.logInfo += ' info.';
           })
+        Text(this.log.logInfo)
+          .fontSize(20)
+          .margin(10)
+          .fontWeight(FontWeight.Bold)
       }
       .width('100%')
     }
-    .height('100%')
   }
 }
 ```
 
+![track-customcomponent](../figures/track_1.gif)
+
 处理步骤：
 
-1. AddLog自定义组件的Text.onClick点击事件自增字符串' info.'。
+1. AddLog自定义组件的Button.onClick点击事件自增字符串' info.'。
 
 2. 由于\@State log变量的\@Track属性logInfo更改，Text重新渲染。

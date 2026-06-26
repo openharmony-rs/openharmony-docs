@@ -46,7 +46,7 @@ import { appManager } from '@kit.AbilityKit';
 
 **系统接口**：此接口为系统接口。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **ArkTS-Dyn起始版本：** 14
 
@@ -64,7 +64,7 @@ import { appManager } from '@kit.AbilityKit';
 
 **系统接口**：此接口为系统接口。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **ArkTS-Dyn起始版本：** 14
 
@@ -174,7 +174,7 @@ ArkTS-Sta: isSharedBundleRunning(bundleName: string, versionCode: long, callback
 | --------- | ---------------------------------------- | ---- | -------------- |
 | bundleName    | string   | 是    | 表示要查询的共享库包名。 |
 | versionCode   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是    | 表示要查询的共享库版本号。      |
-| callback    | AsyncCallback\<boolean>> | 是    | 回调函数。返回true表示共享库正在使用，返回false表示共享库不在使用。 |
+| callback    | AsyncCallback\<boolean> | 是    | 回调函数。返回true表示共享库正在使用，返回false表示共享库不在使用。 |
 
 **错误码**：
 
@@ -989,7 +989,10 @@ ArkTS-Sta: killProcessWithAccount(bundleName: string, accountId: int): Promise\<
 >
 > 当accountId为当前用户时，不需要校验ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS权限。
 
-**需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS, ohos.permission.KILL_APP_PROCESSES or ohos.permission.CLEAN_BACKGROUND_PROCESSES
+**需要权限**：
+
+- API版本9-13：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS和ohos.permission.CLEAN_BACKGROUND_PROCESSES
+- API版本14+：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS和ohos.permission.KILL_APP_PROCESSES或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS和ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1058,7 +1061,7 @@ ArkTS-Sta: killProcessWithAccount(bundleName: string, accountId: int, clearPageS
 >
 > 当accountId为当前用户时，不需要校验ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS权限。
 
-**需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS, ohos.permission.CLEAN_BACKGROUND_PROCESSES
+**需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS和ohos.permission.KILL_APP_PROCESSES或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS和ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1131,7 +1134,10 @@ ArkTS-Sta: killProcessWithAccount(bundleName: string, accountId: int, callback: 
 >
 > 当accountId为当前用户时，不需要校验ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS权限。
 
-**需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS, ohos.permission.KILL_APP_PROCESSES or ohos.permission.CLEAN_BACKGROUND_PROCESSES
+**需要权限**：
+
+- API版本9-13：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS和ohos.permission.CLEAN_BACKGROUND_PROCESSES
+- API版本14+：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS和ohos.permission.KILL_APP_PROCESSES或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS和ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1182,11 +1188,14 @@ appManager.killProcessWithAccount(bundleName, accountId, killProcessWithAccountC
 
 ## appManager.killProcessesByBundleName
 
-killProcessesByBundleName(bundleName: string, callback: AsyncCallback\<void>)
+killProcessesByBundleName(bundleName: string, callback: AsyncCallback\<void>): void
 
 通过Bundle名称终止进程。使用callback异步回调。
 
-**需要权限**：ohos.permission.KILL_APP_PROCESSES or ohos.permission.CLEAN_BACKGROUND_PROCESSES
+**需要权限**：
+
+- API版本9-13：ohos.permission.CLEAN_BACKGROUND_PROCESSES
+- API版本14+：ohos.permission.KILL_APP_PROCESSES或ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1245,7 +1254,10 @@ killProcessesByBundleName(bundleName: string): Promise\<void>
 
 通过Bundle名称终止进程。使用Promise异步回调。
 
-**需要权限**：ohos.permission.KILL_APP_PROCESSES or ohos.permission.CLEAN_BACKGROUND_PROCESSES
+**需要权限**：
+
+- API版本9-13：ohos.permission.CLEAN_BACKGROUND_PROCESSES
+- API版本14+：ohos.permission.KILL_APP_PROCESSES或ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -2001,6 +2013,10 @@ ArkTS-Sta: preloadApplication(bundleName: string, userId: int, mode: PreloadMode
 
 预加载应用进程。接口返回成功并不代表预加载成功，具体结果以目标应用进程是否创建成功为准。使用Promise异步回调。
 
+> **说明：**
+>
+> 该接口不支持预加载分身应用，参数appIndex只能传0，传其他值会返回16000050错误码。
+
 **需要权限**：ohos.permission.PRELOAD_APPLICATION
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -2020,7 +2036,7 @@ ArkTS-Sta: preloadApplication(bundleName: string, userId: int, mode: PreloadMode
 | bundleName | string | 是 | 预加载的应用包名。 |
 | userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 预加载的用户Id。 |
 | mode | [PreloadMode](#appmanagerpreloadmode12) | 是 | 预加载模式。 |
-| appIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 预加载应用分身的appIndex。 |
+| appIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 预加载应用分身的appIndex，该参数只能传0，当前不支持预加载分身应用。 |
 
 **返回值：**
 
@@ -2773,7 +2789,7 @@ type AppForegroundStateObserver = _AppForegroundStateObserver.default
 
 | 类型 | 说明 |
 | --- | --- |
-| [AppForegroundStateObserver](js-apis-inner-application-appForegroundStateObserver-sys.md) | 应用启动和退出的状态监听。 |
+| [AppForegroundStateObserver](js-apis-inner-application-appForegroundStateObserver-sys.md).default | 应用启动和退出的状态监听。 |
 
 ## AppForegroundStateObserver<sup>23+</sup>
 
@@ -2805,7 +2821,7 @@ UIAbility首帧绘制完成事件监听对象。
 
 | 类型 | 说明 |
 | --- | --- |
-| [AbilityFirstFrameStateData](js-apis-inner-application-abilityFirstFrameStateData-sys.md) | UIAbility首帧绘制完成事件监听对象。 |
+| [AbilityFirstFrameStateData](js-apis-inner-application-abilityFirstFrameStateData-sys.md).default | UIAbility首帧绘制完成事件监听对象。 |
 
 ## AbilityFirstFrameStateObserver<sup>23+</sup>
 
@@ -2837,7 +2853,7 @@ UIAbility首帧绘制完成回调上报数据结构。
 
 | 类型 | 说明 |
 | --- | --- |
-| [AbilityFirstFrameStateData](js-apis-inner-application-abilityFirstFrameStateData-sys.md) | UIAbility首帧绘制完成回调上报数据结构。 |
+| [AbilityFirstFrameStateData](js-apis-inner-application-abilityFirstFrameStateData-sys.md).default | UIAbility首帧绘制完成回调上报数据结构。 |
 
 ## AbilityFirstFrameStateData<sup>23+</sup>
 
@@ -2885,8 +2901,8 @@ type RunningMultiAppInfo = _RunningMultiAppInfo
 
 | 名称           | 值   | 说明         |
 | -------------- | ---- | ------------ |
-| APP            | 1    | 应用。       |
-| ATOMIC_SERVICE | 2    | 原子化服务。 |
+| APP            | 1 << 0    | 应用。       |
+| ATOMIC_SERVICE | 1 << 1    | 原子化服务。 |
 
 ## FilterAppStateType<sup>21+</sup>
 
@@ -2902,10 +2918,10 @@ type RunningMultiAppInfo = _RunningMultiAppInfo
 
 | 名称       | 值   | 说明                                                         |
 | ---------- | ---- | ------------------------------------------------------------ |
-| CREATE     | 1    | 应用正在初始化，对应[AppStateData](js-apis-inner-application-appStateData.md)中state取值为0的状态。 |
-| FOREGROUND | 2    | 应用位于前台，对应[AppStateData](js-apis-inner-application-appStateData.md)中state取值为2的状态。 |
-| BACKGROUND | 4    | 应用位于后台，对应[AppStateData](js-apis-inner-application-appStateData.md)中state取值为4的状态。 |
-| DESTROY    | 8    | 应用已退出，对应[AppStateData](js-apis-inner-application-appStateData.md)中state取值为5的状态。 |
+| CREATE     | 1 << 0    | 应用正在初始化，对应[AppStateData](js-apis-inner-application-appStateData.md)中state取值为0的状态。 |
+| FOREGROUND | 1 << 1    | 应用位于前台，对应[AppStateData](js-apis-inner-application-appStateData.md)中state取值为2的状态。 |
+| BACKGROUND | 1 << 2    | 应用位于后台，对应[AppStateData](js-apis-inner-application-appStateData.md)中state取值为4的状态。 |
+| DESTROY    | 1 << 3    | 应用已退出，对应[AppStateData](js-apis-inner-application-appStateData.md)中state取值为5的状态。 |
 
 ## FilterProcessStateType<sup>21+</sup>
 
@@ -2921,10 +2937,10 @@ type RunningMultiAppInfo = _RunningMultiAppInfo
 
 | 名称       | 值   | 说明                                                         |
 | ---------- | ---- | ------------------------------------------------------------ |
-| CREATE     | 1    | 进程刚创建完成，对应[ProcessData](js-apis-inner-application-processData.md)中state取值为0的状态。 |
-| FOREGROUND | 2    | 进程处于前台，对应[ProcessData](js-apis-inner-application-processData.md)中state取值为2的状态。 |
-| BACKGROUND | 4    | 进程处于后台，对应[ProcessData](js-apis-inner-application-processData.md)中state取值为4的状态。 |
-| DESTROY    | 8    | 进程已终止，对应[ProcessData](js-apis-inner-application-processData.md)中state取值为5的状态。 |
+| CREATE     | 1 << 0    | 进程刚创建完成，对应[ProcessData](js-apis-inner-application-processData.md)中state取值为0的状态。 |
+| FOREGROUND | 1 << 1    | 进程处于前台，对应[ProcessData](js-apis-inner-application-processData.md)中state取值为2的状态。 |
+| BACKGROUND | 1 << 2    | 进程处于后台，对应[ProcessData](js-apis-inner-application-processData.md)中state取值为4的状态。 |
+| DESTROY    | 1 << 3    | 进程已终止，对应[ProcessData](js-apis-inner-application-processData.md)中state取值为5的状态。 |
 
 ## FilterAbilityStateType<sup>21+</sup>
 
@@ -2940,10 +2956,10 @@ type RunningMultiAppInfo = _RunningMultiAppInfo
 
 | 名称       | 值   | 说明                                                         |
 | ---------- | ---- | ------------------------------------------------------------ |
-| CREATE     | 1    | Ability正在创建中，对应[Ability状态](js-apis-inner-application-abilityStateData.md#ability状态)中的ABILITY_STATE_CREATE。 |
-| FOREGROUND | 2    | Ability处于前台，对应[Ability状态](js-apis-inner-application-abilityStateData.md#ability状态)中的ABILITY_STATE_FOREGROUND。 |
-| BACKGROUND | 4    | Ability处于后台，对应[Ability状态](js-apis-inner-application-abilityStateData.md#ability状态)中的ABILITY_STATE_BACKGROUND。 |
-| DESTROY    | 8    | Ability已经销毁，对应[Ability状态](js-apis-inner-application-abilityStateData.md#ability状态)中的ABILITY_STATE_TERMINATED。 |
+| CREATE     | 1 << 0    | Ability正在创建中，对应[Ability状态](js-apis-inner-application-abilityStateData.md#ability状态)中的ABILITY_STATE_CREATE。 |
+| FOREGROUND | 1 << 1    | Ability处于前台，对应[Ability状态](js-apis-inner-application-abilityStateData.md#ability状态)中的ABILITY_STATE_FOREGROUND。 |
+| BACKGROUND | 1 << 2    | Ability处于后台，对应[Ability状态](js-apis-inner-application-abilityStateData.md#ability状态)中的ABILITY_STATE_BACKGROUND。 |
+| DESTROY    | 1 << 3    | Ability已经销毁，对应[Ability状态](js-apis-inner-application-abilityStateData.md#ability状态)中的ABILITY_STATE_TERMINATED。 |
 
 ## FilterCallback<sup>21+</sup>
 
@@ -2959,13 +2975,13 @@ type RunningMultiAppInfo = _RunningMultiAppInfo
 
 | 名称                              | 值   | 说明                                                         |
 | --------------------------------- | ---- | ------------------------------------------------------------ |
-| ON_FOREGROUND_APPLICATION_CHANGED | 1    | 该枚举对应应用前后台状态发生变化时执行的回调函数[ApplicationStateObserver.onForegroundApplicationChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronforegroundapplicationchanged)。 |
-| ON_ABILITY_STATE_CHANGED          | 2    | 该枚举对应Ability状态发生变化时执行的回调函数[ApplicationStateObserver.onAbilityStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronabilitystatechanged)。 |
-| ON_PROCESS_CREATED                | 4    | 该枚举对应进程创建时执行的回调函数[ApplicationStateObserver.onProcessCreated](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocesscreated)。 |
-| ON_PROCESS_DIED                   | 8    | 该枚举对应进程销毁时执行的回调函数[ApplicationStateObserver.onProcessDied](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocessdied)。 |
-| ON_PROCESS_STATE_CHANGED          | 16   | 该枚举对应进程状态更新时执行的回调函数[ApplicationStateObserver.onProcessStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocessstatechanged)。 |
-| ON_APP_STARTED                    | 32   | 该枚举对应应用第一个进程创建时执行的回调函数[ApplicationStateObserver.onAppStarted](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronappstarted)。 |
-| ON_APP_STOPPED                    | 64   | 该枚举对应应用最后一个进程销毁时执行的回调函数[ApplicationStateObserver.onAppStopped](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronappstopped)。 |
+| ON_FOREGROUND_APPLICATION_CHANGED | 1 << 0    | 该枚举对应应用前后台状态发生变化时执行的回调函数[ApplicationStateObserver.onForegroundApplicationChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronforegroundapplicationchanged)。 |
+| ON_ABILITY_STATE_CHANGED          | 1 << 1    | 该枚举对应Ability状态发生变化时执行的回调函数[ApplicationStateObserver.onAbilityStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronabilitystatechanged)。 |
+| ON_PROCESS_CREATED                | 1 << 2    | 该枚举对应进程创建时执行的回调函数[ApplicationStateObserver.onProcessCreated](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocesscreated)。 |
+| ON_PROCESS_DIED                   | 1 << 3    | 该枚举对应进程销毁时执行的回调函数[ApplicationStateObserver.onProcessDied](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocessdied)。 |
+| ON_PROCESS_STATE_CHANGED          | 1 << 4   | 该枚举对应进程状态更新时执行的回调函数[ApplicationStateObserver.onProcessStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocessstatechanged)。 |
+| ON_APP_STARTED                    | 1 << 5   | 该枚举对应应用第一个进程创建时执行的回调函数[ApplicationStateObserver.onAppStarted](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronappstarted)。 |
+| ON_APP_STOPPED                    | 1 << 6   | 该枚举对应应用最后一个进程销毁时执行的回调函数[ApplicationStateObserver.onAppStopped](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronappstopped)。 |
 
 ## AppStateFilter<sup>21+</sup>
 
@@ -2981,8 +2997,8 @@ type RunningMultiAppInfo = _RunningMultiAppInfo
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------------------------- | ------ | ---- | ---- | --------- |
-| bundleTypes  | [FilterBundleType](#filterbundletype21) | 否 | 是  | 表示要监听的应用类型。取值范围是：<br> - 0：表示不监听任何类型的应用。<br> - [FilterBundleType](#filterbundletype21)中枚举的按位或运算组合：例如 "appManager.FilterBundleType.APP \| appManager.FilterBundleType.ATOMIC_SERVICE" ，表示同时监听应用和原子化服务的生命周期变化事件。<br> - 如果该项不设置，则默认监听所有的应用类型。|
-| appStateTypes | [FilterAppStateType](#filterappstatetype21) | 否 | 是 | 表示要监听的应用状态。 取值范围是：<br> - 0：表示不监听任何应用状态。<br> - [FilterAppStateType](#filterappstatetype21)中枚举的按位或运算组合：例如 "appManager.FilterAppStateType.CREATE \| appManager.FilterAppStateType.FOREGROUND" ，表示同时监听应用的创建状态和前台状态。<br> - 如果该项不设置，则默认监听所有的应用状态。|
-| processStateTypes | [FilterProcessStateType](#filterprocessstatetype21) | 否 | 是 | 表示要监听的进程状态。取值范围是：<br> - 0：表示不监听任何进程状态。<br> - [FilterProcessStateType](#filterprocessstatetype21)中枚举的按位或运算组合：例如 "appManager.FilterProcessStateType.CREATE \| appManager.FilterProcessStateType.FOREGROUND" ，表示同时监听进程的创建状态和前台状态。<br> - 如果该项不设置，则默认监听所有的进程状态。|
-| abilityStateTypes | [FilterAbilityStateType](#filterabilitystatetype21) | 否 | 是  | 表示要监听的Ability状态。取值范围是：<br> - 0：表示不监听任何Ability状态。<br> - [FilterAbilityStateType](#filterabilitystatetype21)中枚举的按位或运算组合：例如 "appManager.FilterAbilityStateType.CREATE \| appManager.FilterAbilityStateType.FOREGROUND" ，表示同时监听Ability的创建状态和前台状态。<br> - 如果该项不设置，则默认监听所有的Ability状态。|
-| callbacks | [FilterCallback](#filtercallback21) | 否 | 是  | 表示要监听的回调函数。取值范围是：<br> - 0：表示不监听任何回调函数。<br> - [FilterCallback](#filtercallback21)中枚举的按位或运算组合：例如 "appManager.FilterCallback.ON_ABILITY_STATE_CHANGED \| appManager.FilterCallback.ON_PROCESS_STATE_CHANGED" ，表示同时监听[ApplicationStateObserver.onAbilityStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronabilitystatechanged)和[ApplicationStateObserver.onProcessStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocessstatechanged)。 <br> - 如果该项不设置，则默认监听[FilterCallback](#filtercallback21)中对应的所有回调函数。|
+| bundleTypes  | number | 否 | 是  | 表示要监听的应用类型。取值范围是：<br> - 0：表示不监听任何类型的应用。<br> - [FilterBundleType](#filterbundletype21)中枚举的按位或运算组合：例如 "appManager.FilterBundleType.APP \| appManager.FilterBundleType.ATOMIC_SERVICE" ，表示同时监听应用和原子化服务的生命周期变化事件。<br> - 如果该项不设置，则默认监听所有的应用类型。|
+| appStateTypes | number | 否 | 是 | 表示要监听的应用状态。 取值范围是：<br> - 0：表示不监听任何应用状态。<br> - [FilterAppStateType](#filterappstatetype21)中枚举的按位或运算组合：例如 "appManager.FilterAppStateType.CREATE \| appManager.FilterAppStateType.FOREGROUND" ，表示同时监听应用的创建状态和前台状态。<br> - 如果该项不设置，则默认监听所有的应用状态。|
+| processStateTypes | number | 否 | 是 | 表示要监听的进程状态。取值范围是：<br> - 0：表示不监听任何进程状态。<br> - [FilterProcessStateType](#filterprocessstatetype21)中枚举的按位或运算组合：例如 "appManager.FilterProcessStateType.CREATE \| appManager.FilterProcessStateType.FOREGROUND" ，表示同时监听进程的创建状态和前台状态。<br> - 如果该项不设置，则默认监听所有的进程状态。|
+| abilityStateTypes | number | 否 | 是  | 表示要监听的Ability状态。取值范围是：<br> - 0：表示不监听任何Ability状态。<br> - [FilterAbilityStateType](#filterabilitystatetype21)中枚举的按位或运算组合：例如 "appManager.FilterAbilityStateType.CREATE \| appManager.FilterAbilityStateType.FOREGROUND" ，表示同时监听Ability的创建状态和前台状态。<br> - 如果该项不设置，则默认监听所有的Ability状态。|
+| callbacks | number | 否 | 是  | 表示要监听的回调函数。取值范围是：<br> - 0：表示不监听任何回调函数。<br> - [FilterCallback](#filtercallback21)中枚举的按位或运算组合：例如 "appManager.FilterCallback.ON_ABILITY_STATE_CHANGED \| appManager.FilterCallback.ON_PROCESS_STATE_CHANGED" ，表示同时监听[ApplicationStateObserver.onAbilityStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronabilitystatechanged)和[ApplicationStateObserver.onProcessStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocessstatechanged)。 <br> - 如果该项不设置，则默认监听[FilterCallback](#filtercallback21)中对应的所有回调函数。|

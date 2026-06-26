@@ -1,7 +1,7 @@
 # avmedia_source.h
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xushubo; @chennotfound-->
+<!--Owner: @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
@@ -18,7 +18,7 @@
 
 **起始版本：** 23
 
-**相关模块：** [avmedia_source](capi-avmedia-source.md)
+**相关模块：** [AVMediaSource](capi-avmedia-source.md)
 
 ## 汇总
 
@@ -329,7 +329,7 @@ OH_AVErrCode OH_AVMediaSource_SetMimeType(OH_AVMediaSource *source, const char *
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVMediaSource](capi-avmedia-source-oh-avmediasource.md) *source | 指向OH_AVMediaSource的指针。 |
-| const char *mimetype | 媒体源的MIME类型[AV_MimeTypes](arkts-apis-media-e.md#avmimetypes12)。 |
+| const char *mimetype | 媒体源的MIME类型[AVMimeTypes](arkts-apis-media-e.md#avmimetypes12)。 |
 
 **返回：**
 

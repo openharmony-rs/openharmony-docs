@@ -29,6 +29,8 @@ ArkTS-Sta: notifyMissionsChanged: NotifyMissionsChangedCallback;
 
 注册任务监听的callback，通知任务变化。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
@@ -108,6 +110,8 @@ ArkTS-Sta: notifySnapshot: NotifySnapshotCallback
 
 注册任务监听的callback，通知快照变化。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
@@ -185,6 +189,8 @@ distributedMissionManager.registerMissionListener(deviceId, parm);
 notifyNetDisconnect(deviceId: string, state: number): void
 
 注册任务监听的callback，通知断开连接。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 

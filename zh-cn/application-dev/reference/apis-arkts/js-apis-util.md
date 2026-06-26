@@ -660,7 +660,7 @@ MultithreadingDetectionOptions是一个接口类，用于配置[ArkTSVM.setMulti
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | abort  | boolean  | 否       | 是       | 控制检测到多线程问题时是否崩溃。true表示崩溃，false表示不崩溃。默认true。|
-| frequency  | number  | 否       | 是       | 多线程检测的检测粒度，该值越大，检测越少，性能越好，范围为[100,2147483647]，默认100。|
+| frequency  | number  | 否       | 是       | 多线程安全检测的粒度，表示每发生多少次函数调用进行一次多线程安全检测，该值越大采样频率越低，对应用性能影响越小，但可能漏检部分多线程安全使用问题场景，范围为[100,2147483647]，默认100。|
 | interval  | number  | 否       | 是       | 多线程检测的上报故障时间间隔，仅不崩溃时生效，范围为[0,1440]，单位为分钟，默认5分钟。（不建议设为5分钟以下，有严重的性能影响。）|
 
 ## ArkTSVM<sup>23+</sup>
@@ -851,6 +851,8 @@ static setTrackGlobalRef(enable: boolean): void
 
 开启追踪后，虚拟机会额外记录napi_ref与全局对象的关联关系，可能带来一定的内存和性能开销。在不需要调试时，建议调用`util.ArkTSVM.setTrackGlobalRef(false)`关闭追踪。
 
+该接口的开关为进程级别，进程内的所有线程共享同一开关状态。在任意线程调用本接口设置开关后，将对该进程内所有线程生效。
+
 关于napi_ref的详细说明，请参考[napi_ref](../../napi/use-napi-life-cycle.md#napi_ref)使用指导。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -905,10 +907,6 @@ try {
   hilog.error(0x0000, 'testTag', 'Test Node-API createGlobalRef failed error: %{public}s', error.message);
 }
 ```
-
-开启追踪后，堆快照中全局对象节点将显示napi_ref的地址信息，效果如下图所示：
-
-![setTrackGlobalRef堆快照效果图](figures/setTrackGlobalRef_heap_snapshot.png)
 
 ### onVMHeapMemoryPressure<sup>24+</sup>
 
@@ -5675,6 +5673,42 @@ isAsyncFunction(value: Object): boolean
   // 输出结果：result = true
   ```
 
+> **说明：**
+>
+> 该接口无法对AsyncGenerator Function进行有效判断，建议通过获取函数的`constructor.name`属性与`'AsyncGeneratorFunction'`做判等的方式替代。
+>
+> 该接口无法对Sendable class中的async成员函数进行有效判断，无替代方案。
+
+  <!--code_no_check-->
+  ```ts
+  // /entry/src/main/ets/pages/test.ts
+  export async function* asyncGeneratorFunc() {}
+  ```
+
+  <!--code_no_check-->
+  ```ts
+  import { asyncGeneratorFunc } from './test'
+
+  @Sendable
+  class SendableClass {
+    async asyncFunction() {}
+  }
+
+  let type = new util.types();
+  let result1 = type.isAsyncFunction(asyncGeneratorFunc);
+  console.info("result = " + result1);
+  // 输出结果：result = false
+
+  console.info("asyncGeneratorFunc.constructor.name === AsyncGeneratorFunction : " +
+    (asyncGeneratorFunc.constructor.name === 'AsyncGeneratorFunction'));
+  // 输出结果：asyncGeneratorFunc.constructor.name === AsyncGeneratorFunction : true
+
+  const instance = new SendableClass();
+  let result2 = type.isAsyncFunction(instance.asyncFunction);
+  console.info("result = " + result2);
+  // 输出结果：result = false
+  ```
+
 ### isBooleanObject<sup>(deprecated)</sup>
 
 isBooleanObject(value: Object): boolean
@@ -6016,6 +6050,30 @@ isGeneratorFunction(value: Object): boolean
   let result = type.isGeneratorFunction(foo);
   console.info("result = " + result);
   // 输出结果：result = true
+  ```
+
+> **说明：**
+>
+> 该接口无法对AsyncGenerator Function进行有效判断，建议通过获取函数的`constructor.name`属性与`'AsyncGeneratorFunction'`做判等的方式替代。
+
+  <!--code_no_check-->
+  ```ts
+  // /entry/src/main/ets/pages/test.ts
+  export async function* asyncGeneratorFunc() {}
+  ```
+
+  <!--code_no_check-->
+  ```ts
+  import { asyncGeneratorFunc } from './test'
+
+  let type = new util.types();
+  let result = type.isGeneratorFunction(asyncGeneratorFunc);
+  console.info("result = " + result);
+  // 输出结果：result = false
+
+  console.info("asyncGeneratorFunc.constructor.name === AsyncGeneratorFunction : " +
+    (asyncGeneratorFunc.constructor.name === 'AsyncGeneratorFunction'));
+  // 输出结果：asyncGeneratorFunc.constructor.name === AsyncGeneratorFunction : true
   ```
 
 

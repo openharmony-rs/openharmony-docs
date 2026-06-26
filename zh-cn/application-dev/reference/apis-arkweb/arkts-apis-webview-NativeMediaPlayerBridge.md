@@ -6,9 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-[CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12)回调函数的返回值类型。接管网页媒体的播放器和ArkWeb内核之间的一个接口类。
-
-ArkWeb内核通过该接口类的实例对象来控制应用创建的用来接管网页媒体的播放器。
+NativeMediaPlayerBridge 是[CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12)回调函数的返回值类型，接管网页媒体的播放器和 ArkWeb 内核之间的一个接口类。ArkWeb 内核通过该接口类的实例对象来控制应用创建的用来接管网页媒体的播放器。该接口允许应用使用自定义的媒体播放器来接管网页中的媒体内容播放，同时，该接口还支持播放器的挂起和恢复机制。
 
 > **说明：**
 >
@@ -240,7 +238,7 @@ exitFullscreen(): void
 
 resumePlayer?(): void
 
-通知应用重建播放器，并恢复播放器的状态信息。
+通知应用重建播放器，并恢复播放器的状态信息。仅与 suspendPlayer 成对出现。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -256,7 +254,7 @@ resumePlayer?(): void
 
 suspendPlayer?(type: SuspendType): void
 
-通知应用销毁播放器，并保存播放器的状态信息。
+通知应用销毁播放器，并保存播放器的状态信息。仅与 resumePlayer 成对出现。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -323,7 +321,7 @@ type OneParamFn<T,V=void> = (param: T) => V
 
 type ResumePlayerFn = () => void
 
-通知应用重建应用内播放器，并恢复应用内播放器的状态信息。
+通知应用重建应用内播放器，并恢复应用内播放器的状态信息。仅与 SuspendPlayerFn 成对出现。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -335,7 +333,7 @@ type ResumePlayerFn = () => void
 
 type SuspendPlayerFn = (type: SuspendType) => void
 
-通知应用销毁应用内播放器，并保存应用内播放器的状态信息。
+通知应用销毁应用内播放器，并保存应用内播放器的状态信息。仅与 ResumePlayerFn 成对出现。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 

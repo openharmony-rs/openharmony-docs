@@ -71,7 +71,7 @@ this.objLink= ...
 
   **图1** 初始化规则图示  
 
-  ![zh-cn_image_0000001502255261](figures/zh-cn_image_0000001502255261.png)
+  ![zh-cn_image_0000001502255261](figures/Initialization-rules01.png)
 
 
 ## 观察变化和行为表现
@@ -1107,7 +1107,7 @@ struct MyView {
 }
 ```
 
-- 最后一个Text组件Text('child: ${this.cousin.child.childId}')，当点击该组件时UI不会刷新。 因为，\@State cousin : Cousin 只能观察到this.cousin属性的变化，比如this.cousin.parentId, this.cousin.cousinId 和this.cousin.child的变化，但是无法观察嵌套在属性中的属性，即this.cousin.child.childId（属性childId是内嵌在cousin中的对象Child的属性）。
+- 最后一个Text组件Text(`childId: ${this.cousin.child.childId}`)，当点击该组件时UI不会刷新。 因为，\@State cousin : Cousin 只能观察到this.cousin属性的变化，比如this.cousin.parentId, this.cousin.cousinId 和this.cousin.child的变化，但是无法观察嵌套在属性中的属性，即this.cousin.child.childId（属性childId是内嵌在cousin中的对象Child的属性）。
 
 - 为了观察到嵌套于内部的Child的属性，需要做如下改变：
   - 构造一个子组件，用于单独渲染Child的实例。 该子组件可以使用\@ObjectLink child : Child或\@Prop child : Child。通常会使用\@ObjectLink，除非子组件需要对其Child对象进行本地修改。
@@ -1584,7 +1584,7 @@ struct UserChild {
 
 上面的示例关系如图所示：
 
-![zh-cn_image_0000001653949465](figures/zh-cn_image_0000001653949465.jpg)
+![zh-cn_image_0000001653949465](figures/Differences-example.jpg)
 
 ### 在\@Observed装饰类的构造函数中延时更改成员变量
 
@@ -1845,15 +1845,20 @@ struct Index {
 @Observed
 class DataDownloader {
   public state: number;
+  private intervalId: number = -1;
 
   constructor() {
     this.state = 0;
   }
 
   startIntervalUpdate() {
-    setInterval(() => {
+    this.intervalId = setInterval(() => {
       this.state += 1;
     }, 2000);
+  }
+
+  stopIntervalUpdate() {
+    clearInterval(this.intervalId);
   }
 }
 

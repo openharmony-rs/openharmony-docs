@@ -243,7 +243,8 @@ let userId: int = 1;
 notificationManager.publish(notificationRequest, userId).then(() => {
     console.info("publish success");
 }).catch((err: Error): void => {
-    console.error(`publish failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`publish failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -393,7 +394,8 @@ let notificationSlot: notificationManager.NotificationSlot = {
 notificationManager.addSlot(notificationSlot).then(() => {
     console.info("addSlot success");
 }).catch((err: Error): void => {
-    console.error(`addSlot failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`addSlot failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -561,7 +563,8 @@ let notificationSlotArray: notificationManager.NotificationSlot[] = [
 notificationManager.addSlots(notificationSlotArray).then(() => {
     console.info("addSlots success");
 }).catch((err: Error): void => {
-    console.error(`addSlots failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`addSlots failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -708,7 +711,8 @@ let bundle: notificationManager.BundleOption = {
 notificationManager.setNotificationEnable(bundle, false).then(() => {
   console.info("setNotificationEnable success");
 }).catch((err: Error): void => {
-    console.error(`setNotificationEnable failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`setNotificationEnable failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -773,7 +777,8 @@ notificationManager.getAllNotificationEnabledBundles().then((data: Array<notific
         console.info(`Enable bundle is ${JSON.stringify(element.bundle)}`);
     });
 }).catch((err: Error): void => {
-    console.error(`getAllNotificationEnabledBundles failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`getAllNotificationEnabledBundles failed, code is ${error.code}, message is ${error.message}`);
 })
 ```
 
@@ -997,7 +1002,8 @@ let bundle: notificationManager.BundleOption = {
 notificationManager.isNotificationEnabled(bundle).then((data: boolean) => {
     console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
 }).catch((err: Error): void => {
-    console.error(`isNotificationEnabled failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`isNotificationEnabled failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1147,7 +1153,8 @@ let userId: int = 1;
 notificationManager.isNotificationEnabled(userId).then((data: boolean) => {
     console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
 }).catch((err: Error): void => {
-    console.error(`isNotificationEnabled failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`isNotificationEnabled failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1301,7 +1308,8 @@ let bundle: notificationManager.BundleOption = {
 notificationManager.displayBadge(bundle, false).then(() => {
     console.info("displayBadge success");
 }).catch((err: Error): void => {
-    console.error(`displayBadge failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`displayBadge failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1455,7 +1463,8 @@ let bundle: notificationManager.BundleOption = {
 notificationManager.isBadgeDisplayed(bundle).then((data: boolean) => {
     console.info(`isBadgeDisplayed success, data: ${JSON.stringify(data)}`);
 }).catch((err: Error): void => {
-    console.error(`isBadgeDisplayed failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`isBadgeDisplayed failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1539,7 +1548,8 @@ let slotFlags: long = 1;
 notificationManager.setSlotFlagsByBundle(bundle, slotFlags).then(() => {
     console.info("setSlotFlagsByBundle success");
 }).catch((err: Error): void => {
-    console.error(`setSlotFlagsByBundle failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`setSlotFlagsByBundle failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1713,7 +1723,8 @@ let notificationSlot: notificationManager.NotificationSlot = {
 notificationManager.setSlotByBundle(bundle, notificationSlot).then(() => {
     console.info("setSlotByBundle success");
 }).catch((err: Error): void => {
-    console.error(`setSlotByBundle failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`setSlotByBundle failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1790,7 +1801,8 @@ let bundle: notificationManager.BundleOption = {
 notificationManager.getSlotFlagsByBundle(bundle).then((data: long) => {
     console.info(`getSlotFlagsByBundle success, data: ${JSON.stringify(data)}`);
 }).catch((err: Error): void => {
-    console.error(`getSlotFlagsByBundle failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`getSlotFlagsByBundle failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1944,7 +1956,8 @@ let bundle: notificationManager.BundleOption = {
 notificationManager.getSlotsByBundle(bundle).then((data: Array<notificationManager.NotificationSlot>) => {
     console.info(`getSlotsByBundle success, data: ${JSON.stringify(data)}`);
 }).catch((err: Error): void => {
-    console.error(`getSlotsByBundle failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`getSlotsByBundle failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -2106,7 +2119,8 @@ let bundle: notificationManager.BundleOption = {
 notificationManager.getSlotNumByBundle(bundle).then((data: long) => {
     console.info(`getSlotNumByBundle success, data: ${JSON.stringify(data)}`);
 }).catch((err: Error): void => {
-    console.error(`getSlotNumByBundle failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`getSlotNumByBundle failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -2230,7 +2244,8 @@ ArkTS-Sta示例：
 notificationManager.getAllActiveNotifications().then((data: Array<notificationManager.NotificationRequest>) => {
     console.info(`getAllActiveNotifications success, data: ${JSON.stringify(data)}`);
 }).catch((err: Error): void => {
-    console.error(`getAllActiveNotifications failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`getAllActiveNotifications failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -2418,7 +2433,8 @@ let filter: notificationManager.NotificationFilter = {
 notificationManager.getActiveNotificationByFilter(filter).then((data: notificationManager.NotificationRequest | null | undefined) => {
     console.info(`getActiveNotificationByFilter success, data: ${JSON.stringify(data)}`);
 }).catch((err: Error): void => {
-    console.error(`getActiveNotificationByFilter failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`getActiveNotificationByFilter failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -2568,7 +2584,8 @@ let groupName: string = "GroupName";
 notificationManager.removeGroupByBundle(bundleOption, groupName).then(() => {
     console.info("removeGroupByBundle success");
 }).catch((err: Error): void => {
-    console.error(`removeGroupByBundle failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`removeGroupByBundle failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -2731,7 +2748,8 @@ let doNotDisturbDate: notificationManager.DoNotDisturbDate = {
 notificationManager.setDoNotDisturbDate(doNotDisturbDate).then(() => {
     console.info("setDoNotDisturbDate success");
 }).catch((err: Error): void => {
-    console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`setDoNotDisturbDate failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -2915,7 +2933,8 @@ let userId: int = 1;
 notificationManager.setDoNotDisturbDate(doNotDisturbDate, userId).then(() => {
     console.info("setDoNotDisturbDate success");
 }).catch((err: Error): void => {
-    console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`setDoNotDisturbDate failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -3047,7 +3066,8 @@ ArkTS-Sta示例：
 notificationManager.getDoNotDisturbDate().then((data: notificationManager.DoNotDisturbDate) => {
   console.info(`getDoNotDisturbDate success, data: ${JSON.stringify(data)}`);
 }).catch((err: Error): void => {
-    console.error(`getDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`getDoNotDisturbDate failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -3205,7 +3225,8 @@ let userId: int = 1;
 notificationManager.getDoNotDisturbDate(userId).then((data: notificationManager.DoNotDisturbDate) => {
     console.info(`getDoNotDisturbDate success, data: ${JSON.stringify(data)}`);
 }).catch((err: Error): void => {
-    console.error(`getDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`getDoNotDisturbDate failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -3335,7 +3356,8 @@ ArkTS-Sta示例：
 notificationManager.isSupportDoNotDisturbMode().then((data: boolean) => {
     console.info(`isSupportDoNotDisturbMode success, data: ${JSON.stringify(data)}`);
 }).catch((err: Error): void => {
-    console.error(`isSupportDoNotDisturbMode failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`isSupportDoNotDisturbMode failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -3481,7 +3503,8 @@ let enable: boolean = true;
 notificationManager.setDistributedEnable(enable).then(() => {
     console.info("setDistributedEnable success");
 }).catch((err: Error): void => {
-    console.error(`setDistributedEnable failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`setDistributedEnable failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -3645,7 +3668,8 @@ let enable: boolean = true;
 notificationManager.setDistributedEnableByBundle(bundle, enable).then(() => {
     console.info("setDistributedEnableByBundle success");
 }).catch((err: Error): void => {
-    console.error(`setDistributedEnableByBundle failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`setDistributedEnableByBundle failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -3803,7 +3827,8 @@ let bundle: notificationManager.BundleOption = {
 notificationManager.isDistributedEnabledByBundle(bundle).then((data: boolean) => {
     console.info(`isDistributedEnabledByBundle success, data: ${JSON.stringify(data)}`);
 }).catch((err: Error): void => {
-    console.error(`isDistributedEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`isDistributedEnabledByBundle failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -3931,7 +3956,8 @@ ArkTS-Sta示例：
 notificationManager.getDeviceRemindType().then((data: notificationManager.DeviceRemindType) => {
     console.info(`getDeviceRemindType success, data: ${JSON.stringify(data)}`);
 }).catch((err: Error): void => {
-    console.error(`getDeviceRemindType failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`getDeviceRemindType failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -4164,7 +4190,8 @@ let request: notificationManager.NotificationRequest = {
 notificationManager.publishAsBundle(request, representativeBundle, userId).then(() => {
     console.info("publishAsBundle success");
 }).catch((err: Error): void => {
-    console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`publishAsBundle failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -4276,7 +4303,8 @@ let request: notificationManager.NotificationRequest = {
 notificationManager.publishAsBundle(representativeBundle, request).then(() => {
     console.info("publishAsBundle success");
 }).catch((err: Error): void => {
-    console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`publishAsBundle failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -4437,7 +4465,8 @@ let userId: int = 1;
 notificationManager.cancelAsBundle(0, representativeBundle, userId).then(() => {
     console.info("cancelAsBundle success");
 }).catch((err: Error): void => {
-    console.error(`cancelAsBundle failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`cancelAsBundle failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -4516,7 +4545,8 @@ let representativeBundle: notificationManager.BundleOption = {
 notificationManager.cancelAsBundle(representativeBundle, 1).then(() => {
     console.info("cancelAsBundle success");
 }).catch((err: Error): void => {
-    console.error(`cancelAsBundle failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`cancelAsBundle failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -4594,7 +4624,8 @@ let id: int = 1;
 notificationManager.cancel(bundle, id).then(() => {
   console.info("cancel success");
 }).catch((err: Error): void => {
-  console.error(`cancel failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`cancel failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -4840,7 +4871,8 @@ notificationManager.setNotificationEnableSlot({ bundle: "ohos.samples.notificati
     notificationManager.SlotType.SOCIAL_COMMUNICATION, true).then(() => {
     console.info("setNotificationEnableSlot success");
 }).catch((err: Error) => {
-    console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`setNotificationEnableSlot failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -4993,7 +5025,8 @@ notificationManager.isNotificationSlotEnabled({ bundle: "bundleName1", },
     notificationManager.SlotType.SOCIAL_COMMUNICATION).then((data: boolean) => {
     console.info(`isNotificationSlotEnabled success, data: ${JSON.stringify(data)}`);
 }).catch((err: Error): void => {
-    console.error(`isNotificationSlotEnabled failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`isNotificationSlotEnabled failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -5149,7 +5182,8 @@ let enable: boolean = true;
 notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable).then(() => {
     console.info('setSyncNotificationEnabledWithoutApp success');
 }).catch((err: Error): void => {
-    console.error(`setSyncNotificationEnabledWithoutApp failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`setSyncNotificationEnabledWithoutApp failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -5297,7 +5331,8 @@ let userId: int = 1;
 notificationManager.getSyncNotificationEnabledWithoutApp(userId).then((data: boolean) => {
   console.info(`getSyncNotificationEnabledWithoutApp, data: ${JSON.stringify(data)}`);
 }).catch((err: Error): void => {
-    console.error(`getSyncNotificationEnabledWithoutApp failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`getSyncNotificationEnabledWithoutApp failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -5738,7 +5773,8 @@ let buttonOptions: notificationManager.ButtonOptions = {
 notificationManager.triggerSystemLiveView(bundle, notificationId, buttonOptions).then(() => {
   console.info("triggerSystemLiveView success");
 }).catch((err: Error): void => {
-  console.error(`triggerSystemLiveView failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`triggerSystemLiveView failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -5815,7 +5851,8 @@ let subscriber: notificationManager.SystemLiveViewSubscriber  = {
 notificationManager.subscribeSystemLiveView(subscriber).then(() => {
     console.info("subscribeSystemLiveView success");
 }).catch((err: Error): void => {
-    console.error(`subscribeSystemLiveView failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`subscribeSystemLiveView failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -5900,7 +5937,8 @@ let deviceType: string = "phone";
 notificationManager.setDistributedEnabledByBundle(bundle, deviceType, enable).then(() => {
     console.info("setDistributedEnabledByBundle success");
 }).catch((err: Error): void => {
-    console.error(`setDistributedEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`setDistributedEnabledByBundle failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -6000,7 +6038,8 @@ let deviceType: string = "liteWearable";
 notificationManager.setDistributedEnableByBundles(bundles, deviceType).then(() => {
     console.info("setDistributedEnableByBundles success");
 }).catch((err: Error) => {
-    console.error(`setDistributedEnableByBundles failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`setDistributedEnableByBundles failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -6082,7 +6121,8 @@ let deviceType: string = "phone";
 notificationManager.isDistributedEnabledByBundle(bundle, deviceType).then((data: boolean) => {
     console.info(`isDistributedEnabledByBundle success, data: ${JSON.stringify(data)}`);
 }).catch((err: Error): void => {
-    console.error(`isDistributedEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`isDistributedEnabledByBundle failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -6157,7 +6197,8 @@ let enable: boolean = true;
 notificationManager.setSmartReminderEnabled(deviceType, enable).then(() => {
     console.info("setSmartReminderEnabled success");
 }).catch((err: Error): void => {
-    console.error(`setSmartReminderEnabled failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`setSmartReminderEnabled failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -6229,7 +6270,8 @@ let deviceType: string = "phone";
 notificationManager.isSmartReminderEnabled(deviceType).then((data: boolean) => {
     console.info(`isSmartReminderEnabled success， data:${data}`);
 }).catch((err: Error): void => {
-    console.error(`isSmartReminderEnabled failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`isSmartReminderEnabled failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -6312,7 +6354,8 @@ let badgeNumber: int = 10;
 notificationManager.setBadgeNumberByBundle(bundle, badgeNumber).then(() => {
     console.info('setBadgeNumberByBundle success');
 }).catch((err: Error): void => {
-    console.error(`setBadgeNumberByBundle failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`setBadgeNumberByBundle failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -6399,7 +6442,8 @@ let slotType = notificationManager.SlotType.LIVE_VIEW;
 notificationManager.getSlotByBundle(bundle, slotType).then((data: notificationManager.NotificationSlot|null|undefined) => {
     console.info(`getSlotByBundle success, data: ${JSON.stringify(data)}`);
 }).catch((err: Error): void => {
-    console.error(`getSlotByBundle failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`getSlotByBundle failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -6505,7 +6549,8 @@ let templates: Array<notificationManager.DoNotDisturbProfile> = [
 notificationManager.addDoNotDisturbProfile(templates).then(() => {
   console.info("addDoNotDisturbProfile success.");
 }).catch((err: Error): void => {
-  console.error(`addDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`addDoNotDisturbProfile failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -6700,7 +6745,8 @@ let templates: Array<notificationManager.DoNotDisturbProfile> = [
 notificationManager.removeDoNotDisturbProfile(templates).then(() => {
   console.info("removeDoNotDisturbProfile success.");
 }).catch((err: Error): void => {
-  console.error(`removeDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`removeDoNotDisturbProfile failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -6857,7 +6903,8 @@ ArkTS-Sta示例：
 notificationManager.setAdditionalConfig('RING_TRUSTLIST_PKG','[bundleName1,bundleName2]').then((data: int) => {
   console.info(`setAdditionalConfig success, data: ${JSON.stringify(data)}`);
 }).catch((err: Error): void => {
-  console.error(`setAdditionalConfig failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`setAdditionalConfig failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -6927,7 +6974,8 @@ ArkTS-Sta示例：
 notificationManager.getDoNotDisturbProfile(1).then((data: notificationManager.DoNotDisturbProfile) => {
   console.info(`getDoNotDisturbProfile success: ${JSON.stringify(data)}`);
 }).catch((err: Error): void => {
-  console.error(`getDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`getDoNotDisturbProfile failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -7083,7 +7131,8 @@ let bundleList: Array<string> = ["com.example.myapplication"];
 notificationManager.disableNotificationFeature(disabled, bundleList).then(() => {
   console.info('disableNotificationFeature success.');
 }).catch((err: Error): void => {
-  console.error(`disableNotificationFeature failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`disableNotificationFeature failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -7162,7 +7211,8 @@ let userId: int = 1;
 notificationManager.disableNotificationFeature(disabled, bundleList, userId).then(() => {
   console.info(`DisableNotificationFeature success.`);
 }).catch((err: Error) => {
-  console.error(`DisableNotificationFeature failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`DisableNotificationFeature failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -7226,7 +7276,8 @@ ArkTS-Sta示例：
 notificationManager.setTargetDeviceStatus("current", 1).then(() => {
   console.info('Succeeded in setting target device status.');
 }).catch((err: Error): void => {
-  console.error(`Failed to set target device status. Code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to set target device status. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -7298,7 +7349,8 @@ let enabled: boolean = true;
 notificationManager.setDistributedEnabledBySlot(slot, deviceType, enabled).then(() => {
     console.info('setDistributedEnabledBySlot success.');
 }).catch((err: Error): void => {
-    console.error(`setDistributedEnabledBySlot failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`setDistributedEnabledBySlot failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -7367,7 +7419,8 @@ let deviceType: string = 'wearable';
 notificationManager.isDistributedEnabledBySlot(slot, deviceType).then((data: boolean) => {
     console.info('isDistributedEnabledBySlot success.');
 }).catch((err: Error): void => {
-    console.error(`isDistributedEnabledBySlot failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`isDistributedEnabledBySlot failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -7600,7 +7653,8 @@ let userId: int = 100;
 notificationManager.setNotificationSwitch(switchName, switchState, userId).then(() => {
     console.info('setNotificationSwitch success');
 }).catch((err: Error): void => {
-    console.error(`setNotificationSwitch failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`setNotificationSwitch failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -7679,7 +7733,8 @@ let userId: int = 100;
 notificationManager.getNotificationSwitch(switchName, userId).then((data: notificationManager.SwitchState) => {
     console.info(`getNotificationSwitch success, switchState: ${JSON.stringify(data)}`);
 }).catch((err: Error): void => {
-    console.error(`getNotificationSwitch failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`getNotificationSwitch failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -7761,7 +7816,8 @@ export default class EntryAbility extends UIAbility {
       notificationManager.isDistributedEnabled(deviceType).then((data: boolean) => {
         console.info('isDistributedEnabled succeeded, result = ' + data);
       }).catch((err: Error) => {
-        console.error(`isDistributedEnabled failed. Code is ${err.code}, message is ${err.message}`);
+        let error: BusinessError = err as BusinessError;
+        console.error(`isDistributedEnabled failed. Code is ${error.code}, message is ${error.message}`);
       });
     } catch (err) {
       console.error(`isDistributedEnabled failed. Code is ${err.code}, message is ${err.message}`);
@@ -7850,7 +7906,8 @@ export default class EntryAbility extends UIAbility {
       notificationManager.setDistributedEnabled(isEnable, deviceType).then(() => {
         console.info('setDistributedEnabled succeeded.');
       }).catch((err: Error) => {
-        console.error(`setDistributedEnabled failed. Code is ${err.code}, message is ${err.message}`);
+        let error: BusinessError = err as BusinessError;
+        console.error(`setDistributedEnabled failed. Code is ${error.code}, message is ${error.message}`);
       });
     } catch (err) {
       console.error(`setDistributedEnabled failed. Code is ${err.code}, message is ${err.message}`);
@@ -7929,7 +7986,8 @@ export default class EntryAbility extends UIAbility {
       notificationManager.getDistributedDeviceList().then((data: Array<string>) => {
         console.info('getDistributedDeviceList succeeded, result = ' + data);
       }).catch((err: Error) => {
-        console.error(`getDistributedDeviceList failed. Code is ${err.code}, message is ${err.message}`);
+        let error: BusinessError = err as BusinessError;
+        console.error(`getDistributedDeviceList failed. Code is ${error.code}, message is ${error.message}`);
       });
     } catch (err) {
       console.error(`getDistributedDeviceList failed. Code is ${err.code}, message is ${err.message}`);
@@ -8028,7 +8086,8 @@ let ringtoneInfo: notificationManager.RingtoneInfo = {
 notificationManager.setRingtoneInfoByBundle(bundle, ringtoneInfo).then(() => {
   console.info(`setRingtoneInfoByBundle bundle: ${JSON.stringify(bundle)}', ringtoneInfoJSON：' ${JSON.stringify(ringtoneInfo)}`);
 }).catch((err: Error) => {
-  console.error(`setRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`setRingtoneInfoByBundle failed, code is ${error.code}, message is ${error.message}`);
 });
 
 ```
@@ -8112,7 +8171,8 @@ let bundle: notificationManager.BundleOption = {
 notificationManager.getRingtoneInfoByBundle(bundle).then((ringtoneInfo: notificationManager.RingtoneInfo) => {
     console.info(`getRingtoneInfoByBundle success: ${JSON.stringify(ringtoneInfo)}`);
 }).catch((err: Error) => {
-    console.error(`getRingtoneInfoByBundle failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`getRingtoneInfoByBundle failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -8269,20 +8329,13 @@ let bundles: Array<notificationManager.BundleOption> = [
     }
 ];
 
-let bundles: Array<notificationManager.BundleOption> = [
-    {
-        bundle: 'bundleName',
-    },
-    {
-        bundle: 'bundleName1',
-    }
-];
 notificationManager.getBadgeDisplayStatusByBundles(bundles).then((data: Map<notificationManager.BundleOption, boolean>) => {
     data.forEach((value, key) => {
         console.info(`Bundle is ${key.bundle}, uid is ${key.uid}, badge status is ${value}.`);
     });
 }).catch((err: Error) => {
-    console.error(`GetBadgeDisplayStatusByBundles failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`GetBadgeDisplayStatusByBundles failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -8367,7 +8420,8 @@ let reminderInfos: Array<notificationManager.NotificationReminderInfo> = [
 notificationManager.setReminderInfoByBundles(reminderInfos).then(() => {
     console.info('SetReminderInfoByBundles success.');
 }).catch((err: Error) => {
-    console.error(`SetReminderInfoByBundles failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`SetReminderInfoByBundles failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -8446,7 +8500,8 @@ let bundles: Array<notificationManager.BundleOption> = [
 notificationManager.getReminderInfoByBundles(bundles).then((data: Array<notificationManager.NotificationReminderInfo>) => {
     console.info(`Reminder data is ${JSON.stringify(data)}`);
 }).catch((err: Error) => {
-    console.error(`GetReminderInfoByBundles failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`GetReminderInfoByBundles failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -8502,7 +8557,8 @@ ArkTS-Sta示例：
 notificationManager.isPriorityEnabled().then((result: boolean) => {
   console.info(`isPriorityEnabled result is ${result}`);
 }).catch((err: Error) => {
-  console.error(`isPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`isPriorityEnabled failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -8565,7 +8621,8 @@ ArkTS-Sta示例：
 notificationManager.setPriorityEnabled(false).then(() => {
   console.info(`setPriorityEnabled success`);
 }).catch((err: Error) => {
-  console.error(`setPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`setPriorityEnabled failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -8632,7 +8689,8 @@ const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', 
 notificationManager.isPriorityEnabledByBundle(bundleOption).then((result : notificationManager.PriorityEnableStatus) => {
   console.info(`isPriorityEnabledByBundle result is ${result}`);
 }).catch((err: Error) => {
-  console.error(`isPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`isPriorityEnabledByBundle failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -8699,7 +8757,8 @@ const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', 
 notificationManager.setPriorityEnabledByBundle(bundleOption, notificationManager.PriorityEnableStatus.ENABLE).then(() => {
   console.info(`setPriorityEnabledByBundle success`);
 }).catch((err: Error) => {
-  console.error(`setPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`setPriorityEnabledByBundle failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -8766,7 +8825,8 @@ const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', 
 notificationManager.getBundlePriorityConfig(bundleOption).then((value: string) => {
   console.info(`getBundlePriorityConfig value is ${value}`);
 }).catch((err: Error) => {
-  console.error(`getBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`getBundlePriorityConfig failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -8833,7 +8893,8 @@ const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', 
 notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1').then(() => {
     console.info(`setBundlePriorityConfig success`);
 }).catch((err: Error) => {
-    console.error(`setBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`setBundlePriorityConfig failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -8892,7 +8953,8 @@ ArkTS-Sta示例：
 notificationManager.isPriorityIntelligentEnabled().then((result: boolean) => {
   console.info(`isPriorityIntelligentEnabled result: ${result}`);
 }).catch((err: Error) => {
-  console.error(`isPriorityIntelligentEnabled failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`isPriorityIntelligentEnabled failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -8957,7 +9019,8 @@ ArkTS-Sta示例：
 notificationManager.setPriorityIntelligentEnabled(false).then(() => {
     console.info(`setPriorityIntelligentEnabled success`);
 }).catch((err: Error) => {
-    console.error(`setPriorityIntelligentEnabled failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`setPriorityIntelligentEnabled failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -9031,7 +9094,8 @@ notificationManager.getPriorityEnabledByBundles(bundles).then((switches: Map<not
         console.info(`getPriorityEnabledByBundles switches: ${key.bundle} ${key.uid}, ${value}`);
     })
 }).catch((err: Error) => {
-    console.error(`getPriorityEnabledByBundles failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`getPriorityEnabledByBundles failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -9101,7 +9165,8 @@ let switches: Map<notificationManager.BundleOption, boolean> = new Map<notificat
 notificationManager.setPriorityEnabledByBundles(switches).then(() => {
     console.info(`setPriorityEnabledByBundles success`);
 }).catch((err: Error) => {
-    console.error(`setPriorityEnabledByBundles failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`setPriorityEnabledByBundles failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -9177,7 +9242,8 @@ notificationManager.getPriorityStrategyByBundles(bundles).then((strategies: Map<
         console.info(`getPriorityStrategyByBundles strategies: ${key.bundle} ${key.uid}, ${value}`);
     })
 }).catch((err: Error) => {
-    console.error(`getPriorityStrategyByBundles failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`getPriorityStrategyByBundles failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -9250,7 +9316,8 @@ let strategies: Map<notificationManager.BundleOption, long> =
 notificationManager.setPriorityStrategyByBundles(strategies).then(() => {
     console.info(`setPriorityStrategyByBundles success`);
 }).catch((err: Error) => {
-    console.error(`setPriorityStrategyByBundles failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`setPriorityStrategyByBundles failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -9430,7 +9497,8 @@ ArkTS-Sta示例：
 notificationManager.setGeofenceEnabled(true).then(() => {
     console.info("setGeofenceEnabled success");
 }).catch((err: Error) => {
-    console.error(`setGeofenceEnabled failed, code is ${err.code}, message is ${err.message}`);
+    let error: BusinessError = err as BusinessError;
+    console.error(`setGeofenceEnabled failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -9577,7 +9645,8 @@ let delayTime: long = 60;
 notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
   console.info("snoozeNotification success.")
 }).catch((err: Error):void => {
-  console.error(`snoozeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`snoozeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 

@@ -6,7 +6,7 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @HelloCrease-->
 
-本模块提供应用对于[快捷方式](../../quick-start/typical-scenario-configuration.md)的管理能力，包括设置快捷方式是否显示等。
+本模块提供应用对于[快捷方式](../../quick-start/typical-scenario-configuration.md)的管理能力，包括设置快捷方式是否显示等。通过快捷方式，用户可以从桌面快速启动应用的特定功能，提升应用的使用便捷性和用户粘性。典型使用场景包括：应用向用户提供常用功能的快速入口、根据用户使用习惯动态调整快捷方式的显示等。
 
 > **说明：**
 >
@@ -22,7 +22,7 @@ import { shortcutManager } from '@kit.AbilityKit';
 
 ## shortcutManager.setShortcutVisibleForSelf
 
-setShortcutVisibleForSelf(id: string, visible: boolean) : Promise\<void>
+setShortcutVisibleForSelf(id: string, visible: boolean): Promise\<void>
 
 设置当前应用指定的快捷方式是否显示。使用Promise异步回调。
 
@@ -51,7 +51,7 @@ setShortcutVisibleForSelf(id: string, visible: boolean) : Promise\<void>
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 17700070 | The specified shortcut id is illegal. |
+| 17700070 | The specified shortcut id is not exist. |
 
 **示例：**
 
@@ -137,13 +137,13 @@ isShortcutSupported(): boolean
 
 查询当前设备是否支持快捷方式。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 

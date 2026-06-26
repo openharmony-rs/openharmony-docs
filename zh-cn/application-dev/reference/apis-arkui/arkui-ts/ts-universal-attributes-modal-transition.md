@@ -45,7 +45,7 @@ bindContentCover(isShow: boolean, builder: CustomBuilder, type?: ModalTransition
 | 参数名  | 类型                                        | 必填 | 说明                                                         |
 | ------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | isShow  | boolean                        | 是   | 是否显示全屏模态页面。<br/>-true：显示全屏模态页面。<br/>-false：隐藏全屏模态页面。<br/>从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。|
-| builder | [CustomBuilder](ts-types.md#custombuilder8) | 是   | 配置全屏模态页面内容。builder里面的根节点需要唯一。                           |
+| builder | [CustomBuilder](ts-types.md#custombuilder8) | 是   | 配置全屏模态页面内容。                           |
 | type | [ModalTransition](ts-universal-attributes-sheet-transition.md#modaltransition) | 否   | 全屏模态页面的系统转场方式。<br/> 默认值：ModalTransition.DEFAULT。<br/>**说明：**<br /> 与transition同时设置时，此属性不生效。                                 |
 
 **返回值：**
@@ -265,7 +265,7 @@ struct ModalTransitionExample {
 }
 ```
 
-![zh-cn_full_screen_modal_none_1](figures/zh-cn_full_screen_modal_none_1.gif)
+![fullScreenModalNone1](figures/fullScreenModalNone1.gif)
 
 ### 示例2（自定义转场动画）
 
@@ -379,7 +379,7 @@ struct ModalTransitionExample {
 }
 ```
 
-![zh-cn_full_screen_modal_none_2](figures/zh-cn_full_screen_modal_none_2.gif)
+![fullScreenModalNone2](figures/fullScreenModalNone2.gif)
 
 ### 示例3（上下切换转场）
 
@@ -477,7 +477,7 @@ struct ModalTransitionExample {
 }
 ```
 
-![zh-cn_full_screen_modal_default](figures/zh-cn_full_screen_modal_default.gif)
+![fullScreenModalDefault](figures/fullScreenModalDefault.gif)
 
 ### 示例4（透明度渐变转场）
 
@@ -576,7 +576,7 @@ struct ModalTransitionExample {
 }
 ```
 
-![zh-cn_full_screen_modal_alpha](figures/zh-cn_full_screen_modal_alpha.gif)
+![fullScreenModalAlpha](figures/fullScreenModalAlpha.gif)
 
 ### 示例5（设置不同效果的自定义转场）
 
@@ -692,7 +692,7 @@ struct ModalTransitionExample {
 }
 ```
 
-![zh-cn_full_screen_modal_alpha](figures/zh-cn_full_screen_modal_transition.gif)
+![fullScreenModalTransition](figures/fullScreenModalTransition.gif)
 
 ### 示例6（设置全屏模态适配安全区）
 
@@ -755,4 +755,4 @@ struct SafeAreaController {
 }
 ```
 
-![zh-cn-enableSafeArea](figures/zh-cn-enablesafearea.png)
+![enableSafeArea](figures/enableSafeArea.png)

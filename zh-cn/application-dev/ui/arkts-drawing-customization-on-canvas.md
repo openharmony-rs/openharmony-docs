@@ -1,8 +1,8 @@
 # 使用画布绘制自定义图形 (Canvas)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -107,7 +107,7 @@ import lottie from '@ohos/lottie'
 ```
 
 
-  具体接口请参考[lottie](https://gitcode.com/openharmony-tpc/lottieArkTS)。
+  具体接口请参考[lottie](https://gitcode.com/CPF-ApplicationTPC/lottieArkTS)。
 
 
 ## 初始化画布组件
