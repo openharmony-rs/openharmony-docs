@@ -15,7 +15,7 @@
 
 **参考链接**
 
-[关系型数据库](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig)
+关系型数据库[StoreConfig](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig)
 
 
 ## 关系型数据库rdb中使用TRUNCATE TABLE语句无法清空表数据(API 9)
