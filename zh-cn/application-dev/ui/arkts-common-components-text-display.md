@@ -827,6 +827,46 @@ Text组件需要设置[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-com
   - 在Text组件区域外点击空白处，前提是Text组件设置[selection](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#selection11)属性，具体示例如下：
 
     <!-- @[Selection_Change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionChange.ets) -->
+    
+    ``` TypeScript
+    // xxx.ets
+    @Entry
+    @Component
+    struct SelectionChange {
+      @State text: string =
+        'This is set selection to Selection text content This is set selection to Selection text content.';
+      @State start: number = 0;
+      @State end: number = 20;
+    
+      build() {
+        NavDestination() {
+          Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.Start }) {
+            Text(this.text)
+              .fontSize(12)
+              .border({ width: 1 })
+              .lineHeight(20)
+              .margin(30)
+              .copyOption(CopyOptions.InApp)
+              .selection(this.start, this.end)
+              .onTextSelectionChange((selectionStart, selectionEnd) => {
+                // 更新选中态位置
+                this.start = selectionStart;
+                this.end = selectionEnd;
+              })
+          }
+          .height(600)
+          .width(335)
+          .borderWidth(1)
+          .onClick(() => {
+            // 监听父组件的点击事件，将选中首尾位置均设置为-1，即可清除选中
+            this.start = -1;
+            this.end = -1;
+          })
+        }
+        // ...
+      }
+    }
+    ```
 
 ![close_selection_menu](figures/close_selection_menu.gif)
 
