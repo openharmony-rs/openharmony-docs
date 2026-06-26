@@ -1357,6 +1357,14 @@ Text组件通过设置[TextMenuShowMode](../reference/apis-arkui/arkui-ts/ts-tex
   ```
 
   <!-- @[textmenushowmode_create_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextMenuShowSubWindow.ets) -->
+  
+  ``` TypeScript
+  // 请将$r('app.string.Service_MenuItems_Text')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，长按弹出文本选择菜单"
+  Text($r('app.string.Service_MenuItems_Text'))
+    .fontSize(20)
+    .copyOption(CopyOptions.InApp)
+    .textAlign(TextAlign.Center)
+  ```
 
   ![Text_menu_subwindow](figures/Text_menu_subwindow.gif)
 
