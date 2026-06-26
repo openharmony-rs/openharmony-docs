@@ -142,6 +142,7 @@
    ``` TypeScript
    static async getMediaResourceByUri(uri: string, context: common.Context, callback?: MediaDataHandlerCallback)
    : Promise<void> {
+    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> |null = null;
      try {
        // 创建PhotoAccessHelper实例
        const phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
@@ -157,8 +158,7 @@
        };
    
        // 查询资产
-       const fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
-         await phAccessHelper.getAssets(fetchOptions);
+       fetchResult = await phAccessHelper.getAssets(fetchOptions);
          
        const photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
        if (photoAsset) {
