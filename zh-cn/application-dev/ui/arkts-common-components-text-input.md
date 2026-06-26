@@ -281,6 +281,64 @@ TextArea({ text: $r('app.string.show_selected_menu') })
 
 <!-- @[editMenu_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
 
+``` TypeScript
+onCreateMenu = (menuItems: Array<TextMenuItem>) => {
+  // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+  // 从API version 23开始支持TextMenuItemId.autoFill
+  const idsToFilter: TextMenuItemId[] = [
+    TextMenuItemId.autoFill
+  ]
+  const items = menuItems.filter(item => !idsToFilter.some(id => id.equals(item.id)))
+  let item1: TextMenuItem = {
+    content: 'create1',
+    icon: $r('app.media.startIcon'),
+    id: TextMenuItemId.of('create1'),
+  };
+  let item2: TextMenuItem = {
+    content: 'create2',
+    id: TextMenuItemId.of('create2'),
+    icon: $r('app.media.startIcon'),
+  };
+  items.push(item1);
+  items.unshift(item2);
+  return items;
+}
+onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange) => {
+  if (menuItem.id.equals(TextMenuItemId.of('create2'))) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'intercept id: create2 start:' + textRange.start + '; end:' + textRange.end);
+    return true;
+  }
+  if (menuItem.id.equals(TextMenuItemId.of('prepare1'))) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'intercept id: prepare1 start:' + textRange.start + '; end:' + textRange.end);
+    return true;
+  }
+  if (menuItem.id.equals(TextMenuItemId.COPY)) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'intercept COPY start:' + textRange.start + '; end:' + textRange.end);
+    return true;
+  }
+  if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'No interception SELECT_ALL start:' + textRange.start + '; end:' + textRange.end);
+    return false;
+  }
+  return false;
+}
+// $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+onPrepareMenu = (menuItems: Array<TextMenuItem>) => {
+  let item1: TextMenuItem = {
+    content: 'prepare1_' + this.endIndex,
+    icon: $r('app.media.startIcon'),
+    id: TextMenuItemId.of('prepare1'),
+  };
+  menuItems.unshift(item1);
+  return menuItems;
+}
+@State editMenuOptions: EditMenuOptions = {
+  onCreateMenu: this.onCreateMenu,
+  onMenuItemClick: this.onMenuItemClick,
+  onPrepareMenu: this.onPrepareMenu
+};
+```
+
 <!-- @[editMenu_textinput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
 
 ``` TypeScript
