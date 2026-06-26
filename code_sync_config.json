@@ -4840,6 +4840,16 @@
 						"start_line":239
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/SecondErrorHandler.ets",
+				"functions":[
+					{
+						"end_line":28,
+						"name":"second_error_handler",
+						"start_line":1
+					}
+				]
 			}
 		]
 	},
@@ -24530,6 +24540,31 @@
 						"end_line":19,
 						"name":"testOptionExample_keepFileName",
 						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/dfx/hiappevent-watcher-apphicollie-events-ndk.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp",
+				"functions":[
+					{
+						"end_line":36,
+						"name":"EventSub_napi_Header",
+						"start_line":24
+					},
+					{
+						"end_line":1187,
+						"name":"App_Hicollie_OnReceive",
+						"start_line":1114
+					},
+					{
+						"end_line":1265,
+						"name":"App_Hicollie_Trigger",
+						"start_line":1189
 					}
 				]
 			}
