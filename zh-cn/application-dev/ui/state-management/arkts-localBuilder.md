@@ -125,7 +125,7 @@ struct Parent {
 
 - \@LocalBuilder内的UI语法遵循[UI语法规则](arkts-create-custom-components.md#build函数实现规则)。
 
-- 按回调传递和按引用传递时，支持\@Builder函数内UI组件刷新。按引用传递只在传入一个参数且该参数直接传入对象字面量时生效，有多个参数时不支持@Builder函数内UI组件刷新。
+- 按回调传递和按引用传递时，支持\@LocalBuilder函数内UI组件刷新。按引用传递只在传入一个参数且该参数直接传入对象字面量时生效，有多个参数时不支持\@LocalBuilder函数内UI组件刷新。
 
 ### 按回调传递参数
 
@@ -151,7 +151,7 @@ struct Parent {
 
   build() {
     Column() {
-      // 通过UIUtils.makeBinding()方法和Binding类，实现@Builder函数中状态变量的刷新
+      // 通过UIUtils.makeBinding()方法和Binding类，实现@LocalBuilder函数中状态变量的刷新
       this.citeLocalBuilder(UIUtils.makeBinding<string>(() => this.variableValue))
       Button('Click me')
         .width(300)
@@ -482,11 +482,21 @@ struct ParentPage {
       Text(`info1: ${this.info1.name}  ${this.info1.age}`) // Text1
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
-      this.privateBuilder() // 调用局部@Builder
+      this.privateBuilder() // 调用局部@LocalBuilder
+      Line()
+        .width('100%')
+        .height(10)
+        .backgroundColor('#000000')
+        .margin(10)
       Text(`info2: ${this.info2.name}  ${this.info2.age}`) // Text2
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
-      this.privateBuilderSecond() // 调用局部@Builder
+      this.privateBuilderSecond() // 调用局部@LocalBuilder
+      Line()
+        .width('100%')
+        .height(10)
+        .backgroundColor('#000000')
+        .margin(10)
       Text(`info1: ${this.info1.name}  ${this.info1.age}`) // Text1
         .fontSize(30)
         .fontWeight(FontWeight.Bold)

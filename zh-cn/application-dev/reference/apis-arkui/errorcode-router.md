@@ -1,7 +1,7 @@
 # 页面路由错误码
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @huangxiaolinabc-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -176,7 +176,7 @@ Uri error. The URI of the page to be used for replacement is incorrect or does n
 
 请检查输入的路由uri是否正确。
 
-## 300001 Navigation跳转前下载hsp分包失败
+## 300001 Navigation跳转前静默安装hsp分包失败
 
 **错误信息**
 
@@ -184,7 +184,7 @@ hsp silent install fail.
 
 **错误描述**
 
-Navigation跳转前下载跳转页面所在hsp分包失败，系统会产生此错误码。
+Navigation跳转前静默安装跳转页面所在hsp分包失败，系统会产生此错误码。
 
 **可能原因**
 

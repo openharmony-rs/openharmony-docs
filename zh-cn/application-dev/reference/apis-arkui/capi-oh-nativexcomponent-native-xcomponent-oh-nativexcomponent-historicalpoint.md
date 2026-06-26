@@ -12,7 +12,7 @@ typedef struct {...} OH_NativeXComponent_HistoricalPoint
 
 ## 概述
 
-历史接触点
+历史触摸点。
 
 **起始版本：** 10
 

@@ -1,26 +1,31 @@
 # SQLite Debugging Tool
+
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @linzhuobin1-->
 <!--Designer: @csuxsh-->
 <!--Tester: @zhujieliang-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:38:32.119Z pushedAt=2026-06-25T09:26:45.586Z -->
 
 SQLite is a lightweight, embedded, serverless relational database management system. Its core advantage is that the entire database is stored in a single file, without the need for an independent server process. It supports cross-platform operation and is widely used in mobile applications, embedded devices, and desktop software.
 
 This debugging tool implements operations on the SQLite database based on the hdc command. It provides an efficient way to manage the SQLite database through the CLI, which is applicable to quick database operations and verification in the development, debugging, and O&M phases.
 
 <!--RP1-->
+
 >**NOTE**
 >
 > - The SQLite debugging tool is available since OpenHarmony 6.0.
 > 
 > - You can also use DevEco Studio to debug the database. For details, see [App Database Access](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-database-inspector).
+
 <!--RP1End-->
 
 ## Environment Requirements
 
 - Before using SQLite debugging tool, you should enable the [developer mode](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-developer-mode#section530763213432), obtain the [hdc](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/hdc) tool, and run **hdc shell**.
+
 - The devices are properly connected.
 
 ## Preparations
@@ -60,7 +65,7 @@ Enter ".help" for usage hints.
 sqlite>create table t1(a int);
 Error: unable to open database "a.db": unable to open database file
 # Open the asd.db database.
-sqlite> .open asd.db
+sqlite>.open asd.db
 Error: unable to open database "asd.db": unable to open database file
 Notice: using substitute in-memory database instead of "asd.db"
 ```
@@ -72,20 +77,22 @@ When the preceding command is run, SQLite attempts to open or create a table and
 sqlite>create table t1(a int);
 Error: unable to open database "a.db": unable to open database file
 # Open the asd.db database.
-sqlite> .open asd.db
+sqlite>.open asd.db
 Error: unable to open database "asd.db": unable to open database file
 Notice: using substitute in-memory database instead of "asd.db"
 ```
+
 After SQLite accesses the encryption database, the following error information is displayed:
+
 ```sqlite
 # sqlite3 ./wallet_personal_info_data_relational_store
 SQLite version 3.44.4 2025-02-19 00:18:53
 Enter ".help" for usage hints.
 sqlite> select * from sqlite_master;
 Parse error: file is not a database (26)
-sqlite> .table
+sqlite>.table
 Error: file is not a database
-sqlite> .q
+sqlite>.q
 ```
 
 ## Command List
@@ -106,6 +113,7 @@ The following table lists the commands supported by the SQLite debugging tool.
 ## Notes
 
 - Semicolons are not required in SQLite commands. Unlike SQL statements, SQLite commands can be run by pressing the **Enter** key.
+
 - Ensure that there is no space between the **sqlite>** prompt and the command. Otherwise, the command cannot be run.
 
 ## Command Usage and Examples
@@ -115,6 +123,7 @@ The following table lists the commands supported by the SQLite debugging tool.
 ```SQLite
 sqlite>.help
 ```
+
 ### Creating or Opening an Existing Database
 
 - Open an existing database.
@@ -131,7 +140,6 @@ sqlite>.help
   ```SQLite
   sqlite3 /data/app/el1/100/base/com.test.myapplication/mydb.db # Open a database without accessing to the shell.
   ```
-
 
 - Create and open a database.
 
@@ -217,7 +225,6 @@ sqlite>.tables
   1|Zhang San|28|Chaoyang District, Beijing|20000.5
   ```
 
-
 - Run **INSERT INTO COMPANY (*fields*) values()** to insert multiple data records.
 
   ```sql
@@ -276,7 +283,7 @@ Run the **sqlite> SELECT** command in either of the following manners to query d
 
 ### Updating Data
 
-Run **UPDATE *table name* SET age = 31 WHERE name = 'Zhang San';** after the **SQLite>** prompt to update a single data record.
+At the **sqlite>** prompt, run the **UPDATE *table name* SET age = 31 WHERE name = 'Zhang San';** SQL statement to update the data.
 
 ```sql
 sqlite>UPDATE COMPANY SET age = 31 WHERE name = 'Zhang San';
@@ -288,12 +295,12 @@ sqlite>SELECT * FROM COMPANY;
 
 ### Deleting Data
 
-Run **DELETE FROM *table name* WHERE name = 'Wang Wu';** after the **sqlite>** prompt to delete data.
+At the **sqlite>** prompt, drun the **DELETE FROM *table name* WHERE name = 'Wang Wu';** SQL statement to delete the data.
 
 ```sql
 sqlite> DELETE FROM COMPANY WHERE name = 'Wang Wu';
 sqlite> SELECT * FROM COMPANY;
-1|Zhang San|28|Chaoyang District, Beijing|20000.5
+1|Zhang San|31|Chaoyang District, Beijing|20000.5
 4|Zhao Liu|40|Nanshan District, Shenzhen|30000.25
 ```
 
@@ -310,4 +317,5 @@ In actual database operations, the query result may be empty because no data exi
 To avoid this, you should ensure that related data is inserted to the table before running the query command.
 
 ### How do I delete characters?
+
 You can press **Ctrl+Backspace** to delete a single character and press **Ctrl+U** to delete all characters.

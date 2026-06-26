@@ -83,7 +83,7 @@ struct Index {
         })
 
       WithEnv() {
-        // 有WithEnv组件，显示this.customMessage的默认值'Hello'，点击Button后值更新为'Hello World'。
+        // 有WithEnv组件，Child的customMessage显示WithEnv提供的值'Hello'，点击Button后值更新为'Hello World'。
         Child()
       }.customEnv(custom, this.customMsg)
 
@@ -221,7 +221,6 @@ const custom = CustomEnvKey.create<string>();
 @Entry
 @ComponentV2
 struct Index {
-  @Local customMsg: string = 'Hello';
   @CustomEnv(custom) customMessage: string = 'parent';
 
   build() {
@@ -428,7 +427,7 @@ struct Index {
         })
 
       WithEnv() {
-        // 有WithEnv组件，显示this.customMessage的默认值'Hello'，点击Button后值更新为'Hello World'。
+        // 有WithEnv组件，Child的customMessage显示WithEnv提供的值'Hello'，点击Button后值更新为'Hello World'。
         Child()
       }.customEnv(custom, this.customMsg)
 
@@ -972,7 +971,7 @@ struct Child {
 
 ![image](./figures/custom-env-14.gif)
 
-- \@CustomEnv提供状态管理V2的观察能力，当\@CustomEnv装饰的变量是\@Observed时，需要调用[enableV2Compatibility](../reference/apis-arkui/js-apis-stateManagement.md#enablev2compatibility19)使其具有观察类属性的能力，否则将无法观察类属性的变化。
+- \@CustomEnv提供状态管理V2的观察能力，当\@CustomEnv装饰的变量的类型被\@Observed装饰时，需要调用[enableV2Compatibility](../reference/apis-arkui/js-apis-stateManagement.md#enablev2compatibility19)使其具有观察类属性的能力，否则将无法观察类属性的变化。
 ```ts
 import { UIUtils } from '@kit.ArkUI';
 

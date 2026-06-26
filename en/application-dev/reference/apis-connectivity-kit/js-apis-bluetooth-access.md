@@ -39,7 +39,7 @@ Enables Bluetooth.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message           |
+| Error Code| Error Message           |
 | -------- | ------------------ |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -83,7 +83,7 @@ Enables Bluetooth. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message                  |
+| Error Code| Error Message                  |
 | -------- | -------------------------- |
 | 201      | Permission denied.         |
 | 801      | Capability not supported.  |
@@ -127,7 +127,7 @@ Disables Bluetooth.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-|ID  | Error Message          |
+|Error Code  | Error Message          |
 | -------- | ------------------ |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -171,7 +171,7 @@ Disables Bluetooth. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message                  |
+| Error Code| Error Message                  |
 | -------- | -------------------------- |
 | 201      | Permission denied.         |
 | 801      | Capability not supported.  |
@@ -216,7 +216,7 @@ Obtains the Bluetooth state.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-|ID  | Error Message          |
+|Error Code  | Error Message          |
 | -------- | ------------------ |
 |801 | Capability not supported.          |
 |2900001   | Service stopped.   |
@@ -255,7 +255,7 @@ Enables listening for Bluetooth status change events of the local device. This A
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-|ID  | Error Message          |
+|Error Code  | Error Message          |
 | -------- | ------------------ |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
@@ -297,7 +297,7 @@ Disables listening for Bluetooth status change events of the local device. Since
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
@@ -351,7 +351,7 @@ Stores the virtual MAC address of a Bluetooth device persistently. This API uses
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -402,7 +402,7 @@ Deletes the persistently stored virtual MAC address of a Bluetooth device. This 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -445,7 +445,7 @@ Obtains the persistently stored virtual MAC address of a Bluetooth device.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -493,7 +493,7 @@ Checks whether the virtual MAC address of the peer device is valid.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -553,6 +553,43 @@ try {
     console.info("convertedUuid: " + convertedUuid);
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+## access.isBluetoothSupported
+
+isBluetoothSupported(): boolean
+
+Check whether a device supports Bluetooth.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Return value**
+
+| Type                             | Description             |
+| --------------------------------- | ---------------- |
+| boolean | Whether a device supports Bluetooth. The value **true** indicates that the device supports Bluetooth, and the value **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
+
+| Error Code| Error Message|
+| -------- | ---------------------------- |
+|2900099 | Operation failed.                        |
+
+**Example**
+
+```js
+try {
+    let isSupported: boolean = access.isBluetoothSupported();
+    console.info("isSupported: " + isSupported);
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 

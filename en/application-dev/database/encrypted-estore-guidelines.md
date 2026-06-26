@@ -5,6 +5,7 @@
 <!--Designer: @widecode; @htt1997; @dboy190-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:37:54.543Z pushedAt=2026-06-25T08:31:06.841Z -->
 
 
 ## When to Use
@@ -582,7 +583,7 @@ export class Mover {
 
 Use the APIs provided by the **Store** class to obtain a database instance, add, delete, and update data, and obtain the data count in the database. The **StoreInfo** class is used to store and obtain database information.
 
-<!-- @[rdb_Store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/Store.ts) -->
+<!-- @[rdb_Store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/Store.ts) -->   
 
 ``` TypeScript
 import { relationalStore } from '@kit.ArkData';
@@ -606,7 +607,7 @@ export class Store {
       rdbStore = await relationalStore.getRdbStore(storeInfo.context, storeInfo.config);
       if (rdbStore.version == 0) {
         await rdbStore.executeSql(SQL_CREATE_TABLE);
-        console.info(`ECDB_Encry succeeded in getting Store : ${storeInfo.storeId}`);
+        console.info(`ECDB_Encry succeeded in getting Store: ${storeInfo.storeId}`);
         rdbStore.version = 1;
       }
     } catch (e) {
