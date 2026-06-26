@@ -75,7 +75,7 @@ let request: backgroundTaskManager.EfficiencyResourcesRequest = {
 };
 try {
   backgroundTaskManager.applyEfficiencyResources(request);
-  console.info('applyEfficiencyResources success. ');
+  console.info('applyEfficiencyResources success.');
 } catch (error) {
   console.error(`applyEfficiencyResources failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 }

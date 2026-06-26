@@ -29,5 +29,3 @@ typedef struct TransientTask_DelaySuspendInfo {...} TransientTask_DelaySuspendIn
 | -- | -- |
 | int32_t requestId | 短时任务请求ID。 |
 | int32_t actualDelayTime | 剩余时间（单位：ms）。取值范围：[0, 180000]。 |
-
-
