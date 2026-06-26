@@ -156,7 +156,7 @@ Represents the configuration for generating a CSR using an RSA private key, incl
 
 | Name                         | Value  | Description                                         |
 | ----------------------------- | ---- | --------------------------------------------- |
-| EXTENSION_OID_TYPE_ALL        | 0    | All OError Codes of the certificate extensions.           |
+| EXTENSION_OID_TYPE_ALL        | 0    | All OIDs of the certificate extensions.           |
 | EXTENSION_OID_TYPE_CRITICAL   | 1    | OID whose **critical** is **true** of the certificate extensions. |
 | EXTENSION_OID_TYPE_UNCRITICAL | 2    | OID whose **critical** is **false** of the certificate extensions.|
 
@@ -2083,7 +2083,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getSignatureAlgOid() : string
 
-Obtains the object identifier (OID) of the X.509 certificate signature algorithm. OError Codes are allocated by the ISO.
+Obtains the object identifier (OID) of the X.509 certificate signature algorithm. OIDs are allocated by the ISO.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -3612,7 +3612,7 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
 
 getOidList(valueType : ExtensionOidType) : DataArray
 
-Obtains the OError Codes of certificate extensions.
+Obtains the OIDs of certificate extensions.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -3622,13 +3622,13 @@ Obtains the OError Codes of certificate extensions.
 
 | Name   | Type                                 | Mandatory| Description                          |
 | --------- | ------------------------------------- | ---- | ------------------------------ |
-| valueType | [ExtensionOidType](#extensionoidtype10) | Yes  | Type of the OError Codes to obtain.|
+| valueType | [ExtensionOidType](#extensionoidtype10) | Yes  | Type of the OIDs to obtain.|
 
 **Return value**
 
 | Type                   | Description                            |
 | ----------------------- | -------------------------------- |
-| [DataArray](#dataarray) | OError Codes of certificate extensions.|
+| [DataArray](#dataarray) | OIDs of certificate extensions.|
 
 **Error codes**
 
@@ -5628,7 +5628,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getSignatureAlgOid() : string
 
-Obtains the OID of the X.509 CRL signature algorithm. OError Codes are allocated by the ISO.
+Obtains the OID of the X.509 CRL signature algorithm. OIDs are allocated by the ISO.
 
 > **NOTE**
 >
@@ -7219,7 +7219,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getSignatureAlgOid() : string
 
-Obtains the OID of the X.509 CRL signature algorithm. OError Codes are allocated by the ISO.
+Obtains the OID of the X.509 CRL signature algorithm. OIDs are allocated by the ISO.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
