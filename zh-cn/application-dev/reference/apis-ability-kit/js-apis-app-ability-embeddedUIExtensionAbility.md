@@ -33,4 +33,7 @@ EmbeddedUIExtensionAbility为开发者提供了跨进程界面嵌入的能力，
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口在PC/2in1、Tablet中可正常调用，在其他设备类型中无法被启动。
+**设备行为差异**：
+- 从API version 12开始，该接口在Tablet中可正常调用，在其他设备类型中无法被启动。
+- 从API version 13开始，该接口在PC/2in1、Tablet中可正常调用，在其他设备类型中无法被启动。
+- 从API version 23开始，该接口在PC/2in1、Tablet、Car中可正常调用，在其他设备类型中无法被启动。
