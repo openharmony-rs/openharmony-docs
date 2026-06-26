@@ -6,7 +6,7 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-Provides the screen capture capability.
+This module provides screenshot capabilities, supporting both regional and full-screen screenshot capture modes, to help you obtain the screen content.
 
 >  **NOTE**
 >
@@ -69,6 +69,12 @@ Obtains this screenshot. Currently, only the screenshot of the display whose ID 
 
 **Device behavior differences**: This API can be properly called on PC/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
+**API comparison**: The [pick](#screenshotpick) API supports regional screenshot capturing and can only be used on the primary screen (**displayId** is **0**), without requiring permissions. The [capture](#screenshotcapture14) API supports full-screen screenshot capturing and can be used on both the primary screen and extended screen (specified by **displayId**), with requiring permission.
+
+**Selection suggestion**: Use the [pick](#screenshotpick) API for regional screenshot capturing and the [capture](#screenshotcapture14) API for full-screen or extended-screen screenshot capturing.
+
+**Resource management**: The **PixelMap** object in **PickInfo** returned needs to be manually released. After using the object, you must call the [release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7) API to release the memory. Otherwise, memory leakage may occur.
+
 **Return value**
 
 | Type                         | Description                                           |
@@ -90,17 +96,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // Call the pick API to obtain the screenshot.
   let promise = screenshot.pick();
   promise.then((pickInfo: screenshot.PickInfo) => {
-    console.info('pick Pixel bytes number: ' + pickInfo.pixelMap.getPixelBytesNumber());
-    console.info('pick Rect: ' + pickInfo.pickRect);
+    console.info(`pick Pixel bytes number: ${pickInfo.pixelMap.getPixelBytesNumber()}`);
+    console.info(`pick Rect: ${pickInfo.pickRect}`);
     pickInfo.pixelMap.release(); // Release the memory in time after the PixelMap is no longer needed.
   }).catch((err: BusinessError) => {
-    console.error(`Failed to pick. Code: ' + Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to pick. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (exception) {
-  console.error(`Failed to pick Code: ' + Code: ${exception.code}, message: ${exception.message}`);
-};
+  console.error(`Failed to pick. Code: ${exception.code}, message: ${exception.message}`);
+}
 ```
 
 ## screenshot.capture<sup>14+</sup>
@@ -115,9 +122,13 @@ This API allows you to take screenshots of different screens by setting various 
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
-**Device behavior differences**: In versions earlier than API version 21, this API can be properly called on PC/2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned. Starting from API version 21, this API can be properly called on phones, 2-in-1 devices, and tablets. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: In versions earlier than API version 21, this API can be properly called on PC/2-in-1 devices and tablets. If it is called on other device types, error code 801 is returned. Since API version 21, this API can be properly called on phones, PCs/2-in-1 devices, and tablets. If it is called on other device types, error code 801 is returned.
 
-**Required permissions**: ohos.permission.CUSTOM_SCREEN_CAPTURE (for versions earlier than API version 22); ohos.permission.CUSTOM_SCREEN_CAPTURE or ohos.permission.CUSTOM_SCREEN_RECORDING (since API version 22)
+**Required permissions**:
+- API version 22+: **ohos.permission.CUSTOM_SCREEN_CAPTURE** or **ohos.permission.CUSTOM_SCREEN_RECORDING**
+- API versions 14 to 21: **ohos.permission.CUSTOM_SCREEN_CAPTURE**
+
+**Resource management**: The returned **PixelMap** object needs to be manually released. After using the object, you must call the [release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7) API to release the memory. Otherwise, memory leakage may occur.
 
 **Parameters**
 
@@ -137,10 +148,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------- |
-| 201     | Permission verification failed. The application does not have the permission required to call the API.|
-| 401     | Parameter error. Possible causes: 1.Incorrect parameter types. 2.Parameter verification failed.|
-| 801 | Capability not supported on this device.|
-| 1400003 | This display manager service works abnormally.|
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 401     | Parameter error. Possible causes: 1. Incorrect parameter types. 2. Parameter verification failed. |
+| 801 | Capability not supported on this device. |
+| 1400003 | This display manager service works abnormally. |
 
 **Example**
 
@@ -148,10 +159,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
+// Set screenshot parameters and specify the screen whose displayId is 0.
 let captureOption: screenshot.CaptureOption = {
   "displayId": 0
 };
 try {
+  // Call the capture API to obtain a full-screen screenshot.
   let promise = screenshot.capture(captureOption);
   promise.then((pixelMap: image.PixelMap) => {
     console.info('Succeeded in saving screenshot. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
@@ -161,5 +174,5 @@ try {
   });
 } catch (exception) {
   console.error(`Failed to save screenshot. Code: ${exception.code}, message: ${exception.message}`);
-};
+}
 ```

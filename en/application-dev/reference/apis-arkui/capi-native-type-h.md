@@ -67,9 +67,7 @@ Defines the common types for the native module.
 | [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md) | ArkUI_CustomSpanMetrics | Defines the measurement metrics of a custom span.|
 | [ArkUI_CustomSpanDrawInfo](capi-arkui-nativemodule-arkui-customspandrawinfo.md) | ArkUI_CustomSpanDrawInfo | Defines the drawing information of a custom span.|
 | [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md) | ArkUI_StyledString_Descriptor | Defines the styled string descriptor object supported by the text component.|
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md) | ArkUI_SnapshotOptions | Defines snapshot options.|
 | [ArkUI_SelectionOptions](capi-arkui-nativemodule-arkui-selectionoptions.md)| ArkUI_SelectionOptions | Defines options of the selection operation.|
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md) | ArkUI_VisibleAreaEventOptions | Defines the parameters for visible area change events.|
 |[ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)|ArkUI_PositionEdges|Provides position parameters relative to the boundaries of the container's content area.|
 |[ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)|ArkUI_PixelRoundPolicy|Defines a component pixel rounding policy.|
 |[ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md)|ArkUI_ContentTransitionEffect|Defines the content transition effect.|
@@ -125,7 +123,6 @@ Defines the common types for the native module.
 | [ArkUI_ContentClipMode](#arkui_contentclipmode)                     | ArkUI_ContentClipMode           | Enumerates the content clipping modes of scrollable components.               |
 | [ArkUI_WaterFlowLayoutMode](#arkui_waterflowlayoutmode)             | ArkUI_WaterFlowLayoutMode       | Enumerates the layout modes of the [WaterFlow](../apis-arkui/arkui-ts/ts-container-waterflow.md) component.            |
 | [ArkUI_BorderStyle](#arkui_borderstyle)                             | ArkUI_BorderStyle               | Enumerates the border styles.                       |
-| [ArkUI_HitTestMode](#arkui_hittestmode)                             | ArkUI_HitTestMode               | Enumerates the hit test modes.                       |
 | [ArkUI_AccessibilityMode](#arkui_accessibilitymode)                 | ArkUI_AccessibilityMode         | Enumerates the accessibility modes.                     |
 | [ArkUI_TextCopyOptions](#arkui_textcopyoptions)                     | ArkUI_TextCopyOptions           | Enumerates copy options, which define whether copy and paste is allowed for text content.               |
 | [ArkUI_TextHeightAdaptivePolicy](#arkui_textheightadaptivepolicy)   | ArkUI_TextHeightAdaptivePolicy  | Defines how the adaptive height is determined for the text.                    |
@@ -149,7 +146,6 @@ Defines the common types for the native module.
 | [ArkUI_FlexAlignment](#arkui_flexalignment)                         | ArkUI_FlexAlignment             | Enumerates the vertical alignment modes.                      |
 | [ArkUI_FlexDirection](#arkui_flexdirection)                         | ArkUI_FlexDirection             | Enumerates the directions of the main axis in the flex container.                   |
 | [ArkUI_FlexWrap](#arkui_flexwrap)                                   | ArkUI_FlexWrap                  | Defines whether the flex container has a single line or multiple lines.                  |
-| [ArkUI_Visibility](#arkui_visibility)                               | ArkUI_Visibility                | Enumerates the visibility values.                      |
 | [ArkUI_WordBreak](#arkui_wordbreak)                                 | ArkUI_WordBreak                 | Enumerates the word break rules.                        |
 | [ArkUI_EllipsisMode](#arkui_ellipsismode)                           | ArkUI_EllipsisMode              | Enumerates the ellipsis positions.                        |
 | [ArkUI_ListItemAlignment](#arkui_listitemalignment)                 | ArkUI_ListItemAlignment         | Enumerates the alignment modes of items along the cross axis.                      |
@@ -168,12 +164,10 @@ Defines the common types for the native module.
 | [ArkUI_ScrollSource](#arkui_scrollsource)                           | ArkUI_ScrollSource              | Enumerates scroll sources.                       |
 | [ArkUI_SafeAreaType](#arkui_safeareatype)                           | ArkUI_SafeAreaType              | Enumerates the types of expanded safe areas.                    |
 | [ArkUI_SafeAreaEdge](#arkui_safeareaedge)                           | ArkUI_SafeAreaEdge              | Enumerates the edges for expanding the safe area.                 |
-| [ArkUI_FocusMove](#arkui_focusmove)                                 | ArkUI_FocusMove                 | Enumerates the focus movement directions.                    |
 | [ArkUI_ListItemGroupArea](#arkui_listitemgrouparea)                 | ArkUI_ListItemGroupArea         | Enumerates areas of the **ListItemGroup** component.           |
 | [ArkUI_KeyboardAvoidMode](#arkui_keyboardavoidmode)                 | ArkUI_KeyboardAvoidMode         | Enumerates the soft keyboard avoidance modes.                          |
 | [ArkUI_HoverModeAreaType](#arkui_hovermodeareatype)                 | ArkUI_HoverModeAreaType         | Enumerates the types of display areas for the hover mode.                         |
 | [ArkUI_ExpandMode](#arkui_expandmode)                               | ArkUI_ExpandMode                | Enumerates the expansion mode of child nodes.                    |
-| [ArkUI_UIState](#arkui_uistate)                                     | ArkUI_UIState                   | Enumerates the UI states of a component, used for handling state-specific styles.              |
 | [ArkUI_FocusWrapMode](#arkui_focuswrapmode)                         | ArkUI_FocusWrapMode             | Enumerates the focus wrap mode of components.                        |
 | [ArkUI_ItemFillPolicy](#arkui_itemfillpolicy)                         | ArkUI_ItemFillPolicy             | Enumerates preset column layouts for different responsive breakpoints.                        |
 | [ArkUI_EdgeDirection](#arkui_edgedirection)                         | ArkUI_EdgeDirection             | Enumerates rectangle edge directions.                        |
@@ -182,12 +176,9 @@ Defines the common types for the native module.
 | [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy) | ArkUI_PixelRoundCalcPolicy | Enumerates pixel rounding calculation policies.|
 | [ArkUI_GridItemStyle](#arkui_griditemstyle)                         | ArkUI_GridItemStyle             | Enumerates styles of grid items.                        |
 | [ArkUI_MenuPolicy](#arkui_menupolicy)                               | ArkUI_MenuPolicy                | Enumerates menu display policies.                            |
-| [ArkUI_ResponseRegionSupportedTool](#arkui_responseregionsupportedtool)                         | ArkUI_ResponseRegionSupportedTool             | Enumerates the input tool types supported for response region configuration.                        |
 | [ArkUI_TextMenuItemId](#arkui_textmenuitemid) | ArkUI_TextMenuItemId | Enumerates the IDs of text menu items.|
 | [ArkUI_TextSpanType](#arkui_textspantype) | ArkUI_TextSpanType | Enumerates the text recognition types of a custom text selection menu.|
 | [ArkUI_TextResponseType](#arkui_textresponsetype) | ArkUI_TextResponseType | Enumerates the response types of a custom text selection menu.|
-| [ArkUI_HoverEffect](#arkui_hovereffect) | ArkUI_HoverEffect | Enumerates the hover effects when a component is hovered over.|
-| [ArkUI_FocusPriority](#arkui_focuspriority) | ArkUI_FocusPriority | Enumerates the priority levels for focus management within the application. These levels determine the sequence in which UI components receive focus during user interaction.|
 | [ArkUI_LayoutSafeAreaType](#arkui_layoutsafeareatype)               | ArkUI_LayoutSafeAreaType         | Enumerates the types of expanded safe areas.                        |
 | [ArkUI_LayoutSafeAreaEdge](#arkui_layoutsafeareaedge)               | ArkUI_LayoutSafeAreaEdge         | Enumerates the edges for expanding the safe area.                        |
 | [ArkUI_LocalizedAlignment](#arkui_localizedalignment)               | ArkUI_LocalizedAlignment         | Defines the alignment rules of child components in the **Stack** container.                        |
@@ -372,25 +363,12 @@ Defines the common types for the native module.
 | [bool OH_ArkUI_ProgressLinearStyleOption_GetScanEffectEnabled(ArkUI_ProgressLinearStyleOption* option)](#oh_arkui_progresslinearstyleoption_getscaneffectenabled) | - | Obtains the enabled status of the scan effect.|
 | [float OH_ArkUI_ProgressLinearStyleOption_GetStrokeWidth(ArkUI_ProgressLinearStyleOption* option)](#oh_arkui_progresslinearstyleoption_getstrokewidth) | - | Obtains the stroke width of the progress indicator.|
 | [float OH_ArkUI_ProgressLinearStyleOption_GetStrokeRadius(ArkUI_ProgressLinearStyleOption* option)](#oh_arkui_progresslinearstyleoption_getstrokeradius) | - | Obtains the corner radius of the progress indicator.|
-| [ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()](#oh_arkui_createsnapshotoptions) | - | Creates a snapshot option object, which must be released using [OH_ArkUI_DestroySnapshotOptions()](#oh_arkui_destroysnapshotoptions) when no longer in use.|
-| [void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)](#oh_arkui_destroysnapshotoptions) | - | Destroys a snapshot option object.|
-| [int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions, float scale)](#oh_arkui_snapshotoptions_setscale) | - | Sets the scale property in the snapshot options.|
-| [int32_t OH_ArkUI_SnapshotOptions_SetColorMode(ArkUI_SnapshotOptions* snapshotOptions, int32_t colorSpace, bool isAuto)](#oh_arkui_snapshotoptions_setcolormode) | - | Sets the color space in the screenshot options.|
-| [int32_t OH_ArkUI_SnapshotOptions_SetDynamicRangeMode(ArkUI_SnapshotOptions* snapshotOptions, int32_t dynamicRangeMode, bool isAuto)](#oh_arkui_snapshotoptions_setdynamicrangemode) | - | Sets the dynamic range mode in the screenshot options.|
 | [ArkUI_CrossLanguageOption* OH_ArkUI_CrossLanguageOption_Create(void)](#oh_arkui_crosslanguageoption_create) | - | Creates an instance of the cross-language configuration option.|
 | [void OH_ArkUI_CrossLanguageOption_Destroy(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_destroy) | - | Destroys an instance of the cross-language configuration option.|
 | [void OH_ArkUI_CrossLanguageOption_SetAttributeSettingStatus(ArkUI_CrossLanguageOption* option, bool enabled)](#oh_arkui_crosslanguageoption_setattributesettingstatus) | - | Sets whether cross-language attribute setting is allowed in the configuration option.|
 | [bool OH_ArkUI_CrossLanguageOption_GetAttributeSettingStatus(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_getattributesettingstatus) | - | Checks whether cross-language attribute setting is allowed in the configuration option.|
 | [void OH_ArkUI_CrossLanguageOption_SetTreeOperatingStatus(ArkUI_CrossLanguageOption* option, OH_ArkUI_CrossLanguageOperatingStatus status)](#oh_arkui_crosslanguageoption_settreeoperatingstatus) | - | Sets the node tree operation state of a cross-language configuration option.|
 | [OH_ArkUI_CrossLanguageOperatingStatus OH_ArkUI_CrossLanguageOption_GetTreeOperatingStatus(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_gettreeoperatingstatus) | - | Obtains the node tree operation state of a cross-language configuration option.|
-| [ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()](#oh_arkui_visibleareaeventoptions_create) | - | Creates an instance of the parameters for visible area change events.|
-| [void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* option)](#oh_arkui_visibleareaeventoptions_dispose) | - | Disposes of the instance of the parameters for visible area change events.|
-| [int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t size)](#oh_arkui_visibleareaeventoptions_setratios) | - | Sets the threshold ratios for visible area changes.|
-| [int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions *option, int32_t value)](#oh_arkui_visibleareaeventoptions_setexpectedupdateinterval) | - | Sets the expected update interval for visible area changes.  |
-| [int32_t OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport(ArkUI_VisibleAreaEventOptions *option, bool measureFromViewport)](#oh_arkui_visibleareaeventoptions_setmeasurefromviewport) | - | Sets the visible area calculation mode.|
-| [int32_t OH_ArkUI_VisibleAreaEventOptions_GetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t* size)](#oh_arkui_visibleareaeventoptions_getratios) | - | Obtains the threshold ratios for visible area changes.|
-| [int32_t OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions* option)](#oh_arkui_visibleareaeventoptions_getexpectedupdateinterval) | - | Obtains the expected update interval for visible area changes.|
-| [bool OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport(ArkUI_VisibleAreaEventOptions* option)](#oh_arkui_visibleareaeventoptions_getmeasurefromviewport) | - | Obtains the visible area calculation mode.|
 | [ArkUI_PositionEdges* OH_ArkUI_PositionEdges_Create()](#oh_arkui_positionedges_create) | - | Creates a **PositionEdges** object.|
 | [ArkUI_PositionEdges* OH_ArkUI_PositionEdges_Copy(const ArkUI_PositionEdges* edges)](#oh_arkui_positionedges_copy) | - | Deeply copies a **PositionEdges** attribute object.|
 | [void OH_ArkUI_PositionEdges_Dispose(ArkUI_PositionEdges* edges)](#oh_arkui_positionedges_dispose) | - | Disposes of the **PositionEdges** object.|
@@ -1232,28 +1210,6 @@ Enumerates the border styles.
 | ARKUI_BORDER_STYLE_DASHED = 1 | Dashed border.|
 | ARKUI_BORDER_STYLE_DOTTED = 2 | Dotted border.|
 
-### ArkUI_HitTestMode
-
-```c
-enum ArkUI_HitTestMode
-```
-
-**Description**
-
-
-Enumerates the hit test modes.
-
-**Since**: 12
-
-| Value| Description                                                    |
-| -- |--------------------------------------------------------|
-| ARKUI_HIT_TEST_MODE_DEFAULT = 0 | Both the node and its child node respond to the hit test of a touch event, but its sibling node is blocked from the hit test. The node itself and its child nodes respond to the hit test, but block the hit test of sibling nodes. It does not affect the hit test of ancestor nodes.                                             |
-| ARKUI_HIT_TEST_MODE_BLOCK = 1 | The node itself responds to the hit test and blocks the hit test of child nodes, sibling nodes, and ancestor nodes.                                             |
-| ARKUI_HIT_TEST_MODE_TRANSPARENT = 2 | Both the node itself and its child nodes respond to the hit test and do not block the hit test of sibling nodes and ancestor nodes.                                        |
-| ARKUI_HIT_TEST_MODE_NONE = 3 | The node itself does not respond to the hit test and does not block the hit test of child nodes, sibling nodes, and ancestor nodes.                                            |
-| ARKUI_HIT_TEST_MODE_BLOCK_HIERARCHY = 4 | The node itself and its child nodes respond to the hit test, preventing all sibling nodes and parent nodes with lower priority from participating in the hit test.<br>**Since**: 20|
-| ARKUI_HIT_TEST_MODE_BLOCK_DESCENDANTS = 5 | The node itself does not respond to the hit test, and all its descendants (children, grandchildren, and more) also do not respond to the hit test. It does not affect the hit test of ancestor nodes.<br>**Since**: 20                    |
-
 ### ArkUI_AccessibilityMode
 
 ```c
@@ -1702,25 +1658,6 @@ Defines whether the flex container has a single line or multiple lines.
 | ARKUI_FLEX_WRAP_WRAP = 1 | The child components in the flex container are arranged in multiple lines, and they may overflow.|
 | ARKUI_FLEX_WRAP_WRAP_REVERSE = 2 | The child components in the flex container are reversely arranged in multiple lines, and they may overflow.|
 
-### ArkUI_Visibility
-
-```c
-enum ArkUI_Visibility
-```
-
-**Description**
-
-
-Enumerates the visibility values.
-
-**Since**: 12
-
-| Value| Description|
-| -- | -- |
-| ARKUI_VISIBILITY_VISIBLE = 0 | The component is visible.|
-| ARKUI_VISIBILITY_HIDDEN = 1 | The component is hidden, and a placeholder is used for it in the layout.|
-| ARKUI_VISIBILITY_NONE = 2 | The component is hidden. It is not involved in the layout, and no placeholder is used for it.|
-
 ### ArkUI_WordBreak
 
 ```c
@@ -2021,6 +1958,25 @@ Enumerates the swipe action menu display directions for **ListItem** components.
 | ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_START = 0 | For vertical lists: left side in LTR mode, right side in RTL mode. For horizontal lists: top side.|
 | ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_END = 1 | For vertical lists: right side in LTR mode, left side in RTL mode. For horizontal lists: bottom side.|
 
+### ArkUI_CrownSensitivity
+
+```c
+enum ArkUI_CrownSensitivity
+```
+
+**Description**
+
+
+Enumerates crown sensitivity levels.
+
+**Since**: 26.0.0
+
+| Value| Description|
+| -- | -- |
+| ARKUI_CROWN_SENSITIVITY_LOW = 0 | Low sensitivity.|
+| ARKUI_CROWN_SENSITIVITY_MEDIUM = 1 | Medium sensitivity.|
+| ARKUI_CROWN_SENSITIVITY_HIGH = 2 | High sensitivity.|
+
 ### ArkUI_ErrorCode
 
 ```c
@@ -2151,28 +2107,6 @@ Enumerates the edges for expanding the safe area.
 | ARKUI_SAFE_AREA_EDGE_START = 1 << 2 | Start edge.|
 | ARKUI_SAFE_AREA_EDGE_END = 1 << 3 | End edge.|
 
-### ArkUI_FocusMove
-
-```c
-enum ArkUI_FocusMove
-```
-
-**Description**
-
-
-Enumerates the focus movement directions.
-
-**Since**: 18
-
-| Value| Description|
-| -- | -- |
-| ARKUI_FOCUS_MOVE_FORWARD = 0 | Move focus forward.|
-| ARKUI_FOCUS_MOVE_BACKWARD = 1 | Move focus backward.|
-| ARKUI_FOCUS_MOVE_UP = 2 | Move focus up.|
-| ARKUI_FOCUS_MOVE_DOWN = 3 | Move focus down.|
-| ARKUI_FOCUS_MOVE_LEFT = 4 | Move focus left.|
-| ARKUI_FOCUS_MOVE_RIGHT = 5 | Move focus right.|
-
 ### ArkUI_ListItemGroupArea
 
 ```c
@@ -2248,28 +2182,6 @@ Enumerates the expansion mode of child nodes.
 | ARKUI_NOT_EXPAND = 0 | Child nodes are not expanded.|
 | ARKUI_EXPAND = 1 | Child nodes are expanded immediately upon rendering.|
 | ARKUI_LAZY_EXPAND = 2 | Lazy expansion, indicating that child nodes are only expanded when needed. For details about the node expansion conditions, see [LazyForEach: Lazy Data Loading](../../ui/rendering-control/arkts-rendering-control-lazyforeach.md).|
-
-### ArkUI_UIState
-
-```c
-enum ArkUI_UIState
-```
-
-**Description**
-
-
-Enumerates the UI states of a component, used for handling state-specific styles.
-
-**Since**: 20
-
-| Value| Description|
-| -- | -- |
-| UI_STATE_NORMAL = 0 | Normal state.|
-| UI_STATE_PRESSED = 1 << 0 | Pressed state.|
-| UI_STATE_FOCUSED = 1 << 1 | Focused state.|
-| UI_STATE_DISABLED = 1 << 2 | Disabled state.|
-| UI_STATE_SELECTED = 1 << 3 | Selected state. This state is supported only by specific component types: **Checkbox**, **Radio**, **Toggle**, **List**, **Grid**, and **MenuItem**.|
-| UI_STATE_HOVERED = 1 << 4 | Hovered state.<br>**Since**: 26.0.0|
 
 ### ArkUI_FocusWrapMode
 
@@ -2440,45 +2352,6 @@ Enumerates styles of grid items.
 | GRID_ITEM_STYLE_NONE  = 0 | No style.|
 | GRID_ITEM_STYLE_PLAIN  = 1  | Hover or press style.|
 
-### ArkUI_HoverEffect
-
-```c
-enum ArkUI_HoverEffect
-```
-
-**Description**
-
-
-Enumerates the hover effects when a component is hovered over.
-
-**Since**: 23
-
-| Value| Description|
-| -- | -- |
-| ARKUI_HOVER_EFFECT_AUTO = 0 | Default effect.|
-| ARKUI_HOVER_EFFECT_SCALE  | Zoom effect.|
-| ARKUI_HOVER_EFFECT_HIGHLIGHT  | Highlight effect.|
-| ARKUI_HOVER_EFFECT_NONE  | No effect.|
-
-### ArkUI_FocusPriority
-
-```c
-enum ArkUI_FocusPriority
-```
-
-**Description**
-
-
-Enumerates the priority levels for focus management within the application. These levels determine the sequence in which UI components receive focus during user interaction.
-
-**Since**: 23
-
-| Value| Description|
-| -- | -- |
-| ARKUI_FOCUS_PRIORITY_AUTO  = 0 | Default priority.|
-| ARKUI_FOCUS_PRIORITY_PRIOR = 2000   | Priority that indicates the component is prioritized in the container.|
-| ARKUI_FOCUS_PRIORITY_PREVIOUS = 3000   | Priority of a previously focused node in the container.|
-
 ### ArkUI_MenuPolicy
 
 ```c
@@ -2496,26 +2369,6 @@ Enumerates menu display policies.
 | ARKUI_MENU_POLICY_DEFAULT  = 0 | Whether the menu is displayed depends on the underlying default logic.|
 | ARKUI_MENU_POLICY_HIDE = 1 | The menu is not popped up.|
 | ARKUI_MENU_POLICY_SHOW = 2 | The menu is popped up.|
-
-### ArkUI_ResponseRegionSupportedTool
-
-```c
-enum ArkUI_ResponseRegionSupportedTool
-```
-
-**Description**
-
-
-Enumerates the input tool types supported for response region configuration.
-
-**Since**: 23
-
-| Value| Description|
-| -- | -- |
-| ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_ALL  = 0 | All.|
-| ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_FINGER  = 1  | Finger.|
-| ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_PEN  = 2  | Stylus.|
-| ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_MOUSE  = 3  | Mouse.|
 
 ### ArkUI_TextMenuItemId
 
@@ -6709,122 +6562,6 @@ Obtains the corner radius of the progress indicator.
 | -- | -- |
 | float | Corner radius of the progress indicator, in vp.|
 
-### OH_ArkUI_CreateSnapshotOptions()
-
-```c
-ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()
-```
-
-**Description**
-
-
-Creates a snapshot option object, which must be released using [OH_ArkUI_DestroySnapshotOptions()](#oh_arkui_destroysnapshotoptions) when no longer in use.
-
-**Since**: 15
-
-**Returns**
-
-| Type                        | Description|
-|----------------------------| -- |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* | Pointer to the created snapshot option object. If a null pointer is returned, creation failed, possibly due to insufficient memory.|
-
-### OH_ArkUI_DestroySnapshotOptions()
-
-```c
-void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)
-```
-
-**Description**
-
-
-Destroys a snapshot option object.
-
-**Since**: 15
-
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | Pointer to the screenshot option.|
-
-### OH_ArkUI_SnapshotOptions_SetScale()
-
-```c
-int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions, float scale)
-```
-
-**Description**
-
-
-Sets the scale property in the snapshot options.
-
-**Since**: 15
-
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | Pointer to the screenshot option.|
-| float scale | Scale factor.|
-
-**Returns**
-
-| Type| Description|
-| -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         A possible cause is that mandatory parameters are left unspecified.|
-### OH_ArkUI_SnapshotOptions_SetColorMode()
-
-``` C++
-int32_t OH_ArkUI_SnapshotOptions_SetColorMode(ArkUI_SnapshotOptions* snapshotOptions, int32_t colorSpace, bool isAuto)
-```
-
-**Description**
-
-Sets the color space in the screenshot options.
-
-**Since**: 23
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | Pointer to the screenshot option.|
-| int32_t colorSpace | Color space used for screenshot.<br>If the target component's color space is known, specify it through **colorSpace** and set **isAuto** to **false** to achieve optimal snapshot quality.<br>The supported values are as follows: **3** (RGB color gamut of type Display P3), **4** (RGB color gamut of type sRGB), and **27** (RGB color gamut of type BT.2020).<br>Default value: **4**<br>This parameter takes effect only when **isAuto** is set to **false**.|
-| bool isAuto | Whether the system automatically determines the color space to be used.<br>**true**: The system automatically determines the color space to be used. If the color space used by the component is uncertain, you are advised to set **isAuto** to **true** so that the system can automatically determine the color space to be used.<br>**false**: The color space type set through the **colorSpace** field is used for screenshot.<br>Default value: **false**.|
-
-**Returns**
-
-| Type| Description|
-| -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
-
-### OH_ArkUI_SnapshotOptions_SetDynamicRangeMode()
-
-``` C++
-int32_t OH_ArkUI_SnapshotOptions_SetDynamicRangeMode(ArkUI_SnapshotOptions* snapshotOptions, int32_t dynamicRangeMode, bool isAuto)
-```
-
-**Description**
-
-Sets the dynamic range mode in the screenshot options.
-
-**Since**: 23
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | Pointer to the screenshot option.|
-| bool isAuto | Whether the system automatically determines the dynamic range mode to be used.<br>**true**: whether the system automatically determines the dynamic range mode to be used. If the dynamic range mode used by the component is uncertain, you are advised to set **isAuto** to **true** so that the system can automatically determine the dynamic range mode to be used.<br>**false**: The dynamic range mode set by the **dynamicRangeMode** field is used for screenshot.<br>Default value: **false**.|
-
-**Returns**
-
-| Type| Description|
-| -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
-
 ### OH_ArkUI_CrossLanguageOption_Create()
 
 ```c
@@ -6955,206 +6692,6 @@ Obtains the node tree operation state of a cross-language configuration option.
 | Type| Description|
 | -- | -- |
 | [OH_ArkUI_CrossLanguageOperatingStatus](#oh_arkui_crosslanguageoperatingstatus) | Node tree operation state of a cross-language configuration option.|
-
-### OH_ArkUI_VisibleAreaEventOptions_Create()
-
-```c
-ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()
-```
-
-**Description**
-
-
-Creates an instance of the parameters for visible area change events.
-
-**Since**: 17
-
-**Returns**
-
-| Type                                | Description|
-|------------------------------------| -- |
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* | Pointer to the instance of the parameters for visible area change events.|
-
-### OH_ArkUI_VisibleAreaEventOptions_Dispose()
-
-```c
-void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* option)
-```
-
-**Description**
-
-
-Disposes of the instance of the parameters for visible area change events.
-
-**Since**: 17
-
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | Pointer to the instance of visible area change event parameters to be destroyed.|
-
-### OH_ArkUI_VisibleAreaEventOptions_SetRatios()
-
-```c
-int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t size)
-```
-
-**Description**
-
-
-Sets the threshold ratios for visible area changes.
-
-**Since**: 17
-
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | Pointer to the instance of visible area change event parameters.|
-| float* value | Pointer to the array of threshold ratios. Each element represents a ratio of the component's visible area (that is, the area of the component that is visible on screen; only the area within the parent component is counted) to the component's total area. The value range of the threshold is [0.0, 1.0]. If the threshold set exceeds this range, the value **0.0** or **1.0** will be used.|
-| int32_t size | Size of the array of threshold ratios.|
-
-**Returns**
-
-| Type| Description|
-| -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         A possible cause is that mandatory parameters are left unspecified.|
-
-### OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval()
-
-```c
-int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions *option, int32_t value)
-```
-
-**Description**
-
-
-Sets the expected update interval for visible area changes.  
-
-**Since**: 17
-
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md) *option | Pointer to the instance of visible area change event parameters.|
-| int32_t value | Expected update interval, in ms.  Default value: **1000**.|
-
-**Returns**
-
-| Type| Description|
-| -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         A possible cause is that mandatory parameters are left unspecified.|
-
-### OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport()
-
-```c
-int32_t OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport(ArkUI_VisibleAreaEventOptions* option, bool measureFromViewport)
-```
-
-**Description**
-
-Sets the visible area calculation mode.
-
-**Since**: 22
-
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | Pointer to the instance of visible area change event parameters.|
-| bool measureFromViewport | Visible area calculation mode.<br>**true**: The calculation takes the parent component's **NODE_CLIP** attribute into account. If the parent component's **NODE_CLIP** attribute is **false**: Child components can render beyond the parent component's bounds, and the out-of-bounds area is counted as part of the visible area. If the parent component's **NODE_CLIP** attribute is **true**: Child components are clipped to the parent component's bounds, and the out-of-bounds area is treated as invisible. **false**: The area beyond the parent component's bounds is directly treated as invisible, ignoring the parent component's **NODE_CLIP** attribute.<br>Default value: **false**.|
-
-**Returns**
-
-| Type| Description|
-| -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         A possible cause is that mandatory parameters are left unspecified.|
-
-### OH_ArkUI_VisibleAreaEventOptions_GetRatios()
-
-```c
-int32_t OH_ArkUI_VisibleAreaEventOptions_GetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t* size)
-```
-
-**Description**
-
-
-Obtains the threshold ratios for visible area changes.
-
-**Since**: 17
-
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | Pointer to the instance of visible area change event parameters.|
-| float* value | Pointer to the array of threshold ratios.|
-| int32_t* size | Pointer to the size of the array of threshold ratios.|
-
-**Returns**
-
-| Type| Description|
-| -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the buffer size is insufficient.<br>         A possible cause is that mandatory parameters are left unspecified.|
-
-### OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval()
-
-```c
-int32_t OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions* option)
-```
-
-**Description**
-
-
-Obtains the expected update interval for visible area changes.
-
-**Since**: 17
-
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | Pointer to the instance of visible area change event parameters.|
-
-**Returns**
-
-| Type| Description|
-| -- | -- |
-| int32_t | Expected update interval, in ms.  Default value: **1000**.|
-
-
-### OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport()
-
-```c
-bool OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport(ArkUI_VisibleAreaEventOptions* option)
-```
-
-**Description**
-
-Obtains the visible area calculation mode.
-
-**Since**: 22
-
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | Pointer to the instance of visible area change event parameters.|
-
-**Returns**
-
-| Type| Description|
-| -- | -- |
-| bool | Visible area calculation mode.<br>**true**: The calculation takes the parent component's **NODE_CLIP** attribute into account. If the parent component's **NODE_CLIP** attribute is **false**: Child components can render beyond the parent component's bounds, and the out-of-bounds area is counted as part of the visible area. If the parent component's **NODE_CLIP** attribute is **true**: Child components are clipped to the parent component's bounds, and the out-of-bounds area is treated as invisible. **false**: The area beyond the parent component's bounds is directly treated as invisible, ignoring the parent component's **NODE_CLIP** attribute.<br>Default value: **false**.|
 
 ### OH_ArkUI_PositionEdges_Create()
 

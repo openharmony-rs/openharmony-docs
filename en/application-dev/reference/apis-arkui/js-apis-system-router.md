@@ -1,7 +1,7 @@
 # @system.router (Page Routing)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @huangxiaolinabc-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -10,7 +10,7 @@ The **Router** module provides APIs to access pages through URIs.
 
 > **NOTE**
 >
-> - The APIs of this module are no longer maintained since API version 8. You are advised to use [`@ohos.router`](js-apis-router.md) instead.
+> - The APIs of this module are no longer maintained since API version 8. You are advised to use [@ohos.router](js-apis-router.md) instead.
 >
 >
 > - The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
