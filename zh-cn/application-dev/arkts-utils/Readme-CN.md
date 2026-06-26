@@ -144,6 +144,12 @@
     - [模块化调试工具](arkts-module-debug.md)
     - [模块化常见问题](arkts-module-faq.md)
   - [ArkTS运行时常见问题](arkts-runtime-faq.md)
+- ArkTS运行时 (ArkTS-Sta)<!--arkts-sta-runtime-->
+  - [ArkTS运行时概述 (ArkTS-Sta)](arkts-sta-runtime-overview.md)
+  - [GC垃圾回收 (ArkTS-Sta)](arkts-sta-gc-introduction.md)
+  - [模块化运行简介 (ArkTS-Sta)](arkts-sta-module-principle.md)
+  - [反射与错误处理 (ArkTS-Sta)](arkts-sta-reflection-and-errors.md)
+  - [ArkTS运行时常见问题 (ArkTS-Sta)](arkts-sta-runtime-faq.md)
 - ArkTS编译工具链<!--arkts-compilation-tool-chain-->
   - [ArkTS编译工具链概述](compilation-tool-chain-overview.md)
   - 方舟字节码<!--arkts-bytecode-->
