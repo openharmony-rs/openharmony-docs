@@ -1316,6 +1316,27 @@ Text组件通过设置[bindSelectionMenu](../reference/apis-arkui/arkui-ts/ts-ba
   ```
 
   <!-- @[Right_Click_Text_CustomMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
+  
+  ``` TypeScript
+  // 定义菜单项
+  @Builder
+  RightClickTextCustomMenu() {
+    Column() {
+      Menu() {
+        MenuItemGroup() {
+          // 请将$r('app.media.app_icon')替换为实际资源文件
+          MenuItem({ startIcon: $r('app.media.app_icon'), content: 'CustomMenu One', labelInfo: '' })
+            .onClick(() => {
+              // 使用closeSelectionMenu接口关闭菜单
+              this.controller.closeSelectionMenu();
+            })
+          MenuItem({ startIcon: $r('app.media.app_icon'), content: 'CustomMenu Two', labelInfo: '' })
+          MenuItem({ startIcon: $r('app.media.app_icon'), content: 'CustomMenu Three', labelInfo: '' })
+        }
+      }.backgroundColor('#F0F0F0')
+    }
+  }
+  ```
 
   ![text_bindselectionmenu](figures/text_bindselectionmenu.gif)
 
