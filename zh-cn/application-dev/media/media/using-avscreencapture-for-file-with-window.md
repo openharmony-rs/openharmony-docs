@@ -26,7 +26,7 @@
 **在CMake脚本中链接动态库**
 
 ``` C
-target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
+target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runtime.so libnative_display_manager.so)
 ```
 
 1. 添加头文件。
@@ -97,24 +97,24 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
        .videoFrameHeight = screenHeight,
        .videoSource = OH_VIDEO_SOURCE_SURFACE_RGBA
    };
-   
+
    OH_VideoEncInfo videoEncInfo = {
        .videoCodec = OH_H264,
        .videoBitrate = 2000000,
        .videoFrameRate = 30
    };
-   
+
    OH_AudioInfo audioInfo = {
        .micCapInfo = micCapInfo,
        .innerCapInfo = innerCapInfo,
        .audioEncInfo = audioEncInfo
    };
-   
+
    OH_VideoInfo videoInfo = {
        .videoCapInfo = videoCapInfo,
        .videoEncInfo = videoEncInfo
    };
-   
+
    config = {
        .captureMode = OH_CAPTURE_HOME_SCREEN,
        .dataType = OH_CAPTURE_FILE, // 录屏数据类型，文件。
@@ -122,22 +122,8 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
        .videoInfo = videoInfo
    };
    ```
-   方式一：需传入期望录制的窗口ID进行录屏。
 
-   ``` C++
-   // 如果期望录制单个窗口，需传入单个窗口ID；如果期望同时录制多个窗口，需传入期望录制的窗口ID列表。
-   std::vector<int32_t> missionIds = {88}; // 指定录制的窗口ID。
-   config.videoInfo.videoCapInfo.missionIDs = missionIds.data();
-   config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(missionIds.size());
-   config.captureMode = OH_CAPTURE_SPECIFIED_WINDOW; // 设置录屏模式为录制指定窗口。
-
-   // 设置为false，代表录屏启动后不弹出系统Picker，弹出隐私提示弹窗。
-   OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
-   OH_AVScreenCapture_StrategyForPickerPopUp(strategy, false);
-   OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
-   ```
-
-   方式二（推荐）：通过弹出屏幕捕获Picker列表方式，选择已打开的应用窗口进行窗口级录屏。
+   方式一（推荐）：通过弹出屏幕捕获Picker列表方式，选择已打开的应用窗口进行窗口级录屏。
 
    <!-- @[screenCapture_createCaptureStrategy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
    
@@ -145,6 +131,23 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
    // 通过弹出屏幕捕获Picker列表方式，选择已打开的应用窗口进行窗口级录屏。
    OH_AVScreenCapture_CaptureStrategy *strategy = OH_AVScreenCapture_CreateCaptureStrategy();
    OH_AVScreenCapture_StrategyForPickerPopUp(strategy, true);
+   OH_AVScreenCapture_SetCaptureStrategy(g_avCapture, strategy);
+   ```
+
+   方式二：需传入期望录制的窗口ID进行录屏。
+   
+   <!-- @[screenCapture_withWindow_forID](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   // 如果期望录制单个窗口，需传入单个窗口ID；如果期望同时录制多个窗口，需传入期望录制的窗口ID列表。
+   g_missionIds = {g_windowId}; // 指定录制的窗口ID。
+   config.videoInfo.videoCapInfo.missionIDs = g_missionIds.data();
+   config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(g_missionIds.size());
+   config.captureMode = OH_CAPTURE_SPECIFIED_WINDOW; // 设置录屏模式为录制指定窗口。
+   
+   // 设置为false，代表录屏启动后不弹出系统Picker，弹出隐私提示弹窗。
+   OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
+   OH_AVScreenCapture_StrategyForPickerPopUp(strategy, false);
    OH_AVScreenCapture_SetCaptureStrategy(g_avCapture, strategy);
    ```
 
