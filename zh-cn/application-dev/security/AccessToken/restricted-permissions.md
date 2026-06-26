@@ -702,9 +702,11 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：系统授权（system_grant）
 
-**支持设备**：Phone | Tablet
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：20
+
+**变更信息**：从API版本26.0.0开始，增加支持在PC/2in1上申请。
 
 ## ohos.permission.AUTO_RESTORE_MAIN_WINDOW
 
