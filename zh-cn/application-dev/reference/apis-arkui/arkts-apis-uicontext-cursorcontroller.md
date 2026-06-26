@@ -69,7 +69,7 @@ struct CursorControlExample {
 
 setCursor(value: PointerStyle): void
 
-更改当前的鼠标光标样式。
+设置当前的鼠标光标样式。
 
 > **说明：**
 >

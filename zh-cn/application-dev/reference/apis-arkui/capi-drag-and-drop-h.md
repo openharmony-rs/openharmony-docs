@@ -267,7 +267,7 @@ ArkUI_PreDragStatus OH_ArkUI_NodeEvent_GetPreDragStatus(ArkUI_NodeEvent* nodeEve
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)* nodeEvent | ArkUI_NodeEvent节点对象。 |
+| [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)* nodeEvent | ArkUI_NodeEvent事件指针。 |
 
 **返回：**
 
@@ -321,7 +321,7 @@ int32_t OH_ArkUI_DragEvent_SetSuggestedDropOperation(ArkUI_DragEvent* event, Ark
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md)* event | ArkUI_DragEvent事件指针。 |
-| [ArkUI_DropOperation](capi-drag-and-drop-h.md#arkui_dropoperation) dropOperation | 角标显示状态的类型。 |
+| [ArkUI_DropOperation](capi-drag-and-drop-h.md#arkui_dropoperation) dropOperation | 数据处理方式。 |
 
 **返回：**
 
@@ -539,7 +539,7 @@ int32_t OH_ArkUI_DragEvent_GetDropOperation(ArkUI_DragEvent* event, ArkUI_DropOp
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md)* event | ArkUI_DragEvent事件指针。 |
-| [ArkUI_DropOperation](capi-drag-and-drop-h.md#arkui_dropoperation)* operation | 数据的处理方式. |
+| [ArkUI_DropOperation](capi-drag-and-drop-h.md#arkui_dropoperation)* operation | 数据的处理方式。 |
 
 **返回：**
 
@@ -842,7 +842,7 @@ int32_t OH_ArkUI_DragEvent_GetModifierKeyStates(ArkUI_DragEvent* event, uint64_t
 **描述：**
 
 
-获取功能键按压状态。
+获取修饰键按压状态。
 
 **起始版本：** 12
 

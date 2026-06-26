@@ -316,7 +316,7 @@ ArkTS-Sta: focusScopePriority(scopeId: string | undefined, priority?: FocusPrior
 
 ### KeyProcessingMode<sup>15+</sup>
 
-设置按键事件处理的优先级。
+设置按键事件处理的模式。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
