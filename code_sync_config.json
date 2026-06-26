@@ -51623,6 +51623,16 @@
 						"start_line":15
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenuText.ets",
+				"functions":[
+					{
+						"end_line":95,
+						"name":"web_BindSelectionMenu_Text",
+						"start_line":15
+					}
+				]
 			}
 		]
 	},
