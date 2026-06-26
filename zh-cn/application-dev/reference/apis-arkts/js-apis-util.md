@@ -5673,6 +5673,42 @@ isAsyncFunction(value: Object): boolean
   // 输出结果：result = true
   ```
 
+> **说明：**
+>
+> 该接口无法对AsyncGenerator Function进行有效判断，建议通过获取函数的`constructor.name`属性与`'AsyncGeneratorFunction'`做判等的方式替代。
+>
+> 该接口无法对Sendable class中的async成员函数进行有效判断，无替代方案。
+
+  <!--code_no_check-->
+  ```ts
+  // /entry/src/main/ets/pages/test.ts
+  export async function* asyncGeneratorFunc() {}
+  ```
+
+  <!--code_no_check-->
+  ```ts
+  import { asyncGeneratorFunc } from './test'
+
+  @Sendable
+  class SendableClass {
+    async asyncFunction() {}
+  }
+
+  let type = new util.types();
+  let result1 = type.isAsyncFunction(asyncGeneratorFunc);
+  console.info("result = " + result1);
+  // 输出结果：result = false
+
+  console.info("asyncGeneratorFunc.constructor.name === AsyncGeneratorFunction : " +
+    (asyncGeneratorFunc.constructor.name === 'AsyncGeneratorFunction'));
+  // 输出结果：asyncGeneratorFunc.constructor.name === AsyncGeneratorFunction : true
+
+  const instance = new SendableClass();
+  let result2 = type.isAsyncFunction(instance.asyncFunction);
+  console.info("result = " + result2);
+  // 输出结果：result = false
+  ```
+
 ### isBooleanObject<sup>(deprecated)</sup>
 
 isBooleanObject(value: Object): boolean
@@ -6014,6 +6050,30 @@ isGeneratorFunction(value: Object): boolean
   let result = type.isGeneratorFunction(foo);
   console.info("result = " + result);
   // 输出结果：result = true
+  ```
+
+> **说明：**
+>
+> 该接口无法对AsyncGenerator Function进行有效判断，建议通过获取函数的`constructor.name`属性与`'AsyncGeneratorFunction'`做判等的方式替代。
+
+  <!--code_no_check-->
+  ```ts
+  // /entry/src/main/ets/pages/test.ts
+  export async function* asyncGeneratorFunc() {}
+  ```
+
+  <!--code_no_check-->
+  ```ts
+  import { asyncGeneratorFunc } from './test'
+
+  let type = new util.types();
+  let result = type.isGeneratorFunction(asyncGeneratorFunc);
+  console.info("result = " + result);
+  // 输出结果：result = false
+
+  console.info("asyncGeneratorFunc.constructor.name === AsyncGeneratorFunction : " +
+    (asyncGeneratorFunc.constructor.name === 'AsyncGeneratorFunction'));
+  // 输出结果：asyncGeneratorFunc.constructor.name === AsyncGeneratorFunction : true
   ```
 
 
