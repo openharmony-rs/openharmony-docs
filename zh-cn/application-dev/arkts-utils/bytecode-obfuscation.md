@@ -554,7 +554,7 @@ lastName
   ``` TypeScript
   // myclass.ts
   export class MyClass02 {
-    person = {firstName: "123", personAge: 100};
+    person = {firstName: '123', personAge: 100};
   }
   ```
 
