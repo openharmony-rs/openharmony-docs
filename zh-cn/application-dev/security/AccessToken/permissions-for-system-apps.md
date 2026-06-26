@@ -1732,7 +1732,7 @@
 
 ## ohos.permission.cli.MANAGE_WIFI_CONNECT
 
-允许应用通过CLI命令设置WIFI连接。
+允许应用通过CLI命令设置Wi-Fi连接。
 
 **权限级别**：system_core
 
