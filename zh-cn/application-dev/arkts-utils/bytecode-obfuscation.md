@@ -606,10 +606,10 @@ lastName
   
   ``` TypeScript
   const valueBucket: ValuesBucket = {
-    ID1: 'ID1', // ID1应该被保留。
-    NAME1: 'jack', // NAME1应该被保留。
-    AGE1: 20, // AGE1应该被保留。
-    SALARY1: 100 // SALARY1应该被保留。
+    ID1: 'ID1', // ID1应该被保留
+    NAME1: 'jack', // NAME1应该被保留
+    AGE1: 20, // AGE1应该被保留
+    SALARY1: 100 // SALARY1应该被保留
   }
   ```
 
