@@ -519,7 +519,7 @@ onAnimationEnd(handler: Optional\<AnimationEndHandler>)
 
 切换动画结束时触发该回调。
 
-当ArcSwiper切换动效结束时触发，包括动画过程中手势中断，通过[SwiperController](ts-container-swiper.md#swipercontroller)调用finishAnimation。参数为动画结束后的index值，多列ArcSwiper时，index为最左侧组件的索引。
+当ArcSwiper切换动效结束时触发，包括动画过程中手势中断，通过[ArcSwiperController](#arcswipercontroller)调用finishAnimation。参数为动画结束后的index值，多列ArcSwiper时，index为最左侧组件的索引。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -613,9 +613,9 @@ finishTransition(): void
 
 ## 示例
 
-### 示例1（设置arcSwiper基本属性）
+### 示例1（设置ArcSwiper基本属性）
 
-该示例通过设置arcSwiper的基本属性，展示了组件的基本功能。
+该示例通过设置ArcSwiper的基本属性，展示了组件的基本功能。
 
 ```ts
 // xxx.ets
@@ -664,10 +664,6 @@ struct TestNewInterface {
   innerSelectedIndex: number = 0;
 
   aboutToAppear(): void {
-    let list: Color[] = [];
-    for (let i = 1; i <= 6; i++) {
-      list.push(i);
-    }
     this.data = new MyDataSource(this.backgroundColors);
   }
 
@@ -783,7 +779,7 @@ struct TestNewInterface {
         .customContentTransition({
           // 页面移除视窗时超时1000ms下渲染树
           timeout: 1000,
-          // 对视窗内所有页面逐帧回调transition，在回调中修改opacity属性值，实现自定义动画
+          // 对视窗内所有页面逐帧回调transition，在回调中修改scale属性值，实现自定义动画
           transition: (proxy: SwiperContentTransitionProxy) => {
             if (proxy.position <= -1 || proxy.position >= 1) {
               // 页面完全滑出视窗外时，重置属性值
