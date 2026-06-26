@@ -2,12 +2,12 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @rr_cn-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
-appRecovery模块提供了应用在故障状态下的恢复能力。
+appRecovery模块提供了应用在故障状态下的恢复能力。从API version 11开始，支持应用崩溃（JS_CRASH）、应用冻屏（APP_FREEZE）故障场景下的应用自恢复；从API version 24开始，支持进程崩溃（CPP_CRASH）故障场景下的应用自恢复。同时，支持应用状态保存及恢复功能，帮助开发者提升应用稳定性。
 
 > **说明：**
 > 

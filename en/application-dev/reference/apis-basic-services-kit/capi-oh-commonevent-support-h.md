@@ -1,9 +1,8 @@
 # oh_commonevent_support.h
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -90,7 +89,7 @@ Provides common event constants defined by the system.
 | static const char * const COMMON_EVENT_QUICK_FIX_REVOKE_RESULT = "usual.event.QUICK_FIX_REVOKE_RESULT" | Indicates the common event that a quick fix is revoked.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_USER_INFO_UPDATED = "usual.event.USER_INFO_UPDATED" | Indicates the common event that the user information has been updated.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_SIM_STATE_CHANGED = "usual.event.SIM_STATE_CHANGED" | Indicates the common event that the SIM card state has been updated.<br>**Since**: 12|
-| static const char * const COMMON_EVENT_CALL_STATE_CHANGED = "usual.event.CALL_STATE_CHANGED" | Indicates the common event that the call state has been updated.<br>**Since**: 12|
+| static const char * const COMMON_EVENT_CALL_STATE_CHANGED = "usual.event.CALL_STATE_CHANGED" | Indicates the common event that the call state has been updated.<br>**Required permissions**: ohos.permission.GET_TELEPHONY_STATE<br>**Since**: 12|
 | static const char * const COMMON_EVENT_NETWORK_STATE_CHANGED = "usual.event.NETWORK_STATE_CHANGED" | Indicates the common event that the network state has been updated.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_SIGNAL_INFO_CHANGED = "usual.event.SIGNAL_INFO_CHANGED" | Indicates the common event that the signal information has been updated.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_SCREEN_UNLOCKED = "usual.event.SCREEN_UNLOCKED" | Indicates the common event that the screen has been unlocked.<br>**Since**: 12|
@@ -102,6 +101,7 @@ Provides common event constants defined by the system.
 | static const char * const COMMON_EVENT_MANAGED_BROWSER_POLICY_CHANGED = "usual.event.MANAGED_BROWSER_POLICY_CHANGED" | Indicates the common event that the browser hosting policy has been changed.<br>**Since**: 15|
 | static const char* const COMMON_EVENT_TABLET_MODE_CHANGED = "usual.event.TABLET_MODE_CHANGED" | Indicates the common event that the tablet mode of a device has been changed.<br>**Since**: 23|
 | static const char* const COMMON_EVENT_LID_STATE_CHANGED = "usual.event.LID_STATE_CHANGED" | Indicates the common event that the lid state of a device has been changed.<br>**Since**: 23|
- | static const char* const COMMON_EVENT_VOLUME_DECRYPTED = "usual.event.VOLUME_DECRYPTED" | Indicates that specific volumes on the device have been decrypted.<br>**Since**: 26.0.0 |
- | static const char* const COMMON_EVENT_VOLUME_ENCRYPTED = "usual.event.VOLUME_ENCRYPTED" | Indicates that specific volumes on the device have been encrypted.<br>**Since**: 26.0.0 |
- | static const char* const COMMON_EVENT_VOLUME_ENCRYPTION_POLICY_SET = "usual.event.VOLUME_ENCRYPTION_POLICY_SET" | Indicates that specific volumes on the device have had their encryption policy set.<br>**Since**: 26.0.0 |
+| static const char* const COMMON_EVENT_VOLUME_DECRYPTED = "usual.event.VOLUME_DECRYPTED" | Indicates that a specific volume on the device has been decrypted.<br>**Since**: 26.0.0|
+| static const char* const COMMON_EVENT_VOLUME_ENCRYPTED = "usual.event.VOLUME_ENCRYPTED" | Indicates that a specific volume on the device has been encrypted.<br>**Since**: 26.0.0|
+| static const char* const COMMON_EVENT_VOLUME_ENCRYPTION_POLICY_SET = "usual.event.VOLUME_ENCRYPTION_POLICY_SET" | Indicates that an encryption policy has been set for a specific volume on the device.<br>**Since**: 26.0.0|
+| static const char* const COMMON_EVENT_SKILL_CHANGED = "usual.event.SKILL_CHANGED" | Indicates that the skill applied on the device has changed.<br>**Since**: 26.0.0|

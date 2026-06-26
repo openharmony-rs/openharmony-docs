@@ -12,7 +12,7 @@ typedef struct ArkWeb_RequestHeaderList_ ArkWeb_RequestHeaderList
 
 ## 概述
 
-请求头列表。
+ArkWeb_RequestHeaderList是HTTP请求头列表结构体，用于在ArkWeb NDK中表示和管理HTTP请求头的键值对集合。该结构体包含请求头数组（headers）和数组长度（headerCount），配合ArkWeb_ResourceRequest等结构体使用，提供对Web组件网络请求头的读取和设置能力。
 
 **起始版本：** 12
 

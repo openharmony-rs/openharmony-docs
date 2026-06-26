@@ -1,10 +1,12 @@
 # Interface (Aperture)
+
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leoqsl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=df2388ac9ece670e2be6918a776640e250f776ef translatedAt=2026-06-25T02:36:09.254Z pushedAt=2026-06-25T06:57:19.543Z -->
 
 **Aperture** inherits from [ApertureQuery](arkts-apis-camera-ApertureQuery.md).
 
@@ -68,7 +70,9 @@ function getPhysicalAperture(photoSession: camera.PhotoSession): number {
 
 setPhysicalAperture(aperture: number): void
 
-Sets a physical aperture.
+Sets a physical aperture. Obtain the aperture values that can be set at different focal lengths using [getSupportedPhysicalApertures](arkts-apis-camera-ApertureQuery.md#getsupportedphysicalapertures24), and then set a supported physical aperture by adjusting the focal length range.
+
+For example, the physical aperture can be set to **2.6** when **zoomRange** is within the range of [1, 4]. Therefore, you need to set the focal length to be within the range of [1, 4] using [setZoomRatio](arkts-apis-camera-Zoom.md#setzoomratio11) in order to set the physical aperture value to **2.6**.
 
 **Atomic service API**: This API can be used in atomic services since API version 24.
 
@@ -76,7 +80,7 @@ Sets a physical aperture.
 
 **Parameters**
 
-| Parameter     | Type                          | Mandatory | Description                          |
+| Name     | Type                          | Mandatory | Description                          |
 | -------- | -------------------------------| ---- | ----------------------------- |
 | aperture   | number  | Yes  | Physical aperture.                |
 

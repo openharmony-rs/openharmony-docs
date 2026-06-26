@@ -973,11 +973,11 @@ display，position，z-index，visibility，opacity, background-color，backgrou
   ```
 
 - 应用侧代码示例，视频播放，使用时需替换为正确的视频链接地址。
-  <!-- @[mp4_player_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/PlayerDemo.ets) --> 
+  <!-- @[mp4_player_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/PlayerDemo.ets) -->         
   
   ``` TypeScript
   import { media } from '@kit.MediaKit';
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   export class AVPlayerDemo {
     private count: number = 0;

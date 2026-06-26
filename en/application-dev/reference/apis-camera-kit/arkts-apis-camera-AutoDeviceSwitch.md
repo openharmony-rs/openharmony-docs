@@ -28,7 +28,6 @@ enableAutoDeviceSwitch(enabled: boolean): void
 Enables or disables automatic camera switch. You can use [isAutoDeviceSwitchSupported](arkts-apis-camera-AutoDeviceSwitchQuery.md#isautodeviceswitchsupported13) to check whether the device supports automatic camera switch.
 
 > **NOTE**
->
 > This API is used only for foldable devices with multiple front cameras. In different fold states, the system can automatically switch to an available front camera. It does not enable automatic switching between front and rear cameras.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
@@ -45,9 +44,9 @@ Enables or disables automatic camera switch. You can use [isAutoDeviceSwitchSupp
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID  | Error Message                                                                                                                                      |
+| Error Code  | Error Message                                                                                                                                      |
 |---------|------------------------------------------------------------------------------------------------------------------------------------------------|
-| 7400101 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameters verification failed. |
+| 7400101 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameters verification failed.<br>Applicable versions: 19+|
 | 7400102 | Operation not allowed.                                                                                                                         |
 | 7400103 | Session not config.                                                                                                                            |
 | 7400201 | Camera service fatal error.                                                                                                                    |

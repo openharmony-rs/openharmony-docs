@@ -6,7 +6,7 @@
 <!--Tester: @jiyong_sd-->
 <!--Adviser: @fang-jinxu-->
 
-本模块定义了OpenHarmony ArkTS API的注解类型，如生命周期最小可用版本、API告警屏蔽等，用于帮助开发者标识和管理API的兼容性、告警抑制等特性，提高代码的可维护性和开发效率。
+本模块定义了OpenHarmony ArkTS API的注解类型，如生命周期最小可用版本、API告警屏蔽等，用于帮助开发者标识和管理API的兼容性、告警抑制等特性。该模块解决了开发者在跨版本开发、第三方SDK集成等场景中遇到的版本兼容性告警、权限告警、多设备适配告警等问题，通过注解方式抑制不必要的告警干扰，提高代码的可维护性和开发效率。
 
 > **说明：**
 >
@@ -71,7 +71,7 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 @interface SuppressWarnings {
 
   rules: Array\<SuppressWarningsType>;
-  
+
 }  
 
 系统提供的API告警屏蔽功能，允许开发者通过注解的方式抑制API调用时产生的告警。该功能可应用于类、函数、变量、类型、接口等API元素上。在源码中添加相应标注后，编译器会根据预设规则自动屏蔽对应的告警信息。适用于需要在特定场景下暂时忽略某些告警、避免编译器产生干扰性警告的情况，帮助开发者专注于关键问题，提高开发效率。
@@ -98,7 +98,7 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 
 > **说明：**
 >
-> 用于容器节点时，会屏蔽节点下子节点产生的告警
+> 用于容器节点时，会屏蔽节点下子节点产生的告警。
 >
 > 重复规则屏蔽时，仅生效代码位置上距离最近且符合规则的屏蔽类型
 
