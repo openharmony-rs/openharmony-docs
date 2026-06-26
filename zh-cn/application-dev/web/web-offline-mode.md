@@ -388,7 +388,6 @@ import { window } from '@kit.ArkUI';
 <!-- @[offline_web_component_builder_with_render_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry2/src/main/ets/pages/Common.ets) -->  
 
 ``` TypeScript
-// 创建NodeController
 // Common.ets
 import { UIContext } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
