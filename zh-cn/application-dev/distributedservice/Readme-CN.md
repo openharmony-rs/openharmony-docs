@@ -15,3 +15,5 @@
   - [DistributedExtensionAbility开发指南（仅对系统应用开放）](distributedextension-guidelines-sys.md)
   <!--DelEnd-->
   - [增强连接开发指导](linkEnhance_development-guide.md)
+- 分布式软总线
+  - [跨设备唤醒与消息传输开发指导](distributedSoftBus_conversation-guide.md)
