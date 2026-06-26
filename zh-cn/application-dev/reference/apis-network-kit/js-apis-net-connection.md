@@ -1246,7 +1246,7 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.hasDefaultNet((error: BusinessError, data: boolean) => {
-   console.error(`Failed to get request.Code:${error.code},message:${error.message}`);
+  console.error(`Failed to get request.Code:${error.code},message:${error.message}`);
    console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 ```
