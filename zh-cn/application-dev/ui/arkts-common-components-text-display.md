@@ -1293,6 +1293,27 @@ Text组件通过设置[bindSelectionMenu](../reference/apis-arkui/arkui-ts/ts-ba
   ```
 
   <!-- @[set_selection_menu_with_bindselectionmenu_sec](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
+  
+  ``` TypeScript
+  // 请将$r('app.string.show_selected_menu')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示选中菜单"
+  Text($r('app.string.show_selected_menu'), this.options)
+    .fontSize(30)
+    .copyOption(CopyOptions.InApp)
+    .bindSelectionMenu(TextSpanType.TEXT, this.RightClickTextCustomMenu, TextResponseType.RIGHT_CLICK, {
+      onAppear: () => {
+        // 请将$r('app.string.SelectMenu_Text_Ejected')替换为实际资源文件，在本示例中该资源文件的value值为"自定义选择菜单弹出时触发该回调"
+        hilog.info(0x0000, 'Sample_TextComponent',
+          this.getUIContext()
+            .getHostContext()!.resourceManager.getStringSync($r('app.string.SelectMenu_Text_Ejected').id));
+      },
+      onDisappear: () => {
+        // 'SelectMenu_Text_Close'资源文件中的value值为'自定义选择菜单关闭时触发该回调'
+        hilog.info(0x0000, 'Sample_TextComponent',
+          this.getUIContext()
+            .getHostContext()!.resourceManager.getStringSync($r('app.string.SelectMenu_Text_Close').id));
+      }
+    })
+  ```
 
   <!-- @[Right_Click_Text_CustomMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
 
