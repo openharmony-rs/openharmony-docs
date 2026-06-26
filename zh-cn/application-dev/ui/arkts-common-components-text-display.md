@@ -689,6 +689,16 @@ Span组件需嵌入在Text组件中才能显示，单独使用时不会显示任
 
 <!-- @[create_span](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpan.ets) -->
 
+``` TypeScript
+// 请将$r('app.string.TextSpan_textContent_text')替换为实际资源文件，在本示例中该资源文件的value值为"我是Text"
+Text($r('app.string.TextSpan_textContent_text')) {
+  // 请将$r('app.string.TextSpan_textContent_span')替换为实际资源文件，在本示例中该资源文件的value值为"我是Span"
+  Span($r('app.string.TextSpan_textContent_span'))
+}
+.padding(10)
+.borderWidth(1)
+```
+
 ![text-child-component](figures/text-child-component.png)
 
 ### 设置Span文本装饰线及颜色
