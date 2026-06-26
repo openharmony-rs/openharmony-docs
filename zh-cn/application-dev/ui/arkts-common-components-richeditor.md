@@ -618,6 +618,43 @@ Button($r('app.string.Demo_SetStyledStringButton'))
 
 <!-- @[richEditor_textVerticalAlign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
+``` TypeScript
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+
+build() {
+  Column() {
+    // ...
+    RichEditor(this.options)
+      .onReady(() => {
+        // 请将$r('app.media.startIcon')替换为实际资源文件
+        this.controller.addImageSpan($r('app.media.startIcon'), {
+          imageStyle: {
+            size: [100, 100]
+          }
+        })
+        // 请将$r('app.string.Demo_verticalAlignString')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段富文本，展示了文本垂直居中的效果。"
+        this.controller.addTextSpan($r('app.string.Demo_verticalAlignString'), {
+          style: {
+            fontColor: Color.Pink,
+            fontSize: '32'
+          },
+          paragraphStyle: {
+            textAlign: TextAlign.Start,
+            textVerticalAlign: TextVerticalAlign.CENTER,
+            leadingMargin: 16
+          }
+        })
+      })
+    // ...
+  }.alignItems(HorizontalAlign.Start)
+  .backgroundColor('#fff')
+  .borderRadius(12)
+  .padding(12)
+  .width('100%')
+}
+```
+
 ![RichEditor_text_vertical_align](figures/RichEditor_text_vertical_align.jpg)
 
 ### 设置中西文自动间距
