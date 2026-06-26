@@ -688,7 +688,7 @@ export namespace Ns {
   <!-- @[dtsOptionExample_keepGlobalName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/cpp/types/libentry/Index.d.ts) -->      
   
   ``` TypeScript
-  // src/main/cpp/types/libentry/Index.d.ts。
+  // src/main/cpp/types/libentry/Index.d.ts
   declare function testNapi2(): void;
   declare function testNapi3(): void;
   ```
