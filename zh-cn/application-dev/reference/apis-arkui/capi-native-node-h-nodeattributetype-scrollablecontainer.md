@@ -758,13 +758,13 @@ NODE_LIST_DIRECTION = MAX_NODE_SCOPE_NUM * ARKUI_NODE_LIST = 1003000
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | List组件排列方向，数据类型[ArkUI_Axis](capi-native-type-h.md#arkui_axis)，默认值ARKUI_AXIS_VERTICAL。 |
+| .value[0].i32 | List组件排列方向，数据类型[ArkUI_Axis](capi-layout-h.md#arkui_axis)，默认值ARKUI_AXIS_VERTICAL。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | List组件排列方向，数据类型[ArkUI_Axis](capi-native-type-h.md#arkui_axis)。 |
+| .value[0].i32 | List组件排列方向，数据类型[ArkUI_Axis](capi-layout-h.md#arkui_axis)。 |
 
 ## NODE_LIST_STICKY
 
@@ -1586,13 +1586,13 @@ NODE_WATER_FLOW_LAYOUT_DIRECTION = MAX_NODE_SCOPE_NUM * ARKUI_NODE_WATER_FLOW = 
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 主轴方向，参数类型[ArkUI_FlexDirection](capi-native-type-h.md#arkui_flexdirection)。默认值[ARKUI_FLEX_DIRECTION_COLUMN](capi-native-type-h.md#arkui_flexdirection)。 |
+| .value[0].i32 | 主轴方向，参数类型[ArkUI_FlexDirection](capi-layout-h.md#arkui_flexdirection)。默认值[ARKUI_FLEX_DIRECTION_COLUMN](capi-layout-h.md#arkui_flexdirection)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 主轴方向，参数类型[ArkUI_FlexDirection](capi-native-type-h.md#arkui_flexdirection)。 |
+| .value[0].i32 | 主轴方向，参数类型[ArkUI_FlexDirection](capi-layout-h.md#arkui_flexdirection)。 |
 
 ## NODE_WATER_FLOW_COLUMN_TEMPLATE
 
