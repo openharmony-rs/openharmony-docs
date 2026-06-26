@@ -53,7 +53,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     fetchColumns: [],
     predicates: predicates
   };
-  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> |null = null;
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | null = null;
   try {
     fetchResult = await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
@@ -68,7 +68,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     console.error('onCallback failed with err: ' + err);
     // ...
   } finally {
-    fetchResult.close();
+    if (fetchResult != null) {
+      fetchResult.close();
+    }
   }
 }
 ```
@@ -107,8 +109,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     fetchColumns: [],
     predicates: predicates
   };
-  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> |null = null;
-
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> | null = null;
   try {
     fetchResult = await phAccessHelper.getAlbums(
       photoAccessHelper.AlbumType.USER, 
@@ -129,7 +130,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.error('onCallback failed with err: ' + err);
     // ...
   } finally {
-    fetchResult.close();
+    if (fetchResult != null) {
+      fetchResult.close();
+    }
   }
 }
 ```
@@ -175,7 +178,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     fetchColumns: [],
     predicates: predicates
   };
-  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> |null = null;
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | null = null;
   try {
     fetchResult = await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
@@ -186,7 +189,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     console.error('onCallback failed with err: ' + err);
     // ...
   } finally {
-    fetchResult.close();
+    if (fetchResult != null) {
+      fetchResult.close();
+    }
   }
 }
 ```
@@ -223,7 +228,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     fetchColumns: [],
     predicates: predicates
   };
-  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> |null = null;
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | null = null;
   try {
     fetchResult = await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
@@ -243,7 +248,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     console.error('onCallback failed with err: ' + err);
     // ...
   } finally {
-    fetchResult.close();
+    if (fetchResult != null) {
+      fetchResult.close();
+    }
   }
 }
 ```
