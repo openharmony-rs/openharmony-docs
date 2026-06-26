@@ -64,6 +64,42 @@ Text可通过以下两种方式来创建：
 Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)、[onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)等事件来响应操作。
 
   <!-- @[General_Events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/GeneralEvents.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  @Entry
+  @Component
+  struct GeneralEvents {
+    @State textStr1: string = '';
+    @State textStr2: string = '';
+  
+    build() {
+      NavDestination() {
+        Row() {
+          Column() {
+            Text('This is a text component.')
+              .fontSize(30)
+              .onClick(() => {
+                hilog.info(0x0000, 'Sample_TextComponent', 'Text onClick is triggering');
+                this.textStr1 = 'Text onClick is triggering';
+              })
+              .onTouch(() => {
+                hilog.info(0x0000, 'Sample_TextComponent', 'Text onTouch is triggering');
+                this.textStr2 = 'Text onTouch is triggering';
+              })
+            Text('onClick：' + this.textStr1)
+              .fontSize(20)
+            Text('onTouch：' + this.textStr2)
+              .fontSize(20)
+          }.width('100%')
+        }
+        .height('100%')
+      }
+      // ...
+    }
+  }
+  ```
 
 ![text_event](figures/text_event.gif)
 
