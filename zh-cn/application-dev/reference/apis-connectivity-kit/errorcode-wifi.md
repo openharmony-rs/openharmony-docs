@@ -39,77 +39,77 @@ WIFI服务内部执行STA相关操作时出现未知错误。
 
 **可能原因**
 
-### 和WIFI服务建立通信异常，WIFI芯片通信异常。
+### 和WIFI服务建立通信异常，WIFI芯片通信异常
 
 **错误信息**
 
-Operation failed
+Operation failed.
 
-### 飞行模式开启导致功能异常。
+### 飞行模式开启导致功能异常
 
 **错误信息**
 
-Flight mode is enabled
+Flight mode is enabled.
 
 ### 省电模式开启导致功能异常
 
 **错误信息**
 
-Power saving mode is enabled。
+Power saving mode is enabled.
 
 ### 服务正在关闭导致功能异常
 
 **错误信息**
 
-Operation failed because the service is being closed
+Operation failed because the service is being closed.
 
 ### 扫描服务未开启导致功能异常
 
 **错误信息**
 
-Ap service is not enabled
+Ap service is not enabled.
 
 ### AP服务未开启导致功能异常
 
 **错误信息**
 
-Ap service is not enabled
+Ap service is not enabled.
 
 ### 配置无效导致功能异常
 
 **错误信息**
 
-Configuration is invalid
+Configuration is invalid.
 
-### P2P MAC地址未找到导致功能异常。
+### P2P MAC地址未找到导致功能异常
 
 **错误信息**
 
-P2P MAC address not found
+P2P MAC address not found.
 
 ### P2P MAC地址格式错误导致功能异常
 
 **错误信息**
 
-P2P MAC address format error
+P2P MAC address format error.
 
 ### P2P内部服务异常导致功能异常
 
 **错误信息**
 
-P2P Internal service exception
+P2P Internal service exception.
 
 ### P2P参数大小错误导致功能异常
 
 **错误信息**
 
-P2P wrong parameter size
+P2P wrong parameter size.
 
 ### 移动冻结扫描控制导致功能异常
 
 **错误信息**
 
-moving freeze scanning control
+moving freeze scanning control.
 
 **处理步骤**
 

@@ -51,17 +51,17 @@
 
    3.1 错误信息：Operation failed。[WIFI错误码](../../reference/apis-connectivity-kit/errorcode-wifi.md)。
 
-   3.1.1 日志包含 "AddCandidateConfig failed, exceed max num:"
+   3.2 日志包含 "AddCandidateConfig failed, exceed max num:"
    根因：当前已添加的候选配置数量超过系统允许的最大值（16 个）。
    解决方案：减少传入的配置数量，确保不超过上限；若需更新配置，建议先移除旧配置再添加新配置。
 
-   3.1.2 无特定日志关键字（其他内部错误）
+   3.3 无特定日志关键字（其他内部错误）
    根因：系统内部异常，可能为Wi-Fi服务状态异常或配置格式错误。
    解决方案：执行开关Wi-Fi或重启设备以恢复服务。
 
-   3.2 错误信息：Capability not supported。
+   3.4 错误信息：Capability not supported。
 
-   3.2.1 日志包含 "AddCandidateConfig unsupport wep key"
+   3.5 日志包含 "AddCandidateConfig unsupport wep key"
    根因：当前系统或固件不支持WEP加密类型的候选配置。
    解决方案：移除WEP加密配置，改用受支持的加密方式（如 WPA2/WPA3）。
 
