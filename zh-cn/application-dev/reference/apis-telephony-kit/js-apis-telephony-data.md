@@ -719,7 +719,7 @@ data.getActiveApnName().then((apn: string) => {
 
 showSystemApnSettings(context: Context): Promise\<void>
 
-调用该接口可以打开当前移动数据卡对应的APN配置界面。使用Promise异步回调。
+调用该接口可以打开默认移动数据SIM卡对应的APN配置界面。使用Promise异步回调。
 
 > **说明：**
 >
