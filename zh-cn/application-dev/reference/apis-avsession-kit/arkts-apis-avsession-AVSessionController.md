@@ -665,7 +665,7 @@ avcontroller.getLaunchAbility((err: BusinessError, agent: object) => {
 
 getRealPlaybackPositionSync(): number
 
-获取当前播放位置。
+使用同步方法获取当前播放位置。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
