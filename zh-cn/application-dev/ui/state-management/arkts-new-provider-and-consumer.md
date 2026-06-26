@@ -725,6 +725,7 @@ struct Parent {
 
   build() {
     Column() {
+      Child()
       Button('add new user')
         .width(300)
         .margin(10)
@@ -743,11 +744,6 @@ struct Parent {
         .onClick(() => {
           this.users[0].name = 'Shelly';
         })
-      Button('reset users')
-        .onClick(() => {
-          this.users = [new User('Json', 10), new User('Eric', 15)];
-        }) 
-      Child()
     }
     .width('100%')
   }

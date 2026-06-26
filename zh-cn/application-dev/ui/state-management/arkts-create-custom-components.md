@@ -487,7 +487,7 @@ struct Son {
         .fontSize(20)
         .margin(10)
     }
-
+  
     build() {
       Column() {
         // 正例：可以调用
@@ -687,7 +687,7 @@ API version 24开始，可在应用工程的module.json5配置文件中配置met
     "name": "enableCustomComponentCrossAbility",
     "value": "true"
   }
-]
+],
 ```
 
 需要注意：

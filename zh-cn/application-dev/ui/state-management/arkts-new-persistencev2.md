@@ -1063,14 +1063,14 @@ struct Page1 {
         })
         .fontSize(25)
         .margin(10)
-        .fontColor(Color.Pink)
+        .fontColor(Color.Red)
       Text('Key connect2: ' + this.p2.father.childId.toString())
         .onClick(() => {
           this.p2.father.childId += 1;
         })
         .fontSize(25)
         .margin(10)
-        .fontColor(Color.Pink)
+        .fontColor(Color.Red)
 
       // 跳转
       Button('Jump to newModule')

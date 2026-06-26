@@ -1836,6 +1836,7 @@ struct Index {
 
   build() {
     Column() {
+      // 点击Button切换showFlag，触发Child组件的创建/销毁
       Button('change showFlag')
         .width(300)
         .margin(10)
@@ -1941,7 +1942,6 @@ struct Index {
         .onClick(() => {
           this.showFlag = !this.showFlag;
         })
-        .margin(10)
       Button('change number')
         .onClick(() => {
           hilog.info(0xFF00, 'testTag', '%{public}s', 'click to change age');
@@ -1949,7 +1949,6 @@ struct Index {
             info.age += 100;
           })
         })
-        .margin(10)
       if (this.showFlag) {
         Column() {
           Text('Children')
@@ -2033,12 +2032,10 @@ struct Index {
 
   build() {
     Column() {
-      // 点击Button切换showFlag，触发Child组件的创建/销毁
       Button('change showFlag')
         .onClick(() => {
           this.showFlag = !this.showFlag;
         })
-        .margin(10)
       Button('change number')
         .onClick(() => {
           hilog.info(0xFF00, 'testTag', '%{public}s', 'click to change age');
@@ -2046,7 +2043,6 @@ struct Index {
             info.age += 100;
           })
         })
-        .margin(10)
       if (this.showFlag) {
         Column() {
           Text('Children')
