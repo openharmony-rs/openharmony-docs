@@ -303,7 +303,7 @@ hdc shell "bm dump -n com.xxx.demo |grep uid"
 The input source file is invalid.
 
 **错误描述**<br/>
-调用bundleManager模块中的[getBundleArchiveInfo接口](../apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagergetbundlearchiveinfo)时，传入的HAP或APP路径无效。
+调用bundleManager模块中的[getBundleArchiveInfo接口](../apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagergetbundlearchiveinfo)时，传入的HAP路径无效。
 
 **可能原因**<br/>
 1. 待解析的源文件不存在。

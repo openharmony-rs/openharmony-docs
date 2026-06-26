@@ -1365,7 +1365,7 @@ try {
 
 getBundleArchiveInfo(hapFilePath: string, bundleFlags: number, callback: AsyncCallback\<BundleInfo>): void
 
-根据给定的hapFilePath和bundleFlags获取BundleInfo。使用callback异步回调。从API版本26.0.0开始,该接口支持处理APP包。
+根据给定的hapFilePath和bundleFlags获取BundleInfo。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1377,7 +1377,7 @@ getBundleArchiveInfo(hapFilePath: string, bundleFlags: number, callback: AsyncCa
 
 | 参数名       | 类型   | 必填 | 说明                                                         |
 | ----------- | ------ | ---- | ----------------------------------------------------------- |
-| hapFilePath | string | 是   | 表示存储HAP或APP的路径，路径应该是当前应用程序数据目录的相对路径。 |
+| hapFilePath | string | 是   | 表示存储HAP的路径，路径应该是当前应用程序数据目录的相对路径。 |
 | [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 表示用于指定要返回的BundleInfo对象中包含的信息的标志。       |
 | callback | AsyncCallback\<[BundleInfo](js-apis-bundleManager-bundleInfo.md)> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的BundleInfo；否则为错误对象。 |
 
@@ -1420,7 +1420,7 @@ try {
 
 getBundleArchiveInfo(hapFilePath: string,  bundleFlags: number): Promise\<BundleInfo>
 
-根据给定的hapFilePath和bundleFlags获取BundleInfo。使用Promise异步回调。从API版本26.0.0开始,该接口支持处理APP包。
+根据给定的hapFilePath和bundleFlags获取BundleInfo。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1432,7 +1432,7 @@ getBundleArchiveInfo(hapFilePath: string,  bundleFlags: number): Promise\<Bundle
 
 | 参数名       | 类型   | 必填 | 说明                                                         |
 | ----------- | ------ | ---- | ------------------------------------------------------------ |
-| hapFilePath | string | 是   | 表示存储HAP或APP的路径，路径应该是当前应用程序数据目录的相对路径。 |
+| hapFilePath | string | 是   | 表示存储HAP的路径，路径应该是当前应用程序数据目录的相对路径。 |
 | [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 表示用于指定要返回的BundleInfo对象中包含的信息的标志。       |
 
 **返回值：**
