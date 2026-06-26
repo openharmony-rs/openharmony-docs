@@ -463,7 +463,7 @@ options: RichEditorOptions = { controller: this.controller };
 
 使用[RichEditorStyledStringOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditorstyledstringoptions12)构建的RichEditor组件不支持上述两种回调。
 
-<!-- @[richEditor_eventChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
+<!-- @[richEditor_eventChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) --> 
 
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
