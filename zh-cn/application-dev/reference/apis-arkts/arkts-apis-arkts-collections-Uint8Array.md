@@ -464,8 +464,8 @@ some(predicate: TypedArrayPredicateFn\<number, Uint8Array>): boolean
 
 **返回值：**
 
-| 类型         | 说明      |	 
-| ------------ | --------- |	 
+| 类型         | 说明      |
+| ------------ | --------- |
 | boolean | 如果存在元素满足指定条件返回true，否则返回false。|
 
 **错误码：**
@@ -502,8 +502,8 @@ every(predicate: TypedArrayPredicateFn\<number, Uint8Array>): boolean
 
 **返回值：**
 
-| 类型         | 说明      |	 
-| ------------ | --------- |	 
+| 类型         | 说明      |
+| ------------ | --------- |
 | boolean | 如果所有元素都满足指定条件则返回true，否则返回false。|
 
 **错误码：**
@@ -1296,8 +1296,8 @@ includes(searchElement: number, fromIndex?: number): boolean
 
 **返回值：**
 
-| 类型    | 说明                                                        |	 
-| ------- | ---------------------------------------------------------- |	 
+| 类型    | 说明                                                        |
+| ------- | ---------------------------------------------------------- |
 | boolean | 如果ArkTS Uint8Array包含指定的元素，则返回true；否则返回false。|
 
 **错误码：**
