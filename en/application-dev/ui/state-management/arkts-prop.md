@@ -106,7 +106,7 @@ Variables decorated with \@Prop have the following features:
   <!-- @[prop_twenty_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
   
   ``` TypeScript
-  // Nested property changes are observable.
+  // Nested property changes are not observable.
   this.title.info.value = 'ArkUI';
   ```
 
