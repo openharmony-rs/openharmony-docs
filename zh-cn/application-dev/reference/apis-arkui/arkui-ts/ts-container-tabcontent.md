@@ -713,7 +713,7 @@ id(value: string): BottomTabBarStyle
 
 iconStyle(style: TabBarIconStyle): BottomTabBarStyle
 
-设置底部页签的图标样式。
+设置底部页签图标的样式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -725,7 +725,7 @@ iconStyle(style: TabBarIconStyle): BottomTabBarStyle
 
 | 参数名  | 类型                                   | 必填 | 说明           |
 | ------- | ------------------------------------- | ---- | ------------- |
-| style | [TabBarIconStyle](#tabbariconstyle12对象说明) | 是   | 底部页签的label图标的样式。 |
+| style | [TabBarIconStyle](#tabbariconstyle12对象说明) | 是   | 底部页签图标的样式。 |
 
 **返回值：**
 
@@ -766,7 +766,7 @@ iconStyle(style: TabBarIconStyle): BottomTabBarStyle
 
 ## TabBarIconStyle<sup>12+</sup>对象说明
 
-Label图标样式对象。
+页签图标样式对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -776,8 +776,8 @@ Label图标样式对象。
 
 | 名称                 | 类型                                                     | 只读 | 可选 | 说明                                                         |
 | -------------------- | ------------------------------------------ | ------------------ | ---- | ------------------------------------------------------------ |
-| unselectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 设置Label图标未选中时的颜色。<br/>默认值：#33182431 <br/>**说明：** <br/>仅对svg图源生效，设置后会替换svg图片的填充颜色。 |
-| selectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 设置Label图标选中时的颜色。<br/>默认值：#FF007DFF <br/>**说明：** <br/>仅对svg图源生效，设置后会替换svg图片的填充颜色。 |
+| unselectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 设置图标未选中时的颜色。<br/>默认值：#33182431 <br/>**说明：** <br/>仅对svg图源生效，设置后会替换svg图片的填充颜色。 |
+| selectedColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 设置图标选中时的颜色。<br/>默认值：#FF007DFF <br/>**说明：** <br/>仅对svg图源生效，设置后会替换svg图片的填充颜色。 |
 
 ## 事件
 
