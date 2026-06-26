@@ -97,7 +97,7 @@ OH_AudioCaptureInfo micCapInfo = {.audioSampleRate = 48000, .audioChannels = 2, 
 // 录屏时获取内录数据，内录参数必填。如果同时设置了内录和麦克风音频信息，两者参数设置需保持一致。
 OH_AudioCaptureInfo innerCapInfo = {.audioSampleRate = 48000, .audioChannels = 2, .audioSource = OH_ALL_PLAYBACK};
 // 录屏音频输出规格配置。audioBitrate保证输出文件的比特率为设置的预期比特率，和audioSampleRate无强关联。
-// 此处音频比特率取值为高质量录屏的取值。如果录屏内容以语音为主，不包含音乐、游戏音效等，可以降低为96000或48000。
+// 为保证音频质量，此处音频比特率取值为128000。如果录屏内容以语音为主，不包含音乐、游戏音效等，可以降低为96000或48000。
 OH_AudioEncInfo audioEncInfo = {
     .audioBitrate = 128000,
     .audioCodecformat = OH_AAC_LC
@@ -119,7 +119,7 @@ OH_AVScreenCapture_SetMicrophoneEnabled(g_avCapture, isMic);
 <!-- @[screenCapture_config_buffer_video](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
-// 获取屏幕信息
+// 获取屏幕信息。
 uint64_t displayId = 0;
 NativeDisplayManager_ErrorCode ret = OH_NativeDisplayManager_GetDefaultDisplayId(&displayId);
 
@@ -164,7 +164,7 @@ AVScreenCapture实例的配置信息为[OH_AVScreenCaptureConfig](../../referenc
 // 初始化录屏，传入配置信息OH_AVScreenCaptureConfig。
 config = {
     .captureMode = OH_CAPTURE_HOME_SCREEN, // 录屏模式设置。
-    .dataType = OH_ORIGINAL_STREAM, // 录屏数据类型，原始码流或文件
+    .dataType = OH_ORIGINAL_STREAM, // 录屏数据类型，原始码流或文件。
     .audioInfo = audioInfo,
     .videoInfo = videoInfo
 };
@@ -192,18 +192,18 @@ void OnStateChange(struct OH_AVScreenCapture *capture, OH_AVScreenCaptureStateCo
 {
     if (stateCode == OH_SCREEN_CAPTURE_STATE_STARTED) {
         OH_LOG_INFO(LOG_APP, "==ScreenCaptureSample== ScreenCapture OnStateChange started");
-        // 处理状态变更
-        // 可选 配置录屏旋转
+        // 处理状态变更。
+        // 可选，配置录屏旋转。
         int32_t ret = OH_AVScreenCapture_SetCanvasRotation(capture, true);
-        // 可选 修改Canvas分辨率
+        // 可选，修改Canvas分辨率。
         ret = OH_AVScreenCapture_ResizeCanvas(g_avCapture, CANVAS_RESIZE_WIDTH, CANVAS_RESIZE_HEIGHT);
-        // 可选 设置是否显示光标
+        // 可选，设置是否显示光标。
         ret = OH_AVScreenCapture_ShowCursor(g_avCapture, true);
-        // 可选 设置视频最大帧率
+        // 可选，设置视频最大帧率。
         ret = OH_AVScreenCapture_SetMaxVideoFrameRate(g_avCapture, CAPTURE_VIDEO_FRAME_RATE);
     }
     if (stateCode == OH_SCREEN_CAPTURE_STATE_INTERRUPTED_BY_OTHER) {
-        // 处理状态变更
+        // 处理状态变更。
     }
     (void)userData;
 }
@@ -261,13 +261,13 @@ void OnBufferAvailable(OH_AVScreenCapture *capture, OH_AVBuffer *buffer, OH_AVSc
     OH_LOG_INFO(LOG_APP, "==ScreenCaptureSample== ScreenCapture OnBufferAvailable bufferType is %{public}d",
         bufferType);
     if (bufferType == OH_SCREEN_CAPTURE_BUFFERTYPE_VIDEO) {
-        // 处理视频buffer
+        // 处理视频buffer。
         HandleVideoBuffer(buffer);
     } else if (bufferType == OH_SCREEN_CAPTURE_BUFFERTYPE_AUDIO_INNER) {
-        // 处理内录buffer
+        // 处理内录buffer。
         HandleAudioBuffer(buffer, g_innerFile, "ScreenCapture OnBufferAvailable inner audio");
     } else if (bufferType == OH_SCREEN_CAPTURE_BUFFERTYPE_AUDIO_MIC) {
-        // 处理麦克风buffer
+        // 处理麦克风buffer。
         HandleAudioBuffer(buffer, g_micFile, "ScreenCapture OnBufferAvailable mic audio");
     }
     return;
@@ -361,13 +361,13 @@ void OnBufferAvailable(OH_AVScreenCapture *capture, OH_AVBuffer *buffer, OH_AVSc
     OH_LOG_INFO(LOG_APP, "==ScreenCaptureSample== ScreenCapture OnBufferAvailable bufferType is %{public}d",
         bufferType);
     if (bufferType == OH_SCREEN_CAPTURE_BUFFERTYPE_VIDEO) {
-        // 处理视频buffer
+        // 处理视频buffer。
         HandleVideoBuffer(buffer);
     } else if (bufferType == OH_SCREEN_CAPTURE_BUFFERTYPE_AUDIO_INNER) {
-        // 处理内录buffer
+        // 处理内录buffer。
         HandleAudioBuffer(buffer, g_innerFile, "ScreenCapture OnBufferAvailable inner audio");
     } else if (bufferType == OH_SCREEN_CAPTURE_BUFFERTYPE_AUDIO_MIC) {
-        // 处理麦克风buffer
+        // 处理麦克风buffer。
         HandleAudioBuffer(buffer, g_micFile, "ScreenCapture OnBufferAvailable mic audio");
     }
     return;
@@ -414,9 +414,17 @@ g_avCapture = nullptr;
 <!-- @[screenCapture_PCSpecifiedScreenConfigBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
-// 根据PC/2in1设备分辨率在config中配置录屏的宽度、高度。
-config.videoInfo.videoCapInfo.videoFrameWidth = PC_VIDEO_WIDTH;
-config.videoInfo.videoCapInfo.videoFrameHeight = PC_VIDEO_HEIGHT;
+uint64_t displayId = 0;
+NativeDisplayManager_ErrorCode ret = OH_NativeDisplayManager_GetDefaultDisplayId(&displayId);
+
+NativeDisplayManager_DisplayInfo* displayInfo = nullptr;
+ret = OH_NativeDisplayManager_CreateDisplayById(displayId, &displayInfo);
+if (ret != DISPLAY_MANAGER_OK || !displayInfo) {
+    return;
+}
+// 根据设备分辨率在config中配置录屏的宽度、高度。
+config.videoInfo.videoCapInfo.videoFrameWidth = displayInfo->width;
+config.videoInfo.videoCapInfo.videoFrameHeight = displayInfo->height;
 
 // 设置录屏模式为OH_CAPTURE_SPECIFIED_SCREEN，传入屏幕Id。
 config.captureMode = OH_CAPTURE_SPECIFIED_SCREEN;
@@ -434,11 +442,19 @@ config.videoInfo.videoCapInfo.displayId = 0;
 <!-- @[screenCapture_PCHomeScreenConfigBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
-// 根据PC/2in1设备分辨率在config中配置录屏的宽度、高度。
-config.videoInfo.videoCapInfo.videoFrameWidth = PC_VIDEO_WIDTH;
-config.videoInfo.videoCapInfo.videoFrameHeight = PC_VIDEO_HEIGHT;
+uint64_t displayId = 0;
+NativeDisplayManager_ErrorCode ret = OH_NativeDisplayManager_GetDefaultDisplayId(&displayId);
 
-// 设置录屏模式为OH_CAPTURE_HOME_SCREEN，传入屏幕Id。
+NativeDisplayManager_DisplayInfo* displayInfo = nullptr;
+ret = OH_NativeDisplayManager_CreateDisplayById(displayId, &displayInfo);
+if (ret != DISPLAY_MANAGER_OK || !displayInfo) {
+    return;
+}
+// 根据设备分辨率在config中配置录屏的宽度、高度。
+config.videoInfo.videoCapInfo.videoFrameWidth = displayInfo->width;
+config.videoInfo.videoCapInfo.videoFrameHeight = displayInfo->height;
+
+// 设置录屏模式为OH_CAPTURE_HOME_SCREEN。
 config.captureMode = OH_CAPTURE_HOME_SCREEN;
 ```
 
@@ -453,9 +469,17 @@ config.captureMode = OH_CAPTURE_HOME_SCREEN;
 <!-- @[SetPCSpecifiedWindowScreenConfigBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
-// 根据PC/2in1设备分辨率在config中配置录屏的宽度、高度。
-config.videoInfo.videoCapInfo.videoFrameWidth = PC_VIDEO_WIDTH;
-config.videoInfo.videoCapInfo.videoFrameHeight = PC_VIDEO_HEIGHT;
+uint64_t displayId = 0;
+NativeDisplayManager_ErrorCode ret = OH_NativeDisplayManager_GetDefaultDisplayId(&displayId);
+
+NativeDisplayManager_DisplayInfo* displayInfo = nullptr;
+ret = OH_NativeDisplayManager_CreateDisplayById(displayId, &displayInfo);
+if (ret != DISPLAY_MANAGER_OK || !displayInfo) {
+    return;
+}
+// 根据设备分辨率在config中配置录屏的宽度、高度。
+config.videoInfo.videoCapInfo.videoFrameWidth = displayInfo->width;
+config.videoInfo.videoCapInfo.videoFrameHeight = displayInfo->height;
 
 // 设置录屏模式为OH_CAPTURE_SPECIFIED_WINDOW，传入屏幕Id。
 config.captureMode = OH_CAPTURE_SPECIFIED_WINDOW;
@@ -476,9 +500,17 @@ config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(g_missionIds.
 <!-- @[SetPCSpecifiedWindowScreenConfigBuffer2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
-// 根据PC/2in1设备分辨率在config中配置录屏的宽度、高度。
-config.videoInfo.videoCapInfo.videoFrameWidth = PC_VIDEO_WIDTH;
-config.videoInfo.videoCapInfo.videoFrameHeight = PC_VIDEO_HEIGHT;
+uint64_t displayId = 0;
+NativeDisplayManager_ErrorCode ret = OH_NativeDisplayManager_GetDefaultDisplayId(&displayId);
+
+NativeDisplayManager_DisplayInfo* displayInfo = nullptr;
+ret = OH_NativeDisplayManager_CreateDisplayById(displayId, &displayInfo);
+if (ret != DISPLAY_MANAGER_OK || !displayInfo) {
+    return;
+}
+// 根据设备分辨率在config中配置录屏的宽度、高度。
+config.videoInfo.videoCapInfo.videoFrameWidth = displayInfo->width;
+config.videoInfo.videoCapInfo.videoFrameHeight = displayInfo->height;
 
 // 设置录屏模式为OH_CAPTURE_SPECIFIED_WINDOW，传入屏幕Id。
 config.captureMode = OH_CAPTURE_SPECIFIED_WINDOW;
