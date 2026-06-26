@@ -354,7 +354,7 @@ libnative_rdb_ndk.z.so
    <!--@[vector_OH_Rdb_ExecuteV2_create_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)-->    
 
    ``` C++
-   // Basic usage: creates an index named diskann_l2_idx, with the index column data1, type gsdiskann, and distance metric type L2.
+   // Create an index named diskann_l2_idx, with the index column data1, type gsdiskann, and distance metric type L2.
    OH_Rdb_ExecuteV2(store_, "CREATE INDEX diskann_l2_idx ON test USING GSDISKANN(data1 L2);", nullptr, nullptr);
    
    // Delete the diskann_l2_idx index from the test table.
