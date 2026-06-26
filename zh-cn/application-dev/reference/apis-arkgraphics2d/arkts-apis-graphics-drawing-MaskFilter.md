@@ -7,7 +7,7 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-蒙版滤镜对象。
+蒙版滤镜对象，用于对绘制内容施加模糊效果以创建阴影、发光等视觉效果。通过高斯模糊算法处理Alpha通道，常用于为图形边缘添加柔和或模糊的视觉效果。
 
 > **说明：**
 >
@@ -37,14 +37,14 @@ static createBlurMaskFilter(blurType: BlurType, sigma: number): MaskFilter
 
 | 参数名     | 类型                   | 必填 | 说明                                 |
 | ---------- | --------------------- | ---- | ----------------------------------- |
-| blurType   | [BlurType](arkts-apis-graphics-drawing-e.md#blurtype12) | 是   | 模糊类型。                           |
-| sigma      | number                | 是   | 高斯模糊的标准偏差，必须为大于0的浮点数。单位为物理像素px。 |
+| blurType   | [BlurType](arkts-apis-graphics-drawing-e.md#blurtype12) | 是   | 模糊类型，用于指定蒙版滤镜的模糊操作方式。具体可选值及含义参见[BlurType](arkts-apis-graphics-drawing-e.md#blurtype12)枚举。                           |
+| sigma      | number                | 是   | 高斯模糊的标准偏差，单位为物理像素px，取值范围(0, +∞)。 |
 
 **返回值：**
 
 | 类型                      | 说明                |
 | ------------------------- | ------------------ |
-| [MaskFilter](arkts-apis-graphics-drawing-MaskFilter.md) | 返回创建的蒙版滤镜对象。 |
+| [MaskFilter](arkts-apis-graphics-drawing-MaskFilter.md) | 返回创建的蒙版滤镜对象，可用于对绘制内容施加模糊效果，如创建阴影、发光等视觉特效。 |
 
 **错误码：**
 
@@ -52,18 +52,17 @@ static createBlurMaskFilter(blurType: BlurType, sigma: number): MaskFilter
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
 ```ts
-import { RenderNode } from '@kit.ArkUI';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
-  draw(context : DrawContext) {
-    const canvas = context.canvas;
-    let maskFilter = drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, 10);
+  draw(context: DrawContext) {
+    const maskFilter = drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, 10);
   }
 }
 ```
