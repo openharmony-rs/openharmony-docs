@@ -8,7 +8,7 @@
 
 ## 概述
 
-定义创建和使用色彩空间的相关函数。
+色彩空间管理器提供了创建和使用色彩空间的能力，支持通过色彩空间名称或自定义原色和伽马值创建色彩空间实例，可用于图像处理、视频渲染等需要精确色彩管理的场景。通过统一管理色彩空间，可以确保不同设备和应用之间的色彩一致性，提高色彩处理的准确性和效率。
 
 **引用文件：** <native_color_space_manager/native_color_space_manager.h>
 
@@ -161,7 +161,7 @@ void OH_NativeColorSpaceManager_Destroy(OH_NativeColorSpaceManager* nativeColorS
 
 **描述**
 
-销毁OH_NativeColorSpaceManager实例。
+销毁OH_NativeColorSpaceManager实例。当不再需要OH_NativeColorSpaceManager实例时，需要调用此函数进行销毁以释放内存。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 

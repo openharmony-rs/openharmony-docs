@@ -7,7 +7,7 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
-本模块提供管理抽象化色域对象的基础能力，包括可共享的色彩管理的创建与可共享的色域基础属性的获取等。
+本模块提供管理抽象化色域对象的基础能力，包括可共享的色彩管理的创建与可共享的色域基础属性的获取等。适用于需要在多线程间传递色域信息的场景，能够解决跨线程色彩管理对象无法共享的问题，提高色彩处理的效率和一致性。
 
 > **说明：**
 >
@@ -22,7 +22,7 @@ import { sendableColorSpaceManager } from '@kit.ArkGraphics2D';
 ## ISendable
 type ISendable = lang.ISendable
 
-为与当前模块的接口规范保持一致，重新定义了ISendable类型。
+为与当前模块的接口规范保持一致，定义了ISendable类型别名。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -122,7 +122,7 @@ colorSpace = sendableColorSpaceManager.create(primaries, gamma);
 
 ## ColorSpaceManager
 
-当前可共享的色彩管理实例。
+当前可共享的色彩管理实例。ColorSpaceManager是用于管理和操作色域对象的核心类，提供了获取色域类型、白点值、gamma值等功能，并支持在ArkTS并发实例间传递。
 
 下列API示例中都需先使用[create()](#sendablecolorspacemanagercreate)获取到ColorSpaceManager实例，再通过此实例调用对应方法。
 
@@ -159,7 +159,7 @@ let spaceName: colorSpaceManager.ColorSpace = colorSpace.getColorSpaceName();
 
 getWhitePoint(): collections.Array\<number\>
 
-获取色域白点值。
+获取色域白点值，返回色度坐标[x, y]，表示色彩空间中白色点的坐标位置。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
