@@ -726,20 +726,21 @@ async function preview(cameraManager: camera.CameraManager, cameraInfo: camera.C
 }
 ```
 
-## isLogViewAssistSupported<sup>26+</sup>
+## isLogViewAssistSupported
 
 isLogViewAssistSupported(): boolean
 
-LOG视频下，查询是否支持预览辅助监看功能。
+LOG视频下，查询是否支持辅助监看功能。
 
 > **说明：**
-> 预览辅助监看效果仅支持 1080P 及以下分辨率。
+>
+> 辅助监看效果仅支持1080P及以下分辨率。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -761,7 +762,7 @@ return supported;
 }
 ```
 
-## setLogViewAssistEnable<sup>26+</sup>
+## setLogViewAssistEnable
 
 setLogViewAssistEnable(enable: boolean): void
 
@@ -769,8 +770,8 @@ LOG视频下，使能预览监看开关之前，可先使用方法[isLogViewAssi
 
 > **说明：**
 > 
->- 该接口只能在使用[Session.commitConfig](arkts-apis-camera-Session.md#commitconfig11)接口之后调用。
->- 预览辅助监看效果仅支持 1080P 及以下分辨率。
+> - 该接口只能在使用[Session.commitConfig](arkts-apis-camera-Session.md#commitconfig11)接口之后调用。
+> - 预览辅助监看效果仅支持1080P及以下分辨率。
 
 **起始版本：** 26.0.0
 
