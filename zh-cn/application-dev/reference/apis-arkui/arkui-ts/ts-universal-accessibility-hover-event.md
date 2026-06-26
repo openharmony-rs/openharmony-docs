@@ -86,8 +86,8 @@ type AccessibilityCallback = (isHover: boolean, event: AccessibilityHoverEvent) 
 | windowY                | ArkTS-Dyn: number <br/>ArkTS-Sta: double                         | 否 | 否 | 手指位置相对于应用窗口左上角的y轴坐标。<br/>单位：vp<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | displayX               | ArkTS-Dyn: number <br/>ArkTS-Sta: double                         | 否 | 否 | 手指位置相对于应用屏幕左上角的x轴坐标。<br/>单位：vp<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | displayY               | ArkTS-Dyn: number <br/>ArkTS-Sta: double                         | 否 | 否 | 手指位置相对于应用屏幕左上角的y轴坐标。<br/>单位：vp<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| globalDisplayX<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double                   | 否 | 是 | 手指位置相对于全局屏幕的左上角的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
-| globalDisplayY<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double                   | 否 | 是 | 手指位置相对于全局屏幕的左上角的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
+| globalDisplayX<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double                   | 否 | 是 | 手指位置相对于全局屏幕的左上角的x轴坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
+| globalDisplayY<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double                   | 否 | 是 | 手指位置相对于全局屏幕的左上角的y轴坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
 
 ## onAccessibilityHoverTransparent<sup>20+</sup>
 
