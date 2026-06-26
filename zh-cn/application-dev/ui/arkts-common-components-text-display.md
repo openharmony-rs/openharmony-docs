@@ -1076,6 +1076,52 @@ Text组件需要设置[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-com
   - 从API version 20开始，支持通过[disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20)屏蔽文本选择菜单内指定的系统服务菜单项。更多详见[disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20)的API文档接口说明。以下示例只是完整示例工程中的一个示例，为了不影响工程其他页面示例效果，仅在页面的出现和消失生命周期中进行系统服务菜单的禁用和恢复，实际场景可自行选择其他时机，比如[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)和[onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy)。
 
     <!-- @[Disable_MenuItems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/DisableMenuItems.ets) -->
+    
+    ``` TypeScript
+    import { TextMenuController } from '@kit.ArkUI';
+    
+    // xxx.ets
+    @Entry
+    @Component
+    struct DisableMenuItems {
+      aboutToAppear(): void {
+        // 禁用搜索菜单
+        TextMenuController.disableMenuItems([TextMenuItemId.SEARCH])
+      }
+    
+      aboutToDisappear(): void {
+        // 恢复系统服务菜单
+        TextMenuController.disableMenuItems([])
+      }
+    
+      build() {
+        NavDestination() {
+          Row() {
+            Column() {
+              // 请将$r('app.string.Service_MenuItems_Text')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，长按弹出文本选择菜单。"
+              Text($r('app.string.Service_MenuItems_Text'))
+                .height(60)
+                .fontStyle(FontStyle.Italic)
+                .fontWeight(FontWeight.Bold)
+                .textAlign(TextAlign.Center)
+                .copyOption(CopyOptions.InApp)
+                .editMenuOptions({
+                  onCreateMenu: (menuItems: Array<TextMenuItem>) => {
+                    // menuItems不包含搜索
+                    return menuItems;
+                  },
+                  onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
+                    return false
+                  }
+                })
+            }.width('100%')
+          }
+          .height('100%')
+        }
+        // ...
+      }
+    }
+    ```
 
     ![text_disable_menuItems](figures/text_disable_menuItems.jpg)
 
