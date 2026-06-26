@@ -422,6 +422,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 ### 文件级别属性支持范围
 
 > **说明：**
+>
 > - 正常解封装时才可以获取对应属性数据，如果文件信息错误或缺失，将导致解封装异常，无法获取数据。
 > - 当前GBK格式字符集数据会转换为UTF8提供，其他类型字符集如果需要转换为UTF8格式使用，需要调用方自行转换，参考[icu4c](../../reference/native-lib/icu4c.md)。
 > - 从API version 23开始，部分OGG格式资源，如OH_MD_KEY_TITLE、OH_MD_KEY_ARTIST和OH_MD_KEY_ALBUM存在于轨道属性中，可从轨道级别属性中获取。
@@ -448,6 +449,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 ### 轨道级别属性支持范围
 
 > **说明：**
+>
 > 正常解封装时才可以获取对应属性数据；如果文件信息错误或缺失，将导致解封装异常，无法获取数据。
 > 辅助轨属性范围与实际媒体类型（音频、视频）保持一致。
 > 
