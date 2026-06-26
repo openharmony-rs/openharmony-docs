@@ -602,7 +602,7 @@ struct ChildComponent {
 struct MyComponent {
   build() {
     Row() {
-      / / Property settings to the ChildComponent instead of Button in ChildComponent.
+      // Property settings to the ChildComponent instead of Button in ChildComponent.
       ChildComponent()
         .width(200)
         .height(300)
