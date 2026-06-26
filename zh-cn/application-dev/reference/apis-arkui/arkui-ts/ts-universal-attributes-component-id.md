@@ -216,7 +216,7 @@ sendTouchEvent(event: TouchObject): boolean
 
 | 参数名      | 类型            | 必填  | 说明                                                         |
 | ----- | ----------- | ---- | ------------------------------------------------------------ |
-| event | [TouchObject](ts-universal-events-touch.md#touchobject) | 是    | 触发触摸事件的位置，event参数见[TouchObject](ts-universal-events-touch.md#touchobject)的介绍。 |
+| event | [TouchObject](ts-universal-events-touch.md#touchobject) | 是    | 触摸事件，event参数见[TouchObject](ts-universal-events-touch.md#touchobject)的介绍。 |
 
 **返回值:**
 

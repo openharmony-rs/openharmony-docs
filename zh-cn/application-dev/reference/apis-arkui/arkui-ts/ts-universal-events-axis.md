@@ -51,8 +51,8 @@ onAxisEvent(event: Callback\<AxisEvent>): T
 | 名称            | 类型  | 只读|可选                              | 说明                                                    |
 | ------------------- | -----------------------|------|----- | -------------------------------------------------------- |
 | action              | [AxisAction](ts-appendix-enums.md#axisaction17)           | 否   | 否   | 轴事件的动作类型。<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。                   |
-| x                   | number                 | 否   | 否   | 鼠标光标在被点击元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的X坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。  |
-| y                   | number                 | 否   | 否   | 鼠标光标在被点击元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的Y坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。  |
+| x                   | number                 | 否   | 否   | 鼠标光标以目标组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的X坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。  |
+| y                   | number                 | 否   | 否   | 鼠标光标以目标组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的Y坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。  |
 | windowX             | number                 | 否   | 否   | 鼠标光标在当前应用窗口坐标系中的X坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。 |
 | windowY             | number                 | 否   | 否   | 鼠标光标在当前应用窗口坐标系中的Y坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。 |
 | displayX            | number                 | 否   | 否   | 鼠标光标在当前应用屏幕坐标系中的X坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。 |

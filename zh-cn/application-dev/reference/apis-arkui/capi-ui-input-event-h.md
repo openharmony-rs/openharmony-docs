@@ -265,7 +265,7 @@ enum anonymous2
 | -- | -- |
 | UI_INPUT_EVENT_TOOL_TYPE_UNKNOWN = 0 | 不支持的工具类型。 |
 | UI_INPUT_EVENT_TOOL_TYPE_FINGER = 1 | 手指。 |
-| UI_INPUT_EVENT_TOOL_TYPE_PEN = 2 | 笔。 |
+| UI_INPUT_EVENT_TOOL_TYPE_PEN = 2 | 触控笔。 |
 | UI_INPUT_EVENT_TOOL_TYPE_MOUSE = 3 | 鼠标。 |
 | UI_INPUT_EVENT_TOOL_TYPE_TOUCHPAD = 4 | 触控板。 |
 | UI_INPUT_EVENT_TOOL_TYPE_JOYSTICK = 5 | 操纵杆。 |
@@ -862,7 +862,7 @@ float OH_ArkUI_PointerEvent_GetYByIndex(const ArkUI_UIInputEvent* event, uint32_
 
 | 类型 | 说明 |
 | -- | -- |
-| float | 返回指向性输入事件事件中特定接触点相对于当前组件左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
+| float | 返回指向性输入事件中特定接触点相对于当前组件左上角的Y坐标，单位为px。如果参数异常则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetCurrentLocalX()
 
@@ -1271,7 +1271,7 @@ float OH_ArkUI_PointerEvent_GetGlobalDisplayY(const ArkUI_UIInputEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| float | float 返回相对于全局显示的Y坐标，单位为px。如果发生任何参数错误，例如传递的一个事件没有位置信息，则返回0.0f。 |
+| float | 返回相对于全局显示的Y坐标，单位为px。如果发生任何参数错误，例如传递的一个事件没有位置信息，则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetGlobalDisplayYByIndex()
 
@@ -1298,7 +1298,7 @@ float OH_ArkUI_PointerEvent_GetGlobalDisplayYByIndex(const ArkUI_UIInputEvent* e
 
 | 类型 | 说明 |
 | -- | -- |
-| float | float 返回相对于全局显示的Y坐标，单位为px。如果发生任何参数错误，则返回0.0f。 |
+| float | 返回相对于全局显示的Y坐标，单位为px。如果发生任何参数错误，则返回0.0f。 |
 
 ### OH_ArkUI_PointerEvent_GetPressure()
 
@@ -3018,7 +3018,7 @@ ArkUI_ErrorCode OH_ArkUI_PointerEvent_DestroyClonedPointerEvent(const ArkUI_UIIn
 
 **参数：**
 
-| 参数项项 | 描述 |
+| 参数项 | 描述 |
 | -- | -- |
 | [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | ArkUI_UIInputEvent事件指针。 |
 

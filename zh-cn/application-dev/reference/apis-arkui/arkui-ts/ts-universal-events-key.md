@@ -136,7 +136,7 @@ onKeyEventDispatch(event: Callback\<KeyEvent, boolean>): T
 
 getModifierKeyState?(keys: Array&lt;string&gt;): boolean
 
-获取功能键按压状态。
+获取修饰键按压状态。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -148,13 +148,13 @@ getModifierKeyState?(keys: Array&lt;string&gt;): boolean
 
 | 参数名 | 类型                          | 必填 | 说明               |
 | ------ | ----------------------------- | ---- | ------------------ |
-| keys | Array&lt;string&gt; | 是   | 功能键列表。支持功能键 'Ctrl'\| 'Alt' \| 'Shift'。<br/>**说明：**<br/>此接口不支持在手写笔场景下使用。 |
+| keys | Array&lt;string&gt; | 是   | 修饰键列表。支持修饰键 'Ctrl'\| 'Alt' \| 'Shift'。<br/>**说明：**<br/>此接口不支持在手写笔场景下使用。 |
 
 **返回值：** 
 
 | 类型    | 说明                                                  |
 | ------- | ----------------------------------------------------- |
-| boolean | 功能键是否被按下。true表示被按下，false表示未被按下。 |
+| boolean | 修饰键是否被按下。true表示被按下，false表示未被按下。 |
 
 **错误码**：
 

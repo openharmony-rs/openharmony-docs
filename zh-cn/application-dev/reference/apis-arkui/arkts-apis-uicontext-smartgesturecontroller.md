@@ -37,7 +37,7 @@ enableSmartTapAndSlideGestures(enabled: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| enabled | boolean | 是 | 是否启用智慧手势的敲一敲和划一划手势处理。true表示启用，false表示关闭。 |
+| enabled | boolean | 是 | 是否启用智慧手势的敲一敲和划一划操作。true表示启用，false表示关闭。 |
 
 **示例：** 
 
