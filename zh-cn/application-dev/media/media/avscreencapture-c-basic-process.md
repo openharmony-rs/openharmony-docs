@@ -119,7 +119,7 @@ OH_AVScreenCapture_SetMicrophoneEnabled(g_avCapture, isMic);
 <!-- @[screenCapture_config_buffer_video](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
-// 获取屏幕信息
+// 获取屏幕信息。
 uint64_t displayId = 0;
 NativeDisplayManager_ErrorCode ret = OH_NativeDisplayManager_GetDefaultDisplayId(&displayId);
 
@@ -164,7 +164,7 @@ AVScreenCapture实例的配置信息为[OH_AVScreenCaptureConfig](../../referenc
 // 初始化录屏，传入配置信息OH_AVScreenCaptureConfig。
 config = {
     .captureMode = OH_CAPTURE_HOME_SCREEN, // 录屏模式设置。
-    .dataType = OH_ORIGINAL_STREAM, // 录屏数据类型，原始码流或文件
+    .dataType = OH_ORIGINAL_STREAM, // 录屏数据类型，原始码流或文件。
     .audioInfo = audioInfo,
     .videoInfo = videoInfo
 };
@@ -192,18 +192,18 @@ void OnStateChange(struct OH_AVScreenCapture *capture, OH_AVScreenCaptureStateCo
 {
     if (stateCode == OH_SCREEN_CAPTURE_STATE_STARTED) {
         OH_LOG_INFO(LOG_APP, "==ScreenCaptureSample== ScreenCapture OnStateChange started");
-        // 处理状态变更
-        // 可选 配置录屏旋转
+        // 处理状态变更。
+        // 可选，配置录屏旋转。
         int32_t ret = OH_AVScreenCapture_SetCanvasRotation(capture, true);
-        // 可选 修改Canvas分辨率
+        // 可选，修改Canvas分辨率。
         ret = OH_AVScreenCapture_ResizeCanvas(g_avCapture, CANVAS_RESIZE_WIDTH, CANVAS_RESIZE_HEIGHT);
-        // 可选 设置是否显示光标
+        // 可选，设置是否显示光标。
         ret = OH_AVScreenCapture_ShowCursor(g_avCapture, true);
-        // 可选 设置视频最大帧率
+        // 可选，设置视频最大帧率。
         ret = OH_AVScreenCapture_SetMaxVideoFrameRate(g_avCapture, CAPTURE_VIDEO_FRAME_RATE);
     }
     if (stateCode == OH_SCREEN_CAPTURE_STATE_INTERRUPTED_BY_OTHER) {
-        // 处理状态变更
+        // 处理状态变更。
     }
     (void)userData;
 }
@@ -261,13 +261,13 @@ void OnBufferAvailable(OH_AVScreenCapture *capture, OH_AVBuffer *buffer, OH_AVSc
     OH_LOG_INFO(LOG_APP, "==ScreenCaptureSample== ScreenCapture OnBufferAvailable bufferType is %{public}d",
         bufferType);
     if (bufferType == OH_SCREEN_CAPTURE_BUFFERTYPE_VIDEO) {
-        // 处理视频buffer
+        // 处理视频buffer。
         HandleVideoBuffer(buffer);
     } else if (bufferType == OH_SCREEN_CAPTURE_BUFFERTYPE_AUDIO_INNER) {
-        // 处理内录buffer
+        // 处理内录buffer。
         HandleAudioBuffer(buffer, g_innerFile, "ScreenCapture OnBufferAvailable inner audio");
     } else if (bufferType == OH_SCREEN_CAPTURE_BUFFERTYPE_AUDIO_MIC) {
-        // 处理麦克风buffer
+        // 处理麦克风buffer。
         HandleAudioBuffer(buffer, g_micFile, "ScreenCapture OnBufferAvailable mic audio");
     }
     return;
@@ -361,13 +361,13 @@ void OnBufferAvailable(OH_AVScreenCapture *capture, OH_AVBuffer *buffer, OH_AVSc
     OH_LOG_INFO(LOG_APP, "==ScreenCaptureSample== ScreenCapture OnBufferAvailable bufferType is %{public}d",
         bufferType);
     if (bufferType == OH_SCREEN_CAPTURE_BUFFERTYPE_VIDEO) {
-        // 处理视频buffer
+        // 处理视频buffer。
         HandleVideoBuffer(buffer);
     } else if (bufferType == OH_SCREEN_CAPTURE_BUFFERTYPE_AUDIO_INNER) {
-        // 处理内录buffer
+        // 处理内录buffer。
         HandleAudioBuffer(buffer, g_innerFile, "ScreenCapture OnBufferAvailable inner audio");
     } else if (bufferType == OH_SCREEN_CAPTURE_BUFFERTYPE_AUDIO_MIC) {
-        // 处理麦克风buffer
+        // 处理麦克风buffer。
         HandleAudioBuffer(buffer, g_micFile, "ScreenCapture OnBufferAvailable mic audio");
     }
     return;
@@ -458,7 +458,7 @@ config.videoInfo.videoCapInfo.videoFrameHeight = displayInfo->height;
 config.captureMode = OH_CAPTURE_HOME_SCREEN;
 ```
 
-### 录制指定窗口（推荐）
+### 录制指定窗口
 
 即[OH_CAPTURE_SPECIFIED_WINDOW](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode)模式。
 
@@ -526,11 +526,11 @@ config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(g_missionIds2
 
 ## 弹窗模式说明
 
-从API version 23开始，支持不同设备通过[OH_AVScreenCapture_StrategyForPickerPopUp](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup)控制是否弹出选择共享内容弹窗。
+从API version 23开始，支持PC/2in1设备、Phone/Tablet设备通过[OH_AVScreenCapture_StrategyForPickerPopUp](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup)控制是否统一弹出选择共享内容弹窗。
 
 ### OH_AVScreenCapture_StrategyForPickerPopUp为true
 
-代表PC/2in1设备、Phone/Tablet设备录屏启动后统一弹出picker，无需指定录屏模式。
+代表设备录屏启动后统一弹出picker，无需指定录屏模式。
 
 <!-- @[screenCapture_buffer_strategy_pickerPopUp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -551,12 +551,11 @@ OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 
 ### OH_AVScreenCapture_StrategyForPickerPopUp为false
 
-代表PC/2in1设备、Phone/Tablet设备录屏启动后不弹出picker，仅弹出隐私保护弹窗，无需指定录屏模式。
+代表设备录屏启动后不弹出picker，仅弹出隐私保护弹窗，无需指定录屏模式。
+
+<!-- @[screenCapture_buffer_strategy_pickerPopUpFalse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
-// 创建AVScreenCapture对象。
-OH_AVScreenCapture* capture = OH_AVScreenCapture_Create();
-
 // 创建CaptureStrategy对象。
 OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
 
