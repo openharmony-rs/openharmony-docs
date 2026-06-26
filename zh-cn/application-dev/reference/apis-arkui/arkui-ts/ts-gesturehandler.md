@@ -451,7 +451,7 @@ onAction(event: Callback\<GestureEvent>): SwipeGestureHandler
 | fingers | number | 否 | 是 | 触发快滑的最少手指数，默认为1，最小为1指，最大为10指。<br/>默认值：1 <br/>取值范围：[1, 10]<br/> |
 | direction | [SwipeDirection](./ts-basic-gestures-swipegesture.md#swipedirection枚举说明) | 否 | 是 | 触发快滑手势的滑动方向。<br/>默认值：SwipeDirection.All |
 | speed | number | 否 | 是 | 识别快滑的最小速度。<br/>默认值：100vp/s <br/>**说明：** <br/>当滑动速度的值小于等于0时，会被转化为默认值。 |
-| isFingerCountLimited<sup>15+</sup> | boolean | 否 | 是 | 是否检查触摸屏幕的手指数量。true表示检查触摸屏幕的手指数量，false表示不检查触摸屏幕的手指数量。如果触摸手指的数量不等于设置的触发滑动的最少手指数（即上述fingers参数），手势识别将失败。<br>默认值：false<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| isFingerCountLimited<sup>15+</sup> | boolean | 否 | 是 | 是否检查触摸屏幕的手指数量。true表示检查触摸屏幕的手指数量，false表示不检查触摸屏幕的手指数量。如果触摸手指的数量不等于设置的触发快滑的最少手指数（即上述fingers参数），手势识别将失败。<br>默认值：false<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 
 ## PinchGestureHandler
 

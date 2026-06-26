@@ -48,7 +48,7 @@ GestureGroup(mode: GestureMode, ...gesture: GestureType[])
 
 onCancel(event: () => void)
 
-手势识别成功，接收到触摸取消事件，触发回调。
+手势识别后，接收到触摸取消事件时，触发此回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
