@@ -573,15 +573,15 @@ OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 
 ### OH_AVScreenCapture_StrategyForPickerPopUp为默认值
 
-**对于PC/2in1设备、Phone/Tablet设备，录屏弹窗行为有所差异**：
+对于PC/2in1设备、Phone/Tablet设备，录屏弹窗行为有所差异。
 
-在PC/2in1设备上，根据不同录屏模式有不同弹窗行为：
+- 在PC/2in1设备上，根据不同录屏模式有不同弹窗行为。
 
 - **录制指定屏幕（OH_CAPTURE_SPECIFIED_SCREEN）**：启动录屏后会弹出选择共享内容弹窗，并默认选中displayId参数对应的屏幕。
 - **录制主屏幕（OH_CAPTURE_HOME_SCREEN）**：启动录屏后不会弹出选择共享内容弹窗，仅弹出隐私保护弹窗，displayId参数不生效，默认使用主屏ID。
 - **录制指定窗口（OH_CAPTURE_SPECIFIED_WINDOW）**：传入单个窗口Id时，弹出选择共享内容弹窗并默认选中指定窗口；传入多个窗口Id时，不弹出选择共享内容弹窗，仅弹出隐私保护弹窗。
 
-在Phone/Tablet设备上，不同录屏模式下统一不弹出Picker，仅弹出隐私保护弹窗。
+- 在Phone/Tablet设备上，不同录屏模式下统一不弹出Picker，仅弹出隐私保护弹窗。
 
 ## 更多资源
 
