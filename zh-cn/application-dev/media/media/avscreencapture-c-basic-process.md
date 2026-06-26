@@ -156,6 +156,7 @@ AVScreenCapture实例的配置信息为[OH_AVScreenCaptureConfig](../../referenc
 配置完成后通过[OH_AVScreenCapture_Init](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_init)将配置项设置到[OH_AVScreenCapture](../../reference/apis-media-kit/capi-avscreencapture-oh-avscreencapture.md)中。
 
 > **说明：**
+>
 > 根据不同的录屏场景，可选择不同的录屏模式，详情见[录屏模式说明](#录屏模式说明)。在PC/2in1设备上，不同录屏模式会有不同弹窗表现，详情见[弹窗模式说明](#弹窗模式说明)。
 
 <!-- @[screenCapture_config_buffer_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
@@ -462,7 +463,7 @@ config.captureMode = OH_CAPTURE_HOME_SCREEN;
 
 即[OH_CAPTURE_SPECIFIED_WINDOW](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode)模式。
 
-应用需根据设备分辨率配置录屏的高度和宽度值并传入屏幕Id。
+应用需根据设备分辨率配置录屏的高度和宽度值并传入屏幕ID。
 
 若期望录制某个指定窗口，需要设置指定的窗口Id。该场景下，启动录屏后，系统会默认选中指定的窗口。
 
