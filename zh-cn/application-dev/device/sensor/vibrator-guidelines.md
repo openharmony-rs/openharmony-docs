@@ -310,11 +310,18 @@ JSON文件共包含3个属性。
    if (rawFd != undefined) {
      // 触发马达振动
      try {
+       let listVibratorInfo:Array<vibrator.VibratorInfo>=vibrator.getVibratorInfoSync();
+       console.info('listVibratorInfo:', JSON.stringify(listVibratorInfo));
+       if(!listVibratorInfo||listVibratorInfo.length<=0){
+         this.getUIContext().getPromptAction().showToast({ message:"未找到震动设备" });
+         return;
+       }
        vibrator.startVibration({
          type: "file",
          hapticFd: { fd: rawFd.fd, offset: rawFd.offset, length: rawFd.length }
        }, {
          id: 0,
+         deviceId: listVibratorInfo[0].deviceId,
          usage: 'alarm' // 根据实际选择类型归属不同的开关管控
        }, (error: BusinessError) => {
          if (error) {
