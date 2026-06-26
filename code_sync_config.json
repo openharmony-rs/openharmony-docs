@@ -18413,6 +18413,16 @@
 						"start_line":311
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets",
+				"functions":[
+					{
+						"end_line":326,
+						"name":"stop_discovering",
+						"start_line":310
+					}
+				]
 			}
 		]
 	},
