@@ -372,7 +372,7 @@ class TestA { static prop1: number = 0; } TestA.prop1;
 ``` TypeScript
 // 混淆前：
 if (flag) {
-  console.info("hello");
+  console.info('hello');
 }
 ```
 
