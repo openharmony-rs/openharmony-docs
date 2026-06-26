@@ -241,7 +241,7 @@ avSession.getHistoricalSessionDescriptors(1, (descriptors: avSession.AVSessionDe
 
 ## avSession.getHistoricalAVQueueInfos<sup>11+</sup>
 
-ArkTS-Dyn: getHistoricalAVQueueInfos(maxSize: number, maxAppSize: number) : Promise\<Array\<Readonly\<AVQueueInfo>>>
+ArkTS-Dyn: getHistoricalAVQueueInfos(maxSize: number, maxAppSize: number): Promise\<Array\<Readonly\<AVQueueInfo>>>
 
 ArkTS-Sta: getHistoricalAVQueueInfos(maxSize: int, maxAppSize: int) : Promise\<Array\<Readonly\<AVQueueInfo>>>
 
@@ -1370,7 +1370,7 @@ on(type: 'sessionServiceDie', callback: () => void): void
 
 ```ts
 avSession.on('sessionServiceDie', () => {
-  console.info('on sessionServiceDie  : session is  Died ');
+  console.info('on sessionServiceDie : session is dead ');
 });
 ```
 
@@ -1787,7 +1787,7 @@ let cmd : avSession.AVControlCommandType = 'play';
 // let cmd : avSession.AVControlCommandType = 'fastForward';
 // let cmd : avSession.AVControlCommandType = 'rewind';
 let avcommand: avSession.AVControlCommand = {command:cmd};
-// let cmd : avSession.AVControlCommandType = 'seek';
+// let cmd: avSession.AVControlCommandType = 'seek';
 // let avcommand = {command:cmd, parameter:10};
 // let cmd : avSession.AVControlCommandType = 'setSpeed';
 // let avcommand = {command:cmd, parameter:2.6};
@@ -2682,7 +2682,7 @@ ArkTS-Sta: startDeviceLogging(url: string, maxSize?: int): Promise\<void>
 | 参数名   | 类型                                  | 必填 | 说明                                  |
 | -------- | ------------------------------------- | ---- | ------------------------------------- |
 | url | string                   | 是   | 目标文件描述符（打开文件的唯一标识）。 |
-| maxSize | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 写入最大日志大小（以KB为单位）。 |
+| maxSize | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 写入最大日志大小（以kB为单位）。 |
 
 **返回值：**
 
@@ -2904,7 +2904,7 @@ avSession.offDeviceLogEvent();
 
 ## AVCastController<sup>10+</sup>
 
-在投播建立后，调用[avSession.getAVCastController](arkts-apis-avsession-AVSession.md#getavcastcontroller10)后，返回会话控制器实例。控制器可查看会话ID，并可完成对会话发送命令及事件，获取会话元数据，播放状态信息等操作。
+投播建立后，调用[avSession.getAVCastController](arkts-apis-avsession-AVSession.md#getavcastcontroller10)可返回会话控制器实例。控制器可查看会话ID，并可完成对会话发送命令及事件，获取会话元数据，播放状态信息等操作。
 
 ### setDisplaySurface<sup>10+</sup>
 
@@ -3189,7 +3189,7 @@ aVCastController.offVideoSizeChange();
 
 | 名称       | 类型           | 必填 | 说明                   |
 | ---------- | -------------- | ---- | ---------------------- |
-| ipAddress | string | 否   | 播放设备的ip地址。<br/>此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast <br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：22    |
+| ipAddress | string | 否   | 播放设备的IP地址。<br/>此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast <br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：22    |
 | providerId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 播放设备提供商。<br/>此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast <br>**ArkTS-Dyn起始版本**：10 <br>**ArkTS-Sta起始版本**：22   |
 | authenticationStatus<sup>11+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 播放设备是否可信。默认为0。0代表设备不可信，1代表设备可信。<br/>此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast <br>**ArkTS-Dyn起始版本**：11 <br>**ArkTS-Sta起始版本**：22   |
 | networkId<sup>13+</sup> | string | 否   | 播放设备的网络ID。 <br/>此接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast <br>**ArkTS-Dyn起始版本**：13 <br>**ArkTS-Sta起始版本**：22|
