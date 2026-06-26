@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-组件内转场主要通过transition属性配置转场参数，在组件插入和删除时显示过渡动效，主要用于容器组件中的子组件插入和删除时，提升用户体验。组件内转场可与[animateTo](ts-explicit-animation.md)、[animation](ts-page-transition-animation.md)配合使用，详细的使用方法请参考[转场动画开发指导](../../../ui/arkts-enter-exit-transition.md)。
+组件内转场主要通过transition属性配置转场参数，在组件插入和删除时显示过渡动效，主要用于容器组件中的子组件插入和删除时，提升用户体验。组件内转场可与[animateTo](ts-explicit-animation.md)、[animation](ts-animatorproperty.md)配合使用，详细的使用方法请参考[转场动画开发指导](../../../ui/arkts-enter-exit-transition.md)。
 
 >  **说明：**
 >
