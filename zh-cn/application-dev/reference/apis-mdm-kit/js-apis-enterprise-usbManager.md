@@ -270,7 +270,7 @@ try {
 
 getUsbStorageDeviceAccessPolicy(admin: Want): UsbPolicy
 
-获取USB存储设备（baseClass = 0X08）访问策略。
+获取USB存储设备（baseClass = 0x08）访问策略。
 
 **需要权限：** API版本26.0.0之前：ohos.permission.ENTERPRISE_MANAGE_USB，API版本26.0.0开始：ohos.permission.ENTERPRISE_MANAGE_USB 或者 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS（应用[激活为自带设备管理应用](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)）。
 
