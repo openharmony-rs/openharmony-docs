@@ -707,7 +707,7 @@ struct EnableAutoSpacing {
 }
 ```
 
-![RichEditor_enable_auto_spacing](figures/RichEditor_enable_auto_spacinge.gif)
+![RichEditor_enable_auto_spacing](figures/RichEditor_enable_auto_spacing.gif)
 
 ### 设置最大行数
 
