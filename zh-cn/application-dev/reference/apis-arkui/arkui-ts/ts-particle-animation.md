@@ -215,7 +215,7 @@ interface EmitterOptions<PARTICLE extends ParticleType> {
 
 | 名称   | 类型   | 只读 | 可选 | 说明 |
 | -------- | ------- | ------- | -------- | -------- |
-| radius      | [VP](ts-types.md#vp10)| 否 | 否    | 粒子半径。<br/>默认值：0，小于0时取默认值0。取值范围：[0, +∞)。 |
+| radius      | [VP](ts-types.md#vp10)| 否 | 否    | 粒子半径。<br/>默认值：0，小于0时取默认值0。</br>取值范围：[0, +∞) |
 
 ## ImageParticleParameters
 

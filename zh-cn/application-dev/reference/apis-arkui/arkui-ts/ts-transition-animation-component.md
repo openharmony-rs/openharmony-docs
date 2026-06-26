@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-组件内转场主要通过transition属性配置转场参数，在组件插入和删除时显示过渡动效，主要用于容器组件中的子组件插入和删除时，提升用户体验。组件内转场可与animateTo、animation配合使用，详细的使用方法请参考[转场动画开发指导](../../../ui/arkts-enter-exit-transition.md)。
+组件内转场主要通过transition属性配置转场参数，在组件插入和删除时显示过渡动效，主要用于容器组件中的子组件插入和删除时，提升用户体验。组件内转场可与[animateTo](ts-explicit-animation.md)、[animation](ts-page-transition-animation.md)配合使用，详细的使用方法请参考[转场动画开发指导](../../../ui/arkts-enter-exit-transition.md)。
 
 >  **说明：**
 >
@@ -561,7 +561,7 @@ struct TransitionEffectExample3 {
 
 ### 示例4（visibility切换时的双动画复合效果）
 
-该示例演示当visibility在Visibility.Visible与Visibility.None之间切换时，transition与布局动画叠加形成双动画复合表现的效果。
+该示例演示当[visibility](ts-universal-attributes-visibility.md#visibility)在Visibility.Visible与Visibility.None之间切换时，(transition)[#transition]与布局动画叠加形成双动画复合表现的效果。
 
 ```ts
 // xxx.ets
@@ -587,8 +587,8 @@ struct TransitionVisibilityExample {
       .height(100)
       .backgroundColor('#317AF7')
       .justifyContent(FlexAlign.Center)
-      .visibility(this.isVisible ? Visibility.Visible : Visibility.None)
       .transition(TransitionEffect.OPACITY.animation({ duration: 1000 }))
+      .visibility(this.isVisible ? Visibility.Visible : Visibility.None)
     }.width('100%').height('100%').justifyContent(FlexAlign.Center)
   }
 }

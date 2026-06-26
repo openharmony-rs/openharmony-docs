@@ -33,7 +33,7 @@ animation(value:AnimateParam): T
 **参数：**
 | 参数名   | 类型                                | 必填 | 说明                                    |
 | ----- | --------------------------------- | ---- | ------------------------------------- |
-| value | [AnimateParam](ts-explicit-animation.md#animateparam对象说明) | 是    | 设置动画效果相关参数。当value传入null或undefined时，不产生动画效果。                           |
+| value | [AnimateParam](ts-explicit-animation.md#animateparam对象说明) | 是    | 设置动画效果相关参数。不推荐传入null或undefined，如果传入null或undefined时效果为不产生动画，但在animation发生嵌套时会造成外层的animation动画范围异常。    |
 
 **返回值：**
 
