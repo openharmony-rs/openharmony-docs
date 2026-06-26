@@ -1345,6 +1345,16 @@ Text组件通过设置[bindSelectionMenu](../reference/apis-arkui/arkui-ts/ts-ba
 Text组件通过设置[TextMenuShowMode](../reference/apis-arkui/arkui-ts/ts-text-common.md#TextMenuShowMode16)控制文本菜单在哪个窗口中渲染。主窗口模式下，菜单节点挂载到主窗口根节点，菜单可能被页面内容遮挡、受页面滚动影响；子窗口模式下，菜单节点挂载到独立子窗口的根节点，菜单浮在主窗口之上，不受页面布局影响
 
   <!-- @[set_menu_options_with_textmenushowmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextMenuShowSubWindow.ets) -->
+  
+  ``` TypeScript
+  this.getUIContext()
+    .getTextMenuController()
+    .setMenuOptions(
+      {
+        showMode: TextMenuShowMode.PREFER_WINDOW
+      }
+    );
+  ```
 
   <!-- @[textmenushowmode_create_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextMenuShowSubWindow.ets) -->
 
