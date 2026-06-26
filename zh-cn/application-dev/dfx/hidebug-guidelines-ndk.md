@@ -1,4 +1,4 @@
-# HiDebug接口使用示例(C/C++)
+# HiDebug接口使用示例（C/C++）
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->

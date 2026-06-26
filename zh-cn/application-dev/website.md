@@ -1572,8 +1572,8 @@
           - [使用HiChecker检测问题（ArkTS）](dfx/hichecker-guidelines-arkts.md)
         - 系统调试信息获取<!--hidebug-->
           - [HiDebug能力概述](dfx/hidebug-guidelines.md)
-          - [HiDebug接口使用示例(ArkTS)](dfx/hidebug-guidelines-arkts.md)
-          - [HiDebug接口使用示例(C/C++)](dfx/hidebug-guidelines-ndk.md)
+          - [HiDebug接口使用示例（ArkTS）](dfx/hidebug-guidelines-arkts.md)
+          - [HiDebug接口使用示例（C/C++）](dfx/hidebug-guidelines-ndk.md)
         - 业务线程超时检测<!--hicollie-->
           - [使用HiCollie检测业务线程卡死卡顿问题（C/C++）](dfx/hicollie-guidelines-ndk.md)
           - [使用HiCollie监控函数执行时间超长问题（C/C++）](dfx/hicollie-settimer-guidelines-ndk.md)
