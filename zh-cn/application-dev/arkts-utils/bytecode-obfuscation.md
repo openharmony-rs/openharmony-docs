@@ -418,10 +418,10 @@ if (flag) {
     ``` TypeScript
     switch (value) {
       case 1:
-        console.info("in switch case");
+        console.info('in switch case');
         break;
       default:
-        console.info("default");
+        console.info('default');
     }
     ```
 
