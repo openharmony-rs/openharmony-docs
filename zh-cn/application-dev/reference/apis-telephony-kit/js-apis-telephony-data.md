@@ -719,7 +719,7 @@ data.getActiveApnName().then((apn: string) => {
 
 showSystemApnSettings(context: Context): Promise\<void>
 
-调用该接口可打开当前默认移动数据SIM卡对应的APN配置界面。使用Promise异步回调。
+打开当前默认移动数据卡对应的APN配置界面。使用Promise异步回调。
 
 > **说明：**
 >
@@ -759,9 +759,9 @@ import { common } from '@kit.AbilityKit';
 
 let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
 data.showSystemApnSettings(context).then(() => {
-    console.info("showSystemApnSettings success");
+  console.info("showSystemApnSettings success");
 }).catch(() => {
-    console.error("showSystemApnSettings failed");
+  console.error("showSystemApnSettings failed");
 });
 ```
 
