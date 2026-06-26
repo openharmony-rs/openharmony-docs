@@ -157,7 +157,7 @@ load libentry.so failed.
 **参考文档**
 
 - [Node-API常见问题](../napi/use-napi-faqs.md)
-- [loadNativeModule接口参考](../reference/common/js-apis-common-load-native-module.md)
+- [loadNativeModule](../reference/common/js-apis-common-load-native-module.md)
 - [语言基础类库错误码10200301](../reference/apis-arkts/errorcode-utils.md)
 
 
