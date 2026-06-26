@@ -289,7 +289,7 @@
    
    ``` TypeScript
    @Builder
-   pixelMapBuilder() {
+   pixelMapBuilder(): void {
      Column() {
        // 请将$r('app.media.startIcon')替换为实际资源文件
        Image($r('app.media.startIcon'))
@@ -788,7 +788,7 @@ export struct DefaultDrag {
   @State pixmap: image.PixelMap | undefined = undefined;
 
   @Builder
-  pixelMapBuilder() {
+  pixelMapBuilder(): void {
     Column() {
       // 请将$r('app.media.startIcon')替换为实际资源文件
       Image($r('app.media.startIcon'))
@@ -842,7 +842,7 @@ export struct DefaultDrag {
   }
 
 
-  build() {
+  build(): void {
     // ...
         Row() {
           Column() {
@@ -1002,6 +1002,11 @@ export struct DefaultDrag {
            .id('grid' + idx)
        }
        // ...
+       .onDragStart(() => {
+         return {} as DragItemInfo;
+       })
+       .selectable(true)
+       // ...
      }, (idx: int, index: int) => idx.toString())
    }
    ```
@@ -1114,7 +1119,7 @@ export struct DefaultDrag {
    @State previewData: Array<DragItemInfo> = new Array<DragItemInfo>();
    @State isSelectedGrid: Array<boolean> = new Array<boolean>();
    // ...
-   build() {
+   build(): void {
      NavDestination() {
        Column({ space: 5 } as ColumnOptions) {
          // ...
@@ -1194,7 +1199,7 @@ export struct DefaultDrag {
     }
     
     // ...
-    build() {
+    build(): void {
       NavDestination() {
         Column({ space: 5 } as ColumnOptions) {
           // ...
@@ -1255,7 +1260,7 @@ export struct DefaultDrag {
     ``` TypeScript
     @State numberBadge: int = 0;
     // ...
-    build() {
+    build(): void {
       NavDestination() {
         Column({ space: 5 } as ColumnOptions) {
           // ...
@@ -1748,7 +1753,7 @@ export struct DropAnimationExample {
       });
     };
 
-  build() {
+  build(): void {
     // ...
       Row() {
         Column() {
@@ -2608,7 +2613,7 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
   <!-- @[springLoading_example](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/EventProjectSta/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
   
   ``` TypeScript
-  build() {
+  build(): void {
     Column() {
       // ...
         Column() {
@@ -3068,7 +3073,7 @@ export struct SpringLoadingPage {
     }
   }
 
-  build() {
+  build(): void {
     Column() {
       // ...
         Column() {
