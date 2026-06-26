@@ -283,6 +283,15 @@ TextArea({ text: $r('app.string.show_selected_menu') })
 
 <!-- @[editMenu_textinput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
 
+``` TypeScript
+// 请将$r('app.string.show_selected_menu')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示选中菜单"
+TextInput({ text: $r('app.string.show_selected_menu') })
+  .editMenuOptions(this.editMenuOptions)
+  .onTextSelectionChange((selectionStart: number, selectionEnd: number) => {
+    this.endIndex = selectionEnd;
+  })
+```
+
 ![TextInput_edit_menu_options](figures/TextInput_edit_menu_options.gif)
 
 ### 系统菜单中屏蔽系统菜单项
