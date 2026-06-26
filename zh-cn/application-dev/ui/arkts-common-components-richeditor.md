@@ -665,6 +665,48 @@ build() {
 
 <!-- @[richEditor_enableAutoSpacing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
+``` TypeScript
+@Component
+struct EnableAutoSpacing {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+  @State
+  enableAutoSpace:boolean = false;
+
+  build() {
+    Column() {
+      // ...
+      Column({ space: 3 }) {
+        RichEditor(this.options)
+          .onReady(() => {
+            // 请将$r('app.string.Demo_autoSpacingString')替换为实际资源文件，在本示例中该资源文件的value值为"中西文Auto Spacing自动间距"
+            this.controller.addTextSpan($r('app.string.Demo_autoSpacingString'),
+              {
+                style:
+                {
+                  fontColor: Color.Orange,
+                  fontSize: 20
+                }
+              })
+          })
+          .enableAutoSpacing(this.enableAutoSpace)
+        // 请将$r('app.string.Demo_autoSpacingButton')替换为实际资源文件，在本示例中该资源文件的value值为"开启中西文自动间距"
+        Button($r('app.string.Demo_autoSpacingButton'))
+          .fontSize(20)
+          .onClick(() => {
+            this.enableAutoSpace = true;
+          })
+      }
+      // ...
+    }.alignItems(HorizontalAlign.Start)
+    .backgroundColor('#fff')
+    .borderRadius(12)
+    .padding(12)
+    .width('100%')
+  }
+}
+```
+
 ![RichEditor_enable_auto_spacing](figures/RichEditor_enable_auto_spacinge.gif)
 
 ### 设置最大行数
