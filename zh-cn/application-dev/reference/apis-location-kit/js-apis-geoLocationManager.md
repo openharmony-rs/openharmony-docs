@@ -3356,6 +3356,18 @@ findMatchingWlan(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, nee
     console.error("findMatchingWlan: errCode " + error.code + ", errMessage " + error.message);
   }
   ```
+  
+  ## BluetoothSearchRequestParams
+
+蓝牙扫描请求参数。
+
+**系统能力**：SystemCapability.Location.Location.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| deviceIdArray | Array&lt;string&gt; | 否 | 否 | 表示设备ID列表，用于过滤扫描结果。单个字符串的长度不超过64，数组的长度不超过1000。 |
+| rssiThreshold | number | 否 | 是 | 表示RSSI阈值，只扫描RSSI大于此阈值的设备。取值范围为-10000至10000（单位：dBm）。 |
+  
 
 ## geoLocationManager.startBluetoothSearch<sup>26+</sup>
 
