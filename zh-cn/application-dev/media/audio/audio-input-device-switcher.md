@@ -95,7 +95,7 @@ let currentInputDeviceChangedCallback = (currentInputDeviceChangedEvent: audio.C
     // ...
 
     // 当前可选音频输入设备列表不为空时,可进行选择。
-    if (data[0]) {
+    if (data.length > 0) {
       // 选择输入设备。
       await audioSessionManager.selectMediaInputDevice(data[0]).then(() => {
         console.info('Succeeded in selecting media input device.');
