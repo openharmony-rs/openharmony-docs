@@ -717,6 +717,7 @@ getAllWindowLayoutInfo(displayId: number): Promise&lt;Array&lt;WindowLayoutInfo&
 |----------| ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 | 801      | Capability not supported. Function getAllWindowLayoutInfo can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal.<br/>适用版本：15-18 |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 
 **示例：**

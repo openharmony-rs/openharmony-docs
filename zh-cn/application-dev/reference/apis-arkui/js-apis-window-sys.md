@@ -2403,7 +2403,7 @@ setWakeUpScreen(wakeUp: boolean): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
@@ -2442,7 +2442,7 @@ setSnapshotSkip(isSkip: boolean): void
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal. |
 
