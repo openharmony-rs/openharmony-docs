@@ -41,11 +41,11 @@
       - [AVScreenCapture录屏自定义场景](avscreencapture-c-custom-scenarios.md)
       - [录屏常见问题](avscreencapture-faqs.md)
     - [使用AVScreenCapture录屏写文件(C/C++)](using-avscreencapture-for-file.md)
-    - [使用AVScreenCapture实现窗口级录屏(C/C++)](using-avscreencapture-for-file-with-window.md)
+    - [使用AVScreenCapture实现窗口级录屏(C/C++)](using-avscreencapture-for-file-with-window.md)<!--RP3--><!--RP3End-->
     - [屏幕录制支持矩形区域录制(C/C++)](video-supports-rectangular-area-recording.md)
   - 媒体信息查询<!--media-info-c-->
     - [使用AVMetadataExtractor获取元数据(C/C++)](using-ndk-avmetadataextractor-for-media.md)
     - [使用AVImageGenerator获取视频帧(C/C++)](using-ndk-avimagegenerator-for-video.md)
   - 视频转码<!--media-transcoder-c-->
-    - [使用AVTranscoder实现视频转码(C/C++)](using-ndk-avtranscoder-for-transcodering.md)<!--RP1--><!--RP1End--><!--RP3--><!--RP3End-->
+    - [使用AVTranscoder实现视频转码(C/C++)](using-ndk-avtranscoder-for-transcodering.md)<!--RP1--><!--RP1End-->
 - [Media Kit术语](media-glossary.md)
