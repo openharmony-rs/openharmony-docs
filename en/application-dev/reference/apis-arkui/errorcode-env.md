@@ -6,11 +6,11 @@
 <!--Tester: @zhangwenhan12-->
 <!--Adviser: @zhang_yixin13-->
 
-> **NOTE:**
+> **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-## 140000 Invalid \@Env Input Parameter
+## 140000 Invalid Key for \@Env
 
 **Error Message**
 
@@ -18,11 +18,11 @@ Invalid key for @Env
 
 **Description**
 
-This error code is reported when an invalid parameter is passed to [\@Env](./arkui-ts/ts-env-system-property.md#env).
+This error code is reported when the key for [\@Env](./arkui-ts/ts-env-system-property.md#env) is invalid.
 
 **Possible Causes**
 
-The parameter provided to \@Env is invalid. \@Env supports the parameter of the [SystemProperties](./arkui-ts/ts-env-system-property.md#systemproperties) \| [SystemEnvKey\<T\>](./arkui-ts/ts-env-system-property.md#systemenvkeyt) type. For details, see [Supported Parameters](../../ui/arkts-env-system-property.md#supported-parameters).
+The key for \@Env is invalid. \@Env supports the parameter of the [SystemProperties](./arkui-ts/ts-env-system-property.md#systemproperties) \| [SystemEnvKey\<T\>](./arkui-ts/ts-env-system-property.md#systemenvkeyt) type. For details, see [Supported Parameters](../../ui/arkts-env-system-property.md#supported-parameters).
 
 **Solution**
 

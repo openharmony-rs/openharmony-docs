@@ -806,7 +806,7 @@ Obtains whether this RenderNode needs to be clipped.
 
 | Type   | Description                                               |
 | ------- | --------------------------------------------------- |
-| boolean | Whether the current RenderNode needs to be clipped. The default value is **true**.<br>The value **true** means the current RenderNode needs to be clipped, and **false** means the opposite.|
+| boolean | Whether the current RenderNode needs to be clipped. The default value is **true**.<br>The value **true** means the RenderNode needs to be clipped, and **false** means the opposite.|
 
 **Example**
 ```ts
@@ -3110,31 +3110,66 @@ Obtains the background blur effect.
 **Example**
 
 ```ts
-import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+// Extend RenderNode to implement custom drawing.
+class MyRenderNode extends RenderNode {
+  uiContext: UIContext;
+
+  constructor(uiContext: UIContext) {
+    super();
+    this.uiContext = uiContext;
+    this.frame = {
+      x: 0,
+      y: 0,
+      width: 150,
+      height: 150
+    };
+  }
+
+  // Invoked when the RenderNode undergoes drawing operations.
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({
+      alpha: 255,
+      red: 0,
+      green: 74,
+      blue: 175
+    });
+    canvas.attachBrush(brush);
+    canvas.drawRect({
+      left: 100,
+      right: 300,
+      top: 100,
+      bottom: 300
+    });
+    canvas.detachBrush();
+  }
+}
 
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(uiContext);
-    let frameNode = new FrameNode(uiContext);
-    frameNode.commonAttribute
+    this.rootNode.commonAttribute
       .width(200)
       .height(200)
-      .backgroundColor('0xffd5d5d5')
-      .backgroundImage($r('app.media.img')) // Replace it with the image resource file you use.
-      .backgroundImagePosition({ x: 25, y: 25 })
-      .backgroundImageSize({ width: 150, height: 100 });
-    this.rootNode.appendChild(frameNode);
-    let blurRenderNode = frameNode.getRenderNode();
-    // Set a background blur effect.
-    if (blurRenderNode != null) {
-      blurRenderNode.backgroundBlur = {
+      .backgroundImage($r('app.media.cubic')) // Replace it with the image resource file you use.
+      .backgroundImageSize({ width: 200, height: 200 });
+    let renderNode = this.rootNode.getRenderNode();
+    if (renderNode != null) {
+      let myRenderNode = new MyRenderNode(uiContext);
+      // Set a background blur effect.
+      myRenderNode.backgroundBlur = {
         radius: 20,
-        grayscale: [10, 10]
+        grayscale: [50, 50]
       };
-      const backgroundBlur = blurRenderNode.backgroundBlur;
-      console.info(`background blur radius: ${backgroundBlur.radius} grayscale: [${backgroundBlur.grayscale}]`);
+      renderNode.appendChild(myRenderNode);
+      const backgroundBlurConfig = myRenderNode.backgroundBlur;
+      console.info(`background blur radius: ${backgroundBlurConfig.radius} grayscale: [${backgroundBlurConfig.grayscale}]`);
     }
     return this.rootNode;
   }
@@ -3146,7 +3181,7 @@ struct Index {
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
-    Column() {
+    Column({ space: 10 }) {
       NodeContainer(this.myNodeController)
     }
     .width('100%')
@@ -3154,6 +3189,7 @@ struct Index {
     .padding(20)
   }
 }
+
 ```
 
 ![](figures/backgroundBlur.png)
@@ -3210,8 +3246,8 @@ class MyRenderNode extends RenderNode {
     super();
     this.uiContext = uiContext;
     this.frame = {
-      x: 25,
-      y: 25,
+      x: 0,
+      y: 0,
       width: 150,
       height: 150
     };
@@ -3223,9 +3259,9 @@ class MyRenderNode extends RenderNode {
     const brush = new drawing.Brush();
     brush.setColor({
       alpha: 255,
-      red: 39,
-      green: 135,
-      blue: 217
+      red: 0,
+      green: 74,
+      blue: 175
     });
     canvas.attachBrush(brush);
     canvas.drawRect({
@@ -3245,16 +3281,18 @@ class MyNodeController extends NodeController {
     this.rootNode = new FrameNode(uiContext);
     this.rootNode.commonAttribute
       .width(200)
-      .height(200);
+      .height(200)
+      .backgroundImage($r('app.media.cubic')) // Replace it with the image resource file you use.
+      .backgroundImageSize({ width: 200, height: 200 });
     let renderNode = this.rootNode.getRenderNode();
     if (renderNode != null) {
       let myRenderNode = new MyRenderNode(uiContext);
       // Set a content blur effect.
       myRenderNode.contentBlur = {
         radius: 20,
-        grayscale: [10, 10]
+        grayscale: [50, 50]
       };
-      renderNode.appendChild(myRenderNode)
+      renderNode.appendChild(myRenderNode);
       const contentBlurConfig = myRenderNode.contentBlur;
       console.info(`content blur radius: ${contentBlurConfig.radius} grayscale: [${contentBlurConfig.grayscale}]`);
     }
@@ -3268,7 +3306,7 @@ struct Index {
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
-    Column() {
+    Column({ space: 10 }) {
       NodeContainer(this.myNodeController)
     }
     .width('100%')
@@ -3276,6 +3314,7 @@ struct Index {
     .padding(20)
   }
 }
+
 ```
 
 ![](figures/contentBlur.png)
@@ -3332,8 +3371,8 @@ class MyRenderNode extends RenderNode {
     super();
     this.uiContext = uiContext;
     this.frame = {
-      x: 25,
-      y: 25,
+      x: 0,
+      y: 0,
       width: 150,
       height: 150
     };
@@ -3345,9 +3384,9 @@ class MyRenderNode extends RenderNode {
     const brush = new drawing.Brush();
     brush.setColor({
       alpha: 255,
-      red: 39,
-      green: 135,
-      blue: 217
+      red: 0,
+      green: 74,
+      blue: 175
     });
     canvas.attachBrush(brush);
     canvas.drawRect({
@@ -3367,7 +3406,9 @@ class MyNodeController extends NodeController {
     this.rootNode = new FrameNode(uiContext);
     this.rootNode.commonAttribute
       .width(200)
-      .height(200);
+      .height(200)
+      .backgroundImage($r('app.media.cubic')) // Replace it with the image resource file you use.
+      .backgroundImageSize({ width: 200, height: 200 });
     let renderNode = this.rootNode.getRenderNode();
     if (renderNode != null) {
       let myRenderNode = new MyRenderNode(uiContext);
@@ -3376,8 +3417,8 @@ class MyNodeController extends NodeController {
         radius: 20
       };
       renderNode.appendChild(myRenderNode);
-      const foregroundBlur = myRenderNode.foregroundBlur;
-      console.info(`foreground blur radius: ${foregroundBlur.radius}`);
+      const foregroundBlurConfig = myRenderNode.foregroundBlur;
+      console.info(`foreground blur radius: ${foregroundBlurConfig.radius}]`);
     }
     return this.rootNode;
   }
@@ -3389,7 +3430,7 @@ struct Index {
   private myNodeController: MyNodeController = new MyNodeController();
 
   build() {
-    Column() {
+    Column({ space: 10 }) {
       NodeContainer(this.myNodeController)
     }
     .width('100%')

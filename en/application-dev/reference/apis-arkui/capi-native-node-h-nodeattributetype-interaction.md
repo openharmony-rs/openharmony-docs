@@ -35,13 +35,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Hit test mode. The parameter type is [ArkUI_HitTestMode](capi-native-type-h.md#arkui_hittestmode). The default value is **ARKUI_HIT_TEST_MODE_DEFAULT**.|
+| .value[0].i32 | Hit test mode. The parameter type is [ArkUI_HitTestMode](capi-common-attributes-h.md#arkui_hittestmode). The default value is **ARKUI_HIT_TEST_MODE_DEFAULT**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Hit test mode. The parameter type is [ArkUI_HitTestMode](capi-native-type-h.md#arkui_hittestmode). The default value is **ARKUI_HIT_TEST_MODE_DEFAULT**.|
+| .value[0].i32 | Hit test mode. The parameter type is [ArkUI_HitTestMode](capi-common-attributes-h.md#arkui_hittestmode). The default value is **ARKUI_HIT_TEST_MODE_DEFAULT**.|
 
 ## NODE_DEFAULT_FOCUS
 
@@ -289,7 +289,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Focus movement direction, as defined in [ArkUI_FocusMove](capi-native-type-h.md#arkui_focusmove).|
+| .value[0].i32 | Focus movement direction, as defined in [ArkUI_FocusMove](capi-common-attributes-h.md#arkui_focusmove).|
 | .object | Next focus node The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md).|
 
 ## NODE_VISIBLE_AREA_APPROXIMATE_CHANGE_RATIO
@@ -356,13 +356,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Hover effect applied when the component is hovered over. The parameter type is [ArkUI_HoverEffect](capi-native-type-h.md#arkui_hovereffect). The default value is **ARKUI_HOVER_EFFECT_AUTO**.|
+| .value[0].i32 | Hover effect applied when the component is hovered over. The parameter type is [ArkUI_HoverEffect](capi-common-attributes-h.md#arkui_hovereffect). The default value is **ARKUI_HOVER_EFFECT_AUTO**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Hover effect applied when the component is hovered over. The parameter type is [ArkUI_HoverEffect](capi-native-type-h.md#arkui_hovereffect).|
+| .value[0].i32 | Hover effect applied when the component is hovered over. The parameter type is [ArkUI_HoverEffect](capi-common-attributes-h.md#arkui_hovereffect).|
 
 ## NODE_FOCUS_SCOPE_ID
 
@@ -407,14 +407,14 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name| Description|
 | -- | -- |
 | .string | Focus scope identifier.|
-| .value[0].i32 | Focus priority within the focus scope. The parameter type is [ArkUI_FocusPriority](capi-native-type-h.md#arkui_focuspriority). The default value is **ARKUI_FOCUS_PRIORITY_AUTO**.|
+| .value[0].i32 | Focus priority within the focus scope. The parameter type is [ArkUI_FocusPriority](capi-common-attributes-h.md#arkui_focuspriority). The default value is **ARKUI_FOCUS_PRIORITY_AUTO**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
 | .string | Focus scope identifier.|
-| .value[0].i32 | Focus priority within the focus scope. The parameter type is [ArkUI_FocusPriority](capi-native-type-h.md#arkui_focuspriority).|
+| .value[0].i32 | Focus priority within the focus scope. The parameter type is [ArkUI_FocusPriority](capi-common-attributes-h.md#arkui_focuspriority).|
 
 ## NODE_ON_CLICK_EVENT_DISTANCE_THRESHOLD
 
@@ -457,7 +457,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .data[0].i32 | Event tool type for the response region. The parameter type is [ArkUI_ResponseRegionSupportedTool](capi-native-type-h.md#arkui_responseregionsupportedtool). The default value is **ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_ALL**.|
+| .data[0].i32 | Event tool type for the response region. The parameter type is [ArkUI_ResponseRegionSupportedTool](capi-common-attributes-h.md#arkui_responseregionsupportedtool). The default value is **ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_ALL**.|
 | .data[1].f32 | X coordinate of the touch point relative to the upper left corner of the component, in vp. The default value is **0.0**.|
 | .data[2].f32 | Y coordinate of the touch point relative to the upper left corner of the component, in vp. The default value is **0.0**.|
 | .data[3].f32 | Width of the response area, in percentage. The default value is **100.0**.|
@@ -468,7 +468,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .data[0].i32 | Event tool type for the response region. The parameter type is [ArkUI_ResponseRegionSupportedTool](capi-native-type-h.md#arkui_responseregionsupportedtool). The default value is **ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_ALL**.|
+| .data[0].i32 | Event tool type for the response region. The parameter type is [ArkUI_ResponseRegionSupportedTool](capi-common-attributes-h.md#arkui_responseregionsupportedtool). The default value is **ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_ALL**.|
 | .data[1].f32 | X coordinate of the touch point relative to the upper left corner of the component, in vp. The default value is **0.0**.|
 | .data[2].f32 | Y coordinate of the touch point relative to the upper left corner of the component, in vp. The default value is **0.0**.|
 | .data[3].f32 | Width of the response area, in percentage. The default value is **100.0**.|
