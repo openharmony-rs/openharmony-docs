@@ -439,7 +439,7 @@ OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_SetPassword(OH_CryptoAsymKeyGenerato
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_CryptoAsymKeyGenerator](capi-cryptoasymkeyapi-oh-cryptoasymkeygenerator.md) *ctx | 指向非对称加密上下文的指针。 |
+| [OH_CryptoAsymKeyGenerator](capi-cryptoasymkeyapi-oh-cryptoasymkeygenerator.md) *ctx | 非对称密钥生成器。不能为NULL。 |
 | const unsigned char *password | 表示密码。 |
 | uint32_t passwordLen | 表示密码长度。 |
 
