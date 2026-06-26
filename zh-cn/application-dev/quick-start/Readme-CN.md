@@ -48,6 +48,7 @@
     - [ArkTS语法适配背景](arkts-migration-background.md)
     - [从TypeScript到ArkTS的适配规则](typescript-to-arkts-migration-guide.md)
     - [适配指导案例](arkts-more-cases.md)
+  - [ArkTS静态背景](arkts-sta-background.md)
   - [ArkTS静态语言介绍](introduction-to-arkts-sta.md)
   - 从ArkTS-Dyn到ArkTS-Sta的适配指导<!--arkts-dyn-to-arkts-sta-migration-->
     - [ArkTS-Sta语法迁移规则](arkts-dyn-to-sta-syntax-rules.md)
