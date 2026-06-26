@@ -79,13 +79,14 @@ let builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(MyBuilder)]; /
 
 使用\@Builder装饰器装饰的方法`myBuilder`作为wrapBuilder的参数，然后将wrapBuilder的返回值赋值给变量`globalBuilder`，以解决\@Builder方法赋值给变量后无法使用的问题。
 
- <!-- @[wrapbuilder_page_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageTwo.ets) --> 
+ <!-- @[wrapbuilder_page_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageTwo.ets) -->  
  
  ``` TypeScript
  @Builder
  function myBuilder(value: string, size: number) {
    Text(value)
      .fontSize(size)
+     .margin(10)
  }
  
  // 使用wrapBuilder封装myBuilder，并赋值给globalBuilder变量
@@ -108,11 +109,13 @@ let builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(MyBuilder)]; /
  }
  ```
 
+![arkts-wrapBuilder-0](./figures/arkts-wrapBuilder-0.png)
+
 ## @Builder方法赋值给变量在UI语法中使用
 
 自定义组件`IndexItem`使用ForEach进行不同\@Builder函数的渲染，可以使用`builderArr`声明的wrapBuilder数组来实现不同的\@Builder函数的效果。整体代码会更加整洁。
 
-<!-- @[wrapbuilder_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageThree.ets) -->  
+<!-- @[wrapbuilder_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageThree.ets) -->   
 
 ``` TypeScript
 @Builder
@@ -120,6 +123,7 @@ function myBuilder0(value: string, size: number) {
   Text(value)
     .fontSize(size)
     .fontColor(Color.Blue)
+    .margin(10)
 }
 
 @Builder
@@ -127,6 +131,7 @@ function yourBuilder(value: string, size: number) {
   Text(value)
     .fontSize(size)
     .fontColor(Color.Pink)
+    .margin(10)
 }
 
 const builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(myBuilder0), wrapBuilder(yourBuilder)];
@@ -154,6 +159,7 @@ struct IndexItem {
 }
 ```
 
+![arkts-wrapBuilder-1](./figures/arkts-wrapBuilder-1.png)
 
 ## @Builder方法赋值给类或者接口的属性
 
@@ -164,6 +170,7 @@ struct IndexItem {
 function MyBuilder(value: string, size: number) {
   Text(value)
     .fontSize(size)
+    .margin(10)
 }
 
 interface ChildOptions {
@@ -197,11 +204,13 @@ struct Child {
 }
 ```
 
+![arkts-wrapBuilder-2](./figures/arkts-wrapBuilder-2.png)
+
 ## 引用传递
 
 按引用传递参数时，状态变量的改变会引起\@Builder方法内的UI刷新。
 
-<!-- @[wrapbuilder_page_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageFour.ets) --> 
+<!-- @[wrapbuilder_page_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageFour.ets) -->  
 
 ``` TypeScript
 class Tmp {
@@ -212,7 +221,10 @@ class Tmp {
 function overBuilder(param: Tmp) {
   Column() {
     Text(`wrapBuildervalue:${param.paramA2}`)
+      .fontSize(20)
+      .margin(10)
   }
+  .width('100%')
 }
 
 const wBuilder: WrappedBuilder<[Tmp]> = wrapBuilder(overBuilder);
@@ -226,13 +238,19 @@ struct Parent {
     Column() {
       // 引用传递参数，label.paramA2的改变会引起overBuilder内的UI刷新
       wBuilder.builder({ paramA2: this.label.paramA2 });
-      Button('Click me').onClick(() => {
-        this.label.paramA2 = 'ArkUI';
-      })
+      Button('Click me')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.label.paramA2 = 'ArkUI';
+        })
     }
+    .width('100%')
   }
 }
 ```
+
+![arkts-wrapBuilder-3](./figures/arkts-wrapBuilder-3.gif)
 
 ## 常见问题
 
@@ -240,19 +258,21 @@ struct Parent {
 
 在同一个自定义组件内，同一个wrapBuilder只能初始化一次。例如，`builderObj`通过`wrapBuilder(myBuilderFirst)`初始化后，再次对`builderObj`赋值`wrapBuilder(myBuilderSecond)`将不会生效。
 
-<!-- @[wrapbuilder_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageFive.ets) -->
+<!-- @[wrapbuilder_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageFive.ets) --> 
 
 ``` TypeScript
 @Builder
 function myBuilderFirst(value: string, size: number) {
   Text('MyBuilderFirst：' + value)
     .fontSize(size)
+    .margin(10)
 }
 
 @Builder
 function myBuilderSecond(value: string, size: number) {
   Text('MyBuilderSecond：' + value)
     .fontSize(size)
+    .margin(10)
 }
 
 interface BuilderModel {
@@ -275,7 +295,7 @@ struct TestBuilderIndex {
   build() {
     Row() {
       Column() {
-        this.builderObj.globalBuilder.builder(this.message, 20)
+        this.builderObj.globalBuilder.builder(this.message, 20);
       }
       .width('100%')
     }
@@ -283,3 +303,5 @@ struct TestBuilderIndex {
   }
 }
 ```
+
+![arkts-wrapBuilder-4](./figures/arkts-wrapBuilder-4.png)

@@ -238,7 +238,7 @@ link1.set(49); // 双向同步: link1.get() == link2.get() == prop.get() == 49
 
 - \@LocalStorageLink绑定LocalStorage对给定的属性，建立双向数据同步。
 
-<!-- @[localStorage_page_one_double_syn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageOneDoubleSYN.ets) -->
+<!-- @[localStorage_page_one_double_syn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageOneDoubleSYN.ets) --> 
 
 ``` TypeScript
 class Data {
@@ -265,15 +265,20 @@ struct Child {
     Column({ space: 15 }) {
       // 更改将同步至LocalStorage中的'PropA'以及Parent.parentLinkNumber
       Button(`Child from LocalStorage ${this.childLinkNumber}`)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.childLinkNumber += 1;
         })
       // 更改将同步至LocalStorage中的'PropB'以及Parent.parentLinkObject.code
       Button(`Child from LocalStorage ${this.childLinkObject.code}`)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.childLinkObject.code += 1;
         })
     }
+    .width('100%')
   }
 }
 
@@ -290,20 +295,27 @@ struct Parent {
     Column({ space: 15 }) {
       // 由于LocalStorage中PropA已经被初始化，因此this.parentLinkNumber的值为47
       Button(`Parent from LocalStorage ${this.parentLinkNumber}`)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.parentLinkNumber += 1;
         })
       // 由于LocalStorage中PropB已经被初始化，因此this.parentLinkObject.code的值为50
       Button(`Parent from LocalStorage ${this.parentLinkObject.code}`)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.parentLinkObject.code += 1;
         })
       // @Component子组件自动获得对Parent LocalStorage实例的访问权限
       Child()
     }
+    .width('100%')
   }
 }
 ```
+
+![localstorage-syn-0](figures/localstorage-syn-0.gif)
 
 ### \@LocalStorageProp和LocalStorage单向同步的简单场景
 
@@ -313,7 +325,7 @@ struct Parent {
 
 - ChildOne组件中，Text绑定的storagePropTwo 依旧显示47。
 
-<!-- @[localStorage_page_two_single_syn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageTwoSingleSYN.ets) -->
+<!-- @[localStorage_page_two_single_syn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageTwoSingleSYN.ets) --> 
 
 ``` TypeScript
 // 创建新实例并使用给定对象初始化
@@ -331,11 +343,14 @@ struct ParentOne {
     Column({ space: 15 }) {
       // 点击后从47开始加1，只改变当前组件显示的storagePropOne ，不会同步到LocalStorage中
       Button(`ParentOne from LocalStorage ${this.storagePropOne}`)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.storagePropOne += 1;
         })
       ChildOne()
     }
+    .width('100%')
   }
 }
 
@@ -348,16 +363,21 @@ struct ChildOne {
     Column({ space: 15 }) {
       // 当ParentOne改变时，当前storagePropTwo不会改变，显示47
       Text(`ChildOne from LocalStorage ${this.storagePropTwo}`)
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
+
+![localstorage-syn-1](figures/localstorage-syn-1.gif)
 
 ### \@LocalStorageLink和LocalStorage双向同步的简单场景
 
 下面的示例展示了\@LocalStorageLink装饰的数据和LocalStorage双向同步的场景：
 
-<!-- @[localStorage_page_two_way_syn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageTwoWaySYN.ets) -->
+<!-- @[localStorage_page_two_way_syn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageTwoWaySYN.ets) --> 
 
 ``` TypeScript
 // 构造LocalStorage实例
@@ -375,18 +395,24 @@ struct ParentTwo {
   build() {
     Column() {
       Text(`incr @LocalStorageLink variable`)
-      // 点击“incr @LocalStorageLink variable”，this.storageLink加1，改变同步回storage，全局变量linkToPropA也会同步改变
-
+        .fontSize(15)
+        .margin(10)
+        // 点击“incr @LocalStorageLink variable”，this.storageLink加1，改变同步回storage，全局变量linkToPropA也会同步改变
         .onClick(() => {
           this.storageLink += 1;
         })
 
       // 并不建议在组件内使用全局变量linkToPropA.get()，因为可能会有生命周期不同引起的错误。
       Text(`@LocalStorageLink: ${this.storageLink} - linkToPropA: ${linkToPropA.get()}`)
+        .fontSize(15)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
+
+![localstorage-syn-2](figures/localstorage-syn-2.gif)
 
 ### 兄弟组件之间同步状态变量
 
@@ -404,7 +430,7 @@ ChildFour自定义组件中的变化：
 
 playCountLink的刷新会同步回LocalStorage，并且引起兄弟组件和父组件相应的刷新。
 
-<!-- @[localStorage_page_four_state_variable_syn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageFourStateVariableSYN.ets) -->
+<!-- @[localStorage_page_four_state_variable_syn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageFourStateVariableSYN.ets) --> 
 
 ``` TypeScript
 let count: Record<string, number> = { 'countStorage': 1 };
@@ -423,6 +449,7 @@ struct ChildFour {
         .width(50)
         .height(60)
         .fontSize(12)
+        .margin(10)
       Text(`playCountLink ${this.playCountLink}: inc by 1`)
         .onClick(() => {
           this.playCountLink += 1;
@@ -430,6 +457,7 @@ struct ChildFour {
         .width(200)
         .height(60)
         .fontSize(12)
+        .margin(10)
     }
     .width(300)
     .height(60)
@@ -448,6 +476,7 @@ struct ParentFour {
           .width(50)
           .height(60)
           .fontSize(12)
+          .margin(10)
         Text(`playCount ${this.playCount} dec by 1`)
           .onClick(() => {
             this.playCount -= 1;
@@ -455,6 +484,7 @@ struct ParentFour {
           .width(250)
           .height(60)
           .fontSize(12)
+          .margin(10)
       }
       .width(300)
       .height(60)
@@ -464,6 +494,7 @@ struct ParentFour {
           .width(50)
           .height(60)
           .fontSize(12)
+          .margin(10)
         Text(`countStorage ${this.playCount} incr by 1`)
           .onClick(() => {
             storageFour.set<number | undefined>('countStorage', Number(storageFour.get<number>('countStorage')) + 1);
@@ -471,6 +502,7 @@ struct ParentFour {
           .width(250)
           .height(60)
           .fontSize(12)
+          .margin(10)
       }
       .width(300)
       .height(60)
@@ -482,16 +514,20 @@ struct ParentFour {
         .width(300)
         .height(60)
         .fontSize(12)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
+
+![localstorage-syn-3](figures/localstorage-syn-3.gif)
 
 ### 将LocalStorage实例从UIAbility共享到一个或多个页面
 
 上面的实例中，LocalStorage的实例仅仅在一个\@Entry装饰的组件和其所属的子组件（一个页面）中共享，如果希望其在多个页面中共享，可以在所属UIAbility中创建LocalStorage实例，并调用windowStage.[loadContent](../../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9)。
 
-<!-- @[localstorage_export_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/entryability/EntryAbility.ets) --> 
+<!-- @[localstorage_export_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 // EntryAbility.ets
@@ -525,7 +561,7 @@ export default class EntryAbility extends UIAbility {
 
 在下面的用例中，PageFiveShare页面中的propA通过使用共享的LocalStorage实例。点击Button跳转到PageFiveShareChange页面，点击Change propA改变propA的值，back回PageFiveShare页面后，页面中propA的值也同步修改。
 
-<!-- @[localStorage_page_five_share](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageFiveShare.ets) -->
+<!-- @[localStorage_page_five_share](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageFiveShare.ets) --> 
 
 ``` TypeScript
 // PageFiveShare.ets
@@ -544,7 +580,10 @@ struct PageFiveShare {
           Text(`${this.propA}`)
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
+            .margin(10)
           Button('To Page')
+            .width(300)
+            .margin(10)
             .onClick(() => {
               this.pageStack.pushPathByName('Page', null);
             })
@@ -558,7 +597,7 @@ struct PageFiveShare {
 ```
 
 
-<!-- @[localStorage_page_five_share2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageFiveShareChange.ets) -->
+<!-- @[localStorage_page_five_share2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageFiveShareChange.ets) --> 
 
 ``` TypeScript
 
@@ -580,13 +619,18 @@ struct PageFiveShareChange {
           Text(`${this.propA}`)
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
+            .margin(10)
 
           Button('Change propA')
+            .width(300)
+            .margin(10)
             .onClick(() => {
               this.propA = 100;
             })
 
           Button('Back PageFiveShare')
+            .width(300)
+            .margin(10)
             .onClick(() => {
               this.pathStack.pop();
             })
@@ -617,7 +661,7 @@ struct PageFiveShareChange {
 }
 ```
 
-
+![localstorage-syn-4](figures/localstorage-syn-4.gif)
 
 > **说明：**
 >
@@ -642,7 +686,7 @@ struct PageFiveShareChange {
 > 如果定义的属性不需要从父组件初始化变量，则第一个参数需要传{}。
 > 作为构造参数传给子组件的LocalStorage实例在初始化时就会被决定，可以通过@LocalStorageLink或者LocalStorage的API修改LocalStorage实例中保存的属性值，但LocalStorage实例自身不能被动态修改。
 
-<!-- @[localStorage_page_six_local_storage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageSixLocalStorage.ets) --> 
+<!-- @[localStorage_page_six_local_storage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageSixLocalStorage.ets) -->  
 
 ``` TypeScript
 let localStorageOne: LocalStorage = new LocalStorage();
@@ -664,6 +708,7 @@ struct TestIndex {
         Text(this.propA)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
+          .margin(10)
         // 使用LocalStorage实例localStorageTwo
         ChildSix({ count: this.count }, localStorageTwo)
       }
@@ -684,13 +729,16 @@ struct ChildSix {
     Text(this.propB)
       .fontSize(50)
       .fontWeight(FontWeight.Bold)
+      .margin(10)
   }
 }
 ```
 
+![localstorage-syn-5](figures/localstorage-syn-5.png)
+
 1. 当自定义组件没有定义属性时，可以只传入一个LocalStorage实例作为入参。
 
-   <!-- @[localStorage_page_six_local_storageA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageSixLocalStorageA.ets) --> 
+   <!-- @[localStorage_page_six_local_storageA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageSixLocalStorageA.ets) -->  
    
    ``` TypeScript
    let localStorageInstance: LocalStorage = new LocalStorage();
@@ -731,10 +779,11 @@ struct ChildSix {
    }
    ```
 
+   ![localstorage-syn-6](figures/localstorage-syn-6.png)
 
 2. 当定义的属性不需要从父组件初始化变量时，第一个参数需要传{}。
 
-   <!-- @[localStorage_page_six_local_storageB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageSixLocalStorageB.ets) --> 
+   <!-- @[localStorage_page_six_local_storageB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageSixLocalStorageB.ets) -->  
    
    ``` TypeScript
    let localStorageBOne: LocalStorage = new LocalStorage();
@@ -779,6 +828,8 @@ struct ChildSix {
    }
    ```
 
+   ![localstorage-syn-7](figures/localstorage-syn-7.png)
+
 ### Navigation组件和LocalStorage联合使用
 
 可以通过传递不同的LocalStorage实例给自定义组件，从而实现在[Navigation](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)跳转到不同的页面时，绑定不同的LocalStorage实例，显示对应绑定的值。
@@ -795,7 +846,7 @@ struct ChildSix {
 
 - NavigationContentMsgStack自定义组件中的Text组件，共享对应自定义组件树上LocalStorage实例localStorageA中'PropA'对应的值。
 
-<!-- @[localStorage_page_my_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageMyNavigation.ets) --> 
+<!-- @[localStorage_page_my_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageMyNavigation.ets) -->  
 
 ``` TypeScript
 let localStorageA: LocalStorage = new LocalStorage();
@@ -855,6 +906,8 @@ struct PageOneStack {
         NavigationContentMsgStack()
         // 显示绑定的LocalStorage中'PropA'对应的值'propA'
         Text(`${this.propA}`)
+          .fontSize(20)
+          .margin(10)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
           .height(40)
@@ -882,6 +935,8 @@ struct PageTwoStack {
         NavigationContentMsgStack()
         // 如果绑定的LocalStorage中没有'PropB',显示本地初始化的值'Hello World'
         Text(`${this.propB}`)
+          .fontSize(20)
+          .margin(10)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
           .height(40)
@@ -911,6 +966,8 @@ struct PageThreeStack {
 
         // 如果绑定的LocalStorage中没有'PropC',显示本地初始化的值'pageThreeStack'
         Text(`${this.propC}`)
+          .fontSize(20)
+          .margin(10)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
           .height(40)
@@ -937,16 +994,20 @@ struct NavigationContentMsgStack {
       Text(`${this.propA}`)
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
+
+![localstorage-syn-8](figures/localstorage-syn-8.gif)
 
 ### LocalStorage支持联合类型
 
 在下面的示例中，变量linkA的类型为number | null，变量linkB的类型为number | undefined。Text组件初始化分别显示为null和undefined，点击切换为数字，再次点击切换回null和undefined。
 
-<!-- @[localStorage_page_local_storage_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageLocalStorageLink.ets) --> 
+<!-- @[localStorage_page_local_storage_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageLocalStorageLink.ets) -->  
 
 ``` TypeScript
 @Component
@@ -958,18 +1019,23 @@ struct LocalStorageLinkComponent {
   build() {
     Column() {
       Text('@LocalStorageLink API Initialization, @LocalStorageLink Value')
+        .fontSize(20)
+        .margin(10)
       Text(`${this.linkA}`)
         .fontSize(20)
+        .margin(10)
         .onClick(() => {
           this.linkA ? this.linkA = null : this.linkA = 1;
         })
       Text(`${this.linkB}`)
         .fontSize(20)
+        .margin(10)
         .onClick(() => {
           this.linkB ? this.linkB = undefined : this.linkB = 1;
         })
     }
     .borderWidth(3).borderColor(Color.Green)
+    .width('95%')
   }
 }
 
@@ -981,19 +1047,24 @@ struct LocalStoragePropComponent {
   build() {
     Column() {
       Text('@LocalStorageProp API Initialization, @LocalStorageProp Value')
+        .fontSize(20)
+        .margin(10)
       Text(`${this.propA}`)
         .fontSize(20)
+        .margin(10)
         .onClick(() => {
           this.propA ? this.propA = null : this.propA = 1;
         })
       Text(`${this.propB}`)
         .fontSize(20)
+        .margin(10)
         .onClick(() => {
           this.propB ? this.propB = undefined : this.propB = 1;
         })
     }
     .borderWidth(3)
     .borderColor(Color.Yellow)
+    .width('95%')
   }
 }
 
@@ -1015,11 +1086,13 @@ struct LinkIndex {
 }
 ```
 
+![localstorage-syn-9](figures/localstorage-syn-9.gif)
+
 ### 装饰Array类型变量
 
 在下面的示例中，\@LocalStorageLink装饰的message类型为`number[]`，点击Button改变message的值，UI会随之刷新。
 
-<!-- @[localStorage_local_array_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalArraySample.ets) -->
+<!-- @[localStorage_local_array_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalArraySample.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -1063,9 +1136,12 @@ struct Index {
         .width(300)
         .margin(10)
     }
+    .width('100%')
   }
 }
 ```
+
+![localstorage-syn-10](figures/localstorage-syn-10.gif)
 
 ### 装饰Date类型变量
 
@@ -1075,7 +1151,7 @@ struct Index {
 
 在下面的示例中，\@LocalStorageLink装饰的selectedDate类型为Date，点击Button改变selectedDate的值，UI会随之刷新。
 
-<!-- @[localStorage_local_date_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalDateSample.ets) --> 
+<!-- @[localStorage_local_date_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalDateSample.ets) -->  
 
 ``` TypeScript
 @Entry
@@ -1087,21 +1163,25 @@ struct LocalDateSample {
     Column() {
       // 更新Date类型变量，触发UI刷新
       Button('set selectedDate to 2023-07-08')
+        .width(300)
         .margin(10)
         .onClick(() => {
           this.selectedDate = new Date('2023-07-08');
         })
       Button('increase the year by 1')
+        .width(300)
         .margin(10)
         .onClick(() => {
           this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
         })
       Button('increase the month by 1')
+        .width(300)
         .margin(10)
         .onClick(() => {
           this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
         })
       Button('increase the day by 1')
+        .width(300)
         .margin(10)
         .onClick(() => {
           this.selectedDate.setDate(this.selectedDate.getDate() + 1);
@@ -1116,6 +1196,8 @@ struct LocalDateSample {
 }
 ```
 
+![localstorage-syn-11](figures/localstorage-syn-11.gif)
+
 ### 装饰Map类型变量
 
 > **说明：**
@@ -1124,7 +1206,7 @@ struct LocalDateSample {
 
 在下面的示例中，\@LocalStorageLink装饰的message类型为Map\<number, string\>，点击Button改变message的值，UI会随之刷新。
 
-<!-- @[localStorage_local_map_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalMapSample.ets) --> 
+<!-- @[localStorage_local_map_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalMapSample.ets) -->  
 
 ``` TypeScript
 @Entry
@@ -1136,26 +1218,45 @@ struct LocalMapSample {
     Row() {
       Column() {
         ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
-          Text(`${item[0]}`).fontSize(30)
-          Text(`${item[1]}`).fontSize(30)
+          Text(`${item[0]}`)
+            .fontSize(30)
+            .margin(10)
+          Text(`${item[1]}`)
+            .fontSize(30)
+            .margin(10)
           Divider()
         })
         // 初始化Map类型变量，触发UI刷新
-        Button('init map').onClick(() => {
-          this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
-        })
-        Button('set new one').onClick(() => {
-          this.message.set(4, 'd');
-        })
-        Button('clear').onClick(() => {
-          this.message.clear();
-        })
-        Button('replace the existing one').onClick(() => {
-          this.message.set(0, 'aa');
-        })
-        Button('delete the existing one').onClick(() => {
-          this.message.delete(0);
-        })
+        Button('init map')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
+          })
+        Button('set new one')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.message.set(4, 'd');
+          })
+        Button('clear')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.message.clear();
+          })
+        Button('replace the existing one')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.message.set(0, 'aa');
+          })
+        Button('delete the existing one')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.message.delete(0);
+          })
       }
       .width('100%')
     }
@@ -1163,6 +1264,8 @@ struct LocalMapSample {
   }
 }
 ```
+
+![localstorage-syn-12](figures/localstorage-syn-12.gif)
 
 ### 装饰Set类型变量
 
@@ -1172,7 +1275,7 @@ struct LocalMapSample {
 
 在下面的示例中，\@LocalStorageLink装饰的memberSet类型为Set\<number\>，点击Button改变memberSet的值，UI会随之刷新。
 
-<!-- @[localStorage_local_set_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalSetSample.ets) --> 
+<!-- @[localStorage_local_set_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalSetSample.ets) -->  
 
 ``` TypeScript
 @Entry
@@ -1186,22 +1289,31 @@ struct LocalSetSample {
         ForEach(Array.from(this.memberSet.entries()), (item: [number, number]) => {
           Text(`${item[0]}`)
             .fontSize(30)
+            .margin(10)
           Divider()
         })
         // 初始化Set类型变量，触发UI刷新
         Button('init set')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.memberSet = new Set([0, 1, 2, 3, 4]);
           })
         Button('set new one')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.memberSet.add(5);
           })
         Button('clear')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.memberSet.clear();
           })
         Button('delete the first one')
+          .width(300)
+          .margin(10)
           .onClick(() => {
             this.memberSet.delete(0);
           })
@@ -1213,9 +1325,11 @@ struct LocalSetSample {
 }
 ```
 
+![localstorage-syn-13](figures/localstorage-syn-13.gif)
+
 ### 自定义组件外改变状态变量
 
-<!-- @[localStorage_change_local_set_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/ChangeLocalSetSample.ets) --> 
+<!-- @[localStorage_change_local_set_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/ChangeLocalSetSample.ets) -->  
 
 ``` TypeScript
 let storageChange = new LocalStorage();
@@ -1239,14 +1353,21 @@ struct Test {
   build() {
     Column() {
       Text(`count value: ${this.count}`)
+        .fontSize(20)
+        .margin(10)
       Button('change')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           // 自定义组件外改变状态变量，触发UI刷新
           model.call('count', this.count + 1);
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![localstorage-syn-14](figures/localstorage-syn-14.gif)
 
 <!--no_check-->
