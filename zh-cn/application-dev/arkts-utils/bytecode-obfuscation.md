@@ -388,7 +388,7 @@ if (flag) {
     <!-- @[optionExample_removeLog2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->      
     
     ``` TypeScript
-    console.info("in tolevel");
+    console.info('in tolevel');
     ```
 
 2. 代码块中的调用
