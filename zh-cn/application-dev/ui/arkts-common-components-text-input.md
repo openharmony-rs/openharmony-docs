@@ -141,17 +141,16 @@ TextInput({ placeholder: $r('app.string.i_am_placeholder') })
 
 
 
-![textinput-placeholder](figures/textinput-placeholder.png)
-
-
-### 设置输入框当前的文本内容
-
 <!-- @[custom_text_input_with_place_holder_and_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
 
 ``` TypeScript
 TextInput({
   // 请将$r('app.string.i_am_placeholder')替换为实际资源文件，在本示例中该资源文件的value值为"我是提示文本"
-
+  placeholder: $r('app.string.i_am_placeholder'),
+  // 请将$r('app.string.i_am_current_text_content')替换为实际资源文件，在本示例中该资源文件的value值为"我是当前文本内容"
+  text: $r('app.string.i_am_current_text_content')
+})
+```
 ### 设置输入框背景颜色
 
 <!-- @[custom_text_input_background_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
