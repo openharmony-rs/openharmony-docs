@@ -389,6 +389,16 @@ TextInput组件通过设置[TextMenuShowMode](../reference/apis-arkui/arkui-ts/t
 
 <!-- @[set_menu_options_with_textmenushowmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/TextMenuShowSubWindow.ets) -->
 
+``` TypeScript
+this.getUIContext()
+  .getTextMenuController()
+  .setMenuOptions(
+    {
+      showMode: TextMenuShowMode.PREFER_WINDOW
+    }
+  );
+```
+
 <!-- @[textmenushowmode_create_textinput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/TextMenuShowSubWindow.ets) -->
 
 ``` TypeScript
