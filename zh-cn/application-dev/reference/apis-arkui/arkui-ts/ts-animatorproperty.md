@@ -33,7 +33,7 @@ animation(value:AnimateParam): T
 **参数：**
 | 参数名   | 类型                                | 必填 | 说明                                    |
 | ----- | --------------------------------- | ---- | ------------------------------------- |
-| value | [AnimateParam](ts-explicit-animation.md#animateparam对象说明) | 是    | 设置动画效果相关参数。<br/>**说明：** 传入null或undefined时不产生动画效果，但不推荐此用法。建议 [duration](ts-explicit-animation.md#animateparam对象说明) 值传入0的方式关闭动画。   |
+| value | [AnimateParam](ts-explicit-animation.md#animateparam对象说明) | 是    | 设置动画效果相关参数。<br/>**说明：** 传入null或undefined时不产生动画效果，但不建议此用法，如需关闭动画，建议将[duration](ts-explicit-animation.md#animateparam对象说明)设置为0。    |
 
 **返回值：**
 
