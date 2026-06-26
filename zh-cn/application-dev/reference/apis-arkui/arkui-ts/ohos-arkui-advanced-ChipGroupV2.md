@@ -279,7 +279,7 @@ ChipGroupV2ItemStyleConfig定义了ChipV2的共通属性配置。
 
 ## ChipGroupV2Space
 
-ChipGroupV2Space定义了ChipGroupV2左右内边距，以及Chip与Chip之间的间距。
+ChipGroupV2Space定义了ChipGroupV2左右内边距，以及ChipV2与ChipV2之间的间距。
 
 ### 属性
 
@@ -325,7 +325,7 @@ ChipGroupV2Space的构造函数。
 
 ## ChipGroupV2SpaceConfig
 
-ChipGroupV2SpaceConfig定义了ChipGroupV2左右内边距，以及Chip与Chip之间的间距配置。
+ChipGroupV2SpaceConfig定义了ChipGroupV2左右内边距，以及ChipV2与ChipV2之间的间距配置。
 
 **起始版本：** 26.0.0
 
@@ -467,7 +467,7 @@ ChipGroupV2IconItemConfig定义了尾部builder接口配置，针对背板大小
 
 | 名称     | 类型                            | 只读 | 可选 | 说明                                    |
 | -------- | --------------                 | ---- | ------------------------------           | ------------------------------           |
-| icon     | [ChipV2ImageIconConfig](ohos-arkui-advanced-ChipV2.md#chipv2imageiconconfig)    | 否  | 否  | 自定义尾部图标。<br/>Chip大小是ChipV2Size.SMALL时，图标尺寸为：{ width: 16, height: 16 }。<br/>Chip大小是ChipV2Size.NORMAL时，图标尺寸为：{ width: 24, height: 24 }。</br> 如果想动态修改图标尺寸，那么必须在引入[ChipGroupV2IconGroupSuffix](#chipgroupv2icongroupsuffix)时，使用[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)类型。 |
+| icon     | [ChipV2ImageIconConfig](ohos-arkui-advanced-ChipV2.md#chipv2imageiconconfig)    | 否  | 否  | 自定义尾部图标。<br/>ChipV2大小是ChipV2Size.SMALL时，图标尺寸为：{ width: 16, height: 16 }。<br/>ChipV2大小是ChipV2Size.NORMAL时，图标尺寸为：{ width: 24, height: 24 }。</br> 如果想动态修改图标尺寸，那么必须在引入[ChipGroupV2IconGroupSuffix](#chipgroupv2icongroupsuffix)时，使用[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)类型。 |
 | action   | [Callback](ts-types.md#callback12)\<void>        | 否  | 否  | 自定义尾部图标的响应事件。 |
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 尾部图标无障碍文本属性。用于为用户进一步说明尾部图标，开发人员可为尾部图标的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从尾部图标本身属性与无障碍文本中了解到时。若尾部图标既拥有文本属性又拥有无障碍说明属性，则尾部图标被选中时，先播报尾部图标的文本属性，再播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。 |
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 尾部图标无障碍描述。此描述用于向用户详细解释尾部图标，开发人员应为尾部图标的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从尾部图标的属性和无障碍文本中直接获知时。如果尾部图标同时具备文本属性和无障碍说明属性，当尾部图标被选中时，系统将首先播报尾部图标的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。 |
