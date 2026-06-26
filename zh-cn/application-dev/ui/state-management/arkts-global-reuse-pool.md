@@ -108,8 +108,7 @@ struct ReusableComponent { // 复用组件
     console.info('Reusable component is being recycled');
   }
   aboutToDisappear() {
-    // 在Index组件中if分支切换时，由于位于父组件ChildComponentA的默认复用池被销毁，该复用组件也会被销毁，无法被ChildComponentB复用。
-    console.info('Reusable component is being destroyed');
+    console.info('Reusable component is being destroyed'); // 在Index组件中if分支切换时，由于位于父组件ChildComponentA的默认复用池被销毁，该复用组件也会被销毁，无法被ChildComponentB复用。
   }
   build() {
     Text('ReusableComponent')
