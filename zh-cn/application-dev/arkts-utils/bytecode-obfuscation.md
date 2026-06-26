@@ -222,8 +222,9 @@ TestA.i;
 <!-- @[optionExample_enableStringPropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->       
 
 ``` TypeScript
-let person = {"firstName": "abc"};
-person["personAge"] = 22;
+// 混淆前：
+let person = {'firstName': 'abc'};
+person['personAge'] = 22;
 ```
 
 ```ts
