@@ -720,7 +720,7 @@ entry
   
   ``` JavaScript
   // example.js
-  const module1 = require('./file1'); // file1 应该被保留。
+  const module1 = require('./file1'); // file1 应该被保留
   ```
 
 2.对于动态导入的路径名，由于无法识别`import`函数中的参数是否为路径，因此这种情况下路径应该被保留。
