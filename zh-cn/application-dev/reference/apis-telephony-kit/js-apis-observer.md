@@ -1223,6 +1223,137 @@ observer.offCCallStateChange(callback);
 observer.offCCallStateChange();
 ```
 
+## observer.on('communicationStateChange')
+
+on\(type: 'communicationStateChange', callback: Callback\<boolean\>\): void
+
+订阅5A网络状态变化事件，使用callback方式作为异步方法。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Telephony.StateRegistry
+
+**需要权限**：ohos.permission.GET_NETWORK_INFO
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 5A网络状态变化事件，参数固定为'communicationStateChange'。                 |
+| callback | Callback\<boolean\> | 是   | 回调函数, 返回当前是否处于5A网络状态 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
+
+| 错误码ID |                 错误信息                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Service connection failed.                   |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error.                               |
+
+**示例：**
+
+```ts
+let callback: Callback<boolean> = (isCommunicationStateOn: boolean) => {
+    console.info(`communicationStateChanged ${JSON.stringify(isCommunicationStateOn)}`);
+}
+observer.on('communicationStateChange', callback);
+```
+
+## observer.on('communicationStateChange')
+
+on\(type: 'communicationStateChange', options: ObserverOptions, callback: Callback\<boolean\>\): void
+
+订阅5A网络状态变化事件，使用callback方式作为异步方法。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Telephony.StateRegistry
+
+**需要权限**：ohos.permission.GET_NETWORK_INFO
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 5A网络状态变化事件，参数固定为'communicationStateChange'。                 |
+| options  | [ObserverOptions](#observeroptions11)                     | 是   | 电话相关事件订阅参数可选项。                                        |
+| callback | Callback\<boolean\> | 是   | 回调函数, 返回当前是否处于5A网络状态 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
+
+| 错误码ID |                 错误信息                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Service connection failed.                   |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error.                               |
+
+**示例：**
+
+```ts
+let options: observer.ObserverOptions = {
+    slotId: 0
+}
+let callback: Callback<boolean> = (isCommunicationStateOn: boolean) => {
+    console.info(`communicationStateChanged ${JSON.stringify(isCommunicationStateOn)}`);
+}
+observer.on('communicationStateChange', options, callback);
+```
+
+## observer.off('communicationStateChange')
+
+off\(type: 'communicationStateChange', callback?: Callback\<boolean\>\): void
+
+移除订阅5A网络状态变化事件，使用callback方式作为异步方法。
+
+**起始版本：** 26.0.0
+
+> **说明：**
+>
+> 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+
+**系统能力**：SystemCapability.Telephony.StateRegistry
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 5A网络状态变化事件，参数固定为'communicationStateChange'。                 |
+| callback | Callback\<boolean\> | 否   | 回调函数, 返回当前是否处于5A网络状态 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
+
+| 错误码ID |                 错误信息                     |
+| -------- | -------------------------------------------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Service connection failed.                   |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error.                               |
+
+**示例：**
+
+```ts
+let callback: Callback<boolean> = (isCommunicationStateOn: boolean) => {
+    console.info(`communicationStateChanged ${JSON.stringify(isCommunicationStateOn)}`);
+}
+observer.on('communicationStateChange', callback);
+// 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+observer.off('communicationStateChange', callback);
+observer.off('communicationStateChange');
+```
+
 ## LockReason<sup>8+</sup>
 
 SIM卡锁类型。
