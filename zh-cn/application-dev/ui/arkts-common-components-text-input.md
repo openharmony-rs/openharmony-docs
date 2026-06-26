@@ -300,7 +300,7 @@ TextInput:
 TextInput({ text: $r('app.string.show_selected_menu') })
 ```
 
-![TextInput_select_menu](figures/TexInput_select_menu.jpg)
+![TextInput_select_menu](figures/TextInput_select_menu.jpg)
 
 TextArea:
 
