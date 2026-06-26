@@ -114,7 +114,7 @@ struct ChildPage {
       Text(`ChildPage childInfo age :${this.childInfo.age}`)
         .fontSize(15)
         .height(30)
-      Text(`ChildPage stateValue age :${this.stateValue}`)
+      Text(`ChildPage stateValue :${this.stateValue}`)
         .fontSize(15)
         .height(30)
     }
