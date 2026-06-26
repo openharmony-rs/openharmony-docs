@@ -7,7 +7,7 @@
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
 
-## Wi-Fi 扫描与候选配置接口 FAQ
+## Wi-Fi扫描与候选配置接口FAQ
 
 **概述**
 
