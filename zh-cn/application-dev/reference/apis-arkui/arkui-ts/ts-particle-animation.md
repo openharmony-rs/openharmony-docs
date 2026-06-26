@@ -887,7 +887,10 @@ struct ParticleExample {
   flag: boolean = false;
 
   // 通过参数化配置减少重复代码，imageSrc为图片资源，scaleTo为缩放目标值，durationMs为动画持续时长
-  private createImageParticle(imageSrc: ResourceStr, scaleTo: number, durationMs: number) {
+  private createImageParticle(imageSrc: ResourceStr, scaleTo: number, durationMs: number)
+    : ParticleOptions<ParticleType.IMAGE, ParticleUpdater.CURVE, ParticleUpdater.CURVE,
+  ParticleUpdater.CURVE, ParticleUpdater.CURVE, ParticleUpdater.CURVE, ParticleUpdater.CURVE>
+  {
     return {
       emitter: {
         particle: {
