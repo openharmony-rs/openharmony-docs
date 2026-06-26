@@ -401,7 +401,7 @@ g_avCapture = nullptr;
 
 ## 录屏模式说明
 
-系统提供三种录屏模式：[录制指定屏幕](#录制指定屏幕)、[录制主屏幕](#录制主屏幕)和[录制指定窗口](#录制指定窗口推荐)。通过[OH_CaptureMode](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode)设置不同的录屏模式。
+系统提供三种录屏模式：[录制指定屏幕](#录制指定屏幕)、[录制主屏幕](#录制主屏幕)和[录制指定窗口](#录制指定窗口)。通过[OH_CaptureMode](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode)设置不同的录屏模式。
 
 录屏模式会使用到屏幕ID（displayId）和窗口ID（missionIds）。获取方式请分别参考：[OH_NativeDisplayManager_CreateAllDisplays](../../reference/apis-arkui/capi-oh-display-manager-h.md#oh_nativedisplaymanager_createalldisplays)和[getWindowProperties](../../reference/apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)。
 
