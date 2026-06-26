@@ -36044,6 +36044,11 @@
 						"end_line":283,
 						"name":"ArkWeb_Fling_Jank_ArkTs_Button",
 						"start_line":270
+					},
+					{
+						"end_line":47,
+						"name":"ArkWeb_Fling_Jank_Nav",
+						"start_line":39
 					}
 				]
 			},
