@@ -376,7 +376,7 @@ int32_t UpdateDataTest()
 
 ## 使用UDMF删除UDS数据
 
-下面继续以获取超链接OH_UdsHyperlink类型数据场景为例，说明如何使用UDS与UDMF。
+下面继续以删除超链接OH_UdsHyperlink类型数据场景为例，说明如何使用UDS与UDMF。
 1. 构建数据操作选项。
 2. 通过数据操作选项删除数据。
 3. 判断OH_UdmfData是否有对应的类型。

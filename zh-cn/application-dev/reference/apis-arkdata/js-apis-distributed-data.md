@@ -454,7 +454,7 @@ getAllKVStoreId(appId: string, callback: AsyncCallback&lt;string[]&gt;): void
 | 参数名  | 类型 | 必填  | 说明                    |
 | -----  | ------  | ----  | ----------------------- |
 | appId  | string  | 是    | 所调用数据库方的包名。     |
-| callback | AsyncCallback&lt;string[]&gt; | 是   |回调函数。返回所有创建的KvStore数据库的storeId。 |
+| callback | AsyncCallback&lt;string[]&gt; | 是   |回调函数。返回所有创建的KVStore数据库的storeId。 |
 
 **示例：**
 
@@ -490,7 +490,7 @@ getAllKVStoreId(appId: string): Promise&lt;string[]&gt;
 
 | 类型          | 说明            |
 | ------------- | -------------- |
-| Promise&lt;string[]&gt;| Promise对象。返回所有创建的KvStore数据库的storeId。 |
+| Promise&lt;string[]&gt;| Promise对象。返回所有创建的KVStore数据库的storeId。 |
 
 **示例：**
 
@@ -660,7 +660,7 @@ constructor()
 | 名称  | 类型 | 可读 | 可写 | 说明                    |
 | ---   | ----  | ----  | ----  | ----------------------- |
 | nullable<sup>8+</sup>  | boolean | 是 | 是 | 表示数据库字段是否可以为空。   |
-| default<sup>8+</sup>  | string | 是 | 是 | 表示Fieldnode的默认值。 |
+| default<sup>8+</sup>  | string | 是 | 是 | 表示FieldNode的默认值。 |
 | type<sup>8+</sup>  | number | 是 | 是 | 表示指定节点对应数据类型的值。 |
 
 ### constructor<sup>8+</sup>

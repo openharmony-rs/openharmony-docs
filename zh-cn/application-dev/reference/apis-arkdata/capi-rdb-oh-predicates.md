@@ -557,7 +557,7 @@ OH_Predicates *(*groupBy)(OH_Predicates *predicates, char const *const *fields, 
 | ------------------------- | ---------------------------------------------------- |
 | OH_Predicates *predicates | 表示指向OH_Predicates实例的指针。                    |
 | char const *const *fields | 指定分组依赖的列名，不能为空。                                 |
-| int length                | 该参数为输入参数，表示开发者传入的fields数值的长度。 |
+| int length                | 该参数为输入参数，表示开发者传入的fields数组的长度。 |
 
 **返回：**
 
