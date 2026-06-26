@@ -2709,6 +2709,7 @@ export struct FocusScopeIdExample {
      }
    }
    ```
+
 ![focus-4](figures/focus-4.gif)
 
 ## 组件获焦能力说明
