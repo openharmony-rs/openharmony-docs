@@ -592,3 +592,6 @@ struct TransitionVisibilityExample {
   }
 }
 ```
+示意图：<br/>
+![transitionComponent5](figures/transitionComponent5.gif)
+
