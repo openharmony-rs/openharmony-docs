@@ -1720,7 +1720,7 @@
 
 ## ohos.permission.cli.MANAGE_WIFI_SCAN
 
-允许应用通过CLI命令设置WIFI扫描。
+允许应用通过CLI命令设置Wi-Fi扫描。
 
 **权限级别**：system_basic
 
