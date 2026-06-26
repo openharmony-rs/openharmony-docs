@@ -284,7 +284,7 @@ Installs a private credential. This API uses an asynchronous callback to return 
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -344,7 +344,7 @@ Installs a private credential. This API uses a promise to return the result.
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -404,7 +404,7 @@ Installs a private credential and specifies its storage level. This API uses a p
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code              | Error Message                                                    |
+| ID              | Error Message                                                    |
 | ---------------------- | ------------------------------------------------------------ |
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 401                    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -458,7 +458,7 @@ Obtains detailed information about a private credential. This API uses an asynch
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -515,7 +515,7 @@ Obtains detailed information about a private credential. This API uses a promise
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -566,7 +566,7 @@ Uninstalls a specified private credential. This API uses an asynchronous callbac
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -618,7 +618,7 @@ Uninstalls a specified private credential. This API uses a promise to return the
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -670,7 +670,7 @@ Installs a user CA certificate.
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code                 | Error Message                                                                                                                                           |
+| ID                 | Error Message                                                                                                                                           |
 |------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API.                                          |
 | 401                    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -721,7 +721,7 @@ Uninstalls a user CA certificate.
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code                 | Error Message                                                                                                                                           |
+| ID                 | Error Message                                                                                                                                           |
 |------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API.                                          |
 | 401                    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -763,7 +763,7 @@ Initializes the signing or signature verification operation using the specified 
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -822,7 +822,7 @@ Initializes the signing or signature verification operation using the specified 
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -875,7 +875,7 @@ Updates the data for the signing or signature verification operation. This API m
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -933,7 +933,7 @@ Updates the data for the signing or signature verification operation. This API u
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -984,7 +984,7 @@ Finishes the signing operation, which is the last step in the signing process. Y
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -1039,7 +1039,7 @@ Finishes the signature verification operation. This API uses an asynchronous cal
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -1097,7 +1097,7 @@ Finishes signing or signature verification. This API uses a promise to return th
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -1162,7 +1162,7 @@ Aborts the signing or signature verification operation. This API uses an asynchr
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -1216,7 +1216,7 @@ Aborts the signing or signature verification operation. This API uses a promise 
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -1269,7 +1269,7 @@ Obtains the details about a user public credential. This API uses a promise to r
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -1326,7 +1326,7 @@ Checks whether this application is authorized by the specified user credential. 
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -1374,7 +1374,7 @@ Obtains the list of all user root CA certificates in the current user and device
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
@@ -1429,7 +1429,7 @@ Obtains the list of user root CA certificates based on the certificate storage p
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -1487,7 +1487,7 @@ Obtains the details about a user root CA certificate. This API uses a promise to
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -1537,7 +1537,7 @@ Obtains the credentials for installing the application. This API uses a promise 
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
@@ -1590,7 +1590,7 @@ Obtains the storage path of a certificate.
 
 For details about the following error codes, see [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code   | Error Message     |
+| ID   | Error Message     |
 |----------| ------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. For example, CertStoreProperty.certType is set to CA_CERT_USER, but CertStoreProperty.certScope is not specified.  |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
@@ -1666,7 +1666,7 @@ Obtains details about a USB Key certificate credential. This API uses a promise 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| Error Code   | Error Message     |
+| ID   | Error Message     |
 |----------| ------------- |
 | 201      | Permission verification failed. |
 | 801      | Capability not supported. The application does not have the permission required to call the API. |

@@ -754,7 +754,7 @@ Creates an X.509 certificate object. This API uses an asynchronous callback to r
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported. |
@@ -827,7 +827,7 @@ Creates an X.509 certificate object. This API uses a promise to return the resul
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported. |
@@ -898,7 +898,7 @@ Verifies the certificate signature. This API uses an asynchronous callback to re
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19030001 | crypto operation error.      |
@@ -987,7 +987,7 @@ Verifies the certificate signature. This API uses a promise to return the result
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19030001 | crypto operation error.      |
@@ -1063,7 +1063,7 @@ Obtains the serialized X.509 certificate data. This API uses an asynchronous cal
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.                                     |
@@ -1137,7 +1137,7 @@ Obtains the serialized X.509 certificate data. This API uses a promise to return
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.                                     |
@@ -1208,7 +1208,7 @@ Obtains the public key of the X.509 certificate.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19030001 | crypto operation error.|
@@ -1280,7 +1280,7 @@ Checks the validity period of the X.509 certificate.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.                                     |
@@ -1473,7 +1473,7 @@ Obtains the X.509 certificate serial number.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
 
@@ -1548,7 +1548,7 @@ Obtains the X.509 certificate issuer name.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
@@ -1627,7 +1627,7 @@ Obtains the X.509 certificate issuer name based on the encoding type.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
@@ -1724,7 +1724,7 @@ Obtains the X.509 certificate subject name.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters.  Possible causes: <br>1. Incorrect parameter types;<br>2. Parameter verification failed.           |
 | 19020001 | memory malloc failed.                                     |
@@ -1804,7 +1804,7 @@ Obtains the start time of the X.509 certificate.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
@@ -1877,7 +1877,7 @@ Obtains the expiration time of the X.509 certificate.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
@@ -1951,7 +1951,7 @@ Obtains the signature data of the X.509 certificate.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
@@ -2025,7 +2025,7 @@ Obtains the name of the X.509 certificate signature algorithm.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
@@ -2099,7 +2099,7 @@ Obtains the object identifier (OID) of the X.509 certificate signature algorithm
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
@@ -2172,7 +2172,7 @@ Obtains parameters of the X.509 certificate signature algorithm.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 801 | this operation is not supported. |
 | 19020001 | memory malloc failed.                                     |
@@ -2261,7 +2261,7 @@ Obtains the key usage of this X.509 certificate.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                    |
 | 19030001 | crypto operation error.|
@@ -2343,7 +2343,7 @@ Obtains the usage of the extended key of this X.509 certificate.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
@@ -2488,7 +2488,7 @@ Obtains the alternative subject names of the X.509 certificate.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
@@ -2576,7 +2576,7 @@ Obtains the alternative issuer names of the X.509 certificate.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
@@ -2664,7 +2664,7 @@ Obtains the fields in the X.509 certificate.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
@@ -2744,7 +2744,7 @@ Checks whether the certificate matches the input parameters.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed. |
@@ -2842,7 +2842,7 @@ Obtains URIs of the distribution points for this X.509 CRL.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -2917,7 +2917,7 @@ Obtains the distinguished name (DN) of the X.509 certificate issuer.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -3002,7 +3002,7 @@ Obtains the distinguished name of the X.509 certificate subject.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -3087,7 +3087,7 @@ Converts the object data into a string.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -3178,7 +3178,7 @@ Converts this object into a string in the specified encoding format.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -3262,7 +3262,7 @@ Obtains the hash value of the data in DER format.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -3347,7 +3347,7 @@ Obtains the certificate extensions in DER format.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -3433,7 +3433,7 @@ Creates a certificate extension object. This API uses an asynchronous callback t
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported. |
@@ -3499,7 +3499,7 @@ Creates a certificate extension object. This API uses a promise to return the re
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported. |
@@ -3562,7 +3562,7 @@ Obtains the serialized data of the certificate extension.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -3634,7 +3634,7 @@ Obtains the OIDs of certificate extensions.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
@@ -3708,7 +3708,7 @@ Obtains the information about the certificate extension field object.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
@@ -3780,7 +3780,7 @@ Checks whether a certificate is a CA certificate.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -3845,7 +3845,7 @@ Checks whether there is any critical extension that is not supported.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -3905,7 +3905,7 @@ Creates an X.509 CRL. This API uses an asynchronous callback to return the resul
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported. |
@@ -3978,7 +3978,7 @@ Creates an X.509 CRL. This API uses a promise to return the result.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported. |
@@ -4043,7 +4043,7 @@ Creates an X.509 CRL. This API uses an asynchronous callback to return the resul
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported. |
@@ -4114,7 +4114,7 @@ Creates an X.509 CRL. This API uses a promise to return the result.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported. |
@@ -4194,7 +4194,7 @@ Checks whether the certificate is revoked.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 
@@ -4347,7 +4347,7 @@ Obtains the serialized X.509 CRL data. This API uses an asynchronous callback to
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
@@ -4422,7 +4422,7 @@ Obtains the serialized X.509 CRL data. This API uses a promise to return the res
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
@@ -4495,7 +4495,7 @@ Verifies the X.509 CRL signature. This API uses an asynchronous callback to retu
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19030001 | crypto operation error. |
@@ -4653,7 +4653,7 @@ Verifies the X.509 CRL signature. This API uses a promise to return the result. 
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19030001 | crypto operation error. |
@@ -4859,7 +4859,7 @@ Obtains the X.509 CRL issuer name.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -4933,7 +4933,7 @@ Obtains the last update date (in ASN.1 format) of this X.509 CRL.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -5007,7 +5007,7 @@ Obtains the next update date (in ASN.1 format) of this CRL.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -5087,7 +5087,7 @@ Obtains the revoked X.509 certificate based on the specified certificate serial 
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
@@ -5168,7 +5168,7 @@ Obtains the revoked X.509 certificate based on the specified certificate.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
@@ -5279,7 +5279,7 @@ Obtains a list of revoked X.509 certificates. This API uses an asynchronous call
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
@@ -5353,7 +5353,7 @@ Obtains a list of revoked X.509 certificates. This API uses a promise to return 
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
@@ -5424,7 +5424,7 @@ Obtains the to be signed certificate list (**tbsCertList**) of this CRL.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -5498,7 +5498,7 @@ Obtains the signature data of the X.509 CRL.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -5572,7 +5572,7 @@ Obtains the signature algorithm of the X.509 CRL.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -5646,7 +5646,7 @@ Obtains the OID of the X.509 CRL signature algorithm. OIDs are allocated by the 
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -5720,7 +5720,7 @@ Obtains the parameters of the X.509 CRL signature algorithm.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 801 | this operation is not supported. |
 | 19020001 | memory malloc failed.           |
@@ -5802,7 +5802,7 @@ Checks whether the certificate is revoked.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 
@@ -5951,7 +5951,7 @@ Obtains the serialized X.509 CRL data. This API uses an asynchronous callback to
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
@@ -6024,7 +6024,7 @@ Obtains the serialized X.509 CRL data. This API uses a promise to return the res
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
@@ -6095,7 +6095,7 @@ Verifies the X.509 CRL signature. This API uses an asynchronous callback to retu
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19030001 | crypto operation error. |
@@ -6251,7 +6251,7 @@ Verifies the X.509 CRL signature. This API uses a promise to return the result. 
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19030001 | crypto operation error. |
@@ -6457,7 +6457,7 @@ Obtains the X.509 CRL issuer name.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -6535,7 +6535,7 @@ Obtains the X.509 CRL issuer name based on the encoding type.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
@@ -6612,7 +6612,7 @@ Obtains the last update date (in ASN.1 format) of this X.509 CRL.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -6684,7 +6684,7 @@ Obtains the next update date (in ASN.1 format) of this CRL.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -6762,7 +6762,7 @@ Obtains the revoked X.509 certificate based on the specified certificate serial 
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
@@ -6841,7 +6841,7 @@ Obtains the revoked X.509 certificate based on the specified certificate.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
@@ -6950,7 +6950,7 @@ Obtains a list of revoked X.509 certificates. This API uses an asynchronous call
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
@@ -7022,7 +7022,7 @@ Obtains a list of revoked X.509 certificates. This API uses a promise to return 
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
@@ -7091,7 +7091,7 @@ Obtains the signature data of the X.509 CRL.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -7163,7 +7163,7 @@ Obtains the signature algorithm of the X.509 CRL.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -7235,7 +7235,7 @@ Obtains the OID of the X.509 CRL signature algorithm. OIDs are allocated by the 
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -7307,7 +7307,7 @@ Obtains the parameters of the X.509 CRL signature algorithm.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 801 | this operation is not supported. |
 | 19020001 | memory malloc failed.           |
@@ -7380,7 +7380,7 @@ Obtains the to be signed certificate list (**tbsCertList**) of this CRL.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -7452,7 +7452,7 @@ Obtains the CRL extensions.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -7533,7 +7533,7 @@ Checks whether the CRL matches the input parameters.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | -------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.  |
@@ -7648,7 +7648,7 @@ Obtains the distinguished name (DN) of the X.509 certificate issuer.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | -------------- |
 | 19020001 | memory malloc failed.  |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -7718,7 +7718,7 @@ Converts the object data into a string.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | -------------- |
 | 19020001 | memory malloc failed.  |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -7794,7 +7794,7 @@ Converts this object into a string in the specified encoding format.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
@@ -7868,7 +7868,7 @@ Obtains the hash value of the data in DER format.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | -------------- |
 | 19020001 | memory malloc failed.  |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -7938,7 +7938,7 @@ Obtains the certificate extensions in DER format.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | -------------- |
 | 19020001 | memory malloc failed.  |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -8019,7 +8019,7 @@ Creates a certificate chain validator object.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported. |
@@ -8078,7 +8078,7 @@ The certificate chain validator does not verify the certificate validity period 
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.                                     |
@@ -8212,7 +8212,7 @@ The certificate chain validator does not verify the certificate validity period 
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.                                     |
@@ -8346,7 +8346,7 @@ Obtains the serialized data of this revoked certificate. This API uses an asynch
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
@@ -8429,7 +8429,7 @@ Obtains the serialized data of this revoked certificate. This API uses a promise
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
@@ -8576,7 +8576,7 @@ Obtains the issuer of a revoked certificate.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | -------------- |
 | 801 | this operation is not supported. |
 | 19020001 | memory malloc failed.  |
@@ -8652,7 +8652,7 @@ Obtains the date (in ASN.1 format) when the certificate is revoked.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -8730,7 +8730,7 @@ Obtains the serialized data of this revoked certificate. This API uses an asynch
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
@@ -8811,7 +8811,7 @@ Obtains the serialized data of this revoked certificate. This API uses a promise
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | memory malloc failed.           |
@@ -8890,7 +8890,7 @@ Obtains the serial number of this revoked certificate.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -8968,7 +8968,7 @@ Obtains the issuer of a revoked certificate.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 801 | this operation is not supported. |
 | 19020001 | memory malloc failed.           |
@@ -9049,7 +9049,7 @@ Obtains the issuer information of a revoked certificate based on the encoding ty
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 801 | this operation is not supported. |
 | 19020001 | memory malloc failed.                                     |
@@ -9127,7 +9127,7 @@ Obtains the date when the certificate was revoked.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -9201,7 +9201,7 @@ Obtains the CRL extensions.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -9278,7 +9278,7 @@ Checks whether this CRL entry has extensions.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -9352,7 +9352,7 @@ Obtains the distinguished name of the X.509 certificate issuer.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -9421,7 +9421,7 @@ Converts the object data into a string.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -9490,7 +9490,7 @@ Obtains the hash value of the data in DER format.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -9559,7 +9559,7 @@ Obtains the certificate extensions in DER format.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed.           |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
@@ -9702,7 +9702,7 @@ Creates an object for a collection of X.509 certificates and CRLs.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
@@ -9818,7 +9818,7 @@ Selects certificates that match the specified parameters. This API uses a promis
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
@@ -9908,7 +9908,7 @@ Selects certificates that match the specified parameters. This API uses an async
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
@@ -10003,7 +10003,7 @@ Selects CRLs that match the specified parameters. This API uses a promise to ret
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
@@ -10129,7 +10129,7 @@ Selects CRLs that match the specified parameters. This API uses an asynchronous 
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
@@ -10260,7 +10260,7 @@ Creates an X.509 certificate chain object. This API uses a promise to return the
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed. |
@@ -10377,7 +10377,7 @@ Creates an X.509 certificate chain object. This API uses an asynchronous callbac
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed. |
@@ -10494,7 +10494,7 @@ Creates an X.509 certificate chain object based on the specified certificates. T
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed. |
@@ -10584,7 +10584,7 @@ Builds an X.509 certificate chain with a **CertChainBuildParameters** object. Th
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.                                     |
@@ -10725,7 +10725,7 @@ Parses the certificate, private key, and other certificate collections from a PK
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.                                     |
@@ -10937,7 +10937,7 @@ Parses the certificate, private key, and other certificate collections from a PK
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
@@ -11153,7 +11153,7 @@ Creates PKCS #12 data. This API uses a promise to return the result.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
@@ -11331,7 +11331,7 @@ Creates PKCS #12 data. This API returns the result synchronously.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 19020001 | memory malloc failed.                                     |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
@@ -11509,7 +11509,7 @@ Creates a [TrustAnchor](#x509trustanchor11) object array by using the CA certifi
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.                                     |
@@ -11665,7 +11665,7 @@ Obtains a list of X.509 certificates.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
@@ -11789,7 +11789,7 @@ Verifies the certificate chain. This API uses a promise to return the result.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
@@ -11939,7 +11939,7 @@ Verifies a certificate chain using verification parameters. This API uses an asy
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed.           |
@@ -12080,7 +12080,7 @@ Converts the object data into a string.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -12207,7 +12207,7 @@ Obtains the hash value of the data in DER format.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -12342,7 +12342,7 @@ Generates a CSR using the specified RSA private key by passing configuration par
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed. |
@@ -12441,7 +12441,7 @@ Creates an **X500DistinguishedName** object with a name in the form of a string.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed. |
@@ -12512,7 +12512,7 @@ Creates an **X500DistinguishedName** object with a name in DER format. This API 
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed. |
@@ -12574,7 +12574,7 @@ Obtains the distinguished name in the form of a string.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -12633,7 +12633,7 @@ Obtains the string of the relative distinguished names (RDNs) of the specified t
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed. |
@@ -12690,7 +12690,7 @@ Obtains the string of the distinguished names based on the specified encoding ty
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -12741,7 +12741,7 @@ Obtains the data of X.509 certificate extensions.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -12797,7 +12797,7 @@ Creates a **CmsGenerator** object.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | memory malloc failed. |
@@ -12893,7 +12893,7 @@ Adds a signer to the CMS **SIGNED_DATA** structure.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 401      | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 19020001 | memory malloc failed. |
@@ -13009,7 +13009,7 @@ If the certificate is added without calling **addSigner**, the generated CMS sig
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 401      | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 19020001 | memory malloc failed. |
@@ -13095,7 +13095,7 @@ This API should be called immediately after a **CmsGenerator** object of the **E
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -13149,7 +13149,7 @@ At least one recipient must be set.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -13266,7 +13266,7 @@ Obtains the CMS data, for example, the CMS signature data or CMS encapsulated da
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 401      | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 19020001 | memory malloc failed. |
@@ -13399,7 +13399,7 @@ Obtains the CMS data synchronously, for example, the CMS signature data or CMS e
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 401      | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 19020001 | memory malloc failed. |
@@ -13524,7 +13524,7 @@ Obtains the encrypted data if a **CmsGenerator** object of the **ENVELOPED_DATA*
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -13647,7 +13647,7 @@ Creates a **CmsParser** object.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -13803,7 +13803,7 @@ Converts data in CMS format into CMS objects. This API uses a promise to return 
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -13944,7 +13944,7 @@ Obtains the CMS data type. Currently, only signature data and encapsulated data 
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -14092,7 +14092,7 @@ Verifies the CMS of the **Signed_DATA** content type. This API uses a promise to
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -14235,7 +14235,7 @@ Obtains the plaintext data from CMS data of the signature type. This API uses a 
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -14382,7 +14382,7 @@ Obtains the certificate from CMS data of the signature type by passing enumerate
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
@@ -14532,7 +14532,7 @@ Decrypts CMS **Enveloped_DATA**. This API uses a promise to return the result.
 
 For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |

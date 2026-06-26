@@ -162,7 +162,7 @@ The **certificateManagerDialog** module provides APIs for opening the certificat
 
 For details about the error codes, see [Certificate Management Dialog Box Error Codes](errorcode-certManagerDialog.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -224,7 +224,7 @@ Opens a dialog box for installing a certificate. After the certificate is instal
 
 For details about the error codes, see [Certificate Management Dialog Box Error Codes](errorcode-certManagerDialog.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -295,7 +295,7 @@ Opens a dialog box for uninstalling a certificate. This API uses a promise to re
 
 For details about the error codes, see [Certificate Management Dialog Box Error Codes](errorcode-certManagerDialog.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -362,7 +362,7 @@ Opens the certificate management dialog box and displays the certificate details
 
 For details about the error codes, see [Certificate Management Dialog Box Error Codes](errorcode-certManagerDialog.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -426,7 +426,7 @@ Opens the certificate credential authorization page of the certificate managemen
 
 For details about the error codes, see [Certificate Management Dialog Box Error Codes](errorcode-certManagerDialog.md).
 
-| Error Code   | Error Message                                                                                                                                           |
+| ID   | Error Message                                                                                                                                           |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201      | Permission verification failed. The application does not have the permission required to call the API.                                          |
 | 401      | Invalid parameter. Possible causes: 1. A mandatory parameter is left unspecified. 2. Incorrect parameter type. 3. Parameter verification failed. |
@@ -484,7 +484,7 @@ Opens the certificate credential authorization page of the certificate managemen
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Dialog Box Error Codes](errorcode-certManagerDialog.md).
 
-| Error Code   | Error Message                                                                                                                                           |
+| ID   | Error Message                                                                                                                                           |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201      | Permission verification failed. The application does not have the permission required to call the API.                                          |
 | 801      | Capability not supported.  |
@@ -554,7 +554,7 @@ Opens the PIN credential authentication page of the USB Key certificate manageme
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Dialog Box Error Codes](errorcode-certManagerDialog.md).
 
-| Error Code   | Error Message                                                                                                                                           |
+| ID   | Error Message                                                                                                                                           |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201      | Permission verification failed. The application does not have the permission required to call the API.                                          |
 | 801      | Capability not supported.  |
