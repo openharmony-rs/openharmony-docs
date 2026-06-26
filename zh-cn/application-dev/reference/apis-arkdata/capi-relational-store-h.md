@@ -101,8 +101,8 @@
 | [int OH_Rdb_RollBack(OH_Rdb_Store *store)](#oh_rdb_rollback) | - | 回滚已经执行的SQL语句。 |
 | [int OH_Rdb_Commit(OH_Rdb_Store *store)](#oh_rdb_commit) | - | 提交已执行的SQL语句 |
 | [int OH_Rdb_BeginTransWithTrxId(OH_Rdb_Store *store, int64_t *trxId)](#oh_rdb_begintranswithtrxid) | - | 在开始执行SQL语句之前，开始事务，并获得该事务的ID，仅支持向量数据库。 |
-| [int OH_Rdb_RollBackByTrxId(OH_Rdb_Store *store, int64_t trxId)](#oh_rdb_rollbackbytrxid) | - | 使用指定的事务ID, 回滚已经执行的SQL语句，仅支持向量数据库。 |
-| [int OH_Rdb_CommitByTrxId(OH_Rdb_Store *store, int64_t trxId)](#oh_rdb_commitbytrxid) | - | 使用指定的事务ID, 提交已经执行的SQL语句，仅支持向量数据库。 |
+| [int OH_Rdb_RollBackByTrxId(OH_Rdb_Store *store, int64_t trxId)](#oh_rdb_rollbackbytrxid) | - | 使用指定的事务ID，回滚已经执行的SQL语句，仅支持向量数据库。 |
+| [int OH_Rdb_CommitByTrxId(OH_Rdb_Store *store, int64_t trxId)](#oh_rdb_commitbytrxid) | - | 使用指定的事务ID，提交已经执行的SQL语句，仅支持向量数据库。 |
 | [int OH_Rdb_Backup(OH_Rdb_Store *store, const char *databasePath)](#oh_rdb_backup) | - | 以指定路径备份数据库，支持向量数据库。 |
 | [int OH_Rdb_Restore(OH_Rdb_Store *store, const char *databasePath)](#oh_rdb_restore) | - | 从指定的数据库备份文件恢复数据库，支持向量数据库。 |
 | [int OH_Rdb_GetVersion(OH_Rdb_Store *store, int *version)](#oh_rdb_getversion) | - | 获取数据库版本。 |
@@ -120,7 +120,7 @@
 | [int OH_Rdb_SubscribeAutoSyncProgress(OH_Rdb_Store *store, const Rdb_ProgressObserver *observer)](#oh_rdb_subscribeautosyncprogress) | - | 订阅RDB存储的自动同步进度。<br>当收到自动同步进度的通知时，将调用回调。 |
 | [int OH_Rdb_UnsubscribeAutoSyncProgress(OH_Rdb_Store *store, const Rdb_ProgressObserver *observer)](#oh_rdb_unsubscribeautosyncprogress) | - | 取消订阅RDB存储的自动同步进程。 |
 | [int OH_Rdb_LockRow(OH_Rdb_Store *store, OH_Predicates *predicates)](#oh_rdb_lockrow) | - | 根据指定的条件锁定数据库中的数据，锁定数据不执行端云同步。 |
-| [int OH_Rdb_UnlockRow(OH_Rdb_Store *store, OH_Predicates *predicates)](#oh_rdb_unlockrow) | - | 根据指定的条件锁解锁数据库中的数据。 |
+| [int OH_Rdb_UnlockRow(OH_Rdb_Store *store, OH_Predicates *predicates)](#oh_rdb_unlockrow) | - | 根据指定的条件解锁数据库中的数据。 |
 | [OH_Cursor *OH_Rdb_QueryLockedRow(OH_Rdb_Store *store, OH_Predicates *predicates, const char *const *columnNames, int length)](#oh_rdb_querylockedrow) | - | 根据指定条件查询数据库中锁定的数据。 |
 | [int OH_Rdb_CreateTransaction(OH_Rdb_Store *store, const OH_RDB_TransOptions *options, OH_Rdb_Transaction **trans)](#oh_rdb_createtransaction) | - | 创建一个事务对象。 |
 | [int OH_Rdb_Attach(OH_Rdb_Store *store, const OH_Rdb_ConfigV2 *config, const char *attachName, int64_t waitTime,size_t *attachedNumber)](#oh_rdb_attach) | - | 将数据库文件附加到当前连接的数据库。 |
@@ -818,7 +818,7 @@ const int *OH_Rdb_GetSupportedDbType(int *typeCount)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int *typeCount | 表示支持的数据库类型的数组的长度, 作为出参使用。 |
+| int *typeCount | 表示支持的数据库类型的数组的长度，作为出参使用。 |
 
 **返回：**
 
@@ -917,7 +917,7 @@ OH_Rdb_Store *OH_Rdb_GetOrOpen(const OH_Rdb_Config *config, int *errCode)
 | 参数项 | 描述 |
 | -- | -- |
 | const [OH_Rdb_Config](capi-rdb-oh-rdb-config.md) *config | 指向[OH_Rdb_Config](capi-rdb-oh-rdb-config.md)实例的指针，与此RDB存储相关的数据库配置。 |
-| int *errCode | 表示函数执行状态, 作为出参使用。 |
+| int *errCode | 表示函数执行状态，作为出参使用。 |
 
 **返回：**
 
@@ -1494,7 +1494,7 @@ int OH_Rdb_RollBackByTrxId(OH_Rdb_Store *store, int64_t trxId)
 
 **描述**
 
-使用指定的事务ID, 回滚已经执行的SQL语句，仅支持向量数据库。
+使用指定的事务ID，回滚已经执行的SQL语句，仅支持向量数据库。
 
 **起始版本：** 14
 
@@ -1510,7 +1510,7 @@ int OH_Rdb_RollBackByTrxId(OH_Rdb_Store *store, int64_t trxId)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK表示成功。<br>RDB_E_INVALID_ARGS表示无效参数, 可能情况如下：<br>传入参数为空指针。<br>当前事务ID不是调用[OH_Rdb_BeginTransWithTrxId](capi-relational-store-h.md#oh_rdb_begintranswithtrxid)获得的。<br>当前事务ID已经调用[OH_Rdb_CommitByTrxId](capi-relational-store-h.md#oh_rdb_commitbytrxid)提交。<br>当前事务ID已经调用[OH_Rdb_RollBackByTrxId](capi-relational-store-h.md#oh_rdb_rollbackbytrxid)回滚。<br>RDB_E_NOT_SUPPORTED表示不支持当前操作。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK表示成功。<br>RDB_E_INVALID_ARGS表示无效参数，可能情况如下：<br>传入参数为空指针。<br>当前事务ID不是调用[OH_Rdb_BeginTransWithTrxId](capi-relational-store-h.md#oh_rdb_begintranswithtrxid)获得的。<br>当前事务ID已经调用[OH_Rdb_CommitByTrxId](capi-relational-store-h.md#oh_rdb_commitbytrxid)提交。<br>当前事务ID已经调用[OH_Rdb_RollBackByTrxId](capi-relational-store-h.md#oh_rdb_rollbackbytrxid)回滚。<br>RDB_E_NOT_SUPPORTED表示不支持当前操作。 |
 
 ### OH_Rdb_CommitByTrxId()
 
@@ -1520,7 +1520,7 @@ int OH_Rdb_CommitByTrxId(OH_Rdb_Store *store, int64_t trxId)
 
 **描述**
 
-使用指定的事务ID, 提交已经执行的SQL语句，仅支持向量数据库。
+使用指定的事务ID，提交已经执行的SQL语句，仅支持向量数据库。
 
 **起始版本：** 14
 
@@ -1536,7 +1536,7 @@ int OH_Rdb_CommitByTrxId(OH_Rdb_Store *store, int64_t trxId)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功.<br>RDB_E_INVALID_ARGS表示无效参数，可能情况如下：<br>传入参数为空指针。<br>当前事务ID不是调用[OH_Rdb_BeginTransWithTrxId](capi-relational-store-h.md#oh_rdb_begintranswithtrxid)获得的。<br>当前事务ID已经调用[OH_Rdb_CommitByTrxId](capi-relational-store-h.md#oh_rdb_commitbytrxid)提交。<br>当前事务ID已经调用[OH_Rdb_RollBackByTrxId](capi-relational-store-h.md#oh_rdb_rollbackbytrxid)回滚。<br>RDB_E_NOT_SUPPORTED表示不支持当前操作。 |
+| int | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS表示无效参数，可能情况如下：<br>传入参数为空指针。<br>当前事务ID不是调用[OH_Rdb_BeginTransWithTrxId](capi-relational-store-h.md#oh_rdb_begintranswithtrxid)获得的。<br>当前事务ID已经调用[OH_Rdb_CommitByTrxId](capi-relational-store-h.md#oh_rdb_commitbytrxid)提交。<br>当前事务ID已经调用[OH_Rdb_RollBackByTrxId](capi-relational-store-h.md#oh_rdb_rollbackbytrxid)回滚。<br>RDB_E_NOT_SUPPORTED表示不支持当前操作。 |
 
 **参考：**
 
@@ -1898,7 +1898,7 @@ int OH_Rdb_CloudSync(OH_Rdb_Store *store, Rdb_SyncMode mode, const char *tables[
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | 指向[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例的指针。 |
-| [Rdb_SyncMode](#rdb_syncmode) mode | 表示同步过程的类型[Rdb_SyncMode](capi-relational-store-h.md#rdb_syncmode). |
+| [Rdb_SyncMode](#rdb_syncmode) mode | 表示同步过程的类型[Rdb_SyncMode](capi-relational-store-h.md#rdb_syncmode)。 |
 | const char *tables[] |  表示需要同步的表名。 |
 | uint32_t count | 同步的表的数量，如果传入的值为0，同步数据库的所有表。 |
 | const [Rdb_ProgressObserver](capi-rdb-rdb-progressobserver.md) *observer | 端云同步进度的观察者[Rdb_ProgressObserver](capi-rdb-rdb-progressobserver.md)。 |
@@ -1995,7 +1995,7 @@ int OH_Rdb_UnlockRow(OH_Rdb_Store *store, OH_Predicates *predicates)
 
 **描述**
 
-根据指定的条件锁解锁数据库中的数据。
+根据指定的条件解锁数据库中的数据。
 
 **起始版本：** 12
 
