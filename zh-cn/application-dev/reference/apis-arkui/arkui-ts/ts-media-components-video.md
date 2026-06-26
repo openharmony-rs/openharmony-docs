@@ -1117,7 +1117,6 @@ struct VideoErrorComponent {
   @State videoSrc: string = 'video.mp4'; // 传入不存在的视频资源路径。
   @State isAutoPlay: boolean = false;
   @State showControls: boolean = true;
-  @State showFirstFrame: boolean = false;
   controller: VideoController = new VideoController();
   @State errorMessage: string = '';
 
@@ -1284,7 +1283,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct VideoControllerAsyncExample {
   @State videoSrc: Resource = $rawfile('video1.mp4');// 替换为开发者所需的视频资源文件。
-  @State showFirstFrame: boolean = false;
   controller: VideoControllerAsync = new VideoControllerAsync();
 
   build() {

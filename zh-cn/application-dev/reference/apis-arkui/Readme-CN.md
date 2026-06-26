@@ -410,6 +410,8 @@
     - [OffscreenCanvas](arkui-ts/ts-components-offscreencanvas.md)
     - [OffscreenCanvasRenderingContext2D](arkui-ts/ts-offscreencanvasrenderingcontext2d.md)
     - [Path2D](arkui-ts/ts-components-canvas-path2d.md)
+    - [画布绘制通用属性](arkui-ts/ts-components-canvas-common-property.md)
+    - [画布绘制通用方法](arkui-ts/ts-components-canvas-common-method.md)
   - 图形绘制<!--graphic-drawing-->
     - [Circle](arkui-ts/ts-drawing-components-circle.md)
     - [Ellipse](arkui-ts/ts-drawing-components-ellipse.md)
@@ -419,6 +421,7 @@
     - [Path](arkui-ts/ts-drawing-components-path.md)
     - [Rect](arkui-ts/ts-drawing-components-rect.md)
     - [Shape](arkui-ts/ts-drawing-components-shape.md)
+    - [图形绘制通用属性](arkui-ts/ts-drawing-components-common.md)
   - 渲染绘制<!--rendering-drawing-->
     - [XComponent](arkui-ts/ts-basic-components-xcomponent.md)
     - [Component3D](arkui-ts/ts-basic-components-component3d.md)

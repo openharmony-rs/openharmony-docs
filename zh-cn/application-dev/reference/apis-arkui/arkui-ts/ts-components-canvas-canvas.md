@@ -284,8 +284,7 @@ struct attributeDemo {
                 console.info("analysis complete")
               })
               .catch((error: BusinessError) => {
-                let e: BusinessError = error as BusinessError
-                console.error(`Error code: ${e.code}, message: ${e.message}`)
+                console.error(`Error code: ${error.code}, message: ${error.message}`)
               })
           })
         Button('stop')
