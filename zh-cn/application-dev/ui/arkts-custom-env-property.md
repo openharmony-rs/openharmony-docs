@@ -83,7 +83,7 @@ struct Index {
         })
 
       WithEnv() {
-        // 有WithEnv组件，显示this.customMessage的默认值'Hello'，点击Button后值更新为'Hello World'。
+        // 有WithEnv组件，Child的customMessage显示WithEnv提供的值'Hello'，点击Button后值更新为'Hello World'。
         Child()
       }.customEnv(custom, this.customMsg)
 
@@ -221,7 +221,6 @@ const custom = CustomEnvKey.create<string>();
 @Entry
 @ComponentV2
 struct Index {
-  @Local customMsg: string = 'Hello';
   @CustomEnv(custom) customMessage: string = 'parent';
 
   build() {
@@ -428,7 +427,7 @@ struct Index {
         })
 
       WithEnv() {
-        // 有WithEnv组件，显示this.customMessage的默认值'Hello'，点击Button后值更新为'Hello World'。
+        // 有WithEnv组件，Child的customMessage显示WithEnv提供的值'Hello'，点击Button后值更新为'Hello World'。        
         Child()
       }.customEnv(custom, this.customMsg)
 

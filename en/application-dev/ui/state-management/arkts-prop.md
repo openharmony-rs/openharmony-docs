@@ -46,7 +46,7 @@ Variables decorated with \@Prop have the following features:
 
  The following figure shows the initialization rules.
 
-![en-us_image_0000001552972029](figures/en-us_image_0000001552972029.png)
+![en-us_image_0000001552972029](figures/Initialization-rules02.png)
 
 ## Observed Changes and Behavior
 

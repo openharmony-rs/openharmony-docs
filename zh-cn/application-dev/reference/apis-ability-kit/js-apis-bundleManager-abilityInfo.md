@@ -22,7 +22,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 ## AbilityInfo
 
- **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称                  | 类型                                                     | 只读 | 可选 | 说明                                      |
@@ -60,9 +60,9 @@ import { bundleManager } from '@kit.AbilityKit';
 
 描述窗口尺寸。
 
- <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
- **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **ArkTS-Dyn起始版本：** 9
 

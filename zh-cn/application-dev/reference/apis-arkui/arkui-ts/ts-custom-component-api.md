@@ -40,7 +40,7 @@ ArkTS-Sta: getUIContext(): UIContext
 
 ## UIContext
 
-ArkTS-Dyn: type UIContext = UIContext
+ArkTS-Dyn: type UIContext = import('../api/@ohos.arkui.UIContext').UIContext
 
 ArkTS-Sta: type UIContext = _UIContext
 
@@ -56,7 +56,7 @@ UIContext实例对象。
 
 | 类型                                                      | 说明                    |
 | --------------------------------------------------------- | ----------------------- |
-| ArkTS-Dyn: [UIContext](../arkts-apis-uicontext-uicontext.md)<br/>ArkTS-Sta: _UIContext | 返回UIContext实例对象。 |
+| ArkTS-Dyn: import('../api/@ohos.arkui.UIContext').[UIContext](../arkts-apis-uicontext-uicontext.md)<br/>ArkTS-Sta: _UIContext | 返回UIContext实例对象。 |
 
 **示例：**
 
@@ -297,7 +297,7 @@ struct MyComponent {
 
 ## NavDestinationInfo
 
-ArkTS-Dyn: type NavDestinationInfo = NavDestinationInfo
+ArkTS-Dyn: type NavDestinationInfo = import('../api/@ohos.arkui.observer').default.NavDestinationInfo
 
 ArkTS-Sta: type NavDestinationInfo = uiObserver.NavDestinationInfo
 
@@ -313,7 +313,7 @@ NavDestinationInfo实例对象。
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| ArkTS-Dyn: [NavDestinationInfo](../js-apis-arkui-observer.md#navdestinationinfo)<br/>ArkTS-Sta: uiObserver.NavDestinationInfo | 返回NavDestinationInfo实例对象。 |
+| ArkTS-Dyn: import('../api/@ohos.arkui.observer').default.[NavDestinationInfo](../js-apis-arkui-observer.md#navdestinationinfo)<br/>ArkTS-Sta: uiObserver.NavDestinationInfo | 返回NavDestinationInfo实例对象。 |
 
 ## queryNavigationInfo<sup>12+</sup>
 
@@ -377,7 +377,7 @@ export struct PageOne {
 
 ## NavigationInfo<sup>12+</sup>
 
-ArkTS-Dyn: type NavigationInfo = NavigationInfo
+ArkTS-Dyn: type NavigationInfo = import('../api/@ohos.arkui.observer').default.NavigationInfo
 
 ArkTS-Sta: type NavigationInfo = uiObserver.NavigationInfo
 
@@ -393,7 +393,7 @@ NavigationInfo实例对象。
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| ArkTS-Dyn: [NavigationInfo](../js-apis-arkui-observer.md#navigationinfo12)<br/>ArkTS-Sta: uiObserver.NavigationInfo | 返回NavigationInfo实例对象。 |
+| ArkTS-Dyn: import('../api/@ohos.arkui.observer').default.[NavigationInfo](../js-apis-arkui-observer.md#navigationinfo12)<br/>ArkTS-Sta: uiObserver.NavigationInfo | 返回NavigationInfo实例对象。 |
 
 ## queryRouterPageInfo<sup>12+</sup>
 
@@ -435,7 +435,7 @@ struct MyComponent {
 
 ## RouterPageInfo<sup>12+</sup>
 
-ArkTS-Dyn: type RouterPageInfo = RouterPageInfo
+ArkTS-Dyn: type RouterPageInfo = import('../api/@ohos.arkui.observer').default.RouterPageInfo
 
 ArkTS-Sta: type RouterPageInfo = uiObserver.RouterPageInfo
 
@@ -451,7 +451,7 @@ RouterPageInfo实例对象。
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| ArkTS-Dyn: [RouterPageInfo](../js-apis-arkui-observer.md#routerpageinfo)<br/>ArkTS-Sta: uiObserver.RouterPageInfo | 返回RouterPageInfo实例对象。 |
+| ArkTS-Dyn: import('../api/@ohos.arkui.observer').default.[RouterPageInfo](../js-apis-arkui-observer.md#routerpageinfo)<br/>ArkTS-Sta: uiObserver.RouterPageInfo | 返回RouterPageInfo实例对象。 |
 
 ## getDialogController<sup>18+</sup>
 
@@ -541,7 +541,7 @@ struct Index {
 
 ## PromptActionDialogController<sup>18+</sup>
 
-type PromptActionDialogController = promptAction.DialogController
+type PromptActionDialogController = import('../api/@ohos.promptAction').promptAction.DialogController
 
 自定义弹窗控制器，可以控制当前自定义弹窗，具体控制能力包括关闭弹窗等，详见[promptAction.DialogController](../js-apis-promptAction.md#dialogcontroller18)。
 
@@ -555,4 +555,4 @@ type PromptActionDialogController = promptAction.DialogController
 
 | 类型                                                         | 说明                         |
 | ------------------------------------------------------------ | ---------------------------- |
-| [promptAction.DialogController](../js-apis-promptAction.md#dialogcontroller18) | 表示对象类型为promptAction.DialogController实例对象。 |
+| import('../api/@ohos.promptAction').[promptAction.DialogController](../js-apis-promptAction.md#dialogcontroller18) | 表示对象类型为promptAction.DialogController实例对象。 |

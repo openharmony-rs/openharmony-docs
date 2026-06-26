@@ -13,27 +13,27 @@
 
 全局悬浮窗的层级比所有应用主窗、子窗的层级高。
 
-**全局悬浮窗和标准悬浮窗的对比：**
+**全局悬浮窗和闪控窗的对比：**
 
-- 共同点：全局悬浮窗和[标准悬浮窗](../reference/apis-arkui/js-apis-floatView.md)均为一种特殊的应用辅助窗口，具备在应用主窗口和对应Ability退至后台后仍然可以在前台显示的能力。
+- 共同点：全局悬浮窗和[闪控窗](../reference/apis-arkui/js-apis-floatView.md)均为一种特殊的应用辅助窗口，具备在应用主窗口和对应UIAbility退至后台后仍然可以在前台显示的能力。
 
 - 区别：
 
   - 全局悬浮窗由开发者管理并实现UI绘制，无统一UI及动效。
 
-  - 标准悬浮窗由系统管理并统一绘制UI，动效更为高端精致。
+  - 闪控窗由系统管理并统一绘制UI，动效更为高端精致。
 
-  - 标准悬浮窗支持和闪控球联合使用，实现更复杂的场景。
+  - 闪控窗支持和闪控球联合使用，实现更复杂的场景。
 
   - 全局悬浮窗仅支持在PC/2in1设备上使用。
 
-  - 标准悬浮窗支持在Phone、Tablet、PC/2in1设备上使用。
+  - 闪控窗支持在Phone、Tablet、PC/2in1设备上使用。
 
 - 适用场景：
 
   - 全局悬浮窗适用于多人视频通话、屏幕共享的场景。
 
-  - 标准悬浮窗适用于需要在独立小窗口中持续展示应用内容或提供快捷操作的场景。比如股市盯盘应用、手机直播应用。<!--RP1--><!--RP1End-->
+  - 闪控窗适用于需要在独立小窗口中持续展示应用内容或提供快捷操作的场景。比如股市盯盘应用、手机直播应用。<!--RP1--><!--RP1End-->
 
   - 针对其他非指定场景，如视频播放、视频会议、视频通话等，建议使用画中画功能来以小窗模式呈现视频内容。<!--RP2--><!--RP2End-->
 
@@ -56,45 +56,47 @@
 
    通过[window.createWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowcreatewindow9-1)接口创建全局悬浮窗类型（TYPE_FLOAT）的窗口。
 
-   ```ts
-   let float_windowClass: window.Window | undefined = undefined;
-   let config: window.Configuration = {
-     name: "floatWindow", windowType: window.WindowType.TYPE_FLOAT, ctx: getContext(this)
-   };
-   window.createWindow(config, (err, data) => {
-     let errCode: number = err.code;
-     if (errCode) {
-       console.error('Failed to create the floatWindow. Cause: ' + JSON.stringify(err));
-       return;
-     }
-     float_windowClass = data;
-     if (!float_windowClass) {
-       console.error('float_windowClass is null');
-       return;
-     }
-     console.info('Succeeded in creating the floatWindow. Data: ' + JSON.stringify(data));
-   });
+   <!-- @[floating_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let floatWindowClass: window.Window | undefined = undefined;
+   // ...
+         // 1.创建全局悬浮窗。
+         let context: common.UIAbilityContext | undefined = AppStorage.get<common.UIAbilityContext>('context');
+         let config: window.Configuration = {
+           name: 'floatWindow', windowType: window.WindowType.TYPE_FLOAT, ctx: context as common.BaseContext
+         };
+         window.createWindow(config, (err, data) => {
+           if (err?.code) {
+             console.error('Failed to create the floatWindow. Cause: ' + JSON.stringify(err));
+             return;
+           }
+           floatWindowClass = data;
+           console.info('Succeeded in creating the floatWindow. Data: ' + JSON.stringify(data));
+           // ...
+         });
    ```
 
 2. 对全局悬浮窗进行属性设置等操作。  
 
    全局悬浮窗创建成功后，可以改变其大小、位置等，还可以根据应用需要设置全局悬浮窗的背景色、亮度等属性。
 
-   ```ts
-   float_windowClass.moveWindowTo(700, 100, (err) => {
-     let errCode: number = err.code;
-     if (errCode) {
+   <!-- @[floating_window_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 2.全局悬浮窗窗口创建成功后，设置全局悬浮窗的位置、大小及相关属性等。
+   floatWindowClass.moveWindowTo(100, 100, (err) => {
+     if (err?.code) {
        console.error('Failed to move the window. Cause:' + JSON.stringify(err));
        return;
      }
      console.info('Succeeded in moving the window.');
-     if (!float_windowClass) {
+     if (!floatWindowClass) {
        console.error('float_windowClass is null');
        return;
      }
-     float_windowClass.resize(600, 900, (err) => {
-       let errCode: number = err.code;
-       if (errCode) {
+     floatWindowClass.resize(600, 900, (err) => {
+       if (err?.code) {
          console.error('Failed to change the window size. Cause:' + JSON.stringify(err));
          return;
        }
@@ -107,18 +109,19 @@
 
    通过[setUIContent()](../reference/apis-arkui/arkts-apis-window-Window.md#setuicontent9-1)和[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9-1)接口加载显示全局悬浮窗的具体内容。
 
-   ```ts
-   float_windowClass.setUIContent("pages/FloatWindow", (err) => {
-     let errCode: number = err.code;
-     if (errCode) {
+   <!-- @[floating_window_uiContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 3.为全局悬浮窗加载对应的目标页面。
+   floatWindowClass.setUIContent('pages/FloatWindow', (err) => {
+     if (err?.code) {
        console.error('Failed to load the content. Cause:' + JSON.stringify(err));
        return;
      }
      console.info('Succeeded in loading the content.');
      // 显示全局悬浮窗。
-     (float_windowClass as window.Window).showWindow((err) => {
-       let errCode: number = err.code;
-       if (errCode) {
+     (floatWindowClass as window.Window).showWindow((err) => {
+       if (err?.code) {
          console.error('Failed to show the window. Cause: ' + JSON.stringify(err));
          return;
        }
@@ -131,10 +134,12 @@
 
    当不再需要全局悬浮窗时，可根据具体实现逻辑，使用[destroyWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#destroywindow9-1)接口销毁全局悬浮窗。
 
-   ```ts
-   float_windowClass.destroyWindow((err: BusinessError) => {
-     let errCode: number = err.code;
-     if (errCode) {
+   <!-- @[destroy_floating_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 4.销毁子窗口。当不再需要子窗口时，可根据具体实现逻辑，使用destroy对其进行销毁。
+   floatWindowClass.destroyWindow((err) => {
+     if (err?.code) {
        console.error('Failed to destroy the window. Cause: ' + JSON.stringify(err));
        return;
      }

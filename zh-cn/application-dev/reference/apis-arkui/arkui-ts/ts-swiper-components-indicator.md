@@ -215,7 +215,7 @@ ArkTS-Sta: onChange(event: Callback\<int> | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| event  | ArkTS-Dyn: [Callback](./ts-types.md#callback12)\<number><br/>ArkTS-Sta: [Callback](./ts-types.md#callback12)\<int> \| undefined | 是   | 当前显示元素的索引变化时触发的回调。|
+| event  | ArkTS-Dyn: [Callback](./ts-types.md#callback12)\<number><br/>ArkTS-Sta: [Callback](./ts-types.md#callback12)\<int> \| undefined | 是   | 当前显示的选中导航点索引变化时触发的回调。|
 
 ## IndicatorComponentController
 
@@ -291,7 +291,7 @@ ArkTS-Sta: changeIndex(index: int | undefined, useAnimation?: boolean): void
 
 | 参数名      | 类型       | 必填  | 说明     |
 | -------- | ---------- | ---- | -------- |
-| index| ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined | 是    | 指定导航点在Swiper中的索引值。<br/>**说明：** <br/>设置的值小于0或大于最大导航点索引时，取0。<br/>取值为undefined时，按照0处理。 |
+| index| ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined | 是    | 指定导航点的索引值。<br/>**说明：** <br/>设置的值小于0或大于最大导航点索引时，取0。<br/>取值为undefined时，按照0处理。 |
 | useAnimation| boolean | 否    | 设置翻至指定导航点时是否有动效，true表示有动效，false表示没有动效。<br/>默认值：false<br/>取值为undefined时，按默认值处理。 |
 
 ## 示例
@@ -316,14 +316,14 @@ struct DotIndicatorDemo {
   build() {
     Column() {
       Swiper(this.swiperController) {
-        ForEach(this.list, (item: string) => {
+        ForEach(this.list, (item: number) => {
           Text(item.toString())
             .width('100%')
             .height(160)
             .backgroundColor(0xAFEEEE)
             .textAlign(TextAlign.Center)
             .fontSize(30)
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .cachedCount(2)
       .index(0)
@@ -380,14 +380,14 @@ struct DigitIndicatorDemo {
   build() {
     Column() {
       Swiper(this.swiperController) {
-        ForEach(this.list, (item: string) => {
+        ForEach(this.list, (item: number) => {
           Text(item.toString())
             .width('100%')
             .height(160)
             .backgroundColor(0xAFEEEE)
             .textAlign(TextAlign.Center)
             .fontSize(30)
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .cachedCount(2)
       .index(0)

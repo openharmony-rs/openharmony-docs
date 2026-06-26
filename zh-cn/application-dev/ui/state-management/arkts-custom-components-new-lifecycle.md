@@ -414,7 +414,6 @@ import { MyDataSource } from './BasicDataSource';
 @Component
 struct Index {
   @State dataSource: MyDataSource<string> = new MyDataSource();
-  private scrollerForList: Scroller = new Scroller();
   @State colors: number[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
   @State changeShow: boolean = false;
 
@@ -433,13 +432,13 @@ struct Index {
         })
       if (this.changeShow) {
         List({ space: 10 }) {
-          LazyForEach(this.dataSource, (item: number, index: number) => {
+          LazyForEach(this.dataSource, (item: string, index: number) => {
             ListItem() {
               Child({ item: item.toString(), index: index.toString() })
             }
             .backgroundColor(Color.Orange)
             .width('100%')
-          }, (item: number) => item.toString())
+          }, (item: string) => item.toString())
         }
         .height(360)
         // 预加载区域可容纳节点数量为5
@@ -851,7 +850,6 @@ struct Child {
 struct GrandChild {
   @State message: Message = new Message('GrandChild');
   @State label: string = 'HelloWorld';
-  @State switch: boolean = true;
   @ComponentInit
   myInit() {
     hilog.info(0x0000, 'testTag', 'GrandChild myInit');
@@ -1051,9 +1049,7 @@ import { SwiperExample } from './SwiperPage';
 @Component
 struct Index {
   @State message: string = 'Hello World';
-  controller: TabsController = new TabsController();
   @State show: boolean = false;
-  @State currentTabIndex: number = 0;
 
   build() {
     RelativeContainer() {

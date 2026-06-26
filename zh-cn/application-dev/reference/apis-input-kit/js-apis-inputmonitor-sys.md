@@ -55,7 +55,7 @@ on(type: 'touch', receiver: TouchEventReceiver): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | Permission denied, non-system app called system api.   |
+| 202  | Permission denied, non-system app called system api.<br/>适用版本：12+ |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -63,6 +63,7 @@ on(type: 'touch', receiver: TouchEventReceiver): void
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { TouchEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -178,7 +179,7 @@ on(type: 'mouse', receiver: Callback&lt;MouseEvent&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | Permission denied, non-system app called system api.   |
+| 202  | Permission denied, non-system app called system api.<br/>适用版本：12+ |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -186,6 +187,7 @@ on(type: 'mouse', receiver: Callback&lt;MouseEvent&gt;): void
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { MouseEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -301,7 +303,7 @@ on(type: 'mouse', rect: display.Rect[], receiver: Callback&lt;MouseEvent&gt;): v
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | SystemAPI permit error.  |
+| 202  | SystemAPI permit error.<br/>适用版本：12+ |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -310,6 +312,7 @@ on(type: 'mouse', rect: display.Rect[], receiver: Callback&lt;MouseEvent&gt;): v
 import { inputMonitor } from '@kit.InputKit';
 import { MouseEvent } from '@kit.InputKit';
 import { display } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -454,7 +457,7 @@ off(type: 'touch', receiver?: TouchEventReceiver): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | Permission denied, non-system app called system api.  |
+| 202  | Permission denied, non-system app called system api.<br/>适用版本：12+ |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -462,6 +465,7 @@ off(type: 'touch', receiver?: TouchEventReceiver): void
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { TouchEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -493,6 +497,7 @@ struct Index {
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { TouchEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -621,7 +626,7 @@ off(type: 'mouse', receiver?: Callback&lt;MouseEvent&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 201  | Permission denied.   |
-| 202  | Permission denied, non-system app called system api.   |
+| 202  | Permission denied, non-system app called system api.<br/>适用版本：12+ |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -629,6 +634,7 @@ off(type: 'mouse', receiver?: Callback&lt;MouseEvent&gt;): void
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { MouseEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -660,6 +666,7 @@ struct Index {
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { MouseEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -788,6 +795,7 @@ ArkTS-Dyn示例：
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -880,6 +888,7 @@ on(type: 'pinch', receiver: Callback&lt;Pinch&gt;): void
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1001,6 +1010,7 @@ off(type: 'pinch', receiver?: Callback&lt;Pinch&gt;): void
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { Pinch } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1032,6 +1042,7 @@ struct Index {
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { Pinch } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1164,6 +1175,7 @@ on(type: 'threeFingersSwipe', receiver: Callback&lt;ThreeFingersSwipe&gt;): void
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1286,6 +1298,7 @@ off(type: 'threeFingersSwipe', receiver?: Callback&lt;ThreeFingersSwipe&gt;): vo
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { ThreeFingersSwipe } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1303,7 +1316,7 @@ struct Index {
             // 订阅三指滑动事件
             inputMonitor.on('threeFingersSwipe', callback);
             // 取消订阅三指滑动事件
-            inputMonitor.off("threeFingersSwipe", callback);
+            inputMonitor.off('threeFingersSwipe', callback);
             console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
             console.error(`Failed to cancel monitor three fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1317,6 +1330,7 @@ struct Index {
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { ThreeFingersSwipe } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1332,9 +1346,9 @@ struct Index {
           };
           try {
             // 订阅三指滑动事件
-            inputMonitor.on("threeFingersSwipe", callback);
+            inputMonitor.on('threeFingersSwipe', callback);
             // 取消订阅三指滑动事件
-            inputMonitor.off("threeFingersSwipe");
+            inputMonitor.off('threeFingersSwipe');
             console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
             console.error(`Failed to cancel monitor three fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -1449,6 +1463,7 @@ on(type: 'fourFingersSwipe', receiver: Callback&lt;FourFingersSwipe&gt;): void
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1571,6 +1586,7 @@ off(type: 'fourFingersSwipe', receiver?: Callback&lt;FourFingersSwipe&gt;): void
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { FourFingersSwipe } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1602,6 +1618,7 @@ struct Index {
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { FourFingersSwipe } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1736,6 +1753,7 @@ on(type: 'rotate', fingers: number, receiver: Callback&lt;Rotate&gt;): void
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { Rotate } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1861,6 +1879,7 @@ off(type: 'rotate', fingers: number, receiver?: Callback&lt;Rotate&gt;): void
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { Rotate } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1892,6 +1911,7 @@ struct Index {
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { Rotate } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2056,6 +2076,7 @@ on(type: 'pinch', fingers: number, receiver: Callback&lt;Pinch&gt;): void
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { Pinch } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2181,6 +2202,7 @@ off(type: 'pinch', fingers: number, receiver?: Callback&lt;Pinch&gt;): void
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { Pinch } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2212,6 +2234,7 @@ struct Index {
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { Pinch } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2374,6 +2397,7 @@ on(type: 'threeFingersTap', receiver: Callback&lt;ThreeFingersTap&gt;): void
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2496,6 +2520,7 @@ off(type: 'threeFingersTap', receiver?: Callback&lt;ThreeFingersTap&gt;): void
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { ThreeFingersTap } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2513,7 +2538,7 @@ struct Index {
             // 订阅三指点击事件
             inputMonitor.on('threeFingersTap', callback);
             // 取消订阅三指点击事件
-            inputMonitor.off("threeFingersTap", callback);
+            inputMonitor.off('threeFingersTap', callback);
             console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
             console.error(`Failed to cancel monitor three fingers tap, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -2527,6 +2552,7 @@ struct Index {
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { ThreeFingersTap } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2544,7 +2570,7 @@ struct Index {
             // 订阅三指点击事件
             inputMonitor.on('threeFingersTap', callback);
             // 取消订阅三指点击事件
-            inputMonitor.off("threeFingersTap");
+            inputMonitor.off('threeFingersTap');
             console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
             console.error(`Failed to cancel monitor three fingers tap, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -2661,6 +2687,7 @@ on(type: 'touchscreenSwipe', fingers: number, receiver: Callback&lt;TouchGesture
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2787,6 +2814,7 @@ off(type: 'touchscreenSwipe', fingers: number, receiver?: Callback&lt;TouchGestu
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2817,6 +2845,7 @@ struct Index {
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2952,6 +2981,7 @@ on(type: 'touchscreenPinch', fingers: number, receiver: Callback&lt;TouchGesture
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3078,6 +3108,7 @@ off(type: 'touchscreenPinch', fingers: number, receiver?: Callback&lt;TouchGestu
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3095,7 +3126,7 @@ struct Index {
             // 订阅触摸屏捏合事件
             inputMonitor.on('touchscreenPinch', fingers, callback);
             // 取消订阅触摸屏捏合事件
-            inputMonitor.off("touchscreenPinch", fingers, callback);
+            inputMonitor.off('touchscreenPinch', fingers, callback);
           } catch (error) {
             console.error(`Failed to cancel monitor touch screen pinch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -3108,6 +3139,7 @@ struct Index {
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3124,7 +3156,7 @@ struct Index {
               console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
             });
             // 取消订阅触摸屏捏合事件
-            inputMonitor.off("touchscreenPinch", fingers);
+            inputMonitor.off('touchscreenPinch', fingers);
           } catch (error) {
             console.error(`Failed to cancel monitor touch screen pinch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -3243,6 +3275,7 @@ on(type: 'keyPressed', keys: Array&lt;KeyCode&gt;, receiver: Callback&lt;KeyEven
 
 ```js
 import { inputMonitor, KeyEvent, KeyCode } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3367,6 +3400,7 @@ off(type: 'keyPressed', receiver?: Callback&lt;KeyEvent&gt;): void
 
 ```js
 import { inputMonitor, KeyEvent, KeyCode } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3384,7 +3418,7 @@ struct Index {
             // 订阅按键按下事件
             inputMonitor.on('keyPressed', keys, callback);
             // 取消订阅按键按下事件
-            inputMonitor.off("keyPressed", callback);
+            inputMonitor.off('keyPressed', callback);
           } catch (error) {
             console.error(`Failed to cancel monitor key pressed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -3396,6 +3430,7 @@ struct Index {
 
 ```js
 import { inputMonitor, KeyEvent, KeyCode } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3412,7 +3447,7 @@ struct Index {
               console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
             });
             // 取消订阅按键按下事件
-            inputMonitor.off("keyPressed");
+            inputMonitor.off('keyPressed');
           } catch (error) {
             console.error(`Failed to cancel monitor key pressed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -3510,7 +3545,7 @@ ArkTS-Sta: queryTouchEvents(count: int): Promise&lt;Array&lt;TouchEvent&gt;&gt;
 
 | 参数名   | 类型                                                      | 必填 | 说明                                                         |
 | -------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| count     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                                    | 是   | 需要查询的触屏输入事件数量，取值范围为0到100的整数。小于0时取值为0、大于100时取值为100。从API版本26.0.0开始，大于60时取值为60。如果实际触屏输入事件只有30个，但该参数取值为50 ，则仅支持查询到30个触屏输入事件。 |
+| count     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                                    | 是   | 需要查询的触屏输入事件数量，取值范围为[0, 100]的整数。小于0时取值为0、大于100时取值为100。从API版本26.0.0开始，大于60时取值为60。如果实际触屏输入事件只有30个，但该参数取值为50 ，则仅支持查询到30个触屏输入事件。 |
 
 **返回值：**
 
@@ -3601,7 +3636,7 @@ on(type: 'swipeInward', receiver: Callback&lt;SwipeInward&gt;): void
 
 | 参数名   | 类型                                                        | 必填 | 说明                                 |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------ |
-| type     | string                                                      | 是   | 输入事件类型，取唯一值'SwipeInward'。 |
+| type     | string                                                      | 是   | 输入事件类型，取唯一值'swipeInward'。 |
 | receiver | Callback&lt;[SwipeInward](js-apis-multimodalinput-gestureevent-sys.md#swipeinward)&gt;    | 是   | 回调函数，返回向内滑动事件。         |
 
 **错误码**：
@@ -3618,6 +3653,7 @@ on(type: 'swipeInward', receiver: Callback&lt;SwipeInward&gt;): void
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3738,6 +3774,7 @@ off(type: 'swipeInward', receiver?: Callback&lt;SwipeInward&gt;): void
 
 ```js
 import { inputMonitor, SwipeInward } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3755,7 +3792,7 @@ build() {
           // 订阅向内滑动事件
           inputMonitor.on('swipeInward', callback);
           // 取消订阅向内滑动事件
-          inputMonitor.off("swipeInward", callback);
+          inputMonitor.off('swipeInward', callback);
           console.info(`Succeeded in turning off monitor.`);
         } catch (error) {
           console.error(`Failed to cancel monitor swipe inward, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -3768,6 +3805,7 @@ build() {
 
 ```js
 import { inputMonitor, SwipeInward } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -3785,7 +3823,7 @@ struct Index {
             // 订阅向内滑动事件
             inputMonitor.on('swipeInward', callback);
             // 取消订阅向内滑动事件
-            inputMonitor.off("swipeInward");
+            inputMonitor.off('swipeInward');
             console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
             console.error(`Failed to cancel monitor swipe inward, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -3901,6 +3939,7 @@ on(type: 'fingerprint', receiver: Callback&lt;FingerprintEvent&gt;): void
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -4022,6 +4061,7 @@ off(type: 'fingerprint', receiver?: Callback&lt;FingerprintEvent&gt;): void
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { FingerprintEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -4039,7 +4079,7 @@ struct Index {
             // 订阅指纹事件
             inputMonitor.on('fingerprint', callback);
             // 取消订阅指纹事件
-            inputMonitor.off("fingerprint", callback);
+            inputMonitor.off('fingerprint', callback);
             console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
             console.error(`Failed to cancel monitor finger print event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
@@ -4053,6 +4093,7 @@ struct Index {
 ```js
 import { inputMonitor } from '@kit.InputKit';
 import { FingerprintEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -4070,7 +4111,7 @@ struct Index {
             // 订阅指纹事件
             inputMonitor.on('fingerprint', callback);
             // 取消订阅指纹事件
-            inputMonitor.off("fingerprint");
+            inputMonitor.off('fingerprint');
             console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
             console.error(`Failed to cancel monitor finger print event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);

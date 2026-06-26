@@ -303,7 +303,7 @@ ArkTS-Sta: textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt; | undefi
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| value  | ArkTS-Dyn: [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)><br/>ArkTS-Sta: [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)>&nbsp;\|&nbsp;undefined | 是   | 文字的字体阴影效果。<br/>设置undefined时按默认阴影效果处理。 |
+| value  | ArkTS-Dyn: [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)><br/>ArkTS-Sta: [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)>&nbsp;\|&nbsp;undefined | 是   | 文字阴影效果。<br/>设置undefined时按默认阴影效果处理。 |
 
 ### fontFeature<sup>11+</sup>
 
@@ -512,7 +512,7 @@ ArkTS-Sta: stop(): void
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | timeZoneOffset | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 否 | 当前文本时钟时区偏移量。<br>取值范围为[-14, 12]，表示东十二区到西十二区，其中负值表示东时区，正值表示西时区，比如东八区为-8。设置值为该取值范围内的浮点数时会进行取整，舍弃小数部分。 |
-| started | boolean | 否 | 否 | 指示文本时钟是否启动。<br>true：表示启动文本时钟。<br>false：表示关闭文本时钟。<br>默认值：true |
+| started | boolean | 否 | 否 | 指示文本时钟是否启动。<br>true：表示启动文本时钟。<br>false：表示停止文本时钟。<br>默认值：true |
 | timeValue | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否 | 否 | 当前文本时钟时区的UTC秒数。 |
 
 ## 示例

@@ -67,6 +67,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.DYNAMIC_ICON_CHANGED"
@@ -274,6 +278,10 @@
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用
 
@@ -695,6 +703,10 @@
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
+
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.VPN_CONNECTION_STATUS_CHANGED"
@@ -789,7 +801,7 @@
 
 **ArkTS-Dyn起始版本**: 10
 
-**ArkTS-Sta起始版本**: 20
+**ArkTS-Sta起始版本**: 23
 
 **订阅者所需权限：** 无
 

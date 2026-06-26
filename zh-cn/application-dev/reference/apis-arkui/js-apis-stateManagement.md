@@ -174,7 +174,7 @@ static globalConnect\<T extends object\>(type: ConnectOptions\<T\>): T | undefin
 
 | 参数名   |类型   |必填   | 说明                                                      |
 | ------------- | ------------|-------------------|-------------------------- |
-| type    |[ConnectOptions\<T\>](#connectoptionst18)    |是  |传入的connect参数，详细说明见ConnectOptions参数说明。 |
+| type    |[ConnectOptions\<T\>](#connectoptionst18)    |是  |传入的globalConnect参数，详细说明见ConnectOptions参数说明。 |
 
 **返回值：**
 
@@ -184,7 +184,7 @@ static globalConnect\<T extends object\>(type: ConnectOptions\<T\>): T | undefin
 
 > **说明：**
 >
-> 1、若未指定key，使用第二个参数作为默认构造器；否则使用第三个参数作为默认构造器（第二个参数非法也使用第三个参数作为默认构造器）。
+> 1、若未指定key，使用defaultCreator作为默认构造器；否则使用defaultCreator作为默认构造器（key非法也使用defaultCreator作为默认构造器）。
 >
 > 2、确保数据已经存储在PersistenceV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
 >
@@ -300,7 +300,7 @@ struct Page1 {
 
 如下展示globalConnect持久化Map类型的示例代码：
 ```typescript
-import { PersistenceV2, ConnectOptions } from '@kit.ArkUI';
+import { PersistenceV2 } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -500,7 +500,7 @@ struct Comp {
             Text(`report?.() '${ri.item.report?.()}'`)
           }
         })
-      // 步骤1：点击'add item'，显示`propA 'a' propB 'b'report?.'a' - 'b'`。
+      // 步骤1：点击'add item'，显示`propA 'a' propB 'b' report?.() 'a - b'`。
       // 步骤2：关闭应用。
       Button('add item')
         .onClick(() => {
@@ -1547,7 +1547,7 @@ struct ReusableChild {
 @ComponentV2({ 
   reusePool: 'shared', // 声明共享全局复用池
   poolAccepts: [ReusableChild], // 全局复用池接纳子组件类型ReusableChild
-  freezeWhenInactive: false // 关闭组件冻结功能。该参数必须声明reusePools时提供，也可以开启组件冻结。
+  freezeWhenInactive: false // 关闭组件冻结功能。该参数必须在声明reusePool时提供，也可以开启组件冻结。
 })
 struct Index {
   @Local showChild: boolean = true;
@@ -2124,7 +2124,7 @@ get value(): T
 
 | 类型             | 说明                                                         |
 | -------------------- | ------------------------------------------------------------ |
-| T |返回值类型为泛型参数T，与Binding\<T\>定义的类型一致。|
+| T |返回值类型为泛型参数T，与MutableBinding\<T\>定义的类型一致。|
 
 **示例：**
 
@@ -2412,7 +2412,7 @@ struct Index {
   aboutToAppear() {
     // 获取池并调度预渲染。
     const pool = UIUtils.getCustomComponentContext(this).getReusePool();
-    pool!.preRender(new WrappedBuilder<[]>(preRenderBuilder.bind(this)), 1)
+    pool!.preRender(new WrappedBuilder<[]>(preRenderBuilder), 1)
       .then(() => {
         console.info('ReusableComponent preRender completes');
       });

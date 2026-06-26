@@ -8,17 +8,27 @@
 
 本模块提供反射相关的功能，包括类反射、字段反射、方法反射和动态代理。开发者可以使用本模块获取类和对象的反射信息，包括检查接口类型、函数对象类型、获取字段和方法的元数据，并在运行时创建实例、调用方法和访问字段，以及创建动态代理对象。
 
+反射API围绕`Class`、`reflect.Field`、`reflect.Method`和`reflect.Constructor`展开。`Class.from<T>()`适合在编译期已知类型时取得类元数据，`Class.of(obj)`和`Class.ofAny(value)`适合从运行时对象反查类型；字段、方法和构造函数元数据通常由`Class`实例返回，再通过`getName()`、`getOwner()`、`getParameterTypes()`、`invoke()`、`getValue()`或`setValue()`完成检查和访问。
+
+反射调用不会绕过ArkTS-Sta的静态类型和可见性约束。公开API默认返回公开成员；对字段赋值和方法调用时，传入对象必须匹配成员所属类型，参数数量和参数类型也需要与目标签名一致，否则运行时会抛出类型相关异常。
+
+动态代理由`reflect.Proxy`和`reflect.InvocationHandler`组成。代理类在运行时生成，生成结果实现`interfaces`数组中的接口并继承`Proxy`；读取属性会进入`InvocationHandler.get`，写入属性会进入`InvocationHandler.set`，调用普通实例方法会进入`InvocationHandler.invoke`。处理器可以直接转发到真实对象，也可以根据`InstanceMethod.getName()`、参数列表或代理对象类型实现日志、校验、懒加载和适配逻辑。
+
 > **说明：**
 >
 > - 本模块仅适用于ArkTS-Sta。
 >
-> - 本模块首批接口从API version 24开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 24开始支持。
 
 ## isLiteralInitializedInterface
 
 isLiteralInitializedInterface(target: Object): boolean
 
 检查给定对象是否是基于接口初始化的字面量对象。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -30,7 +40,7 @@ isLiteralInitializedInterface(target: Object): boolean
 
 | 类型    | 说明                                               |
 | ------- | -------------------------------------------------- |
-| boolean | 如果target是用字面量初始化的接口对象返回true，否则返回false。 |
+| boolean | 判断target是否是用字面量初始化的接口对象。`true`表示是，`false`表示不是。 |
 
 **示例：**
 
@@ -63,6 +73,10 @@ isFuncObjAsync(target: Function): boolean
 
 判断函数对象是否是异步函数。
 
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **参数：**
 
 | 参数   | 类型     | 必填 | 说明                   |
@@ -73,7 +87,7 @@ isFuncObjAsync(target: Function): boolean
 
 | 类型    | 说明                                                         |
 | ------- | ------------------------------------------------------------ |
-| boolean | 如果目标类标注了`std.core.AsyncFunctionObject`注解返回true，否则返回false。 |
+| boolean | 判断目标类是否标注了`std.core.AsyncFunctionObject`注解。`true`表示已标注，`false`表示未标注。 |
 
 **示例：**
 
@@ -95,6 +109,10 @@ console.info(reflect.isFuncObjAsync(syncFunc)); // false
 getInstanceGettersRecursive(targetClass: Class): Array\<InstanceMethod>
 
 返回类及其父类的所有公共实例getter方法。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -135,7 +153,7 @@ let cls = Class.from<MyClass>();
 let getters = reflect.getInstanceGettersRecursive(cls);
 console.info(getters.length); // 3
 for (let getter of getters) {
-    console.info(getter.getName()); // "%%get-age", "%%get-name", "%%get-baseField"
+    console.info(getter.getName()); // "%get-age", "%get-name", "%get-baseField"
 }
 ```
 
@@ -144,6 +162,10 @@ for (let getter of getters) {
 getInstanceFieldsRecursive(targetClass: Class): Array\<InstanceField>
 
 返回类及其父类的所有公共实例字段。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -182,7 +204,11 @@ for (let field of fields) {
 
 用于描述运行时类型的类。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 ### 静态属性
+
+**系统能力：** SystemCapability.Utils.Lang
 
 | 名称                   | 类型    | 只读  | 可选  | 说明                     |
 | --------------------- | ----- | --- | --- | ---------------------- |
@@ -202,6 +228,8 @@ for (let field of fields) {
 getName(): string
 
 获取类名。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
@@ -224,6 +252,8 @@ getSuper(): Class | undefined
 
 获取此类的父类。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型            | 说明           |
@@ -245,6 +275,8 @@ isSubtypeOf(other: Class): boolean
 
 检查此类是否是另一个类的子类型。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **参数：**
 
 | 参数   | 类型   | 必填 | 说明           |
@@ -255,7 +287,7 @@ isSubtypeOf(other: Class): boolean
 
 | 类型    | 说明                                             |
 | ------- | ------------------------------------------------ |
-| boolean | 如果此类是other的子类型返回true，否则返回false。   |
+| boolean | 判断此类是否是other的子类型。`true`表示是子类型，`false`表示不是子类型。 |
 
 **示例：**
 
@@ -273,6 +305,8 @@ console.info(isSubtype); // true
 getLinker(): RuntimeLinker
 
 获取与此类关联的运行时链接器。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
@@ -297,6 +331,8 @@ getFixedArrayComponentType(): Class | undefined
 
 如果此类是定长数组，获取其组件类型。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型            | 说明                                           |
@@ -308,7 +344,7 @@ getFixedArrayComponentType(): Class | undefined
 ```ts
 let arr: FixedArray<int> = [1, 2, 3];
 let cls = Class.of(arr).getFixedArrayComponentType();
-console.info(cls!.getName()); // "i32"
+console.info(cls!.getName()); // "std.core.Int"
 ```
 
 ### getInterfaces
@@ -316,6 +352,8 @@ console.info(cls!.getName()); // "i32"
 getInterfaces(): FixedArray\<Class>
 
 获取此类实现的所有接口。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
@@ -359,6 +397,8 @@ initialize(): void
 
 如果此类未初始化，则首次使用时将调用类初始化器。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **示例：**
 
 ```ts
@@ -372,6 +412,8 @@ cls.initialize();
 static ofAny(obj: Any): Class | undefined
 
 获取任意类型对象的类。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
@@ -399,6 +441,8 @@ static of(obj: Object | null): Class
 
 获取对象的类。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **参数：**
 
 | 参数 | 类型           | 必填 | 说明           |
@@ -425,6 +469,8 @@ static from\<T>(): Class
 
 在不创建对象的情况下获取指定类型的类。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型   | 说明         |
@@ -443,6 +489,8 @@ console.info(cls.getName()); // "std.core.Map"
 static current(): Class
 
 获取当前类。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
@@ -468,6 +516,8 @@ console.info(cls.getName()); // "MyClass"
 static ofCaller(): Class | undefined
 
 获取调用者的类。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
@@ -507,6 +557,8 @@ createInstance(): Object
 
 创建此类的新实例并调用其默认构造函数（无参数）。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                 |
@@ -539,6 +591,8 @@ getDescriptor(): string
 
 获取类的描述符。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型     | 说明         |
@@ -558,11 +612,13 @@ isEnum(): boolean
 
 检查当前类是否是枚举。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                                   |
 | ------- | -------------------------------------- |
-| boolean | 如果此类是枚举返回true，否则返回false。 |
+| boolean | 判断此类是否是枚举。`true`表示是枚举，`false`表示不是枚举。 |
 
 **示例：**
 
@@ -578,18 +634,19 @@ let cls2 = Class.from<Set<int>>();
 console.info(cls2.isEnum()); // false
 ```
 
-
 ### isInterface
 
 isInterface(): boolean
 
 检查当前类是否是接口。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                                   |
 | ------- | -------------------------------------- |
-| boolean | 如果此类是接口返回true，否则返回false。 |
+| boolean | 判断此类是否是接口。`true`表示是接口，`false`表示不是接口。 |
 
 **示例：**
 
@@ -607,11 +664,13 @@ isFixedArray(): boolean
 
 检查此类是否是长度固定的数组（元素数量在创建时确定且不可变的数组）。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                                   |
 | ------- | -------------------------------------- |
-| boolean | 如果此类是定长数组返回true，否则返回false。 |
+| boolean | 判断此类是否是定长数组。`true`表示是定长数组，`false`表示不是定长数组。 |
 
 **示例：**
 
@@ -631,11 +690,13 @@ isUnion(): boolean
 
 检查此类是否是联合类型。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                                   |
 | ------- | -------------------------------------- |
-| boolean | 如果此类是联合类型返回true，否则返回false。 |
+| boolean | 判断此类是否是联合类型。`true`表示是联合类型，`false`表示不是联合类型。 |
 
 **示例：**
 
@@ -651,11 +712,13 @@ isFinal(): boolean
 
 检查此类是否是final类。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                                 |
 | ------- | ------------------------------------ |
-| boolean | 如果此类是final类返回true，否则返回false。 |
+| boolean | 判断此类是否是final类。`true`表示是final类，`false`表示不是final类。 |
 
 **示例：**
 
@@ -671,11 +734,13 @@ isAbstract(): boolean
 
 检查此类是否是抽象类。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                                 |
 | ------- | ------------------------------------ |
-| boolean | 如果此类是抽象类返回true，否则返回false。 |
+| boolean | 判断此类是否是抽象类。`true`表示是抽象类，`false`表示不是抽象类。 |
 
 **示例：**
 
@@ -683,6 +748,14 @@ isAbstract(): boolean
 abstract class MyClass {}
 let cls = Class.from<MyClass>();
 console.info(cls.isAbstract()); // true
+
+// FixedArray支持通过new创建，但其被声明为抽象类。这是设计者有意为之，使得new FixedArray的调用会被编译为运行时的特殊字节码或native API来创建实例，而非通过常规的类实例化机制。
+let arr = new FixedArray<int>(5);
+console.info(Class.of(arr).isAbstract()); // true
+
+// ValueArray支持通过new创建，但其被声明为抽象类。这是设计者有意为之，使得new ValueArray的调用会被编译为运行时的特殊字节码或native API来创建实例，而非通过常规的类实例化机制。
+let valueArray = new ValueArray<double>(2);
+console.info(Class.of(valueArray).isAbstract()); // true
 ```
 
 ### isPrimitive
@@ -691,11 +764,13 @@ isPrimitive(): boolean
 
 检查此类是否是基本类型。基本类型请参考[静态属性](#静态属性)
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                                 |
 | ------- | ------------------------------------ |
-| boolean | 如果此类是基本类型返回true，否则返回false。 |
+| boolean | 判断此类是否是基本类型。`true`表示是基本类型，`false`表示不是基本类型。 |
 
 **示例：**
 
@@ -712,6 +787,8 @@ console.info(Class.PRIMITIVE_BOOLEAN.isPrimitive()); // true
 getInstanceMethods(): FixedArray\<reflect.InstanceMethod>
 
 获取当前类中所有声明的public实例方法（包括从接口继承的public实例方法）。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
@@ -752,12 +829,13 @@ methods = cls.getSuper()!.getInstanceMethods();
 console.info(methods.length); // 1
 ```
 
-
 ### getInstanceMethod
 
 getInstanceMethod(name: string, signature?: FixedArray\<Class>): reflect.InstanceMethod | undefined
 
 在类声明的方法中查找指定的public实例方法（包括从接口继承的public实例方法）。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
@@ -831,6 +909,8 @@ getStaticMethods(): FixedArray\<reflect.StaticMethod>
 
 获取所有此类中声明的public静态方法。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型                              | 说明           |
@@ -869,6 +949,8 @@ console.info(methods.length); // 1
 getStaticMethod(name: string, signature?: FixedArray\<Class>): reflect.StaticMethod | undefined
 
 在此类声明的方法中查找指定的public静态方法。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
@@ -931,6 +1013,12 @@ getInstanceFields(): FixedArray\<reflect.InstanceField>
 
 获取当前类中所有声明的public实例字段。
 
+> **注意：**
+>
+> 当子类重写父类中声明的public实例字段时，父子类共用同一个字段。通过子类反射无法访问该重名字段，需通过父类反射访问。
+
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型                                | 说明           |
@@ -941,19 +1029,26 @@ getInstanceFields(): FixedArray\<reflect.InstanceField>
 
 ```ts
 class ParentClass {
+    public name = 'parent name';
     public age: int = 0;
     private address: string = ''; // 私有字段不能反射
 }
 class MyClass extends ParentClass {
-    public name = 'class name';
-    private remark = ''; // 私有字段不能反射
+    public name = 'class name';   // MyClass不能反射父类同名字段
+    public code: int = 0;
+    private remark = '';          // 私有字段不能反射
+    public address: string = 'address';
 }
 let cls = Class.from<MyClass>();
 let fields = cls.getInstanceFields();
-console.info(fields.length); // 1
+console.info(fields.length); // 2
+console.info(fields[0].getName()); // "code"
+console.info(fields[1].getName()); // "address"
 
-fields = cls.getSuper()!.getInstanceFields();
-console.info(fields.length); // 1
+let parentFields = cls.getSuper()!.getInstanceFields();
+console.info(parentFields.length); // 2
+console.info(parentFields[0].getName()); // "name"
+console.info(parentFields[1].getName()); // "age"
 ```
 
 ### getInstanceField
@@ -961,6 +1056,12 @@ console.info(fields.length); // 1
 getInstanceField(name: string): reflect.InstanceField | undefined
 
 在当前类声明的字段中按名称查找public实例字段。
+
+> **注意：**
+> 
+> 当子类重写父类中声明的public实例字段时，父子类共用同一个字段。通过子类反射无法访问该重名字段，需通过父类反射访问。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
@@ -978,25 +1079,34 @@ getInstanceField(name: string): reflect.InstanceField | undefined
 
 ```ts
 class ParentClass {
+    public name = 'parent name';
     public age: int = 0;
     private address: string = ''; // 私有字段不能反射
 }
 class MyClass extends ParentClass {
-    public name = 'class name';
-    private remark = ''; // 私有字段不能反射
+    public name = 'class name';   // MyClass不能反射父类同名字段
+    public code: int = 0;
+    private remark = '';          // 私有字段不能反射
+    public address: string = 'address';
 }
 let cls = Class.from<MyClass>();
 let field = cls.getInstanceField('name');
-console.info(field!.getName()); // "name"
-
+console.info(field == undefined);           // true
+field = cls.getInstanceField('code');
+console.info(field!.getName());             // "code"
 field = cls.getInstanceField('remark');
-console.info(field == undefined); // true
-
+console.info(field == undefined);           // true
+field = cls.getInstanceField('address');
+console.info(field!.getName());             // "address"
 field = cls.getInstanceField('age');
-console.info(field == undefined); // true
+console.info(field == undefined);           // true
 
-field = cls.getSuper()!.getInstanceField('age');
-console.info(field!.getName()); // "age"
+let parentField = cls.getSuper()!.getInstanceField('name');
+console.info(parentField!.getName());       // "name"
+parentField = cls.getSuper()!.getInstanceField('age');
+console.info(parentField!.getName());       // "age"
+parentField = cls.getSuper()!.getInstanceField('address');
+console.info(parentField == undefined);     // true
 ```
 
 ### getStaticFields
@@ -1004,6 +1114,8 @@ console.info(field!.getName()); // "age"
 getStaticFields(): FixedArray\<reflect.StaticField>
 
 获取当前类中所有声明的public静态字段。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
@@ -1035,6 +1147,8 @@ console.info(fields.length); // 1
 getStaticField(name: string): reflect.StaticField | undefined
 
 在此类声明的字段中按名称查找public静态字段。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
@@ -1079,6 +1193,8 @@ getConstructors(): FixedArray\<reflect.Constructor>
 
 获取此类中所有声明的public构造函数。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型                            | 说明             |
@@ -1107,6 +1223,8 @@ getUnionConstituentTypes(): FixedArray\<Class> | undefined
 
 获取联合类型的所有组成类型。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型                        | 说明                                      |
@@ -1125,17 +1243,21 @@ for (let i = 0; i < arr.length; i++) {
 
 表示类或接口的实例字段。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 ### isReadonly
 
 isReadonly(): boolean
 
 检查字段是否是只读字段。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                               |
 | ------- | ---------------------------------- |
-| boolean | 如果是只读字段返回true，否则返回false。 |
+| boolean | 判断是否是只读字段。`true`表示是只读字段，`false`表示不是只读字段。 |
 
 **示例：**
 
@@ -1157,11 +1279,13 @@ isPublic(): boolean
 
 检查字段是否是public字段。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                               |
 | ------- | ---------------------------------- |
-| boolean | 如果是public字段返回true，否则返回false。 |
+| boolean | 判断是否是public字段。`true`表示是public字段，`false`表示不是public字段。 |
 
 **示例：**
 
@@ -1180,11 +1304,13 @@ isPrivate(): boolean
 
 检查字段是否是private字段。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                               |
 | ------- | ---------------------------------- |
-| boolean | 如果是private字段返回true，否则返回false。 |
+| boolean | 判断是否是private字段。`true`表示是private字段，`false`表示不是private字段。 |
 
 **示例：**
 
@@ -1203,11 +1329,13 @@ isProtected(): boolean
 
 检查字段是否是protected字段。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                               |
 | ------- | ---------------------------------- |
-| boolean | 如果是protected字段返回true，否则返回false。 |
+| boolean | 判断是否是protected字段。`true`表示是protected字段，`false`表示不是protected字段。 |
 
 **示例：**
 
@@ -1225,6 +1353,8 @@ console.info(field!.isProtected()); // false
 getType(): Class
 
 获取字段的类型。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
@@ -1251,6 +1381,8 @@ console.info(field2!.getType().getName()); // "i32"
 getOwner(): Class
 
 获取声明此字段的类或接口。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
@@ -1279,6 +1411,8 @@ getName(): string
 
 获取字段的名称。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型     | 说明         |
@@ -1302,6 +1436,8 @@ equals(other: InstanceField): boolean
 
 比较当前实例字段是否与给定的实例字段相等。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **参数：**
 
 | 参数  | 类型            | 必填 | 说明                               |
@@ -1312,7 +1448,7 @@ equals(other: InstanceField): boolean
 
 | 类型    | 说明                                   |
 | ------- | -------------------------------------- |
-| boolean | 如果两个实例字段相等返回true，否则返回false。 |
+| boolean | 判断两个实例字段是否相等。`true`表示相等，`false`表示不相等。 |
 
 **示例：**
 
@@ -1332,6 +1468,8 @@ console.info(field1! === field2!); // false
 getValue(thisObj: Object): Any
 
 从实例字段中读取值。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
@@ -1370,6 +1508,8 @@ setValue(thisObj: Object, value: Any): void
 
 向实例字段中写入值。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **参数：**
 
 | 参数    | 类型   | 必填 | 说明                         |
@@ -1384,23 +1524,49 @@ setValue(thisObj: Object, value: Any): void
 | TypeError | 当`thisObj`与字段不兼容时抛出。               |
 | TypeError | 当值类型不匹配时抛出。                       |
 | TypeError | 当字段是只读字段时抛出。                     |
+| NullPointerError | 向基本类型（boolean、byte、char、short、int、long、float、double）字段赋值`undefined`时抛出。 |
+
+> **说明：**
+>
+> - 基本类型（如`int`）在内存中以原始值存储，无法表示`undefined`，因此赋值`undefined`会抛出`NullPointerError`。
+> - 联合类型（如`int | undefined`）在运行时以引用形式存储，不属于基本类型，赋值`undefined`不会抛出异常，字段将被设为`undefined`。
+> - 引用类型（如`string`、`Object`）同样可以接受`undefined`，赋值后字段将被设为`undefined`。
 
 **示例：**
 
 ```ts
 class MyClass {
     public name = 'test';
+    public age = 0;
+    public score: int | undefined = 100;
 }
 let obj = new MyClass();
 let cls = Class.from<MyClass>();
 let field = cls.getInstanceField("name");
 field!.setValue(obj, "new value");
 console.info(obj.name); // "new value"
+
+// 基本类型字段赋值undefined，抛出NullPointerError
+try {
+    field = cls.getInstanceField("age");
+    field!.setValue(obj, undefined);
+} catch (e) {
+    console.info(e instanceof NullPointerError); // true
+}
+
+// 联合类型字段可以接受undefined，不抛出异常
+let scoreField = cls.getInstanceField("score");
+scoreField!.setValue(obj, undefined);
+console.info(obj.score); // undefined
 ```
 
 ## StaticField
 
 表示类的静态字段。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 ### isReadonly
 
@@ -1408,11 +1574,15 @@ isReadonly(): boolean
 
 检查字段是否是只读字段。
 
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **返回值：**
 
 | 类型    | 说明                               |
 | ------- | ---------------------------------- |
-| boolean | 如果是只读字段返回true，否则返回false。 |
+| boolean | 判断是否是只读字段。`true`表示是只读字段，`false`表示不是只读字段。 |
 
 **示例：**
 
@@ -1434,11 +1604,15 @@ isPublic(): boolean
 
 检查字段是否是public字段。
 
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **返回值：**
 
 | 类型    | 说明                               |
 | ------- | ---------------------------------- |
-| boolean | 如果是public字段返回true，否则返回false。 |
+| boolean | 判断是否是public字段。`true`表示是public字段，`false`表示不是public字段。 |
 
 **示例：**
 
@@ -1457,11 +1631,15 @@ isPrivate(): boolean
 
 检查字段是否是private字段。
 
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **返回值：**
 
 | 类型    | 说明                               |
 | ------- | ---------------------------------- |
-| boolean | 如果是private字段返回true，否则返回false。 |
+| boolean | 判断是否是private字段。`true`表示是private字段，`false`表示不是private字段。 |
 
 **示例：**
 
@@ -1480,11 +1658,15 @@ isProtected(): boolean
 
 检查字段是否是protected字段。
 
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **返回值：**
 
 | 类型    | 说明                               |
 | ------- | ---------------------------------- |
-| boolean | 如果是protected字段返回true，否则返回false。 |
+| boolean | 判断是否是protected字段。`true`表示是protected字段，`false`表示不是protected字段。 |
 
 **示例：**
 
@@ -1502,6 +1684,10 @@ console.info(field!.isProtected()); // false
 getType(): Class
 
 获取字段的类型。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -1529,6 +1715,10 @@ getOwner(): Class
 
 获取声明此字段的类或接口。
 
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **返回值：**
 
 | 类型   | 说明               |
@@ -1555,6 +1745,10 @@ getName(): string
 
 获取字段的名称。
 
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **返回值：**
 
 | 类型     | 说明         |
@@ -1578,6 +1772,10 @@ equals(other: StaticField): boolean
 
 比较当前StaticField对象是否与另一个对象相等。
 
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **参数：**
 
 | 参数  | 类型          | 必填 | 说明                             |
@@ -1588,7 +1786,7 @@ equals(other: StaticField): boolean
 
 | 类型    | 说明                                   |
 | ------- | -------------------------------------- |
-| boolean | 如果两个对象相等返回true，否则返回false。 |
+| boolean | 判断两个对象是否相等。`true`表示相等，`false`表示不相等。 |
 
 **示例：**
 
@@ -1608,6 +1806,10 @@ console.info(field1! === field2!); // false
 getValue(): Any
 
 从静态字段中读取值。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -1639,6 +1841,10 @@ setValue(value: Any): void
 
 向静态字段中写入值。
 
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **参数：**
 
 | 参数  | 类型 | 必填 | 说明         |
@@ -1651,28 +1857,52 @@ setValue(value: Any): void
 | --------- | -------------------------------- |
 | TypeError | 当值类型不兼容时抛出。           |
 | TypeError | 当字段是只读字段时抛出。         |
+| NullPointerError | 向基本类型（boolean、byte、char、short、int、long、float、double）字段赋值`undefined`时抛出。 |
+
+> **说明：**
+>
+> - 基本类型（如`int`）在内存中以原始值存储，无法表示`undefined`，因此赋值`undefined`会抛出`NullPointerError`。
+> - 联合类型（如`int | undefined`）在运行时以引用形式存储，不属于基本类型，赋值`undefined`不会抛出异常，字段将被设为`undefined`。
+> - 引用类型（如`string`、`Object`）同样可以接受`undefined`，赋值后字段将被设为`undefined`。
 
 **示例：**
 
 ```ts
 class MyClass {
     public static count = 0;
+    public static score: int | undefined = 100;
 }
 let cls = Class.from<MyClass>();
 let field = cls.getStaticField("count");
 field!.setValue(10);
 console.info(MyClass.count); // 10
+
+// 基本类型字段赋值undefined，抛出NullPointerError
+try {
+    field!.setValue(undefined);
+} catch(e) {
+    console.info(e instanceof NullPointerError); // true
+}
+
+// 联合类型字段可以接受undefined，不抛出异常
+let scoreField = cls.getStaticField("score");
+scoreField!.setValue(undefined);
+console.info(MyClass.score); // undefined
 ```
 
 ## InstanceMethod
 
 表示类或接口的实例方法。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 ### getName
 
 getName(): string
 
 获取方法的名称。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
@@ -1697,6 +1927,8 @@ getOwner(): Class
 
 获取声明此方法的类或接口。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型   | 说明               |
@@ -1719,6 +1951,8 @@ console.info(method!.getOwner().getName()); // "MyClass"
 getReturnType(): Class
 
 获取方法的返回类型。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
@@ -1745,6 +1979,8 @@ getParameterTypes(): FixedArray\<Class>
 
 获取所有参数的类型。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型                | 说明               |
@@ -1770,6 +2006,8 @@ console.info(paramTypes[1].getName()); // "std.core.String"
 getParameterType(idx: int): Class | undefined
 
 通过索引获取指定位置参数的类型。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
@@ -1801,6 +2039,8 @@ getParametersNum(): int
 
 获取方法参数的数量。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型 | 说明               |
@@ -1824,11 +2064,13 @@ isNative(): boolean
 
 检查方法是否是native方法。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                               |
 | ------- | ---------------------------------- |
-| boolean | 如果是native方法返回true，否则返回false。 |
+| boolean | 判断是否是native方法。`true`表示是native方法，`false`表示不是native方法。 |
 
 **示例：**
 
@@ -1844,11 +2086,13 @@ isPublic(): boolean
 
 检查方法是否是public方法。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                               |
 | ------- | ---------------------------------- |
-| boolean | 如果是public方法返回true，否则返回false。 |
+| boolean | 判断是否是public方法。`true`表示是public方法，`false`表示不是public方法。 |
 
 **示例：**
 
@@ -1867,11 +2111,13 @@ isPrivate(): boolean
 
 检查方法是否是private方法。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                               |
 | ------- | ---------------------------------- |
-| boolean | 如果是private方法返回true，否则返回false。 |
+| boolean | 判断是否是private方法。`true`表示是private方法，`false`表示不是private方法。 |
 
 **示例：**
 
@@ -1890,11 +2136,13 @@ isProtected(): boolean
 
 检查方法是否是protected方法。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                               |
 | ------- | ---------------------------------- |
-| boolean | 如果是protected方法返回true，否则返回false。 |
+| boolean | 判断是否是protected方法。`true`表示是protected方法，`false`表示不是protected方法。 |
 
 **示例：**
 
@@ -1913,11 +2161,13 @@ isFinal(): boolean
 
 检查方法是否是final方法。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                                   |
 | ------- | -------------------------------------- |
-| boolean | 如果是final方法返回true，否则返回false。 |
+| boolean | 判断是否是final方法。`true`表示是final方法，`false`表示不是final方法。 |
 
 **示例：**
 
@@ -1936,11 +2186,13 @@ isAsync(): boolean
 
 检查方法是否是异步方法。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                                   |
 | ------- | -------------------------------------- |
-| boolean | 如果是异步方法返回true，否则返回false。 |
+| boolean | 判断是否是异步方法。`true`表示是异步方法，`false`表示不是异步方法。 |
 
 **示例：**
 
@@ -1959,11 +2211,13 @@ isAbstract(): boolean
 
 检查方法是否是抽象方法。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                                   |
 | ------- | -------------------------------------- |
-| boolean | 如果是抽象方法返回true，否则返回false。 |
+| boolean | 判断是否是抽象方法。`true`表示是抽象方法，`false`表示不是抽象方法。 |
 
 **示例：**
 
@@ -1982,11 +2236,13 @@ isGetter(): boolean
 
 检查方法是否是getter方法。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                                   |
 | ------- | -------------------------------------- |
-| boolean | 如果是getter方法返回true，否则返回false。 |
+| boolean | 判断是否是getter方法。`true`表示是getter方法，`false`表示不是getter方法。 |
 
 **示例：**
 
@@ -2008,11 +2264,13 @@ isSetter(): boolean
 
 检查方法是否是setter方法。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                                   |
 | ------- | -------------------------------------- |
-| boolean | 如果是setter方法返回true，否则返回false。 |
+| boolean | 判断是否是setter方法。`true`表示是setter方法，`false`表示不是setter方法。 |
 
 **示例：**
 
@@ -2034,6 +2292,8 @@ equals(other: InstanceMethod): boolean
 
 比较两个实例方法是否相等。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **参数：**
 
 | 参数  | 类型            | 必填 | 说明                   |
@@ -2044,7 +2304,7 @@ equals(other: InstanceMethod): boolean
 
 | 类型    | 说明                     |
 | ------- | ------------------------ |
-| boolean | 如果两个方法相等返回true，否则返回false。 |
+| boolean | 判断两个方法是否相等。`true`表示相等，`false`表示不相等。 |
 
 **示例：**
 
@@ -2062,6 +2322,8 @@ console.info(method1!.equals(method2!)); // true
 invoke(thisObj: Object, args?: FixedArray\<Any>): Any
 
 调用此实例方法。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
@@ -2103,11 +2365,15 @@ console.info(result); // "Hello World"
 
 表示类的静态方法。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 ### getName
 
 getName(): string
 
 获取方法的名称。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
@@ -2132,6 +2398,8 @@ getOwner(): Class
 
 获取声明此方法的类或接口。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型   | 说明               |
@@ -2154,6 +2422,8 @@ console.info(method!.getOwner().getName()); // "MyClass"
 getReturnType(): Class
 
 获取方法的返回类型。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
@@ -2180,6 +2450,8 @@ getParameterTypes(): FixedArray\<Class>
 
 获取所有参数的类型。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型                | 说明               |
@@ -2205,6 +2477,8 @@ console.info(paramTypes[1].getName()); // "std.core.String"
 getParameterType(idx: int): Class | undefined
 
 通过索引获取指定位置参数的类型。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
@@ -2236,6 +2510,8 @@ getParametersNum(): int
 
 获取方法参数的数量。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型 | 说明               |
@@ -2259,11 +2535,13 @@ isNative(): boolean
 
 检查方法是否是native方法。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                               |
 | ------- | ---------------------------------- |
-| boolean | 如果是native方法返回true，否则返回false。 |
+| boolean | 判断是否是native方法。`true`表示是native方法，`false`表示不是native方法。 |
 
 **示例：**
 
@@ -2282,11 +2560,13 @@ isPublic(): boolean
 
 检查方法是否是public方法。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                               |
 | ------- | ---------------------------------- |
-| boolean | 如果是public方法返回true，否则返回false。 |
+| boolean | 判断是否是public方法。`true`表示是public方法，`false`表示不是public方法。 |
 
 **示例：**
 
@@ -2305,11 +2585,13 @@ isPrivate(): boolean
 
 检查方法是否是private方法。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                               |
 | ------- | ---------------------------------- |
-| boolean | 如果是private方法返回true，否则返回false。 |
+| boolean | 判断是否是private方法。`true`表示是private方法，`false`表示不是private方法。 |
 
 **示例：**
 
@@ -2328,11 +2610,13 @@ isProtected(): boolean
 
 检查方法是否是protected方法。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                               |
 | ------- | ---------------------------------- |
-| boolean | 如果是protected方法返回true，否则返回false。 |
+| boolean | 判断是否是protected方法。`true`表示是protected方法，`false`表示不是protected方法。 |
 
 **示例：**
 
@@ -2351,11 +2635,13 @@ isAsync(): boolean
 
 检查静态方法是否是异步方法。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                                     |
 | ------- | ---------------------------------------- |
-| boolean | 如果是异步方法返回true，否则返回false。   |
+| boolean | 判断是否是异步方法。`true`表示是异步方法，`false`表示不是异步方法。   |
 
 **示例：**
 
@@ -2374,11 +2660,13 @@ isGetter(): boolean
 
 检查静态方法是否是属性的getter访问器。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                                     |
 | ------- | ---------------------------------------- |
-| boolean | 如果是getter访问器返回true，否则返回false。 |
+| boolean | 判断是否是getter访问器。`true`表示是getter访问器，`false`表示不是getter访问器。 |
 
 **示例：**
 
@@ -2400,11 +2688,13 @@ isSetter(): boolean
 
 检查静态方法是否是属性的setter访问器。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                                     |
 | ------- | ---------------------------------------- |
-| boolean | 如果是setter访问器返回true，否则返回false。 |
+| boolean | 判断是否是setter访问器。`true`表示是setter访问器，`false`表示不是setter访问器。 |
 
 **示例：**
 
@@ -2426,6 +2716,8 @@ equals(other: StaticMethod): boolean
 
 比较当前StaticMethod对象是否与另一个对象相等。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **参数：**
 
 | 参数  | 类型          | 必填 | 说明                               |
@@ -2436,7 +2728,7 @@ equals(other: StaticMethod): boolean
 
 | 类型    | 说明                                           |
 | ------- | ---------------------------------------------- |
-| boolean | 如果两个对象指向同一方法返回true，否则返回false。 |
+| boolean | 判断两个对象是否指向同一方法。`true`表示指向同一方法，`false`表示不指向同一方法。 |
 
 **示例：**
 
@@ -2455,6 +2747,8 @@ console.info(method1!.equals(method2!)); // true
 invoke(args?: FixedArray\<Any>): Any
 
 调用静态方法。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
@@ -2493,11 +2787,15 @@ console.info(result); // "Hello World"
 
 表示类的构造函数。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 ### getName
 
 getName(): string
 
 获取方法的名称。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
@@ -2522,6 +2820,8 @@ getOwner(): Class
 
 获取声明此方法的类或接口。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型   | 说明               |
@@ -2545,6 +2845,8 @@ getReturnType(): Class
 
 获取方法的返回类型。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型   | 说明                   |
@@ -2567,6 +2869,8 @@ console.info(constructors[0].getReturnType().getName()); // "void"
 getParameterTypes(): FixedArray\<Class>
 
 获取所有参数的类型。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **返回值：**
 
@@ -2593,6 +2897,8 @@ console.info(paramTypes[1].getName()); // "i32"
 getParameterType(idx: int): Class | undefined
 
 通过索引获取指定位置参数的类型。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
@@ -2624,6 +2930,8 @@ getParametersNum(): int
 
 获取方法参数的数量。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型 | 说明               |
@@ -2647,11 +2955,13 @@ isNative(): boolean
 
 检查方法是否是native方法。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                               |
 | ------- | ---------------------------------- |
-| boolean | 如果是native方法返回true，否则返回false。 |
+| boolean | 判断是否是native方法。`true`表示是native方法，`false`表示不是native方法。 |
 
 **示例：**
 
@@ -2670,11 +2980,13 @@ isPublic(): boolean
 
 检查方法是否是public方法。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                               |
 | ------- | ---------------------------------- |
-| boolean | 如果是public方法返回true，否则返回false。 |
+| boolean | 判断是否是public方法。`true`表示是public方法，`false`表示不是public方法。 |
 
 **示例：**
 
@@ -2693,11 +3005,13 @@ isPrivate(): boolean
 
 检查方法是否是private方法。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                               |
 | ------- | ---------------------------------- |
-| boolean | 如果是private方法返回true，否则返回false。 |
+| boolean | 判断是否是private方法。`true`表示是private方法，`false`表示不是private方法。 |
 
 **示例：**
 
@@ -2716,11 +3030,13 @@ isProtected(): boolean
 
 检查方法是否是protected方法。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型    | 说明                               |
 | ------- | ---------------------------------- |
-| boolean | 如果是protected方法返回true，否则返回false。 |
+| boolean | 判断是否是protected方法。`true`表示是protected方法，`false`表示不是protected方法。 |
 
 **示例：**
 
@@ -2739,6 +3055,8 @@ equals(other: Constructor): boolean
 
 比较当前构造函数对象是否与另一个构造函数对象相等。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **参数：**
 
 | 参数  | 类型         | 必填 | 说明                               |
@@ -2749,7 +3067,7 @@ equals(other: Constructor): boolean
 
 | 类型    | 说明                                           |
 | ------- | ---------------------------------------------- |
-| boolean | 如果两个构造函数对象相等返回true，否则返回false。 |
+| boolean | 判断两个构造函数对象是否相等。`true`表示相等，`false`表示不相等。 |
 
 **示例：**
 
@@ -2769,6 +3087,8 @@ console.info(ctor1 === ctor2); // false
 createInstance(args?: FixedArray\<Any>): Any
 
 调用此构造函数创建其所属类的新实例。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
@@ -2824,11 +3144,19 @@ for (let i = 0; i < constructors.length; i++) {
 
 用于处理代理对象上调用的接口，定义管理属性访问、赋值和方法调用的方法。
 
+处理器是代理对象的唯一分发入口。运行时已经根据代理接口把属性访问降级为getter或setter方法元数据，因此`method`参数不是字段对象，而是被拦截的`InstanceMethod`。常见命名形态为普通方法名，或属性访问对应的内部getter/setter名称；需要区分不同成员时，可优先使用`method.getName()`和`method.getParameterTypes()`，再根据业务对象执行转发或返回自定义结果。
+
+`proxy`参数表示当前被访问的代理实例，可用于判断代理是否实现某个接口，或读取代理自身的处理器。处理器内部如果把调用转发给真实对象，应保证真实对象实现了被代理接口的同名成员，并按照`InstanceMethod.invoke`要求传入`thisObj`和参数数组。
+
+**系统能力：** SystemCapability.Utils.Lang
+
 ### get
 
 get(proxy: Proxy, method: InstanceMethod): Any
 
 拦截代理对象上每个属性的getter操作。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
@@ -2903,6 +3231,8 @@ set(proxy: Proxy, method: InstanceMethod, value: Any): void
 
 拦截代理对象上每个属性的setter操作。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **参数：**
 
 | 参数   | 类型                            | 必填 | 说明                               |
@@ -2962,6 +3292,8 @@ console.info(obj.age); // 66
 invoke(proxy: Proxy, method: InstanceMethod, args: FixedArray\<Any>): Any
 
 拦截代理对象上方法的调用。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
@@ -3029,12 +3361,19 @@ console.info(proxyObj.sayHello('tom')); // "hello: tom"
 
 用于创建代理对象的基类，这些代理对象将方法调用和属性访问委托给InvocationHandler。提供静态方法用于在运行时动态生成代理类和实例化代理对象。
 
+`Proxy.create`会为传入的接口组合生成一个新的代理类，然后使用`InvocationHandler`构造代理实例。`interfaces`中的每个`Class`都应表示接口类型；代理实例可以转换为这些接口使用，但不应直接依赖生成类的具体名称。生成类名称由运行时维护，并通过代理标记供`isProxyClass`识别。
+
+`linker`决定代理类生成到哪个运行时链接上下文。通常可使用目标接口的`Class.from<T>().getLinker()`，确保生成的代理类与接口类型位于兼容的运行时上下文中。若接口来自自定义ABC或插件，应使用加载该接口的`RuntimeLinker`，避免类型不可见或构造函数查找失败。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 ### create
 
 static create(linker: RuntimeLinker, interfaces: FixedArray\<Class>, handler: InvocationHandler): Proxy
 
 创建一个新的代理实例，该实例实现指定的接口并使用提供的处理器。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
@@ -3094,6 +3433,8 @@ getHandler(): InvocationHandler
 
 获取与此代理关联的调用处理器。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **返回值：**
 
 | 类型   | 说明                       |
@@ -3135,6 +3476,8 @@ static isProxyClass(klass: Class): boolean
 
 检查类是否由Proxy.create生成。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **参数：**
 
 | 参数  | 类型   | 必填 | 说明           |
@@ -3145,7 +3488,7 @@ static isProxyClass(klass: Class): boolean
 
 | 类型    | 说明                                   |
 | ------- | -------------------------------------- |
-| boolean | 如果类是代理类返回true，否则返回false。 |
+| boolean | 判断类是否是代理类。`true`表示是代理类，`false`表示不是代理类。 |
 
 **示例：**
 

@@ -87,8 +87,6 @@ import { bundleManager } from '@kit.AbilityKit';
 
 描述应用包的签名信息，可标识应用来源、确保应用完整性，并用于应用安全校验与识别。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 | 名称      | 类型           | 只读 | 可选 | 说明                        |

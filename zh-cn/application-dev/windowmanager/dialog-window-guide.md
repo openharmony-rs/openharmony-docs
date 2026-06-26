@@ -15,25 +15,25 @@
 
    通过[window.createWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowcreatewindow9-1)接口创建模态窗口（TYPE_DIALOG）。
 
-   ```ts
-   let dialog_windowClass: window.Window | undefined = undefined;
-   // 1.创建模态窗口。
-   let config: window.Configuration = {
-     name: "DialogWindow", windowType: window.WindowType.TYPE_DIALOG, ctx: getContext(this)
-   };
-   window.createWindow(config, (err, data) => {
-     let errCode: number = err.code;
-     if (errCode) {
-       console.error('Failed to create the dialogWindow. Cause: ' + JSON.stringify(err));
-       return;
-     }
-     dialog_windowClass = data;
-     if (!dialog_windowClass) {
-       console.error('dialog_windowClass is null');
-       return;
-     }
-     console.info('Succeeded in creating the dialogWindow. Data: ' + JSON.stringify(data));
-   });
+   <!-- @[dialog_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let dialogWindowClass: window.Window | undefined = undefined;
+   // ...
+       // 1.创建模态窗口。
+       let context1: common.UIAbilityContext | undefined = AppStorage.get<common.UIAbilityContext>('context');
+       let config: window.Configuration = {
+         name: 'dialogWindow', windowType: window.WindowType.TYPE_DIALOG, ctx: context1 as common.BaseContext
+       };
+       window.createWindow(config, (err, data) => {
+         if (err?.code) {
+           console.error('Failed to create the dialogWindow. Cause: ' + JSON.stringify(err));
+           return;
+         }
+         console.info('Succeeded in creating the dialogWindow. Data: ' + JSON.stringify(data));
+         dialogWindowClass = data;
+         // ...
+       });
    ```
 
 2. 设置模态窗口属性。
@@ -41,49 +41,48 @@
    - 模态窗口创建成功后，可以改变其大小、位置等，还可以根据应用需要设置窗口背景色、亮度等属性。
 
    - 在调用[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9)之前，建议设置模态窗口的大小和位置。
-  
-   ```ts
+
+   <!-- @[dialog_window_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    // 2.模态窗口创建成功后，设置模态窗口的位置、大小及相关属性等。
-   dialog_windowClass.moveWindowTo(700, 100, (err) => {
-     let errCode: number = err.code;
-     if (errCode) {
+   dialogWindowClass.moveWindowTo(100, 100, (err) => {
+     if (err?.code) {
        console.error('Failed to move the window. Cause:' + JSON.stringify(err));
        return;
      }
      console.info('Succeeded in moving the window.');
-     if (!dialog_windowClass) {
+     if (!dialogWindowClass) {
        console.error('dialog_windowClass is null');
        return;
      }
-     dialog_windowClass.resize(500, 500, (err) => {
-       let errCode: number = err.code;
-       if (errCode) {
+     dialogWindowClass.resize(500, 500, (err) => {
+       if (err?.code) {
          console.error('Failed to change the window size. Cause:' + JSON.stringify(err));
          return;
-        }
-        console.info('Succeeded in changing the window size.');
-      });
+       }
+       console.info('Succeeded in changing the window size.');
+     });
    });
-   
    ```
 
 3. 加载显示窗口的具体内容。  
 
    通过[setUIContent()](../reference/apis-arkui/arkts-apis-window-Window.md#setuicontent9)和[showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9)接口加载显示模态窗口的具体内容。
 
-   ```ts
+   <!-- @[dialog_window_uiContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    // 3.为模态窗口加载对应的目标页面。
-   dialog_windowClass.setUIContent("pages/DialogWindow", (err) => {
-     let errCode: number = err.code;
-     if (errCode) {
+   dialogWindowClass.setUIContent('pages/DialogWindow', (err) => {
+     if (err?.code) {
        console.error('Failed to load the content. Cause:' + JSON.stringify(err));
        return;
      }
      console.info('Succeeded in loading the content.');
      // 显示模态窗口。
-     (dialog_windowClass as window.Window).showWindow((err) => {
-       let errCode: number = err.code;
-       if (errCode) {
+     (dialogWindowClass as window.Window).showWindow((err) => {
+       if (err?.code) {
          console.error('Failed to show the window. Cause: ' + JSON.stringify(err));
          return;
        }
@@ -96,8 +95,11 @@
 
    当不再需要模态窗口时，可根据具体实现逻辑，使用[destroyWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#destroywindow9)接口销毁模态窗口。
 
-   ```ts
-   dialog_windowClass.destroyWindow((err: BusinessError) => {
+   <!-- @[destroy_dialog_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/DialogWindow.ets) -->
+   
+   ``` TypeScript
+   // 4.销毁子窗口。当不再需要子窗口时，可根据具体实现逻辑，使用destroy对其进行销毁。
+   dialogWindowClass.destroyWindow((err: BusinessError) => {
      let errCode: number = err.code;
      if (errCode) {
        console.error('Failed to destroy the window. Cause: ' + JSON.stringify(err));

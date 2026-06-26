@@ -144,11 +144,11 @@
 
 | 名称                        | 值   | 说明           |
 | --------------------------  | ---- | ------------ |
-| RESOLUTION_480P             | 0    | 分辨率为480P(640*480 dpi)。     |
-| RESOLUTION_720P             | 1    | 分辨率为720P(1280*720 dpi)。    |
-| RESOLUTION_1080P            | 2    | 分辨率为1080P(1920*1080 dpi)。   |
-| RESOLUTION_2K               | 3    | 分辨率为2k(2560*1440 dpi)。   |
-| RESOLUTION_4K               | 4    | 分辨率为4k(4096*3840 dpi)。   |
+| RESOLUTION_480P             | 0    | 分辨率为480P（640×480 px）。     |
+| RESOLUTION_720P             | 1    | 分辨率为720P（1280×720 px）。    |
+| RESOLUTION_1080P            | 2    | 分辨率为1080P（1920×1080 px）。   |
+| RESOLUTION_2K               | 3    | 分辨率为2K（2560×1440 px）。   |
+| RESOLUTION_4K               | 4    | 分辨率为4K（3840×2160 px）。   |
 
 ## AVCastCategory<sup>10+</sup>
 
@@ -261,7 +261,7 @@
 | ERR_CODE_CAST_CONTROL_IO_FILE_NOT_FOUND<sup>13+</sup>   | 6612005 | 文件不存在。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
 | ERR_CODE_CAST_CONTROL_IO_NO_PERMISSION<sup>13+</sup>    | 6612006 | 不允许执行输入/输出的IO操作。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
 | ERR_CODE_CAST_CONTROL_IO_CLEARTEXT_NOT_PERMITTED<sup>13+</sup>    | 6612007 | 应用的网络安全配置不允许访问明文HTTP流量。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
-| ERR_CODE_CAST_CONTROL_IO_READ_POSITION_OUT_OF_RANGE<sup>13+</sup>        | 6612008 | 从数据绑定中读取数据。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
+| ERR_CODE_CAST_CONTROL_IO_READ_POSITION_OUT_OF_RANGE<sup>13+</sup>        | 6612008 | 读取位置超出范围。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
 | ERR_CODE_CAST_CONTROL_IO_NO_CONTENTS<sup>13+</sup>     | 6612100 | 媒体中没有可播放的内容。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
 | ERR_CODE_CAST_CONTROL_IO_READ_ERROR<sup>13+</sup>        | 6612101 | 媒体无法读取。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|
 | ERR_CODE_CAST_CONTROL_IO_CONTENT_BUSY<sup>13+</sup>         | 6612102 | 该资源正在使用中。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast<br>**ArkTS-Dyn起始版本：** 13 <br>**ArkTS-Sta起始版本：** 23|

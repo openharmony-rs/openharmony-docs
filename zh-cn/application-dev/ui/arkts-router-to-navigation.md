@@ -1,7 +1,7 @@
 # Router切换Navigation
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @huangxiaolinabc-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -512,7 +512,7 @@ this.pathStack.clear();
 // 获取路由栈大小
 let size: number = this.pathStack.size();
 
-// 删除栈中name为PageOne的所有页面
+// 删除栈中name为pageOne的所有页面
 this.pathStack.removeByName('pageOne');
 
 // 删除指定索引的页面
@@ -524,10 +524,10 @@ this.pathStack.getAllPathName();
 // 获取索引为1的页面参数
 this.pathStack.getParamByIndex(1);
 
-// 获取PageOne页面的参数
+// 获取pageOne页面的参数
 this.pathStack.getParamByName('pageOne');
 
-// 获取PageOne页面的索引集合
+// 获取pageOne页面的索引集合
 this.pathStack.getIndexByName('pageOne');
 // ...
 ```
@@ -899,7 +899,7 @@ struct CustomNode {
   aboutToAppear() {
     // query navigation info
     let navigationInfo: NavigationInfo = this.queryNavigationInfo() as NavigationInfo;
-    if (navigationInfo !=  undefined) {
+    if (navigationInfo !== undefined) {
       this.pathStack = navigationInfo.pathStack ;
     }
   }
@@ -1650,10 +1650,10 @@ export default class EntryAbility extends UIAbility {
       let uiContext: UIContext = windowClass.getUIContext();
       // 获取UIObserver实例。
       let uiObserver : UIObserver = uiContext.getUIObserver();
-      // 注册DevNavigation的状态监听.
+      // 注册NavDestination的状态监听.
       uiObserver.on('navDestinationUpdate',(info) => {
         // NavDestinationState.ON_SHOWN = 0, NavDestinationState.ON_HIDE = 1
-        if (info.state == 0) {
+        if (info.state === 0) {
           // NavDestination组件显示时操作
           hilog.info(DOMAIN, TAG, 'page ON_SHOWN:' + info.name.toString())
         }

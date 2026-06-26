@@ -245,7 +245,7 @@ ArkTS-Sta: dragPreviewOptions(value: DragPreviewOptions | undefined, options?: D
 
 ## UniformDataType
 
-ArkTS-Dyn: type UniformDataType = UniformDataType
+ArkTS-Dyn: type UniformDataType = import('../api/@ohos.data.uniformTypeDescriptor').default.UniformDataType
 
 ArkTS-Sta: type UniformDataType = uniformTypeDescriptor.UniformDataType
 
@@ -261,11 +261,11 @@ ArkTS-Sta: type UniformDataType = uniformTypeDescriptor.UniformDataType
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| ArkTS-Dyn: [UniformDataType](../../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)<br/>ArkTS-Sta: uniformTypeDescriptor.[UniformDataType](../../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype) | 标准化数据类型。|
+| ArkTS-Dyn: import('../api/@ohos.data.uniformTypeDescriptor').default.[UniformDataType](../../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)<br/>ArkTS-Sta: uniformTypeDescriptor.[UniformDataType](../../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype) | 标准化数据类型。|
 
 ## ImageModifier<sup>12+</sup>
 
-type ImageModifier = ImageModifier
+type ImageModifier = import('../api/arkui/ImageModifier').ImageModifier
 
 图片组件modifier对象。
 
@@ -281,7 +281,7 @@ type ImageModifier = ImageModifier
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| [ImageModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 图片组件modifier对象。|
+| import('../api/arkui/ImageModifier').[ImageModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 图片组件modifier对象。|
 
 ## 示例
 ### 示例1（允许拖拽和落入）

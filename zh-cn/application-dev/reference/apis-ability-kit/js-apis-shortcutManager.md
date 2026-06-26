@@ -22,7 +22,7 @@ import { shortcutManager } from '@kit.AbilityKit';
 
 ## shortcutManager.setShortcutVisibleForSelf
 
-setShortcutVisibleForSelf(id: string, visible: boolean) : Promise\<void>
+setShortcutVisibleForSelf(id: string, visible: boolean): Promise\<void>
 
 设置当前应用指定的快捷方式是否显示。使用Promise异步回调。
 
@@ -51,7 +51,7 @@ setShortcutVisibleForSelf(id: string, visible: boolean) : Promise\<void>
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 17700070 | The specified shortcut id is illegal. |
+| 17700070 | The specified shortcut id is not exist. |
 
 **示例：**
 
@@ -137,13 +137,13 @@ isShortcutSupported(): boolean
 
 查询当前设备是否支持快捷方式。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
