@@ -101,7 +101,7 @@ ChipV2Options定义ChipV2的样式及具体式样参数。
 | suffixIcon      | [ChipV2Icon](#chipv2icon)                      | 否  | 是  | ChipV2后缀图标。<br>默认值：不显示后缀图标。<br>值为undefined时，按默认值处理。<br>图标为Symbol类型时，fontColor默认值为：normalFontColor：`[$r('sys.color.chip_usually_icon_color')]`、activatedFontColor：`[$r('sys.color.chip_active_icon_color')]`。fontSize默认值为16。<br>图标为Image类型时，fillColor默认值为：`$r('sys.color.chip_usually_icon_color')`，activatedFillColor默认值为：`$r('sys.color.chip_active_icon_color')`，fillColor和activatedFillColor对颜色的解析与Image组件保持一致。<br>**装饰器类型：** @Trace |
 | allowClose      | boolean                                                      | 否  | 是  | 关闭图标是否显示。<br>当`suffixIcon`有传入参数时，`allowClose`不生效；`suffixIcon`没有传入参数时，`allowClose`决定是否显示删除图标。<br/>默认值：true<br>true：删除图标显示；false：删除图标不显示。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
 | closeIcon | [ChipV2CloseIcon](#chipv2closeicon) | 否 | 是 | 关闭图标的配置，包括无障碍属性配置。<br>默认值：<br>- 尺寸默认值：size为ChipV2Size.SMALL时，默认值为`$r('sys.float.chip_small_font_size')`；其他情况默认值为`$r('sys.float.chip_normal_font_size')`。<br>- 无障碍默认值：无无障碍描述。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
-| enabled         | boolean                                                      | 否  | 是  | ChipV2是否可选中。<br>默认值：true<br>true：操作块可选中；false：操作块不可选中。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
+| enabled         | boolean                                                      | 否  | 是  | ChipV2是否可用。<br>默认值：true<br>true：操作块可用；false：操作块不可用。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
 | activated    | boolean                                        | 否  | 是  | ChipV2是否为激活态。<br>默认值：false<br>true：操作块为激活态；false：操作块为非激活态。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
 | backgroundColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                   | 否  | 是  | ChipV2背景颜色。<br/>默认值：$r('sys.color.chip_background_color')<br>值为undefined时，按默认值处理。<br>值为非法值时，背景颜色透明。<br>**装饰器类型：** @Trace |
 | activatedBackgroundColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)          | 否  | 是  | ChipV2激活时的背景颜色。<br/>默认值：$r('sys.color.chip_container_activated_color')<br>值为undefined时，按默认值处理。<br>值为非法值时，背景颜色透明。<br>**装饰器类型：** @Trace |
@@ -167,7 +167,7 @@ IChipV2OptionsConfig定义ChipV2选项的配置接口。
 | suffixIcon | [ChipV2Icon](#chipv2icon) | 否 | 是 | ChipV2后缀图标。<br>默认值：不显示后缀图标。<br>值为undefined时，按默认值处理。 |
 | allowClose | boolean | 否 | 是 | 是否显示关闭图标。<br/>默认值：true<br>true：删除图标显示；false：删除图标不显示。<br>值为undefined时，按默认值处理。 |
 | closeIcon | [ChipV2CloseIcon](#chipv2closeicon) | 否 | 是 | 关闭图标的配置，包括无障碍属性配置。<br>默认值：<br>- 尺寸默认值：size为ChipV2Size.SMALL时，默认值为`$r('sys.float.chip_small_font_size')`；其他情况默认值为`$r('sys.float.chip_normal_font_size')`。<br>- 无障碍默认值：无无障碍描述。<br>值为undefined时，按默认值处理。 |
-| enabled | boolean | 否 | 是 | ChipV2是否可用。<br>默认值：true<br>true：操作块可选中；false：操作块不可选中。<br>值为undefined时，按默认值处理。 |
+| enabled | boolean | 否 | 是 | ChipV2是否可用。<br>默认值：true<br>true：操作块可用；false：操作块不可用。<br>值为undefined时，按默认值处理。 |
 | activated | boolean | 否 | 是 | ChipV2是否为激活态。<br>默认值：false<br>true：操作块为激活态；false：操作块为非激活态。<br>值为undefined时，按默认值处理。 |
 | backgroundColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | ChipV2背景颜色。<br/>默认值：$r('sys.color.chip_background_color')<br>值为undefined时，按默认值处理。 |
 | activatedBackgroundColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | ChipV2激活时的背景颜色。<br/>默认值：$r('sys.color.chip_container_activated_color')<br>值为undefined时，按默认值处理。 |
@@ -209,7 +209,7 @@ ChipV2Label定义文本属性类。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | text | string | 否 | 否 | 文本文字内容。<br>**装饰器类型：** @Trace |
-| fontSize | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 文字字号，不支持百分比。<br/>默认值：$r('sys.float.ohos_id_text_size_button')<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
+| fontSize | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 文字字号，不支持百分比。<br/>默认值：<br>size为ChipV2Size.SMALL时，默认值：$r('sys.float.chip_small_font_size')。<br>其他情况下，默认值：$r('sys.float.chip_normal_font_size')。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
 | fontColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | 文字颜色。<br/>默认值：$r('sys.color.chip_font_color')<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
 | activatedFontColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | 操作块激活时的文字颜色。<br/>默认值：$r('sys.color.chip_activated_fontcolor')<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
 | fontFamily | string | 否 | 是 | 文字字体。<br/>默认值："HarmonyOS Sans"<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
