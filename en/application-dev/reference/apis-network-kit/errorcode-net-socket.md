@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:50:06.309Z pushedAt=2026-06-26T03:00:41.284Z -->
 
 > **NOTE**
 >
@@ -23,11 +24,11 @@ Operation not permitted.
 
 This error code is reported if an operation is not allowed.
 
-**Cause**
+**Possible Causes**
 
 The operation is illegal.
 
-**Procedure**
+**Solution**
 
 Check the operation procedure.
 
@@ -41,11 +42,11 @@ No such file or directory.
 
 This error code is reported if the requested file does not exist.
 
-**Cause**
+**Possible Causes**
 
 The requested file does not exist.
 
-**Procedure**
+**Solution**
 
 Check the file name or file path.
 
@@ -59,11 +60,11 @@ No such process.
 
 This error code is reported if a process does not exist.
 
-**Cause**
+**Possible Causes**
 
 This error code is reported if a process does not exist.
 
-**Procedure**
+**Solution**
 
 Check the process information.
 
@@ -77,11 +78,11 @@ Interrupted system call.
 
 This error code is reported if the system call is interrupted.
 
-**Cause**
+**Possible Causes**
 
 The system call is interrupted.
 
-**Procedure**
+**Solution**
 
 Rectify system call errors.
 
@@ -98,13 +99,13 @@ System internal error.
 
 This error code is reported if a system internal error occurs.
 
-**Cause**
+**Possible Causes**
 
 1. The memory is abnormal.
 
 2. A null pointer is present.
 
-**Procedure**
+**Solution**
 
 1. Check whether the memory space is sufficient. If not, clear the memory and try again.
 
@@ -120,11 +121,11 @@ Socks5 failed to connect to the proxy server.
 
 This error code is reported if a SOCKS5 client fails to connect to the proxy server.
 
-**Cause**
+**Possible Causes**
 
 The proxy server address is incorrect.
 
-**Procedure**
+**Solution**
 
 Check whether the proxy server address is correct.
 
@@ -138,11 +139,11 @@ Socks5 username or password is invalid.
 
 This error code is reported if the user name or password is invalid when the SOCKS5 client uses the password authentication mode.
 
-**Cause**
+**Possible Causes**
 
 The user name or password is incorrect.
 
-**Procedure**
+**Solution**
 
 Check whether the user name and password are correct.
 
@@ -156,11 +157,11 @@ Socks5 failed to connect to the remote server.
 
 This error code is reported if a SOCKS5 proxy fails to connect to the remote server.
 
-**Cause**
+**Possible Causes**
 
 The network of the remote server is faulty.
 
-**Procedure**
+**Solution**
 
 Check the network status of the remote server.
 
@@ -174,11 +175,11 @@ Socks5 failed to negotiate the authentication method.
 
 This error code is reported if a SOCKS5 client fails to negotiate the authentication mode with the proxy server.
 
-**Cause**
+**Possible Causes**
 
 The proxy server does not support the authentication mode provided by the SOCKS5 client.
 
-**Procedure**
+**Solution**
 
 Check whether the proxy server supports the authentication mode provided by the SOCKS5 client.
 
@@ -192,11 +193,11 @@ Socks5 failed to send the message.
 
 This error code is reported if a SOCKS5 client fails to send messages due to a system call error.
 
-**Cause**
+**Possible Causes**
 
 This problem is usually caused by memory overflows and invalid parameters. Check the log for Linux kernel errors.
 
-**Procedure**
+**Solution**
 
 Create a socket and initiate a connection again.
 
@@ -210,11 +211,11 @@ Socks5 failed to receive the message.
 
 This error code is reported if a SOCKS5 client fails to receive messages due to a system call error.
 
-**Cause**
+**Possible Causes**
 
 This problem is usually caused by memory overflows and invalid parameters. Check the log for Linux kernel errors.
 
-**Procedure**
+**Solution**
 
 Create a socket and initiate a connection again.
 
@@ -228,11 +229,11 @@ Socks5 serialization error.
 
 This error code is reported if message fails to be serialized for a SOCKS5 client.
 
-**Cause**
+**Possible Causes**
 
 The user name or password is too long, or the address and protocol type of the proxy server and the remote server do not match.
 
-**Procedure**
+**Solution**
 
 Check whether the user name and password exceed the length limit and whether the addresses and protocol types of the proxy server and remote server match.
 
@@ -246,11 +247,11 @@ Socks5 deserialization error.
 
 This error code is reported if message fails to be deserialized for a SOCKS5 client.
 
-**Cause**
+**Possible Causes**
 
 The length of the response packets sent by the server does not comply with the protocol.
 
-**Procedure**
+**Solution**
 
 Check the response data packets of the server.
 
@@ -264,11 +265,11 @@ Interrupted system call.
 
 This error code is reported if the system call is interrupted.
 
-**Cause**
+**Possible Causes**
 
 Calling the **connect** function may result in a long blocking time. In such a case, the system generates an interrupt signal and returns an **EINTR** error.
 
-**Procedure**
+**Solution**
 
 Call the **connect** function to try network connection again.
 
@@ -282,13 +283,63 @@ Bad file number.
 
 This error code is reported if an operation is performed on a locally closed socket.
 
-**Cause**
+**Possible Causes**
 
 The socket FD may be closed.
 
-**Procedure**
+**Solution**
 
 Check whether the socket is closed unexpectedly.
+
+## 2301009 Bad File Descriptor
+
+**Error Message**
+
+Bad file descriptor.
+
+**Description**
+
+The file descriptor is invalid or has been closed.
+
+**Possible Causes**
+
+1. The socket has been closed or destroyed.
+
+2. The socket was not created correctly.
+
+3. An operation was performed on a closed socket.
+
+4. The socket fd was closed unexpectedly. The log prompt is `poll to send failed, socket is .*, errno is 9` or `fcntl F_GETFL error, errno is .*`, where `.*` is a wildcard.
+
+**Solution**
+
+1. Check whether the socket is closed unexpectedly.
+
+2. Ensure that the socket has been correctly created and is in a valid state before calling other methods.
+
+3. If the socket has been closed, recreate the socket instance.
+
+## 2301013 Insufficient Permissions
+
+**Error Message**
+
+Insufficient permissions.
+
+**Description**
+
+Insufficient permissions. The operation is denied.
+
+**Possible Causes**
+
+1. The application does not have the necessary network permission configuration (such as **ohos.permission.INTERNET**).
+
+2. System permission restrictions, such as requiring special permissions to access specific ports.
+
+**Solution**
+
+1. Check whether the necessary network permissions (such as **ohos.permission.INTERNET**) are configured in **module.json5**.
+
+2. Check whether the operation meets the permission requirements. You can locate this error using the log keyword "Permission denied".
 
 ## 2303111 Requested Resource Temporarily Unavailable
 
@@ -300,11 +351,11 @@ Resource temporarily unavailable. Try again.
 
 This error code is reported if the requested system resource is temporarily unavailable.
 
-**Cause**
+**Possible Causes**
 
 The system resources are in use.
 
-**Procedure**
+**Solution**
 
 Try again later.
 
@@ -318,11 +369,11 @@ Not a socket.
 
 This error code is reported if a socket descriptor is not specified for the **socket** parameter.
 
-**Cause**
+**Possible Causes**
 
 A socket descriptor is not specified for the **socket** parameter.
 
-**Procedure**
+**Solution**
 
 Check whether the descriptor is correctly obtained.
 
@@ -336,11 +387,11 @@ Incorrect socket protocol type.
 
 This error code is reported if the type of the specified socket protocol is incorrect.
 
-**Cause**
+**Possible Causes**
 
 The socket function is called with an unsupported socket protocol type. For example, the protocol type cannot be set to **SOCK_STREAM** socket for the Internet UDP protocol.
 
-**Procedure**
+**Solution**
 
 Check whether the socket protocol type is correct.
 
@@ -354,11 +405,11 @@ Address already in use.
 
 This error code is reported if a network address has been used.
 
-**Cause**
+**Possible Causes**
 
 The probable cause can be any of the following: The application attempts to bind a socket to an IP address/port that has been used for an existing socket. The socket is not properly closed. The socket is still being closed.
 
-**Procedure**
+**Solution**
 
 Try another network address.
 
@@ -372,11 +423,11 @@ Address not available.
 
 This error code is reported if the requested address is invalid in its context.
 
-**Cause**
+**Possible Causes**
 
 The remote address or port is invalid for the remote server.
 
-**Procedure**
+**Solution**
 
 Check whether the address or port is correct.
 
@@ -390,11 +441,11 @@ Network is down.
 
 This error code is reported if the network is disabled.
 
-**Cause**
+**Possible Causes**
 
 The network service is not started or has been stopped.
 
-**Procedure**
+**Solution**
 
 Check the network connection.
 
@@ -408,11 +459,11 @@ Connection timed out.
 
 This error code is reported if the connection to the remote server cannot be set up for a long time.
 
-**Cause**
+**Possible Causes**
 
 It is probable that a server breakdown has occurred.
 
-**Procedure**
+**Solution**
 
 If the issue cannot be resolved locally, verify whether the remote server has encountered a fault.
 
@@ -424,15 +475,25 @@ SSL is null.
 
 **Description**
 
-This error code is reported if the SSL is null.
+The SSL/TLS connection object is null. Invalid parameter.
 
-**Cause**
+**Possible Causes**
 
-The [Tlssocket.connect](./js-apis-socket.md#connect9) function is not called or fails to be executed.
+1. The [TLSSocket.connect](./js-apis-socket.md#connect9) method was not called.
 
-**Procedure**
+2. The [TLSSocket.connect](./js-apis-socket.md#connect9) method failed to execute.
 
-Call the function again.
+3. The SSL connection was not established successfully.
+
+4. The TLSSocket was not bound correctly (the **bind** method was not called). The log prompt is "tlsSocket is null".
+
+**Solution**
+
+1. Ensure that the [TLSSocket.connect](./js-apis-socket.md#connect9) method is called successfully before calling other methods.
+
+2. Check the execution result of the **connect** method to ensure that the connection has been established successfully.
+
+3. If **connect** fails, locate the cause of the failure and try to connect again.
 
 ## 2303502 TLS Read Error
 
@@ -444,11 +505,11 @@ An error occurred when reading data on the TLS socket.
 
 This error code is reported if an error occurs while reading data on the TLS socket.
 
-**Cause**
+**Possible Causes**
 
 The underlying socket is blocked.
 
-**Procedure**
+**Solution**
 
 Perform data receiving again.
 
@@ -462,11 +523,11 @@ An error occurred when writing data on the TLS socket.
 
 This error code is reported if an error occurs while writing data on the TLS socket.
 
-**Cause**
+**Possible Causes**
 
 When the send buffer is full, the underlying socket sends an **EWOUDLBLOCK** error, which means that the server does not read the data sent from the client.
 
-**Procedure**
+**Solution**
 
 Check the server status, and rectify the fault.
 
@@ -480,11 +541,11 @@ An error occurred when verifying the x509 certificate.
 
 An error occurred when verifying the x509 certificate.
 
-**Cause**
+**Possible Causes**
 
 The local certificate does not match the server certificate.
 
-**Procedure**
+**Solution**
 
 Check whether the local CA root certificate matches the server certificate.
 
@@ -496,15 +557,25 @@ An error occurred in the TLS system call.
 
 **Description**
 
-This error code is reported if the TLS system call fails because of fatal I/O errors.
+An unrecoverable fatal I/O error occurred in the TLS system call.
 
-**Cause**
+**Possible Causes**
 
-Network communication fails because of network faults.
+1. A network issue caused the communication failure.
 
-**Procedure**
+2. The underlying socket is abnormal.
 
-For details, see the Linux kernel error codes (errno).
+3. An error occurred during the TLS handshake.
+
+4. The socket was closed during a TLS operation. The log prompt is `poll to recv failed, socket is .*, errno is .*` or `recv fail, socket:.*, errno:.*`, where `.*` is a wildcard. Common **errno** values for reference: **errno=9** (**EBADF**, invalid file descriptor), **errno=104** (**ECONNRESET**, connection reset), **errno=110** (**ETIMEDOUT**, connection timed out), **errno=111** (**ECONNREFUSED**, connection refused).
+
+**Solution**
+
+1. Refer to the general kernel error code **errno** in the log for detailed information.
+
+2. Check the network connection status.
+
+3. Try to re-establish the TLS connection.
 
 ## 2303506 Failed to Close TLS Connections
 
@@ -516,10 +587,10 @@ Failed to close the TLS connection.
 
 This error code is reported if the TLS/SSL connection to be closed has been disabled.
 
-**Cause**
+**Possible Causes**
 
 The TLS/SSL connection to be closed has been disabled.
 
-**Procedure**
+**Solution**
 
 Initiate a new TLS/SSL connection.
