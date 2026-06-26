@@ -267,7 +267,7 @@ type ValueType = number | string | boolean
 | 类型    | 说明                 |
 | ------- | -------------------- |
 | number  | 表示值类型为数字。   |
-| string  | 表示值类型为字符。   |
+| string  | 表示值类型为字符串。   |
 | boolean | 表示值类型为布尔值。 |
 
 
