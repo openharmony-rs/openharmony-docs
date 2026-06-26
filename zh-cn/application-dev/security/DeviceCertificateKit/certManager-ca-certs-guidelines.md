@@ -199,7 +199,7 @@ function installUserCACertEnterprise(userCAData: Uint8Array): string {
 
 async function uninstallUserCACertDialog(certUri: string): Promise<void> {
   try {
-    /* 场景2：在BYOD设备卸载用户CA证书 */
+    /* 场景1：在BYOD设备卸载用户CA证书 */
     /* context为应用的上下文信息，调用方自行获取，此处仅为示例 */
     let context: common.Context = new UIContext().getHostContext() as common.Context;
     certificateManagerDialog.openUninstallCertificateDialog(
