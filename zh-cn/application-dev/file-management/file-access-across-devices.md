@@ -278,7 +278,7 @@
        })
      }
    } catch (error) {
-        console.error(`Catch err. Code: ${error.code}, message: ${error.message}`);
+     console.error(`Catch err. Code: ${error.code}, message: ${error.message}`);
    }
    ```
 
