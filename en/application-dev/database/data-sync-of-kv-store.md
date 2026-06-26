@@ -6,7 +6,7 @@
 <!--Designer: @ding_dong_dong-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:40:12.752Z pushedAt=2026-06-22T11:55:05.835Z -->
+<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:37:57.773Z pushedAt=2026-06-25T07:34:13.247Z -->
 
 ## When to Use
 
@@ -36,11 +36,12 @@ The data management service provides two sync types: manual sync and auto sync. 
 
 ### Manual Sync
 
-The application calls **sync()** with the devices to be synced and the sync mode specified to trigger the sync. The sync mode can be **PULL_ONLY** (pulling remote data to the local end), **PUSH_ONLY** (pushing local data to the remote end), or **PUSH_PULL** (pushing local data to the remote end and pulling remote data to the local end). You can use the [**sync()** with the **query** parameter](../reference/apis-arkdata/js-apis-distributedKVStore.md#sync-1) to sync the data that meets the specified conditions.
+Applications trigger end-to-end synchronization by calling the **sync** API, specifying the target device list and the synchronization mode. The sync mode can be **PULL_ONLY** (pulling remote data to the local end), **PUSH_ONLY** (pushing local data to the remote end), or **PUSH_PULL** (pushing local data to the remote end and pulling remote data to the local end). You can use [sync()](../reference/apis-arkdata/js-apis-distributedKVStore.md#sync-1) with the **query** parameter to sync the data that meets the specified conditions.
 
 ### Auto Sync
 
 <!--RP5-->
+
 In [multi-device collaboration via cross-device calls](../application-models/hop-multi-device-collaboration.md#using-cross-device-call), after an application updates data, the distributed database automatically pushes the local data to the peer ends and pulls the peer data to the local device for data sync. In this case, the application does not need to call **sync()**.<!--RP5End-->
 
 ## Working Principles
@@ -79,7 +80,7 @@ When data is added, deleted, or modified, a notification is sent to the subscrib
 
 The following APIs are provided for end-to-end cross-device data synchronization in the single-version distributed KV store. For more APIs and their usage, see [@ohos.data.distributedKVStore (Distributed KV Store)](../reference/apis-arkdata/js-apis-distributedKVStore.md).
 
-| API| Description|
+| Name | Description|
 | -------- | -------- |
 | createKVManager(config: KVManagerConfig): KVManager | Creates a **KvManager** instance to manage database objects.|
 | getKVStore&lt;T&gt;(storeId: string, options: Options, callback: AsyncCallback&lt;T&gt;): void | Obtains a KV store of the specified **options** and **storeId**.|

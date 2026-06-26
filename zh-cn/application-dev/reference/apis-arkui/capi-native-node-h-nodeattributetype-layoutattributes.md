@@ -74,6 +74,7 @@ NODE_PADDING = 4
 
 内间距属性，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
 
 **起始版本：** 12
 
@@ -111,6 +112,7 @@ NODE_MARGIN = 7
 
 外间距属性，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
 
 **起始版本：** 12
 
@@ -155,13 +157,13 @@ NODE_ALIGNMENT = 15
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 对齐方式，参数类型[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)，默认值为ARKUI_ALIGNMENT_CENTER。 |
+| .value[0].i32 | 对齐方式，参数类型[ArkUI_Alignment](capi-layout-h.md#arkui_alignment)，默认值为ARKUI_ALIGNMENT_CENTER。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 对齐方式，参数类型[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)。 |
+| .value[0].i32 | 对齐方式，参数类型[ArkUI_Alignment](capi-layout-h.md#arkui_alignment)。 |
 
 ## NODE_BORDER_WIDTH
 
@@ -171,6 +173,7 @@ NODE_BORDER_WIDTH = 17
 
 边框宽度属性，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
 
 **起始版本：** 12
 
@@ -207,6 +210,7 @@ NODE_BORDER_RADIUS = 18
 
 边框圆角属性，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
 
 **起始版本：** 12
 
@@ -246,6 +250,7 @@ NODE_BORDER_COLOR = 19
 
 边框颜色属性，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
 
 **起始版本：** 12
 
@@ -283,6 +288,7 @@ NODE_BORDER_STYLE = 20
 
 边框线条样式属性，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
 
 **起始版本：** 12
 
@@ -322,6 +328,7 @@ NODE_POSITION = 27
 
 元素左上角相对于父容器左上角偏移位置，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
 
 **起始版本：** 12
 
@@ -354,13 +361,13 @@ NODE_DIRECTION = 47
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 主轴方向，参数类型[ArkUI_Direction](capi-native-type-h.md#arkui_direction)，默认值为ARKUI_DIRECTION_AUTO。 |
+| .value[0].i32 | 主轴方向，参数类型[ArkUI_Direction](capi-layout-h.md#arkui_direction)，默认值为ARKUI_DIRECTION_AUTO。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 主轴方向，参数类型[ArkUI_Direction](capi-native-type-h.md#arkui_direction)。 |
+| .value[0].i32 | 主轴方向，参数类型[ArkUI_Direction](capi-layout-h.md#arkui_direction)。 |
 
 ## NODE_CONSTRAINT_SIZE
 
@@ -370,6 +377,7 @@ NODE_CONSTRAINT_SIZE = 48
 
 约束尺寸属性，组件布局时，进行尺寸范围限制，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
 
 **起始版本：** 12
 
@@ -479,13 +487,13 @@ NODE_ALIGN_SELF = 58
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 子组件在父容器交叉轴上的对齐方式，参数类型[ArkUI_ItemAlignment](capi-native-type-h.md#arkui_itemalignment)，默认值为ARKUI_ITEM_ALIGNMENT_AUTO。 |
+| .value[0].i32 | 子组件在父容器交叉轴上的对齐方式，参数类型[ArkUI_ItemAlignment](capi-layout-h.md#arkui_itemalignment)，默认值为ARKUI_ITEM_ALIGNMENT_AUTO。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 子组件在父容器交叉轴上的对齐方式，参数类型[ArkUI_ItemAlignment](capi-native-type-h.md#arkui_itemalignment)。 |
+| .value[0].i32 | 子组件在父容器交叉轴上的对齐方式，参数类型[ArkUI_ItemAlignment](capi-layout-h.md#arkui_itemalignment)。 |
 
 ## NODE_FLEX_GROW
 
@@ -709,6 +717,7 @@ NODE_PADDING_PERCENT = 73
 
 内间距属性，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
 
 **起始版本：** 12
 
@@ -739,6 +748,7 @@ NODE_MARGIN_PERCENT = 74
 
 外间距属性，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
 
 **起始版本：** 12
 
@@ -776,15 +786,15 @@ NODE_RELATIVE_LAYOUT_CHAIN_MODE = 76
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 链的方向。枚举[ArkUI_Axis](capi-native-type-h.md#arkui_axis)。 |
-| .value[1].i32 | 链的样式。枚举[ArkUI_RelativeLayoutChainStyle](capi-native-type-h.md#arkui_relativelayoutchainstyle)。 |
+| .value[0].i32 | 链的方向。枚举[ArkUI_Axis](capi-layout-h.md#arkui_axis)。 |
+| .value[1].i32 | 链的样式。枚举[ArkUI_RelativeLayoutChainStyle](capi-layout-h.md#arkui_relativelayoutchainstyle)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 链的方向。枚举[ArkUI_Axis](capi-native-type-h.md#arkui_axis)。 |
-| .value[1].i32 | 链的样式。枚举[ArkUI_RelativeLayoutChainStyle](capi-native-type-h.md#arkui_relativelayoutchainstyle)。 |
+| .value[0].i32 | 链的方向。枚举[ArkUI_Axis](capi-layout-h.md#arkui_axis)。 |
+| .value[1].i32 | 链的样式。枚举[ArkUI_RelativeLayoutChainStyle](capi-layout-h.md#arkui_relativelayoutchainstyle)。 |
 
 ## NODE_SIZE
 
@@ -794,6 +804,7 @@ NODE_SIZE = 79
 
 设置高宽尺寸，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
 
 **起始版本：** 12
 
@@ -848,6 +859,7 @@ NODE_BORDER_WIDTH_PERCENT = 85
 
 边框宽度属性，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
 
 **起始版本：** 12
 
@@ -878,6 +890,7 @@ NODE_BORDER_RADIUS_PERCENT = 86
 
 边框圆角属性，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
 
 **起始版本：** 12
 
@@ -915,13 +928,13 @@ NODE_WIDTH_LAYOUTPOLICY = 105
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 布局策略，参数类型[ArkUI_LayoutPolicy](capi-native-type-h.md#arkui_layoutpolicy)。 |
+| .value[0].i32 | 布局策略，参数类型[ArkUI_LayoutPolicy](capi-layout-h.md#arkui_layoutpolicy)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 布局策略，参数类型[ArkUI_LayoutPolicy](capi-native-type-h.md#arkui_layoutpolicy)。 |
+| .value[0].i32 | 布局策略，参数类型[ArkUI_LayoutPolicy](capi-layout-h.md#arkui_layoutpolicy)。 |
 
 ## NODE_HEIGHT_LAYOUTPOLICY
 
@@ -938,13 +951,13 @@ NODE_HEIGHT_LAYOUTPOLICY = 106
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 布局策略，参数类型[ArkUI_LayoutPolicy](capi-native-type-h.md#arkui_layoutpolicy)。 |
+| .value[0].i32 | 布局策略，参数类型[ArkUI_LayoutPolicy](capi-layout-h.md#arkui_layoutpolicy)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 布局策略，参数类型[ArkUI_LayoutPolicy](capi-native-type-h.md#arkui_layoutpolicy)。 |
+| .value[0].i32 | 布局策略，参数类型[ArkUI_LayoutPolicy](capi-layout-h.md#arkui_layoutpolicy)。 |
 
 ## NODE_POSITION_EDGES
 
@@ -977,6 +990,7 @@ NODE_CHAIN_WEIGHT = 118
 
 父组件为RelativeContainer时，设置已形成链的组件的布局位置，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
 
 **起始版本：** 23
 
@@ -1002,6 +1016,7 @@ NODE_IGNORE_LAYOUT_SAFE_AREA = 119
 
 设置扩展组件布局时的安全区域，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
 
 **起始版本：** 23
 
@@ -1009,8 +1024,8 @@ NODE_IGNORE_LAYOUT_SAFE_AREA = 119
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 扩展安全区域的类型。参数类型为[ArkUI_LayoutSafeAreaType](capi-native-type-h.md#arkui_layoutsafeareatype)，默认值：ARKUI_LAYOUT_SAFE_AREA_TYPE_SYSTEM。设置异常值时，按默认值显示。 |
-| .value[1].u32 | 扩展安全区域的方向。参数类型为[ArkUI_LayoutSafeAreaEdge](capi-native-type-h.md#arkui_layoutsafeareaedge)，默认值：ARKUI_LAYOUT_SAFE_AREA_EDGE_ALL，例如：ARKUI_LAYOUT_SAFE_AREA_EDGE_TOP \| ARKUI_LAYOUT_SAFE_AREA_EDGE_BOTTOM。设置异常值时，按默认值显示。 |
+| .value[0].u32 | 扩展安全区域的类型。参数类型为[ArkUI_LayoutSafeAreaType](capi-layout-h.md#arkui_layoutsafeareatype)，默认值：ARKUI_LAYOUT_SAFE_AREA_TYPE_SYSTEM。设置异常值时，按默认值显示。 |
+| .value[1].u32 | 扩展安全区域的方向。参数类型为[ArkUI_LayoutSafeAreaEdge](capi-layout-h.md#arkui_layoutsafeareaedge)，默认值：ARKUI_LAYOUT_SAFE_AREA_EDGE_ALL，例如：ARKUI_LAYOUT_SAFE_AREA_EDGE_TOP \| ARKUI_LAYOUT_SAFE_AREA_EDGE_BOTTOM。设置异常值时，按默认值显示。 |
 
 **返回：**
 
@@ -1027,6 +1042,7 @@ NODE_DASH_WIDTH = 120
 
 设置边框样式为虚线时虚线的长度，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
 
 **起始版本：** 23
 
@@ -1056,6 +1072,7 @@ NODE_DASH_GAP = 121
 
 设置边框样式为虚线时虚线的间隙，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
 
 **起始版本：** 23
 
@@ -1092,13 +1109,13 @@ NODE_LAYOUT_GRAVITY = 122
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | Stack容器中子组件的对齐规则。参数类型为[ArkUI_LocalizedAlignment](capi-native-type-h.md#arkui_localizedalignment)，默认值：ARKUI_ALIGNMENT_CENTER。设置异常值时，按默认值显示。 |
+| .value[0].i32 | Stack容器中子组件的对齐规则。参数类型为[ArkUI_LocalizedAlignment](capi-layout-h.md#arkui_localizedalignment)，默认值：ARKUI_ALIGNMENT_CENTER。设置异常值时，按默认值显示。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | Stack容器中子组件的对齐规则。参数类型为[ArkUI_LocalizedAlignment](capi-native-type-h.md#arkui_localizedalignment)。 |
+| .value[0].i32 | Stack容器中子组件的对齐规则。参数类型为[ArkUI_LocalizedAlignment](capi-layout-h.md#arkui_localizedalignment)。 |
 
 ## NODE_BORDER_RADIUS_TYPE
 

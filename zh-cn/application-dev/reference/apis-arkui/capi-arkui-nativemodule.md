@@ -27,6 +27,7 @@
 | [embedded_component.h](capi-embedded-component-h.md) | EmbeddedComponent组件相关的结构体和方法定义。 |
 | [image.h](capi-image-h.md) | 为NativeNode API提供Image节点类型定义。 |
 | [image_animator.h](capi-image-animator-h.md) | 为NativeNode API提供ImageAnimator节点类型定义。 |
+| [layout.h](capi-layout-h.md) | 定义布局相关的枚举和接口。 |
 | [node_attr_custom.h](capi-native-node-node-attributes-node-attr-custom-h.md) | 为NativeNode API提供自定义节点事件定义。 |
 | [navigation_router.h](capi-navigation-router-h.md) | 定义Navigation或Router组件的枚举和接口。 |
 | [swiper.h](capi-swiper-h.md) | 定义Swiper组件的枚举和接口。 |

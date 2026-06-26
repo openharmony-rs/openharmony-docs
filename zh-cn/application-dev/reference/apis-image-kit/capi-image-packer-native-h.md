@@ -48,6 +48,8 @@
 | [Image_ErrorCode OH_PackingOptions_SetQuality(OH_PackingOptions *options, uint32_t quality)](#oh_packingoptions_setquality) | 设置编码质量。 |
 | [ Image_ErrorCode OH_PackingOptions_GetNeedsPackProperties(OH_PackingOptions *options, bool *needsPackProperties)](#oh_packingoptions_getneedspackproperties) | 获取OH_PackingOptions结构体的needsPackProperties参数。 |
 | [Image_ErrorCode OH_PackingOptions_SetNeedsPackProperties(OH_PackingOptions *options, bool needsPackProperties)](#oh_packingoptions_setneedspackproperties) | 设置OH_PackingOptions结构体的needsPackProperties参数。 |
+| <!--DelRow--> [Image_ErrorCode OH_PackingOptions_GetNeedsPackDfxData(OH_PackingOptions *options, bool *needsPackDfxData)](#oh_packingoptions_getneedspackdfxdata) | 获取OH_PackingOptions结构体中的needsPackDfxData参数。 |
+| <!--DelRow--> [Image_ErrorCode OH_PackingOptions_SetNeedsPackDfxData(OH_PackingOptions *options, bool needsPackDfxData)](#oh_packingoptions_setneedspackdfxdata) | 设置OH_PackingOptions结构体中的needsPackDfxData参数。 |
 | [Image_ErrorCode OH_PackingOptions_GetDesiredDynamicRange(OH_PackingOptions *options, int32_t* desiredDynamicRange)](#oh_packingoptions_getdesireddynamicrange) | 获取编码时期望的图片动态范围。 |
 | [Image_ErrorCode OH_PackingOptions_SetDesiredDynamicRange(OH_PackingOptions *options, int32_t desiredDynamicRange)](#oh_packingoptions_setdesireddynamicrange) | 设置编码时期望的图片动态范围。 |
 | [Image_ErrorCode OH_PackingOptions_Release(OH_PackingOptions *options)](#oh_packingoptions_release) | 释放OH_PackingOptions指针。 |
@@ -331,7 +333,61 @@ Image_ErrorCode OH_PackingOptions_SetNeedsPackProperties(OH_PackingOptions *opti
 | 类型 | 说明 |
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：参数错误。 |
+<!--Del-->
+### OH_PackingOptions_GetNeedsPackDfxData()
 
+```c
+Image_ErrorCode OH_PackingOptions_GetNeedsPackDfxData(OH_PackingOptions *options, bool *needsPackDfxData)
+```
+
+**描述**
+
+获取OH_PackingOptions结构体中的needsPackDfxData参数。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 该接口为系统接口。
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 指向OH_PackingOptions结构体的指针。 |
+| bool *needsPackDfxData | 图像DFX数据是否需要编码。true表示图像DFX数据需要编码，false表示图像DFX数据不需要编码。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>202：非系统应用程序调用该接口则返回此错误码。</li><br>         <li>IMAGE_PACKER_INVALID_PARAMETER：options或needsPackDfxData为空指针。</li><br>         </ul> |
+
+### OH_PackingOptions_SetNeedsPackDfxData()
+
+```c
+Image_ErrorCode OH_PackingOptions_SetNeedsPackDfxData(OH_PackingOptions *options, bool needsPackDfxData)
+```
+
+**描述**
+
+设置OH_PackingOptions结构体中的needsPackDfxData参数。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 该接口为系统接口。
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 指向OH_PackingOptions结构体的指针。 |
+| bool needsPackDfxData | 图像DFX数据是否需要编码。true表示图像DFX数据需要编码，false表示图像DFX数据不需要编码。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>IMAGE_SUCCESS：执行成功。</li><br>         <li>202：非系统应用程序调用该接口则返回此错误码。</li><br>         <li>IMAGE_PACKER_INVALID_PARAMETER：options为空指针。</li><br>         </ul> |
+<!--DelEnd-->
 ### OH_PackingOptions_GetDesiredDynamicRange()
 
 ```c

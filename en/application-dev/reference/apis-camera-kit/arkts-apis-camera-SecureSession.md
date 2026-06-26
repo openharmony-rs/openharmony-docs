@@ -45,10 +45,11 @@ Marks a [PreviewOutput](arkts-apis-camera-PreviewOutput.md) stream as secure out
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
-| 7400102                |  Operation not allowed.                                  |
+| 7400102                |  Operation not allowed.                                |
+| 7400103                |  Session not config.<br>Applicable versions: 12-17                |
 
 **Example**
 

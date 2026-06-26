@@ -284,7 +284,7 @@ makeObserved可以在ArkUI中导入可观察的collections容器，但makeObserv
 
 collections.Array可以触发UI刷新的API有：
 - 改变数组长度：push、pop、shift、unshift、splice、shrinkTo、extendTo
-- 改变数组项本身：sort、fill
+- 改变数组项本身：sort、fill、reverse
 
 其他API不会改变原始数组，所以不会触发UI刷新。
 <!-- @[makeObserved_collections_Array_Set_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page4.ets) --> 

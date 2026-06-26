@@ -494,7 +494,7 @@ V1装饰器的观测能力是对数据本身做代理，因此当数据存在嵌
 
 **\@Observed装饰的class嵌套\@ObservedV2装饰的class**
 
-\@ObservedV2和\@Observed嵌套使用时，类对象能否被V1的装饰器装饰取决于最外层class使用的装饰器。如果最外层是\@Observed修饰的类，可以和V2装饰器一起使用，比如\@State。\@State仅能观察第一层的变化，如果要深度观察，需要传递给\@ObjectLink。
+\@ObservedV2和\@Observed嵌套使用时，类对象能否被V1的装饰器装饰取决于最外层class使用的装饰器。如果最外层是\@Observed修饰的类，可以和V1装饰器一起使用，比如\@State。\@State仅能观察第一层的变化，如果要深度观察，需要传递给\@ObjectLink。
 
 以下示例代码中：
 
@@ -798,7 +798,7 @@ struct IndexFive {
 
 
 
-**定义\@ObserveV2修饰的class**
+**定义\@ObservedV2修饰的class**
 
 V1装饰器不能和\@ObservedV2一起使用。在以下示例代码中，InfoNine类被\@ObservedV2装饰，V1组件接收变量时，info变量不能被V1装饰器修饰，但通过修改可以刷新UI，依赖的是\@ObservedV2+\@Trace的观测能力。
 

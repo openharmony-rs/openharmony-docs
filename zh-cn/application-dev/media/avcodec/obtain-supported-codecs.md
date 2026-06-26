@@ -762,6 +762,7 @@ OH_AVFormat_Destroy(format);
 | 接口     | 功能描述                         |
 | -------- | ---------------------------- |
 | OH_AVCapability_GetVideoSupportedPixelFormats             | 获取当前视频编解码器支持的像素格式。 |
+| OH_AVCapability_GetVideoSupportedNativeBufferFormats      | 获取视频编解码器支持的OH_NativeBuffer格式。 |
 
 ```c++
 constexpr OH_AVPixelFormat DEFAULT_PIXELFORMAT = AV_PIXEL_FORMAT_NV12;
@@ -773,6 +774,9 @@ if (capability == nullptr) {
 const int32_t *pixFormats = nullptr;
 uint32_t pixFormatNum = 0;
 int32_t ret = OH_AVCapability_GetVideoSupportedPixelFormats(capability, &pixFormats, &pixFormatNum);
+// 获取当前视频编解码器支持的OH_NativeBuffer格式，使用方式同OH_AVCapability_GetVideoSupportedPixelFormats接口。
+// const OH_NativeBuffer_Format *nativeBufferFormats = nullptr;
+// int32_t ret = OH_AVCapability_GetVideoSupportedNativeBufferFormats(capability, &nativeBufferFormats, &pixFormatNum);
 if (ret != AV_ERR_OK || pixFormats == nullptr || pixFormatNum == 0) {
    // 异常处理。
 }

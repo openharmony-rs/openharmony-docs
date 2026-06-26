@@ -51,6 +51,23 @@ Checks whether the device supports NFC.
 | -------- | -------- |
 | boolean | Returns **true** if the device supports NFC; returns **false** otherwise.|
 
+## nfcController.isNfcSupported
+
+isNfcSupported(): boolean
+
+Checks whether the device supports NFC.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Communication.NFC.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| **Type**| **Description**|
+| -------- | -------- |
+| boolean | Returns **true** if the device supports NFC; returns **false** otherwise.|
 
 ## nfcController.openNfc<sup>(deprecated)</sup>
 
@@ -85,11 +102,14 @@ Enables NFC. This API can be called only by system applications.
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------|
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
 | 3100101 | The NFC state is abnormal in the service. |
+
+**Example**
+See the sample code in [off](#nfccontrolleroffnfcstatechange).
 
 ## nfcController.closeNfc<sup>(deprecated)</sup>
 
@@ -124,11 +144,14 @@ Disables NFC. This API can be called only by system applications.
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------|
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
 | 3100101 | The NFC state is abnormal in the service. |
+
+**Example**
+See the sample code in [off](#nfccontrolleroffnfcstatechange).
 
 ## nfcController.isNfcOpen
 
@@ -146,6 +169,9 @@ Checks whether NFC is open.
 | -------- | ----------------------------------- |
 | boolean  | Returns **true** if NFC is open; returns **false** otherwise.|
 
+**Example**
+See the sample code in [off](#nfccontrolleroffnfcstatechange).
+
 ## nfcController.getNfcState
 
 getNfcState(): [NfcState](#nfcstate)
@@ -161,6 +187,16 @@ Obtains the NFC state.
 | **Type**| **Description**              |
 | -------- | ---------------------- |
 | [NfcState](#nfcstate) | NFC state obtained. For details, see [NfcState](#nfcstate).|
+
+**Example**
+
+```js
+import { nfcController } from '@kit.ConnectivityKit';
+
+// Obtain the NFC state.
+let nfcState: nfcController.NfcState = nfcController.getNfcState();
+console.info("nfcController on callback nfcstate: " + nfcState);
+```
 
 ## nfcController.on('nfcStateChange')
 
@@ -178,6 +214,9 @@ Enables listening for NFC state changes. This API uses an asynchronous callback 
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type. The value is **nfcStateChange**.|
 | callback | Callback&lt;[NfcState](#nfcstate)&gt; | Yes| Callback used to return the NFC state.|
+
+**Example**
+See the sample code in [off](#nfccontrolleroffnfcstatechange).
 
 ## nfcController.off('nfcStateChange')
 

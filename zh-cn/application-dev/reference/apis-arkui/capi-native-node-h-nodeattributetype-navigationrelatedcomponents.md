@@ -296,7 +296,7 @@ NODE_SWIPER_DISABLE_SWIPE = 1001010
 NODE_SWIPER_SHOW_DISPLAY_ARROW = 1001011
 ```
 
-设置Swiper是否显示导航点箭头，支持属性设置，属性重置和属性获取接口。<br>
+设置Swiper是否显示导航箭头，支持属性设置，属性重置和属性获取接口。<br/>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -519,7 +519,7 @@ NODE_SWIPER_SWIPE_TO_INDEX = 1001019
 NODE_SWIPER_INDICATOR_INTERACTIVE = 1001020
 ```
 
-设置禁用组件导航点交互功能。<br>
+设置组件导航点是否可交互。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -529,13 +529,13 @@ NODE_SWIPER_INDICATOR_INTERACTIVE = 1001020
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 设置禁用组件导航点交互功能，设置为true时表示导航点可交互，设置为false时表示导航点不可交互，默认值true。 |
+| .value[0].i32 | 设置组件导航点交互功能，0表示导航点不可交互，1表示导航点可交互，默认值为1。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 设置禁用组件导航点交互功能。 |
+| .value[0].i32 | 组件导航点是否可交互，0表示不可交互，1表示可交互。 |
 
 ## NODE_SWIPER_PAGE_FLIP_MODE
 

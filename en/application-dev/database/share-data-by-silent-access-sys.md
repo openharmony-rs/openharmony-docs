@@ -5,6 +5,7 @@
 <!--Designer: @woodenarow; @xuelei3-->
 <!--Tester: @chenwan188; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:38:29.701Z pushedAt=2026-06-25T09:20:59.340Z -->
 
 
 ## When to Use
@@ -73,7 +74,7 @@ The **DatamgrService** can serve as a proxy to access the following data:
 
 ## Available APIs
 
-Most of the APIs for silent access are executed asynchronously in callback or promise mode. In the following table, callback-based APIs are used as an example. For more information about the APIs, see [Data Sharing](../reference/apis-arkdata/js-apis-data-dataShare-sys.md).
+The following are APIs for silent data access. For more APIs and usage, see [@ohos.data.dataShare (DataShare) (System API)](../reference/apis-arkdata/js-apis-data-dataShare-sys.md).
 
 ### Universal APIs
 
@@ -129,13 +130,12 @@ The following walks you through on how to share an RDB store.
 
    **module.json5 example**
 
+   The following configuration is provided as an example only. Configure each field based on your service requirements and database schema.
+
    ```json
-   // The following configuration is for demonstration purposes only. Each field must be configured according to the application's specific service requirements and database structure.
    "proxyData": [
      {
-       // Modify the URI based on the actual application package name and database conditions. The URI here is for demonstration only.
        "uri": "datashareproxy://com.ohos.datashareprovider/datapath",
-       // Configure the permissions based on the data access requirements and permission requirements of the application, including application custom permissions, system permissions, or user-authorized permissions. The current permissions are for demonstration purposes only.
        "requiredReadPermission": "ohos.permission.MANAGE_SECURE_SETTINGS",
        "requiredWritePermission": "ohos.permission.MANAGE_SECURE_SETTINGS",
        "metadata": {
@@ -308,12 +308,12 @@ In the **module.json5** file, set the data to be hosted in **proxyData**. For de
 
 **module.json5 example**
 
+The following configuration is provided as an example only. Configure each field based on your service requirements.
+
 ```json
-// The following is an example only. Configure it as required.
 "proxyData": [
   {
     "uri": "datashareproxy://com.acts.ohos.data.datasharetest/weather",
-    // Configure permissions based on actual situation. The permissions configured here are examples only.
     "requiredReadPermission": "ohos.permission.READ_WEATHER_DATA",
     "requiredWritePermission": "ohos.permission.KEEP_BACKGROUND_RUNNING"
   }
@@ -426,5 +426,3 @@ The data provider calls the **enableSilentProxy** API to dynamically enable sile
      }
    }
    ```
-
-   

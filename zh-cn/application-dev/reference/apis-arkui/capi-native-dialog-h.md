@@ -808,7 +808,7 @@ int32_t OH_ArkUI_CustomDialog_SetAlignment(ArkUI_CustomDialogOptions* options, i
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
-| int32_t alignment | 弹窗的对齐模式，参数类型[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)。 |
+| int32_t alignment | 弹窗的对齐模式，参数类型[ArkUI_Alignment](capi-layout-h.md#arkui_alignment)。 |
 | float offsetX | 弹窗的水平偏移量，浮点型，单位：vp。 |
 | float offsetY | 弹窗的垂直偏移量，浮点型，单位：vp。 |
 

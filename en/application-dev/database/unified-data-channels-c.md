@@ -5,6 +5,7 @@
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:39:49.792Z pushedAt=2026-06-25T09:30:29.239Z -->
 
 
 ## When to Use
@@ -276,7 +277,6 @@ int32_t GetDataTest()
     ret = HandleUdmfHyperlinkData(readData, dataSize, dataArray);
     if (ret != Udmf_ErrCode::UDMF_E_OK) {
         OH_LOG_ERROR(LOG_APP, "Get Data error!");
-        OH_UdmfOptions_Destroy(options);
         return ret;
     }
     // 5. Destroy all the pointers created.
