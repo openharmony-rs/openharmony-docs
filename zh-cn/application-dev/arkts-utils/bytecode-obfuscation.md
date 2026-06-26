@@ -697,7 +697,7 @@ export namespace Ns {
   
   ``` TypeScript
   // example.ets
-  import { testNapi2, testNapi3 as myNapi } from 'libentry.so' // testNapi2 和 testNapi3 应该被保留。
+  import { testNapi2, testNapi3 as myNapi } from 'libentry.so' // testNapi2 和 testNapi3 应该被保留
   // ...
   testNapi2();
   myNapi();
