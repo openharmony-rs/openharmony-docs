@@ -406,7 +406,7 @@ getFunctionsFromString(funcs: string): number
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.MANAGE_USB_CONFIG
+**需要权限：** ohos.permission.MANAGE_USB_CONFIG，该权限为系统权限，仅系统应用可申请。系统应用可通过配置文件中的requestPermissions字段申请该权限，具体申请方式请参考[权限申请开发指导](../../security/AccessToken/permissions-for-all.md)。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -454,7 +454,7 @@ getStringFromFunctions(funcs: FunctionType): string
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.MANAGE_USB_CONFIG
+**需要权限：** ohos.permission.MANAGE_USB_CONFIG，该权限为系统权限，仅系统应用可申请。系统应用可通过配置文件中的requestPermissions字段申请该权限，具体申请方式请参考[权限申请开发指导](../../security/AccessToken/permissions-for-all.md)。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -502,7 +502,7 @@ setDeviceFunctions(funcs: FunctionType): Promise\<void\>
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.MANAGE_USB_CONFIG
+**需要权限：** ohos.permission.MANAGE_USB_CONFIG，该权限为系统权限，仅系统应用可申请。系统应用可通过配置文件中的requestPermissions字段申请该权限，具体申请方式请参考[权限申请开发指导](../../security/AccessToken/permissions-for-all.md)。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -557,7 +557,7 @@ getDeviceFunctions(): FunctionType
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.MANAGE_USB_CONFIG
+**需要权限：** ohos.permission.MANAGE_USB_CONFIG，该权限为系统权限，仅系统应用可申请。系统应用可通过配置文件中的requestPermissions字段申请该权限，具体申请方式请参考[权限申请开发指导](../../security/AccessToken/permissions-for-all.md)。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -596,7 +596,7 @@ getPortList(): Array\<USBPort\>
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.MANAGE_USB_CONFIG
+**需要权限：** ohos.permission.MANAGE_USB_CONFIG，该权限为系统权限，仅系统应用可申请。系统应用可通过配置文件中的requestPermissions字段申请该权限，具体申请方式请参考[权限申请开发指导](../../security/AccessToken/permissions-for-all.md)。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -635,7 +635,7 @@ getPortSupportModes(portId: number): PortModeType
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.MANAGE_USB_CONFIG
+**需要权限：** ohos.permission.MANAGE_USB_CONFIG，该权限为系统权限，仅系统应用可申请。系统应用可通过配置文件中的requestPermissions字段申请该权限，具体申请方式请参考[权限申请开发指导](../../security/AccessToken/permissions-for-all.md)。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -681,7 +681,7 @@ setPortRoleTypes(portId: number, powerRole: PowerRoleType, dataRole: DataRoleTyp
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.MANAGE_USB_CONFIG
+**需要权限：** ohos.permission.MANAGE_USB_CONFIG，该权限为系统权限，仅系统应用可申请。系统应用可通过配置文件中的requestPermissions字段申请该权限，具体申请方式请参考[权限申请开发指导](../../security/AccessToken/permissions-for-all.md)。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -740,7 +740,7 @@ usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessory
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.MANAGE_USB_CONFIG
+**需要权限：** ohos.permission.MANAGE_USB_CONFIG，该权限为系统权限，仅系统应用可申请。系统应用可通过配置文件中的requestPermissions字段申请该权限，具体申请方式请参考[权限申请开发指导](../../security/AccessToken/permissions-for-all.md)。
 
 **系统能力：** SystemCapability.USB.USBManager
 
