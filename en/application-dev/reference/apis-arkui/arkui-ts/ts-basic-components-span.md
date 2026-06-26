@@ -85,7 +85,7 @@ Sets the letter spacing. A negative value tightens the spacing; a positive value
 
 | Name| Type    | Mandatory|  Description  |
 | ------ | ------- | ---- | -------------- |
-| value  | number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | Yes  | Letter spacing.<br>Unit: [fp](ts-pixel-units.md)<br>The [Resource](ts-types.md#resource) type is supported since API version 20.|
+| value  | number&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | Yes  | Letter spacing.<br>Unit: [fp](ts-pixel-units.md#basic-pixel-units)<br>The [Resource](ts-types.md#resource) type is supported since API version 20.|
 
 ### textCase
 
@@ -121,7 +121,7 @@ Sets the font color.
 
 | Name| Type                                      | Mandatory| Description      |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Font color.<br>Default value: **'e6182431'**.<br>Default value for wearables: **'#c5ffffff'**|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Font color.<br>Default value: **'#e6182431'**<br>Default value for wearables: **'#c5ffffff'**|
 
 ### fontSize
 
@@ -175,7 +175,28 @@ Sets the font weight. If the value is too large, the text may be clipped dependi
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | Yes  | Font weight. For the number type, the value range is [100, 900], at an interval of 100. The default value is **400**. A larger value indicates a heavier font weight. For the string type, only strings of the number type are supported, for example, **400**, **"bold"**, **"bolder"**, **"lighter"**, **"regular"**, and **"medium"**, which correspond to the enumerated values in **FontWeight**.<br>Default value: **FontWeight.Normal**<br>The [Resource](ts-types.md#resource) type is supported since API version 20.|
+| value  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | Yes  | Font weight. For the number type, the value range is [100, 900], at an interval of 100. The default value is **400**. A larger value indicates a heavier font weight. For the string type, only strings that represent a number, for example, **400**, and the following enumerated values of **FontWeight** are supported: **bold**, **bolder**, **lighter**, **regular**, and **medium**.<br>Default value: **FontWeight.Normal**<br>The [Resource](ts-types.md#resource) type is supported since API version 20.|
+
+### fontWeight<sup>24+</sup>
+
+fontWeight(weight: number | FontWeight | ResourceStr, fontWeightConfigs?: FontWeightConfigs)
+
+Font weight of the text.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 24.
+
+**Atomic service API:** This API can be used in atomic services since API version 24.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                                        | Mandatory| Description                                                        |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| weight  | number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr) | Yes  | Font weight. For the number type, the value range is [100, 900], at an interval of 100. The default value is **400**. A larger value indicates a heavier font weight. For the string type, only strings that represent a number, for example, **400**, and the following enumerated values of **FontWeight** are supported: **bold**, **bolder**, **lighter**, **regular**, and **medium**. If the value is too large, truncation may occur in different fonts.<br>Default value: **FontWeight.Normal**|
+| fontWeightConfigs  | [FontWeightConfigs](ts-text-common.md#fontweightconfigs24) | No  | Font weight configurations. The default value is inherited from [FontWeightConfigs](ts-text-common.md#fontweightconfigs24).|
 
 ### fontFamily
 
@@ -207,21 +228,25 @@ Sets the line height for the text.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type   | Mandatory| Description |
 | ------ | ------ | ---- | ---- |
-| value  | [Length](ts-types.md#length) | Yes  | Line height of the text.<br> If the value is of the number type, the unit is fp. When using the string type, numeric string values with optional units, for example, **"10"** or **"10fp"**, are supported.|
+| value  | [Length](ts-types.md#length) | Yes  | Line height of the text.<br> If the value is of the number type, the unit is fp. For the string type, numeric string values with optional units, for example, **"10"** or **"10fp"**, are supported.|
 
 ### font<sup>10+</sup>
 
 font(value: Font)
 
-Sets the text style, covering the font size, font width, Font family, and font style.
+Sets the text style, covering the font size, font width, font family, and font style.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -231,6 +256,25 @@ Sets the text style, covering the font size, font width, Font family, and font s
 | ------ | ------------------------ | ---- | ---------- |
 | value  | [Font](ts-types.md#font) | Yes  | Text style.|
 
+### font<sup>24+</sup>
+
+font(value: Font, fontConfigs?: FontConfigs)
+
+Sets the text style.
+
+**Atomic service API:** This API can be used in atomic services since API version 24.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                    | Mandatory| Description      |
+| ------ | ------------------------ | ---- | ---------- |
+| value  | [Font](ts-types.md#font) | Yes  | Text style, including the font size, font weight, font family, and font style.|
+| fontConfigs  | [FontConfigs](ts-text-common.md#fontconfigs24)| No  | Font configurations. The default value is inherited from [FontConfigs](ts-text-common.md#fontconfigs24).|
+
 ### textShadow<sup>11+</sup>
 
 textShadow(value: ShadowOptions | Array&lt;ShadowOptions&gt;)
@@ -239,13 +283,35 @@ Text shadow. It supports input parameters in an array to implement multiple text
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type| Mandatory| Description|
 | ------ | ----- | ---- | --- |
-| value  | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)&nbsp;\|&nbsp;&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)>| Yes  | Text shadow.|
+| value  | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)&nbsp;\|&nbsp;&nbsp;Array&lt;[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)> | Yes  | Text shadow.|
+
+### fontVariations
+
+fontVariations(fontVariations: Array&lt;FontVariation&gt;)
+
+Sets font variations.
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                         | Mandatory| Description                                         |
+| ------ | --------------------------------------------- | ---- | --------------------------------------------- |
+| fontVariations | Array&lt;[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation)&gt; | Yes| Array of font variations, where each member represents a distinct font variation. The **fontVariations** attribute takes precedence over [fontWeight](#fontweight24).|
 
 ## Events
 
@@ -267,9 +333,11 @@ Defines the base class **BaseSpan**, including the universal attributes of the *
 
 textBackgroundStyle(style: TextBackgroundStyle): T
 
-Background style. This attribute prioritizes the value separately set for the component. If it is not set, the component can inherit the settings from its parent [ContainerSpan](ts-basic-components-containerspan.md).
+Sets the text background style. This attribute prioritizes the value separately set for the component. If it is not set, the component can inherit the settings from its parent [ContainerSpan](ts-basic-components-containerspan.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -277,7 +345,7 @@ Background style. This attribute prioritizes the value separately set for the co
 
 | Name| Type | Mandatory| Description|
 | ----- | ---- | ---- | ---- |
-| style  | [TextBackgroundStyle](#textbackgroundstyle11) | Yes  | Sets the background style.<br>Default value:<br>{<br>  color: Color.Transparent,<br>  radius: 0<br>} |
+| style  | [TextBackgroundStyle](#textbackgroundstyle11) | Yes  | Text background style.<br>Default value:<br>{<br>  color: Color.Transparent,<br>  radius: 0<br>} |
 
 **Return value**
 
@@ -292,6 +360,8 @@ baselineOffset(value: LengthMetrics): T
 Sets the offset of the baseline. This attribute coexists with the **baselineOffset** attribute of the parent component.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -310,6 +380,8 @@ Sets the offset of the baseline. This attribute coexists with the **baselineOffs
 ## TextBackgroundStyle<sup>11+</sup>
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -443,6 +515,39 @@ struct SpanExample {
           })
       }
 
+      // Sets text font configurations. The fontConfigs attribute is supported since API version 24.
+      Text('Font with FontConfigs').fontSize(9).fontColor(0xCCCCCC).margin({ top: 12 })
+      Text() {
+        Span('span font with configs')
+          .font({
+            size: 14,
+            weight: 550,
+            style: FontStyle.Normal,
+            family: "HarmonyOS Sans"
+          }, {
+            fontWeightConfigs: {
+              enableVariableFontWeight: true
+            }
+          })
+      }
+
+      // Sets text font weight configurations. The fontWeightConfigs attribute is supported since API version 24.
+      Text('FontWeight with FontWeightConfigs').fontSize(9).fontColor(0xCCCCCC).margin({ top: 12 })
+      Text() {
+        Span('span fontWeight 850 with configs')
+          .fontWeight(850, {
+            enableVariableFontWeight: true,
+            enableDeviceFontWeightCategory: false
+          })
+      }
+      Text() {
+        Span('span fontWeight 600 with configs')
+          .fontWeight(600, {
+            enableVariableFontWeight: false,
+            enableDeviceFontWeightCategory: true
+          })
+      }
+
       // Set the click event.
       Text('span click event').fontSize(9).fontColor(0xCCCCCC).margin({ top: 12 })
       Text() {
@@ -571,3 +676,35 @@ struct SpanExample {
 ```
 
 ![SpanBaselineOffset](figures/SpanBaselineOffset.png)
+
+### Example 5: Setting Text Font Variations
+
+This example demonstrates how to set text font variations using [fontVariations](#fontvariations).
+
+The [fontVariations](#fontvariations) API is added since API version 26.0.0.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct SpanExample {
+  @State weightValue: number = 400;
+
+  build() {
+    Column() {
+      Text() {
+        Span('Hello World !')
+          // wght indicates the weight of the variable font.
+          .fontVariations([{ axis: 'wght', value: this.weightValue }])
+      }
+
+      Button('Weight: ' + this.weightValue)
+        .margin(10)
+        .onClick(() => {
+          this.weightValue += 100;
+        })
+    }.width('100%')
+  }
+}
+```
+
