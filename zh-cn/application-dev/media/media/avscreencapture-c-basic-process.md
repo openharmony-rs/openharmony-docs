@@ -315,7 +315,7 @@ config.videoInfo.videoCapInfo.displayId = 0;
 
 即[OH_CAPTURE_HOME_SCREEN](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode)模式。
 
-在此模式下，录屏应用录制设备主屏幕的内容。启动录屏后，系统不会弹出选择共享内容弹窗（部分设备弹窗行为可能不同，具体见[PC/2in1设备弹窗行为差异](#pc2in1设备弹窗行为差异)和[Phone/Tablet弹窗模式配置说明](#phonetablet弹窗模式配置说明)），会弹出隐私保护弹窗。配置的videoCapInfo.displayId参数不会生效，默认生效主屏的displayId。
+在此模式下，录屏应用录制设备主屏幕的内容。启动录屏后，配置的videoCapInfo.displayId参数不会生效，默认生效主屏的displayId。
 
 ```c++
 uint64_t displayId = 0;
@@ -455,24 +455,6 @@ OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 - **录制指定窗口（OH_CAPTURE_SPECIFIED_WINDOW）**：传入单个窗口Id时，弹出选择共享内容弹窗并默认选中指定窗口；传入多个窗口Id时，不弹出选择共享内容弹窗，仅弹出隐私保护弹窗。
 
 在Phone/Tablet设备上，不同录屏模式下统一不弹出Picker，仅弹出隐私保护弹窗。
-
-```c++
-// 创建AVScreenCapture对象。
-OH_AVScreenCapture* capture = OH_AVScreenCapture_Create();
-
-// 创建CaptureStrategy对象。
-OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
-
-// 设置是否弹出屏幕捕获Picker。
-// 设置为false，代表录屏启动后统一不弹出Picker。
-OH_AVScreenCapture_StrategyForPickerPopUp(strategy, false);
-
-// 设置CaptureStrategy到AVScreenCapture实例。
-OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
-
-// 释放CaptureStrategy对象。
-OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
-```
 
 ## 更多资源
 
