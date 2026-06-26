@@ -707,6 +707,29 @@ Text($r('app.string.TextSpan_textContent_text')) {
 
 <!-- @[create_span_with_lines](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpan.ets) -->
 
+``` TypeScript
+Text() {
+  // 请将$r('app.string.TextSpan_textContent_span_one')替换为实际资源文件，在本示例中该资源文件的value值为"我是Span1，"
+  Span($r('app.string.TextSpan_textContent_span_one'))
+    .fontSize(16)
+    .fontColor(Color.Grey)
+    .decoration({ type: TextDecorationType.LineThrough, color: Color.Red })
+  // 请将$r('app.string.TextSpan_textContent_span_two')替换为实际资源文件，在本示例中该资源文件的value值为"我是Span2"
+  Span($r('app.string.TextSpan_textContent_span_two'))
+    .fontColor(Color.Blue)
+    .fontSize(16)
+    .fontStyle(FontStyle.Italic)
+    .decoration({ type: TextDecorationType.Underline, color: Color.Black })
+  // 请将$r('app.string.TextSpan_textContent_span_three')替换为实际资源文件，在本示例中该资源文件的value值为"我是Span3"
+  Span($r('app.string.TextSpan_textContent_span_three'))
+    .fontSize(16)
+    .fontColor(Color.Grey)
+    .decoration({ type: TextDecorationType.Overline, color: Color.Green })
+}
+.borderWidth(1)
+.padding(10)
+```
+
 ![text-child-span](figures/text-child-span.png)
 
 ### 设置Span文本大小写
