@@ -38,7 +38,7 @@ usbFunctionsFromString(funcs: string): number
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| funcs  | string | 是   | 字符串形式的功能列表，由'acm'、'ecm'等标识组成，多个功能用'|'分隔。 |
+| funcs  | string | 是   | 字符串形式的功能列表，由'acm'、'ecm'等标识组成，多个功能用','分隔。 |
 
 **返回值：**
 
