@@ -175,7 +175,7 @@ TestA.i;
     ``` TypeScript
     // example.ets
     @Component struct MyExample {
-      @State message: string = "hello";
+      @State message: string = 'hello';
       data: number[] = [];
     
       build() {
