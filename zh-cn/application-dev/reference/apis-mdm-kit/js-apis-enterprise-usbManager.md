@@ -276,7 +276,7 @@ try {
 
 getUsbStorageDeviceAccessPolicy(admin: Want | null): UsbPolicy
 
-获取USB存储设备（baseClass = 0X08）访问策略。
+获取USB存储设备（baseClass = 0x08）访问策略。
 
 **需要权限：**
 
