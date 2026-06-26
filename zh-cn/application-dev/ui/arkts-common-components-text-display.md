@@ -801,8 +801,11 @@ Text() {
 
 ## 设置文本菜单
 文本菜单包括系统菜单、AI菜单、自定义菜单。
+
 系统菜单是系统预置的菜单项，无需配置自动出现，包括剪切、复制、粘贴、全选、翻译、搜索、分享等菜单选项，适用于大多数标准文本交互。
+
 AI菜单是基于AI文本分析动态识别实体后出现的智能操作菜单，菜单项包括电话号码、网址、邮箱地址等（AI识别出对应实体才显示，未检测到则不显示），与系统菜单的关键区别是菜单内容由AI检测结果决定，不是固定的，适用于含实体信息的文本内容。
+
 自定义菜单是由开发者完全自定义菜单内容，需要主动调API配置，适用于有特殊业务需求的文本交互。
 
 ### 使用系统菜单
@@ -1342,7 +1345,7 @@ Text组件通过设置[bindSelectionMenu](../reference/apis-arkui/arkui-ts/ts-ba
 
 ### 在子窗口中显示文本菜单
 
-Text组件通过设置[TextMenuShowMode](../reference/apis-arkui/arkui-ts/ts-text-common.md#TextMenuShowMode16)控制文本菜单在哪个窗口中渲染。主窗口模式下，菜单节点挂载到主窗口根节点，菜单可能被页面内容遮挡、受页面滚动影响；子窗口模式下，菜单节点挂载到独立子窗口的根节点，菜单浮在主窗口之上，不受页面布局影响
+Text组件通过设置[TextMenuShowMode](../reference/apis-arkui/arkui-ts/ts-text-common.md#textmenushowmode16)控制文本菜单在哪个窗口中渲染。主窗口模式下，菜单节点挂载到主窗口根节点，菜单可能被页面内容遮挡、受页面滚动影响；子窗口模式下，菜单节点挂载到独立子窗口的根节点，菜单浮在主窗口之上，不受页面布局影响
 
   <!-- @[set_menu_options_with_textmenushowmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextMenuShowSubWindow.ets) -->
   

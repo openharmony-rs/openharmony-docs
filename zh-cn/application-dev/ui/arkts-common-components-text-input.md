@@ -317,7 +317,7 @@ TextArea({ text: $r('app.string.show_selected_menu') })
 ![TextArea_select_menu](figures/TextArea_select_menu.jpg)
 
 ### 系统菜单中自定义菜单项
-从API version 12开始，该示例通过[editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#editmenuoptions12)接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能；从API version 20开始，可以在[onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#OnPrepareMenuCallback20)回调中，进行菜单数据的设置。
+从API version 12开始，该示例通过[editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#editmenuoptions12)接口实现了文本设置自定义菜单扩展项的文本内容、图标以及回调的功能；从API version 20开始，可以在[onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#属性-1)回调中，进行菜单数据的设置。
 
 <!-- @[editMenu_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
 
@@ -492,7 +492,7 @@ struct DisableMenuItem {
 
 ### 在子窗口中显示文本菜单
 
-TextInput组件通过设置[TextMenuShowMode](../reference/apis-arkui/arkui-ts/ts-text-common.md#TextMenuShowMode16)控制文本菜单在哪个窗口中渲染。主窗口模式下，菜单节点挂载到主窗口根节点，菜单可能被页面内容遮挡、受页面滚动影响；子窗口模式下，菜单节点挂载到独立子窗口的根节点，菜单浮在主窗口之上，不受页面布局影响
+TextInput组件通过设置[TextMenuShowMode](../reference/apis-arkui/arkui-ts/ts-text-common.md#textmenushowmode16)控制文本菜单在哪个窗口中渲染。主窗口模式下，菜单节点挂载到主窗口根节点，菜单可能被页面内容遮挡、受页面滚动影响；子窗口模式下，菜单节点挂载到独立子窗口的根节点，菜单浮在主窗口之上，不受页面布局影响
 
 <!-- @[set_menu_options_with_textmenushowmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/TextMenuShowSubWindow.ets) -->
 
