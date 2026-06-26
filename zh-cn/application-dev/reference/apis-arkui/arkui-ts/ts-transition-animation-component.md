@@ -560,7 +560,7 @@ struct TransitionEffectExample3 {
 
 ### 示例4（visibility切换时的双动画复合效果）
 
-该示例演示当[visibility](ts-universal-attributes-visibility.md#visibility)在Visibility.Visible与Visibility.None之间切换时，[transition](#transition)与布局动画叠加形成双动画复合表现的效果。
+该示例演示当[visibility](ts-universal-attributes-visibility.md#visibility)在Visibility.Visible与Visibility.None之间切换时，[transition](#transition)与布局动画叠加形成双动画复合表现的效果。 
 
 ```ts
 // xxx.ets
