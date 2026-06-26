@@ -177,7 +177,9 @@ let rendererInfo: audio.AudioRendererInfo = {
   });
   // ...
   // 取消监听最高优先级输出设备变化。
-  audioRoutingManager.off('preferOutputDeviceChangeForRendererInfo');
+  audioRoutingManager.off('preferOutputDeviceChangeForRendererInfo', (desc: audio.AudioDeviceDescriptors) => {
+    console.info('Should be no callback.');
+  });
 ```
 
 ## 通过AudioSession查询和监听音频输出设备
