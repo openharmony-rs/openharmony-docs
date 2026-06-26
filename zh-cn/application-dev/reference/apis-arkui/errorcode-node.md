@@ -167,7 +167,7 @@ Reuse/Recycle not implemented for ViewV2, yet.
 
 **错误描述**
 
-BuilderNode中，[状态管理V2](../../ui/state-management/arkts-state-management-overview.md#状态管理v2)暂不支持[组件复用](./js-apis-arkui-builderNode.md#reuse12)。
+BuilderNode中，[状态管理V2](../../ui/state-management/arkts-state-management-overview.md#状态管理v2)暂不支持[reuse](./js-apis-arkui-builderNode.md#reuse12)。
 
 **可能原因**
 
