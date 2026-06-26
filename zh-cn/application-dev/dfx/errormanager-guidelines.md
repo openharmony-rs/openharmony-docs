@@ -466,6 +466,7 @@ export function setFirstErrorHandler() {
 ``` TypeScript
 import { errorManager } from '@kit.AbilityKit';
 import { process } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let secondHandler: errorManager.ErrorHandler;
 const secondErrorHandler: errorManager.ErrorHandler = (reason: Error) => {
@@ -480,7 +481,13 @@ const secondErrorHandler: errorManager.ErrorHandler = (reason: Error) => {
 };
 
 export function setSecondErrorHandler() {
-    secondHandler = errorManager.setDefaultErrorHandler(secondErrorHandler); 
+    try {
+        secondHandler = errorManager.setDefaultErrorHandler(secondErrorHandler);
+    } catch (paramError) {
+        let code = (paramError as BusinessError).code;
+        let message = (paramError as BusinessError).message;
+        console.error('setSecondErrorHandler',`error: ${code}, ${message}`);
+    }
     console.info('Registered Second Error Handler');
 }
 ```
