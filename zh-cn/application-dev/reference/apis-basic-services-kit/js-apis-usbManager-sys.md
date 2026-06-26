@@ -775,6 +775,7 @@ usbManager.requestAccessoryRight会触发弹窗请求用户授权；addAccessory
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   // 获取USB配件列表
