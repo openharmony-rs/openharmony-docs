@@ -2,7 +2,7 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @hanamaru-->
-<!--Designer: @gaoweihua-->
+<!--Designer: @chensiyi_CE-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
