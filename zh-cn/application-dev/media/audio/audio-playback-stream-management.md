@@ -88,10 +88,10 @@
 3. （可选）使用[off('audioRendererChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#offaudiorendererchange9)取消监听音频播放流变化。
 
    <!-- @[unregist_renderchangechallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->  
- 
+   
    ``` TypeScript
    audioStreamManager.off('audioRendererChange');
-   console.info('RendererChange Off is called ');
+   console.info('Succeeded in using off function.');
    ```
 
 4. （可选）使用[getCurrentAudioRendererInfoArray](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#getcurrentaudiorendererinfoarray9)获取所有音频播放流的信息。该接口可获取音频播放流唯一ID、音频渲染器信息以及音频播放设备信息。
