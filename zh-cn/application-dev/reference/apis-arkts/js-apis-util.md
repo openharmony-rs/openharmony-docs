@@ -211,6 +211,7 @@ cb('hello world', (err : Object, ret : string) => {
 ```
 
 ```ts
+// original需要传入多个入参场景示例
 async function fn(args: Array<string | number | Function>) {
   console.info('args[0]: ' + args[0]); // args[0]: hello world
   console.info('args[1]: ' + args[1]); // args[1]: 8
