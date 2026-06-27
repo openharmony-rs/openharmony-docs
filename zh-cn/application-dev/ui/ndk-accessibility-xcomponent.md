@@ -483,6 +483,13 @@
 
    ArkTS-Sta示例：
    <!-- @[abilitycap_seven_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   
+   ``` C++
+   int32_t ClearFocusedFocusAccessibilityNode(const char *instanceId)
+   {
+       return ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL;
+   }
+   ```
 
 -  基于指定的节点，获取当前文本组件的光标位置
 
