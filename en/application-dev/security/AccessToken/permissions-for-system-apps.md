@@ -6559,6 +6559,89 @@ Allows a system application to access the file cache path of the file transfer s
  	 
 **Valid since**: 26.0.0
 
+## ohos.permission.vehicle.MANAGE_TBOX_CELLULAR
+
+Allows an application to set cellular network information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
+## ohos.permission.vehicle.TBOX_CELLULAR_INFO
+
+Allows an application to read cellular network information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
+## ohos.permission.vehicle.MANAGE_TBOX_WIFI
+
+Allows an application to set TBox WiFi related information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
+## ohos.permission.vehicle.TBOX_WIFI_INFO
+
+Allows an application to obtain T-Box Wi-Fi–related information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
+## ohos.permission.vehicle.PACKET_CAPTURE_INFO
+
+Allows an application to trigger network packet capture.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
+## ohos.permission.vehicle.CCN_SELF_HEALING
+
+Allows the triggering of network self-check and self-healing.
+
+**Permission level**: system_basic
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
 ## ohos.permission.MANAGE_CLONE_BUNDLE_PREFERENCES
  	 
 Allows an application to manage clone preferences.
