@@ -106,7 +106,7 @@
 
    3.2 定义入口类骨架。
 
-   入口脚本以`export default`方式导出一个类，类内每个`public async`方法对应SKILL.md声明的一项能力，须满足以下约定：
+   入口脚本以`export default`方式导出一个类，类中每个方法**均可直接被Agent访问**，需对应SKILL.md声明的一项能力，上述能力需满足以下约定：
 
    - **方法名约定**：必须与SKILL.md中的`functionName`严格一致（本例为`playMusicByName`、`controlPlayback`）。
    - **方法签名约定**：第一个参数类型固定为[ArkTSScriptInfo](../reference/apis-ability-kit/js-apis-app-ability-scriptManager.md#arktsscriptinfo)。
