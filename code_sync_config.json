@@ -638,23 +638,11 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerDialogSample.ets",
-				"functions":[
-					{
-						"end_line":38,
-						"name":"certificate_management_dialog_box_development_guide",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerCaDialogSample.ets",
-				"functions":[
-					{
-						"end_line":98,
-						"name":"certificate_management_ca_dialog_development_guide",
-						"start_line":15
-					}
-				]
+				"functions":[]
 			}
 		]
 	},
