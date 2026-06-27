@@ -1708,7 +1708,7 @@
 
 ## ohos.permission.cli.MANAGE_WIFI_TOGGLE
 
-允许应用通过CLI命令设置WIFI开关。
+允许应用通过CLI命令设置Wi-Fi开关。
 
 **权限级别**：system_core
 
