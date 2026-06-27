@@ -465,6 +465,74 @@
 
    ArkTS-Sta示例：
    <!-- @[abilitycap_six_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   
+   ``` C++
+   void FillEvent(ArkUI_AccessibilityEventInfo *eventInfo, ArkUI_AccessibilityElementInfo *elementInfo,
+                  ArkUI_AccessibilityEventType eventType, std::string announcedText)
+   {
+       if (eventInfo == nullptr || elementInfo == nullptr) {
+           return;
+       }
+       OH_ArkUI_AccessibilityEventSetEventType(eventInfo, eventType);
+       OH_ArkUI_AccessibilityEventSetElementInfo(eventInfo, elementInfo);
+       if (eventType == ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ANNOUNCE_FOR_ACCESSIBILITY && announcedText.size() > 0) {
+           OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(eventInfo, announcedText.data());
+       }
+   }
+   
+   void SendAccessibilityAsyncEvent(ArkUI_AccessibilityElementInfo *elementInfo,
+                                    ArkUI_AccessibilityEventType eventType,
+                                    std::string announcedText)
+   {
+       auto eventInfo = OH_ArkUI_CreateAccessibilityEventInfo();
+       FillEvent(eventInfo, elementInfo, eventType, announcedText);
+       auto callback = [](int32_t errorCode) {
+           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "result: %{public}d", errorCode);
+       };
+       OH_ArkUI_SendAccessibilityAsyncEvent(g_provider, eventInfo, callback);
+   }
+   // ...
+   int32_t ExecuteAccessibilityAction(const char *instanceId, int64_t elementId,
+       ArkUI_Accessibility_ActionType action, ArkUI_AccessibilityActionArguments *actionArguments, int32_t requestId)
+   {
+       auto object = FakeWidget::Instance().GetChild(elementId);
+       if (!object) {
+           return ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL;
+       }
+       auto announcedText = object->GetAnnouncedForAccessibility();
+       auto element = OH_ArkUI_CreateAccessibilityElementInfo();
+       OH_ArkUI_AccessibilityElementInfoSetElementId(element, elementId);
+       switch (action) {
+           case ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLICK:
+               if (object) {
+                   object->OnClick();
+                   object->fillAccessibilityElement(element);
+               }
+               SendAccessibilityAsyncEvent(element, ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_CLICKED, announcedText);
+               break;
+           case ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_GAIN_ACCESSIBILITY_FOCUS:
+               if (object) {
+                   object->SetFocus(true);
+                   object->fillAccessibilityElement(element);
+               }
+               SendAccessibilityAsyncEvent(element, ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ACCESSIBILITY_FOCUSED,
+                                           announcedText);
+               break;
+           case ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLEAR_ACCESSIBILITY_FOCUS:
+               if (object) {
+                   object->SetFocus(false);
+                   object->fillAccessibilityElement(element);
+               }
+               SendAccessibilityAsyncEvent(element, ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ACCESSIBILITY_FOCUS_CLEARED,
+                                           announcedText);
+               break;
+           default:
+               break;
+       }
+       OH_ArkUI_DestoryAccessibilityElementInfo(element);
+       return ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL;
+   }
+   ```
 
 -  清除当前获焦的节点
 
