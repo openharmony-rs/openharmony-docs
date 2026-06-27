@@ -48,7 +48,7 @@ target_link_libraries(sample PUBLIC libohaudio.so)
 #include <ohaudio/native_audio_debugging_manager.h>
 #include <fcntl.h>
 #include <unistd.h>
-// 文件权限常量
+// 文件权限常量。
 constexpr mode_t FILE_PERMISSION = S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH; // 0644
 ```
 
