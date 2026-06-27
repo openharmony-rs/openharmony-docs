@@ -237,13 +237,13 @@ NODE_IMAGE_RENDER_MODE = 4008
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 表示图片渲染模式，取[ArkUI_ImageRenderMode](capi-image-h.md#arkui_imagerendermode)枚举值。 |
+| .value[0].i32 | 表示图片渲染模式，取[ArkUI_ImageRenderMode](capi-native-type-h.md#arkui_imagerendermode)枚举值。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 表示图片渲染模式，取[ArkUI_ImageRenderMode](capi-image-h.md#arkui_imagerendermode)枚举值。 |
+| .value[0].i32 | 表示图片渲染模式，取[ArkUI_ImageRenderMode](capi-native-type-h.md#arkui_imagerendermode)枚举值。 |
 
 ## NODE_IMAGE_FIT_ORIGINAL_SIZE
 
