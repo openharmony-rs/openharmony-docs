@@ -106,6 +106,8 @@ const debugManager: audio.AudioDebuggingManager = audioManager.getAudioDebugging
 | 耳返快照列表 | loopbacks | 当前应用进程中所有耳返快照信息，详见[音频耳返快照](#音频耳返快照) |
 | 会话快照列表 | sessions | 当前应用进程中所有会话快照信息，详见[音频会话快照](#音频会话快照) |
 
+> 各快照详细字段信息见下方对应章节的输出示例。
+
 接口说明请参考[OH_AudioDebuggingManager_PrintAppInfo](https://gitcode.com/openharmony/interface_native_header/blob/master/zh-cn/application-dev/reference/apis-audio-kit/capi-native-audio-debugging-manager-h.md#oh_audiodebuggingmanager_printappinfo)和[printAppInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printappinfo)。
 
 **C/C++接口：**
@@ -141,10 +143,6 @@ debugManager.printAppInfo(-1);
 
 **输出示例：**
 
-> **说明：**
->
-> 以下输出示例中的字段注释（`//`后的内容）仅为说明字段含义，实际输出结果不包含对应字段注释。
-
 ```text
 audioApp {
   renderers: [                          // 播放快照信息列表
@@ -164,6 +162,8 @@ audioApp {
 }
 ```
 
+注：实际输出快照结果不包含对应字段注释。
+
 ## 音频播放快照
 
 音频播放快照记录播放流参数、通路信息、音量、焦点状态、错误记录等，适用于排查播放无声、音量异常、焦点被抢占等问题。
@@ -179,6 +179,8 @@ audioApp {
 | 音效信息 | speed、pitch、effectMode | 音效参数 |
 | 焦点信息 | focusState、focusHistory | 当前焦点状态及焦点变化历史 |
 | 故障编码 | errorInfos | 故障编码记录，系统内最多保留10条最新故障编码信息 |
+
+注：详细字段信息及其说明见下方输出示例。
 
 接口说明请参考[OH_AudioDebuggingManager_PrintRendererInfo](https://gitcode.com/openharmony/interface_native_header/blob/master/zh-cn/application-dev/reference/apis-audio-kit/capi-native-audio-debugging-manager-h.md#oh_audiodebuggingmanager_printrendererinfo)和[printRendererInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printrendererinfo)。
 
@@ -259,6 +261,8 @@ audioRenderer {
 }
 ```
 
+注：实际输出快照结果不包含对应字段注释。
+
 ## 录音快照
 
 录音快照记录录音流参数、通路信息、录音时间戳、溢出计数、错误记录等，适用于排查录音无数据、录音卡顿等问题。
@@ -272,6 +276,8 @@ audioRenderer {
 | 通路信息 | pipeRole、samplingRate、channels、format、encoding、channelLayout | 底层通路状态 |
 | 焦点信息 | focusState、focusHistory | 当前焦点状态及焦点变化历史 |
 | 故障编码 | errorInfos | 故障编码记录，系统内最多保留10条最新故障编码信息 |
+
+注：详细字段信息及其说明见下方输出示例。
 
 接口说明请参考[OH_AudioDebuggingManager_PrintCapturerInfo](https://gitcode.com/openharmony/interface_native_header/blob/master/zh-cn/application-dev/reference/apis-audio-kit/capi-native-audio-debugging-manager-h.md#oh_audiodebuggingmanager_printcapturerinfo)和[printCapturerInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printcapturerinfo)。
 
@@ -338,6 +344,8 @@ audioCapturer {
 }
 ```
 
+注：实际输出快照结果不包含对应字段注释。
+
 ## 音频耳返快照
 
 音频耳返快照记录耳返的工作模式、当前状态、活跃设备、音效参数（混响/均衡器预设、音量）以及上下行流状态等，适用于排查耳返无声、耳返时延高、音效异常等问题。
@@ -351,6 +359,8 @@ audioCapturer {
 | 设备信息 | activeOutputDevice、activeInputDevice | 当前活跃的输出和输入设备 |
 | 音效信息 | reverbPreset、equalizerPreset、volume | 混响预设、均衡器预设和音量 |
 | 流状态信息 | uplinkStreamState、downlinkStreamState | 上行采集流和下行播放流状态 |
+
+注：详细字段信息及其说明见下方输出示例。
 
 > **说明：**
 >
@@ -405,6 +415,8 @@ audioLoopback {
 }
 ```
 
+注：实际输出快照结果不包含对应字段注释。
+
 ## 音频会话快照
 
 音频会话快照记录会话状态、并发策略、场景类型、关联流信息等，适用于排查会话激活异常、并发策略不生效等问题。
@@ -418,6 +430,8 @@ audioLoopback {
 | 状态信息 | state、fakeFocusState | 会话状态 |
 | 进程信息 | pid、uid | 所属进程信息 |
 | 关联流信息 | streamInfos（streamId、focusState、streamType） | 会话关联的音频流列表 |
+
+注：详细字段信息及其说明见下方输出示例。
 
 > **说明：**
 >
@@ -479,6 +493,8 @@ audioSession {
 }
 ```
 
+注：实际输出快照结果不包含对应字段注释。
+
 ## 音频编创快照
 
 音频编创（AudioSuite）快照信息用于获取音频编创引擎、管线和节点的状态信息，帮助开发者排查音频编创处理链路中的问题。音频编创的基本概念（引擎、管线、节点）请参考[音频编创开发概述(C/C++)](audio-suite.md)。
@@ -491,6 +507,8 @@ audioSession {
 | 管线信息 | pipelineId、pipelineState、nodeCount | 管线标识、运行状态和节点数量 |
 | 节点信息 | nodeId、nodeType、connectState、format | 节点标识、类型、连接状态和音频格式 |
 | 音效信息 | effectType、effectParams | 节点所使用的音效类型和参数 |
+
+注：详细字段信息及其说明见下方输出示例。
 
 接口说明请参考[OH_AudioSuite_PrintInfo](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuite_printinfo)。
 
@@ -551,6 +569,8 @@ Pipeline [ID: 1]                         // 管线唯一标识符
 
 ========================================
 ```
+
+注：实际输出快照结果不包含对应字段注释。
 
 ## 注意事项
 
