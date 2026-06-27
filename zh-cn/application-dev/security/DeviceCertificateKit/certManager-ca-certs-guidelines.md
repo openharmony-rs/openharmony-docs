@@ -102,7 +102,7 @@ Device Certificate Kit的CA证书管理功能包含如下能力：
 
 ## 样例代码
 
-<!-- @[certificate_management_user_ca](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerUserCASample.ets) -->
+<!-- @[certificate_management_user_ca](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony-7.0-Beta1/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerUserCASample.ets)  -->
 
 ``` TypeScript
 import { certificateManager, certificateManagerDialog } from '@kit.DeviceCertificateKit';
