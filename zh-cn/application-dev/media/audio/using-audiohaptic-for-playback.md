@@ -83,11 +83,11 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 2. 设置音振播放器参数，各参数作用可以查看[AudioHapticManager](../../reference/apis-audio-kit/js-apis-audioHaptic.md#audiohapticmanager)。
 
    <!-- @[set_hapticparam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->  
-
+   
    ``` TypeScript
-   let latencyMode: audioHaptic.AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_FAST;
+   let latencyMode: audioHaptic.AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_NORMAL;
    audioHapticManagerInstance.setAudioLatencyMode(idForFd, latencyMode);
-
+   
    let usage: audio.StreamUsage = audio.StreamUsage.STREAM_USAGE_NOTIFICATION;
    audioHapticManagerInstance.setStreamUsage(idForFd, usage);
    ```
