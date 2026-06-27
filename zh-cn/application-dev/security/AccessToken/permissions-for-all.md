@@ -735,6 +735,8 @@
 
 允许应用查询可用的CLI工具。
 
+获取该权限后，可帮助三方智能体应用接入Claw功能。
+
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
@@ -746,6 +748,8 @@
 ## ohos.permission.EXEC_PUBLIC_CLI_TOOL
 
 允许应用执行可用的CLI工具。
+
+获取该权限后，可帮助三方智能体应用接入Claw功能。
 
 **权限级别**：normal
 
