@@ -130,10 +130,10 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
    
    ``` TypeScript
    audioHapticPlayer.stop().then(() => {
-     console.info(`Promise returned to indicate that stop playing successfully.`);
+     console.info('Succeeded in stopping audio haptic player.');
      // ...
    }).catch((err: BusinessError) => {
-     console.error(`Failed to stop playing. ${err}`);
+     console.error(`Failed to stop audio haptic player. Code: ${err.code}, message: ${err.message}`);
      // ...
    });
    ```
