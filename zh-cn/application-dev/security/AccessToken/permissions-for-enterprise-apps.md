@@ -749,7 +749,7 @@ UDID（Unified Device ID）是设备的唯一标识。
 **起始版本**：26.0.0
 
  ## ohos.permission.ENTERPRISE_MANAGE_BACKUP
- 	 
+ 
 允许应用使用备份还原能力。
 
 <!--RP2--><!--RP2End-->
