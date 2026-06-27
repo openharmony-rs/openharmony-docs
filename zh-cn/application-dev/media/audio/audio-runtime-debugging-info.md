@@ -17,7 +17,7 @@
 
 | 模块 | 接口类型 | 说明 | 典型使用场景 |
 | :--- | :--- | :--- | :--- |
-| 应用快照 | C/C++、ArkTS | 包含当前进程中所有音频播放、录音、耳返、会话的快照信息 | 整体问题排查、系统性异常 |
+| 应用快照 | C/C++、ArkTS | 包含当前应用进程中所有播放、录音、耳返、会话的快照信息（不包含编创快照） | 整体问题排查、系统性异常 |
 | 音频播放（Renderer）快照 | C/C++、ArkTS | 记录播放流参数、通路信息、音量、焦点状态、错误记录等 | 播放无声、音量异常、焦点被抢占 |
 | 音频录音（Capturer）快照 | C/C++、ArkTS | 记录录音流参数、通路信息、录音时间戳、溢出计数、错误记录等 | 录音无数据、录音卡顿、缓冲区溢出 |
 | 音频耳返（Loopback）快照 | ArkTS | 记录耳返状态、设备信息、音效参数、上下行流状态等 | 耳返无声、耳返时延高、音效异常 |
@@ -95,7 +95,16 @@ const debugManager: audio.AudioDebuggingManager = audioManager.getAudioDebugging
 
 ## 应用快照
 
-应用快照包含当前进程中所有音频播放、录音、耳返和会话的快照信息，是不同场景快照的汇总。适用于需要一次性获取整体音频运行状态的场景。
+应用快照包含当前应用进程中所有播放快照、录音快照、耳返快照和会话快照信息，是不同场景快照的汇总。应用快照不包含编创快照。适用于需要一次性获取整体音频运行状态的场景。
+
+应用快照包含如下信息：
+
+| 信息分类 | 包含字段 | 说明 |
+| :--- | :--- | :--- |
+| 播放快照列表 | renderers | 当前应用进程中所有播放快照信息，详见[音频播放快照](#音频播放快照) |
+| 录音快照列表 | capturers | 当前应用进程中所有录音快照信息，详见[录音快照](#录音快照) |
+| 耳返快照列表 | loopbacks | 当前应用进程中所有耳返快照信息，详见[音频耳返快照](#音频耳返快照) |
+| 会话快照列表 | sessions | 当前应用进程中所有会话快照信息，详见[音频会话快照](#音频会话快照) |
 
 接口说明请参考[OH_AudioDebuggingManager_PrintAppInfo](https://gitcode.com/openharmony/interface_native_header/blob/master/zh-cn/application-dev/reference/apis-audio-kit/capi-native-audio-debugging-manager-h.md#oh_audiodebuggingmanager_printappinfo)和[printAppInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printappinfo)。
 
@@ -132,33 +141,25 @@ debugManager.printAppInfo(-1);
 
 **输出示例：**
 
+> **说明：**
+>
+> 以下输出示例中的字段注释（`//`后的内容）仅为说明字段含义，实际输出结果不包含对应字段注释。
+
 ```text
 audioApp {
-  renderers: [                          // 播放流列表
-    {
-      streamId: 1,                      // 流ID
-      streamType: STREAM_MUSIC,         // 流类型
-      focusState: ACTIVE                // 焦点状态
-      ...
-    }
+  renderers: [                          // 播放快照信息列表
+    { ... },                            // 播放快照信息，详见"音频播放快照"
+    { ... }
   ],
-  capturers: [                          // 录音流列表
-    {
-      streamId: 2,                      // 流ID
-      sourceType: SOURCE_TYPE_MIC,      // 录音源类型
-      focusState: ACTIVE                // 焦点状态
-      ...
-    }
+  capturers: [                          // 录音快照信息列表
+    { ... },                            // 录音快照信息，详见"录音快照"
+    { ... }
   ],
-  loopbacks: [                          // 耳返列表
-    ...
+  loopbacks: [                          // 耳返快照信息列表
+    { ... }                             // 耳返快照信息，详见"音频耳返快照"
   ],
-  sessions: [                           // 会话列表
-    {
-      state: SESSION_ACTIVE,            // 会话状态
-      concurrencyMode: DEFAULT          // 并发模式
-      ...
-    }
+  sessions: [                           // 会话快照信息列表
+    { ... }                             // 会话快照信息，详见"音频会话快照"
   ]
 }
 ```
@@ -177,7 +178,7 @@ audioApp {
 | 音量信息 | volumeType、streamVolume、systemVolume、volume | 各级音量信息 |
 | 音效信息 | speed、pitch、effectMode | 音效参数 |
 | 焦点信息 | focusState、focusHistory | 当前焦点状态及焦点变化历史 |
-| 错误信息 | errorInfos | 音频故障记录列表 |
+| 故障编码 | errorInfos | 故障编码记录，系统内最多保留10条最新故障编码信息 |
 
 接口说明请参考[OH_AudioDebuggingManager_PrintRendererInfo](https://gitcode.com/openharmony/interface_native_header/blob/master/zh-cn/application-dev/reference/apis-audio-kit/capi-native-audio-debugging-manager-h.md#oh_audiodebuggingmanager_printrendererinfo)和[printRendererInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printrendererinfo)。
 
@@ -212,13 +213,13 @@ fileio.closeSync(file);
 ```text
 audioRenderer {
   streamInfo: {                         // 流信息
-    streamId: 1,                        // 流ID
+    streamId: 100001,                   // 流ID
     samplingRate: 48000,               // 采样率
     channels: 2,                        // 声道数
     format: SAMPLE_S16LE,              // 采样格式
     encoding: ENCODING_PCM,            // 编码格式
-    streamUsage: STREAM_USAGE_MUSIC,   // 流用途
-    rendererFlags: AUDIO_FLAG_NORMAL   // 播放标志
+    streamUsage: STREAM_USAGE_MUSIC,   // 播放流用途
+    rendererFlags: AUDIO_FLAG_NORMAL   // 播放流标记
   },
   pipeInfo: {                           // 通路信息
     pipeId: 5,                          // 通路ID
@@ -247,14 +248,14 @@ audioRenderer {
     effectMode: EFFECT_DEFAULT          // 音效模式
   },
   focusInfo: {                          // 焦点信息
-    focusState: ACTIVE,                // 焦点状态
-    focusHistory: [                    // 焦点历史
-      { streamId: 1, pid: xx, uid: xx, streamType: STREAM_MUSIC,
+    focusState: ACTIVE,                // 当前焦点状态
+    focusHistory: [                    // 历史焦点行为
+      { streamId: 100001, pid: xx, uid: xx, streamType: STREAM_MUSIC,
         sourceType: SOURCE_TYPE_INVALID, hintType: INTERRUPT_HINT_NONE,
         timestamp: xx },
     ]
   },
-  errorInfos: []                        // 错误信息列表
+  errorInfos: []                        // 故障编码信息列表
 }
 ```
 
@@ -270,7 +271,7 @@ audioRenderer {
 | 录音信息 | timestamp、bufferSize、overflowCount、muteWhenInterrupted、inputDeviceType | 录音运行状态 |
 | 通路信息 | pipeRole、samplingRate、channels、format、encoding、channelLayout | 底层通路状态 |
 | 焦点信息 | focusState、focusHistory | 当前焦点状态及焦点变化历史 |
-| 错误信息 | errorInfos | 音频故障记录列表 |
+| 故障编码 | errorInfos | 故障编码记录，系统内最多保留10条最新故障编码信息 |
 
 接口说明请参考[OH_AudioDebuggingManager_PrintCapturerInfo](https://gitcode.com/openharmony/interface_native_header/blob/master/zh-cn/application-dev/reference/apis-audio-kit/capi-native-audio-debugging-manager-h.md#oh_audiodebuggingmanager_printcapturerinfo)和[printCapturerInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printcapturerinfo)。
 
@@ -305,20 +306,20 @@ fileio.closeSync(file);
 ```text
 audioCapturer {
   streamInfo: {                         // 流信息
-    streamId: 2,                        // 流ID
+    streamId: 100002,                   // 流ID
     samplingRate: 16000,               // 采样率
     channels: 1,                        // 声道数
     format: SAMPLE_S16LE,              // 采样格式
     encoding: ENCODING_PCM,            // 编码格式
     channelLayout: CH_LAYOUT_MONO,     // 声道布局
-    sourceType: SOURCE_TYPE_MIC,       // 录音源类型
+    sourceType: SOURCE_TYPE_MIC,       // 录音流类型
     capturerFlag: AUDIO_FLAG_NORMAL    // 录音标志
   },
   captureInfo: {                        // 录音信息
     timestamp(frame: xx, sec: xx, nsec: xx), // 时间戳
     bufferSize: 6400,                  // 缓冲区大小
     overflowCount: 0,                  // 溢出次数
-    muteWhenInterrupted: false,        // 中断时是否静音
+    muteWhenInterrupted: false,        // 焦点打断静音状态
     inputDeviceType: 15                // 输入设备类型
   },
   pipeInfo: {                           // 通路信息
@@ -330,10 +331,10 @@ audioCapturer {
     channelLayout: CH_LAYOUT_MONO      // 通路声道布局
   },
   focusInfo: {                          // 焦点信息
-    focusState: ACTIVE,                // 焦点状态
-    focusHistory: []                   // 焦点历史
+    focusState: ACTIVE,                // 当前焦点状态
+    focusHistory: []                   // 历史焦点行为
   },
-  errorInfos: []                        // 错误信息列表
+  errorInfos: []                        // 故障编码信息列表
 }
 ```
 
@@ -471,7 +472,7 @@ audioSession {
   uid: xx,                              // 用户ID
   streams: [                            // 关联流列表
     {
-      streamId: 1,                      // 流ID
+      streamId: 100001,                 // 流ID
       streamType: STREAM_MUSIC         // 流类型
     },
   ]
@@ -520,51 +521,36 @@ Timestamp: xxxx-xx-xx xx:xx:xx.xxx      // 时间戳
 
 Total Pipelines: 1                       // 管线总数
 
-Pipeline [ID: 1]                         // 管线ID
-  Work Mode: EDIT_MODE                  // 工作模式
-  State: RUNNING                         // 运行状态
+Pipeline [ID: 1]                         // 管线唯一标识符
+  Work Mode: EDIT_MODE                  // 工作模式：Manual(离线编辑)或Real-time(实时渲染)
+  State: RUNNING                         // 当前状态：Stopped或Running
   Nodes: 3                               // 节点数
   Connections: 2                         // 连接数
 
-  Node [ID: 103, Type: NODE_TYPE_EQUALIZER] // 节点ID和类型
+  Node [ID: 103, Type: NODE_TYPE_EQUALIZER] // 节点唯一标识符和类型
     Volume: 1                            // 音量
     Bypass: false                        // 旁路
     Gains: band0:1, band1:1, ...        // 增益参数
 
-  Node [ID: 102, Type: NODE_TYPE_OUTPUT]    // 输出节点
+  Node [ID: 102, Type: NODE_TYPE_OUTPUT]    // 节点唯一标识符和类型
     Format: sampleRate=24000, channels=2, format=PCM24 // 音频格式
     Volume: 1                            // 音量
 
-  Node [ID: 101, Type: NODE_TYPE_INPUT]     // 输入节点
+  Node [ID: 101, Type: NODE_TYPE_INPUT]     // 节点唯一标识符和类型
     Format: sampleRate=44100, channels=2, format=FLOAT32 // 音频格式
     Volume: 1                            // 音量
     Finished: true                       // 是否完成
 
-  Connections:                           // 正向连接
+  Connections:                           // 正向连接关系：上游节点 -> 下游节点
     103 -> 102
     101 -> 103
 
-  Reverse Connections:                   // 反向连接
+  Reverse Connections:                   // 反向连接关系：下游节点 <- 上游节点
     102 -> 103
     103 -> 101
 
 ========================================
 ```
-
-**输出字段说明：**
-
-| 字段 | 说明 |
-|------|------|
-| Pipeline ID | 管线唯一标识符 |
-| Work Mode | 工作模式：Manual(离线编辑) 或 Real-time(实时渲染) |
-| State | 当前状态：Stopped 或 Running |
-| Node ID | 节点唯一标识符 |
-| Type | 节点类型：Input、EQ、Environment、SoundField等 |
-| InPorts | 输入端口数量 |
-| OutPorts | 输出端口数量 |
-| Options | 节点属性配置，不同节点类型有不同的属性 |
-| Connections | 正向连接关系：上游节点 -> 下游节点 |
-| Reverse Connections | 反向连接关系：下游节点 <- 上游节点 |
 
 ## 注意事项
 
