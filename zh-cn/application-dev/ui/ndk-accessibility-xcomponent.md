@@ -298,6 +298,114 @@
 
    ArkTS-Sta示例：
    <!-- @[abilitycap_two_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   
+   ``` C++
+   int32_t FindAccessibilityNodeInfosById(const char *instanceId, int64_t elementId,
+       ArkUI_AccessibilitySearchMode mode, int32_t requestId, ArkUI_AccessibilityElementInfoList *elementList)
+   {
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
+                    "FindAccessibilityNodeInfosById start, instanceId %{public}s elementId: %{public}ld",
+                    instanceId, elementId);
+       if (elementList == nullptr) {
+           return ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER;
+       }
+       const int64_t parentOfRoot = -2100000;
+       if (elementId == -1) {
+           elementId = 0;
+       }
+   
+       if (mode == ARKUI_ACCESSIBILITY_NATIVE_SEARCH_MODE_PREFETCH_RECURSIVE_CHILDREN) {
+           auto rootNode = OH_ArkUI_AddAndGetAccessibilityElementInfo(elementList);
+           if (!rootNode) {
+               return ARKUI_ACCESSIBILITY_NATIVE_RESULT_FAILED;
+           }
+           OH_ArkUI_AccessibilityElementInfoSetElementId(rootNode, 0);
+           OH_ArkUI_AccessibilityElementInfoSetParentId(rootNode, parentOfRoot);
+           FakeWidget::Instance().fillAccessibilityElement(rootNode);
+   
+           ArkUI_AccessibleRect rect;
+           rect.leftTopX = ACC_NUMBER_ZERO;
+           rect.leftTopY = ACC_NUMBER_ZERO;
+           rect.rightBottomX = ACC_NUMBER_THIRD;
+           rect.rightBottomY = ACC_NUMBER_THIRD;
+           OH_ArkUI_AccessibilityElementInfoSetScreenRect(rootNode, &rect);
+           OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(rootNode, "no");
+   
+           auto objects = FakeWidget::Instance().GetAllObjects(instanceId);
+           int64_t childNodes[1024];
+           for (int i = 0; i < objects.size(); i++) {
+               int64_t childElementId = i + 1;
+               childNodes[i] = childElementId;
+               auto child = OH_ArkUI_AddAndGetAccessibilityElementInfo(elementList);
+               OH_ArkUI_AccessibilityElementInfoSetElementId(child, childElementId);
+               OH_ArkUI_AccessibilityElementInfoSetParentId(child, 0);
+               OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(child, "yes");
+               objects[i]->fillAccessibilityElement(child);
+   
+               ArkUI_AccessibleRect childRect;
+               childRect.leftTopX = i * ACC_NUMBER_FIRST;
+               childRect.leftTopY = ACC_NUMBER_FIRST;
+               childRect.rightBottomX = i * ACC_NUMBER_FIRST + ACC_NUMBER_FIRST;
+               childRect.rightBottomY = ACC_NUMBER_SECOND;
+               OH_ArkUI_AccessibilityElementInfoSetScreenRect(child, &childRect);
+           }
+           OH_ArkUI_AccessibilityElementInfoSetChildNodeIds(rootNode, objects.size(), childNodes);
+       } else if (mode == ARKUI_ACCESSIBILITY_NATIVE_SEARCH_MODE_PREFETCH_CURRENT) {
+           auto &widget = FakeWidget::Instance();
+           AccessibleObject *obj = nullptr;
+           if (elementId == 0) {
+               obj = &widget;
+           } else {
+               obj = widget.GetChild(elementId);
+           }
+           if (!obj) {
+               return ARKUI_ACCESSIBILITY_NATIVE_RESULT_FAILED;
+           }
+           auto node = OH_ArkUI_AddAndGetAccessibilityElementInfo(elementList);
+           OH_ArkUI_AccessibilityElementInfoSetElementId(node, elementId);
+           OH_ArkUI_AccessibilityElementInfoSetParentId(node, elementId == 0 ? parentOfRoot : 0);
+           OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(node, elementId == 0 ? "no" : "yes");
+           obj->fillAccessibilityElement(node);
+   
+           ArkUI_AccessibleRect nodeRect;
+           if (elementId == 0) {
+               nodeRect.leftTopX = ACC_NUMBER_ZERO;
+               nodeRect.leftTopY = ACC_NUMBER_ZERO;
+               nodeRect.rightBottomX = ACC_NUMBER_THIRD;
+               nodeRect.rightBottomY = ACC_NUMBER_THIRD;
+           } else {
+               int i = elementId - 1;
+               nodeRect.leftTopX = i * ACC_NUMBER_FIRST;
+               nodeRect.leftTopY = ACC_NUMBER_FIRST;
+               nodeRect.rightBottomX = i * ACC_NUMBER_FIRST + ACC_NUMBER_FIRST;
+               nodeRect.rightBottomY = ACC_NUMBER_SECOND;
+           }
+           OH_ArkUI_AccessibilityElementInfoSetScreenRect(node, &nodeRect);
+   
+           if (elementId == 0) {
+               auto objects = FakeWidget::Instance().GetAllObjects(instanceId);
+               int64_t childNodes[1024];
+               for (int i = 0; i < objects.size(); i++) {
+                   int64_t childElementId = i + 1;
+                   childNodes[i] = childElementId;
+                   auto child = OH_ArkUI_AddAndGetAccessibilityElementInfo(elementList);
+                   OH_ArkUI_AccessibilityElementInfoSetElementId(child, childElementId);
+                   OH_ArkUI_AccessibilityElementInfoSetParentId(child, 0);
+                   objects[i]->fillAccessibilityElement(child);
+   
+                   ArkUI_AccessibleRect childRect;
+                   childRect.leftTopX = i * ACC_NUMBER_FIRST;
+                   childRect.leftTopY = ACC_NUMBER_ZERO;
+                   childRect.rightBottomX = i * ACC_NUMBER_FIRST + ACC_NUMBER_FIRST;
+                   childRect.rightBottomY = ACC_NUMBER_SECOND;
+                   OH_ArkUI_AccessibilityElementInfoSetScreenRect(child, &childRect);
+               }
+               OH_ArkUI_AccessibilityElementInfoSetChildNodeIds(node, objects.size(), childNodes);
+           }
+       }
+       return ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL;
+   }
+   ```
 
 - 基于指定的节点，查询下一个可聚焦的无障碍节点
 
