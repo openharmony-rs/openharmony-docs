@@ -149,7 +149,7 @@
    };
    ```
 
-4. 初始化段落对象，并添加占位符和文本。
+4. 初始化段落对象，并添加文本。
 
    <!-- @[arkts_multi_line_text_drawing_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multiline/MultilineText.ets) -->
    
@@ -1608,8 +1608,8 @@ let myParagraphStyle: text.ParagraphStyle = {
 具体示意效果如下所示：
 | 样式设置（上下标） | 示意效果 | 
 | -------- | -------- |
-| 上标文本 | ![subscript](figures/subscript.jpg) | 
-| 下标文本 | ![superscript](figures/superscript.jpg) | 
+| 上标文本 | ![superscript](figures/superscript.jpg) | 
+| 下标文本 | ![subscript](figures/subscript.jpg) | 
 
 ### 示例五（高对比度）
 这里以高对比度为例，呈现高对比度文字的绘制与显示。
