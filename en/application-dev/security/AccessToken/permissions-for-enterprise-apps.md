@@ -749,7 +749,7 @@ Allows an enterprise common application to obtain the list of all installed appl
 **Valid since**: 26.0.0
 
  ## ohos.permission.ENTERPRISE_MANAGE_BACKUP
- 	 
+
 Allows an application to use backup and restore capabilities.
 
 <!--RP2--><!--RP2End-->
