@@ -65,6 +65,7 @@ create(colorSpaceName: colorSpaceManager.ColorSpace): ColorSpaceManager
 ```ts
 import { colorSpaceManager, sendableColorSpaceManager } from '@kit.ArkGraphics2D';
 let colorSpace: sendableColorSpaceManager.ColorSpaceManager;
+// 创建标准SRGB色域的色彩管理实例
 colorSpace = sendableColorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB);
 ```
 
