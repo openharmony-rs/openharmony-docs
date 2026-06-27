@@ -428,10 +428,10 @@
 
 - 以使用Promise方式根据椭圆曲线名生成SM2密钥为例：
   <!-- @[specify_parameter_generate_sm2_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SpecifiedParametersGenerateAsymmetricKeyPair/entry/src/main/ets/pages/sm2/Promise.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-
+  
   function genSM2KeyPairSpec() {
     let sm2CommonParamsSpec = cryptoFramework.ECCKeyUtil.genECCCommonParamsSpec('NID_sm2');
     let sm2KeyPairSpec: cryptoFramework.ECCKeyPairSpec = {
@@ -446,7 +446,7 @@
     };
     return sm2KeyPairSpec;
   }
-
+  
   async function sm2Test() {
     let sm2KeyPairSpec = genSM2KeyPairSpec();
     let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(sm2KeyPairSpec);
