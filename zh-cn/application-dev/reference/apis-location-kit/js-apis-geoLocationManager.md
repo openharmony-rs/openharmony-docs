@@ -3437,6 +3437,7 @@ getCurrentDistrict(params?: DistrictRequestParams): Promise&lt;DistrictInfo&gt;
 
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   // 参数配置一：指定语言/国家/超时时间
   try {
     let params: geoLocationManager.DistrictRequestParams = {
