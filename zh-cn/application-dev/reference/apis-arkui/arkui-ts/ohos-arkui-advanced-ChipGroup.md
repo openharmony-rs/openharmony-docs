@@ -1,9 +1,9 @@
 # ChipGroup
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Cuecuexiaoyu-->
-<!--Designer: @youzhi92-->
-<!--Tester: @TerryTsao-->
+<!--Owner: @song-song-song-->
+<!--Designer: @fenglinbailu-->
+<!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ChipGroup组件提供操作块群组，用于文件或资源内容的分类等场景。
