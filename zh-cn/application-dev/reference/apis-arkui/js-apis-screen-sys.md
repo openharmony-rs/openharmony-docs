@@ -181,8 +181,8 @@ on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback&lt;number&
 
 | 参数名    | 类型                   | 必填 | 说明                                                        |
 | --------- | ---------------------- | ---- | ----------------------------------------------------------- |
-| eventType | string                 | 是   | 监听事件类型。<br/>-"connect"：屏幕连接事件。<br/>-"disconnect"：断开屏幕连接事件。<br/>-"change"：屏幕状态改变事件。 |
-| callback  | Callback&lt;number&gt; | 是   | 回调函数。返回屏幕的ID，该参数为整数。                                    |
+| eventType | string                 | 是   | 监听事件类型。<br>-"connect"：屏幕连接事件。<br>-"disconnect"：断开屏幕连接事件。<br>-"change"：屏幕状态改变事件。 |
+| callback  | Callback&lt;number&gt; | 是   | 回调函数。返回屏幕的ID，该参数为整数。 |
 
 **错误码：**
 
@@ -340,7 +340,7 @@ off(eventType: 'connect' | 'disconnect' | 'change', callback?: Callback&lt;numbe
 
 | 参数名    | 类型                   | 必填 | 说明                                                         |
 | --------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| eventType | string                 | 是   | 监听事件类型。<br/>-"connect"：屏幕连接事件。<br/>-"disconnect"：断开屏幕连接事件。<br/>-"change"：屏幕状态改变事件。 |
+| eventType | string                 | 是   | 监听事件类型。<br>-"connect"：屏幕连接事件。<br>-"disconnect"：断开屏幕连接事件。<br>-"change"：屏幕状态改变事件。 |
 | callback  | Callback&lt;number&gt; | 否   | 回调函数。返回屏幕的ID，该参数为整数。若无此参数，则取消该eventType监听的所有回调函数。                                     |
 
 **错误码：**
@@ -2104,8 +2104,7 @@ let mainScreenOption: ExpandOption = { screenId: 0, startX: 0, startY: 0 };
 let otherScreenOption: ExpandOption = { screenId: 1, startX: 1080, startY: 0 };
 let expandOptionArray : ExpandOption[] = [ mainScreenOption, otherScreenOption ];
 // 将屏幕设置为扩展模式
-screen.makeExpand(expandOptionArray).then((
-  data: number) => {
+screen.makeExpand(expandOptionArray).then((data: number) => {
   console.info(`Succeeded in expanding the screen. Data: ${data}`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to expand the screen. Code: ${err.code}, message: ${err.message}`);
@@ -2291,7 +2290,7 @@ screen.stopExpand(expandScreenIds).then(() => {
 | density   | ArkTS-Dyn: number <br> ArkTS-Sta: double   | 否   | 否   | 指定虚拟屏幕的密度，该参数为浮点数。 |
 | surfaceId | string   | 否   | 否   | 指定虚拟屏幕的surfaceId。        |
 | supportsFocus<sup>22+</sup> | boolean | 否 | 是  | 指定虚拟屏幕是否可获得焦点。true表示可获焦，false表示不可获焦，默认值为true。 |
-| userId<sup>24+</sup> | number | 否 | 是  | 指定虚拟屏幕的用户ID，该参数为整数。默认值为-1。<br/>**设备行为差异：** 该参数仅在Car设备中生效，其他设备不生效也不报错。 |
+| userId<sup>24+</sup> | number | 否 | 是  | 指定虚拟屏幕的用户ID，该参数为整数。默认值为-1。<br>**设备行为差异：** 该参数仅在Car设备中生效，其他设备不生效也不报错。 |
 
 ## Screen
 
@@ -2308,15 +2307,15 @@ screen.stopExpand(expandScreenIds).then(() => {
 
 | 名称              | 类型                                       | 只读 | 可选 | 说明                                                          |
 | ----------------- | ---------------------------------------------- | ---- | ---- |-------------------------------------------------------------|
-| id                | ArkTS-Dyn: number <br> ArkTS-Sta: long                                         | 是   | 否   | 屏幕的ID，该参数为整数。<br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 23      |
-| rsId<sup>21+</sup> |ArkTS-Dyn: number <br> ArkTS-Sta: long | 是 | 否 | 屏幕端口的id，该参数为整数。<br/> **ArkTS-Dyn起始版本：** 21   <br/>  **ArkTS-Sta起始版本：** 23|
-| parent            | ArkTS-Dyn: number <br> ArkTS-Sta: long                                         | 是   | 否   | 屏幕所属群组的ID，该参数为整数。 <br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 23     |
-| supportedModeInfo | Array&lt;[ScreenModeInfo](#screenmodeinfo)&gt; | 是   | 否   | 屏幕支持的模式集合。<br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 23 |
-| activeModeIndex   | ArkTS-Dyn: number <br> ArkTS-Sta: long                                         | 是   | 否   | 当前屏幕所处模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化。该参数为整数。<br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 23 |
-| orientation       | [Orientation](#orientation)                     | 是   | 否   | 屏幕方向。<br/> **ArkTS-Dyn起始版本：** 9   <br/>  **ArkTS-Sta起始版本：** 23 |
-| sourceMode<sup>10+</sup> | [ScreenSourceMode](#screensourcemode10)            | 是   | 否   | 屏幕来源模式。<br/> **ArkTS-Dyn起始版本：** 10   <br/>  **ArkTS-Sta起始版本：** 23     |
-| serialNumber<sup>15+</sup> | string        | 是   | 是   | 扩展屏幕的序列号，默认返回为空字符串。**ArkTS-Dyn起始版本：** 15   <br/>  **ArkTS-Sta起始版本：** 23 |
-| densityDpi | number        | 是   | 是   | 屏幕的物理像素密度，即每英寸的像素数。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0   <br/>  **ArkTS-Sta起始版本：** 26.0.0 |
+| id                | ArkTS-Dyn: number <br> ArkTS-Sta: long                                         | 是   | 否   | 屏幕的ID，该参数为整数。<br> **ArkTS-Dyn起始版本：** 9   <br>  **ArkTS-Sta起始版本：** 23      |
+| rsId<sup>21+</sup> |ArkTS-Dyn: number <br> ArkTS-Sta: long | 是 | 否 | 屏幕端口的id，该参数为整数。<br> **ArkTS-Dyn起始版本：** 21   <br>  **ArkTS-Sta起始版本：** 23|
+| parent            | ArkTS-Dyn: number <br> ArkTS-Sta: long                                         | 是   | 否   | 屏幕所属群组的ID，该参数为整数。 <br> **ArkTS-Dyn起始版本：** 9   <br>  **ArkTS-Sta起始版本：** 23     |
+| supportedModeInfo | Array&lt;[ScreenModeInfo](#screenmodeinfo)&gt; | 是   | 否   | 屏幕支持的模式集合。<br> **ArkTS-Dyn起始版本：** 9   <br>  **ArkTS-Sta起始版本：** 23 |
+| activeModeIndex   | ArkTS-Dyn: number <br> ArkTS-Sta: long                                         | 是   | 否   | 当前屏幕所处模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化。该参数为整数。<br> **ArkTS-Dyn起始版本：** 9   <br>  **ArkTS-Sta起始版本：** 23 |
+| orientation       | [Orientation](#orientation)                     | 是   | 否   | 屏幕方向。<br> **ArkTS-Dyn起始版本：** 9   <br>  **ArkTS-Sta起始版本：** 23 |
+| sourceMode<sup>10+</sup> | [ScreenSourceMode](#screensourcemode10)            | 是   | 否   | 屏幕来源模式。<br> **ArkTS-Dyn起始版本：** 10   <br>  **ArkTS-Sta起始版本：** 23     |
+| serialNumber<sup>15+</sup> | string        | 是   | 是   | 扩展屏幕的序列号，默认返回为空字符串。**ArkTS-Dyn起始版本：** 15   <br>  **ArkTS-Sta起始版本：** 23 |
+| densityDpi | number        | 是   | 是   | 屏幕的物理像素密度，即每英寸的像素数。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0   <br>  **ArkTS-Sta起始版本：** 26.0.0 |
 ### setOrientation
 
 setOrientation(orientation: Orientation, callback: AsyncCallback&lt;void&gt;): void
