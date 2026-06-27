@@ -367,7 +367,7 @@ struct Index {
 ```
 
 ArkTS-Sta示例：
-<!-- @[frameNodeTree_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeTree.ets) --> 
+<!-- @[frameNodeTree_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeTree.ets) -->  
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -397,7 +397,9 @@ import {
   TextAlign,
   UIContext,
   WrappedBuilder,
-  wrapBuilder
+  wrapBuilder,
+  List,
+  ListItem,
 } from '@kit.ArkUI';
 
 const TEST_TAG: string = 'FrameNode'
@@ -555,100 +557,114 @@ struct Index {
   build(): void {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
       Column() {
-        Row() {
-          Column({ space: 5 } as ColumnOptions) {
-            Text('验证FrameNode子节点的增、删、改功能')
-            Button('对自定义FrameNode进行操作')
-              .fontSize(16)
-              .width(400)
-              .onClick((event: ClickEvent) => {
-                // 对FrameNode节点进行增、删、改操作，正常实现。
-                this.myNodeController.operationFrameNodeWithFrameNode(this.myNodeController?.frameNode);
-              })
-            Button('对BuilderNode中的代理节点进行操作')
-              .fontSize(16)
-              .width(400)
-              .onClick((event: ClickEvent) => {
-                // 对BuilderNode代理节点进行增、删、改操作，捕获异常信息。
-                this.myNodeController.operationFrameNodeWithFrameNode(this.myNodeController?.buttonNode?.getFrameNode());
-              })
-            Button('对系统组件中的代理节点进行操作')
-              .fontSize(16)
-              .width(400)
-              .onClick((event: ClickEvent) => {
-                // 对代理节点进行增、删、改操作，捕获异常信息。
-                this.myNodeController.operationFrameNodeWithFrameNode(this.myNodeController?.rootNode?.getParent());
-              })
+        List() {
+          ListItem() {
+            Row() {
+              Column({ space: 5 } as ColumnOptions) {
+                Text('验证FrameNode子节点的增、删、改功能')
+                Button('对自定义FrameNode进行操作')
+                  .fontSize(16)
+                  .width(400)
+                  .onClick((event: ClickEvent) => {
+                    // 对FrameNode节点进行增、删、改操作，正常实现。
+                    this.myNodeController.operationFrameNodeWithFrameNode(this.myNodeController?.frameNode);
+                  })
+                Button('对BuilderNode中的代理节点进行操作')
+                  .fontSize(16)
+                  .width(400)
+                  .onClick((event: ClickEvent) => {
+                    // 对BuilderNode代理节点进行增、删、改操作，捕获异常信息。
+                    this.myNodeController.operationFrameNodeWithFrameNode(
+                      this.myNodeController?.buttonNode?.getFrameNode());
+                  })
+                Button('对系统组件中的代理节点进行操作')
+                  .fontSize(16)
+                  .width(400)
+                  .onClick((event: ClickEvent) => {
+                    // 对代理节点进行增、删、改操作，捕获异常信息。
+                    this.myNodeController.operationFrameNodeWithFrameNode(this.myNodeController?.rootNode?.getParent());
+                  })
+              }
+            }
+
+          }
+
+          ListItem() {
+            Row() {
+              Column({ space: 5 } as ColumnOptions) {
+                Text('验证FrameNode添加子节点的特殊场景')
+                Button('新增BuilderNode的代理节点')
+                  .fontSize(16)
+                  .width(400)
+                  .onClick((event: ClickEvent) => {
+                    let buttonNode = new BuilderNode<Params>(this.getUIContext());
+                    let wrapBuilder1: WrappedBuilder<paramsbuilder> = wrapBuilder(buttonBuilder);
+                    buttonNode.build(wrapBuilder1, new Params('BUTTON'))
+                    this.myNodeController.checkAppendChild(this.myNodeController?.frameNode,
+                      buttonNode?.getFrameNode());
+                  })
+                Button('新增系统组件代理节点')
+                  .fontSize(16)
+                  .width(400)
+                  .onClick((event: ClickEvent) => {
+                    this.myNodeController.checkAppendChild(this.myNodeController?.frameNode,
+                      this.myNodeController?.rootNode?.getParent());
+                  })
+                Button('新增已有父节点的自定义节点')
+                  .fontSize(16)
+                  .width(400)
+                  .onClick((event: ClickEvent) => {
+                    this.myNodeController.checkAppendChild(this.myNodeController?.frameNode,
+                      this.myNodeController?.rootNode);
+                  })
+              }
+            }
+          }
+
+          ListItem() {
+            Row() {
+              Column({ space: 5 } as ColumnOptions) {
+                Text('验证FrameNode节点的查询功能')
+                Button('对自定义FrameNode进行操作')
+                  .fontSize(16)
+                  .width(400)
+                  .onClick((event: ClickEvent) => {
+                    // 对FrameNode节点进行查询。当前节点为NodeContainer的子节点。
+                    this.result = this.myNodeController.testInterfaceAboutSearch(this.myNodeController?.rootNode);
+                    setTimeout((event: ClickEvent) => {
+                      // 对FrameNode节点进行查询。rootNode下的第一个子节点。
+                      this.result = this.myNodeController.testInterfaceAboutSearch(this.myNodeController?.frameNode);
+                    }, 2000)
+                  })
+                Button('对BuilderNode中的代理节点进行操作')
+                  .fontSize(16)
+                  .width(400)
+                  .onClick((event: ClickEvent) => {
+                    // 对BuilderNode代理节点进行查询。当前节点为BuilderNode中的Column节点。
+                    this.result =
+                      this.myNodeController.testInterfaceAboutSearch(this.myNodeController?.buttonNode?.getFrameNode());
+                  })
+                Button('对系统组件中的代理节点进行操作')
+                  .fontSize(16)
+                  .width(400)
+                  .onClick((event: ClickEvent) => {
+                    // 对代理节点进行查询。当前节点为NodeContainer。
+                    this.result =
+                      this.myNodeController.testInterfaceAboutSearch(this.myNodeController?.rootNode?.getParent());
+                  })
+              }
+            }
+
           }
         }
 
-        Row() {
-          Column({ space: 5 } as ColumnOptions) {
-            Text('验证FrameNode添加子节点的特殊场景')
-            Button('新增BuilderNode的代理节点')
-              .fontSize(16)
-              .width(400)
-              .onClick((event: ClickEvent) => {
-                let buttonNode = new BuilderNode<Params>(this.getUIContext());
-                let wrapBuilder1: WrappedBuilder<paramsbuilder> = wrapBuilder(buttonBuilder);
-                buttonNode.build(wrapBuilder1, new Params('BUTTON'))
-                this.myNodeController.checkAppendChild(this.myNodeController?.frameNode, buttonNode?.getFrameNode());
-              })
-            Button('新增系统组件代理节点')
-              .fontSize(16)
-              .width(400)
-              .onClick((event: ClickEvent) => {
-                this.myNodeController.checkAppendChild(this.myNodeController?.frameNode,
-                  this.myNodeController?.rootNode?.getParent());
-              })
-            Button('新增已有父节点的自定义节点')
-              .fontSize(16)
-              .width(400)
-              .onClick((event: ClickEvent) => {
-                this.myNodeController.checkAppendChild(this.myNodeController?.frameNode,
-                  this.myNodeController?.rootNode);
-              })
-          }
-        }
-
-        Row() {
-          Column({ space: 5 } as ColumnOptions) {
-            Text('验证FrameNode节点的查询功能')
-            Button('对自定义FrameNode进行操作')
-              .fontSize(16)
-              .width(400)
-              .onClick((event: ClickEvent) => {
-                // 对FrameNode节点进行查询。当前节点为NodeContainer的子节点。
-                this.result = this.myNodeController.testInterfaceAboutSearch(this.myNodeController?.rootNode);
-                setTimeout((event: ClickEvent) => {
-                  // 对FrameNode节点进行查询。rootNode下的第一个子节点。
-                  this.result = this.myNodeController.testInterfaceAboutSearch(this.myNodeController?.frameNode);
-                }, 2000)
-              })
-            Button('对BuilderNode中的代理节点进行操作')
-              .fontSize(16)
-              .width(400)
-              .onClick((event: ClickEvent) => {
-                // 对BuilderNode代理节点进行查询。当前节点为BuilderNode中的Column节点。
-                this.result =
-                  this.myNodeController.testInterfaceAboutSearch(this.myNodeController?.buttonNode?.getFrameNode());
-              })
-            Button('对系统组件中的代理节点进行操作')
-              .fontSize(16)
-              .width(400)
-              .onClick((event: ClickEvent) => {
-                // 对代理节点进行查询。当前节点为NodeContainer。
-                this.result =
-                  this.myNodeController.testInterfaceAboutSearch(this.myNodeController?.rootNode?.getParent());
-              })
-          }
-        }
-      }
+      }.height('50%')
 
       Text(`Result：\n${this.result}`)
         .fontSize(16)
         .width(400)
         .borderWidth(1)
+        .height(200)
       Column() {
         Text('This is a NodeContainer.')
           .textAlign(TextAlign.Center)
@@ -1035,7 +1051,7 @@ struct Index {
 
 ArkTS-Sta示例：
 
-<!-- @[frameNodeCommon_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeCommon.ets) --> 
+<!-- @[frameNodeCommon_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeCommon.ets) -->  
 
 ``` TypeScript
 import {
@@ -1140,6 +1156,16 @@ export class MyNodeController extends NodeController {
     }
   }
 
+  modifyNodeSize(frameNode: FrameNode | null | undefined, heightValue: Length | LayoutPolicy | undefined,
+    widthValue: Length | LayoutPolicy | undefined, positionValue: Position): void {
+    if (frameNode) {
+      frameNode.commonAttribute
+        .height(heightValue)
+        .width(widthValue)
+        .position(positionValue);
+    }
+  }
+
   addClickEvent(frameNode: FrameNode | null | undefined): void {
     if (frameNode) {
       frameNode.commonEvent.setOnClick((event: ClickEvent) => {
@@ -1163,7 +1189,7 @@ struct Index {
             // 获取到的是当前页面中的开发者创建的FrameNode对象，该节点可修改。即节点宽与背景色。
             console.info('Check the weather the node can be modified ' + this.myNodeController?.frameNode
             ?.isModifiable());
-            this.myNodeController.modifyNode(this.myNodeController?.frameNode, 50, Color.Gray)
+            this.myNodeController.modifyNodeSize(this.myNodeController?.frameNode, 100, 150, { x: 100, y: 0 })
           })
         Button('modify FrameNode get by BuilderNode')
           .onClick((event: ClickEvent) => {
@@ -1417,7 +1443,7 @@ struct Index {
 
 ArkTS-Sta示例：
 
-<!-- @[frameNodeDraw_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeDraw.ets) --> 
+<!-- @[frameNodeDraw_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeDraw.ets) -->  
 
 ``` TypeScript
 import {
@@ -1439,6 +1465,8 @@ import {
   Size,
   UIContext
 } from '@kit.ArkUI'
+import { drawing } from '@kit.ArkGraphics2D'
+
 
 function GetChildLayoutConstraint(constraint: LayoutConstraint, child: FrameNode): LayoutConstraint {
   const size = child.getUserConfigSize();
@@ -1505,16 +1533,26 @@ export class MyFrameNode extends FrameNode {
   onDraw(context: DrawContext): void {
     const size = context.size;
     const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setStrokeWidth(25)
+    pen.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
+    canvas.attachPen(pen);
     canvas.drawRect({
-      left: 0,
-      right: 0,
-      top: 0,
-      bottom: 0
+      left: 50,
+      right: this.width + 100,
+      top: 50,
+      bottom: this.width + 100
     })
+    canvas.detachPen();
   }
 
   addWidth(): void {
-    this.width = (this.width + 10) % 50 + 100;
+    this.width = (this.width + 150) % 200 + 100;
   }
 }
 
@@ -1523,10 +1561,17 @@ export class MyNodeController extends NodeController {
 
   makeNode(context: UIContext): FrameNode | null {
     this.rootNode = new MyFrameNode(context);
-    this.rootNode?.commonAttribute?.size({ width: 100, height: 100 }).backgroundColor(Color.Green);
-    let frameNode: FrameNode = new FrameNode(context);
-    this.rootNode!.appendChild(frameNode);
-    frameNode.commonAttribute.width(10).height(10).backgroundColor(Color.Pink);
+    this.rootNode?.commonAttribute?.size({ width: 100, height: 200 }).backgroundColor(Color.Green);
+    return this.rootNode;
+  }
+}
+
+export class MyNodeController2 extends NodeController {
+  public rootNode: FrameNode | null = null;
+
+  makeNode(context: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(context);
+    this.rootNode!.commonAttribute.width(100).height(100).backgroundColor(Color.Pink);
     return this.rootNode;
   }
 }
@@ -1535,14 +1580,22 @@ export class MyNodeController extends NodeController {
 @Component
 struct Index {
   private nodeController: MyNodeController = new MyNodeController();
+  private nodeController2: MyNodeController2 = new MyNodeController2();
 
   build(): void {
     Row() {
       Column() {
-        NodeContainer(this.nodeController)
-          .width('100%')
-          .height(200)
-          .backgroundColor('#FFF0F0F0')
+        Row() {
+          NodeContainer(this.nodeController)
+            .width('30%')
+            .height(200)
+            .backgroundColor('#FFF0F0F0')
+          NodeContainer(this.nodeController2)
+            .width('70%')
+            .height(200)
+            .backgroundColor('#FFF0F0F0')
+        }
+
         Button('Invalidate')
           .margin(10)
           .onClick((event: ClickEvent) => {
@@ -2188,7 +2241,7 @@ struct Index {
 
 ArkTS-Sta示例：
 
-<!-- @[frameNodeTypeNode_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeTypeNode.ets) --> 
+<!-- @[frameNodeTypeNode_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeTypeNode.ets) -->  
 
 ``` TypeScript
 import {
@@ -2212,29 +2265,59 @@ import {
   Visibility,
   State,
   typeNode,
+  BuilderNode,
+  wrapBuilder,
+  FontWeight
 } from '@kit.ArkUI';
 
 const TEST_TAG: string = 'FrameNode'
 
+class Params {
+  text: string = '';
+
+  constructor(text: string) {
+    this.text = text;
+  }
+}
+
+@Builder
+function buildText(params: Params) {
+  Column(){
+    Text('DEFAULT')
+      .id('buildText')
+      .border({ width: 1 })
+      .padding(1)
+      .fontSize(25)
+      .fontWeight(FontWeight.Bold)
+      .margin({ top: 10 })
+      .visibility(Visibility.Visible)
+      .opacity(0.7)
+      .customProperty('key1', 'value1')
+      .width(300)
+  }
+}
 export class MyNodeController extends NodeController {
   public frameNode: typeNode.Column | null = null;
   public uiContext: UIContext | undefined = undefined;
   private rootNode: FrameNode | null = null;
   private message: string = 'DEFAULT';
+  private textNode: BuilderNode<Params> | null = null;
+  public textTypeNode: typeNode.Text | null = null;
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(uiContext);
     this.uiContext = uiContext;
     this.frameNode = typeNode.createColumnNode(uiContext);
-    this.frameNode!.attribute
-      .width('100%')
-      .height('100%')
-      .customProperty('key1', 'value1')
-      .visibility(Visibility.Visible)
-      .opacity(0.7)
-      .id('buildText');
-    this.frameNode!.commonAttribute.width(50).height(50).backgroundColor(Color.Yellow);
     this.rootNode!.appendChild(this.frameNode!);
+    this.textNode = new BuilderNode<Params>(uiContext);
+    this.textNode!.build(wrapBuilder(buildText), new Params(''));
+    this.frameNode?.appendChild(this.textNode!.getFrameNode()!);
+    this.textTypeNode = typeNode.createTextNode(uiContext);
+    this.textTypeNode!.initialize('textTypeNode')
+      .fontSize(25)
+      .visibility(Visibility.Visible)
+      .id('textTypeNode')
+    this.frameNode?.appendChild(this.textTypeNode!);
     return this.rootNode;
   }
 
@@ -2673,9 +2756,6 @@ struct TestComponent {
 @Builder
 function buttonBuilder(params: Params) {
   Column({ space: 10 } as ColumnOptions) {
-    Text(params.text)
-      .fontSize(10)
-      .fontWeight(FontWeight.Bold)
     TestComponent()
   }
 }
@@ -2693,9 +2773,9 @@ export class MyNodeController extends NodeController {
       this.rootNode = new FrameNode(uiContext);
       this.rootNode!.commonAttribute
         .width('50%')
-        .height(100)
+        .height(150)
         .borderWidth(1)
-        .backgroundColor(Color.Gray)
+        .backgroundColor(0xff33ff33.toInt());
     }
 
     if (this.builderNode == null) {
@@ -3650,7 +3730,7 @@ struct Index {
 
 ArkTS-Sta示例：
 
-<!-- @[frameNodeLazyForEachSelect_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeLazyForEachSelect.ets) --> 
+<!-- @[frameNodeLazyForEachSelect_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeLazyForEachSelect.ets) -->  
 
 ``` TypeScript
 import {
@@ -3679,7 +3759,8 @@ import {
   Text,
   TextAlign,
   UIContext,
-  wrapBuilder
+  wrapBuilder,
+  Axis
 } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -3803,7 +3884,7 @@ class Params {
 
 @Builder
 function buildData(params: Params) {
-  List() {
+  List({ scroller: params.scroller! }) {
     LazyForEach(params.data!, (item: StringData, index: int) => {
       ListItem() {
         Column() {
@@ -3825,6 +3906,7 @@ function buildData(params: Params) {
     })
   }
   .cachedCount(5)
+  .listDirection(Axis.Horizontal)
 }
 
 class MyNodeController extends NodeController {
@@ -4262,6 +4344,8 @@ struct Index {
 
 从API version 21开始，通过使用frameNode的[invalidateAttributes](../reference/apis-arkui/js-apis-arkui-frameNode.md#invalidateattributes21)方法，可以在当前帧触发节点更新，避免组件切换过程中出现闪烁。
 
+ArkTS-Dyn示例：
+
 <!-- @[frameNodeInvalidateAttributes_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeInvalidateAttributes.ets) --> 
 
 ``` TypeScript
@@ -4358,11 +4442,134 @@ struct ListNodeTest {
 }
 
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[frameNodeInvalidateAttributes_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeInvalidateAttributes.ets) --> 
+
+``` TypeScript
+import {
+  Builder,
+  BuilderNode,
+  Button,
+  Column,
+  Color,
+  Component,
+  Entry,
+  FrameNode,
+  List,
+  NodeContainer,
+  NodeController,
+  Text,
+  TextAlign,
+  UIContext,
+  wrapBuilder,
+  typeNode,
+  NodeContent,
+  ContentSlot,
+  State,
+  $r
+} from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 继承NodeController实现自定义NodeAdapter控制器
+class MyNodeAdapterController extends NodeController {
+  rootNode: FrameNode | null = null;
+  imageUrl: string = "";
+
+  constructor(imageUrl: string) {
+    super();
+    this.imageUrl = imageUrl;
+  }
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    let imageNode = typeNode.createImageNode(uiContext);
+    imageNode.initialize($r(this.imageUrl))
+    imageNode.commonAttribute.margin({ left: 100 })
+    imageNode.attribute.syncLoad(true).width(100).height(100);
+    // 强制当前帧内即时节点更新，避免出现切换闪烁
+    imageNode.invalidateAttributes();
+    return imageNode;
+  }
+}
+
+// 自定义挂载事件的自定义组件，挂载前加载样例图片
+@Component
+struct NodeComponent3 {
+  private rootSlot: NodeContent = new NodeContent();
+
+  aboutToAppear(): void {
+    const uiContext = this.getUIContext();
+    let imageNode = typeNode.createImageNode(uiContext);
+    imageNode.initialize($r('app.media.startIcon'))
+    imageNode.attribute.syncLoad(true).width(100).height(100);
+    imageNode.invalidateAttributes();
+    this.rootSlot.addFrameNode(imageNode);
+  }
+
+  build() {
+    ContentSlot(this.rootSlot)
+  }
+}
+
+// 自定义挂载事件的自定义组件，挂载前加载样例图片
+@Component
+struct NodeComponent4 {
+  private rootSlot: NodeContent = new NodeContent();
+
+  aboutToAppear(): void {
+    const uiContext = this.getUIContext();
+    let imageNode = typeNode.createImageNode(uiContext);
+    imageNode.initialize($r('app.media.startIcon'))
+    imageNode.attribute.syncLoad(true).width(100).height(100);
+    imageNode.invalidateAttributes();
+    this.rootSlot.addFrameNode(imageNode);
+  }
+
+  build() {
+    ContentSlot(this.rootSlot)
+  }
+}
+
+@Entry
+@Component
+struct ListNodeTest {
+  @State flag: boolean = true;
+  adapterController: MyNodeAdapterController = new MyNodeAdapterController('app.media.startIcon');
+
+  build() {
+    Column() {
+      Text("NodeComponent")
+      if (this.flag) {
+        NodeComponent3()
+      } else {
+        NodeComponent4()
+      }
+      Text("NodeContainer").margin({ top: 20 })
+      if (this.flag) {
+        NodeContainer(this.adapterController)
+          .width(300).height(100)
+      } else {
+        NodeContainer(this.adapterController)
+          .width(300).height(100)
+      }
+      // 点击后图片正常切换不闪烁
+      Button('change').onClick(() => {
+        this.flag = !this.flag;
+      }).margin({ top: 20 })
+    }
+    .width("100%")
+  }
+}
+```
+
 ![invalidateAttributes](./figures/invalidateAttributes.png)
 
  ## 判断节点是否处于渲染状态
 
 从API version 23开始，通过使用FrameNode的[isInRenderState](../reference/apis-arkui/js-apis-arkui-frameNode.md#isinrenderstate23)方法，判断FrameNode节点是否处于渲染状态。
+
+ArkTS-Dyn示例：
 
 <!-- @[frameNodeIsInRenderState_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeIsInRenderState.ets) --> 
 
@@ -4430,5 +4637,101 @@ struct Index {
   }
 }
 
+```
+
+ArkTS-Sta示例：
+
+<!-- @[frameNodeIsInRenderState_start_sta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeIsInRenderState.ets) -->  
+
+``` TypeScript
+import {
+  Builder,
+  BuilderNode,
+  Button,
+  Column,
+  Color,
+  Component,
+  Entry,
+  FrameNode,
+  List,
+  NodeContainer,
+  NodeController,
+  Text,
+  TextAlign,
+  UIContext,
+  wrapBuilder,
+  typeNode,
+  NodeContent,
+  ContentSlot,
+  State,
+  $r,
+  Watch,
+  ForEach,
+  Visibility,
+  ListItem,
+  ItemAlign
+} from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'is on render tree';
+  @State @Watch('change') isShow: boolean = true;
+  data: Array<string> = ['hello1', 'hello2', 'hello3', 'hello4', 'hello5', 'hello6', 'hello7', 'hello8'];
+
+  // 监听状态变化后打印是否处于渲染状态
+  change(str: string) {
+    let buttonNode = this.getUIContext().getFrameNodeById("testButton");
+    if (buttonNode == null) {
+      return;
+    }
+    let isOnRenderTree = buttonNode!.isInRenderState();
+    if (isOnRenderTree) {
+      hilog.info(1, 'frameNode', 'is on render tree');
+    } else {
+      hilog.info(1, 'frameNode', 'is not on render tree');
+    }
+  }
+
+  build() {
+    Column() {
+      Button('change button visibility').onClick(() => {
+        // 修改button的visibility状态
+        this.isShow = !this.isShow;
+      })
+        .margin({ top: 20 })
+      Button('test button')
+        .visibility(this.isShow ? Visibility.Visible : Visibility.Hidden)
+        .margin(20).id('testButton')
+
+      List() {
+        ForEach(this.data, (item: string, index: int) => {
+          ListItem() {
+            Text(item).id(item)
+          }.alignSelf(ItemAlign.Center).width('100%')
+        })
+      }
+      .width('30%')
+      .alignSelf(ItemAlign.Center)
+      .height("10%")
+      .onReachEnd(() => {
+        let textNode8 = this.getUIContext().getFrameNodeById("hello8");
+        if (textNode8 != null) {
+          let isOnRenderTree = textNode8!.isInRenderState();
+          hilog.info(1, 'frameNode', 'is hello8 on RenderTree: %{public}s', isOnRenderTree);
+        }
+        let textNode1 = this.getUIContext().getFrameNodeById("hello1");
+        if (textNode1 != null) {
+          let isOnRenderTree = textNode1!.isInRenderState();
+          isOnRenderTree ? this.message = 'is on render tree' : this.message = 'is not on render tree'
+          hilog.info(1, 'frameNode', 'is hello1 on RenderTree: %{public}s', isOnRenderTree);
+        }
+      })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
 ```
 ![isInRenderState](./figures/isInRenderState.png)
