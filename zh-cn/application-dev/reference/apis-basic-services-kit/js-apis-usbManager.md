@@ -134,7 +134,7 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | ---------------- |
-| device | [USBDevice](#usbdevice) | 是 | USB设备信息，用[getDevices](#usbmanagergetdevices)获取的busNum和devAddress确定设备，当前其它属性（如name、vendorId等）不参与设备匹配。 |
+| device | [USBDevice](#usbdevice) | 是 | USB设备信息，用[getDevices](#usbmanagergetdevices)获取的busNum和devAddress确定设备，当前其他属性（如name、vendorId等）不参与设备匹配。 |
 
 **返回值：**
 
@@ -340,7 +340,7 @@ claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): numb
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | claim通信接口成功返回0；claim通信接口失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。|
+| number | claim通信接口成功返回0；claim通信接口失败返回其他错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。|
 
 **错误码：**
 
@@ -396,7 +396,7 @@ releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 释放接口成功返回0；释放接口失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。|
+| number | 释放接口成功返回0；释放接口失败返回其他错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。|
 
 **错误码：**
 
@@ -447,7 +447,7 @@ setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 设置设备配置成功返回0；设置设备配置失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。<br>- -17：I/O失败。|
+| number | 设置设备配置成功返回0；设置设备配置失败返回其他错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。<br>- -17：I/O失败。|
 
 **错误码：**
 
@@ -503,7 +503,7 @@ setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 设置设备接口成功返回0；设置设备接口失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。|
+| number | 设置设备接口成功返回0；设置设备接口失败返回其他错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。|
 
 **错误码：**
 
@@ -599,7 +599,7 @@ getFileDescriptor(pipe: USBDevicePipe): number
 
 | 类型     | 说明                   |
 | ------ | -------------------- |
-| number | 返回设备对应的文件描述符，失败返回其它错误码如下：<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。|
+| number | 返回设备对应的文件描述符，失败返回其他错误码如下：<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。|
 
 **错误码：**
 
@@ -649,7 +649,7 @@ usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, ti
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其它错误码如下：<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。|
+| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下：<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。|
 
 **错误码：**
 
@@ -708,7 +708,7 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
-| endpoint | [USBEndpoint](#usbendpoint) | 是 | 用于确定传输的端口，需要调用[getDevices](#usbmanagergetdevices)获取设备信息列表。通过endpoint的address确定端点地址，direction用于确定端点的传输方向（0表示输出，128表示输入），interfaceId用于确定所属接口，当前其它属性不做处理。|
+| endpoint | [USBEndpoint](#usbendpoint) | 是 | 用于确定传输的端口，需要调用[getDevices](#usbmanagergetdevices)获取设备信息列表。通过endpoint的address确定端点地址，direction用于确定端点的传输方向（0表示输出，128表示输入），interfaceId用于确定所属接口，当前其他属性不做处理。|
 | buffer | Uint8Array | 是 | 用于写入或读取数据的缓冲区。 |
 | timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待批量传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。用户按需选择。 |
 
@@ -716,7 +716,7 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其它错误码如下：<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。|
+| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下：<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。|
 
 **错误码：**
 
@@ -972,7 +972,7 @@ closePipe(pipe: USBDevicePipe): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 关闭设备消息控制通道成功返回0；关闭设备消息控制通道失败返回其它错误码如下：<br>- 22：服务异常。 |
+| number | 关闭设备消息控制通道成功返回0；关闭设备消息控制通道失败返回其他错误码如下：<br>- 22：服务异常。 |
 
 **错误码：**
 
@@ -1358,7 +1358,7 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: 
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其它错误码如下：<br>- -1：驱动异常。|
+| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下：<br>- -1：驱动异常。|
 
 **错误码：**
 

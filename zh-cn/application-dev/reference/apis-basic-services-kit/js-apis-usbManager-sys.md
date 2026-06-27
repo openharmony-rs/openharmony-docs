@@ -327,7 +327,7 @@ addDeviceAccessRight(tokenId: string, deviceName: string): boolean
 
 添加应用程序访问设备的权限。系统应用默认拥有访问设备权限，调用此接口不会产生影响。适用于系统设置应用、设备管理应用等需要为第三方应用授权访问USB设备的场景。
 
-[usbManager.requestRight](js-apis-usbManager.md#usbmanagerrequestright)会触发弹框请求用户授权；addDeviceAccessRight不会触发弹框，而是直接添加应用程序访问设备的权限。
+[usbManager.requestRight](js-apis-usbManager.md#usbmanagerrequestright)会触发弹窗请求用户授权；addDeviceAccessRight不会触发弹窗，而是直接添加应用程序访问设备的权限。
 
 > **说明：**
 >
