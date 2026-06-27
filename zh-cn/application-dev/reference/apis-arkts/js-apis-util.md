@@ -258,7 +258,9 @@ ArkTS-Sta: callbackWrapper(original: Function): Function
 >
 > 该接口要求参数original必须是异步函数类型。如果传入的参数不是异步函数，不会进行拦截，但是会输出错误信息："callbackWrapper: The type of Parameter must be AsyncFunction"。
 >
-> 该接口用于将返回Promise的async函数转换为错误优先回调风格的函数，调用此接口返回的函数接收一个回调函数作为第二个入参，调用此方法时会先执行original函数。当original的Promise返回resolve时，入参的回调函数的第一个参数为null，第二个参数为resolve的值。当original的Promise返回reject时，入参的回调函数的第一个参数为错误对象，第二个参数为null。当original为无入参的函数时，此接口返回的函数第一个入参需传入一个无效的占位参数。
+> 该接口用于将返回Promise的async函数转换为错误优先回调风格的函数，调用此接口返回的函数接收一个回调函数作为第二个入参，调用此方法时会先执行original函数。当original的Promise返回resolve时，入参的回调函数的第一个参数为null，第二个参数为resolve的值。当original的Promise返回reject时，入参的回调函数的第一个参数为错误对象，第二个参数为null。
+>
+> 由于此方法返回类型的声明为`(err: Object, value: Object) => void`，TypeScript编译器会按照该声明进行参数数量校验，因此当original为无入参的函数时，此接口返回的函数第一个入参需传入一个无效的占位参数。当original为多个入参的函数时，此接口返回的函数当前仅支持传入一个参数，可使用array等容器进行多个入参的传入调用（参照下方示例代码）。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -283,6 +285,7 @@ ArkTS-Sta: callbackWrapper(original: Function): Function
 **示例：**
 
 ```ts
+// original为一个入参示例
 async function fn(input: string) {
   return input;
 }
@@ -292,6 +295,21 @@ cb('hello world', (err : Object, ret : string) => {
   console.info(ret);
 });
 // 输出结果：hello world
+```
+
+```ts
+// original需要传入多个入参场景示例
+async function fn(args: Array<string | number | Function>) {
+  console.info('args[0]: ' + args[0]); // args[0]: hello world
+  console.info('args[1]: ' + args[1]); // args[1]: 8
+  return args[0];
+}
+let cb = util.callbackWrapper(fn);
+let args: Array<string | number | Function> = ['hello world', 8]
+cb(args, (err : Object, ret : string) => {
+  if (err) throw new Error;
+  console.info(ret); // 输出结果：hello world
+});
 ```
 
 ## util.promisify<sup>9+</sup>
