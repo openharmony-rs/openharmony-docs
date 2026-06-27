@@ -34,6 +34,16 @@ EditableTitleBarV2({leftIcon?: EditableLeftIconV2, title: ResourceStr \| Editabl
 
 编辑型标题栏，适用于多选界面或内容编辑界面，一般采取左叉右勾的形式。
 
+> **说明：**
+> 
+> - 入参对象不可为undefined，即`EditableTitleBarV2(undefined)`。
+> 
+> - 若同时有多个可操作区域设置默认焦点，则设置过默认焦点的可操作区域中显示顺序的第一个为默认焦点。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **装饰器类型：** \@ComponentV2
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
@@ -51,17 +61,16 @@ EditableTitleBarV2({leftIcon?: EditableLeftIconV2, title: ResourceStr \| Editabl
 | saveButton | [EditableSaveButtonV2](#editablesavebuttonv2) | 否 | \@Param | 保存按钮配置。需要对标题栏右侧保存按钮的控制显示或隐藏状态、设置默认焦点、或者设置保存回调函数时传入此参数，不传入时取默认值，显示保存按钮。<br />默认值：undefined，显示保存按钮。 |
 | options | [EditableTitleBarStyleV2](#editabletitlebarstylev2) | 是 | \@Param | 标题栏样式和布局配置。需要自定义标题栏背景、安全区域、边距等样式时传入此参数。<br />默认值：new EditableTitleBarStyleV2()。 |
 
-> **说明：**
-> 
-> - 入参对象不可为undefined，即`EditableTitleBarV2(undefined)`。
-> 
-> - 若同时有多个可操作区域设置默认焦点，则设置过默认焦点的可操作区域中显示顺序的第一个为默认焦点。
 
 ## OnActionCallback
 
 type OnActionCallback = () => void
 
 点击事件的回调函数类型。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -71,6 +80,10 @@ type OnActionCallback = () => void
 ## EditableLeftIconTypeV2
 
 左侧图标类型枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -87,6 +100,10 @@ type OnActionCallback = () => void
 
 左侧图标配置选项接口。
 
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -101,33 +118,55 @@ type OnActionCallback = () => void
 
 左侧图标配置类，使用@ObservedV2装饰器，支持状态观察。
 
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**装饰器类型：** \@ObservedV2
+
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
-**装饰器类型：** \@ObservedV2
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| iconType | [EditableLeftIconTypeV2](#editablelefticontypev2) | 否 | 否 | 图标类型。<br/>默认值：EditableLeftIconTypeV2.Back。 |
-| defaultFocus | boolean | 否 | 否 | 是否默认获取焦点。<br/>默认值：false。 |
-| onAction | [OnActionCallback](#onactioncallback) | 否 | 是 | 点击左侧图标的回调函数。 |
+| iconType | [EditableLeftIconTypeV2](#editablelefticontypev2) | 否 | 否 | 图标类型。<br/>默认值：EditableLeftIconTypeV2.Back。<br>**装饰器类型：** @Trace |
+| defaultFocus | boolean | 否 | 否 | 是否默认获取焦点。<br/>默认值：false。<br>**装饰器类型：** @Trace |
+| onAction | [OnActionCallback](#onactioncallback) | 否 | 是 | 点击左侧图标的回调函数。<br>**装饰器类型：** @Trace |
 
-**构造函数：**
+### constructor
 
-constructor(options?: [EditableLeftIconV2Options](#editablelefticonv2options))
+constructor(options?: EditableLeftIconV2Options)
+
+EditableLeftIconV2的构造函数。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| options | [EditableLeftIconV2Options](#editablelefticonv2options) | 否 | 左侧图标配置选项。 |
+| ------ | ---- | ---- | ---- |
+| options | [EditableLeftIconV2Options](#editablelefticonv2options) | 是 | 左侧图标配置选项。 |
+
 
 ## EditableTitleV2Options
 
 标题配置选项接口。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -140,7 +179,13 @@ constructor(options?: [EditableLeftIconV2Options](#editablelefticonv2options))
 
 ## EditableTitleV2
 
-标题配置类，使用@ObservedV2装饰器，支持状态观察。
+标题配置类。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**装饰器类型：** \@ObservedV2
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -148,26 +193,41 @@ constructor(options?: [EditableLeftIconV2Options](#editablelefticonv2options))
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
-**装饰器类型：** \@ObservedV2
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| mainTitle | [ResourceStr](ts-types.md#resourcestr) | 否 | 否 | 主标题内容。<br/>默认值：''，表示标题内容为空。 |
-| subTitle | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 副标题内容。 |
+| mainTitle | [ResourceStr](ts-types.md#resourcestr) | 否 | 否 | 主标题内容。<br/>默认值：''，表示标题内容为空。<br>**装饰器类型：** @Trace |
+| subTitle | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 副标题内容。<br>**装饰器类型：** @Trace |
 
-**构造函数：**
+### constructor
 
-constructor(options?: [EditableTitleV2Options](#editabletitlev2options))
+constructor(options?: EditableTitleV2Options)
+
+EditableTitleV2的构造函数。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| options | [EditableTitleV2Options](#editabletitlev2options) | 否 | 标题配置选项。 |
+| ------ | ---- | ---- | ---- |
+| options | [EditableTitleV2Options](#editabletitlev2options) | 是 | 标题配置选项。 |
+
 
 ## EditableTitleBarMenuItemV2Options
 
 菜单项配置选项接口。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -187,7 +247,13 @@ constructor(options?: [EditableTitleV2Options](#editabletitlev2options))
 
 ## EditableTitleBarMenuItemV2
 
-菜单项配置类，使用@ObservedV2装饰器，支持状态观察。
+菜单项配置类。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**装饰器类型：** \@ObservedV2
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -195,23 +261,33 @@ constructor(options?: [EditableTitleV2Options](#editabletitlev2options))
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
-**装饰器类型：** \@ObservedV2
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| value | [ResourceStr](ts-types.md#resourcestr) | 否 | 否 | 图标资源，支持Symbol或Image。<br/>默认值：''。 |
-| symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | Symbol图标样式修饰器，优先级大于value。 |
-| isEnabled | boolean | 否 | 否 | 是否启用。<br/>默认值：true，表示启用。<br/>isEnabled为false时，表示禁用。 |
-| label | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 长按对话框的标签文本。 |
-| action | [OnActionCallback](#onactioncallback) | 否 | 是 | 点击菜单项的回调函数。 |
-| accessibilityLevel | string | 否 | 否 | 可访问性级别。<br/>默认值："auto"。  |
-| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 屏幕阅读器的可访问性文本。 |
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 可访问性描述。 |
-| defaultFocus | boolean | 否 | 否 | 是否设置为默认获焦。<br/>默认值：false。 |
+| value | [ResourceStr](ts-types.md#resourcestr) | 否 | 否 | 图标资源，支持Symbol或Image。<br/>默认值：''。<br>**装饰器类型：** @Trace |
+| symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | Symbol图标样式修饰器，优先级大于value。<br>**装饰器类型：** @Trace |
+| isEnabled | boolean | 否 | 否 | 是否启用。<br/>默认值：true，表示启用。<br/>isEnabled为false时，表示禁用。<br>**装饰器类型：** @Trace |
+| label | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 长按对话框的标签文本。<br>**装饰器类型：** @Trace |
+| action | [OnActionCallback](#onactioncallback) | 否 | 是 | 点击菜单项的回调函数。<br>**装饰器类型：** @Trace |
+| accessibilityLevel | string | 否 | 否 | 可访问性级别。<br/>默认值："auto"。<br>**装饰器类型：** @Trace  |
+| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 屏幕阅读器的可访问性文本。<br>**装饰器类型：** @Trace |
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 可访问性描述。<br>**装饰器类型：** @Trace |
+| defaultFocus | boolean | 否 | 否 | 是否设置为默认获焦。<br/>默认值：false。<br>**装饰器类型：** @Trace |
 
-**构造函数：**
+### constructor
 
-constructor(options?: [EditableTitleBarMenuItemV2Options](#editabletitlebarmenuitemv2options))
+constructor(options?: EditableTitleBarMenuItemV2Options)
+
+EditableTitleBarMenuItemV2的构造函数。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **参数：**
 
@@ -224,6 +300,10 @@ constructor(options?: [EditableTitleBarMenuItemV2Options](#editabletitlebarmenui
 type EditableTitleBarItemV2 = EditableTitleBarMenuItemV2
 
 左侧图像项类型别名。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -241,6 +321,10 @@ type EditableTitleBarItemV2Options = EditableTitleBarMenuItemV2Options
 
 左侧图像项配置选项类型别名。
 
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -253,6 +337,10 @@ type EditableTitleBarItemV2Options = EditableTitleBarMenuItemV2Options
 ## EditableSaveButtonV2Options
 
 保存按钮配置选项接口。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -268,23 +356,39 @@ type EditableTitleBarItemV2Options = EditableTitleBarMenuItemV2Options
 
 保存按钮配置类，使用@ObservedV2装饰器，支持状态观察。
 
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**装饰器类型：** \@ObservedV2
+
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
-**装饰器类型：** \@ObservedV2
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| isRequired | boolean | 否 | 否 | 是否显示保存按钮。<br/>默认值：true，表示显示保存按钮。 |
-| defaultFocus | boolean | 否 | 否 | 是否默认获取焦点。<br/>默认值：false。 |
-| onAction | [OnActionCallback](#onactioncallback) | 否 | 是 | 点击保存按钮的回调函数。 |
+| isRequired | boolean | 否 | 否 | 是否显示保存按钮。<br/>默认值：true，表示显示保存按钮。<br>**装饰器类型：** @Trace |
+| defaultFocus | boolean | 否 | 否 | 是否默认获取焦点。<br/>默认值：false。<br>**装饰器类型：** @Trace |
+| onAction | [OnActionCallback](#onactioncallback) | 否 | 是 | 点击保存按钮的回调函数。<br>**装饰器类型：** @Trace |
 
-**构造函数：**
+### constructor
 
-constructor(options?: [EditableSaveButtonV2Options](#editablesavebuttonv2options))
+constructor(options?: EditableSaveButtonV2Options)
+
+EditableSaveButtonV2的构造函数。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **参数：**
 
@@ -295,6 +399,10 @@ constructor(options?: [EditableSaveButtonV2Options](#editablesavebuttonv2options
 ## EditableTitleBarStyleV2Options
 
 标题栏样式配置选项接口。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -312,25 +420,41 @@ constructor(options?: [EditableSaveButtonV2Options](#editablesavebuttonv2options
 
 标题栏样式配置类，使用@ObservedV2装饰器，支持状态观察。
 
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**装饰器类型：** \@ObservedV2
+
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
-**装饰器类型：** \@ObservedV2
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| backgroundColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 标题栏背景色。<br/>默认值：'#00000000'。  |
-| backgroundBlurStyle | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | 否 | 是 | 标题栏背景模糊样式。<br/>默认值：BlurStyle.NONE。  |
-| safeAreaTypes | Array&lt;[SafeAreaType](ts-universal-attributes-expand-safe-area.md#safeareatype)&gt; | 否 | 是 | 扩展安全区域的类型。<br/>默认值：[SafeAreaType.SYSTEM]。  |
-| safeAreaEdges | Array&lt;[SafeAreaEdge](ts-universal-attributes-expand-safe-area.md#safeareaedge)&gt; | 否 | 是 | 扩展安全区域的方向。<br/>默认值：[SafeAreaEdge.TOP]。  |
-| contentMargin | [LocalizedMargin](ts-types.md#localizedmargin12) | 否 | 是 | 标题栏外边距。 |
+| backgroundColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 标题栏背景色。<br/>默认值：'#00000000'。<br>**装饰器类型：** @Trace  |
+| backgroundBlurStyle | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | 否 | 是 | 标题栏背景模糊样式。<br/>默认值：BlurStyle.NONE。<br>**装饰器类型：** @Trace  |
+| safeAreaTypes | Array&lt;[SafeAreaType](ts-universal-attributes-expand-safe-area.md#safeareatype)&gt; | 否 | 是 | 扩展安全区域的类型。<br/>默认值：[SafeAreaType.SYSTEM]。<br>**装饰器类型：** @Trace  |
+| safeAreaEdges | Array&lt;[SafeAreaEdge](ts-universal-attributes-expand-safe-area.md#safeareaedge)&gt; | 否 | 是 | 扩展安全区域的方向。<br/>默认值：[SafeAreaEdge.TOP]。<br>**装饰器类型：** @Trace  |
+| contentMargin | [LocalizedMargin](ts-types.md#localizedmargin12) | 否 | 是 | 标题栏外边距。<br>**装饰器类型：** @Trace |
 
-**构造函数：**
+### constructor
 
-constructor(options?: [EditableTitleBarStyleV2Options](#editabletitlebarstylev2options))
+constructor(options?: EditableTitleBarStyleV2Options)
+
+EditableTitleBarStyleV2的构造函数。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **参数：**
 
@@ -346,7 +470,7 @@ constructor(options?: [EditableTitleBarStyleV2Options](#editabletitlebarstylev2o
 
 ### 示例1（右侧图标自定义标题栏）
 
-该示例主要演示EditableTitleBarV2设置左侧图标、主标题及自定义右侧图标区的效果。
+从API版本26.0.0开始，通过EditableTitleBarV2接口设置左侧图标、主标题及自定义右侧图标区的效果。
 
 ```ts
 import { Prompt } from '@kit.ArkUI';
@@ -417,7 +541,7 @@ struct EditableTitleBarV2Demo01 {
 
 ### 示例2（头像与背景模糊标题栏）
 
-该示例主要演示EditableTitleBarV2设置背景模糊、头像；取消右侧保存图标及自定义标题栏外边距的效果。
+从API版本26.0.0开始，通过EditableTitleBarV2接口设置背景模糊、头像；取消右侧保存图标及自定义标题栏外边距的效果。
 
 ```ts
 import { LengthMetrics, Prompt } from '@kit.ArkUI';
@@ -562,7 +686,7 @@ struct EditableTitleBarV2Demo02 {
 
 ### 示例3（右侧自定义按钮播报）
 
-该示例通过设置标题栏的右侧自定义按钮属性accessibilityText、accessibilityDescription、accessibilityLevel自定义屏幕朗读播报文本。
+从API版本26.0.0开始，通过设置标题栏的右侧自定义按钮属性接口accessibilityText、accessibilityDescription、accessibilityLevel自定义屏幕朗读播报文本。
 
 ```ts
 import { Prompt } from '@kit.ArkUI';
@@ -640,7 +764,7 @@ struct EditableTitleBarV2Demo03 {
 
 ### 示例4（左侧图标设置为默认焦点）
 
-在获焦状态下，该示例通过设置标题栏属性leftIconDefaultFocus使左侧图标默认获焦。
+从API版本26.0.0开始，在获焦状态下，通过设置标题栏属性leftIconDefaultFocus接口使左侧图标默认获焦。
 
 ```ts
 import { Prompt } from '@kit.ArkUI';
@@ -674,7 +798,7 @@ struct EditableTitleBarV2Demo04 {
 
 ### 示例5（右侧自定义图标设置为默认焦点）
 
-在获焦状态下，该示例通过设置标题栏右侧图标属性defaultFocus使右侧图标默认获焦。
+从API版本26.0.0开始，在获焦状态下，通过设置标题栏右侧图标属性defaultFocus接口使右侧图标默认获焦。
 
 ```ts
 import { Prompt } from '@kit.ArkUI';
@@ -731,7 +855,7 @@ struct EditableTitleBarV2Demo05 {
 
 ### 示例6（设置Symbol类型图标）
 
-该示例通过设置EditableTitleBarMenuItem的属性symbolStyle，展示了自定义Symbol类型图标。
+从API版本26.0.0开始，通过设置EditableTitleBarMenuItem的属性接口symbolStyle，实现自定义Symbol类型图标。
 
 ```ts
 import { Prompt, SymbolGlyphModifier } from '@kit.ArkUI';
