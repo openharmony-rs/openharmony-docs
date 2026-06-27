@@ -297,6 +297,7 @@ destroyWindow(callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.              |
+| 1300003 | This window manager service works abnormally.<br/>适用版本：9                |
 
 **示例：**
 
@@ -336,6 +337,7 @@ destroyWindow(): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.              |
+| 1300003 | This window manager service works abnormally.<br/>适用版本：9                |
 
 **示例：**
 
@@ -2912,6 +2914,7 @@ setUIContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003 | This window manager service works abnormally.<br/>适用版本：9                |
 
 **示例：**
 
@@ -2962,6 +2965,7 @@ setUIContent(path: string): Promise&lt;void&gt;
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.              |
+| 1300003 | This window manager service works abnormally.<br/>适用版本：9                |
 
 **示例：**
 
@@ -3012,6 +3016,7 @@ loadContent(path: string, storage: LocalStorage, callback: AsyncCallback&lt;void
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Invalid path parameter.|
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.    |
+| 1300003 | This window manager service works abnormally.<br/>适用版本：9                |
 
 **示例：**
 
@@ -3067,6 +3072,7 @@ loadContent(path: string, storage: LocalStorage): Promise&lt;void&gt;
 | ------- | -------------------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Invalid path parameter.|
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.    |
+| 1300003 | This window manager service works abnormally.<br/>适用版本：9                |
 
 **示例：**
 
@@ -8526,7 +8532,8 @@ setTouchableAreas(rects: Array&lt;Rect&gt;): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                                      |
 | :------- | :-------------------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required or a non-system application calls the API.                    |
+| 201      | Permission verification failed. The application does not have the permission required or a non-system application calls the API.<br/>适用版本：26.0.0+                    |
+| 202      | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12-24 |
 | 1300002  | This window state is abnormal.    |
 | 1300003  | This window manager service works abnormally.                                                                      |
 | 1300016 | Parameter error. Possible cause: Invalid parameter range. |
