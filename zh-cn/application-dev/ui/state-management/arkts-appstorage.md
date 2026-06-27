@@ -547,6 +547,7 @@ struct MapSample {
 }
 ```
 
+![appstorage-demo-4](figures/appstorage-demo-4.gif)
 
 ### 装饰Set类型变量
 
@@ -605,6 +606,8 @@ struct SetSample {
   }
 }
 ```
+
+![appstorage-demo-5](figures/appstorage-demo-5.gif)
 
 ### AppStorage在多页面中共享使用
 
@@ -738,6 +741,8 @@ struct Page {
   ]
 }
 ```
+
+![appstorage-demo-6](figures/appstorage-demo-6.gif)
 
 ## AppStorage使用建议
 
@@ -1076,6 +1081,8 @@ struct PageStorageProp {
   }
 }
 ```
+
+![appstorage-demo-7](figures/appstorage-demo-7.gif)
 
 上述示例，在点击事件之前，propA的值已经在本地被更改为true，而AppStorage中存的值仍为false。当点击事件通过setOrCreate接口尝试更新propA的值为false时，由于AppStorage中的值为false，两者相等，不会触发更新同步，因此@StorageProp的值仍为true。
 
