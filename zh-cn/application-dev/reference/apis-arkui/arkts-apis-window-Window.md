@@ -1060,7 +1060,7 @@ ArkTS-Sta: moveWindowToGlobalDisplay(x: int, y: int): Promise&lt;void&gt;
 > 
 > - 窗口移动后，如果窗口跨越多个屏幕，窗口将归属于与其重叠面积最大的屏幕。
 >
-> - [自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。
+> - [自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，若主窗口或子窗口的标题栏移出屏幕可视区域，系统将自动回弹窗口，确保标题栏保持可见。回弹规格详情请参考：[窗口回弹规格](https://developer.huawei.com/consumer/cn/doc/design-guides/window-0000002321868010#section142701449114818)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1454,7 +1454,7 @@ ArkTS-Sta: resizeAsync(width: int, height: int): Promise&lt;void&gt;
 
 > **说明：**
 >
-> - 在非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，主窗口调用不生效。
+> - 主窗口处于自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）时，在非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下调用不生效不报错。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -12863,7 +12863,7 @@ setResizeByDragEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): vo
 
 > **说明：**
 >
-> - 针对主窗口，仅在[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下生效，非自由窗口状态下不生效不报错。
+> - 针对主窗口，仅在[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下生效，非自由窗口状态下不生效也不报错，切换到[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态后生效。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
