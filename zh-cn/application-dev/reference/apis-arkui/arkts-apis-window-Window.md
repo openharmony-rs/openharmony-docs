@@ -7479,6 +7479,7 @@ maximize(presentation?: MaximizePresentation): Promise&lt;void&gt;
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.    |
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows and maximizable subwindows are supported.       |
+| 1300005 | This window stage is abnormal.<br>适用版本：12-19 |
 
 **示例：**
 
@@ -10065,6 +10066,7 @@ enableDrag(enable: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------------------------------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API.<br>适用版本：14-19 |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal.                |
 | 1300003 | This window manager service works abnormally. |
