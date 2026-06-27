@@ -130,6 +130,8 @@ TextArea有以下2种类型可选择：默认风格，入参是TextContentStyle.
 
 ### 设置无输入时的提示文本
 
+以下示例展示无输入时提示文本的效果。
+
 <!-- @[custom_text_input_with_place_holder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
 
 ``` TypeScript
@@ -139,7 +141,9 @@ TextInput({ placeholder: $r('app.string.i_am_placeholder') })
 
 
 
+### 设置输入框当前的文本内容
 
+以下示例展示输入框内当前输入文本效果。
 
 <!-- @[custom_text_input_with_place_holder_and_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
 
@@ -152,6 +156,8 @@ TextInput({
 })
 ```
 ### 设置输入框背景颜色
+
+以下示例展示设置输入框背景颜色效果。
 
 <!-- @[custom_text_input_background_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
 
@@ -468,7 +474,7 @@ struct DisableMenuItem {
 
 ### 在子窗口中显示文本菜单
 
-TextInput组件通过设置[TextMenuShowMode](../reference/apis-arkui/arkui-ts/ts-text-common.md#textmenushowmode16)控制文本菜单在哪个窗口中渲染。主窗口模式下，菜单节点挂载到主窗口根节点，菜单可能被页面内容遮挡、受页面滚动影响；子窗口模式下，菜单节点挂载到独立子窗口的根节点，菜单浮在主窗口之上，不受页面布局影响
+TextInput组件通过设置[TextMenuShowMode](../reference/apis-arkui/arkui-ts/ts-text-common.md#textmenushowmode16)控制文本菜单在哪个窗口中渲染。主窗口模式下，菜单节点挂载到主窗口根节点，菜单可能被页面内容遮挡、受页面滚动影响；子窗口模式下，菜单节点挂载到独立子窗口的根节点，菜单浮在主窗口之上，不受页面布局影响。
 
 <!-- @[set_menu_options_with_textmenushowmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/TextMenuShowSubWindow.ets) -->
 
@@ -611,8 +617,4 @@ struct CursorAvoid {
 
 ![textinputkeyboardavoid](figures/caretavoid.gif)
 
-## 示例代码
-
-针对文本输入开发，有以下示例代码可供参考：
-
-- [聊天实例应用（ArkTS）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/IM/Chat#%E8%81%8A%E5%A4%A9%E5%AE%9E%E4%BE%8B%E5%BA%94%E7%94%A8)
+<!--RP1--><!--RP1End-->

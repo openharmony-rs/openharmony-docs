@@ -435,7 +435,7 @@ options: RichEditorOptions = { controller: this.controller };
 
 ### 设置最大长度
 
-通过[maxLength](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#maxlength18)可以设置富文本的最大可输入字符数。
+从API version 18开始，支持通过[maxLength](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#maxlength18)属性设置富文本的最大可输入字符数。
 
 <!-- @[richEditor_maxLength](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
@@ -451,11 +451,11 @@ options: RichEditorOptions = { controller: this.controller };
 
 ![max Length](figures/RichEditor_maxLength.gif)
 
-## 样式设置
+## 设置文本样式
 
-组件支持对内容设置复杂的样式。
+组件支持对文本内容设置复杂的样式。
 
-### 设置用户预设的文本样式
+### 设置预设文本样式
 
 通过[setTypingStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#settypingstyle11)可以设置用户预设的文本样式。
 
@@ -556,7 +556,7 @@ build() {
 
 ![RichEditor_decoration](figures/RichEditor_decoration.jpg)
 
-通过[DecorationOptions](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#decorationoptions20)中的enableMultiType设置多装饰线，比如同时设置下划线和中划线。
+从API version 20开始，支持通过[DecorationOptions](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#decorationoptions20)中的enableMultiType设置多装饰线，比如同时设置下划线和中划线。
 
 此接口适用于复杂业务场景，满足文本装饰的多样化需求。在文档协作过程中，多人编辑时，可以通过使用不同的装饰线组合来区分文本状态，从而提高协作效率。
 
@@ -612,9 +612,9 @@ Button($r('app.string.Demo_SetStyledStringButton'))
 
 ### 设置垂直居中
 
-通过[textVerticalAlign](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textverticalalign20)设置文本段落在垂直方向的对齐方式。
+从API version 20开始，支持通过[textVerticalAlign](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textverticalalign20)属性设置文本段落在垂直方向的对齐方式。
 
-此接口优化多元素排版，使组件内容与图片、图标等在垂直方向对齐时，整体布局更协调。
+此接口可用于优化多元素排版，使组件内容与图片、图标等在垂直方向对齐时，整体布局更协调。
 
 <!-- @[richEditor_textVerticalAlign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
@@ -659,9 +659,9 @@ build() {
 
 ### 设置中西文自动间距
 
-通过[enableAutoSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#enableautospacing20)设置是否开启中文与西文的自动间距。
+从API version 20开始，支持通过[enableAutoSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#enableautospacing20)属性设置是否开启中文与西文的自动间距。
 
-此接口优化文本排版，提升组件内文本的可读性。设置自动间距后，中文与西文间产生适当空隙，便于区分不同语种，减少视觉干扰。
+此接口可用于优化文本排版，提升组件内文本的可读性。设置自动间距后，中文与西文间产生适当空隙，便于区分不同语种，减少视觉干扰。
 
 <!-- @[richEditor_enableAutoSpacing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
@@ -711,9 +711,9 @@ struct EnableAutoSpacing {
 
 ### 设置最大行数
 
-通过[maxLines](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#maxlines18)可以设置富文本组件内可显示文本的最大行数。
+从API version 18开始，支持通过[maxLines](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#maxlines18)属性设置富文本组件内可显示文本的最大行数。
 
-此接口控制组件内文本的显示范围，防止文本过长影响页面布局，确保不同设备和场景下的文本显示效果一致，提升界面兼容性和美观度。
+此接口用于控制组件内文本的显示范围，防止文本过长影响页面布局，确保不同设备和场景下的文本显示效果一致，提升界面兼容性和美观度。
 
 <!-- @[richEditor_maxLines](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
