@@ -34,7 +34,7 @@ import { SwipeRefresherV2 } from '@kit.ArkUI';
 
 SwipeRefresherV2 ({content?: ResourceStr, isLoading: boolean})
 
-实现下拉刷新功能。当用户下拉页面时，会触发内容加载操作，即从数据源获取新内容并动态展示在界面中。
+主要用于实现下拉刷新功能。当用户下拉页面时，会触发内容加载操作，即从数据源获取新内容并动态展示在界面中。
 
 **起始版本：** 26.0.0
 
@@ -50,7 +50,7 @@ SwipeRefresherV2 ({content?: ResourceStr, isLoading: boolean})
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明      |
 | -------- | -------- | -------- | -------- |----------|
-| content | [ResourceStr](ts-types.md#resourcestr) | 否 | \@Param | 内容加载时显示的文本。<br/>默认值：空字符串。<br/>**说明**：如果文本大于列宽时，文本被截断。支持Resource类型。   |
+| content | [ResourceStr](ts-types.md#resourcestr) | 否 | \@Param | 内容加载时显示的文本。<br/>默认值：空字符串。<br/>**说明**：如果文本大于列宽时，文本被截断。 |
 | isLoading | boolean | 是 | \@Require\@Param | 当前内容是否正在加载。<br> true：内容正在加载。<br> false：内容未在加载。 |
 
 ## 事件
@@ -58,7 +58,7 @@ SwipeRefresherV2 ({content?: ResourceStr, isLoading: boolean})
 
 ## 示例
 
-从API版本26.0.0开始，支持SwipeRefresherV2。如下示例展示SwipeRefresherV2设置属性content为空字符串或不为空、isLoading为true和false的不同加载效果。
+展示设置属性content为空字符串及不为空、isLoading为true和false的不同加载效果。
 
 ```ts
 import { SwipeRefresherV2 } from '@kit.ArkUI';
