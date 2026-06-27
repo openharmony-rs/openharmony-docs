@@ -2213,3 +2213,4 @@ Describes the alternate icon information of an application.
 | Type                                                        | Description          |
 | ------------------------------------------------------------ | -------------- |
 | [_BundleInfo.AlternateIconInfo](js-apis-bundleManager-bundleInfo.md#alternateiconinfo) | Alternate icon information of an application.|
+<!--no_check-->
