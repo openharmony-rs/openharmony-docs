@@ -82,13 +82,13 @@ try {
   let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
   formProvider.requestPublishForm(want, obj, (error: BusinessError, data: string) => {
     if (error) {
-      console.error(`callback error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+      console.error(`callback error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
       return;
     }
     console.info(`formProvider requestPublishForm, form ID is: ${data}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -118,14 +118,14 @@ try {
   let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
   let callback: AsyncCallback<string> = (error: BusinessError | null, data: string | undefined) => {
     if (error?.code != 0) {
-      console.error(`callback error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+      console.error(`callback error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
       return;
     }
     console.info(`formProvider requestPublishForm, form ID is: ${data}`);
   };
   formProvider.requestPublishForm(want, obj, callback);
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -182,13 +182,13 @@ let want: Want = {
 try {
   formProvider.requestPublishForm(want, (error: BusinessError, data: string) => {
     if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+      console.error(`callback error, code: ${error.code}, message: ${error.message}`);
       return;
     }
     console.info(`formProvider requestPublishForm, form ID is: ${data}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -213,14 +213,14 @@ let want: Want = {
 try {
   let callback: AsyncCallback<string> = (error: BusinessError | null, data: string | undefined) => {
     if (error?.code != 0) {
-      console.error(`callback error, code: ${error?.code}, message: ${error?.message})`);
+      console.error(`callback error, code: ${error?.code}, message: ${error?.message}`);
       return;
     }
     console.info(`formProvider requestPublishForm, form ID is: ${data}`);
   };
   formProvider.requestPublishForm(want, callback);
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -284,10 +284,10 @@ try {
   formProvider.requestPublishForm(want).then((data: string) => {
     console.info(`formProvider requestPublishForm success, form ID is : ${data}`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -312,10 +312,10 @@ try {
   formProvider.requestPublishForm(want).then((data: string) => {
     console.info(`formProvider requestPublishForm success, form ID is : ${data}`);
   }).catch((error) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message})`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -362,7 +362,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   formProvider.isRequestPublishFormSupported((error: BusinessError, isSupported: boolean) => {
     if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+      console.error(`callback error, code: ${error.code}, message: ${error.message}`);
     } else {
       if (isSupported) {
         let want: Want = {
@@ -376,19 +376,19 @@ try {
         try {
           formProvider.requestPublishForm(want, (error: BusinessError, data: string) => {
             if (error) {
-              console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+              console.error(`callback error, code: ${error.code}, message: ${error.message}`);
               return;
             }
             console.info(`formProvider requestPublishForm, form ID is: ${data}`);
           });
         } catch (error) {
-          console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+          console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
         }
       }
     }
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -405,7 +405,7 @@ import { BusinessError, RecordData } from '@kit.BasicServicesKit';
 try {
   let callback: AsyncCallback<boolean> = (error: BusinessError | null, isSupported: boolean | undefined) => {
     if (error?.code != 0) {
-      console.error(`callback error, code: ${error?.code}, message: ${error?.message})`);
+      console.error(`callback error, code: ${error?.code}, message: ${error?.message}`);
     } else {
       if (isSupported) {
         let want: Want = {
@@ -419,21 +419,21 @@ try {
         try {
           let callback: AsyncCallback<string> = (error: BusinessError | null, data: string | undefined) => {
             if (error?.code != 0) {
-              console.error(`callback error, code: ${error?.code}, message: ${error?.message})`);
+              console.error(`callback error, code: ${error?.code}, message: ${error?.message}`);
               return;
             }
             console.info(`formProvider requestPublishForm, form ID is: ${data}`);
           };
           formProvider.requestPublishForm(want, callback);
         } catch (error) {
-          console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+          console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
         }
       }
     }
   };
   formProvider.isRequestPublishFormSupported(callback);
 } catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message})`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -491,17 +491,17 @@ try {
         formProvider.requestPublishForm(want).then((data: string) => {
           console.info(`formProvider requestPublishForm success, form ID is : ${data}`);
         }).catch((error: BusinessError) => {
-          console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+          console.error(`promise error, code: ${error.code}, message: ${error.message}`);
         });
       } catch (error) {
-        console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+        console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
       }
     }
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -529,17 +529,17 @@ try {
         formProvider.requestPublishForm(want).then((data: string) => {
           console.info(`formProvider requestPublishForm success, form ID is : ${data}`);
         }).catch((error) => {
-          console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+          console.error(`promise error, code: ${error.code}, message: ${error.message}`);
         });
       } catch (error) {
-        console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+        console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
       }
     }
   }).catch((error) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message})`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -601,10 +601,10 @@ try {
   formProvider.activateSceneAnimation(formId).then(() => {
     console.info('activateSceneAnimation succeed.');
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -622,10 +622,10 @@ try {
   formProvider.activateSceneAnimation(formId).then(() => {
     console.info('activateSceneAnimation succeed.');
   }).catch((error) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message})`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -687,10 +687,10 @@ try {
   formProvider.deactivateSceneAnimation(formId).then(() => {
     console.info('deactivateSceneAnimation succeed.');
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -708,10 +708,10 @@ try {
   formProvider.deactivateSceneAnimation(formId).then(() => {
     console.info('deactivateSceneAnimation succeed.');
   }).catch((error) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message})`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -775,10 +775,10 @@ try {
   formProvider.updateTemplateFormDetailInfo(templateFormInfo).then(() => {
     console.info('updateTemplateFormDetailInfo succeed.');
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -803,10 +803,10 @@ try {
   formProvider.updateTemplateFormDetailInfo(templateFormInfo).then(() => {
     console.info('updateTemplateFormDetailInfo succeed.');
   }).catch((error) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message})`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -858,7 +858,7 @@ try {
   });
   console.info(`onPublishFormCrossBundleControl success`);
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -875,7 +875,7 @@ try {
   });
   console.info(`onPublishFormCrossBundleControl success`);
 } catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message})`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -931,7 +931,7 @@ const want: Want = {
 try {
   formProvider.openFormManagerCrossBundle(want);
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -956,7 +956,7 @@ const want: Want = {
 try {
   formProvider.openFormManagerCrossBundle(want);
 } catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message})`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1007,7 +1007,7 @@ try {
   formProvider.offPublishFormCrossBundleControl();
   console.info(`offPublishFormCrossBundleControl success`);
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -1022,6 +1022,6 @@ try {
   formProvider.offPublishFormCrossBundleControl();
   console.info(`offPublishFormCrossBundleControl success`);
 } catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message})`);
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```

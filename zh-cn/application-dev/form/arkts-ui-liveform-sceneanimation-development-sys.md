@@ -438,7 +438,7 @@
             "4*4"
           ],
           "sceneAnimationParams": {
-            "abilityName": "MySystemLiveFormExtensionAbility"，
+            "abilityName": "MySystemLiveFormExtensionAbility",
             "disabledDesktopBehaviors": [
               "SWIPE_DESKTOP",
               "PULL_DOWN_SEARCH",

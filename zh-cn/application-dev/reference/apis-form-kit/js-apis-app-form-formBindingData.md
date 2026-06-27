@@ -111,9 +111,9 @@ struct Index {
   pathDir: string = this.content.filesDir;
 
   createFormBindingData() {
+    let filePath = this.pathDir + "/form.png";
+    let file = fileIo.openSync(filePath);
     try {
-      let filePath = this.pathDir + "/form.png";
-      let file = fileIo.openSync(filePath);
       let formImagesParam: Record<string, number> = {
         'image': file.fd
       };
@@ -125,6 +125,8 @@ struct Index {
       let formBindingDataObj = formBindingData.createFormBindingData(createFormBindingDataParam);
     } catch (error) {
       console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+    } finally {
+      fileIo.closeSync(file.fd);
     }
   }
 
@@ -146,8 +148,8 @@ import { formBindingData } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo } from '@kit.CoreFileKit';
 
+let file = fileIo.openSync('/path/to/form.png');
 try {
-  let file = fileIo.openSync('/path/to/form.png');
   let formImagesParam: Record<string, number> = {
     'image': file.fd
   };
@@ -162,5 +164,7 @@ try {
   let code = e.code;
   let message = e.message;
   console.error(`catch error, code: ${code}, message: ${message}`);
+} finally {
+  fileIo.closeSync(file.fd);
 }
 ```
