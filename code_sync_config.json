@@ -10527,7 +10527,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ComponentStateManagement/entry/src/main/ets/pages/LinkDecorator/LinkUsage2.ets",
 				"functions":[
 					{
-						"end_line":47,
+						"end_line":38,
 						"name":"link_usage_two",
 						"start_line":16
 					}
