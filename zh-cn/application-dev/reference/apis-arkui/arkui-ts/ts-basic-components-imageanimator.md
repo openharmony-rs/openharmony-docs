@@ -75,7 +75,7 @@ state(value: AnimationStatus)
 
 duration(value: number)
 
-设置播放时长。当images中任意一帧图片设置了单独的duration后，该属性设置无效。
+设置播放时长。当[images](#images)中任意一帧图片设置了单独的duration后，该属性设置无效。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
