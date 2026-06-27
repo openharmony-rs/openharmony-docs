@@ -93,6 +93,51 @@
 
    ArkTS-Sta示例：
    <!-- @[abilitycap_one_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   
+   ``` C++
+   #include <arkui/native_interface_accessibility.h>
+   #include <string>
+   #include <hilog/log.h>
+   #include "AccessibilityManager.h"
+   #include "fakenode/fake_node.h"
+   // ...
+   void InitAccessibilityCallbacks()
+   {
+       g_callbacksWithInstance.findAccessibilityNodeInfosById = FindAccessibilityNodeInfosById;
+       g_callbacksWithInstance.findAccessibilityNodeInfosByText = FindAccessibilityNodeInfosByText;
+       g_callbacksWithInstance.findFocusedAccessibilityNode = FindFocusedAccessibilityNode;
+       g_callbacksWithInstance.findNextFocusAccessibilityNode = FindNextFocusAccessibilityNode;
+       g_callbacksWithInstance.executeAccessibilityAction = ExecuteAccessibilityAction;
+       g_callbacksWithInstance.clearFocusedFocusAccessibilityNode = ClearFocusedFocusAccessibilityNode;
+       g_callbacksWithInstance.getAccessibilityNodeCursorPosition = GetAccessibilityNodeCursorPosition;
+   }
+   
+   bool RegisterAccessibilityProvider(ArkUI_NodeHandle node, const std::string &id)
+   {
+       InitAccessibilityCallbacks();
+   
+       ArkUI_AccessibilityProvider *provider = nullptr;
+       int32_t ret = OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(&node, &provider);
+       if (ret != 0 || provider == nullptr) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
+                        "GetNativeAccessibilityProvider failed, ret=%{public}d", ret);
+           return false;
+       }
+   
+       ret = OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance(
+           id.c_str(), provider, &g_callbacksWithInstance);
+       if (ret != 0) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
+                        "RegisterCallbackWithInstance failed, ret=%{public}d", ret);
+           return false;
+       }
+   
+       g_provider = provider;
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
+                    "RegisterAccessibilityProvider success, id=%{public}s", id.c_str());
+       return true;
+   }
+   ```
 
 3. 三方框架需要实现如下回调函数。
 
