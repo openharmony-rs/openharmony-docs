@@ -27,7 +27,6 @@
 import { TreeViewV2 } from '@kit.ArkUI';
 ```
 
-
 ## 子组件
 
 无
@@ -38,7 +37,11 @@ TreeViewV2({ treeControllerV2: TreeControllerV2 })
 
 树视图作为一种分层显示的列表，适合显示嵌套结构。
 
+**起始版本：** 26.0.0
+
 **装饰器类型：** \@ComponentV2
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -63,6 +66,10 @@ TreeViewV2({ treeControllerV2: TreeControllerV2 })
 addNode(nodeParam?: NodeParamV2): TreeControllerV2
 
 点击某个节点后，调用该方法可以触发新增子节点。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -90,6 +97,10 @@ removeNode(): void
 
 点击某个节点后，调用该方法可以触发删除该节点。
 
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -103,6 +114,10 @@ removeNode(): void
 modifyNode(): void
 
 点击某个节点后，调用该方法可以触发修改该节点。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -120,6 +135,10 @@ buildDone(): void
 
 建立树视图。节点增加完毕后，必须调用该方法，触发树信息的保存。
 
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -134,6 +153,10 @@ buildDone(): void
 refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: ResourceStr): void
 
 更新树视图。调用该方法，更新当前节点的信息。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -154,6 +177,10 @@ refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: Reso
 ## NodeParamV2
 
 节点参数接口，用于配置树节点的属性。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -182,14 +209,15 @@ refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: Reso
 
 树视图组件的监听器，可以将此对象绑定至树视图组件，然后通过它监听树的节点的变化，同一个监听器不可以控制多个树视图组件。
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。 
-
-
 ### getInstance
 
 static getInstance(): TreeListenerManagerV2
 
 获取监听管理器单例对象。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -211,6 +239,10 @@ static getInstance(): TreeListenerManagerV2
 getTreeListener(): TreeListenerV2
 
 获取树监听器实例。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -237,6 +269,10 @@ onNodeClick(callback: OnChangedCallback): void
 
 注册节点点击事件监听，持续监听节点点击事件。使用callback回调。
 
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -257,6 +293,10 @@ onNodeClick(callback: OnChangedCallback): void
 onceNodeClick(callback: OnChangedCallback): void
 
 注册节点点击事件监听，监听一次后自动销毁。使用callback回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -279,6 +319,10 @@ offNodeClick(callback?: OnChangedCallback): void
 
 取消节点点击事件监听。使用callback回调。
 
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -299,6 +343,10 @@ offNodeClick(callback?: OnChangedCallback): void
 onNodeAdd(callback: OnChangedCallback): void
 
 注册节点添加事件监听，持续监听节点添加事件。使用callback回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -321,6 +369,10 @@ onceNodeAdd(callback: OnChangedCallback): void
 
 注册节点添加事件监听，监听一次后自动销毁。使用callback回调。
 
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -341,6 +393,10 @@ onceNodeAdd(callback: OnChangedCallback): void
 offNodeAdd(callback?: OnChangedCallback): void
 
 取消节点添加事件监听。使用callback回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -363,6 +419,10 @@ onNodeDelete(callback: OnChangedCallback): void
 
 注册节点删除事件监听，持续监听节点删除事件。使用callback回调。
 
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -383,6 +443,10 @@ onNodeDelete(callback: OnChangedCallback): void
 onceNodeDelete(callback: OnChangedCallback): void
 
 注册节点删除事件监听，监听一次后自动销毁。使用callback回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -405,6 +469,10 @@ offNodeDelete(callback?: OnChangedCallback): void
 
 取消节点删除事件监听。使用callback回调。
 
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -425,6 +493,10 @@ offNodeDelete(callback?: OnChangedCallback): void
 onNodeModify(callback: OnChangedCallback): void
 
 注册节点修改事件监听，持续监听节点修改事件。使用callback回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -447,6 +519,10 @@ onceNodeModify(callback: OnChangedCallback): void
 
 注册节点修改事件监听，监听一次后自动销毁。使用callback回调。
 
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -467,6 +543,10 @@ onceNodeModify(callback: OnChangedCallback): void
 offNodeModify(callback?: OnChangedCallback): void
 
 取消节点修改事件监听。使用callback回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -489,6 +569,10 @@ onNodeMove(callback: OnChangedCallback): void
 
 注册节点移动事件监听，持续监听节点移动事件。节点移动通过拖拽操作触发。使用callback回调。
 
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -509,6 +593,10 @@ onNodeMove(callback: OnChangedCallback): void
 onceNodeMove(callback: OnChangedCallback): void
 
 注册节点移动事件监听，监听一次后自动销毁。使用callback回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -531,6 +619,10 @@ offNodeMove(callback?: OnChangedCallback): void
 
 取消节点移动事件监听。使用callback回调。
 
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -552,6 +644,10 @@ type OnChangedCallback = (callbackParam: CallbackParamV2) => void
 
 节点事件回调函数类型。
 
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -567,6 +663,10 @@ type OnChangedCallback = (callbackParam: CallbackParamV2) => void
 ## CallbackParamV2
 
 节点回调参数接口，用于传递节点事件回调的参数信息。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -587,6 +687,10 @@ type OnChangedCallback = (callbackParam: CallbackParamV2) => void
 type OnContainerCallback = () => void
 
 容器回调函数类型，用于定义绑定在树节点上的子组件回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -618,10 +722,14 @@ import {
 @Entry
 @ComponentV2
 struct TreeViewV2Demo {
+  // 新建树形视图控制器
   private treeControllerV2: TreeControllerV2 = new TreeControllerV2();
+  // 新建树形视图监听器
   private treeListenerV2: TreeListenerV2 = TreeListenerManagerV2.getInstance().getTreeListener();
+  // 记录当前点击的节点Id
   @Local clickNodeId: number = 0;
 
+  // 组件销毁时，取消所有监听器
   aboutToDisappear(): void {
     this.treeListenerV2.offNodeClick();
     this.treeListenerV2.offNodeAdd();
@@ -630,48 +738,21 @@ struct TreeViewV2Demo {
     this.treeListenerV2.offNodeMove();
   }
 
-  @Builder
-  menuBuilder(): void {
-    Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-      Text('新增')
-        .fontSize(16)
-        .width(100)
-        .height(30)
-        .textAlign(TextAlign.Center)
-        .onClick((event: ClickEvent) => {
-          this.treeControllerV2.addNode();
-        })
-      Divider()
-      Text('删除')
-        .fontSize(16)
-        .width(100)
-        .height(30)
-        .textAlign(TextAlign.Center)
-        .onClick((event: ClickEvent) => {
-          this.treeControllerV2.removeNode();
-        })
-      Divider()
-      Text('重命名')
-        .fontSize(16)
-        .width(100)
-        .height(30)
-        .textAlign(TextAlign.Center)
-        .onClick((event: ClickEvent) => {
-          this.treeControllerV2.modifyNode();
-        })
-    }.width(100).border({ width: 1, color: 0x80808a, radius: '16dp' })
-  }
-
+  // 组件初始化时。注册监听器并构建树结构
   aboutToAppear(): void {
+	// 注册节点点击监听器
     this.treeListenerV2.onNodeClick((callbackParam: CallbackParamV2) => {
       this.clickNodeId = callbackParam.currentNodeId;
     })
+	// 注册节点添加监听器
     this.treeListenerV2.onNodeAdd((callbackParam: CallbackParamV2) => {
       this.clickNodeId = callbackParam.currentNodeId;
     })
+	// 注册节点删除监听器
     this.treeListenerV2.onNodeDelete((callbackParam: CallbackParamV2) => {
       this.clickNodeId = callbackParam.currentNodeId;
     })
+	// 注册节点移动监听器
     this.treeListenerV2.onceNodeMove((callbackParam: CallbackParamV2) => {
       this.clickNodeId = callbackParam.currentNodeId;
       console.info(`Node moved to index: ${callbackParam.childIndex}`);
@@ -692,6 +773,7 @@ struct TreeViewV2Demo {
       secondaryTitle: '6'
     };
 
+	// 构建树结构
     this.treeControllerV2
       .addNode(nodeParam)
       .addNode({
@@ -781,6 +863,7 @@ struct TreeViewV2Demo {
   build(): void {
     Column() {
       SideBarContainer(SideBarContainerType.Embed) {
+		// 树形视图组件
         TreeViewV2({ treeControllerV2: this.treeControllerV2 })
         Row() {
           Divider().vertical(true).strokeWidth(2).color(0x000000).lineCap(LineCapStyle.Round)
@@ -832,10 +915,14 @@ import {
 @Entry
 @ComponentV2
 struct TreeViewV2Demo {
+  // 新建树形视图控制器
   private treeControllerV2: TreeControllerV2 = new TreeControllerV2();
+  // 新建树形视图监听器
   private treeListenerV2: TreeListenerV2 = TreeListenerManagerV2.getInstance().getTreeListener();
+  // 记录当前点击的节点Id
   @Local clickNodeId: number = 0;
 
+  // 组件销毁时，取消所有监听器
   aboutToDisappear(): void {
     this.treeListenerV2.offNodeClick();
     this.treeListenerV2.offNodeAdd();
@@ -844,48 +931,21 @@ struct TreeViewV2Demo {
     this.treeListenerV2.offNodeMove();
   }
 
-  @Builder
-  menuBuilder(): void {
-    Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-      Text('新增')
-        .fontSize(16)
-        .width(100)
-        .height(30)
-        .textAlign(TextAlign.Center)
-        .onClick((event: ClickEvent) => {
-          this.treeControllerV2.addNode();
-        })
-      Divider()
-      Text('删除')
-        .fontSize(16)
-        .width(100)
-        .height(30)
-        .textAlign(TextAlign.Center)
-        .onClick((event: ClickEvent) => {
-          this.treeControllerV2.removeNode();
-        })
-      Divider()
-      Text('重命名')
-        .fontSize(16)
-        .width(100)
-        .height(30)
-        .textAlign(TextAlign.Center)
-        .onClick((event: ClickEvent) => {
-          this.treeControllerV2.modifyNode();
-        })
-    }.width(100).border({ width: 1, color: 0x80808a, radius: '16dp' })
-  }
-
+  // 组件初始化时。注册监听器并构建树结构
   aboutToAppear(): void {
+    // 注册节点点击监听器
     this.treeListenerV2.onNodeClick((callbackParam: CallbackParamV2) => {
       this.clickNodeId = callbackParam.currentNodeId;
     })
+	// 注册节点添加监听器
     this.treeListenerV2.onNodeAdd((callbackParam: CallbackParamV2) => {
       this.clickNodeId = callbackParam.currentNodeId;
     })
+	// 注册节点删除监听器
     this.treeListenerV2.onNodeDelete((callbackParam: CallbackParamV2) => {
       this.clickNodeId = callbackParam.currentNodeId;
     })
+	// 注册节点移动监听器
     this.treeListenerV2.onceNodeMove((callbackParam: CallbackParamV2) => {
       this.clickNodeId = callbackParam.currentNodeId;
       console.info(`Node moved to parent: ${callbackParam.parentNodeId}, index: ${callbackParam.childIndex}`);
@@ -913,6 +973,7 @@ struct TreeViewV2Demo {
       secondaryTitle: '6'
     };
 
+	// 构建树结构
     this.treeControllerV2
       .addNode(nodeParam)
       .addNode({
@@ -1017,6 +1078,7 @@ struct TreeViewV2Demo {
   build(): void {
     Column() {
       SideBarContainer(SideBarContainerType.Embed) {
+	    // 树形视图组件
         TreeViewV2({ treeControllerV2: this.treeControllerV2 })
         Row() {
           Divider().vertical(true).strokeWidth(2).color(0x000000).lineCap(LineCapStyle.Round)
