@@ -10,6 +10,8 @@
 
 定义布局相关的枚举和接口。
 
+**引用文件：** <arkui/layout.h>
+
 **库：** libace_ndk.z.so
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -17,6 +19,8 @@
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+
+**相关示例：** <!--RP1-->[LayoutSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/LayoutSample)<!--RP1End-->
 
 ## 汇总
 
