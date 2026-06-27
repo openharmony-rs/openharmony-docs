@@ -40,7 +40,7 @@ export default class EntryAbility extends UIAbility {
 
 hash(path: string, algorithm: string): Promise&lt;string&gt;
 
-计算文件的哈希值。使用Promise异步回调。
+计算文件的哈希值，基于指定算法对文件完整内容进行哈希摘要计算。使用Promise异步回调。
 
 > **说明：**
 >
@@ -54,7 +54,7 @@ hash(path: string, algorithm: string): Promise&lt;string&gt;
 
 | 参数名    | 类型   | 必填 | 说明                           |
 | --------- | ------ | ---- | ------------------------------|
-| path      | string | 是   | 待计算哈希值文件的应用沙箱路径。 |
+| path      | string | 是   | 待计算哈希值文件的应用沙箱路径。文件必须存在且可读。 |
 | algorithm | string | 是   | 哈希计算采用的算法。可选&nbsp;"md5"、"sha1"&nbsp;或&nbsp;"sha256"。建议采用安全强度更高的&nbsp;"sha256"。 |
 
 **返回值：**
@@ -89,7 +89,7 @@ hash.hash(filePath, "sha256").then((str: string) => {
 
 hash(path: string, algorithm: string, callback: AsyncCallback&lt;string&gt;): void
 
-计算文件的哈希值。使用callback异步回调。
+计算文件的哈希值，基于指定算法对文件完整内容进行哈希摘要计算。使用callback异步回调。
 
 > **说明：**
 >
@@ -103,7 +103,7 @@ hash(path: string, algorithm: string, callback: AsyncCallback&lt;string&gt;): vo
 
 | 参数名    | 类型                        | 必填 | 说明                                                         |
 | --------- | --------------------------- | ---- | ------------------------------------------------------------ |
-| path      | string                      | 是   | 待计算哈希值文件的应用沙箱路径。                             |
+| path      | string                      | 是   | 待计算哈希值文件的应用沙箱路径。文件必须存在且可读。                             |
 | algorithm | string                      | 是   | 哈希计算采用的算法。可选&nbsp;"md5"、"sha1"&nbsp;或&nbsp;"sha256"。建议采用安全强度更高的&nbsp;"sha256"。 |
 | callback  | AsyncCallback&lt;string&gt; | 是   | 回调函数，返回哈希值（哈希值表示为十六进制数字串，所有字母均大写）。 |
 
@@ -133,7 +133,7 @@ hash(path: string, algorithm: string, callback: AsyncCallback&lt;string&gt;): vo
 
 createHash(algorithm: string): HashStream
 
-创建并返回HashStream对象，用于生成哈希摘要。可以指定哈希计算采用的算法。
+创建并返回HashStream对象，用于生成哈希摘要。可以指定哈希计算采用的算法。HashStream采用流式处理机制，支持分批次更新数据，适用于大文件或数据流的哈希计算，避免一次性加载大文件到内存。
 
 > **说明：**
 >
@@ -196,7 +196,7 @@ HashStream类是用于创建数据的哈希摘要的实用工具。由[createHas
 
 update(data: ArrayBuffer): void
 
-使用给定的数据更新哈希内容，可多次调用。
+使用给定的数据更新哈希内容，可多次调用。每次调用的数据将被追加到已计算的哈希内容中，最终通过digest方法获取完整的哈希摘要。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -204,7 +204,7 @@ update(data: ArrayBuffer): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ----------- | -- | ----------------- |
-| data | ArrayBuffer | 是 | 待计算哈希值的数据。|
+| data | ArrayBuffer | 是 | 待计算哈希值的数据，以ArrayBuffer形式传入。|
 
 **错误码：**
 
@@ -231,7 +231,7 @@ update(data: ArrayBuffer): void
 
 digest(): string
 
-计算传递给哈希处理的所有数据的摘要。
+计算传递给哈希处理的所有数据的摘要，返回最终的哈希值。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
