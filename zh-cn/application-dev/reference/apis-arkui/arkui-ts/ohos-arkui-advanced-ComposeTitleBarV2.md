@@ -24,7 +24,6 @@
 import { ComposeTitleBarV2, ComposeTitleBarV2MenuItem } from '@kit.ArkUI';
 ```
 
-
 ## 子组件
 
 无
@@ -35,7 +34,17 @@ ComposeTitleBarV2({item?: ComposeTitleBarV2MenuItem, title: ResourceStr, subtitl
 
 一种普通标题栏，支持设置标题、头像（可选）和副标题（可选），可用于一级页面、二级及其以上界面配置返回键。
 
+> **说明：**
+> 
+> 入参对象不可为undefined，即`ComposeTitleBarV2(undefined)`。
+
+### 属性
+
+**起始版本：** 26.0.0
+
 **装饰器类型：** \@ComponentV2
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -43,40 +52,65 @@ ComposeTitleBarV2({item?: ComposeTitleBarV2MenuItem, title: ResourceStr, subtitl
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| item | [ComposeTitleBarV2MenuItem](#composetitlebarv2menuitem) | 否 | 用于左侧头像的单个菜单项。 |
-| title | [ResourceStr](ts-types.md#resourcestr) | 是 | 标题。 |
-| subtitle | [ResourceStr](ts-types.md#resourcestr) | 否 | 副标题。 |
-| menuItems | Array&lt;[ComposeTitleBarV2MenuItem](#composetitlebarv2menuitem)&gt; | 否 | 右侧菜单项列表。 |
-
-> **说明：**
-> 
-> 入参对象不可为undefined，即`ComposeTitleBarV2(undefined)`。
+| 名称    | 类型   | 必填 | 装饰器类型 | 说明      |
+| -------- | -------- | -------- | -------- | -------- |
+| item | [ComposeTitleBarV2MenuItem](#composetitlebarv2menuitem) | 否 | \@Param | 用于左侧头像的单个菜单项。 |
+| title | [ResourceStr](ts-types.md#resourcestr) | 是 | \@Param | 标题。 |
+| subtitle | [ResourceStr](ts-types.md#resourcestr) | 否 | \@Param | 副标题。 |
+| menuItems | Array&lt;[ComposeTitleBarV2MenuItem](#composetitlebarv2menuitem)&gt; | 否 | \@Param | 右侧菜单项列表。 |
 
 ## ComposeTitleBarV2MenuItem
 
 菜单项类，用于定义标题栏左侧头像或右侧菜单项。该类使用\@ObservedV2装饰器，支持响应式状态管理。
 
+### 属性
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
-### 构造函数
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| value | [ResourceStr](ts-types.md#resourcestr) | 否 | 否 | 图标资源。<br>**装饰器类型：** @Trace  |
+| symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | Symbol图标资源，优先级大于value，item左侧头像不支持设置该属性。<br>**装饰器类型：** @Trace  |
+| label | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 图标标签描述。<br>**装饰器类型：** @Trace  |
+| isEnabled | boolean | 否 | 是 | 是否启用，默认启用。<br> isEnabled为true时，表示启用。<br> isEnabled为false时，表示禁用。<br>item属性不支持触发isEnabled属性。<br/>默认值：true。<br>**装饰器类型：** @Trace  |
+| action | [OnActionCallback](#onactioncallback) | 否 | 是 | 触发时的动作闭包，item属性不支持触发action事件。<br>**装饰器类型：** @Trace  |
+| accessibilityLevel | string | 否 | 是 | 标题栏右侧自定义按钮无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br/>支持的值为：<br/>"auto"：当前组件会根据情况转换成'yes'或'no'。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"。<br>**装饰器类型：** @Trace  |
+| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 标题栏右侧自定义按钮的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>默认值：有label默认值为当前项label属性内容，没有设置label时，默认值为" "。<br>**装饰器类型：** @Trace  |
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 标题栏右侧自定义按钮的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br/>默认值："单指双击即可执行"。<br>**装饰器类型：** @Trace  |
 
-ComposeTitleBarV2MenuItem(params?: ComposeTitleBarV2MenuItemParams)
+### constructor
+
+constructor(params?: ComposeTitleBarV2MenuItemParams);
+
+ComposeTitleBarV2MenuItem的构造函数
 
 **参数：**
 
-| 名称 | 类型 | 必填 | 说明 |
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | params | [ComposeTitleBarV2MenuItemParams](#composetitlebarv2menuitemparams) | 否 | 菜单项参数对象。 |
 
-### 属性
+## ComposeTitleBarV2MenuItemParams
 
-所有属性均使用\@Trace装饰器，支持细粒度响应式更新。
+菜单项参数接口，用于创建ComposeTitleBarV2MenuItem实例。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -84,35 +118,20 @@ ComposeTitleBarV2MenuItem(params?: ComposeTitleBarV2MenuItemParams)
 | symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | Symbol图标资源，优先级大于value，item左侧头像不支持设置该属性。 |
 | label | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 图标标签描述。 |
 | isEnabled | boolean | 否 | 是 | 是否启用，默认启用。<br> isEnabled为true时，表示启用。<br> isEnabled为false时，表示禁用。<br>item属性不支持触发isEnabled属性。<br/>默认值：true。 |
-| action | ()&nbsp;=&gt;&nbsp;void | 否 | 是 | 触发时的动作闭包，item属性不支持触发action事件。 |
+| action | [OnActionCallback](#onactioncallback) | 否 | 是 | 触发时的动作闭包，item属性不支持触发action事件。 |
 | accessibilityLevel | string | 否 | 是 | 标题栏右侧自定义按钮无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br/>支持的值为：<br/>"auto"：当前组件会根据情况转换成'yes'或'no'。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"。 |
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 标题栏右侧自定义按钮的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>默认值：有label默认值为当前项label属性内容，没有设置label时，默认值为" "。 |
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 标题栏右侧自定义按钮的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br/>默认值："单指双击即可执行"。 |
-
-## ComposeTitleBarV2MenuItemParams
-
-菜单项参数接口，用于创建ComposeTitleBarV2MenuItem实例。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| value | [ResourceStr](ts-types.md#resourcestr) | 是 | 图标资源。 |
-| symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | Symbol图标资源，优先级大于value。 |
-| label | [ResourceStr](ts-types.md#resourcestr) | 否 | 图标标签描述。 |
-| isEnabled | boolean | 否 | 是否启用。<br/>默认值：true。 |
-| action | [OnActionCallback](#onactioncallback) | 否 | 触发时的动作闭包。 |
-| accessibilityLevel | string | 否 | 无障碍级别。<br/>默认值："auto"。 |
-| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 无障碍文本。 |
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 无障碍描述。 |
 
 ## OnActionCallback
 
 type OnActionCallback = () => void
 
 点击菜单项时触发的回调函数类型。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -127,7 +146,7 @@ type OnActionCallback = () => void
 
 ### 示例1（简单的标题栏）
 
-该示例实现了简单的标题栏，带有返回箭头的标题栏及带有右侧菜单项目列表的标题栏。展示了ComposeTitleBarV2的基本用法。
+从API版本26.0.0开始，可以使用ComposeTitleBarV2接口实现简单的标题栏，该示例展示了ComposeTitleBarV2的基本用法。
 
 ```ts
 import { ComposeTitleBarV2, ComposeTitleBarV2MenuItem, Prompt } from '@kit.ArkUI';
@@ -212,7 +231,7 @@ struct Index {
 
 ### 示例2（右侧自定义按钮播报）
 
-该示例通过设置标题栏右侧自定义按钮属性accessibilityText、accessibilityDescription、accessibilityLevel自定义屏幕朗读播报文本。
+从API版本26.0.0开始，通过设置标题栏右侧自定义按钮的以下属性接口accessibilityText、accessibilityDescription、accessibilityLevel，实现自定义屏幕朗读播报文本。
 
 ```ts
 import { ComposeTitleBarV2, ComposeTitleBarV2MenuItem, Prompt } from '@kit.ArkUI';
@@ -313,7 +332,7 @@ struct Index {
 
 ### 示例3（设置Symbol类型图标）
 
-该示例通过设置ComposeTitleBarV2MenuItem的属性symbolStyle，展示了自定义Symbol类型图标。
+从API版本26.0.0开始，通过设置ComposeTitleBarV2MenuItem的属性接口symbolStyle，实现Symbol类型图标的配置。
 
 ```ts
 import { ComposeTitleBarV2, ComposeTitleBarV2MenuItem, Prompt, SymbolGlyphModifier } from '@kit.ArkUI';
