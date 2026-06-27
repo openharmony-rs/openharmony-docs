@@ -445,7 +445,11 @@ struct Index {
 <!-- @[Common_Utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/common/Utils.ets) -->
 
 ``` TypeScript
-function GetUIContextByAtomicInterface(): UIContext {
+// common/Utils.ets
+import hilog from '@ohos.hilog';
+import { UIContext } from '@ohos.arkui';
+
+export function GetUIContextByAtomicInterface(): UIContext {
   let callingScopeUIContext = UIContext.getCallingScopeUIContext();
   if (callingScopeUIContext) {
     hilog.info(0x00, 'testTag', `Get UIContext of calling scope.`)

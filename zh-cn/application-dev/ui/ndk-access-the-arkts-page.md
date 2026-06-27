@@ -325,34 +325,34 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
     
     ``` C++
     // NativeEntry.cpp
-    
+
     #include <arkui/native_node_napi.h>
     #include <js_native_api.h>
     #include "NativeEntry.h"
-    #include "NormalNodeExample.h"
-    
+    #include "NormalTextListExample.h"
+
     namespace NativeModule {
-    
+
     napi_value CreateNativeRoot(napi_env env, napi_callback_info info)
     {
         size_t argc = 1;
         napi_value args[1] = {nullptr};
-    
+
         napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    
+
         // 获取NodeContent
         ArkUI_NodeContentHandle contentHandle;
         OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
         NativeEntry::GetInstance()->SetContentHandle(contentHandle);
-    
-        // 创建组件节点
-        auto node = CreateExample();
-    
+
+        // 创建文本列表
+        auto list = CreateTextListExample();
+
         // 保持Native侧对象到管理类中，维护生命周期。
-        NativeEntry::GetInstance()->SetRootNode(node);
+        NativeEntry::GetInstance()->SetRootNode(list);
         return nullptr;
     }
-    
+
     napi_value DestroyNativeRoot(napi_env env, napi_callback_info info)
     {
         // 从管理类中释放Native侧对象。
@@ -498,18 +498,18 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
     // 提供通用属性和事件的封装。
     #ifndef MYAPPLICATION_ARKUINODE_H
     #define MYAPPLICATION_ARKUINODE_H
-    
+
     #include "ArkUIBaseNode.h"
     #include "NativeModule.h"
     #include <arkui/native_node.h>
     #include <arkui/native_type.h>
-    
+
     namespace NativeModule {
-    
+
     class ArkUINode : public ArkUIBaseNode {
     public:
         explicit ArkUINode(ArkUI_NodeHandle handle) : ArkUIBaseNode(handle) {}
-    
+
         ~ArkUINode() override {}
         
         void SetWidth(float width)
@@ -542,49 +542,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
             ArkUI_AttributeItem item = {value, 1};
             nativeModule_->setAttribute(handle_, NODE_BACKGROUND_COLOR, &item);
         }
-        void SetMargin(float top, float right, float bottom, float left)
-        {
-            ArkUI_NumberValue value[] = {{top}, {right}, {bottom}, {left}};
-            ArkUI_AttributeItem item = {value, 4};
-            nativeModule_->setAttribute(handle_, NODE_MARGIN, &item);
-        }
-        void SetPadding(float top, float right, float bottom, float left)
-        {
-            ArkUI_NumberValue value[] = {{top}, {right}, {bottom}, {left}};
-            ArkUI_AttributeItem item = {value, 4};
-            nativeModule_->setAttribute(handle_, NODE_PADDING, &item);
-        }
-        void SetBorderWidth(float width)
-        {
-            ArkUI_NumberValue value[] = {{.f32 = width}};
-            ArkUI_AttributeItem item = {value, 1};
-            nativeModule_->setAttribute(handle_, NODE_BORDER_WIDTH, &item);
-        }
-        void SetBorderColor(uint32_t color)
-        {
-            ArkUI_NumberValue value[] = {{.u32 = color}};
-            ArkUI_AttributeItem item = {value, 1};
-            nativeModule_->setAttribute(handle_, NODE_BORDER_COLOR, &item);
-        }
-        void SetBorderRadius(float radius)
-        {
-            ArkUI_NumberValue value[] = {{.f32 = radius}};
-            ArkUI_AttributeItem item = {value, 1};
-            nativeModule_->setAttribute(handle_, NODE_BORDER_RADIUS, &item);
-        }
-        void SetOpacity(float opacity)
-        {
-            ArkUI_NumberValue value[] = {{.f32 = opacity}};
-            ArkUI_AttributeItem item = {value, 1};
-            nativeModule_->setAttribute(handle_, NODE_OPACITY, &item);
-        }
-        void SetScale(float x, float y)
-        {
-            ArkUI_NumberValue value[] = {{x}, {y}};
-            ArkUI_AttributeItem item = {value, 2};
-            nativeModule_->setAttribute(handle_, NODE_SCALE, &item);
-        }
-    
+
     protected:
         // 组件树操作的实现类对接。
         void OnAddChild(const std::shared_ptr<ArkUIBaseNode> &child) override
@@ -601,7 +559,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
         }
     };
     } // namespace NativeModule
-    
+
     #endif // MYAPPLICATION_ARKUINODE_H
     ```
 
