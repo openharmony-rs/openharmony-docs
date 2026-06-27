@@ -172,7 +172,7 @@ console.info("result:", result);  // result: 1,2,3
 
 insert(index: number, element: T): void
 
-在长度范围内任意位置插入指定元素，可插入位置区间为[0, linkedList.length]，在linkedList.length处插入时即在linkedList尾部添加元素。
+在长度范围内任意位置插入指定元素，可插入位置区间为[0, LinkedList.length]，在linkedList.length处插入时即在linkedList尾部添加元素。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -182,7 +182,7 @@ insert(index: number, element: T): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 插入位置索引，可插入位置区间为[0, linkedList.length]，且需要小于等于int32_max即2147483647。 |
+| index | number | 是 | 插入位置索引，可插入位置区间为[0, LinkedList.length]，且需要小于等于int32_max即2147483647。 |
 | element | T | 是 | 待插入元素。 |
 
 **错误码：**
