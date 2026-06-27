@@ -382,6 +382,14 @@
 
    ArkTS-Sta示例：
    <!-- @[abilitycap_four_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   
+   ``` C++
+   int32_t FindAccessibilityNodeInfosByText(const char *instanceId, int64_t elementId,
+       const char *text, int32_t requestId, ArkUI_AccessibilityElementInfoList *elementList)
+   {
+       return ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL;
+   }
+   ```
 
 - 基于指定的节点，查询已经聚焦的节点信息
 
