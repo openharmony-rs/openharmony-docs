@@ -58,7 +58,7 @@ SwipeRefresherV2 ({content?: ResourceStr, isLoading: boolean})
 
 ## 示例
 
-展示设置属性content为空字符串及不为空、isLoading为true和false的不同加载效果。
+从API版本26.0.0开始，支持SwipeRefresherV2。如下示例展示SwipeRefresherV2设置属性content为空字符串或不为空、isLoading为true和false的不同加载效果。
 
 ```ts
 import { SwipeRefresherV2 } from '@kit.ArkUI';
