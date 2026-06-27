@@ -251,7 +251,7 @@ struct PageOne {
           })
 
         // 获取当前AppStorageV2里面的所有key
-        Text(`all keys in AppStorage: ${AppStorageV2.keys()}`)
+        Text(`all keys in AppStorageV2: ${AppStorageV2.keys()}`)
           .fontSize(30)
           .margin(10)
       }
@@ -305,7 +305,7 @@ struct PageTwo {
           })
 
         // 获取当前AppStorageV2里面的所有key
-        Text(`all keys in AppStorage: ${AppStorageV2.keys()}`)
+        Text(`all keys in AppStorageV2: ${AppStorageV2.keys()}`)
           .fontSize(30)
           .margin(10)
       }
