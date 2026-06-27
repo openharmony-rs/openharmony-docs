@@ -601,7 +601,7 @@ flush(): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 6800103 | Operation not permitted at current state. Return by promise. |
+| 6800103 | Operation not permit at current state. Return by promise. |
 
 **示例：**
 

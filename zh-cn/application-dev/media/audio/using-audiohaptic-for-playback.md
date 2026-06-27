@@ -82,7 +82,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
 2. 设置音振播放器参数，各参数作用可以查看[AudioHapticManager](../../reference/apis-audio-kit/js-apis-audioHaptic.md#audiohapticmanager)。
 
-   <!-- @[set_hapticparam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
+   <!-- @[set_hapticparam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->  
 
    ``` TypeScript
    let latencyMode: audioHaptic.AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_FAST;
@@ -94,7 +94,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
 3. 调用[createPlayer](../../reference/apis-audio-kit/js-apis-audioHaptic.md#createplayer)方法，创建AudioHapticPlayer实例。
 
-   <!-- @[create_haptic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
+   <!-- @[create_haptic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->  
    
    ``` TypeScript
    let options: audioHaptic.AudioHapticPlayerOptions = {muteAudio: false, muteHaptics: false};
@@ -112,7 +112,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
 4. 调用[start](../../reference/apis-audio-kit/js-apis-audioHaptic.md#start)方法，开启音频播放并同步开启振动。
 
-   <!-- @[haptic_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
+   <!-- @[haptic_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->  
    
    ``` TypeScript
    audioHapticPlayer.start().then(() => {
@@ -126,7 +126,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
 5. 调用[stop](../../reference/apis-audio-kit/js-apis-audioHaptic.md#stop)方法，停止音频播放并同步停止振动。
 
-   <!-- @[haptic_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
+   <!-- @[haptic_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->  
    
    ``` TypeScript
    audioHapticPlayer.stop().then(() => {
@@ -140,7 +140,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
 6. 调用[release](../../reference/apis-audio-kit/js-apis-audioHaptic.md#release)方法，释放AudioHapticPlayer实例。
 
-   <!-- @[haptic_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
+   <!-- @[haptic_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->  
    
    ``` TypeScript
    audioHapticPlayer.release().then(() => {
@@ -154,7 +154,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
 7. 调用[unregisterSource](../../reference/apis-audio-kit/js-apis-audioHaptic.md#unregistersource)方法，将已注册的音频及振动资源移除注册。
 
-   <!-- @[haptic_unregist](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
+   <!-- @[haptic_unregist](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->  
    
    ``` TypeScript
    // 对于不再需要使用的资源，建议应用及时取消注册，避免出现资源泄漏或资源数量超上限等问题。

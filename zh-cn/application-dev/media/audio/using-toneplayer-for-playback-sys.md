@@ -1,4 +1,4 @@
-# 使用TonePlayer开发音频播放功能（仅对系统应用开放）
+# 使用TonePlayer开发音频播放功能(仅对系统应用开放)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @boxwall-->
@@ -111,7 +111,7 @@ let audioRendererInfo: audio.AudioRendererInfo = {
      usage: audio.StreamUsage.STREAM_USAGE_DTMF, // 音频流使用类型：拨号音。根据业务场景配置，参考StreamUsage。
      rendererFlags: 0 // 播放流行为标志，设置0即可。
    };
-// promise调用方式
+// promise调用方式。
 async function playTone(type: audio.ToneType): Promise<void> {
 
   let tonePlayerPromise: audio.TonePlayer | undefined = undefined;

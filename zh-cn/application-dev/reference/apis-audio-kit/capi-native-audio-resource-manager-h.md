@@ -191,8 +191,8 @@ OH_AudioCommon_Result OH_AudioWorkgroup_Start(OH_AudioWorkgroup *group, uint64_t
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioWorkgroup](capi-ohaudio-oh-audioworkgroup.md) *group | 指向[OH_AudioResourceManager_CreateWorkgroup](capi-native-audio-resource-manager-h.md#oh_audioresourcemanager_createworkgroup)创建的音频工作组实例OH_AudioWorkgroup。 |
-| uint64_t startTime | 当前音频工作组启动的时间点（单位：毫秒）。 |
-| uint64_t deadlineTime | 当前音频工作组预期完成的时间（单位：毫秒）。 |
+| uint64_t startTime | 当前音频工作组启动的时间点，单位为毫秒（ms）。 |
+| uint64_t deadlineTime | 当前音频工作组预期完成的时间，单位为毫秒（ms）。 |
 
 **返回：**
 

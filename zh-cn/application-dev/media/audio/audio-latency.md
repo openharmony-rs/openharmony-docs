@@ -35,7 +35,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 OH_AudioRenderer_GetLatencyMode(audioRenderer, &latencyMode);
 ```
 
-在低时延模式下，应用需要每5ms提供一次数据，如果写入数据不及时可能导致杂音等问题。
+在低时延模式下，应用需要每5ms提供一次数据，如果写入数据不及时会导致杂音等问题。
 
 但在以下场景中，即使设置了低时延模式，系统仍会使用普通模式：
 
