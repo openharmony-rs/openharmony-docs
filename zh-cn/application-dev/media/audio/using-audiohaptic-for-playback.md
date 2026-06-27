@@ -157,12 +157,11 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
    <!-- @[haptic_unregist](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->  
    
    ``` TypeScript
-   // 对于不再需要使用的资源，建议应用及时取消注册，避免出现资源泄漏或资源数量超上限等问题。
    audioHapticManagerInstance.unregisterSource(idForFd).then(() => {
-     console.info(`Promise returned to indicate that unregister source successfully`);
+     console.info('Succeeded in unregistering source.');
      // ...
    }).catch((err: BusinessError) => {
-     console.error(`Failed to unregister source ${err}`);
+     console.error(`Failed to unregister source. Code: ${err.code}, message: ${err.message}`);
      // ...
    });
    ```
