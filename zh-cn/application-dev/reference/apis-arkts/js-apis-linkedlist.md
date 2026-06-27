@@ -77,7 +77,7 @@ let linkedList = new LinkedList<string | number | boolean | object>();
 
 add(element: T): boolean
 
-在LinkedList尾部插入元素。调用成功后元素被添加到LinkedList尾部。
+在LinkedList尾部插入元素。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -129,7 +129,7 @@ console.info("result = ", result4); // result =  true
 
 addFirst(element: T): void
 
-在LinkedList头部插入元素。调用成功后元素被添加到LinkedList头部。
+在LinkedList头部插入元素。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -219,7 +219,7 @@ has(element: T): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| element | T | 是 | 待查找的指定元素。 |
+| element | T | 是 | 指定元素。 |
 
 **返回值：**
 
@@ -248,7 +248,7 @@ console.info("result:", result);  // result: true
 
 get(index: number): T
 
-根据下标获取LinkedList中的元素。建议用此方法获取LinkedList中的元素，用[index]方法直接访问可能导致结果不可预测。
+根据下标获取LinkedList中的元素。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -383,7 +383,7 @@ console.info("result:", result);  // result: 0
 
 removeByIndex(index: number): T
 
-在长度范围内（0 <= index < linkedList.length），根据元素的下标值查找元素，并将其删除。
+在LinkedList长度范围内，根据元素的下标值查找元素，并将其删除。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -393,7 +393,7 @@ removeByIndex(index: number): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 指定元素的下标值，0 <= index < linkedList.length，且需要小于等于int32_max即2147483647。 |
+| index | number | 是 | 指定元素的下标值，取值范围[0, LinkedList.length-1]，且需要小于等于int32_max即2147483647。 |
 
 **返回值：**
 
@@ -427,7 +427,7 @@ console.info("result:", result);  // result: 5
 
 removeFirst(): T
 
-删除并返回LinkedList的第一个元素。调用成功后，LinkedList的第一个元素被移除。
+删除并返回LinkedList的第一个元素。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -465,7 +465,7 @@ console.info("result:", result);  // result: 2
 
 removeLast(): T
 
-删除并返回LinkedList的最后一个元素。调用成功后，LinkedList的最后一个元素被移除。
+删除并返回LinkedList的最后一个元素。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -503,7 +503,7 @@ console.info("result:", result);  // result: 4
 
 remove(element: T): boolean
 
-删除查找到的第一个指定元素。如果LinkedList中不存在指定元素，会返回false。
+删除查找到的第一个指定元素。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -519,7 +519,7 @@ remove(element: T): boolean
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean | 删除成功返回true，删除失败或未找到指定元素返回false。 |
+| boolean | 删除成功返回true，否则返回false。 |
 
 **错误码：**
 
@@ -760,14 +760,14 @@ set(index: number, element: T): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 查找的下标值。需要小于等于int32_max即2147483647。 |
+| index | number | 是 | 查找的下标值。取值范围[0, LinkedList.length-1]，且需要小于等于int32_max即2147483647。 |
 | element | T | 是 | 用来替换的元素。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回替换后的元素，如果元素为空则返回undefined。 |
+| T | 返回替换后的元素，如果元素为undefined则返回undefined，为null则返回null。 |
 
 **错误码：**
 
@@ -839,7 +839,7 @@ getFirst(): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回对应元素，若元素为空则返回undefined。 |
+| T | 返回对应元素，如果元素为undefined则返回undefined，为null则返回null。 |
 
 **错误码：**
 
@@ -901,7 +901,7 @@ console.info("result:", result);  // result: 4
 
 [Symbol.iterator]\(): IterableIterator&lt;T&gt;
 
-返回一个迭代器，迭代器的每一项都是一个JavaScript对象。
+返回一个迭代器，用于遍历LinkedList中的元素。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
