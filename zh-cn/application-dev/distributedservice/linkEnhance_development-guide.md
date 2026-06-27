@@ -61,7 +61,7 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
 | sendData(data:ArrayBuffer)                 | 向远端设备发送数据。                                                                                     |
 | on(type: 'connectResult')                  | 订阅连接结果通知变化的事件。                                                                              |
 | on(type: 'disconnected')                   | 订阅连接状态断开的事件。                                                                                  |
-| on(type: 'dataReceived')                   | 注册收数据的通知事件。                                                                                    |
+| on(type: 'dataReceived')                   | 订阅收数据的通知事件。                                                                                    |
 | createConnection(deviceId: string,name:string)| 创建一个connection对象。                                                                              |
 | start()                                    | 服务端开启服务。                                                                                         |   
 | stop()                                     | 服务端停止服务。                                                                                           |
@@ -117,13 +117,12 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
           console.info(TAG + 'serverOnCallback');
         });
         server.on('serverStopped', (reason: number): void => {
-          console.info(TAG, 'serverStopped， reason= ' + reason);
+          console.info(TAG, 'serverStopped, reason= ' + reason);
         });
         // 启动服务
         server.start();
       } catch (err) {
-        console.error(TAG + 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
-        (err as BusinessError).message);
+        console.error(TAG + 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
       }
     }
     ```
@@ -147,8 +146,7 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
         // 向远端发送数据。
         connection.sendData(arraybuffer);
       } catch (err) {
-        console.error(TAG + 'server on callback errCode: ' + (err as BusinessError).code + ', errMessage: ' +
-        (err as BusinessError).message);
+        console.error(TAG + 'server on callback errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
       }
     }
     ```
@@ -161,8 +159,7 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
         connection.disconnect();
         connection.close();
       } catch (err) {
-        console.error(TAG + 'disconnect errCode: ' + (err as BusinessError).code + ', errMessage: ' +
-        (err as BusinessError).message);
+        console.error(TAG + 'disconnect errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
       }
     }
     ```
@@ -174,18 +171,16 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
       try {
         server.stop();
       } catch (err) {
-        console.error(TAG + 'stop server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
-        (err as BusinessError).message);
+        console.error(TAG + 'stop server errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
       }
     }
     // Server端停止服务并取消所有的订阅事件
     linkEnhanceClose(server: linkEnhance.Server) {
-      console.info(TAG + 'close server' );
+      console.info(TAG + 'close server');
       try {
         server.close();
       } catch (err) {
-        console.error(TAG + 'close server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
-        (err as BusinessError).message);
+        console.error(TAG + 'close server errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
       }
     }
     ```
@@ -244,8 +239,7 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
         // 发起连接
         connection.connect();
       } catch (err) {
-        console.error(TAG + 'connect errCode: ' + (err as BusinessError).code + ', errMessage: ' +
-        (err as BusinessError).message);
+        console.error(TAG + 'connect errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
       }
     }
     ```
@@ -257,8 +251,7 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
         connection.disconnect();
         connection.close();
       } catch (err) {
-        console.error(TAG + 'disconnect errCode: ' + (err as BusinessError).code + ', errMessage: ' +
-        (err as BusinessError).message);
+        console.error(TAG + 'disconnect errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
       }
     }
     ```
