@@ -342,9 +342,9 @@ ArkTS-Sta: minimizeAll(id: long, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | Permission verification failed. A non-system application calls a system API. |
+| 202      | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities.<br/>适用版本：12+ |
 | 1300003  | This window manager service works abnormally.                |
 
 **示例：**
@@ -440,9 +440,9 @@ ArkTS-Sta: minimizeAll(id: long): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | Permission verification failed. A non-system application calls a system API. |
+| 202      | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities.<br/>适用版本：12+ |
 | 1300003  | This window manager service works abnormally.                |
 
 **示例：**
@@ -567,8 +567,8 @@ toggleShownStateForAllAppWindows(callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities.<br/>适用版本：12+ |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -607,8 +607,8 @@ toggleShownStateForAllAppWindows(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities.<br/>适用版本：12+ |
 | 1300003 | This window manager service works abnormally. |
 
 **示例：**
@@ -2305,7 +2305,7 @@ hide (callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
 | 1300002 | This window state is abnormal. |
 
 **示例：**
@@ -2345,7 +2345,7 @@ hide(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
 | 1300002 | This window state is abnormal. |
 
 **示例：**
@@ -3021,7 +3021,7 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;, c
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
@@ -3109,7 +3109,7 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;): 
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
@@ -3190,7 +3190,7 @@ bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 1300002 | This window state is abnormal.               |
 | 1300003 | This window manager service works abnormally. |
@@ -4038,7 +4038,7 @@ setWaterMarkFlag(enable: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ---------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal.                 |
 | 1300003 | This window manager service works abnormally.  |
@@ -4110,7 +4110,7 @@ setWaterMarkFlag(enable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ---------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+ |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal.                 |
 | 1300003 | This window manager service works abnormally.  |
