@@ -1,8 +1,8 @@
 # @ohos.file.BackupExtensionContext (备份恢复扩展能力)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @lvzhenjie-->
-<!--Designer: @chenxi0605-->
+<!--Owner: @rainlost-->
+<!--Designer: @rainlost-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
