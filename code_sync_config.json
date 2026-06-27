@@ -14678,6 +14678,76 @@
 						"start_line":15
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeTree.ets",
+				"functions":[
+					{
+						"end_line":336,
+						"name":"frameNodeTree_start_sta",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeCommon.ets",
+				"functions":[
+					{
+						"end_line":230,
+						"name":"frameNodeCommon_start_sta",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeDraw.ets",
+				"functions":[
+					{
+						"end_line":187,
+						"name":"frameNodeDraw_start_sta",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeTypeNode.ets",
+				"functions":[
+					{
+						"end_line":347,
+						"name":"frameNodeTypeNode_start_sta",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeLazyForEachSelect.ets",
+				"functions":[
+					{
+						"end_line":311,
+						"name":"frameNodeLazyForEachSelect_start_sta",
+						"start_line":18
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeInvalidateAttributes.ets",
+				"functions":[
+					{
+						"end_line":132,
+						"name":"frameNodeInvalidateAttributes_start_sta",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeIsInRenderState.ets",
+				"functions":[
+					{
+						"end_line":108,
+						"name":"frameNodeIsInRenderState_start_sta",
+						"start_line":17
+					}
+				]
 			}
 		]
 	},
@@ -14699,6 +14769,16 @@
 				"functions":[
 					{
 						"end_line":78,
+						"name":"drawForeground_start_sta",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DrawModifier/entry/src/main/ets/pages/samples/Canvas.ets",
+				"functions":[
+					{
+						"end_line":147,
 						"name":"drawForeground_start_sta",
 						"start_line":17
 					}
@@ -27349,6 +27429,71 @@
 						"end_line":49,
 						"name":"specify_parameter_generate_sm2_keypair_sync",
 						"start_line":16
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-user-defined-arktsNode-renderNode.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/OperationNodeTree.ets",
+				"functions":[
+					{
+						"end_line":107,
+						"name":"operation_node_tree",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RenderNode/entry/src/main/ets/pages/samples/OperationNodeTree.ets",
+				"functions":[
+					{
+						"end_line":101,
+						"name":"operation_node_tree_sta",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RenderNode/entry/src/main/ets/pages/samples/RenderingProperties.ets",
+				"functions":[
+					{
+						"end_line":221,
+						"name":"rendering_properties_sta",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RenderNode/entry/src/main/ets/pages/samples/CustomDraw.ets",
+				"functions":[
+					{
+						"end_line":109,
+						"name":"custom_draw_sta",
+						"start_line":18
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RenderNode/entry/src/main/ets/pages/samples/CustomDrawCanvas.ets",
+				"functions":[
+					{
+						"end_line":180,
+						"name":"custom_draw_canvas_sta",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RenderNode/entry/src/main/ets/pages/samples/SetLabel.ets",
+				"functions":[
+					{
+						"end_line":68,
+						"name":"set_label_sta",
+						"start_line":17
 					}
 				]
 			}
