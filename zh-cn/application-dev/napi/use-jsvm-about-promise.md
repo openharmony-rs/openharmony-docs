@@ -45,11 +45,54 @@ cpp部分代码
 
 <!-- @[oh_jsvm_ispromise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPromise/ispromise/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+#define LOG_DOMAIN 0x3200
+#define LOG_TAG "APP"
+
+static int g_aa = 0;
+
+#define CHECK_RET(theCall)                                                                                             \
+    do {                                                                                                               \
+        JSVM_Status cond = theCall;                                                                                    \
+        if ((cond) != JSVM_OK) {                                                                                       \
+            const JSVM_ExtendedErrorInfo *info;                                                                        \
+            OH_JSVM_GetLastErrorInfo(env, &info);                                                                      \
+            OH_LOG_ERROR(LOG_APP, "jsvm fail file: %{public}s line: %{public}d ret = %{public}d message = %{public}s", \
+                         __FILE__, __LINE__, cond, info != nullptr ? info->errorMessage : "");                         \
+            return -1;                                                                                                 \
+        }                                                                                                              \
+    } while (0)
+
+#define CHECK(theCall)                                                                                                 \
+    do {                                                                                                               \
+        JSVM_Status cond = theCall;                                                                                    \
+        if ((cond) != JSVM_OK) {                                                                                       \
+            OH_LOG_ERROR(LOG_APP, "jsvm fail file: %{public}s line: %{public}d ret = %{public}d", __FILE__, __LINE__,  \
+                         cond);                                                                                        \
+            return -1;                                                                                                 \
+        }                                                                                                              \
+    } while (0)
+
+// 用于调用theCall并检查其返回值是否为JSVM_OK。
+// 如果不是，则调用OH_JSVM_GetLastErrorInfo处理错误并返回retVal。
+#define JSVM_CALL_BASE(env, theCall, retVal)                                                                           \
+    do {                                                                                                               \
+        JSVM_Status cond = theCall;                                                                                    \
+        if (cond != JSVM_OK) {                                                                                         \
+            const JSVM_ExtendedErrorInfo *info;                                                                        \
+            OH_JSVM_GetLastErrorInfo(env, &info);                                                                      \
+            OH_LOG_ERROR(LOG_APP, "jsvm fail file: %{public}s line: %{public}d ret = %{public}d message = %{public}s", \
+                         __FILE__, __LINE__, cond, info != nullptr ? info->errorMessage : "");                         \
+            return retVal;                                                                                             \
+        }                                                                                                              \
+    } while (0)
+
+// JSVM_CALL_BASE的简化版本，返回nullptr
+#define JSVM_CALL(theCall) JSVM_CALL_BASE(env, theCall, nullptr)
+
 // OH_JSVM_IsPromise的样例方法
 static JSVM_Value IsPromise(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -78,7 +121,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // 样例测试js
-const char *srcCallNative = R"JS(isPromise())JS";
+const char *SRC_CALL_NATIVE = R"JS(isPromise())JS";
 ```
 
 预期结果：
@@ -98,11 +141,12 @@ cpp部分代码
 
 <!-- @[oh_jsvm_resolvedeferred_and_rejectdeferred](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPromise/resolvereject/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 // OH_JSVM_CreatePromise、OH_JSVM_ResolveDeferred、OH_JSVM_RejectDeferred的样例方法
 static JSVM_Value CreatePromise(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -130,7 +174,8 @@ static JSVM_Value ResolveRejectDeferred(JSVM_Env env, JSVM_CallbackInfo info)
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     // 第一个参数为向resolve传入的信息，第二个参数为向reject传入的信息，第三个参数为Promise的状态
     bool status = false;
-    OH_JSVM_GetValueBool(env, args[2], &status);
+    constexpr size_t PROMISE_STATUS_ARG_INDEX = 2;
+    OH_JSVM_GetValueBool(env, args[PROMISE_STATUS_ARG_INDEX], &status);
     // 创建Promise对象
     JSVM_Deferred deferred = nullptr;
     JSVM_Value promise = nullptr;
@@ -159,14 +204,14 @@ static JSVM_CallbackStruct param[] = {
 static JSVM_CallbackStruct *method = param;
 // CreatePromise,ResolveRejectDeferred方法别名，供JS调用
 static JSVM_PropertyDescriptor descriptor[] = {
-    {"createPromise", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
-    {"resolveRejectDeferred", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"createPromise", nullptr, method, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"resolveRejectDeferred", nullptr, method+1, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 
 // 样例测试js
-const char *srcCallNative = R"JS(createPromise();
-                                 resolveRejectDeferred('success', 'fail', true);
-                                 resolveRejectDeferred('success', 'fail', false);)JS";
+const char *SRC_CALL_NATIVE_CREATE_PROMISE = R"JS(createPromise())JS";
+const char *SRC_CALL_NATIVE_RESOLVE_REJECT_DEFERRED1 = R"JS(resolveRejectDeferred('success', 'fail', true))JS";
+const char *SRC_CALL_NATIVE_RESOLVE_REJECT_DEFERRED2 = R"JS(resolveRejectDeferred('success', 'fail', false))JS";
 ```
 
 预期结果：
