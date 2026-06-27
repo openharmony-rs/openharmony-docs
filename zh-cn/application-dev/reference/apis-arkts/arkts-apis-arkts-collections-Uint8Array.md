@@ -526,7 +526,7 @@ uint8Array.every((element: number) => element > 1);  // true
 ## fill
 fill(value: number, start?: number, end?: number): Uint8Array
 
-使用特定值填充替换ArkTS Uint8Array指定范围的全部元素，并返回修改后的的ArkTS Uint8Array。
+使用特定值填充替换ArkTS Uint8Array指定范围的全部元素，并返回修改后的ArkTS Uint8Array。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
