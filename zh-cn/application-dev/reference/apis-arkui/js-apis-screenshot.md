@@ -167,7 +167,7 @@ try {
   // 调用capture接口获取全屏截图
   let promise = screenshot.capture(captureOption);
   promise.then((pixelMap: image.PixelMap) => {
-    console.info('Succeeded in saving screenshot. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
+    console.info(`Succeeded in saving screenshot. Pixel bytes number: ${pixelMap.getPixelBytesNumber()}`);
     pixelMap.release(); // PixelMap使用完后及时释放内存
   }).catch((err: BusinessError) => {
     console.error(`Failed to save screenshot. Code: ${err.code}, message: ${err.message}`);
