@@ -727,9 +727,9 @@ showSystemApnSettings(context: Context): Promise\<void>
 >
 >- 若未插入SIM卡或设备不支持APN配置，将无法打开该配置界面。
 
-**ArkTS-Dyn起始版本**： 26.0.0
+**ArkTS-Dyn起始版本**：26.0.0
 
-**ArkTS-Sta起始版本**： 26.0.0
+**ArkTS-Sta起始版本**：26.0.0
 
 **系统能力**：SystemCapability.Telephony.CellularData
 
