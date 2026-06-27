@@ -307,7 +307,7 @@ let pres = process.getThreadPriority(tid);
 
 isAppUid(v: number): boolean
 
-判断uid是否属于应用程序。
+判断uid是否属于当前应用程序。
 
 > **说明：**
 >
@@ -370,7 +370,7 @@ let pres = process.getSystemConfig(_SC_ARG_MAX);
 
 getEnvironmentVar(name: string): string
 
-获取环境变量名对应的值。
+获取环境变量名对应的值。如果环境变量不存在，返回undefined。
 
 > **说明：**
 >
@@ -428,9 +428,11 @@ isAppUid(v: number): boolean
 **示例：**
 
 ```js
+// 创建ProcessManager实例
 let pro = new process.ProcessManager();
 // uid通过process.uid获取
 let pres = process.uid;
+// 判断uid是否属于当前应用程序
 let result = pro.isAppUid(pres);
 console.info("result: " + result); // result: true
 ```
@@ -461,7 +463,9 @@ getUidForName(v: string): number
 **示例：**
 
 ```js
+// 创建ProcessManager实例
 let pro = new process.ProcessManager();
+// 根据用户名获取uid
 let pres = pro.getUidForName("tool");
 ```
 
@@ -491,8 +495,11 @@ getThreadPriority(v: number): number
 **示例：**
 
 ```js
+// 创建ProcessManager实例
 let pro = new process.ProcessManager();
+// 获取当前线程tid
 let tid = process.tid;
+// 根据tid获取线程优先级
 let pres = pro.getThreadPriority(tid);
 ```
 
@@ -522,8 +529,11 @@ getSystemConfig(name: number): number
 **示例：**
 
 ```js
+// 创建ProcessManager实例
 let pro = new process.ProcessManager();
+// 定义系统配置参数
 let _SC_ARG_MAX = 0;
+// 获取系统配置信息
 let pres = pro.getSystemConfig(_SC_ARG_MAX);
 ```
 
@@ -553,7 +563,9 @@ getEnvironmentVar(name: string): string
 **示例：**
 
 ```js
+// 创建ProcessManager实例
 let pro = new process.ProcessManager();
+// 获取PATH环境变量的值
 let pres = pro.getEnvironmentVar("PATH");
 ```
 
@@ -610,7 +622,10 @@ kill(signal: number, pid: number): boolean
 **示例：**
 
 ```js
+// 创建ProcessManager实例
 let pro = new process.ProcessManager();
+// 获取当前进程pid
 let pres = process.pid;
+// 发送信号28结束当前进程
 let result = pro.kill(28, pres);
 ```
