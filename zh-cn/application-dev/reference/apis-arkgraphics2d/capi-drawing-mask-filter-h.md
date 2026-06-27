@@ -79,7 +79,7 @@ OH_Drawing_MaskFilter* OH_Drawing_MaskFilterCreateBlur(OH_Drawing_BlurType blurT
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Drawing_BlurType](#oh_drawing_blurtype) blurType | 表示模糊类型，用于指定蒙版滤波器的模糊操作方式。具体可选值参见OH_Drawing_BlurType枚举。 |
-| float sigma | 表示要应用的高斯模糊的标准差，单位为像素。必须大于0，传入小于等于0的值时返回nullptr。 |
+| float sigma | 表示要应用的高斯模糊的标准差，单位为px。必须大于0，传入小于等于0的值时返回nullptr。 |
 | bool respectCTM | 表示模糊标准差值是否受CTM（当前变换矩阵）影响。传入true表示受CTM影响，传入false表示不受CTM影响，标准差值固定。 |
 
 **返回：**

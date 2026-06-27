@@ -31,14 +31,14 @@ static createBlurImageFilter(sigmaX: number, sigmaY: number, tileMode: TileMode,
 
 创建具有模糊效果的图像滤波器。
 
-**系统能力**：SystemCapability.Graphics.Drawing
+**系统能力：** SystemCapability.Graphics.Drawing
 
 **参数：**
 
 | 参数名          | 类型    | 必填 | 说明                                                        |
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
-| sigmaX | number | 是   | 表示沿x轴方向上高斯模糊的标准差，必须大于0，该参数为浮点数。单位为物理像素px。传入小于等于0的值时返回错误码401。 |
-| sigmaY | number | 是   | 表示沿y轴方向上高斯模糊的标准差，必须大于0，该参数为浮点数。单位为物理像素px。传入小于等于0的值时返回错误码401。 |
+| sigmaX | number | 是   | 表示沿x轴方向上高斯模糊的标准差，必须大于0，该参数为浮点数。单位为物理像素px。 |
+| sigmaY | number | 是   | 表示沿y轴方向上高斯模糊的标准差，必须大于0，该参数为浮点数。单位为物理像素px。 |
 | tileMode | [TileMode](arkts-apis-graphics-drawing-e.md#tilemode12)| 是   | 表示在边缘处应用的平铺模式。 |
 | imageFilter | [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| null | 否   | 要与当前图像滤波器叠加的输入滤波器，默认为null，表示直接将当前图像滤波器作用于原始图像。 |
 
@@ -84,14 +84,6 @@ static createFromImage(pixelmap: image.PixelMap, srcRect?: common2D.Rect | null,
 | 类型                  | 说明           |
 | --------------------- | -------------- |
 | [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | 返回基于图像创建的图像滤波器，可用于画刷或画笔实现图像纹理填充。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[图形绘制与显示错误码](../apis-arkgraphics2d/errorcode-drawing.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
 **示例：**
 
@@ -168,7 +160,7 @@ static createBlendImageFilter(mode: BlendMode, background: ImageFilter, foregrou
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| 25900001 | Parameter error.Possible causes: Incorrect parameter range. |
 
 **示例：**
 
@@ -185,7 +177,7 @@ let blendImageFilter = drawing.ImageFilter.createBlendImageFilter(drawing.BlendM
 ```
 ## createComposeImageFilter<sup>20+</sup>
 
-static createComposeImageFilter(cOuter: ImageFilter | null, cInner: ImageFilter | null): ImageFilter
+static createComposeImageFilter(cOuter: ImageFilter, cInner: ImageFilter): ImageFilter
 
 将两个图像滤波器进行级联，生成新的图像滤波器，级联时会将第一级滤波器的输出作为第二级滤波器的输入，经过第二级滤波器处理后，输出最终的滤波结果。
 
@@ -195,22 +187,14 @@ static createComposeImageFilter(cOuter: ImageFilter | null, cInner: ImageFilter 
 
 | 参数名          | 类型    | 必填 | 说明                                                          |
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
-| cOuter | [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| null | 是   | 在级联中，作为第二级的滤波器，处理第一级滤波器的输出。如果第二级滤波器为空，第一级滤波器不为空，最后输出第一级滤波器的结果。两级滤波器不能同时为空。 |
-| cInner | [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| null | 是   | 在级联中，作为第一级的滤波器，直接处理图像的原始内容。如果第一级滤波器为空，第二级滤波器不为空，最后输出第二级滤波器的结果。两级滤波器不能同时为空。 |
+| cOuter | [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | 是   | 在级联中，作为第二级的滤波器，处理第一级滤波器的输出。如果第二级滤波器为空，第一级滤波器不为空，最后输出第一级滤波器的结果。两级滤波器不能同时为空。 |
+| cInner | [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | 是   | 在级联中，作为第一级的滤波器，直接处理图像的原始内容。如果第一级滤波器为空，第二级滤波器不为空，最后输出第二级滤波器的结果。两级滤波器不能同时为空。 |
 
 **返回值：**
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
 | [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | 返回级联后的图像滤波器，可用于画刷或画笔实现两种滤波效果的叠加。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[图形绘制与显示错误码](../apis-arkgraphics2d/errorcode-drawing.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
 **示例：**
 
@@ -290,14 +274,6 @@ static createOffsetImageFilter(dx: number, dy: number, input?: ImageFilter | nul
 | --------------------- | -------------- |
 | [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | 返回偏移后的图像滤波器，可用于画刷或画笔实现图像偏移或阴影效果。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[图形绘制与显示错误码](../apis-arkgraphics2d/errorcode-drawing.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
-
 **示例：**
 
 ```ts
@@ -327,14 +303,6 @@ static createFromShaderEffect(shader: ShaderEffect): ImageFilter
 | 类型                  | 说明           |
 | --------------------- | -------------- |
 | [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | 返回基于着色器创建的图像滤波器，可用于画刷或画笔实现着色器渲染效果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[图形绘制与显示错误码](../apis-arkgraphics2d/errorcode-drawing.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
 **示例：**
 

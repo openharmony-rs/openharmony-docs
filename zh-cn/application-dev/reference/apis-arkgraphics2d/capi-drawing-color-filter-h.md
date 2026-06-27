@@ -34,7 +34,7 @@
 | [OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateSrgbGammaToLinear(void)](#oh_drawing_colorfiltercreatesrgbgammatolinear) | 创建一个从SRGB颜色空间转换到线性颜色空间的颜色滤波器。 |
 | [OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateLuma(void)](#oh_drawing_colorfiltercreateluma) | 创建一个颜色滤波器，将其输入的亮度值乘以透明度通道的值，并将红色、绿色和蓝色通道设置为零。 |
 | [OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateLighting(uint32_t mulColor, uint32_t addColor)](#oh_drawing_colorfiltercreatelighting) | 创建一个光照颜色滤波器，此滤波器会将RGB通道的颜色值乘以一种颜色值并加上另一种颜色值，计算结果会被限制在0到255范围内。 |
-| [void OH_Drawing_ColorFilterDestroy(OH_Drawing_ColorFilter* colorFilter)](#oh_drawing_colorfilterdestroy) | 销毁由OH_Drawing_ColorFilterCreateBlendMode、OH_Drawing_ColorFilterCreateCompose、OH_Drawing_ColorFilterCreateMatrix、OH_Drawing_ColorFilterCreateLinearToSrgbGamma、OH_Drawing_ColorFilterCreateSrgbGammaToLinear、OH_Drawing_ColorFilterCreateLuma或OH_Drawing_ColorFilterCreateLighting创建的颜色滤波器对象，并回收该对象占用的内存。 |
+| [void OH_Drawing_ColorFilterDestroy(OH_Drawing_ColorFilter* colorFilter)](#oh_drawing_colorfilterdestroy) | 销毁颜色滤波器对象，并回收该对象占用的内存。 |
 
 ## 函数说明
 
@@ -85,8 +85,8 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateCompose(OH_Drawing_ColorFilt
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Drawing_ColorFilter](capi-drawing-oh-drawing-colorfilter.md)* outerColorFilter | 指向颜色滤波器对象的指针。传入NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
-| [OH_Drawing_ColorFilter](capi-drawing-oh-drawing-colorfilter.md)* innerColorFilter | 指向颜色滤波器对象的指针。传入NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [OH_Drawing_ColorFilter](capi-drawing-oh-drawing-colorfilter.md)* outerColorFilter | 指向颜色滤波器对象的指针。 |
+| [OH_Drawing_ColorFilter](capi-drawing-oh-drawing-colorfilter.md)* innerColorFilter | 指向颜色滤波器对象的指针。 |
 
 **返回：**
 
@@ -113,7 +113,7 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateMatrix(const float matrix[20
 
 | 参数项 | 描述 |
 | -- | -- |
-| const float matrix[20] | 表示4x5颜色矩阵，用于对图像的颜色通道进行线性变换。为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| const float matrix[20] | 表示4x5颜色矩阵，用于对图像的颜色通道进行线性变换。 |
 
 **返回：**
 
@@ -217,7 +217,7 @@ void OH_Drawing_ColorFilterDestroy(OH_Drawing_ColorFilter* colorFilter)
 
 **描述**
 
-销毁由OH_Drawing_ColorFilterCreateBlendMode、OH_Drawing_ColorFilterCreateCompose、OH_Drawing_ColorFilterCreateMatrix、OH_Drawing_ColorFilterCreateLinearToSrgbGamma、OH_Drawing_ColorFilterCreateSrgbGammaToLinear、OH_Drawing_ColorFilterCreateLuma或OH_Drawing_ColorFilterCreateLighting创建的颜色滤波器对象，并回收该对象占用的内存。
+销毁颜色滤波器对象，并回收该对象占用的内存。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -229,19 +229,4 @@ void OH_Drawing_ColorFilterDestroy(OH_Drawing_ColorFilter* colorFilter)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Drawing_ColorFilter](capi-drawing-oh-drawing-colorfilter.md)* colorFilter | 表示指向颜色滤波器对象的指针。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| void | 无返回值，销毁操作完成后不返回结果。 |
-
-## 错误码
-
-以下错误码的详细介绍请参见[drawing_error_code.h](capi-drawing-error-code-h.md)。
-
-| 错误码ID | 错误信息 | 触发接口 |
-| -- | -- | -- |
-| OH_DRAWING_ERROR_INVALID_PARAMETER | 参数错误 | OH_Drawing_ColorFilterCreateCompose、OH_Drawing_ColorFilterCreateMatrix |
-
 

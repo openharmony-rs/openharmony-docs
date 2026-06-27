@@ -157,7 +157,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateLinearGradient(const OH_Dr
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md)* | 返回创建的着色器对象的指针。如果返回NULL，表示创建失败；可能的原因是可用内存不足，或者是startPt、endPt、colors至少一个为NULL。 |
+| [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md)* | 返回创建的着色器对象的指针。如果返回NULL，表示创建失败；可能的原因是可用内存不足，或者是startPt、endPt、colors中任一为NULL。 |
 
 ### OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix()
 
@@ -190,7 +190,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMat
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md)* | 返回创建的着色器对象的指针。如果返回NULL，表示创建失败；可能的原因是可用内存不足，或者是startPt、endPt、colors至少一个为NULL。 |
+| [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md)* | 返回创建的着色器对象的指针。如果返回NULL，表示创建失败；可能的原因是可用内存不足，或者是startPt、endPt、colors中任一为NULL。 |
 
 ### OH_Drawing_ShaderEffectCreateRadialGradient()
 
@@ -222,7 +222,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateRadialGradient(const OH_Dr
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md)* | 返回创建的着色器对象的指针。如果返回NULL，表示创建失败；可能的原因是可用内存不足，centerPt、colors为NULL，或tileMode超出枚举范围。。 |
+| [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md)* | 返回创建的着色器对象的指针。如果返回NULL，表示创建失败；可能的原因是可用内存不足，centerPt、colors为NULL，或tileMode超出枚举范围。 |
 
 ### OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix()
 
@@ -255,7 +255,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMat
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md)* | 返回创建的着色器对象的指针。如果返回NULL，表示创建失败；可能的原因是可用内存不足，centerPt、colors为NULL，或tileMode超出枚举范围。。 |
+| [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md)* | 返回创建的着色器对象的指针。如果返回NULL，表示创建失败；可能的原因是可用内存不足，centerPt、colors为NULL，或tileMode超出枚举范围。 |
 
 ### OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatrix()
 
@@ -287,7 +287,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatr
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md)* | 返回创建的着色器对象的指针。如果返回NULL，表示创建失败；可能的原因是可用内存不足，centerPt、colors为NULL，或tileMode超出枚举范围。。 |
+| [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md)* | 返回创建的着色器对象的指针。如果返回NULL，表示创建失败；可能的原因是可用内存不足，centerPt、colors为NULL，或tileMode超出枚举范围。 |
 
 ### OH_Drawing_ShaderEffectCreateSweepGradient()
 
@@ -435,11 +435,5 @@ void OH_Drawing_ShaderEffectDestroy(OH_Drawing_ShaderEffect* shaderEffect)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md)* shaderEffect | 表示指向着色器对象的指针。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| void | 无返回值。该接口用于销毁着色器对象并释放资源，调用后无需关注返回结果。 |
 
 

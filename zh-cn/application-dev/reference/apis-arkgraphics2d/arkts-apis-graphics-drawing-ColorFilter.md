@@ -35,7 +35,7 @@ static createBlendModeColorFilter(color: common2D.Color, mode: BlendMode) : Colo
 
 | 参数名 | 类型                                                 | 必填 | 说明             |
 | ------ | ---------------------------------------------------- | ---- | ---------------- |
-| color  | [common2D.Color](js-apis-graphics-common2D.md#color) | 是   | ARGB格式的颜色，每个颜色通道的值是0到255之间（包含0和255）的整数。超出范围时返回错误码401。 |
+| color  | [common2D.Color](js-apis-graphics-common2D.md#color) | 是   | ARGB格式的颜色，每个颜色通道的值是0到255之间（包含0和255）的整数。 |
 | mode   | [BlendMode](arkts-apis-graphics-drawing-e.md#blendmode)                              | 是   | 混合模式，用于指定两个着色器叠加时的颜色混合算法。 |
 
 **返回值：**
@@ -73,7 +73,7 @@ static createBlendModeColorFilter(color: common2D.Color | number, mode: BlendMod
 
 | 参数名 | 类型                                                 | 必填 | 说明             |
 | ------ | ---------------------------------------------------- | ---- | ---------------- |
-| color  | [common2D.Color](js-apis-graphics-common2D.md#color) \| number | 是   | 颜色。为common2D.Color类型时，每个颜色通道的值是0到255之间（包含0和255）的整数，超出范围时返回错误码401；为number类型时，用16进制ARGB格式的无符号整数表示，取值范围为[0, 0xFFFFFFFF]，超出范围时返回错误码401。 |
+| color  | [common2D.Color](js-apis-graphics-common2D.md#color) \| number | 是   | 颜色。为common2D.Color类型时，每个颜色通道的值是0到255之间（包含0和255）的整数；为number类型时，用16进制ARGB格式的无符号整数表示，取值范围为[0, 0xFFFFFFFF]。 |
 | mode   | [BlendMode](arkts-apis-graphics-drawing-e.md#blendmode)                              | 是   | 混合模式，用于指定两个着色器叠加时的颜色混合算法。 |
 
 **返回值：**
@@ -247,9 +247,9 @@ let colorFilter = drawing.ColorFilter.createMatrixColorFilter(matrix);
 ```
 ## createLightingColorFilter<sup>20+</sup>
 
-static createLightingColorFilter(mulColor: common2D.Color | number, addColor: common2D.Color | number): ColorFilter
+static createLightingColorFilter(mutColor: common2D.Color | number, addColor: common2D.Color | number): ColorFilter
 
-创建一个光照颜色滤波器，此滤波器会将RGB通道的颜色值乘以乘法颜色(mulColor)并加上加法颜色(addColor)，计算结果会被限制在0到255范围内。适用于需要模拟光照效果或调整画面亮度色调的场景，如实现高光、阴影等光照滤镜效果。
+创建一个光照颜色滤波器，此滤波器会将RGB通道的颜色值乘以乘法颜色(mutColor)并加上加法颜色(addColor)，计算结果会被限制在0到255范围内。适用于需要模拟光照效果或调整画面亮度色调的场景，如实现高光、阴影等光照滤镜效果。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -257,22 +257,14 @@ static createLightingColorFilter(mulColor: common2D.Color | number, addColor: co
 
 | 参数名   | 类型                                         | 必填 | 说明                            |
 | -------- | -------------------------------------------- | ---- | ------------------------------- |
-| mulColor | [common2D.Color](js-apis-graphics-common2D.md#color) \| number | 是   | 用来进行乘法运算的颜色。为common2D.Color类型时，每个颜色通道的值是0到255之间（包含0和255）的整数，超出范围时返回错误码401；为number类型时，用16进制ARGB格式的无符号整数表示，取值范围为[0, 0xFFFFFFFF]，超出范围时返回错误码401。 |
-| addColor | [common2D.Color](js-apis-graphics-common2D.md#color) \| number | 是   | 用来进行加法运算的颜色。为common2D.Color类型时，每个颜色通道的值是0到255之间（包含0和255）的整数，超出范围时返回错误码401；为number类型时，用16进制ARGB格式的无符号整数表示，取值范围为[0, 0xFFFFFFFF]，超出范围时返回错误码401。 |
+| mutColor | [common2D.Color](js-apis-graphics-common2D.md#color) \| number | 是   | 用来进行乘法运算的颜色。为common2D.Color类型时，每个颜色通道的值是0到255之间（包含0和255）的整数；为number类型时，用16进制ARGB格式的无符号整数表示，取值范围为[0, 0xFFFFFFFF]。 |
+| addColor | [common2D.Color](js-apis-graphics-common2D.md#color) \| number | 是   | 用来进行加法运算的颜色。为common2D.Color类型时，每个颜色通道的值是0到255之间（包含0和255）的整数；为number类型时，用16进制ARGB格式的无符号整数表示，取值范围为[0, 0xFFFFFFFF]。 |
 
 **返回值：**
 
 | 类型                        | 说明                |
 | --------------------------- | ------------------ |
 | [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | 返回创建的光照颜色滤波器，可将RGB通道颜色值乘以一种颜色并加上另一种颜色实现光照效果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;3.Parameter verification failed. |
 
 **示例：**
 

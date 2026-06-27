@@ -119,7 +119,7 @@ OH_Drawing_SamplingOptions* OH_Drawing_SamplingOptionsCopy(OH_Drawing_SamplingOp
 
 samplingOptions为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
-副本为独立的新对象，使用完毕后，必须调用OH_Drawing_SamplingOptionsDestroy销毁副本对象并释放内存，避免内存泄漏。
+拷贝对象为独立的新对象，使用完毕后，必须调用OH_Drawing_SamplingOptionsDestroy销毁副本对象并释放内存，避免内存泄漏。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -136,7 +136,7 @@ samplingOptions为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md)* | 函数会返回一个指针，指针指向创建的采样选项对象副本[OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md)。如果返回NULL，表示创建失败；可能的原因是可用内存不足，或者是samplingOptions为NULL。 |
+| [OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md)* | 函数会返回一个指针，指针指向创建的采样选项拷贝对象[OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md)。如果返回NULL，表示创建失败；可能的原因是可用内存不足，或者是samplingOptions为NULL。 |
 
 ### OH_Drawing_SamplingOptionsDestroy()
 
@@ -157,11 +157,3 @@ void OH_Drawing_SamplingOptionsDestroy(OH_Drawing_SamplingOptions* samplingOptio
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md)* samplingOptions | 指向采样选项对象OH_Drawing_SamplingOptions的指针。若为NULL，则不执行销毁操作。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| void | 无返回值。 |
-
-

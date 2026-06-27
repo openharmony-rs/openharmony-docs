@@ -46,13 +46,13 @@ static createBlurMaskFilter(blurType: BlurType, sigma: number): MaskFilter
 | ------------------------- | ------------------ |
 | [MaskFilter](arkts-apis-graphics-drawing-MaskFilter.md) | 返回创建的蒙版滤镜对象，可用于对绘制内容施加模糊效果，如创建阴影、发光等视觉特效。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | --------------------------------------------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+**错误码：** 
+ 
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。 
+ 
+| 错误码ID | 错误信息 | 
+| ------- | --------------------------------------------| 
+| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;3.Parameter verification failed. |
 
 **示例：**
 

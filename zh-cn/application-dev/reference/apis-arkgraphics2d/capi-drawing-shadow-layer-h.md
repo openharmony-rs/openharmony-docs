@@ -81,10 +81,3 @@ void OH_Drawing_ShadowLayerDestroy(OH_Drawing_ShadowLayer* shadowLayer)
 | -- | -- |
 | [OH_Drawing_ShadowLayer](capi-drawing-oh-drawing-shadowlayer.md)* shadowLayer | 表示指向阴影层对象的指针。 |
 
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| void | 无返回值，该接口仅用于销毁阴影层对象并释放内存。 |
-
-
