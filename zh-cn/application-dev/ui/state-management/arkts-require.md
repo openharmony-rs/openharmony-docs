@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @VictorS67-->
-<!--Designer: @lixingchi1-->
+<!--Designer: @VictorS67-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
