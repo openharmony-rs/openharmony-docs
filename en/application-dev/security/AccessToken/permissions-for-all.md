@@ -735,6 +735,8 @@ With this permission, the application can improve handwriting performance, ensur
 
 Allows an application to query available CLI tools.
 
+With this permission, third-party agent applications can access the Claw function.
+
 **Permission level**: normal
 
 **Authorization mode**: system_grant
@@ -746,6 +748,8 @@ Allows an application to query available CLI tools.
 ## ohos.permission.EXEC_PUBLIC_CLI_TOOL
 
 Allows an application to execute available CLI tools.
+
+With this permission, third-party agent applications can access the Claw function.
 
 **Permission level**: normal
 
