@@ -223,7 +223,8 @@ OH_AudioStreamBuilder_Destroy(builder);
 <!-- @[Render_SetVolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->  
 
 ``` C++
-float volume = 0.5f;
+static float volume = 0.1f;
+volume = volume > 0.5f ? 0.1f : 0.8f;
 
 // 设置当前音频流音量值。
 OH_AudioRenderer_SetVolume(audioRenderer, volume);
