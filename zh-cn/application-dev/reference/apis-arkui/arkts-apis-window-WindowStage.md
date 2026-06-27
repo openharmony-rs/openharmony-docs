@@ -3076,7 +3076,7 @@ ArkTS-Sta: setImageForRecent(imageResource: long | image.PixelMap, value: ImageF
 
 > **说明：**
 >
-> 调用该接口前，建议先通过[loadContent](#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。如果应用窗口未完成页面加载就直接调用该接口，功能将不会生效。此时多任务中只显示应用启动页。
+> 调用该接口前，建议先通过[loadContent](#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。如果应用窗口未完成页面加载就直接调用该接口，功能将不会生效。此时多任务中只显示应用启动页。该接口不支持应用在后台状态时调用，否则返回错误码1300002。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
