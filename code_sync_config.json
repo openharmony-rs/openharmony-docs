@@ -6280,6 +6280,16 @@
 						"start_line":42
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets",
+				"functions":[
+					{
+						"end_line":177,
+						"name":"richEditor_eventChange",
+						"start_line":108
+					}
+				]
 			}
 		]
 	},
