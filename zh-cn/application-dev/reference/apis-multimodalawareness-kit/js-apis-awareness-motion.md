@@ -66,7 +66,9 @@ on(type: 'operatingHandChanged', callback: Callback&lt;OperatingHandStatus&gt;):
 
 **相关接口**：该接口对应的接口ArkTS-Sta是[onOperatingHandChanged](#motiononoperatinghandchanged23)
 
-**需要权限**：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
+**需要权限**：
+- API版本20+：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
+- API版本15-19：ohos.permission.ACTIVITY_MOTION
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -171,7 +173,9 @@ off(type: 'operatingHandChanged', callback?: Callback&lt;OperatingHandStatus&gt;
 
 **相关接口**：该接口对应的接口ArkTS-Sta是[offOperatingHandChanged](#motionoffoperatinghandchanged23)
 
-**需要权限**：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
+**需要权限**：
+- API版本20+：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
+- API版本15-19：ohos.permission.ACTIVITY_MOTION
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
@@ -264,7 +268,9 @@ getRecentOperatingHandStatus(): OperatingHandStatus
 
 获取最新触控操作手状态。
 
-**需要权限**：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
+**需要权限**：
+- API版本20+：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
+- API版本15-19：ohos.permission.ACTIVITY_MOTION
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
