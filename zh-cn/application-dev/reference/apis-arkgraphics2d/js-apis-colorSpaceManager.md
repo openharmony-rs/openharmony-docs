@@ -104,7 +104,7 @@ create(colorSpaceName: ColorSpace): ColorSpaceManager
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 401 | Parameter error. Possible cause: 1.Incorrect parameter type. 2.Parameter verification failed.|
+| 401 | Parameter error. Possible cause: 1. Incorrect parameter type. 2. Parameter verification failed.|
 | 18600001 | The parameter value is abnormal. |
 
 **示例：**
@@ -145,7 +145,7 @@ create(primaries: ColorSpacePrimaries, gamma: number): ColorSpaceManager
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 401 | Parameter error. Possible cause: 1.Incorrect parameter type. 2.Parameter verification failed.|
+| 401 | Parameter error. Possible cause: 1. Incorrect parameter type. 2. Parameter verification failed.|
 | 18600001 | The parameter value is abnormal. |
 
 **示例：**
