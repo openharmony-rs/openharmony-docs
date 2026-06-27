@@ -870,7 +870,7 @@ bitVector.push(1);
 bitVector.push(0);
 bitVector.push(1);
 bitVector.push(0); // bitVector: [0, 1, 0, 1, 0]
-console.info("BitVector Element Index at 1: " + bitVector[1]);
+console.info("BitVector Element Index at 1: " + bitVector[1]); // bitVector 1
 ```
 
 ## [index: int]<sup>23+</sup>
