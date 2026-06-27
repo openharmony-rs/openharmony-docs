@@ -12776,10 +12776,10 @@ maximizeWithOptions(maximizeOptions?: MaximizeOptions): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 801     | Capability not supported. Function maximize can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only main windows and maximizable subwindows are supported; 2. The acrossDisplayPresentation parameter only supports main windows; 3. The snapshotAnimationConfig parameter only supports main windows. |
+| 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only main windows and maximizable subwindows are supported; 2. The acrossDisplay parameter only supports main windows; 3. The snapshotAnimationConfig parameter only supports main windows. |
 | 1300016 | Parameter error. Possible cause: Invalid parameter range. |
 
 **示例：**
