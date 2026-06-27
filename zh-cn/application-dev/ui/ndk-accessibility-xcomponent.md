@@ -361,6 +361,40 @@
 
    ArkTS-Sta示例：
    <!-- @[abilitycap_three_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   
+   ``` C++
+   int32_t FindNextFocusAccessibilityNode(const char *instanceId, int64_t elementId,
+       ArkUI_AccessibilityFocusMoveDirection direction, int32_t requestId,
+       ArkUI_AccessibilityElementInfo *elementInfo)
+   {
+       auto objects = FakeWidget::Instance().GetAllObjects(instanceId);
+       if ((elementId < 0) || (elementId > objects.size())) {
+           return ARKUI_ACCESSIBILITY_NATIVE_RESULT_FAILED;
+       }
+       int64_t nextElementId = -1;
+       if (direction == ARKUI_ACCESSIBILITY_NATIVE_DIRECTION_FORWARD) {
+           nextElementId = elementId + 1;
+       } else {
+           nextElementId = elementId - 1;
+       }
+       if ((nextElementId == -1) && (direction == ARKUI_ACCESSIBILITY_NATIVE_DIRECTION_BACKWARD)) {
+           nextElementId = objects.size();
+       }
+       if (nextElementId > objects.size() || nextElementId <= 0) {
+           return ARKUI_ACCESSIBILITY_NATIVE_RESULT_FAILED;
+       }
+       OH_ArkUI_AccessibilityElementInfoSetElementId(elementInfo, nextElementId);
+       OH_ArkUI_AccessibilityElementInfoSetParentId(elementInfo, 0);
+       objects[nextElementId - 1]->fillAccessibilityElement(elementInfo);
+       ArkUI_AccessibleRect rect;
+       rect.leftTopX = nextElementId * ACC_NUMBER_FIRST;
+       rect.leftTopY = ACC_NUMBER_ZERO;
+       rect.rightBottomX = nextElementId * ACC_NUMBER_FIRST + ACC_NUMBER_FIRST;
+       rect.rightBottomY = ACC_NUMBER_SECOND;
+       OH_ArkUI_AccessibilityElementInfoSetScreenRect(elementInfo, &rect);
+       return ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL;
+   }
+   ```
 
 - 基于指定的节点，查询满足指定组件文本内容的节点信息
 
