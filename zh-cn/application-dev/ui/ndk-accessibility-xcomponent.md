@@ -37,6 +37,7 @@
 
 2. 获得无障碍接入provider并注册回调函数（以多实例场景为例）。
 
+   ArkTS-Dyn示例：
    <!-- @[abilitycap_one_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
    ``` C++
@@ -90,6 +91,9 @@
    // ...
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[abilitycap_one_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+
 3. 三方框架需要实现如下回调函数。
 
 - 基于指定的节点，查询所需的节点信息
@@ -101,6 +105,7 @@
   > - 根节点的属性中的[enabled](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityelementinfosetenabled)须设置为true。如果设置为false，根节点被禁用，无障碍系统会认为整个控件树都不可交互，从而忽略所有子节点的查询和操作。根节点作为整个控件树的入口，必须处于可用状态，才能保证无障碍服务正常工作。
   > - 根节点的属性中的[visible](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityelementinfosetvisible)须设置为true。无障碍系统只对可见的节点进行遍历和交互。如果设置为false，根节点不可见，整个控件树都会被无障碍服务忽略，导致三方框架的无障碍能力完全失效。确保用户在使用无障碍功能时，能感知到三方框架渲染的所有界面元素。
 
+   ArkTS-Dyn示例：
    <!-- @[abilitycap_two_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
    ``` C++
@@ -241,13 +246,17 @@
                             "FindAccessibilityNodeInfosById child2 count: %{public}ld", objects.size());
            }
        }
-       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "FindAccessibilityNodeInfosById end");
-       return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
-   }
-   ```
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "FindAccessibilityNodeInfosById end");
+        return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+    }
+    ```
+
+   ArkTS-Sta示例：
+   <!-- @[abilitycap_two_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
 
 - 基于指定的节点，查询下一个可聚焦的无障碍节点
 
+   ArkTS-Dyn示例：
    <!-- @[abilitycap_three_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
    ``` C++
@@ -300,13 +309,17 @@
        OH_ArkUI_AccessibilityElementInfoSetScreenRect(elementInfo, &rect);
        auto eventInfo = OH_ArkUI_CreateAccessibilityEventInfo();
        OH_ArkUI_AccessibilityEventSetRequestFocusId(eventInfo, requestId);
-       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "%{public}ld", nextElementId);
-       return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
-   }
-   ```
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "%{public}ld", nextElementId);
+        return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+    }
+    ```
+
+   ArkTS-Sta示例：
+   <!-- @[abilitycap_three_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
 
 - 基于指定的节点，查询满足指定组件文本内容的节点信息
 
+   ArkTS-Dyn示例：
    <!-- @[abilitycap_four_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
    ``` C++
@@ -317,13 +330,17 @@
        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
                     "FindAccessibilityNodeInfosByText start,instanceId %{public}s elementId: %{public}ld, "
                     "requestId: %{public}d, text: %{public}s.", instanceId,
-                    elementId, requestId, text);
-       return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
-   }
-   ```
+                     elementId, requestId, text);
+        return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+    }
+    ```
+
+   ArkTS-Sta示例：
+   <!-- @[abilitycap_four_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
 
 - 基于指定的节点，查询已经聚焦的节点信息
 
+   ArkTS-Dyn示例：
    <!-- @[abilitycap_five_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
    ``` C++
@@ -334,13 +351,17 @@
        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
                     "FindFocusedAccessibilityNode start instanceId %{public}s, "
                     "elementId: %{public}ld, requestId: %{public}d, focusType: %{public}d",
-                    instanceId, elementId, requestId, static_cast<int32_t>(focusType));
-       return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
-   }
-   ```
+                     instanceId, elementId, requestId, static_cast<int32_t>(focusType));
+        return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+    }
+    ```
+
+   ArkTS-Sta示例：
+   <!-- @[abilitycap_five_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
 
 - 基于指定的节点，执行指定的操作
 
+   ArkTS-Dyn示例：
    <!-- @[abilitycap_six_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
    ``` C++
@@ -437,13 +458,17 @@
                // 处理不支持的action行为。
                break;
        }
-       OH_ArkUI_DestoryAccessibilityElementInfo(element);
-       return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
-   }
-   ```
+        OH_ArkUI_DestoryAccessibilityElementInfo(element);
+        return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+    }
+    ```
+
+   ArkTS-Sta示例：
+   <!-- @[abilitycap_six_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
 
 -  清除当前获焦的节点
 
+   ArkTS-Dyn示例：
    <!-- @[abilitycap_seven_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
    ``` C++
@@ -451,13 +476,17 @@
    {
        // 三方框架需要实现清除当前获焦的节点的行为。
        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
-                    "ClearFocusedFocusAccessibilityNode, instanceId %{public}s", instanceId);
-       return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
-   }
-   ```
+                     "ClearFocusedFocusAccessibilityNode, instanceId %{public}s", instanceId);
+        return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+    }
+    ```
+
+   ArkTS-Sta示例：
+   <!-- @[abilitycap_seven_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
 
 -  基于指定的节点，获取当前文本组件的光标位置
 
+   ArkTS-Dyn示例：
    <!-- @[abilitycap_eight_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
    ``` C++
@@ -468,10 +497,13 @@
        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
                     "GetAccessibilityNodeCursorPosition, instanceId %{public}s "
                     "elementId: %{public}ld, requestId: %{public}d, index: %{public}d",
-                    instanceId, elementId, requestId, index);
-       return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
-   }
-   ```
+                     instanceId, elementId, requestId, index);
+        return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+    }
+    ```
+
+   ArkTS-Sta示例：
+   <!-- @[abilitycap_eight_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
 
 provider通过回调函数[OH_ArkUI_AccessibilityProviderRegisterCallback](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallback)或者[OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallbackwithinstance)对接成功后，可开启无障碍功能。
 
