@@ -358,6 +358,14 @@
 
    ArkTS-Sta示例：
    <!-- @[abilitycap_five_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   
+   ``` C++
+   int32_t FindFocusedAccessibilityNode(const char *instanceId, int64_t elementId,
+       ArkUI_AccessibilityFocusType focusType, int32_t requestId, ArkUI_AccessibilityElementInfo *elementInfo)
+   {
+       return ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL;
+   }
+   ```
 
 - 基于指定的节点，执行指定的操作
 
