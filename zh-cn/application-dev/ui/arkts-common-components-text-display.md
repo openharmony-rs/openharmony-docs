@@ -827,7 +827,7 @@ Text组件需要设置[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-com
 可在Text组件区域内点击空白处正常关闭选择状态和菜单；若Text组件区域外点击空白处关闭选中菜单，需要设置[selection](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#selection11)属性，具体示例如下：
 
   <!-- @[Selection_Change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionChange.ets) -->
-    
+  
   ``` TypeScript
   // xxx.ets
   @Entry
