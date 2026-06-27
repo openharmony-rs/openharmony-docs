@@ -1539,6 +1539,7 @@ screen.stopExpand(expandScreenIds).then(() => {
 | sourceMode<sup>10+</sup> | [ScreenSourceMode](#screensourcemode10)            | 是   | 否   | 屏幕来源模式。     |
 | serialNumber<sup>15+</sup> | string        | 是   | 是   | 扩展屏幕的序列号，默认返回为空字符串。 |
 | densityDpi | number        | 是   | 是   | 屏幕的物理像素密度，即每英寸的像素数。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| isInUse | boolean        | 是   | 是   | 标识当前屏幕是否处于可用的工作状态。true表示屏幕已点亮、已接入系统显示服务，可正常渲染应用/系统界面；false表示屏幕未激活；取值为undefined时，表示设备不支持该状态上报，需兼容处理。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### setOrientation
 
