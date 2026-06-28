@@ -679,6 +679,26 @@ getPromptAction(): PromptAction
 
 完整示例请参考[PromptAction](arkts-apis-uicontext-promptaction.md)中的示例。
 
+## getDialogPresenter
+
+getDialogPresenter(): DialogPresenter
+
+获取Dialog对象。
+
+**原子化服务API：** 从API version 26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型                            | 说明                  |
+| ----------------------------- | ------------------- |
+| [DialogPresenter](arkts-apis-uicontext-dialogpresenter.md) | 返回DialogPresenter实例对象。 |
+
+**示例：**
+
+完整示例请参考[DialogPresenter](arkts-apis-uicontext-dialogpresenter.md)中的示例。
+
 ## getOverlayManager<sup>12+</sup>
 
 getOverlayManager(): OverlayManager
