@@ -96,7 +96,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
        new Params(this.message, dialogController));
    this.getUIContext().getPromptAction().openCustomDialogWithController(
      contentNode, dialogController, this.baseDialogOptions).catch((err: BusinessError) => {
-     hilog.error(0x0000, 'dialogController',
+     hilog.error(DOMAIN, 'dialogController',
        'openCustomDialogWithController error: ' + err.code + ' ' + err.message);
    });
    ```
