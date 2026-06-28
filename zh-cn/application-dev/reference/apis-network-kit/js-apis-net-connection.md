@@ -1247,7 +1247,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.hasDefaultNet((error: BusinessError, data: boolean) => {
   console.error(`Failed to get request.Code:${error.code},message:${error.message}`);
-   console.info("Succeeded to get data: " + JSON.stringify(data));
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 ```
 
@@ -1637,6 +1637,7 @@ getAddressesByNameWithOptions(host: string, option?: QueryOptions): Promise\<Arr
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let option: connection.QueryOptions = {
   family: connection.FamilyType.FAMILY_TYPE_IPV4
 };
@@ -1771,7 +1772,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 connection.addCustomDnsRule("xxxx", ["xx.xx.xx.xx","xx.xx.xx.xx"]).then(() => {
     console.info("success");
 }).catch((error: BusinessError) => {
-     console.error(`Failed to get request.Code:${error.code},message:${error.message}`);
+    console.error(`Failed to get request.Code:${error.code},message:${error.message}`);
 })
 ```
 
@@ -1874,7 +1875,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 connection.removeCustomDnsRule("xxxx").then(() => {
     console.info("success");
 }).catch((error: BusinessError) => {
-      console.error(`Failed to get request.Code:${error.code},message:${error.message}`);
+    console.error(`Failed to get request.Code:${error.code},message:${error.message}`);
 })
 ```
 
@@ -2503,7 +2504,7 @@ try {
   console.info(`Succeeded to get uid: ${uid}`);
 } catch (e) {
   let err = e as BusinessError;
-   console.error(`Failed to get ConnectOwnerUid. errorCode: ${err.code} message:${err.message}`);
+  console.error(`Failed to get ConnectOwnerUid. errorCode: ${err.code} message:${err.message}`);
 }
 ```
 
@@ -2553,7 +2554,7 @@ import { connection } from '@kit.NetworkKit';
 let result = connection.getDnsAscii("www.示例.com", connection.ConversionProcess.NO_CONFIGURATION);
 console.info("Succeeded to getDnsAscii: " + result);  // 预期结果：www.xn--fsq092h.com
 let result = connection.getDnsAscii("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
-    console.info("Succeeded to getDnsAscii: " + result);  // 预期结果：www.example.com
+console.info("Succeeded to getDnsAscii: " + result);  // 预期结果：www.example.com
 ```
 
 ## connection.getDnsUnicode<sup>23+</sup>
