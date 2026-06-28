@@ -89,10 +89,10 @@ function DemoReadAllPixelsToBuffer(pixelMap: image.PixelMap) {
 
   pixelMap.readAllPixelsToBuffer(readBuffer)
     .then(() => {
-      console.info('pixelMap中的像素数据已拷贝至readBuffer。');
+      console.info('Succeeded in reading all pixels to a buffer.');
     })
     .catch((e: BusinessError) => {
-      console.error(`读取像素失败。错误码：${e.code} 错误信息：${e.message}`);
+      console.error(`Failed to read pixels. Code: ${e.code}, message: ${e.message}.`);
     });
 }
 ```
@@ -143,10 +143,10 @@ function DemoReadAllPixelsToBufferSync(pixelMap: image.PixelMap) {
 
   try {
     pixelMap.readAllPixelsToBufferSync(readBuffer);
-    console.info('pixelMap中的像素数据已拷贝至readBuffer。');
+    console.info('Succeeded in reading all pixels to a buffer.');
   } catch (e) {
     const error = e as BusinessError;
-    console.error(`读取像素失败。错误码：${error.code} 错误信息：${error.message}`);
+    console.error(`Failed to read pixels. Code: ${error.code}, message: ${error.message}.`);
   }
 }
 ```
@@ -356,10 +356,10 @@ function DemoReadPixelsToAreaRGBA(pixelMap: image.PixelMap) {
 
   pixelMap.readPixelsToArea(area)
     .then(() => {
-      console.info('pixelMap区域中的像素数据已拷贝至area.pixels。');
+      console.info('Succeeded in reading pixels to an area.');
     })
     .catch((e: BusinessError) => {
-      console.error(`读取像素失败。错误码：${e.code} 错误信息：${e.message}`);
+      console.error(`Failed to read pixels. Code: ${e.code}, message: ${e.message}.`);
     });
 }
 
@@ -377,10 +377,10 @@ function DemoReadPixelsToAreaYUV(pixelMap: image.PixelMap) {
 
   pixelMap.readPixelsToArea(area)
     .then(() => {
-      console.info('pixelMap指定区域中的像素数据已拷贝至area.pixels。');
+      console.info('Succeeded in reading pixels to an area.');
     })
     .catch((e: BusinessError) => {
-      console.error(`读取像素失败。错误码：${e.code} 错误信息：${e.message}`);
+      console.error(`Failed to read pixels. Code: ${e.code}, message: ${e.message}.`);
     });
 }
 ```
@@ -447,10 +447,10 @@ function DemoReadPixelsToAreaSyncRGBA(pixelMap: image.PixelMap) {
 
   try {
     pixelMap.readPixelsToAreaSync(area);
-    console.info('pixelMap指定区域中的像素数据已拷贝至area.pixels。');
+    console.info('Succeeded in reading pixels to an area.');
   } catch (e) {
     const error = e as BusinessError;
-    console.error(`读取像素失败。错误码：${error.code} 错误信息：${error.message}`);
+    console.error(`Failed to read pixels. Code: ${error.code}, message: ${error.message}.`);
   }
 }
 
@@ -468,10 +468,10 @@ function DemoReadPixelsToAreaSyncYUV(pixelMap: image.PixelMap) {
 
   try {
     pixelMap.readPixelsToAreaSync(area);
-    console.info('pixelMap区域中的像素数据已拷贝至area.pixels。');
+    console.info('Succeeded in reading pixels to an area.');
   } catch (e) {
     const error = e as BusinessError;
-    console.error(`读取像素失败。错误码：${error.code} 错误信息：${error.message}`);
+    console.error(`Failed to read pixels. Code: ${error.code}, message: ${error.message}.`);
   }
 }
 ```
@@ -753,10 +753,10 @@ function DemoWritePixelsFromAreaRGBA(pixelMap: image.PixelMap) {
 
   pixelMap.writePixelsFromArea(area)
     .then(() => {
-      console.info('area.pixels中的像素数据已拷贝至pixelMap指定区域。');
+      console.info('Succeeded in writing pixels from an area.');
     })
     .catch((e: BusinessError) => {
-      console.error(`写入像素失败。错误码：${e.code} 错误信息：${e.message}`);
+      console.error(`Failed to write pixels. Code: ${e.code}, message: ${e.message}.`);
     });
 }
 
@@ -782,10 +782,10 @@ function DemoWritePixelsFromAreaYUV(pixelMap: image.PixelMap) {
 
   pixelMap.writePixelsFromArea(area)
     .then(() => {
-      console.info('area.pixels中的像素数据已拷贝至pixelMap指定区域。');
+      console.info('Succeeded in writing pixels from an area.');
     })
     .catch((e: BusinessError) => {
-      console.error(`写入像素失败。错误码：${e.code} 错误信息：${e.message}`);
+      console.error(`Failed to write pixels. Code: ${e.code}, message: ${e.message}.`);
     });
 }
 ```
@@ -861,10 +861,10 @@ function DemoWritePixelsFromAreaSyncRGBA(pixelMap: image.PixelMap) {
 
   try {
     pixelMap.writePixelsFromAreaSync(area);
-    console.info('area.pixels中的像素数据已拷贝至pixelMap指定区域。');
+    console.info('Succeeded in writing pixels from an area.');
   } catch (e) {
     const error = e as BusinessError;
-    console.error(`写入像素失败。错误码：${e.code} 错误信息：${e.message}`);
+    console.error(`Failed to write pixels. Code: ${error.code}, message: ${error.message}.`);
   }
 }
 
@@ -890,10 +890,10 @@ function DemoWritePixelsFromAreaSyncYUV(pixelMap: image.PixelMap) {
 
   try {
     pixelMap.writePixelsFromAreaSync(area);
-    console.info('area.pixels中的像素数据已拷贝至pixelMap指定区域。');
+    console.info('Succeeded in writing pixels from an area.');
   } catch (e) {
     const error = e as BusinessError;
-    console.error(`写入像素失败。错误码：${e.code} 错误信息：${e.message}`);
+    console.error(`Failed to write pixels. Code: ${error.code}, message: ${error.message}.`);
   }
 }
 ```
@@ -1175,10 +1175,10 @@ function DemoWriteAllPixelsFromBuffer(pixelMap: image.PixelMap) {
 
   pixelMap.writeAllPixelsFromBuffer(writeBuffer)
     .then(() => {
-      console.info('writeBuffer中的像素数据已拷贝至pixelMap。');
+      console.info('Succeeded in writing all pixels from a buffer.');
     })
     .catch((e: BusinessError) => {
-      console.error(`写入像素失败。错误码：${e.code} 错误信息：${e.message}`);
+      console.error(`Failed to write pixels. Code: ${e.code}, message: ${e.message}.`);
     });
 }
 ```
@@ -1238,10 +1238,10 @@ function DemoWriteAllPixelsFromBufferSync(pixelMap: image.PixelMap) {
 
   try {
     pixelMap.writeAllPixelsFromBufferSync(writeBuffer);
-    console.info('writeBuffer中的像素数据已拷贝至pixelMap。');
+    console.info('Succeeded in writing all pixels from a buffer.');
   } catch (e) {
     const error = e as BusinessError;
-    console.error(`写入像素失败。错误码：${e.code} 错误信息：${e.message}`);
+    console.error(`Failed to write pixels. Code: ${error.code}, message: ${error.message}.`);
   }
 }
 ```
@@ -1521,7 +1521,7 @@ ArkTS-Dyn: getBytesNumberPerRow(): number
 
 ArkTS-Sta: getBytesNumberPerRow(): int
 
-获取图像像素每行字节数。单位：字节（byte）。
+获取图像像素每行字节数。单位：字节（Byte）。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -1563,7 +1563,7 @@ ArkTS-Dyn: getPixelBytesNumber(): number
 
 ArkTS-Sta: getPixelBytesNumber(): int
 
-获取图像像素的总字节数。单位：字节（byte）。
+获取图像像素的总字节数。单位：字节（Byte）。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -1697,10 +1697,10 @@ function DemoSetOpacity(pixelMap: image.PixelMap) {
   let opacityValue: number = 0.5;
   pixelMap.setOpacity(opacityValue)
     .then(() => {
-      console.info('不透明度设置成功。');
+      console.info('Succeeded in setting opacity.');
     })
     .catch((e: BusinessError) => {
-      console.error(`不透明度设置失败。错误码：${e.code} 错误信息：${e.message}`);
+      console.error(`Failed to set opacity. Code: ${e.code}, message: ${e.message}.`);
     });
 }
 ```
@@ -1770,10 +1770,10 @@ function DemoSetOpacitySync(pixelMap: image.PixelMap) {
   try {
     let opacityValue: number = 0.5;
     pixelMap.setOpacitySync(opacityValue);
-    console.info('不透明度设置成功。');
+    console.info('Succeeded in setting opacity.');
   } catch (e) {
     const error = e as BusinessError;
-    console.error(`不透明度设置失败。错误码：${e.code} 错误信息：${e.message}`);
+    console.error(`Failed to set opacity. Code: ${error.code}, message: ${error.message}.`);
   }
 }
 ```
@@ -2029,10 +2029,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 function DemoExtractAlphaPixelMap(pixelMap: image.PixelMap) {
   pixelMap.extractAlphaPixelMap()
     .then((alphaMap: image.PixelMap) => {
-      console.info('创建Alpha通道PixelMap成功。');
+      console.info('Succeeded in extracting an alpha PixelMap.');
     })
     .catch((e: BusinessError) => {
-      console.error(`创建Alpha通道PixelMap失败。错误码：${e.code} 错误信息：${e.message}`);
+      console.error(`Failed to extract an alpha PixelMap. Code: ${e.code}, message: ${e.message}.`);
     });
 }
 ```
@@ -2084,10 +2084,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 function DemoExtractAlphaPixelMapSync(pixelMap: image.PixelMap) {
   try {
     const alphaMap = pixelMap.extractAlphaPixelMapSync();
-    console.info('创建Alpha通道PixelMap成功。');
+    console.info('Succeeded in extracting an alpha PixelMap.');
   } catch (e) {
     const error = e as BusinessError;
-    console.error(`创建Alpha通道PixelMap失败。错误码：${e.code} 错误信息：${e.message}`);
+    console.error(`Failed to extract an alpha PixelMap. Code: ${error.code}, message: ${error.message}.`);
   }
 }
 ```
@@ -2294,10 +2294,10 @@ function DemoApplyScale(pixelMap: image.PixelMap) {
   let scaleY: number = 1.5;
   pixelMap.applyScale(scaleX, scaleY)
     .then(() => {
-      console.info('缩放成功。');
+      console.info('Succeeded in scaling a PixelMap.');
     })
     .catch((e: BusinessError) => {
-      console.error(`缩放失败。错误码：${e.code} 错误信息：${e.message}`);
+      console.error(`Failed to scale a PixelMap. Code: ${e.code}, message: ${e.message}.`);
     });
 }
 ```
@@ -2376,10 +2376,10 @@ function DemoApplyScaleSync(pixelMap: image.PixelMap) {
     let scaleX: number = 2.0;
     let scaleY: number = 1.5;
     pixelMap.applyScaleSync(scaleX, scaleY);
-    console.info('缩放成功。');
+    console.info('Succeeded in scaling a PixelMap.');
   } catch (e) {
     const error = e as BusinessError;
-    console.error(`缩放失败。错误码：${e.code} 错误信息：${e.message}`);
+    console.error(`Failed to scale a PixelMap. Code: ${error.code}, message: ${error.message}.`);
   }
 }
 ```
@@ -2957,10 +2957,10 @@ function DemoCreateCroppedAndScaledPixelMap(pixelMap: PixelMap) {
   const scaleY: number = 2.0;
   pixelMap.createCroppedAndScaledPixelMap(region, scaleX, scaleY, image.AntiAliasingLevel.HIGH)
     .then((croppedAndScaled: PixelMap) => {
-      console.info('PixelMap crop and scale succeeded.');
+      console.info('Succeeded in creating a cropped and scaled PixelMap.');
     })
     .catch((error: BusinessError) => {
-      console.error(`PixelMap crop and scale failed. Error code: ${error.code}, message: ${error.message}`);
+      console.error(`Failed to create a cropped and scaled PixelMap. Code: ${error.code}, message: ${error.message}.`);
     });
 }
 ```
@@ -3047,7 +3047,7 @@ function DemoCreateCroppedAndScaledPixelMapSync(pixelMap: PixelMap) {
     const croppedAndScaled = pixelMap.createCroppedAndScaledPixelMapSync(region, scaleX, scaleY, image.AntiAliasingLevel.HIGH);
   } catch (e) {
     const error = e as BusinessError;
-    console.error(`PixelMap crop and scale failed. Error code: ${error.code}, message: ${error.message}`);
+    console.error(`Failed to create a cropped and scaled PixelMap. Code: ${error.code}, message: ${error.message}.`);
   }
 }
 ```
@@ -3110,9 +3110,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 async function Clone(pixelMap:image.PixelMap) {
   if (pixelMap != undefined) {
     pixelMap.clone().then((clonePixelMap: image.PixelMap) => {
-      console.info('Succeeded clone pixelmap.');
+      console.info('Succeeded in cloning a PixelMap.');
     }).catch((error: BusinessError) => {
-      console.error(`Failed to clone pixelmap. code is ${error.code}, message is ${error.message}`);
+      console.error(`Failed to clone a PixelMap. Code: ${error.code}, message: ${error.message}.`);
     })
   }
 }
@@ -3159,7 +3159,7 @@ function CloneSync(pixelMap: image.PixelMap) {
       let clonedPixelMap:image.PixelMap = pixelMap.cloneSync();
     } catch(e) {
       let error = e as BusinessError;
-      console.error(`clone pixelmap error. code is ${error.code}, message is ${error.message}`);
+      console.error(`Failed to clone a PixelMap. Code: ${error.code}, message: ${error.message}.`);
     }
   }
 }
@@ -3228,10 +3228,10 @@ function DemoApplyTranslate(pixelMap: image.PixelMap) {
   let translateY: number = 20.0;
   pixelMap.applyTranslate(translateX, translateY)
     .then(() => {
-      console.info('平移成功。');
+      console.info('Succeeded in translating a PixelMap.');
     })
     .catch((e: BusinessError) => {
-      console.error(`平移失败。错误码：${e.code} 错误信息：${e.message}`);
+      console.error(`Failed to translate a PixelMap. Code: ${e.code}, message: ${e.message}.`);
     });
 }
 ```
@@ -3309,10 +3309,10 @@ function DemoApplyTranslateSync(pixelMap: image.PixelMap) {
     let translateX: number = 10.0;
     let translateY: number = 20.0;
     pixelMap.applyTranslateSync(translateX, translateY);
-    console.info('平移成功。');
+    console.info('Succeeded in translating a PixelMap.');
   } catch (e) {
     const error = e as BusinessError;
-    console.error(`平移失败。错误码：${e.code} 错误信息：${e.message}`);
+    console.error(`Failed to translate a PixelMap. Code: ${error.code}, message: ${error.message}.`);
   }
 }
 ```
@@ -3598,10 +3598,10 @@ function DemoApplyRotate(pixelMap: image.PixelMap) {
   let angle: number = 90.0;
   pixelMap.applyRotate(angle)
     .then(() => {
-      console.info('旋转成功。');
+      console.info('Succeeded in rotating a PixelMap.');
     })
     .catch((e: BusinessError) => {
-      console.error(`旋转失败。错误码：${e.code} 错误信息：${e.message}`);
+      console.error(`Failed to rotate a PixelMap. Code: ${e.code}, message: ${e.message}.`);
     });
 }
 ```
@@ -3676,10 +3676,10 @@ function DemoApplyRotateSync(pixelMap: image.PixelMap) {
   try {
     let angle: number = 90.0;
     pixelMap.applyRotateSync(angle);
-    console.info('旋转成功。');
+    console.info('Succeeded in rotating a PixelMap.');
   } catch (e) {
     const error = e as BusinessError;
-    console.error(`旋转失败。错误码：${e.code} 错误信息：${e.message}`);
+    console.error(`Failed to rotate a PixelMap. Code: ${error.code}, message: ${error.message}.`);
   }
 }
 ```
@@ -3955,10 +3955,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 function DemoApplyFlip(pixelMap: image.PixelMap) {
   pixelMap.applyFlip(true, false)
     .then(() => {
-      console.info('翻转成功。');
+      console.info('Succeeded in flipping a PixelMap.');
     })
     .catch((e: BusinessError) => {
-      console.error(`翻转失败。错误码：${e.code} 错误信息：${e.message}`);
+      console.error(`Failed to flip a PixelMap. Code: ${e.code}, message: ${e.message}.`);
     });
 }
 ```
@@ -4009,10 +4009,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 function DemoApplyFlipSync(pixelMap: image.PixelMap) {
   try {
     pixelMap.applyFlipSync(true, false);
-    console.info('翻转成功。');
+    console.info('Succeeded in flipping a PixelMap.');
   } catch (e) {
     const error = e as BusinessError;
-    console.error(`翻转失败。错误码：${e.code} 错误信息：${e.message}`);
+    console.error(`Failed to flip a PixelMap. Code: ${error.code}, message: ${error.message}.`);
   }
 }
 ```
@@ -4220,10 +4220,10 @@ function DemoApplyCrop(pixelMap: image.PixelMap) {
 
   pixelMap.applyCrop(region)
     .then(() => {
-      console.info('裁剪成功。');
+      console.info('Succeeded in cropping a PixelMap.');
     })
     .catch((e: BusinessError) => {
-      console.error(`裁剪失败。错误码：${e.code} 错误信息：${e.message}`);
+      console.error(`Failed to crop a PixelMap. Code: ${e.code}, message: ${e.message}.`);
     });
 }
 ```
@@ -4283,10 +4283,10 @@ function DemoApplyCropSync(pixelMap: image.PixelMap) {
 
   try {
     pixelMap.applyCropSync(region);
-    console.info('裁剪成功。');
+    console.info('Succeeded in cropping a PixelMap.');
   } catch (e) {
     const error = e as BusinessError;
-    console.error(`裁剪失败。错误码：${e.code} 错误信息：${e.message}`);
+    console.error(`Failed to crop a PixelMap. Code: ${error.code}, message: ${error.message}.`);
   }
 }
 ```
@@ -4662,15 +4662,15 @@ async function ToSdr(context: Context) {
   };
   let pixelmap = imageSource.createPixelMapSync(decodingOptions);
   if (pixelmap != undefined) {
-    console.info('Succeeded in creating pixelMap object.');
+    console.info('Succeeded in creating a PixelMap object.');
     pixelmap.toSdr().then(() => {
       let imageInfo = pixelmap.getImageInfoSync();
-      console.info("after toSdr ,imageInfo isHdr:" + imageInfo.isHdr);
+      console.info(`Succeeded in converting a PixelMap to SDR. Is HDR: ${imageInfo.isHdr}.`);
     }).catch((err: BusinessError) => {
-      console.error(`Failed to set sdr. code is ${err.code}, message is ${err.message}`);
+      console.error(`Failed to convert a PixelMap to SDR. Code: ${err.code}, message: ${err.message}.`);
     });
   } else {
-    console.error('Failed to create pixelMap.');
+    console.error('Failed to create a PixelMap.');
   }
 }
 ```
@@ -4722,15 +4722,15 @@ async function GetMetadata(context: Context) {
   };
   let pixelmap = imageSource.createPixelMapSync(decodingOptions);
   if (pixelmap != undefined) {
-    console.info('Succeeded in creating pixelMap object.');
+    console.info('Succeeded in creating a PixelMap object.');
     try {
       let staticMetadata = pixelmap.getMetadata(image.HdrMetadataKey.HDR_STATIC_METADATA);
-      console.info(`getMetadata:${staticMetadata}`);
+      console.info(`Succeeded in getting metadata. Data: ${staticMetadata}.`);
     } catch (e) {
-      console.error('pixelmap create failed' + e);
+      console.error(`Failed to get metadata. Error: ${e}.`);
     }
   } else {
-    console.error('Failed to create pixelMap.');
+    console.error('Failed to create a PixelMap.');
   }
 }
 
@@ -4914,7 +4914,7 @@ class MySequence implements rpc.Parcelable {
   }
   marshalling(messageSequence : rpc.MessageSequence) {
     this.pixel_map.marshalling(messageSequence);
-    console.info('marshalling');
+    console.info('Succeeded in marshalling a PixelMap.');
     return true;
   }
   unmarshalling(messageSequence : rpc.MessageSequence) {
@@ -4922,7 +4922,7 @@ class MySequence implements rpc.Parcelable {
       pixelParcel.unmarshalling(messageSequence).then(async (pixelMap: image.PixelMap) => {
         this.pixel_map = pixelMap;
         pixelMap.getImageInfo().then((imageInfo: image.ImageInfo) => {
-          console.info(`unmarshalling information h: ${imageInfo.size.height} w: ${imageInfo.size.width}`);
+          console.info(`Succeeded in unmarshalling a PixelMap. Height: ${imageInfo.size.height}, width: ${imageInfo.size.width}.`);
         })
       })
     });
@@ -5005,7 +5005,7 @@ class MySequence implements rpc.Parcelable {
   }
   marshalling(messageSequence: rpc.MessageSequence) {
     this.pixel_map.marshalling(messageSequence);
-    console.info('marshalling');
+    console.info('Succeeded in marshalling a PixelMap.');
     return true;
   }
   unmarshalling(messageSequence: rpc.MessageSequence) {
@@ -5013,7 +5013,7 @@ class MySequence implements rpc.Parcelable {
       pixelParcel.unmarshalling(messageSequence).then(async (pixelMap : image.PixelMap) => {
         this.pixel_map = pixelMap;
         pixelMap.getImageInfo().then((imageInfo : image.ImageInfo) => {
-          console.info(`unmarshalling information h: ${imageInfo.size.height} w: ${imageInfo.size.width}`);
+          console.info(`Succeeded in unmarshalling a PixelMap. Height: ${imageInfo.size.height}, width: ${imageInfo.size.width}.`);
         })
       })
     });
@@ -5198,10 +5198,10 @@ async function ConvertPixelFormat(pixelMap: image.PixelMap) {
     let targetPixelFormat = image.PixelMapFormat.NV12;
     pixelMap.convertPixelFormat(targetPixelFormat).then(() => {
       // pixelMap转换成NV12格式成功。
-      console.info('PixelMapFormat convert Succeeded');
+      console.info('Succeeded in converting the pixel format.');
     }).catch((error: BusinessError) => {
       // pixelMap转换成NV12格式失败。
-      console.error(`PixelMapFormat convert Failed. code is ${error.code}, message is ${error.message}`);
+      console.error(`Failed to convert the pixel format. Code: ${error.code}, message: ${error.message}.`);
     })
   }
 }
@@ -5223,7 +5223,7 @@ setMemoryNameSync(name: string): void
 
 | 参数名        | 类型                             | 必填 | 说明             |
 | ------------- | -------------------------------- | ---- | ---------------- |
-| name | string | 是   | pixelmap内存标识符，只允许DMA和ASHMEM内存形式的pixelmap设置。DMA内存设置名字长度取值范围为[1, 255]，ASHMEM内存设置名字长度取值范围为[1, 244]，单位为字节（byte）。 |
+| name | string | 是   | pixelmap内存标识符，只允许DMA和ASHMEM内存形式的pixelmap设置。DMA内存设置名字长度取值范围为[1, 255]，ASHMEM内存设置名字长度取值范围为[1, 244]，单位为字节（Byte）。 |
 
 **错误码：**
 
@@ -5246,7 +5246,7 @@ function SetMemoryNameSync(pixelMap:image.PixelMap) {
       pixelMap.setMemoryNameSync("PixelMapName Test");
     } catch(e) {
       let error = e as BusinessError;
-      console.error(`setMemoryNameSync error. code is ${error.code}, message is ${error.message}`);
+      console.error(`Failed to set the memory name. Code: ${error.code}, message: ${error.message}.`);
     }
   }
 }
