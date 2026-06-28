@@ -325,7 +325,7 @@
     private promptActionClass: PromptActionClass = new PromptActionClass();
     private targetId: number = ID;
     private contentNode: ComponentContent<Object> =
-      new ComponentContent(this.uiContext, wrapBuilder(buildText), this.message);
+      new ComponentContent(this.uiContext, wrapBuilder(buildText), new Params(this.message, this.promptActionClass));
     private options: PopupCommonOptions = { enableArrow: true };
   
   
