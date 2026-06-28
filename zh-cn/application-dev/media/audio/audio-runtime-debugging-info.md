@@ -67,7 +67,7 @@ import { fileIo as fileio } from '@kit.CoreFileKit';
 
 在使用快照接口前，需先获取音频快照管理器实例。该实例为单例，获取后可重复使用。
 
-接口说明请参考[OH_AudioManager_GetAudioDebuggingManager](https://gitcode.com/openharmony/interface_native_header/blob/master/zh-cn/application-dev/reference/apis-audio-kit/capi-native-audio-debugging-manager-h.md#oh_audiomanager_getaudiodebuggingmanager)和[getAudioDebuggingManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getaudiodebuggingmanager)。
+接口说明请参考[OH_AudioManager_GetAudioDebuggingManager](../../reference/apis-audio-kit/capi-native-audio-debugging-manager-h.md#oh_audiomanager_getaudiodebuggingmanager)和[getAudioDebuggingManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getaudiodebuggingmanager)。
 
 **C/C++接口：**
 
@@ -108,7 +108,7 @@ const debugManager: audio.AudioDebuggingManager = audioManager.getAudioDebugging
 
 > 各快照详细字段信息见下方对应章节的输出示例。
 
-接口说明请参考[OH_AudioDebuggingManager_PrintAppInfo](https://gitcode.com/openharmony/interface_native_header/blob/master/zh-cn/application-dev/reference/apis-audio-kit/capi-native-audio-debugging-manager-h.md#oh_audiodebuggingmanager_printappinfo)和[printAppInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printappinfo)。
+接口说明请参考[OH_AudioDebuggingManager_PrintAppInfo](../../reference/apis-audio-kit/capi-native-audio-debugging-manager-h.md#oh_audiodebuggingmanager_printappinfo)和[printAppInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printappinfo)。
 
 **C/C++接口：**
 
@@ -180,7 +180,7 @@ audioApp {
 
 注：详细字段信息及其说明见下方输出示例。
 
-接口说明请参考[OH_AudioDebuggingManager_PrintRendererInfo](https://gitcode.com/openharmony/interface_native_header/blob/master/zh-cn/application-dev/reference/apis-audio-kit/capi-native-audio-debugging-manager-h.md#oh_audiodebuggingmanager_printrendererinfo)和[printRendererInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printrendererinfo)。
+接口说明请参考[OH_AudioDebuggingManager_PrintRendererInfo](../../reference/apis-audio-kit/capi-native-audio-debugging-manager-h.md#oh_audiodebuggingmanager_printrendererinfo)和[printRendererInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printrendererinfo)。
 
 **C/C++接口：**
 
@@ -275,7 +275,7 @@ audioRenderer {
 
 注：详细字段信息及其说明见下方输出示例。
 
-接口说明请参考[OH_AudioDebuggingManager_PrintCapturerInfo](https://gitcode.com/openharmony/interface_native_header/blob/master/zh-cn/application-dev/reference/apis-audio-kit/capi-native-audio-debugging-manager-h.md#oh_audiodebuggingmanager_printcapturerinfo)和[printCapturerInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printcapturerinfo)。
+接口说明请参考[OH_AudioDebuggingManager_PrintCapturerInfo](../../reference/apis-audio-kit/capi-native-audio-debugging-manager-h.md#oh_audiodebuggingmanager_printcapturerinfo)和[printCapturerInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printcapturerinfo)。
 
 **C/C++接口：**
 
@@ -429,7 +429,7 @@ audioLoopback {
 >
 > 调用该方法前，需要先创建并激活音频会话。音频会话的创建及使用方式可参考[使用OHAudio开发音频会话功能(C/C++)](using-ohaudio-for-session.md)或[音频会话管理(ArkTS)](audio-session-management.md)。
 
-接口说明请参考[OH_AudioDebuggingManager_PrintSessionInfo](https://gitcode.com/openharmony/interface_native_header/blob/master/zh-cn/application-dev/reference/apis-audio-kit/capi-native-audio-debugging-manager-h.md#oh_audiodebuggingmanager_printsessioninfo)和[printSessionInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printsessioninfo)。
+接口说明请参考[OH_AudioDebuggingManager_PrintSessionInfo](../../reference/apis-audio-kit/capi-native-audio-debugging-manager-h.md#oh_audiodebuggingmanager_printsessioninfo)和[printSessionInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printsessioninfo)。
 
 **C/C++接口：**
 
