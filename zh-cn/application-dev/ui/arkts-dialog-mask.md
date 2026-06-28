@@ -371,7 +371,7 @@ export struct CustomDialogControl {
     },
     maskColor: '#33AA0000'
   } as promptAction.CustomDialogOptions;
-  
+
   transitionOpt: promptAction.CustomDialogOptions = {
     builder: () => {
       this.myBuilder();
@@ -395,21 +395,21 @@ export struct CustomDialogControl {
           .width('100%')
           .margin({ top: 10 })
           .onClick(() => {
-            this.getUIContext().getPromptAction().openCustomDialog(this.autoCancelOpt)
+            this.getUIContext().getPromptAction().openCustomDialog(this.autoCancelOpt);
           })
-         
+
         Button('openCustomDialog isModal:false')
           .width('100%')
           .margin({ top: 10 })
           .onClick(() => {
-            this.getUIContext().getPromptAction().openCustomDialog(this.modalOpt)
+            this.getUIContext().getPromptAction().openCustomDialog(this.modalOpt);
           })
 
         Button('openCustomDialog maskOpt')
           .width('100%')
           .margin({ top: 10 })
           .onClick(() => {
-            this.getUIContext().getPromptAction().openCustomDialog(this.maskOpt)
+            this.getUIContext().getPromptAction().openCustomDialog(this.maskOpt);
           })
 
         Button('openCustomDialog transition')
