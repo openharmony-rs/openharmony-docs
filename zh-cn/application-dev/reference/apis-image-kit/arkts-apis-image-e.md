@@ -223,7 +223,7 @@
 | SUBSEC_TIME_ORIGINAL<sup>12+</sup>       | "SubsecTimeOriginal"        | 用于为DateTimeOriginal标签记录秒的分数的标签。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'629000');`<br />**读取结果示例：** "629000" |
 | SUBSEC_TIME_DIGITIZED<sup>12+</sup>      | "SubsecTimeDigitized"       | 用于为DateTimeDigitized标签记录秒的分数的标签。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'62900');`<br />**读取结果示例：** "62900" |
 | FLASHPIX_VERSION<sup>12+</sup>           | "FlashpixVersion"           | 该标签表示FPXR文件支持的Flashpix格式版本，增强了设备兼容性。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 版本号格式“1.0”。<br />**修改示例：**`imageSource.modifyImageProperty(key,'1.0');`<br />**读取结果示例：** "FlashPix Version 1.0" |
-| COLOR_SPACE<sup>12+</sup>                | "ColorSpace"                | 色彩空间信息标签，通常记录为色彩空间指定符。<br/>1："sRGB"，sRG标准色彩空间（常见默认值）。<br/>2："Adobe RGB"，exif中未定义，但大量相机使用。<br/>0xffff："Uncalibrated"，表示未校准，颜色空间不明确。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入相应的数字或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'1');`<br />或`imageSource.modifyImageProperty(key,'sRGB');`<br />**读取结果示例：** "sRGB" |
+| COLOR_SPACE<sup>12+</sup>                | "ColorSpace"                | 色彩空间信息标签，通常记录为色彩空间指定符。<br/>1："sRGB"，sRGB标准色彩空间（常见默认值）。<br/>2："Adobe RGB"，exif中未定义，但大量相机使用。<br/>0xffff："Uncalibrated"，表示未校准，颜色空间不明确。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入相应的数字或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'1');`<br />或`imageSource.modifyImageProperty(key,'sRGB');`<br />**读取结果示例：** "sRGB" |
 | PIXEL_X_DIMENSION<sup>10+</sup>          | "PixelXDimension"           | 像素X尺寸。单位为像素（px）。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'4096');`<br />**读取结果示例：** "4096" |
 | PIXEL_Y_DIMENSION<sup>10+</sup>           | "PixelYDimension"           | 像素Y尺寸。单位为像素（px）。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'3072');`<br />**读取结果示例：** "3072" |
 | RELATED_SOUND_FILE<sup>12+</sup>         | "RelatedSoundFile"          | 与图像数据相关的音频文件的名称。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'Related Sound File');`<br />**读取结果示例：** "Related Sound File" |
@@ -633,7 +633,7 @@
 
 对于jpeg、webp图片（部分dng图片解码时会优先解码图片中的jpeg预览图，在此场景下也会被视为jpeg图片格式）会先进行下采样，例如按照7/8下采样，再基于175x175的图片大小进行区域裁剪，因此最终的区域内容稍大于原图的左上角1/4区域。
 
-对于svg图片，由于是矢量图，可以任意缩放不损失清晰度，在解码时会根据desiredSize与原图Size的比例选择缩放比例，在基于缩放后的图片大小进行区域裁剪，因此最终返回的解码区域会有所差异。
+对于svg图片，由于是矢量图，可以任意缩放不损失清晰度，在解码时会根据desiredSize与原图Size的比例选择缩放比例，再基于缩放后的图片大小进行区域裁剪，因此最终返回的解码区域会有所差异。
 
 针对该场景，建议在解码选项同时设置了desiredRegion与desiredSize时，参数cropAndScaleStrategy应传入CROP_FIRST保证效果一致。
 

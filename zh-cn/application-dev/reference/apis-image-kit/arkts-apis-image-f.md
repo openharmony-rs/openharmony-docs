@@ -225,9 +225,9 @@ function DemoCreatePixelMapFromPixels() {
 
   image.createPixelMapFromPixels(pixels, config)
     .then((pixelMap: image.PixelMap) => {
-      console.info('创建PixelMap成功。');
-    }).catch((e: BusinessError) => {
-      console.error(`创建PixelMap失败。错误码：${e.code} 错误信息：${e.message}`);
+      console.info('Succeeded in creating a PixelMap from pixels.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to create a PixelMap from pixels. Code: ${err.code}, message: ${err.message}.`);
     });
 }
 ```
@@ -305,10 +305,10 @@ function DemoCreatePixelMapFromPixelsSync() {
 
   try {
     const pixelMap = image.createPixelMapFromPixelsSync(pixels, config);
-    console.info('创建PixelMap成功。');
+    console.info('Succeeded in creating a PixelMap from pixels.');
   } catch (e) {
     const error = e as BusinessError;
-    console.error(`创建PixelMap失败。错误码：${e.code} 错误信息：${e.message}`);
+    console.error(`Failed to create a PixelMap from pixels. Code: ${error.code}, message: ${error.message}.`);
   }
 }
 ```
@@ -943,10 +943,10 @@ function DemoCreateEmptyPixelMap() {
 
   try {
     const pixelMap = image.createEmptyPixelMap(config);
-    console.info('创建空白PixelMap成功。');
+    console.info('Succeeded in creating an empty PixelMap.');
   } catch (e) {
     const error = e as BusinessError;
-    console.error(`创建空白PixelMap失败。错误码：${e.code} 错误信息：${e.message}`);
+    console.error(`Failed to create an empty PixelMap. Code: ${error.code}, message: ${error.message}`);
   }
 }
 ```
@@ -1473,7 +1473,7 @@ async function CreateImageSource(context : Context) {
 
 createImageSource(buf: ArrayBuffer): ImageSource
 
-通过缓冲区创建ImageSource实例。buf数据是未解码的数据，不可以传入类似于RBGA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[image.createPixelMapSync](./arkts-apis-image-f.md#imagecreatepixelmapsync12)这一类接口。
+通过缓冲区创建ImageSource实例。buf数据是未解码的数据，不可以传入类似于RGBA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[image.createPixelMapSync](./arkts-apis-image-f.md#imagecreatepixelmapsync12)这一类接口。
 
 由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](./arkts-apis-image-ImageSource.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
@@ -1508,7 +1508,7 @@ async function CreateImageSource() {
 
 createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource
 
-通过缓冲区创建ImageSource实例。buf数据是未解码的数据，不可以传入类似于RBGA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[image.createPixelMapSync](./arkts-apis-image-f.md#imagecreatepixelmapsync12)这一类接口。
+通过缓冲区创建ImageSource实例。buf数据是未解码的数据，不可以传入类似于RGBA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[image.createPixelMapSync](./arkts-apis-image-f.md#imagecreatepixelmapsync12)这一类接口。
 
 由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](./arkts-apis-image-ImageSource.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
@@ -1818,9 +1818,9 @@ async function CreateAuxiliaryPicture(context: Context) {
   let auxPictureObj: image.AuxiliaryPicture | null = image.createAuxiliaryPicture(auxBuffer, auxSize, auxType);
   if(auxPictureObj != null) {
     let type: image.AuxiliaryPictureType = auxPictureObj.getType();
-    console.info(funcName, `CreateAuxiliaryPicture succeeded this.Aux_picture.type ${type}`);
+    console.info(funcName, `Succeeded in creating an auxiliary picture. Type: ${type}.`);
   } else {
-    console.error(funcName, 'CreateAuxiliaryPicture failed');
+    console.error(funcName, 'Failed to create an auxiliary picture.');
   }
 }
 ```
@@ -1990,7 +1990,7 @@ createImageCreator(size: Size, format: ImageFormat, capacity: number): ImageCrea
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
