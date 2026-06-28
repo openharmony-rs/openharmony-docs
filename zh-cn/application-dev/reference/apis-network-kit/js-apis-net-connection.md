@@ -2995,7 +2995,7 @@ netCon.on('netCapabilitiesChange', (data: connection.NetCapabilityInfo) => {
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
-   console.error(`Failed to get request.Code:${error.code},message:${error.message}`);
+  console.error(`Failed to get request.Code:${error.code},message:${error.message}`);
 });
 
 // 使用unregister接口取消订阅网络能力变化事件。
@@ -3077,7 +3077,7 @@ netCon.on('netLost', (data: connection.NetHandle) => {
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
-   console.error(`Failed to get request.Code:${error.code},message:${error.message}`);
+  console.error(`Failed to get request.Code:${error.code},message:${error.message}`);
 });
 
 // 使用unregister接口取消订阅网络丢失事件。
@@ -3119,7 +3119,7 @@ netCon.on('netUnavailable', () => {
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
-   console.error(`Failed to get register.Code:${error.code},message:${error.message}`);
+  console.error(`Failed to get register.Code:${error.code},message:${error.message}`);
 });
 
 // 使用unregister接口取消订阅网络不可用事件。
