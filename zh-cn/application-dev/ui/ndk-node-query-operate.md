@@ -451,7 +451,7 @@ std::shared_ptr<ArkUIBaseNode> CreateMoveToExample()
 3. 在`NativeEntry.cpp`中，挂载Native节点。
 
 <!-- @[ndknodequeryoperate3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/NativeEntry.cpp) -->
-   
+
 ``` C++
 // NativeEntry.cpp
 #include <arkui/native_node_napi.h>
@@ -476,7 +476,7 @@ static napi_value CreateNativeRoot(napi_env env, napi_callback_info info, const 
     OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
     if (contentHandle == nullptr) {
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, K_LOG_DOMAIN,
-                    "%{public}s nodeContentHandle is null", who);
+                     "%{public}s nodeContentHandle is null", who);
         return nullptr;
     }
     NativeEntry::GetInstance()->SetContentHandle(contentHandle);
