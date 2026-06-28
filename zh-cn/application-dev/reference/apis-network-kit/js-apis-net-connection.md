@@ -363,7 +363,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 connection.getDefaultHttpProxy().then((data: connection.HttpProxy) => {
   console.info("Succeeded to get data: " + JSON.stringify(data));
 }).catch((error: BusinessError) => {
-     console.error(`Failed to get request. Code:${error.code}, message:${error.message} `);
+  console.error(`Failed to get request. Code:${error.code}, message:${error.message} `);
 });
 ```
 
@@ -438,7 +438,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 connection.getAppNet().then((data: connection.NetHandle) => {
   console.info("Succeeded to get data: " + JSON.stringify(data));
 }).catch((error: BusinessError) => {
- console.error(`Failed to get request. Code:${error.code}, message:${error.message}`);
+  console.error(`Failed to get request. Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -506,7 +506,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
       console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
       return;
     }
-    console.info("Succeeded to get data: " + JSON.stringify(data));
+      console.info("Succeeded to get data: " + JSON.stringify(data));
   });
 });
 ```
