@@ -3040,7 +3040,7 @@ netCon.register((error: BusinessError) => {
 
 // 使用unregister接口取消订阅网络连接信息变化事件。
 netCon.unregister((error: BusinessError) => {
-   console.error(`Failed to get request.Code:${error.code},message:${error.message}`);
+  console.error(`Failed to get request.Code:${error.code},message:${error.message}`);
 });
 ```
 
