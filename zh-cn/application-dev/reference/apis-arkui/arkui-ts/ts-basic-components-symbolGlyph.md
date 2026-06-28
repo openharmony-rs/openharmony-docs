@@ -810,7 +810,6 @@ struct Index {
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World';
 
   linearGradientOptions1: LinearGradientOptions = {
     angle: 45,

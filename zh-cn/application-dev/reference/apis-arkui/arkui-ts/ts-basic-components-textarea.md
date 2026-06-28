@@ -1925,7 +1925,6 @@ struct TextAreaExample {
   controller: TextAreaController = new TextAreaController();
   @State inputValue: string = "";
   @State height1: string | number = '80%';
-  @State height2: number = 100;
   @State supportAvoidance: boolean = true;
 
   // 自定义键盘组件
@@ -2830,6 +2829,9 @@ struct Index {
 ### 示例25（设置placeholder富文本样式）
 
 从API version 22开始，该示例通过[setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22)接口设置placeholder富文本样式。
+
+原始文本支持多种语言，不同语言内容时样式起始索引下标start和length会有差异，以下仅以中文设置富文本样式为例。
+
 ```ts
 // xxx.ets
 import { LengthMetrics } from '@kit.ArkUI';

@@ -353,6 +353,8 @@ struct SpanExample {
 
 从API version 12开始，该示例[alt](#alt12)属性展示了ImageSpan设置加载网络图片时占位图的效果。
 
+使用网络图片时，需要申请权限ohos.permission.INTERNET。具体申请方式请参考[声明权限](../../../security/AccessToken/declare-permissions.md)。
+
 ```ts
 // xxx.ets
 import { http } from '@kit.NetworkKit';
@@ -386,9 +388,13 @@ struct SpanExample {
           'scaleMode': 1, // 缩略值
           'size': { height: 100, width: 100 }
         };
-        // 创建图片大小
+        // 通过ImageSource创建PixelMap
         imageSource.createPixelMap(option).then((pixelMap: PixelMap) => {
+          console.error('image createPixelMap success');
           this.imageAlt = pixelMap;
+          imageSource.release();
+        }).catch(() => {
+          imageSource.release();
         })
       }
     })
