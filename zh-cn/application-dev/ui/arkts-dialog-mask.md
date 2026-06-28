@@ -73,7 +73,7 @@ ArkUI提供多种弹出框，不同类型的弹出框具备不同的蒙层定制
 
 设置autoCancel为false，取消默认点击蒙层时弹窗消失。
 
-<!-- @[custom_dialog_control_autoCancel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
+<!-- @[custom_dialog_control_autoCancel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) --> 
 
 ``` TypeScript
   autoCancelOpt: promptAction.CustomDialogOptions = {
@@ -104,7 +104,7 @@ ArkUI提供多种弹出框，不同类型的弹出框具备不同的蒙层定制
 
 设置isModal为false，将默认的模态弹出框变为非模态弹出框。
 
-<!-- @[custom_dialog_control_modal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
+<!-- @[custom_dialog_control_modal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) --> 
 
 ``` TypeScript
   modalOpt: promptAction.CustomDialogOptions = {
@@ -142,7 +142,7 @@ ArkUI提供多种弹出框，不同类型的弹出框具备不同的蒙层定制
 
 设置maskRect和maskColor，实现蒙层区域和蒙层颜色的设置。
 
-<!-- @[custom_dialog_control_mask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
+<!-- @[custom_dialog_control_mask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) --> 
 
 ``` TypeScript
   maskOpt: promptAction.CustomDialogOptions = {
@@ -334,7 +334,7 @@ export struct CustomDialogAnimation {
 
 ## 完整示例
 
-<!-- @[custom_dialog_control](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
+<!-- @[custom_dialog_control](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) --> 
 
 ``` TypeScript
 // xxx.ets
