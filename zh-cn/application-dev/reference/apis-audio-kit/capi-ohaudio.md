@@ -25,6 +25,7 @@
 | [native_audio_session_manager.h](capi-native-audio-session-manager-h.md) | 声明音频会话管理相关的接口。<br> 包含创建音频会话管理器、激活/停用音频会话、检查音频会话是否已激活，以及监听音频会话停用事件。 |
 | [native_audio_stream_manager.h](capi-native-audio-stream-manager-h.md) | 声明与音频流管理器相关的接口。<br> 该文件接口用于创建audioStreamManager以及音频流设置和管理。 |
 | [native_audio_volume_manager.h](capi-native-audio-volume-manager-h.md) | 声明音频音量管理器接口。该文件接口用于创建AudioVolumeManager。 |
+| [native_audio_debugging_manager.h](capi-native-audio-debugging-manager-h.md) | 声明音频快照管理器相关的接口。用于获取音频运行时快照信息。 |
 | [native_audiorenderer.h](capi-native-audiorenderer-h.md) | 声明输出类型的音频流相关接口。 |
 | [native_audio_common.h](capi-native-audio-common-h.md) | 声明音频公共基础数据结构。<br> 定义音频接口的公共返回值的类型。 |
 | [native_audio_device_base.h](capi-native-audio-device-base-h.md) | 定义音频设备参数的类型以及获取每个设备参数的接口。 |
