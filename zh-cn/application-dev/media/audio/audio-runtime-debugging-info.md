@@ -63,9 +63,9 @@ import { audio } from '@kit.AudioKit';
 import { fileIo as fileio } from '@kit.CoreFileKit';
 ```
 
-### 获取音频管理器
+### 获取音频调试管理器
 
-在使用快照接口前，需先获取音频快照管理器实例。该实例为单例，获取后可重复使用。
+在使用调试接口前，需先获取音频调试管理器实例。该实例为单例，获取后可重复使用。
 
 接口说明请参考[OH_AudioManager_GetAudioDebuggingManager](../../reference/apis-audio-kit/capi-native-audio-debugging-manager-h.md#oh_audiomanager_getaudiodebuggingmanager)和[getAudioDebuggingManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getaudiodebuggingmanager)。
 
