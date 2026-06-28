@@ -116,19 +116,19 @@ struct QRCodeExample {
 
   build() {
     Column({ space: 5 }) {
-      Text('normal').fontSize(9).width('90%').fontColor(0xCCCCCC).fontSize(30)
+      Text('normal').width('90%').fontColor(0xCCCCCC).fontSize(30)
       QRCode(this.value).width(140).height(140)
 
       // 设置二维码颜色
-      Text('color').fontSize(9).width('90%').fontColor(0xCCCCCC).fontSize(30)
+      Text('color').width('90%').fontColor(0xCCCCCC).fontSize(30)
       QRCode(this.value).color(0xF7CE00).width(140).height(140)
 
       // 设置二维码背景色
-      Text('backgroundColor').fontSize(9).width('90%').fontColor(0xCCCCCC).fontSize(30)
+      Text('backgroundColor').width('90%').fontColor(0xCCCCCC).fontSize(30)
       QRCode(this.value).width(140).height(140).backgroundColor(Color.Orange)
 
       // 设置二维码不透明度
-      Text('contentOpacity').fontSize(9).width('90%').fontColor(0xCCCCCC).fontSize(30)
+      Text('contentOpacity').width('90%').fontColor(0xCCCCCC).fontSize(30)
       QRCode(this.value).width(140).height(140).color(Color.Black).contentOpacity(0.1)
     }.width('100%').margin({ top: 5 })
   }

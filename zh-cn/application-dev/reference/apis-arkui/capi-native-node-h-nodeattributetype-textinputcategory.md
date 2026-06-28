@@ -1,7 +1,7 @@
 # ArkUI_NodeAttributeType（文本输入类组件相关属性）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiangyuan6; @kangshihui-->
+<!--Owner: @xiangyuan6; @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->

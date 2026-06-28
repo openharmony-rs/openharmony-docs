@@ -1,7 +1,7 @@
 # ArkUI_NodeAttributeType（富文本类组件相关属性）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiangyuan6; @kangshihui-->
+<!--Owner: @xiangyuan6; @hddgzw-->
 <!--Designer: @xiangyuan6; @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->

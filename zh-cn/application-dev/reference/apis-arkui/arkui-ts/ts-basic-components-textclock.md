@@ -401,9 +401,9 @@ stop()
 
 该示例展示了TextClock组件的基本使用方法，通过[format](#format)属性设置时钟文本的格式。
 
-点击"start TextClock"按钮，按钮回调函数会调用TextClockController启动文本时钟。点击"stop TextClock"按钮，会调用TextClockController暂停文本时钟。
+点击"start TextClock"按钮，按钮回调函数会调用TextClockController启动文本时钟。点击"stop TextClock"按钮，会调用TextClockController停止文本时钟。
 
-示例中的组件通过设置[TextClockController](#textclockcontroller)回调函数，在文本时钟更新时，持续修改accumulateTime的内容。
+示例中的组件通过设置[onDateChange](#ondatechange)回调函数，在文本时钟更新时，持续修改accumulateTime的内容。
 
 ```ts
 @Entry
@@ -489,7 +489,7 @@ struct TextClockExample {
 ![TextshadowExample](figures/text_clock_textshadow.png)
 
 ### 示例3（设定自定义内容区）
-该示例实现了自定义文本时钟样式的功能，自定义样式实现了一个时间选择器组件：通过文本时钟的时区偏移量与UTC秒数，来动态改变时间选择器的选中值，实现时钟效果。同时，根据文本时钟的启动状态，实现文本选择器的12小时制与24小时制的切换。
+该示例实现了自定义文本时钟样式的功能，自定义样式实现了一个时间选择器组件：通过文本时钟的时区偏移量与UTC秒数，来动态改变时间选择器的选中值，实现时钟效果。同时，根据文本时钟的启动状态，实现时间选择器的12小时制与24小时制的切换。
 
 ``` ts
 class MyTextClockStyle implements ContentModifier<TextClockConfiguration> {
