@@ -394,12 +394,12 @@
 
    ArkTS-Dyn示例：
 
-   <!-- @[set_drag_behavior_move](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+   <!-- @[set_drag_behavior_move](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) --> 
    
    ``` TypeScript
    .onDragMove((event) => {
-     event.setResult(DragResult.DROP_ENABLED)
-     event.dragBehavior = DragBehavior.COPY
+     event.setResult(DragResult.DROP_ENABLED);
+     event.dragBehavior = DragBehavior.COPY;
    })
    ```
 
@@ -420,7 +420,7 @@
 
    ArkTS-Dyn示例：
 
-   <!-- @[set_on_drop_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+   <!-- @[set_on_drop_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) --> 
    
    ``` TypeScript
    .onDrop((dragEvent?: DragEvent) => {
@@ -434,7 +434,7 @@
        this.imgState = Visibility.None;
        // 显式设置result为successful，则将该值传递给拖出方的onDragEnd
        event.setResult(DragResult.DRAG_SUCCESSFUL);
-     })
+     });
    })
    ```
 
@@ -1087,12 +1087,27 @@ export struct DefaultDrag {
 
    ArkTS-Dyn示例：
 
-   <!-- @[grid_previewData_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
+   <!-- @[grid_previewData_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) --> 
    
    ``` TypeScript
    @State previewData: DragItemInfo[] = [];
    @State isSelectedGrid: boolean[] = [];
    // ...
+   build() {
+     NavDestination() {
+       Column({ space: 5 }) {
+         // ...
+         Grid() {
+           // ...
+             GridItem() {
+               Column()
+                 .backgroundColor(Color.Blue)
+                 .width(50)
+                 .height(50)
+                 .opacity(1.0)
+                 .id('grid' + idx)
+             }
+             // ...
              .onClick(() => {
                this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
                if (this.isSelectedGrid[idx]) {
@@ -1109,6 +1124,13 @@ export struct DefaultDrag {
                  // ...
                }
              })
+             // ...
+         }
+         // ...
+       }.width('100%').margin({ top: 5 }).height('100%')
+     }
+     // ...
+   }
    ```
 
    ArkTS-Sta示例：
@@ -1166,8 +1188,8 @@ export struct DefaultDrag {
 
     ArkTS-Dyn示例：
 
-    <!-- @[grid_styles_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
-
+    <!-- @[grid_styles_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) --> 
+    
     ``` TypeScript
     @Styles
     normalStyles(): void {
@@ -1180,10 +1202,32 @@ export struct DefaultDrag {
     }
     
     // ...
+    build() {
+      NavDestination() {
+        Column({ space: 5 }) {
+          // ...
+          Grid() {
+            // ...
+              GridItem() {
+                Column()
+                  .backgroundColor(Color.Blue)
+                  .width(50)
+                  .height(50)
+                  .opacity(1.0)
+                  .id('grid' + idx)
+              }
+              // ...
               .stateStyles({
                 normal: this.normalStyles,
                 selected: this.selectStyles
               })
+              // ...
+          }
+          // ...
+        }.width('100%').margin({ top: 5 }).height('100%')
+      }
+      // ...
+    }
     ```
 
     ArkTS-Sta示例：
@@ -1233,11 +1277,26 @@ export struct DefaultDrag {
 
     ArkTS-Dyn示例：
 
-    <!-- @[grid_numberBadge_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
-
+    <!-- @[grid_numberBadge_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) --> 
+    
     ``` TypeScript
     @State numberBadge: number = 0;
     // ...
+    build() {
+      NavDestination() {
+        Column({ space: 5 }) {
+          // ...
+          Grid() {
+            // ...
+              GridItem() {
+                Column()
+                  .backgroundColor(Color.Blue)
+                  .width(50)
+                  .height(50)
+                  .opacity(1.0)
+                  .id('grid' + idx)
+              }
+              // ...
               .onClick(() => {
                 this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
                 if (this.isSelectedGrid[idx]) {
@@ -1251,6 +1310,13 @@ export struct DefaultDrag {
               })
               // 多选场景右上角数量角标需要应用设置numberBadge参数
               .dragPreviewOptions({ numberBadge: this.numberBadge })
+              // ...
+          }
+          // ...
+        }.width('100%').margin({ top: 5 }).height('100%')
+      }
+      // ...
+    }
     ```
 
     ArkTS-Sta示例：
@@ -1301,7 +1367,7 @@ export struct DefaultDrag {
 
 ArkTS-Dyn示例：
 
-<!-- @[gridExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExample.ets) -->
+<!-- @[gridExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExample.ets) --> 
 
 ``` TypeScript
 import { image } from '@kit.ImageKit';
@@ -1317,12 +1383,12 @@ struct GridEts {
 
   @Styles
   normalStyles(): void {
-    .opacity(1.0)
+    .opacity(1.0);
   }
 
   @Styles
   selectStyles(): void {
-    .opacity(0.4)
+    .opacity(0.4);
   }
 
   onPageShow(): void {
@@ -1364,7 +1430,7 @@ build() {
             selected: this.selectStyles
           })
           .onClick(() => {
-            this.isSelectedGrid[idx] = !this.isSelectedGrid[idx]
+            this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
             if (this.isSelectedGrid[idx]) {
               this.numberBadge++;
               let gridItemName = 'grid' + idx;
@@ -1373,8 +1439,8 @@ build() {
                 this.pixmap = pixmap;
                 this.previewData[idx] = {
                   pixelMap: this.pixmap
-                }
-              })
+                };
+              });
             } else {
               this.numberBadge--;
             }
@@ -1547,7 +1613,7 @@ struct GridEts {
 
    ArkTS-Dyn示例：
 
-   <!-- @[drop_customDropAnimation_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) -->
+   <!-- @[drop_customDropAnimation_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) --> 
    
    ``` TypeScript
    customDropAnimation =
@@ -1556,8 +1622,8 @@ struct GridEts {
          this.imageWidth = 200;
          this.imageHeight = 200;
          this.imgState = Visibility.None;
-       })
-     }
+       });
+     };
    ```
 
    ArkTS-Sta示例：
@@ -1581,7 +1647,7 @@ struct GridEts {
 
    ArkTS-Dyn示例：
 
-   <!-- @[drop_column_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) -->
+   <!-- @[drop_column_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) --> 
    
    ``` TypeScript
    Column() {
@@ -1600,7 +1666,7 @@ struct GridEts {
      this.imageHeight = Number(rect.height);
      this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
      dragEvent.useCustomDropAnimation = true;
-     dragEvent.executeDropAnimation(this.customDropAnimation)
+     dragEvent.executeDropAnimation(this.customDropAnimation);
    })
    ```
 
@@ -1925,7 +1991,7 @@ export struct DropAnimationExample {
 
    ArkTS-Dyn示例：
 
-   <!-- @[gridExample_onclick](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExamples.ets) -->
+   <!-- @[gridExample_onclick](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExamples.ets) --> 
    
    ``` TypeScript
    .onClick(() => {
@@ -1945,8 +2011,8 @@ export struct DropAnimationExample {
          this.pixmap = pixmap;
          this.previewData[idx] = {
            pixelMap: this.pixmap
-         }
-       })
+         };
+       });
      } else {
        this.numberBadge--;
        for (let i = 0; i < this.isSelectedGrid.length; i++) {
@@ -2713,16 +2779,16 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
 
   ArkTS-Dyn示例：
 
-  <!-- @[springLoading_onDragEnter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
+  <!-- @[springLoading_onDragEnter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) --> 
   
   ``` TypeScript
   .onDragEnter(() => {
     // 当用户拖拽进入按钮范围，即提醒用户，此处是可以处理数据的
-    this.buttonBackgroundColor = this.reminderColor
+    this.buttonBackgroundColor = this.reminderColor;
   })
   .onDragLeave(() => {
     // 当用户拖拽离开按钮范围，恢复UI
-    this.buttonBackgroundColor = this.normalColor
+    this.buttonBackgroundColor = this.normalColor;
   })
   ```
 
