@@ -516,6 +516,31 @@ config.captureMode = OH_CAPTURE_HOME_SCREEN;
 
 <!-- @[SetPCSpecifiedWindowScreenConfigBuffer2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->    
 
+``` C++
+uint64_t displayId = 0;
+NativeDisplayManager_ErrorCode ret = OH_NativeDisplayManager_GetDefaultDisplayId(&displayId);
+
+NativeDisplayManager_DisplayInfo* displayInfo = nullptr;
+ret = OH_NativeDisplayManager_CreateDisplayById(displayId, &displayInfo);
+if (ret != DISPLAY_MANAGER_OK || !displayInfo) {
+    return;
+}
+// 根据设备分辨率在config中配置录屏的宽度、高度。
+config.videoInfo.videoCapInfo.videoFrameWidth = displayInfo->width;
+config.videoInfo.videoCapInfo.videoFrameHeight = displayInfo->height;
+
+// 设置录屏模式为OH_CAPTURE_SPECIFIED_WINDOW，传入屏幕Id。
+config.captureMode = OH_CAPTURE_SPECIFIED_WINDOW;
+config.videoInfo.videoCapInfo.displayId = 0;
+
+// 传入多个窗口Id。
+g_missionIds2 = {60, 61}; // 表示期望同时录制60、61号窗口。
+config.videoInfo.videoCapInfo.missionIDs = g_missionIds2.data();
+config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(g_missionIds2.size());
+
+// 在配置参数结束后执行"g_missionIds2.clear()"。
+```
+
 
 
 ## 弹窗模式说明
