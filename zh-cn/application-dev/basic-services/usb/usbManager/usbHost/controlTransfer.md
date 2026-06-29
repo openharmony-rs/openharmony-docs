@@ -218,7 +218,7 @@
    }
    let pipe: usbManager.USBDevicePipe = this.pipe_;
    /*
-   构造控制传输参数
+     构造控制传输参数
     */
    let param: usbManager.USBDeviceRequestParams = {
      bmRequestType: 0x80, // 0x80指一次由设备到主机的标准请求命令
@@ -232,7 +232,10 @@
    usbManager.usbControlTransfer(pipe, param).then((ret: number) => {
      console.info(`usbControlTransfer = ${ret}`);
      this.logInfo_ += '\n[INFO] usbControlTransfer = ' + JSON.stringify(ret);
-   })
+   }).catch((error: BusinessError) => {
+     console.error(`usbControlTransfer error : ${error}`);
+     this.logInfo_ += '\n[ERROR] usbControlTransfer error: ' + JSON.stringify(error);
+   });
    ```
 
 6. 释放接口，关闭设备。
