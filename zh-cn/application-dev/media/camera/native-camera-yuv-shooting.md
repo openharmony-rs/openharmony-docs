@@ -83,7 +83,7 @@
 5. 选择设备支持的输出流能力，创建拍照输出流。
 
    通过[OH_CameraManager_CreatePhotoOutputWithoutSurface()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_createphotooutputwithoutsurface)方法创建拍照输出流。
-   
+
    可以通过[OH_CameraManager_GetSupportedFullCameraOutputCapabilityWithSceneMode()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedfullcameraoutputcapabilitywithscenemode)获取相机在指定模式下支持的完整输出能力cameraOutputCapability，参考步骤2。在cameraOutputCapability的photoProfiles中选择支持YUV格式的profile，作为创建拍照输出流的参数photoProfile。
 
    ```c++
@@ -97,7 +97,8 @@
        }
        return photoOutput;
    }
-   ```   
+   ```  
+
 6. 注册单段式(PhotoAvailable)或分段式(PhotoAssetAvailable)拍照回调，若应用希望快速得到回图，推荐使用[分段式拍照(PhotoAssetAvailable)](./native-camera-deferred-capture.md)回调。
 
    > **注意：**
@@ -189,7 +190,6 @@
      }
      ```
 
-
    - **分段式拍照（PhotoAvailable）开发流程**：
 
      - 在会话[OH_CaptureSession_CommitConfig](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_commitconfig)前注册分段式拍照回调。
@@ -234,36 +234,6 @@
          result = OH_MediaAsset_GetDisplayName(mediaAsset, &displayName);
          if (displayName == nullptr || result != MEDIA_LIBRARY_OK) {
              OH_LOG_ERROR(LOG_APP, "OnPhotoAssetAvailable failed to get displayName.");
-         }
-         // 尝试获取mediaAsset中的size信息。
-         uint32_t mediaAssetSize = 0;
-         result = OH_MediaAsset_GetSize(mediaAsset, &mediaAssetSize);
-         if (result != MEDIA_LIBRARY_OK) {
-             OH_LOG_ERROR(LOG_APP, "OnPhotoAssetAvailable failed to get size.");
-         }
-         // 尝试获取mediaAsset中的修改时间信息。
-         uint32_t modifiedMs = 0;
-         result = OH_MediaAsset_GetDateModifiedMs(mediaAsset, &modifiedMs);
-         if (result != MEDIA_LIBRARY_OK) {
-             OH_LOG_ERROR(LOG_APP, "OnPhotoAssetAvailable failed to get modifiedMs.");
-         }
-         // 尝试获取mediaAsset中的图片宽度信息。
-         uint32_t width = 0;
-         result = OH_MediaAsset_GetWidth(mediaAsset, &width);
-         if (result != MEDIA_LIBRARY_OK) {
-             OH_LOG_ERROR(LOG_APP, "OnPhotoAssetAvailable failed to get width.");
-         }
-         // 尝试获取mediaAsset中的图片高度信息。
-         uint32_t height = 0;
-         result = OH_MediaAsset_GetHeight(mediaAsset, &height);
-         if (result != MEDIA_LIBRARY_OK) {
-             OH_LOG_ERROR(LOG_APP, "OnPhotoAssetAvailable failed to get height.");
-         }
-         // 尝试获取mediaAsset中的图片方向信息。
-         uint32_t orientation = 0;
-         result = OH_MediaAsset_GetOrientation(mediaAsset, &orientation);
-         if (result != MEDIA_LIBRARY_OK) {
-             OH_LOG_ERROR(LOG_APP, "OnPhotoAssetAvailable failed to get orientation.");
          }
          // 创建媒体资产管理对象。
          OH_MediaAssetManager* mediaAssetManager = OH_MediaAssetManager_Create();
@@ -316,9 +286,9 @@
      }
      ```
 
-6. 创建拍照类型会话（参考[会话管理(C/C++)](./native-camera-session-management.md)），开启会话，准备拍照。
+7. 创建拍照类型会话（参考[会话管理(C/C++)](./native-camera-session-management.md)），开启会话，准备拍照。
 
-7. 触发拍照。
+8. 触发拍照。
 
    通过[OH_PhotoOutput_Capture()](../../reference/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_capture)方法，执行拍照任务。
 
@@ -385,6 +355,7 @@
       OH_LOG_INFO(LOG_APP, "PhotoOutput errorCode = %{public}d", errorCode);
   }
   ```
+
   ```c++
   PhotoOutput_Callbacks* GetPhotoOutputListener()
   {
