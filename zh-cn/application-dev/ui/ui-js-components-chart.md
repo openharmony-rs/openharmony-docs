@@ -425,7 +425,7 @@ export default {
       },
       series: {
         lineStyle: {
-        width: '1px',
+          width: '1px',
       },
         headPoint: {
           shape: 'circle',
@@ -442,7 +442,7 @@ export default {
     barData: [
       {
         fillColor: '#97CF0A2C',
-        data: [20, 20,40, 56]
+        data: [20, 20, 40, 56]
       },
       {
         fillColor: '#6D0A7ACF',
@@ -517,12 +517,12 @@ export default {
   changes(e) {
     console.info("Tab index: " + e.index);
   },
+  onDestroy() {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
+  },
 }
-
-
-
-
-
 ```
 
 ![Example-Scenario-4](figures/Example-Scenario-4.gif)

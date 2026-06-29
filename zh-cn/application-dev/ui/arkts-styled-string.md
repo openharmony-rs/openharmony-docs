@@ -746,10 +746,11 @@
   // xxx.ets
   import { image } from '@kit.ImageKit';
   import { LengthMetrics } from '@kit.ArkUI';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
   
   @Entry
   @Component
-  export struct StyledStringImageAttachment {
+  struct StyledStringImageAttachment {
     @State abled: boolean = true;
     @State message: string = 'Hello World';
     imagePixelMap: image.PixelMap | undefined = undefined;
@@ -768,24 +769,29 @@
     }]);
   
     async aboutToAppear() {
-      console.info('aboutToAppear initial imagePixelMap');
+      hilog.info(0x0000, 'testTag', 'aboutToAppear initial imagePixelMap');
       // $r('app.media.sea')需要替换为开发者所需的图像资源文件。
       this.imagePixelMap = await this.getPixmapFromMedia($r('app.media.sea'));
     }
   
     private async getPixmapFromMedia(resource: Resource) {
-      let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
-      let imageSource = image.createImageSource(unit8Array?.buffer?.slice(0, unit8Array?.buffer?.byteLength));
-      let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
-        desiredPixelFormat: image.PixelMapFormat.RGBA_8888
-      });
-      await imageSource.release();
-      return createPixelMap;
+      try {
+        let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
+        let imageSource = image.createImageSource(unit8Array?.buffer?.slice(0, unit8Array?.buffer?.byteLength));
+        let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
+          desiredPixelFormat: image.PixelMapFormat.RGBA_8888
+        });
+        await imageSource.release();
+        return createPixelMap;
+      } catch (error) {
+        hilog.error(0x0000, 'testTag', `Get Pixmap failed. error code: ${error.code}, error message: ${error.message}`);
+      }
+      return undefined;
     }
   
     leadingMarginValue: ParagraphStyle = new ParagraphStyle({ leadingMargin: LengthMetrics.vp(5)});
     // 行高样式对象
-    lineHeightStyle1: LineHeightStyle= new LineHeightStyle(new LengthMetrics(24));
+    lineHeightStyle1: LineHeightStyle = new LineHeightStyle(new LengthMetrics(24));
     // Bold样式
     boldTextStyle: TextStyle = new TextStyle({ fontWeight: FontWeight.Bold });
     // 创建含段落样式的对象paragraphStyledString1
@@ -1065,8 +1071,8 @@
           // ...
       }
       .backgroundColor('#f1f2f3')
-      // 请将$r('app.string.TStyledStringGestureStyle_title')替换为实际资源文件，在本示例中该资源文件的value值为"设置事件"
-      .title($r('app.string.TStyledStringGestureStyle_title'))
+      // 请将$r('app.string.StyledStringGestureStyle_title')替换为实际资源文件，在本示例中该资源文件的value值为"设置事件"
+      .title($r('app.string.StyledStringGestureStyle_title'))
     }
   }
   ```
@@ -1085,10 +1091,11 @@
 // xxx.ets
 import { image } from '@kit.ImageKit';
 import { LengthMetrics } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
 @Component
-export struct StyledStringHtml {
+struct StyledStringHtml {
   imagePixelMap: image.PixelMap | undefined = undefined;
   @State html: string | undefined = undefined;
   @State styledString: StyledString | undefined = undefined;
@@ -1097,18 +1104,23 @@ export struct StyledStringHtml {
   private uiContext: UIContext = this.getUIContext();
 
   async aboutToAppear() {
-    console.info('aboutToAppear initial imagePixelMap');
+    hilog.info(0x0000, 'testTag', 'aboutToAppear initial imagePixelMap');
     this.imagePixelMap = await this.getPixmapFromMedia($r('app.media.startIcon'));
   }
 
   private async getPixmapFromMedia(resource: Resource) {
-    let unit8Array = await this.uiContext.getHostContext()?.resourceManager?.getMediaContent(resource.id);
-    let imageSource = image.createImageSource(unit8Array?.buffer.slice(0, unit8Array.buffer.byteLength));
-    let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
-      desiredPixelFormat: image.PixelMapFormat.RGBA_8888
-    });
-    await imageSource.release();
-    return createPixelMap;
+    try {
+      let unit8Array = await this.uiContext.getHostContext()?.resourceManager?.getMediaContent(resource.id);
+      let imageSource = image.createImageSource(unit8Array?.buffer?.slice(0, unit8Array?.buffer?.byteLength));
+      let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
+        desiredPixelFormat: image.PixelMapFormat.RGBA_8888
+      });
+      await imageSource.release();
+      return createPixelMap;
+    } catch (error) {
+      hilog.error(0x0000, 'testTag', `Get Pixmap failed. error code: ${error.code}, error message: ${error.message}`);
+    }
+    return undefined;
   }
 
   build() {
@@ -1251,7 +1263,7 @@ import { LengthMetrics } from '@kit.ArkUI';
 
 @Entry
 @Component
-export struct StyledStringSceneExample {
+struct StyledStringSceneExample {
   alignCenterParagraphStyleAttr: ParagraphStyle = new ParagraphStyle({ textAlign: TextAlign.Center });
   // 行高样式对象
   lineHeightStyle1: LineHeightStyle = new LineHeightStyle(LengthMetrics.vp(24));
