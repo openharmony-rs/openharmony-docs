@@ -127,6 +127,22 @@
     import { BusinessError } from '@kit.BasicServicesKit';
     import DemoProcessNoArg from '../process/DemoProcessNoArg';
     // ...
+    @Entry
+    @Component
+    struct Index {
+    
+      build() {
+        Scroll() {
+          Column() {
+    // ...
+            Text("StartArkChildProcessNoArg_Callback")
+              .fontSize($r('app.float.page_text_font_size'))
+              .fontWeight(FontWeight.Bold)
+              .alignRules({
+                center: { anchor: '__container__', align: VerticalAlign.Center },
+                middle: { anchor: '__container__', align: HorizontalAlign.Center }
+              })
+              .onClick(() => {
                 try {
                   DemoProcessNoArg.toString(); // 引用子进程类，防止被构建工具优化掉
                   childProcessManager.startChildProcess("./ets/process/DemoProcessNoArg.ets", childProcessManager.StartMode.SELF_FORK, (err, data) => {
@@ -139,6 +155,14 @@
                 } catch (err) {
                   console.error(`startChildProcess error, errorCode: ${(err as BusinessError).code}`);
                 }
+              })
+    // ...
+          }
+          .width('100%')
+        }
+        .height('100%')
+      }
+    }
     ```
 
 ## 创建支持参数传递的ArkTS子进程
