@@ -574,6 +574,21 @@ OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 
 <!-- @[screenCapture_buffer_strategy_pickerPopUpFalse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) --> 
 
+``` C++
+// 创建CaptureStrategy对象。
+OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
+
+// 设置是否弹出屏幕捕获Picker。
+// 设置为false，代表录屏启动后统一不弹出Picker。
+OH_AVScreenCapture_StrategyForPickerPopUp(strategy, false);
+
+// 设置CaptureStrategy到AVScreenCapture实例。
+OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
+
+// 释放CaptureStrategy对象。
+OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
+```
+
 
 
 ### OH_AVScreenCapture_StrategyForPickerPopUp为默认值
