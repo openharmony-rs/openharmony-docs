@@ -8,7 +8,7 @@
 
 ArkWeb Enums模块是ArkWeb（Web子系统）的枚举类型定义集合，为WebView组件及其关联的API类提供统一的类型约束和状态描述能力。本模块定义了覆盖Web 页面交互、安全状态、DNS配置、下载任务、媒体播控、内核版本、进程模式、内存管理、离线资源、无白屏加载、站点隔离、软键盘行为、Cookie策略、滚动控制、设备形态等多领域的枚举类型，是整个WebView API体系的基础类型支撑层。
 
-开发者在使用[模块描述](arkts-apis-webview.md)中的WebviewController、WebMessagePort、WebDownloadItem、NativeMediaPlayerHandler、NativeMediaPlayerBridge、WebSchemeHandlerRequest等核心类时，均需依赖本模块中的枚举类型来配置行为参数或解析返回结果。当开发者需要精细控制Web组件的运行模式、查询页面状态、处理下载任务、接入原生媒体播控或优化加载体验时，应查阅本模块中对应的枚举定义。
+开发者在使用[模块描长超过了当前的播放进度, 但是仍有ebview.md)中的WebviewController、WebMessagePort、WebDownloadItem、NativeMediaPlayerHandler、NativeMediaPlayerBridge、WebSchemeHandlerRequest等核心类时，均需依赖本模块中的枚举类型来配置行为参数或解析返回结果。当开发者需要精细控制Web组件的运行模式、查询页面状态、处理下载任务、接入原生媒体播控或优化加载体验时，应查阅本模块中对应的枚举定义。
 
 > **说明：**
 >
@@ -17,7 +17,7 @@ ArkWeb Enums模块是ArkWeb（Web子系统）的枚举类型定义集合，为We
 > 本模块首批接口从API version 9开始支持，后续版本的新增接口，则采用上角标单独标记接口的起始版本。
 
 ## WebHitTestType
-
+长超过了当前的播放进度, 但是仍有
 [getLastHitTest](./arkts-apis-webview-WebviewController.md#getlasthittest18)接口用于指示光标节点。
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -329,7 +329,7 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 | HAVE_NOTHING      | 0 | 没有缓存。 |
 | HAVE_METADATA     | 1 | 只缓存了媒体元数据。 |
 | HAVE_CURRENT_DATA | 2 | 只缓存到当前的播放进度。 |
-| HAVE_FUTURE_DATA  | 3 | 缓存时长超过了当前的播放进度, 但是仍有可能导致卡顿。 |
+| HAVE_FUTURE_DATA  | 3 | 缓存时长超过了当前的播放进度，但是仍有可能导致卡顿。 |
 | HAVE_ENOUGH_DATA  | 4 | 缓存了足够的数据，保证播放流畅。 |
 
 ## MediaError<sup>12+</sup>
