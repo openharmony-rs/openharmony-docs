@@ -87,7 +87,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
        .audioSource = OH_ALL_PLAYBACK
    };
    // 录屏音频输出规格配置。audioBitrate保证输出文件的比特率为设置的预期比特率，和audioSampleRate无强关联。
-   // 为保证音频质量，此处音频比特率取值为128000。如果录屏内容以语音为主，不包含音乐、游戏音效等，可以降低为96000或48000。
+   // 为保证音频质量，此处音频比特率取值128000。如果录屏内容以语音为主，不包含音乐、游戏音效等，可以降低为96000或48000。
    OH_AudioEncInfo audioEncInfo = {
        .audioBitrate = 128000,
        .audioCodecformat = OH_AAC_LC

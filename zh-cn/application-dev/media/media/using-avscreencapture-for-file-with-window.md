@@ -97,24 +97,24 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
        .videoFrameHeight = screenHeight,
        .videoSource = OH_VIDEO_SOURCE_SURFACE_RGBA
    };
-
+   
    OH_VideoEncInfo videoEncInfo = {
        .videoCodec = OH_H264,
        .videoBitrate = 2000000,
        .videoFrameRate = 30
    };
-
+   
    OH_AudioInfo audioInfo = {
        .micCapInfo = micCapInfo,
        .innerCapInfo = innerCapInfo,
        .audioEncInfo = audioEncInfo
    };
-
+   
    OH_VideoInfo videoInfo = {
        .videoCapInfo = videoCapInfo,
        .videoEncInfo = videoEncInfo
    };
-
+   
    config = {
        .captureMode = OH_CAPTURE_HOME_SCREEN,
        .dataType = OH_CAPTURE_FILE, // 录屏数据类型，文件。
