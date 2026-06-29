@@ -1476,8 +1476,9 @@ ArkTS-Sta示例：
 ```ts
 subscriber.getAbortCommonEvent().then((abortEvent: boolean) => {
   console.info(`Succeeded in getting abort common event, abortEvent is ${JSON.stringify(abortEvent)}`);
-}).catch((err: BusinessError): void  => {
-  console.error(`Failed to get abort common event. Code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void  => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to get abort common event. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
