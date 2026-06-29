@@ -67,7 +67,7 @@ import { fileIo as fileio } from '@kit.CoreFileKit';
 
 在使用调试接口前，需先获取音频调试管理器实例。该实例为单例，获取后可重复使用。
 
-接口说明请参考[getAudioDebuggingManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getaudiodebuggingmanager)。
+接口说明请参考[getDebuggingManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getdebuggingmanager)。
 
 **C/C++接口：**
 
@@ -90,7 +90,7 @@ if (result != AUDIOCOMMON_RESULT_SUCCESS || debugManager == nullptr) {
 ``` TypeScript
 // 获取音频调试管理器。
 const audioManager = audio.getAudioManager();
-const debugManager: audio.AudioDebuggingManager = audioManager.getAudioDebuggingManager();
+const debugManager: audio.AudioDebuggingManager = audioManager.getDebuggingManager();
 ```
 
 ## 应用快照
@@ -370,7 +370,7 @@ audioCapturer {
 ``` TypeScript
 // audioLoopback为已创建的AudioLoopback实例。
 // 获取调试管理器。
-let debugManager = audio.getAudioManager().getAudioDebuggingManager();
+let debugManager = audio.getAudioManager().getDebuggingManager();
 
 // 输出到hilog日志。
 debugManager.printLoopbackInfo(audioLoopback, -1);

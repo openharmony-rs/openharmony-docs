@@ -40,7 +40,7 @@ printAppInfo(fd: number): void
 import { audio } from '@kit.AudioKit';
 
 const audioManager = audio.getAudioManager();
-const debugManager = audioManager.getAudioDebuggingManager();
+const debugManager = audioManager.getDebuggingManager();
 
 // 输出到日志。
 debugManager.printAppInfo(-1);
@@ -71,7 +71,7 @@ printRendererInfo(renderer: AudioRenderer, fd: number): void
 import { audio } from '@kit.AudioKit';
 
 const audioManager = audio.getAudioManager();
-const debugManager = audioManager.getAudioDebuggingManager();
+const debugManager = audioManager.getDebuggingManager();
 
 // 输出到日志。
 debugManager.printRendererInfo(renderer, -1);
@@ -102,7 +102,7 @@ printCapturerInfo(capturer: AudioCapturer, fd: number): void
 import { audio } from '@kit.AudioKit';
 
 const audioManager = audio.getAudioManager();
-const debugManager = audioManager.getAudioDebuggingManager();
+const debugManager = audioManager.getDebuggingManager();
 
 // 输出到日志。
 debugManager.printCapturerInfo(capturer, -1);
@@ -133,7 +133,7 @@ printLoopbackInfo(loopback: AudioLoopback, fd: number): void
 import { audio } from '@kit.AudioKit';
 
 const audioManager = audio.getAudioManager();
-const debugManager = audioManager.getAudioDebuggingManager();
+const debugManager = audioManager.getDebuggingManager();
 
 // 输出到日志。
 debugManager.printLoopbackInfo(loopback, -1);
@@ -164,7 +164,7 @@ printSessionInfo(session: AudioSessionManager, fd: number): void
 import { audio } from '@kit.AudioKit';
 
 const audioManager = audio.getAudioManager();
-const debugManager = audioManager.getAudioDebuggingManager();
+const debugManager = audioManager.getDebuggingManager();
 
 // 输出到日志。
 debugManager.printSessionInfo(session, -1);
