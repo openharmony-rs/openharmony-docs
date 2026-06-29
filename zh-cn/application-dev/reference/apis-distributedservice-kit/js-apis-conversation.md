@@ -6,7 +6,7 @@
 <!--Tester: @Ytt-test-->
 <!--Adviser: @hu-zhiqiong-->
 
-conversation模块利用软总线能力，为Agent提供多设备交互能力。提供基础的Agent互联工具，包括获取设备列表、唤醒设备和发送消息。通过本模块，应用可以获取同一账号下的可信设备，注册监听以接收跨设备消息，并通过会话通道向指定设备发送消息。
+conversation模块通过软总线能力，为Agent提供多设备交互能力。提供基础的Agent互联工具，包括获取设备列表、唤醒设备和发送消息。通过本模块，应用可以获取同一账号下的可信设备，注册监听以接收跨设备消息，并通过会话通道向指定设备发送消息。
 
 > **说明：**
 >
@@ -74,7 +74,7 @@ try {
 
 postConversationData(deviceId:&nbsp;string,&nbsp;bundleName:&nbsp;string,&nbsp;abilityName:&nbsp;string,&nbsp;msg:&nbsp;ArrayBuffer):&nbsp;Promise&lt;void&gt;
 
-向指定设备发送会话数据。通过目标设备的networkId或udid标识目标设备，消息将投递到远端设备上指定的包名和Ability名。
+向指定设备发送会话数据。通过目标设备的networkId或udid标识目标设备，消息将发送到远端设备上指定的包名和Ability名的应用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC 和 ohos.permission.sec.ACCESS_UDID
 
@@ -89,8 +89,8 @@ postConversationData(deviceId:&nbsp;string,&nbsp;bundleName:&nbsp;string,&nbsp;a
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
 | deviceId  | string  | 是    | 目标设备的networkId或udid。可通过调用[getTrustedDevices()](#conversationgettrusteddevices)获取。  |
-| bundleName | string  | 是    | 消息投递目标包名，需与远端设备上已注册会话监听的应用包名一致。  |
-| abilityName | string  | 是    | 消息投递目标Ability名，需与远端设备上已注册会话监听的Ability名一致。  |
+| bundleName | string  | 是    | 消息发送目标包名，需与远端设备上已注册会话监听的应用包名一致。  |
+| abilityName | string  | 是    | 消息发送目标Ability名，需与远端设备上已注册会话监听的Ability名一致。  |
 | msg | ArrayBuffer  | 是    | 要发送的消息内容。  |
 
 **返回值：**
@@ -200,7 +200,7 @@ try {
 
 unregisterConversationListener(bundleName:&nbsp;string,&nbsp;abilityName:&nbsp;string):&nbsp;void
 
-取消注册指定包名和Ability的会话监听。调用此接口后，应用将不再接收消息。如果之前没有为给定包名和Ability注册过监听器，此接口返回成功但不产生任何效果。
+取消注册指定包名和Ability名的会话监听。调用此接口后，应用将不再接收消息。如果之前没有向指定包名和Ability名的应用注册过监听器，此接口返回成功。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC 和 ohos.permission.sec.ACCESS_UDID
 
