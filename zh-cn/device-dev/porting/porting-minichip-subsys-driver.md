@@ -55,7 +55,7 @@ if (ohos_kernel_type == "liteos_m") {
 
 ## 移植实例
 
-1. 在“config.json”中添加iot_hardware子系统。
+1. 在“config.json”中添加iothardware子系统。
    路径：“vendor/MyVendorCompany/MyProduct/config.json”
 
    修改如下：
@@ -63,8 +63,8 @@ if (ohos_kernel_type == "liteos_m") {
      
    ```
    { 
-       subsystem": "iothardware", 
-       components": [ 
+       "subsystem": "iothardware", 
+       "components": [ 
            { "component": "peripheral", "features":[] }
        ] 
    },
