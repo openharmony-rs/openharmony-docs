@@ -556,6 +556,7 @@ batchUpdate(sourceAttributes: Array\<AssetMap>, destAttributes: Array\<AssetMap>
 | 24000010 | IPC failed.                                |
 | 24000011 | Calling the Bundle Manager service failed. |
 | 24000012 | Calling the OS Account service failed.     |
+| 24000013 | Calling the Access Token service failed.   |
 | 24000015 | Getting the system time failed.            |
 | 24000019 | Each value of [Tag.GROUP_ID](#tag) and [Tag.REQUIRE_ATTR_ENCRYPTED](#tag) in the array is not consistent. |
 
