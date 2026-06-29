@@ -412,7 +412,7 @@ g_avCapture = nullptr;
 
 在此模式下，录屏应用指定录制某个屏幕的内容。默认选中videoCapInfo.displayId参数对应的屏幕。如果传入的displayId对应的屏幕不存在，则不做任何选中。
 
-<!-- @[screenCapture_PCSpecifiedScreenConfigBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->    
+<!-- @[screenCapture_PCSpecifiedScreenConfigBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 uint64_t displayId = 0;
@@ -467,7 +467,7 @@ config.captureMode = OH_CAPTURE_HOME_SCREEN;
 
 若期望录制某个指定窗口，需要设置指定的窗口Id。该场景下，启动录屏后，系统会默认选中指定的窗口。
 
-<!-- @[SetPCSpecifiedWindowScreenConfigBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->    
+<!-- @[SetPCSpecifiedWindowScreenConfigBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 uint64_t displayId = 0;
@@ -554,7 +554,7 @@ OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 
 代表设备录屏启动后不弹出picker，仅弹出隐私保护弹窗，无需指定录屏模式。
 
-<!-- @[screenCapture_buffer_strategy_pickerPopUpFalse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[screenCapture_buffer_strategy_pickerPopUpFalse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 // 创建CaptureStrategy对象。
