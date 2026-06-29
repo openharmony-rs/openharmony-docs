@@ -126,7 +126,7 @@ async function playTone(type: audio.ToneType): Promise<void> {
     // 停止当前正在播放的音调。
     await tonePlayerPromise.stop();
   } catch (err) {
-    console.error(`testTonePlayerPromise err : ${err}`);
+    console.error(`TonePlayerPromise err : ${err}`);
   } finally {
     if (tonePlayerPromise) {
       tonePlayerPromise.release().catch(() => console.error(`release error`));
@@ -134,7 +134,7 @@ async function playTone(type: audio.ToneType): Promise<void> {
   }
 }
 
-function testTonePlayerPromise(type: audio.ToneType): void {
+function TonePlayerPromise(): void {
   timerPro = setTimeout(() => {
     playTone(audio.ToneType.TONE_TYPE_DIAL_0).catch(() => console.error(`playTone unhandled error`));
   }, 200) as number;
