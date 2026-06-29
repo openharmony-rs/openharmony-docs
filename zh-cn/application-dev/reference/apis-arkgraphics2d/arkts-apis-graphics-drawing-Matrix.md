@@ -1,4 +1,4 @@
-# Class (Matrix)
+﻿# Class (Matrix)
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
@@ -752,7 +752,7 @@ matrix.postSkew(2.0, 1.0, 2.0, 1.0);
 
 ## preSkew<sup>20+</sup>
 
- preSkew(kx: number, ky: number, px: number, py: number): void
+preSkew(kx: number, ky: number, px: number, py: number): void
 
 当前矩阵左乘一个倾斜变换矩阵。
 
