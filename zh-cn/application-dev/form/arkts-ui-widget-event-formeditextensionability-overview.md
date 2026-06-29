@@ -114,7 +114,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
    import { ExtensionEvent } from '../model/ExtensionEvent';
    
-   const TAG = 'FormEditExtensionAbility';
+   const TAG: string = 'FormEditExtensionAbility';
    
    export default class FormEditSecPageAbility extends FormEditExtensionAbility {
      public storage: LocalStorage = new LocalStorage();
@@ -419,7 +419,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    import { BusinessError } from '@kit.BasicServicesKit';
    import { FormData } from './CommonData';
    
-   const TAG: string = 'PreferencesUtil';
+   const TAG: string = 'PreferencesUtil -->';
    const MY_STORE: string = 'myStore';
    
    export class PreferencesUtil {
@@ -503,7 +503,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    <!-- @[FormEditDemo_EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
    
    ``` TypeScript
-   // entry/src/main/ets/entryformability/WidgetCard.ets
+   // entry/src/main/ets/entryformability/EntryFormAbility.ets
    import { formBindingData, FormExtensionAbility, formInfo } from '@kit.FormKit';
    import { Want } from '@kit.AbilityKit';
    import { PreferencesUtil } from '../common/PreferencesUtil';
@@ -668,9 +668,9 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
        try {
          this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
        } catch (err) {
-         hilog.error(DOMAIN, 'testTag', 'Failed to set colorMode. Code:${err.code}, message:${err.message}');
+         hilog.error(DOMAIN, 'testTag', `Failed to set colorMode. Code:${err.code}, message:${err.message}`);
        }
-       hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
+       hilog.info(DOMAIN, 'testTag', 'Ability onCreate');
      }
    
      onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam) {
@@ -686,12 +686,12 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
      }
    
      onDestroy(): void {
-       hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onDestroy');
+       hilog.info(DOMAIN, 'testTag', 'Ability onDestroy');
      }
    
      onWindowStageCreate(windowStage: window.WindowStage): void {
        // Main window is created, set main page for this ability
-       hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+       hilog.info(DOMAIN, 'testTag', 'Ability onWindowStageCreate');
    
        windowStage.loadContent('pages/FormEditIndex', (err) => {
          if (err.code) {
@@ -705,17 +705,17 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    
      onWindowStageDestroy(): void {
        // Main window is destroyed, release UI related resources
-       hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+       hilog.info(DOMAIN, 'testTag', 'Ability onWindowStageDestroy');
      }
    
      onForeground(): void {
        // Ability has brought to foreground
-       hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onForeground');
+       hilog.info(DOMAIN, 'testTag', 'Ability onForeground');
      }
    
      onBackground(): void {
        // Ability has back to background
-       hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onBackground');
+       hilog.info(DOMAIN, 'testTag', 'Ability onBackground');
      }
    }
    ```
@@ -734,7 +734,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
        "label": "$string:EntryAbility_label",
        "startWindowIcon": "$media:startIcon",
        "startWindowBackground": "$color:start_window_background",
-       "exported": true,
+       "exported": true
      }
    ],
    ```
@@ -898,7 +898,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    import { preferences } from '@kit.ArkData';
    import { BusinessError } from '@kit.BasicServicesKit';
    
-   const TAG: string = 'PreferencesUtil';
+   const TAG: string = 'PreferencesUtil -->';
    const MY_STORE: string = 'myStore';
    const key: string = 'formID';
    

@@ -35,7 +35,7 @@
     
     ``` TypeScript
     // entry/src/main/ets/myliveformextensionability/MyLiveFormExtensionAbility.ets
-    import { formInfo, LiveFormInfo, LiveFormExtensionAbility } from '@kit.FormKit';
+    import { formInfo, LiveFormExtensionAbility, LiveFormInfo } from '@kit.FormKit';
     import { UIExtensionContentSession } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     
@@ -56,7 +56,7 @@
         // liveFormInfo.rect字段表示非激活态卡片组件相对激活态UI的位置和尺寸信息
         let formRect: formInfo.Rect = liveFormInfo.rect;
         storage.setOrCreate('formRect', formRect);
-        hilog.info(DOMAIN, 'testTag', `MyLiveFormExtensionAbility onSessionCreate formId: ${formId}` +
+        hilog.info(DOMAIN, 'testTag', `MyLiveFormExtensionAbility onLiveFormCreate formId: ${formId}` +
           `, borderRadius: ${borderRadius}, formRectInfo: ${JSON.stringify(formRect)}`);
     
         // 加载互动页面

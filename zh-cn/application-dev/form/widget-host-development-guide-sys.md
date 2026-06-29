@@ -239,7 +239,7 @@ struct formHostSample {
     let formHapRecordMap: HashMap<string, formInfo.FormInfo[]> = new HashMap();
     this.formInfoRecord = [];
     formHost.getAllFormsInfo().then((formList: Array<formInfo.FormInfo>) => {
-      hilog.info(DOMAIN_NUMBER, TAG, 'getALlFormsInfo size:' + formList.length);
+      hilog.info(DOMAIN_NUMBER, TAG, 'getAllFormsInfo size:' + formList.length);
       for (let formItemInfo of formList) {
         let formBundleName = formItemInfo.bundleName;
         if (formHapRecordMap.hasKey(formBundleName)) {
