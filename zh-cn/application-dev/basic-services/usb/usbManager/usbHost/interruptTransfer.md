@@ -230,10 +230,16 @@
    
    ``` TypeScript
    // 注册通信接口，注册成功返回0，注册失败返回其他错误码。
-   let claimInterfaceResult: number = usbManager.claimInterface(devicePipe, usbInterface, true);
-   if (claimInterfaceResult !== 0) {
-     console.error(`claimInterface error = ${claimInterfaceResult}`)
-     this.logInfo_ += '\n[ERROR] claimInterface error = ' + JSON.stringify(claimInterfaceResult);
+   try {
+     let claimInterfaceResult: number = usbManager.claimInterface(devicePipe, usbInterface, true);
+     if (claimInterfaceResult !== 0) {
+       console.error(`claimInterface error = ${claimInterfaceResult}`)
+       this.logInfo_ += '\n[ERROR] claimInterface error = ' + JSON.stringify(claimInterfaceResult);
+       return;
+     }
+   } catch (error) {
+     console.error(`USB claimInterface failed: ${error}`);
+     this.logInfo_ += '\n[ERROR] USB claimInterface failed: ' + JSON.stringify(error);
      return;
    }
    ```
