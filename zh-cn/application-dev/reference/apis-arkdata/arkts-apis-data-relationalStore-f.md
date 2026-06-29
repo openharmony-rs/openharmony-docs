@@ -157,7 +157,7 @@ getRdbStore支持多线程并发操作。
 | context | Context                          | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | config  | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig) | 是   | 与此RDB存储相关的数据库配置。                                |
 
-**返回值**：
+**返回值：**
 
 | 类型                                      | 说明                              |
 | ----------------------------------------- | --------------------------------- |
@@ -270,7 +270,7 @@ getRdbStoreSync支持多线程并发操作。
 | context | Context                          | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | config  | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig) | 是   | 与此RDB存储相关的数据库配置。                                |
 
-**返回值**：
+**返回值：**
 
 | 类型                                      | 说明                              |
 | ----------------------------------------- | --------------------------------- |
@@ -498,14 +498,14 @@ deleteRdbStore(context: Context, name: string): Promise&lt;void&gt;
 
 **ArkTS-Sta起始版本：** 23
 
-**参数**
+**参数：**
 
 | 参数名  | 类型    | 必填 | 说明                                                         |
 | ------- | ------- | ---- | ------------------------------------------------------------ |
 | context | Context | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | name    | string  | 是   | 数据库名称，不能为空字符串且不能包含路径分隔符/。                                                 |
 
-**返回值**：
+**返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
@@ -668,14 +668,14 @@ deleteRdbStore(context: Context, config: StoreConfig): Promise\<void>
 
 **ArkTS-Sta起始版本：** 23
 
-**参数**
+**参数：**
 
 | 参数名  | 类型                        | 必填 | 说明                                                         |
 | ------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | context | Context                     | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | config  | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig) | 是   | 与此RDB存储相关的数据库配置。                                |
 
-**返回值**：
+**返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
@@ -756,7 +756,7 @@ isVectorSupported(): boolean
 
 **ArkTS-Sta起始版本：** 23
 
-**返回值**：
+**返回值：**
 
 | 类型    | 说明                                              |
 | ------- | ------------------------------------------------- |
@@ -864,13 +864,13 @@ getInsertSqlInfo(table: string, values: ValuesBucket, conflict?: ConflictResolut
 | ------- | --------------------- | ---- | ------------------------------------------------------------ |
 | table | string              | 是   | 要写入数据的数据库表名，不能为空字符串。 |
 | values | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket) | 是 | 要写入数据库中数据的字段信息以及对应的值信息。 |
-| conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10) | 否 |指定冲突解决模式。默认值是relationalStore.ConflictResolution.ON_CONFLICT_NONE。 |
+| conflict | [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10) | 否 | 指定冲突解决模式。默认值是relationalStore.ConflictResolution.ON_CONFLICT_NONE。 |
 
 **返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| [SqlInfo](arkts-apis-data-relationalStore-i.md#sqlinfo20) | SqlInfo对象，其中sql为返回的sql语句，args为执行SQL中的参数信息。 |
+| [SqlInfo](arkts-apis-data-relationalStore-i.md#sqlinfo20) | SqlInfo对象，其中sql为返回的SQL语句，args为执行SQL中的参数信息。 |
 
 **错误码：**
 
@@ -937,7 +937,7 @@ getUpdateSqlInfo(predicates: RdbPredicates, values: ValuesBucket, conflict?: Con
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| [SqlInfo](arkts-apis-data-relationalStore-i.md#sqlinfo20) | SqlInfo对象，其中sql为返回的sql语句，args为执行SQL中的参数信息。 |
+| [SqlInfo](arkts-apis-data-relationalStore-i.md#sqlinfo20) | SqlInfo对象，其中sql为返回的SQL语句，args为执行SQL中的参数信息。 |
 
 **错误码：**
 
@@ -1004,7 +1004,7 @@ getDeleteSqlInfo(predicates: RdbPredicates): SqlInfo
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| [SqlInfo](arkts-apis-data-relationalStore-i.md#sqlinfo20) | SqlInfo对象，其中sql为返回的sql语句，args为执行SQL中的参数信息。 |
+| [SqlInfo](arkts-apis-data-relationalStore-i.md#sqlinfo20) | SqlInfo对象，其中sql为返回的SQL语句，args为执行SQL中的参数信息。 |
 
 **错误码：**
 
@@ -1056,7 +1056,7 @@ getQuerySqlInfo(predicates: RdbPredicates, columns?: Array\<string>): SqlInfo
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| [SqlInfo](arkts-apis-data-relationalStore-i.md#sqlinfo20) | SqlInfo对象，其中sql为返回的sql语句，args为执行SQL中的参数信息。 |
+| [SqlInfo](arkts-apis-data-relationalStore-i.md#sqlinfo20) | SqlInfo对象，其中sql为返回的SQL语句，args为执行SQL中的参数信息。 |
 
 **错误码：**
 
