@@ -413,7 +413,7 @@ struct MyComponent {
 
 
 
-<!-- @[life_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/lifeCycle/Page.ets) -->
+<!-- @[life_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/lifeCycle/Page.ets) -->   
 
 ``` TypeScript
 // Page.ets
