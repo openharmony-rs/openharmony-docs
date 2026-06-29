@@ -394,12 +394,13 @@ export default class AVPlayerDemo {
    ```
 
    <!-- @[napi_asr_SuppressTokens](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) --> 
-
-   ```c++
+   
+   ``` C++
    void SuppressTokens(BinBuffer &logits, bool isInitial)
    {
        auto logits_data = static_cast<float *>(logits.first);
        if (isInitial) {
+           // 假设这两个值在 logits 中的索引位置
            logits_data[WHISPER_EOT] = NEG_INF;
            logits_data[WHISPER_BLANK] = NEG_INF;
        }
