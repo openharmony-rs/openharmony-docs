@@ -153,8 +153,6 @@ ArkTS-Sta: onDisAppear(event: (() => void) | undefined): this
 
 ```ts
 // xxx.ets
-import { promptAction } from '@kit.ArkUI';
-
 @Entry
 @Component
 struct AppearExample {

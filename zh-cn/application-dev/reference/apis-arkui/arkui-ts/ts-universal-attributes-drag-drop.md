@@ -299,7 +299,7 @@ struct ImageExample {
   @State aBlockArr: string[] = [];
   @State bBlockArr: string[] = [];
   @State AVisible: Visibility = Visibility.Visible;
-  @State dragSuccess: Boolean = false;
+  @State dragSuccess: boolean = false;
 
   build() {
     Column() {
@@ -618,11 +618,6 @@ import { ImageModifier } from '@kit.ArkUI';
 @Component
 struct dragPreviewOptionsDemo {
   @State myModifier: ImageAttribute = new ImageModifier().opacity(0.5)
-  @State vis: boolean = true
-  @State changeValue: string = ''
-  @State submitValue: string = ''
-  @State positionInfo: CaretOffset = { index: 0, x: 0, y: 0 }
-  controller: SearchController = new SearchController()
   @State OpacityIndex: number = 0
   @State OpacityList: (number | undefined | null)[] = [
     0.3, 0.5, 0.7, 1, -50, 0, 10, undefined, null

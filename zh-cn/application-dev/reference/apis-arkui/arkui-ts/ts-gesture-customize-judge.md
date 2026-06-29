@@ -118,7 +118,7 @@ getModifierKeyState?(keys: Array\<string>): boolean
 
 ### 示例1（自定义手势判定）
 
-该示例通过配置[onGestureJudgeBegin](#ongesturejudgebegin)实现了对长按、快滑和滑动手势的自定义判定。从API version 21开始，支持通过[BaseEvent](#baseevent8)的axisPinch属性获取双指缩放比例。
+该示例通过配置[onGestureJudgeBegin](#ongesturejudgebegin)实现了对长按、快滑、滑动、捏合和拖动手势的自定义判定。从API version 21开始，支持通过[BaseEvent](#baseevent8)的axisPinch属性获取双指缩放比例。
 
 ```ts
 // xxx.ets
@@ -232,7 +232,7 @@ struct Index {
         Text("Drag 上下两层 上层绑定长按，下层绑定拖拽。先长按后平移上半区红色区域只会响应长按，先长按后平移下半区蓝色区域只会响应拖拽")
           .width('100%')
           .fontSize(20)
-          .fontColor('0xffdd00')
+          .fontColor('#ffdd00')
           .backgroundColor(0xeeddaa00)
         Stack({ alignContent: Alignment.Center }) {
           Column() {

@@ -839,7 +839,6 @@ ArkTS-Dyn示例：
 
 ```ts
 import { image } from '@kit.ImageKit';
-import { colorSpaceManager } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component

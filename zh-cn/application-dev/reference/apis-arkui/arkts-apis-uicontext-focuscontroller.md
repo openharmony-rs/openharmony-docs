@@ -42,7 +42,6 @@ clearFocus(): void
 @Entry
 @Component
 struct ClearFocusExample {
-  @State inputValue: string = '';
   @State btColor: Color = Color.Blue;
 
   build() {
@@ -259,7 +258,6 @@ isActive(): boolean
 @Entry
 @Component
 struct ClearFocusExample {
-  @State inputValue: string = '';
   @State btColor: Color = Color.Blue;
 
   build() {
