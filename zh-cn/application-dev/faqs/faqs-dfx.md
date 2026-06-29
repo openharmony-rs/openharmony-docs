@@ -36,7 +36,7 @@
 
 hilog -T xxx 按tag过滤;
 
-hilog –D xxx 按domain过滤;
+hilog -D xxx 按domain过滤;
 
 hilog -e 对日志内容匹配，支持正则式tag, domain, pid都支持多重过滤,组合过滤以及反向过滤。
 
