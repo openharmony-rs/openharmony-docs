@@ -996,7 +996,7 @@ NODE_CALENDAR_PICKER_TEXT_STYLE = 16003
 | -- | -- |
 | .value[0]?.u32 | 入口区的文本颜色。 |
 | .value[1]?.f32 | 入口区的文本字号，单位为fp。 |
-| .value[2]?.i32 | 入口区的文本字体粗细，参数类型[ArkUI_FontWeight](capi-native-type-h.md#arkui_fontweight)。 |
+| .value[2]?.i32 | 入口区的文本字体粗细，参数类型[ArkUI_FontWeight](capi-text-h.md#arkui_fontweight)。 |
 
 **返回：**
 
@@ -1004,7 +1004,7 @@ NODE_CALENDAR_PICKER_TEXT_STYLE = 16003
 | -- | -- |
 | .value[0].u32 | 入口区的文本颜色。 |
 | .value[1].f32 | 入口区的文本字号，单位为fp。 |
-| .value[2].i32 | 入口区的文本字体粗细，参数类型[ArkUI_FontWeight](capi-native-type-h.md#arkui_fontweight)。 |
+| .value[2].i32 | 入口区的文本字体粗细，参数类型[ArkUI_FontWeight](capi-text-h.md#arkui_fontweight)。 |
 
 ## NODE_CALENDAR_PICKER_START
 
