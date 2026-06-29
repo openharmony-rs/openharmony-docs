@@ -93,7 +93,7 @@
 
 - 闹铃（Alarm）类型音频流的默认输出设备为扬声器‌。若先连接蓝牙耳机，再开始播放Alarm音频，则扬声器和蓝牙耳机会同时播放。
 
-若默认的输入/输出设备不符合使用诉求，应用也可以调用相关接口主动修改。应用[使用AudioRenderer开发音频播放功能(ArkTS)](using-audiorenderer-for-playback.md)时，可以调用[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12)接口，设置默认发声设备。
+若默认的输入/输出设备不符合使用诉求，应用也可以调用相关接口主动修改。应用[使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)时，可以调用[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12)接口，设置默认发声设备。
 
 ## 设置音频流类型
 
@@ -101,7 +101,7 @@
 
 常见的设置播放音频流类型的方法有：
 
-- **[使用AudioRenderer开发音频播放功能(ArkTS)](using-audiorenderer-for-playback.md)**：
+- **[使用AudioRenderer开发音频播放功能(ArkTs)](using-audiorenderer-for-playback.md)**：
 
    可以在调用[createAudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8)以获取音频渲染器时，传入对应的[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)。
 
@@ -130,7 +130,7 @@
 
 常见的设置录制音频流类型的方法有：
 
-- **[使用AudioCapturer开发音频录制功能(ArkTS)](using-audiocapturer-for-recording.md)**：
+- **[使用AudioCapturer开发音频录制功能(ArkTs)](using-audiocapturer-for-recording.md)**：
   
   可以在调用[createAudioCapturer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiocapturer8)接口时，传入对应的[SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)。
 
