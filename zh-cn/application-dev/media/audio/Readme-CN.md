@@ -73,4 +73,5 @@
   - [使用OpenSL ES开发音频录制功能(C/C++)](using-opensl-es-for-recording.md)
 - Audio Kit常见问题<!--audio-issues-->
   - [使用音频快照获取问题定位信息](audio-runtime-debugging-info.md)<!--audio-runtime-debugging-info-->
+- [AudioDebuggingManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md)
 - [Audio Kit术语](audio-glossary.md)
