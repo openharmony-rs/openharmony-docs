@@ -91,7 +91,7 @@ save(options: ScreenshotOptions, callback: AsyncCallback&lt;image.PixelMap&gt;):
 
 **需要权限：**
 - API版本22+：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
-- API版本14-21：ohos.permission.CAPTURE_SCREEN。
+- API版本7-21：ohos.permission.CAPTURE_SCREEN。
 
 **资源管理：** 返回的PixelMap对象需要手动释放，使用完毕后必须调用[release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7)方法释放内存，否则可能导致内存泄漏。
 
@@ -155,7 +155,7 @@ save(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
 **需要权限：**
 - API版本22+：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
-- API版本14-21：ohos.permission.CAPTURE_SCREEN。
+- API版本7-21：ohos.permission.CAPTURE_SCREEN。
 
 **资源管理：** 返回的PixelMap对象需要手动释放，使用完毕后必须调用[release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7)方法释放内存，否则可能导致内存泄漏。
 
@@ -204,7 +204,7 @@ save(options?: ScreenshotOptions): Promise&lt;image.PixelMap&gt;
 
 **需要权限：**
 - API版本22+：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
-- API版本14-21：ohos.permission.CAPTURE_SCREEN。
+- API版本7-21：ohos.permission.CAPTURE_SCREEN。
 
 **资源管理：** 返回的PixelMap对象需要手动释放，使用完毕后必须调用[release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7)方法释放内存，否则可能导致内存泄漏。
 
@@ -280,7 +280,7 @@ saveHdrPicture(options?: HdrScreenshotOptions): Promise&lt;Array&lt;image.PixelM
 
 **需要权限：**
 - API版本22+：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
-- API版本14-21：ohos.permission.CAPTURE_SCREEN。
+- API版本20-21：ohos.permission.CAPTURE_SCREEN。
 
 **资源管理：** 返回的PixelMap对象数组中的每个PixelMap对象都需要手动释放，使用完毕后必须调用[release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7)方法释放内存，否则可能导致内存泄漏。
 
