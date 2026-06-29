@@ -250,7 +250,7 @@
     在源文件中引入头文件。
 
     <!-- @[create_native_child_param_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/ChildProcessFunc.cpp) -->
-
+    
     ``` C++
     #include <AbilityKit/native_child_process.h>
     ```
