@@ -265,8 +265,6 @@ struct CalendarPickerDialogExample {
 }
 ```
 
-![CalendarPickerDialog](figures/CalendarPickerDialogDemo4.png)
-
 ### Example 5: Setting Start and End Dates
 
 This example demonstrates how to set the start and end dates for the calendar picker dialog box using **start** and **end** in [CalendarOptions](ts-basic-components-calendarpicker.md#calendaroptions). This functionality is supported since API version 18.

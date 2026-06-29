@@ -1,4 +1,4 @@
-# Listening for Text Box Events
+# Adding a Text Event Listener for a Text Box
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @kangshihui-->
@@ -6,7 +6,7 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Text boxes support various interactive behaviors, allowing you to register event listeners and obtain status information.
+Text boxes support various interactive behaviors, allowing you to register event listeners and obtain status information. The following uses a multi-line text box as an example; the steps for adding text event listeners to a single-line text box are similar.
 
 Real-time search: Register the [NODE_TEXT_AREA_ON_CHANGE](../../application-dev/reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype) event to receive notifications and obtain the current text content when the text box input changes.
 

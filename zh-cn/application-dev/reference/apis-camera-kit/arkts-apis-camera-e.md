@@ -222,7 +222,7 @@
 
 ## MetadataObjectType
 
-枚举，metadata流。
+枚举，metadata元数据检测类型。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -230,6 +230,30 @@
 | ------------------------- | ---- | ----------------- |
 | FACE_DETECTION            | 0    | 元数据的对象类型，用于人脸检测。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | HUMAN_BODY<sup>23+</sup>     | 1    | 元数据的对象类型，用于人体检测。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| CAT_FACE               | 2    | 用于检测猫脸的metadata类型。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| CAT_BODY                   | 3    | 用于检测猫的身体的metadata类型。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| DOG_FACE                   | 4    | 用于检测狗脸的metadata类型。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| DOG_BODY                   | 5    | 用于检测狗的身体的metadata类型。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| SALIENT_DETECTION          | 6    | 用于显著性检测。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| BAR_CODE_DETECTION         | 7    | 用于二维码检测。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| BASIC_FACE_DETECTION       | 8    | 用于基础人脸检测。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+
+## Emotion
+
+枚举，人脸检测信息中的情绪类型。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+| 名称                       | 值   | 说明              |
+| -------------------------- | ---- | ----------------- |
+| NEUTRAL                    | 0    | 平静。 |
+| SADNESS                    | 1    | 悲伤。 |
+| SMILE                      | 2    | 微笑。 |
+| SURPRISE                   | 3    | 惊讶。 |
 
 ## FlashMode
 
@@ -258,7 +282,7 @@
 | EXPOSURE_MODE_LOCKED          | 0    | 锁定曝光模式。不支持曝光区域中心点设置。<br>设置该模式后，每次拍照时曝光都会默认锁定。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
 | EXPOSURE_MODE_AUTO            | 1    | 自动曝光模式。支持曝光区域中心点设置，可以使用[AutoExposure.setMeteringPoint](arkts-apis-camera-AutoExposure.md#setmeteringpoint11)接口设置曝光区域中心点。<br>设置该模式后，仅设置后的首次拍照生效。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | EXPOSURE_MODE_CONTINUOUS_AUTO | 2    | 连续自动曝光。不支持曝光区域中心点设置。<br>设置该模式后，拍照系统会根据每次的环境变化自动调整曝光。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| EXPOSURE_MODE_MANUAL | 3    | 手动曝光。支持设置曝光时长。<br>设置该模式后，用户可通过[ManualExposure.setExposureDuration](arkts-apis-camera-ManualExposure.md#setexposureduration24)设置曝光时长。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| EXPOSURE_MODE_MANUAL<sup>24+</sup> | 3    | 手动曝光。支持设置曝光时长。<br>设置该模式后，用户可通过[ManualExposure.setExposureDuration](arkts-apis-camera-ManualExposure.md#setexposureduration24)设置曝光时长。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 
 ## FocusMode
 
@@ -403,6 +427,7 @@
 | BEAUTY    | 0 | 美颜。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。   |
 | PORTRAIT  | 1 | 人像虚化。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 | AUTO_FRAMING<sup>24+</sup> | 2 | 自动对焦。<br> **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| COLOR_EFFECT | 3 | 色彩效果。<br>**起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## PhotoQualityPrioritization<sup>21+</sup>
 

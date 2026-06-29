@@ -8,9 +8,11 @@
 
 The **CalendarPicker** component provides a drop-down calendar for users to select a date.
 
->  **NOTE**
+> **NOTE**
 >
-> This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+>
+> - This component supports [WithTheme](./ts-container-with-theme.md) since API version 26.0.0.
 
 ## Child Components
 
@@ -23,6 +25,8 @@ CalendarPicker(options?: CalendarOptions)
 Creates a calendar picker.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,6 +50,8 @@ Sets how the picker is aligned with the entry component.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
@@ -65,6 +71,8 @@ Sets how the picker is aligned with the entry component. Compared with [edgeAlig
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
@@ -73,7 +81,7 @@ Sets how the picker is aligned with the entry component. Compared with [edgeAlig
 
 | Name   | Type                                                        | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| alignType | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[CalendarAlign](#calendaralign)> | Yes  | Alignment type.<br>Default value: **CalendarAlign.END**.<br>If the value of **alignType** is **undefined**, the default value is used.|
+| alignType | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CalendarAlign](#calendaralign)>| Yes  | Alignment type.<br>Default value: **CalendarAlign.END**.<br>If the value of **alignType** is **undefined**, the default value is used.|
 | offset    | [Offset](ts-types.md#offset)                                 | No  | Offset of the picker relative to the entry component after alignment based on the specified alignment type.<br>Default value: **{dx: 0, dy: 0}**|
 
 ### textStyle
@@ -83,6 +91,8 @@ textStyle(value: PickerTextStyle)
 Sets the font color, font size, and font weight in the entry area.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,6 +112,8 @@ Sets the font color, font size, and font weight in the entry area. Compared with
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
@@ -110,7 +122,7 @@ Sets the font color, font size, and font weight in the entry area. Compared with
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)> | Yes  | Font color, font size, and font weight in the entry area.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>}<br>}<br>If the value of **style** is **undefined**, the default value is used.|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerTextStyle](ts-picker-common.md#pickertextstyle)> | Yes  | Font color, font size, and font weight in the entry area.<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>}<br>}<br>If the value of **style** is **undefined**, the default value is used.|
 
 ### markToday<sup>19+</sup>
 
@@ -119,6 +131,8 @@ markToday(enabled: boolean)
 Whether to highlight the current system date.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -142,6 +156,8 @@ Triggered when a date is selected. This event cannot be triggered by two-way bou
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
@@ -164,6 +180,8 @@ Triggered when a date is selected. This event cannot be triggered by two-way bou
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
@@ -172,11 +190,13 @@ Triggered when a date is selected. This event cannot be triggered by two-way bou
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[Callback](ts-types.md#callback12)\<Date>> | Yes  | Selected date value.<br>If **callback** is set to **undefined**, the callback function is not used.|
+| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Callback](ts-types.md#callback12)\<Date>> | Yes  | Selected date value.<br>If **callback** is set to **undefined**, the callback function is not used.|
 
 ##  CalendarOptions
 
 Describes the parameters of the calendar picker.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -206,6 +226,8 @@ Describes the parameters of the calendar picker.
 Enumerates alignment types.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -247,13 +269,11 @@ struct CalendarPickerExample {
 }
 ```
 
-![CalendarPicker](figures/CalendarPicker.gif)
-
 ### Example 2: Setting Start and End Dates
 
 This example demonstrates how to set the start and end dates for the calendar picker using **start** and **end**.
 
-Since API version 18., the **start** and **end** attributes are added to [CalendarOptions](#calendaroptions).
+Since API version 18, the **start** and **end** attributes are added to [CalendarOptions](#calendaroptions).
 
 ```ts
 // xxx.ets
@@ -314,4 +334,3 @@ struct CalendarPickerExample {
 }
 ```
 
-![CalendarPicker](figures/calendar_picker_mark_disabled.gif)

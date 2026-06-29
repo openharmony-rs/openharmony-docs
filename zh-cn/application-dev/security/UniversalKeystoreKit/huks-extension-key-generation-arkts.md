@@ -7,13 +7,13 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-从API版本26.0.0开始，在外部密钥管理扩展场景下，密钥生成能力支持在扩展设备内生成密钥对。密钥用途等参数传递给Extension后，由Extension实现方根据业务场景自行处理，HUKS不做额外校验。
+从API版本26.0.0开始，在外部密钥管理扩展场景下，HUKS支持在扩展设备内生成密钥对。密钥用途等参数传递给Extension后，由Extension实现方根据业务场景自行处理，HUKS不做额外校验。
 
-具体的场景介绍请参考[密钥生成与导入介绍](huks-extension-key-generation-import-overview.md)。
+具体的场景介绍请参考[密钥生成与导入导出介绍](huks-extension-key-generation-import-overview.md)。
 
 ## 开发步骤
 
-1. 通过[证书选择接口](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取keyUri作为resourceId，或通过[getResourceId](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogetresourceid)获取外部密钥管理扩展的资源ID。
+1. 通过[openAuthorizeDialog](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取keyUri作为resourceId，或通过[getResourceId](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptogetresourceid)获取外部密钥管理扩展的资源ID。
 
 2. 调用[openResource](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoopenresource)打开资源。
 
@@ -26,16 +26,6 @@
 ```ts
 import { huks, huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-
-let handle: number;
-
-function StringToUint8Array(str: string) {
-  let arr: number[] = [];
-  for (let i = 0, j = str.length; i < j; ++i) {
-    arr.push(str.charCodeAt(i));
-  }
-  return new Uint8Array(arr);
-}
 
 async function openResource(resourceId: string): Promise<void> {
   try {

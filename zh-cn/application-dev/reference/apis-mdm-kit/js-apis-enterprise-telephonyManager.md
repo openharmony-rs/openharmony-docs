@@ -16,7 +16,7 @@
 >
 > 本模块接口仅对设备管理应用开放，调用接口前需激活该应用，详情请参考[MDM Kit开发指南](../../mdm/mdm-kit-guide.md)。
 >
-> 全局通用限制类策略由restrictions提供，若要全局禁用通话，请参考[@ohos.enterprise.restrictions（限制类策略）](js-apis-enterprise-restrictions.md)。
+> 全局通用限制类策略由restrictions提供，若要全局禁用通话，请参考[@ohos.enterprise.restrictions （限制类策略）](js-apis-enterprise-restrictions.md)。
 
 ## 导入模块
 
@@ -32,6 +32,8 @@ setSimDisabled(admin: Want, slotId: number): void
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_TELEPHONY
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -53,6 +55,7 @@ setSimDisabled(admin: Want, slotId: number): void
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例：**
 
@@ -84,6 +87,8 @@ setSimEnabled(admin: Want, slotId: number): void
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**设备行为差异：** 该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **冲突规则：** [从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)。
@@ -104,6 +109,7 @@ setSimEnabled(admin: Want, slotId: number): void
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例：**
 
@@ -135,6 +141,8 @@ isSimDisabled(admin: Want, slotId: number): boolean
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**设备行为差异：** 该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
@@ -159,6 +167,7 @@ isSimDisabled(admin: Want, slotId: number): boolean
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例：**
 
@@ -320,7 +329,7 @@ try {
 
 ## telephonyManager.getOutgoingCallPolicyNumbers
 
-getOutgoingCallPolicyNumbers(admin: Want, policy: adminManager.Policy): Array\<string>
+getOutgoingCallPolicyNumbers(admin: Want | null, policy: adminManager.Policy): Array\<string>
 
 获取通话呼出的允许或禁用名单。
 
@@ -337,7 +346,7 @@ getOutgoingCallPolicyNumbers(admin: Want, policy: adminManager.Policy): Array\<s
 
 | 参数名     | 类型                                                    | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
 | policy | [adminManager.Policy](js-apis-enterprise-adminManager.md#policy20)    | 是   | 允许或禁用名单策略。 BLOCK_LIST为禁用名单，TRUST_LIST为允许名单。  |
 
 
@@ -518,7 +527,7 @@ try {
 
 ## telephonyManager.getIncomingCallPolicyNumbers
 
-getIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy): Array\<string>
+getIncomingCallPolicyNumbers(admin: Want | null, policy: adminManager.Policy): Array\<string>
 
 获取通话呼入的允许或禁用名单。
 
@@ -535,7 +544,7 @@ getIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy): Array\<s
 
 | 参数名     | 类型                                                    | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
 | policy | [adminManager.Policy](js-apis-enterprise-adminManager.md#policy20)    | 是   | 允许或禁用名单策略。BLOCK_LIST为禁用名单，TRUST_LIST为允许名单。   |
 
 
@@ -768,7 +777,7 @@ setDefaultData(admin: Want, slotId: number): void
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 9200012  | Parameter verification failed. |
-| 9201020  | set default data sim failed. |
+| 9201020  | Failed to set the default data SIM card. The airplane mode is enabled or no SIM card is inserted. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 203      | This function is prohibited by enterprise management policies. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |

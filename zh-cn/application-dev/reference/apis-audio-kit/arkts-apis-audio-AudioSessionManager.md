@@ -1,8 +1,8 @@
 # Interface (AudioSessionManager)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @funny_sunix-->
+<!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -469,7 +469,7 @@ on(type: 'currentOutputDeviceChanged', callback: Callback\<CurrentOutputDeviceCh
 import { audio } from '@kit.AudioKit';
 
 let currentOutputDeviceChangedCallback = (currentOutputDeviceChangedEvent: audio.CurrentOutputDeviceChangedEvent) => {
-  console.info(`reason of audioSessionStateChanged: ${currentOutputDeviceChangedEvent.changeReason} `);
+  console.info(`reason of currentOutputDeviceChanged: ${currentOutputDeviceChangedEvent.changeReason} `);
 };
 
 audioSessionManager.on('currentOutputDeviceChanged', currentOutputDeviceChangedCallback);
@@ -507,7 +507,7 @@ audioSessionManager.off('currentOutputDeviceChanged');
 
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let currentOutputDeviceChangedCallback = (currentOutputDeviceChangedEvent: audio.CurrentOutputDeviceChangedEvent) => {
-  console.info(`reason of audioSessionStateChanged: ${currentOutputDeviceChangedEvent.changeReason} `);
+  console.info(`reason of currentOutputDeviceChanged: ${currentOutputDeviceChangedEvent.changeReason} `);
 };
 
 audioSessionManager.on('currentOutputDeviceChanged', currentOutputDeviceChangedCallback);
@@ -678,7 +678,7 @@ selectMediaInputDevice(inputAudioDevice: AudioDeviceDescriptor): Promise<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let data: audio.AudioDeviceDescriptors = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_OUTPUT_DEVICES);
+  let data: audio.AudioDeviceDescriptors = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_INPUT_DEVICES);
   console.info('Succeeded in doing getAvailableDevices.');
 
   if (data[0]) {

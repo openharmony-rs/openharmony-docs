@@ -1,7 +1,7 @@
 # MenuItemGroup
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Armstrong15-->
+<!--Owner: @H-xinwei-->
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->

@@ -371,8 +371,8 @@ I18n_ErrorCode OH_i18n_GetStartTimeAt(TimeArrayTimeZoneRule* rule, int32_t index
 | 参数项 | 描述 |
 | -- | -- |
 | [TimeArrayTimeZoneRule](capi-i18n-timearraytimezonerule.md)* rule | 起始时间戳数组定义的时区规则[TimeArrayTimeZoneRule](capi-i18n-timearraytimezonerule.md)。 |
-| int32_t index | 起始时间的索引。 |
-| double* result | 规则生效的起始时间。 |
+| int32_t index | 起始时间的索引。取值范围：[0, rule.numStartTimes - 1]。 |
+| double* result | 规则生效的起始时间，单位为毫秒（ms），采用Unix时间戳格式。 |
 
 **返回：**
 

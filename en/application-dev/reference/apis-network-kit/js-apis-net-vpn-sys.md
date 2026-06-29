@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:51:06.105Z pushedAt=2026-06-26T03:00:41.292Z -->
 
 The **vpn** module implements virtual private network (VPN) management, such as starting and stopping a VPN.
 
@@ -296,7 +297,7 @@ struct Index {
     }
     tcp.connect(addressConnect);
     tcp.getSocketFd().then((tunnelFd: number) => {
-      console.info("tunenlfd: " + tunnelFd);
+      console.info("tunnelFd: " + tunnelFd);
       this.VpnConnection.protect(tunnelFd, (error: BusinessError) => {
         console.error(JSON.stringify(error));
       });
@@ -377,7 +378,7 @@ struct Index {
     }
     tcp.connect(addressConnect);
     tcp.getSocketFd().then((tunnelFd: number) => {
-      console.info("tunenlfd: " + tunnelFd);
+      console.info("tunnelFd: " + tunnelFd);
       this.VpnConnection.protect(tunnelFd).then(() => {
         console.info("protect success.");
       }).catch((err: BusinessError) => {

@@ -1164,6 +1164,7 @@ getPhotoRotation(deviceDegree?: number): ImageRotation
 
 | 错误码ID   | 错误信息                         |
 |---------|------------------------------|
+| 7400101 | Parameter missing or parameter type incorrect.<br>适用版本：12-22  |
 | 7400201 | Camera service fatal error.  |
 
 **示例：**
@@ -1355,6 +1356,92 @@ function setPhotoQualityPrioritization(qualityPrioritization: camera.PhotoQualit
   } catch (error) {
     let err = error as BusinessError;
     console.error(`The setPhotoQualityPrioritization call failed. error code: ${err.code}`);
+  }
+}
+```
+
+## isAutoExtendedGainmapDeliverySupported
+
+isAutoExtendedGainmapDeliverySupported(): boolean
+
+确认是否支持自动扩展增益图（Gainmap）的输出。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**返回值：**
+
+| 类型            | 说明                     |
+| -------------- | ----------------------- |
+| boolean | 是否支持自动扩展增益图（Gainmap）的输出。true表示支持，false表示不支持。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { camera } from '@kit.CameraKit';
+
+function isAutoExtendedGainmapDeliverySupported(photoOutput: camera.PhotoOutput): boolean {
+  let isSupported: boolean = false;
+  try {
+    isSupported = photoOutput.isAutoExtendedGainmapDeliverySupported();
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The isAutoExtendedGainmapDeliverySupported call failed. error code: ${err.code}`);
+  }
+  return isSupported;
+}
+```
+
+## enableAutoExtendedGainmapDelivery
+
+enableAutoExtendedGainmapDelivery(enabled: boolean): void
+
+是否启用自动扩展增益图（Gainmap）的输出。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名      | 类型                    | 必填 | 说明                                       |
+| -------- | ---------------------- | ---- | ------------------------------------------ |
+| enabled  | boolean                | 是   | 是否启用自动扩展增益图（Gainmap）的输出。true表示启用，false表示不启用。     |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID    | 错误信息                                           |
+| -------- |------------------------------------------------|
+| 7400102  | Operation not allowed. |
+| 7400103  | Session not config, only throw in session usage. |
+| 7400201  | Camera service fatal error. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { camera } from '@kit.CameraKit';
+
+function enableAutoExtendedGainmapDelivery(photoOutput: camera.PhotoOutput): void {
+  try {
+    photoOutput.enableAutoExtendedGainmapDelivery(true);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The enableAutoExtendedGainmapDelivery call failed. error code: ${err.code}`);
   }
 }
 ```

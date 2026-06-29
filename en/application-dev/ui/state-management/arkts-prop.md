@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-One-way synchronization is supported between an \@Prop decorated variable a variable of its parent component.
+One-way synchronization is supported between an \@Prop decorated variable and variable of its parent component.
 
 Before reading this topic, you are advised to understand the basic usage of [\@State](./arkts-state.md). For best practices, see [State Management](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-status-management).
 
@@ -38,7 +38,7 @@ Variables decorated with \@Prop have the following features:
 
 ## Variable Transfer/Access Rules
 
-| Transfer/Access         | Description                                                        |
+| Rule         | Description                                                        |
 | ------------------ | ------------------------------------------------------------ |
 | Initialization from the parent component    | If initialization is performed locally, this operation is optional. The initialization behavior is the same as that in [\@State](./arkts-state.md#variable-transferaccess-rules). If local initialization cannot be performed, this operation is mandatory. An @Prop decorated variable can be initialized from a regular variable (whose change does not trigger UI re-render). or an [\@State](arkts-state.md), [\@Link](arkts-link.md), @Prop, [\@Provide](arkts-provide-and-consume.md), [\@Consume](arkts-provide-and-consume.md), [\@ObjectLink](arkts-observed-and-objectlink.md), [\@StorageLink](arkts-appstorage.md#storagelink), [\@StorageProp](arkts-appstorage.md#storageprop), [\@LocalStorageLink](arkts-localstorage.md#localstoragelink), or [\@LocalStorageProp](arkts-localstorage.md#localstorageprop) decorated variable in its parent component.|
 |Child component initialization| \@Prop can be used for initialization of a regular variable or \@State, \@Link, \@Prop, or \@Provide decorated variable in the child component.|
@@ -46,7 +46,7 @@ Variables decorated with \@Prop have the following features:
 
  The following figure shows the initialization rules.
 
-![en-us_image_0000001552972029](figures/en-us_image_0000001552972029.png)
+![en-us_image_0000001552972029](figures/Initialization-rules02.png)
 
 ## Observed Changes and Behavior
 
@@ -88,7 +88,7 @@ class Model {
 @Prop title: Model;
 // Top-level property changes are observable.
 this.title.value = 'Hi';
-// Nested property changes are observable.
+// Nested property changes are not observable.
 this.title.info.value = 'ArkUI';
 ```
 

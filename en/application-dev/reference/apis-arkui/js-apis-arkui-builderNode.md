@@ -13,7 +13,9 @@ Compared with **BuilderNode**, **ReactiveBuilderNode** can generate a component 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> 
+>
+> - The APIs of this module can be used only in the stage model.
+>
 > - If the root node of the provided Builder is a syntax node ([if/else](../../ui/rendering-control/arkts-rendering-control-ifelse.md)/[ForEach](../../ui/rendering-control/arkts-rendering-control-foreach.md)/[LazyForEach](../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)/[ContentSlot](../../ui/rendering-control/arkts-rendering-control-contentslot.md)...), [Span](./arkui-ts/ts-basic-components-span.md), [ContainerSpan](./arkui-ts/ts-basic-components-containerspan.md), [SymbolSpan](./arkui-ts/ts-basic-components-symbolSpan.md), or a custom component, an additional [FrameNode](./js-apis-arkui-frameNode.md) is generated and displayed as BuilderProxyNode in the node tree. This structural change affects the propagation of certain events. For details, see [BuilderProxyNode in BuilderNode Causes Tree Structure Changes](../../ui/arkts-user-defined-arktsNode-builderNode.md#builderproxynode-in-buildernode-causes-tree-structure-changes).
 >
 > - If you encounter display issues when reusing a BuilderNode across pages, see [Cross-Page Reuse Considerations](../../ui/arkts-user-defined-arktsNode-builderNode.md#cross-page-reuse-considerations) for guidance.
@@ -1212,7 +1214,7 @@ struct Index {
 
 updateConfiguration(): void
 
-Updates the configuration of the entire node by passing in a [system environment change](../apis-ability-kit/js-apis-app-ability-configuration.md) event.
+Transfers a system environment change event and triggers full update of a node. For details about system environment changes, see [@ohos.app.ability.Configuration (Environment Variables)](../apis-ability-kit/js-apis-app-ability-configuration.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1570,7 +1572,7 @@ Before calling this API, you need to convert the value of **event** to the corre
 >
 > - The passed coordinates must be converted to the unit of px. The sample code below demonstrates how to perform such coordinate conversion.
 >
-> - When processing a mouse left-click event, the system converts the event to a touch event. When forwarding the event, do not bind the touch event and mouse event at the outer layer at the same time, as this may cause coordinate offsets. This is because [SourceType](arkui-ts/ts-appendix-enums.md#touchtype) does not change during the event conversion. For details about the specifications, see [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch).
+> - When processing a mouse left-click event, the system converts the event to a touch event. When forwarding the event, do not bind the touch event and mouse event at the outer layer at the same time, as this may cause coordinate offsets. This is because [TouchType](arkui-ts/ts-appendix-enums.md#touchtype) does not change during the event conversion. For details about the specifications, see [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch).
 >
 > - When an [axis event](arkui-ts/ts-universal-events-axis.md#axisevent) event is injected, it cannot trigger [rotation gestures](arkui-ts/ts-basic-gestures-rotationgesture.md), because the axis event does not include rotation axis information.
 >
@@ -1607,7 +1609,7 @@ For details, see [Example 16: Handling Mouse Events with Competition Strategies 
 
 inheritFreezeOptions(enabled: boolean): void
 
-Sets whether this **BuilderNode** object inherits the freeze policy from its parent component's custom components. When inheritance is disabled (set to **false**), the object's freeze policy is set to **false**, which means its associated node remains unfrozen even in an inactive state.
+Sets whether the current **BuilderNode** object inherits the freeze policy from its parent component's custom components. When inheritance is disabled (set to **false**), the object's freeze policy is set to **false**, which means its associated node remains unfrozen even in an inactive state.
 
 > **NOTE**
 >
@@ -2698,7 +2700,7 @@ struct Index {
 
 updateConfiguration(): void
 
-Updates the configuration of the entire node by passing in a [system environment change](../apis-ability-kit/js-apis-app-ability-configuration.md) event. This event can be used to notify the object of the update. Whether the system environment used by the object is updated depends on the current system environment change of the application.
+Transfers a system environment change event and triggers full update of a node. This event can be used to notify the object of the update. Whether the system environment used by the object is updated depends on the current system environment change of the application. For details about system environment changes, see [@ohos.app.ability.Configuration (Environment Variables)](../apis-ability-kit/js-apis-app-ability-configuration.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -2982,7 +2984,7 @@ Posts the input event to the target node managed by the **ReactiveBuilderNode**.
 
 **offsetA** indicates the **BuilderNode**'s offset relative to its parent component, **offsetB** the hit position's offset relative to the **BuilderNode**, **offsetC** the composite offset (offsetA + offsetB) passed to the **postInputEvent**.
 
-! [API coordinate conversion example](figures/postTouchEvent.PNG)
+![API coordinate conversion example](figures/postTouchEvent.PNG)
 
 > **NOTE**
 >
@@ -3038,7 +3040,7 @@ Before calling this API, you need to convert the value of **event** to the corre
 >
 > - The passed coordinates must be converted to the unit of px. The sample code below demonstrates how to perform such coordinate conversion.
 >
-> - When processing a mouse left-click event, the system converts the event to a touch event. When forwarding the event, do not bind the touch event and mouse event at the outer layer at the same time, as this may cause coordinate offsets. This is because [SourceType](arkui-ts/ts-appendix-enums.md#touchtype) does not change during the event conversion. For details about the specifications, see [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch).
+> - When processing a mouse left-click event, the system converts the event to a touch event. When forwarding the event, do not bind the touch event and mouse event at the outer layer at the same time, as this may cause coordinate offsets. This is because [TouchType](arkui-ts/ts-appendix-enums.md#touchtype) does not change during the event conversion. For details about the specifications, see [onTouch](arkui-ts/ts-universal-events-touch.md#ontouch).
 >
 > - When an [axis event](arkui-ts/ts-universal-events-axis.md#axisevent) event is injected, it cannot trigger [rotation gestures](arkui-ts/ts-basic-gestures-rotationgesture.md), because the axis event does not include rotation axis information.
 >
@@ -3071,7 +3073,7 @@ Before calling this API, you need to convert the value of **event** to the corre
 
 inheritFreezeOptions(enabled: boolean): void
 
-Sets whether this **ReactiveBuilderNode** object inherits the freeze policy from its parent component's custom components. When inheritance is disabled (set to **false**), the **ReactiveBuilderNode** object's freeze policy is set to **false**, which means its associated node remains unfrozen even in an inactive state.
+Sets whether the current **ReactiveBuilderNode** object inherits the freeze policy from its parent component's custom components. When inheritance is disabled (set to **false**), the **ReactiveBuilderNode** object's freeze policy is set to **false**, which means its associated node remains unfrozen even in an inactive state.
 
 > **NOTE**
 >

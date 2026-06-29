@@ -40,7 +40,7 @@ ColumnSplit()
 
 resizeable(value: boolean)
 
-设置分割线是否可拖拽。
+设置分割线是否可拖动。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -50,7 +50,7 @@ resizeable(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                 |
 | ------ | ------- | ---- | ------------------------------------ |
-| value  | boolean | 是   | 分割线是否可拖拽。设置为true时表示分割线可拖拽，设置为false时表示分割线不可拖拽。<br/>默认值：false <br />非法值：按默认值处理。 |
+| value  | boolean | 是   | 分割线是否可拖动。设置为true时表示分割线可拖动，设置为false时表示分割线不可拖动。<br/>默认值：false <br />非法值：按默认值处理。 |
 
 ### divider<sup>10+</sup>
 
@@ -59,6 +59,8 @@ divider(value: ColumnSplitDividerStyle | null)
 设置分割线的margin。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,6 +75,8 @@ divider(value: ColumnSplitDividerStyle | null)
 设置子组件与上下分割线的距离。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -120,7 +124,7 @@ struct ColumnSplitExample {
 }
 ```
 
-![zh-cn_image_0000001219982708](figures/zh-cn_image_0000001219982708.gif)
+![columnSplitDividerStyle](figures/columnSplitDividerStyle.gif)
 
 ### 示例2（设置带有间隔的ColumnSplit组件）
 

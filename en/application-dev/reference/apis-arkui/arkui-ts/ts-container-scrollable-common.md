@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong; @zcdqs; @rongShao-Z-->
+<!--Owner: @yylong; @rongShao-Z-->
 <!--Designer: @yylong; @zcdqs-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The common attributes and events for scrollable components currently only support the [List](ts-container-list.md), [Grid](ts-container-grid.md), [Scroll](ts-container-scroll.md), and [WaterFlow](ts-container-waterflow.md) components.
@@ -1346,7 +1346,7 @@ struct ListExample {
 }
 ```
 
-![en-us_image_0000001174264378](figures/en-us_image_0000001174264378.gif)
+![list1](figures/list1.gif)
 
 ### Example 2: Setting Edge Fading
 This example demonstrates how to use [fadingEdge](ts-container-scrollable-common.md#fadingedge14) to implement a [List](ts-container-list.md) component with an edge fading effect and set the length of the fading edge.

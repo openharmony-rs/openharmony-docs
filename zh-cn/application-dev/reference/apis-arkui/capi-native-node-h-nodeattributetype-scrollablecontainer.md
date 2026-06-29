@@ -1,9 +1,9 @@
 # ArkUI_NodeAttributeType（滚动容器类组件相关属性）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @shengu_lancer; @yylong; @guozejun-->
-<!--Designer: @yylong; @zcdqs-->
-<!--Tester: @huchuyun-->
+<!--Owner: @shengu_lancer; @yylong; @yangcan18-->
+<!--Designer: @yylong;@guozejun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ```c
@@ -60,7 +60,7 @@ NODE_SCROLL_BAR_WIDTH = 1002001
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].f32 | 滚动条宽度，单位vp，默认值4。<br>取值范围：设置为小于0的值时，按默认值处理。设置为0时，不显示滚动条。 |
+| .value[0].f32 | 滚动条宽度，单位vp，默认值4。<br>取值范围：设置为小于0的值时，按默认值处理，儿童智能表则恢复至默认值5vp。设置为0时，不显示滚动条。 |
 
 **返回：**
 
@@ -84,7 +84,7 @@ NODE_SCROLL_BAR_COLOR = 1002002
 
 | 参数项 | 描述 |
 | -- | -- |
-| .data[0].u32 | 滚动条颜色，0xargb类型。默认值：0x66182431。 |
+| .data[0].u32 | 滚动条颜色，0xargb类型。儿童智能表的默认值颜色：0xffffffff，表示白色（100%不透明度），其他设备默认值：0x66182431，表示深蓝灰色（40%不透明度）。 |
 
 **返回：**
 
@@ -267,7 +267,7 @@ NODE_SCROLL_OFFSET = 1002009
 | .value[0].f32 | 水平滑动偏移，单位为vp。取值范围：当值小于0时按0处理，表示不带动画的滚动。值大于0表示带动画的滚动，默认滚动到起始位置后停止。可通过设置ScrollOptions中的animation参数，使滚动在越界时启动回弹动画。 |
 | .value[1].f32 | 垂直滑动偏移，单位为vp。取值范围：当值小于0时按0处理，表示不带动画的滚动。值大于0表示带动画的滚动，默认滚动到起始位置后停止。可通过设置animation参数，使滚动在越界时启动回弹动画。 |
 | .value[2]?.i32 | 可选值，滚动时长，单位为毫秒，默认值1000。 |
-| .value[3]?.i32 | 可选值，滚动曲线，参数类型[ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve)。默认值为[ARKUI_CURVE_EASE](capi-native-type-h.md#arkui_animationcurve)。 |
+| .value[3]?.i32 | 可选值，滚动曲线，参数类型[ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve)。默认值为[ARKUI_CURVE_EASE](capi-native-type-visual-h.md#arkui_animationcurve)。 |
 | .value[4]?.i32 | 可选值，是否使能默认弹簧动效，默认值为0不使能。 |
 | .value[5]?.i32 | 可选值，设置动画滚动到边界是否转换为越界回弹动画，默认值为0不转换越界回弹动画。 |
 | .value[6]?.i32 | 可选值，设置滚动是否可以停留在越界位置，默认值为0不停留在越界位置。该参数从API version 20开始支持。 |
@@ -564,7 +564,7 @@ NODE_SCROLL_BAR_MARGIN = 1002022
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].f32 | 设置滚动条起始边距，默认值为0，单位：vp。 |
+| .value[0].f32 | 设置滚动条起始边距，儿童智能表默认值为42，其他设备默认值为0，单位：vp。 |
 | .value[1].f32 | 设置滚动条末尾边距，默认值为0，单位：vp。 |
 
 **返回：**
@@ -719,6 +719,29 @@ NODE_SCROLL_AUTO_ADJUST_MARGIN = 1002028
 | .value[0].i32 | 是否自动调整边距，0：自动调整边距，1：不自动调整边距。 |
 
 
+## NODE_SCROLL_BAR_HEIGHT
+
+```c
+NODE_SCROLL_BAR_HEIGHT = 1002029
+```
+
+定义滚动条滑轨高度。支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].f32 | 滚动条滑轨高度，单位：vp。默认值：自适应滚动组件高度。<br>取值范围：值必须大于等于0。设置为小于0时使用默认值，儿童智能表则恢复至默认值37vp。设置为0时不显示滚动条。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].f32 | 滚动条滑轨高度，单位：vp。 |
+
 ## NODE_LIST_DIRECTION
 
 ```c
@@ -735,13 +758,13 @@ NODE_LIST_DIRECTION = MAX_NODE_SCOPE_NUM * ARKUI_NODE_LIST = 1003000
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | List组件排列方向，数据类型[ArkUI_Axis](capi-native-type-h.md#arkui_axis)，默认值ARKUI_AXIS_VERTICAL。 |
+| .value[0].i32 | List组件排列方向，数据类型[ArkUI_Axis](capi-layout-h.md#arkui_axis)，默认值ARKUI_AXIS_VERTICAL。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | List组件排列方向，数据类型[ArkUI_Axis](capi-native-type-h.md#arkui_axis)。 |
+| .value[0].i32 | List组件排列方向，数据类型[ArkUI_Axis](capi-layout-h.md#arkui_axis)。 |
 
 ## NODE_LIST_STICKY
 
@@ -859,9 +882,9 @@ NODE_LIST_SCROLL_TO_INDEX = 1003005
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 要滑动到的目标元素在当前容器中的索引值。 |
+| .value[0].i32 | 要滑动到的目标元素在当前容器中的索引值。传入-1时，指滑动到当前容器的最后一个元素。 |
 | .value[1]?.i32 | 设置滑动到列表项在列表中的索引值时是否有动效，1表示有动效，0表示没有动效。默认值：0。 |
-| .value[2]?.i32 | 指定滑动到的元素与当前容器的对齐方式，参数类型[ArkUI_ScrollAlignment](capi-native-type-h.md#arkui_scrollalignment), 默认值：[ARKUI_SCROLL_ALIGNMENT_START](capi-native-type-h.md#arkui_scrollalignment)。 |
+| .value[2]?.i32 | 指定滑动到的元素与当前容器的对齐方式，参数类型[ArkUI_ScrollAlignment](capi-native-type-h.md#arkui_scrollalignment)，默认值：[ARKUI_SCROLL_ALIGNMENT_START](capi-native-type-h.md#arkui_scrollalignment)。 |
 | .value[3]?.f32 | 额外偏移量，默认值：0，单位：vp。该参数从API version 15开始支持。 |
 
 ## NODE_LIST_ALIGN_LIST_ITEM
@@ -1563,13 +1586,13 @@ NODE_WATER_FLOW_LAYOUT_DIRECTION = MAX_NODE_SCOPE_NUM * ARKUI_NODE_WATER_FLOW = 
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 主轴方向，参数类型[ArkUI_FlexDirection](capi-native-type-h.md#arkui_flexdirection)。默认值[ARKUI_FLEX_DIRECTION_COLUMN](capi-native-type-h.md#arkui_flexdirection)。 |
+| .value[0].i32 | 主轴方向，参数类型[ArkUI_FlexDirection](capi-layout-h.md#arkui_flexdirection)。默认值[ARKUI_FLEX_DIRECTION_COLUMN](capi-layout-h.md#arkui_flexdirection)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 主轴方向，参数类型[ArkUI_FlexDirection](capi-native-type-h.md#arkui_flexdirection)。 |
+| .value[0].i32 | 主轴方向，参数类型[ArkUI_FlexDirection](capi-layout-h.md#arkui_flexdirection)。 |
 
 ## NODE_WATER_FLOW_COLUMN_TEMPLATE
 
@@ -2369,3 +2392,410 @@ NODE_GRID_ITEM_SELECTED = 1014002
 | 类型 | 说明 |
 | -- | -- |
 | .value[0].i32 | GridItem选中状态。0：未选中，1：已选中。 |
+
+## NODE_ARC_LIST_DIGITAL_CROWN_SENSITIVITY
+
+```c
+NODE_ARC_LIST_DIGITAL_CROWN_SENSITIVITY = MAX_NODE_SCOPE_NUM * ARKUI_NODE_ARC_LIST = 1019000
+```
+
+设置ArcList组件表冠灵敏度，支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 表冠灵敏度类型，数据类型[ArkUI_CrownSensitivity](capi-native-type-h.md#arkui_crownsensitivity)，默认值为[ARKUI_CROWN_SENSITIVITY_MEDIUM](capi-native-type-h.md#arkui_crownsensitivity)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 表冠灵敏度类型，数据类型[ArkUI_CrownSensitivity](capi-native-type-h.md#arkui_crownsensitivity)。 |
+
+## NODE_ARC_LIST_SPACE
+
+```c
+NODE_ARC_LIST_SPACE = 1019001
+```
+
+设置ArcList子组件主轴方向的间隔，支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].f32 | 子组件主轴方向的间隔，单位为vp，默认值0。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].f32 | 子组件主轴方向的间隔。 |
+
+## NODE_ARC_LIST_CACHED_COUNT
+
+```c
+NODE_ARC_LIST_CACHED_COUNT = 1019002
+```
+
+设置ArcList组件缓存数量，支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 缓存数量。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 缓存数量。 |
+
+## NODE_ARC_LIST_SCROLL_TO_INDEX
+
+```c
+NODE_ARC_LIST_SCROLL_TO_INDEX = 1019003
+```
+
+滑动到指定索引值对应的列表项。开启动效时，会对经过的所有列表项进行加载和布局计算，当大量加载列表项时会导致性能问题。<br>
+作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 要滑动到的目标元素在当前容器中的索引值。传入-1时，指滑动到当前容器的最后一个元素。 |
+| .value[1]?.i32 | 设置滑动到指定索引值对应的列表项时是否有动效，1表示有动效，0表示没有动效。默认值：0。 |
+| .value[2]?.i32 | 指定滑动到的列表项与当前容器的对齐方式，参数类型[ArkUI_ScrollAlignment](capi-native-type-h.md#arkui_scrollalignment)，默认值：[ARKUI_SCROLL_ALIGNMENT_START](capi-native-type-h.md#arkui_scrollalignment)。 |
+| .value[3]?.f32 | 额外偏移量，默认值：0，单位：vp。 |
+
+## NODE_ARC_LIST_CHAIN_ANIMATION
+
+```c
+NODE_ARC_LIST_CHAIN_ANIMATION = 1019004
+```
+
+设置ArcList是否启用链式联动动效，支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 是否启用链式联动动效，0：不启用，1：启用，默认值：0。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 是否启用链式联动动效。 |
+
+## NODE_ARC_LIST_CHILDREN_MAIN_SIZE
+
+```c
+NODE_ARC_LIST_CHILDREN_MAIN_SIZE = 1019005
+```
+
+设置ArcList子组件默认主轴尺寸，支持属性设置和属性重置接口。<br>
+作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .object | 参数格式为[ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)。 |
+
+## NODE_ARC_LIST_SET_HEADER
+
+```c
+NODE_ARC_LIST_SET_HEADER = 1019006
+```
+
+设置ArcList头部组件，支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .object | 使用[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)对象作为ArcList头部组件。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .object | 使用[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)对象作为ArcList头部组件。 |
+
+
+## NODE_ARC_LIST_SCROLL_BAR
+
+```c
+NODE_ARC_LIST_SCROLL_BAR = 1019007
+```
+
+设置ArcList组件的滚动条状态，支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 滚动条状态，数据类型[ArkUI_ScrollBarDisplayMode](capi-native-type-h.md#arkui_scrollbardisplaymode)，默认值为[ARKUI_SCROLL_BAR_DISPLAY_MODE_AUTO](capi-native-type-h.md#arkui_scrollbardisplaymode)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 滚动条状态，数据类型[ArkUI_ScrollBarDisplayMode](capi-native-type-h.md#arkui_scrollbardisplaymode)。 |
+
+## NODE_ARC_LIST_SCROLL_BAR_COLOR
+
+```c
+NODE_ARC_LIST_SCROLL_BAR_COLOR = 1019008
+```
+
+设置ArcList组件滚动条的颜色，支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .data[0].u32 | 滚动条颜色，0xargb类型。默认值：0x66182431。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .data[0].u32 | 滚动条颜色，0xargb类型。 |
+
+
+## NODE_ARC_LIST_SCROLL_BAR_WIDTH
+
+```c
+NODE_ARC_LIST_SCROLL_BAR_WIDTH = 1019009
+```
+
+设置ArcList组件滚动条的宽度，支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].f32 | 滚动条宽度，单位vp，默认值4。<br>取值范围：设置为小于0的值时，按默认值处理。设置为0时，不显示滚动条。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].f32 | 滚动条宽度，单位vp。 |
+
+## NODE_ARC_LIST_ENABLE_SCROLL_INTERACTION
+
+```c
+NODE_ARC_LIST_ENABLE_SCROLL_INTERACTION = 1019010
+```
+
+设置ArcList是否支持滚动手势，支持属性设置，属性重置和属性获取接口。
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 是否支持滚动手势，默认值1。1：支持滚动手势，0：不支持滚动手势。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 是否支持滚动手势。 |
+
+
+## NODE_ARC_LIST_FADING_EDGE
+
+```c
+NODE_ARC_LIST_FADING_EDGE = 1019011
+```
+
+设置ArcList边缘渐隐效果，支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 是否使能边缘渐隐效果。0表示关闭边缘效果，1表示开启边缘效果。默认值：0。 |
+| .value[1]?.f32 | 边缘渐隐效果长度。单位：vp，默认值：32。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 是否使能边缘渐隐效果。0表示关闭边缘效果，1表示开启边缘效果。 |
+| .value[1].f32 | 边缘渐隐效果长度。单位：vp。 |
+
+## NODE_ARC_LIST_FRICTION
+
+```c
+NODE_ARC_LIST_FRICTION = 1019012
+```
+
+设置ArcList摩擦系数，支持属性设置，属性重置和属性获取接口。<br>作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].f32 | 摩擦系数，默认值：0.8。取值范围：(0, +∞)，设置为小于等于0的值时，按默认值处理。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].f32 | 摩擦系数。 |
+
+
+## NODE_ARC_LIST_FLING_SPEED_LIMIT
+
+```c
+NODE_ARC_LIST_FLING_SPEED_LIMIT = 1019013
+```
+
+设置ArcList限制Fling动效最大初始速度，支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].f32 | Fling动效开始时的最大初始速度，单位：vp/s。默认值：9000。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].f32 | Fling动效开始时的最大初始速度。 |
+
+
+## NODE_ARC_LIST_ITEM_AUTO_SCALE
+
+```c
+NODE_ARC_LIST_ITEM_AUTO_SCALE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_ARC_LIST_ITEM = 1020000
+```
+
+设置ArcListItem是否启用自动缩放，支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 是否启用自动缩放，0：不启用，1：启用，默认值：1。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 是否启用自动缩放。 |
+
+
+## NODE_ARC_LIST_ITEM_SWIPE_ACTION
+
+```c
+NODE_ARC_LIST_ITEM_SWIPE_ACTION = 1020001
+```
+
+设置ArcListItem的划出组件，支持属性设置和属性重置接口。<br>
+作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .object | 使用[ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)对象构造。 |
+
+## NODE_ARC_SCROLL_BAR_BIND_SCROLLABLE
+
+```c
+NODE_ARC_SCROLL_BAR_BIND_SCROLLABLE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_ARC_SCROLL_BAR = 1021000
+```
+
+设置ArcScrollBar绑定的可滚动组件，支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .object | 使用[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)对象作为滚动条绑定的可滚动组件。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .object | 使用[ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)对象作为滚动条绑定的可滚动组件。 |
+
+
+## NODE_ARC_SCROLL_BAR_DISPLAY_MODE
+
+```c
+NODE_ARC_SCROLL_BAR_DISPLAY_MODE = 1021001
+```
+
+设置ArcScrollBar滚动条状态，支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 滚动条状态，数据类型[ArkUI_ScrollBarDisplayMode](capi-native-type-h.md#arkui_scrollbardisplaymode)，默认值为ARKUI_SCROLL_BAR_DISPLAY_MODE_AUTO。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 滚动条状态，数据类型[ArkUI_ScrollBarDisplayMode](capi-native-type-h.md#arkui_scrollbardisplaymode)。 |

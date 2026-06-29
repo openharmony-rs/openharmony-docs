@@ -1,8 +1,8 @@
 # Component Animation
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -20,7 +20,7 @@ The default animation of a component exhibits the following features:
 
 - Reduce development workload, as the APIs are readily available.
 
-For more effects, see [Component Overview](../reference/apis-arkui/arkui-ts/ts-container-flex.md).
+The following provides an example and effect of the default animation of a **Checkbox** component. For more effects, see the corresponding component description.
 
 Below is the sample code and effect:
 
@@ -45,7 +45,7 @@ struct ComponentDemo {
 ```
 
 
-![en-us_image_0000001649338585](figures/en-us_image_0000001649338585.gif)
+![animation-default](figures/animation-default.gif)
 
 
 ## Customizing Component Animation
@@ -54,7 +54,7 @@ Some components allow for animation customization for their child components thr
 
 - For a scroll or click gesture, you can implement various effects by changing affine properties of the child component.
 
-- If you want to customize the animation effect during the scrolling, you can monitor the scrolling distance in the [onScroll](../reference/apis-arkui/arkui-ts/ts-container-grid.md#onscrolldeprecated) callback and calculate the affine properties of each component. You can also define gestures, monitor positions through the gestures, and manually call **ScrollTo** to change the scrolled-to position.
+- If you want to customize the animation effect during the scrolling, you can monitor the scrolling distance in the [onDidScroll](../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#ondidscroll12) callback and calculate the affine properties of each component. You can also define gestures, monitor positions through the gestures, and manually call **ScrollTo** to change the scrolled-to position.
 
 - You can fine-tune the scrolled-to position in the [onScrollStop](../reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md#onscrollstop14) callback or the callback for gesture completion.
 
@@ -362,7 +362,7 @@ export struct TaskSwitchMainPage {
 }
 ```
 
-![en-us_image_0000001599808406](figures/en-us_image_0000001599808406.gif)
+![animation-custom](figures/animation-custom.gif)
 
 You can use the **animateTo** API to replace a specified item in a list with the first item, while other items in the list are rearranged sequentially. Below is the sample code and animation effect demonstrating a custom dynamic replacement animation for the **List** component.
 

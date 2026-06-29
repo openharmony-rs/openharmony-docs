@@ -24,6 +24,8 @@ analyzerConfig(config: ImageAnalyzerConfig)
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -42,6 +44,8 @@ edgeAntialiasing(value: number)
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -57,6 +61,8 @@ pointLight(value: PointLightStyle)
 设置点光源样式。
 
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,6 +82,8 @@ enhancedImageQuality(imageQuality: ResolutionQuality)
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -86,14 +94,16 @@ enhancedImageQuality(imageQuality: ResolutionQuality)
 
 ## ResolutionQuality<sup>12+</sup>
 
-图像解码时的图像解码分辨率选项。
+type ResolutionQuality = import('../api/@ohos.multimedia.image').default.ResolutionQuality
+
+画质效果等级类型。
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 值                     | 说明                    |
-| ------ | --------------------------  | --------------------------  |
-| Low   | 1  | 低图像分辨率，解码时间适中。   |
-| Medium | 2 | 中等图像分辨率，解码时间适中。  |
-| High   | 3   | 高图像分辨率，解码时间长。    |
+| 类型     | 说明       |
+| ------ | ---------- |
+| import('../api/@ohos.multimedia.image').default.[ResolutionQuality](../../apis-image-kit/js-apis-image-sys.md#resolutionquality12) | 画质效果等级类型。 |

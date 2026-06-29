@@ -295,7 +295,7 @@ struct MyComponent {
 
   aboutToAppear() {
     for (let i = 0; i < 1000; i++) {
-      this.data.pushData(i.toString());
+      this.data.pushData(i);
     }
   }
 
@@ -544,7 +544,7 @@ struct MyComponent {
 
   aboutToAppear() {
     for (let i = 0; i < 1000; i++) {
-      this.data.pushData(i.toString())
+      this.data.pushData(i)
     }
   }
 

@@ -1,8 +1,8 @@
 # OffscreenCanvasRenderingContext2D对象
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -75,7 +75,7 @@ export default {
 }
 ```
 
-![zh-cn_image_js_offsetscreencanvas_rendering](figures/zh-cn_image_js_offsetscreencanvas_rendering.png)
+![image-js-offsetscreencanvas-rendering](figures/image-js-offsetscreencanvas-rendering.png)
 
 ## 方法
 
@@ -154,13 +154,13 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001224354967](figures/zh-cn_image_0000001224354967.png)
+![isPointInPath](figures/isPointInPath.png)
 
 ### isPointInStroke
 
 isPointInStroke(path?: Path2D, x: number, y: number): boolean
 
-判断指定点是否在路径的边缘线上。
+判断指定点是否位于路径描边区域内。
 
 **参数：** 
 | 参数名  | 参数类型   | 必填   | 描述                            |
@@ -172,7 +172,7 @@ isPointInStroke(path?: Path2D, x: number, y: number): boolean
 **返回值：** 
 | 类型      | 说明            |
 | ------- | ------------- |
-| boolean | 指定点是否在路径的区域内。 |
+| boolean | 指定点是否位于路径描边区域内。返回true时，指定点在路径描边区域内。返回false时，指定点不在路径描边区域内。 |
 
 **示例：** 
 ```html
@@ -228,11 +228,13 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001178875308](figures/zh-cn_image_0000001178875308.png)
+![isPointInStroke](figures/isPointInStroke.png)
 
 ### resetTransform
 
 resetTransform(): void
+
+重置当前变换矩阵为单位矩阵。
 
 **示例：** 
 ```html
@@ -295,4 +297,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001179035242](figures/zh-cn_image_0000001179035242.png)
+![resetTransform](figures/resetTransform.png)

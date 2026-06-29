@@ -179,7 +179,7 @@ struct BorderExample {
   build() {
     Column() {
       Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
-        // 线段
+        // 虚线
         Text('dashed')
           .borderStyle(BorderStyle.Dashed)
           .borderWidth(5)
@@ -239,11 +239,11 @@ struct BorderExample {
 }
 ```
 
-![zh-cn_image_0000001219982705](figures/zh-cn_image_0000001219982705.gif)
+![borderRadius](figures/borderRadius.gif)
 
 ### 示例2（边框宽度类型和边框颜色）
 
-border属性的width、radius、color属性值使用LocalizedEdgeWidths类型和LocalizedEdgeColors类型。
+border属性的width使用LocalizedEdgeWidths类型，radius使用LocalizedBorderRadiuses类型，color使用LocalizedEdgeColors类型。
 
 ```ts
 // xxx.ets
@@ -255,7 +255,7 @@ struct BorderExample {
   build() {
     Column() {
       Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
-        // 线段
+        // 虚线
         Text('dashed')
           .borderStyle(BorderStyle.Dashed)
           .borderWidth(5)
@@ -317,11 +317,11 @@ struct BorderExample {
 
 从左至右显示语言示例图
 
-![zh-cm_image_border_ltr](figures/zh-cn_image_border_ltr.png)
+![zh-cn_image_border_ltr](figures/image-border-ltr.png)
 
 从右至左显示语言示例图
 
-![zh-cm_image_border_rtl](figures/zh-cn_image_border_rtl.png)
+![zh-cm_image_border_rtl](figures/image-border-rtl.png)
 
 ### 示例3（设置离屏圆角）
 

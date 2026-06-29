@@ -40,7 +40,7 @@ Defines text styles and text layout managers for the component whose [ArkUI_Node
 | [OH_ArkUI_BaselineOffsetStyle](capi-arkui-nativemodule-oh-arkui-baselineoffsetstyle.md) | OH_ArkUI_BaselineOffsetStyle | Defines a baseline offset style.<br> [OH_ArkUI_BaselineOffsetStyle_Create](capi-styled-string-h.md#oh_arkui_baselineoffsetstyle_create) can be used to create a baseline offset style object.<br> [OH_ArkUI_BaselineOffsetStyle_Destroy](capi-styled-string-h.md#oh_arkui_baselineoffsetstyle_destroy) can be used to destroy the baseline offset style object.<br> After the object is created, [OH_ArkUI_BaselineOffsetStyle_SetBaselineOffset](capi-styled-string-h.md#oh_arkui_baselineoffsetstyle_setbaselineoffset) can be used to set a baseline offset.|
 | [OH_ArkUI_LetterSpacingStyle](capi-arkui-nativemodule-oh-arkui-letterspacingstyle.md) | OH_ArkUI_LetterSpacingStyle | Defines a letter spacing style.<br> [OH_ArkUI_LetterSpacingStyle_Create](capi-styled-string-h.md#oh_arkui_letterspacingstyle_create) can be used to create a letter spacing style object.<br> [OH_ArkUI_LetterSpacingStyle_Destroy](capi-styled-string-h.md#oh_arkui_letterspacingstyle_destroy) can be used to destroy the letter spacing style object.<br> After the object is created, [OH_ArkUI_LetterSpacingStyle_SetLetterSpacing](capi-styled-string-h.md#oh_arkui_letterspacingstyle_setletterspacing) can be used to set letter spacing.|
 | [OH_ArkUI_LineHeightStyle](capi-arkui-nativemodule-oh-arkui-lineheightstyle.md) | OH_ArkUI_LineHeightStyle | Defines a line height style.<br> [OH_ArkUI_LineHeightStyle_Create](capi-styled-string-h.md#oh_arkui_lineheightstyle_create) can be used to create a line height style object.<br> [OH_ArkUI_LineHeightStyle_Destroy](capi-styled-string-h.md#oh_arkui_lineheightstyle_destroy) can be used to destroy the line height style object.<br> After the object is created, [OH_ArkUI_LineHeightStyle_SetLineHeight](capi-styled-string-h.md#oh_arkui_lineheightstyle_setlineheight) can be used to set fixed line height.<br>        Since API version 26.0.0, [OH_ArkUI_LineHeightStyle_SetLineHeightMultiple](capi-styled-string-h.md#oh_arkui_lineheightstyle_setlineheightmultiple) can be used to set the line height multiplier after the object is created.|
-| [OH_ArkUI_LineSpacingStyle](capi-arkui-nativemodule-oh-arkui-linespacingstyle.md) | OH_ArkUI_LineSpacingStyle | Defines a line spacing style.<br>        [OH_ArkUI_LineSpacingStyle_Create](capi-styled-string-h.md#oh_arkui_linespacingstyle_create) can be used to create a line spacing style object.<br>        [OH_ArkUI_LineSpacingStyle_Destroy](capi-styled-string-h.md#oh_arkui_linespacingstyle_destroy) can be used to destroy the line spacing style object.<br>        After the object is created, [OH_ArkUI_LineSpacingStyle_SetLineSpacing](capi-styled-string-h.md#oh_arkui_linespacingstyle_setlinespacing) can be used to set a line spacing value.<br>        After the object is created, [OH_ArkUI_LineSpacingStyle_SetOnlyBetweenLines](capi-styled-string-h.md#oh_arkui_linespacingstyle_setonlybetweenlines) can be used to set whether the line spacing takes effect only between lines.|
+| [OH_ArkUI_LineSpacingStyle](capi-arkui-nativemodule-oh-arkui-linespacingstyle.md) | OH_ArkUI_LineSpacingStyle | Defines a line spacing style.<br>        [OH_ArkUI_LineSpacingStyle_Create](capi-styled-string-h.md#oh_arkui_linespacingstyle_create) can be used to create a line spacing style object, and [OH_ArkUI_LineSpacingStyle_Destroy](capi-styled-string-h.md#oh_arkui_linespacingstyle_destroy) can be used to destroy it.<br>        After the object is created, [OH_ArkUI_LineSpacingStyle_SetLineSpacing](capi-styled-string-h.md#oh_arkui_linespacingstyle_setlinespacing) can be used to set a line spacing value, and [OH_ArkUI_LineSpacingStyle_SetOnlyBetweenLines](capi-styled-string-h.md#oh_arkui_linespacingstyle_setonlybetweenlines) can be used to set whether the line spacing takes effect only between lines.|
 | [OH_ArkUI_UrlStyle](capi-arkui-nativemodule-oh-arkui-urlstyle.md) | OH_ArkUI_UrlStyle | Defines a URL style.<br> [OH_ArkUI_UrlStyle_Create](capi-styled-string-h.md#oh_arkui_urlstyle_create) can be used to create a URL style object.<br> [OH_ArkUI_UrlStyle_Destroy](capi-styled-string-h.md#oh_arkui_urlstyle_destroy) can be used to destroy the URL style object.<br> After the object is created, [OH_ArkUI_UrlStyle_SetUrl](capi-styled-string-h.md#oh_arkui_urlstyle_seturl) can be used to set a URL.|
 | [OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md) | OH_ArkUI_BackgroundColorStyle | Defines a background color style.<br> [OH_ArkUI_BackgroundColorStyle_Create](capi-styled-string-h.md#oh_arkui_backgroundcolorstyle_create) can be used to create a background color style object.<br> [OH_ArkUI_BackgroundColorStyle_Destroy](capi-styled-string-h.md#oh_arkui_backgroundcolorstyle_destroy) can be used to destroy the background color style object.<br> After the object is created, [OH_ArkUI_BackgroundColorStyle_SetColor](capi-styled-string-h.md#oh_arkui_backgroundcolorstyle_setcolor) and [OH_ArkUI_BackgroundColorStyle_SetRadius](capi-styled-string-h.md#oh_arkui_backgroundcolorstyle_setradius) can be used to set the background color and rounded corners.|
 | [OH_ArkUI_UserDataSpan](capi-arkui-nativemodule-oh-arkui-userdataspan.md) | OH_ArkUI_UserDataSpan | Defines a user data span style.<br> [OH_ArkUI_UserDataSpan_Create](capi-styled-string-h.md#oh_arkui_userdataspan_create) can be used to create a user data span style object.<br> [OH_ArkUI_UserDataSpan_Destroy](capi-styled-string-h.md#oh_arkui_userdataspan_destroy) can be used to destroy the user data span style object.<br> After the object is created, [OH_ArkUI_UserDataSpan_SetUserData](capi-styled-string-h.md#oh_arkui_userdataspan_setuserdata) can be used to bind user data.|
@@ -225,9 +225,9 @@ Defines text styles and text layout managers for the component whose [ArkUI_Node
 | [OH_ArkUI_LineSpacingStyle* OH_ArkUI_LineSpacingStyle_Create()](#oh_arkui_linespacingstyle_create) | Creates an [OH_ArkUI_LineSpacingStyle](capi-arkui-nativemodule-oh-arkui-linespacingstyle.md) object.|
 | [void OH_ArkUI_LineSpacingStyle_Destroy(OH_ArkUI_LineSpacingStyle* lineSpacingStyle)](#oh_arkui_linespacingstyle_destroy) | Releases the memory occupied by the [OH_ArkUI_LineSpacingStyle](capi-arkui-nativemodule-oh-arkui-linespacingstyle.md) object.|
 | [ArkUI_ErrorCode OH_ArkUI_LineSpacingStyle_SetLineSpacing(OH_ArkUI_LineSpacingStyle* lineSpacingStyle, float lineSpacing)](#oh_arkui_linespacingstyle_setlinespacing) | Sets line spacing.|
-| [ArkUI_ErrorCode OH_ArkUI_LineSpacingStyle_GetLineSpacing(const OH_ArkUI_LineSpacingStyle* lineSpacingStyle, float* lineSpacing)](#oh_arkui_linespacingstyle_getlinespacing) | Queries the line spacing.|
+| [ArkUI_ErrorCode OH_ArkUI_LineSpacingStyle_GetLineSpacing(const OH_ArkUI_LineSpacingStyle* lineSpacingStyle, float* lineSpacing)](#oh_arkui_linespacingstyle_getlinespacing) | Obtains line spacing.|
 | [ArkUI_ErrorCode OH_ArkUI_LineSpacingStyle_SetOnlyBetweenLines(OH_ArkUI_LineSpacingStyle* lineSpacingStyle, bool onlyBetweenLines)](#oh_arkui_linespacingstyle_setonlybetweenlines) | Sets whether the line spacing takes effect only between lines.|
-| [ArkUI_ErrorCode OH_ArkUI_LineSpacingStyle_GetOnlyBetweenLines(const OH_ArkUI_LineSpacingStyle* lineSpacingStyle, bool* onlyBetweenLines)](#oh_arkui_linespacingstyle_getonlybetweenlines) | Checks whether the line spacing takes effect only between lines.|
+| [ArkUI_ErrorCode OH_ArkUI_LineSpacingStyle_GetOnlyBetweenLines(const OH_ArkUI_LineSpacingStyle* lineSpacingStyle, bool* onlyBetweenLines)](#oh_arkui_linespacingstyle_getonlybetweenlines) | Obtains whether the line spacing takes effect only between lines.|
 | [OH_ArkUI_BackgroundColorStyle* OH_ArkUI_BackgroundColorStyle_Create()](#oh_arkui_backgroundcolorstyle_create) | Creates an [OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md) object.|
 | [void OH_ArkUI_BackgroundColorStyle_Destroy(OH_ArkUI_BackgroundColorStyle* style)](#oh_arkui_backgroundcolorstyle_destroy) | Releases the memory occupied by the [OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md) object.|
 | [ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_SetColor(OH_ArkUI_BackgroundColorStyle* style, uint32_t color)](#oh_arkui_backgroundcolorstyle_setcolor) | Sets the background color for the background color style.|
@@ -289,6 +289,8 @@ Defines text styles and text layout managers for the component whose [ArkUI_Node
 | [ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetLinearGradient(const OH_ArkUI_ParagraphStyle* paragraphStyle, OH_ArkUI_LinearGradientOptions* linearGradient)](#oh_arkui_paragraphstyle_getlineargradient) | Obtains the linear gradient of the paragraph style.|
 | [ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetRadialGradient(OH_ArkUI_ParagraphStyle* paragraphStyle, const OH_ArkUI_RadialGradientOptions* radialGradient)](#oh_arkui_paragraphstyle_setradialgradient) | Sets radial gradient for a paragraph style.|
 | [ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetRadialGradient(const OH_ArkUI_ParagraphStyle* paragraphStyle, OH_ArkUI_RadialGradientOptions* radialGradient)](#oh_arkui_paragraphstyle_getradialgradient) | Obtains the radial gradient of the paragraph style.|
+| [ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetTailIndents(OH_ArkUI_ParagraphStyle* paragraphStyle, const float* tailIndents, uint32_t size)](#oh_arkui_paragraphstyle_settailindents) | Sets tail indentation for a paragraph style.|
+| [ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetTailIndents(const OH_ArkUI_ParagraphStyle* paragraphStyle, float** tailIndents, uint32_t tailIndentsSize, uint32_t* writeLength)](#oh_arkui_paragraphstyle_gettailindents) | Obtains the tail indentation of the paragraph style.|
 
 ## Enum Description
 
@@ -2943,7 +2945,7 @@ Sets the horizontal text alignment method in the paragraph style.
 | Name| Description|
 | -- | -- |
 | [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)* paragraphStyle | Pointer to the [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md) object.|
-| [ArkUI_TextAlignment](capi-native-type-h.md#arkui_textalignment) align | Horizontal text alignment method. The value is an enumerated value of [ArkUI_TextAlignment](capi-native-type-h.md#arkui_textalignment).|
+| [ArkUI_TextAlignment](capi-native-type-h.md#arkui_textalignment) align | Horizontal text alignment mode. The value is an enumerated value of [ArkUI_TextAlignment](capi-native-type-h.md#arkui_textalignment).|
 
 **Return value**
 
@@ -2968,7 +2970,7 @@ Obtains the horizontal text alignment method in the paragraph style.
 | Name| Description|
 | -- | -- |
 | const [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)* paragraphStyle | Pointer to the [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md) object.|
-| [ArkUI_TextAlignment](capi-native-type-h.md#arkui_textalignment)* align | Pointer to the horizontal text alignment method. The value is an enumerated value of [ArkUI_TextAlignment](capi-native-type-h.md#arkui_textalignment).|
+| [ArkUI_TextAlignment](capi-native-type-h.md#arkui_textalignment)* align | Pointer to the horizontal text alignment mode. The value is an enumerated value of [ArkUI_TextAlignment](capi-native-type-h.md#arkui_textalignment).|
 
 **Return value**
 
@@ -3393,7 +3395,7 @@ Sets the vertical text alignment method in the paragraph style.
 | Name| Description|
 | -- | -- |
 | [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)* paragraphStyle | Pointer to the [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md) object.|
-| [ArkUI_TextVerticalAlignment](capi-native-type-h.md#arkui_textverticalalignment) verticalAlignment | Vertical text alignment method. The value is an enumerated value of [ArkUI_TextVerticalAlignment](capi-native-type-h.md#arkui_textverticalalignment).|
+| [ArkUI_TextVerticalAlignment](capi-native-type-h.md#arkui_textverticalalignment) verticalAlignment | Vertical text alignment mode. The value is an enumerated value of [ArkUI_TextVerticalAlignment](capi-native-type-h.md#arkui_textverticalalignment).|
 
 **Return value**
 
@@ -3418,7 +3420,7 @@ Obtains the vertical text alignment method in the paragraph style.
 | Name| Description|
 | -- | -- |
 | const [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)* paragraphStyle | Pointer to the [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md) object.|
-| [ArkUI_TextVerticalAlignment](capi-native-type-h.md#arkui_textverticalalignment)* verticalAlignment | Pointer to the vertical text alignment method. The value is an enumerated value of [ArkUI_TextVerticalAlignment](capi-native-type-h.md#arkui_textverticalalignment).|
+| [ArkUI_TextVerticalAlignment](capi-native-type-h.md#arkui_textverticalalignment)* verticalAlignment | Pointer to the vertical text alignment mode. The value is an enumerated value of [ArkUI_TextVerticalAlignment](capi-native-type-h.md#arkui_textverticalalignment).|
 
 **Return value**
 
@@ -4016,7 +4018,7 @@ Obtains whether the display of multiple decorative lines is enabled in the text 
 | Name| Description|
 | -- | -- |
 | const [OH_ArkUI_DecorationStyle](capi-arkui-nativemodule-oh-arkui-decorationstyle.md)* decorationStyle | Pointer to the [OH_ArkUI_DecorationStyle](capi-arkui-nativemodule-oh-arkui-decorationstyle.md) object.|
-| bool* enableMultiType | Pointer to the **enableMultiType** parameter indicating whether the display of multiple decorative lines is enabled. **true** if enabled; **false** otherwise.|
+| bool* enableMultiType | Pointer to the **enableMultiType** parameter indicating whether the display of multiple decorative lines is enabled. **true** indicates the display of multiple decorative lines is enabled; **false** otherwise.|
 
 **Return value**
 
@@ -5238,7 +5240,7 @@ Sets the image alignment method in the image style.
 | Name| Description|
 | -- | -- |
 | [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)* imageAttachment | Pointer to the [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md) object.|
-| [ArkUI_ImageSpanAlignment](capi-native-type-h.md#arkui_imagespanalignment) verticalAlign | Image alignment method. The value is an enumerated value of [ArkUI_ImageSpanAlignment](capi-native-type-h.md#arkui_imagespanalignment).|
+| [ArkUI_ImageSpanAlignment](capi-native-type-h.md#arkui_imagespanalignment) verticalAlign | Image alignment mode. The value is an enumerated value of [ArkUI_ImageSpanAlignment](capi-native-type-h.md#arkui_imagespanalignment).|
 
 **Return value**
 
@@ -5263,7 +5265,7 @@ Obtains the image alignment method in the image style.
 | Name| Description|
 | -- | -- |
 | const [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)* imageAttachment | Pointer to the [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md) object.|
-| [ArkUI_ImageSpanAlignment](capi-native-type-h.md#arkui_imagespanalignment)* verticalAlign | Pointer to the image alignment method. The value is an enumerated value of [ArkUI_ImageSpanAlignment](capi-native-type-h.md#arkui_imagespanalignment).|
+| [ArkUI_ImageSpanAlignment](capi-native-type-h.md#arkui_imagespanalignment)* verticalAlign | Pointer to the image alignment mode. The value is an enumerated value of [ArkUI_ImageSpanAlignment](capi-native-type-h.md#arkui_imagespanalignment).|
 
 **Return value**
 
@@ -5288,7 +5290,7 @@ Sets the image scaling type in the image style.
 | Name| Description|
 | -- | -- |
 | [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)* imageAttachment | Pointer to the [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md) object.|
-| [ArkUI_ObjectFit](capi-native-type-h.md#arkui_objectfit) objectFit | Image scaling type. The value is an enumerated value of [ArkUI_ObjectFit](capi-native-type-h.md#arkui_objectfit).|
+| [ArkUI_ObjectFit](capi-image-h.md#arkui_objectfit) objectFit | Image scaling type. The value is an enumerated value of [ArkUI_ObjectFit](capi-image-h.md#arkui_objectfit).|
 
 **Return value**
 
@@ -5313,7 +5315,7 @@ Obtains the image scaling type in the image style.
 | Name| Description|
 | -- | -- |
 | const [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)* imageAttachment | Pointer to the [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md) object.|
-| [ArkUI_ObjectFit](capi-native-type-h.md#arkui_objectfit)* objectFit | Pointer to the image scaling type. The value is an enumerated value of [ArkUI_ObjectFit](capi-native-type-h.md#arkui_objectfit).|
+| [ArkUI_ObjectFit](capi-image-h.md#arkui_objectfit)* objectFit | Pointer to the image scaling type. The value is an enumerated value of [ArkUI_ObjectFit](capi-image-h.md#arkui_objectfit).|
 
 **Return value**
 
@@ -6076,3 +6078,65 @@ Obtains the radial gradient of the paragraph style.
 | Type| Description|
 | -- | -- |
 | [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_ParagraphStyle_SetTailIndents()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_SetTailIndents(OH_ArkUI_ParagraphStyle* paragraphStyle, const float* tailIndents, uint32_t size)
+```
+
+**Description**
+
+Sets tail indentation for a paragraph style.
+
+> **NOTE**
+> 
+> All input pointer parameters must be allocated, managed, and released by the caller.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)* paragraphStyle | Pointer to the [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md) object.|
+| const float* tailIndents | Pointer to the tail indentation value array. The unit is vp. The value range is [0, +∞). The valid length is specified by **size**. If the value of **size** is 1, all text lines use the same tail indentation value specified by **tailIndents[0]**. If the value of **size** is greater than 1, the *i*th line (counted from 0) uses **tailIndents[i]** as the tail indentation value. When the number of text lines exceeds the value of **size**, the value of **tailIndents[size - 1]** is reused for indentation of the excess lines.|
+| uint32_t size | Number of valid tail indentation values in the **tailIndents** array.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+
+### OH_ArkUI_ParagraphStyle_GetTailIndents()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ParagraphStyle_GetTailIndents(const OH_ArkUI_ParagraphStyle* paragraphStyle, float** tailIndents, uint32_t tailIndentsSize, uint32_t* writeLength)
+```
+
+**Description**
+
+Obtains the tail indentation of the paragraph style.
+
+> **NOTE**
+>
+> All input pointer parameters must be allocated, managed, and released by the caller.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [const OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md)* paragraphStyle | Pointer to the [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md) object.|
+| float** tailIndents | Double pointer to the tail indentation value array, in vp.|
+| uint32_t tailIndentsSize | Size of the **tailIndents** buffer.|
+| uint32_t* writeLength | Pointer to the number of tail indentation values actually written to the buffer.|
+
+**Return value**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br>        Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>        Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>        Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the buffer length is less than the minimum limit.|

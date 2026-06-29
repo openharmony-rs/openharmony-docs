@@ -51,7 +51,7 @@ A constructor used to create a **NavPushPathHelper** object.
 
 pushPath(moduleName: string, info: NavPathInfo, animated?: boolean): Promise\<void\>
 
-Checks for the target subpackgae and, if it is not present, initiates a download using the specified module name. Once the subpackage is downloaded, the API pushes the [NavDestination](ts-basic-components-navdestination.md) page specified by the **info** parameter onto the navigation stack. This API uses a promise to handle asynchronous operations.
+Checks for the target subpackage and, if it is not present, initiates a download using the specified module name. Once the subpackage is downloaded, the API pushes the [NavDestination](ts-basic-components-navdestination.md) page specified by the **info** parameter onto the navigation stack. This API uses a promise to handle asynchronous operations.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -83,7 +83,7 @@ For details about the error codes, see [Router Error Codes](../errorcode-router.
 
 pushPath(moduleName: string, info: NavPathInfo, options?: NavigationOptions): Promise\<void\>
 
-Checks for the target subpackgae and, if it is not present, initiates a download using the specified module name. Once the subpackage is downloaded, the API pushes the [NavDestination](ts-basic-components-navdestination.md) page specified by the **info** parameter onto the navigation stack. This API uses a promise to handle asynchronous operations.
+Checks for the target subpackage and, if it is not present, initiates a download using the specified module name. Once the subpackage is downloaded, the API pushes the [NavDestination](ts-basic-components-navdestination.md) page specified by the **info** parameter onto the navigation stack. This API uses a promise to handle asynchronous operations.
 
 Depending on the [LaunchMode](ts-basic-components-navigation.md#launchmode12) specified in the **options** parameter, different behaviors will be triggered.
 
@@ -93,11 +93,11 @@ Depending on the [LaunchMode](ts-basic-components-navigation.md#launchmode12) sp
 
 **Parameters**
 
-| Name  | Type                           | Mandatory  | Description                 |
-| ---- | ----------------------------- | ---- | -------------------- |
+| Name  | Type                           | Mandatory  | Description|
+| ---- | ----------------------------- | ---- |----|
 | moduleName | string | Yes   | Module name of the package where the [NavDestination](ts-basic-components-navdestination.md) page is located.|
 | info | [NavPathInfo](ts-basic-components-navigation.md#navpathinfo10) | Yes   | Information about the [NavDestination](ts-basic-components-navdestination.md) page.|
-| options | [NavigationOptions](ts-basic-components-navigation.md#navigationoptions12) | No   | Navigation options.|
+| options | [NavigationOptions](ts-basic-components-navigation.md#navigationoptions12) | No   | Navigation options. The default value is **{ launchMode: LaunchMode.STANDARD, animated: true }**.|
 
 **Return value**
 
@@ -117,7 +117,7 @@ For details about the error codes, see [Router Error Codes](../errorcode-router.
 
 pushPathByName(moduleName: string, name: string, param: Object, animated?: boolean): Promise\<void\>
 
-Checks for the target subpackgae and, if it is not present, initiates a download using the specified module name. Once the subpackage is downloaded, the API pushes the [NavDestination](ts-basic-components-navdestination.md) page specified by the **name** parameter onto the navigation stack, along with the data specified by **param**. This API uses a promise to handle asynchronous operations.
+Checks for the target subpackage and, if it is not present, initiates a download using the specified module name. Once the subpackage is downloaded, the API pushes the [NavDestination](ts-basic-components-navdestination.md) page specified by the **name** parameter onto the navigation stack, along with the data specified by **param**. This API uses a promise to handle asynchronous operations.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -150,7 +150,7 @@ For details about the error codes, see [Router Error Codes](../errorcode-router.
 
 pushPathByName(moduleName: string, name: string, param: Object, onPop: Callback\<PopInfo>, animated?: boolean): Promise\<void\>
 
-Checks for the target subpackgae and, if it is not present, initiates a download using the specified module name. Once the subpackage is downloaded, the API pushes the [NavDestination](ts-basic-components-navdestination.md) page specified by the **name** parameter onto the navigation stack, along with the data specified by **param**. The **onPop** callback handles the return results when the page is popped from the stack.This API uses a promise to handle asynchronous operations.
+Checks for the target subpackage and, if it is not present, initiates a download using the specified module name. Once the subpackage is downloaded, the API pushes the [NavDestination](ts-basic-components-navdestination.md) page specified by the **name** parameter onto the navigation stack, along with the data specified by **param**. The **onPop** callback handles the return results when the page is popped from the stack. This API uses a promise to handle asynchronous operations.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -184,7 +184,7 @@ For details about the error codes, see [Router Error Codes](../errorcode-router.
 
 pushDestination(moduleName: string, info: NavPathInfo, animated?: boolean): Promise\<void\>
 
-Checks for the target subpackgae and, if it is not present, initiates a download using the specified module name. Once the subpackage is downloaded, the API pushes the [NavDestination](ts-basic-components-navdestination.md) page specified by the **info** parameter onto the navigation stack. This API uses a promise to handle asynchronous operations.
+Checks for the target subpackage and, if it is not present, initiates a download using the specified module name. Once the subpackage is downloaded, the API pushes the [NavDestination](ts-basic-components-navdestination.md) page specified by the **info** parameter onto the navigation stack. This API uses a promise to handle asynchronous operations.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -220,7 +220,7 @@ For details about the error codes, see [Universal Error Codes](../../errorcode-u
 
 pushDestination(moduleName: string, info: NavPathInfo, options?: NavigationOptions): Promise\<void\>
 
-Checks for the target subpackgae and, if it is not present, initiates a download using the specified module name. Once the subpackage is downloaded, the API pushes the [NavDestination](ts-basic-components-navdestination.md) page specified by the **info** parameter onto the navigation stack. This API uses a promise to handle asynchronous operations.
+Checks for the target subpackage and, if it is not present, initiates a download using the specified module name. Once the subpackage is downloaded, the API pushes the [NavDestination](ts-basic-components-navdestination.md) page specified by the **info** parameter onto the navigation stack. This API uses a promise to handle asynchronous operations.
 
 Depending on the [LaunchMode](ts-basic-components-navigation.md#launchmode12) specified in the **options** parameter, different behaviors will be triggered.
 
@@ -230,11 +230,11 @@ Depending on the [LaunchMode](ts-basic-components-navigation.md#launchmode12) sp
 
 **Parameters**
 
-| Name  | Type                           | Mandatory  | Description                 |
-| ---- | ----------------------------- | ---- | -------------------- |
+| Name  | Type                           | Mandatory  | Description|
+| ---- | ----------------------------- | ---- |----|
 | moduleName | string | Yes   | Module name of the package where the [NavDestination](ts-basic-components-navdestination.md) page is located.|
 | info | [NavPathInfo](ts-basic-components-navigation.md#navpathinfo10) | Yes   | Information about the [NavDestination](ts-basic-components-navdestination.md) page.|
-| options | [NavigationOptions](ts-basic-components-navigation.md#navigationoptions12) | No   | Navigation options.|
+| options | [NavigationOptions](ts-basic-components-navigation.md#navigationoptions12) | No   | Navigation options. The default value is **{ launchMode: LaunchMode.STANDARD, animated: true }**.|
 
 **Return value**
 
@@ -258,7 +258,7 @@ For details about the error codes, see [Universal Error Codes](../../errorcode-u
 
 pushDestinationByName(moduleName: string, name: string, param: Object, animated?: boolean): Promise\<void\>
 
-Checks for the target subpackgae and, if it is not present, initiates a download using the specified module name. Once the subpackage is downloaded, the API pushes the [NavDestination](ts-basic-components-navdestination.md) page specified by the **name** parameter onto the navigation stack, along with the data specified by **param**. This API uses a promise to handle asynchronous operations.
+Checks for the target subpackage and, if it is not present, initiates a download using the specified module name. Once the subpackage is downloaded, the API pushes the [NavDestination](ts-basic-components-navdestination.md) page specified by the **name** parameter onto the navigation stack, along with the data specified by **param**. This API uses a promise to handle asynchronous operations.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -295,7 +295,7 @@ For details about the error codes, see [Universal Error Codes](../../errorcode-u
 
 pushDestinationByName(moduleName: string, name: string, param: Object, onPop: Callback\<PopInfo>, animated?: boolean): Promise\<void\>
 
-Checks for the target subpackgae and, if it is not present, initiates a download using the specified module name. Once the subpackage is downloaded, the API pushes the [NavDestination](ts-basic-components-navdestination.md) page specified by the **name** parameter onto the navigation stack, along with the data specified by **param**. The **onPop** callback handles the return results when the page is popped from the stack. This API uses a promise to handle asynchronous operations.
+Checks for the target subpackage and, if it is not present, initiates a download using the specified module name. Once the subpackage is downloaded, the API pushes the [NavDestination](ts-basic-components-navdestination.md) page specified by the **name** parameter onto the navigation stack, along with the data specified by **param**. The **onPop** callback handles the return results when the page is popped from the stack. This API uses a promise to handle asynchronous operations.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -333,7 +333,7 @@ For details about the error codes, see [Universal Error Codes](../../errorcode-u
 
 replacePath(moduleName: string, info: NavPathInfo, animated?: boolean): Promise\<void\>
 
-Checks for the target subpackgae and, if it is not present, initiates a download using the specified module name. Once the subpackage is downloaded, the API pops the top page from the current navigation stack and pushes the [NavDestination](ts-basic-components-navdestination.md) page specified by the **info** parameter onto the stack. This API uses a promise to handle asynchronous operations.
+Checks for the target subpackage and, if it is not present, initiates a download using the specified module name. Once the subpackage is downloaded, the API pops the top page from the current navigation stack and pushes the [NavDestination](ts-basic-components-navdestination.md) page specified by the **info** parameter onto the stack. This API uses a promise to handle asynchronous operations.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -365,7 +365,7 @@ For details about the error codes, see [Router Error Codes](../errorcode-router.
 
 replacePath(moduleName: string, info: NavPathInfo, options?: NavigationOptions): Promise\<void\>
 
-Checks for the target subpackgae and, if it is not present, initiates a download using the specified module name. Once the subpackage is downloaded, the API pops the top page from the current navigation stack. This API uses a promise to handle asynchronous operations.
+Checks for the target subpackage and, if it is not present, initiates a download using the specified module name. Once the subpackage is downloaded, the API pops the top page from the current navigation stack. This API uses a promise to handle asynchronous operations.
 
 Depending on the [LaunchMode](ts-basic-components-navigation.md#launchmode12) specified in the **options** parameter, different behaviors will be triggered.
 
@@ -379,7 +379,7 @@ Depending on the [LaunchMode](ts-basic-components-navigation.md#launchmode12) sp
 | ---- | ----------------------------- | ---- | -------------------- |
 | moduleName | string | Yes   | Module name of the package where the [NavDestination](ts-basic-components-navdestination.md) page is located.|
 | info | [NavPathInfo](ts-basic-components-navigation.md#navpathinfo10) | Yes   | Parameters of the page to replace the top of the navigation stack.|
-| options | [NavigationOptions](ts-basic-components-navigation.md#navigationoptions12) | No   | Navigation options.|
+| options | [NavigationOptions](ts-basic-components-navigation.md#navigationoptions12) | No   | Navigation options. The default value is **{ launchMode: LaunchMode.STANDARD, animated: true }**.|
 
 **Return value**
 
@@ -399,7 +399,7 @@ For details about the error codes, see [Router Error Codes](../errorcode-router.
 
 replacePathByName(moduleName: string, name: string, param: Object, animated?: boolean): Promise\<void\>
 
-Checks for the target subpackgae and, if it is not present, initiates a download using the specified module name. Once the subpackage is downloaded, the API pops the top page from the current navigation stack and pushes the [NavDestination](ts-basic-components-navdestination.md) page specified by the **name** parameter onto the stack. This API uses a promise to handle asynchronous operations.
+Checks for the target subpackage and, if it is not present, initiates a download using the specified module name. Once the subpackage is downloaded, the API pops the top page from the current navigation stack and pushes the page specified by the **name** parameter onto the stack. This API uses a promise to handle asynchronous operations.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -670,9 +670,9 @@ export struct PageOne {
 }
 ```
 
+Configure **{"routerMap": "$profile:route_map"}** in the project configuration file **module.json5**. The configuration in the **route_map.json** file is as follows:
+
 ```json
-// Configure {"routerMap": "$profile:route_map"} in the project configuration file module.json5.
-// route_map.json
 {
   "routerMap": [
     {
@@ -729,9 +729,9 @@ export struct PageTwo {
 }
 ```
 
+Configure **{"routerMap": "$profile:route_map"}** in the project configuration file **module.json5**. The configuration in the **route_map.json** file is as follows:
+
 ```json
-// Configure {"routerMap": "$profile:route_map"} in the project configuration file module.json5.
-// route_map.json
 {
   "routerMap": [
     {

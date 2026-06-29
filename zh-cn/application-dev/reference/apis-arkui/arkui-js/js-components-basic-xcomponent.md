@@ -1,7 +1,7 @@
 # xcomponent
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
+<!--Owner: @pengzhiwen3-->
 <!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -40,7 +40,7 @@
 | 名称                               | 功能描述                                     |
 | -------------------------------- | ---------------------------------------- |
 | onLoad(context?: object) => void | 插件加载完成时回调事件。<br/>context：开发者扩展的xcomponent方法的实例对象，context对象的接口由开发者自定义。 |
-| onDestroy() => void              | 插件卸载完成时回调事件。                             |
+| onDestroy() => void              | 插件销毁完成时回调事件。                             |
 
 ## 方法
 

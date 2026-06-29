@@ -1,8 +1,8 @@
 # OH_AudioRenderer_Callbacks_Struct
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -71,7 +71,7 @@ int32_t (*OH_AudioRenderer_OnWriteData)(OH_AudioRenderer* renderer, void* userDa
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | 指向[OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer)创建的音频流实例。 |
 | void* userData | 指向应用自定义的数据存储区域。 |
 | void* buffer | 指向播放数据存储区域，用于应用填充播放数据。 |
-| int32_t length | buffer的长度。 |
+| int32_t length | buffer的长度，单位为字节（Byte）。 |
 
 ### OH_AudioRenderer_OnStreamEvent()
 

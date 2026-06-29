@@ -284,7 +284,7 @@ async function GetImageProperties(imageSourceObj : image.ImageSource) {
   imageSourceObj.getImageProperties(key).then((data) => {
     console.info(JSON.stringify(data));
   }).catch((err: BusinessError) => {
-    console.error(`Failed to get the properties, error.code ${error.code}, error.message ${error.message}`);
+    console.error(`Failed to get the properties, error.code ${err.code}, error.message ${err.message}`);
   });
 }
 ```
@@ -875,7 +875,7 @@ createPicture(options?: DecodingOptionsForPicture): Promise\<Picture>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types; 3.Parameter verification failed. |
-| 7700203  | Unsupported options. For example, unsupported desiredPixelFormat causes a failure in converting an image into the desired pixel format. |
+| 7700203  | Unsupported options. For example, unsupported desiredPixelFormat causes a failure in converting an image into the desired pixel format. <br>适用版本：24+ |
 | 7700301  | Decode failed.                                               |
 
 **示例：**

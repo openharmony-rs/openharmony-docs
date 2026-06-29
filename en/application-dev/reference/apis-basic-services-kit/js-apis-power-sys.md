@@ -43,7 +43,7 @@ Shuts down the system.
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
@@ -77,13 +77,13 @@ Reboots a device.
 
 | Name| Type  | Mandatory| Description      |
 | ------ | ------ | ---- | ---------- |
-| reason | string | Yes  | Reboot reason. The value must be a string.|
+| reason | string | Yes  | Reason for system reboot. For example, **updater** indicates that the device enters the update mode after reboot. If this parameter is not specified, the system enters the normal mode after reboot.|
 
 **Error codes**
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
@@ -124,7 +124,7 @@ For API version 9 to 18, no permission is required; since API version 19, this p
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
@@ -166,12 +166,12 @@ For API version 9 to 18, no permission is required; since API version 19, this p
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
-| 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
+| 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
 
 **Example**
 
@@ -206,7 +206,7 @@ Sets the power mode of a device. This API uses an asynchronous callback to retur
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4900301 | Setting the power mode failed. |
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
@@ -253,7 +253,7 @@ Sets the power mode of a device. This API uses a promise to return the result.
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4900301 | Setting the power mode failed. |
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
@@ -296,7 +296,7 @@ For API version 12 to 18, no permission is required; since API version 19, this 
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
@@ -337,12 +337,12 @@ For API version 12 to 18, no permission is required; since API version 19, this 
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
-| 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
+| 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
 
 **Example**
 
@@ -378,7 +378,7 @@ This API takes effect only when the device is active. For details about the devi
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 4900201 |The device activity is being refreshed too frequently; the minimum time interval is 100 ms. |
@@ -419,7 +419,7 @@ For details about the power key filtering strategy, see [power.PowerKeyFiltering
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
@@ -457,7 +457,7 @@ Registers a callback to be invoked when the device is shut down or rebooted. Thi
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
@@ -498,7 +498,7 @@ Unregisters the callback to be invoked when the device is shut down or rebooted.
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
@@ -521,7 +521,7 @@ try {
 
 getPowerConfig(sceneName: string): string
 
-Reads the power configuration node.
+Obtains the power configuration based on the specified scenario.
 
 **Since**: 26.0.0
 
@@ -537,24 +537,24 @@ Reads the power configuration node.
 
 | Name   | Type    | Mandatory  | Description   |
 | ------ | ------ | ---- | ----- |
-| sceneName | string | Yes   | Scenario name. The name can contain a maximum of 128 bytes.|
+| sceneName | string | Yes   | Name of the power configuration scenario. The name can contain a maximum of 128 bytes.|
 
 **Return value**
 
 | Type    | Description        |
 | ------ | ------------ |
-| string | Value of the configuration node.|
+| string | Power configuration value.|
 
 **Error codes**
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
-| 4900400 | Invalid parameter. Possible causes: 1. The length of sceneName parameter exceeds 128 bytes. |
+| 4900400 | Invalid parameter. Possible causes: <br>1. The sceneName parameter is an empty string; <br>2. The length of sceneName parameter exceeds 128 bytes. |
 | 4900501 | Failed to read the power configuration value. |
 
 **Example**
@@ -572,7 +572,7 @@ try {
 
 setPowerConfig(sceneName: string, value: string): void
 
-Writes the power supply configuration node.
+Sets the power configuration based on the specified scenario.
 
 **Since**: 26.0.0
 
@@ -588,19 +588,19 @@ Writes the power supply configuration node.
 
 | Name   | Type    | Mandatory  | Description   |
 | ------ | ------ | ---- | ----- |
-| sceneName | string | Yes   | Scenario name. The name can contain a maximum of 128 bytes.|
-| value | string | Yes   | Configuration node value. The value can contain a maximum of 4,096 bytes.|
+| sceneName | string | Yes   | Name of the power configuration scenario. The name can contain a maximum of 128 bytes.|
+| value | string | Yes   | Power configuration value. The name can contain a maximum of 128 bytes.|
 
 **Error codes**
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
-| 4900400 | Invalid parameter. Possible causes: 1. The length of sceneName parameter exceeds 128 bytes; 2. The length of value parameter exceeds 4096 bytes. |
+| 4900400 | Invalid parameter. Possible causes: <br>1. The sceneName or value parameter is an empty string; <br>2. The length of sceneName parameter exceeds 128 bytes; <br>3. The length of value parameter exceeds 128 bytes. |
 | 4900601 | Failed to write the power configuration value. |
 
 **Example**

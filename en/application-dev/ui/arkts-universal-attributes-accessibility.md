@@ -242,7 +242,7 @@ export struct AccessibilityLevelCase01 {
 
 ### Setting Selection State for Multi-Select Scenarios
 
-The [accessibilityChecked](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitychecked13) attribute is used to indicate whether a component (for example, two-state or three-state component like check box or toggle button) is selected in single-select scenarios. It applies to scenarios requiring clear "selected/unselected" semantics and supports the following values:
+The [accessibilityChecked](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitychecked13) attribute is used to indicate whether a component (for example, two-state or three-state component like check box or toggle button) is selected in multi-select scenarios. It applies to scenarios requiring clear "selected/unselected" semantics and supports the following values:
 
 - **undefined** (default): automatically determined by the system (depending on the component's own state, such as the **isOn** attribute of a **Toggle** component).
 
@@ -392,4 +392,4 @@ export struct AccessibilityText {
 }
 ```
 
-![en-us_image_0000001745415556](figures/en-us_image_0000001745415556.jpg)
+![en-us_image_0000001745415556](figures/Supporting-Accessibility.jpg)

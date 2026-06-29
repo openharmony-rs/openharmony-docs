@@ -678,10 +678,10 @@ Make sure the resource name and path used match those specified using **\$rawfil
 The wrapBuilder\'s parameter should be a \'@Builder\' function.
 
 **Description**<br>
-The parameter of **wrapBuilder** must be a global function decorated with @Builder.
+This error code is reported when the parameter of **wrapBuilder** is not a global function decorated with @Builder.
 
 **Possible Cause**<br>
-This error code is reported when the parameter of **wrapBuilder** is not an @Builder decorated function.
+The parameter of **wrapBuilder** is not an @Builder decorated function.
 
 **Solution**<br>
 Change the parameter of **wrapBuilder** to a global function decorated with @Builder.
@@ -1445,10 +1445,10 @@ Use the **reuseId** attribute in the correct scenario.
 The V1 decorator \'xxx\' cannot be applied to a Function-type variable \'yyy\'.
 
 **Description**<br>
-Since API version 23, the V1 decorator cannot be used for variables of the **Function** or **() => void** type. Otherwise, an error will occur at runtime.
+This error code is reported at runtime when the ArkUI state management V1 decorator is used for variables of the **Function** or **() => void** type. Since API version 23, this issue is intercepted in the compilation phase to avoid potential runtime exceptions. The ArkUI state management V1 decorators include [\@State](../../../application-dev/ui/state-management/arkts-state.md), [\@Prop](../../../application-dev/ui/state-management/arkts-prop.md), [\@Link](../../../application-dev/ui/state-management/arkts-link.md), [\@Provide](../../../application-dev/ui/state-management/arkts-provide-and-consume.md), [\@Consume](../../../application-dev/ui/state-management/arkts-provide-and-consume.md), [\@StorageLink](../../../application-dev/ui/state-management/arkts-appstorage.md#storagelink), [\@StorageProp](../../../application-dev/ui/state-management/arkts-appstorage.md#storageprop), [\@LocalStorageLink](../../../application-dev/ui/state-management/arkts-localstorage.md#localstoragelink), [\@LocalStorageProp](../../../application-dev/ui/state-management/arkts-localstorage.md#localstorageprop), [\@ObjectLink](../../../application-dev/ui/state-management/arkts-observed-and-objectlink.md).
 
 **Possible Cause**<br>
-This error code is reported when the V1 decorator is used for a variable of the **Function** or **() => void** type.
+The V1 decorator is used for a variable of the **Function** or **() => void** type.
 
 **Solution**<br>
 Delete the V1 decorator used for the variable of the **Function** or **() => void** type based on the error description.

@@ -153,7 +153,7 @@ struct SubHeaderExample {
 }
 ```
 
-![en-us_image_subheader_example01](figures/en-us_image_subheader_example01.png)
+![en-us_image_subheader_example01](figures/image-subheader-example01.png)
 
 ### Example 2: Implementing a Double-Line Text Content-Rich Subheader
 This example showcases a subheader with a primary title and a secondary title on the left, and a text button with a right arrow on the right.
@@ -182,7 +182,7 @@ struct SubHeaderExample {
 }
 ```
 
-![Subheader 2](figures/en-us_image_subheader_example02.png)
+![Subheader 2](figures/image-subheader-example02.png)
 
 ### Example 3: Implementing a Spinner Content-Rich Subheader
 This example showcases a subheader with content and events for selection on the left, and an icon-attached button on the right.
@@ -229,7 +229,7 @@ struct SubHeaderExample {
 }
 ```
 
-![en-us_image_subheader_example03](figures/en-us_image_subheader_example03.png)
+![en-us_image_subheader_example03](figures/image-subheader-example03.png)
 
 ### Example 4: Setting the Icon Symbol for the Left Side
 This example demonstrates how to set the icon symbol for the left side of the subheader.
@@ -263,7 +263,7 @@ struct SubHeaderExample {
 }
 ```
 
-![Subheader 4](figures/en-us_image_subheader_example04.gif)
+![Subheader 4](figures/image-subheader-example04.gif)
 
 ### Example 5: Setting the Icon Symbol for the Right Side
 The following example shows how to set **operationType** to **OperationType.ICON_GROUP** for the right side of the subheader, with **operationItem** set to a symbol icon.
@@ -320,7 +320,7 @@ struct SubHeaderExample {
 }
 ```
 
-![en-us_image_subheader_example05](figures/en-us_image_subheader_example05.png)
+![en-us_image_subheader_example05](figures/image-subheader-example05.png)
 
 ### Example 6: Customizing Title Content
  This example demonstrates how to customize the title content with a **titleBuilder** object for the subheader.
@@ -362,7 +362,7 @@ struct SubHeaderExample {
   }
 }
 ```
-![en-us_image_subheader_example06](figures/en-us_image_subheader_example06.png)
+![en-us_image_subheader_example06](figures/image-subheader-example06.png)
 
 ### Example 7: Customizing the Title Style
 This example demonstrates how to set the font style, margin, and padding for the primary and secondary titles in the subheader.
@@ -400,7 +400,7 @@ struct SubHeaderExample {
 }
 ```
 
-![Subheader 7](figures/en-us_image_subheader_example07.png)
+![Subheader 7](figures/image-subheader-example07.png)
 
 
 ### Example 8: Implementing Announcement for the Button on the Right Side
@@ -470,7 +470,7 @@ struct SubHeaderExample {
   }
 }
 ```
-![figures/en-us_image_subheader_example08](figures/en-us_image_subheader_example08.png)
+![figures/en-us_image_subheader_example08](figures/image-subheader-example08.png)
 
 ### Example 9: Setting the Right-Side Button to Obtain Focus by Default
 This example demonstrates how to set the **defaultFocus** attribute in **SubHeader** to ensure the right-side button obtains focus by default in the focused state.

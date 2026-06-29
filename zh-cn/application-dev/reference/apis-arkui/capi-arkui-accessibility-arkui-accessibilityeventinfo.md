@@ -1,7 +1,7 @@
 # ArkUI_AccessibilityEventInfo
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zhanghangkai10241-->
+<!--Owner: @wangyinhua-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -12,7 +12,7 @@ typedef struct ArkUI_AccessibilityEventInfo ArkUI_AccessibilityEventInfo
 
 ## 概述
 
-无障碍事件信息。当无障碍服务或辅助应用要求控件执行操作后，需要发送执行成功事件。
+无障碍事件信息。当无障碍服务或辅助应用要求控件执行操作后，需要发送执行成功事件。控件自身交互需求要同步状态给无障碍服务或辅助应用时，也需要主动发送事件。
 
 **起始版本：** 13
 

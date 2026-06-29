@@ -1,9 +1,9 @@
 # JS卡片开发指导（Stage模型）
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 Stage模型是从API version 9开始支持，目前主推且会长期演进的模型。该模型采用面向对象的方式，将应用组件以类接口的形式开放给开发者，可以进行派生，利于扩展能力。
 

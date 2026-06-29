@@ -89,7 +89,7 @@
 10. 如果使用该连接发送消息失败，则重新建立连接，如果连接能建立成功则发送消息。
 
 11. 需要申请权限[ohos.permission.ACCESS_BLUETOOTH](../security/AccessToken/permissions-for-all-user.md#ohospermissionaccess_bluetooth)。如何配置和申请权限，具体操作请参考[声明权限](../security/AccessToken/declare-permissions.md)和[向用户申请授权](../security/AccessToken/request-user-authorization.md)。
-    <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWearableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->   
+    <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWearableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->  
     
     ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -148,8 +148,12 @@
         const uint8Array: Uint8Array = textEncoder.encodeInto(jsonStr);
         const arrayBuffer = uint8Array.buffer;
     
-        socket.sppWrite(this.clientNumber, arrayBuffer);
-        hilog.info(DOMAIN, 'testTag', `sending success size: ${arrayBuffer.byteLength} bytes, data: ${jsonStr}`);
+        try {
+          socket.sppWrite(this.clientNumber, arrayBuffer);
+          hilog.info(DOMAIN, 'testTag', `sending success size: ${arrayBuffer.byteLength} bytes, data: ${jsonStr}`);
+        } catch (err) {
+          hilog.info(DOMAIN, 'testTag', `sending fail, err is ${JSON.stringify(err)}`);
+        }
       }
     
       public sendNotificationData(notificationInfo: notificationExtensionSubscription.NotificationInfo) {

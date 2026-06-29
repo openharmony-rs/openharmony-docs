@@ -1,8 +1,8 @@
 # 组件内转场 (transition)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -51,6 +51,8 @@ transition(effect: TransitionEffect, onFinish: Optional&lt;TransitionFinishCallb
 >
 > 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -78,6 +80,8 @@ transition(effect: TransitionEffect, onFinish: Optional&lt;TransitionFinishCallb
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 值 | 说明     |
@@ -90,6 +94,8 @@ transition(effect: TransitionEffect, onFinish: Optional&lt;TransitionFinishCallb
 ## TransitionEffect<sup>10+</sup>对象说明
 
 TransitionEffect以函数的形式指定转场效果。提供了以下接口：
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -126,6 +132,8 @@ translate(options: TranslateOptions): TransitionEffect\<"translate">
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -149,6 +157,8 @@ rotate(options: RotateOptions): TransitionEffect\<"rotate">
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -174,6 +184,8 @@ scale(options: ScaleOptions): TransitionEffect\<"scale">
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -197,6 +209,8 @@ opacity(alpha: number): TransitionEffect\<"opacity">
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -222,6 +236,8 @@ move(edge: TransitionEdge): TransitionEffect\<"move">
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -245,6 +261,8 @@ asymmetric(appear: TransitionEffect, disappear: TransitionEffect): TransitionEff
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -271,6 +289,8 @@ constructor(type: Type, effect: Effect)
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -289,6 +309,8 @@ combine(transitionEffect: TransitionEffect): TransitionEffect
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -314,6 +336,8 @@ animation(value: AnimateParam): TransitionEffect
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -333,11 +357,13 @@ animation(value: AnimateParam): TransitionEffect
 
 type TransitionFinishCallback = (transitionIn: boolean) => void
 
-组件转场动画的结束回调类型。
+定义组件转场动画结束回调的类型，回调的入参表示该回调为出现还是消失动画的结束回调。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -1,7 +1,7 @@
 # ArkUI_NodeAttributeType（无障碍相关属性）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zhanghangkai10241-->
+<!--Owner: @wangyinhua-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -12,7 +12,7 @@ enum ArkUI_NodeAttributeType
 
 ## 概述
 
-定义ArkUI在Native侧可以设置的无障碍相关属性集合，包含无障碍文本、说明、模式、状态、信息等属性设置。
+定义ArkUI在Native侧可以设置的无障碍相关属性集合，包含无障碍文本、说明、模式、状态、值等属性设置。
 
 **起始版本：** 12
 
@@ -36,13 +36,13 @@ NODE_ACCESSIBILITY_GROUP = 62
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 为1时表示该组件及其所有子组件为一整个可以选中的组件。无障碍服务将不再关注其子组件内容。参数类型为1或者0。 |
+| .value[0].i32 | 为1时表示该组件及其所有子组件为一整个可以选中的组件。无障碍服务将不再关注其子组件内容。参数取值为1或0。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 为1时表示该组件及其所有子组件为一整个可以选中的组件。无障碍服务将不再关注其子组件内容。参数类型为1或者0。 |
+| .value[0].i32 | 为1时表示该组件及其所有子组件为一整个可以选中的组件。无障碍服务将不再关注其子组件内容。参数取值为1或0。 |
 
 ## NODE_ACCESSIBILITY_TEXT
 
@@ -212,7 +212,7 @@ NODE_ACCESSIBILITY_STATE = 90
 NODE_ACCESSIBILITY_VALUE = 91
 ```
 
-定义无障碍信息属性，支持属性设置，属性重置和属性获取。<br>
+定义无障碍值属性，支持属性设置，属性重置和属性获取。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12

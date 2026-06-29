@@ -231,4 +231,4 @@ struct BackExample {
 }
 ```
 
-![en-us_image_0000001212058486](figures/en-us_image_0000001212058486.gif)
+![navigator](figures/navigator.gif)

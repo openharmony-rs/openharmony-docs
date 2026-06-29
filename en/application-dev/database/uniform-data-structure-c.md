@@ -1,17 +1,18 @@
 # Uniform Data Structs (C/C++)
+
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @jcwen-->
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-
+<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:38:53.057Z pushedAt=2026-06-25T10:36:00.435Z -->
 
 ## When to Use
 
 Uniform data structs are provided to define data of common [uniform data types](../reference/apis-arkdata/capi-utd-h.md). For example, the data struct for the system-defined home screen icon (whose uniform data type is **OH_UdsAppItem**) is provided to help you easily define the data.
 
-Applications can directly use the uniform data structs in certain scenarios. For example, in the drag-and-drop operation across applications, you can write the data (encapsulated in a uniform struct) to be dragged to [DragEvent](../ui/ndk-drag-event.md). The target application (application requesting the data) reads the data from **DragEvent** and parses the data in the uniform data struct. Using uniform data structs for data interaction between applications effectively reduces the development workload in your application experience.
+In some scenarios, applications can directly use the standardized UTD data structs that we define, such as for cross-application drag-and-drop. The source application writes drag data to the [drag event](../ui/ndk-drag-event.md) by using the standardized data structs. The destination application reads the drag data from the drag event and parses it by using the same standardized data structs. This enables data exchange between applications to follow a common standard, significantly reducing the development effort required for cross-application data exchange.
 
 ## Basic Concepts
 
@@ -48,12 +49,14 @@ libudmf.so, libhilog_ndk.z.so
 ```
 
 ## Including Header Files
+
 <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataStructure_C/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 #include <database/udmf/uds.h>
 #include <database/udmf/udmf.h>
 #include <database/udmf/udmf_meta.h>
+#include <database/udmf/udmf_err_code.h>
 #include <hilog/log.h>
 
 #undef LOG_TAG
@@ -63,8 +66,11 @@ libudmf.so, libhilog_ndk.z.so
 ## Using the PlainText Data Struct
 
 1. Create a pointer to an **PlainText** object.
+
 2. Set content for the **PlainText** object.
+
 3. Obtain data.
+
 4. Destroy all the pointers created.
 
 <!-- @[use_plaintext_datastructure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataStructure_C/entry/src/main/cpp/napi_init.cpp) -->
@@ -72,19 +78,46 @@ libudmf.so, libhilog_ndk.z.so
 ``` C++
 // 1. Create a pointer to an PlainText object.
 OH_UdmfRecord *plainTextRecord = OH_UdmfRecord_Create();
+if (plainTextRecord == nullptr) {
+    return Udmf_ErrCode::UDMF_ERR;
+}
 OH_UdsPlainText *plainText = OH_UdsPlainText_Create();
+if (plainText == nullptr) {
+    OH_UdmfRecord_Destroy(plainTextRecord);
+    return Udmf_ErrCode::UDMF_ERR;
+}
 char content[] = "hello world";
 
 // 2. Set content for the PlainText object.
-OH_UdsPlainText_SetContent(plainText, content);
-OH_UdmfRecord_AddPlainText(plainTextRecord, plainText);
+int32_t ret = OH_UdsPlainText_SetContent(plainText, content);
+if (ret != Udmf_ErrCode::UDMF_E_OK) {
+    OH_LOG_ERROR(LOG_APP, "OH_UdsPlainText_SetContent error!");
+    OH_UdsPlainText_Destroy(plainText);
+    OH_UdmfRecord_Destroy(plainTextRecord);
+    return ret;
+}
+ret = OH_UdmfRecord_AddPlainText(plainTextRecord, plainText);
+if (ret != Udmf_ErrCode::UDMF_E_OK) {
+    OH_LOG_ERROR(LOG_APP, "OH_UdmfRecord_AddPlainText error!");
+    OH_UdsPlainText_Destroy(plainText);
+    OH_UdmfRecord_Destroy(plainTextRecord);
+    return ret;
+}
 
 // 3. Obtain PlainText data.
 OH_UdsPlainText *plainText2 = OH_UdsPlainText_Create();
-OH_UdmfRecord_GetPlainText(plainTextRecord, plainText2);
+ret = OH_UdmfRecord_GetPlainText(plainTextRecord, plainText2);
+if (ret != Udmf_ErrCode::UDMF_E_OK) {
+    OH_LOG_ERROR(LOG_APP, "OH_UdmfRecord_GetPlainText error!");
+    OH_UdsPlainText_Destroy(plainText);
+    OH_UdmfRecord_Destroy(plainTextRecord);
+    OH_UdsPlainText_Destroy(plainText2);
+    return ret;
+}
 const char *content2 = OH_UdsPlainText_GetContent(plainText2);
-
-OH_LOG_INFO(LOG_APP, "content = %{public}s.", content2);
+if (content2 != nullptr) {
+    OH_LOG_INFO(LOG_APP, "content = %{public}s.", content2);
+}
 // 4. Destroy all the pointers created.
 OH_UdsPlainText_Destroy(plainText);
 OH_UdmfRecord_Destroy(plainTextRecord);
@@ -94,9 +127,13 @@ OH_UdsPlainText_Destroy(plainText2);
 ## Using the fileUri Data Struct
 
 1. Create a struct for the **fileUri** data.
+
 2. Set the URL and description for the **fileUri**.
+
 3. Create an **OH_UdmfRecord** object and set **fileUri** data to it.
+
 4. Obtain the **fileUri** data.
+
 5. Destroy all the pointers created.
 
 <!-- @[use_fileUri_datastructure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataStructure_C/entry/src/main/cpp/napi_init.cpp) -->
@@ -105,17 +142,50 @@ OH_UdsPlainText_Destroy(plainText2);
 // 1. Create a struct for the fileUri data.
 const char *uri = "https://xxx/xx/xx.jpg";
 OH_UdsFileUri *fileUri = OH_UdsFileUri_Create();
+if (fileUri == nullptr) {
+    return Udmf_ErrCode::UDMF_ERR;
+}
 // 2. Set the URL and description for the fileUri.
-OH_UdsFileUri_SetFileUri(fileUri, uri);
-OH_UdsFileUri_SetFileType(fileUri, UDMF_META_IMAGE);
+int32_t ret = OH_UdsFileUri_SetFileUri(fileUri, uri);
+if (ret != Udmf_ErrCode::UDMF_E_OK) {
+    OH_UdsFileUri_Destroy(fileUri);
+    return ret;
+}
+ret = OH_UdsFileUri_SetFileType(fileUri, UDMF_META_IMAGE);
+if (ret != Udmf_ErrCode::UDMF_E_OK) {
+    OH_UdsFileUri_Destroy(fileUri);
+    return ret;
+}
 // 3. Create an OH_UdmfRecord object and set fileUri data to it.
 OH_UdmfRecord *record = OH_UdmfRecord_Create();
-OH_UdmfRecord_AddFileUri(record, fileUri);
+if (record == nullptr) {
+    OH_UdsFileUri_Destroy(fileUri);
+    return Udmf_ErrCode::UDMF_ERR;
+}
+ret = OH_UdmfRecord_AddFileUri(record, fileUri);
+if (ret != Udmf_ErrCode::UDMF_E_OK) {
+    OH_UdsFileUri_Destroy(fileUri);
+    OH_UdmfRecord_Destroy(record);
+    return ret;
+}
 // 4. Obtain the fileUri data.
 OH_UdsFileUri *fileUri1 = OH_UdsFileUri_Create();
-OH_UdmfRecord_GetFileUri(record, fileUri1);
+if (fileUri1 == nullptr) {
+    OH_UdsFileUri_Destroy(fileUri);
+    OH_UdmfRecord_Destroy(record);
+    return Udmf_ErrCode::UDMF_ERR;
+}
+ret = OH_UdmfRecord_GetFileUri(record, fileUri1);
+if (ret != Udmf_ErrCode::UDMF_E_OK) {
+    OH_UdsFileUri_Destroy(fileUri);
+    OH_UdmfRecord_Destroy(record);
+    OH_UdsFileUri_Destroy(fileUri1);
+    return ret;
+}
 const char *fileUriStr = OH_UdsFileUri_GetFileUri(fileUri1);
-OH_LOG_INFO(LOG_APP, "fileUri1 = %{public}s.", fileUriStr);
+if (fileUriStr != nullptr) {
+    OH_LOG_INFO(LOG_APP, "fileUri1 = %{public}s.", fileUriStr);
+}
 // 5. Destroy all the pointers created.
 OH_UdsFileUri_Destroy(fileUri);
 OH_UdmfRecord_Destroy(record);

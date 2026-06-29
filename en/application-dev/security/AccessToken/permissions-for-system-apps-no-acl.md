@@ -11,7 +11,7 @@ Before requesting permissions for your application, read and understand the [per
 
 > **NOTE**
 >
-> - The permissions listed in this topic are available to system_basic or system_core applications, but not to normal applications.
+> - The permissions listed in this topic are available to system_basic or higher-level applications, but not to normal applications.
 > - The authorization mode of these permissions is system_grant.
 > - The following permissions cannot be requested across application levels via ACL.
 
@@ -67,7 +67,7 @@ Allows an application to call interfaces of the DeviceAuthCredMgr application.
 
 ## ohos.permission.ACCESS_AUTH_RESPOOL
 
-Allows an SA to register the executor.
+Allows an SA to register the authentication executor.
 
 **Permission level**: system_core
 

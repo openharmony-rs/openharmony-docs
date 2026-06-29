@@ -1,7 +1,7 @@
 # WhitePointArray
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @xubo233-->
+<!--Owner: @xiaojianfeng_jeffery-->
 <!--Designer: @dizuo1-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
@@ -12,7 +12,7 @@ typedef struct WhitePointArray {...} WhitePointArray
 
 ## 概述
 
-提供白点数组结构体，白点是指在当前色域中表示白色的坐标。
+提供白点数组结构体，白点是在当前色域中表示白色的坐标。
 
 **起始版本：** 13
 
@@ -26,5 +26,5 @@ typedef struct WhitePointArray {...} WhitePointArray
 
 | 名称         | 描述               |
 | ------------ | ------------------ |
-| float arr[2] | 表示白点返回数组。 |
+| float arr[2] | 表示白点坐标数组。arr[0]表示x坐标，arr[1]表示y坐标，用于在色域空间中精确定义白色基准点，影响色域的显示效果和颜色准确性。 |
 

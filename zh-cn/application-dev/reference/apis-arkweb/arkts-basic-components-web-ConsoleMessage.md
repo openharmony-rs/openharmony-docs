@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Web组件获取控制台信息对象。示例代码参考[onConsole事件](./arkts-basic-components-web-events.md#onconsole)。
+ConsoleMessage是Web组件中封装JavaScript控制台输出信息的对象。当网页通过`console.log()`、`console.warn()`、`console.error()`等方法输出日志时，该对象通过`onConsole`事件回调提供给应用，用于监控和检查网页调试输出。示例代码参考[onConsole事件](./arkts-basic-components-web-events.md#onconsole)。
 
 > **说明：**
 >
@@ -49,7 +49,7 @@ ConsoleMessage的构造函数。
 
 getLineNumber(): number
 
-获取ConsoleMessage的行数。
+获取ConsoleMessage的行号。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -57,7 +57,7 @@ getLineNumber(): number
 
 | 类型     | 说明                   |
 | ------ | -------------------- |
-| number | 返回ConsoleMessage的行数。 |
+| number | 返回ConsoleMessage的行号。 |
 
 ## getMessage
 

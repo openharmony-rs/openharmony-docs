@@ -1,7 +1,7 @@
 # 无障碍
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zhanghangkai10241-->
+<!--Owner: @wangyinhua-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -64,5 +64,5 @@
 
 | 属性 | 类型 | 说明 |
 | -------- | -------- | -------- |
-| eventType | number | 事件类型：<br/>-&nbsp;0：custom&nbsp;event<br/>-&nbsp;1：accessibility&nbsp;focus<br/>-&nbsp;2：clear&nbsp;accessibility&nbsp;focus<br/>无障碍系统下发的非焦点相关的事件为0，无障碍系统下发的获焦事件为1，无障碍系统下发的失焦事件为2。 |
+| eventType | number | 事件类型：<br/>-&nbsp;0：custom&nbsp;event<br/>-&nbsp;1：accessibility&nbsp;focus<br/>-&nbsp;2：clear&nbsp;accessibility&nbsp;focus<br/>无障碍系统下发的自定义事件为0，无障碍系统下发的获焦事件为1，无障碍系统下发的失焦事件为2。 |
 | param | Object | 无障碍辅助应用发送自定义事件时需传入对应参数。 |

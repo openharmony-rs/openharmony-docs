@@ -192,7 +192,7 @@ Creates a **ShaderEffect** object that generates a linear gradient between two p
 | pos | Array\<number> \|null| No  | Relative position of each color in the color array. The array length must be the same as that of **colors**. The first element in the array must be 0.0, the last element must be 1.0, and the middle elements must be between 0.0 and 1.0 and increase by index. The default value is null, indicating that colors are evenly distributed between the two points.|
 | matrix | [Matrix](arkts-apis-graphics-drawing-Matrix.md) \| null | No  | **Matrix** object used to perform matrix transformation on the shader effect. The default value is null, indicating the identity matrix.|
 
-![LinearGradient](figures/image_createLinearGradient.png)
+![LinearGradient](figures/createLinearGradient.png)
 
 The preceding figure shows the display effect when the **colors** array is set to red, green, and blue and the **pos** array is set to 0.0, 0.75, and 1.0. The triangle subscript is the relative position of a color between the start point and end point. Gradient colors are used between them.
 
@@ -239,7 +239,7 @@ Creates a **ShaderEffect** object that generates a radial gradient based on the 
 | pos | Array\<number> \| null | No  | Relative position of each color in the color array. The array length must be the same as that of **colors**. The first element in the array must be 0.0, the last element must be 1.0, and the middle elements must be between 0.0 and 1.0 and increase by index. The default value is null, indicating that colors are evenly distributed between the center and ending shape of the circle.|
 | matrix | [Matrix](arkts-apis-graphics-drawing-Matrix.md) \| null | No  | **Matrix** object used to perform matrix transformation on the shader effect. The default value is null, indicating the identity matrix.|
 
-![RadialGradient](figures/image_createRadialGradient.png)
+![RadialGradient](figures/createRadialGradient.png)
 
 The preceding figure shows the display effect when the **colors** array is set to red, green, and blue and the **pos** array is set to 0.0, 0.75, and 1.0. The triangle subscript is the relative position of the color between the center and ending shape of the circle. Gradient colors are used between them.
 
@@ -286,7 +286,7 @@ Creates a **ShaderEffect** object that generates a color sweep gradient around a
 | pos | Array\<number> \| null | No  | Relative position of each color in the color array. The array length must be the same as that of **colors**. The first element in the array must be 0.0, the last element must be 1.0, and the middle elements must be between 0.0 and 1.0 and increase by index. The default value is null, indicating that the colors are evenly distributed between the start angle and end angle.|
 | matrix | [Matrix](arkts-apis-graphics-drawing-Matrix.md) \| null | No  |**Matrix** object used to perform matrix transformation on the shader effect. The default value is null, indicating the identity matrix.|
 
-![SweepGradient](figures/image_createSweepGradient.png)
+![SweepGradient](figures/createSweepGradient.png)
 
 The preceding figure shows the display effect when the **colors** array is set to red, green, and blue, the **pos** array is set to 0.0, 0.75, and 1.0, **startAngle** is set to 0 degrees, and **endAngle** is set to 180 degrees. In the figure, **0.0** corresponds to the position of 0 degrees, **0.75** corresponds to the position of 135 degrees, and **1.0** corresponds to the position of 180 degrees. Gradient colors are used between them.
 
@@ -334,7 +334,7 @@ Creates a **ShaderEffect** object that generates a conical gradient between two 
 | pos | Array\<number> \| null | No  | Relative position of each color in the color array. The array length must be the same as that of **colors**. The first element in the array must be 0.0, the last element must be 1.0, and the middle elements must be between 0.0 and 1.0 and increase by index. The default value is null, indicating that colors are evenly distributed between the two circles.|
 | matrix | [Matrix](arkts-apis-graphics-drawing-Matrix.md) \| null | No  | **Matrix** object used to perform matrix transformation on the shader effect. The default value is null, indicating the identity matrix.|
 
-![ConicalGradient](figures/image_createConicalGradient.png)
+![ConicalGradient](figures/createConicalGradient.png)
 
 The preceding figure shows the display effect when the **colors** array is set to red, green, and blue and the **pos** array is set to 0.0, 0.5, and 1.0. The left part shows the drawing result when the start circle is not in the end circle, and the right part shows the drawing result when the start circle is in the end circle.
 

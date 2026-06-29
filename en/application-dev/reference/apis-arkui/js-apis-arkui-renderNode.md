@@ -11,7 +11,9 @@ The **RenderNode** module provides APIs for creating a RenderNode in custom draw
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> 
+>
+> - The APIs of this module can be used only in the stage model.
+>
 > - Avoid modifying RenderNodes in [BuilderNode](./js-apis-arkui-builderNode.md). The [FrameNode](./js-apis-arkui-frameNode.md) associated with BuilderNode is designed solely for mounting the BuilderNode as a child component. Modifying attributes or operations on the FrameNode's child nodes or their corresponding RenderNodes may lead to undefined behavior, including display, event handling, and stability issues.
 >
 > - RenderNode objects do not support JSON serialization.
@@ -804,7 +806,7 @@ Obtains whether this RenderNode needs to be clipped.
 
 | Type   | Description                                               |
 | ------- | --------------------------------------------------- |
-| boolean | Whether the current RenderNode needs to be clipped. The default value is **true**.<br>The value **true** means the current RenderNode needs to be clipped, and **false** means the opposite.|
+| boolean | Whether the current RenderNode needs to be clipped. The default value is **true**.<br>The value **true** means the RenderNode needs to be clipped, and **false** means the opposite.|
 
 **Example**
 ```ts
@@ -3066,3 +3068,376 @@ struct Index {
 ```
 
 ![](figures/RenderNode_isDisposed.gif)
+
+### backgroundBlur
+
+set backgroundBlur(blurValue: BackgroundBlur | undefined)
+
+Sets a background blur effect.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type                                                        | Mandatory| Description                                          |
+| ------- | ------------------------------------------------------------ | ---- | ---------------------------------------------- |
+| blurValue | [BackgroundBlur](./js-apis-arkui-graphics.md#backgroundblur) \| undefined | Yes  | Background blur effect. The value **undefined** indicates that no background blur effect is applied.|
+
+get backgroundBlur(): BackgroundBlur
+
+Obtains the background blur effect.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type                                                        | Description                                    |
+| ------------------------------------------------------------ | ---------------------------------------- |
+| [BackgroundBlur](./js-apis-arkui-graphics.md#backgroundblur) | Background blur effect. The default value is **{radius: 0}**.|
+
+**Example**
+
+```ts
+import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+// Extend RenderNode to implement custom drawing.
+class MyRenderNode extends RenderNode {
+  uiContext: UIContext;
+
+  constructor(uiContext: UIContext) {
+    super();
+    this.uiContext = uiContext;
+    this.frame = {
+      x: 0,
+      y: 0,
+      width: 150,
+      height: 150
+    };
+  }
+
+  // Invoked when the RenderNode undergoes drawing operations.
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({
+      alpha: 255,
+      red: 0,
+      green: 74,
+      blue: 175
+    });
+    canvas.attachBrush(brush);
+    canvas.drawRect({
+      left: 100,
+      right: 300,
+      top: 100,
+      bottom: 300
+    });
+    canvas.detachBrush();
+  }
+}
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    this.rootNode.commonAttribute
+      .width(200)
+      .height(200)
+      .backgroundImage($r('app.media.cubic')) // Replace it with the image resource file you use.
+      .backgroundImageSize({ width: 200, height: 200 });
+    let renderNode = this.rootNode.getRenderNode();
+    if (renderNode != null) {
+      let myRenderNode = new MyRenderNode(uiContext);
+      // Set a background blur effect.
+      myRenderNode.backgroundBlur = {
+        radius: 20,
+        grayscale: [50, 50]
+      };
+      renderNode.appendChild(myRenderNode);
+      const backgroundBlurConfig = myRenderNode.backgroundBlur;
+      console.info(`background blur radius: ${backgroundBlurConfig.radius} grayscale: [${backgroundBlurConfig.grayscale}]`);
+    }
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column({ space: 10 }) {
+      NodeContainer(this.myNodeController)
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+  }
+}
+
+```
+
+![](figures/backgroundBlur.png)
+
+### contentBlur
+
+set contentBlur(blurValue: ContentBlur | undefined)
+
+Sets a content blur effect.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type                                                      | Mandatory| Description                                          |
+| ------- | ---------------------------------------------------------- | ---- | ---------------------------------------------- |
+| blurValue | [ContentBlur](./js-apis-arkui-graphics.md#contentblur) \| undefined | Yes  | Content blur effect. The value **undefined** indicates that no content blur effect is applied.|
+
+get contentBlur(): ContentBlur
+
+Obtains the content blur effect.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type                                                      | Description                                    |
+| ---------------------------------------------------------- | ---------------------------------------- |
+| [ContentBlur](./js-apis-arkui-graphics.md#contentblur) | Content blur effect. The default value is **{radius: 0}**.|
+
+**Example**
+
+```ts
+import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+// Extend RenderNode to implement custom drawing.
+class MyRenderNode extends RenderNode {
+  uiContext: UIContext;
+
+  constructor(uiContext: UIContext) {
+    super();
+    this.uiContext = uiContext;
+    this.frame = {
+      x: 0,
+      y: 0,
+      width: 150,
+      height: 150
+    };
+  }
+
+  // Invoked when the RenderNode undergoes drawing operations.
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({
+      alpha: 255,
+      red: 0,
+      green: 74,
+      blue: 175
+    });
+    canvas.attachBrush(brush);
+    canvas.drawRect({
+      left: 100,
+      right: 300,
+      top: 100,
+      bottom: 300
+    });
+    canvas.detachBrush();
+  }
+}
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    this.rootNode.commonAttribute
+      .width(200)
+      .height(200)
+      .backgroundImage($r('app.media.cubic')) // Replace it with the image resource file you use.
+      .backgroundImageSize({ width: 200, height: 200 });
+    let renderNode = this.rootNode.getRenderNode();
+    if (renderNode != null) {
+      let myRenderNode = new MyRenderNode(uiContext);
+      // Set a content blur effect.
+      myRenderNode.contentBlur = {
+        radius: 20,
+        grayscale: [50, 50]
+      };
+      renderNode.appendChild(myRenderNode);
+      const contentBlurConfig = myRenderNode.contentBlur;
+      console.info(`content blur radius: ${contentBlurConfig.radius} grayscale: [${contentBlurConfig.grayscale}]`);
+    }
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column({ space: 10 }) {
+      NodeContainer(this.myNodeController)
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+  }
+}
+
+```
+
+![](figures/contentBlur.png)
+
+### foregroundBlur
+
+set foregroundBlur(blurValue: ForegroundBlur | undefined)
+
+Sets a foreground blur effect.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type                                                          | Mandatory| Description                                        |
+| ------- | -------------------------------------------------------------- | ---- | -------------------------------------------- |
+| blurValue | [ForegroundBlur](./js-apis-arkui-graphics.md#foregroundblur) \| undefined | Yes  | Foreground blur effect. The value **undefined** indicates that no foreground blur effect is applied.|
+
+get foregroundBlur(): ForegroundBlur
+
+Obtains the foreground blur effect.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type                                                          | Description                                  |
+| -------------------------------------------------------------- | -------------------------------------- |
+| [ForegroundBlur](./js-apis-arkui-graphics.md#foregroundblur) | Foreground blur effect. The default value is **{radius: 0}**.|
+
+**Example**
+
+```ts
+import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+// Extend RenderNode to implement custom drawing.
+class MyRenderNode extends RenderNode {
+  uiContext: UIContext;
+
+  constructor(uiContext: UIContext) {
+    super();
+    this.uiContext = uiContext;
+    this.frame = {
+      x: 0,
+      y: 0,
+      width: 150,
+      height: 150
+    };
+  }
+
+  // Invoked when the RenderNode undergoes drawing operations.
+  draw(context: DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({
+      alpha: 255,
+      red: 0,
+      green: 74,
+      blue: 175
+    });
+    canvas.attachBrush(brush);
+    canvas.drawRect({
+      left: 100,
+      right: 300,
+      top: 100,
+      bottom: 300
+    });
+    canvas.detachBrush();
+  }
+}
+
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.rootNode = new FrameNode(uiContext);
+    this.rootNode.commonAttribute
+      .width(200)
+      .height(200)
+      .backgroundImage($r('app.media.cubic')) // Replace it with the image resource file you use.
+      .backgroundImageSize({ width: 200, height: 200 });
+    let renderNode = this.rootNode.getRenderNode();
+    if (renderNode != null) {
+      let myRenderNode = new MyRenderNode(uiContext);
+      // Set a foreground blur effect.
+      myRenderNode.foregroundBlur = {
+        radius: 20
+      };
+      renderNode.appendChild(myRenderNode);
+      const foregroundBlurConfig = myRenderNode.foregroundBlur;
+      console.info(`foreground blur radius: ${foregroundBlurConfig.radius}]`);
+    }
+    return this.rootNode;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+
+  build() {
+    Column({ space: 10 }) {
+      NodeContainer(this.myNodeController)
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+  }
+}
+```
+
+![](figures/foregroundBlur.png)

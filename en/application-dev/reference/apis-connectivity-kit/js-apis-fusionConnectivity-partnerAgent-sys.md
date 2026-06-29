@@ -6,12 +6,16 @@
 <!--Designer: @chengguohong; @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=df2388ac9ece670e2be6918a776640e250f776ef translatedAt=2026-06-25T02:36:51.664Z pushedAt=2026-06-25T06:57:19.565Z -->
 
 This module uses Bluetooth communication technology to provide device discovery and device offline notification features for applications. The module can:
 
 - Dynamically listen to and discovers Bluetooth devices pre-registered by the applications.
+
 - Leverage the process startup mechanism to automatically start the [PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md) process of the applications when the target devices appear.
+
 - Use the process destruction mechanism to automatically destroy the [PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md) process of the applications when all the devices go offline.
+
 - Notify the applications of registered devices through the [PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md) API.
 
 > **NOTE**
@@ -30,7 +34,9 @@ enableDeviceControl(deviceAddress: PartnerDeviceAddress): Promise&lt;void&gt;
 Enables peripheral interconnection. This API uses a promise to return the result.
 
 - This API takes effect only for devices registered by an application using [BindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice). After being called, this API will provide the [device interconnection capability](js-apis-fusionConnectivity-partnerAgent.md) for the application.
+
 - You can call [isDeviceControlEnabled](js-apis-fusionConnectivity-partnerAgent.md#partneragentisdevicecontrolenabled) to check whether the peripheral interconnection feature is enabled. If the feature has been enabled, the repeated calling does not take effect.
+
 - You can call [disableDeviceControl](#partneragentdisabledevicecontrol) to disable the peripheral interconnection feature.
 
 **System API**: This is a system API.
@@ -55,7 +61,7 @@ Enables peripheral interconnection. This API uses a promise to return the result
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Error Codes of the Converged Short-Range Service Subsystem](../apis-connectivity-kit/errorcode-fusionConnectivity.md).
 
-| **ID**| **Error Message**|
+| **Error Code**| **Error Message**|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs.                 |
@@ -94,7 +100,9 @@ disableDeviceControl(deviceAddress: PartnerDeviceAddress): Promise&lt;void&gt;
 Disables peripheral interconnection. This API uses a promise to return the result.
 
 - This API takes effect only for devices registered by an application using [BindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice). After being called, this API will not provide the [device interconnection capability](js-apis-fusionConnectivity-partnerAgent.md) for the application.
+
 - You can call [isDeviceControlEnabled](js-apis-fusionConnectivity-partnerAgent.md#partneragentisdevicecontrolenabled) to check whether the peripheral interconnection feature is enabled. If the feature has been disabled, the repeated calling does not take effect.
+
 - After the feature is disabled, the [PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md) process registered by the application will not be started when the devices that are registered by other applications using [BindDevice](js-apis-fusionConnectivity-partnerAgent.md#partneragentbinddevice) are discovered. You can call [enableDeviceControl](#partneragentenabledevicecontrol) to enable the feature again.
 
 **System API**: This is a system API.
@@ -119,7 +127,7 @@ Disables peripheral interconnection. This API uses a promise to return the resul
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Error Codes of the Converged Short-Range Service Subsystem](../apis-connectivity-kit/errorcode-fusionConnectivity.md).
 
-| **ID**| **Error Message**|
+| **Error Code**| **Error Message**|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs.                 |

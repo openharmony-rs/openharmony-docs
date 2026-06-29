@@ -174,9 +174,9 @@ PixelMap的初始化选项。
 
 | 名称 | 类型          | 只读 | 可选| 说明         |
 | ---- | ------------- | ---- | ---- | ------------ |
-| size<sup>7+</sup> | [Size](#size) | 否   | 否   | 区域大小。   |
-| x<sup>7+</sup>    | number        | 否   | 否  | 区域左上角横坐标。单位为像素（px）。 |
-| y<sup>7+</sup>    | number        | 否  | 否  | 区域左上角纵坐标。单位为像素（px）。 |
+| size | [Size](#size) | 否   | 否   | 区域大小。   |
+| x    | number        | 否   | 否  | 区域左上角横坐标。单位为像素（px）。 |
+| y    | number        | 否  | 否  | 区域左上角纵坐标。单位为像素（px）。 |
 
 ## PackingSizeLimit
 
@@ -207,6 +207,7 @@ PixelMap的初始化选项。
 | desiredDynamicRange<sup>12+</sup> | [PackingDynamicRange](arkts-apis-image-e.md#packingdynamicrange12) | 否   | 是   | 目标动态范围。默认值为SDR。 |
 | needsPackProperties<sup>12+</sup> | boolean | 否   | 是   | 是否需要编码图片属性信息，例如EXIF。true表示需要，false表示不需要。默认值为false。 |
 | maxEmbedThumbnailDimension | number | 否 | 是 | 用于指定编码过程中生成缩略图的最大边长（宽和高中较大的那一边），较短的一边会根据长边的缩放比例进行缩放。此参数仅在needsPackProperties设置为true时有效。<br>该值应为整数，默认值为0。<br>若未指定此参数，或根据该尺寸计算出生成的缩略图宽/高为0，则编码过程中不会生成缩略图。<br>单位为像素（px）。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| tiffPackingOptions | [PackingOptionsForTiff](#packingoptionsfortiff) | 否 | 是 | TIFF图像编码选项。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | backgroundColor | number | 否   | 是   | 用于指定编码过程中透明区域填充的背景颜色。<br>当图片像素为RGBA_8888，且编码的目标格式不支持透明度（如"image/jpeg"或"image/heif"）时，透明区域将填充为指定背景颜色（格式：0xRRGGBB），默认值为 0（黑色）。<br>PNG、WebP等支持透明度的格式会忽略此参数。<br>颜色范围：0x000000 - 0xFFFFFF<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | sizeLimit | PackingSizeLimit | 否   | 是   | 用于指定编码输出图像的最大尺寸限制。<br>当原图宽度或高度超过最大尺寸maxSize的限制时，保持宽高比不变进行等比例缩小，确保输出图像尺寸不超过指定边界。缩放过程由level参数控制采用的缩放算法。<br>若未指定此参数，或根据最大尺寸计算的输出图宽/高为0，则按原图尺寸编码。<br>单位为像素（px）。<br>参数规则：<br>- maxSize = {0, 0}：不限制最大编码尺寸，按原图尺寸编码<br>- maxSize.width > 0而maxSize.height <= 0：限制最大宽度，高度不限（使用原图高度）<br>- maxSize.width <= 0而maxSize.height > 0：限制最大高度，宽度不限（使用原图宽度）<br>- maxSize.width > 0且maxSize.height > 0：宽高同时限制，选择较小的缩放比例<br>默认值：{maxSize: {width: 0, height: 0}, level: AntiAliasingLevel.NONE}<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | needsPackGPS | boolean | 否   | 是   | 是否在编码过程中保留GPS隐私信息。<br>true表示保留GPS信息，不进行隐私处理。false表示移除GPS信息（仅在源图像包含EXIF且needsPackProperties设置为true时生效）。默认值为true。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
@@ -503,6 +504,40 @@ ImageReceiver的初始化选项。
 | ------------- | ------- | ---- | ---- | --------------------- |
 | isRecursive   | boolean | 否   | 是   | 表示是否进行递归遍历。<br>true表示进行递归遍历。false表示仅遍历直接子节点。默认为false。 |
 | onlyQualifier | boolean | 否   | 是   | 表示是否仅遍历限定符节点。<br>true表示仅遍历限定符节点。false表示遍历所有节点。默认为false。 |
+
+## BinaryBufferInfo
+
+描述二值图像缓冲区内的信息及数据。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| size | [Size](#size) | 否 | 否 | 图像尺寸，包含宽度和高度。 |
+| data | ArrayBuffer | 否 | 否 | 图像数据缓冲区，包含二值图像数据。 |
+| bytesPerRow | number | 否 | 是 | 每行字节数。若未指定，将按(width + 7) / 8计算。该值应为整数。 |
+
+## PackingOptionsForTiff
+
+描述TIFF图像编码参数的选项。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImagePacker
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| compression | number | 否 | 是 | 该值应为整数，目前仅支持取3、4、5，分别对应压缩算法类型：3（CCITT G3）、4（CCITT G4）、5（LZW）。<br>- 对于二值图像：必须为3（G3）或4（G4），自动使用4（G4）。<br>- 对于Y8/RGB_888格式：自动使用LZW（5），不支持指定其他压缩算法。 |
+| orientation | [Orientation](arkts-apis-image-e.md#orientation23) | 否 | 是 | 图像方向。默认值为TOP_LEFT。 |
+| xResolution | number | 否 | 是 | 水平分辨率。该值必须大于0。 |
+| yResolution | number | 否 | 是 | 垂直分辨率。该值必须大于0。 |
+| resolutionUnit | number | 否 | 是 | 分辨率单位：1（无单位）、2（英寸）、3（厘米）。目前仅支持1、2、3。 |
 
 ## GetImagePropertyOptions<sup>(deprecated)</sup>
 

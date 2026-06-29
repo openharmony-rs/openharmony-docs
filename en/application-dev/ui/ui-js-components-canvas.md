@@ -39,7 +39,7 @@ canvas {
 }
 ```
 
-![en-us_image_0000001222984605](figures/en-us_image_0000001222984605.png)
+![canvas-Component](figures/canvas-Component.png)
 
 > **NOTE**
 > - The default background color of the **\<canvas>** component is the same as that of the parent component.
@@ -79,7 +79,7 @@ canvas {
 }
 ```
 
-![en-us_image_0000001177623482](figures/en-us_image_0000001177623482.png)
+![Adding-Styles](figures/Adding-Styles.png)
 
 
 ## Adding Events
@@ -152,7 +152,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001222985331](figures/en-us_image_0000001222985331.gif)
+![Adding-Events](figures/Adding-Events.gif)
 
 > **NOTE**
 >

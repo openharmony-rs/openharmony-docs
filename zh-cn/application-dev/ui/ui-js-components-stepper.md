@@ -1,7 +1,7 @@
 # stepper开发指导
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @huangxiaolinabc-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -44,10 +44,10 @@ text{
 }
 ```
 
-![zh-cn_image_0000001234289455](figures/zh-cn_image_0000001234289455.gif)
+![stepper-Component](figures/stepper-Component.gif)
 
 
-## 设置index属性
+## 设置index和label属性
 
 页面默认显示索引值为index的步骤。
 
@@ -83,7 +83,7 @@ text{
 }
 ```
 
-![zh-cn_image_0000001234011019](figures/zh-cn_image_0000001234011019.gif)
+![Setting-Index](figures/Setting-Index-1.gif)
 
 通过设置label属性，自定义stepper-item的提示按钮。
 
@@ -144,7 +144,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001163531210](figures/zh-cn_image_0000001163531210.gif)
+![Setting-Index](figures/Setting-Index.gif)
 
 
 ## 设置样式
@@ -188,7 +188,7 @@ text{
 }
 ```
 
-![zh-cn_image_0000001234130975](figures/zh-cn_image_0000001234130975.png)
+![Setting-Styles-3](figures/Setting-Styles-3.png)
 
 
 ## 添加事件
@@ -222,7 +222,7 @@ stepper分别添加finish，change，next，back，skip事件。
 
 ```css
 /* xxx.css */
-.doc-page {
+.container {
   width:100%;
   height:100%;
   flex-direction: column;
@@ -290,4 +290,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001189089950](figures/zh-cn_image_0000001189089950.gif)
+![Adding-Events-1](figures/Adding-Events-1.gif)

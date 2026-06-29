@@ -136,6 +136,7 @@
    appPreferredTimeZoneList.push(pauloTimezone);
    appPreferredTimeZoneList.push(defaultTimezone);
    
+   // ...
    let locale: Intl.Locale = i18n.System.getSystemLocaleInstance();
    for (let i = 0; i < appPreferredTimeZoneList.length; i++) {
      let timezone = appPreferredTimeZoneList[i].getID();
@@ -148,5 +149,6 @@
      let hour = calendar.get('hour');
      let minute = calendar.get('minute');
      let second = calendar.get('second');
+     // ...
    }
    ```

@@ -59,9 +59,6 @@ class CustomData implements lang.ISendable {
 | BYTECODE  | "bytecode" | 注解将保留到编译产物中。 |
 
 ## Retention<sup>24+</sup>
-
-@interface Retention { policy: RetentionPolicy; }
-
 系统提供的API注解能力，可用于指定自定义注解的生命周期。此注解只能标注在其他注解声明上。在自定义注解上标注Retention注解后，根据policy的不同取值，编译器会对自定义注解执行不同的保留策略。
 
 **模型约束：** 此接口仅可在Stage模型下使用。

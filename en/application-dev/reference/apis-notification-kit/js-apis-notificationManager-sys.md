@@ -1,8 +1,8 @@
 # @ohos.notificationManager (NotificationManager) (System API)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -2374,11 +2374,17 @@ notificationManager.isSupportDoNotDisturbMode().then((data: boolean) => {
 });
 ```
 
-## notificationManager.setDistributedEnable
+## notificationManager.setDistributedEnable<sup>(deprecated)</sup>
 
 setDistributedEnable(enable: boolean, callback: AsyncCallback\<void\>): void
 
 Sets whether to enable distributed notification on this device. This API uses an asynchronous callback to return the result.
+
+**Since**: 9
+
+**Deprecated since**: 26.0.0
+
+**Substitutes:**: [setDistributedEnabled](#notificationmanagersetdistributedenabled20)
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2426,11 +2432,17 @@ let enable: boolean = true;
 notificationManager.setDistributedEnable(enable, setDistributedEnableCallback);
 ```
 
-## notificationManager.setDistributedEnable
+## notificationManager.setDistributedEnable<sup>(deprecated)</sup>
 
 setDistributedEnable(enable: boolean): Promise\<void>
 
 Sets whether to enable distributed notification on this device. This API uses a promise to return the result.
+
+**Since**: 9
+
+**Deprecated since**: 26.0.0
+
+**Substitutes:**: [setDistributedEnabled](#notificationmanagersetdistributedenabled20)
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2480,11 +2492,17 @@ notificationManager.setDistributedEnable(enable).then(() => {
 });
 ```
 
-## notificationManager.setDistributedEnableByBundle
+## notificationManager.setDistributedEnableByBundle<sup>(deprecated)</sup>
 
 setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: AsyncCallback\<void>): void
 
 Sets whether to enable distributed notification for a specified application. This API uses an asynchronous callback to return the result.
+
+**Since**: 9
+
+**Deprecated since**: 26.0.0
+
+**Substitutes**: [setDistributedEnabledByBundle] (#notificationmanagersetdistributedenabledbybundle12)
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2539,11 +2557,17 @@ notificationManager.setDistributedEnableByBundle(bundle, enable, setDistributedE
 
 
 
-## notificationManager.setDistributedEnableByBundle
+## notificationManager.setDistributedEnableByBundle<sup>(deprecated)</sup>
 
 setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<void>
 
 Sets whether to enable distributed notification for a specified application. This API uses a promise to return the result.
+
+**Since**: 9
+
+**Deprecated since**: 26.0.0
+
+**Substitutes**: [setDistributedEnabledByBundle] (#notificationmanagersetdistributedenabledbybundle12)
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2598,11 +2622,17 @@ notificationManager.setDistributedEnableByBundle(bundle, enable).then(() => {
 });
 ```
 
-## notificationManager.isDistributedEnabledByBundle
+## notificationManager.isDistributedEnabledByBundle<sup>(deprecated)</sup>
 
 isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<boolean>): void
 
 Checks whether distributed notification is enabled for a specified application. This API uses an asynchronous callback to return the result.
+
+**Since**: 9
+
+**Deprecated since**: 26.0.0
+
+**Substitutes**: [isDistributedEnabledByBundle] (#notificationmanagerisdistributedenabledbybundle12)
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2653,11 +2683,17 @@ let bundle: notificationManager.BundleOption = {
 notificationManager.isDistributedEnabledByBundle(bundle, isDistributedEnabledByBundleCallback);
 ```
 
-## notificationManager.isDistributedEnabledByBundle
+## notificationManager.isDistributedEnabledByBundle<sup>(deprecated)</sup>
 
 isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 
 Checks whether distributed notification is enabled for a specified application. This API uses a promise to return the result.
+
+**Since**: 9
+
+**Deprecated since**: 26.0.0
+
+**Substitutes**: [isDistributedEnabledByBundle] (#notificationmanagerisdistributedenabledbybundle12)
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2711,11 +2747,15 @@ notificationManager.isDistributedEnabledByBundle(bundle).then((data: boolean) =>
 ```
 
 
-## notificationManager.getDeviceRemindType
+## notificationManager.getDeviceRemindType<sup>(deprecated)</sup>
 
 getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
 
 Obtains the notification reminder type. This API uses an asynchronous callback to return the result.
+
+**Since**: 9
+
+**Deprecated since**: 26.0.0
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2760,11 +2800,15 @@ let getDeviceRemindTypeCallback = (err: BusinessError, data: notificationManager
 notificationManager.getDeviceRemindType(getDeviceRemindTypeCallback);
 ```
 
-## notificationManager.getDeviceRemindType
+## notificationManager.getDeviceRemindType<sup>(deprecated)</sup>
 
 getDeviceRemindType(): Promise\<DeviceRemindType\>
 
 Obtains the notification reminder type. This API uses a promise to return the result.
+
+**Since**: 9
+
+**Deprecated since**: 26.0.0
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -3574,11 +3618,15 @@ notificationManager.isNotificationSlotEnabled({ bundle: "ohos.samples.notificati
 ```
 
 
-## notificationManager.setSyncNotificationEnabledWithoutApp
+## notificationManager.setSyncNotificationEnabledWithoutApp<sup>(deprecated)</sup>
 
 setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean, callback: AsyncCallback\<void\>): void
 
 Sets whether to enable the notification sync feature for devices where the application is not installed. This API uses an asynchronous callback to return the result.
+
+**Since**: 9
+
+**Deprecated since**: 26.0.0
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -3630,11 +3678,15 @@ notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable, setSync
 ```
 
 
-## notificationManager.setSyncNotificationEnabledWithoutApp
+## notificationManager.setSyncNotificationEnabledWithoutApp<sup>(deprecated)</sup>
 
 setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean): Promise\<void>
 
 Sets whether to enable the notification sync feature for devices where the application is not installed. This API uses a promise to return the result.
+
+**Since**: 9
+
+**Deprecated since**: 26.0.0
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -3688,11 +3740,15 @@ notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable).then(()
 ```
 
 
-## notificationManager.getSyncNotificationEnabledWithoutApp
+## notificationManager.getSyncNotificationEnabledWithoutApp<sup>(deprecated)</sup>
 
 getSyncNotificationEnabledWithoutApp(userId: number, callback: AsyncCallback\<boolean>): void
 
 Obtains whether the notification sync feature is enabled for devices where the application is not installed. This API uses an asynchronous callback to return the result.
+
+**Since**: 9
+
+**Deprecated since**: 26.0.0
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -3739,11 +3795,15 @@ notificationManager.getSyncNotificationEnabledWithoutApp(userId, getSyncNotifica
 ```
 
 
-## notificationManager.getSyncNotificationEnabledWithoutApp
+## notificationManager.getSyncNotificationEnabledWithoutApp<sup>(deprecated)</sup>
 
 getSyncNotificationEnabledWithoutApp(userId: number): Promise\<boolean>
 
 Obtains whether the notification sync feature is enabled for devices where the application is not installed. This API uses a promise to return the result.
+
+**Since**: 9
+
+**Deprecated since**: 26.0.0
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -4382,6 +4442,8 @@ setBadgeNumberByBundle(bundle: BundleOption, badgeNumber: number): Promise\<void
 
 Sets the badge count for other applications. This API uses a promise to return the result.
 
+The current application must have a proxy relationship with another application, or the **ohos.permission.NOTIFICATION_AGENT_CONTROLLER** permission is granted to the current application.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
@@ -4784,7 +4846,7 @@ Sets the additional system configuration information of the notification. This A
 
 | Name  | Type            | Mandatory| Description          |
 | ------ | ---------------- | ---- | -------------- |
-| key   | string | Yes | Additional configuration key. Currently, only **RING_TRUSTLIST_PKG** is supported, indicating that the application supports [custom ringtone](./js-apis-inner-notification-notificationRequest.md#notificationrequest-1).|
+| key   | string | Yes | Additional configuration key. Currently, only **RING_TRUSTLIST_PKG** is supported, indicating that the application supports custom ringtones.|
 | value   | string | Yes | Additional configuration value. Example: [bundleName1,bundleName2].|
 
 **Return value**
@@ -6640,6 +6702,63 @@ notificationManager.getNotificationStatisticsByBundle(bundles).then(
   console.info(`getNotificationStatisticsByBundle success, data is ${JSON.stringify(data)}`)
 }).catch((err: BusinessError):void => {
   console.error(`getNotificationStatisticsByBundle err: ${JSON.stringify(err)}`)
+});
+```
+
+## notificationManager.snoozeNotification
+
+snoozeNotification(hashCode: string, delayTime: number): Promise\<void\>
+
+Snoozes a notification. The notification will be reminded again after the specified time. Each setting will trigger only one reminder, and the reminder mode will be the same as that of the notification.<br>The notification will be deleted after the setting.
+
+**Since**: 26.0.0
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name     | Type                 | Mandatory| Description                        |
+| --------- | --------------------- | ---- | ---------------------------- |
+| hashCode   | string | Yes | Unique ID of the notification to be snoozed.|
+| delayTime   | number | Yes | Interval for the snoozed notification.<br>Unit: second.|
+
+**Return value**
+
+| Type           | Description                                  |
+| --------------- | -------------------------------------- |
+| Promise\<void\> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+| 1600007 | The notification does not exist. |
+| 1600028 | This notification is not supported. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Replace it with the unique ID of the notification to be snoozed.
+let hashCode: string = "hashCode";
+let delayTime: number = 60;
+notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
+  console.info("snoozeNotification success.")
+}).catch((err: BusinessError):void => {
+  console.error(`snoozeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 

@@ -1,8 +1,8 @@
 # 模态转场
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -264,7 +264,7 @@ struct BindContentCoverDemo {
 
 
 
-![zh-cn_image_0000001646921957](figures/zh-cn_image_0000001646921957.gif)
+![zh-cn_image_0000001646921957](figures/Modal-Transition-bindContentCover.gif)
 
 
 
@@ -386,7 +386,7 @@ struct BindSheetDemo {
 }
 ```
 
-![zh-cn_image_0000001599977924](figures/zh-cn_image_0000001599977924.gif)
+![zh-cn_image_0000001599977924](figures/Sheet-Transition-bindSheet.gif)
 
 
 ## 使用bindMenu实现菜单弹出效果
@@ -446,7 +446,7 @@ struct BindMenuDemo {
 }
 ```
 
-![zh-cn_image_0000001599643478](figures/zh-cn_image_0000001599643478.gif)
+![zh-cn_image_0000001599643478](figures/Creating-Menu-bindMenu.gif)
 
 
 ## 使用bindContextMenu实现菜单弹出效果
@@ -531,7 +531,7 @@ struct BindContextMenuDemo {
 }
 ```
 
-![zh-cn_image_0000001600137920](figures/zh-cn_image_0000001600137920.gif)
+![zh-cn_image_0000001600137920](figures/Context-Menu-bindContextMenu.gif)
 
 
 ## 使用bindPopup实现气泡弹窗效果
@@ -599,7 +599,7 @@ struct BindPopupDemo {
 
 
 
-![zh-cn_image_0000001649282285](figures/zh-cn_image_0000001649282285.gif)
+![zh-cn_image_0000001649282285](figures/Creating-Popup-with-bindPopup.gif)
 
 
 ## 使用if实现模态转场
@@ -809,4 +809,4 @@ struct ModalTransitionWithIf {
 }
 ```
 
-![zh-cn_image_0000001597792146](figures/zh-cn_image_0000001597792146.gif)
+![zh-cn_image_0000001597792146](figures/Modal-Transition.gif)

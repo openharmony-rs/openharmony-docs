@@ -12,7 +12,7 @@ typedef struct Pasteboard_GetDataParams Pasteboard_GetDataParams
 
 ## 概述
 
-表示从剪贴板获取粘贴数据和进度时需要写入的参数。
+表示从剪贴板获取粘贴数据和进度时需要提供的参数。
 
 **起始版本：** 15
 
