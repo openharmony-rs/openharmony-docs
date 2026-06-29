@@ -2,13 +2,13 @@
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @zhanghongran-->
-<!--Designer: @dpy2650--->
+<!--Designer: @dpy2650-->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
-VideoEncoder模块提供用于视频编码的接口。
+VideoEncoder模块提供用于视频编码的接口，可用于将原始视频数据编码为指定格式的视频码流，适用于视频录制、视频处理、实时通信等需要压缩视频数据的场景，帮助开发者降低数据存储和传输成本。
 
 开发者可根据实际的开发需求，参考对应的开发指南及样例：
 

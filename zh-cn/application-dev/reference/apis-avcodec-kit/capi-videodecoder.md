@@ -2,13 +2,13 @@
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @zhanghongran-->
-<!--Designer: @dpy2650--->
+<!--Designer: @dpy2650-->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
-VideoDecoder模块提供用于视频解码的函数。
+VideoDecoder模块提供用于视频解码的函数，适用于视频播放、视频编辑等需要将编码视频数据解码为图像帧的场景。
 
 对应的开发指南及样例可参考[视频解码](../../media/avcodec/video-decoding.md)。
 
