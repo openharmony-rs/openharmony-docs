@@ -7,7 +7,7 @@
 <!--Adviser: @RayShih-->
 
 
-本模块提供开放匿名设备标识符（Open Anonymous Device Identifier, OAID，以下简称OAID）的获取和重置能力。
+本模块提供开放匿名设备标识符（Open Anonymous Device Identifier, OAID，以下简称OAID）的获取能力。
 
 
 > **说明：**
