@@ -417,12 +417,12 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称             | 类型                     | 说明                             |
-| -------------- | ---------------------- | ------------------------------ |
-| width          | [Length](#length)      | 目标元素的宽度。<br/>单位：vp |
-| height         | [Length](#length)      | 目标元素的高度。<br/>单位：vp |
-| position       | [Position](#position) | 目标元素左上角在以父元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的位置。            |
-| globalPosition | [Position](#position) | 目标元素左上角在当前窗口坐标系中的位置。             |
+| 名称             | 类型                     | 只读 | 可选 | 说明                             |
+| -------------- | ---------------------- | --------| -----| ------------------------------ |
+| width          | [Length](#length)      | 否 | 否 | 目标元素的宽度。<br/>单位：vp |
+| height         | [Length](#length)      | 否 | 否 | 目标元素的高度。<br/>单位：vp |
+| position       | [Position](#position) | 否 | 否 | 目标元素左上角在以父元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的位置。            |
+| globalPosition | [Position](#position) | 否 | 否 | 目标元素左上角在当前窗口坐标系中的位置。             |
 
 ## Position
 
@@ -794,6 +794,8 @@ type LPX = { number }lpx
 
 ## Degree<sup>10+</sup>
 
+type Degree = `${number}deg`
+
 角度类型，用于描述以deg像素单位为单位的长度。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -816,14 +818,14 @@ type LPX = { number }lpx
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 类型定义 | 描述       |
-| ------ | ----------------------| ---------- |
-| X | [Dimension](#dimension10) | 跟手点X轴坐标。 |
-| Y | [Dimension](#dimension10) | 跟手点Y轴坐标。 |
+| 名称   | 类型 | 只读 | 可选 | 说明       |
+| ------ | ------|--------|--------| ---------- |
+| x | [Dimension](#dimension10) | 否 | 否 | 跟手点X轴坐标。 |
+| y | [Dimension](#dimension10) | 否 | 否 | 跟手点Y轴坐标。 |
 
 ## VoidCallback<sup>12+</sup>
 
-type VoidCallback：() => void;
+type VoidCallback = () => void
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
