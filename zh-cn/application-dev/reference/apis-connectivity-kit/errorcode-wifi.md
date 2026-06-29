@@ -34,6 +34,8 @@ Operation failed.
 
 根据实际错误原因的不同，系统会上报不同的错误信息，具体如下。
 
+### WIFI_OPT_FAILED
+
 **错误信息**
 
 Operation failed.
@@ -64,6 +66,8 @@ Operation failed.
 - b.执行开关Wi-Fi或重启设备以恢复服务。
 - c.移除WEP加密配置，改用受支持的加密方式（如 WPA2/WPA3）。
 
+### Flight mode is enabled
+
 **错误信息**
 
 Flight mode is enabled.
@@ -72,10 +76,16 @@ Flight mode is enabled.
 
 飞行模式开启导致功能异常。
 
+**可能原因**
+
+系统服务异常，飞行模式切换相关系统服务出现异常，未正确响应Wi-Fi请求。
+
 **处理步骤**
 
 1. 重新执行关闭及打开WIFI开关的操作。
 2. 如果步骤1无效，请尝试重启设备。
+
+### WIFI_OPT_FORBID_POWSAVING
 
 **错误信息**
 
@@ -85,10 +95,16 @@ Power saving mode is enabled.
 
 省电模式开启导致功能异常。
 
+**可能原因**
+
+电池电量过低，电量低于阈值时自动触发省电模式，限制WiFi功能。
+
 **处理步骤**
 
 1. 重新执行关闭及打开WIFI开关的操作。
 2. 如果步骤1无效，请尝试重启设备。
+
+### WIFI_OPT_CLOSE_SUCC_WHEN_CLOSED
 
 **错误信息**
 
@@ -98,23 +114,35 @@ Operation failed because the service is being closed.
 
 服务正在关闭导致功能异常。
 
+**可能原因**
+
+服务正在停止，WiFi服务正在被关闭或重启过程中。系统资源不足，内存或CPU资源紧张，系统回收WiFi服务进程。
+
 **处理步骤**
 
 1. 重新执行关闭及打开WIFI开关的操作。
 2. 如果步骤1无效，请尝试重启设备。
 
+### WIFI_OPT_SCAN_NOT_OPENED
+
 **错误信息**
 
-AP service is not enabled.
+Scanning service is not enabled.
 
 **错误描述**
 
 扫描服务未开启导致功能异常。
 
+**可能原因**
+
+扫描功能未初始化。WiFi扫描模块未正确初始化或启动。
+
 **处理步骤**
 
 1. 重新执行关闭及打开WIFI开关的操作。
 2. 如果步骤1无效，请尝试重启设备。
+
+### WIFI_OPT_AP_NOT_OPENED
 
 **错误信息**
 
@@ -124,10 +152,16 @@ AP service is not enabled.
 
 AP服务未开启导致功能异常。
 
+**可能原因**
+
+热点功能未开启，WiFi热点开关未打开，AP服务不可用。飞行模式限制 ，飞行模式开启时AP功能被禁用。
+
 **处理步骤**
 
 1. 重新执行关闭及打开WIFI开关的操作。
 2. 如果步骤1无效，请尝试重启设备。
+
+### WIFI_OPT_INVALID_CONFIG
 
 **错误信息**
 
@@ -135,12 +169,18 @@ Configuration is invalid.
 
 **错误描述**
 
-配置无效导致功能异常
+配置无效导致功能异常。
+
+**可能原因**
+
+配置参数为空，传入的配置参数为空指针或空字符串。
 
 **处理步骤**
 
 1. 重新执行关闭及打开WIFI开关的操作。
 2. 如果步骤1无效，请尝试重启设备。
+
+### WIFI_OPT_P2P_MAC_NOT_FOUND
 
 **错误信息**
 
@@ -150,10 +190,16 @@ P2P MAC address not found.
 
 P2P MAC地址未找到导致功能异常。
 
+**可能原因**
+
+P2P功能未启用或P2P未初始化。
+
 **处理步骤**
 
 1. 重新执行关闭及打开WIFI开关的操作。
 2. 如果步骤1无效，请尝试重启设备。
+
+### WIFI_OPT_P2P_ERR_MAC_FORMAT
 
 **错误信息**
 
@@ -163,10 +209,16 @@ P2P MAC address format error.
 
 P2P MAC地址格式错误导致功能异常。
 
+**可能原因**
+
+MAC地址为空。
+
 **处理步骤**
 
 1. 重新执行关闭及打开WIFI开关的操作。
 2. 如果步骤1无效，请尝试重启设备。
+
+### WIFI_OPT_P2P_ERR_INTENT
 
 **错误信息**
 
@@ -176,10 +228,16 @@ P2P internal service exception.
 
 P2P内部服务异常导致功能异常。
 
+**可能原因**
+
+P2P服务异常，WiFi P2P内部服务进程崩溃或无响应。
+
 **处理步骤**
 
 1. 重新执行关闭及打开WIFI开关的操作。
 2. 如果步骤1无效，请尝试重启设备。
+
+### WIFI_OPT_P2P_ERR_SIZE_NW_NAME
 
 **错误信息**
 
@@ -189,10 +247,16 @@ P2P wrong parameter size.
 
 P2P参数大小错误导致功能异常。
 
+**可能原因**
+
+网络名称超长，SSID长度超过最大限制。
+
 **处理步骤**
 
 1. 重新执行关闭及打开WIFI开关的操作。
 2. 如果步骤1无效，请尝试重启设备。
+
+### WIFI_OPT_MOVING_FREEZE_CTRL
 
 **错误信息**
 
@@ -201,6 +265,10 @@ moving freeze scanning control.
 **错误描述**
 
 移动冻结扫描控制导致功能异常。
+
+**可能原因**
+
+设备正在移动，系统检测到设备处于移动状态，自动冻结Wi-Fi扫描以节省电量。
 
 **处理步骤**
 
