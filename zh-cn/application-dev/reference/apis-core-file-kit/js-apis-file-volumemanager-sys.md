@@ -1489,7 +1489,7 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 
 isVolumeInUse(volumePath: string): Promise&lt;boolean&gt;
 
-查询指定卷当前是否正在被占用。使用Promise异步回调。
+查询指定卷是否处于占用状态。使用Promise异步回调。
 
 **起始版本**：26.0.0
 
@@ -1505,13 +1505,13 @@ isVolumeInUse(volumePath: string): Promise&lt;boolean&gt;
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| volumePath | string | 是   | 指定卷路径。 |
+| volumePath | string | 是   | 指定卷的物理路径。 |
 
 **返回值：**
 
 | 类型                   | 说明       |
 | ---------------------- | ---------- |
-| Promise&lt;boolean&gt; | Promise对象，返回指定卷当前是否正在被占用，true代表正在被占用，false代表未被占用。 |
+| Promise&lt;boolean&gt; | Promise对象，返回指定卷是否处于被占用状态，true代表正在被占用，false代表未被占用。 |
 
 **错误码：**
 
