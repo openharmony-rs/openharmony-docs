@@ -3215,7 +3215,6 @@ struct Index {
       const hostContext = this.uiContext?.getHostContext() as common.UIAbilityContext;
       this.context = hostContext as Context;
     }
-    webview.WebviewController.setRenderProcessMode(webview.RenderProcessMode.MULTIPLE)
   }
 
   build() {
