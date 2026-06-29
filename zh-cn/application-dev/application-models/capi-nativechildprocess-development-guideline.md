@@ -479,7 +479,7 @@
     在源文件中引入头文件。
 
     <!-- @[kill_child_process_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/KillChildProcess/entry/src/main/cpp/MainProcessFile.cpp) -->
-
+    
     ``` C++
     #include <AbilityKit/native_child_process.h>
     ```
