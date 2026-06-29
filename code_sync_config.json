@@ -13658,6 +13658,86 @@
 						"start_line":17
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets",
+				"functions":[
+					{
+						"end_line":189,
+						"name":"set_drag_behavior_move",
+						"start_line":184
+					},
+					{
+						"end_line":211,
+						"name":"set_on_drop_call",
+						"start_line":197
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets",
+				"functions":[
+					{
+						"end_line":302,
+						"name":"grid_previewData_start",
+						"start_line":29
+					},
+					{
+						"end_line":303,
+						"name":"grid_styles_start",
+						"start_line":41
+					},
+					{
+						"end_line":304,
+						"name":"grid_numberBadge_start",
+						"start_line":33
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExample.ets",
+				"functions":[
+					{
+						"end_line":106,
+						"name":"gridExample_start",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets",
+				"functions":[
+					{
+						"end_line":48,
+						"name":"drop_customDropAnimation_start",
+						"start_line":38
+					},
+					{
+						"end_line":106,
+						"name":"drop_column_start",
+						"start_line":87
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExamples.ets",
+				"functions":[
+					{
+						"end_line":156,
+						"name":"gridExample_onclick",
+						"start_line":121
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets",
+				"functions":[
+					{
+						"end_line":189,
+						"name":"springLoading_onDragEnter",
+						"start_line":180
+					}
+				]
 			}
 		]
 	},
@@ -13863,6 +13943,26 @@
 						"start_line":18
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusTransfer.ets",
+				"functions":[
+					{
+						"end_line":109,
+						"name":"dynamic_focus_transfer",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusController.ets",
+				"functions":[
+					{
+						"end_line":97,
+						"name":"dynamic_focus_control_demo",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
@@ -14028,6 +14128,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/PreventGestureRecognition/PreventGestureRecognition.ets",
+				"functions":[
+					{
+						"end_line":294,
+						"name":"gesture_recognition",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
@@ -14101,6 +14211,16 @@
 						"end_line":63,
 						"name":"catch_swipe_gesture_event",
 						"start_line":18
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/OnClickGesture.ets",
+				"functions":[
+					{
+						"end_line":69,
+						"name":"click_event",
+						"start_line":16
 					}
 				]
 			}
@@ -14281,6 +14401,16 @@
 						"end_line":73,
 						"name":"mouse_wheel",
 						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseWheel/MouseWheel.ets",
+				"functions":[
+					{
+						"end_line":75,
+						"name":"mouse_wheel",
+						"start_line":16
 					}
 				]
 			}
