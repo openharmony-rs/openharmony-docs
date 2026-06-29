@@ -452,7 +452,7 @@ Human
 
 模块级`oh_modules`和工程级`oh_modules`在`DevEco Studio`中的目录结构如下图所示：
 
-![oh_modules](./figures/oh_modules.png)
+![oh_modules](./figures/oh-modules.png)
 
 **使用该选项时，需要注意以下事项：**
 
