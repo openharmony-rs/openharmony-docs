@@ -89,7 +89,7 @@ Operation failed because the service is being closed.
 
 **错误信息**
 
-Ap service is not enabled.
+AP service is not enabled.
 
 ### AP服务未开启导致功能异常
 
