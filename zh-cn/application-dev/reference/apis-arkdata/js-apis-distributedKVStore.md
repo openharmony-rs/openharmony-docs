@@ -3334,17 +3334,17 @@ try {
       kvStore.removeDeviceData(deviceId, async (err: BusinessError) => {
         if (err) {
           console.error(`Failed to remove device data. Code: ${err.code}, message: ${err.message}`);
-          return;
-        }
-        console.info('Succeeded in removing device data');
-        if (kvStore) {
-          kvStore.get(KEY_TEST_STRING_ELEMENT, async (err: BusinessError, data: boolean | string | number | Uint8Array) => {
-              if (err) {
-                console.error(`Failed to get data. Code: ${err.code}, message: ${err.message}`);
-                return;
-              }
-              console.info(`Succeeded in getting data.data=${data}`);
-            });
+        } else {
+          console.info('Succeeded in removing device data');
+          if (kvStore) {
+            kvStore.get(KEY_TEST_STRING_ELEMENT, async (err: BusinessError, data: boolean | string | number | Uint8Array) => {
+                if (err) {
+                  console.error(`Failed to get data. Code: ${err.code}, message: ${err.message}`);
+                  return;
+                }
+                console.info(`Succeeded in getting data.data=${data}`);
+              });
+          }
         }
       });
     }
