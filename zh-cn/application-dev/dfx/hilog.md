@@ -443,7 +443,7 @@ $ param get hilog.loggable.global
 I
 ```
 <!--RP17-->
-全局日志级别默认为INFO;
+全局日志级别默认为INFO；
 <!--RP17End-->
 
 <!--RP16-->
