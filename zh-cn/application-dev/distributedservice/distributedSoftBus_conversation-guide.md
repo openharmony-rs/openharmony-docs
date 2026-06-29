@@ -70,9 +70,9 @@
            "reason": "$string:distributed_permission",
            "usedScene": {
              "abilities": [
-               "MainAbility"
+               "EntryAbility"
              ],
-             "when": "inuse"
+             "when": "always"
            }
          },
          {
@@ -80,9 +80,9 @@
            "reason": "$string:access_udid_permission",
            "usedScene": {
              "abilities": [
-               "MainAbility"
+               "EntryAbility"
              ],
-             "when": "inuse"
+             "when": "always"
            }
          }
        ]
@@ -138,9 +138,9 @@
            "reason": "$string:distributed_permission",
            "usedScene": {
              "abilities": [
-               "MainAbility"
+               "EntryAbility"
              ],
-             "when": "inuse"
+             "when": "always"
            }
          },
          {
@@ -148,9 +148,9 @@
            "reason": "$string:access_udid_permission",
            "usedScene": {
              "abilities": [
-               "MainAbility"
+               "EntryAbility"
              ],
-             "when": "inuse"
+             "when": "always"
            }
          }
        ]
