@@ -84,16 +84,16 @@ struct Index {
 Layout less than or equal to 600 vp
 
 
-![en-us_image_0000001665553957](figures/en-us_image_0000001665553957.png)
+![Discover-fresh-hits-02](figures/Discover-fresh-hits-02.png)
 
 
 Layout greater than 600 vp and less than or equal to 840 vp
 
 
-![en-us_image_0000001616957408](figures/en-us_image_0000001616957408.png)
+![Discover-fresh-hits](figures/Discover-fresh-hits.png)
 
 
 Layout greater than 840 vp
 
 
-![en-us_image_0000001617116972](figures/en-us_image_0000001617116972.png)
+![Discover-fresh-hits-01](figures/Discover-fresh-hits-01.png)

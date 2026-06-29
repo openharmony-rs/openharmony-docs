@@ -82,7 +82,7 @@ EnterpriseAdminExtensionContext是[EnterpriseAdminExtensionAbility](js-apis-Ente
 
 | 类型 | 说明 |
 | --- | --- |
-| [_EnterpriseAdminExtensionContext.default](js-apis-application-EnterpriseAdminExtensionContext.md) | EnterpriseAdminExtensionAbility组件的上下文。 |
+| _EnterpriseAdminExtensionContext.default | EnterpriseAdminExtensionAbility组件的上下文[EnterpriseAdminExtensionContext](js-apis-application-EnterpriseAdminExtensionContext.md)。 |
 
 ## StartupScene<sup>24+</sup>
 
@@ -97,3 +97,22 @@ EnterpriseAdminExtensionContext是[EnterpriseAdminExtensionAbility](js-apis-Ente
 | USER_SETUP | 0  | 子用户被首次切换并完成其开机向导场景（仅限PC）。后续再次切换该子用户不会触发回调。|
 | OTA | 1  | OTA升级完成场景。|
 | DEVICE_PROVISION | 2  | 首次开机完成开机向导场景。|
+
+## PolicyChangedEvent
+
+策略变更事件。
+
+该接口目前在[onAdminPolicyChanged](./js-apis-EnterpriseAdminExtensionAbility.md#onadminpolicychanged)接口中作为回调入参使用。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+| 名称          | 类型                             | 只读 | 可选 | 说明                                                        |
+| ------------- | --------------------------------| ---- | -----| ------------------------------------------------------ |
+| bundleName          | string       | 否   | 否 | 应用包名。           |
+| functionName        | string       | 否   | 否 | 接口名称。例如调用[setPasswordPolicy](./js-apis-enterprise-securityManager.md#securitymanagersetpasswordpolicy)接口时，该字段返回值为setPasswordPolicy。            |
+| parameters        | string       | 否   | 否 | 调用接口时传入的参数值（不包含admin参数），JSON格式字符串。例如调用[setPasswordPolicy](./js-apis-enterprise-securityManager.md#securitymanagersetpasswordpolicy)接口，该字段返回值为{"policy":{"complexityRegex":"^(?=.\*[a-zA-Z])(?=.\*\\\\d).{8},$","validityPeriod":1808309786000,"additionalDescription":"至少8个字符，且包含数字和字母。"}}。            |
+| time        | number       | 否   | 否 | 调用接口的时间戳，单位：ms。           |

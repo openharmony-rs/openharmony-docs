@@ -71,6 +71,8 @@ Monitor: MonitorDecorator
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## MonitorDecoratorOptions
@@ -102,6 +104,8 @@ type MonitorDecorator = (value: string | MonitorDecoratorOptions, ...args: strin
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -173,6 +177,8 @@ struct Index {
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                | 类型            | 只读 | 可选 | 说明             |
@@ -188,6 +194,8 @@ value\<T\>(path?: string): IMonitorValue\<T\> | undefined
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -260,6 +268,8 @@ struct Index {
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                 | 类型   | 只读 | 可选 | 说明             |
@@ -309,7 +319,7 @@ SyncMonitor: MonitorDecorator
 
 | 名称        | 类型             | 说明                           |
 | ----------- | ---------------- | ------------------------------ |
-| SyncMonitor | [MonitorDecorator](#monitordecorator12) | 属性装饰器，监听状态变量的修改。 |
+| SyncMonitor | [MonitorDecorator](#monitordecorator12) | 方法装饰器，监听状态变量的修改。 |
 
 **错误码：**
 

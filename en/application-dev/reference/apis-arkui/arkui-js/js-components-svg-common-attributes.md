@@ -1,27 +1,28 @@
 # Universal Attributes
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:35:20.136Z pushedAt=2026-06-24T01:23:54.412Z -->
 
 >  **NOTE**
 >
 >  The APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 
-
 | Name| Type| Default Value| Mandatory| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | fill | &lt;color&gt; | black | No| Fill color of an element using the shorthand attribute. Attribute animations are supported.|
 | fill-opacity | number | 1 | No| Opacity of a fill color. The value ranges from **0** to **1**. The value **1** means opaque, and **0** means completely transparent. Attribute animations are supported.|
-| fill-rule | nonzero&nbsp;\|&nbsp;evenodd | nonzero | No| Fill rule.<br>**nonzero**: non-zero rule.<br>**evenodd**: parity rule.|
+| fill-rule | nonzero&nbsp;\|&nbsp;evenodd | nonzero | No | Fill rule.<br>**nonzero**: non-zero rule.<br>**evenodd**: even-odd rule. |
 | opacity | number | 1 | No| Opacity of an element. The value ranges from **0** to **1**. The value **1** means opaque, and **0** means completely transparent. Attribute animations are supported.|
 | stroke | &lt;color&gt; | - | No| Color of the stroke. Attribute animations are supported.|
 | stroke-dasharray | &lt;string&gt; | - | No| Length of the dashes and notches. The format is [length length length length]. The length values of dashes and notches are separated by a space and appear in pairs.|
 | stroke-dashoffset | &lt;length&gt; | 0 | No| Offset for rendering the associated dash line array. Attribute animations are supported.|
 | stroke-linejoin | [bevel&nbsp;\|&nbsp;miter&nbsp;\|&nbsp;round] | miter | No| The shape used at the corner of a path when stroked.<br>**bevel**: connects paths with bevel corners.<br>**miter**: connects paths with mitered corners.<br>**round**: connects paths with rounded corners.|
-| stroke-linecap | [butt&nbsp;\|&nbsp;round&nbsp;\|&nbsp;square] | butt | No| The shape used at the end of paths when stroked.<br>**butt**: The stroke for each path does not extend beyond its two endpoints.<br>**round**: At the end of each path the stroke is extended by a half circle with a diameter equal to the stroke width.<br>**square**: At the end of each path the stroke is extended by a half circle, with the width being equal to half of the stroke width, and the height being equal to the stroke width.|
+| stroke-linecap | [butt&nbsp;\|&nbsp;round&nbsp;\|&nbsp;square] | butt | No| The shape used at the end of paths when stroked.<br>**butt**: The stroke for each path does not extend beyond its two endpoints.<br>**round**: At the end of each path, the stroke is extended by a half circle with a diameter equal to the stroke width.<br>**square**: At the end of each path, the stroke is extended by a rectangle, with the width being equal to half of the stroke width, and the height being equal to the stroke width.|
 | stroke-miterlimit | number | 4 | No| Limit value when the sharp angle is drawn as a miter. Attribute animations are supported.|
 | stroke-opacity | number | 1 | No| Opacity of the stroke. The value ranges from **0** to **1**. The value **1** means opaque, and **0** means completely transparent. Attribute animations are supported.|
 | stroke-width | &lt;length&gt; | 1px | No| Stroke width. Attribute animations are supported.|

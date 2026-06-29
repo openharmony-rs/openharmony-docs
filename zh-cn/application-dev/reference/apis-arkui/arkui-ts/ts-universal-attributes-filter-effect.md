@@ -1,8 +1,8 @@
 # 视效设置
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,7 +10,9 @@
 
 >  **说明：**
 >
->  从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## visualEffect
 
@@ -144,7 +146,7 @@ materialFilter(filter: Filter | undefined): T
 
 ## Filter
 
-type Filter = Filter
+type Filter = import('../api/@ohos.graphics.uiEffect').default.Filter
 
 导入Filter类型对象。
 
@@ -154,11 +156,11 @@ type Filter = Filter
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [Filter](../../apis-arkgraphics2d/js-apis-uiEffect.md#filter) | 用于将相应的效果添加到指定的组件上。 |
+| import('../api/@ohos.graphics.uiEffect').default.[Filter](../../apis-arkgraphics2d/js-apis-uiEffect.md#filter) | 用于将相应的效果添加到指定的组件上。 |
 
 ## VisualEffect
 
-type VisualEffect = VisualEffect
+type VisualEffect = import('../api/@ohos.graphics.uiEffect').default.VisualEffect
 
 导入VisualEffect类型对象。
 
@@ -168,7 +170,7 @@ type VisualEffect = VisualEffect
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [VisualEffect](../../apis-arkgraphics2d/js-apis-uiEffect.md#visualeffect) | 用于将相应的效果添加到指定的组件上。 |
+| import('../api/@ohos.graphics.uiEffect').default.[VisualEffect](../../apis-arkgraphics2d/js-apis-uiEffect.md#visualeffect) | 用于将相应的效果添加到指定的组件上。 |
 
 ## 示例
 

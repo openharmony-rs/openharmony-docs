@@ -10,11 +10,11 @@
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码](../errorcode-universal.md)。
 
-## 103501 XComponent状态异常
+## 103501 XComponent无效状态
 
 **错误信息**
 
-XComponent is in invalid state.
+当前XComponent处于无效状态，方法调用失败。
 
 **错误描述**
 

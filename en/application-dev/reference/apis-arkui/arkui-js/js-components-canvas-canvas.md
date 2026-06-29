@@ -1,10 +1,11 @@
 # canvas
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=236b1482bf31e926fd91d5f29276a56a58780a2f translatedAt=2026-06-22T07:51:46.625Z pushedAt=2026-06-23T01:55:36.822Z -->
 
 >  **NOTE**
 >  This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
@@ -93,9 +94,9 @@ Option object used to configure the Canvas rendering context attribute.
 
 ```html
 <!-- xxx.hml -->
-<div>
-  <canvas ref="canvas1" style="width: 200px; height: 150px; background-color: #ffff00;"></canvas>
-  <input type="button" style="width: 180px; height: 60px;" value="fillStyle" onclick="handleClick" />
+<div style="margin: 100; flex-direction: column">
+  <canvas ref="canvas1" style="width: 200px; height: 150px; background-color: rgb(213, 213, 213);"></canvas>
+  <input type="button" style="width: 180px; height: 60px; margin: 13;" value="fillStyle" onclick="handleClick" />
 </div>
 ```
 
@@ -110,3 +111,5 @@ export default {
   }
 }
 ```
+
+![image-js-canvas-canvas](figures/image-js-canvas-canvas.png)

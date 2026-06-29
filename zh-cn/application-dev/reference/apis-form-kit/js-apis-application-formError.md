@@ -1,9 +1,9 @@
 # @ohos.application.formError (formError)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 formError模块提供获取卡片错误码的能力。
@@ -25,7 +25,7 @@ import { formError } from '@kit.FormKit';
 
 ## FormError
 
-枚举，支持的卡片类型。
+枚举，卡片错误码。
 
 **系统能力：** SystemCapability.Ability.Form
 

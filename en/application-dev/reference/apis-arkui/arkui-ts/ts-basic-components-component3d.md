@@ -29,7 +29,7 @@ Component3D(sceneOptions?: SceneOptions)
 
 | Name      | Type                                 | Mandatory| Description                                                        |
 | ------------ | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| sceneOptions | [SceneOptions](#sceneoptions) | No  | 3D scene configuration.<br>**NOTE**<br> The 3D scene configuration cannot be dynamically modified after the component is created.|
+| sceneOptions | [SceneOptions](#sceneoptions) | No  | 3D scene configuration options. The default value is **undefined**.<br>**NOTE**<br> The 3D scene configuration cannot be dynamically modified after the component is created.|
 
 
 ## SceneOptions
@@ -40,6 +40,7 @@ Provides the 3D scene configuration options.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | Name       | Type                              | Read-Only| Optional  | Description                                      |
 | --------- | -------------------------------- | ---- | ---- | ---------------------------------------- |
 | scene     | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[Scene](#scene12) | No   | Yes   | 3D model resource file or scene object. Default value: **undefined**.<br>When a glTF model (.gltf or .glb file) resource path is passed, the component runs in automatic scene mode. The framework automatically creates a basic camera, lighting, and provides default gesture interactions (rotate and zoom). The related parameters are managed internally by the framework and cannot be modified externally. You can only configure the display effects through the attributes of **Component3D**.<br>When a **Scene** object is passed, the component runs in custom scene mode. You can create and manage the camera, light source, and interactions through ArkGraphics 3D APIs.<br>When this parameter is not specified, the component serves only as an output container for a custom rendering pipeline (shader/customRender).<br>**NOTE**<br>In custom scene mode, the component does not have a built-in camera controller. Therefore, it does not automatically respond to drag or pinch gestures. If interactions are required, you need to integrate gestures and update the camera's position and rotation parameters.|
@@ -60,7 +61,7 @@ Enumerates the rendering and composition modes, which specify the rendering outp
 
 ## Scene<sup>12+</sup>
 
-type Scene = Scene
+type Scene = import('../api/@ohos.graphics.scene').Scene
 
 Represents a 3D scene object.
 
@@ -70,7 +71,7 @@ Represents a 3D scene object.
 
 | Type                                                        | Description          |
 | ------------------------------------------------------------ | -------------- |
-| [Scene](../../apis-arkgraphics3d/js-apis-inner-scene.md#scene-1) | 3D scene object.|
+| import('../api/@ohos.graphics.scene').[Scene](../../apis-arkgraphics3d/js-apis-inner-scene.md#scene-1) | 3D scene object.|
 
 ## Attributes
 
@@ -155,15 +156,15 @@ Set the animation parameters used for custom rendering.
 
 | Name| Type          | Mandatory| Description                      |
 | ------ | -------------- | ---- | -------------------------- |
-| buffer | Array<number\> | Yes  | Animation parameters used for custom rendering.<b>Array length range: [0, 1048576]|
+| buffer | Array<number\> | Yes  | Animation parameters used for custom rendering.<br>Array length range: [0, 1048576]|
 
 ### renderWidth
 
 renderWidth(value: Dimension)
 
-Sets the width of the 3D rendering resolution. The width and height of the rendering resolution may be different from those of the component. If this is the case, they are upsampled or downsampled to the component width and height.
+Sets the width of the 3D rendering resolution. The width and height of the rendering resolution can be different from those of the component. When the rendering resolution width and height mismatch the component's dimensions, the component's width and height are upsampled or downsampled accordingly.
 
-If this attribute is not specified, the default width of the rendering resolution is used.
+If this attribute is not specified, the rendering resolution is used by default.
 
 The rendering resolution cannot be dynamically changed after the component is created.
 
@@ -181,9 +182,9 @@ The rendering resolution cannot be dynamically changed after the component is cr
 
 renderHeight(value: Dimension)
 
-Sets the height of the 3D rendering resolution. The width and height of the rendering resolution may be different from those of the component. If this is the case, they are upsampled or downsampled to the component width and height.
+Sets the height of the 3D rendering resolution. The width and height of the rendering resolution can be different from those of the component. When the rendering resolution width and height mismatch the component's dimensions, the component's width and height are upsampled or downsampled accordingly.
 
-If this attribute is not specified, the default height of the rendering resolution is used.
+If this attribute is not specified, the rendering resolution is used by default.
 
 The rendering resolution cannot be dynamically changed after the component is created.
 
@@ -201,7 +202,7 @@ The rendering resolution cannot be dynamically changed after the component is cr
 
 The [universal events](ts-component-general-events.md) are supported.
 
-## Example
+## Examples
 You can preview how this component looks on a real device, but not in DevEco Studio Previewer.<br>
 Example of loading a GLTF model:<br>
 ```ts

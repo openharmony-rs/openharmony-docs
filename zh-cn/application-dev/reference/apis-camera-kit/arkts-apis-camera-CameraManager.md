@@ -222,8 +222,8 @@ createCameraInput(camera: CameraDevice): CameraInput
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.               |
-| 7400102                |  Operation not allowed.               |
-| 7400201                |  Camera service fatal error.               |
+| 7400102                |  Operation not allowed.<br>适用版本：12+               |
+| 7400201                |  Camera service fatal error.<br>适用版本：12+               |
 
 **示例：**
 
@@ -277,8 +277,8 @@ createCameraInput(position: CameraPosition, type: CameraType): CameraInput
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.               |
-| 7400102                |  Operation not allowed.               |
-| 7400201                |  Camera service fatal error.               |
+| 7400102                |  Operation not allowed.<br>适用版本：12+               |
+| 7400201                |  Camera service fatal error.<br>适用版本：12+               |
 
 **示例：**
 
@@ -330,7 +330,7 @@ createPreviewOutput(profile: Profile, surfaceId: string): PreviewOutput
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.               |
-| 7400201                |  Camera service fatal error.               |
+| 7400201                |  Camera service fatal error.<br>适用版本：12+               |
 
 **示例：**
 
@@ -479,7 +479,7 @@ createPhotoOutput(profile?: Profile): PhotoOutput
 | 错误码ID    | 错误信息                                           |
 |----------|------------------------------------------------|
 | 7400101  | Parameter missing or parameter type incorrect. |
-| 7400201  | Camera service fatal error.                    |
+| 7400201  | Camera service fatal error.<br>适用版本：12+    |
 
 **示例：**
 
@@ -537,7 +537,7 @@ createVideoOutput(profile: VideoProfile, surfaceId: string): VideoOutput
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.               |
-| 7400201                |  Camera service fatal error.               |
+| 7400201                |  Camera service fatal error.<br>适用版本：12+               |
 
 **示例：**
 
@@ -636,7 +636,7 @@ createMetadataOutput(metadataObjectTypes: Array\<MetadataObjectType\>): Metadata
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.               |
-| 7400201                |  Camera service fatal error.               |
+| 7400201                |  Camera service fatal error.<br>适用版本：12+               |
 
 **示例：**
 
@@ -684,7 +684,7 @@ createSession\<T extends Session\>(mode: SceneMode): T
 
 | 错误码ID   | 错误信息                                                                                                                                           |
 |---------|------------------------------------------------------------------------------------------------------------------------------------------------|
-| 7400101 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3.Parameter verification failed. |  
+| 7400101 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3.Parameter verification failed.<br>适用版本：19+ |  
 | 7400201 | Camera service fatal error.                                                                                                                    |
 
 **示例：**
@@ -939,8 +939,9 @@ setTorchMode(mode: TorchMode): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400102 | Operation not allowed. |
-| 7400201 | Camera service fatal error. |
+| 7400101 | Parameter missing or parameter type incorrect.<br>适用版本：11-17 |
+| 7400102 | Operation not allowed.<br>适用版本：12+ |
+| 7400201 | Camera service fatal error.<br>适用版本：12+ |
 
 **示例：**
 
@@ -1032,7 +1033,7 @@ isTorchLevelControlSupported(): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

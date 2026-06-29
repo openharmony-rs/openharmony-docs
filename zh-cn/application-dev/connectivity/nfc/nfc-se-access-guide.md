@@ -11,10 +11,10 @@
 电子设备上可能存在一个或多个安全单元（SecureElement，简称SE），比如有eSE(Embedded SE)和SIM卡。安全单元的访问控制，通过GPAC（GlobalPlatform Access Control）规范实现。
 
 ## 场景介绍
-应用程序可以通过接口访问安全单元，比如往安全单元里面写入数据，实现在电子设备上模拟一张NFC卡片的目的。该卡片数据可能存储在eSE安全单元，或在SIM卡安全单元上。安全单元上一般会预置有访问控制规则（GPAC规范），应用程序需要具备对应的权限，参考[安全单元接口](../../reference/apis-connectivity-kit/js-apis-secureElement.md)，也就是通过安全单元的访问控制权限校验之后，才能正常访问安全单元。
+应用程序可以通过接口访问安全单元，比如往安全单元里面写入数据，实现在电子设备上模拟一张NFC卡片的目的。该卡片数据可能存储在eSE安全单元，或在SIM卡安全单元上。安全单元上一般会预置有访问控制规则（GPAC规范），应用程序需要具备对应的权限，参考[@ohos.secureElement (安全单元的通道管理)](../../reference/apis-connectivity-kit/js-apis-secureElement.md)，也就是通过安全单元的访问控制权限校验之后，才能正常访问安全单元。
 
 ## 接口说明
-安全单元完整的API说明以及示例代码请参考：[安全单元接口](../../reference/apis-connectivity-kit/js-apis-secureElement.md)。
+安全单元完整的API说明以及示例代码请参考：[@ohos.secureElement (安全单元的通道管理)](../../reference/apis-connectivity-kit/js-apis-secureElement.md)。
 
 实现安全单元的访问，需要使用到下面的接口。
 

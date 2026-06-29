@@ -12,6 +12,8 @@ This module provides APIs for initiating drag actions. When receiving a gesture 
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
+> - The APIs of this module can be used only in the stage model.
+>
 > - The functionality of this module depends on UI context. This means that the APIs of this module cannot be used where [the UI context is ambiguous](../../ui/arkts-global-interface.md#ambiguous-ui-context). For details, see [UIContext](arkts-apis-uicontext-uicontext.md).
 >
 > - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
@@ -1349,10 +1351,10 @@ Defines the configuration parameters for drag hover detection. The default setti
 
 | Name                | Type  |Read-Only| Optional| Description                                  |
 | --------------------- | ------ | ---- | --- | ---------------------------------------------------- |
-| stillTimeLimit         | number | No  |    Yes  |Time (in ms) required to remain stationary to enter the BEGIN state of hover detection. Value range: integer in the [0, 2<sup>31</sup>-1] range. Floating-point number inputs will be truncated to integers. Invalid values (negative numbers, **null**, **undefined**, **NaN**) are treated as the default value **500**.|
-| updateInterval         | number | No  |    Yes  |Time interval (in ms) at which update notifications are sent after hover detection enters the UPDATE state. Value range: integer in the [0, 2<sup>31</sup>-1] range. Floating-point number inputs will be truncated to integers. Invalid values (negative numbers, **null**, **undefined**, **NaN**) are treated as the default value **100**.|
+| stillTimeLimit         | number | No  |    Yes  |Time required to remain stationary to enter the BEGIN state of hover detection, in ms. Value range: integer in the [0, 2<sup>31</sup>-1] range. Floating-point number inputs will be truncated to integers. Invalid values (negative numbers, **null**, **undefined**, **NaN**) are treated as the default value **500**.|
+| updateInterval         | number | No  |    Yes  |Interval at which update notifications are sent after hover detection enters the UPDATE state, in ms. Value range: integer in the [0, 2<sup>31</sup>-1] range. Floating-point number inputs will be truncated to integers. Invalid values (negative numbers, **null**, **undefined**, **NaN**) are treated as the default value **100**.|
 | updateNotifyCount      | number | No  |    Yes  |Maximum number of update notifications after hover detection enters the UPDATE state. Value range: integer in the [0, 2<sup>31</sup>-1] range. Floating-point number inputs will be truncated to integers. Invalid values (negative numbers, **null**, **undefined**, **NaN**) are treated as the default value **3**.|
-| updateToFinishInterval | number | No  |    Yes  |Maximum waiting time (in ms) from the UPDATE state to the END state. Value range: integer in the [0, 2<sup>31</sup>-1] range. Floating-point number inputs will be truncated to integers. Invalid values (negative numbers, **null**, **undefined**, **NaN**) are treated as the default value **100**.|
+| updateToFinishInterval | number | No  |    Yes  |Maximum waiting time from the UPDATE state to the END state, in ms. Value range: integer in the [0, 2<sup>31</sup>-1] range. Floating-point number inputs will be truncated to integers. Invalid values (negative numbers, **null**, **undefined**, **NaN**) are treated as the default value **100**.|
 
 ## SpringLoadingDragInfos<sup>20+</sup>
 

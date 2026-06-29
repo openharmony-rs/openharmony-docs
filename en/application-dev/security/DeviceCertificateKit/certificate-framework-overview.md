@@ -28,7 +28,7 @@ The following describes certificate specifications.
 
 ### Certificate Chain Validation
 
-The certificate chain validator does not verify the certificate validity period because the device system time is always untrusted. To check the validity of a certificate, use [checkValidityWithDate()](../../reference/apis-device-certificate-kit/js-apis-cert.md#checkvaliditywithdate) of **X509Cert**.
+The certificate chain validator does not verify the certificate validity period because the device system time is untrusted. To check the validity of a certificate, use [checkValidityWithDate()](../../reference/apis-device-certificate-kit/js-apis-cert.md#checkvaliditywithdate) of **X509Cert**.
 
 ### Certificate Format
 
@@ -73,6 +73,7 @@ You can use the certificate framework to implement the following functionalities
 - [Creating and Parsing a Certificate with PKCS #12](create-parse-pkcs12.md)
 - [Online Validation of Certificate Revocation Status of a Certificate Chain](create-verify-cerchainvalidator-revocation-object.md)
 - [Downloading the Missing Intermediate CA Certificate During Certificate Chain Validation](allow-download-Intermediate-Cert.md)
+- [Building and Validating a Certificate Chain](build-and-verify-cert-chain.md)
 
 The following table lists the classes provided by the certificate framework. Based on the classes, you can learn the related APIs.
 

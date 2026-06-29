@@ -1,9 +1,10 @@
 # ArkUI_NodeAttributeType（信息选择类组件相关属性）
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Zhang-Dong-hui; @luoying_ace_admin-->
-<!--Designer: @xiangyuan6; @weixin_52725220-->
-<!--Tester: @jiaoaozihao; @xiong0104-->
+<!--Owner: @luoying_ace_admin-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ```c
@@ -205,13 +206,13 @@ NODE_DATE_PICKER_MODE = 13007
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 显示的日期列类型。参数类型[ArkUI_DatePickerMode](capi-native-type-h.md#arkui_datepickermode)。 |
+| .value[0].i32 | 显示的日期列类型。参数类型[ArkUI_DatePickerMode](capi-picker-h.md#arkui_datepickermode)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 显示的日期列类型。参数类型[ArkUI_DatePickerMode](capi-native-type-h.md#arkui_datepickermode)。 |
+| .value[0].i32 | 显示的日期列类型。参数类型[ArkUI_DatePickerMode](capi-picker-h.md#arkui_datepickermode)。 |
 
 ## NODE_DATE_PICKER_ENABLE_HAPTIC_FEEDBACK
 
@@ -339,7 +340,7 @@ NODE_TIME_PICKER_DISAPPEAR_TEXT_STYLE = 14002
 NODE_TIME_PICKER_TEXT_STYLE = 14003
 ```
 
-设置设置边缘项（以选中项为基准向上或向下的第二项）的文本样式，支持属性设置，属性重置和属性获取接口。<br>
+设置时间选择组件所有选项中除了最上、最下及选中项以外的文本颜色、字号、字体粗细，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -469,7 +470,7 @@ NODE_TEXT_PICKER_OPTION_RANGE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_TEXT_PICKER = 15
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 使用的选择器类型[ArkUI_TextPickerRangeType](capi-native-type-h.md#arkui_textpickerrangetype)，默认值为ARKUI_TEXTPICKER_RANGETYPE_SINGLE。 |
+| .value[0].i32 | 使用的选择器类型[ArkUI_TextPickerRangeType](capi-picker-h.md#arkui_textpickerrangetype)，默认值为ARKUI_TEXTPICKER_RANGETYPE_SINGLE。 |
 | ?.string | 针对不同选择器类型有如下输入范式：<br>1：单列选择器，入参格式为用分号分隔的一组字符串；<br>2：多列选择器，支持多对纯文本字符串对，多对之间使用分号分隔，每对内部使用逗号分隔。 |
 | ?.object | 针对不同选择器类型有如下输入范式：<br>1：单列支持图片的选择器，输入结构体为[ARKUI_TextPickerRangeContentArray](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md)；<br>2：多列联动选择器，输入结构体为[ARKUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md)。 |
 
@@ -477,7 +478,7 @@ NODE_TEXT_PICKER_OPTION_RANGE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_TEXT_PICKER = 15
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 使用的选择器类型[ArkUI_TextPickerRangeType](capi-native-type-h.md#arkui_textpickerrangetype)。 |
+| .value[0].i32 | 使用的选择器类型[ArkUI_TextPickerRangeType](capi-picker-h.md#arkui_textpickerrangetype)。 |
 | ?.string | 针对不同选择器类型有如下输出范式：<br>1：单列选择器，输出格式为用分号分隔的一组字符串；<br>2：多列选择器，输出多对纯文本字符串对，多对之间使用分号分隔，每对内部使用逗号分隔。 |
 
 ## NODE_TEXT_PICKER_OPTION_SELECTED
@@ -849,6 +850,54 @@ NODE_PICKER_SELECTION_INDICATOR = 1018003
 | -- | -- |
 | .object | 参数类型为[ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)。 |
 
+## NODE_PICKER_DISPLAYED_ITEM_COUNT
+
+```c
+NODE_PICKER_DISPLAYED_ITEM_COUNT = 1018004
+```
+
+设置Picker容器可见选项的数量，语义与ArkTS侧[UIPickerComponent](arkui-ts/ts-container-ui-picker-component.md)的[displayedItemCount](arkui-ts/ts-container-ui-picker-component.md#displayeditemcount)一致。未设置时，可见选项为7行。Picker为立体滚轮样式时，除选中项外的选项会按角度旋转，实际可视高度会小于选项行高；若增大可见行数或行高，请相应增大容器高度，详见[UIPickerComponent](arkui-ts/ts-container-ui-picker-component.md)。支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 可见选项数量。取值范围为<b>[2, 9]</b>内的整数。传入小数时按向下取整处理；传入偶数时，会规范为不小于该值的奇数（例如2变为3、8变为9）。不在取值范围内时使用默认值<b>7</b>。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 当前可见选项数量。 |
+
+## NODE_PICKER_ITEM_HEIGHT
+
+```c
+NODE_PICKER_ITEM_HEIGHT = 1018005
+```
+
+设置Picker容器每个选项的高度，语义与ArkTS侧[UIPickerComponent](arkui-ts/ts-container-ui-picker-component.md)的[itemHeight](arkui-ts/ts-container-ui-picker-component.md#itemheight)一致。未设置时，每个选项高度为40vp。CAPI以vp为单位传入高度值。支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].f32 | 选项高度，单位为vp。有效范围为<b>[40, 64]</b>。小于40vp或大于64vp时使用默认值<b>40</b>vp。不支持百分比。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].f32 | 当前选项高度，单位为vp。 |
+
 ## NODE_CALENDAR_PICKER_HINT_RADIUS
 
 ```c
@@ -917,7 +966,7 @@ NODE_CALENDAR_PICKER_EDGE_ALIGNMENT = 16002
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 对齐方式类型，参数类型[ArkUI_CalendarAlignment](capi-native-type-h.md#arkui_calendaralignment)。 |
+| .value[0].i32 | 对齐方式类型，参数类型[ArkUI_CalendarAlignment](capi-picker-h.md#arkui_calendaralignment)。 |
 | .value[1]?.f32 | 按照对齐方式对齐后，选择器相对入口组件的x轴方向相对偏移。 |
 | .value[2]?.f32 | 按照对齐方式对齐后，选择器相对入口组件的y轴方向相对偏移。 |
 
@@ -925,7 +974,7 @@ NODE_CALENDAR_PICKER_EDGE_ALIGNMENT = 16002
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 对齐方式类型，参数类型[ArkUI_CalendarAlignment](capi-native-type-h.md#arkui_calendaralignment)。 |
+| .value[0].i32 | 对齐方式类型，参数类型[ArkUI_CalendarAlignment](capi-picker-h.md#arkui_calendaralignment)。 |
 | .value[1].f32 | 按照对齐方式对齐后，选择器相对入口组件的x轴方向相对偏移。 |
 | .value[2].f32 | 按照对齐方式对齐后，选择器相对入口组件的y轴方向相对偏移。 |
 

@@ -10,7 +10,9 @@ The **Inspector** module provides APIs for registering the component layout and 
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 
@@ -55,7 +57,7 @@ let listener:inspector.ComponentObserver = inspector.createComponentObserver('CO
 
 ## ComponentObserver
 
-Implements an observer for layout and drawing completion callbacks for components, containing the initial query results from when the observer was created.
+Defines the handle for component layout and drawing completion callbacks. You can call the following APIs through this handle:
 
 ### on('layout')
 

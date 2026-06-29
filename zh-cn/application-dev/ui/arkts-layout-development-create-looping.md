@@ -131,7 +131,7 @@ Swiper() {
 
 - 自定义导航点样式
 
-选中的导航点，直径设为30vp，且颜色为蓝色；未选中的导航点，直径设为15vp，颜色设为红色。
+选中的导航点，宽度设为30vp且高度设为15vp，且颜色为蓝色；未选中的导航点，直径设为15vp，颜色设为红色。
 
 <!-- @[customize_navigation_point_styles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperIndicatorStyle.ets) -->
 
@@ -550,7 +550,7 @@ export struct SwiperAndTabsLinkage {
             .width('100%')
 
             Swiper(this.swiperController) {
-              LazyForEach(this.swiperData, (item: string) => {
+              LazyForEach(this.swiperData, (item: number) => {
                 Text(item.toString())
                   .onAppear(()=>{
                     console.info('onAppear ' + item.toString());
@@ -563,7 +563,7 @@ export struct SwiperAndTabsLinkage {
                   .backgroundColor(0xAFEEEE)
                   .textAlign(TextAlign.Center)
                   .fontSize(30)
-              }, (item: string) => item)
+              }, (item: number) => item.toString())
             }
             .loop(false)
             .onSelected((index: number) => {
@@ -694,14 +694,14 @@ export struct SwiperIgnoreComponentSize {
               Swiper(
                 this.swiperController1
               ) {
-                LazyForEach(this.data1, (item: string) => {
+                LazyForEach(this.data1, (item: number) => {
                   Text(item.toString())
                     .width('90%')
                     .height(120)
                     .backgroundColor(0xAFEEEE)
                     .textAlign(TextAlign.Center)
                     .fontSize(30)
-                }, (item: string) => item)
+                }, (item: number) => item.toString())
               }
               .indicator(new DotIndicator()
                 .space(this.space)

@@ -1,8 +1,8 @@
 # 外描边设置
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,9 @@
 
 >  **说明：**
 >
->  从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## outline
 
@@ -317,7 +319,7 @@ struct OutlineExample {
 }
 ```
 
-![zh-cn_image_0000001219982706](figures/zh-cn_image_0000001219982706.png)
+![outlineRadius](figures/outlineRadius.png)
 
 ### 示例2（使用LocalizedEdgeColors类型）
 
@@ -367,8 +369,8 @@ struct OutlineExample {
 
 从左至右显示语言示例图
 
-![zh-cm_image_outling_ltr](figures/zh-cm_image_outling_ltr.png)
+![zh-cm_image_outling_ltr](figures/image-outling-ltr.png)
 
 从右至左显示语言示例图
 
-![zh-cm_image_outling_rtl](figures/zh-cm_image_outling_rtl.png)
+![zh-cm_image_outling_rtl](figures/image-outling-rtl.png)

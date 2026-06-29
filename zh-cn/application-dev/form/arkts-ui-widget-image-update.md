@@ -1,9 +1,9 @@
 # 刷新本地图片和网络图片
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 在卡片上需要展示本地图片或从网络上下载的图片，获取本地图片和网络图片需要通过FormExtensionAbility来实现，如下示例代码介绍了如何在卡片上显示本地图片和网络图片。
@@ -25,7 +25,7 @@
    import { http } from '@kit.NetworkKit';
    ```
 
-3. 在EntryFormAbility中的onAddForm生命周期回调中实现本地文件的刷新。
+3. 在WgtImgUpdateEntryFormAbility中的onAddForm生命周期回调中实现本地文件的刷新。
 
    <!-- @[local_file_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts) --> 
    
@@ -68,7 +68,7 @@
    }
    ```
 
-4. 在EntryFormAbility中的onFormEvent生命周期回调中实现网络文件的刷新。
+4. 在WgtImgUpdateEntryFormAbility中的onFormEvent生命周期回调中实现网络文件的刷新。
 
    <!-- @[network_file_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts) --> 
    
@@ -156,7 +156,7 @@
    
    ```
 
-5. 在卡片页面通过backgroundImage属性展示EntryFormAbility传递过来的卡片内容。
+5. 在卡片页面通过backgroundImage属性展示WgtImgUpdateEntryFormAbility传递过来的卡片内容。
 
    <!-- @[widget_image_update_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetimageupdate/pages/WidgetImageUpdateCard.ets) --> 
    
@@ -219,6 +219,6 @@
 
 > **说明：**
 >
-> - Image组件入参格式为`memory://fileName`时表示进行远端内存图片显示，`fileName`来自EntryFormAbility传递对象('formImages': {key: fd})中的key。
+> - Image组件入参格式为`memory://fileName`时表示进行远端内存图片显示，`fileName`来自WgtImgUpdateEntryFormAbility传递对象('formImages': {key: fd})中的key。
 >
-> - Image组件通过传入的参数是否有变化来决定是否刷新图片，因此EntryFormAbility每次传递过来的imgName都需要不同，连续传递两个相同的imgName时，图片不会刷新。
+> - Image组件通过传入的参数是否有变化来决定是否刷新图片，因此WgtImgUpdateEntryFormAbility每次传递过来的imgName都需要不同，连续传递两个相同的imgName时，图片不会刷新。

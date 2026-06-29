@@ -36,7 +36,7 @@ As shown in the following figure, the selected area is the **WidgetParam.navigat
 
 ## Development Example
 
-For details about how to initiate the authentication request in the transition from a system-supported authentication to a custom authentication, see [initiating authentication](start-authentication.md). Ensure that the **widgetParam** parameter passed in must contain **navigationButtonText**.
+For details about how to initiate the authentication request in the transition to a custom authentication, see [initiating authentication](start-authentication.md). Ensure that the **widgetParam** parameter passed in must contain **navigationButtonText**.
 
 This example only shows how to configure the UI and select the custom authentication UI. You need to add the code for launching the custom authentication page at the commented line in the example.
 
@@ -60,7 +60,7 @@ handleCustomAuthResult(userAuthInstance: userAuth.UserAuthInstance, exampleNumbe
     });
     // Start authentication.
     userAuthInstance.start();
-    Logger.info('auth start successfully');
+    Logger.info('auth start successfully.');
     // ...
 }
 
@@ -86,7 +86,7 @@ applyingCustomAuthentication() {
     };
     // Obtain an authentication object.
     const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
-    Logger.info('get userAuth instance successfully');
+    Logger.info('get userAuth instance successfully.');
     // Subscribe to the authentication result.
     this.handleCustomAuthResult(userAuthInstance, ResultIndex.CUSTOMIZE);
   } catch (error) {

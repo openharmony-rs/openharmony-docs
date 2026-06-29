@@ -47,7 +47,7 @@
 
 开发者调用接口时，运作流程如图所示。
 
-![zh-cn_image_0000001722397992](figures/zh-cn_image_0000001722397992.png)
+![security-control-operation-mechanism](figures/security-control-operation-mechanism.png)
 
 1. 应用开发者在ETS文件中集成安全控件，通过JS引擎解析后，在ArkUI框架中生成具体的控件。
 

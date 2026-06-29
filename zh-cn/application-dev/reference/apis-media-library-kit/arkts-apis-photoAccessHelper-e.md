@@ -1,7 +1,7 @@
 # Enums
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @yixiaoff-->
+<!--Owner: @zhaochang14-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
@@ -39,7 +39,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
-| DEFAULT |  0 |  默认照片类型。 |
+| DEFAULT |  0 |  默认照片文件类型。 |
 | MOVING_PHOTO |  3 |  动态照片文件类型。 |
 | BURST |  4 |  连拍照片文件类型。 |
 
@@ -79,6 +79,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | VIDEO  | 1026       | 视频相册。|
 | IMAGE<sup>12+</sup>               | 1031       | 图片相册。|
 | SOURCE\_GENERIC<sup>23+</sup>     | 2049       | 来源相册。|
+| SOURCE_GENERIC_FROM_FILE_MANAGER     | 2050       | 来自文件管理的来源相册。<br>**起始版本：** 26.0.0 |
 | ANY    | 2147483647 | 任意相册。|
 
 ## PositionType<sup>16+</sup>
@@ -101,7 +102,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 
 | 名称          | 值              | 说明                                                       |
 | ------------- | ------------------- | ---------------------------------------------------------- |
-| URI           | 'uri'                 | 文件uri。<br>**注意：**<br>查询照片时，该字段仅支持使用[DataSharePredicates.equalTo](../apis-arkdata/js-apis-data-dataSharePredicates.md#equalto10)谓词。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。            |
+| URI           | 'uri'                 | 文件uri。<br>**注意：**<br>查询照片时，该字段仅支持使用[DataSharePredicates.equalTo](../apis-arkdata/js-apis-data-dataSharePredicates.md#equalto)谓词。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。            |
 | PHOTO_TYPE    | 'media_type'           | 媒体文件类型。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  |
 | DISPLAY_NAME  | 'display_name'        | 显示名字。规格为：<br>- 应包含有效文件主名和图片或视频扩展名。<br>- 文件名字符串长度的取值范围为[1, 255]。<br>- 文件主名中不允许出现的非法英文字符，包括：. .. \ / : * ? " ' ` < > \| { } [ ]。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。      |
 | SIZE          | 'size'                | 文件大小（单位：字节）。动态照片的size包括图片和视频的总大小。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。    |
@@ -128,8 +129,8 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | MEDIA_SUFFIX<sup>18+</sup>  | 'media_suffix'            | 文件的后缀名。                               |
 | OWNER_ALBUM_ID<sup>22+</sup>  | 'owner_album_id' | 照片所属的相册id。 |
 | ASPECT_RATIO<sup>22+</sup>  | 'aspect_ratio'            | 图片和视频的宽高比。<br/> ​**模型约束**：此接口仅可在Stage模型下使用。|
-| CHANGE_TIME<sup>23+</sup>  | 'change_time' | 照片的更改时间。 |
-| LOCAL_ASSET_SIZE | 'local_asset_size' | 本地文件的实际大小。<br>- 该属性仅表示本地文件大小，默认值为0表示纯云文件或尚未识别的本地文件大小。<br>- 当本地文件为动态照片且模式发生变化时，该属性会发生变化。例如：当图库中的动态照片处于“关闭动态”状态时，该属性仅表示封面帧大小。<br>**起始版本：** 26.0.0<br> ​**模型约束：** 此接口仅可在Stage模型下使用。 |
+| CHANGE_TIME<sup>23+</sup>  | 'change_time' | 照片的更改时间（单位：秒）。 |
+| LOCAL_ASSET_SIZE | 'local_asset_size' | 本地文件的实际大小（单位：字节）。<br>- 该属性仅表示本地文件大小，默认值为0表示纯云文件或尚未识别的本地文件大小。<br>- 当本地文件为动态照片且模式发生变化时，该属性会发生变化。例如：当图库中的动态照片处于“关闭动态”状态时，该属性仅表示封面帧大小。<br>**起始版本：** 26.0.0<br> ​**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## AlbumKeys
 
@@ -142,7 +143,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | URI           | 'uri'                 | 相册uri。                                                   |
 | ALBUM_NAME    | 'album_name'          | 相册名字。                                                   |
 | ALBUM_LPATH<sup>23+</sup>          | 'lpath'                 | 相册的虚拟路径。<br>支持的相册及对应的lpath值：<br>- 相机应用相册：'/DCIM/Camera' <br>- 截图应用相册：'/Pictures/Screenshots' <br>- 屏幕录制应用相册：'/Pictures/Screenrecords' <br>- 用户创建的相册：'/Pictures/Users/{用户自定义相册名称}'                     |
-| CHANGE_TIME<sup>23+</sup>          | 'change_time'                 | 相册的更改时间。                                                   |
+| CHANGE_TIME<sup>23+</sup>          | 'change_time'                 | 相册的更改时间（单位：秒）。                                                   |
 
 ## ResourceType<sup>11+</sup>
 
@@ -176,7 +177,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 
 | 名称                      | 值   | 说明                             |
 | ------------------------- | ---- | -------------------------------- |
-| NOTIFY_ADD                | 0    | 添加文件集或相册通知的类型。     |
+| NOTIFY_ADD                | 0    | 添加文件集或相册的通知类型。     |
 | NOTIFY_UPDATE             | 1    | 文件集或相册的更新通知类型。     |
 | NOTIFY_REMOVE             | 2    | 删除文件集或相册的通知类型。     |
 | NOTIFY_ALBUM_ADD_ASSET    | 3    | 在相册中添加的文件集的通知类型。 |
@@ -330,9 +331,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 | 名称                      | 值   | 说明                             |
 | ------------------------- | ---- | -------------------------------- |
-| NOTIFY_CHANGE_ADD         | 0    | 媒体资产（图片/视频）或相册已经创建。     |
-| NOTIFY_CHANGE_UPDATE      | 1    | 媒体资产（图片/视频）或相册已经修改。     |
-| NOTIFY_CHANGE_REMOVE      | 2    | 媒体资产（图片/视频）或相册已经删除。     |
+| NOTIFY_CHANGE_ADD         | 0    | 媒体资产（图片/视频）或相册创建事件的通知类型。     |
+| NOTIFY_CHANGE_UPDATE      | 1    | 媒体资产（图片/视频）或相册修改事件的通知类型。     |
+| NOTIFY_CHANGE_REMOVE      | 2    | 媒体资产（图片/视频）或相册删除事件的通知类型。     |
 
 ## PhotoSource<sup>20+</sup>
 
@@ -479,8 +480,6 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 枚举，媒体库资产读权限状态。
 
 **起始版本：** 26.0.0
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

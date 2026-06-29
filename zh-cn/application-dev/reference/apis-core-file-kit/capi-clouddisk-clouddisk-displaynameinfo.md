@@ -12,7 +12,7 @@ typedef struct CloudDisk_DisplayNameInfo {...} CloudDisk_DisplayNameInfo
 
 ## 概述
 
-定义同步根路径的显示名称信息。
+定义同步根路径的显示名称信息，用于配置同步根路径在界面中的展示名称。开发者可通过静态资源ID或自定义别名设置显示名称，便于用户识别和管理同步根路径。
 
 **起始版本：** 21
 
@@ -27,7 +27,7 @@ typedef struct CloudDisk_DisplayNameInfo {...} CloudDisk_DisplayNameInfo
 | 名称 | 描述 |
 | -- | -- |
 | uint32_t displayNameResId | 应用同步根路径显示名称对应的静态资源ID。 |
-| char *customAlias | 自定义的别名，不能包含字符：\\\/\*\?\<\>\|\:\"，以及不能以"."、".."和纯空格作为完整名称。 |
-| size_t customAliasLength | 自定义别名的长度，范围：[0, 255]。 |
+| char *customAlias | 自定义别名，不能包含字符：\\\/\*\?\<\>\|\:\"，且不能以"."、".."和纯空格作为完整名称。 |
+| size_t customAliasLength | 自定义别名的长度，取值范围：[0, 255]。超出范围时接口返回参数错误。 |
 
 

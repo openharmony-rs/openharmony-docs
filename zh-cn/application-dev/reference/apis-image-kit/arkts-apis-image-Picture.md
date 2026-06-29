@@ -141,6 +141,7 @@ getHdrComposedPixelmapWithOptions(options?: HdrComposeOptions): Promise\<PixelMa
 **示例：**
 
 ```ts
+// EntryAbility.ets
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -166,6 +167,55 @@ async function GetHdrComposedPixelmapWithOptions(picture : image.Picture) {
   }).catch((error: BusinessError) => {
     console.error(`Failed to getHdrComposedPixelmapWithOptions information. error.code: ${error.code} ,error.message: ${error.message}`);
   });
+}
+```
+
+## hdrComposeToMainPixelmap
+
+hdrComposeToMainPixelmap(): Promise\<void>
+
+将Picture对象的主图和增益图合成为HDR图，合成后原Picture的主图被替换为HDR图，原Picture的增益图被删除。使用Promise异步回调。
+
+调用该接口的Picture对象中必须包含主图、增益图。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+
+**返回值：**
+
+| 类型                          | 说明                        |
+| ----------------------------- | --------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 7600201 | Unsupported operation. e.g.,1. The picture does not have a gainmap. 2. pixelMap's allocator type is not DMA.|
+
+**示例：**
+
+```ts
+// EntryAbility.ets
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function HdrComposeToMainPixelmap(picture : image.Picture) {
+  if (picture == null) {
+    console.error('picture is null');
+    return;
+  }
+  try {
+    await picture.hdrComposeToMainPixelmap();
+  } catch(error) {
+    console.error(`Failed to do HdrComposeToMainPixelmap. error.code: ${error.code} ,error.message: ${error.message}`);
+  }
 }
 ```
 
@@ -449,7 +499,7 @@ class MySequence implements rpc.Parcelable {
   marshalling(messageSequence: rpc.MessageSequence) {
     if(this.picture != null) {
       this.picture.marshalling(messageSequence);
-      console.info('Succceed in marshalling.');
+      console.info('Succeed in marshalling.');
       return true;
     } else {
       console.error('Failed to marshall.');

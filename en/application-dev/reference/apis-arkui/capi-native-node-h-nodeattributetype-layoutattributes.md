@@ -1,8 +1,8 @@
 # ArkUI_NodeAttributeType (Layout Attribute)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW; @zju_ljz; @camlostshi-->
-<!--Designer: @CCFFWW; @lanshouren-->
+<!--Owner: @hehongyang3; @zju_ljz; @camlostshi-->
+<!--Designer: @hehongyang3; @lanshouren-->
 <!--Tester: @liuli0427; @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -83,7 +83,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| value[0].f32 | Padding, in vp.|
+| .value[0].f32 | Padding, in vp.|
 
 2: Specify different paddings for the four directions.<br>
 
@@ -155,7 +155,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Alignment method. The parameter type is [ArkUI_Alignment](capi-native-type-h.md#arkui_alignment). The default value is **ARKUI_ALIGNMENT_CENTER**.|
+| .value[0].i32 | Alignment mode. The parameter type is [ArkUI_Alignment](capi-native-type-h.md#arkui_alignment). The default value is **ARKUI_ALIGNMENT_CENTER**.|
 
 **Returns**
 
@@ -212,13 +212,15 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Parameters**
 
-1. Specify the same corner radius for the four borders.<br>
+One or four parameters can be passed:
+
+Specify the same corner radius for the four borders.<br>
 
 | Name| Description|
 | -- | -- |
 | .value[0].f32 | Corner radius.|
 
-2. Specify different corner radii for the four borders.<br>
+Specify different corner radii for the four borders.<br>
 
 | Name| Description|
 | -- | -- |
@@ -286,13 +288,15 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Parameters**
 
-1. Specify the same line style for the four borders.<br>
+One or four parameters can be passed:
+
+Specify the same line style for the four borders.<br>
 
 | Name| Description|
 | -- | -- |
 | .value[0].i32 | Border line style. The parameter type is [ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle). The default value is **ARKUI_BORDER_STYLE_SOLID**.|
 
-2. Specify different line styles for the four borders.<br>
+Specify different line styles for the four borders.<br>
 
 | Name| Description|
 | -- | -- |
@@ -1118,3 +1122,51 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .value[0].i32 | Mode for drawing rounded corners of the component. The parameter type is [ArkUI_RenderStrategy](capi-native-type-h.md#arkui_renderstrategy).|
+
+## NODE_ACCESSIBILITY_NEXT_FOCUS_ID
+
+```c
+NODE_ACCESSIBILITY_NEXT_FOCUS_ID = 124
+```
+
+[Node ID](capi-native-node-h-nodeattributetype-base.md#node_id) of the next focus component for accessibility of this component. After the node ID of the component is set, the accessibility service searches for the component whose node ID is the same as that of the next focus component on the current page. If no such component exists, the setting is invalid. This attribute can be set, reset, and obtained as required through APIs.
+
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .string | Node ID of the next focus component for accessibility.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .string | Node ID of the next focus component for accessibility.|
+
+## NODE_ACCESSIBILITY_DEFAULT_FOCUS
+
+```c
+NODE_ACCESSIBILITY_DEFAULT_FOCUS = 125
+```
+
+Default focus flag for accessibility to find the default focus component. This attribute can be set, reset, and obtained as required through APIs.
+
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[0].i32 | Default accessibility focus. The value can be **0** or **1**. The value **1** indicates that the component is defined as the default focus in the accessibility service, and **0** indicates that the component is not defined as the default focus in the accessibility service.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[0].i32 | Default accessibility focus. The value can be **0** or **1**. The value **1** indicates that the component is defined as the default focus in the accessibility service, and **0** indicates that the component is not defined as the default focus in the accessibility service.|

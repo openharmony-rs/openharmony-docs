@@ -1,8 +1,8 @@
 # CanvasPattern
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -30,11 +30,15 @@ Uses a **Matrix2D** object as a parameter to perform matrix transformation on th
 
 | Name     | Type | Mandatory| Description  |
 | --------- | -------------- | ------ | ---------- |
-| transform | [Matrix2D](ts-components-canvas-matrix2d.md) | No | Transformation matrix.<br>The **undefined** and **null** values are treated as invalid.<br>Default value: **null**.|
+| transform | [Matrix2D](ts-components-canvas-matrix2d.md) | No | Transformation matrix.<br>**undefined** and **null** are treated as invalid values, and no matrix transformation is performed.<br>Default value: no matrix transformation|
 
 ## Example
 
 This example demonstrates how to apply matrix transformations to a **CanvasPattern** object using the **setTransform** API.
+
+> **NOTE**
+>
+> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOption** in the module's **build-profile.json5** file > **resOptions** > **copyCodeResource**, and set **enable** to **true**. For details, see the description of [copyCodeResource](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348) in **resOptions**.
 
 ```ts
 // xxx.ets
@@ -44,6 +48,7 @@ struct CanvasPatternPage {
   private settings: RenderingContextSettings = new RenderingContextSettings(true);
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
   private matrix: Matrix2D = new Matrix2D();
+  // Replace "common/pattern.jpg" with the image resource file you use.
   private img: ImageBitmap = new ImageBitmap("common/pattern.jpg");
   private pattern: CanvasPattern | null = null;
 

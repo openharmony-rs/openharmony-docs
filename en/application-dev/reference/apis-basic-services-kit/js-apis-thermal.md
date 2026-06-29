@@ -37,7 +37,7 @@ Subscribes to thermal level changes. This API uses an asynchronous callback to r
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 401     | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
@@ -72,7 +72,7 @@ Unsubscribes from thermal level changes. This API uses an asynchronous callback 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 401     | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
@@ -115,9 +115,9 @@ console.info('thermal level is: ' + level);
 
 subscribeThermalLevel(callback: AsyncCallback&lt;ThermalLevel&gt;): void
 
-> **NOTE**<br>This API is supported since API version 8 and deprecated since API version 9. You are advised to use [thermal.registerThermalLevelCallback](#thermalregisterthermallevelcallback9) instead.
-
 Subscribes to thermal level changes. This API uses an asynchronous callback to return the result.
+
+> **NOTE**<br>This API is supported since API version 8 and deprecated since API version 9. You are advised to use [thermal.registerThermalLevelCallback](#thermalregisterthermallevelcallback9) instead.
 
 **System capability**: SystemCapability.PowerManager.ThermalManager
 
@@ -125,7 +125,7 @@ Subscribes to thermal level changes. This API uses an asynchronous callback to r
 
 | Name  | Type                             | Mandatory| Description                                                        |
 | -------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback&lt;[ThermalLevel](#thermallevel)&gt; | Yes  | Callback used to return the result. The return value contains only one parameter, that is, thermal level.|
+| callback | AsyncCallback&lt;[ThermalLevel](#thermallevel)&gt; | Yes  | Callback used to return thermal level. This parameter is of the function type.|
 
 **Example**
 
@@ -139,9 +139,9 @@ thermal.subscribeThermalLevel((err: Error, level: thermal.ThermalLevel) => {
 
 unsubscribeThermalLevel(callback?: AsyncCallback\<void>): void
 
-> **NOTE**<br>This API is supported since API version 8 and deprecated since API version 9. You are advised to use [thermal.unregisterThermalLevelCallback](#thermalunregisterthermallevelcallback9) instead.
-
 Unsubscribes from thermal level changes. This API uses an asynchronous callback to return the result.
+
+> **NOTE**<br>This API is supported since API version 8 and deprecated since API version 9. You are advised to use [thermal.unregisterThermalLevelCallback](#thermalunregisterthermallevelcallback9) instead.
 
 **System capability**: SystemCapability.PowerManager.ThermalManager
 
@@ -163,9 +163,9 @@ thermal.unsubscribeThermalLevel(() => {
 
 getThermalLevel(): ThermalLevel
 
-> **NOTE**<br>This API is supported since API version 8 and deprecated since API version 9. You are advised to use [thermal.getLevel](#thermalgetlevel9) instead.
-
 Obtains the current thermal level.
+
+> **NOTE**<br>This API is supported since API version 8 and deprecated since API version 9. You are advised to use [thermal.getLevel](#thermalgetlevel9) instead.
 
 **System capability**: SystemCapability.PowerManager.ThermalManager
 

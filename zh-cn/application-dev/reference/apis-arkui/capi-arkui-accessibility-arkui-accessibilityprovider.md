@@ -1,7 +1,7 @@
 # ArkUI_AccessibilityProvider
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zhanghangkai10241-->
+<!--Owner: @wangyinhua-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -12,7 +12,7 @@ typedef struct ArkUI_AccessibilityProvider ArkUI_AccessibilityProvider
 
 ## 概述
 
-该结构体为第三方操作提供者，用于承载回调函数的实现。
+该结构体为无障碍第三方操作提供者，用于承载回调函数的实现。
 
 **起始版本：** 13
 

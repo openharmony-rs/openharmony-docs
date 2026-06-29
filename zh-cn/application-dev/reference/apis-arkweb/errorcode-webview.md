@@ -385,6 +385,24 @@ The port number is not within the allowed range.
 
 检查使用的端口号是否在允许的取值范围内。
 
+## 17100024 AIPageCommand格式错误
+
+**错误信息**
+
+Command format error. The command parameter does not conform to the JSON format requirements.
+
+**错误描述**
+
+AIPageCommand参数格式错误。
+
+**可能原因**
+
+调用[WebviewController.executeAIPageCommand](arkts-apis-webview-WebviewController.md#executeaipagecommand)时，传入的command参数不是合法的JSON对象字符串，或命令字段不符合格式要求。
+
+**处理步骤**
+
+检查command参数是否为合法的JSON对象字符串，并确认JSON对象中包含字符串类型的method字段。
+
 ## 17100101 使用了错误的网络错误码
 
 **错误信息**

@@ -1,7 +1,7 @@
 # ArkUI_AccessibilityElementInfo
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zhanghangkai10241-->
+<!--Owner: @wangyinhua-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -12,7 +12,7 @@ typedef struct ArkUI_AccessibilityElementInfo ArkUI_AccessibilityElementInfo
 
 ## 概述
 
-无障碍节点信息，用于向无障碍服务、辅助应用（屏幕朗读）传递节点信息。
+无障碍节点信息，用于向无障碍服务、无障碍辅助应用传递节点信息。
 
 **起始版本：** 13
 

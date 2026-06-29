@@ -189,7 +189,6 @@ struct MediaQueryExample {
   }
 
   aboutToAppear() {
-    // 绑定当前应用实例
     // 绑定回调函数
     this.listener.on('change', (mediaQueryResult: mediaquery.MediaQueryResult) => {
       this.onPortrait(mediaQueryResult);
@@ -256,7 +255,7 @@ struct MediaQueryExample {
 
   // 当满足媒体查询条件时，触发回调
   onPortrait(mediaQueryResult: mediaquery.MediaQueryResult) {
-    if (mediaQueryResult.matches as boolean) { // 若设备为横屏状态，更改相应的文本内容与字体颜色
+    if (mediaQueryResult.matches as boolean) { // 若设备为横屏状态，更改相应的文本内容、字体颜色、布局方向及尺寸
       this.color = '#FFD700';
       this.text = 'Landscape';
       this.dir = FlexDirection.Row;
@@ -272,7 +271,6 @@ struct MediaQueryExample {
   }
 
   aboutToAppear() {
-    // 绑定当前应用实例
     // 绑定回调函数
     this.listener.on('change', (mediaQueryResult: mediaquery.MediaQueryResult) => {
       this.onPortrait(mediaQueryResult)

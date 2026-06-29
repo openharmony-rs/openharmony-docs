@@ -48,7 +48,8 @@ addSecureOutput(previewOutput: PreviewOutput): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
-| 7400102                |  Operation not allowed.                                  |
+| 7400102                |  Operation not allowed.                                |
+| 7400103                |  Session not config.<br>适用版本：12-17                 |
 
 **示例：**
 

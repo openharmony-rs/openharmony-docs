@@ -16,9 +16,9 @@ ArkUI开发框架支持在NDK接口使用滑块视图容器Swiper，提供子组
 
 本示例通过调用[createNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)创建ARKUI_NODE_SWIPER类型的UI组件节点，用于后续设置属性等操作。并通过[addChild](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addchild)在Swiper组件下挂载了多个Text文本组件，作为内容显示。
 
-本示例仅展示核心功能代码，完整示例请参考工程[NDKSwiperSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKSwiperSample)。
+本示例仅展示核心功能代码，完整示例请参考工程<!--RP1-->[NDKSwiperSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKSwiperSample)<!--RP1End-->。
 
-<!-- @[swiper_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKSwiperSample/entry/src/main/cpp/NativeEntry.cpp) -->
+<!-- @[swiper_create](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKSwiperSample/entry/src/main/cpp/NativeEntry.cpp) -->
 
 ``` C++
 ArkUI_NativeNodeAPI_1 *nodeApi = nullptr;
@@ -40,9 +40,9 @@ AddChild(swiper, nodeApi);
 | NODE_SWIPER_ITEM_SPACE    | 子项之间的显示间距。 |
 | NODE_SWIPER_AUTO_PLAY     | 是否开启自动轮播。   |
 
-本示例仅展示核心功能代码，完整示例请参考工程[NDKSwiperSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKSwiperSample)。
+本示例仅展示核心功能代码，完整示例请参考工程<!--RP1-->[NDKSwiperSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKSwiperSample)<!--RP1End-->。
 
-<!-- @[swiper_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKSwiperSample/entry/src/main/cpp/NativeEntry.cpp) -->
+<!-- @[swiper_attribute](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKSwiperSample/entry/src/main/cpp/NativeEntry.cpp) -->
 
 ``` C++
 // 设置常用属性
@@ -64,14 +64,14 @@ nodeApi->setAttribute(swiper, NODE_SWIPER_AUTO_PLAY, &item);
 
 ## 设置导航指示器
 
-本示例通过[OH_ArkUI_SwiperIndicator_Create](../reference/apis-arkui/capi-native-type-h.md#oh_arkui_swiperindicator_create)(ARKUI_SWIPER_INDICATOR_TYPE_DOT)创建圆点类型的导航指示器，并通过[OH_ArkUI_SwiperIndicator_SetEndPosition](../reference/apis-arkui/capi-native-type-h.md#oh_arkui_swiperindicator_setendposition)、[OH_ArkUI_SwiperIndicator_SetSelectedColor](../reference/apis-arkui/capi-native-type-h.md#oh_arkui_swiperindicator_setselectedcolor)接口分别设置设置导航指示器距离Swiper组件右边的距离和选中圆点的颜色。
+本示例通过[OH_ArkUI_SwiperIndicator_Create](../reference/apis-arkui/capi-swiper-h.md#oh_arkui_swiperindicator_create)(ARKUI_SWIPER_INDICATOR_TYPE_DOT)创建圆点类型的导航指示器，并通过[OH_ArkUI_SwiperIndicator_SetEndPosition](../reference/apis-arkui/capi-swiper-h.md#oh_arkui_swiperindicator_setendposition)、[OH_ArkUI_SwiperIndicator_SetSelectedColor](../reference/apis-arkui/capi-swiper-h.md#oh_arkui_swiperindicator_setselectedcolor)接口分别设置导航指示器距离Swiper组件右边的距离和选中圆点的颜色。
 
-本示例仅展示核心功能代码，完整示例请参考工程[NDKSwiperSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKSwiperSample)。
+本示例仅展示核心功能代码，完整示例请参考工程<!--RP1-->[NDKSwiperSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKSwiperSample)<!--RP1End-->。
 
-<!-- @[indicator_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKSwiperSample/entry/src/main/cpp/NativeEntry.cpp) -->
+<!-- @[indicator_attribute](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKSwiperSample/entry/src/main/cpp/NativeEntry.cpp) -->
 
 ``` C++
-// 设置导航导航指示器属性
+// 设置导航指示器属性
 ArkUI_SwiperIndicator *swiperIndicatorStyle = OH_ArkUI_SwiperIndicator_Create(ARKUI_SWIPER_INDICATOR_TYPE_DOT);
 OH_ArkUI_SwiperIndicator_SetEndPosition(swiperIndicatorStyle, 0);
 OH_ArkUI_SwiperIndicator_SetSelectedColor(swiperIndicatorStyle, INDICATOR_COLOR_SELECTED);
@@ -90,16 +90,16 @@ OH_ArkUI_SwiperIndicator_Dispose(swiperIndicatorStyle);
 
 ## 监听事件
 
-本示例通过[registerNodeEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent)注册Swiper组件的对应支持的事件类型[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)，开发者可以通过[registerNodeEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeeventreceiver)注册的监听回调中，判断回调类型并解析对应的回调内容。涉及的回调如下：
+本示例通过[registerNodeEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent)注册Swiper组件的对应支持的事件类型[ArkUI_NodeEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)，开发者可以通过[registerNodeEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeeventreceiver)注册的监听回调中，判断回调类型并解析对应的回调内容。涉及的回调如下：
 
 | 枚举项 | 描述 |
 |---------|----------|
 | NODE_SWIPER_EVENT_ON_CHANGE  | 页面索引切换后显示的页面索引。 |
 | NODE_SWIPER_EVENT_ON_ANIMATION_START   | 页面切换动画开始时，当前显示的页面索引和动画结束时切换到的页面索引。 |
 
-本示例仅展示核心功能代码，完整示例请参考工程[NDKSwiperSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKSwiperSample)。
+本示例仅展示核心功能代码，完整示例请参考工程<!--RP1-->[NDKSwiperSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKSwiperSample)<!--RP1End-->。
 
-<!-- @[swiper_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKSwiperSample/entry/src/main/cpp/NativeEntry.cpp) -->
+<!-- @[swiper_event](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKSwiperSample/entry/src/main/cpp/NativeEntry.cpp) -->
 
 ``` C++
 // 注册翻页事件监听

@@ -1,8 +1,8 @@
 # Visual Effect
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,7 +10,9 @@ The visual effect attributes set filter effects (such as blur and pixel stretch)
 
 >  **NOTE**
 >
->  The initial APIs of this module are supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 
 ## visualEffect
 
@@ -116,9 +118,35 @@ Sets the visual effect of the compositing filter.
 | -------- | -------- |
 | T | Current component.|
 
+## materialFilter<sup>23+</sup>
+
+materialFilter(filter: Filter | undefined): T
+
+Sets the system material filter effect. The system material filter is rendered prior to [backgroundFilter](#backgroundfilter), so it occupies a layer beneath **backgroundFilter**.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+
+**Atomic service API:** This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                                        | Mandatory| Description                                                |
+| ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
+| filter | [Filter](#filter) &nbsp;\|&nbsp; undefined | Yes  | Visual effect of the system material filter. When this parameter is set to **undefined**, no system material filter is applied.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| T | Current component.|
+
 ## Filter
 
-type Filter = Filter
+type Filter = import('../api/@ohos.graphics.uiEffect').default.Filter
 
 Represents a filter object.
 
@@ -128,11 +156,11 @@ Represents a filter object.
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| [Filter](../../apis-arkgraphics2d/js-apis-uiEffect.md#filter) | Used to apply the specified visual effect to the target component.|
+| import('../api/@ohos.graphics.uiEffect').default.[Filter](../../apis-arkgraphics2d/js-apis-uiEffect.md#filter) | Used to apply the specified visual effect to the target component.|
 
 ## VisualEffect
 
-type VisualEffect = VisualEffect
+type VisualEffect = import('../api/@ohos.graphics.uiEffect').default.VisualEffect
 
 Represents a visual effect configuration object.
 
@@ -142,7 +170,7 @@ Represents a visual effect configuration object.
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| [VisualEffect](../../apis-arkgraphics2d/js-apis-uiEffect.md#visualeffect) | Used to apply the specified visual effect to the target component.|
+| import('../api/@ohos.graphics.uiEffect').default.[VisualEffect](../../apis-arkgraphics2d/js-apis-uiEffect.md#visualeffect) | Used to apply the specified visual effect to the target component.|
 
 ## Example
 

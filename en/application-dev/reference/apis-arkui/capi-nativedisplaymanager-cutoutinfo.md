@@ -12,7 +12,7 @@ typedef struct {...} NativeDisplayManager_CutoutInfo
 
 ## Overview
 
-The struct describes the unusable area of a display, including punch hole, notch, and curved area of a waterfall display.
+Describes the unusable area of a display, including a punch hole, a notch, and the curved area of a waterfall display.
 
 **Since**: 12
 
@@ -24,8 +24,8 @@ The struct describes the unusable area of a display, including punch hole, notch
 
 ### Member Variables
 
-| Struct| Description|
+| Name| Description|
 | -- | -- |
-| int32_t boundingRectsLength | Number of unusable areas (bounding rectangles) designed for punch holes and notches.|
-| [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md)* boundingRects | Unusable areas (bounding rectangles) designed for punch holes and notches.|
+| int32_t boundingRectsLength | Number of the unusable areas on a display, including a punch hole and a notch.|
+| [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md)* boundingRects | Pointer to the boundary rectangle array of the unusable areas on a display, including a punch hole and a notch.|
 | [NativeDisplayManager_WaterfallDisplayAreaRects](capi-nativedisplaymanager-waterfalldisplayarearects.md) waterfallDisplayAreaRects | Curved area on a waterfall display.|

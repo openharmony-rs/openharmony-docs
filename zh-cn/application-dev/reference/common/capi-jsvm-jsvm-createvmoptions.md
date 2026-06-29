@@ -14,6 +14,10 @@ typedef struct {...} JSVM_CreateVMOptions
 
 创建JavaScript虚拟机的选项。
 
+**使用场景：** 需要自定义JavaScript虚拟机内存配置的应用，需要使用快照功能加速虚拟机启动的场景，对虚拟机内存使用有特殊要求的嵌入式或资源受限环境。
+
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 11
 
 **相关模块：** [JSVM](capi-jsvm.md)

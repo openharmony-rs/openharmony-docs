@@ -189,7 +189,7 @@ struct Index {
 }
 ```
 
-![en-us_image_selecttitlebar_example01](figures/en-us_image_selecttitlebar_example01.png)
+![en-us_image_selecttitlebar_example01](figures/image-selecttitlebar-example01.png)
 
 ### Example 2: Implementing Screen Reader Announcement for the Custom Button on the Right Side
 This example customizes the screen reader announcement text by setting the **accessibilityText**, **accessibilityDescription**, and **accessibilityLevel** properties of the custom button on the right side of the title bar. This functionality is supported since API version 18.
@@ -317,7 +317,7 @@ struct Index {
   }
 }
 ```
-![en-us_image_selecttitlebar_example02](figures/en-us_image_selecttitlebar_example02.png)
+![en-us_image_selecttitlebar_example02](figures/image-selecttitlebar-example02.png)
 
 ### Example 3: Setting the Symbol Icon
 This example demonstrates how to use **symbolStyle** in **SelectTitleBarMenuItem** to set custom symbol icons. This functionality is supported since API version 18.
@@ -451,4 +451,4 @@ struct Index {
   }
 }
 ```
-![en-us_image_selecttitlebar_example03](figures/en-us_image_selecttitlebar_example03.png)
+![en-us_image_selecttitlebar_example03](figures/image-selecttitlebar-example03.png)

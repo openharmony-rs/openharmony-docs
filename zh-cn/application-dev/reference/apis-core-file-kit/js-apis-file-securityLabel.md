@@ -6,7 +6,7 @@
 <!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
-该模块提供文件数据安全等级的相关功能：向应用程序提供查询、设置文件数据安全等级的ArkTS接口。
+该模块提供文件数据安全等级的相关功能：向应用程序提供查询、设置文件数据安全等级的ArkTS接口。该功能可以帮助应用实现对不同安全等级文件的分级管理和访问控制，解决数据安全管控的需求，提升应用的数据安全合规性。
 
 > **说明：**
 >
@@ -47,11 +47,11 @@ type DataLevel = 's0' | 's1' | 's2' | 's3' | 's4'
 
 | 类型 | 说明 |
 | --- | ---------------- |
-| 's0' | 数据安全等级"S0" 。|
-| 's1' | 数据安全等级"S1" 。|
-| 's2' | 数据安全等级"S2" 。|
-| 's3' | 数据安全等级"S3" 。|
-| 's4' | 数据安全等级"S4" 。|
+| 's0' | 数据安全等级"S0"。|
+| 's1' | 数据安全等级"S1"。|
+| 's2' | 数据安全等级"S2"。|
+| 's3' | 数据安全等级"S3"。|
+| 's4' | 数据安全等级"S4"。|
 
 数据安全等级详细说明请见[数据安全标签](../../database/access-control-by-device-and-data-level.md#数据安全标签)。
 
@@ -60,7 +60,7 @@ type DataLevel = 's0' | 's1' | 's2' | 's3' | 's4'
 
 setSecurityLabel(path:string, type:DataLevel):Promise&lt;void&gt;
 
-设置文件或目录的数据安全等级。数据安全等级仅可由低向高或平级设置。使用Promise异步回调。
+设置文件或目录的数据安全等级，用于实现文件的分级管理和访问控制。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -68,14 +68,14 @@ setSecurityLabel(path:string, type:DataLevel):Promise&lt;void&gt;
 
 | 参数名    | 类型       | 必填 | 说明                                         |
 | --------- | ------    | ---- | -------------------------------------------- |
-| path      | string    | 是   | 文件路径。                                     |
-| type      | [DataLevel](#datalevel) | 是   | 数据安全等级，只支持"s0","s1","s2","s3","s4"。 |
+| path      | string    | 是   | 文件或目录的应用沙箱路径。                                     |
+| type      | [DataLevel](#datalevel) | 是   | 数据安全等级，只支持"s0","s1","s2","s3","s4"。<br>**注意**：数据安全等级仅可由低向高或同级设置。 |
 
 **返回值：**
 
   | 类型                | 说明             |
   | ------------------- | ---------------- |
-  | Promise&lt;void&gt; | Promise实例，用于异步获取结果。本调用将返回空值。|
+  | Promise&lt;void&gt; | Promise对象，无返回结果。|
 
 **错误码：**
 
@@ -98,9 +98,9 @@ setSecurityLabel(path:string, type:DataLevel):Promise&lt;void&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + '/test.txt';
   securityLabel.setSecurityLabel(filePath, "s0").then(() => {
-    console.info("setSecurityLabel successfully");
+    console.info("Succeeded in setting security label.");
   }).catch((err: BusinessError) => {
-    console.error("setSecurityLabel failed with error message: " + err.message + ", error code: " + err.code);
+    console.error("Failed to set security label. Code: " + err.code + ", message: " + err.message);
   });
   ```
 
@@ -108,7 +108,7 @@ setSecurityLabel(path:string, type:DataLevel):Promise&lt;void&gt;
 
 setSecurityLabel(path:string, type:DataLevel, callback: AsyncCallback&lt;void&gt;):void
 
-设置文件或目录的数据安全等级。数据安全等级仅可由低向高或平级设置。使用callback异步回调。
+设置文件或目录的数据安全等级，用于实现文件的分级管理和访问控制。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -116,9 +116,9 @@ setSecurityLabel(path:string, type:DataLevel, callback: AsyncCallback&lt;void&gt
 
 | 参数名    | 类型                      | 必填 | 说明                                         |
 | --------- | ------------------------- | ---- | -------------------------------------------- |
-| path      | string                    | 是   | 文件路径。                                     |
-| type      | [DataLevel](#datalevel)   | 是   | 数据安全等级，只支持"s0","s1","s2","s3","s4"。 |
-| callback  | AsyncCallback&lt;void&gt; | 是   | 设置数据安全等级之后的回调。                   |
+| path      | string                    | 是   | 文件或目录的应用沙箱路径。                                      |
+| type      | [DataLevel](#datalevel)   | 是   | 数据安全等级，只支持"s0","s1","s2","s3","s4"。<br>**注意**：数据安全等级仅可由低向高或同级设置。 |
+| callback  | AsyncCallback&lt;void&gt; | 是   | 回调函数。当设置数据安全等级成功，err为undefined，否则为错误对象。                   |
 
 **错误码：**
 
@@ -142,9 +142,9 @@ setSecurityLabel(path:string, type:DataLevel, callback: AsyncCallback&lt;void&gt
   let filePath = pathDir + '/test.txt';
   securityLabel.setSecurityLabel(filePath, "s0", (err: BusinessError) => {
     if (err) {
-      console.error("setSecurityLabel failed with error message: " + err.message + ", error code: " + err.code);
+      console.error("Failed to set security label. Code: " + err.code + ", message: " + err.message);
     } else {
-      console.info("setSecurityLabel successfully.");
+      console.info("Succeeded in setting security label.");
     }
   });
   ```
@@ -153,7 +153,7 @@ setSecurityLabel(path:string, type:DataLevel, callback: AsyncCallback&lt;void&gt
 
 setSecurityLabelSync(path:string, type:DataLevel):void
 
-以同步方法设置文件或目录的数据安全等级。数据安全等级仅可由低向高或平级设置。
+以同步方法设置文件或目录的数据安全等级，用于实现文件的分级管理和访问控制。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -161,8 +161,8 @@ setSecurityLabelSync(path:string, type:DataLevel):void
 
 | 参数名    | 类型   | 必填 | 说明                                         |
 | --------- | ------ | ---- | -------------------------------------------- |
-| path      | string | 是   | 文件路径。                                     |
-| type      | [DataLevel](#datalevel) | 是   | 数据安全等级，只支持"s0","s1","s2","s3","s4"。 |
+| path      | string | 是   | 文件或目录的应用沙箱路径。                                      |
+| type      | [DataLevel](#datalevel) | 是   | 数据安全等级，只支持"s0","s1","s2","s3","s4"。<br>**注意**：数据安全等级仅可由低向高或同级设置。 |
 
 **错误码：**
 
@@ -198,13 +198,13 @@ getSecurityLabel(path:string):Promise&lt;string&gt;
 
   | 参数名 | 类型   | 必填 | 说明     |
   | ------ | ------ | ---- | -------- |
-  | path   | string | 是   | 文件路径。 |
+  | path   | string | 是   | 文件或目录的应用沙箱路径。  |
 
 **返回值：**
 
   | 类型                  | 说明         |
   | --------------------- | ------------ |
-  | Promise&lt;string&gt; | 返回数据安全等级。 |
+  | Promise&lt;string&gt; | Promise对象，返回数据安全等级。 |
 
 **错误码：**
 
@@ -227,9 +227,9 @@ getSecurityLabel(path:string):Promise&lt;string&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + '/test.txt';
   securityLabel.getSecurityLabel(filePath).then((type: string) => {
-    console.info("getSecurityLabel successfully, Label: " + type);
+    console.info("Succeeded in getting security label, Label: " + type);
   }).catch((err: BusinessError) => {
-    console.error("getSecurityLabel failed with error message: " + err.message + ", error code: " + err.code);
+    console.error("Failed to get security label. Code: " + err.code + ", message: " + err.message);
   });
   ```
 
@@ -245,8 +245,8 @@ getSecurityLabel(path:string, callback:AsyncCallback&lt;string&gt;): void
 
   | 参数名   | 类型                        | 必填 | 说明                       |
   | -------- | --------------------------- | ---- | -------------------------- |
-  | path     | string                      | 是   | 文件路径。                   |
-  | callback | AsyncCallback&lt;string&gt; | 是   | 异步获取数据安全等级之后的回调。 |
+  | path     | string                      | 是   | 文件或目录的应用沙箱路径。                  |
+  | callback | AsyncCallback&lt;string&gt; | 是   | 回调函数，返回数据安全等级。 |
 
 **错误码：**
 
@@ -270,9 +270,9 @@ getSecurityLabel(path:string, callback:AsyncCallback&lt;string&gt;): void
   let filePath = pathDir + '/test.txt';
   securityLabel.getSecurityLabel(filePath, (err: BusinessError, type: string) => {
     if (err) {
-      console.error("getSecurityLabel failed with error message: " + err.message + ", error code: " + err.code);
+      console.error("Failed to get security label. Code: " + err.code + ", message: " + err.message);
     } else {
-      console.info("getSecurityLabel successfully, Label: " + type);
+      console.info("Succeeded in getting security label, Label: " + type);
     }
   });
   ```
@@ -289,7 +289,7 @@ getSecurityLabelSync(path:string):string
 
 | 参数名 | 类型   | 必填 | 说明     |
 | ------ | ------ | ---- | -------- |
-| path   | string | 是   | 文件路径。 |
+| path   | string | 是   | 文件或目录的应用沙箱路径。  |
 
 **返回值：**
 
@@ -317,5 +317,5 @@ getSecurityLabelSync(path:string):string
 ```ts
 let filePath = pathDir + '/test.txt';
 let type = securityLabel.getSecurityLabelSync(filePath);
-console.info("getSecurityLabel successfully, Label: " + type);
+console.info("Succeeded in getting security label, Label: " + type);
 ```

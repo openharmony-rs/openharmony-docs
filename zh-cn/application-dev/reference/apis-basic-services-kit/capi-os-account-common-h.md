@@ -3,7 +3,7 @@
 <!--Subsystem: Account-->
 <!--Owner: @steven-q-->
 <!--Designer: @JiDong-CS1-->
-<!--Tester: @zhaimengchao-->
+<!--Tester: @pan9f-->
 <!--Adviser: @zengyawen-->
 
 ## 概述
@@ -44,11 +44,11 @@ enum OsAccount_ErrCode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OS_ACCOUNT_ERR_OK = 0 | 成功。 |
-| OS_ACCOUNT_ERR_PERMISSION_DENIED = 201 |  没有权限。<br>**起始版本：** 26.0.0 |
+| OS_ACCOUNT_ERR_OK = 0 | 操作成功。 |
+| OS_ACCOUNT_ERR_PERMISSION_DENIED = 201 | 没有权限。<br>**起始版本：** 26.0.0 |
 | OS_ACCOUNT_ERR_INTERNAL_ERROR = 12300001 | 内部错误。 |
 | OS_ACCOUNT_ERR_INVALID_PARAMETER = 12300002 | 无效的参数。 |
-| OS_ACCOUNT_ERR_ACCOUNT_NOT_FOUND = 12300003 |  账号不存在。<br>**起始版本：** 26.0.0 |
-| OS_ACCOUNT_ERR_RESTRICTED_ACCOUNT = 12300008 |  受限账号。<br>**起始版本：** 26.0.0 |
+| OS_ACCOUNT_ERR_ACCOUNT_NOT_FOUND = 12300003 | 账号不存在。<br>**起始版本：** 26.0.0 |
+| OS_ACCOUNT_ERR_RESTRICTED_ACCOUNT = 12300008 | 受限账号。<br>**起始版本：** 26.0.0 |
 
 

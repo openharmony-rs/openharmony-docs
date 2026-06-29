@@ -35,18 +35,14 @@
    - [onAVMusicTemplateCreate](../../reference/apis-avsession-kit/js-apis-avMusicTemplate-sys.md#avmusictemplateonavmusictemplatecreate)：监听音频模板创建事件。
    - [onAVMusicTemplateDestroy](../../reference/apis-avsession-kit/js-apis-avMusicTemplate-sys.md#avmusictemplateonavmusictemplatedestroy)：监听音频模板销毁事件。
 
-   <!-- @[create_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateController/entry/src/main/ets/manager/ControllerManager.ets) -->
-   
    ``` TypeScript
    import { avMusicTemplate } from '@kit.AVSessionKit';
-   // ...
-   
+
    const TAG: string = 'ControllerManager';
-   
+
    export class ControllerManager {
      private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
      private currentBundleName: string | undefined = undefined;
-     // ...
      private templateCreateCallback: Callback<avMusicTemplate.AVMusicTemplateDescriptor> =
        (descriptor: avMusicTemplate.AVMusicTemplateDescriptor) => {
          if (this.isInvalid(descriptor)) {
@@ -73,8 +69,7 @@
          this.unregisterListener();
          this.destroyController();
        };
-     // ...
-   
+
      /**
       * 通过getAllAVMusicTemplateDescriptors创建模板。
       */
@@ -105,19 +100,19 @@
          console.error(TAG, `getAllAVMusicTemplateDescriptors failed, errCode: ${e?.code}`);
        }
      };
-   
+
      private isInvalid<T>(obj: T): boolean {
        return obj === undefined || obj === null;
      }
-   
+
      private isStringEmpty(str: string | undefined): boolean {
        return str === undefined || str === null || str.trim().length === 0;
      }
-   
+
      private isEmptyArray<T>(array: T[]): boolean {
        return this.isInvalid(array) || array.length <= 0;
      }
-   
+
      /**
       * 注册模板监听。
       */
@@ -125,16 +120,17 @@
        try {
          // 该方法需要权限ohos.permission.MANAGE_MEDIA_RESOURCES。
          avMusicTemplate.onAVMusicTemplateCreate(this.templateCreateCallback);
+
          // 该方法需要权限ohos.permission.MANAGE_MEDIA_RESOURCES。
          avMusicTemplate.onAVMusicTemplateDestroy(this.templateDestroyCallback);
        } catch (e) {
          console.error(TAG, `registerAVMusicTemplateListener: errCode: ${e?.code}`);
        }
      }
-   
+
      private createController(sessionId: string, bundleName: string) {
        if (this.currentBundleName === null || this.currentBundleName === undefined) {
-         console.warn(TAG, 'createController: sessionId is invalid');
+         console.warn(TAG, 'createController: currentBundleName is invalid');
          return;
        }
        if (sessionId === null || sessionId === undefined) {
@@ -156,13 +152,11 @@
        try {
          this.controller = avMusicTemplate.createAVMusicTemplateController(sessionId);
          console.info(TAG, `createController success, bundleName: ${this.currentBundleName}`);
-         // ...
        } catch (e) {
          console.error(TAG, `createController: errCode: ${e?.code}`);
        }
      }
-   
-     // ...
+
      /**
       * 注销监听。
       */
@@ -200,7 +194,7 @@
        // 注销通知媒体中心拉起指定三方应用界面的信息的监听。
        this.controller?.offExtensionAbilityChange();
      }
-   
+
      /**
       * 销毁控制器。
       */
@@ -210,7 +204,7 @@
        this.controller = undefined;
        this.currentBundleName = undefined;
      }
-   
+
      /**
       * 反注册模板监听。
       */
@@ -222,7 +216,6 @@
          console.error(TAG, `unregisterAVMusicTemplateListener: errCode: ${e?.code}`);
        }
      }
-     // ...
    }
    ```
 
@@ -230,18 +223,14 @@
 
    例如，实现音频模板系统主界面显示需要先调用接口[queryMainTabs](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplateController.md#querymaintabs)获取媒体应用主标签数据，再调用接口[queryMediaTabContent](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplateController.md#querymediatabcontent)获取媒体应用标签页内容。
 
-   <!-- @[query_home_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateController/entry/src/main/ets/manager/ControllerManager.ets) -->
-   
    ``` TypeScript
    import { avMusicTemplate } from '@kit.AVSessionKit';
-   // ...
-   
+
    const TAG: string = 'ControllerManager';
-   
+
    export class ControllerManager {
      private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
-     // ...
-   
+
      /**
       * 查询主标签。
       */
@@ -259,7 +248,7 @@
        }
        return tabs;
      }
-   
+
      /**
       * 模拟查询媒体标签页内容。
       *
@@ -279,7 +268,6 @@
          return undefined;
        }
      }
-     // ...
    }
    ```
 
@@ -287,18 +275,14 @@
 
    例如，搜播需要调用接口[playForSearch](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplateController.md#playforsearch)下发搜播指令给媒体应用（该接口支持音视频，示例仅以音频为例）。视频需将参数实体类SearchPlayInfo的成员变量更换为SearchPlayVideoInfo类型的videoInfo。
 
-   <!-- @[play_for_search](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateController/entry/src/main/ets/manager/ControllerManager.ets) -->
-   
    ``` TypeScript
    import { avMusicTemplate } from '@kit.AVSessionKit';
-   // ...
-   
+
    const TAG: string = 'ControllerManager';
-   
+
    export class ControllerManager {
      private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
-     // ...
-   
+
      /**
       * 模拟搜播。
       *
@@ -332,53 +316,42 @@
          return false;
        }
      };
-     // ...
    }
    ```
 
 4. 在不能实时获取数据的场景下（登录、下载等），音频模板系统需要注册监听，接受媒体应用主动同步过来的数据。监听接口详情请查看[AVMusicTemplateController](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplateController.md)。
 
-   例如，在登录导致用户信息变化的场景下，需要注册监听[onUserInfoChange](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplateController.md#onuserinfochange)。因为用户在音频模板系统界面扫码登录时，登录状态只有媒体应用能感知。
+   例如，在登录导致用户信息变化的场景下，需要注册监听[onUserInfoChange](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplateController.md#onuserinfochange)。因为用户在音频模板系统界面扫码登录时，登录状态仅媒体应用可感知。
 
-      <!-- @[register_user_info_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateController/entry/src/main/ets/manager/ControllerManager.ets) -->
-      
       ``` TypeScript
       import { avMusicTemplate } from '@kit.AVSessionKit';
-      // ...
-      
+
       const TAG: string = 'ControllerManager';
-      
+
       export class ControllerManager {
         private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
-        // ...
         private userInfoChangeCallback: Callback<avMusicTemplate.UserInfo> = (userInfo: avMusicTemplate.UserInfo) => {
           console.info(TAG, 'userInfoChangeCallback');
         };
-        // ...
       
         private registerListener() {
           // 注册用户信息改变的监听。
           this.controller?.onUserInfoChange(this.userInfoChangeCallback);
-          // ...
         }
-        // ...
       }
       ```
 
 5. 在音频模板系统应用退出时及时取消事件监听，并释放资源。注销音频模板接口详情请查看[@ohos.multimedia.avMusicTemplate(音频模板)(系统接口)](../../reference/apis-avsession-kit/js-apis-avMusicTemplate-sys.md)，注销事件监听接口详情请查看[AVMusicTemplateController](../../reference/apis-avsession-kit/arkts-apis-avMusicTemplate-AVMusicTemplateController.md)。
 
-   <!-- @[release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/TemplateController/entry/src/main/ets/manager/ControllerManager.ets) -->
-   
    ``` TypeScript
    import { avMusicTemplate } from '@kit.AVSessionKit';
-   // ...
-   
+
    const TAG: string = 'ControllerManager';
-   
+
    export class ControllerManager {
      private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
      private currentBundleName: string | undefined = undefined;
-     // ...
+
      /**
       * 注销监听。
       */
@@ -416,7 +389,7 @@
        // 注销通知媒体中心拉起指定三方应用界面的信息的监听。
        this.controller?.offExtensionAbilityChange();
      }
-   
+
      /**
       * 销毁控制器。
       */
@@ -426,7 +399,7 @@
        this.controller = undefined;
        this.currentBundleName = undefined;
      }
-   
+
      /**
       * 反注册模板监听。
       */
@@ -438,6 +411,5 @@
          console.error(TAG, `unregisterAVMusicTemplateListener: errCode: ${e?.code}`);
        }
      }
-     // ...
    }
    ```

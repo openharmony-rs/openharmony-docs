@@ -484,7 +484,7 @@ Obtains the type list of drag data types from a drag event.
 | -- | -- |
 | [ArkUI_DragEvent](capi-arkui-nativemodule-arkui-dragevent.md) *event | Pointer to the target **ArkUI_DragEvent** object.|
 | char *eventTypeArray[] | List of the drag data types. You need to create a string array first.|
-| int32_t length | Total length of the array, which cannot be less than the number obtained using **OH_ArkUI_DragEvent_GetDataTypesCount**.|
+| int32_t length | Total length of the array, which cannot be less than the number obtained using [OH_ArkUI_DragEvent_GetDataTypeCount](#oh_arkui_dragevent_getdatatypecount).|
 | int32_t maxStrLen | Maximum length of each data type string.|
 
 **Return value**

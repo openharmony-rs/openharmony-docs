@@ -108,13 +108,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Scroll bar display mode of the text area. The parameter type is [ArkUI_BarState](capi-native-type-h.md#arkui_barstate). The default value is **ARKUI_BAR_STATE_AUTO**.|
+| .value[0].i32 | Scroll bar display mode. The parameter type is [ArkUI_BarState](capi-native-type-h.md#arkui_barstate). The default value is **ARKUI_BAR_STATE_AUTO**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Scroll bar display mode of the text area. The parameter type is [ArkUI_BarState](capi-native-type-h.md#arkui_barstate).|
+| .value[0].i32 | Scroll bar display mode. The parameter type is [ArkUI_BarState](capi-native-type-h.md#arkui_barstate).|
 
 ## NODE_TEXT_EDITOR_ENABLE_DATA_DETECTOR
 
@@ -486,13 +486,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Whether to enable automatic spacing. The value **1** means to enable, and **0** means the opposite. The default value is **0**.|
+| .value[0].i32 | Whether to enable automatic spacing between Chinese and English characters. The value **1** indicates to enable, and **0** indicates the opposite. The default value is **0**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Whether automatic spacing is enabled. The value **1** indicates automatic spacing is enabled, and **0** indicates the opposite.|
+| .value[0].i32 | Whether automatic spacing is enabled between Chinese and English characters. The value **1** indicates automatic spacing is enabled, and **0** indicates the opposite.|
 
 ## NODE_TEXT_EDITOR_CUSTOM_KEYBOARD
 
@@ -592,7 +592,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_TEXT_EDITOR_COMPRESS_LEADING_PUNCTUATION = 22025
 ```
 
-Whether to enable punctuation compression for the beginning of a line in the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+Whether to enable leading punctuation compression in the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 24
@@ -602,13 +602,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Whether to enable punctuation compression. The value **1** means to enable, and **0** means the opposite. The default value is **0**.|
+| .value[0].i32 | Whether to enable leading punctuation compression. The value **1** means to enable, and **0** means the opposite. The default value is **0**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Whether punctuation compression is enabled. The value **1** indicates that punctuation compression is enabled, and **0** indicates the opposite.|
+| .value[0].i32 | Whether leading punctuation compression is enabled. The value **1** indicates that leading punctuation compression is enabled, and **0** indicates the opposite.|
 
 ## NODE_TEXT_EDITOR_SELECTED_DRAG_PREVIEW_STYLE
 
@@ -664,7 +664,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_TEXT_EDITOR_ORPHAN_CHAR_OPTIMIZATION = 22028
 ```
 
-Whether to enable orphan character optimization for text layout in the **TextEditor** component. When set, the orphan character (the first character in the last line of a paragraph) is processed more efficiently to improve the text layout. When enabled, it adjusts line break positions to avoid orphan characters as much as possible. The orphan character optimization feature takes effect only when the [ArkUI_WordBreak](capi-native-type-h.md#arkui_wordbreak) attribute is not set to **ARKUI_WORD_BREAK_BREAK_ALL**.<br>
+Whether to enable orphan character optimization during text layout in **TextEditor**. When set, the orphan character (in the last line of a paragraph) is processed more efficiently to improve the text layout. When enabled, it adjusts line break positions to avoid orphan characters as much as possible. The orphan character optimization feature takes effect only when the [ArkUI_WordBreak](capi-native-type-h.md#arkui_wordbreak) attribute is not set to **ARKUI_WORD_BREAK_BREAK_ALL**.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 26.0.0
@@ -674,7 +674,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Whether to enable orphan character optimization. The value **1** means to enable, and **0** means the opposite. The default value is **0**.|
+| .value[0].i32 | Whether to enable orphan character optimization. The value **1** indicates to enable, and **0** indicates the opposite. The default value is **0**.|
 
 **Returns**
 
@@ -704,4 +704,28 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Whether horizontal scrolling is enabled.|
+| .value[0].i32 | Whether to enable horizontal scrolling.|
+
+## NODE_TEXT_EDITOR_PUNCTUATION_OVERFLOW
+
+```c
+NODE_TEXT_EDITOR_PUNCTUATION_OVERFLOW = 22030
+```
+
+Whether to enable punctuation hanging at the end of a line for the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[0].i32 | Whether to enable punctuation hanging at the end of a line. The value **1** indicates to enable, and **0** indicates the opposite. The default value is **0**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[0].i32 | Whether punctuation hanging at the end of a line is enabled.|
