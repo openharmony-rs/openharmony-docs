@@ -715,8 +715,7 @@ export default class AVPlayerDemo {
 
 <!-- @[index_asr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/ets/pages/Index.ets) --> 
 
-```ts
-// Index.ets
+``` TypeScript
 import msliteNapi from 'libentry.so'
 import AVPlayerDemo from './player';
 import { transverter, TransverterType, TransverterLanguage } from "@nutpi/chinese_transverter"
@@ -738,7 +737,7 @@ struct Index {
           .fontSize(30)
           .fontWeight(FontWeight.Bold);
         Button() {
-          Text('播放示例音频')
+          Text($r('app.string.play'))
             .fontSize(20)
             .fontWeight(FontWeight.Medium)
         }
@@ -756,7 +755,7 @@ struct Index {
           myClass.avPlayerFdSrcDemo();
         })
         Button() {
-          Text('识别示例音频')
+          Text($r('app.string.asr'))
             .fontSize(20)
             .fontWeight(FontWeight.Medium)
         }
