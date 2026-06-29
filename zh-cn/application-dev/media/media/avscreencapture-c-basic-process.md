@@ -479,7 +479,7 @@ config.captureMode = OH_CAPTURE_HOME_SCREEN;
 
 应用需根据设备分辨率配置录屏的高度和宽度值并传入屏幕ID。
 
-若期望录制某个指定窗口，需要设置指定的窗口Id。该场景下，启动录屏后，系统会默认选中指定的窗口。
+若期望录制某个指定窗口，需要设置指定的窗口ID。该场景下，启动录屏后，系统会默认选中指定的窗口。
 
 <!-- @[SetPCSpecifiedWindowScreenConfigBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) --> 
 
@@ -510,7 +510,7 @@ config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(g_missionIds.
 
 <!--RP2--><!--RP2End-->
 
-若期望同时录制多个窗口，需要传入期望录制的窗口Id列表。
+若期望同时录制多个窗口，需要传入期望录制的窗口ID列表。
 
 <!-- @[SetPCSpecifiedWindowScreenConfigBuffer2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->    
 
@@ -595,9 +595,9 @@ OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 
 - 在PC/2in1设备上，根据不同录屏模式有不同弹窗行为。
 
-- **录制指定屏幕（OH_CAPTURE_SPECIFIED_SCREEN）**：启动录屏后会弹出选择共享内容弹窗，并默认选中displayId参数对应的屏幕。
-- **录制主屏幕（OH_CAPTURE_HOME_SCREEN）**：启动录屏后不会弹出选择共享内容弹窗，仅弹出隐私保护弹窗，displayId参数不生效，默认使用主屏ID。
-- **录制指定窗口（OH_CAPTURE_SPECIFIED_WINDOW）**：传入单个窗口ID时，弹出选择共享内容弹窗并默认选中指定窗口；传入多个窗口ID时，不弹出选择共享内容弹窗，仅弹出隐私保护弹窗。
+  - **录制指定屏幕（OH_CAPTURE_SPECIFIED_SCREEN）**：启动录屏后会弹出选择共享内容弹窗，并默认选中displayId参数对应的屏幕。
+  - **录制主屏幕（OH_CAPTURE_HOME_SCREEN）**：启动录屏后不会弹出选择共享内容弹窗，仅弹出隐私保护弹窗，displayId参数不生效，默认使用主屏ID。
+  - **录制指定窗口（OH_CAPTURE_SPECIFIED_WINDOW）**：传入单个窗口ID时，弹出选择共享内容弹窗并默认选中指定窗口；传入多个窗口ID时，不弹出选择共享内容弹窗，仅弹出隐私保护弹窗。
 
 - 在Phone/Tablet设备上，不同录屏模式下统一不弹出Picker，仅弹出隐私保护弹窗。
 
