@@ -141,30 +141,30 @@ ArkTS-Dyn示例：
 <!-- @[custom_dialog_control_modal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) --> 
 
 ``` TypeScript
-  modalOpt: promptAction.CustomDialogOptions = {
-    builder: () => {
-      this.myBuilder();
-    },
-    isModal: false,
-  } as promptAction.CustomDialogOptions;
-  // ···
-  build() {
-    NavDestination() {
-      Column() {
-        // ···
-        Button('openCustomDialog isModal:false')
-          .width('100%')
-          .margin({ top: 10 })
-          .onClick(() => {
-            this.getUIContext().getPromptAction().openCustomDialog(this.modalOpt)
-          })
+modalOpt: promptAction.CustomDialogOptions = {
+  builder: () => {
+    this.myBuilder();
+  },
+  isModal: false,
+} as promptAction.CustomDialogOptions;
+// ...
+build() {
+  NavDestination() {
+    Column() {
+      // ...
+      Button('openCustomDialog isModal:false')
+        .width('100%')
+        .margin({ top: 10 })
+        .onClick(() => {
+          this.getUIContext().getPromptAction().openCustomDialog(this.modalOpt);
+        })
 
-        // ···
-      }
-      .width('100%')
-      .height('100%')
+      // ...
     }
+    .width('100%')
+    .height('100%')
   }
+}
 ```
 
 ArkTS-Sta示例：
