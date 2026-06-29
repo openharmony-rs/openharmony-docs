@@ -32,30 +32,30 @@
 该示例代码以UIAbility为例介绍如何配置静态指定进程。在需要运行在独立进程的UIAbility的[module.json5配置文件](../quick-start/module-configuration-file.md)中，在[abilities标签](../quick-start/module-configuration-file.md#abilities标签)下对应的ability中添加process字段。process字段值以":"开头，表示应用私有进程。配置相同process字段值的多个ability将运行在同一进程中。以下示例中，EntryAbility未配置process字段，运行在默认进程中；EntryAbility1和EntryAbility2的process字段均配置为":processTag"，它们将运行在同一独立进程中，进程名为"应用包名:processTag"：
 
 <!-- @[static_isolation_process_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/StaticIsolationProcess/entry/src/main/module.json5) --> 
-    
-  ``` JSON5
-  {
-    "module": {
-  // ...
-      "abilities": [
-  // ...
-        {
-          "name": "EntryAbility1",
-          "srcEntry": "./ets/entryability1/EntryAbility1.ets",
-  // ...
-          "process": ":processTag"
-        },
-        {
-          "name": "EntryAbility2",
-          "srcEntry": "./ets/entryability2/EntryAbility2.ets",
-  // ...
-          "process": ":processTag"
-        }
-      ],
-  // ...
-    }
+
+``` JSON5
+{
+  "module": {
+// ...
+    "abilities": [
+// ...
+      {
+        "name": "EntryAbility1",
+        "srcEntry": "./ets/entryability1/EntryAbility1.ets",
+// ...
+        "process": ":processTag"
+      },
+      {
+        "name": "EntryAbility2",
+        "srcEntry": "./ets/entryability2/EntryAbility2.ets",
+// ...
+        "process": ":processTag"
+      }
+    ],
+// ...
   }
-  ```
+}
+```
 
 ## 动态指定进程
 
