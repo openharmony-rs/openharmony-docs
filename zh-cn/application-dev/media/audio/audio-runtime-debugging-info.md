@@ -182,7 +182,7 @@ audioApp {
 
 > **说明：**
 >
-> 详细字段信息及其说明见下方输出示例。
+> 详细字段信息见下方输出示例。
 
 接口说明请参考[printRendererInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printrendererinfo)。
 
@@ -279,7 +279,7 @@ audioRenderer {
 
 > **说明：**
 >
-> 详细字段信息及其说明见下方输出示例。
+> 详细字段信息见下方输出示例。
 
 接口说明请参考[printCapturerInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printcapturerinfo)。
 
@@ -362,7 +362,7 @@ audioCapturer {
 
 > **说明：**
 >
-> 详细字段信息及其说明见下方输出示例。
+> 详细字段信息见下方输出示例。
 > 调用该方法前，需要先创建AudioLoopback实例。耳返的创建及使用方式可参考[实现低时延耳返](audio-ear-monitor-loopback.md)。耳返处于可用状态（AVAILABLE_IDLE或AVAILABLE_RUNNING）时，可查询到完整的快照信息。
 
 接口说明请参考[printLoopbackInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printloopbackinfo)。
@@ -430,7 +430,7 @@ audioLoopback {
 
 > **说明：**
 >
-> 详细字段信息及其说明见下方输出示例。
+> 详细字段信息见下方输出示例。
 > 调用该方法前，需要先创建并激活音频会话。音频会话的创建及使用方式可参考[使用OHAudio开发音频会话功能(C/C++)](using-ohaudio-for-session.md)或[音频会话管理(ArkTS)](audio-session-management.md)。
 
 接口说明请参考[printSessionInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printsessioninfo)。
@@ -504,7 +504,7 @@ audioSession {
 
 > **说明：**
 >
-> 详细字段信息及其说明见下方输出示例。
+> 详细字段信息见下方输出示例。
 
 接口说明请参考[OH_AudioSuite_PrintInfo](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuite_printinfo)。
 
