@@ -27,7 +27,7 @@ ArkUI框架对以下组件实现了默认的拖拽能力，支持对数据的拖
 
 > **说明：**
 >
-> Text组件需配合[copyOption](ts-basic-components-text.md#copyoption9)一起使用，设置copyOptions为CopyOptions.InApp或者CopyOptions.LocalDevice。
+> Text组件需配合[copyOption](ts-basic-components-text.md#copyoption9)一起使用，设置copyOption为CopyOptions.InApp或者CopyOptions.LocalDevice。
 
 ## allowDrop
 
