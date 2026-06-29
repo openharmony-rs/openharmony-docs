@@ -6,7 +6,43 @@
 <!--Tester: @hanjiawei-->
 <!--Adviser: @hu-zhiqiong-->
 
-DistributedExtensionAbility（分布式扩展能力）模块提供分布式相关扩展能力，提供分布式创建、销毁、连接的生命周期回调。该模块适用于多设备协同场景下的应用，通过统一的生命周期管理接口，降低了多设备应用的开发难度。
+DistributedExtensionAbility（分布式扩展能力）模块提供多设备协同场景下的扩展能力基类，为应用提供分布式协同所需的统一生命周期管理机制。开发者通过继承该类并实现相关生命周期回调，可使应用具备被跨设备拉起、接受/拒绝协同请求、连接远端ServiceExtensionAbility（服务扩展能力）等协同能力，有效降低多设备协同应用的开发难度。
+
+该模块作为应用协同架构的核心扩展基类，主要包含以下能力：
+
+- **生命周期管理**：提供onCreate（创建）、onCollaborate（协同）、onDestroy（销毁）三个生命周期回调，覆盖协同Extension从创建到销毁的完整生命周期，使应用能够在不同阶段执行初始化、协同决策和资源清理等业务逻辑。
+
+- **协同决策**：通过onCollaborate回调，应用在被跨设备拉起过程中，可根据调用方传输的协同参数自主决定是否接受协同请求（ACCEPT/REJECT），从而灵活控制协同流程是否继续。
+
+- **上下文环境**：提供[DistributedExtensionContext](js-apis-distributedExtensionContext.md)上下文环境，支持连接和断开远端ServiceExtensionAbility，实现跨设备的服务调用与数据互通。
+
+- **多端协同集成**：与[abilityConnectionManager](js-apis-distributed-abilityConnectionManager.md)（应用多端协同管理）模块配合使用，可构建完整的跨设备协同会话、连接、数据传输方案。
+
+协同Extension的核心类结构及其与上下文、自定义子类的关系如下图所示。
+
+```mermaid
+flowchart TB
+    A["ExtensionContext<br/>（扩展上下文基类）"]
+    B["DistributedExtensionContext<br/>（协同Extension上下文）"]
+    C["DistributedExtensionAbility<br/>（协同扩展能力基类）"]
+    D["开发者自定义子类（CustomExtension）"]
+
+    A -- "继承" --> B
+    B -. "持有 context" .-> C
+    C -- "继承" --> D
+
+    B2["• connectServiceExtensionAbility()<br/>• disconnectServiceExtensionAbility()"]
+    C2["• context: DistributedExtensionContext<br/>• onCreate(want)<br/>• onCollaborate(wantParam)<br/>• onDestroy()"]
+
+    B -.- B2
+    C -.- C2
+```
+
+如上图所示：
+- **继承关系**：`DistributedExtensionContext` 继承自 `ExtensionContext`（扩展上下文）；开发者自定义子类继承自 `DistributedExtensionAbility`。
+- **组合关系**：`DistributedExtensionAbility` 持有 `context` 属性，类型为 `DistributedExtensionContext`，提供连接/断开远端 `ServiceExtensionAbility` 等协同能力。
+
+开发者通过继承 `DistributedExtensionAbility` 并实现 `onCreate`、`onCollaborate`、`onDestroy` 生命周期回调，即可获得完整的分布式协同能力。
 
 > **说明：**
 >
