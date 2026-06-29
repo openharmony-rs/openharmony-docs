@@ -13,8 +13,9 @@ OpenHarmony提供了两种驱动适配方式：使用外设驱动子系统、使
 
   
 ```
-base/iot_hardware/peripheral/
+base/iothardware/peripheral/
 ├── BUILD.gn
+├── bundle.json
 └── interfaces
     └── kits
         ├── iot_errno.h
@@ -28,24 +29,23 @@ base/iot_hardware/peripheral/
         └── reset.h
 ```
 
-其中“base/iot_hardware/peripheral/BUILD.gn”文件如下：
+其中“base/iothardware/peripheral/BUILD.gn”文件如下：
 
   
 ```
-import("//build/lite/config/subsystem/lite_subsystem.gni")
 import("//build/lite/ndk/ndk.gni")
        
-lite_subsystem("iothardware") {
-  subsystem_components = [
-    "$ohos_vendor_adapter_dir/hals/iot_hardware/wifiiot_lite:hal_iothardware",
+ group("iothardware") {
+ 	   deps = [
+ 	     "$ohos_board_adapter_dir/hals/iot_hardware/wifiiot_lite:hal_iothardware", 
   ]
 }
 if (ohos_kernel_type == "liteos_m") {
   ndk_lib("iothardware_ndk") {
     deps = [
-      "$ohos_vendor_adapter_dir/hals/iot_hardware/wifiiot_lite:hal_iothardware", #依赖厂商的适配。
+      "$ohos_board_adapter_dir/hals/iot_hardware/wifiiot_lite:hal_iothardware", #依赖厂商的适配。
     ]
-    head_files = [ "//base/iot_hardware/peripheral/interfaces/kits" ]
+    head_files = [ "//base/iothardware/peripheral/interfaces/inner_api" ]
   }
 }
 ```
@@ -63,9 +63,9 @@ if (ohos_kernel_type == "liteos_m") {
      
    ```
    { 
-       subsystem": "iot_hardware", 
+       subsystem": "iothardware", 
        components": [ 
-           { "component": "iot_controller", "features":[] }
+           { "component": "peripheral", "features":[] }
        ] 
    },
    ```
