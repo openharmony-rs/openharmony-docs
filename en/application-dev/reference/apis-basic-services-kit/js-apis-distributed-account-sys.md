@@ -4,10 +4,10 @@
 <!--Subsystem: Account-->
 <!--Owner: @steven-q-->
 <!--Designer: @JiDong-CS1-->
-<!--Tester: @zhaimengchao-->
+<!--Tester: @pan9f-->
 <!--Adviser: @zengyawen-->
 
-The **distributedAccount** module provides APIs for managing distributed accounts, including querying and updating account login states.
+The **distributedAccount** module provides APIs for managing distributed accounts, including querying and updating account login states. This module is applicable to multi-device collaboration, improving the consistency and user experience of cross-device account management. Typical application scenarios include multi-device collaboration, distributed data synchronization, and cross-device capability calling.
 
 > **NOTE**
 >
@@ -28,7 +28,7 @@ Provides APIs for querying and updating the login state of a distributed account
 
 getOsAccountDistributedInfoByLocalId(localId: number, callback: AsyncCallback&lt;DistributedInfo&gt;): void
 
-Obtains distributed information about a system account. This API uses an asynchronous callback to return the result.
+Obtains the distributed account information about an OS account. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -40,8 +40,8 @@ Obtains distributed information about a system account. This API uses an asynchr
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | localId | number | Yes| ID of the target system account.|
-  | callback | AsyncCallback&lt;[DistributedInfo](js-apis-distributed-account.md#distributedinfo)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the distributed account information obtained. Otherwise, **err** is an error object.|
+  | localId | number | Yes| ID of the target OS account.|
+  | callback | AsyncCallback&lt;[DistributedInfo](js-apis-distributed-account.md#distributedinfo)&gt; | Yes| Callback used to return the result. If the the distributed account information is obtained successfully, **err** is **undefined** and **data** is the distributed account information obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -59,7 +59,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
 try {
-  accountAbility.getOsAccountDistributedInfoByLocalId(100,
+  let localId: number = 100; // This is an example. Replace it with an actual OS account ID.
+  accountAbility.getOsAccountDistributedInfoByLocalId(localId,
     (err: BusinessError, data: distributedAccount.DistributedInfo) => {
       if (err) {
         console.error(`getOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
@@ -77,7 +78,7 @@ try {
 
 getOsAccountDistributedInfoByLocalId(localId: number): Promise&lt;DistributedInfo&gt;
 
-Obtains distributed information about a system account. This API uses a promise to return the result.
+Obtains the distributed account information about an OS account. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -89,7 +90,7 @@ Obtains distributed information about a system account. This API uses a promise 
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | localId | number | Yes| ID of the target system account.|
+  | localId | number | Yes| ID of the target OS account.|
 
 **Return value**
 
@@ -113,7 +114,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
 try {
-  accountAbility.getOsAccountDistributedInfoByLocalId(100).then((
+  let localId: number = 100; // This is an example. Replace it with an actual OS account ID.
+  accountAbility.getOsAccountDistributedInfoByLocalId(localId).then((
     data: distributedAccount.DistributedInfo) => {
     console.info('distributed information: ' + JSON.stringify(data));
   }).catch((err: BusinessError) => {
@@ -129,7 +131,7 @@ try {
 
 setOsAccountDistributedInfoByLocalId(localId: number, distributedInfo: DistributedInfo, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the distributed information for a system account. This API uses an asynchronous callback to return the result.
+Sets the distributed account information about an OS account. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -141,9 +143,9 @@ Sets the distributed information for a system account. This API uses an asynchro
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | localId | number | Yes| ID of the target system account.|
+  | localId | number | Yes| ID of the target OS account.|
   | distributedInfo | [DistributedInfo](js-apis-distributed-account.md#distributedinfo) | Yes| Distributed account information to set.|
-  | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the distributed information is set successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
+  | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the distributed account information is set successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -166,7 +168,8 @@ const accountAbility: distributedAccount.DistributedAccountAbility = distributed
 let accountInfo: distributedAccount.DistributedInfo =
   { id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN' };
 try {
-  accountAbility.setOsAccountDistributedInfoByLocalId(100, accountInfo, (err: BusinessError) => {
+  let localId: number = 100; // This is an example. Replace it with an actual OS account ID.
+  accountAbility.setOsAccountDistributedInfoByLocalId(localId, accountInfo, (err: BusinessError) => {
     if (err) {
       console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
     } else {
@@ -183,7 +186,7 @@ try {
 
 setOsAccountDistributedInfoByLocalId(localId: number, distributedInfo: DistributedInfo): Promise&lt;void&gt;
 
-Sets the distributed information for a system account. This API uses a promise to return the result.
+Sets the distributed account information about an OS account. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -195,7 +198,7 @@ Sets the distributed information for a system account. This API uses a promise t
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | localId | number | Yes| ID of the target system account.|
+  | localId | number | Yes| ID of the target OS account.|
   | distributedInfo | [DistributedInfo](js-apis-distributed-account.md#distributedinfo) | Yes| Distributed account information to set.|
 
 **Return value**
@@ -225,7 +228,8 @@ const accountAbility: distributedAccount.DistributedAccountAbility = distributed
 let accountInfo: distributedAccount.DistributedInfo =
   { id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN' };
 try {
-  accountAbility.setOsAccountDistributedInfoByLocalId(100, accountInfo).then(() => {
+  let localId: number = 100; // This is an example. Replace it with an actual OS account ID.
+  accountAbility.setOsAccountDistributedInfoByLocalId(localId, accountInfo).then(() => {
     console.info('setOsAccountDistributedInfoByLocalId successfully');
   }).catch((err: BusinessError) => {
     console.error(`setOsAccountDistributedInfoByLocalId exception: code is ${err.code}, message is ${err.message}`);
