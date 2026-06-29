@@ -503,7 +503,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
      <!-- @[FormEditDemo_EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
      
      ``` TypeScript
-     // entry/src/main/ets/entryformability/WidgetCard.ets
+     // entry/src/main/ets/entryformability/EntryFormAbility.ets
      import { formBindingData, FormExtensionAbility, formInfo } from '@kit.FormKit';
      import { Want } from '@kit.AbilityKit';
      import { PreferencesUtil } from '../common/PreferencesUtil';
