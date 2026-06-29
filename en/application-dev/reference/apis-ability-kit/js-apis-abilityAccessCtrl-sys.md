@@ -67,7 +67,7 @@ This module is mainly used in the following scenarios:
 
 - **[AtManager](#atmanager):** Program access control management class, providing capabilities such as cross-app permission granting, revocation, querying, listening, and CLI permission management.
 
-![](figures/accessAccessCtrl-sys.png)
+![](figures/abilityAccessCtrl-sys.png)
 
 ### API Combination Usage Description
 

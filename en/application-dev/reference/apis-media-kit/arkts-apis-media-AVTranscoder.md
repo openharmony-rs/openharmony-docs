@@ -33,6 +33,75 @@ import { media } from '@kit.MediaKit';
 | fdSrc<sup>12+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       |  No | No  | Source media file descriptor, which specifies the data source.<br> **Example:**<br>There is a media file that stores continuous assets, the address offset is 0, and the byte length is 100. Its file descriptor is **AVFileDescriptor { fd = resourceHandle; offset = 0; length = 100; }**.<br>**NOTE**<br> - After the resource handle (FD) is transferred to an AVTranscoder instance, do not use the resource handle to perform other read and write operations, including but not limited to transferring this handle to other AVPlayer, AVMetadataExtractor, AVImageGenerator, or AVTranscoder instance.<br> - Competition occurs when multiple AVTranscoders use the same resource handle to read and write files at the same time, resulting in errors in obtaining data.|
 | fdDst<sup>12+</sup>                               | number                 |  No | No  | Destination media file descriptor, which specifies the data source. After creating an AVTranscoder instance, you must set both **fdSrc** and **fdDst**.<br>**NOTE**<br> - After the resource handle (FD) is transferred to an AVTranscoder instance, do not use the resource handle to perform other read and write operations, including but not limited to transferring this handle to other AVPlayer, AVMetadataExtractor, AVImageGenerator, or AVTranscoder instance.<br> - Competition occurs when multiple AVTranscoders use the same resource handle to read and write files at the same time, resulting in errors in obtaining data.|
 
+## addWatermark
+
+addWatermark(watermark: image.PixelMap, configs: WatermarkConfiguration): Promise\<number>
+
+Adds a watermark to the video transcoding. This API uses a promise to return the result.
+ 
+> **NOTE**
+>
+> - A maximum of five watermarks can be added to an application.
+> - This API can be called only before the prepared state.
+ 
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVTranscoder
+
+**Parameters**
+
+| Name   | Type                                   | Mandatory| Description                      |
+| --------- | --------------------------------------- | ---- | -------------------------- |
+| watermark | [image.PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md) | Yes  | Watermark image.                |
+| configs   | [WatermarkConfiguration](arkts-apis-media-i.md#watermarkconfiguration) | Yes  | Watermark configuration parameters.            |
+
+**Return value**
+
+| Type       | Description                  |
+| ----------- | ---------------------- |
+| Promise\<number\> | Promise used to return the ID of the added watermark.|
+
+**Error codes**
+
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
+
+| ID| Error Message                                  |
+| -------- | ------------------------------------------ |
+| 5400102  | Operation not allowed. Return by promise. |
+| 5400103  | IO error. Return by promise.              |
+| 5400105  | Service died. Return by promise.          |
+| 5400108  | The parameter check failed, parameter value out of range. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+import { image } from '@kit.ImageKit';
+
+async function test() {
+  // Create an AVTranscoder instance.
+  let avTranscoder = await media.createAVTranscoder();
+  
+  // Set watermark parameters.
+  let watermarkConfig: media.WatermarkConfiguration = {
+      // Set watermark parameters as required. The unit is pixel.
+      top : 40,
+      left : 40,
+      width: 200,
+      height: 300,
+  };
+
+  avTranscoder.addWatermark(watermarkPixelMap, watermarkConfig).then((watermarkId: number) => {
+    console.info('addWatermark success, watermarkId: ' + watermarkId);
+  }).catch((err: BusinessError) => {
+    console.error('addWatermark failed and catch error is ' + err.message);
+  });
+}
+```
+
 ## prepare<sup>12+</sup>
 
 prepare(config: AVTranscoderConfig): Promise\<void>

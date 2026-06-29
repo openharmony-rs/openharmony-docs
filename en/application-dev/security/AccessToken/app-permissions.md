@@ -13,7 +13,7 @@ The system provides the following permissions:
 
 - [Open system_grant permissions](permissions-for-all.md)
   
-   The permissions are available to all applications and granted by the user. The permissions requested by an application are automatically granted when the application is installed.
+   The permissions are available to all applications. The permissions requested by an application are automatically granted when the application is installed.
 
 - [Open user_grant permissions](permissions-for-all-user.md)
 

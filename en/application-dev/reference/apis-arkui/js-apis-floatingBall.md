@@ -592,8 +592,8 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 |------------|------------|
 | 1300019 | Wrong parameters for operating the floating ball. Possible cause: Callback is null or not callable. |
 | 1300022 | Repeated floating ball operation. |
-| 1300023 | Floating ball internal error. Possible cause: The floating ball controller is null. |
-| 1300024 | The floating ball window state is abnormal. Possible cause: The floating ball window has not been created or has been destroyed. |
+| 1300023 | Floating ball internal error. Possible cause: System error, such as a null pointer, insufficient memory. |
+| 1300024 | The floating ball window state is abnormal. Possible cause: The floating ball controller has been destroyed. |
 
 **Example**
 
@@ -633,8 +633,8 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 | ID| Error Message|
 |------------|------------|
 | 1300019 | Wrong parameters for operating the floating ball. Possible cause: Callback is null or not callable. |
-| 1300023 | Floating ball internal error. Possible cause: The floating ball controller is null. |
-| 1300024 | The floating ball window state is abnormal. Possible cause: The floating ball window has not been created or has been destroyed. |
+| 1300023 | Floating ball internal error. Possible cause: System error, such as a null pointer, insufficient memory. |
+| 1300024 | The floating ball window state is abnormal. Possible cause: The floating ball controller has been destroyed. |
 
 **Example**
 

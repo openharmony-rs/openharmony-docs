@@ -48,7 +48,7 @@ libohinputmethod.so
    <!-- @[input_case_input_attachOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
-   // 创建InputMethod_AttachOptions实例，选项showKeyboard用于指定此次绑定成功后是否显示键盘，此处以目标显示键盘为例
+   // 创建InputMethod_AttachOptions实例，选项showKeyboard用于指定此次绑定成功后是否显示键盘，设置为true 表示绑定成功后自动显示键盘；false 表示不自动显示
    bool showKeyboard = true;
    attachOptions = OH_AttachOptions_Create(showKeyboard);
    ```
@@ -366,7 +366,7 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
        // 将实现好的响应处理函数设置到InputMethod_TextEditorProxy中
        ConstructTextEditorProxy(textEditorProxy);
    
-       // 创建InputMethod_AttachOptions实例，选项showKeyboard用于指定此次绑定成功后是否显示键盘，此处以目标显示键盘为例
+       // 创建InputMethod_AttachOptions实例，选项showKeyboard用于指定此次绑定成功后是否显示键盘，设置为true 表示绑定成功后自动显示键盘；false 表示不自动显示
        bool showKeyboard = true;
        attachOptions = OH_AttachOptions_Create(showKeyboard);
        if (attachOptions == nullptr) {

@@ -154,7 +154,7 @@ int32_t (*setContentAlignment)(ArkUI_NativeDialogHandle handle, int32_t alignmen
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
-|  int32_t alignment | 对齐方式，参数类型[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)。 |
+|  int32_t alignment | 对齐方式，参数类型[ArkUI_Alignment](capi-layout-h.md#arkui_alignment)。 |
 |  float offsetX | 弹窗的水平偏移量，浮点型，单位：vp。 |
 |  float offsetY | 弹窗的垂直偏移量，浮点型，单位：vp。 |
 
@@ -172,7 +172,7 @@ int32_t (*resetContentAlignment)(ArkUI_NativeDialogHandle handle)
 
 **描述：**
 
-重置setContentAlignment方法设置的属性，使用系统默认的对齐方式，默认值：ARKUI_ALIGNMENT_TOP_START，参考[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)。
+重置setContentAlignment方法设置的属性，使用系统默认的对齐方式，默认值：ARKUI_ALIGNMENT_TOP_START，参考[ArkUI_Alignment](capi-layout-h.md#arkui_alignment)。
 
 > **说明：** 
 >

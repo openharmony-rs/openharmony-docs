@@ -1,8 +1,8 @@
 # ArkUI_NodeAttributeType (Scrollable Container Component Attribute)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @shengu_lancer; @yylong; @guozejun-->
-<!--Designer: @yylong; @zcdqs-->
+<!--Owner: @shengu_lancer; @yylong; @yangcan18-->
+<!--Designer: @yylong;@guozejun-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -719,6 +719,29 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[0].i32 | Whether the scrollbar automatically adjusts its margin. The value **0** indicates that the scrollbar automatically adjusts its margin, and **1** indicates the opposite.|
 
 
+## NODE_SCROLL_BAR_HEIGHT
+
+```c
+NODE_SCROLL_BAR_HEIGHT = 1002029
+```
+
+Scrollbar height. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[0].f32 | Scrollbar height, in vp. Default value: auto-adjusted height of the scroll component.<br>Value range: The value must be greater than or equal to 0. If the value is less than 0, the default value is used. For kids' smartwatches, the default value is restored to 37 vp. The value **0** means not to show the scrollbar.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[0].f32 | Scrollbar height, in vp.|
+
 ## NODE_LIST_DIRECTION
 
 ```c
@@ -859,7 +882,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Index of the item to be scrolled to in the container.|
+| .value[0].i32 | Index of the item to be scrolled to in the container. If the value is **-1**, the last item in the container is scrolled to.|
 | .value[1]?.i32 | Whether to enable the smooth animation for scrolling to the item with the specified index. The value **1** means to enable the smooth animation, and **0** means the opposite. The default value is **0**.|
 | .value[2]?.i32 | How the item to scroll to is aligned with the container. The parameter type is [ArkUI_ScrollAlignment](capi-native-type-h.md#arkui_scrollalignment). The default value is [ARKUI_SCROLL_ALIGNMENT_START](capi-native-type-h.md#arkui_scrollalignment).|
 | .value[3]?.f32 | Extra offset, in vp. The default value is **0**. This parameter is supported since API version 15.|
@@ -2369,3 +2392,410 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .value[0].i32 | Selection status of **GridItem**. **0**: not selected. **1**: selected.|
+
+## NODE_ARC_LIST_DIGITAL_CROWN_SENSITIVITY
+
+```c
+NODE_ARC_LIST_DIGITAL_CROWN_SENSITIVITY = MAX_NODE_SCOPE_NUM * ARKUI_NODE_ARC_LIST = 1019000
+```
+
+Crown sensitivity of the **ArcList** component, which can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[0].i32 | Crown sensitivity type. The parameter type is [ArkUI_CrownSensitivity](capi-native-type-h.md#arkui_crownsensitivity). The default value is [ARKUI_CROWN_SENSITIVITY_MEDIUM](capi-native-type-h.md#arkui_crownsensitivity).|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[0].i32 | Crown sensitivity type. The parameter type is [ArkUI_CrownSensitivity](capi-native-type-h.md#arkui_crownsensitivity).|
+
+## NODE_ARC_LIST_SPACE
+
+```c
+NODE_ARC_LIST_SPACE = 1019001
+```
+
+Spacing between the **ArcList** child components in the main axis direction. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[0].f32 | Spacing between the child components in the main axis direction, in vp. The default value is **0**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[0].f32 | Spacing between list items along the main axis.|
+
+## NODE_ARC_LIST_CACHED_COUNT
+
+```c
+NODE_ARC_LIST_CACHED_COUNT = 1019002
+```
+
+Number of cached items of the **ArcList** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[0].i32 | Number of cached items.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[0].i32 | Number of cached items.|
+
+## NODE_ARC_LIST_SCROLL_TO_INDEX
+
+```c
+NODE_ARC_LIST_SCROLL_TO_INDEX = 1019003
+```
+
+Scrolls to the list item corresponding to a specified index value. When the animation is enabled, all passed list items are loaded and counted in layout calculation. This may result in performance issues if a large number of list items are involved.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute is as follows.<br>
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[0].i32 | Index of the item to be scrolled to in the container. If the value is **-1**, the last item in the container is scrolled to.|
+| .value[1]?.i32 | Whether there is an animation effect when the list item corresponding to the specified index value is scrolled to. The value **1** indicates there is an animation effect, and **0** indicates the opposite. The default value is **0**.|
+| .value[2]?.i32 | How the list item to scroll to is aligned with the container. The parameter type is [ArkUI_ScrollAlignment](capi-native-type-h.md#arkui_scrollalignment). The default value is [ARKUI_SCROLL_ALIGNMENT_START](capi-native-type-h.md#arkui_scrollalignment).|
+| .value[3]?.f32 | Extra offset, in vp. The default value is **0**.|
+
+## NODE_ARC_LIST_CHAIN_ANIMATION
+
+```c
+NODE_ARC_LIST_CHAIN_ANIMATION = 1019004
+```
+
+Whether to enable the chain animation effect for the **ArcList** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute is as follows.<br>
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[0].i32 | Whether to enable the chain animation effect. The value **1** means to enable, and **0** means the opposite. The default value is **0**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[0].i32 | Whether the chain animation effect is enabled.|
+
+## NODE_ARC_LIST_CHILDREN_MAIN_SIZE
+
+```c
+NODE_ARC_LIST_CHILDREN_MAIN_SIZE = 1019005
+```
+
+Default main axis size of the **ArcList** child component. The attribute can be set and reset through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute is as follows.<br>
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .object | The parameter type is [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md).|
+
+## NODE_ARC_LIST_SET_HEADER
+
+```c
+NODE_ARC_LIST_SET_HEADER = 1019006
+```
+
+Header component of **ArcList**. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .object | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) object used as the header component of **ArcList**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .object | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) object used as the header component of **ArcList**.|
+
+
+## NODE_ARC_LIST_SCROLL_BAR
+
+```c
+NODE_ARC_LIST_SCROLL_BAR = 1019007
+```
+
+Scroll bar display mode of the **ArcList** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[0].i32 | Scroll bar display mode. The parameter type is [ArkUI_ScrollBarDisplayMode](capi-native-type-h.md#arkui_scrollbardisplaymode). The default value is [ARKUI_SCROLL_BAR_DISPLAY_MODE_AUTO](capi-native-type-h.md#arkui_scrollbardisplaymode).|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[0].i32 | Scrollbar display mode. The parameter type is [ArkUI_ScrollBarDisplayMode](capi-native-type-h.md#arkui_scrollbardisplaymode).|
+
+## NODE_ARC_LIST_SCROLL_BAR_COLOR
+
+```c
+NODE_ARC_LIST_SCROLL_BAR_COLOR = 1019008
+```
+
+Scroll bar color of the **ArcList** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .data[0].u32 | Color of the scrollbar, in 0xARGB format. The default value is **0x66182431**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .data[0].u32 | Color of the scrollbar, in 0xARGB format.|
+
+
+## NODE_ARC_LIST_SCROLL_BAR_WIDTH
+
+```c
+NODE_ARC_LIST_SCROLL_BAR_WIDTH = 1019009
+```
+
+Scroll bar width of the **ArcList** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[0].f32 | Width of the scrollbar, in vp. The default value is **4**.<br>If this parameter is set to a value less than or equal to 0, the default value is used. The value **0** means not to show the scrollbar.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[0].f32 | Width of the scrollbar, in vp.|
+
+## NODE_ARC_LIST_ENABLE_SCROLL_INTERACTION
+
+```c
+NODE_ARC_LIST_ENABLE_SCROLL_INTERACTION = 1019010
+```
+
+Whether the **ArcList** component supports scroll gestures. This attribute can be set, reset, and obtained as required through APIs.
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[0].i32 | Whether to support scroll gestures. The default value is **1**. The value **1** means to support, and **0** means the opposite.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[0].i32 | Whether scroll gestures are supported.|
+
+
+## NODE_ARC_LIST_FADING_EDGE
+
+```c
+NODE_ARC_LIST_FADING_EDGE = 1019011
+```
+
+Edge fade effect of the **ArcList** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[0].i32 | Whether to enable the edge fade effect. **0**: The edge fade effect is disabled. **1**: The edge fade effect is enabled. The default value is **0**.|
+| .value[1]?.f32 | Length of the edge fade effect. The unit is vp. The default value is **32**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[0].i32 | Whether the edge fade effect is enabled. **0**: The edge fade effect is disabled. **1**: The edge fade effect is enabled.|
+| .value[1].f32 | Length of the edge fade effect. The unit is vp.|
+
+## NODE_ARC_LIST_FRICTION
+
+```c
+NODE_ARC_LIST_FRICTION = 1019012
+```
+
+Friction coefficient of the **ArcList** component, which can be set, reset, and obtained as required through APIs.<br>The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[0].f32 | Friction coefficient. The default value is **0.8**. Value range: (0, +∞). If this parameter is set to a value less than or equal to 0, the default value is used.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[0].f32 | Friction coefficient.|
+
+
+## NODE_ARC_LIST_FLING_SPEED_LIMIT
+
+```c
+NODE_ARC_LIST_FLING_SPEED_LIMIT = 1019013
+```
+
+Maximum initial speed of the fling animation in the **ArcList** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[0].f32 | Maximum initial velocity at the start of the fling animation, in vp/s. Default value: **9000**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[0].f32 | Maximum initial velocity at the start of the fling animation.|
+
+
+## NODE_ARC_LIST_ITEM_AUTO_SCALE
+
+```c
+NODE_ARC_LIST_ITEM_AUTO_SCALE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_ARC_LIST_ITEM = 1020000
+```
+
+Whether to enable automatic scaling for **ArcListItem**. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[0].i32 | Whether to enable automatic scaling. The value **1** means to enable, and **0** means the opposite. The default value is **1**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[0].i32 | Whether automatic scaling is enabled.|
+
+
+## NODE_ARC_LIST_ITEM_SWIPE_ACTION
+
+```c
+NODE_ARC_LIST_ITEM_SWIPE_ACTION = 1020001
+```
+
+Swipe-out component of **ArcListItem**. This attribute can be set and reset as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute is as follows.<br>
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .object | [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md) object.|
+
+## NODE_ARC_SCROLL_BAR_BIND_SCROLLABLE
+
+```c
+NODE_ARC_SCROLL_BAR_BIND_SCROLLABLE = MAX_NODE_SCOPE_NUM * ARKUI_NODE_ARC_SCROLL_BAR = 1021000
+```
+
+Scrollable component bound to **ArcScrollBar**. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .object | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) object used as the scrollable component bound to **ArcScrollBar**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .object | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) object used as the scrollable component bound to **ArcScrollBar**.|
+
+
+## NODE_ARC_SCROLL_BAR_DISPLAY_MODE
+
+```c
+NODE_ARC_SCROLL_BAR_DISPLAY_MODE = 1021001
+```
+
+Scroll bar display mode of **ArcScrollBar**. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[0].i32 | Scroll bar display mode. The parameter type is [ArkUI_ScrollBarDisplayMode](capi-native-type-h.md#arkui_scrollbardisplaymode). The default value is **ARKUI_SCROLL_BAR_DISPLAY_MODE_AUTO**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[0].i32 | Scrollbar display mode. The parameter type is [ArkUI_ScrollBarDisplayMode](capi-native-type-h.md#arkui_scrollbardisplaymode).|

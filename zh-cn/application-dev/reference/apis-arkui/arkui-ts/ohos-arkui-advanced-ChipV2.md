@@ -1,9 +1,9 @@
 # ChipV2
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @youzhi92-->
-<!--Designer: @youzhi92-->
-<!--Tester: @TerryTsao-->
+<!--Owner: @song-song-song-->
+<!--Designer: @fenglinbailu-->
+<!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ChipV2用于搜索框历史记录、邮件发送列表等场景。
@@ -92,7 +92,7 @@ ChipV2Options定义ChipV2的样式及具体式样参数。
 | suffixIcon      | [ChipV2Icon](#chipv2icon)                      | 否  | 是  | ChipV2后缀图标。<br>默认值：不显示后缀图标。<br>值为undefined时，按默认值处理。<br>图标为Symbol类型时，fontColor默认值为：normalFontColor：`[$r('sys.color.chip_usually_icon_color')]`、activatedFontColor：`[$r('sys.color.chip_active_icon_color')]`。fontSize默认值为16。<br>图标为Image类型时，fillColor默认值为：`$r('sys.color.chip_usually_icon_color')`，activatedFillColor默认值为：`$r('sys.color.chip_active_icon_color')`，fillColor和activatedFillColor对颜色的解析与Image组件保持一致。<br>**装饰器类型：** @Trace |
 | allowClose      | boolean                                                      | 否  | 是  | 关闭图标是否显示。<br>当`suffixIcon`有传入参数时，`allowClose`不生效；`suffixIcon`没有传入参数时，`allowClose`决定是否显示删除图标。<br/>默认值：true<br>true：删除图标显示；false：删除图标不显示。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
 | closeIcon | [ChipV2CloseIcon](#chipv2closeicon) | 否 | 是 | 关闭图标的配置，包括无障碍属性配置。<br>默认值：<br>- 尺寸默认值：size为ChipV2Size.SMALL时，默认值为`$r('sys.float.chip_small_font_size')`；其他情况默认值为`$r('sys.float.chip_normal_font_size')`。<br>- 无障碍默认值：无无障碍描述。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
-| enabled         | boolean                                                      | 否  | 是  | ChipV2是否可选中。<br>默认值：true<br>true：操作块可选中；false：操作块不可选中。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
+| enabled         | boolean                                                      | 否  | 是  | ChipV2是否可用。<br>默认值：true<br>true：操作块可用；false：操作块不可用。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
 | activated    | boolean                                        | 否  | 是  | ChipV2是否为激活态。<br>默认值：false<br>true：操作块为激活态；false：操作块为非激活态。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
 | backgroundColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                   | 否  | 是  | ChipV2背景颜色。<br/>默认值：$r('sys.color.chip_background_color')<br>值为undefined时，按默认值处理。<br>值为非法值时，背景颜色透明。<br>**装饰器类型：** @Trace |
 | activatedBackgroundColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)          | 否  | 是  | ChipV2激活时的背景颜色。<br/>默认值：$r('sys.color.chip_container_activated_color')<br>值为undefined时，按默认值处理。<br>值为非法值时，背景颜色透明。<br>**装饰器类型：** @Trace |
@@ -154,7 +154,7 @@ IChipV2OptionsConfig定义ChipV2选项的配置接口。
 | suffixIcon | [ChipV2Icon](#chipv2icon) | 否 | 是 | ChipV2后缀图标。<br>默认值：不显示后缀图标。<br>值为undefined时，按默认值处理。 |
 | allowClose | boolean | 否 | 是 | 是否显示关闭图标。<br/>默认值：true<br>true：删除图标显示；false：删除图标不显示。<br>值为undefined时，按默认值处理。 |
 | closeIcon | [ChipV2CloseIcon](#chipv2closeicon) | 否 | 是 | 关闭图标的配置，包括无障碍属性配置。<br>默认值：<br>- 尺寸默认值：size为ChipV2Size.SMALL时，默认值为`$r('sys.float.chip_small_font_size')`；其他情况默认值为`$r('sys.float.chip_normal_font_size')`。<br>- 无障碍默认值：无无障碍描述。<br>值为undefined时，按默认值处理。 |
-| enabled | boolean | 否 | 是 | ChipV2是否可用。<br>默认值：true<br>true：操作块可选中；false：操作块不可选中。<br>值为undefined时，按默认值处理。 |
+| enabled | boolean | 否 | 是 | ChipV2是否可用。<br>默认值：true<br>true：操作块可用；false：操作块不可用。<br>值为undefined时，按默认值处理。 |
 | activated | boolean | 否 | 是 | ChipV2是否为激活态。<br>默认值：false<br>true：操作块为激活态；false：操作块为非激活态。<br>值为undefined时，按默认值处理。 |
 | backgroundColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | ChipV2背景颜色。<br/>默认值：$r('sys.color.chip_background_color')<br>值为undefined时，按默认值处理。 |
 | activatedBackgroundColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | ChipV2激活时的背景颜色。<br/>默认值：$r('sys.color.chip_container_activated_color')<br>值为undefined时，按默认值处理。 |
@@ -194,7 +194,7 @@ ChipV2Label定义文本属性类。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | text | string | 否 | 否 | 文本文字内容。<br>**装饰器类型：** @Trace |
-| fontSize | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 文字字号，不支持百分比。<br/>默认值：$r('sys.float.ohos_id_text_size_button')<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
+| fontSize | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 文字字号，不支持百分比。<br/>默认值：<br>size为ChipV2Size.SMALL时，默认值：$r('sys.float.chip_small_font_size')。<br>其他情况下，默认值：$r('sys.float.chip_normal_font_size')。<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
 | fontColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | 文字颜色。<br/>默认值：$r('sys.color.chip_font_color')<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
 | activatedFontColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | 操作块激活时的文字颜色。<br/>默认值：$r('sys.color.chip_activated_fontcolor')<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
 | fontFamily | string | 否 | 是 | 文字字体。<br/>默认值："HarmonyOS Sans"<br>值为undefined时，按默认值处理。<br>**装饰器类型：** @Trace |
@@ -1062,3 +1062,46 @@ struct Index {
 ```
 
 ![](figures/chipv2_3.gif)
+
+### 示例4（监听ChipV2Options内对象类型属性的内部属性变化）
+
+[ChipV2Options](#chipv2options)使用了@ObservedV2装饰器，[ChipV2](#chipv2-1)组件通过@Param接收ChipV2Options对象。对于@Trace装饰的基本类型属性，@Param已能观测到属性变化并触发UI刷新。但对于对象类型属性（如padding、label的labelMargin等）的内部属性（如padding的start、end），这些对象类型本身未被@ObservedV2装饰，其内部属性变化无法被@Param感知，导致修改内部属性时UI不会自动刷新。使用[makeObserved](../js-apis-stateManagement.md#makeobserved)对对象类型属性（如padding）接口进行包裹，可以为该对象的内部属性补充深度观察能力，使得修改内部属性（如start、end）时，框架能够监听到变化并触发UI刷新。makeObserved接口的详细说明请参考[makeObserved接口：将非观察数据变为可观察数据](../../../ui/state-management/arkts-new-makeObserved.md)。
+
+以下示例使用makeObserved包裹padding，并通过Button修改padding的start和end属性，验证对象类型属性内部属性变化能够触发ChipV2的UI刷新。
+
+```ts
+import { ChipV2, ChipV2Options, ChipV2Label, LengthMetrics, ColorMetrics, UIUtils } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local chipV2Options: ChipV2Options = new ChipV2Options({
+    // 设置文本属性。
+    label: new ChipV2Label({ text: '操作块' }),
+    // 使用UIUtils.makeObserved包裹padding，使内部属性start和end可被观测。
+    padding: UIUtils.makeObserved({ start: LengthMetrics.fp(20), end: LengthMetrics.fp(20) }),
+    backgroundColor: ColorMetrics.resourceColor($r('sys.color.ohos_id_color_button_normal')),
+    borderRadius: LengthMetrics.resource($r('sys.float.ohos_id_corner_radius_button')),
+    enabled: true,
+  });
+  @Local currentPadding: number = 20;
+
+  build() {
+    Column({ space: 10 }) {
+      ChipV2({ chipV2Options: this.chipV2Options })
+      Button('修改内边距')
+        .onClick(() => {
+          if (this.chipV2Options.padding) {
+            this.currentPadding = this.currentPadding === 20 ? 10 : 20;
+            // 修改padding的内部属性，由于makeObserved包裹，UI会自动刷新。
+            this.chipV2Options.padding.start = LengthMetrics.fp(this.currentPadding);
+            this.chipV2Options.padding.end = LengthMetrics.fp(this.currentPadding);
+          }
+        })
+    }
+    .padding(20)
+  }
+}
+```
+
+![chipv2-sample4](figures/chipv2-make-observed.gif)

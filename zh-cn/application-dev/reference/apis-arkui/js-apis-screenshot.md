@@ -6,7 +6,7 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-本模块提供屏幕截图的能力。
+本模块提供屏幕截图的能力，支持区域截图和全屏截图两种模式，帮助开发者实现屏幕内容的获取功能。
 
 >  **说明：**
 >
@@ -69,6 +69,12 @@ pick(): Promise&lt;PickInfo&gt;
 
 **设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
+**接口对比：** [pick](#screenshotpick)接口支持区域截屏，仅支持主屏幕（displayId为0），无需权限；[capture](#screenshotcapture14)接口支持全屏截屏，支持主屏幕和扩展屏（通过displayId参数指定），需要权限。
+
+**选取建议：** 需要区域截屏时使用[pick](#screenshotpick)接口；需要全屏截屏或扩展屏截屏时使用[capture](#screenshotcapture14)接口。
+
+**资源管理：** 返回的PickInfo中的PixelMap对象需要手动释放，使用完毕后必须调用[release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7)方法释放内存，否则可能导致内存泄漏。
+
 **返回值：**
 
 | 类型                          | 说明                                            |
@@ -90,17 +96,18 @@ pick(): Promise&lt;PickInfo&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // 调用pick接口获取屏幕截图
   let promise = screenshot.pick();
   promise.then((pickInfo: screenshot.PickInfo) => {
-    console.info('pick Pixel bytes number: ' + pickInfo.pixelMap.getPixelBytesNumber());
-    console.info('pick Rect: ' + pickInfo.pickRect);
+    console.info(`pick Pixel bytes number: ${pickInfo.pixelMap.getPixelBytesNumber()}`);
+    console.info(`pick Rect: ${pickInfo.pickRect}`);
     pickInfo.pixelMap.release(); // PixelMap使用完后及时释放内存
   }).catch((err: BusinessError) => {
-    console.error(`Failed to pick. Code: ' + Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to pick. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (exception) {
-  console.error(`Failed to pick Code: ' + Code: ${exception.code}, message: ${exception.message}`);
-};
+  console.error(`Failed to pick. Code: ${exception.code}, message: ${exception.message}`);
+}
 ```
 
 ## screenshot.capture<sup>14+</sup>
@@ -115,9 +122,13 @@ capture(options?: CaptureOption): Promise&lt;image.PixelMap&gt;
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-**设备行为差异：** 在API version 21之前，该接口在PC/2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。从API version 21开始，该接口在Phone设备、2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 在API version 21之前，该接口在PC/2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。从API version 21开始，该接口在Phone设备、PC/2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
 
-**需要权限**：API version 22前，需申请ohos.permission.CUSTOM_SCREEN_CAPTURE权限；从API version 22开始，需要申请ohos.permission.CUSTOM_SCREEN_CAPTURE权限或ohos.permission.CUSTOM_SCREEN_RECORDING权限。
+**需要权限：** 
+- API版本22+：ohos.permission.CUSTOM_SCREEN_CAPTURE或ohos.permission.CUSTOM_SCREEN_RECORDING
+- API版本14-21：ohos.permission.CUSTOM_SCREEN_CAPTURE
+
+**资源管理：** 返回的PixelMap对象需要手动释放，使用完毕后必须调用[release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7)方法释放内存，否则可能导致内存泄漏。
 
 **参数：**
 
@@ -137,10 +148,10 @@ capture(options?: CaptureOption): Promise&lt;image.PixelMap&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------- |
-| 201     | Permission verification failed. The application does not have the permission required to call the API.|
-| 401     | Parameter error. Possible causes: 1.Incorrect parameter types. 2.Parameter verification failed.|
-| 801 | Capability not supported on this device.|
-| 1400003 | This display manager service works abnormally.|
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 401     | Parameter error. Possible causes: 1. Incorrect parameter types. 2. Parameter verification failed. |
+| 801 | Capability not supported on this device. |
+| 1400003 | This display manager service works abnormally. |
 
 **示例：**
 
@@ -148,18 +159,20 @@ capture(options?: CaptureOption): Promise&lt;image.PixelMap&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
+// 配置截图参数，指定截取displayId为0的屏幕
 let captureOption: screenshot.CaptureOption = {
   "displayId": 0
 };
 try {
+  // 调用capture接口获取全屏截图
   let promise = screenshot.capture(captureOption);
   promise.then((pixelMap: image.PixelMap) => {
-    console.info('Succeeded in saving screenshot. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
+    console.info(`Succeeded in saving screenshot. Pixel bytes number: ${pixelMap.getPixelBytesNumber()}`);
     pixelMap.release(); // PixelMap使用完后及时释放内存
   }).catch((err: BusinessError) => {
     console.error(`Failed to save screenshot. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (exception) {
   console.error(`Failed to save screenshot. Code: ${exception.code}, message: ${exception.message}`);
-};
+}
 ```

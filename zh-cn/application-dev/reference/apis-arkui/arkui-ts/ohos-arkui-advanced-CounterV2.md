@@ -1,9 +1,9 @@
 # CounterV2
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xieziang-->
-<!--Designer: @youzhi92-->
-<!--Tester: @TerryTsao-->
+<!--Owner: @song-song-song-->
+<!--Designer: @fenglinbailu-->
+<!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
 
 CounterV2组件用于精确调节数值。
@@ -44,7 +44,7 @@ CounterV2Component({&nbsp;options:&nbsp;CounterV2Options&nbsp;})
 
 | 名称   | 类型                                | 必填 | 装饰器类型 | 说明                        |
 | ------- | ----------------------------------- | ---- | ---------- | --------------------------- |
-| options | [CounterV2Options](#counterv2options) | 是   | \@Param   | 定义CounterV2组件的类型。 |
+| options | [CounterV2Options](#counterv2options) | 是   | \@Param   | 定义CounterV2组件的类型及样式。 |
 
 ## CounterV2Options
 
@@ -61,7 +61,7 @@ CounterV2Options定义CounterV2类型及样式。
 | type | [CounterV2Type](#counterv2type) | 否  | 否  | 指定当前CounterV2的类型。 |
 | direction | [Direction](ts-appendix-enums.md#direction) | 否 | 是 | 布局方向。<br/>默认值：Direction.Auto<br>值为undefined时，按默认值处理。 |
 | numberOptions | [CounterV2NumberStyleOptions](#counterv2numberstyleoptions) | 否   | 是   | 列表型和紧凑型CounterV2的样式。<br>默认值：显示计数器为0的列表型或紧凑型CounterV2。<br>值为undefined时，按默认值处理。 |
-| inlineOptions | [CounterV2InlineStyleOptions](#counterv2inlinestyleoptions) | 否 | 是 | 普通数字内联调节型CounterV2的样式。<br>默认值：显示计数器为0的普通数字内联调节型CounterV2。<br>值为undefined时，按默认值处理。 |
+| inlineOptions | [CounterV2InlineStyleOptions](#counterv2inlinestyleoptions) | 否 | 是 | 数值内联型CounterV2的样式。<br>默认值：显示计数器为0的数值内联型CounterV2。<br>值为undefined时，按默认值处理。 |
 | dateOptions | [CounterV2DateStyleOptions](#counterv2datestyleoptions) | 否 | 是 | 日期内联型CounterV2的样式。<br>默认值：显示0001/01/01的日期内联型CounterV2。<br>值为undefined时，按默认值处理。 |
 
 选择不同的CounterV2类型，需要选择对应的CounterV2样式。
@@ -87,7 +87,7 @@ CounterV2Type指定CounterV2类型。
 | ----------- | ---- | --------------------------- |
 | LIST        | 0    | 列表型CounterV2。             |
 | COMPACT     | 1    | 紧凑型CounterV2。             |
-| INLINE      | 2    | 普通数字内联调节型CounterV2。 |
+| INLINE      | 2    | 数值内联型CounterV2。 |
 | INLINE_DATE | 3    | 日期内联型CounterV2。       |
 
 各类型CounterV2组件的展示效果可参考[示例1（列表型CounterV2）](#示例1列表型counterv2)、[示例2（紧凑型CounterV2）](#示例2紧凑型counterv2)、[示例3（数值内联型CounterV2）](#示例3数值内联型counterv2)、[示例4（日期内联型CounterV2）](#示例4日期内联型counterv2)。
@@ -245,7 +245,7 @@ toString(): string
 
 type OnDateCounterV2ChangeCallback = (date: CounterV2DateData) => void
 
-定义日期型CounterV2的日期变化回调类型。
+定义日期内联型CounterV2的日期变化回调类型。
 
 **起始版本：** 26.0.0
 
@@ -425,7 +425,7 @@ struct DateStyleExample {
 
 ### 示例5（镜像布局展示）
 
-该示例通过设置[CounterV2Options](#counterv2options)的direction属性，实现列表型、紧凑型、数字内联型、日期内联型CounterV2的镜像布局。
+该示例通过设置[CounterV2Options](#counterv2options)的direction属性，实现列表型、紧凑型、数值内联型、日期内联型CounterV2的镜像布局。
 
 从API版本26.0.0开始，[CounterV2Options](#counterv2options)支持direction属性。
 

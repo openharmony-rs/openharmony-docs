@@ -1927,11 +1927,11 @@ zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-text-typography-
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-typeface-h.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing-types-h.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-drawing.md @dreamyhhh @wanyanglan @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-effect-filter-h.md @hanamaru @gaoweihua @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-effect-types-h.md @hanamaru @gaoweihua @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-effectkit-oh-filter-colormatrix.md @hanamaru @gaoweihua @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-effectkit-oh-filter.md @hanamaru @gaoweihua @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/capi-effectkit.md @hanamaru @gaoweihua @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-effect-filter-h.md @hanamaru @chensiyi_CE @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-effect-types-h.md @hanamaru @chensiyi_CE @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-effectkit-oh-filter-colormatrix.md @hanamaru @chensiyi_CE @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-effectkit-oh-filter.md @hanamaru @chensiyi_CE @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/capi-effectkit.md @hanamaru @chensiyi_CE @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-external-window-h.md @Felix-fangyang @conan13234 @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-graphic-error-code-h.md @Felix-fangyang @conan13234 @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/capi-native-buffer-h.md @Felix-fangyang @conan13234 @ge-yafang
@@ -1976,15 +1976,15 @@ zh-cn/application-dev/reference/apis-arkgraphics2d/capi-oh-nativeimage.md @Felix
 zh-cn/application-dev/reference/apis-arkgraphics2d/errorcode-colorspace-manager.md 无
 zh-cn/application-dev/reference/apis-arkgraphics2d/errorcode-drawing.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-colorSpaceManager.md @xiaojianfeng_jeffery @dizuo1 @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-effectKit-sys.md @hanamaru @gaoweihua @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-effectKit.md @hanamaru @gaoweihua @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-effectKit-sys.md @hanamaru @chensiyi_CE @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-effectKit.md @hanamaru @chensiyi_CE @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-graphics-common2D.md @dreamyhhh @wanyanglan @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-graphics-displaySync.md @wh_qwe @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-graphics-text.md @gmiao522 @liumingxiang @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-hdrCapability.md @xiaojianfeng_jeffery @dizuo1 @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-sendableColorSpaceManager.md @xiaojianfeng_jeffery @dizuo1 @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-uiEffect-sys.md @hanamaru @gaoweihua @ge-yafang
-zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-uiEffect.md @hanamaru @gaoweihua @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-uiEffect-sys.md @hanamaru @chensiyi_CE @ge-yafang
+zh-cn/application-dev/reference/apis-arkgraphics2d/js-apis-uiEffect.md @hanamaru @chensiyi_CE @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics2d/Readme-CN.md @hangmengxin @oh_wangxk @gmiao522 @wanyanglan @liumingxiang @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics3d/js-apis-inner-scene-boids-sim-sys.md @zzhao0 @zdustc @ge-yafang
 zh-cn/application-dev/reference/apis-arkgraphics3d/js-apis-inner-scene-nodes.md @zzhao0 @zdustc @ge-yafang

@@ -311,7 +311,7 @@ export default {
 
 ## 填充渐变色
 
-添加[createLinearGradient](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#createlineargradient)和[createRadialGradient](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#createradialgradient)属性创建渐变容器，接着用addColorStop方法添加多个色块组成渐变色，再设置fillStyle为gradient将渐变色填充到矩形中，最后设置阴影的模糊级别（shadowBlur）、阴影颜色（shadowColor）及阴影偏移量（shadowOffset）。
+添加[createLinearGradient](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#createlineargradient)和[createRadialGradient](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#createradialgradient)属性创建渐变容器，接着用addColorStop方法添加多个色块组成渐变色，再设置fillStyle为gradient将渐变色填充到矩形中，最后设置阴影的模糊级别（shadowBlur）、阴影颜色（shadowColor）及阴影偏移量（shadowOffset）。
 
 
 ```html
@@ -440,7 +440,7 @@ export default {
 
 ## 填充文字
 
-先创建文本，再用[fillText](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#filltext)方法把文字写在画布上。通过[globalAlpha](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#globalalpha)属性改变基线透明度，使基线不会挡住文字，再设置[textAlign](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#textalign)和[textBaseline](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#textbaseline)属性确定文字基于基线的位置。
+先创建文本，再用[fillText](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#filltext)方法把文字写在画布上。通过[globalAlpha](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-property.md#globalalpha)属性改变基线透明度，使基线不会挡住文字，再设置[textAlign](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-property.md#textalign)和[textBaseline](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-property.md#textbaseline)属性确定文字基于基线的位置。
 
 
 ```html
@@ -578,7 +578,7 @@ export default {
 
 ## 添加图片
 
-创建图片对象后使用[drawImage](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#drawimage)方法画出图片，给图片设置一些动画样式如scale（缩放）、translate（平移）或rotate（旋转）。
+创建图片对象后使用[drawImage](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#drawimage)方法画出图片，给图片设置一些动画样式如scale（缩放）、translate（平移）或rotate（旋转）。
 
 
 ```html

@@ -6,7 +6,7 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-The module provides basic APIs for manipulating Picture in Picture (PiP). For example, you can use the APIs to check whether the PiP feature is supported and create a PiP controller to start or stop a PiP window. PiP is mainly used in video playback, video calls, or video meetings.
+The module provides basic APIs for manipulating Picture in Picture (PiP). For example, you can use the APIs to check whether the PiP feature is supported and create a PiP controller to start or stop a PiP window. In this way, users can continue watching videos in a small window while performing other operations, improving multitasking efficiency. It is applicable to video playback, video calls, and video conferences.
 
 > **NOTE**
 >
@@ -36,7 +36,7 @@ In the following API examples, you need to call [PiPWindow.create()](js-apis-pip
 
 isPiPSupported(): boolean
 
-Checks whether the current device supports the PiP feature.
+Checks whether the current device supports the PiP feature. Before starting the PiP window, you are advised to call this API to check whether the device supports the PiP feature. This prevents functionality exceptions caused by calling PiP-related APIs on devices that do not support the PiP feature.
 
 **System API**: This is a system API.
 
@@ -66,9 +66,11 @@ try {
   if (!this.pipController) {
     return;
   }
+  // Obtain pipController using PiPWindow.create().
+  // Check whether the current device supports the PiP feature.
   let isSupported: boolean = this.pipController!.isPiPSupported();
-  console.info('isPiPSupported:' + isSupported);
+  console.info('isPiPSupported: ' + isSupported);
 } catch (exception) {
-  console.error(`Failed to check if pip is supported. Cause code: ${exception.code}, message: ${exception.message}`);
+  console.error(`Failed to check if pip is supported. Code: ${exception.code}, message: ${exception.message}`);
 }
 ```

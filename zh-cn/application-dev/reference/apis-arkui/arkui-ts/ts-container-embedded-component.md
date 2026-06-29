@@ -46,7 +46,7 @@ EmbeddedComponent(loader: import('../api/@ohos.app.ability.Want').default, type:
 | --------------------- | ---------------------------------------------------------- | ---- | ------------------------------------ |
 | loader                | import('../api/@ohos.app.ability.[Want](../../apis-ability-kit/js-apis-app-ability-want.md)').default | 是   | 要加载的EmbeddedUIExtensionAbility。 |
 | type                  | [EmbeddedType](ts-appendix-enums.md#embeddedtype12)                              | 是   | 提供方的类型。                       |
-| options| [EmbeddedOptions](#embeddedoptions) | 否   | 需要传递的构造项。<br>**起始版本：** 26.0.0                     |
+| options| [EmbeddedOptions](#embeddedoptions) | 否   | 需要传递的构造参数。<br>**起始版本：** 26.0.0                     |
 
 ## 属性
 

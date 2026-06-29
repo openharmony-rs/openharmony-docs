@@ -1,10 +1,12 @@
 # Interface (WhiteBalance)
+
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=df2388ac9ece670e2be6918a776640e250f776ef translatedAt=2026-06-25T02:36:20.375Z pushedAt=2026-06-25T06:57:19.544Z -->
 
 **WhiteBalance** inherits from [WhiteBalanceQuery](arkts-apis-camera-WhiteBalanceQuery.md).
 
@@ -41,7 +43,7 @@ Sets a white balance mode. Before the setting, run [isWhiteBalanceModeSupported]
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400103                |  Session not config.                                   |
@@ -81,7 +83,7 @@ Obtains the white balance mode in use.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 
@@ -118,13 +120,13 @@ Before the setting, run [getWhiteBalanceRange](arkts-apis-camera-WhiteBalanceQue
 
 | Name     | Type                    | Mandatory| Description                |
 | -------- | ----------------------- | ---- | ------------------- |
-| whiteBalance | number | Yes  | White balance value.|
+| whiteBalance | number | Yes | White balance value, in units of K (Kelvin). |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400103                |  Session not config.                                   |
@@ -159,13 +161,13 @@ Obtains the current white balance value.
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| number    | White balance value.|
+| number    | White balance value, in units of K (Kelvin). |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 
@@ -183,5 +185,96 @@ function getWhiteBalance(session: camera.PhotoSession | camera.VideoSession): nu
     console.error(`The getWhiteBalance call failed. error code: ${err.code}`);
   }
   return whiteBalance;
+}
+```
+
+## setColorTint
+
+setColorTint(colorTint: number): void
+
+Sets the white balance hue adjustment.
+
+Before the setting, run [getColorTintRange](arkts-apis-camera-WhiteBalanceQuery.md#getcolortintrange) to check whether the device supports the specified white balance hue adjustment range.
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name      | Type                     | Mandatory | Description                 |
+| -------- | ----------------------- | ---- | ------------------- |
+| colorTint | number | Yes   | White balance hue adjustment value. |
+
+**Error Codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| Error Code         | Error Message        |
+| --------------- | --------------- |
+| 7400103                | Session not config.                                   |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function setColorTint(session: camera.PhotoSession | camera.VideoSession): void {
+  let colorTint: number = 0;
+  try {
+    session.setColorTint(colorTint);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The setColorTint call failed. error code: ${err.code}`);
+  }
+}
+```
+
+## getColorTint
+
+getColorTint(): number
+
+Obtains the white balance hue adjustment.
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Return value**
+
+| Type        | Description                          |
+| ---------- | ----------------------------- |
+| number    | White balance hue adjustment value. |
+
+**Error Codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| Error Code         | Error Message        |
+| --------------- | --------------- |
+| 7400103                | Session not config.                                   |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getColorTint(session: camera.PhotoSession | camera.VideoSession): number {
+  let colorTint: number = 0;
+  try {
+    colorTint = session.getColorTint();
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The getColorTint call failed. error code: ${err.code}`);
+  }
+  return colorTint;
 }
 ```

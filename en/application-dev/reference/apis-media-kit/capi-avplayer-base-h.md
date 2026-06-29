@@ -1,10 +1,12 @@
 # avplayer_base.h
+
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xushubo; @chennotfound-->
+<!--Owner: @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=4b1a2f751fcd33c52248528ed8c23a9b2935126b translatedAt=2026-06-23T01:04:50.901Z pushedAt=2026-06-23T06:12:23.683Z -->
 
 ## Overview
 
@@ -14,7 +16,7 @@ The file declares the structs and enums of the AVPlayer.
 
 **Library**: libavplayer.so
 
-**System capability**: SystemCapability.Multimedia.Media.AVPlayer
+**System capability:** SystemCapability.Multimedia.Media.AVPlayer 
 
 **Since**: 11
 
@@ -27,7 +29,7 @@ The file declares the structs and enums of the AVPlayer.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [AVPlayerCallback](capi-avplayer-avplayercallback.md) | AVPlayerCallback | Defines a set of pointers to the [OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo) and [OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror) callbacks. To ensure the normal running of AVPlayer, you must register this struct with the **OH_AVPlayer** instance and process the information reported by the callbacks. (This struct is deprecated in API version 12.)|
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) | OH_AVPlayer | Describes an initialized AVPlayer.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) | OH_AVPlayer | Defines an initialized AVPlayer.|
 | [OH_AVSeiMessageArray](./capi-avplayer-oh-avseimessagearray.md) | OH_AVSeiMessageArray | Defines the SEI message array.|
 | [OH_AVPlaybackStrategy](capi-avplayer-oh-avplaybackstrategy.md) | OH_AVPlaybackStrategy | Defines the audio and video playback strategy.|
 
@@ -53,6 +55,8 @@ The file declares the structs and enums of the AVPlayer.
 | [typedef void (\*OH_AVPlayerOnErrorCallback)(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg, void *userData)](#oh_avplayeronerrorcallback) | OH_AVPlayerOnErrorCallback | Called when an error occurs in the AVPlayer. If this callback is successfully set, the **OH_AVPlayerOnError** function will not be invoked.|
 | [typedef void (\*OH_AVPlayerOnAmplitudeUpdateCallback)(OH_AVPlayer *player, double *amplitudes, uint32_t size, void *userData)](#oh_avplayeronamplitudeupdatecallback) | OH_AVPlayerOnAmplitudeUpdateCallback | Called when the maximum audio amplitude is calculated.|
 | [typedef void (\*OH_AVPlayerOnSeiMessageReceivedCallback)(OH_AVPlayer *player, OH_AVSeiMessageArray *message, int32_t playbackPosition, void *userData)](#oh_avplayeronseimessagereceivedcallback) | OH_AVPlayerOnSeiMessageReceivedCallback | Called for obtaining SEI messages. This function is used to subscribe to SEI message events and returns detailed SEI information.|
+| [typedef void (\*OH_AVPlayerPCMOutputCallback)(OH_AVPlayer *player, OH_AVBuffer *pcmBuffer, void *userData)](#oh_avplayerpcmoutputcallback) | OH_AVPlayerPCMOutputCallback | Called to obtain audio PCM data output. |
+| [typedef void (\*OH_AVPlayerPCMProcessorCallback)(OH_AVPlayer *player, OH_AVBuffer *pcmBuffer, void *userData)](#oh_avplayerpcmprocessorcallback) | OH_AVPlayerPCMProcessorCallback | Called to obtain audio PCM data for post-processing. AVPlayer needs to use the processed data for audio playback, and the processing must be completed in a timely manner; otherwise, playback will be blocked.<br> Do not change the sample rate, number of channels, or sample format while using this method to avoid exceptions in data acquisition. |
 
 ### Variables
 
@@ -82,8 +86,8 @@ The file declares the structs and enums of the AVPlayer.
 | const char * OH_PLAYER_MD_KEY_HAS_AUDIO | Pointer to the key for obtaining whether the media resource contains audio tracks. The value is of the int32_t type.<br> The value **1** means that the media resource contains audio tracks, and the value **0** means the opposite.<br>**Since**: 22|
 | const char * OH_PLAYER_MD_KEY_HAS_SUBTITLE | Pointer to the key for obtaining whether the media resource contains subtitle tracks. The value is of the int32_t type.<br> The value **1** means that the media resource contains subtitle tracks, and the value **0** means the opposite.<br>**Since**: 22|
 | const char * OH_PLAYER_MD_KEY_TRACK_INDEX | Pointer to the key for obtaining the track index information of a media resource. The value is of the int32_t type.<br>**Since**: 22|
-| const char * OH_PLAYER_SEI_PAYLOAD_TYPE | Pointer to the key for indicating the payload type in an SEI message.<br>**Since**: 23|
-| const char * OH_PLAYER_SEI_PAYLOAD_CONTENT | Pointer to the key for indicating the payload content in an SEI message.<br>**Since**: 23|
+| const char * OH_PLAYER_SEI_PAYLOAD_TYPE | Pointer to the key for indicating the payload type in an SEI message.<br>**Since:** 23 |
+| const char * OH_PLAYER_SEI_PAYLOAD_CONTENT | Pointer to the key for indicating the payload content in an SEI message.<br>**Since:** 23 |
 | const char * OH_PLAYER_SUPER_RESOLUTION_ENABLE_STATE | Pointer to the key for indicating the enable state of the super resolution feature. The value type is int32_t. The value **1** indicates that the feature is enabled, and **0** indicates the opposite. It is used for information callback when the super resolution state changes.<br>**Since**: 23|
 | const char * OH_PLAYER_TRACH_CHANGE_INFO_TRACK_INDEX | Pointer to the key for indicating the track index in the track change information. The value type is int32_t.<br>**Since**: 23|
 | const char * OH_PLAYER_TRACH_CHANGE_INFO_TRACK_SELECTED | Pointer to the key for indicating whether the track is selected in the track change information. The value type is int32_t.<br>**Since**: 23|
@@ -153,7 +157,6 @@ Enumerates the seek modes.
 | AV_SEEK_PREVIOUS_SYNC | Seeks to the previous key frame at the specified position.|
 | AV_SEEK_CLOSEST = 2 | Seeks to the frame closest to the specified position.<br>**Since**: 12|
 | AV_SEEK_CONTINUOUS = 3 | Seeks in continuous drag mode. This mode provides a smoother drag experience, but the device must support continuous seeking for the current stream. Before using this mode, check whether continuous seeking is supported. For details, see [OH_AVPlayer_IsSeekContinuousSupported](capi-avplayer-h.md#oh_avplayer_isseekcontinuoussupported).<br>**Since**: 23|
-
 
 ### AVPlaybackSpeed
 
@@ -275,7 +278,6 @@ Enumerates the video output results.
 | OH_VIDEO_OUTPUT_OK = 0 | A decoded video frame is output.|
 | OH_VIDEO_OUTPUT_NO_IMAGE = 1 | No frame is available for rendering.|
 
-
 ## Function Description
 
 ### OH_AVPlayerOnInfo()
@@ -288,28 +290,28 @@ typedef void (*OH_AVPlayerOnInfo)(OH_AVPlayer *player, AVPlayerOnInfoType type, 
 
 Called when the AVPlayer receives a message.
 
-The following table lists the mappings between **type** and **extra** values.
+The correspondence between the info type (**type**) and the info (**extra**) is shown in the table. 
 
-| Value of type| Value of extra|
+| type| Description of extra|
 | -------- | -------- |
 | AV_INFO_TYPE_SEEKDONE | Message returned when seeking to a playback position is complete. **extra** indicates the position after the seek operation.|
-| AV_INFO_TYPE_SPEEDDONE | Message returned when the playback speed setting is complete. **extra** indicates the playback speed. For details about the available options, see [AVPlaybackSpeed](#avplaybackspeed).|
+| AV_INFO_TYPE_SPEEDDONE | Message returned when the playback speed setting is complete. **extra** indicates the playback speed. For details, see [AVPlaybackSpeed](#avplaybackspeed).|
 | AV_INFO_TYPE_BITRATEDONE | Message returned when the bit rate setting is complete. **extra** indicates the bit rate.|
 | AV_INFO_TYPE_EOS | Message returned when the playback is complete.|
-| AV_INFO_TYPE_STATE_CHANGE | Message returned when the AVPlayer state changes. **extra** indicates the new state. For details about the available options, see [AVPlayerState](#avplayerstate).|
+| AV_INFO_TYPE_STATE_CHANGE | Message returned when the AVPlayer state changes. **extra** indicates the new state. For details, see [AVPlayerState](#avplayerstate).|
 | AV_INFO_TYPE_POSITION_UPDATE | Message returned when the playback position changes. **extra** indicates the current position.|
 | AV_INFO_TYPE_MESSAGE | Message returned when video rendering starts. **extra** indicates the first video frame rendered.|
 | AV_INFO_TYPE_VOLUME_CHANGE | Message returned when the playback volume changes. **extra** is not defined in this scenario.|
 | AV_INFO_TYPE_RESOLUTION_CHANGE | Message returned when the video size is obtained for the first time or the video size is updated. **extra** is not defined in this scenario.|
-| AV_INFO_TYPE_BUFFERING_UPDATE | Message returned when multi-queue buffering changes. **extra** indicates the video duration.|
+| AV_INFO_TYPE_BUFFERING_UPDATE | Message indicating the multi-queue buffering time. **extra** indicates the video duration.|
 | AV_INFO_TYPE_BITRATE_COLLECT  | Message returned to report the HLS video bit rates. Each bit rate has been converted into a uint8_t byte array during the reporting. You need to forcibly convert the uint8_t byte array into a uint32_t integer array.  |
-| AV_INFO_TYPE_INTERRUPT_EVENT | Message returned when the audio focus changes. **extra** indicates the hints provided along with audio interruption. For details about the available options, see [OH_AudioInterrupt_Hint](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiointerrupt_hint). The application can determine whether to perform further processing based on the hint.|
-| AV_INFO_TYPE_DURATION_UPDATE | Message returned when the playback duration changes. **extra** indicates the video duration.|
+| AV_INFO_TYPE_INTERRUPT_EVENT | Message returned when the audio focus changes. **extra** indicates the hints provided along with audio interruption. For details, see [OH_AudioInterrupt_Hint](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiointerrupt_hint). The application can determine whether to perform further processing based on the hint.|
+| AV_INFO_TYPE_DURATION_UPDATE | Message indicating the playback duration. **extra** indicates the video duration.|
 | AV_INFO_TYPE_IS_LIVE_STREAM | Message returned when live streams are played. **extra** indicates whether the stream is a live stream. The value **0** means a non-live stream, and **1** means a live stream.|
 | AV_INFO_TYPE_TRACKCHANGE | Message returned when the track changes. **extra** is not defined in this scenario.|
 | AV_INFO_TYPE_TRACK_INFO_UPDATE |Message returned when the track information updates. **extra** is not defined in this scenario.|
 | AV_INFO_TYPE_SUBTITLE_UPDATE | Message returned when the subtitle information changes. **extra** is not defined in this scenario.|
-| AV_INFO_TYPE_AUDIO_OUTPUT_DEVICE_CHANGE | Message returned when the audio output device changes. **extra** indicates the device change reason. For details about the available options, see [OH_AudioStream_DeviceChangeReason](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_devicechangereason).|
+| AV_INFO_TYPE_AUDIO_OUTPUT_DEVICE_CHANGE | Message returned when the audio output device changes. **extra** indicates the device change reason. For details, see [OH_AudioStream_DeviceChangeReason](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_devicechangereason).|
 
 **System capability**: SystemCapability.Multimedia.Media.AVPlayer
 
@@ -345,8 +347,8 @@ Called when the AVPlayer receives a message. If this callback is successfully se
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to an OH_AVPlayer instance.|
-| [AVPlayerOnInfoType](capi-avplayer-base-h.md#avplayeroninfotype) type | Message type. For details about the available options, see [AVPlayerOnInfoType](capi-avplayer-base-h.md#avplayeroninfotype).|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to an **OH_AVPlayer** instance.|
+| [AVPlayerOnInfoType](capi-avplayer-base-h.md#avplayeroninfotype) type | Message type. For details, see [AVPlayerOnInfoType](capi-avplayer-base-h.md#avplayeroninfotype).|
 | [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)* infoBody | Pointer to the message. The pointer is valid only in this callback.|
 | void *userData | Pointer to the instance provided by the caller when setting the callback function.|
 
@@ -372,7 +374,7 @@ Called when an error occurs in the AVPlayer. This callback is available in API v
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to an OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to an **OH_AVPlayer** instance.|
 | int32_t errorCode | Error code.<br>                  **AV_ERR_NO_MEMORY**: No memory. The value is **1**.<br>                  **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed. The value is **2**.<br>                  **AV_ERR_INVALID_VAL**: Invalid value. The value is **3**.<br>                  **AV_ERR_IO**: I/O error. The value is **4**.<br>                  **AV_ERR_TIMEOUT**: Timeout. The value is **5**.<br>                  **AV_ERR_UNKNOWN**: Unknown error. The value is **6**.<br>                  **AV_ERR_SERVICE_DIED**: The service is dead. The value is **7**.<br>                  **AV_ERR_INVALID_STATE**: The operation is not supported in the current state. The value is **8**.<br>                  **AV_ERR_UNSUPPORT**: The function is not supported. The value is **9**.<br>                  **AV_ERR_EXTEND_START**: Initial value for extended error codes. The value is **100**.|
 | const char \*errorMsg | Pointer to the error message.|
 
@@ -394,10 +396,10 @@ Called when an error occurs in the AVPlayer. If this callback is successfully se
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to an OH_AVPlayer instance.|
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to an **OH_AVPlayer** instance.|
 | int32_t errorCode | Error code.<br>                  **AV_ERR_NO_MEMORY**: No memory. The value is **1**.<br>                  **AV_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed. The value is **2**.<br>                  **AV_ERR_INVALID_VAL**: Invalid value. The value is **3**.<br>                  **AV_ERR_IO**: I/O error. For API versions 12 and 13, the value is **4**. Starting from API version 14, it corresponds to more specific error codes ranging from 5411001 to 5411011.<br>                  **AV_ERR_TIMEOUT**: Timeout. The value is **5**.<br>                  **AV_ERR_UNKNOWN**: Unknown error. The value is **6**.<br>                  **AV_ERR_SERVICE_DIED**: The service is dead. The value is **7**.<br>                  **AV_ERR_INVALID_STATE**: The operation is not supported in the current state. The value is **8**.<br>                  **AV_ERR_UNSUPPORT**: The function is not supported. The value is **9**.<br>                  **AV_ERR_EXTEND_START**: Initial value for extended error codes. The value is **100**.|
 | const char \*errorMsg | Pointer to the error message.|
-| void \*userData | Pointer to the user data passed in. The same data is returned.|
+| void \*userData | Pointer to the user data passed in by the user when setting the callback.|
 
 ### OH_AVPlayerOnAmplitudeUpdateCallback()
 
@@ -440,3 +442,43 @@ Called for obtaining SEI messages. This function is used to subscribe to SEI mes
 | OH_AVSeiMessageArray \*message | SEI message array. Note: The SEI message array is automatically released after the callback. If necessary, you need to copy the data for future use.|
 | int32_t playbackPosition | Playback position.|
 | void \*userData | Pointer to user-defined data.|
+
+### OH_AVPlayerPCMOutputCallback()
+
+```c
+typedef void (*OH_AVPlayerPCMOutputCallback)(OH_AVPlayer *player, OH_AVBuffer *pcmBuffer, void *userData)
+```
+
+**Description**
+
+Called to obtain audio PCM data output.
+
+**Since:** 26.0.0
+
+**Parameters**
+
+| Parameter | Description |
+| -- | -- |
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) \*player | Pointer to an **OH_AVPlayer** instance. |
+| OH_AVBuffer \*pcmBuffer | Pointer to audio PCM data. The audio PCM data is valid only during this callback and is released by the player after the callback returns. |
+| void \*userData | Pointer to user data. |
+
+### OH_AVPlayerPCMProcessorCallback()
+
+```c
+typedef void (*OH_AVPlayerPCMProcessorCallback)(OH_AVPlayer *player, OH_AVBuffer *pcmBuffer, void *userData)
+```
+
+**Description**
+
+Called to obtain audio PCM data for post-processing. AVPlayer needs to use the processed data for audio playback, and the processing must be completed in a timely manner; otherwise, playback will be blocked.<br> During the use of this method, do not change the sample rate, number of channels, or sample format to avoid exceptions in data acquisition.
+
+**Since:** 26.0.0
+
+**Parameters**
+
+| Parameter | Description |
+| -- | -- |
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) \*player | Pointer to an OH_AVPlayer instance. |
+| OH_AVBuffer \*pcmBuffer | Pointer to audio PCM data. The audio PCM data is valid only during this callback and is released by the player after the callback returns. |
+| void \*userData | Pointer to user data. |

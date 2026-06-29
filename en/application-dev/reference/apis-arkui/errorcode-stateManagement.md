@@ -52,7 +52,7 @@ Ensure that the path for **addMonitor** or **clearMonitor** is valid. For detail
 
 **Error Message**
 
-monitorCallback is not a function or an anonymous function.
+addMonitor/clearMonitor failed because the monitorFunc is illegal, monitorFunc must be function or but cannot be an anonymous function.
 
 **Description**
 
@@ -60,7 +60,7 @@ This error code is reported when the callback parameter for **addMonitor** or **
 
 **Possible Causes**
 
-The callback is not of function type, or is an anonymous function.
+The callback is not of the function type or is of an anonymous function type.
 
 **Solution**
 
@@ -340,5 +340,3 @@ The key is not of the string or [TypeConstructorWithArgs\<T\>](./js-apis-stateMa
 **Solution**
 
 Ensure that the key passed for using the **remove** API of **AppStorageV2** and **PersistenceV2** and the **save** API of **PersistenceV2** is of the string or **TypeConstructorWithArgs\<T\>** type.
-
-<!--no_check-->

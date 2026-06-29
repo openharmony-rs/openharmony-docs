@@ -66,10 +66,11 @@
 
    ```ts
    import { huks, huksExternalCrypto, CryptoExtensionAbility, HuksCryptoExtensionCertInfo, HuksCryptoExtensionResult } from '@kit.UniversalKeystoreKit';
-   import { util } from '@kit.ArkTS'
-   import { cryptoFramework } from '@kit.CryptoArchitectureKit'
+   import { util } from '@kit.ArkTS';
+   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+   import { deviceInfo } from '@kit.BasicServicesKit';
 
-   class CryptoExtension extends CryptoExtensionAbility {
+   export class CryptoExtension extends CryptoExtensionAbility {
      // 本步骤内的接口函数实现均需在class内，为方便开发者理解及使用，每个接口函数在下文详细解释。
    }
    ```
@@ -92,8 +93,14 @@
        return Promise.resolve(result);
      }
 
-     // 解析 resource index
-     let index: string = JSON.parse(resourceId)['index'];
+     // 解析 resource index，API版本不同解析方式也不同。
+     let index: string;
+     const apiVersion = deviceInfo.sdkApiVersion;
+     if (apiVersion >= 26) {
+       index = resourceId;
+     } else {
+       index = JSON.parse(resourceId)['index'];
+     }
 
      // ...
      let res: HuksCryptoExtensionResult = {

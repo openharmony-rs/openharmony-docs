@@ -1,7 +1,7 @@
 # ArkUI_SwiperArrowStyle
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @huangxiaolinabc-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -12,7 +12,7 @@ typedef struct ArkUI_SwiperArrowStyle ArkUI_SwiperArrowStyle
 
 ## 概述
 
-定义 Swiper 组件的导航箭头风格。
+定义Swiper组件的导航箭头样式。
 
 **起始版本：** 19
 

@@ -3,7 +3,7 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hanamaru-->
-<!--Designer: @gaoweihua-->
+<!--Designer: @chensiyi_CE-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
@@ -1343,6 +1343,66 @@ struct Index {
     }
     .backgroundImage($r('app.media.bg6'), ImageRepeat.NoRepeat)
     .width("100%").height("100%").align(Alignment.Center)
+  }
+}
+```
+
+### distortionCollapse
+
+distortionCollapse(distortionParam: DistortionParam): VisualEffect
+
+为组件添加非线性形变效果。
+
+> **说明：**
+>
+> - 该视效支持控件范围外的绘制，但仍会受到父控件Clip的影响。
+> - 因包含前景Filter，未与[EffectComponent](../apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md)组合使用时不兼容组件自身及子组件的部分视效（如[BrightnessBlender](#brightnessblender)或[systemMaterial](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect-sys.md#systemmaterial23)）。
+> - 支持对系统材质进行扭曲，但是与[EffectComponent](../apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md)组合使用时，会导致系统材质的背景扭曲。
+> - 调用该接口时，会创建与形变后区域等大的离屏画布，再将当前组件（含子组件）的内容绘制到离屏画布上，再对画布上的已有内容进行形变绘制。使用该实现方式时，如果不与[EffectComponent](../apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md)组合使用，将导致[systemMaterial](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect-sys.md#systemmaterial23)、[backgroundEffect](../apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundeffect19)、[brightness](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#brightness)或[blur](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#blur19)等需要截屏的接口无法截取到正确的画面。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+| 参数名          | 类型                                | 必填 | 说明                   |
+| --------------- | ----------------------------------- | ---- | --------------------- |
+| distortionParam | [DistortionParam](../apis-arkui/arkui-ts/ts-container-distortioncomponent-sys.md#distortionparam) | 是   | 非线性形变效果的参数。设置为undefined或null时恢复为无非线性形变的效果。 |
+
+**返回值：**
+
+| 类型                          | 说明                                     |
+| ----------------------------- | ---------------------------------------- |
+| [VisualEffect](#visualeffect) | 返回添加了非线性形变效果的VisualEffect。 |
+
+**示例：**
+
+```ts
+import { uiEffect } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct Index {
+  private distortionParam: DistortionParam = {
+    topLeft: {x: 0.09, y: 0.007},
+    topRight: {x: 0.91, y: 0.007},
+    bottomRight: {x: 1.09, y: 0.702},
+    bottomLeft: {x: -0.09, y: 0.702},
+    barrelDistortion: {x: 0.551, y: 0.551, z: 0.092, w: 0.092},
+  }
+
+  build() {
+    Column() {
+      Image($r('app.media.man')).width('80%').height('80%')
+        .visualEffect(uiEffect.createEffect().distortionCollapse(this.distortionParam))
+    }
+    .justifyContent(FlexAlign.Center)
+    .height('100%')
+    .width('100%')
   }
 }
 ```
