@@ -165,6 +165,17 @@ AVScreenCapture实例的配置信息为[OH_AVScreenCaptureConfig](../../referenc
 
 <!-- @[screenCapture_config_buffer_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->    
 
+``` C++
+// 初始化录屏，传入配置信息OH_AVScreenCaptureConfig。
+config = {
+    .captureMode = OH_CAPTURE_HOME_SCREEN, // 录屏模式设置。
+    .dataType = OH_ORIGINAL_STREAM, // 录屏数据类型，原始码流或文件。
+    .audioInfo = audioInfo,
+    .videoInfo = videoInfo
+};
+// 在StartScreenCapture01()函数中调用OH_AVScreenCapture_Init方法将配置项设置到OH_AVScreenCapture中。
+```
+
 
 
 ### 设置数据更新、状态切换、错误上报的回调
