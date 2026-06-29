@@ -7473,7 +7473,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerChildComponentId.ets",
 				"functions":[
 					{
-						"end_line":65,
+						"end_line":80,
 						"name":"RelativeContainerChildComponentId_start",
 						"start_line":15
 					}
@@ -7493,7 +7493,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerDifferentComponentId.ets",
 				"functions":[
 					{
-						"end_line":82,
+						"end_line":84,
 						"name":"RelativeContainerDifferentComponentId_start",
 						"start_line":15
 					}
@@ -7747,7 +7747,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutReference.ets",
 				"functions":[
 					{
-						"end_line":48,
+						"end_line":58,
 						"name":"GridLayoutReference_start",
 						"start_line":15
 					}
@@ -7767,7 +7767,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutColumnsToFour.ets",
 				"functions":[
 					{
-						"end_line":42,
+						"end_line":46,
 						"name":"GridLayoutColumnsToFour_start",
 						"start_line":15
 					}
@@ -7777,7 +7777,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutColumnsToEight.ets",
 				"functions":[
 					{
-						"end_line":42,
+						"end_line":46,
 						"name":"GridLayoutColumnsToEight_start",
 						"start_line":15
 					}
@@ -7882,7 +7882,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColSpanToNumber.ets",
 				"functions":[
 					{
-						"end_line":37,
+						"end_line":39,
 						"name":"GridColSpanToNumber_start",
 						"start_line":15
 					}
@@ -7892,7 +7892,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColSpanToOption.ets",
 				"functions":[
 					{
-						"end_line":36,
+						"end_line":53,
 						"name":"GridColSpanToOption_start",
 						"start_line":15
 					}
@@ -7902,7 +7902,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColOffsetToNumber.ets",
 				"functions":[
 					{
-						"end_line":36,
+						"end_line":40,
 						"name":"GridColOffsetToNumber_start",
 						"start_line":15
 					}
@@ -49411,7 +49411,7 @@
 						"start_line":176
 					},
 					{
-						"end_line":106,
+						"end_line":112,
 						"name":"layout_spacing_node",
 						"start_line":63
 					},
