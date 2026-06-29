@@ -737,6 +737,7 @@ NODE_TEXT_PICKER_SELECTED_BACKGROUND_STYLE = 15011
 | 参数项 | 描述 |
 | -- | -- |
 | .value[0].u32 | 背景颜色，采用 0xARGB 格式，例如，<b>0xFF1122FF</b>。 |
+| .value[1].f32 | 四个角的圆角半径，单位为VP。 |
 | .value[1].f32 | 左上角的圆角半径，单位为VP。 |
 | .value[2].f32 | 右上角的圆角半径，单位为VP。 |
 | .value[3].f32 | 左下角的圆角半径，单位为VP。 |
