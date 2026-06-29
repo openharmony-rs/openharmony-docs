@@ -20928,7 +20928,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/V2LocalBuilderUpdate.ets",
 				"functions":[
 					{
-						"end_line":122,
+						"end_line":112,
 						"name":"LocalBuilder_in_V2_use",
 						"start_line":30
 					}
@@ -24220,7 +24220,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemClassFailureTimeSetComp.ets",
 				"functions":[
 					{
-						"end_line":101,
+						"end_line":103,
 						"name":"monitor_problem_class_failure_time_set_comp",
 						"start_line":15
 					}
@@ -24230,7 +24230,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemClassFailureTimeEmptyObject.ets",
 				"functions":[
 					{
-						"end_line":101,
+						"end_line":103,
 						"name":"monitor_problem_class_failure_time_empty_object",
 						"start_line":15
 					}
