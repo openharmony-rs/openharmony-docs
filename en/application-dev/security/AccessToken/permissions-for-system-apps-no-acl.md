@@ -200,3 +200,17 @@ Allows a system service to enable distributed hardware resources.
 **Certificate-based authorization**: false
 
 **Valid since**: 11
+
+## ohos.permission.LOAD_NATIVE_LIBRARY
+
+Allow a system application to construct function initialization code via dynamic load library.
+    
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: false
+
+**Supported devices**: Phone | PC/2-in-1 | Tablet | TV | Wearable | Car | LiteWearable | Router | Smartlock
+
+**Valid since**: 26.0.0
