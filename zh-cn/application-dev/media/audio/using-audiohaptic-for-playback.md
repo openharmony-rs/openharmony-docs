@@ -178,6 +178,20 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 3. 调用[createPlayer](../../reference/apis-audio-kit/js-apis-audioHaptic.md#createplayer)方法，创建AudioHapticPlayer实例。
 
    <!-- @[create_haptic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->  
+   
+   ``` TypeScript
+   let options: audioHaptic.AudioHapticPlayerOptions = {muteAudio: false, muteHaptics: false};
+   let audioHapticPlayer: audioHaptic.AudioHapticPlayer | undefined = undefined;
+   // ...
+       audioHapticManagerInstance.createPlayer(idForFd, options).then((value: audioHaptic.AudioHapticPlayer) => {
+         console.info('Succeeded in creating player.');
+         audioHapticPlayer = value;
+         // ...
+       }).catch((err: BusinessError) => {
+         console.error(`Failed to create player. Code: ${err.code}, message: ${err.message}`);
+         // ...
+       });
+   ```
 
    ArkTS-Dyn示例：
    
