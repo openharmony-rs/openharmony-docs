@@ -78,29 +78,29 @@ ArkTS-Dyn示例：
 <!-- @[custom_dialog_control_autoCancel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) --> 
 
 ``` TypeScript
-  autoCancelOpt: promptAction.CustomDialogOptions = {
-    builder: () => {
-      this.myBuilder();
-    },
-    autoCancel: false,
-  } as promptAction.CustomDialogOptions;
-  // ···
-  build() {
-    NavDestination() {
-      Column() {
-        Button('openCustomDialog autoCancel:false')
-          .width('100%')
-          .margin({ top: 10 })
-          .onClick(() => {
-            this.getUIContext().getPromptAction().openCustomDialog(this.autoCancelOpt)
-          })
-         
-        // ···
-      }
-      .width('100%')
-      .height('100%')
+autoCancelOpt: promptAction.CustomDialogOptions = {
+  builder: () => {
+    this.myBuilder();
+  },
+  autoCancel: false,
+} as promptAction.CustomDialogOptions;
+// ...
+build() {
+  NavDestination() {
+    Column() {
+      Button('openCustomDialog autoCancel:false')
+        .width('100%')
+        .margin({ top: 10 })
+        .onClick(() => {
+          this.getUIContext().getPromptAction().openCustomDialog(this.autoCancelOpt);
+        })
+
+      // ...
     }
+    .width('100%')
+    .height('100%')
   }
+}
 ```
 
 ArkTS-Sta示例：
