@@ -752,6 +752,8 @@ Allows an enterprise common application to obtain the list of all installed appl
 
 Allows an application to use backup and restore capabilities.
 
+With this permission, the application can back up and restore user data and application sandbox data.
+
 <!--RP2--><!--RP2End-->
 
 **Permission level**: system_basic
