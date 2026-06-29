@@ -2,8 +2,8 @@
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @fanglou-->
-<!--Designer: @qyhuo32-->
+<!--Owner: @oatuwwutao-->
+<!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -270,7 +270,7 @@ let num = 10; // 编译器自动推断num为number类型
 ``` TypeScript
 interface Person {
   name: string;
-  age?: number;  // age 是可选属性
+  age?: number;  // age是可选属性
 }
 
 const person: Person = {
