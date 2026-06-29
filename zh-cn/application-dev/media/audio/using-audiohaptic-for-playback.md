@@ -1,4 +1,4 @@
-# 使用AudioHaptic开发音振协同播放功能(ArkTs)
+# 使用AudioHaptic开发音振协同播放功能(ArkTS)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
