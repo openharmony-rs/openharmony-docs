@@ -1917,8 +1917,6 @@ ArkTS-Sta: showInSubWindow(showInSubWindow: boolean | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 在PC/2in1设备中可生效，在其他设备类型中不生效。
-
 **ArkTS-Dyn起始版本：** 20
 
 **ArkTS-Sta起始版本：** 23
