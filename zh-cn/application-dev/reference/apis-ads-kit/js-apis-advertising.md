@@ -59,7 +59,7 @@ showAd(ad: Advertisement, options: AdDisplayOptions, context?: common.UIAbilityC
 
 **示例：**
 
-其中context的获取方式参见[各类Context的获取方式](../../application-models/application-context-stage.md#context的获取方式)。
+其中Context的获取方式参见[各类Context的获取方式](../../application-models/application-context-stage.md#Context的获取方式)。
 
 ```typescript
 import { common } from '@kit.AbilityKit';
