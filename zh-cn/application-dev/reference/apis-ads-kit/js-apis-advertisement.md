@@ -1,5 +1,4 @@
-# advertisement (广告内容)
-
+# Advertisement (请求的广告内容)
 <!--Kit: Ads Kit-->
 <!--Subsystem: Advertising-->
 <!--Owner: @SukiEvas-->
@@ -26,11 +25,11 @@ import { advertising } from '@kit.AdsKit';
 
 请求的广告内容。
 
-**元服务API：** 从API version 12开始，该接口支持在元服务中使用。
+**元服务API：**  从API version 12开始，该接口支持在元服务中使用。
 
-**系统能力：** SystemCapability.Advertising.Ads
+**系统能力：**  SystemCapability.Advertising.Ads
 
-| 名称 | 类型 | 只读 | 可选 | 说明 | 
+| 参数名 | 类型 | 只读 | 可选 | 说明 | 
 | -------- | -------- | -------- | -------- | -------- |
 | adType | number | 否 | 否 | 广告类型。<br/>- 1：开屏广告。<br/>- 3：原生广告。<br/>- 7：激励广告。<br/>- 8：横幅广告。<br/>- 12：插屏广告。<br/>- 60：贴片广告。<br/>不填默认为原生广告类型。 | 
 | uniqueId | string | 否 | 否 | 广告唯一标识。 | 
