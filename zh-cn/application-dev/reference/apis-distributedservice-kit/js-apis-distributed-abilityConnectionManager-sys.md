@@ -70,9 +70,7 @@ on(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nb
 
 on(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callback&lt;EventCallbackInfo&gt;):&nbsp;void
 
-注册receiveImage事件的回调监听，用于接收图片传输事件的异步通知。需与off('receiveImage')方法配合使用，在不需要接收图片时，应调用off('receiveImage')取消监听以释放资源。
-
-**使用场景**：远程视频通话、跨设备图片分享、屏幕共享等需要接收对端发送图片数据时，监听图片接收事件并处理。
+注册receiveImage事件的回调监听，用于接收图片传输事件的异步通知。需与off('receiveImage')方法配合使用，在不需要接收图片时，应调用off('receiveImage')取消监听以释放资源。使用场景包括远程视频通话、跨设备图片分享、屏幕共享等需要接收对端发送图片数据时，监听图片接收事件并处理。
 
 **设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
@@ -117,9 +115,7 @@ on(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;C
 
 off(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;Callback&lt;CollaborateEventInfo&gt;):&nbsp;void
 
-取消collaborateEvent事件的回调监听。需与on('collaborateEvent')方法配合使用，在不需要接收协同事件或组件销毁时，应调用此方法取消监听以释放资源。
-
-**使用场景**：协同会话结束、页面销毁或不再需要监听协同状态变化时，及时取消监听以释放资源。
+取消collaborateEvent事件的回调监听。需与on('collaborateEvent')方法配合使用，在不需要接收协同事件或组件销毁时，应调用此方法取消监听以释放资源。使用场景包括协同会话结束、页面销毁或不再需要监听协同状态变化时，及时取消监听以释放资源。
 
 **设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
@@ -161,9 +157,7 @@ off(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&
 
 off(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;Callback&lt;EventCallbackInfo&gt;):&nbsp;void
 
-取消receiveImage事件的回调监听。需与on('receiveImage')方法配合使用，在不需要接收图片或组件销毁时，应调用此方法取消监听以释放资源。
-
-**使用场景**：不再需要接收图片传输事件（如协同会话结束、页面销毁）时，及时取消监听以释放资源。
+取消receiveImage事件的回调监听。需与on('receiveImage')方法配合使用，在不需要接收图片或组件销毁时，应调用此方法取消监听以释放资源，例如在协同会话结束、页面销毁等不再需要接收图片传输事件时。
 
 **设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
@@ -205,9 +199,7 @@ off(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp
 
 sendImage(sessionId:&nbsp;number,&nbsp;image:&nbsp;image.PixelMap,&nbsp;quality?:&nbsp;number):&nbsp;Promise&lt;void&gt;
 
-应用连接成功并创建传输流后，设备A或设备B可向对端设备发送图片。图片会根据指定的压缩质量进行编码后，通过传输流通道发送至对端设备。发送成功后，对端设备可通过注册的回调接收图片，使用Promise异步回调。业务结束后应及时销毁传输流，否则会增加系统功耗。
-
-**使用场景**：跨设备视频通话中发送视频帧、远程协作时发送截图、跨设备图片共享等需要向对端发送图片数据的场景。
+应用连接成功并创建传输流后，设备A或设备B可向对端设备发送图片。图片会根据指定的压缩质量进行编码后，通过传输流通道发送至对端设备。发送成功后，对端设备可通过注册的回调接收图片，使用Promise异步回调。业务结束后应及时销毁传输流，否则会增加系统功耗，使用场景包括跨设备视频通话中发送视频帧、远程协作时发送截图、跨设备图片共享等需要向对端发送图片数据的场景。
 
 **设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
@@ -359,9 +351,7 @@ createStream(sessionId:&nbsp;number,&nbsp;param:&nbsp;StreamParam):&nbsp;Promise
 
 setSurfaceId(streamId:&nbsp;number,&nbsp;surfaceId:&nbsp;string,&nbsp;param:&nbsp;SurfaceParam):&nbsp;void
 
-设置传输流与Surface的绑定关系。Surface用于承载音视频数据的显示或采集，绑定后传输流的音视频数据将直接渲染到Surface上或从Surface采集数据。
-
-**使用场景**：跨设备视频通话中，将接收端的视频流绑定到Surface进行显示；或发送端将Surface采集的视频流传输到对端。
+设置传输流与Surface的绑定关系。Surface用于承载音视频数据的显示或采集，绑定后传输流的音视频数据将直接渲染到Surface上或从Surface采集数据。使用场景包括跨设备视频通话中，将接收端的视频流绑定到Surface进行显示；或发送端将Surface采集的视频流传输到对端。
 
 **设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
@@ -412,9 +402,7 @@ setSurfaceId(streamId:&nbsp;number,&nbsp;surfaceId:&nbsp;string,&nbsp;param:&nbs
 
 getSurfaceId(streamId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;string
 
-获取指定传输流绑定的Surface的唯一标识符。Surface ID可用于将Surface与组件关联，实现音视频数据的显示。
-
-**使用场景**：跨设备视频通话中，获取Surface ID并传递给XComponent组件，实现视频流的显示。
+获取指定传输流绑定的Surface的唯一标识符。Surface ID可用于将Surface与组件关联，实现音视频数据的显示。使用场景包括跨设备视频通话中，获取Surface ID并传递给XComponent组件，实现视频流的显示。
 
 **设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
@@ -468,9 +456,7 @@ getSurfaceId(streamId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;string
 
 updateSurfaceParam(streamId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;void
 
-更新与传输流绑定的Surface的配置信息，使新的配置参数生效。
-
-**使用场景**：视频通话过程中动态调整视频分辨率（如网络状况变化时降低分辨率以保证流畅度）或修改视频格式时，调用此接口更新配置。
+更新与传输流绑定的Surface的配置信息，使新的配置参数生效。使用场景包括视频通话过程中动态调整视频分辨率（如网络状况变化时降低分辨率以保证流畅度）或修改视频格式时，调用此接口更新配置。
 
 **设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
@@ -519,9 +505,7 @@ updateSurfaceParam(streamId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;v
 
 destroyStream(streamId:&nbsp;number):&nbsp;void
 
-发送图片和视频流等业务结束后，创建传输流的应用应及时销毁传输流，否则会增加系统功耗。需与createStream()方法配对使用，在业务结束后必须调用此方法销毁传输流以释放资源。
-
-**使用场景**：跨设备视频通话结束、屏幕共享关闭、远程协作完成等业务场景结束后，及时销毁传输流以释放资源。
+发送图片和视频流等业务结束后，创建传输流的应用应及时销毁传输流，否则会增加系统功耗。需与createStream()方法配对使用，在业务结束后必须调用此方法销毁传输流以释放资源。使用场景包括跨设备视频通话结束、屏幕共享关闭、远程协作完成等业务场景结束后，及时销毁传输流以释放资源。
 
 **设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
@@ -564,9 +548,7 @@ destroyStream(streamId:&nbsp;number):&nbsp;void
 
 startStream(streamId:&nbsp;number):&nbsp;void
 
-启动指定传输流，使传输流开始发送或接收视频数据。启动前需确保传输流已完成Surface绑定，否则无法正常启动。需与stopStream()方法配对使用，使用完毕后应调用stopStream()停止传输流，最后调用destroyStream()销毁传输流以释放资源。
-
-**使用场景**：跨设备视频通话建立后，接收端和发送端均调用此接口启动视频流的传输。
+启动指定传输流，使传输流开始发送或接收视频数据。启动前需确保传输流已完成Surface绑定，否则无法正常启动。需与stopStream()方法配对使用，使用完毕后应调用stopStream()停止传输流，最后调用destroyStream()销毁传输流以释放资源。使用场景包括跨设备视频通话建立后，接收端和发送端均调用此接口启动视频流的传输。
 
 **设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
@@ -610,9 +592,7 @@ startStream(streamId:&nbsp;number):&nbsp;void
 
 stopStream(streamId:&nbsp;number):&nbsp;void
 
-停止指定传输流，使传输流停止发送或接收视频数据。需与startStream()方法配对使用，在不需要传输数据时应调用此方法停止传输流，最后调用destroyStream()销毁传输流以释放资源。
-
-**使用场景**：视频通话暂停、用户关闭摄像头、切换前后摄像头等需要临时停止视频传输时调用。
+停止指定传输流，使传输流停止发送或接收视频数据。需与startStream()方法配对使用，在不需要传输数据时应调用此方法停止传输流，最后调用destroyStream()销毁传输流以释放资源。使用场景包括视频通话暂停、用户关闭摄像头、切换前后摄像头等需要临时停止视频传输时调用。
 
 **设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
