@@ -78,7 +78,7 @@ type PixelMap = import('../api/@ohos.multimedia.image').default.PixelMap
 
 ## ImageAnalyzerController<sup>12+</sup>
 
-图像分析控制器。可以将此对象绑定至支持的组件，通过控制器来调用支持的方法。
+图像AI分析控制器。可以将此对象绑定至支持的组件，通过控制器来调用支持的方法。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -102,7 +102,7 @@ constructor()
 
 getImageAnalyzerSupportTypes(): ImageAnalyzerType[]
 
-获取对应组件支持的分析类型。
+获取对应组件支持的AI分析类型。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -114,7 +114,7 @@ getImageAnalyzerSupportTypes(): ImageAnalyzerType[]
 
 | 类型     | 说明                      |
 | ------ | ----------------------- |
-| [ImageAnalyzerType](#imageanalyzertype12)[] | 对应组件支持的分析类型。 |
+| [ImageAnalyzerType](#imageanalyzertype12)[] | 对应组件支持的AI分析类型。 |
 
 ## ContentTransitionEffect<sup>21+</sup>对象说明
 
