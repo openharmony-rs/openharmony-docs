@@ -830,3 +830,4 @@ This function is not thread-safe.
 | Type| Description|
 | -- | -- |
 | int32_t | Returns **NATIVE_ERROR_OK** if the operation is successful.<br>Returns **NATIVE_ERROR_INVALID_ARGUMENTS** if **image** is a null pointer.|
+<!--no_check-->
