@@ -140,20 +140,20 @@
 以下示例以entry模块配置isolationOnly模式为例：
 
 <!-- @[module_isolation_process_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModuleIsolationProcess/entry/src/main/module.json5) --> 
-    
-  ``` JSON5
-  {
-    "module": {
-      "name": "entry",
-  // ...
-      "isolationMode": "isolationOnly",
-  // ...
-      "abilities": [
-  // ...
-      ],
-      "extensionAbilities": [
-  // ...
-      ]
-    }
+
+``` JSON5
+{
+  "module": {
+    "name": "entry",
+// ...
+    "isolationMode": "isolationOnly",
+// ...
+    "abilities": [
+// ...
+    ],
+    "extensionAbilities": [
+// ...
+    ]
   }
-  ```
+}
+```
