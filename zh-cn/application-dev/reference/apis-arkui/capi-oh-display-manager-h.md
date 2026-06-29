@@ -1019,7 +1019,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplaySourceMode(uint
 
 | 类型 | 说明 |
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。<br>返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。<br>返回DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM，表示参数非法，如sourceMode为空指针或displayId无效。<br>返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 ### OH_NativeDisplayManager_GetDisplayPosition()
 
@@ -1050,6 +1050,6 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplayPosition(uint64
 
 | 类型 | 说明 |
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。<br>返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。<br>当前仅支持主屏幕和扩展屏幕查询屏幕位置信息，其他屏幕查询会返回DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM。 |
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | 返回DISPLAY_MANAGER_OK，表示操作成功。<br>返回DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM，表示参数非法，如x或y为空指针、displayId无效，或屏幕显示模式非主屏和扩展模式。<br>返回DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL，表示系统服务工作异常。 |
 
 
