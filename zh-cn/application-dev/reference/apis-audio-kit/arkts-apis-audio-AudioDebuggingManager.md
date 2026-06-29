@@ -24,7 +24,7 @@ import { audio } from '@kit.AudioKit';
 
 printAppInfo(fd: number): void
 
-打印当前进程中所有音频模块的快照信息。快照包含所有播放流、录音流和音频会话信息。
+打印当前应用进程的完整音频运行时快照。快照包含所有播放流、录音流和音频会话信息。
 
 **起始版本：** 26.0.0
 
@@ -54,7 +54,7 @@ debugManager.printAppInfo(-1);
 
 printRendererInfo(renderer: AudioRenderer, fd: number): void
 
-打印指定音频播放实例的快照信息。快照包含流信息、通路信息、音量和设备信息。
+打印指定音频播放实例的完整音频运行时快照。快照包含流信息、通路信息、音量和设备信息。
 
 **起始版本：** 26.0.0
 
@@ -85,7 +85,7 @@ debugManager.printRendererInfo(renderer, -1);
 
 printCapturerInfo(capturer: AudioCapturer, fd: number): void
 
-打印指定录音实例的快照信息。快照包含流信息、通路信息、音量和设备信息。
+打印指定录音实例的完整音频运行时快照。快照包含流信息、通路信息、音量和设备信息。
 
 **起始版本：** 26.0.0
 
@@ -116,7 +116,7 @@ debugManager.printCapturerInfo(capturer, -1);
 
 printLoopbackInfo(loopback: AudioLoopback, fd: number): void
 
-打印指定耳返实例的快照信息。快照包含耳返状态、设备和音效信息。
+打印指定耳返实例的完整音频运行时快照。快照包含耳返状态、设备和音效信息。
 
 **起始版本：** 26.0.0
 
@@ -147,7 +147,7 @@ debugManager.printLoopbackInfo(loopback, -1);
 
 printSessionInfo(session: AudioSessionManager, fd: number): void
 
-打印指定会话管理器实例的快照信息。快照包含会话状态、场景、策略和设备信息。
+打印指定会话管理器实例的完整音频运行时快照。快照包含会话状态、场景、策略和设备信息。
 
 **起始版本：** 26.0.0
 
