@@ -64,9 +64,9 @@ struct Index {
   pathDir: string = this.content.filesDir;
 
   createFormBindingData() {
+    let filePath = this.pathDir + "/form.png";
+    let file = fileIo.openSync(filePath);
     try {
-      let filePath = this.pathDir + "/form.png";
-      let file = fileIo.openSync(filePath);
       let formImagesParam: Record<string, number> = {
         'image': file.fd
       };
@@ -78,6 +78,8 @@ struct Index {
       formBindingData.createFormBindingData(createFormBindingDataParam);
     } catch (error) {
       console.error(`catch error, error: ${JSON.stringify(error)}`);
+    } finally {
+      fileIo.closeSync(file.fd);
     }
   }
 
