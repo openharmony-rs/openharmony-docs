@@ -81,7 +81,7 @@
 | [void OH_Drawing_DestroyTextStyle(OH_Drawing_TextStyle* style)](#oh_drawing_destroytextstyle) | 释放被OH_Drawing_TextStyle对象占据的内存。 |
 | [void OH_Drawing_SetTextStyleColor(OH_Drawing_TextStyle* style, uint32_t color)](#oh_drawing_settextstylecolor) | 设置文本颜色。 |
 | [void OH_Drawing_SetTextStyleFontSize(OH_Drawing_TextStyle* style, double fontSize)](#oh_drawing_settextstylefontsize) | 设置字号。 |
-| [void OH_Drawing_SetTextStyleFontWeight(OH_Drawing_TextStyle* style, int fontWeight)](#oh_drawing_settextstylefontweight) | 设置字重。 |
+| [void OH_Drawing_SetTextStyleFontWeight(OH_Drawing_TextStyle* style, int fontWeight)](#oh_drawing_settextstylefontweight) | 设置字重。目前只有系统默认字体支持字重的调节，其他字体设置字重值小于semi-bold时字体粗细无变化，当设置字重值大于等于semi-bold时可能会触发伪加粗效果。 |
 | [void OH_Drawing_SetTextStyleBaseLine(OH_Drawing_TextStyle* style, int baseline)](#oh_drawing_settextstylebaseline) | 设置文本样式的字体基线位置。 |
 | [void OH_Drawing_SetTextStyleDecoration(OH_Drawing_TextStyle* style, int decoration)](#oh_drawing_settextstyledecoration) | 设置指定文本样式中的装饰线类型，只能设置一个装饰线类型，添加多个需要使用[OH_Drawing_AddTextStyleDecoration](capi-drawing-text-typography-h.md#oh_drawing_addtextstyledecoration)。 |
 | [void OH_Drawing_AddTextStyleDecoration(OH_Drawing_TextStyle* style, int decoration)](#oh_drawing_addtextstyledecoration) | 新增指定装饰线，可同时显示多种装饰线。 |
@@ -92,13 +92,13 @@
 | [void OH_Drawing_SetTextStyleFontStyle(OH_Drawing_TextStyle* style, int fontStyle)](#oh_drawing_settextstylefontstyle) | 为指定文本样式设置字体样式。 |
 | [void OH_Drawing_SetTextStyleLocale(OH_Drawing_TextStyle* style, const char* locale)](#oh_drawing_settextstylelocale) | 设置文本语言环境。 |
 | [void OH_Drawing_SetTextStyleForegroundBrush(OH_Drawing_TextStyle* style, OH_Drawing_Brush* foregroundBrush)](#oh_drawing_settextstyleforegroundbrush) | 设置指定文本样式中的前景色画刷。 |
-| [void OH_Drawing_TextStyleGetForegroundBrush(OH_Drawing_TextStyle* style, OH_Drawing_Brush* foregroundBrush)](#oh_drawing_textstylegetforegroundbrush) | 通过调用该接口获取已设置的前景色画刷。 |
+| [void OH_Drawing_TextStyleGetForegroundBrush(OH_Drawing_TextStyle* style, OH_Drawing_Brush* foregroundBrush)](#oh_drawing_textstylegetforegroundbrush) | 获取已设置的前景色画刷。 |
 | [void OH_Drawing_SetTextStyleForegroundPen(OH_Drawing_TextStyle* style, OH_Drawing_Pen* foregroundPen)](#oh_drawing_settextstyleforegroundpen) | 设置指定文本样式中的前景色画笔。 |
-| [void OH_Drawing_TextStyleGetForegroundPen(OH_Drawing_TextStyle* style, OH_Drawing_Pen* foregroundPen)](#oh_drawing_textstylegetforegroundpen) | 通过调用该接口获取已设置的前景色画笔。 |
+| [void OH_Drawing_TextStyleGetForegroundPen(OH_Drawing_TextStyle* style, OH_Drawing_Pen* foregroundPen)](#oh_drawing_textstylegetforegroundpen) | 获取已设置的前景色画笔。 |
 | [void OH_Drawing_SetTextStyleBackgroundBrush(OH_Drawing_TextStyle* style, OH_Drawing_Brush* backgroundBrush)](#oh_drawing_settextstylebackgroundbrush) | 设置指定文本样式中的背景色画刷。 |
-| [void OH_Drawing_TextStyleGetBackgroundBrush(OH_Drawing_TextStyle* style, OH_Drawing_Brush* backgroundBrush)](#oh_drawing_textstylegetbackgroundbrush) | 通过调用该接口获取已设置的背景色画刷。 |
+| [void OH_Drawing_TextStyleGetBackgroundBrush(OH_Drawing_TextStyle* style, OH_Drawing_Brush* backgroundBrush)](#oh_drawing_textstylegetbackgroundbrush) | 获取已设置的背景色画刷。 |
 | [void OH_Drawing_SetTextStyleBackgroundPen(OH_Drawing_TextStyle* style, OH_Drawing_Pen* backgroundPen)](#oh_drawing_settextstylebackgroundpen) | 设置指定文本样式中的背景色画笔。 |
-| [void OH_Drawing_TextStyleGetBackgroundPen(OH_Drawing_TextStyle* style, OH_Drawing_Pen* backgroundPen)](#oh_drawing_textstylegetbackgroundpen) | 通过调用该接口获取已设置的背景色画笔。 |
+| [void OH_Drawing_TextStyleGetBackgroundPen(OH_Drawing_TextStyle* style, OH_Drawing_Pen* backgroundPen)](#oh_drawing_textstylegetbackgroundpen) | 获取已设置的背景色画笔。 |
 | [OH_Drawing_TypographyCreate* OH_Drawing_CreateTypographyHandler(OH_Drawing_TypographyStyle* style,OH_Drawing_FontCollection* fontCollection)](#oh_drawing_createtypographyhandler) | 创建指向OH_Drawing_TypographyCreate对象的指针。不再需要[OH_Drawing_TypographyCreate](capi-drawing-oh-drawing-typographycreate.md)时，请使用[OH_Drawing_DestroyTypographyHandler](capi-drawing-text-typography-h.md#oh_drawing_destroytypographyhandler)接口释放该对象的指针。建议优先使用[OH_Drawing_CreateSharedFontCollection](capi-drawing-font-collection-h.md#oh_drawing_createsharedfontcollection)函数创建[OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)对象。 |
 | [void OH_Drawing_DestroyTypographyHandler(OH_Drawing_TypographyCreate* handler)](#oh_drawing_destroytypographyhandler) | 释放被OH_Drawing_TypographyCreate对象占据的内存。 |
 | [void OH_Drawing_TypographyHandlerPushTextStyle(OH_Drawing_TypographyCreate* handler, OH_Drawing_TextStyle* style)](#oh_drawing_typographyhandlerpushtextstyle) | 将指定文本样式压入文本样式栈，后续添加的文本总是会使用栈顶的文本样式。 |
@@ -106,7 +106,7 @@
 | [void OH_Drawing_TypographyHandlerPopTextStyle(OH_Drawing_TypographyCreate* handler)](#oh_drawing_typographyhandlerpoptextstyle) | 从文本样式栈中弹出栈顶文本样式。 |
 | [OH_Drawing_Typography* OH_Drawing_CreateTypography(OH_Drawing_TypographyCreate* handler)](#oh_drawing_createtypography) | 创建指向OH_Drawing_Typography对象的指针。不再需要[OH_Drawing_Typography](capi-drawing-oh-drawing-typography.md)时，请使用[OH_Drawing_DestroyTypography](capi-drawing-text-typography-h.md#oh_drawing_destroytypography)接口释放该对象的指针。 |
 | [void OH_Drawing_DestroyTypography(OH_Drawing_Typography* typography)](#oh_drawing_destroytypography) | 释放OH_Drawing_Typography对象占据的内存。 |
-| [void OH_Drawing_TypographyLayout(OH_Drawing_Typography* typography, double maxWidth)](#oh_drawing_typographylayout) | 通过调用该接口对文本内容进行排版布局计算。 |
+| [void OH_Drawing_TypographyLayout(OH_Drawing_Typography* typography, double maxWidth)](#oh_drawing_typographylayout) | 对文本内容进行排版布局计算。 |
 | [void OH_Drawing_TypographyPaint(OH_Drawing_Typography* typography, OH_Drawing_Canvas* canvas,double positionX, double positionY)](#oh_drawing_typographypaint) | 在指定位置绘制文本，从左上角开始绘制，该接口需要在[OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout)接口调用并生效之后调用。 |
 | [void OH_Drawing_TypographyPaintOnPath(OH_Drawing_Typography* typography, OH_Drawing_Canvas* canvas,OH_Drawing_Path* path, double hOffset, double vOffset)](#oh_drawing_typographypaintonpath) | 沿指定路径绘制文本。建议搭配[OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines)接口设置最大行为1行，避免因文本宽度超过排版宽度出现跨行重叠问题。 |
 | [double OH_Drawing_TypographyGetMaxWidth(OH_Drawing_Typography* typography)](#oh_drawing_typographygetmaxwidth) | 获取用户设置的排版宽度，该接口需要在[OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout)接口调用之后调用。 |
@@ -166,14 +166,14 @@
 | [void OH_Drawing_DestroyLineMetrics(OH_Drawing_LineMetrics* lineMetrics)](#oh_drawing_destroylinemetrics) | 释放行位置信息对象占用的内存。 |
 | [bool OH_Drawing_TypographyGetLineMetricsAt(OH_Drawing_Typography* typography,int lineNumber, OH_Drawing_LineMetrics* lineMetric)](#oh_drawing_typographygetlinemetricsat) | 获取排版对象的指定行位置信息，该接口需要在[OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout)接口调用之后调用。 |
 | [bool OH_Drawing_TypographyGetLineInfo(OH_Drawing_Typography* typography, int lineNumber, bool oneLine,bool includeWhitespace, OH_Drawing_LineMetrics* drawingLineMetrics)](#oh_drawing_typographygetlineinfo) | 获取排版对象中指定行的位置信息或指定行第一个字符的位置信息，该接口需要在[OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout)接口调用之后调用。 |
-| [void OH_Drawing_SetTypographyTextFontWeight(OH_Drawing_TypographyStyle* style, int weight)](#oh_drawing_settypographytextfontweight) | 设置排版样式默认字重。 |
+| [void OH_Drawing_SetTypographyTextFontWeight(OH_Drawing_TypographyStyle* style, int weight)](#oh_drawing_settypographytextfontweight) | 设置排版样式默认字重。目前只有系统默认字体支持字重的调节，其他字体设置字重值小于semi-bold时字体粗细无变化，当设置字重值大于等于semi-bold时可能会触发伪加粗效果。 |
 | [void OH_Drawing_SetTypographyTextFontStyle(OH_Drawing_TypographyStyle* style, int fontStyle)](#oh_drawing_settypographytextfontstyle) | 设置排版样式默认的字体样式。 |
 | [void OH_Drawing_SetTypographyTextFontFamily(OH_Drawing_TypographyStyle* style, const char* fontFamily)](#oh_drawing_settypographytextfontfamily) | 设置字体家族的名称。 |
 | [void OH_Drawing_SetTypographyTextFontSize(OH_Drawing_TypographyStyle* style, double fontSize)](#oh_drawing_settypographytextfontsize) | 设置文本排版字号。 |
 | [void OH_Drawing_SetTypographyTextFontHeight(OH_Drawing_TypographyStyle* style, double fontHeight)](#oh_drawing_settypographytextfontheight) | 设置文本排版字体高度。 |
 | [void OH_Drawing_SetTypographyTextHalfLeading(OH_Drawing_TypographyStyle* style, bool halfLeading)](#oh_drawing_settypographytexthalfleading) | 设置文本排版是否为一半行间距。 |
 | [void OH_Drawing_SetTypographyTextUseLineStyle(OH_Drawing_TypographyStyle* style, bool useLineStyle)](#oh_drawing_settypographytextuselinestyle) | 设置文本排版是否启用行样式。 |
-| [void OH_Drawing_SetTypographyTextLineStyleFontWeight(OH_Drawing_TypographyStyle* style, int weight)](#oh_drawing_settypographytextlinestylefontweight) | 设置排版样式中支柱样式的文本样式字重。 |
+| [void OH_Drawing_SetTypographyTextLineStyleFontWeight(OH_Drawing_TypographyStyle* style, int weight)](#oh_drawing_settypographytextlinestylefontweight) | 设置排版样式中支柱样式的文本样式字重。目前只有系统默认字体支持字重的调节，其他字体设置字重值小于semi-bold时字体粗细无变化，当设置字重值大于等于semi-bold时可能会触发伪加粗效果。 |
 | [void OH_Drawing_SetTypographyTextLineStyleFontStyle(OH_Drawing_TypographyStyle* style, int fontStyle)](#oh_drawing_settypographytextlinestylefontstyle) | 设置文本排版样式中支柱样式的字体样式。 |
 | [void OH_Drawing_SetTypographyTextLineStyleFontFamilies(OH_Drawing_TypographyStyle* style, int fontFamiliesNumber, const char* fontFamilies[])](#oh_drawing_settypographytextlinestylefontfamilies) | 设置文本排版行样式字体类型。 |
 | [void OH_Drawing_SetTypographyTextLineStyleFontSize(OH_Drawing_TypographyStyle* style, double lineStyleFontSize)](#oh_drawing_settypographytextlinestylefontsize) | 设置文本排版行样式字号。 |
@@ -1002,7 +1002,7 @@ void OH_Drawing_SetTextStyleFontWeight(OH_Drawing_TextStyle* style, int fontWeig
 
 **描述**
 
-设置字重。
+设置字重。目前只有系统默认字体支持字重的调节，其他字体设置字重值小于semi-bold时字体粗细无变化，当设置字重值大于等于semi-bold时可能会触发伪加粗效果。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -1620,8 +1620,8 @@ void OH_Drawing_TypographyPaintOnPath(OH_Drawing_Typography* typography, OH_Draw
 | [OH_Drawing_Typography](capi-drawing-oh-drawing-typography.md)* typography | 指向OH_Drawing_Typography对象的指针，由[OH_Drawing_CreateTypography](capi-drawing-text-typography-h.md#oh_drawing_createtypography)获取。 |
 | [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* canvas | 指向OH_Drawing_Canvas对象的指针，由[OH_Drawing_CanvasCreate](capi-drawing-canvas-h.md#oh_drawing_canvascreate)获取。 |
 | [OH_Drawing_Path](capi-drawing-oh-drawing-path.md)* path | 指向OH_Drawing_Path对象的指针，由[OH_Drawing_PathCreate](capi-drawing-path-h.md#oh_drawing_pathcreate)获取。 |
-| double hOffset | 水平偏移量，单位：物理像素px。文本沿路径的水平偏移（X 轴），向右为正，向左为负。 |
-| double vOffset | 垂直偏移量，单位：物理像素px。文本沿路径的垂直偏移（Y 轴），向下为正，向上为负。 |
+| double hOffset | 水平偏移量，单位为物理像素px。文本沿路径的水平偏移（X 轴），向右为正，向左为负。 |
+| double vOffset | 垂直偏移量，单位为物理像素px。文本沿路径的垂直偏移（Y 轴），向下为正，向上为负。 |
 
 ### OH_Drawing_TypographyGetMaxWidth()
 
@@ -1648,7 +1648,7 @@ double OH_Drawing_TypographyGetMaxWidth(OH_Drawing_Typography* typography)
 
 | 类型 | 说明 |
 | -- | -- |
-| double | 返回最大宽度，单位：物理像素px。 |
+| double | 返回最大宽度，单位为物理像素px。 |
 
 ### OH_Drawing_TypographyGetHeight()
 
@@ -1675,7 +1675,7 @@ double OH_Drawing_TypographyGetHeight(OH_Drawing_Typography* typography)
 
 | 类型 | 说明 |
 | -- | -- |
-| double | 返回高度，单位：物理像素px。 |
+| double | 返回高度，单位为物理像素px。 |
 
 ### OH_Drawing_TypographyGetLongestLine()
 
@@ -1702,7 +1702,7 @@ double OH_Drawing_TypographyGetLongestLine(OH_Drawing_Typography* typography)
 
 | 类型 | 说明 |
 | -- | -- |
-| double | 返回最长行的宽度，单位：物理像素px。 |
+| double | 返回最长行的宽度，单位为物理像素px。 |
 
 ### OH_Drawing_TypographyGetLongestLineWithIndent()
 
@@ -1729,7 +1729,7 @@ double OH_Drawing_TypographyGetLongestLineWithIndent(OH_Drawing_Typography* typo
 
 | 类型 | 说明 |
 | -- | -- |
-| double | 返回最长行的宽度（该宽度包含当前行缩进的宽度），单位：物理像素px。 |
+| double | 返回最长行的宽度（该宽度包含当前行缩进的宽度），单位为物理像素px。 |
 
 ### OH_Drawing_TypographyGetMinIntrinsicWidth()
 
@@ -1756,7 +1756,7 @@ double OH_Drawing_TypographyGetMinIntrinsicWidth(OH_Drawing_Typography* typograp
 
 | 类型 | 说明 |
 | -- | -- |
-| double | 返回最小固有宽度，单位：物理像素px。 |
+| double | 返回最小固有宽度，单位为物理像素px。 |
 
 ### OH_Drawing_TypographyGetMaxIntrinsicWidth()
 
@@ -1783,7 +1783,7 @@ double OH_Drawing_TypographyGetMaxIntrinsicWidth(OH_Drawing_Typography* typograp
 
 | 类型 | 说明 |
 | -- | -- |
-| double | 返回最大固有宽度，单位：物理像素px。 |
+| double | 返回最大固有宽度，单位为物理像素px。 |
 
 ### OH_Drawing_TypographyGetAlphabeticBaseline()
 
@@ -1810,7 +1810,7 @@ double OH_Drawing_TypographyGetAlphabeticBaseline(OH_Drawing_Typography* typogra
 
 | 类型 | 说明 |
 | -- | -- |
-| double | 返回字母文字基线，单位：物理像素px。 |
+| double | 返回字母文字基线，单位为物理像素px。 |
 
 ### OH_Drawing_TypographyGetIdeographicBaseline()
 
@@ -1837,7 +1837,7 @@ double OH_Drawing_TypographyGetIdeographicBaseline(OH_Drawing_Typography* typogr
 
 | 类型 | 说明 |
 | -- | -- |
-| double | 返回表意文字基线，单位：物理像素px。 |
+| double | 返回表意文字基线，单位为物理像素px。 |
 
 ### OH_Drawing_TypographyHandlerAddPlaceholder()
 
@@ -2165,8 +2165,8 @@ OH_Drawing_PositionAndAffinity* OH_Drawing_TypographyGetGlyphPositionAtCoordinat
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Drawing_Typography](capi-drawing-oh-drawing-typography.md)* typography | 指向OH_Drawing_Typography对象的指针，由[OH_Drawing_CreateTypography](capi-drawing-text-typography-h.md#oh_drawing_createtypography)获取。 |
-| double dx | 光标的x坐标，单位：px。 |
-| double dy | 光标的y坐标，单位：px。 |
+| double dx | 光标的x坐标，单位为px。 |
+| double dy | 光标的y坐标，单位为px。 |
 
 **返回：**
 
@@ -2248,7 +2248,7 @@ OH_Drawing_Range* OH_Drawing_TypographyGetWordBoundary(OH_Drawing_Typography* ty
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Drawing_Typography](capi-drawing-oh-drawing-typography.md)* typography | 指向OH_Drawing_Typography对象的指针，由[OH_Drawing_CreateTypography](capi-drawing-text-typography-h.md#oh_drawing_createtypography)获取。 |
-| size_t offset | 单词索引，取值范围[0, n-1]，n为文本长度。超出范围时返回默认值或抛出异常。|
+| size_t offset | 单词索引，取值范围为[0, n-1]，n为文本长度。超出范围时返回默认值或抛出异常。|
 
 **返回：**
 
@@ -2401,7 +2401,7 @@ void OH_Drawing_SetTextStyleLetterSpacing(OH_Drawing_TextStyle* style, double le
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | 指向OH_Drawing_TextStyle对象的指针，由[OH_Drawing_CreateTextStyle](capi-drawing-text-typography-h.md#oh_drawing_createtextstyle)获取。 |
-| double letterSpacing | 间距大小，正值增大间距，负值减小间距，默认值为0，单位：px。 |
+| double letterSpacing | 间距大小，正值增大间距，负值减小间距，默认值为0，单位为px。 |
 
 ### OH_Drawing_SetTextStyleWordSpacing()
 
@@ -2423,7 +2423,7 @@ void OH_Drawing_SetTextStyleWordSpacing(OH_Drawing_TextStyle* style, double word
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | 指向OH_Drawing_TextStyle对象的指针，由[OH_Drawing_CreateTextStyle](capi-drawing-text-typography-h.md#oh_drawing_createtextstyle)获取。 |
-| double wordSpacing | 间距大小，正值增大间距，负值减小间距，默认值为0，单位：px。 |
+| double wordSpacing | 间距大小，正值增大间距，负值减小间距，默认值为0，单位为px。 |
 
 ### OH_Drawing_SetTextStyleHalfLeading()
 
@@ -2617,7 +2617,7 @@ double OH_Drawing_TypographyGetLineHeight(OH_Drawing_Typography* typography, int
 
 | 类型 | 说明 |
 | -- | -- |
-| double | 返回指定行的行高，单位：物理像素px。 |
+| double | 返回指定行的行高，单位为物理像素px。 |
 
 ### OH_Drawing_TypographyGetLineWidth()
 
@@ -2645,7 +2645,7 @@ double OH_Drawing_TypographyGetLineWidth(OH_Drawing_Typography* typography, int 
 
 | 类型 | 说明 |
 | -- | -- |
-| double | 返回指定行的行宽，单位：物理像素px。 |
+| double | 返回指定行的行宽，单位为物理像素px。 |
 
 ### OH_Drawing_SetTypographyTextSplitRatio()
 
@@ -3098,7 +3098,7 @@ void OH_Drawing_SetTypographyTextFontWeight(OH_Drawing_TypographyStyle* style, i
 
 **描述**
 
-设置排版样式默认字重。
+设置排版样式默认字重。目前只有系统默认字体支持字重的调节，其他字体设置字重值小于semi-bold时字体粗细无变化，当设置字重值大于等于semi-bold时可能会触发伪加粗效果。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -3176,7 +3176,7 @@ void OH_Drawing_SetTypographyTextFontSize(OH_Drawing_TypographyStyle* style, dou
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)* style | 指向排版样式[OH_Drawing_TypographyStyle](capi-drawing-oh-drawing-typographystyle.md)的指针，由[OH_Drawing_CreateTypographyStyle](capi-drawing-text-typography-h.md#oh_drawing_createtypographystyle)获取。 |
-| double fontSize | 字号（大于0），单位：px。 |
+| double fontSize | 字号（大于0），单位为px。 |
 ### OH_Drawing_SetTypographyTextFontHeight()
 
 ```c
@@ -3251,7 +3251,7 @@ void OH_Drawing_SetTypographyTextLineStyleFontWeight(OH_Drawing_TypographyStyle*
 
 **描述**
 
-设置排版样式中支柱样式的文本样式字重。
+设置排版样式中支柱样式的文本样式字重。目前只有系统默认字体支持字重的调节，其他字体设置字重值小于semi-bold时字体粗细无变化，当设置字重值大于等于semi-bold时可能会触发伪加粗效果。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -4090,7 +4090,7 @@ void OH_Drawing_TextStyleSetBaselineShift(OH_Drawing_TextStyle* style, double li
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | 指向OH_Drawing_TextStyle对象的指针，由[OH_Drawing_CreateTextStyle](capi-drawing-text-typography-h.md#oh_drawing_createtextstyle)获取。 |
-| double lineShift | 文本的基线偏移量，正值向上偏移，负值向下偏移，单位：px。 |
+| double lineShift | 文本的基线偏移量，正值向上偏移，负值向下偏移，单位为px。 |
 
 ### OH_Drawing_TypographyTextSetHeightBehavior()
 
@@ -4568,7 +4568,7 @@ void OH_Drawing_TypographyUpdateFontSize(OH_Drawing_Typography* typography, size
 | [OH_Drawing_Typography](capi-drawing-oh-drawing-typography.md)* typography | 表示指向排版对象[OH_Drawing_Typography](capi-drawing-oh-drawing-typography.md)的指针，由[OH_Drawing_CreateTypography](capi-drawing-text-typography-h.md#oh_drawing_createtypography)获取。 |
 | size_t from | 保留字段，暂未使用。 |
 | size_t to | 保留字段，暂未使用。 |
-| float fontSize | 表示更新后的字体大小，取值需大于0，单位：px。 |
+| float fontSize | 表示更新后的字体大小，取值需大于0，单位为px。 |
 
 ### OH_Drawing_TypographyUpdateFontColor()
 
@@ -4710,7 +4710,7 @@ OH_Drawing_FontWeight OH_Drawing_TypographyTextlineStyleGetFontWeight(OH_Drawing
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_FontWeight](#oh_drawing_fontweight) | 获取文本排版行样式字重。 |
+| [OH_Drawing_FontWeight](#oh_drawing_fontweight) | 返回文本排版行样式字重。<br> 0字重为thin，1字重为extra-light，2字重为light，4字重为medium，5字重为semi-bold，6字重为bold，7字重为extra-bold，8字重为black，3或其它字重为normal/regular，具体可见[OH_Drawing_FontWeight](capi-drawing-text-typography-h.md#oh_drawing_fontweight)枚举。 |
 
 ### OH_Drawing_TypographyTextlineStyleGetFontStyle()
 

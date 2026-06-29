@@ -68,7 +68,7 @@ setTextUndefinedGlyphDisplay(noGlyphShow: TextUndefinedGlyphDisplay): void
 
 设置字符映射到.notdef（未定义）字形时要使用的字形类型。
 
-影响此调用后呈现的所有文本。
+调用此接口后，后续渲染的文本若包含未定义字形，均按此设置显示。
 
 此配置会影响显示字体中未定义字符的方式：
 
@@ -2717,7 +2717,7 @@ ArkTS-Dyn: paint(canvas: drawing.Canvas, x: number, y: number): void
 
 ArkTS-Sta: paint(canvas: drawing.Canvas, x: double, y: double): void
 
-在画布上以 (x, y) 为左上角绘制文本。
+在画布上以 (x, y) 为左上角绘制文本。调用前必须先调用[layout()](#layout18)接口进行排版，否则无法正确显示文本内容。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -2751,7 +2751,7 @@ ArkTS-Dyn: paintOnPath(canvas: drawing.Canvas, path: drawing.Path, hOffset: numb
 
 ArkTS-Sta: paintOnPath(canvas: drawing.Canvas, path: drawing.Path, hOffset: double, vOffset: double): void
 
-在画布上沿路径绘制文本。
+在画布上沿路径绘制文本。调用前必须先调用[layout()](#layout18)接口进行排版，否则无法正确显示文本内容。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -4167,7 +4167,9 @@ struct Index {
 
 forceReuseRasterResult(isForce: boolean): void
 
-设置是否强制复用光栅化结果。设置后，在下次调用[paint](#paint)绘制时生效。true表示强制复用光栅化结果，false表示允许更新光栅化结果，默认值为false。
+设置是否强制复用光栅化结果。不调用此接口时，系统默认允许更新光栅化结果。true表示强制复用光栅化结果，false表示允许更新光栅化结果，默认值为false。
+
+适用于文本内容未发生变化但需要多次调用[paint](#paint)绘制的场景，通过复用光栅化结果可避免重复光栅化计算以提升绘制性能。设置后，在下次调用[paint](#paint)绘制时生效。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -4971,7 +4973,7 @@ struct Index {
 
 build(): Paragraph
 
-用于构建段落，生成可用于后续排版渲染的段落对象。
+用于构建段落，生成可用于后续排版渲染的段落对象。调用build()后，如需再次构建文本，必须创建新的ParagraphBuilder实例。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
