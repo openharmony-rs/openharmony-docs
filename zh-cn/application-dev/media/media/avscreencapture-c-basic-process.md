@@ -464,6 +464,23 @@ if (ret != DISPLAY_MANAGER_OK || !displayInfo) {
     return;
 }
 // 根据设备分辨率在config中配置录屏的宽度、高度。
+config.videoInfo.videoCapInfo.videoFrameWidth = displayInfo->width;
+config.videoInfo.videoCapInfo.videoFrameHeight = displayInfo->height;
+
+// 设置录屏模式为OH_CAPTURE_HOME_SCREEN。
+config.captureMode = OH_CAPTURE_HOME_SCREEN;
+```
+
+
+
+### 录制指定窗口
+
+即[OH_CAPTURE_SPECIFIED_WINDOW](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode)模式。
+
+应用需根据设备分辨率配置录屏的高度和宽度值并传入屏幕ID。
+
+若期望录制某个指定窗口，需要设置指定的窗口Id。该场景下，启动录屏后，系统会默认选中指定的窗口。
+
 <!-- @[SetPCSpecifiedWindowScreenConfigBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
@@ -490,25 +507,6 @@ config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(g_missionIds.
 
 // 在配置参数结束后执行"g_missionIds.clear()"。
 ```
-config.videoInfo.videoCapInfo.videoFrameHeight = displayInfo->height;
-
-// 设置录屏模式为OH_CAPTURE_HOME_SCREEN。
-config.captureMode = OH_CAPTURE_HOME_SCREEN;
-```
-
-
-
-### 录制指定窗口
-
-即[OH_CAPTURE_SPECIFIED_WINDOW](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode)模式。
-
-应用需根据设备分辨率配置录屏的高度和宽度值并传入屏幕ID。
-
-若期望录制某个指定窗口，需要设置指定的窗口Id。该场景下，启动录屏后，系统会默认选中指定的窗口。
-
-<!-- @[SetPCSpecifiedWindowScreenConfigBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) --> 
-
-
 
 <!--RP2--><!--RP2End-->
 
