@@ -151,10 +151,10 @@ interface TestObj {
 interface TestStr {
   info: string;
 }
-// ...
+  // ...
   /*
-   * 将原始JSON字符串`{"info": "{"name": "zhangsan", "age": 18}"}`进行双重转义，
-   * 修改为`{"info": "{\\"name\\": \\"zhangsan\\", \\"age\\": 18}"}`。
+   * 将原始JSON字符串`{"info": "{"name": "zhangsan", "age": 18}"}`进行双重转义
+   * 修改为`{"info": "{\\"name\\": \\"zhangsan\\", \\"age\\": 18}"}`
    * */
   let jsonStr = `{"info": "{\\"name\\": \\"zhangsan\\", \\"age\\": 18}"}`;
   let obj2 = JSON.parse(jsonStr) as TestStr;
