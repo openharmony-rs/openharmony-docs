@@ -132,10 +132,10 @@ getHistoricalPoints?(): Array&lt;MouseHistoricalPoint&gt;
  
  | 名称         | 类型        | 只读 | 可选 | 说明                                      |
  | ---------- | --------- | ---- | ---- | --------------------------------------- |
-| x          | number    | 否   | 否   | 鼠标指针相对于事件响应组件左上角的X坐标。<br>单位：vp          |
-| y          | number    | 否   | 否   | 鼠标指针相对于事件响应组件左上角的Y坐标。<br>单位：vp          |
-| displayX   | number    | 否   | 否   | 鼠标指针相对于当前应用屏幕左上角的X坐标。<br>单位：vp            |
-| displayY   | number    | 否   | 否   | 鼠标指针相对于当前应用屏幕左上角的Y坐标。<br>单位：vp            |
+ | x          | number    | 否   | 否   | 鼠标指针相对于事件响应组件左上角的X坐标。<br>单位：vp          |
+ | y          | number    | 否   | 否   | 鼠标指针相对于事件响应组件左上角的Y坐标。<br>单位：vp          |
+ | displayX   | number    | 否   | 否   | 鼠标指针相对于当前应用屏幕左上角的X坐标。<br>单位：vp            |
+ | displayY   | number    | 否   | 否   | 鼠标指针相对于当前应用屏幕左上角的Y坐标。<br>单位：vp            |
  | windowX    | number    | 否   | 否   | 鼠标指针相对于应用窗口左上角的X坐标。<br>单位：vp            |
  | windowY    | number    | 否   | 否   | 鼠标指针相对于应用窗口左上角的Y坐标。<br>单位：vp            |
  | globalDisplayX | number| 否   | 否   |鼠标位置在[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)中的X坐标。<br>单位：vp  |

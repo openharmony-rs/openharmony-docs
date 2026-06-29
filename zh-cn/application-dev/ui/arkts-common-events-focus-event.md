@@ -401,7 +401,7 @@ onFocus(event: () => void)
 获焦事件回调，绑定该接口的组件获焦时，回调响应。
 
 ```ts
-onBlur(event:() => void)
+onBlur(event: () => void)
 ```
 
 失焦事件回调，绑定该接口的组件失焦时，回调响应。
