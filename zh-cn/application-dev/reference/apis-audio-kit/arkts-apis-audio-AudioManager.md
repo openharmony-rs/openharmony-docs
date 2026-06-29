@@ -295,9 +295,9 @@ import { audio } from '@kit.AudioKit';
 let audioDeviceEnhanceManager: audio.AudioDeviceEnhanceManager = audioManager.getDeviceEnhanceManager();
 ```
 
-## getAudioDebuggingManager
+## getDebuggingManager
 
-getAudioDebuggingManager(): AudioDebuggingManager
+getDebuggingManager(): AudioDebuggingManager
 
 获取音频调试管理器实例。
 
@@ -317,7 +317,7 @@ getAudioDebuggingManager(): AudioDebuggingManager
 
 ```ts
 import { audio } from '@kit.AudioKit';
-let debugManager: audio.AudioDebuggingManager = audioManager.getAudioDebuggingManager();
+let debugManager: audio.AudioDebuggingManager = audioManager.getDebuggingManager();
 ```
 
 ## setAudioParameter<sup>(deprecated)</sup>
