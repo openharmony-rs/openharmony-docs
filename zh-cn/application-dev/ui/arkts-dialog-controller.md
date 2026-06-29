@@ -156,7 +156,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
 
    ArkTS-Dyn示例：
 
-   <!-- @[content_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+   <!-- @[content_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) --> 
    
    ``` TypeScript
    let dialogController: promptAction.CommonController = new promptAction.DialogController();
@@ -246,7 +246,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
 
    ArkTS-Dyn示例：
 
-   <!-- @[dialog_controller_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+   <!-- @[dialog_controller_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) --> 
    
    ``` TypeScript
    let dialogController: promptAction.CommonController = new promptAction.DialogController();
@@ -342,7 +342,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
 
    ArkTS-Dyn示例：
 
-   <!-- @[dialog_controller_id](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+   <!-- @[dialog_controller_id](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) --> 
    
    ``` TypeScript
    let dialogController: promptAction.CommonController = new promptAction.DialogController();

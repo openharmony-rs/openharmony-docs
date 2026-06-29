@@ -75,7 +75,7 @@ ArkUI提供多种弹出框，不同类型的弹出框具备不同的蒙层定制
 
 ArkTS-Dyn示例：
 
-<!-- @[custom_dialog_control_autoCancel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
+<!-- @[custom_dialog_control_autoCancel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) --> 
 
 ``` TypeScript
   autoCancelOpt: promptAction.CustomDialogOptions = {
@@ -138,7 +138,7 @@ build(): void {
 
 ArkTS-Dyn示例：
 
-<!-- @[custom_dialog_control_modal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
+<!-- @[custom_dialog_control_modal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) --> 
 
 ``` TypeScript
   modalOpt: promptAction.CustomDialogOptions = {
@@ -209,7 +209,7 @@ build(): void {
 
 ArkTS-Dyn示例：
 
-<!-- @[custom_dialog_control_mask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
+<!-- @[custom_dialog_control_mask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) --> 
 
 ``` TypeScript
   maskOpt: promptAction.CustomDialogOptions = {
@@ -610,7 +610,7 @@ export struct CustomDialogAnimation {
 
 ArkTS-Dyn示例：
 
-<!-- @[custom_dialog_control](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
+<!-- @[custom_dialog_control](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) --> 
 
 ``` TypeScript
 // xxx.ets
