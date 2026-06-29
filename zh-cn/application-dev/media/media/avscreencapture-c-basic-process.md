@@ -120,6 +120,37 @@ OH_AVScreenCapture_SetMicrophoneEnabled(g_avCapture, isMic);
 
 <!-- @[screenCapture_config_buffer_video](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->    
 
+``` C++
+// 获取屏幕信息。
+uint64_t displayId = 0;
+NativeDisplayManager_ErrorCode ret = OH_NativeDisplayManager_GetDefaultDisplayId(&displayId);
+
+NativeDisplayManager_DisplayInfo* displayInfo = nullptr;
+ret = OH_NativeDisplayManager_CreateDisplayById(displayId, &displayInfo);
+if (ret != DISPLAY_MANAGER_OK || !displayInfo) {
+    return;
+}
+int32_t screenWidth = displayInfo->width;
+int32_t screenHeight = displayInfo->height;
+// 录屏输入规格配置。
+OH_VideoCaptureInfo videoCapInfo = {
+    .videoFrameWidth = screenWidth,
+    .videoFrameHeight = screenHeight,
+    .videoSource = OH_VIDEO_SOURCE_SURFACE_RGBA
+};
+// 录屏输出规格配置。
+OH_VideoEncInfo videoEncInfo = {
+    .videoCodec = OH_H264,
+    .videoBitrate = 2000000,
+    .videoFrameRate = 30
+};
+
+OH_VideoInfo videoInfo = {
+    .videoCapInfo = videoCapInfo,
+    .videoEncInfo = videoEncInfo
+};
+```
+
 
 
 ### 初始化AVScreenCapture实例配置
