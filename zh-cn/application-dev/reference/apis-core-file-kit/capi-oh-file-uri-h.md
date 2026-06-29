@@ -54,7 +54,7 @@ FileManagement_ErrCode OH_FileUri_GetUriFromPath(const char *path, unsigned int 
 | -- | -- |
 | const char *path | 表示要转换的路径。 |
 | unsigned int length | 表示要转换路径的字节长度。 |
-| char **result | 表示转换后的uri, 需要使用standard library标准库的free()方法释放申请的资源。 |
+| char **result | 表示转换后的uri，需要使用standard library标准库的free()方法释放申请的资源。 |
 
 **返回：**
 

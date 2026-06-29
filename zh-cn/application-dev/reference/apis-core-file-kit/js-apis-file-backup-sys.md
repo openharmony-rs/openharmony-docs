@@ -107,7 +107,7 @@ import { backup } from '@kit.CoreFileKit';
 
 > **说明：**
 >
-> file.backup.File与@ohos.file.fs中的提供的[File](js-apis-file-fs.md#file)是带有不同的涵义，前者是继承[FileMeta](#filemeta)和[FileData](#filedata)的对象而后者只有一个文件描述符的对象。请注意区分，不要混淆。
+> file.backup.File与@ohos.file.fs中提供的[File](js-apis-file-fs.md#file)是带有不同的涵义，前者是继承[FileMeta](#filemeta)和[FileData](#filedata)的对象而后者只有一个文件描述符的对象。请注意区分，不要混淆。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
@@ -119,7 +119,7 @@ import { backup } from '@kit.CoreFileKit';
 
 > **说明：**
 >
-> file.backup.File与@ohos.file.fs中的提供的[File](js-apis-file-fs.md#file)是带有不同的涵义，前者是继承[FileMeta](#filemeta)和[FileData](#filedata)的对象而后者只有一个文件描述符的对象。请注意区分，不要混淆。
+> file.backup.File与@ohos.file.fs中提供的[File](js-apis-file-fs.md#file)是带有不同的涵义，前者是继承[FileMeta](#filemeta)和[FileData](#filedata)的对象而后者只有一个文件描述符的对象。请注意区分，不要混淆。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
@@ -135,7 +135,7 @@ import { backup } from '@kit.CoreFileKit';
 
 | 名称        | 类型   | 只读 | 可选 | 说明                                                   |
 | ----------- | ------ | ---- | ---- | ------------------------------------------------------ |
-| triggerType | number |  否  |  否  | 制定碎片清理的触发类型，当前仅支持触发类型0，表示执行器件碎片清理功能。|
+| triggerType | number |  否  |  否  | 指定碎片清理的触发类型，当前仅支持触发类型0，表示执行器件碎片清理功能。|
 | writeSize   | number |  否  |  否  | 碎片清理功能的清理目标，预期可清理出目标大小的可用存储单元。单位：MB，取值范围：0-2097152MB。|
 | waitTime    | number |  否  |  否  | 执行碎片清理功能最大允许时间，超过此时间认为任务超时。单位：秒，取值范围：0-180秒。|
 

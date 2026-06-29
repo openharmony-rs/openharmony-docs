@@ -48,7 +48,7 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
    import { common } from '@kit.AbilityKit';
    ```
 
-2. 根据实际业务需求配置[文件保存选项](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)。以下代码仅例举各选项的配置参考。
+2. 根据实际业务需求配置[文件保存选项](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)。以下代码仅列举各选项的配置参考。
 
    ```ts
    // 创建文件管理器选项实例。

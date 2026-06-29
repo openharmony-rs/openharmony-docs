@@ -92,7 +92,7 @@ fileIo.copyFile(file.fd, 'dstPath', 0).then(() => {
 
 可以通过以下步骤来完成：
 
-1. 使用fileIo.openSyn获取json文件的fd。
+1. 使用fileIo.openSync获取json文件的fd。
 
    ```ts
    import fs from '@ohos.file.fs';

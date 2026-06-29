@@ -318,7 +318,7 @@ FFRT_C_API void ffrt_queue_attr_set_thread_mode(ffrt_queue_attr_t* attr, bool mo
 | 参数项 | 描述 |
 | -- | -- |
 | [ffrt_queue_attr_t](capi-ffrt-ffrt-queue-attr-t.md)* attr | 队列属性指针。 |
-| bool mode | 设置队列任务运行方式。true表示以线程模式运行, false表示以协程方式运行。 |
+| bool mode | 设置队列任务运行方式。true表示以线程模式运行；false表示以协程方式运行。 |
 
 ### ffrt_queue_attr_get_thread_mode()
 
