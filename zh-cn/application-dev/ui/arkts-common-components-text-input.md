@@ -59,7 +59,7 @@ TextInput是单行输入框，TextArea是多行输入框，Search是搜索框。
 
 TextInput、TextArea和Search都支持设置输入框类型，通过type属性进行设置，但是各组件的枚举值略有不同。下面以单行输入框为例进行说明。
 
-TextInput有以下类型可选择：Normal基本输入、Password密码输入、Email邮箱地址输入等模式。通过[type](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#type)属性进行设置：
+TextInput有以下类型可选择：Normal基本输入、Password密码输入、Email邮箱地址输入模式。通过[type](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#type)属性进行设置：
 
 ### 基本输入模式
 
@@ -375,7 +375,7 @@ TextInput({ text: $r('app.string.show_selected_menu') })
   })
 ```
 
-![TextInput_edit_menu_options](figures/TextInput_edit_menu_options.gif)
+![TextInput-edit-menu-options](figures/TextInput-edit-menu-options.gif)
 
 ### 系统菜单中屏蔽系统菜单项
 
@@ -504,9 +504,11 @@ TextInput({ text: $r('app.string.Service_MenuItems_Text') })
 
 
 
-![TextInput_menu_subwindow](figures/TextInput_menu_subwindow.gif)
+![TextInput-menu-subwindow](figures/TextInput-menu-subwindow.gif)
 
 ## 设置输入框避让
+
+提供对键盘避让与光标避两种场景示例。
 
 ### 键盘避让
 
