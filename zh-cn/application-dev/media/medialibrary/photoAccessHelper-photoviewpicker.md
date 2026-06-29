@@ -66,7 +66,7 @@
 
    也可以通过返回的uri[获取图片或视频资源](#指定uri获取图片或视频资源)。
 
-   如有获取元数据需求，可以通过[文件管理](../../reference/apis-core-file-kit/js-apis-file-fs.md)和[文件URI](../../reference/apis-core-file-kit/js-apis-file-fileuri.md)根据uri获取部分文件属性信息，比如文件大小、访问时间、修改时间、文件名、文件路径等。
+   如有获取元数据需求，可以通过[@ohos.file.fs (文件管理)](../../reference/apis-core-file-kit/js-apis-file-fs.md)和[文件URI](../../reference/apis-core-file-kit/js-apis-file-fileuri.md)根据URI获取部分文件属性信息，比如文件大小、访问时间、修改时间、文件名、文件路径等。
 
 ## 指定URI读取文件数据
 
