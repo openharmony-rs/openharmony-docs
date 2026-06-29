@@ -6,7 +6,7 @@
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
-弧形滑块视图容器，提供子组件滑动轮播显示的能力。 
+弧形滑块视图容器，提供子组件滑动轮播显示的能力，适用于可穿戴设备等圆形屏幕场景，并支持弧形圆点指示器、自定义切换动画和旋转表冠控制等能力。
 
 > **说明：**
 >
@@ -72,7 +72,7 @@ ArcSwiper(controller?: ArcSwiperController)
 
 | 参数名     | 类型                                        | 必填 | 说明                                     |
 | ---------- | ------------------------------------------- | ---- | ---------------------------------------- |
-| controller | [ArcSwiperController](#arcswipercontroller) | 否   | 给组件绑定一个控制器，用来控制组件翻页。 |
+| controller | [ArcSwiperController](#arcswipercontroller) | 否   | 给组件绑定一个控制器，用来控制组件翻页。不传入时，组件仍可通过手势滑动切换页面，但无法通过控制器调用翻页方法。 |
 
 
 ## 属性
@@ -333,7 +333,7 @@ ArkTS-Sta: finishAnimation(handler?: FinishAnimationHandler): void
 
 | 参数名  | 类型                                              | 必填 | 说明                                             |
 | ------- | ------------------------------------------------- | ---- | ------------------------------------------------ |
-| handler | [FinishAnimationHandler](#finishanimationhandler) | 否   | 动画结束的回调。<br>默认值：不传入的情况，无回调 |
+| handler | [FinishAnimationHandler](#finishanimationhandler) | 否   | 动画结束的回调。<br/>默认值：不传入时无回调。 |
 
 ## ArcDotIndicator
 
@@ -727,7 +727,7 @@ ArkTS-Dyn: customContentTransition(transition: Optional\<SwiperContentAnimatedTr
 
 ArkTS-Sta: customContentTransition(transition: ArcSwiperContentAnimatedTransition | undefined)
 
-自定义ArcSwiper页面切换动画。在页面跟手滑动和离手后执行切换动画的过程中，会对视窗内所有页面逐帧触发回调。开发者可以在回调中设置透明度、缩放比例、位移等属性来自定义切换动画。
+自定义ArcSwiper页面切换动画。在页面跟手滑动和离手后执行切换动画的过程中，会对视窗内所有页面逐帧触发回调，开发者可在回调中设置透明度、缩放比例、位移等属性。
 
 在页面跟手滑动和离手后执行切换动画的过程中，会对视窗内所有页面逐帧触发[SwiperContentTransitionProxy](#swipercontenttransitionproxy)回调。例如，当视窗内有下标为0、1的两个页面时，会每帧触发两次index值分别为0和1的回调。
 
@@ -950,15 +950,15 @@ struct TestNewInterface {
         .disableSwipe(false)
         .digitalCrownSensitivity(CrownSensitivity.MEDIUM)
         .onChange((index: number) => {
-          console.info("onChange:" + index.toString());
+          console.info('onChange:' + index.toString());
         })
         .onAnimationStart((index: number, targetIndex: number, extraInfo: SwiperAnimationEvent) => {
           this.innerSelectedIndex = targetIndex;
-          console.info("index: " + index);
-          console.info("targetIndex: " + targetIndex);
-          console.info("current offset: " + extraInfo.currentOffset);
-          console.info("target offset: " + extraInfo.targetOffset);
-          console.info("velocity: " + extraInfo.velocity);
+          console.info('index: ' + index);
+          console.info('targetIndex: ' + targetIndex);
+          console.info('current offset: ' + extraInfo.currentOffset);
+          console.info('target offset: ' + extraInfo.targetOffset);
+          console.info('velocity: ' + extraInfo.velocity);
         })
         .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
           others: Array<GestureRecognizer>): GestureJudgeResult => { // 在识别器即将要成功时，根据当前组件状态，设置识别器使能状态
@@ -966,7 +966,7 @@ struct TestNewInterface {
             let target = current.getEventTargetInfo();
             if (target && current.isBuiltIn() && current.getType() == GestureControl.GestureType.PAN_GESTURE) {
               // 此处判断swiperTarget.isBegin()或innerSelectedIndex === 0，表明ArcSwiper滑动到开头
-              let swiperTarget = target as ScrollableTargetInfo
+              let swiperTarget = target as ScrollableTargetInfo;
               if (swiperTarget instanceof ScrollableTargetInfo &&
                 (swiperTarget.isBegin() || this.innerSelectedIndex === 0)) {
                 let panEvent = event as PanGestureEvent;
@@ -979,8 +979,8 @@ struct TestNewInterface {
           return GestureJudgeResult.CONTINUE;
         })
         .onAnimationEnd((index: number, extraInfo: SwiperAnimationEvent) => {
-          console.info("index: " + index);
-          console.info("current offset: " + extraInfo.currentOffset);
+          console.info('index: ' + index);
+          console.info('current offset: ' + extraInfo.currentOffset);
         })
         .disableTransitionAnimation(false)
       }.height('100%')
