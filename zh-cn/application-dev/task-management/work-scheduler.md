@@ -108,10 +108,11 @@
 3. 实现WorkSchedulerExtension生命周期接口。
    <!-- @[workSchedulerExtension](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/WorkSchedulerAbility/WorkSchedulerAbility.ets) --> 
    
-   ```ts
+   ``` TypeScript
    export default class WorkSchedulerAbility extends WorkSchedulerExtensionAbility {
      // 延迟任务开始回调
      onWorkStart(workInfo: workScheduler.WorkInfo) {
+       // ...
        console.info(`onWorkStart, workInfo = ${JSON.stringify(workInfo)}`);
        // 打印 parameters中的参数，如：参数key1
        console.info(`work info parameters: ${JSON.parse(workInfo.parameters?.toString()).key1}`);
