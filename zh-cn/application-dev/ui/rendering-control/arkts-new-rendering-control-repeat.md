@@ -467,7 +467,6 @@ struct RepeatLazyLoadingLongData {
 @ComponentV2
 struct RepeatLazyLoadingSync {
   @Local arr: Array<string> = [];
-
   build() {
     Column({ space: 5 }) {
       List({ space: 5 }) {
