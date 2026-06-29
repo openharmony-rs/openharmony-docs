@@ -78,9 +78,8 @@
    4. 执行推理。使用predict接口进行模型推理。
    
    <!-- @[model_image_classification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteArkTSDemo/entry/src/main/ets/pages/model.ets) --> 
-
-   ```typescript
-   // model.ets
+   
+   ``` TypeScript
    import { mindSporeLite } from '@kit.MindSporeLiteKit'
    import { hilog } from '@kit.PerformanceAnalysisKit';
    
