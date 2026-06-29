@@ -95,7 +95,7 @@ Ap service is not enabled.
 
 **错误信息**
 
-Ap service is not enabled.
+AP service is not enabled.
 
 ### 配置无效导致功能异常
 
