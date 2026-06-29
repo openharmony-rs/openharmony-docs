@@ -32,7 +32,7 @@
    > 
    > 使用AeadParamsSpec初始化Cipher实例，身份认证标签（authTag）自动拼接在密文后，不需要单独保存。
    >
-   > 在使用AeadParamsSpec结构的CCM模式下，算法库支持传入4-16字节的tagLen，如果不传默认为12字节。
+   > 在使用AeadParamsSpec结构的CCM模式下，tagLen支持4、6、8、10、12、14和16，如果不传默认为12，单位均为字节。
 
 **解密**
 

@@ -122,7 +122,7 @@ struct Index {
         'imgSrc': 'image',
         'formImages': formImagesParam
       };
-      formBindingData.createFormBindingData(createFormBindingDataParam);
+      let formBindingDataObj = formBindingData.createFormBindingData(createFormBindingDataParam);
     } catch (error) {
       console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
     }

@@ -135,7 +135,7 @@
 | window | 用于定义与显示窗口相关的配置。<br/>**说明：**<br/>该字段仅对JS卡片生效。 | 对象 | 可缺省，缺省值参考[window标签](#window标签)表格。 |
 | isDefault | 表示该卡片是否为默认卡片(在卡片中心内希望优先展示的卡片)，每个应用有且只有一个默认卡片。<br/>-&nbsp;true：默认卡片。<br/>-&nbsp;false：非默认卡片。<br/>**说明：**<br/> 应用上架时每个应用只允许配置一张默认卡片。| 布尔值 | 否 |
 | colorMode<sup>(deprecated)</sup> | 表示卡片的主题样式，取值范围如下：<br/>-&nbsp;auto：跟随系统的颜色模式值选取主题。<br/>-&nbsp;dark：深色主题。<br/>-&nbsp;light：浅色主题。<br/>**说明：**<br/>1. 从API version 12开始支持该配置项，从API version 20开始废弃该配置项，卡片主题样式统一跟随系统的颜色模式。<br/>2. 该字段仅对JS卡片生效。 | 字符串 | 可缺省，缺省值为“auto”。 |
-| supportDimensions | 表示卡片支持的外观规格，取值范围：<!--RP5--><!--RP5End--><br/>-&nbsp;1&nbsp;\*&nbsp;2：表示1行2列的二宫格。<br/>-&nbsp;2&nbsp;\*&nbsp;2：表示2行2列的四宫格。<br/>-&nbsp;2&nbsp;\*&nbsp;4：表示2行4列的八宫格。<br/>-&nbsp;2&nbsp;\*&nbsp;3：表示2行3列的六宫格。<br/>-&nbsp;3&nbsp;\*&nbsp;3：表示3行3列的九宫格。<br/>-&nbsp;4&nbsp;\*&nbsp;4：表示4行4列的十六宫格。<br/>-&nbsp;6&nbsp;\*&nbsp;4：表示6行4列的二十四宫格。<br>**说明**：&nbsp;2&nbsp;\*&nbsp;3和&nbsp;3&nbsp;\*&nbsp;3仅支持手表设备<!--RP6--><!--RP6End-->。 | 字符串数组 | 否 |
+| supportDimensions | 表示卡片支持的外观规格，取值范围：<!--RP5--><!--RP5End--><br/>-&nbsp;1&nbsp;\*&nbsp;2：表示1行2列的二宫格。<br/>-&nbsp;2&nbsp;\*&nbsp;2：表示2行2列的四宫格。<br/>-&nbsp;2&nbsp;\*&nbsp;4：表示2行4列的八宫格。<br/>-&nbsp;2&nbsp;\*&nbsp;3：表示2行3列的六宫格。<br/>-&nbsp;3&nbsp;\*&nbsp;3：表示3行3列的九宫格。<br/>-&nbsp;4&nbsp;\*&nbsp;4：表示4行4列的十六宫格。<br/>-&nbsp;6&nbsp;\*&nbsp;4：表示6行4列的二十四宫格。<br>**说明**：具体设备支持情况参考[supportDimensions字段与设备支持关系表](#supportdimensions字段与设备支持关系表)。 | 字符串数组 | 否 |
 | defaultDimension | 表示卡片的默认尺寸，取值必须在该卡片supportDimensions配置的列表中。 | 字符串 | 否 |
 | updateEnabled | 表示卡片是否支持周期性刷新（包含定时刷新和定点刷新），取值范围：<br/>-&nbsp;true：表示支持周期性刷新，可以在定时刷新（updateDuration）和定点刷新（scheduledUpdateTime）两种方式任选其一，当两者同时配置时，定时刷新优先生效。<br/>-&nbsp;false：表示不支持周期性刷新。 | 布尔类型 | 否 |
 | scheduledUpdateTime | 表示卡片的[定点刷新](./arkts-ui-widget-passive-refresh.md#卡片定点刷新)的时刻，采用24小时制，精确到分钟，例如："10:30"。<br/>**说明：**<br/>updateDuration参数优先级高于scheduledUpdateTime，两者同时配置时，以updateDuration配置的刷新时间为准。 | 字符串 | 可缺省，缺省值为“0:0”，缺省时不进行定点刷新。 |
@@ -310,3 +310,18 @@
    }
    ```
 <!--RP1End-->
+
+### supportDimensions字段与设备支持关系表
+
+各类型设备支持的卡片尺寸规格。其中"仅锁屏"表示该尺寸仅适用于锁屏场景；"部分机型"表示具体支持情况需根据设备桌面宫格配置判断。
+
+| 卡片尺寸信息 | Phone | PC | 2in1 | Tablet | TV | Car | Wearable |
+|-------------|-------|----|------|------|------|------|------|
+|"1*2"|是|是|是|是|是|是|是|
+|"2*2"|是|是|是|是|是|是|是|
+|"2*4"|是|是|是|是|是|是|否|
+|"4*4"|是|是|是|是|是|是|否|
+|"1*1"|是（仅锁屏）|否|否|是（仅锁屏）|否|否|是|
+|"6*4"|是（部分机型）|是|是|是（部分机型）|否|否|否|
+|"2*3"|否|否|否|否|否|否|是|
+|"3*3"|否|否|否|否|否|否|是|

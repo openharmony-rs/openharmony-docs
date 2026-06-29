@@ -690,9 +690,11 @@ Allows an application to use the global float ball.
 
 **Authorization mode**: system_grant
 
-**Supported devices**: phones | tablets
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 20
+
+**Changelog**: Since API version 26.0.0, this permission is also available on PCs/2-in-1 devices.
 
 ## ohos.permission.AUTO_RESTORE_MAIN_WINDOW
 

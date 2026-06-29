@@ -1092,7 +1092,7 @@ struct SharedLocalStorage {
 
 getHostContext(): Context | undefined
 
-获得当前元能力的Context。
+获得当前组件所在Ability的Context。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1948,7 +1948,7 @@ showTextPickerDialog(style: TextPickerDialogOptions\|TextPickerDialogOptionsExt)
 
 createAnimator(options: AnimatorOptions): AnimatorResult
 
-定义Animator类。
+创建Animator动画结果对象。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 

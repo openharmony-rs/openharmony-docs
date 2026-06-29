@@ -258,7 +258,9 @@ ArkTS-Sta: callbackWrapper(original: Function): Function
 >
 > 该接口要求参数original必须是异步函数类型。如果传入的参数不是异步函数，不会进行拦截，但是会输出错误信息："callbackWrapper: The type of Parameter must be AsyncFunction"。
 >
-> 该接口用于将返回Promise的async函数转换为错误优先回调风格的函数，调用此接口返回的函数接收一个回调函数作为第二个入参，调用此方法时会先执行original函数。当original的Promise返回resolve时，入参的回调函数的第一个参数为null，第二个参数为resolve的值。当original的Promise返回reject时，入参的回调函数的第一个参数为错误对象，第二个参数为null。当original为无入参的函数时，此接口返回的函数第一个入参需传入一个无效的占位参数。
+> 该接口用于将返回Promise的async函数转换为错误优先回调风格的函数，调用此接口返回的函数接收一个回调函数作为第二个入参，调用此方法时会先执行original函数。当original的Promise返回resolve时，入参的回调函数的第一个参数为null，第二个参数为resolve的值。当original的Promise返回reject时，入参的回调函数的第一个参数为错误对象，第二个参数为null。
+>
+> 由于此方法返回类型的声明为`(err: Object, value: Object) => void`，TypeScript编译器会按照该声明进行参数数量校验，因此当original为无入参的函数时，此接口返回的函数第一个入参需传入一个无效的占位参数。当original为多个入参的函数时，此接口返回的函数当前仅支持传入一个参数，可使用array等容器进行多个入参的传入调用（参照下方示例代码）。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -283,6 +285,7 @@ ArkTS-Sta: callbackWrapper(original: Function): Function
 **示例：**
 
 ```ts
+// original为一个入参示例
 async function fn(input: string) {
   return input;
 }
@@ -292,6 +295,21 @@ cb('hello world', (err : Object, ret : string) => {
   console.info(ret);
 });
 // 输出结果：hello world
+```
+
+```ts
+// original需要传入多个入参场景示例
+async function fn(args: Array<string | number | Function>) {
+  console.info('args[0]: ' + args[0]); // args[0]: hello world
+  console.info('args[1]: ' + args[1]); // args[1]: 8
+  return args[0];
+}
+let cb = util.callbackWrapper(fn);
+let args: Array<string | number | Function> = ['hello world', 8]
+cb(args, (err : Object, ret : string) => {
+  if (err) throw new Error;
+  console.info(ret); // 输出结果：hello world
+});
 ```
 
 ## util.promisify<sup>9+</sup>
@@ -851,6 +869,8 @@ static setTrackGlobalRef(enable: boolean): void
 
 开启追踪后，虚拟机会额外记录napi_ref与全局对象的关联关系，可能带来一定的内存和性能开销。在不需要调试时，建议调用`util.ArkTSVM.setTrackGlobalRef(false)`关闭追踪。
 
+该接口的开关为进程级别，进程内的所有线程共享同一开关状态。在任意线程调用本接口设置开关后，将对该进程内所有线程生效。
+
 关于napi_ref的详细说明，请参考[napi_ref](../../napi/use-napi-life-cycle.md#napi_ref)使用指导。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -905,10 +925,6 @@ try {
   hilog.error(0x0000, 'testTag', 'Test Node-API createGlobalRef failed error: %{public}s', error.message);
 }
 ```
-
-开启追踪后，堆快照中全局对象节点将显示napi_ref的地址信息，效果如下图所示：
-
-![setTrackGlobalRef堆快照效果图](figures/setTrackGlobalRef_heap_snapshot.png)
 
 ### onVMHeapMemoryPressure<sup>24+</sup>
 
@@ -5675,6 +5691,42 @@ isAsyncFunction(value: Object): boolean
   // 输出结果：result = true
   ```
 
+> **说明：**
+>
+> 该接口无法对AsyncGenerator Function进行有效判断，建议通过获取函数的`constructor.name`属性与`'AsyncGeneratorFunction'`做判等的方式替代。
+>
+> 该接口无法对Sendable class中的async成员函数进行有效判断，无替代方案。
+
+  <!--code_no_check-->
+  ```ts
+  // /entry/src/main/ets/pages/test.ts
+  export async function* asyncGeneratorFunc() {}
+  ```
+
+  <!--code_no_check-->
+  ```ts
+  import { asyncGeneratorFunc } from './test'
+
+  @Sendable
+  class SendableClass {
+    async asyncFunction() {}
+  }
+
+  let type = new util.types();
+  let result1 = type.isAsyncFunction(asyncGeneratorFunc);
+  console.info("result = " + result1);
+  // 输出结果：result = false
+
+  console.info("asyncGeneratorFunc.constructor.name === AsyncGeneratorFunction : " +
+    (asyncGeneratorFunc.constructor.name === 'AsyncGeneratorFunction'));
+  // 输出结果：asyncGeneratorFunc.constructor.name === AsyncGeneratorFunction : true
+
+  const instance = new SendableClass();
+  let result2 = type.isAsyncFunction(instance.asyncFunction);
+  console.info("result = " + result2);
+  // 输出结果：result = false
+  ```
+
 ### isBooleanObject<sup>(deprecated)</sup>
 
 isBooleanObject(value: Object): boolean
@@ -6016,6 +6068,30 @@ isGeneratorFunction(value: Object): boolean
   let result = type.isGeneratorFunction(foo);
   console.info("result = " + result);
   // 输出结果：result = true
+  ```
+
+> **说明：**
+>
+> 该接口无法对AsyncGenerator Function进行有效判断，建议通过获取函数的`constructor.name`属性与`'AsyncGeneratorFunction'`做判等的方式替代。
+
+  <!--code_no_check-->
+  ```ts
+  // /entry/src/main/ets/pages/test.ts
+  export async function* asyncGeneratorFunc() {}
+  ```
+
+  <!--code_no_check-->
+  ```ts
+  import { asyncGeneratorFunc } from './test'
+
+  let type = new util.types();
+  let result = type.isGeneratorFunction(asyncGeneratorFunc);
+  console.info("result = " + result);
+  // 输出结果：result = false
+
+  console.info("asyncGeneratorFunc.constructor.name === AsyncGeneratorFunction : " +
+    (asyncGeneratorFunc.constructor.name === 'AsyncGeneratorFunction'));
+  // 输出结果：asyncGeneratorFunc.constructor.name === AsyncGeneratorFunction : true
   ```
 
 

@@ -828,11 +828,11 @@ struct PageTwoStack2 {
 
 在API version 17及以下：
 
-点击`Next page`进入下一个页面并返回，会解冻Tabcontent所有的标签。
+点击`Next Page`进入下一个页面并返回，会解冻TabContent所有的标签。
 
 在API version 18及以上：
 
-点击`Next page`进入下一个页面并返回，只会解冻对应标签的节点。
+点击`Next Page`进入下一个页面并返回，只会解冻对应标签的节点。
 
 ## 限制条件
 

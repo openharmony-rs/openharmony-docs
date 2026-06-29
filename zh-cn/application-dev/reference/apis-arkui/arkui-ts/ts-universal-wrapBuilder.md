@@ -65,7 +65,6 @@ let builderVar: WrappedBuilder<[string, number]> = wrapBuilder(myBuilder);
 | ------- | ---------------------- | ---- | ---  | -------- |
 | builder | (...args: Args) => void | 否  | 否   | `@Builder`装饰的全局函数。 |
 
-
 ### constructor
 
 constructor(builder: (...args: Args) => void)

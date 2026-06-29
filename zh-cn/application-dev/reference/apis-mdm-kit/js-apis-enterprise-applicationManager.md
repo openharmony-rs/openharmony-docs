@@ -795,7 +795,7 @@ isModifyAutoStartAppsDisallowed(admin: Want, autoStartApp: Want, accountId: numb
 
 | 类型                                                         | 说明                 |
 | ------------------------------------------------------------ | -------------------- |
-| boolean | 是否禁止用户取消应用自启动，true表示禁止，false表示允许。<!--PR1--><!--PR1End-->|
+| boolean | 是否禁止用户取消应用自启动，true表示禁止，false表示允许。<!--RP1--><!--RP1End-->|
 
 **错误码**：
 
@@ -1469,7 +1469,7 @@ removeUserNonStopApps(admin: Want, applicationInstances: Array&lt;common.Applica
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用无效果。
+**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用无效果。从API version 24开始，该接口在PC/2in1设备可正常调用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1532,7 +1532,7 @@ getUserNonStopApps(admin: Want): Array&lt;common.ApplicationInstance&gt;
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用无效果。
+**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中调用无效果。从API version 24开始，该接口在PC/2in1设备可正常调用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

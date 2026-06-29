@@ -705,7 +705,7 @@ ArkTS-Dyn: getRealPlaybackPositionSync(): number
 
 ArkTS-Sta: getRealPlaybackPositionSync(): long
 
-获取当前播放位置。
+使用同步方法获取当前播放位置。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 

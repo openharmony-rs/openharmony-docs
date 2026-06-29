@@ -1,9 +1,9 @@
 # SegmentButton
-<!--Kit: ArkUI--> 
-<!--Subsystem: ArkUI--> 
-<!--Owner: @xieziang--> 
-<!--Designer: @youzhi92--> 
-<!--Tester: @TerryTsao--> 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @song-song-song-->
+<!--Designer: @fenglinbailu-->
+<!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
 
 分段按钮组件，包含页签类分段按钮、胶囊类单选分段按钮和胶囊类多选分段按钮。
@@ -67,7 +67,7 @@ ArkTS-Sta: SegmentButton({ options: SegmentButtonOptions, selectedIndexes: int[]
 | selectedIndexes | ArkTS-Dyn: number[]<br> ArkTS-Sta: int[]                                     | 是   | @Link       | 分段按钮的选中项编号，第一项的编号为0，之后顺序增加。<br/> **说明：**<br/>`selectedIndexes`使用[@Link装饰器：父子双向同步](../../../ui/state-management/arkts-link.md)，仅支持有效的按钮编号（第一个按钮编号为0，之后按顺序累加），如没有选中项可传入空数组`[]`。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23 |
 | onItemClicked<sup>13+</sup> | ArkTS-Dyn: Callback\<number\><br/> ArkTS-Sta: Callback\<int\>  | 否 | - | 当分段按钮选项被点击时，触发的回调函数接收被点击的选项下标作为参数。若不传入此参数，则点击时不触发回调。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 13 <br/> **ArkTS-Sta起始版本：** 23|
 | maxFontScale<sup>14+</sup> | ArkTS-Dyn: number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) <br> ArkTS-Sta: double&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | ArkTS-Dyn: @Prop<br/> ArkTs-Sta: @PropRef | 分段按钮选项文字的最大字体放大倍数。<br/>取值范围：[1, 2]<br>当设置的值小于1时，按值为1处理，设置的值大于2时，按值为2处理。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 14 <br/> **ArkTS-Sta起始版本：** 23 |     
-| enableStateAnimation<sup>24+</sup>       | boolean   | 否 | ArkTS-Dyn: @Prop<br/> ArkTs-Sta: @PropRef | 设置当通过变量修改selectedIndex值时，是否开启分段按钮的属性动画。<br/>true表示开启分段按钮的属性动画；false表示不开启分段按钮的属性动画，使用原有动画。<br>默认值：false<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 24 <br/> **ArkTS-Sta起始版本：** 24 |
+| enableStateAnimation<sup>24+</sup>       | boolean   | 否 | ArkTS-Dyn: @Prop<br/> ArkTs-Sta: @PropRef | 设置当通过变量修改selectedIndexes值时，是否开启分段按钮的属性动画。<br/>true表示开启分段按钮的属性动画；false表示不开启分段按钮的属性动画，使用原有动画。<br>默认值：false<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 24 <br/> **ArkTS-Sta起始版本：** 24 |
 
 > **说明：** 
 >
@@ -2010,7 +2010,7 @@ struct Index {
         accessibilityDescription: 'SegmentButtonIconTextItem 新手提醒'
       },
       {
-        text: '图标1',
+        text: '图标2',
         icon: $r('sys.media.ohos_ic_public_email'),
         iconAccessibilityText: '未选中图标无障碍文本',
         selectedIcon: $r('sys.media.ohos_ic_public_clock'),
@@ -2019,7 +2019,7 @@ struct Index {
         accessibilityDescription: 'SegmentButtonIconTextItem 新手提醒'
       },
       {
-        text: '图标1',
+        text: '图标3',
         icon: $r('sys.media.ohos_ic_public_email'),
         iconAccessibilityText: '未选中图标无障碍文本',
         selectedIcon: $r('sys.media.ohos_ic_public_clock'),
@@ -2028,7 +2028,7 @@ struct Index {
         accessibilityDescription: 'SegmentButtonIconTextItem 新手提醒'
       },
       {
-        text: '图标1',
+        text: '图标4',
         icon: $r('sys.media.ohos_ic_public_email'),
         iconAccessibilityText: '未选中图标无障碍文本',
         selectedIcon: $r('sys.media.ohos_ic_public_clock'),
@@ -2424,3 +2424,67 @@ struct IndexCl {
 ```
 
 ![segmentbutton-sample7](figures/segmentbutton-sample7.png)
+
+### 示例9（监听SegmentButtonOptions内属性的变化）
+
+[SegmentButtonOptions](#segmentbuttonoptions)使用了@Observed装饰器，SegmentButton组件通过@ObjectLink接收该对象。对于SegmentButtonOptions的一层基本类型属性（如fontColor、backgroundColor等），@Observed与@ObjectLink的联动机制已能观测到属性变化并触发UI刷新，无需额外处理。但对于SegmentButtonOptions中对象类型属性（如imageSize、buttonPadding等）的内部属性（如imageSize的width、height），属于更深层的嵌套属性，@State仅能观测到一层赋值变化，无法感知这类深层属性的修改，导致修改对象类型属性的内部属性时UI不会自动刷新。使用[makeObserved](../js-apis-stateManagement.md#makeobserved)接口对对象类型属性（如imageSize）进行包裹，可以为该对象的内部属性补充深度观察能力，使得修改内部属性（如width、height）时，框架能够监听到变化并触发UI刷新。makeObserved接口的详细说明请参考[makeObserved接口：将非观察数据变为可观察数据](../../../ui/state-management/arkts-new-makeObserved.md)。
+
+以下示例对比了两种场景：点击“修改fontColor颜色”按钮修改iconTextCapsuleOptions的fontColor属性（一层基本类型属性，已通过@Observed与@ObjectLink支持观测），UI自动刷新；点击“修改图标大小”按钮修改iconTextCapsuleOptions.imageSize的width和height属性（imageSize对象的内部属性，需通过UIUtils.makeObserved包裹imageSize才能观测），UI同样自动刷新。
+
+```ts
+import {
+  SegmentButton,
+  SegmentButtonOptions,
+  SegmentButtonItemTuple,
+  UIUtils
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct IndexCl {
+  @State iconTextCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
+    buttons: [
+      { text: '图标1', icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },
+      { text: '图标2', icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },
+      { text: '图标3', icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },
+      { text: '图标4', icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },
+      { text: '图标5', icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') }
+    ] as SegmentButtonItemTuple,
+    multiply: false,
+    // 使用UIUtils.makeObserved包裹imageSize，使内部属性width和height可被观测。
+    imageSize: UIUtils.makeObserved({ width: 30, height: 30 })
+  });
+  @State selectedIndexes: number[] = [0];
+  @State currentFontColor: ResourceColor = Color.Blue;
+
+  build() {
+    Column({ space: 20 }) {
+      SegmentButton({
+        options: this.iconTextCapsuleOptions,
+        selectedIndexes: $selectedIndexes
+      })
+      // 一层基本类型属性，已通过@Observed与@ObjectLink支持this.iconTextCapsuleOptions.fontColor的观测，UI自动刷新。
+      Button('修改fontColor颜色')
+        .onClick(() => {
+          if (this.currentFontColor === Color.Blue) {
+            this.currentFontColor = Color.Red;
+          } else {
+            this.currentFontColor = Color.Blue;
+          }
+          this.iconTextCapsuleOptions.fontColor = this.currentFontColor;
+        })
+      // 修改imageSize的内部属性，由于makeObserved包裹，UI会自动刷新。
+      Button('修改图标大小')
+        .onClick(() => {
+          this.iconTextCapsuleOptions.imageSize.width = 10;
+          this.iconTextCapsuleOptions.imageSize.height = 10;
+        })
+    }
+    .width('100%')
+    .height('50%')
+    .padding({ top: 20 })
+  }
+}
+```
+
+![segmentbutton-sample9](figures/segmentbutton-make-observed.gif)

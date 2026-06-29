@@ -224,7 +224,7 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
 5. 断开连接并销毁Connection对象。
 
     ```ts
-    // 断连接。
+    // 断开连接。
     function linkEnhanceDisconnect(connection: linkEnhance.Connection) {
       console.info(TAG + 'disconnect deviceId = ' + connection.getPeerDeviceId());
       try {

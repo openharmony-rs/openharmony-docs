@@ -1,9 +1,9 @@
 # ChipGroup
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Cuecuexiaoyu-->
-<!--Designer: @youzhi92-->
-<!--Tester: @TerryTsao-->
+<!--Owner: @song-song-song-->
+<!--Designer: @fenglinbailu-->
+<!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ChipGroup组件提供操作块群组，用于文件或资源内容的分类等场景。
@@ -332,7 +332,7 @@ IconOptions定义图标的共通属性。
 
 ## LabelOptions
 
-Label定义图标属性。
+LabelOptions定义文本属性。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -472,6 +472,7 @@ struct Index {
   build() {
     Column() {
       ChipGroup({
+        // items内每个对象设置的都是每个Chip的特定属性。
         items: [
           {
             // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
@@ -506,6 +507,7 @@ struct Index {
             allowClose: true
           },
         ],
+        // 设置Chip的style属性。
         itemStyle: {
           size: ChipSize.SMALL,
           backgroundColor: $r('sys.color.ohos_id_color_button_normal'),
@@ -643,6 +645,7 @@ struct Index {
 
   @Builder
   ChipGroupSuffix(): void {
+    // 开发者通过引用IconGroupSuffix，实现组件最右侧的自定义组件效果。
     IconGroupSuffix({
       items: [{
         icon: { src: $r('sys.media.ohos_ic_public_search_filled'), size: { width: 36, height: 36 } },
@@ -663,6 +666,7 @@ struct Index {
   build() {
     Column() {
       ChipGroup({
+        // items内每个对象设置的都是每个Chip的特定属性。
         items: [
           {
             // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
@@ -697,6 +701,7 @@ struct Index {
             allowClose: true
           },
         ],
+        // 设置Chip的style属性。
         itemStyle: {
           size: ChipSize.NORMAL,
           backgroundColor: $r('sys.color.ohos_id_color_button_normal'),
@@ -711,6 +716,7 @@ struct Index {
         onChange: (activatedChipsIndex: Array<int>) => {
           console.info('chips on clicked, activated index ' + activatedChipsIndex);
         },
+        // 自定义builder，在组件最右侧显示自定义的内容。
         suffix: this.ChipGroupSuffix
       })
     }
@@ -844,6 +850,7 @@ struct Index {
 
   @Builder
   ChipGroupSuffix(): void {
+    // 开发者通过引用IconGroupSuffix，实现组件最右侧的自定义组件效果。
     IconGroupSuffix({
       items: [
         new SymbolGlyphModifier($r('sys.symbol.magnifyingglass'))
@@ -863,6 +870,7 @@ struct Index {
   build() {
     Column() {
       ChipGroup({
+        // items内每个对象设置的都是每个Chip的特定属性。 
         items: [
           {
             prefixSymbol: { normal: this.prefixModifierNormal, activated: this.prefixModifierActivated },
@@ -896,6 +904,7 @@ struct Index {
             allowClose: true,
           },
         ],
+        // 设置Chip的style属性。 
         itemStyle: {
           size: ChipSize.NORMAL,
           backgroundColor: $r('sys.color.ohos_id_color_button_normal'),
@@ -910,6 +919,7 @@ struct Index {
         onChange: (activatedChipsIndex: Array<int>) => {
           console.info('chips on clicked, activated index ' + activatedChipsIndex);
         },
+        // 自定义builder，在组件最右侧显示自定义的内容。
         suffix: this.ChipGroupSuffix
       })
     }
@@ -1170,7 +1180,7 @@ export struct ChipGroupExample2 {
       items: [
         {
           icon: { src: $r('sys.media.ohos_ic_public_more'), },
-          accessibilityText: '更多',
+          accessibilityText: '更多', // 播报“更多，按钮，新手提醒”
           accessibilityDescription: '新手提醒',
           action: () => {
             this.getUIContext().getPromptAction().showToast({
@@ -1180,7 +1190,7 @@ export struct ChipGroupExample2 {
         },
         {
           symbol: new SymbolGlyphModifier($r('sys.symbol.more')),
-          accessibilityText: '更多',
+          accessibilityText: '更多', // 播报“更多，按钮，新手提醒”
           accessibilityDescription: '新手提醒',
           action: () => {
             this.getUIContext().getPromptAction().showToast({
@@ -1191,6 +1201,7 @@ export struct ChipGroupExample2 {
         {
           icon: { src: $r('sys.media.ohos_ic_public_more'), },
           accessibilityText: '更多',
+          // accessibilityLevel属性设置为“no”时，accessibilityText属性和accessibilityDescription属性无效
           accessibilityDescription: '新手提醒',
           accessibilityLevel: 'no',
           action: () => {
@@ -1218,7 +1229,7 @@ export struct ChipGroupExample2 {
                     label: { text: '选项1' },
                     suffixImageIcon: {
                       src: $r('sys.media.save_button_picture'),
-                      accessibilityText: '保存',
+                      accessibilityText: '保存', // 播报“保存，按钮”
                       action: () => {
                         this.getUIContext().getPromptAction().showToast({
                           message: '后缀图标被点击！'
@@ -1234,7 +1245,7 @@ export struct ChipGroupExample2 {
                     },
                     suffixSymbolOptions: {
                       normalAccessibility: {
-                        accessibilityText: '保存'
+                        accessibilityText: '保存' // 播报“保存，按钮”
                       },
                       action: () => {
                         this.getUIContext().getPromptAction().showToast({
@@ -1511,7 +1522,7 @@ export struct ChipGroupExample2 {
       items: [
         {
           icon: { src: $r('sys.media.ohos_ic_public_more'), },
-          accessibilityText: '更多',
+          accessibilityText: '更多', // 播报“更多，按钮，新手提醒”
           accessibilityDescription: '新手提醒',
           action: () => {
             this.getUIContext().getPromptAction().showToast({
@@ -1521,7 +1532,7 @@ export struct ChipGroupExample2 {
         },
         {
           symbol: new SymbolGlyphModifier($r('sys.symbol.more')),
-          accessibilityText: '更多',
+          accessibilityText: '更多', // 播报“更多，按钮，新手提醒”
           accessibilityDescription: '新手提醒',
           action: () => {
             this.getUIContext().getPromptAction().showToast({
@@ -1532,6 +1543,7 @@ export struct ChipGroupExample2 {
         {
           icon: { src: $r('sys.media.ohos_ic_public_more'), },
           accessibilityText: '更多',
+          // accessibilityLevel属性设置为“no”时，accessibilityText属性和accessibilityDescription属性无效
           accessibilityDescription: '新手提醒',
           accessibilityLevel: 'no',
           action: () => {

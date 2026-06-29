@@ -7,7 +7,7 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
-为应用提供多种调试、调优的方法。包括但不限于内存、CPU、GPU、GC等相关数据的获取，进程trace、profiler采集，VM堆快照转储等。由于该模块的接口大多比较耗费性能，接口调用较为耗时，且基于HiDebug模块定义，该模块内的接口仅建议在应用调试、调优阶段使用。若需要在其他场景使用时，请认真评估所需调用的接口对应用性能的影响。
+为应用提供多种调试、调优的方法，帮助开发者定位性能瓶颈、优化应用性能。主要功能包括：内存数据分析、CPU使用率监控、trace采集、profiler采集、VM堆快照转储。由于该模块的接口大多比较耗费性能，接口调用较为耗时，且基于HiDebug模块定义，该模块内的接口仅建议在应用调试、调优阶段使用。若需要在其他场景使用时，请认真评估所需调用的接口对应用性能的影响。
 
 > **说明**：
 >
@@ -272,8 +272,8 @@ ArkTS-Sta: getServiceDump(serviceid: int, fd: int, args: Array\<string>): void
 
 | 参数名   | 类型                                    | 必填 | 说明                         |
 | -------- |---------------------------------------| ---- |----------------------------|
-| serviceid | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 是   | 基于用户输入的service id获取系统服务信息。 |
-| fd | ArkTS-Dyn: number<br/> ArkTS-Sta: int                                | 是   | 文件描述符，接口会向该fd写入数据。         |
+| serviceid | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 是   | 系统服务ID，用于标识要获取信息的系统服务。取值由系统定义，取值范围[0, 255]。传入无效值时返回错误码401。 |
+| fd | ArkTS-Dyn: number<br/> ArkTS-Sta: int                                | 是   | 文件描述符，接口会向该fd写入数据。传入无效文件描述符时返回错误码401。         |
 | args | Array&lt;string&gt;                   | 是   | 系统服务的dump接口参数列表。string长度的最大值为254。 |
 
 **错误码**：
@@ -698,7 +698,7 @@ trace单位流量实测方法：limitSize设置为最大值500M，调用startApp
 | -------- |---------------------------------------------| ---- |------------------------------------|
 | tags     | ArkTS-Dyn: number[] <br/> ArkTS-Sta: long[] | 是   | trace范围，详情请见[tags](#hidebugtags12)。   |
 | flag     | TraceFlag                                   | 是   | 详情请见[TraceFlag](#traceflag12)。        |
-| limitSize| ArkTS-Dyn: number <br/> ArkTS-Sta: int      | 是   | 开启trace文件大小限制，单位为Byte，单个文件大小上限为500MB。 |
+| limitSize| ArkTS-Dyn: number <br/> ArkTS-Sta: int      | 是   | 开启trace文件大小限制，单位为Byte，取值范围（0, 500MB]。超出范围时返回错误码401。 |
 
 **返回值**：
 

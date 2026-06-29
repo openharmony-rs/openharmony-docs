@@ -264,7 +264,7 @@
 | [JSVM_EXTERN JSVM_Status OH_JSVM_DeletePrivate(JSVM_Env env,JSVM_Value object,JSVM_Data key)](#oh_jsvm_deleteprivate) | 从传入的 object 上删除 private key 对应的 private 属性。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateDataReference(JSVM_Env env,JSVM_Data data,uint32_t initialRefcount,JSVM_Ref* result)](#oh_jsvm_createdatareference) | 创建一个对于给定 JSVM_Data 对象的引用，初始的引用计数为传入的 initialRefcount。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_GetReferenceData(JSVM_Env env,JSVM_Ref ref,JSVM_Data* result)](#oh_jsvm_getreferencedata) | 如果引用仍然有效，通过 result 参数返回对应的 JSVM_Data，表示与 JSVM_Ref 关联的 JavaScript 值。否则结果将为空。 |
-| [JSVM_EXTERN JSVM_Status OH_JSVM_BackgroundDeserialize(JSVM_VM vm, JSVM_CodeCache cacheData, JSVM_DeserializeResult* result)](#oh_jsvm_backgrounddeserialize) | 在线程池中反序列化 *JSVM_CodeCache*，通过 *OH_JSVM_ReleaseDeserializeResult* 接口释放 *JSVM_DeserializeResult*。 |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_BackgroundDeserialize(JSVM_VM vm, JSVM_CodeCache cacheData, JSVM_DeserializeResult* result)](#oh_jsvm_backgrounddeserialize) | 在线程池中反序列化 JSVM_CodeCache，通过 OH_JSVM_ReleaseDeserializeResult 接口释放 JSVM_DeserializeResult。 |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseDeserializeResult(JSVM_DeserializeResult result)](#oh_jsvm_releasedeserializeresult) | 当 *JSVM_DeserializeResult* 不再被使用时进行释放。|
 ## 函数说明
 
@@ -6379,7 +6379,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_BackgroundDeserialize(JSVM_VM vm, JSVM_CodeCache
 
 **描述**
 
-在线程池中反序列化 *JSVM_CodeCache*，通过 *OH_JSVM_ReleaseDeserializeResult* 接口释放 *JSVM_DeserializeResult*。
+在线程池中反序列化 JSVM_CodeCache，通过 OH_JSVM_ReleaseDeserializeResult 接口释放 JSVM_DeserializeResult。
 
 **起始版本：** 24
 
@@ -6405,7 +6405,7 @@ JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseDeserializeResult(JSVM_DeserializeResult 
 
 **描述**
 
-当 *JSVM_DeserializeResult* 不再被使用时进行释放。
+当 JSVM_DeserializeResult 不再被使用时进行释放。
 
 **起始版本：** 24
 

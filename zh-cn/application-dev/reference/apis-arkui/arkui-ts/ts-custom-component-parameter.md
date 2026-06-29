@@ -14,7 +14,7 @@
 
 ## ComponentOptions
 
-自定义组件参数，用于配置是否支持组件冻结。
+自定义组件参数，用于配置是否支持组件冻结和全局复用池。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

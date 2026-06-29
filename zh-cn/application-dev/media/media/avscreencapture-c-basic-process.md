@@ -46,13 +46,18 @@
 在CMake脚本中链接动态库：
 
 ```CMake
-target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libnative_buffer.so libnative_media_core.so) 
+target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libnative_buffer.so libnative_media_core.so libnative_display_manager.so)
 ```
 
 添加头文件：
 
-```c++
+<!-- @[screenCapture_import_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/main.h) --> 
+
+``` C
+#include "hilog/log.h"
 #include "napi/native_api.h"
+#include <window_manager/oh_display_info.h>
+#include <window_manager/oh_display_manager.h>
 #include <multimedia/player_framework/native_avscreen_capture.h>
 #include <multimedia/player_framework/native_avscreen_capture_base.h>
 #include <multimedia/player_framework/native_avscreen_capture_errors.h>
@@ -65,8 +70,10 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libnative_buffe
 
 实例化对象，通过[OH_AVScreenCapture_Create](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_create)创建[OH_AVScreenCapture](../../reference/apis-media-kit/capi-avscreencapture-oh-avscreencapture.md)。
 
-```c++
-OH_AVScreenCapture* capture = OH_AVScreenCapture_Create(); 
+<!-- @[screenCapture_create_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) --> 
+
+``` C++
+g_avCapture = OH_AVScreenCapture_Create();
 ```
 
 ### 配置音频采集参数
@@ -289,8 +296,10 @@ void SetCallback(struct OH_AVScreenCapture *capture)
 
 在回调接口中，可以调用获取音频码流[OH_AVScreenCapture_AcquireAudioBuffer](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_acquireaudiobuffer)和获取视频码流[OH_AVScreenCapture_AcquireVideoBuffer](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_acquirevideobuffer)的接口来获取录屏的原始码流。
 
-```c++
-OH_AVScreenCapture_StartScreenCapture(capture);
+<!-- @[screenCapture_startScreenCapture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+result = OH_AVScreenCapture_StartScreenCapture(g_avCapture);
 ```
 
 ### 处理录屏数据
@@ -370,18 +379,25 @@ void OnBufferAvailable(OH_AVScreenCapture *capture, OH_AVBuffer *buffer, OH_AVSc
 
 调用[OH_AVScreenCapture_StopScreenCapture](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_stopscreencapture)后应用会停止录屏或屏幕共享，释放麦克风。
 
-```c++
-// 停止录屏。
-OH_AVScreenCapture_StopScreenCapture(capture);
+<!-- @[screenCapture_stopScreenCapture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+result = OH_AVScreenCapture_StopScreenCapture(g_avCapture);
 ```
 
 ### 释放资源
 
 调用[OH_AVScreenCapture_Release](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_release)释放创建的OH_AVScreenCapture实例，需要在停止录屏后释放。
 
-```c++
-// 释放录屏资源。
-OH_AVScreenCapture_Release(capture);
+<!-- @[screenCapture_releaseScreenCapture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+result = OH_AVScreenCapture_Release(g_avCapture);
+if (result != AV_SCREEN_CAPTURE_ERR_BASE) {
+    OH_LOG_ERROR(LOG_APP, "StopScreenCapture OH_AVScreenCapture_Release: %{public}d", result);
+}
+OH_LOG_INFO(LOG_APP, "OH_AVScreenCapture_Release success");
+g_avCapture = nullptr;
 ```
 
 ## 录屏模式说明

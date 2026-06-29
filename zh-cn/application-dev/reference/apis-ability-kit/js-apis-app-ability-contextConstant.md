@@ -45,7 +45,7 @@ ProcessMode作为[StartOptions](js-apis-app-ability-startOptions.md)的一个属
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该功能仅在2in1和Tablet设备上生效，在其他设备中返回801错误码。
+**设备行为差异**：该功能仅在PC/2in1和Tablet设备上生效，在其他设备中返回801错误码。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -105,7 +105,7 @@ StartupVisibility作为[StartOptions](js-apis-app-ability-startOptions.md)的一
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该功能仅在2in1和Tablet设备上生效，在其他设备中返回801错误码。
+**设备行为差异**：该功能仅在PC/2in1和Tablet设备上生效，在其他设备中返回801错误码。
 
 **ArkTS-Dyn起始版本：** 12
 

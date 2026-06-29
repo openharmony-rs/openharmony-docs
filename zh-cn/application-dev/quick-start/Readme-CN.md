@@ -48,7 +48,10 @@
     - [ArkTS语法适配背景](arkts-migration-background.md)
     - [从TypeScript到ArkTS的适配规则](typescript-to-arkts-migration-guide.md)
     - [适配指导案例](arkts-more-cases.md)
+  - [ArkTS静态背景](arkts-sta-background.md)
+  - [ArkTS静态语言介绍](introduction-to-arkts-sta.md)
   - 从ArkTS-Dyn到ArkTS-Sta的适配指导<!--arkts-dyn-to-arkts-sta-migration-->
+    - [ArkTS-Sta语法迁移规则](arkts-dyn-to-sta-syntax-rules.md)
     - [ArkTS Migration Visualizer使用指南](arkts-migration-visualizer-instructions.md)
     - [ArkTS-Sta builtin迁移规则](arkts-dyn-to-sta-builtin-rules.md)
       - [Array](builtin/arkts-dyn-to-sta-builtin-Array.md)
@@ -72,7 +75,6 @@
     - [ArkTS-Sta 并发迁移规则](arkts-dyn-to-sta-concurrency-rules.md)
     - [ArkTS-Sta EAWorker迁移规则](arkts-dyn-to-sta-worker-migration-guide.md)
     - [ArkTS-Sta SDK迁移规则](arkts-dyn-to-sta-sdk-rules.md)
-    - [ArkTS-Sta语法迁移规则](arkts-dyn-to-sta-syntax-rules.md)
     - [ArkTS-Sta迁移工具使用指导](arkts-easytrans-cli-instructions.md)
     - [ArkTS-Sta迁移工具(EasyTrans)用户手册](arkts-easytrans-userguide.md)
   - ArkTS-Sta动静态类型互操作规范指导<!--arkts-dyn-to-arkts-sta-spec-->

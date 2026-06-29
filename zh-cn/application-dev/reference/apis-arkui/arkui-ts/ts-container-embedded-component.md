@@ -77,7 +77,7 @@ ArkTS-Sta: EmbeddedComponent(loader: import('../api/@ohos.app.ability.Want').def
 | --------------------- | ---------------------------------------------------------- | ---- | ------------------------------------ |
 | loader |import('../api/@ohos.app.ability.[Want](../../apis-ability-kit/js-apis-app-ability-want.md)').default | 是 | 要加载的EmbeddedUIExtensionAbility。 |
 | type | [EmbeddedType](ts-appendix-enums.md#embeddedtype12) | ArkTS-Dyn: 是<br/>ArkTS-Sta: 否 | 提供方的类型。 |
-| options| [EmbeddedOptions](#embeddedoptions) | 否   | 需要传递的构造项。                    |
+| options| [EmbeddedOptions](#embeddedoptions) | 否   | 需要传递的构造参数。                    |
 
 ## 属性
 

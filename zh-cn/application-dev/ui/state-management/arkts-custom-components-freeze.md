@@ -132,7 +132,7 @@ struct PageTwo {
 
 2.在页面1中点击`go to next page`，跳转到页面2，页面1隐藏，状态由active变为inactive。
 
-3.在页面2中点击`this.storageLink2 += 2`，只会回调页面2中@Watch注册的方法second，因为页面1的状态变量此时已被冻结。
+3.在页面2中点击`second page storageLink + 2`，只会回调页面2中@Watch注册的方法second，因为页面1的状态变量此时已被冻结。
 
 4.在页面2中点击`back`，页面2被销毁，页面1的状态由inactive变为active，重新刷新在inactive时被冻结的状态变量，页面1中@Watch注册的方法first被再次调用。
 
@@ -1093,7 +1093,7 @@ struct DelayComponent {
   @Prop @Watch('onChange') delayVal: number;
 
   onChange() {
-    hilog.info(DOMAIN, TAG, `Appmonitor ParamComponent: delayVal changed:${this.delayVal}`);
+    hilog.info(DOMAIN, TAG, `Appmonitor DelayComponent: delayVal changed:${this.delayVal}`);
   }
 
   build() {
@@ -1241,13 +1241,13 @@ struct PageTwoStack {
 
 点击`Next page`进入下一个页面并返回，标签默认在DelayUpdate，再次点击`Incr state`，日志中查询Appmonitor，存在4个打印，页面路由返回时，会解冻Tabcontent所有的标签。
 
-![freeze](figures/freeze_tabcontent_back_api15.png)
+![freeze](figures/freeze_tabcontent_before_api18.png)
 
 在API version 18及以上：
 
 点击`Next page`进入下一个页面并返回，标签默认在DelayUpdate，再次点击`Incr state`，日志中查询Appmonitor，存在2个打印，页面路由返回时，只会解冻对应标签的节点。
 
-![freeze](figures/freeze_tabcontent_back_api16.png)
+![freeze](figures/freeze_tabcontent_after_api18.png)
 
 **页面和LazyForEach**
 

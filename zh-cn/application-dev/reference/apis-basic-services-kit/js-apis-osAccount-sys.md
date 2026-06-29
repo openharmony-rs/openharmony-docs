@@ -11673,6 +11673,7 @@ ArkTS-Sta示例：
 | RECOVERY_KEY<sup>12+</sup> | 8 | 表示键恢复类型。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
 | PRIVATE_PIN<sup>14+</sup> | 16 | 表示隐私PIN类型。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
 | COMPANION_DEVICE<sup>23+</sup> | 64 | 表示伴随设备认证类型。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
+| CUSTOM | 128 | 自定义认证类型。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | DOMAIN<sup>9+</sup>  | 1024     | 表示域认证类型。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23|
 
 ## AuthSubType<sup>8+</sup>
@@ -12119,6 +12120,7 @@ ArkTS-Sta示例：
 | accountId          | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是  | 系统账号标识，默认为undefined。 |
 | authIntent         | [AuthIntent](#authintent12) | 否 | 是  | 认证意图，默认为undefined。 |
 | remoteAuthOptions  | [RemoteAuthOptions](#remoteauthoptions12) | 否 | 是  | 远程认证选项，默认为undefined。 |
+| additionalInfo     | string | 否 | 是  | 身份认证的附加信息，默认为undefined。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。  |
 
 ## GetInputDataOptions<sup>12+</sup>
 

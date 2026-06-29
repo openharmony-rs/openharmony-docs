@@ -93,7 +93,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -158,7 +159,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -215,7 +217,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -275,7 +278,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -363,7 +367,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 // 取消订阅后会收到onDisconnect回调
 notificationSubscribe.unsubscribe(subscriber, unsubscribeCallback);
@@ -425,7 +430,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -536,7 +542,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -600,7 +607,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -660,7 +668,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -724,7 +733,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 
 ```
@@ -779,7 +789,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -833,7 +844,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1050,7 +1062,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1102,7 +1115,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1168,7 +1182,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1226,6 +1241,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info('subscribeNotification success');
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```

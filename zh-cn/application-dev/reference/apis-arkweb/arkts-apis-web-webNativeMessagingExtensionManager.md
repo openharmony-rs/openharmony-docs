@@ -1,12 +1,12 @@
 # @ohos.web.webNativeMessagingExtensionManager (Web Native Messaging Extension Manager)
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @weixin_41848015-->
-<!--Designer: @libing23232323-->
+<!--Owner: @csliutt-private-->
+<!--Designer: @ringking0-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-webNativeMessagingExtensionManager模块提供基于Web标准的消息扩展管理能力。
+webNativeMessagingExtensionManager模块是ArkWeb提供的Web原生消息扩展管理模块，用于在应用侧（调用方）发起并管理到[WebNativeMessagingExtensionAbility](./arkts-apis-web-webNativeMessagingExtensionAbility.md)的连接。开发者可通过[connectNative](#webnativemessagingextensionmanagerconnectnative)方法指定目标扩展Ability并建立连接，通过返回的连接ID与[WebExtensionConnectionCallback](#webextensionconnectioncallback)监听连接建立、断开及失败事件，也可通过[disconnectNative](#webnativemessagingextensionmanagerdisconnectnative)主动释放连接。该模块适用于浏览器扩展与应用通信的场景；使用前需申请[ohos.permission.WEB_NATIVE_MESSAGING](../../security/AccessToken/restricted-permissions.md#ohospermissionweb_native_messaging)权限，且仅在Stage模型下可用。
 
 > **说明**
 >

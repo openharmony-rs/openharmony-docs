@@ -40,8 +40,6 @@ Popup(options: PopupOptions): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 11
@@ -59,8 +57,6 @@ Popup(options: PopupOptions): void
 PopupOptions定义Popup的具体样式参数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -84,8 +80,6 @@ PopupOptions定义Popup的具体样式参数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称       | 类型                                                         | 只读 | 可选 | 说明         |
@@ -103,8 +97,6 @@ PopupButtonOptions定义按钮的相关属性和事件。
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -124,8 +116,6 @@ PopupIconOptions定义图标的属性。
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

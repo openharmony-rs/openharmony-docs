@@ -544,10 +544,11 @@ struct MenuExample {
   build() {
     Column() {
       Text('click for Menu')
+        // 点击文本后弹出普通菜单，content传入MenuElement数组定义菜单项
         .bindMenu([
           {
-            value: 'Menu1',
-            action: () => {
+            value: 'Menu1', // 菜单项文本
+            action: () => { // 点击该菜单项时触发的回调
               console.info('handle Menu1 select');
             }
           },
@@ -578,10 +579,11 @@ struct MenuExample {
   build() {
     Column() {
       Text('click for Menu')
+        // 点击文本后弹出普通菜单，content传入MenuElement数组定义菜单项
         .bindMenu([
           {
-            value: 'Menu1',
-            action: () => {
+            value: 'Menu1', // 菜单项文本
+            action: () => { // 点击该菜单项时触发的回调
               console.info('handle Menu1 select');
             }
           },
@@ -644,8 +646,10 @@ ArkTS-Dyn示例：
 @Entry
 @Component
 struct MenuExample {
+  // 菜单项数量由该数组长度决定，这里展示3个菜单项
   @State listData: number[] = [0, 0, 0];
 
+  // 自定义菜单内容构造器，通过ForEach动态生成图标+文本菜单项
   @Builder MenuBuilder() {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
       ForEach(this.listData, (item:number, index) => {
@@ -663,6 +667,7 @@ struct MenuExample {
             console.info(`Menu${index as number + 1} Clicked!`);
           })
 
+          // 除最后一项外，每项下方添加分隔线
           if (index != this.listData.length - 1) {
             Divider().height(10).width('80%').color('#ccc')
           }
@@ -676,6 +681,7 @@ struct MenuExample {
       Text('click for menu')
         .fontSize(20)
         .margin({ top: 20 })
+        // 传入CustomBuilder自定义菜单内容；hapticFeedbackMode设置弹出时振动（需开启振动权限）
         .bindMenu(this.MenuBuilder, { hapticFeedbackMode: HapticFeedbackMode.ENABLED })
     }
     .height('100%')
@@ -713,12 +719,14 @@ import { State } from '@ohos.arkui.stateManagement';
 @Entry
 @Component
 struct MenuExample {
+  // 菜单项数量由该数组长度决定，这里展示3个菜单项
   @State listData: Array<Int> = new Array<Int>(0, 0, 0);
 
+  // 自定义菜单内容构造器，通过ForEach动态生成图标+文本菜单项
   @Builder
   MenuBuilder() {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-      ForEach(this.listData, (item: int, index: Double) => {
+      ForEach(this.listData, (item: int, index: int) => {
         Column() {
           Row() {
             // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
@@ -733,6 +741,7 @@ struct MenuExample {
             console.info(`Menu${index + 1} Clicked!`);
           })
 
+          // 除最后一项外，每项下方添加分隔线
           if (index != this.listData.length - 1) {
             Divider().height(10).width('80%').color('#ccc')
           }
@@ -746,76 +755,7 @@ struct MenuExample {
       Text('click for menu')
         .fontSize(20)
         .margin({ top: 20 } as Margin)
-        .bindMenu(this.MenuBuilder, { hapticFeedbackMode: HapticFeedbackMode.ENABLED })
-    }
-    .height('100%')
-    .width('100%')
-    .backgroundColor('#f0f0f0')
-  }
-}
-```
-
-ArkTS-Sta示例：
-```ts
-'use static'
-
-import {
-  Entry,
-  Component,
-  Column,
-  Row,
-  Text,
-  Margin,
-  Builder,
-  Flex,
-  HapticFeedbackMode,
-  FlexDirection,
-  FlexAlign,
-  ItemAlign,
-  ForEach,
-  Image,
-  Alignment,
-  Divider,
-  $r
-} from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
-
-@Entry
-@Component
-struct MenuExample {
-  @State listData: Array<Int> = new Array<Int>(0, 0, 0);
-
-  @Builder
-  MenuBuilder() {
-    Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-      ForEach(this.listData, (item: int, index: Double) => {
-        Column() {
-          Row() {
-            // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
-            Image($r("app.media.icon")).width(20).height(20).margin({ right: 5 } as Margin)
-            Text(`Menu${index + 1}`).fontSize(20)
-          }
-          .width('100%')
-          .height(30)
-          .justifyContent(FlexAlign.Center)
-          .align(Alignment.Center)
-          .onClick(() => {
-            console.info(`Menu${index + 1} Clicked!`);
-          })
-
-          if (index != this.listData.length - 1) {
-            Divider().height(10).width('80%').color('#ccc')
-          }
-        }.padding(5).height(40)
-      })
-    }.width(100)
-  }
-
-  build() {
-    Column() {
-      Text('click for menu')
-        .fontSize(20)
-        .margin({ top: 20 } as Margin)
+        // 传入CustomBuilder自定义菜单内容；hapticFeedbackMode设置弹出时振动（需开启振动权限）
         .bindMenu(this.MenuBuilder, { hapticFeedbackMode: HapticFeedbackMode.ENABLED })
     }
     .height('100%')
@@ -836,6 +776,7 @@ ArkTS-Dyn示例：
 @Entry
 @Component
 struct ContextMenuExample {
+  // 自定义菜单内容构造器，定义两个菜单项并用分隔线隔开
   @Builder MenuBuilder() {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
       Text('Test menu item 1')
@@ -858,6 +799,7 @@ struct ContextMenuExample {
     }
     .width('100%')
     .margin({ top: 5 })
+    // responseType为LongPress，长按组件时弹出菜单
     .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
   }
 }
@@ -887,6 +829,7 @@ import { State } from '@ohos.arkui.stateManagement';
 @Entry
 @Component
 struct ContextMenuExample {
+  // 自定义菜单内容构造器，定义两个菜单项并用分隔线隔开
   @Builder
   MenuBuilder() {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
@@ -910,6 +853,7 @@ struct ContextMenuExample {
     }
     .width('100%')
     .margin({ top: 5 } as Margin)
+    // responseType为LongPress，长按组件时弹出菜单
     .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
   }
 }
@@ -926,6 +870,7 @@ ArkTS-Dyn示例：
 @Entry
 @Component
 struct DirectiveMenuExample {
+  // 自定义菜单内容构造器
   @Builder MenuBuilder() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Text('Options')
@@ -946,10 +891,11 @@ struct DirectiveMenuExample {
           .height("25%")
           .backgroundColor('#F0F0F0')
           .textAlign(TextAlign.Center)
+          // responseType为RightClick，右键点击组件时弹出菜单
           .bindContextMenu(this.MenuBuilder, ResponseType.RightClick, {
-            enableArrow: true,
-            placement: Placement.Bottom,
-            hapticFeedbackMode: HapticFeedbackMode.ENABLED
+            enableArrow: true, // 显示指向箭头（指向型菜单）
+            placement: Placement.Bottom, // 菜单优先显示在组件下方
+            hapticFeedbackMode: HapticFeedbackMode.ENABLED // 弹出时振动
           })
       }
     }
@@ -984,6 +930,7 @@ import { State } from '@ohos.arkui.stateManagement';
 @Entry
 @Component
 struct DirectiveMenuExample {
+  // 自定义菜单内容构造器
   @Builder
   MenuBuilder() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -1005,10 +952,11 @@ struct DirectiveMenuExample {
           .height("25%")
           .backgroundColor('#F0F0F0')
           .textAlign(TextAlign.Center)
+          // responseType为RightClick，右键点击组件时弹出菜单
           .bindContextMenu(this.MenuBuilder, ResponseType.RightClick, {
-            enableArrow: true,
-            placement: Placement.Bottom,
-            hapticFeedbackMode: HapticFeedbackMode.ENABLED
+            enableArrow: true, // 显示指向箭头（指向型菜单）
+            placement: Placement.Bottom, // 菜单优先显示在组件下方
+            hapticFeedbackMode: HapticFeedbackMode.ENABLED // 弹出时振动
           })
       }
     }
@@ -1032,6 +980,7 @@ struct Index {
   // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.icon");
 
+  // 菜单内容构造器，使用Menu + MenuItem组件构建系统样式菜单
   @Builder
   MyMenu() {
     Menu() {
@@ -1051,8 +1000,10 @@ struct Index {
             .textAlign(TextAlign.Center)
             .margin(100)
             .fontSize(30)
+            // 长按触发菜单；preview设为IMAGE表示以组件截图作为预览图
             .bindContextMenu(this.MyMenu, ResponseType.LongPress,
               { preview: MenuPreviewMode.IMAGE,
+                // previewAnimationOptions配置预览图动画的起始、结束缩放比例
                 previewAnimationOptions: {scale: [0.8, 1.0]},
               })
             .backgroundColor("#ff3df2f5")
@@ -1092,6 +1043,7 @@ struct Index {
   // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.icon");
 
+  // 菜单内容构造器，使用Menu + MenuItem组件构建系统样式菜单
   @Builder
   MyMenu() {
     Menu() {
@@ -1111,9 +1063,11 @@ struct Index {
             .textAlign(TextAlign.Center)
             .margin(100)
             .fontSize(30)
+            // 长按触发菜单；preview设为IMAGE表示以组件截图作为预览图
             .bindContextMenu(this.MyMenu, ResponseType.LongPress,
               {
                 preview: MenuPreviewMode.IMAGE,
+                // previewAnimationOptions配置预览图动画的起始、结束缩放比例
                 previewAnimationOptions: { scale: [0.8, 1.0] },
               })
             .backgroundColor("#ff3df2f5")
@@ -1138,6 +1092,7 @@ struct Index {
   // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.icon");
 
+  // 菜单内容构造器
   @Builder
   MyMenu() {
     Menu() {
@@ -1147,6 +1102,7 @@ struct Index {
     }
   }
 
+  // 自定义预览内容构造器，长按后先展示该预览图再展开菜单
   @Builder
   MyPreview() {
     Column() {
@@ -1166,6 +1122,7 @@ struct Index {
             .textAlign(TextAlign.Center)
             .margin(100)
             .fontSize(30)
+            // preview传入CustomBuilder，使用自定义内容作为预览图
             .bindContextMenu(this.MyMenu, ResponseType.LongPress,
               {
                 preview: this.MyPreview
@@ -1205,6 +1162,7 @@ struct Index {
   // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.icon");
 
+  // 菜单内容构造器
   @Builder
   MyMenu() {
     Menu() {
@@ -1214,6 +1172,7 @@ struct Index {
     }
   }
 
+  // 自定义预览内容构造器，长按后先展示该预览图再展开菜单
   @Builder
   MyPreview() {
     Column() {
@@ -1234,6 +1193,7 @@ struct Index {
             .textAlign(TextAlign.Center)
             .margin(100)
             .fontSize(30)
+            // preview传入CustomBuilder，使用自定义内容作为预览图
             .bindContextMenu(this.MyMenu, ResponseType.LongPress,
               {
                 preview: this.MyPreview
@@ -1258,6 +1218,7 @@ ArkTS-Dyn示例：
 struct Index {
   // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.icon");
+  // 状态变量控制菜单显隐：true弹出，false关闭
   @State isShown: boolean = false;
 
   @Builder
@@ -1288,13 +1249,16 @@ struct Index {
             .textAlign(TextAlign.Center)
             .margin(100)
             .fontSize(30)
+            // 使用bindContextMenu<12+>，第一个参数为状态变量isShown
             .bindContextMenu(this.isShown, this.MyMenu,
               {
                 preview: this.MyPreview,
+                // 菜单退出动效前同步关闭状态变量，避免状态不一致
                 aboutToDisappear: ()=>{
                   this.isShown = false;
                 }
               })
+          // 点击按钮将isShown置为true以弹出菜单
           Button('click')
             .onClick(()=>{
               this.isShown = true;
@@ -1334,6 +1298,7 @@ import { State } from '@ohos.arkui.stateManagement';
 struct Index {
   // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.icon");
+  // 状态变量控制菜单显隐：true弹出，false关闭
   @State isShown: boolean = false;
 
   @Builder
@@ -1365,13 +1330,16 @@ struct Index {
             .textAlign(TextAlign.Center)
             .margin(100)
             .fontSize(30)
+            // 使用bindContextMenu<12+>，第一个参数为状态变量isShown
             .bindContextMenu(this.isShown, this.MyMenu,
               {
                 preview: this.MyPreview,
+                // 菜单退出动效前同步关闭状态变量，避免状态不一致
                 aboutToDisappear: ()=>{
                   this.isShown = false;
                 }
               })
+          // 点击按钮将isShown置为true以弹出菜单
           Button('click')
             .onClick(()=>{
               this.isShown = true;
@@ -1428,11 +1396,13 @@ struct MenuExample {
         .bindContextMenu(
           this.MenuBuilder,
           ResponseType.LongPress, {
+          // transition控制菜单显示/退出动效：透明度（4s）叠加旋转180度
           transition: TransitionEffect.OPACITY.animation({ duration: 4000, curve: Curve.Ease }).combine(
             TransitionEffect.rotate({ z: 1, angle: 180 })),
           preview: this.MyPreview,
           previewAnimationOptions: {
-            scale: [0.8, 1.0],
+            scale: [0.8, 1.0], // 预览图起始、结束缩放比例
+            // 预览图的显示/退出动效，与菜单动效保持一致
             transition: TransitionEffect.OPACITY.animation({ duration: 4000, curve: Curve.Ease }).combine(
               TransitionEffect.rotate({ z: 1, angle: 180 }))
           }
@@ -1512,11 +1482,13 @@ struct MenuExample {
         .bindContextMenu(
           this.MenuBuilder,
           ResponseType.LongPress, {
+          // transition控制菜单显示/退出动效：透明度（4s）叠加旋转180度
           transition: TransitionEffect.OPACITY.animation({ duration: 4000, curve: Curve.Ease }).combine(
             TransitionEffect.rotate({ z: 1, angle: 180 })),
           preview: this.MyPreview,
           previewAnimationOptions: {
-            scale: [0.8, 1.0],
+            scale: [0.8, 1.0], // 预览图起始、结束缩放比例
+            // 预览图的显示/退出动效，与菜单动效保持一致
             transition: TransitionEffect.OPACITY.animation({ duration: 4000, curve: Curve.Ease }).combine(
               TransitionEffect.rotate({ z: 1, angle: 180 }))
           }
@@ -1540,6 +1512,7 @@ import { SymbolGlyphModifier } from '@kit.ArkUI';
 @Entry
 @Component
 struct MenuExample {
+  // 通过SymbolGlyphModifier配置symbol类型图标及其字号
   @State symbolIconModifier1: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_photo')).fontSize('24vp');
   @State symbolIconModifier2: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_photo')).fontSize('24vp');
   build() {
@@ -1548,10 +1521,11 @@ struct MenuExample {
     }
     .width('100%')
     .margin({ top: 5 })
+    // 通过MenuElement的symbolIcon为菜单项设置symbol图标
     .bindMenu([
       {
         value: 'Menu1',
-        symbolIcon:this.symbolIconModifier1,
+        symbolIcon:this.symbolIconModifier1, // 菜单项图标（symbol类型）
         action: () => {
           console.info('handle Menu1 select');
         }
@@ -1586,6 +1560,7 @@ import { State } from '@ohos.arkui.stateManagement';
 @Entry
 @Component
 struct MenuExample {
+  // 通过SymbolGlyphModifier配置symbol类型图标及其字号
   @State symbolIconModifier1: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_photo')).fontSize('24vp');
   @State symbolIconModifier2: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_photo')).fontSize('24vp');
   build() {
@@ -1594,10 +1569,11 @@ struct MenuExample {
     }
     .width('100%')
     .margin({ top: 5 } as Margin)
+    // 通过MenuElement的symbolIcon为菜单项设置symbol图标
     .bindMenu([
       {
         value: 'Menu1',
-        symbolIcon:this.symbolIconModifier1,
+        symbolIcon:this.symbolIconModifier1, // 菜单项图标（symbol类型）
         action: () => {
           console.info('handle Menu1 select');
         }
@@ -1637,6 +1613,7 @@ struct Index {
     }
   }
 
+  // 自定义预览图内容
   @Builder
   MyPreview() {
     Column() {
@@ -1658,6 +1635,8 @@ struct Index {
               {
                 preview: this.MyPreview,
                 previewAnimationOptions: {
+                  // hoverScale设置组件截图浮起动画的起始、结束缩放比例，
+                  // 实现组件截图到自定义预览图的一镜到底过渡动效
                   hoverScale: [1.0, 0.95]
                 }
               })
@@ -1714,6 +1693,7 @@ struct Index {
     }
   }
 
+  // 自定义预览图内容
   @Builder
   MyPreview() {
     Column() {
@@ -1737,6 +1717,7 @@ struct Index {
               {
                 preview: this.MyPreview,
                 previewAnimationOptions: {
+                  // hoverScale设置组件截图浮起动画的起始、结束缩放比例，实现组件截图到自定义预览图的一镜到底过渡动效
                   hoverScale: [1.0, 0.95]
                 }
               })
@@ -1781,13 +1762,15 @@ struct MenuExample {
             },
           ],
             {
+              // backgroundBlurStyle设置菜单背板模糊材质
               backgroundBlurStyle: BlurStyle.BACKGROUND_THIN,
+              // backgroundBlurStyleOptions自定义模糊效果的各项参数
               backgroundBlurStyleOptions: {
-                colorMode: ThemeColorMode.LIGHT,
-                blurOptions: { grayscale: [20, 20] },
-                policy: BlurStyleActivePolicy.ALWAYS_ACTIVE,
-                adaptiveColor: AdaptiveColor.AVERAGE,
-                scale: 1
+                colorMode: ThemeColorMode.LIGHT, // 模糊内容色调（浅色）
+                blurOptions: { grayscale: [20, 20] }, // 灰度参数
+                policy: BlurStyleActivePolicy.ALWAYS_ACTIVE, // 模糊始终保持激活
+                adaptiveColor: AdaptiveColor.AVERAGE, // 取色方式取均值
+                scale: 1 // 模糊缩放倍数
               },
             }
           )
@@ -1844,13 +1827,15 @@ struct MenuExample {
             } as MenuElement,
           ],
             {
+              // backgroundBlurStyle设置菜单背板模糊材质
               backgroundBlurStyle: BlurStyle.BACKGROUND_THIN,
+              // backgroundBlurStyleOptions自定义模糊效果的各项参数
               backgroundBlurStyleOptions: {
-                colorMode: ThemeColorMode.LIGHT,
-                blurOptions: { grayscale: [20, 20] },
-                policy: BlurStyleActivePolicy.ALWAYS_ACTIVE,
-                adaptiveColor: AdaptiveColor.AVERAGE,
-                scale: 1
+                colorMode: ThemeColorMode.LIGHT, // 模糊内容色调（浅色）
+                blurOptions: { grayscale: [20, 20] }, // 灰度参数
+                policy: BlurStyleActivePolicy.ALWAYS_ACTIVE, // 模糊始终保持激活
+                adaptiveColor: AdaptiveColor.AVERAGE, // 取色方式取均值
+                scale: 1 // 模糊缩放倍数
               } as BackgroundBlurStyleOptions,
             }
           )
@@ -1897,13 +1882,14 @@ struct MenuExample {
           ],
             {
               backgroundBlurStyle: BlurStyle.BACKGROUND_THIN,
+              // backgroundEffect自定义菜单背景效果（模糊半径、饱和度、亮度、颜色等）
               backgroundEffect: {
-                radius: 60,
-                saturation: 10,
-                brightness: 1,
-                color: '#661A1A1A',
-                adaptiveColor: AdaptiveColor.AVERAGE,
-                blurOptions:{grayscale:[20,20]}
+                radius: 60, // 模糊半径
+                saturation: 10, // 饱和度
+                brightness: 1, // 亮度
+                color: '#661A1A1A', // 背景颜色
+                adaptiveColor: AdaptiveColor.AVERAGE, // 取色方式取均值
+                blurOptions:{grayscale:[20,20]} // 灰度参数
               }
             }
           )
@@ -1957,13 +1943,14 @@ struct MenuExample {
           ],
             {
               backgroundBlurStyle: BlurStyle.BACKGROUND_THIN,
+              // backgroundEffect自定义菜单背景效果（模糊半径、饱和度、亮度、颜色等）
               backgroundEffect: {
-                radius: 60,
-                saturation: 10,
-                brightness: 1,
-                color: '#661A1A1A',
-                adaptiveColor: AdaptiveColor.AVERAGE,
-                blurOptions:{grayscale:[20,20]}
+                radius: 60, // 模糊半径
+                saturation: 10, // 饱和度
+                brightness: 1, // 亮度
+                color: '#661A1A1A', // 背景颜色
+                adaptiveColor: AdaptiveColor.AVERAGE, // 取色方式取均值
+                blurOptions:{grayscale:[20,20]} // 灰度参数
               }
             }
           )
@@ -2000,6 +1987,7 @@ struct Index {
     }
   }
 
+  // 自定义预览图内容
   @Builder
   MyPreview() {
     Column() {
@@ -2022,6 +2010,7 @@ struct Index {
                 preview: this.MyPreview,
                 previewAnimationOptions: {
                   hoverScale: [1.0, 0.8],
+                  // hoverScaleInterruption为true时，触发拖拽效果前抬手允许取消预览菜单弹出
                   hoverScaleInterruption: true
                 }
               })
@@ -2055,6 +2044,7 @@ struct Index {
     }
   }
 
+  // 自定义预览图内容
   @Builder
   MyPreview() {
     Column() {
@@ -2079,6 +2069,7 @@ struct Index {
                 preview: this.MyPreview,
                 previewAnimationOptions: {
                   hoverScale: [1.0, 0.8],
+                  // hoverScaleInterruption为true时，触发拖拽效果前抬手允许取消预览菜单弹出
                   hoverScaleInterruption: true
                 }
               })
@@ -2129,8 +2120,8 @@ struct Index {
             .fontSize(30)
             .bindContextMenu(this.MyMenu, ResponseType.LongPress,
               {
-                preview: MenuPreviewMode.IMAGE,
-                previewBorderRadius: 50
+                preview: MenuPreviewMode.IMAGE, // 以组件截图作为预览图
+                previewBorderRadius: 50 // 设置预览图边框圆角半径
               })
             .backgroundColor("#ff7fcdff")
         }
@@ -2189,8 +2180,8 @@ struct Index {
             .fontSize(30)
             .bindContextMenu(this.MyMenu, ResponseType.LongPress,
               {
-                preview: MenuPreviewMode.IMAGE,
-                previewBorderRadius: 50
+                preview: MenuPreviewMode.IMAGE, // 以组件截图作为预览图
+                previewBorderRadius: 50 // 设置预览图边框圆角半径
               })
             .backgroundColor("#ff7fcdff")
         }
@@ -2215,9 +2206,10 @@ ArkTS-Dyn示例：
 struct Index {
   // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.startIcon");
-  @State isShown: boolean = false;
+  @State isShown: boolean = false; // 控制菜单显隐
   @State textColor: Color = Color.Black;
   @State blueColor: Color = Color.Blue;
+  // 以下四个状态分别标记各生命周期是否触发过，用于在界面上用颜色直观显示
   @State onWillAppear: boolean = false;
   @State onDidAppear: boolean = false;
   @State onWillDisappear: boolean = false;
@@ -2235,13 +2227,14 @@ struct Index {
   build() {
     Column() {
       Column({ space: 30 }) {
+        // 对应生命周期触发时，文本变蓝以直观展示回调时机
         Text('onWillAppear').fontColor(this.onWillAppear ? this.blueColor : this.textColor)
         Text('onDidAppear').fontColor(this.onDidAppear ? this.blueColor : this.textColor)
         Text('onWillDisappear').fontColor(this.onWillDisappear ? this.blueColor : this.textColor)
         Text('onDidDisappear').fontColor(this.onDidDisappear ? this.blueColor : this.textColor)
         Button('click')
           .onClick(() => {
-            this.isShown = true;
+            this.isShown = true; // 弹出菜单
           })
           .width(100)
           .height(50)
@@ -2251,6 +2244,7 @@ struct Index {
           .textAlign(TextAlign.Center)
           .fontSize(20)
           .fontColor(this.textColor)
+          // 配置菜单生命周期的回调：依次为显示动效前、弹出后、退出动效前、消失后
           .bindMenu(this.isShown, this.MyMenu,
             {
               onWillAppear: () => {
@@ -2262,7 +2256,7 @@ struct Index {
                 this.onDidAppear = true;
               },
               onWillDisappear: () => {
-                this.isShown = false;
+                this.isShown = false; // 同步关闭状态变量
                 console.info("menu cycle life onWillDisappear");
                 this.onWillDisappear = true;
               },
@@ -2288,9 +2282,10 @@ import { State } from '@ohos.arkui.stateManagement';
 struct Index {
   // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r("app.media.startIcon")
-  @State isShown: boolean = false
+  @State isShown: boolean = false // 控制菜单显隐
   @State textColor: Color = Color.Black
   @State blueColor: Color = Color.Blue
+  // 以下四个状态分别标记各生命周期是否触发过，用于在界面上用颜色直观显示
   @State onWillAppear: boolean = false
   @State onDidAppear: boolean = false
   @State onWillDisappear: boolean = false
@@ -2308,13 +2303,14 @@ struct Index {
   build() {
     Column() {
       Column({ space: 30 } as ColumnOptions) {
+        // 对应生命周期触发时，文本变蓝以直观展示回调时机
         Text('onWillAppear').fontColor(this.onWillAppear ? this.blueColor : this.textColor)
         Text('onDidAppear').fontColor(this.onDidAppear ? this.blueColor : this.textColor)
         Text('onWillDisappear').fontColor(this.onWillDisappear ? this.blueColor : this.textColor)
         Text('onDidDisappear').fontColor(this.onDidDisappear ? this.blueColor : this.textColor)
         Button('click')
           .onClick(() => {
-            this.isShown = true;
+            this.isShown = true; // 弹出菜单
           })
           .width(100)
           .height(50)
@@ -2324,6 +2320,7 @@ struct Index {
           .textAlign(TextAlign.Center)
           .fontSize(20)
           .fontColor(this.textColor)
+          // 配置菜单生命周期的回调：依次为显示动效前、弹出后、退出动效前、消失后
           .bindMenu(this.isShown, this.MyMenu,
             {
               onWillAppear: () => {
@@ -2335,7 +2332,7 @@ struct Index {
                 this.onDidAppear = true;
               },
               onWillDisappear: () => {
-                this.isShown = false;
+                this.isShown = false; // 同步关闭状态变量
                 console.info("menu cycle life onWillDisappear");
                 this.onWillDisappear = true;
               },
@@ -2366,8 +2363,9 @@ import { SymbolGlyphModifier } from '@kit.ArkUI';
 @Component
 struct Index {
   @State startIconModifier: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_star'))
-  @State isShow: boolean = false;
+  @State isShow: boolean = false; // 控制菜单显隐
 
+  // 菜单内容构造器，菜单项使用symbol图标
   @Builder
   MyMenu() {
     Menu() {
@@ -2392,6 +2390,7 @@ struct Index {
       .onClick(() => {
         this.isShow = !this.isShow;
       })
+      // mask自定义菜单蒙层：设置蒙层颜色与模糊材质
       .bindMenu(this.isShow, this.MyMenu, {
         mask: { color: 'rgba(23,169,141,0.5)', backgroundBlurStyle: BlurStyle.Thin }
       })
@@ -2409,8 +2408,9 @@ import { State } from '@ohos.arkui.stateManagement';
 @Component
 struct Index {
   @State startIconModifier: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_star'))
-  @State isShow: boolean = false;
+  @State isShow: boolean = false; // 控制菜单显隐
 
+  // 菜单内容构造器，菜单项使用symbol图标
   @Builder
   MyMenu() {
     Menu() {
@@ -2435,6 +2435,7 @@ struct Index {
       .onClick(() => {
         this.isShow = !this.isShow;
       })
+      // mask自定义菜单蒙层：设置蒙层颜色与模糊材质
       .bindMenu(this.isShow, this.MyMenu, {
         mask: { color: 'rgba(23,169,141,0.5)', backgroundBlurStyle: BlurStyle.Thin }
       })
@@ -2474,10 +2475,11 @@ struct Index {
             .textAlign(TextAlign.Center)
             .margin(100)
             .fontSize(30)
+            // outlineWidth与outlineColor配合设置菜单外描边的宽度与颜色
             .bindMenu(this.MyMenu,
               {
-                outlineWidth: '5vp',
-                outlineColor: Color.Blue
+                outlineWidth: '5vp', // 外描边宽度
+                outlineColor: Color.Blue // 外描边颜色
               })
         }
       }
@@ -2517,9 +2519,10 @@ struct Index {
             .textAlign(TextAlign.Center)
             .margin(100)
             .fontSize(30)
+            // outlineWidth与outlineColor配合设置菜单外描边的宽度与颜色
             .bindMenu(this.MyMenu, {
-              outlineWidth: '5vp',
-              outlineColor: Color.Blue
+              outlineWidth: '5vp', // 外描边宽度
+              outlineColor: Color.Blue // 外描边颜色
             })
         }
       }
@@ -2541,8 +2544,10 @@ struct Index {
 @Entry
 @Component
 struct Index {
+  // 菜单项文本列表，作为参数传给Builder动态生成菜单
   @State menuItemList: string[] = ['新建', '历史', '书签', '设置']
 
+  // 带参数的CustomBuilder，按传入的列表动态生成菜单项
   @Builder
   MenuBuilder(itemList: string[]) {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center }) {
@@ -2559,6 +2564,7 @@ struct Index {
         .onClick(() => {
           console.info('handle' + item + 'Clicked!')
         })
+        // 除最后一项外，每项下方添加分隔线
         if (index != itemList.length - 1) {
           Divider().height(10).width('80%').color('#ccc')
         }
@@ -2570,6 +2576,7 @@ struct Index {
   build() {
     Column() {
       Text('click for Menu')
+        // 传入带参数的Builder，调用时传入列表数据生成菜单
         .bindMenu(this.MenuBuilder(this.menuItemList))
     }
     .height('100%')
@@ -2595,11 +2602,13 @@ struct Index {
   @State longPress: string = 'LONG_PRESS';
   @State rightClick: string = 'RIGHT_CLICK';
 
+  // 入参type为触发方式（ResponseType），据此实现差异化菜单内容
   @Builder
   MenuBuilderWithParam(type: ResponseType) {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
       Text('Current ResponseType = ' + (type === 0 ? 'RIGHT_CLICK' : 'LONG_PRESS'))
       Divider().height(10)
+      // 长按触发时显示该项
       if (type === ResponseType.LongPress) {
         Text('Item: ' + this.longPress)
           .fontSize(20)
@@ -2607,6 +2616,7 @@ struct Index {
           .height(20)
           .textAlign(TextAlign.Center)
       }
+      // 右键点击触发时显示该项
       if (type === ResponseType.RightClick) {
         Text('Item: ' + this.rightClick)
           .fontSize(20)
@@ -2620,8 +2630,9 @@ struct Index {
   build() {
     Stack() {
       Button('BindContextMenu长按和右键点击触发菜单')
+        // bindContextMenuWithResponse会将触发方式传给CustomBuilderT，支持长按与右键两种触发
         .bindContextMenuWithResponse(this.MenuBuilderWithParam, {
-          enableArrow: true,
+          enableArrow: true, // 显示指向箭头
         })
     }
     .height('100%')
@@ -2633,7 +2644,6 @@ struct Index {
 
 ArkTS-Sta示例：
 ```ts
-// xxx.ets
 'use static'
 import { Entry, Component, ClickEvent, Column, Text, TextAlign, Button, ResponseType, Flex, FlexDirection, FlexAlign, ItemAlign, TextAlign, Stack, Divider } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
@@ -2643,11 +2653,13 @@ struct Index {
   @State longPress: string = 'LONG_PRESS';
   @State rightClick: string = 'RIGHT_CLICK';
 
+  // 入参type为触发方式（ResponseType），据此实现差异化菜单内容
   @Builder
   MenuBuilderWithParam(type: ResponseType) {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
       Text('Current ResponseType = ' + (type === 0 ? 'RIGHT_CLICK' : 'LONG_PRESS'))
       Divider().height(10)
+      // 长按触发时显示该项
       if (type === ResponseType.LongPress) {
         Text('Item: ' + this.longPress)
           .fontSize(20)
@@ -2655,6 +2667,7 @@ struct Index {
           .height(20)
           .textAlign(TextAlign.Center)
       }
+      // 右键点击触发时显示该项
       if (type === ResponseType.RightClick) {
         Text('Item: ' + this.rightClick)
           .fontSize(20)
@@ -2668,8 +2681,9 @@ struct Index {
   build() {
     Stack() {
       Button('BindContextMenu长按和右键点击触发菜单')
+        // bindContextMenuWithResponse会将触发方式传给CustomBuilderT，支持长按与右键两种触发
         .bindContextMenuWithResponse(this.MenuBuilderWithParam, {
-          enableArrow: true,
+          enableArrow: true, // 显示指向箭头
         })
     }
     .height('100%')
@@ -2694,8 +2708,10 @@ import { LengthMetrics } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
+  // 获取输入法控制器，用于主动拉起软键盘以演示菜单避让效果
   private inputController: inputMethod.InputMethodController = inputMethod.getController();
 
+  // 菜单项较多（共5项），便于观察菜单高度较大时的避让表现
   @Builder
   MyMenu() {
     Menu() {
@@ -2714,11 +2730,13 @@ struct Index {
           center: { anchor: '__container__', align: VerticalAlign.Center },
           middle: { anchor: '__container__', align: HorizontalAlign.Center },
         })
+        // keyboardAvoidMode设为避让软键盘；minKeyboardAvoidDistance设置最小避让距离
         .bindMenu(this.MyMenu, {
           keyboardAvoidMode: MenuKeyboardAvoidMode.TRANSLATE_AND_RESIZE,
           minKeyboardAvoidDistance: LengthMetrics.vp(20)
         })
         .onClick(() => {
+          // 延迟2s后主动拉起软键盘，观察菜单是否避让
           setTimeout(() => {
             this.attachAndListener()
           }, 2000)
@@ -2729,6 +2747,7 @@ struct Index {
 
   }
 
+  // 主动拉起软键盘以触发菜单避让
   async attachAndListener() {
     focusControl.requestFocus('Index')
     try {
@@ -2759,7 +2778,7 @@ struct Index {
 struct Index {
   // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r('app.media.startIcon');
-  @State isShown: boolean = false;
+  @State isShown: boolean = false; // 控制菜单显隐
 
   @Builder
   MyMenu() {
@@ -2770,6 +2789,7 @@ struct Index {
     }
   }
 
+  // 预设若干相对于绑定组件左上角的偏移位置，按索引切换以演示不同弹出位置
   @State menuAnchorPositionIndex: number = 0;
   private menuAnchorPositionArray: Array<Position> = new Array<Position>(
     { x: 0, y: 0 },
@@ -2788,19 +2808,21 @@ struct Index {
             .textAlign(TextAlign.Center)
             .margin(100)
             .fontSize(30)
+            // anchorPosition相对于绑定组件左上角设置菜单的弹出偏移位置
             .bindContextMenu(this.isShown, this.MyMenu,
               {
                 anchorPosition: this.menuAnchorPositionArray[this.menuAnchorPositionIndex],
                 aboutToDisappear: () => {
-                  this.isShown = false;
+                  this.isShown = false; // 同步关闭状态变量
                 }
               })
           Button('click')
             .margin(5)
             .onClick(() => {
-              this.isShown = true;
+              this.isShown = true; // 弹出菜单
             })
 
+          // 切换到下一个预设位置，循环遍历
           Button('AnchorPosition change')
             .margin(5)
             .onClick(() => {
@@ -2809,6 +2831,7 @@ struct Index {
                 this.menuAnchorPositionIndex = 0;
               }
             })
+          // 实时显示当前的偏移坐标
           Text('Current x: ' + this.menuAnchorPositionArray[this.menuAnchorPositionIndex]?.x +
             ' , y: ' + this.menuAnchorPositionArray[this.menuAnchorPositionIndex]?.y)
         }
@@ -2838,6 +2861,7 @@ struct Index {
   // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r('app.media.startIcon');
 
+  // 菜单项较多（共9项），用于演示maxHeight限制后的可滚动效果
   @Builder
   MyMenu() {
     Menu() {
@@ -2865,6 +2889,7 @@ struct Index {
             .fontSize(30)
             .bindContextMenu(this.MyMenu, ResponseType.LongPress,
               {
+                // maxHeight设置菜单最大高度为窗口可用高度的50%，超出部分可滚动
                 maxHeight: LengthMetrics.percent(0.5)
               })
             .backgroundColor('#ff7fcdff')
@@ -2890,6 +2915,7 @@ struct Index {
   // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r('app.media.startIcon');
 
+  // 菜单项较多（共9项），用于演示maxHeight限制后的可滚动效果
   @Builder
   MyMenu() {
     Menu() {
@@ -2915,6 +2941,7 @@ struct Index {
         .fontSize(30)
         .bindContextMenu(this.MyMenu, ResponseType.LongPress,
           {
+            // maxHeight设置菜单最大高度为窗口可用高度的50%，超出部分可滚动
             maxHeight: LengthMetrics.percent(0.5)
           })
         .backgroundColor('#ff7fcdff')
@@ -2935,7 +2962,7 @@ ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { LengthMetrics } from '@kit.ArkUI';
-      
+
 @Entry
 @Component
 struct Alone {
@@ -2951,6 +2978,7 @@ struct Alone {
   build() {
     Column() {
       Stack() {
+        // 用虚线方框可视化目标组件 + targetSpace后的占位区域（图标120 + 间距40两侧）
         Column()
           .width(120 + 40 * 2)
           .height(120 + 40 * 2)
@@ -2961,6 +2989,7 @@ struct Alone {
         Image($r('app.media.startIcon'))
           .width(120)
           .height(120)
+          // targetSpace设置菜单与目标组件（该图片）之间的间距为40vp
           .bindMenu(this.MyMenu,
             {
               targetSpace: LengthMetrics.vp(40)
@@ -2999,6 +3028,7 @@ struct Alone {
   build() {
     Column() {
       Stack() {
+        // 用虚线方框可视化目标组件 + targetSpace后的占位区域（图标120 + 间距40两侧）
         Column()
           .width(120 + 40 * 2)
           .height(120 + 40 * 2)
@@ -3009,6 +3039,7 @@ struct Alone {
         Image($r('app.media.startIcon'))
           .width(120)
           .height(120)
+          // targetSpace设置菜单与目标组件（该图片）之间的间距为40vp
           .bindMenu(this.MyMenu,
             {
               targetSpace: LengthMetrics.vp(40)

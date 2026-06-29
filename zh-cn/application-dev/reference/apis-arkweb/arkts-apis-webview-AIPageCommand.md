@@ -21,7 +21,7 @@
 | ---- | ---- | ---- | ---- | ---- |
 | [getFullDom](#getfulldom) | 获取完整DOM树 | [FullDomCommand](#fulldomcommand) | [FullDomResult](#fulldomresult) | 返回树结构，不按筛选规则过滤节点。 |
 | [getLiteDom](#getlitedom) | 获取轻量DOM节点列表 | [LiteDomCommand](#litedomcommand) | [LiteDomResult](#litedomresult) | 返回扁平列表，支持按规则筛选节点。 |
-| [screenCapture](#screencapture) | 获取网页元素截图 | [ScreenCaptureCommand](#screencapturecommand) | [ScreenCaptureResult](#screencaptureresult) | 返回Base64编码图片数据，支持获取当前网页视口截图或视口内指定元素截图。 |
+| [screenCapture](#screencapture) | 获取网页元素截图 | [ScreenCaptureCommand](#screencapturecommand) | [ScreenCaptureResult](#screencaptureresult) | 返回Base64编码图片数据，支持获取当前网页视口截图或视口内目标元素截图。 |
 
 交互类命令（click、focus、cursor_position、type、send_keys）请参见[AIPageInteraction](./arkts-apis-webview-AIPageInteraction.md)。
 
@@ -444,7 +444,7 @@
 
 ## screenCapture
 
-获取当前网页视口截图或视口内指定元素截图，返回Base64编码的图片数据。元素定位优先级：`node_id`>`selector`；两者均未指定时，默认获取当前网页视口截图。
+获取当前网页视口截图或视口内目标元素截图，返回Base64编码的图片数据。
 
 ### ScreenCaptureCommand
 
@@ -454,15 +454,13 @@
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | method | - | - | string | 是 | 命令名称，固定为`screenCapture`。 |
 | params | - | - | Object | 否 | 命令参数。不传或为空时获取当前网页视口截图。|
-| params | node_id | - | number | 否 | 内核持久化节点标识符`backendNodeId`，有效值为正整数。 |
-| params | selector | - | string | 否 | CSS选择器，匹配页面中第一个符合条件的元素。 |
+| params | nodeid | - | string | 否 | 目标元素的节点标识，可通过[getFullDom](#getfulldom)或[getLiteDom](#getlitedom)返回的`id`字段获取。 |
+| params | xpath | - | string | 否 | 目标元素的XPath，可通过[getFullDom](#getfulldom)或[getLiteDom](#getlitedom)返回的`xpath`字段获取。 |
 
 > **说明：**
 >
-> - `selector`：在浏览器开发者工具（F12）的 Elements 面板中，右键点击目标元素，选择 Copy > Copy selector 即可获取。
-> - `node_id`：在getFullDom、getLiteDom获取其id中包含的DOM节点标识，将其作为node_id传入。详情请见[getFullDom的params.wants字段取值说明](#getfulldom的paramswants字段取值说明)、[getLiteDom的params.wants字段取值说明](#getlitedom的paramswants字段取值说明)。
-> - `node_id`与`selector`互斥。同时存在时，优先使用`node_id`定位元素；若`node_id`无效（非正整数或不存在），则使用`selector`；若`selector`为空，则默认获取当前网页视口截图。
-> - 支持获取iframe元素截图，不支持获取iframe内部元素截图；不支持获取同层渲染ArkUI组件的截图。
+> - `nodeid`与`xpath`互斥，均传入时以`nodeid`为准。两者均未传入时，默认获取当前网页视口截图。
+> - 支持获取iframe元素截图，不支持跨域获取iframe内部元素截图；不支持获取同层渲染ArkUI组件的截图。
 
 ### ScreenCaptureResult
 
@@ -470,20 +468,36 @@
 
 > **说明：**
 >
-> - 在页面内根据`node_id`或`selector`查找指定元素失败时返回错误结果：`{"code": 352, "message": "element not found"}`。
+> - `nodeid`格式错误，返回`{"code": 392, "message": "invalid param: nodeid"}`；`nodeid`中的`frameToken`或`documentToken`与当前页面不匹配，返回`{"code": 392, "message": "invalid param: nodeid, token mismatch"}`。
+> - 根据`nodeid`或`xpath`在页面中未找到目标元素，返回`{"code": 352, "message": "element not found"}`。
 
 ### 示例
 
-selector使用示例：
+通过节点标识获取目标元素截图：
 
 ```json
 {
   "method": "screenCapture",
   "params": {
-    "selector": "body > div:nth-child(1) > p:nth-child(3) > a"
+    "nodeid": "frameToken|documentToken|12"
   }
 }
 ```
+
+通过XPath获取目标元素截图：
+
+```json
+{
+  "method": "screenCapture",
+  "params": {
+    "xpath": "/html/body/div/p[2]/a"
+  }
+}
+```
+
+> **说明：**
+>
+> - 开发者使用时需自行替换`nodeid`或`xpath`，可通过[getFullDom](#getfulldom)或[getLiteDom](#getlitedom)返回的`id`字段或`xpath`字段获取。
 
 Ark-Dyn示例：
 ```ts
@@ -492,8 +506,8 @@ import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 interface CaptureParams {
-  selector?: string;
-  node_id?: number;
+  xpath?: string;
+  nodeid?: string;
 }
 
 interface PageCommand {
@@ -506,21 +520,32 @@ interface PageCommand {
 struct Index {
   private controller: webview.WebviewController = new webview.WebviewController();
   @State imgData: string = '';
+  @State statusMsg: string = '';
 
   async capture() {
+    this.imgData = '';
+    this.statusMsg = '';
+
     try {
       const cmd: PageCommand = {
         method: 'screenCapture',
         params: {
-          // 在浏览器开发者工具（F12）的 Elements 面板中，右键点击Learn more元素，选择 Copy > Copy selector 获取。
-          selector: 'body > div:nth-child(1) > p:nth-child(3) > a'
+          xpath: "/html/body/div/p[2]/a"
         }
       };
 
       const res = await this.controller.executeAIPageCommand(JSON.stringify(cmd)) as string;
+
+      if (res.includes('"code"')) {
+        this.statusMsg = `截图失败：${res} `;
+        return;
+      }
+
       this.imgData = res;
+      this.statusMsg = '✅ 截图成功';
     } catch (e) {
-      console.error(`截图失败: ${(e as BusinessError).message}`);
+      const error = e as BusinessError;
+      this.statusMsg = `截图失败：${error.message}`;
     }
   }
 
@@ -541,6 +566,17 @@ struct Index {
           .backgroundColor('#F0F0F0')
           .objectFit(ImageFit.Contain)
           .border({ width: 1, color: '#DCDCDC' })
+
+        if (this.statusMsg) {
+          Text(this.statusMsg)
+            .width('100%')
+            .fontSize(12)
+            .fontColor(this.statusMsg.includes('✅') ? '#4CAF50' : '#F44336')
+            .textAlign(TextAlign.Center)
+            .padding(8)
+            .backgroundColor(this.statusMsg.includes('✅') ? '#E8F5E9' : '#FFEBEE')
+            .borderRadius(4)
+        }
       }
       .width('25%')
       .padding(10)
@@ -566,14 +602,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct Index {
   private controller: webview.WebviewController = new webview.WebviewController(undefined);
   @State imgData: string = '';
-  @State ready: boolean = false;
 
   capture(): void {
-    if (!this.ready) {
-      return;
-    }
-
-    const cmdStr: string = '{"method":"screenCapture","params":{"selector":"body > div:nth-child(1) > p:nth-child(3) > a"}}';
+    const cmdStr: string = '{"method":"screenCapture","params":{"xpath":"/html/body/div/p[2]/a"}}';
     try {
       this.controller.executeAIPageCommand(cmdStr).then((res: string) => {
         this.imgData = res;
@@ -590,153 +621,6 @@ struct Index {
       Web({ src: 'https://www.example.com', controller: this.controller })
         .width('75%')
         .height('100%')
-        .onPageEnd(() => {
-          this.ready = true;
-        })
-
-      Column({ space: 10 } as ColumnOptions) {
-        Button('执行截图')
-          .width('100%')
-          .onClick(() => {
-            this.capture();
-          })
-
-        Image(this.imgData ? `data:image/png;base64,${this.imgData}` : '')
-          .width('100%')
-          .aspectRatio(1)
-          .backgroundColor('#F0F0F0')
-          .objectFit(ImageFit.Contain)
-          .border({ width: 1, color: '#DCDCDC' })
-      }
-      .width('25%')
-      .padding(10)
-      .height('100%')
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
-node_id使用示例：
-
-```json
-{
-  "method": "screenCapture",
-  "params": {
-    "node_id": 1
-  }
-}
-```
-
-Ark-Dyn示例：
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-interface CaptureParams {
-  selector?: string;
-  node_id?: number;
-}
-
-interface PageCommand {
-  method: string;
-  params?: CaptureParams;
-}
-
-@Entry
-@Component
-struct Index {
-  private controller: webview.WebviewController = new webview.WebviewController();
-  @State imgData: string = '';
-
-  async capture() {
-    try {
-      const cmd: PageCommand = {
-        method: 'screenCapture',
-        params: {
-          // 在getFullDom、getLiteDom获取其id中包含的DOM节点标识，将其作为node_id传入。
-          node_id: 1
-        }
-      };
-
-      const res = await this.controller.executeAIPageCommand(JSON.stringify(cmd)) as string;
-      this.imgData = res;
-    } catch (e) {
-      console.error(`截图失败: ${(e as BusinessError).message}`);
-    }
-  }
-
-  build() {
-    Row() {
-      Web({ src: 'https://www.example.com', controller: this.controller })
-        .width('75%')
-        .height('100%')
-
-      Column({ space: 10 }) {
-        Button('执行截图')
-          .width('100%')
-          .onClick(() => this.capture())
-
-        Image(this.imgData ? `data:image/png;base64,${this.imgData}` : '')
-          .width('100%')
-          .aspectRatio(1)
-          .backgroundColor('#F0F0F0')
-          .objectFit(ImageFit.Contain)
-          .border({ width: 1, color: '#DCDCDC' })
-      }
-      .width('25%')
-      .padding(10)
-      .height('100%')
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
-ArkTS-Sta示例：
-```ts
-// xxx.ets
-'use static'
-
-import { Button, Column, Component, Entry, Image, ImageFit, ColumnOptions, Row, State, Web } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  private controller: webview.WebviewController = new webview.WebviewController(undefined);
-  @State imgData: string = '';
-  @State ready: boolean = false;
-
-  capture(): void {
-    if (!this.ready) {
-      return;
-    }
-
-    const cmdStr: string = '{"method":"screenCapture","params":{"node_id":1}}';
-    try {
-      this.controller.executeAIPageCommand(cmdStr).then((res: string) => {
-        this.imgData = res;
-      }).catch((e: Error) => {
-        console.error(`截图失败: ${(e as BusinessError).message}`);
-      });
-    } catch (e) {
-      console.error(`截图失败: ${(e as BusinessError).message}`);
-    }
-  }
-
-  build() {
-    Row() {
-      Web({ src: 'https://www.example.com', controller: this.controller })
-        .width('75%')
-        .height('100%')
-        .onPageEnd(() => {
-          this.ready = true;
-        })
 
       Column({ space: 10 } as ColumnOptions) {
         Button('执行截图')

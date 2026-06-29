@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Web组件返回授权或拒绝权限功能的对象。示例代码参考[onPermissionRequest](./arkts-basic-components-web-events.md#onpermissionrequest9)事件。
+PermissionRequest 是 Web 组件返回授权或拒绝权限功能的对象。当网页尝试访问受保护的系统资源（如摄像头、麦克风、地理位置等）时，ArkWeb 内核会通过[onPermissionRequest](./arkts-basic-components-web-events.md#onpermissionrequest9)事件回调向应用发送权限请求，应用通过 PermissionRequest 对象来决定是否授权这些请求。
 
 > **说明：**
 >

@@ -367,7 +367,7 @@ Row({ space: 35 } as RowOptions) {
 
   **图6** Row容器内子元素在水平方向上的排列图  
 
-![vertical-arrangement-child-row](figures/vertical-arrangement-child-row.png)
+![horizontal-arrangement-child-row](figures/horizontal-arrangement-child-row.png)
 
 - justifyContent(FlexAlign.Start，默认值)：元素在水平方向首端对齐，第一个元素与行首对齐，同时后续的元素与前一个对齐。
 
@@ -738,7 +738,7 @@ Row({ space: 35 } as RowOptions) {
 
   **图8** Row容器内子元素在垂直方向上的排列图  
 
-![horizontal-arrangement-child-row](figures/horizontal-arrangement-child-row.png)
+![vertical-arrangement-child-row](figures/vertical-arrangement-child-row.png)
 
 - VerticalAlign.Top：子元素在垂直方向顶部对齐。
 

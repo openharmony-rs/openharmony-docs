@@ -144,17 +144,27 @@
     - [模块化调试工具](arkts-module-debug.md)
     - [模块化常见问题](arkts-module-faq.md)
   - [ArkTS运行时常见问题](arkts-runtime-faq.md)
+- ArkTS运行时 (ArkTS-Sta)<!--arkts-sta-runtime-->
+  - [ArkTS运行时概述 (ArkTS-Sta)](arkts-sta-runtime-overview.md)
+  - [GC垃圾回收 (ArkTS-Sta)](arkts-sta-gc-introduction.md)
+  - [模块化运行简介 (ArkTS-Sta)](arkts-sta-module-principle.md)
+  - [反射与错误处理 (ArkTS-Sta)](arkts-sta-reflection-and-errors.md)
+  - [ArkTS运行时常见问题 (ArkTS-Sta)](arkts-sta-runtime-faq.md)
 - ArkTS编译工具链<!--arkts-compilation-tool-chain-->
   - [ArkTS编译工具链概述](compilation-tool-chain-overview.md)
   - 方舟字节码<!--arkts-bytecode-->
     - [方舟字节码概述](arkts-bytecode-overview.md)
-    - [方舟字节码文件格式](arkts-bytecode-file-format.md)
-    - [方舟字节码基本原理](arkts-bytecode-fundamentals.md)
-    - [方舟字节码函数命名规则](arkts-bytecode-function-name.md)
+    - 方舟字节码 (ArkTS-Dyn)<!--arkts-dyn-bytecode-->
+      - [方舟字节码文件格式 (ArkTS-Dyn)](arkts-bytecode-file-format.md)
+      - [方舟字节码基本原理 (ArkTS-Dyn)](arkts-bytecode-fundamentals.md)
+      - [方舟字节码函数命名规则 (ArkTS-Dyn)](arkts-bytecode-function-name.md)
+    - 方舟字节码 (ArkTS-Sta)<!--arkts-sta-bytecode-->
+      - [方舟字节码文件格式 (ArkTS-Sta)](arkts-static-bytecode-file-format.md)
+      - [方舟字节码基本原理 (ArkTS-Sta)](arkts-static-bytecode-fundamentals.md)
     - [编译期自定义修改方舟字节码](customize-bytecode-during-compilation.md)
     - [方舟字节码生成常见问题](es2abc-faq.md)
-    - [Disassembler反汇编工具（ArkTS-Dyn）](tool-disassembler.md)
-    - [Disassembler反汇编工具（ArkTS-Sta）](tool-disassembler-sta.md)
+    - [Disassembler反汇编工具 (ArkTS-Dyn)](tool-disassembler.md)
+    - [Disassembler反汇编工具 (ArkTS-Sta)](tool-disassembler-sta.md)
   - ArkGuard源码混淆工具<!--arkts-arkguard-->
     - [ArkGuard混淆概述](source-obfuscation-overview.md)
     - [ArkGuard混淆原理](source-obfuscation.md)

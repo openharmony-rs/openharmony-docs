@@ -6,6 +6,8 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
+本文档提供 ArkWeb 组件中使用的类型定义，包括 Web 控制器及各类事件回调函数类型。其中，WebviewController 用于控制 Web 组件的行为；各类回调函数类型为开发者提供 Web 组件运行过程中多种事件场景的事件监听和处理能力。
+
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。

@@ -194,10 +194,11 @@
 
 | 名称      | 类型                            | 只读 | 可选 | 说明                                                                   |
 | -------- | ------------------------------- | ---- | ---- |----------------------------------------------------------------------|
-| quality  | [QualityLevel](arkts-apis-camera-e.md#qualitylevel)   | 否   | 是   | 图片质量（默认中等）。                                                           |
+| quality  | [QualityLevel](arkts-apis-camera-e.md#qualitylevel)   | 否   | 是   | 图片质量。<br>当quality未下发时，默认按CompressionQuality下发生效；若quality与CompressionQuality同时下发则按CompressionQuality下发生效；若quality与CompressionQuality均未下发则图片质量默认是高等。                                                           |
 | rotation | [ImageRotation](arkts-apis-camera-e.md#imagerotation) | 否   | 是   | 图片旋转角度（默认0度，顺时针旋转）。                                                  |
 | location | [Location](#location)           | 否   | 是   | 图片地理位置信息（默认以设备硬件信息为准）。                                               |
 | mirror   | boolean                         | 否   | 是   | 镜像使能开关（默认关）。使用之前需要使用[isMirrorSupported](arkts-apis-camera-PhotoOutput.md#ismirrorsupported)进行判断是否支持。true表示使能，false表示不使能。 |
+| CompressionQuality   | number                         | 否   | 是   | 图片压缩质量值，取值范围为(1, 100)。<br>当CompressionQuality未下发时，默认按quality生效；若quality与CompressionQuality同时下发则按CompressionQuality下发生效；若quality与CompressionQuality均未下发则图片质量默认是高等。<br> **起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。   |
 
 ## FrameShutterInfo
 

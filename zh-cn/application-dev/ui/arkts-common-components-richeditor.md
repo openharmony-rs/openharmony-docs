@@ -877,7 +877,7 @@ options: RichEditorOptions = { controller: this.controller };
 
 ArkTS-Dyn示例：
 
-<!-- @[richEditor_eventChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
+<!-- @[richEditor_eventChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) --> 
 
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
@@ -910,7 +910,7 @@ infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
           .onDidChange((rangeBefore: TextRange, rangeAfter: TextRange) => {
             // 请将$r('app.string.AddEvent_Text_7')替换为实际资源文件，在本示例中该资源文件的value值为"\n图文变化后，触发回调：\n rangeBefore"
             this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_7')) +
-            JSON.stringify(rangeBefore) + '\nrangeAfter: ' + JSON.stringify(rangeBefore), {
+            JSON.stringify(rangeBefore) + '\nrangeAfter: ' + JSON.stringify(rangeAfter), {
               style: {
                 fontColor: Color.Gray,
                 fontSize: 10
@@ -928,7 +928,7 @@ infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
 
 ArkTS-Sta示例：
 
-<!-- @[richEditor_eventChange](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
+<!-- @[richEditor_eventChange](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) --> 
 
 ``` TypeScript
 import { Entry, Text, Column, ColumnOptions, Component, $r, RichEditorController, NavDestination, Color, RichEditor, RichEditorRange, RichEditorInsertValue, PasteEvent, TextRange, RichEditorChangeValue, RichEditorOptions, HorizontalAlign, Scroll, Scroller, RichEditorTextSpanOptions, RichEditorSelection } from '@kit.ArkUI';
@@ -963,7 +963,7 @@ infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
           .onDidChange((rangeBefore: TextRange, rangeAfter: TextRange) => {
             // 请将$r('app.string.AddEvent_Text_7')替换为实际资源文件，在本示例中该资源文件的value值为"\n图文变化后，触发回调：\n rangeBefore"
             this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_7')) +
-            JSON.stringify(rangeBefore) + '\nrangeAfter: ' + JSON.stringify(rangeBefore), {
+            JSON.stringify(rangeBefore) + '\nrangeAfter: ' + JSON.stringify(rangeAfter), {
               style: {
                 fontColor: Color.Gray,
                 fontSize: 10

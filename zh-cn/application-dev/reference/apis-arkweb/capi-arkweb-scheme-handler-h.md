@@ -8,7 +8,7 @@
 
 ## 概述
 
-声明用于拦截来自ArkWeb的请求的API。
+arkweb_scheme_handler.h是ArkWeb中用于拦截和自定义网络请求的完整C API头文件。该模块定义了注册自定义Scheme拦截器的ArkWeb_SchemeHandler、发送自定义响应的ArkWeb_ResourceHandler、构建HTTP响应的ArkWeb_Response、检查请求详情的ArkWeb_ResourceRequest，以及用于读取上传数据的ArkWeb_HttpBodyStream和访问请求头的ArkWeb_RequestHeaderList。该API配合ArkWeb_NativeAPIVariantKind系统使用，通过OH_ArkWeb_SetSchemeHandler或OH_ArkWebServiceWorker_SetSchemeHandler注册。开发者可以实现自定义协议的资源加载和响应，适用于本地资源替换、数据加密传输、离线缓存等场景。
 
 **引用文件：** <web/arkweb_scheme_handler.h>
 

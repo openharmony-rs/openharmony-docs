@@ -930,7 +930,7 @@ struct Comp {
 ### \@Watch与\@Monitor监听\@Env装饰的变量
 从API版本26.0.0开始，在\@Component中，可通过[\@Watch](state-management/arkts-watch.md)监听\@Env装饰变量的变化。需要注意的是，仅当\@Env装饰的变量被整体赋值时才会触发\@Watch监听回调，其内部属性的变化不会触发回调。
 ```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
+import { WithEnv } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
@@ -977,7 +977,7 @@ struct ChildV1 {
 
 在\@ComponentV2中，可通过\@Monitor监听\@Env装饰变量的变化。需要注意的是，仅当\@Env装饰的变量被整体赋值时才会触发\@Monitor监听回调，其内部属性的变化不会触发回调。
 ```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
+import { WithEnv } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 
