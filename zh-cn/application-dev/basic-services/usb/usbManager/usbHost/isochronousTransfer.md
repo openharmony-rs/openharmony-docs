@@ -170,12 +170,26 @@
      return;
    }
    let usbDevice: usbManager.USBDevice = this.deviceList_[0];
-   if (!usbManager.hasRight(usbDevice.name)) {
-     console.error('permission denied');
-     this.logInfo_ += '\n[ERROR] permission denied';
+   try {
+     if (!usbManager.hasRight(usbDevice.name)) {
+       console.error('permission denied');
+       this.logInfo_ += '\n[ERROR] permission denied';
+       return;
+     }
+   } catch (error) {
+     console.error(`USB hasRight failed: ${error}`);
+     this.logInfo_ += '\n[ERROR] USB hasRight failed: ' + JSON.stringify(error);
      return;
    }
-   let devicePipe: usbManager.USBDevicePipe = usbManager.connectDevice(usbDevice);
+   
+   let devicePipe: usbManager.USBDevicePipe;
+   try {
+     devicePipe = usbManager.connectDevice(usbDevice);
+   } catch (error) {
+     console.error(`connectDevice failed ${error}`);
+     this.logInfo_ += '\n[ERROR] connectDevice: ' + JSON.stringify(error);
+     return
+   }
    let usbConfigs: usbManager.USBConfiguration[] = usbDevice.configs;
    let usbInterfaces: usbManager.USBInterface[] = [];
    let usbInterface: usbManager.USBInterface | undefined = undefined;
