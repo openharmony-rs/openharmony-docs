@@ -74,7 +74,7 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateCompose(OH_Drawing_ColorFilt
 
 **描述**
 
-将两个颜色滤波器合成一个新的颜色滤波器。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>outerColorFilter、innerColorFilter任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。请检查并确保传入的outerColorFilter和innerColorFilter为有效的颜色滤波器对象指针。
+将两个颜色滤波器合成一个新的颜色滤波器。合成时先应用innerColorFilter进行滤波，再应用outerColorFilter进行滤波。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>outerColorFilter、innerColorFilter任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。请检查并确保传入的outerColorFilter和innerColorFilter为有效的颜色滤波器对象指针。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -85,8 +85,8 @@ OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateCompose(OH_Drawing_ColorFilt
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Drawing_ColorFilter](capi-drawing-oh-drawing-colorfilter.md)* outerColorFilter | 指向颜色滤波器对象的指针。 |
-| [OH_Drawing_ColorFilter](capi-drawing-oh-drawing-colorfilter.md)* innerColorFilter | 指向颜色滤波器对象的指针。 |
+| [OH_Drawing_ColorFilter](capi-drawing-oh-drawing-colorfilter.md)* outerColorFilter | 指向颜色滤波器中外部颜色滤波器对象的指针。 |
+| [OH_Drawing_ColorFilter](capi-drawing-oh-drawing-colorfilter.md)* innerColorFilter | 指向颜色滤波器中内部颜色滤波器对象的指针。 |
 
 **返回：**
 

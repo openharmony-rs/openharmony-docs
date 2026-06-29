@@ -7,7 +7,7 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-采样选项对象，用于配置图像采样时的过滤模式，控制图像缩放或变换过程中的像素采样方式。典型使用场景为在 Canvas 上绘制图像（如 drawImage）时，以不同过滤模式决定图像的采样质量与渲染效果。
+采样选项对象，用于配置图像采样时的过滤模式，控制图像缩放或变换过程中的像素采样方式。典型使用场景为在Canvas上绘制图像（如drawImage）时，以不同过滤模式决定图像的采样质量与渲染效果。
 
 > **说明：**
 >
@@ -29,7 +29,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 constructor()
 
-构造一个新的采样选项对象，[FilterMode](arkts-apis-graphics-drawing-e.md#filtermode12)的默认值为 FILTER_MODE_NEAREST。
+构造一个新的采样选项对象，[FilterMode](arkts-apis-graphics-drawing-e.md#filtermode12)的默认值为FILTER_MODE_NEAREST。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -50,7 +50,7 @@ class DrawingRenderNode extends RenderNode {
 
 constructor(filterMode: FilterMode)
 
-构造一个新的采样选项对象，可通过指定 filterMode 参数适配不同的图像采样场景。
+构造一个新的采样选项对象，可通过指定filterMode参数适配不同的图像采样场景。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

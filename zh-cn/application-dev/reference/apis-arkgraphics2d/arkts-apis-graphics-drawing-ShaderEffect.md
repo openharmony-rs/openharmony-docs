@@ -119,7 +119,7 @@ class DrawingRenderNode extends RenderNode {
       colorData[i + 3] = 255;
     }
 
-let opts: image.InitializationOptions = {
+  let opts: image.InitializationOptions = {
       editable: true,
       pixelFormat: 3,
       size: { height, width }

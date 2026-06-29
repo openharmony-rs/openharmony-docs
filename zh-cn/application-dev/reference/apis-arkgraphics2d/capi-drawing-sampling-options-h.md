@@ -33,9 +33,9 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Drawing_SamplingOptions* OH_Drawing_SamplingOptionsCreate(OH_Drawing_FilterMode filterMode,OH_Drawing_MipmapMode mipmapMode)](#oh_drawing_samplingoptionscreate) | 创建一个采样选项对象。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>mipmapMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。<br>使用完毕后，必须调用OH_Drawing_SamplingOptionsDestroy销毁采样选项对象并释放内存，避免内存泄漏。 |
-| [OH_Drawing_SamplingOptions* OH_Drawing_SamplingOptionsCopy(OH_Drawing_SamplingOptions* samplingOptions)](#oh_drawing_samplingoptionscopy) | 拷贝一个已有采样选项对象。<br> 本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br> samplingOptions为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。副本为独立的新对象，使用完毕后，必须调用OH_Drawing_SamplingOptionsDestroy销毁副本对象并释放内存，避免内存泄漏。 |
-| [void OH_Drawing_SamplingOptionsDestroy(OH_Drawing_SamplingOptions* samplingOptions)](#oh_drawing_samplingoptionsdestroy) | 销毁由OH_Drawing_SamplingOptionsCreate或OH_Drawing_SamplingOptionsCopy创建的采样选项对象，并回收该对象占有的内存。 |
+| [OH_Drawing_SamplingOptions* OH_Drawing_SamplingOptionsCreate(OH_Drawing_FilterMode filterMode,OH_Drawing_MipmapMode mipmapMode)](#oh_drawing_samplingoptionscreate) | 创建一个采样选项对象。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>mipmapMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。<br>使用完毕后，必须调用[OH_Drawing_SamplingOptionsDestroy](#oh_drawing_samplingoptionsdestroy)销毁采样选项对象并释放内存，避免内存泄漏。 |
+| [OH_Drawing_SamplingOptions* OH_Drawing_SamplingOptionsCopy(OH_Drawing_SamplingOptions* samplingOptions)](#oh_drawing_samplingoptionscopy) | 拷贝一个已有采样选项对象。<br> 本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br> samplingOptions为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。副本为独立的新对象，使用完毕后，必须调用[OH_Drawing_SamplingOptionsDestroy](#oh_drawing_samplingoptionsdestroy)销毁副本对象并释放内存，避免内存泄漏。 |
+| [void OH_Drawing_SamplingOptionsDestroy(OH_Drawing_SamplingOptions* samplingOptions)](#oh_drawing_samplingoptionsdestroy) | 销毁采样选项对象，并回收该对象占有的内存。 |
 
 ## 枚举类型说明
 
@@ -85,7 +85,7 @@ OH_Drawing_SamplingOptions* OH_Drawing_SamplingOptionsCreate(OH_Drawing_FilterMo
 
 **描述**
 
-创建一个采样选项对象。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>mipmapMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。<br>使用完毕后，必须调用OH_Drawing_SamplingOptionsDestroy销毁采样选项对象并释放内存，避免内存泄漏。
+创建一个采样选项对象。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>mipmapMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。<br>使用完毕后，必须调用[OH_Drawing_SamplingOptionsDestroy](#oh_drawing_samplingoptionsdestroy)销毁采样选项对象并释放内存，避免内存泄漏。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -119,7 +119,7 @@ OH_Drawing_SamplingOptions* OH_Drawing_SamplingOptionsCopy(OH_Drawing_SamplingOp
 
 samplingOptions为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
-拷贝对象为独立的新对象，使用完毕后，必须调用OH_Drawing_SamplingOptionsDestroy销毁副本对象并释放内存，避免内存泄漏。
+拷贝对象为独立的新对象，使用完毕后，必须调用[OH_Drawing_SamplingOptionsDestroy](#oh_drawing_samplingoptionsdestroy)销毁副本对象并释放内存，避免内存泄漏。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -146,7 +146,7 @@ void OH_Drawing_SamplingOptionsDestroy(OH_Drawing_SamplingOptions* samplingOptio
 
 **描述**
 
-销毁由OH_Drawing_SamplingOptionsCreate或OH_Drawing_SamplingOptionsCopy创建的采样选项对象，并回收该对象占有的内存。
+销毁采样选项对象，并回收该对象占有的内存。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
