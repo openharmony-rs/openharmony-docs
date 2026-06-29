@@ -2389,7 +2389,7 @@ createWebMessagePorts(isExtentionType?: boolean): Array\<WebMessagePort>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. <br/>适用版本：10+ |
 
 **示例：**
 
@@ -4348,7 +4348,7 @@ static customizeSchemes(schemes: Array\<WebCustomScheme\>): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 |  401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.    |
-| 17100020 | Failed to register custom schemes. |
+| 17100020 | Failed to register custom schemes. <br/>适用版本：12+ |
 
 **示例：**
 
@@ -4848,7 +4848,8 @@ prefetchPage(url: string, additionalHeaders?: Array\<WebHeader>, prefetchOptions
 | 错误码ID  | 错误信息                                                      |
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.                      |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.          <br/>适用版本：21           |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024. <br/>适用版本：22+          |
 
 **示例：**
 
@@ -4915,7 +4916,8 @@ prefetchPage(url: string, additionalHeaders?: Array\<WebHeader>): void
 | 错误码ID  | 错误信息                                                      |
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.                                                 |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.          <br/>适用版本：10-21        |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024. <br/>适用版本：22+          |
 
 **示例：**
 
@@ -5078,7 +5080,8 @@ static prepareForPageLoad(url: string, preconnectable: boolean, numSockets: numb
 
 | 错误码ID  | 错误信息                                                      |
 | -------- | ------------------------------------------------------------ |
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.                                                 |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.          <br/>适用版本：10-21        |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024. <br/>适用版本：22+          |
 | 17100013 | The number of preconnect sockets is invalid.                                                 |
 
 **示例：**
@@ -5235,7 +5238,8 @@ startDownload(url: string): void
 | 错误码ID  | 错误信息                                                      |
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024. |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.          <br/>适用版本：11-21        |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024. <br/>适用版本：22+          |
 
 **示例：**
 
@@ -5511,7 +5515,8 @@ static warmupServiceWorker(url: string): void
 
 | 错误码ID  | 错误信息                                                      |
 | -------- | ------------------------------------------------------------ |
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.              |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.          <br/>适用版本：21           |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024. <br/>适用版本：22+          |
 
 **示例：**
 
@@ -5651,7 +5656,7 @@ enableIntelligentTrackingPrevention(enable: boolean): void
 | -------- | ----------------------- |
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 |  401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-|  801 | Capability not supported. |
+|  801 | Capability not supported. <br/>适用版本：18+ |
 
 **示例：**
 
@@ -5705,7 +5710,7 @@ isIntelligentTrackingPreventionEnabled(): boolean
 | 错误码ID | 错误信息                  |
 | -------- | ----------------------- |
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
-|  801 | Capability not supported. |
+|  801 | Capability not supported. <br/>适用版本：18+ |
 
 **示例：**
 
@@ -5759,7 +5764,7 @@ static addIntelligentTrackingPreventionBypassingList(hostList: Array\<string>): 
 | 错误码ID  | 错误信息                  |
 | -------- | ------------------------ |
 |  401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-|  801     | Capability not supported. |
+|  801     | Capability not supported. <br/>适用版本：18+ |
 
 **示例：**
 
@@ -5813,7 +5818,7 @@ static removeIntelligentTrackingPreventionBypassingList(hostList: Array\<string>
 | 错误码ID  | 错误信息                  |
 | -------- | ------------------------ |
 |  401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-|  801     | Capability not supported. |
+|  801     | Capability not supported. <br/>适用版本：18+  |
 
 **示例：**
 
@@ -5860,7 +5865,7 @@ static clearIntelligentTrackingPreventionBypassingList(): void
 
 | 错误码ID  | 错误信息                  |
 | -------- | ------------------------ |
-|  801     | Capability not supported. |
+|  801     | Capability not supported.  <br/>适用版本：18+ |
 
 **示例：**
 
@@ -5950,7 +5955,7 @@ enableAdsBlock(enable: boolean): void
 | -------- | ----------------------- |
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 |  401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Parameter string is too long. 3.Parameter verification failed. |
-|  801 | Capability not supported. |
+|  801 | Capability not supported.  <br/>适用版本：18+ |
 
 **示例：**
 
@@ -6005,7 +6010,7 @@ isAdsBlockEnabled() : boolean
 
 | 错误码ID | 错误信息                  |
 | -------- | ----------------------- |
-|  801 | Capability not supported. |
+|  801 | Capability not supported.  <br/>适用版本：18+ |
 
 **示例：**
 
@@ -6062,7 +6067,7 @@ isAdsBlockEnabledForCurPage() : boolean
 
 | 错误码ID | 错误信息                  |
 | -------- | ----------------------- |
-|  801 | Capability not supported. |
+|  801 | Capability not supported.  <br/>适用版本：18+ |
 
 **示例：**
 
