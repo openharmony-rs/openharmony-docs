@@ -8507,7 +8507,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/MultimediaPixelArt.ets",
 				"functions":[
 					{
-						"end_line":64,
+						"end_line":65,
 						"name":"multimedia_pixel",
 						"start_line":17
 					}
@@ -9060,7 +9060,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/SupportingAgingFriendly/entry/src/main/ets/pages/SideBarContainer.ets",
 				"functions":[
 					{
-						"end_line":75,
+						"end_line":72,
 						"name":"trigger_aging_friendly_by_long_press",
 						"start_line":16
 					}
@@ -9070,7 +9070,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/SupportingAgingFriendly/entry/src/main/ets/pages/TextPickerDialog.ets",
 				"functions":[
 					{
-						"end_line":149,
+						"end_line":110,
 						"name":"trigger_aging_friendly_by_set_font_size",
 						"start_line":16
 					}
