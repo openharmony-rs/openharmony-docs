@@ -1944,7 +1944,7 @@ float OH_ArkUI_DragEvent_GetTouchPointXToGlobalDisplay(ArkUI_DragEvent* event)
 **描述：**
 
 
-从ArkUI_DragEvent中获取跟手点相对于全局屏幕的x轴坐标。
+从ArkUI_DragEvent中获取跟手点相对于全局Display的x轴坐标。
 
 **起始版本：** 20
 
@@ -1970,7 +1970,7 @@ float OH_ArkUI_DragEvent_GetTouchPointYToGlobalDisplay(ArkUI_DragEvent* event)
 **描述：**
 
 
-从ArkUI_DragEvent中获取跟手点相对于全局屏幕的y轴坐标。
+从ArkUI_DragEvent中获取跟手点相对于全局Display的y轴坐标。
 
 **起始版本：** 20
 

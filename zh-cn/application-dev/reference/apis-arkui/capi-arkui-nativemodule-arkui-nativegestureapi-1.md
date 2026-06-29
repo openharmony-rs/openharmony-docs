@@ -112,7 +112,7 @@ ArkUI_GestureRecognizer* (*createLongPressGesture)(int32_t fingersNum, bool repe
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* | 返回创建的敲击手势指针。 |
+| [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* | 返回创建的长按手势指针。 |
 
 ### createPanGesture()
 

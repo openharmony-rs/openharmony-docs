@@ -41,7 +41,7 @@ ArkTS示例：
   ```
   export default {    
     getLocale() {        
-      const localeInfo = configuration.getLocale();        
+      const localeInfo = Configuration.getLocale();        
       console.info(localeInfo.language);    
     }
   }
