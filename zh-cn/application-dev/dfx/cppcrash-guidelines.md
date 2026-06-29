@@ -22,7 +22,7 @@
 
 - **pc**
 
-  全称Program Counter（程序计数器），储存当前程序正在执行指令的地址。
+  全称Program Counter（程序计数器），存储当前程序正在执行指令的地址。
 
 - **lr**
 
@@ -54,7 +54,7 @@
 
 3. ProcessDump进程将崩溃日志数据写入到临时目录下进行存储。
 
-4. ProcessDump进程收集完崩溃日志后，上报给维测进程Hiview，并补充仅Hiview有权限获取的部分信息(如整机内存状态、应用页面切换轨迹)，然后将崩溃日志存储到“/data/log/faultlog/faultlogger”目录下并生成故障事件。
+4. ProcessDump进程收集完崩溃日志后，上报给维测进程Hiview，并补充仅Hiview有权限获取的部分信息（如整机内存状态、应用页面切换轨迹），然后将崩溃日志存储到“/data/log/faultlog/faultlogger”目录下并生成故障事件。
 
 ### 系统处理的崩溃信号
 
@@ -190,8 +190,8 @@ HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hia
 | Module name | 模块名 | 8 | 是 | - |
 | ReleaseType | 应用的版本类型 | 23 | 否 | 仅在应用进程提供，release表示应用为[release版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)，debug表示应用为[debug版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)。 |
 | CpuAbi | 二进制接口类型 | 23 | 否 | 仅在应用进程提供。 |
-| Version | 应用版本号(点分格式) | 8 | 否 | 仅在应用进程提供。 |
-| VersionCode | 应用版本号(整数格式) | 8 | 否 | 仅在应用进程提供。 |
+| Version | 应用版本号（点分格式） | 8 | 否 | 仅在应用进程提供。 |
+| VersionCode | 应用版本号（整数格式） | 8 | 否 | 仅在应用进程提供。 |
 | IsSystemApp | 应用是否为系统应用 | 23 | 否 | 仅在应用进程提供。 |
 | PreInstalled | 是否预置应用 | 8 | 否 | 仅在应用进程提供。 |
 | Foreground | 前后台状态 | 8 | 否 | 仅在应用进程提供。 |
