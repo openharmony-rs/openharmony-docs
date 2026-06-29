@@ -124,8 +124,7 @@
 
    <!-- @[index_image_classification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteArkTSDemo/entry/src/main/ets/pages/Index.ets) --> 
    
-   ```typescript
-   // Index.ets
+   ``` TypeScript
    import modelPredict from './model';
    import { photoAccessHelper } from '@kit.MediaLibraryKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -148,16 +147,19 @@
      @State maxIndex: number = 0;
      @State maxArray: Array<number> = [];
      @State maxIndexArray: Array<number> = [];
+     // ...
    
      build() {
        Row() {
          Column() {
            Text(this.modelPredict)
+           // ...
            Button() {
              Text('photo')
                .fontSize(30)
                .fontWeight(FontWeight.Bold)
            }
+           // ...
            .onClick(() => {
              let resMgr = this.getUIContext()?.getHostContext()?.getApplicationContext().resourceManager;
              if (resMgr === null || resMgr === undefined){
@@ -325,7 +327,6 @@
        .height('100%')
      }
    }
-   
    ```
 
 ### 调测验证
