@@ -1376,7 +1376,7 @@ ArkTS-Sta: constructor(node: FrameNode, distance: double)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| distance | double | 否 | 否 | 智慧手势滚动距离。<br/>取值范围：[0, +∞)，小于0时按0处理。<br/>单位为vp。 |
+| distance | double | 否 | 是 | 智慧手势滚动距离。<br/>取值范围：[0, +∞)，小于0时按0处理。<br/>单位为vp。 |
 
 **示例：** 
 
