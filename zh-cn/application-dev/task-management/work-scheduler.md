@@ -183,16 +183,16 @@
 
 3. 取消延迟任务。
    <!-- @[stopWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) --> 
-
-   ```ts
-   // 创建workinfo
+   
+   ``` TypeScript
+   // 创建workInfo
    let workInfo: workScheduler.WorkInfo = {
      workId: 1,
-     networkType: workScheduler.NetworkType.NETWORK_TYPE_WIFI,
+     networkType: workScheduler.NetworkType.NETWORK_TYPE_ANY,
      bundleName: 'ohos.samples.workschedulerextensionability',
      abilityName: 'WorkSchedulerAbility',
+     // ...
    }
-   
    try {
      workScheduler.stopWork(workInfo);
      console.info(`stopWork success`);
