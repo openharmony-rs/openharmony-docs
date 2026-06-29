@@ -874,16 +874,16 @@ Text组件需要设置[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-com
 - Text组件通过设置[editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12)属性扩展自定义选择菜单，可以设置扩展项的文本内容、图标以及回调方法。
 
   <!-- @[set_selection_menu_with_editmenuoptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
-    
-    ``` TypeScript
-    // 请将$r('app.string.show_selected_menu')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示选中菜单"
-    Text($r('app.string.show_selected_menu'))
-      .fontSize(20)
-      .copyOption(CopyOptions.LocalDevice)
-      .editMenuOptions({
-        onCreateMenu: this.onCreateMenu, onMenuItemClick: this.onMenuItemClick
-      })
-    ```
+  
+  ``` TypeScript
+  // 请将$r('app.string.show_selected_menu')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示选中菜单"
+  Text($r('app.string.show_selected_menu'))
+    .fontSize(20)
+    .copyOption(CopyOptions.LocalDevice)
+    .editMenuOptions({
+      onCreateMenu: this.onCreateMenu, onMenuItemClick: this.onMenuItemClick
+    })
+  ```
 
     <!-- @[onCreate_Menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
     
