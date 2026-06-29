@@ -7393,7 +7393,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp",
 				"functions":[
 					{
-						"end_line":482,
+						"end_line":492,
 						"name":"abilitycap_one_start",
 						"start_line":16
 					},
@@ -7403,9 +7403,9 @@
 						"start_line":116
 					},
 					{
-						"end_line":338,
+						"end_line":347,
 						"name":"abilitycap_three_start",
-						"start_line":285
+						"start_line":291
 					},
 					{
 						"end_line":264,
@@ -7418,9 +7418,9 @@
 						"start_line":266
 					},
 					{
-						"end_line":399,
+						"end_line":409,
 						"name":"abilitycap_six_start",
-						"start_line":36
+						"start_line":37
 					},
 					{
 						"end_line":397,
@@ -7428,9 +7428,9 @@
 						"start_line":389
 					},
 					{
-						"end_line":410,
+						"end_line":432,
 						"name":"abilitycap_eight_start",
-						"start_line":399
+						"start_line":421
 					}
 				]
 			},
@@ -13399,7 +13399,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/EGLRender.cpp",
 				"functions":[
 					{
-						"end_line":335,
+						"end_line":330,
 						"name":"egl_render",
 						"start_line":15
 					}
@@ -18503,7 +18503,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/EmbeddedComponent/Embedded.ets",
 				"functions":[
 					{
-						"end_line":56,
+						"end_line":59,
 						"name":"embedded_start",
 						"start_line":16
 					}
@@ -18548,7 +18548,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/cpp/embedded/embedded.cpp",
 				"functions":[
 					{
-						"end_line":87,
+						"end_line":90,
 						"name":"embeddedComponentCTest_start",
 						"start_line":21
 					}
