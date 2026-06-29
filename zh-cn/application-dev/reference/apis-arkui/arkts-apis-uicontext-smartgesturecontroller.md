@@ -1141,7 +1141,7 @@ constructor(node: FrameNode, distance: number)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| distance | number | 否 | 否 | 智慧手势滚动距离。<br/>取值范围：[0, +∞)，小于0时按0处理。<br/>单位为vp。 |
+| distance | number | 否 | 是 | 智慧手势滚动距离。<br/>取值范围：[0, +∞)，小于0时按0处理。<br/>单位为vp。 |
 
 **示例：** 
 
