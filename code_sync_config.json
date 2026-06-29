@@ -23831,27 +23831,27 @@
 						"start_line":15
 					},
 					{
-						"end_line":147,
+						"end_line":145,
 						"name":"JSForm_JsCardFormAbility_FormExtensionAbility",
 						"start_line":24
 					},
 					{
-						"end_line":144,
+						"end_line":142,
 						"name":"JSForm_JsCardFormAbility_onAddForm",
 						"start_line":25
 					},
 					{
-						"end_line":145,
+						"end_line":143,
 						"name":"JSForm_JsCardFormAbility_onRemoveForm",
 						"start_line":26
 					},
 					{
-						"end_line":146,
+						"end_line":144,
 						"name":"JSForm_JsCardFormAbility_onUpdateForm",
 						"start_line":27
 					},
 					{
-						"end_line":143,
+						"end_line":141,
 						"name":"JSForm_JsCardFormAbility_onFormEvent",
 						"start_line":28
 					}
@@ -23906,7 +23906,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/persistentdataformability/PersistentDataFormAbility.ts",
 				"functions":[
 					{
-						"end_line":59,
+						"end_line":57,
 						"name":"persistent_data_form_ability",
 						"start_line":16
 					}
