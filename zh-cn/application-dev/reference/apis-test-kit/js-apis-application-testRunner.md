@@ -25,7 +25,7 @@ import { TestRunner } from '@kit.TestKit';
 
 ## TestRunner
 
-TestRunner是单元测试框架的模板，采用模板方法设计模式。系统会在测试开始时调用onPrepare准备环境，然后调用onRun执行测试用例，最后在测试完成时触发onStop回调。开发者可通过继承这个类并覆盖它的所有方法，实现自定义的单元测试框架能力。
+TestRunner是单元测试框架的模板，开发者可通过继承这个类并覆盖它的所有方法，实现自定义的单元测试框架能力。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
