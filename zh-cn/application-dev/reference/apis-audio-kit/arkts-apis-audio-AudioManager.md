@@ -299,7 +299,7 @@ let audioDeviceEnhanceManager: audio.AudioDeviceEnhanceManager = audioManager.ge
 
 getDebuggingManager(): AudioDebuggingManager
 
-获取音频调试管理器实例。
+获取音频调试管理器实例。该实例为单例，获取后可重复使用。
 
 **起始版本：** 26.0.0
 
@@ -311,7 +311,7 @@ getDebuggingManager(): AudioDebuggingManager
 
 | 类型 | 说明 |
 | ---- | ---- |
-| [AudioDebuggingManager](arkts-apis-audio-AudioDebuggingManager.md) | AudioDebuggingManager实例。 |
+| [AudioDebuggingManager](arkts-apis-audio-AudioDebuggingManager.md) | 返回AudioDebuggingManager实例。 |
 
 **示例：**
 
