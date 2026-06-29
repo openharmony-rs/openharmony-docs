@@ -238,19 +238,19 @@ import { JSON } from '@kit.ArkTS';
 
 ``` TypeScript
 import { JSON } from '@kit.ArkTS';
-// ...
-  // 序列化小数部分不为零的浮点数，可以正常序列化。
+  // ...
+  // 序列化小数部分不为零的浮点数，可以正常序列化
   let floatNumber1 = 10.12345;
   console.info(JSON.stringify(floatNumber1)); // 10.12345
 
-  // 序列化小数部分为零的浮点数，为保持数值的简洁表示，会丢失小数部分的精度。
+  // 序列化小数部分为零的浮点数，为保持数值的简洁表示，会丢失小数部分的精度
   let floatNumber2 = 10.00;
   console.info(JSON.stringify(floatNumber2)); // 10
 
   // 以下是防止浮点数精度丢失的方法：
   let result = JSON.stringify(floatNumber2, (key: string, value: Object): Object => {
     if (typeof value === 'number') {
-      // 按照业务场景需要，定制所需的固定精度。
+      // 按照业务场景需要，定制所需的固定精度
       return value.toFixed(2);
     }
     return value;
