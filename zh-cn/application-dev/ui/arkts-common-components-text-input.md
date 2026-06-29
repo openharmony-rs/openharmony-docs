@@ -541,7 +541,7 @@ TextInput({ text: $r('app.string.Service_MenuItems_Text') })
 
 ## 设置输入框避让
 
-提供对键盘避让与光标避两种场景示例。
+提供对键盘避让与光标避让两种场景示例。
 
 ### 键盘避让
 
