@@ -471,6 +471,7 @@ abilityDelegator.waitAbilityMonitor(monitor, timeout,
       console.error(`waitAbilityMonitor fail. Code: ${error.code}, message: ${error.message}`);
     } else {
       console.info('waitAbilityMonitor success.');
+    }
   });
 ```
 
@@ -1173,7 +1174,11 @@ let msg = 'msg';
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.print(msg, (err: BusinessError<void> | null) => {
-  console.info('print callback');
+  if (err) {
+    console.error(`print fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('print callback');
+  }
 });
 ```
 
