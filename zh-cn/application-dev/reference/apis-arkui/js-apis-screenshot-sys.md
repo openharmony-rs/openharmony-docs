@@ -109,8 +109,8 @@ save(options: ScreenshotOptions, callback: AsyncCallback&lt;image.PixelMap&gt;):
 | 错误码ID | 错误信息 |
 | ------- | -------------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
-| 202     | Permission verification failed. A non-system application calls a system API. |
-| 1400001 | Invalid display or screen. |
+| 202     | Permission verification failed. A non-system application calls a system API.<br>适用版本：11+ |
+| 1400001 | Invalid display or screen.<br>适用版本：11+ |
 
 **示例：**
 
