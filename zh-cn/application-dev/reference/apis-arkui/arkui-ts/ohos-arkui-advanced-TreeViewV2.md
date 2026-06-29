@@ -53,7 +53,7 @@ TreeViewV2({ treeControllerV2: TreeControllerV2 })
 
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
-| -------- | -------- | -------- | -------- |
+| -------- | -------- | -------- | -------- | -------- |
 | treeControllerV2 | [TreeControllerV2](#treecontrollerv2) | 是 | @Param | 树视图节点控制器。 |
 
 
@@ -740,19 +740,19 @@ struct TreeViewV2Demo {
 
   // 组件初始化时。注册监听器并构建树结构
   aboutToAppear(): void {
-	// 注册节点点击监听器
+    // 注册节点点击监听器
     this.treeListenerV2.onNodeClick((callbackParam: CallbackParamV2) => {
       this.clickNodeId = callbackParam.currentNodeId;
     })
-	// 注册节点添加监听器
+    // 注册节点添加监听器
     this.treeListenerV2.onNodeAdd((callbackParam: CallbackParamV2) => {
       this.clickNodeId = callbackParam.currentNodeId;
     })
-	// 注册节点删除监听器
+    // 注册节点删除监听器
     this.treeListenerV2.onNodeDelete((callbackParam: CallbackParamV2) => {
       this.clickNodeId = callbackParam.currentNodeId;
     })
-	// 注册节点移动监听器
+    // 注册节点移动监听器
     this.treeListenerV2.onceNodeMove((callbackParam: CallbackParamV2) => {
       this.clickNodeId = callbackParam.currentNodeId;
       console.info(`Node moved to index: ${callbackParam.childIndex}`);
@@ -773,7 +773,7 @@ struct TreeViewV2Demo {
       secondaryTitle: '6'
     };
 
-	// 构建树结构
+    // 构建树结构
     this.treeControllerV2
       .addNode(nodeParam)
       .addNode({
@@ -863,7 +863,7 @@ struct TreeViewV2Demo {
   build(): void {
     Column() {
       SideBarContainer(SideBarContainerType.Embed) {
-		// 树形视图组件
+        // 树形视图组件
         TreeViewV2({ treeControllerV2: this.treeControllerV2 })
         Row() {
           Divider().vertical(true).strokeWidth(2).color(0x000000).lineCap(LineCapStyle.Round)
@@ -937,15 +937,15 @@ struct TreeViewV2Demo {
     this.treeListenerV2.onNodeClick((callbackParam: CallbackParamV2) => {
       this.clickNodeId = callbackParam.currentNodeId;
     })
-	// 注册节点添加监听器
+    // 注册节点添加监听器
     this.treeListenerV2.onNodeAdd((callbackParam: CallbackParamV2) => {
       this.clickNodeId = callbackParam.currentNodeId;
     })
-	// 注册节点删除监听器
+    // 注册节点删除监听器
     this.treeListenerV2.onNodeDelete((callbackParam: CallbackParamV2) => {
       this.clickNodeId = callbackParam.currentNodeId;
     })
-	// 注册节点移动监听器
+    // 注册节点移动监听器
     this.treeListenerV2.onceNodeMove((callbackParam: CallbackParamV2) => {
       this.clickNodeId = callbackParam.currentNodeId;
       console.info(`Node moved to parent: ${callbackParam.parentNodeId}, index: ${callbackParam.childIndex}`);
@@ -973,7 +973,7 @@ struct TreeViewV2Demo {
       secondaryTitle: '6'
     };
 
-	// 构建树结构
+    // 构建树结构
     this.treeControllerV2
       .addNode(nodeParam)
       .addNode({
@@ -1078,7 +1078,7 @@ struct TreeViewV2Demo {
   build(): void {
     Column() {
       SideBarContainer(SideBarContainerType.Embed) {
-	    // 树形视图组件
+        // 树形视图组件
         TreeViewV2({ treeControllerV2: this.treeControllerV2 })
         Row() {
           Divider().vertical(true).strokeWidth(2).color(0x000000).lineCap(LineCapStyle.Round)
