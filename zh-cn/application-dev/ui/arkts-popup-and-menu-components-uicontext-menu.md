@@ -63,7 +63,7 @@
   
   ``` TypeScript
   private contentNode: ComponentContent<Object> =
-    new ComponentContent(this.getUIContext(), wrapBuilder(buildText), this.message);
+    new ComponentContent(this.getUIContext(), wrapBuilder(buildText), this.message, { nestingBuilderSupported: true });
   ```
 
   ArkTS-Sta示例：
