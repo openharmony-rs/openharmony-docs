@@ -41,7 +41,6 @@
 | [InputMethod_ErrorCode OH_TextConfig_SetWindowId(InputMethod_TextConfig *config, int32_t windowId)](#oh_textconfig_setwindowid) | 设置文本配置信息中所属窗口的窗口id。 |
 | [InputMethod_ErrorCode OH_TextConfig_SetPlaceholder(InputMethod_TextConfig *config, const char16_t *placeholder,size_t length)](#oh_textconfig_setplaceholder) | 设置文本配置信息中的占位符文本信息。 |
 | [InputMethod_ErrorCode OH_TextConfig_SetAbilityName(InputMethod_TextConfig *config, const char16_t *abilityName,size_t length)](#oh_textconfig_setabilityname) | 设置文本配置信息中的abilityName信息。 |
-| [InputMethod_ErrorCode OH_TextConfig_SetConsumeKeyEvents(InputMethod_TextConfig *config, bool consumeKeyEvents)](#oh_textconfig_setconsumekeyevents) | 将编辑框是否具有完整处理字母、字符、功能等按键的能力设置到文本配置信息中。 |
 | [InputMethod_ErrorCode OH_TextConfig_GetInputType(InputMethod_TextConfig *config, InputMethod_TextInputType *inputType)](#oh_textconfig_getinputtype) | 获取文本配置信息中的输入框类型。 |
 | [InputMethod_ErrorCode OH_TextConfig_GetEnterKeyType(InputMethod_TextConfig *config, InputMethod_EnterKeyType *enterKeyType)](#oh_textconfig_getenterkeytype) | 获取文本配置信息中的回车键功能类型。 |
 | [InputMethod_ErrorCode OH_TextConfig_IsPreviewTextSupported(InputMethod_TextConfig *config, bool *supported)](#oh_textconfig_ispreviewtextsupported) | 获取文本配置中是否支持预上屏。 |
@@ -51,7 +50,6 @@
 | [InputMethod_ErrorCode OH_TextConfig_GetWindowId(InputMethod_TextConfig *config, int32_t *windowId)](#oh_textconfig_getwindowid) | 获取文本配置信息中所属窗口的窗口id。 |
 | [InputMethod_ErrorCode OH_TextConfig_GetPlaceholder(InputMethod_TextConfig *config, char16_t *placeholder,size_t *length)](#oh_textconfig_getplaceholder) | 获取文本配置信息中的占位符文本信息。 |
 | [InputMethod_ErrorCode OH_TextConfig_GetAbilityName(InputMethod_TextConfig *config, char16_t *abilityName,size_t *length)](#oh_textconfig_getabilityname) | 获取文本配置信息中的abilityName信息。 |
-| [InputMethod_ErrorCode OH_TextConfig_GetConsumeKeyEvents(InputMethod_TextConfig *config, bool *consumeKeyEvents)](#oh_textconfig_getconsumekeyevents) | 获取文本配置中是否具有完整处理字母、字符、功能等按键的能力。 |
 
 ## 函数说明
 
@@ -276,32 +274,6 @@ InputMethod_ErrorCode OH_TextConfig_SetAbilityName(InputMethod_TextConfig *confi
 | 类型 | 说明 |
 | -- | -- |
 | [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)：<br>     IME_ERR_OK = 0：表示成功。<br>     IME_ERR_NULL_POINTER = 12802000：非预期的空指针。 |
-
-### OH_TextConfig_SetConsumeKeyEvents()
-
-```c
-InputMethod_ErrorCode OH_TextConfig_SetConsumeKeyEvents(InputMethod_TextConfig *config, bool consumeKeyEvents)
-```
-
-**描述**
-
-将编辑框是否具有完整处理字母、字符、功能等按键的能力设置到文本配置信息中。
-
-**起始版本：** 26.0.0
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) *config | 指向即将被设置值的[InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md)实例的指针。 |
-| bool consumeKeyEvents | 表示编辑框是否具有完整处理字母、字符、功能等按键的能力。true - 表示具备此能力。false - 表示不具备此能力。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 返回一个特定的错误码。<br>     [IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示成功。<br>     [IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 非预期的空指针。<br> 具体错误码可以参考[InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |
 
 ### OH_TextConfig_GetInputType()
 
@@ -539,31 +511,5 @@ InputMethod_ErrorCode OH_TextConfig_GetAbilityName(InputMethod_TextConfig *confi
 | 类型 | 说明 |
 | -- | -- |
 | [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)：<br>     IME_ERR_OK = 0：表示成功。<br>     IME_ERR_PARAMCHECK = 401：参数检查失败。<br>     IME_ERR_NULL_POINTER = 12802000：非预期的空指针。 |
-
-### OH_TextConfig_GetConsumeKeyEvents()
-
-```c
-InputMethod_ErrorCode OH_TextConfig_GetConsumeKeyEvents(InputMethod_TextConfig *config, bool *consumeKeyEvents)
-```
-
-**描述**
-
-获取文本配置中是否具有完整处理字母、字符、功能等按键的能力。
-
-**起始版本：** 26.0.0
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) *config | 指向即将被获取值的[InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md)实例的指针。 |
-| bool *consumeKeyEvents | 表示编辑框是否具有完整处理字母、字符、功能等按键的能力。true - 表示具备此能力。false - 表示不具备此能力。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 返回一个特定的错误码。<br>     [IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示成功。<br>     [IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 非预期的空指针。<br> 具体错误码可以参考[InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |
 
 
