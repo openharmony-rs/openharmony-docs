@@ -1,4 +1,4 @@
-# 常驻任务开发指导（Worker）
+# 常驻任务开发指导 (Worker)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->

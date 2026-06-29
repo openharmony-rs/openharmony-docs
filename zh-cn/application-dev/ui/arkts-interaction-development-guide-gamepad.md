@@ -19,6 +19,9 @@
 游戏手柄的按键输入会被上报为按键事件，其具体处理机制可参考[按键事件数据流](./arkts-interaction-development-guide-keyboard.md#按键事件数据流)。
 
 为响应手柄的按键操作，开发者需要为组件绑定[onKeyEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md#onkeyevent)接口回调。当组件处于获焦状态时，手柄的按键操作会触发此回调，进而处理按键输入的相应逻辑。相关示例如下：
+
+ArkTS-Dyn示例：
+
 <!-- @[gamepad_common_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/gamepad/CommonKey.ets) -->
 
 ``` TypeScript
@@ -59,11 +62,56 @@ struct CommonKey {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[gamepad_common_key](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/gamepad/CommonKey.ets) -->
+
+``` TypeScript
+import { Entry, Component, Column, Button, KeyEvent, KeyType, FlexAlign } from '@kit.ArkUI';
+import { KeyCode } from '@kit.InputKit';
+
+@Entry
+@Component
+struct CommonKey {
+  build() {
+    Column() {
+      Button('JoyStick')
+        .defaultFocus(true)
+        .onKeyEvent((event: KeyEvent): boolean => {
+          if (event && event.type === KeyType.Down) {
+            switch (event.keyCode as KeyCode) {
+              case KeyCode.KEYCODE_BUTTON_SELECT:
+                console.info('trigger BUTTON_SELECT');
+                // 处理BUTTON_SELECT按键的输入逻辑
+                break;
+              case KeyCode.KEYCODE_BUTTON_START:
+                console.info('trigger BUTTON_START');
+                // 处理BUTTON_START按键的输入逻辑
+                break;
+              default:
+                console.info('trigger BUTTON_DEFAULT');
+              // 处理其他按键的输入逻辑
+                break;
+            }
+          }
+          return false;
+        })
+    }
+    .height('100%')
+    .width('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
 手柄的方向键输入在触发按键事件时也会带来默认的走焦效果。当开发者仅需利用方向键进行游戏内操作（如控制角色移动、旋转视角等）时，这种默认的走焦行为可能会干扰正常操作。使用焦点组可以解决这一问题。
 
 ![gamepad_map](figures/gamepad_direction_disturb.PNG)
 
 如图所示，在没有焦点组的情况下，方向键操作会使焦点在组件A、B、C之间自由移动。当使用焦点组容器将特定组件包裹起来时，就可以在该容器内部独立控制焦点行为。通过[focusScopeId](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusscopeid14)可以设置焦点组，并通过设置arrowStepOut参数为false来限制方向键走焦行为，以下示例展示了如何实现这一逻辑：
+
+ArkTS-Dyn示例：
+
 <!-- @[gamepad_direction_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/gamepad/DirectionKey.ets) -->
 
 ``` TypeScript
@@ -106,11 +154,58 @@ struct DirectionKey {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[gamepad_direction_key](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/gamepad/DirectionKey.ets) -->
+
+``` TypeScript
+import { Entry, Component, Column, Button, KeyEvent, KeyType, FlexAlign, ColumnOptions } from '@kit.ArkUI';
+import { KeyCode } from '@kit.InputKit';
+
+@Entry
+@Component
+struct DirectionKey {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Button('Button1')
+      Column() {
+        Button('JoyStick')
+          .defaultFocus(true)
+          .onKeyEvent((event: KeyEvent): boolean => {
+            if (event && event.type === KeyType.Down) {
+              switch (event.keyCode as KeyCode) {
+                case KeyCode.KEYCODE_DPAD_UP:
+                case KeyCode.KEYCODE_DPAD_DOWN:
+                case KeyCode.KEYCODE_DPAD_LEFT:
+                case KeyCode.KEYCODE_DPAD_RIGHT:
+                  console.info('trigger direction button');
+                  break;
+                default:
+                  console.info('trigger other button');
+                  break;
+              }
+            }
+            return false;
+          })
+      }.focusScopeId('myGroup', true, false)
+
+      Button('Button2')
+    }
+    .height('100%')
+    .width('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
 此时使用方向键进行操作，焦点始终在JoyStick按钮处，方向键走焦行为被屏蔽。
 
 ## 处理操纵杆输入
 
 游戏手柄的操纵杆输入会触发焦点轴事件，开发者可以为获焦的组件绑定[onFocusAxisEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-focus_axis.md#onfocusaxisevent)接口回调，处理相应的事件逻辑。示例如下：
+
+ArkTS-Dyn示例：
+
 <!-- @[gamepad_joystick](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/gamepad/Joystick.ets) -->
 
 ``` TypeScript
@@ -139,9 +234,44 @@ struct Joystick {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[gamepad_joystick](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/gamepad/Joystick.ets) -->
+
+``` TypeScript
+import { Entry, Component, Column, Button, FocusAxisEvent, AxisModel, FlexAlign } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Joystick {
+  build() {
+    Column() {
+      Button('JoyStick')
+        .defaultFocus(true)
+        .onFocusAxisEvent((event: FocusAxisEvent) => {
+          let absX = event.axisMap.get(AxisModel.ABS_X);
+          let absY = event.axisMap.get(AxisModel.ABS_Y);
+          let absZ = event.axisMap.get(AxisModel.ABS_Z);
+          let absRZ = event.axisMap.get(AxisModel.ABS_RZ);
+          let absGas = event.axisMap.get(AxisModel.ABS_GAS);
+          let absBrake = event.axisMap.get(AxisModel.ABS_BRAKE);
+          // 处理操纵杆输入逻辑
+          console.info(`absX: ${absX}, absY: ${absY}, absZ: ${absZ}, absRZ: ${absRZ}, absGas: ${absGas}, absBrake: ${absBrake}`);
+        })
+    }
+    .height('100%')
+    .width('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
 ## 示例
 
 下面通过一个按键和操纵杆处理的综合示例来展示游戏手柄与应用的交互。
+
+ArkTS-Dyn示例：
+
 <!-- @[gamepad_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/gamepad/GamepadSample.ets) -->
 
 ``` TypeScript
@@ -195,6 +325,84 @@ struct GamepadSample {
       }.width('100%').alignItems(HorizontalAlign.Start).padding({ left: 40 })
 
     }.height(300).width('100%').margin({ top: 30 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[gamepad_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/gamepad/GamepadSample.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Component,
+  State,
+  Column,
+  Button,
+  Text,
+  Divider,
+  KeyEvent,
+  KeyType,
+  FocusAxisEvent,
+  AxisModel,
+  HorizontalAlign,
+  ColumnOptions,
+  Margin,
+  Padding
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct GamepadSample {
+  @State keyValue: string = '';
+  @State keyEventType: string = '';
+  @State axisValue: string = '';
+
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Button('Button1')
+
+      Column() {
+        Button('JoyStick')
+          .defaultFocus(true)
+          .onFocusAxisEvent((event: FocusAxisEvent) => {
+            let absX = event.axisMap.get(AxisModel.ABS_X);
+            let absY = event.axisMap.get(AxisModel.ABS_Y);
+            let absZ = event.axisMap.get(AxisModel.ABS_Z);
+            let absRz = event.axisMap.get(AxisModel.ABS_RZ);
+            let absGas = event.axisMap.get(AxisModel.ABS_GAS);
+            let absBrake = event.axisMap.get(AxisModel.ABS_BRAKE);
+            let absHat0X = event.axisMap.get(AxisModel.ABS_HAT0X);
+            let absHat0Y = event.axisMap.get(AxisModel.ABS_HAT0Y);
+            this.axisValue =
+              'absX: ' + absX + '\nabsY: ' + absY + '\nabsZ: ' + absZ + '\nabsRz: ' + absRz + '\nabsGas: ' + absGas +
+                '\nabsBrake: ' + absBrake + '\nabsHat0X: ' + absHat0X + '\nabsHat0Y: ' + absHat0Y;
+          })
+          .onKeyEvent((event: KeyEvent): boolean => {
+            if (event && event.type === KeyType.Down) {
+              this.keyValue =
+                'keyCode:' + event.keyCode + '\nkeyText:' + event.keyText + '\nintentionCode:' + event.intentionCode;
+            }
+            return false;
+          })
+      }.focusScopeId('myGroup', true, false)
+
+      Button('Button2')
+
+      Text('Axis value info: ').margin({ top: 10 } as Margin)
+      Column() {
+        Text(this.axisValue).padding(15)
+      }.width('100%').alignItems(HorizontalAlign.Start).padding({ left: 40 } as Padding)
+
+      Divider()
+
+      Text('Key value info: ').margin({ top: 10 } as Margin)
+      Column() {
+        Text(this.keyValue).padding(15)
+      }.width('100%').alignItems(HorizontalAlign.Start).padding({ left: 40 } as Padding)
+
+    }.height(300).width('100%').margin({ top: 30 } as Padding)
   }
 }
 ```

@@ -17,6 +17,8 @@
 >
 > - 本Class首批接口从API version 11开始支持。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 以下API需先使用UIContext中的[getUIObserver()](arkts-apis-uicontext-uicontext.md#getuiobserver11)方法获取到UIObserver对象，再通过该对象调用对应方法。
 >
 > - UIObserver仅能监听到本进程内的相关信息，不支持获取<!--Del-->[UIExtensionComponent](../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)等<!--DelEnd-->跨进程场景的信息。
@@ -2927,7 +2929,6 @@ offTabChange(config: observer.ObserverOptions, callback?: Callback<observer.TabC
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 监听事件，固定为'tabChange'，即[Tabs](arkui-ts/ts-container-tabs.md)组件页签的切换事件。 |
 | config  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12)        | 是   | 指定监听的[Tabs](arkui-ts/ts-container-tabs.md)组件的id。 |
 | callback | Callback\<observer.[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)\>              | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销config指定的[Tabs](arkui-ts/ts-container-tabs.md)组件下注册的所有的回调函数。<br/>默认值：undefined |
 
@@ -3857,6 +3858,8 @@ addGlobalGestureListener(type: GestureListenerType, option: GestureObserverConfi
 
 该示例使用全局手势监听器实时追踪Tap、Pan和LongPress三个独立区域的触发状态，记录各手势的触发次数和最后操作信息，并在组件生命周期内自动管理监听器的注册与注销。
 
+ArkTS-Dyn示例：
+
 ```ts
 // Index.ets
 // 演示uiObserver.addGlobalGestureListener(type, option, callback)
@@ -4031,6 +4034,173 @@ struct Index {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Row, RowOptions, Text, Button, State, GestureEvent, TapGesture, PanGesture, LongPressGesture, FlexAlign } from '@kit.ArkUI';
+import { GestureListenerType, GestureActionPhase, GestureTriggerInfo, GestureListenerCallback } from '@ohos.arkui.UIContext';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = '全局手势监控';
+  @State tapCount: number = 0;
+  @State panCount: number = 0;
+  @State longPressCount: number = 0;
+  @State lastAction: string = '无';
+  @State lastArea: string = '无';
+
+  // 存储监听器回调引用，使用非可选类型并初始化
+  private tapCallback: GestureListenerCallback = (info: GestureTriggerInfo): void => {};
+  private panCallback: GestureListenerCallback = (info: GestureTriggerInfo): void => {};
+  private longPressCallback: GestureListenerCallback = (info: GestureTriggerInfo): void => {};
+
+  // 启用全局监听
+  aboutToAppear(): void {
+    this.addGlobalListeners();
+  }
+
+  // 终止全局监听
+  aboutToDisappear(): void {
+    this.removeGlobalListeners();
+  }
+
+  private addGlobalListeners(): void {
+    // Tap监听任务
+    this.tapCallback = (info: GestureTriggerInfo): void => {
+      if (info.event?.target?.id === 'tap-area') {
+        this.tapCount++;
+        this.lastAction = '点击';
+        this.lastArea = 'Tap区域';
+      }
+    };
+    this.getUIContext().getUIObserver().addGlobalGestureListener(
+      GestureListenerType.TAP,
+      { actionPhases: [GestureActionPhase.WILL_START, GestureActionPhase.WILL_END] },
+      this.tapCallback
+    );
+
+    // Pan监听任务
+    this.panCallback = (info: GestureTriggerInfo): void => {
+      if (info.event?.target?.id === 'pan-area') {
+        this.panCount++;
+        this.lastAction = '平移';
+        this.lastArea = 'Pan区域';
+      }
+    };
+    this.getUIContext().getUIObserver().addGlobalGestureListener(
+      GestureListenerType.PAN,
+      {
+        actionPhases: [GestureActionPhase.WILL_START, GestureActionPhase.WILL_END]
+      },
+      this.panCallback
+    );
+
+    // LongPress监听任务
+    this.longPressCallback = (info: GestureTriggerInfo): void => {
+      if (info.event?.target?.id === 'longpress-area') {
+        this.longPressCount++;
+        this.lastAction = '长按';
+        this.lastArea = 'LongPress区域';
+      }
+    };
+    this.getUIContext().getUIObserver().addGlobalGestureListener(
+      GestureListenerType.LONG_PRESS,
+      {
+        actionPhases: [GestureActionPhase.WILL_START, GestureActionPhase.WILL_END]
+      },
+      this.longPressCallback
+    );
+  }
+
+  private removeGlobalListeners(): void {
+    this.getUIContext().getUIObserver().removeGlobalGestureListener(GestureListenerType.TAP, this.tapCallback);
+    this.getUIContext().getUIObserver().removeGlobalGestureListener(GestureListenerType.PAN, this.panCallback);
+    this.getUIContext().getUIObserver().removeGlobalGestureListener(GestureListenerType.LONG_PRESS, this.longPressCallback);
+  }
+
+  build() {
+    Column() {
+      // 手势数据统计面板
+      Row({ space: 30 } as RowOptions) {
+        Column() {
+          Text('点击次数:').fontSize(16)
+          Text(`${this.tapCount}`).fontSize(24).fontColor('#FF6B81')
+        }
+        Column() {
+          Text('平移次数:').fontSize(16)
+          Text(`${this.panCount}`).fontSize(24).fontColor('#7BED9F')
+        }
+        Column() {
+          Text('长按次数:').fontSize(16)
+          Text(`${this.longPressCount}`).fontSize(24).fontColor('#70A1FF')
+        }
+      }
+      .margin(10)
+
+      Text(`最后动作: ${this.lastAction} (${this.lastArea})`)
+        .fontSize(18)
+        .margin(10)
+
+      // 手势区域
+      Row() {
+        Text('Tap区域').fontSize(18)
+      }
+      .id('tap-area')
+      .width('90%')
+      .height(120)
+      .margin(10)
+      .border({ width: 2, color: '#FF6B81' })
+      .justifyContent(FlexAlign.Center)
+      .gesture(TapGesture().onAction((event: GestureEvent): void => {
+        // 具体实现内容
+      }))
+
+      Row() {
+        Text('Pan区域').fontSize(18)
+      }
+      .id('pan-area')
+      .width('90%')
+      .height(120)
+      .margin(10)
+      .border({ width: 2, color: '#7BED9F' })
+      .justifyContent(FlexAlign.Center)
+      .gesture(
+        PanGesture()
+          .onActionStart((event: GestureEvent): void => {
+            // 具体实现内容
+          })
+          .onActionEnd((event: GestureEvent): void => {
+            // 具体实现内容
+          })
+      )
+
+      Row() {
+        Text('LongPress区域').fontSize(18)
+      }
+      .id('longpress-area')
+      .width('90%')
+      .height(120)
+      .margin(10)
+      .border({ width: 2, color: '#70A1FF' })
+      .justifyContent(FlexAlign.Center)
+      .gesture(
+        LongPressGesture()
+          .onAction((event: GestureEvent): void => {
+            // 具体实现内容
+          })
+          .onActionEnd((event: GestureEvent): void => {
+            // 具体实现内容
+          })
+      )
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ![example](figures/pangesture_uiobserver_listener.gif)
 
 ## removeGlobalGestureListener<sup>20+</sup>
@@ -4067,6 +4237,10 @@ on(type: 'windowSizeLayoutBreakpointChange', callback: Callback<observer.WindowS
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 22
 
 **参数：** 
 
@@ -4137,6 +4311,10 @@ off(type: 'windowSizeLayoutBreakpointChange', callback?: Callback\<observer.Wind
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 22
 
 **参数：** 
 
@@ -4493,7 +4671,7 @@ ArkTS-Sta: offNavDestinationSizeChangeByUniqueId(navigationUniqueId: int, callba
 | navigationUniqueId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 希望监听的NavDestination所属的Navigation的唯一ID，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。 |
 | callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | 否   | 需要被移除的回调函数。不传参数时，移除所有指定了相同navigationUniqueId的回调函数。 |
 
-## onWindowSizeLayoutBreakpointChange<sup>23+</sup>
+## onWindowSizeLayoutBreakpointChange<sup>24+</sup>
 
 onWindowSizeLayoutBreakpointChange(callback: Callback<observer.WindowSizeLayoutBreakpointInfo\>): void
 
@@ -4503,7 +4681,7 @@ onWindowSizeLayoutBreakpointChange(callback: Callback<observer.WindowSizeLayoutB
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
   
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：** 
 
@@ -4582,7 +4760,7 @@ struct Index {
 }
 ```
 
-## offWindowSizeLayoutBreakpointChange<sup>23+</sup>
+## offWindowSizeLayoutBreakpointChange<sup>24+</sup>
 
 offWindowSizeLayoutBreakpointChange(callback?: Callback\<observer.WindowSizeLayoutBreakpointInfo>): void
 
@@ -4592,7 +4770,7 @@ offWindowSizeLayoutBreakpointChange(callback?: Callback\<observer.WindowSizeLayo
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：** 
 
@@ -4602,4 +4780,4 @@ offWindowSizeLayoutBreakpointChange(callback?: Callback\<observer.WindowSizeLayo
 
 **示例：**
 
-参考[onWindowSizeLayoutBreakpointChange](#onwindowsizelayoutbreakpointchange23)接口示例。
+参考[onWindowSizeLayoutBreakpointChange](#onwindowsizelayoutbreakpointchange24)接口示例。

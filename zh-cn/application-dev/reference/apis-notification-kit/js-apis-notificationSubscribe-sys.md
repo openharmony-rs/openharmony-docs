@@ -266,8 +266,6 @@ notificationSubscribe.subscribe(subscriber).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let onConsumeCallback = (data: notificationSubscribe.SubscribeCallbackData) => {
   console.info(`Consume callback: ${JSON.stringify(data)}`);
 }
@@ -276,8 +274,9 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 };
 notificationSubscribe.subscribe(subscriber).then(() => {
   console.info("subscribe success");
-}).catch((err: BusinessError): void => {
-  console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribe failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -353,7 +352,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeNotification(subscriber).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -436,7 +436,8 @@ let subscribeInfo: notificationSubscribe.NotificationSubscribeInfo = {
 notificationSubscribe.subscribeNotification(subscriber, subscribeInfo).then(() => {
   console.info("subscribeNotification success");
 }).catch((err: Error) => {
-  console.error(`subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -511,7 +512,8 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribeSelf(subscriber).then(() => {
   console.info("subscribeSelf success");
 }).catch((err: Error): void => {
-  console.error(`subscribeSelf failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`subscribeSelf failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -649,8 +651,6 @@ notificationSubscribe.unsubscribe(subscriber).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let onDisconnectCallback = () => {
   console.info("subscribe disconnect");
 }
@@ -659,7 +659,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 };
 notificationSubscribe.unsubscribe(subscriber).then(() => {
   console.info("unsubscribe success");
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
   console.error(`unsubscribe fail: ${JSON.stringify(err)}`);
 });
 ```
@@ -823,7 +823,6 @@ notificationSubscribe.remove(bundle, notificationKey, reason).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { notificationManager } from '@kit.NotificationKit';
 
 let bundle: notificationManager.BundleOption = {
@@ -837,7 +836,7 @@ let notificationKey: notificationSubscribe.NotificationKey = {
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(bundle, notificationKey, reason).then(() => {
   console.info("remove success");
-}).catch((err: BusinessError): void  => {
+}).catch((err: Error): void  => {
   console.error(`remove fail: ${JSON.stringify(err)}`);
 });
 ```
@@ -974,13 +973,11 @@ notificationSubscribe.remove(hashCode, reason).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let hashCode: string = 'hashCode';
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(hashCode, reason).then(() => {
   console.info("remove success");
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
   console.error(`remove fail: ${JSON.stringify(err)}`);
 });
 ```
@@ -1115,13 +1112,11 @@ notificationSubscribe.remove(hashCodes, reason).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let hashCodes: string[] = ['hashCode1','hashCode2'];
 let reason: notificationSubscribe.RemoveReason = notificationSubscribe.RemoveReason.CLICK_REASON_REMOVE;
 notificationSubscribe.remove(hashCodes, reason).then(() => {
   console.info("remove success");
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
   console.error(`remove fail: ${JSON.stringify(err)}`);
 });
 ```
@@ -1323,12 +1318,10 @@ notificationSubscribe.removeAll().then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 // 不指定应用时，删除所有通知
 notificationSubscribe.removeAll().then(() => {
   console.info("removeAll success");
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
   console.error(`removeAll fail: ${JSON.stringify(err)}`);
 });
 ```
@@ -1466,12 +1459,10 @@ notificationSubscribe.removeAll(userId).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let userId: int = 1;
 notificationSubscribe.removeAll(userId).then(() => {
   console.info("removeAll success");
-}).catch((err: BusinessError): void => {
+}).catch((err: Error): void => {
   console.error(`removeAll fail: ${JSON.stringify(err)}`);
 });
 ```
@@ -1539,8 +1530,6 @@ notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
 
 ArkTS-Sta示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let hashcode: string = 'hashcode';
 let operationInfo: notificationSubscribe.OperationInfo = {
   actionName: "actionName",
@@ -1548,8 +1537,8 @@ let operationInfo: notificationSubscribe.OperationInfo = {
 };
 notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
   console.info("distributeOperation success");
-}).catch((err: BusinessError): void => {
-  console.error(`distributeOperation fail: ${JSON.stringify(err.code)}`);
+}).catch((err: Error): void => {
+  console.error(`distributeOperation fail: ${JSON.stringify(err)}`);
 });
 ```
 

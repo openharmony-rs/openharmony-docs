@@ -84,7 +84,7 @@ import { Computed } from '@kit.ArkUI';
    }
    ```
 
-- 在\@Computed装饰的getter方法中，不能改变状态变量的值，否则会抛出运行时异常。
+- 在\@Computed装饰的getter方法中，不能改变状态变量的值，否则会抛出运行时异常。从API版本26.0.0开始，在@Computed方法中修改状态变量会编译报错，报错消息是“State variables cannot be modified within a getter function decorated with '@Computed'.”。
 
    ```ts
    'use static'
@@ -187,15 +187,15 @@ import { Computed } from '@kit.ArkUI';
 ### 当被计算的属性变化时，\@Computed装饰的getter访问器只会被求解一次
 1. 在自定义组件中使用计算属性。
 
-    - 点击第一个Button改变lastName，触发\@Computed fullName重新计算。
-    - `this.fullName`被绑定在两个Text组件上，观察`fullName`日志，可以发现，计算只发生了一次。
-    - 对于前两个Text组件，`this.lastName + ' '+ this.firstName`这段逻辑被求解了两次。
-    - 如果UI中有多处需要使用`this.lastName + ' '+ this.firstName`这段计算逻辑，可以使用计算属性，减少计算次数。
-    - 点击第二个Button，age自增，UI无变化。因为age非状态变量，只有被观察到的变化才会触发\@Computed fullName重新计算。
+     - 点击第一个Button改变lastName，触发\@Computed fullName重新计算。
+     - `this.fullName`被绑定在两个Text组件上，观察`fullName`日志，可以发现，计算只发生了一次。
+     - 对于前两个Text组件，`this.lastName + ' '+ this.firstName`这段逻辑被求解了两次。
+     - 如果UI中有多处需要使用`this.lastName + ' '+ this.firstName`这段计算逻辑，可以使用计算属性，减少计算次数。
+     - 点击第二个Button，age自增，UI无变化。因为age非状态变量，只有被观察到的变化才会触发\@Computed fullName重新计算。
 
-   ```ts
-   'use static'
+   <!-- @[ComputedComponent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComputedDecorator/entry/src/main/ets/pages/ComputedComponent.ets) -->
    
+   ``` TypeScript
    import { Button, ClickEvent, Column, ComponentV2, Computed, Divider, Entry, Local, Text } from '@kit.ArkUI';
    
    @Entry
@@ -214,32 +214,49 @@ import { Computed } from '@kit.ArkUI';
      build() {
        Column() {
          Text(this.lastName + ' ' + this.firstName)
+           .fontSize(20)
+           .margin(10)
          Text(this.lastName + ' ' + this.firstName)
+           .fontSize(20)
+           .margin(10)
          Divider()
          Text(this.fullName)
+           .fontSize(20)
+           .margin(10)
          Text(this.fullName)
-         Button('changed lastName').onClick((e: ClickEvent) => {
+           .fontSize(20)
+           .margin(10)
+         Button('changed lastName')
+           .width(300)
+           .margin(10)
+           .onClick((e: ClickEvent) => {
            this.lastName += 'a';
          })
    
-         Button('changed age').onClick((e: ClickEvent) => {
+         Button('changed age')
+           .width(300)
+           .margin(10)
+           .onClick((e: ClickEvent) => {
            this.age++;  // 无法触发Computed
          })
        }
+       .width('100%')
      }
    }
    ```
+
+    ![computed-component](../figures/computed_1.gif)
 
     计算属性本身会带来性能开销，在实际应用开发中需要注意：
     - 对于简单的计算逻辑，可以不使用计算属性。
     - 如果计算逻辑在视图中仅使用一次，则不使用计算属性，直接求解。
 
 2. 在\@ObservedV2装饰的类中使用计算属性。
-    - 点击Button改变lastName，触发\@Computed fullName重新计算，且只被计算一次。
+     - 点击Button改变lastName，触发\@Computed fullName重新计算，且只被计算一次。
 
-   ```ts
-   'use static'
+   <!-- @[ComputedObservedV2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComputedDecorator/entry/src/main/ets/pages/ComputedObservedV2.ets) -->
    
+   ``` TypeScript
    import { Button, ClickEvent, Column, ComponentV2, Computed, Entry, ObservedV2, Text, Trace } from '@kit.ArkUI';
    
    @ObservedV2
@@ -264,23 +281,33 @@ import { Computed } from '@kit.ArkUI';
      build() {
        Column() {
          Text(this.name1.fullName)
+           .fontSize(20)
+           .margin(10)
          Text(this.name1.fullName)
-         Button('changed lastName').onClick((e: ClickEvent) => {
+           .fontSize(20)
+           .margin(10)
+         Button('changed lastName')
+           .width(300)
+           .margin(10)
+           .onClick((e: ClickEvent) => {
            this.name1.lastName += 'a';
          })
        }
+       .width('100%')
      }
    }
    ```
+
+    ![computed-observedv2](../figures/computed_2.gif)
 
 ### \@Computed装饰的属性可以被\@Monitor监听变化
 如何使用计算属性求解fahrenheit和kelvin。示例如下：
 - 点击“-”，celsius-- -> fahrenheit -> kelvin --> kelvin变化时调用onKelvinMonitor。
 - 点击“+”，celsius++ -> fahrenheit -> kelvin --> kelvin变化时调用onKelvinMonitor。
 
-   ```ts
-   'use static'
+   <!-- @[ComputedMonitor](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComputedDecorator/entry/src/main/ets/pages/ComputedMonitor.ets) -->
    
+   ``` TypeScript
    import { Button, ClickEvent, Column, ComponentV2, Computed, Entry, IMonitor, Local, Monitor, ObservedV2, Row, Text, Trace } from '@kit.ArkUI';
    
    @Entry
@@ -305,27 +332,35 @@ import { Computed } from '@kit.ArkUI';
    
      build() {
        Column() {
-         Row() {
-           Button('-')
-             .onClick((e: ClickEvent) => {
-               this.celsius--;
-             })
+          Button('-')
+            .margin(10)
+            .onClick((e: ClickEvent) => {
+              this.celsius--;
+            })
+  
+          Text(`Celsius ${this.celsius.toFixed(1)}`)
+            .fontSize(20)
+            .margin(10)
+  
+          Button('+')
+            .margin(10)
+            .onClick((e: ClickEvent) => {
+              this.celsius++;
+            })
    
-           Text(`Celsius ${this.celsius.toFixed(1)}`).fontSize(50)
-   
-           Button('+')
-             .onClick((e: ClickEvent) => {
-               this.celsius++;
-             })
-         }
-   
-         Text(`Fahrenheit ${this.fahrenheit.toFixed(2)}`).fontSize(50)
-         Text(`Kelvin ${this.kelvin.toFixed(2)}`).fontSize(50)
+         Text(`Fahrenheit ${this.fahrenheit.toFixed(2)}`)
+           .fontSize(20)
+           .margin(10)
+         Text(`Kelvin ${this.kelvin.toFixed(2)}`)
+           .fontSize(20)
+           .margin(10)
        }
        .width('100%')
      }
    }
    ```
+
+  ![computed-monitor](../figures/computed_3.gif)
 
 ### \@Computed装饰的属性可以初始化\@Param
 下面的例子使用\@Computed初始化\@Param。
@@ -333,73 +368,105 @@ import { Computed } from '@kit.ArkUI';
 - `quantity`的改变会触发`total`和`qualifiesForDiscount`重新计算，计算商品总价和是否可以享有优惠。
 - `total`和`qualifiesForDiscount`的改变会触发子组件`Child`对应Text组件刷新。
 
-   ```ts
-   'use static'
+  <!-- @[ComputedInitParam](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComputedDecorator/entry/src/main/ets/pages/ComputedInitParam.ets) -->
    
-   import { Button, ClickEvent, Column, ComponentV2, Divider, Entry,
-            ForEach, HorizontalAlign, Row, Text } from '@kit.ArkUI';
-   import { Computed, Local, ObservedV2, Param, Trace } from '@kit.ArkUI';
-   
-   @ObservedV2
-   class Article {
-     @Trace quantity: number = 0;
-     unitPrice: number = 0;
-   
-     constructor(quantity: number, unitPrice: number) {
-       this.quantity = quantity;
-       this.unitPrice = unitPrice;
-     }
-   }
-   
-   @Entry
-   @ComponentV2
-   struct Index {
-     @Local shoppingBasket: Article[] = [new Article(1, 20), new Article(5, 2)];
-   
-     @Computed
-     get total(): number {
-       return this.shoppingBasket.reduce((acc: number, item: Article) => acc + (item.quantity * item.unitPrice), 0);
-     }
-   
-     @Computed
-     get qualifiesForDiscount(): boolean {
-       return this.total >= 100;
-     }
-   
-     build() {
-       Column() {
-         Text(`Shopping List: `).fontSize(30)
-         ForEach(this.shoppingBasket, (item: Article) => {
-           Row() {
-             Text(`unitPrice: ${item.unitPrice}`)
-             Button('-').onClick((e: ClickEvent) => {
-               if (item.quantity > 0) {
-                 item.quantity--;
-               }
-             })
-             Text(`quantity: ${item.quantity}`)
-             Button('+').onClick((e: ClickEvent) => {
-               item.quantity++;
-             })
-           }
-   
-           Divider()
-         })
-         Child({ total: this.total, qualifiesForDiscount: this.qualifiesForDiscount })
-       }.alignItems(HorizontalAlign.Start)
-     }
-   }
-   
-   @ComponentV2
-   struct Child {
-     @Param total: number = 0;
-     @Param qualifiesForDiscount: boolean = false;
-   
-     build() {
-       Row() {
-         Text(`Total: ${this.total} `).fontSize(30)
-         Text(`Discount: ${this.qualifiesForDiscount} `).fontSize(30)
-       }
-     }
-   }
-   ```
+  ``` TypeScript
+  import {
+    Button,
+    ClickEvent,
+    Column,
+    ComponentV2,
+    Divider,
+    Entry,
+    ForEach,
+    HorizontalAlign,
+    Row,
+    Text
+  } from '@kit.ArkUI';
+  import { Computed, Local, ObservedV2, Param, Trace } from '@kit.ArkUI';
+
+  @ObservedV2
+  class Article {
+    @Trace quantity: number = 0;
+    unitPrice: number = 0;
+
+    constructor(quantity: number, unitPrice: number) {
+      this.quantity = quantity;
+      this.unitPrice = unitPrice;
+    }
+  }
+
+  @Entry
+  @ComponentV2
+  struct Index {
+    @Local shoppingBasket: Article[] = [new Article(1, 20), new Article(5, 2)];
+
+    @Computed
+    get total(): number {
+      return this.shoppingBasket.reduce((acc: number, item: Article) => acc + (item.quantity * item.unitPrice), 0);
+    }
+
+    @Computed
+    get qualifiesForDiscount(): boolean {
+      return this.total >= 100;
+    }
+
+    build() {
+      Column() {
+        Column() {
+          Text(`Shopping List: `)
+            .fontSize(20)
+            .margin(10)
+        }
+        .width('100%')
+
+        ForEach(this.shoppingBasket, (item: Article) => {
+          Column() {
+            Text(`unitPrice: ${item.unitPrice}`)
+              .fontSize(20)
+              .margin(10)
+            Button('-')
+              .margin(10)
+              .onClick((e: ClickEvent) => {
+                if (item.quantity > 0) {
+                  item.quantity--;
+                }
+              })
+            Text(`quantity: ${item.quantity}`)
+              .fontSize(20)
+              .margin(10)
+            Button('+')
+              .margin(10)
+              .onClick((e: ClickEvent) => {
+                item.quantity++;
+              })
+          }
+          .width('100%')
+
+          Divider()
+        })
+        Child({ total: this.total, qualifiesForDiscount: this.qualifiesForDiscount })
+      }
+    }
+  }
+
+  @ComponentV2
+  struct Child {
+    @Param total: number = 0;
+    @Param qualifiesForDiscount: boolean = false;
+
+    build() {
+      Column() {
+        Text(`Total: ${this.total} `)
+          .fontSize(20)
+          .margin(10)
+        Text(`Discount: ${this.qualifiesForDiscount} `)
+          .fontSize(20)
+          .margin(10)
+      }
+      .width('100%')
+    }
+  }
+  ```
+
+  ![computed-init-param](../figures/computed_4.gif)

@@ -181,7 +181,7 @@
 
 允许设备管理应用订阅管理事件。
 
-比如应用安装事件、应用卸载事件和系统更新事件等。订阅成功后，事件触发时会通知MDM应用。
+比如应用安装事件、应用卸载事件和系统更新事件等。订阅成功后，事件触发时会通知设备管理应用。
 
 <!--RP1--><!--RP1End-->
 
@@ -500,7 +500,7 @@
 
 ## ohos.permission.ENTERPRISE_RECOVERY_KEY
 
-允许应用管理企业级恢复密钥。
+允许设备管理应用管理企业级恢复密钥。
 
 <!--RP1--><!--RP1End-->
 
@@ -634,7 +634,7 @@
 
 ## ohos.permission.ENTERPRISE_FILE_TRANSFER_AUDIT_POLICY_MANAGEMENT
 
-允许MDM应用管理文件传输的策略和审计信息。
+允许设备管理应用管理文件传输的策略和审计信息。
 
 <!--RP1--><!--RP1End-->
 
@@ -668,7 +668,7 @@
 
 ## ohos.permission.MANAGE_PREINSTALLED_ANTIVIRUS
 
-允许MDM应用管理系统预装的防病毒软件。
+允许设备管理应用管理系统预装的防病毒软件。
 
 <!--RP1--><!--RP1End-->
 
@@ -685,9 +685,9 @@
 
 ## ohos.permission.ENTERPRISE_MANAGE_USER_GRANT_PERMISSION
 
-允许设备管理应用（MDM）设置user_grant类权限策略。
+允许设备管理应用设置user_grant类权限策略。
 
-获取该权限后，MDM应用可设置被管理应用user_grant类权限策略，策略支持静默授予，拒绝授予以及默认（即不影响应用申请）。
+获取该权限后，设备管理应用可设置被管理应用user_grant类权限策略，策略支持静默授予，拒绝授予以及默认（即不影响应用申请）。
 
 <!--RP1--><!--RP1End-->
 
@@ -704,7 +704,7 @@
 
 ## ohos.permission.ENTERPRISE_DATA_IDENTIFY_FILE
 
-允许MDM应用识别文件敏感内容。
+允许设备管理应用识别文件敏感内容。
 
 <!--RP1--><!--RP1End-->
 
@@ -721,7 +721,7 @@
 
 ## ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
-允许设备管理应用（MDM）生成、解密DLP文件，查询DLP文件策略。
+允许设备管理应用生成、解密DLP文件，查询DLP文件策略。
 
 <!--RP1--><!--RP1End-->
 
@@ -776,7 +776,7 @@
 
 ## ohos.permission.ENTERPRISE_READ_LOG
 
-允许MDM应用收集系统日志。
+允许设备管理应用收集系统日志。
 
 <!--RP1--><!--RP1End-->
 
@@ -793,7 +793,7 @@
 
 ## ohos.permission.ENTERPRISE_DEACTIVATE_DEVICE_ADMIN
 
-允许已激活的MDM应用解除自身的激活状态。
+允许已激活的设备管理应用解除自身的激活状态。
 
 <!--RP1--><!--RP1End-->
 

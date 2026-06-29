@@ -11,6 +11,8 @@ CompletionHandlerForAbilityStartCallback作为[AbilityStartCallback](js-apis-inn
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 21 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口仅可在Stage模型下使用。
@@ -29,10 +31,14 @@ CompletionHandlerForAbilityStartCallback提供了onRequestSuccess和onRequestFai
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                  | 类型     | 只读   | 可选   | 说明                                                               |
 |---------------------| ------ | ---- | ---- |------------------------------------------------------------------|
-| onRequestSuccess | [OnRequestSuccessFn](#onrequestsuccessfn) | 否    | 是    | 拉起指定类型的Ability组件成功时的回调函数。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。 |
-| onRequestFailure     | [OnRequestFailureFn](#onrequestfailurefn) | 否    | 是    | 拉起指定类型的Ability组件失败时的回调函数。 <br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。 |
+| onRequestSuccess | [OnRequestSuccessFn](#onrequestsuccessfn) | 否    | 是    | 拉起指定类型的Ability组件成功时的回调函数。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 21开始，该接口支持在原子化服务中使用。 |
+| onRequestFailure     | [OnRequestFailureFn](#onrequestfailurefn) | 否    | 是    | 拉起指定类型的Ability组件失败时的回调函数。 <br>**原子化服务API（仅ArkTS-Dyn）**：从API version 21开始，该接口支持在原子化服务中使用。 |
 
 ## OnRequestSuccessFn 
 
@@ -40,9 +46,13 @@ type OnRequestSuccessFn = (name: string) => void
 
 拉起指定类型的Ability组件成功时的回调函数类型。
 
-**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -60,9 +70,13 @@ type OnRequestFailureFn = (name: string, failureCode: AbilityStartFailureCode, f
 
 拉起指定类型的Ability组件失败时的回调函数类型。
 
-**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -73,6 +87,8 @@ type OnRequestFailureFn = (name: string, failureCode: AbilityStartFailureCode, f
 | failureMessage | string | 是 | 失败原因的描述。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { AbilityStartFailureCode, common, CompletionHandlerForAbilityStartCallback } from '@kit.AbilityKit';
@@ -127,13 +143,89 @@ struct Index {
 
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { AbilityStartFailureCode, common, CompletionHandlerForAbilityStartCallback } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+import { Entry, Column, Button, ButtonType, Row, Component, State } from '@kit.ArkUI';
+
+class MyAbilityStartCallback implements common.AbilityStartCallback {
+  onError(code: int, name: string, message: string): void {
+    console.info(`startAbilityByType Error:` + "code:" + code + "name:" + name + "message:" + message);
+  }
+
+  onResult?: (abilityResult: common.AbilityResult) => void = (parameter: common.AbilityResult) => {
+    console.info(`startAbilityByType resultCode:` + parameter.resultCode + `bundleName:` + parameter.want?.bundleName);
+  }
+  completionHandler?: CompletionHandlerForAbilityStartCallback = {
+    onRequestSuccess: (name: string): void => {
+      console.info(`CompletionHandlerForAbilityStartCallback onRequestSuccess:` + name);
+    },
+
+    onRequestFailure: (name: string, failureCode: AbilityStartFailureCode, failureMessage: string): void => {
+      console.info(`CompletionHandlerForAbilityStartCallback onRequestFailure:` + name);
+      console.info(`CompletionHandlerForAbilityStartCallback failureCode:` + failureCode + `failureMessage:` +
+        failureMessage);
+    }
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World';
+  context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  completionHandler: CompletionHandlerForAbilityStartCallback = {
+    onRequestSuccess: (name: string) => {
+      console.info(`testTag onRequestSuccess name` + name);
+    },
+    onRequestFailure: (name: string, failureCode: AbilityStartFailureCode, failureMessage: string) => {
+      console.info(`testTag onRequestFailure name: ` + name + `, failureCode:` + failureCode + `, failureMessage:` +
+        failureMessage);
+    }
+  };
+
+  build() {
+    Column() {
+      Button('test')
+        .type(ButtonType.Capsule)
+        .offset({ x: 0, y: 60 })
+        .width('80%')
+        .type(ButtonType.Capsule)
+        .onClick(() => {
+          this.startAbilityByTypeFun();
+        })
+    }
+  }
+
+  private startAbilityByTypeFun() {
+    let wantParam: Record<string, RecordData> = {
+      'time': '2023-10-23 20:45'
+    };
+    let abilityStartCallback = new MyAbilityStartCallback();
+    this.context.startAbilityByType("share", wantParam, abilityStartCallback).then(() => {
+      console.info(`startAbilityByType success`);
+    }).catch((error) => {
+      let err = error as BusinessError;
+      console.error(`startAbilityByType fail err, code: ${err.code} message: ${err.message}`);
+    });
+  }
+}
+```
+
 ## AbilityStartFailureCode 
 
 拉起指定类型的Ability组件失败的特定错误码。
 
-**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                                     | 值   | 说明                                       |
 | ---------------------------------------- | ---- | ---------------------------------------- |

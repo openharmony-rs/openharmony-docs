@@ -24,10 +24,11 @@ router.push({url: "url"})
 
 ArkTS-Sta示例：
 
-```ts
-this.getUIContext().getRouter().pushUrl({url: "url"})
-```
+<!-- @[push](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
 
+``` TypeScript
+this.getUIContext().getRouter().pushUrl({ url: "url" })
+```
 
 ### pushUrl
 
@@ -43,13 +44,15 @@ router.pushUrl({url: "url"})
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[pushUrl](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().pushUrl({url: "url"})
 ```
 
 ### pushUrl
 
-ArkTS-Dyn接口声明：[pushUrl(options: RouterOptions, callback: AsyncCallback\<void>):void](../reference/apis-arkui/js-apis-router.md#routerpushurldeprecated-1)
+ArkTS-Dyn接口声明：[pushUrl(options: RouterOptions, callback: AsyncCallback&lt;void&gt;): void](../reference/apis-arkui/js-apis-router.md#routerpushurldeprecated-1)
 
 替代的ArkTS-Sta接口声明：[pushUrl(options: router.RouterOptions, callback: AsyncCallback\<void>): void](../reference/apis-arkui/arkts-apis-uicontext-router.md#pushurl-1)
 
@@ -67,7 +70,7 @@ this.getUIContext().getRouter().pushUrl({url: "url"}, ()=>{})
 
 
 ### pushUrl
-ArkTS-Dyn接口声明：[pushUrl(options: RouterOptions, mode: RouterMode): Promise\<void>](../reference/apis-arkui/js-apis-router.md#routerpushurldeprecated-2)
+ArkTS-Dyn接口声明：[pushUrl(options: RouterOptions, mode: RouterMode): Promise&lt;void&gt;](../reference/apis-arkui/js-apis-router.md#routerpushurldeprecated-2)
 
 替代的ArkTS-Sta接口声明：[pushUrl(options: router.RouterOptions, mode: router.RouterMode): Promise\<void>](../reference/apis-arkui/arkts-apis-uicontext-router.md#pushurl-2)
 
@@ -81,15 +84,17 @@ router.pushUrl({url: "url"}, router.RouterMode.Standard)
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[pushUrl2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().pushUrl({url: "url"}, router.RouterMode.Standard)
 ```
 
 
 ### pushUrl
-ArkTS-Dyn接口声明：[pushUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCallback\<void>):void](../reference/apis-arkui/js-apis-router.md#routerpushurldeprecated-3)
+ArkTS-Dyn接口声明：[pushUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCallback&lt;void&gt;): void](../reference/apis-arkui/js-apis-router.md#routerpushurldeprecated-3)
 
-替代的ArkTS-Sta接口声明：[pushUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback\<void>): void](../reference/apis-arkui/arkts-apis-uicontext-router.md#pushurl-3)
+替代的ArkTS-Sta接口声明：[pushUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCallback&lt;void&gt;): void](../reference/apis-arkui/arkts-apis-uicontext-router.md#pushurl-3)
 
 
 
@@ -101,13 +106,15 @@ router.pushUrl({url: "url"}, router.RouterMode.Standard, ()=>{})
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[pushUrl3](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().pushUrl({url: "url"}, router.RouterMode.Standard, ()=>{})
 ```
 
 
 ### back
-ArkTS-Dyn接口声明：[back(options?: RouterOptions):void](../reference/apis-arkui/js-apis-router.md#routerbackdeprecated)
+ArkTS-Dyn接口声明：[back(options?: RouterOptions): void](../reference/apis-arkui/js-apis-router.md#routerbackdeprecated)
 
 替代的ArkTS-Sta接口声明：[back(options?: router.RouterOptions): void](../reference/apis-arkui/arkts-apis-uicontext-router.md#back)
 
@@ -120,7 +127,9 @@ router.back({url: "url"})
 ```
 ArkTS-Sta示例：
 
-```ts
+<!-- @[back](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().back({url: "url"})
 ```
 
@@ -140,7 +149,9 @@ router.back(1)
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[back1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().back(1)
 ```
 
@@ -160,7 +171,9 @@ router.replace({url: "url"})
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[replace](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().replaceUrl({url: "url"})
 ```
 
@@ -180,15 +193,17 @@ router.replaceUrl({url: "url"})
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[replaceUrl](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().replaceUrl({url: "url"})
 ```
 
 
 ### replaceUrl
-ArkTS-Dyn接口声明：[replaceUrl(options: RouterOptions, callback: AsyncCallback\<void>):void](../reference/apis-arkui/js-apis-router.md#routerreplaceurldeprecated-1)
+ArkTS-Dyn接口声明：[replaceUrl(options: RouterOptions, callback: AsyncCallback&lt;void&gt;): void](../reference/apis-arkui/js-apis-router.md#routerreplaceurldeprecated-1)
 
-替代的ArkTS-Sta接口声明：[replaceUrl(options: router.RouterOptions, callback: AsyncCallback\<void>): void](../reference/apis-arkui/arkts-apis-uicontext-router.md#replaceurl-1)
+替代的ArkTS-Sta接口声明：[replaceUrl(options: router.RouterOptions, callback: AsyncCallback&lt;void&gt;): void](../reference/apis-arkui/arkts-apis-uicontext-router.md#replaceurl-1)
 
 
 
@@ -200,7 +215,9 @@ router.replaceUrl({url: "url"}, ()=>{})
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[replaceUrl2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().replaceUrl({url: "url"}, ()=>{})
 ```
 
@@ -220,15 +237,17 @@ router.replaceUrl({url: "url"}, router.RouterMode.Standard)
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[replaceUrl3](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().replaceUrl({url: "url"}, router.RouterMode.Standard)
 ```
 
 
 ### replaceUrl
-ArkTS-Dyn接口声明：[replaceUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCallback\<void>):void](../reference/apis-arkui/js-apis-router.md#routerreplaceurldeprecated-3)
+ArkTS-Dyn接口声明：[replaceUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCallback&lt;void&gt;): void](../reference/apis-arkui/js-apis-router.md#routerreplaceurldeprecated-3)
 
-替代的ArkTS-Sta接口声明：[replaceUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback\<void>): void](../reference/apis-arkui/arkts-apis-uicontext-router.md#replaceurl-3)
+替代的ArkTS-Sta接口声明：[replaceUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;): void](../reference/apis-arkui/arkts-apis-uicontext-router.md#replaceurl-3)
 
 
 
@@ -240,7 +259,9 @@ router.replaceUrl({url: "url"}, router.RouterMode.Standard, ()=>{})
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[replaceUrl4](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().replaceUrl({url: "url"}, router.RouterMode.Standard, ()=>{})
 ```
 
@@ -260,7 +281,9 @@ router.pushNamedRoute({name: "路由名"})
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[pushNamedRoute](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().pushNamedRoute({name: "路由名"})
 ```
 
@@ -280,7 +303,9 @@ router.pushNamedRoute({name: "路由名"}, ()=>{})
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[pushNamedRoute2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().pushNamedRoute({name: "路由名"}, ()=>{})
 ```
 
@@ -300,7 +325,9 @@ router.pushNamedRoute({name: "路由名"}, router.RouterMode.Standard)
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[pushNamedRoute3](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().pushNamedRoute({name: "路由名"}, router.RouterMode.Standard)
 ```
 
@@ -320,7 +347,9 @@ router.pushNamedRoute({name: "路由名"}, router.RouterMode.Standard, ()=>{})
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[pushNamedRoute4](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().pushNamedRoute({name: "路由名"}, router.RouterMode.Standard, ()=>{})
 ```
 
@@ -340,7 +369,9 @@ router.replaceNamedRoute({name: "路由名"})
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[replaceNamedRoute](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().replaceNamedRoute({name: "路由名"})
 ```
 
@@ -360,7 +391,9 @@ router.replaceNamedRoute({name: "路由名"}, ()=>{})
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[replaceNamedRoute2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().replaceNamedRoute({name: "路由名"}, ()=>{})
 ```
 
@@ -380,15 +413,17 @@ router.replaceNamedRoute({name: "路由名"}, router.RouterMode.Standard)
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[replaceNamedRoute3](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().replaceNamedRoute({name: "路由名"}, router.RouterMode.Standard)
 ```
 
 
 ### replaceNamedRoute
-ArkTS-Dyn接口声明：[replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback: AsyncCallback\<void>): void](../reference/apis-arkui/js-apis-router.md#routerreplacenamedroutedeprecated-3)
+ArkTS-Dyn接口声明：[replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback: AsyncCallback&lt;void&gt;): void](../reference/apis-arkui/js-apis-router.md#routerreplacenamedroutedeprecated-3)
 
-替代的ArkTS-Sta接口声明：[pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback\<void>): void](../reference/apis-arkui/arkts-apis-uicontext-router.md#replacenamedroute-3)
+替代的ArkTS-Sta接口声明：[replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;): void](../reference/apis-arkui/arkts-apis-uicontext-router.md#replacenamedroute-3)
 
 
 
@@ -400,7 +435,9 @@ router.replaceNamedRoute({name: "路由名"}, router.RouterMode.Standard, ()=>{}
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[replaceNamedRoute4](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().replaceNamedRoute({name: "路由名"}, router.RouterMode.Standard, ()=>{})
 ```
 
@@ -420,15 +457,17 @@ router.getParams()
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[getParams](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().getParams()
 ```
 
 
 ### getStateByUrl
-ArkTS-Dyn接口声明：[getStateByUrl(url: string): Array\<RouterState>](../reference/apis-arkui/js-apis-router.md#routergetstatebyurldeprecated)
+ArkTS-Dyn接口声明：[getStateByUrl(url: string): Array&lt;RouterState&gt;](../reference/apis-arkui/js-apis-router.md#routergetstatebyurldeprecated)
 
-替代的ArkTS-Sta接口声明：[getStateByUrl(url: string): Array<router.RouterState>](../reference/apis-arkui/arkts-apis-uicontext-router.md#getstatebyurl12)
+替代的ArkTS-Sta接口声明：[getStateByUrl(url: string): Array<router.[RouterState](js-apis-router.md#routerstate)>](../reference/apis-arkui/arkts-apis-uicontext-router.md#getstatebyurl12)
 
 
 
@@ -440,7 +479,9 @@ router.getStateByUrl("url")
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[getStateByUrl](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().getStateByUrl("url")
 ```
 
@@ -466,7 +507,7 @@ this.getUIContext().getRouter().getStateByIndex(1)
 
 
 ### getState
-ArkTS-Dyn接口声明：[getState():RouterState](../reference/apis-arkui/js-apis-router.md#routergetstatedeprecated)
+ArkTS-Dyn接口声明：[getState(): RouterState](../reference/apis-arkui/js-apis-router.md#routergetstatedeprecated)
 
 替代的ArkTS-Sta接口声明：[getState(): router.RouterState](../reference/apis-arkui/arkts-apis-uicontext-router.md#getstate)
 
@@ -480,13 +521,15 @@ router.getState()
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[getState](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().getState()
 ```
 
 
 ### getLength
-ArkTS-Dyn接口声明：[getLength():string](../reference/apis-arkui/js-apis-router.md#routergetlengthdeprecated)
+ArkTS-Dyn接口声明：[getLength(): string](../reference/apis-arkui/js-apis-router.md#routergetlengthdeprecated)
 
 替代的ArkTS-Sta接口声明：[getLength(): string](../reference/apis-arkui/arkts-apis-uicontext-router.md#getlengthdeprecated)
 
@@ -500,13 +543,15 @@ router.getLength()
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[getLength](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().getLength()
 ```
 
 
 ### clear
-ArkTS-Dyn接口声明：[clear():void](../reference/apis-arkui/js-apis-router.md#routercleardeprecated)
+ArkTS-Dyn接口声明：[clear(): void](../reference/apis-arkui/js-apis-router.md#routercleardeprecated)
 
 替代的ArkTS-Sta接口声明：[clear(): void](../reference/apis-arkui/arkts-apis-uicontext-router.md#clear)
 
@@ -520,7 +565,9 @@ router.clear()
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[clear](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().clear()
 ```
 
@@ -540,13 +587,15 @@ router.enableAlertBeforeBackPage({ message: "1111" })
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[enableAlertBeforeBackPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().showAlertBeforeBackPage({message: "1111"})
 ```
 
 
 ### showAlertBeforeBackPage
-ArkTS-Dyn接口声明：[showAlertBeforeBackPage(options: EnableAlertOptions):void](../reference/apis-arkui/js-apis-router.md#routershowalertbeforebackpagedeprecated)
+ArkTS-Dyn接口声明：[showAlertBeforeBackPage(options: EnableAlertOptions): void](../reference/apis-arkui/js-apis-router.md#routershowalertbeforebackpagedeprecated)
 
 替代的ArkTS-Sta接口声明：[showAlertBeforeBackPage(options: router.EnableAlertOptions): void](../reference/apis-arkui/arkts-apis-uicontext-router.md#showalertbeforebackpage)
 
@@ -560,7 +609,9 @@ router.showAlertBeforeBackPage({message: "1111"})
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[enableAlertBeforeBackPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().showAlertBeforeBackPage({message: "1111"})
 ```
 
@@ -580,13 +631,15 @@ router.disableAlertBeforeBackPage()
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[disableAlertBeforeBackPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().hideAlertBeforeBackPage()
 ```
 
 
 ### hideAlertBeforeBackPage
-ArkTS-Dyn接口声明：[hideAlertBeforeBackPage():void](../reference/apis-arkui/js-apis-router.md#routerhidealertbeforebackpagedeprecated)
+ArkTS-Dyn接口声明：[hideAlertBeforeBackPage(): void](../reference/apis-arkui/js-apis-router.md#routerhidealertbeforebackpagedeprecated)
 
 替代的ArkTS-Sta接口声明：[hideAlertBeforeBackPage(): void](../reference/apis-arkui/arkts-apis-uicontext-router.md#hidealertbeforebackpage)
 
@@ -600,7 +653,9 @@ router.hideAlertBeforeBackPage()
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[hideAlertBeforeBackPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/ohosRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().hideAlertBeforeBackPage()
 ```
 
@@ -608,9 +663,9 @@ this.getUIContext().getRouter().hideAlertBeforeBackPage()
 ## @system.router
 
 ### Router
-ArkTS-Dyn接口声明：[export default class Router](../reference/apis-arkui/js-apis-system-router.md#导入模块)
+ArkTS-Dyn接口声明：[@system.router](../reference/apis-arkui/js-apis-system-router.md)
 
-替代的ArkTS-Sta接口声明：[export class Router](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)
+替代的ArkTS-Sta接口声明：[getRouter](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)
 
 
 
@@ -622,7 +677,9 @@ import router from '@system.router'
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[Router](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/systemRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter()
 ```
 
@@ -642,8 +699,11 @@ router.push({ uri: "url" })
 
 ArkTS-Sta示例：
 
-```ts
-this.getUIContext().getRouter().pushUrl({url: "url"}, ()=>{})
+<!-- @[push](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/systemRouter.ets) -->
+
+``` TypeScript
+this.getUIContext().getRouter().pushUrl({ url: "url" }, () => {
+})
 ```
 
 
@@ -662,7 +722,9 @@ router.back()
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[back](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/systemRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().back()
 ```
 
@@ -682,8 +744,11 @@ router.replace({ uri: "url" })
 
 ArkTS-Sta示例：
 
-```ts
-this.getUIContext().getRouter().replaceUrl({ url: "url" }, ()=>{})
+<!-- @[replace](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/systemRouter.ets) -->
+
+``` TypeScript
+this.getUIContext().getRouter().replaceUrl({ url: "url" }, () => {
+})
 ```
 
 
@@ -702,13 +767,15 @@ router.clear()
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[clear](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/systemRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().clear()
 ```
 
 
 ### enableAlertBeforeBackPage
-ArkTS-Dyn接口声明：[static enableAlertBeforeBackPage(options: EnableAlertBeforeBackPageOptions): void](../reference/apis-arkui/js-apis-system-router.md#routerenablealertbeforebackpage6)
+ArkTS-Dyn接口声明：[enableAlertBeforeBackPage(options: EnableAlertBeforeBackPageOptions): void](../reference/apis-arkui/js-apis-system-router.md#routerenablealertbeforebackpage6)
 
 替代的ArkTS-Sta接口声明：[showAlertBeforeBackPage(options: router.EnableAlertOptions): void](../reference/apis-arkui/arkts-apis-uicontext-router.md#showalertbeforebackpage)
 
@@ -722,13 +789,15 @@ router.enableAlertBeforeBackPage({ message: "" })
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[enableAlertBeforeBackPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/systemRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().showAlertBeforeBackPage({ message: "" })
 ```
 
 
 ### disableAlertBeforeBackPage
-ArkTS-Dyn接口声明：[static disableAlertBeforeBackPage(options?: DisableAlertBeforeBackPageOptions): void](../reference/apis-arkui/js-apis-system-router.md#routerdisablealertbeforebackpage6)
+ArkTS-Dyn接口声明：[disableAlertBeforeBackPage(options?: DisableAlertBeforeBackPageOptions): void](../reference/apis-arkui/js-apis-system-router.md#routerdisablealertbeforebackpage6)
 
 替代的ArkTS-Sta接口声明：[hideAlertBeforeBackPage(): void](../reference/apis-arkui/arkts-apis-uicontext-router.md#hidealertbeforebackpage)
 
@@ -742,7 +811,9 @@ router.disableAlertBeforeBackPage()
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[disableAlertBeforeBackPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/systemRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().hideAlertBeforeBackPage()
 ```
 
@@ -762,13 +833,15 @@ let length: string = router.getLength()
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[getLength](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/systemRouter.ets) -->
+
+``` TypeScript
 let length: string = this.getUIContext().getRouter().getLength()
 ```
 
 
 ### getParams
-ArkTS-Dyn接口声明：[static getParams(): ParamsInterface](../reference/apis-arkui/js-apis-system-router.md#routergetparams7)
+ArkTS-Dyn接口声明：[getParams(): ParamsInterface](../reference/apis-arkui/js-apis-system-router.md#routergetparams7)
 
 替代的ArkTS-Sta接口声明：[getParams(): Object](../reference/apis-arkui/arkts-apis-uicontext-router.md#getparams)
 
@@ -782,7 +855,9 @@ router.getParams()
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[getParams](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/systemRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().getParams()
 ```
 
@@ -802,7 +877,9 @@ router.getState()
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[getState](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/systemRouter.ets) -->
+
+``` TypeScript
 this.getUIContext().getRouter().getState()
 ```
 
@@ -824,15 +901,17 @@ let options: BackRouterOptions = { uri: "url" }
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[BackRouterOptions](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/systemRouter.ets) -->
+
+``` TypeScript
 let options: router.RouterOptions = { url: "url" }
 ```
 
 
 ### uri
-ArkTS-Dyn接口声明：[uri: string ](../reference/apis-arkui/js-apis-system-router.md#backrouteroptions)
+ArkTS-Dyn接口声明：[uri](../reference/apis-arkui/js-apis-system-router.md#backrouteroptions)
 
-替代的ArkTS-Sta接口声明：[url: string ](../reference/apis-arkui/js-apis-router.md#routeroptions)
+替代的ArkTS-Sta接口声明：[url](../reference/apis-arkui/js-apis-router.md#routeroptions)
 
 
 
@@ -844,15 +923,17 @@ let options: BackRouterOptions = { uri: "url" }
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[BackRouterOptions_uri](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/systemRouter.ets) -->
+
+``` TypeScript
 let options: router.RouterOptions = { url: "url" }
 ```
 
 
 ### params
-ArkTS-Dyn接口声明：[params?: Object](../reference/apis-arkui/js-apis-system-router.md#backrouteroptions)
+ArkTS-Dyn接口声明：[params](../reference/apis-arkui/js-apis-system-router.md#backrouteroptions)
 
-替代的ArkTS-Sta接口声明：[params?: Object](../reference/apis-arkui/js-apis-router.md#routeroptions)
+替代的ArkTS-Sta接口声明：[params](../reference/apis-arkui/js-apis-router.md#routeroptions)
 
 
 
@@ -864,8 +945,10 @@ let options: BackRouterOptions = {uri: "url", params: ""}
 
 ArkTS-Sta示例：
 
-```ts
-let options: router.RouterOptions = {uri: "url", params: ""}
+<!-- @[BackRouterOptions_params](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/systemRouter.ets) -->
+
+``` TypeScript
+let options: router.RouterOptions = { url: "url", params: "" }
 ```
 
 
@@ -886,15 +969,17 @@ let options: RouterOptions = { uri: "url" }
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[RouterOptions](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/systemRouter.ets) -->
+
+``` TypeScript
 let options: router.RouterOptions = { url: "url" }
 ```
 
 
 ### uri
-ArkTS-Dyn接口声明：[uri: string](../reference/apis-arkui/js-apis-system-router.md#routeroptions)
+ArkTS-Dyn接口声明：[uri](../reference/apis-arkui/js-apis-system-router.md#routeroptions)
 
-替代的ArkTS-Sta接口声明：[url: string](../reference/apis-arkui/js-apis-router.md#routeroptions)
+替代的ArkTS-Sta接口声明：[url](../reference/apis-arkui/js-apis-router.md#routeroptions)
 
 
 
@@ -906,15 +991,17 @@ let options: RouterOptions = { uri: "url" }
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[RouterOptions_uri](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/systemRouter.ets) -->
+
+``` TypeScript
 let options: router.RouterOptions = { url: "url" }
 ```
 
 
 ### params
-ArkTS-Dyn接口声明：[params?: Object](../reference/apis-arkui/js-apis-system-router.md#routeroptions)
+ArkTS-Dyn接口声明：[params](../reference/apis-arkui/js-apis-system-router.md#routeroptions)
 
-替代的ArkTS-Sta接口声明：[params?: Object](../reference/apis-arkui/js-apis-router.md#routeroptions)
+替代的ArkTS-Sta接口声明：[params](../reference/apis-arkui/js-apis-router.md#routeroptions)
 
 
 
@@ -926,8 +1013,10 @@ let options: RouterOptions = {url: "url", params: ""}
 
 ArkTS-Sta示例：
 
-```ts
-let options: router.RouterOptions = {url: "url", params: ""}
+<!-- @[RouterOptions_params](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/systemRouter.ets) -->
+
+``` TypeScript
+let options: router.RouterOptions = { url: "url", params: "" }
 ```
 
 
@@ -948,15 +1037,17 @@ let state: RouterState = { uri: "url" }
 
 ArkTS-Sta示例：
 
-```ts
-let state: router.RouterState = { url: "url" }
+<!-- @[RouterState](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/systemRouter.ets) -->
+
+``` TypeScript
+let state: router.RouterState = { index: 0, name: "name", path: "url", params: {} }
 ```
 
 
 ### index
-ArkTS-Dyn接口声明：[index: number](../reference/apis-arkui/js-apis-system-router.md#routerstate)
+ArkTS-Dyn接口声明：[index](../reference/apis-arkui/js-apis-system-router.md#routerstate)
 
-替代的ArkTS-Sta接口声明：[index: number](../reference/apis-arkui/js-apis-router.md#routerstate)
+替代的ArkTS-Sta接口声明：[index](../reference/apis-arkui/js-apis-router.md#routerstate)
 
 
 
@@ -969,16 +1060,18 @@ let index: number = state.index
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[RouterState_index](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/systemRouter.ets) -->
+
+``` TypeScript
 let state: router.RouterState = this.getUIContext().getRouter().getState()
 let index: number = state.index
 ```
 
 
 ### name
-ArkTS-Dyn接口声明：[name: string](../reference/apis-arkui/js-apis-system-router.md#routerstate)
+ArkTS-Dyn接口声明：[name](../reference/apis-arkui/js-apis-system-router.md#routerstate)
 
-替代的ArkTS-Sta接口声明：[name: string](../reference/apis-arkui/js-apis-router.md#routerstate)
+替代的ArkTS-Sta接口声明：[name](../reference/apis-arkui/js-apis-router.md#routerstate)
 
 
 
@@ -991,16 +1084,18 @@ let name: string = state.name
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[RouterState_name](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/systemRouter.ets) -->
+
+``` TypeScript
 let state: router.RouterState = this.getUIContext().getRouter().getState()
 let name: string = state.name
 ```
 
 
 ### path
-ArkTS-Dyn接口声明：[path: string](../reference/apis-arkui/js-apis-system-router.md#routerstate)
+ArkTS-Dyn接口声明：[path](../reference/apis-arkui/js-apis-system-router.md#routerstate)
 
-替代的ArkTS-Sta接口声明：[path: string](../reference/apis-arkui/js-apis-router.md#routerstate)
+替代的ArkTS-Sta接口声明：[path](../reference/apis-arkui/js-apis-router.md#routerstate)
 
 
 
@@ -1013,7 +1108,9 @@ let path: string = state.path
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[RouterState_path](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/systemRouter.ets) -->
+
+``` TypeScript
 let state: router.RouterState = this.getUIContext().getRouter().getState()
 let path: string = state.path
 ```
@@ -1022,9 +1119,9 @@ let path: string = state.path
 ## EnableAlertBeforeBackPageOptions
 
 ### EnableAlertBeforeBackPageOptions
-ArkTS-Dyn接口声明：[export interface EnableAlertBeforeBackPageOptions](../reference/apis-arkui/js-apis-system-router.md#enablealertbeforebackpageoptions6)
+ArkTS-Dyn接口声明：[EnableAlertBeforeBackPageOptions](../reference/apis-arkui/js-apis-system-router.md#enablealertbeforebackpageoptions6)
 
-替代的ArkTS-Sta接口声明：[interface EnableAlertOptions](../reference/apis-arkui/js-apis-router.md#enablealertoptions)
+替代的ArkTS-Sta接口声明：[EnableAlertOptions](../reference/apis-arkui/js-apis-router.md#enablealertoptions)
 
 
 
@@ -1036,15 +1133,17 @@ let options: EnableAlertBeforeBackPageOptions = { message: "" }
 
 ArkTS-Sta示例：
 
-```ts
-let options: EnableAlertOptions = { message: "" }
+<!-- @[EnableAlertBeforeBackPageOptions](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/systemRouter.ets) -->
+
+``` TypeScript
+let options: router.EnableAlertOptions = { message: "" }
 ```
 
 
 ### message
-ArkTS-Dyn接口声明：[message: string ](../reference/apis-arkui/js-apis-system-router.md#enablealertbeforebackpageoptions6)
+ArkTS-Dyn接口声明：[message](../reference/apis-arkui/js-apis-system-router.md#enablealertbeforebackpageoptions6)
 
-替代的ArkTS-Sta接口声明：[message: string ](../reference/apis-arkui/js-apis-router.md#enablealertoptions)
+替代的ArkTS-Sta接口声明：[message](../reference/apis-arkui/js-apis-router.md#enablealertoptions)
 
 
 
@@ -1056,13 +1155,15 @@ router.enableAlertBeforeBackPage({ message: "" })
 
 ArkTS-Sta示例：
 
-```ts
-this.getUIContext().getRouter().showAlertBeforeBackPage({ message: "" })
+<!-- @[EnableAlertBeforeBackPageOptions_message](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/systemRouter.ets) -->
+
+``` TypeScript
+let options: router.EnableAlertOptions = { message: "" }
 ```
 
 
 ### success
-ArkTS-Dyn接口声明：[success?: (errMsg: string) => void](../reference/apis-arkui/js-apis-system-router.md#enablealertbeforebackpageoptions6)
+ArkTS-Dyn接口声明：[success](../reference/apis-arkui/js-apis-system-router.md#enablealertbeforebackpageoptions6)
 
 替代的ArkTS-Sta接口声明：[showAlertBeforeBackPage(options: router.EnableAlertOptions): void](../reference/apis-arkui/arkts-apis-uicontext-router.md#showalertbeforebackpage)
 
@@ -1076,14 +1177,16 @@ router.enableAlertBeforeBackPage({ message: "", success: (err: string)=>{} })
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[EnableAlertBeforeBackPageOptions_success](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/systemRouter.ets) -->
+
+``` TypeScript
 // ArkTS-Sta版本，默认用户选择success，不再接受success、cancel、complete回调
 this.getUIContext().getRouter().showAlertBeforeBackPage({ message: "" })
 ```
 
 
 ### cancel
-ArkTS-Dyn接口声明：[cancel?: (errMsg: string) => void](../reference/apis-arkui/js-apis-system-router.md#enablealertbeforebackpageoptions6)
+ArkTS-Dyn接口声明：[cancel](../reference/apis-arkui/js-apis-system-router.md#enablealertbeforebackpageoptions6)
 
 替代的ArkTS-Sta接口声明：[showAlertBeforeBackPage(options: router.EnableAlertOptions): void](../reference/apis-arkui/arkts-apis-uicontext-router.md#showalertbeforebackpage)
 
@@ -1097,14 +1200,16 @@ router.enableAlertBeforeBackPage({ message: "", cancel: (err: string)=>{} })
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[EnableAlertBeforeBackPageOptions_cancel](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/systemRouter.ets) -->
+
+``` TypeScript
 // ArkTS-Sta版本，默认用户选择success，不再接受success、cancel、complete回调
 this.getUIContext().getRouter().showAlertBeforeBackPage({ message: "" })
 ```
 
 
 ### complete
-ArkTS-Dyn接口声明：[complete?: () => void](../reference/apis-arkui/js-apis-system-router.md#enablealertbeforebackpageoptions6)
+ArkTS-Dyn接口声明：[complete](../reference/apis-arkui/js-apis-system-router.md#enablealertbeforebackpageoptions6)
 
 替代的ArkTS-Sta接口声明：[showAlertBeforeBackPage(options: router.EnableAlertOptions): void](../reference/apis-arkui/arkts-apis-uicontext-router.md#showalertbeforebackpage)
 
@@ -1118,7 +1223,9 @@ router.enableAlertBeforeBackPage({ message: "", complete: ()=>{} })
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[EnableAlertBeforeBackPageOptions_complete](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/systemRouter.ets) -->
+
+``` TypeScript
 // ArkTS-Sta版本，默认用户选择success，不再接受success、cancel、complete回调
 this.getUIContext().getRouter().showAlertBeforeBackPage({ message: "" })
 ```
@@ -1127,12 +1234,12 @@ this.getUIContext().getRouter().showAlertBeforeBackPage({ message: "" })
 ## DisableAlertBeforeBackPageOptions
 
 ### DisableAlertBeforeBackPageOptions
-ArkTS-Dyn接口声明：[export interface DisableAlertBeforeBackPageOptions](../reference/apis-arkui/js-apis-system-router.md#disablealertbeforebackpageoptions6)
+ArkTS-Dyn接口声明：[DisableAlertBeforeBackPageOptions](../reference/apis-arkui/js-apis-system-router.md#disablealertbeforebackpageoptions6)
 
 暂无替代的ArkTS-Sta接口。
 
 ### success
-ArkTS-Dyn接口声明：[success?: (errMsg: string) => void](../reference/apis-arkui/js-apis-system-router.md#disablealertbeforebackpageoptions6)
+ArkTS-Dyn接口声明：[success](../reference/apis-arkui/js-apis-system-router.md#disablealertbeforebackpageoptions6)
 
 替代的ArkTS-Sta接口声明：[hideAlertBeforeBackPage(): void](../reference/apis-arkui/arkts-apis-uicontext-router.md#hidealertbeforebackpage)
 
@@ -1146,14 +1253,16 @@ router.disableAlertBeforeBackPage({ success: (err: string)=>{} })
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[DisableAlertBeforeBackPageOptions_success](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/systemRouter.ets) -->
+
+``` TypeScript
 // ArkTS-Sta版本，默认用户选择success，不再接受success、cancel、complete回调
 this.getUIContext().getRouter().hideAlertBeforeBackPage()
 ```
 
 
 ### cancel
-ArkTS-Dyn接口声明：[cancel?: (errMsg: string) => void](../reference/apis-arkui/js-apis-system-router.md#disablealertbeforebackpageoptions6)
+ArkTS-Dyn接口声明：[cancel](../reference/apis-arkui/js-apis-system-router.md#disablealertbeforebackpageoptions6)
 
 替代的ArkTS-Sta接口声明：[hideAlertBeforeBackPage(): void](../reference/apis-arkui/arkts-apis-uicontext-router.md#hidealertbeforebackpage)
 
@@ -1167,14 +1276,16 @@ router.disableAlertBeforeBackPage({ cancel: (err: string)=>{} })
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[DisableAlertBeforeBackPageOptions_cancel](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/systemRouter.ets) -->
+
+``` TypeScript
 // ArkTS-Sta版本，默认用户选择success，不再接受success、cancel、complete回调
 this.getUIContext().getRouter().hideAlertBeforeBackPage()
 ```
 
 
 ### complete
-ArkTS-Dyn接口声明：[complete?: () => void](../reference/apis-arkui/js-apis-system-router.md#disablealertbeforebackpageoptions6)
+ArkTS-Dyn接口声明：[complete](../reference/apis-arkui/js-apis-system-router.md#disablealertbeforebackpageoptions6)
 
 替代的ArkTS-Sta接口声明：[hideAlertBeforeBackPage(): void](../reference/apis-arkui/arkts-apis-uicontext-router.md#hidealertbeforebackpage)
 
@@ -1188,7 +1299,9 @@ router.disableAlertBeforeBackPage({ complete: ()=>{} })
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[DisableAlertBeforeBackPageOptions_complete](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/systemRouter.ets) -->
+
+``` TypeScript
 // ArkTS-Sta版本，默认用户选择success，不再接受success、cancel、complete回调
 this.getUIContext().getRouter().hideAlertBeforeBackPage()
 ```
@@ -1211,7 +1324,9 @@ let params: ParamsInterface = router.getParams()
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[ParamsInterface](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/systemRouter.ets) -->
+
+``` TypeScript
 let params: Object = this.getUIContext().getRouter().getParams()
 ```
 
@@ -1220,9 +1335,9 @@ let params: Object = this.getUIContext().getRouter().getParams()
 
 ### toolBar
 
-ArkTS-Dyn接口声明：[toolBar(value: object | CustomBuilder): NavigationAttribute](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#toolbardeprecated)
+ArkTS-Dyn接口声明：[toolBar(value: object | CustomBuilder)](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#toolbardeprecated)
 
-替代的ArkTS-Sta接口声明：[toolbarConfiguration(value: Array\<ToolbarItem> | CustomBuilder, options?: NavigationToolbarOptions): NavigationAttribute](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#toolbarconfiguration10)
+替代的ArkTS-Sta接口声明：[toolbarConfiguration(value: Array&lt;ToolbarItem&gt; | CustomBuilder | undefined, options?: NavigationToolbarOptions | undefined)](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#toolbarconfiguration10)
 
 
 
@@ -1240,20 +1355,22 @@ build(){
 
 ArkTS-Sta示例：
 
-```ts
+<!-- @[toolBar](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/navigationDep.ets) -->
+
+``` TypeScript
 @Builder
-MyToolBar(name: string) {
-    // ...
+MyToolBar() {
+  // ...
 }
-build(){
-    Navigation().toolbarConfiguration(this.MyToolBar)
+
+build() {
+  Navigation().toolbarConfiguration(this.MyToolBar).width('100%').height('25%')
 }
 ```
 
-
 ### subTitle
 
-ArkTS-Dyn接口声明：[subTitle(value: string): NavigationAttribute](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#subtitledeprecated)
+ArkTS-Dyn接口声明：[subTitle(value: string)](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#subtitledeprecated)
 
 替代的ArkTS-Sta接口声明：[title(value: ResourceStr | CustomBuilder | NavigationCommonTitle | NavigationCustomTitle, options?: NavigationTitleOptions): NavigationAttribute](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#title)
 
@@ -1265,9 +1382,23 @@ ArkTS-Dyn示例：
 Navigation().subTitle("子标题")
 ```
 
-ArkTS-Sta示例：
-```ts
-Navigation().title({main: "标题", sub: "子标题"})
+<!-- @[subTitle](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/navigationDep.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct NavigationTitle {
+  @State message: string = "NavigationTitle"
+
+  build() {
+    Column({ space: 8 } as ColumnOptions) {
+      Navigation().title({ main: "标题", sub: "子标题" }).width('100%').height('25%')
+      NavigatorExample()
+      NavigationExample()
+    }
+    .width('100%')
+  }
+}
 ```
 
 
@@ -1275,7 +1406,7 @@ Navigation().title({main: "标题", sub: "子标题"})
 
 ArkTS-Dyn接口声明：[Navigator(value?: {target: string, type?: NavigationType})](../reference/apis-arkui/arkui-ts/ts-container-navigator.md#navigatordeprecated)
 
-替代的ArkTS-Sta接口声明：[export class Router](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)
+替代的ArkTS-Sta接口声明：[getRouter](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)
 
 
 
@@ -1352,8 +1483,24 @@ struct Index {
 
 ArkTS-Sta示例：
 
-```ts
-// ArkTS-Sta版本NavRouter组件全面废弃，将由Navigation进行替代
+<!-- @[navRouter](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationDeprecatedSta/entry/src/main/ets/pages/routerAndNavigation/navRouterExample.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Text,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  NavPathStack,
+  Navigation,
+  NavPathInfo,
+  NavDestination,
+  State,
+} from '@kit.ArkUI';
+import hilog from '@ohos.hilog';
+
 @Entry
 @Component
 struct Index {
@@ -1368,13 +1515,13 @@ struct Index {
     }
   }
 
-  build(){
-    Navigation(this.pageInfos){
-      Text("pageOne").onClick(()=>{
-        this.pageInfos.pushPath({name : "pageOne"});
+  build() {
+    Navigation(this.pageInfos) {
+      Text("pageOne").onClick(() => {
+        this.pageInfos.pushPath(new NavPathInfo("pageOne", undefined));
       })
-      Text("pageTwo").onClick(()=>{
-        this.pageInfos.pushPath({name : "pageTwo"});
+      Text("pageTwo").onClick(() => {
+        this.pageInfos.pushPath(new NavPathInfo("pageTwo", undefined));
       })
     }.navDestination(this.MyPageMap)
   }
@@ -1382,7 +1529,7 @@ struct Index {
 
 @Component
 export struct PageOne {
-  build() {
+  build(): void {
     NavDestination() {
       Text("当前页面为pageOne")
     }.title("PageOne")
@@ -1391,7 +1538,7 @@ export struct PageOne {
 
 @Component
 export struct PageTwo {
-  build() {
+  build(): void {
     NavDestination() {
       Text("当前页面为pageTwo")
     }.title("PageTwo")

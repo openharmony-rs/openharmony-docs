@@ -86,7 +86,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
    ```
 
    完整代码如下：
-   <!-- @[Persistent_page_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageOneMessageStorage.ets) -->
+   <!-- @[Persistent_page_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageOneMessageStorage.ets) --> 
    
    ``` TypeScript
    PersistentStorage.persistProp('aProp', 47);
@@ -101,17 +101,25 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
        Row() {
          Column() {
            Text(this.message)
+             .fontSize(20)
+             .margin(10)
            // 应用退出时会保存当前结果。重新启动后，会显示上一次的保存结果
            // 未修改时默认值为47
            Text(`${this.aProp}`)
+             .fontSize(20)
+             .margin(10)
              .onClick(() => {
                this.aProp += 1;
              })
          }
+         .width('100%')
        }
+       .height('100%')
      }
    }
    ```
+
+   ![persistent-sync-0](figures/persistent-sync-0.png)
 
 - 新应用安装后首次启动运行：
   1. 调用persistProp初始化PersistentStorage，首先查询在PersistentStorage本地文件中是否存在“aProp”，查询结果为不存在，因为应用是第一次安装。
@@ -122,11 +130,11 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 
   **图1** PersistProp初始化流程  
 
-  ![zh-cn_image_0000001553348833](figures/zh-cn_image_0000001553348833.png)
+  ![zh-cn_image_0000001553348833](figures/PersistProp-initialization.png)
 
 - 触发点击事件后：
   1. 状态变量\@StorageLink('aProp') aProp改变，触发Text组件重新刷新。
-  2. [\@StorageLink](../../reference/apis-arkui/arkui-ts/ts-state-management-storagelink.md)装饰的变量是和AppStorage中建立双向同步的，所以\@StorageLink('aProp') aProp的变化会被同步回AppStorage中。
+  2. [\@StorageLink](../../reference/apis-arkui/arkui-ts/ts-state-management-storagelink.md#storagelink)装饰的变量是和AppStorage中建立双向同步的，所以\@StorageLink('aProp') aProp的变化会被同步回AppStorage中。
   3. AppStorage中“aProp”属性的改变会同步到所有绑定该“aProp”的单向或者双向变量，在本示例中没有其他的绑定“aProp”的变量。
   4. 因为“aProp”对应的属性已经被持久化，所以在AppStorage中“aProp”的改变会触发PersistentStorage，将新的改变写入本地磁盘。
 
@@ -155,12 +163,12 @@ PersistentStorage.persistProp('aProp', 48)：在PersistentStorage中查找到“
 
 开发者可以先判断是否需要覆盖上一次保存在PersistentStorage中的值，如果需要覆盖，再调用AppStorage的接口进行修改，如果不需要覆盖，则不调用AppStorage的接口。
 
-<!-- @[Persistent_page_first](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageThreeAppStorage.ets) -->
+<!-- @[Persistent_page_first](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageThreeAppStorage.ets) --> 
 
 ``` TypeScript
 const MAX_NUM: number = 50;
 ```
-<!-- @[Persistent_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageThreeAppStorage.ets) -->
+<!-- @[Persistent_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageThreeAppStorage.ets) --> 
 
 ``` TypeScript
 PersistentStorage.persistProp('aProp', 48);
@@ -176,7 +184,7 @@ if ((AppStorage.get<number>('aProp') ?? 0) > MAX_NUM) {
 
 PersistentStorage支持联合类型和undefined和null，在下面的示例中，使用persistProp方法初始化“P”为undefined。通过@StorageLink('P')绑定变量p，类型为number | undefined | null，点击Button改变P的值，视图会随之刷新。且P的值被持久化存储。
 
-<!-- @[Persistent_page_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageFourMessageChange.ets) -->
+<!-- @[Persistent_page_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageFourMessageChange.ets) --> 
 
 ``` TypeScript
 // 定义常量替代魔法值，明确数值含义
@@ -199,15 +207,25 @@ struct TestCase6 {
         Text(this.p + '')
           .fontSize(FONT_SIZE_LARGE)
           .fontWeight(FontWeight.Bold)
-        Button('changeToNumber').onClick(() => {
-          this.p = DEFAULT_NUMBER;
-        })
-        Button('changeTo undefined').onClick(() => {
-          this.p = undefined;
-        })
-        Button('changeTo null').onClick(() => {
-          this.p = null;
-        })
+          .margin(10)
+        Button('changeToNumber')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.p = DEFAULT_NUMBER;
+          })
+        Button('changeTo undefined')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.p = undefined;
+          })
+        Button('changeTo null')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.p = null;
+          })
       }
       .width('100%')
     }
@@ -216,11 +234,13 @@ struct TestCase6 {
 }
 ```
 
+![persistent-sync-1](figures/persistent-sync-1.gif)
+
 ### 持久化Date类型变量
 
 在下面的示例中，@StorageLink装饰的persistedDate类型为Date，点击Button改变persistedDate的值，视图会随之刷新。且persistedDate的值被持久化存储。
 
-<!-- @[Persistent_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageFivePersistedDate.ets) --> 
+<!-- @[Persistent_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageFivePersistedDate.ets) -->  
 
 ``` TypeScript
 PersistentStorage.persistProp('persistedDate', new Date());
@@ -239,18 +259,23 @@ struct PersistedDate {
       ListItem() {
         Column() {
           Text(`Persisted Date is ${this.persistedDate.toString()}`)
+            .fontSize(20)
             .margin(20)
 
           Text(`Persisted Date year is ${this.persistedDate.getFullYear()}`)
+            .fontSize(20)
             .margin(20)
 
           Text(`Persisted Date hours is ${this.persistedDate.getHours()}`)
+            .fontSize(20)
             .margin(20)
 
           Text(`Persisted Date minutes is ${this.persistedDate.getMinutes()}`)
+            .fontSize(20)
             .margin(20)
 
           Text(`Persisted Date time is ${this.persistedDate.toLocaleTimeString()}`)
+            .fontSize(20)
             .margin(20)
 
           Button() {
@@ -270,20 +295,21 @@ struct PersistedDate {
             // 改变persistedDate的值，视图会随之刷新
             this.updateDate();
           })
-
-        }.width('100%')
+        }
+        .width('100%')
       }
     }
   }
 }
 ```
 
+![persistent-sync-2](figures/persistent-sync-2.gif)
 
 ### 持久化Map类型变量
 
 在下面的示例中，@StorageLink装饰的persistedMapString类型为Map\<number, string\>，点击Button改变persistedMapString的值，视图会随之刷新。且persistedMapString的值被持久化存储。
 
-<!-- @[Persistent_page_six](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageSixPersistedMap.ets) --> 
+<!-- @[Persistent_page_six](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageSixPersistedMap.ets) -->  
 
 ``` TypeScript
 PersistentStorage.persistProp('persistedMapString', new Map<number, string>([]));
@@ -302,9 +328,12 @@ struct PersistedMap {
       ListItem() {
         Column() {
           Text(`Persisted Map String is `)
+            .fontSize(20)
             .margin(20)
           ForEach(Array.from(this.persistedMapString.entries()), (item: [number, string]) => {
             Text(`${item[0]} ${item[1]}`)
+              .fontSize(20)
+              .margin(10)
           })
 
           Button() {
@@ -324,19 +353,21 @@ struct PersistedMap {
             // 点击Button改变persistedMapString的值，视图会随之刷新
             this.persistMapString();
           })
-
-        }.width('100%')
+        }
+        .width('100%')
       }
     }
   }
 }
 ```
 
+![persistent-sync-3](figures/persistent-sync-3.gif)
+
 ### 持久化Set类型变量
 
 在下面的示例中，@StorageLink装饰的persistedSet类型为Set\<number\>，点击Button改变persistedSet的值，视图会随之刷新。且persistedSet的值被持久化存储。
 
-<!-- @[Persistent_page_seven](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageSevenPersistedSet.ets) --> 
+<!-- @[Persistent_page_seven](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageSevenPersistedSet.ets) -->  
 
 ``` TypeScript
 PersistentStorage.persistProp('persistedSet', new Set<number>([]));
@@ -359,9 +390,12 @@ struct PersistedSet {
       ListItem() {
         Column() {
           Text(`Persisted Set is `)
+            .fontSize(20)
             .margin(20)
           ForEach(Array.from(this.persistedSet.entries()), (item: [number, number]) => {
             Text(`${item[1]}`)
+              .fontSize(20)
+              .margin(10)
           })
 
           Button() {
@@ -398,7 +432,6 @@ struct PersistedSet {
             // 点击Button改变persistedSet的值，视图会随之刷新
             this.clearSet();
           })
-
         }
         .width('100%')
       }
@@ -406,3 +439,5 @@ struct PersistedSet {
   }
 }
 ```
+
+![persistent-sync-4](figures/persistent-sync-4.gif)

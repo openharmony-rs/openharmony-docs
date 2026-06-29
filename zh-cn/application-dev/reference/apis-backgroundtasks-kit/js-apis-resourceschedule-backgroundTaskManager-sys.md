@@ -394,7 +394,7 @@ subscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
 
 **参数**：
 
@@ -415,13 +415,11 @@ subscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 
 **示例**：
 
-ArkTS-Dyn示例：
-
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-private backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
+let backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
   onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
     console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
   },
@@ -434,33 +432,7 @@ private backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber
 }
 
 try {
-  backgroundTaskManager.subscribeContinuousTaskState(this.backgroundTaskSubscriber);
-  console.info('Operation subscribeContinuousTaskState succeeded');
-} catch (error) {
-  console.error(`Operation subscribeContinuousTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
-}
-```
-
-ArkTS-Sta示例：
-
-```ts
-import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-private backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
-  onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-    console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
-  },
-  onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-    console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
-  },
-  onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-    console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
-  }
-} as backgroundTaskManager.BackgroundTaskSubscriber
-
-try {
-  backgroundTaskManager.subscribeContinuousTaskState(this.backgroundTaskSubscriber);
+  backgroundTaskManager.subscribeContinuousTaskState(backgroundTaskSubscriber);
   console.info('Operation subscribeContinuousTaskState succeeded');
 } catch (error) {
   console.error(`Operation subscribeContinuousTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
@@ -483,7 +455,7 @@ unsubscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
 
 **参数**：
 
@@ -504,13 +476,11 @@ unsubscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 
 **示例**：
 
-ArkTS-Dyn示例：
-
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-private backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
+let backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
   onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
     console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
   },
@@ -523,39 +493,12 @@ private backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber
 }
 
 try {
-  backgroundTaskManager.unsubscribeContinuousTaskState(this.backgroundTaskSubscriber);
+  backgroundTaskManager.unsubscribeContinuousTaskState(backgroundTaskSubscriber);
   console.info('Operation unsubscribeContinuousTaskState succeeded');
 } catch (error) {
   console.error(`Operation unsubscribeContinuousTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 }
 ```
-
-ArkTS-Sta示例：
-
-```ts
-import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-private backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
-  onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-    console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
-  },
-  onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-    console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
-  },
-  onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-    console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
-  }
-} as backgroundTaskManager.BackgroundTaskSubscriber
-
-try {
-  backgroundTaskManager.unsubscribeContinuousTaskState(this.backgroundTaskSubscriber);
-  console.info('Operation unsubscribeContinuousTaskState succeeded');
-} catch (error) {
-  console.error(`Operation unsubscribeContinuousTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
-}
-```
-
 
 ## BackgroundMode
 
@@ -695,7 +638,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
 
 ### onContinuousTaskStart<sup>23+</sup>
 
@@ -711,7 +654,7 @@ onContinuousTaskStart(info: ContinuousTaskInfo): void
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
 
 **参数**：
 
@@ -721,12 +664,10 @@ onContinuousTaskStart(info: ContinuousTaskInfo): void
 
 **示例**：
 
-ArkTS-Dyn示例：
-
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
-private backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
+let backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
   onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
     console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
   },
@@ -737,24 +678,6 @@ private backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber
     console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
   }
 }
-```
-
-ArkTS-Sta示例：
-
-```ts
-import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
-
-private backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
-  onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-    console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
-  },
-  onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-    console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
-  },
-  onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-    console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
-  }
-} as backgroundTaskManager.BackgroundTaskSubscriber
 ```
 
 ### onContinuousTaskUpdate<sup>23+</sup>
@@ -771,7 +694,7 @@ onContinuousTaskUpdate(info: ContinuousTaskInfo): void
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
 
 **参数**：
 
@@ -781,12 +704,10 @@ onContinuousTaskUpdate(info: ContinuousTaskInfo): void
 
 **示例**：
 
-ArkTS-Dyn示例：
-
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
-private backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
+let backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
   onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
     console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
   },
@@ -797,24 +718,6 @@ private backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber
     console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
   }
 }
-```
-
-ArkTS-Sta示例：
-
-```ts
-import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
-
-private backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
-  onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-    console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
-  },
-  onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-    console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
-  },
-  onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-    console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
-  }
-} as backgroundTaskManager.BackgroundTaskSubscriber
 ```
 
 ### onContinuousTaskStop<sup>23+</sup>
@@ -831,7 +734,7 @@ onContinuousTaskStop(info: ContinuousTaskInfo): void
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
 
 **参数**：
 
@@ -841,12 +744,10 @@ onContinuousTaskStop(info: ContinuousTaskInfo): void
 
 **示例**：
 
-ArkTS-Dyn示例：
-
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
-private backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
+let backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
   onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
     console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
   },
@@ -857,22 +758,4 @@ private backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber
     console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
   }
 }
-```
-
-ArkTS-Sta示例：
-
-```ts
-import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
-
-private backgroundTaskSubscriber: backgroundTaskManager.BackgroundTaskSubscriber = {
-  onContinuousTaskStart: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-    console.info('Operation onContinuousTaskStart succeeded. data: ' + JSON.stringify(info));
-  },
-  onContinuousTaskUpdate: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-    console.info('Operation onContinuousTaskUpdate succeeded. data: ' + JSON.stringify(info));
-  },
-  onContinuousTaskStop: (info: backgroundTaskManager.ContinuousTaskInfo): void => {
-    console.info('Operation onContinuousTaskStop succeeded. data: ' + JSON.stringify(info));
-  }
-} as backgroundTaskManager.BackgroundTaskSubscriber
 ```

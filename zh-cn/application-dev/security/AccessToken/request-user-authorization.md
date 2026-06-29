@@ -53,7 +53,7 @@
 效果展示：
 
 <!--RP4-->
-![zh-cn_image_location](figures/zh-cn_image_location.png)
+![image-location](figures/image-location.png)
 <!--RP4End-->
 
 1. 申请ohos.permission.LOCATION、ohos.permission.APPROXIMATELY_LOCATION权限，配置方式请参见[声明权限](declare-permissions.md)。

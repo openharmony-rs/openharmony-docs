@@ -4490,25 +4490,25 @@ ArkTS-Sta示例：
 
 ### addServerConfig<sup>18+</sup>
 
-ArkTS-Dyn: static addServerConfig(parameters: Record&lt;string, Object&gt;): Promise&lt;DomainServerConfig&gt;
-
-ArkTS-Sta: static addServerConfig(parameters: Record&lt;string, RecordData&gt;): Promise&lt;DomainServerConfig&gt;
+static addServerConfig(parameters: Record&lt;string, Object&gt;): Promise&lt;DomainServerConfig&gt;
 
 添加域服务器配置。使用Promise异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[addServerConfig](#addserverconfig23)。
+
+**需要权限：** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
 
 **系统能力：** SystemCapability.Account.OsAccount
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 23
-
-**需要权限：** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
-
 **参数：**
 
 | 参数名    | 类型                     | 必填 | 说明                      |
 | ----------| ----------------------- | --- | -------------------------- |
-| parameters   | ArkTS-Dyn: Record<string, Object><br>ArkTS-Sta: Record&lt;string, RecordData&gt;   | 是  | 表示域服务器配置参数。 |
+| parameters   | Record&lt;string, Object&gt;   | 是  | 表示域服务器配置参数。 |
 
 **返回值：**
 
@@ -4532,7 +4532,6 @@ ArkTS-Sta: static addServerConfig(parameters: Record&lt;string, RecordData&gt;):
 
 **示例：**
 
-ArkTS-Dyn示例：
   ```ts
   import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -4549,7 +4548,50 @@ ArkTS-Dyn示例：
   });
   ```
 
-ArkTS-Sta示例：
+### addServerConfig<sup>23+</sup>
+
+static addServerConfig(parameters: Record&lt;string, RecordData&gt;): Promise&lt;DomainServerConfig&gt;
+
+添加域服务器配置。使用Promise异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[addServerConfig](#addserverconfig18)。
+
+**需要权限：** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名    | 类型                     | 必填 | 说明                      |
+| ----------| ----------------------- | --- | -------------------------- |
+| parameters   | Record&lt;string, RecordData&gt;   | 是  | 表示域服务器配置参数。 |
+
+**返回值：**
+
+| 类型                      | 说明                     |
+| :------------------------ | ----------------------- |
+| Promise&lt;[DomainServerConfig](#domainserverconfig18)&gt; | Promise对象，返回新添加的域服务器配置。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                     |
+| -------- | --------------------------- |
+| 201 | Permission denied.|
+| 801 | Capability not supported.|
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid server config parameters. |
+| 12300211 | Server unreachable. |
+| 12300213 | Server config already exists. |
+| 12300215 | The number of server config reaches the upper limit. |
+
+**示例：**
+
   ```ts
   import osAccount from '@ohos.account.osAccount';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -4650,26 +4692,26 @@ ArkTS-Sta示例：
 
 ### updateServerConfig<sup>18+</sup>
 
-ArkTS-Dyn: static updateServerConfig(configId: string, parameters: Record&lt;string, Object&gt;): Promise&lt;DomainServerConfig&gt;
-
-ArkTS-Sta: static updateServerConfig(configId: string, parameters: Record&lt;string, RecordData&gt;): Promise&lt;DomainServerConfig&gt;
+static updateServerConfig(configId: string, parameters: Record&lt;string, Object&gt;): Promise&lt;DomainServerConfig&gt;
 
 更新域服务器配置。使用Promise异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[updateServerConfig](#updateserverconfig23)。
+
+**需要权限：** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
 
 **系统能力：** SystemCapability.Account.OsAccount
 
 **ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
-
-**需要权限：** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
 
 **参数：**
 
 | 参数名    | 类型                     | 必填 | 说明                      |
 | ----------| ----------------------- | --- | -------------------------- |
 | configId   | string  | 是  | 表示服务器配置标识。 |
-| parameters   | ArkTS-Dyn: Record<string, Object><br>ArkTS-Sta: Record&lt;string, RecordData&gt;  | 是  | 表示域服务器配置参数。 |
+| parameters   | Record&lt;string, Object&gt;  | 是  | 表示域服务器配置参数。 |
 
 **返回值：**
 
@@ -4694,7 +4736,6 @@ ArkTS-Sta: static updateServerConfig(configId: string, parameters: Record&lt;str
 
 **示例：**
 
-ArkTS-Dyn示例：
   ```ts
   import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -4716,7 +4757,52 @@ ArkTS-Dyn示例：
   });
   ```
 
-ArkTS-Sta示例：
+### updateServerConfig<sup>23+</sup>
+
+static updateServerConfig(configId: string, parameters: Record&lt;string, RecordData&gt;): Promise&lt;DomainServerConfig&gt;
+
+更新域服务器配置。使用Promise异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[updateServerConfig](#updateserverconfig18)。
+
+**需要权限：** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名    | 类型                     | 必填 | 说明                      |
+| ----------| ----------------------- | --- | -------------------------- |
+| configId   | string  | 是  | 表示服务器配置标识。 |
+| parameters   | Record&lt;string, RecordData&gt;  | 是  | 表示域服务器配置参数。 |
+
+**返回值：**
+
+| 类型                      | 说明                     |
+| :------------------------ | ----------------------- |
+| Promise&lt;[DomainServerConfig](#domainserverconfig18)&gt; | Promise对象，返回更新后的域服务器配置。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                     |
+| -------- | --------------------------- |
+| 201 | Permission denied.|
+| 801 | Capability not supported.|
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid server config parameters. |
+| 12300211 | Server unreachable. |
+| 12300212 | Server config not found. |
+| 12300213 | Server config already exists. |
+| 12300214 | Server config has been associated with an account. |
+
+**示例：**
+
   ```ts
   import osAccount from '@ohos.account.osAccount';
   import { BusinessError } from '@kit.BasicServicesKit';

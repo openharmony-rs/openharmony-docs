@@ -10,6 +10,8 @@
 本模块提供了追踪进程轨迹。
 
 > **说明：**
+> 
+> - 本模块仅适用于ArkTS-Dyn。
 > - 本模块接口从API Version 8开始废弃，建议使用新接口[@ohos.hiTraceMeter](js-apis-hitracemeter.md)替代。
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
@@ -107,7 +109,7 @@ traceByValue(name: string, count: number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | name | string | 是 | 数值变量的名称。 |
-| count | number | 是 | 数值变量的值 |
+| count | number | 是 | 数值变量的值。 |
 
 **示例：**
 

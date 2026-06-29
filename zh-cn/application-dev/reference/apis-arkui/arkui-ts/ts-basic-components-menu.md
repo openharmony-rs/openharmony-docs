@@ -30,7 +30,7 @@ Menu()
 >
 > - 菜单和菜单项宽度计算规则：
 >
->   - 布局过程中，期望每个菜单项的宽度一致。若子组件设置了宽度，则以[尺寸计算规则](ts-universal-attributes-size.md#constraintsize)为准。
+>   - 布局过程中，期望每个菜单项的宽度一致。若子组件设置了宽度，则以[constraintSize](ts-universal-attributes-size.md#constraintsize)为准。
 >
 >   - Menu不设置宽度的情况：Menu会对子组件MenuItem、MenuItemGroup设置默认2栅格的宽度，若菜单项内容区比2栅格宽，则会自适应撑开。
 >
@@ -38,9 +38,9 @@ Menu()
 >
 >   - Menu支持设置的最小宽度为64vp。
 >
-> - Menu不支持的通用属性：[outline](ts-universal-attributes-outline.md)下的属性、[shadow](ts-universal-attributes-image-effect.md#shadow)。
+> - Menu不支持的通用属性：[外描边设置](ts-universal-attributes-outline.md)下的属性、[shadow](ts-universal-attributes-image-effect.md#shadow)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,7 +64,7 @@ attributeModifier(modifier: AttributeModifier\<MenuAttribute\> | AttributeModifi
 
 | 参数名    | 类型                                                                                                    | 必填 | 说明                       |
 | --------- | ------------------------------------------------------------------------------------------------------- | ---- | -------------------------- |
-| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)\<[MenuAttribute](ts-basic-components-menu.md#属性)\> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)\<[CommonMethod](./ts-component-general-attributes.md)\> \| undefined | 是   | Menu组件的属性修改器。取值为undefined时，则不使用属性修改器。 |
+| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)\<MenuAttribute\> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)\<CommonMethod\> \| undefined | 是   | Menu组件的属性修改器。取值为undefined时，则不使用属性修改器。<br/>MenuAttribute：当前组件的[属性](#属性)<br/>CommonMethod：[通用属性](./ts-component-general-attributes.md) |
 
 ### font<sup>10+</sup>
 
@@ -74,7 +74,9 @@ ArkTS-Sta: font(value: Font | undefined)
 
 统一设置Menu中所有文本的尺寸。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -95,7 +97,9 @@ ArkTS-Sta: fontColor(value: ResourceColor | undefined)
 
 统一设置Menu中所有文本的颜色。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -117,7 +121,9 @@ ArkTS-Sta: radius(value: Dimension | BorderRadiuses | undefined)
 
 设置Menu边框圆角半径。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -139,7 +145,9 @@ menuItemDivider(options: DividerStyleOptions | undefined)
 
 startMargin + endMargin 超过组件宽度后startMargin和endMargin会被置0。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -159,7 +167,9 @@ menuItemGroupDivider(options: DividerStyleOptions | undefined)
 
 设置menuItemGroup上下分割线的样式，不设置该属性则默认展示分割线。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -181,7 +191,9 @@ ArkTS-Sta: subMenuExpandingMode(mode: SubMenuExpandingMode | undefined)
 
 设置Menu子菜单展开样式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -205,7 +217,9 @@ ArkTS-Sta: subMenuExpandSymbol(symbol: SymbolGlyphModifier | undefined)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -217,7 +231,7 @@ ArkTS-Sta: subMenuExpandSymbol(symbol: SymbolGlyphModifier | undefined)
 
 | 参数名 | 类型                         | 必填 | 说明           |
 | ------ | ---------------------------- | ---- |--------------|
-| symbol | ArkTS-Dyn: [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md) <br/>ArkTS-Sta: [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md) \| undefined | 是   | Menu子菜单展开符号。<br/>1、子菜单的展开样式为SubMenuExpandingMode.SIDE_EXPAND时，不显示展开符号。<br/>2、子菜单的展开样式为SubMenuExpandingMode.EMBEDDED_EXPAND时，展开时展开符号会顺时针旋转180°。<br/>默认值：`$r('sys.symbol.chevron_down').fontSize('24vp')` <br/>3、子菜单的展开样式为SubMenuExpandingMode.STACK_EXPAND时，展开时展开符号会顺时针旋转90°。<br/>默认值：`$r('sys.symbol.chevron_forward').fontSize('20vp').padding('2vp')` <br/>4、取值为undefined时，按默认值处理。  |
+| symbol | ArkTS-Dyn: [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md) <br/>ArkTS-Sta: [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md) \| undefined | 是   | Menu子菜单展开符号。<br/>1、子菜单的展开样式为SubMenuExpandingMode.SIDE_EXPAND时，不显示展开符号。<br/>2、子菜单的展开样式为SubMenuExpandingMode.EMBEDDED_EXPAND时，展开时展开符号会顺时针旋转180°。展开符号默认使用`new SymbolGlyphModifier($r('sys.symbol.chevron_down')).fontSize('24vp')`。<br/>3、子菜单的展开样式为SubMenuExpandingMode.STACK_EXPAND时，展开时展开符号会顺时针旋转90°。展开符号默认使用`new SymbolGlyphModifier($r('sys.symbol.chevron_forward')).fontSize('20vp').padding(2)`。 <br/>4、取值为undefined时，按默认值处理。  |
 
 ### fontSize<sup>(deprecated)</sup>
 
@@ -245,7 +259,9 @@ fontSize(value: Length)
 
 Menu子菜单展开样式枚举。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -860,3 +876,140 @@ struct Index {
 ```
 
 ![dividerStyleMode](figures/MenudividerStyleMode.png)
+
+### 示例5（设置自定义菜单项的多级菜单）
+
+该示例通过设置subMenuBuilder属性为自定义菜单项添加多级菜单。
+
+从API版本26.0.0开始，新增[subMenuBuilder](ts-basic-components-menuitem.md#submenubuilder)属性。
+
+ArkTS-Dyn示例：
+
+```ts
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State select: boolean = true;
+  // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+  private iconStr: ResourceStr = $r("app.media.startIcon");
+  private iconStr2: ResourceStr = $r("app.media.startIcon");
+
+  @Builder
+  SubMenu() {
+    Menu() {
+      MenuItem({ content: "复制", labelInfo: "Ctrl+C" })
+      MenuItem({ content: "粘贴", labelInfo: "Ctrl+V" })
+    }
+  }
+
+  @Builder
+  SubMenuContent() {
+    Row() {
+      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+      Image($r("app.media.startIcon")).width(20).height(20)
+      Text('Custom Menu Item').margin({start: LengthMetrics.vp(5)})
+    }.padding(20)
+  }
+
+  @Builder
+  MyMenu(){
+    Menu() {
+      MenuItem(this.SubMenuContent)
+      MenuItem(this.SubMenuContent)
+        .enabled(false)
+      MenuItem(this.SubMenuContent).subMenuBuilder(this.SubMenu)
+    }
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text('click to show menu')
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .bindMenu(this.MyMenu)
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Component,
+  Column,
+  Text,
+  Builder,
+  ResourceStr,
+  Menu,
+  MenuItem,
+  MenuItemOptions,
+  $r,
+  Image,
+  Button,
+  LocalizedMargin,
+  MenuElement,
+  Row,
+  FontWeight,
+  LengthMetrics,
+  State
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State select: boolean = true;
+  // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+  private iconStr: ResourceStr = $r("app.media.startIcon");
+  private iconStr2: ResourceStr = $r("app.media.startIcon");
+
+  @Builder
+  SubMenu() {
+    Menu() {
+      MenuItem({ content: "复制", labelInfo: "Ctrl+C" })
+      MenuItem({ content: "粘贴", labelInfo: "Ctrl+V" })
+    }
+  }
+
+  @Builder
+  SubMenuContent() {
+    Row() {
+      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+      Image($r("app.media.startIcon")).width(20).height(20)
+      Text('Custom Menu Item').margin({start: LengthMetrics.vp(5)} as LocalizedMargin)
+    }.padding(20)
+  }
+
+  @Builder
+  MyMenu(){
+    Menu() {
+      MenuItem(this.SubMenuContent)
+      MenuItem(this.SubMenuContent)
+        .enabled(false)
+      MenuItem(this.SubMenuContent).subMenuBuilder(this.SubMenu)
+    }
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text('click to show menu')
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .bindMenu(this.MyMenu)
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+![subMenuBuilder](figures/subMenuBuilder.jpg)

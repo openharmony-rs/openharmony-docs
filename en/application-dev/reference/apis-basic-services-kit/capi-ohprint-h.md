@@ -1,9 +1,9 @@
 # ohprint.h
- <!--Kit: Basic Services Kit-->   
- <!--Subsystem: Print-->  
- <!--Owner: @guoshengbang-->  
- <!--Designer: @Q-haosu-->    
- <!--Tester: @Q-haosu-->  
+ <!--Kit: Basic Services Kit-->
+ <!--Subsystem: Print-->
+ <!--Owner: @guoshengbang-->
+ <!--Designer: @Q-haosu-->
+ <!--Tester: @Q-haosu-->
  <!--Adviser: @fang-jinxu-->
 
 ## Overview
@@ -286,7 +286,7 @@ Enumerates the print job adapter states.
 | PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY_FOR_CANCELED = 5 | Print job preview destroyed due to cancellation.|
 | PRINT_DOC_ADAPTER_PREVIEW_ABILITY_DESTROY_FOR_STARTED = 6  | Print job preview destroyed due to startup.|
 
-## OH_Print_JobState
+### OH_Print_JobState
 
 ```c
 enum OH_Print_JobState

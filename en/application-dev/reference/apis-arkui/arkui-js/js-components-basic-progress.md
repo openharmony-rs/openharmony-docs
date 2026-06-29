@@ -135,4 +135,4 @@ The [universal methods](js-components-common-methods.md) are supported.
 }
 ```
 
-![progress](figures/progress.png)
+![progress](figures/progress01.png)

@@ -920,7 +920,7 @@ struct Index {
 }
 ```
 
-![en-us_image_0000001643038221](figures/en-us_image_0000001643038221.png)
+![SaveButton-Basic-demo](figures/SaveButton-Basic-demo.png)
 
 ### Example 2
 

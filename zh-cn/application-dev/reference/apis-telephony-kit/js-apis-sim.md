@@ -111,17 +111,24 @@ console.info(`the sim is active:` + isSimActive);
 
 ## sim.getDefaultVoiceSlotId<sup>7+</sup>
 
-getDefaultVoiceSlotId\(callback: AsyncCallback\<number\>\): void
+ArkTS-Dyn: getDefaultVoiceSlotId\(callback: AsyncCallback\<number\>\): void
+
+
+ArkTS-Sta: getDefaultVoiceSlotId\(callback: AsyncCallback\<int\>\): void
 
 获取默认语音业务的卡槽ID。使用callback异步回调。
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                        | 必填 | 说明       |
 | -------- | --------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数。<br />- 0：卡槽1。<br />- 1：卡槽2。<br />- -1：未设置或服务不可用。 |
+| callback | ArkTS-Dyn:AsyncCallback&lt;number&gt;<br />ArkTS-Sta:AsyncCallback&lt;int&gt;| 是   | 回调函数。<br />- 0：卡槽1。<br />- 1：卡槽2。<br />- -1：未设置或服务不可用。 |
 
 **示例：**
 
@@ -136,17 +143,23 @@ sim.getDefaultVoiceSlotId((err: BusinessError, data: number) => {
 
 ## sim.getDefaultVoiceSlotId<sup>7+</sup>
 
-getDefaultVoiceSlotId\(\): Promise\<number\>
+ArkTS-Dyn: getDefaultVoiceSlotId(): Promise\<number\>
+
+ArkTS-Sta: getDefaultVoiceSlotId(): Promise\<int\>
 
 获取默认语音业务的卡槽ID。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型              | 说明                                    |
 | ----------------- | --------------------------------------- |
-| Promise\<number\> | 以Promise形式返回默认语音业务的卡槽ID。<br />- 0：卡槽1。<br />- 1：卡槽2。<br />- -1：未设置或服务不可用。 |
+| ArkTS-Dyn: Promise\<number\> <br/> ArkTS-Sta: Promise\<int\>| 以Promise形式返回默认语音业务的卡槽ID。<br />- 0：卡槽1。<br />- 1：卡槽2。<br />- -1：未设置或服务不可用。 |
 
 **示例：**
 
@@ -1481,7 +1494,9 @@ promise.then((data: number) => {
 
 ## sim.getSimLabel<sup>20+</sup>
 
-getSimLabel(slotId: number, callback: AsyncCallback\<SimLabel\>): void
+ArkTS-Dyn: getSimLabel(slotId: number, callback: AsyncCallback\<SimLabel\>): void
+
+ArkTS-Sta: getSimLabel(slotId: int, callback: AsyncCallback\<SimLabel\>): void
 
 查看卡槽ID和SIM卡的对应关系：
 - 卡槽1对应SIM卡1或SIM卡2
@@ -1489,11 +1504,15 @@ getSimLabel(slotId: number, callback: AsyncCallback\<SimLabel\>): void
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                     | 必填 | 说明                                     |
 | -------- | ------------------------ | ---- | ---------------------------------------- |
-| slotId | number                      | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | ArkTS-Dyn:number<br />ArkTS-Sta:int                  | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | callback | AsyncCallback\<[SimLabel](#simlabel20)\> | 是   | 回调函数。获取SIM卡标签信息。 |
 
 **错误码：**
@@ -1521,18 +1540,24 @@ sim.getSimLabel(0, (err: BusinessError, data: sim.SimLabel) => {
 
 ## sim.getSimLabel<sup>20+</sup>
 
-getSimLabel(slotId: number): Promise\<SimLabel\>
+ArkTS-Dyn: getSimLabel(slotId: number): Promise\<SimLabel\>
+
+ArkTS-Sta: getSimLabel(slotId: int): Promise\<SimLabel\>
 
 获取SIM卡的标签信息。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Telephony.CoreService
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 
 | 参数名   | 类型                     | 必填 | 说明                                     |
 | -------- | ------------------------ | ---- | ---------------------------------------- |
-| slotId | number                      | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | ArkTS-Dyn:number<br />ArkTS-Sta:int                      | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 
 **返回值：**
 
@@ -1567,17 +1592,23 @@ sim.getSimLabel(0).then((data: sim.SimLabel) => {
 
 ## sim.getSimLabelSync<sup>20+</sup>
 
-getSimLabelSync(slotId: number): SimLabel
+ArkTS-Dyn: getSimLabelSync(slotId: number): SimLabel
+
+ArkTS-Sta: getSimLabelSync(slotId: int): SimLabel
 
 通过传入SIM卡槽的ID，获取对应的SIM卡标签。
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                     | 必填 | 说明                                     |
 | -------- | ------------------------ | ---- | ---------------------------------------- |
-| slotId | number                      | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | ArkTS-Dyn:number<br />ArkTS-Sta:int                      | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 
 **返回值：**
 

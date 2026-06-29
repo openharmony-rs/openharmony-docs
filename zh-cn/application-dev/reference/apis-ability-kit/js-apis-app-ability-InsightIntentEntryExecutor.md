@@ -13,6 +13,8 @@
 
 > **说明：**
 >
+> 本模块仅支持ArkTS-Dyn。
+>
 > 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块接口仅可在Stage模型下使用。
@@ -29,7 +31,11 @@ import { InsightIntentEntryExecutor } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 20
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -51,11 +57,15 @@ onExecute(): Promise\<insightIntent.IntentResult\<T>>
 | [UI_ABILITY_FOREGROUND](./js-apis-app-ability-insightIntent.md#executemode)<br/>UIAbility前台模式 | - 若UIAbility冷启动，意图执行时UIAbility生命周期触发顺序：[onCreate](./js-apis-app-ability-uiAbility.md#oncreate)、[onWindowStageCreate](./js-apis-app-ability-uiAbility.md#onwindowstagecreate)、onExecute、[onForeground](./js-apis-app-ability-uiAbility.md#onforeground)。<br/>- 若UIAbility热启动，且启动时UIAbility处于后台，意图执行时UIAbility生命周期触发顺序：[onNewWant](./js-apis-app-ability-uiAbility.md#onnewwant)、onExecute、[onForeground](./js-apis-app-ability-uiAbility.md#onforeground)。<br/>- 若UIAbility热启动，且启动时UIAbility处于前台，意图执行时UIAbility生命周期触发顺序：onExecute。 |
 | [UI_ABILITY_BACKGROUND](./js-apis-app-ability-insightIntent.md#executemode)<br/>UIAbility后台模式 | - 若UIAbility冷启动，意图执行时UIAbility生命周期触发顺序：[onCreate](./js-apis-app-ability-uiAbility.md#oncreate)、onExecute、[onBackground](./js-apis-app-ability-uiAbility.md#onbackground)。<br/>- 若UIAbility热启动，意图执行时UIAbility生命周期触发顺序：onExecute。 |
 | [UI_EXTENSION_ABILITY](./js-apis-app-ability-insightIntent.md#executemode)<br />UIExtension模式 | 意图执行时UIExtensionAbility生命周期触发顺序：[onCreate](./js-apis-app-ability-uiExtensionAbility.md#oncreate)、[onSessionCreate](./js-apis-app-ability-uiExtensionAbility.md#onsessioncreate)、onExecute、[onForeground](./js-apis-app-ability-uiExtensionAbility.md#onforeground)。 |
-|<!--DelRow-->[SERVICE_EXTENSION_ABILITY](./js-apis-app-ability-insightIntent-sys.md)<br />ServiceExtension模式 | 意图执行时ServiceExtensionAbility生命周期触发顺序：[onCreate](./js-apis-app-ability-serviceExtensionAbility-sys.md#oncreate)、[onRequest](./js-apis-app-ability-serviceExtensionAbility-sys.md#onrequest)、onExecute。 |
+|<!--DelRow-->[@ohos.app.ability.insightIntent (意图框架基础定义)(系统接口)](./js-apis-app-ability-insightIntent-sys.md)<br />ServiceExtension模式 | 意图执行时ServiceExtensionAbility生命周期触发顺序：[onCreate](./js-apis-app-ability-serviceExtensionAbility-sys.md#oncreate)、[onRequest](./js-apis-app-ability-serviceExtensionAbility-sys.md#onrequest)、onExecute。 |
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 20
 
 **返回值：**
 

@@ -72,7 +72,7 @@ ArkTS-Dyn: fontColor(value: Array&lt;ResourceColor&gt;)
 
 ArkTS-Sta: fontColor(value: Array&lt;ResourceColor&gt; | undefined)
 
-设置SymbolGlyph组件颜色。
+设置SymbolGlyph组件字体颜色。
 
 >**说明：**
 >
@@ -86,19 +86,19 @@ ArkTS-Sta: fontColor(value: Array&lt;ResourceColor&gt; | undefined)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| value  | ArkTS-Dyn: Array\<[ResourceColor](ts-types.md#resourcecolor)\><br/>ArkTS-Sta: Array\<[ResourceColor](ts-types.md#resourcecolor)\> \| undefined | 是   | SymbolGlyph组件颜色。<br/> 当value为undefined时，使用图标的默认颜色，默认颜色跟随主题。 |
+| value  | ArkTS-Dyn: Array\<[ResourceColor](ts-types.md#resourcecolor)\><br/>ArkTS-Sta: Array\<[ResourceColor](ts-types.md#resourcecolor)\> \| undefined | 是   | SymbolGlyph组件字体颜色。<br/> 当value为undefined时，使用图标的默认颜色，默认颜色跟随主题。 |
 
 ### fontColor
 
 fontColor(value: Array&lt;ResourceColor | ColorMetrics&gt; | undefined)
 
-设置SymbolGlyph组件的颜色，相比[fontColor](#fontcolor)接口，本接口支持传入[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)类型参数。
+设置SymbolGlyph组件的字体颜色，相比[fontColor](#fontcolor)接口，本接口支持传入[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)类型参数。
 
 > **说明：**
 >
@@ -122,13 +122,13 @@ fontColor(value: Array&lt;ResourceColor | ColorMetrics&gt; | undefined)
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| value  | Array\<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)\>&nbsp;\|&nbsp;undefined | 是   | SymbolGlyph组件颜色。支持传入`ResourceColor`或`ColorMetrics`类型的数组。<br/> 当value为undefined时，使用图标的默认颜色，默认颜色跟随主题。 |
+| value  | Array\<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)\>&nbsp;\|&nbsp;undefined | 是   | SymbolGlyph组件字体颜色。支持传入`ResourceColor`或`ColorMetrics`类型的数组。<br/> 当value为undefined时，使用图标的默认颜色，默认颜色跟随主题。 |
 
 ### symbolColor
 
 symbolColor(value: Array&lt;ResourceColor&gt; | Array&lt;ColorMetrics&gt; | Array&lt;ResourceColor | ColorMetrics&gt; | undefined)
 
-设置SymbolGlyph组件的颜色，相比[fontColor](#fontcolor)接口，本接口支持传入[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)类型参数。
+设置SymbolGlyph组件的字体颜色，相比[fontColor](#fontcolor)接口，本接口支持传入[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)类型参数。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -144,7 +144,7 @@ symbolColor(value: Array&lt;ResourceColor&gt; | Array&lt;ColorMetrics&gt; | Arra
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| value  | Array\<[ResourceColor](ts-types.md#resourcecolor)\>&nbsp;\|&nbsp;Array\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)\>&nbsp;\|&nbsp;Array\<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)\>&nbsp;\|&nbsp;undefined | 是   | SymbolGlyph组件颜色。支持传入`ResourceColor`或`ColorMetrics`类型的数组。<br/> 当value为undefined时，使用图标的默认颜色，默认颜色跟随主题。 |
+| value  | Array\<[ResourceColor](ts-types.md#resourcecolor)\>&nbsp;\|&nbsp;Array\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)\>&nbsp;\|&nbsp;Array\<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)\>&nbsp;\|&nbsp;undefined | 是   | SymbolGlyph组件字体颜色。支持传入`ResourceColor`或`ColorMetrics`类型的数组。<br/> 当value为undefined时，使用图标的默认颜色，默认颜色跟随主题。 |
 
 ### fontSize
 
@@ -152,7 +152,7 @@ ArkTS-Dyn: fontSize(value: number | string | Resource)
 
 ArkTS-Sta: fontSize(value: double | string | Resource | undefined)
 
-设置SymbolGlyph组件大小。设置string类型时，支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。
+设置SymbolGlyph组件字体大小。设置string类型时，支持number类型取值的字符串形式，可以附带单位，例如"10"、"10fp"。
 
 组件的图标显示大小由fontSize控制，设置width或height后，其他通用属性仅对组件的占位大小生效。
 
@@ -174,7 +174,7 @@ ArkTS-Sta: fontSize(value: double | string | Resource | undefined)
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | SymbolGlyph组件大小。<br/>默认值：16fp<br/>取值为undefined时，按默认值处理。<br/>单位：[fp](ts-pixel-units.md#基本像素单位)<br/>不支持设置百分比字符串。|
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | SymbolGlyph组件字体大小。<br/>默认值：16fp<br/>取值为undefined时，按默认值处理。<br/>单位：[fp](ts-pixel-units.md#基本像素单位)<br/>不支持设置百分比字符串。|
 
 ### fontWeight
 
@@ -182,7 +182,7 @@ ArkTS-Dyn: fontWeight(value: number | FontWeight | string)
 
 ArkTS-Sta: fontWeight(value: int | FontWeight | string | undefined)
 
-设置SymbolGlyph组件粗细。number类型取值[100,900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如“400”，以及“bold”、“bolder”、“lighter”、“regular” 、“medium”分别对应FontWeight中相应的枚举值。
+设置SymbolGlyph组件字体粗细。number类型取值[100,900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"400"，以及"bold"、"bolder"、"lighter"、"regular" 、"medium"分别对应FontWeight中相应的枚举值。
 
 sys.symbol.ohos_lungs图标不支持设置fontWeight。
 
@@ -204,7 +204,7 @@ sys.symbol.ohos_lungs图标不支持设置fontWeight。
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                |
 | ------ | ------------------------------------------------------------ | ---- | --------------------------------------------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string <br>ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;undefined| 是   | SymbolGlyph组件粗细。<br/>默认值：FontWeight.Normal<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string <br>ArkTS-Sta: int&nbsp;\|&nbsp;[FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;undefined| 是   | SymbolGlyph组件字体粗细。<br/>默认值：FontWeight.Normal<br/>取值为undefined时，按默认值处理。 |
 
 ### renderingStrategy
 
@@ -265,6 +265,26 @@ ArkTS-Sta: effectStrategy(value: SymbolEffectStrategy | undefined)
 | 参数名 | 类型 | 必填 | 说明  |
 | ------ | ---- | ---- | ----- |
 | value  | ArkTS-Dyn: [SymbolEffectStrategy](#symboleffectstrategy11枚举说明)<br/>ArkTS-Sta: [SymbolEffectStrategy](#symboleffectstrategy11枚举说明) \| undefined | 是   | SymbolGlyph组件动效策略。<br/>默认值：SymbolEffectStrategy.NONE<br/>取值为undefined时，按默认值处理。 |
+
+### symbolEffect<sup>23+</sup>
+
+symbolEffect(symbolEffect: SymbolEffect | undefined)
+
+设置SymbolGlyph组件动效策略。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------ | ---- | ---- | ----- |
+| symbolEffect  | [SymbolEffect](#symboleffect12对象说明) \| undefined | 是   | SymbolGlyph组件动效策略。<br/>默认值：[SymbolEffect](#symboleffect12对象说明)<br/>取值为undefined时，按默认值处理。 |
 
 ### symbolEffect<sup>12+</sup>
 
@@ -484,6 +504,16 @@ HierarchicalSymbolEffect继承自父类SymbolEffect。
 
 ### 属性
 
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明  |
 | ---- | ---- | ---- | ---- | ---- |
 | fillStyle | [EffectFillStyle](#effectfillstyle12枚举说明) | 否   | 是 | 动效模式。<br/>默认值：EffectFillStyle.CUMULATIVE |
@@ -526,6 +556,16 @@ AppearSymbolEffect继承自父类SymbolEffect。
 
 ### 属性
 
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明  |
 | ---- | ---- | ---- | ---- | ---- |
 | scope | [EffectScope](#effectscope12枚举说明) | 否   | 是 | 动效范围。<br/>默认值：EffectScope.LAYER |
@@ -567,6 +607,16 @@ DisappearSymbolEffect继承自父类SymbolEffect。
 **ArkTS-Sta起始版本：** 23
 
 ### 属性
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明  |
 | ---- | ---- | ---- | ---- | ---- |
@@ -645,10 +695,6 @@ ReplaceSymbolEffect继承自父类SymbolEffect。
 ### 属性
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明  |
 | ---- | ---- | ---- | ---- | ---- |

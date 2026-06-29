@@ -24,7 +24,7 @@
 
 - [\@ComponentRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentrecycle)：当组件被回收后触发，先执行应用程序中定义的必要回收操作，完成回收后调用该装饰器装饰的函数。最后，\@ComponentRecycle装饰的函数会递归遍历所有子组件，对每个完成回收的组件调用\@ComponentRecycle装饰的函数。
 
-- [\@ComponentActive](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentactive)：当组件从非激活状态变为激活状态时，调用该装饰器装饰的函数。自定义组件激活和非激活概念详见[支持场景](#自定义组件的激活与非激活生命周期调用时机)。自定义组件的激活和非激活概念与[组件冻结](./arkts-custom-components-freeze.md)中的组件激活（active）和非激活（inactive）概念相同。
+- [\@ComponentActive](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentactive)：当组件从非激活状态变为激活状态时，调用该装饰器装饰的函数。自定义组件的激活和非激活概念与[组件冻结](./arkts-custom-components-freeze.md)中的组件激活（active）和非激活（inactive）概念相同，详见[自定义组件的激活与非激活生命周期](#自定义组件的激活与非激活生命周期)。
 
 - [\@ComponentInactive](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentinactive)：当组件从激活状态变为非激活状态时，调用该装饰器装饰的函数。
 
@@ -46,203 +46,42 @@
 
 1. 在删除组件之前，将调用其\@ComponentDisappear装饰的生命周期函数，标记着该节点将要被销毁。ArkUI的节点删除机制是：后端节点直接从组件树上摘下，后端节点被销毁，对前端节点解引用，前端节点已经没有引用时，将被Ark虚拟机垃圾回收。
 
-2. 自定义组件和它的变量将被删除，如果组件有同步的变量（如[@Link](arkts-link.md)、[@Prop](arkts-prop.md)、[@StorageLink](arkts-appstorage.md#storagelink)），将从[同步源](arkts-state-management-glossary.md#数据源同步源data-source)上取消注册。
+2. 自定义组件和它的变量将被删除，如果组件有同步的变量（如[@Link](arkts-link.md)、[@Prop](arkts-prop.md)、[@StorageLink](arkts-appstorage.md#storagelink)），将从[状态数据源](arkts-state-management-glossary.md#state-data-source状态数据源)上取消注册。
 
-## 限制条件
+## 自定义组件的激活与非激活生命周期
 
-- \@ComponentInit、\@ComponentAppear、\@ComponentBuilt、\@ComponentDisappear、\@ComponentReuse和\@ComponentRecycle只能在\@Component或者\@ComponentV2装饰的struct中使用，否则编译会报错。
+自定义组件生命周期装饰器`@ComponentActive`和`@ComponentInactive`自API版本26.0.0起可用，用于监听组件的激活状态变化，不受状态机约束。
 
-- \@ComponentInit、\@ComponentAppear、\@ComponentBuilt、\@ComponentDisappear和\@ComponentRecycle装饰的函数不能有入参，否则编译会报错。
+当组件由非激活转为激活状态时（例如应用从后台切回前台、页面重新显示时），会触发`@ComponentActive`装饰的函数；反之，当组件从激活转为非激活状态时（例如应用退至后台、页面隐藏或组件预创建时），则调用`@ComponentInactive`装饰的函数。组件激活/非激活并不等同于其可见性。
 
-- 在\@Component装饰的struct中，\@ComponentReuse装饰的函数可以没有入参或者有一个入参，否则编译会报错。
+本文档中，组件转变为激活态指自定义组件从非激活状态转变为激活状态，触发`@ComponentActive`；组件转变为非激活态指自定义组件从激活状态转变为非激活状态，并触发`@ComponentInactive`。
 
-- 在\@ComponentV2装饰的struct中，\@ComponentReuse装饰的函数不能有入参，否则编译会报错。
+目前激活和非激活生命周期支持下述场景。
 
-- 新增生命周期装饰器装饰方法时，自定义组件对应事件发生时会回调该方法。新增生命周期装饰器建议单独使用，不与其他状态变量装饰器联合使用。比如生命周期装饰器和[\@Computed](./arkts-new-computed.md)联合使用时，生命周期装饰器不生效。
-  ```typescript
-  @Computed
-  @ComponentAppear
-  get sum() {
-    return 1 + 2 + 3; // 错误用法，生命周期装饰器装饰get方法不生效
-  }
-  ```
-- 当自定义组件没有使用生命周期装饰器，且没有注册监听，使用[getCurrentState](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#getcurrentstate)查询自定义组件当前生命周期状态时，返回值永远为[CustomComponentLifecycleState.INIT](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#customcomponentlifecyclestate)。
+### 组件回收复用场景下监听激活状态变化
 
--  `@ComponentActive`和`@ComponentInactive`这两个自定义组件生命周期装饰器自API版本26.0.0起可用，用于监听组件的激活状态变化，不受状态机约束。它们独立于状态机工作：当组件由非激活转为激活状态（例如应用从后台切回前台、页面重新显示时），会触发`@ComponentActive`装饰的函数；反之，当组件从激活转为非激活状态（例如应用退至后台、页面隐藏或组件预创建时），则调用`@ComponentInactive`装饰的函数，目前激活和非激活生命周期仅支持[以下场景](#自定义组件的激活与非激活生命周期调用时机)。
+进入复用池的组件转变为非激活态。可复用组件从复用池中重新添加到节点树时转变为激活态。本示例展示了组件回收复用场景下，自定义组件激活和非激活生命周期回调函数触发情况。
 
-- 自定义组件创建后默认为激活状态，不会触发`@ComponentActive`装饰的函数。
-
-## 使用场景
-
-### 自定义组件嵌套使用
-
-通过以下示例，来详细说明自定义组件在嵌套使用时，自定义组件生命周期的调用时序：
-
-```typescript
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { ComponentAppear, ComponentBuilt, ComponentDisappear } from '@kit.ArkUI';
+```ts
+import { ComponentActive, ComponentInactive, ComponentReuse, ComponentRecycle } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct Index {
-  @State show: boolean = true;
-  @State btnColor: string = '#FF007DFF';
-  build() {
-    Column() {
-      Button('delete Parent And Child')
-        .margin(20)
-        .backgroundColor(this.btnColor)
-        .onClick(() => {
-          this.show = !this.show;
-        })
-      if (this.show) {
-        Parent()
-      }
-    }
-  }
-}
-@Component
-struct Parent {
-  @State showChild: boolean = true;
-  @State btnColor: string = '#FF007DFF';
-  // 组件生命周期ComponentAppear，在Parent创建实例后，执行build函数之前回调myAppear
-  @ComponentAppear
-  myAppear() {
-    hilog.info(0x0000, 'testTag', 'Parent myAppear');
-  }
-  // 组件生命周期ComponentBuilt，在Parent首次渲染触发的build函数执行完成之后回调myBuilt
-  @ComponentBuilt
-  myBuilt() {
-    hilog.info(0x0000, 'testTag', 'Parent myBuilt');
-  }
-  // 组件生命周期ComponentDisappear，在Parent析构销毁之前回调myDisappear
-  @ComponentDisappear
-  myDisappear() {
-    hilog.info(0x0000, 'testTag', 'Parent myDisappear');
-  }
+  @State message: string = 'Hello World';
+  @State changeChild: boolean = false;
 
   build() {
     Column() {
-      // this.showChild为true，创建Child子组件，执行Child myAppear
-      if (this.showChild) {
+      Button('change')
+        .onClick(() => {
+          // 切换Child组件的显示状态，触发组件的回收或复用
+          this.changeChild = !this.changeChild;
+        })
+      if (this.changeChild) {
         Child()
       }
-      Button('delete Child')
-        .margin(20)
-        .backgroundColor(this.btnColor)
-        .onClick(() => {
-          // 更改this.showChild为false，删除Child子组件，执行Child myDisappear
-          // 更改this.showChild为true，添加Child子组件，执行Child myAppear
-          this.showChild = !this.showChild;
-        })
     }
-  }
-}
-
-@Component
-struct Child {
-  @State title: string = 'Hello World';
-  @ComponentDisappear
-  myDisappear() {
-    hilog.info(0x0000, 'testTag', 'Child myDisappear');
-  }
-  @ComponentBuilt
-  myBuilt() {
-    hilog.info(0x0000, 'testTag', 'Child myBuilt');
-  }
-  @ComponentAppear
-  myAppear() {
-    hilog.info(0x0000, 'testTag', 'Child myAppear');
-  }
-
-  build() {
-    Text(this.title)
-      .fontSize(50)
-      .margin(20)
-      .onClick(() => {
-        this.title = 'Hello ArkUI';
-      })
-  }
-}
-```
-
-以上示例中，Index页面包含两个自定义组件，一个是Parent，一个是Child，Parent及其子组件Child分别声明了各自的自定义组件生命周期装饰器装饰的函数（myAppear / myBuilt / myDisappear）。
-
-- 应用冷启动的初始化流程为：Parent myAppear --&gt; Parent build --&gt; Parent myBuilt --&gt; Child myAppear --&gt; Child build --&gt; Child myBuilt。此处体现了自定义组件懒展开特性，即Parent执行完myBuilt之后才会执行Child组件的myAppear。日志输出信息如下：
-
-```text
-Parent myAppear
-Parent myBuilt
-Child myAppear
-Child myBuilt
-```
-
-- 点击Button按钮，更改showChild为false，删除Child组件，执行Child myDisappear函数。
-
-- 如果点击Button按钮，更改show为false,或者直接退出应用，则会触发以下生命周期：Parent myDisappear --&gt; Child myDisappear，此处体现了自定义组件删除顺序也是从父到子。日志输出信息如下：
-
-```text
-Parent myDisappear
-Child myDisappear
-```
-
-- 最小化应用或者应用进入后台，当前Index页面未被销毁，所以并不会执行组件的myDisappear。
-
-- 如果showChild的默认值为false，则应用冷启动的初始化流程为：Parent myAppear --&gt; Parent build --&gt; Parent myBuilt。日志输出信息如下：
-
-```text
-Parent myAppear
-Parent myBuilt
-```
-- 如果showChild的默认值为false，此时点击Button按钮更改show为false或者直接退出应用，则只执行Parent myDisappear函数。
-
-- 如果showChild的默认值为false，此时点击Button按钮，更改showChild为true，添加Child组件，添加流程为：Child myAppear --&gt; Child build --&gt; Child myBuilt。日志输出信息如下：
-
-```text
-Child myAppear
-Child myBuilt
-```
-当showchild为默认值true时，该示例的生命周期流程图如下所示：
-
-![custom-component-lifecycle-demo2](figures/custom-component-lifecycle-nest.png)
-
-### 自定义组件回收复用
-
-通过以下示例，来详细说明自定义组件在使用时，回收复用的生命周期调用时序：
-
-```typescript
-import { ComponentInit, ComponentAppear, ComponentBuilt, ComponentDisappear, ComponentReuse, ComponentRecycle } from '@kit.ArkUI';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-export class Message {
-  value: string | undefined;
-  constructor(value: string) {
-    this.value = value;
-  }
-}
-@Entry
-@Component
-struct Index {
-  @State switch: boolean = true;
-
-  build() {
-    Column() {
-      Button('Hello')
-        .fontSize(30)
-        .fontWeight(FontWeight.Bold)
-        .onClick(() => {
-          this.switch = !this.switch;
-        })
-      // 通过改变switch，实现Child的回收和复用
-      // 更改this.switch为false，回收Child子组件，执行Child myRecycle
-      // 更改this.switch为true，复用Child子组件，执行Child myReuse
-      if (this.switch) {
-        // 如果只有一个复用的组件，可以不用设置reuseId。
-        Child({ message: new Message('Child') })
-          .reuseId('Child')
-      }
-    }
-    .height('100%')
     .width('100%')
   }
 }
@@ -250,271 +89,72 @@ struct Index {
 @Reusable
 @Component
 struct Child {
-  @State message: Message = new Message('Child');
-  @State label: string = 'HelloWorld';
-  @State switch: boolean = true;
-  @ComponentInit
-  myInit() {
-    hilog.info(0x0000, 'testTag', 'Child myInit');
+
+  @ComponentReuse
+  myReuse() {
+    // 组件复用时触发
+    console.info(`Child myReuse`);
   }
-  @ComponentAppear
-  myAppear() {
-    this.label = 'myAppear';
-    hilog.info(0x0000, 'testTag', 'Child myAppear');
+
+  aboutToReuse() {
+    // 组件复用时触发
+    console.info(`Child aboutToReuse`);
   }
-  @ComponentBuilt
-  myBuilt() {
-    this.label = 'myBuilt';
-    hilog.info(0x0000, 'testTag', 'Child myBuilt');
+
+  @ComponentActive
+  myActive() {
+    // 组件从非激活状态变为激活状态时触发
+    console.info(`Child myActive`);
   }
+
   @ComponentRecycle
   myRecycle() {
-    this.label = 'myRecycle';
-    hilog.info(0x0000, 'testTag', 'Child myRecycle');
-  }
-  @ComponentDisappear
-  myDisappear() {
-    this.label = 'myDisappear';
-    hilog.info(0x0000, 'testTag', 'Child myDisappear');
-  }
-  @ComponentReuse
-  myReuse(params?: Record<string, Object | undefined | null>) {
-    this.label = 'myReuse';
-    hilog.info(0x0000, 'testTag', 'Child myReuse');
+    // 组件进入复用池时触发
+    console.info(`Child myRecycle`);
   }
 
-  build() {
-    Column() {
-      Text(this.message.value)
-        .fontSize(30)
-      Button('Hello')
-        .fontSize(30)
-        .fontWeight(FontWeight.Bold)
-        .onClick(() => {
-          this.switch = !this.switch;
-        })
-      if (this.switch) {
-        GrandChild({ message: new Message('GrandChild') })
-          .reuseId('GrandChild')
-      }
-    }
-    .borderWidth(1)
-    .height(100)
-  }
-}
-
-@Reusable
-@Component
-struct GrandChild {
-  @State message: Message = new Message('GrandChild');
-  @State label: string = 'HelloWorld';
-  @State switch: boolean = true;
-  @ComponentInit
-  myInit() {
-    hilog.info(0x0000, 'testTag', 'GrandChild myInit');
-  }
-  @ComponentAppear
-  myAppear() {
-    this.label = 'myAppear';
-    hilog.info(0x0000, 'testTag', 'GrandChild myAppear');
-  }
-  @ComponentBuilt
-  myBuilt() {
-    this.label = 'myBuilt';
-    hilog.info(0x0000, 'testTag', 'GrandChild myBuilt');
-  }
-  @ComponentRecycle
-  myRecycle() {
-    this.label = 'myRecycle';
-    hilog.info(0x0000, 'testTag', 'GrandChild myRecycle');
-  }
-  @ComponentDisappear
-  myDisappear() {
-    this.label = 'myDisappear';
-    hilog.info(0x0000, 'testTag', 'GrandChild myDisappear');
-  }
-  @ComponentReuse
-  myReuse(params?: Record<string, Object | undefined | null>) {
-    this.label = 'myReuse';
-    hilog.info(0x0000, 'testTag', 'GrandChild myReuse');
-  }
-
-  build() {
-    Column() {
-      Text(this.message.value)
-        .fontSize(30)
-    }
-    .borderWidth(1)
-    .height(100)
-  }
-}
-```
-
-以上示例中，Index页面包含自定义组件Child，Child组件包含自定义组件GrandChild。Child和GrandChild分别声明了各自的自定义组件生命周期装饰器装饰的函数（myInit / myAppear / myBuilt / myRecycle / myReuse / myDisappear）。
-
-- 应用冷启动的初始化流程为：Child myInit --&gt; Child myAppear --&gt; GrandChild myInit --&gt; Child myBuilt --&gt; GrandChild myAppear --&gt; GrandChild myBuilt。此处体现了自定义组件懒展开特性，即Child执行完myBuilt之后才会执行GrandChild组件的myAppear。日志输出信息如下：
-
-```text
-Child myInit
-Child myAppear
-GrandChild myInit
-Child myBuilt
-GrandChild myAppear
-GrandChild myBuilt
-```
-
-- 点击Button按钮，更改showChild为false，回收Child组件和GrandChild组件，执行Child和GrandChild的myRecycle函数。
-
-```text
-Child myRecycle
-GrandChild myRecycle
-```
-
-### 自定义组件生命周期的注册监听
-
-[CustomComponentLifecycleObserver](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#customcomponentlifecycleobserver)用于监听自定义组件的生命周期，开发者可以根据自己的需求重写CustomComponentLifecycleObserver中的回调函数。
-
-```typescript
-import { ComponentInit, ComponentDisappear, UIUtils, CustomComponentLifecycleObserver, CustomComponentLifecycle } from '@kit.ArkUI';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-export class Message {
-  value: string | undefined;
-  constructor(value: string) {
-    this.value = value;
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  @State switch: boolean = true;
-
-  build() {
-    Column() {
-      Button('Hello')
-        .fontSize(30)
-        .fontWeight(FontWeight.Bold)
-        .onClick(() => {
-          this.switch = !this.switch;
-        })
-      if (this.switch) {
-        // 如果只有一个复用的组件，可以不用设置reuseId。
-        Child({ message: new Message('Child') })
-          .reuseId('Child')
-      }
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-
-@Reusable
-@Component
-struct Child {
-  @State message: Message = new Message('AboutToReuse');
-  @State label: string = 'HelloWorld';
-  @ComponentInit
-  myInit(): void {
-    registerObserver(UIUtils.getLifecycle(this));
-  }
-  @ComponentDisappear
-  myDisappear(): void {
-    unRegisterObserver(UIUtils.getLifecycle(this));
-  }
-
-  build() {
-    Column() {
-      Text(this.message.value)
-        .fontSize(30)
-    }
-  }
-}
-
-export class MyObserver implements CustomComponentLifecycleObserver {
-  // 重写CustomComponentLifecycleObserver中的生命周期事件，CustomComponentLifecycleObserver无法监听父组件的aboutToInit
-  aboutToAppear() {
-    hilog.info(0x0000, 'testTag', 'MyObserver aboutToAppear');
-  }
-  onDidBuild() {
-    hilog.info(0x0000, 'testTag', 'MyObserver onDidBuild');
-  }
-  aboutToReuse(params?: Record<string, Object | undefined | null>) {
-    // params存在时，为V1的复用；
-    hilog.info(0x0000, 'testTag', 'MyObserver aboutToReuse');
-  }
   aboutToRecycle() {
-    hilog.info(0x0000, 'testTag', 'MyObserver aboutToRecycle');
+    // 组件进入复用池时触发
+    console.info(`Child aboutToRecycle`);
   }
-  // 在父组件的aboutToDelete函数中解除注册监听，则无法监听父组件的aboutToDisappear
-  aboutToDisappear() {
-    hilog.info(0x0000, 'testTag', 'MyObserver aboutToDisappear');
+
+  @ComponentInactive
+  myInactive() {
+    // 组件从激活状态变为非激活状态时触发
+    console.info(`Child myInactive`);
+  }
+
+  build() {
+    Text('Child')
   }
 }
-
-// 创建Observer对象
-const observer = new MyObserver();
-export function registerObserver(lifeCycle: CustomComponentLifecycle) {
-  // 向lifeCycle注册监听
-  lifeCycle.addObserver(observer);
-}
-export function unRegisterObserver(lifeCycle: CustomComponentLifecycle) {
-  // 向lifeCycle取消注册监听
-  lifeCycle.removeObserver(observer);
-}
 ```
 
-在@ComponentDisappear装饰的函数中解除注册监听，所以监听器无法监听到aboutToDisappear。
+上述代码建议按以下步骤执行。
 
-按两次Hello按钮，然后关闭程序，此时日志输出信息如下：
+1. 点击change，Child组件第一次创建。
 
-```text
-MyObserver aboutToAppear
-MyObserver onDidBuild
-MyObserver aboutToRecycle
-MyObserver aboutToReuse
-```
+2. 点击change，Child组件触发\@ComponentInactive装饰的函数和回收事件。
+   ```text
+   Child myInactive
+   Child aboutToRecycle
+   Child myRecycle
+   ```
 
-可以在组件的onAppear和onDisAppear中注册和解除监听。在onAppear中注册监听，此时组件已经处于Appeared状态，所以无法监听组件的aboutToAppear。
+3. 点击change，Child组件触发复用事件和\@ComponentActive装饰的函数。
+   ```text
+   Child aboutToReuse
+   Child myReuse
+   Child myActive
+   ```
 
-```typescript
-Column() {
-  Text('Hello World')
-}
-.onAppear(() => {
-  // 在onAppear中注册监听
-  registerObserver(UIUtils.getLifecycle(this));
-})
-.onDisAppear(() => {
-  unRegisterObserver(UIUtils.getLifecycle(this));
-})
-```
+当开发者同时使用回收复用和激活生命周期时，自定义组件触发相关组件的时序有以下约束：`@ComponentInactive`触发时机早于`@ComponentRecycle`和`aboutToRecycle`，`@ComponentActive`触发时机晚于`@ComponentReuse`和`aboutToReuse`。
 
-### 自定义组件的激活与非激活生命周期调用时机
+### 懒创建场景下监听激活状态变化
 
-需要注意，组件激活/非激活并不等同于其可见性。自定义组件从激活状态转变为非激活状态时，触发`@ComponentInactive`装饰的方法；自定义组件从非激活状态转变为激活状态时，触发`@ComponentActive`装饰的方法。自定义组件激活和非激活状态切换仅涵盖以下场景：
+懒创建的含义为，容器中有多个组件，只有选定的组件完成创建，其余组件需要通过翻页跳转等方法选中时触发创建。当切换到创建完成的组件时，该组件转变为激活态；组件不再被选中时，该组件转变为非激活态。
 
-- **[组件回收复用](../../ui/state-management/arkts-reusable.md)**：进入复用池的组件为非激活状态，从复用池上树的组件为激活状态。在可复用组件从缓存中重新添加到节点树或被回收时，可以通过`@ComponentActive`和`@ComponentInactive`装饰器监听组件的激活状态变化。其中，@ComponentActive触发时机晚于`@ComponentRecycle`和`aboutToRecycle`，`@ComponentInactive`触发时机晚于`@ComponentReuse`和`aboutToReuse`。
-
-- **[Router](../../ui/arkts-router-to-navigation.md)**：当前栈顶页面为激活状态，非栈顶不可见页面为非激活状态。页面每次隐藏时触发onPageHide，页面中的自定义组件从激活状态变为非激活状态，触发`@ComponentInactive`装饰的方法；页面每次显示时触发onPageShow，页面中的自定义组件从非激活状态变为激活状态，触发`@ComponentActive`装饰的方法。同理，息屏时页面也会触发onPageHide，页面中的自定义组件从激活状态变为非激活状态，触发`@ComponentInactive`装饰的方法；亮屏时页面会触发onPageShow，页面中的自定义组件会触发`@ComponentActive`装饰的方法。
-
-- **[Tabs](../../ui/arkts-navigation-tabs.md)**：只有当前显示的`TabContent`中的自定义组件处于激活状态，其余则为非激活状态。需要注意`TabContent`会懒创建子组件，第一次切换到`TabContent`时，`TabContent`中的组件开始创建。当`TabContent`中的自定义组件从非激活状态变为激活状态时，触发`@ComponentActive`装饰的方法；当`TabContent`中的自定义组件从激活状态变为非激活状态时，触发`@ComponentInactive`装饰的方法。
-
-- **[LazyForEach](../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)**：仅当前显示的LazyForEach中的自定义组件为激活状态，而缓存节点的组件则为非激活状态。在懒加载场景下，当数据项进入或离开可视区域时，组件会触发激活状态变化。进入可视区域的自定义组件触发`@ComponentActive`装饰的方法；离开可视区域和进入预加载区域的自定义组件触发`@ComponentInactive`装饰的方法。
-
-- **[BuilderNode](../../ui/arkts-user-defined-arktsNode-builderNode.md)**：BuilderNode会打断BuilderNode上层自定义组件激活和非激活状态传递给BuilderNode内的自定义组件的行为。当BuilderNode的inheritFreezeOptions设置为true时，BuilderNode中自定义组件可以继承BuilderNode上层自定义组件的激活和非激活状态。当BuilderNode中的自定义组件从非激活状态变为激活状态时，触发`@ComponentActive`装饰的方法；当节点从激活状态变为非激活状态时，触发`@ComponentInactive`装饰的方法。
-
-- **[Repeat](../../ui/rendering-control/arkts-new-rendering-control-repeat.md)**：Repeat组件在渲染数据项时，屏上的RepeatItem中的自定义组件为激活状态，而离开屏上的RepeatItem中的组件为非激活状态。当RepeatItem中的自定义组件从非激活状态变为激活状态时，触发`@ComponentActive`装饰的方法；当节点从激活状态变为非激活状态时，触发`@ComponentInactive`装饰的方法。
-
-- **[Swiper](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md)**：Swiper轮播组件当前显示页面中的自定义组件为激活状态，而非当前显示的缓存页面中的组件为非激活状态。当Swiper中的自定义组件从非激活状态变为激活状态时，触发`@ComponentActive`装饰的方法；当节点从激活状态变为非激活状态时，触发`@ComponentInactive`装饰的方法。
-
-- **[Navigation](../../ui/arkts-navigation-introduction.md)**：当前栈顶页面为激活状态，非栈顶不可见页面为非激活状态。当导航组件中的自定义组件从非激活状态变为激活状态时，触发`@ComponentActive`装饰的方法；当节点从激活状态变为非激活状态时，触发`@ComponentInactive`装饰的方法。
-
-- **[Scroll](../../reference/apis-arkui/arkui-ts/ts-container-scroll.md)和[ForEach](../../ui/rendering-control/arkts-rendering-control-foreach.md)**：在滚动容器中，所有子组件在初始创建时都会完成构建，没有预加载机制，所有子组件都是激活状态。在ForEach循环渲染场景中，所有数据项对应的节点在初始创建时都会一次性构建完成，所有子组件都是激活状态。当数据项进入或离开可视区域时，不会触发数据项中自定义组件的`@ComponentActive`和`@ComponentInactive`装饰的方法。
-
-- **组件混用**：在多个支持激活状态的场景组合使用时，`@ComponentActive`和`@ComponentInactive`会根据实际组件的激活状态变化而触发。例如Navigation和TabContent混用时，当Navigation页面切换或Tab标签切换，都会触发相应组件的激活/非激活回调。
-
-以下示例展示了Navigation和TabContent混用场景下，`@ComponentActive`和`@ComponentInactive`生命周期装饰器的触发时机：
+懒创建场景包含[Tabs](../../ui/arkts-navigation-tabs.md)和[Navigation](../../ui/arkts-navigation-introduction.md)，以下示例展示Navigation和Tabs场景中，`@ComponentActive`和`@ComponentInactive`生命周期装饰器的触发时机。
 
 ```typescript
 // Index.ets
@@ -735,30 +375,661 @@ struct TabsComponent {
 
 上述代码建议按以下步骤执行。
 
-1. 点击PageTwo跳转到PageTwo。
+1. 点击PageTwo按钮，页面跳转到PageTwo。
 
-   无日志输出，FreezeChild组件已创建并处于激活状态。
+   tab0被选中，tab0中的FreezeChild组件完成创建。
 
-2. 点击tab1，tab0下的自定义组件FreezeChild触发@ComponentInactive。
+2. 点击tab1，tab0不再被选中并转变为非激活态，tab0中的FreezeChild触发@ComponentInactive。
    ```text
    FreezeChild myInactive, index: 0
    ```
 
-3. 点击tab0，tab1下的自定义组件FreezeChild触发@ComponentInactive，tab0下的自定义组件FreezeChild触发@ComponentActive。
+3. 点击tab0，tab0被选中并转变为激活态，tab0中的FreezeChild触发@ComponentActive。tab1不再被选中并转变为非激活态，tab1中的FreezeChild触发@ComponentInactive。
    ```text
    FreezeChild myActive, index: 0
    FreezeChild myInactive, index: 1
    ```
 
-4. 点击PageOne，tab0下的自定义组件FreezeChild触发@ComponentInactive。
+4. 点击PageOne，页面跳转到PageOne。PageTwo中的tab0不再被选中并转变为非激活态，tab0中的FreezeChild触发@ComponentInactive。
    ```text
    FreezeChild myInactive, index: 0
    ```
 
-5. 点击back，tab0下的自定义组件FreezeChild触发@ComponentActive。
+5. 点击back，页面跳转回PageTwo。PageTwo中的tab0被选中并转变为激活态，tab0中的FreezeChild触发@ComponentActive。
    ```text
    FreezeChild myActive, index: 0
    ```
+
+### 预加载场景下监听激活状态变化
+
+以[LazyForEach](../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)为例，LazyForEach预加载区域的组件创建完毕转变为非激活态。[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)、[Swiper](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md)、[Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[WaterFlow](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)等组件使用LazyForEach时，可以通过[cachedCount](../../reference/apis-arkui/arkui-ts/ts-container-list.md#cachedcount14)的count属性设置预加载区域的节点数量。
+
+本示例展示了`List`和`LazyForEach`场景下的组件激活/非激活状态变化。
+
+```typescript
+import { ComponentActive, ComponentInactive } from '@kit.ArkUI';
+import { MyDataSource } from './BasicDataSource';
+
+@Entry
+@Component
+struct Index {
+  @State dataSource: MyDataSource<string> = new MyDataSource();
+  @State colors: number[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
+  @State changeShow: boolean = false;
+
+  aboutToAppear(): void {
+    for (let index = 1; index <= 50; index++) {
+      this.dataSource.pushData('page-' + index);
+    }
+  }
+
+  build() {
+    Column() {
+      Button('change')
+        .onClick(() => {
+          // 控制List的创建和销毁
+          this.changeShow = !this.changeShow;
+        })
+      if (this.changeShow) {
+        List({ space: 10 }) {
+          LazyForEach(this.dataSource, (item: string, index: number) => {
+            ListItem() {
+              Child({ item: item.toString(), index: index.toString() })
+            }
+            .backgroundColor(Color.Orange)
+            .width('100%')
+          }, (item: string) => item.toString())
+        }
+        .height(360)
+        // 预加载区域可容纳节点数量为5
+        .cachedCount(5, false)
+      }
+    }
+  }
+}
+
+@Component
+struct Child {
+  @State index: string = '';
+  @State item: string = '';
+  @ComponentActive
+  myActive() {
+    // 组件从非激活状态变为激活状态时触发
+    console.info(`Child myActive, index: ${this.index}`);
+  }
+  @ComponentInactive
+  myInactive() {
+    // 组件从激活状态变为非激活状态时触发
+    console.info(`Child myInactive, index: ${this.index}`);
+  }
+  build() {
+    Column() {
+      Text(`Item ${this.item}`)
+    }
+  }
+}
+```
+
+```typescript
+// BasicDataSource.ets
+abstract class BasicDataSource<T> implements IDataSource {
+  private listeners: DataChangeListener[] = [];
+  abstract totalCount(): number;
+  abstract getData(index: number): T;
+
+  // 注册改变数据的控制器
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      this.listeners.push(listener);
+    }
+  }
+
+  // 注销改变数据的控制器
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  // 通知控制器数据增加
+  notifyDataAdd(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataAdd(index);
+    })
+  }
+}
+
+export class MyDataSource<T> extends BasicDataSource<T> {
+  private dataArray: T[] = [];
+
+  // 数据源的数据总量
+  public totalCount(): number {
+    return this.dataArray.length;
+  }
+
+  // 返回指定索引位置的数据
+  public getData(index: number): T {
+    return this.dataArray[index];
+  }
+
+  // 添加一条数据
+  public pushData(data: T): void {
+    this.dataArray.push(data);
+    this.notifyDataAdd(this.dataArray.length - 1);
+  }
+}
+```
+**场景说明与日志输出：**
+
+上述代码建议按以下步骤执行。
+
+1. 点击change按钮，位于预加载区域的组件触发@ComponentInactive。
+   ```text
+   Child myInactive, index: 13
+   Child myInactive, index: 14
+   Child myInactive, index: 15
+   Child myInactive, index: 16
+   Child myInactive, index: 17
+   ```
+
+2. 向下滑动List，进入加载区域的组件触发@ComponentActive，进入预加载区域的组件触发@ComponentInactive，离开加载区域的组件触发@ComponentInactive。
+   ```text
+   Child myActive, index: 13
+   Child myInactive, index: 18
+   Child myInactive, index: 0
+   ```
+
+当List的cachedCount的show属性设为`true`时，预加载节点创建完毕触发`@ComponentInactive`后，执行上树并触发`@ComponentActive`。
+
+### 页面可见性变化场景下监听激活状态变化
+
+[Router](../../ui/arkts-router-to-navigation.md)页面每次隐藏时触发onPageHide，页面中的组件转变为非激活态；页面每次显示时触发onPageShow，页面中的组件转变为激活态。同理，亮屏时页面会触发onPageShow，页面中的组件转变为激活态；息屏时页面会触发onPageHide，页面中的组件转变为非激活态。
+
+本示例展示了页面可见性变化场景下的组件激活/非激活状态变化。
+
+```typescript
+import { ComponentActive, ComponentInactive } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MyActiveSample {
+  @State stateVar: string = 'Hello World';
+
+  @ComponentActive
+  myActive() {
+    // 组件从非激活状态变为激活状态时触发
+    console.info(`myActive`);
+  }
+
+  @ComponentInactive
+  myInactive() {
+    // 组件从激活状态变为非激活状态时触发
+    console.info(`myInactive`);
+  }
+
+  build() {
+    Column() {
+      Text(this.stateVar)
+    }
+    .width(`100%`)
+    .height(`100%`)
+  }
+}
+```
+
+**场景说明与日志输出：**
+
+上述代码建议按以下步骤执行。
+
+1. 息屏，组件触发@ComponentInactive。
+   ```text
+   myInactive
+   ```
+
+2. 亮屏，组件触发@ComponentActive。
+   ```text
+   myActive
+   ```
+
+## 限制条件
+
+- \@ComponentInit、\@ComponentAppear、\@ComponentBuilt、\@ComponentDisappear、\@ComponentActive、\@ComponentInactive、\@ComponentReuse和\@ComponentRecycle只能在\@Component或者\@ComponentV2装饰的struct中使用，否则编译会报错。
+
+- \@ComponentInit、\@ComponentAppear、\@ComponentBuilt、\@ComponentDisappear、 \@ComponentActive、 \@ComponentInactive和\@ComponentRecycle装饰的函数不能有入参，否则编译会报错。
+
+- 在\@Component装饰的struct中，\@ComponentReuse装饰的函数可以没有入参或者有一个入参，否则编译会报错。
+
+- 在\@ComponentV2装饰的struct中，\@ComponentReuse装饰的函数不能有入参，否则编译会报错。
+
+- 新增生命周期装饰器装饰方法时，自定义组件对应事件发生时会回调该方法。新增生命周期装饰器建议单独使用，不与其他状态变量装饰器联合使用。比如生命周期装饰器和[\@Computed](./arkts-new-computed.md)联合使用时，生命周期装饰器不生效。
+  ```typescript
+  @Computed
+  @ComponentAppear
+  get sum() {
+    return 1 + 2 + 3; // 错误用法，生命周期装饰器装饰get方法不生效
+  }
+  ```
+- 当自定义组件没有使用生命周期装饰器，且没有注册监听，使用[getCurrentState](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#getcurrentstate)查询自定义组件当前生命周期状态时，返回值永远为[CustomComponentLifecycleState.INIT](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#customcomponentlifecyclestate)。
+
+- 自定义组件创建后默认为激活状态，不会触发`@ComponentActive`装饰的函数。
+
+## 使用场景
+
+### 自定义组件嵌套使用
+
+通过以下示例，来详细说明自定义组件在嵌套使用时，自定义组件生命周期的调用时序：
+
+```typescript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { ComponentAppear, ComponentBuilt, ComponentDisappear } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State show: boolean = true;
+  @State btnColor: string = '#FF007DFF';
+  build() {
+    Column() {
+      Button('delete Parent And Child')
+        .margin(20)
+        .backgroundColor(this.btnColor)
+        .onClick(() => {
+          this.show = !this.show;
+        })
+      if (this.show) {
+        Parent()
+      }
+    }
+  }
+}
+@Component
+struct Parent {
+  @State showChild: boolean = true;
+  @State btnColor: string = '#FF007DFF';
+  // 组件生命周期ComponentAppear，在Parent创建实例后，执行build函数之前回调myAppear
+  @ComponentAppear
+  myAppear() {
+    hilog.info(0x0000, 'testTag', 'Parent myAppear');
+  }
+  // 组件生命周期ComponentBuilt，在Parent首次渲染触发的build函数执行完成之后回调myBuilt
+  @ComponentBuilt
+  myBuilt() {
+    hilog.info(0x0000, 'testTag', 'Parent myBuilt');
+  }
+  // 组件生命周期ComponentDisappear，在Parent析构销毁之前回调myDisappear
+  @ComponentDisappear
+  myDisappear() {
+    hilog.info(0x0000, 'testTag', 'Parent myDisappear');
+  }
+
+  build() {
+    Column() {
+      // this.showChild为true，创建Child子组件，执行Child myAppear
+      if (this.showChild) {
+        Child()
+      }
+      Button('delete Child')
+        .margin(20)
+        .backgroundColor(this.btnColor)
+        .onClick(() => {
+          // 更改this.showChild为false，删除Child子组件，执行Child myDisappear
+          // 更改this.showChild为true，添加Child子组件，执行Child myAppear
+          this.showChild = !this.showChild;
+        })
+    }
+  }
+}
+
+@Component
+struct Child {
+  @State title: string = 'Hello World';
+  @ComponentDisappear
+  myDisappear() {
+    hilog.info(0x0000, 'testTag', 'Child myDisappear');
+  }
+  @ComponentBuilt
+  myBuilt() {
+    hilog.info(0x0000, 'testTag', 'Child myBuilt');
+  }
+  @ComponentAppear
+  myAppear() {
+    hilog.info(0x0000, 'testTag', 'Child myAppear');
+  }
+
+  build() {
+    Text(this.title)
+      .fontSize(50)
+      .margin(20)
+      .onClick(() => {
+        this.title = 'Hello ArkUI';
+      })
+  }
+}
+```
+
+以上示例中，Index页面包含两个自定义组件，一个是Parent，一个是Child，Parent及其子组件Child分别声明了各自的自定义组件生命周期装饰器装饰的函数（myAppear / myBuilt / myDisappear）。
+
+- 应用冷启动的初始化流程为：Parent myAppear --&gt; Parent build --&gt; Parent myBuilt --&gt; Child myAppear --&gt; Child build --&gt; Child myBuilt。此处体现了自定义组件懒展开特性，即Parent执行完myBuilt之后才会执行Child组件的myAppear。日志输出信息如下：
+
+```text
+Parent myAppear
+Parent myBuilt
+Child myAppear
+Child myBuilt
+```
+
+- 点击Button按钮，更改showChild为false，删除Child组件，执行Child myDisappear函数。
+
+- 如果点击Button按钮，更改show为false,或者直接退出应用，则会触发以下生命周期：Parent myDisappear --&gt; Child myDisappear，此处体现了自定义组件删除顺序也是从父到子。日志输出信息如下：
+
+```text
+Parent myDisappear
+Child myDisappear
+```
+
+- 最小化应用或者应用进入后台，当前Index页面未被销毁，所以并不会执行组件的myDisappear。
+
+- 如果showChild的默认值为false，则应用冷启动的初始化流程为：Parent myAppear --&gt; Parent build --&gt; Parent myBuilt。日志输出信息如下：
+
+```text
+Parent myAppear
+Parent myBuilt
+```
+- 如果showChild的默认值为false，此时点击Button按钮更改show为false或者直接退出应用，则只执行Parent myDisappear函数。
+
+- 如果showChild的默认值为false，此时点击Button按钮，更改showChild为true，添加Child组件，添加流程为：Child myAppear --&gt; Child build --&gt; Child myBuilt。日志输出信息如下：
+
+```text
+Child myAppear
+Child myBuilt
+```
+当showChild为默认值true时，该示例的生命周期流程图如下所示：
+
+![custom-component-lifecycle-demo2](figures/custom-component-lifecycle-nest.png)
+
+### 自定义组件回收复用
+
+通过以下示例，来详细说明自定义组件在使用时，回收复用的生命周期调用时序：
+
+```typescript
+import { ComponentInit, ComponentAppear, ComponentBuilt, ComponentDisappear, ComponentReuse, ComponentRecycle } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+export class Message {
+  value: string | undefined;
+  constructor(value: string) {
+    this.value = value;
+  }
+}
+@Entry
+@Component
+struct Index {
+  @State switch: boolean = true;
+
+  build() {
+    Column() {
+      Button('Hello')
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+        .onClick(() => {
+          this.switch = !this.switch;
+        })
+      // 通过改变switch，实现Child的回收和复用
+      // 更改this.switch为false，回收Child子组件，执行Child myRecycle
+      // 更改this.switch为true，复用Child子组件，执行Child myReuse
+      if (this.switch) {
+        // 如果只有一个复用的组件，可以不用设置reuseId。
+        Child({ message: new Message('Child') })
+          .reuseId('Child')
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+@Reusable
+@Component
+struct Child {
+  @State message: Message = new Message('Child');
+  @State label: string = 'HelloWorld';
+  @State switch: boolean = true;
+  @ComponentInit
+  myInit() {
+    hilog.info(0x0000, 'testTag', 'Child myInit');
+  }
+  @ComponentAppear
+  myAppear() {
+    this.label = 'myAppear';
+    hilog.info(0x0000, 'testTag', 'Child myAppear');
+  }
+  @ComponentBuilt
+  myBuilt() {
+    this.label = 'myBuilt';
+    hilog.info(0x0000, 'testTag', 'Child myBuilt');
+  }
+  @ComponentRecycle
+  myRecycle() {
+    this.label = 'myRecycle';
+    hilog.info(0x0000, 'testTag', 'Child myRecycle');
+  }
+  @ComponentDisappear
+  myDisappear() {
+    this.label = 'myDisappear';
+    hilog.info(0x0000, 'testTag', 'Child myDisappear');
+  }
+  @ComponentReuse
+  myReuse(params?: Record<string, Object | undefined | null>) {
+    this.label = 'myReuse';
+    hilog.info(0x0000, 'testTag', 'Child myReuse');
+  }
+
+  build() {
+    Column() {
+      Text(this.message.value)
+        .fontSize(30)
+      Button('Hello')
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+        .onClick(() => {
+          this.switch = !this.switch;
+        })
+      if (this.switch) {
+        GrandChild({ message: new Message('GrandChild') })
+          .reuseId('GrandChild')
+      }
+    }
+    .borderWidth(1)
+    .height(100)
+  }
+}
+
+@Reusable
+@Component
+struct GrandChild {
+  @State message: Message = new Message('GrandChild');
+  @State label: string = 'HelloWorld';
+  @ComponentInit
+  myInit() {
+    hilog.info(0x0000, 'testTag', 'GrandChild myInit');
+  }
+  @ComponentAppear
+  myAppear() {
+    this.label = 'myAppear';
+    hilog.info(0x0000, 'testTag', 'GrandChild myAppear');
+  }
+  @ComponentBuilt
+  myBuilt() {
+    this.label = 'myBuilt';
+    hilog.info(0x0000, 'testTag', 'GrandChild myBuilt');
+  }
+  @ComponentRecycle
+  myRecycle() {
+    this.label = 'myRecycle';
+    hilog.info(0x0000, 'testTag', 'GrandChild myRecycle');
+  }
+  @ComponentDisappear
+  myDisappear() {
+    this.label = 'myDisappear';
+    hilog.info(0x0000, 'testTag', 'GrandChild myDisappear');
+  }
+  @ComponentReuse
+  myReuse(params?: Record<string, Object | undefined | null>) {
+    this.label = 'myReuse';
+    hilog.info(0x0000, 'testTag', 'GrandChild myReuse');
+  }
+
+  build() {
+    Column() {
+      Text(this.message.value)
+        .fontSize(30)
+    }
+    .borderWidth(1)
+    .height(100)
+  }
+}
+```
+
+以上示例中，Index页面包含自定义组件Child，Child组件包含自定义组件GrandChild。Child和GrandChild分别声明了各自的自定义组件生命周期装饰器装饰的函数（myInit / myAppear / myBuilt / myRecycle / myReuse / myDisappear）。
+
+- 应用冷启动的初始化流程为：Child myInit --&gt; Child myAppear --&gt; GrandChild myInit --&gt; Child myBuilt --&gt; GrandChild myAppear --&gt; GrandChild myBuilt。此处体现了自定义组件懒展开特性，即Child执行完myBuilt之后才会执行GrandChild组件的myAppear。日志输出信息如下：
+
+```text
+Child myInit
+Child myAppear
+GrandChild myInit
+Child myBuilt
+GrandChild myAppear
+GrandChild myBuilt
+```
+
+- 点击Button按钮，更改switch为false，回收Child组件和GrandChild组件，执行Child和GrandChild的myRecycle函数。
+
+```text
+Child myRecycle
+GrandChild myRecycle
+```
+
+### 自定义组件生命周期的注册监听
+
+[CustomComponentLifecycleObserver](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#customcomponentlifecycleobserver)用于监听自定义组件的生命周期，开发者可以根据自己的需求重写CustomComponentLifecycleObserver中的回调函数。
+
+```typescript
+import { ComponentInit, ComponentDisappear, UIUtils, CustomComponentLifecycleObserver, CustomComponentLifecycle } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+export class Message {
+  value: string | undefined;
+  constructor(value: string) {
+    this.value = value;
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State switch: boolean = true;
+
+  build() {
+    Column() {
+      Button('Hello')
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+        .onClick(() => {
+          this.switch = !this.switch;
+        })
+      if (this.switch) {
+        // 如果只有一个复用的组件，可以不用设置reuseId。
+        Child({ message: new Message('Child') })
+          .reuseId('Child')
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+@Reusable
+@Component
+struct Child {
+  @State message: Message = new Message('AboutToReuse');
+  @State label: string = 'HelloWorld';
+  @ComponentInit
+  myInit(): void {
+    registerObserver(UIUtils.getLifecycle(this));
+  }
+  @ComponentDisappear
+  myDisappear(): void {
+    unRegisterObserver(UIUtils.getLifecycle(this));
+  }
+
+  build() {
+    Column() {
+      Text(this.message.value)
+        .fontSize(30)
+    }
+  }
+}
+
+export class MyObserver implements CustomComponentLifecycleObserver {
+  // 重写CustomComponentLifecycleObserver中的生命周期事件，CustomComponentLifecycleObserver无法监听父组件的aboutToInit
+  aboutToAppear() {
+    hilog.info(0x0000, 'testTag', 'MyObserver aboutToAppear');
+  }
+  onDidBuild() {
+    hilog.info(0x0000, 'testTag', 'MyObserver onDidBuild');
+  }
+  aboutToReuse(params?: Record<string, Object | undefined | null>) {
+    // params存在时，为V1的复用；
+    hilog.info(0x0000, 'testTag', 'MyObserver aboutToReuse');
+  }
+  aboutToRecycle() {
+    hilog.info(0x0000, 'testTag', 'MyObserver aboutToRecycle');
+  }
+  // 在父组件的aboutToDelete函数中解除注册监听，则无法监听父组件的aboutToDisappear
+  aboutToDisappear() {
+    hilog.info(0x0000, 'testTag', 'MyObserver aboutToDisappear');
+  }
+}
+
+// 创建Observer对象
+const observer = new MyObserver();
+export function registerObserver(lifeCycle: CustomComponentLifecycle) {
+  // 向lifeCycle注册监听
+  lifeCycle.addObserver(observer);
+}
+export function unRegisterObserver(lifeCycle: CustomComponentLifecycle) {
+  // 向lifeCycle取消注册监听
+  lifeCycle.removeObserver(observer);
+}
+```
+
+在@ComponentDisappear装饰的函数中解除注册监听，所以监听器无法监听到aboutToDisappear。
+
+按两次Hello按钮，然后关闭程序，此时日志输出信息如下：
+
+```text
+MyObserver aboutToAppear
+MyObserver onDidBuild
+MyObserver aboutToRecycle
+MyObserver aboutToReuse
+```
+
+可以在组件的onAppear和onDisAppear中注册和解除监听。在onAppear中注册监听，此时组件已经处于Appeared状态，所以无法监听组件的aboutToAppear。
+
+```typescript
+Column() {
+  Text('Hello World')
+}
+.onAppear(() => {
+  // 在onAppear中注册监听
+  registerObserver(UIUtils.getLifecycle(this));
+})
+.onDisAppear(() => {
+  unRegisterObserver(UIUtils.getLifecycle(this));
+})
+```
 
 ## 生命周期回调函数的区别
 
@@ -778,9 +1049,7 @@ import { SwiperExample } from './SwiperPage';
 @Component
 struct Index {
   @State message: string = 'Hello World';
-  controller: TabsController = new TabsController();
   @State show: boolean = false;
-  @State currentTabIndex: number = 0;
 
   build() {
     RelativeContainer() {
@@ -913,38 +1182,38 @@ export struct SwiperExample {
   }
 }
 ```
-启动程序后，先按start按钮，此时只有swipe缓存的五个节点开始执行aboutToAppear和myAppear，非缓存的节点未触发aboutToAppear和myAppear。
+启动程序后，先按start按钮，此时只有Swiper缓存的五个节点开始执行aboutToAppear和myAppear，非缓存的节点未触发aboutToAppear和myAppear。
 
 日志输出信息如下：
 
 ```text
-SwiperPage:aboutToAppear 0
-SwiperPage:myAppear 0
-SwiperPage:aboutToAppear 11
-SwiperPage:myAppear 11
-SwiperPage:aboutToAppear 1
-SwiperPage:myAppear 1
-SwiperPage:aboutToAppear 10
-SwiperPage:myAppear 10
-SwiperPage:aboutToAppear 2
-SwiperPage:myAppear 2
+SwiperPage aboutToAppear 0
+SwiperPage myAppear 0
+SwiperPage aboutToAppear 11
+SwiperPage myAppear 11
+SwiperPage aboutToAppear 1
+SwiperPage myAppear 1
+SwiperPage aboutToAppear 10
+SwiperPage myAppear 10
+SwiperPage aboutToAppear 2
+SwiperPage myAppear 2
 ```
 
 此时关闭程序，缓存的五个节点正常触发aboutToDisappear，但是非缓存的节点触发aboutToDisappear前，会强制触发aboutToAppear。无论是否是缓存节点，myDisappear不会误触发myAppear。
 
 ```text
-SwiperPage:myDisappear 0
-SwiperPage:aboutToDisappear 0
-SwiperPage:myDisappear 1
-SwiperPage:aboutToDisappear 1
-SwiperPage:myDisappear 2
-SwiperPage:aboutToDisappear 2
-SwiperPage:aboutToAppear 3
-SwiperPage:myDisappear 3
-SwiperPage:aboutToDisappear 3
-SwiperPage:aboutToAppear 4
-SwiperPage:myDisappear 4
-SwiperPage:aboutToDisappear 4
+SwiperPage myDisappear 0
+SwiperPage aboutToDisappear 0
+SwiperPage myDisappear 1
+SwiperPage aboutToDisappear 1
+SwiperPage myDisappear 2
+SwiperPage aboutToDisappear 2
+SwiperPage aboutToAppear 3
+SwiperPage myDisappear 3
+SwiperPage aboutToDisappear 3
+SwiperPage aboutToAppear 4
+SwiperPage myDisappear 4
+SwiperPage aboutToDisappear 4
 ...
 ```
 

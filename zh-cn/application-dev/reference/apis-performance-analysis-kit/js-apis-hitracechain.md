@@ -11,6 +11,8 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -25,14 +27,18 @@ import { hiTraceChain } from '@kit.PerformanceAnalysisKit';
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | DEFAULT           | 0      | 缺省标志。       |
-| INCLUDE_ASYNC     | 1      | 异步调用标志。<br/>设置该标志，同时跟踪同步和异步调用；缺省只跟踪同步调用。 |
-| DONOT_CREATE_SPAN | 1 << 1 | 无分支标志。<br/>设置该标志，不创建分支信息；缺省创建分支信息。 |
-| TP_INFO           | 1 << 2 | 埋点标志。<br/>调试场景下设置该标志，调用信息埋点接口[tracepoint()](#hitracechaintracepoint)时，会打印埋点信息hilog日志；缺省不打印埋点信息hilog日志。 |
-| NO_BE_INFO        | 1 << 3 | 无开始结束信息标志。<br/>调试场景下设置该标志，调用开始跟踪接口[begin()](#hitracechainbegin)和结束跟踪接口[end()](#hitracechainend)时，分别会打印开始、结束跟踪信息hilog日志；缺省不打印开始、结束跟踪信息hilog日志。 |
-| DISABLE_LOG       | 1 << 4 | 日志关联标志。<br/>设置该标志，不会在hilog日志中附加HiTraceId信息；缺省会在hilog日志中附加HiTraceId信息。 |
+| INCLUDE_ASYNC     | 1      | 异步调用标志。<br>设置该标志，同时跟踪同步和异步调用；缺省只跟踪同步调用。 |
+| DONOT_CREATE_SPAN | 1 << 1 | 无分支标志。<br>设置该标志，不创建分支信息；缺省创建分支信息。 |
+| TP_INFO           | 1 << 2 | 埋点标志。<br>调试场景下设置该标志，调用信息埋点接口[tracepoint()](#hitracechaintracepoint)时，会打印埋点信息hilog日志；缺省不打印埋点信息hilog日志。 |
+| NO_BE_INFO        | 1 << 3 | 无开始结束信息标志。<br>调试场景下设置该标志，调用开始跟踪接口[begin()](#hitracechainbegin)和结束跟踪接口[end()](#hitracechainend)时，分别会打印开始、结束跟踪信息hilog日志；缺省不打印开始、结束跟踪信息hilog日志。 |
+| DISABLE_LOG       | 1 << 4 | 日志关联标志。<br>设置该标志，不会在hilog日志中附加HiTraceId信息；缺省会在hilog日志中附加HiTraceId信息。 |
 | FAILURE_TRIGGER   | 1 << 5 | 故障触发标志。预置标志，暂未启用。 |
 | D2D_TP_INFO       | 1 << 6 | 设备间埋点标志。TP_INFO的一个子集，调试场景下使用。<br>当已设置TP_INFO标志时，D2D_TP_INFO标志不生效；<br>当未设置TP_INFO标志时，设置D2D_TP_INFO标志，此时调用信息埋点接口[tracepoint()](#hitracechaintracepoint)，仅当mode参数为设备间通信DEVICE的情况下，会打印埋点信息hilog日志。 |
 
@@ -41,6 +47,10 @@ import { hiTraceChain } from '@kit.PerformanceAnalysisKit';
 跟踪埋点类型枚举。
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
+
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -56,6 +66,10 @@ import { hiTraceChain } from '@kit.PerformanceAnalysisKit';
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | DEFAULT  | 0 | 缺省通信类型。    |
@@ -69,16 +83,22 @@ import { hiTraceChain } from '@kit.PerformanceAnalysisKit';
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | chainId      | bigint | 否 | 否 | 跟踪链标识。 |
-| spanId      | number | 否 | 是 | 分支标识，默认值为0。 |
-| parentSpanId | number | 否 | 是 | 父分支标识，默认值为0。 |
-| flags        | number | 否 | 是 | 跟踪标志位，默认值为0。 |
+| spanId      | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 是 | 分支标识，默认值为0。 |
+| parentSpanId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 是 | 父分支标识，默认值为0。 |
+| flags        | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 是 | 跟踪标志位，默认值为0。 |
 
 ## hiTraceChain.begin
 
-begin(name: string, flags?: number): HiTraceId
+ArkTS-Dyn: begin(name: string, flags?: number): HiTraceId
+
+ArkTS-Sta: begin(name: string, flags?: int): HiTraceId
 
 开始跟踪，同步接口。
 
@@ -88,12 +108,16 @@ begin(name: string, flags?: number): HiTraceId
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明                                             |
 | -------- | -------- | -------- |------------------------------------------------|
-| name  | string | 是 | 跟踪业务名。<br/>建议该参数的长度不要超过63Byte，超出部分将被截断。    |
-| flags | number | 否 | 跟踪标志组合，具体可参考[HiTraceFlag](#hitraceflag)，默认值为0。 |
+| name  | string | 是 | 跟踪业务名。<br>建议该参数的长度不要超过63Byte，超出部分将被截断。    |
+| flags | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 跟踪标志组合，具体可参考[HiTraceFlag](#hitraceflag)，默认值为0。 |
 
 **返回值：**
 
@@ -122,6 +146,10 @@ end(id: HiTraceId): void
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -146,6 +174,10 @@ getId(): HiTraceId
 获取当前线程TLS中的HiTraceId。
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
+
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -178,6 +210,10 @@ setId(id: HiTraceId): void
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -203,6 +239,10 @@ clearId(): void
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
+
 **示例：**
 
 ```ts
@@ -223,6 +263,10 @@ createSpan(): HiTraceId
 创建一个HiTraceId，使用当前线程TLS中的chainId、spanId初始化HiTraceId的chainId、parentSpanId，并为HiTraceId生成一个新的spanId，返回该HiTraceId。
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
+
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -257,6 +301,10 @@ type为客户端发送CS和客户端接收CR的信息埋点需配套使用；typ
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -264,7 +312,7 @@ type为客户端发送CS和客户端接收CR的信息埋点需配套使用；typ
 | mode | [HiTraceCommunicationMode](#hitracecommunicationmode) | 是 | 信息埋点需要指定的跟踪通信模式。 |
 | type | [HiTraceTracepointType](#hitracetracepointtype)| 是 | 信息埋点需要指定的跟踪埋点类型。 |
 | id   | [HiTraceId](#hitraceid) | 是 | 实施信息埋点操作的HiTraceId实例。 |
-| msg  | string | 否 | HiTraceMeter打点操作传入的trace说明信息，默认值为""。 |
+| msg  | string | 否 | HiTraceMeter打点操作传入的trace说明信息，默认值为""。<br>建议该参数的长度不要超过63Byte，超出部分将被截断。 |
 
 **示例：**
 
@@ -284,6 +332,10 @@ isValid(id: HiTraceId): boolean
 判断HiTraceId是否有效，同步接口。
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
+
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -319,6 +371,10 @@ isFlagEnabled(id: HiTraceId, flag: HiTraceFlag): boolean
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
 
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -353,6 +409,10 @@ enableFlag(id: HiTraceId, flag: HiTraceFlag): void
 启用HiTraceId中指定的跟踪标志，同步接口。
 
 **系统能力**：SystemCapability.HiviewDFX.HiTrace
+
+**ArkTS-Dyn起始版本**：8
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 

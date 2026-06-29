@@ -19,7 +19,7 @@
 ## 导入模块
 
 ```ts
-import { ArkTSUtils } from '@kit.ArkTS'
+import { ArkTSUtils } from '@kit.ArkTS';
 ```
 
 ## ISendable
@@ -144,20 +144,20 @@ let options: ArkTSUtils.ASON.ParseOptions = {
   parseReturnType: ArkTSUtils.ASON.ParseReturnType.OBJECT,
 }
 let numberText = '{"largeNumber":112233445566778899}';
-let numberObj = ArkTSUtils.ASON.parse(numberText,undefined,options) as ISendable;
+let parsedNumberData = ArkTSUtils.ASON.parse(numberText, undefined, options) as ISendable;
 
-console.info((numberObj as object)?.["largeNumber"]);
+console.info((parsedNumberData as object)?.["largeNumber"]);
 // 期望输出: 112233445566778899
 
 let options2: ArkTSUtils.ASON.ParseOptions = {
-    bigIntMode: ArkTSUtils.ASON.BigIntMode.PARSE_AS_BIGINT,
-    parseReturnType: ArkTSUtils.ASON.ParseReturnType.MAP,
-  }
+  bigIntMode: ArkTSUtils.ASON.BigIntMode.PARSE_AS_BIGINT,
+  parseReturnType: ArkTSUtils.ASON.ParseReturnType.MAP,
+}
 let mapText = '{"largeNumber":112233445566778899}';
-let map  = ArkTSUtils.ASON.parse(mapText,undefined,options2);
-console.info("map is " + map);
-// 期望输出: map is [object SendableMap]
-console.info("largeNumber is " + (map as collections.Map<string,bigint>).get("largeNumber"));
+let parsedMap = ArkTSUtils.ASON.parse(mapText, undefined, options2);
+console.info("parsedMap is " + parsedMap);
+// 期望输出: parsedMap is [object SendableMap]
+console.info("largeNumber is " + (parsedMap as collections.Map<string,bigint>).get("largeNumber"));
 // 期望输出: largeNumber is 112233445566778899
 ```
 

@@ -402,8 +402,7 @@ ArkTS-Sta: type OnSelectCallback = (index: int) => void
 
 | 参数名  | 类型    | 必填 | 说明              |
 | ------ | ------ | ---- | ---------------- |
-| index  | ArkTS-Dyn: number</br>ArkTS-Sta: int | 是 | 选中项序号。 |
-
+| index  | ArkTS-Dyn: number</br>ArkTS-Sta: int | 是 | 选中项索引值。 |
 
 ## 示例
 

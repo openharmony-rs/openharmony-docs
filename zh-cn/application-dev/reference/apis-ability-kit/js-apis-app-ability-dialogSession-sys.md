@@ -11,11 +11,13 @@ dialogSession模块用于支持系统应用弹框功能。
 
 > **说明：**
 >
-> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块接口仅可在Stage模型下使用。
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 本模块接口为系统接口。
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 本模块为系统接口。
 
 ## 导入模块
 
@@ -31,18 +33,18 @@ import { dialogSession } from '@kit.AbilityKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| bundleName | string | 否 | 否 | 表示包名。 |
-| moduleName | string | 否 | 否 | 表示模块名。 |
-| abilityName | string | 否 | 否 | 表示组件名。 |
-| abilityIconId | number | 否 | 否 | 表示Ability图标ID。 |
-| abilityLabelId | number | 否 | 否 | 表示Ability标签ID。 |
-| bundleIconId | number | 否 | 否 | 表示Bundle图标ID。 |
-| bundleLabelId | number | 否 | 否 | 表示Bundle标签ID。 |
-| visible<sup>12+</sup> | boolean | 否 | 否 | 表示Ability是否可见。true表示Ability可见，false表示Ability不可见。 |
-| appIndex<sup>12+</sup> | number | 否 | 否 | 表示应用的分身索引。 |
-| multiAppMode<sup>12+</sup> | [MultiAppMode](./js-apis-bundleManager-applicationInfo.md#multiappmode12) | 否 | 否 | 表示应用的多开模式。|
-| codePath<sup>23+</sup> | string | 否 | 是 | 表示应用程序的安装目录。|
-| installSource<sup>23+</sup> | string | 否 | 是 | 表示应用程序的安装来源，支持的取值如下：<br/> - pre-installed：表示首次开机时安装的预置应用。<br/> - ota：表示系统升级时新增的预置应用。<br/> - recovery：表示用户卸载后又手动恢复的预置应用。<br/> - bundleName：表示由此包名对应的应用安装。该bundleName代表变量，以实际值为准。<br/> - unknown：表示应用安装来源未知。|
+| bundleName | string | 否 | 否 | 表示包名。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| moduleName | string | 否 | 否 | 表示模块名。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| abilityName | string | 否 | 否 | 表示组件名。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| abilityIconId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 表示Ability图标ID。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| abilityLabelId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 表示Ability标签ID。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| bundleIconId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 表示Bundle图标ID。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| bundleLabelId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 表示Bundle标签ID。<br>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| visible<sup>12+</sup> | boolean | 否 | 否 | 表示Ability是否可见。true表示Ability可见，false表示Ability不可见。<br>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| appIndex<sup>12+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 表示应用的分身索引。<br>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| multiAppMode<sup>12+</sup> | [MultiAppMode](./js-apis-bundleManager-applicationInfo.md#multiappmode12) | 否 | 否 | 表示应用的多开模式。<br>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| codePath<sup>23+</sup> | string | 否 | 是 | 表示应用程序的安装目录。<br>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
+| installSource<sup>23+</sup> | string | 否 | 是 | 表示应用程序的安装来源，支持的取值如下：<br/> - pre-installed：表示首次开机时安装的预置应用。<br/> - ota：表示系统升级时新增的预置应用。<br/> - recovery：表示用户卸载后又手动恢复的预置应用。<br/> - bundleName：表示由此包名对应的应用安装。该bundleName代表变量，以实际值为准。<br/> - unknown：表示应用安装来源未知。<br>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## DialogSessionInfo
 
@@ -50,11 +52,15 @@ import { dialogSession } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | callerAbilityInfo | [DialogAbilityInfo](#dialogabilityinfo)| 否 | 否 | 表示请求方组件信息。 |
 | targetAbilityInfos | Array\<[DialogAbilityInfo](#dialogabilityinfo)\> | 否 | 否 | 表示目标组件信息列表。 |
-| parameters | Record<string, Object> | 否 | 是 | 表示其他参数。 |
+| parameters | ArkTS-Dyn: Record<string, Object><br>ArkTS-Sta: Record<string, RecordData> | 否 | 是 | 表示其他参数。 |
 
 ## getDialogSessionInfo
 
@@ -66,17 +72,21 @@ getDialogSessionInfo(dialogSessionId: string): [DialogSessionInfo](#dialogsessio
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 11
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | dialogSessionId | string | 是 | 用户请求会话ID。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| dialogSessionId | string | 是 | 用户请求会话ID。 |
 
 **返回值：**
 
-  | 类型 | 说明 |
-  | -------- | -------- |
-  | [DialogSessionInfo](#dialogsessioninfo) | 同步返回会话信息。 |
+| 类型 | 说明 |
+| -------- | -------- |
+| [DialogSessionInfo](#dialogsessioninfo) | 同步返回会话信息。 |
 
 **错误码**：
 
@@ -108,6 +118,65 @@ export default class UIExtAbility extends UIExtensionAbility {
 }
 ```
 
+## getDialogSessionInfo<sup>23+</sup>
+
+getDialogSessionInfo(dialogSessionId: string): [DialogSessionInfo | null](#dialogsessioninfo)
+
+根据dialogSessionId获取会话信息。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名          | 类型   | 必填 | 说明             |
+| --------------- | ------ | ---- | ---------------- |
+| dialogSessionId | string | 是   | 用户请求会话ID。 |
+
+**返回值：**
+
+| 类型                                           | 说明               |
+| ---------------------------------------------- | ------------------ |
+| [DialogSessionInfo\| null](#dialogsessioninfo) | 同步返回会话信息。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                                              |
+| -------- | ----------------------------------------------------- |
+| 202      | Not System App. Interface caller is not a system app. |
+| 16000005 | The specified process does not have the permission.   |
+| 16000006 | Cross-user operations are not allowed.                |
+| 16000050 | Internal error.                                       |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { dialogSession, Want, UIExtensionAbility, UIExtensionContentSession } from '@kit.AbilityKit';
+
+const TAG: string = '[testTag] UIExtAbility';
+
+export default class UIExtAbility extends UIExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    // want由系统内部指定，dialogSessionId为内置参数
+    let dialogSessionId: string | undefined = want.parameters?.['dialogSessionId'] as string;
+
+    // 查询DialogSessionInfo
+    let dialogSessionInfo: dialogSession.DialogSessionInfo | null = dialogSession.getDialogSessionInfo(dialogSessionId);
+    console.info(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
+  }
+}
+```
+
 ## sendDialogResult
 
 sendDialogResult(dialogSessionId: string, targetWant: Want, isAllowed: boolean, callback: AsyncCallback\<void\>): void
@@ -118,14 +187,18 @@ sendDialogResult(dialogSessionId: string, targetWant: Want, isAllowed: boolean, 
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | dialogSessionId | string | 是 | 用户请求会话ID。 |
-  | targetWant | Want | 是 | 用户请求目标。 |
-  | isAllowed | boolean | 是 | 是否允许拉起目标Ability。true表示允许，false表示不允许。 |
-  | callback | AsyncCallback\<void\> | 是 | 回调函数。当发送用户请求成功，err为undefined，否则为错误对象。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| dialogSessionId | string | 是 | 用户请求会话ID。 |
+| targetWant | Want | 是 | 用户请求目标。 |
+| isAllowed | boolean | 是 | 是否允许拉起目标Ability。true表示允许，false表示不允许。 |
+| callback | AsyncCallback\<void\> | 是 | 回调函数。当发送用户请求成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -148,11 +221,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class UIExtAbility extends UIExtensionAbility {
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
     // want由系统内部指定，dialogSessionId为内置参数
-    let dialogSessionId = want?.parameters?.dialogSessionId.toString();
+    let dialogSessionId: string | undefined = want.parameters?.['dialogSessionId'] as string;
 
     // 查询DialogSessionInfo
-    let dialogSessionInfo: dialogSession.DialogSessionInfo =
-      dialogSession.getDialogSessionInfo(dialogSessionId);
+    let dialogSessionInfo: dialogSession.DialogSessionInfo | null = dialogSession.getDialogSessionInfo(dialogSessionId);
 
     let isAllow: boolean = true;
 
@@ -186,13 +258,17 @@ sendDialogResult(dialogSessionId: string, targetWant: Want, isAllowed: boolean):
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | dialogSessionId | string | 是 | 用户请求会话ID。 |
-  | targetWant | Want | 是 | 用户请求目标。 |
-  | isAllowed | boolean | 是 | 是否允许拉起目标Ability。true表示允许，false表示不允许。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| dialogSessionId | string | 是 | 用户请求会话ID。 |
+| targetWant | Want | 是 | 用户请求目标。 |
+| isAllowed | boolean | 是 | 是否允许拉起目标Ability。true表示允许，false表示不允许。 |
 
 **返回值：**
 
@@ -221,10 +297,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class UIExtAbility extends UIExtensionAbility {
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
     // want由系统内部指定，dialogSessionId为内置参数
-    let dialogSessionId = want?.parameters?.dialogSessionId.toString();
+    let dialogSessionId: string | undefined = want.parameters?.['dialogSessionId'] as string;
 
     // 查询DialogSessionInfo
-    let dialogSessionInfo: dialogSession.DialogSessionInfo = dialogSession.getDialogSessionInfo(dialogSessionId);
+    let dialogSessionInfo: dialogSession.DialogSessionInfo | null = dialogSession.getDialogSessionInfo(dialogSessionId);
 
     let isAllow: boolean = true;
 
@@ -237,7 +313,8 @@ export default class UIExtAbility extends UIExtensionAbility {
       dialogSession.sendDialogResult(dialogSessionId, targetWant, isAllow)
         .then((data) => {
           console.info(`sendDialogResult success, pid: ${data}`);
-        }, (err: BusinessError) => {
+        }, (error: Error) => {
+          let err = error as BusinessError;
           console.error(`sendDialogResult error, errorCode: ${err.code}`);
         });
     } catch (err) {

@@ -58,7 +58,7 @@ OH_Drawing_BrushDestroy(brush);
 OH_Drawing_PointDestroy(point);
 ```
 
-![image_0000002158744138](figures/image_0000002158744138.png)
+![Blend-Mode](figures/Blend-Mode.png)
 
 
 ## Path Effect
@@ -105,7 +105,7 @@ OH_Drawing_PathEffectDestroy(pathEffect);
 
 | Path Without Dashed Lines| Path With Dashed Lines|
 | -------- | -------- |
-| ![image_0000002158584342](figures/image_0000002158584342.png)| ![image_0000002194110865](figures/image_0000002194110865.png)|
+| ![Path-Without-Dashed-Lines](figures/Path-Without-Dashed-Lines.png)| ![Path-With-Dashed-Lines](figures/Path-With-Dashed-Lines.png)|
 
 
 ## Shader Effect
@@ -168,7 +168,7 @@ OH_Drawing_PointDestroy(endPt);
 
 The following figure shows the rectangle with the linear gradient shader effect.
 
-![image_0000002194110873](figures/image_0000002194110873.png)
+![Linear-Gradient-Shader-Effect](figures/Linear-Gradient-Shader-Effect.png)
 
 
 ### Radial Gradient Shader Effect
@@ -213,7 +213,7 @@ OH_Drawing_PointDestroy(centerPt);
 
 The following figure shows the rectangle with the radial gradient shader effect.
 
-![image_0000002158744130](figures/image_0000002158744130.png)
+![Radial-Gradient-Shader-Effect](figures/Radial-Gradient-Shader-Effect.png)
 
 
 ### Sector Gradient Shader Effect
@@ -256,7 +256,7 @@ OH_Drawing_PointDestroy(centerPt);
 
 The following figure shows the rectangle with the sector gradient shader effect.
 
-![image_0000002158584354](figures/image_0000002158584354.png)
+![sector-gradient-shader-effect](figures/sector-gradient-shader-effect.png)
 
 
 ## Filter Effects
@@ -350,7 +350,7 @@ OH_Drawing_FilterDestroy(filter);
 
 | Original Image| Image with a Color Filter Based on a 5×4 Color Matrix|
 | -------- | -------- |
-| ![image_0000002194110869](figures/image_0000002194110869.png)| ![image_0000002194025241](figures/image_0000002194025241.png)|
+| ![Original-Image6](figures/Original-Image6.png)| ![Image-with-a-Color](figures/Image-with-a-Color.png)|
 
 
 ### Image Filter Effects
@@ -408,7 +408,7 @@ OH_Drawing_FilterDestroy(filter);
 
 | Original Image| Image with the Filter Effect|
 | -------- | -------- |
-| ![image_0000002194025225](figures/image_0000002194025225.png)| ![image_0000002194025245](figures/image_0000002194025245.png)|
+| ![Original-Image5](figures/Original-Image5.png)| ![Image-with-the-Filter](figures/Image-with-the-Filter.png)|
 
 
 ### Mask Filter Effect
@@ -463,7 +463,7 @@ OH_Drawing_FilterDestroy(filter);
 
 | Original Image| Image with the Mask Effect|
 | -------- | -------- |
-| ![image_0000002194110877](figures/image_0000002194110877.png)| ![image_0000002158744126](figures/image_0000002158744126.png)|
+| ![Original-Image4](figures/Original-Image4.png)| ![Image-with-the-Mask-Effect](figures/Image-with-the-Mask-Effect.png)|
 
 <!--RP1-->
 ## Samples

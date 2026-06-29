@@ -310,7 +310,7 @@ let options: http.HttpRequestOptions = {
   usingProxy: true, // 选择使用网络代理，从API 10开始支持该属性。
 };
 // 发起一个HTTP请求。
-httpRequest.request("EXAMPLE_URL", options, (err: Error, data: http.HttpResponse) => {
+httpRequest.request("EXAMPLE_URL", options, (err: BusinessError, data: http.HttpResponse) => {
   if (!err) {
    console.info(`Result: ${data.result}`);
    console.info(`code: ${data.responseCode}`);
@@ -2126,7 +2126,8 @@ addCustomDnsRule(host: string, ip: Array\<string\>, callback: AsyncCallback\<voi
 
 > **说明：**
 >
-> 不需要时可调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)删除某一条自定义规则或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)删除当前应用程序的所有的自定义DNS规则 。
+> 不需要时可调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)删除某一条自定义规则或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)删除当前应用程序的所有的自定义DNS规则 。<br>
+> 调用本接口添加自定义DNS规则后可持续生效，无需重复添加同一条规则。不需要时可按照上述方法删除。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -2195,7 +2196,8 @@ addCustomDnsRule(host: string, ip: Array\<string\>): Promise\<void\>
 
 > **说明：**
 >
-> 不需要时可调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)删除某一条自定义规则或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)删除当前应用程序的所有的自定义DNS规则 。
+> 不需要时可调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)删除某一条自定义规则或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)删除当前应用程序的所有的自定义DNS规则 。<br>
+> 调用本接口添加自定义DNS规则后可持续生效，无需重复添加同一条规则。不需要时可按照上述方法删除。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -2267,6 +2269,7 @@ removeCustomDnsRule(host: string, callback: AsyncCallback\<void\>): void
 
 > **说明：**
 >
+> 删除前需确认当前无线程正在使用该自定义规则，以避免冲突。<br>
 > 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
 
 **需要权限**：ohos.permission.INTERNET
@@ -2335,6 +2338,7 @@ removeCustomDnsRule(host: string): Promise\<void\>
 
 > **说明：**
 >
+> 删除前需确认当前无线程正在使用该自定义规则，以避免冲突。<br>
 > 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
 
 **需要权限**：ohos.permission.INTERNET
@@ -2404,6 +2408,11 @@ clearCustomDnsRules(callback: AsyncCallback\<void\>): void
 
 删除当前应用程序的所有的自定义DNS规则。使用callback异步回调。
 
+ > **说明：**
+ >
+ > 删除前需确认当前无线程正在使用当前存在的自定义规则，以避免冲突。<br>
+ > 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
+
 **需要权限**：ohos.permission.INTERNET
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
@@ -2464,6 +2473,11 @@ connection.clearCustomDnsRules((error: BusinessError|null) => {
 clearCustomDnsRules(): Promise\<void\>
 
 删除当前应用程序的所有的自定义DNS规则。使用Promise异步回调。
+
+ > **说明：**
+ >
+ > 删除前需确认当前无线程正在使用当前存在的自定义规则，以避免冲突。<br>
+ > 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -3671,6 +3685,53 @@ netCon.unregister((error: BusinessError|null) => {
 });
 ```
 
+
+### onNetBlockStatusChange
+
+onNetBlockStatusChange(callback: Callback\<NetBlockStatusInfo>): void;
+
+订阅网络阻塞状态事件。此接口需要在调用register接口之前调用。若无需接收网络状态变化的回调通知，应使用unregister取消订阅默认的网络状态变化通知。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Sta起始版本：** 23
+  
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 订阅事件，固定为'netBlockStatusChange'。<br/>netBlockStatusChange：网络阻塞状态事件。 |
+| callback | Callback<[NetBlockStatusInfo](#netblockstatusinfo11)>        | 是   | 回调函数，获取网络阻塞状态信息。|
+
+  
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建NetConnection对象。
+let netCon: connection.NetConnection = connection.createNetConnection();
+
+// 先使用on接口订阅网络阻塞状态事件。
+netCon.onNetBlockStatusChange((value) => {
+  console.info(`Succeeded to get data: ${JSON.stringify(value)}`);
+});
+
+// 注册网络状态变化事件。此接口要在调用on后调用。
+netCon.register((error: BusinessError|null) => {
+  console.error(JSON.stringify(error));
+});
+
+// 使用unregister接口取消订阅网络阻塞状态事件。
+netCon.unregister((error: BusinessError|null) => {
+  console.error(JSON.stringify(error));
+});
+```
+  
+
+
 ### on('netCapabilitiesChange')
 
 on(type: 'netCapabilitiesChange', callback: Callback\<NetCapabilityInfo\>): void
@@ -3684,6 +3745,8 @@ on(type: 'netCapabilitiesChange', callback: Callback\<NetCapabilityInfo\>): void
 **ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 23
+  
+ **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **参数：**
 
@@ -3885,6 +3948,52 @@ netCon.unregister((error: BusinessError|null) => {
   console.error(JSON.stringify(error));
 });
 ```
+  
+### onNetLost
+
+onNetLost(callback: Callback\<NetHandle>): void
+
+订阅网络丢失事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Sta起始版本：** 23
+  
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**参数：**
+
+| 参数名   | 类型                               | 必填 | 说明                                                         |
+| -------- | ---------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string                             | 是   | 订阅事件，固定为'netLost'。<br/>netLost：网络严重中断或正常断开事件。 |
+| callback | Callback\<[NetHandle](#nethandle)> | 是   | 回调函数，数据网络句柄(netHandle)。|
+
+**示例：**
+  
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建NetConnection对象。
+let netCon: connection.NetConnection = connection.createNetConnection();
+
+// 先使用on接口订阅网络丢失事件
+netCon.onNetLost((value) => {
+  console.info(`Succeeded to get data: ${JSON.stringify(value)}`);
+});
+
+// 注册网络状态变化事件。此接口要在调用on后调用。
+netCon.register((error: BusinessError|null) => {
+  console.error(JSON.stringify(error));
+});
+
+// 使用unregister接口取消订阅网络丢失事件。
+netCon.unregister((error: BusinessError|null) => {
+  console.error(JSON.stringify(error));
+});
+```
+
 
 ### on('netUnavailable')
 
@@ -3960,6 +4069,50 @@ netCon.unregister((error: BusinessError|null) => {
 });
 ```
 
+### onNetUnavailable
+
+onNetUnavailable(callback: Callback\<void>): void
+
+订阅网络不可用事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Sta起始版本：** 23
+  
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**参数：**
+
+| 参数名   | 类型            | 必填 | 说明                                                         |
+| -------- | --------------- | ---- | ------------------------------------------------------------ |
+| type     | string          | 是   | 订阅事件，固定为'netUnavailable'。<br/>netUnavailable：网络不可用事件。 |
+| callback | Callback\<void> | 是   | 回调函数，无返回结果。|
+
+**示例：**
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建NetConnection对象。
+let netCon: connection.NetConnection = connection.createNetConnection();
+
+// 先使用on接口订阅网络不可用事件。
+netCon.onNetUnavailable((value) => {
+  console.info("Succeeded to get unavailable net event");
+});
+
+// 注册网络状态变化事件。此接口要在调用on后调用。
+netCon.register((error: BusinessError|null) => {
+  console.error(JSON.stringify(error));
+});
+
+// 使用unregister接口取消订阅网络不可用事件。
+netCon.unregister((error: BusinessError|null) => {
+  console.error(JSON.stringify(error));
+});
+```
 ## NetHandle
 
 数据网络的句柄。

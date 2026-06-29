@@ -64,9 +64,9 @@ import { AppStorageV2 } from '@kit.ArkUI';
 
 AppStorageV2使用connect接口即可实现对AppStorageV2中数据的修改和同步，如果修改的数据被[\@Trace](./arkts-static-new-observedV2-and-trace.md)装饰，该数据的修改会同步更新UI。需要注意的是，使用remove接口只会将数据从AppStorageV2中删除，不影响组件中已创建的数据，详见以下示例代码。
 
-```ts
-'use static'
+<!-- @[AppStorageV2Basic](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AppStorageV2/entry/src/main/ets/pages/AppStorageV2Basic.ets) --> 
 
+``` TypeScript
 import { AppStorageV2, Button, ClickEvent, Column, Component, ComponentV2, Divider, Entry, Link, Local, LocalStorage, LocalStorageLink, ObservedV2, PersistentStorage, Row, State, Text, Trace } from '@kit.ArkUI';
 
 @ObservedV2
@@ -96,23 +96,31 @@ struct Index {
         .onClick((e: ClickEvent) => {
           this.message.userID += 1;
         })
+        .width(300)
+        .margin(10)
       // 修改非@Trace装饰的类属性，UI不会同步刷新，但修改的类属性已同步回AppStorageV2
       Button(`Index userName: ${this.message.userName}`)
         .onClick((e: ClickEvent) => {
           this.message.userName += 'suf';
         })
+        .width(300)
+        .margin(10)
       // remove keyOrType IMessageType, 会从AppStorageV2中删除keyOrType为Message的Class的对象
       // remove之后，修改父组件的userId，子组件能同步变化，因为remove只是从AppStorageV2删除，不会影响组件中已存在的数据
       Button('remove keyOrType: IMessageType')
         .onClick((e: ClickEvent) => {
           AppStorageV2.remove(IMessageType);
         })
+        .width(300)
+        .margin(10)
       // connect ttype IMessageType, 会从AppStorageV2中添加ttype为Message的Class的对象
       // remove之后，重新添加，修改父子组件的userID，可以发现数据已经不同步，子组件重新connect之后，数据一致
       Button('connect ttype: IMessageType')
         .onClick((e: ClickEvent) => {
           this.message = AppStorageV2.connect<Message>(IMessageType, () => new Message(5, 'Rose'))!;
         })
+        .width(300)
+        .margin(10)
       Divider()
       Child()
     }
@@ -134,21 +142,29 @@ struct Child {
         .onClick((e: ClickEvent) => {
           this.message.userID += 5;
         })
+        .width(300)
+        .margin(10)
       // 修改父组件中的userName属性，点击name可以同步父组件的类属性修改
       Button(`Child name: ${this.name}`)
         .onClick((e: ClickEvent) => {
           this.name = this.message.userName;
         })
+        .width(300)
+        .margin(10)
       // remove keyOrType IMessageType，会从AppStorageV2中删除keyOrType为Message的Class的对象
       Button('remove keyOrType: IMessageType')
         .onClick((e: ClickEvent) => {
           AppStorageV2.remove(IMessageType);
         })
+        .width(300)
+        .margin(10)
       // connect ttype IMessageType，会从AppStorageV2中添加ttype为Message的Class的对象
       Button('connect ttype: IMessageType')
         .onClick((e: ClickEvent) => {
           this.message = AppStorageV2.connect<Message>(IMessageType, () => new Message(10, 'Lucy'))!;
         })
+        .width(300)
+        .margin(10)
     }
     .width('100%')
     .height('100%')
@@ -156,12 +172,14 @@ struct Child {
 }
 ```
 
+![appStoragev2-basic](../figures/appstoragev2_1.gif)
+
 ### AppStorageV2应用于两页面场景
 
 数据页面（Sample.ets）。
-```ts
-'use static'
+<!-- @[Sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AppStorageV2/entry/src/main/ets/pages/Sample.ets) --> 
 
+``` TypeScript
 import { ObservedV2, Trace } from '@kit.ArkUI';
 
 @ObservedV2
@@ -170,14 +188,14 @@ export class Sample {
   p2: number = 10;
 }
 
-export const ISampleType = Class.from<Sample>();
+export const ISampleType: Class = Class.from<Sample>();
 ```
 
-页面1（Page1.ets）。
-```ts
-'use static'
+页面1（AppStorageV2TwoPages.ets）。
+<!-- @[AppStorageV2TwoPages](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AppStorageV2/entry/src/main/ets/pages/AppStorageV2TwoPages.ets) --> 
 
-import { Page2 } from './Page2';
+``` TypeScript
+import { Page2 } from './AppStorageV2Navigation';
 import { ISampleType, Sample } from './Sample';
 import { AppStorageV2, Builder, Button, ButtonType, ClickEvent, Column, Component, ComponentV2, Divider, Entry, FontWeight, Link, Local, LocalStorage, LocalStorageLink, NavDestination, NavPathInfo, NavPathStack, Navigation, NavigationMode, ObservedV2, PersistentStorage, Row, State, Text, Trace } from '@kit.ArkUI';
 
@@ -203,59 +221,71 @@ struct Page1 {
             let info: NavPathInfo = new NavPathInfo('Page2', new Object());
             this.pageStack.pushPath(info, true);
           })
+          .width(300)
+          .margin(10)
 
         Button('Page1 connect key Sample')
           .onClick((e: ClickEvent) => {
             // 在AppStorageV2中创建一个key为Sample的键值对（如果存在，则返回AppStorageV2中对应的数据），并且和prop关联
             this.prop = AppStorageV2.connect<Sample>(ISampleType, 'Sample', () => new Sample())!;
           })
+          .width(300)
+          .margin(10)
 
         Button('Page1 connect key Samplex')
           .onClick((e: ClickEvent) => {
             // 在AppStorageV2中创建一个key为Samplex的键值对（如果存在，则返回AppStorageV2中对应的数据），并且和prop关联
             this.prop = AppStorageV2.connect<Sample>(ISampleType, 'Samplex', () => new Sample())!;
           })
+          .width(300)
+          .margin(10)
 
         Button('Page1 remove keyOrType ISampleType')
           .onClick((e: ClickEvent) => {
             // 从AppStorageV2中删除后，AppStorageV2中不存在ttype为Sample的Class的对象，但prop关联的对象并没有被删除，所以点击下方的Text组件修改prop.p1，其值仍然会变化。
             AppStorageV2.remove(ISampleType);
           })
+          .width(300)
+          .margin(10)
 
-        Text(`Page1 add 1 to prop.p1: ${this.prop.p1}`)
-          .fontSize(30)
+        Button(`Page1 add 1 to prop.p1: ${this.prop.p1}`)
           .onClick((e: ClickEvent) => {
             this.prop.p1++;
           })
+          .width(300)
+          .margin(10)
 
-        Text(`Page1 add 1 to prop.p2: ${this.prop.p2}`)
-          .fontSize(30)
+        Button(`Page1 add 1 to prop.p2: ${this.prop.p2}`)
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             // 页面不刷新，但p2的值已改变
             this.prop.p2++;
           })
 
         // 获取当前AppStorageV2里面的所有key
-        Text(`all keys in AppStorage: ${AppStorageV2.keys()}`)
+        Button(`all keys in AppStorage: ${AppStorageV2.keys()}`)
           .onClick((e: ClickEvent) => {
             console.info(`${AppStorageV2.keys()}`)
           })
-          .fontSize(30)
+          .width(300)
+          .margin(10)
       }
+      .width('100%')
     }.navDestination(this.PageBuilder)
   }
 }
 ```
 
-页面2（Page2.ets）。
-```ts
-'use static'
+页面2（AppStorageV2Navigation.ets）。
+<!-- @[appstoragev2_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AppStorageV2/entry/src/main/ets/pages/AppStorageV2Navigation.ets) --> 
 
+``` TypeScript
 import { ISampleType, Sample } from './Sample';
 import { AppStorageV2, Builder, Button, ButtonType, ClickEvent, Column, Component, ComponentV2, Divider, Entry, FontWeight, Link, Local, LocalStorage, LocalStorageLink, NavDestination, NavDestinationContext, NavPathInfo, NavPathStack, Navigation, NavigationMode, ObservedV2, PersistentStorage, Row, State, Text, Trace } from '@kit.ArkUI';
 
 @Builder
-export function Page2Builder() {
+export function Page2Builder():void {
   Page2()
 }
 
@@ -265,7 +295,7 @@ export struct Page2 {
   @Local prop: Sample = AppStorageV2.connect<Sample>(ISampleType, () => new Sample())!;
   pathStack: NavPathStack = new NavPathStack();
 
-  build() {
+  build(): void {
     NavDestination() {
       Column() {
         Button('Page2 connect key Sample')
@@ -273,32 +303,37 @@ export struct Page2 {
             // 在AppStorageV2中创建一个key为Sample的键值对（如果存在，则返回AppStorageV2中对应的数据），并且和prop关联
             this.prop = AppStorageV2.connect<Sample>(ISampleType, 'Sample', () => new Sample())!;
           })
+          .width(300)
+          .margin(10)
 
-        Text(`Page2 add 1 to prop.p1: ${this.prop.p1}`)
-          .fontSize(30)
+        Button(`Page2 add 1 to prop.p1: ${this.prop.p1}`)
           .onClick((e: ClickEvent) => {
             this.prop.p1++;
           })
+          .width(300)
+          .margin(10)
 
-        Text(`Page2 add 1 to prop.p2: ${this.prop.p2}`)
-          .fontSize(30)
+        Button(`Page2 add 1 to prop.p2: ${this.prop.p2}`)
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             // 页面不刷新，但p2的值已改变
             this.prop.p2++;
           })
 
       }
+      .width('100%')
     }
   }
 }
 ```
-使用[Navigation](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)时，需要先添加配置系统路由表文件src/main/resources/base/profile/route_map.json，再替换pageSourceFile为Page2页面的路径，最后在module.json5中添加："routerMap": "$profile:route_map"。
+使用[Navigation](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)时，需要先添加配置系统路由表文件src/main/resources/base/profile/route_map.json，再替换pageSourceFile为页面2的路径，最后在module.json5中添加："routerMap": "$profile:route_map"。
 ```json
 {
   "routerMap": [
     {
       "name": "Page2",
-      "pageSourceFile": "src/main/ets/pages/Page2.ets",
+      "pageSourceFile": "src/main/ets/pages/AppStorageV2Navigation.ets",
       "buildFunction": "Page2Builder",
       "data": {
         "description" : "AppStorageV2 example"
@@ -307,3 +342,59 @@ export struct Page2 {
   ]
 }
 ```
+
+![appStoragev2-two-pages](../figures/appstoragev2_2.gif)
+
+## 常见问题
+### 使用Class.of导致AppStorageV2类型不匹配报错
+
+@Local等状态变量装饰器，会自动给装饰的属性替换实际类型，以支持观测能力。如果使用`Class.of`获取该属性的类型，会跟属性声明的类型不一致，如果再用`Class.of`作为`type`参数调用`AppStorageV2.connect`，会因为数据类型不匹配导致运行时异常。
+
+【反例】
+
+```ts
+'use static'
+import { Entry, ComponentV2, Local, AppStorageV2, Text, Column } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local arr: string[] = [];
+  @Local arrStorage?: string[] = AppStorageV2.connect(
+    Class.of(this.arr), // 这里会报错，因为this.arr的实际类型是WrappedArray，用于支持观测能力
+    () => { return new Array<string>('Hello world'); }
+  )
+  build() {
+    Column() {
+      Text(`arrStorage is ${this.arrStorage}`)
+    }
+      .width('100%')
+  }
+}
+```
+
+推荐使用`Class.from`直接构造类型，确保`AppStorageV2.connect`参数`type`和`defaultCreator`类型一致。
+
+【正例】
+
+```ts
+'use static'
+import { Entry, ComponentV2, Local, AppStorageV2, Text, Column } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local arr: string[] = [];
+  @Local arrStorage?: string[] = AppStorageV2.connect(
+    Class.from<Array<string>>(), // 使用Class.from能固定返回泛型的类型
+    () => { return new Array<string>('Hello world'); }
+  )
+  build() {
+    Column() {
+      Text(`arrStorage is ${this.arrStorage}`)
+    }
+      .width('100%')
+  }
+}
+```
+![appstoragev2-static-faq-class-of.png](../state-management/figures/appstoragev2-static-faq-class-of.png)

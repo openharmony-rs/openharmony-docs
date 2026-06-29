@@ -312,7 +312,7 @@ Use the [updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.
   }
   ```
   
-  ![en-us_image_update_BuilderNode](figures/en-us_image_update_BuilderNode.gif)
+  ![en-us_image_update_BuilderNode](figures/update-BuilderNode.gif)
 
 ## Canceling the Reference to the Entity Node
 
@@ -1718,7 +1718,7 @@ Starting from API version 20, in state management V1, if a BuilderNode is config
   }
   ```
 
-![inheritFreezeOptions](figures/builderNode_inheritFreezeOptions.gif)
+![inheritFreezeOptions](figures/builderNode_inheritfreezeOptions.gif)
 
 ### Common BuilderNode Freezing Scenarios (State Management V2)
 

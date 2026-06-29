@@ -53,7 +53,7 @@
                - Index.ets
    ```
 
-   该示例工程中jsoncpp库文件对应的源码来自[三方开源库jsoncpp](https://github.com/open-source-parsers/jsoncpp/archive/refs/tags/1.9.6.tar.gz)。
+   该示例工程中jsoncpp库文件对应的源码来自[三方开源库jsoncpp](https://codeload.github.com/open-source-parsers/jsoncpp/tar.gz/refs/tags/1.9.6)。
 
 3. 在"CMakeLists.txt"文件中，添加源文件和动态库。
 
@@ -182,6 +182,9 @@
 
           // 开启拼接应用日志
           OH_HiAppEvent_SetConfigItem(config, OH_APP_CRASH_PARAM_MERGE_CPPCRASH_APP_LOG, "true");
+
+          // native崩溃场景，使能minidump
+          OH_HiAppEvent_SetConfigItem(config, OH_APP_CRASH_PARAM_COLLECT_MINIDUMP, "true");
 
           // 3. 应用配置到 EVENT_APP_CRASH 事件
           int ret = OH_HiAppEvent_SetEventConfig(EVENT_APP_CRASH, config);
@@ -357,30 +360,30 @@
       编辑工程中的“entry > src > main > ets > pages > Index.ets”文件，添加按钮并在其onClick函数中构造崩溃场景，以触发崩溃事件。示例代码如下：
 
       <!-- @[Native_CrashEvent_Log](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
-
+      
       ``` TypeScript
       Button('MergeLogNativeCrash')
-      .type(ButtonType.Capsule)
-      .margin({
-        top: 20
-      })
-      .backgroundColor('#0D9FFB')
-      .width('80%')
-      .height('5%')
-      .onClick(() => {
-        // 模拟创建 applog，假设应用包名为 com.samples.eventsub
-        let filePath : string = "/data/storage/el2/log/com.samples.eventsub_CppCrash_AppMerge.log";
-        let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
-        let str: string = "only test for merge app log!";
-
-        let writeLen = fileIo.writeSync(file.fd, str);
-        console.info("hiappevent write data to file succeed and size is:" + writeLen);
-        fileIo.closeSync(file);
-
-        // 在按钮点击函数中构造一个crash场景，触发应用崩溃事件
-        testNapi.testNullptr();
-      })
-       ```
+        .type(ButtonType.Capsule)
+        .margin({
+          top: 20
+        })
+        .backgroundColor('#0D9FFB')
+        .width('80%')
+        .height('5%')
+        .onClick(() => {
+          // 模拟创建 applog，假设应用包名为 com.samples.eventsub
+          let filePath: string = "/data/storage/el2/log/com.samples.eventsub_CppCrash_AppMerge.log";
+          let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+          let str: string = "only test for merge app log!";
+      
+          let writeLen = fileIo.writeSync(file.fd, str);
+          console.info("hiappevent write data to file succeed and size is:" + writeLen);
+          fileIo.closeSync(file);
+      
+          // 在按钮点击函数中构造一个crash场景，触发应用崩溃事件
+          testNapi.testNullptr();
+        })
+      ```
 
 9. 点击运行按钮启动应用工程。在应用界面中单击“JsError”或“MergeLogNativeCrash”按钮触发崩溃事件。系统生成崩溃日志并回调。
 
@@ -427,7 +430,7 @@ HiAppEvent eventInfo.params.exception={"message":"Unexpected Text in JSON: Empty
 HiAppEvent eventInfo.params.hilog.size=100
 HiAppEvent eventInfo.params.process_life_time=25
 HiAppEvent eventInfo.params.memory={"rss":181964,"sys_avail_mem":1230456,"sys_free_mem":676940,"sys_total_mem":2001932}
-HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/hiappevent/APP_CRASH_1503045716408_2610.log"]
+HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/hiappevent/APP_CRASH_1503045716408_2610.log","/data/storage/el2/log/hiappevent/APP_CRASH_1503045716409_2610.dmp"]
 HiAppEvent eventInfo.params.log_over_limit=0
 ```
 

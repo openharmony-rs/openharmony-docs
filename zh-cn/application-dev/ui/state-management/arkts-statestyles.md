@@ -83,6 +83,8 @@ struct StateStylesSample {
 
 ArkTS-Sta示例：
 
+<!-- @[state_style](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateStyleSta/entry/src/main/ets/pages/StateStyle/StateStylesSample.ets) -->
+
 ``` TypeScript
 import { Entry, Component, CommonMethod, CustomStyles, Column, Button } from '@kit.ArkUI';
 
@@ -204,6 +206,8 @@ struct CompWithInlineStateStyles {
 ```
 
 ArkTS-Sta示例：
+
+<!-- @[focus_style](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StateStyleSta/entry/src/main/ets/pages/FocusStyle/CompWithInlineStateStyles.ets) -->
 
 ``` TypeScript
 import { Entry, Component, State, CommonMethod, CustomStyles, Column, Button } from '@kit.ArkUI';

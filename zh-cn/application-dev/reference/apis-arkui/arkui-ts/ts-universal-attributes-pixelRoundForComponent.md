@@ -13,6 +13,8 @@
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## pixelRound
 
@@ -34,9 +36,9 @@ ArkTS-Sta: pixelRound(value: PixelRoundPolicy | undefined): this
 - 计算当前组件右下角坐标： 左上角相对于父容器偏移量 + 组件自身尺寸。
 - 重新计算当前组件尺寸： 右下角坐标四舍五入取整 - 左上角坐标四舍五入取整。
 
-**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,7 +50,7 @@ ArkTS-Sta: pixelRound(value: PixelRoundPolicy | undefined): this
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value | ArkTS-Dyn: [PixelRoundPolicy](#pixelroundpolicy)<br/>ArkTS-Sta: [PixelRoundPolicy](#pixelroundpolicy) \| undefined | 是 | 指定当前组件边界取整策略。<br/>**说明：**<br/>该属性用于因浮点数绘制产生视觉异常的场景。取整结果不仅和组件的宽高有关，也与组件的位置有关。即使设置组件的宽高相同，由于以浮点数描述的组件位置不同，舍入后组件的最终宽高也可能不同。<br/>取值为undefined时，与不设置表现一致。|
+| value | ArkTS-Dyn: [PixelRoundPolicy](#pixelroundpolicy)<br/>ArkTS-Sta: [PixelRoundPolicy](#pixelroundpolicy) \| undefined | 是 | 当前组件边界取整策略。<br/>**说明：**<br/>该属性用于因浮点数绘制产生视觉异常的场景。取整结果不仅和组件的宽高有关，也与组件的位置有关。即使设置组件的宽高相同，由于以浮点数描述的组件位置不同，舍入后组件的最终宽高也可能不同。<br/>取值为undefined时，与不设置表现一致。|
 
 **返回值：**
 
@@ -58,20 +60,24 @@ ArkTS-Sta: pixelRound(value: PixelRoundPolicy | undefined): this
 
 ## PixelRoundPolicy
 
-指定组件级像素取整的方向。
+当前组件边界的取整策略。
 
-**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| start | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |否| 是 | 组件前部边界取整对齐方式。<br/>不设置[pixelRound](#pixelround)或者设置异常值时按四舍五入规则取整。|
-| top | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |否| 是 | 组件上部边界取整对齐方式。<br/>不设置pixelRound或者设置异常值时按四舍五入规则取整。|
-| end | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |否| 是 | 组件尾部边界取整对齐方式。<br/>不设置pixelRound或者设置异常值时按四舍五入规则取整。|
-| bottom | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |否| 是 | 组件底部边界取整对齐方式。<br/>不设置pixelRound或者设置异常值时按四舍五入规则取整。|
+| start | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |否| 是 | 组件前部边界取整策略。<br/>不设置[pixelRound](#pixelround)或者设置异常值时按四舍五入规则取整。|
+| top | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |否| 是 | 组件上部边界取整策略。<br/>不设置pixelRound或者设置异常值时按四舍五入规则取整。|
+| end | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |否| 是 | 组件尾部边界取整策略。<br/>不设置pixelRound或者设置异常值时按四舍五入规则取整。|
+| bottom | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |否| 是 | 组件底部边界取整策略。<br/>不设置pixelRound或者设置异常值时按四舍五入规则取整。|
 
 ## 常见问题
 
@@ -190,8 +196,8 @@ struct PixelRoundExample {
 
 **图1** 使用pixelRound指导布局效果图
 
-![zh-cn_image_pixel_round_enable.png](figures/zh-cn_image_pixel_round_enable.png)
+![image-pixel-round-enable.png](figures/image-pixel-round-enable.png)
 
 **图2** 不使用pixelRound指导布局效果图
 
-![zh-cn_image_pixel_round_disable.png](figures/zh-cn_image_pixel_round_disable.png)
+![image-pixel-round-disable.png](figures/image-pixel-round-disable.png)

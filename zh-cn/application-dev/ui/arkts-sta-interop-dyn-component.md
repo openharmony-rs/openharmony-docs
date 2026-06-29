@@ -1,10 +1,16 @@
 # 在ArkTS-Sta中使用ArkTS-Dyn的自定义组件
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lixingchi1; @katabanga-->
+<!--Designer: @lixingchi1; @katabanga-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 ## 概述
 
 从API version 23开始，支持在ArkTS-Sta中使用ArkTS-Dyn自定义组件。
 
-在互操作场景下，[占位组件](../reference/apis-arkui/arkui-ts/ts-interop-compatible-component.md)链接ArkTS-Sta和ArkTS-Dyn的UI节点，构建完整的UI界面。
+在互操作场景下，[compatibleComponent](../reference/apis-arkui/arkui-ts/ts-interop-compatible-component.md)链接ArkTS-Sta和ArkTS-Dyn的UI节点，构建完整的UI界面。
 
 
 ## 使用限制
@@ -34,6 +40,7 @@ struct Index {
       }
       .width(100)
     }
+    .width('100%')
   }
 }
 ```
@@ -46,7 +53,8 @@ export struct MainPage { // 从ArkTS-Dyn模块中导出
 
   build() {
     Text(this.message)
-      .fontSize(30)
+      .fontSize(20)
+      .margin(10)
   }
 }
 ```
@@ -67,7 +75,7 @@ project/
 │       └── main/
 │           └── ets/
 │               └── pages/
-│                   └── Index.ets    # ArkTS-Sta主模块入口页面
+│                   └── StaDynComponent.ets    # 在ArkTS-Sta中使用ArkTS-Dyn自定义组件
 │
 └── dynamic_module/                  # ArkTS-Dyn子模块
     └── src/
@@ -81,6 +89,8 @@ project/
 
 - 创建ArkTS-Dyn子模块`dynamic_module`，在`dynamic_module/src/main/ets/components`目录创建并导出自定义组件。如何创建子模块参考共享包（[HAR](../quick-start/har-package.md)）说明。
 
+<!-- @[StaDynComponentMainPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynComponent/dynamic_module/src/main/ets/components/MainPage.ets) -->
+
 ```TypeScript
 // dynamic_module/src/main/ets/components/MainPage.ets
 
@@ -91,9 +101,10 @@ export struct ChildComponent {
   build() {
     Column() {
       Text(this.message)
-        .fontSize(30)
-        .fontColor(Color.Blue)
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
     .padding(20)
     .backgroundColor(Color.White)
   }
@@ -106,17 +117,20 @@ export struct ChildComponentV2 {
   build() {
     Column() {
       Text(this.message)
-        .fontSize(30)
-        .fontColor(Color.Blue)
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
     .padding(20)
     .backgroundColor(Color.White)
   }
 }
 ```
 
+<!-- @[StaDynComponentDynIndex](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynComponent/dynamic_module/Index.ets) -->
+
 ```TypeScript
-// dynamic_module/index.ets
+// dynamic_module/Index.ets
 
 export { ChildComponent, ChildComponentV2 } from './src/main/ets/components/MainPage';
 ```
@@ -133,10 +147,10 @@ export { ChildComponent, ChildComponentV2 } from './src/main/ets/components/Main
 
 - 在ArkTS-Sta主模块中引入ArkTS-Dyn自定义组件。
 
-```TypeScript
-'use static'
+<!-- @[StaDynComponent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynComponent/entry/src/main/ets/pages/StaDynComponent.ets) -->
 
-// entry/src/main/ets/pages/Index.ets
+```TypeScript
+// entry/src/main/ets/pages/StaDynComponent.ets
 import { Entry, Component, Column, ComponentV2 } from '@ohos.arkui.component';
 
 import { ChildComponent, ChildComponentV2 } from 'dynamic_module';
@@ -165,6 +179,7 @@ struct MainPage {
     Column() {
       ChildComponent()
     }
+    .width('100%')
   }
 }
 
@@ -189,6 +204,11 @@ struct MainPageV2 {
     Column() {
       ChildComponentV2()
     }
+    .width('100%')
   }
 }
 ```
+
+示例效果图：
+
+![arkts-sta-interop-dyn-component-demo1](figures/arkts-sta-interop-dyn-component-demo1.png)

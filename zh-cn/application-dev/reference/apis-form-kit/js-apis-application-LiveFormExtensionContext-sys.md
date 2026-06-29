@@ -50,7 +50,9 @@ LiveFormExtensionContext是LiveFormExtensionAbility的上下文环境。
 
 ### connectServiceExtensionAbility<sup>21+<sup>
 
-connectServiceExtensionAbility(want: Want, connection: ConnectOptions): number
+ArkTS-Dyn: connectServiceExtensionAbility(want: Want, connection: ConnectOptions): number
+
+ArkTS-Sta: connectServiceExtensionAbility(want: Want, connection: ConnectOptions): long
 
 将当前LiveFormExtensionAbility客户端连接到一个[ServiceExtensionAbility](../../application-models/serviceextensionability-sys.md)服务端。
 
@@ -70,6 +72,10 @@ ServiceExtensionAbility提供后台服务扩展能力，支持后台运行并对
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -81,7 +87,7 @@ ServiceExtensionAbility提供后台服务扩展能力，支持后台运行并对
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 返回连接id，客户端可以通过[disconnectServiceExtensionAbility](#disconnectserviceextensionability21)传入该连接id来断开连接。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: long  | 返回连接id，客户端可以通过[disconnectServiceExtensionAbility](#disconnectserviceextensionability21)传入该连接id来断开连接。 |
 
 **错误码：**
 
@@ -175,7 +181,9 @@ struct MyLiveFormPage {
 
 ### disconnectServiceExtensionAbility<sup>21+<sup>
 
-disconnectServiceExtensionAbility(connectionId: number): Promise\<void>
+ArkTS-Dyn: disconnectServiceExtensionAbility(connectionId: number): Promise\<void>
+
+ArkTS-Sta: disconnectServiceExtensionAbility(connectionId: long): Promise\<void>
 
 断开与[ServiceExtensionAbility](../../application-models/serviceextensionability-sys.md)的连接，断开连接之后开发者需要将连接成功时返回的IRemoteObject对象置空。使用Promise异步回调。
 
@@ -187,11 +195,15 @@ ServiceExtensionAbility是一类特殊的[ExtensionAbility](../../application-mo
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| connectionId | number | 是 | 连接的ServiceExtensionAbility的连接id，即[connectServiceExtensionAbility](#connectserviceextensionability21)返回的connectionId。 |
+| connectionId | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是 | 连接的ServiceExtensionAbility的连接id，即[connectServiceExtensionAbility](#connectserviceextensionability21)返回的connectionId。 |
 
 **返回值：**
 

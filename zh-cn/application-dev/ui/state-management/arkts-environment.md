@@ -37,9 +37,9 @@ Environment和[UIContext](../../reference/apis-arkui/arkts-apis-uicontext-uicont
   export default class EntryAbility extends UIAbility {
     onWindowStageCreate(windowStage: window.WindowStage) {
       windowStage.loadContent('pages/Index');
-      let window = windowStage.getMainWindow();
-      window.then(window => {
-        let uiContext = window.getUIContext();
+      let mainWindow = windowStage.getMainWindow();
+      mainWindow.then(mainWindowInstance => {
+        let uiContext = mainWindowInstance.getUIContext();
         // Environment在UIContext.runScopedTask里调用明确上下文
         uiContext.runScopedTask(() => {
           Environment.envProp('languageCode', 'en');
@@ -62,7 +62,7 @@ Environment和[UIContext](../../reference/apis-arkui/arkts-apis-uicontext-uicont
   Environment.envProp('languageCode', 'en');
   ```
 
-- 在自定义组件中通过@StorageProp获取languageCode的值。
+- 在自定义组件中通过[@StorageProp](./arkts-appstorage.md#storageprop)获取languageCode的值。
 
   <!-- @[showsecond_details](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvironmentProject/entry/src/main/ets/pages/ShowDetails.ets) --> 
   
@@ -75,7 +75,7 @@ Environment和[UIContext](../../reference/apis-arkui/arkts-apis-uicontext-uicont
 > **说明：**
 >
 > 应用无法修改环境变量参数，因此使用@StorageProp获取。这样即使在组件内修改，也不会同步回AppStorage中，影响其他组件处获取环境变量的结果。
-  <!-- @[ui_Environment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvironmentProject/entry/src/main/ets/pages/UiEnvironment.ets) --> 
+  <!-- @[ui_Environment](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvironmentProject/entry/src/main/ets/pages/UiEnvironment.ets) -->  
   
   ``` TypeScript
   // 将设备languageCode存入AppStorage中
@@ -91,11 +91,17 @@ Environment和[UIContext](../../reference/apis-arkui/arkts-apis-uicontext-uicont
         Column() {
           // 输出当前设备的languageCode
           Text(this.languageCode)
+            .fontSize(20)
+            .margin(10)
         }
+        .width('100%')
       }
+      .height('100%')
     }
   }
   ```
+
+  ![environment-ui](figures/environment-ui.png)
 
 ### 应用逻辑使用Environment
   <!-- @[applied_logic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnvironmentProject/entry/src/main/ets/pages/AppliedLogic.ets) --> 

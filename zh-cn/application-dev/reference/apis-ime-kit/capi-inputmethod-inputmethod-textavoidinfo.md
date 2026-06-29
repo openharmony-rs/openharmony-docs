@@ -12,7 +12,7 @@ typedef struct InputMethod_TextAvoidInfo InputMethod_TextAvoidInfo
 
 ## 概述
 
-输入框避让信息。输入框用于避让键盘的信息。
+输入框避让信息。输入框用于避让键盘显示区域的信息。
 
 **起始版本：** 12
 

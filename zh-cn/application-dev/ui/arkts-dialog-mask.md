@@ -73,6 +73,8 @@ ArkUI提供多种弹出框，不同类型的弹出框具备不同的蒙层定制
 
 设置autoCancel为false，取消默认点击蒙层时弹窗消失。
 
+ArkTS-Dyn示例：
+
 <!-- @[custom_dialog_control_autoCancel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
 
 ``` TypeScript
@@ -100,9 +102,41 @@ ArkUI提供多种弹出框，不同类型的弹出框具备不同的蒙层定制
     }
   }
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[custom_dialog_control_autoCancel](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
+
+``` TypeScript
+autoCancelOpt: promptAction.CustomDialogOptions = {
+  builder: (): void => {
+    this.myBuilder();
+  },
+  autoCancel: false,
+} as promptAction.CustomDialogOptions;
+// ...
+build(): void {
+  NavDestination() {
+    Column() {
+      Button('openCustomDialog autoCancel:false')
+        .width('100%')
+        .margin({ top: 10 })
+        .onClick((): void => {
+          this.getUIContext().getPromptAction().openCustomDialog(this.autoCancelOpt);
+        })
+
+      // ...
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
  ![dialog_mask_autoCancel](figures/dialog_mask_autoCancel.gif)
 
 设置isModal为false，将默认的模态弹出框变为非模态弹出框。
+
+ArkTS-Dyn示例：
 
 <!-- @[custom_dialog_control_modal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
 
@@ -132,6 +166,37 @@ ArkUI提供多种弹出框，不同类型的弹出框具备不同的蒙层定制
     }
   }
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[custom_dialog_control_modal](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
+
+``` TypeScript
+modalOpt: promptAction.CustomDialogOptions = {
+  builder: (): void => {
+    this.myBuilder();
+  },
+  isModal: false,
+} as promptAction.CustomDialogOptions;
+// ...
+build(): void {
+  NavDestination() {
+    Column() {
+      // ...
+      Button('openCustomDialog isModal:false')
+        .width('100%')
+        .margin({ top: 10 })
+        .onClick((): void => {
+          this.getUIContext().getPromptAction().openCustomDialog(this.modalOpt);
+        })
+
+      // ...
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
  ![dialog_mask_modal](figures/dialog_mask_modal.PNG)
 
 
@@ -141,6 +206,8 @@ ArkUI提供多种弹出框，不同类型的弹出框具备不同的蒙层定制
 
 
 设置maskRect和maskColor，实现蒙层区域和蒙层颜色的设置。
+
+ArkTS-Dyn示例：
 
 <!-- @[custom_dialog_control_mask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
 
@@ -176,10 +243,50 @@ ArkUI提供多种弹出框，不同类型的弹出框具备不同的蒙层定制
     }
   }
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[custom_dialog_control_mask](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
+
+``` TypeScript
+maskOpt: promptAction.CustomDialogOptions = {
+  builder: (): void => {
+    this.myBuilder();
+  },
+  maskRect: {
+    x: 0,
+    y: 10,
+    width: '100%',
+    height: '90%'
+  },
+  maskColor: '#33AA0000'
+} as promptAction.CustomDialogOptions;
+// ...
+build(): void {
+  NavDestination() {
+    Column() {
+      // ...
+      Button('openCustomDialog maskOpt')
+        .width('100%')
+        .margin({ top: 10 })
+        .onClick((): void => {
+          this.getUIContext().getPromptAction().openCustomDialog(this.maskOpt);
+        })
+
+      // ...
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
  ![dialog_mask_mask](figures/dialog_mask_mask.PNG)
 
 
 在levelMode为LevelMode.EMBEDDED下，展示不同immersiveMode对蒙层在导航栏和状态栏的延伸效果。
+
+ArkTS-Dyn示例：
+
 <!-- @[custom_dialog_control_immersive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
 
 ``` TypeScript
@@ -211,6 +318,41 @@ ArkUI提供多种弹出框，不同类型的弹出框具备不同的蒙层定制
     }
   }
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[custom_dialog_control_immersive](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
+
+``` TypeScript
+@State immersiveMode: ImmersiveMode = ImmersiveMode.DEFAULT;
+// ...
+build(): void {
+  NavDestination() {
+    Column() {
+      // ...
+      Button('openCustomDialog immersiveMode')
+        .width('100%')
+        .margin({ top: 10 })
+        .onClick((): void => {
+          this.immersiveMode =
+            this.immersiveMode == ImmersiveMode.DEFAULT ? ImmersiveMode.EXTEND : ImmersiveMode.DEFAULT;
+          this.getUIContext().getPromptAction().openCustomDialog({
+            builder: (): void => {
+              this.myBuilder();
+            },
+            levelMode: LevelMode.EMBEDDED,
+            immersiveMode: this.immersiveMode,
+          })
+        })
+
+      // ...
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+ 
  ![dialog_mask_immersiveMode](figures/dialog_mask_immersiveMode.gif)
 
 ## 弹出框蒙层动画控制
@@ -218,6 +360,9 @@ ArkUI提供多种弹出框，不同类型的弹出框具备不同的蒙层定制
 该示例通过transition和maskTransition分别展示弹出框在蒙层动画方面的能力。
 
 设置transition，实现弹出框与蒙层整体的动画。
+
+ArkTS-Dyn示例：
+
 <!-- @[custom_dialog_control_transition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
 
 ``` TypeScript
@@ -246,9 +391,43 @@ ArkUI提供多种弹出框，不同类型的弹出框具备不同的蒙层定制
     }
   }
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[custom_dialog_control_transition](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
+
+``` TypeScript
+transitionOpt: promptAction.CustomDialogOptions = {
+  builder: (): void => {
+    this.myBuilder();
+  },
+  transition: TransitionEffect.OPACITY.animation({ duration: 3000 })
+} as promptAction.CustomDialogOptions;
+// ...
+build(): void {
+  NavDestination() {
+    Column() {
+      // ...
+      Button('openCustomDialog transition')
+        .width('100%')
+        .margin({ top: 10 })
+        .onClick((): void => {
+          this.getUIContext().getPromptAction().openCustomDialog(this.transitionOpt);
+        })
+
+      // ...
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
  ![dialog_mask_transition](figures/dialog_mask_transition.gif)
 
 设置maskTransition，实现弹出框中蒙层单独的动画定制能力。
+
+ArkTS-Dyn示例：
+
 <!-- @[custom_dialog_control_mask_transition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
 
 ``` TypeScript
@@ -265,9 +444,30 @@ Button('openCustomDialog maskTransition')
     });
   })
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[custom_dialog_control_mask_transition](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
+
+``` TypeScript
+Button('openCustomDialog maskTransition')
+  .width('100%')
+  .margin({ top: 10 })
+  .onClick((): void => {
+    this.getUIContext().getPromptAction().openCustomDialog({
+      builder: (): void => {
+        this.myBuilder();
+      },
+      maskTransition: TransitionEffect.OPACITY.animation({ duration: 2000 })
+        .combine(TransitionEffect.rotate({ z: 1, angle: 180 })),
+    });
+  })
+```
  ![dialog_mask_maskTransition](figures/dialog_mask_maskTransition.gif)
 
 [CustomDialog](arkts-common-components-custom-dialog.md)虽然不支持transition接口，但与之对应的openAnimation和closeAnimation接口在动画的打开和关闭时可进行定制，示例代码如下：
+
+ArkTS-Dyn示例：
 
 <!-- @[custom_dialog_animation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogAnimation.ets) -->
 
@@ -329,10 +529,86 @@ export struct CustomDialogAnimation {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[custom_dialog_animation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogAnimation.ets) -->
+
+``` TypeScript
+// xxx.ets
+import {
+  CustomDialog,
+  Component,
+  Entry,
+  Column,
+  Text,
+  Button,
+  NavDestination,
+  CustomDialogController
+} from '@kit.ArkUI';
+
+@CustomDialog
+@Component
+struct CustomDialogAnimationBuilder {
+  controller?: CustomDialogController;
+
+  build(): void {
+    Column() {
+      Text('title')
+        .margin(10)
+        .fontSize(20)
+      Button('button1')
+        .margin(10)
+        .fontSize(20)
+        .onClick((): void => {
+          this.controller?.close();
+        })
+      Button('button2')
+        .margin(10)
+        .fontSize(20)
+        .onClick((): void => {
+          this.controller?.close();
+        })
+    }.width('100%')
+    .height('50%')
+  }
+}
+
+@Entry
+@Component
+export struct CustomDialogAnimation {
+  animationController: CustomDialogController | null =
+    new CustomDialogController({
+      builder: CustomDialogAnimationBuilder(),
+      closeAnimation: { duration: 2000 },
+      openAnimation: { duration: 2000 }
+    });
+
+  aboutToDisappear(): void {
+    this.animationController = null;
+  }
+
+  build(): void {
+    NavDestination() {
+      Column() {
+        Button('CustomDialogController animate')
+          .width('100%')
+          .margin({ top: 10 })
+          .onClick((): void => {
+            this.animationController?.open();
+          })
+      }
+    }
+  }
+}
+```
+
  ![CustomDialogController](figures/dialog_mask_CustomDialogController.gif)
 
 
 ## 完整示例
+
+ArkTS-Dyn示例：
 
 <!-- @[custom_dialog_control](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
 
@@ -453,4 +729,139 @@ export struct CustomDialogControl {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[custom_dialog_control](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
+
+``` TypeScript
+// xxx.ets
+import {
+  Entry,
+  Component,
+  Column,
+  Text,
+  Button,
+  promptAction,
+  NavDestination,
+  Builder,
+  TransitionEffect
+} from '@kit.ArkUI';
+import { ImmersiveMode, LevelMode } from '@ohos.promptAction';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+export struct CustomDialogControl {
+  @State immersiveMode: ImmersiveMode = ImmersiveMode.DEFAULT;
+
+  autoCancelOpt: promptAction.CustomDialogOptions = {
+    builder: (): void => {
+      this.myBuilder();
+    },
+    autoCancel: false,
+  } as promptAction.CustomDialogOptions;
+
+  modalOpt: promptAction.CustomDialogOptions = {
+    builder: (): void => {
+      this.myBuilder();
+    },
+    isModal: false,
+  } as promptAction.CustomDialogOptions;
+
+  maskOpt: promptAction.CustomDialogOptions = {
+    builder: (): void => {
+      this.myBuilder();
+    },
+    maskRect: {
+      x: 0,
+      y: 10,
+      width: '100%',
+      height: '90%'
+    },
+    maskColor: '#33AA0000'
+  } as promptAction.CustomDialogOptions;
+
+  transitionOpt: promptAction.CustomDialogOptions = {
+    builder: (): void => {
+      this.myBuilder();
+    },
+    transition: TransitionEffect.OPACITY.animation({ duration: 3000 })
+  } as promptAction.CustomDialogOptions;
+
+  @Builder
+  myBuilder(): void {
+    Column() {
+      Text('title').margin(10).fontSize(20)
+      Button('button1').margin(10).fontSize(20)
+      Button('button2').margin(10).fontSize(20)
+    }.width('100%').height('50%')
+  }
+
+  build(): void {
+    NavDestination() {
+      Column() {
+        Button('openCustomDialog autoCancel:false')
+          .width('100%')
+          .margin({ top: 10 })
+          .onClick((): void => {
+            this.getUIContext().getPromptAction().openCustomDialog(this.autoCancelOpt);
+          })
+
+        Button('openCustomDialog isModal:false')
+          .width('100%')
+          .margin({ top: 10 })
+          .onClick((): void => {
+            this.getUIContext().getPromptAction().openCustomDialog(this.modalOpt);
+          })
+
+        Button('openCustomDialog maskOpt')
+          .width('100%')
+          .margin({ top: 10 })
+          .onClick((): void => {
+            this.getUIContext().getPromptAction().openCustomDialog(this.maskOpt);
+          })
+
+        Button('openCustomDialog transition')
+          .width('100%')
+          .margin({ top: 10 })
+          .onClick((): void => {
+            this.getUIContext().getPromptAction().openCustomDialog(this.transitionOpt);
+          })
+
+        Button('openCustomDialog immersiveMode')
+          .width('100%')
+          .margin({ top: 10 })
+          .onClick((): void => {
+            this.immersiveMode =
+              this.immersiveMode == ImmersiveMode.DEFAULT ? ImmersiveMode.EXTEND : ImmersiveMode.DEFAULT;
+            this.getUIContext().getPromptAction().openCustomDialog({
+              builder: (): void => {
+                this.myBuilder();
+              },
+              levelMode: LevelMode.EMBEDDED,
+              immersiveMode: this.immersiveMode,
+            })
+          })
+
+        Button('openCustomDialog maskTransition')
+          .width('100%')
+          .margin({ top: 10 })
+          .onClick((): void => {
+            this.getUIContext().getPromptAction().openCustomDialog({
+              builder: (): void => {
+                this.myBuilder();
+              },
+              maskTransition: TransitionEffect.OPACITY.animation({ duration: 2000 })
+                .combine(TransitionEffect.rotate({ z: 1, angle: 180 })),
+            });
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+  }
+}
+```
+
  ![openCustomDialog](figures/dialog_mask_openCustomDialog.gif)

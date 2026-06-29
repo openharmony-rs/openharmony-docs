@@ -12,6 +12,8 @@ OHAudio音频播放状态变化示意图：
 
 ![OHAudioRenderer status change](figures/ohaudiorenderer-status-change.png)
 
+当音频流处于工作状态（非released状态）时，需要占用系统的音频流资源。由于系统对音频流数量有限制，所以当客户端暂时不使用音频流时，调用OH_AudioRenderer_Release()回收音频资源，做好资源利用，避免后续创建音频流失败。
+
 ## 使用入门
 
 开发者要使用OHAudio提供的播放能力，需要添加对应的头文件。
@@ -86,9 +88,10 @@ OH_AudioStreamBuilder_Destroy(builder);
    创建音频播放构造器后，可以设置音频流所需要的参数，可以参考下面的案例。
 
    <!-- @[Render_ConfigStream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
-
+   
    ``` C++
    // 设置音频采样率。
+   // 从API版本26.0.0开始：音频渲染扩展支持8000Hz到384000Hz范围内以10Hz为步长的采样率值。具体设备支持的采样率规格会存在差异。
    const int SAMPLING_RATE_48K = 48000;
    OH_AudioStreamBuilder_SetSamplingRate(builder, SAMPLING_RATE_48K);
    // 设置音频声道。

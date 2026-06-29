@@ -54,6 +54,46 @@ Invalid parameter value.
 
 
 
+## 16700003 禁止后台调用
+
+**错误信息**
+
+Background usage is prohibited.
+
+**错误描述**
+
+禁止后台调用。
+
+**可能原因**
+
+后台调用。
+
+**处理步骤**
+
+请调用方处于前台调用。
+
+
+
+## 16700004 联系人数量超过限制
+
+**错误信息**
+
+The number of contacts exceeds the limit.
+
+**错误描述**
+
+联系人数量超过限制。
+
+**可能原因**
+
+传入的联系人数量超过限制。
+
+**处理步骤**
+
+请检查联系人数量。
+
+
+
 ## 16700101 查询数据库失败
 
 **错误信息**
@@ -136,6 +176,8 @@ Failed to open contact portrait file.
 
 ## 401 系统内部错误
 
+### 内部关联联系人ID无效
+
 **错误信息**
 
 Internal error. Invalid contact id. Failed to generate contact profile.
@@ -151,6 +193,8 @@ Internal error. Invalid contact id. Failed to generate contact profile.
 **处理步骤**
 
 系统异常，请稍后重试。
+
+### 保存联系人头像失败
 
 **错误信息**
 
@@ -168,6 +212,8 @@ Internal error. Failed to save contact portrait.
 
 检查文件。
 
+### 数据库查询插入结果集为空指针
+
 **错误信息**
 
 Internal error. The query resultSet is nullptr.
@@ -184,6 +230,8 @@ Internal error. The query resultSet is nullptr.
 
 系统异常，请稍后重试。
 
+### 数据库查询插入结果集存在但无数据
+
 **错误信息**
 
 Internal error. The query resultSet is empty.
@@ -199,6 +247,8 @@ Internal error. The query resultSet is empty.
 **处理步骤**
 
 系统异常，请稍后重试。
+
+### 内部关联联系人rawId无效
 
 **错误信息**
 

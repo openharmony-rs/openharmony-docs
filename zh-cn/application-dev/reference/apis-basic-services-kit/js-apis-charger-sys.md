@@ -35,7 +35,7 @@ import charger from '@ohos.charger';
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力：**SystemCapability.PowerManager.BatteryManager.Core
+**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
 **ArkTS-Dyn起始版本：** 10
 

@@ -185,6 +185,7 @@ getHdrComposedPixelmapWithOptions(options?: HdrComposeOptions): Promise\<PixelMa
 
 ArkTS-Dyn示例：
 ```ts
+// EntryAbility.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function GetHdrComposedPixelmapWithOptions(picture : image.Picture) {
@@ -214,6 +215,7 @@ async function GetHdrComposedPixelmapWithOptions(picture : image.Picture) {
 
 ArkTS-Sta示例：
 ```ts
+// EntryAbility.ets
 async function GetHdrComposedPixelmapWithOptions(picture : image.Picture) {
   if (picture == null) {
     console.error('picture is null');
@@ -247,9 +249,9 @@ hdrComposeToMainPixelmap(): Promise\<void>
 
 调用该接口的Picture对象中必须包含主图、增益图。
 
-**起始版本**：26.0.0
+**起始版本：** 26.0.0
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -271,6 +273,7 @@ hdrComposeToMainPixelmap(): Promise\<void>
 **示例：**
 
 ```ts
+// EntryAbility.ets
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 

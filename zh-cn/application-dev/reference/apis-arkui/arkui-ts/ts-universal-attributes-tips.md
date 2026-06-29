@@ -14,7 +14,9 @@
 >
 >  - 从API version 19开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  - 目前支持通过外接鼠标、手写笔以及触控板触发。
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 目前支持通过外接鼠标、手写笔以及触控板触发。
 
 ## bindTips
 
@@ -28,7 +30,7 @@ ArkTS-Sta: bindTips(message: TipsMessageType | undefined, options?: TipsOptions)
 >
 > 当绑定bindTips的组件设置通用属性[enable](ts-universal-attributes-enable.md#enabled)为false时，仍支持弹出悬浮气泡。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -59,15 +61,15 @@ ArkTS-Sta: bindTips(message: TipsMessageType | undefined, options?: TipsOptions)
 
 | 名称                                  | 类型                                                         | 只读 | 可选 | 说明                                                      |
 | ------------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| appearingTime         |           ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 否    | 是  |设置悬浮气泡的显示时延。显示时延的最大值为4000ms，设置超过4000ms的值以4000ms为准。<br/>默认值：700<br/>单位：ms<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23 |
-| disappearingTime                 |   ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 否   | 是  | 设置悬浮气泡的隐藏时延。隐藏时延的最大值为4000ms，设置超过4000ms的值以4000ms为准。<br/>默认值：300<br/>单位：ms<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。  <br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23  |
-| appearingTimeWithContinuousOperation    |     ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 否   | 是  | 多个组件连续弹出悬浮气泡时，悬浮气泡的显示时延。显示时延的最大值为4000ms，设置超过4000ms的值以4000ms为准。 <br/>默认值：300<br/>单位：ms<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。  <br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23  |
-| disappearingTimeWithContinuousOperation |     ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 否   | 是  | 多个组件连续弹出悬浮气泡时，悬浮气泡的隐藏时延。隐藏时延的最大值为4000ms，设置超过4000ms的值以4000ms为准。 <br/>默认值：0<br/>单位：ms<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。  <br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23  |
-| enableArrow        | boolean                                                      | 否   | 是  | 设置是否显示气泡箭头。<br/>默认值：true<br/>true：显示箭头；false：不显示箭头。<br/>**说明：** <br/>当页面可用空间无法让气泡完全避让时，气泡会覆盖到组件上并且不显示气泡箭头。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23 |
-| arrowPointPosition     | [ArrowPointPosition](ts-appendix-enums.md#arrowpointposition11) | 否   | 是  | 气泡箭头相对于父组件显示位置，气泡箭头在垂直和水平方向上有 "Start"、"Center"、"End"三个位置点可选。所有位置点均位于父组件区域范围内，不会超出父组件的边界范围，也不会覆盖圆角范围。<br/>默认值：ArrowPointPosition.CENTER<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23 |
-| arrowWidth           | [Dimension](ts-types.md#dimension10)                  | 否   | 是  | 设置气泡箭头宽度。若所设置的宽度超过所在边的长度减去两倍的气泡圆角大小，则不绘制气泡箭头。<br/>默认值：16<br/>单位：vp<br/>**说明：**<br />不支持设置百分比。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23 |
-| arrowHeight          | [Dimension](ts-types.md#dimension10)                  | 否   | 是  | 设置气泡箭头高度。<br/>默认值：8<br/>单位：vp<br/>**说明：**<br />不支持设置百分比。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23 |
-| showAtAnchor<sup>20+</sup> | [TipsAnchorType](ts-appendix-enums.md#tipsanchortype20)                  | 否   | 是  | 设置Tips跟随类型。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>默认值：TipsAnchorType.TARGET<br/>**说明：**<br />Tips的跟随类型为TipsAnchorType.CURSOR时，Tips不显示箭头。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  <br/> **ArkTS-Dyn起始版本：** 20 <br/> **ArkTS-Sta起始版本：** 23  |
+| appearingTime         |           ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 否    | 是  |设置悬浮气泡的显示时延。显示时延的最大值为4000ms，设置超过4000ms的值以4000ms为准。<br/>默认值：700<br/>单位：ms<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23 |
+| disappearingTime                 |   ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 否   | 是  | 设置悬浮气泡的隐藏时延。隐藏时延的最大值为4000ms，设置超过4000ms的值以4000ms为准。<br/>默认值：300<br/>单位：ms<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。  <br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23  |
+| appearingTimeWithContinuousOperation    |     ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 否   | 是  | 多个组件连续弹出悬浮气泡时，悬浮气泡的显示时延。显示时延的最大值为4000ms，设置超过4000ms的值以4000ms为准。 <br/>默认值：300<br/>单位：ms<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。  <br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23  |
+| disappearingTimeWithContinuousOperation |     ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 否   | 是  | 多个组件连续弹出悬浮气泡时，悬浮气泡的隐藏时延。隐藏时延的最大值为4000ms，设置超过4000ms的值以4000ms为准。 <br/>默认值：0<br/>单位：ms<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。  <br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23  |
+| enableArrow        | boolean                                                      | 否   | 是  | 设置是否显示气泡箭头。<br/>默认值：true<br/>true：显示箭头；false：不显示箭头。<br/>**说明：** <br/>当页面可用空间无法让气泡完全避让时，气泡会覆盖到组件上并且不显示气泡箭头。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23 |
+| arrowPointPosition     | [ArrowPointPosition](ts-appendix-enums.md#arrowpointposition11) | 否   | 是  | 气泡箭头相对于父组件显示位置，气泡箭头在垂直和水平方向上有 "Start"、"Center"、"End"三个位置点可选。所有位置点均位于父组件区域范围内，不会超出父组件的边界范围，也不会覆盖圆角范围。<br/>默认值：ArrowPointPosition.CENTER<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23 |
+| arrowWidth           | [Dimension](ts-types.md#dimension10)                  | 否   | 是  | 设置气泡箭头宽度。若所设置的宽度超过所在边的长度减去两倍的气泡圆角大小，则不绘制气泡箭头。<br/>默认值：16<br/>单位：vp<br/>**说明：**<br />不支持设置百分比。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23 |
+| arrowHeight          | [Dimension](ts-types.md#dimension10)                  | 否   | 是  | 设置气泡箭头高度。<br/>默认值：8<br/>单位：vp<br/>**说明：**<br />不支持设置百分比。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 19 <br/> **ArkTS-Sta起始版本：** 23 |
+| showAtAnchor<sup>20+</sup> | [TipsAnchorType](ts-appendix-enums.md#tipsanchortype20)                  | 否   | 是  | 设置Tips跟随类型。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>默认值：TipsAnchorType.TARGET<br/>**说明：**<br />Tips的跟随类型为TipsAnchorType.CURSOR时，Tips不显示箭头。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。  <br/> **ArkTS-Dyn起始版本：** 20 <br/> **ArkTS-Sta起始版本：** 23  |
 
 ## TipsMessageType
 
@@ -75,7 +77,7 @@ type TipsMessageType = ResourceStr | StyledString
 
 悬浮气泡弹窗信息。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

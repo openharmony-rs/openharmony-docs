@@ -121,7 +121,7 @@ let want : Want = {
 }
 
 export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
-  onWorkStart(workInfo: workScheduler.WorkInfo) {
+  onWorkStart(workInfo: workScheduler.WorkInfo): void {
     console.info(`onWorkStart, workInfo = ${JSON.stringify(workInfo)}`);
       // 拉起对应的service
       this.context.startServiceExtensionAbility(want).then(() => {
@@ -131,7 +131,7 @@ export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtens
       });
   }
 
-  onWorkStop(workInfo: workScheduler.WorkInfo) {
+  onWorkStop(workInfo: workScheduler.WorkInfo): void {
     console.info(`onWorkStop, workInfo is ${JSON.stringify(workInfo)}`);
   }
 }
@@ -222,11 +222,11 @@ let want : Want = {
 }
 
 export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
-  onWorkStart(workInfo: workScheduler.WorkInfo) {
+  onWorkStart(workInfo: workScheduler.WorkInfo): void {
     console.info(`onWorkStart, workInfo = ${JSON.stringify(workInfo)}`);
   }
 
-  onWorkStop(workInfo: workScheduler.WorkInfo) {
+  onWorkStop(workInfo: workScheduler.WorkInfo): void {
     console.info(`onWorkStop, workInfo is ${JSON.stringify(workInfo)}`);
       // 停止对应的service
       this.context.stopServiceExtensionAbility(want).then(() => {

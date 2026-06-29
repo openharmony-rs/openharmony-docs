@@ -1,7 +1,7 @@
 # XComponentNode
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
+<!--Owner: @pengzhiwen3-->
 <!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -11,11 +11,13 @@
 
 > **说明：**
 >
-> 从API version 12开始废弃，建议使用[类型为XComponent的typeNode](./js-apis-arkui-frameNode.md#xcomponent12)的方式实现。
+> - 从API version 12开始废弃，建议使用类型为[XComponent](./js-apis-arkui-typeNode.md#xcomponent)的typeNode的方式实现。
 >
-> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
-> 当前不支持在预览器中使用XComponentNode。
+> - 当前不支持在预览器中使用XComponentNode。
 
 ## 导入模块
 
@@ -33,7 +35,7 @@ XComponentNode的构造函数。
 
 > **说明：**
 >
-> 从API version 11开始支持，从API version 12开始废弃，建议使用[createNode](./js-apis-arkui-frameNode.md#createnodexcomponent12)替代。
+> 从API version 11开始支持，从API version 12开始废弃，建议使用[createNode](./js-apis-arkui-typeNode.md#createnodexcomponent)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,7 +44,7 @@ XComponentNode的构造函数。
 | 参数名      | 类型                                                         | 必填 | 说明                                                         |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | uiContext   | [UIContext](arkts-apis-uicontext-uicontext.md)                      | 是   | UI上下文，获取方式可参考[UIContext获取方法](./js-apis-arkui-node.md#uicontext获取方法)。 |
-| options     | [RenderOptions](./js-apis-arkui-builderNode.md#renderoptions) | 是   | XComponentNode的构造可选参数。                               |
+| options     | [RenderOptions](./js-apis-arkui-builderNode.md#renderoptions) | 是   | XComponentNode的构造参数。                               |
 | id          | string                                                       | 是   | XComponent的唯一标识，支持最大的字符串长度128。详见[XComponent](arkui-ts/ts-basic-components-xcomponent.md)组件。 |
 | type        | [XComponentType](arkui-ts/ts-appendix-enums.md#xcomponenttype10) | 是   | 用于指定XComponent组件类型。详见[XComponent](arkui-ts/ts-basic-components-xcomponent.md)组件。 |
 | libraryName | string                                                       | 否   | Native层编译输出动态库名称。详见[XComponent](arkui-ts/ts-basic-components-xcomponent.md)组件。 |
@@ -108,7 +110,7 @@ changeRenderType(type: NodeRenderType): boolean
 ## 示例
 
 ```ts
-import { NodeController, FrameNode, XComponentNode, NodeRenderType, UIContext} from '@kit.ArkUI'
+import { NodeController, FrameNode, XComponentNode, NodeRenderType, UIContext } from '@kit.ArkUI'
 
 class XComponentNodeController extends NodeController {
   private xComponentNode: MyXComponentNode | null = null;

@@ -50,8 +50,8 @@ import { FixedMode, Touch, TouchEvent } from '@kit.InputKit';
 
 | 名称          | 类型   | 只读   | 可选   | 说明                                  |
 | ----------- | ------ | ---- | ---- | ----------------------------------- |
-| fixedDisplayX | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 是    | 适配单手模式下screenX坐标的修正值。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23  |
-| fixedDisplayY | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 是    | 适配单手模式下screenY坐标的修正值。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23  |
+| fixedDisplayX | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 是    | 适配单手模式下screenX坐标的修正值，单位为像素（px）。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23  |
+| fixedDisplayY | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 是    | 适配单手模式下screenY坐标的修正值，单位为像素（px）。 <br>**ArkTS-Dyn起始版本**: 9 <br>**ArkTS-Sta起始版本**：23  |
 | blobId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 是    | 触摸点属性标识。当前仅支持单指触摸：左手触摸为1，右手触摸为2。 <br>**ArkTS-Dyn起始版本**: 24 <br>**ArkTS-Sta起始版本**：24|
 
 ## TouchEvent

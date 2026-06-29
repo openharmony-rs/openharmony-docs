@@ -581,11 +581,10 @@ on(type: 'hceCmd', callback: AsyncCallback\<number[]>): void
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { cardEmulation } from '@kit.ConnectivityKit';
 import { AsyncCallback } from '@kit.BasicServicesKit';
-import { ElementName } from './bundleManager/ElementName'
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { bundleManager, AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
 let hceService: cardEmulation.HceService = new cardEmulation.HceService();
-let element: ElementName;
+let element: bundleManager.ElementName;
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, param: AbilityConstant.LaunchParam) {
@@ -668,7 +667,7 @@ off(type: 'hceCmd', callback?: AsyncCallback\<number[]>): void
 | 参数名   | 类型                    | 必填 | 说明                                         |
 | -------- | ----------------------- | ---- | -------------------------------------------- |
 | type     | string                  | 是   | 要取消订阅的事件类型，固定填"hceCmd"字符串。                         |
-| callback | AsyncCallback\<number[]> | 否   | 回调函数，返回的每个number十六进制表示，范围是0x00~0xFF。 |
+| callback | AsyncCallback\<number[]> | 否   | 回调函数，返回的每个number十六进制表示，范围是0x00~0xFF。不填该参数则取消订阅该type对应的回调。 |
 
 **错误码：**
 
@@ -685,11 +684,10 @@ off(type: 'hceCmd', callback?: AsyncCallback\<number[]>): void
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { cardEmulation } from '@kit.ConnectivityKit';
 import { AsyncCallback } from '@kit.BasicServicesKit';
-import { ElementName } from './bundleManager/ElementName'
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { bundleManager, AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
 let hceService: cardEmulation.HceService = new cardEmulation.HceService();
-let element: ElementName;
+let element: bundleManager.ElementName;
 const apduCallback: AsyncCallback<number[]> = (err, data) => {
   // 处理数据和异常
   console.info("AsyncCallback got apdu data");

@@ -1,7 +1,7 @@
 # 支持无障碍
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zhanghangkai10241-->
+<!--Owner: @wangyinhua-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -52,6 +52,8 @@ accessibilityText支持字符串或资源引用。
 
 示例1：仅有图片且未设置无障碍文本时，播报“图片，单指双击可执行”，用户无法通过语音播报感知此图片按钮的功能。
 
+ArkTS-Dyn示例：
+
 <!-- @[accessibility_text_start01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityTextCase01.ets) -->
 
 ``` TypeScript
@@ -75,7 +77,34 @@ export struct AccessibilityTextCase01 {
 }
 ```
 
-示例2：在示例1的基础上，增加accessibilityText属性，设置“播放，图片，单指双击即可执行”，用户通过语音播报可以感知此图片按钮的功能。
+ArkTS-Sta示例：
+
+<!-- @[accessibility_text_start01](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityTextCase01.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+export struct AccessibilityTextCase01 {
+  build(): void {
+    // ...
+      Column() {
+        // 需确保resource/base/media目录下图标存在，可用其他图标替换演示。
+        Image($r('app.media.play'))
+          .width(60)
+          .height(60)
+          .onClick((event: ClickEvent) => {
+            // 播放音频、视频的核心逻辑
+          })
+      }
+      .backgroundColor('#f1f2f3')
+      // ...
+  }
+}
+```
+
+示例2：在示例1的基础上，增加accessibilityText属性后，设置“播放，图片，单指双击即可执行”，用户通过语音播报可以感知此图片按钮的功能。
+
+ArkTS-Dyn示例：
 
 <!-- @[accessibility_text_start02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityTextCase02.ets) -->
 
@@ -101,6 +130,32 @@ export struct AccessibilityTextCase02 {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[accessibility_text_start02](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityTextCase02.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+export struct AccessibilityTextCase02 {
+  build(): void {
+    // ...
+      Column() {
+        // 需确保resource/base/media目录下图标存在，可用其他图标替换演示。
+        Image($r('app.media.play'))
+          .width(60)
+          .height(60)
+          .onClick((event: ClickEvent) => {
+            // 播放音频、视频的核心逻辑
+          })
+          .accessibilityText('播放')
+      }
+      .backgroundColor('#f1f2f3')
+      // ...
+  }
+}
+```
+
 ## 设置无障碍提醒
 
 [accessibilityDescription](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitydescription)属性用于提供更详细的组件说明，帮助用户理解将要执行的操作以及可能导致什么后果，尤其是当这些后果无法从组件本身属性与无障碍文本accessibilityText中了解到。例如组件状态当前不可使用的原因，系统默认的新手提醒不能表达的含义等场景。该信息在文本内容之后播报，并且如果当前控件有默认的新手提醒（如支持点击的组件，默认新手提醒为：单指双击即可执行）时，accessibilityDescription会替代系统的新手提醒，即仅播报accessibilityDescription。
@@ -110,6 +165,8 @@ export struct AccessibilityTextCase02 {
 以下给出2个示例，对比介绍在Button组件中，如何设置无障碍提醒。
 
 示例1：使用Button作为视频播放全屏按钮，聚焦Column时播报“按钮，单指双击可**执行**”，用户难以理解具体执行内容。
+
+ArkTS-Dyn示例：
 
 <!-- @[accessibility_description_start01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityDescriptionCase01.ets) -->
 
@@ -129,7 +186,31 @@ export struct AccessibilityDescriptionCase01 {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[accessibility_description_start01](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityDescriptionCase01.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+export struct AccessibilityDescriptionCase01 {
+  build(): void {
+    // ...
+      Button("全屏")
+        .width(96)
+        .height(40)
+        .background(Color.Blue)
+        .onClick((event: ClickEvent) => {
+          // 全屏逻辑
+        })
+      // ...
+  }
+}
+```
+
 示例2：在示例1的基础上设置accessibilityDescription后播报“按钮，单指双击即可**全屏**”，用户可以明确是全屏操作。
+
+ArkTS-Dyn示例：
 
 <!-- @[accessibility_description_start02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityDescriptionCase02.ets) -->
 
@@ -142,6 +223,30 @@ export struct AccessibilityDescriptionCase02 {
       Button()
         .background(Color.Blue)
         .onClick(() => {
+          // 全屏逻辑
+        })
+        // 业务自定义提示信息
+        .accessibilityDescription('单指双击即可全屏')
+      // ...
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[accessibility_description_start02](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityDescriptionCase02.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+export struct AccessibilityDescriptionCase02 {
+  build(): void {
+    // ...
+      Button("全屏")
+        .width(96)
+        .height(40)
+        .background(Color.Blue)
+        .onClick((event: ClickEvent) => {
           // 全屏逻辑
         })
         // 业务自定义提示信息
@@ -164,6 +269,8 @@ export struct AccessibilityDescriptionCase02 {
 
 示例1：此场景下有3个可单独聚焦的Text节点，用户难以有效感知完整的时间信息。
 
+ArkTS-Dyn示例：
+
 <!-- @[accessibility_group_start01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityGroupCase01.ets) --> 
 
 ``` TypeScript
@@ -182,7 +289,29 @@ export struct AccessibilityGroupCase01 {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[accessibility_group_start01](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityGroupCase01.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+export struct AccessibilityGroupCase01 {
+  build(): void {
+    // ...
+      Column() {
+        Text('2026年')
+        Text('1月27日')
+        Text('星期二')
+      }
+      // ...
+  }
+}
+```
+
 示例2：在示例1的基础上增加accessibilityGroup后，Column组件可被聚焦，并且将Column组件下的所有Text文本拼接成文本“2026年1月27日星期二”，同时禁止单个Text节点聚焦。
+
+ArkTS-Dyn示例：
 
 <!-- @[accessibility_group_start02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityGroupCase02.ets) --> 
 
@@ -191,6 +320,27 @@ export struct AccessibilityGroupCase01 {
 @Component
 export struct AccessibilityGroupCase02 {
   build() {
+    // ...
+      Column() {
+        Text('2026年')
+        Text('1月27日')
+        Text('星期二')
+      }
+      .accessibilityGroup(true)
+      // ...
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[accessibility_group_start02](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityGroupCase02.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+export struct AccessibilityGroupCase02 {
+  build(): void {
     // ...
       Column() {
         Text('2026年')
@@ -217,6 +367,8 @@ export struct AccessibilityGroupCase02 {
 
 本示例以Text组件为例，设置Text.accessibilityLevel("yes")可被辅助工具识别，若无此设置，“文本1”不可被单独聚焦。
 
+ArkTS-Dyn示例：
+
 <!-- @[accessibility_level_start01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityLevelCase01.ets) -->
 
 ``` TypeScript
@@ -224,6 +376,27 @@ export struct AccessibilityGroupCase02 {
 @Component
 export struct AccessibilityLevelCase01 {
   build() {
+    // ...
+        Column() {
+          Text('HelloWorld')
+          Text('文本1')
+            .accessibilityLevel('yes')
+      }
+      .accessibilityGroup(true)
+      // ...
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[accessibility_level_start01](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityLevelCase01.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+export struct AccessibilityLevelCase01 {
+  build(): void {
     // ...
         Column() {
           Text('HelloWorld')
@@ -252,6 +425,8 @@ export struct AccessibilityLevelCase01 {
 
 这里以Column组件为例，设置其在支持多选的情况下被选中：
 
+ArkTS-Dyn示例：
+
 <!-- @[accessibility_checked_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
 
 ``` TypeScript
@@ -262,6 +437,21 @@ Column() {
   .accessibilityLevel('yes')
   .accessibilityText('分组')
   .accessibilityDescription('Column组件可以被选中，播报的内容是“分组”')
+  .accessibilityChecked(true)
+```
+
+ArkTS-Sta示例：
+
+<!-- @[accessibility_checked_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
+
+``` TypeScript
+Column() {
+  Text('HelloWorld').fontSize(50).fontWeight(FontWeight.Bold)
+}
+.accessibilityGroup(true)
+  .accessibilityLevel('yes')
+  .accessibilityText('分组')
+  .accessibilityDescription('Column组件可以被选中，播报的内容是"分组"')
   .accessibilityChecked(true)
 ```
 
@@ -277,6 +467,8 @@ Column() {
 
 这里以Column组件为例，设置在支持单选的情况下由系统自行确定其选中状态：
 
+ArkTS-Dyn示例：
+
 <!-- @[accessibility_selected_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
 
 ``` TypeScript
@@ -288,6 +480,22 @@ Column() {
   // 请将$r('app.string.UniversalAttributesAccessibility_text7')替换为实际资源文件，在本示例中该资源文件的value值为"分组"
   .accessibilityText('分组')
   .accessibilityDescription('Column组件可以被选中，播报的内容是“分组”')
+  .accessibilitySelected(undefined)
+```
+
+ArkTS-Sta示例：
+
+<!-- @[accessibility_selected_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
+
+``` TypeScript
+Column() {
+  Text('HelloWorld').fontSize(50).fontWeight(FontWeight.Bold)
+}
+.accessibilityGroup(true)
+  .accessibilityLevel('yes')
+  // 请将$r('app.string.UniversalAttributesAccessibility_text7')替换为实际资源文件，在本示例中该资源文件的value值为"分组"
+  .accessibilityText('分组')
+  .accessibilityDescription('Column组件可以被选中，播报的内容是"分组"')
   .accessibilitySelected(undefined)
 ```
 
@@ -308,6 +516,8 @@ Column() {
 
 本示例以Text组件为例，设置accessibilityVirtualNode后，“文本2”在无障碍模式下可被辅助工具识别聚焦并播报，UI仍然显示为“文本1”。
 
+ArkTS-Dyn示例：
+
 <!-- @[virtual_node_example_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/VirtualNodeExample.ets) -->
 
 ``` TypeScript
@@ -321,6 +531,31 @@ struct VirtualNodeExample {
   }
 
   build() {
+    Column() {
+      Text('文本1')
+        .fontSize(50)
+        .fontWeight(FontWeight.Bold)
+    }
+    .accessibilityVirtualNode(this.customAccessibilityNode)
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[virtual_node_example_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/VirtualNodeExample.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct VirtualNodeExample {
+  @Builder customAccessibilityNode(): void {
+    Text('文本2')
+      .fontSize(50)
+      .fontWeight(FontWeight.Bold)
+  }
+
+  build(): void {
     Column() {
       Text('文本1')
         .fontSize(50)
@@ -350,6 +585,8 @@ struct VirtualNodeExample {
 该示例主要演示accessibilityText无障碍文本和accessibilityDescription无障碍说明的播报内容。
 
 其中，对于该组件的无障碍文本的内容，在既拥有文本属性又拥有无障碍文本属性的情况下，当组件被选中时，仅播报无障碍文本内容。
+
+ArkTS-Dyn示例：
 
 <!-- @[accessibility_text_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
 
@@ -392,4 +629,48 @@ export struct AccessibilityText {
 }
 ```
 
-![zh-cn_image_0000001745415556](figures/zh-cn_image_0000001745415556.jpg)
+ArkTS-Sta示例：
+
+<!-- @[accessibility_text_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/AccessibilityText.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+export struct AccessibilityText {
+  @Builder
+  customAccessibilityNode(): void {
+    Column() {
+      Text(`virtual node`)
+    }
+    .width(10)
+      .height(10)
+  }
+
+  build(): void {
+    // ...
+      Row() {
+        // ...
+        Column() {
+          Text('文本1')
+            .fontSize(50)
+            .fontWeight(FontWeight.Bold)
+          Text('文本2')
+            .fontSize(50)
+            .fontWeight(FontWeight.Bold)
+        }
+        .width('100%')
+          .accessibilityGroup(true)
+          .accessibilityLevel('yes')
+          .accessibilityText('分组')
+          .accessibilityDescription('Column组件可以被选中，播报的内容是“分组”')
+          .accessibilityVirtualNode(this.customAccessibilityNode)
+          .accessibilityChecked(true)
+          .accessibilitySelected(undefined)
+      }
+      .height('100%')
+      // ...
+  }
+}
+```
+
+![zh-cn_image_0000001745415556](figures/Supporting-Accessibility.jpg)
