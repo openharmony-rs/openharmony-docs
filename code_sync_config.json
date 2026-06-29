@@ -889,6 +889,11 @@
 						"end_line":328,
 						"name":"c_text_metrics_glyph_info_step2",
 						"start_line":312
+					},
+					{
+						"end_line":237,
+						"name":"c_text_metrics_get_all_case",
+						"start_line":205
 					}
 				]
 			}
