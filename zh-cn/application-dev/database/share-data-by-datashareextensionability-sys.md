@@ -196,7 +196,7 @@
    | -------- | -------- | -------- |
    | name | Ability名称，对应Ability派生的ExtensionAbility类名。 | 是 |
    | type | Ability类型，DataShare对应的Ability类型为“dataShare”，表示基于datashare模板开发的。 | 是 |
-   | uri | 通信使用的URI，是客户端连接服务端的唯一标识。 | 是 |
+   | uri | 通信使用的URI，是客户端链接服务端的唯一标识。 | 是 |
    | exported | 对其他应用是否可见，设置为true时，才能与其他应用进行通信传输数据。 | 是 |
    | readPermission | 访问数据时需要的权限，不配置默认不进行读权限校验。<br>注意：当前DataShareExtensionAbility的权限约束方式与静默访问的权限约束方式不同，请注意区分，切勿混淆，具体可参考[静默访问章节](share-data-by-silent-access-sys.md)。 | 否 |
    | writePermission | 修改数据时需要的权限，不配置默认不进行写权限校验。<br>注意：当前DataShareExtensionAbility的权限约束方式与静默访问的权限约束方式不同，请注意区分，切勿混淆，具体可参考[静默访问章节](share-data-by-silent-access-sys.md)。 | 否 |
