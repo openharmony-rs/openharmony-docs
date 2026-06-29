@@ -36911,6 +36911,11 @@
 						"end_line":625,
 						"name":"set_session_behavior",
 						"start_line":26
+					},
+					{
+						"end_line":427,
+						"name":"set_capturer_mute_hint",
+						"start_line":407
 					}
 				]
 			}
@@ -37041,6 +37046,11 @@
 						"end_line":470,
 						"name":"all_audioCapturer",
 						"start_line":15
+					},
+					{
+						"end_line":341,
+						"name":"set_mute_hint",
+						"start_line":320
 					}
 				]
 			}
@@ -37266,6 +37276,11 @@
 						"end_line":340,
 						"name":"SetCapturerLoopbackEffectEnabled",
 						"start_line":336
+					},
+					{
+						"end_line":492,
+						"name":"cset_mute_hint",
+						"start_line":483
 					}
 				]
 			}
@@ -37341,6 +37356,11 @@
 						"end_line":263,
 						"name":"cset_session_behavior",
 						"start_line":250
+					},
+					{
+						"end_line":314,
+						"name":"cset_capturer_mute_hint",
+						"start_line":305
 					}
 				]
 			}
