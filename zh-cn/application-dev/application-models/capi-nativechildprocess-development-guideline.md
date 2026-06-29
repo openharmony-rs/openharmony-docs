@@ -489,7 +489,7 @@
     通过[native_child_process](../reference/apis-ability-kit/capi-native-child-process-h.md)和[childProcessManager](../reference/apis-ability-kit/js-apis-app-ability-childProcessManager.md)（非SELF_FORK模式）中的接口创建子进程后，主进程可以调用[OH_Ability_KillChildProcess](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_killchildprocess)(int32_t pid)根据传入的pid终止相应的子进程。
 
     <!-- @[kill_child_process_main](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/KillChildProcess/entry/src/main/cpp/MainProcessFile.cpp) -->
-
+    
     ``` C++
     #include <AbilityKit/native_child_process.h>
     // ...
