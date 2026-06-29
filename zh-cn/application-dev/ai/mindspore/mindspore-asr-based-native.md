@@ -40,8 +40,7 @@
 
 <!-- @[player_asr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/ets/pages/player.ets) --> 
 
-```typescript
-// player.ets
+``` TypeScript
 import { media } from '@kit.MediaKit';
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
