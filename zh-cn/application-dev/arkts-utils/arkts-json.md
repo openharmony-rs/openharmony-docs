@@ -107,7 +107,7 @@ JSON字符串中的嵌套引号会破坏其结构，将导致解析失败。
 
 方式1：避免出现嵌套引号的操作。
 
-<!-- @[json_nesting_method1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/ParsingContainingNestedQuotationMarks.ets) -->
+<!-- @[json_nesting_method1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/ParsingContainingNestedQuotationMarks.ets) --> 
 
 ``` TypeScript
 import { JSON } from '@kit.ArkTS';
@@ -138,7 +138,7 @@ interface TestStr {
 
 方式2：将JSON字符串中嵌套的引号进行双重转义，恢复JSON的正常结构。
 
-<!-- @[json_nesting_method2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/ParsingContainingNestedQuotationMarks.ets) -->
+<!-- @[json_nesting_method2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/ParsingContainingNestedQuotationMarks.ets) --> 
 
 ``` TypeScript
 import { JSON } from '@kit.ArkTS';
@@ -172,7 +172,7 @@ interface TestStr {
 
 当JSON字符串中存在小于-(2^53-1)或大于(2^53-1)的整数时，解析后数据会出现精度丢失或不正确的情况。该解析场景需要指定BigIntMode，将大整数解析为BigInt。
 
-<!-- @[containing_bigInt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/ParsingContainingBigInts.ets) -->
+<!-- @[containing_bigInt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/ParsingContainingBigInts.ets) --> 
 
 ``` TypeScript
 import { JSON } from '@kit.ArkTS';
@@ -238,7 +238,7 @@ import { JSON } from '@kit.ArkTS';
 
 在JSON序列化中，浮点数处理存在一个特殊行为：当小数部分为零时，为保持数值的简洁表示，序列化结果会自动省略小数部分。这可能导致精度信息丢失，影响需要精确表示浮点数的场景（如金融金额、科学计量）。以下示例提供解决该场景的方法：
 
-<!-- @[float_number](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/SerializingFloatingPointNumbers.ets) -->
+<!-- @[float_number](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/SerializingFloatingPointNumbers.ets) --> 
 
 ``` TypeScript
 import { JSON } from '@kit.ArkTS';
