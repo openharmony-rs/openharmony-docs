@@ -139,6 +139,7 @@ TextArea有以下2种类型可选择：默认风格，入参是TextContentStyle.
 TextInput({ placeholder: $r('app.string.i_am_placeholder') })
 ```
 
+![textinput-placeholder](figures/textinput-placeholder.png)
 
 
 ### 设置输入框当前的文本内容
@@ -156,7 +157,7 @@ TextInput({
 })
 ```
 
-
+ ![textinput-border](figures/textinput-border.png)
 
 
 
@@ -166,16 +167,32 @@ TextInput({
 
 <!-- @[custom_text_input_background_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets) -->
 
-``` TypeScript
-TextInput({
-  // 请将$r('app.string.i_am_placeholder')替换为实际资源文件，在本示例中该资源文件的value值为"我是提示文本"
-  placeholder: $r('app.string.i_am_placeholder'),
-  // 请将$r('app.string.i_am_current_text_content')替换为实际资源文件，在本示例中该资源文件的value值为"我是当前文本内容"
-  text: $r('app.string.i_am_current_text_content')
-})
-  .backgroundColor(Color.Pink)
-```
 
+![textinput-pink-bg](figures/textinput-pink-bg.png)
+
+
+### 设置输入框自动填充类型
+
+输入框可以通过[contentType](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#contenttype12)属性设置自动填充类型。支持的类型请参考[ContentType](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#contenttype12枚举说明)。
+<!-- @[auto_fill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/AutoFill.ets) -->
+
+ ``` TypeScript
+// 请将$r('app.string.Auto_Fill_PlaceHolder')替换为实际资源文件，在本示例中该资源文件的value值为"输入你的邮箱..."
+TextInput({ placeholder: $r('app.string.Auto_Fill_PlaceHolder') })
+  .width('95%')
+  .height(40)
+  .margin(20)
+  .contentType(ContentType.EMAIL_ADDRESS)
+ ```
+
+
+## 绑定文本输入框事件
+
+文本框主要用于获取用户输入的信息，并将信息处理成数据进行上传，绑定[onChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onchange)事件可以获取输入框内改变的文本内容，绑定[onSubmit](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onsubmit)事件可以获取回车提交的文本信息，绑定[onTextSelectionChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ontextselectionchange10)事件可以获取文本选中时手柄的位置信息或者编辑时光标的位置信息等等。用户也可以使用通用事件进行相应的交互操作。
+
+>  **说明：**
+>
+>  在密码模式下，设置[showPassword](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#showpassword12)属性时，在[onSecurityStateChange](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onsecuritystatechange12)回调中，建议增加状态同步，具体详见如下示例。
 >
 > [onWillInsert](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwillinsert12)、[onDidInsert](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ondidinsert12)、[onWillDelete](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwilldelete12)、[onDidDelete](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#ondiddelete12)回调仅支持系统输入法的场景。
 >
