@@ -6205,6 +6205,20 @@ Allows an application to adjust the policy in gaming scenarios.
 
 **Valid since**: 26.0.0
 
+## ohos.permission.CLI_MANAGE_WEB_SANDBOX
+
+Allows a system application to manage sandbox applications of browsers.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.0.0
+
 ## ohos.permission.QUERY_CLI_TOOL
 
 Allows a system application to query CLI tools.
