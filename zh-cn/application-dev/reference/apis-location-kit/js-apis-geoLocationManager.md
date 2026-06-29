@@ -3444,7 +3444,7 @@ startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&l
 
 stopBluetoothSearch(callback?: Callback&lt;BluetoothScanResult&gt;): void
 
-停止蓝牙扫描,该回调函数需要与startBluetoothSearch接口传入的回调函数保持一致。若无此参数，则取消当前类型的所有订阅。
+停止蓝牙扫描，该回调函数需要与startBluetoothSearch接口传入的回调函数保持一致。若无此参数，则取消当前类型的所有订阅。
 
 **起始版本：** 26.0.0
 
