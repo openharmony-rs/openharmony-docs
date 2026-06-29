@@ -86,7 +86,7 @@ struct SideBarContainerExample {
             this.current = item;
             this.title = 'Index0' + item;
           })
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }.width('100%')
       .justifyContent(FlexAlign.SpaceEvenly)
       // $r('sys.color.mask_fifth')需要替换为开发者所需的资源文件
