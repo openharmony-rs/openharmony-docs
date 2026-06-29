@@ -108,10 +108,11 @@
 3. 实现WorkSchedulerExtension生命周期接口。
    <!-- @[workSchedulerExtension](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/WorkSchedulerAbility/WorkSchedulerAbility.ets) -->
    
-   ```ts
+   ``` TypeScript
    export default class WorkSchedulerAbility extends WorkSchedulerExtensionAbility {
      // 延迟任务开始回调
      onWorkStart(workInfo: workScheduler.WorkInfo) {
+       // ...
        console.info(`onWorkStart, workInfo = ${JSON.stringify(workInfo)}`);
        // 打印 parameters中的参数，如：参数key1
        console.info(`work info parameters: ${JSON.parse(workInfo.parameters?.toString()).key1}`);
@@ -183,16 +184,16 @@
 
 3. 取消延迟任务。
    <!-- @[stopWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/WorkScheduler/entry/src/main/ets/feature/WorkSchedulerSystem.ets) -->
-
-   ```ts
-   // 创建workinfo
+   
+   ``` TypeScript
+   // 创建workInfo
    let workInfo: workScheduler.WorkInfo = {
      workId: 1,
-     networkType: workScheduler.NetworkType.NETWORK_TYPE_WIFI,
+     networkType: workScheduler.NetworkType.NETWORK_TYPE_ANY,
      bundleName: 'ohos.samples.workschedulerextensionability',
      abilityName: 'WorkSchedulerAbility',
+     // ...
    }
-   
    try {
      workScheduler.stopWork(workInfo);
      console.info(`stopWork success`);
