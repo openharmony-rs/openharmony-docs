@@ -23,9 +23,9 @@ The parameter isEnabled is invalid.
 
 **可能原因**
 
-1.传入参数isEnabled的类型错误。
+1. 传入参数isEnabled的类型错误。
 
-2.必填参数未指定。
+2. 必填参数未指定。
 
 
 **处理步骤**
