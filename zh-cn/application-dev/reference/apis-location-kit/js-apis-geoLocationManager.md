@@ -3357,15 +3357,22 @@ findMatchingWlan(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, nee
   }
   ```
   
-  ## BluetoothSearchRequestParams
+  ## BluetoothSearchRequestParams<sup>26+</sup>
 
 蓝牙扫描请求参数。
 
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.Location.Location.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| deviceIdArray | Array&lt;string&gt; | 否 | 否 | 表示设备ID列表，用于过滤扫描结果。单个字符串的长度不超过64，数组的长度不超过1000。仅当扫描到的蓝牙设备ID与该数组中的一个设备ID相同时才通过callback返回该蓝牙设备信息。当传入空数组（数组长度为0）时，不会返回蓝牙扫描结果。数组中每个元素的格式如下："11:22:33:44:55:66"。|
+| deviceIdArray | Array&lt;string&gt; | 否 | 否 | 表示蓝牙设备的地址列表，用于过滤扫描结果。单个字符串的长度不超过64，数组的长度不超过1000。仅当扫描到的蓝牙设备的地址与该数组中的一个设备ID相同时才通过callback返回该蓝牙设备信息。当传入空数组（数组长度为0）时，不会返回蓝扫描结果。数组中每个元素的格式如下："11:22:33:44:55:66"。|
 | rssiThreshold | number | 否 | 是 | 表示RSSI阈值，只扫描RSSI大于此阈值的设备。取值范围为-10000至10000（单位：dBm）。默认是-1000 |
   
 
@@ -3373,8 +3380,7 @@ findMatchingWlan(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, nee
 
 startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&lt;BluetoothScanResult&gt;): void
 
-启动蓝牙扫描并查找指定的蓝牙设备，仅当扫描到的蓝牙设备满足入参 BluetoothSearchRequestParams指定的条件时，设备信息通过callback异步回调
-
+启动蓝牙扫描并查找指定的蓝牙设备，仅当扫描到的蓝牙设备满足入参 BluetoothSearchRequestParams指定的条件时，才通过callback异步返回该蓝牙设备信息。
 
 **起始版本：** 26.0.0
 
@@ -3411,18 +3417,23 @@ startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&l
   ```ts
   import { geoLocationManager } from '@kit.LocationKit';
 
+  private callback = (bluetoothScanResult: geoLocationManager.BluetoothScanResult) => {
+    if (bluetoothScanResult) {
+      console.info('bluetoothScanResult: deviceId=' + bluetoothScanResult.deviceId);
+      try {
+        geoLocationManager.stopBluetoothSearch(this.callback);
+      } catch (err) {
+        console.error("errCode:" + err.code + ", message:" + err.message);
+      }
+    }
+  };
   let request: geoLocationManager.BluetoothSearchRequestParams = {
     'rssiThreshold': -1000,
     'deviceIdArray': ['98:56:07:E6:AA:46','4E:E6:D2:02:27:F9']
   };
+
   try {
-    let callback = (bluetoothScanResult: geoLocationManager.BluetoothScanResult) => {
-      if (bluetoothScanResult) {
-        console.info('bluetoothScanResult: deviceId=' + bluetoothScanResult.deviceId);
-        geoLocationManager.stopBluetoothSearch(callback);
-      }
-    };
-    geoLocationManager.startBluetoothSearch(request, callback);
+    geoLocationManager.startBluetoothSearch(request, this.callback);
   } catch (err) {
     console.error("errCode:" + err.code + ", message:" + err.message);
   }
@@ -3433,7 +3444,7 @@ startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&l
 
 stopBluetoothSearch(callback?: Callback&lt;BluetoothScanResult&gt;): void
 
-该回调函数需要与startBluetoothSearch接口传入的回调函数保持一致。若无此参数，则取消当前类型的所有订阅。
+停止蓝牙扫描,该回调函数需要与startBluetoothSearch接口传入的回调函数保持一致。若无此参数，则取消当前类型的所有订阅。
 
 **起始版本：** 26.0.0
 
