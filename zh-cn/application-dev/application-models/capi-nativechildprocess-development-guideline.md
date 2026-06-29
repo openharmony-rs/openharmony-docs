@@ -403,7 +403,7 @@
     在源文件中引入头文件。
 
     <!-- @[child_get_start_params_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/ChildGetStartParams.cpp) -->
-
+    
     ``` C++
     #include <AbilityKit/native_child_process.h>
     ```
