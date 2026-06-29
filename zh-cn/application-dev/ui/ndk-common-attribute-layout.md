@@ -99,32 +99,53 @@ SetSize()同时写入宽和高，适合固定尺寸组件；SetPercentWidth()通
 
 <!-- @[layout_spacing_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKLayoutSample/entry/src/main/cpp/ArkUINode.h) -->
 
-```C
+``` C
+void SetPadding(float padding)
+{
+    ArkUI_NumberValue value[] = {{.f32 = padding}};
+    ArkUI_AttributeItem item = {value, 1};
+    nativeModule_->setAttribute(handle_, NODE_PADDING, &item);
+}
 void SetPadding(float top, float right, float bottom, float left)
 {
     ArkUI_NumberValue value[] = {{.f32 = top}, {.f32 = right}, {.f32 = bottom}, {.f32 = left}};
     ArkUI_AttributeItem item = {value, 4};
     nativeModule_->setAttribute(handle_, NODE_PADDING, &item);
 }
-
+void SetPercentPadding(float percent)
+{
+    ArkUI_NumberValue value[] = {{.f32 = percent}};
+    ArkUI_AttributeItem item = {value, 1};
+    nativeModule_->setAttribute(handle_, NODE_PADDING_PERCENT, &item);
+}
 void SetPercentPadding(float top, float right, float bottom, float left)
 {
     ArkUI_NumberValue value[] = {{.f32 = top}, {.f32 = right}, {.f32 = bottom}, {.f32 = left}};
     ArkUI_AttributeItem item = {value, 4};
     nativeModule_->setAttribute(handle_, NODE_PADDING_PERCENT, &item);
 }
-
+void SetMargin(float margin)
+{
+    ArkUI_NumberValue value[] = {{.f32 = margin}};
+    ArkUI_AttributeItem item = {value, 1};
+    nativeModule_->setAttribute(handle_, NODE_MARGIN, &item);
+}
 void SetMargin(float top, float right, float bottom, float left)
 {
     ArkUI_NumberValue value[] = {{.f32 = top}, {.f32 = right}, {.f32 = bottom}, {.f32 = left}};
     ArkUI_AttributeItem item = {value, 4};
     nativeModule_->setAttribute(handle_, NODE_MARGIN, &item);
 }
-
 void SetPercentMargin(float percent)
 {
     ArkUI_NumberValue value[] = {{.f32 = percent}};
     ArkUI_AttributeItem item = {value, 1};
+    nativeModule_->setAttribute(handle_, NODE_MARGIN_PERCENT, &item);
+}
+void SetPercentMargin(float top, float right, float bottom, float left)
+{
+    ArkUI_NumberValue value[] = {{.f32 = top}, {.f32 = right}, {.f32 = bottom}, {.f32 = left}};
+    ArkUI_AttributeItem item = {value, 4};
     nativeModule_->setAttribute(handle_, NODE_MARGIN_PERCENT, &item);
 }
 ```
