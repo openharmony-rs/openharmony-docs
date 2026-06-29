@@ -503,7 +503,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
      <!-- @[FormEditDemo_EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
      
      ``` TypeScript
-     // entry/src/main/ets/entryformability/WidgetCard.ets
+     // entry/src/main/ets/entryformability/EntryFormAbility.ets
      import { formBindingData, FormExtensionAbility, formInfo } from '@kit.FormKit';
      import { Want } from '@kit.AbilityKit';
      import { PreferencesUtil } from '../common/PreferencesUtil';
@@ -551,45 +551,45 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
 
    - 卡片布局文件如下。
      <!-- @[FormEditDemo_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/widget/pages/WidgetCard.ets) --> 
-   
-   ``` TypeScript
-   // entry/src/main/ets/widget/pages/WidgetCard.ets
-   let storage: LocalStorage = new LocalStorage();
-   
-   @Entry(storage)
-   @Component
-   struct WidgetCard {
-     @LocalStorageProp('message') title: string = 'Hello World';
-     readonly actionType: string = 'router';
-     readonly abilityName: string = 'EntryAbility';
-     readonly message: string = 'add detail';
-     readonly fullWidthPercent: string = '100%';
-     readonly fullHeightPercent: string = '100%';
-   
-     build() {
-       Row() {
-         Column() {
-           Text(this.title)
-             .fontSize($r('app.float.font_size'))
-             .fontWeight(FontWeight.Medium)
-             .fontColor($r('sys.color.font'))
-         }
-         .width(this.fullWidthPercent)
-       }
-       .height(this.fullHeightPercent)
-       .backgroundColor($r('sys.color.comp_background_primary'))
-       .onClick(() => {
-         postCardAction(this, {
-           action: this.actionType,
-           abilityName: this.abilityName,
-           params: {
-             message: this.message
+     
+     ``` TypeScript
+     // entry/src/main/ets/widget/pages/WidgetCard.ets
+     let storage: LocalStorage = new LocalStorage();
+     
+     @Entry(storage)
+     @Component
+     struct WidgetCard {
+       @LocalStorageProp('message') title: string = 'Hello World';
+       readonly actionType: string = 'router';
+       readonly abilityName: string = 'EntryAbility';
+       readonly message: string = 'add detail';
+       readonly fullWidthPercent: string = '100%';
+       readonly fullHeightPercent: string = '100%';
+     
+       build() {
+         Row() {
+           Column() {
+             Text(this.title)
+               .fontSize($r('app.float.font_size'))
+               .fontWeight(FontWeight.Medium)
+               .fontColor($r('sys.color.font'))
            }
-         });
-       })
+           .width(this.fullWidthPercent)
+         }
+         .height(this.fullHeightPercent)
+         .backgroundColor($r('sys.color.comp_background_primary'))
+         .onClick(() => {
+           postCardAction(this, {
+             action: this.actionType,
+             abilityName: this.abilityName,
+             params: {
+               message: this.message
+             }
+           });
+         })
+       }
      }
-   }
-   ```
+     ```
 
    - 新增CommonData.ets文件，用来定义卡片数据结构。
    <!-- @[FormEditDemo_CommonData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/common/CommonData.ets) --> 
@@ -1085,43 +1085,43 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
 
       ArkTS-Sta示例：
       <!-- @[FormEditUIAbilitySta_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormSta/FormEditUlAbilitySta/entry/src/main/ets/widget/pages/WidgetCard.ets) --> 
-   
-   ``` TypeScript
-   // entry/src/main/ets/widget/pages/WidgetCard.ets
-   @Entry
-   @Component
-   struct WidgetCard {
-     @LocalStorageProp('message') title: string = 'Hello World';
-     readonly actionType: string = 'router';
-     readonly abilityName: string = 'EntryAbility';
-     readonly message: string = 'add detail';
-     readonly fullWidthPercent: string = '100%';
-     readonly fullHeightPercent: string = '100%';
-   
-     build() {
-       Row() {
-         Column() {
-           Text(this.title)
-             .fontSize($r('app.float.font_size'))
-             .fontWeight(FontWeight.Medium)
-             .fontColor($r('sys.color.font'))
-         }
-         .width(this.fullWidthPercent)
-       }
-       .height(this.fullHeightPercent)
-       .backgroundColor($r('sys.color.comp_background_primary'))
-       .onClick(() => {
-         postCardAction(this, {
-           action: this.actionType,
-           abilityName: this.abilityName,
-           params: {
-             message: this.message
-           }
-         });
-       })
-     }
-   }
-   ```
+      
+      ``` TypeScript
+      // entry/src/main/ets/widget/pages/WidgetCard.ets
+      @Entry
+      @Component
+      struct WidgetCard {
+        @LocalStorageProp('message') title: string = 'Hello World';
+        readonly actionType: string = 'router';
+        readonly abilityName: string = 'EntryAbility';
+        readonly message: string = 'add detail';
+        readonly fullWidthPercent: string = '100%';
+        readonly fullHeightPercent: string = '100%';
+      
+        build() {
+          Row() {
+            Column() {
+              Text(this.title)
+                .fontSize($r('app.float.font_size'))
+                .fontWeight(FontWeight.Medium)
+                .fontColor($r('sys.color.font'))
+            }
+            .width(this.fullWidthPercent)
+          }
+          .height(this.fullHeightPercent)
+          .backgroundColor($r('sys.color.comp_background_primary'))
+          .onClick(() => {
+            postCardAction(this, {
+              action: this.actionType,
+              abilityName: this.abilityName,
+              params: {
+                message: this.message
+              }
+            });
+          })
+        }
+      }
+      ```
 
 4. 新增PreferencesUtil文件，主要是来封装[Preferences](../database/data-persistence-by-preferences.md)首选项，供业务做持久化数据使用。
 
