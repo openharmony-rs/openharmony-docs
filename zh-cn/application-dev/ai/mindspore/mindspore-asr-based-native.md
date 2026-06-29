@@ -421,6 +421,7 @@ export default class AVPlayerDemo {
                                 BinBuffer &out_n_layer_self_k_cache, BinBuffer &out_n_layer_self_v_cache,
                                 const BinBuffer &data_embedding, const int loop, const int offset_init)
    {
+       // logits
        BinBuffer logits{nullptr, 51865 * sizeof(float)};
        logits.first = malloc(logits.second);
        if (!logits.first) {
@@ -468,6 +469,12 @@ export default class AVPlayerDemo {
            void *data_embedding_src =
                static_cast<char *>(data_embedding.first) + offset * WHISPER_N_TEXT_STATE * sizeof(float);
            memcpy(slice.first, data_embedding_src, slice.second);
+           // out_n_layer_self_k_cache
+           // out_n_layer_self_v_cache
+           // n_layer_cross_k
+           // n_layer_cross_v
+           // slice
+           // token
            BinBuffer mask_bin(mask.data(), mask.size() * sizeof(float));
            int ret = RunMSLiteModel(model, {tokens, out_n_layer_self_k_cache_new, out_n_layer_self_v_cache_new,
                                             n_layer_cross_k, n_layer_cross_v, slice, mask_bin});
@@ -613,8 +620,8 @@ export default class AVPlayerDemo {
        auto modelBuffer3 = ReadBinFile(resourcesManager, modelName3);
        auto decoder_loop = CreateMSLiteModel(modelBuffer3);
    
-       const std::string dataName_embedding = "tiny-positional_embedding.bin"; // 获取输入数据
-       auto data_embedding = ReadBinFile(resourcesManager, dataName_embedding);
+       const std::string dataNameEmbedding = "tiny-positional_embedding.bin"; // 获取输入数据
+       auto data_embedding = ReadBinFile(resourcesManager, dataNameEmbedding);
        if (data_embedding.first == nullptr) {
            OH_AI_ModelDestroy(&encoder);
            OH_AI_ModelDestroy(&decoder_main);
