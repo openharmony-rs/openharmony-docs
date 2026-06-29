@@ -1026,50 +1026,50 @@ Text组件需要设置[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-com
 - 从API version 20开始，支持通过[disableSystemServiceMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20)屏蔽文本选择菜单内所有系统服务菜单项。更多详见[disableSystemServiceMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20)的API文档接口说明。以下示例只是完整示例工程中的一个示例，为了不影响工程其他页面示例效果，仅在页面的出现和消失生命周期中进行系统服务菜单的禁用和恢复，实际场景可自行选择其他时机，比如[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)和[onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy)。
 
   <!-- @[Service_MenuItems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/ServiceMenuItems.ets) -->
-    
-    ``` TypeScript
-    import { TextMenuController } from '@kit.ArkUI';
-    // xxx.ets
-    @Entry
-    @Component
-    struct ServiceMenuItems {
-      aboutToAppear(): void {
-        // 禁用所有系统服务菜单
-        TextMenuController.disableSystemServiceMenuItems(true);
-      }
-    
-      aboutToDisappear(): void {
-        // 页面消失恢复系统服务菜单
-        TextMenuController.disableSystemServiceMenuItems(false);
-      }
-      build() {
-        NavDestination() {
-          Row() {
-            Column() {
-              // 请将$r('app.string.Service_MenuItems_Text')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，长按弹出文本选择菜单。"
-              Text($r('app.string.Service_MenuItems_Text'))
-                .height(60)
-                .fontStyle(FontStyle.Italic)
-                .fontWeight(FontWeight.Bold)
-                .textAlign(TextAlign.Center)
-                .copyOption(CopyOptions.InApp)
-                .editMenuOptions({
-                  onCreateMenu: (menuItems: Array<TextMenuItem>) => {
-                    // menuItems不包含被屏蔽的系统菜单项
-                    return menuItems;
-                  },
-                  onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
-                    return false;
-                  }
-                })
-            }.width('100%')
-          }
-          .height('100%')
-        }
-        // ...
-      }
+  
+  ``` TypeScript
+  import { TextMenuController } from '@kit.ArkUI';
+  // xxx.ets
+  @Entry
+  @Component
+  struct ServiceMenuItems {
+    aboutToAppear(): void {
+      // 禁用所有系统服务菜单
+      TextMenuController.disableSystemServiceMenuItems(true);
     }
-    ```
+  
+    aboutToDisappear(): void {
+      // 页面消失恢复系统服务菜单
+      TextMenuController.disableSystemServiceMenuItems(false);
+    }
+    build() {
+      NavDestination() {
+        Row() {
+          Column() {
+            // 请将$r('app.string.Service_MenuItems_Text')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，长按弹出文本选择菜单。"
+            Text($r('app.string.Service_MenuItems_Text'))
+              .height(60)
+              .fontStyle(FontStyle.Italic)
+              .fontWeight(FontWeight.Bold)
+              .textAlign(TextAlign.Center)
+              .copyOption(CopyOptions.InApp)
+              .editMenuOptions({
+                onCreateMenu: (menuItems: Array<TextMenuItem>) => {
+                  // menuItems不包含被屏蔽的系统菜单项
+                  return menuItems;
+                },
+                onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
+                  return false;
+                }
+              })
+          }.width('100%')
+        }
+        .height('100%')
+      }
+      // ...
+    }
+  }
+  ```
 
     ![text_disable_system_service_menuItems](figures/text_disable_system_service_menuItems.jpg)
 
