@@ -52,7 +52,7 @@
     在源文件中引入头文件。
 
     <!-- @[child_process_head_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/ChildProcessSample.cpp) -->
-
+    
     ``` C++
     #include <IPCKit/ipc_kit.h>
     #include <AbilityKit/native_child_process.h>
