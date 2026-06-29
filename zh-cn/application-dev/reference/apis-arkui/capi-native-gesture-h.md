@@ -499,7 +499,7 @@ ArkUI_NodeHandle OH_ArkUI_TouchRecognizer_GetNodeHandle(const ArkUI_TouchRecogni
 
 | 参数项                                              | 描述 |
 |--------------------------------------------------| -- |
-| const [ArkUI_TouchRecognizerHandle](capi-arkui-nativemodule-arkui-touchrecognizerhandlearray.md) recognizer | 触摸识别器的句柄。 |
+| const [ArkUI_TouchRecognizerHandle](capi-arkui-nativemodule-arkui-touchrecognizerhandle.md) recognizer | 触摸识别器的句柄。 |
 
 **返回：**
 
@@ -525,7 +525,7 @@ int32_t OH_ArkUI_TouchRecognizer_CancelTouch(ArkUI_TouchRecognizerHandle recogni
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_TouchRecognizerHandle](capi-arkui-nativemodule-arkui-touchrecognizerhandlearray.md) recognizer | 触摸识别器的句柄。 |
+| [ArkUI_TouchRecognizerHandle](capi-arkui-nativemodule-arkui-touchrecognizerhandle.md) recognizer | 触摸识别器的句柄。 |
 | [ArkUI_GestureInterruptInfo](capi-arkui-nativemodule-arkui-gestureinterruptinfo.md)* info | 指向手势打断信息的指针。 |
 
 **返回：**
@@ -906,7 +906,7 @@ ArkUI_NodeHandle OH_ArkUI_GestureEvent_GetNode(const ArkUI_GestureEvent* event)
 **描述：**
 
 
-获取绑定该手势的ARKUI组件
+获取绑定该手势的ArkUI组件
 
 **起始版本：** 12
 
@@ -921,7 +921,7 @@ ArkUI_NodeHandle OH_ArkUI_GestureEvent_GetNode(const ArkUI_GestureEvent* event)
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | 绑定该手势的ARKUI组件。若返回Null，则表示event是无效值。 |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) | 绑定该手势的ArkUI组件。若返回Null，则表示event是无效值。 |
 
 ### OH_ArkUI_GetResponseRecognizersFromInterruptInfo()
 
@@ -1933,7 +1933,7 @@ bool OH_ArkUI_TouchRecognizer_IsHostBelongsTo(const ArkUI_TouchRecognizerHandle 
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ArkUI_TouchRecognizerHandle](capi-arkui-nativemodule-arkui-touchrecognizerhandlearray.md) recognizer | 表示触摸识别器句柄。 |
+| const [ArkUI_TouchRecognizerHandle](capi-arkui-nativemodule-arkui-touchrecognizerhandle.md) recognizer | 表示触摸识别器句柄。 |
 | int32_t uniqueId | 表示组件的唯一ID。 |
 
 **返回：**

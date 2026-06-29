@@ -91,7 +91,7 @@ ArkTS-Sta: defaultFocus(value: boolean | undefined): this
 
 >  **说明：**
 >
->  可以设置默认焦点的页面指的是支持页面路由或是弹窗类的容器组件，例如Page、NaviDestination、NavBar、PopUp、Dialog等。
+>  可以设置默认焦点的页面指的是支持页面路由或是弹窗类的容器组件，例如Page、NavDestination、NavBar、PopUp、Dialog等。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -636,7 +636,7 @@ struct FocusableExample {
 
 ![groupDefaultFocus2](figures/groupDefaultFocus2.png)
 
-第三次按TAB键，焦点切换到tabIndex(3)的容器上，且自动走焦到内部配置了DefaultFocus的组件上：
+第三次按TAB键，焦点切换到tabIndex(3)的容器上，且自动走焦到内部配置了defaultFocus的组件上：
 
 ![groupDefaultFocus3](figures/groupDefaultFocus3.png)
 

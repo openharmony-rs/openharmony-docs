@@ -469,11 +469,11 @@ Tab键走焦：按照子节点的挂载顺序循环走焦。
 
 方向键上下走焦：纵向的Column容器中，可以使用上下键走焦，无法使用左右键走焦。
 
-![Liner_Focus_1](figures/Liner_Focus_2.gif)
+![Liner_Focus_2](figures/Liner_Focus_2.gif)
 
 横向的Row容器中，可以使用左右键走焦，无法使用上下键走焦。
 
-![Liner_Focus_1](figures/Liner_Focus_3.gif)
+![Liner_Focus_3](figures/Liner_Focus_3.gif)
 
 
 **投影走焦算法**
@@ -2051,7 +2051,7 @@ tabIndex自定义组件Tab键走焦顺序。
 > 
 > 不建议在[层级页面](#基础概念)中通过单独设置组件的tabIndex属性为负数来控制获焦能力，可以使用focusable属性代替。
 > 
-> tabIndex只能够自定义Tab键走焦，若想同时自定义方向键等走焦能力，建议使用[nextfocus](#nextfocus自定义走焦)。
+> tabIndex只能够自定义Tab键走焦，若想同时自定义方向键等走焦能力，建议使用[nextFocus](#nextfocus自定义走焦)。
 
   ArkTS-Dyn示例：
 
