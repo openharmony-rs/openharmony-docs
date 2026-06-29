@@ -1443,7 +1443,7 @@ XmlSAXParser的构造函数。
 
 > **说明：**
 >
-> - `inputStream`参数必须传入继承自[Readable](js-apis-stream.md#readable)且实现[Doread](js-apis-stream.md#doread)的类。可以传入其他模块中满足该条件的类，如[ReadStream](../apis-core-file-kit/js-apis-file-fs.md#readstream12)。
+> - `inputStream`参数必须传入继承自[Readable](js-apis-stream.md#readable)且实现[doread](js-apis-stream.md#doread)的类。可以传入其他模块中满足该条件的类，如[ReadStream](../apis-core-file-kit/js-apis-file-fs.md#readstream12)。
 
 
 **原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
