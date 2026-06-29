@@ -205,7 +205,7 @@ console.info("[" + int32Array1 + "]"); // [2, 3, 4, 5, 6]
 ## from
 static from(arrayLike: ArrayLike\<number>): Int32Array
 
-从一个ArrayLike或者可迭代对象中创建一个ArkTS Int32Array对象。
+从一个ArrayLike中创建一个ArkTS Int32Array对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

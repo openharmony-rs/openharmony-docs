@@ -102,7 +102,7 @@ constructor(array: ArrayLike\<number> | ArrayBuffer)
 
 | 参数名  | 类型   | 必填 | 说明                                                         |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| array |  ArrayLike\<number> \| ArrayBuffer | 是 | 用于构造ArkTS Int8Array的对象。当参数类型是ArrayBuffer时buffer所占的字节数须是4的整数倍。 |
+| array |  ArrayLike\<number> \| ArrayBuffer | 是 | 用于构造ArkTS Int8Array的对象。当参数类型是ArrayBuffer时buffer所占的字节数是1的整数倍。 |
 
 **错误码：**
 
@@ -180,7 +180,7 @@ constructor(buffer: ArrayBuffer, byteOffset?: number, length?: number)
 
 | 参数名  | 类型   | 必填 | 说明                                         |
 | ------- | ------ | ---- | ------------------------------------------ |
-| buffer | ArrayBuffer | 是 | 用于构造ArkTS Int8Array的ArrayBuffer对象。buffer所占的字节数须是4的整数倍。|
+| buffer | ArrayBuffer | 是 | 用于构造ArkTS Int8Array的ArrayBuffer对象。buffer所占的字节数需是1的整数倍。|
 | byteOffset | number | 否 | 指定buffer的字节偏移，从0开始，默认为0。 |
 | length | number | 否 | 指定ArkTS Int8Array的长度，默认为0。 |
 
@@ -205,7 +205,7 @@ console.info("[" + int8Array1 + "]"); // [2, 3, 4, 5, 6]
 ## from
 static from(arrayLike: ArrayLike\<number>): Int8Array
 
-从一个ArrayLike或者可迭代对象中创建一个ArkTS Int8Array对象。
+从一个ArrayLike中创建一个ArkTS Int8Array对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
