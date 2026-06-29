@@ -180,7 +180,9 @@ audioApp {
 | 焦点信息 | focusState、focusHistory | 当前焦点状态及焦点变化历史。 |
 | 故障编码 | errorInfos | 故障编码记录，系统内最多保留10条最新故障编码信息。 |
 
-> **注意：** 详细字段信息及其说明见下方输出示例。
+> **说明：**
+>
+> 详细字段信息及其说明见下方输出示例。
 
 接口说明请参考[printRendererInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printrendererinfo)。
 
@@ -275,7 +277,9 @@ audioRenderer {
 | 焦点信息 | focusState、focusHistory | 当前焦点状态及焦点变化历史。 |
 | 故障编码 | errorInfos | 故障编码记录，系统内最多保留10条最新故障编码信息。 |
 
-> **注意：** 详细字段信息及其说明见下方输出示例。
+> **说明：**
+>
+> 详细字段信息及其说明见下方输出示例。
 
 接口说明请参考[printCapturerInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printcapturerinfo)。
 
@@ -498,7 +502,9 @@ audioSession {
 | 节点信息 | nodeId、nodeType、connectState、format | 节点标识、类型、连接状态和音频格式。 |
 | 音效信息 | effectType、effectParams | 节点所使用的音效类型和参数。 |
 
-> **注意：** 详细字段信息及其说明见下方输出示例。
+> **说明：**
+>
+> 详细字段信息及其说明见下方输出示例。
 
 接口说明请参考[OH_AudioSuite_PrintInfo](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuite_printinfo)。
 
@@ -530,7 +536,7 @@ Timestamp: xxxx-xx-xx xx:xx:xx.xxx      // 时间戳。
 Total Pipelines: 1                       // 管线总数。
 
 Pipeline [ID: 1]                         // 管线唯一标识符。
-  Work Mode: EDIT_MODE                  // 工作模式：Manual(离线编辑)或Real-time(实时渲染)。
+  Work Mode: EDIT_MODE                  // 工作模式：Manual（离线编辑）或Real-time（实时渲染）。
   State: RUNNING                         // 当前状态：Stopped或Running。
   Nodes: 3                               // 节点数。
   Connections: 2                         // 连接数。

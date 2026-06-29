@@ -1,4 +1,4 @@
-# AudioDebuggingManager
+# Interface (AudioDebuggingManager)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @boxwall-->
