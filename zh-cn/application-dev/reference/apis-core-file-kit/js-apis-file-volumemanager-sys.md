@@ -6,7 +6,7 @@
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
-该模块提供卷设备、磁盘设备查询和管理的相关功能：包括查询卷设备信息，对卷设备的挂载卸载、对磁盘设备分区以及卷设备的格式化等功能。
+该模块提供卷设备、磁盘设备查询和管理的相关功能：包括查询卷设备信息和磁盘设备信息，对卷设备的挂载卸载、弹出、擦除，对磁盘设备的分区创建、删除、格式化及分区表查询，卷设备的格式化，以及光盘刻录（包括创建ISO镜像、数据刻录、刻录数据校验和操作进度查询）等功能。
 
 > **说明：**
 >
@@ -45,18 +45,18 @@ getAllVolumes(): Promise&lt;Array&lt;Volume&gt;&gt;
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
-| 401 | The input parameter is invalid. Possible causes: Mandatory parameters are left unspecified. |
+| 401 | The input parameter is invalid. Possible causes: Incorrect parameter types. |
 | 13600001 | IPC error. |
-| 13900042 | Unknown error. |
+| 13900042 | Unknown error. Possible causes: System internal error. |
 
 **示例：**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
-    // do something with volumes, which is an array
+    // 获取到所有卷设备信息
   }).catch((error: BusinessError) => {
-    console.error("getAllVolumes failed");
+    console.error(`Failed to getAllVolumes. Code: ${error.code}, message: ${error.message}`);
   });
   ```
 
@@ -86,16 +86,20 @@ getAllVolumes(callback: AsyncCallback&lt;Array&lt;Volume&gt;&gt;): void
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
-| 401 | The input parameter is invalid. Possible causes: Mandatory parameters are left unspecified. |
+| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001 | IPC error. |
-| 13900042 | Unknown error. |
+| 13900042 | Unknown error. Possible causes: System internal error. |
 
 **示例：**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   volumeManager.getAllVolumes((error: BusinessError, volumes: Array<volumeManager.Volume>) => {
-    // do something
+    if (error) {
+      console.error(`getAllVolumes failed, code is: ${error.code}, message is: ${error.message}`);
+      return;
+    }
+    // 获取到所有卷设备信息
   });
   ```
 
@@ -103,13 +107,13 @@ getAllVolumes(callback: AsyncCallback&lt;Array&lt;Volume&gt;&gt;): void
 
 mount(volumeId: string): Promise&lt;void&gt;
 
-挂载指定卷设备，使用Promise异步回调。
+挂载指定卷设备，只有处于卸载状态的卷设备可以挂载。使用Promise异步回调。
 
 当前仅支持以下文件系统的卷设备挂载：
 
-vfat、exfat及ntfs。
+vfat、exfat及NTFS。
 
-从API版本26.0.0开始支持ext4。
+从API version 26.0.0开始支持ext4。
 
 **系统接口**：此接口为系统接口。
 
@@ -121,7 +125,7 @@ vfat、exfat及ntfs。
 
   | 参数名   | 类型   | 必填 | 说明 |
   | -------- | ------ | ---- | ---- |
-  | volumeId | string | 是   | 卷设备ID。 |
+  | volumeId | string | 是   | 卷设备ID，格式为vol-{主设备号}-{次设备号}。卷设备ID会随着插卡顺序不同而变化，请勿缓存后复用。 |
 
 **返回值：**
 
@@ -139,21 +143,22 @@ vfat、exfat及ntfs。
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. |
-| 13600003 | Failed to mount. |
-| 13600005 | Incorrect volume state. |
-| 13600008 | No such object. |
-| 13900042 | Unknown error. |
+| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
+| 13600003 | Failed to mount. Possible causes: 1. The filesystem is not supported. 2. The volume is not in the unmounted state. |
+| 13600005 | Incorrect volume state. Possible causes: The volume device is not in the required state for this operation. For mount/format/setVolumeDescription, ensure the volume is in the unmounted state; for unmount, ensure the volume is in the mounted state. |
+| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
+| 13900042 | Unknown error. Possible causes: System internal error. |
 
 **示例：**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  // volumeId可通过getAllVolumes()接口获取
   let volumeId: string = "";
   volumeManager.mount(volumeId).then(() => {
-    // do something
+    // 挂载指定卷设备成功后的回调
   }).catch((error: BusinessError) => {
-    console.error("mount failed");
+    console.error(`Failed to mount. Code: ${error.code}, message: ${error.message}`);
   });
   ```
 
@@ -161,13 +166,13 @@ vfat、exfat及ntfs。
 
 mount(volumeId: string, callback:AsyncCallback&lt;void&gt;):void
 
-挂载指定卷设备，使用callback异步回调。
+挂载指定卷设备，只有处于卸载状态的卷设备可以挂载。使用callback异步回调。
 
 当前仅支持以下文件系统的卷设备挂载：
 
-vfat、exfat及ntfs。
+vfat、exfat及NTFS。
 
-从API版本26.0.0开始支持ext4。
+从API version 26.0.0开始支持ext4。
 
 **系统接口**：此接口为系统接口。
 
@@ -179,7 +184,7 @@ vfat、exfat及ntfs。
 
   | 参数名   | 类型                                  | 必填 | 说明                 |
   | -------- | ------------------------------------- | ---- | -------------------- |
-  | volumeId | string                                | 是   | 卷设备ID。                 |
+  | volumeId | string                                | 是   | 卷设备ID，格式为vol-{主设备号}-{次设备号}。卷设备ID会随着插卡顺序不同而变化，请勿缓存后复用。                 |
   | callback | AsyncCallback&lt;void&gt; | 是   | 挂载指定卷设备之后的回调。 |
 
 **错误码：**
@@ -192,19 +197,24 @@ vfat、exfat及ntfs。
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. |
-| 13600003 | Failed to mount. |
-| 13600005 | Incorrect volume state. |
-| 13600008 | No such object. |
-| 13900042 | Unknown error. |
+| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
+| 13600003 | Failed to mount. Possible causes: 1. The filesystem is not supported. 2. The volume is not in the unmounted state. |
+| 13600005 | Incorrect volume state. Possible causes: The volume device is not in the required state for this operation. For mount/format/setVolumeDescription, ensure the volume is in the unmounted state; for unmount, ensure the volume is in the mounted state. |
+| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
+| 13900042 | Unknown error. Possible causes: System internal error. |
 
 **示例：**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  // volumeId可通过getAllVolumes()接口获取
   let volumeId: string = "";
   volumeManager.mount(volumeId, (error: BusinessError) => {
-    // do something
+    if (error) {
+      console.error(`mount failed, code is: ${error.code}, message is: ${error.message}`);
+      return;
+    }
+    // 挂载指定卷设备成功后的回调
   });
   ```
 
@@ -224,7 +234,7 @@ unmount(volumeId: string): Promise&lt;void&gt;
 
   | 参数名   | 类型   | 必填 | 说明 |
   | -------- | ------ | ---- | ---- |
-  | volumeId | string | 是   | 卷设备ID。 |
+  | volumeId | string | 是   | 卷设备ID，格式为vol-{主设备号}-{次设备号}。卷设备ID会随着插卡顺序不同而变化，请勿缓存后复用。 |
 
 **返回值：**
 
@@ -242,21 +252,22 @@ unmount(volumeId: string): Promise&lt;void&gt;
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. |
-| 13600004 | Failed to unmount. |
-| 13600005 | Incorrect volume state. |
-| 13600008 | No such object. |
-| 13900042 | Unknown error. |
+| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
+| 13600004 | Failed to unmount. Possible causes: 1. The filesystem is not supported. 2. The volume is not in the mounted state. |
+| 13600005 | Incorrect volume state. Possible causes: The volume device is not in the required state for this operation. For mount/format/setVolumeDescription, ensure the volume is in the unmounted state; for unmount, ensure the volume is in the mounted state. |
+| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
+| 13900042 | Unknown error. Possible causes: System internal error. |
 
 **示例：**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  // volumeId可通过getAllVolumes()接口获取
   let volumeId: string = "";
   volumeManager.unmount(volumeId).then(() => {
-    // do something
+    // 卸载指定卷设备成功后的回调
   }).catch((error: BusinessError) => {
-    console.error("unmount failed");
+    console.error(`Failed to unmount. Code: ${error.code}, message: ${error.message}`);
   });
   ```
 
@@ -276,7 +287,7 @@ unmount(volumeId: string, callback: AsyncCallback&lt;void&gt;): void
 
   | 参数名   | 类型                                  | 必填 | 说明                 |
   | -------- | ------------------------------------- | ---- | -------------------- |
-  | volumeId | string                                | 是   | 卷设备ID。                 |
+  | volumeId | string                                | 是   | 卷设备ID，格式为vol-{主设备号}-{次设备号}。卷设备ID会随着插卡顺序不同而变化，请勿缓存后复用。                 |
   | callback | AsyncCallback&lt;void&gt; | 是   | 卸载指定卷设备之后的回调。 |
 
 **错误码：**
@@ -289,19 +300,24 @@ unmount(volumeId: string, callback: AsyncCallback&lt;void&gt;): void
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. |
-| 13600004 | Failed to unmount. |
-| 13600005 | Incorrect volume state. |
-| 13600008 | No such object. |
-| 13900042 | Unknown error. |
+| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
+| 13600004 | Failed to unmount. Possible causes: 1. The filesystem is not supported. 2. The volume is not in the mounted state. |
+| 13600005 | Incorrect volume state. Possible causes: The volume device is not in the required state for this operation. For mount/format/setVolumeDescription, ensure the volume is in the unmounted state; for unmount, ensure the volume is in the mounted state. |
+| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
+| 13900042 | Unknown error. Possible causes: System internal error. |
 
 **示例：**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  // volumeId可通过getAllVolumes()接口获取
   let volumeId: string = "";
   volumeManager.unmount(volumeId, (error: BusinessError) => {
-    // do something
+    if (error) {
+      console.error(`unmount failed, code is: ${error.code}, message is: ${error.message}`);
+      return;
+    }
+    // 卸载指定卷设备成功后的回调
   });
   ```
 
@@ -321,13 +337,13 @@ getVolumeByUuid(uuid: string): Promise&lt;Volume&gt;
 
   | 参数名   | 类型   | 必填 | 说明 |
   | -------- | ------ | ---- | ---- |
-  | uuid | string | 是   | 卷设备uuid。 |
+  | uuid | string | 是   | 卷设备uuid。卷设备uuid不会随着插卡顺序变化而变化，但格式化后会改变。 |
 
 **返回值：**
 
   | 类型                               | 说明                       |
   | ---------------------------------- | -------------------------- |
-  | Promise&lt;[Volume](#volume)&gt; | Promise对象，返回当前uuid的卷设备信息。 |
+  | Promise&lt;[Volume](#volume)&gt; | Promise对象，返回指定uuid对应的卷设备信息。 |
 
 **错误码：**
 
@@ -339,18 +355,19 @@ getVolumeByUuid(uuid: string): Promise&lt;Volume&gt;
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001 | IPC error. |
-| 13600008 | No such object. |
-| 13900042 | Unknown error. |
+| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
+| 13900042 | Unknown error. Possible causes: System internal error. |
 
 **示例：**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  // uuid可通过getAllVolumes()接口获取卷设备信息后获得
   let uuid: string = "";
   volumeManager.getVolumeByUuid(uuid).then((volume: volumeManager.Volume) => {
     console.info("getVolumeByUuid successfully:" + JSON.stringify(volume));
   }).catch((error: BusinessError) => {
-    console.error("getVolumeByUuid failed with error:" + JSON.stringify(error));
+    console.error(`Failed to getVolumeByUuid. Code: ${error.code}, message: ${error.message}`);
   });
   ```
 
@@ -370,7 +387,7 @@ getVolumeByUuid(uuid: string, callback: AsyncCallback&lt;Volume&gt;): void
 
   | 参数名    | 类型                                                 | 必填 | 说明                 |
   | -------- | ------------------------------------------------ | ---- | -------------------- |
-  | uuid | string                                                 | 是   | 卷设备uuid。                 |
+  | uuid | string                                                 | 是   | 卷设备uuid。卷设备uuid不会随着插卡顺序变化而变化，但格式化后会改变。                 |
   | callback | AsyncCallback&lt;[Volume](#volume)&gt;  | 是   | 获取卷设备信息之后的回调。 |
 
 **错误码：**
@@ -383,20 +400,25 @@ getVolumeByUuid(uuid: string, callback: AsyncCallback&lt;Volume&gt;): void
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001 | IPC error. |
-| 13600008 | No such object. |
-| 13900042 | Unknown error. |
+| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
+| 13900042 | Unknown error. Possible causes: System internal error. |
 
 **示例：**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  // uuid可通过getAllVolumes()接口获取卷设备信息后获得
   let uuid: string = "";
   volumeManager.getVolumeByUuid(uuid, (error: BusinessError, volume: volumeManager.Volume) => {
-    // do something    
+    if (error) {
+      console.error(`getVolumeByUuid failed, code is: ${error.code}, message is: ${error.message}`);
+      return;
+    }
+    // 获取到卷设备信息
   });
   ```
-
-## volumemanager.getVolumeById
+  
+  ## volumemanager.getVolumeById
 
 getVolumeById(volumeId: string): Promise&lt;Volume&gt;
 
@@ -412,13 +434,13 @@ getVolumeById(volumeId: string): Promise&lt;Volume&gt;
 
   | 参数名    | 类型    | 必填  | 说明 |
   | -------- | ------ | ---- | ---- |
-  | volumeId | string | 是   | 卷设备ID。 |
+  | volumeId | string | 是   | 卷设备ID，格式为vol-{主设备号}-{次设备号}。卷设备ID会随着插卡顺序不同而变化，请勿缓存后复用。 |
 
 **返回值：**
 
   | 类型                               | 说明                       |
   | ---------------------------------- | -------------------------- |
-  | Promise&lt;[Volume](#volume)&gt; | Promise对象，返回当前ID的卷设备信息。 |
+  | Promise&lt;[Volume](#volume)&gt; | Promise对象，返回指定volumeId对应的卷设备信息。 |
 
 **错误码：**
 
@@ -430,18 +452,19 @@ getVolumeById(volumeId: string): Promise&lt;Volume&gt;
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001 | IPC error. |
-| 13600008 | No such object. |
-| 13900042 | Unknown error. |
+| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
+| 13900042 | Unknown error. Possible causes: System internal error. |
 
 **示例：**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  // volumeId可通过getAllVolumes()接口获取
   let volumeId: string = "";
   volumeManager.getVolumeById(volumeId).then((volume: volumeManager.Volume) => {
     console.info("getVolumeById successfully:" + JSON.stringify(volume));
   }).catch((error: BusinessError) => {
-    console.error("getVolumeById failed with error:" + JSON.stringify(error));
+    console.error(`Failed to getVolumeById. Code: ${error.code}, message: ${error.message}`);
   });
   ```
 
@@ -461,7 +484,7 @@ getVolumeById(volumeId: string, callback: AsyncCallback&lt;Volume&gt;): void
 
   | 参数名   | 类型                      | 必填 | 说明                          |
   | -------- | ------------------------- | ---- | ----------------------------- |
-  | volumeId | string                    | 是   | 卷设备ID。                |
+  | volumeId | string                    | 是   | 卷设备ID，格式为vol-{主设备号}-{次设备号}。卷设备ID会随着插卡顺序不同而变化，请勿缓存后复用。                |
   | callback | AsyncCallback&lt;[Volume](#volume)&gt; | 是   | 获取卷设备信息之后的回调。  |
 
 **错误码：**
@@ -474,16 +497,21 @@ getVolumeById(volumeId: string, callback: AsyncCallback&lt;Volume&gt;): void
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001 | IPC error. |
-| 13600008 | No such object. |
-| 13900042 | Unknown error. |
+| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
+| 13900042 | Unknown error. Possible causes: System internal error. |
 
 **示例：**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  // volumeId可通过getAllVolumes()接口获取
   let volumeId: string = "";
   volumeManager.getVolumeById(volumeId, (error: BusinessError, volume: volumeManager.Volume) => {
-    // do something    
+    if (error) {
+      console.error(`getVolumeById failed, code is: ${error.code}, message is: ${error.message}`);
+      return;
+    }
+    // 获取到卷设备信息
   });
   ```
 
@@ -491,7 +519,7 @@ getVolumeById(volumeId: string, callback: AsyncCallback&lt;Volume&gt;): void
 
 setVolumeDescription(uuid: string, description: string): Promise&lt;void&gt;
 
-修改指定卷设备描述，使用Promise异步回调。当前仅支持修改ntfs和exfat两种文件系统类型的设备描述，只有处于卸载状态的卷设备可以修改设备描述。
+修改指定卷设备描述，使用Promise异步回调。当前仅支持修改NTFS和exfat两种文件系统类型的设备描述，只有处于卸载状态的卷设备可以修改设备描述。
 
 **系统接口**：此接口为系统接口。
 
@@ -503,7 +531,7 @@ setVolumeDescription(uuid: string, description: string): Promise&lt;void&gt;
 
   | 参数名     | 类型   | 必填 | 说明 |
   | --------- | ------ | ---- | ---- |
-  | uuid      | string | 是   | 卷设备uuid。 |
+  | uuid      | string | 是   | 卷设备uuid。卷设备uuid不会随着插卡顺序变化而变化，但格式化后会改变。 |
   | description | string | 是   | 卷设备描述。 |
 
 **返回值：**
@@ -522,21 +550,22 @@ setVolumeDescription(uuid: string, description: string): Promise&lt;void&gt;
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. |
-| 13600005 | Incorrect volume state. |
-| 13600008 | No such object. |
-| 13900042 | Unknown error. |
+| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
+| 13600005 | Incorrect volume state. Possible causes: The volume device is not in the required state for this operation. For mount/format/setVolumeDescription, ensure the volume is in the unmounted state; for unmount, ensure the volume is in the mounted state. |
+| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
+| 13900042 | Unknown error. Possible causes: System internal error. |
 
 **示例：**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  // uuid可通过getAllVolumes()接口获取卷设备信息后获得
   let uuid: string = "";
   let description: string = "";
   volumeManager.setVolumeDescription(uuid, description).then(() => {
     console.info("setVolumeDescription successfully");
   }).catch((error: BusinessError) => {
-    console.error("setVolumeDescription failed with error:" + JSON.stringify(error));
+    console.error(`Failed to setVolumeDescription. Code: ${error.code}, message: ${error.message}`);
   });
   ```
 
@@ -544,7 +573,7 @@ setVolumeDescription(uuid: string, description: string): Promise&lt;void&gt;
 
 setVolumeDescription(uuid: string, description: string, callback: AsyncCallback&lt;void&gt;): void
 
-修改指定卷设备描述，使用callback异步回调。当前仅支持修改ntfs和exfat两种文件系统类型的设备描述，只有处于卸载状态的卷设备可以修改设备描述。
+修改指定卷设备描述，使用callback异步回调。当前仅支持修改NTFS和exfat两种文件系统类型的设备描述，只有处于卸载状态的卷设备可以修改设备描述。
 
 **系统接口**：此接口为系统接口。
 
@@ -556,7 +585,7 @@ setVolumeDescription(uuid: string, description: string, callback: AsyncCallback&
 
   | 参数名      | 类型                                     | 必填 | 说明              |
   | ---------- | --------------------------------------- | ---- | ---------------- |
-  | uuid       | string                                  | 是   | 卷设备uuid。            |
+  | uuid       | string                                  | 是   | 卷设备uuid。卷设备uuid不会随着插卡顺序变化而变化，但格式化后会改变。            |
   | description | string                                 | 是   | 卷设备描述。            |
   | callback   | AsyncCallback&lt;void&gt;   | 是   | 设置卷描述之后的回调。 |
 
@@ -570,19 +599,24 @@ setVolumeDescription(uuid: string, description: string, callback: AsyncCallback&
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. |
-| 13600005 | Incorrect volume state. |
-| 13600008 | No such object. |
-| 13900042 | Unknown error. |
+| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
+| 13600005 | Incorrect volume state. Possible causes: The volume device is not in the required state for this operation. For mount/format/setVolumeDescription, ensure the volume is in the unmounted state; for unmount, ensure the volume is in the mounted state. |
+| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
+| 13900042 | Unknown error. Possible causes: System internal error. |
 
 **示例：**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  // uuid可通过getAllVolumes()接口获取卷设备信息后获得
   let uuid: string = "";
   let description: string = "";
   volumeManager.setVolumeDescription(uuid, description, (error: BusinessError) => {
-    // do something    
+    if (error) {
+      console.error(`setVolumeDescription failed, code is: ${error.code}, message is: ${error.message}`);
+      return;
+    }
+    // 设置卷设备描述成功的回调
   });
   ```
 
@@ -596,7 +630,7 @@ format(volumeId: string, fsType: string): Promise&lt;void&gt;
 
 vfat和exfat。
 
-从API版本26.0.0开始支持ext4文件系统的格式化。
+从API version 26.0.0开始支持ext4文件系统的格式化。
 
 只有处于卸载状态的卷设备可以进行格式化，格式化后卷设备的uuid、挂载路径和卷设备描述均会发生变化。
 
@@ -610,8 +644,8 @@ vfat和exfat。
 
   | 参数名       | 类型   | 必填 | 说明 |
   | ----------- | ------ | ---- | ---- |
-  | volumeId    | string | 是   | 卷设备ID。 |
-  | fsType    | string | 是   | 文件系统类型，当前支持vfat、exfat。<br>**说明**：从API版本26.0.0开始，支持ext4。 |
+  | volumeId    | string | 是   | 卷设备ID，格式为vol-{主设备号}-{次设备号}。卷设备须处于卸载状态，否则返回错误码13600005。卷设备ID会随着插卡顺序不同而变化，请勿缓存后复用。 |
+  | fsType    | string | 是   | 文件系统类型，当前支持vfat、exfat。<br>**说明**：从API version 26.0.0开始，支持ext4。 |
 
 **返回值：**
 
@@ -629,21 +663,22 @@ vfat和exfat。
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. |
-| 13600005 | Incorrect volume state. |
-| 13600008 | No such object. |
-| 13900042 | Unknown error. |
+| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
+| 13600005 | Incorrect volume state. Possible causes: The volume device is not in the required state for this operation. For mount/format/setVolumeDescription, ensure the volume is in the unmounted state; for unmount, ensure the volume is in the mounted state. |
+| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
+| 13900042 | Unknown error. Possible causes: System internal error. |
 
 **示例：**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  // volumeId可通过getAllVolumes()接口获取
   let volumeId: string = "";
   let fsType: string = "";
   volumeManager.format(volumeId, fsType).then(() => {
     console.info("format successfully");
   }).catch((error: BusinessError) => {
-    console.error("format failed with error:" + JSON.stringify(error));
+    console.error(`Failed to format. Code: ${error.code}, message: ${error.message}`);
   });
   ```
 
@@ -657,7 +692,7 @@ format(volumeId: string, fsType: string, callback: AsyncCallback&lt;void&gt;): v
 
 vfat和exfat。
 
-从API版本26.0.0开始支持ext4文件系统的格式化。
+从API version 26.0.0开始支持ext4文件系统的格式化。
 
 只有处于卸载状态的卷设备可以进行格式化，格式化后卷设备的uuid、挂载路径和卷设备描述均会发生变化。
 
@@ -671,8 +706,8 @@ vfat和exfat。
 
   | 参数名   | 类型                      | 必填 | 说明                          |
   | -------- | ------------------------- | ---- | ----------------------------- |
-  | volumeId | string                    | 是   | 卷设备ID。                |
-  | fsType    | string | 是   | 文件系统类型，当前支持vfat、exfat。<br>**说明**：从API版本26.0.0开始，支持ext4。 |
+  | volumeId | string                    | 是   | 卷设备ID，格式为vol-{主设备号}-{次设备号}。卷设备须处于卸载状态，否则返回错误码13600005。卷设备ID会随着插卡顺序不同而变化，请勿缓存后复用。                |
+  | fsType    | string | 是   | 文件系统类型，当前支持vfat、exfat。<br>**说明**：从API version 26.0.0开始，支持ext4。 |
   | callback | AsyncCallback&lt;void&gt;  | 是   | 对指定卷设备格式化后的回调。  |
 
 **错误码：**
@@ -685,19 +720,24 @@ vfat和exfat。
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. |
-| 13600005 | Incorrect volume state. |
-| 13600008 | No such object. |
-| 13900042 | Unknown error. |
+| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
+| 13600005 | Incorrect volume state. Possible causes: The volume device is not in the required state for this operation. For mount/format/setVolumeDescription, ensure the volume is in the unmounted state; for unmount, ensure the volume is in the mounted state. |
+| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
+| 13900042 | Unknown error. Possible causes: System internal error. |
 
 **示例：**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  // volumeId可通过getAllVolumes()接口获取
   let volumeId: string = "";
   let fsType: string = "";
   volumeManager.format(volumeId, fsType, (error: BusinessError) => {
-    // do something    
+    if (error) {
+      console.error(`format failed, code is: ${error.code}, message is: ${error.message}`);
+      return;
+    }
+    // 对指定卷设备格式化成功的回调
   });
   ```
 
@@ -705,7 +745,7 @@ vfat和exfat。
 
 partition(diskId: string, type: number): Promise&lt;void&gt;
 
-对磁盘设备进行分区，使用Promise异步回调。当前仅支持将磁盘设备重新分区为一个分区，系统是支持读取多分区的磁盘设备。不支持对光盘进行分区。
+对磁盘设备进行分区，使用Promise异步回调。当前仅支持将磁盘设备重新分区为一个分区，系统支持读取已存在多分区的磁盘设备。不支持对光盘进行分区。
 
 **系统接口**：此接口为系统接口。
 
@@ -718,7 +758,7 @@ partition(diskId: string, type: number): Promise&lt;void&gt;
   | 参数名       | 类型   | 必填 | 说明 |
   | ----------- | ------ | ---- | ---- |
   | diskId    | string | 是   | 卷设备所属的磁盘设备ID，格式为disk-{主设备号}-{次设备号}。 |
-  | type      | number | 是   | 分区类型。    |
+  | type      | number | 是   | 分区类型，用于指定分区方式。当前仅支持传入0，表示将磁盘重新分区为一个分区。    |
 
 **返回值：**
 
@@ -736,19 +776,20 @@ partition(diskId: string, type: number): Promise&lt;void&gt;
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001 | IPC error. |
-| 13600008 | No such object. |
-| 13900042 | Unknown error. |
+| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
+| 13900042 | Unknown error. Possible causes: System internal error. |
 
 **示例：**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  // diskId可通过getAllDisks()接口获取
   let diskId: string = "";
   let type: number = 0;
   volumeManager.partition(diskId, type).then(() => {
     console.info("partition successfully");
   }).catch((error: BusinessError) => {
-    console.error("partition failed with error:" + JSON.stringify(error));
+    console.error(`Failed to partition. Code: ${error.code}, message: ${error.message}`);
   });
   ```
 
@@ -756,7 +797,7 @@ partition(diskId: string, type: number): Promise&lt;void&gt;
 
 partition(diskId: string, type: number, callback: AsyncCallback&lt;void&gt;): void
 
-对磁盘设备进行分区，使用callback异步回调。当前仅支持将磁盘设备重新分区为一个分区，系统是支持读取多分区的磁盘设备。不支持对光盘进行分区。
+对磁盘设备进行分区，使用callback异步回调。当前仅支持将磁盘设备重新分区为一个分区，系统支持读取已存在多分区的磁盘设备。不支持对光盘进行分区。
 
 **系统接口**：此接口为系统接口。
 
@@ -769,8 +810,8 @@ partition(diskId: string, type: number, callback: AsyncCallback&lt;void&gt;): vo
   | 参数名      | 类型                                   | 必填 | 说明              |
   | -------- | --------------------------------------- | ---- | ---------------- |
   | diskId   | string                                  | 是   | 卷设备所属的磁盘设备ID，格式为disk-{主设备号}-{次设备号}。      |
-  | type     | number                                  | 是   | 分区类型。          |
-  | callback | AsyncCallback&lt;void&gt;   | 是   | 对磁盘设备进行分区。      |
+  | type     | number                                  | 是   | 分区类型，用于指定分区方式。当前仅支持传入0，表示将磁盘重新分区为一个分区。          |
+  | callback | AsyncCallback&lt;void&gt;   | 是   | 对磁盘设备分区完成后的回调。      |
 
 **错误码：**
 
@@ -782,17 +823,22 @@ partition(diskId: string, type: number, callback: AsyncCallback&lt;void&gt;): vo
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001 | IPC error. |
-| 13600008 | No such object. |
-| 13900042 | Unknown error. |
+| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
+| 13900042 | Unknown error. Possible causes: System internal error. |
 
 **示例：**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+  // diskId可通过getAllDisks()接口获取
   let diskId: string = "";
   let type: number = 0;
   volumeManager.partition(diskId, type, (error: BusinessError) => {
-    // do something    
+    if (error) {
+      console.error(`partition failed, code is: ${error.code}, message is: ${error.message}`);
+      return;
+    }
+    // 对磁盘设备分区成功后的回调
   });
   ```
 
@@ -810,14 +856,14 @@ partition(diskId: string, type: number, callback: AsyncCallback&lt;void&gt;): vo
 
 | 名称         | 值    | 说明                 |
 | ----------- | ------- | -------------------- |
-| KEY_DATA    | 0       | 关键数据校验类型。     |
-| FULL_DATA   | 1       | 全量数据校验类型。     |
+| KEY_DATA    | 0       | 关键数据校验类型，对刻录数据的头部分元数据信息进行校验，不含用户实际数据，校验速度较快。     |
+| FULL_DATA   | 1       | 全量数据校验类型，对刻录数据的全部内容进行校验，校验结果更可靠。     |
 
 ## volumemanager.erase
 
 erase(volumeId: string): Promise&lt;void&gt;
 
-擦除指定卷设备，使用Promise异步回调。
+擦除指定卷设备中的数据，使用Promise异步回调。适用于需要彻底清除卷设备上数据的场景，例如光盘重写前的数据擦除。擦除操作会清除卷设备上的所有数据，仅处于卸载状态的卷设备可执行擦除操作。
 
 **起始版本**：26.0.0
 
@@ -833,7 +879,7 @@ erase(volumeId: string): Promise&lt;void&gt;
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| volumeId | string | 是   | 卷设备ID。 |
+| volumeId | string | 是   | 卷设备ID，格式为vol-{主设备号}-{次设备号}。卷设备ID会随着插卡顺序不同而变化，请勿缓存后复用。 |
 
 **返回值：**
 
@@ -850,20 +896,21 @@ erase(volumeId: string): Promise&lt;void&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. |
-| 13600010 | The input parameter is invalid. |
-| 13600026 | Erase operation failed. |
+| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
+| 13600010 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Incorrect parameter values. |
+| 13600026 | Erase operation failed. Possible causes: 1. The filesystem is not supported. 2. The volume device is not available. |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// volumeId可通过getAllVolumes()接口获取
 let volumeId: string = "";
 volumeManager.erase(volumeId).then(() => {
   console.info("erase successfully.");
 }).catch((error: BusinessError) => {
-  console.error("erase failed with error:" + JSON.stringify(error));
+  console.error(`Failed to erase. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -871,7 +918,7 @@ volumeManager.erase(volumeId).then(() => {
 
 eject(diskId: string): Promise&lt;void&gt;
 
-弹出指定卷设备，使用Promise异步回调。
+弹出指定磁盘设备及其所属卷设备，使用Promise异步回调。
 
 **起始版本**：26.0.0
 
@@ -887,7 +934,7 @@ eject(diskId: string): Promise&lt;void&gt;
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| diskId | string | 是   | 卷设备所属的磁盘id。 |
+| diskId | string | 是 | 卷设备所属的磁盘设备ID，格式为disk-{主设备号}-{次设备号}。 |
 
 **返回值：**
 
@@ -904,18 +951,19 @@ eject(diskId: string): Promise&lt;void&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. |
+| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// diskId可通过getAllDisks()接口获取
 let diskId: string = "";
 volumeManager.eject(diskId).then(() => {
   console.info("eject successfully.");
 }).catch((error: BusinessError) => {
-  console.error("eject failed with error:" + JSON.stringify(error));
+  console.error(`Failed to eject. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -939,7 +987,7 @@ createIsoImage(volumeId: string, filePath: string): Promise&lt;void&gt;
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| volumeId | string | 是   | 卷设备ID。 |
+| volumeId | string | 是   | 卷设备ID，格式为vol-{主设备号}-{次设备号}。卷设备ID会随着插卡顺序不同而变化，请勿缓存后复用。 |
 | filePath | string | 是   | ISO镜像文件的保存路径。 |
 
 **返回值：**
@@ -957,9 +1005,9 @@ createIsoImage(volumeId: string, filePath: string): Promise&lt;void&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. |
-| 13600005 | Incorrect volume state. |
-| 13600010 | The input parameter is invalid. |
+| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
+| 13600005 | Incorrect volume state. Possible causes: The volume device is not in the required state for this operation. For mount/format/setVolumeDescription, ensure the volume is in the unmounted state; for unmount, ensure the volume is in the mounted state. |
+| 13600010 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Incorrect parameter values. |
 | 13600024 | Empty disc. |
 | 13600025 | Failed to write the ISO file. |
 
@@ -968,12 +1016,13 @@ createIsoImage(volumeId: string, filePath: string): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// volumeId可通过getAllVolumes()接口获取
 let volumeId: string = "";
 let filePath: string = "";
 volumeManager.createIsoImage(volumeId, filePath).then(() => {
   console.info("createIsoImage successfully.");
 }).catch((error: BusinessError) => {
-  console.error("createIsoImage failed with error:" + JSON.stringify(error));
+  console.error(`Failed to createIsoImage. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -982,6 +1031,8 @@ volumeManager.createIsoImage(volumeId, filePath).then(() => {
 burn(volumeId: string, want: Want): Promise&lt;void&gt;
 
 向指定卷设备刻录数据，使用Promise异步回调。
+
+光盘刻录是一个多步骤的协作过程，典型流程为：先调用createIsoImage接口创建ISO镜像，再调用burn接口向光盘刻录数据，刻录过程中可通过getOpProcess接口查询刻录进度，刻录完成后可调用verifyBurnData接口校验刻录数据的完整性。
 
 **起始版本**：26.0.0
 
@@ -997,8 +1048,8 @@ burn(volumeId: string, want: Want): Promise&lt;void&gt;
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| volumeId | string | 是   | 卷设备ID。 |
-| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 启动Ability的Want信息。 |
+| volumeId | string | 是   | 卷设备ID，格式为vol-{主设备号}-{次设备号}。卷设备ID会随着插卡顺序不同而变化，请勿缓存后复用。 |
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 携带刻录配置信息的Want对象，包括diskName表示刻录光盘的名称，burnPath表示待刻录的目录或ISO镜像文件路径，isIsoImage表示是否为ISO镜像刻录（true表示刻录ISO镜像文件，false表示刻录数据目录），burnSpeed表示刻录速度（单位为MB/s，0表示自动选择最优速度），fsType表示文件系统类型（支持'ISO9660'和'UDF'）。 |
 
 **返回值：**
 
@@ -1015,9 +1066,9 @@ burn(volumeId: string, want: Want): Promise&lt;void&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. |
-| 13600010 | The input parameter is invalid. |
-| 13600028 | Burn operation failed. |
+| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
+| 13600010 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Incorrect parameter values. |
+| 13600028 | Burn operation failed. Possible causes: 1. The filesystem is not supported. 2. The disc is not writable. 3. The burn parameters are invalid. |
 
 **示例：**
 
@@ -1025,19 +1076,19 @@ burn(volumeId: string, want: Want): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 import { Want } from '@kit.AbilityKit';
+// volumeId可通过getAllVolumes()接口获取
 let volumeId: string = "";
 let want: Want = {
   diskName: "MyDisc",
   burnPath: "/data/storage/el2/base/files/burn_data",
   isIsoImage: false,
   burnSpeed: 0,
-  fsType: "ISO9660",
-  isIncBurnSupport: true
+  fsType: "ISO9660"
 };
 volumeManager.burn(volumeId, want).then(() => {
   console.info("burn successfully.");
 }).catch((error: BusinessError) => {
-  console.error("burn failed with error:" + JSON.stringify(error));
+  console.error(`Failed to burn. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -1045,7 +1096,7 @@ volumeManager.burn(volumeId, want).then(() => {
 
 getOpProcess(volumeId: string): Promise&lt;number&gt;
 
-获取指定卷设备的操作进度，使用Promise异步回调。
+获取指定卷设备的光驱刻录操作进度，使用Promise异步回调。在调用burn接口向光盘刻录数据后，可通过本接口获取刻录进度。
 
 **起始版本**：26.0.0
 
@@ -1061,7 +1112,7 @@ getOpProcess(volumeId: string): Promise&lt;number&gt;
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| volumeId | string | 是   | 卷设备ID。 |
+| volumeId | string | 是   | 卷设备ID，格式为vol-{主设备号}-{次设备号}。卷设备ID会随着插卡顺序不同而变化，请勿缓存后复用。 |
 
 **返回值：**
 
@@ -1078,19 +1129,20 @@ getOpProcess(volumeId: string): Promise&lt;number&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. |
-| 13600010 | The input parameter is invalid. |
+| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
+| 13600010 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Incorrect parameter values. |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// volumeId可通过getAllVolumes()接口获取
 let volumeId: string = "";
 volumeManager.getOpProcess(volumeId).then((progress: number) => {
   console.info("getOpProcess successfully, progress:" + progress);
 }).catch((error: BusinessError) => {
-  console.error("getOpProcess failed with error:" + JSON.stringify(error));
+  console.error(`Failed to getOpProcess. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -1114,7 +1166,7 @@ verifyBurnData(volumeId: string, verType: VerifyType): Promise&lt;void&gt;
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
-| volumeId | string | 是   | 卷设备ID。 |
+| volumeId | string | 是   | 卷设备ID，格式为vol-{主设备号}-{次设备号}。卷设备ID会随着插卡顺序不同而变化，请勿缓存后复用。 |
 | verType | [VerifyType](#verifytype) | 是   | 刻录数据的校验类型。 |
 
 **返回值：**
@@ -1132,21 +1184,22 @@ verifyBurnData(volumeId: string, verType: VerifyType): Promise&lt;void&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. |
-| 13600010 | The input parameter is invalid. |
-| 13600030 | Verification failed. |
+| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
+| 13600010 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Incorrect parameter values. |
+| 13600030 | Verification failed. Possible causes: 1. The burn data verification type is not supported. 2. The volume device is not available. |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// volumeId可通过getAllVolumes()接口获取
 let volumeId: string = "";
 let verType: volumeManager.VerifyType = volumeManager.VerifyType.KEY_DATA;
 volumeManager.verifyBurnData(volumeId, verType).then(() => {
   console.info("verifyBurnData successfully.");
 }).catch((error: BusinessError) => {
-  console.error("verifyBurnData failed with error:" + JSON.stringify(error));
+  console.error(`Failed to verifyBurnData. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -1231,14 +1284,15 @@ getDiskById(diskId: string): Promise&lt;Disk&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600008 | No such object. |
-| 13600010 | The input parameter is invalid. |
+| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
+| 13600010 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Incorrect parameter values. |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// diskId可通过getAllDisks()接口获取
 let diskId: string = "";
 volumeManager.getDiskById(diskId).then((disk: volumeManager.Disk) => {
   console.info("getDiskById successfully:" + JSON.stringify(disk));
@@ -1284,8 +1338,8 @@ getPartitionTable(diskId: string): Promise&lt;PartitionTableInfo&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600008 | No such object. |
-| 13600010 | The input parameter is invalid. |
+| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
+| 13600010 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Incorrect parameter values. |
 | 13600021 | Get partition table failed. |
 
 **示例：**
@@ -1293,6 +1347,7 @@ getPartitionTable(diskId: string): Promise&lt;PartitionTableInfo&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// diskId可通过getAllDisks()接口获取
 let diskId: string = "";
 volumeManager.getPartitionTable(diskId).then((partitionTableInfo: volumeManager.PartitionTableInfo) => {
   console.info("getPartitionTable successfully:" + JSON.stringify(partitionTableInfo));
@@ -1305,7 +1360,7 @@ volumeManager.getPartitionTable(diskId).then((partitionTableInfo: volumeManager.
 
 createPartition(diskId: string, params: PartitionParams): Promise&lt;void&gt;
 
-对指定磁盘设备创建分区。使用Promise异步回调。
+对指定磁盘设备创建分区，不支持对光盘进行分区。使用Promise异步回调。
 
 **起始版本**：26.0.0
 
@@ -1339,10 +1394,10 @@ createPartition(diskId: string, params: PartitionParams): Promise&lt;void&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. |
-| 13600005 | Incorrect volume state. |
-| 13600008 | No such object. |
-| 13600010 | The input parameter is invalid. |
+| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
+| 13600005 | Incorrect volume state. Possible causes: The volume device is not in the required state for this operation. For mount/format/setVolumeDescription, ensure the volume is in the unmounted state; for unmount, ensure the volume is in the mounted state. |
+| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
+| 13600010 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Incorrect parameter values. |
 | 13600022 | Create partition failed. |
 
 **示例：**
@@ -1350,6 +1405,7 @@ createPartition(diskId: string, params: PartitionParams): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// diskId可通过getAllDisks()接口获取
 let diskId: string = "";
 let params: volumeManager.PartitionParams = {
   partitionNum: 1,
@@ -1368,7 +1424,7 @@ volumeManager.createPartition(diskId, params).then(() => {
 
 deletePartition(diskId: string, partitionNum: number): Promise&lt;void&gt;
 
-对指定磁盘设备删除指定分区。使用Promise异步回调。
+对指定磁盘设备删除指定分区，不支持对光盘进行分区。使用Promise异步回调。
 
 **起始版本**：26.0.0
 
@@ -1402,9 +1458,9 @@ deletePartition(diskId: string, partitionNum: number): Promise&lt;void&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600005 | Incorrect volume state. |
-| 13600008 | No such object. |
-| 13600010 | The input parameter is invalid. |
+| 13600005 | Incorrect volume state. Possible causes: The volume device is not in the required state for this operation. For mount/format/setVolumeDescription, ensure the volume is in the unmounted state; for unmount, ensure the volume is in the mounted state. |
+| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
+| 13600010 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Incorrect parameter values. |
 | 13600023 | Delete partition failed. |
 
 **示例：**
@@ -1412,6 +1468,7 @@ deletePartition(diskId: string, partitionNum: number): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// diskId可通过getAllDisks()接口获取
 let diskId: string = "";
 let partitionNum: number = 1;
 volumeManager.deletePartition(diskId, partitionNum).then(() => {
@@ -1425,7 +1482,7 @@ volumeManager.deletePartition(diskId, partitionNum).then(() => {
 
 formatPartition(diskId: string, partitionNum: number, params: FormatParams): Promise&lt;void&gt;
 
-对指定磁盘设备的指定分区进行格式化。使用Promise异步回调。
+对指定磁盘设备的指定分区进行格式化，需确保相关卷设备处于卸载状态。使用Promise异步回调。
 
 **起始版本**：26.0.0
 
@@ -1460,10 +1517,10 @@ formatPartition(diskId: string, partitionNum: number, params: FormatParams): Pro
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. |
-| 13600005 | Incorrect volume state. |
-| 13600008 | No such object. |
-| 13600010 | The input parameter is invalid. |
+| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
+| 13600005 | Incorrect volume state. Possible causes: The volume device is not in the required state for this operation. For mount/format/setVolumeDescription, ensure the volume is in the unmounted state; for unmount, ensure the volume is in the mounted state. |
+| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
+| 13600010 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Incorrect parameter values. |
 | 13600032 | Format partition failed. |
 
 **示例：**
@@ -1471,6 +1528,7 @@ formatPartition(diskId: string, partitionNum: number, params: FormatParams): Pro
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// diskId可通过getAllDisks()接口获取
 let diskId: string = "";
 let partitionNum: number = 1;
 let params: volumeManager.FormatParams = {
@@ -1499,20 +1557,20 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 | ----------- | ------- | ------- | ----- | -------------------- |
 | id          | string  | 否 | 否 | 卷设备ID的格式为vol-{主设备号}-{次设备号}，主设备号用来区分不同种类的设备，次设备号用来区分同一类型的多个设备，卷设备ID会随着插卡顺序不同而变化。                 |
 | uuid        | string  | 否 | 否 | 卷设备uuid是卷设备的通用唯一识别码，不会随着插卡顺序变化而变化，但是卷设备的格式化会改变卷设备的uuid。               |
-| diskId      | string  | 否 | 否 | 卷设备所属的磁盘ID，一个磁盘可以有一个或者多个卷设备。磁盘设备ID的格式为disk-{主设备号}-{次设备号}，与卷设备ID相似。        |
-| description | string  | 否 | 否 | 卷设备描述。           |
-| removable   | boolean | 否 | 否 | 表示卷设备是否可移除，当前仅支持可移除存储设备。true为可移除；false为不可移除。 |
+| diskId      | string  | 否 | 否 | 卷设备所属的磁盘ID，一个磁盘可以有一个或者多个卷设备。磁盘设备ID的格式为disk-{主设备号}-{次设备号}，与卷设备ID的格式结构类似，均采用{主设备号}-{次设备号}的命名规则。        |
+| description | string  | 否 | 否 | 卷设备描述。卷设备的格式化会改变卷设备描述。           |
+| removable   | boolean | 否 | 否 | 表示卷设备是否可移除。当前仅支持查询可移除存储设备，因此该字段值始终为true。true表示可移除；false表示不可移除。 |
 | state       | number  | 否 | 否 | 卷设备状态标识：<br>0：卸载状态 UNMOUNTED。<br> 1：检查状态 CHECKING。<br> 2：挂载状态 MOUNTED。<br> 3：正在弹出状态 EJECTING。          |
-| path        | string  | 否 | 否 | 卷设备的挂载地址，一般为/mnt/data/external/{uuid}。         |
-| fsType<sup>12+</sup>        | string  | 否 | 否 | 文件系统的类型，常见有ext2、vfat、NTFS等。<br>**说明**：从API version 24开始，支持ISO9660、UDF。      |
-| partitionNum   | number  | 否 | 是 | 卷设备的分区号。<br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。         |
-| extraInfo   | string  | 否 | 是 | 卷设备的扩展信息。<br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。         |
+| path        | string  | 否 | 否 | 卷设备的挂载地址，一般为/mnt/data/external/{uuid}。卷设备的格式化会改变挂载路径。         |
+| fsType<sup>12+</sup>        | string  | 否 | 否 | 文件系统的类型，取值包括ext2、vfat、NTFS等。<br>**说明**：从API version 24开始，还支持ISO9660、UDF。      |
+| partitionNum   | number  | 否 | 是 | 卷设备的分区号。该字段为可选字段，不存在时表示无分区号信息。<br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。         |
+| extraInfo   | string  | 否 | 是 | 卷设备的扩展信息，包含设备的附加属性数据，具体内容因设备类型不同而异。该字段为可选字段，不存在时表示无扩展信息。<br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。         |
 
 ## DiskType
 
 磁盘类型的枚举。
 
-### 属性
+### 枚举值
 
 **起始版本**：26.0.0
 
@@ -1552,8 +1610,8 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 | sizeBytes   | number  | 否 | 否 | 磁盘总大小，单位Byte。               |
 | diskType    | [DiskType](#disktype) | 否 | 否 | 磁盘类型。        |
 | removable   | boolean | 否 | 否 | 表示磁盘是否可移除，true为可移除；false为不可移除。默认为true。           |
-| volumeIds   | Array&lt;string&gt; | 否 | 否 | 磁盘包含的卷设备ID数组，一个磁盘可以包含多个卷设备。         |
-| extraInfo   | string  | 否 | 否 | 磁盘设备的扩展信息。         |
+| volumeIds   | Array&lt;string&gt; | 否 | 否 | 磁盘包含的卷设备ID数组，一个磁盘可以包含一个或多个卷设备。         |
+| extraInfo   | string  | 否 | 否 | 磁盘设备的扩展信息，包含磁盘的附加属性数据，具体内容因设备类型不同而异。         |
 
 ## PartitionInfo
 
@@ -1599,7 +1657,7 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 | partitionCount | number  | 否 | 否 | 分区数量。        |
 | totalSector | number  | 否 | 否 | 总扇区数。           |
 | sectorSize  | number  | 否 | 否 | 每个扇区的大小，单位Byte。         |
-| alignSector | number  | 否 | 否 | 对齐扇区号。         |
+| alignSector | number  | 否 | 否 | 分区对齐所依据的扇区号，用于确保分区起始位置与物理扇区边界对齐。         |
 | partitions  | Array&lt;[PartitionInfo](#partitioninfo)&gt; | 否 | 否 | 分区信息数组。         |
 
 ## PartitionParams
@@ -1641,4 +1699,4 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 | ----------- | ------- | ------- | ----- | -------------------- |
 | fsType      | string  | 否 | 否 | 文件系统类型，当前支持格式化为ext4、vfat和exfat。                 |
 | quickFormat | boolean | 否 | 是 | 是否执行快速格式化。当前仅支持快速格式化，因此该参数只支持传true。传false时将返回参数非法错误，错误码13600010。默认值为true。               |
-| volumeName  | string  | 否 | 是 | 格式化后的卷名称。        |
+| volumeName  | string  | 否 | 是 | 格式化后的卷名称。不传入时默认使用空字符串作为卷名称。        |
