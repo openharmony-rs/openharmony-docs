@@ -19503,6 +19503,36 @@
 						"start_line":18
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets",
+				"functions":[
+					{
+						"end_line":61,
+						"name":"FormEditDemo_EntryFormAbility",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/widget/pages/WidgetCard.ets",
+				"functions":[
+					{
+						"end_line":53,
+						"name":"FormEditDemo_WidgetCard",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/widget/pages/WidgetCard.ets",
+				"functions":[
+					{
+						"end_line":51,
+						"name":"FormEditUIAbility_WidgetCard",
+						"start_line":15
+					}
+				]
 			}
 		]
 	},
