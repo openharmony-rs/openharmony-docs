@@ -1304,9 +1304,10 @@ Allows an application to install the PCIe driver.
 
 ## ohos.permission.ACCESS_GAME_BUDDY_SERVICE
 
-Allows an application to access game buddy service. 
-<br/>With this permission, the application can utilize the APIs provided by the game buddy service, such as capturing screenshots of running games and capturing user voice data via the microphone.
-<br/>Applicable scenarios and functionalities: The application provides game AI companion features, requiring the analysis of game screenshots while a user is playing to deliver in-game advice and recommendations.
+Allows an application to access the game buddy service. 
+With this permission, the application can utilize the APIs provided by the game buddy service, such as capturing screenshots of running games and capturing user voice data via the microphone.
+
+<!--RP93--><!--RP93End-->
 
 **Permission level**: system_basic
 
