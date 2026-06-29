@@ -212,36 +212,36 @@ ArkTS-Dyn示例：
 <!-- @[custom_dialog_control_mask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) --> 
 
 ``` TypeScript
-  maskOpt: promptAction.CustomDialogOptions = {
-    builder: () => {
-      this.myBuilder();
-    },
-    maskRect: {
-      x: 0,
-      y: 10,
-      width: '100%',
-      height: '90%'
-    },
-    maskColor: '#33AA0000'
-  } as promptAction.CustomDialogOptions;
-  // ···
-  build() {
-    NavDestination() {
-      Column() {
-        // ···
-        Button('openCustomDialog maskOpt')
-          .width('100%')
-          .margin({ top: 10 })
-          .onClick(() => {
-            this.getUIContext().getPromptAction().openCustomDialog(this.maskOpt)
-          })
+maskOpt: promptAction.CustomDialogOptions = {
+  builder: () => {
+    this.myBuilder();
+  },
+  maskRect: {
+    x: 0,
+    y: 10,
+    width: '100%',
+    height: '90%'
+  },
+  maskColor: '#33AA0000'
+} as promptAction.CustomDialogOptions;
+// ...
+build() {
+  NavDestination() {
+    Column() {
+      // ...
+      Button('openCustomDialog maskOpt')
+        .width('100%')
+        .margin({ top: 10 })
+        .onClick(() => {
+          this.getUIContext().getPromptAction().openCustomDialog(this.maskOpt);
+        })
 
-        // ···
-      }
-      .width('100%')
-      .height('100%')
+      // ...
     }
+    .width('100%')
+    .height('100%')
   }
+}
 ```
 
 ArkTS-Sta示例：
