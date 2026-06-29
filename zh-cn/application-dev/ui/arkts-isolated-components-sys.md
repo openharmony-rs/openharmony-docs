@@ -100,9 +100,9 @@ IsolatedComponent({
   want: {
     "parameters": {
       // 资源路径
-      "resourcePath": `${getContext(this).filesDir}/${this.fileName}.hap`,
+      "resourcePath": `${this.getUIContext().getHostContext()?.filesDir}/${this.fileName}.hap`,
       // Abc文件校验后的沙箱路径
-      "abcPath": `/abcs${getContext(this).filesDir}/${this.fileName}`,
+      "abcPath": `/abcs${this.getUIContext().getHostContext()?.filesDir}/${this.fileName}`,
       // 需要显示页面的入口路径
       "entryPoint": `${this.bundleName}/entry/ets/pages/extension`,
     }
