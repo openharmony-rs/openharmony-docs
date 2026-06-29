@@ -228,8 +228,14 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
    }
    let pipe: usbManager.USBDevicePipe = this.pipe_;
    let interface1: usbManager.USBInterface = this.interface_;
-   usbManager.releaseInterface(pipe, interface1);
-   usbManager.closePipe(pipe);
+   try {
+     usbManager.releaseInterface(pipe, interface1);
+     usbManager.closePipe(pipe);
+   } catch (error) {
+     console.error(`failed: ${error}`);
+     this.logInfo_ += '\n[ERROR] failed: ' + JSON.stringify(error);
+   }
+   
    this.pipe_ = undefined;
    this.interface_ = undefined;
    console.info('close device success');
