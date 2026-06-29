@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-组件内转场主要通过transition属性配置转场参数，在组件插入和删除时显示过渡动效，主要用于容器组件中的子组件插入和删除时，提升用户体验。 
+组件内转场主要通过transition属性配置转场参数，在组件插入和删除时显示过渡动效，主要用于容器组件中的子组件插入和删除时，提升用户体验。组件内转场详细的使用方法请参考[转场动画开发指导](../../../ui/arkts-enter-exit-transition.md)。
 
 >  **说明：**
 >
@@ -16,7 +16,7 @@
 >
 >  - 当前有两种方式触发组件的transition：
 >    1. 当组件插入或删除时（如if条件改变、ForEach新增删除组件），会递归的触发所有新插入/删除的组件的transition效果。
->    2. 当组件[visibility](ts-universal-attributes-visibility.md#visibility)属性在可见和不可见（Visibility.Hidden或Visibility.None）之间改变时，只触发该组件的transition效果。在Visibility.Visible与Visibility.None之间切换时，若直接设置为Visibility.None，会导致组件布局大小为0，此时无法观察到transition效果。而当在动画中修改visibility属性为Visibility.None时，组件布局为0是带动画的，将呈现transition与布局动画的叠加效果，形成双动画的复合表现。
+>    2. 当组件[visibility](ts-universal-attributes-visibility.md#visibility)属性在可见和不可见（Visibility.Hidden或Visibility.None）之间改变时，只触发该组件的transition效果。在Visibility.Visible与Visibility.None之间切换时，若直接设置为Visibility.None，会导致组件布局大小为0，此时无法观察到transition效果。而当在动画中修改visibility属性为Visibility.None时，组件布局为0是带动画的，将呈现transition与布局动画的叠加效果，形成双动画的复合表现。具体效果可参考[示例4](#示例4visibility切换时的双动画复合效果)。
 
 
 ## transition
@@ -418,7 +418,7 @@ scale(options: ScaleOptions): TransitionEffect\<"scale">
 
 | 参数名 | 类型                                   | 必填 | 说明           |
 | ------ | ------------------------------------------ | ---- | ------------------ |
-| options  | [ScaleOptions](ts-universal-attributes-transformation.md#scaleoptions对象说明)      | 是   | 组件转场时的缩放效果，为插入时起点和删除时终点的值。设置的缩放值在组件当前的scale属性上进行叠加，如组件当前scale值为0.8，当转场缩放值设置为0.5时，组件入场动画的缩放值将从0.4开始执行。<br/>-x：横向放大倍数（或缩小比例）。<br/>-y：纵向放大倍数（或缩小比例）。<br/>-z：当前为二维显示，该参数无效。<br/>-&nbsp;centerX、centerY指缩放中心点，centerX和centerY默认值是"50%"，即默认以组件的中心点为缩放中心点。<br/>-&nbsp;中心点为(0, 0)代表组件的左上角。<br>**说明：** <br>设置centerX、centerY为非法字符串时（例如，"illegalString"），默认值为"0"。 |
+| options  | [ScaleOptions](ts-universal-attributes-transformation.md#scaleoptions对象说明)      | 是   | 组件转场时的缩放效果，为插入时起点和删除时终点的值。设置的缩放值在组件当前的scale属性上进行乘法叠加，如组件当前scale值为0.8，当转场缩放值设置为0.5时，组件入场动画的缩放值将从0.8×0.5=0.4开始执行。<br/>-x：横向放大倍数（或缩小比例）。<br/>-y：纵向放大倍数（或缩小比例）。<br/>-z：当前为二维显示，该参数无效。<br/>- centerX、centerY指缩放中心点，centerX和centerY默认值是"50%"，即默认以组件的中心点为缩放中心点。<br/>- 中心点为(0, 0)代表组件的左上角。<br>**说明：** <br>设置centerX、centerY为非法字符串时（例如，"illegalString"），默认值为"0"。 |
 
 **返回值：**
 
@@ -1074,3 +1074,41 @@ struct TransitionEffectExample3 {
 ```
 示意图：<br/>
 ![transitionComponent4](figures/transitionComponent4.gif)
+
+### 示例4（visibility切换时的双动画复合效果）
+
+该示例演示当[visibility](ts-universal-attributes-visibility.md#visibility)在Visibility.Visible与Visibility.None之间切换时，[transition](#transition)动画与布局动画叠加形成双动画复合表现的效果。 
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TransitionVisibilityExample {
+  @State isVisible: boolean = true;
+
+  build() {
+    Column() {
+      Button('toggle visibility').width(150).height(30).margin(30)
+        .onClick(() => {
+          this.getUIContext()?.animateTo({ duration: 1000 }, () => {
+            this.isVisible = !this.isVisible;
+          })
+        })
+      Column() {
+        Text('Hello World')
+          .fontSize(20)
+          .fontColor(Color.White)
+      }
+      .width(200)
+      .height(100)
+      .backgroundColor('#317AF7')
+      .justifyContent(FlexAlign.Center)
+      .transition(TransitionEffect.OPACITY.animation({ duration: 1000 }))
+      .visibility(this.isVisible ? Visibility.Visible : Visibility.None)
+    }.width('100%').height('100%').justifyContent(FlexAlign.Center)
+  }
+}
+```
+示意图：<br/>
+![transitionComponent5](figures/transitionComponent5.gif)
+
