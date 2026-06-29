@@ -78,7 +78,9 @@ let onAbilityCreateCallback = (data: UIAbility) => {
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 // 调用addAbilityMonitor方法添加监听
 abilityDelegator.addAbilityMonitor(monitor, (error: BusinessError<void> | null) => {
-  console.error(`addAbilityMonitor fail, error: ${JSON.stringify(error)}`);
+  if (error) {
+    console.error(`addAbilityMonitor fail. Code: ${error.code}, message: ${error.message}`);
+  }
 });
 ```
 
@@ -238,7 +240,9 @@ let monitor: abilityDelegatorRegistry.AbilityMonitor = {
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.removeAbilityMonitor(monitor, (error: BusinessError | null) => {
-  console.error(`removeAbilityMonitor fail, error: ${JSON.stringify(error)}`);
+  if (error) {
+    console.error(`removeAbilityMonitor fail. Code: ${error.code}, message: ${error.message}`);
+  }
 });
 ```
 
@@ -398,9 +402,9 @@ let onAbilityCreateCallback = (data: UIAbility) => {
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.waitAbilityMonitor(monitor, (error: BusinessError<void> | null, data: UIAbility | undefined) => {
   if (error) {
-    console.error(`waitAbilityMonitor fail, error: ${JSON.stringify(error)}`);
+    console.error(`waitAbilityMonitor fail. Code: ${error.code}, message: ${error.message}`);
   } else {
-    console.info(`waitAbilityMonitor success, data: ${JSON.stringify(data)}`);
+    console.info('waitAbilityMonitor success.');
   }
 });
 ```
@@ -463,11 +467,10 @@ abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 // 调用waitAbilityMonitor并传入超时参数等待匹配Ability
 abilityDelegator.waitAbilityMonitor(monitor, timeout,
   (error: BusinessError<void> | null, data: UIAbility | undefined) => {
-    if (error && error.code !== 0) {
-      console.error(`waitAbilityMonitor fail, error: ${JSON.stringify(error)}`);
+    if (error) {
+      console.error(`waitAbilityMonitor fail. Code: ${error.code}, message: ${error.message}`);
     } else {
-      console.info(`waitAbilityMonitor success, data: ${JSON.stringify(data)}`);
-    }
+      console.info('waitAbilityMonitor success.');
   });
 ```
 
@@ -613,14 +616,18 @@ let ability: UIAbility;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.getCurrentTopAbility((err: BusinessError<void> | null, data: UIAbility | undefined) => {
-  console.info('getCurrentTopAbility callback');
-  if (data === undefined) {
-    console.error('Current top ability is undefined');
-    return;
+  if (err) {
+    console.error(`getCurrentTopAbility fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('getCurrentTopAbility callback');
+    if (data === undefined) {
+      console.error('Current top ability is undefined');
+      return;
+    }
+    ability = data;
+    let state = abilityDelegator.getAbilityState(ability);
+    console.info(`getAbilityState ${state}`);
   }
-  ability = data;
-  let state = abilityDelegator.getAbilityState(ability);
-  console.info(`getAbilityState ${state}`);
 });
 ```
 
@@ -665,8 +672,12 @@ let ability: UIAbility | undefined;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.getCurrentTopAbility((err: BusinessError<void> | null, data: UIAbility | undefined) => {
-  console.info('getCurrentTopAbility callback');
-  ability = data;
+  if (err) {
+    console.error(`getCurrentTopAbility fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('getCurrentTopAbility callback');
+    ability = data;
+  }
 });
 ```
 
@@ -773,7 +784,11 @@ let want: Want = {
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.startAbility(want, (err: BusinessError<void> | null, data: undefined) => {
-  console.info('startAbility callback');
+  if (err) {
+    console.error(`startAbility fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('startAbility callback');
+  }
 });
 ```
 
@@ -886,15 +901,19 @@ let ability: UIAbility;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.getCurrentTopAbility((err: BusinessError<void> | null, data: UIAbility | undefined) => {
-  console.info('getCurrentTopAbility callback');
-  if (data === undefined) {
-    console.error('Current top ability is undefined');
-    return;
+  if (err) {
+    console.error(`getCurrentTopAbility fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('getCurrentTopAbility callback');
+    if (data === undefined) {
+      console.error('Current top ability is undefined');
+      return;
+    }
+    ability = data;
+    abilityDelegator.doAbilityForeground(ability, (err: BusinessError<void> | null) => {
+      console.info("doAbilityForeground callback");
+    });
   }
-  ability = data;
-  abilityDelegator.doAbilityForeground(ability, (err: BusinessError<void> | null) => {
-    console.info("doAbilityForeground callback");
-  });
 });
 ```
 
@@ -945,15 +964,19 @@ let ability: UIAbility;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.getCurrentTopAbility((err: BusinessError<void> | null, data: UIAbility | undefined) => {
-  console.info('getCurrentTopAbility callback');
-  if (data === undefined) {
-    console.error('Current top ability is undefined');
-    return;
+  if (err) {
+    console.error(`getCurrentTopAbility fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('getCurrentTopAbility callback');
+    if (data === undefined) {
+      console.error('Current top ability is undefined');
+      return;
+    }
+    ability = data;
+    abilityDelegator.doAbilityForeground(ability).then(() => {
+      console.info("doAbilityForeground promise");
+    });
   }
-  ability = data;
-  abilityDelegator.doAbilityForeground(ability).then(() => {
-    console.info("doAbilityForeground promise");
-  });
 });
 ```
 
@@ -999,15 +1022,19 @@ let ability: UIAbility;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.getCurrentTopAbility((err: BusinessError<void> | null, data: UIAbility | undefined) => {
-  console.info('getCurrentTopAbility callback');
-  if (data === undefined) {
-    console.error('Current top ability is undefined');
-    return;
+  if (err) {
+    console.error(`getCurrentTopAbility fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('getCurrentTopAbility callback');
+    if (data === undefined) {
+      console.error('Current top ability is undefined');
+      return;
+    }
+    ability = data;
+    abilityDelegator.doAbilityBackground(ability, (err: BusinessError<void> | null) => {
+      console.info("doAbilityBackground callback");
+    });
   }
-  ability = data;
-  abilityDelegator.doAbilityBackground(ability, (err: BusinessError<void> | null) => {
-    console.info("doAbilityBackground callback");
-  });
 });
 ```
 
@@ -1058,15 +1085,19 @@ let ability: UIAbility;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.getCurrentTopAbility((err: BusinessError<void> | null, data: UIAbility | undefined) => {
-  console.info('getCurrentTopAbility callback');
-  if (data === undefined) {
-    console.error('Current top ability is undefined');
-    return;
+  if (err) {
+    console.error(`getCurrentTopAbility fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('getCurrentTopAbility callback');
+    if (data === undefined) {
+      console.error('Current top ability is undefined');
+      return;
+    }
+    ability = data;
+    abilityDelegator.doAbilityBackground(ability).then(() => {
+      console.info("doAbilityBackground promise");
+    });
   }
-  ability = data;
-  abilityDelegator.doAbilityBackground(ability).then(() => {
-    console.info("doAbilityBackground promise");
-  });
 });
 ```
 
@@ -1196,7 +1227,7 @@ executeShellCommand(cmd: string, callback: AsyncCallback\<ShellCmdResult>): void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+**系统能力**： SystemCapability.Ability.AbilityRuntime.Core
 
 **ArkTS-Dyn起始版本：** 8
 
@@ -1217,12 +1248,16 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // 声明AbilityDelegator对象
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
 // 设置要执行的shell命令字符串
-let cmd = 'cmd';
+let shellCommand = 'cmd';
 // 获取AbilityDelegator实例并执行shell命令
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.executeShellCommand(cmd,
+abilityDelegator.executeShellCommand(shellCommand,
   (err: BusinessError<void> | null, data: abilityDelegatorRegistry.ShellCmdResult | undefined) => {
-    console.info('executeShellCommand callback');
+    if (err) {
+      console.error(`executeShellCommand fail. Code: ${err.code}, message: ${err.message}`);
+    } else {
+      console.info('executeShellCommand callback');
+    }
   });
 ```
 
@@ -1238,7 +1273,7 @@ ArkTS-Sta: executeShellCommand(cmd: string, timeoutSecs: long, callback: AsyncCa
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+**系统能力**： SystemCapability.Ability.AbilityRuntime.Core
 
 **ArkTS-Dyn起始版本：** 8
 
@@ -1259,13 +1294,17 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let cmd = 'cmd';
+let shellCommand = 'cmd';
 let timeout = 100;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.executeShellCommand(cmd, timeout,
+abilityDelegator.executeShellCommand(shellCommand, timeout,
   (err: BusinessError<void> | null, data: abilityDelegatorRegistry.ShellCmdResult | undefined) => {
-    console.info('executeShellCommand callback');
+    if (err) {
+      console.error(`executeShellCommand fail. Code: ${err.code}, message: ${err.message}`);
+    } else {
+      console.info('executeShellCommand callback');
+    }
   });
 ```
 
@@ -1281,7 +1320,7 @@ ArkTS-Sta: executeShellCommand(cmd: string, timeoutSecs?: long): Promise\<ShellC
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+**系统能力**： SystemCapability.Ability.AbilityRuntime.Core
 
 **ArkTS-Dyn起始版本：** 8
 
@@ -1308,11 +1347,11 @@ ArkTS-Dyn示例：
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let cmd = 'cmd';
+let shellCommand = 'cmd';
 let timeout = 100;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.executeShellCommand(cmd, timeout).then((data) => {
+abilityDelegator.executeShellCommand(shellCommand, timeout).then((data) => {
   console.info('executeShellCommand promise');
 });
 ```
@@ -1324,11 +1363,11 @@ ArkTS-Sta示例：
 import { abilityDelegatorRegistry } from '@kit.TestKit';
 
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
-let cmd = 'cmd';
+let shellCommand = 'cmd';
 let timeout: long = 100;
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-abilityDelegator.executeShellCommand(cmd, timeout).then((data) => {
+abilityDelegator.executeShellCommand(shellCommand, timeout).then((data) => {
   console.info('executeShellCommand promise');
 });
 ```
@@ -1377,7 +1416,11 @@ let msg = 'msg';
 
 abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.finishTest(msg, 0, (err: BusinessError<void> | null) => {
-  console.info('finishTest callback');
+  if (err) {
+    console.error(`finishTest fail. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info('finishTest callback');
+  }
 });
 ```
 
