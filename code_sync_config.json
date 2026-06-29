@@ -12220,7 +12220,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatLazyLoading2.ets",
 				"functions":[
 					{
-						"end_line":49,
+						"end_line":53,
 						"name":"repeat_lazy_loading_two",
 						"start_line":16
 					}
