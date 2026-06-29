@@ -317,7 +317,7 @@ struct UIPickerComponentAttrsExample {
         }
         // 配置选项列表循环
         .canLoop(this.loop)
-        // 配置触控音振反馈
+        // 配置触控反馈
         .enableHapticFeedback(this.hapticFeedback)
         .width('70%')
       }
@@ -778,7 +778,7 @@ struct MonthUIPickerComponentExample {
       .width('70%')
       // 配置选项列表循环
       .canLoop(true)
-      // 配置触控音振反馈为关闭
+      // 配置触控反馈为关闭
       .enableHapticFeedback(false)
       // 配置选中项的指示器标识为分割线
       .selectionIndicator({ type: PickerIndicatorType.DIVIDER })
@@ -1140,8 +1140,8 @@ struct TimeUIPickerComponentExample {
     this.flushMinSecColumn()
     this.flushCurrentTime()
     this.flushBorderStyle()
-    let subscriber: commonEventManager.CommonEventSubscriber;
-    let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+    private subscriber: commonEventManager.CommonEventSubscriber | undefined = undefined;
+
       events: [commonEventManager.Support.COMMON_EVENT_LOCALE_CHANGED]
     };
     // 创建订阅者，监听系统语言变化
@@ -1168,6 +1168,12 @@ struct TimeUIPickerComponentExample {
       .catch((err: BusinessError) => {
         console.error(`CreateSubscriber failed, code is ${err.code}, message is ${err.message}`);
       });
+  }
+
+  aboutToDisappear(): void {
+    if (this.subscriber) {
+      commonEventManager.unsubscribe(this.subscriber, () => {});
+    }
   }
 
   onPageShow(): void {
@@ -1266,8 +1272,8 @@ struct TimeUIPickerComponentExample {
   @Builder
   buildAmPmColumn() {
     UIPickerComponent({ selectedIndex: this.amPmIndex }) {
-      ForEach(this.amPmArr, (amPm: string) => {
-        Text(amPm)
+      ForEach(this.amPmArr, (amPm: string | undefined) => {
+        Text(amPm ?? '')
       })
     }
     .width('200px')

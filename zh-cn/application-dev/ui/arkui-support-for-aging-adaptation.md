@@ -42,7 +42,7 @@
 
 | 触发方式             | 组件名称                                                     |
 | -------------------- | ------------------------------------------------------------ |
-| 长按组件触发         | [SideBarContainer](../reference/apis-arkui/arkui-ts/ts-container-sidebarcontainer.md)， [底部页签（tabBar）](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#tabbar9)，[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)，[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)， [Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md) |
+| 长按组件触发         | [SideBarContainer](../reference/apis-arkui/arkui-ts/ts-container-sidebarcontainer.md)， 底部页签（[tabBar](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#tabbar9)），[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)，[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)， [Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md) |
 | 设置系统字体默认放大 | [PickerDialog](arkts-fixes-style-dialog.md#选择器弹窗-pickerdialog)， [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)， [Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md)， [Stepper](../reference/apis-arkui/arkui-ts/ts-basic-components-stepper.md)， [bindSheet](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)，[TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)，[TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md)，[Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md)，[SelectionMenu](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SelectionMenu.md)，[Chip](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)，[Dialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md)，[Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md)， [Progress](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md)， [Badge](../reference/apis-arkui/arkui-ts/ts-container-badge.md) |
 
 ## 示例
@@ -64,12 +64,10 @@ const NUMBER3 = 3;
 @Entry
 @Component
 struct SideBarContainerExample {
-  @State currentFontSizeScale: number = NUMBER1;
   normalIcon: Resource = $r('app.media.icon'); // $r('app.media.icon')需要替换为开发者所需的资源文件
   selectedIcon: Resource = $r('app.media.icon'); // $r('app.media.icon')需要替换为开发者所需的资源文件
   @State arr: number[] = [NUMBER1, NUMBER2, NUMBER3];
   @State current: number = NUMBER1;
-  @State title: string = 'Index01';
 
   build() {
     SideBarContainer(SideBarContainerType.Embed) {
@@ -84,9 +82,8 @@ struct SideBarContainerExample {
           }
           .onClick(() => {
             this.current = item;
-            this.title = 'Index0' + item;
           })
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }.width('100%')
       .justifyContent(FlexAlign.SpaceEvenly)
       // $r('sys.color.mask_fifth')需要替换为开发者所需的资源文件
@@ -167,7 +164,7 @@ struct TextPickerExample {
   linesNum(max: number): void {
     let items: string[] = this.triggered.split('\n').filter(item => item != '');
     if (items.length > max) {
-      this.showTriggered = items.slice(-this.maxLines).join('\n');
+      this.showTriggered = items.slice(-max).join('\n');
     } else {
       this.showTriggered = this.triggered;
     }
