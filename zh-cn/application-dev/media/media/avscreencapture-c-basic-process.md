@@ -424,6 +424,24 @@ g_avCapture = nullptr;
 
 <!-- @[screenCapture_PCSpecifiedScreenConfigBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) --> 
 
+``` C++
+uint64_t displayId = 0;
+NativeDisplayManager_ErrorCode ret = OH_NativeDisplayManager_GetDefaultDisplayId(&displayId);
+
+NativeDisplayManager_DisplayInfo* displayInfo = nullptr;
+ret = OH_NativeDisplayManager_CreateDisplayById(displayId, &displayInfo);
+if (ret != DISPLAY_MANAGER_OK || !displayInfo) {
+    return;
+}
+// 根据设备分辨率在config中配置录屏的宽度、高度。
+config.videoInfo.videoCapInfo.videoFrameWidth = displayInfo->width;
+config.videoInfo.videoCapInfo.videoFrameHeight = displayInfo->height;
+
+// 设置录屏模式为OH_CAPTURE_SPECIFIED_SCREEN，传入屏幕Id。
+config.captureMode = OH_CAPTURE_SPECIFIED_SCREEN;
+config.videoInfo.videoCapInfo.displayId = 0;
+```
+
 
 
 <!--RP1--><!--RP1End-->
