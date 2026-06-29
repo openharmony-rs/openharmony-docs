@@ -335,6 +335,6 @@ struct PanGestureExample {
 
 ![panGesture2](figures/panGesture2.png) 
 
-点击按钮时，修改PanGesture触发条件为双指向左下方滑动：
+点击按钮时，修改PanGesture触发条件为双指以任意方向滑动：
 
  ![panGesture](figures/panGesture.png) 

@@ -886,7 +886,7 @@ struct TabStop {
           }
         }
         .width('80%')
-        .height('120')
+        .height(120)
         .borderColor(Color.Black)
         .margin({ top: 10 })
         .tabStop(true)

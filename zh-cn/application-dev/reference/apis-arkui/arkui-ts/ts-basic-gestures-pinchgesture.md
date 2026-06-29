@@ -256,7 +256,7 @@ struct PinchGestureExample {
           // 图片本次缩放前左上角顶点
           const left = (this.screenWidth - displayWidth) / 2 + this.offsetX;
           const top = (this.screenHeight - displayHeight) / 2 + this.offsetY;
-          // 本次缩放前手指终点相对图片左上角顶点尺寸占图片展示尺寸的百分比
+          // 本次缩放前手指中点相对图片左上角顶点尺寸占图片展示尺寸的百分比
           this.pntX = (event.pinchCenterX - left) / displayWidth;
           this.pntY = (event.pinchCenterY - top) / displayHeight;
           // 图片本次缩放前的缩放比例

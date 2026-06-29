@@ -272,10 +272,6 @@ import { KeyCode } from '@kit.InputKit';
 @Entry
 @Component
 struct PreImeEventExample {
-  @State buttonText: string = '';
-  @State buttonType: string = '';
-  @State columnText: string = '';
-  @State columnType: string = '';
 
   build() {
     Column() {
