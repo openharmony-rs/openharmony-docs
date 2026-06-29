@@ -119,7 +119,7 @@ P2P MAC address format error.
 
 **错误信息**
 
-P2P Internal service exception.
+P2P internal service exception.
 
 ### P2P参数大小错误导致功能异常
 
