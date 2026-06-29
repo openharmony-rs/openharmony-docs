@@ -261,7 +261,7 @@ HiCollie_ErrorCode OH_HiCollie_Init_JankDetection(OH_HiCollie_BeginFunc* beginFu
 | -- | -- |
 | [OH_HiCollie_BeginFunc](capi-hicollie-h.md#oh_hicollie_beginfunc)* beginFunc | 业务线程执行任务前的回调函数，函数指针类型。需要在业务线程处理每个事件之前调用，用于记录业务线程处理事件的开始时间。 |
 | [OH_HiCollie_EndFunc](capi-hicollie-h.md#oh_hicollie_endfunc)* endFunc | 业务线程执行任务后的回调函数，函数指针类型。需要在业务线程处理每个事件之后调用，用于记录业务线程处理事件的结束时间，并检查业务线程处理事件是否卡顿。 |
-| [HiCollie_DetectionParam](capi-hicollie-hicollie-detectionparam.md) param | 扩展参数以供将来使用。 |
+| [HiCollie_DetectionParam](capi-hicollie-hicollie-detectionparam.md) param | 扩展参数以供将来使用，当前暂不使用，传入默认值0即可。 |
 
 **返回：**
 
