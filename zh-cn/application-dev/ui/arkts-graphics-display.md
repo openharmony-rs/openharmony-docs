@@ -216,7 +216,7 @@ PixelMap是图片解码后的像素图，具体用法请参考[Image Kit简介](
             return;
           };
           this.outData = data;
-          // 将网络地址成功返回的数据，编码转码成pixelMap的图片格式
+          // 将网络地址成功返回的数据，解码成PixelMap格式
           if (http.ResponseCode.OK === this.outData.responseCode) {
             let imageData: ArrayBuffer = this.outData.result as ArrayBuffer;
             let imageSource: image.ImageSource = image.createImageSource(imageData);
@@ -225,6 +225,7 @@ PixelMap是图片解码后的像素图，具体用法请参考[Image Kit简介](
             };
             imageSource.createPixelMap(options).then((pixelMap: PixelMap) => {
               this.image = pixelMap;
+              imageSource.release();
             });
           };
         });
