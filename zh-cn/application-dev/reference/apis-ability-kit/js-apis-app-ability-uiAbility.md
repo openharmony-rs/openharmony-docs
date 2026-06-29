@@ -539,7 +539,7 @@ onContinue(wantParam: Record&lt;string, Object&gt;): AbilityConstant.OnContinueR
 
 > **说明：**
 >
-> 对于API version 18之前的版本，仅支持同步调用；API version 18及后续版本，支持Promise异步调用。 
+> 对于API version 18之前的版本，仅支持同步调用；API version 18及后续版本，支持Promise异步调用。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
