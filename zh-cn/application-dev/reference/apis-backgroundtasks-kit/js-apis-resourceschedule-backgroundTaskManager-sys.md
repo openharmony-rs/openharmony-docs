@@ -29,22 +29,22 @@ applyEfficiencyResources(request: EfficiencyResourcesRequest): void
 
 申请能效资源。
 
-**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API**: 此接口为系统接口。
+**系统API：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
-**参数**：
+**参数：**
 
-| 参数名     | 类型      | 必填   | 说明                                       |
+| 参数名 | 类型 | 必填 | 说明 |
 | ------- | ------- | ---- | ---------------------------------------- |
 | request | [EfficiencyResourcesRequest](#efficiencyresourcesrequest) | 是    | 请求的必要信息，包括资源类型、超时时间等。 |
 
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
 
@@ -59,23 +59,23 @@ applyEfficiencyResources(request: EfficiencyResourcesRequest): void
 | 9800004 | System service operation failed. |
 | 18700001 | Caller information verification failed for an energy resource request. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
 let request: backgroundTaskManager.EfficiencyResourcesRequest = {
-  resourceTypes: backgroundTaskManager.ResourceType.CPU,
-  isApply: true,
-  timeOut: 0,
-  reason: "apply",
-  isPersist: true,
-  isProcess: false,
+  resourceTypes: backgroundTaskManager.ResourceType.CPU, // 申请CPU资源
+  isApply: true, // 申请资源
+  timeOut: 0, // 资源使用超时时间（ms）
+  reason: 'apply', // 申请资源原因
+  isPersist: true, // 永久持有资源
+  isProcess: false, // 应用申请
 };
 try {
   backgroundTaskManager.applyEfficiencyResources(request);
-  console.info("applyEfficiencyResources success. ");
+  console.info('applyEfficiencyResources success.');
 } catch (error) {
   console.error(`applyEfficiencyResources failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 }
@@ -87,15 +87,15 @@ resetAllEfficiencyResources(): void
 
 释放已申请的全部能效资源。
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API**: 此接口为系统接口。
+**系统API：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 9
 
 **ArkTS-Sta起始版本：** 23
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
 
@@ -110,7 +110,7 @@ resetAllEfficiencyResources(): void
 | 9800004 | System service operation failed. |
 | 18700001 | Caller information verification failed for an energy resource request. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -129,21 +129,21 @@ getAllEfficiencyResources(): Promise&lt;EfficiencyResourcesInfo[]&gt;
 
 获取已申请的所有能效资源信息，如能效资源类型等，使用Promise异步回调。
 
-**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API**: 此接口为系统接口。
+**系统API：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 20
 
 **ArkTS-Sta起始版本：** 23
 
-**返回值**：
+**返回值：**
 
 | 类型                                            | 说明          |
 |-----------------------------------------------|-------------|
-|  Promise&lt;[EfficiencyResourcesInfo](#efficiencyresourcesinfo20)[]&gt; | Promise对象，返回所有能效资源信息。 |
+|  Promise&lt;[EfficiencyResourcesInfo](#efficiencyresourcesinfo20)[]&gt; | Promise对象，返回所有能效资源信息的数组。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
 
@@ -154,7 +154,7 @@ getAllEfficiencyResources(): Promise&lt;EfficiencyResourcesInfo[]&gt;
 | 18700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 18700004 | System service operation failed. |
 
-**示例**：
+**示例：**
 
 ArkTS-Dyn示例：
 
@@ -198,23 +198,23 @@ setBackgroundTaskState(stateInfo: BackgroundTaskStateInfo): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**需要权限**: ohos.permission.SET_BACKGROUND_TASK_STATE
+**需要权限：** ohos.permission.SET_BACKGROUND_TASK_STATE
 
-**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API**: 此接口为系统接口。
+**系统API：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 22
 
 **ArkTS-Sta起始版本：** 24
 
-**参数**：
+**参数：**
 
 | 参数名     | 类型      | 必填   | 说明                    |
 | ------- | ------- | ---- |-----------------------|
 | stateInfo | [BackgroundTaskStateInfo](#backgroundtaskstateinfo22) | 是    | 授权的必要信息，包括用户ID、应用包名、应用分身ID等。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
 
@@ -225,7 +225,7 @@ setBackgroundTaskState(stateInfo: BackgroundTaskStateInfo): void
 | 9800004 | System service operation failed. |
 | 9800005 | Continuous task verification failed. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
@@ -254,29 +254,29 @@ getBackgroundTaskState(stateInfo: BackgroundTaskStateInfo): UserAuthResult
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**需要权限**: ohos.permission.SET_BACKGROUND_TASK_STATE
+**需要权限：** ohos.permission.SET_BACKGROUND_TASK_STATE
 
-**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API**: 此接口为系统接口。
+**系统API：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 22
 
 **ArkTS-Sta起始版本：** 24
 
-**参数**：
+**参数：**
 
 | 参数名     | 类型      | 必填   | 说明                    |
 | ------- | ------- | ---- |-----------------------|
 | stateInfo | [BackgroundTaskStateInfo](#backgroundtaskstateinfo22) | 是    | 授权的必要信息，包括用户ID、应用包名、应用分身ID等。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                            | 说明          |
 |-----------------------------------------------|-------------|
-|  [UserAuthResult](./js-apis-resourceschedule-backgroundTaskManager.md#userauthresult22) | 授权结果。 |
+| [UserAuthResult](./js-apis-resourceschedule-backgroundTaskManager.md#userauthresult22) | 授权结果，表示长时任务授权状态。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
 
@@ -287,7 +287,7 @@ getBackgroundTaskState(stateInfo: BackgroundTaskStateInfo): UserAuthResult
 | 9800004 | System service operation failed. |
 | 9800005 | Continuous task verification failed. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
@@ -315,23 +315,23 @@ obtainAllContinuousTasks(): Promise&lt;ContinuousTaskInfo[]&gt;
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**需要权限**: ohos.permission.GET_BACKGROUND_TASK_INFO
+**需要权限：** ohos.permission.GET_BACKGROUND_TASK_INFO
 
-**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API**: 此接口为系统接口。
+**系统API：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 24
 
-**返回值**：
+**返回值：**
 
 | 类型                                            | 说明          |
 |-----------------------------------------------|-------------|
-|  Promise&lt;[ContinuousTaskInfo](./js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20)[]&gt; | Promise对象，返回所有长时任务信息。 |
+|  Promise&lt;[ContinuousTaskInfo](./js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20)[]&gt; | Promise对象，返回所有长时任务信息的数组。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
 
@@ -341,7 +341,7 @@ obtainAllContinuousTasks(): Promise&lt;ContinuousTaskInfo[]&gt;
 | 202 | Not System App. |
 | 9800004 | System service operation failed. |
 
-**示例**：
+**示例：**
 
 ArkTS-Dyn示例：
 
@@ -386,23 +386,23 @@ subscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**需要权限**: ohos.permission.GET_BACKGROUND_TASK_INFO
+**需要权限：** ohos.permission.GET_BACKGROUND_TASK_INFO
 
-**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API**: 此接口为系统接口。
+**系统API：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 23
 
 **ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
 
-**参数**：
+**参数：**
 
 | 参数名     | 类型      | 必填   | 说明                    |
 | ------- | ------- | ---- |-----------------------|
 | subscriber | [BackgroundTaskSubscriber](#backgroundtasksubscriber23) | 是    | 后台任务监听对象，包含长时任务开始，长时任务更新，长时任务结束。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
 
@@ -413,7 +413,7 @@ subscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 | 9800004 | System service operation failed. |
 | 9800005 | Continuous task verification failed. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
@@ -447,23 +447,23 @@ unsubscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**需要权限**: ohos.permission.GET_BACKGROUND_TASK_INFO
+**需要权限：** ohos.permission.GET_BACKGROUND_TASK_INFO
 
-**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API**: 此接口为系统接口。
+**系统API：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 23
 
 **ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
 
-**参数**：
+**参数：**
 
 | 参数名     | 类型      | 必填   | 说明                    |
 | ------- | ------- | ---- |-----------------------|
 | subscriber | [BackgroundTaskSubscriber](#backgroundtasksubscriber23) | 是    | 后台任务监听对象，包含长时任务开始，长时任务更新，长时任务结束。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[backgroundTaskManager错误码](errorcode-backgroundTaskMgr.md)。
 
@@ -474,7 +474,7 @@ unsubscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 | 9800004 | System service operation failed. |
 | 9800005 | Continuous task verification failed. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
@@ -504,7 +504,7 @@ try {
 
 长时任务模式。
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -518,13 +518,13 @@ try {
 
 能效资源申请参数。
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API**: 此接口为系统接口。
+**系统API：** 此接口为系统接口。
 
 | 名称             | 类型     | 只读   | 可选   | 说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
-| resourceTypes   | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 否    | 申请的资源类型。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23                                |
+| resourceTypes   | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 否    | 申请的资源类型。取值参考[ResourceType](#resourcetype)。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23                                |
 | isApply         | boolean | 否    | 否    | 申请或释放资源。<br>- true表示申请资源。<br>- false表示释放部分资源。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
 | timeOut         | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 否    | 资源使用时间，单位：ms。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23                 |
 | isPersist       | boolean | 否    | 是    | 是否永久持有资源，默认为false。<br>- true表示永久持有。<br>- false表示有限时间内持有。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
@@ -536,9 +536,9 @@ try {
 
 能效资源类型。
 
-**系统能力:** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API**: 此接口为系统接口。
+**系统API：** 此接口为系统接口。
 
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
@@ -556,9 +556,9 @@ try {
 
 能效资源信息。
 
-**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API**: 此接口为系统接口。
+**系统API：** 此接口为系统接口。
 
 | 名称                             | 类型      | 只读   | 可选   | 说明          |
 |--------------------------------|---------| ---- | ---- |-------------|
@@ -593,9 +593,9 @@ try {
 
 长时任务主类型。
 
-**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API**: 此接口为系统接口。
+**系统API：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 21
 
@@ -611,9 +611,9 @@ try {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API**: 此接口为系统接口。
+**系统API：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 22
 
@@ -624,7 +624,7 @@ try {
 | userId | ArkTS-Dyn: number <br> ArkTS-Sta: int                               | 否    | 否  | 用户ID。   |
 | bundleName | string                              | 否    | 否  | 应用包名。   |
 | appIndex | ArkTS-Dyn: number <br> ArkTS-Sta: int                               | 否    | 否  | 应用分身ID。 |
-| authResult | [UserAuthResult](./js-apis-resourceschedule-backgroundTaskManager.md#userauthresult22) | 否    | 是  | 授权结果。   |
+| authResult | [UserAuthResult](./js-apis-resourceschedule-backgroundTaskManager.md#userauthresult22) | 否    | 是  | 授权结果，表示长时任务授权状态。   |
 
 ## BackgroundTaskSubscriber<sup>23+</sup>
 
@@ -632,9 +632,9 @@ try {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API**: 此接口为系统接口。
+**系统API：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 23
 
@@ -648,21 +648,21 @@ onContinuousTaskStart(info: ContinuousTaskInfo): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API**: 此接口为系统接口。
+**系统API：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 23
 
 **ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
 
-**参数**：
+**参数：**
 
 | 参数名  | 类型      | 必填   | 说明                |
 |------| ------- | ---- |-------------------|
 | info | [ContinuousTaskInfo](./js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20) | 是    | 长时任务回调信息，长时任务ID、长时任务类型等。 |
 
-**示例**：
+**示例：**
 
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
@@ -688,21 +688,21 @@ onContinuousTaskUpdate(info: ContinuousTaskInfo): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API**: 此接口为系统接口。
+**系统API：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 23
 
 **ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
 
-**参数**：
+**参数：**
 
 | 参数名  | 类型      | 必填   | 说明                |
 |------| ------- | ---- |-------------------|
 | info | [ContinuousTaskInfo](./js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20) | 是    | 长时任务回调信息，长时任务ID、长时任务类型等。 |
 
-**示例**：
+**示例：**
 
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
@@ -728,21 +728,21 @@ onContinuousTaskStop(info: ContinuousTaskInfo): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API**: 此接口为系统接口。
+**系统API：** 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 23
 
 **ArkTS模式：** 本接口仅适用于ArkTS-Dyn。
 
-**参数**：
+**参数：**
 
 | 参数名  | 类型      | 必填   | 说明                |
 |------| ------- | ---- |-------------------|
 | info | [ContinuousTaskInfo](./js-apis-resourceschedule-backgroundTaskManager.md#continuoustaskinfo20) | 是    | 长时任务回调信息，长时任务ID、长时任务类型等。 |
 
-**示例**：
+**示例：**
 
 ```ts
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';

@@ -66,13 +66,13 @@ let workInfo: workScheduler.WorkInfo = {
   batteryStatus: workScheduler.BatteryStatus.BATTERY_STATUS_LOW,
   isRepeat: false,
   isPersisted: true,
-  bundleName: "com.example.myapplication",
-  abilityName: "MyExtension",
+  bundleName: 'com.example.myapplication',
+  abilityName: 'MyExtension',
   parameters: {
-    mykey0: 1,
-    mykey1: "string value",
-    mykey2: true,
-    mykey3: 1.5
+    intValue: 1,
+    stringValue: 'string value',
+    booleanValue: true,
+    floatValue: 1.5
   }
 }
 try {
@@ -90,18 +90,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { workScheduler } from '@kit.BackgroundTasksKit';
 
 const parameter: Record<string, int | double | string | boolean> = {
-  "mykey0": 1,
-  "mykey1": "string value",
-  "mykey2": true,
-  "mykey3": 1.5
+  'mykey0': 1,
+  'mykey1': 'string value',
+  'mykey2': true,
+  'mykey3': 1.5
 };
 let workInfo: workScheduler.WorkInfo = {
   workId: 1,
   batteryStatus: workScheduler.BatteryStatus.BATTERY_STATUS_LOW,
   isRepeat: false,
   isPersisted: true,
-  bundleName: "com.example.myapplication",
-  abilityName: "MyExtension",
+  bundleName: 'com.example.myapplication',
+  abilityName: 'MyExtension',
   parameters: parameter
 }
 try {
@@ -116,7 +116,7 @@ try {
 
 stopWork(work: WorkInfo, needCancel?: boolean): void
 
-取消延迟任务。
+停止当前执行的延迟任务，或移除周期性延迟任务，后续不再执行。
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -156,16 +156,17 @@ let workInfo: workScheduler.WorkInfo = {
   batteryStatus: workScheduler.BatteryStatus.BATTERY_STATUS_LOW,
   isRepeat: false,
   isPersisted: true,
-  bundleName: "com.example.myapplication",
-  abilityName: "MyExtension",
+  bundleName: 'com.example.myapplication',
+  abilityName: 'MyExtension',
   parameters: {
-    mykey0: 1,
-    mykey1: "string value",
-    mykey2: true,
-    mykey3: 1.5
+    intValue: 1,
+    stringValue: 'string value',
+    booleanValue: true,
+    floatValue: 1.5
   }
 }
 try {
+  // 停止延迟任务，false表示只停止不移除任务
   workScheduler.stopWork(workInfo, false);
   console.info('workschedulerLog stopWork success');
 } catch (error) {
@@ -180,18 +181,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { workScheduler } from '@kit.BackgroundTasksKit';
 
 const parameter: Record<string, int | double | string | boolean> = {
-  "mykey0": 1,
-  "mykey1": "string value",
-  "mykey2": true,
-  "mykey3": 1.5
+  'mykey0': 1,
+  'mykey1': 'string value',
+  'mykey2': true,
+  'mykey3': 1.5
 };
 let workInfo: workScheduler.WorkInfo = {
   workId: 1,
   batteryStatus: workScheduler.BatteryStatus.BATTERY_STATUS_LOW,
   isRepeat: false,
   isPersisted: true,
-  bundleName: "com.example.myapplication",
-  abilityName: "MyExtension",
+  bundleName: 'com.example.myapplication',
+  abilityName: 'MyExtension',
   parameters: parameter
 }
 try {
@@ -220,7 +221,7 @@ ArkTS-Sta: getWorkStatus(workId: int, callback : AsyncCallback\<WorkInfo>): void
 
 | 参数名      | 类型                                    | 必填   | 说明                                       |
 | -------- | ------------------------------------- | ---- | ---------------------------------------- |
-| workId   | ArkTS-Dyn: number <br> ArkTS-Sta: int                                 | 是    | 延迟任务Id。                                 |
+| workId   | ArkTS-Dyn: number <br> ArkTS-Sta: int                                 | 是    | 延迟任务ID。指定延迟任务的唯一标识符，用于查询指定延迟任务的状态信息。  |
 | callback | AsyncCallback\<[WorkInfo](#workinfo)> | 是    | 回调函数。如果workId有效，则返回从WorkSchedulerService获取的任务，否则抛出异常。 |
 
 **错误码：**
@@ -285,7 +286,7 @@ ArkTS-Sta: getWorkStatus(workId: int): Promise\<WorkInfo>
 
 | 参数名    | 类型     | 必填   | 说明       |
 | ------ | ------ | ---- | -------- |
-| workId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是    | 延迟任务Id。 |
+| workId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是    | 延迟任务ID。指定延迟任务的唯一标识符，用于查询指定延迟任务的状态信息。 |
 
 **返回值：**
 
@@ -332,7 +333,7 @@ workScheduler.getWorkStatus(50).then((res: workScheduler.WorkInfo) => {
 })
 ```
 
-## workScheduler.obtainAllWorks<sup>(deprecated)<sup>
+## workScheduler.obtainAllWorks<sup>(deprecated)</sup>
 
 obtainAllWorks(callback: AsyncCallback\<void>) : Array\<WorkInfo>
 
@@ -340,7 +341,7 @@ obtainAllWorks(callback: AsyncCallback\<void>) : Array\<WorkInfo>
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 10开始废弃，建议使用[obtainAllWorks<sup>10+<sup>](#workschedulerobtainallworks10)替代。
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[obtainAllWorks<sup>10+</sup>](#workschedulerobtainallworks10)替代。
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -383,7 +384,7 @@ obtainAllWorks(callback: AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;): void
 
 | 参数名      | 类型                   | 必填   | 说明                              |
 | -------- | -------------------- | ---- | ------------------------------- |
-| callback |  AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt; | 是    | 回调函数，获取成功时，返回当前应用所有的延迟任务列表，否则抛出异常。 |
+| callback |  AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt; | 是    | 回调函数，获取成功时，error为undefined，res为当前应用所有的延迟任务列表；否则为错误对象。 |
 
 **错误码：**
 
@@ -510,22 +511,22 @@ stopAndClearWorks(): void
 **示例：**
 
 ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { workScheduler } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
 
-  try{
-    workScheduler.stopAndClearWorks();
-    console.info(`workschedulerLog stopAndClearWorks success`);
-  } catch (error) {
-    console.error(`workschedulerLog stopAndClearWorks failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
-  }
+try {
+  workScheduler.stopAndClearWorks();
+  console.info(`workschedulerLog stopAndClearWorks success`);
+} catch (error) {
+  console.error(`workschedulerLog stopAndClearWorks failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+}
 ```
 
-## workScheduler.isLastWorkTimeOut<sup>(deprecated)<sup>
+## workScheduler.isLastWorkTimeOut<sup>(deprecated)</sup>
 
 isLastWorkTimeOut(workId: number, callback : AsyncCallback\<void>): boolean
 
-> 从API version 9开始支持，从API version 10开始废弃，建议使用[isLastWorkTimeOut<sup>10+<sup>](#workschedulerislastworktimeout10)替代。
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[isLastWorkTimeOut<sup>10+</sup>](#workschedulerislastworktimeout10)替代。
 
 检查延迟任务的最后一次执行是否超时，使用Callback异步回调。
 
@@ -575,7 +576,7 @@ ArkTS-Sta: isLastWorkTimeOut(workId: int, callback: AsyncCallback\<boolean>): vo
 | 参数名      | 类型                   | 必填   | 说明                                       |
 | -------- | -------------------- | ---- | ---------------------------------------- |
 | workId   | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 是    | 指定延迟任务的Id。                                 |
-| callback | AsyncCallback\<boolean> | 是    | 回调函数。 |
+| callback | AsyncCallback\<boolean> | 是    | 回调函数。当检查延迟任务的最后一次执行是否超时成功时，error为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -713,13 +714,13 @@ workScheduler.isLastWorkTimeOut(500)
 | abilityName     | string                            | 否    | 否    |包内ability名称。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
 | networkType     | [NetworkType](#networktype)       | 否    | 是    |网络类型。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23              |
 | isCharging      | boolean                           | 否    | 是    |是否充电，默认为false。<br>- true表示充电触发延迟任务回调。<br>- false表示不充电触发延迟任务回调。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
-| chargerType     | [ChargingType](#chargingtype)     | 否    | 是    |充电类型。 <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23             |
-| batteryLevel    | ArkTS-Dyn: number <br> ArkTS-Sta: int                            | 否    | 是    |电量。<br>取值范围：[0, 100]  <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23       |
+| chargerType     | [ChargingType](#chargingtype)     | 否    | 是    |充电类型。需要与isCharging参数配合使用，当isCharging为true时，可进一步指定触发延迟任务的充电器类型。 <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23             |
+| batteryLevel    | ArkTS-Dyn: number <br> ArkTS-Sta: int                            | 否    | 是    |电量。当设备电量高于或等于该值时触发延迟任务回调。<br>取值范围：[0, 100]  <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23       |
 | batteryStatus   | [BatteryStatus](#batterystatus)   | 否    | 是    |电池状态。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23              |
 | storageRequest  | [StorageRequest](#storagerequest) | 否    | 是    |存储状态。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23              |
 | isRepeat        | boolean                           | 否    | 是    |是否循环任务，默认为false。<br>- true表示循环任务。 <br>- false表示非循环任务。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23  |
 | repeatCycleTime | ArkTS-Dyn: number <br> ArkTS-Sta: int                            | 否    | 是    |循环间隔，单位：ms。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23              |
-| repeatCount     | ArkTS-Dyn: number <br> ArkTS-Sta: int                            | 否    | 是    |循环次数。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23              |
+| repeatCount     | ArkTS-Dyn: number <br> ArkTS-Sta: int                            | 否    | 是    |循环次数。取值范围：正整数（大于0）。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23              |
 | isPersisted     | boolean                           | 否    | 是    |注册的延迟任务是否可保存在系统中，默认为false。<br>- true表示可保存，即系统重启后，任务可恢复。<br>- false表示不可保存。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
 | isDeepIdle      | boolean                           | 否    | 是    |是否要求设备进入空闲状态，默认为false。<br>- true表示需要。<br>- false表示不需要。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23    |
 | idleWaitTime    | ArkTS-Dyn: number <br> ArkTS-Sta: int                            | 否    | 是    |空闲等待时间，单位：ms。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23            |
