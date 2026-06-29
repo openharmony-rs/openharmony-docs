@@ -183,7 +183,7 @@
      } catch (err) {
        console.error('getMediaResourceByUri failed with err: ' + err);
      } finally {
-      // 关闭查询结果
+      // 关闭查询结果。
       if (fetchResult != null) {
         fetchResult.close();
       }
