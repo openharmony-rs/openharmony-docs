@@ -332,7 +332,7 @@
 
    <!-- @[index_image_classification_runDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/types/libentry/Index.d.ts) -->
    
-   ```typescript
+   ``` TypeScript
    export const runDemo: (a: number[], b:Object) => Array<number>;
    ```
 
