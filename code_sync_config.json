@@ -3129,6 +3129,11 @@
 						"end_line":18,
 						"name":"extension_include",
 						"start_line":16
+					},
+					{
+						"end_line":38,
+						"name":"workSchedulerExtension",
+						"start_line":21
 					}
 				]
 			},
@@ -3149,6 +3154,11 @@
 						"end_line":19,
 						"name":"workScheduler_include",
 						"start_line":16
+					},
+					{
+						"end_line":68,
+						"name":"stopWork",
+						"start_line":48
 					}
 				]
 			}
