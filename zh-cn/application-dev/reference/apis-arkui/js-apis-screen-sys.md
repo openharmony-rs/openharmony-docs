@@ -28,7 +28,7 @@ import { screen } from '@kit.ArkUI';
 
 getAllScreens(callback: AsyncCallback&lt;Array&lt;Screen&gt;&gt;): void
 
-获取所有的屏幕，使用callback异步回调。
+获取所有的屏幕对象，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -99,7 +99,7 @@ screen.getAllScreens((err: BusinessError | null, data: Array<screen.Screen> | un
 
 getAllScreens(): Promise&lt;Array&lt;Screen&gt;&gt;
 
-获取所有的屏幕，使用Promise异步回调。
+获取所有的屏幕对象，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
