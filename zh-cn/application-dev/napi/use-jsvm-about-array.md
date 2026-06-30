@@ -276,9 +276,13 @@ cpp 部分代码：
 
 <!-- @[oh_jsvm_create_dataview](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/createdataview/src/main/cpp/hello.cpp) -->
 
-```cpp
-static int DIFF_VALUE_FOUR = 4;
-static int DIFF_VALUE_TWELVE = 12;
+``` C++
+#include "napi/native_api.h"
+#include "ark_runtime/jsvm.h"
+#include "hilog/log.h"
+
+// ...
+
 // OH_JSVM_CreateDataview的样例方法
 static JSVM_Value CreateDataView(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -288,9 +292,9 @@ static JSVM_Value CreateDataView(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_Value arrayBuffer = nullptr;
     JSVM_Value result = nullptr;
     // DataView的字节长度
-    size_t byteLength = DIFF_VALUE_TWELVE;
+    size_t byteLength = g_diffValueFour;
     // 字节偏移量
-    size_t byteOffset = DIFF_VALUE_FOUR;
+    size_t byteOffset = g_diffValueTwelve;
     // 获取回调函数的参数信息
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     // 将参数转换为对象类型
@@ -299,12 +303,16 @@ static JSVM_Value CreateDataView(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_Status status = OH_JSVM_CreateDataview(env, byteLength, arrayBuffer, byteOffset, &result);
     // 获取DataView的指针和长度信息
     uint8_t *data = nullptr;
+    size_t length = 0;
     // 为DataView赋值
-    int32_t infoType = 0;
+    for (size_t i = 0; i < length; i++) {
+        data[i] = static_cast<uint8_t>(i + 1);
+    }
+    int32_t infoType;
     OH_JSVM_GetValueInt32(env, args[1], &infoType);
-    size_t returnLength = 0;
+    size_t returnLength;
     JSVM_Value returnArrayBuffer = nullptr;
-    size_t returnOffset = 0;
+    size_t returnOffset;
     enum InfoType { BYTE_LENGTH, ARRAY_BUFFER, BYTE_OFFSET };
     // 获取dataview信息
     OH_JSVM_GetDataviewInfo(env, result, &returnLength, (void **)&data, &returnArrayBuffer, &returnOffset);
@@ -312,7 +320,7 @@ static JSVM_Value CreateDataView(JSVM_Env env, JSVM_CallbackInfo info)
     switch (infoType) {
         case BYTE_LENGTH:
             JSVM_Value len;
-            JSVM_CALL(OH_JSVM_CreateInt32(env, returnLength, &len));
+            OH_JSVM_CreateInt32(env, returnLength, &len);
             returnResult = len;
             if (status != JSVM_OK) {
                 OH_LOG_ERROR(LOG_APP, "JSVM CreateDataView fail");
@@ -321,22 +329,20 @@ static JSVM_Value CreateDataView(JSVM_Env env, JSVM_CallbackInfo info)
             }
             break;
         case ARRAY_BUFFER:
-            {
-                bool isArraybuffer = false;
-                JSVM_CALL(OH_JSVM_IsArraybuffer(env, returnArrayBuffer, &isArraybuffer));
-                JSVM_Value isArray;
-                OH_JSVM_GetBoolean(env, isArraybuffer, &isArray);
-                returnResult = isArray;
-                if (status != JSVM_OK) {
-                    OH_LOG_ERROR(LOG_APP, "JSVM CreateDataView fail");
-                } else {
-                    OH_LOG_INFO(LOG_APP, "JSVM CreateDataView success, isArraybuffer: %{public}d", isArraybuffer);
-                }
-                break;
+            bool isArraybuffer;
+            OH_JSVM_IsArraybuffer(env, returnArrayBuffer, &isArraybuffer);
+            JSVM_Value isArray;
+            OH_JSVM_GetBoolean(env, isArraybuffer, &isArray);
+            returnResult = isArray;
+            if (status != JSVM_OK) {
+                OH_LOG_ERROR(LOG_APP, "JSVM CreateDataView fail");
+            } else {
+                OH_LOG_INFO(LOG_APP, "JSVM CreateDataView success, isArraybuffer: %{public}d", isArraybuffer);
             }
+            break;
         case BYTE_OFFSET:
             JSVM_Value offset;
-            JSVM_CALL(OH_JSVM_CreateInt32(env, returnOffset, &offset));
+            OH_JSVM_CreateInt32(env, returnOffset, &offset);
             returnResult = offset;
             if (status != JSVM_OK) {
                 OH_LOG_ERROR(LOG_APP, "JSVM CreateDataView fail");
@@ -359,7 +365,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"createDataView", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
  let BYTE_LENGTH = 0;
  createDataView(new ArrayBuffer(16), BYTE_LENGTH);
  let IS_ARRAYBUFFER = 1;
@@ -564,11 +570,13 @@ cpp 部分代码：
 
 <!-- @[oh_jsvm_get_dataview_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/getdataviewinfo/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+
+// ...
+
 // OH_JSVM_GetDataviewInfo的样例方法
 static JSVM_Value GetDataViewInfo(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -577,14 +585,14 @@ static JSVM_Value GetDataViewInfo(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_Value args[2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     // 将第二个参数转为int32类型的数字
-    int32_t infoType = 0;
+    int32_t infoType;
     OH_JSVM_GetValueInt32(env, args[1], &infoType);
-    size_t byteLength = 0;
+    size_t byteLength;
     void *data;
     JSVM_Value arrayBuffer = nullptr;
-    size_t byteOffset = 0;
+    size_t byteOffset;
     // 定义枚举类型与ArkTS侧枚举类型infoType顺序含义一致
-    enum infoTypeEnum { BYTE_LENGTH, ARRAY_BUFFER, BYTE_OFFSET };
+    enum InfoTypeEnum { BYTE_LENGTH, ARRAY_BUFFER, BYTE_OFFSET };
     // 获取dataview信息
     JSVM_Status status = OH_JSVM_GetDataviewInfo(env, args[0], &byteLength, &data, &arrayBuffer, &byteOffset);
     JSVM_Value result = nullptr;
@@ -592,7 +600,7 @@ static JSVM_Value GetDataViewInfo(JSVM_Env env, JSVM_CallbackInfo info)
         case BYTE_LENGTH:
             // 返回查询DataView的长度
             JSVM_Value len;
-            JSVM_CALL(OH_JSVM_CreateInt32(env, byteLength, &len));
+            OH_JSVM_CreateInt32(env, byteLength, &len);
             result = len;
             if (status != JSVM_OK) {
                 OH_LOG_ERROR(LOG_APP, "JSVM GetDataViewInfo fail");
@@ -601,24 +609,22 @@ static JSVM_Value GetDataViewInfo(JSVM_Env env, JSVM_CallbackInfo info)
             }
             break;
         case ARRAY_BUFFER:
-            {
-                // 判断DataView的Info里的arraybuffer是否为arraybuffer
-                bool isArrayBuffer = false;
-                JSVM_CALL(OH_JSVM_IsArraybuffer(env, arrayBuffer, &isArrayBuffer));
-                JSVM_Value isArray;
-                OH_JSVM_GetBoolean(env, isArrayBuffer, &isArray);
-                result = isArray;
-                if (status != JSVM_OK) {
-                    OH_LOG_ERROR(LOG_APP, "JSVM GetDataViewInfo fail");
-                } else {
-                    OH_LOG_INFO(LOG_APP, "JSVM GetDataViewInfo success, isArrayBuffer: %{public}d", isArrayBuffer);
-                }
-                break;
+            // 判断DataView的Info里的arraybuffer是否为arraybuffer
+            bool isArrayBuffer;
+            OH_JSVM_IsArraybuffer(env, arrayBuffer, &isArrayBuffer);
+            JSVM_Value isArray;
+            OH_JSVM_GetBoolean(env, isArrayBuffer, &isArray);
+            result = isArray;
+            if (status != JSVM_OK) {
+                OH_LOG_ERROR(LOG_APP, "JSVM GetDataViewInfo fail");
+            } else {
+                OH_LOG_INFO(LOG_APP, "JSVM GetDataViewInfo success, isArrayBuffer: %{public}d", isArrayBuffer);
             }
+            break;
         case BYTE_OFFSET:
             // 返回查询DataView的偏移量
             JSVM_Value offset;
-            JSVM_CALL(OH_JSVM_CreateInt32(env, byteOffset, &offset));
+            OH_JSVM_CreateInt32(env, byteOffset, &offset);
             result = offset;
             if (status != JSVM_OK) {
                 OH_LOG_ERROR(LOG_APP, "JSVM GetDataViewInfo fail");
@@ -641,19 +647,19 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"getDataViewInfo", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
 // bytelength
-getDataViewInfo(new DataView(new Int8Array([2,5]).buffer), 0);
+getDataViewInfo(new DataView(new Int8Array([2, 5]).buffer), 0);
 // is arraybuffer
 let data = 'a';
 let isarraybuffer = 1;
 getDataViewInfo(data, isarraybuffer);
 // is arraybuffer
-data = new DataView(new Int8Array([2,5,3]).buffer);
+data = new DataView(new Int8Array([2, 5, 3]).buffer);
 isarraybuffer = 1;
 getDataViewInfo(data, isarraybuffer);
 // byte_offset
-data = new DataView(new Int8Array([2,5,3]).buffer);
+data = new DataView(new Int8Array([2, 5, 3]).buffer);
 isarraybuffer = 2;
 getDataViewInfo(data, isarraybuffer);
 )JS";

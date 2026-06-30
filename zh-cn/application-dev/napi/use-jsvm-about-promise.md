@@ -45,11 +45,12 @@ cpp部分代码
 
 <!-- @[oh_jsvm_ispromise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPromise/ispromise/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 // OH_JSVM_IsPromise的样例方法
 static JSVM_Value IsPromise(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -78,7 +79,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // 样例测试js
-const char *srcCallNative = R"JS(isPromise())JS";
+const char *SRC_CALL_NATIVE = R"JS(isPromise())JS";
 ```
 
 预期结果：

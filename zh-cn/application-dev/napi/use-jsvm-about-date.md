@@ -139,16 +139,17 @@ cpp部分代码：
 
 <!-- @[oh_jsvm_is_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutDate/isdate/src/main/cpp/hello.cpp) -->
 
-```cpp
+``` C++
 // OH_JSVM_IsDate的样例方法
-static JSVM_Value IsDate(JSVM_Env env, JSVM_CallbackInfo info) {
+static JSVM_Value IsDate(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     JSVM_CALL(OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr));
     bool isDate = false;
     JSVM_CALL(OH_JSVM_IsDate(env, args[0], &isDate));
     OH_LOG_INFO(LOG_APP, "JSVM IsDate success:%{public}d", isDate);
-    
+
     JSVM_Value result = nullptr;
     JSVM_CALL(OH_JSVM_GetBoolean(env, isDate, &result));
     return result;
@@ -163,7 +164,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"isDate", nullptr, method, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char *srcCallNative = R"JS(isDate(new Date(Date.now())))JS";
+const char *SRC_CALL_NATIVE = R"JS(isDate(new Date(Date.now())))JS";
 ```
 
 预期结果：

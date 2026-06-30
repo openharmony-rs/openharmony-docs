@@ -187,7 +187,7 @@ cpp 部分代码：
 
 <!-- @[oh_jsvm_reference_ref_and_oh_jsvm_reference_unref](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmLifeCycle/referenceref/src/main/cpp/hello.cpp) -->
 
-```cpp
+``` C++
 static JSVM_Value UseReference(JSVM_Env env, JSVM_CallbackInfo info)
 {
     // 创建 JavaScript 对象
@@ -196,7 +196,7 @@ static JSVM_Value UseReference(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_Value value = nullptr;
     OH_JSVM_CreateStringUtf8(env, "UseReference", JSVM_AUTO_LENGTH, &value);
     OH_JSVM_SetNamedProperty(env, obj, "name", value);
-    
+
     JSVM_Ref g_ref = nullptr;
     // 创建对JavaScript对象的引用
     JSVM_Status status = OH_JSVM_CreateReference(env, obj, 1, &g_ref);
@@ -205,16 +205,17 @@ static JSVM_Value UseReference(JSVM_Env env, JSVM_CallbackInfo info)
     }
 
     // 增加传入引用的引用计数并返回生成的引用计数
-    uint32_t result = 0u;
+    uint32_t result;
     OH_JSVM_ReferenceRef(env, g_ref, &result);
     OH_LOG_INFO(LOG_APP, "JSVM OH_JSVM_ReferenceRef, count = %{public}d.", result);
-    if (result != 2) {
+    const int resultValue = 2;
+    if (result != resultValue) {
         OH_LOG_ERROR(LOG_APP, "JSVM OH_JSVM_ReferenceRef: failed");
         return nullptr;
     }
 
     // 减少传入引用的引用计数并返回生成的引用计数
-    uint32_t num = 0u;
+    uint32_t num;
     OH_JSVM_ReferenceUnref(env, g_ref, &num);
     OH_LOG_INFO(LOG_APP, "JSVM OH_JSVM_ReferenceUnref, count = %{public}d.", num);
     if (num != 1) {
@@ -251,7 +252,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"useReference", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 
-const char *srcCallNative = "useReference()";
+const char *SRC_CALL_NATIVE = "useReference()";
 ```
 
 预期结果：

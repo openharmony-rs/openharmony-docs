@@ -46,14 +46,12 @@ cpp部分代码：
 
 <!-- @[oh_jsvm_get_prototype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/getprototype/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 #include "napi/native_api.h"
+#include "hilog/log.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-#include <fstream>
-#include <string>
-// GetPrototype注册回调
+// ...
+
 // OH_JSVM_GetPrototype的样例方法
 static JSVM_Value GetPrototype(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -69,6 +67,7 @@ static JSVM_Value GetPrototype(JSVM_Env env, JSVM_CallbackInfo info)
     }
     return result;
 }
+// GetPrototype注册回调
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = GetPrototype},
 };
@@ -78,7 +77,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"getPrototype", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char* srcCallNative = R"JS(const myObject = {};
+const char* SRC_CALL_NATIVE = R"JS(const myObject = {};
     const proto = getPrototype(myObject);
     console.info(proto === Object.prototype);)JS";
 ```
