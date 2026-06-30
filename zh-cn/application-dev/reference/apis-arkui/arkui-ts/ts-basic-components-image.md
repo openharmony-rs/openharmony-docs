@@ -2435,7 +2435,6 @@ struct Test {
 @Entry
 @Component
 struct Index {
-  @State borderRadiusValue: number = 10;
   build() {
     Column() {
       // $r('app.media.sky')需要替换为开发者所需的图像资源文件。
@@ -2469,7 +2468,6 @@ struct Index {
 @Entry
 @Component
 struct Index {
-  @State borderRadiusValue: number = 10;
   build() {
     Column() {
       // $r('app.media.sky')需要替换为开发者所需的图像资源文件。
@@ -2496,7 +2494,6 @@ struct Index {
 @Entry
 @Component
 struct Index {
-  @State borderRadiusValue: number = 10;
   build() {
     Column() {
       // $r('app.media.sky')需要替换为开发者所需的图像资源文件。
@@ -2596,6 +2593,7 @@ struct Index {
         // 成功获取到图片信息，打印HDR状态
         console.info(TAG, 'imageInfo.isHdr:' + imageInfo.isHdr);
       }
+      imageSource.release();
     } else {
       console.error(TAG, 'Failed to obtain the image buffer.');
     }

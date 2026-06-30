@@ -247,58 +247,59 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
 PixelMap是图片解码后的像素图，具体用法请参考[Image Kit简介](../media/image/image-overview.md)。以下示例将加载的网络图片返回的数据解码成PixelMap格式，再显示在Image组件上。
 
 
-  ArkTS-Dyn示例：
+ArkTS-Dyn示例：
 
-  <!-- @[multimedia_pixel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/MultimediaPixelArt.ets) -->    
+<!-- @[multimedia_pixel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/MultimediaPixelArt.ets) -->
     
-  ``` TypeScript
-  import { http } from '@kit.NetworkKit';
-  import { image } from '@kit.ImageKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  const DOMAIN = 0x0001;
-  const TAG = 'Sample_imagecomponent';
-  
-  @Entry
-  @Component
-  struct HttpExample {
-    outData: http.HttpResponse | undefined = undefined;
-    code: http.ResponseCode | number | undefined = undefined;
-    @State image: PixelMap | undefined = undefined; // 创建PixelMap状态变量
-  
-    // 使用createHttp接口将加载的网络图片返回的数据解码成PixelMap格式，再显示在Image组件上
-    aboutToAppear(): void {
-      http.createHttp().request('xxx://xxx.xxx.xxx/example.png', // 需要替换为开发者所需的资源文件，资源文件中的value值请替换为真实路径
-        (error: BusinessError, data: http.HttpResponse) => {
-          if (error) {
-            hilog.error(DOMAIN, TAG, `hello http request failed. Code: ${error.code}, message: ${error.message}`);
-            return;
+``` TypeScript
+import { http } from '@kit.NetworkKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const DOMAIN = 0x0001;
+const TAG = 'Sample_imagecomponent';
+
+@Entry
+@Component
+struct HttpExample {
+  outData: http.HttpResponse | undefined = undefined;
+  code: http.ResponseCode | number | undefined = undefined;
+  @State image: PixelMap | undefined = undefined; // 创建PixelMap状态变量
+
+  // 使用createHttp接口将加载的网络图片返回的数据解码成PixelMap格式，再显示在Image组件上
+  aboutToAppear(): void {
+    http.createHttp().request('xxx://xxx.xxx.xxx/example.png', // 需要替换为开发者所需的资源文件，资源文件中的value值请替换为真实路径
+      (error: BusinessError, data: http.HttpResponse) => {
+        if (error) {
+          hilog.error(DOMAIN, TAG, `hello http request failed. Code: ${error.code}, message: ${error.message}`);
+          return;
+        };
+        this.outData = data;
+        // 将网络地址成功返回的数据，解码成PixelMap格式
+        if (http.ResponseCode.OK === this.outData.responseCode) {
+          let imageData: ArrayBuffer = this.outData.result as ArrayBuffer;
+          let imageSource: image.ImageSource = image.createImageSource(imageData);
+          let options: image.DecodingOptions = {
+            'desiredPixelFormat': image.PixelMapFormat.RGBA_8888,
           };
-          this.outData = data;
-          // 将网络地址成功返回的数据，编码转码成pixelMap的图片格式
-          if (http.ResponseCode.OK === this.outData.responseCode) {
-            let imageData: ArrayBuffer = this.outData.result as ArrayBuffer;
-            let imageSource: image.ImageSource = image.createImageSource(imageData);
-            let options: image.DecodingOptions = {
-              'desiredPixelFormat': image.PixelMapFormat.RGBA_8888,
-            };
-            imageSource.createPixelMap(options).then((pixelMap: PixelMap) => {
-              this.image = pixelMap;
-            });
-          };
-        });
-    };
-  
-    build() {
-      Column() {
-        // 显示图片
-        Image(this.image)
-          .height(100)
-          .width(100)
-      }
+          imageSource.createPixelMap(options).then((pixelMap: PixelMap) => {
+            this.image = pixelMap;
+            imageSource.release();
+          });
+        };
+      });
+  };
+
+  build() {
+    Column() {
+      // 显示图片
+      Image(this.image)
+        .height(100)
+        .width(100)
     }
   }
-  ```
+}
+```
 
   ArkTS-Sta示例：
 

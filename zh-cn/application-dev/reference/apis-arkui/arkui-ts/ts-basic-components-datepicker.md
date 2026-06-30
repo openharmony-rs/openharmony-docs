@@ -836,7 +836,7 @@ struct DatePickerExample {
         start: new Date('1970-1-1'),
         end: new Date('2100-1-1'),
         selected: this.selectedDate,
-        mode:this.datePickerModeList[this.datePickerModeIndex]
+        mode: this.datePickerModeList[this.datePickerModeIndex]
       })
         .lunar(this.isLunar)
         .onDateChange((value: Date) => {
@@ -847,7 +847,7 @@ struct DatePickerExample {
       Button('mode :' + this.datePickerModeIndex).margin({ top: 20 })
         .onClick(() => {
           this.datePickerModeIndex++;
-          if(this.datePickerModeIndex >= this.datePickerModeList.length){
+          if (this.datePickerModeIndex >= this.datePickerModeList.length) {
             this.datePickerModeIndex = 0;
           }
         })
