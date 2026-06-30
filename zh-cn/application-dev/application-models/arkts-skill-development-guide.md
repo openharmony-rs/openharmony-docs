@@ -163,7 +163,7 @@
    校验通过后，调用既有业务接口完成实际任务。入口脚本不承载业务逻辑，仅充当“参数适配器”，读取业务返回值与运行时异常，分别映射到SKILL.md声明的不同结果分支。
 
 
-   <!-- @[music_skill_try](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/music-assistant/scripts/MusicSkill.ets) -->
+   <!-- @[music_skill_try](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/music-assistant/scripts/MusicSkill.ets)  -->
 
    3.5 按契约构造ExecuteResult并回传。
 
