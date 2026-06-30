@@ -302,6 +302,8 @@ ArkTS-Sta: changeIndex(index: int | undefined, useAnimation?: boolean): void
 
 该示例通过[Swiper](ts-container-swiper.md)组件的[indicator](ts-container-swiper.md#indicator)接口与[IndicatorComponent](#indicatorcomponent)的构造函数绑定同一[IndicatorComponentController](#indicatorcomponentcontroller)对象，实现了圆点单独导航点与Swiper的交互。
 
+ArkTS-Dyn示例：
+
 ```ts
 @Entry
 @Component
@@ -360,11 +362,96 @@ struct DotIndicatorDemo {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Text,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  IndicatorComponentController,
+  SwiperController,
+  ForEach,
+  Swiper,
+  TextAlign,
+  Curve,
+  DotIndicator,
+  IndicatorComponent,
+  Color,
+  State
+} from '@kit.ArkUI';
+import hilog from '@ohos.hilog';
+
+@Entry
+@Component
+struct DotIndicatorDemo {
+  private indicatorController: IndicatorComponentController = new IndicatorComponentController();
+  private swiperController: SwiperController = new SwiperController();
+  @State list: int[] = new Array<int>();
+
+  aboutToAppear(): void {
+    for (let i = 1; i <= 6; i++) {
+      this.list.push(i);
+    }
+  }
+
+  build() {
+    Column(undefined) {
+      Swiper(this.swiperController) {
+        ForEach(this.list, (item: int) => {
+          Text(item.toString())
+            .width('100%')
+            .height(160)
+            .backgroundColor(0xAFEEEE)
+            .textAlign(TextAlign.Center)
+            .fontSize(30)
+        })
+      }
+      .cachedCount(2)
+      .index(0)
+      .autoPlay(true)
+      .interval(2000)
+      .indicator(this.indicatorController)
+      .loop(true)
+      .duration(1000)
+      .itemSpace(0)
+      .curve(Curve.Linear)
+      .onChange((index: int) => {
+        console.info(index.toString());
+      })
+
+      IndicatorComponent(this.indicatorController)
+        .initialIndex(0)
+        .style(
+          new DotIndicator()
+            .itemWidth(15)
+            .itemHeight(15)
+            .selectedItemWidth(15)
+            .selectedItemHeight(15)
+            .color(Color.Gray)
+            .selectedColor(Color.Blue))
+        .loop(true)
+        .count(6)
+        .vertical(true)
+        .onChange((index: int) => {
+          console.info('current index: ' + index);
+        })
+    }
+  }
+}
+```
+
 ![bindIndicatorDotStyle](figures/bindIndicatorDotStyle.gif)
 
 ### 示例2（数字单独导航点与Swiper绑定使用）
 
 该示例通过[Swiper](ts-container-swiper.md)组件的[indicator](ts-container-swiper.md#indicator)接口与[IndicatorComponent](#indicatorcomponent)的构造函数绑定同一[IndicatorComponentController](#indicatorcomponentcontroller)对象，实现了数字单独导航点与Swiper的交互。
+
+ArkTS-Dyn示例：
 
 ```ts
 @Entry
@@ -415,6 +502,88 @@ struct DigitIndicatorDemo {
         .count(6)
         .vertical(true)
         .onChange((index: number) => {
+          console.info('current index: ' + index);
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Text,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  IndicatorComponentController,
+  SwiperController,
+  ForEach,
+  Swiper,
+  TextAlign,
+  Curve,
+  DotIndicator,
+  IndicatorComponent,
+  Color,
+  Indicator,
+  Font,
+  FontWeight,
+  State
+} from '@kit.ArkUI';
+import hilog from '@ohos.hilog';
+
+@Entry
+@Component
+struct DigitIndicatorDemo {
+  private indicatorController: IndicatorComponentController = new IndicatorComponentController();
+  private swiperController: SwiperController = new SwiperController();
+  @State list: int[] = new Array<int>();
+
+  aboutToAppear(): void {
+    for (let i = 1; i <= 6; i++) {
+      this.list.push(i);
+    }
+  }
+
+  build() {
+    Column() {
+      Swiper(this.swiperController) {
+        ForEach(this.list, (item: int) => {
+          Text(item.toString())
+            .width('100%')
+            .height(160)
+            .backgroundColor(0xAFEEEE)
+            .textAlign(TextAlign.Center)
+            .fontSize(30)
+        })
+      }
+      .cachedCount(2)
+      .index(0)
+      .autoPlay(true)
+      .interval(2000)
+      .indicator(this.indicatorController)
+      .loop(true)
+      .duration(1000)
+      .itemSpace(0)
+      .curve(Curve.Linear)
+      .onChange((index: int) => {
+        console.info(index.toString());
+      })
+
+      IndicatorComponent(this.indicatorController)
+        .initialIndex(0)
+        .style(Indicator.digit()
+          .fontColor(Color.Gray)
+          .selectedFontColor(Color.Gray)
+          .digitFont({ size: 20, weight: FontWeight.Bold } as Font)
+          .selectedDigitFont({ size: 20, weight: FontWeight.Normal } as Font))
+        .loop(true)
+        .count(6)
+        .vertical(true)
+        .onChange((index: int) => {
           console.info('current index: ' + index);
         })
     }

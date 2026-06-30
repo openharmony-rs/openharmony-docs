@@ -2823,6 +2823,8 @@ finishTransition(): void
 
 从API version 20开始，新增onScrollStateChanged事件。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 class MyDataSource implements IDataSource {
@@ -2933,6 +2935,187 @@ struct SwiperExample {
           })
       }.margin(5)
       Row({ space: 5 }) {
+        Button('FAST 0')
+          .onClick(() => {
+            // 控制器：跳转到索引0，使用快速动画模式
+            this.swiperController.changeIndex(0, SwiperAnimationMode.FAST_ANIMATION);
+          })
+        Button('FAST 3')
+          .onClick(() => {
+            // 控制器：跳转到索引3，使用快速动画模式
+            this.swiperController.changeIndex(3, SwiperAnimationMode.FAST_ANIMATION);
+          })
+        Button('FAST ' + 9)
+          .onClick(() => {
+            // 控制器：跳转到索引9，使用快速动画模式
+            this.swiperController.changeIndex(9, SwiperAnimationMode.FAST_ANIMATION);
+          })
+      }.margin(5)
+    }.width('100%')
+    .margin({ top: 5 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Text,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  IDataSource,
+  DataChangeListener,
+  SwiperController,
+  ColumnOptions,
+  TextAlign,
+  Row,
+  RowOptions,
+  LazyForEach,
+  Color,
+  DotIndicator,
+  Curve,
+  Swiper,
+  ScrollState,
+  SwiperAnimationEvent,
+  SwiperAnimationMode,
+  State
+} from '@kit.ArkUI';
+import hilog from '@ohos.hilog';
+
+export class MyDataSource implements IDataSource<string> {
+  private list: string[] = [];
+  private listener?: DataChangeListener = undefined
+
+  constructor(list: string[]) {
+    this.list = list;
+  }
+
+  totalCount(): int {
+    return this.list.length;
+  }
+
+  getData(index: int): string {
+    return this.list[index as int];
+  }
+
+  public addData(index: int, data: string): void {
+    this.list.splice(index, 0, data);
+    this.notifyDataAdd(index);
+  }
+
+  public deleteData(index: int): void {
+    this.list.splice(index, 1);
+    this.notifyDataDelete(index);
+  }
+
+  notifyDataAdd(index: int): void {
+    this.listener!.onDataAdd(index)
+  }
+
+  notifyDataDelete(index: int): void {
+    this.listener!.onDataDelete(index);
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    this.listener = listener
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+  }
+}
+
+@Entry
+@Component
+struct SwiperExample {
+  private swiperController: SwiperController = new SwiperController();
+  private data: MyDataSource = new MyDataSource([]);
+
+  aboutToAppear(): void {
+    let list: string[] = [];
+    for (let i: number = 1; i <= 10; i++) {
+      list.push(i.toString());
+    }
+    this.data = new MyDataSource(list);
+  }
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Swiper(this.swiperController) {
+        LazyForEach(this.data, (item: string) => {
+          Text(item)
+            .width('90%')
+            .height(160)
+            .backgroundColor(0xAFEEEE)
+            .textAlign(TextAlign.Center)
+            .fontSize(30)
+        })
+      }
+      .cachedCount(2)
+      .index(1)
+      .autoPlay(true)
+      .interval(4000)
+      .loop(true)
+      .indicatorInteractive(true)
+      .duration(1000)
+      .itemSpace(5)
+      .prevMargin(35)
+      .nextMargin(35)
+      .indicator( // 设置圆点导航点样式
+        new DotIndicator()
+          .itemWidth(15)
+          .itemHeight(15)
+          .selectedItemWidth(15)
+          .selectedItemHeight(15)
+          .color(Color.Gray)
+          .selectedColor(Color.Blue))
+      .displayArrow({
+        // 设置导航点箭头样式
+        showBackground: true,
+        isSidebarMiddle: true,
+        backgroundSize: 24,
+        backgroundColor: Color.White,
+        arrowSize: 18,
+        arrowColor: Color.Blue
+      }, false)
+      .curve(Curve.Linear)
+      .onChange((index: int) => {
+        console.info(index.toString());
+      })
+      .onScrollStateChanged((event: ScrollState) => {
+        console.info('event: ' + event);
+      })
+      .onGestureSwipe((index: int, extraInfo: SwiperAnimationEvent) => {
+        console.info('index: ' + index);
+        console.info('current offset: ' + extraInfo.currentOffset);
+      })
+      .onAnimationStart((index: int, targetIndex: int, extraInfo: SwiperAnimationEvent) => {
+        console.info('index: ' + index);
+        console.info('targetIndex: ' + targetIndex);
+        console.info('current offset: ' + extraInfo.currentOffset);
+        console.info('target offset: ' + extraInfo.targetOffset);
+        console.info('velocity: ' + extraInfo.velocity);
+      })
+      .onAnimationEnd((index: int, extraInfo: SwiperAnimationEvent) => {
+        console.info('index: ' + index);
+        console.info('current offset: ' + extraInfo.currentOffset);
+      })
+
+      Row({ space: 12 } as RowOptions) {
+        Button('showPrevious')
+          .onClick(() => {
+            this.swiperController.showPrevious();
+          })
+        Button('showNext')
+          .onClick(() => {
+            this.swiperController.showNext();
+          })
+      }.margin(5)
+
+      Row({ space: 5 } as RowOptions) {
         Button('FAST 0')
           .onClick(() => {
             // 控制器：跳转到索引0，使用快速动画模式
