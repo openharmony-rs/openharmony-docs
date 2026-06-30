@@ -12,7 +12,7 @@ OpenHarmony提供了两种驱动适配方式：使用外设驱动子系统、使
 厂商需要根据OpenHarmony提供的接口定义实现其功能，IOT子系统接口定义的头文件如下：
 
   
-```
+```text
 base/iothardware/peripheral/
 ├── BUILD.gn
 ├── bundle.json
@@ -32,12 +32,12 @@ base/iothardware/peripheral/
 其中“base/iothardware/peripheral/BUILD.gn”文件如下：
 
   
-```
+```gn
 import("//build/lite/ndk/ndk.gni")
        
- group("iothardware") {
- 	   deps = [
- 	     "$ohos_board_adapter_dir/hals/iot_hardware/wifiiot_lite:hal_iothardware", 
+group("iothardware") {
+  deps = [
+  "$ohos_board_adapter_dir/hals/iot_hardware/wifiiot_lite:hal_iothardware", 
   ]
 }
 if (ohos_kernel_type == "liteos_m") {
@@ -56,12 +56,12 @@ if (ohos_kernel_type == "liteos_m") {
 ## 移植实例
 
 1. 在“config.json”中添加iothardware子系统。
+
    路径：“vendor/MyVendorCompany/MyProduct/config.json”
 
    修改如下：
 
-     
-   ```
+   ```json
    { 
        "subsystem": "iothardware", 
        "components": [ 
@@ -77,7 +77,7 @@ if (ohos_kernel_type == "liteos_m") {
    在“vendor_adapter_dir”目录下进行适配：
 
      
-   ```
+   ```text
    hals/iot_hardware/wifiiot_lite
    ├── BUILD.gn
    ├── iot_flash.c
@@ -93,7 +93,7 @@ if (ohos_kernel_type == "liteos_m") {
    其中BUILD.gn内容如下：
 
      
-   ```
+   ```gn
    static_library("hal_iothardware") {   #目标名。
        sources = [                       #厂商适配的源文件。
          "iot_watchdog.c",
