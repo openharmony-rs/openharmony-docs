@@ -206,6 +206,11 @@
 
    <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
    
+   ``` TypeScript
+   import { intelligence } from '@kit.ArkData';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   ```
+   
 
 
 2. 获取图像嵌入模型。
