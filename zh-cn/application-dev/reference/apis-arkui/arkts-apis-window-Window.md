@@ -14816,8 +14816,6 @@ getDecorButtonStyle(): DecorButtonStyle
 
 从OpenHarmony 5.1.0开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用返回801错误码。
 
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在各设备均可正常调用。
-
 **ArkTS-Dyn起始版本：** 14
 
 **ArkTS-Sta起始版本：** 23
@@ -17131,9 +17129,9 @@ ArkTS-Sta: setWindowShadowRadius(radius: double): void
 
 **设备行为差异：** 
 
-在OpenHarmony 5.1.0之前，该接口在PC/2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
+在OpenHarmony 5.1.0之前，该接口在Tablet设备、PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
-从OpenHarmony 5.1.0开始，该接口在Phone设备、Tablet设备和2in1设备中可正常调用，在其他设备中返回801错误码。
+从OpenHarmony 5.1.0开始，该接口在Phone设备、Tablet设备和PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 17开始，该接口支持在原子化服务中使用。
 
@@ -17186,7 +17184,7 @@ ArkTS-Sta: setWindowCornerRadius(cornerRadius: double): Promise&lt;void&gt;
 
 在<!--RP16-->OpenHarmony 6.0<!--RP16End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用返回801错误码。
 
-从<!--RP16-->OpenHarmony 6.0<!--RP16End-->开始，该接口在Phone设备、Tablet设备和2in1设备下可正常调用，在其他设备中返回801错误码。
+从<!--RP16-->OpenHarmony 6.0<!--RP16End-->开始，该接口在Phone设备、Tablet设备和PC/2in1设备下可正常调用，在其他设备中返回801错误码。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 17开始，该接口支持在原子化服务中使用。
 

@@ -943,7 +943,7 @@ ArkTS-Sta: getGlobalDisplayX(): double
 
 | 类型   | 说明                                                |
 | ------ | --------------------------------------------------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 返回当前拖拽点相对于全局屏幕的左上角的X坐标。<br/>单位：vp，取值范围：[0, +∞)|
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 返回当前拖拽点相对于全局屏幕的左上角的X坐标。<br/>单位：vp，取值范围：(-∞, +∞)|
 
 ### getGlobalDisplayY<sup>20+</sup>
 
@@ -967,7 +967,7 @@ ArkTS-Sta: getGlobalDisplayY(): double
 
 | 类型   | 说明                                                |
 | ------ | --------------------------------------------------- |
-| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 返回当前拖拽点相对于全局屏幕的左上角的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞) |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 返回当前拖拽点相对于全局屏幕的左上角的Y坐标。<br/>单位：vp<br/>取值范围：(-∞, +∞) |
 
 ## DragResult<sup>10+</sup>枚举说明
 

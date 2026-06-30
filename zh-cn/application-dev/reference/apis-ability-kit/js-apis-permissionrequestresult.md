@@ -25,6 +25,8 @@ import { PermissionRequestResult } from '@kit.AbilityKit';
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.Security.AccessToken
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | permissions | Array&lt;string&gt; | 否 | 否 | 用户传入的权限。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |

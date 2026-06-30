@@ -145,11 +145,11 @@
 | position     | [PlaybackPosition](#playbackposition10) | 否  | 是  | 播放位置。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
 | bufferedTime | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 |是  | 缓冲时间。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
 | loopMode     | [LoopMode](arkts-apis-avsession-e.md#loopmode10)                 | 否 |是  | 循环模式。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
-| isFavorite   | boolean                               | 否  |是 | 是否收藏，true表示收藏。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
+| isFavorite   | boolean                               | 否  |是 | 表示是否收藏，true表示收藏。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
 | activeItemId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 |是  | 正在播放的媒体ID。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
 | volume | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  |是 | 正在播放的媒体音量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 |
 | maxVolume<sup>11+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  |是 | 最大音量。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
-| muted<sup>11+</sup>     | boolean                   | 否 | 是   | 当前静音状态，true表示静音。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
+| muted<sup>11+</sup>     | boolean                   | 否 | 是   | 当前是否是静音状态。true表示静音。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
 | duration<sup>11+</sup>     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是  | 当前媒体资源的时长，单位为毫秒（ms）。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
 | videoWidth<sup>11+</sup>  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  | 是 | 媒体资源的视频宽度，单位为像素（px）。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
 | videoHeight<sup>11+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  |是 | 媒体资源的视频高度，单位为像素（px）。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |

@@ -76,7 +76,7 @@ Navigation(pathInfos: NavPathStack)
 
 Navigation(pathInfos: NavPathStack, homeDestination: HomePathInfo)
 
-绑定路由栈到Navigation组件，并且指定一个NavDestination作为Navigation的导航页（主页），适用于使用[NavPathStack](#navpathstack10)配合[navDestination](#navdestination10)属性或者系统路由表进行页面路由。使用示例参考[示例16（Navigation使用NavDestination作为导航页）](#示例16navigation使用navdestination作为导航页)。
+绑定路由栈到Navigation组件，并且指定一个NavDestination作为Navigation的导航页（主页），适用于使用[NavPathStack](#navpathstack10)配合[navDestination](#navdestination10)属性或者系统路由表进行页面路由。使用示例参考[示例16](#示例16navigation使用navdestination作为导航页)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3073,6 +3073,7 @@ struct NavigationExample {
   }
 }
 ```
+
 ```ts
 // PageOne.ets
 class TmpClass {
@@ -3172,6 +3173,7 @@ export struct PageOne {
   }
 }
 ```
+
 ```ts
 // PageTwo.ets
 @Builder
@@ -3228,6 +3230,7 @@ export struct PageTwo {
 ```
 
 在src/main目录下的[module.json5配置文件](../../../quick-start/module-configuration-file.md)中的module字段里配置"routerMap": "$profile:router_map"，并在src/main/resources/base/profile目录下新增router_map.json。router_map.json示例如下。
+
 ```json
 {
   "routerMap": [
@@ -3247,6 +3250,7 @@ export struct PageTwo {
   ]
 }
 ```
+
 ![navigation.gif](figures/navigation.gif)
 
 ### 示例3（设置可交互转场动画）
@@ -3570,6 +3574,7 @@ export struct PageTwo {
   }
 }
 ```
+
 ```ts
 // src/main/pages/CustomNavigationUtils.ets
 // 自定义接口，用来保存某个页面相关的转场动画回调和参数
@@ -3709,7 +3714,9 @@ export class CustomTransition {
   }
 }
 ```
+
 在src/main目录下的[module.json5配置文件](../../../quick-start/module-configuration-file.md)中的module字段里配置"routerMap": "$profile:router_map"，并在src/main/resources/base/profile目录下新增router_map.json。router_map.json示例如下。
+
 ```json
 {
   "routerMap": [
@@ -3729,6 +3736,7 @@ export class CustomTransition {
   ]
 }
 ```
+
 ![navigation_interactive_transition](figures/navigation_interactive_transition.gif)
 
 ### 示例4（Navigation带参返回）
@@ -3757,6 +3765,7 @@ struct NavigationExample {
   }
 }
 ```
+
 ```ts
 // PageOne.ets
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3914,6 +3923,7 @@ export struct PageOne {
   }
 }
 ```
+
 ```ts
 // PageTwo.ets
 class resultClass {
@@ -3995,7 +4005,9 @@ export struct PageTwo {
   }
 }
 ```
+
 在src/main目录下的[module.json5配置文件](../../../quick-start/module-configuration-file.md)中的module字段里配置"routerMap": "$profile:router_map"，并在src/main/resources/base/profile目录下新增router_map.json。router_map.json示例如下。
+
 ```json
 {
   "routerMap": [
@@ -4015,6 +4027,7 @@ export struct PageTwo {
   ]
 }
 ```
+
 ![navigationWithOnPop.gif](figures/navigationWithOnPop.gif)
 
 ### 示例5（设置背景颜色和模糊效果）
@@ -4156,6 +4169,7 @@ export struct BackComponent {
   }
 }
 ```
+
 ```ts
 // PageOne.ets
 import {
@@ -4353,6 +4367,7 @@ struct NavigationExample1 {
   }
 }
 ```
+
 ```ts
 // PageOne.ets
 @Builder
@@ -4363,7 +4378,9 @@ export function PageOneBuilder(name: string) {
   .title(name)
 }
 ```
+
 在src/main目录下的[module.json5配置文件](../../../quick-start/module-configuration-file.md)中的module字段里配置"routerMap": "$profile:router_map"，并在src/main/resources/base/profile目录下新增router_map.json。router_map.json示例如下。
+
 ```json
 {
   "routerMap": [
@@ -4378,6 +4395,7 @@ export function PageOneBuilder(name: string) {
   ]
 }
 ```
+
 ![navPathStackGetParent.gif](figures/navPathStackGetParent.gif)
 
 ### 示例7（通过onReady获取栈）
@@ -4473,7 +4491,9 @@ struct NavigationExample2 {
   }
 }
 ```
+
 在src/main目录下的[module.json5配置文件](../../../quick-start/module-configuration-file.md)中的module字段里配置"routerMap": "$profile:router_map"，并在src/main/resources/base/profile目录下新增router_map.json。router_map.json示例如下。
+
 ```json
 {
   "routerMap": [
@@ -4488,6 +4508,7 @@ struct NavigationExample2 {
   ]
 }
 ```
+
 ![navigationOnReady1.gif](figures/navigationOnReady1.gif)
 
 ### 示例8（NavDestination生命周期时序）
@@ -4591,7 +4612,9 @@ struct NavigationExample3 {
   }
 }
 ```
+
 在src/main目录下的[module.json5配置文件](../../../quick-start/module-configuration-file.md)中的module字段里配置"routerMap": "$profile:router_map"，并在src/main/resources/base/profile目录下新增router_map.json。router_map.json示例如下。
+
 ```json
 {
   "routerMap": [
@@ -4606,12 +4629,15 @@ struct NavigationExample3 {
   ]
 }
 ```
+
 ![navigationOnReady2.gif](figures/navigationOnReady2.gif)
 
 
 ### 示例9（标题栏布局效果）
 
 该示例演示Navigation标题栏STACK布局效果。
+
+ArkTS-Dyn示例：
 
 ```ts
 @Entry
@@ -4678,6 +4704,97 @@ struct NavigationExample {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Column,
+  Component,
+  Button,
+  Navigation,
+  Color,
+  Text,
+  Scroller,
+  $r,
+  BarStyle,
+  Scroll,
+  Image,
+  ForEach,
+  ListItem,
+  BlurStyle,
+  NavigationTitleMode,
+  TextAlign,
+  State
+} from '@kit.ArkUI';
+import hilog from '@ohos.hilog';
+
+@Entry
+@Component
+struct NavigationExample {
+  private arr: int[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+  private scrollerForScroll: Scroller = new Scroller();
+  @State barStyle: BarStyle = BarStyle.STANDARD;
+
+  build() {
+    Column() {
+      Navigation() {
+        Column(undefined) {
+          Scroll(this.scrollerForScroll) {
+            Column(undefined) {
+              // $r('app.media.image_1')需要替换为开发者所需的资源文件
+              Image($r('app.media.blueTooth'))// 设置与标题栏高度一致，以便观察STACK效果
+                .height(138)
+                .width('100%')
+              Button('BarStyle.STANDARD')
+                .height('50vp')
+                .onClick(() => {
+                  this.barStyle = BarStyle.STANDARD;
+                })
+              Button('BarStyle.STACK')
+                .height('50vp')
+                .margin({ top: 12 })
+                .onClick(() => {
+                  this.barStyle = BarStyle.STACK;
+                })
+
+              ForEach(this.arr, (item: int) => {
+                ListItem() {
+                  Text('' + item)
+                    .width('100%')
+                    .height(100)
+                    .fontSize(16)
+                    .textAlign(TextAlign.Center)
+                    .borderRadius(10)
+                    .backgroundColor(Color.Orange)
+                    .margin({ top: 12 })
+                }
+              })
+            }
+          }
+        }
+        .width('100%')
+        .height('100%')
+        .backgroundColor(0xDCDCDC)
+      }
+      .title(
+        {
+          main: 'NavTitle',
+          sub: 'subtitle'
+        },
+        {
+          backgroundBlurStyle: BlurStyle.COMPONENT_THICK,
+          barStyle: this.barStyle,
+        }
+      )
+      .titleMode(NavigationTitleMode.Free)
+      .hideTitleBar(false)
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+}
+```
+
 ![titlebar_stack.gif](figures/titlebar_stack.gif)
 
 
@@ -4711,6 +4828,7 @@ struct Index {
   }
 }
 ```
+
 ```ts
 // PageOne.ets
 import { DerivedNavPathStack, NewParam } from './Utils';
@@ -4907,6 +5025,7 @@ struct NavigationExample {
   }
 }
 ```
+
 ```ts
 // PageOne.ets
 import { SymbolGlyphModifier } from '@kit.ArkUI';
@@ -5069,6 +5188,7 @@ struct NavigationExample {
   }
 }
 ```
+
 ```ts
 // PageOne.ets
 import { LengthMetrics } from '@kit.ArkUI';
@@ -5158,6 +5278,7 @@ export struct NavDestinationExample {
   }
 }
 ```
+
 ```ts
 // Utils.ets
 import { TextModifier } from '@kit.ArkUI';
@@ -5314,7 +5435,6 @@ struct NavigationCustomTransitionExample {
   }
 }
 
-
 // PageOne
 @Builder
 export function PageOneBuilder() {
@@ -5401,6 +5521,7 @@ export struct PageContainer {
   }
 }
 ```
+
 ```ts
 // src/main/pages/CustomTransitionUtils.ts 工具类，用来管理所有页面的自定义动画参数注册和获取等
 // 自定义接口，用来保存某个页面相关的转场动画回调和参数
@@ -5450,7 +5571,9 @@ export class CustomTransition {
   }
 }
 ```
+
 在src/main目录下的[module.json5配置文件](../../../quick-start/module-configuration-file.md)中的module字段里配置"routerMap": "$profile:router_map"，并在src/main/resources/base/profile目录下新增router_map.json。router_map.json示例如下。
+
 ```json
 {
   "routerMap": [
@@ -5470,6 +5593,7 @@ export class CustomTransition {
   ]
 }
 ```
+
 ![navigationCustomTransition.gif](figures/navigationCustomTransition.gif)
 
 ### 示例14（设置Navigation双栏模式）
@@ -5479,6 +5603,8 @@ export class CustomTransition {
 从API version 20开始，新增splitPlaceholder属性；API version 23开始，新增divider属性。
 
 此示例在运行前需要在工程配置文件[module.json5](../../../quick-start/module-configuration-file.md)中的abilities字段里配置"orientation": "auto_rotation"。
+
+ArkTS-Dyn示例：
 
 ```ts
 import { ComponentContent } from '@kit.ArkUI';
@@ -5606,6 +5732,167 @@ struct NavigationExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  NavPathStack,
+  Navigation,
+  Stack,
+  Alignment,
+  Color,
+  StackOptions,
+  ButtonOptions,
+  ButtonType,
+  NavPathInfo,
+  NavDestination,
+  NavDestinationContext,
+  Text,
+  ComponentContent,
+  Dimension,
+  wrapBuilder,
+  HorizontalAlign,
+  List,
+  TextInput,
+  ForEach,
+  ListItem,
+  TextAlign,
+  NavigationTitleMode,
+  NavigationMode,
+  Row,
+  ToolbarItem,
+  $r,
+  Image,
+  State,
+  ComponentContent
+} from '@kit.ArkUI';
+
+@Builder
+function PlaceholderPage(): void {
+  Column() {
+    Text('分栏模式占位页')
+      .fontSize(28)
+      .fontWeight(700)
+      .margin({ top: 200 })
+  }.width('100%')
+  .height('100%')
+}
+
+@Entry
+@Component
+struct NavigationExample {
+  @State minContentWidth: Dimension | undefined = undefined;
+  private arr: int[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  @State currentIndex: int = 0;
+  placeholder: ComponentContent = new ComponentContent(this.getUIContext(), wrapBuilder(PlaceholderPage))
+
+  @Builder
+  NavigationTitle(): void {
+    Column() {
+      Text('Title')
+        .fontColor('#182431')
+        .fontSize(30)
+        .lineHeight(41)
+        .fontWeight(700)
+      Text('subtitle')
+        .fontColor('#182431')
+        .fontSize(14)
+        .lineHeight(19)
+        .opacity(0.4)
+        .margin({ top: 2, bottom: 20 })
+    }.alignItems(HorizontalAlign.Start)
+  }
+
+  @Builder
+  NavigationMenus(): void {
+    Row(undefined) {
+      // $r('sys.media.ohos_ic_public_add')需要替换为开发者所需的资源文件
+      Image($r('sys.media.ohos_ic_public_add'))
+        .width(24)
+        .height(24)
+      // $r('sys.media.ohos_ic_public_add')需要替换为开发者所需的资源文件
+      Image($r('sys.media.ohos_ic_public_add'))
+        .width(24)
+        .height(24)
+        .margin({ left: 24 })
+      // $r('sys.media.ohos_ic_public_more')需要替换为开发者所需的资源文件
+      Image($r('sys.media.ohos_ic_public_more'))
+        .width(24)
+        .height(24)
+        .margin({ left: 24 })
+    }.margin({ top: 30 })
+  }
+
+  build() {
+    Column(undefined) {
+      Navigation() {
+        TextInput({ placeholder: 'search...' })
+          .width('90%')
+          .height(40)
+          .backgroundColor('#FFFFFF')
+          .margin({ top: 8 })
+
+        List({ space: 12, initialIndex: 0 }) {
+          ForEach(this.arr, (item: int) => {
+            ListItem() {
+              Text('' + item)
+                .width('90%')
+                .height(72)
+                .backgroundColor('#FFFFFF')
+                .borderRadius(24)
+                .fontSize(16)
+                .fontWeight(500)
+                .textAlign(TextAlign.Center)
+            }
+          })
+        }
+        .height(324)
+        .width('100%')
+        .margin({ top: 12, left: '10%' })
+      }
+      .title(this.NavigationTitle)
+      .padding({ left: 12 })
+      .menus(this.NavigationMenus)
+      .titleMode(NavigationTitleMode.Full)
+      .toolbarConfiguration([
+        {
+          // $r('app.string.navigation_toolbar_add')和$r('app.media.startIcon')需要替换为开发者所需的图像资源文件
+          value: $r('app.string.pageIndex_List'),
+          icon: $r('app.media.startIcon')
+        } as ToolbarItem,
+        {
+          // $r('app.string.navigation_toolbar_app')和$r('app.media.startIcon')需要替换为开发者所需的图像资源文件
+          value: $r('app.string.pageIndex_List'),
+          icon: $r('app.media.startIcon')
+        } as ToolbarItem,
+        {
+          // $r('app.string.navigation_toolbar_collect')和$r('app.media.startIcon')需要替换为开发者所需的图像资源文件
+          value: $r('app.string.pageIndex_List'),
+          icon: $r('app.media.startIcon')
+        } as ToolbarItem
+      ] as Array<ToolbarItem>)
+      .mode(NavigationMode.Split) // 设置Navigation模式为Split
+      .minContentWidth(this.minContentWidth)
+      .hideTitleBar(false)
+      .hideToolBar(false)
+      .onTitleModeChange((titleModel: NavigationTitleMode) => {
+        console.info('titleMode' + titleModel)
+      })
+      // .splitPlaceholder(this.placeholder)
+      .divider({ startMargin: 20, endMargin: 20, color: Color.Red }) // 从API version 23开始，新增divider属性。
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor('#F1F3F5')
+  }
+}
+```
+
 ![navigation_navbarwidthrange](figures/navigation_navbarwidthrange.gif)
 
 ### 示例15（Navigation工具栏自适应）
@@ -5615,6 +5902,9 @@ struct NavigationExample {
 从API version 19开始，新增了enableToolBarAdaptation属性。
 
 在工程配置文件[module.json5](../../../quick-start/module-configuration-file.md)中的abilities字段里配置"orientation": "landscape"（该工程配置仅方便演示在横屏模式下的Navigation工具栏自适应能力，实际配置可自行设置为"auto_rotation"）。
+
+ArkTS-Dyn示例：
+
 ```ts
 import { SymbolGlyphModifier } from '@kit.ArkUI';
 
@@ -5663,6 +5953,94 @@ struct NavigationExample {
           this.enable = !this.enable;
         })
         Text("启用自适应能力：" + this.enable)
+      }
+    }
+    .mode(NavigationMode.Stack)
+    .enableToolBarAdaptation(this.enable) // 是否启用工具栏自适应能力
+    .backButtonIcon(new SymbolGlyphModifier($r('sys.symbol.ohos_wifi')))
+    .titleMode(NavigationTitleMode.Mini)
+    .menus(this.menuItems)
+    .toolbarConfiguration(this.toolItems)
+    .title('一级页面')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  NavPathStack,
+  Navigation,
+  Color,
+  NavigationMenuItem,
+  ToolbarItem,
+  ButtonOptions,
+  ButtonType,
+  NavPathInfo,
+  NavDestination,
+  NavDestinationContext,
+  Text,
+  SymbolGlyphModifier,
+  NavigationTitleMode,
+  $r,
+  NavigationMode,
+  State,
+  Provide
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct NavigationExample {
+  @Provide({ alias: 'navPathStack' }) navPathStack: NavPathStack = new NavPathStack();
+  @State enable: boolean = false
+  @State menuItems: Array<NavigationMenuItem> = [
+    {
+      value: 'menuItem1',
+      symbolIcon: new SymbolGlyphModifier($r('sys.symbol.card_writer')),
+    } as NavigationMenuItem,
+    {
+      value: 'menuItem2',
+      symbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_folder_badge_plus'))
+    } as NavigationMenuItem,
+    {
+      value: 'menuItem3',
+      symbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_lungs')),
+    } as NavigationMenuItem,
+  ]
+  @State toolItems: Array<ToolbarItem> = [
+    {
+      value: 'toolItem1',
+      symbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_lungs')),
+      action: () => {
+      }
+    } as ToolbarItem,
+    {
+      value: 'toolItem2',
+      symbolIcon: new SymbolGlyphModifier($r('sys.symbol.card_migration')),
+      action: () => {
+      }
+    } as ToolbarItem,
+    {
+      value: 'toolItem3',
+      symbolIcon: new SymbolGlyphModifier($r('sys.symbol.ohos_star')),
+      action: () => {
+      }
+    } as ToolbarItem
+  ]
+
+  build() {
+    Navigation(this.navPathStack) {
+      Column() {
+        Button('启用/关闭自适应').onClick(() => {
+          this.enable = !this.enable;
+        })
+        Text('启用自适应能力：' + this.enable)
       }
     }
     .mode(NavigationMode.Stack)
@@ -5737,7 +6115,9 @@ struct Index {
   }
 }
 ```
+
 在src/main目录下的[module.json5配置文件](../../../quick-start/module-configuration-file.md)中的module字段里配置"routerMap": "$profile:router_map"，并在src/main/resources/base/profile目录下新增router_map.json。router_map.json示例如下。
+
 ```json
 {
   "routerMap": [
@@ -5852,6 +6232,7 @@ struct NavigationExample {
   }
 }
 ```
+
 ```ts
 // PageOne.ets
 class TmpClass {
@@ -5954,6 +6335,7 @@ export struct PageOne {
   }
 }
 ```
+
 ```ts
 // PageTwo.ets
 @Builder
@@ -6028,6 +6410,7 @@ export struct PageTwo {
   ]
 }
 ```
+
 ![navigation_interception.gif](figures/navigation_interception.gif)
 
 ### 示例18（设置Navigation可恢复）
@@ -6111,6 +6494,7 @@ struct NavigationExample {
   }
 }
 ```
+
 ```ts
 // PageOne.ets
 import { SymbolGlyphModifier } from '@kit.ArkUI';
