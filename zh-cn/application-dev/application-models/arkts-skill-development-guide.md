@@ -164,6 +164,20 @@
 
 
    <!-- @[music_skill_try](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/music-assistant/scripts/MusicSkill.ets)  -->
+   
+   ``` TypeScript
+   
+   try {
+     // 直接调用应用内已有业务API
+     const playResult: PlayResult | null = MusicPlayer.searchAndPlay(songName, singer);
+     // 业务返回值 → 映射到"成功"或"未命中"分支（见 3.5）
+         // ...
+   } catch (e) {
+     // 业务异常 → 统一映射到 ERR_INTERNAL 分支（见 3.5）
+     const err = e as BusinessError;
+   // ...
+   }
+   ```
 
    3.5 按契约构造ExecuteResult并回传。
 
