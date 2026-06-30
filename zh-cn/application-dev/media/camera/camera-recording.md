@@ -58,69 +58,43 @@
 
    <!-- @[camera_video_createAVRecorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
    ```ts
-   async function getVideoOutput(cameraManager: camera.CameraManager, videoSurfaceId: string, cameraOutputCapability: camera.CameraOutputCapability): Promise<camera.VideoOutput | undefined> {
-     if (!cameraManager || !videoSurfaceId || !cameraOutputCapability || !cameraOutputCapability.videoProfiles) {
-       return;
-     }
-     let videoProfilesArray: Array<camera.VideoProfile> = cameraOutputCapability.videoProfiles;
-     if (!videoProfilesArray || videoProfilesArray.length === 0) {
-       console.error("videoProfilesArray is null or []");
-       return undefined;
-     }
-     // AVRecorderProfile。
-     let aVRecorderProfile: media.AVRecorderProfile = {
-       fileFormat : media.ContainerFormatType.CFT_MPEG_4, // 视频文件封装格式，只支持MP4。
-       videoBitrate : 100000, // 视频比特率。
-       videoCodec : media.CodecMimeType.VIDEO_AVC, // 视频文件编码格式，支持avc格式。
-       videoFrameWidth : 640,  // 视频分辨率的宽。
-       videoFrameHeight : 480, // 视频分辨率的高。
-       videoFrameRate : 30 // 视频帧率。
-     };
-     // 创建视频录制的参数，预览流与录像输出流的分辨率的宽(videoFrameWidth)高(videoFrameHeight)比要保持一致。
-     let avMetadata: media.AVMetadata = {
-      videoOrientation: '90' // rotation的值90，是通过getVideoRotation接口获取到的值，具体请参考说明中获取录像旋转角度的方法。
-     }
-     
-     let aVRecorderConfig: media.AVRecorderConfig = {
-       videoSourceType: media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
-       profile: aVRecorderProfile,
-       url: 'fd://35', // 此处为样例示范，需要根据开发需求填写实际的路径。
-       metadata: avMetadata
-     };
-     // 创建avRecorder，设置视频录制的参数。
-     let avRecorder: media.AVRecorder | undefined = undefined;
-     try {
-       avRecorder = await media.createAVRecorder();
-       if (avRecorder === undefined) {
-         return undefined;
-       }
-       await avRecorder.prepare(aVRecorderConfig);
-     } catch (error) {
-       let err = error as BusinessError;
-       console.error(`createAVRecorder call failed. error code: ${err.code}`);
-       await avRecorder?.release();
-       return;
-     }
-
-     // 创建VideoOutput对象。
+   createVideoOutputFn(cameraManager: camera.CameraManager, videoProfileObj: camera.VideoProfile,
+     surfaceId: string): camera.VideoOutput | undefined {
      let videoOutput: camera.VideoOutput | undefined = undefined;
-     // createVideoOutput传入的videoProfile对象的宽高需要和aVRecorderProfile保持一致。
-     let videoProfile: undefined | camera.VideoProfile = videoProfilesArray.find((profile: camera.VideoProfile) => {
-       return profile.size.width === aVRecorderProfile.videoFrameWidth && profile.size.height === aVRecorderProfile.videoFrameHeight;
-     });
-     if (!videoProfile) {
-       console.error('videoProfile is not found');
-       await avRecorder.release();
-       return undefined;
-     }
      try {
-       videoOutput = cameraManager.createVideoOutput(videoProfile, videoSurfaceId);
+       videoOutput = cameraManager.createVideoOutput(videoProfileObj, surfaceId);
+       Logger.info(TAG, `createVideoOutputFn success: ${videoOutput}`);
      } catch (error) {
        let err = error as BusinessError;
-       console.error('Failed to create the videoOutput instance. errorCode = ' + err.code);
-       await avRecorder.release();
+       Logger.error(TAG, `createVideoOutputFn failed: ${err.code}`);
      }
      return videoOutput;
+   }
+   async prepareAVRecorder(): Promise<void> {
+     Logger.info(TAG, 'prepareAVRecorder is called');
+     let fd = this.initFd();
+     let videoConfig: media.AVRecorderConfig = {
+       audioSourceType: media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
+       videoSourceType: media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
+       profile: {
+         audioBitrate: Constants.AUDIO_BITRATE,
+         audioChannels: Constants.AUDIO_CHANNELS,
+         audioCodec: media.CodecMimeType.AUDIO_AAC,
+         audioSampleRate: Constants.AUDIO_SAMPLE_RATE,
+         fileFormat: media.ContainerFormatType.CFT_MPEG_4,
+         videoBitrate: Constants.VIDEO_BITRATE,
+         videoCodec: media.CodecMimeType.VIDEO_AVC,
+         videoFrameWidth: this.videoProfileObj.size.width,
+         videoFrameHeight: this.videoProfileObj.size.height,
+         videoFrameRate: this.videoProfileObj.frameRateRange.max
+       },
+       url: `fd://${fd.toString()}`,
+       rotation: this.curCameraDevice?.cameraOrientation
+     };
+     Logger.info(TAG, `prepareAVRecorder videoConfig: ${JSON.stringify(videoConfig)}`);
+     await this.avRecorder?.prepare(videoConfig).catch((err: BusinessError): void => {
+       Logger.error(TAG, `prepareAVRecorder prepare err: ${err.code}`);
+     });
    }
    ```
 
@@ -140,20 +114,17 @@
 
    <!-- @[camera_video_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
    ```ts
-   async function startVideo(videoOutput: camera.VideoOutput, avRecorder: media.AVRecorder): Promise<void> {
-    try {
-      await videoOutput.start();
-    } catch (error) {
-      let err = error as BusinessError;
-      console.error(`start videoOutput failed, error: ${err.code}`);
-    }
-    avRecorder.start(async (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to start the video output ${err.message}`);
-      return;
-    }
-    console.info('Callback invoked to indicate the video output start success.');
-    });
+   async startVideo(): Promise<void> {
+     Logger.info(TAG, 'startVideo is called');
+     try {
+       await this.videoOutput?.start();
+       await this.avRecorder?.start();
+       this.isRecording = true;
+     } catch (error) {
+       let err = error as BusinessError;
+       Logger.error(TAG, `startVideo err: ${err.code}`);
+     }
+     Logger.info(TAG, 'startVideo End of call');
    }
    ```
 
@@ -163,15 +134,25 @@
 
    <!-- @[camera_video_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
    ```ts
-   async function stopVideo(videoOutput: camera.VideoOutput, avRecorder: media.AVRecorder): Promise<void> {
-     avRecorder.stop((err: BusinessError) => {
-     if (err) {
-       console.error(`Failed to stop the video output ${err.message}`);
+   async stopVideo(): Promise<void> {
+     Logger.info(TAG, 'stopVideo is called');
+     if (!this.isRecording) {
+       Logger.info(TAG, 'not in recording');
        return;
      }
-     console.info('Callback invoked to indicate the video output stop success.');
-     });
-     await videoOutput.stop();
+     try {
+       if (this.avRecorder) {
+         await this.avRecorder.stop();
+       }
+       if (this.videoOutput) {
+         await this.videoOutput.stop();
+       }
+       this.isRecording = false;
+     } catch (error) {
+       let err = error as BusinessError;
+       Logger.error(TAG, `stopVideo err: ${err.code}`);
+     }
+     Logger.info(TAG, 'stopVideo End of call');
    }
    ```
 
