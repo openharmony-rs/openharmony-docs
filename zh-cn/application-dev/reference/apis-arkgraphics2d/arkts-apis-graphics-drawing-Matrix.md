@@ -290,7 +290,7 @@ setMatrix(values: Array\<number>): void
 
 | 参数名 | 类型                                                 | 必填 | 说明             |
 | ------ | ---------------------------------------------------- | ---- | ---------------- |
-| values  | Array\<number> | 是   | 长度为9的浮点数组，表示矩阵对象的各项参数。数组中的值按下标从小到大分别表示水平缩放因子、水平倾斜系数、水平位移系数（单位为物理像素px）、垂直倾斜系数、垂直缩放因子、垂直位移系数（单位为物理像素px）、x轴透视系数、y轴透视系数、透视缩放因子。 |
+| values  | Array\<number> | 是   | 长度为9的浮点数组，表示矩阵对象的各项参数。数组中的值按下标从小到大分别表示水平缩放因子、水平倾斜系数、水平位移系数（单位为物理像素px）、垂直倾斜系数、垂直缩放因子、垂直位移系数（单位为物理像素px）、x轴透视系数、y轴透视系数和透视缩放因子。 |
 
 **错误码：**
 
@@ -415,6 +415,13 @@ postConcat(matrix: Matrix): void
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
 
+let matrix = new drawing.Matrix();
+if (matrix.isIdentity()) {
+  console.info("matrix is identity.");
+} else {
+  console.info("matrix is not identity.");
+}
+
 let matrix1 = new drawing.Matrix();
 matrix1.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
 let matrix2 = new drawing.Matrix();
@@ -434,7 +441,13 @@ isEqual(matrix: Matrix): boolean
 
 | 参数名 | 类型                                                 | 必填 | 说明             |
 | ------ | ---------------------------------------------------- | ---- | ---------------- |
-| matrix  | [Matrix](arkts-apis-graphics-drawing-Matrix.md) | 是   | 另一个矩阵，用于与当前矩阵比较是否相等。 |
+| matrix  | [Matrix](arkts-apis-graphics-drawing-Matrix.md) | 是   | 另一个矩阵，用来与当前矩阵比较是否相等。 |
+
+**返回值：**
+
+| 类型                        | 说明                  |
+| --------------------------- | -------------------- |
+| boolean | 返回两个矩阵的比较结果。true表示两个矩阵相等，false表示两个矩阵不相等。 |
 
 **错误码：**
 
@@ -443,12 +456,6 @@ isEqual(matrix: Matrix): boolean
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
-
-**返回值：**
-
-| 类型                        | 说明                  |
-| --------------------------- | -------------------- |
-| boolean | 返回两个矩阵的比较结果。true表示两个矩阵相等，false表示两个矩阵不相等。 |
 
 **示例：**
 
@@ -480,6 +487,12 @@ invert(matrix: Matrix): boolean
 | ------ | ---------------------------------------------------- | ---- | ---------------- |
 | matrix  | [Matrix](arkts-apis-graphics-drawing-Matrix.md) | 是   | 矩阵对象，用于存储获取到的逆矩阵。 |
 
+**返回值：**
+
+| 类型                        | 说明                  |
+| --------------------------- | -------------------- |
+| boolean | 返回matrix是否被设置为逆矩阵的结果。true表示当前矩阵可逆，matrix被设置为逆矩阵，false表示当前矩阵不可逆，matrix不被设置。 |
+
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
@@ -487,12 +500,6 @@ invert(matrix: Matrix): boolean
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 | 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
-
-**返回值：**
-
-| 类型                        | 说明                  |
-| --------------------------- | -------------------- |
-| boolean | 返回matrix是否被设置为逆矩阵的结果。true表示当前矩阵可逆，matrix被设置为逆矩阵，false表示当前矩阵不可逆，matrix不被设置。 |
 
 **示例：**
 
@@ -1068,7 +1075,7 @@ setPolyToPoly(src: Array\<common2D.Point>, dst: Array\<common2D.Point>, count: n
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
 | src | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)> | 是   | 源点数组，长度必须为count。 |
 | dst | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)> | 是   | 目标点数组，长度必须为count。 |
-| count | number | 是   | src和dst中点的数量，取值范围为[0, 4]，包含0和4，该参数为整数。 |
+| count | number | 是   | src和dst中点的数量，取值范围为[0, 4]，该参数为整数。 |
 
 **返回值：**
 

@@ -11,6 +11,9 @@
 
 文件中定义了矩阵的创建、拷贝、变换（旋转、缩放、平移、倾斜）、查询（判断相等、判断单位矩阵、获取元素值）和映射等功能函数。矩阵在2D图形变换中用于表示平移、旋转、缩放、倾斜等变换，采用3×3矩阵结构。Pre系列操作（左乘）和Post系列操作（右乘）分别表示变换在当前矩阵前或后应用，影响变换的组合顺序。<br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
 
+<!--RP1-->
+**相关示例：** [NDKAPIDrawing (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKAPIDrawing)<!--RP1End-->
+
 **引用文件：** \<native_drawing/drawing_matrix.h\>
 
 **库：** libnative_drawing.so
@@ -18,9 +21,6 @@
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 11
-
-<!--RP1-->
-**相关示例：** [NDKAPIDrawing (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKAPIDrawing)<!--RP1End-->
 
 **相关模块：** [Drawing](capi-drawing.md)
 

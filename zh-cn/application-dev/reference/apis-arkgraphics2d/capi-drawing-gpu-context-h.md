@@ -57,7 +57,9 @@ OH_Drawing_GpuContext* OH_Drawing_GpuContextCreateFromGL(OH_Drawing_GpuContextOp
 
 **起始版本：** 12
 
-**废弃版本：** 从API version 18开始废弃，建议使用替代接口[OH_Drawing_GpuContextCreate](#oh_drawing_gpucontextcreate)。
+**废弃版本：** 18
+
+**替代接口：** [OH_Drawing_GpuContextCreate](capi-drawing-gpu-context-h.md#oh_drawing_gpucontextcreate)
 
 
 **参数：**
