@@ -52,6 +52,22 @@
 配置示例如下：
 <!-- @[standalone_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormStandaloneDemo/library/src/main/module.json5) -->
 
+``` JSON5
+{
+  "module": {
+    "name": "library",
+    "type": "shared",
+    "description": "$string:shared_desc",
+    "deviceTypes": [
+      "default"
+    ],
+    "deliveryWithInstall": true,
+    // 只在独立卡片包形态中会使用，用来关联应用包模块。
+    "formExtensionModule": "entry"
+  }
+}
+```
+
 
 ## 卡片配置
 
