@@ -35,8 +35,7 @@ Supported formats: m4a, aac, mp3, ogg, wav, flac, amr, ...
     import { BusinessError } from '@kit.BasicServicesKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { contextConstant, common } from '@kit.AbilityKit';
-    import fs from '@ohos.file.fs';
-    import fileUri from '@ohos.file.fileuri';
+    import { fileIo as fs, fileUri } from '@kit.CoreFileKit';
     
     const TAG: string = '[SpecifiedCustomizedRingtone]';
     const DOMAIN_NUMBER: number = 0xFF00;
