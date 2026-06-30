@@ -6295,6 +6295,46 @@
 						"start_line":108
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetUserPresetTextStyles.ets",
+				"functions":[
+					{
+						"end_line":77,
+						"name":"richEditor_setTypingStyle",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets",
+				"functions":[
+					{
+						"end_line":405,
+						"name":"richEditor_decoration",
+						"start_line":362
+					},
+					{
+						"end_line":465,
+						"name":"richEditor_decorationOptions",
+						"start_line":421
+					},
+					{
+						"end_line":524,
+						"name":"richEditor_textVerticalAlign",
+						"start_line":474
+					},
+					{
+						"end_line":582,
+						"name":"richEditor_enableAutoSpacing",
+						"start_line":527
+					},
+					{
+						"end_line":291,
+						"name":"richEditor_maxLines",
+						"start_line":248
+					}
+				]
 			}
 		]
 	},
@@ -15753,6 +15793,156 @@
 						"start_line":18
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/GeneralEvents.ets",
+				"functions":[
+					{
+						"end_line":54,
+						"name":"General_Events",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpan.ets",
+				"functions":[
+					{
+						"end_line":36,
+						"name":"create_span",
+						"start_line":28
+					},
+					{
+						"end_line":62,
+						"name":"create_span_with_lines",
+						"start_line":41
+					},
+					{
+						"end_line":74,
+						"name":"create_span_with_upper_case",
+						"start_line":67
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpanOnHover.ets",
+				"functions":[
+					{
+						"end_line":58,
+						"name":"textspan_onhover",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLayout.ets",
+				"functions":[
+					{
+						"end_line":106,
+						"name":"copy_Option",
+						"start_line":101
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionChange.ets",
+				"functions":[
+					{
+						"end_line":57,
+						"name":"Selection_Change",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets",
+				"functions":[
+					{
+						"end_line":140,
+						"name":"set_selection_menu_with_editmenuoptions",
+						"start_line":132
+					},
+					{
+						"end_line":95,
+						"name":"onCreate_Menu",
+						"start_line":49
+					},
+					{
+						"end_line":27,
+						"name":"set_selection_menu_with_bindselectionmenu",
+						"start_line":23
+					},
+					{
+						"end_line":128,
+						"name":"set_selection_menu_with_bindselectionmenu_sec",
+						"start_line":109
+					},
+					{
+						"end_line":48,
+						"name":"Right_Click_Text_CustomMenu",
+						"start_line":28
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/PrepareMenu.ets",
+				"functions":[
+					{
+						"end_line":95,
+						"name":"Prepare_Menu",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/ServiceMenuItems.ets",
+				"functions":[
+					{
+						"end_line":62,
+						"name":"Service_MenuItems",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/DisableMenuItems.ets",
+				"functions":[
+					{
+						"end_line":64,
+						"name":"Disable_MenuItems",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextMenuShowSubWindow.ets",
+				"functions":[
+					{
+						"end_line":30,
+						"name":"set_menu_options_with_textmenushowmode",
+						"start_line":22
+					},
+					{
+						"end_line":43,
+						"name":"textmenushowmode_create_text",
+						"start_line":37
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/text/TextMenuShowSubWindow.ets",
+				"functions":[
+					{
+						"end_line":43,
+						"name":"set_menu_options_with_textmenushowmode",
+						"start_line":35
+					},
+					{
+						"end_line":56,
+						"name":"textmenushowmode_create_text",
+						"start_line":50
+					}
+				]
 			}
 		]
 	},
@@ -15766,11 +15956,6 @@
 						"end_line":41,
 						"name":"create_text_input",
 						"start_line":39
-					},
-					{
-						"end_line":53,
-						"name":"create_text_area",
-						"start_line":51
 					},
 					{
 						"end_line":60,
@@ -15801,26 +15986,6 @@
 						"end_line":63,
 						"name":"set_email_input_type_3",
 						"start_line":60
-					},
-					{
-						"end_line":73,
-						"name":"set_number_input_type_4",
-						"start_line":70
-					},
-					{
-						"end_line":83,
-						"name":"set_phonenumber_input_type_5",
-						"start_line":80
-					},
-					{
-						"end_line":93,
-						"name":"set_number_decimal_input_type_6",
-						"start_line":90
-					},
-					{
-						"end_line":103,
-						"name":"set_url_input_type_7",
-						"start_line":100
 					}
 				]
 			},
@@ -15831,16 +15996,6 @@
 						"end_line":39,
 						"name":"set_password_input_type_2",
 						"start_line":36
-					},
-					{
-						"end_line":75,
-						"name":"set_number_decimal_input_type_6",
-						"start_line":72
-					},
-					{
-						"end_line":84,
-						"name":"set_url_input_type_7",
-						"start_line":81
 					}
 				]
 			},
@@ -15916,6 +16071,16 @@
 						"end_line":45,
 						"name":"select_textarea",
 						"start_line":42
+					},
+					{
+						"end_line":96,
+						"name":"editMenu_create",
+						"start_line":43
+					},
+					{
+						"end_line":119,
+						"name":"editMenu_textinput",
+						"start_line":112
 					}
 				]
 			},
@@ -15941,28 +16106,11 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/SetProperty.ets",
-				"functions":[
-					{
-						"end_line":50,
-						"name":"set_omission_property",
-						"start_line":42
-					},
-					{
-						"end_line":64,
-						"name":"set_stroke_property",
-						"start_line":56
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/SetTextMargin.ets",
-				"functions":[
-					{
-						"end_line":43,
-						"name":"SetTextMargin",
-						"start_line":37
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/KeyboardAvoidance.ets",
@@ -15976,11 +16124,70 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/NormalQuestion.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets",
 				"functions":[
 					{
-						"end_line":84,
-						"name":"normal_question_text_example",
-						"start_line":18
+						"end_line":29,
+						"name":"custom_text_input_with_place_holder",
+						"start_line":26
+					},
+					{
+						"end_line":42,
+						"name":"custom_text_input_with_place_holder_and_text",
+						"start_line":35
+					},
+					{
+						"end_line":55,
+						"name":"custom_text_input_background_color",
+						"start_line":47
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets",
+				"functions":[
+					{
+						"end_line":79,
+						"name":"editMenu_create",
+						"start_line":23
+					},
+					{
+						"end_line":102,
+						"name":"editMenu_textinput",
+						"start_line":95
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/TextMenuShowSubWindow.ets",
+				"functions":[
+					{
+						"end_line":30,
+						"name":"set_menu_options_with_textmenushowmode",
+						"start_line":22
+					},
+					{
+						"end_line":43,
+						"name":"textmenushowmode_create_textinput",
+						"start_line":37
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/TextMenuShowSubWindow.ets",
+				"functions":[
+					{
+						"end_line":43,
+						"name":"set_menu_options_with_textmenushowmode",
+						"start_line":35
+					},
+					{
+						"end_line":56,
+						"name":"textmenushowmode_create_text",
+						"start_line":50
 					}
 				]
 			}
@@ -16235,6 +16442,26 @@
 					{
 						"end_line":78,
 						"name":"Cursor_Persists_When_TextInput_Is_Covered",
+						"start_line":18
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/NormalQuestion.ets",
+				"functions":[
+					{
+						"end_line":68,
+						"name":"normal_question_text_example",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/textInput/NormalQuestion.ets",
+				"functions":[
+					{
+						"end_line":84,
+						"name":"normal_question_text_example",
 						"start_line":18
 					}
 				]
