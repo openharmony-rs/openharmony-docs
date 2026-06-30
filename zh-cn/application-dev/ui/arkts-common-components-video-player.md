@@ -113,19 +113,18 @@ export struct Sandbox {
 
 ### 加载网络视频
 
-加载网络视频时，需要申请ohos.permission.INTERNET权限，具体申请方式请参考[声明权限](../security/AccessToken/declare-permissions.md)。此时，Video的src属性为网络视频的链接。
-
-
 <!-- @[online_video](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/OnlineVideo.ets) -->  
 
 ``` TypeScript
 // xxx.ets
-// ···
+// ...
 @Component
 export struct OnlineVideo {
   private controller: VideoController = new VideoController();
+  // $r('app.media.preview')需要替换为开发者所需的图像资源文件
   private previewUris: Resource = $r('app.media.preview');
-  private videoSrc: string = 'www.example.com/example.mp4'; // 使用时请替换为实际视频加载网址
+  // 'www.example.com/example.mp4'需要替换为开发者所需的实际视频加载网址
+  private videoSrc: string = 'www.example.com/example.mp4';
 
   build() {
     Column() {
@@ -135,6 +134,9 @@ export struct OnlineVideo {
         controller: this.controller
       })
     }
+  }
+}
+```
   }
 }
 ```
