@@ -288,6 +288,18 @@ With this permission, the application can publish sticky common events, so that 
 
 **Valid since**: 7
 
+## ohos.permission.RUNNING_LOCK
+
+Allows an application to obtain a running lock to keep running in the background.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices | tablets | car | phone | TV | wearable
+
+**Since**: 7
+
 ## ohos.permission.ACCESS_CERT_MANAGER
 
 Allows an application to query certificates and private credentials.
