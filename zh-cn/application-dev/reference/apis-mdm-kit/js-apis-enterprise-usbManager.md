@@ -16,7 +16,7 @@
 >
 > 本模块接口仅对设备管理应用开放，且调用接口前需激活设备管理应用，具体请参考[MDM Kit开发指南](../../mdm/mdm-kit-guide.md)。
 >
-> 全局通用限制类策略由restrictions统一提供，若要全局禁用USB，请参考[@ohos.enterprise.restrictions（限制类策略）](js-apis-enterprise-restrictions.md)。
+> 全局通用限制类策略由restrictions统一提供，若要全局禁用USB，请参考[@ohos.enterprise.restrictions （限制类策略）](js-apis-enterprise-restrictions.md)。
 
 ## 导入模块
 
@@ -200,7 +200,7 @@ try {
 
 setUsbStorageDeviceAccessPolicy(admin: Want, usbPolicy: UsbPolicy): void
 
-设置USB存储设备访问策略。
+设置USB存储设备（baseClass = 0x08）访问策略。
 
 > **说明**：
 > 在调用接口前，确保已暂停USB存储设备的读写操作，保证操作的稳定性和数据的完整性，否则可能出现不可预期的异常。
@@ -219,7 +219,10 @@ setUsbStorageDeviceAccessPolicy(admin: Want, usbPolicy: UsbPolicy): void
 
 通过本接口设置，或者通过[addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14)接口添加存储类型的USB设备，均可禁用USB存储设备。推荐使用后者。
 
-**需要权限：** API版本26.0.0之前：ohos.permission.ENTERPRISE_MANAGE_USB，API版本26.0.0开始：ohos.permission.ENTERPRISE_MANAGE_USB 或者 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS（应用[激活为自带设备管理应用](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)）。
+**需要权限：** 
+
+- API版本26.0.0之前：ohos.permission.ENTERPRISE_MANAGE_USB
+- API版本26.0.0开始：ohos.permission.ENTERPRISE_MANAGE_USB 或者 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS（应用调用[adminManager.startAdminProvision](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)接口激活为自带设备管理应用）。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -270,9 +273,12 @@ try {
 
 getUsbStorageDeviceAccessPolicy(admin: Want): UsbPolicy
 
-获取USB存储设备访问策略。
+获取USB存储设备（baseClass = 0x08）访问策略。
 
-**需要权限：** API版本26.0.0之前：ohos.permission.ENTERPRISE_MANAGE_USB，API版本26.0.0开始：ohos.permission.ENTERPRISE_MANAGE_USB 或者 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS（应用[激活为自带设备管理应用](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)）。
+**需要权限：** 
+
+- API版本26.0.0之前：ohos.permission.ENTERPRISE_MANAGE_USB
+- API版本26.0.0开始：ohos.permission.ENTERPRISE_MANAGE_USB 或者 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS（应用调用[adminManager.startAdminProvision](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)接口激活为自带设备管理应用）。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
