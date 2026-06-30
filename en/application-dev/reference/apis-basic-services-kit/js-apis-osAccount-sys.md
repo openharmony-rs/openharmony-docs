@@ -7320,7 +7320,7 @@ Enumerates the authentication credential types.
 | RECOVERY_KEY<sup>12+</sup> | 8 | Key recovery type.|
 | PRIVATE_PIN<sup>14+</sup> | 16 | Private PIN type.|
 | COMPANION_DEVICE<sup>23+</sup> | 64 | Companion device authentication.|
-| CUSTOM | 128 | Custom authorizer type.<br>**Since:** 26.0.0|
+| CUSTOM | 128 | Custom authorizer type.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.|
 | DOMAIN<sup>9+</sup>  | 1024     | Domain authentication.|
 
 ## AuthSubType<sup>8+</sup>
@@ -7680,7 +7680,7 @@ Represents a set of optional parameters for [auth](#auth12).
 | accountId          | number | No| Yes | OS account ID, which is **undefined** by default.|
 | authIntent         | [AuthIntent](#authintent12) | No| Yes | Authentication intent, which is **undefined** by default.|
 | remoteAuthOptions  | [RemoteAuthOptions](#remoteauthoptions12) | No| Yes | Remote authentication options, which is **undefined** by default.|
-| additionalInfo     | string | No| Yes | Additional information for identity authentication. The default value is **undefined**.<br>**Since:** 26.0.0 |
+| additionalInfo     | string | No| Yes | Additional information for identity authentication. The default value is **undefined**.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
 
 ## GetInputDataOptions<sup>12+</sup>
 
