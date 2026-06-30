@@ -848,7 +848,6 @@ struct SelectionMenuLongPress {
 
 ArkTS-Sta示例：
 <!-- @[web_PreviewBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebPreviewBuilder.ets) --> 
-<!-- @[web_PreviewBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebPreviewBuilder.ets) --> 
 
 ``` TypeScript
 import webview from '@ohos.web.webview';
@@ -1061,10 +1060,6 @@ ArkTS-Dyn示例：
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
-<!-- @[web_Save_Image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebSaveImage.ets) -->
-
-``` TypeScript
-import { webview } from '@kit.ArkWeb';
 import { common } from '@kit.AbilityKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { systemDateTime } from '@kit.BasicServicesKit';
@@ -1186,7 +1181,8 @@ struct WebComponent {
   }
 }
 ```
-``` TypeScript
+
+ArkTS-Dyn示例：
 <!-- @[web_Save_Image](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebSaveImage.ets) --> 
 
 ``` TypeScript
