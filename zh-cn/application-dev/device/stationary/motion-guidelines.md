@@ -165,29 +165,6 @@
 
    <!-- @[import_the_motion_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
    
-   ``` TypeScript
-   import { motion } from '@kit.MultimodalAwarenessKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   <!-- @[motion_subscribe_holding_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
-   
-   ``` TypeScript
-   let callback:Callback<motion.HoldingHandStatus> = (data:motion.HoldingHandStatus) => {
-     console.info('callback succeeded' + data);
-   <!-- @[motion_subscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
-   
-   ``` TypeScript
-   try {
-     motion.on('holdingHandChanged', callback);
-     console.info('on succeeded');
-     // ...
-   } catch (err) {
-     let error = err as BusinessError;
-     console.error('Failed on and err code is ' + error.code);
-     // ...
-   }
-   ```
-   ```
-
 
 2. 定义回调函数接收握持手结果
 
@@ -202,3 +179,4 @@
 4. 取消订阅握持手感知
 
    <!-- @[motion_unsubscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
+
