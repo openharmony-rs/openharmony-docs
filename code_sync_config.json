@@ -3641,6 +3641,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/oh-package.json5",
+				"functions":[
+					{
+						"end_line":31,
+						"name":"config_har_dependency",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
@@ -29381,6 +29391,31 @@
 						"end_line":54,
 						"name":"Main_SettingPage",
 						"start_line":17
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/arkts-utils/worker-postMessage-sendable.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/workers/ParentWorker.ets",
+				"functions":[
+					{
+						"end_line":93,
+						"name":"parent_worker",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/workers/ChildWorker.ets",
+				"functions":[
+					{
+						"end_line":37,
+						"name":"child_worker",
+						"start_line":16
 					}
 				]
 			}
