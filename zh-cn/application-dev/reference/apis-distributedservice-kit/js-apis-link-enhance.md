@@ -1,4 +1,4 @@
-# @ohos.distributedsched.linkEnhance (增强连接)
+﻿# @ohos.distributedsched.linkEnhance (增强连接)
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
 <!--Owner: @wangJE-->
@@ -299,7 +299,7 @@ on(type: 'connectionAccepted', callback: Callback&lt;Connection&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 32390206 | Invalid parameter.  |
+| 32390206 | Parameter invalid.  |
 
 **示例：**
 
@@ -355,7 +355,7 @@ off(type: 'connectionAccepted', callback?: Callback&lt;Connection&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 32390206 | Invalid parameter.  |
+| 32390206 | Parameter invalid.  |
 
 **示例：**
 
@@ -412,7 +412,7 @@ on(type: 'serverStopped', callback: Callback&lt;number&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 32390206 | Invalid parameter.  |
+| 32390206 | Parameter invalid.  |
 
 **示例：**
 
@@ -469,7 +469,7 @@ off(type: 'serverStopped', callback?: Callback&lt;number&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 32390206 | Invalid parameter.  |
+| 32390206 | Parameter invalid.  |
 
 **示例：**
 
@@ -765,7 +765,7 @@ try {
     hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
     if (result.success) {
       let len = 1;
-      let arrayBuffer = new ArrayBuffer(len); // 创建需要发送的数据
+      let arraybuffer = new ArrayBuffer(len); // 创建需要发送的数据
       connection.sendData(arraybuffer);
       hilog.info(0x0000, TAG, "sendData data connection peerDeviceId=%{public}s", connection.getPeerDeviceId());
       connection.disconnect();
