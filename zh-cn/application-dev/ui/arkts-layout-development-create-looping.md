@@ -586,13 +586,13 @@ export struct SwiperAndTabsLinkage {
 
 ``` TypeScript
 Swiper(
-  // ···
+  // ...
 ) {
-  // ···
+  // ...
 }
 .indicator(new DotIndicator()
   .space(this.space)
-  // ···
+  // ...
 )
 ```
 
@@ -606,14 +606,14 @@ Swiper(
 
 ``` TypeScript
 Swiper(
-  // ···
+  // ...
 ) {
-  // ···
+  // ...
 }
 .indicator(new DotIndicator()
-  // ···
+  // ...
   .bottom(LengthMetrics.vp(0), this.ignoreSize) // true
-  // ···
+  // ...
 )
 ```
 

@@ -370,7 +370,7 @@ NavDestination子页第一次创建时会触发[onReady](../reference/apis-arkui
 NavDestination组件中可以通过设置[onResult](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onresult15)接口，接收返回时传递的路由参数。
 
    <!-- @[onResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->  
-
+   
    ``` TypeScript
    class NavParam {
      desc: string = 'navigation-param'
@@ -399,7 +399,7 @@ NavDestination组件中可以通过设置[onResult](../reference/apis-arkui/arku
 其他业务场景，可以通过主动调用NavPathStack的获取接口（如[getAllPathName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getallpathname10)、[getParamByIndex](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getparambyindex10)、[getParamByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getparambyname10)、[getIndexByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#getindexbyname10)）获取指定页面的参数。
 
    <!-- @[GetParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageOne.ets) -->
-
+   
    ``` TypeScript
    // 获取栈中所有页面name集合
    this.pageStack.getAllPathName();
@@ -424,7 +424,7 @@ NavPathStack提供了[setInterception](../reference/apis-arkui/arkui-ts/ts-basic
 以willShow为例，在回调中通过修改路由栈实现路由拦截重定向。
 
    <!-- @[setInterception](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/Index.ets) -->
-
+   
    ``` TypeScript
    const DOMAIN = 0x0000;
    this.pageStack.setInterception({
@@ -522,7 +522,7 @@ struct NavigationDemo {
             .onClick(() => {
               // $r('app.string.detailsPageParameters')需要替换为开发者所需的字符串资源文件，资源文件中的value值为“详情页面参数”
               this.navPathStack.pushPathByName(`${item}`,
-                // 将name指定的NavDestination页面信息入栈，传递的参数为param
+                // 将name指定的NavDestination页面信息入栈,传递的参数为param
                 this.context!.resourceManager.getStringSync($r('app.string.detailsPageParameters').id));
             })
           }, (item: string): string => item)
@@ -535,7 +535,7 @@ struct NavigationDemo {
       }
       .width('100%')
       .mode(NavigationMode.Auto)
-      // $r('app.string.settings')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“设置”
+      // $r('app.string.settings')需要替换为开发者所需的字符串资源文件，资源文件中的value值为“设置”
       .title($r('app.string.settings')) // 设置标题文字
     }
     .size({ width: '100%', height: '100%' })

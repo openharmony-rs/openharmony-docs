@@ -728,19 +728,19 @@ export default class EntryAbility extends UIAbility {
     windowStage.getMainWindow((err: BusinessError, data) => {
       // ...
       let windowClass = data;
-      // 获取UIContext实例。
+      // 获取UIContext实例
       let uiContext: UIContext = windowClass.getUIContext();
-      // 获取UIObserver实例。
+      // 获取UIObserver实例
       let uiObserver : UIObserver = uiContext.getUIObserver();
-      // 注册NavDestination的状态监听.
+      // 注册NavDestination的状态监听
       uiObserver.on('navDestinationUpdate',(info) => {
         // NavDestinationState.ON_SHOWN = 0, NavDestinationState.ON_HIDE = 1
         if (info.state === 0) {
           // NavDestination组件显示时操作
-          hilog.info(DOMAIN, TAG, 'page ON_SHOWN:' + info.name.toString())
+          hilog.info(DOMAIN, TAG, 'page ON_SHOWN:' + info.name.toString());
         }
-      })
-    })
+      });
+    });
   }
 }
 ```
