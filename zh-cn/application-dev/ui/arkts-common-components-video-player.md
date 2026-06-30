@@ -142,29 +142,32 @@ export struct OnlineVideo {
 ```
 
 
-## 添加属性
-
-Video组件[属性](../reference/apis-arkui/arkui-ts/ts-media-components-video.md#属性)主要用于设置视频的播放形式。例如设置视频播放是否静音、播放是否显示控制条等。
-
-
 <!-- @[attribute_video](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/AttributeVideo.ets) -->  
 
 ``` TypeScript
 // xxx.ets
-// ···
+// ...
 @Component
 export struct AttributeVideo {
+  // $rawfile('videoTest.mp4')需要替换为开发者所需的影像资源文件
+  private videoSrc: Resource = $rawfile('videoTest.mp4');
   private controller: VideoController = new VideoController();
 
   build() {
     Column() {
       Video({
+        src: this.videoSrc,
         controller: this.controller
       })
         .muted(false) // 设置是否静音
         .controls(false) // 设置是否显示默认控制条
-        .autoPlay(false) // 设置是否自动播放
-        .loop(false) // 设置是否循环播放
+        .autoPlay(true) // 设置是否自动播放
+        .loop(true) // 设置是否循环播放
+        .objectFit(ImageFit.Contain) // 设置视频填充模式
+    }
+  }
+}
+```
         .objectFit(ImageFit.Contain) // 设置视频填充模式
     }
   }
