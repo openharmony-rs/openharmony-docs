@@ -184,7 +184,7 @@
        console.error('getMediaResourceByUri failed with err: ' + err);
      } finally {
       // 关闭查询结果。
-      if (fetchResult != null) {
+      if (fetchResult !== null) {
         fetchResult.close();
       }
      }

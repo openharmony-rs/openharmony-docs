@@ -62,7 +62,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.error('getAssets failed with err: ' + err);
     // ...
   } finally {
-    if (fetchResult != null) {
+    if (fetchResult !== null) {
       fetchResult.close();
     }
   }
@@ -122,7 +122,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.error('getThumbnail failed with err: ' + err);
     // ...
   } finally {
-    if (fetchResult != null) {
+    if (fetchResult !== null) {
       fetchResult.close();
     }
   }
@@ -227,7 +227,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.error(`rename failed with error: ${err.code}, ${err.message}`);
     // ...
   } finally {
-    if (fetchResult != null) {
+    if (fetchResult !== null) {
       fetchResult.close();
     }
   }
@@ -279,7 +279,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     console.error(`deleteAssets failed with error: ${err.code}, ${err.message}`);
     // ...
   } finally {
-    if (fetchResult != null) {
+    if (fetchResult !== null) {
       fetchResult.close();
     }
   }
