@@ -110,6 +110,109 @@ promise.then((data: Array<screen.Screen>) => {
 });
 ```
 
+## screen.getAllScreens
+
+getAllScreens(callback: AsyncCallback&lt;Array&lt;Screen&gt;&gt;, isNeedUnused?: boolean): void
+
+获取所有的屏幕，使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                                                | 必填 | 说明                                   |
+| -------- | --------------------------------------------------- | ---- | -------------------------------------- |
+| callback | AsyncCallback&lt;Array&lt;[Screen](#screen)&gt;&gt; | 是   | 回调函数。返回当前获取的屏幕对象集合。 |
+| isNeedUnused | boolean | 否   | 是否需要未使用的屏幕信息。该参数为可选参数。如果未提供，则不会返回未使用的屏幕信息。<br>默认值为：false |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[屏幕错误码](errorcode-display.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 1400001 | Invalid display or screen. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let screenClass: screen.Screen | null = null;
+// 获取所有屏幕对象
+screen.getAllScreens((err: BusinessError, data: Array<screen.Screen>) => {
+  const errCode: number = err.code;
+  if (errCode) {
+    console.error(`Failed to get all screens. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
+  if (data.length > 0) {
+    screenClass = data[0];
+  }
+}, true);
+```
+
+## screen.getAllScreens
+
+getAllScreens(isNeedUnused?: boolean): Promise&lt;Array&lt;Screen&gt;&gt;
+
+获取所有的屏幕，使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                                                | 必填 | 说明                                   |
+| -------- | --------------------------------------------------- | ---- | -------------------------------------- |
+| isNeedUnused | boolean | 否   | 是否需要未使用的屏幕信息。该参数为可选参数。如果未提供，则不会返回未使用的屏幕信息。<br>默认值为：false |
+
+**返回值：** 
+
+| 类型                                          | 说明                                      |
+| --------------------------------------------- | ----------------------------------------- |
+| Promise&lt;Array&lt;[Screen](#screen)&gt;&gt; | Promise对象。返回当前获取的屏幕对象集合。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[屏幕错误码](errorcode-display.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 1400001 | Invalid display or screen. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let screenClass: screen.Screen | null = null;
+// 获取所有屏幕对象
+let promise: Promise<Array<screen.Screen>> = screen.getAllScreens(true);
+promise.then((data: Array<screen.Screen>) => {
+  if(data.length > 0){
+    screenClass = data[0];
+  }
+  console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get all screens. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## screen.on('connect' | 'disconnect' | 'change')
 
 on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback&lt;number&gt;): void
@@ -1539,7 +1642,7 @@ screen.stopExpand(expandScreenIds).then(() => {
 | sourceMode<sup>10+</sup> | [ScreenSourceMode](#screensourcemode10)            | 是   | 否   | 屏幕来源模式。     |
 | serialNumber<sup>15+</sup> | string        | 是   | 是   | 扩展屏幕的序列号，默认返回为空字符串。 |
 | densityDpi | number        | 是   | 是   | 屏幕的物理像素密度，即每英寸的像素数。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| isInUse | boolean        | 是   | 是   | 标识当前屏幕是否处于可用的工作状态。true表示屏幕已点亮、已接入系统显示服务，可正常渲染应用/系统界面；false表示屏幕未激活；取值为undefined时，表示设备不支持该状态上报，需兼容处理。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| isInUse | boolean        | 是   | 是   | 标识屏幕正在使用中的状态。true表示屏幕已点亮、已接入系统显示服务，可正常渲染应用/系统界面；false表示屏幕未激活；取值为undefined时，表示设备不支持该状态上报，需兼容处理。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### setOrientation
 
