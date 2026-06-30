@@ -17,40 +17,7 @@ API version 22开始新增了[ohos.graphics.text.FontCollection.getLocalInstance
 
     在卡片页面中布局两个按钮，点击按钮`load font`或按钮`unload font`，调用本地字体集实例的loadFontSync、unloadFontSync进行字体的加载、卸载。
 
-<!-- @[loadFontSyncCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/CustomFontWidgetCards/entry/src/main/ets/widget/pages/WidgetCard.ets) -->  
-
-``` TypeScript
-// entry/src/main/ets/widget/pages/WidgetCard.ets
-import { text } from '@kit.ArkGraphics2D';
-
-@Entry
-@Component
-struct loadFontSyncCard {
-  // 在这里使用getLocalInstance访问本地字体集实例
-  private fc: text.FontCollection = text.FontCollection.getLocalInstance();
-  @State content: string = '默认字体';
-
-  build() {
-    Column({ space: 10 }) {
-      Text(this.content)
-        .fontFamily('custom') // 在此处声明组件使用自定义字体
-      Button('load font')
-        .onClick(() => {
-          // 在此处加载自定义字体文件
-          this.fc.loadFontSync('custom', $rawfile('xxx.ttf'));
-          this.content = '自定义字体';
-        })
-      Button('unload font')
-        .onClick(() => {
-          this.fc.unloadFontSync('custom');
-          this.content = '默认字体';
-        })
-    }.width('100%')
-    .height('100%')
-    .justifyContent(FlexAlign.Center)
-  }
-}
-```
+<!-- @[loadFontSyncCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/CustomFontWidgetCards/entry/src/main/ets/widget/pages/WidgetCard.ets) --> 
 
 > **说明：**
 >

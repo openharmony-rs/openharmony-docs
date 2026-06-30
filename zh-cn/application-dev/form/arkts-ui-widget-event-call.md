@@ -90,74 +90,7 @@
     
     在UIAbility中监听call事件，根据监听到的method参数中的方法名称调用对应方法，并通过[rpc.Parcelable](../reference/apis-ipc-kit/js-apis-rpc.md#parcelable9)获取参数。UIAbility中监听的方法与步骤2中调用的方法需保持一致。
 
-    <!-- @[widget_event_call_card_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgeteventcallentryability/WidgetEventCallEntryAbility.ets) -->
-    
-    ``` TypeScript
-    //src/main/ets/WidgetEventCallEntryAbility/WidgetEventCallEntryAbility.ets
-    import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    import { rpc } from '@kit.IPCKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    
-    const TAG: string = 'WidgetEventCallEntryAbility';
-    const DOMAIN_NUMBER: number = 0xFF00;
-    const CONST_NUMBER_1: number = 1;
-    const CONST_NUMBER_2: number = 2;
-    
-    // ipc通信返回类型的实现，用于数据序列化和反序列化
-    class MyParcelable implements rpc.Parcelable {
-      private num: number;
-      private str: string;
-    
-      constructor(num: number, str: string) {
-        this.num = num;
-        this.str = str;
-      }
-    
-      marshalling(messageSequence: rpc.MessageSequence): boolean {
-        messageSequence.writeInt(this.num);
-        messageSequence.writeString(this.str);
-        return true;
-      }
-    
-      unmarshalling(messageSequence: rpc.MessageSequence): boolean {
-        this.num = messageSequence.readInt();
-        this.str = messageSequence.readString();
-        return true;
-      }
-    }
-    
-    export default class WidgetEventCallEntryAbility extends UIAbility {
-      // 如果UIAbility启动，在收到call事件后会触发onCreate生命周期回调
-      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        try {
-          // 监听call事件所需的方法并调用
-          this.callee.on('funA', (data: rpc.MessageSequence) => {
-            // 获取call事件中传递的所有参数
-            hilog.info(DOMAIN_NUMBER, TAG, `FunACall param:  ${JSON.stringify(data.readString())}`);
-            return new MyParcelable(CONST_NUMBER_1, 'aaa');
-          });
-          this.callee.on('funB', (data: rpc.MessageSequence) => {
-            // 获取call事件中传递的所有参数
-            hilog.info(DOMAIN_NUMBER, TAG, `FunBCall param:  ${JSON.stringify(data.readString())}`);
-            return new MyParcelable(CONST_NUMBER_2, 'bbb');
-          });
-        } catch (err) {
-          hilog.error(DOMAIN_NUMBER, TAG, `Failed to register callee on. Cause: ${JSON.stringify(err as BusinessError)}`);
-        }
-      }
-    
-      // 进程退出时，解除监听
-      onDestroy(): void | Promise<void> {
-        try {
-          this.callee.off('funA');
-          this.callee.off('funB');
-        } catch (err) {
-          hilog.error(DOMAIN_NUMBER, TAG, `Failed to register callee off. Cause: ${JSON.stringify(err as BusinessError)}`);
-        }
-      }
-    }
-    ```
+    <!-- @[widget_event_call_card_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgeteventcallentryability/WidgetEventCallEntryAbility.ets) --> 
 
 4. 配置后台运行权限
 
