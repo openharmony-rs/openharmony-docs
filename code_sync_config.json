@@ -57744,7 +57744,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsOne/webassembly/src/main/cpp/hello.cpp",
 				"functions":[
 					{
-						"end_line":245,
+						"end_line":246,
 						"name":"jsvm_wasm",
 						"start_line":16
 					}
