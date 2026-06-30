@@ -1,4 +1,4 @@
-# @ohos.distributedSoftbus.conversation (会话)
+# @ohos.distributedSoftbus.conversation
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wangrui7-->
