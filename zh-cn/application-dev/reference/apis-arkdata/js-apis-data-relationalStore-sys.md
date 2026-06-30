@@ -39,7 +39,7 @@ import { relationalStore } from '@kit.ArkData';
 | ---- | ---- | ---- | ---- | ---- |
 | isSearchable<sup>11+</sup> | boolean | 否 | 是 | 指定数据库是否支持搜索，true表示支持搜索，false表示不支持搜索，默认不支持搜索。<br/>**系统接口：** 此接口为系统接口。<br/>从API version 11开始，支持此可选参数。<br/> |
 | haMode<sup>12+</sup> | [HAMode](#hamode12) | 否 | 是 | 指定关系型数据库存储的高可用性模式，SINGLE表示将数据写入单个关系型数据库存储，MAIN_REPLICA表示将数据写入主关系型数据库存储和副本关系型数据库存储，但不支持加密场景和attach场景。MAIN_REPLICA会导致数据库写入性能的劣化，默认为SINGLE。<br/>**系统接口：** 此接口为系统接口。<br/>从API version 12开始，支持此可选参数。<br/> |
-| autoCleanDeviceDirtyData | boolean | 否 | 是 | 指定本地设备是否自动清理远端设备删除后同步过来的数据，true表示自动清理，false表示手动清理，默认自动清理。若设置为false，需要主动调用[cleanDeviceDirtyData](#cleandevicedirtydata)进行脏数据清理。<br/>[多设备协同表模式](../../database/data-sync-of-rdb-store.md#数据同步存储机制)分布式数据表配置不生效。<br/>**系统接口：** 此接口为系统接口。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下可用。<br/> |
+| autoCleanDeviceDirtyData | boolean | 否 | 是 | 指定本地设备是否自动清理远端设备删除后同步过来的数据，true表示自动清理，false表示手动清理，默认自动清理。若设置为false，需要主动调用[cleanDeviceDirtyData](#cleandevicedirtydata)进行脏数据清理。<br/>[多设备协同表模式](../../database/data-sync-of-rdb-store.md#数据同步存储机制)分布式数据表配置不生效。<br/>**系统接口：** 此接口为系统接口。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
 
 ## HAMode<sup>12+</sup>
 
@@ -50,7 +50,7 @@ import { relationalStore } from '@kit.ArkData';
 | 名称                              | 值   | 说明             |
 | ------------------------------- | --- | -------------- |
 | SINGLE      | 0 | 表示将数据写入单个关系型数据库存储。      |
-| MAIN_REPLICA | 1 | 表示将数据写入主关系型数据库存储和副本关系型数据库存储，不支持加密场景和attach场景。 |
+| MAIN_REPLICA | 1 | 表示将数据写入主关系型数据库存储和副本关系型数据库存储，不支持加密场景和attach场景，会导致数据库写入性能的劣化。 |
 
 ## Reference<sup>11+</sup>
 
@@ -108,7 +108,7 @@ update(table: string, values: ValuesBucket, predicates: dataSharePredicates.Data
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**模型约束：** 此接口仅可在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -201,7 +201,7 @@ update(table: string, values: ValuesBucket, predicates: dataSharePredicates.Data
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**模型约束：** 此接口仅可在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -213,7 +213,7 @@ update(table: string, values: ValuesBucket, predicates: dataSharePredicates.Data
 | values     | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)                                | 是   | values指示数据库中要更新的数据行。键值对与数据库表的列名相关联。 |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | DataSharePredicates的实例对象指定的更新条件。                |
 
-**返回值**：
+**返回值：**
 
 | 类型                  | 说明                                      |
 | --------------------- | ----------------------------------------- |
@@ -298,7 +298,7 @@ delete(table: string, predicates: dataSharePredicates.DataSharePredicates, callb
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**模型约束：** 此接口仅可在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -364,7 +364,7 @@ delete(table: string, predicates: dataSharePredicates.DataSharePredicates):Promi
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**模型约束：** 此接口仅可在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -375,7 +375,7 @@ delete(table: string, predicates: dataSharePredicates.DataSharePredicates):Promi
 | table      | string                                                       | 是   | 指定的目标表名，不能为空字符串。                              |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | DataSharePredicates的实例对象指定的删除条件。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                  | 说明                            |
 | --------------------- | ------------------------------- |
@@ -434,7 +434,7 @@ query(table: string, predicates: dataSharePredicates.DataSharePredicates, callba
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**模型约束：** 此接口仅可在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -494,7 +494,7 @@ query(table: string, predicates: dataSharePredicates.DataSharePredicates, column
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**模型约束：** 此接口仅可在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -555,7 +555,7 @@ query(table: string, predicates: dataSharePredicates.DataSharePredicates, column
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**模型约束：** 此接口仅可在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -567,7 +567,7 @@ query(table: string, predicates: dataSharePredicates.DataSharePredicates, column
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | DataSharePredicates的实例对象指定的查询条件。    |
 | columns    | Array&lt;string&gt;                                          | 否   | 表示要查询的列。如果值为空，则查询应用于所有列。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                                    | 说明                                               |
 | ------------------------------------------------------- | -------------------------------------------------- |
@@ -717,7 +717,7 @@ cloudSync(mode: SyncMode, predicates: RdbPredicates, progress: Callback&lt;Progr
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md)                   | 是   | 表示同步数据的谓词条件。                |
 | progress   | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 是   | 用来处理数据库同步详细信息的回调函数。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                | 说明                                    |
 | ------------------- | --------------------------------------- |
@@ -1007,7 +1007,7 @@ lockCloudContainer(): Promise&lt;number&gt;
 
 **系统接口：** 此接口为系统接口。
 
-**返回值**：
+**返回值：**
 
 | 类型                | 说明                                    |
 | ------------------- | ---------------------------------------|
@@ -1045,7 +1045,7 @@ unlockCloudContainer(): Promise&lt;void&gt;
 
 **系统接口：** 此接口为系统接口。
 
-**返回值**：
+**返回值：**
 
 | 类型                | 说明                                    |
 | ------------------- | --------------------------------------- |
@@ -1083,7 +1083,7 @@ restore(): Promise&lt;void&gt;
 
 **系统接口：** 此接口为系统接口。
 
-**返回值**：
+**返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
@@ -1151,7 +1151,7 @@ retainDeviceData(retainDevices?: Record\<string, Array\<string>>): Promise\<void
 >
 > 保留本地写入以及传入设备id同步过来的数据，其他设备id同步过来的数据会被删除。
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1174,10 +1174,10 @@ retainDeviceData(retainDevices?: Record\<string, Array\<string>>): Promise\<void
 | **错误码ID** | **错误信息**                                                             |
 | ------------ | ----------------------------------------------------------------------- |
 | 202          | Permission verification failed, application which is not a system application uses system API.|
-| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range.  |
+| 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range.  |
 | 14800011     | The current operation failed because the database is corrupted.                    |
 | 14800014     | The target instance is already closed.                            |
-| 14800021     | SQLite: Generic error.                                                  |
+| 14800021     | SQLite: Generic error. |
 | 14800024     | SQLite: The database file is locked.                                    |
 | 14800042     | The database does not exist. Possible causes: 1. The database is deleted; 2. The database is not created. |
 | 14800043     | The database does not support this scenario. Possible causes: 1. The database type is not supported;2. The table type is not supported; 3. This is a read-only database.|
@@ -1226,7 +1226,7 @@ updateDistributedInfo(info: DistributedInfo, predicates: RdbPredicates): Promise
 >
 > 入参predicates中若要传入[ORIGIN_ORIDEVICE](#distributedfield24)，则只允许使用等于空或不等于空。
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1250,11 +1250,11 @@ updateDistributedInfo(info: DistributedInfo, predicates: RdbPredicates): Promise
 | **错误码ID** | **错误信息**                                                             |
 | ------------ | ----------------------------------------------------------------------- |
 | 202          | Permission verification failed, application which is not a system application uses system API.|
-| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range.  |
+| 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range.  |
 | 14800011     | The current operation failed because the database is corrupted.                    |
 | 14800014     | The target instance is already closed.                            |
 | 14800015     | The database does not respond. |
-| 14800021     | SQLite: Generic error.                                                  |
+| 14800021     | SQLite: Generic error. |
 | 14800024     | SQLite: The database file is locked.                                    |
 | 14800043     | The database does not support this scenario. Possible causes: 1. The database type is not supported;2. The table type is not supported; 3. This is a read-only database.|
 
@@ -1315,7 +1315,7 @@ cleanDeviceDirtyData(table: string, cursor?: number): Promise&lt;void&gt;
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1418,9 +1418,8 @@ getFloat32Array(columnIndex: number): Float32Array
 
 ```ts
 let resultSet: relationalStore.ResultSet | undefined;
-if (resultSet != undefined) {
-  const id = (resultSet as relationalStore.ResultSet).getFloat32Array(0);
-}
+
+const id = (resultSet as relationalStore.ResultSet).getFloat32Array(0);
 ```
 
 ## LiteResultSet<sup>23+</sup>
@@ -1470,7 +1469,6 @@ async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
     if (resultSet != undefined) {
       resultSet.goToNextRow();
       const name = resultSet.getFloat32Array(resultSet.getColumnIndex("FLOATARRAY"));
-
       resultSet.close();
     }
   } catch (err) {
@@ -1483,7 +1481,7 @@ async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
 
 表示数据来源。请使用枚举名称而非枚举值。
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1497,7 +1495,7 @@ async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
 
 用于谓词查询条件的特殊字段。请使用枚举名称而非枚举值。
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1512,7 +1510,7 @@ async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
 
 记录分布式信息。
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
