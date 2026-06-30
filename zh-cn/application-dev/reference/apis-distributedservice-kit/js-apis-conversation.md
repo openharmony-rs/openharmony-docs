@@ -24,7 +24,7 @@ import { conversation } from '@kit.DistributedServiceKit';
 
 getTrustedDevices(): DeviceNodeInfo[]
 
-获取所有可信设备的设备信息。可信设备是已经完成认证的设备，本接口返回当前网络中可见的所有此类设备信息列表。
+获取所有可信设备的设备信息。返回所有同账号可信设备列表。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC 和 ohos.permission.sec.ACCESS_UDID
 
@@ -32,7 +32,7 @@ getTrustedDevices(): DeviceNodeInfo[]
 
 **系统接口**：此接口为系统接口。
 
-**模型约束**：此接口仅可在Stage模型下使用
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -74,7 +74,7 @@ try {
 
 postConversationData(deviceId:&nbsp;string,&nbsp;bundleName:&nbsp;string,&nbsp;abilityName:&nbsp;string,&nbsp;msg:&nbsp;ArrayBuffer):&nbsp;Promise&lt;void&gt;
 
-向指定设备发送会话数据。通过目标设备的networkId或udid标识目标设备，消息将发送到远端设备上指定的包名和Ability名的应用。
+向指定设备发送会话数据。通过目标设备的networkId或udid标识目标设备，消息将发送到远端设备指定包名和Ability名的应用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC 和 ohos.permission.sec.ACCESS_UDID
 
@@ -82,7 +82,7 @@ postConversationData(deviceId:&nbsp;string,&nbsp;bundleName:&nbsp;string,&nbsp;a
 
 **系统接口**：此接口为系统接口。
 
-**模型约束**：此接口仅可在Stage模型下使用
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -123,7 +123,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 const TAG = "conversationDemo";
 
 try {
-  let deviceId: string = "device_network_id";
+  let deviceId: string = "device_network_id_or_udid";
   let bundleName: string = "com.example.demo";
   let abilityName: string = "EntryAbility";
   let msg: ArrayBuffer = new ArrayBuffer(10);
@@ -145,7 +145,7 @@ try {
 
 registerConversationListener(bundleName:&nbsp;string,&nbsp;abilityName:&nbsp;string,&nbsp;dataCallback:&nbsp;DataCallback):&nbsp;void
 
-注册会话监听，接收来自任意可信设备的消息。注册后，当指定包名和Ability名收到消息时，将调用指定的回调函数。同一包名和Ability名只能注册一个监听器，重复注册将替换之前已注册的监听器。
+注册会话监听，接收来自可信设备的消息。注册后，当指定包名和Ability名收到消息时，将调用指定的回调函数。同一包名和Ability名只能注册一个监听器，重复注册将替换之前已注册的监听器。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC 和 ohos.permission.sec.ACCESS_UDID
 
@@ -153,7 +153,7 @@ registerConversationListener(bundleName:&nbsp;string,&nbsp;abilityName:&nbsp;str
 
 **系统接口**：此接口为系统接口。
 
-**模型约束**：此接口仅可在Stage模型下使用
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -208,7 +208,7 @@ unregisterConversationListener(bundleName:&nbsp;string,&nbsp;abilityName:&nbsp;s
 
 **系统接口**：此接口为系统接口。
 
-**模型约束**：此接口仅可在Stage模型下使用
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -256,11 +256,11 @@ try {
 
 **系统接口**：此接口为系统接口。
 
-**模型约束**：此接口仅可在Stage模型下使用
+**模型约束**：此接口仅可在Stage模型下使用。
 
 | 名称                    | 类型       |只读   | 可选   | 说明                 |
 | ----------------- | ------ | ----  | ---- | ------------------ |
-| networkId          | string | 否    |否    | 设备的networkId，在分布式网络中唯一标识一台设备，用于发送消息时的设备寻址。     |
+| networkId          | string | 否    |否    | 设备的networkId，在分布式网络中唯一标识一台设备的可变标识符，用于发送消息时的设备寻址。     |
 | deviceName           | string | 否    |否   | 设备名称。 |
 | deviceTypeId            | int | 否    |否    | 设备类型标识符，表示设备的类别（如手机、平板、电视、穿戴设备等）。 |
 | nearby            | boolean | 否    |否    | 设备是否在近场。 |
@@ -276,7 +276,7 @@ try {
 
 **系统接口**：此接口为系统接口。
 
-**模型约束**：此接口仅可在Stage模型下使用
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
