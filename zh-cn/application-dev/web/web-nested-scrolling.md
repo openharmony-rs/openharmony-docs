@@ -286,7 +286,7 @@ struct Index {
         this.isWebAtEnd = true;
       }
     } catch (err) {
-      console.error(`copyUrlPicToDir failed with error: ${err.code}, ${err.message}`);
+      console.error(`checkScrollBottom failed with error: ${err.code}, ${err.message}`);
     }
   }
 
