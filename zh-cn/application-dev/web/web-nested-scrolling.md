@@ -182,7 +182,7 @@ struct NestedScroll {
 
 **完整代码**
 
-<!-- @[nested_scrolling2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/WebNestedScroll.ets) --> 
+<!-- @[nested_scrolling2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/WebNestedScroll.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
