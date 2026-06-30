@@ -1972,7 +1972,7 @@ setControlledAppLists(appLists: Array&lt;string&gt;, userId?: number): Promise&l
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| appLists | Array&lt;string&gt; | 是 | 被管控的应用的appIdentifier列表。<br> [appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)是应用的唯一标识，获取方法参见[获取应用的appIdentifier](../../quick-start/common-problem-of-application.md#如何获取应用信息中的appidentifier)。|
+| appLists | Array&lt;string&gt; | 是 | 被管控的应用的appIdentifier列表。<br> 数组最大长度为100，超过最大长度返回19100001错误码。数组中每个元素为应用的[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，获取方法参见[获取应用的appIdentifier](../../quick-start/common-problem-of-application.md#如何获取应用信息中的appidentifier)，单个appIdentifier最大长度为4096字节，超过最大长度返回19100001错误码。|
 | userId | number | 否 | 为其配置受控应用列表的用户ID。<br>若参数未指定，则默认使用当前用户。|
 
 **返回值：**
@@ -2003,11 +2003,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let appList: Array<string> = ["appId1", "appId2"];
 let userId: number = 100;
 dlpPermission.setControlledAppLists(appList, userId).then(() => {
-  console.info("Successfully set controlled appLists");
+  console.info("Successfully set controlled appLists.");
 }).catch((error: BusinessError) => {
   console.error(error.message);
 }).finally(() => {
-  console.info("Completed set controlled appLists operation");
+  console.info("Completed set controlled appLists operation.");
 });
 ```
 
@@ -2056,6 +2056,6 @@ dlpPermission.getControlledAppLists().then((res) => {
 }).catch((error: BusinessError) => {
   console.error(JSON.stringify(error));
 }).finally(() => {
-  console.info("Completed getControlledAppLists operation");
+  console.info("Completed getControlledAppLists operation.");
 })
 ```
