@@ -102,7 +102,7 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
 
     <!-- @[OH_AVDemuxer_CreateWithSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/LowPowerAVSInk/lowPowerAVSinkSample/entry/src/main/cpp/capabilities/demuxer.cpp) -->
 
-    ```c++
+    ``` C++
     source_ = OH_AVSource_CreateWithFD(info.inputFd, info.inputFileOffset, info.inputFileSize);
     demuxer_ = OH_AVDemuxer_CreateWithSource(source_);
     int32_t ret = GetTrackInfo(sourceFormat, info);
@@ -112,13 +112,13 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
 
     <!-- @[OH_LowPowerVideoSink_CreateByMime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/LowPowerAVSInk/lowPowerAVSinkSample/entry/src/main/cpp/capabilities/lpp_video_streamer.cpp) -->
 
-    ```c++
+    ``` C++
     lppVideoStreamer_ = OH_LowPowerVideoSink_CreateByMime(videoCodecMime.c_str());
     ```
 
     <!-- @[OH_LowPowerAudioSink_CreateByMime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/LowPowerAVSInk/lowPowerAVSinkSample/entry/src/main/cpp/capabilities/lpp_audio_streamer.cpp) -->
 
-    ```c++
+    ``` C++
     lppAudioStreamer_ = OH_LowPowerAudioSink_CreateByMime(audioCodecMime.c_str());
     ```
 
@@ -128,10 +128,12 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
 
     <!-- @[OH_LowPowerAudioSinkCallback_Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/LowPowerAVSInk/lowPowerAVSinkSample/entry/src/main/cpp/capabilities/lpp_audio_streamer.cpp) -->
 
-    ```c++
+    ``` C++
     lppAudioStreamerCallback_ = OH_LowPowerAudioSinkCallback_Create();
-    OH_LowPowerAudioSinkCallback_SetDataNeededListener(lppAudioStreamerCallback_, LppCallback::OnDataNeeded, lppUserData);
-    OH_LowPowerAudioSinkCallback_SetPositionUpdateListener(lppAudioStreamerCallback_, LppCallback::OnPositionUpdated, lppUserData);
+    OH_LowPowerAudioSinkCallback_SetDataNeededListener(lppAudioStreamerCallback_,
+        LppCallback::OnDataNeeded, lppUserData);
+    OH_LowPowerAudioSinkCallback_SetPositionUpdateListener(lppAudioStreamerCallback_,
+        LppCallback::OnPositionUpdated, lppUserData);
     ret = OH_LowPowerAudioSink_RegisterCallback(lppAudioStreamer_, lppAudioStreamerCallback_);
     ```
 
@@ -141,7 +143,7 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
 
     <!-- @[OH_LowPowerVideoSink_Configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/LowPowerAVSInk/lowPowerAVSinkSample/entry/src/main/cpp/capabilities/lpp_video_streamer.cpp) -->
 
-    ```c++
+    ``` C++
     OH_AVFormat *format = OH_AVFormat_Create();
      
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, sampleInfo.videoWidth);
@@ -159,19 +161,19 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
 
     <!-- @[OH_LowPowerVideoSink_SetSyncAudioSink](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/LowPowerAVSInk/lowPowerAVSinkSample/entry/src/main/cpp/capabilities/lpp_video_streamer.cpp) -->
 
-    ```c++
+    ``` C++
     auto ret = OH_LowPowerVideoSink_SetSyncAudioSink(lppVideoStreamer_, audioStreamer);
     ```
 
     <!-- @[OH_LowPowerVideoSink_Prepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/LowPowerAVSInk/lowPowerAVSinkSample/entry/src/main/cpp/capabilities/lpp_video_streamer.cpp) -->
 
-    ```c++
+    ``` C++
     auto ret = OH_LowPowerVideoSink_Prepare(lppVideoStreamer_);
     ```
 
     <!-- @[OH_LowPowerAudioSink_Prepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/LowPowerAVSInk/lowPowerAVSinkSample/entry/src/main/cpp/capabilities/lpp_audio_streamer.cpp) -->
 
-    ```c++
+    ``` C++
     auto ret = OH_LowPowerAudioSink_Prepare(lppAudioStreamer_);
     ```
 6.  开始播放。
@@ -180,13 +182,13 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
 
     <!-- @[OH_LowPowerVideoSink_StartDecoder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/LowPowerAVSInk/lowPowerAVSinkSample/entry/src/main/cpp/capabilities/lpp_video_streamer.cpp) -->
 
-    ```c++
+    ``` C++
     auto ret = OH_LowPowerVideoSink_StartDecoder(lppVideoStreamer_);
     ```
 
     <!-- @[OH_LowPowerVideoSink_StartRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/LowPowerAVSInk/lowPowerAVSinkSample/entry/src/main/cpp/capabilities/lpp_video_streamer.cpp) -->
 
-    ```c++
+    ``` C++
     auto ret = OH_LowPowerVideoSink_StartRenderer(lppVideoStreamer_);
     ```
 
