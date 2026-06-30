@@ -4,23 +4,23 @@
 
 ## 简介
 
-随着分布式场景的发展，智能体间的消息通信需求日益增长。OpenHarmony提供了分布式软总线跨设备智能体唤醒与消息传输能力（conversation），基于分布式软总线能力，实现跨设备智能体的唤醒和消息传递。该模块提供了设备查询、快速设备唤醒和消息监听与发送等核心能力，使应用能够在同账号可信设备智能体之间进行高效、可靠的消息交互。
+随着分布式场景的发展，智能体间的消息通信需求日益增长。OpenHarmony提供了分布式软总线跨设备智能体唤醒与消息传输能力，基于分布式软总线能力，实现跨设备智能体的唤醒和消息传递。该模块提供了设备查询、快速设备唤醒和消息监听与发送等核心能力，使应用能够在同账号可信设备智能体之间进行高效、可靠的消息交互。
 
 ### 实现原理
 
 分布式软总线跨设备智能体唤醒与消息传输模块实现跨设备精准执行用户意图：
+
 ![conversation-process](figures/conversation-process.png)
+
 应用通过注册会话监听器，可以接收来自其他设备的消息；通过发送会话数据接口，可以向指定设备的特定能力发送消息。整个通信过程依赖于设备的network ID或UDID进行寻址，确保消息能够准确投递到目标设备的目标应用能力。
 
 ### 约束与限制
 
 - 需要配置`ohos.permission.DISTRIBUTED_DATASYNC`和`ohos.permission.sec.ACCESS_UDID`权限。
-- 不同设备间只有相同`bundleName`和`abilityName`的应用才能进行消息交互。
-- 消息内容长度限制为1024字节。
+- 不同设备间只有相同`bundleName`的应用才能进行消息交互。
 - 目标设备必须是同账号可信设备。
-- 支持系统原生的快速唤醒能力，设备在睡眠合盖状态下依然可达。
+- 支持系统原生的快速唤醒能力，设备在插电合盖状态下依然可达。
 - 该能力从API 26.1.0开始支持。
-- 该能力为系统API，仅支持Stage模型。
 
 ## 环境准备
 
@@ -30,14 +30,14 @@
 
 ### 搭建环境
 
-1. 在PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，版本要求在4.1及以上。
+1. 在开发PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，版本要求在4.1及以上。
 2. 将public-SDK更新到API 26.1.0或以上，具体操作参见[更新指南](../tools/openharmony_sdk_upgrade_assistant.md)。
-3. 用USB线缆将两台调测设备（设备A和设备B）连接到PC。
+3. 用USB线缆将两台调测设备（设备A和设备B）连接到开发PC。
 4. 确保两台设备已开启网络连接，并登录相同账号。
 
 ## 接口说明
 
-常用接口说明如下表。更多接口的详细介绍参考@ohos.distributedSoftBus.conversation[分布式软总线会话](../reference/apis-distributedservice-kit/js-apis-conversation.md)。
+常用接口说明如下表。具体API说明详见API参考：[@ohos.distributedSoftBus.conversation](../reference/apis-distributedservice-kit/js-apis-conversation.md)。
 
 | 接口名                                      | 功能描述                                                                                               |
 | ------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
