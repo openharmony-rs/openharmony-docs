@@ -162,7 +162,7 @@ update(sectionIndex: number, section: SectionOptions): boolean
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| boolean | 分组是否更新成功，新分组的itemsCount不是非负数时返回false。 |
+| boolean | 分组是否更新成功。分组更新成功返回true，更新失败（新分组的itemsCount不是非负数）返回false。 |
 
 ### values<sup>12+</sup>
 
@@ -1226,7 +1226,7 @@ struct WaterFlowDemo {
     }
   }
 
-  // 组件生命周期：初始化数据和恢复上次的列数设置
+  // 组件生命周期：初始化尺寸数组和分组信息
   aboutToAppear() {
     this.setItemSizeArray();
 
@@ -1955,7 +1955,7 @@ struct WaterFlowDemo {
     return (ret > this.minSize ? ret : this.minSize);
   }
 
-  // 设置FlowItem的宽/高数组
+  // 设置FlowItem的高度数组
   setItemSizeArray() {
     for (let i = 0; i < 100; i++) {
       this.itemHeightArray.push(this.getSize());
@@ -2082,7 +2082,7 @@ struct WaterFlowContentSizeDemo {
             this.contentHeight = this.scroller.contentSize().height;
           } catch (error) {
             let err: BusinessError = error as BusinessError;
-            console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
+            console.error(`Failed to get contentSize of the waterFlow, code=${err.code}, message=${err.message}`);
           }
         }).margin(5)
       // 将获取到的内容尺寸信息通过文本进行呈现
@@ -2143,12 +2143,12 @@ class MyNodeController extends NodeController {
 
     // 设置OnWillScroll事件
     waterFlowEvent?.setOnWillScroll((scrollOffset: number, scrollState: ScrollState, scrollSource: ScrollSource) => {
-      console.info('onWillScroll scrollOffset = ${scrollOffset}, scrollState = ${scrollState}, scrollSource = ${scrollSource}');
+      console.info(`onWillScroll scrollOffset = ${scrollOffset}, scrollState = ${scrollState}, scrollSource = ${scrollSource}`);
     });
 
     // 设置OnDidScroll事件
     waterFlowEvent?.setOnDidScroll((scrollOffset: number, scrollState: ScrollState) => {
-      console.info('onDidScroll scrollOffset = ${scrollOffset}, scrollState = ${scrollState}');
+      console.info(`onDidScroll scrollOffset = ${scrollOffset}, scrollState = ${scrollState}`);
     });
 
     // 设置OnReachStart事件
@@ -2173,13 +2173,13 @@ class MyNodeController extends NodeController {
 
     // 设置OnScrollFrameBegin事件
     waterFlowEvent?.setOnScrollFrameBegin((offset: number, state: ScrollState) => {
-      console.info('onScrollFrameBegin offset = ${offset}, state = ${state}');
+      console.info(`onScrollFrameBegin offset = ${offset}, state = ${state}`);
       return undefined;
     });
 
     // 设置OnScrollIndex事件
     waterFlowEvent?.setOnScrollIndex((first: number, last: number) => {
-      console.info('onScrollIndex start = ${first}, end = ${last}');
+      console.info(`onScrollIndex start = ${first}, end = ${last}`);
     });
   }
 }
@@ -2194,7 +2194,7 @@ struct Index {
 
   aboutToAppear() {
     for (let i = 0; i < 30; i++) {
-      this.numbers.push('${i+1}');
+      this.numbers.push(`${i+1}`);
       this.heights.push(70 + Math.floor(Math.random() * 60));
     }
   }

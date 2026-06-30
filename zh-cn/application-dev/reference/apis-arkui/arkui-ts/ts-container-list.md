@@ -216,8 +216,8 @@ List设置cachedCount后，显示区域外上下各会预加载并布局cachedCo
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| count  | number | 是   | 预加载的ListItem的数量。<br/>默认值：根据屏幕内显示的节点个数设置，最大值为16。 <br/>取值范围：[0, +∞)，设置为小于0的值时，按1处理。 |
-| show  | boolean | 是   | 被预加载的ListItem是否需要显示。设置为true时显示预加载的ListItem，设置为false时不显示预加载的ListItem。 <br/> 默认值：false |
+| count  | number | 是   | ListItem/ListItemGroup的预加载数量。<br/>默认值：根据屏幕内显示的节点个数设置，最大值为16。 <br/>取值范围：[0, +∞)，设置为小于0的值时，按1处理。 |
+| show  | boolean | 是   | 被预加载的ListItem/ListItemGroup是否需要显示。设置为true时显示预加载的ListItem/ListItemGroup，设置为false时不显示预加载的ListItem/ListItemGroup。 <br/> 默认值：false |
 
 ### cachedCount<sup>22+</sup>
 
@@ -250,8 +250,8 @@ cachedCount(count: number | CacheCountInfo, show: boolean)
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| count  | number \| [CacheCountInfo](ts-types.md#cachecountinfo22对象说明) | 是   | 当参数类型为number时，表示预加载的ListItem的数量。 <br/>取值范围：[0, +∞)，设置为小于0的值时，按1处理。 <br>当参数类型为CacheCountInfo时，表示预加载的最大最小范围。|
-| show  | boolean | 是   | 被预加载的ListItem是否需要显示。<br/>true：显示预加载的ListItem。<br/>false：不显示预加载的ListItem。 |
+| count  | number \| [CacheCountInfo](ts-types.md#cachecountinfo22对象说明) | 是   | 当参数类型为number时，表示ListItem/ListItemGroup的预加载数量。 <br/>取值范围：[0, +∞)，设置为小于0的值时，按1处理。 <br>当参数类型为CacheCountInfo时，表示预加载的最大最小范围。|
+| show  | boolean | 是   | 被预加载的ListItem/ListItemGroup是否需要显示。<br/>true：显示预加载的ListItem/ListItemGroup。<br/>false：不显示预加载的ListItem/ListItemGroup。 |
 
 ### edgeEffect
 
@@ -825,7 +825,7 @@ ListItemGroup吸顶或吸底效果枚举。
 
 | 名称     |  值  | 说明                                     |
 | ------ | ------ | ---------------------------------------- |
-| NONE   | 0 | 默认无项目滚动对齐效果。            |
+| NONE   | 0 | 默认无列表项滚动结束对齐效果。            |
 | START  | 1 | 视图中的第一项将在列表的开头对齐。<br/>**说明：**<br/>当列表位移至末端，需要将末端的item完整显示，可能出现开头不对齐的情况。 |
 | CENTER | 2 | 视图中的中间项将在列表中心对齐。<br/>**说明：**<br/>顶端和末尾的item都可以在列表中心对齐，列表显示可能露出空白。 |
 | END    | 3 | 视图中的最后一项将在列表末尾对齐。<br/>**说明：**<br/>当列表位移至顶端，需要将顶端的item完整显示，可能出现末尾不对齐的情况。 |
@@ -1744,7 +1744,7 @@ struct ListLanesExample {
   build() {
     Column() {
       List({ space: 20, initialIndex: 0 }) {
-        LazyForEach(this.arr, (item: string) => {
+        LazyForEach(this.arr, (item: number) => {
           ListItem() {
             Text('' + item)
               .width('100%')
@@ -1755,7 +1755,7 @@ struct ListLanesExample {
               .backgroundColor(0xFFFFFF)
           }
           .border({ width: 2, color: Color.Green })
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .height(300)
       .width('90%')
@@ -1953,7 +1953,7 @@ struct ListExample {
               .borderRadius(10)
               .backgroundColor(0xFFFFFF)
           }
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .backgroundColor(Color.Gray)
       .layoutWeight(1)
@@ -2206,7 +2206,7 @@ struct ListExample {
               .width('100%').height(100).fontSize(16)
               .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
           }
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .edgeEffect(EdgeEffect.Spring, {alwaysEnabled: true, effectEdge: EffectEdge.START})
       .width('90%').height('90%')
@@ -2249,7 +2249,7 @@ struct ListExample {
                   .offset({ left: 5 })
               }
             }
-          }, (item: string, index?: number) => item)
+          }, (item: number, index?: number) => item.toString())
         }
         .lanes(2)
         .contentStartOffset(20)
@@ -2341,7 +2341,7 @@ struct ListScrollBarMarginExample {
               .borderRadius(10)
               .backgroundColor(0xFFFFFF)
           }
-        }, (item: string, index?: number) => item)
+        }, (item: number, index?: number) => item.toString())
       }
       .contentStartOffset(20)
       .contentEndOffset(20)
@@ -2429,7 +2429,7 @@ struct ListExample {
               .width('100%').height(100).fontSize(16)
               .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
           }
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .lanes({ fillType: PresetFillType.BREAKPOINT_SM2MD3LG5}, 10)
       .width('90%').height(600)
@@ -2483,7 +2483,7 @@ struct ListExample {
               .borderRadius(10)
               .backgroundColor(0xFFFFFF)
           }
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .width('90%').height('90%')
 
