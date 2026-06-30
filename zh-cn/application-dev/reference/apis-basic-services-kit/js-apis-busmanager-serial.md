@@ -171,8 +171,10 @@ close(): Promise&lt;void&gt;
 | 35700001 | Service error.       |
 | 35700005 | Port not open.       |
 
+
 **示例：**
 
+<!--code_no_check-->
 ```ts
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 关闭串口
@@ -226,6 +228,7 @@ ArkTS-Sta: write(data: Uint8Array, timeout?: int): Promise&lt;int&gt;
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
 import { buffer } from '@kit.ArkTS';
 // port为串口对象，需要先通过serial.getSerialPortList()获取
@@ -270,6 +273,7 @@ onDataRead(callback: Callback&lt;Uint8Array&gt;): void
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 监听串口数据接收
@@ -309,6 +313,7 @@ offDataRead(callback?: Callback&lt;Uint8Array&gt;): void
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 取消监听串口数据接收
@@ -353,6 +358,7 @@ flush(): Promise&lt;void&gt;
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 刷新串口缓冲区
@@ -395,6 +401,7 @@ drain(): Promise&lt;void&gt;
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 等待所有写请求完成
@@ -443,6 +450,7 @@ setRts(enable: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 设置RTS信号
@@ -485,6 +493,7 @@ getCts(): Promise&lt;boolean&gt;
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 获取CTS信号状态
@@ -527,6 +536,7 @@ sendBrk(): Promise&lt;void&gt;
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 发送BRK信号
@@ -575,6 +585,7 @@ setDtr(enable: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 设置DTR信号
@@ -617,6 +628,7 @@ getDsr(): Promise&lt;boolean&gt;
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 获取DSR信号状态
@@ -658,6 +670,7 @@ onDisconnect(callback: Callback&lt;void&gt;): void
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 监听串口断开事件
@@ -697,6 +710,7 @@ offDisconnect(callback?: Callback&lt;void&gt;): void
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
 // port为串口对象，需要先通过serial.getSerialPortList()获取
 // 取消监听串口断开事件
