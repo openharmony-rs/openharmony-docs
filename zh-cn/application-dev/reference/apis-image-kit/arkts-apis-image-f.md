@@ -228,8 +228,8 @@ function DemoCreatePixelMapFromPixels() {
   image.createPixelMapFromPixels(pixels, config)
     .then((pixelMap: image.PixelMap) => {
       console.info('Succeeded in creating PixelMap.');
-    }).catch((e: BusinessError) => {
-      console.error(`Failed to create PixelMap. Code is ${e.code}, message is ${e.message}`);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to create PixelMap. Code is ${error.code}, message is ${error.message}`);
     });
 }
 ```
@@ -813,7 +813,7 @@ class MySequence implements rpc.Parcelable {
   unmarshalling(messageSequence: rpc.MessageSequence) {
     try {
       this.pixelMap = image.createPixelMapFromParcel(messageSequence);
-    } catch(e) {
+    } catch (e) {
       let error = e as BusinessError;
       console.error(`Failed to create PixelMap from parcel. Code is ${error.code}, message is ${error.message}`);
       return false;
@@ -1106,8 +1106,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 function DemoCreatePixelMapFromSurfaceWithTransformation(surfaceId: string, transformEnabled: boolean) {
   image.createPixelMapFromSurfaceWithTransformation(surfaceId, transformEnabled).then((pixelMap: image.PixelMap) => {
     console.info('Succeeded in creating PixelMap.');
-  }).catch((e: BusinessError) => {
-    console.error(`Failed to create PixelMap. Code: ${e.code}, message: ${e.message}`);
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to create PixelMap. Code: ${error.code}, message: ${error.message}`);
   });
 }
 ```
@@ -1722,10 +1722,10 @@ async function CreateIncrementalImageSource(context : Context) {
     imageSourceIncrementalSApi.updateData(splitBuff2, true, 0, splitBuff2.byteLength).then(() => {
       let pixelMap = imageSourceIncrementalSApi.createPixelMapSync();
       console.info('Succeeded in creating pixelMap');
-    }).catch((error : BusinessError) => {
+    }).catch((error: BusinessError) => {
       console.error(`Failed to updateData error code is ${error.code}, message is ${error.message}`);
     })
-  }).catch((error : BusinessError) => {
+  }).catch((error: BusinessError) => {
     console.error(`Failed to updateData error code is ${error.code}, message is ${error.message}`);
   })
 }
@@ -1773,10 +1773,10 @@ async function CreateIncrementalImageSource(context : Context) {
     imageSourceIncrementalSApi.updateData(splitBuff2, true, 0, splitBuff2.byteLength).then(() => {
       let pixelMap = imageSourceIncrementalSApi.createPixelMapSync();
       console.info('Succeeded in creating pixelMap');
-    }).catch((error : BusinessError) => {
+    }).catch((error: BusinessError) => {
       console.error(`Failed to updateData error code is ${error.code}, message is ${error.message}`);
     })
-  }).catch((error : BusinessError) => {
+  }).catch((error: BusinessError) => {
     console.error(`Failed to updateData error code is ${error.code}, message is ${error.message}`);
   })
 }
