@@ -193,7 +193,7 @@ Cancels exemption for the application.
 
 **Error codes**
 
-For details about the error codes, see [Universal IDs](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
 
 | ID | Error Message            |
 | ---- | --------------------- |
