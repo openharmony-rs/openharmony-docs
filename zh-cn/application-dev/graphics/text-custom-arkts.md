@@ -35,7 +35,6 @@
 | getFont(): drawing.Font | 获取排版单元的字体属性对象。 | 
 | getAdvances(range: Range): Array&lt;common2D.Point&gt; | 获取该排版单元指定范围内每个字形的字形宽度数组。 | 
 | static makeFromRunBuffer(pos: Array&lt;TextBlobRunBuffer&gt;, font: Font, bounds?: common2D.Rect): TextBlob | 基于RunBuffer信息创建TextBlob对象。 | 
-| static makeFromRunBuffer(pos: Array&lt;TextBlobRunBuffer&gt;, font: Font, bounds?: common2D.Rect): TextBlob | 基于RunBuffer信息创建TextBlob对象。 | 
 | drawTextBlob(blob: TextBlob, x: number, y: number): void | 绘制一段文字。若构造blob的字体不支持待绘制字符，则该部分字符无法绘制。 | 
 
 

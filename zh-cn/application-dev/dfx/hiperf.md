@@ -128,7 +128,7 @@ See 'hiperf help [command]' for more information on a specific command.
 ### 性能数据统计
 
 
-1. 对进程ID为1745，1910的进程进行计数，计数时长为10s。
+1. 对进程ID为1745和1910的进程进行计数，计数时长为10s。
 
 
     ```shell
@@ -173,7 +173,7 @@ See 'hiperf help [command]' for more information on a specific command.
     ```
 
 
-3. 对进程ID为1910的进程进行计数，计数时长为3s，事件类型为hw-cpu-cycles，hw-instructions，并打印详细的信息。
+3. 对进程ID为1910的进程进行计数，计数时长为3s，事件类型为hw-cpu-cycles和hw-instructions，并打印详细的信息。
 
 
     ```shell

@@ -110,6 +110,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
 
 - 通过ArkTS声明式UI描述来创建组件并结合XComponentController实现对Surface生命周期的管理。
 
+  ArkTS-Dyn示例：
   <!-- @[xcomponent_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSXComponent/entry/src/main/ets/pages/Index.ets) -->
 
   ``` TypeScript
@@ -162,6 +163,95 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
           }
         })
         // ···
+      }
+      .width('100%')
+      .height('100%')
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  <!-- @[xcomponent_index](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ArkTSXComponent/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  import { State } from '@ohos.arkui.stateManagement';
+  import { Button, Column, ColumnOptions, Component, Entry, FlexAlign, Row, SurfaceRect, Text, VerticalAlign, XComponent, XComponentController, XComponentOptions, XComponentType } from '@ohos.arkui.component';
+  
+  export class NativeMethods {
+    static { loadLibrary("entry") }
+    static native SetSurfaceId(surfaceId: long): void;
+    static native DestroySurface(surfaceId: long): void;
+    static native ChangeSurface(surfaceId: long): void;
+    static native ChangeColor(surfaceId: long): void;
+    static native DrawPattern(surfaceId: long): void;
+    static native GetXComponentStatus(surfaceId: long): void;
+  }
+  
+  class SampleXComponentController extends XComponentController {
+    surfaceId: string = '';
+  
+    onSurfaceCreated(surfaceId: string): void {
+      this.surfaceId = surfaceId;
+      NativeMethods.SetSurfaceId(BigInt(surfaceId).getLong());
+    }
+  
+    onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void {
+      NativeMethods.ChangeSurface(BigInt(surfaceId).getLong());
+    }
+  
+    onSurfaceDestroyed(surfaceId: string): void {
+      NativeMethods.DestroySurface(BigInt(surfaceId).getLong());
+      this.surfaceId = '';
+    }
+  }
+  
+  @Entry
+  @Component
+  struct Index {
+    @State currentStatus: string = "index";
+    private xComponentController: SampleXComponentController = new SampleXComponentController();
+  
+    build(): void {
+      Column() {
+          // ...
+  
+          Column({ space: 10 } as ColumnOptions) {
+              XComponent({
+              type: XComponentType.SURFACE,
+              controller: this.xComponentController
+              } as XComponentOptions)
+              .id('xcomponent')
+  
+              Text(this.currentStatus)
+              .fontSize('24fp')
+              .fontWeight(500)
+          }
+          .onClick(() => {
+              if (this.xComponentController.surfaceId) {
+                  NativeMethods.ChangeColor(BigInt(this.xComponentController.surfaceId).getLong());
+                  this.currentStatus = "change color";
+              }
+          })
+          // ...
+  
+          Row() {
+              Button('Draw Star')
+              .fontSize('16fp')
+              .fontWeight(500)
+              .margin({ bottom: 24 })
+              .onClick(() => {
+                  if (this.xComponentController.surfaceId) {
+                      NativeMethods.DrawPattern(BigInt(this.xComponentController.surfaceId).getLong());
+                      this.currentStatus = "draw star";
+                  }
+              })
+              .width('53.6%')
+              .height(40)
+          }
+          .width('100%')
+          .justifyContent(FlexAlign.Center)
+          .alignItems(VerticalAlign.Bottom)
+          .layoutWeight(1)
       }
       .width('100%')
       .height('100%')

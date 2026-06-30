@@ -3078,19 +3078,27 @@ struct Index {
     ```
 
 ## onVerifyPin<sup>22+</sup>
-onVerifyPin(callback: OnVerifyPinCallback)
+ArkTS-Dyn: onVerifyPin(callback: OnVerifyPinCallback)
+
+ArkTS-Sta: onVerifyPin(callback: OnVerifyPinCallback | undefined)
 
 通知用户进行PIN码认证。使用callback异步回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback  | [OnVerifyPinCallback](./arkts-basic-components-web-t.md#onverifypincallback22) | 是 | 当需要用户进行PIN码认证时触发的回调。  |
+| callback  | ArkTS-Dyn: [OnVerifyPinCallback](./arkts-basic-components-web-t.md#onverifypincallback22)<br/>ArkTS-Sta: [OnVerifyPinCallback](./arkts-basic-components-web-t.md#onverifypincallback22) \| undefined | 是 | 当需要用户进行PIN码认证时触发的回调。  |
 
   **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -3175,6 +3183,106 @@ struct Index {
         })
         .onTitleReceive(event  => {
           console.info("title received " + event.title);
+        })
+
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { webview } from '@kit.ArkWeb';
+import { common } from '@kit.AbilityKit';
+import certMgrDialog from '@ohos.security.certManagerDialog';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Entry, State, Component, Column, Web, Button, Context, OnClientAuthenticationEvent, OnVerifyPinCallback, VerifyPinEvent, PinVerifyResult, CredentialType, OnErrorReceiveEvent, Alignment,ClickEvent } from "@kit.ArkUI"
+import { UIContext } from '@ohos.arkui.UIContext';
+import { canIUse } from '@internal.full.global';
+
+@Entry
+@Component
+struct Index {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  uiContext: UIContext | null = null;
+  context: Context | null = null;
+  @State type: CredentialType = CredentialType.CREDENTIAL_UKEY;
+  aboutToAppear(): void {
+    this.uiContext = this.getUIContext();
+    if (this.uiContext) {
+      const hostContext = this.uiContext?.getHostContext() as common.UIAbilityContext;
+      this.context = hostContext as Context;
+    }
+  }
+
+  build() {
+    Column() {
+      Button('加载需要客户端SSL证书的网站')
+        .onClick(() => {
+          this.controller.loadUrl("https://client.badssl.com")
+        }).height(60)
+      Web({ src: "https://www.bing.com/", controller: this.controller})
+        .domStorageAccess(true)
+        .fileAccess(true)
+        .onClientAuthenticationRequest((event:OnClientAuthenticationEvent):void => {
+          // 收到客户端证书请求事件
+          console.info(`RM001 onClientAuthenticationRequest`);
+          if (!this.context) {
+            console.error(`RM001 The context is not initialized`);
+          }
+          const nonNullContext = this.context!;
+          try {
+            let certTypes: Array<certMgrDialog.CertificateType> = [
+              certMgrDialog.CertificateType.CREDENTIAL_UKEY
+            ];
+            // 调用证书管理，打开证书选择框
+            certMgrDialog.openAuthorizeDialog(nonNullContext, { certTypes: certTypes })
+              .then((data: certMgrDialog.CertReference) => {
+                console.info(`RM001 openAuthorizeDialog request cred auth success`)
+                // 通知web选择的为ukey证书
+                event.handler.confirm(data.keyUri, CredentialType.CREDENTIAL_UKEY);
+              }).catch((err): void => {
+              console.error(`RM001 openAuthorizeDialog request cred auth failed, err.code:${err.code},err.message:${err.message}`);
+            })
+          } catch (e) {
+            console.error(`RM001 openAuthorizeDialog request cred auth failed, err: ${JSON.stringify(e)}`);
+          }
+        })
+        .onVerifyPin((event:VerifyPinEvent):void => {
+          // 收到PIN码认证请求事件
+          console.info('RM001 onVerifyPin')
+          if (!this.context) {
+            console.error(`RM001 The context is not initialized`);
+            return;
+          }
+          const nonNullContext = this.context!;
+          // 调用证书管理，打开PIN码输入框
+          certMgrDialog.openUkeyAuthDialog(nonNullContext, {keyUri: event.identity})
+            .then(() => {
+              // 通知webPIN码认证成功
+              console.info('RM001 onVerifyPin success');
+              event.handler.confirm(PinVerifyResult.PIN_VERIFICATION_SUCCESS);
+            }).catch((err):void => {
+            // 通知webPIN码认证失败
+            console.info('RM001 onVerifyPin fail');
+            event.handler.confirm(PinVerifyResult.PIN_VERIFICATION_FAILED);
+          })
+        })
+        .onErrorReceive((event:OnErrorReceiveEvent) => {
+          if (event) {
+            this.getUIContext().getPromptAction().showToast({
+              message: `ErrorCode: ${event.error.getErrorCode()}, ErrorInfo: ${event.error.getErrorInfo()}`,
+              alignment: Alignment.Center
+            })
+            console.info('RM001 getErrorInfo:' + event.error.getErrorInfo());
+            console.info('RM001 getErrorCode:' + event.error.getErrorCode());
+            console.info('RM001 url:' + event.request.getRequestUrl());
+          }
+        })
+        .onTitleReceive(event  => {
+          console.info("RM001 title received " + event.title);
         })
 
     }

@@ -24,7 +24,7 @@ import { statfs } from '@kit.CoreFileKit';
 
 getFreeSize(path: string): Promise&lt;number&gt;
 
-获取指定文件或目录所在文件系统的空闲字节数。使用Promise异步回调。
+获取指定文件或目录所在文件系统的空闲字节数，即当前可供应用使用的存储空间大小。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -81,7 +81,7 @@ getFreeSize(path: string): Promise&lt;number&gt;
 
 getFreeSize(path: string, callback:AsyncCallback&lt;number&gt;): void
 
-获取指定文件或目录所在文件系统的空闲字节数。使用callback异步回调。
+获取指定文件或目录所在文件系统的空闲字节数，即当前可供应用使用的存储空间大小。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -135,7 +135,7 @@ getFreeSize(path: string, callback:AsyncCallback&lt;number&gt;): void
 
 getFreeSizeSync(path: string): number
 
-以同步方法获取指定文件或目录所在文件系统的空闲字节数。
+以同步方法获取指定文件或目录所在文件系统的空闲字节数，即当前可供应用使用的存储空间大小。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -188,7 +188,7 @@ getFreeSizeSync(path: string): number
 
 getTotalSize(path: string): Promise&lt;number&gt;
 
-获取指定文件或目录所在文件系统的总字节数。使用Promise异步回调。
+获取指定文件或目录所在文件系统的总字节数，即文件系统的总存储空间大小。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -245,7 +245,7 @@ getTotalSize(path: string): Promise&lt;number&gt;
 
 getTotalSize(path: string, callback: AsyncCallback&lt;number&gt;): void
 
-获取指定文件或目录所在文件系统的总字节数。使用callback异步回调。
+获取指定文件或目录所在文件系统的总字节数，即文件系统的总存储空间大小。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -299,7 +299,7 @@ getTotalSize(path: string, callback: AsyncCallback&lt;number&gt;): void
 
 getTotalSizeSync(path: string): number
 
-以同步方法获取指定文件或目录所在文件系统的总字节数。
+以同步方法获取指定文件或目录所在文件系统的总字节数，即文件系统的总存储空间大小。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
