@@ -107,6 +107,52 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
 
    - 半模态二级编辑页Ability的实现。
    <!-- @[FormEditDemo_FormEditSecPageAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/entryformeditability/FormEditSecPageAbility.ets) -->
+   
+   ``` TypeScript
+   // entry/src/main/ets/entryformeditability/FormEditSecPageAbility.ets
+   import { FormEditExtensionAbility } from '@kit.FormKit';
+   import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
+   import { ExtensionEvent } from '../model/ExtensionEvent';
+   
+   const TAG: string = 'FormEditExtensionAbility';
+   
+   export default class FormEditSecPageAbility extends FormEditExtensionAbility {
+     public storage: LocalStorage = new LocalStorage();
+   
+     onCreate() {
+       console.info(TAG, `Ability onCreate`);
+     }
+   
+     onForeground(): void {
+       console.info(TAG, `Ability onForeground`);
+     }
+   
+     onBackground(): void {
+       console.info(TAG, `Ability onBackground`);
+     }
+   
+     onDestroy(): void {
+       console.info(TAG, `Ability onDestroy`);
+     }
+   
+     onSessionCreate(want: Want, session: UIExtensionContentSession) {
+       let extensionEvent: ExtensionEvent = new ExtensionEvent();
+       this.storage.setOrCreate('extensionEvent', extensionEvent);
+       this.storage.setOrCreate('session', session);
+   
+       try {
+         session.loadContent('pages/FormEditSecPage', this.storage);
+         console.info(TAG, `loadContent first edit page success`);
+       } catch (e) {
+         console.error(TAG, `EntryFormEditAbility loadContent err, want: ${e?.message}`);
+       }
+     }
+   
+     onSessionDestroy(session: UIExtensionContentSession) {
+       console.info(TAG, `onSessionDestroy`);
+     }
+   }
+   ```
 
    - 新增EntryFormEditAbility需要在module.json5配置，配置如下。
 
