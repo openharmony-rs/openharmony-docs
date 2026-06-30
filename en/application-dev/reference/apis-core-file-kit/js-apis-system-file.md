@@ -44,7 +44,7 @@ Moves a specified file to a given location.
 
 **Error codes**
 
-| Error Code| Description|
+| ID| Error Message|
 | -------- | -------- |
 | 202 | Incorrect parameters are detected.|
 | 300 | An I/O error occurs.|
@@ -93,7 +93,7 @@ Copies a file to the given URI.
 
 **Error codes**
 
-| Error Code| Description|
+| ID| Error Message|
 | -------- | -------- |
 | 202 | Incorrect parameters are detected.|
 | 300 | An I/O error occurs.|
@@ -157,7 +157,7 @@ Obtains all files in the specified directory.
 
 **Error codes**
 
-| Error Code| Description|
+| ID| Error Message|
 | -------- | -------- |
 | 202 | Incorrect parameters are detected.|
 | 300 | An I/O error occurs.|
@@ -216,7 +216,7 @@ Obtains information about a local file.
 
 **Error codes**
 
-| Error Code| Description|
+| ID| Error Message|
 | -------- | -------- |
 | 202 | Incorrect parameters are detected.|
 | 300 | An I/O error occurs.|
@@ -264,7 +264,7 @@ Deletes a local file.
 
 **Error codes**
 
-| Error Code| Description|
+| ID| Error Message|
 | -------- | -------- |
 | 202 | Incorrect parameters are detected.|
 | 300 | An I/O error occurs.|
@@ -315,7 +315,7 @@ Writes text into a file. Only text files can be read and written.
 
 **Error codes**
 
-| Error Code| Description|
+| ID| Error Message|
 | -------- | -------- |
 | 202 | Incorrect parameters are detected.|
 | 300 | An I/O error occurs.|
@@ -366,7 +366,7 @@ Writes buffer data into a file. Only text files can be read and written.
 
 **Error codes**
 
-| Error Code| Description|
+| ID| Error Message|
 | -------- | -------- |
 | 202 | Incorrect parameters are detected.|
 | 300 | An I/O error occurs.|
@@ -423,7 +423,7 @@ Reads text from a file. Only text files can be read and written.
 
 **Error codes**
 
-| Error Code| Description|
+| ID| Error Message|
 | -------- | -------- |
 | 202 | Incorrect parameters are detected.|
 | 300 | An I/O error occurs.|
@@ -480,7 +480,7 @@ Reads buffer data from a file. Only text files can be read and written.
 
 **Error codes**
 
-| Error Code| Description|
+| ID| Error Message|
 | -------- | -------- |
 | 202 | Incorrect parameters are detected.|
 | 300 | An I/O error occurs.|
@@ -530,7 +530,7 @@ Checks whether a file or directory exists.
 
 **Error codes**
 
-| Error Code| Description|
+| ID| Error Message|
 | -------- | -------- |
 | 202 | Incorrect parameters are detected.|
 | 300 | An I/O error occurs.|
@@ -579,7 +579,7 @@ Creates a directory.
 
 **Error codes**
 
-| Error Code| Description|
+| ID| Error Message|
 | -------- | -------- |
 | 202 | Incorrect parameters are detected.|
 | 300 | An I/O error occurs.|
@@ -627,7 +627,7 @@ Deletes a directory.
 
 **Error codes**
 
-| Error Code| Description|
+| ID| Error Message|
 | -------- | -------- |
 | 202 | Incorrect parameters are detected.|
 | 300 | An I/O error occurs.|
