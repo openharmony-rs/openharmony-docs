@@ -64,7 +64,7 @@ Obtains the distributed account information. This API uses an asynchronous callb
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -111,7 +111,7 @@ Obtains the distributed account information. This API uses a promise to return t
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 12300001 | System service exception. |
@@ -223,7 +223,7 @@ Sets the distributed account information. This API uses an asynchronous callback
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -279,7 +279,7 @@ Sets the distributed account information. This API uses a promise to return the 
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |

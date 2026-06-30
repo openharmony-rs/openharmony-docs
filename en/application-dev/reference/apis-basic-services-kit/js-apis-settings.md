@@ -319,7 +319,7 @@ Sets the value for a data item. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------- |
 | 201 | Permission denied. |
 
@@ -622,7 +622,7 @@ Sets the value for a data item. Unlike **setValue**, this API returns the result
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------- |
 | 201 | Permission denied. |
 
@@ -746,7 +746,7 @@ Opens the WLAN settings window. This API uses a promise to return the result.
 
 For details about the error codes, see [Settings Error Codes](./errorcode-settings.md).
 
-| Error Code   | Error Message                   |
+| ID   | Error Message                   |
 |----------|-------------------------|
 | 14800000 | Parameter error.        |
 | 14800010 | Original service error. |
@@ -1143,7 +1143,7 @@ Open the input method settings page.
 
 For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
 
-| Error Code   | Error Message                   |
+| ID   | Error Message                   |
 |----------|-------------------------|
 | 16900010 | Parameter error.        |
 
@@ -1185,7 +1185,7 @@ Opens the input method details page.
 
 For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
 
-| Error Code   | Error Message                   |
+| ID   | Error Message                   |
 |----------|-------------------------|
 | 16900010 | Parameter error.        |
 
@@ -1227,7 +1227,7 @@ Opens the biometric recognition and password settings page.
 
 For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
 
-| Error Code   | Error Message                   |
+| ID   | Error Message                   |
 |----------|-------------------------|
 | 16900010 | Parameter error.        |
 | 16900020 | Failed to open the settings page via redirection. |
@@ -1269,7 +1269,7 @@ Opens the NFC settings page.
 
 For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
 
-| Error Code   | Error Message                   |
+| ID   | Error Message                   |
 |----------|-------------------------|
 | 16900010 | Parameter error.        |
 | 16900020 | Failed to open the settings page via redirection. |
@@ -1311,7 +1311,7 @@ Opens the settings page for double-pressing the Down key.
 
 For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
 
-| Error Code   | Error Message                    |
+| ID   | Error Message                    |
 |----------|-------------------------|
 | 16900010 | 1. The parameter is incorrect. <br> 2. The parameter is not transferred or the transferred parameter is invalid.         |
 | 16900020 | 1. The setting page cannot be opened through redirection.<br> 2. Internal error |

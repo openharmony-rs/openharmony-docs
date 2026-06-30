@@ -73,7 +73,7 @@ Checks whether multiple OS accounts are supported. This API uses an asynchronous
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
@@ -116,7 +116,7 @@ Checks whether multiple OS accounts are supported. This API uses a promise to re
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -163,7 +163,7 @@ Checks whether an OS account is activated. This API uses an asynchronous callbac
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -224,7 +224,7 @@ Checks whether an OS account is activated. This API uses a promise to return the
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -277,7 +277,7 @@ Checks whether a constraint is enabled for the current OS account. This API uses
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
@@ -329,7 +329,7 @@ Checks whether the specified constraint is enabled for an OS account. This API u
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -392,7 +392,7 @@ Checks whether the specified constraint is enabled for an OS account. This API u
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -440,7 +440,7 @@ Checks whether the current OS account is a test account. This API uses an asynch
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
@@ -483,7 +483,7 @@ Checks whether the current OS account is a test account. This API uses a promise
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -523,7 +523,7 @@ Checks whether the current OS account is unlocked. This API uses a promise to re
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -567,7 +567,7 @@ Checks whether the current OS account is unlocked. This API uses an asynchronous
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -613,7 +613,7 @@ Checks whether the current OS account has been verified. This API uses a promise
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -660,7 +660,7 @@ Checks whether an OS account has been verified. This API uses an asynchronous ca
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -719,7 +719,7 @@ Checks whether an OS account has been verified. This API uses a promise to retur
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -766,7 +766,7 @@ Obtains the number of OS accounts created. This API uses an asynchronous callbac
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -812,7 +812,7 @@ Obtains the number of OS accounts created. This API uses a promise to return the
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 12300001 | The system service works abnormally. |
@@ -853,7 +853,7 @@ Obtains the ID of the OS account to which the current process belongs. This API 
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
@@ -896,7 +896,7 @@ Obtains the ID of the OS account to which the current process belongs. This API 
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -937,7 +937,7 @@ Obtains the OS account ID based on the process UID. This API uses an asynchronou
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message        |
+| ID| Error Message        |
 | -------- | --------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
@@ -989,7 +989,7 @@ Obtains the OS account ID based on the process UID. This API uses a promise to r
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
@@ -1040,7 +1040,7 @@ Obtains the OS account ID based on the process UID. The API returns the result s
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300002 | Invalid uid. |
@@ -1084,7 +1084,7 @@ Obtains the OS account ID based on the domain account information. This API uses
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -1138,7 +1138,7 @@ Obtains the OS account ID based on the domain account information. This API uses
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -1189,7 +1189,7 @@ Obtains all constraints enabled for an OS account. This API uses an asynchronous
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -1250,7 +1250,7 @@ Obtains all constraints enabled for an OS account. This API uses a promise to re
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -1297,7 +1297,7 @@ Obtains information about all activated OS accounts. This API uses an asynchrono
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
@@ -1343,7 +1343,7 @@ Obtains information about all activated OS accounts. This API uses a promise to 
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -1389,7 +1389,7 @@ Obtains information about the OS account to which the current process belongs. T
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1439,7 +1439,7 @@ Obtains information about the OS account to which the current process belongs. T
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied. |
 | 12300001 | The system service works abnormally. |
@@ -1480,7 +1480,7 @@ Obtains the type of the account to which the current process belongs. This API u
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
@@ -1523,7 +1523,7 @@ Obtains the type of the account to which the current process belongs. This API u
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -1565,7 +1565,7 @@ Queries the ID of a distributed virtual device. This API uses an asynchronous ca
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1611,7 +1611,7 @@ Queries the ID of this distributed virtual device. This API uses a promise to re
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 12300001 | The system service works abnormally. |
@@ -1653,7 +1653,7 @@ Obtains the OS account ID based on the SN. This API uses an asynchronous callbac
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
@@ -1707,7 +1707,7 @@ Obtains the OS account ID based on the SN. This API uses a promise to return the
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
@@ -1754,7 +1754,7 @@ Obtains the SN of an OS account based on the account ID. This API uses an asynch
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
@@ -1808,7 +1808,7 @@ Obtains the SN of an OS account based on the account ID. This API uses a promise
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
@@ -3047,7 +3047,7 @@ Obtains the name of the OS account of the caller. This API uses a promise to ret
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -3087,7 +3087,7 @@ Obtains the ID of the foreground OS account. This API uses a promise to return t
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -3135,7 +3135,7 @@ Obtains the domain account information associated with a specified OS account. T
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3192,7 +3192,7 @@ Updates information of a domain account. This API uses a promise to return the r
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 801 | Capability not supported.|
@@ -3300,7 +3300,7 @@ Adds domain server configuration. This API uses a promise to return the result.
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 801 | Capability not supported.|
@@ -3353,7 +3353,7 @@ Removes domain server configuration. This API uses a promise to return the resul
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 801 | Capability not supported.|
@@ -3407,7 +3407,7 @@ Updates the domain server configuration. This API uses a promise to return the r
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 801 | Capability not supported.|
@@ -3466,7 +3466,7 @@ Obtains the domain server configuration. This API uses a promise to return the r
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 801 | Capability not supported.|
@@ -3515,7 +3515,7 @@ Obtains the configurations of all domain servers. This API uses a promise to ret
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 801 | Capability not supported.|
@@ -3569,7 +3569,7 @@ Obtains the server configuration of a domain account. This API uses a promise to
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 801 | Capability not supported.|

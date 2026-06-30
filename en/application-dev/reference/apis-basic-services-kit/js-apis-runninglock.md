@@ -44,7 +44,7 @@ isSupported(type: RunningLockType): boolean
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
 
@@ -81,7 +81,7 @@ create(name: string, type: RunningLockType, callback: AsyncCallback&lt;RunningLo
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
 | 201     | If the permission is denied.|
@@ -126,7 +126,7 @@ create(name: string, type: RunningLockType): Promise&lt;RunningLock&gt;
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
 | 201     | If the permission is denied.|
@@ -300,7 +300,7 @@ hold(timeout: number): void
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message    |
+| ID  | Error Message    |
 |---------|----------|
 | 401     | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | 201     | If the permission is denied.|
@@ -350,7 +350,7 @@ unhold(): void
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message    |
+| ID  | Error Message    |
 |---------|----------|
 | 201     | If the permission is denied.|
 

@@ -101,7 +101,7 @@ Sets a video resource as the home screen wallpaper or lock screen wallpaper. Thi
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **Error Code**| **Error Message**                               |
+| **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
@@ -150,7 +150,7 @@ Sets a video resource as the home screen wallpaper or lock screen wallpaper. Thi
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **Error Code**| **Error Message**                               |
+| **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
@@ -203,7 +203,7 @@ Sets a specific ZIP file as the wallpaper. This API works only when **com.ohos.s
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **Error Code**| **Error Message**                               |
+| **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
@@ -258,7 +258,7 @@ Sets a specific ZIP file as the wallpaper. This API works only when **com.ohos.s
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **Error Code**| **Error Message**                               |
+| **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
@@ -302,7 +302,7 @@ Subscribes to wallpaper change events. Multi-thread concurrent calls are not sup
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **Error Code**| **Error Message**                               |
+| **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
 | 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
@@ -341,7 +341,7 @@ Unsubscribes from wallpaper change events. Multi-thread concurrent calls are not
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **Error Code**| **Error Message**                               |
+| **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
 | 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
@@ -403,7 +403,7 @@ Obtains the main color information of the wallpaper of the specified type.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **Error Code**| **Error Message**                               |
+| **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
 | 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
@@ -439,7 +439,7 @@ Obtains the minimum height of this wallpaper.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **Error Code**| **Error Message**                               |
+| **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
 
@@ -474,7 +474,7 @@ Obtains the minimum width of this wallpaper.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **Error Code**| **Error Message**                               |
+| **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
 
@@ -512,7 +512,7 @@ Resets the wallpaper of the specified type to the default wallpaper. This API us
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **Error Code**| **Error Message**                               |
+| **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
@@ -560,7 +560,7 @@ Resets the wallpaper of the specified type to the default wallpaper. This API us
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **Error Code**| **Error Message**                               |
+| **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
@@ -602,7 +602,7 @@ Sets a specified source as the wallpaper of a specified type. This API uses an a
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **Error Code**| **Error Message**                               |
+| **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
@@ -674,7 +674,7 @@ Sets a specified source as the wallpaper of a specified type. This API uses a pr
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **Error Code**| **Error Message**                               |
+| **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
@@ -736,7 +736,7 @@ Obtains the pixel map for the wallpaper of the specified type. This API only wor
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **Error Code**| **Error Message**                               |
+| **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
@@ -785,7 +785,7 @@ Obtains the pixel map for the wallpaper of the specified type. This API only wor
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **Error Code**| **Error Message**                               |
+| **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
@@ -834,7 +834,7 @@ Obtains the pixel map for the wallpaper of the specified type, folding state, or
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **Error Code**| **Error Message**                               |
+| **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
@@ -883,7 +883,7 @@ Sets wallpapers in all states, including the folding state, screen orientation, 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| **Error Code**| **Error Message**                               |
+| **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
