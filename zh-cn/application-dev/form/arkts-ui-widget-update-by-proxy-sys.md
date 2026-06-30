@@ -187,6 +187,48 @@
 
     <!-- @[persistent_data_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/persistentdataformability/PersistentDataFormAbility.ts) --> 
     
+    ``` TypeScript
+    // entry/src/main/ets/persistentdataformability/PersistentDataFormAbility.ts
+    import { formBindingData, FormExtensionAbility, formInfo } from '@kit.FormKit';
+    import { Want } from '@kit.AbilityKit';
+    import { dataShare } from '@kit.ArkData';
+    
+    export default class PersistentDataFormAbility extends FormExtensionAbility {
+      onAddForm(want: Want): formBindingData.FormBindingData {
+        let dataShareHelper;
+        let subscriberId = '111';
+        let template = {
+          predicates: {
+            'list': `select type from TBL00 where cityId = ${subscriberId}`
+          },
+          scheduler: ''
+        };
+        dataShare.createDataShareHelper(this.context, 'datashareproxy://com.samples.widgetupdatebyproxy', {
+          isProxy: true
+        }).then((data) => {
+          dataShareHelper = data;
+          dataShareHelper.addTemplate('datashareproxy://com.samples.widgetupdatebyproxy/test', subscriberId, template);
+        });
+        let formData = {};
+        let proxies = [
+          {
+            key: 'datashareproxy://com.samples.widgetupdatebyproxy/test',
+            subscriberId: subscriberId
+          }
+        ];
+    
+        let formBinding = formBindingData.createFormBindingData(formData);
+           formBinding.proxies = proxies;
+        return formBinding;
+      }
+    
+      onAcquireFormState(want: Want): formInfo.FormState {
+        // 卡片使用方查询卡片状态时触发该回调，默认返回初始状态。
+        return formInfo.FormState.READY;
+      }
+    }
+    ```
+    
 
 - 在[卡片页面文件](arkts-ui-widget-creation.md)中，通过LocalStorage变量获取订阅到的数据，LocalStorage绑定了一个字符串，以key:value的键值对格式来刷新卡片订阅数据，其中key必须与卡片提供方订阅的key保持一致。示例中，通过'list'获取订阅的数据，并把第一个元素的值显示在Text组件上。
 
