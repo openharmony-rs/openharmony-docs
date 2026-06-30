@@ -26,7 +26,7 @@ import { screen } from '@kit.ArkUI';
 
 getAllScreens(callback: AsyncCallback&lt;Array&lt;Screen&gt;&gt;): void
 
-获取所有的屏幕，使用callback异步回调。
+获取所有的屏幕对象，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -71,7 +71,7 @@ screen.getAllScreens((err: BusinessError, data: Array<screen.Screen>) => {
 
 getAllScreens(): Promise&lt;Array&lt;Screen&gt;&gt;
 
-获取所有的屏幕，使用Promise异步回调。
+获取所有的屏幕对象，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -114,7 +114,7 @@ promise.then((data: Array<screen.Screen>) => {
 
 getAllScreens(callback: AsyncCallback&lt;Array&lt;Screen&gt;&gt;, isNeedUnused?: boolean): void
 
-获取所有的屏幕，使用callback异步回调。
+获取所有的屏幕对象，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -129,7 +129,7 @@ getAllScreens(callback: AsyncCallback&lt;Array&lt;Screen&gt;&gt;, isNeedUnused?:
 | 参数名   | 类型                                                | 必填 | 说明                                   |
 | -------- | --------------------------------------------------- | ---- | -------------------------------------- |
 | callback | AsyncCallback&lt;Array&lt;[Screen](#screen)&gt;&gt; | 是   | 回调函数。返回当前获取的屏幕对象集合。 |
-| isNeedUnused | boolean | 否   | 是否需要提供未使用的屏幕信息。true表示返回值会提供未使用的屏幕信息，false表示不提供未使用的屏幕信息。<br>默认值为：false。 |
+| isNeedUnused | boolean | 否   | 是否需要提供未使用的屏幕对象。true表示返回值会提供未使用的屏幕对象，false表示不提供未使用的屏幕对象。<br>默认值为：false。 |
 
 **错误码：**
 
@@ -164,7 +164,7 @@ screen.getAllScreens((err: BusinessError, data: Array<screen.Screen>) => {
 
 getAllScreens(isNeedUnused?: boolean): Promise&lt;Array&lt;Screen&gt;&gt;
 
-获取所有的屏幕，使用Promise异步回调。
+获取所有的屏幕对象，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -178,7 +178,7 @@ getAllScreens(isNeedUnused?: boolean): Promise&lt;Array&lt;Screen&gt;&gt;
 
 | 参数名   | 类型                                                | 必填 | 说明                                   |
 | -------- | --------------------------------------------------- | ---- | -------------------------------------- |
-| isNeedUnused | boolean | 否   | 是否需要提供未使用的屏幕信息。true表示返回值会提供未使用的屏幕信息，false表示不提供未使用的屏幕信息。<br>默认值为：false。 |
+| isNeedUnused | boolean | 否   | 是否需要提供未使用的屏幕对象。true表示返回值会提供未使用的屏幕对象，false表示不提供未使用的屏幕对象。<br>默认值为：false。 |
 
 **返回值：** 
 
