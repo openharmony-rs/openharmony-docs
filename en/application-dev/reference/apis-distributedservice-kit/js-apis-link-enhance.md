@@ -47,7 +47,7 @@ Creates a **Server** object. After **start()** is called, the device can be conn
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390203      | Duplicate server name.|
@@ -102,7 +102,7 @@ Creates a **Connection** object on the device that functions as the client. The 
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390206 | Invalid parameter.  |
@@ -153,7 +153,7 @@ Starts a server so that it can be connected by the client. A maximum of 10 serve
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390202 | The number of servers exceeds the limit. |
@@ -194,7 +194,7 @@ Stops the server. After the server is stopped, you can call `start` to start it 
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 
@@ -235,7 +235,7 @@ Destroys the **Server** object to release related resources. To interact with th
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 
@@ -281,7 +281,7 @@ Registers a callback listener for **connectionAccepted** events. This API uses a
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390206 | Parameter invalid.  |
@@ -335,7 +335,7 @@ Unregisters the callback listener for **connectionAccepted** events. This API us
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390206 | Parameter invalid.  |
@@ -390,7 +390,7 @@ Registers a callback listener for **serverStopped** events. This API uses an asy
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390206 | Parameter invalid.  |
@@ -445,7 +445,7 @@ Unregisters the callback listener for **serverStopped** events. This API uses an
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390206 | Parameter invalid.  |
@@ -514,7 +514,7 @@ Connects to the server on the client. A maximum number of 10 connections are sup
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390204 | The number of connection exceeds the limit. |
@@ -563,7 +563,7 @@ Disconnects from the peer device. The created **Connection** object remains vali
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 
@@ -609,7 +609,7 @@ Destroys the **Connection** object to release resources. If the device needs to 
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 
@@ -662,7 +662,7 @@ Obtains the device ID of the peer device. This API is called when the connection
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 
@@ -709,7 +709,7 @@ Sends data to the server after a connection is established successfully. When th
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390205 | Connection is not ready. |
@@ -769,7 +769,7 @@ Registers a listener for **connectResult** events. This API uses an asynchronous
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390206 | Invalid parameter.|
@@ -823,7 +823,7 @@ Unregisters the listener for **connectResult** events.
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390206 | Invalid parameter. |
@@ -877,7 +877,7 @@ Registers a listener for **disconnected** events. This API uses an asynchronous 
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390206 | Invalid parameter.|
@@ -928,7 +928,7 @@ Unregisters the listener for **disconnected** events. This API uses an asynchron
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390206 | Invalid parameter. |
@@ -982,7 +982,7 @@ Registers a listener for the **dataReceived** events. This API uses an asynchron
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390206 | Invalid parameter.  |
@@ -1034,7 +1034,7 @@ Unregisters the listener for **dataReceived** events.
 
 For details about the error codes, see [Link Enhancement Error Codes](errorcode-link-enhance.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 32390206 | Invalid parameter.  |

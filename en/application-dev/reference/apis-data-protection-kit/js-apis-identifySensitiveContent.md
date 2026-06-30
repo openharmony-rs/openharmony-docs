@@ -43,7 +43,7 @@ Identifies sensitive content in a specified file based on the configured policy.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | permission denied. |
 | 801 | Capability not supported. |
