@@ -52,12 +52,12 @@ togglePipButton.addEventListener("click", async () => {
 请求退出画中画模式，请使用Document接口的exitPictureInPicture()方法，视频将重新在原始标签页中显示。
 
 ```js
-// ...
-try {
-  if (videoElement !== document.pictureInPictureElement) {
-    await videoElement.requestPictureInPicture();
-  } else {
-    await document.exitPictureInPicture();
+// 示例：先获取video元素
+ 	 const video = document.getElementByld('video');
+ 	 
+ 	 try {
+ 	   if (video !== document.pictureInPictureElement) {
+ 	     await video.requestPictureInPicture();
   }
 }
 // ...
