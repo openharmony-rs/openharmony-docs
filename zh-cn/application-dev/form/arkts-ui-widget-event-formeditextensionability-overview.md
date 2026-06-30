@@ -599,6 +599,19 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    - 新增CommonData.ets文件，用来定义卡片数据结构。
    <!-- @[FormEditDemo_CommonData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/common/CommonData.ets) -->
    
+   ``` TypeScript
+   // entry/src/main/ets/common/CommonData.ets
+   export class FormData {
+     public formId: string = '';
+     public text: string = 'Hello World';
+   
+     constructor(formId: string, text?: string) {
+       this.formId = formId;
+       this.text = text ? text : 'Hello World';
+     }
+   }
+   ```
+   
 
 5. 资源文件如下。
 
