@@ -4,7 +4,7 @@
 <!--Subsystem: Account-->
 <!--Owner: @steven-q-->
 <!--Designer: @JiDong-CS1-->
-<!--Tester: @zhaimengchao-->
+<!--Tester: @pan9f-->
 <!--Adviser: @zengyawen-->
 
 The **osAccount** module provides basic capabilities for managing system (OS) accounts, including adding, deleting, querying, setting, subscribing to, and enabling an OS account.
@@ -54,14 +54,14 @@ Checks whether this domain account is supported. This API uses a promise to retu
 **Return value**
 
 | Type                  | Description                                     |
-| :--------------------- | :----------------------------------------- |
+| --------------------- | ----------------------------------------- |
 | Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means this domain account is supported; the value **false** means the opposite.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -116,7 +116,7 @@ Checks whether multiple OS accounts are supported. This API uses an asynchronous
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
@@ -152,14 +152,14 @@ Checks whether multiple OS accounts are supported. This API uses a promise to re
 **Return value**
 
 | Type                  | Description                                                       |
-| :--------------------- | :--------------------------------------------------------- |
+| --------------------- | --------------------------------------------------------- |
 | Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means multiple OS accounts are supported; the value **false** means the opposite.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -189,7 +189,7 @@ Checks whether an OS account is activated. This API uses an asynchronous callbac
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. The substitute API is available only to system applications.
+> This API is supported since API version 9 and deprecated since API version 11. Its substitute is available only to system applications.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -206,7 +206,7 @@ Checks whether an OS account is activated. This API uses an asynchronous callbac
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -222,6 +222,7 @@ Check whether OS account 100 is activated.
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId indicates the OS account ID, which can be obtained by calling getOsAccountLocalId.
   let localId: number = 100;
   try {
     accountManager.checkOsAccountActivated(localId, (err: BusinessError, isActivated: boolean) => {
@@ -245,7 +246,7 @@ Checks whether an OS account is activated. This API uses a promise to return the
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. The substitute API is available only to system applications.
+> This API is supported since API version 9 and deprecated since API version 11. Its substitute is available only to system applications.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -267,7 +268,7 @@ Checks whether an OS account is activated. This API uses a promise to return the
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -283,6 +284,7 @@ Check whether OS account 100 is activated.
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId indicates the OS account ID, which can be obtained by calling getOsAccountLocalId.
   let localId: number = 100;
   try {
     accountManager.checkOsAccountActivated(localId).then((isActivated: boolean) => {
@@ -308,7 +310,7 @@ Checks whether a constraint is enabled for the current OS account. This API uses
 
 | Name    | Type  | Mandatory| Description                               |
 | ---------- | ------ | ---- | ---------------------------------- |
-| constraint | string | Yes  | [Constraint](#constraints) to check.|
+| constraint | string | Yes  | [Constraint](#constraints) to check. |
 
 **Return value**
 
@@ -320,14 +322,14 @@ Checks whether a constraint is enabled for the current OS account. This API uses
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 
 **Example**
 
-Check whether OS account 100 is forbidden to use Wi-Fi.
+Check whether the current OS account is forbidden to use Wi-Fi.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -354,7 +356,7 @@ Checks whether the specified constraint is enabled for an OS account. This API u
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. The substitute API is available only to system applications.
+> This API is supported since API version 9 and deprecated since API version 11. Its substitute is available only to system applications.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -372,7 +374,7 @@ Checks whether the specified constraint is enabled for an OS account. This API u
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -388,6 +390,7 @@ Check whether OS account 100 is forbidden to use Wi-Fi.
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId indicates the OS account ID, which can be obtained by calling getOsAccountLocalId.
   let localId: number = 100;
   let constraint: string = 'constraint.wifi';
   try {
@@ -412,7 +415,7 @@ Checks whether the specified constraint is enabled for an OS account. This API u
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. The substitute API is available only to system applications.
+> This API is supported since API version 9 and deprecated since API version 11. Its substitute is available only to system applications.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -435,7 +438,7 @@ Checks whether the specified constraint is enabled for an OS account. This API u
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -451,6 +454,7 @@ Check whether OS account 100 is forbidden to use Wi-Fi.
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId indicates the OS account ID, which can be obtained by calling getOsAccountLocalId.
   let localId: number = 100;
   let constraint: string = 'constraint.wifi';
   try {
@@ -483,7 +487,7 @@ Checks whether the current OS account is a test account. This API uses an asynch
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
@@ -526,7 +530,7 @@ Checks whether the current OS account is a test account. This API uses a promise
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -552,7 +556,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 isOsAccountUnlocked(): Promise&lt;boolean&gt;
 
-Checks whether the current OS account is unlocked. This API uses a promise to return the result.
+Checks whether the current OS account has been unlocked. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -560,13 +564,13 @@ Checks whether the current OS account is unlocked. This API uses a promise to re
 
 | Type                  | Description                                                                     |
 | ---------------------- | ------------------------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the OS account has been verified; the value **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the OS account has been unlocked; the value **false** means the opposite.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -596,7 +600,7 @@ Checks whether the current OS account is unlocked. This API uses an asynchronous
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. Use [isOsAccountUnlocked](#isosaccountunlocked11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. You are advised to use [isOsAccountUnlocked](#isosaccountunlocked11) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -610,7 +614,7 @@ Checks whether the current OS account is unlocked. This API uses an asynchronous
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -642,7 +646,7 @@ Checks whether the current OS account has been verified. This API uses a promise
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. Use [isOsAccountUnlocked](#isosaccountunlocked11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. You are advised to use [isOsAccountUnlocked](#isosaccountunlocked11) instead.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -656,7 +660,7 @@ Checks whether the current OS account has been verified. This API uses a promise
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -686,7 +690,7 @@ Checks whether an OS account has been verified. This API uses an asynchronous ca
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. The substitute API is available only to system applications.
+> This API is supported since API version 9 and deprecated since API version 11. Its substitute is available only to system applications.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -703,7 +707,7 @@ Checks whether an OS account has been verified. This API uses an asynchronous ca
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -717,6 +721,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId indicates the OS account ID, which can be obtained by calling getOsAccountLocalId.
   let localId: number = 100;
   try {
     accountManager.checkOsAccountVerified(localId, (err: BusinessError, isVerified: boolean) => {
@@ -740,7 +745,7 @@ Checks whether an OS account has been verified. This API uses a promise to retur
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. The substitute API is available only to system applications.
+> This API is supported since API version 9 and deprecated since API version 11. Its substitute is available only to system applications.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -762,7 +767,7 @@ Checks whether an OS account has been verified. This API uses a promise to retur
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -776,6 +781,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId indicates the OS account ID, which can be obtained by calling getOsAccountLocalId.
   let localId: number = 100;
   try {
     accountManager.checkOsAccountVerified(localId).then((isVerified: boolean) => {
@@ -809,7 +815,7 @@ Obtains the number of OS accounts created. This API uses an asynchronous callbac
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -855,7 +861,7 @@ Obtains the number of OS accounts created. This API uses a promise to return the
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 12300001 | The system service works abnormally. |
@@ -896,7 +902,7 @@ Obtains the ID of the OS account to which the current process belongs. This API 
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
@@ -939,7 +945,7 @@ Obtains the ID of the OS account to which the current process belongs. This API 
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -980,7 +986,7 @@ Obtains the OS account ID based on the process UID. This API uses an asynchronou
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message        |
+| ID| Error Message        |
 | -------- | --------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
@@ -994,13 +1000,15 @@ Obtain the ID of the OS account whose process UID is **12345678**.
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // uid indicates the application process UID, which can be obtained from the application information.
   let uid: number = 12345678;
   try {
     accountManager.getOsAccountLocalIdForUid(uid, (err: BusinessError, localId: number) => {
       if (err) {
         console.error(`getOsAccountLocalIdForUid failed, code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('getOsAccountLocalIdForUid successfully, localId: ' + localId);
       }
-      console.info('getOsAccountLocalIdForUid successfully, localId: ' + localId);
     });
   } catch (e) {
     const err = e as BusinessError;
@@ -1032,7 +1040,7 @@ Obtains the OS account ID based on the process UID. This API uses a promise to r
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
@@ -1046,6 +1054,7 @@ Obtain the ID of the OS account whose process UID is **12345678**.
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // uid indicates the application process UID, which can be obtained from the application information.
   let uid: number = 12345678;
   try {
     accountManager.getOsAccountLocalIdForUid(uid).then((localId: number) => {
@@ -1083,7 +1092,7 @@ Obtains the OS account ID based on the process UID. The API returns the result s
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300002 | Invalid uid. |
@@ -1096,6 +1105,7 @@ Obtain the ID of the OS account whose process UID is **12345678**.
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // uid indicates the application process UID, which can be obtained from the application information.
   let uid: number = 12345678;
   try {
     let localId : number = accountManager.getOsAccountLocalIdForUidSync(uid);
@@ -1123,14 +1133,14 @@ Obtains the local IDs of all non-system-level OS accounts. Non-system-level OS a
 **Return value**
 
 | Type                 | Description                                   |
-| :------------------- | :------------------------------------- |
+| ------------------- | ------------------------------------- |
 | Promise&lt;number[]&gt; | Promise used to return the local IDs of all non-system-level OS accounts.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 12300001 | The system service works abnormally. |
@@ -1174,7 +1184,7 @@ Obtains the OS account ID based on the domain account information. This API uses
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -1221,14 +1231,14 @@ Obtains the OS account ID based on the domain account information. This API uses
 **Return value**
 
 | Type                 | Description                                   |
-| :-------------------- | :------------------------------------- |
+| -------------------- | ------------------------------------- |
 | Promise&lt;number&gt; | Promise used to return the ID of the OS account associated with the domain account.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -1262,7 +1272,7 @@ Obtains all constraints enabled for an OS account. This API uses an asynchronous
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. The substitute API is available only to system applications.
+> This API is supported since API version 9 and deprecated since API version 11. Its substitute is available only to system applications.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -1279,7 +1289,7 @@ Obtains all constraints enabled for an OS account. This API uses an asynchronous
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -1295,6 +1305,7 @@ Obtain all constraints of OS account 100.
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId indicates the OS account ID, which can be obtained by calling getOsAccountLocalId.
   let localId: number = 100;
   try {
     accountManager.getOsAccountConstraints(localId, (err: BusinessError, constraints: string[]) => {
@@ -1318,7 +1329,7 @@ Obtains all constraints enabled for an OS account. This API uses a promise to re
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. The substitute API is available only to system applications.
+> This API is supported since API version 9 and deprecated since API version 11. Its substitute is available only to system applications.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -1340,7 +1351,7 @@ Obtains all constraints enabled for an OS account. This API uses a promise to re
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -1356,6 +1367,7 @@ Obtain all constraints of OS account 100.
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId indicates the OS account ID, which can be obtained by calling getOsAccountLocalId.
   let localId: number = 100;
   try {
     accountManager.getOsAccountConstraints(localId).then((constraints: string[]) => {
@@ -1387,7 +1399,7 @@ Obtains information about all activated OS accounts. This API uses an asynchrono
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
@@ -1426,14 +1438,14 @@ Obtains information about all activated OS accounts. This API uses a promise to 
 **Return value**
 
 | Type                              | Description                                              |
-| :--------------------------------- | :------------------------------------------------ |
+| --------------------------------- | ------------------------------------------------ |
 | Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the information about all activated OS accounts.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -1463,7 +1475,7 @@ Obtains information about the OS account to which the current process belongs. T
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. The substitute API is available only to system applications.
+> This API is supported since API version 9 and deprecated since API version 11. Its substitute is available only to system applications.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.GET_LOCAL_ACCOUNTS<sup>10+</sup> (available only for system applications)
 
@@ -1479,7 +1491,7 @@ Obtains information about the OS account to which the current process belongs. T
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1513,7 +1525,7 @@ Obtains information about the OS account to which the current process belongs. T
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. The substitute API is available only to system applications.
+> This API is supported since API version 9 and deprecated since API version 11. Its substitute is available only to system applications.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.GET_LOCAL_ACCOUNTS<sup>10+</sup> (available only for system applications)
 
@@ -1529,7 +1541,7 @@ Obtains information about the OS account to which the current process belongs. T
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied. |
 | 12300001 | The system service works abnormally. |
@@ -1570,7 +1582,7 @@ Obtains the type of the account to which the current process belongs. This API u
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
@@ -1613,7 +1625,7 @@ Obtains the type of the account to which the current process belongs. This API u
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -1655,7 +1667,7 @@ Queries the ID of a distributed virtual device. This API uses an asynchronous ca
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1701,7 +1713,7 @@ Queries the ID of this distributed virtual device. This API uses a promise to re
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 12300001 | The system service works abnormally. |
@@ -1743,7 +1755,7 @@ Obtains the OS account ID based on the SN. This API uses an asynchronous callbac
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
@@ -1758,6 +1770,7 @@ Obtain the ID of the OS account whose SN is 12345.
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // serialNumber indicates the account serial number, which can be obtained by calling getSerialNumberForOsAccountLocalId.
   let serialNumber: number = 12345;
   try {
     accountManager.getOsAccountLocalIdForSerialNumber(serialNumber, (err: BusinessError, localId: number)=>{
@@ -1797,7 +1810,7 @@ Obtains the OS account ID based on the SN. This API uses a promise to return the
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
@@ -1812,6 +1825,7 @@ Obtain the ID of the OS account whose SN is 12345.
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // serialNumber indicates the account serial number, which can be obtained by calling getSerialNumberForOsAccountLocalId.
   let serialNumber: number = 12345;
   try {
     accountManager.getOsAccountLocalIdForSerialNumber(serialNumber).then((localId: number) => {
@@ -1844,7 +1858,7 @@ Obtains the SN of an OS account based on the account ID. This API uses an asynch
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
@@ -1859,6 +1873,7 @@ Obtain the SN of the OS account 100.
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId indicates the OS account ID, which can be obtained by calling getOsAccountLocalId.
   let localId: number = 100;
   try {
     accountManager.getSerialNumberForOsAccountLocalId(localId, (err: BusinessError, serialNumber: number)=>{
@@ -1891,14 +1906,14 @@ Obtains the SN of an OS account based on the account ID. This API uses a promise
 **Return value**
 
 | Type                 | Description                                   |
-| :-------------------- | :------------------------------------- |
+| -------------------- | ------------------------------------- |
 | Promise&lt;number&gt; | Promise used to return the SN obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
@@ -1913,6 +1928,7 @@ Obtain the SN of the OS account 100.
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId indicates the OS account ID, which can be obtained by calling getOsAccountLocalId.
   let localId: number = 100;
   try {
     accountManager.getSerialNumberForOsAccountLocalId(localId).then((serialNumber: number) => {
@@ -1974,7 +1990,7 @@ Checks whether multiple OS accounts are supported. This API uses a promise to re
 **Return value**
 
 | Type                  | Description                                                      |
-| :--------------------- | :--------------------------------------------------------- |
+| --------------------- | --------------------------------------------------------- |
 | Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means multiple OS accounts are supported; the value **false** means the opposite.|
 
 **Example**
@@ -1998,7 +2014,7 @@ Checks whether an OS account is activated. This API uses an asynchronous callbac
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. The substitute API is available only to system applications.
+> This API is supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -2019,6 +2035,7 @@ Check whether OS account 100 is activated.
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId indicates the OS account ID, which can be obtained by calling getOsAccountLocalId.
   let localId: number = 100;
   accountManager.isOsAccountActived(localId, (err: BusinessError, isActived: boolean) => {
     if (err) {
@@ -2037,7 +2054,7 @@ Checks whether an OS account is activated. This API uses a promise to return the
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. The substitute API is available only to system applications.
+> This API is supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -2063,6 +2080,7 @@ Check whether OS account 100 is activated.
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId indicates the OS account ID, which can be obtained by calling getOsAccountLocalId.
   let localId: number = 100;
   accountManager.isOsAccountActived(localId).then((isActived: boolean) => {
     console.info('isOsAccountActived successfully, isActived: ' + isActived);
@@ -2079,7 +2097,7 @@ Checks whether the specified constraint is enabled for an OS account. This API u
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. The substitute API is available only to system applications.
+> This API is supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -2101,6 +2119,7 @@ Check whether OS account 100 is forbidden to use Wi-Fi.
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId indicates the OS account ID, which can be obtained by calling getOsAccountLocalId.
   let localId: number = 100;
   let constraint: string = 'constraint.wifi';
   accountManager.isOsAccountConstraintEnable(localId, constraint, (err: BusinessError, isEnabled: boolean) => {
@@ -2120,7 +2139,7 @@ Checks whether the specified constraint is enabled for an OS account. This API u
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. The substitute API is available only to system applications.
+> This API is supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -2147,6 +2166,7 @@ Check whether OS account 100 is forbidden to use Wi-Fi.
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId indicates the OS account ID, which can be obtained by calling getOsAccountLocalId.
   let localId: number = 100;
   let constraint: string = 'constraint.wifi';
   accountManager.isOsAccountConstraintEnable(localId, constraint).then((isEnabled: boolean) => {
@@ -2263,7 +2283,7 @@ Checks whether an OS account has been verified. This API uses an asynchronous ca
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. The substitute API is available only to system applications.
+> This API is supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -2282,6 +2302,7 @@ Checks whether an OS account has been verified. This API uses an asynchronous ca
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId indicates the OS account ID, which can be obtained by calling getOsAccountLocalId.
   let localId: number = 100;
   accountManager.isOsAccountVerified(localId, (err: BusinessError, isVerified: boolean) => {
     if (err) {
@@ -2300,7 +2321,7 @@ Checks whether an OS account has been verified. This API uses a promise to retur
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. The substitute API is available only to system applications.
+> This API is supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -2447,7 +2468,7 @@ Obtains the ID of the OS account to which the current process belongs. This API 
 **Return value**
 
 | Type                 | Description                                     |
-| :-------------------- | :--------------------------------------- |
+| -------------------- | --------------------------------------- |
 | Promise&lt;number&gt; | Promise used to return the OS account ID obtained.|
 
 **Example**
@@ -2521,7 +2542,7 @@ Obtains the OS account ID based on the process UID. This API uses a promise to r
 **Return value**
 
 | Type                 | Description                                 |
-| :-------------------- | :----------------------------------- |
+| -------------------- | ----------------------------------- |
 | Promise&lt;number&gt; | Promise used to return the OS account ID obtained.|
 
 **Example**
@@ -2600,7 +2621,7 @@ Obtains the OS account ID based on the domain account information. This API uses
 **Return value**
 
 | Type                 | Description                                   |
-| :-------------------- | :------------------------------------- |
+| -------------------- | ------------------------------------- |
 | Promise&lt;number&gt; | Promise used to return the ID of the OS account associated with the domain account.|
 
 **Example**
@@ -2625,7 +2646,7 @@ Obtains all constraints enabled for an OS account. This API uses an asynchronous
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. The substitute API is available only to system applications.
+> This API is supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -2646,6 +2667,7 @@ Obtain all constraints of OS account 100.
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId indicates the OS account ID, which can be obtained by calling getOsAccountLocalId.
   let localId: number = 100;
   accountManager.getOsAccountAllConstraints(localId, (err: BusinessError, constraints: string[])=>{
     if (err) {
@@ -2664,7 +2686,7 @@ Obtains all constraints enabled for an OS account. This API uses a promise to re
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. The substitute API is available only to system applications.
+> This API is supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -2679,7 +2701,7 @@ Obtains all constraints enabled for an OS account. This API uses a promise to re
 **Return value**
 
 | Type                              | Description                                                        |
-| :--------------------------------- | :----------------------------------------------------------- |
+| --------------------------------- | ----------------------------------------------------------- |
 | Promise&lt;Array&lt;string&gt;&gt; | Promise used to return all the [constraints](#constraints) enabled for the OS account.|
 
 **Example**
@@ -2690,6 +2712,7 @@ Obtain all constraints of OS account 100.
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId indicates the OS account ID, which can be obtained by calling getOsAccountLocalId.
   let localId: number = 100;
   accountManager.getOsAccountAllConstraints(localId).then((constraints: string[]) => {
     console.info('getOsAccountAllConstraints, constraints: ' + constraints);
@@ -2773,7 +2796,7 @@ Obtains information about the OS account to which the current process belongs. T
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. The substitute API is available only to system applications.
+> This API is supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -2808,7 +2831,7 @@ Obtains information about the OS account to which the current process belongs. T
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. The substitute API is available only to system applications.
+> This API is supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications.
 
 **Required permissions**: ohos.permission.MANAGE_LOCAL_ACCOUNTS (available only for system applications)
 
@@ -2936,7 +2959,7 @@ Obtains the ID of a distributed virtual device. This API uses an asynchronous ca
 
 getDistributedVirtualDeviceId(): Promise&lt;string&gt;
 
-Obtains the ID of this distributed virtual device. This API uses a promise to return the result.
+Queries the ID of a distributed virtual device. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -3069,6 +3092,7 @@ Obtain the SN of the OS account 100.
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId indicates the OS account ID, which can be obtained by calling getOsAccountLocalId.
   let localId: number = 100;
   accountManager.getSerialNumberByOsAccountLocalId(localId, (err: BusinessError, serialNumber: number)=>{
     if (err) {
@@ -3111,6 +3135,7 @@ Obtain the SN of the OS account 100.
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId indicates the OS account ID, which can be obtained by calling getOsAccountLocalId.
   let localId: number = 100;
   accountManager.getSerialNumberByOsAccountLocalId(localId).then((serialNumber: number) => {
     console.info('getSerialNumberByOsAccountLocalId serialNumber: ' + serialNumber);
@@ -3130,14 +3155,14 @@ Obtains the name of the OS account of the caller. This API uses a promise to ret
 **Return value**
 
 | Type                     | Description                    |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;string&gt; | Promise used to return the OS account name obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -3189,7 +3214,7 @@ Obtains the name of an OS account based on its local ID. This API uses a promise
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied. |
 | 12300001 | The system service works abnormally. |
@@ -3226,13 +3251,13 @@ Obtains the ID of the foreground OS account. This API uses a promise to return t
 
 | Type                  | Description                                                              |
 | ---------------------- | ----------------------------------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the ID of the foreground OS account.|
+| Promise&lt;number&gt; | Promise used to return the foreground OS account ID.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md).
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 12300001 | The system service works abnormally. |
 
@@ -3280,7 +3305,7 @@ Obtains the domain account information associated with a specified OS account. T
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3293,6 +3318,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId indicates the OS account ID, which can be obtained by calling getOsAccountLocalId.
   let localId: number = 100;
   accountManager.getOsAccountDomainInfo(localId).then((domainAccountInfo: osAccount.DomainAccountInfo) => {
     if (domainAccountInfo === null) {
@@ -3330,14 +3356,14 @@ Updates information of a domain account. This API uses a promise to return the r
 **Return value**
 
 | Type                     | Description                    |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 801 | Capability not supported.|
@@ -3402,7 +3428,7 @@ Represents the domain account information.
 | domain      | string | No| No | Domain name.    |
 | accountName | string | No| No | Domain account name.|
 | serverConfigId<sup>18+</sup> | string | No| Yes | Domain account configuration ID, which is an empty string by default.|
-| additionalInfo | Record<string, Object> | No| Yes| Additional information about the domain account.<br>**Since**: 26.0.0<br>**Model constraint**: This API can be used only in the stage model.|
+| additionalInfo | Record<string, Object> | No| Yes| Additional information about the domain account. By default, no value is passed in.<br>**Since**: 26.0.0<br>**Model constraint**: This API can be used only in the stage model.|
 
 
 ## DomainServerConfig<sup>18+</sup>
@@ -3435,19 +3461,19 @@ Adds domain server configuration. This API uses a promise to return the result.
 
 | Name   | Type                    | Mandatory| Description                     |
 | ----------| ----------------------- | --- | -------------------------- |
-| parameters   | Record<string, Object>  | Yes | Configuration parameters of the domain server.|
+| parameters   | Record<string, Object>  | Yes | Domain server configuration parameters, which are used to configure the connection information of the domain server. The parameters include the server address and port number.|
 
 **Return value**
 
 | Type                     | Description                    |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;[DomainServerConfig](#domainserverconfig18)&gt; | Promise used to return the configuration of the newly added domain server.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 801 | Capability not supported.|
@@ -3493,14 +3519,14 @@ Removes domain server configuration. This API uses a promise to return the resul
 **Return value**
 
 | Type                     | Description                    |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 801 | Capability not supported.|
@@ -3542,19 +3568,19 @@ Updates the domain server configuration. This API uses a promise to return the r
 | Name   | Type                    | Mandatory| Description                     |
 | ----------| ----------------------- | --- | -------------------------- |
 | configId   | string  | Yes | Server configuration ID.|
-| parameters   | Record&lt;string, Object&gt;  | Yes | Configuration parameters of the domain server.|
+| parameters   | Record&lt;string, Object&gt;  | Yes | Domain server configuration parameters, which are used to configure the connection information of the domain server. The parameters include the server address and port number.|
 
 **Return value**
 
 | Type                     | Description                    |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;[DomainServerConfig](#domainserverconfig18)&gt; | Promise used to return the updated domain server configuration.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 801 | Capability not supported.|
@@ -3606,14 +3632,14 @@ Obtains the domain server configuration. This API uses a promise to return the r
 **Return value**
 
 | Type                     | Description                    |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;[DomainServerConfig](#domainserverconfig18)&gt; | Promise used to return the domain server configuration obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 801 | Capability not supported.|
@@ -3655,14 +3681,14 @@ Obtains the configurations of all domain servers. This API uses a promise to ret
 **Return value**
 
 | Type                     | Description                    |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;Array&lt;[DomainServerConfig](#domainserverconfig18)&gt;&gt; | Promise used to return the domain server configuration obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 801 | Capability not supported.|
@@ -3709,14 +3735,14 @@ Obtains the server configuration of a domain account. This API uses a promise to
 **Return value**
 
 | Type                     | Description                    |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;[DomainServerConfig](#domainserverconfig18)&gt; | Promise used to return the domain server configuration of the account.|
 
 **Error codes**
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 801 | Capability not supported.|

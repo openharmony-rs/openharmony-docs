@@ -6,7 +6,7 @@
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
-弧形滑块视图容器，提供子组件滑动轮播显示的能力。 
+弧形滑块视图容器，提供子组件滑动轮播显示的能力，适用于可穿戴设备等圆形屏幕场景，并支持弧形圆点指示器、自定义切换动画和旋转表冠控制等能力。
 
 > **说明：**
 >
@@ -66,7 +66,7 @@ ArcSwiper(controller?: ArcSwiperController)
 
 | 参数名     | 类型                                        | 必填 | 说明                                     |
 | ---------- | ------------------------------------------- | ---- | ---------------------------------------- |
-| controller | [ArcSwiperController](#arcswipercontroller) | 否   | 给组件绑定一个控制器，用来控制组件翻页。 |
+| controller | [ArcSwiperController](#arcswipercontroller) | 否   | 给组件绑定一个控制器，用来控制组件翻页。不传入时，组件仍可通过手势滑动切换页面，但无法通过控制器调用翻页方法。 |
 
 
 ## 属性
@@ -141,7 +141,7 @@ vertical(isVertical: Optional\<boolean>)
 
 disableSwipe(disabled: Optional\<boolean>)
 
-是否禁用组件滑动切换功能。
+设置是否禁用组件滑动切换功能。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -167,13 +167,13 @@ digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>)
 
 | 参数名 | 类型                                                        | 必填 | 说明                                                |
 | ------ | ----------------------------------------------------------- | ---- | --------------------------------------------------- |
-| sensitivity  | Optional\<[CrownSensitivity](ts-appendix-enums.md#crownsensitivity18)> | 是   | 旋转表冠的灵敏度。<br/>默认值：CrownSensitivity.MEDIUM |
+| sensitivity  | Optional\<[CrownSensitivity](ts-appendix-enums.md#crownsensitivity18)> | 是   | 旋转表冠的灵敏度。设置不同灵敏度级别可调整表冠滚动的响应速度。<br/>默认值：CrownSensitivity.MEDIUM |
 
 ### effectMode
 
 effectMode(edgeEffect: Optional\<EdgeEffect>)
 
-设置边缘滑动效果。 目前支持的滑动效果参见[EdgeEffect](ts-appendix-enums.md#edgeeffect)的枚举说明。调用控制器接口时回弹不生效。
+设置边缘滑动效果。目前支持的滑动效果参见[EdgeEffect](ts-appendix-enums.md#edgeeffect)的枚举说明。通过[ArcSwiperController](#arcswipercontroller)的showNext、showPrevious、finishAnimation接口控制翻页时，回弹效果不生效。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -183,7 +183,7 @@ effectMode(edgeEffect: Optional\<EdgeEffect>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                         |
 | ------ | --------------------------------------------- | ---- | -------------------------------------------- |
-| edgeEffect  | Optional\<[EdgeEffect](ts-appendix-enums.md#edgeeffect)> | 是   | 边缘滑动效果。<br/>默认值：EdgeEffect.Spring |
+| edgeEffect  | Optional\<[EdgeEffect](ts-appendix-enums.md#edgeeffect)> | 是   | 边缘滑动效果。通过ArcSwiperController接口控制翻页时，回弹效果不生效。<br/>默认值：EdgeEffect.Spring |
 
 ### disableTransitionAnimation
 
@@ -199,7 +199,7 @@ disableTransitionAnimation(disabled: Optional\<boolean>)
 
 | 参数名   | 类型               | 必填 | 说明                                    |
 | -------- | ------------------ | ---- | --------------------------------------- |
-| disabled | Optional\<boolean> | 是   | 是否关闭特殊动效效果。<br>true：关闭特殊动效效果；false：不关闭特殊动效效果。<br>传入参数非法时，按false处理。 |
+| disabled | Optional\<boolean> | 是   | 是否关闭特殊动效效果。<br/>true：关闭特殊动效效果；false：不关闭特殊动效效果。<br/>传入参数非法时，按false处理。 |
 
 ## ArcSwiperController
 
@@ -253,7 +253,7 @@ finishAnimation(handler?: FinishAnimationHandler)
 
 | 参数名  | 类型                                              | 必填 | 说明                                             |
 | ------- | ------------------------------------------------- | ---- | ------------------------------------------------ |
-| handler | [FinishAnimationHandler](#finishanimationhandler) | 否   | 动画结束的回调。<br>默认值：不传入的情况，无回调 |
+| handler | [FinishAnimationHandler](#finishanimationhandler) | 否   | 动画结束的回调。<br/>默认值：不传入时无回调。 |
 
 ## ArcDotIndicator
 
@@ -551,7 +551,7 @@ onGestureSwipe(handler: Optional\<GestureSwipeHandler>)
 
 customContentTransition(transition: Optional\<SwiperContentAnimatedTransition>)
 
-自定义ArcSwiper页面切换动画。在页面跟手滑动和离手后执行切换动画的过程中，会对视窗内所有页面逐帧触发回调。开发者可以在回调中设置透明度、缩放比例、位移等属性来自定义切换动画。
+自定义ArcSwiper页面切换动画。在页面跟手滑动和离手后执行切换动画的过程中，会对视窗内所有页面逐帧触发回调，开发者可在回调中设置透明度、缩放比例、位移等属性。
 
 在页面跟手滑动和离手后执行切换动画的过程中，会对视窗内所有页面逐帧触发[SwiperContentTransitionProxy](#swipercontenttransitionproxy)回调。例如，当视窗内有下标为0、1的两个页面时，会每帧触发两次index值分别为0和1的回调。
 
@@ -575,7 +575,7 @@ ArcSwiper自定义切换动画相关信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ---- | ---- | ---- | ---- |
-| timeout | number | 否 | 是 | ArcSwiper自定义切换动画超时时间。从页面执行默认动画（页面滑动）至移出视窗外的第一帧开始计时，如果到达该时间后，开发者仍未调用[SwiperContentTransitionProxy](#swipercontenttransitionproxy)的[finishTransition](#finishtransition)接口通知ArcSwiper组件此页面的自定义动画已结束，那么组件就会认为此页面的自定义动画已结束，立即在该页面节点下渲染树。单位ms，默认值为0。 |
+| timeout | number | 否 | 是 | ArcSwiper自定义切换动画超时时间。从页面执行默认动画（页面滑动）至移出视窗外的第一帧开始计时，如果到达该时间后，开发者仍未调用[SwiperContentTransitionProxy](#swipercontenttransitionproxy)的[finishTransition](#finishtransition)接口通知ArcSwiper组件此页面的自定义动画已结束，那么组件就会认为此页面的自定义动画已结束，立即在该页面节点下渲染树。<br/>单位：ms<br/>默认值：0。 |
 | transition | Callback\<[SwiperContentTransitionProxy](#swipercontenttransitionproxy)> | 否 | 否 | 自定义切换动画具体内容。 |
 
 ## SwiperContentTransitionProxy
@@ -694,15 +694,15 @@ struct TestNewInterface {
         .disableSwipe(false)
         .digitalCrownSensitivity(CrownSensitivity.MEDIUM)
         .onChange((index: number) => {
-          console.info("onChange:" + index.toString());
+          console.info('onChange:' + index.toString());
         })
         .onAnimationStart((index: number, targetIndex: number, extraInfo: SwiperAnimationEvent) => {
           this.innerSelectedIndex = targetIndex;
-          console.info("index: " + index);
-          console.info("targetIndex: " + targetIndex);
-          console.info("current offset: " + extraInfo.currentOffset);
-          console.info("target offset: " + extraInfo.targetOffset);
-          console.info("velocity: " + extraInfo.velocity);
+          console.info('index: ' + index);
+          console.info('targetIndex: ' + targetIndex);
+          console.info('current offset: ' + extraInfo.currentOffset);
+          console.info('target offset: ' + extraInfo.targetOffset);
+          console.info('velocity: ' + extraInfo.velocity);
         })
         .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
           others: Array<GestureRecognizer>): GestureJudgeResult => { // 在识别器即将要成功时，根据当前组件状态，设置识别器使能状态
@@ -710,7 +710,7 @@ struct TestNewInterface {
             let target = current.getEventTargetInfo();
             if (target && current.isBuiltIn() && current.getType() == GestureControl.GestureType.PAN_GESTURE) {
               // 此处判断swiperTarget.isBegin()或innerSelectedIndex === 0，表明ArcSwiper滑动到开头
-              let swiperTarget = target as ScrollableTargetInfo
+              let swiperTarget = target as ScrollableTargetInfo;
               if (swiperTarget instanceof ScrollableTargetInfo &&
                 (swiperTarget.isBegin() || this.innerSelectedIndex === 0)) {
                 let panEvent = event as PanGestureEvent;
@@ -723,8 +723,8 @@ struct TestNewInterface {
           return GestureJudgeResult.CONTINUE;
         })
         .onAnimationEnd((index: number, extraInfo: SwiperAnimationEvent) => {
-          console.info("index: " + index);
-          console.info("current offset: " + extraInfo.currentOffset);
+          console.info('index: ' + index);
+          console.info('current offset: ' + extraInfo.currentOffset);
         })
         .disableTransitionAnimation(false)
       }.height('100%')

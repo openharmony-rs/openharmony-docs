@@ -11,6 +11,7 @@
     - [模块描述](arkts-apis-audio.md)
     - [Functions](arkts-apis-audio-f.md)
     - [Interface (AudioCapturer)](arkts-apis-audio-AudioCapturer.md)
+    - [Interface (AudioDebuggingManager)](arkts-apis-audio-AudioDebuggingManager.md)
     - [Interface (AudioDeviceEnhanceManager)](arkts-apis-audio-AudioDeviceEnhanceManager.md)
     - [Interface (AudioManager)](arkts-apis-audio-AudioManager.md)
     - [Interface (AudioRenderer)](arkts-apis-audio-AudioRenderer.md)
