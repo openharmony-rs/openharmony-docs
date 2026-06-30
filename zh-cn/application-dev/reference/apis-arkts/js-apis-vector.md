@@ -163,7 +163,7 @@ let result1 = vector.has("squirrel");
 
 getIndexOf(element: T): number
 
-返回指定元素第一次出现时的下标值，查找失败返回-1。与[getLastIndexOf](##getlastindexof)的区别：getIndexOf返回元素首次出现的位置，getLastIndexOf返回元素末次出现的位置。
+返回指定元素第一次出现时的下标值，查找失败返回-1。与[getLastIndexOf](#getlastindexof)的区别：getIndexOf返回元素首次出现的位置，getLastIndexOf返回元素末次出现的位置。
 
 **系统能力：** SystemCapability.Utils.Lang
 
