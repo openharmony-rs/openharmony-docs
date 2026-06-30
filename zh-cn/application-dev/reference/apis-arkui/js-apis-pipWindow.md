@@ -14,7 +14,7 @@
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> - 在<!--RP2-->OpenHarmony 6.0<!--RP2End-->之前，支持在Phone、Tablet设备使用画中画功能，其他设备不可用；从<!--RP2-->OpenHarmony 6.0<!--RP2End-->开始，支持在Phone、PC/2in1、Tablet设备使用画中画功能，其他设备不可用；从OpenHarmony 7.0.0开始，支持在Phone、PC/2in1、Tablet、Car设备使用画中画功能，其他设备不可用。
+> - 在<!--RP2-->OpenHarmony 6.0<!--RP2End-->之前，支持在Phone、Tablet设备使用画中画功能，其他设备不可用；从<!--RP2-->OpenHarmony 6.0<!--RP2End-->开始，支持在Phone、PC/2in1、Tablet设备使用画中画功能，其他设备不可用<!--Del-->；从OpenHarmony 7.0.0开始，支持在Phone、PC/2in1、Tablet、Car设备使用画中画功能，其他设备不可用<!--DelEnd-->。
 >
 > - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canIUse()](../common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。
 
@@ -991,8 +991,9 @@ ArkTS-Sta: updateContentSize(width: int, height: int): void
 **ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 26.0.0
-
+<!--Del-->
 **设备行为差异：** 该接口在Phone、Tablet、PC/2in1设备中可正常调用，在Car设备中仅支持固定大小尺寸，宽高比>1则为横屏小窗类型，宽高比<=1则为竖屏大窗类型。
+<!--DelEnd-->
 
 **参数：**
 
