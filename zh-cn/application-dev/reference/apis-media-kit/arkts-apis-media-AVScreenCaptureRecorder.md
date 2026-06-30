@@ -1,8 +1,8 @@
 # Interface (AVScreenCaptureRecorder)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zzs_911-->
-<!--Designer: @stupig001-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -329,6 +329,93 @@ if (avScreenCaptureRecorder != undefined) {
 }
 ```
 
+## addWatermark
+
+ArkTS-Dyn: addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise\<number>
+
+ArkTS-Sta: addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise\<int>
+
+在录制视频过程中添加自定义水印图像。使用Promise异步回调。
+
+> **说明：**
+>
+> - 应用最多可添加5个水印。
+>
+> - 需在[startRecording](arkts-apis-media-AVScreenCaptureRecorder.md#startrecording12)接口调用前调用addWatermark接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型                                   | 必填 | 说明                       |
+| ------ | -------------------------------------- | ---- | -------------------------- |
+| watermark | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 是   | 水印图像。 |
+| config | [WatermarkConfiguration](arkts-apis-media-i.md#watermarkconfiguration) | 是   | 配置视频录制水印的相关参数。 |
+
+**返回值：**
+
+| 类型           | 说明                                       |
+| -------------- | ------------------------------------------ |
+| ArkTS-Dyn: Promise\<number>  <br/> ArkTS-Sta: Promise\<int> | Promise对象，返回所添加水印的编号ID。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | -------------------------------------- |
+| 5400102  | Operation not allowed. Return by promise.  |
+| 5400103  | IO error. Return by promise.    |
+| 5400105  | Service died. Return by promise. |
+| 5400108  | The parameter check failed, parameter value out of range.     |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+import { media } from '@kit.MediaKit';
+
+let watermark: image.PixelMap | undefined = undefined; // 可以通过获取本地资源文件并转换为PixelMap，水印图像不能为空。
+let watermarkConfig: media.WatermarkConfiguration = { top: 100, left: 100, width: 100, height: 100 };
+
+if (watermark) {
+    avScreenCaptureRecorder.addWatermark(watermark, watermarkConfig).then((num: number) => {
+      console.info(`Succeeded in adding watermark, watermarkNum is ${num}`);
+    })
+    .catch((error: BusinessError) => {
+      console.error(`Failed to add watermark and catch error is: Code: ${error.code}, message: ${error.message}`);
+    });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { image } from '@kit.ImageKit';
+import { media } from '@kit.MediaKit';
+
+let watermark: image.PixelMap | undefined = undefined; // 可以通过获取本地资源文件并转换为PixelMap，水印图像不能为空。
+let watermarkConfig: media.WatermarkConfiguration = { top: 100, left: 100, width: 100, height: 100 };
+
+if (watermark) {
+    avScreenCaptureRecorder.addWatermark(watermark, watermarkConfig).then((num: int) => {
+      console.info(`Succeeded in adding watermark, watermarkNum is ${num}`);
+    })
+    .catch((error: Error) => {
+      console.error(`Failed to add watermark and catch error is: Code: ${error.code}, message: ${error.message}`);
+    });
+}
+```
+
 ## skipPrivacyMode<sup>12+</sup>
 
 ArkTS-Dyn: skipPrivacyMode(windowIDs: Array\<number>): Promise\<void>
@@ -476,7 +563,7 @@ setPickerMode(pickerMode: PickerMode): Promise\<void>
 
 | 参数名 | 类型    | 必填 | 说明                                                      |
 | ------ | ------- | ---- | --------------------------------------------------------- |
-| pickerMode | [PickerMode](arkts-apis-media-e.md#pickermode22) | 是   | 选择Picker模式。<br>定义了在Picker中显示的内容类型：<br>- SCREEN_ONLY：仅显示屏幕列表。<br>- WINDOW_ONLY：仅显示窗口列表。<br>- SCREEN_AND_WINDOW：同时显示屏幕列表和窗口列表（默认值）。 |
+| pickerMode | [PickerMode](arkts-apis-media-e.md#pickermode22) | 是   | 选择Picker模式 |
 
 **返回值：**
 
@@ -650,6 +737,74 @@ if (avScreenCaptureRecorder != undefined) {
     console.info('Succeeded in presenting picker avScreenCaptureRecorder.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to present picker avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
+## setContentAutoRotation
+
+setContentAutoRotation(enable: boolean): Promise\<void>
+
+设置捕获的屏幕内容是否自动旋转以保持图像直立。使用Promise异步回调。
+
+> **说明：**
+>
+> 需在[startRecording](arkts-apis-media-AVScreenCaptureRecorder.md#startrecording12)接口调用前调用此接口。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**参数：**
+
+| 参数名 | 类型                                   | 必填 | 说明                       |
+| ------ | -------------------------------------- | ---- | -------------------------- |
+| enable | boolean | 是   | 表示是否启用自动旋转，默认值为false。true表示启用自动旋转，输出帧中的图像内容将保持直立。 |
+
+**返回值：**
+
+| 类型           | 说明                                       |
+| -------------- | ------------------------------------------ |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | -------------------------------------- |
+| 801  | Capability not supported. Return by promise.  |
+| 5400102  | Operation not allowed. Return by promise.    |
+| 5400105  | Service died. Return by promise. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 初始化avScreenCaptureRecorder。
+let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
+media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
+  if (captureRecorder != null) {
+    avScreenCaptureRecorder = captureRecorder;
+    console.info('Succeeded in creating avScreenCaptureRecorder');
+  } else {
+    console.error('Failed to create avScreenCaptureRecorder');
+  }
+}).catch((error: BusinessError) => {
+  console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
+});
+
+// 其余流程。
+
+// 调用setContentAutoRotation方法。
+if (avScreenCaptureRecorder != undefined) {
+  avScreenCaptureRecorder.setContentAutoRotation(true).then(() => {
+    console.info('Succeeded in enabling setContentAutoRotation.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to enable setContentAutoRotation. Code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -967,7 +1122,7 @@ onError(callback: ErrorCallback): void
 
 **错误码：**  
 
-以下错误码的详细介绍请参见[通用错误码](arkts-apis-media-e.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Enums](arkts-apis-media-e.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |

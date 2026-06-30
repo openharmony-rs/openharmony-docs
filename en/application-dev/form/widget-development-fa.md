@@ -1,9 +1,9 @@
 # Developing a JS Widget (FA Model)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 The FA model is supported since API version 7, and no longer recommended. Application components are specified by exporting anonymous objects and fixed entry files. You cannot perform derivation for capability expansion. Now, the stage model is recommended for application development.
 

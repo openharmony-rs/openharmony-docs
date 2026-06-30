@@ -10,14 +10,16 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本Class仅适用于ArkTS-Dyn。
 >
-> 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
 
 ## 导入模块
 
 ```ts
-import { ArkTSUtils } from '@kit.ArkTS'
+import { ArkTSUtils } from '@kit.ArkTS';
 ```
 
 ## ISendable
@@ -26,7 +28,7 @@ type ISendable = lang.ISendable
 
 ISendable是所有Sendable类型（除`null`和`undefined`）的父类型。自身没有任何必要的方法和属性。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -40,7 +42,7 @@ type Transformer = (this: ISendable, key: string, value: ISendable | undefined |
 
 用于转换结果函数的类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -62,7 +64,7 @@ type Transformer = (this: ISendable, key: string, value: ISendable | undefined |
 
 定义处理BigInt的模式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -76,20 +78,20 @@ type Transformer = (this: ISendable, key: string, value: ISendable | undefined |
 
 定义解析结果的返回类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
 | 名称 | 值| 说明            |
 | ------ | ------ | --------------- |
-| OBJECT   | 0 |返回 SendableObject 对象。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| MAP<sup>13+</sup>   | 1 |返回 SendableMap 对象。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。|
+| OBJECT   | 0 |返回 SendableObject 对象。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| MAP<sup>13+</sup>   | 1 |返回 SendableMap 对象。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。|
 
 ## ParseOptions
 
 解析的选项，可定义处理BigInt的模式和解析结果的返回类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -104,7 +106,7 @@ parse(text: string, reviver?: Transformer, options?: ParseOptions): ISendable | 
 
 用于解析JSON字符串生成ISendable数据或null。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -121,14 +123,6 @@ parse(text: string, reviver?: Transformer, options?: ParseOptions): ISendable | 
 | 类型 | 说明 |
 | -------- | -------- |
 | [ISendable](#isendable) \| null | 返回ISendable数据或null。入参为null时，返回null。|
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息      |
-| -------- | ------------- |
-| 401      | Parameter error. Invalid JSON string. |
 
 **示例：**
 
@@ -150,20 +144,20 @@ let options: ArkTSUtils.ASON.ParseOptions = {
   parseReturnType: ArkTSUtils.ASON.ParseReturnType.OBJECT,
 }
 let numberText = '{"largeNumber":112233445566778899}';
-let numberObj = ArkTSUtils.ASON.parse(numberText,undefined,options) as ISendable;
+let parsedNumberData = ArkTSUtils.ASON.parse(numberText, undefined, options) as ISendable;
 
-console.info((numberObj as object)?.["largeNumber"]);
+console.info((parsedNumberData as object)?.["largeNumber"]);
 // 期望输出: 112233445566778899
 
 let options2: ArkTSUtils.ASON.ParseOptions = {
-    bigIntMode: ArkTSUtils.ASON.BigIntMode.PARSE_AS_BIGINT,
-    parseReturnType: ArkTSUtils.ASON.ParseReturnType.MAP,
-  }
+  bigIntMode: ArkTSUtils.ASON.BigIntMode.PARSE_AS_BIGINT,
+  parseReturnType: ArkTSUtils.ASON.ParseReturnType.MAP,
+}
 let mapText = '{"largeNumber":112233445566778899}';
-let map  = ArkTSUtils.ASON.parse(mapText,undefined,options2);
-console.info("map is " + map);
-// 期望输出: map is [object SendableMap]
-console.info("largeNumber is " + (map as collections.Map<string,bigint>).get("largeNumber"));
+let parsedMap = ArkTSUtils.ASON.parse(mapText, undefined, options2);
+console.info("parsedMap is " + parsedMap);
+// 期望输出: parsedMap is [object SendableMap]
+console.info("largeNumber is " + (parsedMap as collections.Map<string,bigint>).get("largeNumber"));
 // 期望输出: largeNumber is 112233445566778899
 ```
 
@@ -177,7 +171,7 @@ stringify(value: Object | null | undefined): string
 >
 > 从API 18开始参数修改为Object类型，API 18之前参数只支持ISendable类型（除[Int8Array](arkts-apis-arkts-collections-Int8Array.md)、[Uint8Array](arkts-apis-arkts-collections-Uint8Array.md)、[Int16Array](arkts-apis-arkts-collections-Int16Array.md)、[Uint16Array](arkts-apis-arkts-collections-Uint16Array.md)、[Int32Array](arkts-apis-arkts-collections-Int32Array.md)、[Uint32Array](arkts-apis-arkts-collections-Uint32Array.md)、[Uint8ClampedArray](arkts-apis-arkts-collections-Uint8ClampedArray.md)、[Float32Array](arkts-apis-arkts-collections-Float32Array.md)外）。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -192,14 +186,6 @@ stringify(value: Object | null | undefined): string
 | 类型 | 说明 |
 | -------- | -------- |
 | string | 转换后的JSON字符串。|
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息      |
-| -------- | ------------- |
-| 401      | Parameter error. Invalid ArkTS value. |
 
 **示例：**
 

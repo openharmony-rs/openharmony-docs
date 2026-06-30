@@ -1,16 +1,18 @@
 # @ohos.uiAppearance (用户界面外观)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lushi871202-->
-<!--Designer: @lushi871202-->
-<!--Tester: @sally__-->
+<!--Owner: @fangzhiyuan1-->
+<!--Designer: @fangzhiyuan1-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 用户界面外观提供获取系统外观的一些基础能力，包括获取深浅色模式、字体大小缩放比例、字体粗细缩放比例。
 
 > **说明：**
 >
-> 从API version 20开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API version 20开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 导入模块
@@ -24,8 +26,11 @@ import { uiAppearance } from '@kit.ArkUI';
 
 深色模式枚举。
 
-
 **系统能力：** SystemCapability.ArkUI.UiAppearance
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | -- | -- | -- |
@@ -45,6 +50,10 @@ getDarkMode(): DarkMode
 <!--DelEnd-->
 
 **系统能力**：SystemCapability.ArkUI.UiAppearance
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：** 
 
@@ -78,7 +87,9 @@ try {
 
 ## uiAppearance.getFontScale
 
-getFontScale(): number
+ArkTS-Dyn: getFontScale(): number
+
+ArkTS-Sta: getFontScale(): double
 
 获取系统当前的字体大小缩放比例。
 
@@ -90,11 +101,15 @@ getFontScale(): number
 
 **系统能力**：SystemCapability.ArkUI.UiAppearance
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：** 
 
 | 类型 | 说明 |
 | -- | -- |
-| number | 系统当前的字体大小缩放比例。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 系统当前的字体大小缩放比例。 |
 
 **错误码：**
 
@@ -122,7 +137,9 @@ try {
 
 ## uiAppearance.getFontWeightScale
 
-getFontWeightScale(): number
+ArkTS-Dyn: getFontWeightScale(): number
+
+ArkTS-Sta: getFontWeightScale(): double
 
 获取系统当前的字体粗细缩放比例。
 
@@ -134,11 +151,15 @@ getFontWeightScale(): number
 
 **系统能力**：SystemCapability.ArkUI.UiAppearance
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：** 
 
 | 类型 | 说明 |
 | -- | -- |
-| number | 系统当前的字体粗细缩放比例。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 系统当前的字体粗细缩放比例。 |
 
 **错误码：**
 
@@ -156,7 +177,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let fontWeightScale = uiAppearance.getFontWeightScale();
-  console.info('Get fontScale ' + fontWeightScale);
+  console.info('Get fontWeightScale ' + fontWeightScale);
 } catch (error) {
   let message = (error as BusinessError).message;
   console.error('Get fontWeightScale failed, ' + message);

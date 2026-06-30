@@ -31,7 +31,7 @@ LongPressGesture(value?: { fingers?: number; repeat?: boolean; duration?: number
 
 当长按触发时间达到或超过500毫秒时，系统优先响应拖拽事件而非长按事件。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -59,7 +59,9 @@ LongPressGesture(options?: LongPressGestureHandlerOptions)
 
 当长按触发时间达到或超过500毫秒时，系统优先响应拖拽事件而非长按事件。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -90,7 +92,7 @@ ArkTS-Sta: onAction(event: Callback\<GestureEvent>)
 
 设置长按手势识别成功回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,7 +114,7 @@ ArkTS-Sta: onActionEnd(event: Callback\<GestureEvent>)
 
 设置长按手势结束回调。长按手势识别成功后，最后一根手指抬起时触发回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -132,7 +134,7 @@ onActionCancel(event: () => void)
 
 设置长按手势取消回调。长按手势识别成功后，接收到触摸取消事件时触发回调。不返回手势事件信息。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -154,7 +156,9 @@ onActionCancel(event: Callback\<GestureEvent>)
 
 设置长按手势取消回调。长按手势识别成功后，接收到触摸取消事件时触发回调。返回手势事件信息。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -207,4 +211,4 @@ struct LongPressGestureExample {
 }
 ```
 
-![zh-cn_image_0000001174264380](figures/zh-cn_image_0000001174264380.gif)
+![longPressGesture](figures/longPressGesture.gif)

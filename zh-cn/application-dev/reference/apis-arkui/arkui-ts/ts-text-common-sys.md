@@ -10,17 +10,25 @@
 
 >  **说明：**
 >
->  本模块首批接口从API version 10开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 10开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
->  当前页面仅包含本模块的系统接口，其他公开接口参见[公共类型](ts-types.md)和[文本组件公共接口](ts-text-common.md)。
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[基础类型定义](ts-types.md)和[文本组件公共接口](ts-text-common.md)。
 
 ## TextContentControllerBase
 
-TextInput、TextArea、Search的基础控制器。
+TextInput、TextArea、Search组件的基础控制器。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 ### getText<sup>19+</sup>
 
@@ -28,11 +36,17 @@ getText(range?: TextRange): string
 
 获取指定范围的文本内容。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -48,11 +62,17 @@ getText(range?: TextRange): string
 
 ## KeyboardGradientMode<sup>20+</sup>枚举说明
 
-键盘模糊效果。
+键盘渐变模糊效果。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称                                 | 值 | 说明                                       |
 | ---------------------------------- | --- | ---------------------------------------- |
@@ -67,6 +87,12 @@ getText(range?: TextRange): string
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称                                 | 值 | 说明                                       |
 | ---------------------------------- | --- | ---------------------------------------- |
 | NONE | 0 | 键盘无流光效果。 |
@@ -80,9 +106,15 @@ getText(range?: TextRange): string
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称    | 类型                                                    | 只读 | 可选 | 说明                                                    |
 | ------- | ----------------------------------------------------------- | ---- | ---- | -------------------------------------------------------- |
-| gradientMode  | [KeyboardGradientMode](#keyboardgradientmode20枚举说明) | 否   | 是   | 键盘的模糊效果。<br/>默认值：KeyboardGradientMode.NONE |
+| gradientMode  | [KeyboardGradientMode](#keyboardgradientmode20枚举说明) | 否   | 是   | 键盘的渐变模糊效果。<br/>默认值：KeyboardGradientMode.NONE |
 | fluidLightMode  | [KeyboardFluidLightMode](#keyboardfluidlightmode20枚举说明) | 否   | 是   | 键盘的流光效果。<br/>默认值：KeyboardFluidLightMode.NONE |
 
 ## TextChangeReason<sup>20+</sup>
@@ -92,6 +124,12 @@ getText(range?: TextRange): string
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称 | 值 | 说明 |
 | ------- | ---- | ------------------- |
@@ -113,13 +151,17 @@ getText(range?: TextRange): string
 
 语音按钮选项。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                | 类型                                              | 只读 | 可选 | 说明                                                                                  |
 |--------------------|-------------------------------------------------|----|----|-------------------------------------------------------------------------------------|

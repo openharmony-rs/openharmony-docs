@@ -31,7 +31,7 @@ image是图片组件，用来渲染展示图片。具体用法请参考[image](.
 }
 ```
 
-![zh-cn_image_0000001211227617](figures/zh-cn_image_0000001211227617.png)
+![image-Component](figures/image-Component.png)
 
 
 ## 设置image样式
@@ -68,7 +68,7 @@ image{
 ```
 
 
-![zh-cn_image_0000001163532072](figures/zh-cn_image_0000001163532072.png)
+![Image-Style](figures/Image-Style.png)
 
 
 ## 加载图片
@@ -126,7 +126,7 @@ export default {
 }
 ```
 
-![zh-cn_image_images](figures/zh-cn_image_images.gif)
+![Loading-Image](figures/Loading-Image.gif)
 
 
 

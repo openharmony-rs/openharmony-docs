@@ -13,6 +13,8 @@ USB串口通信服务主要提供USB Host设备转串口协议通信的功能，
 
 USB串口通信服务，配置管理请参考[USB串口配置管理](usbSerial-configuration.md)，通信管理请参考[USB串口通信管理](usbSerial-communication.md)。
 
+如需使用RTS/CTS流控、监听数据接收事件、清空缓冲区等更多串口通信能力，请参考[串口通信开发指导](../../busmanager/serialManager/serial-guidelines.md)
+
 ### 基本概念
 
 在进行USB串口通信服务开发时，开发者应了解以下基本概念：
@@ -42,7 +44,7 @@ USB串口服务主要包括两个阶段：
  
 **图1** USB串口收发数据流程
 
-![串口收发数据](../figures/zh-cn_image_22989BBB5490.png)
+![USB-service-comm](../figures/USB-service-comm.png)
 
 ### 约束和限制
 

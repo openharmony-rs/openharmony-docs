@@ -15,6 +15,8 @@
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.data.uniformTypeDescriptor (标准化数据定义与描述)](js-apis-data-uniformTypeDescriptor.md)。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -32,7 +34,7 @@ registerTypeDescriptors(typeDescriptors: Array\<TypeDescriptor>): Promise\<void>
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -66,20 +68,21 @@ registerTypeDescriptors(typeDescriptors: Array\<TypeDescriptor>): Promise\<void>
 **示例：**
 
 ```ts
+import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    const typeDescriptor = new uniformTypeDescriptor.TypeDescriptor();
-    typeDescriptor.typeId = 'com.example.myHap.image';
-    typeDescriptor.belongingToTypes = ['general.image'];
-    typeDescriptor.filenameExtensions = ['.myImage'];
-    typeDescriptor.mimeTypes = ['application/myImage'];
-    typeDescriptor.description = 'myHap defined image type';
-    await uniformTypeDescriptor.registerTypeDescriptors([typeDescriptor]);
-    console.info('Type descriptors registered successfully.');
-} catch(e) {
-    let error: BusinessError = e as BusinessError;
-    console.error(`registerTypeDescriptors throws an exception. code is ${error.code}, message is ${error.message} `);
+  const typeDescriptor = new uniformTypeDescriptor.TypeDescriptor();
+  typeDescriptor.typeId = 'com.example.myHap.image';
+  typeDescriptor.belongingToTypes = ['general.image'];
+  typeDescriptor.filenameExtensions = ['.myImage'];
+  typeDescriptor.mimeTypes = ['application/myImage'];
+  typeDescriptor.description = 'myHap defined image type';
+  await uniformTypeDescriptor.registerTypeDescriptors([typeDescriptor]);
+  console.info('Type descriptors registered successfully.');
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.error(`registerTypeDescriptors throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 ```
 
@@ -93,7 +96,7 @@ unregisterTypeDescriptors(typeIds: Array\<string>): Promise\<void>
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -129,11 +132,11 @@ unregisterTypeDescriptors(typeIds: Array\<string>): Promise\<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    const typeIds = ['com.example.myHap.image'];
-    await uniformTypeDescriptor.unregisterTypeDescriptors(typeIds);
-    console.info('Type descriptors unregistered successfully.');
+  const typeIds = ['com.example.myHap.image'];
+  await uniformTypeDescriptor.unregisterTypeDescriptors(typeIds);
+  console.info('Type descriptors unregistered successfully.');
 } catch (e) {
-    const error: BusinessError = e as BusinessError;
-    console.error(`unregisterTypeDescriptors throws an exception. code is ${error.code}, message is ${error.message}`);
+  const error: BusinessError = e as BusinessError;
+  console.error(`unregisterTypeDescriptors throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```

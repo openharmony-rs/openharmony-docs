@@ -1,9 +1,9 @@
 # JS卡片开发指导（FA模型）
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 FA模型从API version 7开始支持，已经不再主推。该应用模型通过导出匿名对象、固定入口文件的方式指定应用组件，开发者无法进行派生，不利于扩展能力。建议使用新的Stage模型进行开发。
 
@@ -85,8 +85,8 @@ FA卡片开发，即基于[FA模型](../application-models/fa-model-development-
     let storeFormInfo = async (formId: string, formName: string, tempFlag: boolean, context: featureAbility.Context): Promise<void> => {
       // 此处仅对卡片ID：formId，卡片名：formName和是否为临时卡片：tempFlag进行了持久化
       let formInfo: Record<string, string | number | boolean> = {
-        'formName': 'formName',
-        'tempFlag': 'tempFlag',
+        'formName': formName,
+        'tempFlag': tempFlag,
         'updateCount': 0
       };
       try {
@@ -238,7 +238,7 @@ FA卡片开发，即基于[FA模型](../application-models/fa-model-development-
       "window": {
         "designWidth": 720,
         "autoDesignWidth": true
-    	},
+      },
         "type": "form"
       }
     ]
@@ -314,8 +314,8 @@ const DATA_STORAGE_PATH: string = 'form_store';
 let storeFormInfo = async (formId: string, formName: string, tempFlag: boolean, context: featureAbility.Context): Promise<void> => {
   // 此处仅对卡片ID：formId，卡片名：formName和是否为临时卡片：tempFlag进行了持久化
   let formInfo: Record<string, string | number | boolean> = {
-    'formName': 'formName',
-    'tempFlag': 'tempFlag',
+    'formName': formName,
+    'tempFlag': tempFlag,
     'updateCount': 0
   };
   try {

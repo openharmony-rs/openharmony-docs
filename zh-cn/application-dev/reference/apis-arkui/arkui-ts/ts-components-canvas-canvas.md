@@ -1,8 +1,8 @@
 #  Canvas
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -24,7 +24,7 @@
 
 Canvas(params: CanvasParams)
 
-使用CanvasParams创建不缓存指令的Canvas组件。创建Canvas组件时，最大面积不超过10000px*10000px，超过最大面积则无法正常创建。
+使用CanvasParams创建不缓存指令的Canvas组件。创建Canvas组件时，最大面积不超过10000px*10000px，超过最大面积则无法正常创建。Canvas组件未设置固定尺寸时，默认扩展至其最大可用尺寸。
 
 > **说明：**
 >
@@ -72,6 +72,8 @@ Canvas(context: CanvasRenderingContext2D | DrawingRenderingContext, imageAIOptio
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -114,6 +116,8 @@ Canvas(context: CanvasRenderingContext2D | DrawingRenderingContext, imageAIOptio
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -150,7 +154,7 @@ Canvas组件初始化完成或者发生大小变化时的事件回调，支持[a
 
 | 参数名 | 类型    | 必填 | 说明 |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| event  | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| undefined | 是   | Canvas组件初始化完成或者发生大小变化时的事件回调事件。<br/>取值为undefined时，不使用回调函数。 |
+| event  | ArkTS-Dyn: [VoidCallback](ts-types.md#voidcallback12)<br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) \| undefined | 是   | Canvas组件初始化完成或者发生大小变化时的回调事件。<br/>取值为undefined时，不使用回调函数。 |
 
 ### onReady<sup>23+</sup>
 
@@ -179,6 +183,8 @@ Canvas组件初始化完成或者发生大小变化时的事件回调，支持[a
 
 该示例实现了如何在Canvas组件使用[CanvasRenderingContext2D](./ts-canvasrenderingcontext2d.md)中的方法进行绘制。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -202,11 +208,41 @@ struct CanvasExample {
   }
 }
 ```
-  ![zh-cn_image_0000001194032666](figures/zh-cn_image_0000001194032666.png)
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Flex, FlexDirection, ItemAlign, FlexAlign, Canvas, CanvasRenderingContext2D, RenderingContextSettings, FlexOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct CanvasExample {
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center } as FlexOptions) {
+      Canvas(this.context)
+        .width('100%')
+        .height('100%')
+        .backgroundColor('#ffff00')
+        .onReady(() => {
+          this.context.fillRect(0, 30, 100, 100)
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+  ![canvas](figures/canvas.png)
 
 ### 示例2（使用DrawingRenderingContext中的方法）
 
 该示例实现了如何在Canvas组件使用[DrawingRenderingContext](./ts-drawingrenderingcontext.md)中的方法进行绘制。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -231,6 +267,34 @@ struct CanvasExample {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Flex, FlexDirection, ItemAlign, FlexAlign, Canvas, DrawingRenderingContext, FlexOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct CanvasExample {
+  private context: DrawingRenderingContext = new DrawingRenderingContext();
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center } as FlexOptions) {
+      Canvas(this.context)
+        .width('100%')
+        .height('100%')
+        .backgroundColor('rgb(213,213,213)')
+        .onReady(() => {
+          this.context.canvas!.drawCircle(200, 200, 100)
+          this.context.invalidate()
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
   ![zh-cn_image_0000001194032666](figures/CanvasDemo2.png)
 
 ### 示例3（使用attributeModifier动态设置Canvas组件的属性及方法）
@@ -239,7 +303,9 @@ struct CanvasExample {
 
 > **说明：**
 >
-> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)相关介绍。
+> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)相关介绍。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -288,8 +354,86 @@ struct attributeDemo {
                 console.info("analysis complete")
               })
               .catch((error: BusinessError) => {
-                let e: BusinessError = error as BusinessError
-                console.error(`Error code: ${e.code}, message: ${e.message}`)
+                console.error(`Error code: ${error.code}, message: ${error.message}`)
+              })
+          })
+        Button('stop')
+          .width(100)
+          .height(50)
+          .margin(5)
+          .onClick(() => {
+            this.context.stopImageAnalyzer()
+          })
+        Button('getTypes')
+          .width(100)
+          .height(50)
+          .margin(5)
+          .onClick(() => {
+            this.aiController.getImageAnalyzerSupportTypes()
+          })
+        Canvas(this.context, this.options)
+          .borderWidth(1)
+          .height(200)
+          .width(200)
+          .attributeModifier(this.modifier)
+          .onAppear(() => {
+            this.modifier.context = this.context
+          })
+      }
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Entry, Component, Row, Column, Button, Canvas, CanvasRenderingContext2D, RenderingContextSettings, CanvasAttribute, AttributeModifier, ImageAnalyzerConfig, ImageAnalyzerType, ImageAnalyzerController, ImageAIOptions, ImageBitmap } from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+class MyCanvasModifier implements AttributeModifier<CanvasAttribute> {
+  context: CanvasRenderingContext2D = new CanvasRenderingContext2D()
+
+  applyNormalAttribute(instance: CanvasAttribute): void {
+    // 从（0，0）绘制一张宽高为200vp的图片
+    instance.onReady(() => {
+      // "common/img.png"需要替换为开发者所需的图像资源文件
+      let image = new ImageBitmap("common/img.png")
+      this.context.drawImage(image, 0, 0, 200, 200)
+    })
+    // 设置开启组件AI分析功能，点击start后，长按触发AI识别功能
+    instance.enableAnalyzer(true)
+  }
+}
+
+@Entry
+@Component
+struct attributeDemo {
+  @State modifier: MyCanvasModifier = new MyCanvasModifier()
+  private settings: RenderingContextSettings = new RenderingContextSettings(true)
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
+  private config: ImageAnalyzerConfig = {
+    types: [ImageAnalyzerType.SUBJECT, ImageAnalyzerType.TEXT]
+  }
+  private aiController: ImageAnalyzerController = new ImageAnalyzerController()
+  private options: ImageAIOptions = {
+    types: [ImageAnalyzerType.SUBJECT, ImageAnalyzerType.TEXT],
+    aiController: this.aiController
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Button('start')
+          .width(100)
+          .height(50)
+          .margin(5)
+          .onClick(() => {
+            this.context.startImageAnalyzer(this.config)
+              .then(() => {
+                console.info("analysis complete")
               })
           })
         Button('stop')
@@ -327,6 +471,9 @@ struct attributeDemo {
 该示例介绍了如何使用[CanvasParams](#canvasparams23)创建不缓存指令的Canvas组件并进行绘制。
 
 从API version 23开始，新增CanvasParams接口。
+
+ArkTS-Dyn示例：
+
 ``` ts
 // xxx.ets
 import { LengthMetricsUnit } from '@kit.ArkUI';
@@ -352,6 +499,48 @@ struct CanvasExample {
           })
           drawingContext.canvas.attachBrush(brush)
           drawingContext.canvas.drawCircle(200, 200, 100)
+          drawingContext.invalidate()
+
+          // 使用CanvasRenderingContext2D进行绘制。
+          let context2D: CanvasRenderingContext2D =
+            CanvasRenderingContext2D.getContext2DFromDrawingContext(drawingContext, { antialias: true })
+          context2D.fillStyle = 'rgb(39,135,217)'
+          context2D.fillRect(110, 30, 100, 100)
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { drawing } from '@kit.ArkGraphics2D';
+import { Entry, Component, Flex, FlexDirection, ItemAlign, FlexAlign, Canvas, DrawingRenderingContext, CanvasRenderingContext2D, CanvasParams, FlexOptions, LengthMetricsUnit } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct CanvasExample {
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center } as FlexOptions) {
+      Canvas({ unit: LengthMetricsUnit.DEFAULT } as CanvasParams)
+        .onReady((drawingContext?: DrawingRenderingContext) => {
+          if (!drawingContext) {
+            return
+          }
+          // 使用DrawingRenderingContext进行绘制。
+          let brush = new drawing.Brush()
+          brush.setColor({
+            alpha: 255,
+            red: 39,
+            green: 135,
+            blue: 217
+          })
+          drawingContext.canvas!.attachBrush(brush)
+          drawingContext.canvas!.drawCircle(200, 200, 100)
           drawingContext.invalidate()
 
           // 使用CanvasRenderingContext2D进行绘制。

@@ -2,15 +2,17 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
-<!--Designer: @CCFFWW-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-形状融合容器，会收集该容器内所有[使用祖先融合效果](ts-universal-attributes-use-union-effect-sys.md#useunioneffect)的后代组件形状，将收集的形状融合生效在容器上，作为该容器的绘制形状。
+形状融合容器，会收集该容器内所有使用[useUnionEffect](ts-universal-attributes-use-union-effect-sys.md#useunioneffect)的后代组件形状，将收集的形状融合生效在容器上，作为该容器的绘制形状。
 
 >  **说明：**
 >
 > - 该组件从API version 23开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 >
 > - 本模块为系统接口。
 > 
@@ -64,7 +66,7 @@ UnionEffectContainer(options?: UnionEffectContainerOptions)
 
 > **说明：**
 >
-> - 融合过程中容器会变成粘连的非线性形变效果，边框会变成融合后的粘连效果，故与边框相关的能力会受到影响。目前与边框相关支持融合形变效果的属性：边框[border](ts-universal-attributes-border.md#border)、外边框[outline](ts-universal-attributes-outline.md#outline)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)、背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、点光源[pointLight](#pointlight)。上述效果会绘制在融合后的形状上，属于UnionEffectContainer的绘制部分。
+> - 融合过程中容器会变成粘连的非线性形变效果，边框会变成融合后的粘连效果，故与边框相关的能力会受到影响。目前与边框相关支持融合形变效果的属性：阴影[shadow](ts-universal-attributes-image-effect.md#shadow)、背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、点光源[pointLight](#pointlight)。上述效果会绘制在融合后的形状上，属于UnionEffectContainer的绘制部分。
 >
 > - 在该组件上设置上述与边框相关支持融合形变效果的属性，绘制体现在该组件上，如果后代组件设置了同一个属性，实际上两个属性的设置相互独立，会绘制两次，一次发生在UnionEffectContainer控件的绘制中，一次发生在后代组件自身的属性绘制中。通常情况下不需要在使用祖先组件UnionEffectContainer融合效果的后代组件中设置同一个支持融合形变效果的属性，避免融合效果劣化。
 

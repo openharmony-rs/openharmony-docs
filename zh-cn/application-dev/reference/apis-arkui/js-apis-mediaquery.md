@@ -38,9 +38,9 @@ matchMediaSync(condition: string): MediaQueryListener
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMediaQuery](arkts-apis-uicontext-uicontext.md#getmediaquery)方法获取当前UI上下文关联的[MediaQuery](arkts-apis-uicontext-mediaquery.md)对象。
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,13 +52,13 @@ matchMediaSync(condition: string): MediaQueryListener
 
 | 参数名    | 类型   | 必填 | 说明                                                         |
 | --------- | ------ | ---- | ------------------------------------------------------------ |
-| condition | string | 是   | 媒体事件的匹配条件，具体可参考[媒体查询语法规则](../../ui/arkts-layout-development-media-query.md#语法规则)。 |
+| condition | string | 是   | 媒体查询的匹配条件，具体可参考[媒体查询语法规则](../../ui/arkts-layout-development-media-query.md#语法规则)。 |
 
 **返回值：** 
 
 | 类型               | 说明                                         |
 | ------------------ | -------------------------------------------- |
-| [MediaQueryListener](#mediaquerylistener) | 媒体事件监听句柄，用于注册和去注册监听回调。 |
+| [MediaQueryListener](#mediaquerylistener) | 媒体事件监听句柄，用于注册和注销监听回调。 |
 
 **示例：** 
 
@@ -85,9 +85,9 @@ let listener: mediaquery.MediaQueryListener = mediaquery.matchMediaSync('(orient
 
 继承自[MediaQueryResult](#mediaqueryresult)。
 
-**卡片能力：** 从API version 12开始，该类型支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该类型支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,9 +106,9 @@ on(type: 'change', callback: Callback&lt;MediaQueryResult&gt;): void
 >
 > 注册的回调中不允许进一步调用on或off。
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -125,7 +125,7 @@ on(type: 'change', callback: Callback&lt;MediaQueryResult&gt;): void
 
 **示例：** 
 
-  详见[off('change')](#offchange)示例。
+详见[off('change')](#offchange)示例。
 
 ### off('change')
 
@@ -133,9 +133,9 @@ off(type: 'change', callback?: Callback&lt;MediaQueryResult&gt;): void
 
 通过句柄向对应的查询条件取消注册回调，当媒体属性发生变更时不再触发指定的回调。
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -148,11 +148,9 @@ off(type: 'change', callback?: Callback&lt;MediaQueryResult&gt;): void
 | 参数名   | 类型                             | 必填 | 说明                                                       |
 | -------- | -------------------------------- | ---- | ---------------------------------------------------------- |
 | type     | string                           | 是   | 必须填写字符串'change'。                                   |
-| callback | Callback&lt;[MediaQueryResult](#mediaqueryresult)&gt; | 否   | 需要取消注册的回调，如果参数缺省则去注册该句柄下所有的回调。 |
+| callback | Callback&lt;[MediaQueryResult](#mediaqueryresult)&gt; | 否   | 需要取消注册的回调，如果参数缺省则注销该句柄下所有的回调。 |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 <!--code_no_check-->
 <!--deprecated_code_no_check-->
@@ -168,24 +166,7 @@ function onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
   }
 }
 listener.on('change', onPortrait) // 注册回调
-listener.off('change', onPortrait) // 取消注册回调
-  ```
-
-ArkTS-Sta示例：
-
-```ts
-import mediaquery from '@ohos.mediaquery';
-
-let listener: mediaquery.MediaQueryListener = mediaquery.matchMediaSync('(orientation: landscape)'); // 监听横屏事件
-function onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
-  if (mediaQueryResult.matches) {
-    // do something here
-  } else {
-    // do something here
-  }
-}
-listener.on('change', onPortrait) // 注册回调
-listener.off('change', onPortrait) // 去取消注册回调
+listener.off('change', onPortrait) // 注销回调
 ```
 
 ### onChange<sup>23+</sup>
@@ -210,6 +191,10 @@ onChange(callback: Callback&lt;MediaQueryResult&gt;): void
 | -------- | ----------------------------------------------------- | ---- | ------------------------ |
 | callback | Callback&lt;[MediaQueryResult](#mediaqueryresult)&gt; | 是   | 向媒体查询注册的回调。     |
 
+**示例：** 
+
+详见[offChange](#offchange23)示例。
+
 ### offChange<sup>23+</sup>
 
 offChange(callback?: Callback&lt;MediaQueryResult&gt;): void
@@ -226,15 +211,32 @@ offChange(callback?: Callback&lt;MediaQueryResult&gt;): void
 
 | 参数名   | 类型                                                  | 必填 | 说明                                                       |
 | -------- | ----------------------------------------------------- | ---- | ---------------------------------------------------------- |
-| callback | Callback&lt;[MediaQueryResult](#mediaqueryresult)&gt; | 否   | 需要去注册的回调，如果参数缺省则去注册该句柄下所有的回调。 |
+| callback | Callback&lt;[MediaQueryResult](#mediaqueryresult)&gt; | 否   | 需要注销的回调，如果参数缺省则注销该句柄下所有的回调。 |
+
+**示例：**
+
+```ts
+import mediaquery from '@kit.ArkUI';
+
+let listener: mediaquery.MediaQueryListener = mediaquery.matchMediaSync('(orientation: landscape)'); // 监听横屏事件
+function onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
+  if (mediaQueryResult.matches) {
+    // do something here
+  } else {
+    // do something here
+  }
+}
+listener.onChange(onPortrait) // 注册回调
+listener.offChange(onPortrait) // 注销回调
+```
 
 ## MediaQueryResult
 
-用于执行媒体查询操作。
+用于表示媒体查询的结果。
 
-**卡片能力：** 从API version 12开始，该类型支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该类型支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -247,7 +249,7 @@ offChange(callback?: Callback&lt;MediaQueryResult&gt;): void
 | 名称    | 类型    | 只读 | 可选 | 说明                 |
 | ------- | ------- | ---- | ---- | -------------------- |
 | matches | boolean | 是   | 否   | 是否符合匹配条件。true表示满足查询条件，false表示不满足查询条件。  |
-| media   | string  | 是   | 否   | 媒体事件的匹配条件。 |
+| media   | string  | 是   | 否   | 媒体查询的匹配条件。 |
 
 
 ### 示例

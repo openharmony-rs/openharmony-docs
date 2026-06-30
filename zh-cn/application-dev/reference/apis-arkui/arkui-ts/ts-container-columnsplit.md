@@ -30,7 +30,7 @@ ColumnSplit()
 
 带分割线的子组件纵向布局。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,9 +74,9 @@ ArkTS-Dyn: resizeable(value: boolean)
 
 ArkTS-Sta: resizeable(value: boolean | undefined)
 
-设置分割线是否可拖拽。
+设置分割线是否可拖动。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,7 +88,7 @@ ArkTS-Sta: resizeable(value: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                                 |
 | ------ | ------- | ---- | ------------------------------------ |
-| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 分割线是否可拖拽。设置为true时表示分割线可拖拽，设置为false时表示分割线不可拖拽。<br/>默认值：false <br />非法值：按默认值处理。<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 分割线是否可拖拽。设置为true时表示分割线可拖动，设置为false时表示分割线不可拖拽。<br/>默认值：false <br />非法值：按默认值处理。<br/>取值为undefined时，按默认值处理。 |
 
 ### divider<sup>10+</sup>
 
@@ -98,7 +98,9 @@ ArkTS-Sta: divider(value: ColumnSplitDividerStyle | null | undefined)
 
 设置分割线的margin。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,11 +114,33 @@ ArkTS-Sta: divider(value: ColumnSplitDividerStyle | null | undefined)
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | ArkTS-Dyn: [ColumnSplitDividerStyle](#columnsplitdividerstyle10对象说明)&nbsp;\|&nbsp;null<br/>ArkTS-Sta: [ColumnSplitDividerStyle](#columnsplitdividerstyle10对象说明)&nbsp;\|&nbsp;null \| undefined | 是   | 分割线的margin，即设置分割线与子组件的距离。<br/>默认值：null。当设置为null时，分割线与子组件的距离为0vp。<br />非法值：按默认值处理。<br/>取值为undefined时，按默认值处理。 |
 
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<ColumnSplitAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+设置组件的动态属性。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                                                | 必填 | 说明                                                         |
+| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<ColumnSplitAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置ColumnSplit组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
+
 ## ColumnSplitDividerStyle<sup>10+</sup>对象说明
 
 设置子组件与上下分割线的距离。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -134,28 +158,6 @@ ArkTS-Sta: divider(value: ColumnSplitDividerStyle | null | undefined)
 > 与[RowSplit](ts-container-rowsplit.md)相同，ColumnSplit的分割线可调整上下两侧子组件的高度，子组件的高度调整范围受其最大最小高度限制。
 >
 > 支持[clip](ts-universal-attributes-sharp-clipping.md#clip12)、[margin](ts-universal-attributes-size.md#margin)等通用属性，未设置clip属性时，其默认值为true。
-
-### attributeModifier<sup>12+</sup>
-
-ArkTS-Dyn: attributeModifier(modifier: AttributeModifier\<ColumnSplitAttribute>)
-
-ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<ColumnSplitAttribute> | AttributeModifier\<CommonMethod> | undefined)
-
-设置组件的动态属性。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：** 
-
-| 参数名 | 类型                                                | 必填 | 说明                                                         |
-| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| modifier  | ArkTS-Dyn: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<ColumnSplitAttribute><br/>ArkTS-Sta: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<ColumnSplitAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置ColumnSplit组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
 
 ## 事件
 
@@ -219,7 +221,34 @@ struct ColumnSplitExample {
 }
 ```
 
-![zh-cn_image_0000001219982708](figures/zh-cn_image_0000001219982708.gif)
+**ArkTS-Sta示例：**
+
+```ts
+// xxx.ets
+import { Entry, Component, Text, Column, ColumnSplit, TextAlign } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct ColumnSplitExample {
+  build() {
+    Column(){
+      Text('The dividing line can be dragged').fontSize(9).fontColor(0xCCCCCC).width('90%')
+      ColumnSplit() {
+        Text('1').width('100%').height(50).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+        Text('2').width('100%').height(50).backgroundColor(0xD2B48C).textAlign(TextAlign.Center)
+        Text('3').width('100%').height(50).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+        Text('4').width('100%').height(50).backgroundColor(0xD2B48C).textAlign(TextAlign.Center)
+        Text('5').width('100%').height(50).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
+      }
+      .borderWidth(1)
+      .resizeable(true) // 可拖动
+      .width('90%').height('60%')
+    }.width('100%')
+  }
+}
+```
+
+![columnSplitDividerStyle](figures/columnSplitDividerStyle.gif)
 
 ### 示例2（设置带有间隔的ColumnSplit组件）
 

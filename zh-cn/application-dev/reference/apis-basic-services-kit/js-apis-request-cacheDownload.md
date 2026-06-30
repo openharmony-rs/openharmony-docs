@@ -79,6 +79,39 @@ import cacheDownload from '@ohos.request.cacheDownload';
 | FORCE | 0 | 强制更新缓存，无论缓存是否已经存在。|
 | LAZY | 1 | 延迟更新缓存，只有当缓存不存在时才会更新。|
 
+## TimeoutOptions
+
+任务超时配置选项。包括检查网络可用的超时时间和完成HTTP请求的超时时间。
+
+**模型约束：** 此接口仅可在Stage模型下使用
+
+**系统能力：** SystemCapability.Request.FileTransferAgent
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称   | 类型     | 只读 | 可选 | 说明                            |
+|------|--------|----|----|-------------------------------|
+| networkCheckTimeout | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否  | 是 | 检查网络可用的超时时间，单位为秒。默认值为20，最小值为0，最大值为20。<br/>检查网络需要权限：**ohos.permission.GET_NETWORK_INFO**，无权限时网络检查失败直到超时。 |
+| httpTotalTimeout | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否  | 是 | 完成HTTP请求的超时时间，单位为秒。默认值为60，最小值为1。 |
+
+## RetryOptions
+
+任务重试配置选项。设置任务的最大重试次数。
+
+**模型约束：** 此接口仅可在Stage模型下使用
+
+**系统能力：** SystemCapability.Request.FileTransferAgent
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称   | 类型     | 只读 | 可选 | 说明                            |
+|------|--------|----|----|-------------------------------|
+| maxRetryCount | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否  | 是 | 任务失败时的最大重试次数。默认值为1，最小值为0，最大值为10。 |
+
 ## CacheDownloadOptions<sup>18+</sup>
 
 缓存下载的配置选项。包括HTTP选项、传输选项和任务选项。
@@ -91,6 +124,8 @@ import cacheDownload from '@ohos.request.cacheDownload';
 | sslType<sup>21+</sup> | [SslType](#ssltype21) | 否  | 是 | 使用安全通信协议TLS或TLCP，默认使用TLS。当前TLS和TLCP均不支持双向认证。<br/>**ArkTS-Dyn起始版本：**  21 <br/>**ArkTS-Sta起始版本：**  23 |
 | caPath<sup>21+</sup> | string | 否  | 是 | CA证书路径。目前仅支持.pem格式证书，默认使用系统预设的CA证书。<br/>**ArkTS-Dyn起始版本：**  21 <br/>**ArkTS-Sta起始版本：**  23 |
 | cacheStrategy<sup>23+</sup> | [CacheStrategy](#cachestrategy23) | 否  | 是 | 使用缓存刷新策略FORCE或LAZY，默认使用FORCE。<br/>**ArkTS-Dyn起始版本：**  23 <br/>**ArkTS-Sta起始版本：**  23 |
+| retry | [RetryOptions](#retryoptions) | 否  | 是 | 任务的重试配置。<br/>**ArkTS-Dyn起始版本：**  26.0.0 <br/>**ArkTS-Sta起始版本：**  26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用 |
+| timeout | [TimeoutOptions](#timeoutoptions) | 否  | 是 | 任务的超时配置。<br/>**ArkTS-Dyn起始版本：**  26.0.0 <br/>**ArkTS-Sta起始版本：**  26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用 |
 
 ## ResourceInfo<sup>20+</sup>
 
@@ -219,10 +254,15 @@ ArkTS-Dyn示例：
     sslType: cacheDownload.SslType.TLS,
     caPath: '/path/to/ca.pem',
     cacheStrategy: cacheDownload.CacheStrategy.FORCE,
+    retry: { maxRetryCount: 1 },
+    timeout: {
+      networkCheckTimeout: 20,
+      httpTotalTimeout: 60,
+    }
   };
-  
+
   try {
-    // 进行缓存下载，资源若下载成功会被缓存到应用内存或应用沙箱目录的特定文件中。  
+    // 进行缓存下载，资源若下载成功会被缓存到应用内存或应用沙箱目录的特定文件中。
     cacheDownload.download("https://www.example.com", options);
   } catch (err) {
     console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
@@ -240,6 +280,11 @@ ArkTS-Sta示例：
     sslType: cacheDownload.SslType.TLS,
     caPath: '/path/to/ca.pem',
     cacheStrategy: cacheDownload.CacheStrategy.FORCE,
+    retry: { maxRetryCount: 1 },
+    timeout: {
+      networkCheckTimeout: 20,
+      httpTotalTimeout: 60,
+    }
   };
 
   try {
@@ -881,5 +926,101 @@ ArkTS-Sta示例：
     cacheDownload.download("https://www.example.com", {});
   } catch (err: Error) {
     console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
+  }
+  ```
+
+## cacheDownload.setGlobalRetryOptions
+
+setGlobalRetryOptions(options?: RetryOptions): void
+
+设置全局的任务重试配置。当任务未设置特定的重试配置时此配置生效。重试配置优先级：任务设置 > 全局设置 > 默认设置。
+
+**模型约束：** 此接口仅可在Stage模型下使用
+
+**系统能力：** SystemCapability.Request.FileTransferAgent
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型     | 必填 | 说明                   |
+|-----|--------|----|----------------------|
+| options | [RetryOptions](#retryoptions) | 否  | 任务重试配置。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+  ```ts
+  try {
+    // 设置全局的任务最大重试次数
+    cacheDownload.setGlobalRetryOptions({
+      maxRetryCount: 1
+    });
+    cacheDownload.download("https://www.example.com", {});
+  } catch (err) {
+    console.error(`Failed to download the resource. err code: ${err?.code}, err message: ${err?.message}`);
+  }
+  ```
+ArkTS-Sta示例：
+  ```ts
+  try {
+    // 设置全局的任务最大重试次数
+    cacheDownload.setGlobalRetryOptions({
+      maxRetryCount: 1
+    });
+    cacheDownload.download("https://www.example.com", {});
+  } catch (err) {
+    console.error(`Failed to download the resource. err code: ${err?.code}, err message: ${err?.message}`);
+  }
+  ```
+
+## cacheDownload.setGlobalTimeoutOptions
+
+setGlobalTimeoutOptions(options?: TimeoutOptions): void
+
+设置全局的任务超时配置。当任务未设置特定的超时配置时此配置生效。超时配置优先级：任务设置 > 全局设置 > 默认设置。
+
+**模型约束：** 此接口仅可在Stage模型下使用
+
+**系统能力：** SystemCapability.Request.FileTransferAgent
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型     | 必填 | 说明                   |
+|-----|--------|----|----------------------|
+| options | [TimeoutOptions](#timeoutoptions) | 否  | 任务超时配置。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+  ```ts
+  try {
+    // 设置全局任务超时配置
+    cacheDownload.setGlobalTimeoutOptions({
+      networkCheckTimeout: 20,
+      httpTotalTimeout: 60,
+    })
+    cacheDownload.download("https://www.example.com", {});
+  } catch (err) {
+    console.error(`Failed to download the resource. err code: ${err?.code}, err message: ${err?.message}`);
+  }
+  ```
+ArkTS-Sta示例：
+  ```ts
+  try {
+    // 设置全局任务超时配置
+    cacheDownload.setGlobalTimeoutOptions({
+      networkCheckTimeout: 20,
+      httpTotalTimeout: 60,
+    })
+    cacheDownload.download("https://www.example.com", {});
+  } catch (err) {
+    console.error(`Failed to download the resource. err code: ${err?.code}, err message: ${err?.message}`);
   }
   ```

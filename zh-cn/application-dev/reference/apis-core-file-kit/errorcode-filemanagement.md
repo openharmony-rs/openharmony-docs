@@ -32,7 +32,7 @@ Operation not permitted
 
 1.根据当前系统的[访问控制机制](../../security/AccessToken/access-token-overview.md)，应用无法使用分享给其他应用的URI。
 
-2.根据[系统Picker](../../application-models/system-app-startup.md#拉起系统应用的方式)的运行机制，通过Picker获取到的URI仅有临时权限，无法持久化保存使用。
+2.根据[系统Picker](../../application-models/system-app-startup.md#拉起系统应用的方式)的运行机制，通过Picker获取到的URI仅具有临时权限，应用退出或设备重启后如需继续访问，需按[授权持久化](../../file-management/file-persistPermission.md)流程处理。
 
 3.URI路径不推荐进行拼接，拼接后的URI默认未授权。
 
@@ -48,11 +48,27 @@ No such file or directory
 
 **可能原因**
 
-文件或目录不存在。
+1.传入路径不是沙箱路径，或在应用沙箱内不存在该文件或目录。
+
+2.接口仅支持沙箱路径时，传入了URI。
+
+3.接口支持URI时，传入了自行拼接或二次编/解码后的不正确的URI。
+
+4.接口仅支持'utf-8'编码的文件或目录名，使用其他编码可能导致文件找不到。
+
+5.创建文件时，路径中目标文件所在的目录不存在。
 
 **处理步骤**
 
-确认文件路径是否存在。
+1.检查传入的路径是否为沙箱路径，在沙箱内是否存在。
+
+2.检查是否传错参数类型。
+
+3.检查是否传入了自行拼接或二次编/解码后的不正确的URI。
+
+4.检查文件或目录名编码格式是否是'utf-8'。
+
+5.创建文件时，检查文件父级目录是否存在。
 
 ### 13900003 没有这样的进程
 
@@ -120,7 +136,7 @@ I/O错误。
 
 2. 检查USB设备等链接是否正常。
 
-3. 检查并更新驱动程序。
+3. 检查并更新驱动程序，确保版本兼容。
 
 ### 13900006 没有这个设备或地址
 
@@ -138,7 +154,7 @@ No such device or address
 
 **处理步骤**
 
-确认设备或地址信息。
+确认设备连接状态和地址配置是否正确。
 
 ### 13900007 参数列表太长
 
@@ -618,9 +634,7 @@ Directory not empty
 
 **处理步骤**
 
-1.确认目录路径。
-
-2.确认路径为空。
+确认目录内是否为空。
 
 ### 13900033 符号链接层次太多
 
@@ -816,7 +830,7 @@ No record is locks available
 
 **可能原因**
 
-系统资源不足。
+锁资源不足。
 
 **处理步骤**
 
@@ -880,6 +894,138 @@ Software caused connection abort
 
 2.检查Wi-Fi和蓝牙，确认状态正常。
 
+### 13900050 内部资源错误
+
+**错误信息**
+
+Internal resource error.
+
+**错误描述**
+
+内部资源错误。
+
+**可能原因**
+
+系统内部资源分配失败。
+
+**处理步骤**
+
+重新运行当前代码。
+
+### 13900051 缓冲区读写越界
+
+**错误信息**
+
+Buffer read/write out of bounds.
+
+**错误描述**
+
+mmap缓冲区读写越界。
+
+**可能原因**
+
+读写的数据长度超过了mmap映射区的剩余可用空间。
+
+**处理步骤**
+
+1.调用[remaining](js-apis-file-fs.md#remaining)确认映射区的剩余可用空间。
+
+2.如需操作更大范围，可先调用[setLimit](js-apis-file-fs.md#setlimit)调整限制值。
+
+### 13900052 mmap缓冲区已释放
+
+**错误信息**
+
+Mmap buffer released.
+
+**错误描述**
+
+mmap缓冲区已释放。
+
+**可能原因**
+
+1.对已调用[unmap](js-apis-file-fs.md#unmap)/[unmapSync](js-apis-file-fs.md#unmapsync)释放的缓冲区进行操作。
+
+2.FileMapping对象的内部状态无效。
+
+**处理步骤**
+
+1.确认mmap缓冲区是否已调用[unmap](js-apis-file-fs.md#unmap)/[unmapSync](js-apis-file-fs.md#unmapsync)释放。
+
+2.代码如果已经调用过[unmap](js-apis-file-fs.md#unmap)/[unmapSync](js-apis-file-fs.md#unmapsync)接口，则需重新调用[mmap](js-apis-file-fs.md#fileiommap)/[mmapSync](js-apis-file-fs.md#fileiommapsync)接口建立新的映射。
+
+### 13900053 mmap缓冲区只读
+
+**错误信息**
+
+Read-only mmap buffer.
+
+**错误描述**
+
+mmap缓冲区只读。
+
+**可能原因**
+
+以只读模式映射的缓冲区尝试进行写操作。
+
+**处理步骤**
+
+重新调用[mmap](js-apis-file-fs.md#fileiommap)/[mmapSync](js-apis-file-fs.md#fileiommapsync)，将映射模式设置为读写模式或私有模式。
+
+### 13900054 mmap缓冲区不可访问
+
+**错误信息**
+
+Mmap buffer is inaccessible.
+
+**错误描述**
+
+mmap缓冲区不可访问。
+
+**可能原因**
+
+系统内存映射异常导致缓冲区指针失效。
+
+**处理步骤**
+
+重新调用[mmap](js-apis-file-fs.md#fileiommap)/[mmapSync](js-apis-file-fs.md#fileiommapsync)映射文件。
+
+### 13900055 mmap映射类型不支持该操作
+
+**错误信息**
+
+Mmap operation not supported.
+
+**错误描述**
+
+mmap映射类型不支持该操作。
+
+**可能原因**
+
+[msync](js-apis-file-fs.md#msync)写入磁盘时，映射区为只读模式或私有模式。
+
+**处理步骤**
+
+重新调用[mmap](js-apis-file-fs.md#fileiommap)/[mmapSync](js-apis-file-fs.md#fileiommapsync)，将映射模式设置为读写模式。
+
+### 13900056 mmap不支持映射此文件
+
+**错误信息**
+
+Mmap does not support mapping this file.
+
+**错误描述**
+
+mmap不支持映射此文件。
+
+**可能原因**
+
+目标文件不是常规文件，如管道、socket、设备文件等。
+
+**处理步骤**
+
+请使用[read](js-apis-file-fs.md#fileioread)、[write](js-apis-file-fs.md#fileiowrite)或[Stream](js-apis-file-fs.md#stream)等文件访问接口替代mmap。
+
 ## 用户数据管理错误码
 
 ### 14000001 文件名非法
@@ -887,6 +1033,10 @@ Software caused connection abort
 **错误信息**
 
 Invalid file name
+
+**错误描述**
+
+ 文件名非法。
 
 **可能原因**
 
@@ -902,6 +1052,10 @@ Invalid file name
 
 Invalid URI
 
+**错误描述**
+
+非法URI。
+
 **可能原因**
 
 URI不合法。
@@ -915,6 +1069,10 @@ URI不合法。
 **错误信息**
 
 Invalid file name extension
+
+**错误描述**
+
+文件后缀非法。
 
 **可能原因**
 
@@ -930,6 +1088,10 @@ Invalid file name extension
 
 File already in the recycle bin
 
+**错误描述**
+
+文件已进入回收站。
+
 **可能原因**
 
 文件已经被删除进入回收站。
@@ -943,6 +1105,10 @@ File already in the recycle bin
 **错误信息**
 
 System inner fail
+
+**错误描述**
+
+系统内部错误。
 
 **可能原因**
 
@@ -958,6 +1124,10 @@ System inner fail
 
 Member is not a valid PhotoKey
 
+**错误描述**
+
+成员名非法。
+
 **可能原因**
 
 传入的字符串不是类或接口的成员名。
@@ -965,6 +1135,45 @@ Member is not a valid PhotoKey
 **处理步骤**
 
 确保传入的字符串为类或接口的成员名。
+
+### 14000016 操作类型不支持
+
+**错误信息**
+
+Operation Not Support
+
+**错误描述**
+
+当前操作类型不被支持。
+
+**可能原因**
+
+1. 对非Moving Photo类型的资源执行了Moving Photo相关操作。
+
+2. 对已通过添加/移动/移除的资源，再次操作相同的URI。
+
+3. 之前的资源创建/修改请求还未提交就再次修改（包含 CREATE_FROM_URI/GET_WRITE_CACHE_HANDLER/ADD_RESOURCE 操作）。
+
+4. 对非视频类型（MediaType.VIDEO）的资源执行了视频增强等视频专属操作。
+
+5. 对非用户相册或高亮相册执行了不允许的操作。
+
+**处理步骤**
+
+1. 确认资源类型。
+   - 如执行Moving Photo相关操作（如setMovingPhotoEffectMode）需确保资源是Moving Photo类型。
+   - 如执行视频增强操作（如setVideoEnhancementAttr）需要确保MediaType为VIDEO类型。
+
+2. 避免重复操作。
+   - 在调用addAssets/removeAssets/moveAssets前，检查是否已执行过此操作，避免连续重复调用。
+
+3. 完成提交后再修改。
+   - 在调用createImageAssetRequest/createVideoAssetRequest/getWriteCacheHandler/addResource后，需调用[applyChanges](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)提交生效。
+   - 提交生效后才能对创建的资产发起新的修改请求。
+
+4. 确认相册类型。
+   - addAssets/removeAssets 仅支持用户相册和高亮相册。
+   - 系统相册（如相机、截屏相册）不支持这些操作。
 
 ## 空间统计错误码
 
@@ -1225,7 +1434,7 @@ Failed to traverse the query data partition directory.
 重启设备后重试。
 
 ### 13600016 获取文件系统inode数失败
- 	 
+
 **错误信息**
 
 Failed to query the inode information of the data partition.
@@ -1277,6 +1486,276 @@ Failed to query the system data size.
 **处理步骤**
 
 重启设备后重试。
+
+### 13600021 获取分区表失败
+
+**错误信息**
+
+Get partition table failed.
+
+**错误描述**
+
+获取分区表失败。
+
+**可能原因**
+
+1.磁盘处于不可操作状态。
+
+2.内部流程执行失败或内部错误。
+
+**处理步骤**
+
+1.建议重新插拔设备后重试。
+
+2.<!--RP1-->请向OpenHarmony团队反馈，获取支持。<!--RP1End-->
+
+### 13600022 创建分区失败
+
+**错误信息**
+
+Create partition failed.
+
+**错误描述**
+
+创建分区失败。
+
+**可能原因**
+
+1.分区参数非法。
+
+2.磁盘未分配空间不足。
+
+3.内部流程执行失败或内部错误。
+
+**处理步骤**
+
+1.确认分区参数（起始扇区、结束扇区）是否在有效范围内。
+
+2.确认磁盘是否有足够的未分配空间。
+
+3.<!--RP1-->请向OpenHarmony团队反馈，获取支持。<!--RP1End-->
+
+### 13600023 删除分区失败
+
+**错误信息**
+
+Delete partition failed.
+
+**错误描述**
+
+删除分区失败。
+
+**可能原因**
+
+1.磁盘处于不可操作状态。
+
+2.内部流程执行失败或内部错误。
+
+**处理步骤**
+
+1.建议重新插拔设备后重试。
+
+2.<!--RP1-->请向OpenHarmony团队反馈，获取支持。<!--RP1End-->
+
+### 13600024 光盘为空
+
+**错误信息**
+
+Empty disc.
+
+**错误描述**
+
+光盘为空。
+
+**可能原因**
+
+光盘中没有数据或未被正确识别。
+
+**处理步骤**
+
+1.确认光盘已正确放入光驱。
+
+2.确认光盘包含有效数据。
+
+### 13600025 写入ISO文件失败
+
+**错误信息**
+
+Failed to write the ISO file.
+
+**错误描述**
+
+写入ISO文件失败。
+
+**可能原因**
+
+1.ISO文件损坏或格式不正确。
+
+2.写入过程中发生I/O错误。
+
+3.光盘写入权限不足。
+
+**处理步骤**
+
+1.检查ISO文件完整性。
+
+2.确认光盘状态正常且可写入。
+
+3.重试写入操作。
+
+### 13600026 擦除操作失败
+
+**错误信息**
+
+Erase operation failed.
+
+**错误描述**
+
+擦除操作失败。
+
+**可能原因**
+
+擦除过程中光驱被用户拔出。
+
+**处理步骤**
+
+重新插入光驱，并等待擦除完成。
+
+### 13600027 源数据未找到
+
+**错误信息**
+
+Source data not found.
+
+**错误描述**
+
+源数据未找到。
+
+**可能原因**
+
+1.源文件路径错误或文件不存在。
+
+2.源数据已被删除或移动。
+
+**处理步骤**
+
+1.确认源文件路径正确。
+
+2.确认源文件存在且可访问。
+
+### 13600028 刻录操作失败
+
+**错误信息**
+
+Burn operation failed.
+
+**错误描述**
+
+刻录操作失败。
+
+**可能原因**
+
+1.光驱硬件故障或连接异常。
+
+2.刻录过程中断或超时。
+
+3.光盘质量不佳或已损坏。
+
+**处理步骤**
+
+1.检查光驱已连接且处于正常识别的空闲状态。
+
+2.更换质量良好的光盘。
+
+3.降低刻录速度后重试。
+
+### 13600029 无正在进行的操作
+
+**错误信息**
+
+No ongoing operation.
+
+**错误描述**
+
+无正在进行的操作。
+
+**可能原因**
+
+查询不存在或未开始的刻录任务。
+
+**处理步骤**
+
+确认是否有正在进行的刻录操作。
+
+### 13600030 校验失败
+
+**错误信息**
+
+Verification failed.
+
+**错误描述**
+
+校验失败。
+
+**可能原因**
+
+1.刻录数据与源数据不一致。
+
+2.光盘读取错误。
+
+3.数据传输过程中出现错误。
+
+**处理步骤**
+
+1.重新进行刻录操作。
+
+2.检查光盘质量和光驱状态。
+
+3.验证源数据完整性。
+
+### 13600031 数据不匹配
+
+**错误信息**
+
+Data mismatch.
+
+**错误描述**
+
+数据不匹配。
+
+**可能原因**
+
+刻录后的数据与原始源数据存在差异。
+
+**处理步骤**
+
+1.重新刻录并校验数据。
+
+2.检查源文件在刻录过程中是否被修改。
+
+3.更换光盘或光驱后重试。
+
+### 13600032 格式化分区失败
+
+**错误信息**
+
+Format partition failed.
+
+**错误描述**
+
+格式化分区失败。
+
+**可能原因**
+
+1.磁盘处于不可操作状态。
+
+2.内部流程执行失败或内部错误。
+
+**处理步骤**
+
+1.建议重新插拔设备后重试。
+
+2.<!--RP1-->请向OpenHarmony团队反馈，获取支持。<!--RP1End-->
 
 ## 公共文件访问错误码
 

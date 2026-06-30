@@ -4,7 +4,7 @@
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 This module provides APIs for collecting statistics on device usage.
 

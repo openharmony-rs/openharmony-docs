@@ -1,7 +1,7 @@
 # Navigation分栏开发
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @huangxiaolinabc-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -12,19 +12,23 @@
 
 ### mode
 
-[mode](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#mode9)属性用于控制Navigation的显示模式，有三种模式：单栏，分栏，自适应。
+[mode](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#mode9)属性用于控制Navigation的显示模式，有四种模式：单栏，分栏，自适应，根据高宽比自适应。
 
-  **图1** 单栏（NavigationMode.Stack）效果
+**图1** 单栏（NavigationMode.Stack）效果
 
 ![img](figures/NavigationModeStack.png)
 
-  **图2** 分栏（NavigationMode.Split）效果
+**图2** 分栏（NavigationMode.Split）效果
 
 ![img](figures/NavigationModeSplit.png)
 
-  **图3** 自适应（NavigationMode.Auto）效果
+**图3** 自适应（NavigationMode.Auto）效果
 
 ![img](figures/NavigationModeAuto.gif)
+
+**图4** 根据高宽比自适应（NavigationMode.AUTO_WITH_ASPECT_RATIO）效果
+
+![img](figures/NavigationModeAUTO_WITH_ASPECT_RATIO.gif)
 
 ### navBarPosition
 
@@ -106,7 +110,7 @@
       "pageSourceFile": "src/main/ets/pages/navigation/splitmode/NewsDetail.ets",
       "buildFunction": "NewsDetailPageBuilder",
       "data": {
-        "description": "this is DetailPageA"
+        "description": "this is NewsDetail"
       }
     }
   ]
@@ -114,6 +118,8 @@
 ```
 
 子页代码：
+
+ArkTS-Dyn示例：
 
 <!-- @[NewsDetail](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/splitmode/NewsDetail.ets) -->
 
@@ -159,7 +165,77 @@ struct NewsDetail {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[NewsDetail](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationSampleStatic/entry/src/main/ets/pages/navigation/splitmode/NewsDetail.ets) -->
+
+``` TypeScript
+import {
+  Color,
+  Component,
+  Column,
+  NavPathStack,
+  Button,
+  NavPathInfo,
+  NavDestinationContext,
+  NavigationOperation,
+  ButtonType,
+  GestureEvent,
+  PanGesture,
+  NavDestination,
+  ColumnOptions,
+  Stack,
+  Text,
+  NavDestinationMode,
+  LaunchMode,
+  State,
+  AppStorage,
+} from '@kit.ArkUI';
+
+// 自定义的参数类型，用于在push页面时给子页传递参数
+export class NewsItem {
+  public title: string;
+  public overview: string;
+  public content: string;
+
+  constructor(title: string, overview: string, content: string) {
+    this.title = title;
+    this.overview = overview;
+    this.content = content;
+  }
+}
+
+@Builder
+export function NewsDetailPageBuilder(): void {
+  NewsDetail()
+}
+
+@Component
+struct NewsDetail {
+  @State title: string = '';
+  @State content: string = '';
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text(this.content)
+      }
+    }
+    .title(this.title)
+    .backgroundColor('#fff6e3c8')
+    .onReady((ctx: NavDestinationContext) => {
+      // 在onReady生命周期拿到传来的页面参数
+      let param = ctx.pathInfo.param as NewsItem;
+      this.title = param?.title;
+      this.content = param?.content;
+    })
+  }
+}
+```
+
 主页代码：
+
+ArkTS-Dyn示例：
 
 <!-- @[SplitNavigation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/splitmode/SplitNavigation.ets) -->
 
@@ -224,6 +300,107 @@ struct Index {
         top: { anchor: '__container__', align: VerticalAlign.Top },
         left: { anchor: '__container__', align: HorizontalAlign.Start }
       })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[SplitNavigation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationSampleStatic/entry/src/main/ets/pages/navigation/splitmode/SplitNavigation.ets) -->
+
+``` TypeScript
+import {
+  Color,
+  Component,
+  Column,
+  NavPathStack,
+  Button,
+  NavPathInfo,
+  NavDestinationContext,
+  NavigationOperation,
+  ButtonType,
+  GestureEvent,
+  PanGesture,
+  NavDestination,
+  ColumnOptions,
+  Stack,
+  Text,
+  NavDestinationMode,
+  LaunchMode,
+  List,
+  Entry,
+  RelativeContainer,
+  ForEach,
+  ListItem,
+  Navigation,
+  NavigationMode,
+  VerticalAlign,
+  AlignRuleOption,
+  HorizontalAlign,
+  State,
+  AppStorage,
+} from '@kit.ArkUI';
+import { NewsItem } from './NewsDetail';
+
+@Component
+struct NewsHome {
+  private newsItemArray: Array<NewsItem> = [];
+  private stack: NavPathStack | undefined = undefined;
+
+  aboutToAppear(): void {
+    // 这里省略了从网络获取新闻信息的过程
+    for (let i = 0; i < 50; i++) {
+      this.newsItemArray.push(new NewsItem(`新闻标题${i + 1}`, `新闻概述${i + 1}`, `新闻详情${i + 1}`))
+    }
+    let info = this.queryNavigationInfo();
+    this.stack = info?.pathStack;
+  }
+
+  build() {
+    List() {
+      ForEach(this.newsItemArray, (item: NewsItem, index: int) => {
+        ListItem() {
+          Column() {
+            Text(`${item.title}`).margin(15).fontSize(25).fontColor(Color.Black)
+            Text(`${item.overview}`).fontSize(13).fontColor(Color.Gray)
+          }.margin({bottom: 15}).backgroundColor('#eeeeee').width('100%')
+          .borderRadius(15).height(120).onClick(() => {
+            // 用户点击某一个新闻标签时，就在右侧子页区域push一个NavDestination页面，用来展示新闻详情
+            this.stack?.pushPath(new NavPathInfo('NewsDetail', item))
+          })
+        }.width('100%')
+      }, (item: NewsItem, index: int) => {
+        return item.title;
+      })
+    }.width('100%').height('100%').padding(15)
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private stack: NavPathStack = new NavPathStack();
+  @State navWidth: number = 100;
+
+  build() {
+    RelativeContainer() {
+      Navigation(this.stack) {
+        NewsHome().width('100%').height('100%')
+      }
+      .mode(NavigationMode.Split)
+      .enableDragBar(true)
+      .hideNavBar(false)
+      .navBarWidthRange([100, 700]) // 指定NavBar区域的宽度范围
+      .minContentWidth(100) // 指定子页区域的最小宽度
+      .hideTitleBar(true)
+      .hideToolBar(true)
+      .height('100%')
+      .width(`${this.navWidth}%`)
+      .alignRules({
+        top: { anchor: '__container__', align: VerticalAlign.Top },
+        left: { anchor: '__container__', align: HorizontalAlign.Start }
+      } as AlignRuleOption)
     }
   }
 }

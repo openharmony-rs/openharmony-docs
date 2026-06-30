@@ -1,4 +1,4 @@
-# 状态管理优秀实践
+# 状态管理优秀实践（ArkTS-Dyn）
 
 本章节旨在帮助开发者提高ArkUI应用质量，重点提高状态管理效率。章节中列举了常见的低效开发场景及对应解决方案，并通过对比推荐用法与非推荐用法，帮助开发者正确使用状态变量，实现高性能开发。
 
@@ -148,7 +148,7 @@ struct MyComponent {
 
 【正例】
 
-解决此问题，需用\@State装饰realStateArr和realState成员变量。解决后就不再需要变量needsUpdate。
+解决此问题，需用[\@State](arkts-state.md)装饰realStateArr和realState成员变量。解决后就不再需要变量needsUpdate。
 
 ```ts
 @Entry
@@ -243,7 +243,7 @@ struct Page {
 }
 ```
 
-在上面的示例中，状态变量this.translateObj.translateX被用在多个同级的子组件下，当this.translateObj.translateX变化时，会导致所有关联它的组件一起刷新，但实际上由于这些组件的变化是相同的，因此可以将这个属性绑定到他们共同的父组件上，来实现减少组件的刷新数量。经过分析，所有的子组件其实都处于Page下的Column中，因此将所有子组件相同的translate属性统一到Column上，来实现精准控制状态变量关联的组件数。
+在上面的示例中，状态变量this.translateObj.translateX被用在多个同级的子组件下，当this.translateObj.translateX变化时，会导致所有关联它的组件一起刷新，但实际上由于这些组件的变化是相同的，因此可以将这个属性绑定到他们共同的父组件上，来实现减少组件的刷新数量。经过分析，所有的子组件其实都处于Page下的[Column](../../reference/apis-arkui/arkui-ts/ts-container-column.md)中，因此将所有子组件相同的[translate](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#translate)属性统一到Column上，来实现精准控制状态变量关联的组件数。
 
 【正例】
 

@@ -28,7 +28,9 @@ ArkTS-Sta: onAttach(callback: VoidCallback | undefined): this
 >
 > - 不允许在回调中对组件树进行变更，例如启动动画或使用if-else变更组件树结构。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -57,7 +59,9 @@ ArkTS-Sta: onDetach(callback: VoidCallback | undefined): this
 
 组件从组件树卸载时触发此回调。建议使用[onDisAppear](#ondisappear)替代此接口。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -89,9 +93,9 @@ ArkTS-Sta: onAppear(event: (() => void) | undefined): this
 >
 > 回调的调用时机有可能发生在组件布局渲染后。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -103,7 +107,7 @@ ArkTS-Sta: onAppear(event: (() => void) | undefined): this
 
 | 参数名 | 类型  | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| event  | ArkTS-Dyn: () => void  <br/>ArkTS-Sta: (() => void) \| undefined| ArkTS-Dyn: 是<br/>ArkTS-Sta: 否   | onAppear事件的回调函数，表示组件已挂载显示。|
+| event  | ArkTS-Dyn: () => void  <br/>ArkTS-Sta: (() => void) \| undefined| 是   | onAppear事件的回调函数，表示组件已挂载显示。|
 
 **返回值：**
 
@@ -120,9 +124,9 @@ ArkTS-Sta: onDisAppear(event: (() => void) | undefined): this
 
 组件从组件树卸载时触发此回调。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -134,7 +138,7 @@ ArkTS-Sta: onDisAppear(event: (() => void) | undefined): this
 
 | 参数名 | 类型  | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| event  | ArkTS-Dyn: () => void  <br/>ArkTS-Sta: (() => void) \| undefined| ArkTS-Dyn: 是<br/>ArkTS-Sta: 否   | onDisAppear事件的回调函数，表示组件已卸载消失。|
+| event  | ArkTS-Dyn: () => void  <br/>ArkTS-Sta: (() => void) \| undefined| 是   | onDisAppear事件的回调函数，表示组件已卸载消失。|
 
 **返回值：**
 
@@ -186,4 +190,4 @@ struct AppearExample {
 }
 ```
 
-![zh-cn_image_0000001219864151](figures/zh-cn_image_0000001219864151.gif)
+![onDisAppear](figures/onDisAppear.gif)

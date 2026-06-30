@@ -310,7 +310,7 @@ let options: http.HttpRequestOptions = {
   usingProxy: true, // 选择使用网络代理，从API 10开始支持该属性。
 };
 // 发起一个HTTP请求。
-httpRequest.request("EXAMPLE_URL", options, (err: Error, data: http.HttpResponse) => {
+httpRequest.request("EXAMPLE_URL", options, (err: BusinessError, data: http.HttpResponse) => {
   if (!err) {
    console.info(`Result: ${data.result}`);
    console.info(`code: ${data.responseCode}`);
@@ -647,7 +647,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 当应用绑定WIFI网络，WIFI弱信号或者断开时，如果不解绑，会导致应用无法上网。
 
-以下示例以绑定WIFI网络为例，结合[on("netAvailable")](#onnetavailable)、[on("netLost")](#onnetlost)接口，当监听到WIFI网络可用时绑定WIFI网络，不可用时解绑，使用默认网络。
+以下示例以绑定WIFI网络为例，结合[on('netAvailable')](#onnetavailable)、[on('netLost')](#onnetlost)接口，当监听到WIFI网络可用时绑定WIFI网络，不可用时解绑，使用默认网络。
 
 ArkTS-Dyn示例：
 ```ts
@@ -775,7 +775,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 当应用绑定WIFI网络，WIFI弱信号或者断开时，如果不解绑，会导致应用无法上网。
 
-以下示例以绑定WIFI网络为例，结合[on("netAvailable")](#onnetavailable)、[on("netLost")](#onnetlost)接口，当监听到WIFI网络可用时绑定WIFI网络，不可用时解绑，使用默认网络。
+以下示例以绑定WIFI网络为例，结合[on('netAvailable')](#onnetavailable)、[on('netLost')](#onnetlost)接口，当监听到WIFI网络可用时绑定WIFI网络，不可用时解绑，使用默认网络。
 
 ArkTS-Dyn示例：
 ```ts
@@ -1947,7 +1947,6 @@ getAddressesByName(host: string, callback: AsyncCallback\<Array\<NetAddress>>): 
 
 **需要权限**：ohos.permission.INTERNET
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -1994,8 +1993,6 @@ getAddressesByName(host: string): Promise\<Array\<NetAddress\>\>
 使用当前默认网络解析主机名以获取所有IP地址。使用Promise异步回调。
 
 **需要权限**：ohos.permission.INTERNET
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -2129,7 +2126,8 @@ addCustomDnsRule(host: string, ip: Array\<string\>, callback: AsyncCallback\<voi
 
 > **说明：**
 >
-> 不需要时可调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)删除某一条自定义规则或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)删除当前应用程序的所有的自定义DNS规则 。
+> 不需要时可调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)删除某一条自定义规则或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)删除当前应用程序的所有的自定义DNS规则 。<br>
+> 调用本接口添加自定义DNS规则后可持续生效，无需重复添加同一条规则。不需要时可按照上述方法删除。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -2198,7 +2196,8 @@ addCustomDnsRule(host: string, ip: Array\<string\>): Promise\<void\>
 
 > **说明：**
 >
-> 不需要时可调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)删除某一条自定义规则或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)删除当前应用程序的所有的自定义DNS规则 。
+> 不需要时可调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)删除某一条自定义规则或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)删除当前应用程序的所有的自定义DNS规则 。<br>
+> 调用本接口添加自定义DNS规则后可持续生效，无需重复添加同一条规则。不需要时可按照上述方法删除。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -2270,6 +2269,7 @@ removeCustomDnsRule(host: string, callback: AsyncCallback\<void\>): void
 
 > **说明：**
 >
+> 删除前需确认当前无线程正在使用该自定义规则，以避免冲突。<br>
 > 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
 
 **需要权限**：ohos.permission.INTERNET
@@ -2338,6 +2338,7 @@ removeCustomDnsRule(host: string): Promise\<void\>
 
 > **说明：**
 >
+> 删除前需确认当前无线程正在使用该自定义规则，以避免冲突。<br>
 > 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
 
 **需要权限**：ohos.permission.INTERNET
@@ -2407,6 +2408,11 @@ clearCustomDnsRules(callback: AsyncCallback\<void\>): void
 
 删除当前应用程序的所有的自定义DNS规则。使用callback异步回调。
 
+ > **说明：**
+ >
+ > 删除前需确认当前无线程正在使用当前存在的自定义规则，以避免冲突。<br>
+ > 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
+
 **需要权限**：ohos.permission.INTERNET
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
@@ -2467,6 +2473,11 @@ connection.clearCustomDnsRules((error: BusinessError|null) => {
 clearCustomDnsRules(): Promise\<void\>
 
 删除当前应用程序的所有的自定义DNS规则。使用Promise异步回调。
+
+ > **说明：**
+ >
+ > 删除前需确认当前无线程正在使用当前存在的自定义规则，以避免冲突。<br>
+ > 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -3613,12 +3624,15 @@ on(type: 'netBlockStatusChange', callback: Callback\<NetBlockStatusInfo>): void
 
 **ArkTS-Sta起始版本：** 23
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 订阅事件，固定为'netBlockStatusChange'。<br/>netBlockStatusChange：网络阻塞状态事件。 |
 | callback | Callback<[NetBlockStatusInfo](#netblockstatusinfo11)>        | 是   | 回调函数，获取网络阻塞状态信息。|
+
 
 **示例：**
 
@@ -3671,6 +3685,53 @@ netCon.unregister((error: BusinessError|null) => {
 });
 ```
 
+
+### onNetBlockStatusChange
+
+onNetBlockStatusChange(callback: Callback\<NetBlockStatusInfo>): void;
+
+订阅网络阻塞状态事件。此接口需要在调用register接口之前调用。若无需接收网络状态变化的回调通知，应使用unregister取消订阅默认的网络状态变化通知。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Sta起始版本：** 23
+  
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 订阅事件，固定为'netBlockStatusChange'。<br/>netBlockStatusChange：网络阻塞状态事件。 |
+| callback | Callback<[NetBlockStatusInfo](#netblockstatusinfo11)>        | 是   | 回调函数，获取网络阻塞状态信息。|
+
+  
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建NetConnection对象。
+let netCon: connection.NetConnection = connection.createNetConnection();
+
+// 先使用on接口订阅网络阻塞状态事件。
+netCon.onNetBlockStatusChange((value) => {
+  console.info(`Succeeded to get data: ${JSON.stringify(value)}`);
+});
+
+// 注册网络状态变化事件。此接口要在调用on后调用。
+netCon.register((error: BusinessError|null) => {
+  console.error(JSON.stringify(error));
+});
+
+// 使用unregister接口取消订阅网络阻塞状态事件。
+netCon.unregister((error: BusinessError|null) => {
+  console.error(JSON.stringify(error));
+});
+```
+  
+
+
 ### on('netCapabilitiesChange')
 
 on(type: 'netCapabilitiesChange', callback: Callback\<NetCapabilityInfo\>): void
@@ -3684,6 +3745,8 @@ on(type: 'netCapabilitiesChange', callback: Callback\<NetCapabilityInfo\>): void
 **ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 23
+  
+ **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **参数：**
 
@@ -3826,6 +3889,8 @@ on(type: 'netLost', callback: Callback\<NetHandle>): void
 
 **ArkTS-Sta起始版本：** 23
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **参数：**
 
 | 参数名   | 类型                               | 必填 | 说明                                                         |
@@ -3883,6 +3948,52 @@ netCon.unregister((error: BusinessError|null) => {
   console.error(JSON.stringify(error));
 });
 ```
+  
+### onNetLost
+
+onNetLost(callback: Callback\<NetHandle>): void
+
+订阅网络丢失事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Sta起始版本：** 23
+  
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**参数：**
+
+| 参数名   | 类型                               | 必填 | 说明                                                         |
+| -------- | ---------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string                             | 是   | 订阅事件，固定为'netLost'。<br/>netLost：网络严重中断或正常断开事件。 |
+| callback | Callback\<[NetHandle](#nethandle)> | 是   | 回调函数，数据网络句柄(netHandle)。|
+
+**示例：**
+  
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建NetConnection对象。
+let netCon: connection.NetConnection = connection.createNetConnection();
+
+// 先使用on接口订阅网络丢失事件
+netCon.onNetLost((value) => {
+  console.info(`Succeeded to get data: ${JSON.stringify(value)}`);
+});
+
+// 注册网络状态变化事件。此接口要在调用on后调用。
+netCon.register((error: BusinessError|null) => {
+  console.error(JSON.stringify(error));
+});
+
+// 使用unregister接口取消订阅网络丢失事件。
+netCon.unregister((error: BusinessError|null) => {
+  console.error(JSON.stringify(error));
+});
+```
+
 
 ### on('netUnavailable')
 
@@ -3897,6 +4008,8 @@ on(type: 'netUnavailable', callback: Callback\<void>): void
 **ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 23
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -3956,6 +4069,50 @@ netCon.unregister((error: BusinessError|null) => {
 });
 ```
 
+### onNetUnavailable
+
+onNetUnavailable(callback: Callback\<void>): void
+
+订阅网络不可用事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Sta起始版本：** 23
+  
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**参数：**
+
+| 参数名   | 类型            | 必填 | 说明                                                         |
+| -------- | --------------- | ---- | ------------------------------------------------------------ |
+| type     | string          | 是   | 订阅事件，固定为'netUnavailable'。<br/>netUnavailable：网络不可用事件。 |
+| callback | Callback\<void> | 是   | 回调函数，无返回结果。|
+
+**示例：**
+
+ArkTS-Sta示例：
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 创建NetConnection对象。
+let netCon: connection.NetConnection = connection.createNetConnection();
+
+// 先使用on接口订阅网络不可用事件。
+netCon.onNetUnavailable((value) => {
+  console.info("Succeeded to get unavailable net event");
+});
+
+// 注册网络状态变化事件。此接口要在调用on后调用。
+netCon.register((error: BusinessError|null) => {
+  console.error(JSON.stringify(error));
+});
+
+// 使用unregister接口取消订阅网络不可用事件。
+netCon.unregister((error: BusinessError|null) => {
+  console.error(JSON.stringify(error));
+});
+```
 ## NetHandle
 
 数据网络的句柄。
@@ -3981,6 +4138,8 @@ bindSocket(socketParam: TCPSocket \| UDPSocket, callback: AsyncCallback\<void>):
 将TCPSocket或UDPSocket绑定到当前NetHandle对应的网络。使用callback异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -4069,6 +4228,8 @@ bindSocket(socketParam: TCPSocket \| UDPSocket): Promise\<void\>
 将TCPSocket或UDPSocket绑定到当前NetHandle对应的网络。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -4353,6 +4514,8 @@ getAddressByName(host: string, callback: AsyncCallback\<NetAddress>): void
 
 **ArkTS-Sta起始版本：** 23
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **参数：**
 
 | 参数名   | 类型                                      | 必填 | 说明                                                         |
@@ -4430,6 +4593,8 @@ getAddressByName(host: string): Promise\<NetAddress>
 
 **ArkTS-Sta起始版本：** 23
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明               |
@@ -4501,8 +4666,8 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 | NET_CAPABILITY_INTERNET  | 12   | 表示该网络应具有访问Internet的能力，此能力由网络提供者设置，但该网络访问Internet的连通性并未被网络管理成功验证。网络连通性可以通过NET_CAPABILITY_VALIDATED和NET_CAPABILITY_CHECKING_CONNECTIVITY判断。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
 | NET_CAPABILITY_NOT_VPN | 15 | 表示网络不使用VPN（Virtual&nbsp;Private&nbsp;Network，虚拟专用网络）。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
 | NET_CAPABILITY_VALIDATED | 16   | 表示网络管理通过该网络与华为云地址成功建立连接，此能力由网络管理模块设置。<br>**注意：** 网络管理可能会与华为云地址建立连接失败，导致网络能力不具备此标记位，但不完全代表该网络无法访问互联网。另外，对于新完成连接的网络，由于网络正在进行连通性验证，此值可能无法反映真实的验证结果。对此，应用可以通过NET_CAPABILITY_CHECKING_CONNECTIVITY<sup>12+</sup>检查网络是否正在检测连通性。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
-| NET_CAPABILITY_PORTAL<sup>12+</sup> | 17   | 表示系统发现该网络存在强制网络门户，需要用户登陆认证，该能力由网络管理模块设置。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 22 |
-| NET_CAPABILITY_CHECKING_CONNECTIVITY<sup>12+</sup> | 31   | 表示网络管理正在检验当前网络的连通性，此值会在网络连接时设置。当此值存在时，NET_CAPABILITY_VALIDATED的值不准确，连通性检测结束后不再设置，此时可以通过判断NetCap是否包含NET_CAPABILITY_VALIDATED判断连通性。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 22 |
+| NET_CAPABILITY_PORTAL<sup>12+</sup> | 17   | 表示系统发现该网络存在强制网络门户，需要用户登陆认证，该能力由网络管理模块设置。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23 |
+| NET_CAPABILITY_CHECKING_CONNECTIVITY<sup>12+</sup> | 31   | 表示网络管理正在检验当前网络的连通性，此值会在网络连接时设置。当此值存在时，NET_CAPABILITY_VALIDATED的值不准确，连通性检测结束后不再设置，此时可以通过判断NetCap是否包含NET_CAPABILITY_VALIDATED判断连通性。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23 |
 
 ## NetBearType
 
@@ -4515,9 +4680,9 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 | ----------------------- | ---- | ---------- |
 | BEARER_CELLULAR | 0    | 蜂窝网络。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
 | BEARER_WIFI     | 1    | Wi-Fi网络。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
-| BEARER_BLUETOOTH<sup>12+</sup> | 2    | 蓝牙网络。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 22 |
+| BEARER_BLUETOOTH<sup>12+</sup> | 2    | 蓝牙网络。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23 |
 | BEARER_ETHERNET | 3    | 以太网网络。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| BEARER_VPN<sup>12+</sup>| 4    | VPN网络。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 22 |
+| BEARER_VPN<sup>12+</sup>| 4    | VPN网络。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23 |
 
 ## ConversionProcess<sup>23+</sup>
 
@@ -4561,7 +4726,6 @@ TCP状态。
 | TCP_LISTEN      | 10 | 服务端监听，等待客户端连接。 |
 | TCP_CLOSING     | 11 | 双方同时发送FIN，互相等待ACK。   |
 
-
 ## PacketsType
 
 网络探测数据包类型。
@@ -4598,6 +4762,44 @@ TCP状态。
 | username<sup>12+</sup>  | string | 否 | 是 | 使用代理的用户名。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23|
 | password<sup>12+</sup>  | string | 否 | 是  | 使用代理的用户密码。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23|
 
+## Socks5DnsStrategy
+
+SOCKS5代理的DNS查询策略配置信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称             | 值   | 说明                     |
+| --------------- | ------ | ------------------------ |
+| SYSTEM_MODE     | 0 | 使用SOCKS5代理时，DNS解析由系统执行。|
+| PROXY_MODE      | 1 | 使用SOCKS5代理时，DNS解析由代理服务器执行。|
+
+## Socks5Proxy
+
+SOCKS5代理配置信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| host  | string | 否  | 否 |代理服务器主机名。<br>**说明:** 当该项为空字符串时，视为未配置SOCKS5代理。|
+| port  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否  |否  |主机端口。取值范围[0, 65535]。<br>**说明:** 当参数不在上述取值范围时，视为未配置SOCKS5代理。 |
+| username | string | 否 |是  |使用代理的用户名。<br>**说明:** 需同时设置password参数才会生效。|
+| password | string | 否 | 是| 使用代理的用户密码。<br>**说明:** 需同时设置username参数才会生效。|
+| dnsStrategy | [Socks5DnsStrategy](#socks5dnsstrategy) | 否 | 是 | 指定DNS解析由系统执行还是由代理服务器执行。<br>**说明:** 当此项未指定时，如果host有`socks5h://`协议前缀，则DNS解析由代理服务器执行，否则DNS解析由系统执行。 |
+| exclusionList  | Array\<string\> | 否  |是 |不使用代理的主机名列表，主机名支持域名、IP地址以及通配符形式，详细匹配规则如下：<br/>1、域名匹配规则：<br/>（1）完全匹配：代理服务器主机名只要与列表中的任意一个主机名完全相同，就可以匹配。<br/>（2）包含匹配：代理服务器主机名只要包含列表中的任意一个主机名，就可以匹配。<br/>例如，如果在主机名列表中设置了“example.com”，则“example.com”、“www.example.com”、“example.com:80”都会被匹配，而 “www.myexample.com”、“myexample.com.org”则不会被匹配。<br/>2、IP地址匹配规则：代理服务器主机名只要与列表中的任意一个IP地址完全相同，就可以匹配。<br/>3、域名跟IP地址可以同时添加到列表中进行匹配。<br/>4、单个“\*”是唯一有效的通配符，当列表中只有通配符时，将与所有代理服务器主机名匹配，表示禁用代理。通配符只能单独添加，不可以与其他域名、IP地址一起添加到列表中，否则通配符将不生效。<br/>5、匹配规则不区分主机名大小写。<br/>6、匹配主机名时，不考虑http、https、socks5、socks5h等协议前缀。 |
+
 ## NetSpecifier
 
 提供承载数据网络能力的实例。
@@ -4613,7 +4815,7 @@ TCP状态。
 | 名称                     | 类型                                | 只读 | 可选  | 说明                                                         |
 | ----------------------- | ----------------------------------- | ----|---- | ------------------------------------------------------------ |
 | netCapabilities         | [NetCapabilities](#netcapabilities) |  否 | 否  | 存储数据网络的传输能力和承载类型。                                |
-| bearerPrivateIdentifier | string                              |  否 | 是 | 网络标识符，蜂窝网络的标识符是"slot0"（对应SIM卡1）、"slot1"（对应SIM卡2）。从API12开始可以通过传递注册的WLAN热点信息表示应用希望激活的指定的WLAN网络。 |
+| bearerPrivateIdentifier | string                              |  否 | 是 |  网络标识符。<br/>- 蜂窝网络：标识符为simId，可通过[sim.getSimAccountInfo](../apis-telephony-kit/js-apis-sim.md#simgetsimaccountinfo10)接口获取对应卡槽的simId（例如"simId1"，其中1表示当前SIM卡的索引）；<br/>- Wi-Fi网络：标识符固定为wlan0，但从API version 12开始，应用可通过传递已注册的WLAN热点信息来指定希望激活的WLAN网络；<br/>- 以太网：标识符为eth，可在hdc shell中执行ifconfig命令查看具体的网卡标识（例如"eth0"）。 |
 
 **示例：**
 
@@ -4937,8 +5139,8 @@ UDP端口状态信息。
 
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
-| tcpPortStatesInfo | Array\<[TcpNetPortStatesInfo>](#tcpnetportstatesinfo24)\> | 否 | 是 | 系统当前监听的TCP信息。   |
-| udpPortStatesInfo | Array\<[UdpNetPortStatesInfo>](#udpnetportstatesinfo24)\> | 否 | 是 | 系统当前监听的UDP信息。   |
+| tcpPortStatesInfo | Array\<[TcpNetPortStatesInfo](#tcpnetportstatesinfo24)\> | 否 | 是 | 系统当前监听的TCP信息。   |
+| udpPortStatesInfo | Array\<[UdpNetPortStatesInfo](#udpnetportstatesinfo24)\> | 否 | 是 | 系统当前监听的UDP信息。   |
 
 ## TraceRouteOptions
 

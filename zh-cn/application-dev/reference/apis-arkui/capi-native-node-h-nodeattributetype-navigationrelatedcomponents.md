@@ -296,7 +296,7 @@ NODE_SWIPER_DISABLE_SWIPE = 1001010
 NODE_SWIPER_SHOW_DISPLAY_ARROW = 1001011
 ```
 
-设置Swiper是否显示导航点箭头，支持属性设置，属性重置和属性获取接口。<br>
+设置Swiper是否显示导航箭头，支持属性设置，属性重置和属性获取接口。<br/>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -306,7 +306,7 @@ NODE_SWIPER_SHOW_DISPLAY_ARROW = 1001011
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 设置是否显示导航点箭头，参数类型[ArkUI_SwiperArrow](capi-native-type-h.md#arkui_swiperarrow)，默认值为ARKUI_SWIPER_ARROW_HIDE。 |
+| .value[0].i32 | 设置是否显示导航箭头，参数类型[ArkUI_SwiperArrow](capi-native-type-h.md#arkui_swiperarrow)，默认值为ARKUI_SWIPER_ARROW_HIDE。 |
 | .?object | 显示导航箭头时设置箭头样式，参数类型为[ArkUI_SwiperArrowStyle](capi-arkui-nativemodule-arkui-swiperarrowstyle.md)。该参数从API version 19开始支持。 |
 
 **返回：**
@@ -415,7 +415,8 @@ NODE_SWIPER_PREV_MARGIN = 1001015
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].f32 | 前边距数值，单位为vp。.value[1].i32：是否忽略空白，1表示忽略空白，0表示不忽略空白。 |
+| .value[0].f32 | 前边距数值，单位为vp。 |
+| .value[1].i32 | 是否忽略空白，1表示忽略空白，0表示不忽略空白。 |
 
 ## NODE_SWIPER_NEXT_MARGIN
 
@@ -440,7 +441,8 @@ NODE_SWIPER_NEXT_MARGIN = 1001016
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].f32 | 后边距数值，单位为vp。.value[1].i32：是否忽略空白，1表示忽略空白，0表示不忽略空白。 |
+| .value[0].f32 | 后边距数值，单位为vp。 |
+| .value[1].i32 | 是否忽略空白，1表示忽略空白，0表示不忽略空白。 |
 
 ## NODE_SWIPER_INDICATOR
 
@@ -517,7 +519,7 @@ NODE_SWIPER_SWIPE_TO_INDEX = 1001019
 NODE_SWIPER_INDICATOR_INTERACTIVE = 1001020
 ```
 
-设置禁用组件导航点交互功能。<br>
+设置组件导航点是否可交互。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -527,13 +529,13 @@ NODE_SWIPER_INDICATOR_INTERACTIVE = 1001020
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 设置禁用组件导航点交互功能，设置为true时表示导航点可交互，设置为false时表示导航点不可交互，默认值true。 |
+| .value[0].i32 | 设置组件导航点交互功能，0表示导航点不可交互，1表示导航点可交互，默认值为1。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 设置禁用组件导航点交互功能。 |
+| .value[0].i32 | 组件导航点是否可交互，0表示不可交互，1表示可交互。 |
 
 ## NODE_SWIPER_PAGE_FLIP_MODE
 
@@ -542,7 +544,7 @@ NODE_SWIPER_PAGE_FLIP_MODE = 1001021
 ```
 
 设置组件鼠标滚轮翻页模式。<br>
-作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下，作为属性获取方法返回值[ArkUI_PageFlipMode](capi-native-type-h.md#arkui_pageflipmode)格式如下。
 
 **起始版本：** 15
 
@@ -551,7 +553,12 @@ NODE_SWIPER_PAGE_FLIP_MODE = 1001021
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 设置组件鼠标滚轮翻页模式，参数类型[ArkUI_PageFlipMode](capi-native-type-h.md#arkui_pageflipmode)。<br>属性获取方法返回值[ArkUI_PageFlipMode](capi-native-type-h.md#arkui_pageflipmode)格式： |
+| .value[0].i32 | 设置组件鼠标滚轮翻页模式，参数类型[ArkUI_PageFlipMode](capi-native-type-h.md#arkui_pageflipmode)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
 | .value[0].i32 | 鼠标滚轮翻页模式。 |
 
 ## NODE_SWIPER_AUTO_FILL

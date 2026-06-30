@@ -7,7 +7,7 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
-本模块提供管理抽象化色域对象的一些基础能力，包括色域对象的创建与色域基础属性的获取等。
+本模块提供管理抽象化色域对象的基础能力，包括创建标准色域对象（如SRGB、DCI-P3、BT2020等）和自定义色域对象，获取色域类型、白点值、gamma值等属性。适用于需要保证色彩一致性的场景，如图像处理、视频渲染、跨设备色彩显示等，帮助开发者实现准确的色彩管理和转换，提升应用在色彩显示方面的用户体验。
 
 > **说明：**
 >
@@ -28,7 +28,7 @@ import { colorSpaceManager } from '@kit.ArkGraphics2D';
 
 | 名称                         | 值     | 说明                    |
 | --------------------------- | ------ | ----------------------- |
-| UNKNOWN                           | 0      | 未知的色域类型。<br>**ArkTS-Dyn起始版本：** 9 <br>**ArkTS-Sta起始版本：** 23 |
+| UNKNOWN                           | 0      | 未知的色域类型。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9 <br>**ArkTS-Sta起始版本：** 23 |
 | ADOBE_RGB_1998                    | 1      | RGB色域为Adobe RGB(1998)类型。<br>转换函数为Adobe RGB(1998)类型。<br>编码范围为Full类型。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9 <br>**ArkTS-Sta起始版本：** 23 |
 | DCI_P3                            | 2      | RGB色域为DCI-P3类型。<br>转换函数为Gamma 2.6类型。<br>编码范围为Full类型。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9 <br>**ArkTS-Sta起始版本：** 23 |
 | DISPLAY_P3                        | 3      | RGB色域为Display P3类型。<br>转换函数为SRGB类型。<br>编码范围为Full类型。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9 <br>**ArkTS-Sta起始版本：** 23 |
@@ -64,7 +64,7 @@ import { colorSpaceManager } from '@kit.ArkGraphics2D';
 
 ## ColorSpacePrimaries
 
-色域标准三原色（红、绿、蓝）和白色，使用(x, y)表示其在色彩空间中的位置。
+色域标准三原色（红、绿、蓝）和白色，基于现实世界的色度，使用(x, y)表示其在色彩空间中的位置。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.ColorManager.Core
 
@@ -113,17 +113,17 @@ create(colorSpaceName: ColorSpace): ColorSpaceManager
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 401 | Parameter error. Possible cause: 1.Incorrect parameter type. 2.Parameter verification failed.|
+| 401 | Parameter error. Possible cause: 1. Incorrect parameter type. 2. Parameter verification failed.|
 | 18600001 | The parameter value is abnormal. |
 
 **示例：**
 
 ```ts
-let colorSpace: colorSpaceManager.ColorSpaceManager;
 try {
-    colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB);
+  // 创建标准SRGB色域的色彩管理实例
+  let colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB);
 } catch (err) {
-    console.error(`Failed to create SRGB colorSpace. Cause: ` + JSON.stringify(err));
+  console.error(`Failed to create SRGB colorSpace. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -160,28 +160,30 @@ ArkTS-Sta: create(primaries: ColorSpacePrimaries, gamma: double): ColorSpaceMana
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 401 | Parameter error. Possible cause: 1.Incorrect parameter type. 2.Parameter verification failed.|
+| 401 | Parameter error. Possible cause: 1. Incorrect parameter type. 2. Parameter verification failed.|
 | 18600001 | Invalid parameter value. Possible cause: Used UNKNOWN or CUSTOM color space type enum values to directly create a colorSpaceManager object. |
 
 **示例：**
 
 ```ts
-let colorSpace: colorSpaceManager.ColorSpaceManager;
 try {
-    let primaries: colorSpaceManager.ColorSpacePrimaries = {
-        redX: 0.1,
-        redY: 0.1,
-        greenX: 0.2,
-        greenY: 0.2,
-        blueX: 0.3,
-        blueY: 0.3,
-        whitePointX: 0.4,
-        whitePointY: 0.4
-    };
-    let gamma = 2.2;
-    colorSpace = colorSpaceManager.create(primaries, gamma);
+  // 定义色域标准三原色参数
+  let primaries: colorSpaceManager.ColorSpacePrimaries = {
+    redX: 0.1,
+    redY: 0.1,
+    greenX: 0.2,
+    greenY: 0.2,
+    blueX: 0.3,
+    blueY: 0.3,
+    whitePointX: 0.4,
+    whitePointY: 0.4
+  };
+  // 定义色域gamma值
+  let gamma = 2.2;
+  // 创建自定义色域对象
+  let colorSpace = colorSpaceManager.create(primaries, gamma);
 } catch (err) {
-    console.error(`Failed to create colorSpace with customized primaries and gamma. Cause: ` + JSON.stringify(err));
+  console.error(`Failed to create colorSpace with customized primaries and gamma. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -209,13 +211,23 @@ getColorSpaceName(): ColorSpace
 | ------------------ | ------------------------ |
 | [ColorSpace](#colorspace)  | 返回色域类型枚举值。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[色彩管理错误码](errorcode-colorspace-manager.md)。 
+
+| 错误码ID | 错误信息 | 
+| ------- | ----------------------- | 
+| 18600001 | The parameter value is abnormal. <br>适用版本：9-22 | 
+
 **示例：**
 
 ```ts
 try {
-    let spaceName = colorSpace.getColorSpaceName();
+  // 获取色域类型
+  let spaceName = colorSpace.getColorSpaceName();
+  console.info(`spaceName: ` + spaceName.toString());
 } catch (err) {
-    console.error(`Fail to get colorSpace's name. Cause: ` + JSON.stringify(err));
+  console.error(`Failed to get colorSpace's name. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -239,13 +251,23 @@ ArkTS-Sta: getWhitePoint(): Array\<double\>
 | ------------------ | ------------------------ |
 | ArkTS-Dyn: Array\<number\><br>ArkTS-Sta: Array\<double\>  | 返回色域白点值[x, y]。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[色彩管理错误码](errorcode-colorspace-manager.md)。 
+
+| 错误码ID | 错误信息 | 
+| ------- | ----------------------- | 
+| 18600001 | The parameter value is abnormal. <br>适用版本：9-22 |
+
 **示例：**
 
 ```ts
 try {
-    let point = colorSpace.getWhitePoint();
+  // 获取色域白点值
+  let point = colorSpace.getWhitePoint();
+  console.info(`point: ` + point.toString());
 } catch (err) {
-    console.error(`Failed to get white point. Cause: ` + JSON.stringify(err));
+  console.error(`Failed to get white point. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -269,12 +291,22 @@ ArkTS-Sta: getGamma(): double
 | ------------------ | ------------------------ |
 | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 返回色域gamma值。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[色彩管理错误码](errorcode-colorspace-manager.md)。 
+
+| 错误码ID | 错误信息 | 
+| ------- | ----------------------- | 
+| 18600001 | The parameter value is abnormal. <br>适用版本：9-22 | 
+
 **示例：**
 
 ```ts
 try {
-    let gamma = colorSpace.getGamma();
+  // 获取色域gamma值
+  let gamma = colorSpace.getGamma();
+  console.info(`gamma: ` + gamma.toString());
 } catch (err) {
-    console.error(`Failed to get gamma. Cause: ` + JSON.stringify(err));
+  console.error(`Failed to get gamma. Code: ${err.code}, message: ${err.message}`);
 }
 ```

@@ -59,7 +59,7 @@ struct ListExample {
           }.backgroundColor(Color.Pink)
         })
       }
-      .childrenMainSize(this.listChildrenSize) // 10
+      .childrenMainSize(this.listChildrenSize)
     }
   }
 }
@@ -106,7 +106,7 @@ struct ListExample {
           }.backgroundColor(Color.Pink)
         })
       }
-      .childrenMainSize(this.listChildrenSize) // 10
+      .childrenMainSize(this.listChildrenSize)
     }
   }
 }
@@ -390,7 +390,7 @@ struct AttributeDemo {
 
 ### CommonModifier
 
-动态设置组件的属性类。以[CommonModifier](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#自定义modifier)为例。
+动态设置组件的属性类。以[自定义Modifier](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#自定义modifier)为例。
 
 V1：
 
@@ -464,7 +464,7 @@ struct Index {
 
 V2：
 
-在状态管理V2中，[@Local](./arkts-new-local.md)只能观察本身的变化，无法观察第一层的变化，又因为[CommonModifier](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#自定义modifier)在框架内是通过其属性触发刷新，此时可以使用[makeObserved](./arkts-new-makeObserved.md)替代。
+在状态管理V2中，[@Local](./arkts-new-local.md)只能观察本身的变化，无法观察第一层的变化，又因为[自定义Modifier](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#自定义modifier)在框架内是通过其属性触发刷新，此时可以使用[makeObserved](./arkts-new-makeObserved.md)替代。
 
 具体示例如下：
 
@@ -553,7 +553,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 const DOMAIN = 0x0000;
 
 class MyModifier extends TextModifier {
-  applyNormalAttribute(instance: TextModifier): void {
+  applyNormalAttribute(instance: TextAttribute): void {
     super.applyNormalAttribute?.(instance);
   }
 
@@ -632,7 +632,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 const DOMAIN = 0x0000;
 
 class MyModifier extends TextModifier {
-  applyNormalAttribute(instance: TextModifier): void {
+  applyNormalAttribute(instance: TextAttribute): void {
     super.applyNormalAttribute?.(instance);
   }
 

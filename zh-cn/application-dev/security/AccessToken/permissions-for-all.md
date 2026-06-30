@@ -13,7 +13,7 @@
 
 <!--Del-->
 > **说明：**
-> 权限级别为normal的权限，不涉及ACL使能字段。
+> 权限级别为normal的权限，不涉及是否支持证书授权字段。
 <!--DelEnd-->
 
 ## 申请方式
@@ -163,6 +163,8 @@
 ## ohos.permission.INTERNET
 
 允许使用Internet网络。
+
+获取该权限后，应用可以获取IP地址、进行DNS解析或自定义DNS规则等。
 
 **权限级别**：normal
 
@@ -424,11 +426,11 @@
 
 允许应用通过C API启动同应用的UIAbility。
 
-当前仅2in1设备应用可申请此权限。
-
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Tablet
 
 **起始版本**：15
 

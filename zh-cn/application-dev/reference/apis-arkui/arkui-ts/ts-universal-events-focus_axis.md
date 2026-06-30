@@ -13,6 +13,8 @@
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从API version 15开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## onFocusAxisEvent
 
@@ -22,7 +24,7 @@ ArkTS-Sta: onFocusAxisEvent(event: Callback\<FocusAxisEvent> | undefined): this
 
 给组件绑定焦点轴事件回调。绑定该方法的组件获焦后，游戏手柄上的摇杆、十字键等的操作会触发该回调。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,18 +48,28 @@ ArkTS-Sta: onFocusAxisEvent(event: Callback\<FocusAxisEvent> | undefined): this
 
 焦点轴事件的对象说明，继承于[BaseEvent](ts-gesture-customize-judge.md#baseevent8)。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+### 属性
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称                                      | 类型                  | 只读    |  可选   |         说明                 |
 | ------------------------------------- | ---------------------------------------     | ------------- | ------------- | ------------------------- |
-| axisMap                               | ArkTS-Dyn: Map<[AxisModel](ts-appendix-enums.md#axismodel15), number><br/>ArkTS-Sta: Map<[AxisModel](ts-appendix-enums.md#axismodel15), double>      |  否    |  否     | 焦点轴事件的轴值表。          |
-| stopPropagation                       | Callback\<void>                      |     否         |  否     |阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)传递。            |
+| axisMap                               | ArkTS-Dyn: Map<[AxisModel](ts-appendix-enums.md#axismodel15), number><br/>ArkTS-Sta: Map<[AxisModel](ts-appendix-enums.md#axismodel15), double>      |  否    |  否     | 焦点轴事件的轴值表。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23          |
+| stopPropagation                       | Callback\<void>                      |     否         |  否     |阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)传递。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 15            |
+
+### stopPropagation<sup>23+</sup>
+
+stopPropagation(): void
+
+阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
 
 ## 示例
 

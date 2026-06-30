@@ -2,7 +2,7 @@
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @owen_creeper-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Designer: @trytocalm-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -12,7 +12,7 @@ typedef struct {...} OH_MIDICallbacks
 
 ## 概述
 
-客户端回调结构体，包含设备变化和错误处理的回调函数。
+客户端回调结构体，包含设备变化和错误处理的回调函数指针。
 
 **起始版本：** 24
 
@@ -26,7 +26,7 @@ typedef struct {...} OH_MIDICallbacks
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_MIDICallback_OnDeviceChange](capi-native-midi-base-h.md#oh_midicallback_ondevicechange) onDeviceChange | 处理设备热插拔事件的回调。<br>**起始版本：** 24 |
-| [OH_MIDICallback_OnError](capi-native-midi-base-h.md#oh_midicallback_onerror) onError | 处理关键服务错误的回调。<br>**起始版本：** 24 |
+| [OH_MIDICallback_OnDeviceChange](capi-native-midi-base-h.md#oh_midicallback_ondevicechange) onDeviceChange | 处理设备热插拔事件的回调函数指针。<br>**起始版本：** 24 |
+| [OH_MIDICallback_OnError](capi-native-midi-base-h.md#oh_midicallback_onerror) onError | 处理关键服务错误的回调函数指针。<br>**起始版本：** 24 |
 
 

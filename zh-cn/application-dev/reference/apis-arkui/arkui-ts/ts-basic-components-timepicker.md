@@ -21,7 +21,7 @@
 
 ## 子组件
 
-无
+该组件为基础组件，不建议包含子组件。
 
 
 ## 接口
@@ -30,11 +30,13 @@ TimePicker(options?: TimePickerOptions)
 
 创建滑动选择器，默认使用24小时的时间区间。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 23
 
@@ -48,14 +50,20 @@ TimePicker(options?: TimePickerOptions)
 
 时间选择器组件的参数说明。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                 | 类型                                            | 只读 | 可选 |说明                                                         |
 | -------------------- | ----------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| selected             | ArkTS-Dyn: [Date](#date对象说明)<br/>ArkTS-Sta: [Date](#date对象说明)&nbsp;\|&nbsp;[Bindable](../../../ui/state-management/arkts-two-way-sync-static.md)\<[Date](#date对象说明)>                                            | 否   | 是   | 设置选中项的时间。<br/>默认值：当前系统时间<br />ArkTS-Dyn：从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br/>ArkTS-Sta：从API version 23开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync-static.md)双向绑定变量。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
-| format<sup>11+</sup> | [TimePickerFormat](#timepickerformat11枚举说明) | 否   | 是   | 指定需要显示的TimePicker的格式。<br/>默认值：TimePickerFormat.HOUR_MINUTE<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
-| start<sup>18+</sup>  | [Date](#date对象说明) | 否   | 是   | 指定时间选择组件的起始时间。<br/>默认值：Date(0, 0, 0, 0, 0, 0)<br/>**说明：**<br/>1. 仅设置的小时和分钟生效。<br/>2. 设置了start且为非默认值的场景下，loop不生效。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
-| end<sup>18+</sup>    | [Date](#date对象说明) | 否   | 是   | 指定时间选择组件的结束时间。<br/>默认值：Date(0, 0, 0, 23, 59, 59)<br/>**说明：**<br/>1. 仅设置的小时和分钟生效。<br/>2. 设置了end且为非默认值的场景下，loop不生效。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
+| selected             | ArkTS-Dyn: [Date](#date对象说明)<br/>ArkTS-Sta: [Date](#date对象说明)&nbsp;\|&nbsp;[Bindable](../../../ui/state-management/arkts-two-way-sync-static.md)\<[Date](#date对象说明)>                                            | 否   | 是   | 设置选中项的时间。<br/>默认值：当前系统时间<br />ArkTS-Dyn：从API version 10开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br/>ArkTS-Sta：从API version 23开始，该参数支持[$$](../../../ui/state-management/arkts-two-way-sync-static.md)双向绑定变量。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| format<sup>11+</sup> | [TimePickerFormat](#timepickerformat11枚举说明) | 否   | 是   | 指定需要显示的TimePicker的格式。<br/>默认值：TimePickerFormat.HOUR_MINUTE<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| start<sup>18+</sup>  | [Date](#date对象说明) | 否   | 是   | 指定时间选择组件的起始时间。<br/>默认值：Date(0, 0, 0, 0, 0, 0)<br/>**说明：**<br/>1. 仅设置的小时和分钟生效。<br/>2. 设置了start且为非默认值的场景下，loop不生效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
+| end<sup>18+</sup>    | [Date](#date对象说明) | 否   | 是   | 指定时间选择组件的结束时间。<br/>默认值：Date(0, 0, 0, 23, 59, 59)<br/>**说明：**<br/>1. 仅设置的小时和分钟生效。<br/>2. 设置了end且为非默认值的场景下，loop不生效。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
 
 在TimePicker组件滑动过程中修改TimePickerOptions中的属性，会导致这些属性无法生效。
 
@@ -100,7 +108,9 @@ Date对象用于处理日期和时间，使用方式如下。
 
 时间选择器的数据格式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -119,13 +129,13 @@ useMilitaryTime(value: boolean)
 
 设置时间是否以24小时制展示，未通过该接口设置时，默认跟随系统设置展示。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[useMilitaryTime](#usemilitarytime23)。
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[useMilitaryTime<sup>23+</sup>](#usemilitarytime23)。
 
 **ArkTS-Dyn起始版本：** 8
 
@@ -141,13 +151,15 @@ useMilitaryTime(isMilitaryTime: Optional\<boolean>)
 
 设置展示时间是否为24小时制，未通过该接口设置时，默认跟随系统设置展示。与[useMilitaryTime](#usemilitarytime)相比，isMilitaryTime参数新增了对undefined类型的支持。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[useMilitaryTime](#usemilitarytime23)。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[useMilitaryTime<sup>23+</sup>](#usemilitarytime23)。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -163,11 +175,13 @@ useMilitaryTime(value: boolean | undefined)
 
 设置展示时间是否为24小时制。如果展示时间为12小时制，上下午与小时无联动。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[useMilitaryTime](#usemilitarytime)和[useMilitaryTime](#usemilitarytime18)。
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[useMilitaryTime](#usemilitarytime)和[useMilitaryTime<sup>18+</sup>](#usemilitarytime18)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -183,13 +197,15 @@ disappearTextStyle(value: PickerTextStyle)
 
 设置边缘项（以选中项为基准向上或向下的第二项）的文本颜色、字号、字体粗细。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[disappearTextStyle](#disappeartextstyle23)。
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[disappearTextStyle<sup>23+</sup>](#disappeartextstyle23)。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -209,13 +225,15 @@ disappearTextStyle(style: Optional\<PickerTextStyle>)
 
 设置边缘项（以选中项为基准向上或向下的第二项）的文本颜色、字号、字体粗细。与[disappearTextStyle<sup>10+</sup>](#disappeartextstyle10)相比，style参数新增了对undefined类型的支持。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[disappearTextStyle](#disappeartextstyle23)。
-
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[disappearTextStyle<sup>23+</sup>](#disappeartextstyle23)。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -229,7 +247,9 @@ disappearTextStyle(style: Optional\<PickerTextStyle>)
 
 disappearTextStyle(value: PickerTextStyle | undefined)
 
-设置过渡项（以选中项为基准向上或向下的第二项）的文本样式。
+设置边缘项（以选中项为基准向上或向下的第二项）的文本样式。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -243,7 +263,7 @@ disappearTextStyle(value: PickerTextStyle | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [PickerTextStyle](ts-basic-components-datepicker.md#pickertextstyle10类型说明) \| undefined | 是   | 过渡项的文本颜色、字号和字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '14fp', <br/>weight: FontWeight.Regular<br/>}<br/>}<br/>当value的值为undefined时，使用默认值。 |
+| value  | [PickerTextStyle](ts-basic-components-datepicker.md#pickertextstyle10类型说明) \| undefined | 是   | 边缘项的文本颜色、字号和字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '14fp', <br/>weight: FontWeight.Regular<br/>}<br/>}<br/>当value的值为undefined时，使用默认值。 |
 
 >  **说明：**
 >
@@ -255,13 +275,15 @@ textStyle(value: PickerTextStyle)
 
 设置待选项（以选中项为基准向上或向下的第一项）的文本颜色、字号、字体粗细。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[textStyle](#textstyle23)。
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[textStyle<sup>23+</sup>](#textstyle23)。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -281,13 +303,15 @@ textStyle(style: Optional\<PickerTextStyle>)
 
 设置待选项（以选中项为基准向上或向下的第一项）的文本颜色、字号、字体粗细。与[textStyle<sup>10+</sup>](#textstyle10)相比，style参数新增了对undefined类型的支持。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[textStyle](#textstyle23)。
-
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[textStyle<sup>23+</sup>](#textstyle23)。
 
 **参数：**
 
@@ -299,7 +323,9 @@ textStyle(style: Optional\<PickerTextStyle>)
 
 textStyle(value: PickerTextStyle | undefined)
 
-设置一般项（以选中项为基准向上或向下的第一项）的文本样式。
+设置待选项（以选中项为基准向上或向下的第一项）的文本样式。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -313,7 +339,7 @@ textStyle(value: PickerTextStyle | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [PickerTextStyle](ts-basic-components-datepicker.md#pickertextstyle10类型说明) \| undefined | 是   | 一般项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '16fp', <br/>weight: FontWeight.Regular<br/>}<br/>}<br/>当value的值为undefined时，使用默认值。 |
+| value  | [PickerTextStyle](ts-basic-components-datepicker.md#pickertextstyle10类型说明) \| undefined | 是   | 待选项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '16fp', <br/>weight: FontWeight.Regular<br/>}<br/>}<br/>当value的值为undefined时，使用默认值。 |
 
 >  **说明：**
 >
@@ -325,7 +351,9 @@ selectedTextStyle(value: PickerTextStyle)
 
 设置选中项的文本颜色、字号和字体粗细。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -333,7 +361,7 @@ selectedTextStyle(value: PickerTextStyle)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[selectedTextStyle](#selectedtextstyle23)。
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[selectedTextStyle<sup>23+</sup>](#selectedtextstyle23)。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -347,17 +375,19 @@ selectedTextStyle(value: PickerTextStyle)
 
 selectedTextStyle(style: Optional\<PickerTextStyle>)
 
-设置选中项的文本颜色、字号及字体粗细。与[selectedTextStyle<sup>10+</sup>](#selectedtextstyle10)相比，style参数新增了对undefined类型的支持
+设置选中项的文本颜色、字号及字体粗细。与[selectedTextStyle<sup>10+</sup>](#selectedtextstyle10)相比，style参数新增了对undefined类型的支持。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[selectedTextStyle](#selectedtextstyle23)。
-
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该属性在Wearable设备上使用无效果，在其他设备中可正常生效。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[selectedTextStyle<sup>23+</sup>](#selectedtextstyle23)。
 
 **参数：**
 
@@ -370,6 +400,8 @@ selectedTextStyle(style: Optional\<PickerTextStyle>)
 selectedTextStyle(value: PickerTextStyle | undefined)
 
 设置选中项的文本颜色、字号和字体粗细。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -391,13 +423,15 @@ loop(value: boolean)
 
 设置是否启用循环模式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[loop](#loop23)。
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[loop<sup>23+</sup>](#loop23)。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -413,13 +447,15 @@ loop(isLoop: Optional\<boolean>)
 
 设置是否启用循环模式。与[loop<sup>11+</sup>](#loop11)相比，isLoop参数新增了对undefined类型的支持。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[loop](#loop23)。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[loop<sup>23+</sup>](#loop23)。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -433,7 +469,9 @@ loop(isLoop: Optional\<boolean>)
 
 loop(value: boolean | undefined)
 
-设置循环模式的启用状态。
+设置是否启用循环模式。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -455,13 +493,15 @@ dateTimeOptions(value: DateTimeOptions)
 
 设置时分秒是否显示前导0。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[dateTimeOptions](#datetimeoptions23)。
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[dateTimeOptions<sup>23+</sup>](#datetimeoptions23)。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -477,13 +517,15 @@ dateTimeOptions(timeFormat: Optional\<DateTimeOptions>)
 
 设置时分秒是否显示前导0。与[dateTimeOptions<sup>12+</sup>](#datetimeoptions12)相比，timeFormat参数新增了对undefined类型的支持。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[dateTimeOptions](#datetimeoptions23)。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[dateTimeOptions<sup>23+</sup>](#datetimeoptions23)。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -499,6 +541,8 @@ dateTimeOptions(value: DateTimeOptions | undefined)
 
 设置时分秒是否显示前导0。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -511,7 +555,7 @@ dateTimeOptions(value: DateTimeOptions | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [DateTimeOptions](../../apis-localization-kit/js-apis-intl.md#datetimeoptionsdeprecated) \| undefined | 是   | 设置时分秒是否显示前导0，目前只支持设置hour、minute和second参数。<br/>默认值：<br/>hour: 24小时制默认为"2-digit"，设置hour是否按照2位数字显示，如果实际数值小于10，则会补充前导0并显示，即为"0X"；12小时制默认为"numeric"，即没有前导0。<br/>minute: 默认为"2-digit"，设置minute是否按照2位数字显示，如果实际数值小于10，则会补充前导0并显示，即为"0X"。<br/>当value的值为undefined时，使用默认值。 |
+| value  | [DateTimeOptions](../../apis-localization-kit/js-apis-intl.md#datetimeoptionsdeprecated) \| undefined | 是   | 设置时分秒是否显示前导0，目前只支持设置hour、minute和second参数。<br/>默认值：<br/>hour: 24小时制默认为"2-digit"，设置hour是否按照2位数字显示，如果实际数值小于10，则会补充前导0并显示，即为"0X"；12小时制默认为"numeric"，即没有前导0。<br/>minute: 默认为"2-digit"，设置minute是否按照2位数字显示，如果实际数值小于10，则会补充前导0并显示，即为"0X"。<br/>second: 默认为"2-digit"，设置second是否按照2位数字显示，如果实际数值小于10，则会补充前导0并显示，即为"0X"。<br/>当value的值为undefined时，使用默认值。 |
 
 ### enableHapticFeedback<sup>12+</sup>
 
@@ -529,17 +573,15 @@ enableHapticFeedback(enable: boolean)
 ]
 ```
 
->**说明：**
->
-> 从API version 18开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[enableHapticFeedback](#enablehapticfeedback23)。
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[enableHapticFeedback<sup>23+</sup>](#enablehapticfeedback23)。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -559,19 +601,25 @@ enableHapticFeedback(enable: Optional\<boolean>)
 
 ``` json
 "requestPermissions": [
-  {
-    "name": "ohos.permission.VIBRATE",
-  }
+   {
+      "name": "ohos.permission.VIBRATE",
+   }
 ]
 ```
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+>**说明：**
+>
+> 从API version 18开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[enableHapticFeedback](#enablehapticfeedback23)。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[enableHapticFeedback<sup>23+</sup>](#enablehapticfeedback23)。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -586,6 +634,18 @@ enableHapticFeedback(enable: Optional\<boolean>)
 enableHapticFeedback(enable: boolean | undefined)
 
 设置是否支持触控反馈。
+
+开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
+
+``` json
+"requestPermissions": [
+   {
+      "name": "ohos.permission.VIBRATE",
+   }
+]
+```
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -609,7 +669,9 @@ ArkTS-Sta: enableCascade(enabled: boolean | undefined)
 
 设置上午和下午的标识是否根据小时数自动切换，仅在[useMilitaryTime](#usemilitarytime)设置为false时生效。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -621,7 +683,7 @@ ArkTS-Sta: enableCascade(enabled: boolean | undefined)
 
 | 参数名 | 类型                                          | 必填  | 说明                                                                                  |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| enable  | ArkTS-Dyn: boolean<br/> ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 上午和下午的标识是否根据小时数自动切换，仅在useMilitaryTime设置为false时生效。<br/>- true：自动切换。<br/>- false：不自动切换。<br/>默认值：false<br/>当enabled设置为true时，仅在loop参数同时为true时生效。<br/>当enabled的值为undefined时，使用默认值。 |
+| enabled | ArkTS-Dyn: boolean<br/> ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是 | 上午和下午的标识是否根据小时数自动切换，仅在useMilitaryTime设置为false时生效。<br/>- true：自动切换。<br/>- false：不自动切换。<br/>默认值：false<br/>当enabled设置为true时，仅在loop参数同时为true时生效。<br/>当enabled的值为undefined时，使用默认值。 |
 
 ### digitalCrownSensitivity<sup>18+</sup>
 
@@ -631,7 +693,9 @@ ArkTS-Sta: digitalCrownSensitivity(sensitivity: CrownSensitivity | undefined)
 
 设置表冠灵敏度。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -663,13 +727,13 @@ onChange(callback:&nbsp;(value:&nbsp;TimePickerResult )&nbsp;=&gt;&nbsp;void)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 8
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[onChange](#onchange23)。
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onChange<sup>23+</sup>](#onchange23)。
 
 **参数：** 
 
@@ -679,19 +743,45 @@ onChange(callback:&nbsp;(value:&nbsp;TimePickerResult )&nbsp;=&gt;&nbsp;void)
 
 ### onChange<sup>18+</sup>
 
-ArkTS-Dyn: onChange(callback: Optional\<OnTimePickerChangeCallback>)
-
-ArkTS-Sta: onChange(callback: OnTimePickerChangeCallback | undefined)
+onChange(callback: Optional\<OnTimePickerChangeCallback>)
 
 滑动TimePicker后，时间选项归位至选中项位置时，触发该回调。不能通过双向绑定的状态变量触发。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。
 
 回调会在滑动动画结束后触发，如果需要快速获取索引值变化，建议使用[onEnterSelectedArea](#onenterselectedarea18)接口。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onChange<sup>23+</sup>](#onchange23)。
+
 **ArkTS-Dyn起始版本：** 18
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnTimePickerChangeCallback](#ontimepickerchangecallback18)> | 是   | 选择时间时触发该回调。<br/>当callback的值为undefined时，不使用回调函数。 |
+
+### onChange<sup>23+</sup>
+
+onChange(callback: OnTimePickerChangeCallback | undefined)
+
+滑动TimePicker后，时间选项归位至选中项位置时，触发该回调。不能通过双向绑定的状态变量触发。与[onChange](#onchange)相比，callback参数类型为[OnTimePickerChangeCallback](#ontimepickerchangecallback18) \| undefined。
+
+回调会在滑动动画结束后触发，如果需要快速获取索引值变化，建议使用[onEnterSelectedArea](#onenterselectedarea18)接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[onChange](#onchange)和[onChange<sup>18+</sup>](#onchange18)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -699,7 +789,7 @@ ArkTS-Sta: onChange(callback: OnTimePickerChangeCallback | undefined)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnTimePickerChangeCallback](#ontimepickerchangecallback)><br/>ArkTS-Sta: [OnTimePickerChangeCallback](#ontimepickerchangecallback) \| undefined | 是   | 选择时间时触发该回调。<br/>当callback的值为undefined时，不使用回调函数。 |
+| callback | [OnTimePickerChangeCallback](#ontimepickerchangecallback18) \| undefined | 是   | 选择时间时触发该回调。<br/>当callback的值为undefined时，不使用回调函数。 |
 
 ### onEnterSelectedArea<sup>18+</sup>
 
@@ -715,7 +805,9 @@ ArkTS-Sta: onEnterSelectedArea(callback: Callback\<TimePickerResult\> | undefine
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -729,33 +821,13 @@ ArkTS-Sta: onEnterSelectedArea(callback: Callback\<TimePickerResult\> | undefine
 | -------- | -------------------------- | ---- | ------------------------------------------ |
 | callback | ArkTS-Dyn: Callback\<[TimePickerResult](#timepickerresult对象说明)><br/>ArkTS-Sta: Callback\<[TimePickerResult](#timepickerresult对象说明)> \| undefined | 是   | 滑动TimePicker过程中，选项进入分割线区域时触发的回调。<br/>当callback的值为undefined时，不使用回调函数。 |
 
-### onChange<sup>23+</sup>
-
-onChange(callback: OnTimePickerChangeCallback | undefined)
-
-滑动[TimePicker](#接口)后，时间选项归位至选中项位置时，触发该回调。不能通过双向绑定的状态变量触发。
-
-回调会在滑动动画结束后触发，如果需要快速获取索引值变化，建议使用[onEnterSelectedArea](#onenterselectedarea18)接口。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[onChange](#onchange)和[onChange<sup>18+</sup>](#onchange18)。
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-| 参数名   | 类型                                                         | 必填 | 说明                                                         |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [OnTimePickerChangeCallback](#ontimepickerchangecallback) \| undefined | 是   | 选择时间时触发该回调。<br/>当callback的值为undefined时，不使用回调函数。 |
-
 ### attributeModifier<sup>23+</sup>
 
 attributeModifier(modifier: AttributeModifier\<TimePickerAttribute> | AttributeModifier\<CommonMethod> | undefined)
 
 设置属性修改器。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -767,31 +839,37 @@ attributeModifier(modifier: AttributeModifier\<TimePickerAttribute> | AttributeM
 
 | 参数名   | 类型               | 必填   | 说明      |
 | ----- | ---------- | ---- | ----------------------- |
-| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<[TimePickerAttribute]> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<[CommonMethod](ts-component-general-attributes.md)> \| undefined | 是    | 设置属性修改器。<br/>当modifier的值为undefined时，不设置属性修改器。 |
+| modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<TimePickerAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是    | 设置属性修改器。<br/>当modifier的值为undefined时，不设置属性修改器。CommonMethod表示[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)。 <br/>TimePickerAttribute表示当前组件的[属性](#属性)和[事件](#事件)。 |
 
-## OnTimePickerChangeCallback
+## OnTimePickerChangeCallback<sup>18+</sup>
 
-type OnTimePickerChangeCallback = (value: TimePickerResult) => void
+type OnTimePickerChangeCallback = (result: TimePickerResult) => void
 
 选择时间时触发该事件。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                          | 必填 | 说明           |
 | ------ | --------------------------------------------- | ---- | -------------- |
-| value  | [TimePickerResult](#timepickerresult对象说明) | 是   | 24小时制时间。 |
+| result | [TimePickerResult](#timepickerresult对象说明) | 是   | 24小时制时间。 |
 
 ## TimePickerResult对象说明
 
 返回24小时制时间。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -812,7 +890,7 @@ type OnTimePickerChangeCallback = (value: TimePickerResult) => void
 该示例通过配置[disappearTextStyle](#disappeartextstyle10)、[textStyle](#textstyle10)和[selectedTextStyle](#selectedtextstyle10)实现文本选择器中的文本样式。
 
 ```ts
-// xxx.ets
+// TimePickerExampleDyn.ets
 @Entry
 @Component
 struct TimePickerExample {
@@ -839,10 +917,10 @@ struct TimePickerExample {
 
 ### 示例2（切换小时制）
 
-该示例通过配置useMilitaryTime实现12小时制、24小时制的切换。
+该示例通过配置[useMilitaryTime](#usemilitarytime)实现12小时制、24小时制的切换。
 
 ```ts
-// xxx.ets
+// TimePickerExampleDyn.ets
 @Entry
 @Component
 struct TimePickerExample {
@@ -879,10 +957,10 @@ struct TimePickerExample {
 
 ### 示例3（设置时间格式）
 
-该示例使用format和dateTimeOptions设置TimePicker时间格式。
+该示例使用[format](#timepickerformat11枚举说明)和[dateTimeOptions](#datetimeoptions12)设置TimePicker时间格式。
 
 ```ts
-// xxx.ets
+// TimePickerExampleDyn.ets
 @Entry
 @Component
 struct TimePickerExample {
@@ -913,7 +991,7 @@ struct TimePickerExample {
 该示例通过配置[loop](#loop11)设置TimePicker是否循环滚动。
 
 ```ts
-// xxx.ets
+// TimePickerExampleDyn.ets
 @Entry
 @Component
 struct TimePickerExample {
@@ -951,10 +1029,10 @@ struct TimePickerExample {
 
 ### 示例5（设置时间选择组件的起始时间）
 
-该示例设置TimePicker的起始时间。
+该示例通过[start](#timepickeroptions对象说明)设置TimePicker的起始时间。
 
 ```ts
-// xxx.ets
+// TimePickerExampleDyn.ets
 @Entry
 @Component
 struct TimePickerExample {
@@ -982,10 +1060,10 @@ struct TimePickerExample {
 
 ### 示例6（设置时间选择组件的结束时间）
 
-该示例设置TimePicker的结束时间。
+该示例通过[end](#timepickeroptions对象说明)设置TimePicker的结束时间。
 
 ```ts
-// xxx.ets
+// TimePickerExampleDyn.ets
 @Entry
 @Component
 struct TimePickerExample {
@@ -1017,7 +1095,7 @@ struct TimePickerExample {
 该示例通过配置[enableCascade](#enablecascade18)、[loop](#loop11)实现12小时制时上午下午跟随时间联动。
 
 ```ts
-// xxx.ets
+// TimePickerExampleDyn.ets
 @Entry
 @Component
 struct TimePickerExample {
@@ -1042,3 +1120,50 @@ struct TimePickerExample {
 ```
 
 ![timePicker](figures/TimePickerDemo7.gif)
+
+
+### 示例8（使用$$双向绑定）
+
+该示例通过$$双向绑定TimePicker组件的[selected](#timepickeroptions对象说明)属性。
+
+从API version 23开始，selected参数支持Bindable\<Date>类型。
+
+ArkTS-Sta示例：
+
+```ts
+// TimePickerExampleSta.ets
+
+import {
+  $$,
+  Column,
+  ColumnOptions,
+  Component,
+  Entry,
+  Text,
+  TimePicker,
+  TimePickerFormat,
+  TimePickerResult
+} from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct TimePickerExample {
+  @State selectedTime: Date = new Date('2026-04-01T09:10:10');
+
+  build() {
+    Column({ space: 20 } as ColumnOptions) {
+      Text(`TimePicker $$selected: ${this.selectedTime}`)
+
+      TimePicker({
+        selected: $$(this.selectedTime),
+        format: TimePickerFormat.HOUR_MINUTE_SECOND
+      })
+        .onChange((value: TimePickerResult) => {
+          console.info(`TimePicker onChange: ${value.hour} : ${value.minute} : ${value.second}`);
+        })
+    }
+  }
+}
+```
+![datePicker](figures/TimePickerDemo8.png)

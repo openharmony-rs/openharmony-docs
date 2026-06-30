@@ -2,7 +2,7 @@
 
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @chenkun-->
+<!--Owner: @chenkun613227-->
 <!--Designer: @yxc2-->
 <!--Tester: @zengxi_3007-->
 <!--Adviser: @w_Machine_cc-->
@@ -26,8 +26,8 @@
 
 **在CMake脚本中链接动态库**
 
-```cmake
-target_link_libraries(sample PUBLIC libnative_avscreen_capture.so)
+```CMake
+target_link_libraries(sample PUBLIC libnative_avscreen_capture.so libnative_display_manager.so libability_runtime.so)
 ```
 
 > **说明：**
@@ -37,11 +37,18 @@ target_link_libraries(sample PUBLIC libnative_avscreen_capture.so)
 
 **添加头文件**
 
-```c++
+<!-- @[screenCapture_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/main.h) -->
+
+``` C
+#include "hilog/log.h"
 #include "napi/native_api.h"
+#include <window_manager/oh_display_info.h>
+#include <window_manager/oh_display_manager.h>
+#include <AbilityKit/ability_runtime/application_context.h>
 #include <multimedia/player_framework/native_avscreen_capture.h>
 #include <multimedia/player_framework/native_avscreen_capture_base.h>
 #include <multimedia/player_framework/native_avscreen_capture_errors.h>
+#include <unistd.h>
 #include <fcntl.h>
 #include <string>
 ```
@@ -67,31 +74,32 @@ target_link_libraries(sample PUBLIC libnative_avscreen_capture.so)
 > **设置失败的处理**：如果区域位置设置失败，系统将按照上一次的区域进行捕获。建议开发者在设置区域时进行错误检查和处理，以确保捕获区域的准确性。
 > **参数设置非负**：该接口设置的坐标和宽高不能为负数，捕获区域不能跨屏幕，区域位置设置失败后仍按照上一次的区域进行捕获。
 
-```c++
-struct OH_AVScreenCapture *capture = OH_AVScreenCapture_Create();
+<!-- @[screenCapture_startScreenCapture_rectangular](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+g_avCapture = OH_AVScreenCapture_Create();
+if (g_avCapture == nullptr) {
+    OH_LOG_ERROR(LOG_APP, "create screen capture failed");
+}
+OpenFile("Demo");
+SetCallback(g_avCapture);
 // 初始化录屏，传入配置信息OH_AVScreenRecorderConfig。
-OH_AudioCaptureInfo miccapinfo = {.audioSampleRate = 16000, .audioChannels = 2, .audioSource = OH_MIC};
-OH_VideoCaptureInfo videocapinfo = {
-    .videoFrameWidth = 768, .videoFrameHeight = 1280, .videoSource = OH_VIDEO_SOURCE_SURFACE_RGBA};
-OH_AudioInfo audioinfo = {
-    .micCapInfo = miccapinfo,
-};
-OH_VideoInfo videoinfo = {.videoCapInfo = videocapinfo};
-OH_AVScreenCaptureConfig config = {.captureMode = OH_CAPTURE_HOME_SCREEN,
-                                   .dataType = OH_ORIGINAL_STREAM,
-                                   .audioInfo = audioinfo,
-                                   .videoInfo = videoinfo};
-OH_AVScreenCapture_Init(capture, config);
+OH_AVScreenCaptureConfig config;
+SetConfig05(config);
+OH_AVSCREEN_CAPTURE_ErrCode result = OH_AVScreenCapture_Init(g_avCapture, config);
+if (result != AV_SCREEN_CAPTURE_ERR_OK) {
+    OH_LOG_ERROR(LOG_APP,
+        "==ScreenCaptureSample== ScreenCapture OH_AVScreenCapture_Init failed %{public}d", result);
+}
 // 1. 可选，可以根据需要设置区域坐标和大小，设置想要捕获的区域，如下方创建了一个从（0, 0）为起点的长100，宽100的矩形区域。
 OH_Rect* region = new OH_Rect;
 region->x = 0;
 region->y = 0;
-region->width = 100;
-region->height = 100;
-// 2. 传入矩形区域所在的屏幕Id。
+region->width = CAPTURE_REGION_SIZE;
+region->height = CAPTURE_REGION_SIZE;
+// 2.传入矩形区域所在的屏幕Id。
 uint64_t regionDisplayId = 0;
-OH_AVScreenCapture_SetCaptureArea(capture, regionDisplayId, region);
-
+OH_AVScreenCapture_SetCaptureArea(g_avCapture, regionDisplayId, region);
 // 开始录屏。
-OH_AVScreenCapture_StartScreenCapture(capture);
+result = OH_AVScreenCapture_StartScreenCapture(g_avCapture);
 ```

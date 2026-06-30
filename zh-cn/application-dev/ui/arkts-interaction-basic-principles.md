@@ -46,15 +46,23 @@
 
 ## 事件响应链
 
-ArkUI事件响应链通过触摸测试进行收集，遵循右子树（按组件布局的先后层级）优先的后序遍历。
+事件响应链是指通过触摸测试收集到的、能够响应本次交互的所有组件组成的有序链条。当用户触摸屏幕时，系统会从触摸点位置开始，遵循右子树优先的后序遍历顺序（即从最内层组件开始，自下而上、从右到左逐层向外收集），形成完整的响应链。
 
-事件响应链收集举例：按下图的组件树，hitTestBehavior属性均为默认，用户点按的动作如果发生在组件5上，则最终收集到的响应链，以及先后关系是5，3，1。
+下图展示了组件树的层级结构与事件响应链的收集过程。图中父、子节点分别对应父组件和子组件，左子树和右子树对应兄弟组件，右子树对应的组件会显示在左子树对应组件的上方。
 
-因为组件3的hitTestBehavior属性为Default，收集到事件后会阻塞兄弟节点，所以没有收集组件1的左子树。
+![EventResponseChain](figures/EventResponseChain.png)
 
-  ![EventResponseChain](figures/EventResponseChain.png)
+通过[hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)属性可以设置组件的触摸测试模式。在本示例中，所有组件的触摸测试模式均设置为[HitTestMode](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#hittestmode9).Default。如果用户点按的动作发生在组件5上，则响应链收集过程如下：
 
+1. 系统检测到触摸点落在组件5上，组件5被收集。
 
+2. 向上冒泡至父组件3，组件3被收集。
+
+3. 由于组件3的触摸测试模式为HitTestMode.Default，收集到事件后会阻塞兄弟节点，因此组件2不会被收集。
+
+4. 继续向上冒泡至根组件1，组件1被收集。
+
+因此最终收集到的响应链以及组件先后关系是5、3、1。
 
 ## 触摸测试
 
@@ -112,6 +120,9 @@ ArkUI事件响应链通过触摸测试进行收集，遵循右子树（按组件
    > 百分比相对于组件自身宽高进行计算。
 
    以下是一个绑定多个热区范围的示例：
+
+   ArkTS-Dyn示例：
+
    <!-- @[focus_onclick](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/FocusOnclickExample/FocusOnclickExample.ets) -->
    
    ``` TypeScript
@@ -144,6 +155,51 @@ ArkUI事件响应链通过触摸测试进行收集，遵循右子树（按组件
            .onClick(() => {
              this.number++;
              this.text = 'button' + this.number + 'clicked';
+           })
+           .width(200)
+       }.width('100%').justifyContent(FlexAlign.Center)
+     }
+   }
+   ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[focus_onclick](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/FocusOnclickExample/FocusOnclickExample.ets) -->
+   
+   ``` TypeScript
+   import { Entry, Component, State, Column, Text, Button, $r, Margin, FlexAlign, Rectangle } from '@kit.ArkUI';
+   
+   @Entry
+   @Component
+   struct FocusOnclickExample {
+     @State text: string = '';
+     @State clickCount: number = 0;
+   
+     build() {
+       Column() {
+         Text(this.text)
+           .margin({ bottom: 20 } as Margin)
+         // 请将$r('app.string.button')替换为实际资源文件，在本示例中该资源文件的value值为"按钮"
+         Button($r('app.string.button'))
+           .responseRegion([
+             // 第一个热区为按钮的左侧1/3区域
+             {
+               x: 0,
+               y: 0,
+               width: '30%',
+               height: '100%'
+             } as Rectangle,
+             // 第二个热区为按钮的右侧1/3区域
+             {
+               x: '70%',
+               y: 0,
+               width: '30%',
+               height: '100%'
+             } as Rectangle
+           ])
+           .onClick(() => {
+             this.clickCount++;
+             this.text = 'button' + this.clickCount + 'clicked';
            })
            .width(200)
        }.width('100%').justifyContent(FlexAlign.Center)

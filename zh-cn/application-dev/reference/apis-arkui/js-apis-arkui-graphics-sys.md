@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @sun-xinyan-->
-<!--Designer: @CCFFWW-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,13 +12,16 @@
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 本文仅介绍当前模块的系统接口，其他公开接口参见[Graphics](js-apis-arkui-graphics.md)。
 
 ## ColorMetrics
 
 用于混合颜色。
 
-### createHDRColorWithLinearExposure<sup>24+</sup>
+### createHDRColorWithLinearExposure
 
 ArkTS-Dyn: static createHDRColorWithLinearExposure(linearExposure: number, colorSpace: ColorSpace, red: number, green: number, blue: number, alpha?: number): ColorMetrics
 
@@ -32,9 +35,9 @@ ArkTS-Sta: static createHDRColorWithLinearExposure(linearExposure: double, color
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -53,7 +56,7 @@ ArkTS-Sta: static createHDRColorWithLinearExposure(linearExposure: double, color
 | ------------- | ---------------- |
 | [ColorMetrics](#colormetrics) | ColorMetrics类的实例。|
 
-### createHDRColorWithLogExposure<sup>24+</sup>
+### createHDRColorWithLogExposure
 
 ArkTS-Dyn: static createHDRColorWithLogExposure(exposure: number, colorSpace: ColorSpace, red: number, green: number, blue: number, alpha?: number): ColorMetrics
 
@@ -67,9 +70,9 @@ ArkTS-Sta: static createHDRColorWithLogExposure(exposure: double, colorSpace: Co
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -88,7 +91,7 @@ ArkTS-Sta: static createHDRColorWithLogExposure(exposure: double, colorSpace: Co
 | ------------- | ---------------- |
 | [ColorMetrics](#colormetrics) | ColorMetrics类的实例。|
 
-### createHDRColor<sup>24+</sup>
+### createHDRColor
 
 ArkTS-Dyn: static createHDRColorWithLogExposure(colorSpace: ColorSpace, red: number, green: number, blue: number, alpha?: number): ColorMetrics
 
@@ -102,9 +105,9 @@ ArkTS-Sta: static createHDRColorWithLogExposure(colorSpace: ColorSpace, red: dou
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -122,7 +125,7 @@ ArkTS-Sta: static createHDRColorWithLogExposure(colorSpace: ColorSpace, red: dou
 | ------------- | ---------------- |
 | [ColorMetrics](#colormetrics) | ColorMetrics类的实例。|
 
-### getColorSpace<sup>24+</sup>
+### getColorSpace
 
 getColorSpace(): ColorSpace
 
@@ -134,9 +137,9 @@ getColorSpace(): ColorSpace
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -144,7 +147,7 @@ getColorSpace(): ColorSpace
 | ------------- | ---------------- |
 | [ColorSpace](./arkui-ts/ts-appendix-enums.md#colorspace20) | 色彩空间。 |
 
-### isHDR<sup>24+</sup>
+### isHDR
 
 isHDR(): boolean
 
@@ -156,17 +159,17 @@ isHDR(): boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
 | 类型          | 说明             |
 | ------------- | ---------------- |
-| boolean | ColorMetrics是否呈现了HDR色彩。当色彩是通过createHDRColorWithXx方法，如[createHDRColorWithLinearExposure](#createhdrcolorwithlinearexposure24)创建，或任意RGB分量值大于1.0时，将返回true；否则返回false，表示ColorMetrics未呈现HDR色彩。 |
+| boolean | ColorMetrics是否呈现了HDR色彩。当色彩是通过createHDRColorWithXx方法，如[createHDRColorWithLinearExposure](#createhdrcolorwithlinearexposure)创建，或任意RGB分量值大于1.0时，将返回true；否则返回false，表示ColorMetrics未呈现HDR色彩。 |
 
-### getRedValue<sup>24+</sup>
+### getRedValue
 
 ArkTS-Dyn: getRedValue(): number
 
@@ -180,9 +183,9 @@ ArkTS-Sta: getRedValue(): double
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -190,7 +193,7 @@ ArkTS-Sta: getRedValue(): double
 | ------------- | ---------------- |
 | ArkTS-Dyn: number <br/>ArkTS-Sta: double | 颜色的R分量（红色），值是大于等于0的浮点数。 |
 
-### getGreenValue<sup>24+</sup>
+### getGreenValue
 
 ArkTS-Dyn: getGreenValue(): number
 
@@ -204,9 +207,9 @@ ArkTS-Sta: getGreenValue(): double
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -214,7 +217,7 @@ ArkTS-Sta: getGreenValue(): double
 | ------------- | ---------------- |
 | ArkTS-Dyn: number <br/>ArkTS-Sta: double | 颜色的G分量（绿色），值是大于等于0的浮点数。 |
 
-### getBlueValue<sup>24+</sup>
+### getBlueValue
 
 ArkTS-Dyn: getBlueValue(): number
 
@@ -228,9 +231,9 @@ ArkTS-Sta: getBlueValue(): double
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 

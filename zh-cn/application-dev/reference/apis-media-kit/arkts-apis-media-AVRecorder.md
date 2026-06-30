@@ -1,8 +1,8 @@
 # Interface (AVRecorder)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @shiwei75-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @gcw_dyOv3Sds-->
+<!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -202,13 +202,13 @@ ArkTS-Sta: addWatermark(watermark: image.PixelMap, config: WatermarkConfiguratio
 >
 > - 需在[prepare](#prepare9)接口调用前调用addWatermark接口。
 
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -240,8 +240,8 @@ ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import image from '@ohos.multimedia.image';
-import media from '@ohos.multimedia.media';
+import { image } from '@kit.ImageKit';
+import { media } from '@kit.MediaKit';
 
 let watermark: image.PixelMap | undefined = undefined; // 可以通过获取本地资源文件并转换为PixelMap，水印图像不能为空。
 let watermarkConfig: media.WatermarkConfiguration = { top: 100, left: 100, width: 100, height: 100 };
@@ -259,8 +259,8 @@ if (watermark) {
 ArkTS-Sta示例：
 
 ```ts
-import image from '@ohos.multimedia.image';
-import media from '@ohos.multimedia.media';
+import { image } from '@kit.ImageKit';
+import { media } from '@kit.MediaKit';
 
 let watermark: image.PixelMap | undefined = undefined; // 可以通过获取本地资源文件并转换为PixelMap，水印图像不能为空。
 let watermarkConfig: media.WatermarkConfiguration = { top: 100, left: 100, width: 100, height: 100 };
@@ -401,7 +401,7 @@ ArkTS-Sta: updateRotation(rotation: int): Promise\<void>
 
 | 参数名   | 类型                 | 必填 | 说明                        |
 | -------- | -------------------- | ---- | --------------------------- |
-| rotation | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 旋转角度，取值仅支持0、90、180、270度。 |
+| rotation | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 旋转角度，单位为度（°）。取值仅支持0°、90°、180°和270°。|
 
 **返回值：**
 
@@ -1850,7 +1850,7 @@ onPhotoAssetAvailable(callback: Callback<photoAccessHelper.PhotoAsset>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -1917,7 +1917,7 @@ onStateChange(callback: OnAVRecorderStateChangeHandler): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -1978,7 +1978,7 @@ onError(callback: ErrorCallback): void
 | callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)  | 是   | 回调函数，返回录制错误事件。                |
 
 **错误码：**
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |

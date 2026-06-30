@@ -2,13 +2,15 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 > **说明：**
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+>
+> 错误码排查请参考：[关系型数据库错误码常见场景及排查步骤](../../database/data-faq.md#关系型数据库错误码常见场景及排查步骤)。
 
 ##  14800000 内部错误
 

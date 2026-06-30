@@ -340,8 +340,6 @@ struct Index {
 
 H5示例1:
 
-<!-- @[W3cForbidDragPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/resources/rawfile/w3c-forbid.html) -->
-
 ``` HTML
 <html lang="zh-CN">
 <head>
@@ -407,8 +405,6 @@ H5示例1:
 ![w3c-forbid-drag](figures/w3c-forbid-drag.gif)
 
 html示例2:
-
-<!-- @[RunJsForbidDragPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/resources/rawfile/runJs-forbid.html) -->
 
 ``` HTML
 <html lang="zh-CN">

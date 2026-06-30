@@ -1,8 +1,8 @@
 # 定位与解决Web白屏问题
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc-->
-<!--Designer: @LongLie-->
+<!--Owner: @pxlstrong-->
+<!--Designer: @dzichou-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -39,6 +39,7 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
     | [onlineImageAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#onlineimageaccess) | 设置是否允许从网络加载图片资源（通过HTTP和HTTPS访问的资源）。 |
     | [javaScriptAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptaccess) | 设置是否允许执行JavaScript脚本。 | 
 
+    ArkTS-Dyn示例：
     <!-- @[OpenPermissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/OpenPermissions.ets) -->
 
     ``` TypeScript
@@ -62,15 +63,72 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
     }
     ```
 
+    ArkTS-Sta示例：
+    ``` TypeScript
+    'use static'
+
+    import { Entry, Component, Web, Column } from '@kit.ArkUI';
+    import { webview } from '@kit.ArkWeb';
+    
+    @Entry
+    @Component
+    struct WebComponent {
+      controller: webview.WebviewController = new webview.WebviewController();
+    
+      build() {
+        Column() {
+          Web({ src: 'www.example.com', controller: this.controller })
+            .domStorageAccess(true)
+            .fileAccess(true)
+            .imageAccess(true)
+            .onlineImageAccess(true)
+            .javaScriptAccess(true)
+        }
+      }
+    }
+    ```
+
 
 * 修改[UserAgent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10)后再观察页面是否恢复正常。
 
+    ArkTS-Dyn示例：
     <!-- @[ChangeUserAgent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/ChangeUserAgent.ets) -->
     
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     import { BusinessError } from '@kit.BasicServicesKit';
     
+    @Entry
+    @Component
+    struct WebComponent {
+      controller: webview.WebviewController = new webview.WebviewController();
+      @State customUserAgent: string = ' DemoApp';
+    
+      build() {
+        Column() {
+          Web({ src: 'www.example.com', controller: this.controller })
+            .onControllerAttached(() => {
+              console.info('onControllerAttached');
+              try {
+                let userAgent = this.controller.getUserAgent() + this.customUserAgent;
+                this.controller.setCustomUserAgent(userAgent);
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+            })
+        }
+      }
+    }
+    ```
+
+    ArkTS-Sta示例：
+    ``` TypeScript
+    'use static'
+
+    import { Entry, Component, Web, Column, State } from '@kit.ArkUI';
+    import { webview } from '@kit.ArkWeb';
+    import { BusinessError } from '@kit.BasicServicesKit';
+
     @Entry
     @Component
     struct WebComponent {
@@ -112,6 +170,8 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
       开发者应使用HTTP或HTTPS协议替代file或resource协议，确保Web组件能够成功访问跨域资源。替代的URL域名应为自定义构造，仅限于个人或组织使用，以防止与互联网上的实际域名冲突。此外，开发者需要利用Web组件的[onInterceptRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9)方法，对本地资源进行拦截和相应替换。
 
       以下结合示例说明如何使用HTTP或HTTPS等协议解决本地资源跨域访问失败的问题。其中，index.html和js/script.js文件置于工程的rawfile目录下。当使用resource协议访问index.html时，js/script.js文件因跨域而被拦截，无法加载。在示例中，使用https:\//www\.example.com/域名替换了原有的resource协议，同时利用onInterceptRequest接口替换资源，确保js/script.js文件可以成功加载，从而解决跨域拦截问题。
+
+    ArkTS-Dyn示例：
     ```ts
     // main/ets/pages/Index.ets
     import { webview } from '@kit.ArkWeb';
@@ -174,6 +234,74 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
     }
     ```
 
+    ArkTS-Sta示例：
+    ``` TypeScript
+    'use static'
+
+    import { $rawfile, Entry, Component, State, Row, Web, Column, WebResourceResponse, OnInterceptRequestEvent } from '@kit.ArkUI';
+    import { webview } from '@kit.ArkWeb';
+    
+    @Entry
+    @Component
+    struct Index {
+      @State message: string = 'Hello World';
+      webviewController: webview.WebviewController = new webview.WebviewController();
+      responseWeb: WebResourceResponse = new WebResourceResponse();
+      
+      // 构造域名和本地文件的映射表
+      private schemeMap: Map<string, string> = new Map<string, string>([
+        ["https://www.example.com/index.html", "index.html"],
+        ["https://www.example.com/js/script.js", "js/script.js"],
+      ]);
+      // 构造本地文件和构造返回的格式mimeType
+      private mimeTypeMap: Map<string, string> = new Map<string, string>([
+        ["index.html", 'text/html'],
+        ["js/script.js", "text/javascript"]
+      ])
+    
+      build() {
+        Row() {
+          Column() {
+            // 针对本地index.html,使用HTTP或HTTPS协议代替file协议或者resource协议，并且构造一个属于自己的域名。
+            // 本例中构造www.example.com为例。
+            Web({ src: "https://www.example.com/index.html", controller: this.webviewController })
+              .javaScriptAccess(true)
+              .fileAccess(true)
+              .domStorageAccess(true)
+              .geolocationAccess(true)
+              .width("100%")
+              .height("100%")
+              .onInterceptRequest((event: OnInterceptRequestEvent): WebResourceResponse => {
+                let response = new WebResourceResponse();
+                if (!event) {
+                  return this.responseWeb;
+                }
+                // 此处匹配自己想要加载的本地离线资源，进行资源拦截替换，绕过跨域
+                if (this.schemeMap.has(event.request.getRequestUrl())) {
+                  let rawfileName: string = this.schemeMap.get(event.request.getRequestUrl())!;
+                  let mimeType = this.mimeTypeMap.get(rawfileName);
+                  if (typeof mimeType === 'string') {
+                    let response = new WebResourceResponse();
+                    // 构造响应数据，如果本地文件在rawfile下，可以通过如下方式设置
+                    response.setResponseData($rawfile(rawfileName));
+                    response.setResponseEncoding('utf-8');
+                    response.setResponseMimeType(mimeType as string);
+                    response.setResponseCode(200);
+                    response.setReasonMessage('OK');
+                    response.setResponseIsReady(true);
+                    return response;
+                  }
+                }
+                return this.responseWeb;
+              })
+          }
+          .width('100%')
+        }
+        .height('100%')
+      }
+    }
+    ```
+
     ```html
     <!-- main/resources/rawfile/index.html -->
     <!DOCTYPE html>
@@ -224,6 +352,7 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
 
     当路径列表中的任一路径不满足上述条件时，系统将抛出异常码401，并判定路径列表设置失败。如果路径列表设置为空，file协议的可访问范围将遵循[fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess)规则，具体示例如下。
 
+    ArkTS-Dyn示例：
     <!-- @[SetPath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry2/src/main/ets/pages/SetPath.ets) -->
     
     ``` TypeScript
@@ -234,6 +363,43 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
     @Component
     struct WebComponent {
       controller: WebviewController = new webview.WebviewController();
+      uiContext: UIContext = this.getUIContext();
+    
+      build() {
+        Row() {
+          Web({ src: '', controller: this.controller })
+            .onControllerAttached(() => {
+              try {
+                // 设置允许可以跨域访问的路径列表
+                this.controller.setPathAllowingUniversalAccess([
+                  this.uiContext.getHostContext()!.resourceDir,
+                  this.uiContext.getHostContext()!.filesDir + '/example'
+                ])
+                this.controller.loadUrl('file://' + this.uiContext.getHostContext()!.resourceDir + '/index.html')
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
+              }
+            })
+            .javaScriptAccess(true)
+            .fileAccess(true)
+            .domStorageAccess(true)
+        }
+      }
+    }
+    ```
+
+    ArkTS-Sta示例：
+    ``` TypeScript
+    'use static'
+
+    import { UIContext, Entry, Component, Row, Web } from '@kit.ArkUI';
+    import { webview } from '@kit.ArkWeb';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    
+    @Entry
+    @Component
+    struct WebComponent {
+      controller: webview.WebviewController = new webview.WebviewController();
       uiContext: UIContext = this.getUIContext();
     
       build() {
@@ -380,7 +546,7 @@ Web组件提供了自适应页面布局的能力，详情见[ Web组件大小自
    })
    ```
 ## 监控内存与生命周期
-内存达到阈值会导致渲染进程被终止，从而引发白屏现象；同样，渲染进程创建失败或非正常销毁也会导致白屏。可从日志中排查原因。检查Web组件是否与WebController正确绑定，或是否因WebController提前释放导致白屏。关注日志中与Render进程相关的信息：是否存在内存泄漏使渲染内存不足。关键字“MEMORY_PRESSURE_LEVEL_CRITICAL”表明内存已达到阈值，此情形下Web可能遭遇黑屏、花屏或闪屏等异常状况，需排查是否存在内存泄漏问题。Render进程是否成功启动或异常退出。
+内存达到阈值会导致渲染进程被终止，从而引发白屏现象；同样，渲染进程创建失败或非正常销毁也会导致白屏。可从日志中排查原因。检查Web组件是否与WebviewController正确绑定，或是否因WebviewController提前释放导致白屏。关注日志中与Render进程相关的信息：是否存在内存泄漏使渲染内存不足。关键字“MEMORY_PRESSURE_LEVEL_CRITICAL”表明内存已达到阈值，此情形下Web可能遭遇黑屏、花屏或闪屏等异常状况，需排查是否存在内存泄漏问题。Render进程是否成功启动或异常退出。
 
 下面列举一些日志中的关键字和对应的情况说明：
 
@@ -421,7 +587,7 @@ Web组件提供了自适应页面布局的能力，详情见[ Web组件大小自
 
 **原因：**
 
-Table/PC/2in1的WebView默认采用多进程加载，iframe默认使用子进程加载。主进程加载完成后，若子进程尚未加载完成，会导致白屏现象。
+Tablet/PC/2in1的WebView默认采用多进程加载，iframe默认使用子进程加载。主进程加载完成后，若子进程尚未加载完成，会导致白屏现象。
 
 **解决方案：**
 

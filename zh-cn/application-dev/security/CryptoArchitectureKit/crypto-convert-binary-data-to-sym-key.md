@@ -86,20 +86,14 @@
     // 根据指定的数据生成对称密钥
     let keyMaterialBlob = genKeyMaterialBlob();
     try {
-      symKeyGenerator.convertKey(keyMaterialBlob, (error, key) => {
-        if (error) { // 如果业务逻辑执行失败，则callback的第一个参数返回错误信息，即异步抛出异常
-          let e: BusinessError = error as BusinessError;
-          console.error(`convertKey failed: errCode: ${e.code}, message: ${e.message}`);
-          return;
-        }
-        console.info('key algName: ' + key.algName);
-        console.info('key format: ' + key.format);
-        let encodedKey = key.getEncoded(); // 获取对称密钥的二进制数据，并以字节数组形式输出。长度为24字节
-        console.info('key getEncoded hex: ' + encodedKey.data);
-      })
+      let key = symKeyGenerator.convertKeySync(keyMaterialBlob);
+      console.info('key algName: ' + key.algName);
+      console.info('key format: ' + key.format);
+      let encodedKey = key.getEncoded(); // 获取对称密钥的二进制数据，长度为24字节。
+      console.info('key getEncoded length: ' + encodedKey.data.length);
     } catch (error) { // 参数检查发现错误立即抛出异常
       let e: BusinessError = error as BusinessError;
-      console.error(`convertKey failed: errCode: ${e.code}, message: ${e.message}`);
+      console.error(`convertKeySync failed: errCode: ${e.code}, message: ${e.message}`);
     }
   }
   ```
@@ -111,7 +105,7 @@
 
 1. 获取HMAC二进制密钥并封装成[DataBlob](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#datablob)对象。
 
-2. 调用[cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator)，指定字符串参数'HMAC'，创建密钥算法为HMAC、密钥长度为[1, 32768]位的对称密钥生成器（SymKeyGenerator）。
+2. 调用[cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator)，指定字符串参数'HMAC'，创建密钥算法为HMAC对称密钥生成器（SymKeyGenerator），其支持生成的密钥长度为[1, 4096]字节。
 
 3. 调用[SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1)，根据指定的对称密钥二进制数据，生成对称密钥对象（SymKey）。
 

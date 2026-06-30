@@ -70,6 +70,8 @@ Text(this.message).id('test_text')
 
 如果弹出框配置了蒙层，蒙层的遮盖范围会根据页面层级的变化进行调整，默认遮罩范围为弹出框父节点的显示区域（Page页面或者Navigation页面）。此时，状态栏和导航条不会被蒙层遮挡。若希望遮挡状态栏和导航条，可将[immersiveMode](../reference/apis-arkui/js-apis-promptAction.md#immersivemode15枚举说明)参数的值设为ImmersiveMode.EXTEND。
 
+ArkTS-Dyn示例：
+
 <!-- @[dialog_embedded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/pageleveldialogbox/PageLevelDialogBox.ets) -->
 
 ``` TypeScript
@@ -87,6 +89,30 @@ Text(this.message).id('test_text')
       immersiveMode: ImmersiveMode.EXTEND, // 设置页面级弹出框蒙层的显示模式
     })
       .then((dialogId: number) => {
+        customDialogId = dialogId;
+      });
+  })
+```
+
+ArkTS-Sta示例：
+
+<!-- @[dialog_embedded](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/customdialog/pageleveldialogbox/PageLevelDialogBox.ets) -->
+
+``` TypeScript
+Text(this.message).id('test_text')
+  .fontSize(50)
+  .fontWeight(FontWeight.Bold)
+  .onClick((): void => {
+    const node: FrameNode | null = this.getUIContext().getFrameNodeById('test_text') || null;
+    this.getUIContext().getPromptAction().openCustomDialog({
+      builder: (): void => {
+        this.customDialogComponent();
+      },
+      levelMode: LevelMode.EMBEDDED, // 启用页面级弹出框
+      levelUniqueId: node?.getUniqueId(), // 设置页面级弹出框所在页面的任意节点ID
+      immersiveMode: ImmersiveMode.EXTEND, // 设置页面级弹出框蒙层的显示模式
+    })
+      .then((dialogId: int): void => {
         customDialogId = dialogId;
       });
   })
@@ -169,6 +195,8 @@ export struct PageLevelDialogBox {
 
 ```
 
+ArkTS-Dyn示例：
+
 <!-- @[next](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/pageleveldialogbox/Next.ets) -->
 
 ``` TypeScript
@@ -194,6 +222,45 @@ struct Next {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[next](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/customdialog/pageleveldialogbox/Next.ets) -->
+
+``` TypeScript
+// Next.ets
+import {
+  Entry,
+  Component,
+  Row,
+  Column,
+  Button,
+  FontWeight
+} from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct Next {
+  @State message: string = 'Back';
+
+  build(): void {
+    Row() {
+      Column() {
+        Button(this.message)
+          .fontSize(20)
+          .fontWeight(FontWeight.Bold)
+          .onClick((): void => {
+            this.getUIContext().getRouter().back();
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ![embedded_dialog](figures/embedded_dialog.gif)
 
 下述示例为基于Navigation导航模式下的页面级弹出框。使用本示例前需要参考[Navigation使用NavDestination作为导航页](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#示例16navigation使用navdestination作为导航页)文档完成Index首页和router_map.json的创建与配置。并使用下述示例代码中的PageLevelDialogInNavigation和PageLevelDialogInNavigationTestTwo组件替换Navigation参考文档中的PageHome和PageOne组件。

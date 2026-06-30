@@ -38,20 +38,20 @@
 
 **图1** 一般布局示例（英文）
 
-![zh-cn_image_0000001784343297](figures/zh-cn_image_0000001784343297.png)
+![edit-phone-contact](figures/edit-phone-contact.png)
 
 **图2** 镜像布局示例（阿拉伯文）
 
-![zh-cn_image_0000001784263053](figures/zh-cn_image_0000001784263053.png)
+![edit-phone-contact-01](figures/edit-phone-contact-01.png)
 
 **图3** 一般图标资源
 
-![zh-cn_image_0000001737423164](figures/zh-cn_image_0000001737423164.png)
+![phone-volume-right](figures/phone-volume-right.png)
 
 **图4** RTL语言系统下提供的图标资源
 
-![zh-cn_image_0000001737264020](figures/zh-cn_image_0000001737264020.png)
+![phone-volume-left](figures/phone-volume-left.png)
 
 **图5** RTL语言下提供的镜像控件
 
-![zh-cn_image_0000001784343305](figures/zh-cn_image_0000001784343305.png)
+![internationalization-phone-calendar](figures/internationalization-phone-calendar.png)

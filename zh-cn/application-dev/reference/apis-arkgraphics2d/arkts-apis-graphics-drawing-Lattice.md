@@ -3,7 +3,7 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -82,7 +82,7 @@ class DrawingRenderNode extends RenderNode {
   }
 }
 ```
-![zh-ch_Lattice.png](figures/zh-ch_Lattice.png)
+![Lattice.png](figures/Lattice.png)
 
 ArkTS-Sta示例：
 ```ts
@@ -97,7 +97,7 @@ class DrawingRenderNode extends RenderNode {
   }
 }
 ```
-![zh-ch_Lattice.png](figures/zh-ch_Lattice.png)
+![Lattice.png](figures/Lattice.png)
 
 ## createImageLattice<sup>18+</sup>
 
@@ -142,7 +142,7 @@ static createImageLattice(xDivs: Array\<number>, yDivs: Array\<number>, fXCount:
 **示例：**
 
 ```ts
-import { RenderNode } from '@kit.ArkUI';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
@@ -197,6 +197,7 @@ static createImageLatticeWithArrayInt(xDivs: Array\<int>, yDivs: Array\<int>, fX
 
 **示例：**
 
+ArkTS-Sta示例：
 ```ts
 import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
@@ -205,7 +206,7 @@ class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
     let xDivs : Array<int> = [1, 2, 4];
     let yDivs : Array<int> = [1, 2, 4];
-    let colorArray :Array<int>=[0xffffffff,0x44444444,0x99999999,0xffffffff,0x44444444,0x99999999,0xffffffff,0x44444444,0x99999999,0x44444444,0x99999999,0xffffffff,0x44444444,0x99999999,0xffffffff,0x44444444];
+    let colorArray: Array<int> = [(0xffffffff).toInt(), (0x44444444).toInt(), (0x99999999).toInt(), (0xffffffff).toInt(), (0x44444444).toInt(), (0x99999999).toInt(), (0xffffffff).toInt(), (0x44444444).toInt(), (0x99999999).toInt(), (0x44444444).toInt(), (0x99999999).toInt(), (0xffffffff).toInt(), (0x44444444).toInt(), (0x99999999).toInt(), (0xffffffff).toInt(), (0x44444444).toInt()];
     let lattice = drawing.Lattice.createImageLatticeWithArrayInt(xDivs, yDivs, 3, 3,null,null,colorArray);
   }
 }

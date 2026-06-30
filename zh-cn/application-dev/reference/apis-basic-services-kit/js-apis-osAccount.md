@@ -4,19 +4,26 @@
 <!--Subsystem: Account-->
 <!--Owner: @steven-q-->
 <!--Designer: @JiDong-CS1-->
-<!--Tester: @zhaimengchao-->
+<!--Tester: @pan9f-->
 <!--Adviser: @zengyawen-->
 
 本模块提供管理系统账号的基础能力，包括系统账号的添加、删除、查询、设置、订阅、启动等功能。
 
 > **说明：**
 >
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
+ArkTS-Dyn示例： 
 ```ts
 import { osAccount } from '@kit.BasicServicesKit';
+```
+
+ArkTS-Sta示例： 
+```ts
+import osAccount from '@ohos.account.osAccount';
 ```
 
 ## osAccount.getAccountManager
@@ -26,6 +33,10 @@ getAccountManager(): AccountManager
 获取系统账号管理对象。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -45,17 +56,19 @@ isDomainAccountSupported(): Promise&lt;boolean&gt;
 
 检查是否支持域账号。使用Promise异步回调。
 
-**起始版本：** 26.0.0
-
 **系统能力：** SystemCapability.Account.OsAccount
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **返回值：**
 
-| 类型                   | 说明                                      |
-| :--------------------- | :----------------------------------------- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示支持域账号；返回false表示不支持。 |
+| 类型                   | 说明                                                        |
+| --------------------- | --------------------------------------------------------- |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示支持域账号；返回false表示不支持。|
 
 **错误码：**
 
@@ -67,16 +80,34 @@ isDomainAccountSupported(): Promise&lt;boolean&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError, osAccount } from '@kit.BasicServicesKit';
 
 try {
   osAccount.isDomainAccountSupported().then((isSupported: boolean) => {
     console.info('isDomainAccountSupported successfully, isSupported: ' + isSupported);
   }).catch((err: BusinessError) => {
-    console.error(`isDomainAccountSupported failed, code is ${err.code}, message is: ${err.message}`);
+    console.error(`isDomainAccountSupported failed, code is ${err.code}, message is ${err.message}`);
   });
 } catch (e) {
+  const err = e as BusinessError;
+  console.error(`isDomainAccountSupported exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError, osAccount } from '@kit.BasicServicesKit';
+
+try {
+  osAccount.isDomainAccountSupported().then((isSupported: boolean) => {
+    console.info('isDomainAccountSupported successfully, isSupported: ' + isSupported);
+  }).catch((e: Error) => {
+    const err = e as BusinessError;
+    console.error(`isDomainAccountSupported failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e: Error) {
   const err = e as BusinessError;
   console.error(`isDomainAccountSupported exception: code is ${err.code}, message is ${err.message}`);
 }
@@ -87,6 +118,10 @@ try {
 表示系统账号类型的枚举。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 值 | 说明         |
 | ------ | ------ | ----------- |
@@ -106,6 +141,10 @@ checkMultiOsAccountEnabled(callback: AsyncCallback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                         | 必填 | 说明                                                     |
@@ -123,7 +162,9 @@ checkMultiOsAccountEnabled(callback: AsyncCallback&lt;boolean&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例： 
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -132,10 +173,30 @@ checkMultiOsAccountEnabled(callback: AsyncCallback&lt;boolean&gt;): void
       if (err) {
         console.error(`checkMultiOsAccountEnabled failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.info('checkMultiOsAccountEnabled successfully, isEnabled: ' + isEnabled);
+      console.info('checkMultiOsAccountEnabled successfully, isEnabled: ' + isEnabled);
       }
     });
   } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkMultiOsAccountEnabled failed, code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+  ArkTS-Sta示例： 
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.checkMultiOsAccountEnabled((err: BusinessError | null, isEnabled: boolean | undefined) => {
+      if (err) {
+        console.error(`checkMultiOsAccountEnabled failed, code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('checkMultiOsAccountEnabled successfully, isEnabled: ' + isEnabled);
+      }
+    });
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`checkMultiOsAccountEnabled failed, code is ${err.code}, message is ${err.message}`);
   }
@@ -149,10 +210,14 @@ checkMultiOsAccountEnabled(): Promise&lt;boolean&gt;
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                   | 说明                                                        |
-| :--------------------- | :--------------------------------------------------------- |
+| --------------------- | --------------------------------------------------------- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示支持多系统账号；返回false表示不支持。 |
 
 **错误码：**
@@ -165,7 +230,9 @@ checkMultiOsAccountEnabled(): Promise&lt;boolean&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
@@ -181,6 +248,25 @@ checkMultiOsAccountEnabled(): Promise&lt;boolean&gt;
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+    accountManager.checkMultiOsAccountEnabled().then((isEnabled: boolean) => {
+      console.info('checkMultiOsAccountEnabled successfully, isEnabled: ' + isEnabled);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`checkMultiOsAccountEnabled failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`checkMultiOsAccountEnabled failed, code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### checkOsAccountActivated<sup>(deprecated)</sup>
 
 checkOsAccountActivated(localId: number, callback: AsyncCallback&lt;boolean&gt;): void
@@ -189,11 +275,15 @@ checkOsAccountActivated(localId: number, callback: AsyncCallback&lt;boolean&gt;)
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
+> 从API version 9开始支持，从API version 11开始废弃，替代方法仅向系统应用开放。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS，以上权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -214,12 +304,15 @@ checkOsAccountActivated(localId: number, callback: AsyncCallback&lt;boolean&gt;)
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 
-**示例：** 判断ID为100的系统账号是否处于激活状态
+**示例：**
+
+判断ID为100的系统账号是否处于激活状态。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   try {
     accountManager.checkOsAccountActivated(localId, (err: BusinessError, isActivated: boolean) => {
@@ -243,11 +336,15 @@ checkOsAccountActivated(localId: number): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
+> 从API version 9开始支持，从API version 11开始废弃，替代方法仅向系统应用开放。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS，以上权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -273,12 +370,15 @@ checkOsAccountActivated(localId: number): Promise&lt;boolean&gt;
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 
-**示例：** 判断ID为100的系统账号是否处于激活状态
+**示例：**
+
+判断ID为100的系统账号是否处于激活状态。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   try {
     accountManager.checkOsAccountActivated(localId).then((isActivated: boolean) => {
@@ -300,11 +400,15 @@ isOsAccountConstraintEnabled(constraint: string): Promise&lt;boolean&gt;
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                                |
 | ---------- | ------ | ---- | ---------------------------------- |
-| constraint | string | 是   | 指定的[约束](#系统账号约束列表)名称。 |
+| constraint | string | 是   | 指定的[约束](#系统账号约束列表)名称。  |
 
 **返回值：**
 
@@ -321,9 +425,13 @@ isOsAccountConstraintEnabled(constraint: string): Promise&lt;boolean&gt;
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 
-**示例：** 判断ID为100的系统账号是否有禁止使用Wi-Fi的约束
+**示例：**
 
+判断ID为100的系统账号是否有禁止使用Wi-Fi的约束。
+
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -340,6 +448,26 @@ isOsAccountConstraintEnabled(constraint: string): Promise&lt;boolean&gt;
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let constraint: string = 'constraint.wifi';
+  try {
+    accountManager.isOsAccountConstraintEnabled(constraint).then((isEnabled: boolean) => {
+      console.info('isOsAccountConstraintEnabled successfully, isEnabled: ' + isEnabled);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`isOsAccountConstraintEnabled failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`isOsAccountConstraintEnabled exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### checkOsAccountConstraintEnabled<sup>(deprecated)</sup>
 
 checkOsAccountConstraintEnabled(localId: number, constraint: string, callback: AsyncCallback&lt;boolean&gt;): void
@@ -348,11 +476,15 @@ checkOsAccountConstraintEnabled(localId: number, constraint: string, callback: A
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
+> 从API version 9开始支持，从API version 11开始废弃，替代方法仅向系统应用开放。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS，以上权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -374,7 +506,9 @@ checkOsAccountConstraintEnabled(localId: number, constraint: string, callback: A
 | 12300002 | Invalid localId or constraint.    |
 | 12300003 | Account not found. |
 
-**示例：** 判断ID为100的系统账号是否有禁止使用Wi-Fi的约束
+**示例：**
+
+判断当前系统账号是否有禁止使用Wi-Fi的约束。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -404,11 +538,15 @@ checkOsAccountConstraintEnabled(localId: number, constraint: string): Promise&lt
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
+> 从API version 9开始支持，从API version 11开始废弃，替代方法仅向系统应用开放。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS，以上权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -435,12 +573,15 @@ checkOsAccountConstraintEnabled(localId: number, constraint: string): Promise&lt
 | 12300002 | Invalid localId or constraint.    |
 | 12300003 | Account not found. |
 
-**示例：** 判断ID为100的系统账号是否有禁止使用Wi-Fi的约束
+**示例：**
+
+判断ID为100的系统账号是否有禁止使用Wi-Fi的约束。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   let constraint: string = 'constraint.wifi';
   try {
@@ -463,6 +604,10 @@ checkOsAccountTestable(callback: AsyncCallback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                         | 必填 | 说明                                                                   |
@@ -480,7 +625,9 @@ checkOsAccountTestable(callback: AsyncCallback&lt;boolean&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -498,6 +645,26 @@ checkOsAccountTestable(callback: AsyncCallback&lt;boolean&gt;): void
   }
   ```
 
+  ArkTS-Sta示例：
+  ```ts
+  import { osAccount } from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.checkOsAccountTestable((err: BusinessError | null, isTestable: boolean | undefined) => {
+      if (err) {
+        console.error(`checkOsAccountTestable failed, code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('checkOsAccountTestable successfully, isTestable: ' + isTestable);
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`checkOsAccountTestable code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### checkOsAccountTestable<sup>9+</sup>
 
 checkOsAccountTestable(): Promise&lt;boolean&gt;
@@ -505,6 +672,10 @@ checkOsAccountTestable(): Promise&lt;boolean&gt;
 检查当前系统账号是否为测试账号。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -522,7 +693,9 @@ checkOsAccountTestable(): Promise&lt;boolean&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -538,19 +711,42 @@ checkOsAccountTestable(): Promise&lt;boolean&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import { osAccount } from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.checkOsAccountTestable().then((isTestable: boolean) => {
+      console.info('checkOsAccountTestable successfully, isTestable: ' + isTestable);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`checkOsAccountTestable failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`checkOsAccountTestable exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### isOsAccountUnlocked<sup>11+</sup>
 
 isOsAccountUnlocked(): Promise&lt;boolean&gt;
 
-检查当前系统账号是否已认证解锁。使用Promise异步回调。
+检查当前系统账号是否已解锁。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型                   | 说明                                                                      |
 | ---------------------- | ------------------------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示当前账号已认证解锁；返回false表示当前账号未认证解锁。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示当前账号已解锁；返回false表示当前账号未解锁。 |
 
 **错误码：**
 
@@ -562,7 +758,9 @@ isOsAccountUnlocked(): Promise&lt;boolean&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -578,6 +776,26 @@ isOsAccountUnlocked(): Promise&lt;boolean&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.isOsAccountUnlocked().then((isVerified: boolean) => {
+      console.info('isOsAccountUnlocked successfully, isVerified: ' + isVerified);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`isOsAccountUnlocked failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`isOsAccountUnlocked exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+
 ### checkOsAccountVerified<sup>(deprecated)</sup>
 
 checkOsAccountVerified(callback: AsyncCallback&lt;boolean&gt;): void
@@ -586,9 +804,13 @@ checkOsAccountVerified(callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。建议使用[isOsAccountUnlocked](#isosaccountunlocked11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[isOsAccountUnlocked](#isosaccountunlocked11)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -632,9 +854,13 @@ checkOsAccountVerified(): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。建议使用[isOsAccountUnlocked](#isosaccountunlocked11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[isOsAccountUnlocked](#isosaccountunlocked11)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 9
 
 **返回值：**
 
@@ -676,18 +902,22 @@ checkOsAccountVerified(localId: number, callback: AsyncCallback&lt;boolean&gt;):
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
+> 从API version 9开始支持，从API version 11开始废弃，替代方法仅向系统应用开放。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS，以上权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
 | 参数名   | 类型                         | 必填 | 说明                                                            |
 | -------- | ---------------------------- | ---- | ------------------------------------------------------------- |
 | localId  | number                       | 是   | 系统账号ID。                              |
-| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。返回true表示当前账号已认证解锁；返回false表示当前账号未认证解锁。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。返回true表示指定账号已认证解锁；返回false表示指定账号未认证解锁。 |
 
 **错误码：**
 
@@ -707,6 +937,7 @@ checkOsAccountVerified(localId: number, callback: AsyncCallback&lt;boolean&gt;):
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   try {
     accountManager.checkOsAccountVerified(localId, (err: BusinessError, isVerified: boolean) => {
@@ -730,11 +961,15 @@ checkOsAccountVerified(localId: number): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
+> 从API version 9开始支持，从API version 11开始废弃，替代方法仅向系统应用开放。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS，以上权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -766,6 +1001,7 @@ checkOsAccountVerified(localId: number): Promise&lt;boolean&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   try {
     accountManager.checkOsAccountVerified(localId).then((isVerified: boolean) => {
@@ -781,7 +1017,9 @@ checkOsAccountVerified(localId: number): Promise&lt;boolean&gt;
 
 ### getOsAccountCount<sup>9+</sup>
 
-getOsAccountCount(callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getOsAccountCount(callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getOsAccountCount(callback: AsyncCallback&lt;int&gt;): void
 
 获取已创建的系统账号数量。使用callback异步回调。
 
@@ -789,11 +1027,15 @@ getOsAccountCount(callback: AsyncCallback&lt;number&gt;): void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                        | 必填 | 说明                                                                         |
 | -------- | --------------------------- | ---- | -------------------------------------------------------------------------- |
-| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数。如果获取成功，err为null，data为已创建的系统账号的数量；否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br/>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是   | 回调函数。如果获取成功，err为null，data为已创建的系统账号的数量；否则为错误对象。 |
 
 **错误码：**
 
@@ -807,7 +1049,9 @@ getOsAccountCount(callback: AsyncCallback&lt;number&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -825,9 +1069,31 @@ getOsAccountCount(callback: AsyncCallback&lt;number&gt;): void
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.getOsAccountCount((err: BusinessError | null, count: int | undefined) => {
+      if (err) {
+        console.error(`getOsAccountCount failed, code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('getOsAccountCount successfully, count: ' + count);
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountCount exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getOsAccountCount<sup>9+</sup>
 
-getOsAccountCount(): Promise&lt;number&gt;
+ArkTS-Dyn: getOsAccountCount(): Promise&lt;number&gt;
+
+ArkTS-Sta: getOsAccountCount(): Promise&lt;int&gt;
 
 获取已创建的系统账号数量。使用Promise异步回调。
 
@@ -835,11 +1101,15 @@ getOsAccountCount(): Promise&lt;number&gt;
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                  | 说明                                    |
 | --------------------- | -------------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回已创建的系统账号的数量。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br/>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回已创建的系统账号的数量。 |
 
 **错误码：**
 
@@ -852,7 +1122,9 @@ getOsAccountCount(): Promise&lt;number&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -862,7 +1134,25 @@ getOsAccountCount(): Promise&lt;number&gt;
     }).catch((err: BusinessError) => {
       console.error(`getOsAccountCount failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (e) {
+  } catch(err) {
+    console.error(`getOsAccountCount exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.getOsAccountCount().then((count: int) => {
+      console.info('getOsAccountCount successfully, count: ' + count);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getOsAccountCount failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch(e: Error) {
     const err = e as BusinessError;
     console.error(`getOsAccountCount exception: code is ${err.code}, message is ${err.message}`);
   }
@@ -870,17 +1160,25 @@ getOsAccountCount(): Promise&lt;number&gt;
 
 ### getOsAccountLocalId<sup>9+</sup>
 
-getOsAccountLocalId(callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getOsAccountLocalId(callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getOsAccountLocalId(callback: AsyncCallback&lt;int&gt;): void
+
+
 
 获取当前进程所属的系统账号ID。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                        | 必填 | 说明                                                                           |
 | -------- | --------------------------- | ---- | ---------------------------------------------------------------------------- |
-| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数。如果获取成功，err为null，data为当前进程所属的系统账号ID；否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br/>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是   | 回调函数。如果获取成功，err为null，data为当前进程所属的系统账号ID；否则为错误对象。 |
 
 **错误码：**
 
@@ -893,7 +1191,9 @@ getOsAccountLocalId(callback: AsyncCallback&lt;number&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -911,19 +1211,45 @@ getOsAccountLocalId(callback: AsyncCallback&lt;number&gt;): void
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.getOsAccountLocalId((err: BusinessError | null, localId: int | undefined) => {
+      if (err) {
+        console.error(`getOsAccountLocalId failed, code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('getOsAccountLocalId successfully, localId: ' + localId);
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountLocalId exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getOsAccountLocalId<sup>9+</sup>
 
-getOsAccountLocalId(): Promise&lt;number&gt;
+ArkTS-Dyn: getOsAccountLocalId(): Promise&lt;number&gt;
+
+ArkTS-Sta: getOsAccountLocalId(): Promise&lt;int&gt;
 
 获取当前进程所属的系统账号ID。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                  | 说明                                      |
 | --------------------- | ---------------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回当前进程所属的系统账号ID。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br/>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回当前进程所属的系统账号ID。 |
 
 **错误码：**
 
@@ -935,7 +1261,9 @@ getOsAccountLocalId(): Promise&lt;number&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -951,20 +1279,46 @@ getOsAccountLocalId(): Promise&lt;number&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.getOsAccountLocalId().then((localId: int) => {
+      console.info('getOsAccountLocalId successfully, localId: ' + localId);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getOsAccountLocalId failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountLocalId exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+
 ### getOsAccountLocalIdForUid<sup>9+</sup>
 
-getOsAccountLocalIdForUid(uid: number, callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getOsAccountLocalIdForUid(uid: number, callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getOsAccountLocalIdForUid(uid: int, callback: AsyncCallback&lt;int&gt;): void
 
 根据uid查询对应的系统账号ID。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                        | 必填 | 说明                                                                    |
 | -------- | --------------------------- | ---- | --------------------------------------------------------------------- |
-| uid      | number                      | 是   | 进程uid。                                                              |
-| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数。如果查询成功，err为null，data为对应的系统账号ID；否则为错误对象。 |
+| uid      | ArkTS-Dyn: number<br>ArkTS-Sta: int                      | 是   | 进程uid。                                                              |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br/>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是   | 回调函数。如果查询成功，err为null，data为对应的系统账号ID；否则为错误对象。 |
 
 **错误码：**
 
@@ -976,19 +1330,25 @@ getOsAccountLocalIdForUid(uid: number, callback: AsyncCallback&lt;number&gt;): v
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid uid.    |
 
-**示例：** 查询值为12345678的uid所属的系统账号的账号ID
+**示例：**
 
+查询值为12345678的uid所属的系统账号的账号ID。
+
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // uid为进程uid，请通过应用信息获取
   let uid: number = 12345678;
   try {
     accountManager.getOsAccountLocalIdForUid(uid, (err: BusinessError, localId: number) => {
       if (err) {
         console.error(`getOsAccountLocalIdForUid failed, code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('getOsAccountLocalIdForUid successfully, localId: ' + localId);
       }
-      console.info('getOsAccountLocalIdForUid successfully, localId: ' + localId);
     });
   } catch (e) {
     const err = e as BusinessError;
@@ -996,25 +1356,52 @@ getOsAccountLocalIdForUid(uid: number, callback: AsyncCallback&lt;number&gt;): v
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let uid: int = 12345678;
+  try {
+    accountManager.getOsAccountLocalIdForUid(uid, (err: BusinessError | null, localId: int | undefined) => {
+      if (err) {
+        console.error(`getOsAccountLocalIdForUid failed, code is ${err.code}, message is ${err.message}`);
+      }
+      console.info('getOsAccountLocalIdForUid successfully, localId: ' + localId);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountLocalIdForUid exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+
 ### getOsAccountLocalIdForUid<sup>9+</sup>
 
-getOsAccountLocalIdForUid(uid: number): Promise&lt;number&gt;
+ArkTS-Dyn: getOsAccountLocalIdForUid(uid: number): Promise&lt;number&gt;
+
+ArkTS-Sta: getOsAccountLocalIdForUid(uid: int): Promise&lt;int&gt;
 
 根据uid查询对应的系统账号ID。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明      |
 | ------ | ------ | ---- | --------- |
-| uid    | number | 是   | 进程uid。 |
+| uid    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 进程uid。 |
 
 **返回值：**
 
 | 类型                  | 说明                                     |
 | --------------------- | --------------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回指定uid对应的系统账号ID。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回指定uid对应的系统账号ID。 |
 
 **错误码：**
 
@@ -1026,12 +1413,17 @@ getOsAccountLocalIdForUid(uid: number): Promise&lt;number&gt;
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid uid. |
 
-**示例：** 查询值为12345678的uid所属的系统账号ID
+**示例：**
 
+查询值为12345678的uid所属的系统账号ID。
+
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // uid为进程uid，请通过应用信息获取
   let uid: number = 12345678;
   try {
     accountManager.getOsAccountLocalIdForUid(uid).then((localId: number) => {
@@ -1045,25 +1437,52 @@ getOsAccountLocalIdForUid(uid: number): Promise&lt;number&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let uid: int = 12345678;
+  try {
+    accountManager.getOsAccountLocalIdForUid(uid).then((localId: int) => {
+      console.info('getOsAccountLocalIdForUid successfully, localId: ' + localId);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getOsAccountLocalIdForUid failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountLocalIdForUid exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+
 ### getOsAccountLocalIdForUidSync<sup>10+</sup>
 
-getOsAccountLocalIdForUidSync(uid: number): number
+ArkTS-Dyn: getOsAccountLocalIdForUidSync(uid: number): number
+
+ArkTS-Sta: getOsAccountLocalIdForUidSync(uid: int): int
 
 根据uid查询对应的系统账号ID。使用同步方式返回结果。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明      |
 | ------ | ------ | ---- | --------- |
-| uid    | number | 是   | 进程uid。 |
+| uid    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 进程uid。 |
 
 **返回值：**
 
 | 类型                  | 说明                                     |
 | --------------------- | --------------------------------------- |
-| number | 返回指定uid对应的系统账号ID。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回指定uid对应的系统账号ID。 |
 
 **错误码：**
 
@@ -1074,12 +1493,16 @@ getOsAccountLocalIdForUidSync(uid: number): number
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300002 | Invalid uid. |
 
-**示例：** 查询值为12345678的uid所属的系统账号ID
+**示例：**
 
+查询值为12345678的uid所属的系统账号ID。
+
+ArkTS-Dyn示例：
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // uid为进程uid，请通过应用信息获取
   let uid: number = 12345678;
   try {
     let localId : number = accountManager.getOsAccountLocalIdForUidSync(uid);
@@ -1090,56 +1513,24 @@ getOsAccountLocalIdForUidSync(uid: number): number
   }
   ```
 
-### getOsAccountLocalIds
-
-getOsAccountLocalIds(): Promise&lt;number[]&gt;
-
-获取所有非系统级的操作系统账号的本地ID。非系统级的操作系统账号对用户可见，通常用于登录等操作。使用Promise异步回调。
-
-**起始版本：** 26.0.0
-
-**需要权限：** ohos.permission.GET_LOCAL_ACCOUNT_IDENTIFIERS
-
-**系统能力：** SystemCapability.Account.OsAccount
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**返回值：**
-
-| 类型                  | 说明                                    |
-| :------------------- | :------------------------------------- |
-| Promise&lt;number[]&gt; | Promise对象，返回所有非系统级的操作系统账号的本地ID。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息             |
-| -------- | ------------------- |
-| 201 | Permission denied.|
-| 12300001 | The system service works abnormally. |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-try {
-  accountManager.getOsAccountLocalIds().then((localIds: number[]) => {
-    console.info('getOsAccountLocalIds localIds: ' + localIds);
-  }).catch((err: BusinessError) => {
-    console.error(`getOsAccountLocalIds failed, code is ${err.code}, message is ${err.message}`);
-  });
-} catch (e) {
-  const err = e as BusinessError;
-  console.error(`getOsAccountLocalIds exception: code is ${err.code}, message is ${err.message}`);
-}
-```
+ArkTS-Sta示例：
+  ```ts
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let uid: int = 12345678;
+  try {
+    let localId : int = accountManager.getOsAccountLocalIdForUidSync(uid);
+    console.info('getOsAccountLocalIdForUidSync successfully, localId: ' + localId);
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountLocalIdForUidSync exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
 
 ### getOsAccountLocalIdForDomain<sup>9+</sup>
 
-getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo, callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo, callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo, callback: AsyncCallback&lt;int&gt;): void
 
 根据域账号信息，获取与其关联的系统账号ID。使用callback异步回调。
 
@@ -1147,12 +1538,16 @@ getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo, callback: AsyncCallb
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                    | 必填 | 说明                                                                         |
 | ---------- | --------------------------------------- | ---- | -------------------------------------------------------------------------- |
 | domainInfo | [DomainAccountInfo](#domainaccountinfo8) | 是   | 域账号信息。                                                                |
-| callback   | AsyncCallback&lt;number&gt;             | 是   | 回调函数。如果查询成功，err为null，data为域账号关联的系统账号ID；否则为错误对象。 |
+| callback   | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br/>ArkTS-Sta: AsyncCallback&lt;int&gt;| 是   | 回调函数。如果查询成功，err为null，data为域账号关联的系统账号ID；否则为错误对象。 |
 
 **错误码：**
 
@@ -1164,10 +1559,13 @@ getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo, callback: AsyncCallb
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid domainInfo. |
+| 12300003 | Domain account not found. |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let domainInfo: osAccount.DomainAccountInfo = {domain: 'testDomain', accountName: 'testAccountName'};
@@ -1186,15 +1584,42 @@ getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo, callback: AsyncCallb
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let domainInfo: osAccount.DomainAccountInfo = {domain: 'testDomain', accountName: 'testAccountName'};
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.getOsAccountLocalIdForDomain(domainInfo, (err: BusinessError | null, localId: int | undefined) => {
+      if (err) {
+        console.error(`getOsAccountLocalIdForDomain failed, code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('getOsAccountLocalIdForDomain successfully, localId: ' + localId);
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountLocalIdForDomain exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getOsAccountLocalIdForDomain<sup>9+</sup>
 
-getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo): Promise&lt;number&gt;
+ArkTS-Dyn: getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo): Promise&lt;number&gt;
+
+ArkTS-Sta: getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo): Promise&lt;int&gt;
 
 根据域账号信息，获取与其关联的系统账号的账号ID。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS，以上权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1205,8 +1630,8 @@ getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo): Promise&lt;number&g
 **返回值：**
 
 | 类型                  | 说明                                    |
-| :-------------------- | :------------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回域账号关联的系统账号ID。 |
+| -------------------- | ------------------------------------- |
+| ArkTS-Dyn: Promise&lt;number&gt;<br/>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回域账号关联的系统账号ID。 |
 
 **错误码：**
 
@@ -1218,10 +1643,13 @@ getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo): Promise&lt;number&g
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid domainInfo. |
+| 12300003 | Domain account not found. |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1238,6 +1666,26 @@ getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo): Promise&lt;number&g
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let domainInfo: osAccount.DomainAccountInfo = {domain: 'testDomain', accountName: 'testAccountName'};
+  try {
+    accountManager.getOsAccountLocalIdForDomain(domainInfo).then((localId: int) => {
+      console.info('getOsAccountLocalIdForDomain successfully, localId: ' + localId);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getOsAccountLocalIdForDomain failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountLocalIdForDomain exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getOsAccountConstraints<sup>(deprecated)</sup>
 
 getOsAccountConstraints(localId: number, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
@@ -1246,11 +1694,15 @@ getOsAccountConstraints(localId: number, callback: AsyncCallback&lt;Array&lt;str
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
+> 从API version 9开始支持，从API version 11开始废弃，替代方法仅向系统应用开放。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS，以上权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1271,12 +1723,15 @@ getOsAccountConstraints(localId: number, callback: AsyncCallback&lt;Array&lt;str
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 
-**示例：** 获取ID为100的系统账号的全部约束
+**示例：**
+
+获取ID为100的系统账号的全部约束。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   try {
     accountManager.getOsAccountConstraints(localId, (err: BusinessError, constraints: string[]) => {
@@ -1300,11 +1755,15 @@ getOsAccountConstraints(localId: number): Promise&lt;Array&lt;string&gt;&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
+> 从API version 9开始支持，从API version 11开始废弃，替代方法仅向系统应用开放。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS，以上权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1330,12 +1789,15 @@ getOsAccountConstraints(localId: number): Promise&lt;Array&lt;string&gt;&gt;
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 
-**示例：** 获取ID为100的系统账号的全部约束
+**示例：**
+
+获取ID为100的系统账号的全部约束。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   try {
     accountManager.getOsAccountConstraints(localId).then((constraints: string[]) => {
@@ -1351,17 +1813,23 @@ getOsAccountConstraints(localId: number): Promise&lt;Array&lt;string&gt;&gt;
 
 ### getActivatedOsAccountLocalIds<sup>9+</sup>
 
-getActivatedOsAccountLocalIds(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
+ArkTS-Dyn: getActivatedOsAccountLocalIds(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
+
+ArkTS-Sta: getActivatedOsAccountLocalIds(callback: AsyncCallback&lt;Array&lt;int&gt;&gt;): void
 
 查询当前处于激活状态的系统账号的ID列表。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                     | 必填 | 说明                                                   |
 | -------- | ---------------------------------------- | ---- | ------------------------------------------------------ |
-| callback | AsyncCallback&lt;Array&lt;number&gt;&gt; | 是   | 回调函数。如果查询成功，err为null，data为当前处于激活状态的系统账号的ID列表；否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;Array&lt;number&gt;&gt;<br/>ArkTS-Sta: AsyncCallback&lt;Array&lt;int&gt;&gt; | 是   | 回调函数。如果查询成功，err为null，data为当前处于激活状态的系统账号的ID列表；否则为错误对象。 |
 
 **错误码：**
 
@@ -1374,7 +1842,9 @@ getActivatedOsAccountLocalIds(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1395,19 +1865,48 @@ getActivatedOsAccountLocalIds(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.getActivatedOsAccountLocalIds((err: BusinessError | null, idArray: int[] | undefined)=>{
+      if (err) {
+        console.error(`getActivatedOsAccountLocalIds code is ${err.code}, message is ${err.message}`);
+      } else if (idArray) {
+        console.info('getActivatedOsAccountLocalIds idArray length:' + idArray.length);
+        for(let i=0;i<idArray.length;i++) {
+          console.info('activated os account id: ' + idArray[i]);
+        }
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getActivatedOsAccountLocalIds exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getActivatedOsAccountLocalIds<sup>9+</sup>
 
-getActivatedOsAccountLocalIds(): Promise&lt;Array&lt;number&gt;&gt;
+ArkTS-Dyn: getActivatedOsAccountLocalIds(): Promise&lt;Array&lt;number&gt;&gt;
+
+ArkTS-Sta: getActivatedOsAccountLocalIds(): Promise&lt;Array&lt;int&gt;&gt;
 
 查询当前处于激活状态的系统账号的ID列表。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                               | 说明                                               |
-| :--------------------------------- | :------------------------------------------------ |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回当前处于激活状态的系统账号的ID列表。 |
+| --------------------------------- | ------------------------------------------------ |
+| ArkTS-Dyn: Promise&lt;Array&lt;number&gt;&gt;<br/> ArkTS-Sta: Promise&lt;Array&lt;int&gt;&gt; | Promise对象，返回当前处于激活状态的系统账号的ID列表。 |
 
 **错误码：**
 
@@ -1419,7 +1918,9 @@ getActivatedOsAccountLocalIds(): Promise&lt;Array&lt;number&gt;&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1435,6 +1936,25 @@ getActivatedOsAccountLocalIds(): Promise&lt;Array&lt;number&gt;&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.getActivatedOsAccountLocalIds().then((idArray: int[]) => {
+      console.info('getActivatedOsAccountLocalIds, idArray: ' + idArray);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getActivatedOsAccountLocalIds err: code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getActivatedOsAccountLocalIds exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getCurrentOsAccount<sup>(deprecated)</sup>
 
 getCurrentOsAccount(callback: AsyncCallback&lt;OsAccountInfo&gt;): void
@@ -1443,11 +1963,15 @@ getCurrentOsAccount(callback: AsyncCallback&lt;OsAccountInfo&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
+> 从API version 9开始支持，从API version 11开始废弃，替代方法仅向系统应用开放。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS或ohos.permission.GET_LOCAL_ACCOUNTS<sup>10+</sup>，以上权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1493,11 +2017,15 @@ getCurrentOsAccount(): Promise&lt;OsAccountInfo&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
+> 从API version 9开始支持，从API version 11开始废弃，替代方法仅向系统应用开放。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS或ohos.permission.GET_LOCAL_ACCOUNTS<sup>10+</sup>，以上权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 9
 
 **返回值：**
 
@@ -1540,6 +2068,10 @@ getOsAccountType(callback: AsyncCallback&lt;OsAccountType&gt;): void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                                 | 必填 | 说明                                                 |
@@ -1557,7 +2089,9 @@ getOsAccountType(callback: AsyncCallback&lt;OsAccountType&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1575,6 +2109,28 @@ getOsAccountType(callback: AsyncCallback&lt;OsAccountType&gt;): void
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.getOsAccountType((err: BusinessError | null, accountType: osAccount.OsAccountType | undefined) => {
+      if (err) {
+        console.error(`getOsAccountType err: code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('getOsAccountType accountType: ' + accountType);
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountType exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+
+
 ### getOsAccountType<sup>9+</sup>
 
 getOsAccountType(): Promise&lt;OsAccountType&gt;
@@ -1582,6 +2138,10 @@ getOsAccountType(): Promise&lt;OsAccountType&gt;
 查询当前进程所属的系统账号的账号类型。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1599,7 +2159,9 @@ getOsAccountType(): Promise&lt;OsAccountType&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1607,6 +2169,25 @@ getOsAccountType(): Promise&lt;OsAccountType&gt;
     accountManager.getOsAccountType().then((accountType: osAccount.OsAccountType) => {
       console.info('getOsAccountType, accountType: ' + accountType);
     }).catch((err: BusinessError) => {
+      console.error(`getOsAccountType err: code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountType exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.getOsAccountType().then((accountType: osAccount.OsAccountType) => {
+      console.info('getOsAccountType, accountType: ' + accountType);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
       console.error(`getOsAccountType err: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
@@ -1624,6 +2205,10 @@ queryDistributedVirtualDeviceId(callback: AsyncCallback&lt;string&gt;): void
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS（仅系统应用可申请）或 ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1643,7 +2228,9 @@ queryDistributedVirtualDeviceId(callback: AsyncCallback&lt;string&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1661,6 +2248,26 @@ queryDistributedVirtualDeviceId(callback: AsyncCallback&lt;string&gt;): void
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.queryDistributedVirtualDeviceId((err: BusinessError | null, virtualID: string | undefined) => {
+      if (err) {
+        console.error(`queryDistributedVirtualDeviceId err: code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('queryDistributedVirtualDeviceId virtualID: ' + virtualID);
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`queryDistributedVirtualDeviceId exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### queryDistributedVirtualDeviceId<sup>9+</sup>
 
 queryDistributedVirtualDeviceId(): Promise&lt;string&gt;
@@ -1670,6 +2277,10 @@ queryDistributedVirtualDeviceId(): Promise&lt;string&gt;
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS（仅系统应用可申请）或 ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1688,7 +2299,9 @@ queryDistributedVirtualDeviceId(): Promise&lt;string&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -1704,20 +2317,45 @@ queryDistributedVirtualDeviceId(): Promise&lt;string&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.queryDistributedVirtualDeviceId().then((virtualID: string) => {
+      console.info('queryDistributedVirtualDeviceId, virtualID: ' + virtualID);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`queryDistributedVirtualDeviceId err: code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`queryDistributedVirtualDeviceId exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getOsAccountLocalIdForSerialNumber<sup>9+</sup>
 
-getOsAccountLocalIdForSerialNumber(serialNumber: number, callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getOsAccountLocalIdForSerialNumber(serialNumber: number, callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getOsAccountLocalIdForSerialNumber(serialNumber: long, callback: AsyncCallback&lt;int&gt;): void
 
 通过SN码查询与其关联的系统账号的账号ID。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名       | 类型                        | 必填 | 说明                                                                           |
 | ------------ | --------------------------- | ---- | ---------------------------------------------------------------------------- |
-| serialNumber | number                      | 是   | 账号SN码。                                                                    |
-| callback     | AsyncCallback&lt;number&gt; | 是   | 回调函数。如果成功，err为null，data为与SN码关联的系统账号的账号ID；否则为错误对象。 |
+| serialNumber | ArkTS-Dyn: number<br>ArkTS-Sta: long                      | 是   | 账号SN码。                                                                    |
+| callback     | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br/>ArkTS-Sta: AsyncCallback&lt;int&gt; | 是   | 回调函数。如果成功，err为null，data为与SN码关联的系统账号的账号ID；否则为错误对象。 |
 
 **错误码：**
 
@@ -1730,12 +2368,17 @@ getOsAccountLocalIdForSerialNumber(serialNumber: number, callback: AsyncCallback
 | 12300002 | Invalid serialNumber. |
 | 12300003 | The account indicated by serialNumber does not exist. |
 
-**示例：** 查询与SN码12345关联的系统账号的ID
+**示例：**
 
+查询与SN码12345关联的系统账号的ID。
+
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // serialNumber为账号SN码，可通过getSerialNumberForOsAccountLocalId接口获取
   let serialNumber: number = 12345;
   try {
     accountManager.getOsAccountLocalIdForSerialNumber(serialNumber, (err: BusinessError, localId: number)=>{
@@ -1751,25 +2394,52 @@ getOsAccountLocalIdForSerialNumber(serialNumber: number, callback: AsyncCallback
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let serialNumber: int = 12345;
+  try {
+    accountManager.getOsAccountLocalIdForSerialNumber(serialNumber, (err: BusinessError | null, localId: int | undefined)=>{
+      if (err) {
+        console.error(`get localId code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('get localId:' + localId + ' by serialNumber: ' + serialNumber);
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`get localId exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getOsAccountLocalIdForSerialNumber<sup>9+</sup>
 
-getOsAccountLocalIdForSerialNumber(serialNumber: number): Promise&lt;number&gt;
+ArkTS-Dyn: getOsAccountLocalIdForSerialNumber(serialNumber: number): Promise&lt;number&gt;
+
+ArkTS-Sta: getOsAccountLocalIdForSerialNumber(serialNumber: long): Promise&lt;int&gt;
 
 通过SN码查询与其关联的系统账号的账号ID。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名       | 类型   | 必填 | 说明       |
 | ------------ | ------ | ---- | ---------- |
-| serialNumber | number | 是   | 账号SN码。 |
+| serialNumber | ArkTS-Dyn: number<br>ArkTS-Sta: long  | 是   | 账号SN码。 |
 
 **返回值：**
 
 | 类型                  | 说明                                         |
 | --------------------- | -------------------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回与SN码关联的系统账号的账号ID。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br/>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回与SN码关联的系统账号的账号ID。 |
 
 **错误码：**
 
@@ -1782,12 +2452,17 @@ getOsAccountLocalIdForSerialNumber(serialNumber: number): Promise&lt;number&gt;
 | 12300002 | Invalid serialNumber. |
 | 12300003 | The account indicated by serialNumber does not exist. |
 
-**示例：** 查询与SN码12345关联的系统账号的ID
+**示例：**
 
+查询与SN码12345关联的系统账号的ID。
+
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // serialNumber为账号SN码，可通过getSerialNumberForOsAccountLocalId接口获取
   let serialNumber: number = 12345;
   try {
     accountManager.getOsAccountLocalIdForSerialNumber(serialNumber).then((localId: number) => {
@@ -1801,20 +2476,46 @@ getOsAccountLocalIdForSerialNumber(serialNumber: number): Promise&lt;number&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let serialNumber: int = 12345;
+  try {
+    accountManager.getOsAccountLocalIdForSerialNumber(serialNumber).then((localId: int) => {
+      console.info('getOsAccountLocalIdForSerialNumber localId: ' + localId);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getOsAccountLocalIdForSerialNumber err: code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountLocalIdForSerialNumber exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getSerialNumberForOsAccountLocalId<sup>9+</sup>
 
-getSerialNumberForOsAccountLocalId(localId: number, callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getSerialNumberForOsAccountLocalId(localId: number, callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getSerialNumberForOsAccountLocalId(localId: int, callback: AsyncCallback&lt;long&gt;): void
 
 通过系统账号ID获取与该系统账号关联的SN码。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                        | 必填 | 说明                                                                         |
 | -------- | --------------------------- | ---- | -------------------------------------------------------------------------- |
-| localId  | number                      | 是   | 系统账号ID。                                                                 |
-| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数。如果获取成功，err为null，data为与该系统账号关联的SN码；否则为错误对象。 |
+| localId  | ArkTS-Dyn: number<br>ArkTS-Sta: int                       | 是   | 系统账号ID。                                                                 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br/>ArkTS-Sta: AsyncCallback&lt;long&gt; | 是   | 回调函数。如果获取成功，err为null，data为与该系统账号关联的SN码；否则为错误对象。 |
 
 **错误码：**
 
@@ -1827,12 +2528,17 @@ getSerialNumberForOsAccountLocalId(localId: number, callback: AsyncCallback&lt;n
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 
-**示例：** 获取ID为100的系统账号关联的SN码
+**示例：**
 
+获取ID为100的系统账号关联的SN码。
+
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   try {
     accountManager.getSerialNumberForOsAccountLocalId(localId, (err: BusinessError, serialNumber: number)=>{
@@ -1848,25 +2554,52 @@ getSerialNumberForOsAccountLocalId(localId: number, callback: AsyncCallback&lt;n
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let localId: int = 100;
+  try {
+    accountManager.getSerialNumberForOsAccountLocalId(localId, (err: BusinessError | null, serialNumber: long | undefined)=>{
+      if (err) {
+        console.error(`get serialNumber code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('get serialNumber:' + serialNumber + ' by localId: ' + localId);
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`get serialNumber exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getSerialNumberForOsAccountLocalId<sup>9+</sup>
 
-getSerialNumberForOsAccountLocalId(localId: number): Promise&lt;number&gt;
+ArkTS-Dyn: getSerialNumberForOsAccountLocalId(localId: number): Promise&lt;number&gt;
+
+ArkTS-Sta: getSerialNumberForOsAccountLocalId(localId: int): Promise&lt;long&gt;
 
 通过系统账号ID获取与该系统账号关联的SN码。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明          |
 | ------- | ------ | ---- | ----------- |
-| localId | number | 是   | 系统账号ID。 |
+| localId | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 系统账号ID。 |
 
 **返回值：**
 
 | 类型                  | 说明                                    |
-| :-------------------- | :------------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回与该系统账号关联的SN码。 |
+| -------------------- | ------------------------------------- |
+| ArkTS-Dyn: Promise&lt;number&gt;<br/>ArkTS-Sta: Promise&lt;long&gt; | Promise对象，返回与该系统账号关联的SN码。 |
 
 **错误码：**
 
@@ -1879,12 +2612,17 @@ getSerialNumberForOsAccountLocalId(localId: number): Promise&lt;number&gt;
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 
-**示例：** 获取ID为100的系统账号关联的SN码
+**示例：**
 
+获取ID为100的系统账号关联的SN码。
+
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   try {
     accountManager.getSerialNumberForOsAccountLocalId(localId).then((serialNumber: number) => {
@@ -1898,6 +2636,26 @@ getSerialNumberForOsAccountLocalId(localId: number): Promise&lt;number&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  let localId: int = 100;
+  try {
+    accountManager.getSerialNumberForOsAccountLocalId(localId).then((serialNumber: long) => {
+      console.info('getSerialNumberForOsAccountLocalId serialNumber: ' + serialNumber);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getSerialNumberForOsAccountLocalId err: code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getSerialNumberForOsAccountLocalId exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### isMultiOsAccountEnable<sup>(deprecated)</sup>
 
 isMultiOsAccountEnable(callback: AsyncCallback&lt;boolean&gt;): void
@@ -1906,9 +2664,13 @@ isMultiOsAccountEnable(callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[checkMultiOsAccountEnabled](#checkmultiosaccountenabled9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[checkMultiOsAccountEnabled](#checkmultiosaccountenabled9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1926,7 +2688,7 @@ isMultiOsAccountEnable(callback: AsyncCallback&lt;boolean&gt;): void
     if (err) {
       console.error(`isMultiOsAccountEnable failed, code is ${err.code}, message is ${err.message}`);
     } else {
-      console.info('isMultiOsAccountEnable successfully, isEnabled: ' + isEnabled);
+    console.info('isMultiOsAccountEnable successfully, isEnabled: ' + isEnabled);
     }
   });
   ```
@@ -1939,14 +2701,18 @@ isMultiOsAccountEnable(): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[checkMultiOsAccountEnabled](#checkmultiosaccountenabled9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[checkMultiOsAccountEnabled](#checkmultiosaccountenabled9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
 | 类型                   | 说明                                                       |
-| :--------------------- | :--------------------------------------------------------- |
+| --------------------- | --------------------------------------------------------- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示支持多系统账号；返回false表示不支持。 |
 
 **示例：**
@@ -1970,11 +2736,15 @@ isOsAccountActived(localId: number, callback: AsyncCallback&lt;boolean&gt;): voi
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
+> 从API version 7开始支持，从API version 9开始废弃，替代方法仅向系统应用开放。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS，以上权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1983,12 +2753,15 @@ isOsAccountActived(localId: number, callback: AsyncCallback&lt;boolean&gt;): voi
 | localId  | number                       | 是   | 系统账号ID。                                            |
 | callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。返回true表示账号已激活；返回false表示账号未激活。 |
 
-**示例：** 判断ID为100的系统账号是否处于激活状态
+**示例：**
+
+判断ID为100的系统账号是否处于激活状态。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   accountManager.isOsAccountActived(localId, (err: BusinessError, isActived: boolean) => {
     if (err) {
@@ -2007,11 +2780,15 @@ isOsAccountActived(localId: number): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
+> 从API version 7开始支持，从API version 9开始废弃，替代方法仅向系统应用开放。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS，以上权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -2025,12 +2802,15 @@ isOsAccountActived(localId: number): Promise&lt;boolean&gt;
 | --------------------- | ----------------------------------------------------------- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示账号已激活；返回false表示账号未激活。 |
 
-**示例：** 判断ID为100的系统账号是否处于激活状态
+**示例：**
+
+判断ID为100的系统账号是否处于激活状态。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   accountManager.isOsAccountActived(localId).then((isActived: boolean) => {
     console.info('isOsAccountActived successfully, isActived: ' + isActived);
@@ -2047,11 +2827,15 @@ isOsAccountConstraintEnable(localId: number, constraint: string, callback: Async
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
+> 从API version 7开始支持，从API version 9开始废弃，替代方法仅向系统应用开放。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS，该权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -2061,12 +2845,15 @@ isOsAccountConstraintEnable(localId: number, constraint: string, callback: Async
 | constraint | string                       | 是   | 指定的[约束](#系统账号约束列表)名称。                                |
 | callback   | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。返回true表示已使能指定的约束；返回false表示未使能指定的约束。 |
 
-**示例：** 判断ID为100的系统账号是否有禁止使用Wi-Fi的约束
+**示例：**
+
+判断ID为100的系统账号是否有禁止使用Wi-Fi的约束。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   let constraint: string = 'constraint.wifi';
   accountManager.isOsAccountConstraintEnable(localId, constraint, (err: BusinessError, isEnabled: boolean) => {
@@ -2086,11 +2873,15 @@ isOsAccountConstraintEnable(localId: number, constraint: string): Promise&lt;boo
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
+> 从API version 7开始支持，从API version 9开始废弃，替代方法仅向系统应用开放。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS，该权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -2105,12 +2896,15 @@ isOsAccountConstraintEnable(localId: number, constraint: string): Promise&lt;boo
 | ---------------------- | --------------------------------------------------------------------- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示已使能指定的约束；返回false表示未使能指定的约束。 |
 
-**示例：** 判断ID为100的系统账号是否有禁止使用Wi-Fi的约束
+**示例：**
+
+判断ID为100的系统账号是否有禁止使用Wi-Fi的约束。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   let constraint: string = 'constraint.wifi';
   accountManager.isOsAccountConstraintEnable(localId, constraint).then((isEnabled: boolean) => {
@@ -2128,9 +2922,13 @@ isTestOsAccount(callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[checkOsAccountTestable](#checkosaccounttestable9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[checkOsAccountTestable](#checkosaccounttestable9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -2161,9 +2959,14 @@ isTestOsAccount(): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[checkOsAccountTestable](#checkosaccounttestable9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[checkOsAccountTestable](#checkosaccounttestable9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 7
+
 
 **返回值：**
 
@@ -2192,17 +2995,21 @@ isOsAccountVerified(callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[checkOsAccountVerified](#checkosaccountverifieddeprecated)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[checkOsAccountVerified](#checkosaccountverifieddeprecated)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS，以上权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名   | 类型                         | 必填 | 说明                                                            |
 | -------- | ---------------------------- | ---- | ------------------------------------------------------------- |
-| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。返回true表示指定账号已验证；返回false表示指定账号未验证。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。返回true表示当前账号已验证；返回false表示当前账号未验证。 |
 
 **示例：**
 
@@ -2227,11 +3034,15 @@ isOsAccountVerified(localId: number, callback: AsyncCallback&lt;boolean&gt;): vo
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
+> 从API version 7开始支持，从API version 9开始废弃，替代方法仅向系统应用开放。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS，以上权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -2246,6 +3057,7 @@ isOsAccountVerified(localId: number, callback: AsyncCallback&lt;boolean&gt;): vo
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   accountManager.isOsAccountVerified(localId, (err: BusinessError, isVerified: boolean) => {
     if (err) {
@@ -2264,11 +3076,15 @@ isOsAccountVerified(localId?: number): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
+> 从API version 7开始支持，从API version 9开始废弃，替代方法仅向系统应用开放。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS，以上权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -2303,11 +3119,15 @@ getCreatedOsAccountsCount(callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getOsAccountCount](#getosaccountcount9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getOsAccountCount](#getosaccountcount9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS，该权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -2338,11 +3158,15 @@ getCreatedOsAccountsCount(): Promise&lt;number&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getOsAccountCount](#getosaccountcount9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getOsAccountCount](#getosaccountcount9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS，该权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -2371,9 +3195,13 @@ getOsAccountLocalIdFromProcess(callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getOsAccountLocalId](#getosaccountlocalid9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getOsAccountLocalId](#getosaccountlocalid9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -2404,14 +3232,18 @@ getOsAccountLocalIdFromProcess(): Promise&lt;number&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getOsAccountLocalId](#getosaccountlocalid9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getOsAccountLocalId](#getosaccountlocalid9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
 | 类型                  | 说明                                      |
-| :-------------------- | :--------------------------------------- |
+| -------------------- | --------------------------------------- |
 | Promise&lt;number&gt; | Promise对象，返回当前进程所属的系统账号ID。 |
 
 **示例：**
@@ -2435,9 +3267,13 @@ getOsAccountLocalIdFromUid(uid: number, callback: AsyncCallback&lt;number&gt;): 
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getOsAccountLocalIdForUid](#getosaccountlocalidforuid9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getOsAccountLocalIdForUid](#getosaccountlocalidforuid9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -2446,7 +3282,9 @@ getOsAccountLocalIdFromUid(uid: number, callback: AsyncCallback&lt;number&gt;): 
 | uid      | number                      | 是   | 进程uid。                                                              |
 | callback | AsyncCallback&lt;number&gt; | 是   | 回调函数。如果查询成功，err为null，data为对应的系统账号ID；否则为错误对象。 |
 
-**示例：** 查询值为12345678的uid所属的系统账号ID
+**示例：**
+
+查询值为12345678的uid所属的系统账号ID。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2470,9 +3308,13 @@ getOsAccountLocalIdFromUid(uid: number): Promise&lt;number&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getOsAccountLocalIdForUid](#getosaccountlocalidforuid9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getOsAccountLocalIdForUid](#getosaccountlocalidforuid9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -2483,10 +3325,12 @@ getOsAccountLocalIdFromUid(uid: number): Promise&lt;number&gt;
 **返回值：**
 
 | 类型                  | 说明                                  |
-| :-------------------- | :----------------------------------- |
+| -------------------- | ----------------------------------- |
 | Promise&lt;number&gt; | Promise对象，返回uid对应的系统账号ID。 |
 
-**示例：** 查询值为12345678的uid所属的系统账号ID
+**示例：**
+
+查询值为12345678的uid所属的系统账号ID。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2508,11 +3352,15 @@ getOsAccountLocalIdFromDomain(domainInfo: DomainAccountInfo, callback: AsyncCall
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS，该权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -2545,11 +3393,15 @@ getOsAccountLocalIdFromDomain(domainInfo: DomainAccountInfo): Promise&lt;number&
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain9-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS，该权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -2560,7 +3412,7 @@ getOsAccountLocalIdFromDomain(domainInfo: DomainAccountInfo): Promise&lt;number&
 **返回值：**
 
 | 类型                  | 说明                                    |
-| :-------------------- | :------------------------------------- |
+| -------------------- | ------------------------------------- |
 | Promise&lt;number&gt; | Promise对象，返回域账号关联的系统账号ID。 |
 
 **示例：**
@@ -2585,11 +3437,15 @@ getOsAccountAllConstraints(localId: number, callback: AsyncCallback&lt;Array&lt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
+> 从API version 7开始支持，从API version 9开始废弃，替代方法仅向系统应用开放。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS，该权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -2598,12 +3454,15 @@ getOsAccountAllConstraints(localId: number, callback: AsyncCallback&lt;Array&lt;
 | localId  | number                                   | 是   | 系统账号ID。                                                                                    |
 | callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是   | 回调函数。如果获取成功，err为null，data为指定系统账号的全部[约束](#系统账号约束列表)；否则为错误对象。 |
 
-**示例：** 获取ID为100的系统账号的全部约束
+**示例：**
+
+获取ID为100的系统账号的全部约束。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   accountManager.getOsAccountAllConstraints(localId, (err: BusinessError, constraints: string[])=>{
     if (err) {
@@ -2622,11 +3481,15 @@ getOsAccountAllConstraints(localId: number): Promise&lt;Array&lt;string&gt;&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
+> 从API version 7开始支持，从API version 9开始废弃，替代方法仅向系统应用开放。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS，该权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -2637,15 +3500,18 @@ getOsAccountAllConstraints(localId: number): Promise&lt;Array&lt;string&gt;&gt;
 **返回值：**
 
 | 类型                               | 说明                                                         |
-| :--------------------------------- | :----------------------------------------------------------- |
+| --------------------------------- | ----------------------------------------------------------- |
 | Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回指定系统账号的全部[约束](#系统账号约束列表)。 |
 
-**示例：** 获取ID为100的系统账号的全部约束
+**示例：**
+
+获取ID为100的系统账号的全部约束。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   accountManager.getOsAccountAllConstraints(localId).then((constraints: string[]) => {
     console.info('getOsAccountAllConstraints, constraints: ' + constraints);
@@ -2662,9 +3528,13 @@ queryActivatedOsAccountIds(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): 
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getActivatedOsAccountLocalIds](#getactivatedosaccountlocalids9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getActivatedOsAccountLocalIds](#getactivatedosaccountlocalids9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -2678,12 +3548,12 @@ queryActivatedOsAccountIds(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): 
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-  accountManager.queryActivatedOsAccountIds((err: BusinessError, idArray: number[]) => {
+  accountManager.queryActivatedOsAccountIds((err: BusinessError, idArray: number[])=>{
     if (err) {
       console.error(`queryActivatedOsAccountIds code is ${err.code}, message is ${err.message}`);
     } else {
       console.info('queryActivatedOsAccountIds idArray length:' + idArray.length);
-      for (let i = 0; i < idArray.length; i++) {
+      for(let i=0;i<idArray.length;i++) {
         console.info('activated os account id: ' + idArray[i]);
       }
     }
@@ -2696,11 +3566,15 @@ queryActivatedOsAccountIds(): Promise&lt;Array&lt;number&gt;&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getActivatedOsAccountLocalIds](#getactivatedosaccountlocalids9-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getActivatedOsAccountLocalIds](#getactivatedosaccountlocalids9-1)替代。
 
 查询当前处于激活状态的系统账号的ID列表。使用Promise异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **返回值：**
 
@@ -2729,11 +3603,15 @@ queryCurrentOsAccount(callback: AsyncCallback&lt;OsAccountInfo&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
+> 从API version 7开始支持，从API version 9开始废弃，替代方法仅向系统应用开放。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS，该权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -2764,11 +3642,15 @@ queryCurrentOsAccount(): Promise&lt;OsAccountInfo&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
+> 从API version 7开始支持，从API version 9开始废弃，替代方法仅向系统应用开放。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS，该权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -2797,9 +3679,13 @@ getOsAccountTypeFromProcess(callback: AsyncCallback&lt;OsAccountType&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getOsAccountType](#getosaccounttype9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getOsAccountType](#getosaccounttype9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -2830,9 +3716,13 @@ getOsAccountTypeFromProcess(): Promise&lt;OsAccountType&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getOsAccountType](#getosaccounttype9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getOsAccountType](#getosaccounttype9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -2861,11 +3751,15 @@ getDistributedVirtualDeviceId(callback: AsyncCallback&lt;string&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS（仅系统应用可申请）或 ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -2896,11 +3790,15 @@ getDistributedVirtualDeviceId(): Promise&lt;string&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS（仅系统应用可申请）或ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -2929,9 +3827,13 @@ getOsAccountLocalIdBySerialNumber(serialNumber: number, callback: AsyncCallback&
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getOsAccountLocalIdForSerialNumber](#getosaccountlocalidforserialnumber9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getOsAccountLocalIdForSerialNumber](#getosaccountlocalidforserialnumber9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -2940,7 +3842,9 @@ getOsAccountLocalIdBySerialNumber(serialNumber: number, callback: AsyncCallback&
 | serialNumber | number                      | 是   | 账号SN码。                                                                        |
 | callback     | AsyncCallback&lt;number&gt; | 是   | 回调函数。如果查询成功，err为null，data为与SN码关联的系统账号的账号ID；否则为错误对象。 |
 
-**示例：** 查询与SN码12345关联的系统账号的ID
+**示例：**
+
+查询与SN码12345关联的系统账号的ID。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2964,9 +3868,13 @@ getOsAccountLocalIdBySerialNumber(serialNumber: number): Promise&lt;number&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getOsAccountLocalIdForSerialNumber](#getosaccountlocalidforserialnumber9-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getOsAccountLocalIdForSerialNumber](#getosaccountlocalidforserialnumber9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -2980,7 +3888,9 @@ getOsAccountLocalIdBySerialNumber(serialNumber: number): Promise&lt;number&gt;
 | --------------------- | -------------------------------------------- |
 | Promise&lt;number&gt; | Promise对象，返回与SN码关联的系统账号的账号ID。 |
 
-**示例：** 查询与SN码12345关联的系统账号的ID
+**示例：**
+
+查询与SN码12345关联的系统账号的ID。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -3002,9 +3912,13 @@ getSerialNumberByOsAccountLocalId(localId: number, callback: AsyncCallback&lt;nu
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getSerialNumberForOsAccountLocalId](#getserialnumberforosaccountlocalid9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getSerialNumberForOsAccountLocalId](#getserialnumberforosaccountlocalid9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -3013,12 +3927,15 @@ getSerialNumberByOsAccountLocalId(localId: number, callback: AsyncCallback&lt;nu
 | localId  | number                      | 是   | 系统账号ID。                                                                 |
 | callback | AsyncCallback&lt;number&gt; | 是   | 回调函数。如果获取成功，err为null，data为与该系统账号关联的SN码；否则为错误对象。 |
 
-**示例：** 获取ID为100的系统账号关联的SN码
+**示例：**
+
+获取ID为100的系统账号关联的SN码。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   accountManager.getSerialNumberByOsAccountLocalId(localId, (err: BusinessError, serialNumber: number)=>{
     if (err) {
@@ -3037,9 +3954,13 @@ getSerialNumberByOsAccountLocalId(localId: number): Promise&lt;number&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getSerialNumberForOsAccountLocalId](#getserialnumberforosaccountlocalid9-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getSerialNumberForOsAccountLocalId](#getserialnumberforosaccountlocalid9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -3053,12 +3974,15 @@ getSerialNumberByOsAccountLocalId(localId: number): Promise&lt;number&gt;
 | --------------------- | -------------------------------------- |
 | Promise&lt;number&gt; | Promise对象，返回与该系统账号关联的SN码。 |
 
-**示例：** 获取ID为100的系统账号关联的SN码
+**示例：**
+
+获取ID为100的系统账号关联的SN码。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   accountManager.getSerialNumberByOsAccountLocalId(localId).then((serialNumber: number) => {
     console.info('getSerialNumberByOsAccountLocalId serialNumber: ' + serialNumber);
@@ -3075,10 +3999,14 @@ getOsAccountName(): Promise&lt;string&gt;
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;string&gt; | Promise对象，返回调用方所属系统账号的名称。 |
 
 **错误码：**
@@ -3091,7 +4019,9 @@ getOsAccountName(): Promise&lt;string&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -3106,6 +4036,25 @@ getOsAccountName(): Promise&lt;string&gt;
     console.error(`getOsAccountName exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.getOsAccountName().then((name: string) => {
+      console.info('getOsAccountName, name: ' + name);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error('getOsAccountName err: ' + err);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountName exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 
  ### getOsAccountNameByLocalId
  
@@ -3168,17 +4117,23 @@ getOsAccountName(): Promise&lt;string&gt;
 
 ### getForegroundOsAccountLocalId<sup>15+</sup>
 
-getForegroundOsAccountLocalId(): Promise&lt;number&gt;
+ArkTS-Dyn: getForegroundOsAccountLocalId(): Promise&lt;number&gt;
+
+ArkTS-Sta: getForegroundOsAccountLocalId(): Promise&lt;int&gt;
 
 获取前台系统账号的ID。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                   | 说明                                                               |
 | ---------------------- | ----------------------------------------------------------------- |
-| Promise&lt;number&gt; | Promise对象。返回前台系统账号的ID。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br/>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回前台系统账号的ID。 |
 
 **错误码：**
 
@@ -3190,7 +4145,9 @@ getForegroundOsAccountLocalId(): Promise&lt;number&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
@@ -3206,6 +4163,25 @@ getForegroundOsAccountLocalId(): Promise&lt;number&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  try {
+    accountManager.getForegroundOsAccountLocalId().then((localId: int) => {
+      console.info('getForegroundOsAccountLocalId, localId: ' + localId);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getForegroundOsAccountLocalId err: code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getForegroundOsAccountLocalId exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getOsAccountDomainInfo<sup>15+</sup>
 
 getOsAccountDomainInfo(localId: number): Promise&lt;DomainAccountInfo&gt;
@@ -3214,7 +4190,13 @@ getOsAccountDomainInfo(localId: number): Promise&lt;DomainAccountInfo&gt;
 
 **需要权限：** ohos.permission.GET_DOMAIN_ACCOUNTS 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS，以上权限允许系统应用和企业应用进行申请。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[getOsAccountDomainInfo](#getosaccountdomaininfo23)。
+
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 15
 
 **参数：**
 
@@ -3226,7 +4208,7 @@ getOsAccountDomainInfo(localId: number): Promise&lt;DomainAccountInfo&gt;
 
 | 类型                   | 说明                                                               |
 | ---------------------- | ----------------------------------------------------------------- |
-| Promise&lt;[DomainAccountInfo](#domainaccountinfo8)&gt; | Promise对象。返回与指定系统账号关联的域账号信息。 |
+| Promise&lt;[DomainAccountInfo](#domainaccountinfo8)&gt; | Promise对象，返回与指定系统账号关联的域账号信息。 |
 
 **错误码：**
 
@@ -3240,23 +4222,152 @@ getOsAccountDomainInfo(localId: number): Promise&lt;DomainAccountInfo&gt;
 | 12300003 | OS account not found. |
 
 **示例：**
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+// localId为系统账号ID，请通过getOsAccountLocalId接口获取
+let localId: number = 100;
+accountManager.getOsAccountDomainInfo(localId).then((domainAccountInfo: osAccount.DomainAccountInfo) => {
+  if (domainAccountInfo === null) {
+    console.info('The target OS account is not a domain account.')
+  } else {
+    console.info('getOsAccountDomainInfo domain: ' + domainAccountInfo.domain);
+    console.info('getOsAccountDomainInfo accountName: ' + domainAccountInfo.accountName);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`getOsAccountDomainInfo err: code is ${err.code}, message is ${err.message}`);
+})
+```
 
-  let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-  let localId: number = 100;
-  accountManager.getOsAccountDomainInfo(localId).then((domainAccountInfo: osAccount.DomainAccountInfo) => {
-    if (domainAccountInfo === null) {
-      console.info('The target OS account is not a domain account.')
-    } else {
-      console.info('getOsAccountDomainInfo domain: ' + domainAccountInfo.domain);
-      console.info('getOsAccountDomainInfo accountName: ' + domainAccountInfo.accountName);
-    }
+### getOsAccountDomainInfo<sup>23+</sup>
+
+getOsAccountDomainInfo(localId: int): Promise&lt;DomainAccountInfo|null&gt;
+
+获取指定系统账号关联的域账号信息。
+
+**需要权限：** ohos.permission.GET_DOMAIN_ACCOUNTS 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS，以上权限允许系统应用和企业应用进行申请。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[getOsAccountDomainInfo](#getosaccountdomaininfo15)。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型   | 必填 | 说明          |
+| ------- | ------ | ---- | ----------- |
+| localId | int | 是   | 系统账号ID。 |
+
+**返回值：**
+
+| 类型                   | 说明                                                               |
+| ---------------------- | ----------------------------------------------------------------- |
+| Promise&lt;[DomainAccountInfo](#domainaccountinfo8)\|null&gt; | Promise对象。返回与指定系统账号关联的域账号信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息       |
+| -------- | ------------- |
+| 201 | Permission denied. |
+| 12300001 | The system service works abnormally. |
+| 12300003 | OS account not found. |
+
+**示例：**
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+let localId: int = 100;
+accountManager.getOsAccountDomainInfo(localId).then((domainAccountInfo: osAccount.DomainAccountInfo) => {
+  if (domainAccountInfo === null) {
+    console.info('The target OS account is not a domain account.')
+  } else {
+    console.info('getOsAccountDomainInfo domain: ' + domainAccountInfo.domain);
+    console.info('getOsAccountDomainInfo accountName: ' + domainAccountInfo.accountName);
+  }
+}).catch((e: Error) => {
+  const err = e as BusinessError;
+  console.error(`getOsAccountDomainInfo err: code is ${err.code}, message is ${err.message}`);
+})
+```
+
+### getOsAccountLocalIds
+
+ArkTS-Dyn: getOsAccountLocalIds(): Promise&lt;number[]&gt;
+
+ArkTS-Sta: getOsAccountLocalIds(): Promise&lt;int[]&gt;
+
+获取所有非系统级的操作系统账号的本地ID。非系统级的操作系统账号对用户可见，通常用于登录等操作。使用Promise异步回调。
+
+**需要权限：** ohos.permission.GET_LOCAL_ACCOUNT_IDENTIFIERS
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型                               | 说明                                   |
+| --------------------------------- | ------------------------------------- |
+| ArkTS-Dyn: Promise&lt;number[]&gt;<br/>ArkTS-Sta: Promise&lt;int[]&gt; | Promise对象，返回所有非系统级的操作系统账号的本地ID。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息             |
+| -------- | ------------------- |
+| 201 | Permission denied.|
+| 12300001 | The system service works abnormally. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError, osAccount } from '@kit.BasicServicesKit';
+
+let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+try {
+  accountManager.getOsAccountLocalIds().then((localIds: number[]) => {
+    console.info('getOsAccountLocalIds successfully, localIds: ' + JSON.stringify(localIds));
   }).catch((err: BusinessError) => {
-    console.error(`getOsAccountDomainInfo err: code is ${err.code}, message is ${err.message}`);
-  })
-  ```
+    console.error(`getOsAccountLocalIds failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountLocalIds exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError, osAccount } from '@kit.BasicServicesKit';
+
+let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+try {
+  accountManager.getOsAccountLocalIds().then((localIds: int[]) => {
+    console.info('getOsAccountLocalIds successfully, localIds: ' + JSON.stringify(localIds));
+  }).catch((e: Error) => {
+    const err = e as BusinessError;
+    console.error(`getOsAccountLocalIds failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e: Error) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountLocalIds exception: code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ## DomainAccountManager<sup>18+</sup>
 
@@ -3272,6 +4383,10 @@ updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: DomainAccou
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
@@ -3282,8 +4397,8 @@ updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: DomainAccou
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| ------------------------ | ----------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3300,7 +4415,9 @@ updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: DomainAccou
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let oldDomainInfo: osAccount.DomainAccountInfo =
@@ -3319,6 +4436,28 @@ updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: DomainAccou
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let oldDomainInfo: osAccount.DomainAccountInfo =
+    {domain: 'testDomain', accountName: 'oldtestAccountName'};
+  let newDomainInfo: osAccount.DomainAccountInfo =
+    {domain: 'testDomain', accountName: 'newtestAccountName'};
+  try {
+    osAccount.DomainAccountManager.updateAccountInfo(oldDomainInfo, newDomainInfo).then(() => {
+      console.info('updateAccountInfo, success');
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error('updateAccountInfo err: ' + err);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`updateAccountInfo exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ## OsAccountInfo
 
 表示系统账号信息。
@@ -3327,21 +4466,21 @@ updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: DomainAccou
 
 | 名称                         | 类型                                                         | 只读  | 可选  | 说明                              |
 | ------------------------------ | ------------------------------------------------------------ | ---- | ---- | --------------------------------- |
-| localId                        | number                                                       | 否 | 否  | 系统账号ID。                      |
-| localName                      | string                                                       | 否 | 否  | 系统账号名称。                    |
-| type                           | [OsAccountType](#osaccounttype)                              | 否 | 否  | 系统账号类型。                      |
-| constraints                    | Array&lt;string&gt;                                          | 否 | 否  | 系统账号[约束](#系统账号约束列表)，默认为空。|
-| isVerified<sup>(deprecated)</sup> | boolean                                                   | 否 | 否  | 账号是否验证。true表示指定账号已验证；false表示指定账号未验证。<br>**说明：**从API version 7开始支持，从API version 11开始废弃，建议使用isUnlocked。           |
-| isUnlocked<sup>11+</sup>      | boolean                                                       | 否 | 否  | 账号是否已解锁（EL2级别目录是否解密）。true表示指定账号已解锁；false表示指定账号未解锁。                      |
-| photo<sup>8+</sup>             | string                                                       | 否 | 否  | 系统账号头像，默认为空。                      |
-| createTime<sup>8+</sup>        | number                                                       | 否 | 否  | 系统账号创建时间，以Unix时间戳格式表示，单位为s。                  |
-| lastLoginTime<sup>8+</sup>     | number                                                       | 否 | 否  | 系统账号最后一次登录时间，以Unix时间戳格式表示，单位为s。          |
-| serialNumber<sup>8+</sup>      | number                                                       | 否 | 否  | 系统账号SN码。                      |
-| isActived<sup>(deprecated)</sup>         | boolean                                            | 否 | 否  | 系统账号激活状态。true表示指定账号处于激活状态；false表示指定账号处于未激活状态。<br>**说明：**从API version 7开始支持，从API version 11开始废弃，建议使用isActivated。                  |
-| isActivated<sup>11+</sup>         | boolean                                                   | 否 | 否  | 系统账号是否激活。true表示指定账号已激活；false表示指定账号未激活。                  |
-| isCreateCompleted<sup>8+</sup> | boolean                                                      | 否 | 否  | 系统账号创建是否完整。true表示指定账号已创建完整；false表示指定账号未创建完整。              |
-| distributedInfo                | [distributedAccount.DistributedInfo](js-apis-distributed-account.md#distributedinfo) | 否 | 否  | 分布式账号信息，默认为空。                    |
-| domainInfo<sup>8+</sup>        | [DomainAccountInfo](#domainaccountinfo8)                      | 否 | 否  | 域账号信息，默认为空。                        |
+| localId                        | ArkTS-Dyn: number<br>ArkTS-Sta: int                         | 否 | 否  | 系统账号ID。  <br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23  |
+| localName                      | string                                                       | 否 | 否  | 系统账号名称。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23  |
+| type                           | [OsAccountType](#osaccounttype)                              | 否 | 否  | 系统账号类型。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23  |
+| constraints                    | Array&lt;string&gt;                                          | 否 | 否  | 系统账号[约束](#系统账号约束列表)，默认为空。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23|
+| isVerified<sup>(deprecated)</sup> | boolean                                                   | 否 | 否  | 账号是否验证。true表示指定账号已验证；false表示指定账号未验证。<br>**说明**：从API version 7开始支持，从API version 11开始废弃，建议使用isUnlocked。<br/>**ArkTS模式：** 仅适用于ArkTS-Dyn。 <br/>**ArkTS-Dyn起始版本：** 7           |
+| isUnlocked<sup>11+</sup>      | boolean                                                       | 否 | 否  | 账号是否已解锁（EL2级别目录是否解密）。true表示指定账号已解锁；false表示指定账号未解锁。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23                      |
+| photo<sup>8+</sup>             | string                                                       | 否 | 否  | 系统账号头像，默认为空。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| createTime<sup>8+</sup>        | ArkTS-Dyn: number<br>ArkTS-Sta: long                           | 否 | 否  | 系统账号创建时间，以Unix时间戳格式表示，单位为s。 <br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23  |
+| lastLoginTime<sup>8+</sup>     | ArkTS-Dyn: number<br>ArkTS-Sta: long                          | 否 | 否  | 系统账号最后一次登录时间，以Unix时间戳格式表示，单位为s。 <br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23  |
+| serialNumber<sup>8+</sup>      | ArkTS-Dyn: number<br>ArkTS-Sta: long                           | 否 | 否  | 系统账号SN码。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23  |
+| isActived<sup>(deprecated)</sup>         | boolean                                            | 否 | 否  | 系统账号激活状态。true表示指定账号处于激活状态；false表示指定账号处于未激活状态。<br>**说明**：从API version 7开始支持，从API version 11开始废弃，建议使用isActivated。<br/>**ArkTS模式：** 仅适用于ArkTS-Dyn。  <br/>**ArkTS-Dyn起始版本：** 7 |
+| isActivated<sup>11+</sup>         | boolean                                                   | 否 | 否  | 系统账号是否激活。true表示指定账号已激活；false表示指定账号未激活。  <br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23   |
+| isCreateCompleted<sup>8+</sup> | boolean                                                      | 否 | 否  | 系统账号创建是否完整。true表示指定账号已创建完整；false表示指定账号未创建完整。  <br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| distributedInfo                | [distributedAccount.DistributedInfo](js-apis-distributed-account.md#distributedinfo) | 否 | 否  | 分布式账号信息，默认为空。 <br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23  |
+| domainInfo<sup>8+</sup>        | [DomainAccountInfo](#domainaccountinfo8)                      | 否 | 否  | 域账号信息，默认为空。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## DomainAccountInfo<sup>8+</sup>
 
@@ -3351,10 +4490,10 @@ updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: DomainAccou
 
 | 名称      | 类型   | 只读  | 可选 | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
-| domain      | string | 否 | 否  | 域名。     |
-| accountName | string | 否 | 否  | 域账号名。 |
-| serverConfigId<sup>18+</sup> | string | 否 | 是  | 域账号配置ID，默认为空字符串。 |
-| additionalInfo | ArkTS-Dyn: Record<string, Object><br/>ArkTS-Sta: Record<string, RecordData> | 否 | 是 | 域账号附加信息。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0 <br/>**模型约束**：此接口仅可在Stage模型下使用。 |
+| domain      | string | 否 | 否  | 域名。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23     |
+| accountName | string | 否 | 否  | 域账号名。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| serverConfigId<sup>18+</sup> | string | 否 | 是  | 域账号配置ID，默认为空字符串。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
+| additionalInfo | ArkTS-Dyn: Record<string, Object><br/>ArkTS-Sta: Record<string, RecordData> | 否 | 是 | 域账号附加信息，默认为空。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0 <br/>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## DomainServerConfig<sup>18+</sup>
 
@@ -3362,9 +4501,13 @@ updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: DomainAccou
 
 **系统能力：** SystemCapability.Account.OsAccount
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      | 类型   | 只读  | 可选 | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
-| parameters | Record<string, Object> | 否 | 否  | 服务器配置参数。 |
+| parameters | ArkTS-Dyn: Record<string, Object><br>ArkTS-Sta: Record&lt;string, RecordData&gt; | 否 | 否  | 服务器配置参数。 |
 | id | string | 否 | 否  | 服务器配置标识。|
 | domain | string | 否 | 否  | 服务器所属的域。 |
 
@@ -3378,20 +4521,26 @@ static addServerConfig(parameters: Record&lt;string, Object&gt;): Promise&lt;Dom
 
 添加域服务器配置。使用Promise异步回调。
 
-**系统能力：** SystemCapability.Account.OsAccount
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[addServerConfig](#addserverconfig23)。
 
 **需要权限：** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
 | 参数名    | 类型                     | 必填 | 说明                      |
 | ----------| ----------------------- | --- | -------------------------- |
-| parameters   | Record<string, Object>  | 是  | 表示域服务器配置参数。 |
+| parameters   | Record&lt;string, Object&gt;   | 是  | 表示域服务器配置参数，用于配置域服务器的连接信息。参数对象包含服务器地址、端口等配置项。 |
 
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;[DomainServerConfig](#domainserverconfig18)&gt; | Promise对象，返回新添加的域服务器配置。 |
 
 **错误码：**
@@ -3411,6 +4560,7 @@ static addServerConfig(parameters: Record&lt;string, Object&gt;): Promise&lt;Dom
 **示例：**
 
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let configParams: Record<string, Object> = {
@@ -3425,6 +4575,68 @@ static addServerConfig(parameters: Record&lt;string, Object&gt;): Promise&lt;Dom
   });
   ```
 
+### addServerConfig<sup>23+</sup>
+
+static addServerConfig(parameters: Record&lt;string, RecordData&gt;): Promise&lt;DomainServerConfig&gt;
+
+添加域服务器配置。使用Promise异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[addServerConfig](#addserverconfig18)。
+
+**需要权限：** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名    | 类型                     | 必填 | 说明                      |
+| ----------| ----------------------- | --- | -------------------------- |
+| parameters   | Record&lt;string, RecordData&gt;   | 是  | 表示域服务器配置参数，用于配置域服务器的连接信息。参数对象包含服务器地址、端口等配置项。 |
+
+**返回值：**
+
+| 类型                      | 说明                     |
+| ------------------------ | ----------------------- |
+| Promise&lt;[DomainServerConfig](#domainserverconfig18)&gt; | Promise对象，返回新添加的域服务器配置。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                     |
+| -------- | --------------------------- |
+| 201 | Permission denied.|
+| 801 | Capability not supported.|
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid server config parameters. |
+| 12300211 | Server unreachable. |
+| 12300213 | Server config already exists. |
+| 12300215 | The number of server config reaches the upper limit. |
+
+**示例：**
+
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import type { RecordData } from './@ohos.base';
+
+  let configParams: Record<string, RecordData> = {
+    'uri': 'test.example.com',
+    'port': 100
+  };
+  osAccount.DomainServerConfigManager.addServerConfig(configParams).then((
+    serverConfig: osAccount.DomainServerConfig) => {
+    console.info('add server configuration successfully, the return config: ' + JSON.stringify(serverConfig));
+  }).catch((e: Error) => {
+    const err = e as BusinessError;
+    console.error(`add server configuration failed, code is ${err.code}, message is ${err.message}`);
+  });
+  ```
+
 ### removeServerConfig<sup>18+</sup>
 
 static removeServerConfig(configId: string): Promise&lt;void&gt;
@@ -3432,6 +4644,10 @@ static removeServerConfig(configId: string): Promise&lt;void&gt;
 删除域服务器配置。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **需要权限：** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
 
@@ -3444,8 +4660,8 @@ static removeServerConfig(configId: string): Promise&lt;void&gt;
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| ------------------------ | ----------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3461,7 +4677,9 @@ static removeServerConfig(configId: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let configParams: Record<string, Object> = {
@@ -3478,27 +4696,54 @@ static removeServerConfig(configId: string): Promise&lt;void&gt;
   });
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import type { RecordData } from './@ohos.base';
+
+  let configParams: Record<string, RecordData> = {
+    'uri': 'test.example.com',
+    'port': 100
+  };
+  osAccount.DomainServerConfigManager.addServerConfig(configParams).then((
+    serverConfig: osAccount.DomainServerConfig) => {
+    console.info('add domain server configuration successfully, the added config: ' + JSON.stringify(serverConfig));
+    osAccount.DomainServerConfigManager.removeServerConfig(serverConfig.id);
+    console.info('remove domain server configuration successfully');
+  }).catch((e: Error) => {
+    const err = e as BusinessError;
+    console.error(`add server configuration failed, code is ${err.code}, message is ${err.message}`);
+  });
+  ```
+
 ### updateServerConfig<sup>18+</sup>
 
 static updateServerConfig(configId: string, parameters: Record&lt;string, Object&gt;): Promise&lt;DomainServerConfig&gt;
 
 更新域服务器配置。使用Promise异步回调。
 
-**系统能力：** SystemCapability.Account.OsAccount
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[updateServerConfig](#updateserverconfig23)。
 
 **需要权限：** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
 | 参数名    | 类型                     | 必填 | 说明                      |
 | ----------| ----------------------- | --- | -------------------------- |
 | configId   | string  | 是  | 表示服务器配置标识。 |
-| parameters   | Record&lt;string, Object&gt;  | 是  | 表示域服务器配置参数。 |
+| parameters   | Record&lt;string, Object&gt;  | 是  | 表示域服务器配置参数，用于配置域服务器的连接信息。参数对象包含服务器地址、端口等配置项。 |
 
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;[DomainServerConfig](#domainserverconfig18)&gt; | Promise对象，返回更新后的域服务器配置。 |
 
 **错误码：**
@@ -3519,6 +4764,7 @@ static updateServerConfig(configId: string, parameters: Record&lt;string, Object
 **示例：**
 
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let configParams: Record<string, Object> = {
@@ -3538,6 +4784,76 @@ static updateServerConfig(configId: string, parameters: Record&lt;string, Object
   });
   ```
 
+### updateServerConfig<sup>23+</sup>
+
+static updateServerConfig(configId: string, parameters: Record&lt;string, RecordData&gt;): Promise&lt;DomainServerConfig&gt;
+
+更新域服务器配置。使用Promise异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[updateServerConfig](#updateserverconfig18)。
+
+**需要权限：** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名    | 类型                     | 必填 | 说明                      |
+| ----------| ----------------------- | --- | -------------------------- |
+| configId   | string  | 是  | 表示服务器配置标识。 |
+| parameters   | Record&lt;string, RecordData&gt;  | 是  | 表示域服务器配置参数。 |
+
+**返回值：**
+
+| 类型                      | 说明                     |
+| ------------------------ | ----------------------- |
+| Promise&lt;[DomainServerConfig](#domainserverconfig18)&gt; | Promise对象，返回更新后的域服务器配置。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                     |
+| -------- | --------------------------- |
+| 201 | Permission denied.|
+| 801 | Capability not supported.|
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid server config parameters. |
+| 12300211 | Server unreachable. |
+| 12300212 | Server config not found. |
+| 12300213 | Server config already exists. |
+| 12300214 | Server config has been associated with an account. |
+
+**示例：**
+
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import type { RecordData } from './@ohos.base';
+
+  let configParams: Record<string, RecordData> = {
+    'uri': 'test.example.com',
+    'port': 100
+  };
+  osAccount.DomainServerConfigManager.addServerConfig(configParams).then((
+    serverConfig: osAccount.DomainServerConfig) => {
+    console.info('add domain server configuration successfully, the added config: ' + JSON.stringify(serverConfig));
+    osAccount.DomainServerConfigManager.updateServerConfig(serverConfig.id, configParams).then((data: osAccount.DomainServerConfig) => {
+      console.info('update domain server configuration successfully, return config: ' + JSON.stringify(data));
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`update domain server configuration failed, code is ${err.code}, message is ${err.message}`);
+    });
+  }).catch((e: Error) => {
+    const err = e as BusinessError;
+    console.error(`add server configuration failed, code is ${err.code}, message is ${err.message}`);
+  });
+  ```
+
 ### getServerConfig<sup>18+</sup>
 
 static getServerConfig(configId: string): Promise&lt;DomainServerConfig&gt;
@@ -3548,6 +4864,10 @@ static getServerConfig(configId: string): Promise&lt;DomainServerConfig&gt;
 
 **需要权限：** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                     | 必填 | 说明                      |
@@ -3557,7 +4877,7 @@ static getServerConfig(configId: string): Promise&lt;DomainServerConfig&gt;
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;[DomainServerConfig](#domainserverconfig18)&gt; | Promise对象，返回获取的域服务器配置。 |
 
 **错误码：**
@@ -3573,7 +4893,9 @@ static getServerConfig(configId: string): Promise&lt;DomainServerConfig&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let configParams: Record<string, Object> = {
@@ -3593,6 +4915,31 @@ static getServerConfig(configId: string): Promise&lt;DomainServerConfig&gt;
   });
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import type { RecordData } from './@ohos.base';
+
+  let configParams: Record<string, RecordData> = {
+    'uri': 'test.example.com',
+    'port': 100
+  };
+  osAccount.DomainServerConfigManager.addServerConfig(configParams).then((
+    serverConfig: osAccount.DomainServerConfig) => {
+    console.info('add domain server configuration successfully, the added config: ' + JSON.stringify(serverConfig));
+    osAccount.DomainServerConfigManager.getServerConfig(serverConfig.id).then((data: osAccount.DomainServerConfig) => {
+      console.info('get domain server configuration successfully, return config: ' + JSON.stringify(data));
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`get domain server configuration failed, code is ${err.code}, message is ${err.message}`);
+    });
+  }).catch((e: Error) => {
+    const err = e as BusinessError;
+    console.error(`add server configuration failed, code is ${err.code}, message is ${err.message}`);
+  });
+  ```
+
 ### getAllServerConfigs<sup>18+</sup>
 
 static getAllServerConfigs(): Promise&lt;Array&lt;DomainServerConfig&gt;&gt;
@@ -3603,10 +4950,14 @@ static getAllServerConfigs(): Promise&lt;Array&lt;DomainServerConfig&gt;&gt;
 
 **需要权限：** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;Array&lt;[DomainServerConfig](#domainserverconfig18)&gt;&gt; | Promise对象，返回获取的所有域服务器配置。 |
 
 **错误码：**
@@ -3621,7 +4972,9 @@ static getAllServerConfigs(): Promise&lt;Array&lt;DomainServerConfig&gt;&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let configParams: Record<string, Object> = {
@@ -3641,6 +4994,31 @@ static getAllServerConfigs(): Promise&lt;Array&lt;DomainServerConfig&gt;&gt;
   });
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import type { RecordData } from './@ohos.base';
+
+  let configParams: Record<string, RecordData> = {
+    'uri': 'test.example.com',
+    'port': 100
+  };
+  osAccount.DomainServerConfigManager.addServerConfig(configParams).then((
+    serverConfig: osAccount.DomainServerConfig) => {
+    console.info('add domain server configuration successfully, the added config: ' + JSON.stringify(serverConfig));
+    osAccount.DomainServerConfigManager.getAllServerConfigs().then((data: Array<osAccount.DomainServerConfig>) => {
+      console.info('get all domain server configuration successfully, return config: ' + JSON.stringify(data));
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`get all domain server configuration failed, code is ${err.code}, message is ${err.message}`);
+    });
+  }).catch((e: Error) => {
+    const err = e as BusinessError;
+    console.error(`add server configuration failed, code is ${err.code}, message is ${err.message}`);
+  });
+  ```
+
 ### getAccountServerConfig<sup>18+</sup>
 
 static getAccountServerConfig(domainAccountInfo: DomainAccountInfo): Promise&lt;DomainServerConfig&gt;
@@ -3651,6 +5029,10 @@ static getAccountServerConfig(domainAccountInfo: DomainAccountInfo): Promise&lt;
 
 **需要权限：** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                     | 必填 | 说明                      |
@@ -3660,7 +5042,7 @@ static getAccountServerConfig(domainAccountInfo: DomainAccountInfo): Promise&lt;
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;[DomainServerConfig](#domainserverconfig18)&gt; | Promise对象，返回目标账号的域服务器配置。 |
 
 **错误码：**
@@ -3676,7 +5058,9 @@ static getAccountServerConfig(domainAccountInfo: DomainAccountInfo): Promise&lt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountInfo: osAccount.DomainAccountInfo = {
@@ -3687,6 +5071,24 @@ static getAccountServerConfig(domainAccountInfo: DomainAccountInfo): Promise&lt;
     serverConfig: osAccount.DomainServerConfig) => {
     console.info('get account server configuration successfully, the return config: ' + JSON.stringify(serverConfig));
   }).catch((err: BusinessError) => {
+    console.error(`add server configuration failed, code is ${err.code}, message is ${err.message}`);
+  });
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import osAccount from '@ohos.account.osAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let accountInfo: osAccount.DomainAccountInfo = {
+    'accountName': 'demoName',
+    'domain': 'demoDomain'
+  };
+  osAccount.DomainServerConfigManager.getAccountServerConfig(accountInfo).then((
+    serverConfig: osAccount.DomainServerConfig) => {
+    console.info('get account server configuration successfully, the return config: ' + JSON.stringify(serverConfig));
+  }).catch((e: Error) => {
+    const err = e as BusinessError;
     console.error(`add server configuration failed, code is ${err.code}, message is ${err.message}`);
   });
   ```

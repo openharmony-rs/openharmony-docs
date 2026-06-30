@@ -23,14 +23,27 @@
 首先导入媒体查询模块。
 
 
+ArkTS-Dyn示例：
+
 <!-- @[obtain_mediaquery_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { mediaquery } from '@kit.ArkUI';
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[obtain_mediaquery_import](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MediaQuerySample/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import mediaquery from '@ohos.mediaquery';
+```
+
+
 通过matchMediaSync接口设置媒体查询条件，保存返回的条件监听句柄listener。例如监听横屏事件：
 
+
+ArkTS-Dyn示例：
 
 <!-- @[obtain_mediaquery_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/Index.ets) -->
 
@@ -38,8 +51,19 @@ import { mediaquery } from '@kit.ArkUI';
 listener:mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)');
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[obtain_mediaquery_listener](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MediaQuerySample/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+listener:mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)');
+```
+
+
 给条件监听句柄listener绑定回调函数onPortrait，当listener检测设备状态变化时执行回调函数。在回调函数内，根据不同设备状态更改页面布局或者实现业务逻辑。
 
+
+ArkTS-Dyn示例：
 
 <!-- @[obtain_mediaquery_Portrait](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/Index.ets) -->
 
@@ -58,6 +82,27 @@ listener:mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().mat
     });
     // ···
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[obtain_mediaquery_Portrait](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MediaQuerySample/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
+  if (mediaQueryResult.matches as boolean) { // 若设备为横屏状态，更改相应的页面布局
+    // ...
+  } else {
+    // ...
+  }
+}
+
+// ...
+  this.listener.onChange((mediaQueryResult: mediaquery.MediaQueryResult) => {
+    // ...
+  });
+  // ...
+```
+
 
 
 ## 媒体查询条件
@@ -161,9 +206,9 @@ listener:mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().mat
 
 示例一使用媒体查询，实现屏幕横竖屏切换时，为页面文本应用添加不同的内容和样式。
 
-Stage模型下的示例：
-
 <!--deprecated_code_no_check-->
+ArkTS-Dyn示例：
+
 <!-- @[obtain_mediaquery_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
@@ -191,7 +236,6 @@ struct MediaQueryExample {
   }
 
   aboutToAppear() {
-    // 绑定当前应用实例
     // 绑定回调函数
     this.listener.on('change', (mediaQueryResult: mediaquery.MediaQueryResult) => {
       this.onPortrait(mediaQueryResult);
@@ -230,22 +274,38 @@ struct MediaQueryExample {
 }
 ```
 
-FA模型下的示例：
+ArkTS-Sta示例：
 
-<!--deprecated_code_no_check-->
-```ts
-import { mediaquery } from '@kit.ArkUI';
-import { featureAbility } from '@kit.AbilityKit';
+<!-- @[obtain_mediaquery_all](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MediaQuerySample/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import mediaquery from '@ohos.mediaquery';
+import {
+  Entry,
+  Component,
+  Column,
+  ColumnOptions,
+  Text,
+  Row,
+  RowOptions,
+  ForEach,
+  Color,
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { window } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
 
 @Entry
 @Component
 struct MediaQueryExample {
   @State color: string = '#DB7093';
   @State text: string = 'Portrait';
-  listener:mediaquery.MediaQueryListener = mediaquery.matchMediaSync('(orientation: landscape)'); // 当设备横屏时条件成立
+  // 当设备横屏时条件成立
+  listener:mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)');
 
-  onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) { // 当满足媒体查询条件时，触发回调
-    if (mediaQueryResult.matches as boolean) { // 若设备为横屏状态，更改相应的文本内容与字体颜色
+  // 当满足媒体查询条件时，触发回调
+  onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
+    if (mediaQueryResult.matches as boolean) { // 若设备为横屏状态，更改相应的页面布局
       this.color = '#FFD700';
       this.text = 'Landscape';
     } else {
@@ -256,32 +316,44 @@ struct MediaQueryExample {
 
   aboutToAppear() {
     // 绑定当前应用实例
-    this.listener.on('change', (mediaQueryResult:mediaquery.MediaQueryResult) => { this.onPortrait(mediaQueryResult) }); //绑定回调函数
+    // 绑定回调函数
+    this.listener.onChange((mediaQueryResult: mediaquery.MediaQueryResult) => {
+      this.onPortrait(mediaQueryResult);
+    });
   }
 
   aboutToDisappear() {
     // 解绑listener中注册的回调函数
-    this.listener.off('change');
+    this.listener.offChange();
+  }
+
+  // 改变设备横竖屏状态函数
+  private changeOrientation(isLandscape: boolean) {
+    // 获取UIAbility实例的上下文信息
+    let context:common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    // 调用该接口手动改变设备横竖屏状态
+    window.getLastWindow(context).then((lastWindow) => {
+      lastWindow.setPreferredOrientation(isLandscape ? window.Orientation.LANDSCAPE : window.Orientation.PORTRAIT);
+    });
   }
 
   build() {
-    Column({ space: 50 }) {
-      Text(this.text).fontSize(50).fontColor(this.color)
+    Column({ space: 50 } as ColumnOptions) {
+      Text(this.text).fontSize(50).fontColor(this.color);
       Text('Landscape').fontSize(50).fontColor(this.color).backgroundColor(Color.Orange)
         .onClick(() => {
-          let context = featureAbility.getContext();
-          context.setDisplayOrientation(0); //调用该接口手动改变设备横竖屏状态
-        })
+          this.changeOrientation(true);
+        });
       Text('Portrait').fontSize(50).fontColor(this.color).backgroundColor(Color.Orange)
         .onClick(() => {
-          let context = featureAbility.getContext();
-          context.setDisplayOrientation(1); //调用该接口手动改变设备横竖屏状态
-        })
+          this.changeOrientation(false);
+        });
     }
     .width('100%').height('100%')
   }
 }
 ```
+
 
   **图1** 竖屏  
 
@@ -293,7 +365,11 @@ struct MediaQueryExample {
 
 示例二使用媒体查询实现屏幕横竖屏切换时Flex组件的不同布局，竖屏时Flex采用垂直方向布局，横屏时采用水平方向布局。
 
-```ts
+ArkTS-Dyn示例：
+
+<!-- @[obtain_mediaquery_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/MediaQueryExample.ets) -->
+
+``` TypeScript
 import { LengthMetrics, mediaquery, window } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 
@@ -303,31 +379,30 @@ struct MediaQueryExample {
   @State color: string = '#DB7093';
   @State text: string = 'Portrait';
   @State dir: FlexDirection = FlexDirection.Column
-  @State textHeight: string = "30%"
-  @State textWidth: string = "100%"
+  @State textHeight: string = '30%'
+  @State textWidth: string = '100%'
   // 当设备横屏时条件成立
   listener: mediaquery.MediaQueryListener =
     this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)');
 
   // 当满足媒体查询条件时，触发回调
   onPortrait(mediaQueryResult: mediaquery.MediaQueryResult) {
-    if (mediaQueryResult.matches as boolean) { // 若设备为横屏状态，更改相应的文本内容与字体颜色
+    if (mediaQueryResult.matches as boolean) { // 若设备为横屏状态，更改相应的文本内容、字体颜色、布局方向及尺寸
       this.color = '#FFD700';
       this.text = 'Landscape';
       this.dir = FlexDirection.Row;
-      this.textHeight = "100%"
-      this.textWidth = "33%"
+      this.textHeight = '100%'
+      this.textWidth = '33%'
     } else {
       this.color = '#DB7093';
       this.text = 'Portrait';
       this.dir = FlexDirection.Column;
-      this.textHeight = "33%"
-      this.textWidth = "100%"
+      this.textHeight = '33%'
+      this.textWidth = '100%'
     }
   }
 
   aboutToAppear() {
-    // 绑定当前应用实例
     // 绑定回调函数
     this.listener.on('change', (mediaQueryResult: mediaquery.MediaQueryResult) => {
       this.onPortrait(mediaQueryResult)
@@ -361,6 +436,115 @@ struct MediaQueryExample {
           this.changeOrientation(false);
         })
       Flex({ direction: this.dir, space: { main: LengthMetrics.vp(10), cross: LengthMetrics.vp(5) } }) {
+        Text('1')
+          .height(this.textHeight)
+          .width(this.textWidth)
+          .textAlign(TextAlign.Center)
+          .backgroundColor('rgb(0, 74, 175)')
+        Text('2')
+          .height(this.textHeight)
+          .width(this.textWidth)
+          .textAlign(TextAlign.Center)
+          .backgroundColor('rgb(39, 135, 217)')
+        Text('3')
+          .height(this.textHeight)
+          .width(this.textWidth)
+          .textAlign(TextAlign.Center)
+          .backgroundColor('rgb(240, 250, 255)')
+      }.layoutWeight(1)
+      .width('100%')
+    }
+    .width('100%').height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[obtain_mediaquery_all](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/MediaQuerySample/entry/src/main/ets/pages/MediaQuerySample.ets) -->
+
+``` TypeScript
+import mediaquery from '@ohos.mediaquery';
+import {
+  Entry,
+  Component,
+  Column,
+  ColumnOptions,
+  Text,
+  Flex,
+  FlexOptions,
+  FlexDirection,
+  LengthMetrics,
+  Color,
+  TextAlign,
+  window
+} from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+import { common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct MediaQueryExample {
+  @State color: string = '#DB7093';
+  @State text: string = 'Portrait';
+  @State dir: FlexDirection = FlexDirection.Column
+  @State textHeight: string = "30%"
+  @State textWidth: string = "100%"
+  // 当设备横屏时条件成立
+  listener:mediaquery.MediaQueryListener = this.getUIContext().getMediaQuery().matchMediaSync('(orientation: landscape)');
+
+  // 当满足媒体查询条件时，触发回调
+  onPortrait(mediaQueryResult:mediaquery.MediaQueryResult) {
+    if (mediaQueryResult.matches as boolean) { // 若设备为横屏状态，更改相应的文本内容与字体颜色
+      this.color = '#FFD700';
+      this.text = 'Landscape';
+      this.dir = FlexDirection.Row;
+      this.textHeight = "100%"
+      this.textWidth = "33%"
+    } else {
+      this.color = '#DB7093';
+      this.text = 'Portrait';
+      this.dir = FlexDirection.Column;
+      this.textHeight = "33%"
+      this.textWidth = "100%"
+    }
+  }
+
+  aboutToAppear() {
+    // 绑定当前应用实例
+    // 绑定回调函数
+    this.listener.onChange((mediaQueryResult: mediaquery.MediaQueryResult) => {
+      this.onPortrait(mediaQueryResult);
+    });
+  }
+
+  aboutToDisappear() {
+    // 解绑listener中注册的回调函数
+    this.listener.offChange();
+  }
+
+  // 改变设备横竖屏状态函数
+  private changeOrientation(isLandscape: boolean) {
+    // 获取UIAbility实例的上下文信息
+    let context:common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    // 调用该接口手动改变设备横竖屏状态
+    window.getLastWindow(context).then((lastWindow) => {
+      lastWindow.setPreferredOrientation(isLandscape ? window.Orientation.LANDSCAPE : window.Orientation.PORTRAIT);
+    });
+  }
+
+  build() {
+    Column({ space: 30 } as ColumnOptions) {
+      Text(this.text).fontSize(24).fontColor(this.color)
+      Text('Landscape').fontSize(50).fontColor(this.color).backgroundColor(Color.Orange)
+        .onClick(() => {
+          this.changeOrientation(true);
+        })
+      Text('Portrait').fontSize(50).fontColor(this.color).backgroundColor(Color.Orange)
+        .onClick(() => {
+          this.changeOrientation(false);
+        })
+      Flex({ direction: this.dir, space: { main: LengthMetrics.vp(10), cross: LengthMetrics.vp(5) } } as FlexOptions) {
         Text('1')
           .height(this.textHeight)
           .width(this.textWidth)

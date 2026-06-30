@@ -1,15 +1,17 @@
 # @ohos.app.form.formBindingData (卡片数据绑定类)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 卡片数据绑定模块提供卡片数据绑定的能力。包括FormBindingData对象的创建、相关信息的描述。
 
 > **说明：**
 >
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## 导入模块
 
@@ -24,44 +26,58 @@ import { formBindingData } from '@kit.FormKit';
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| key<sup>10+</sup> | string | 否 | 否 | 卡片代理刷新的订阅标识，与数据发布者保持一致。|
-| subscriberId<sup>10+</sup> | string | 否 | 是 | 卡片代理刷新的订阅条件，默认值为当前卡片的formId。|
+| key | string | 否 | 否 | 卡片代理刷新的订阅标识，与数据发布者保持一致。|
+| subscriberId | string | 否 | 是 | 卡片代理刷新的订阅条件，默认值为当前卡片的formId。|
 
 
 ## FormBindingData
 
 FormBindingData相关描述。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.Form
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- |-------- | -------- |
-| data | Object | 否 | 否 | 卡片要展示的数据。可以是包含若干键值对的Object或者JSON格式的字符串。|
+| data | ArkTS-Dyn: Object<br>ArkTS-Sta: RecordData | 否 | 否 | 卡片要展示的数据。可以是包含若干键值对的Object或者JSON格式的字符串。|
 | proxies<sup>10+</sup> | Array<[ProxyData](#proxydata10)> | 否 | 是 | 卡片代理刷新的订阅信息，默认为空数组。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>|
 
 ## formBindingData.createFormBindingData
 
-createFormBindingData(obj?: Object | string): FormBindingData
+ArkTS-Dyn: createFormBindingData(obj?: Object | string): FormBindingData
+
+ArkTS-Sta: createFormBindingData(obj?: RecordData): FormBindingData
 
 创建一个FormBindingData对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型           | 必填 | 说明                                                         |
 | ------ | -------------- | ---- | ------------------------------------------------------------ |
-| obj    | Object \| string | 否   | 卡片要展示的数据。可以是包含若干键值对的Object或者JSON格式的字符串。其中图片数据以'formImages'作为标识，内容为图片标识与图片文件描述符的键值对{'formImages': {'key1': fd1, 'key2': fd2}}。<br>**说明：** 在[卡片刷新](../../form/arkts-ui-widget-interaction-overview.md)过程中，卡片UI通过[@LocalStorageProp](../../ui/state-management/arkts-localstorage.md#localstorageprop)接收卡片数据时，FormBindingData对象会序列化，即卡片数据会转换成string类型。从API version 20开始，如果卡片刷新的数据通过共享内存更新，刷新数据总大小不超过10MB，刷新图片数量不超过20张，API version 19及之前的版本，图片文件数量上限为5张，每张限制内存2MB，超出限制的图片会显示异常。 |
+| obj    |  ArkTS-Dyn: Object \| string <br>ArkTS-Sta: RecordData | 否   | 卡片要展示的数据。可以是包含若干键值对的Object或者JSON格式的字符串。其中图片数据以'formImages'作为标识，内容为图片标识与图片文件描述符的键值对{'formImages': {'key1': fd1, 'key2': fd2}}。<br>**说明：** 在[卡片刷新](../../form/arkts-ui-widget-interaction-overview.md)过程中，卡片UI通过[@LocalStorageProp](../../ui/state-management/arkts-localstorage.md#localstorageprop)接收卡片数据时，FormBindingData对象会序列化，即卡片数据会转换成string类型。从API version 20开始，如果卡片刷新的数据通过共享内存更新，刷新数据总大小不超过10MB，刷新图片数量不超过20张，API version 19及之前的版本，图片文件数量上限为5张，每张限制内存2MB，超出限制的图片会显示异常。 |
 
 
 **返回值：**
@@ -81,6 +97,8 @@ createFormBindingData(obj?: Object | string): FormBindingData
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { formBindingData } from '@kit.FormKit';
 import { fileIo } from '@kit.CoreFileKit';
@@ -93,20 +111,25 @@ struct Index {
   pathDir: string = this.content.filesDir;
 
   createFormBindingData() {
+    let filePath = this.pathDir + "/form.png";
+    let fd: number = -1;
     try {
-      let filePath = this.pathDir + "/form.png";
-      let file = fileIo.openSync(filePath);
+      fd = fileIo.openSync(filePath, fileIo.OpenMode.READ_ONLY).fd;
       let formImagesParam: Record<string, number> = {
-        'image': file.fd
+        'image': fd
       };
       let createFormBindingDataParam: Record<string, string | Record<string, number>> = {
         'name': '21°',
         'imgSrc': 'image',
         'formImages': formImagesParam
       };
-      formBindingData.createFormBindingData(createFormBindingDataParam);
+      let formBindingDataObj = formBindingData.createFormBindingData(createFormBindingDataParam);
     } catch (error) {
       console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+    } finally {
+      if (fd !== -1) {
+        fileIo.closeSync(fd);
+      }
     }
   }
 
@@ -116,5 +139,35 @@ struct Index {
         this.createFormBindingData();
       })
   }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { formBindingData } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+let file = fileIo.openSync('/path/to/form.png');
+try {
+  let formImagesParam: Record<string, number> = {
+    'image': file.fd
+  };
+  let createFormBindingDataParam: Record<string, string | Object> = {
+    'name': '21°',
+    'imgSrc': 'image',
+    'formImages': formImagesParam
+  };
+
+  formBindingData.createFormBindingData(createFormBindingDataParam);
+} catch (e) {
+  let code = e.code;
+  let message = e.message;
+  console.error(`catch error, code: ${code}, message: ${message}`);
+} finally {
+  fileIo.closeSync(file.fd);
 }
 ```

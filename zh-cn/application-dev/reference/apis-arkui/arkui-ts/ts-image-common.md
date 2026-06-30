@@ -15,23 +15,31 @@
 
 ## PixelMap
 
-type PixelMap = PixelMap
+ArkTS-Dyn: type PixelMap = import('../api/@ohos.multimedia.image').default.PixelMap
+
+ArkTS-Sta: type PixelMap = image.PixelMap
 
 图像像素类，用于读取或写入图像数据以及获取图像信息。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明                                       |
 | ------------------------------------------------------------ | ------------------------------------------ |
-| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 图像像素类，用于读取或写入图像数据以及获取图像信息。 |
+| ArkTS-Dyn: import('../api/@ohos.multimedia.image').default.[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)<br/>ArkTS-Sta: image.[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 图像像素类，用于读取或写入图像数据以及获取图像信息。 |
 
 ## ImageAnalyzerConfig<sup>12+</sup>
 
 图像AI分析配置项。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -41,13 +49,15 @@ type PixelMap = PixelMap
 
 | 名称     | 类型                | 只读 | 可选 | 说明                   |
 | ------ | ----------------- | ---- | -------------------- | -------------------- |
-| types | [ImageAnalyzerType[]](#imageanalyzertype12) | 否 | 否 | 图像AI分析类型。|
+| types | [ImageAnalyzerType](#imageanalyzertype12)[] | 否 | 否 | 图像AI分析类型。|
 
 ## ImageAnalyzerType<sup>12+</sup>
 
 图像AI分析类型，未设置时默认开启主体识别和文字识别功能。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -65,7 +75,9 @@ type PixelMap = PixelMap
 
 图像AI分析选项。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -75,7 +87,7 @@ type PixelMap = PixelMap
 
 | 名称     | 类型                | 只读 | 可选 | 说明                   |
 | ------ | ----------------- | ---- | -------------------- | -------------------- |
-| types | [ImageAnalyzerType[]](#imageanalyzertype12) | 否 | 是 | 图像AI分析类型。 |
+| types | [ImageAnalyzerType](#imageanalyzertype12)[] | 否 | 是 | 图像AI分析类型。 |
 | aiController | ArkTS-Dyn: [ImageAnalyzerController](#imageanalyzercontroller12)<br>ArkTS-Sta: [ImageAnalyzerController](#imageanalyzercontroller12) \| ESValue | 否 | 是 | 图像AI分析控制器，需要对应组件的enableAnalyzer接口（例如Image组件的[enableAnalyzer](ts-basic-components-image.md#enableanalyzer11)接口）设置为true才能生效。<br>ArkTS-Sta：目前只支持ESValue类型。 |
 
 > **说明：**
@@ -88,7 +100,9 @@ type PixelMap = PixelMap
 
 图像分析控制器。可以将此对象绑定至支持的组件，通过控制器来调用支持的方法。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,7 +116,9 @@ constructor()
 
 构造函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -116,7 +132,9 @@ getImageAnalyzerSupportTypes(): ImageAnalyzerType[]
 
 获取对应组件支持的分析类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -128,17 +146,19 @@ getImageAnalyzerSupportTypes(): ImageAnalyzerType[]
 
 | 类型     | 说明                      |
 | ------ | ----------------------- |
-| [ImageAnalyzerType[]](#imageanalyzertype12) | 对应组件支持的分析类型。 |
+| [ImageAnalyzerType](#imageanalyzertype12)[] | 对应组件支持的分析类型。 |
 
 ## ContentTransitionEffect<sup>21+</sup>对象说明
 
 定义内容切换时的过渡效果。
 
-### 属性
-
-**原子化服务API：** 从 API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从 API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 |说明 |
 | -------- | ---------- | -------- | -------- | -------- | 

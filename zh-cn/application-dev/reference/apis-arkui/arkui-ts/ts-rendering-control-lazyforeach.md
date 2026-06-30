@@ -4,9 +4,9 @@
 <!--Owner: @maorh-->
 <!--Designer: @keerecles-->
 <!--Tester: @TerryTsao-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
-> **说明**
+> **说明：**
 >
 > 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
@@ -16,11 +16,9 @@
 
 ## 接口
 
-LazyForEach(dataSource: IDataSource, itemGenerator: (item: any, index: number) => void, keyGenerator?: (item: any, index: number) => string)
+LazyForEach(dataSource: IDataSource, itemGenerator: (item: any, index: number) => void, keyGenerator?: (item: any, index: number) => string, options?: LazyForEachOptions)
 
 LazyForEach从提供的数据源中按需迭代数据，并在每次迭代过程中创建相应的组件。当在滚动容器中使用了LazyForEach，框架会根据滚动容器可视区域按需创建组件，当组件滑出可视区域外时，框架会进行组件销毁回收以降低内存占用。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -28,9 +26,10 @@ LazyForEach从提供的数据源中按需迭代数据，并在每次迭代过程
 
 | 参数名        | 类型                                                      | 必填 | 说明                                                         |
 | ------------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| dataSource    | [IDataSource](#idatasource)                       | 是   | LazyForEach数据源，需要开发者实现相关接口。                  |
-| itemGenerator | (item:&nbsp;any, index: number)&nbsp;=&gt;&nbsp;void   | 是   | 子组件生成函数，为数组中的每一个数据项创建一个子组件。<br/>**说明：**<br/>- item是当前数据项（可选），index是数据项索引值（可选）。<br/>- itemGenerator的函数体必须使用大括号{...}。<br />- itemGenerator每次迭代只能并且必须生成一个子组件。<br />- itemGenerator中可以使用if语句，但是必须保证if语句每个分支都会创建一个相同类型的子组件。 |
-| keyGenerator  | (item:&nbsp;any, index: number)&nbsp;=&gt;&nbsp;string | 否   | 键值生成函数，用于给数据源中的每一个数据项生成唯一且固定的键值。修改数据源中的一个数据项若不影响其生成的键值，则对应组件不会被更新，否则此处组件就会被重建更新。`keyGenerator`参数是可选的，但是，为了使开发框架能够更好地识别数组更改并正确更新组件，建议提供。<br/>默认值为空回调函数。<br/>**说明：**<br/>- item是当前数据项（可选），index是数据项索引值（可选）。<br/>- `keyGenerator`缺省时，使用默认的键值生成函数，即`(item: Object, index: number) => { return viewId + '-' + index.toString(); }`，生成键值仅受索引值index影响（viewId在编译器转换过程中生成，同一个LazyForEach组件内的viewId一致）。<br/>- 为保证`LazyForEach`正确、高效地更新子组件，避免渲染结果异常、渲染效率降低等问题，键值应满足以下条件。<br/>1. 键值具有唯一性，每个数据项对应的键值互不相同。<br/>2. 键值具有一致性，数据项不变时对应的键值也不变。 |
+| dataSource    | [IDataSource](#idatasource)                       | 是   | LazyForEach数据源，需要开发者实现相关接口。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。                  |
+| itemGenerator | (item:&nbsp;any, index: number)&nbsp;=&gt;&nbsp;void   | 是   | 子组件生成函数，为数组中的每一个数据项创建一个子组件。<br/>**说明：**<br/>- item是当前数据项（可选），index是数据项索引值（可选）。<br/>- itemGenerator的函数体必须使用大括号{...}。<br />- itemGenerator每次迭代只能并且必须生成一个子组件。<br />- itemGenerator中可以使用if语句，但是必须保证if语句每个分支都会创建一个相同类型的子组件。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| keyGenerator  | (item:&nbsp;any, index: number)&nbsp;=&gt;&nbsp;string | 否   | 键值生成函数，用于给数据源中的每一个数据项生成唯一且固定的键值。修改数据源中的一个数据项若不影响其生成的键值，则对应组件不会被更新，否则此处组件就会被重建更新。`keyGenerator`参数是可选的，但是，为了使开发框架能够更好地识别数组更改并正确更新组件，建议提供。<br/>默认值为空回调函数。<br/>**说明：**<br/>- item是当前数据项（可选），index是数据项索引值（可选）。<br/>- `keyGenerator`缺省时，使用默认的键值生成函数，即`(item: Object, index: number) => { return viewId + '-' + index.toString(); }`，生成键值仅受索引值index影响（viewId在编译器转换过程中生成，同一个LazyForEach组件内的viewId一致）。<br/>- 为保证`LazyForEach`正确、高效地更新子组件，避免渲染结果异常、渲染效率降低等问题，键值应满足以下条件。<br/>1. 键值具有唯一性，每个数据项对应的键值互不相同。<br/>2. 键值具有一致性，数据项不变时对应的键值也不变。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| options   | [LazyForEachOptions](#lazyforeachoptions)   | 否   | 开发者配置项，用于配置内存优化策略。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。   |
 
 > **说明：** 
 >
@@ -44,7 +43,7 @@ LazyForEach从提供的数据源中按需迭代数据，并在每次迭代过程
 
 LazyForEach的数据源。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,7 +53,7 @@ totalCount(): number
 
 获得数据总数。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,7 +69,7 @@ getData(index:&nbsp;number): any
 
 获取索引值index对应的数据。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -96,7 +95,7 @@ registerDataChangeListener(listener: DataChangeListener): void
 
 注册数据改变的监听器。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -112,7 +111,7 @@ unregisterDataChangeListener(listener: DataChangeListener): void
 
 注销数据改变的监听器。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -130,7 +129,7 @@ unregisterDataChangeListener(listener: DataChangeListener): void
 >
 > DataChangeListener除onDatasetChange以外的方法中，当参数包含index且值为负数时，会默认用0来替换。onDatasetChange中，当单个DataOperation参数包含index且值在数据源索引范围之外（DataAddOperation中index可以等于数据源长度），则对应DataOperation不会生效。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -140,7 +139,7 @@ onDataReloaded(): void
 
 通知组件重新加载所有数据。键值没有变化的数据项会使用原先的子组件，键值发生变化的会重建子组件。重新加载数据完成后调用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -225,7 +224,7 @@ onDataAdd(index: number): void
 
 通知组件index的位置有数据添加。添加数据完成后调用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -245,7 +244,7 @@ onDataMove(from: number, to: number): void
 >
 > 数据移动前后键值要保持不变，如果键值有变化，应使用删除数据和新增数据接口。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -266,7 +265,7 @@ onDataDelete(index: number): void
 >
 > 需要保证dataSource中的对应数据已经在调用onDataDelete前删除，否则页面渲染将出现未定义的行为。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -282,7 +281,7 @@ onDataChange(index: number): void
 
 通知组件index的位置有数据有变化。改变数据完成后调用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -302,7 +301,9 @@ onDatasetChange(dataOperations: DataOperation[]): void
 >
 > onDatasetChange接口不能与其他DataChangeListener的更新接口混用。例如，在同一个LazyForEach中，调用过onDataAdd接口后，不能再调用onDatasetChange接口；反之，调用过onDatasetChange接口后，也不能调用onDataAdd等其他更新接口。页面中不同LazyForEach之间互不影响。在同一个onDatasetChange批量处理数据时，如果多个DataOperation操作同一个index，只有第一个DataOperation生效。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -318,7 +319,9 @@ onDatasetChange(dataOperations: DataOperation[]): void
 >
 > 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -326,7 +329,9 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 添加数据操作。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -341,7 +346,9 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 删除数据操作。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -355,7 +362,9 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 改变数据操作。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -369,7 +378,9 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 移动数据操作。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -383,7 +394,9 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 交换数据操作。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -397,7 +410,9 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 重载所有数据操作。当onDatasetChange含有DataOperationType.RELOAD操作时，其余操作全部失效，框架会自己调用keyGenerator进行键值比对。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -409,7 +424,9 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 枚举类型，数据操作说明。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -424,7 +441,9 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 ## MoveIndex<sup>12+</sup>
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -435,7 +454,9 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 ## ExchangeIndex<sup>12+</sup>
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -446,7 +467,9 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 ## ExchangeKey<sup>12+</sup>
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -454,3 +477,105 @@ onDatasetChange(dataOperations: DataOperation[]): void
 | ------ | --------------- | ---- | ---- | ------- |
 | start   | string | 否 | 否   | 为第一个交换的位置分配新的键值，默认使用原键值。        |
 | end  | string   | 否 | 否   | 为第二个交换的位置分配新的键值，默认使用原键值。           |
+
+## LazyForEachOptions
+
+配置LazyForEach的内存优化策略。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型                       | 只读 | 可选 | 说明            |
+| ------ | --------------- | ---- | ---- | ------- |
+| memoryOptimizationStrategy   | [LazyForEachMemOptStrategy](#lazyforeachmemoptstrategy) | 否 | 是   | LazyForEach的内存优化策略。该参数在创建LazyForEach时设定，不支持动态修改。<br>默认值：[DEFAULT](#lazyforeachmemoptstrategy) |
+
+## LazyForEachMemOptStrategy
+
+LazyForEach内存优化策略枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 值 | 说明 |
+| --- | --- | --- |
+| DEFAULT | 0 | 无内存优化策略。 |
+| ENABLE_AUTO_CACHE_OPTIMIZATION | 1 << 0 | 自动内存优化策略，当LazyForEach子节点内存占用较高时，建议使用此策略以降低内存使用量。<br>当应用退后台时、LazyForEach所在组件不可见时（[visibility](./ts-universal-attributes-visibility.md#visibility)属性设置为[Visible](./ts-appendix-enums.md#visibility)以外的值，或组件面积为0，不考虑遮挡）、整机低内存时（[MemoryLevel](../../apis-ability-kit/js-apis-app-ability-abilityConstant.md#memorylevel)达到MEMORY_LEVEL_LOW或MEMORY_LEVEL_CRITICAL），释放[预加载区域](../../../ui/rendering-control/arkts-rendering-control-overview.md#基本概念)内的部分节点，直至上下预加载区域内的节点数量均不超过2。<br>当应用恢复前台时、LazyForEach所在组件恢复显示时，LazyForEach发生滑动时，恢复预加载区域内的节点。<br>在释放和恢复节点时，会触发[自定义组件生命周期](../../../ui/state-management/arkts-page-custom-components-lifecycle.md)。 |
+
+## 示例
+
+### 示例1（使用自动内存优化策略）
+
+以下示例中，通过[LazyForEachOptions](#lazyforeachoptions)的memoryOptimizationStrategy属性使用了自动内存优化策略。应用退后台时，清理缓存。应用恢复前台时，恢复缓存。
+
+从API版本26.0.0开始，新增LazyForEachOptions接口。
+
+BasicDataSource代码见LazyForEach开发者指南末尾BasicDataSource示例代码: [string类型数组的BasicDataSource代码](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md#string类型数组的basicdatasource代码)。
+
+<!--code_no_check-->
+```ts
+import { BasicDataSource } from './BasicDataSource';
+
+class DataSource extends BasicDataSource {
+  public dataArray: string[] = [];
+  public totalCount(): number {
+    return this.dataArray.length;
+  }
+  public getData(index: number): string {
+    return this.dataArray[index];
+  }
+  public pushData(data: string): void {
+    this.dataArray.push(data);
+    this.notifyDataAdd(this.dataArray.length - 1);
+  }
+}
+
+@Component
+struct ChildComponent {
+  aboutToAppear() {
+    console.info('ChildComponent aboutToAppear');
+  }
+  aboutToDisappear() {
+    console.info('ChildComponent aboutToDisappear');
+  }
+  build() {
+    Text('ChildComponent')
+  }
+}
+
+@Entry
+@Component
+struct MemoryOptimizeDemo {
+  private data: DataSource = new DataSource();
+  aboutToAppear() {
+    for (let i = 0; i < 100; i++) {
+      this.data.pushData(`item ${i}`);
+    }
+  }
+  build() {
+    Column() {
+      List() {
+        LazyForEach(this.data,
+          (item: string, index: number) => {
+            ListItem() {
+              ChildComponent()
+            }
+          },
+          (item: string, index: number) => item,
+          { memoryOptimizationStrategy: LazyForEachMemOptStrategy.ENABLE_AUTO_CACHE_OPTIMIZATION } // 使用自动内存优化策略
+        )
+      }
+      .cachedCount(5)
+    }
+  }
+}
+```

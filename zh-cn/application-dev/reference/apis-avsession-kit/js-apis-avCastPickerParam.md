@@ -1,12 +1,12 @@
 # @ohos.multimedia.avCastPickerParam (投播组件参数)
 <!--Kit: AVSession Kit-->
 <!--Subsystem:Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester:@chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
-avCastPickerParam提供了[@ohos.multimedia.avCastPicker](ohos-multimedia-avcastpicker.md)组件状态枚举值。
+avCastPickerParam提供了[@ohos.multimedia.avCastPicker](ohos-multimedia-avcastpicker.md)组件相关的枚举参数。
 
 > **说明：**
 >
@@ -17,7 +17,7 @@ avCastPickerParam提供了[@ohos.multimedia.avCastPicker](ohos-multimedia-avcast
 
 投播组件设备列表状态参数选项。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -34,7 +34,7 @@ avCastPickerParam提供了[@ohos.multimedia.avCastPicker](ohos-multimedia-avcast
 
 投播组件样式参数选项。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -51,7 +51,7 @@ avCastPickerParam提供了[@ohos.multimedia.avCastPicker](ohos-multimedia-avcast
 
 投播组件显示模式参数选项。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 

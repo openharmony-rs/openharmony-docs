@@ -26,7 +26,7 @@
 
 ## 约束与限制
 
-在async修饰的异步函数中主动抛出异常，不会产生JS Crash导致应用崩溃，开发者可以通过[ErrorManager](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror)观测该异常，样例代码参考[Async函数内部异常的处理机制](../arkts-utils/arkts-runtime-faq.md#async函数内部异常的处理机制)。从**API版本26.0.0**开始，当应用已注册ErrorManager观测异常，除异常为不可捕获类型（当前仅包含OutOfMemoryError）之外，其它类型异常将不会生成HiAppEvent事件上报。
+在async修饰的异步函数中主动抛出异常，不会产生JS Crash导致应用崩溃，开发者可以通过[errorManager.on('error')](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror)观测该异常，样例代码参考[Async函数内部异常的处理机制](../arkts-utils/arkts-runtime-faq.md#async函数内部异常的处理机制)。从**API版本26.0.0**开始，当应用已注册ErrorManager观测异常，除异常为不可捕获类型（当前仅包含OutOfMemoryError）之外，其它类型异常将不会生成HiAppEvent事件上报。
 
 
 ## 日志获取
@@ -69,6 +69,7 @@ hdc file recv /data/log/faultlog/faultlogger 本地路径
 | Pid | 故障进程号 | 8 | 是 | - |
 | Uid | 用户ID | 8 | 是 | - |
 | Process name | 故障进程名 | 26 | 是 | - |
+| App running unique id | 应用运行时唯一关联的id。 | 26.0.0 | 是 | - |
 | Process life time | 故障进程存活时间 | 22 | 是 | - |
 | Process Memory(kB) | 进程占用内存 | 20 | 是 | - |
 | Device Memory(kB) | 整机内存信息 | 20 | 否 | 依赖维测服务进程，若发生故障时维测服务进程停止或设备重启则无此字段，详见[检测原理](#检测原理)。 |
@@ -81,6 +82,7 @@ hdc file recv /data/log/faultlog/faultlogger 本地路径
 | SubmitterStacktrace | 提交者线程栈 | 20 | 否 | 异步线程栈跟踪维测功能默认仅在ARM 64位系统中开启。<br>对于**API version 22**之前版本，**三方和系统应用**[libuv](../reference/native-lib/libuv.md)和[ffrt](../reference/apis-ffrt-kit/capi-ffrt.md)提交异步任务仅debug版本默认开启。<br>对于**API version 22**及之后版本，**三方应用**通过libuv提交异步任务debug和release版本均默认开启；**三方和系统应用**通过ffrt提交异步任务仅debug版本默认开启。 |
 | HiLog | 故障之前打印的流水日志，最多1000行 | 20 | 是 | - |
 | AsyncStack | Promise异步栈 | 23 | 否 | ARM 64位系统下，若开启Promise异步栈开关，则包含此字段。 |
+| ModuleImportStack | 模块加载链路 | 26.0.0 | 否 | ARM 64位系统下，若开启[模块加载链路调试开关](../arkts-utils/arkts-module-debug.md)，则包含此字段。 |
 
 以下是JS Crash崩溃日志规格。
 ```text
@@ -98,6 +100,7 @@ IsSystemApp:No <- 应用是否为系统应用
 Pid:579 <- 故障进程号
 Uid:0 <- 用户ID
 Process name:com.example.myapplication <- 进程名
+App running unique id:124500628566978194 <- 应用运行时唯一关联的id
 Process life time:1s  <- 进程存活时间
 Process Memory(kB): 1897(Rss) <- 进程占用内存
 Device Memory(kB): Total 1935820, Free 482136, Available 1204216  <- 整机内存信息
@@ -395,3 +398,66 @@ HybridStack:
 ```
 
 聚类方法同Cpp Crash一致，参考[CppCrash聚类](cppcrash-guidelines.md#cppcrash聚类)。
+
+## ArkTS-Dyn和ArkTS-Sta混合场景Js Crash栈回溯介绍
+### 能力概述
+
+在引入混合栈回溯能力之前，当应用在ArkTS-Dyn与ArkTS-Sta混合场景下发生JS Crash时，生成的JS Crash文件中通常只能看到发生异常的一侧（抛出异常的代码侧）的堆栈信息，无法完整展示跨模块的完整调用链路，导致问题定位困难。
+
+从API版本26.0.0开始，系统新增混合栈回溯能力。开启该功能后，在ArkTS-Dyn与ArkTS-Sta混合场景中发生JS崩溃时，系统将完整展示跨模块调用链路，帮助开发者快速定位异常根源。
+
+通过以下命令可以开启或关闭该功能。hdc shell param的更多使用方法，请参见[param工具](../tools/param-tool.md)。
+
+```shell
+# 开启
+hdc shell param set ark.interop.hybridstack.enable true
+# 关闭
+hdc shell param set ark.interop.hybridstack.enable false
+```
+
+### 堆栈展示
+
+**动态栈与静态栈差异**
+
+ArkTS-Dyn动态栈示例：
+```text
+at anonymous entry (entry/src/main/ets/pages/Index.ets:22:14)
+```
+ArkTS-Sta静态栈示例：
+```text
+at std.core.LinkerError.<ctor> (RuntimeLinkerErrors.ets:20:1)
+```
+| **差异点** | **ArkTS-Dyn** | **ArkTS-Sta** |
+|------------|---------------|---------------|
+|    函数名  | 只有函数名  |  包含函数文件路径 |
+|    列号  | 有正确的列号  |  列号固定为1 |
+
+场景一：ArkTS-Dyn调用ArkTS-Sta，在ArkTS-Sta中抛出异常。
+```text
+Stacktrace:
+at std.core.LinkerError.<ctor> (RuntimeLinkerErrors.ets:20:1)
+at std.core.LinkerUnresolvedMethodError.<ctor> (RuntimeLinkerErrors.ets:48:1)
+at har_2.src.main.ets.components.MainPage.ETSGLOBAL.foo1 (har_2/src/main/ets/components/MainPage.ets:12:1)
+at anonymous entry (entry/src/main/ets/pages/Index.ets:22:14)
+```
+
+场景二：ArkTS-Sta调用ArkTS-Dyn，在ArkTS-Dyn中抛出异常。
+```text
+Stacktrace:
+at name library (library/src/main/ets/pages/Index.ets:23:9)
+at entry.src.main.ets.pages.Index.Index.lambda_invoke-13 (entry/src/main/ets/pages/Index.ets:40:1) 
+at entry.src.main.ets.pages.Index.%%lambda-lambda_invoke-13.invoke1 (entry/src/main/ets/pages/Index.ets:-1:1) 
+at arkui.framework.peers.CallbackDeserializeCall.ETSGLOBAL.deserializeAndCallCallback_ClickEvent_Void (CallbackDeserializeCall.ets:353:1)
+at arkui.framework.peers.CallbackDeserializeCall.ETSGLOBAL.deserializeAndCallCallback (CallbackDeserializeCall.ets:4477:1)
+at arkui.ArkUIEntry.Application.lambda_invoke-135 (ArkUIEntry.ets:672:1)
+at arkui.ArkUIEntry.%%lambda-lambda_invoke-135.invoke0 (ArkUIEntry.ets:-1:1)
+at arkui.stateManagement.base.observeSingleton.ObserveSingleton.applyTaskDelayMutableStateChange (observeSingleton.ets:300:1)
+at arkui.ArkUIEntry.Application.lambda_invoke-136 (ArkUIEntry.ets:671:1)
+at arkui.ArkUIEntry.%%lambda-lambda_invoke-136.invoke1 (ArkUIEntry.ets:-1:1)
+at @koalaui.interop.events.ETSGLOBAL.handleApiEvent (foundation/arkui/ace_engine/frameworks/bridge/arkts_frontend/koala_projects/interop/src/arkts/events.ts:28:1)
+at @koalaui.interop.events.ETSGLOBAL.lambda_invoke-0 (foundation/arkui/ace_engine/frameworks/bridge/arkts_frontend/koala_projects/interop/src/arkts/events.ts:34:1)
+at @koalaui.interop.events.%%lambda-lambda_invoke-0.invoke2 (foundation/arkui/ace_engine/frameworks/bridge/arkts_frontend/koala_projects/interop/src/arkts/events.ts:-1:1) 
+at @koalaui.interop.callback.CallbackRegistry.call (foundation/arkui/ace_engine/frameworks/bridge/arkts_frontend/koala_projects/interop/src/arkts/callback.ts:70:1)
+at @koalaui.interop.callback.ETSGLOBAL.callCallback (foundation/arkui/ace_engine/frameworks/bridge/arkts_frontend/koala_projects/interop/src/arkts/callback.ts:91:1)
+at @koalaui.interop.InteropNativeModule.InteropNativeModule.callCallbackFromNative (foundation/arkui/ace_engine/frameworks/bridge/arkts_frontend/koala_projects/interop/src/arkts/InteropNativeModule.ts:26:1)
+```

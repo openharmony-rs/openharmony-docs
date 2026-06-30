@@ -1,7 +1,7 @@
 # OH_NativeXComponent_HistoricalPoint
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
+<!--Owner: @pengzhiwen3-->
 <!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -12,7 +12,7 @@ typedef struct {...} OH_NativeXComponent_HistoricalPoint
 
 ## 概述
 
-历史接触点
+历史触摸点。
 
 **起始版本：** 10
 

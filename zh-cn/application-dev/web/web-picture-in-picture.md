@@ -2,7 +2,7 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @gzweioh-->
-<!--Designer: @qiu-gongkai-->
+<!--Designer: @zhangyao75477-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 Web组件提供画中画功能支持，应用可利用W3C标准的Picture-in-Picture API在网页中创建浮动窗口以播放视频，使用户在浏览其他网页或与其他应用交互时，可通过该画中画窗口继续观看视频。  

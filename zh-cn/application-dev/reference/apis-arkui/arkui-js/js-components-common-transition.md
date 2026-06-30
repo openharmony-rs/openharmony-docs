@@ -1,8 +1,8 @@
 # 转场样式
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -35,7 +35,7 @@
 2. 共享元素的exchange效果类似下图。
 
    **图1** 共享元素转场默认效果
-   ![zh-cn_image_0000001238424309](figures/zh-cn_image_0000001238424309.png)
+   ![exchange](figures/exchange.png)
 
 3. 共享元素动画对元素的边框、背景色不生效。
 
@@ -219,7 +219,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001193544358](figures/zh-cn_image_0000001193544358.gif)
+![Widget-Transition](figures/Widget-Transition.gif)
 
 
 ## 页面转场样式
@@ -245,11 +245,11 @@ export default {
 
    a. push场景下：进入页面栈的Page2.js应用transition-enter描述的动画配置；进入页面栈第二位置的Page1.js应用transition-exit描述的动画配置。
 
-   ![zh-cn_image_0000001193704354](figures/zh-cn_image_0000001193704354.png)
+   ![Important-Notes](figures/Important-Notes.png)
 
    b. back场景下：退出页面栈的Page2.js应用transition-enter描述的动画配置，并进行倒播；从页面栈第二位置进入栈顶位置的Page1.js应用transition-exit描述的动画配置，并进行倒播。
    
-   ![zh-cn_image_0000001238184345](figures/zh-cn_image_0000001238184345.png)
+   ![transition-enter](figures/transition-enter.png)
 
 ### 示例
 

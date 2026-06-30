@@ -1,8 +1,8 @@
 # 路径动画 (motionPath)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -16,43 +16,17 @@
 
 ## motionPath
 
-motionPath(value: MotionPathOptions): T
+ArkTS-Dyn: motionPath(value: MotionPathOptions): T
+
+ArkTS-Sta: motionPath(value: MotionPathOptions | undefined): this
 
 设置组件的路径动画。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[motionPath<sup>23+</sup>](#motionpath23)。
 
 **ArkTS-Dyn起始版本：** 7
-
-**参数：**
-
-| 参数名    | 类型                                | 必填 | 说明                                    |
-| ----- | --------------------------------- | ---- | ------------------------------------- |
-| value | [MotionPathOptions](#motionpathoptions) | 是    | 设置组件的运动路径。             |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| T | 返回当前组件。 |
-
-## motionPath<sup>23+</sup>
-
-motionPath(value: MotionPathOptions | undefined): this
-
-设置组件的路径动画。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[motionPath](#motionpath)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -60,19 +34,19 @@ motionPath(value: MotionPathOptions | undefined): this
 
 | 参数名    | 类型                                | 必填 | 说明                                    |
 | ----- | --------------------------------- | ---- | ------------------------------------- |
-| value | [MotionPathOptions](#motionpathoptions) \| undefined | 是    | 设置组件的运动路径。<br/>当value的值为undefined时，使用默认值{ MotionPathOptions: { path: " ", from: 0, to: 1, rotatable: false } }。             |
+| value | ArkTS-Dyn: [MotionPathOptions](#motionpathoptions)<br/>ArkTS-Sta: MotionPathOptions \| undefined | 是    | 设置组件的运动路径。<br/>当value的值为undefined时，使用默认值{ MotionPathOptions: { path: " ", from: 0, to: 1, rotatable: false } }。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## MotionPathOptions
 
 设置组件的运动路径。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -82,7 +56,7 @@ motionPath(value: MotionPathOptions | undefined): this
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | ---- | ---- | -------- |
-| path                         | string                     | 否 | 否  | 位移动画的运动路径，使用[svg路径字符串](ts-drawing-components-path.md#svg路径描述规范)。path中支持使用start和end进行起点和终点的替代，如：'Mstart.x&nbsp;start.y&nbsp;L50&nbsp;50&nbsp;Lend.x&nbsp;end.y&nbsp;Z'，更多说明请参考[绘制路径](../../../ui/ui-js-components-svg-path.md)。<br/>设置为空字符串时相当于不设置路径动画。       |
+| path                         | string                     | 否 | 否  | 位移动画的运动路径，使用[SVG路径描述规范](ts-drawing-components-path.md#svg路径描述规范)。path中支持使用start和end进行起点和终点的替代，如：'Mstart.x&nbsp;start.y&nbsp;L50&nbsp;50&nbsp;Lend.x&nbsp;end.y&nbsp;Z'，更多说明请参考[绘制路径](../../../ui/ui-js-components-svg-path.md)。<br/>设置为空字符串时相当于不设置路径动画。       |
 | from             | ArkTS-Dyn: number<br/>ArkTS-Sta: double                   | 否 | 是  | 运动路径的起点。<br/>默认值：0.0<br/>取值范围：[0.0, 1.0]<br/>设置小于0.0或大于1.0的值时，按默认值0.0处理。   |
 | to                | ArkTS-Dyn: number<br/>ArkTS-Sta: double                     | 否 | 是  | 运动路径的终点。<br/>默认值：1.0<br/>取值范围：[0.0, 1.0]<br/>设置小于0.0或大于1.0的值时，按默认值1.0处理，且满足to值 >= 异常值处理后的from值。   |
 | rotatable                     | boolean                    | 否 | 是  | 是否跟随路径进行旋转。true代表跟随路径进行旋转，false代表不跟随路径进行旋转。<br/>默认值：false   |
@@ -118,4 +92,4 @@ struct MotionPathExample {
 }
 ```
 
-![zh-cn_image_0000001174104400](figures/zh-cn_image_0000001174104400.gif)
+![motionPath](figures/motionPath.gif)

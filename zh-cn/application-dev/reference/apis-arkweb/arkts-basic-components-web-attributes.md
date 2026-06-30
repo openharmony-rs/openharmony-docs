@@ -16,6 +16,9 @@
 >
 > - 示例效果请以真机运行为准。
 
+## 概述
+Web组件属性用于在ArkUI声明式语法下以链式调用的方式配置Web组件的网页加载行为、安全策略、运行环境与交互能力，是定制Web组件行为的主要入口。其中通用的样式与布局类属性（如尺寸、边距、背景、可见性等）请参考[尺寸设置](../apis-arkui/arkui-ts/ts-universal-attributes-size.md)，本章仅描述Web组件特有的属性；运行期动态控制类能力（如加载URL、前进后退、注册/反注册JS对象、运行JavaScript、注入CSS等）请配合[WebviewController](./arkts-apis-webview-WebviewController.md)使用。
+
 ## domStorageAccess
 
 ArkTS-Dyn: domStorageAccess(domStorageAccess: boolean)
@@ -162,7 +165,7 @@ ArkTS-Sta: imageAccess(imageAccess: boolean | undefined)
 
 | 参数名         | 类型    | 必填   | 说明            |
 | ----------- | ------- | ---- | --------------- |
-| imageAccess | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \|  undefined | 是    | 设置是否允许自动加载图片资源。<br>true表示设置允许自动加载图片资源，false表示设置不允许自动加载图片资源。<br>ArkTS-Dyn：传入undefined或null时为false。ArkTS-Sta：传入undefined或null时为false。|
+| imageAccess | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \|  undefined | 是    | 设置是否允许自动加载图片资源。<br>true表示设置允许自动加载图片资源，false表示设置不允许自动加载图片资源。<br>传入undefined或null时为false。|
 
 **示例：**
 
@@ -946,7 +949,7 @@ ArkTS-Sta: multiWindowAccess(multiWindow: boolean | undefined)
 
 设置是否开启多窗口权限。若未显式调用该属性或入参值为undefined时，默认不开启多窗口权限。
 
-使能多窗口权限时，需要实现onWindowNew事件，示例代码参考[onWindowNew事件](./arkts-basic-components-web-events.md#onwindownew9)。
+使能多窗口权限时，需要实现onWindowNew事件，示例代码参考[onWindowNew](./arkts-basic-components-web-events.md#onwindownew9)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -958,7 +961,7 @@ ArkTS-Sta: multiWindowAccess(multiWindow: boolean | undefined)
 
 | 参数名         | 类型    | 必填   | 说明         |
 | ----------- | ------- | ---- | ------------ |
-| multiWindow | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置是否开启多窗口权限。<br>true表示设置开启多窗口权限，false表示设置不开启多窗口权限。默认值：false。|
+| multiWindow | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \|  undefined| 是    | 设置是否开启多窗口权限。<br>true表示设置开启多窗口权限，false表示设置不开启多窗口权限。|
 
 ## horizontalScrollBarAccess<sup>9+</sup>
 
@@ -2666,9 +2669,11 @@ ArkTS-Sta: javaScriptOnDocumentStart(scripts: Array\<ScriptItem> | undefined)
 >
 > - 该脚本按照字典序执行，非数组本身顺序，若需数组本身顺序，建议使用[runJavaScriptOnDocumentStart](#runjavascriptondocumentstart15)接口。
 >
-> - 不建议与[runJavaScriptOnDocumentStart](#runjavascriptondocumentstart15)同时使用。
->
 > - 内容相同的脚本多次注入时将被静默去重，不展示，不提醒，使用首次注入时的scriptRules。
+>
+> - 本接口不支持[UrlRegexRule](./arkts-basic-components-web-i.md#urlregexrule23)。
+>
+> - 建议使用[runJavaScriptOnDocumentStart](#runjavascriptondocumentstart15)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2787,9 +2792,11 @@ ArkTS-Sta: javaScriptOnDocumentEnd(scripts: Array\<ScriptItem> | undefined)
 >
 > - 该脚本按照字典序执行，非数组本身顺序。
 >
-> - 不建议与[runJavaScriptOnDocumentEnd](#runjavascriptondocumentend15)同时使用。
->
 > - 内容相同的脚本多次注入时将被静默去重，不展示，不提醒，使用首次注入时的scriptRules。
+>
+> - 本接口不支持[UrlRegexRule](./arkts-basic-components-web-i.md#urlregexrule23)。
+>
+> - 建议使用[runJavaScriptOnDocumentEnd](#runjavascriptondocumentend15)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2892,8 +2899,6 @@ ArkTS-Sta: runJavaScriptOnDocumentStart(scripts: Array\<ScriptItem> | undefined)
 > - 网页文档根元素（HTML Element）创建后、但尚未加载任何其他内容之前注入脚本。
 >
 > - 该脚本按照数组本身顺序执行。
->
-> - 不建议与[javaScriptOnDocumentStart](#javascriptondocumentstart11)同时使用。
 >
 > - 内容相同的脚本多次注入时将被静默去重，不展示，不提醒，使用首次注入时的scriptRules。
 
@@ -3019,8 +3024,6 @@ ArkTS-Sta: runJavaScriptOnDocumentEnd(scripts: Array\<ScriptItem> | undefined)
 > - 该脚本将在页面的任何JavaScript代码之后运行，并且DOM树此时已经加载、渲染完毕。
 >
 > - 该脚本按照数组本身顺序执行。
->
-> - 不建议与[javaScriptOnDocumentEnd](#javascriptondocumentend11)同时使用。
 >
 > - 内容相同的脚本多次注入时将被静默去重，不展示，不提醒，使用首次注入时的scriptRules。
 
@@ -3953,19 +3956,103 @@ ArkTS-Sta: registerNativeEmbedRule(tag: string | undefined, type: string | undef
   ```ts
   // xxx.ets
   'use static'
-  import { Entry, Component, Web, Column } from '@kit.ArkUI';
+
   import { webview } from '@kit.ArkWeb';
+  import { UIContext, $rawfile, Entry, Component, Web, Column, Button, State,
+    TouchEvent, NodeController, BuilderNode, NodeRenderType, PropRef, FrameNode,
+    Color, Stack, NodeContainer, NativeEmbedStatus, NativeEmbedDataInfo, wrapBuilder } from '@kit.ArkUI';
+
+  export class Params {
+    text: string = '';
+    width: double = 0;
+    height: double = 0;
+  }
+
+  export class NodeControllerParams {
+    surfaceId: string = '';
+    renderType: NodeRenderType = NodeRenderType.RENDER_TYPE_DISPLAY;
+    width: double = 0;
+    height: double = 0;
+  }
+
+  export class MyNodeController extends NodeController {
+    private rootNode: BuilderNode<Params> | undefined | null;
+    private surfaceId_: string = "";
+    private renderType_: NodeRenderType = NodeRenderType.RENDER_TYPE_DISPLAY;
+    private width_: double = 0;
+    private height_: double = 0;
+
+    setRenderOption(params: NodeControllerParams) {
+      this.surfaceId_ = params.surfaceId;
+      this.renderType_ = params.renderType;
+      this.width_ = params.width;
+      this.height_ = params.height;
+    }
+
+    makeNode(uiContext: UIContext): FrameNode | null {
+      this.rootNode = new BuilderNode<Params>(uiContext, { surfaceId: this.surfaceId_, type: this.renderType_ });
+      this.rootNode?.build(wrapBuilder(ButtonBuilder), { text: "myButton", width: this.width_, height: this.height_ });
+      return this.rootNode?.getFrameNode() ?? null;
+    }
+
+    postInputEvent(event: TouchEvent): boolean {
+      return this.rootNode?.postInputEvent(event) as boolean;
+    }
+  }
+
+  @Component
+  struct ButtonComponent {
+    @PropRef params: Params;
+    @State bkColor: Color = Color.Red;
+
+    build() {
+      Column() {
+        Button(this.params.text)
+          .height(50)
+          .width(200)
+          .border({ width: 2, color: Color.Red })
+          .backgroundColor(this.bkColor)
+      }
+      .width(this.params.width)
+      .height(this.params.height)
+    }
+  }
+
+  @Builder
+  function ButtonBuilder(params: Params) {
+    ButtonComponent({ params: params })
+      .backgroundColor(Color.Green)
+  }
 
   @Entry
   @Component
   struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
+    controller: webview.WebviewController = new webview.WebviewController();
+    private nodeController: MyNodeController = new MyNodeController();
+    uiContext: UIContext = this.getUIContext();
 
-  build() {
-    Column() {
-      Web({ src: 'www.example.com', controller: this.controller })
-        .enableNativeEmbedMode(true)
-        .registerNativeEmbedRule("object", "application/view")
+    build() {
+      Column() {
+        Stack() {
+          NodeContainer(this.nodeController)
+          Web({ src: $rawfile('index.html'), controller: this.controller })
+             // 配置同层渲染开关开启。
+            .enableNativeEmbedMode(true)
+             // 注册同层标签为<object>，类型为"native"前缀。
+            .registerNativeEmbedRule("object", "native")
+             // 获取<object>标签的生命周期变化数据。
+            .onNativeEmbedLifecycleChange((object: NativeEmbedDataInfo):void => {
+              if (object.status == NativeEmbedStatus.CREATE) {
+                this.nodeController.setRenderOption({
+                  surfaceId: object.surfaceId as string,
+                  renderType: NodeRenderType.RENDER_TYPE_TEXTURE,
+                  width: this.uiContext!.px2vp(object.info?.width as int),
+                  height: this.uiContext!.px2vp(object.info?.height as int)
+                } as NodeControllerParams);
+                this.nodeController.rebuild();
+              }
+            })
+        }
       }
     }
   }
@@ -7353,7 +7440,7 @@ ArkTS-Sta: keyboardAppearance(mode: WebKeyboardAppearanceMode | undefined)
 
 **ArkTS-Sta起始版本：** 26.0.0
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | --------- | ---- | ---- |
@@ -7416,4 +7503,75 @@ ArkTS-Sta: keyboardAppearance(mode: WebKeyboardAppearanceMode | undefined)
     <input type="text" placeholder="Text">
   </body>
   </html>
+  ```
+
+## enableFullscreenVideoOverlay
+
+ArkTS-Dyn: enableFullscreenVideoOverlay(enabled: boolean)
+
+ArkTS-Sta: enableFullscreenVideoOverlay(enabled: boolean | undefined)
+
+设置Web组件是否开启覆盖式全屏播放功能。当属性没有显式调用时，默认不开启该能力。
+
+> **说明：**
+>
+> - 当前只支持H264、H265解码格式的视频。
+> - 只有视频元素发出的全屏请求才会响应。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**设备行为差异：** 该接口在Phone/Tablet设备中可正常调用，在其他设备中无效。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | ---- | -------------------------------- |
+| enabled | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 设置web组件是否开启覆盖式全屏播放功能。<br>true表示开启该功能。<br>false表示不开启。 |
+
+**示例：**
+
+  ArkTS-Dyn示例：
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+        .enableFullscreenVideoOverlay(true)
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Entry, Component, Web, Column } from '@ohos.arkui.component';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+        .enableFullscreenVideoOverlay(true)
+      }
+    }
+  }
   ```

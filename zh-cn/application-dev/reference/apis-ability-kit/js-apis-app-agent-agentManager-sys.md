@@ -1,10 +1,10 @@
-# @ohos.app.agent.agentManager (Agent管理)(系统接口)
+# @ohos.app.agent.agentManager (Agent智能组件管理)(系统接口)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 agentManager模块提供Agent管理能力，支持AgentExtensionAbility的连接、断开连接等操作，支持LOW_CODE类型Agent的生命周期管理，支持AgentExtensionAbility与ServiceExtensionAbility的连接管理，同时提供获取设备上的AgentCard信息。
@@ -406,12 +406,14 @@ ArkTS-Sta: connectServiceExtensionAbility(context: AgentExtensionContext, want: 
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { common, Want, AgentExtensionAbility, agentManager, bundleManager } from '@kit.AbilityKit';
 import { JSON } from '@kit.ArkTS';
 import { rpc } from '@kit.IPCKit';
 
-let TAG = "DemoAgentForConnect"
+let TAG = 'DemoAgentForConnect';
 
 export default class DemoAgentForConnect extends AgentExtensionAbility {
 
@@ -431,6 +433,42 @@ export default class DemoAgentForConnect extends AgentExtensionAbility {
       console.info(`${TAG} start connect`);
       const connectId = agentManager.connectServiceExtensionAbility(this.context, want, options);
       console.info(`${TAG} connect end, connectId=${connectId} `);
+      return connectId;
+    } catch (err) {
+      console.error(`${TAG} connectServiceExtensionAbility failed.`);
+    }
+    return -1;
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { common, Want, AgentExtensionAbility, agentManager } from '@kit.AbilityKit';
+
+let TAG = 'DemoAgentForConnect';
+
+export default class DemoAgentForConnect extends AgentExtensionAbility {
+
+  connectService(want: Want): long {
+    try {
+      let options: common.ConnectOptions = {
+        onConnect: (elementName, remote) => {
+          console.info(`${TAG} onConnect ${JSON.stringify(elementName)}`);
+        },
+        onDisconnect: (elementName) => {
+          console.info(`${TAG} onDisconnect ${JSON.stringify(elementName)}`);
+        },
+        onFailed: (code) => {
+          console.info(`${TAG} onFailed... ${code}`);
+        }
+      };
+      console.info(`${TAG} start connect`);
+      const connectId = agentManager.connectServiceExtensionAbility(this.context, want, options);
+      console.info(`${TAG} connect end, connectId=${connectId}`);
       return connectId;
     } catch (err) {
       console.error(`${TAG} connectServiceExtensionAbility failed.`);
@@ -569,8 +607,9 @@ registerAgentCard(agentCard: AgentCard): Promise\<void>
 | 16000002 | Incorrect ability type. |
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.System service failed to communicate with dependency module. |
 | 18500001 | The bundle does not exist or no patch has been applied. |
-| 35600005 | The specified agent card version is invalid. |
-| 35600006 | The specified agent card has already been registered. Use updateAgentCard instead. |
+| 35600005 | The specified AgentCard version is invalid. |
+| 35600006 | The specified AgentCard has already been registered. Use updateAgentCard instead. |
+| 35600008 | The number of AgentCards in the bundle reaches the limit. |
 
 **示例：**
 
@@ -655,8 +694,8 @@ updateAgentCard(agentCard: AgentCard): Promise\<void>
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.System service failed to communicate with dependency module. |
 | 18500001 | The bundle does not exist or no patch has been applied. |
 | 35600001 | The specified agentId does not exist. |
-| 35600004 | The specified agent card version is older than the current version. |
-| 35600005 | The specified agent card version is invalid. |
+| 35600004 | The specified AgentCard version is older than the current version. |
+| 35600005 | The specified AgentCard version is invalid. |
 
 **示例：**
 

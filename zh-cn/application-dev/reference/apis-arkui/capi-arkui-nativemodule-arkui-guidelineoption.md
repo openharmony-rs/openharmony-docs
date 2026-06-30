@@ -13,7 +13,7 @@ typedef struct ArkUI_GuidelineOption ArkUI_GuidelineOption
 
 ## 概述
 
-用于定义guideLine（RelativeContainer容器内的辅助线）的id、方向和位置。
+Guideline参数，用于定义Guideline（RelativeContainer容器内的辅助线）的id、方向和位置。
 
 **起始版本：** 12
 

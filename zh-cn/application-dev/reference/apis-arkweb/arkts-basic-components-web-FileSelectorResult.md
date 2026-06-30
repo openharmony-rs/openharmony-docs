@@ -6,9 +6,11 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-通知Web组件的文件选择结果。示例代码参考[onShowFileSelector事件](./arkts-basic-components-web-events.md#onshowfileselector9)。
+FileSelectorResult是ArkWeb组件中用于通知Web组件文件选择结果的类。当Web组件中的HTML页面通过`<input type="file">`等方式发起文件选择请求时，应用可通过FileSelectorResult将用户选择的文件列表回传给Web组件，完成文件选择流程。该类主要在`onShowFileSelector`事件回调中使用，适用于应用需要自定义文件选择行为的场景，例如拉起系统文件选择器、图库选择器或相机选择器后，将选中的文件结果返回给Web页面。
 
-支持使用@ohos.transfer系统对象转换工具进行动静态类型转换。
+示例代码参考[onShowFileSelector](./arkts-basic-components-web-events.md#onshowfileselector9)。
+
+支持使用[@ohos.transfer](../apis-arkts/js-apis-transfer.md)系统对象转换工具进行动静态类型转换。
 
 > **说明：**
 >
@@ -36,7 +38,7 @@ FileSelectorResult的构造函数。
 
 handleFileList(fileList: Array\<string\>): void
 
-通知Web组件进行文件选择操作。
+通过传入的文件列表（fileList）通知Web组件用户选择的文件，完成文件选择流程。Web组件可以使用传入的文件列表进行后续处理。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

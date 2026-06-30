@@ -14,7 +14,7 @@
 >
 > 本模块接口仅可在Stage模型下使用。
 >
-> 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-term.md#mdm应用设备管理应用)开放，需将[设备管理应用激活](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)后调用。
+> 本模块接口仅对[MDM应用](../../mdm/mdm-kit-term.md#mdm应用)开放，需通过[enableAdmin](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)接口将设备管理应用激活后调用。
 > 
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.enterprise.deviceControl](js-apis-enterprise-deviceControl.md)。
 
@@ -24,11 +24,15 @@
 import { deviceControl } from '@kit.MDMKit';
 ```
 
-## deviceControl.resetFactory
+## deviceControl.resetFactory<sup>(deprecated)</sup>
 
 resetFactory(admin: Want, callback: AsyncCallback\<void>): void
 
 使设备恢复出厂设置。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [operateDevice](./js-apis-enterprise-deviceControl.md#devicecontroloperatedevice)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESET_DEVICE
 
@@ -78,11 +82,15 @@ deviceControl.resetFactory(wantTemp, (err) => {
 })
 ```
 
-## deviceControl.resetFactory
+## deviceControl.resetFactory<sup>(deprecated)</sup>
 
 resetFactory(admin: Want): Promise\<void>
 
 使设备恢复出厂设置。使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [operateDevice](./js-apis-enterprise-deviceControl.md#devicecontroloperatedevice)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESET_DEVICE
 
@@ -135,11 +143,15 @@ deviceControl.resetFactory(wantTemp).then(() => {
 })
 ```
 
-## deviceControl.shutdown<sup>11+</sup>
+## deviceControl.shutdown<sup>(deprecated)</sup>
 
 shutdown(admin: Want): void
 
 使设备关机。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [operateDevice](./js-apis-enterprise-deviceControl.md#devicecontroloperatedevice)
 
 **需要权限：** ohos.permission.ENTERPRISE_REBOOT
 
@@ -186,11 +198,15 @@ try {
 }
 ```
 
-## deviceControl.reboot<sup>11+</sup>
+## deviceControl.reboot<sup>(deprecated)</sup>
 
 reboot(admin: Want): void
 
 使设备重启。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [operateDevice](./js-apis-enterprise-deviceControl.md#devicecontroloperatedevice)
 
 **需要权限：** ohos.permission.ENTERPRISE_REBOOT
 
@@ -237,11 +253,15 @@ try {
 }
 ```
 
-## deviceControl.lockScreen<sup>11+</sup>
+## deviceControl.lockScreen<sup>(deprecated)</sup>
 
 lockScreen(admin: Want): void
 
 使设备屏幕锁定。设置之后设备立即锁屏。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [operateDevice](./js-apis-enterprise-deviceControl.md#devicecontroloperatedevice)
 
 **需要权限：** ohos.permission.ENTERPRISE_LOCK_DEVICE
 

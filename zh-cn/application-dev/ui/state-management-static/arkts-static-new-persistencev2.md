@@ -31,11 +31,11 @@ PersistenceV2支持应用的[主线程](../../application-models/thread-model-st
 
 >**说明：**
 >
->1、关联[\@Observed](./arkts-static-observed-and-objectlink.md)对象时，由于该类型的name属性未定义，需要指定key或者自定义name属性。
+>1. 关联[\@Observed](./arkts-static-observed-and-objectlink.md)对象时，由于该类型的name属性未定义，需要指定key或者自定义name属性。
 >
->2、数据存储路径为module级别，即哪个module调用了connect，数据副本存入对应module的持久化文件中。如果多个module使用相同的key，则数据为最先使用connect的module，并且PersistenceV2中的数据也会存入最先使用connect的module里。
+>2. 数据存储路径为module级别，即哪个module调用了connect，数据副本存入对应module的持久化文件中。如果多个module使用相同的key，则数据为最先使用connect的module，并且PersistenceV2中的数据也会存入最先使用connect的module里。
 >
->3、因为存储路径在应用第一个ability启动时就已确定，为该ability所属的module。如果一个ability调用了connect，并且该ability能被不同module的拉起， 那么ability存在多少种启动方式，就会有多少份数据副本。
+>3. 因为存储路径在应用第一个ability启动时就已确定，为该ability所属的module。如果一个ability调用了connect，并且该ability能被不同module拉起， 那么ability存在多少种启动方式，就会有多少份数据副本。
 
 - globalConnect：创建或获取存储的数据。
 - remove：删除指定key的存储数据。删除PersistenceV2中不存在的key会报警告。
@@ -43,49 +43,922 @@ PersistenceV2支持应用的[主线程](../../application-models/thread-model-st
 - save：手动持久化数据。
 - notifyOnError：响应序列化或反序列化失败的回调。将数据存入磁盘时，需要对数据进行序列化；当某个key序列化失败时，错误是不可预知的；可调用该接口捕获异常。
 
-以上接口详细描述请参考[状态管理API指南](../../reference/apis-arkui/js-apis-stateManagement-static.md)。
+以上接口详细描述请参考[状态管理](../../reference/apis-arkui/js-apis-stateManagement-static.md)。
+
+## globalConnect支持集合类型
+
+globalConnect支持以下类型的持久化：
+
+| 支持类型 | 说明 |
+|---------|------|
+| **Array** | 数组类型，元素可为任意可序列化类型。 |
+| **Map** | 映射表，key仅支持string/number及其子类型。 |
+| **Set** | 集合类型，元素可为任意可序列化类型。 |
+| **Date** | 日期对象，在持久化时自动完成序列化和反序列化。 |
+| **嵌套自定义类** | 通过`defaultSubCreators`提供子对象构造器恢复类型。 |
+| **循环引用** | 支持对象间互相引用的正确持久化和恢复。 |
+| **联合类型** | 联合类型，例如int\|string、double\|undefined等。 |
+
+[ConnectOptions](../../reference/apis-arkui/js-apis-stateManagement-static.md#connectoptions)提供可选字段defaultSubCreators，用于为嵌套的自定义类注册构造器，确保持久化数据恢复时能正确还原为类实例。构造器的返回类型必须与注册的className严格一致，如果不一致或未提供对应的构造器，数据将不能正确地恢复，可能会导致使用该数据的地方出现异常。
+
+此外，数值类型（byte/short/int/long/float/double）之间以及与string还支持一定程度的转换容错，当开发者修改数值类型为string时，框架会尝试将数值类型转成string类型。当前支持的转换如下表所示，其中`-`表示不支持转换，`=`表示源类型与目标类型一致，`✓`表示会发生转换。
+
+
+| 源类型  / 目标类型 | byte | short | int | long | float | double | string |
+|----------------------|------|-------|-----|------|-------|--------|--------|
+| byte | = | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| short | ✓ | = | ✓ | ✓ | ✓ | ✓ | ✓ |
+| int | ✓ | ✓ | = | ✓ | ✓ | ✓ | ✓ |
+| long | ✓ | ✓ | ✓ | = | ✓ | ✓ | ✓ |
+| float | ✓ | ✓ | ✓ | ✓ | = | ✓ | ✓ |
+| double/number | ✓ | ✓ | ✓ | ✓ | ✓ | = | ✓ |
+| string | - | - | - | - | - | - | = |
+
+### Array类型
+
+此示例展示通过globalConnect持久化Array类型数据，并在UI中动态添加和展示数组元素。
+
+<!-- @[persistence_v2_array](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2Array.ets) --> 
+
+``` TypeScript
+import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, ForEach, List, ListItem, StorageDefaultSubCreators } from '@kit.ArkUI';
+import { contextConstant } from '@kit.AbilityKit';
+
+// 定义嵌套的数据类
+@ObservedV2
+export class Inner {
+  @Trace age: int = 24;
+}
+@ObservedV2
+export class Info {
+  @Trace userInfo: int = 1;
+  @Trace arr: Array<Inner> = new Array<Inner>();
+}
+@ObservedV2
+export class Person {
+  @Trace userName: string = 'John';
+  userId: int = 1;
+  @Trace info: Info = new Info();
+}
+
+// 为所有嵌套类型注册构造器，确保反序列化时恢复正确的类型
+const creators = new StorageDefaultSubCreators([
+  [Class.from<Person>(), () => new Person()],
+  [Class.from<Inner>(), () => new Inner()],
+  [Class.from<Info>(), () => new Info()]
+]);
+
+@Entry
+@ComponentV2
+struct PersistenceV2ArrayExample {
+  // 通过globalConnect持久化Array<Person>类型数据
+  @Local stateVar: Array<Person> = PersistenceV2.globalConnect<Array<Person>>({
+    type: Class.from<Array<Person>>(),
+    key: 'PersonArray',
+    defaultCreator: () => {
+      return new Array<Person>();
+    },
+    areaMode: contextConstant.AreaMode.EL1,
+    enableAutoSave: true,
+    defaultSubCreators: creators
+  })!;
+
+  build() {
+    Column(undefined) {
+      Text(`length: ${this.stateVar.length}`)
+        .fontSize(20)
+        .margin(10)
+      // 点击按钮向数组中添加一个新的Person对象
+      Button('push')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.stateVar.push(new Person());
+        })
+      List() {
+        ForEach(this.stateVar, (item: Person, index: int) => {
+          ListItem() {
+            if (item instanceof Person) {
+              Column() {
+                Button(`item: ${item.userName}`)
+                  .width(300)
+                  .margin(10)
+                  // 点击修改当前item的userName、userInfo，并添加Inner对象到arr中
+                  .onClick(() => {
+                    item.userName += '~';
+                    item.info.userInfo++;
+                    let inner = new Inner();
+                    inner.age = item.info.userInfo;
+                    item.info.arr.push(inner);
+                  })
+                Text(`userInfo: ${item.info.userInfo}`)
+                  .fontSize(20)
+                  .margin(10)
+                Text(`arr: ${JSON.stringify(item.info.arr)}`)
+                  .fontSize(20)
+                  .margin(10)
+              }
+              .width('100%')
+            } else {
+              Text(`${Class.of(item).getName()}`)
+                .fontSize(20)
+                .margin(10)
+            }
+          }
+        }, (item: Person, index: int) => {
+          return item.userName + item.info.userInfo + Math.random().toString();
+        })
+      }
+    }
+    .width('100%')
+  }
+}
+```
+
+![persistence_v2_array](../figures/persistencev2_1.gif)
+
+### Map类型
+
+此示例展示通过globalConnect持久化Map类型数据，key为string类型，value为自定义类Person。
+
+<!-- @[persistence_v2_map](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2Map.ets) --> 
+
+``` TypeScript
+import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, List, ListItem, StorageDefaultCreator, ForEach } from '@kit.ArkUI';
+import { contextConstant } from '@kit.AbilityKit';
+
+// 定义嵌套的数据类
+@ObservedV2
+export class Inner {
+  @Trace age: int = 24;
+}
+
+@ObservedV2
+export class Person {
+  @Trace userName: string = 'John';
+  userId: int = 1;
+  @Trace inner: Inner = new Inner();
+}
+
+// 为所有嵌套类型注册构造器
+const creators = new Map<Class, StorageDefaultCreator<object>>([
+  [Class.from<Person>(), () => new Person()],
+  [Class.from<Inner>(), () => new Inner()]
+]);
+
+@Entry
+@ComponentV2
+struct PersistenceV2MapExample {
+  // 通过globalConnect持久化Map<string, Person>类型数据
+  @Local stateVar: Map<string, Person> = PersistenceV2.globalConnect<Map<string, Person>>({
+    type: Class.from<Map<string, Person>>(),
+    key: 'PersonMap',
+    defaultCreator: () => {
+      return new Map<string, Person>();
+    },
+    areaMode: contextConstant.AreaMode.EL1,
+    enableAutoSave: true,
+    defaultSubCreators: creators
+  })!;
+
+  build() {
+    Column(undefined) {
+      Text(`map size: ${this.stateVar.size}`)
+        .fontSize(20)
+        .margin(10)
+      // 点击按钮创建一个新的Person对象并添加到Map中
+      Button('add')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          let p = new Person();
+          p.userName = 'user_' + this.stateVar.size.toString();
+          p.userId = this.stateVar.size;
+          p.inner.age = 20 + this.stateVar.size;
+          this.stateVar.set('key_' + this.stateVar.size.toString(), p);
+        })
+      // 点击按钮删除最后一个Map条目
+      Button('delete last')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.stateVar.delete('key_' + (this.stateVar.size - 1));
+        })
+      List() {
+        ForEach(Array.from(this.stateVar.entries()), (entry: Tuple2<string, Person>, index: int) => {
+          ListItem() {
+            Column() {
+              let key = entry.$0 as string;
+              let val = entry.$1 as Person;
+              if (val instanceof Person) {
+                Column() {
+                  Button(`[${key}] ${val.userName}`)
+                    .width(300)
+                    .margin(10)
+                    // 点击修改当前条目的userName和age
+                    .onClick(() => {
+                      val.userName += '~';
+                      val.inner.age++;
+                    })
+                  Text(`userId: ${val.userId}, inner.age: ${val.inner.age}`)
+                    .fontSize(20)
+                    .margin(10)
+                }
+                .width('100%')
+              }
+            }
+            .width('100%')
+          }
+        }, (entry: Tuple2<string, Person>, index: int) => {
+          return entry.$0 + index.toString();
+        })
+      }
+    }
+    .width('100%')
+  }
+}
+```
+
+![persistence_v2_map](../figures/persistencev2_2.gif)
+
+### Set类型
+
+此示例展示通过globalConnect持久化Set类型数据，元素为自定义类Person。
+
+<!-- @[persistence_v2_set](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2Set.ets) --> 
+
+``` TypeScript
+import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, List, ListItem, ForEach, StorageDefaultCreator } from '@kit.ArkUI';
+import { contextConstant } from '@kit.AbilityKit';
+
+// 定义嵌套的数据类
+@ObservedV2
+export class Inner {
+  @Trace age: int = 24;
+}
+
+@ObservedV2
+export class Person {
+  @Trace userName: string = 'John';
+  userId: int = 1;
+  @Trace inner: Inner = new Inner();
+}
+
+// 为所有嵌套类型注册构造器
+const creators = new Map<Class, StorageDefaultCreator<object>>([
+  [Class.from<Person>(), () => new Person()],
+  [Class.from<Inner>(), () => new Inner()]
+]);
+
+@Entry
+@ComponentV2
+struct PersistenceV2SetExample {
+  // 通过globalConnect持久化Set<Person>类型数据
+  @Local stateVar: Set<Person> = PersistenceV2.globalConnect<Set<Person>>({
+    type: Class.from<Set<Person>>(),
+    key: 'PersonSet',
+    defaultCreator: () => {
+      return new Set<Person>();
+    },
+    areaMode: contextConstant.AreaMode.EL1,
+    enableAutoSave: true,
+    defaultSubCreators: creators
+  })!;
+  // 记录最后添加的Person，用于remove操作
+  @Local lastPerson: Person | undefined = undefined;
+
+  build() {
+    Column(undefined) {
+      Text(`set size: ${this.stateVar.size}`)
+        .fontSize(20)
+        .margin(10)
+      // 点击按钮创建一个新的Person对象并添加到Set中
+      Button('add')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          let p = new Person();
+          p.userName = 'user_' + this.stateVar.size.toString();
+          p.userId = this.stateVar.size;
+          p.inner.age = 20 + this.stateVar.size;
+          this.stateVar.add(p);
+          this.lastPerson = p;
+        })
+      // 点击按钮移除Set中最后添加的元素
+      Button('remove last')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          if (this.lastPerson && this.stateVar.has(this.lastPerson!)) {
+            this.stateVar.delete(this.lastPerson!);
+          } else {
+            let s = this.stateVar.size;
+            this.stateVar.forEach((val: Person) => {
+              if (--s === 0) {
+                this.stateVar.delete(val);
+              }
+            });
+          }
+        })
+      List() {
+        ForEach(Array.from(this.stateVar.values()), (item: Person, index: int) => {
+          ListItem() {
+            Column() {
+              if (item instanceof Person) {
+                Text(`[${index}] ${item.userName}`)
+                  .fontSize(20)
+                  .margin(10)
+                Text(`userId: ${item.userId}, inner.age: ${item.inner.age}`)
+                  .fontSize(20)
+                  .margin(10)
+              }
+            }
+            .width('100%')
+          }
+        }, (item: Person, index: int) => {
+          return item.userId + item.userName + index.toString();
+        })
+      }
+    }
+    .width('100%')
+  }
+}
+```
+
+![persistence_v2_set](../figures/persistencev2_3.gif)
+
+### Date类型
+
+此示例展示通过globalConnect持久化包含Date类型字段的自定义类，Date对象在持久化时自动完成序列化和反序列化。
+
+<!-- @[persistence_v2_date](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2Date.ets) --> 
+
+``` TypeScript
+import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, StorageDefaultCreator } from '@kit.ArkUI';
+import { contextConstant } from '@kit.AbilityKit';
+
+// 定义包含Date字段的嵌套数据类
+@ObservedV2
+export class Inner {
+  @Trace tag: string = 'inner';
+  @Trace nextDate: Date = new Date(0);
+}
+
+@ObservedV2
+export class Event {
+  @Trace name: string = 'event';
+  @Trace createdAt: Date = new Date(0);
+  @Trace lastLogin: Date = new Date(0);
+  @Trace inner: Inner = new Inner();
+}
+
+// 为所有嵌套类型注册构造器
+const creators = new Map<Class, StorageDefaultCreator<object>>([
+  [Class.from<Event>(), () => new Event()],
+  [Class.from<Inner>(), () => new Inner()]
+]);
+
+@Entry
+@ComponentV2
+struct PersistenceV2DateExample {
+  // 通过globalConnect持久化包含Date字段的Event对象
+  @Local stateVar: Event = PersistenceV2.globalConnect<Event>({
+    type: Class.from<Event>(),
+    key: 'EventDate',
+    defaultCreator: () => {
+      return new Event();
+    },
+    areaMode: contextConstant.AreaMode.EL1,
+    enableAutoSave: true,
+    defaultSubCreators: creators
+  })!;
+
+  build() {
+    Column(undefined) {
+      Text(`name: ${this.stateVar.name}`)
+        .fontSize(20)
+        .margin(10)
+      Text(`createdAt: ${this.stateVar.createdAt.toISOString()}`)
+        .fontSize(20)
+        .margin(10)
+      Text(`lastLogin: ${this.stateVar.lastLogin.toISOString()}`)
+        .fontSize(20)
+        .margin(10)
+      Text(`inner.tag: ${this.stateVar.inner.tag}`)
+        .fontSize(20)
+        .margin(10)
+      Text(`inner.nextDate: ${this.stateVar.inner.nextDate.toISOString()}`)
+        .fontSize(20)
+        .margin(10)
+      // 点击按钮更新所有Date字段和name字段
+      Button('update')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.stateVar.createdAt = new Date();
+          this.stateVar.lastLogin = new Date();
+          this.stateVar.name = 'updated_' + Date.now().toString();
+          this.stateVar.inner.nextDate = new Date();
+          this.stateVar.inner.tag = 'tag_' + Date.now().toString();
+        })
+    }
+    .width('100%')
+  }
+}
+```
+
+![persistence_v2_date](../figures/persistencev2_4.gif)
+
+### 嵌套自定义类
+
+此示例展示通过globalConnect持久化多层嵌套的自定义类（Company → Dept → Person → Inner，共4层），所有层级的类型均需在`defaultSubCreators`中注册。
+
+<!-- @[persistence_v2_nested_class](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2NestedClass.ets) --> 
+
+``` TypeScript
+import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, StorageDefaultCreator } from '@kit.ArkUI';
+import { contextConstant } from '@kit.AbilityKit';
+
+// 定义4层嵌套的数据类
+@ObservedV2
+export class Inner {
+  @Trace age: int = 0;
+}
+
+@ObservedV2
+export class Person {
+  @Trace userName: string = '';
+  @Trace inner: Inner = new Inner();
+}
+
+@ObservedV2
+export class Dept {
+  @Trace deptName: string = '';
+  @Trace person: Person = new Person();
+}
+
+@ObservedV2
+export class Company {
+  @Trace companyName: string = '';
+  @Trace dept: Dept = new Dept();
+}
+
+// 为所有层级的嵌套类型注册构造器
+const creators = new Map<Class, StorageDefaultCreator<object>>([
+  [Class.from<Company>(), () => new Company()],
+  [Class.from<Dept>(), () => new Dept()],
+  [Class.from<Person>(), () => new Person()],
+  [Class.from<Inner>(), () => new Inner()]
+]);
+
+@Entry
+@ComponentV2
+struct PersistenceV2NestedClassExample {
+  // 通过globalConnect持久化多层嵌套的Company对象
+  @Local stateVar: Company = PersistenceV2.globalConnect<Company>({
+    type: Class.from<Company>(),
+    key: 'Company',
+    defaultCreator: () => {
+      return new Company();
+    },
+    areaMode: contextConstant.AreaMode.EL1,
+    enableAutoSave: true,
+    defaultSubCreators: creators
+  })!;
+
+  build() {
+    Column(undefined) {
+      Text(`company: ${this.stateVar.companyName}`)
+        .fontSize(20)
+        .margin(10)
+      Text(`dept: ${this.stateVar.dept.deptName}`)
+        .fontSize(20)
+        .margin(10)
+      Text(`person: ${this.stateVar.dept.person.userName}`)
+        .fontSize(20)
+        .margin(10)
+      Text(`inner.age: ${this.stateVar.dept.person.inner.age}`)
+        .fontSize(20)
+        .margin(10)
+      // 点击按钮初始化所有层级的嵌套数据
+      Button('init')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.stateVar.companyName = 'MyCompany';
+          this.stateVar.dept.deptName = 'Engineering';
+          this.stateVar.dept.person.userName = 'Alice';
+          this.stateVar.dept.person.inner.age = 30;
+        })
+      // 点击按钮逐级修改嵌套数据
+      Button('modify')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.stateVar.companyName += '_v2';
+          this.stateVar.dept.deptName += '_upd';
+          this.stateVar.dept.person.userName += '!';
+          this.stateVar.dept.person.inner.age += 1;
+        })
+    }
+    .width('100%')
+  }
+}
+```
+
+![persistence_v2_nested_class](../figures/persistencev2_5.gif)
+
+### 循环引用
+
+此示例展示通过globalConnect持久化包含循环引用的对象。Node的parent字段可指向自身或另一个Node，globalConnect内部会自动处理对象间的引用关系，不会无限递归。
+
+<!-- @[persistence_v2_circular_ref](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2CircularRef.ets) --> 
+
+``` TypeScript
+import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, StorageDefaultCreator } from '@kit.ArkUI';
+import { contextConstant } from '@kit.AbilityKit';
+
+// 定义包含循环引用的Node类，parent可指向自身
+@ObservedV2
+export class Node {
+  @Trace name: string = '';
+  @Trace value: int = 0;
+  @Trace parent: Node | undefined = undefined;
+}
+
+// 为Node类型注册构造器
+const creators = new Map<Class, StorageDefaultCreator<object>>([
+  [Class.from<Node>(), () => new Node()]
+]);
+
+@Entry
+@ComponentV2
+struct PersistenceV2CircularRefExample {
+  // 通过globalConnect持久化包含循环引用的Node对象
+  @Local stateVar: Node = PersistenceV2.globalConnect<Node>({
+    type: Class.from<Node>(),
+    key: 'NodeCircular',
+    defaultCreator: () => {
+      let root = new Node();
+      root.name = 'root';
+      root.value = 1;
+      root.parent = root; // 设置自引用，演示循环引用的持久化
+      return root;
+    },
+    areaMode: contextConstant.AreaMode.EL1,
+    enableAutoSave: true,
+    defaultSubCreators: creators
+  })!;
+
+  build() {
+    Column(undefined) {
+      Text(`name: ${this.stateVar.name}`)
+        .fontSize(20)
+        .margin(10)
+      Text(`value: ${this.stateVar.value}`)
+        .fontSize(20)
+        .margin(10)
+      if (this.stateVar.parent !== undefined) {
+        Text(`parent.name: ${this.stateVar.parent!.name}`)
+          .fontSize(20)
+          .margin(10)
+        Text(`parent === self: ${this.stateVar.parent === this.stateVar}`)
+          .fontSize(20)
+          .margin(10)
+      } else {
+        Text(`parent: undefined`)
+          .fontSize(20)
+          .margin(10)
+      }
+      // 点击按钮将parent设为自身引用并修改name和value
+      Button('set self-ref')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.stateVar.parent = this.stateVar;
+          this.stateVar.name = 'root_' + Date.now().toString();
+          this.stateVar.value += 1;
+        })
+      // 点击按钮清除循环引用
+      Button('clear ref')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.stateVar.parent = undefined;
+        })
+    }
+    .width('100%')
+  }
+}
+```
+
+![persistence_v2_circular_ref](../figures/persistencev2_6.gif)
+
+### 多种集合类型混合
+
+此示例展示通过globalConnect持久化一个包含Array、Map、Set三种集合类型的自定义类MixedData。
+
+<!-- @[persistence_v2_mixed_collection](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2MixedCollection.ets) --> 
+
+``` TypeScript
+import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, List, ListItem, ForEach, StorageDefaultCreator } from '@kit.ArkUI';
+import { contextConstant } from '@kit.AbilityKit';
+
+// 定义嵌套的数据类
+@ObservedV2
+export class Inner {
+  @Trace age: int = 0;
+}
+
+@ObservedV2
+export class Person {
+  @Trace userName: string = '';
+  @Trace inner: Inner = new Inner();
+}
+
+// 定义包含多种集合类型的数据类
+@ObservedV2
+export class MixedData {
+  @Trace tags: Array<string> = new Array<string>();
+  @Trace people: Map<string, Person> = new Map<string, Person>();
+  @Trace unique: Set<Person> = new Set<Person>();
+}
+
+// 为所有嵌套类型注册构造器
+const creators = new Map<Class, StorageDefaultCreator<object>>([
+  [Class.from<MixedData>(), () => new MixedData()],
+  [Class.from<Person>(), () => new Person()],
+  [Class.from<Inner>(), () => new Inner()]
+]);
+
+@Entry
+@ComponentV2
+struct PersistenceV2MixedCollectionExample {
+  // 通过globalConnect持久化包含Array、Map、Set的MixedData对象
+  @Local stateVar: MixedData = PersistenceV2.globalConnect<MixedData>({
+    type: Class.from<MixedData>(),
+    key: 'MixedData',
+    defaultCreator: () => {
+      return new MixedData();
+    },
+    areaMode: contextConstant.AreaMode.EL1,
+    enableAutoSave: true,
+    defaultSubCreators: creators
+  })!;
+
+  build() {
+    Column(undefined) {
+      Text(`tags: ${this.stateVar.tags.length}`)
+        .fontSize(20)
+        .margin(10)
+      Text(`people: ${this.stateVar.people.size}`)
+        .fontSize(20)
+        .margin(10)
+      Text(`unique: ${this.stateVar.unique.size}`)
+        .fontSize(20)
+        .margin(10)
+
+      // 点击按钮初始化所有集合数据
+      Button('init all')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.stateVar.tags.push('tag_a');
+          let p1 = new Person();
+          p1.userName = 'alice';
+          p1.inner.age = 25;
+          this.stateVar.people.set('alice', p1);
+          this.stateVar.unique.add(p1);
+        })
+      // 点击按钮向tags数组中添加新标签
+      Button('add tag')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.stateVar.tags.push('tag_' + this.stateVar.tags.length.toString());
+        })
+      // 点击按钮创建新的Person对象并添加到Map中
+      Button('add person to map')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          let p = new Person();
+          p.userName = 'user_' + this.stateVar.people.size.toString();
+          p.inner.age = 20 + this.stateVar.people.size;
+          this.stateVar.people.set(p.userName, p);
+        })
+      // 点击按钮创建新的Person对象并添加到Set中
+      Button('add person to set')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          let p = new Person();
+          p.userName = 'set_' + this.stateVar.unique.size.toString();
+          p.inner.age = 20 + this.stateVar.unique.size;
+          this.stateVar.unique.add(p);
+        })
+
+      // 展示tags数组内容
+      Text('--- tags ---')
+        .fontSize(20)
+        .margin(10)
+      List() {
+        ForEach(this.stateVar.tags, (tag: string, index: int) => {
+          ListItem() {
+            Text(`[${index}] ${tag}`)
+              .fontSize(20)
+              .margin(10)
+          }
+          .width('100%')
+        }, (tag: string, index: int) => {
+          return tag + index.toString();
+        })
+      }
+
+      // 展示people Map内容
+      Text('--- people (map) ---')
+        .fontSize(20)
+        .margin(10)
+      List() {
+        ForEach(Array.from(this.stateVar.people.entries()), (entry: Tuple2<string, Person>, index: int) => {
+          ListItem() {
+            Column() {
+              if (entry.$1 instanceof Person) {
+                Text(`${entry.$0}: ${entry.$1.userName} (age ${entry.$1.inner.age})`)
+                  .fontSize(20)
+                  .margin(10)
+              }
+            }
+            .width('100%')
+          }
+        }, (entry: Tuple2<string, Person>, index: int) => {
+          return entry.$0 + index.toString();
+        })
+      }
+
+      // 展示unique Set内容
+      Text('--- unique (set) ---')
+        .fontSize(20)
+        .margin(10)
+      List() {
+        ForEach(Array.from(this.stateVar.unique.values()), (item: Person, index: int) => {
+          ListItem() {
+            Column() {
+              if (item instanceof Person) {
+                Text(`${item.userName} (age ${item.inner.age})`)
+                  .fontSize(20)
+                  .margin(10)
+              }
+            }
+            .width('100%')
+          }
+        }, (item: Person, index: int) => {
+          return item.userName + index.toString();
+        })
+      }
+    }
+    .width('100%')
+  }
+}
+```
+
+![persistence_v2_mixed_collection](../figures/persistencev2_7.gif)
+
+### 联合类型
+
+此示例展示通过globalConnect持久化包含联合类型属性的对象，联合类型属性可在不同类型间切换，并正确持久化和恢复。
+
+``` TypeScript
+'use static'
+
+import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, StorageDefaultCreator } from '@kit.ArkUI';
+import { contextConstant } from '@kit.AbilityKit';
+
+// 定义包含联合类型属性的数据类
+@ObservedV2
+class Sample {
+  // 联合类型属性，支持string和int之间切换
+  @Trace mixedValue: string | int = 'hello';
+  // 联合类型属性，支持double和undefined之间切换
+  @Trace optionalValue: double | undefined = undefined;
+}
+
+// 为类型注册构造器
+const creators = new Map<Class, StorageDefaultCreator<object>>([
+  [Class.from<Sample>(), () => new Sample()]
+]);
+
+@Entry
+@ComponentV2
+struct PersistenceV2UnionTypeExample {
+  // 通过globalConnect持久化包含联合类型属性的Sample对象
+  @Local stateVar: Sample = PersistenceV2.globalConnect<Sample>({
+    type: Class.from<Sample>(),
+    key: 'UnionSample',
+    defaultCreator: () => {
+      return new Sample();
+    },
+    areaMode: contextConstant.AreaMode.EL1,
+    enableAutoSave: true,
+    defaultSubCreators: creators
+  })!;
+
+  build() {
+    Column(undefined) {
+      // 展示mixedValue的值和类型
+      Text(`mixedValue: ${this.stateVar.mixedValue}`)
+        .fontSize(20)
+        .margin(10)
+      // 展示optionalValue的值
+      Text(`optionalValue: ${this.stateVar.optionalValue === undefined ? 'undefined' : this.stateVar.optionalValue}`)
+        .fontSize(20)
+        .margin(10)
+
+      // 点击按钮将mixedValue切换为string类型
+      Button('set mixedValue to string')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.stateVar.mixedValue = 'world';
+        })
+      // 点击按钮将mixedValue切换为int类型
+      Button('set mixedValue to int')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.stateVar.mixedValue = 42;
+        })
+      // 点击按钮将optionalValue切换为double类型
+      Button('set optionalValue to double')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.stateVar.optionalValue = 3.14;
+        })
+      // 点击按钮将optionalValue切换为undefined
+      Button('set optionalValue to undefined')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.stateVar.optionalValue = undefined;
+        })
+    }
+    .width('100%')
+  }
+}
+```
 
 ## 使用限制
 
-1、不支持非built-in类型，如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)、NativePointer、[ArrayList](../../reference/apis-arkts/js-apis-arraylist.md)等Native类型，使用会编译报错。
+1. 不支持非built-in类型，如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)、NativePointer、[ArrayList](../../reference/apis-arkts/js-apis-arraylist.md)等Native类型，使用会编译报错。
 
-2、单个key支持数据大小约8k，过大会导致持久化失败。
+2. connect接口持久化的数据必须是class对象，不支持容器类型（如Array、Set、Map），不支持built-in的构造对象（如Date），不支持持久化基本类型（如string、number、boolean），使用会运行时报错。globalConnect接口支持Array、Map、Set、Date等集合类型及嵌套自定义类和循环引用，需配合[defaultSubCreators](../../reference/apis-arkui/js-apis-stateManagement-static.md#connectoptions)使用，详见[globalConnect支持集合类型](#globalconnect支持集合类型)。如果需要持久化非class对象且不使用globalConnect，建议使用[Preference](../../database/preferences-guidelines.md)进行数据持久化。
 
-3、持久化的数据必须是class对象，不支持容器类型（如Array、Set、Map），不支持built-in的构造对象（如Date），不支持持久化基本类型（如string、number、boolean），使用会运行时报错。如果需要持久化非class对象，建议使用[prefrence](../../database/preferences-guidelines.md)进行数据持久化。
+3. connect接口不支持循环引用的对象，使用会编译报错。globalConnect接口支持循环引用，详见[globalConnect支持集合类型](#globalconnect支持集合类型)。
 
-4、不支持循环引用的对象，使用会编译报错。
+4. 不宜大量持久化数据，可能会导致页面卡顿。
 
-5、不宜大量持久化数据，可能会导致页面卡顿。
+5. connect和globalConnect不建议混用，如果混用，key必须不一致，否则会运行时报错。
 
-6、connect和globalConnect不建议混用，如果混用，key必须不一致，否则会运行时报错。
+6. PersistenceV2必须与UI实例关联，持久化操作需在UI实例初始化完成后调用（即[loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)回调触发后）。
 
-7、PersistenceV2必须与UI实例关联，持久化操作需在UI实例初始化完成后调用（即[loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)回调触发后）。
+   ```ts
+   // EntryAbility.ets
+   // 以下为代码片段，需要开发者自己在EntryAbility.ets中补全
+   import { PersistenceV2, ObservedV2 } from '@kit.ArkUI';
+   
+   // 在EntryAbility外部定义class
+   @ObservedV2
+   class Storage {
+     @Trace isPersist: boolean = false;
+   }
+   
+   // 在onWindowStageCreate的loadContent回调中调用PersistenceV2
+   onWindowStageCreate(windowStage: window.WindowStage): void {
+     windowStage.loadContent('pages/Index', (err) => {
+       if (err.code) {
+         return;
+       }
+       PersistenceV2.connect<Storage>(
+         Class.from<Storage>(),
+         (): Storage => {
+           return new Storage();
+         })!;
+     });
+   }
+   ```
 
-```ts
-// EntryAbility.ets
-// 以下为代码片段，需要开发者自己在EntryAbility.ets中补全
-import { PersistenceV2, ObservedV2 } from '@kit.ArkUI';
+7. 当存储数据的结构与当前数据的结构不一致时，可能会导致反序列化失败。[PersistenceErrorCallback](../../reference/apis-arkui/js-apis-stateManagement-static.md#persistenceerrorcallback)支持传入oldValue参数，开发者可通过该参数获取存于磁盘的旧的序列化数据，具体用例可见[通过notifyOnError获取旧的序列化数据](#通过notifyonerror获取旧的序列化数据)。
 
-// 在EntryAbility外部定义class
-@ObservedV2
-class Storage {
-  @Trace isPersist: boolean = false;
-}
+8. 使用globalConnect持久化集合类型时，Map的key仅支持string和number类型（含byte/short/int/long/float），使用不支持的key类型会导致整个Map被存储为空Map。
 
-// 在onWindowStageCreate的loadContent回调中调用PersistenceV2
-onWindowStageCreate(windowStage: window.WindowStage): void {
-  windowStage.loadContent('pages/Index', (err) => {
-    if (err.code) {
-      return;
-    }
-    PersistenceV2.connect<Storage>(
-      Class.from<Storage>(),
-      (): Storage => {
-        return new Storage();
-      })!;
-  });
-}
-```
+9. 使用globalConnect持久化集合类型时，如果磁盘数据的首个元素类型与目标容器首个元素类型不一致，会导致跳过恢复容器，即不使用磁盘数据重新填充容器，而是使用[defaultCreator](../../reference/apis-arkui/js-apis-stateManagement-static.md#connectoptions)中的默认值。
+
+10. 使用globalConnect持久化集合类型时，如果[defaultSubCreators](../../reference/apis-arkui/js-apis-stateManagement-static.md#connectoptions)中注册的构造器返回了错误类型（如Person的构造器返回Dog），会导致该元素被跳过，不影响其他元素。
+
+11. 使用globalConnect持久化集合类型时，如果磁盘数据包含嵌套对象但未在[defaultSubCreators](../../reference/apis-arkui/js-apis-stateManagement-static.md#connectoptions)中提供对应构造器，会导致该字段无法正确恢复为对应类实例。
+
+12. 使用globalConnect持久化集合类型时，如果磁盘中的数值类型与目标字段类型不同，会尝试类型转换，转换失败则保留默认值。
 
 ## 使用场景
 
@@ -93,9 +966,9 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 
 此示例结合enableAutoSave参数确定是否自动持久化存储数据。
 
-```ts
-'use static'
+<!-- @[persistence_v2_connect_global_connect](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2ConnectGlobalConnect.ets) --> 
 
+``` TypeScript
 import { PersistenceV2, ObservedV2, Trace, Local, Entry, 
   Button, Column, ClickEvent, ComponentV2, Text, ConnectOptions } from '@kit.ArkUI';
 
@@ -120,7 +993,7 @@ class Person {
 
 @Entry
 @ComponentV2
-struct Index {
+struct PersistenceV2ConnectGlobalConnectExample {
   // 调用globalConnect存储key为Person的对象，并返回。
   @Local cp1: Person = PersistenceV2.globalConnect<Person>({
     type: Class.from<Person>(),
@@ -149,6 +1022,8 @@ struct Index {
   build() {
     Column() {
       Button('Change cp1 userId userName userInfo')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.cp1.userId++;
           this.cp1.userName += 'A';
@@ -156,10 +1031,18 @@ struct Index {
           console.info(`cp1 userId ${this.cp1.userId}`);
         })
       Text(`userName: ${this.cp1.userName}`) // Person类由@ObservedV2装饰，且该属性由@Trace装饰，所以可观测刷新。
+        .fontSize(20)
+        .margin(10)
       Text(`userId: ${this.cp1.userId}`) // Person类由@ObservedV2装饰，但该属性非@Trace装饰，所以刷新不可观测。
+        .fontSize(20)
+        .margin(10)
       Text(`userInfo: ${this.cp1.info.userInfo}`) // Info类由@ObservedV2装饰，且userInfo属性由@Track装饰，所以可观测刷新。
+        .fontSize(20)
+        .margin(10)
 
       Button('Change cp2 userId userName userInfo')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.cp2.userId++;
           this.cp2.userName += 'A';
@@ -167,43 +1050,129 @@ struct Index {
           console.info(`cp2 userId ${this.cp2.userId}`);
         })
       Text(`userName: ${this.cp2.userName}`) // Person类由@ObservedV2装饰，且该属性由@Trace装饰，所以可观测刷新。
+        .fontSize(20)
+        .margin(10)
       Text(`userId: ${this.cp2.userId}`) // Person类由@ObservedV2装饰，但该属性非@Trace装饰，所以刷新不可观测。
+        .fontSize(20)
+        .margin(10)
       Text(`userInfo: ${this.cp2.info.userInfo}`) // Info类由@ObservedV2装饰，且userInfo属性由@Track装饰，所以可观测刷新。
+        .fontSize(20)
+        .margin(10)
 
-      Text(`save key Person userId: ${this.cp1.userId} refresh: ${this.refresh}`)
-      // 点击Text组件后，由于refresh改变，所以引起Text组件刷新，进而使得此处userId刷新。
+      Button(`save key Person userId: ${this.cp1.userId} refresh: ${this.refresh}`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
+          // 点击Button组件后，由于refresh改变，所以引起Button组件刷新，进而使得此处userId刷新。
           this.cp1.userId++;
           PersistenceV2.save('Person'); // 调用save存储该对象。
           this.refresh += 1;
         })
-        .fontSize(25)
 
-      Text(`PersistenceV2 keys: ${PersistenceV2.keys()} refresh: ${this.refresh}`)
+      Button(`All keys: ${PersistenceV2.keys()} refresh: ${this.refresh}`)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.refresh += 1;
         })
-        .fontSize(25)
 
-      Text('Remove key Person: ' + 'refresh: ' + this.refresh)
+      Button('Remove key Person: ' + 'refresh: ' + this.refresh)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           // 在PersistenceV2中删除keyorType为Person的对象。
           PersistenceV2.remove('Person');
           this.refresh += 1;
         })
-        .fontSize(25)
 
-      Text('globalConnect key Person2: ' + 'refresh: ' + this.refresh)
+      Button('globalConnect key Person2: ' + 'refresh: ' + this.refresh)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.cp1 = PersistenceV2.globalConnect<Person>(this.options)!;
           this.refresh += 1;
         })
-        .fontSize(25)
     }
     .width('100%')
     .height('100%')
   }
 }
+```
+
+![persistence_v2_connect_global_connect](../figures/persistencev2_8.gif)
+
+### 通过notifyOnError获取旧的序列化数据
+
+当存储数据的结构与当前数据的结构不同时，可能会导致反序列化失败。开发者可通过向notifyOnError的回调函数参数中加入oldValue参数来获取存于磁盘的旧的序列化数据，从而直观地感知到数据结构的差异。
+
+<!-- @[persistence_v2_notify_on_error](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2NotifyOnError.ets) -->
+
+``` TypeScript
+import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Color } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
+@ObservedV2
+export class SampleInfo {
+  @Trace public info: boolean = true;
+  @Trace public propertyName: string = 'Hello';
+}
+
+@ObservedV2
+export class SampleChild {
+  // 起始时childInfo类型为SampleInfo，使用connect/globalConnect将其存储到磁盘
+  @Trace public childInfo: SampleInfo = new SampleInfo();
+  // 将childInfo类型切换为number，并重新运行
+  // @Trace public childInfo: number = 0;
+  public groupId: number = 1;
+}
+
+@ObservedV2
+export class Sample {
+  @Trace public father: SampleChild = new SampleChild();
+}
+
+@Entry
+@ComponentV2
+struct PersistenceV2NotifyOnErrorExample {
+  static {
+    // 接受序列化失败的回调
+    PersistenceV2.notifyOnError((key: string, reason: string, msg: string, oldValue?: string) => {
+      hilog.error(DOMAIN, 'testTag', '%{public}s',
+        `error key: ${key}, reason: ${reason}, message: ${msg}, oldValue: ${oldValue}`);
+    });
+  }
+  @Local refresh: number = 0;
+  // 调用connect存储
+  @Local p: Sample = PersistenceV2.connect<Sample>(Class.from<Sample>(), 'connectSample', () => new Sample())!;
+
+  build() {
+    Column() {
+      // 显示数据
+      Text('Key connectSample: ' + this.p.father.groupId.toString())
+        .onClick(() => {
+          this.p.father.groupId += 1;
+        })
+        .fontColor(Color.Red)
+
+      // save接口
+      // 未被@Trace装饰的变量需要借助状态变量refresh才能刷新
+      Text('save key connect3: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
+        .onClick(() => {
+          // 未被@Trace保存的对象无法自动存储，需要调用save存储
+          this.p.father.groupId += 1;
+          PersistenceV2.save('connectSample');
+          this.refresh += 1;
+        })
+    }
+    .width('100%')
+  }
+}
+```
+初始时，SampleChild中的childInfo变量类型为SampleInfo，正常存储后，将childInfo变量的类型切换为number，并赋值为1，之后再次启动应用程序，此时会由于存储数据的结构与当前数据的结构不一致，导致数据反序列化失败。此时会通过notifyOnError中设置的回调函数，将磁盘中存储的旧的序列化数据打印出来。即在Error日志中显示：
+```text
+error key: connectSample, reason: serialization, message: TypeError: Receiver is not a JSObject, oldValue: {"father":{"childInfo":{"info":true,"propertyName":"Hello"},"groupId":1}}
 ```
 
 ## 使用建议
@@ -212,9 +1181,9 @@ struct Index {
 
 ### connect向globalConnect迁移实现
 
-```ts
-'use static'
+<!-- @[persistence_v2_connect_usage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2ConnectUsage.ets) --> 
 
+``` TypeScript
 // 使用connect存储数据
 import { PersistenceV2, ObservedV2, Trace, Local, Entry, 
   Button, Column, ClickEvent, ComponentV2, Text } from '@kit.ArkUI';
@@ -238,7 +1207,7 @@ class Person {
 
 @Entry
 @ComponentV2
-struct Index {
+struct PersistenceV2ConnectUsageExample {
   // 调用connect存储key为Person的对象，并返回。
   @Local cp1: Person = PersistenceV2.connect<Person>(
     Class.from<Person>(),
@@ -251,6 +1220,8 @@ struct Index {
   build() {
     Column() {
       Button('Change userId userName userInfo')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.cp1.userId++;
           this.cp1.userName += 'A';
@@ -258,17 +1229,24 @@ struct Index {
           console.info(`cp1 userId ${this.cp1.userId}`);
         })
       Text(`userName: ${this.cp1.userName}`) // Person类由@ObservedV2装饰，且该属性由@Trace装饰，所以可观测刷新。
+        .fontSize(20)
+        .margin(10)
       Text(`userId: ${this.cp1.userId}`) // Person类由@ObservedV2装饰，但该属性非@Trace装饰，所以刷新不可观测。
+        .fontSize(20)
+        .margin(10)
       Text(`userInfo: ${this.cp1.info.userInfo}`) // Info类由@ObservedV2装饰，且userInfo属性由@Track装饰，所以可观测刷新。
+        .fontSize(20)
+        .margin(10)
 
-      Text(`save key Person userId: ${this.cp1.userId} refresh: ${this.refresh}`)
-      // 点击Text组件后，由于refresh改变，所以引起Text组件刷新，进而使得此处userId刷新。
+      Button(`save key Person userId: ${this.cp1.userId} refresh: ${this.refresh}`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
+          // 点击Button组件后，由于refresh改变，所以引起Button组件刷新，进而使得此处userId刷新。
           this.cp1.userId++;
           PersistenceV2.save('Person'); // 调用save存储该对象。
           this.refresh += 1;
         })
-        .fontSize(25)
     }
     .width('100%')
     .height('100%')
@@ -276,9 +1254,11 @@ struct Index {
 }
 ```
 
-```ts
-'use static'
+![persistence_v2_connect_usage](../figures/persistencev2_9.gif)
 
+<!-- @[persistence_v2_connect_migration](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2ConnectMigration.ets) --> 
+
+``` TypeScript
 // 迁移到globalConnect
 import { PersistenceV2, ObservedV2, Trace, Local, Entry, 
   Button, Column, ClickEvent, ComponentV2, Text } from '@kit.ArkUI';
@@ -333,7 +1313,7 @@ function move() {
 
 @Entry
 @ComponentV2
-struct Index {
+struct PersistenceV2ConnectMigrationExample {
   // 调用globalConnect存储key为Person的对象，并返回。
   @Local cp1: Person = PersistenceV2.globalConnect<Person>({
     type: Class.from<Person>(),
@@ -352,6 +1332,8 @@ struct Index {
   build() {
     Column() {
       Button('Change userId userName userInfo')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.cp1.userId++;
           this.cp1.userName += 'A';
@@ -359,17 +1341,24 @@ struct Index {
           console.info(`cp1 userId ${this.cp1.userId}`);
         })
       Text(`userName: ${this.cp1.userName}`) // Person类由@ObservedV2装饰，且该属性由@Trace装饰，所以可观测刷新。
+        .fontSize(20)
+        .margin(10)
       Text(`userId: ${this.cp1.userId}`) // Person类由@ObservedV2装饰，但该属性非@Trace装饰，所以刷新不可观测。
+        .fontSize(20)
+        .margin(10)
       Text(`userInfo: ${this.cp1.info.userInfo}`) // Info类由@ObservedV2装饰，且userInfo属性由@Track装饰，所以可观测刷新。
+        .fontSize(20)
+        .margin(10)
 
-      Text(`save key Person userId: ${this.cp1.userId} refresh: ${this.refresh}`)
-      // 点击Text组件后，由于refresh改变，所以引起Text组件刷新，进而使得此处userId刷新。
+      Button(`save key Person userId: ${this.cp1.userId} refresh: ${this.refresh}`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
+          // 点击Button组件后，由于refresh改变，所以引起Button组件刷新，进而使得此处userId刷新。
           this.cp1.userId++;
           PersistenceV2.save('Person'); // 调用save存储该对象。
           this.refresh += 1;
         })
-        .fontSize(25)
     }
     .width('100%')
     .height('100%')
@@ -377,4 +1366,287 @@ struct Index {
 }
 ```
 
+![persistence_v2_connect_migration](../figures/persistencev2_10.gif)
+
 connect向globalConnect迁移，需要将key绑定的value赋值给globalConnect进行存储，之后当自定义组件使用globalConnect连接时，globalConnect绑定的数据即为之前使用connect保存的数据，开发者可以自定义move函数，并将其放在合适位置迁移即可。
+
+## 常见问题
+
+### 容器元素类型变更后重新进入应用数据异常
+
+当开发者将`@Trace`字段的容器元素类型从自定义对象数组`Person[]`改为基本类型数组（如`int[]`），如果defaultCreator中未给数组添加默认元素，此时旧数据中存储的`Person`类型元素会被错误地填充到新类型的数组中，导致运行时类型错误或instanceof检查失败。这是由于框架侧无法获取容器类型的泛型信息，在没有容器默认元素的情况下无法感知到容器元素的类型发生了变更。因此，不建议开发者手动更改容器中的元素类型。
+
+<!-- @[persistence_v2_container_type_error](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2ContainerTypeError.ets) -->
+
+``` TypeScript
+import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, List, ListItem, ForEach, StorageDefaultCreator } from '@kit.ArkUI';
+import { contextConstant } from '@kit.AbilityKit';
+
+@ObservedV2
+export class Person {
+  @Trace userName: string = 'John';
+  userId: int = 1;
+}
+
+const creators = new Map<Class, StorageDefaultCreator<object>>([
+  [Class.from<Person>(), () => new Person()]
+]);
+
+@Entry
+@ComponentV2
+struct PersistenceV2ContainerTypeErrorExample {
+  @Local stateVar: Array<Person> = PersistenceV2.globalConnect<Array<Person>>({
+    type: Class.from<Array<Person>>(),
+    key: 'PersonArray',
+    defaultCreator: () => {
+      return new Array<Person>();
+    },
+    areaMode: contextConstant.AreaMode.EL1,
+    enableAutoSave: true,
+    defaultSubCreators: creators
+  })!;
+
+  // 以下为错误演示：将元素类型从Person改为int后，未提供默认元素，旧数据被错误恢复
+  /* @Local stateVar: Array<int> = PersistenceV2.globalConnect<Array<int>>({
+       type: Class.from<Array<int>>(),
+       key: 'PersonArray',
+       defaultCreator: () => {
+         return new Array<int>();
+       },
+       areaMode: contextConstant.AreaMode.EL1,
+       enableAutoSave: true,
+       defaultSubCreators: creators
+     })!;
+   */
+
+  build() {
+    Column(undefined) {
+      Text(`length: ${this.stateVar.length}`)
+      // 点击按钮添加新的Person对象
+      Button('add Person')
+        .onClick(() => {
+          let p = new Person();
+          p.userName = 'user_' + this.stateVar.length.toString();
+          this.stateVar.push(p);
+        })
+      /* Button('add int')
+         .onClick(() => {
+           this.stateVar.push(this.stateVar.length);
+         })
+       */
+      List() {
+        ForEach(this.stateVar, (item: Any, index: int) => {
+          ListItem() {
+            Column() {
+              if (item instanceof Person) {
+                Text(`[${index}] ${(item as Person).userName}`)
+                  .fontSize(20)
+              } else if (item instanceof int) {
+                Text(`[${index}] ${item as int}`)
+                  .fontSize(20)
+              } else {
+                Text(`[${index}] NOT Person or int: ${Class.ofAny(item)!.getName()}`)
+                  .fontSize(20)
+              }
+            }
+          }
+        }, (item: Any, index: int) => {
+          return index.toString();
+        })
+      }
+    }
+  }
+}
+```
+
+在提供了默认元素的情况下，框架会判断出元素类型发生改变，跳过数据恢复，直接使用默认值。
+
+<!-- @[persistence_v2_container_element_change](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/PersistenceV2/entry/src/main/ets/pages/PersistenceV2ContainerElementChange.ets) -->
+
+``` TypeScript
+import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, List, ListItem, ForEach, StorageDefaultCreator } from '@kit.ArkUI';
+import { contextConstant } from '@kit.AbilityKit';
+
+@ObservedV2
+export class Person {
+  @Trace userName: string = 'John';
+  userId: int = 1;
+}
+
+const creators = new Map<Class, StorageDefaultCreator<object>>([
+  [Class.from<Person>(), () => new Person()]
+]);
+
+@Entry
+@ComponentV2
+struct Index {
+  // 提供默认元素new Person()，框架可据此检测到类型变更并跳过旧数据恢复
+  @Local stateVar: Array<Person> = PersistenceV2.globalConnect<Array<Person>>({
+    type: Class.from<Array<Person>>(),
+    key: 'PersonArray',
+    defaultCreator: () => {
+      return new Array<Person>(new Person());
+    },
+    areaMode: contextConstant.AreaMode.EL1,
+    enableAutoSave: true,
+    defaultSubCreators: creators
+  })!;
+
+  // 以下为将元素类型从Person改为int的演示，提供了默认元素0, 1, 2，框架可据此检测到类型变更
+  /* @Local stateVar: Array<int> = PersistenceV2.globalConnect<Array<int>>({
+       type: Class.from<Array<int>>(),
+       key: 'PersonArray',
+       defaultCreator: () => {
+         return new Array<int>(0, 1, 2);
+       },
+       areaMode: contextConstant.AreaMode.EL1,
+       enableAutoSave: true,
+       defaultSubCreators: creators
+     })!;
+   */
+
+  build() {
+    Column(undefined) {
+      Text(`length: ${this.stateVar.length}`)
+      // 点击按钮添加新的Person对象
+      Button('add Person')
+        .onClick(() => {
+          let p = new Person();
+          p.userName = 'user_' + this.stateVar.length.toString();
+          this.stateVar.push(p);
+        })
+      /* Button('add int')
+         .onClick(() => {
+           this.stateVar.push(this.stateVar.length);
+         })
+       */
+      List() {
+        ForEach(this.stateVar, (item: Any, index: int) => {
+          ListItem() {
+            Column() {
+              if (item instanceof Person) {
+                Text(`[${index}] ${(item as Person).userName}`)
+                  .fontSize(20)
+              } else if (item instanceof int) {
+                Text(`[${index}] ${item as int}`)
+                  .fontSize(20)
+              } else {
+                Text(`[${index}] NOT Person or int: ${Class.ofAny(item)!.getName()}`)
+                  .fontSize(20)
+              }
+            }
+          }
+        }, (item: Any, index: int) => {
+          return index.toString();
+        })
+      }
+    }
+  }
+}
+```
+
+### 修改联合类型定义后重新进入应用数据异常
+
+当开发者使用`@Trace`装饰联合类型属性时，联合类型的定义可以包含undefined。在将undefined作为属性值持久化后，若此时修改联合类型定义，将undefined去除，则重新进入应用后，将根据属性的类型定义，表现出不同的行为：
+
+- 如果属性的类型为基本类型（boolean、byte、char、short、int、long、float、double），将使用默认值覆盖undefined的值。
+- 如果属性的类型为非基本类型，如string、对象类型或仍为联合类型，虽然对象会成功恢复，但应用运行时由于undefined值与类型定义不一致会出现数据异常。
+
+状态管理框架使用[setValue](../../reference/apis-arkts/arkts-sta-reflect.md#setvalue-1)接口恢复持久化对象属性，上述行为与setValue接口的行为保持一致，即向基本类型赋值undefined时抛出错误（此时使用默认值恢复），向string、对象类型或联合类型赋值undefined时将赋值成功。
+
+因此，不建议开发者将undefined定义进联合类型并且持久化后，又将undefined类型从联合类型的定义中去除，这可能会导致行为与预期产生不一致。
+
+>**说明：**
+>
+>由于complexValue去除undefined定义后会导致应用运行时异常，如果开发者想要观察basicValue使用默认值覆盖undefined的行为，需要先将complexValue相关的定义和逻辑注释掉。
+
+``` TypeScript
+'use static'
+
+import { PersistenceV2, ObservedV2, Trace, Entry, ComponentV2, Local, Column, Text, Button, StorageDefaultCreator } from '@kit.ArkUI';
+import { contextConstant } from '@kit.AbilityKit';
+
+@ObservedV2
+export class SampleInfo {
+  @Trace info: string = 'Hello';
+}
+
+// 初始定义：联合类型包含undefined
+@ObservedV2
+export class Sample {
+  @Trace basicValue: int | undefined = undefined;
+  @Trace complexValue: SampleInfo | undefined = undefined;
+}
+// 以下为错误演示：将联合类型中的undefined去除后重新运行应用
+// basicValue为基本类型：重新进入应用时，框架使用默认值覆盖undefined的值
+// complexValue为对象类型：重新进入应用时，对象成功恢复，但运行时由于undefined值与类型定义不一致会出现数据异常
+/* @ObservedV2
+   export class Sample {
+     @Trace basicValue: int = 0;
+     @Trace complexValue: SampleInfo = new SampleInfo();
+   }
+ */
+
+// 为嵌套类型注册构造器
+const creators = new Map<Class, StorageDefaultCreator<object>>([
+  [Class.from<Sample>(), () => new Sample()],
+  [Class.from<SampleInfo>(), () => new SampleInfo()]
+]);
+
+@Entry
+@ComponentV2
+struct PersistenceV2UnionTypeExample {
+  // 通过globalConnect持久化包含联合类型属性的Sample对象
+  @Local stateVar: Sample = PersistenceV2.globalConnect<Sample>({
+    type: Class.from<Sample>(),
+    key: 'UnionSample',
+    defaultCreator: () => {
+      return new Sample();
+    },
+    areaMode: contextConstant.AreaMode.EL1,
+    enableAutoSave: true,
+    defaultSubCreators: creators
+  })!;
+
+  build() {
+    Column(undefined) {
+      // 展示基本类型联合undefined的值
+      Text(`basicValue: ${this.stateVar.basicValue === undefined ? 'undefined' : this.stateVar.basicValue}`)
+        .fontSize(20)
+        .margin(10)
+      // 展示对象类型联合undefined的值
+      Text(`complexValue: ${this.stateVar.complexValue === undefined ? 'undefined' : this.stateVar.complexValue!.info}`)
+        .fontSize(20)
+        .margin(10)
+
+      // 点击按钮设置basicValue和complexValue为有意义的值
+      Button('set values')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.stateVar.basicValue = 1;
+          this.stateVar.complexValue = new SampleInfo();
+        })
+      // 点击按钮将basicValue和complexValue设为undefined并持久化
+      // 注意：只有在类型定义包含undefined时，才允许将值设置为undefined
+      Button('set undefined')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.stateVar.basicValue = undefined;
+          this.stateVar.complexValue = undefined;
+        })
+      // 去掉undefined定义后，需将上述赋值注释掉
+      /* Button('set undefined')
+         .width(300)
+         .margin(10)
+         .onClick(() => {
+           this.stateVar.basicValue = undefined;
+           this.stateVar.complexValue = undefined;
+         })
+       */
+    }
+    .width('100%')
+  }
+}
+```

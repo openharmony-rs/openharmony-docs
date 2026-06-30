@@ -33,35 +33,13 @@ Flex(value?: FlexOptions)
 
 Flex布局容器。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[Flex](#flex23)。
 
 **ArkTS-Dyn起始版本：** 7
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| ----- | --- | --- | --- |
-| value | [FlexOptions](#flexoptions对象说明) | 否 | 弹性布局子组件参数。 |
-
-### Flex<sup>23+</sup>
-
-Flex(value?: FlexOptions，content_?: CustomBuilder)
-
-Flex布局容器。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[Flex](#flex-1)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -70,7 +48,6 @@ Flex布局容器。
 | 参数名 | 类型 | 必填 | 说明 |
 | ----- | --- | --- | --- |
 | value | [FlexOptions](#flexoptions对象说明) | 否 | 弹性布局子组件参数。 |
-| content_  | [CustomBuilder](ts-types.md#custombuilder8) | 否    | 定义子组件的Builder函数。 |
 
 ## FlexOptions对象说明
 
@@ -80,18 +57,21 @@ Flex布局容器。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| direction      | [FlexDirection](ts-appendix-enums.md#flexdirection) | 否 | 是     | 子组件在Flex容器上排列的方向，即主轴的方向。<br/>默认值：FlexDirection.Row <br />异常值按默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。   <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23            |
-| wrap           | [FlexWrap](ts-appendix-enums.md#flexwrap) | 否 | 是     | Flex容器是单行/列还是多行/列排列。<br/>默认值：FlexWrap.NoWrap <br />异常值按默认值处理。<br/>**说明：** <br/>在多行布局时，通过交叉轴方向，确认新行堆叠方向。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
-| justifyContent | [FlexAlign](ts-appendix-enums.md#flexalign) | 否 | 是     | 所有子组件在Flex容器主轴上的对齐格式。<br/>默认值：FlexAlign.Start <br />异常值按默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23                  |
-| alignItems     | [ItemAlign](ts-appendix-enums.md#itemalign) | 否 | 是     | 所有子组件在Flex容器交叉轴上的对齐格式。 <br/>默认值：ItemAlign.Start <br />异常值按默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23               |
-| alignContent   | [FlexAlign](ts-appendix-enums.md#flexalign) | 否 | 是     | 当交叉轴存在额外空间时，多行内容之间的对齐方式。仅在wrap为Wrap或WrapReverse下生效。<br/>默认值：FlexAlign.Start <br/>异常值按默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23  |
-| space<sup>12+</sup>          | [FlexSpaceOptions<sup>12+</sup>](ts-container-flex.md#flexspaceoptions12) | 否 | 是   | 所有子组件在Flex容器主轴或交叉轴的间距。<br/>默认值：{main: LengthMetrics.px(0), cross: LengthMetrics.px(0)} <br />非法值：按默认值处理。 <br/>space为负数、百分比或者justifyContent设置为FlexAlign.SpaceBetween、FlexAlign.SpaceAround、FlexAlign.SpaceEvenly时不生效。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| direction      | [FlexDirection](ts-appendix-enums.md#flexdirection) | 否 | 是     | 子组件在Flex容器上排列的方向，即主轴的方向。<br/>默认值：FlexDirection.Row <br />异常值按默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。   <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23            |
+| wrap           | [FlexWrap](ts-appendix-enums.md#flexwrap) | 否 | 是     | Flex容器是单行/列还是多行/列排列。<br/>默认值：FlexWrap.NoWrap <br />异常值按默认值处理。<br/>**说明：** <br/>在多行布局时，通过交叉轴方向，确认新行堆叠方向。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| justifyContent | [FlexAlign](ts-appendix-enums.md#flexalign) | 否 | 是     | 所有子组件在Flex容器主轴上的对齐格式。<br/>默认值：FlexAlign.Start <br />异常值按默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。  <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23                  |
+| alignItems     | [ItemAlign](ts-appendix-enums.md#itemalign) | 否 | 是     | 所有子组件在Flex容器交叉轴上的对齐格式。 <br/>默认值：ItemAlign.Start <br />异常值按默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。  <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23               |
+| alignContent   | [FlexAlign](ts-appendix-enums.md#flexalign) | 否 | 是     | 当交叉轴存在额外空间时，多行内容之间的对齐方式。仅在wrap为Wrap或WrapReverse下生效。<br/>默认值：FlexAlign.Start <br/>异常值按默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23  |
+| space<sup>12+</sup>          | [FlexSpaceOptions<sup>12+</sup>](ts-container-flex.md#flexspaceoptions12) | 否 | 是   | 所有子组件在Flex容器主轴或交叉轴的间距。<br/>默认值：{main: LengthMetrics.px(0), cross: LengthMetrics.px(0)} <br />非法值：按默认值处理。 <br/>space为负数、百分比或者justifyContent设置为FlexAlign.SpaceBetween、FlexAlign.SpaceAround、FlexAlign.SpaceEvenly时不生效。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+
 
 ## FlexSpaceOptions<sup>12+</sup>
 
 设置Flex容器的子组件在主轴或交叉轴的间距。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,19 +88,15 @@ Flex布局容器。
 
 除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
 
-### attributeModifier<sup>12+</sup>
+### attributeModifier<sup>23+</sup>
 
-ArkTS-Dyn: attributeModifier(modifier: AttributeModifier\<FlexAttribute>)
-
-ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<FlexAttribute> | AttributeModifier\<CommonMethod> | undefined)
+attributeModifier(modifier: AttributeModifier\<FlexAttribute> | AttributeModifier\<CommonMethod> | undefined)
 
 设置组件的动态属性。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -128,7 +104,7 @@ ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<FlexAttribute> | Attri
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| modifier  | ArkTS-Dyn: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<FlexAttribute><br/>ArkTS-Sta: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<FlexAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置Flex组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<FlexAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置Flex组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
 
 ## 事件
 
@@ -268,7 +244,7 @@ struct FlexExample1 {
 }
 ```
 
-![zh-cn_image_0000001219744189](figures/zh-cn_image_0000001219744189.PNG)
+![flex1](figures/flex1.PNG)
 
 ### 示例2（子组件单/多行排列）
 
@@ -368,7 +344,7 @@ struct FlexExample2 {
 }
 ```
 
-![zh-cn_image_0000001174264366](figures/zh-cn_image_0000001174264366.png)
+![flex2](figures/flex2.png)
 
 ### 示例3（子组件在主轴上的对齐格式）
 
@@ -380,7 +356,7 @@ struct FlexExample2 {
 // xxx.ets
 @Component
 struct JustifyContentFlex {
-  justifyContent : number = 0;
+  justifyContent: number = 0;
 
   build() {
     Flex({ justifyContent: this.justifyContent }) {
@@ -431,7 +407,7 @@ import { Entry, Component, Text, Column, Flex, ColumnOptions, FlexOptions, FlexA
 
 @Component
 struct JustifyContentFlex {
-  justifyContent : FlexAlign = FlexAlign.Start;
+  justifyContent: FlexAlign = FlexAlign.Start;
 
   build() {
     Flex({ justifyContent: this.justifyContent as FlexAlign } as FlexOptions) {
@@ -474,7 +450,7 @@ struct FlexExample3 {
 }
 ```
 
-![zh-cn_image_0000001174582854](figures/zh-cn_image_0000001174582854.PNG)
+![flex3](figures/flex3.PNG)
 
 ### 示例4（子组件在交叉轴上的对齐方式）
 
@@ -486,7 +462,7 @@ struct FlexExample3 {
 // xxx.ets
 @Component
 struct AlignItemsFlex {
-  alignItems : number = 0;
+  alignItems: number = 0;
 
   build() {
     Flex({ alignItems: this.alignItems }) {
@@ -537,7 +513,7 @@ import { Entry, Component, Text, Column, Flex, ColumnOptions, FlexOptions, ItemA
 
 @Component
 struct AlignItemsFlex {
-  alignItems : ItemAlign = ItemAlign.Auto;
+  alignItems: ItemAlign = ItemAlign.Auto;
 
   build() {
     Flex({ alignItems: this.alignItems } as FlexOptions) {
@@ -558,10 +534,10 @@ struct FlexExample4 {
     Column() {
       Column({ space: 5 } as ColumnOptions) {
         Text('alignItems:Auto').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        AlignItemsFlex({ alignItems: ItemAlign.Auto }) // 子组件在容器交叉轴上首部对齐
+        AlignItemsFlex({ alignItems: ItemAlign.Auto }) // 子组件在容器交叉轴上首端对齐
 
         Text('alignItems:Start').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        AlignItemsFlex({ alignItems: ItemAlign.Start }) // 子组件在容器交叉轴上首部对齐
+        AlignItemsFlex({ alignItems: ItemAlign.Start }) // 子组件在容器交叉轴上首端对齐
 
         Text('alignItems:Center').fontSize(9).fontColor(0xCCCCCC).width('90%')
         AlignItemsFlex({ alignItems: ItemAlign.Center }) // 子组件在容器交叉轴上居中对齐
@@ -580,7 +556,7 @@ struct FlexExample4 {
 }
 ```
 
-![zh-cn_image_0000001174422904](figures/zh-cn_image_0000001174422904.png)
+![flex4](figures/flex4.png)
 
 ### 示例5（多行内容的对齐方式）
 
@@ -622,7 +598,7 @@ struct FlexExample5 {
         AlignContentFlex({ alignContent: FlexAlign.End }) // 多行布局下子组件尾部对齐
 
         Text('alignContent:SpaceBetween').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        AlignContentFlex({ alignContent: FlexAlign.SpaceBetween }) // 多行布局下第一行子组件与列首对齐，最后一行子组件与列尾对齐
+        AlignContentFlex({ alignContent: FlexAlign.SpaceBetween }) // 多行布局下第一行子组件与行首对齐，最后一行子组件与行尾对齐
 
         Text('alignContent:SpaceAround').fontSize(9).fontColor(0xCCCCCC).width('90%')
         AlignContentFlex({ alignContent: FlexAlign.SpaceAround }) // 多行布局下第一行子组件到列首的距离和最后一行子组件到列尾的距离是相邻行之间距离的一半
@@ -710,7 +686,7 @@ struct FlexExample5 {
 }
 ```
 
-![zh-cn_image_0000001174422906](figures/zh-cn_image_0000001174422906.PNG)
+![flex5](figures/flex5.PNG)
 
 ### 示例6（子组件单/多行排列时的主/交叉轴间距）
 
@@ -723,7 +699,7 @@ import {LengthMetrics} from '@kit.ArkUI';
 
 @Entry
 @Component
-struct FlexExample2 {
+struct FlexExample6 {
   build() {
     Column() {
       Column({ space: 5 }) {
@@ -771,7 +747,7 @@ import { Entry, Component, Text, Column, Flex, ColumnOptions, FlexOptions, FlexW
 
 @Entry
 @Component
-struct FlexExample2 {
+struct FlexExample6 {
   build() {
     Column() {
       Column({ space: 5 } as ColumnOptions) {
@@ -811,7 +787,7 @@ struct FlexExample2 {
 }
 ```
 
-![zh-cn_image_0000001174422907](figures/zh-cn_image_0000001174422907.PNG)
+![flex6](figures/flex6.PNG)
 
 ### 示例7（宽度自适应的Flex容器）
 
@@ -821,7 +797,7 @@ struct FlexExample2 {
 
 ```ts
 @Component
-struct Demo {
+struct FlexExample7 {
   @Require @Prop text: string
 
   build() {
@@ -889,7 +865,7 @@ import {
 import { Require, PropRef } from '@ohos.arkui.stateManagement'
 
 @Component
-struct Demo {
+struct FlexExample7 {
   @Require @PropRef text: string
 
   build() {
@@ -938,4 +914,4 @@ struct Index {
 }
 ```
 
-![zh-cn_flexDemo_7](figures/zh-cn_flexDemo_7.png)
+![flexDemo7](figures/flexDemo7.png)

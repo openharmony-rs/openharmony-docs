@@ -1,12 +1,12 @@
 # @ohos.web.WebNativeMessagingExtensionContext (Web Native Messaging Extension Context)
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @weixin_41848015-->
-<!--Designer: @libing23232323-->
+<!--Owner: @csliutt-private-->
+<!--Designer: @ringking0-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-WebNativeMessagingExtensionContext是Web原生消息扩展的上下文，继承自ExtensionContext。它提供了与WebNativeMessagingExtension通信消息的交互能力。
+WebNativeMessagingExtensionContext是Web原生消息扩展（[WebNativeMessagingExtensionAbility](./arkts-apis-web-webNativeMessagingExtensionAbility.md)）的运行上下文，继承自ExtensionContext，为扩展Ability提供生命周期管理、Ability启动以及原生消息连接控制能力。开发者可在继承WebNativeMessagingExtensionAbility的扩展中通过`this.context`获取该上下文，进而调用[startAbility](#startability)启动其他Ability、调用[startAbilityForResult](#startabilityforresult)启动UIAbility并接收返回结果、调用[terminateSelf](#terminateself)结束当前扩展，或调用[stopNativeConnection](#stopnativeconnection)停止指定的Web原生消息连接。
 
 > **说明:**
 >
@@ -137,6 +137,127 @@ export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAb
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
         console.error(`Failed to start ability. Code: ${code}, Message: ${message}`);
+    }
+  }
+}
+```
+
+### startAbilityForResult
+
+startAbilityForResult(want: Want, options?: StartOptions): Promise&lt;AbilityResult&gt;
+
+启动一个UIAbility，开发者可以通过回调函数接收被拉起的UIAbility退出时的返回结果。使用Promise异步回调。
+
+UIAbility被启动后，有如下情况:
+ - 正常情况下可通过调用[terminateSelfWithResult](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)接口使之终止并且返回结果给调用方。
+ - 异常情况下比如销毁UIAbility会返回异常信息给调用方，异常信息中resultCode为-1。
+ - 只支持拉起自己应用的UIAbility。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数:**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|-------|-------|-------|-------|
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 表示需要启动的UIAbility的信息。 |
+| options | [StartOptions](../apis-ability-kit/js-apis-app-ability-startOptions.md) | 否 | 启动选项。 |
+
+**返回值:**
+
+| 类型 | 说明 |
+|------|------|
+|Promise&lt;[AbilityResult](../apis-ability-kit/js-apis-inner-ability-abilityResult.md)&gt; | Promise对象，返回被启动方退出时的结果码和数据。 |
+
+**错误码:**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
+
+| 错误码ID | 错误信息                                 |
+| -------- | ----------------------------------------|
+| 201      | The application does not have permission to call the interface. |
+| 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. |
+| 16000004 | Cannot start an invisible component. |
+| 16000005 | The specified process does not have the permission. |
+| 16000008 | The crowdtesting application expires.  |
+| 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
+| 16000011 | The context does not exist. |
+| 16000012 | The application is controlled by the AppGallery and cannot be started. |
+| 16000013 | The application is controlled by Enterprise Device Manager and cannot be started. |
+| 16000019 | No matching ability is found. |
+| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
+| 16000055 | Installation-free timed out. |
+| 16000071 | The application does not support appClone mode in multiAppMode. |
+| 16000072 | The application does not support appClone and multi-instance mode in multiAppMode. |
+| 16000073 | The app clone index is invalid. |
+| 16000076 | The app instance key is invalid. |
+| 16000077 | The number of app instances reaches the limit. |
+| 16000078 | The application does not support multiple instances. |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
+| 16000080 | Instances cannot be created for other applications during inter-application startup. |
+
+**示例:**
+
+ArkTS-Dyn示例：
+```ts
+import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
+import { Want, common } from '@kit.AbilityKit';
+
+export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAbility {
+  onConnectNative(info: ConnectionInfo): void {
+    const abilityWant: Want = {
+      bundleName: 'com.example.mybundle', // 请开发者替换为实际的 bundleName
+      abilityName: 'MainAbility' // 请开发者替换为实际的 abilityName
+    };
+    try {
+      const context = this.context; // 获取 WebNativeMessagingExtensionContext 实例
+      context.startAbilityForResult(abilityWant).then((result: common.AbilityResult) => {
+        console.info(`Ability started successfully, result code: ${result.resultCode}`);
+        if (result.want) {
+          console.info(`Result data: ${JSON.stringify(result.want)}`);
+        }
+      }).catch((err: Error) => {
+        console.error(`Failed to start ability. Code: ${err.name}, Message: ${err.message}`);
+      });
+    } catch (err) {
+      console.error(`Failed to start ability. Code: ${(err as Error).name}, Message: ${(err as Error).message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+import WebNativeMessagingExtensionAbility from '@ohos.web.WebNativeMessagingExtensionAbility'
+import { ConnectionInfo } from '@ohos.web.WebNativeMessagingExtensionAbility';
+import { Want, common } from '@kit.AbilityKit';
+
+export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAbility {
+  onConnectNative(info: ConnectionInfo): void {
+    const abilityWant: Want = {
+      bundleName: 'com.example.mybundle', // 请开发者替换为实际的 bundleName
+      abilityName: 'MainAbility' // 请开发者替换为实际的 abilityName
+    };
+    try {
+      const context = this.context; // 获取 WebNativeMessagingExtensionContext 实例
+      context.startAbilityForResult(abilityWant).then((result: common.AbilityResult) => {
+        console.info(`Ability started successfully, result code: ${result.resultCode}`);
+        if (result.want) {
+          console.info(`Result data: ${JSON.stringify(result.want)}`);
+        }
+      }).catch((err: Error) => {
+        console.error(`Failed to start ability. Code: ${err.name}, Message: ${err.message}`);
+      });
+    } catch (err) {
+      console.error(`Failed to start ability. Code: ${(err as Error).name}, Message: ${(err as Error).message}`);
     }
   }
 }

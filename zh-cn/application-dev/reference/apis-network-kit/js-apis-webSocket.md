@@ -782,11 +782,10 @@ onOpen(callback: Callback\<OpenResult\>): void
 
 订阅WebSocket的打开事件。使用callback异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **参数：**
 
@@ -857,11 +856,9 @@ offOpen(callback?: Callback\<OpenResult\>): void
 >
 > 可以指定传入offOpen中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Communication.NetStack
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **参数：**
 
@@ -881,6 +878,85 @@ let callback1 = (value: webSocket.OpenResult) => {
 ws.onOpen(callback1);
 // 可以指定传入onOpen中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 ws.offOpen(callback1);
+```
+### on('openInfo')
+
+on(type: 'openInfo', callback: AsyncCallback\<WebSocketOpenInfo\>): void
+
+订阅WebSocket的打开信息事件，使用callback异步回调。该事件用于获取WebSocket连接成功后的详细信息。该接口需要在调用[connect](#connect)发起连接请求前调用。
+ 
+ **系统能力**：SystemCapability.Communication.NetStack
+ 
+ **ArkTS-Dyn起始版本：** 26.0.0
+ 
+ **ArkTS-Sta起始版本：** 26.0.0
+ 
+ **模型约束**：此接口仅可在Stage模型下使用。
+ 
+ **参数：**
+
+ | 参数名   | 类型                    | 必填 | 说明                          |
+ | -------- | ----------------------- | ---- | ----------------------------- |
+ | type     | string                  | 是   | 订阅的事件类型。'openInfo'：WebSocket的打开信息事件。 |
+ | callback | AsyncCallback\<[WebSocketOpenInfo](#websocketopeninfo)\> | 是   | 回调函数。返回WebSocket连接的详细信息。 |
+
+ **示例：**
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ws = webSocket.createWebSocket();
+ws.on('openInfo', (err: BusinessError, value: webSocket.WebSocketOpenInfo) => {
+  if (value?.protocol != undefined) {
+    console.info(`on openInfo exists protocol: status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
+  } else {
+    console.info(`on openInfo, status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
+  }
+});
+```
+
+ ### off('openInfo')
+
+ off(type: 'openInfo', callback?: AsyncCallback\<WebSocketOpenInfo\>): void
+
+ 取消订阅WebSocket的打开信息事件，使用callback异步回调。
+
+ > **说明：**
+ >
+ > 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+
+ **系统能力**：SystemCapability.Communication.NetStack
+ 
+ **ArkTS-Dyn起始版本：** 26.0.0
+ 
+ **ArkTS-Sta起始版本：** 26.0.0
+
+ **模型约束**：此接口仅可在Stage模型下使用。
+
+ **参数：**
+
+ | 参数名   | 类型                    | 必填 | 说明                          |
+ | -------- | ----------------------- | ---- | ----------------------------- |
+ | type     | string                  | 是   | 取消订阅的事件类型。'openInfo'：WebSocket的打开信息事件。 |
+ | callback | AsyncCallback\<[WebSocketOpenInfo](#websocketopeninfo)\> | 否   | 回调函数。 |
+
+ **示例：**
+ 
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ws = webSocket.createWebSocket();
+let callback1 = (err: BusinessError, value: webSocket.WebSocketOpenInfo) => {
+  if (value?.protocol != undefined) {
+    console.info(`on openInfo exists protocol: status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
+  } else {
+    console.info(`on openInfo, status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
+  }
+};
+ws.on('openInfo', callback1);
+// 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
+ws.off('openInfo', callback1);
 ```
 
 ### on('message')
@@ -927,11 +1003,9 @@ onMessage(callback: AsyncCallback\<string | ArrayBuffer\>): void
 >
 > AsyncCallback中的数据可以是字符串或ArrayBuffer。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Communication.NetStack
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **参数：**
 
@@ -997,11 +1071,9 @@ offMessage(callback?: AsyncCallback\<string | ArrayBuffer\>): void
 >
 > 可以指定传入onMessage中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Communication.NetStack
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **参数：**
 
@@ -1060,11 +1132,9 @@ onWebSocketClose(callback: AsyncCallback\<CloseResult\>): void
 
 订阅WebSocket的关闭事件。使用callback异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Communication.NetStack
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **参数：**
 
@@ -1126,11 +1196,9 @@ offWebSocketClose(callback?: AsyncCallback\<CloseResult\>): void
 >
 > 可以指定传入onWebSocketClose中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Communication.NetStack
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **参数：**
 
@@ -1192,8 +1260,6 @@ onWebSocketError(callback: ErrorCallback): void
 
 订阅WebSocket的Error事件。使用callback异步回调。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Communication.NetStack
 
 **参数：**
@@ -1201,6 +1267,8 @@ onWebSocketError(callback: ErrorCallback): void
 | 参数名   | 类型          | 必填 | 说明                            |
 | -------- | ------------- | ---- | ------------------------------- |
 | callback | ErrorCallback | 是   | 回调函数，返回Error事件结果。 |
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **示例：**
 
@@ -1256,7 +1324,6 @@ offWebSocketError(callback?: ErrorCallback): void
 >
 > 可以指定传入onWebSocketError中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NetStack
 
@@ -1266,7 +1333,7 @@ offWebSocketError(callback?: ErrorCallback): void
 | -------- | ------------- | ---- | ------------------------------- |
 | callback | ErrorCallback | 否   | 回调函数，用于指定需要移除的回调。      |
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **示例：**
 
@@ -1285,7 +1352,7 @@ on(type: 'dataEnd', callback: Callback\<void\>): void
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **参数：**
 
@@ -1374,7 +1441,7 @@ offDataEnd(callback?: Callback\<void\>): void
 
 **系统能力：** SystemCapability.Communication.NetStack
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **参数：**
 
@@ -1781,7 +1848,7 @@ listAllConnections(): WebSocketConnection[]
 **返回值：**
 | 类型                                        | 说明                         |
 | ------------------------------------------- | ---------------------------- |
-| [WebSocketConnection[]](#websocketconnection19) | 以字符串数组形式返回所有客户端的信息。|
+| [WebSocketConnection](#websocketconnection19)[] | 以字符串数组形式返回所有客户端的信息。|
 
 **错误码：**
 
@@ -2446,6 +2513,8 @@ on(type: 'error', callback: ErrorCallback): void
 
 **系统能力：** SystemCapability.Communication.NetStack
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **参数：**
 
 | 参数名  | 类型                    | 必填 | 说明                                                     |
@@ -2504,6 +2573,8 @@ off(type: 'error', callback?: ErrorCallback): void
 > 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
 **系统能力：** SystemCapability.Communication.NetStack
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -2775,6 +2846,10 @@ type ClientConnectionCloseCallback = (clientConnection: WebSocketConnection, clo
 
 **系统能力：** SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 | 名称 | 类型   | 只读 | 可选 | 说明                            |
 | ---------------- | ------------------- | ---- | ------ | --------------------------------------------- |
@@ -2797,3 +2872,21 @@ TLS协议类型。
 | TLS_V_1_1  | 1    | TLS版本号1.1。 |
 | TLS_V_1_2 | 2    | TLS版本号1.2。 |
 | TLS_V_1_3 | 3    | TLS版本号1.3。 |
+
+## WebSocketOpenInfo
+
+WebSocket连接成功后的详细信息。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 名称 | 类型   | 只读 | 可选 | 说明                                                         |
+| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
+| status | int | 否 | 否 | 服务器返回的状态码。例如：101表示建链成功并升级为WebSocket协议。 |
+| message | string | 否 | 否 | 服务器返回的状态信息。与status字段对应，例如：status=101时，该字段返回"Switching Protocols"。 |
+| protocol | string | 否 | 是 | 服务器返回的协商后的协议。 |

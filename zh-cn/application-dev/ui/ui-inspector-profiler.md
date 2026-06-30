@@ -1,10 +1,10 @@
 # UI调优
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lushi871202-->
+<!--Owner: @lushi871202; @liwenzhen3-->
 <!--Designer: @lushi871202-->
 <!--Tester: @sally__-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @Brilliantry_Rui; @zhang_yixin13-->
 
 本章节主要介绍UI的dump和调优能力，用于提高开发效率和优化开发者体验。
 
@@ -13,18 +13,24 @@
 ### 状态管理hidumper能力
 状态管理接入[hidumper](../dfx/hidumper.md)，支持通过`-jsdump`获取状态变量关联的组件、自定义组件树等信息，方便开发者了解状态变量影响的UI范围，写出高性能应用代码。
 
-下面介绍dump状态变量每个参数的含义：
+下面介绍`-jsdump`每个参数的含义：
+- `-viewHierarchy`：打印自定义组件树信息，默认只打印根自定义组件。
+- `-stateVariable`：打印状态变量及关联的组件和同步对象的信息。ArkTS-Dyn当前命令不支持`-r`递归dump，ArkTS-Sta支持`-r`递归dump状态变量。
+- `-registeredElementIds`：打印当前自定义组件拥有的elementId。
+- `-inactiveComponents`：[组件冻结](./state-management/arkts-custom-components-freeze.md)场景下非激活的组件列表。
+- `-dumpAll`：打印自定义组件树、状态变量和自定义组件的子组件和脏节点列表。ArkTS-Sta不打印脏节点列表。
+- `-h`：打印帮助信息。
 
-- jsdump：请求状态管理中的dump信息。
-- viewHierarchy：打印自定义组件树信息，默认只打印根自定义组件。
-- r：递归从根节点打印，自定义组件和其拥有组件的elementId。默认值打印根节点信息。
-- viewId：打印指定viewId的自定义组件的信息。
-- stateVariable：打印状态变量及关联的组件和同步对象的信息。当前命令不支持`r`递归dump。
-- registeredElementIds：打印当前自定义组件拥有的elementId。
+除上述命令外，开发者可以额外输入以下命令选择递归打印或指定打印某一个组件id的信息，如果没有指定，则默认打印页面的根节点的信息。
+- `-r`：递归从根节点打印，自定义组件和其拥有组件的elementId。默认值打印根节点信息。
+- `-viewId`：打印指定viewId的自定义组件的信息。
 
-具体例子如下：
+ArkTS-Dyn和ArkTS-Sta两种模式的dump输出存在差异，下面分别介绍。
 
-下面的例子为嵌套两层子组件的典型示例，使用了装饰器[\@State](./state-management/arkts-state.md)和 [\@Link](./state-management/arkts-link.md)。开发者可组合使用上述命令，展示前端组件树、状态变量和其影响的组件等信息。
+**ArkTS-Dyn**
+
+该示例为嵌套两层子组件的典型ArkTS-Dyn示例，使用了装饰器[\@State](./state-management/arkts-state.md)和 [\@Link](./state-management/arkts-link.md)。开发者可组合使用上述命令，展示前端组件树、状态变量和其影响的组件等信息。
+
 
 ```ts
 @Entry
@@ -79,7 +85,6 @@ hdc shell hidumper -s WindowManagerService -a '-a'
   ``` shell
   hdc shell hidumper -s WindowManagerService -a '-w 90 -jsdump -dumpAll -r'
   ```
-  
   执行上述命令后，dump信息代表的含义如下：
    - `Page[4]`：自定义组件根节点。
    - `View Hierarchy`：前端自定义组件树结构信息。
@@ -92,7 +97,10 @@ hdc shell hidumper -s WindowManagerService -a '-a'
        - `Dependent elements`：当前状态变量和其同步对象的关联组件。
    - `Registered Element IDs`：自定义组件和`build()`方法下声明的组件。
    - `Dirty Registered Element IDs`：自定义组件下未更新的脏节点列表。状态变量变化后，会标记其关联节点为脏节点，并请求在下一帧更新。在下一帧中更新脏节点并清空脏节点列表。手动执行dump时，`Dirty Registered Element IDs`通常为空。因为以目前大多数设备的帧间隔，开发者难以在两帧之间dump出脏节点列表。
-  ```ts
+
+  输出结果：
+
+  ```text
   --------------------ViewPUInfo--------------------
   [-dumpAll, viewId=4, isRecursive=true]
   
@@ -147,8 +155,9 @@ hdc shell hidumper -s WindowManagerService -a '-a'
   ``` shell
   hdc shell hidumper -s WindowManagerService -a '-w 90 -jsdump -dumpAll -viewId=7'
   ```
-  输出信息如下。
-  ```ts
+
+  输出结果：
+  ```text
   --------------------ViewPUInfo--------------------
   [-dumpAll, viewId=7, isRecursive=false]
   
@@ -183,6 +192,160 @@ hdc shell hidumper -s WindowManagerService -a '-a'
   |--Child[7]: {
     }[0]
   ```
+
+**ArkTS-Sta**
+
+下面的例子为对应ArkTS-Sta例子，同样使用装饰器[\@State](./state-management-static/arkts-static-state.md)和[\@Link](./state-management-static/arkts-static-link.md)，展示ArkTS-Sta模式下的状态管理jsdump能力。
+
+
+``` TypeScript
+'use static'
+
+import { Entry, Text, Column, Component, ClickEvent, State, Link } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Page {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text('Parent:' + this.message)
+        .fontSize(20)
+        .onClick((e) => {
+          this.message += '1';
+        })
+      Child({ message: this.message })
+    }
+  }
+}
+
+@Component
+struct Child {
+  @Link message: string;
+
+  build() {
+    Column() {
+      Text('Child:' + this.message)
+        .fontSize(20)
+      GrandChild({ message: this.message })
+    }
+  }
+}
+
+@Component
+struct GrandChild {
+  @Link message: string;
+
+  build() {
+    Column() {
+      Text('GrandChild: ' + this.message)
+        .fontSize(20)
+    }
+  }
+}
+```
+
+ArkTS-Sta的jsdump能力与ArkTS-Dyn存在以下差异：
+- stateVariable支持`-r`递归dump。
+- 不包含"Sync peers"和"Dirty Registered Element IDs"信息。
+
+
+命令：
+
+```shell
+hdc shell hidumper -s WindowManagerService -a '-w 42 -jsdump -dumpAll -r'
+```
+
+输出结果：
+
+```text
+---------------Static ComponentInfo---------------
+[-dumpAll, viewId=2, isRecursive=true]
+
+@Component
+entry.src.main.ets.pages.testcases.DocSample.Page[2]
+
+View Hierarchy:
+
+|--entry.src.main.ets.pages.testcases.DocSample.Page[2]StaticComponent {isViewActive: true}
+
+  |--entry.src.main.ets.pages.testcases.DocSample.Child[6]StaticComponent {isViewActive: true}
+
+    |--entry.src.main.ets.pages.testcases.DocSample.GrandChild[10]StaticComponent {isViewActive: true}
+
+State variables:
+|--entry.src.main.ets.pages.testcases.DocSample.Page[2]
+  @State 'message'[-1]
+  |--Owned by @Component entry.src.main.ets.pages.testcases.DocSample.Page
+  |--DependentElements: Text[5]
+|--entry.src.main.ets.pages.testcases.DocSample.Child[6]
+  @Link 'message'[-1]
+  |--Owned by @Component entry.src.main.ets.pages.testcases.DocSample.Child
+  |--DependentElements: Text[9]
+|--entry.src.main.ets.pages.testcases.DocSample.GrandChild[10]
+  @Link 'message'[-1]
+  |--Owned by @Component entry.src.main.ets.pages.testcases.DocSample.GrandChild
+  |--DependentElements: Text[13]
+
+Registered Element IDs:
+
+|--entry.src.main.ets.pages.testcases.DocSample.Page[2]: {
+    Column[4]
+    Text[5]
+    Child[6]
+  }[3]
+
+  |--entry.src.main.ets.pages.testcases.DocSample.Child[6]: {
+      Column[8]
+      Text[9]
+      GrandChild[10]
+    }[3]
+
+    |--entry.src.main.ets.pages.testcases.DocSample.GrandChild[10]: {
+        Column[12]
+        Text[13]
+      }[2]
+
+Total: 8
+```
+
+命令：
+
+```shell
+hdc shell hidumper -s WindowManagerService -a '-w 42 -jsdump -dumpAll -viewId=6'
+```
+
+输出结果：
+
+```text
+---------------Static ComponentInfo---------------
+[-dumpAll, viewId=6, isRecursive=false]
+
+@Component
+entry.src.main.ets.pages.testcases.DocSample.Child[6]
+
+View Hierarchy:
+
+|--entry.src.main.ets.pages.testcases.DocSample.Child[6]StaticComponent {isViewActive: true}
+
+  |--entry.src.main.ets.pages.testcases.DocSample.GrandChild[10]StaticComponent {isViewActive: true}
+
+State variables:
+|--entry.src.main.ets.pages.testcases.DocSample.Child[6]
+  @Link 'message'[-1]
+  |--Owned by @Component entry.src.main.ets.pages.testcases.DocSample.Child
+  |--DependentElements: Text[9]
+
+Registered Element IDs:
+
+|--entry.src.main.ets.pages.testcases.DocSample.Child[6]: {
+    Column[8]
+    Text[9]
+    GrandChild[10]
+  }[3]
+```
+
 
 ### 状态管理Profiler调优能力
 

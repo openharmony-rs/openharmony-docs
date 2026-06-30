@@ -14,7 +14,7 @@
 
 枚举，相机位置。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -29,7 +29,7 @@
 
 枚举，相机类型。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -45,7 +45,7 @@
 
 枚举，相机连接类型。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -59,7 +59,7 @@
 
 枚举，远端相机设备类型。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -73,7 +73,7 @@
 
 枚举，相机状态。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -88,7 +88,7 @@
 
 枚举，折叠机折叠状态。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -102,7 +102,7 @@
 
 枚举，相机模式。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -122,23 +122,23 @@
 
 | 名称                       | 值          | 说明            |
 | -------------------------  | ----       | ------------    |
-| INVALID_ARGUMENT           | 7400101    | 参数缺失或者参数类型不对。<br> **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| OPERATION_NOT_ALLOWED      | 7400102    | 操作流程不对，不允许。 <br> **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| SESSION_NOT_CONFIG         | 7400103    | session 未配置返回。 <br> **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。  |
-| SESSION_NOT_RUNNING        | 7400104    | session 未运行返回。<br> **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| SESSION_CONFIG_LOCKED      | 7400105    | session 配置已锁定返回。 <br> **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| DEVICE_SETTING_LOCKED      | 7400106    | 设备设置已锁定返回。 <br> **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
-| CONFLICT_CAMERA            | 7400107    | 设备重复打开返回。 <br> **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| DEVICE_DISABLED            | 7400108    | 安全原因相机被禁用。<br> **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| DEVICE_PREEMPTED           | 7400109    | 相机被抢占导致无法使用。 <br> **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。  |
-| UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS<sup>12+</sup> | 7400110   | 与当前配置存在冲突。 <br> **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| SERVICE_FATAL_ERROR        | 7400201    | 相机服务异常返回。 <br> **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。    |
+| INVALID_ARGUMENT           | 7400101    | 参数缺失或者参数类型不对。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。 |
+| OPERATION_NOT_ALLOWED      | 7400102    | 操作流程不对，不允许。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。 |
+| SESSION_NOT_CONFIG         | 7400103    | session 未配置返回。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。  |
+| SESSION_NOT_RUNNING        | 7400104    | session 未运行返回。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。 |
+| SESSION_CONFIG_LOCKED      | 7400105    | session 配置已锁定返回。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。 |
+| DEVICE_SETTING_LOCKED      | 7400106    | 设备设置已锁定返回。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。|
+| CONFLICT_CAMERA            | 7400107    | 设备重复打开返回。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。 |
+| DEVICE_DISABLED            | 7400108    | 安全原因相机被禁用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。 |
+| DEVICE_PREEMPTED           | 7400109    | 相机被抢占导致无法使用。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。  |
+| UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS<sup>12+</sup> | 7400110   | 与当前配置存在冲突。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。 |
+| SERVICE_FATAL_ERROR        | 7400201    | 相机服务异常返回。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。    |
 
 ## TorchMode<sup>11+</sup>
 
 枚举，手电筒模式。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -152,25 +152,24 @@
 
 枚举，输出格式。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 | 名称                     | 值        | 说明         |
 | ----------------------- | --------- | ------------ |
-| CAMERA_FORMAT_RGBA_8888 | 3         | RGBA_8888格式的图片。        |
-| CAMERA_FORMAT_YUV_420_SP| 1003      | YUV_420_SP格式的图片，对应为NV21格式的图片。      |
-| CAMERA_FORMAT_JPEG      | 2000      | JPEG格式的图片。            |
-| CAMERA_FORMAT_YCBCR_P010<sup>11+</sup> |   2001    | YCBCR_P010格式的图片。      |
-| CAMERA_FORMAT_YCRCB_P010<sup>11+</sup> |   2002    | YCRCB_P010格式的图片。      |
-| CAMERA_FORMAT_HEIC<sup>13+</sup>       |   2003    | HEIF格式的图片。            |
-| CAMERA_FORMAT_DNG<sup>24+</sup>        |   4    |  DNG（数字负片）格式的图片。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。|
+| CAMERA_FORMAT_RGBA_8888 | 3         | RGBA_8888格式的图片。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。        |
+| CAMERA_FORMAT_YUV_420_SP| 1003      | YUV_420_SP格式的图片，对应为NV21格式的图片。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。      |
+| CAMERA_FORMAT_JPEG      | 2000      | JPEG格式的图片。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。            |
+| CAMERA_FORMAT_YCBCR_P010<sup>11+</sup> |   2001    | YCBCR_P010格式的图片。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。      |
+| CAMERA_FORMAT_YCRCB_P010<sup>11+</sup> |   2002    | YCRCB_P010格式的图片。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。      |
+| CAMERA_FORMAT_HEIC<sup>13+</sup>       |   2003    | HEIF格式的图片。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。            |
+| CAMERA_FORMAT_DNG<sup>24+</sup>        |   4    |  DNG（数字负片）格式的图片。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。|
+| CAMERA_FORMAT_DNG_XDRAW | 5     | 增强型DNG格式的图片。<br>**起始版本：** 26.0.0<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。     |
 
 ## VideoCodecType<sup>13+</sup>
 
 枚举，视频编码类型。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -183,7 +182,7 @@
 
 枚举，镜头并发类型。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -196,7 +195,7 @@
 
 枚举，图片旋转角度。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -211,7 +210,7 @@
 
 枚举，图片质量。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -223,20 +222,44 @@
 
 ## MetadataObjectType
 
-枚举，metadata流。
+枚举，metadata元数据检测类型。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 | 名称                       | 值   | 说明              |
 | ------------------------- | ---- | ----------------- |
-| FACE_DETECTION            | 0    | 元数据的对象类型，用于人脸检测。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| HUMAN_BODY<sup>23+</sup>     | 1    | 元数据的对象类型，用于人体检测。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| FACE_DETECTION            | 0    | 元数据的对象类型，用于人脸检测。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。 |
+| HUMAN_BODY<sup>23+</sup>     | 1    | 元数据的对象类型，用于人体检测。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| CAT_FACE               | 2    | 用于检测猫脸的metadata类型。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| CAT_BODY                   | 3    | 用于检测猫的身体的metadata类型。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| DOG_FACE                   | 4    | 用于检测狗脸的metadata类型。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| DOG_BODY                   | 5    | 用于检测狗的身体的metadata类型。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| SALIENT_DETECTION          | 6    | 用于显著性检测。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| BAR_CODE_DETECTION         | 7    | 用于二维码检测。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| BASIC_FACE_DETECTION       | 8    | 用于基础人脸检测。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+
+## Emotion
+
+枚举，人脸检测信息中的情绪类型。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+| 名称                       | 值   | 说明              |
+| -------------------------- | ---- | ----------------- |
+| NEUTRAL                    | 0    | 平静。 |
+| SADNESS                    | 1    | 悲伤。 |
+| SMILE                      | 2    | 微笑。 |
+| SURPRISE                   | 3    | 惊讶。 |
 
 ## FlashMode
 
 枚举，闪光灯模式。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -255,17 +278,17 @@
 
 | 名称                           | 值   | 说明         |
 | ----------------------------- | ---- | ----------- |
-| EXPOSURE_MODE_UNSPECIFIED<sup>24+</sup>      | -1    | 曝光模式未指定。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。|
-| EXPOSURE_MODE_LOCKED          | 0    | 锁定曝光模式。不支持曝光区域中心点设置。<br>设置该模式后，每次拍照时曝光都会默认锁定。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
-| EXPOSURE_MODE_AUTO            | 1    | 自动曝光模式。支持曝光区域中心点设置，可以使用[AutoExposure.setMeteringPoint](arkts-apis-camera-AutoExposure.md#setmeteringpoint11)接口设置曝光区域中心点。<br>设置该模式后，仅设置后的首次拍照生效。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| EXPOSURE_MODE_CONTINUOUS_AUTO | 2    | 连续自动曝光。不支持曝光区域中心点设置。<br>设置该模式后，拍照系统会根据每次的环境变化自动调整曝光。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| EXPOSURE_MODE_MANUAL | 3    | 手动曝光。支持设置曝光时长。<br>设置该模式后，用户可通过[ManualExposure.setExposureDuration](arkts-apis-camera-ManualExposure.md#setexposureduration24)设置曝光时长。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| EXPOSURE_MODE_UNSPECIFIED<sup>24+</sup>      | -1    | 曝光模式未指定。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。|
+| EXPOSURE_MODE_LOCKED          | 0    | 锁定曝光模式。不支持曝光区域中心点设置。<br>设置该模式后，每次拍照时曝光都会默认锁定。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。|
+| EXPOSURE_MODE_AUTO            | 1    | 自动曝光模式。支持曝光区域中心点设置，可以使用[AutoExposure.setMeteringPoint](arkts-apis-camera-AutoExposure.md#setmeteringpoint11)接口设置曝光区域中心点。<br>设置该模式后，仅设置后的首次拍照生效。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。 |
+| EXPOSURE_MODE_CONTINUOUS_AUTO | 2    | 连续自动曝光。不支持曝光区域中心点设置。<br>设置该模式后，拍照系统会根据每次的环境变化自动调整曝光。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。 |
+| EXPOSURE_MODE_MANUAL | 3    | 手动曝光。支持设置曝光时长。<br>设置该模式后，用户可通过[ManualExposure.setExposureDuration](arkts-apis-camera-ManualExposure.md#setexposureduration24)设置曝光时长。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 
 ## FocusMode
 
 枚举，焦距模式。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -280,7 +303,7 @@
 
 枚举，焦距状态。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -294,7 +317,7 @@
 
 枚举，视频防抖模式。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -310,7 +333,7 @@
 
 平滑变焦模式。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -326,17 +349,17 @@
 
 | 名称                      | 值 | 说明         |
 |-------------------------|---|------------|
-| PRECONFIG_720P          | 0 | 720P预配置。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。  |
-| PRECONFIG_1080P         | 1 | 1080P预配置。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。  |
-| PRECONFIG_4K            | 2 | 4K预配置。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。     |
-| PRECONFIG_HIGH_QUALITY  | 3 | 高质量预配置。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。    |
-| PRECONFIG_HIGH_QUALITY_PHOTOSESSION_BT2020<sup>23+</sup>  | 4 | 预配置支持预览高动态范围显示和HDR动图拍摄。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| PRECONFIG_720P          | 0 | 720P预配置。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。  |
+| PRECONFIG_1080P         | 1 | 1080P预配置。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。  |
+| PRECONFIG_4K            | 2 | 4K预配置。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。     |
+| PRECONFIG_HIGH_QUALITY  | 3 | 高质量预配置。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。    |
+| PRECONFIG_HIGH_QUALITY_PHOTOSESSION_BT2020<sup>23+</sup>  | 4 | 预配置支持预览高动态范围显示和HDR动图拍摄。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## PreconfigRatio<sup>12+</sup>
 
 枚举，提供预配置的分辨率比例。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -350,7 +373,7 @@
 
 枚举，录像质量优先级。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -363,7 +386,7 @@
 
 枚举，白平衡模式。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -381,7 +404,7 @@
 
 枚举，系统压力等级。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -401,15 +424,16 @@
 
 | 名称      | 值 | 说明    |
 |-----------|---|---------|
-| BEAUTY    | 0 | 美颜。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。   |
-| PORTRAIT  | 1 | 人像虚化。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
-| AUTO_FRAMING<sup>24+</sup> | 2 | 自动对焦。<br> **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| BEAUTY    | 0 | 美颜。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。   |
+| PORTRAIT  | 1 | 人像虚化。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| AUTO_FRAMING<sup>24+</sup> | 2 | 自动对焦。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| COLOR_EFFECT | 3 | 色彩效果。<br>**起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## PhotoQualityPrioritization<sup>21+</sup>
 
 枚举，拍照画质优先策略。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -424,7 +448,7 @@
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -441,7 +465,7 @@
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -455,7 +479,7 @@
 
 枚举，曝光测光模式。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -471,7 +495,7 @@
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -487,7 +511,7 @@
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -504,7 +528,7 @@
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

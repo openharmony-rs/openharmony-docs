@@ -1,8 +1,8 @@
 # @ohos.util.HashSet (非线性容器HashSet)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @wang_zhaoyong-->
-<!--Designer: @Malzahar-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -17,9 +17,11 @@ HashSet和[TreeSet](js-apis-treeset.md)相比，HashSet中的数据按Hash值排
 
 > **说明：**
 >
-> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 容器类使用静态语言实现，限制了存储位置和属性，不支持自定义属性和方法。
+> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 容器类使用静态语言实现，限制了存储位置和属性，不支持自定义属性和方法。
 
 
 ## 导入模块
@@ -32,18 +34,37 @@ import { HashSet } from '@kit.ArkTS';
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| length | number | 是 | 否 | HashSet的元素个数。 |
+| length | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 否 | HashSet的元素个数。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let hashSet = new HashSet<number>();
+hashSet.add(1);
+hashSet.add(2);
+hashSet.add(3);
+hashSet.add(4);
+hashSet.add(5);
+let res = hashSet.length;
+console.info("length:", res);  // length: 5
+```
+
+ArkTS-Sta示例：
+
+```ts
+let hashSet: HashSet<int> = new HashSet<int>();
 hashSet.add(1);
 hashSet.add(2);
 hashSet.add(3);
@@ -59,9 +80,13 @@ constructor()
 
 HashSet的构造函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -73,8 +98,16 @@ HashSet的构造函数。
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let hashSet = new HashSet<number>();
+```
+
+ArkTS-Sta示例：
+
+```ts
+let hashSet: HashSet<int> = new HashSet<int>();
 ```
 
 
@@ -84,9 +117,13 @@ isEmpty(): boolean
 
 判断HashSet是否为空。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -104,8 +141,18 @@ isEmpty(): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 const hashSet = new HashSet<number>();
+let result = hashSet.isEmpty();
+console.info("result:", result);  // result: true
+```
+
+ArkTS-Sta示例：
+
+```ts
+const hashSet: HashSet<int> = new HashSet<int>();
 let result = hashSet.isEmpty();
 console.info("result:", result);  // result: true
 ```
@@ -117,9 +164,13 @@ has(value: T): boolean
 
 判断HashSet是否包含指定元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -135,11 +186,10 @@ has(value: T): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200011 | The has method cannot be bound. |
 
 **示例：**
@@ -158,9 +208,13 @@ add(value: T): boolean
 
 向HashSet添加元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -176,11 +230,10 @@ add(value: T): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200011 | The add method cannot be bound. |
 
 **示例：**
@@ -198,9 +251,13 @@ remove(value: T): boolean
 
 从HashSet中删除指定的元素。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -216,11 +273,10 @@ remove(value: T): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200011 | The remove method cannot be bound. |
 
 **示例：**
@@ -240,9 +296,13 @@ clear(): void
 
 清除HashSet中的所有元素，并将length置为0。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -270,9 +330,13 @@ values(): IterableIterator&lt;T&gt;
 
 返回包含此映射中所有键值的新迭代器对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -309,9 +373,15 @@ forEach(callbackFn: (value?: T, key?: T, set?: HashSet&lt;T&gt;) => void, thisAr
 
 在遍历过程中对每个元素调用一次回调函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[forEach](#foreach23)。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -329,11 +399,10 @@ callbackFn的参数说明：
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The forEach method cannot be bound. |
 
 **示例：**
@@ -359,14 +428,55 @@ for(let i = 0; i < 10; i++) {
 }
 ```
 
+### forEach<sup>23+</sup>
+
+forEach(callbackFn: HashSetCbFn\<T\>): void
+
+通过回调函数来遍历实例对象上的元素以及元素对应的下标。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[forEach](#foreach)。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callbackFn | [HashSetCbFn\<T\>](#hashsetcbfnt23) | 是 | 回调函数。 |
+
+
+**示例：**
+
+```ts
+import { HashSetCbFn } from '@kit.ArkTS';
+
+let hashSet: HashSet<string> = new HashSet<string>();
+hashSet.add("sparrow");
+hashSet.add("squirrel");
+let hashSetCb: HashSetCbFn<string> = (value: string, key: string, set: HashSet<string>): void => {
+  console.info("value: " + value, " key: " + key);
+};
+hashSet.forEach(hashSetCb);
+// value:squirrel key:squirrel 
+// value:sparrow key:sparrow
+```
+
 ### entries
 entries(): IterableIterator<[T, T]>
 
 返回包含此映射中所有键值对的新迭代器对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -409,6 +519,10 @@ for(let i = 0; i < 10; i++) {
 for(let i = 0; i < 10; i++) {
   hashSet.remove("sparrow" + i);
 }
+// key:squirrel
+// value:squirrel
+// key:sparrow
+// value:sparrow
 ```
 
 ### [Symbol.iterator]
@@ -417,9 +531,15 @@ for(let i = 0; i < 10; i++) {
 
 返回一个迭代器，迭代器的每一项都是一个JavaScript对象。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[$_iterator](#_iterator23)。
 
 **系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 8
 
 **返回值：**
 
@@ -470,3 +590,65 @@ for(let i = 0;i < 10;i++) {
   hashSet.remove("sparrow" + i);
 }
 ```
+
+### $_iterator<sup>23+</sup>
+
+\$_iterator\(): IterableIterator&lt;T&gt;
+
+返回一个迭代器，迭代器的每一项都是一个JavaScript对象，并返回该对象。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[Symbol.iterator](#symboliterator)。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| IterableIterator&lt;T&gt; | 返回一个迭代器。 |
+
+**示例：**
+
+```ts
+let hashSet: HashSet<string> = new HashSet<string>();
+hashSet.add("squirrel");
+hashSet.add("sparrow");
+
+// 使用方法一：
+let val: Array<string> = Array.from(hashSet.values())
+for (let item of val) {
+  console.info("value: " + item);
+}
+
+// 使用方法二：
+let iter = hashSet.$_iterator();
+let temp: IteratorResult<string> = iter.next();
+while(!temp.done) {
+  console.info("value: " + temp.value);
+  temp = iter.next();
+}
+```
+
+### HashSetCbFn\<T\><sup>23+</sup>
+
+type HashSetCbFn\<T\> = (value: T, key: T, set: HashSet\<T\>) => void
+
+HashSet中forEach方法的回调函数。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| value | T | 是 | 当前遍历到的元素键值对的值。 |
+| key | T | 是 | 当前遍历到的元素键值对的键（和value相同）。 |
+| set | [HashSet&lt;T&gt;](#hashset) | 是 | 当前调用[forEach](#foreach23)方法的实例对象。 |

@@ -44,9 +44,9 @@
 
 ### 约束与限制
 
-- 仅限于API version 18及以上版本设备，设备间需要登录相同的华为账号。
+- 仅限于API version 18及以上版本设备。
 
-- 不同设备间只有相同bundleName的UIAbility应用才能进行协同。
+- 双端设备登录同账号的场景下，支持相同或不同bundleName的应用间协同；非同账号场景下，系统侧会校验应用AppID，仅支持相同AppID的应用间协同。
 <!--Del-->
 - 字节流、图片以及传输流的能力仅支持系统应用。
 <!--DelEnd-->
@@ -70,7 +70,7 @@
 1. 在PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，要求版本在4.1及以上。
 2. 将public-SDK更新到API 18或以上<!--Del-->，更新SDK的具体操作可参见[更新指南]( ../tools/openharmony_sdk_upgrade_assistant.md)<!--DelEnd-->。
 3. 用USB线缆将任意一台调试设备（设备A或者设备B）连接到PC。
-4. 打开设备A和设备B的蓝牙，互相识别，实现组网。
+4. 打开设备A和设备B的Wi-Fi和蓝牙。如果登录同一个华为账号，则设备间会进行自组网；非同账号环境下，需先通过[设备发现](devicemanager-guidelines.md#设备发现开发指导)和[设备绑定](devicemanager-guidelines.md#设备绑定开发指导)建立可信关系以完成组网。
 
 
 ### 检验环境是否搭建成功
@@ -122,7 +122,7 @@ import {abilityConnectionManager, distributedDeviceManager } from '@kit.Distribu
 
 **发现设备**
 
-设备A上的应用，需要发现并选择设备B的networkId来作为协同接口的入参。可调用分布式设备管理模块接口，进行对端设备的发现和选择，详情可参考[分布式设备管理开发指南](devicemanager-guidelines.md)进行开发。
+设备A上的应用，需要发现并选择设备B的[networkId](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo)来作为协同接口的入参。可调用分布式设备管理模块接口，进行对端设备的发现和选择，详情可参考[设备信息查询开发指导](devicemanager-guidelines.md#设备信息查询开发指导)。
 
 **应用间创建会话并进行连接**
 
@@ -293,7 +293,7 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 
 **ArkTS-Sta示例：**
 
-  <!-- @[sta_abilityconnectionmanager_on](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/StaticCollabSample/entry/src/main/ets/entryability/EntryAbility.ets) -->
+  <!-- @[sta_abilityconnectionmanager_on](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/ArkTS-Sta/StaticCollabSample/entry/src/main/ets/entryability/EntryAbility.ets) -->
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -345,6 +345,8 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 
 应用连接成功后，开发者可在设备A或者设备B上调用sendMessage()方法给对端应用发送文本信息。
 
+<!-- @[sendmessage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
+
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -359,6 +361,8 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 **2.发送字节流数据**
 
 应用连接成功后，开发者可在设备A或者设备B上调用sendData()方法给对端应用发送字节数据。
+
+<!-- @[senddata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
 
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
@@ -378,6 +382,8 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 **结束协同**
 
 业务协同完毕后需及时结束协同状态。若是后续短期内还有协同需要，可调用disconnect()方法断开应用间的连接，保留sessionId，以便下次继续使用该sessionId进行连接。若是短期无需使用协同业务，可直接调用destroyAbilityConnectionSession()接口销毁会话，此时会自动断开连接。
+
+<!-- @[disconnect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
 
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';

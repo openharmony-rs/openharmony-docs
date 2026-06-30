@@ -1,7 +1,7 @@
 # ToolBarV2
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
+<!--Owner: @wangrunsen-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -163,6 +163,8 @@ ArkTS-Sta: type ToolBarV2ItemAction = (index: int) => void
 
 **装饰器类型：**@ObservedV2
 
+### 属性
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -172,8 +174,6 @@ ArkTS-Sta: type ToolBarV2ItemAction = (index: int) => void
 **ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 23
-
-### 属性
 
 | 名称                  | 类型                                                          | 只读 | 可选 | 说明                                                       |
 |:--------------------|:------------------------------------------------------------|:---|:---|:---------------------------------------------------------|
@@ -229,6 +229,8 @@ ToolBarV2ItemText的构造函数。
 
 **装饰器类型：**@ObservedV2
 
+### 属性
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -238,8 +240,6 @@ ToolBarV2ItemText的构造函数。
 **ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 23
-
-### 属性
 
 | 名称                 | 类型                                                          | 只读 | 可选 | 说明                                                       |
 |:-------------------|:------------------------------------------------------------|:---|:---| :---------------------------------------------------------|
@@ -462,6 +462,8 @@ ToolBarV2SymbolGlyph定义Symbol图标的属性。
 
 **装饰器类型**：@ObservedV2
 
+### 属性
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -471,8 +473,6 @@ ToolBarV2SymbolGlyph定义Symbol图标的属性。
 **ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 23
-
-### 属性
 
 | 名称        | 类型                                                                   | 只读 | 可选 | 说明                                                                                   |
 | :-------- | :------------------------------------------------------------------- |:---|:---|  :----------------------------------------------------------------------------------- |
@@ -758,7 +758,7 @@ struct Index {
 }
 ```
 
-![zh-cn\_image\_toolbar\_example01](figures/zh-cn_image_toolbar_example01.png)
+![zh-cn\_image\_toolbar\_example01](figures/image-toolbar-example01.png)
 
 ### 示例2（设置工具栏自定义样式）
 
@@ -1020,7 +1020,7 @@ struct Index {
 }
 ```
 
-![zh-cn\_image\_toolbar\_example02](figures/zh-cn_image_toolbar_example02.png)
+![zh-cn\_image\_toolbar\_example02](figures/image-toolbar-example02.png)
 
 ### 示例3（设置工具栏自定义播报）
 
@@ -1270,4 +1270,4 @@ struct Index {
 }
 ```
 
-![zh-cn\_image\_toolbar\_example01](figures/zh-cn_image_toolbar_example01.png)
+![zh-cn\_image\_toolbar\_example01](figures/image-toolbar-example01.png)

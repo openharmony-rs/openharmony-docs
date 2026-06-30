@@ -1,8 +1,8 @@
 # @ohos.curves (插值计算)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -28,7 +28,7 @@ initCurve(curve?: Curve): ICurve
 
 插值曲线的初始化函数，可以根据入参创建一个插值曲线对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,7 +52,7 @@ initCurve(curve?: Curve): ICurve
 
 插值曲线和动效请参考<!--RP1-->[贝塞尔曲线](../../../design/ux-design/animation-attributes.md)<!--RP1End-->。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -90,7 +90,7 @@ stepsCurve(count: number, end: boolean): ICurve
 
 构造阶梯曲线对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -153,7 +153,7 @@ cubicBezierCurve(x1: number, y1: number, x2: number, y2: number): ICurve
 
 构造三阶贝塞尔曲线对象，确保曲线的值在0到1之间。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -221,7 +221,7 @@ springCurve(velocity: number, mass: number, stiffness: number, damping: number):
 
 构造弹簧曲线对象，曲线形状由弹簧参数决定，动画时长受animation、animateTo中的duration参数控制。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -288,7 +288,7 @@ springMotion(response?: number, dampingFraction?: number, overlapDuration?: numb
 
 构造弹性动画曲线对象。如果对同一对象的同一属性进行多个弹性动画，每个动画会替换掉前一个动画，并继承之前的速度。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -358,7 +358,7 @@ responsiveSpringMotion(response?: number, dampingFraction?: number, overlapDurat
 
 构造弹性跟手动画曲线对象，是[springMotion](#curvesspringmotion9)的一种特例，仅默认参数不同，可与springMotion混合使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -423,7 +423,9 @@ interpolatingSpring(velocity: number, mass: number, stiffness: number, damping: 
 
 构造插值器弹簧曲线对象，生成一条从0到1的动画曲线，实际动画值根据曲线进行插值计算。动画时间由曲线参数决定，不受animation、animateTo中的duration参数控制。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -488,7 +490,9 @@ customCurve(interpolate: (fraction: number) => number): ICurve
 
 构造自定义曲线对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -557,7 +561,7 @@ interpolate(fraction:&nbsp;number): number
 
 插值曲线的插值计算函数，可以通过传入的归一化时间参数返回当前的插值
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -767,4 +771,4 @@ struct ImageComponent {
 }
 ```
 
-![zh-cn_image_0000001174104410](figures/zh-cn_image_0000001174104410.gif)
+![zh-cn_image_0000001174104410](figures/curves-spring-example.gif)

@@ -10,7 +10,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn和ArkTS-Sta。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 当前界面仅包含本模块的系统接口，其他公开接口参见[NotificationManager](./js-apis-notificationManager.md)。
 
@@ -22,7 +23,9 @@ import { notificationManager } from '@kit.NotificationKit';
 
 ## notificationManager.publish
 
-publish(request: NotificationRequest, userId: number, callback: AsyncCallback\<void\>): void
+ArkTS-Dyn: publish(request: NotificationRequest, userId: number, callback: AsyncCallback\<void\>): void
+
+ArkTS-Sta: publish(request: NotificationRequest, userId: int, callback: AsyncCallback\<void\>): void
 
 发布通知给指定的用户。使用callback异步回调。
 
@@ -32,12 +35,16 @@ publish(request: NotificationRequest, userId: number, callback: AsyncCallback\<v
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名     | 类型                                        | 必填 | 说明                                        |
 | -------- | ----------------------------------------- | ---- | ------------------------------------------- |
 | request  | [NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest) | 是   | 用于设置要发布通知的内容和相关配置信息。 |
-| userId   | number                                      | 是   | 用户ID。                           |
+| userId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                      | 是   | 用户ID。                           |
 | callback | AsyncCallback\<void\>                       | 是   | 被指定的回调方法。                           |
 
 **错误码：**
@@ -70,6 +77,7 @@ publish(request: NotificationRequest, userId: number, callback: AsyncCallback\<v
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -98,9 +106,40 @@ let notificationRequest: notificationManager.NotificationRequest = {
 notificationManager.publish(notificationRequest, userId, publishCallback);
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// publish回调
+let publishCallback = (err: BusinessError | null) => {
+    if (err) {
+        console.error(`publish failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info("publish success");
+    }
+}
+// 用户ID，使用时需替换为真实的userId。
+let userId: int = 1;
+// 通知Request对象
+let notificationRequest: notificationManager.NotificationRequest = {
+    id: 1,
+    content: {
+        notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+        normal: {
+            title: "test_title",
+            text: "test_text",
+            additionalText: "test_additionalText"
+        }
+    }
+};
+notificationManager.publish(notificationRequest, userId, publishCallback);
+```
+
 ## notificationManager.publish
 
-publish(request: NotificationRequest, userId: number): Promise\<void\>
+ArkTS-Dyn: publish(request: NotificationRequest, userId: number): Promise\<void\>
+
+ArkTS-Sta: publish(request: NotificationRequest, userId: int): Promise\<void\>
 
 发布通知给指定的用户。使用Promise异步回调。
 
@@ -110,12 +149,16 @@ publish(request: NotificationRequest, userId: number): Promise\<void\>
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名     |  类型                                        | 必填 | 说明                                        |
 | -------- | ----------------------------------------- | ---- | ------------------------------------------- |
 | request  | [NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest) | 是   | 用于设置要发布通知的内容和相关配置信息。 |
-| userId   | number                                      | 是   | 用户ID。                           |
+| userId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                      | 是   | 用户ID。                           |
 
 **返回值：**
 
@@ -153,6 +196,7 @@ publish(request: NotificationRequest, userId: number): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -178,6 +222,32 @@ notificationManager.publish(notificationRequest, userId).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+let notificationRequest: notificationManager.NotificationRequest = {
+    id: 1,
+    content: {
+        notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+        normal: {
+            title: "test_title",
+            text: "test_text",
+            additionalText: "test_additionalText"
+        }
+    }
+};
+
+// 用户ID，使用时需替换为真实的userId。
+let userId: int = 1;
+
+notificationManager.publish(notificationRequest, userId).then(() => {
+    console.info("publish success");
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`publish failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.addSlot
 
 addSlot(slot: NotificationSlot, callback: AsyncCallback\<void\>): void
@@ -189,6 +259,10 @@ addSlot(slot: NotificationSlot, callback: AsyncCallback\<void\>): void
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -213,11 +287,31 @@ addSlot(slot: NotificationSlot, callback: AsyncCallback\<void\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // addSlot回调
 let addSlotCallBack = (err: BusinessError): void => {
+    if (err) {
+        console.error(`addSlot failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info("addSlot success");
+    }
+}
+// 通知slot对象
+let notificationSlot: notificationManager.NotificationSlot = {
+    notificationType: notificationManager.SlotType.SOCIAL_COMMUNICATION
+};
+notificationManager.addSlot(notificationSlot, addSlotCallBack);
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// addSlot回调
+let addSlotCallBack = (err: BusinessError | null): void => {
     if (err) {
         console.error(`addSlot failed, code is ${err.code}, message is ${err.message}`);
     } else {
@@ -242,6 +336,10 @@ addSlot(slot: NotificationSlot): Promise\<void\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -271,6 +369,7 @@ addSlot(slot: NotificationSlot): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -285,6 +384,21 @@ notificationManager.addSlot(notificationSlot).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+// 通知slot对象
+let notificationSlot: notificationManager.NotificationSlot = {
+    notificationType: notificationManager.SlotType.SOCIAL_COMMUNICATION
+};
+notificationManager.addSlot(notificationSlot).then(() => {
+    console.info("addSlot success");
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`addSlot failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.addSlots
 
 addSlots(slots: Array\<NotificationSlot\>, callback: AsyncCallback\<void\>): void
@@ -296,6 +410,10 @@ addSlots(slots: Array\<NotificationSlot\>, callback: AsyncCallback\<void\>): voi
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -320,6 +438,7 @@ addSlots(slots: Array\<NotificationSlot\>, callback: AsyncCallback\<void\>): voi
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -342,6 +461,30 @@ notificationSlotArray[0] = notificationSlot;
 notificationManager.addSlots(notificationSlotArray, addSlotsCallBack);
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// addSlots回调
+let addSlotsCallBack = (err: BusinessError | null): void => {
+    if (err) {
+        console.error(`addSlots failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info("addSlots success");
+    }
+}
+// 通知slot对象
+let notificationSlot: notificationManager.NotificationSlot = {
+    notificationType: notificationManager.SlotType.SOCIAL_COMMUNICATION
+};
+// 通知slot array 对象
+let notificationSlotArray: notificationManager.NotificationSlot[] = [
+    notificationSlot
+]
+
+notificationManager.addSlots(notificationSlotArray, addSlotsCallBack);
+```
+
 ## notificationManager.addSlots
 
 addSlots(slots: Array\<NotificationSlot\>): Promise\<void\>
@@ -353,6 +496,10 @@ addSlots(slots: Array\<NotificationSlot\>): Promise\<void\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -382,6 +529,7 @@ addSlots(slots: Array\<NotificationSlot\>): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -400,6 +548,25 @@ notificationManager.addSlots(notificationSlotArray).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+// 通知slot对象
+let notificationSlot: notificationManager.NotificationSlot = {
+    notificationType: notificationManager.SlotType.SOCIAL_COMMUNICATION
+};
+// 通知slot array 对象
+let notificationSlotArray: notificationManager.NotificationSlot[] = [
+    notificationSlot
+]
+
+notificationManager.addSlots(notificationSlotArray).then(() => {
+    console.info("addSlots success");
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`addSlots failed, code is ${error.code}, message is ${error.message}`);
+});
+```
 
 ## notificationManager.setNotificationEnable
 
@@ -412,6 +579,10 @@ setNotificationEnable(bundle: BundleOption, enable: boolean, callback: AsyncCall
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -437,6 +608,7 @@ setNotificationEnable(bundle: BundleOption, enable: boolean, callback: AsyncCall
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -453,6 +625,24 @@ let bundle: notificationManager.BundleOption = {
 notificationManager.setNotificationEnable(bundle, false, setNotificationEnableCallback);
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let setNotificationEnableCallback = (err: BusinessError | null): void => {
+    if (err) {
+        console.error(`setNotificationEnable failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info("setNotificationEnable success");
+    }
+}
+let bundle: notificationManager.BundleOption = {
+    // 需根据实际情况进行替换
+    bundle: "bundleName1",
+};
+notificationManager.setNotificationEnable(bundle, false, setNotificationEnableCallback);
+```
+
 ## notificationManager.setNotificationEnable
 
 setNotificationEnable(bundle: BundleOption, enable: boolean): Promise\<void\>
@@ -464,6 +654,10 @@ setNotificationEnable(bundle: BundleOption, enable: boolean): Promise\<void\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -494,6 +688,7 @@ setNotificationEnable(bundle: BundleOption, enable: boolean): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -504,6 +699,20 @@ notificationManager.setNotificationEnable(bundle, false).then(() => {
     console.info("setNotificationEnable success");
 }).catch((err: BusinessError) => {
     console.error(`setNotificationEnable failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+let bundle: notificationManager.BundleOption = {
+    // 需根据实际情况进行替换
+    bundle: "bundleName1",
+};
+notificationManager.setNotificationEnable(bundle, false).then(() => {
+  console.info("setNotificationEnable success");
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`setNotificationEnable failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -518,6 +727,10 @@ getAllNotificationEnabledBundles(): Promise<Array<BundleOption\>>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -539,6 +752,7 @@ getAllNotificationEnabledBundles(): Promise<Array<BundleOption\>>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -553,9 +767,26 @@ notificationManager.getAllNotificationEnabledBundles().then((data: Array<notific
 })
 ```
 
+ArkTS-Sta示例：
+```ts
+
+notificationManager.getAllNotificationEnabledBundles().then((data: Array<notificationManager.BundleOption>) => {
+    console.info(`Enable bundle data is ${JSON.stringify(data)}`);
+    data.forEach(element => {
+        console.info(`Enable uid is ${JSON.stringify(element.uid)}`);
+        console.info(`Enable bundle is ${JSON.stringify(element.bundle)}`);
+    });
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`getAllNotificationEnabledBundles failed, code is ${error.code}, message is ${error.message}`);
+})
+```
+
 ## notificationManager.getAllNotificationEnabledBundles<sup>23+</sup>
 
-getAllNotificationEnabledBundles(userId: number): Promise<Array<BundleOption\>>
+ArkTS-Dyn: getAllNotificationEnabledBundles(userId: number): Promise<Array<BundleOption\>>
+
+ArkTS-Sta: getAllNotificationEnabledBundles(userId: int): Promise<Array<BundleOption\>>
 
 获取指定用户下允许通知的应用程序列表。使用Promise异步回调。
 
@@ -565,11 +796,15 @@ getAllNotificationEnabledBundles(userId: number): Promise<Array<BundleOption\>>
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名   | 类型             | 必填 | 说明           |
 | ------ | ---------------- | ---- | -------------- |
-| userId   | number | 是 | 要获取允许通知的应用程序列表的用户。 |
+| userId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 要获取允许通知的应用程序列表的用户。 |
 
 **返回值：**
 
@@ -592,6 +827,7 @@ getAllNotificationEnabledBundles(userId: number): Promise<Array<BundleOption\>>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -608,6 +844,18 @@ notificationManager.getAllNotificationEnabledBundles(userId).then((data: Array<n
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+let userId : int = 100;
+
+notificationManager.getAllNotificationEnabledBundles(userId).then((data: Array<notificationManager.BundleOption> | undefined): void => {
+  console.info(`Enable bundle data is ${JSON.stringify(data)}`);
+}).catch((err: Error | undefined): void => {
+  console.error(`getAllNotificationEnabledBundles error, code: ${err?.code}, message: ${err?.message}`);
+});
+```
+
 ## notificationManager.isNotificationEnabled
 
 isNotificationEnabled(bundle: BundleOption, callback: AsyncCallback\<boolean\>): void
@@ -619,6 +867,10 @@ isNotificationEnabled(bundle: BundleOption, callback: AsyncCallback\<boolean\>):
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -643,6 +895,7 @@ isNotificationEnabled(bundle: BundleOption, callback: AsyncCallback\<boolean\>):
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -661,6 +914,26 @@ let bundle: notificationManager.BundleOption = {
 notificationManager.isNotificationEnabled(bundle, isNotificationEnabledCallback);
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let isNotificationEnabledCallback = (err: BusinessError | null, data: boolean | undefined | null): void => {
+    if (err) {
+        console.error(`isNotificationEnabled failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info(`isNotificationEnabled success, data is ${JSON.stringify(data)}`);
+    }
+}
+
+let bundle: notificationManager.BundleOption = {
+    // 需根据实际情况进行替换
+    bundle: "bundleName1",
+};
+
+notificationManager.isNotificationEnabled(bundle, isNotificationEnabledCallback);
+```
+
 ## notificationManager.isNotificationEnabled
 
 isNotificationEnabled(bundle: BundleOption): Promise\<boolean\>
@@ -672,6 +945,10 @@ isNotificationEnabled(bundle: BundleOption): Promise\<boolean\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -701,6 +978,7 @@ isNotificationEnabled(bundle: BundleOption): Promise\<boolean\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -714,9 +992,26 @@ notificationManager.isNotificationEnabled(bundle).then((data: boolean) => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+let bundle: notificationManager.BundleOption = {
+    // 需根据实际情况进行替换
+    bundle: "bundleName1",
+};
+notificationManager.isNotificationEnabled(bundle).then((data: boolean) => {
+    console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`isNotificationEnabled failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.isNotificationEnabled
 
-isNotificationEnabled(userId: number, callback: AsyncCallback\<boolean\>): void
+ArkTS-Dyn: isNotificationEnabled(userId: number, callback: AsyncCallback\<boolean\>): void
+
+ArkTS-Sta: isNotificationEnabled(userId: int, callback: AsyncCallback\<boolean\>): void
 
 获取指定用户ID下的通知使能状态。使用callback异步回调。
 
@@ -726,11 +1021,15 @@ isNotificationEnabled(userId: number, callback: AsyncCallback\<boolean\>): void
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名     | 类型                  | 必填 | 说明                     |
 | -------- | --------------------- | ---- | ------------------------ |
-| userId   | number                | 是   | 指定的用户ID。 |
+| userId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int                | 是   | 指定的用户ID。 |
 | callback | AsyncCallback\<boolean\> | 是   | 获取通知使能状态回调函数（true：使能，false：禁止）。 |
 
 **错误码：**
@@ -749,6 +1048,7 @@ isNotificationEnabled(userId: number, callback: AsyncCallback\<boolean\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -766,9 +1066,29 @@ let userId: number = 1;
 notificationManager.isNotificationEnabled(userId, isNotificationEnabledCallback);
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let isNotificationEnabledCallback = (err: BusinessError | null, data: boolean | undefined | null): void => {
+    if (err) {
+        console.error(`isNotificationEnabled failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info(`isNotificationEnabled success, data is ${JSON.stringify(data)}`);
+    }
+}
+
+// 用户ID，使用时需替换为真实的userId。
+let userId: int = 1;
+
+notificationManager.isNotificationEnabled(userId, isNotificationEnabledCallback);
+```
+
 ## notificationManager.isNotificationEnabled
 
-isNotificationEnabled(userId: number): Promise\<boolean\>
+ArkTS-Dyn: isNotificationEnabled(userId: number): Promise\<boolean\>
+
+ArkTS-Sta: isNotificationEnabled(userId: int): Promise\<boolean\>
 
 获取指定用户下的通知使能状态。使用Promise异步回调。
 
@@ -778,11 +1098,15 @@ isNotificationEnabled(userId: number): Promise\<boolean\>
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名   | 类型         | 必填 | 说明       |
 | ------ | ------------ | ---- | ---------- |
-| userId | number       | 是   | 指定的用户ID。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int       | 是   | 指定的用户ID。 |
 
 **返回值：**
 
@@ -806,6 +1130,7 @@ isNotificationEnabled(userId: number): Promise\<boolean\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -816,6 +1141,20 @@ notificationManager.isNotificationEnabled(userId).then((data: boolean) => {
     console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`isNotificationEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+
+// 用户ID，使用时需替换为真实的userId。
+let userId: int = 1;
+
+notificationManager.isNotificationEnabled(userId).then((data: boolean) => {
+    console.info(`isNotificationEnabled success, data: ${JSON.stringify(data)}`);
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`isNotificationEnabled failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -832,6 +1171,10 @@ displayBadge(bundle: BundleOption, enable: boolean, callback: AsyncCallback\<voi
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -858,6 +1201,7 @@ displayBadge(bundle: BundleOption, enable: boolean, callback: AsyncCallback\<voi
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -869,6 +1213,24 @@ let displayBadgeCallback = (err: BusinessError): void => {
     }
 }
 let bundle: notificationManager.BundleOption = {
+    bundle: "bundleName1",
+};
+notificationManager.displayBadge(bundle, false, displayBadgeCallback);
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let displayBadgeCallback = (err: BusinessError | null): void => {
+    if (err) {
+        console.error(`displayBadge failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info("displayBadge success");
+    }
+}
+let bundle: notificationManager.BundleOption = {
+    // 需根据实际情况进行替换
     bundle: "bundleName1",
 };
 notificationManager.displayBadge(bundle, false, displayBadgeCallback);
@@ -887,6 +1249,10 @@ displayBadge(bundle: BundleOption, enable: boolean): Promise\<void\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -918,6 +1284,7 @@ displayBadge(bundle: BundleOption, enable: boolean): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -928,6 +1295,21 @@ notificationManager.displayBadge(bundle, false).then(() => {
     console.info("displayBadge success");
 }).catch((err: BusinessError) => {
     console.error(`displayBadge failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+
+let bundle: notificationManager.BundleOption = {
+    // 需根据实际情况进行替换
+    bundle: "bundleName1",
+};
+notificationManager.displayBadge(bundle, false).then(() => {
+    console.info("displayBadge success");
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`displayBadge failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -944,6 +1326,10 @@ isBadgeDisplayed(bundle: BundleOption, callback: AsyncCallback\<boolean\>): void
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -969,6 +1355,7 @@ isBadgeDisplayed(bundle: BundleOption, callback: AsyncCallback\<boolean\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -980,6 +1367,24 @@ let isBadgeDisplayedCallback = (err: BusinessError, data: boolean): void => {
     }
 }
 let bundle: notificationManager.BundleOption = {
+    bundle: "bundleName1",
+};
+notificationManager.isBadgeDisplayed(bundle, isBadgeDisplayedCallback);
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let isBadgeDisplayedCallback = (err: BusinessError | null, data: boolean | undefined | null): void => {
+    if (err) {
+        console.error(`isBadgeDisplayed failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info(`isBadgeDisplayed success, data is ${JSON.stringify(data)}`);
+    }
+}
+let bundle: notificationManager.BundleOption = {
+    // 需根据实际情况进行替换
     bundle: "bundleName1",
 };
 notificationManager.isBadgeDisplayed(bundle, isBadgeDisplayedCallback);
@@ -998,6 +1403,10 @@ isBadgeDisplayed(bundle: BundleOption): Promise\<boolean\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1028,6 +1437,7 @@ isBadgeDisplayed(bundle: BundleOption): Promise\<boolean\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1042,9 +1452,27 @@ notificationManager.isBadgeDisplayed(bundle).then((data: boolean) => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+let bundle: notificationManager.BundleOption = {
+    // 需根据实际情况进行替换
+    bundle: "bundleName1",
+};
+
+notificationManager.isBadgeDisplayed(bundle).then((data: boolean) => {
+    console.info(`isBadgeDisplayed success, data: ${JSON.stringify(data)}`);
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`isBadgeDisplayed failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.setSlotFlagsByBundle<sup>11+</sup>
 
-setSlotFlagsByBundle(bundle: BundleOption, slotFlags: number): Promise\<void\>
+ArkTS-Dyn: setSlotFlagsByBundle(bundle: BundleOption, slotFlags: number): Promise\<void\>
+
+ArkTS-Sta: setSlotFlagsByBundle(bundle: BundleOption, slotFlags: long): Promise\<void\>
 
 设定指定应用的通知提醒方式开关。使用Promise异步回调。
 
@@ -1056,12 +1484,16 @@ setSlotFlagsByBundle(bundle: BundleOption, slotFlags: number): Promise\<void\>
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名   | 类型         | 必填 | 说明       |
 | ------ | ------------ | ---- | ---------- |
 | bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
-| slotFlags   | number | 是   | 通知提醒方式开关标识位。<br>- bit0：铃声提示。0表示关闭，1表示开启。 <br>- bit1：锁屏。0表示关闭，1表示开启。 <br>- bit2：横幅。0表示关闭，1表示开启。 <br>- bit3：亮屏。0表示关闭，1表示开启。 <br>- bit4：振动。0表示关闭，1表示开启。 <br>- bit5：状态栏通知图标。0表示关闭，1表示开启。 |
+| slotFlags   | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是   | 通知提醒方式开关标识位。<br>- bit0：铃声提示。0表示关闭，1表示开启。 <br>- bit1：锁屏。0表示关闭，1表示开启。 <br>- bit2：横幅。0表示关闭，1表示开启。 <br>- bit3：亮屏。0表示关闭，1表示开启。 <br>- bit4：振动。0表示关闭，1表示开启。 <br>- bit5：状态栏通知图标。0表示关闭，1表示开启。 |
 
 **返回值：**
 
@@ -1086,6 +1518,7 @@ setSlotFlagsByBundle(bundle: BundleOption, slotFlags: number): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1099,6 +1532,24 @@ notificationManager.setSlotFlagsByBundle(bundle, slotFlags).then(() => {
     console.info("setSlotFlagsByBundle success");
 }).catch((err: BusinessError) => {
     console.error(`setSlotFlagsByBundle failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+
+let bundle: notificationManager.BundleOption = {
+    // 需根据实际情况进行替换
+    bundle: "bundleName1",
+};
+
+let slotFlags: long = 1;
+
+notificationManager.setSlotFlagsByBundle(bundle, slotFlags).then(() => {
+    console.info("setSlotFlagsByBundle success");
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`setSlotFlagsByBundle failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1117,6 +1568,10 @@ setSlotByBundle(bundle: BundleOption, slot: NotificationSlot, callback: AsyncCal
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1143,6 +1598,7 @@ setSlotByBundle(bundle: BundleOption, slot: NotificationSlot, callback: AsyncCal
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1154,6 +1610,27 @@ let setSlotByBundleCallback = (err: BusinessError): void => {
     }
 }
 let bundle: notificationManager.BundleOption = {
+    bundle: "bundleName1",
+};
+let notificationSlot: notificationManager.NotificationSlot = {
+    notificationType: notificationManager.SlotType.SOCIAL_COMMUNICATION
+};
+notificationManager.setSlotByBundle(bundle, notificationSlot, setSlotByBundleCallback);
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let setSlotByBundleCallback = (err: BusinessError | null): void => {
+    if (err) {
+        console.error(`setSlotByBundle failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info("setSlotByBundle success");
+    }
+}
+let bundle: notificationManager.BundleOption = {
+    // 需根据实际情况进行替换
     bundle: "bundleName1",
 };
 let notificationSlot: notificationManager.NotificationSlot = {
@@ -1177,6 +1654,10 @@ setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise\<void\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1208,6 +1689,7 @@ setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1226,9 +1708,31 @@ notificationManager.setSlotByBundle(bundle, notificationSlot).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+let bundle: notificationManager.BundleOption = {
+    // 需根据实际情况进行替换
+    bundle: "bundleName1",
+};
+
+let notificationSlot: notificationManager.NotificationSlot = {
+    notificationType: notificationManager.SlotType.SOCIAL_COMMUNICATION
+};
+
+notificationManager.setSlotByBundle(bundle, notificationSlot).then(() => {
+    console.info("setSlotByBundle success");
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`setSlotByBundle failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.getSlotFlagsByBundle<sup>11+</sup>
 
-getSlotFlagsByBundle(bundle: BundleOption): Promise\<number\>
+ArkTS-Dyn: getSlotFlagsByBundle(bundle: BundleOption): Promise\<number\>
+
+ArkTS-Sta: getSlotFlagsByBundle(bundle: BundleOption): Promise\<long\>
 
 获取指定应用的通知渠道标识位。使用Promise异步回调。
 
@@ -1240,6 +1744,10 @@ getSlotFlagsByBundle(bundle: BundleOption): Promise\<number\>
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名   | 类型         | 必填 | 说明       |
@@ -1250,7 +1758,7 @@ getSlotFlagsByBundle(bundle: BundleOption): Promise\<number\>
 
 | 类型                                                        | 说明                                                         |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-|  Promise\<number\>| 以Promise形式返回获取指定应用的通知渠道标识位。<br>- bit0：铃声提示。0表示关闭，1表示开启。 <br>- bit1：锁屏。0表示关闭，1表示开启。 <br>- bit2：横幅。0表示关闭，1表示开启。 <br>- bit3：亮屏。0表示关闭，1表示开启。 <br>- bit4：振动。0表示关闭，1表示开启。 <br>- bit5：状态栏通知图标。0表示关闭，1表示开启。 |
+|  ArkTS-Dyn: Promise\<number\><br/>ArkTS-Sta: Promise\<long\> | 以Promise形式返回获取指定应用的通知渠道标识位。<br>- bit0：铃声提示。0表示关闭，1表示开启。 <br>- bit1：锁屏。0表示关闭，1表示开启。 <br>- bit2：横幅。0表示关闭，1表示开启。 <br>- bit3：亮屏。0表示关闭，1表示开启。 <br>- bit4：振动。0表示关闭，1表示开启。 <br>- bit5：状态栏通知图标。0表示关闭，1表示开启。 |
 
 **错误码：**
 
@@ -1269,6 +1777,7 @@ getSlotFlagsByBundle(bundle: BundleOption): Promise\<number\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1279,6 +1788,21 @@ notificationManager.getSlotFlagsByBundle(bundle).then((data : number) => {
     console.info(`getSlotFlagsByBundle success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getSlotFlagsByBundle failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+
+let bundle: notificationManager.BundleOption = {
+    // 需根据实际情况进行替换
+    bundle: "bundleName1",
+};
+notificationManager.getSlotFlagsByBundle(bundle).then((data: long) => {
+    console.info(`getSlotFlagsByBundle success, data: ${JSON.stringify(data)}`);
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`getSlotFlagsByBundle failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1295,6 +1819,10 @@ getSlotsByBundle(bundle: BundleOption, callback: AsyncCallback\<Array\<Notificat
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1320,6 +1848,7 @@ getSlotsByBundle(bundle: BundleOption, callback: AsyncCallback\<Array\<Notificat
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1331,6 +1860,24 @@ let getSlotsByBundleCallback = (err: BusinessError, data: Array<notificationMana
     }
 }
 let bundle: notificationManager.BundleOption = {
+    bundle: "bundleName1",
+};
+notificationManager.getSlotsByBundle(bundle, getSlotsByBundleCallback);
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let getSlotsByBundleCallback = (err: BusinessError | null, data: Array<notificationManager.NotificationSlot>  | undefined | null): void => {
+    if (err) {
+        console.error(`getSlotsByBundle failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info(`getSlotsByBundle success, data is ${JSON.stringify(data)}`);
+    }
+}
+let bundle: notificationManager.BundleOption = {
+    // 需根据实际情况进行替换
     bundle: "bundleName1",
 };
 notificationManager.getSlotsByBundle(bundle, getSlotsByBundleCallback);
@@ -1349,6 +1896,10 @@ getSlotsByBundle(bundle: BundleOption): Promise\<Array\<NotificationSlot>>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1379,6 +1930,7 @@ getSlotsByBundle(bundle: BundleOption): Promise\<Array\<NotificationSlot>>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1393,9 +1945,27 @@ notificationManager.getSlotsByBundle(bundle).then((data: Array<notificationManag
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+let bundle: notificationManager.BundleOption = {
+    // 需根据实际情况进行替换
+    bundle: "bundleName1",
+};
+
+notificationManager.getSlotsByBundle(bundle).then((data: Array<notificationManager.NotificationSlot>) => {
+    console.info(`getSlotsByBundle success, data: ${JSON.stringify(data)}`);
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`getSlotsByBundle failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.getSlotNumByBundle
 
-getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback\<number\>): void
+ArkTS-Dyn: getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback\<number\>): void
+
+ArkTS-Sta: getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback\<long\>): void
 
 获取指定应用的通知渠道数量。使用callback异步回调。
 
@@ -1407,12 +1977,16 @@ getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback\<number\>): voi
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名     | 类型                      | 必填 | 说明                   |
 | -------- | ------------------------- | ---- | ---------------------- |
 | bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)              | 是   | 指定应用的包信息。             |
-| callback | AsyncCallback\<number\> | 是   | 获取通知渠道数量回调函数。 |
+| callback | ArkTS-Dyn: AsyncCallback\<number\><br/>ArkTS-Sta: AsyncCallback\<long\ | 是   | 获取通知渠道数量回调函数。 |
 
 **错误码：**
 
@@ -1431,6 +2005,7 @@ getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback\<number\>): voi
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1449,9 +2024,31 @@ let bundle: notificationManager.BundleOption = {
 notificationManager.getSlotNumByBundle(bundle, getSlotNumByBundleCallback);
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let getSlotNumByBundleCallback = (err: BusinessError | null, data: long | undefined | null): void => {
+    if (err) {
+        console.error(`getSlotNumByBundle failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info(`getSlotNumByBundle success data is ${JSON.stringify(data)}`);
+    }
+}
+
+let bundle: notificationManager.BundleOption = {
+    // 需根据实际情况进行替换
+    bundle: "bundleName1",
+};
+
+notificationManager.getSlotNumByBundle(bundle, getSlotNumByBundleCallback);
+```
+
 ## notificationManager.getSlotNumByBundle
 
-getSlotNumByBundle(bundle: BundleOption): Promise\<number\>
+ArkTS-Dyn: getSlotNumByBundle(bundle: BundleOption): Promise\<number\>
+
+ArkTS-Sta: getSlotNumByBundle(bundle: BundleOption): Promise\<long\>
 
 获取指定应用的通知渠道数量。使用Promise异步回调。
 
@@ -1463,6 +2060,10 @@ getSlotNumByBundle(bundle: BundleOption): Promise\<number\>
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名   | 类型         | 必填 | 说明       |
@@ -1473,7 +2074,7 @@ getSlotNumByBundle(bundle: BundleOption): Promise\<number\>
 
 | 类型                                                        | 说明                                                         |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<number\> | 以Promise形式返回获取指定应用的通知渠道数量。 |
+| ArkTS-Dyn: Promise\<number\><br/>ArkTS-Sta: Promise\<long\ | 以Promise形式返回获取指定应用的通知渠道数量。 |
 
 **错误码：**
 
@@ -1492,6 +2093,7 @@ getSlotNumByBundle(bundle: BundleOption): Promise\<number\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1506,6 +2108,21 @@ notificationManager.getSlotNumByBundle(bundle).then((data: number) => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+let bundle: notificationManager.BundleOption = {
+    // 需根据实际情况进行替换
+    bundle: "bundleName1",
+};
+
+notificationManager.getSlotNumByBundle(bundle).then((data: long) => {
+    console.info(`getSlotNumByBundle success, data: ${JSON.stringify(data)}`);
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`getSlotNumByBundle failed, code is ${error.code}, message is ${error.message}`);
+});
+```
 
 ## notificationManager.getAllActiveNotifications
 
@@ -1518,6 +2135,10 @@ getAllActiveNotifications(callback: AsyncCallback\<Array\<NotificationRequest>>)
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1540,10 +2161,26 @@ getAllActiveNotifications(callback: AsyncCallback\<Array\<NotificationRequest>>)
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let getAllActiveNotificationsCallback = (err: BusinessError, data: Array<notificationManager.NotificationRequest>): void => {
+    if (err) {
+        console.error(`getAllActiveNotifications failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info(`getAllActiveNotifications success, data is ${JSON.stringify(data)}`);
+    }
+}
+
+notificationManager.getAllActiveNotifications(getAllActiveNotificationsCallback);
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let getAllActiveNotificationsCallback = (err: BusinessError | null, data: Array<notificationManager.NotificationRequest> | undefined | null): void => {
     if (err) {
         console.error(`getAllActiveNotifications failed, code is ${err.code}, message is ${err.message}`);
     } else {
@@ -1566,6 +2203,10 @@ getAllActiveNotifications(): Promise\<Array\<NotificationRequest\>\>
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **返回值：**
 
 | 类型                                                        | 说明                                                         |
@@ -1586,6 +2227,7 @@ getAllActiveNotifications(): Promise\<Array\<NotificationRequest\>\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1596,9 +2238,22 @@ notificationManager.getAllActiveNotifications().then((data: Array<notificationMa
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+notificationManager.getAllActiveNotifications().then((data: Array<notificationManager.NotificationRequest>) => {
+    console.info(`getAllActiveNotifications success, data: ${JSON.stringify(data)}`);
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`getAllActiveNotifications failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.getActiveNotificationByFilter<sup>11+</sup>
 
-getActiveNotificationByFilter(filter: NotificationFilter, callback: AsyncCallback\<NotificationRequest\>): void
+ArkTS-Dyn: getActiveNotificationByFilter(filter: NotificationFilter, callback: AsyncCallback\<NotificationRequest\>): void
+
+ArkTS-Sta: getActiveNotificationByFilter(filter: NotificationFilter, callback: AsyncCallback\<NotificationRequest|null\>): void
 
 获取满足条件的普通实况通知信息。使用callback异步回调。
 
@@ -1608,13 +2263,17 @@ getActiveNotificationByFilter(filter: NotificationFilter, callback: AsyncCallbac
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
+
 
 **参数：**
 
 | 参数名     | 类型                                                         | 必填 | 说明                           |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------ |
 | filter   | [NotificationFilter](js-apis-inner-notification-notificationRequest-sys.md#notificationfilter11) | 是   | 查询普通实况窗的过滤条件。 |
-| callback | AsyncCallback\<[NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest)> | 是   | 获取满足条件的普通实况通知信息的回调函数。 |
+| callback | ArkTS-Dyn: AsyncCallback\<Array\<[NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest)>><br/>ArkTS-Sta: AsyncCallback\<Array\<[NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest)\|null>>  | 是   | 获取满足条件的普通实况通知信息的回调函数。 |
 
 **错误码：**
 
@@ -1628,6 +2287,7 @@ getActiveNotificationByFilter(filter: NotificationFilter, callback: AsyncCallbac
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { notificationSubscribe } from '@kit.NotificationKit';
@@ -1654,9 +2314,41 @@ let getActiveNotificationByFilterCallback = (err: BusinessError, data: notificat
 notificationManager.getActiveNotificationByFilter(filter, getActiveNotificationByFilterCallback);
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { notificationSubscribe } from '@kit.NotificationKit';
+
+let bundleOption: notificationManager.BundleOption = {
+    // 需根据实际情况进行替换
+    bundle: "bundleName1",
+};
+let notificationKey: notificationSubscribe.NotificationKey = {
+    // 需根据实际情况进行替换
+    id: 0,
+    label: "text"
+};
+let filter: notificationManager.NotificationFilter = {
+    bundle: bundleOption,
+    notificationKey: notificationKey,
+    // 需根据实际情况进行替换
+    extraInfoKeys: ['event']
+}
+let getActiveNotificationByFilterCallback = (err: BusinessError | null, data: notificationManager.NotificationRequest | null | undefined): void => {
+    if (err) {
+        console.error(`getActiveNotificationByFilter failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info("getActiveNotificationByFilter success");
+    }
+}
+notificationManager.getActiveNotificationByFilter(filter, getActiveNotificationByFilterCallback);
+```
+
 ## notificationManager.getActiveNotificationByFilter<sup>11+</sup>
 
-getActiveNotificationByFilter(filter: NotificationFilter): Promise\<NotificationRequest\>
+ArkTS-Dyn: getActiveNotificationByFilter(filter: NotificationFilter): Promise\<NotificationRequest\>
+
+ArkTS-Sta: getActiveNotificationByFilter(filter: NotificationFilter): Promise\<NotificationRequest|null\>
 
 获取满足条件的普通实况通知信息。使用Promise异步回调。
 
@@ -1665,6 +2357,10 @@ getActiveNotificationByFilter(filter: NotificationFilter): Promise\<Notification
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
 
 
 **参数：**
@@ -1677,7 +2373,7 @@ getActiveNotificationByFilter(filter: NotificationFilter): Promise\<Notification
 
 | 类型                                                         | 说明                                    |
 | ------------------------------------------------------------ | --------------------------------------- |
-| Promise\<[NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest)\> | 以Promise形式返回获取的满足条件的普通实况通知信息。 |
+| ArkTS-Dyn: Promise\<[NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest)\><br/>ArkTS-Sta: Promise\<[NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest)\|null\> | 以Promise形式返回获取的满足条件的普通实况通知信息。 |
 
 **错误码：**
 
@@ -1691,6 +2387,7 @@ getActiveNotificationByFilter(filter: NotificationFilter): Promise\<Notification
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { notificationSubscribe } from '@kit.NotificationKit';
@@ -1714,6 +2411,33 @@ notificationManager.getActiveNotificationByFilter(filter).then((data: notificati
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+import { notificationSubscribe } from '@kit.NotificationKit';
+
+let bundleOption: notificationManager.BundleOption = {
+    // 需根据实际情况进行替换
+    bundle: "bundleName1",
+};
+let notificationKey: notificationSubscribe.NotificationKey = {
+    // 需根据实际情况进行替换
+    id: 0,
+    label: "text"
+};
+let filter: notificationManager.NotificationFilter = {
+    bundle: bundleOption,
+    notificationKey: notificationKey,
+    // 需根据实际情况进行替换
+    extraInfoKeys: ['event']
+}
+notificationManager.getActiveNotificationByFilter(filter).then((data: notificationManager.NotificationRequest | null | undefined) => {
+    console.info(`getActiveNotificationByFilter success, data: ${JSON.stringify(data)}`);
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`getActiveNotificationByFilter failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.removeGroupByBundle
 
 removeGroupByBundle(bundle: BundleOption, groupName: string, callback: AsyncCallback\<void\>): void
@@ -1725,6 +2449,10 @@ removeGroupByBundle(bundle: BundleOption, groupName: string, callback: AsyncCall
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1750,6 +2478,7 @@ removeGroupByBundle(bundle: BundleOption, groupName: string, callback: AsyncCall
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1767,6 +2496,24 @@ let groupName: string = "GroupName";
 notificationManager.removeGroupByBundle(bundleOption, groupName, removeGroupByBundleCallback);
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let removeGroupByBundleCallback = (err: BusinessError | null): void => {
+    if (err) {
+        console.error(`removeGroupByBundle failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info("removeGroupByBundle success");
+    }
+}
+
+let bundleOption: notificationManager.BundleOption = { bundle: "bundleName1" };
+let groupName: string = "GroupName";
+
+notificationManager.removeGroupByBundle(bundleOption, groupName, removeGroupByBundleCallback);
+```
+
 ## notificationManager.removeGroupByBundle
 
 removeGroupByBundle(bundle: BundleOption, groupName: string): Promise\<void\>
@@ -1778,6 +2525,10 @@ removeGroupByBundle(bundle: BundleOption, groupName: string): Promise\<void\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1808,6 +2559,7 @@ removeGroupByBundle(bundle: BundleOption, groupName: string): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1818,6 +2570,22 @@ notificationManager.removeGroupByBundle(bundleOption, groupName).then(() => {
     console.info("removeGroupByBundle success");
 }).catch((err: BusinessError) => {
     console.error(`removeGroupByBundle failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+
+// 需根据实际情况进行替换
+let bundleOption: notificationManager.BundleOption = { bundle: "bundleName1" };
+// 需根据实际情况进行替换
+let groupName: string = "GroupName";
+
+notificationManager.removeGroupByBundle(bundleOption, groupName).then(() => {
+    console.info("removeGroupByBundle success");
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`removeGroupByBundle failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -1834,6 +2602,10 @@ setDoNotDisturbDate(date: DoNotDisturbDate, callback: AsyncCallback\<void\>): vo
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1859,10 +2631,32 @@ setDoNotDisturbDate(date: DoNotDisturbDate, callback: AsyncCallback\<void\>): vo
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let setDoNotDisturbDateCallback = (err: BusinessError): void => {
+    if (err) {
+        console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info("setDoNotDisturbDate success");
+    }
+}
+
+let doNotDisturbDate: notificationManager.DoNotDisturbDate = {
+    type: notificationManager.DoNotDisturbType.TYPE_ONCE,
+    begin: new Date(),
+    end: new Date(2021, 11, 15, 18, 0)
+};
+
+notificationManager.setDoNotDisturbDate(doNotDisturbDate, setDoNotDisturbDateCallback);
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let setDoNotDisturbDateCallback = (err: BusinessError | null): void => {
     if (err) {
         console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
     } else {
@@ -1892,6 +2686,10 @@ setDoNotDisturbDate(date: DoNotDisturbDate): Promise\<void\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -1923,6 +2721,7 @@ setDoNotDisturbDate(date: DoNotDisturbDate): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1938,10 +2737,27 @@ notificationManager.setDoNotDisturbDate(doNotDisturbDate).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+let doNotDisturbDate: notificationManager.DoNotDisturbDate = {
+    type: notificationManager.DoNotDisturbType.TYPE_ONCE,
+    begin: new Date(),
+    end: new Date(2021, 11, 15, 18, 0)
+};
+notificationManager.setDoNotDisturbDate(doNotDisturbDate).then(() => {
+    console.info("setDoNotDisturbDate success");
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`setDoNotDisturbDate failed, code is ${error.code}, message is ${error.message}`);
+});
+```
 
 ## notificationManager.setDoNotDisturbDate
 
-setDoNotDisturbDate(date: DoNotDisturbDate, userId: number, callback: AsyncCallback\<void\>): void
+ArkTS-Dyn: setDoNotDisturbDate(date: DoNotDisturbDate, userId: number, callback: AsyncCallback\<void\>): void
+
+ArkTS-Sta: setDoNotDisturbDate(date: DoNotDisturbDate, userId: int, callback: AsyncCallback\<void\>): void
 
 指定用户设置免打扰时间。使用callback异步回调。
 
@@ -1953,12 +2769,16 @@ setDoNotDisturbDate(date: DoNotDisturbDate, userId: number, callback: AsyncCallb
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名     | 类型                  | 必填 | 说明                   |
 | -------- | --------------------- | ---- | ---------------------- |
 | date     | [DoNotDisturbDate](#donotdisturbdate)      | 是   | 免打扰时间选项。         |
-| userId   | number                | 是   | 设置免打扰时间的用户ID。 |
+| userId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int                | 是   | 设置免打扰时间的用户ID。 |
 | callback | AsyncCallback\<void\> | 是   | 设置免打扰时间回调函数。 |
 
 **错误码：**
@@ -1979,6 +2799,7 @@ setDoNotDisturbDate(date: DoNotDisturbDate, userId: number, callback: AsyncCallb
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2002,9 +2823,35 @@ let userId: number = 1;
 notificationManager.setDoNotDisturbDate(doNotDisturbDate, userId, setDoNotDisturbDateCallback);
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let setDoNotDisturbDateCallback = (err: BusinessError | null): void => {
+    if (err) {
+        console.error(`setDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info("setDoNotDisturbDate success");
+    }
+}
+
+let doNotDisturbDate: notificationManager.DoNotDisturbDate = {
+    type: notificationManager.DoNotDisturbType.TYPE_ONCE,
+    begin: new Date(),
+    end: new Date(2021, 11, 15, 18, 0)
+};
+
+// 用户ID，使用时需替换为真实的userId。
+let userId: int = 1;
+
+notificationManager.setDoNotDisturbDate(doNotDisturbDate, userId, setDoNotDisturbDateCallback);
+```
+
 ## notificationManager.setDoNotDisturbDate
 
-setDoNotDisturbDate(date: DoNotDisturbDate, userId: number): Promise\<void\>
+ArkTS-Dyn: setDoNotDisturbDate(date: DoNotDisturbDate, userId: number): Promise\<void\>
+
+ArkTS-Sta: setDoNotDisturbDate(date: DoNotDisturbDate, userId: int): Promise\<void\>
 
 指定用户设置免打扰时间。使用Promise异步回调。
 
@@ -2016,12 +2863,16 @@ setDoNotDisturbDate(date: DoNotDisturbDate, userId: number): Promise\<void\>
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名   | 类型             | 必填 | 说明           |
 | ------ | ---------------- | ---- | -------------- |
 | date   | [DoNotDisturbDate](#donotdisturbdate) | 是   | 免打扰时间选项。 |
-| userId | number           | 是   | 设置免打扰时间的用户ID。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int           | 是   | 设置免打扰时间的用户ID。 |
 
 **返回值：**
 
@@ -2047,6 +2898,7 @@ setDoNotDisturbDate(date: DoNotDisturbDate, userId: number): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2066,6 +2918,25 @@ notificationManager.setDoNotDisturbDate(doNotDisturbDate, userId).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+let doNotDisturbDate: notificationManager.DoNotDisturbDate = {
+    type: notificationManager.DoNotDisturbType.TYPE_ONCE,
+    begin: new Date(),
+    end: new Date(2021, 11, 15, 18, 0)
+};
+
+// 用户ID，使用时需替换为真实的userId。
+let userId: int = 1;
+
+notificationManager.setDoNotDisturbDate(doNotDisturbDate, userId).then(() => {
+    console.info("setDoNotDisturbDate success");
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`setDoNotDisturbDate failed, code is ${error.code}, message is ${error.message}`);
+});
+```
 
 ## notificationManager.getDoNotDisturbDate
 
@@ -2080,6 +2951,10 @@ getDoNotDisturbDate(callback: AsyncCallback\<DoNotDisturbDate\>): void
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -2104,10 +2979,26 @@ getDoNotDisturbDate(callback: AsyncCallback\<DoNotDisturbDate\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let getDoNotDisturbDateCallback = (err: BusinessError, data: notificationManager.DoNotDisturbDate): void => {
+    if (err) {
+        console.error(`getDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info(`getDoNotDisturbDate success, data is ${JSON.stringify(data)}`);
+    }
+}
+
+notificationManager.getDoNotDisturbDate(getDoNotDisturbDateCallback);
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let getDoNotDisturbDateCallback = (err: BusinessError | null, data: notificationManager.DoNotDisturbDate | undefined | null): void => {
     if (err) {
         console.error(`getDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
     } else {
@@ -2132,6 +3023,10 @@ getDoNotDisturbDate(): Promise\<DoNotDisturbDate\>
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **返回值：**
 
 | 类型                                             | 说明                                      |
@@ -2154,6 +3049,7 @@ getDoNotDisturbDate(): Promise\<DoNotDisturbDate\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2164,10 +3060,22 @@ notificationManager.getDoNotDisturbDate().then((data: notificationManager.DoNotD
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+notificationManager.getDoNotDisturbDate().then((data: notificationManager.DoNotDisturbDate) => {
+  console.info(`getDoNotDisturbDate success, data: ${JSON.stringify(data)}`);
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`getDoNotDisturbDate failed, code is ${error.code}, message is ${error.message}`);
+});
+```
 
 ## notificationManager.getDoNotDisturbDate
 
-getDoNotDisturbDate(userId: number, callback: AsyncCallback\<DoNotDisturbDate\>): void
+ArkTS-Dyn: getDoNotDisturbDate(userId: number, callback: AsyncCallback\<DoNotDisturbDate\>): void
+
+ArkTS-Sta: getDoNotDisturbDate(userId: int, callback: AsyncCallback\<DoNotDisturbDate\>): void
 
 查询指定用户的免打扰时间。使用callback异步回调。
 
@@ -2179,12 +3087,16 @@ getDoNotDisturbDate(userId: number, callback: AsyncCallback\<DoNotDisturbDate\>)
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名     | 类型                              | 必填 | 说明                   |
 | -------- | --------------------------------- | ---- | ---------------------- |
 | callback | AsyncCallback\<[DoNotDisturbDate](#donotdisturbdate)\> | 是   | 查询免打扰时间回调函数。 |
-| userId   | number                            | 是   | 用户ID。 |
+| userId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int                            | 是   | 用户ID。 |
 
 **错误码：**
 
@@ -2204,6 +3116,7 @@ getDoNotDisturbDate(userId: number, callback: AsyncCallback\<DoNotDisturbDate\>)
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2221,9 +3134,29 @@ let userId: number = 1;
 notificationManager.getDoNotDisturbDate(userId, getDoNotDisturbDateCallback);
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let getDoNotDisturbDateCallback = (err: BusinessError | null, data: notificationManager.DoNotDisturbDate | undefined | null): void => {
+    if (err) {
+        console.error(`getDoNotDisturbDate failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info(`getDoNotDisturbDate success, data is ${JSON.stringify(data)}`);
+    }
+}
+
+// 用户ID，使用时需替换为真实的userId。
+let userId: int = 1;
+
+notificationManager.getDoNotDisturbDate(userId, getDoNotDisturbDateCallback);
+```
+
 ## notificationManager.getDoNotDisturbDate
 
-getDoNotDisturbDate(userId: number): Promise\<DoNotDisturbDate\>
+ArkTS-Dyn: getDoNotDisturbDate(userId: number): Promise\<DoNotDisturbDate\>
+
+ArkTS-Sta: getDoNotDisturbDate(userId: int): Promise\<DoNotDisturbDate\>
 
 查询指定用户的免打扰时间。使用Promise异步回调。
 
@@ -2235,11 +3168,15 @@ getDoNotDisturbDate(userId: number): Promise\<DoNotDisturbDate\>
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名     | 类型                              | 必填 | 说明                   |
 | -------- | --------------------------------- | ---- | ---------------------- |
-| userId   | number                            | 是   | 用户ID。 |
+| userId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int                            | 是   | 用户ID。 |
 
 **返回值：**
 
@@ -2265,6 +3202,7 @@ getDoNotDisturbDate(userId: number): Promise\<DoNotDisturbDate\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2278,10 +3216,23 @@ notificationManager.getDoNotDisturbDate(userId).then((data: notificationManager.
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+// 用户ID，使用时需替换为真实的userId。
+let userId: int = 1;
+
+notificationManager.getDoNotDisturbDate(userId).then((data: notificationManager.DoNotDisturbDate) => {
+    console.info(`getDoNotDisturbDate success, data: ${JSON.stringify(data)}`);
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`getDoNotDisturbDate failed, code is ${error.code}, message is ${error.message}`);
+});
+```
 
 ## notificationManager.isSupportDoNotDisturbMode
 
- isSupportDoNotDisturbMode(callback: AsyncCallback\<boolean\>): void
+isSupportDoNotDisturbMode(callback: AsyncCallback\<boolean\>): void
 
 查询是否支持免打扰功能。使用callback异步回调。
 
@@ -2292,6 +3243,10 @@ notificationManager.getDoNotDisturbDate(userId).then((data: notificationManager.
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -2315,10 +3270,26 @@ notificationManager.getDoNotDisturbDate(userId).then((data: notificationManager.
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let isSupportDoNotDisturbModeCallback = (err: BusinessError, data: boolean): void => {
+    if (err) {
+        console.error(`isSupportDoNotDisturbMode failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info(`isSupportDoNotDisturbMode success, data: ${JSON.stringify(data)}`);
+    }
+}
+
+notificationManager.isSupportDoNotDisturbMode(isSupportDoNotDisturbModeCallback);
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let isSupportDoNotDisturbModeCallback = (err: BusinessError | null, data: boolean | undefined | null): void => {
     if (err) {
         console.error(`isSupportDoNotDisturbMode failed, code is ${err.code}, message is ${err.message}`);
     } else {
@@ -2343,6 +3314,10 @@ isSupportDoNotDisturbMode(): Promise\<boolean\>
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **返回值：**
 
 | 类型                                                        | 说明                                                         |
@@ -2364,6 +3339,7 @@ isSupportDoNotDisturbMode(): Promise\<boolean\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2374,7 +3350,18 @@ notificationManager.isSupportDoNotDisturbMode().then((data: boolean) => {
 });
 ```
 
-## notificationManager.setDistributedEnable
+ArkTS-Sta示例：
+```ts
+
+notificationManager.isSupportDoNotDisturbMode().then((data: boolean) => {
+    console.info(`isSupportDoNotDisturbMode success, data: ${JSON.stringify(data)}`);
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`isSupportDoNotDisturbMode failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
+## notificationManager.setDistributedEnable<sup>(deprecated)</sup>
 
 setDistributedEnable(enable: boolean, callback: AsyncCallback\<void\>): void
 
@@ -2382,11 +3369,17 @@ setDistributedEnable(enable: boolean, callback: AsyncCallback\<void\>): void
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
+
+**替代接口**：[setDistributedEnabled](#notificationmanagersetdistributedenabled20)
 
 **参数：**
 
@@ -2412,6 +3405,7 @@ setDistributedEnable(enable: boolean, callback: AsyncCallback\<void\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2426,7 +3420,22 @@ let enable: boolean = true;
 notificationManager.setDistributedEnable(enable, setDistributedEnableCallback);
 ```
 
-## notificationManager.setDistributedEnable
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let setDistributedEnableCallback = (err: BusinessError | null): void => {
+    if (err) {
+        console.error(`setDistributedEnable failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info("setDistributedEnable success");
+    }
+};
+let enable: boolean = true;
+notificationManager.setDistributedEnable(enable, setDistributedEnableCallback);
+```
+
+## notificationManager.setDistributedEnable<sup>(deprecated)</sup>
 
 setDistributedEnable(enable: boolean): Promise\<void>
 
@@ -2434,11 +3443,17 @@ setDistributedEnable(enable: boolean): Promise\<void>
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
+
+**替代接口**：[setDistributedEnabled](#notificationmanagersetdistributedenabled20)
 
 **参数：**
 
@@ -2469,6 +3484,7 @@ setDistributedEnable(enable: boolean): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2480,7 +3496,19 @@ notificationManager.setDistributedEnable(enable).then(() => {
 });
 ```
 
-## notificationManager.setDistributedEnableByBundle
+ArkTS-Sta示例：
+```ts
+
+let enable: boolean = true;
+notificationManager.setDistributedEnable(enable).then(() => {
+    console.info("setDistributedEnable success");
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`setDistributedEnable failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
+## notificationManager.setDistributedEnableByBundle<sup>(deprecated)</sup>
 
 setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: AsyncCallback\<void>): void
 
@@ -2488,11 +3516,17 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: As
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
+
+**替代接口**：[setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)
 
 **参数：**
 
@@ -2520,6 +3554,7 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: As
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2537,9 +3572,26 @@ let enable: boolean = true;
 notificationManager.setDistributedEnableByBundle(bundle, enable, setDistributedEnableByBundleCallback);
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let setDistributedEnableByBundleCallback = (err: BusinessError | null): void => {
+    if (err) {
+        console.error(`setDistributedEnableByBundle failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info("setDistributedEnableByBundle success");
+    }
+};
+let bundle: notificationManager.BundleOption = {
+    // 需根据实际情况进行替换
+    bundle: "bundleName1",
+};
+let enable: boolean = true;
+notificationManager.setDistributedEnableByBundle(bundle, enable, setDistributedEnableByBundleCallback);
+```
 
-## notificationManager.setDistributedEnableByBundle
+## notificationManager.setDistributedEnableByBundle<sup>(deprecated)</sup>
 
 setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<void>
 
@@ -2547,11 +3599,17 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<vo
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
+
+**替代接口**：[setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)
 
 **参数：**
 
@@ -2584,6 +3642,7 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<vo
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2598,7 +3657,23 @@ notificationManager.setDistributedEnableByBundle(bundle, enable).then(() => {
 });
 ```
 
-## notificationManager.isDistributedEnabledByBundle
+ArkTS-Sta示例：
+```ts
+
+let bundle: notificationManager.BundleOption = {
+    // 需根据实际情况进行替换
+    bundle: "bundleName1",
+};
+let enable: boolean = true;
+notificationManager.setDistributedEnableByBundle(bundle, enable).then(() => {
+    console.info("setDistributedEnableByBundle success");
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`setDistributedEnableByBundle failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
+## notificationManager.isDistributedEnabledByBundle<sup>(deprecated)</sup>
 
 isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<boolean>): void
 
@@ -2606,11 +3681,17 @@ isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<bool
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
+
+**替代接口**：[isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)
 
 **参数：**
 
@@ -2637,6 +3718,7 @@ isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<bool
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2653,7 +3735,25 @@ let bundle: notificationManager.BundleOption = {
 notificationManager.isDistributedEnabledByBundle(bundle, isDistributedEnabledByBundleCallback);
 ```
 
-## notificationManager.isDistributedEnabledByBundle
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let isDistributedEnabledByBundleCallback = (err: BusinessError | null, data: boolean | undefined | null): void => {
+    if (err) {
+        console.error(`isDistributedEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info(`isDistributedEnabledByBundle success, data: ${JSON.stringify(data)}`);
+    }
+};
+let bundle: notificationManager.BundleOption = {
+    // 需根据实际情况进行替换
+    bundle: "bundleName1",
+};
+notificationManager.isDistributedEnabledByBundle(bundle, isDistributedEnabledByBundleCallback);
+```
+
+## notificationManager.isDistributedEnabledByBundle<sup>(deprecated)</sup>
 
 isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 
@@ -2661,11 +3761,17 @@ isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
+
+**替代接口**：[isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)
 
 **参数：**
 
@@ -2697,6 +3803,7 @@ isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2710,8 +3817,22 @@ notificationManager.isDistributedEnabledByBundle(bundle).then((data: boolean) =>
 });
 ```
 
+ArkTS-Sta示例：
+```ts
 
-## notificationManager.getDeviceRemindType
+let bundle: notificationManager.BundleOption = {
+    // 需根据实际情况进行替换
+    bundle: "bundleName1",
+};
+notificationManager.isDistributedEnabledByBundle(bundle).then((data: boolean) => {
+    console.info(`isDistributedEnabledByBundle success, data: ${JSON.stringify(data)}`);
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`isDistributedEnabledByBundle failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
+## notificationManager.getDeviceRemindType<sup>(deprecated)</sup>
 
 getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
 
@@ -2719,11 +3840,15 @@ getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
 
 **参数：**
 
@@ -2747,6 +3872,7 @@ getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2760,7 +3886,21 @@ let getDeviceRemindTypeCallback = (err: BusinessError, data: notificationManager
 notificationManager.getDeviceRemindType(getDeviceRemindTypeCallback);
 ```
 
-## notificationManager.getDeviceRemindType
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let getDeviceRemindTypeCallback = (err: BusinessError | null, data: notificationManager.DeviceRemindType | undefined | null): void => {
+    if (err) {
+        console.error(`getDeviceRemindType failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info(`getDeviceRemindType success, data is ${data}`);
+    }
+};
+notificationManager.getDeviceRemindType(getDeviceRemindTypeCallback);
+```
+
+## notificationManager.getDeviceRemindType<sup>(deprecated)</sup>
 
 getDeviceRemindType(): Promise\<DeviceRemindType\>
 
@@ -2768,11 +3908,15 @@ getDeviceRemindType(): Promise\<DeviceRemindType\>
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
 
 **返回值：**
 
@@ -2795,6 +3939,7 @@ getDeviceRemindType(): Promise\<DeviceRemindType\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2805,10 +3950,22 @@ notificationManager.getDeviceRemindType().then((data: notificationManager.Device
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+notificationManager.getDeviceRemindType().then((data: notificationManager.DeviceRemindType) => {
+    console.info(`getDeviceRemindType success, data: ${JSON.stringify(data)}`);
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`getDeviceRemindType failed, code is ${error.code}, message is ${error.message}`);
+});
+```
 
 ## notificationManager.publishAsBundle
 
-publishAsBundle(request: NotificationRequest, representativeBundle: string, userId: number, callback: AsyncCallback\<void\>): void
+ArkTS-Dyn: publishAsBundle(request: NotificationRequest, representativeBundle: string, userId: number, callback: AsyncCallback\<void\>): void
+
+ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: string, userId: int, callback: AsyncCallback\<void\>): void
 
 发布代理通知。使用callback异步回调。
 
@@ -2818,13 +3975,17 @@ publishAsBundle(request: NotificationRequest, representativeBundle: string, user
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名               | 类型                                        | 必填 | 说明                                     |
 | -------------------- | ------------------------------------------- | ---- | ---------------------------------------- |
 | request              | [NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest) | 是   | 用于设置要发布通知的内容和相关配置信息。 |
 | representativeBundle | string                                      | 是   | 被代理应用的包名。                       |
-| userId               | number                                      | 是   | 用户ID。                                 |
+| userId               | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                      | 是   | 用户ID。                                 |
 | callback             | AsyncCallback\<void\>                        | 是   | 发布代理通知的回调方法。                 |
 
 **错误码：**
@@ -2856,6 +4017,7 @@ publishAsBundle(request: NotificationRequest, representativeBundle: string, user
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2886,9 +4048,42 @@ let request: notificationManager.NotificationRequest = {
 notificationManager.publishAsBundle(request, representativeBundle, userId, callback);
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+//publishAsBundle回调
+let callback = (err: BusinessError | null): void => {
+    if (err) {
+        console.error(`publishAsBundle failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info("publishAsBundle success");
+    }
+}
+// 被代理应用的包名
+let representativeBundle: string = "bundleName1";
+// 用户ID，使用时需替换为真实的userId。
+let userId: int = 1;
+// NotificationRequest对象
+let request: notificationManager.NotificationRequest = {
+    id: 1,
+    content: {
+        notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+        normal: {
+            title: "test_title",
+            text: "test_text",
+            additionalText: "test_additionalText"
+        }
+    }
+};
+notificationManager.publishAsBundle(request, representativeBundle, userId, callback);
+```
+
 ## notificationManager.publishAsBundle
 
-publishAsBundle(request: NotificationRequest, representativeBundle: string, userId: number): Promise\<void\>
+ArkTS-Dyn: publishAsBundle(request: NotificationRequest, representativeBundle: string, userId: number): Promise\<void\>
+
+ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: string, userId: int): Promise\<void\>
 
 发布代理通知。使用Promise异步回调。
 
@@ -2898,6 +4093,10 @@ publishAsBundle(request: NotificationRequest, representativeBundle: string, user
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 
@@ -2905,7 +4104,7 @@ publishAsBundle(request: NotificationRequest, representativeBundle: string, user
 | -------------------- | ------------------------------------------- | ---- | --------------------------------------------- |
 | request              | [NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest) | 是   | 用于设置要发布通知的内容和相关配置信息。 |
 | representativeBundle | string                                      | 是   | 被代理应用的包名。                            |
-| userId               | number                                      | 是   | 用户ID。                            |
+| userId               | ArkTS-Dyn: number<br/>ArkTS-Sta: int        | 是   | 用户ID。                          |
 
 **返回值：**
 
@@ -2942,6 +4141,7 @@ publishAsBundle(request: NotificationRequest, representativeBundle: string, user
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2968,6 +4168,33 @@ notificationManager.publishAsBundle(request, representativeBundle, userId).then(
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+// 被代理应用的包名
+let representativeBundle: string = "bundleName1";
+// 用户ID，使用时需替换为真实的userId。
+let userId: int = 1;
+// NotificationRequest对象
+let request: notificationManager.NotificationRequest = {
+    id: 1,
+    content: {
+        notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+        normal: {
+            title: "test_title",
+            text: "test_text",
+            additionalText: "test_additionalText"
+        }
+    }
+};
+notificationManager.publishAsBundle(request, representativeBundle, userId).then(() => {
+    console.info("publishAsBundle success");
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`publishAsBundle failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.publishAsBundle<sup>12+</sup>
 
 publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest): Promise\<void\>
@@ -2979,6 +4206,10 @@ publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER，ohos.permission.NOTIFICATION_AGENT_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -3023,6 +4254,7 @@ publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3049,9 +4281,38 @@ notificationManager.publishAsBundle(representativeBundle, request).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+// 被代理应用的包信息
+let representativeBundle: notificationManager.BundleOption = {
+  bundle: "bundleName1",
+};
+// NotificationRequest对象
+let request: notificationManager.NotificationRequest = {
+    id: 1,
+    content: {
+        notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+        normal: {
+            title: "test_title",
+            text: "test_text",
+            additionalText: "test_additionalText"
+        }
+    }
+};
+notificationManager.publishAsBundle(representativeBundle, request).then(() => {
+    console.info("publishAsBundle success");
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`publishAsBundle failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.cancelAsBundle
 
-cancelAsBundle(id: number, representativeBundle: string, userId: number, callback: AsyncCallback\<void\>): void
+ArkTS-Dyn: cancelAsBundle(id: number, representativeBundle: string, userId: number, callback: AsyncCallback\<void\>): void
+
+ArkTS-Sta: cancelAsBundle(id: int, representativeBundle: string, userId: int, callback: AsyncCallback\<void\>): void
 
 取消代理通知。使用callback异步回调。
 
@@ -3061,13 +4322,17 @@ cancelAsBundle(id: number, representativeBundle: string, userId: number, callbac
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名               | 类型          | 必填 | 说明                     |
 | -------------------- | ------------- | ---- | ------------------------ |
-| id                   | number        | 是   | 通知ID。                 |
+| id                   | ArkTS-Dyn: number<br/>ArkTS-Sta: int        | 是   | 通知ID。                 |
 | representativeBundle | string        | 是   | 被代理应用的包名。       |
-| userId               | number        | 是   | 用户ID。       |
+| userId               | ArkTS-Dyn: number<br/>ArkTS-Sta: int        | 是   | 用户ID。       |
 | callback             | AsyncCallback\<void\> | 是   | 取消代理通知的回调方法。 |
 
 **错误码：**
@@ -3088,6 +4353,7 @@ cancelAsBundle(id: number, representativeBundle: string, userId: number, callbac
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3106,9 +4372,29 @@ let userId: number = 100;
 notificationManager.cancelAsBundle(0, representativeBundle, userId, cancelAsBundleCallback);
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let cancelAsBundleCallback = (err: BusinessError | null): void => {
+    if (err) {
+        console.error(`cancelAsBundle failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info("cancelAsBundle success");
+    }
+}
+// 被代理应用的包名
+let representativeBundle: string = "bundleName1";
+// 用户ID，使用时需替换为真实的userId。
+let userId: int = 1;
+notificationManager.cancelAsBundle(0, representativeBundle, userId, cancelAsBundleCallback);
+```
+
 ## notificationManager.cancelAsBundle
 
-cancelAsBundle(id: number, representativeBundle: string, userId: number): Promise\<void\>
+ArkTS-Dyn: cancelAsBundle(id: number, representativeBundle: string, userId: number): Promise\<void\>
+
+ArkTS-Sta: cancelAsBundle(id: int, representativeBundle: string, userId: int): Promise\<void\>
 
 取消代理通知。使用Promise异步回调。
 
@@ -3118,13 +4404,17 @@ cancelAsBundle(id: number, representativeBundle: string, userId: number): Promis
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名               | 类型   | 必填 | 说明               |
 | -------------------- | ------ | ---- | ------------------ |
-| id                   | number | 是   | 通知ID。           |
+| id                   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 通知ID。           |
 | representativeBundle | string | 是   | 被代理应用的包名。 |
-| userId               | number | 是   | 用户ID。 |
+| userId               | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 用户ID。 |
 
 **返回值：**
 
@@ -3150,6 +4440,7 @@ cancelAsBundle(id: number, representativeBundle: string, userId: number): Promis
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3164,10 +4455,26 @@ notificationManager.cancelAsBundle(0, representativeBundle, userId).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+// 被代理应用的包名
+let representativeBundle: string = "bundleName1";
+// 用户ID，使用时需替换为真实的userId。
+let userId: int = 1;
+notificationManager.cancelAsBundle(0, representativeBundle, userId).then(() => {
+    console.info("cancelAsBundle success");
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`cancelAsBundle failed, code is ${error.code}, message is ${error.message}`);
+});
+```
 
 ## notificationManager.cancelAsBundle<sup>12+</sup>
 
-cancelAsBundle(representativeBundle: BundleOption, id: number): Promise\<void\>
+ArkTS-Dyn: cancelAsBundle(representativeBundle: BundleOption, id: number): Promise\<void\>
+
+ArkTS-Sta: cancelAsBundle(representativeBundle: BundleOption, id: int): Promise\<void\>
 
 取消代理通知。使用Promise异步回调。
 
@@ -3177,13 +4484,17 @@ cancelAsBundle(representativeBundle: BundleOption, id: number): Promise\<void\>
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 
 | 参数名               | 类型                                        | 必填 | 说明                                          |
 | -------------------- | ------------------------------------------- | ---- | --------------------------------------------- |
 | representativeBundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)  |是   | 被代理应用的包信息。 |
-| id                   | number                                     | 是   | 通知ID。           |
+| id                   | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                     | 是   | 通知ID。           |
 
 **返回值：**
 
@@ -3210,6 +4521,7 @@ cancelAsBundle(representativeBundle: BundleOption, id: number): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3223,9 +4535,26 @@ notificationManager.cancelAsBundle(representativeBundle, 1).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+let representativeBundle: notificationManager.BundleOption = {
+    // 需根据实际情况进行替换
+    bundle: "bundleName1",
+};
+notificationManager.cancelAsBundle(representativeBundle, 1).then(() => {
+    console.info("cancelAsBundle success");
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`cancelAsBundle failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.cancel<sup>12+</sup>
 
-cancel(representativeBundle: BundleOption, id: number): Promise\<void\>
+ArkTS-Dyn: cancel(representativeBundle: BundleOption, id: number): Promise\<void\>
+
+ArkTS-Sta: cancel(representativeBundle: BundleOption, id: int): Promise\<void\>
 
 代理取消当前用户其他应用的通知。使用Promise异步回调。
 
@@ -3235,12 +4564,16 @@ cancel(representativeBundle: BundleOption, id: number): Promise\<void\>
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名               | 类型   | 必填 | 说明               |
 | -------------------- | ------ | ---- | ------------------ |
 | representativeBundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 应用的包信息。           |
-|       id             | number | 是   | 通知ID。 |
+|       id             | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 通知ID。 |
 
 **返回值：**
 
@@ -3265,6 +4598,7 @@ cancel(representativeBundle: BundleOption, id: number): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3276,6 +4610,22 @@ notificationManager.cancel(bundle, id).then(() => {
   console.info("cancel success");
 }).catch((err: BusinessError) => {
   console.error(`cancel failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+
+let bundle: notificationManager.BundleOption = {
+    // 需根据实际情况进行替换
+    bundle: "bundleName1"
+};
+let id: int = 1;
+notificationManager.cancel(bundle, id).then(() => {
+  console.info("cancel success");
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`cancel failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -3292,6 +4642,10 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -3320,6 +4674,7 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3338,6 +4693,26 @@ notificationManager.setNotificationEnableSlot(
     setNotificationEnableSlotCallback);
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// setNotificationEnableSlot
+let setNotificationEnableSlotCallback = (err: BusinessError | null): void => {
+    if (err) {
+        console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info("setNotificationEnableSlot success");
+    }
+};
+notificationManager.setNotificationEnableSlot(
+    // 需根据实际情况进行替换
+    { bundle: "bundleName1", },
+    notificationManager.SlotType.SOCIAL_COMMUNICATION,
+    true,
+    setNotificationEnableSlotCallback);
+```
+
 ## notificationManager.setNotificationEnableSlot<sup>11+</sup>
 
 setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean, isForceControl: boolean, callback: AsyncCallback\<void>): void
@@ -3351,6 +4726,10 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -3380,6 +4759,7 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3399,6 +4779,27 @@ notificationManager.setNotificationEnableSlot(
     setNotificationEnableSlotCallback);
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let setNotificationEnableSlotCallback = (err: BusinessError | null): void => {
+    if (err) {
+        console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info("setNotificationEnableSlot success");
+    }
+};
+
+notificationManager.setNotificationEnableSlot(
+    // 需根据实际情况进行替换
+    { bundle: "bundleName1", },
+    notificationManager.SlotType.SOCIAL_COMMUNICATION,
+    true,
+    false,
+    setNotificationEnableSlotCallback);
+```
+
 ## notificationManager.setNotificationEnableSlot
 
 setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean, isForceControl?: boolean): Promise\<void>
@@ -3412,6 +4813,10 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -3446,18 +4851,29 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // setNotificationEnableSlot
-notificationManager.setNotificationEnableSlot(
-    { bundle: "ohos.samples.notification", },
-    notificationManager.SlotType.SOCIAL_COMMUNICATION,
-    true).then(() => {
-        console.info("setNotificationEnableSlot success");
-    }).catch((err: BusinessError) => {
-        console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
-    });
+notificationManager.setNotificationEnableSlot({ bundle: "ohos.samples.notification"},
+    notificationManager.SlotType.SOCIAL_COMMUNICATION, true).then(() => {
+    console.info("setNotificationEnableSlot success");
+}).catch((err: BusinessError) => {
+    console.error(`setNotificationEnableSlot failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+
+notificationManager.setNotificationEnableSlot({ bundle: "ohos.samples.notification"},
+    notificationManager.SlotType.SOCIAL_COMMUNICATION, true).then(() => {
+    console.info("setNotificationEnableSlot success");
+}).catch((err: Error) => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`setNotificationEnableSlot failed, code is ${error.code}, message is ${error.message}`);
+});
 ```
 
 ## notificationManager.isNotificationSlotEnabled
@@ -3473,6 +4889,10 @@ isNotificationSlotEnabled(bundle: BundleOption, type: SlotType, callback: AsyncC
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -3499,6 +4919,7 @@ isNotificationSlotEnabled(bundle: BundleOption, type: SlotType, callback: AsyncC
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3517,6 +4938,25 @@ notificationManager.isNotificationSlotEnabled(
     isNotificationSlotEnabledCallback);
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let isNotificationSlotEnabledCallback = (err: BusinessError | null, data: boolean | undefined | null): void => {
+    if (err) {
+        console.error(`isNotificationSlotEnabled failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info(`isNotificationSlotEnabled success, data is ${JSON.stringify(data)}`);
+    }
+};
+
+notificationManager.isNotificationSlotEnabled(
+    // 需根据实际情况进行替换
+    { bundle: "bundleName1", },
+    notificationManager.SlotType.SOCIAL_COMMUNICATION,
+    isNotificationSlotEnabledCallback);
+```
+
 ## notificationManager.isNotificationSlotEnabled
 
 isNotificationSlotEnabled(bundle: BundleOption, type: SlotType): Promise\<boolean\>  
@@ -3530,6 +4970,10 @@ isNotificationSlotEnabled(bundle: BundleOption, type: SlotType): Promise\<boolea
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -3561,6 +5005,7 @@ isNotificationSlotEnabled(bundle: BundleOption, type: SlotType): Promise\<boolea
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3573,26 +5018,43 @@ notificationManager.isNotificationSlotEnabled({ bundle: "ohos.samples.notificati
 });
 ```
 
+ArkTS-Sta示例：
+```ts
 
-## notificationManager.setSyncNotificationEnabledWithoutApp
+notificationManager.isNotificationSlotEnabled({ bundle: "bundleName1", },
+    notificationManager.SlotType.SOCIAL_COMMUNICATION).then((data: boolean) => {
+    console.info(`isNotificationSlotEnabled success, data: ${JSON.stringify(data)}`);
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`isNotificationSlotEnabled failed, code is ${error.code}, message is ${error.message}`);
+});
+```
 
-setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean, callback: AsyncCallback\<void\>): void
+## notificationManager.setSyncNotificationEnabledWithoutApp<sup>(deprecated)</sup>
+
+ArkTS-Dyn: setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean, callback: AsyncCallback\<void\>): void
+
+ArkTS-Sta: setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean, callback: AsyncCallback\<void\>): void
 
 设置是否将通知同步到未安装应用程序的设备(callback形式)。
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
 
 **参数：** 
 
 | 参数名 | 类型                          | 必填 | 说明           |
 | ------ | ----------------------------- | ---- | -------------- |
-| userId | number | 是   | 用户ID。   |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 用户ID。   |
 | enable | boolean | 是   | 是否启用（true：使能，false：禁止）。   |
 | callback | AsyncCallback\<void\>    | 是   | 设置是否将通知同步到未安装应用程序的设备的回调函数。 |
 
@@ -3613,6 +5075,7 @@ setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean, callback: 
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3629,26 +5092,48 @@ let setSyncNotificationEnabledWithoutAppCallback = (err: BusinessError): void =>
 notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable, setSyncNotificationEnabledWithoutAppCallback);
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-## notificationManager.setSyncNotificationEnabledWithoutApp
+// 用户ID，使用时需替换为真实的userId。
+let userId: int = 1;
+let enable: boolean = true;
+let setSyncNotificationEnabledWithoutAppCallback = (err: BusinessError | null): void => {
+    if (err) {
+        console.error(`setSyncNotificationEnabledWithoutApp failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info("setSyncNotificationEnabledWithoutApp success");
+    }
+}
+notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable, setSyncNotificationEnabledWithoutAppCallback);
+```
 
-setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean): Promise\<void>
+## notificationManager.setSyncNotificationEnabledWithoutApp<sup>(deprecated)</sup>
+
+ArkTS-Dyn: setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean): Promise\<void>
+
+ArkTS-Sta: setSyncNotificationEnabledWithoutApp(userId: int, enable: boolean): Promise\<void>
 
 设置是否将通知同步到未安装应用程序的设备(Promise形式)。
 
 **系统能力**：SystemCapability.Notification.Notification
 
-**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
-
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
 
 **参数：**
 
 | 参数名 | 类型                          | 必填 | 说明           |
 | ------ | ----------------------------- | ---- | -------------- |
-| userId | number | 是   | 用户ID。   |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 用户ID。   |
 | enable | boolean | 是   | 是否启用（true：使能，false：禁止）。   |
 
 **返回值：**
@@ -3674,6 +5159,7 @@ setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean): Promise\<
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3687,10 +5173,25 @@ notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable).then(()
 });
 ```
 
+ArkTS-Sta示例：
+```ts
 
-## notificationManager.getSyncNotificationEnabledWithoutApp
+// 用户ID，使用时需替换为真实的userId。
+let userId: int = 1;
+let enable: boolean = true;
+notificationManager.setSyncNotificationEnabledWithoutApp(userId, enable).then(() => {
+    console.info('setSyncNotificationEnabledWithoutApp success');
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`setSyncNotificationEnabledWithoutApp failed, code is ${error.code}, message is ${error.message}`);
+});
+```
 
-getSyncNotificationEnabledWithoutApp(userId: number, callback: AsyncCallback\<boolean>): void
+## notificationManager.getSyncNotificationEnabledWithoutApp<sup>(deprecated)</sup>
+
+ArkTS-Dyn: getSyncNotificationEnabledWithoutApp(userId: number, callback: AsyncCallback\<boolean>): void
+
+ArkTS-Sta: getSyncNotificationEnabledWithoutApp(userId: int, callback: AsyncCallback\<boolean>): void
 
 获取同步通知到未安装应用程序设备的开关是否开启(callback形式)。
 
@@ -3700,11 +5201,17 @@ getSyncNotificationEnabledWithoutApp(userId: number, callback: AsyncCallback\<bo
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
+
 **参数：**
 
 | 参数名 | 类型                          | 必填 | 说明           |
 | ------ | ----------------------------- | ---- | -------------- |
-| userId | number | 是   | 用户ID。   |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 用户ID。   |
 | callback | AsyncCallback\<boolean\>         | 是   | 获取同步通知到未安装应用程序设备的开关是否开启的回调函数（true：开启，false：未开启）。 |
 
 **错误码：**
@@ -3723,6 +5230,7 @@ getSyncNotificationEnabledWithoutApp(userId: number, callback: AsyncCallback\<bo
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3738,10 +5246,27 @@ let getSyncNotificationEnabledWithoutAppCallback = (err: BusinessError, data: bo
 notificationManager.getSyncNotificationEnabledWithoutApp(userId, getSyncNotificationEnabledWithoutAppCallback);
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-## notificationManager.getSyncNotificationEnabledWithoutApp
+// 用户ID，使用时需替换为真实的userId。
+let userId: int = 1;
+let getSyncNotificationEnabledWithoutAppCallback = (err: BusinessError | null, data: boolean | undefined | null): void => {
+    if (err) {
+        console.error(`getSyncNotificationEnabledWithoutAppCallback failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+        console.info(`getSyncNotificationEnabledWithoutAppCallback success, data: ${JSON.stringify(data)}`);
+    }
+}
+notificationManager.getSyncNotificationEnabledWithoutApp(userId, getSyncNotificationEnabledWithoutAppCallback);
+```
 
-getSyncNotificationEnabledWithoutApp(userId: number): Promise\<boolean>
+## notificationManager.getSyncNotificationEnabledWithoutApp<sup>(deprecated)</sup>
+
+ArkTS-Dyn: getSyncNotificationEnabledWithoutApp(userId: number): Promise\<boolean>
+
+ArkTS-Sta: getSyncNotificationEnabledWithoutApp(userId: int): Promise\<boolean>
 
 获取同步通知到未安装应用程序设备的开关是否开启(Promise形式)。
 
@@ -3751,11 +5276,17 @@ getSyncNotificationEnabledWithoutApp(userId: number): Promise\<boolean>
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
+**废弃版本**：26.0.0
+
 **参数：**
 
 | 参数名 | 类型                          | 必填 | 说明           |
 | ------ | ----------------------------- | ---- | -------------- |
-| userId | number | 是   | 用户ID。   |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 用户ID。   |
 
 **返回值：**
 
@@ -3779,6 +5310,7 @@ getSyncNotificationEnabledWithoutApp(userId: number): Promise\<boolean>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -3788,6 +5320,19 @@ notificationManager.getSyncNotificationEnabledWithoutApp(userId).then((data: boo
   console.info(`getSyncNotificationEnabledWithoutApp, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getSyncNotificationEnabledWithoutApp failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+
+// 用户ID，使用时需替换为真实的userId。
+let userId: int = 1;
+notificationManager.getSyncNotificationEnabledWithoutApp(userId).then((data: boolean) => {
+  console.info(`getSyncNotificationEnabledWithoutApp, data: ${JSON.stringify(data)}`);
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`getSyncNotificationEnabledWithoutApp failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -3806,6 +5351,12 @@ on(type: 'checkNotification', callback: (checkInfo: NotificationCheckInfo) => No
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER 和 ohos.permission.NOTIFICATION_AGENT_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+
+**相关接口**: 该接口对应的ArkTS-Sta接口是[onCheckNotification](#notificationmanageronchecknotification23)
+
+**ArkTS-Dyn起始版本**：10
 
 **参数：**
 
@@ -3862,6 +5413,12 @@ on(type: 'checkNotification', checkRequest: NotificationCheckRequest, callback: 
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**: 该接口对应的ArkTS-Sta接口是[onCheckNotification](#notificationmanageronchecknotification23-1)
+
+**ArkTS-Dyn起始版本**：11
+
 **参数：**
 
 | 参数名 | 类型                                                                                                             | 必填 | 说明           |
@@ -3902,6 +5459,130 @@ try{
 }
 ```
 
+## notificationManager.onCheckNotification<sup>23+</sup>
+
+onCheckNotification(callback: (checkInfo: NotificationCheckInfo) => NotificationCheckResult): void
+
+注册通知监听回调。通知服务将通知信息回调给校验程序，校验程序返回校验结果决定该通知是否发布，如营销类通知发布频率控制等。
+
+系统中每个[SlotType](./js-apis-notificationManager.md#slottype)只允许存在一个注册者。
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中正常调用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER 和 ohos.permission.NOTIFICATION_AGENT_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+
+**相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#notificationmanageron10)
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名 | 类型                                                                                                                      | 必填 | 说明           |
+| ------ |-------------------------------------------------------------------------------------------------------------------------| ---- | -------------- |
+| callback | (checkInfo: [NotificationCheckInfo](#notificationcheckinfo10)) =>  [NotificationCheckResult](#notificationcheckresult10) | 是   | 消息验证函数指针。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ----------------------------------- | 
+| 202      | Not system application. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 1600001  | Internal error.  |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let onCheckNotification = (info: notificationManager.NotificationCheckInfo): notificationManager.NotificationCheckResult => {
+    console.info(`====>OnCheckNotification info: ${JSON.stringify(info)}`);
+    if(info.notificationId == 1){
+        let result: notificationManager.NotificationCheckResult =  { code: 1, message: "testMsg1"};
+        return result;
+    } else {
+        let result: notificationManager.NotificationCheckResult =   { code: 0, message: "testMsg0"};
+        return result;
+    }
+}
+try{
+    notificationManager.onCheckNotification(onCheckNotification);
+} catch (err){
+    let error: BusinessError = err as BusinessError
+    console.error(`notificationManager.on failed, code is ${error.code}, message is ${error.message}`);
+}
+```
+
+## notificationManager.onCheckNotification<sup>23+</sup>
+
+onCheckNotification(checkRequest: NotificationCheckRequest, callback: (checkInfo: NotificationCheckInfo) => Promise\<NotificationCheckResult\>): void
+
+注册通知监听回调。通知服务将通知信息回调给校验程序，校验程序返回校验结果决定该通知是否发布，如营销类通知发布频率控制等。使用Promise异步回调。
+
+系统中每个[SlotType](./js-apis-notificationManager.md#slottype)只允许存在一个注册者。
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中正常调用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER 和 ohos.permission.NOTIFICATION_AGENT_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+
+**相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#notificationmanageron11)
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名 | 类型                                                                                                             | 必填 | 说明           |
+| ------ |-----------------------------------------------------------------------------------------------------------------| ---- | -------------- |
+| checkRequest | [NotificationCheckRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationcheckrequest11)    | 是   | 通知请求验证内容。 |
+| callback | (checkInfo: [NotificationCheckInfo](#notificationcheckinfo10)) => Promise\<[NotificationCheckResult](#notificationcheckresult10)\> | 是   | 消息验证函数指针。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ----------------------------------- |
+| 201      | Permission denied. |  
+| 202      | Not system application. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    notificationManager.onCheckNotification({
+    contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_LIVE_VIEW,
+    slotType: notificationManager.SlotType.LIVE_VIEW,
+    extraInfoKeys: ["event"],
+    },
+    async (checkInfo) => {
+        let result: notificationManager.NotificationCheckResult = { code: 1, message: "INVALID_PARAMETERS" };
+        return result;
+    });
+} catch (err) {
+    let error: BusinessError = err as BusinessError
+    console.error(`notificationManager.onCheckNotification failed, code is ${error.code}, message is ${error.message}`);
+}
+```
+
 ## notificationManager.off<sup>10+</sup>
 
 off(type: 'checkNotification', callback?: (checkInfo: NotificationCheckInfo) => NotificationCheckResult): void
@@ -3915,6 +5596,12 @@ off(type: 'checkNotification', callback?: (checkInfo: NotificationCheckInfo) => 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER 和 ohos.permission.NOTIFICATION_AGENT_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+
+**相关接口**: 该接口对应的ArkTS-Sta接口是[offCheckNotification](#notificationmanageroffchecknotification23)
+
+**ArkTS-Dyn起始版本**：10
 
 **参数：**
 
@@ -3945,9 +5632,61 @@ try{
 }
 ```
 
+## notificationManager.offCheckNotification<sup>23+</sup>
+
+offCheckNotification(callback?: (checkInfo: NotificationCheckInfo) => NotificationCheckResult): void
+
+取消通知监听回调。
+
+**设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中正常调用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER 和 ohos.permission.NOTIFICATION_AGENT_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+
+**相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#notificationmanageroff10)
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名 | 类型                                                                                                                      | 必填 | 说明           |
+| ------ |-------------------------------------------------------------------------------------------------------------------------| ---- | -------------- |
+| callback | (checkInfo: [NotificationCheckInfo](#notificationcheckinfo10)) =>  [NotificationCheckResult](#notificationcheckresult10) | 否   | 消息验证函数指针。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ----------------------------------- |
+| 201      | The application does not have permission to call the interface. |
+| 202      | Not system application. |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 1600001  | Internal error. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try{
+    notificationManager.offCheckNotification();
+} catch (err){
+    let error: BusinessError = err as BusinessError
+    console.error(`notificationManager.off failed, code is ${error.code}, message is ${error.message}`);
+}
+```
+
 ## notificationManager.triggerSystemLiveView<sup>11+</sup>
 
-triggerSystemLiveView(bundle: BundleOption, notificationId: number, buttonOptions: ButtonOptions): Promise\<void>
+ArkTS-Dyn: triggerSystemLiveView(bundle: BundleOption, notificationId: number, buttonOptions: ButtonOptions): Promise\<void>
+
+ArkTS-Sta: triggerSystemLiveView(bundle: BundleOption, notificationId: int, buttonOptions: ButtonOptions): Promise\<void>
 
 触发系统实况窗。使用Promise异步回调。
 
@@ -3959,12 +5698,16 @@ triggerSystemLiveView(bundle: BundleOption, notificationId: number, buttonOption
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名 | 类型                   | 必填 | 说明           |
 | -------------- | ------------- | ---- | -------------- |
 | bundle         | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)  | 是   |指定应用的包信息。 |
-| notificationId | number        | 是   | 通知ID。 |
+| notificationId | ArkTS-Dyn: number<br/>ArkTS-Sta: int        | 是   | 通知ID。 |
 | buttonOptions  | [ButtonOptions](#buttonoptions11) | 是   | 按钮信息。 |
 
 **返回值：**
@@ -3991,6 +5734,7 @@ triggerSystemLiveView(bundle: BundleOption, notificationId: number, buttonOption
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4011,6 +5755,28 @@ notificationManager.triggerSystemLiveView(bundle, notificationId, buttonOptions)
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+// 包信息
+let bundle: notificationManager.BundleOption = {
+    // 需根据实际情况进行替换
+    bundle: "bundleName1",
+};
+// 通知ID
+let notificationId: int = 1;
+// 按钮信息
+let buttonOptions: notificationManager.ButtonOptions = {
+    // 需根据实际情况进行替换
+    buttonName: "buttonName1",
+}
+notificationManager.triggerSystemLiveView(bundle, notificationId, buttonOptions).then(() => {
+  console.info("triggerSystemLiveView success");
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`triggerSystemLiveView failed, code is ${error.code}, message is ${error.message}`);
+});
+```
 
 ## notificationManager.subscribeSystemLiveView<sup>11+</sup>
 
@@ -4023,6 +5789,10 @@ subscribeSystemLiveView(subscriber: SystemLiveViewSubscriber): Promise\<void>
 **设备行为差异**：该接口在Wearable中返回801错误码，在其他设备类型中可正常调用。
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -4052,6 +5822,7 @@ subscribeSystemLiveView(subscriber: SystemLiveViewSubscriber): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4068,6 +5839,23 @@ notificationManager.subscribeSystemLiveView(subscriber).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+let onResponseCallback = (id: int, option: notificationManager.ButtonOptions) => {
+    console.info(`notificationId: ${id},onResponseCallback: ${JSON.stringify(option)}`);
+}
+let subscriber: notificationManager.SystemLiveViewSubscriber  = {
+    onResponse: onResponseCallback,
+};
+notificationManager.subscribeSystemLiveView(subscriber).then(() => {
+    console.info("subscribeSystemLiveView success");
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`subscribeSystemLiveView failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.setDistributedEnabledByBundle<sup>12+</sup>
 
 setDistributedEnabledByBundle(bundle: BundleOption, deviceType: string, enable: boolean): Promise<void\>
@@ -4081,6 +5869,10 @@ setDistributedEnabledByBundle(bundle: BundleOption, deviceType: string, enable: 
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -4115,6 +5907,7 @@ setDistributedEnabledByBundle(bundle: BundleOption, deviceType: string, enable: 
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4131,6 +5924,24 @@ notificationManager.setDistributedEnabledByBundle(bundle, deviceType, enable).th
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+let bundle: notificationManager.BundleOption = {
+    // 需根据实际情况进行替换
+    bundle: "bundleName1",
+    uid: 1
+};
+let enable: boolean = true;
+let deviceType: string = "phone";
+notificationManager.setDistributedEnabledByBundle(bundle, deviceType, enable).then(() => {
+    console.info("setDistributedEnabledByBundle success");
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`setDistributedEnabledByBundle failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.setDistributedEnableByBundles<sup>20+</sup>
 
 setDistributedEnableByBundles(bundleEnableInfos: Array\<DistributedBundleEnableInfo\>, deviceType: string): Promise\<void\>
@@ -4144,6 +5955,10 @@ setDistributedEnableByBundles(bundleEnableInfos: Array\<DistributedBundleEnableI
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -4176,6 +5991,7 @@ setDistributedEnableByBundles(bundleEnableInfos: Array\<DistributedBundleEnableI
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4201,6 +6017,32 @@ notificationManager.setDistributedEnableByBundles(bundles, deviceType).then(() =
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+let bundle1: notificationManager.DistributedBundleEnableInfo = {
+    bundleName: "bundleName1",
+    uid: 1,
+    enable: true
+};
+let bundle2: notificationManager.DistributedBundleEnableInfo = {
+    bundleName: "bundleName2",
+    uid: 2,
+    enable: true
+};
+let bundles: Array<notificationManager.DistributedBundleEnableInfo> = [
+    bundle1,bundle2
+]
+
+let deviceType: string = "liteWearable";
+notificationManager.setDistributedEnableByBundles(bundles, deviceType).then(() => {
+    console.info("setDistributedEnableByBundles success");
+}).catch((err: Error) => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`setDistributedEnableByBundles failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.isDistributedEnabledByBundle<sup>12+</sup>
 
 isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string): Promise<boolean\>
@@ -4214,6 +6056,10 @@ isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string): Promise<
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -4247,6 +6093,7 @@ isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string): Promise<
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4259,6 +6106,23 @@ notificationManager.isDistributedEnabledByBundle(bundle, deviceType).then((data:
     console.info(`isDistributedEnabledByBundle success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`isDistributedEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+
+let bundle: notificationManager.BundleOption = {
+    // 需根据实际情况进行替换
+    bundle: "bundleName1",
+    uid: 1
+};
+let deviceType: string = "phone";
+notificationManager.isDistributedEnabledByBundle(bundle, deviceType).then((data: boolean) => {
+    console.info(`isDistributedEnabledByBundle success, data: ${JSON.stringify(data)}`);
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`isDistributedEnabledByBundle failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -4275,6 +6139,10 @@ setSmartReminderEnabled(deviceType: string, enable: boolean): Promise<void\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -4308,6 +6176,7 @@ setSmartReminderEnabled(deviceType: string, enable: boolean): Promise<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4317,6 +6186,19 @@ notificationManager.setSmartReminderEnabled(deviceType, enable).then(() => {
     console.info("setSmartReminderEnabled success");
 }).catch((err: BusinessError) => {
     console.error(`setSmartReminderEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+
+let deviceType: string = "phone";
+let enable: boolean = true;
+notificationManager.setSmartReminderEnabled(deviceType, enable).then(() => {
+    console.info("setSmartReminderEnabled success");
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`setSmartReminderEnabled failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -4333,6 +6215,10 @@ isSmartReminderEnabled(deviceType: string): Promise<boolean\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -4365,6 +6251,7 @@ isSmartReminderEnabled(deviceType: string): Promise<boolean\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4376,9 +6263,23 @@ notificationManager.isSmartReminderEnabled(deviceType).then((data: boolean) => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+let deviceType: string = "phone";
+notificationManager.isSmartReminderEnabled(deviceType).then((data: boolean) => {
+    console.info(`isSmartReminderEnabled success， data:${data}`);
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`isSmartReminderEnabled failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.setBadgeNumberByBundle<sup>12+</sup>
 
-setBadgeNumberByBundle(bundle: BundleOption, badgeNumber: number): Promise\<void\>
+ArkTS-Dyn: setBadgeNumberByBundle(bundle: BundleOption, badgeNumber: number): Promise\<void\>
+
+ArkTS-Sta: setBadgeNumberByBundle(bundle: BundleOption, badgeNumber: int): Promise\<void\>
 
 代理其他应用设定角标个数。使用Promise异步回调。
 
@@ -4390,12 +6291,16 @@ setBadgeNumberByBundle(bundle: BundleOption, badgeNumber: number): Promise\<void
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明       |
 | ----------- | ------ | ---- | ---------- |
 | bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
-| badgeNumber | number | 是   | 角标个数。 |
+| badgeNumber |  ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 角标个数。 |
 
 **返回值：**
 
@@ -4421,6 +6326,7 @@ setBadgeNumberByBundle(bundle: BundleOption, badgeNumber: number): Promise\<void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4436,9 +6342,28 @@ notificationManager.setBadgeNumberByBundle(bundle, badgeNumber).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+let bundle: notificationManager.BundleOption = {
+    // 需根据实际情况进行替换
+    bundle: 'bundleName1',
+};
+let badgeNumber: int = 10;
+
+notificationManager.setBadgeNumberByBundle(bundle, badgeNumber).then(() => {
+    console.info('setBadgeNumberByBundle success');
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`setBadgeNumberByBundle failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.getSlotByBundle<sup>12+</sup>
 
-getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise\<NotificationSlot>
+ArkTS-Dyn：getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise\<NotificationSlot>
+
+ArkTS-Sta：getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise\<NotificationSlot|null>
 
 获取指定应用指定类型的通知渠道。使用Promise异步回调。
 
@@ -4451,6 +6376,10 @@ getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise\<Notification
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -4483,6 +6412,7 @@ getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise\<Notification
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4499,6 +6429,24 @@ notificationManager.getSlotByBundle(bundle, slotType).then((data: notificationMa
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+let bundle: notificationManager.BundleOption = {
+    // 需根据实际情况进行替换
+    bundle: "bundleName1",
+};
+
+let slotType = notificationManager.SlotType.LIVE_VIEW;
+
+notificationManager.getSlotByBundle(bundle, slotType).then((data: notificationManager.NotificationSlot|null|undefined) => {
+    console.info(`getSlotByBundle success, data: ${JSON.stringify(data)}`);
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`getSlotByBundle failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.addDoNotDisturbProfile<sup>12+</sup>
 
 addDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void\>
@@ -4512,6 +6460,10 @@ addDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -4542,6 +6494,7 @@ addDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4570,9 +6523,42 @@ notificationManager.addDoNotDisturbProfile(templates).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+let trustlist: Array<notificationManager.BundleOption> = [
+  {
+    // 需根据实际情况进行替换
+    bundle: 'bundleName',
+    uid: 0
+  },
+  {
+    // 需根据实际情况进行替换
+    bundle: 'bundleName1',
+    uid: 1
+  }
+]
+let templates: Array<notificationManager.DoNotDisturbProfile> = [
+  {
+    id: 3,
+    name: '工作模式',
+    trustlist: trustlist
+  }
+]
+
+notificationManager.addDoNotDisturbProfile(templates).then(() => {
+  console.info("addDoNotDisturbProfile success.");
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`addDoNotDisturbProfile failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.addDoNotDisturbProfile<sup>23+</sup>
 
-addDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>, userId: number): Promise\<void\>
+ArkTS-Dyn: addDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>, userId: number): Promise\<void\>
+
+ArkTS-Sta: addDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>, userId: int): Promise\<void\>
 
 向指定用户添加勿扰模式配置信息。使用Promise异步回调。
 
@@ -4586,12 +6572,16 @@ addDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>, userId: number): 
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名   | 类型             | 必填 | 说明           |
 | ------ | ---------------- | ---- | -------------- |
 | templates   | Array\<[DoNotDisturbProfile](#donotdisturbprofile12)> | 是 | 勿扰模式的配置信息。 |
-| userId   | number | 是 | 添加勿扰模式配置信息的用户ID。 |
+| userId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 添加勿扰模式配置信息的用户ID。 |
 
 **返回值：**
 
@@ -4616,6 +6606,7 @@ addDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>, userId: number): 
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4647,6 +6638,37 @@ notificationManager.addDoNotDisturbProfile(templates, userId).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+let userId : int = 100;
+let trustlist: Array<notificationManager.BundleOption> = [
+  {
+    // 需根据实际情况进行替换
+    bundle: 'bundleName',
+    uid: 0
+  },
+  {
+    // 需根据实际情况进行替换
+    bundle: 'bundleName1',
+    uid: 1
+  }
+]
+let templates: Array<notificationManager.DoNotDisturbProfile> = [
+  {
+    id: 3,
+    name: '工作模式',
+    trustlist: trustlist
+  }
+]
+
+notificationManager.addDoNotDisturbProfile(templates, userId).then(() => {
+  console.info(`addDoNotDisturbProfile success, ${JSON.stringify(templates)}`);
+}).catch((err: Error| undefined): void => {
+  console.info(`addDoNotDisturbProfile error, code: ${err?.code}, message: ${err?.message}`);
+});
+```
+
 ## notificationManager.removeDoNotDisturbProfile<sup>12+</sup>
 
 removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void\>
@@ -4660,6 +6682,10 @@ removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -4690,6 +6716,7 @@ removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4705,9 +6732,29 @@ notificationManager.removeDoNotDisturbProfile(templates).then(() => {
   console.error(`removeDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+ArkTS-Sta示例：
+```ts
+
+let templates: Array<notificationManager.DoNotDisturbProfile> = [
+  {
+    id: 3,
+    name: '工作模式'
+  }
+]
+notificationManager.removeDoNotDisturbProfile(templates).then(() => {
+  console.info("removeDoNotDisturbProfile success.");
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`removeDoNotDisturbProfile failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.removeDoNotDisturbProfile<sup>23+</sup>
 
-removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>, userId: number): Promise\<void\>
+ArkTS-Dyn: removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>, userId: number): Promise\<void\>
+
+ArkTS-Sta: removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>, userId: int): Promise\<void\>
 
 删除指定用户的勿扰模式配置。使用Promise异步回调。
 
@@ -4721,12 +6768,16 @@ removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>, userId: number
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名   | 类型             | 必填 | 说明           |
 | ------ | ---------------- | ---- | -------------- |
 | templates   | Array\<[DoNotDisturbProfile](#donotdisturbprofile12)> | 是  | 勿扰模式的配置信息。 |
-| userId   | number | 是 | 删除勿扰模式配置的用户ID。 |
+| userId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 删除勿扰模式配置的用户ID。 |
 
 **返回值：**
 
@@ -4751,6 +6802,7 @@ removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>, userId: number
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4768,9 +6820,28 @@ notificationManager.removeDoNotDisturbProfile(templates, userId).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+let userId : int = 100;
+let templates: Array<notificationManager.DoNotDisturbProfile> = [
+  {
+    id: 3,
+    name: '工作模式'
+  }
+]
+notificationManager.removeDoNotDisturbProfile(templates, userId).then(() => {
+  console.info(`removeDoNotDisturbProfile success. userId: ${userId}, templates: ${JSON.stringify(templates)}`);
+}).catch((err: Error | undefined): void => {
+  console.info(`removeDoNotDisturbProfile error, code: ${err?.code}, message: ${err?.message}`);
+});
+```
+
 ## notificationManager.setAdditionalConfig<sup>12+</sup>
 
-setAdditionalConfig(key: string, value: string): Promise\<number\>
+ArkTS-Dyn: setAdditionalConfig(key: string, value: string): Promise\<number\>
+
+ArkTS-Sta: setAdditionalConfig(key: string, value: string): Promise\<int\>
 
 设置通知的系统附加配置信息。使用Promise异步回调。
 
@@ -4782,11 +6853,15 @@ setAdditionalConfig(key: string, value: string): Promise\<number\>
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名   | 类型             | 必填 | 说明           |
 | ------ | ---------------- | ---- | -------------- |
-| key   | string | 是  | 附加配置键。目前仅支持`RING_TRUSTLIST_PKG`，表示应用支持使用[自定义铃声](./js-apis-inner-notification-notificationRequest.md#notificationrequest-1)。 |
+| key   | string | 是  | 附加配置键。目前仅支持`RING_TRUSTLIST_PKG`，表示应用支持使用自定义铃声。 |
 | value   | string | 是  | 附加配置值。参数示例：[bundleName1,bundleName2]。 |
 
 **返回值：**
@@ -4811,6 +6886,7 @@ setAdditionalConfig(key: string, value: string): Promise\<number\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4821,9 +6897,22 @@ notificationManager.setAdditionalConfig('RING_TRUSTLIST_PKG','[bundleName1,bundl
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+notificationManager.setAdditionalConfig('RING_TRUSTLIST_PKG','[bundleName1,bundleName2]').then((data: int) => {
+  console.info(`setAdditionalConfig success, data: ${JSON.stringify(data)}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`setAdditionalConfig failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.getDoNotDisturbProfile<sup>13+</sup>
 
-getDoNotDisturbProfile(id: number): Promise\<DoNotDisturbProfile\>
+ArkTS-Dyn: getDoNotDisturbProfile(id: number): Promise\<DoNotDisturbProfile\>
+
+ArkTS-Sta: getDoNotDisturbProfile(id: long): Promise\<DoNotDisturbProfile\>
 
 查询勿扰模式配置信息。使用Promise异步回调。
 
@@ -4835,11 +6924,15 @@ getDoNotDisturbProfile(id: number): Promise\<DoNotDisturbProfile\>
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：13
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名   | 类型             | 必填 | 说明           |
 | ------ | ---------------- | ---- | -------------- |
-| id   | number | 是  | 勿扰模式编号。 |
+| id   | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是  | 勿扰模式编号。 |
 
 **返回值：**
 
@@ -4864,6 +6957,7 @@ getDoNotDisturbProfile(id: number): Promise\<DoNotDisturbProfile\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4874,9 +6968,22 @@ notificationManager.getDoNotDisturbProfile(1).then((data: notificationManager.Do
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+notificationManager.getDoNotDisturbProfile(1).then((data: notificationManager.DoNotDisturbProfile) => {
+  console.info(`getDoNotDisturbProfile success: ${JSON.stringify(data)}`);
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`getDoNotDisturbProfile failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.getDoNotDisturbProfile<sup>23+</sup>
 
-getDoNotDisturbProfile(id: number, userId: number): Promise\<DoNotDisturbProfile\>
+ArkTS-Dyn: getDoNotDisturbProfile(id: number, userId: number): Promise\<DoNotDisturbProfile\>
+
+ArkTS-Sta: getDoNotDisturbProfile(id: long, userId: int): Promise\<DoNotDisturbProfile\>
 
 查询指定用户的勿扰模式配置信息。使用Promise异步回调。
 
@@ -4890,12 +6997,16 @@ getDoNotDisturbProfile(id: number, userId: number): Promise\<DoNotDisturbProfile
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名   | 类型             | 必填 | 说明           |
 | ------ | ---------------- | ---- | -------------- |
-| id   | number | 是  | 勿扰模式编号。 |
-| userId   | number | 是  | 待查询勿扰模式配置信息的用户。 |
+| id   | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是  | 勿扰模式编号。 |
+| userId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是  | 待查询勿扰模式配置信息的用户。 |
 
 
 **返回值：**
@@ -4921,6 +7032,7 @@ getDoNotDisturbProfile(id: number, userId: number): Promise\<DoNotDisturbProfile
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -4931,6 +7043,19 @@ notificationManager.getDoNotDisturbProfile(id, userId).then((data: notificationM
   console.info(`getDoNotDisturbProfile success: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`getDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+
+let id : long = 101;
+let userId : int = 100;
+
+notificationManager.getDoNotDisturbProfile(id, userId).then((data: notificationManager.DoNotDisturbProfile | undefined): void => {
+  console.info(`getDoNotDisturbProfile success. data: ${JSON.stringify(data)}`);
+}).catch((err: Error | undefined): void => {
+  console.error(`getDoNotDisturbProfile error, code: ${err?.code}, message: ${err?.message}`);
 });
 ```
 
@@ -4947,6 +7072,10 @@ disableNotificationFeature(disabled: boolean, bundleList: Array\<string\>): Prom
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER 或 ohos.permission.MANAGE_EDM_POLICY
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：18
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -4976,6 +7105,7 @@ disableNotificationFeature(disabled: boolean, bundleList: Array\<string\>): Prom
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -4993,9 +7123,24 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+
+let disabled: boolean = true;
+let bundleList: Array<string> = ["com.example.myapplication"];
+notificationManager.disableNotificationFeature(disabled, bundleList).then(() => {
+  console.info('disableNotificationFeature success.');
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`disableNotificationFeature failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.disableNotificationFeature<sup>20+</sup>
 
-disableNotificationFeature(disabled: boolean, bundleList: Array\<string\>, userId: number): Promise\<void\>
+ArkTS-Dyn: disableNotificationFeature(disabled: boolean, bundleList: Array\<string\>, userId: number): Promise\<void\>
+
+ArkTS-Sta: disableNotificationFeature(disabled: boolean, bundleList: Array\<string\>, userId: int): Promise\<void\>
 
 将应用包名添加到通知发布权限管控名单，以阻止应用发布通知。使用Promise异步回调。
 
@@ -5007,13 +7152,17 @@ disableNotificationFeature(disabled: boolean, bundleList: Array\<string\>, userI
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | disabled | boolean | 是   | 表示是否启用通知发布权限管控名单。true表示启用，false表示关闭。 |
 | bundleList | Array\<string\> | 是   | 指定通知发布权限管控名单的应用列表，使用包名表示应用。 |
-| userId | number | 是   | 表示用户ID。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int<br/> | 是   | 表示用户ID。 |
 
 **返回值：**
 
@@ -5034,6 +7183,7 @@ disableNotificationFeature(disabled: boolean, bundleList: Array\<string\>, userI
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -5052,9 +7202,25 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+
+let disabled: boolean = true;
+let bundleList: Array<string> = ["com.example.myapplication"];
+let userId: int = 1;
+notificationManager.disableNotificationFeature(disabled, bundleList, userId).then(() => {
+  console.info(`DisableNotificationFeature success.`);
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`DisableNotificationFeature failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.setTargetDeviceStatus<sup>18+</sup>
 
-setTargetDeviceStatus(deviceType: string, status: number): Promise\<void\>
+ArkTS-Dyn: setTargetDeviceStatus(deviceType: string, status: number): Promise\<void\>
+
+ArkTS-Sta: setTargetDeviceStatus(deviceType: string, status: long): Promise\<void\>
 
 设置设备配对成功后的状态。当发布通知时，会根据各个设备的状态来确定当前设备的通知提醒方式。
 
@@ -5064,12 +7230,16 @@ setTargetDeviceStatus(deviceType: string, status: number): Promise\<void\>
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：18
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | deviceType | string | 是   | 设备类型。当前仅支持`headset`（可穿戴式音频设备）、`liteWearable`（轻量级智能穿戴设备）、`wearable`（智能穿戴设备）、`glasses`（智能眼镜设备）、`current`（本设备）。 |
-| status | number | 是   | 设备状态。<br>- bit0：设备是否正在被使用。0表示未使用，1表示使用中。<br>- bit1：当前设备使用者是否为机主。0表示为非机主，1表示为机主。<br>- bit2：设备是否处于勿扰模式。0表示处于非勿扰模式，1表示处于勿扰模式。 |
+| status | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是   | 设备状态。<br>- bit0：设备是否正在被使用。0表示未使用，1表示使用中。<br>- bit1：当前设备使用者是否为机主。0表示为非机主，1表示为机主。<br>- bit2：设备是否处于勿扰模式。0表示处于非勿扰模式，1表示处于勿扰模式。 |
 
 **返回值：**
 
@@ -5089,6 +7259,7 @@ setTargetDeviceStatus(deviceType: string, status: number): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5096,6 +7267,17 @@ notificationManager.setTargetDeviceStatus("current", 1).then(() => {
   console.info(`Succeeded in setting target device status.`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to set target device status. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+
+notificationManager.setTargetDeviceStatus("current", 1).then(() => {
+  console.info('Succeeded in setting target device status.');
+}).catch((err: Error): void => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to set target device status. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -5110,6 +7292,10 @@ setDistributedEnabledBySlot(slot: SlotType, deviceType: string, enabled: boolean
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：18
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -5137,6 +7323,7 @@ setDistributedEnabledBySlot(slot: SlotType, deviceType: string, enabled: boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -5152,6 +7339,21 @@ notificationManager.setDistributedEnabledBySlot(slot, deviceType, enabled).then(
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+let slot: notificationManager.SlotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
+let deviceType: string = 'wearable';
+let enabled: boolean = true;
+
+notificationManager.setDistributedEnabledBySlot(slot, deviceType, enabled).then(() => {
+    console.info('setDistributedEnabledBySlot success.');
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`setDistributedEnabledBySlot failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.isDistributedEnabledBySlot<sup>18+</sup>
 
 isDistributedEnabledBySlot(slot: SlotType, deviceType: string): Promise\<boolean\>
@@ -5163,6 +7365,10 @@ isDistributedEnabledBySlot(slot: SlotType, deviceType: string): Promise\<boolean
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：18
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -5189,6 +7395,7 @@ isDistributedEnabledBySlot(slot: SlotType, deviceType: string): Promise\<boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -5203,6 +7410,20 @@ notificationManager.isDistributedEnabledBySlot(slot, deviceType).then((data: boo
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+let slot: notificationManager.SlotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
+let deviceType: string = 'wearable';
+
+notificationManager.isDistributedEnabledBySlot(slot, deviceType).then((data: boolean) => {
+    console.info('isDistributedEnabledBySlot success.');
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`isDistributedEnabledBySlot failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.setSilentReminderEnabled<sup>20+</sup>
 
 setSilentReminderEnabled(bundle: BundleOption, enabled: boolean): Promise\<void\>
@@ -5214,6 +7435,10 @@ setSilentReminderEnabled(bundle: BundleOption, enabled: boolean): Promise\<void\
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -5244,6 +7469,7 @@ setSilentReminderEnabled(bundle: BundleOption, enabled: boolean): Promise\<void\
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -5258,6 +7484,21 @@ notificationManager.setSilentReminderEnabled(bundle, true).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundle: notificationManager.BundleOption = {
+    bundle: "bundleName",
+};
+try {
+    notificationManager.setSilentReminderEnabled(bundle, true);
+} catch (err) {
+    console.info(`setSilentReminderEnabled failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## notificationManager.isSilentReminderEnabled<sup>20+</sup>
 
 isSilentReminderEnabled(bundle: BundleOption): Promise\<SwitchState\>
@@ -5269,6 +7510,10 @@ isSilentReminderEnabled(bundle: BundleOption): Promise\<SwitchState\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -5298,6 +7543,7 @@ isSilentReminderEnabled(bundle: BundleOption): Promise\<SwitchState\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -5312,6 +7558,186 @@ notificationManager.isSilentReminderEnabled(bundle).then((data: notificationMana
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundle: notificationManager.BundleOption = {
+    bundle: "bundleName1",
+};
+try {
+    notificationManager.isSilentReminderEnabled(bundle).then((data: notificationManager.SwitchState) => {
+        console.info(`Reminder data is ${JSON.stringify(data)}`);
+    });
+} catch (err) {
+    console.info(`isSilentReminderEnabled failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## notificationManager.setNotificationSwitch
+
+ArkTS-Dyn: setNotificationSwitch(switchName: string, switchState: boolean, userId: number): Promise\<void\>
+
+ArkTS-Sta: setNotificationSwitch(switchName: string, switchState: boolean, userId: int): Promise\<void\>
+
+设置通知开关状态。使用Promise异步回调。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明 |
+| -------- | ------ | ---- | ---- |
+| switchName | string | 是 | 通知开关名称。取值为：DEAL（交易类通知聚合开关）、LOGISTICS（物流类通知聚合开关）。 |
+| switchState | boolean | 是 | 是否开启通知开关。<br> - true：表示开启。<br> - false：表示关闭。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 用户ID。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |
+| 1600001  | Internal error. Database operation failed. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+| 1600008  | The user does not exist. |
+| 1600012  | No memory space. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let switchName: string = 'DEAL';
+let switchState: boolean = true;
+let userId: number = 100;
+
+notificationManager.setNotificationSwitch(switchName, switchState, userId).then(() => {
+    console.info('setNotificationSwitch success');
+}).catch((err: BusinessError) => {
+    console.error(`setNotificationSwitch failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let switchName: string = 'DEAL';
+let switchState: boolean = true;
+let userId: int = 100;
+
+notificationManager.setNotificationSwitch(switchName, switchState, userId).then(() => {
+    console.info('setNotificationSwitch success');
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`setNotificationSwitch failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
+## notificationManager.getNotificationSwitch
+
+ArkTS-Dyn: getNotificationSwitch(switchName: string, userId: number): Promise\<SwitchState\>
+
+ArkTS-Sta: getNotificationSwitch(switchName: string, userId: int): Promise\<SwitchState\>
+
+获取通知开关状态。使用Promise异步回调。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明 |
+| -------- | ------ | ---- | ---- |
+| switchName | string | 是 | 通知开关名称。取值为：DEAL（交易类通知聚合开关）、LOGISTICS（物流类通知聚合开关）。 |
+| userId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 用户ID。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<[SwitchState](#switchstate20)\> | Promise对象，返回通知开关状态。 | 
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |
+| 1600001  | Internal error. Database operation failed. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+| 1600008  | The user does not exist. |
+| 1600012  | No memory space. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let switchName: string = 'DEAL';
+let userId: number = 100;
+
+notificationManager.getNotificationSwitch(switchName, userId).then((data: notificationManager.SwitchState) => {
+    console.info(`getNotificationSwitch success, switchState: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getNotificationSwitch failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let switchName: string = 'DEAL';
+let userId: int = 100;
+
+notificationManager.getNotificationSwitch(switchName, userId).then((data: notificationManager.SwitchState) => {
+    console.info(`getNotificationSwitch success, switchState: ${JSON.stringify(data)}`);
+}).catch((err: Error): void => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`getNotificationSwitch failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.isDistributedEnabled<sup>20+</sup>
 
 isDistributedEnabled(deviceType: string): Promise\<boolean\>
@@ -5323,6 +7749,10 @@ isDistributedEnabled(deviceType: string): Promise\<boolean\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -5347,6 +7777,7 @@ isDistributedEnabled(deviceType: string): Promise\<boolean\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5370,6 +7801,31 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+  }
+
+  onForeground(): void {
+    try {
+      let deviceType: string = "wearable";
+      notificationManager.isDistributedEnabled(deviceType).then((data: boolean) => {
+        console.info('isDistributedEnabled succeeded, result = ' + data);
+      }).catch((err: Error) => {
+        let error: BusinessError = err as BusinessError;
+        console.error(`isDistributedEnabled failed. Code is ${error.code}, message is ${error.message}`);
+      });
+    } catch (err) {
+      console.error(`isDistributedEnabled failed. Code is ${err.code}, message is ${err.message}`);
+    }
+  }
+}
+```
+
 ## notificationManager.setDistributedEnabled<sup>20+</sup>
 
 setDistributedEnabled(enable: boolean, deviceType: string): Promise\<void\>
@@ -5381,6 +7837,10 @@ setDistributedEnabled(enable: boolean, deviceType: string): Promise\<void\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -5406,6 +7866,7 @@ setDistributedEnabled(enable: boolean, deviceType: string): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5430,6 +7891,31 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+  }
+
+  onForeground(): void {
+    try {
+      let isEnable: boolean = true;
+      let deviceType: string = "wearable";
+      notificationManager.setDistributedEnabled(isEnable, deviceType).then(() => {
+        console.info('setDistributedEnabled succeeded.');
+      }).catch((err: Error) => {
+        let error: BusinessError = err as BusinessError;
+        console.error(`setDistributedEnabled failed. Code is ${error.code}, message is ${error.message}`);
+      });
+    } catch (err) {
+      console.error(`setDistributedEnabled failed. Code is ${err.code}, message is ${err.message}`);
+    }
+  }
+}
+```
+
 ## notificationManager.getDistributedDeviceList<sup>20+</sup>
 
 getDistributedDeviceList(): Promise\<Array\<string\>\>
@@ -5441,6 +7927,10 @@ getDistributedDeviceList(): Promise\<Array\<string\>\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -5459,6 +7949,7 @@ getDistributedDeviceList(): Promise\<Array\<string\>\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5481,6 +7972,30 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+  }
+
+  onForeground(): void {
+    try {
+      notificationManager.getDistributedDeviceList().then((data: Array<string>) => {
+        console.info('getDistributedDeviceList succeeded, result = ' + data);
+      }).catch((err: Error) => {
+        let error: BusinessError = err as BusinessError;
+        console.error(`getDistributedDeviceList failed. Code is ${error.code}, message is ${error.message}`);
+      });
+    } catch (err) {
+      console.error(`getDistributedDeviceList failed. Code is ${err.code}, message is ${err.message}`);
+    }
+  }
+}
+```
+
 ## notificationManager.setRingtoneInfoByBundle<sup>21+</sup>
 
 setRingtoneInfoByBundle(bundle: BundleOption, ringtoneInfo: RingtoneInfo): Promise\<void\>
@@ -5492,6 +8007,10 @@ setRingtoneInfoByBundle(bundle: BundleOption, ringtoneInfo: RingtoneInfo): Promi
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：21
+
+**ArkTS-Sta起始版本**：23
 
 **参数说明：**
 
@@ -5520,6 +8039,7 @@ setRingtoneInfoByBundle(bundle: BundleOption, ringtoneInfo: RingtoneInfo): Promi
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5551,6 +8071,27 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+
+let bundle: notificationManager.BundleOption = {
+  bundle: "bundleName",
+};
+let ringtoneInfo: notificationManager.RingtoneInfo = {
+  ringtoneType: notificationManager.RingtoneType.RINGTONE_TYPE_SYSTEM,
+  ringtoneTitle: "ringtoneName",
+  ringtoneFileName: "ringtonePath",
+  ringtoneUri: "ringtoneUri",
+}
+notificationManager.setRingtoneInfoByBundle(bundle, ringtoneInfo).then(() => {
+  console.info(`setRingtoneInfoByBundle bundle: ${JSON.stringify(bundle)}', ringtoneInfoJSON：' ${JSON.stringify(ringtoneInfo)}`);
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`setRingtoneInfoByBundle failed, code is ${error.code}, message is ${error.message}`);
+});
+
+```
+
 ## notificationManager.getRingtoneInfoByBundle<sup>21+</sup>
 
 getRingtoneInfoByBundle(bundle: BundleOption): Promise\<RingtoneInfo\>
@@ -5562,6 +8103,10 @@ getRingtoneInfoByBundle(bundle: BundleOption): Promise\<RingtoneInfo\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：21
+
+**ArkTS-Sta起始版本**：23
 
 **参数说明：**
 
@@ -5590,6 +8135,7 @@ getRingtoneInfoByBundle(bundle: BundleOption): Promise\<RingtoneInfo\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5616,6 +8162,20 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+
+let bundle: notificationManager.BundleOption = {
+    bundle: "bundleName",
+};
+notificationManager.getRingtoneInfoByBundle(bundle).then((ringtoneInfo: notificationManager.RingtoneInfo) => {
+    console.info(`getRingtoneInfoByBundle success: ${JSON.stringify(ringtoneInfo)}`);
+}).catch((err: Error) => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`getRingtoneInfoByBundle failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.setBadgeDisplayStatusByBundles<sup>21+</sup>
 
 setBadgeDisplayStatusByBundles(badges: Map<BundleOption, boolean>): Promise\<void\>
@@ -5627,6 +8187,10 @@ setBadgeDisplayStatusByBundles(badges: Map<BundleOption, boolean>): Promise\<voi
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：21
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -5655,6 +8219,7 @@ setBadgeDisplayStatusByBundles(badges: Map<BundleOption, boolean>): Promise\<voi
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5671,6 +8236,23 @@ notificationManager.setBadgeDisplayStatusByBundles(badges).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let badges = new Map<notificationManager.BundleOption, boolean>();
+let bundle: notificationManager.BundleOption = {
+    bundle: 'bundleName',
+};
+badges.set(bundle, true);
+
+try{
+    notificationManager.setBadgeDisplayStatusByBundles(badges);
+} catch (err) {
+    console.info(`setBadgeDisplayStatusByBundles failed, code is ${err.code}, message is ${err.message}`);
+};
+```
+
 ## notificationManager.getBadgeDisplayStatusByBundles<sup>21+</sup>
 
 getBadgeDisplayStatusByBundles(bundles:Array\<BundleOption\>): Promise\<Map\<BundleOption, boolean>>
@@ -5682,6 +8264,10 @@ getBadgeDisplayStatusByBundles(bundles:Array\<BundleOption\>): Promise\<Map\<Bun
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：21
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -5710,6 +8296,7 @@ getBadgeDisplayStatusByBundles(bundles:Array\<BundleOption\>): Promise\<Map\<Bun
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5730,6 +8317,28 @@ notificationManager.getBadgeDisplayStatusByBundles(bundles).then((data: Map<noti
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+let bundles: Array<notificationManager.BundleOption> = [
+    {
+        bundle: 'bundleName',
+    },
+    {
+        bundle: 'bundleName1',
+    }
+];
+
+notificationManager.getBadgeDisplayStatusByBundles(bundles).then((data: Map<notificationManager.BundleOption, boolean>) => {
+    data.forEach((value, key) => {
+        console.info(`Bundle is ${key.bundle}, uid is ${key.uid}, badge status is ${value}.`);
+    });
+}).catch((err: Error) => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`GetBadgeDisplayStatusByBundles failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.setReminderInfoByBundles<sup>21+</sup>
 
 setReminderInfoByBundles(reminderInfos: Array\<NotificationReminderInfo\>): Promise\<void\>
@@ -5741,6 +8350,10 @@ setReminderInfoByBundles(reminderInfos: Array\<NotificationReminderInfo\>): Prom
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：21
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -5769,6 +8382,7 @@ setReminderInfoByBundles(reminderInfos: Array\<NotificationReminderInfo\>): Prom
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5789,6 +8403,28 @@ notificationManager.setReminderInfoByBundles(reminderInfos).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+
+let bundle: notificationManager.BundleOption = {
+    bundle: "bundleName",
+};
+let reminderInfos: Array<notificationManager.NotificationReminderInfo> = [
+    {
+        bundle: bundle,
+        reminderFlags: 59,
+        silentReminderEnabled: false
+    }
+];
+
+notificationManager.setReminderInfoByBundles(reminderInfos).then(() => {
+    console.info('SetReminderInfoByBundles success.');
+}).catch((err: Error) => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`SetReminderInfoByBundles failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.getReminderInfoByBundles<sup>21+</sup>
 
 getReminderInfoByBundles(bundles: Array\<BundleOption\>):  Promise\<Array\<NotificationReminderInfo\>\>
@@ -5800,6 +8436,10 @@ getReminderInfoByBundles(bundles: Array\<BundleOption\>):  Promise\<Array\<Notif
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：21
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -5828,6 +8468,7 @@ getReminderInfoByBundles(bundles: Array\<BundleOption\>):  Promise\<Array\<Notif
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -5846,6 +8487,24 @@ notificationManager.getReminderInfoByBundles(bundles).then((data: Array<notifica
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+let bundles: Array<notificationManager.BundleOption> = [
+    {
+        bundle: 'bundleName',
+    },
+    {
+        bundle: 'bundleName1',
+    }
+];
+notificationManager.getReminderInfoByBundles(bundles).then((data: Array<notificationManager.NotificationReminderInfo>) => {
+    console.info(`Reminder data is ${JSON.stringify(data)}`);
+}).catch((err: Error) => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`GetReminderInfoByBundles failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.isPriorityEnabled<sup>23+</sup>
 
 isPriorityEnabled(): Promise\<boolean\>
@@ -5857,6 +8516,10 @@ isPriorityEnabled(): Promise\<boolean\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -5877,6 +8540,7 @@ isPriorityEnabled(): Promise\<boolean\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -5885,6 +8549,16 @@ notificationManager.isPriorityEnabled().then((result : boolean) => {
     hilog.info(0x0000, 'testTag', `isPriorityEnabled result is ${result}`);
 }).catch((err: BusinessError) => {
     hilog.error(0x0000, 'testTag', `isPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+notificationManager.isPriorityEnabled().then((result: boolean) => {
+  console.info(`isPriorityEnabled result is ${result}`);
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`isPriorityEnabled failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -5899,6 +8573,10 @@ setPriorityEnabled(enable: boolean): Promise\<void\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -5926,6 +8604,7 @@ setPriorityEnabled(enable: boolean): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -5934,6 +8613,16 @@ notificationManager.setPriorityEnabled(false).then(() => {
     hilog.info(0x0000, 'testTag', `setPriorityEnabled success`);
 }).catch((err: BusinessError) => {
     hilog.error(0x0000, 'testTag', `setPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+notificationManager.setPriorityEnabled(false).then(() => {
+  console.info(`setPriorityEnabled success`);
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`setPriorityEnabled failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -5948,6 +8637,10 @@ isPriorityEnabledByBundle(bundle: BundleOption): Promise\<PriorityEnableStatus\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -5976,6 +8669,7 @@ isPriorityEnabledByBundle(bundle: BundleOption): Promise\<PriorityEnableStatus\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -5985,6 +8679,18 @@ notificationManager.isPriorityEnabledByBundle(bundleOption).then((result : notif
   hilog.info(0x0000, 'testTag', `isPriorityEnabledByBundle result is ${result}`);
 }).catch((err: BusinessError) => {
   hilog.error(0x0000, 'testTag', `isPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+notificationManager.isPriorityEnabledByBundle(bundleOption).then((result : notificationManager.PriorityEnableStatus) => {
+  console.info(`isPriorityEnabledByBundle result is ${result}`);
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`isPriorityEnabledByBundle failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -5999,6 +8705,10 @@ setPriorityEnabledByBundle(bundle: BundleOption, enableStatus: PriorityEnableSta
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -6028,6 +8738,7 @@ setPriorityEnabledByBundle(bundle: BundleOption, enableStatus: PriorityEnableSta
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -6037,6 +8748,17 @@ notificationManager.setPriorityEnabledByBundle(bundleOption, notificationManager
   hilog.info(0x0000, 'testTag', `setPriorityEnabledByBundle success`);
 }).catch((err: BusinessError) => {
   hilog.error(0x0000, 'testTag', `setPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+notificationManager.setPriorityEnabledByBundle(bundleOption, notificationManager.PriorityEnableStatus.ENABLE).then(() => {
+  console.info(`setPriorityEnabledByBundle success`);
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`setPriorityEnabledByBundle failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -6051,6 +8773,10 @@ getBundlePriorityConfig(bundle: BundleOption): Promise\<string\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -6079,6 +8805,7 @@ getBundlePriorityConfig(bundle: BundleOption): Promise\<string\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -6088,6 +8815,18 @@ notificationManager.getBundlePriorityConfig(bundleOption).then((value: string) =
   hilog.info(0x0000, 'testTag', `getBundlePriorityConfig value is ${value}`);
 }).catch((err: BusinessError) => {
   hilog.error(0x0000, 'testTag', `getBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+notificationManager.getBundlePriorityConfig(bundleOption).then((value: string) => {
+  console.info(`getBundlePriorityConfig value is ${value}`);
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`getBundlePriorityConfig failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -6102,6 +8841,10 @@ setBundlePriorityConfig(bundle: BundleOption, value: string): Promise\<void\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -6131,6 +8874,7 @@ setBundlePriorityConfig(bundle: BundleOption, value: string): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -6140,6 +8884,17 @@ notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1').t
   hilog.info(0x0000, 'testTag', `setBundlePriorityConfig success`);
 }).catch((err: BusinessError) => {
   hilog.error(0x0000, 'testTag', `setBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1').then(() => {
+    console.info(`setBundlePriorityConfig success`);
+}).catch((err: Error) => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`setBundlePriorityConfig failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -6156,6 +8911,10 @@ isPriorityIntelligentEnabled(): Promise\<boolean\>
 **系统接口**：此接口为系统接口。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -6177,6 +8936,7 @@ isPriorityIntelligentEnabled(): Promise\<boolean\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -6185,6 +8945,16 @@ notificationManager.isPriorityIntelligentEnabled().then((result: boolean) => {
   hilog.info(0x0000, 'testTag', `isPriorityIntelligentEnabled result: ${result}`);
 }).catch((err: BusinessError) => {
   hilog.error(0x0000, 'testTag', `isPriorityIntelligentEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+notificationManager.isPriorityIntelligentEnabled().then((result: boolean) => {
+  console.info(`isPriorityIntelligentEnabled result: ${result}`);
+}).catch((err: Error) => {
+  let error: BusinessError = err as BusinessError;
+  console.error(`isPriorityIntelligentEnabled failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -6201,6 +8971,10 @@ setPriorityIntelligentEnabled(enable: boolean): Promise\<void\>
 **系统接口**：此接口为系统接口。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -6228,6 +9002,7 @@ setPriorityIntelligentEnabled(enable: boolean): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -6236,6 +9011,16 @@ notificationManager.setPriorityIntelligentEnabled(false).then(() => {
   hilog.info(0x0000, 'testTag', `setPriorityIntelligentEnabled success`);
 }).catch((err: BusinessError) => {
   hilog.error(0x0000, 'testTag', `setPriorityIntelligentEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+notificationManager.setPriorityIntelligentEnabled(false).then(() => {
+    console.info(`setPriorityIntelligentEnabled success`);
+}).catch((err: Error) => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`setPriorityIntelligentEnabled failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -6252,6 +9037,10 @@ getPriorityEnabledByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<Bundl
 **系统接口**：此接口为系统接口。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -6280,6 +9069,7 @@ getPriorityEnabledByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<Bundl
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -6295,6 +9085,19 @@ notificationManager.getPriorityEnabledByBundles(bundles).then((switches: Map<not
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 1000 };
+let bundles: Array<notificationManager.BundleOption> = [bundleOption];
+notificationManager.getPriorityEnabledByBundles(bundles).then((switches: Map<notificationManager.BundleOption, boolean>) => {
+    switches.forEach((value, key) => {
+        console.info(`getPriorityEnabledByBundles switches: ${key.bundle} ${key.uid}, ${value}`);
+    })
+}).catch((err: Error) => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`getPriorityEnabledByBundles failed, code is ${error.code}, message is ${error.message}`);
+});
+```
 
 ## notificationManager.setPriorityEnabledByBundles<sup>23+</sup>
 
@@ -6309,6 +9112,10 @@ setPriorityEnabledByBundles(switches: Map\<BundleOption, boolean\>): Promise\<vo
 **系统接口**：此接口为系统接口。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -6337,6 +9144,7 @@ setPriorityEnabledByBundles(switches: Map\<BundleOption, boolean\>): Promise\<vo
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -6350,9 +9158,23 @@ notificationManager.setPriorityEnabledByBundles(switches).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 1000 };
+let switches: Map<notificationManager.BundleOption, boolean> = new Map<notificationManager.BundleOption, boolean>([[bundleOption, false]]);
+notificationManager.setPriorityEnabledByBundles(switches).then(() => {
+    console.info(`setPriorityEnabledByBundles success`);
+}).catch((err: Error) => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`setPriorityEnabledByBundles failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.getPriorityStrategyByBundles<sup>23+</sup>
 
-getPriorityStrategyByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<BundleOption, number\>\>;
+ArkTS-Dyn: getPriorityStrategyByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<BundleOption, number\>\>
+
+ArkTS-Sta: getPriorityStrategyByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<BundleOption, long\>\>
 
 批量获取应用通知优先策略。使用Promise异步回调。
 
@@ -6364,6 +9186,10 @@ getPriorityStrategyByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<Bund
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
@@ -6374,7 +9200,7 @@ getPriorityStrategyByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<Bund
 
 | 类型            | 说明                     |
 |-----------------|-------------------------|
-| Promise\<Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), number\>\> | Promise对象，返回应用通知优先策略的键值对集合的Promise对象。 |
+| ArkTS-Dyn: Promise\<Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), number\>\> <br/>ArkTS-Sta: Promise\<Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), long\>\> | Promise对象，返回应用通知优先策略的键值对集合的Promise对象。 |
 
 **错误码**：
 
@@ -6391,6 +9217,7 @@ getPriorityStrategyByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<Bund
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -6406,9 +9233,25 @@ notificationManager.getPriorityStrategyByBundles(bundles).then((strategies: Map<
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 1000 };
+let bundles: Array<notificationManager.BundleOption> = [bundleOption];
+notificationManager.getPriorityStrategyByBundles(bundles).then((strategies: Map<notificationManager.BundleOption, long>) => {
+    strategies.forEach((value, key) => {
+        console.info(`getPriorityStrategyByBundles strategies: ${key.bundle} ${key.uid}, ${value}`);
+    })
+}).catch((err: Error) => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`getPriorityStrategyByBundles failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.setPriorityStrategyByBundles<sup>23+</sup>
 
-setPriorityStrategyByBundles(strategies: Map\<BundleOption, number\>): Promise\<void\>
+ArkTS-Dyn: setPriorityStrategyByBundles(strategies: Map\<BundleOption, number\>): Promise\<void\>
+
+ArkTS-Sta: setPriorityStrategyByBundles(strategies: Map\<BundleOption, long\>): Promise\<void\>
 
 批量设置应用通知优先策略。使用Promise异步回调。
 
@@ -6420,11 +9263,15 @@ setPriorityStrategyByBundles(strategies: Map\<BundleOption, number\>): Promise\<
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| strategies | Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), number\> | 是 | 应用通知优先策略的键值对集合。与[PriorityStrategyStatus](#prioritystrategystatus23)的枚举进行按位或运算得到值。|
+| strategies |ArkTS-Dyn: Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), number\> <br/>ArkTS-Sta: Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), long\> | 是 | 应用通知优先策略的键值对集合。与[PriorityStrategyStatus](#prioritystrategystatus23)的枚举进行按位或运算得到值。|
 
 **返回值：**
 
@@ -6447,6 +9294,7 @@ setPriorityStrategyByBundles(strategies: Map\<BundleOption, number\>): Promise\<
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -6460,9 +9308,24 @@ notificationManager.setPriorityStrategyByBundles(strategies).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 1000 };
+let strategies: Map<notificationManager.BundleOption, long> =
+    new Map<notificationManager.BundleOption, long>([[bundleOption, notificationManager.PriorityStrategyStatus.STATUS_APPLICATION_DEFINED]]);
+notificationManager.setPriorityStrategyByBundles(strategies).then(() => {
+    console.info(`setPriorityStrategyByBundles success`);
+}).catch((err: Error) => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`setPriorityStrategyByBundles failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.onBadgeNumberQuery<sup>22+</sup>
 
-onBadgeNumberQuery(callback: (bundle: BundleOption) => Promise\<number\>): void
+ArkTS-Dyn: onBadgeNumberQuery(callback: (bundle: BundleOption) => Promise\<number\>): void
+
+ArkTS-Sta: onBadgeNumberQuery(callback: (bundle: BundleOption) => Promise\<long\>): void
 
 注册应用角标数量查询回调。
 
@@ -6471,6 +9334,10 @@ onBadgeNumberQuery(callback: (bundle: BundleOption) => Promise\<number\>): void
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：22
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -6492,6 +9359,7 @@ onBadgeNumberQuery(callback: (bundle: BundleOption) => Promise\<number\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 try{
     notificationManager.onBadgeNumberQuery(
@@ -6501,6 +9369,21 @@ try{
     );
 } catch (err) {
     console.error(`OnBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try{
+    notificationManager.onBadgeNumberQuery(
+        async (bundleOption: notificationManager.BundleOption) => {
+            return 1;
+        }
+    );
+} catch (err) {
+    console.info(`onBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
 
@@ -6516,6 +9399,10 @@ offBadgeNumberQuery(): void
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：22
+
+**ArkTS-Sta起始版本**：23
+
 **错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
@@ -6530,11 +9417,23 @@ offBadgeNumberQuery(): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 try{
     notificationManager.offBadgeNumberQuery();
 } catch (err) {
     console.error(`OffBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try{
+    notificationManager.offBadgeNumberQuery();
+} catch (err) {
+    console.info(`OffBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
 
@@ -6549,6 +9448,10 @@ setGeofenceEnabled(enabled: boolean):  Promise\<void\>
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -6577,6 +9480,7 @@ setGeofenceEnabled(enabled: boolean):  Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -6588,13 +9492,21 @@ notificationManager.setGeofenceEnabled(true).then(() => {
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+notificationManager.setGeofenceEnabled(true).then(() => {
+    console.info("setGeofenceEnabled success");
+}).catch((err: Error) => {
+    let error: BusinessError = err as BusinessError;
+    console.error(`setGeofenceEnabled failed, code is ${error.code}, message is ${error.message}`);
+});
+```
+
 ## notificationManager.getNotificationStatisticsByBundle
 
 getNotificationStatisticsByBundle(bundles: BundleOption[]): Promise\<BundleNotificationStatistics[]\>
 
 批量获取指定应用列表的通知统计信息，使用Promise异步回调。
-
-**起始版本**：26.0.0
 
 **系统接口**：此接口为系统接口。
 
@@ -6603,6 +9515,10 @@ getNotificationStatisticsByBundle(bundles: BundleOption[]): Promise\<BundleNotif
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
 
 **设备行为差异**：该接口仅在Phone/PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
 
 **参数：**
 
@@ -6630,6 +9546,7 @@ getNotificationStatisticsByBundle(bundles: BundleOption[]): Promise\<BundleNotif
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6645,13 +9562,27 @@ notificationManager.getNotificationStatisticsByBundle(bundles).then(
 });
 ```
 
+ArkTS-Sta示例：
+```ts
+let bundles: notificationManager.BundleOption[] = [
+  { bundle:"com.example.test01" },
+  { bundle:"com.example.test02" }
+];
+notificationManager.getNotificationStatisticsByBundle(bundles).then(
+  (data: notificationManager.BundleNotificationStatistics[]) => {
+  console.info(`getNotificationStatisticsByBundle success, data is ${JSON.stringify(data)}`)
+}).catch((err: Error):void => {
+  console.error(`getNotificationStatisticsByBundle err: ${JSON.stringify(err)}`)
+});
+```
+
 ## notificationManager.snoozeNotification
 
 ArkTS-Dyn: snoozeNotification(hashCode: string, delayTime: number): Promise\<void\>
 
 ArkTS-Sta: snoozeNotification(hashCode: string, delayTime: long): Promise\<void\>
 
-通知稍后提醒。此接口允许设置通知在指定时间间隔后再次发出提醒。使用Promise异步回调。
+设置通知稍后提醒。该通知在指定时间后再次提醒，每次设置只会提醒一次，提醒方式与该通知相同。<br/>设置后该通知被删除。
 
 **ArkTS-Dyn起始版本**：26.0.0
 
@@ -6670,7 +9601,7 @@ ArkTS-Sta: snoozeNotification(hashCode: string, delayTime: long): Promise\<void\
 | 参数名      | 类型                  | 必填 | 说明                         |
 | --------- | --------------------- | ---- | ---------------------------- |
 | hashCode   | string | 是  | 需要设置稍后提醒通知的唯一标识。 |
-| delayTime   | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是  | 稍后提醒的时间间隔，单位：秒。 |
+| delayTime   | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是  | 稍后提醒的时间间隔。<br/>单位：秒。 |
 
 **返回值：**
 
@@ -6686,7 +9617,6 @@ ArkTS-Sta: snoozeNotification(hashCode: string, delayTime: long): Promise\<void\
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission denied. |
 | 202 | Not system application to call the interface. |
-| 801 | Capability not supported. |
 | 1600001 | Internal error. |
 | 1600003 | Failed to connect to the service. |
 | 1600007 | The notification does not exist. |
@@ -6711,11 +9641,12 @@ ArkTS-Sta示例：
 ```ts
 // 此处应改为开发者需要设定稍后提醒通知的唯一标识
 let hashCode: string = "hashCode";
-let delayTime: number = 60;
+let delayTime: long = 60;
 notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
   console.info("snoozeNotification success.")
 }).catch((err: Error):void => {
-  console.error(`snoozeNotification failed, code is ${err.code}, message is ${err.message}`);
+  let error: BusinessError = err as BusinessError;
+  console.error(`snoozeNotification failed, code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -6724,6 +9655,10 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 | 名称  | 类型                                   | 只读 | 可选 | 说明                  |
 | ----- | ------------------------------------- | ---- | ---- | -------------------- |
@@ -6736,6 +9671,10 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 | 名称         | 值               | 说明                                       |
 | ------------ | ---------------- | ------------------------------------------ |
@@ -6751,6 +9690,10 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
+
 | 名称                 | 值  | 说明                               |
 | -------------------- | --- | --------------------------------- |
 | IDLE_DONOT_REMIND    | 0   | 设备未被使用，无需提醒。            |
@@ -6764,6 +9707,10 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 | 名称                 | 值  | 说明                  |
 | -------------------- | --- | -------------------- |
@@ -6779,15 +9726,19 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 | 名称                         | 类型                          | 只读 | 可选 | 说明            |
 | ---------------------------- | ---------------------------- | ---- | ---- |--------------- |
-| bundleName                   | string                       |  否  | 否   | Bundle名称。    |
-| notificationId               | number                       |  否  | 否   | 通知ID。        |
-| label<sup>11+</sup>          | string                       |  否  | 是   | 通知标签。      |
-| contentType                  | [ContentType](./js-apis-notificationManager.md#contenttype)  |  否  | 否   | 通知类型。      |
-| creatorUserId<sup>11+</sup>  | number                       |  否  | 否   | 通知的user ID。 |
-| slotType<sup>11+</sup>       | [SlotType](./js-apis-notificationManager.md#slottype)        |  否  | 否   | 渠道类型。      |
-| extraInfos<sup>11+</sup>     | Record<string, Object>       |  否  | 是   | 实况通知的附加信息。 |
+| bundleName                   | string                       |  否  | 否   | Bundle名称。<br/>**ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：23    |
+| notificationId               | ArkTS-Dyn: number<br/>ArkTS-Sta: int                       |  否  | 否   | 通知ID。<br/>**ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：23        |
+| label<sup>11+</sup>          | string                       |  否  | 是   | 通知标签。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23      |
+| contentType                  | [ContentType](./js-apis-notificationManager.md#contenttype)  |  否  | 否   | 通知类型。<br/>**ArkTS-Dyn起始版本**：10<br/>**ArkTS-Sta起始版本**：23      |
+| creatorUserId<sup>11+</sup>  | ArkTS-Dyn: number<br/>ArkTS-Sta: int                       |  否  | 否   | 通知的user ID。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
+| slotType<sup>11+</sup>       | [SlotType](./js-apis-notificationManager.md#slottype)        |  否  | 否   | 渠道类型。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23      |
+| extraInfos<sup>11+</sup>     | ArkTS-Dyn: Record<string, Object\><br/>ArkTS-Sta: Record<string, RecordData>       |  否  | 是   | 实况通知的附加信息。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
 
 ## NotificationCheckResult<sup>10+</sup>
 
@@ -6797,9 +9748,13 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
+
 | 名称    | 类型     | 只读 | 可选 | 说明                     |
 | ------- | ------- | ---- | ---- | ----------------------- |
-| code    | number  |  否  | 否   | 0-display，1-no display。|
+| code    | ArkTS-Dyn: number<br/>ArkTS-Sta: int  |  否  | 否   | 0-display，1-no display。|
 | message | string  |  否  | 否   | 结果信息。                |
 
 
@@ -6812,6 +9767,10 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 **需要权限**：ohos.permission.NOTIFICATION_CONTROLLER 和 ohos.permission.NOTIFICATION_AGENT_CONTROLLER
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
 
 | 名称       |   类型  | 只读 | 可选 | 说明                    |
 | ---------- | ------ | ---- | ---- | ---------------------- |
@@ -6826,6 +9785,10 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
+
 | 名称         | 类型                                                                               | 只读 | 可选 | 说明                   |
 | ----------- | ---------------------------------------------------------------------------------- | ---- | ---- | --------------------- |
 | onResponse  | (notificationId: number, buttonOptions: [ButtonOptions](#buttonoptions11)) => void | 否   |  是  | 点击按钮的回调。        |
@@ -6834,6 +9797,10 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 ## SlotType
 
 **系统能力**：SystemCapability.Notification.Notification
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：23
 
 | 名称                                | 值     | 说明                                                         |
 | ----------------------------------- | ------ | ------------------------------------------------------------ |
@@ -6846,6 +9813,10 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 | 名称                                 | 值   | 说明     |
 | ------------------------------------ | ---- | -------- |
@@ -6862,9 +9833,13 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
+
 | 名称      | 类型    | 只读 | 可选 | 说明           |
 | --------- | ------ | ---- | ---- | ------------- |
-| id        | number | 否   |  否  | 勿扰模式编号。 |
+| id        | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否   |  否  | 勿扰模式编号。 |
 | name      | string | 否   |  否  | 勿扰模式名称。 |
 | trustlist | Array\<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)> | 否 | 是 | 勿扰模式的信任列表。 |
 
@@ -6878,6 +9853,10 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
+
 | 类型 | 说明 |
 | --- | --- |
 | [_NotificationLiveViewContent](js-apis-inner-notification-notificationContent-sys.md#notificationliveviewcontent11) | 描述普通实况通知。 |
@@ -6889,6 +9868,10 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 | 名称                 | 值  | 说明                               |
 | --------------------| --- | --------------------------------- |
@@ -6905,10 +9888,14 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 | 名称          | 类型                                                       | 只读 | 可选 | 说明              |
 | --------------| --------------------------------------------------------- | ---- | ---- | ----------------- |
 | bundleName   | string | 否 | 否 | 包名。          |
-| uid          | number | 否 | 否 | 应用程序的UID。          |
+| uid          | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 应用程序的UID。          |
 | enable       | boolean| 否 | 是 | 是否支持跨设备协同，返回true表示支持，返回false表示不支持，默认为false。      |
 
 ## RingtoneType<sup>21+</sup>
@@ -6934,6 +9921,10 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：21
+
+**ArkTS-Sta起始版本**：23
+
 | 名称    | 类型     | 只读 | 可选 | 说明                     |
 | ------- | ------- | ---- | ---- | ----------------------- |
 | ringtoneType | [RingtoneType](#ringtonetype21)  |  否  | 否   | 铃声的类型。|
@@ -6949,27 +9940,33 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：21
+
+**ArkTS-Sta起始版本**：23
+
 | 名称      | 类型    | 只读 | 可选 | 说明           |
 | --------- | ------ | ---- | ---- | ------------- |
 | bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 否 | 否 | 指定应用的包信息。|
-| reminderFlags | number | 否 | 否 | 表示通知提醒方式的标志位。 |
+| reminderFlags | <br/>ArkTS-Dyn: number<br/>ArkTS-Sta: long<br/> | 否 | 否 | 表示通知提醒方式的标志位。 |
 | silentReminderEnabled | boolean | 否 | 否 | 表示静默提醒开关使能状态（true：使能，false：禁止）。 |
 
 ## BundleNotificationStatistics
 
 描述指定应用通知统计信息。
 
-**起始版本**：26.0.0
-
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
 | 名称      | 类型    | 只读 | 可选 | 说明           |
 | --------- | ------ | ---- | ---- | ------------- |
 | bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 否 | 否 | 指定应用的包信息。|
-| lastTime | number | 否 | 否 | 应用最后一次发布通知的时间。数据格式：时间戳。单位：ms。 |
-| recentCount | number | 否 | 否 | 应用最近7天发布的通知总量。 |
+| lastTime | ArkTS-Dyn: number<br/>ArkTS-Sta: long<br/> | 否 | 否 | 应用最后一次发布通知的时间。数据格式：时间戳。单位：ms。 |
+| recentCount | ArkTS-Dyn: number<br/>ArkTS-Sta: int<br/> | 否 | 否 | 应用最近7天发布的通知总量。 |
 
 ## PriorityNotificationType<sup>23+</sup>
 
@@ -6978,6 +9975,10 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 **系统能力**：SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
 
 | 名称                 | 值  | 说明                               |
 | --------------------| --- | --------------------------------- |
@@ -7002,6 +10003,10 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
 | 名称                 | 值  | 说明                               |
 | --------------------| --- | --------------------------------- |
 | DISABLE    | 0   | 应用通知的优先级开关为关闭状态。 |
@@ -7017,6 +10022,10 @@ type NotificationIconButton = _NotificationIconButton
 **系统能力：** SystemCapability.Notification.Notification
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
 
 | 类型 | 说明 |
 | --- | --- |
@@ -7034,6 +10043,10 @@ type TriggerType = _TriggerType
 
 **系统接口**：此接口为系统接口。
 
+ **ArkTS-Dyn起始版本**：23
+
+ **ArkTS-Sta起始版本**：23
+
 | 类型 | 说明 |
 | --- | --- |
 | [_TriggerType](js-apis-inner-notification-notificationRequest-sys.md#triggertype23) | 条件触发类型。 |
@@ -7049,6 +10062,10 @@ type Trigger = _Trigger
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
 
 | 类型 | 说明 |
 | --- | --- |
@@ -7066,6 +10083,10 @@ type Geofence = _Geofence
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
 | 类型 | 说明 |
 | --- | --- |
 | [_Geofence](js-apis-inner-notification-notificationRequest-sys.md#geofence23) | 地理围栏配置信息。 |
@@ -7081,6 +10102,10 @@ type CoordinateSystemType = _CoordinateSystemType
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
 
 | 类型 | 说明 |
 | --- | --- |
@@ -7098,6 +10123,10 @@ type MonitorEvent = _MonitorEvent
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
 | 类型 | 说明 |
 | --- | --- |
 | [_MonitorEvent](js-apis-inner-notification-notificationRequest-sys.md#monitorevent23) | 地理围栏的监控事件类型。 |
@@ -7111,6 +10140,10 @@ type MonitorEvent = _MonitorEvent
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
 
 | 名称                 | 值  | 说明                              |
 | ------------------- | --- | --------------------------------- |
@@ -7127,13 +10160,15 @@ type GroupInfo = _GroupInfo
 
 组通知定制信息。
 
-**起始版本**：26.0.0
-
 **系统能力：** SystemCapability.Notification.Notification
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
 
 | 类型 | 说明 |
 | --- | --- |

@@ -11,6 +11,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口为系统接口。
@@ -24,19 +26,25 @@ import { shortKey } from '@kit.InputKit';
 
 ##  shortKey.setKeyDownDuration
 
-setKeyDownDuration(businessKey: string, delay: number, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn： setKeyDownDuration(businessKey: string, delay: number, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta： setKeyDownDuration(businessKey: string, delay: int, callback: AsyncCallback&lt;void&gt;): void
 
 设置快捷键拉起Ability的延迟时间，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.ShortKey
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
 | 参数名     | 类型                | 必填 | 说明                                                         |
 | ---------- | ------------------- | ---- | ------------------------------------------------------------ |
 | businessKey| string              | 是   | 业务在多模侧注册的唯一标识，与ability_launch_config.json中的businessId对应。调用接口前自行查询。|
-| delay      | number              | 是   | 按下快捷键多长时间后拉起Ability，单位：ms，仅支持快捷键按下触发。 |
-| callback   | AsyncCallback&lt;void&gt; | 是   | 回调函数，设置成功时，err为undefined，否则为错误对象。 |
+| delay      | ArkTS-Dyn: number<br/>ArkTS-Sta: int   | 是   | 按下快捷键多长时间后拉起Ability，单位：ms，仅支持快捷键按下触发。 |
+| callback   | AsyncCallback&lt;void&gt; | 是   | 回调函数。当设置快捷键拉起Ability的延迟时间成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -45,9 +53,11 @@ setKeyDownDuration(businessKey: string, delay: number, callback: AsyncCallback&l
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例:
 
 ```js
 import { shortKey } from '@kit.InputKit';
@@ -61,15 +71,48 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 设置延迟拉起时间500ms
             shortKey.setKeyDownDuration("businessId", 500, (error: BusinessError) => {
               if (error) {
-                console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
                 return;
               }
-              console.info(`Set key down duration success`);
+              console.info(`Succeeded in setting key down duration.`);
             });
           } catch (error) {
-            console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { shortKey } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置延迟拉起时间500ms
+            shortKey.setKeyDownDuration("businessId", 500, (error: BusinessError<void> | null, data: undefined) => {
+              if (error) {
+                console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                return;
+              }
+              console.info(`Succeeded in setting key down duration.`);
+            });
+          } catch (error) {
+            console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -79,24 +122,30 @@ struct Index {
 
 ## shortKey.setKeyDownDuration
 
-setKeyDownDuration(businessKey: string, delay: number): Promise&lt;void&gt;
+ArkTS-Dyn：setKeyDownDuration(businessKey: string, delay: number): Promise&lt;void&gt;
+
+ArkTS-Sta：setKeyDownDuration(businessKey: string, delay: int): Promise&lt;void&gt;
 
 设置快捷键拉起Ability的延迟时间，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.ShortKey
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：23
 
 **参数**：
 
 | 参数名     | 类型   | 必填 | 说明                                                         |
 | ---------- | ------ | ---- | ------------------------------------------------------------ |
 | businessKey| string | 是   | 业务在多模侧注册的唯一标识，与ability_launch_config.json中的businessId对应。调用接口前自行查询。|
-| delay      | number | 是   | 按下快捷键多长时间后拉起Ability，单位：ms，仅支持快捷键按下触发。 |
+| delay      | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 按下快捷键多长时间后拉起Ability，单位：ms，仅支持快捷键按下触发。 |
 
 **返回值**：
 
 | 类型          | 说明          |
 | ------------- | ------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -105,9 +154,11 @@ setKeyDownDuration(businessKey: string, delay: number): Promise&lt;void&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```js
 import { shortKey } from '@kit.InputKit';
@@ -121,13 +172,44 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // 设置延迟拉起时间500ms
             shortKey.setKeyDownDuration("businessId", 500).then(() => {
-              console.info(`Set key down duration success`);
+              console.info(`Succeeded in setting key down duration.`);
             }).catch((error: BusinessError) => {
-              console.error(`Set key down failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+              console.error(`Failed to set key down, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
             })
           } catch (error) {
-            console.error(`Set key down duration failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { shortKey } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // 设置延迟拉起时间500ms
+            shortKey.setKeyDownDuration("businessId", 500).then(() => {
+              console.info(`Succeeded in setting key down duration.`);
+            }).catch((error) => {
+              console.error(`Failed to set key down, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+            })
+          } catch (error) {
+            console.error(`Failed to set key down duration, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -140,6 +222,10 @@ struct Index {
 指纹手势事件类型的枚举。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
 
 | 名称                 | 值          | 说明                |
 | ---------------------| ---------- | --------------------|
@@ -155,8 +241,12 @@ struct Index {
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：23
+
 | 名称      | 类型                                       |只读   | 可选  |说明                    |
 | --------  | ------------------------                  |-------|------ |--------               |
 | action    | [FingerprintAction](#fingerprintaction12)   | 否    |  否   | 指纹手势事件类型的枚举。           |
-| distanceX | double                                    | 否    |  否   | 相对于侧边指纹器件短轴偏移量（正数表示向右移动，负数表示向左移动）。 |
-| distanceY | double                                    | 否    |  否   | 相对于侧边指纹器件长轴偏移量（正数表示向上移动，负数表示向下移动）。 |
+| distanceX | ArkTS-Dyn: number<br/>ArkTS-Sta: double      | 否    |  否   | 相对于侧边指纹器件短轴偏移量（正数表示向右移动，负数表示向左移动），单位为像素（px）。 |
+| distanceY | ArkTS-Dyn: number<br/>ArkTS-Sta: double     | 否    |  否   | 相对于侧边指纹器件长轴偏移量（正数表示向上移动，负数表示向下移动），单位为像素（px）。 |

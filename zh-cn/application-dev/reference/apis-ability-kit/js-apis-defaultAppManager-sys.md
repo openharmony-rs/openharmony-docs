@@ -4,11 +4,13 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供查询，设置和重置默认应用的能力，支持查询当前应用是否是默认应用。
 
 > **说明：**
+>
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
@@ -22,7 +24,9 @@ import { defaultAppManager } from '@kit.AbilityKit';
 
 ## defaultAppManager.getDefaultApplication
 
-getDefaultApplication(type: string, userId?: number): Promise\<BundleInfo>
+ArkTS-Dyn: getDefaultApplication(type: string, userId?: number): Promise\<BundleInfo>
+
+ArkTS-Sta: getDefaultApplication(type: string, userId?: int): Promise\<BundleInfo>
 
 根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型获取默认应用信息。使用Promise异步回调。
 
@@ -32,12 +36,16 @@ getDefaultApplication(type: string, userId?: number): Promise\<BundleInfo>
 
 **系统接口：**  此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名         | 类型     | 必填   | 说明                                      |
 | ----------- | ------ | ---- | --------------------------------------- |
 | type  | string | 是    | 要查询的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。       |
-| userId  | number | 否    | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。                        |
+| userId  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。                        |
 
 **返回值：**
 
@@ -61,6 +69,7 @@ getDefaultApplication(type: string, userId?: number): Promise\<BundleInfo>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { defaultAppManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -90,10 +99,44 @@ defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
     console.error('Operation failed. Cause: ' + JSON.stringify(error));
   });
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager, defaultAppManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { uniformTypeDescriptor } from '@kit.ArkData';
+
+defaultAppManager.getDefaultApplication(defaultAppManager.ApplicationType.BROWSER)
+  .then((data: bundleManager.BundleInfo) => {
+    console.info('getDefaultApplication successful. bundleInfo: ' + JSON.stringify(data));
+  })
+  .catch((error: Error) => {
+    console.error('getDefaultApplication failed. Cause: ' + JSON.stringify(error));
+  });
+
+defaultAppManager.getDefaultApplication("image/png")
+  .then((data: bundleManager.BundleInfo) => {
+    console.info('getDefaultApplication successful. bundleInfo: ' + JSON.stringify(data));
+  })
+  .catch((error: Error) => {
+    console.error('getDefaultApplication failed. Cause: ' + JSON.stringify(error));
+  });
+
+defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AVI)
+  .then((data: bundleManager.BundleInfo) => {
+    console.info('getDefaultApplication successful. bundleInfo: ' + JSON.stringify(data));
+  })
+  .catch((error: Error) => {
+    console.error('getDefaultApplication failed. Cause: ' + JSON.stringify(error));
+  });
+```
 
 ## defaultAppManager.getDefaultApplication
 
-getDefaultApplication(type: string, userId: number, callback: AsyncCallback\<BundleInfo>) : void
+ArkTS-Dyn: getDefaultApplication(type: string, userId: number, callback: AsyncCallback\<BundleInfo>): void
+
+ArkTS-Sta: getDefaultApplication(type: string, userId: int, callback: AsyncCallback\<BundleInfo>): void
 
 根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型获取默认应用信息。使用callback异步回调。
 
@@ -103,13 +146,17 @@ getDefaultApplication(type: string, userId: number, callback: AsyncCallback\<Bun
 
 **系统接口：**  此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名         | 类型     | 必填   | 说明                                      |
 | ----------- | ------ | ---- | --------------------------------------- |
 | type  | string | 是    | 要查询的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。       |
-| userId  | number | 是    | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                           |
-| callback    | AsyncCallback\<[BundleInfo](js-apis-bundle-BundleInfo.md)> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的应用信息；否则为错误对象。                    |
+| userId  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                           |
+| callback    | AsyncCallback\<[BundleInfo](js-apis-bundle-BundleInfo.md)> | 是    | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的应用信息；否则为错误对象。                    |
 
 **错误码：**
 
@@ -127,6 +174,7 @@ getDefaultApplication(type: string, userId: number, callback: AsyncCallback\<Bun
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { defaultAppManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -157,10 +205,44 @@ defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
   console.info('Operation successful. bundleInfo:' + JSON.stringify(data));
 });
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { defaultAppManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { uniformTypeDescriptor } from '@kit.ArkData';
+
+// 代码中使用的useId需为应用实际的用户ID。
+let userId = 100;
+defaultAppManager.getDefaultApplication(defaultAppManager.ApplicationType.BROWSER, userId, (err, data) => {
+  if (err) {
+    console.error('getDefaultApplication failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('getDefaultApplication successful. bundleInfo:' + JSON.stringify(data));
+});
+
+defaultAppManager.getDefaultApplication("image/png", userId, (err, data) => {
+  if (err) {
+    console.error('getDefaultApplication failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('getDefaultApplication successful. bundleInfo:' + JSON.stringify(data));
+});
+
+defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AVI, userId, (err, data) => {
+  if (err) {
+    console.error('getDefaultApplication failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('getDefaultApplication successful. bundleInfo:' + JSON.stringify(data));
+});
+```
 
 ## defaultAppManager.getDefaultApplication
 
-getDefaultApplication(type: string, callback: AsyncCallback\<BundleInfo>) : void
+getDefaultApplication(type: string, callback: AsyncCallback\<BundleInfo>): void
 
 根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型获取默认应用信息。使用callback异步回调。
 
@@ -170,12 +252,16 @@ getDefaultApplication(type: string, callback: AsyncCallback\<BundleInfo>) : void
 
 **系统接口：**  此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名         | 类型     | 必填   | 说明                                      |
 | ----------- | ------ | ---- | --------------------------------------- |
 | type  | string | 是    | 要查询的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。       |
-| callback    | AsyncCallback\<[BundleInfo](js-apis-bundle-BundleInfo.md)> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的应用信息；否则为错误对象。                    |
+| callback    | AsyncCallback\<[BundleInfo](js-apis-bundle-BundleInfo.md)> | 是    | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当获取成功时，err为undefined，data为获取到的应用信息；否则为错误对象。                    |
 
 **错误码：**
 
@@ -192,6 +278,7 @@ getDefaultApplication(type: string, callback: AsyncCallback\<BundleInfo>) : void
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { defaultAppManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -221,10 +308,44 @@ defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
   console.info('Operation successful. bundleInfo:' + JSON.stringify(data));
 });
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { defaultAppManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { uniformTypeDescriptor } from '@kit.ArkData';
+
+defaultAppManager.getDefaultApplication(defaultAppManager.ApplicationType.BROWSER, (err: BusinessError | null, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful. bundleInfo:' + JSON.stringify(data));
+});
+
+defaultAppManager.getDefaultApplication("image/png", (err: BusinessError | null, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful. bundleInfo:' + JSON.stringify(data));
+});
+
+defaultAppManager.getDefaultApplication(uniformTypeDescriptor.UniformDataType.AVI, (err: BusinessError | null, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful. bundleInfo:' + JSON.stringify(data));
+});
+```
 
 ## defaultAppManager.getDefaultApplicationSync<sup>10+</sup>
 
-getDefaultApplicationSync(type: string, userId?: number): BundleInfo
+ArkTS-Dyn: getDefaultApplicationSync(type: string, userId?: number): BundleInfo
+
+ArkTS-Sta: getDefaultApplicationSync(type: string, userId?: int): BundleInfo
 
 以同步方法根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型获取默认应用信息，使用BundleInfo返回结果。
 
@@ -234,12 +355,16 @@ getDefaultApplicationSync(type: string, userId?: number): BundleInfo
 
 **系统接口：**  此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                    |
 | -------| ------ | ---- | --------------------------------------- |
 | type   | string | 是   | 要查询的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。|
-| userId | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。         |
+| userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。         |
 
 **返回值：**
 
@@ -291,7 +416,9 @@ try {
 
 ## defaultAppManager.setDefaultApplication
 
-setDefaultApplication(type: string, elementName: ElementName, userId?: number): Promise\<void>
+ArkTS-Dyn: setDefaultApplication(type: string, elementName: ElementName, userId?: number): Promise\<void>
+
+ArkTS-Sta: setDefaultApplication(type: string, elementName: ElementName, userId?: int): Promise\<void>
 
 根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型设置默认应用。使用Promise异步回调。
 
@@ -301,13 +428,17 @@ setDefaultApplication(type: string, elementName: ElementName, userId?: number): 
 
 **系统接口：**  此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名         | 类型     | 必填   | 说明                                      |
 | ----------- | ------ | ---- | --------------------------------------- |
 | type  | string | 是    | 要设置的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。       |
 | elementName  | [ElementName](js-apis-bundle-ElementName.md) | 是    | 要设置为默认应用的组件信息。                           |
-| userId  | number | 否    | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。                           |
+| userId  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。                           |
 
 **返回值：**
 
@@ -331,6 +462,7 @@ setDefaultApplication(type: string, elementName: ElementName, userId?: number): 
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { defaultAppManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -377,10 +509,62 @@ defaultAppManager.setDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 });
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { defaultAppManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { uniformTypeDescriptor } from '@kit.ArkData';
+
+// 代码中使用的bundleName、moduleName、abilityName、useId需为应用实际的包名、Module名称、Ability名称、用户ID。
+defaultAppManager.setDefaultApplication(defaultAppManager.ApplicationType.BROWSER, {
+  bundleName: "com.example.myapplication",
+  moduleName: "module01",
+  abilityName: "EntryAbility"
+}).then((data) => {
+  console.info('setDefaultApplication successful.');
+}).catch((error: Error) => {
+  console.error('setDefaultApplication failed. Cause: ' + JSON.stringify(error));
+});
+
+let userId = 100;
+defaultAppManager.setDefaultApplication(defaultAppManager.ApplicationType.BROWSER, {
+  bundleName: "com.example.myapplication",
+  moduleName: "module01",
+  abilityName: "EntryAbility"
+}, userId).then((data) => {
+  console.info('setDefaultApplication successful.');
+}).catch((error: Error) => {
+  console.error('setDefaultApplication failed. Cause: ' + JSON.stringify(error));
+});
+
+defaultAppManager.setDefaultApplication("image/png", {
+  bundleName: "com.example.myapplication",
+  moduleName: "module01",
+  abilityName: "EntryAbility"
+}, userId).then((data) => {
+  console.info('setDefaultApplication successful.');
+}).catch((error: Error) => {
+  console.error('setDefaultApplication failed. Cause: ' + JSON.stringify(error));
+});
+
+defaultAppManager.setDefaultApplication(uniformTypeDescriptor.UniformDataType.AVI, {
+  bundleName: "com.example.myapplication",
+  moduleName: "module01",
+  abilityName: "EntryAbility"
+}, userId).then((data) => {
+  console.info('setDefaultApplication successful.');
+}).catch((error: Error) => {
+  console.error('setDefaultApplication failed. Cause: ' + JSON.stringify(error));
+});
+```
 
 ## defaultAppManager.setDefaultApplication
 
-setDefaultApplication(type: string, elementName: ElementName, userId: number, callback: AsyncCallback\<void>) : void
+ArkTS-Dyn: setDefaultApplication(type: string, elementName: ElementName, userId: number, callback: AsyncCallback\<void>): void
+
+ArkTS-Sta: setDefaultApplication(type: string, elementName: ElementName, userId: int, callback: AsyncCallback\<void>): void
 
 根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型设置默认应用。使用callback异步回调。
 
@@ -390,14 +574,18 @@ setDefaultApplication(type: string, elementName: ElementName, userId: number, ca
 
 **系统接口：**  此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名         | 类型     | 必填   | 说明                                      |
 | ----------- | ------ | ---- | --------------------------------------- |
 | type  | string | 是    | 要设置的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。       |
 | elementName  | [ElementName](js-apis-bundle-ElementName.md) | 是    | 要设置为默认应用的组件信息。                           |
-| userId  | number | 是    | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                           |
-| callback    | AsyncCallback\<void> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当设置默认应用成功时，err返回undefined。否则回调函数返回具体错误对象。                   |
+| userId  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                           |
+| callback    | AsyncCallback\<void> | 是    | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当设置默认应用成功时，err返回undefined。否则回调函数返回具体错误对象。                   |
 
 **错误码：**
 
@@ -415,6 +603,7 @@ setDefaultApplication(type: string, elementName: ElementName, userId: number, ca
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { defaultAppManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -457,10 +646,56 @@ defaultAppManager.setDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
   console.info('Operation successful.');
 });
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { defaultAppManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { uniformTypeDescriptor } from '@kit.ArkData';
+
+// 代码中使用的bundleName、moduleName、abilityName、useId需为应用实际的包名、Module名称、Ability名称、用户ID。
+let userId = 100;
+defaultAppManager.setDefaultApplication(defaultAppManager.ApplicationType.BROWSER, {
+  bundleName: "com.example.myapplication",
+  moduleName: "module01",
+  abilityName: "EntryAbility"
+}, userId, (err, data) => {
+  if (err) {
+    console.error('setDefaultApplication failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('setDefaultApplication successful.');
+});
+
+defaultAppManager.setDefaultApplication("image/png", {
+  bundleName: "com.example.myapplication",
+  moduleName: "module01",
+  abilityName: "EntryAbility"
+}, userId, (err, data) => {
+  if (err) {
+    console.error('setDefaultApplication failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('setDefaultApplication successful.');
+});
+
+defaultAppManager.setDefaultApplication(uniformTypeDescriptor.UniformDataType.AVI, {
+  bundleName: "com.example.myapplication",
+  moduleName: "module01",
+  abilityName: "EntryAbility"
+}, userId, (err, data) => {
+  if (err) {
+    console.error('setDefaultApplication failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('setDefaultApplication successful.');
+});
+```
 
 ## defaultAppManager.setDefaultApplication
 
-setDefaultApplication(type: string, elementName: ElementName, callback: AsyncCallback\<void>) : void
+setDefaultApplication(type: string, elementName: ElementName, callback: AsyncCallback\<void>): void
 
 根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型设置默认应用。使用callback异步回调。
 
@@ -470,13 +705,17 @@ setDefaultApplication(type: string, elementName: ElementName, callback: AsyncCal
 
 **系统接口：**  此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名         | 类型     | 必填   | 说明                                      |
 | ----------- | ------ | ---- | --------------------------------------- |
 | type  | string | 是    | 要设置的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。       |
 | elementName  | [ElementName](js-apis-bundle-ElementName.md) | 是    | 要设置为默认应用的组件信息。                           |
-| callback    | AsyncCallback\<void> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当设置默认应用成功时，err返回undefined。否则回调函数返回具体错误对象。                    |
+| callback    | AsyncCallback\<void> | 是    | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当设置默认应用成功时，err返回undefined。否则回调函数返回具体错误对象。                    |
 
 **错误码：**
 
@@ -493,6 +732,7 @@ setDefaultApplication(type: string, elementName: ElementName, callback: AsyncCal
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { defaultAppManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -534,10 +774,57 @@ defaultAppManager.setDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
   console.info('Operation successful.');
 });
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { defaultAppManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { uniformTypeDescriptor } from '@kit.ArkData';
+
+// 开发者需根据实际工程更新bundleName、moduleName和abilityName。
+defaultAppManager.setDefaultApplication(defaultAppManager.ApplicationType.BROWSER, {
+  bundleName: "com.example.myapplication",
+  moduleName: "module01",
+  abilityName: "EntryAbility"
+}, (err: BusinessError | null, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful.');
+});
+
+defaultAppManager.setDefaultApplication("image/png", {
+  bundleName: "com.example.myapplication",
+  moduleName: "module01",
+  abilityName: "EntryAbility"
+}, (err: BusinessError | null, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful.');
+});
+
+defaultAppManager.setDefaultApplication(uniformTypeDescriptor.UniformDataType.AVI, {
+  bundleName: "com.example.myapplication",
+  moduleName: "module01",
+  abilityName: "EntryAbility"
+}, (err: BusinessError | null, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful.');
+});
+```
 
 ## defaultAppManager.setDefaultApplicationSync<sup>10+</sup>
 
-setDefaultApplicationSync(type: string, elementName: ElementName, userId?: number): void
+ArkTS-Dyn: setDefaultApplicationSync(type: string, elementName: ElementName, userId?: number): void
+
+ArkTS-Sta: setDefaultApplicationSync(type: string, elementName: ElementName, userId?: int): void
 
 以同步方法根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型设置默认应用。
 
@@ -547,13 +834,17 @@ setDefaultApplicationSync(type: string, elementName: ElementName, userId?: numbe
 
 **系统接口：**  此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                                      |
 | ----------- | ------ | ---- | --------------------------------------- |
 | type        | string | 是   | 要设置的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。|
 | elementName | [ElementName](js-apis-bundle-ElementName.md) | 是 | 要设置为默认应用的组件信息。                           |
-| userId      | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。                           |
+| userId      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。                           |
 
 **错误码：**
 
@@ -623,7 +914,9 @@ try {
 
 ## defaultAppManager.resetDefaultApplication
 
-resetDefaultApplication(type: string, userId?: number): Promise\<void>
+ArkTS-Dyn: resetDefaultApplication(type: string, userId?: number): Promise\<void>
+
+ArkTS-Sta: resetDefaultApplication(type: string, userId?: int): Promise\<void>
 
 根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型重置默认应用。使用Promise异步回调。
 
@@ -633,12 +926,16 @@ resetDefaultApplication(type: string, userId?: number): Promise\<void>
 
 **系统接口：**  此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名         | 类型     | 必填   | 说明                                      |
 | ----------- | ------ | ---- | --------------------------------------- |
 | type  | string | 是    | 要重置的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。       |
-| userId  | number | 否    | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。                           |
+| userId  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。                           |
 
 **返回值：**
 
@@ -661,6 +958,7 @@ resetDefaultApplication(type: string, userId?: number): Promise\<void>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { defaultAppManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -691,10 +989,46 @@ defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.
     console.error('Operation failed. Cause: ' + JSON.stringify(error));
   });
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { defaultAppManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { uniformTypeDescriptor } from '@kit.ArkData';
+
+// 代码中使用的useId需为应用实际的用户ID。
+let userId = 100;
+defaultAppManager.resetDefaultApplication(defaultAppManager.ApplicationType.BROWSER, userId)
+  .then((data) => {
+    console.info('resetDefaultApplication successful.');
+  })
+  .catch((error: Error) => {
+    console.error('resetDefaultApplication failed. Cause: ' + JSON.stringify(error));
+  });
+
+defaultAppManager.resetDefaultApplication("image/png", userId)
+  .then((data) => {
+    console.info('resetDefaultApplication successful.');
+  })
+  .catch((error: Error) => {
+    console.error('resetDefaultApplication failed. Cause: ' + JSON.stringify(error));
+  });
+
+defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.AVI, userId)
+  .then((data) => {
+    console.info('resetDefaultApplication successful.');
+  })
+  .catch((error: Error) => {
+    console.error('resetDefaultApplication failed. Cause: ' + JSON.stringify(error));
+  });
+```
 
 ## defaultAppManager.resetDefaultApplication
 
-resetDefaultApplication(type: string, userId: number, callback: AsyncCallback\<void>) : void
+ArkTS-Dyn: resetDefaultApplication(type: string, userId: number, callback: AsyncCallback\<void>): void
+
+ArkTS-Sta: resetDefaultApplication(type: string, userId: int, callback: AsyncCallback\<void>): void
 
 根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型重置默认应用。使用callback异步回调。
 
@@ -704,13 +1038,17 @@ resetDefaultApplication(type: string, userId: number, callback: AsyncCallback\<v
 
 **系统接口：**  此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名         | 类型     | 必填   | 说明                                      |
 | ----------- | ------ | ---- | --------------------------------------- |
 | type  | string | 是    | 要重置的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。       |
-| userId  | number | 是    | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                          |
-| callback    | AsyncCallback\<void> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当重置默认应用成功时，err返回undefined。否则回调函数返回具体错误对象。                   |
+| userId  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。                          |
+| callback    | AsyncCallback\<void> | 是    | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当重置默认应用成功时，err返回undefined。否则回调函数返回具体错误对象。                   |
 
 **错误码：**
 
@@ -727,6 +1065,7 @@ resetDefaultApplication(type: string, userId: number, callback: AsyncCallback\<v
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { defaultAppManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -759,10 +1098,44 @@ defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.
     console.info('Operation successful.');
   });
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { defaultAppManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { uniformTypeDescriptor } from '@kit.ArkData';
+
+// 代码中使用的useId需为应用实际的用户ID。
+let userId = 100;
+defaultAppManager.resetDefaultApplication(defaultAppManager.ApplicationType.BROWSER, userId, (err, data) => {
+  if (err) {
+    console.error('resetDefaultApplication failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('resetDefaultApplication successful.');
+});
+
+defaultAppManager.resetDefaultApplication("image/png", userId, (err, data) => {
+  if (err) {
+    console.error('resetDefaultApplication failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('resetDefaultApplication successful.');
+});
+
+defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.AVI, userId, (err, data) => {
+  if (err) {
+    console.error('resetDefaultApplication failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('resetDefaultApplication successful.');
+});
+```
 
 ## defaultAppManager.resetDefaultApplication
 
-resetDefaultApplication(type: string, callback: AsyncCallback\<void>) : void
+resetDefaultApplication(type: string, callback: AsyncCallback\<void>): void
 
 根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型重置默认应用。使用callback异步回调。
 
@@ -772,12 +1145,16 @@ resetDefaultApplication(type: string, callback: AsyncCallback\<void>) : void
 
 **系统接口：**  此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名         | 类型     | 必填   | 说明                                      |
 | ----------- | ------ | ---- | --------------------------------------- |
 | type  | string | 是    | 要重置的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。       |
-| callback    | AsyncCallback\<void> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当重置默认应用成功时，err返回undefined。否则回调函数返回具体错误对象。                   |
+| callback    | AsyncCallback\<void> | 是    | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当重置默认应用成功时，err返回undefined。否则回调函数返回具体错误对象。                   |
 
 **错误码：**
 
@@ -793,6 +1170,7 @@ resetDefaultApplication(type: string, callback: AsyncCallback\<void>) : void
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { defaultAppManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -822,10 +1200,44 @@ defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.
   console.info('Operation successful.');
 });
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { defaultAppManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { uniformTypeDescriptor } from '@kit.ArkData';
+
+defaultAppManager.resetDefaultApplication(defaultAppManager.ApplicationType.BROWSER, (err: BusinessError | null, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful.');
+});
+
+defaultAppManager.resetDefaultApplication("image/png", (err: BusinessError | null, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful.');
+});
+
+defaultAppManager.resetDefaultApplication(uniformTypeDescriptor.UniformDataType.AVI, (err: BusinessError | null, data) => {
+  if (err) {
+    console.error('Operation failed. Cause: ' + JSON.stringify(err));
+    return;
+  }
+  console.info('Operation successful.');
+});
+```
 
 ## defaultAppManager.resetDefaultApplicationSync<sup>10+</sup>
 
-resetDefaultApplicationSync(type: string, userId?: number): void
+ArkTS-Dyn: resetDefaultApplicationSync(type: string, userId?: number): void
+
+ArkTS-Sta: resetDefaultApplicationSync(type: string, userId?: int): void
 
 以同步方法根据系统已定义的应用类型或者符合媒体类型格式（type/subtype）的文件类型或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型重置默认应用。
 
@@ -835,12 +1247,16 @@ resetDefaultApplicationSync(type: string, userId?: number): void
 
 **系统接口：**  此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                    |
 | ------ | ------ | ---- | --------------------------------------- |
 | type   | string | 是   | 要重置的应用类型，取[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值，或者符合媒体类型格式的文件类型，或者[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。|
-| userId | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。                           |
+| userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。默认值：调用方所在用户。                           |
 
 **错误码：**
 
@@ -886,7 +1302,9 @@ try {
 
 ## defaultAppManager.setDefaultApplicationForAppClone<sup>23+</sup>
 
-setDefaultApplicationForAppClone(type: string, elementName: ElementName, appIndex: number, userId?: number): void
+ArkTS-Dyn: setDefaultApplicationForAppClone(type: string, elementName: ElementName, appIndex: number, userId?: number): void
+
+ArkTS-Sta: setDefaultApplicationForAppClone(type: string, elementName: ElementName, appIndex: int, userId?: int): void
 
 以同步方法将分身应用设置为打开相应type类型的默认应用。
 
@@ -898,14 +1316,18 @@ setDefaultApplicationForAppClone(type: string, elementName: ElementName, appInde
 
 **系统接口：**  此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                                      |
 | ----------- | ------ | ---- | --------------------------------------- |
 | type        | string | 是   | 要设置的应用类型，支持取值包括：[ApplicationType](js-apis-defaultAppManager.md#applicationtype)中的值、[MIMEType](../../database/uniform-data-type-list.md#基础类型)类型、或[UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)类型。|
 | elementName | [ElementName](js-apis-bundleManager-elementName.md#elementname-1) | 是 | 要设置为默认应用的组件信息，仅使用其中的bundleName、abilityName、moduleName属性，且三个属性必须设置。                           |
-| appIndex    | number | 是   | 表示分身应用的索引。<br>取值范围：1、2、3、4、5。 |
-| userId      | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。<br>默认值：调用方所在用户Id。                           |
+| appIndex    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示分身应用的索引。<br>取值范围：1、2、3、4、5。 |
+| userId      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。<br>默认值：调用方所在用户ID。                           |
 
 **错误码：**
 

@@ -4,19 +4,27 @@
 <!--Subsystem: Account-->
 <!--Owner: @steven-q-->
 <!--Designer: @JiDong-CS1-->
-<!--Tester: @zhaimengchao-->
+<!--Tester: @pan9f-->
 <!--Adviser: @zengyawen-->
 
-本模块提供应用账号信息的添加、删除、修改和查询基础能力，并支持应用间鉴权和分布式数据同步功能。
+本模块提供应用账号信息的添加、删除、修改和查询基础能力。应用账号管理采用应用级账号隔离机制，每个应用的账号信息独立管理。
 
 > **说明：**
 >
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+
 
 ## 导入模块
 
+ArkTS-Dyn示例：
 ```ts
 import { appAccount } from '@kit.BasicServicesKit';
+```
+
+ArkTS-Sta示例：
+```ts
+import appAccount from '@ohos.account.appAccount';
 ```
 
 ## appAccount.createAppAccountManager
@@ -26,6 +34,10 @@ createAppAccountManager(): AppAccountManager
 创建应用账号管理器对象。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -51,11 +63,15 @@ createAccount(name: string, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                    | 必填  | 说明               |
 | -------- | ------------------------- | ----- | -------------------- |
-| name     | string                    | 是    | 应用账号的名称。          |
+| name     | string                    | 是    | 应用账号的名称。最大长度为512个字符。          |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当创建成功时，err为null，否则为错误对象。 |
 
 **错误码：**
@@ -72,9 +88,12 @@ createAccount(name: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.createAccount('WangWu', (err: BusinessError) => { 
       if (err) {
@@ -89,6 +108,26 @@ createAccount(name: string, callback: AsyncCallback&lt;void&gt;): void
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.createAccount('WangWu', (err: BusinessError | null) => {
+      if (err) {
+        console.error(`createAccount code: code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('createAccount successful.');
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`createAccount err: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### createAccount<sup>9+</sup>
 
 createAccount(name: string, options: CreateAccountOptions, callback: AsyncCallback&lt;void&gt;): void
@@ -97,11 +136,15 @@ createAccount(name: string, options: CreateAccountOptions, callback: AsyncCallba
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名       | 类型                        | 必填   | 说明                                       |
 | --------- | ------------------------- | ---- | ---------------------------------------- |
-| name      | string                    | 是    | 应用账号的名称。                              |
+| name      | string                    | 是    | 应用账号的名称。最大长度为512个字符。                              |
 | options | [CreateAccountOptions](#createaccountoptions9) | 是    | 创建应用账号的选项，可提供自定义数据，但不建议包含敏感数据（如密码、Token等）。 |
 | callback  | AsyncCallback&lt;void&gt; | 是    | 回调函数。当创建成功时，err为null，否则为错误对象。             |
 
@@ -119,10 +162,13 @@ createAccount(name: string, options: CreateAccountOptions, callback: AsyncCallba
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  let options: appAccount.CreateAccountOptions = {
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  let options:appAccount.CreateAccountOptions  = {
     customData: {
       age: '10'
     }
@@ -135,7 +181,29 @@ createAccount(name: string, options: CreateAccountOptions, callback: AsyncCallba
         console.info('createAccount successfully');
       }
     });
-  } catch (e) {
+  } catch(err) {
+    console.error(`createAccount exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  let customData: Record<string, string> = { 'age': '10' }
+  let options: appAccount.CreateAccountOptions = { customData }
+
+  try {
+    appAccountManager.createAccount('LiSi', options, (err: BusinessError | null) => {
+      if (err) {
+        console.error(`createAccount failed, code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('createAccount successfully');
+      }
+    });
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`createAccount exception: code is ${err.code}, message is ${err.message}`);
   }
@@ -149,18 +217,22 @@ createAccount(name: string, options?: CreateAccountOptions): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名       | 类型     | 必填   | 说明                                       |
 | --------- | ------ | ---- | ---------------------------------------- |
-| name      | string | 是    | 应用账号的名称。                              |
+| name      | string | 是    | 应用账号的名称。最大长度为512个字符。                              |
 | options | [CreateAccountOptions](#createaccountoptions9) | 否    | 创建应用账号的选项，可提供自定义数据，但不建议包含敏感数据（如密码、Token等）。不填无影响，默认为空，表示创建的该账号无额外信息需要添加。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
 | ------------------- | --------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -176,9 +248,12 @@ createAccount(name: string, options?: CreateAccountOptions): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   let options: appAccount.CreateAccountOptions = {
     customData: {
       age: '10'
@@ -190,7 +265,28 @@ createAccount(name: string, options?: CreateAccountOptions): Promise&lt;void&gt;
     }).catch((err: BusinessError) => {
       console.error(`createAccount failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (e) {
+  } catch(err) {
+    console.error(`createAccount exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  let customData: Record<string, string> = { 'age': '10' }
+  let options: appAccount.CreateAccountOptions = { customData }
+
+  try {
+    appAccountManager.createAccount('LiSi', options).then(() => {
+      console.info('createAccount successfully');
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`createAccount failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`createAccount exception: code is ${err.code}, message is ${err.message}`);
   }
@@ -200,15 +296,19 @@ createAccount(name: string, options?: CreateAccountOptions): Promise&lt;void&gt;
 
 createAccountImplicitly(owner: string, callback: AuthCallback): void
 
-根据指定的账号所有者隐式地创建应用账号。使用callback异步回调。
+根据指定的账号所有者，由认证器自动完成应用账号创建流程。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名      | 类型                | 必填   | 说明                      |
 | -------- | --------------------- | ---- | ----------------------- |
-| owner    | string                | 是    | 应用账号所有者的包名。          |
+| owner    | string                | 是    | 应用账号所有者的包名。最大长度为1024个字符。          |
 | callback | [AuthCallback](#authcallback9) | 是    | 认证器回调对象，返回创建结果。 |
 
 **错误码：**
@@ -227,7 +327,9 @@ createAccountImplicitly(owner: string, callback: AuthCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { Want, common } from '@kit.AbilityKit';
 
@@ -270,6 +372,53 @@ createAccountImplicitly(owner: string, callback: AuthCallback): void
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { Want, common } from '@kit.AbilityKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+
+  @Entry
+  @Component
+  struct Index {
+    context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
+    onResultCallback(code: int, result?: appAccount.AuthResult): void {
+      console.info('resultCode: ' + code);
+      console.info('result: ' + JSON.stringify(result));
+    }
+
+    onRequestRedirectedCallback(request: Want): void {
+      let wantInfo: Want = {
+        deviceId: '',
+        bundleName: 'com.example.accountjsdemo',
+        action: 'ohos.want.action.viewData',
+        entities: ['entity.system.default'],
+      }
+      this.context.startAbility(wantInfo).then(():void => {
+        console.info('startAbility successfully');
+      }).catch((e: Error):void => {
+        const err = e as BusinessError;
+        console.error(`startAbility err: code is ${err.code}, message is ${err.message}`);
+      })
+    }
+
+    aboutToAppear(): void {
+      try {
+        appAccountManager.createAccountImplicitly('com.example.accountjsdemo', {
+          onResult: this.onResultCallback,
+          onRequestRedirected: this.onRequestRedirectedCallback
+        });
+      } catch (e: Error) {
+        const err = e as BusinessError;
+        console.error(`createAccountImplicitly exception: code is ${err.code}, message is ${err.message}`);
+      }
+    }
+    build() {}
+  }
+  ```
+
 ### createAccountImplicitly<sup>9+</sup>
 
 createAccountImplicitly(owner: string, options: CreateAccountImplicitlyOptions, callback: AuthCallback): void
@@ -278,11 +427,15 @@ createAccountImplicitly(owner: string, options: CreateAccountImplicitlyOptions, 
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                    | 必填   | 说明                      |
 | -------- | --------------------- | ---- | ----------------------- |
-| owner    | string                | 是    | 应用账号所有者的包名。          |
+| owner    | string                | 是    | 应用账号所有者的包名。最大长度为1024个字符。          |
 | options    | [CreateAccountImplicitlyOptions](#createaccountimplicitlyoptions9)   | 是    | 隐式创建账号的选项。          |
 | callback | [AuthCallback](#authcallback9) | 是    | 认证器回调对象，返回创建结果。         |
 
@@ -302,7 +455,9 @@ createAccountImplicitly(owner: string, options: CreateAccountImplicitlyOptions, 
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { Want, common } from '@kit.AbilityKit';
 
@@ -333,7 +488,7 @@ createAccountImplicitly(owner: string, options: CreateAccountImplicitlyOptions, 
     aboutToAppear(): void {
       let options: appAccount.CreateAccountImplicitlyOptions = {
         authType: 'getSocialData',
-        requiredLabels: ['student']
+        requiredLabels: [ 'student' ]
       };
       try {
         appAccountManager.createAccountImplicitly('com.example.accountjsdemo', options, {
@@ -341,6 +496,58 @@ createAccountImplicitly(owner: string, options: CreateAccountImplicitlyOptions, 
           onRequestRedirected: this.onRequestRedirectedCallback
         });
       } catch (e) {
+        const err = e as BusinessError;
+        console.error(`createAccountImplicitly exception: code is ${err.code}, message is ${err.message}`);
+      }
+    }
+    build() {}
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { Want, common } from '@kit.AbilityKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+
+  @Entry
+  @Component
+  struct Index {
+    context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
+
+    onResultCallback(code: int, result?: appAccount.AuthResult): void {
+      console.info('resultCode: ' + code);
+      console.info('result: ' + JSON.stringify(result));
+    }
+
+    onRequestRedirectedCallback(request: Want): void {
+      let wantInfo: Want = {
+        deviceId: '',
+        bundleName: 'com.example.accountjsdemo',
+        action: 'ohos.want.action.viewData',
+        entities: ['entity.system.default'],
+      }
+      this.context.startAbility(wantInfo).then(():void => {
+        console.info('startAbility successfully');
+      }).catch((e:Error):void => {
+        const err = e as BusinessError;
+        console.error(`startAbility err: code is ${err.code}, message is ${err.message}`);
+      })
+    }
+
+    aboutToAppear(): void {
+      let options: appAccount.CreateAccountImplicitlyOptions = {
+        authType: 'getSocialData',
+        requiredLabels: [ 'student' ]
+      };
+      try {
+        appAccountManager.createAccountImplicitly('com.example.accountjsdemo', options, {
+          onResult: this.onResultCallback,
+          onRequestRedirected: this.onRequestRedirectedCallback
+        });
+      } catch (e: Error) {
         const err = e as BusinessError;
         console.error(`createAccountImplicitly exception: code is ${err.code}, message is ${err.message}`);
       }
@@ -357,11 +564,15 @@ removeAccount(name: string, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                        | 必填   | 说明               |
 | -------- | ------------------------- | ---- | ---------------- |
-| name     | string                    | 是    | 应用账号的名称。      |
+| name     | string                    | 是    | 应用账号的名称。最大长度为512个字符。      |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当删除成功时，err为null，否则为错误对象。 |
 
 **错误码：**
@@ -377,9 +588,12 @@ removeAccount(name: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.removeAccount('ZhaoLiu', (err: BusinessError) => {
       if (err) {
@@ -388,11 +602,31 @@ removeAccount(name: string, callback: AsyncCallback&lt;void&gt;): void
         console.info('removeAccount successfully');
       }
    });
-  } catch (e) {
+  } catch(err) {
+    console.error(`removeAccount exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.removeAccount('ZhaoLiu', (err: BusinessError | null) => {
+      if (err) {
+        console.error(`removeAccount failed, code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('removeAccount successfully');
+      }
+    });
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`removeAccount exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
+
 
 ### removeAccount<sup>9+</sup>
 
@@ -402,17 +636,21 @@ removeAccount(name: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型     | 必填   | 说明          |
 | ---- | ------ | ---- | ----------- |
-| name | string | 是    | 应用账号的名称。 |
+| name | string | 是    | 应用账号的名称。最大长度为512个字符。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| ------------------ | -------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -427,9 +665,12 @@ removeAccount(name: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.removeAccount('Lisi').then(() => {
       console.info('removeAccount successfully');
@@ -442,22 +683,45 @@ removeAccount(name: string): Promise&lt;void&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.removeAccount('Lisi').then(() => {
+      console.info('removeAccount successfully');
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`removeAccount failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`removeAccount exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### setAppAccess<sup>9+</sup>
 
 setAppAccess(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-设置指定应用对特定账号的访问权限。使用callback异步回调。
+设置指定应用对特定账号的数据访问权限。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名        | 类型                      | 必填   | 说明                                |
 | ------------ | ------------------------- | ---- | --------------------------------- |
-| name         | string                    | 是    | 应用账号的名称。                           |
-| bundleName   | string                    | 是    | 第三方应用的包名。                         |
+| name         | string                    | 是    | 应用账号的名称。最大长度为512个字符。                           |
+| bundleName   | string                    | 是    | 第三方应用的包名。最大长度为512个字符。                         |
 | isAccessible | boolean                   | 是    | 是否可访问。true表示允许访问，false表示禁止访问。 |
-| callback     | AsyncCallback&lt;void&gt; | 是    | 回调函数，如果设置成功，err为null，否则为错误对象。 |
+| callback     | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置成功时，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -473,9 +737,12 @@ setAppAccess(name: string, bundleName: string, isAccessible: boolean, callback: 
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.setAppAccess('ZhangSan', 'com.example.accountjsdemo', true, (err: BusinessError) => {
       if (err) {
@@ -490,6 +757,26 @@ setAppAccess(name: string, bundleName: string, isAccessible: boolean, callback: 
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.setAppAccess('ZhangSan', 'com.example.accountjsdemo', true, (err: BusinessError | null) => {
+      if (err) {
+        console.error(`setAppAccess failed: code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('setAppAccess successfully');
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setAppAccess exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### setAppAccess<sup>9+</sup>
 
 setAppAccess(name: string, bundleName: string, isAccessible: boolean): Promise&lt;void&gt;
@@ -498,19 +785,23 @@ setAppAccess(name: string, bundleName: string, isAccessible: boolean): Promise&l
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名        | 类型     | 必填   | 说明        |
 | ---------- | ------ | ---- | --------- |
-| name       | string | 是    | 应用账号的名称。   |
-| bundleName | string | 是    | 第三方应用的包名。 |
+| name       | string | 是    | 应用账号的名称。最大长度为512个字符。   |
+| bundleName | string | 是    | 第三方应用的包名。最大长度为512个字符。 |
 | isAccessible | boolean | 是    | 是否可访问。true表示允许访问，false表示禁止访问。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| ------------------ | -------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -526,9 +817,12 @@ setAppAccess(name: string, bundleName: string, isAccessible: boolean): Promise&l
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.setAppAccess('ZhangSan', 'com.example.accountjsdemo', true).then(() => {
       console.info('setAppAccess successfully');
@@ -536,6 +830,25 @@ setAppAccess(name: string, bundleName: string, isAccessible: boolean): Promise&l
       console.error(`setAppAccess failed: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setAppAccess exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.setAppAccess('ZhangSan', 'com.example.accountjsdemo', true).then(() => {
+      console.info('setAppAccess successfully');
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`setAppAccess failed: code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`setAppAccess exception: code is ${err.code}, message is ${err.message}`);
   }
@@ -549,12 +862,16 @@ checkAppAccess(name: string, bundleName: string, callback: AsyncCallback&lt;bool
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名        | 类型                        | 必填   | 说明                                |
 | ---------- | ------------------------- | ---- | --------------------------------- |
-| name       | string                    | 是    | 应用账号的名称。                           |
-| bundleName | string                    | 是    | 第三方应用的包名。                         |
+| name       | string                    | 是    | 应用账号的名称。最大长度为512个字符。                           |
+| bundleName | string                    | 是    | 第三方应用的包名。最大长度为512个字符。                         |
 | callback   | AsyncCallback&lt;boolean&gt; | 是    | 回调函数。返回true表示指定应用可访问特定账号的数据；返回false表示不可访问。 |
 
 **错误码：**
@@ -570,9 +887,12 @@ checkAppAccess(name: string, bundleName: string, callback: AsyncCallback&lt;bool
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.checkAppAccess('ZhangSan', 'com.example.accountjsdemo',
       (err: BusinessError, isAccessible: boolean) => {
@@ -588,6 +908,27 @@ checkAppAccess(name: string, bundleName: string, callback: AsyncCallback&lt;bool
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.checkAppAccess('ZhangSan', 'com.example.accountjsdemo',
+      (err: BusinessError | null, isAccessible: boolean | undefined) => {
+        if (err) {
+          console.error(`checkAppAccess failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('checkAppAccess successfully');
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`checkAppAccess exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### checkAppAccess<sup>9+</sup>
 
 checkAppAccess(name: string, bundleName: string): Promise&lt;boolean&gt;
@@ -596,12 +937,16 @@ checkAppAccess(name: string, bundleName: string): Promise&lt;boolean&gt;
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名        | 类型     | 必填   | 说明        |
 | ---------- | ------ | ---- | --------- |
-| name       | string | 是    | 应用账号的名称。   |
-| bundleName | string | 是    | 第三方应用的包名。 |
+| name       | string | 是    | 应用账号的名称。最大长度为512个字符。   |
+| bundleName | string | 是    | 第三方应用的包名。最大长度为512个字符。 |
 
 **返回值：**
 
@@ -622,9 +967,12 @@ checkAppAccess(name: string, bundleName: string): Promise&lt;boolean&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.checkAppAccess('ZhangSan', 'com.example.accountjsdemo').then((isAccessible: boolean) => {
       console.info('checkAppAccess successfully, isAccessible: ' + isAccessible);
@@ -632,6 +980,25 @@ checkAppAccess(name: string, bundleName: string): Promise&lt;boolean&gt;
       console.error(`checkAppAccess failed, code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkAppAccess exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.checkAppAccess('ZhangSan', 'com.example.accountjsdemo').then((isAccessible: boolean) => {
+      console.info('checkAppAccess successfully, isAccessible: ' + isAccessible);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`checkAppAccess failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`checkAppAccess exception: code is ${err.code}, message is ${err.message}`);
   }
@@ -647,11 +1014,15 @@ setDataSyncEnabled(name: string, isEnabled: boolean, callback: AsyncCallback&lt;
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                        | 必填   | 说明                        |
 | -------- | ------------------------- | ---- | ------------------------- |
-| name     | string                    | 是    | 应用账号的名称。                   |
+| name     | string                    | 是    | 应用账号的名称。最大长度为512个字符。                   |
 | isEnabled | boolean                   | 是    | 是否开启数据同步。true表示开启数据同步，false表示关闭数据同步。       |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当开启或禁止成功时，err为null，否则为错误对象。 |
 
@@ -669,9 +1040,12 @@ setDataSyncEnabled(name: string, isEnabled: boolean, callback: AsyncCallback&lt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
       appAccountManager.setDataSyncEnabled('ZhangSan', true, (err: BusinessError) => { 
           console.error(`setDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
@@ -679,6 +1053,24 @@ setDataSyncEnabled(name: string, isEnabled: boolean, callback: AsyncCallback&lt;
   } catch (e) {
       const err = e as BusinessError;
       console.error(`setDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.setDataSyncEnabled('ZhangSan', true, (err: BusinessError | null) => {
+      if (err) {
+        console.error(`setDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -692,18 +1084,22 @@ setDataSyncEnabled(name: string, isEnabled: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型      | 必填   | 说明          |
 | -------- | ------- | ---- | ----------- |
-| name     | string  | 是    | 应用账号的名称。     |
+| name     | string  | 是    | 应用账号的名称。最大长度为512个字符。     |
 | isEnabled | boolean | 是    | 是否开启数据同步。true表示开启数据同步，false表示关闭数据同步。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| ------------------ | -------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -719,9 +1115,12 @@ setDataSyncEnabled(name: string, isEnabled: boolean): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
       appAccountManager.setDataSyncEnabled('ZhangSan', true).then(() => { 
           console.info('setDataSyncEnabled Success');
@@ -731,6 +1130,25 @@ setDataSyncEnabled(name: string, isEnabled: boolean): Promise&lt;void&gt;
   } catch (e) {
       const err = e as BusinessError;
       console.error(`setDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.setDataSyncEnabled('ZhangSan', true).then(() => {
+      console.info('setDataSyncEnabled Success');
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`setDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -744,11 +1162,15 @@ checkDataSyncEnabled(name: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                           | 必填   | 说明                    |
 | -------- | ---------------------------- | ---- | --------------------- |
-| name     | string                       | 是    | 应用账号的名称。               |
+| name     | string                       | 是    | 应用账号的名称。最大长度为512个字符。               |
 | callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数。返回true表示指定应用账号已开启数据同步功能；返回false表示未开启。 |
 
 **错误码：**
@@ -765,9 +1187,12 @@ checkDataSyncEnabled(name: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.checkDataSyncEnabled('ZhangSan', (err: BusinessError, isEnabled: boolean) => {
       if (err) {
@@ -777,6 +1202,27 @@ checkDataSyncEnabled(name: string, callback: AsyncCallback&lt;boolean&gt;): void
       }
     });
   } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.checkDataSyncEnabled('ZhangSan',
+      (err: BusinessError | null, isEnabled: boolean | undefined) => {
+        if (err) {
+          console.error(`checkDataSyncEnabled failed, err: code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('checkDataSyncEnabled successfully, isEnabled: ' + isEnabled);
+        }
+      });
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`checkDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
   }
@@ -792,16 +1238,20 @@ checkDataSyncEnabled(name: string): Promise&lt;boolean&gt;
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型     | 必填   | 说明      |
 | ---- | ------ | ---- | ------- |
-| name | string | 是    | 应用账号的名称。 |
+| name | string | 是    | 应用账号的名称。最大长度为512个字符。 |
 
 **返回值：**
 
 | 类型                     | 说明                    |
-| :--------------------- | :-------------------- |
+| --------------------- | -------------------- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示指定应用账号已开启数据同步功能；返回false表示未开启。 |
 
 **错误码：**
@@ -818,9 +1268,12 @@ checkDataSyncEnabled(name: string): Promise&lt;boolean&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.checkDataSyncEnabled('ZhangSan').then((isEnabled: boolean) => {
         console.info('checkDataSyncEnabled successfully, isEnabled: ' + isEnabled);
@@ -828,6 +1281,25 @@ checkDataSyncEnabled(name: string): Promise&lt;boolean&gt;
       console.error(`checkDataSyncEnabled failed, err: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.checkDataSyncEnabled('ZhangSan').then((isEnabled: boolean) => {
+      console.info('checkDataSyncEnabled successfully, isEnabled: ' + isEnabled);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`checkDataSyncEnabled failed, err: code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`checkDataSyncEnabled err: code is ${err.code}, message is ${err.message}`);
   }
@@ -841,13 +1313,17 @@ setCredential(name: string, credentialType: string, credential: string,callback:
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名            | 类型                        | 必填   | 说明            |
 | -------------- | ------------------------- | ---- | ------------- |
-| name           | string                    | 是    | 应用账号的名称。     |
-| credentialType | string                    | 是    | 凭据类型。     |
-| credential     | string                    | 是    | 凭据取值。       |
+| name           | string                    | 是    | 应用账号的名称。最大长度为512个字符。     |
+| credentialType | string                    | 是    | 凭据类型。自定义的类型，最大长度为1024个字符。     |
+| credential     | string                    | 是    | 凭据取值。自定义的数据，最大长度为1024个字符。       |
 | callback       | AsyncCallback&lt;void&gt; | 是    | 回调函数。当凭据设置成功时，err为null，否则为错误对象。 |
 
 **错误码：**
@@ -863,9 +1339,12 @@ setCredential(name: string, credentialType: string, credential: string,callback:
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.setCredential('ZhangSan', 'PIN_SIX', 'xxxxxx', (err: BusinessError) => {
       if (err) {
@@ -880,6 +1359,26 @@ setCredential(name: string, credentialType: string, credential: string,callback:
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.setCredential('ZhangSan', 'PIN_SIX', 'xxxxxx', (err: BusinessError | null) => {
+      if (err) {
+        console.error(`setCredential failed, code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('setCredential successfully');
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setCredential exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### setCredential<sup>9+</sup>
 
 setCredential(name: string, credentialType: string, credential: string): Promise&lt;void&gt;
@@ -888,19 +1387,23 @@ setCredential(name: string, credentialType: string, credential: string): Promise
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名            | 类型     | 必填   | 说明         |
 | -------------- | ------ | ---- | ---------- |
-| name           | string | 是    | 应用账号的名称。   |
-| credentialType | string | 是    | 凭据类型。 |
-| credential     | string | 是    | 凭据取值。    |
+| name           | string | 是    | 应用账号的名称。最大长度为512个字符。   |
+| credentialType | string | 是    | 凭据类型。自定义的类型，最大长度为1024个字符。 |
+| credential     | string | 是    | 凭据取值。自定义的数据，最大长度为1024个字符。    |
 
 **返回值：**
 
 | 类型                 | 说明                    |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| ------------------ | -------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -915,9 +1418,12 @@ setCredential(name: string, credentialType: string, credential: string): Promise
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.setCredential('ZhangSan', 'PIN_SIX', 'xxxxxx').then(() => {
       console.info('setCredential successfully');
@@ -925,6 +1431,25 @@ setCredential(name: string, credentialType: string, credential: string): Promise
       console.error(`setCredential failed, code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setCredential exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.setCredential('ZhangSan', 'PIN_SIX', 'xxxxxx').then(() => {
+      console.info('setCredential successfully');
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`setCredential failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`setCredential exception: code is ${err.code}, message is ${err.message}`);
   }
@@ -938,12 +1463,16 @@ getCredential(name: string, credentialType: string, callback: AsyncCallback&lt;s
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名            | 类型                          | 必填   | 说明             |
 | -------------- | --------------------------- | ---- | -------------- |
-| name           | string                      | 是    | 应用账号的名称。        |
-| credentialType | string                      | 是    | 凭据类型。 |
+| name           | string                      | 是    | 应用账号的名称。最大长度为512个字符。        |
+| credentialType | string                      | 是    | 凭据类型。自定义的类型，最大长度为1024个字符。 |
 | callback       | AsyncCallback&lt;string&gt; | 是    | 回调函数。当获取凭据成功时，err为null，data为指定应用账号的凭据；否则为错误对象。 |
 
 **错误码：**
@@ -960,9 +1489,12 @@ getCredential(name: string, credentialType: string, callback: AsyncCallback&lt;s
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.getCredential('ZhangSan', 'PIN_SIX', (err: BusinessError, result: string) => {
       if (err) {
@@ -977,6 +1509,27 @@ getCredential(name: string, credentialType: string, callback: AsyncCallback&lt;s
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.getCredential('ZhangSan', 'PIN_SIX',
+      (err: BusinessError | null, result: string | undefined) => {
+        if (err) {
+          console.error(`getCredential failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('getCredential successfully, result: ' + result);
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getCredential err: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getCredential<sup>9+</sup>
 
 getCredential(name: string, credentialType: string): Promise&lt;string&gt;
@@ -985,17 +1538,21 @@ getCredential(name: string, credentialType: string): Promise&lt;string&gt;
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名          | 类型     | 必填   | 说明         |
 | -------------- | ------ | ---- | ---------- |
-| name           | string | 是    | 应用账号的名称。 |
-| credentialType | string | 是    | 凭据类型。 |
+| name           | string | 是    | 应用账号的名称。最大长度为512个字符。 |
+| credentialType | string | 是    | 凭据类型。自定义的类型，最大长度为1024个字符。 |
 
 **返回值：**
 
 | 类型                    | 说明                    |
-| :-------------------- | :-------------------- |
+| -------------------- | -------------------- |
 | Promise&lt;string&gt; | Promise对象，返回指定应用账号的凭据。 |
 
 **错误码：**
@@ -1012,16 +1569,38 @@ getCredential(name: string, credentialType: string): Promise&lt;string&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.getCredential('ZhangSan', 'PIN_SIX').then((credential: string) => {
+        console.info('getCredential successfully, credential: ' + credential);
+    }).catch((err: BusinessError) => {
+        console.error(`getCredential failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getCredential exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.getCredential('ZhangSan', 'PIN_SIX').then((credential: string) => {
       console.info('getCredential successfully, credential: ' + credential);
-    }).catch((err: BusinessError) => {
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
       console.error(`getCredential failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (e) {
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`getCredential exception: code is ${err.code}, message is ${err.message}`);
   }
@@ -1035,13 +1614,17 @@ setCustomData(name: string, key: string, value: string, callback: AsyncCallback&
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                        | 必填   | 说明                |
-| -------- | ------------------------- | ---- | ----------------- |
-| name     | string                    | 是    | 应用账号的名称。 |
-| key      | string                    | 是    | 自定义数据的键名。 |
-| value    | string                    | 是    | 自定义数据的取值。 |
+| -------- | ------ | ---- | ----------------- |
+| name     | string | 是    | 应用账号的名称。最大长度为512个字符。 |
+| key      | string | 是    | 自定义数据的键名。最大长度为1024个字符。 |
+| value    | string | 是    | 自定义数据的取值。不建议包含敏感数据。最大长度为1024个字符。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置自定义数据成功时，err为null，否则为错误对象。 |
 
 **错误码：**
@@ -1058,9 +1641,12 @@ setCustomData(name: string, key: string, value: string, callback: AsyncCallback&
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.setCustomData('ZhangSan', 'age', '12', (err: BusinessError) => {
       if (err) {
@@ -1075,6 +1661,26 @@ setCustomData(name: string, key: string, value: string, callback: AsyncCallback&
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.setCustomData('ZhangSan', 'age', '12', (err: BusinessError | null) => {
+      if (err) {
+        console.error(`setCustomData failed, code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('setCustomData successfully');
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setCustomData exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### setCustomData<sup>9+</sup>
 
 setCustomData(name: string, key: string, value: string): Promise&lt;void&gt;
@@ -1083,19 +1689,23 @@ setCustomData(name: string, key: string, value: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型 | 必填  | 说明              |
 | ----- | ------ | ---- | ----------------- |
-| name  | string | 是    | 应用账号的名称。   |
-| key   | string | 是    | 自定义数据的键名。 |
-| value | string | 是    | 自定义数据的取值。 |
+| name  | string | 是    | 应用账号的名称。最大长度为512个字符。   |
+| key   | string | 是    | 自定义数据的键名。最大长度为1024个字符。 |
+| value | string | 是    | 自定义数据的取值。最大长度为1024个字符。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| ------------------ | -------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1111,9 +1721,12 @@ setCustomData(name: string, key: string, value: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.setCustomData('ZhangSan', 'age', '12').then(() => {
       console.info('setCustomData successfully');
@@ -1121,6 +1734,25 @@ setCustomData(name: string, key: string, value: string): Promise&lt;void&gt;
       console.error(`setCustomData failed, code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setCustomData exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.setCustomData('ZhangSan', 'age', '12').then(() => {
+      console.info('setCustomData successfully');
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`setCustomData failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`setCustomData exception: code is ${err.code}, message is ${err.message}`);
   }
@@ -1134,12 +1766,16 @@ getCustomData(name: string, key: string, callback: AsyncCallback&lt;string&gt;):
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                        | 必填  | 说明                     |
 | -------- | --------------------------- | ----- | ------------------------ |
-| name     | string                      | 是    | 应用账号的名称。           |
-| key      | string                      | 是    | 自定义数据的键名。         |
+| name     | string                      | 是    | 应用账号的名称。最大长度为512个字符。           |
+| key      | string                      | 是    | 自定义数据的键名。最大长度为1024个字符。         |
 | callback | AsyncCallback&lt;string&gt; | 是    | 回调函数。当获取成功时，err为null，data为自定义数据的取值；否则为错误对象。 |
 
 **错误码：**
@@ -1156,9 +1792,12 @@ getCustomData(name: string, key: string, callback: AsyncCallback&lt;string&gt;):
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.getCustomData('ZhangSan', 'age', (err: BusinessError, data: string) => {
       if (err) {
@@ -1173,6 +1812,26 @@ getCustomData(name: string, key: string, callback: AsyncCallback&lt;string&gt;):
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.getCustomData('ZhangSan', 'age', (err: BusinessError | null, data: string | undefined) => {
+      if (err) {
+        console.error('getCustomData failed, error: ' + err);
+      } else {
+        console.info('getCustomData successfully, data: ' + data);
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getCustomData exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getCustomData<sup>9+</sup>
 
 getCustomData(name: string, key: string): Promise&lt;string&gt;
@@ -1181,12 +1840,16 @@ getCustomData(name: string, key: string): Promise&lt;string&gt;
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型     | 必填   | 说明        |
 | ---- | ------ | ---- | --------- |
-| name | string | 是    | 应用账号的名称。   |
-| key  | string | 是    | 自定义数据的键名。 |
+| name | string | 是    | 应用账号的名称。最大长度为512个字符。   |
+| key  | string | 是    | 自定义数据的键名。最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -1208,9 +1871,12 @@ getCustomData(name: string, key: string): Promise&lt;string&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.getCustomData('ZhangSan', 'age').then((data: string) => {
       console.info('getCustomData successfully, data: ' + data);
@@ -1218,6 +1884,25 @@ getCustomData(name: string, key: string): Promise&lt;string&gt;
       console.error(`getCustomData failed, code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getCustomData exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.getCustomData('ZhangSan', 'age').then((data: string) => {
+      console.info('getCustomData successfully, data: ' + data);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getCustomData failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`getCustomData exception: code is ${err.code}, message is ${err.message}`);
   }
@@ -1231,12 +1916,16 @@ getCustomDataSync(name: string, key: string): string
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型     | 必填   | 说明        |
 | ---- | ------ | ---- | --------- |
-| name | string | 是    | 应用账号的名称。   |
-| key  | string | 是    | 自定义数据的键名。 |
+| name | string | 是    | 应用账号的名称。最大长度为512个字符。   |
+| key  | string | 是    | 自定义数据的键名。最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -1278,6 +1967,10 @@ getAllAccounts(callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;): void
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明        |
@@ -1295,9 +1988,12 @@ getAllAccounts(callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.getAllAccounts((err: BusinessError, data: appAccount.AppAccountInfo[]) => {
       if (err) {
@@ -1307,6 +2003,27 @@ getAllAccounts(callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;): void
       }
     });
   } catch (e) {
+      const err = e as BusinessError;
+      console.error(`getAllAccounts exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.getAllAccounts((err: BusinessError | null,
+      data: appAccount.AppAccountInfo[] | undefined) => {
+      if (err) {
+        console.error(`getAllAccounts failed, code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('getAllAccounts successfully');
+      }
+    });
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`getAllAccounts exception: code is ${err.code}, message is ${err.message}`);
   }
@@ -1319,6 +2036,10 @@ getAllAccounts(): Promise&lt;Array&lt;AppAccountInfo&gt;&gt;
 获取所有可访问的应用账号信息。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1336,9 +2057,12 @@ getAllAccounts(): Promise&lt;Array&lt;AppAccountInfo&gt;&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.getAllAccounts().then((data: appAccount.AppAccountInfo[]) => {
       console.info('getAllAccounts successfully');
@@ -1346,6 +2070,25 @@ getAllAccounts(): Promise&lt;Array&lt;AppAccountInfo&gt;&gt;
       console.error(`getAllAccounts failed, code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getAllAccounts exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.getAllAccounts().then((data: appAccount.AppAccountInfo[]) => {
+      console.info('getAllAccounts successfully');
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getAllAccounts failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`getAllAccounts exception: code is ${err.code}, message is ${err.message}`);
   }
@@ -1359,11 +2102,15 @@ getAccountsByOwner(owner: string, callback: AsyncCallback&lt;Array&lt;AppAccount
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明        |
 | -------- | ---------------------------------------- | ---- | --------- |
-| owner    | string                                   | 是    | 应用账号所有者的包名。    |
+| owner    | string                                   | 是    | 应用账号所有者的包名。最大长度为1024个字符。    |
 | callback | AsyncCallback&lt;Array&lt;[AppAccountInfo](#appaccountinfo)&gt;&gt; | 是    | 回调函数。如果获取成功，err为null，data为获取到的应用账号列表；否则为错误对象。 |
 
 **错误码：**
@@ -1378,9 +2125,12 @@ getAccountsByOwner(owner: string, callback: AsyncCallback&lt;Array&lt;AppAccount
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.getAccountsByOwner('com.example.accountjsdemo2',
       (err: BusinessError, data: appAccount.AppAccountInfo[]) => {
@@ -1396,6 +2146,27 @@ getAccountsByOwner(owner: string, callback: AsyncCallback&lt;Array&lt;AppAccount
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.getAccountsByOwner('com.example.accountjsdemo2',
+      (err: BusinessError | null, data: appAccount.AppAccountInfo[] | undefined) => {
+        if (err) {
+          console.error(`getAccountsByOwner failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('getAccountsByOwner successfully, data:' + JSON.stringify(data));
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getAccountsByOwner exception:code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getAccountsByOwner<sup>9+</sup>
 
 getAccountsByOwner(owner: string): Promise&lt;Array&lt;AppAccountInfo&gt;&gt;
@@ -1404,11 +2175,15 @@ getAccountsByOwner(owner: string): Promise&lt;Array&lt;AppAccountInfo&gt;&gt;
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型     | 必填   | 说明     |
 | ----- | ------ | ---- | ------ |
-| owner | string | 是    | 应用账号所有者的包名。 |
+| owner | string | 是    | 应用账号所有者的包名。最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -1428,9 +2203,12 @@ getAccountsByOwner(owner: string): Promise&lt;Array&lt;AppAccountInfo&gt;&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.getAccountsByOwner('com.example.accountjsdemo2').then((
       data: appAccount.AppAccountInfo[]) => {
@@ -1444,19 +2222,45 @@ getAccountsByOwner(owner: string): Promise&lt;Array&lt;AppAccountInfo&gt;&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.getAccountsByOwner('com.example.accountjsdemo2').then((
+      data: appAccount.AppAccountInfo[]) => {
+      console.info('getAccountsByOwner successfully, data: ' + JSON.stringify(data));
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getAccountsByOwner failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getAccountsByOwner exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### on('accountChange')<sup>9+</sup>
 
 on(type: 'accountChange', owners: Array&lt;string&gt;, callback: Callback&lt;Array&lt;AppAccountInfo&gt;&gt;): void
 
 订阅指定应用的账号信息变更事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAccountChange](#onaccountchange23)。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                             |
 | -------- | ---------------------------------------- | ---- | ------------------------------ |
-| type     | 'accountChange'                          | 是    | 事件回调类型，支持的事件为'accountChange'，当目标应用更新账号信息时，触发该事件。 |
+| type     | 'accountChange'                          | 是    | 事件回调类型，支持的事件为'accountChange'，当账号所有者更新账号信息时，触发该事件。 |
 | owners   | Array&lt;string&gt;                      | 是    | 应用账号所有者的包名列表。                      |
 | callback | Callback&lt;Array&lt;[AppAccountInfo](#appaccountinfo)&gt;&gt; | 是    | 需要注册的回调函数，返回信息为发生变更的应用账号列表。           |
 
@@ -1473,19 +2277,66 @@ on(type: 'accountChange', owners: Array&lt;string&gt;, callback: Callback&lt;Arr
 **示例：**
 
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-
+  import { appAccount } from '@kit.BasicServicesKit';
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   function changeOnCallback(data: appAccount.AppAccountInfo[]): void {
     console.info('receive change data:' + JSON.stringify(data));
   }
-
-  try {
+  try{
     appAccountManager.on('accountChange', ['com.example.actsaccounttest'], changeOnCallback);
-  } catch (e) {
+  } catch(err) {
+    console.error(`on accountChange failed, code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+
+### onAccountChange<sup>23+</sup>
+
+onAccountChange(owners: Array&lt;string&gt;, callback: Callback&lt;Array&lt;AppAccountInfo&gt;&gt;): void
+
+
+订阅指定应用的账号信息变更事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('accountChange')](#onaccountchange9)。
+
+**系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                             |
+| -------- | ---------------------------------------- | ---- | ------------------------------ |
+| owners   | Array&lt;string&gt;                      | 是    | 应用账号所有者的包名列表。                      |
+| callback | Callback&lt;Array&lt;[AppAccountInfo](#appaccountinfo)&gt;&gt; | 是    | 需要注册的回调函数，返回信息为发生变更的应用账号列表。           |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------- |
+| 12300001 | System service exception. |
+| 12300002 | Invalid owners. |
+
+**示例：**
+
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.onAccountChange(['com.example.actsaccounttest'],
+      (data: appAccount.AppAccountInfo[]) => {
+        console.info('receive change data:' + JSON.stringify(data));
+      });
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`on accountChange failed, code is ${err.code}, message is ${err.message}`);
   }
   ```
+
 
 ### off('accountChange')<sup>9+</sup>
 
@@ -1493,7 +2344,13 @@ off(type: 'accountChange', callback?: Callback&lt;Array&lt;AppAccountInfo&gt;&gt
 
 取消订阅账号信息变更事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAccountChange](#offaccountchange23)。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1515,25 +2372,78 @@ off(type: 'accountChange', callback?: Callback&lt;Array&lt;AppAccountInfo&gt;&gt
 **示例：**
 
   ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-
+  import { appAccount } from '@kit.BasicServicesKit';
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   function changeOnCallback(data: appAccount.AppAccountInfo[]): void {
     console.info('receive change data:' + JSON.stringify(data));
   }
-
-  try {
+  try{
     appAccountManager.on('accountChange', ['com.example.actsaccounttest'], changeOnCallback);
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch(err) {
     console.error(`on accountChange failed, code is ${err.code}, message is ${err.message}`);
   }
-  try {
+  try{
     appAccountManager.off('accountChange', changeOnCallback);
-  } catch (e) {
-    const err = e as BusinessError;
+  }
+  catch(err){
     console.error(`off accountChange failed, code is ${err.code}, message is ${err.message}`);
   }
   ```
+
+### offAccountChange<sup>23+</sup>
+
+offAccountChange(callback?: Callback&lt;Array&lt;AppAccountInfo&gt;&gt;): void
+
+取消订阅账号信息变更事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('accountChange')](#offaccountchange9)。
+
+**系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                               | 必填   | 说明           |
+| -------- | -------------------------------- | ---- | ------------ |
+| callback | Callback&lt;Array&lt;[AppAccountInfo](#appaccountinfo)&gt;&gt; | 否    | 需要注销的回调函数，默认为空，表示取消该类型事件所有的回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
+
+| 错误码ID | 错误信息|
+| ------- | -------|
+| 12300001 | System service exception. |
+
+
+**示例：**
+
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.onAccountChange(['com.example.actsaccounttest'],
+      (data: appAccount.AppAccountInfo[]) => {
+        console.info('receive change data:' + JSON.stringify(data));
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`onAccountChange failed, code is ${err.code}, message is ${err.message}`);
+  }
+
+  try {
+    appAccountManager.offAccountChange((data: appAccount.AppAccountInfo[]) => {
+      console.info('receive change data:' + JSON.stringify(data));
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`offAccountChange failed, code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 
 ### auth<sup>9+</sup>
 
@@ -1543,13 +2453,17 @@ auth(name: string, owner: string, authType: string, callback: AuthCallback): voi
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                    | 必填   | 说明              |
 | -------- | --------------------- | ---- | --------------- |
-| name     | string                | 是    | 应用账号的名称。     |
-| owner    | string                | 是    | 应用账号所有者的包名。  |
-| authType | string                | 是    | 鉴权类型。           |
+| name     | string                | 是    | 应用账号的名称。最大长度为512个字符。     |
+| owner    | string                | 是    | 应用账号所有者的包名。最大长度为1024个字符。  |
+| authType | string                | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。           |
 | callback | [AuthCallback](#authcallback9) | 是    | 回调对象，返回鉴权结果。 |
 
 **错误码：**
@@ -1568,7 +2482,9 @@ auth(name: string, owner: string, authType: string, callback: AuthCallback): voi
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { Want, common } from '@kit.AbilityKit';
 
@@ -1607,7 +2523,55 @@ auth(name: string, owner: string, authType: string, callback: AuthCallback): voi
         console.error(`auth exception: code is ${err.code}, message is ${err.message}`);
       }
     }
+    build() {}
+  }
+  ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { Want, common } from '@kit.AbilityKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+
+
+  @Entry
+  @Component
+  struct Index {
+    context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
+
+    onResultCallback(code: int, authResult?: appAccount.AuthResult): void {
+      console.info('resultCode: ' + code);
+      console.info('authResult: ' + JSON.stringify(authResult));
+    }
+
+    onRequestRedirectedCallback(request: Want): void {
+      let wantInfo: Want = {
+        deviceId: '',
+        bundleName: 'com.example.accountjsdemo',
+        action: 'ohos.want.action.viewData',
+        entities: ['entity.system.default'],
+      }
+      this.context.startAbility(wantInfo).then(():void => {
+        console.info('startAbility successfully');
+      }).catch((e:Error):void => {
+        const err = e as BusinessError;
+        console.error(`startAbility err: code is ${err.code}, message is ${err.message}`);
+      })
+    }
+
+    aboutToAppear(): void {
+      try {
+        appAccountManager.auth('LiSi', 'com.example.accountjsdemo', 'getSocialData', {
+          onResult: this.onResultCallback,
+          onRequestRedirected: this.onRequestRedirectedCallback
+        });
+      } catch (e: Error) {
+        const err = e as BusinessError;
+        console.error(`auth exception: code is ${err.code}, message is ${err.message}`);
+      }
+    }
     build() {}
   }
   ```
@@ -1618,15 +2582,21 @@ auth(name: string, owner: string, authType: string, options: Record<string, Obje
 
 对应用账号进行鉴权以获取授权令牌。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[auth](#auth23)。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
 | 参数名      | 类型                    | 必填   | 说明              |
 | -------- | --------------------- | ---- | --------------- |
-| name     | string                | 是    | 应用账号的名称。     |
-| owner    | string                | 是    | 应用账号所有者的包名。  |
-| authType | string                | 是    | 鉴权类型。           |
+| name     | string                | 是    | 应用账号的名称。最大长度为512个字符。     |
+| owner    | string                | 是    | 应用账号所有者的包名。最大长度为1024个字符。  |
+| authType | string                | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。           |
 | options  | Record<string, Object>  | 是    | 鉴权所需的可选项。       |
 | callback | [AuthCallback](#authcallback9) | 是    | 回调对象，返回鉴权结果。 |
 
@@ -1647,6 +2617,7 @@ auth(name: string, owner: string, authType: string, options: Record<string, Obje
 **示例：**
 
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { Want, common } from '@kit.AbilityKit';
 
@@ -1693,6 +2664,99 @@ auth(name: string, owner: string, authType: string, options: Record<string, Obje
   }
   ```
 
+### auth<sup>23+</sup>
+
+auth(name: string, owner: string, authType: string, options: Record<string, RecordData>, callback: AuthCallback): void
+
+对应用账号进行鉴权以获取授权令牌。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[auth](#auth9-1)。
+
+**系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                    | 必填   | 说明              |
+| -------- | --------------------- | ---- | --------------- |
+| name     | string                | 是    | 应用账号的名称。     |
+| owner    | string                | 是    | 应用账号所有者的包名。  |
+| authType | string                | 是    | 鉴权类型。           |
+| options  | Record&lt;string, RecordData&gt;  | 是    | 鉴权所需的可选项。       |
+| callback | [AuthCallback](#authcallback9) | 是    | 回调对象，返回鉴权结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息|
+| ------- | -------|
+| 12300001 | System service exception. |
+| 12300002 | Invalid name, owner, authType or options. |
+| 12300003 | Account not found. |
+| 12300010 | Account service busy. |
+| 12300113 | Authenticator service not found. |
+| 12300114 | Authenticator service exception. |
+
+**示例：**
+
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { Want, common } from '@kit.AbilityKit';
+  import { RecordData } from '@ohos.base';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+
+
+  @Entry
+  @Component
+  struct Index {
+    context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
+
+    onResultCallback(code: int, authResult?: appAccount.AuthResult): void {
+      console.info('resultCode: ' + code);
+      console.info('authResult: ' + JSON.stringify(authResult));
+    }
+
+    onRequestRedirectedCallback(request: Want): void {
+      let wantInfo: Want = {
+        deviceId: '',
+        bundleName: 'com.example.accountjsdemo',
+        action: 'ohos.want.action.viewData',
+        entities: ['entity.system.default'],
+      }
+      this.context.startAbility(wantInfo).then(():void => {
+        console.info('startAbility successfully');
+      }).catch((e:Error):void => {
+        const err = e as BusinessError;
+        console.error(`startAbility err: code is ${err.code}, message is ${err.message}`);
+      })
+    }
+
+    aboutToAppear(): void {
+      let options: Record<string, RecordData> = {
+        'password': 'xxxx',
+      };
+      const authCallback: appAccount.AuthCallback = {
+        onResult: this.onResultCallback,
+        onRequestRedirected: this.onRequestRedirectedCallback
+      };
+      try {
+        appAccountManager.auth('LiSi', 'com.example.accountjsdemo', 'getSocialData', options, authCallback);
+      } catch (e: Error) {
+        const err = e as BusinessError;
+        console.error(`auth exception: code is ${err.code}, message is ${err.message}`);
+      }
+    }
+    build() {}
+  }
+
+  ```
+
 ### getAuthToken<sup>9+</sup>
 
 getAuthToken(name: string, owner: string, authType: string, callback: AsyncCallback&lt;string&gt;): void
@@ -1701,13 +2765,17 @@ getAuthToken(name: string, owner: string, authType: string, callback: AsyncCallb
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                          | 必填   | 说明          |
 | -------- | --------------------------- | ---- | ----------- |
-| name     | string                      | 是    | 应用账号的名称。    |
-| owner    | string                      | 是    | 应用账号所有者的包名。 |
-| authType | string                      | 是    | 鉴权类型。       |
+| name     | string                      | 是    | 应用账号的名称。最大长度为512个字符。    |
+| owner    | string                      | 是    | 应用账号所有者的包名。最大长度为1024个字符。 |
+| authType | string                      | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。       |
 | callback | AsyncCallback&lt;string&gt; | 是    | 回调函数。当获取成功时，err为null，data为授权令牌值；否则为错误对象。    |
 
 **错误码：**
@@ -1724,9 +2792,12 @@ getAuthToken(name: string, owner: string, authType: string, callback: AsyncCallb
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.getAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData',
       (err: BusinessError, token: string) => {
@@ -1737,6 +2808,27 @@ getAuthToken(name: string, owner: string, authType: string, callback: AsyncCallb
         }
       });
   } catch (e) {
+      const err = e as BusinessError;
+      console.error(`getAuthToken exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.getAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData',
+      (err: BusinessError | null, token: string | undefined) => {
+        if (err) {
+          console.error(`getAuthToken failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('getAuthToken successfully, token: ' + token);
+        }
+      });
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`getAuthToken exception: code is ${err.code}, message is ${err.message}`);
   }
@@ -1750,13 +2842,17 @@ getAuthToken(name: string, owner: string, authType: string): Promise&lt;string&g
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型     | 必填   | 说明          |
 | -------- | ------ | ---- | ----------- |
-| name     | string | 是    | 应用账号的名称。    |
-| owner    | string | 是    | 应用账号所有者的包名。 |
-| authType | string | 是    | 鉴权类型。       |
+| name     | string | 是    | 应用账号的名称。最大长度为512个字符。    |
+| owner    | string | 是    | 应用账号所有者的包名。最大长度为1024个字符。 |
+| authType | string | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。       |
 
 **返回值：**
 
@@ -1778,9 +2874,12 @@ getAuthToken(name: string, owner: string, authType: string): Promise&lt;string&g
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.getAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData').then((token: string) => {
       console.info('getAuthToken successfully, token: ' + token);
@@ -1788,6 +2887,25 @@ getAuthToken(name: string, owner: string, authType: string): Promise&lt;string&g
       console.error(`getAuthToken failed, code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
+      const err = e as BusinessError;
+      console.error(`getAuthToken exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.getAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData').then((token: string) => {
+      console.info('getAuthToken successfully, token: ' + token);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getAuthToken failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`getAuthToken exception: code is ${err.code}, message is ${err.message}`);
   }
@@ -1801,13 +2919,17 @@ setAuthToken(name: string, authType: string, token: string, callback: AsyncCallb
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                        | 必填   | 说明       |
 | -------- | ------------------------- | ---- | -------- |
-| name     | string                    | 是    | 应用账号的名称。 |
-| authType | string                    | 是    | 鉴权类型。    |
-| token    | string                    | 是    | 授权令牌。 |
+| name     | string                    | 是    | 应用账号的名称。最大长度为512个字符。 |
+| authType | string                    | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。    |
+| token    | string                    | 是    | 授权令牌。最大长度为1024个字符。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置成功时，err为null；否则为错误对象。 |
 
 **错误码：**
@@ -1824,9 +2946,12 @@ setAuthToken(name: string, authType: string, token: string, callback: AsyncCallb
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.setAuthToken('LiSi', 'getSocialData', 'xxxx', (err: BusinessError) => {
       if (err) {
@@ -1841,6 +2966,26 @@ setAuthToken(name: string, authType: string, token: string, callback: AsyncCallb
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.setAuthToken('LiSi', 'getSocialData', 'xxxx', (err: BusinessError | null) => {
+      if (err) {
+        console.error(`setAuthToken failed, code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('setAuthToken successfully');
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setAuthToken exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### setAuthToken<sup>9+</sup>
 
 setAuthToken(name: string, authType: string, token: string): Promise&lt;void&gt;
@@ -1849,19 +2994,23 @@ setAuthToken(name: string, authType: string, token: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型     | 必填   | 说明       |
 | -------- | ------ | ---- | -------- |
-| name     | string | 是    | 应用账号的名称。 |
-| authType | string | 是    | 鉴权类型。    |
-| token    | string | 是    | 授权令牌。 |
+| name     | string | 是    | 应用账号的名称。最大长度为512个字符。 |
+| authType | string | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。    |
+| token    | string | 是    | 授权令牌。最大长度为1024个字符。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
 | ------------------- | --------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1877,16 +3026,38 @@ setAuthToken(name: string, authType: string, token: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.setAuthToken('LiSi', 'getSocialData', 'xxxx').then(() => {
+        console.info('setAuthToken successfully');
+    }).catch((err: BusinessError) => {
+        console.error(`setAuthToken failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setAuthToken exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.setAuthToken('LiSi', 'getSocialData', 'xxxx').then(() => {
       console.info('setAuthToken successfully');
-    }).catch((err: BusinessError) => {
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
       console.error(`setAuthToken failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (e) {
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`setAuthToken exception: code is ${err.code}, message is ${err.message}`);
   }
@@ -1900,14 +3071,18 @@ deleteAuthToken(name: string, owner: string, authType: string, token: string, ca
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                        | 必填   | 说明           |
 | -------- | ------------------------- | ---- | ------------ |
-| name     | string                    | 是    | 应用账号的名称。     |
-| owner    | string                    | 是    | 应用账号所有者的包名。  |
-| authType | string                    | 是    | 鉴权类型。        |
-| token    | string                    | 是    | 授权令牌。如果授权令牌不存在，则不执行任何操作。 |
+| name     | string                    | 是    | 应用账号的名称。最大长度为512个字符。     |
+| owner    | string                    | 是    | 应用账号所有者的包名。最大长度为1024个字符。  |
+| authType | string                    | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。        |
+| token    | string                    | 是    | 授权令牌。如果授权令牌不存在，则不执行任何操作。最大长度为1024个字符。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当删除成功时，err为null；否则为错误对象。     |
 
 **错误码：**
@@ -1924,9 +3099,12 @@ deleteAuthToken(name: string, owner: string, authType: string, token: string, ca
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.deleteAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData', 'xxxxx',
       (err: BusinessError) => {
@@ -1942,6 +3120,27 @@ deleteAuthToken(name: string, owner: string, authType: string, token: string, ca
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.deleteAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData', 'xxxxx',
+      (err: BusinessError | null) => {
+        if (err) {
+          console.error(`deleteAuthToken failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('deleteAuthToken successfully');
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`deleteAuthToken exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### deleteAuthToken<sup>9+</sup>
 
 deleteAuthToken(name: string, owner: string, authType: string, token: string): Promise&lt;void&gt;
@@ -1950,20 +3149,24 @@ deleteAuthToken(name: string, owner: string, authType: string, token: string): P
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型     | 必填   | 说明           |
 | -------- | ------ | ---- | ------------ |
-| name     | string | 是    | 应用账号的名称。     |
-| owner    | string | 是    | 应用账号所有者的包名。  |
-| authType | string | 是    | 鉴权类型。        |
-| token    | string | 是    | 授权令牌。如果授权令牌不存在，则不执行任何操作。 |
+| name     | string | 是    | 应用账号的名称。最大长度为512个字符。     |
+| owner    | string | 是    | 应用账号所有者的包名。最大长度为1024个字符。  |
+| authType | string | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。        |
+| token    | string | 是    | 授权令牌。如果授权令牌不存在，则不执行任何操作。最大长度为1024个字符。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
 | ------------------- | --------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1979,9 +3182,12 @@ deleteAuthToken(name: string, owner: string, authType: string, token: string): P
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.deleteAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData', 'xxxxx').then(() => {
       console.info('deleteAuthToken successfully');
@@ -1989,6 +3195,25 @@ deleteAuthToken(name: string, owner: string, authType: string, token: string): P
       console.error(`deleteAuthToken failed, code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
+    const err = e as BusinessError;
+    console.error(`deleteAuthToken exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.deleteAuthToken('LiSi', 'com.example.accountjsdemo', 'getSocialData', 'xxxxx').then(() => {
+      console.info('deleteAuthToken successfully');
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`deleteAuthToken failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`deleteAuthToken exception: code is ${err.code}, message is ${err.message}`);
   }
@@ -2002,13 +3227,17 @@ setAuthTokenVisibility(name: string, authType: string, bundleName: string, isVis
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名        | 类型                        | 必填   | 说明                        |
 | ---------- | ------------------------- | ---- | ------------------------- |
-| name       | string                    | 是    | 应用账号的名称。                  |
-| authType   | string                    | 是    | 鉴权类型。                     |
-| bundleName | string                    | 是    | 被设置可见性的应用包名。              |
+| name       | string                    | 是    | 应用账号的名称。最大长度为512个字符。                  |
+| authType   | string                    | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。                     |
+| bundleName | string                    | 是    | 被设置可见性的应用包名。最大长度为512个字符。              |
 | isVisible  | boolean                   | 是    | 是否可见。true表示可见，false表示不可见。 |
 | callback   | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置成功时，err为null；否则为错误对象。|
 
@@ -2027,9 +3256,12 @@ setAuthTokenVisibility(name: string, authType: string, bundleName: string, isVis
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.setAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo', true,
       (err: BusinessError) => {
@@ -2040,6 +3272,27 @@ setAuthTokenVisibility(name: string, authType: string, bundleName: string, isVis
         }
       });
   } catch (e) {
+      const err = e as BusinessError;
+      console.error(`setAuthTokenVisibility exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.setAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo', true,
+      (err: BusinessError | null) => {
+        if (err) {
+          console.error(`setAuthTokenVisibility failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('setAuthTokenVisibility successfully');
+        }
+      });
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`setAuthTokenVisibility exception: code is ${err.code}, message is ${err.message}`);
   }
@@ -2053,20 +3306,24 @@ setAuthTokenVisibility(name: string, authType: string, bundleName: string, isVis
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                        | 必填   | 说明                        |
 | ---------- | ------------------------- | ---- | ------------------------- |
-| name       | string                    | 是    | 应用账号的名称。                  |
-| authType   | string                    | 是    | 鉴权类型。                     |
-| bundleName | string                    | 是    | 被设置可见性的应用包名。              |
+| name       | string                    | 是    | 应用账号的名称。最大长度为512个字符。                  |
+| authType   | string                    | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。                     |
+| bundleName | string                    | 是    | 被设置可见性的应用包名。最大长度为512个字符。              |
 | isVisible  | boolean                   | 是    | 是否可见。true表示可见，false表示不可见。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
 | ------------------- | --------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2083,9 +3340,12 @@ setAuthTokenVisibility(name: string, authType: string, bundleName: string, isVis
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.setAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo', true).then(() => {
       console.info('setAuthTokenVisibility successfully');
@@ -2093,6 +3353,27 @@ setAuthTokenVisibility(name: string, authType: string, bundleName: string, isVis
       console.error(`setAuthTokenVisibility failed, code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
+    const err = e as BusinessError;
+    console.error(`setAuthTokenVisibility exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.setAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo', true)
+      .then(() => {
+        console.info('setAuthTokenVisibility successfully');
+      })
+      .catch((e: Error) => {
+        const err = e as BusinessError;
+        console.error(`setAuthTokenVisibility failed, code is ${err.code}, message is ${err.message}`);
+      });
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`setAuthTokenVisibility exception: code is ${err.code}, message is ${err.message}`);
   }
@@ -2106,13 +3387,17 @@ checkAuthTokenVisibility(name: string, authType: string, bundleName: string, cal
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名        | 类型                           | 必填   | 说明          |
 | ---------- | ---------------------------- | ---- | ----------- |
-| name       | string                       | 是    | 应用账号的名称。    |
-| authType   | string                       | 是    | 鉴权类型。       |
-| bundleName | string                       | 是    | 检查可见性的应用包名。 |
+| name       | string                       | 是    | 应用账号的名称。最大长度为512个字符。    |
+| authType   | string                       | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。       |
+| bundleName | string                       | 是    | 检查可见性的应用包名。最大长度为512个字符。 |
 | callback   | AsyncCallback&lt;boolean&gt; | 是    | 回调函数。当检查成功时，err为null，data为true表示可见，data为false表示不可见；否则为错误对象。    |
 
 **错误码：**
@@ -2129,9 +3414,12 @@ checkAuthTokenVisibility(name: string, authType: string, bundleName: string, cal
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.checkAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo',
       (err: BusinessError, isVisible: boolean) => {
@@ -2147,6 +3435,27 @@ checkAuthTokenVisibility(name: string, authType: string, bundleName: string, cal
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.checkAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo',
+      (err: BusinessError | null, isVisible: boolean | undefined) => {
+        if (err) {
+          console.error(`checkAuthTokenVisibility failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('checkAuthTokenVisibility successfully, isVisible: ' + isVisible);
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`checkAuthTokenVisibility exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### checkAuthTokenVisibility<sup>9+</sup>
 
 checkAuthTokenVisibility(name: string, authType: string, bundleName: string): Promise&lt;boolean&gt;
@@ -2155,13 +3464,17 @@ checkAuthTokenVisibility(name: string, authType: string, bundleName: string): Pr
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名        | 类型     | 必填   | 说明            |
 | ---------- | ------ | ---- | ------------- |
-| name       | string | 是    | 应用账号的名称。      |
-| authType   | string | 是    | 鉴权类型。         |
-| bundleName | string | 是    | 用于检查可见性的应用包名。 |
+| name       | string | 是    | 应用账号的名称。最大长度为512个字符。      |
+| authType   | string | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。         |
+| bundleName | string | 是    | 用于检查可见性的应用包名。最大长度为512个字符。 |
 
 **返回值：**
 
@@ -2183,9 +3496,12 @@ checkAuthTokenVisibility(name: string, authType: string, bundleName: string): Pr
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.checkAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo').then((
       isVisible: boolean) => {
@@ -2199,6 +3515,26 @@ checkAuthTokenVisibility(name: string, authType: string, bundleName: string): Pr
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.checkAuthTokenVisibility('LiSi', 'getSocialData', 'com.example.accountjsdemo').then((
+      isVisible: boolean) => {
+      console.info('checkAuthTokenVisibility successfully, isVisible: ' + isVisible);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`checkAuthTokenVisibility failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`checkAuthTokenVisibility exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getAllAuthTokens<sup>9+</sup>
 
 getAllAuthTokens(name: string, owner: string, callback: AsyncCallback&lt;Array&lt;AuthTokenInfo&gt;&gt;): void
@@ -2207,12 +3543,16 @@ getAllAuthTokens(name: string, owner: string, callback: AsyncCallback&lt;Array&l
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明          |
 | -------- | ---------------------------------------- | ---- | ----------- |
-| name     | string                                   | 是    | 应用账号的名称。    |
-| owner    | string                                   | 是    | 应用账号所有者的包名。 |
+| name     | string                                   | 是    | 应用账号的名称。最大长度为512个字符。    |
+| owner    | string                                   | 是    | 应用账号所有者的包名。最大长度为1024个字符。 |
 | callback | AsyncCallback&lt;Array&lt;[AuthTokenInfo](#authtokeninfo9)&gt;&gt; | 是    | 回调函数。当获取成功时，err为null，data为授权令牌数组；否则为错误对象。    |
 
 **错误码：**
@@ -2228,9 +3568,12 @@ getAllAuthTokens(name: string, owner: string, callback: AsyncCallback&lt;Array&l
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.getAllAuthTokens('LiSi', 'com.example.accountjsdemo',
       (err: BusinessError, tokenArr: appAccount.AuthTokenInfo[]) => {
@@ -2246,6 +3589,26 @@ getAllAuthTokens(name: string, owner: string, callback: AsyncCallback&lt;Array&l
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  try {
+    appAccountManager.getAllAuthTokens('LiSi', 'com.example.accountjsdemo',
+      (err: BusinessError | null, tokenArr: appAccount.AuthTokenInfo[] | undefined) => {
+        if (err) {
+          console.error(`getAllAuthTokens failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('getAllAuthTokens successfully, tokenArr: ' + tokenArr);
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getAllAuthTokens exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getAllAuthTokens<sup>9+</sup>
 
 getAllAuthTokens(name: string, owner: string): Promise&lt;Array&lt;AuthTokenInfo&gt;&gt;
@@ -2254,12 +3617,16 @@ getAllAuthTokens(name: string, owner: string): Promise&lt;Array&lt;AuthTokenInfo
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型     | 必填   | 说明          |
 | ----- | ------ | ---- | ----------- |
-| name  | string | 是    | 应用账号的名称。    |
-| owner | string | 是    | 应用账号所有者的包名。 |
+| name  | string | 是    | 应用账号的名称。最大长度为512个字符。    |
+| owner | string | 是    | 应用账号所有者的包名。最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -2280,9 +3647,12 @@ getAllAuthTokens(name: string, owner: string): Promise&lt;Array&lt;AuthTokenInfo
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.getAllAuthTokens('LiSi', 'com.example.accountjsdemo').then((
       tokenArr: appAccount.AuthTokenInfo[]) => {
@@ -2296,6 +3666,26 @@ getAllAuthTokens(name: string, owner: string): Promise&lt;Array&lt;AuthTokenInfo
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.getAllAuthTokens('LiSi', 'com.example.accountjsdemo').then((
+      tokenArr: appAccount.AuthTokenInfo[]) => {
+      console.info('getAllAuthTokens successfully, tokenArr: ' + JSON.stringify(tokenArr));
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`getAllAuthTokens failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getAllAuthTokens exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getAuthList<sup>9+</sup>
 
 getAuthList(name: string, authType: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
@@ -2304,12 +3694,16 @@ getAuthList(name: string, authType: string, callback: AsyncCallback&lt;Array&lt;
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                      |
 | -------- | ---------------------------------------- | ---- | ----------------------- |
-| name     | string                                   | 是    | 应用账号的名称。                |
-| authType | string                                   | 是    | 鉴权类型。 |
+| name     | string                                   | 是    | 应用账号的名称。最大长度为512个字符。                |
+| authType | string                                   | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。 |
 | callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是    | 回调函数。当获取成功时，err为null，data为被授权的包名数组；否则为错误对象。 |
 
 **错误码：**
@@ -2326,9 +3720,12 @@ getAuthList(name: string, authType: string, callback: AsyncCallback&lt;Array&lt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.getAuthList('LiSi', 'getSocialData', (err: BusinessError, authList: string[]) => {
       if (err) {
@@ -2343,6 +3740,27 @@ getAuthList(name: string, authType: string, callback: AsyncCallback&lt;Array&lt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.getAuthList('LiSi', 'getSocialData',
+      (err: BusinessError | null, authList: string[] | undefined) => {
+        if (err) {
+          console.error(`getAuthList failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('getAuthList successfully, authList: ' + authList);
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`getAuthList exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### getAuthList<sup>9+</sup>
 
 getAuthList(name: string, authType: string): Promise&lt;Array&lt;string&gt;&gt;
@@ -2351,12 +3769,16 @@ getAuthList(name: string, authType: string): Promise&lt;Array&lt;string&gt;&gt;
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型     | 必填   | 说明                      |
 | -------- | ------ | ---- | ------------------------------ |
-| name     | string | 是    | 应用账号的名称。                |
-| authType | string | 是    | 鉴权类型。 |
+| name     | string | 是    | 应用账号的名称。最大长度为512个字符。                |
+| authType | string | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -2378,16 +3800,38 @@ getAuthList(name: string, authType: string): Promise&lt;Array&lt;string&gt;&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.getAuthList('LiSi', 'getSocialData').then((authList: string[]) => {
+        console.info('getAuthList successfully, authList: ' + authList);
+    }).catch((err: BusinessError) => {
+        console.error(`getAuthList failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getAuthList exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.getAuthList('LiSi', 'getSocialData').then((authList: string[]) => {
       console.info('getAuthList successfully, authList: ' + authList);
-    }).catch((err: BusinessError) => {
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
       console.error(`getAuthList failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (e) {
+  } catch (e: Error) {
     const err = e as BusinessError;
     console.error(`getAuthList exception: code is ${err.code}, message is ${err.message}`);
   }
@@ -2400,6 +3844,10 @@ getAuthCallback(sessionId: string, callback: AsyncCallback&lt;AuthCallback&gt;):
 获取鉴权会话的认证器回调对象。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2421,10 +3869,13 @@ getAuthCallback(sessionId: string, callback: AsyncCallback&lt;AuthCallback&gt;):
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { Want, UIAbility, AbilityConstant } from '@kit.AbilityKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   export default class EntryAbility extends UIAbility {
     onCreate(want: Want, param: AbilityConstant.LaunchParam) { // ability 生命周期函数
       let sessionId: string = want.parameters![appAccount.Constants.KEY_SESSION_ID] as string;
@@ -2443,7 +3894,7 @@ getAuthCallback(sessionId: string, callback: AsyncCallback&lt;AuthCallback&gt;):
               token: 'xxxxxx',
               authType: 'getSocialData'
             }
-          }; 
+          };
           callback.onResult(0, result);
         });
       } catch (e) {
@@ -2454,6 +3905,44 @@ getAuthCallback(sessionId: string, callback: AsyncCallback&lt;AuthCallback&gt;):
   }
   ```
 
+ArkTS-Sta示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want, UIAbility, AbilityConstant } from '@kit.AbilityKit';
+
+let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, param: AbilityConstant.LaunchParam) { // ability 生命周期函数
+    let sessionId: string = want.parameters![appAccount.Constants.KEY_SESSION_ID] as string;
+    try {
+      appAccountManager.getAuthCallback(sessionId, (err: BusinessError | null, callback: appAccount.AuthCallback | undefined) => {
+        if (err != null) {
+          console.error(`getAuthCallback err: code is ${err.code}, message is ${err.message}`);
+          return;
+        }
+        let result: appAccount.AuthResult = {
+          account: {
+            name: 'Lisi',
+            owner: 'com.example.accountjsdemo',
+          },
+          tokenInfo: {
+            token: 'xxxxxx',
+            authType: 'getSocialData'
+          }
+        };
+        if (callback) {
+          callback.onResult(0, result);
+        }
+      });
+    } catch (e: Error) {
+      const err = e as BusinessError;
+      console.error(`getAuthCallback exception: code is ${err.code}, message is ${err.message}`);
+    }
+  }
+}
+```
+
+
 ### getAuthCallback<sup>9+</sup>
 
 getAuthCallback(sessionId: string): Promise&lt;AuthCallback&gt;
@@ -2461,6 +3950,10 @@ getAuthCallback(sessionId: string): Promise&lt;AuthCallback&gt;
 获取鉴权会话的认证器回调对象。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2487,10 +3980,13 @@ getAuthCallback(sessionId: string): Promise&lt;AuthCallback&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { Want, UIAbility, AbilityConstant } from '@kit.AbilityKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   export default class EntryAbility extends UIAbility {
     onCreate(want: Want, param: AbilityConstant.LaunchParam) { // ability 生命周期函数
       let sessionId: string = want.parameters![appAccount.Constants.KEY_SESSION_ID] as string;
@@ -2518,6 +4014,42 @@ getAuthCallback(sessionId: string): Promise&lt;AuthCallback&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { Want, UIAbility, AbilityConstant } from '@kit.AbilityKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, param: AbilityConstant.LaunchParam) { // ability 生命周期函数
+      let sessionId: string = want.parameters![appAccount.Constants.KEY_SESSION_ID] as string;
+      try {
+        appAccountManager.getAuthCallback(sessionId).then((callback: appAccount.AuthCallback) => {
+          let result: appAccount.AuthResult = {
+            account: {
+              name: 'Lisi',
+              owner: 'com.example.accountjsdemo',
+            },
+            tokenInfo: {
+              token: 'xxxxxx',
+              authType: 'getSocialData'
+            }
+          };
+          callback.onResult(0, result);
+        }).catch((e: Error) => {
+          const err = e as BusinessError;
+          console.error(`getAuthCallback err: code is ${err.code}, message is ${err.message}`);
+        });
+      } catch (e: Error) {
+        const err = e as BusinessError;
+        console.error(`getAuthCallback exception: code is ${err.code}, message is ${err.message}`);
+      }
+    }
+  }
+  ```
+
+
 ### queryAuthenticatorInfo<sup>9+</sup>
 
 queryAuthenticatorInfo(owner: string, callback: AsyncCallback&lt;AuthenticatorInfo&gt;): void
@@ -2526,11 +4058,15 @@ queryAuthenticatorInfo(owner: string, callback: AsyncCallback&lt;AuthenticatorIn
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                     | 必填   | 说明          |
 | -------- | -------------------------------------- | ---- | ----------- |
-| owner    | string                                 | 是    | 应用账号所有者的包名。 |
+| owner    | string                                 | 是    | 应用账号所有者的包名。最大长度为1024个字符。 |
 | callback | AsyncCallback&lt;[AuthenticatorInfo](#authenticatorinfo8)&gt; | 是    | 回调函数。当获取成功时，err为null，data为认证器信息对象；否则为错误对象。    |
 
 **错误码：**
@@ -2546,9 +4082,12 @@ queryAuthenticatorInfo(owner: string, callback: AsyncCallback&lt;AuthenticatorIn
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.queryAuthenticatorInfo('com.example.accountjsdemo',
       (err: BusinessError, info: appAccount.AuthenticatorInfo) => {
@@ -2564,6 +4103,27 @@ queryAuthenticatorInfo(owner: string, callback: AsyncCallback&lt;AuthenticatorIn
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.queryAuthenticatorInfo('com.example.accountjsdemo',
+      (err: BusinessError | null, info: appAccount.AuthenticatorInfo | undefined) => {
+        if (err) {
+          console.error(`queryAuthenticatorInfo failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('queryAuthenticatorInfo successfully, info: ' + JSON.stringify(info));
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`queryAuthenticatorInfo exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### queryAuthenticatorInfo<sup>9+</sup>
 
 queryAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
@@ -2572,11 +4132,15 @@ queryAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型     | 必填   | 说明          |
 | ----- | ------ | ---- | ----------- |
-| owner | string | 是    | 应用账号所有者的包名。 |
+| owner | string | 是    | 应用账号所有者的包名。最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -2597,9 +4161,12 @@ queryAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.queryAuthenticatorInfo('com.example.accountjsdemo').then((
       info: appAccount.AuthenticatorInfo) => { 
@@ -2613,6 +4180,26 @@ queryAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.queryAuthenticatorInfo('com.example.accountjsdemo').then((
+      info: appAccount.AuthenticatorInfo) => {
+      console.info('queryAuthenticatorInfo successfully, info: ' + JSON.stringify(info));
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`queryAuthenticatorInfo failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`queryAuthenticatorInfo exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### checkAccountLabels<sup>9+</sup>
 
 checkAccountLabels(name: string, owner: string, labels: Array&lt;string&gt;, callback: AsyncCallback&lt;boolean&gt;): void
@@ -2621,12 +4208,16 @@ checkAccountLabels(name: string, owner: string, labels: Array&lt;string&gt;, cal
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名         | 类型                       | 必填  | 说明             |
 | -------------- | ------------------------- | ----- | --------------- |
-| name           | string                    | 是    | 应用账号的名称。  |
-| owner          | string                    | 是    | 应用账号所有者的包名。|
+| name           | string                    | 是    | 应用账号的名称。最大长度为512个字符。  |
+| owner          | string                    | 是    | 应用账号所有者的包名。最大长度为1024个字符。|
 | labels         | Array&lt;string&gt;       | 是    | 标签数组。       |
 | callback       | AsyncCallback&lt;boolean&gt; | 是    | 回调函数。当检查成功时，err为null，data为true表示满足特定的标签集合，data为false表示不满足；否则为错误对象。  |
 
@@ -2646,10 +4237,13 @@ checkAccountLabels(name: string, owner: string, labels: Array&lt;string&gt;, cal
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
   let labels = ['student'];
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.checkAccountLabels('zhangsan', 'com.example.accountjsdemo', labels,
       (err: BusinessError, hasAllLabels: boolean) => {
@@ -2665,6 +4259,28 @@ checkAccountLabels(name: string, owner: string, labels: Array&lt;string&gt;, cal
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let labels = ['student'];
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.checkAccountLabels('zhangsan', 'com.example.accountjsdemo', labels,
+      (err: BusinessError | null, hasAllLabels: boolean | undefined) => {
+        if (err) {
+          console.error(`checkAccountLabels failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('checkAccountLabels successfully, hasAllLabels: ' + hasAllLabels);
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`checkAccountLabels exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### checkAccountLabels<sup>9+</sup>
 
 checkAccountLabels(name: string, owner: string, labels: Array&lt;string&gt;): Promise&lt;boolean&gt;
@@ -2673,12 +4289,16 @@ checkAccountLabels(name: string, owner: string, labels: Array&lt;string&gt;): Pr
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名         | 类型                       | 必填  | 说明             |
 | -------------- | ------------------------- | ----- | --------------- |
-| name           | string                    | 是    | 应用账号的名称。  |
-| owner          | string                    | 是    | 应用账号所有者的包名。|
+| name           | string                    | 是    | 应用账号的名称。最大长度为512个字符。  |
+| owner          | string                    | 是    | 应用账号所有者的包名。最大长度为1024个字符。|
 | labels         | Array&lt;string&gt;       | 是    | 标签数组。       |
 
 **返回值：**
@@ -2703,10 +4323,13 @@ checkAccountLabels(name: string, owner: string, labels: Array&lt;string&gt;): Pr
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
   let labels = ['student'];
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.checkAccountLabels('zhangsan', 'com.example.accountjsdemo', labels).then((
       hasAllLabels: boolean) => {
@@ -2720,6 +4343,27 @@ checkAccountLabels(name: string, owner: string, labels: Array&lt;string&gt;): Pr
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let labels = ['student'];
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.checkAccountLabels('zhangsan', 'com.example.accountjsdemo', labels).then((
+      hasAllLabels: boolean) => {
+      console.info('checkAccountLabels successfully: ' + hasAllLabels);
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`checkAccountLabels failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`checkAccountLabels exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### deleteCredential<sup>9+</sup>
 
 deleteCredential(name: string, credentialType: string, callback: AsyncCallback&lt;void&gt;): void
@@ -2728,12 +4372,16 @@ deleteCredential(name: string, credentialType: string, callback: AsyncCallback&l
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名         | 类型                       | 必填  | 说明            |
 | -------------- | ------------------------- | ----- | -------------- |
-| name           | string                    | 是    | 应用账号的名称。 |
-| credentialType | string                    | 是    | 凭据类型。      |
+| name           | string                    | 是    | 应用账号的名称。最大长度为512个字符。 |
+| credentialType | string                    | 是    | 凭据类型。自定义的类型，最大长度为1024个字符。      |
 | callback       | AsyncCallback&lt;void&gt; | 是    | 回调函数。当删除成功时，err为null；否则为错误对象。 |
 
 **错误码：**
@@ -2750,9 +4398,12 @@ deleteCredential(name: string, credentialType: string, callback: AsyncCallback&l
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.deleteCredential('zhangsan', 'PIN_SIX', (err: BusinessError) => {
       if (err) {
@@ -2767,6 +4418,26 @@ deleteCredential(name: string, credentialType: string, callback: AsyncCallback&l
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.deleteCredential('zhangsan', 'PIN_SIX', (err: BusinessError | null) => {
+      if (err) {
+        console.error(`deleteCredential failed, code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('deleteCredential successfully');
+      }
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`deleteCredential exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### deleteCredential<sup>9+</sup>
 
 deleteCredential(name: string, credentialType: string): Promise&lt;void&gt;
@@ -2775,18 +4446,22 @@ deleteCredential(name: string, credentialType: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名         | 类型   | 必填   | 说明            |
 | -------------- | ------ | ----- | --------------- |
-| name           | string | 是    | 应用账号的名称。 |
-| credentialType | string | 是    | 凭据类型。       |
+| name           | string | 是    | 应用账号的名称。最大长度为512个字符。 |
+| credentialType | string | 是    | 凭据类型。自定义的类型，最大长度为1024个字符。       |
 
 **返回值：**
 
 | 类型                | 说明                              |
 | ------------------- | -------------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2802,9 +4477,12 @@ deleteCredential(name: string, credentialType: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.deleteCredential('zhangsan', 'PIN_SIX').then(() => {
       console.info('deleteCredential successfully');
@@ -2817,6 +4495,25 @@ deleteCredential(name: string, credentialType: string): Promise&lt;void&gt;
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  try {
+    appAccountManager.deleteCredential('zhangsan', 'PIN_SIX').then(() => {
+      console.info('deleteCredential successfully');
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`deleteCredential failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`deleteCredential exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### selectAccountsByOptions<sup>9+</sup>
 
 selectAccountsByOptions(options: SelectAccountsOptions, callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;): void
@@ -2824,6 +4521,10 @@ selectAccountsByOptions(options: SelectAccountsOptions, callback: AsyncCallback&
 根据选项选择调用方可访问的账号列表。使用callback异步回调。如果选项中包含标签约束，则该方法依赖目标应用的认证器提供标签检查的能力。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2846,12 +4547,15 @@ selectAccountsByOptions(options: SelectAccountsOptions, callback: AsyncCallback&
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   let options: appAccount.SelectAccountsOptions = {
-    allowedOwners: ['com.example.accountjsdemo'],
-    requiredLabels: ['student']
+    allowedOwners: [ 'com.example.accountjsdemo' ],
+    requiredLabels: [ 'student' ]
   };
   try {
     appAccountManager.selectAccountsByOptions(options,
@@ -2868,6 +4572,31 @@ selectAccountsByOptions(options: SelectAccountsOptions, callback: AsyncCallback&
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  let options: appAccount.SelectAccountsOptions = {
+    allowedOwners: ['com.example.accountjsdemo'],
+    requiredLabels: ['student']
+  };
+  try {
+    appAccountManager.selectAccountsByOptions(options,
+      (err: BusinessError | null, accountArr: appAccount.AppAccountInfo[] | undefined) => {
+        if (err) {
+          console.error(`selectAccountsByOptions failed, code is ${err.code}, message is ${err.message}`);
+        } else {
+          console.info('selectAccountsByOptions successfully, accountArr: ' + JSON.stringify(accountArr));
+        }
+      });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`selectAccountsByOptions exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### selectAccountsByOptions<sup>9+</sup>
 
 selectAccountsByOptions(options: SelectAccountsOptions): Promise&lt;Array&lt;AppAccountInfo&gt;&gt;
@@ -2875,6 +4604,10 @@ selectAccountsByOptions(options: SelectAccountsOptions): Promise&lt;Array&lt;App
 根据选项选择调用方可访问的账号列表。使用Promise异步回调。如果选项中包含标签约束，则该方法依赖目标应用的认证器提供标签检查的能力。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2902,9 +4635,12 @@ selectAccountsByOptions(options: SelectAccountsOptions): Promise&lt;Array&lt;App
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   let options: appAccount.SelectAccountsOptions = {
     allowedOwners: ['com.example.accountjsdemo']
   };
@@ -2920,20 +4656,46 @@ selectAccountsByOptions(options: SelectAccountsOptions): Promise&lt;Array&lt;App
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  let options: appAccount.SelectAccountsOptions = {
+    allowedOwners: ['com.example.accountjsdemo']
+  };
+  try {
+    appAccountManager.selectAccountsByOptions(options).then((accountArr: appAccount.AppAccountInfo[]) => {
+      console.info('selectAccountsByOptions successfully, accountArr: ' + JSON.stringify(accountArr));
+    }).catch((e: Error) => {
+      const err = e as BusinessError;
+      console.error(`selectAccountsByOptions failed, code is ${err.code}, message is ${err.message}`);
+    });
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`selectAccountsByOptions exception: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### verifyCredential<sup>9+</sup>
 
 verifyCredential(name: string, owner: string, callback: AuthCallback): void
 
-验证指定账号的凭据。使用callback异步回调。
+验证指定账号的凭据有效性。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名    | 类型                  | 必填  | 说明                     |
 | -------- | --------------------- | ----- | ----------------------- |
-| name     | string                | 是    | 应用账号的名称。          |
-| owner    | string                | 是    | 应用账号所有者的包名。        |
+| name     | string                | 是    | 应用账号的名称。最大长度为512个字符。          |
+| owner    | string                | 是    | 应用账号所有者的包名。最大长度为1024个字符。        |
 | callback | [AuthCallback](#authcallback9) | 是    | 回调函数，返回验证结果。 |
 
 **错误码：**
@@ -2952,10 +4714,13 @@ verifyCredential(name: string, owner: string, callback: AuthCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { Want } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.verifyCredential('zhangsan', 'com.example.accountjsdemo', {
       onResult: (resultCode: number, result?: appAccount.AuthResult) => {
@@ -2972,20 +4737,47 @@ verifyCredential(name: string, owner: string, callback: AuthCallback): void
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { Want } from '@kit.AbilityKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  const authCallback: appAccount.AuthCallback = {
+    onResult: (resultCode: int, result?: appAccount.AuthResult) => {
+      console.info('verifyCredential onResult, resultCode: ' + JSON.stringify(resultCode));
+      console.info('verifyCredential onResult, result: ' + JSON.stringify(result));
+    },
+    onRequestRedirected: (request: Want) => {
+      console.info('verifyCredential onRequestRedirected, request: ' + JSON.stringify(request));
+    }
+  }
+  try {
+    appAccountManager.verifyCredential('zhangsan', 'com.example.accountjsdemo', authCallback);
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`verifyCredential err: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### verifyCredential<sup>9+</sup>
 
 verifyCredential(name: string, owner: string, options: VerifyCredentialOptions, callback: AuthCallback): void
 
-验证用户凭据。使用callback异步回调。
+验证指定账号的凭据。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名    | 类型                    | 必填  | 说明                     |
 | -------- | ----------------------- | ----- | ----------------------- |
-| name     | string                  | 是    | 应用账号的名称。          |
-| owner    | string                  | 是    | 应用账号所有者的包名。        |
+| name     | string                  | 是    | 应用账号的名称。最大长度为512个字符。          |
+| owner    | string                  | 是    | 应用账号所有者的包名。最大长度为1024个字符。        |
 | options  | [VerifyCredentialOptions](#verifycredentialoptions9) | 是    | 验证凭据的选项。          |
 | callback | [AuthCallback](#authcallback9)   | 是    | 回调函数，返回验证结果。 |
 
@@ -3005,10 +4797,13 @@ verifyCredential(name: string, owner: string, options: VerifyCredentialOptions, 
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { Want } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   let options: appAccount.VerifyCredentialOptions = {
     credentialType: 'pin',
     credential: '123456'
@@ -3029,6 +4824,34 @@ verifyCredential(name: string, owner: string, options: VerifyCredentialOptions, 
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { Want } from '@kit.AbilityKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  let options: appAccount.VerifyCredentialOptions = {
+    credentialType: 'pin',
+    credential: '123456'
+  };
+  const authCallback: appAccount.AuthCallback = {
+    onResult: (resultCode: int, result?: appAccount.AuthResult) => {
+      console.info('verifyCredential onResult, resultCode: ' + JSON.stringify(resultCode));
+      console.info('verifyCredential onResult, result: ' + JSON.stringify(result));
+    },
+    onRequestRedirected: (request: Want) => {
+      console.info('verifyCredential onRequestRedirected, request: ' + JSON.stringify(request));
+    }
+  }
+
+  try {
+    appAccountManager.verifyCredential('zhangsan', 'com.example.accountjsdemo', options, authCallback);
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`verifyCredential err: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### setAuthenticatorProperties<sup>9+</sup>
 
 setAuthenticatorProperties(owner: string, callback: AuthCallback): void
@@ -3036,6 +4859,10 @@ setAuthenticatorProperties(owner: string, callback: AuthCallback): void
 设置指定应用的认证器属性。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3059,10 +4886,13 @@ setAuthenticatorProperties(owner: string, callback: AuthCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { Want } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   try {
     appAccountManager.setAuthenticatorProperties('com.example.accountjsdemo', {
       onResult: (resultCode: number, result?: appAccount.AuthResult) => {
@@ -3079,13 +4909,40 @@ setAuthenticatorProperties(owner: string, callback: AuthCallback): void
   }
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { Want } from '@kit.AbilityKit';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  const authCallback: appAccount.AuthCallback = {
+    onResult: (resultCode: int, result?: appAccount.AuthResult) => {
+      console.info('setAuthenticatorProperties onResult, resultCode: ' + JSON.stringify(resultCode));
+      console.info('setAuthenticatorProperties onResult, result: ' + JSON.stringify(result));
+    },
+    onRequestRedirected: (request: Want) => {
+      console.info('setAuthenticatorProperties onRequestRedirected, request: ' + JSON.stringify(request));
+    }
+  }
+  try {
+    appAccountManager.setAuthenticatorProperties('com.example.accountjsdemo', authCallback);
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setAuthenticatorProperties err: code is ${err.code}, message is ${err.message}`);
+  }
+  ```
+
 ### setAuthenticatorProperties<sup>9+</sup>
 
 setAuthenticatorProperties(owner: string, options: SetPropertiesOptions, callback: AuthCallback): void
 
-设置认证器属性。使用callback异步回调。
+设置指定应用的认证器属性。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3110,12 +4967,15 @@ setAuthenticatorProperties(owner: string, options: SetPropertiesOptions, callbac
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { Want } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   let options: appAccount.SetPropertiesOptions = {
-    properties: { prop1: 'value1' }
+    properties: {prop1: 'value1'}
   };
   try {
     appAccountManager.setAuthenticatorProperties('com.example.accountjsdemo', options, {
@@ -3131,6 +4991,35 @@ setAuthenticatorProperties(owner: string, options: SetPropertiesOptions, callbac
     const err = e as BusinessError;
     console.error(`setAuthenticatorProperties err: code is ${err.code}, message is ${err.message}`);
   } 
+
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { Want } from '@kit.AbilityKit';
+  import { RecordData } from '@ohos.base';
+
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  let properties: Record<string, RecordData> = { 'prop1': 'value1' }
+  let options: appAccount.SetPropertiesOptions = { properties };
+  const authCallback: appAccount.AuthCallback = {
+    onResult: (resultCode: int, result?: appAccount.AuthResult) => {
+      console.info('setAuthenticatorProperties onResult, resultCode: ' + JSON.stringify(resultCode));
+      console.info('setAuthenticatorProperties onResult, result: ' + JSON.stringify(result));
+    },
+    onRequestRedirected: (request: Want) => {
+      console.info('setAuthenticatorProperties onRequestRedirected, request: ' + JSON.stringify(request));
+    }
+  }
+
+  try {
+    appAccountManager.setAuthenticatorProperties('com.example.accountjsdemo', options, authCallback);
+  } catch (e: Error) {
+    const err = e as BusinessError;
+    console.error(`setAuthenticatorProperties err: code is ${err.code}, message is ${err.message}`);
+  }
+
   ```
 
 ### addAccount<sup>(deprecated)</sup>
@@ -3141,15 +5030,20 @@ addAccount(name: string, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
->从API version 7开始支持，从API version 9开始废弃。建议使用[createAccount](#createaccount9)替代。
+>从API version 7开始支持，从API version 9开始废弃，建议使用[createAccount](#createaccount9)替代。
+
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
 | 参数名      | 类型                        | 必填   | 说明                   |
 | -------- | ------------------------- | ---- | -------------------- |
-| name     | string                    | 是    | 应用账号的名称。          |
+| name     | string                    | 是    | 应用账号的名称。最大长度为512个字符。          |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当创建成功时，err为null，否则为错误对象。 |
 
 **示例：**
@@ -3170,15 +5064,19 @@ addAccount(name: string, extraInfo: string, callback: AsyncCallback&lt;void&gt;)
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[createAccount](#createaccount9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[createAccount](#createaccount9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
 | 参数名       | 类型                        | 必填   | 说明                                       |
 | --------- | ------------------------- | ---- | ---------------------------------------- |
-| name      | string                    | 是    | 应用账号的名称。                              |
+| name      | string                    | 是    | 应用账号的名称。最大长度为512个字符。                              |
 | extraInfo | string                    | 是    | 额外信息(能转换string类型的其它信息)，额外信息不能是应用账号的敏感信息（如应用账号密码、token等）。 |
 | callback  | AsyncCallback&lt;void&gt; | 是    | 回调函数。当创建成功时，err为null，否则为错误对象。             |
 
@@ -3198,23 +5096,27 @@ addAccount(name: string, extraInfo?: string): Promise&lt;void&gt;
 
 根据账号名和额外信息添加应用账号。使用Promise异步回调。
 
-> **说明：**  
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[createAccount](#createaccount9-2)替代。
+> **说明：**
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[createAccount](#createaccount9-2)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
 | 参数名       | 类型     | 必填   | 说明                                       |
 | --------- | ------ | ---- | ---------------------------------------- |
-| name      | string | 是    | 应用账号的名称。                            |
+| name      | string | 是    | 应用账号的名称。最大长度为512个字符。                            |
 | extraInfo | string | 否    | 额外信息(能转换string类型的其它信息)，额外信息不能是应用账号的敏感信息（如应用账号密码、token等），默认为空，表示创建的该账号无额外信息需要添加。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
 | ------------------- | --------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -3230,22 +5132,26 @@ addAccount(name: string, extraInfo?: string): Promise&lt;void&gt;
 
 ### addAccountImplicitly<sup>(deprecated)</sup>
 
-addAccountImplicitly(owner: string, authType: string, options: {[key: string]: any;}, callback: AuthenticatorCallback): void
+addAccountImplicitly(owner: string, authType: string, options: { [key: string]: any }, callback: AuthenticatorCallback): void
 
 根据指定的账号所有者隐式地添加应用账号。使用callback异步回调。
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[createAccountImplicitly](#createaccountimplicitly9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[createAccountImplicitly](#createaccountimplicitly9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
 | 参数名      | 类型                    | 必填   | 说明                      |
 | -------- | --------------------- | ---- | ----------------------- |
-| owner    | string                | 是    | 应用账号所有者的包名。          |
-| authType | string                | 是    | 鉴权类型。鉴权类型为自定义。  |
+| owner    | string                | 是    | 应用账号所有者的包名。最大长度为1024个字符。          |
+| authType | string                | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。  |
 | options  | {[key: string]: any}  | 是    | 鉴权所需要的可选项。可选项可根据自己需要设置。 |
 | callback | [AuthenticatorCallback](#authenticatorcallbackdeprecated) | 是    | 认证器回调对象，返回添加结果。         |
 
@@ -3298,15 +5204,19 @@ deleteAccount(name: string, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[removeAccount](#removeaccount9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[removeAccount](#removeaccount9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
 | 参数名      | 类型                        | 必填   | 说明               |
 | -------- | ------------------------- | ---- | ---------------- |
-| name     | string                    | 是    | 应用账号的名称。      |
+| name     | string                    | 是    | 应用账号的名称。最大长度为512个字符。      |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当删除成功时，err为null，否则为错误对象。 |
 
 **示例：**
@@ -3327,28 +5237,32 @@ deleteAccount(name: string): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[removeAccount](#removeaccount9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[removeAccount](#removeaccount9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
 | 参数名  | 类型     | 必填   | 说明          |
 | ---- | ------ | ---- | ----------- |
-| name | string | 是    | 应用账号的名称。 |
+| name | string | 是    | 应用账号的名称。最大长度为512个字符。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| ------------------ | -------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  appAccountManager.deleteAccount('ZhaoLiu').then(() => { 
+  appAccountManager.deleteAccount('ZhaoLiu').then(() => {
     console.info('deleteAccount Success');
   }).catch((err: BusinessError) => {
     console.error(`deleteAccount err: code is ${err.code}, message is ${err.message}`);
@@ -3359,21 +5273,25 @@ deleteAccount(name: string): Promise&lt;void&gt;
 
 disableAppAccess(name: string, bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
-禁止指定第三方应用账号名称对指定的第三方应用进行访问。使用callback异步回调。
+禁止指定第三方应用账号对指定包名称的第三方应用进行访问。使用callback异步回调。
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[setAppAccess](#setappaccess9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[setAppAccess](#setappaccess9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
 | 参数名        | 类型                        | 必填   | 说明                                |
 | ---------- | ------------------------- | ---- | --------------------------------- |
-| name       | string                    | 是    | 应用账号的名称。                  |
-| bundleName | string                    | 是    | 第三方应用的包名。                         |
-| callback   | AsyncCallback&lt;void&gt; | 是    | 回调函数。当禁止指定第三方应用账号名称对指定包名称的第三方应用进行访问设置成功时，err为null，否则为错误对象。 |
+| name       | string                    | 是    | 应用账号的名称。最大长度为512个字符。                  |
+| bundleName | string                    | 是    | 第三方应用的包名。最大长度为512个字符。                         |
+| callback   | AsyncCallback&lt;void&gt; | 是    | 回调函数。当禁止指定第三方应用账号对指定包名称的第三方应用进行访问设置成功时，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -3381,7 +5299,7 @@ disableAppAccess(name: string, bundleName: string, callback: AsyncCallback&lt;vo
   import { BusinessError } from '@kit.BasicServicesKit';
 
   appAccountManager.disableAppAccess('ZhangSan', 'com.example.accountjsdemo', (err: BusinessError) => { 
-    console.error(`disableAppAccess err: code is ${err.code}, message is ${err.message}`);
+      console.error(`disableAppAccess err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3393,22 +5311,26 @@ disableAppAccess(name: string, bundleName: string): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[setAppAccess](#setappaccess9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[setAppAccess](#setappaccess9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
 | 参数名        | 类型     | 必填   | 说明               |
 | ---------- | ------ | ---- | ---------------- |
-| name       | string | 是    | 要禁用访问的第三方应用账号的名称。 |
-| bundleName | string | 是    | 第三方应用的包名。        |
+| name       | string | 是    | 要禁用访问的第三方应用账号的名称。最大长度为512个字符。 |
+| bundleName | string | 是    | 第三方应用的包名。最大长度为512个字符。        |
 
 **返回值：**
 
 | 类型                  | 说明                    |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| ------------------ | -------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -3430,23 +5352,27 @@ enableAppAccess(name: string, bundleName: string, callback: AsyncCallback&lt;voi
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[setAppAccess](#setappaccess9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[setAppAccess](#setappaccess9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
 | 参数名        | 类型                        | 必填   | 说明                                |
 | ---------- | ------------------------- | ---- | --------------------------------- |
-| name       | string                    | 是    | 应用账号的名称。                           |
-| bundleName | string                    | 是    | 第三方应用的包名。                         |
+| name       | string                    | 是    | 应用账号的名称。最大长度为512个字符。                           |
+| bundleName | string                    | 是    | 第三方应用的包名。最大长度为512个字符。                         |
 | callback   | AsyncCallback&lt;void&gt; | 是    | 回调函数。当允许指定第三方应用账号名称对指定包名称的第三方应用进行访问设置成功时，err为null，否则为错误对象。 |
 
 **示例：**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   appAccountManager.enableAppAccess('ZhangSan', 'com.example.accountjsdemo', (err: BusinessError) => {
     if (err) {
       console.error(`enableAppAccess err: code is ${err.code}, message is ${err.message}`);
@@ -3464,22 +5390,26 @@ enableAppAccess(name: string, bundleName: string): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[setAppAccess](#setappaccess9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[setAppAccess](#setappaccess9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
 | 参数名        | 类型     | 必填   | 说明        |
 | ---------- | ------ | ---- | --------- |
-| name       | string | 是    | 应用账号的名称。   |
-| bundleName | string | 是    | 第三方应用的包名。 |
+| name       | string | 是    | 应用账号的名称。最大长度为512个字符。   |
+| bundleName | string | 是    | 第三方应用的包名。最大长度为512个字符。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| ------------------ | -------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -3501,17 +5431,21 @@ checkAppAccountSyncEnable(name: string, callback: AsyncCallback&lt;boolean&gt;):
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[checkDataSyncEnabled](#checkdatasyncenabled9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[checkDataSyncEnabled](#checkdatasyncenabled9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名      | 类型                           | 必填   | 说明                    |
 | -------- | ---------------------------- | ---- | --------------------- |
-| name     | string                       | 是    | 应用账号的名称。               |
+| name     | string                       | 是    | 应用账号的名称。最大长度为512个字符。               |
 | callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数。返回true表示指定应用账号已开启数据同步功能；返回false表示未开启。 |
 
 **示例：**
@@ -3536,17 +5470,21 @@ checkAppAccountSyncEnable(name: string): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[checkDataSyncEnabled](#checkdatasyncenabled9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[checkDataSyncEnabled](#checkdatasyncenabled9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名  | 类型     | 必填   | 说明      |
 | ---- | ------ | ---- | ------- |
-| name | string | 是    | 应用账号的名称。 |
+| name | string | 是    | 应用账号的名称。最大长度为512个字符。 |
 
 **返回值：**
 
@@ -3576,16 +5514,20 @@ setAccountCredential(name: string, credentialType: string, credential: string,ca
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setCredential](#setcredential9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
 | 参数名            | 类型                        | 必填   | 说明            |
 | -------------- | ------------------------- | ---- | ------------- |
-| name           | string                    | 是    | 应用账号的名称。     |
-| credentialType | string                    | 是    | 凭据类型。     |
-| credential     | string                    | 是    | 凭据取值。      |
-| callback       | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置此应用程序账号的凭据成功时，err为null，否则为错误对象。 |
+| name           | string                    | 是    | 应用账号的名称。最大长度为512个字符。     |
+| credentialType | string                    | 是    | 凭据类型。自定义的类型，最大长度为1024个字符。     |
+| credential     | string                    | 是    | 凭据取值。自定义的数据，最大长度为1024个字符。      |
+| callback       | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置指定应用账号的凭据成功时，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -3611,21 +5553,25 @@ setAccountCredential(name: string, credentialType: string, credential: string): 
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setCredential](#setcredential9-1)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
 | 参数名            | 类型     | 必填   | 说明         |
 | -------------- | ------ | ---- | ---------- |
-| name           | string | 是    | 应用账号的名称。   |
-| credentialType | string | 是    | 凭据类型。 |
-| credential     | string | 是    | 凭据取值。 |
+| name           | string | 是    | 应用账号的名称。最大长度为512个字符。   |
+| credentialType | string | 是    | 凭据类型。自定义的类型，最大长度为1024个字符。 |
+| credential     | string | 是    | 凭据取值。自定义的数据，最大长度为1024个字符。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| ------------------ | -------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -3647,15 +5593,19 @@ setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback&lt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[setCustomData](#setcustomdata9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[setCustomData](#setcustomdata9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
 | 参数名       | 类型                        | 必填   | 说明              |
 | --------- | ------------------------- | ---- | --------------- |
-| name      | string                    | 是    | 应用账号的名称。         |
+| name      | string                    | 是    | 应用账号的名称。最大长度为512个字符。         |
 | extraInfo | string                    | 是    | 额外信息(能转换string类型的其它信息)，额外信息不能是应用账号的敏感信息（如应用账号密码、token等）。       |
 | callback  | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置成功时，err为null，否则为错误对象。 |
 
@@ -3677,26 +5627,30 @@ setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback&lt;
 
 setAccountExtraInfo(name: string, extraInfo: string): Promise&lt;void&gt;
 
-设置此应用程序账号的额外信息。使用Promise异步回调。
+设置指定应用账号的额外信息。使用Promise异步回调。
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[setCustomData](#setcustomdata9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[setCustomData](#setcustomdata9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
 | 参数名       | 类型     | 必填   | 说明        |
 | --------- | ------ | ---- | --------- |
-| name      | string | 是    | 应用账号的名称。   |
+| name      | string | 是    | 应用账号的名称。最大长度为512个字符。   |
 | extraInfo | string | 是    | 额外信息(能转换string类型的其它信息)，额外信息不能是应用账号的敏感信息（如应用账号密码、token等）。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| ------------------ | -------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -3718,17 +5672,21 @@ setAppAccountSyncEnable(name: string, isEnable: boolean, callback: AsyncCallback
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[setDataSyncEnabled](#setdatasyncenabled9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[setDataSyncEnabled](#setdatasyncenabled9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名      | 类型                        | 必填   | 说明                        |
 | -------- | ------------------------- | ---- | ------------------------- |
-| name     | string                    | 是    | 应用账号的名称。                  |
+| name     | string                    | 是    | 应用账号的名称。最大长度为512个字符。                  |
 | isEnable | boolean                   | 是    | 是否开启数据同步。true表示开启数据同步，false表示关闭数据同步。   |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当开启或禁止成功时，err为null，否则为错误对象。 |
 
@@ -3754,24 +5712,28 @@ setAppAccountSyncEnable(name: string, isEnable: boolean): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[setDataSyncEnabled](#setdatasyncenabled9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[setDataSyncEnabled](#setdatasyncenabled9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名      | 类型      | 必填   | 说明          |
 | -------- | ------- | ---- | ----------- |
-| name     | string  | 是    | 应用账号的名称。     |
+| name     | string  | 是    | 应用账号的名称。最大长度为512个字符。     |
 | isEnable | boolean | 是    | 是否开启数据同步。true表示开启数据同步，false表示关闭数据同步。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| ------------------ | -------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -3793,15 +5755,19 @@ setAssociatedData(name: string, key: string, value: string, callback: AsyncCallb
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[setCustomData](#setcustomdata9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[setCustomData](#setcustomdata9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
 | 参数名      | 类型                        | 必填   | 说明                |
 | -------- | ------------------------- | ---- | ----------------- |
-| name     | string                    | 是    | 应用账号的名称。           |
+| name     | string                    | 是    | 应用账号的名称。最大长度为512个字符。           |
 | key      | string                    | 是    | 关联数据的键名。 |
 | value    | string                    | 是    | 关联数据的取值。         |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置与此应用账号关联的数据成功时，err为null，否则为错误对象。 |
@@ -3828,23 +5794,27 @@ setAssociatedData(name: string, key: string, value: string): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[setCustomData](#setcustomdata9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[setCustomData](#setcustomdata9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
 | 参数名   | 类型     | 必填   | 说明                |
 | ----- | ------ | ---- | ----------------- |
-| name  | string | 是    | 应用账号的名称。           |
+| name  | string | 是    | 应用账号的名称。最大长度为512个字符。           |
 | key      | string | 是    | 关联数据的键名。 |
 | value    | string | 是    | 关联数据的取值。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| ------------------ | -------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -3866,11 +5836,15 @@ getAllAccessibleAccounts(callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getAllAccounts](#getallaccounts9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getAllAccounts](#getallaccounts9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.GET_ALL_APP_ACCOUNTS，该权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -3882,7 +5856,7 @@ getAllAccessibleAccounts(callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   appAccountManager.getAllAccessibleAccounts((err: BusinessError, data: appAccount.AppAccountInfo[])=>{
     if (err) {
       console.error(`getAllAccessibleAccounts err: code is ${err.code}, message is ${err.message}`);
@@ -3900,11 +5874,15 @@ getAllAccessibleAccounts(): Promise&lt;Array&lt;AppAccountInfo&gt;&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getAllAccounts](#getallaccounts9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getAllAccounts](#getallaccounts9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.GET_ALL_APP_ACCOUNTS，该权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -3916,7 +5894,7 @@ getAllAccessibleAccounts(): Promise&lt;Array&lt;AppAccountInfo&gt;&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   appAccountManager.getAllAccessibleAccounts().then((data: appAccount.AppAccountInfo[]) => { 
     console.info('getAllAccessibleAccounts: ' + data);
   }).catch((err: BusinessError) => {
@@ -3932,18 +5910,22 @@ getAllAccounts(owner: string, callback: AsyncCallback&lt;Array&lt;AppAccountInfo
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getAccountsByOwner](#getaccountsbyowner9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getAccountsByOwner](#getaccountsbyowner9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.GET_ALL_APP_ACCOUNTS，该权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明        |
 | -------- | ---------------------------------------- | ---- | --------- |
-| owner    | string                                   | 是    | 应用账号所有者的包名。    |
-| callback | AsyncCallback&lt;Array&lt;[AppAccountInfo](#appaccountinfo)&gt;&gt; | 是    | 应用账号信息列表。 |
+| owner    | string                                   | 是    | 应用账号所有者的包名。最大长度为1024个字符。    |
+| callback | AsyncCallback&lt;Array&lt;[AppAccountInfo](#appaccountinfo)&gt;&gt; | 是    | 回调函数。当获取成功时，err为null，data为应用账号信息列表；否则为错误对象。 |
 
 **示例：**
 
@@ -3968,17 +5950,21 @@ getAllAccounts(owner: string): Promise&lt;Array&lt;AppAccountInfo&gt;&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getAccountsByOwner](#getaccountsbyowner9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getAccountsByOwner](#getaccountsbyowner9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **需要权限：** ohos.permission.GET_ALL_APP_ACCOUNTS，该权限仅系统应用可申请。
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名   | 类型     | 必填   | 说明     |
 | ----- | ------ | ---- | ------ |
-| owner | string | 是    | 应用账号所有者的包名。 |
+| owner | string | 是    | 应用账号所有者的包名。最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -4007,16 +5993,20 @@ getAccountCredential(name: string, credentialType: string, callback: AsyncCallba
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getCredential](#getcredential9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getCredential](#getcredential9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
 | 参数名            | 类型                          | 必填   | 说明             |
 | -------------- | --------------------------- | ---- | -------------- |
-| name           | string                      | 是    | 应用账号的名称。        |
-| credentialType | string                      | 是    | 凭据类型。 |
+| name           | string                      | 是    | 应用账号的名称。最大长度为512个字符。        |
+| credentialType | string                      | 是    | 凭据类型。自定义的类型，最大长度为1024个字符。 |
 | callback       | AsyncCallback&lt;string&gt; | 是    | 回调函数。当获取凭据成功时，err为null，data为指定应用账号的凭据；否则为错误对象。 |
 
 **示例：**
@@ -4041,21 +6031,25 @@ getAccountCredential(name: string, credentialType: string): Promise&lt;string&gt
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getCredential](#getcredential9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getCredential](#getcredential9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
 | 参数名            | 类型     | 必填   | 说明         |
 | -------------- | ------ | ---- | ---------- |
-| name           | string | 是    | 应用账号的名称。    |
-| credentialType | string | 是    | 凭据类型。 |
+| name           | string | 是    | 应用账号的名称。最大长度为512个字符。    |
+| credentialType | string | 是    | 凭据类型。自定义的类型，最大长度为1024个字符。 |
 
 **返回值：**
 
 | 类型                    | 说明                    |
-| :-------------------- | :-------------------- |
+| -------------------- | -------------------- |
 | Promise&lt;string&gt; | Promise对象，返回指定应用账号的凭据。 |
 
 **示例：**
@@ -4078,15 +6072,19 @@ getAccountExtraInfo(name: string, callback: AsyncCallback&lt;string&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getCustomData](#getcustomdata9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getCustomData](#getcustomdata9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
 | 参数名      | 类型                          | 必填   | 说明              |
 | -------- | --------------------------- | ---- | --------------- |
-| name     | string                      | 是    | 应用账号的名称。         |
+| name     | string                      | 是    | 应用账号的名称。最大长度为512个字符。         |
 | callback | AsyncCallback&lt;string&gt; | 是    | 回调函数。当获取此应用账号的额外信息成功时，err为null，data返回此应用账号的额外信息对象；否则为错误对象。 |
 
 **示例：**
@@ -4111,21 +6109,25 @@ getAccountExtraInfo(name: string): Promise&lt;string&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getCustomData](#getcustomdata9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getCustomData](#getcustomdata9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
 | 参数名  | 类型     | 必填   | 说明      |
 | ---- | ------ | ---- | ------- |
-| name | string | 是    | 应用账号的名称。 |
+| name | string | 是    | 应用账号的名称。最大长度为512个字符。 |
 
 **返回值：**
 
 | 类型                    | 说明                    |
-| :-------------------- | :-------------------- |
-| Promise&lt;string&gt; | Promise对象，返回此应用程序账号的额外信息对象。 |
+| -------------------- | -------------------- |
+| Promise&lt;string&gt; | Promise对象，返回指定应用账号的额外信息。 |
 
 **示例：**
 
@@ -4147,15 +6149,19 @@ getAssociatedData(name: string, key: string, callback: AsyncCallback&lt;string&g
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getCustomData](#getcustomdata9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getCustomData](#getcustomdata9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
 | 参数名      | 类型                          | 必填   | 说明                |
 | -------- | --------------------------- | ---- | ----------------- |
-| name     | string                      | 是    | 应用账号的名称。           |
+| name     | string                      | 是    | 应用账号的名称。最大长度为512个字符。           |
 | key      | string                      | 是    | 关联数据的键名。         |
 | callback | AsyncCallback&lt;string&gt; | 是    | 回调函数。当获取成功时，err为null，data为关联数据的取值；否则为错误对象。 |
 
@@ -4177,25 +6183,29 @@ getAssociatedData(name: string, key: string, callback: AsyncCallback&lt;string&g
 
 getAssociatedData(name: string, key: string): Promise&lt;string&gt;
 
-获取与此应用程序账号关联的数据。使用Promise异步回调。
+获取指定应用账号的关联数据。使用Promise异步回调。
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getCustomData](#getcustomdata9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getCustomData](#getcustomdata9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
 | 参数名  | 类型     | 必填   | 说明        |
 | ---- | ------ | ---- | --------- |
-| name | string | 是    | 应用账号的名称。   |
+| name | string | 是    | 应用账号的名称。最大长度为512个字符。   |
 | key  | string | 是    | 关联数据的键名。 |
 
 **返回值：**
 
 | 类型                    | 说明                    |
-| :-------------------- | :-------------------- |
+| -------------------- | -------------------- |
 | Promise&lt;string&gt; | Promise对象，返回关联数据的取值。 |
 
 **示例：**
@@ -4218,9 +6228,13 @@ on(type: 'change', owners: Array&lt;string&gt;, callback: Callback&lt;Array&lt;A
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[on('accountChange')](#onaccountchange9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[on('accountChange')](#onaccountchange9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -4238,11 +6252,10 @@ on(type: 'change', owners: Array&lt;string&gt;, callback: Callback&lt;Array&lt;A
   function changeOnCallback(data: appAccount.AppAccountInfo[]): void {
     console.info('receive change data:' + JSON.stringify(data));
   }
-
-  try {
+  try{
     appAccountManager.on('change', ['com.example.actsaccounttest'], changeOnCallback);
-  } catch (e) {
-    const err = e as BusinessError;
+  }
+  catch(err){
     console.error(`on accountOnOffDemo code is ${err.code}, message is ${err.message}`);
   }
   ```
@@ -4255,9 +6268,13 @@ off(type: 'change', callback?: Callback&lt;Array&lt;AppAccountInfo&gt;&gt;): voi
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[off('accountChange')](#offaccountchange9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[off('accountChange')](#offaccountchange9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -4272,39 +6289,46 @@ off(type: 'change', callback?: Callback&lt;Array&lt;AppAccountInfo&gt;&gt;): voi
   import { BusinessError } from '@kit.BasicServicesKit';
 
   function changeOnCallback(data: appAccount.AppAccountInfo[]): void {
-    console.info('receive change data: ' + JSON.stringify(data));
-    appAccountManager.off('change', () => {
-      console.info('off finish');
-    })
+    console.info('receive change data:' + JSON.stringify(data));
   }
 
   try {
     appAccountManager.on('change', ['com.example.actsaccounttest'], changeOnCallback);
   } catch (e) {
     const err = e as BusinessError;
-    console.error(`on accountOnOffDemo err: code is ${err.code}, message is ${err.message}`);
+    console.error(`on change failed, code is ${err.code}, message is ${err.message}`);
+  }
+  try {
+    appAccountManager.off('change', changeOnCallback);
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`off change failed, code is ${err.code}, message is ${err.message}`);
   }
   ```
 
 ### authenticate<sup>(deprecated)</sup>
 
-authenticate(name: string, owner: string, authType: string, options: {[key: string]: any;}, callback: AuthenticatorCallback): void
+authenticate(name: string, owner: string, authType: string, options: { [key: string]: any }, callback: AuthenticatorCallback): void
 
 对应用账号进行鉴权以获取授权令牌。使用callback异步回调。
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[auth](#auth9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[auth](#auth9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
 | 参数名      | 类型                    | 必填   | 说明              |
 | -------- | --------------------- | ---- | --------------- |
-| name     | string                | 是    | 应用账号的名称。     |
-| owner    | string                | 是    | 应用账号所有者的包名。  |
-| authType | string                | 是    | 鉴权类型。           |
+| name     | string                | 是    | 应用账号的名称。最大长度为512个字符。     |
+| owner    | string                | 是    | 应用账号所有者的包名。最大长度为1024个字符。  |
+| authType | string                | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。           |
 | options  | {[key: string]: any}  | 是    | 鉴权所需的可选项。       |
 | callback | [AuthenticatorCallback](#authenticatorcallbackdeprecated) | 是    | 回调对象，返回鉴权结果。 |
 
@@ -4357,17 +6381,21 @@ getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCall
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getAuthToken](#getauthtoken9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getAuthToken](#getauthtoken9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
 | 参数名      | 类型                          | 必填   | 说明          |
 | -------- | --------------------------- | ---- | ----------- |
-| name     | string                      | 是    | 应用账号的名称。    |
-| owner    | string                      | 是    | 应用账号所有者的包名。 |
-| authType | string                      | 是    | 鉴权类型。       |
+| name     | string                      | 是    | 应用账号的名称。最大长度为512个字符。    |
+| owner    | string                      | 是    | 应用账号所有者的包名。最大长度为1024个字符。 |
+| authType | string                      | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。       |
 | callback | AsyncCallback&lt;string&gt; | 是    | 回调函数。当获取成功时，err为null，data为授权令牌值；否则为错误对象。   |
 
 **示例：**
@@ -4393,17 +6421,21 @@ getOAuthToken(name: string, owner: string, authType: string): Promise&lt;string&
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getAuthToken](#getauthtoken9-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getAuthToken](#getauthtoken9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
 | 参数名      | 类型     | 必填   | 说明          |
 | -------- | ------ | ---- | ----------- |
-| name     | string | 是    | 应用账号的名称。    |
-| owner    | string | 是    | 应用账号所有者的包名。 |
-| authType | string | 是    | 鉴权类型。       |
+| name     | string | 是    | 应用账号的名称。最大长度为512个字符。    |
+| owner    | string | 是    | 应用账号所有者的包名。最大长度为1024个字符。 |
+| authType | string | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。       |
 
 **返回值：**
 
@@ -4431,17 +6463,21 @@ setOAuthToken(name: string, authType: string, token: string, callback: AsyncCall
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[setAuthToken](#setauthtoken9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[setAuthToken](#setauthtoken9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
 | 参数名      | 类型                        | 必填   | 说明       |
 | -------- | ------------------------- | ---- | -------- |
-| name     | string                    | 是    | 应用账号的名称。 |
-| authType | string                    | 是    | 鉴权类型。    |
-| token    | string                    | 是    | 授权令牌。 |
+| name     | string                    | 是    | 应用账号的名称。最大长度为512个字符。 |
+| authType | string                    | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。    |
+| token    | string                    | 是    | 授权令牌。最大长度为1024个字符。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置成功时，err为null；否则为错误对象。 |
 
 **示例：**
@@ -4466,23 +6502,27 @@ setOAuthToken(name: string, authType: string, token: string): Promise&lt;void&gt
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[setAuthToken](#setauthtoken9-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[setAuthToken](#setauthtoken9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
 | 参数名      | 类型     | 必填   | 说明       |
 | -------- | ------ | ---- | -------- |
-| name     | string | 是    | 应用账号的名称。 |
-| authType | string | 是    | 鉴权类型。    |
-| token    | string | 是    | 授权令牌。 |
+| name     | string | 是    | 应用账号的名称。最大长度为512个字符。 |
+| authType | string | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。    |
+| token    | string | 是    | 授权令牌。最大长度为1024个字符。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
 | ------------------- | --------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -4504,18 +6544,22 @@ deleteOAuthToken(name: string, owner: string, authType: string, token: string, c
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[deleteAuthToken](#deleteauthtoken9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[deleteAuthToken](#deleteauthtoken9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
 | 参数名      | 类型                        | 必填   | 说明           |
 | -------- | ------------------------- | ---- | ------------ |
-| name     | string                    | 是    | 应用账号的名称。     |
-| owner    | string                    | 是    | 应用账号所有者的包名。  |
-| authType | string                    | 是    | 鉴权类型。        |
-| token    | string                    | 是    | 授权令牌。 |
+| name     | string                    | 是    | 应用账号的名称。最大长度为512个字符。     |
+| owner    | string                    | 是    | 应用账号所有者的包名。最大长度为1024个字符。  |
+| authType | string                    | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。        |
+| token    | string                    | 是    | 授权令牌。最大长度为1024个字符。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当删除成功时，err为null；否则为错误对象。     |
 
 **示例：**
@@ -4541,24 +6585,28 @@ deleteOAuthToken(name: string, owner: string, authType: string, token: string): 
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[deleteAuthToken](#deleteauthtoken9-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[deleteAuthToken](#deleteauthtoken9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
 | 参数名      | 类型     | 必填   | 说明           |
 | -------- | ------ | ---- | ------------ |
-| name     | string | 是    | 应用账号的名称。     |
-| owner    | string | 是    | 应用账号所有者的包名。  |
-| authType | string | 是    | 鉴权类型。        |
-| token    | string | 是    | 授权令牌。 |
+| name     | string | 是    | 应用账号的名称。最大长度为512个字符。     |
+| owner    | string | 是    | 应用账号所有者的包名。最大长度为1024个字符。  |
+| authType | string | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。        |
+| token    | string | 是    | 授权令牌。最大长度为1024个字符。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
 | ------------------- | --------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -4580,17 +6628,21 @@ setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVi
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[setAuthTokenVisibility](#setauthtokenvisibility9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[setAuthTokenVisibility](#setauthtokenvisibility9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
 | 参数名        | 类型                        | 必填   | 说明                        |
 | ---------- | ------------------------- | ---- | ------------------------- |
-| name       | string                    | 是    | 应用账号的名称。                  |
-| authType   | string                    | 是    | 鉴权类型。                     |
-| bundleName | string                    | 是    | 被设置可见性的应用包名。              |
+| name       | string                    | 是    | 应用账号的名称。最大长度为512个字符。                  |
+| authType   | string                    | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。                     |
+| bundleName | string                    | 是    | 被设置可见性的应用包名。最大长度为512个字符。              |
 | isVisible  | boolean                   | 是    | 是否可见。true表示可见，false表示不可见。 |
 | callback   | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置成功时，err为null；否则为错误对象。                  |
 
@@ -4617,24 +6669,28 @@ setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVi
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[setAuthTokenVisibility](#setauthtokenvisibility9-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[setAuthTokenVisibility](#setauthtokenvisibility9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
 | 参数名        | 类型      | 必填   | 说明           |
 | ---------- | ------- | ---- | ------------ |
-| name       | string  | 是    | 应用账号的名称。     |
-| authType   | string  | 是    | 鉴权类型。        |
-| bundleName | string  | 是    | 被设置可见性的应用包名。 |
+| name       | string  | 是    | 应用账号的名称。最大长度为512个字符。     |
+| authType   | string  | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。        |
+| bundleName | string  | 是    | 被设置可见性的应用包名。最大长度为512个字符。 |
 | isVisible  | boolean | 是    | 是否可见。true表示可见，false表示不可见。        |
 
 **返回值：**
 
 | 类型                  | 说明                    |
 | ------------------- | --------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -4656,17 +6712,21 @@ checkOAuthTokenVisibility(name: string, authType: string, bundleName: string, ca
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[checkAuthTokenVisibility](#checkauthtokenvisibility9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[checkAuthTokenVisibility](#checkauthtokenvisibility9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
 | 参数名        | 类型                           | 必填   | 说明          |
 | ---------- | ---------------------------- | ---- | ----------- |
-| name       | string                       | 是    | 应用账号的名称。    |
-| authType   | string                       | 是    | 鉴权类型。       |
-| bundleName | string                       | 是    | 检查可见性的应用包名。 |
+| name       | string                       | 是    | 应用账号的名称。最大长度为512个字符。    |
+| authType   | string                       | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。       |
+| bundleName | string                       | 是    | 检查可见性的应用包名。最大长度为512个字符。 |
 | callback   | AsyncCallback&lt;boolean&gt; | 是    | 回调函数。当检查成功时，err为null，data为true表示可见，data为false表示不可见；否则为错误对象。    |
 
 **示例：**
@@ -4692,17 +6752,21 @@ checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): P
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[checkAuthTokenVisibility](#checkauthtokenvisibility9-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[checkAuthTokenVisibility](#checkauthtokenvisibility9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
 | 参数名        | 类型     | 必填   | 说明            |
 | ---------- | ------ | ---- | ------------- |
-| name       | string | 是    | 应用账号的名称。      |
-| authType   | string | 是    | 鉴权类型。         |
-| bundleName | string | 是    | 用于检查可见性的应用包名。 |
+| name       | string | 是    | 应用账号的名称。最大长度为512个字符。      |
+| authType   | string | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。         |
+| bundleName | string | 是    | 用于检查可见性的应用包名。最大长度为512个字符。 |
 
 **返回值：**
 
@@ -4731,16 +6795,20 @@ getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback&lt;Array&
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getAllAuthTokens](#getallauthtokens9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getAllAuthTokens](#getallauthtokens9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明          |
 | -------- | ---------------------------------------- | ---- | ----------- |
-| name     | string                                   | 是    | 应用账号的名称。    |
-| owner    | string                                   | 是    | 应用账号所有者的包名。 |
+| name     | string                                   | 是    | 应用账号的名称。最大长度为512个字符。    |
+| owner    | string                                   | 是    | 应用账号所有者的包名。最大长度为1024个字符。 |
 | callback | AsyncCallback&lt;Array&lt;[OAuthTokenInfo](#oauthtokeninfodeprecated)&gt;&gt; | 是    | 回调函数。当获取成功时，err为null，data为授权令牌数组；否则为错误对象。    |
 
 **示例：**
@@ -4766,16 +6834,20 @@ getAllOAuthTokens(name: string, owner: string): Promise&lt;Array&lt;OAuthTokenIn
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getAllAuthTokens](#getallauthtokens9-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getAllAuthTokens](#getallauthtokens9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
 | 参数名   | 类型     | 必填   | 说明          |
 | ----- | ------ | ---- | ----------- |
-| name  | string | 是    | 应用账号的名称。    |
-| owner | string | 是    | 应用账号所有者的包名。 |
+| name  | string | 是    | 应用账号的名称。最大长度为512个字符。    |
+| owner | string | 是    | 应用账号所有者的包名。最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -4804,16 +6876,20 @@ getOAuthList(name: string, authType: string, callback: AsyncCallback&lt;Array&lt
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getAuthList](#getauthlist9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getAuthList](#getauthlist9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                      |
 | -------- | ---------------------------------------- | ---- | ----------------------- |
-| name     | string                                   | 是    | 应用账号的名称。                |
-| authType | string                                   | 是    | 鉴权类型。 |
+| name     | string                                   | 是    | 应用账号的名称。最大长度为512个字符。                |
+| authType | string                                   | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。 |
 | callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是    | 回调函数。当获取成功时，err为null，data为被授权的包名数组；否则为错误对象。               |
 
 **示例：**
@@ -4834,20 +6910,24 @@ getOAuthList(name: string, authType: string, callback: AsyncCallback&lt;Array&lt
 
 getOAuthList(name: string, authType: string): Promise&lt;Array&lt;string&gt;&gt;
 
-获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setOAuthTokenVisibility](#setoauthtokenvisibilitydeprecated)来设置）。使用Promise异步回调。
+获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setOAuthTokenVisibility](#setoauthtokenvisibilitydeprecated-1)来设置）。使用Promise异步回调。
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getAuthList](#getauthlist9-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getAuthList](#getauthlist9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
 | 参数名      | 类型     | 必填   | 说明                      |
 | -------- | ------ | ---- | ----------------------- |
-| name     | string | 是    | 应用账号的名称。                |
-| authType | string | 是    | 鉴权类型。 |
+| name     | string | 是    | 应用账号的名称。最大长度为512个字符。                |
+| authType | string | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -4875,9 +6955,13 @@ getAuthenticatorCallback(sessionId: string, callback: AsyncCallback&lt;Authentic
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getAuthCallback](#getauthcallback9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getAuthCallback](#getauthcallback9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4905,8 +6989,8 @@ getAuthenticatorCallback(sessionId: string, callback: AsyncCallback&lt;Authentic
             name: 'LiSi',
             owner: 'com.example.accountjsdemo',
             authType: 'getSocialData',
-            token: 'xxxxxx'
-          });
+            token: 'xxxxxx'}
+          );
         });
     }
   }
@@ -4920,9 +7004,13 @@ getAuthenticatorCallback(sessionId: string): Promise&lt;AuthenticatorCallback&gt
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getAuthCallback](#getauthcallback9-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getAuthCallback](#getauthcallback9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -4951,8 +7039,8 @@ getAuthenticatorCallback(sessionId: string): Promise&lt;AuthenticatorCallback&gt
           name: 'LiSi',
           owner: 'com.example.accountjsdemo',
           authType: 'getSocialData',
-          token: 'xxxxxx'
-        });
+          token: 'xxxxxx'}
+        );
       }).catch((err: BusinessError) => {
         console.error(`getAuthenticatorCallback err: code is ${err.code}, message is ${err.message}`);
       });
@@ -4968,15 +7056,19 @@ getAuthenticatorInfo(owner: string, callback: AsyncCallback&lt;AuthenticatorInfo
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[queryAuthenticatorInfo](#queryauthenticatorinfo9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[queryAuthenticatorInfo](#queryauthenticatorinfo9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
 | 参数名      | 类型                                     | 必填   | 说明          |
 | -------- | -------------------------------------- | ---- | ----------- |
-| owner    | string                                 | 是    | 应用账号所有者的包名。 |
+| owner    | string                                 | 是    | 应用账号所有者的包名。最大长度为1024个字符。 |
 | callback | AsyncCallback&lt;[AuthenticatorInfo](#authenticatorinfo8)&gt; | 是    | 回调函数。当获取成功时，err为null，data为认证器信息对象；否则为错误对象。    |
 
 **示例：**
@@ -5002,15 +7094,19 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[queryAuthenticatorInfo](#queryauthenticatorinfo9-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[queryAuthenticatorInfo](#queryauthenticatorinfo9-1)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
 | 参数名   | 类型     | 必填   | 说明          |
 | ----- | ------ | ---- | ----------- |
-| owner | string | 是    | 应用账号所有者的包名。 |
+| owner | string | 是    | 应用账号所有者的包名。最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -5037,6 +7133,10 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 类型     | 只读  | 可选   | 说明          |
 | ----- | ------ | ---- | ---- | ----------- |
 | owner | string | 否 | 否    | 应用账号所有者的包名。 |
@@ -5047,6 +7147,10 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 表示Auth令牌信息。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称               | 类型            | 只读  | 可选   | 说明              |
 | -------------------- | -------------- | -----| ----- | ---------------- |
@@ -5060,9 +7164,13 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[AuthTokenInfo](#authtokeninfo9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[AuthTokenInfo](#authtokeninfo9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 | 名称               | 类型            | 只读  | 可选   | 说明              |
 | -------------------- | -------------- | ----- | ----- | ---------------- |
@@ -5075,17 +7183,25 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 类型     | 只读  | 可选   | 说明         |
 | ------- | ------ | ---- | ---- | ---------- |
 | owner   | string | 否 | 否    | 认证器的所有者的包名。 |
-| iconId  | number | 否 | 否    | 认证器的图标标识。  |
-| labelId | number | 否 | 否    | 认证器的标签标识。  |
+| iconId  | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否    | 认证器的图标标识。  |
+| labelId | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 否    | 认证器的标签标识。  |
 
 ## AuthResult<sup>9+</sup>
 
 表示认证结果信息。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 类型     | 只读  | 可选   | 说明         |
 | ------- | ------ | ---- | ---- | ---------- |
@@ -5098,9 +7214,13 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 类型     | 只读  | 可选   | 说明         |
 | ------- | ------ | ---- | ---- | ---------- |
-| customData   | Record<string, string> | 否 | 是    | 自定义数据，默认为空。 |
+| customData   | Record<string, string> | 否 | 是    | 自定义数据，默认为空。不建议包含敏感数据。 |
 
 ## CreateAccountImplicitlyOptions<sup>9+</sup>
 
@@ -5108,17 +7228,25 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 类型     | 只读  | 可选   | 说明         |
 | ------- | ------ | ---- | ---- | ---------- |
 | requiredLabels   | Array&lt;string&gt; | 否 | 是    | 所需的标签，默认为空。 |
 | authType   | string | 否 | 是    | 鉴权类型，默认为空。 |
-| parameters   | Record<string, Object> | 否 | 是    | 自定义参数对象，默认为空。 |
+| parameters   | ArkTS-Dyn: Record<string, Object><br>ArkTS-Sta: Record&lt;string, RecordData&gt; | 否 | 是    | 自定义参数对象，默认为空。 |
 
 ## SelectAccountsOptions<sup>9+</sup>
 
 表示用于选择账号的选项。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 类型                         | 只读  | 可选   | 说明                |
 | --------------- | --------------------------- | ----- | ----- | ------------------- |
@@ -5132,11 +7260,16 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称          | 类型                   | 只读  | 可选   | 说明           |
 | -------------- | ---------------------- | ----- | ----- | -------------- |
 | credentialType | string                 | 否 | 是    | 凭据类型，默认为空。      |
 | credential     | string                 | 否 | 是    | 凭据取值，默认为空。      |
-| parameters     | Record<string, Object> | 否 | 是    | 自定义参数对象，默认为空。 |
+| parameters     | ArkTS-Dyn: Record<string, Object><br>ArkTS-Sta: Record&lt;string, RecordData&gt;  | 否 | 是    | 自定义参数对象，默认为空。 |
+
 
 ## SetPropertiesOptions<sup>9+</sup>
 
@@ -5144,10 +7277,14 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 类型                    | 只读  | 可选   | 说明           |
 | ---------- | ---------------------- | ----- | ----- | -------------- |
-| properties | Record<string, Object> | 否 | 是    | 属性对象，默认为空。      |
-| parameters | Record<string, Object> | 否 | 是    | 自定义参数对象，默认为空。 |
+| properties | ArkTS-Dyn: Record<string, Object><br>ArkTS-Sta: Record&lt;string, RecordData&gt; | 否 | 是    | 属性对象，默认为空。      |
+| parameters | ArkTS-Dyn: Record<string, Object><br>ArkTS-Sta: Record&lt;string, RecordData&gt; | 否 | 是    | 自定义参数对象，默认为空。 |
 
 ## Constants<sup>8+</sup>
 
@@ -5157,32 +7294,36 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 | 名称                            | 值                    | 说明                   |
 | -------------------------------- | ---------------------- | ----------------------- |
-| ACTION_ADD_ACCOUNT_IMPLICITLY<sup>(deprecated)</sup>    | 'addAccountImplicitly' | 表示操作，隐式添加账号。<br>**说明：**从API version 8开始支持，从API version 9开始废弃，建议使用ACTION_CREATE_ACCOUNT_IMPLICITLY替代。  |
-| ACTION_AUTHENTICATE<sup>(deprecated)</sup>              | 'authenticate'         | 表示操作，鉴权。<br>**说明：**从API version 8开始支持，从API version 9开始废弃，建议使用ACTION_AUTH替代。         |
-| ACTION_CREATE_ACCOUNT_IMPLICITLY<sup>9+</sup>    | 'createAccountImplicitly' | 表示操作，隐式创建账号。  |
-| ACTION_AUTH<sup>9+</sup>              | 'auth'         | 表示操作，鉴权。         |
-| ACTION_VERIFY_CREDENTIAL<sup>9+</sup>    | 'verifyCredential' | 表示操作，验证凭据。  |
-| ACTION_SET_AUTHENTICATOR_PROPERTIES<sup>9+</sup> | 'setAuthenticatorProperties' | 表示操作，设置认证器属性。      |
-| KEY_NAME                         | 'name'                 | 表示键名，应用账号的名称。  |
-| KEY_OWNER                        | 'owner'                | 表示键名，应用账号所有者的包名。|
-| KEY_TOKEN                        | 'token'                | 表示键名，令牌。         |
-| KEY_ACTION                       | 'action'               | 表示键名，操作。         |
-| KEY_AUTH_TYPE                    | 'authType'             | 表示键名，鉴权类型。     |
-| KEY_SESSION_ID                   | 'sessionId'            | 表示键名，会话标识。     |
-| KEY_CALLER_PID                   | 'callerPid'            | 表示键名，调用方PID。    |
-| KEY_CALLER_UID                   | 'callerUid'            | 表示键名，调用方UID。    |
-| KEY_CALLER_BUNDLE_NAME           | 'callerBundleName'     | 表示键名，调用方包名。    |
-| KEY_REQUIRED_LABELS<sup>9+</sup> | 'requiredLabels'       | 表示键名，必需的标签。    |
-| KEY_BOOLEAN_RESULT<sup>9+</sup>  | 'booleanResult'        | 表示键名，布尔返回值。    |
+| ACTION_ADD_ACCOUNT_IMPLICITLY<sup>(deprecated)</sup>    | 'addAccountImplicitly' | 表示操作，隐式添加账号。<br>**说明：** 从API version 8开始支持，从API version 9开始废弃，建议使用ACTION_CREATE_ACCOUNT_IMPLICITLY替代。 <br/>**ArkTS模式：** 仅适用于ArkTS-Dyn。  <br/>**ArkTS-Dyn起始版本：** 8 |
+| ACTION_AUTHENTICATE<sup>(deprecated)</sup>              | 'authenticate'         | 表示操作，鉴权。<br>**说明：** 从API version 8开始支持，从API version 9开始废弃，建议使用ACTION_AUTH替代。<br/>**ArkTS模式：** 仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 8 |
+| ACTION_CREATE_ACCOUNT_IMPLICITLY<sup>9+</sup>    | 'createAccountImplicitly' | 表示操作，隐式创建账号。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23  |
+| ACTION_AUTH<sup>9+</sup>              | 'auth'         | 表示操作，鉴权。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23         |
+| ACTION_VERIFY_CREDENTIAL<sup>9+</sup>    | 'verifyCredential' | 表示操作，验证凭据。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23  |
+| ACTION_SET_AUTHENTICATOR_PROPERTIES<sup>9+</sup> | 'setAuthenticatorProperties' | 表示操作，设置认证器属性。 <br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23     |
+| KEY_NAME                         | 'name'                 | 表示键名，应用账号的名称。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23  |
+| KEY_OWNER                        | 'owner'                | 表示键名，应用账号所有者的包名。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23|
+| KEY_TOKEN                        | 'token'                | 表示键名，令牌。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23         |
+| KEY_ACTION                       | 'action'               | 表示键名，操作。 <br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23        |
+| KEY_AUTH_TYPE                    | 'authType'             | 表示键名，鉴权类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23     |
+| KEY_SESSION_ID                   | 'sessionId'            | 表示键名，会话标识。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23     |
+| KEY_CALLER_PID                   | 'callerPid'            | 表示键名，调用方PID。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23    |
+| KEY_CALLER_UID                   | 'callerUid'            | 表示键名，调用方UID。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23    |
+| KEY_CALLER_BUNDLE_NAME           | 'callerBundleName'     | 表示键名，调用方包名。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23    |
+| KEY_REQUIRED_LABELS<sup>9+</sup> | 'requiredLabels'       | 表示键名，必需的标签。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23    |
+| KEY_BOOLEAN_RESULT<sup>9+</sup>  | 'booleanResult'        | 表示键名，布尔返回值。 <br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23   |
 
 ## ResultCode<sup>(deprecated)</sup>
 
 表示返回码的枚举。
 
 > **说明：**<br/>
-> 从API version 8开始支持，从API version 9开始废弃。相关信息建议查看[账号管理错误码](errorcode-account.md)替代。
+> 从API version 8开始支持，从API version 9开始废弃，相关信息建议查看[账号管理错误码](errorcode-account.md)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 | 名称                                  | 值   | 说明           |
 | ----------------------------------- | ----- | ------------ |
@@ -5212,22 +7353,54 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 ### onResult<sup>9+</sup>
 
-onResult: (code: number, result?: AuthResult) =&gt; void
+ArkTS-Dyn: onResult: (code: number, result?: AuthResult) =&gt; void
+
+ArkTS-Sta: onResult: (code: int, result?: AuthResult) =&gt; void
 
 通知请求结果。
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                   | 必填   | 说明     |
 | ------ | -------------------- | ---- | ------ |
-| code   | number               | 是    | 鉴权结果码。 |
+| code   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 鉴权结果码。 |
 | result | [AuthResult](#authresult9) | 否    | 鉴权结果，默认为空，表示不接收认证结果信息。  |
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  let sessionId = '1234';
+  appAccountManager.getAuthCallback(sessionId).then((callback: appAccount.AuthCallback) => {
+      let result: appAccount.AuthResult = {
+          account: {
+            name: 'Lisi',
+            owner: 'com.example.accountjsdemo',
+          },
+          tokenInfo: {
+            token: 'xxxxxx',
+            authType: 'getSocialData'
+          }
+      };
+      callback.onResult(0, result);
+  }).catch((err: BusinessError) => {
+      console.error(`getAuthCallback err: code is ${err.code}, message is ${err.message}`);
+  });
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
@@ -5243,8 +7416,9 @@ onResult: (code: number, result?: AuthResult) =&gt; void
         authType: 'getSocialData'
       }
     };
-    callback.onResult(appAccount.ResultCode.SUCCESS, result);
-  }).catch((err: BusinessError) => {
+    callback.onResult(0, result);
+  }).catch((e: Error) => {
+    const err = e as BusinessError;
     console.error(`getAuthCallback err: code is ${err.code}, message is ${err.message}`);
   });
   ```
@@ -5257,6 +7431,10 @@ onRequestRedirected: (request: Want) =&gt; void
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型   | 必填   | 说明         |
@@ -5265,7 +7443,9 @@ onRequestRedirected: (request: Want) =&gt; void
 
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { Want } from '@kit.AbilityKit';
 
   class MyAuthenticator extends appAccount.Authenticator {
@@ -5290,8 +7470,40 @@ onRequestRedirected: (request: Want) =&gt; void
           authType: 'getSocialData'
         }
       };
-      callback.onResult(appAccount.ResultCode.SUCCESS, result);
+      callback.onResult(0, result);
     }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { Want } from '@kit.AbilityKit';
+
+  class MyAuthenticator extends appAccount.Authenticator {
+      createAccountImplicitly(
+        options: appAccount.CreateAccountImplicitlyOptions, callback: appAccount.AuthCallback) {
+          let want: Want = {
+            bundleName: 'com.example.accountjsdemo',
+            abilityName: 'com.example.accountjsdemo.LoginAbility',
+          };
+          callback.onRequestRedirected(want);
+      }
+
+      auth(name: string, authType: string,
+        options: Record<string, Object>, callback: appAccount.AuthCallback) {
+          let result: appAccount.AuthResult = {
+            account: {
+              name: 'Lisi',
+              owner: 'com.example.accountjsdemo',
+            },
+            tokenInfo: {
+              token: 'xxxxxx',
+              authType: 'getSocialData'
+            }
+          };
+          callback.onResult(0, result);
+      }
   }
   ```
 
@@ -5303,11 +7515,17 @@ onRequestContinued?: () =&gt; void
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **示例：**
 
+ArkTS-Dyn示例：
   ```ts
+  import { appAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
   let sessionId = '1234';
   appAccountManager.getAuthCallback(sessionId).then((callback: appAccount.AuthCallback) => {
@@ -5319,25 +7537,46 @@ onRequestContinued?: () =&gt; void
   });
   ```
 
+ArkTS-Sta示例：
+  ```ts
+  import appAccount from '@ohos.account.appAccount';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  let appAccountManager: appAccount.AppAccountManager = appAccount.createAppAccountManager();
+  let sessionId = '1234';
+  appAccountManager.getAuthCallback(sessionId).then((callback: appAccount.AuthCallback) => {
+    if (callback.onRequestContinued) {
+      callback.onRequestContinued!();
+    }
+  }).catch((e: Error) => {
+    const err = e as BusinessError;
+    console.error(`getAuthCallback err: code is ${err.code}, message is ${err.message}`);
+  });
+  ```
+
 ## AuthenticatorCallback<sup>(deprecated)</sup>
 
 OAuth认证器回调接口。
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[AuthCallback](#authcallback9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[AuthCallback](#authcallback9)替代。
 
 ### onResult<sup>(deprecated)</sup>
 
-onResult: (code: number, result: {[key: string]: any;}) =&gt; void
+onResult: (code: number, result: { [key: string]: any }) =&gt; void
 
 通知请求结果。
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[onResult](#onresult9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[onResult](#onresult9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -5358,8 +7597,8 @@ onResult: (code: number, result: {[key: string]: any;}) =&gt; void
       name: 'LiSi',
       owner: 'com.example.accountjsdemo',
       authType: 'getSocialData',
-      token: 'xxxxxx'
-    });
+      token: 'xxxxxx'}
+    );
   }).catch((err: BusinessError) => {
     console.error(`getAuthenticatorCallback err: code is ${err.code}, message is ${err.message}`);
   });
@@ -5373,9 +7612,13 @@ onRequestRedirected: (request: Want) =&gt; void
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[onRequestRedirected](#onrequestredirected9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[onRequestRedirected](#onrequestredirected9)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -5403,8 +7646,8 @@ onRequestRedirected: (request: Want) =&gt; void
       callback.onResult(appAccount.ResultCode.SUCCESS, {
         name: name,
         authType: authType,
-        token: 'xxxxxx'
-      });
+        token: 'xxxxxx'}
+      );
     }
   }
   ```
@@ -5421,6 +7664,10 @@ createAccountImplicitly(options: CreateAccountImplicitlyOptions, callback: AuthC
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名              | 类型                    | 必填   | 说明              |
@@ -5430,60 +7677,97 @@ createAccountImplicitly(options: CreateAccountImplicitlyOptions, callback: AuthC
 
 ### addAccountImplicitly<sup>(deprecated)</sup>
 
-addAccountImplicitly(authType: string, callerBundleName: string, options: {[key: string]: any;}, callback: AuthenticatorCallback): void
+addAccountImplicitly(authType: string, callerBundleName: string, options: { [key: string]: any }, callback: AuthenticatorCallback): void
 
 根据指定的鉴权类型和可选项，隐式地添加应用账号。使用callback异步回调。
 
 > **说明：**
 >
-> 从API version 8开始支持, 从API version 9开始废弃。建议使用[createAccountImplicitly](#createaccountimplicitly9-2)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[createAccountImplicitly](#createaccountimplicitly9-2)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
 | 参数名              | 类型                    | 必填   | 说明              |
 | ---------------- | --------------------- | ---- | --------------- |
-| authType         | string                | 是    | 应用账号的鉴权类型。      |
+| authType         | string                | 是    | 应用账号的鉴权类型。自定义数据，最大长度为1024个字符。      |
 | callerBundleName | string                | 是    | 鉴权请求方的包名。       |
 | options          | {[key: string]: any}  | 是    | 鉴权所需要的可选项。      |
 | callback         | [AuthenticatorCallback](#authenticatorcallbackdeprecated) | 是    | 认证器回调，用于返回鉴权结果。 |
 
 ### auth<sup>9+</sup>
 
-auth(name: string, authType: string, options: Record<string, Object>, callback: AuthCallback): void
+auth(name: string, authType: string, options: Record&lt;string, Object&gt;, callback: AuthCallback): void
 
 对应用账号进行鉴权以获取授权令牌。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[auth](#auth23-1)。
+
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
 | 参数名              | 类型                    | 必填   | 说明              |
 | ---------------- | --------------------- | ---- | --------------- |
-| name             | string                | 是    | 应用账号的名称。        |
-| authType         | string                | 是    | 应用账号的鉴权类型。      |
-| options          | Record<string, Object>  | 是    | 鉴权所需要的可选项。      |
+| name             | string                | 是    | 应用账号的名称。最大长度为512个字符。        |
+| authType         | string                | 是    | 应用账号的鉴权类型。自定义数据，最大长度为1024个字符。      |
+| options          | Record<string, Object> | 是    | 鉴权所需要的可选项。      |
+| callback         | [AuthCallback](#authcallback9) | 是    | 回调对象，用于返回鉴权结果。 |
+
+### auth<sup>23+</sup>
+
+auth(name: string, authType: string, options: Record&lt;string, RecordData&gt;, callback: AuthCallback): void
+
+对应用账号进行鉴权以获取授权令牌。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[auth](#auth9-2)。
+
+**系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名              | 类型                    | 必填   | 说明              |
+| ---------------- | --------------------- | ---- | --------------- |
+| name             | string                | 是    | 应用账号的名称。最大长度为512个字符。        |
+| authType         | string                | 是    | 应用账号的鉴权类型。自定义数据，最大长度为1024个字符。      |
+| options          | Record&lt;string, RecordData&gt;| 是    | 鉴权所需要的可选项。      |
 | callback         | [AuthCallback](#authcallback9) | 是    | 回调对象，用于返回鉴权结果。 |
 
 ### authenticate<sup>(deprecated)</sup>
 
-authenticate(name: string, authType: string, callerBundleName: string, options: {[key: string]: any;}, callback: AuthenticatorCallback): void
+authenticate(name: string, authType: string, callerBundleName: string, options: { [key: string]: any }, callback: AuthenticatorCallback): void
 
 对应用账号进行鉴权，获取OAuth令牌。使用callback异步回调。
 
 > **说明：**
 >
-> 从API version 8开始支持, 从API version 9开始废弃。建议使用[auth](#auth9-2)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[auth](#auth9-2)替代。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
 | 参数名              | 类型                    | 必填   | 说明              |
 | ---------------- | --------------------- | ---- | --------------- |
-| name             | string                | 是    | 应用账号的名称。        |
-| authType         | string                | 是    | 应用账号的鉴权类型。      |
+| name             | string                | 是    | 应用账号的名称。最大长度为512个字符。        |
+| authType         | string                | 是    | 应用账号的鉴权类型。自定义数据，最大长度为1024个字符。      |
 | callerBundleName | string                | 是    | 鉴权请求方的包名。       |
 | options          | {[key: string]: any}  | 是    | 鉴权所需要的可选项。      |
 | callback         | [AuthenticatorCallback](#authenticatorcallbackdeprecated) | 是    | 认证器回调，用于返回鉴权结果。 |
@@ -5496,11 +7780,15 @@ verifyCredential(name: string, options: VerifyCredentialOptions, callback: AuthC
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名              | 类型                    | 必填   | 说明              |
 | ---------------- | --------------------- | ---- | --------------- |
-| name      | string                   | 是    | 应用账号的名称。              |
+| name      | string                   | 是    | 应用账号的名称。最大长度为512个字符。              |
 | options   | [VerifyCredentialOptions](#verifycredentialoptions9)  | 是    | 验证凭据的可选项。            |
 | callback  | [AuthCallback](#authcallback9)    | 是    | 认证器回调，用于返回验证结果。 |
 
@@ -5515,6 +7803,10 @@ setProperties(options: SetPropertiesOptions, callback: AuthCallback): void
 设置认证器属性。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5535,11 +7827,15 @@ checkAccountLabels(name: string, labels: Array&lt;string&gt;, callback: AuthCall
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名              | 类型                    | 必填   | 说明              |
 | ---------------- | --------------------- | ---- | --------------- |
-| name      | string                | 是    | 应用账号的名称。              |
+| name      | string                | 是    | 应用账号的名称。最大长度为512个字符。              |
 | labels    | Array&lt;string&gt;          | 是    | 标签数组。                   |
 | callback  | [AuthCallback](#authcallback9) | 是    | 认证器回调，用于返回检查结果。 |
 
@@ -5555,11 +7851,15 @@ checkAccountRemovable(name: string, callback: AuthCallback): void
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名              | 类型                    | 必填   | 说明              |
 | ---------------- | --------------------- | ---- | --------------- |
-| name      | string                | 是    | 应用账号的名称。              |
+| name      | string                | 是    | 应用账号的名称。最大长度为512个字符。              |
 | callback  | [AuthCallback](#authcallback9) | 是    | 认证器回调，用于返回判断结果。 |
 
 **示例：**
@@ -5574,6 +7874,10 @@ getRemoteObject(): rpc.RemoteObject
 
 **系统能力：** SystemCapability.Account.AppAccount
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型             | 说明                                                   |
@@ -5584,24 +7888,24 @@ getRemoteObject(): rpc.RemoteObject
 
 接口需组合使用，请查看[getRemoteObject](#getremoteobject9)中的示例。
 
-**示例：**
+ArkTS-Dyn示例：
 
   <!--code_no_check-->
   ```ts
   import { rpc } from '@kit.IPCKit';
   import { Want } from '@kit.AbilityKit';
-
+  
   class MyAuthenticator extends appAccount.Authenticator {
     verifyCredential(name: string,
       options: appAccount.VerifyCredentialOptions, callback: appAccount.AuthCallback) {
-        let want: Want = {
-          bundleName: 'com.example.accountjsdemo',
-          abilityName: 'com.example.accountjsdemo.VerifyAbility',
-          parameters: {
-            name: name
-          }
-        };
-        callback.onRequestRedirected(want);
+      let want: Want = {
+        bundleName: 'com.example.accountjsdemo',
+        abilityName: 'com.example.accountjsdemo.VerifyAbility',
+        parameters: {
+          name: name
+        }
+      };
+      callback.onRequestRedirected(want);
     }
 
     setProperties(options: appAccount.SetPropertiesOptions, callback: appAccount.AuthCallback) {
@@ -5626,6 +7930,119 @@ getRemoteObject(): rpc.RemoteObject
 
   export default {
     onConnect(want: Want): rpc.RemoteObject { // serviceAbility 生命周期函数, 需要放在serviceAbility中
+      let authenticator = new MyAuthenticator();
+      return authenticator.getRemoteObject();
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  import { rpc } from '@kit.IPCKit';
+  import { Want } from '@kit.AbilityKit';
+  import { RecordData } from '@ohos.base';
+
+  import appAccount from '@ohos.account.appAccount';
+
+  @Entry
+  @Component
+  struct ListDemo5 {
+    build(){
+    }
+  }
+
+  class MyAuthenticator extends appAccount.Authenticator {
+    verifyCredential(name: string,
+      options: appAccount.VerifyCredentialOptions, callback: appAccount.AuthCallback) {
+      let dataName: Record<String, RecordData> = {"name": name };
+      let want: Want = {
+        bundleName: 'com.example.accountjsdemo',
+        abilityName: 'com.example.accountjsdemo.VerifyAbility',
+        parameters: dataName
+      };
+      callback.onResult(0);
+    }
+
+    setProperties(options: appAccount.SetPropertiesOptions, callback: appAccount.AuthCallback) {
+      let dataOptions: Record<String, RecordData> = {"options": options }
+      let want: Want = {
+        bundleName: 'com.example.accountjsdemo',
+        abilityName: 'com.example.accountjsdemo.SetPropertiesAbility',
+        parameters: dataOptions
+      };
+      callback.onResult(0);
+    }
+
+    checkAccountLabels(name: string, labels: string[], callback: appAccount.AuthCallback) {
+
+      let accountLabels: Record<string, Array<string>> = {
+        'zhangsan': ['male', '30-40', 'level4'],
+        'lisi': ['female']
+      };
+      let authResult: appAccount.AuthResult = {
+        account: {
+          name: name,
+          owner: 'com.acts.accountauthenticator.static'
+        },
+        tokenInfo: undefined
+      }
+      if (name === 'notExistAccount') {
+        callback.onResult(12300003);
+        return;
+      }
+      if (labels.length == 0) {
+        callback.onResult(0, authResult)
+        return
+      }
+      let allLabels: Array<string> | undefined;
+      try {
+        allLabels = accountLabels[name];
+      } catch (err) {
+        console.info('[Authenticator] no labels');
+        allLabels == undefined
+      }
+      if (allLabels == undefined || allLabels.length == 0) {
+        callback.onResult(0, undefined);
+        return;
+      }
+      for (let i = 0; i < labels.length; ++i) {
+        if (allLabels.indexOf(labels[i]) == -1) {
+          callback.onResult(0, undefined);
+          return;
+        }
+      }
+      callback.onResult(0, authResult)
+    }
+
+    checkAccountRemovable(name: string, callback: appAccount.AuthCallback) {
+      let accountRemovability: Record<string, boolean> = {
+        'zhangsan': false,
+        'lisi': true
+      };
+      console.info('[Authenticator] name: ' + name);
+      let isRemovable: Boolean | undefined = false;
+      try {
+        isRemovable = accountRemovability[name];
+      } catch (err) {
+        console.info('[Authenticator] error: ' + JSON.stringify(err));
+      }
+      let authResult: appAccount.AuthResult = {
+        account: {
+          name: name,
+          owner: 'com.acts.accountauthenticator.static'
+        },
+        tokenInfo: undefined
+      }
+      if (isRemovable) {
+        callback.onResult(0, authResult);
+        return;
+      }
+      callback.onResult(0, undefined);
+    }
+  }
+
+  export default class ServiceExtAbilitty {
+    onConnect(want: Want) {
       let authenticator = new MyAuthenticator();
       return authenticator.getRemoteObject();
     }

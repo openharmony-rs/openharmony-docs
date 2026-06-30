@@ -24,13 +24,30 @@
 >
 >  - 组件对表冠事件的接收受自身获焦状态影响，接收到BEGIN后，如果失焦，则无法继续再接收到后续的UPDATE和END。
 
-当组件需要获取旋转角度等信息时，可以通过onDigitalCrown接收表冠事件来获得上报信息。以下以Text组件为例，介绍表冠事件开发的基本步骤及开发过程中需要注意的事项。
+当组件需要获取旋转角度等信息时，可以通过[onDigitalCrown](../reference/apis-arkui/arkui-ts/ts-universal-events-crown.md#ondigitalcrown)接收表冠事件来获得上报信息。以下以[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)组件为例，介绍表冠事件开发的基本步骤及开发过程中需要注意的事项。
 
 1. 组件获焦
 
     确保接收事件的组件获焦，可以通过使用[focusable](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusable)、[defaultFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)、[focusOnTouch](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusontouch9)等方法来实现。如需更详细的焦点控制信息，请参考[焦点控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md)文档。
+
+    ArkTS-Dyn示例：
     
     <!-- @[text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CrownEventsProject/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    Text(this.message)
+      .fontSize(20)
+      .fontColor(Color.White)
+      .backgroundColor("#262626")
+      .textAlign(TextAlign.Center)
+      .focusable(true)
+      .focusOnTouch(true)
+      .defaultFocus(true)
+    ```
+
+    ArkTS-Sta示例：
+
+    <!-- @[text](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CrownEventsProjectSta/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     Text(this.message)
@@ -46,16 +63,30 @@
 
     接收表冠事件需要注册表冠事件回调，当触发表冠事件时会执行回调函数。
 
+    ArkTS-Dyn示例：
+
     <!-- @[onDigitalCrown](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CrownEventsProject/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     .onDigitalCrown((event: CrownEvent) => {
-    // ···
+      // ...
+    })
+    ```
+
+    ArkTS-Sta示例：
+
+    <!-- @[onDigitalCrown](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CrownEventsProjectSta/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    .onDigitalCrown((event: CrownEvent) => {
+      // ...
     })
     ```
 3. 事件字段的含义
 
-    表冠事件提供了时间戳，旋转角速度，旋转角度和表冠动作。此外表冠事件会触发事件冒泡，可通过[stopPropagation](../reference/apis-arkui/arkui-ts/ts-universal-events-crown.md#crownevent对象说明)阻止事件冒泡。
+    表冠事件提供了时间戳，旋转角速度，旋转角度和表冠动作。此外表冠事件会触发事件冒泡，可通过[stopPropagation](../reference/apis-arkui/arkui-ts/ts-universal-events-crown.md#属性)阻止事件冒泡。
+
+    ArkTS-Dyn示例：
 
     <!-- @[stopPropagation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CrownEventsProject/entry/src/main/ets/pages/Index.ets) -->
     
@@ -67,12 +98,68 @@
       event.action, event.angularVelocity, event.degree, event.timestamp);
     ```
 
+    ArkTS-Sta示例：
+    <!-- @[stopPropagation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CrownEventsProjectSta/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    event.stopPropagation();
+    this.message = "CrownEvent\n\n" + JSON.stringify(event);
+    hilog.debug(0x0000, 'Tag',
+      "action:%{public}d, angularVelocity:%{public}f, degree:%{public}f, timestamp:%{public}f",
+      event.action, event.angularVelocity, event.degree, event.timestamp);
+    ```
+
 **完整示例：**
 
- <!-- [crown_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CrownEventsProject/entry/src/main/ets/pages/Index.ets) -->
+ ArkTS-Dyn示例：
+
+ <!-- @[crown_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CrownEventsProject/entry/src/main/ets/pages/Index.ets) -->
  
  ``` TypeScript
  // xxx.ets
+ @Entry
+ @Component
+ struct Index {
+   @State message: string = 'onDigitalCrown';
+ 
+   build() {
+     Column() {
+       Row() {
+         Stack() {
+           Text(this.message)
+             .fontSize(20)
+             .fontColor(Color.White)
+             .backgroundColor("#262626")
+             .textAlign(TextAlign.Center)
+             .focusable(true)
+             .focusOnTouch(true)
+             .defaultFocus(true)
+             .borderWidth(2)
+             .width(223)
+             .height(223)
+             .borderRadius(110)
+             .onDigitalCrown((event: CrownEvent) => {
+               event.stopPropagation();
+               this.message = "CrownEvent\n\n" + JSON.stringify(event);
+               hilog.debug(0x0000, 'Tag',
+                 "action:%{public}d, angularVelocity:%{public}f, degree:%{public}f, timestamp:%{public}f",
+                 event.action, event.angularVelocity, event.degree, event.timestamp);
+             })
+         }.width("100%").height("100%")
+       }.width("100%").height("100%")
+     }
+   }
+ }
+ ```
+
+ ArkTS-Sta示例：
+ <!-- @[crown_event](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CrownEventsProjectSta/entry/src/main/ets/pages/Index.ets) -->
+ 
+ ``` TypeScript
+ // xxx.ets
+ import { Entry, Component, State, Column, Row, Stack, Text, Color, TextAlign, CrownEvent } from '@kit.ArkUI';
+ import { hilog } from '@kit.PerformanceAnalysisKit';
+ 
  @Entry
  @Component
  struct Index {

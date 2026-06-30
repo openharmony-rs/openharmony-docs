@@ -34,7 +34,9 @@ PasteButton()
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[PasteButton](#pastebutton-3)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,7 +54,9 @@ PasteButton(options: PasteButtonOptions)
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[PasteButton](#pastebutton-3)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -75,6 +79,8 @@ PasteButton(options?: PasteButtonOptions)
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[PasteButton](#pastebutton-1)和[PasteButton](#pastebutton-2)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,7 +110,9 @@ PasteButton(options?: PasteButtonOptions)
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -126,7 +134,9 @@ PasteButton(options?: PasteButtonOptions)
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -142,7 +152,9 @@ PasteButton(options?: PasteButtonOptions)
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -158,7 +170,9 @@ PasteButton(options?: PasteButtonOptions)
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -177,7 +191,9 @@ type PasteButtonCallback = (event: ClickEvent, result: PasteButtonOnClickResult,
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -205,7 +221,9 @@ ArkTS-Sta: onClick(event: PasteButtonCallback | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -341,5 +359,5 @@ struct Index {
 }
 ```
 
-![zh-cn_image_0000001593677984](figures/zh-cn_image_0000001593677984.png)
+![PasteButton-Basic-demo](figures/PasteButton-Basic-demo.png)
 

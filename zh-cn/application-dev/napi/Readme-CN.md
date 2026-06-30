@@ -2,7 +2,7 @@
 <!--Kit: Common-->
 <!--Subsystem: Common-->
 <!--Owner: @fang-jinxu-->
-<!--Designer: @lingminghw-->
+<!--Designer: @fang-jinxu-->
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu-->
 - [NDK开发导读](ndk-development-overview.md)
@@ -80,6 +80,7 @@
       - [使用JSVM-API接口进行JSON操作](use-jsvm-about-JSON.md)
       - [使用JSVM-API接口进行array相关开发](use-jsvm-about-array.md)
       - [使用JSVM-API接口进行ArrayBuffer相关开发](use-jsvm-about-arraybuffer.md)
+      - [使用JSVM-API接口从外部内存创建ArrayBuffer](use-jsvm-about-external-arraybuffer.md)
       - [使用JSVM-API接口操作bigint类型值](use-jsvm-about-bigint.md)
       - [使用JSVM-API接口进行class相关开发](use-jsvm-about-class.md)
       - [使用JSVM-API接口进行Date相关开发](use-jsvm-about-date.md)
@@ -123,11 +124,6 @@
     - [OpenMP应用构建和运行指南](openmp-guideline.md)
   - 资源管理<!--resource-management-->
     - [Rawfile开发指导](rawfile-guidelines.md)
-  - 线程调度<!--thread-scheduling-->
-    - [QoS开发指导](qos-guidelines.md)
-    - [格物开发指导](gewu-ndk-api-guidelines.md)
-  - 内存管理<!--memory-management-->
-    - [Purgeable memory开发指导](purgeable-memory-guidelines.md)
   - 包管理<!--bundle-management-->
     - [NativeBundle开发指导](native-bundle-guidelines.md)<!--RP3--><!--RP3End-->
 - 调试和性能分析<!--debugging-profiling-->

@@ -14,6 +14,8 @@ typedef struct {...} JSVM_ScriptOrigin
 
 某段JavaScript代码的原始信息，如sourceMap路径、源文件名、源文件中的起始行/列号等。
 
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 12
 
 **相关模块：** [JSVM](capi-jsvm.md)

@@ -7,9 +7,12 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
 
- 本模块提供系统相关的或者增强的国际化能力，包括区域管理、电话号码处理、日历等，相关接口为ECMA 402标准中未定义的补充接口。[Intl模块](js-apis-intl.md)提供了ECMA 402标准定义的基础国际化接口，与本模块共同使用可提供完整地国际化支持能力。
+ 本模块提供系统相关的或者增强的国际化能力，包括区域管理、电话号码处理、日历等，相关接口为ECMA 402标准中未定义的补充接口。[国际化-Intl](js-apis-intl.md)提供了ECMA 402标准定义的基础国际化接口，与本模块共同使用可提供完整的国际化支持能力。
 
 >  **说明：**
+>
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 >  - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 >  - 从API version 11开始，本模块部分接口支持在ArkTS卡片中使用。
@@ -33,17 +36,28 @@ static setSystemLanguage(language: string): void
 
 设置系统语言。
 
+若要监听系统语言变化，可以监听[COMMON_EVENT_LOCALE_CHANGED](../apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_locale_changed)。
+
+>  **说明：**
+>  
+> 可以通过[i18n.System.getSystemLanguage()](js-apis-i18n.md#getsystemlanguage9)接口获取系统语言。
+> 从API version 21开始，也可以使用[param工具](../../tools/param-tool.md#获取系统参数的值)的“param get persist.global.language”命令获取系统语言。
+
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.UPDATE_CONFIGURATION
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型     | 必填   | 说明    |
 | -------- | ------ | ---- | ----- |
-| language | string | 是    | [合法的语言ID](../../internationalization/i18n-locale-culture.md#实现原理)。<br/>**说明：**<br/>可以通过[i18n.System.getSystemLanguage()](js-apis-i18n.md#getsystemlanguage9)接口获取系统语言。<br/>从API version 21开始，也可以使用[param工具](../../tools/param-tool.md#获取系统参数的值)的“param get persist.global.language”命令获取系统语言。 |
+| language | string | 是    | [合法的语言ID](../../internationalization/i18n-locale-culture.md#实现原理)。 |
 
 **错误码：**
 
@@ -75,7 +89,11 @@ static setSystemRegion(region: string): void
 
 设置系统地区。
 
-若要监听系统地区变化，可以监听[事件](../apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_locale_changed)OHOS::EventFwk::CommonEventSupport::COMMON_EVENT_LOCALE_CHANGED。
+若要监听系统地区变化，可以监听[COMMON_EVENT_LOCALE_CHANGED](../apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_locale_changed)。
+
+>  **说明：**
+>  
+> 可以通过[i18n.System.getSystemRegion()](js-apis-i18n.md#getsystemregion9)接口获取系统地区。
 
 **系统接口**：此接口为系统接口。
 
@@ -83,11 +101,15 @@ static setSystemRegion(region: string): void
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型     | 必填   | 说明    |
 | ------ | ------ | ---- | ----- |
-| region | string | 是    | 合法的地区ID。 |
+| region | string | 是    | [合法的地区ID](../../internationalization/i18n-locale-culture.md#实现原理)。 |
 
 **错误码：**
 
@@ -122,13 +144,17 @@ static setSystemLocale(locale: string): void
 
 设置系统区域。
 
-若要监听系统区域变化，可以监听[事件](../apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_locale_changed)OHOS::EventFwk::CommonEventSupport::COMMON_EVENT_LOCALE_CHANGED。
+若要监听系统区域变化，可以监听[COMMON_EVENT_LOCALE_CHANGED](../apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_locale_changed)。
 
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.UPDATE_CONFIGURATION
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -172,6 +198,10 @@ static set24HourClock(option: boolean): void
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型      | 必填   | 说明                                       |
@@ -204,7 +234,9 @@ static set24HourClock(option: boolean): void
 
 ### addPreferredLanguage<sup>9+</sup>
 
-static addPreferredLanguage(language: string, index?: number): void
+ArkTS-Dyn: static addPreferredLanguage(language: string, index?: number): void
+
+ArkTS-Sta: static addPreferredLanguage(language: string, index?: int): void
 
 在系统偏好语言列表的指定位置添加偏好语言。
 
@@ -214,12 +246,16 @@ static addPreferredLanguage(language: string, index?: number): void
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型     | 必填   | 说明         |
 | -------- | ------ | ---- | ---------- |
 | language | string | 是    | 待添加的偏好语言，要求是[合法的语言ID](../../internationalization/i18n-locale-culture.md#实现原理)。  |
-| index    | number | 否    | 偏好语言的添加位置。默认值：系统偏好语言列表长度。 |
+| index    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 偏好语言的添加位置。<br>取值范围：[0, 系统偏好语言列表长度]，小于0时取值为0，大于系统偏好语言列表长度时取值为系统偏好语言列表长度。<br>默认值：系统偏好语言列表长度。 |
 
 **错误码：**
 
@@ -249,7 +285,9 @@ static addPreferredLanguage(language: string, index?: number): void
 
 ### removePreferredLanguage<sup>9+</sup>
 
-static removePreferredLanguage(index: number): void
+ArkTS-Dyn: static removePreferredLanguage(index: number): void
+
+ArkTS-Sta: static removePreferredLanguage(index: int): void
 
 从系统偏好语言列表中移除指定位置的偏好语言。
 
@@ -259,11 +297,15 @@ static removePreferredLanguage(index: number): void
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型     | 必填   | 说明                    |
 | ----- | ------ | ---- | --------------------- |
-| index | number | 是    | 待删除偏好语言在系统偏好语言列表中的位置。 |
+| index | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 待删除偏好语言在系统偏好语言列表中的位置。<br>取值范围：[0, 系统偏好语言列表长度]，小于0时取值为0，大于系统偏好语言列表长度时取值为系统偏好语言列表长度。 |
 
 **错误码：**
 
@@ -281,7 +323,7 @@ static removePreferredLanguage(index: number): void
   import { i18n } from '@kit.LocalizationKit';
 
   // 删除系统偏好语言列表中的第一个偏好语言
-  let index: number = 0;
+  let index = 0;
   try {
     i18n.System.removePreferredLanguage(index);
   } catch(error) {
@@ -301,6 +343,10 @@ static setUsingLocalDigit(flag: boolean): void
 **需要权限**：ohos.permission.UPDATE_CONFIGURATION
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -343,6 +389,10 @@ static setTemperatureType(type: TemperatureType): void
 **需要权限**：ohos.permission.UPDATE_CONFIGURATION
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -389,6 +439,10 @@ static setFirstDayOfWeek(type: WeekDay): void
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型      | 必填   | 说明                              |
@@ -432,6 +486,10 @@ static getSystemCollations(): Map&lt;string, string&gt;
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                     | 说明    |
@@ -468,6 +526,10 @@ static getUsingCollation(): string
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -508,6 +570,10 @@ static setSystemCollation(identifier: string): void
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型      | 必填   | 说明                              |
@@ -546,6 +612,10 @@ static getSystemNumberingSystems(): Map&lt;string, string&gt;
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -586,6 +656,10 @@ static setSystemNumberingSystem(identifier: string):void
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型      | 必填   | 说明                              |
@@ -625,6 +699,10 @@ static getSystemNumberPatterns(): Map&lt;string, string&gt;
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                     | 说明    |
@@ -661,6 +739,10 @@ static getUsingNumberPattern(): string
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -701,6 +783,10 @@ static setSystemNumberPattern(pattern: string): void
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型      | 必填   | 说明                              |
@@ -740,6 +826,10 @@ static getSystemMeasurements(): Map&lt;string, string&gt;
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                     | 说明    |
@@ -776,6 +866,10 @@ static getUsingMeasurement(): string
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -816,6 +910,10 @@ static setSystemMeasurement(identifier: string): void
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型      | 必填   | 说明                              |
@@ -855,6 +953,10 @@ static getSystemNumericalDatePatterns(): Map&lt;string, string&gt;
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                     | 说明    |
@@ -891,6 +993,10 @@ static getUsingNumericalDatePattern(): string
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -930,6 +1036,10 @@ static setSystemNumericalDatePattern(identifier: string): void
 **需要权限**：ohos.permission.UPDATE_CONFIGURATION
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -974,6 +1084,10 @@ constructor()
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **示例：**
   ```ts
   import { i18n } from '@kit.LocalizationKit';
@@ -992,12 +1106,16 @@ getLanguageInfoArray(languages: Array&lt;string&gt;, options?: SortOptions): Arr
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 |   参数名  |      类型      | 必填 |     说明      |
 | --------- | ------------- | ---- | ------------- |
 | languages | Array&lt;string&gt; | 是   | 待排序的语言列表，要求是[合法的语言ID](../../internationalization/i18n-locale-culture.md#实现原理)。|
-| options   | [SortOptions](#sortoptions10)   | 否   | 语言排序选项。 |
+| options   | [SortOptions](#sortoptions10)   | 否   | 语言排序选项。<br>默认值：所有属性都取默认值时的配置项。 |
 
 **返回值：**
 
@@ -1044,11 +1162,15 @@ getRegionInfoArray(regions: Array&lt;string&gt;, options?: SortOptions): Array&l
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 |   参数名  |      类型      | 必填 |     说明      |
 | --------- | ------------- | ---- | ------------- |
-| regions   | Array&lt;string&gt; | 是   | 待排序的国家或地区列表，要求是合法的国家或地区ID。|
+| regions   | Array&lt;string&gt; | 是   | 待排序的国家或地区列表，要求是[合法的国家或地区ID](../../internationalization/i18n-locale-culture.md#实现原理)。|
 | options   | [SortOptions](#sortoptions10)   | 否   | 国家或地区排序选项。<br>区域ID的默认值为系统当前区域ID，isUseLocalName的默认值为false，isSuggestedFirst的默认值为true。 |
 
 **返回值：**
@@ -1095,6 +1217,10 @@ static getTimeZoneCityItemArray(): Array&lt;TimeZoneCityItem&gt;
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 |       类型        |         说明          |
@@ -1134,6 +1260,10 @@ static getTimeZoneCityItemArray(): Array&lt;TimeZoneCityItem&gt;
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            | 类型            | 只读 | 可选   |  说明                                   |
 | --------------- | --------------- | ------ | ------ | --------------------------------------- |
 | id              | string          |   否   |   否   | 语言代码或国家地区代码，如"zh"、"CN"。    |
@@ -1149,14 +1279,18 @@ static getTimeZoneCityItemArray(): Array&lt;TimeZoneCityItem&gt;
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            | 类型             |  只读   |  可选   |  说明                                   |
 | --------------- | --------------- | ------  | ------  | --------------------------------------- |
 | zoneId          | string          |   否    |   否    | 时区ID，例如Asia/Shanghai。              |
 | cityId          | string          |   否    |   否    | 城市ID，例如Shanghai。                   |
 | cityDisplayName | string          |   否    |   否    | 城市ID在系统区域下显示的名称。          |
-| offset          | number             |   否    |   否    | 时区ID的偏移量。                         |
+| offset          | number             |   否    |   否    | 时区ID的偏移量，单位为毫秒（ms）。                         |
 | zoneDisplayName | string          |   否    |   否    | 时区ID在系统区域下显示的名称。          |
-| rawOffset       | number             |   否    |   是    | 时区ID的固定偏移量。                       |
+| rawOffset       | number             |   否    |   是    | 时区ID的固定偏移量，单位为毫秒（ms）。                       |
 
 
 ## SuggestionType<sup>10+</sup>
@@ -1167,20 +1301,28 @@ static getTimeZoneCityItemArray(): Array&lt;TimeZoneCityItem&gt;
 
 **系统能力**：SystemCapability.Global.I18n
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                   | 值  | 说明   |
 | ---------------------- | ---- | ---- |
 | SUGGESTION_TYPE_NONE   | 0x00 | 非推荐语言或国家地区。 |
 | SUGGESTION_TYPE_RELATED| 0x01 | 系统语言推荐的国家地区或系统国家地区推荐的语言。 |
-| SUGGESTION_TYPE_SIM    | 0x02 | Sim卡国家地区推荐的语言。 |
+| SUGGESTION_TYPE_SIM    | 0x02 | SIM卡国家地区推荐的语言。 |
 
 
-## SortOptions<sup>10+<sup>
+## SortOptions<sup>10+</sup>
 
 语言或国家地区排序选项。
 
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Global.I18n
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称            | 类型            |  只读 |  可选 |   说明                                 |
 | --------------- | --------------- | ---- | ---- | --------------------------------------- |

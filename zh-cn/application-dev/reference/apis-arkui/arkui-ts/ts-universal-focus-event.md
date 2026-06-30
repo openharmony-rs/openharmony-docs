@@ -30,7 +30,7 @@ ArkTS-Sta: onFocus(event: (() => void) | undefined): this
 
 当前组件获取焦点时触发的回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,7 +42,7 @@ ArkTS-Sta: onFocus(event: (() => void) | undefined): this
 
 | 参数名 | 类型                          | 必填 | 说明               |
 | ------ | ----------------------------- | ---- | ------------------ |
-| event  | ArkTS-Dyn: () => void<br/>ArkTS-Sta: (() => void) \| undefined |  是   | onFocus的回调函数，表示组件已获焦。 |
+| event  | ArkTS-Dyn: () => void<br/>ArkTS-Sta: (() => void) \| undefined |  是   | onFocus的回调函数，表示组件已获焦。<br/>传入undefined时无效果。 |
 
 **返回值：**
 
@@ -58,7 +58,7 @@ ArkTS-Sta: onBlur(event: (() => void) | undefined): this
 
 当前组件失去焦点时触发的回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,7 +70,7 @@ ArkTS-Sta: onBlur(event: (() => void) | undefined): this
 
 | 参数名 | 类型                          | 必填 | 说明               |
 | ------ | ----------------------------- | ---- | ------------------ |
-| event  | ArkTS-Dyn: () => void<br/>ArkTS-Sta: (() => void) \| undefined |  是   | onBlur的回调函数，表示组件已失焦。 |
+| event  | ArkTS-Dyn: () => void<br/>ArkTS-Sta: (() => void) \| undefined |  是   | onBlur的回调函数，表示组件已失焦。<br/>传入undefined时无效果。 |
 
 **返回值：**
 

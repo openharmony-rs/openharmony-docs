@@ -25,7 +25,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 
 管理访问控制模块的实例。
 
-AtManager接口调用依赖于tokenID，系统应用可通过[bundleManager.getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo)或[bundleManager.getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取tokenID。
+AtManager接口调用依赖于tokenID，系统应用可通过[bundleManager.getBundleInfoSync](js-apis-bundleManager.md#bundlemanagergetbundleinfosync14)或[bundleManager.getBundleInfoForSelfSync](js-apis-bundleManager.md#bundlemanagergetbundleinfoforselfsync10)获取tokenID。
 
 ### grantUserGrantedPermission
 
@@ -49,7 +49,7 @@ ArkTS-Sta: grantUserGrantedPermission(tokenID: int, permissionName: Permissions,
 
 | 参数名    | 类型                | 必填 | 说明                                                         |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| tokenID      | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID      | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 目标应用的身份标识，可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。|
 | permissionName | Permissions              | 是   | 被授予的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 | permissionFlags  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 授权选项。<br>- 1表示当次用户若选择禁止该权限，下次权限弹窗仍可以弹出申请用户授权。<br>- 2表示当次用户若选择禁止该权限，下次不会再弹出权限弹窗。用户需要在setting的权限管理中进行授权。<br>- 64表示当次用户若选择仅本次允许，权限仅本次授权。应用切换后台状态或退出后取消授权。 |
 
@@ -86,7 +86,7 @@ let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描
 let permissionFlags: number = 1;
 atManager.grantUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
   console.info('grantUserGrantedPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`grantUserGrantedPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -128,7 +128,7 @@ ArkTS-Sta: grantUserGrantedPermission(tokenID: int, permissionName: Permissions,
 
 | 参数名    | 类型                | 必填 | 说明                          |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| tokenID      | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID      | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 目标应用的身份标识，可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。|
 | permissionName | Permissions              | 是   | 被授予的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 | permissionFlags  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 授权选项。<br>- 1表示当次用户若选择禁止该权限，下次权限弹窗仍可以弹出申请用户授权。<br>- 2表示当次用户若选择禁止该权限，下次不会再弹出权限弹窗，用户需要在setting的权限管理中进行授权。<br>- 64表示当次用户若选择仅本次允许，权限仅本次授权。应用切换后台状态或退出后取消授权。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。授予应用user_grant权限，当授予权限成功时，err为undefined；否则为错误对象。 |
@@ -196,6 +196,8 @@ ArkTS-Sta: revokeUserGrantedPermission(tokenID: int, permissionName: Permissions
 
 **ArkTS-Sta起始版本：** 23
 
+当权限状态从“已授权”变为“未授权”时，应用进程会被终止。
+
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.REVOKE_SENSITIVE_PERMISSIONS
@@ -206,7 +208,7 @@ ArkTS-Sta: revokeUserGrantedPermission(tokenID: int, permissionName: Permissions
 
 | 参数名    | 类型                | 必填 | 说明                                                         |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| tokenID      | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID      | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 目标应用的身份标识，可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。|
 | permissionName | Permissions              | 是   | 被撤销的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 | permissionFlags  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 授权选项。<br>- 1表示当次用户若选择禁止该权限，下次权限弹窗仍可以弹出申请用户授权。<br>- 2表示当次用户若选择禁止该权限，下次不会再弹出权限弹窗，用户需要在setting的权限管理中进行授权。<br>- 64表示当次用户若选择仅本次允许，权限仅本次授权。应用切换后台状态或退出后取消授权。 |
 
@@ -243,7 +245,7 @@ let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描
 let permissionFlags: number = 1;
 atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
   console.info('revokeUserGrantedPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`revokeUserGrantedPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -285,7 +287,7 @@ ArkTS-Sta: revokeUserGrantedPermission(tokenID: int, permissionName: Permissions
 
 | 参数名    | 类型                | 必填 | 说明                          |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| tokenID      | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID      | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 目标应用的身份标识，可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。|
 | permissionName | Permissions              | 是   | 被撤销的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 | permissionFlags  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 授权选项。<br>- 1表示当次用户若选择禁止该权限，下次权限弹窗仍可以弹出申请用户授权。<br>- 2表示当次用户若选择禁止该权限，下次不会再弹出权限弹窗，用户需要在setting的权限管理中进行授权。<br>- 64表示当次用户若选择仅本次允许，权限仅本次授权。应用切换后台状态或退出后取消授权。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。撤销应用user_grant权限，当撤销权限成功时，err为undefined；否则为错误对象。 |
@@ -363,7 +365,7 @@ ArkTS-Sta: getPermissionFlags(tokenID: int, permissionName: Permissions): Promis
 
 | 参数名    | 类型                | 必填 | 说明                          |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| tokenID      | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID      | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 目标应用的身份标识，可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。|
 | permissionName | Permissions              | 是   | 查询的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 
 **返回值：**
@@ -398,7 +400,7 @@ let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager()
 let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 atManager.getPermissionFlags(tokenID, 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS').then((data: number) => {
   console.info(`getPermissionFlags success, result: ${data}`);
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`getPermissionFlags fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -472,7 +474,7 @@ let permission: Permissions = 'ohos.permission.CAMERA';
 
 atManager.setPermissionRequestToggleStatus(permission, abilityAccessCtrl.PermissionRequestToggleStatus.CLOSED).then(() => {
   console.info('setPermissionRequestToggleStatus: set closed successful');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`setPermissionRequestToggleStatus fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -535,26 +537,6 @@ getPermissionRequestToggleStatus(permissionName: Permissions): Promise&lt;Permis
 
 **示例：**
 
-ArkTS-Dyn示例：
-```ts
-import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let atManager = abilityAccessCtrl.createAtManager();
-let permission: Permissions = 'ohos.permission.CAMERA';
-
-atManager.getPermissionRequestToggleStatus(permission).then((res) => {
-  if (res == abilityAccessCtrl.PermissionRequestToggleStatus.CLOSED) {
-    console.info('getPermissionRequestToggleStatus: The toggle status is close');
-  } else {
-    console.info('getPermissionRequestToggleStatus: The toggle status is open');
-  }
-}).catch((err: BusinessError) => {
-  console.error(`getPermissionRequestToggleStatus fail, code: ${err.code}, message: ${err.message}`);
-});
-```
-
-ArkTS-Sta示例：
 ```ts
 import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -649,7 +631,7 @@ ArkTS-Sta: getPermissionsStatus(tokenID: int, permissionList: Array&lt;Permissio
 
 | 参数名    | 类型                | 必填 | 说明                          |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| tokenID      | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID      | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 目标应用的身份标识，可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。|
 | permissionList | Array&lt;Permissions&gt;   | 是   | 待获取权限状态的权限名列表，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 
 **返回值：**
@@ -682,7 +664,7 @@ let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager()
 let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 atManager.getPermissionsStatus(tokenID, ['ohos.permission.CAMERA']).then((data: Array<abilityAccessCtrl.PermissionStatus>) => {
   console.info(`getPermissionsStatus success, result: ${data}`);
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`getPermissionsStatus fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -728,7 +710,7 @@ on(type: 'permissionStateChange', tokenIDList: Array&lt;number&gt;, permissionLi
 | 参数名             | 类型                   | 必填 | 说明                                                          |
 | ------------------ | --------------------- | ---- | ------------------------------------------------------------ |
 | type               | string                | 是   | 订阅事件类型，固定为'permissionStateChange'，权限状态变更事件。  |
-| tokenIDList        | Array&lt;number&gt;   | 是   | 订阅的tokenID列表，为空时表示订阅所有的应用的权限状态变化。 |
+| tokenIDList        | Array&lt;number&gt;   | 是   | 订阅的tokenID列表，为空时表示订阅所有应用的权限状态变化。 |
 | permissionList | Array&lt;Permissions&gt;   | 是   | 订阅的权限名列表，为空时表示订阅所有的权限状态变化，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。|
 | callback | Callback&lt;[PermissionStateChangeInfo](js-apis-abilityAccessCtrl.md#permissionstatechangeinfo18)&gt; | 是 | 回调函数。订阅指定tokenID与指定权限名状态变更事件的回调。|
 
@@ -791,7 +773,7 @@ off(type: 'permissionStateChange', tokenIDList: Array&lt;number&gt;, permissionL
 | 参数名             | 类型                   | 必填 | 说明                                                          |
 | ------------------ | --------------------- | ---- | ------------------------------------------------------------ |
 | type               | string         | 是   | 订阅事件类型，固定为'permissionStateChange'，权限状态变更事件。  |
-| tokenIDList        | Array&lt;number&gt;   | 是   | 取消订阅的tokenID列表，为空时表示取消订阅所有的应用的权限状态变化，必须与[on](#on9)的输入一致。 |
+| tokenIDList        | Array&lt;number&gt;   | 是   | 取消订阅的tokenID列表，为空时表示取消订阅所有应用的权限状态变化，必须与[on](#on9)的输入一致。 |
 | permissionList | Array&lt;Permissions&gt;   | 是   | 取消订阅的权限名列表，为空时表示取消订阅所有的权限状态变化，必须与[on](#on9)的输入一致，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 | callback | Callback&lt;[PermissionStateChangeInfo](js-apis-abilityAccessCtrl.md#permissionstatechangeinfo18)&gt; | 否 | 回调函数。返回取消订阅指定tokenID与指定权限名状态变更事件的对象。|
 
@@ -962,7 +944,7 @@ ArkTS-Sta: requestPermissionOnApplicationSetting(tokenID: int): Promise&lt;void&
 
 | 参数名    | 类型                | 必填 | 说明                                                         |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| tokenID      | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 目标应用的身份标识，可通过该应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID      | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 目标应用的身份标识，可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。|
 
 **返回值：**
 
@@ -991,7 +973,7 @@ let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager()
 let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 atManager.requestPermissionOnApplicationSetting(tokenID).then(() => {
   console.info('requestPermissionOnApplicationSetting success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`requestPermissionOnApplicationSetting fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -1032,7 +1014,7 @@ ArkTS-Sta: grantPermission(tokenID: int, permissionName: Permissions, permission
 
 | 参数名    | 类型                | 必填 | 说明                                                         |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| tokenID      | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID      | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 目标应用的身份标识，可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。|
 | permissionName | Permissions              | 是   | 被授予的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 | permissionFlags  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 授权选项。<br>- 1表示当次用户若选择禁止该权限，下次权限弹窗仍可以弹出申请用户授权。<br>- 2表示当次用户若选择禁止该权限，下次不会再弹出权限弹窗。用户需要在setting的权限管理中进行授权。<br>- 64表示当次用户若选择仅本次允许，权限仅本次授权。应用切换后台状态或退出后取消授权。 |
 
@@ -1069,7 +1051,7 @@ let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描
 let permissionFlags: number = 2;
 atManager.grantPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
   console.info('grantPermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`grantPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -1101,6 +1083,8 @@ ArkTS-Sta: revokePermission(tokenID: int, permissionName: Permissions, permissio
 
 **ArkTS-Sta起始版本：** 23
 
+当killProcess参数为true且权限状态从“已授权”变为“未授权”时，应用进程会被终止。
+
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.REVOKE_SENSITIVE_PERMISSIONS
@@ -1111,7 +1095,7 @@ ArkTS-Sta: revokePermission(tokenID: int, permissionName: Permissions, permissio
 
 | 参数名    | 类型                | 必填 | 说明                                                         |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| tokenID      | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
+| tokenID      | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 目标应用的身份标识，可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。|
 | permissionName | Permissions              | 是   | 被撤销的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 | permissionFlags  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 授权选项。<br>- 1表示当次用户若选择禁止该权限，下次权限弹窗仍可以弹出申请用户授权。<br>- 2表示当次用户若选择禁止该权限，下次不会再弹出权限弹窗，用户需要在setting的权限管理中进行授权。<br>- 64表示当次用户若选择仅本次允许，权限仅本次授权。应用切换后台状态或退出后取消授权。 |
 | killProcess | boolean | 否 | 是否终止应用进程。<br>- true表示终止应用进程。<br>- false表示不终止应用进程。<br>- 默认值为true。<br>**起始版本**：26.0.0 |
@@ -1150,13 +1134,13 @@ let permissionFlags: number = 2;
 // 不终止应用进程
 atManager.revokePermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags, false).then(() => {
   console.info('revokePermission success, process not killed');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`revokePermission fail, code: ${err.code}, message: ${err.message}`);
 });
 // 终止应用进程（默认行为）
 atManager.revokePermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
   console.info('revokePermission success');
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`revokePermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -1246,7 +1230,7 @@ atManager.requestPermissionsFromUserWithWindowId(context, windowId, ['ohos.permi
   console.info('requestPermissionsFromUserWithWindowId data authResults:' + data.authResults);
   console.info('requestPermissionsFromUserWithWindowId data dialogShownResults:' + data.dialogShownResults);
   console.info('requestPermissionsFromUserWithWindowId data errorReasons:' + data.errorReasons);
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`requestPermissionsFromUserWithWindowId fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -1315,21 +1299,6 @@ queryStatusByPermission(permissionList: Array&lt;Permissions&gt;): Promise&lt;Ar
 
 **示例：**
 
-ArkTS-Dyn示例：
-```ts
-import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let permissionList: Array<Permissions> = ['ohos.permission.CAMERA'];
-atManager.queryStatusByPermission(permissionList).then((data: Array<abilityAccessCtrl.PermissionStatusInfo>) => {
-  console.info('queryStatusByPermission success, data: ' + JSON.stringify(data));
-}).catch((err: BusinessError) => {
-  console.error(`queryStatusByPermission fail, code: ${err.code}, message: ${err.message}`);
-});
-```
-
-ArkTS-Sta示例：
 ```ts
 import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1367,7 +1336,7 @@ ArkTS-Sta: queryStatusByTokenID(tokenIDList: Array&lt;int&gt;): Promise&lt;Array
 
 | 参数名    | 类型                | 必填 | 说明                                                         |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| tokenIDList | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;int&gt;  | 是   | 待查询的应用tokenID列表，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。该参数不能为空，且长度不能超过1024。 |
+| tokenIDList | ArkTS-Dyn: Array&lt;number&gt; <br> ArkTS-Sta: Array&lt;int&gt;  | 是   | 待查询的应用tokenID列表，可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。该参数不能为空，且长度不能超过1024。 |
 
 **返回值：**
 
@@ -1400,7 +1369,7 @@ let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描
 let tokenIDList: Array<number> = [tokenID];
 atManager.queryStatusByTokenID(tokenIDList).then((data: Array<abilityAccessCtrl.PermissionStatusInfo>) => {
   console.info('queryStatusByTokenID success, data: ' + JSON.stringify(data));
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`queryStatusByTokenID fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -1419,6 +1388,377 @@ atManager.queryStatusByTokenID(tokenIDList).then((data: Array<abilityAccessCtrl.
   console.error(`queryStatusByTokenID fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+### getCliPermissionRequestInfo
+
+getCliPermissionRequestInfo(agentID: string, cliInfoList: Array&lt;CliInfo&gt;): Promise&lt;PermissionDialogResult&gt;
+
+查询CLI（Command Line Interface，命令行界面）命令是否需要权限弹窗。使用Promise异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.QUERY_TOOL_PERMISSIONS
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| agentID | string | 是 | 智能体标识，用于标识发起CLI相关操作的智能体，长度不能超过48个字符。 |
+| cliInfoList | Array&lt;[CliInfo](#cliinfo)&gt; | 是 | 待查询的CLI信息列表，该参数的数组长度不能为0，且不能超过99。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;[PermissionDialogResult](#permissiondialogresult)&gt; | Promise对象，返回CLI权限弹窗查询结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.QUERY_TOOL_PERMISSIONS". |
+| 202 | Not system application. Interface caller is not a system application. |
+| 12100001 | Invalid parameter. The agentID exceeds 48 characters, cliInfoList is empty or contains more than 99 items, the cliName of an item in cliInfoList is empty or exceeds 256 characters, the subCliName of an item in cliInfoList exceeds 256 characters, or the CLI command does not exist. |
+| 12100007 | The service is abnormal. |
+| 12100009 | Common internal error. The account is not logged in, network is not connected or an internal error occurs when querying CLI permissions or generating auth results. |
+
+**示例：**
+
+```ts
+import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let agentID: string = 'agent.demo';
+let cliInfoList: Array<abilityAccessCtrl.CliInfo> = [{
+  cliName: 'ohos-example',
+  subCliName: 'run'
+}];
+atManager.getCliPermissionRequestInfo(agentID, cliInfoList).then((data: abilityAccessCtrl.PermissionDialogResult) => {
+  console.info('getCliPermissionRequestInfo success, data: ' + JSON.stringify(data));
+}).catch((err: BusinessError): void => {
+  console.error(`getCliPermissionRequestInfo fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### getCliPermissions
+
+getCliPermissions(hostTokenID: number, agentID: string, cliInfoList: Array&lt;CliInfo&gt;): Promise&lt;CliPermissionsResult&gt;
+
+查询指定应用的CLI权限信息。使用Promise异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.MANAGE_TOOL_RUNTIME_PERMISSIONS
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| hostTokenID | number | 是 | 访问CLI指令的应用的tokenID，可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。该参数不能为0。 |
+| agentID | string | 是 | 智能体标识，用于标识发起CLI相关操作的智能体，长度不能超过48个字符。 |
+| cliInfoList | Array&lt;[CliInfo](#cliinfo)&gt; | 是 | 待查询的CLI信息列表，该参数的数组长度不能为0，且不能超过99。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;[CliPermissionsResult](#clipermissionsresult)&gt; | Promise对象，返回CLI权限查询结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.MANAGE_TOOL_RUNTIME_PERMISSIONS". |
+| 202 | Not system application. Interface caller is not a system application. |
+| 12100001 | Invalid parameter. The hostTokenID is 0, the agentID exceeds 48 characters, cliInfoList is empty or contains more than 99 items, the cliName of an item in cliInfoList is empty or exceeds 256 characters, the subCliName of an item in cliInfoList exceeds 256 characters, or the CLI command does not exist. |
+| 12100002 | The specified tokenID does not exist. |
+| 12100007 | The service is abnormal. |
+| 12100009 | Common internal error. An internal error occurs when querying CLI permissions or runtime permission information. |
+
+**示例：**
+
+```ts
+import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let hostTokenID: number = 0; // 获取方式可参考AtManager章节的描述。
+let agentID: string = 'agent.demo';
+let cliInfoList: Array<abilityAccessCtrl.CliInfo> = [{
+  cliName: 'ohos-example',
+  subCliName: 'run'
+}];
+atManager.getCliPermissions(hostTokenID, agentID, cliInfoList).then((data: abilityAccessCtrl.CliPermissionsResult) => {
+  console.info('getCliPermissions success, data: ' + JSON.stringify(data));
+}).catch((err: BusinessError): void => {
+  console.error(`getCliPermissions fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### generateCliAuthResult
+
+generateCliAuthResult(hostTokenID: number, agentID: string, authInfoList: Array&lt;CliAuthInfo&gt;): Promise&lt;ToolAuthResult&gt;
+
+根据CLI授权信息生成授权结果。使用Promise异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.MANAGE_TOOL_RUNTIME_PERMISSIONS
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| hostTokenID | number | 是 | 访问CLI指令的应用的tokenID，可通过应用[BundleInfo](js-apis-bundleManager-bundleInfo.md)中的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获取。该参数不能为0。 |
+| agentID | string | 是 | 智能体标识，用于标识发起CLI相关操作的智能体，长度不能超过48个字符。 |
+| authInfoList | Array&lt;[CliAuthInfo](#cliauthinfo)&gt; | 是 | CLI授权信息列表，该参数的数组长度不能为0，且不能超过99。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;[ToolAuthResult](#toolauthresult)&gt; | Promise对象，返回生成的授权结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.MANAGE_TOOL_RUNTIME_PERMISSIONS". |
+| 202 | Not system application. Interface caller is not a system application. |
+| 12100001 | Invalid parameter. The hostTokenID is 0, the agentID exceeds 48 characters, authInfoList is empty or contains more than 99 items, the cliName in cliInfo of an item in authInfoList is empty or exceeds 256 characters, the subCliName in cliInfo of an item in authInfoList exceeds 256 characters, a permission name in permissionNames of an item in authInfoList is empty or exceeds 256 characters, or the number of permissionNames does not equal the number of authorizationResults in an item in authInfoList. |
+| 12100002 | The specified tokenID does not exist. |
+| 12100003 | A permission name in permissionNames of an item in authInfoList does not exist. |
+| 12100007 | The service is abnormal. |
+| 12100009 | Common internal error. The account is not logged in, network is not connected or an internal error occurs when generating authorization results. |
+
+**示例：**
+
+```ts
+import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let hostTokenID: number = 0; // 获取方式可参考AtManager章节的描述。
+let agentID: string = 'agent.demo';
+let authInfoList: Array<abilityAccessCtrl.CliAuthInfo> = [{
+  cliInfo: {
+    cliName: 'ohos-example',
+    subCliName: 'run'
+  },
+  permissionNames: ['ohos.permission.ACCESS_SYSTEM_SETTINGS' as Permissions],
+  authorizationResults: [true]
+}];
+atManager.generateCliAuthResult(hostTokenID, agentID, authInfoList).then((data: abilityAccessCtrl.ToolAuthResult) => {
+  console.info('generateCliAuthResult success, data: ' + JSON.stringify(data));
+}).catch((err: BusinessError): void => {
+  console.error(`generateCliAuthResult fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## PermissionDecisionStatus
+
+权限决策状态枚举。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| NEED_PERMISSION_DIALOG | 0 | 表示需要弹出权限对话框。 |
+| NO_DIALOG_DENIED | 1 | 表示无需弹框，权限已被用户拒绝。 |
+| NO_DIALOG_RESTRICTED | 2 | 表示无需弹框，权限受系统或策略限制。 |
+| NO_DIALOG_GRANTED | 3 | 表示无需弹框，权限已授予。 |
+| NO_DIALOG_NOT_DECLARED | 4 | 表示无需弹框，但权限未声明。 |
+| NO_DIALOG_CLI_PERMISSION_RESOLVED | 5 | 表示无需弹框，CLI权限已完成运行时权限解析。 |
+
+## CliInfo
+
+表示CLI（Command Line Interface，命令行界面）信息。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| cliName | string | 否 | 否 | CLI名称。该字段不能为空，且长度不能超过256个字符。 |
+| subCliName | string | 否 | 否 | CLI子命令名称。该字段可以为空，但长度不能超过256个字符。 |
+
+## PermissionDialogDetail
+
+表示单条命令的权限弹窗信息。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| needPermissionDialog | boolean | 否 | 否 | 当前CLI命令是否需要权限弹窗，true表示需要权限弹窗，false表示不需要权限弹窗。 |
+| permissionNameList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt; | 否 | 否 | 发起CLI相关操作的智能体当前未满足的权限名称列表。若相关权限不满足，CLI将无法拉起，或拉起后的CLI进程无法获得对应权限。 |
+| statusList | Array&lt;[PermissionDecisionStatus](#permissiondecisionstatus)&gt; | 否 | 否 | 权限决策状态列表。 |
+| authResult | string | 否 | 否 | 授权结果字符串。 |
+
+## PermissionDialogResult
+
+表示权限弹窗查询结果。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| detailList | Array&lt;[PermissionDialogDetail](#permissiondialogdetail)&gt; | 否 | 否 | 权限弹窗的信息列表。 |
+
+## CliPermissionDetail
+
+表示CLI指令声明的单个CLI权限的状态信息。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| requiredCliPermission | [Permissions](../../security/AccessToken/app-permissions.md) | 否 | 否 | 调用CLI所需的CLI权限。 |
+| cliPermissionStatus | [PermissionDecisionStatus](#permissiondecisionstatus) | 否 | 否 | CLI指令声明的CLI权限的决策状态。 |
+| usedPermissions | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt; | 否 | 否 | 由requiredCliPermission映射出的运行时权限列表。 |
+
+## CliCommandPermissionResult
+
+表示单条CLI命令的权限信息。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| requiredCliPermissions | Array&lt;[CliPermissionDetail](#clipermissiondetail)&gt; | 否 | 否 | 当前CLI命令依赖的CLI权限信息列表。 |
+
+## CliPermissionsResult
+
+表示CLI权限查询结果。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| permList | Array&lt;[CliCommandPermissionResult](#clicommandpermissionresult)&gt; | 否 | 否 | CLI权限信息的列表。 |
+
+## CliAuthInfo
+
+表示CLI授权信息。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| cliInfo | [CliInfo](#cliinfo) | 否 | 否 | 授权信息对应的CLI信息。 |
+| permissionNames | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt; | 否 | 否 | 权限名称列表。每个元素不能为空，且长度不能超过256个字符。 |
+| authorizationResults | Array&lt;boolean&gt; | 否 | 否 | 授权结果列表，且数组长度必须等于permissionNames.length。 |
+
+## ToolAuthResult
+
+表示工具授权结果。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| authResults | Array&lt;string&gt; | 否 | 否 | 授权结果字符串列表。 |
 
 ## PermissionStatusInfo
 

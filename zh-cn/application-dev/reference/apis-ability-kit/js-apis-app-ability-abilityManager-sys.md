@@ -4,15 +4,18 @@
 <!--Subsystem: Ability-->
 <!--Owner: @dsz2025; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 AbilityManager模块提供获取、新增、修改Ability相关信息和运行状态信息的能力。
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。  
-> 本模块接口均为系统接口，三方应用不支持调用。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。  
+>
+> - 本模块接口均为系统接口，三方应用不支持调用。
 
 ## 导入模块
 
@@ -29,6 +32,10 @@ import { abilityManager } from '@kit.AbilityKit';
 **系统接口**：该接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -47,7 +54,11 @@ updateConfiguration(config: Configuration, callback: AsyncCallback\<void>): void
 **需要权限**：ohos.permission.UPDATE_CONFIGURATION
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
- 
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名        | 类型                                       | 必填   | 说明             |
@@ -66,23 +77,23 @@ updateConfiguration(config: Configuration, callback: AsyncCallback\<void>): void
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { abilityManager, Configuration, ConfigurationConstant } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const config: Configuration = {
-  language: 'Zh-Hans',                 // 简体中文
-  colorMode: ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT,         // 浅色模式
-  direction: ConfigurationConstant.Direction.DIRECTION_VERTICAL,       // 垂直方向
-  screenDensity: ConfigurationConstant.ScreenDensity.SCREEN_DENSITY_SDPI,  // 屏幕像素密度为'sdpi'
-  displayId: 1,                        // 应用在Id为1的物理屏上显示
-  hasPointerDevice: true,              // 指针类型设备已连接
+  language: 'Zh-Hans', // 简体中文
+  colorMode: ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT, // 浅色模式
+  direction: ConfigurationConstant.Direction.DIRECTION_VERTICAL, // 垂直方向
+  screenDensity: ConfigurationConstant.ScreenDensity.SCREEN_DENSITY_SDPI, // 屏幕像素密度为'sdpi'
+  displayId: 1, // 应用在Id为1的物理屏上显示
+  hasPointerDevice: true, // 指针类型设备已连接
 };
 
 try {
-  abilityManager.updateConfiguration(config, (err: BusinessError) => {
+  abilityManager.updateConfiguration(config, (err: BusinessError<void> | null) => {
     if (err) {
       console.error(`updateConfiguration fail, err: ${JSON.stringify(err)}`);
     } else {
@@ -95,7 +106,6 @@ try {
   console.error(`error.code: ${code}, error.message: ${message}`);
 }
 ```
-
 ## updateConfiguration
 
 updateConfiguration(config: Configuration): Promise\<void>
@@ -107,6 +117,10 @@ updateConfiguration(config: Configuration): Promise\<void>
 **需要权限**：ohos.permission.UPDATE_CONFIGURATION
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -131,25 +145,26 @@ updateConfiguration(config: Configuration): Promise\<void>
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { abilityManager, Configuration, ConfigurationConstant } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const config: Configuration = {
-  language: 'Zh-Hans',                 // 简体中文
-  colorMode: ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT,         // 浅色模式
-  direction: ConfigurationConstant.Direction.DIRECTION_VERTICAL,       // 垂直方向
-  screenDensity: ConfigurationConstant.ScreenDensity.SCREEN_DENSITY_SDPI,  // 屏幕像素密度为'sdpi'
-  displayId: 1,                        // 应用在Id为1的物理屏上显示
-  hasPointerDevice: true,              // 指针类型设备已连接
+  language: 'Zh-Hans', // 简体中文
+  colorMode: ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT, // 浅色模式
+  direction: ConfigurationConstant.Direction.DIRECTION_VERTICAL, // 垂直方向
+  screenDensity: ConfigurationConstant.ScreenDensity.SCREEN_DENSITY_SDPI, // 屏幕像素密度为'sdpi'
+  displayId: 1, // 应用在Id为1的物理屏上显示
+  hasPointerDevice: true, // 指针类型设备已连接
 };
 
 try {
   abilityManager.updateConfiguration(config).then(() => {
     console.info('updateConfiguration success.');
-  }).catch((err: BusinessError) => {
+  }).catch((e: Error) => {
+    let err = e as BusinessError;
     console.error(`updateConfiguration fail, err: ${JSON.stringify(err)}`);
   });
 } catch (paramError) {
@@ -171,6 +186,10 @@ getAbilityRunningInfos(callback: AsyncCallback\<Array\<AbilityRunningInfo>>): vo
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名        | 类型                                       | 必填   | 说明             |
@@ -191,14 +210,15 @@ getAbilityRunningInfos(callback: AsyncCallback\<Array\<AbilityRunningInfo>>): vo
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { abilityManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  abilityManager.getAbilityRunningInfos((err: BusinessError, data: Array<abilityManager.AbilityRunningInfo>) => {
+  abilityManager.getAbilityRunningInfos((err: BusinessError<void> | null,
+    data: Array<abilityManager.AbilityRunningInfo> | undefined) => {
     if (err) {
       console.error(`getAbilityRunningInfos fail, error: ${JSON.stringify(err)}`);
     } else {
@@ -214,7 +234,9 @@ try {
 
 ## getExtensionRunningInfos
 
-getExtensionRunningInfos(upperLimit: number, callback: AsyncCallback\<Array\<ExtensionRunningInfo>>): void
+ArkTS-Dyn: getExtensionRunningInfos(upperLimit: number, callback: AsyncCallback\<Array\<ExtensionRunningInfo>>): void
+
+ArkTS-Sta: getExtensionRunningInfos(upperLimit: int, callback: AsyncCallback\<Array\<ExtensionRunningInfo>>): void
 
 获取关于运行扩展能力的信息。使用callback异步回调。
 
@@ -224,11 +246,15 @@ getExtensionRunningInfos(upperLimit: number, callback: AsyncCallback\<Array\<Ext
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| upperLimit | number                                   | 是 | 获取消息数量的最大限制，最大为2<sup>31</sup>-1。 |
+| upperLimit | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 获取消息数量的最大限制，最大为2<sup>31</sup>-1。 |
 | callback  | AsyncCallback\<Array\<[ExtensionRunningInfo](js-apis-inner-application-extensionRunningInfo-sys.md)>>  | 是    | 回调函数。当获取运行扩展能力的信息成功，err为undefined，data为获取到的运行扩展能力信息；否则为错误对象。可进行错误处理或其他自定义处理。      |
 
 **错误码**：
@@ -241,7 +267,7 @@ getExtensionRunningInfos(upperLimit: number, callback: AsyncCallback\<Array\<Ext
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { abilityManager } from '@kit.AbilityKit';
@@ -250,13 +276,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let upperLimit = 10;
 
 try {
-  abilityManager.getExtensionRunningInfos(upperLimit, (err: BusinessError, data: Array<abilityManager.ExtensionRunningInfo>) => {
-    if (err) {
-      console.error(`getExtensionRunningInfos fail, err: ${JSON.stringify(err)}`);
-    } else {
-      console.info(`getExtensionRunningInfos success, data: ${JSON.stringify(data)}`);
-    }
-  });
+  abilityManager.getExtensionRunningInfos(upperLimit,
+    (err: BusinessError | null, data: Array<abilityManager.ExtensionRunningInfo> | undefined) => {
+      if (err) {
+        console.error(`getExtensionRunningInfos fail, err: ${JSON.stringify(err)}`);
+      } else {
+        console.info(`getExtensionRunningInfos success, data: ${JSON.stringify(data)}`);
+      }
+    });
 } catch (paramError) {
   let code: number = (paramError as BusinessError).code;
   let message: string = (paramError as BusinessError).message;
@@ -266,7 +293,9 @@ try {
 
 ## getExtensionRunningInfos
 
-getExtensionRunningInfos(upperLimit: number): Promise\<Array\<ExtensionRunningInfo>>
+ArkTS-Dyn: getExtensionRunningInfos(upperLimit: number): Promise\<Array\<ExtensionRunningInfo>>
+
+ArkTS-Sta: getExtensionRunningInfos(upperLimit: int): Promise\<Array\<ExtensionRunningInfo>>
 
 获取关于运行扩展能力的信息。使用Promise异步回调。
 
@@ -276,11 +305,15 @@ getExtensionRunningInfos(upperLimit: number): Promise\<Array\<ExtensionRunningIn
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| upperLimit | number                                   | 是 | 获取消息数量的最大限制，最大为2<sup>31</sup>-1。 |
+| upperLimit | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 获取消息数量的最大限制，最大为2<sup>31</sup>-1。 |
 
 **返回值：**
 
@@ -298,7 +331,7 @@ getExtensionRunningInfos(upperLimit: number): Promise\<Array\<ExtensionRunningIn
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { abilityManager } from '@kit.AbilityKit';
@@ -309,7 +342,8 @@ let upperLimit = 10;
 try {
   abilityManager.getExtensionRunningInfos(upperLimit).then((data: Array<abilityManager.ExtensionRunningInfo>) => {
     console.info(`getExtensionRunningInfos success, data: ${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
+  }).catch((e: Error) => {
+    let err = e as BusinessError;
     console.error(`getExtensionRunningInfos fail, err: ${JSON.stringify(err)}`);
   });
 } catch (paramError) {
@@ -329,6 +363,10 @@ getTopAbility(callback: AsyncCallback\<ElementName>): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名        | 类型                                       | 必填   | 说明             |
@@ -345,13 +383,13 @@ getTopAbility(callback: AsyncCallback\<ElementName>): void
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { abilityManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-abilityManager.getTopAbility((err: BusinessError, data) => {
+abilityManager.getTopAbility((err: BusinessError | null, data) => {
   if (err) {
     console.error(`getTopAbility fail, err: ${JSON.stringify(err)}`);
   } else {
@@ -370,6 +408,10 @@ getTopAbility(): Promise\<ElementName>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                       | 说明      |
@@ -385,15 +427,16 @@ getTopAbility(): Promise\<ElementName>
 | 202 | Not System App. Interface caller is not a system app. |
 | 16000050 | Internal error. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { abilityManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-abilityManager.getTopAbility().then((data) => {
-  console.info(`getTopAbility success, data: ${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
+abilityManager.getTopAbility().then(() => {
+  console.info(`getTopAbility success}`);
+}).catch((e: Error) => {
+  let err = e as BusinessError;
   console.error(`getTopAbility fail, err: ${JSON.stringify(err)}`);
 });
 ```
@@ -408,11 +451,15 @@ acquireShareData(missionId: number, callback: AsyncCallback\<Record\<string, Obj
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 10
+
 **参数**：
 
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| missionId | number                                   | 是 | 目标应用的missionId，最大为2<sup>31</sup>-1。 |
+| missionId | number      | 是 | 目标应用的missionId，最大为2<sup>31</sup>-1。 |
 | callback  | AsyncCallback\<Record\<string, Object>>  | 是    | 回调函数。当接口调用成功，err为undefined，data为获取到的分享数据；否则为错误对象。可进行错误处理或其他自定义处理。      |
 
 **错误码**：
@@ -425,7 +472,7 @@ acquireShareData(missionId: number, callback: AsyncCallback\<Record\<string, Obj
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { abilityManager } from '@kit.AbilityKit';
@@ -446,6 +493,62 @@ try {
 }
 ```
 
+## acquireShareData<sup>23+</sup>
+
+acquireShareData(missionId: int, callback: AsyncCallback\<Record\<string, RecordData>>): void
+
+系统弹框通过该接口发起原子化服务分享，调用到目标UIAbility的onShare，返回分享数据（callback形式）。使用callback异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数**：
+
+| 参数名    | 类型                                        | 必填 | 说明                                                         |
+| --------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
+| missionId | int                                         | 是   | 目标应用的missionId，最大为2<sup>31</sup>-1。                |
+| callback  | AsyncCallback\<Record\<string, RecordData>> | 是   | 以回调方式返回接口运行结果及分享得到的数据，可进行错误处理或其他自定义处理。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                          |
+| -------- | --------------------------------- |
+| 202      | Not system application.           |
+| 16000050 | Connect to system service failed. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let missionId: int = 1;
+try {
+  abilityManager.acquireShareData(missionId,
+    (err: BusinessError | null, wantParam: Record<string, Object> | undefined) => {
+      if (err) {
+        console.error(`acquireShareData fail, err: ${JSON.stringify(err)}`);
+      } else {
+        console.info(`acquireShareData success, data: ${JSON.stringify(wantParam)}`);
+      }
+    });
+} catch (paramError) {
+  let code: number = (paramError as BusinessError).code;
+  let message: string = (paramError as BusinessError).message;
+  console.error(`error.code: ${code}, error.message: ${message}`);
+}
+```
+
 ## acquireShareData<sup>10+</sup>
 
 acquireShareData(missionId: number): Promise\<Record\<string, Object>>
@@ -456,11 +559,15 @@ acquireShareData(missionId: number): Promise\<Record\<string, Object>>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 10
+
 **参数**：
 
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| missionId | number                                   | 是 | 目标应用的missionId，最大为2<sup>31</sup>-1。 |
+| missionId | number | 是 | 目标应用的missionId，最大为2<sup>31</sup>-1。 |
 
 **返回值：**
 
@@ -478,7 +585,7 @@ acquireShareData(missionId: number): Promise\<Record\<string, Object>>
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
-**示例**：
+**示例：**
 
 ```ts
 import { abilityManager } from '@kit.AbilityKit';
@@ -488,6 +595,64 @@ try {
   abilityManager.acquireShareData(1).then((wantParam: Record<string, Object>) => {
     console.info(`acquireShareData success, data: ${JSON.stringify(wantParam)}`);
   }).catch((err: BusinessError) => {
+    console.error(`acquireShareData fail, err: ${JSON.stringify(err)}`);
+  });
+} catch (paramError) {
+  let code: number = (paramError as BusinessError).code;
+  let message: string = (paramError as BusinessError).message;
+  console.error(`error.code: ${code}, error.message: ${message}`);
+}
+```
+
+## acquireShareData<sup>23+</sup>
+
+acquireShareData(missionId: int): Promise\<Record\<string, RecordData>>
+
+系统弹框通过该接口发起原子化服务分享，调用到目标UIAbility的onShare，返回分享数据（Promise形式）。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数**：
+
+| 参数名    | 类型 | 必填 | 说明                                          |
+| --------- | ---- | ---- | --------------------------------------------- |
+| missionId | int  | 是   | 目标应用的missionId，最大为2<sup>31</sup>-1。 |
+
+**返回值：**
+
+| 类型                                  | 说明                                                         |
+| ------------------------------------- | ------------------------------------------------------------ |
+| Promise\<Record\<string, RecordData>> | 以Promise方式返回接口运行结果及分享数据，可进行错误处理或其他自定义处理。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 202      | Not system application.          |
+| 16000050 | Connect to system server failed. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  abilityManager.acquireShareData(1).then((wantParam: Record<string, Object>) => {
+    console.info(`acquireShareData success, data: ${JSON.stringify(wantParam)}`);
+  }).catch((e: Error) => {
+    let err = e as BusinessError;
     console.error(`acquireShareData fail, err: ${JSON.stringify(err)}`);
   });
 } catch (paramError) {
@@ -513,12 +678,16 @@ notifySaveAsResult(parameter: AbilityResult, requestCode: number, callback: Asyn
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 10
+
 **参数**：
 
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
 | parameter | [AbilityResult](js-apis-inner-ability-abilityResult.md) | 是 | 返回给调用startAbilityForResult&nbsp;接口调用方的相关信息。 |
-| requestCode | number                                        | 是 | DLP管理应用传入的请求代码。          |
+| requestCode | number    | 是 | DLP管理应用传入的请求代码。          |
 | callback  | AsyncCallback<void\>                             | 是 | 回调函数。当另存为结果通知成功，err为undefined，否则为错误对象。         |
 
 **错误码**：
@@ -579,6 +748,10 @@ notifySaveAsResult(parameter: AbilityResult, requestCode: number): Promise\<void
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数**：
 
@@ -646,6 +819,10 @@ on(type: 'abilityForegroundState', observer: AbilityForegroundStateObserver): vo
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 11
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -684,6 +861,63 @@ try {
 }
 ```
 
+## abilityManager.onAbilityForegroundState<sup>23+</sup>
+
+onAbilityForegroundState(observer: AbilityForegroundStateObserver): void
+
+注册Ability的启动和退出的观测器。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.RUNNING_STATE_OBSERVER
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                             |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------ |
+| observer | [AbilityForegroundStateObserver](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | 是   | Ability状态观测器，用于观测Ability的启动和退出。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 201      | Permission denied.               |
+| 202      | Not system application.          |
+| 16000050 | Connect to system server failed. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class AbilityForegroundStateObserverCustom implements abilityManager.AbilityForegroundStateObserver {
+  onAbilityStateChanged(abilityStateData: abilityManager.AbilityStateData) {
+    console.info(`onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
+  }
+}
+
+try {
+  let observer = new AbilityForegroundStateObserverCustom();
+  abilityManager.onAbilityForegroundState(observer);
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`error: ${code}, ${message} `);
+}
+```
+
 ## abilityManager.off('abilityForegroundState')<sup>11+</sup>
 
 off(type: 'abilityForegroundState', observer?: AbilityForegroundStateObserver): void
@@ -695,6 +929,10 @@ off(type: 'abilityForegroundState', observer?: AbilityForegroundStateObserver): 
 **需要权限**：ohos.permission.RUNNING_STATE_OBSERVER
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -746,6 +984,75 @@ try {
 }
 ```
 
+## abilityManager.offAbilityForegroundState<sup>23+</sup>
+
+offAbilityForegroundState(observer?: AbilityForegroundStateObserver): void
+
+取消注册Ability启动和退出的观测器。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.RUNNING_STATE_OBSERVER
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| observer | [AbilityForegroundStateObserver](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | 否   | Ability状态观测器，用于观测Ability的启动和退出。如果未配置该参数，则取消当前应用注册的所有observer。如果配置了该参数，则取消该observer。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 201      | Permission denied.               |
+| 202      | Not system application.          |
+| 16000050 | Connect to system server failed. |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class AbilityForegroundStateObserverCustom implements abilityManager.AbilityForegroundStateObserver {
+  onAbilityStateChanged(abilityStateData: abilityManager.AbilityStateData) {
+    console.info(`onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
+  }
+}
+
+let observer_: abilityManager.AbilityForegroundStateObserver | undefined;
+// 1.注册应用启动和退出的监听器
+try {
+  let observer = new AbilityForegroundStateObserverCustom();
+  abilityManager.onAbilityForegroundState(observer);
+  observer_ = observer;
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`error: ${code}, ${message} `);
+}
+
+// 2.注销监听器
+try {
+  abilityManager.offAbilityForegroundState(observer_);
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`error: ${code}, ${message} `);
+}
+```
+
 ## abilityManager.getForegroundUIAbilities<sup>11+</sup>
 
 getForegroundUIAbilities(callback: AsyncCallback\<Array\<AbilityStateData>>): void
@@ -758,11 +1065,15 @@ getForegroundUIAbilities(callback: AsyncCallback\<Array\<AbilityStateData>>): vo
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback\<Array\<[AbilityStateData](js-apis-inner-application-abilityStateData.md)>>  | 是 |以回调方式返回接口运行结果及有关前台Ability的信息，可进行错误处理或其他自定义处理。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | AsyncCallback\<Array\<[AbilityStateData](js-apis-inner-application-abilityStateData.md)>>  | 是 |以回调方式返回接口运行结果及有关前台Ability的信息，可进行错误处理或其他自定义处理。 |
 
 **错误码**：
 
@@ -781,7 +1092,8 @@ getForegroundUIAbilities(callback: AsyncCallback\<Array\<AbilityStateData>>): vo
 import { abilityManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-abilityManager.getForegroundUIAbilities((err: BusinessError, data: Array<abilityManager.AbilityStateData>) => {
+abilityManager.getForegroundUIAbilities((err: BusinessError | null,
+  data: Array<abilityManager.AbilityStateData> | undefined) => {
   if (err) {
     console.error(`Get foreground ui abilities failed, error: ${JSON.stringify(err)}`);
   } else {
@@ -801,6 +1113,10 @@ getForegroundUIAbilities(): Promise\<Array\<AbilityStateData>>
 **需要权限**：ohos.permission.GET_RUNNING_INFO
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -826,7 +1142,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 abilityManager.getForegroundUIAbilities().then((data: Array<abilityManager.AbilityStateData>) => {
   console.info(`Get foreground ui abilities data is: ${JSON.stringify(data)}`);
-}).catch((error: BusinessError) => {
+}).catch((e: Error) => {
+  let error = e as BusinessError;
   console.error(`Get foreground ui abilities failed, error: ${JSON.stringify(error)}`);
 });
 ```
@@ -844,6 +1161,10 @@ notifyDebugAssertResult(sessionId: string, status: UserStatus): Promise\<void>
 **需要权限**：ohos.permission.NOTIFY_DEBUG_ASSERT_RESULT
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -879,12 +1200,14 @@ export default class UiExtAbility extends UIExtensionAbility {
   onSessionCreate(want: Want, session: UIExtensionContentSession): void {
     let sessionId: string = '';
     if (want.parameters) {
-      sessionId = want.parameters[wantConstant.Params.ASSERT_FAULT_SESSION_ID] as string;
+      const sessionId: string = want.parameters?.[wantConstant.Params.ASSERT_FAULT_SESSION_ID] as string ?? '';
     }
+
     let status = abilityManager.UserStatus.ASSERT_TERMINATE;
     abilityManager.notifyDebugAssertResult(sessionId, status).then(() => {
       console.info('notifyDebugAssertResult success.');
-    }).catch((err: BusinessError) => {
+    }).catch((e: Error) => {
+      let err = e as BusinessError;
       console.error(`notifyDebugAssertResult failed, error: ${JSON.stringify(err)}`);
     });
   }
@@ -902,6 +1225,10 @@ isEmbeddedOpenAllowed(context: Context, appId: string): Promise\<boolean>
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -936,12 +1263,14 @@ export default class EntryAbility extends UIAbility {
     let appId: string = '6918661953712445909';
     try {
       abilityManager.isEmbeddedOpenAllowed(this.context, appId).then((data) => {
-        console.info(`isEmbeddedOpenAllowed data: ${JSON.stringify(data)}`);
-      }).catch((err: BusinessError) => {
+        console.info(`isEmbeddedOpenAllowed data: ${data}`);
+      }).catch((e: Error) => {
+        let err = e as BusinessError;
         console.error(`isEmbeddedOpenAllowed failed, code is ${err.code}, message is ${err.message}`);
       });
-    } catch (err) {
+    } catch (e) {
       // 处理入参错误异常
+      let err = e as BusinessError;
       console.error(`param is invalid, code is ${err.code}, message is ${err.message}`);
     }
   }
@@ -957,6 +1286,10 @@ setResidentProcessEnabled(bundleName: string, enable: boolean): Promise\<void>
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -995,8 +1328,9 @@ try {
     .then(() => {
       console.info('setResidentProcessEnabled success.');
     })
-    .catch((err: BusinessError) => {
-      console.error(`setResidentProcessEnabled fail, err: ${JSON.stringify(err)}`);
+    .catch((e: Error) => {
+      let err = e as BusinessError;
+      console.error(`setResidentProcessEnabled fail, err: ${err.message}`);
     });
 } catch (err) {
   let code = (err as BusinessError).code;
@@ -1007,7 +1341,9 @@ try {
 
 ## abilityManager.preloadUIExtensionAbility<sup>23+</sup>
 
-preloadUIExtensionAbility(want: Want): Promise\<number>
+ArkTS-Dyn: preloadUIExtensionAbility(want: Want): Promise\<number>
+
+ArkTS-Sta: preloadUIExtensionAbility(want: Want): Promise\<int>
 
 预加载指定的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)并返回预加载UIExtensionAbility实例的ID。使用Promise异步回调。
 
@@ -1019,6 +1355,10 @@ preloadUIExtensionAbility(want: Want): Promise\<number>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1029,7 +1369,7 @@ preloadUIExtensionAbility(want: Want): Promise\<number>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<number> | Promise对象，返回预加载的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)的ID，用于后续清除或管理操作。 |
+| ArkTS-Dyn: Promise\<number><br>ArkTS-Sta: Promise\<int> | Promise对象，返回预加载的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)的ID，用于后续清除或管理操作。 |
 
 **错误码**：
 
@@ -1045,6 +1385,8 @@ preloadUIExtensionAbility(want: Want): Promise\<number>
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed; 2.Send restart message to system service failed; 3.System service failed to communicate with dependency module. 4.Preload UIExtensionAbility timeout. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { abilityManager, Want } from '@kit.AbilityKit';
@@ -1074,9 +1416,43 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { abilityManager, Want } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+
+try {
+  const preloadWant: Want = {
+    bundleName: 'com.example.application',
+    abilityName: 'EntryBackupAbility',
+    moduleName: 'entry',
+    parameters: {
+      'ability.want.params.uiExtensionType': 'sys/commonUI'
+    } as Record<string, RecordData>
+  };
+
+  abilityManager.preloadUIExtensionAbility(preloadWant)
+    .then((preloadId: int) => {
+      console.info(`preloadUIExtensionAbility success, preloadId: ${preloadId}`);
+    })
+    .catch((error: Error) => {
+      let err = error as BusinessError;
+      console.error(`preloadUIExtensionAbility fail, err: ${JSON.stringify(err)}`);
+    });
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`preloadUIExtensionAbility failed, code is ${code}, message is ${message}`);
+}
+```
+
 ## abilityManager.clearPreloadedUIExtensionAbility<sup>23+</sup>
 
-clearPreloadedUIExtensionAbility(preloadId: number): Promise\<void>
+ArkTS-Dyn: clearPreloadedUIExtensionAbility(preloadId: number): Promise\<void>
+
+ArkTS-Sta: clearPreloadedUIExtensionAbility(preloadId: int): Promise\<void>
 
 清除指定的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例。使用Promise异步回调。
 
@@ -1088,11 +1464,15 @@ clearPreloadedUIExtensionAbility(preloadId: number): Promise\<void>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------- | -------- | -------- | -------- |
-| preloadId | number | 是 | 预加载[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例的ID。 |
+| preloadId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 预加载[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例的ID。 |
 
 **返回值：**
 
@@ -1119,12 +1499,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   // 通过preloadUIExtensionAbility接口预加载后返回的ID
-  let preloadId: number = 1001;
+  let preloadId = 1001;
   abilityManager.clearPreloadedUIExtensionAbility(preloadId)
     .then(() => {
       console.info('clearPreloadedUIExtensionAbility success.');
     })
-    .catch((err: BusinessError) => {
+    .catch((error: Error) => {
+      let err = error as BusinessError;
       console.error(`clearPreloadedUIExtensionAbility fail, err: ${JSON.stringify(err)}`);
     });
 } catch (err) {
@@ -1147,6 +1528,10 @@ clearPreloadedUIExtensionAbilities(): Promise\<void>
 **需要权限**：ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1175,7 +1560,8 @@ try {
     .then(() => {
       console.info('clearPreloadedUIExtensionAbilities success.');
     })
-    .catch((err: BusinessError) => {
+    .catch((error: Error) => {
+      let err = error as BusinessError;
       console.error(`clearPreloadedUIExtensionAbilities fail, err: ${JSON.stringify(err)}`);
     });
 } catch (err) {
@@ -1199,6 +1585,10 @@ onPreloadedUIExtensionAbilityLoaded(callback: PreloadedUIExtensionAbilityLoadedF
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1217,11 +1607,34 @@ onPreloadedUIExtensionAbilityLoaded(callback: PreloadedUIExtensionAbilityLoadedF
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { abilityManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function onPreloadLoaded(preloadId: number) {
+  console.info(`Preloaded UIExtensionAbility loaded, preloadId: ${preloadId}`);
+}
+
+try {
+  abilityManager.onPreloadedUIExtensionAbilityLoaded(onPreloadLoaded);
+  console.info('onPreloadedUIExtensionAbilityLoaded success.');
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`onPreloadedUIExtensionAbilityLoaded failed, code is ${code}, message is ${message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function onPreloadLoaded(preloadId: int) {
   console.info(`Preloaded UIExtensionAbility loaded, preloadId: ${preloadId}`);
 }
 
@@ -1249,6 +1662,10 @@ offPreloadedUIExtensionAbilityLoaded(callback?: PreloadedUIExtensionAbilityLoade
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1267,11 +1684,34 @@ offPreloadedUIExtensionAbilityLoaded(callback?: PreloadedUIExtensionAbilityLoade
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { abilityManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function offPreloadLoaded(preloadId: number) {
+  console.info(`Preloaded UIExtensionAbility loaded, preloadId: ${preloadId}`);
+}
+
+try {
+  abilityManager.offPreloadedUIExtensionAbilityLoaded(offPreloadLoaded);
+  console.info('offPreloadedUIExtensionAbilityLoaded success.');
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`offPreloadedUIExtensionAbilityLoaded failed, code is ${code}, message is ${message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function offPreloadLoaded(preloadId: int) {
   console.info(`Preloaded UIExtensionAbility loaded, preloadId: ${preloadId}`);
 }
 
@@ -1299,6 +1739,10 @@ onPreloadedUIExtensionAbilityDestroyed(callback: PreloadedUIExtensionAbilityDest
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1317,11 +1761,34 @@ onPreloadedUIExtensionAbilityDestroyed(callback: PreloadedUIExtensionAbilityDest
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { abilityManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function onPreloadDestroyed(preloadId: number) {
+  console.info(`Preloaded UIExtensionAbility destroyed, preloadId: ${preloadId}`);
+}
+
+try {
+  abilityManager.onPreloadedUIExtensionAbilityDestroyed(onPreloadDestroyed);
+  console.info('onPreloadedUIExtensionAbilityDestroyed success.');
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`onPreloadedUIExtensionAbilityDestroyed failed, code is ${code}, message is ${message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function onPreloadDestroyed(preloadId: int) {
   console.info(`Preloaded UIExtensionAbility destroyed, preloadId: ${preloadId}`);
 }
 
@@ -1349,6 +1816,10 @@ offPreloadedUIExtensionAbilityDestroyed(callback?: PreloadedUIExtensionAbilityDe
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1367,11 +1838,34 @@ offPreloadedUIExtensionAbilityDestroyed(callback?: PreloadedUIExtensionAbilityDe
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { abilityManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function offPreloadDestroyed(preloadId: number) {
+  console.info(`Preloaded UIExtensionAbility destroyed, preloadId: ${preloadId}`);
+}
+
+try {
+  abilityManager.offPreloadedUIExtensionAbilityDestroyed(offPreloadDestroyed);
+  console.info('offPreloadedUIExtensionAbilityDestroyed success.');
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`offPreloadedUIExtensionAbilityDestroyed failed, code is ${code}, message is ${message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function offPreloadDestroyed(preloadId: int) {
   console.info(`Preloaded UIExtensionAbility destroyed, preloadId: ${preloadId}`);
 }
 
@@ -1395,6 +1889,10 @@ try {
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | ---------| ---- | ---- | --------- |
 | isOpenAllowed | boolean   | 否   | 否   | 是否允许拉起原子化服务。true表示允许拉起原子化服务，false表示不允许拉起原子化服务。 |
@@ -1413,6 +1911,10 @@ queryAtomicServiceStartupRule(context: Context, appId: string): Promise\<AtomicS
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：该接口仅在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -1447,13 +1949,17 @@ export default class EntryAbility extends UIAbility {
   onForeground() {
     let appId: string = '6918661953712445909';
     try {
-      abilityManager.queryAtomicServiceStartupRule(this.context, appId).then((data: abilityManager.AtomicServiceStartupRule) => {
-        console.info(`queryAtomicServiceStartupRule data: ${JSON.stringify(data)}`);
-      }).catch((err: BusinessError) => {
-        console.error(`queryAtomicServiceStartupRule failed, code is ${err.code}, message is ${err.message}`);
-      });
-    } catch (err) {
+      abilityManager.queryAtomicServiceStartupRule(this.context, appId)
+        .then((data: abilityManager.AtomicServiceStartupRule) => {
+          console.info(`queryAtomicServiceStartupRule data: ${data}`);
+        })
+        .catch((e: Error) => {
+          let err = e as BusinessError;
+          console.error(`queryAtomicServiceStartupRule failed, code is ${err.code}, message is ${err.message}`);
+        });
+    } catch (e) {
       // 处理入参错误异常
+      let err = e as BusinessError;
       console.error(`param is invalid, code is ${err.code}, message is ${err.message}`);
     }
   }
@@ -1470,6 +1976,10 @@ ExtensionRunningInfo二级模块。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型 | 说明 |
 | --- | --- |
 | [_ExtensionRunningInfo](js-apis-inner-application-extensionRunningInfo-sys.md) | ExtensionRunningInfo二级模块，提供Extension运行的相关信息。 |
@@ -1484,13 +1994,37 @@ AbilityForegroundStateObserver二级模块。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 11
+
 | 类型 | 说明 |
 | --- | --- |
-| [_AbilityForegroundStateObserver.default](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | AbilityForegroundStateObserver二级模块，用于定义应用前后台状态监听。 |
+| [AbilityForegroundStateObserver](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | AbilityForegroundStateObserver二级模块，用于定义应用前后台状态监听。 |
+
+## AbilityForegroundStateObserver<sup>23+</sup>
+
+type AbilityForegroundStateObserver = _AbilityForegroundStateObserver
+
+AbilityForegroundStateObserver二级模块。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型                                                         | 说明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [_AbilityForegroundStateObserver](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | AbilityForegroundStateObserver二级模块，用于定义应用前后台状态监听。 |
 
 ## PreloadedUIExtensionAbilityDestroyedFn<sup>23+</sup>
 
-type PreloadedUIExtensionAbilityDestroyedFn = (preloadId: number) => void
+ArkTS-Dyn: type PreloadedUIExtensionAbilityDestroyedFn = (preloadId: number) => void
+
+ArkTS-Sta: type PreloadedUIExtensionAbilityDestroyedFn = (preloadId: int) => void
 
 预加载[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)被销毁时的回调函数类型。
 
@@ -1500,13 +2034,19 @@ type PreloadedUIExtensionAbilityDestroyedFn = (preloadId: number) => void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 参数名    | 类型            | 必填 | 说明 |
 |--------|---------------|---| -------- |
-| preloadId | number | 是 | 预加载UIExtensionAbility实例的ID。 |
+| preloadId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 预加载UIExtensionAbility实例的ID。 |
 
 ## PreloadedUIExtensionAbilityLoadedFn<sup>23+</sup>
 
-type PreloadedUIExtensionAbilityLoadedFn = (preloadId: number) => void
+ArkTS-Dyn: type PreloadedUIExtensionAbilityLoadedFn = (preloadId: number) => void
+
+ArkTS-Sta: type PreloadedUIExtensionAbilityLoadedFn = (preloadId: int) => void
 
 预加载[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)被加载时的回调函数类型。
 
@@ -1516,6 +2056,10 @@ type PreloadedUIExtensionAbilityLoadedFn = (preloadId: number) => void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 参数名    | 类型            | 必填 | 说明 |
 |--------|---------------|---| -------- |
-| preloadId | number | 是 | 预加载UIExtensionAbility实例的ID。 |
+| preloadId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 预加载UIExtensionAbility实例的ID。 |

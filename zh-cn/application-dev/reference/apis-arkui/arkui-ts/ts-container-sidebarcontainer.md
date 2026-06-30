@@ -1,12 +1,12 @@
 # SideBarContainer
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @tsj_20201-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
-提供侧边栏可以显示和隐藏的容器，通过子组件定义侧边栏和内容区，第一个子组件表示侧边栏，第二个子组件表示内容区。
+提供侧边栏可以显示和隐藏的容器，通过子组件定义侧边栏和内容区，第一个子组件表示侧边栏，第二个子组件表示内容区。支持侧边栏导航布局场景，通过控制按钮或手势切换侧边栏显隐，可提升应用导航效率。
 
 >  **说明：**
 >
@@ -32,7 +32,7 @@ SideBarContainer( type?: SideBarContainerType )
 
 创建侧边栏容器。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,17 +48,16 @@ SideBarContainer( type?: SideBarContainerType )
 
 ## SideBarContainerType枚举说明
 
-容器内侧边栏样式枚举。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+容器内侧边栏类型枚举。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 值 | 说明 |
 | -------- | -------- |-------- |
-| Embed | 0 |侧边栏嵌入到组件内，和内容区并列显示。<br/>整体容器大小不变时，显示侧边栏会导致内容区缩小，隐藏侧边栏会扩大内容区。<br/>组件尺寸小于[minContentWidth](#mincontentwidth10) + [minSideBarWidth](#minsidebarwidth)，并且未设置showSideBar时，侧边栏自动隐藏。<br/>未设置minSideBarWidth或者minContentWidth采用未设置接口的默认值进行计算。<br/> 组件在自动隐藏后，如果通过点击控制按钮唤出侧边栏，则侧边栏悬浮在内容区上显示。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23|
-| Overlay | 1 |侧边栏浮在内容区上面，不会影响内容区的大小。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
-| AUTO<sup>10+</sup> | 2 |组件尺寸大于等于minSideBarWidth + minContentWidth时，采用Embed模式显示。<br/>组件尺寸小于minSideBarWidth + minContentWidth时，采用Overlay模式显示。<br/>未设置minSideBarWidth或minContentWidth时，会使用未设置接口的默认值进行计算，若计算的值小于600vp，则使用600vp做为模式切换的断点值。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23|
+| Embed | 0 |侧边栏嵌入到组件内，和内容区并列显示。适用于需要同时展示侧边栏和内容区的场景。<br/>整体容器大小不变时，显示侧边栏会导致内容区缩小，隐藏侧边栏会扩大内容区。<br/>组件尺寸小于[minContentWidth](#mincontentwidth10) + [minSideBarWidth](#minsidebarwidth)，并且未设置showSideBar时，侧边栏自动隐藏。<br/>设置了showSideBar属性时，以showSideBar属性设置的值为准。<br/>未设置minSideBarWidth或minContentWidth时，采用对应接口的默认值进行计算。<br/> 组件在自动隐藏后，如果通过点击控制按钮唤出侧边栏，则侧边栏悬浮在内容区上显示。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23|
+| Overlay | 1 |侧边栏浮在内容区上面，不会影响内容区的大小。适用于需要临时展示侧边栏的场景。<br/>组件尺寸小于minContentWidth时，内容区会被截断显示。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| AUTO<sup>10+</sup> | 2 |组件尺寸大于等于minSideBarWidth + minContentWidth时，采用Embed模式显示。<br/>组件尺寸小于minSideBarWidth + minContentWidth时，采用Overlay模式显示。适用于需要响应式布局或多设备适配的场景。<br/>未设置minSideBarWidth或minContentWidth时，会使用未设置接口的默认值进行计算，若计算的值小于600vp，则使用600vp作为模式切换的临界值。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23|
+| DISPLACE | 3 | 侧边栏和内容区并列显示，内容区超出部分移出组件外。侧边栏展开时，内容区显示灰色蒙层（颜色为#33000000）并被禁用事件，点击内容区可收起侧边栏。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## 属性
 
@@ -70,13 +69,15 @@ ArkTS-Dyn: showSideBar(value: boolean)
 
 ArkTS-Sta: showSideBar(value: boolean | Bindable\<boolean> | undefined)
 
-设置是否显示侧边栏。
+设置是否显示侧边栏。设置该属性值后会触发侧边栏的显示/隐藏动画。
+
+当showSideBar属性未设置时，依据组件大小进行自动显示：小于minSideBarWidth + minContentWidth时默认不显示侧边栏，大于等于时默认显示侧边栏。
 
 ArkTS-Dyn：从API version 10开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
 
 ArkTS-Sta：该属性支持双向绑定变量。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -96,9 +97,9 @@ ArkTS-Dyn: controlButton(value: ButtonStyle)
 
 ArkTS-Sta: controlButton(value: ButtonStyle | undefined)
 
-设置侧边栏控制按钮的属性。
+设置侧边栏控制按钮的属性。控制按钮用于切换侧边栏的显示和隐藏状态。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -110,7 +111,7 @@ ArkTS-Sta: controlButton(value: ButtonStyle | undefined)
 
 | 参数名 | 类型                                | 必填 | 说明                   |
 | ------ | ----------------------------------- | ---- | ---------------------- |
-| value  |ArkTS-Dyn: [ButtonStyle](#buttonstyle对象说明)<br/>ArkTS-Sta: [ButtonStyle](#buttonstyle对象说明) \| undefined | 是   | 侧边栏控制按钮的属性。<br/>取值为undefined时，按ButtonStyle中的默认值处理。 |
+| value  |ArkTS-Dyn: [ButtonStyle](#buttonstyle对象说明)<br/>ArkTS-Sta: [ButtonStyle](#buttonstyle对象说明) \| undefined | 是   | 侧边栏控制按钮的属性，用于配置控制按钮的位置、大小和图标<br/>取值为undefined时，按ButtonStyle中的默认值处理。 |
 
 ### showControlButton
 
@@ -118,9 +119,9 @@ ArkTS-Dyn: showControlButton(value: boolean)
 
 ArkTS-Sta: showControlButton(value: boolean | undefined)
 
-设置是否显示控制按钮。
+设置是否显示控制按钮。控制按钮用于控制showSideBar属性的切换，点击可显示或隐藏侧边栏。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -142,11 +143,11 @@ ArkTS-Sta: showControlButton(value: boolean | undefined)
 
 sideBarWidth(value: number)
 
-设置侧边栏的宽度。设置为小于0的值时按默认值显示。受最小宽度和最大宽度限制，不在限制区域内取最近的点。
+设置侧边栏的宽度。设置为小于0的值时按默认值显示。受minSideBarWidth和maxSideBarWidth限制，当设置的值不在限制范围内时，取最近的边界值。
 
 从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -160,17 +161,17 @@ sideBarWidth(value: number)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number | 是   | 侧边栏的宽度。<br/>默认值：240vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**说明：** <br/>API version 10以下版本的默认值为200vp，API version 10及以上版本的默认值为240vp。<br/>取值为undefined时，按照默认值处理。 |
+| value  | number | 是   | 侧边栏的宽度。<br/>默认值：240vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>异常值时取默认值。<br/>**说明：** <br/>API version 10以下版本的默认值为200vp，API version 10及以上版本的默认值为240vp。 |
 
 ### sideBarWidth<sup>9+</sup>
 
 sideBarWidth(value: Length)
 
-设置侧边栏的宽度。设置为小于0的值时按默认值显示。受最小宽度和最大宽度限制，不在限制区域内取最近的点。与[sideBarWidth](#sidebarwidth)相比，value参数新增了对百分比字符串和其他[像素单位](ts-pixel-units.md)的支持。
+设置侧边栏的宽度。设置为小于0的值时按默认值显示。受minSideBarWidth和maxSideBarWidth限制，当设置的值不在限制范围内时，取最近的边界值。与[sideBarWidth](#sidebarwidth)相比，value参数新增了对百分比字符串和其他[像素单位](ts-pixel-units.md)的支持。
 
 从API version 18开始，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -184,7 +185,7 @@ sideBarWidth(value: Length)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 侧边栏的宽度。<br/>默认值：240vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**说明：** <br/>API version 9的默认值为200vp，API version 10及以上版本的默认值为240vp。<br/>取值为undefined时，按照默认值处理。 |
+| value  | [Length](ts-types.md#length) | 是   | 侧边栏的宽度。<br/>默认值：240vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>异常值时取默认值。<br/>**说明：** <br/>API version 9的默认值为200vp，API version 10及以上版本的默认值为240vp。 |
 
 ### sideBarWidth<sup>23+</sup>
 
@@ -216,7 +217,7 @@ minSideBarWidth(value: number)
 
 minSideBarWidth优先于侧边栏子组件minWidth，minSideBarWidth未设置时默认值优先级高于侧边栏子组件minWidth。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -230,7 +231,7 @@ minSideBarWidth优先于侧边栏子组件minWidth，minSideBarWidth未设置时
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | number | 是   | 侧边栏最小宽度。<br/>默认值：API version 9及以下版本默认值为200vp，API version 10的默认值为240vp。<br/>取值范围：[0, +∞)<br/>取值为undefined时，按照默认值处理。 |
+| value  | number | 是   | 侧边栏最小宽度。<br/>默认值：API version 9及以下版本默认值为200vp，API version 10的默认值为240vp。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>异常值时取默认值。 |
 
 ### minSideBarWidth<sup>9+</sup>
 
@@ -240,7 +241,7 @@ minSideBarWidth(value: Length)
 
 minSideBarWidth优先于侧边栏子组件minWidth，minSideBarWidth未设置时默认值优先级高于侧边栏子组件minWidth。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -254,7 +255,7 @@ minSideBarWidth优先于侧边栏子组件minWidth，minSideBarWidth未设置时
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | 是   | 侧边栏最小宽度。<br/>默认值：API version 9及以下版本默认值为200vp，API version 10的默认值为240vp。<br/>取值范围：[0, +∞)<br/>取值为undefined时，按照默认值处理。 |
+| value  | [Length](ts-types.md#length) | 是   | 侧边栏最小宽度。<br/>默认值：API version 9及以下版本默认值为200vp，API version 10的默认值为240vp。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>异常值时取默认值。 |
 
 ### minSideBarWidth<sup>23+</sup>
 
@@ -264,7 +265,7 @@ minSideBarWidth(value: Length | undefined)
 
 minSideBarWidth优先于侧边栏子组件minWidth，minSideBarWidth未设置时默认值优先级高于侧边栏子组件minWidth。
 
-**系统能力：** SystemCapability.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -286,7 +287,7 @@ maxSideBarWidth(value: number)
 
 maxSideBarWidth优先于侧边栏子组件maxWidth，maxSideBarWidth未设置时默认值优先级高于侧边栏子组件maxWidth。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -300,7 +301,7 @@ maxSideBarWidth优先于侧边栏子组件maxWidth，maxSideBarWidth未设置时
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                |
 | ------ | ------------------------------------------------------------ | ---- | --------------------------------------------------- |
-| value  | number | 是   | 设置侧边栏最大宽度。<br/>默认值：280vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>取值为undefined时，按照默认值处理。 |
+| value  | number | 是   | 设置侧边栏最大宽度。<br/>默认值：280vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>异常值时取默认值。<br/>值不能超过侧边栏容器本身宽度，超过则使用侧边栏容器本身宽度。 |
 
 ### maxSideBarWidth<sup>9+</sup>
 
@@ -310,7 +311,7 @@ maxSideBarWidth(value: Length)
 
 maxSideBarWidth优先于侧边栏子组件maxWidth，maxSideBarWidth未设置时默认值优先级高于侧边栏子组件maxWidth。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -324,7 +325,7 @@ maxSideBarWidth优先于侧边栏子组件maxWidth，maxSideBarWidth未设置时
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                |
 | ------ | ------------------------------------------------------------ | ---- | --------------------------------------------------- |
-| value  | [Length](ts-types.md#length) | 是   | 设置侧边栏最大宽度。<br/>默认值：280vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>取值为undefined时，按照默认值处理。 |
+| value  | [Length](ts-types.md#length) | 是   | 设置侧边栏最大宽度。<br/>默认值：280vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>异常值时取默认值。<br/>值不能超过侧边栏容器本身宽度，超过则使用侧边栏容器本身宽度。 |
 
 ### maxSideBarWidth<sup>23+</sup>
 
@@ -364,7 +365,7 @@ attributeModifier(modifier: AttributeModifier\<SideBarContainerAttribute> | Attr
 
 | 参数名   | 类型                                         | 必填 | 说明                                                                                                                             |
 | -------- | -------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------- |
-| modifier | [AttributeModifier\<SideBarContainerAttribute>](./ts-universal-attributes-attribute-modifier.md#attributemodifiert) \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>CommonMethod：通用属性和事件。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
+| modifier | [AttributeModifier](./ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<SideBarContainerAttribute> \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>取值为undefined时，按当前组件的属性方法默认值处理。<br/>CommonMethod：[通用属性](./ts-component-general-attributes.md)和[通用事件](./ts-component-general-events.md)。<br/>NavigationAttribute：当前组件的[属性](#属性)和[事件](#事件)。 |
 
 ### autoHide<sup>9+</sup>
 
@@ -372,11 +373,11 @@ ArkTS-Dyn: autoHide(value: boolean)
 
 ArkTS-Sta: autoHide(value: boolean | undefined)
 
-设置当侧边栏拖拽到小于最小宽度后，是否自动隐藏。受minSideBarWidth属性方法影响，minSideBarWidth属性方法未设置值使用默认值。
+设置当侧边栏拖拽到小于最小宽度后，是否自动隐藏。受minSideBarWidth属性方法影响，minSideBarWidth属性方法未设置值使用默认值。自动隐藏后showSideBar属性值同步更新为false，并触发onChange事件。
 
-拖拽过程中判断是否要自动隐藏。小于最小宽度时需要阻尼效果触发隐藏（越界一段距离）。
+拖拽过程中判断是否要自动隐藏。小于最小宽度时需要拖拽越界一定距离（具体距离由系统实现决定）后触发自动隐藏，具有阻尼效果，避免误操作。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -398,7 +399,7 @@ ArkTS-Sta: sideBarPosition(value: SideBarPosition | undefined)
 
 设置侧边栏显示位置。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -420,7 +421,9 @@ ArkTS-Sta: divider(value: DividerStyle | null | undefined)
 
 设置分割线的样式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -432,7 +435,7 @@ ArkTS-Sta: divider(value: DividerStyle | null | undefined)
 
 | 参数名 | 类型                                                      | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [DividerStyle](#dividerstyle10对象说明)&nbsp;\|&nbsp;null<br/>ArkTS-Sta: [DividerStyle](#dividerstyle10对象说明)&nbsp;\|&nbsp;null \| undefined  | 是   | 分割线的样式。<br/>默认为DividerStyle：显示分割线。<br/>- null或undefined：行为不做处理，分割线样式与默认值保持一致。<br/>**说明：** <br/>API version 11及以下版本，null效果为不显示分割线。|
+| value  | ArkTS-Dyn: [DividerStyle](#dividerstyle10对象说明)&nbsp;\|&nbsp;null<br/>ArkTS-Sta: [DividerStyle](#dividerstyle10对象说明)&nbsp;\|&nbsp;null \| undefined  | 是   | 分割线的样式。<br/>默认为DividerStyle：显示分割线。<br/>- null或undefined：分割线样式保持默认值，不做任何改变。<br/>**说明：** <br/>API version 11及以下版本，null效果为不显示分割线。|
 
 ### minContentWidth<sup>10+</sup>
 
@@ -455,7 +458,9 @@ Embed场景下，增大组件尺寸时仅增大内容区的尺寸。
 
 minContentWidth优先于侧边栏的[maxSideBarWidth](#maxsidebarwidth)与sideBarWidth属性，minContentWidth未设置时默认值优先级低于设置的minSideBarWidth与maxSideBarWidth属性。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -467,13 +472,50 @@ minContentWidth优先于侧边栏的[maxSideBarWidth](#maxsidebarwidth)与sideBa
 
 | 参数名 | 类型                                 | 必填 | 说明                                                         |
 | ------ | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [Dimension](ts-types.md#dimension10)<br/>ArkTS-Sta: [Dimension](ts-types.md#dimension10) \| undefined| 是   | SideBarContainer组件内容区可显示的最小宽度。<br/>默认值：360vp<br/>单位：vp<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: [Dimension](ts-types.md#dimension10)<br/>ArkTS-Sta: [Dimension](ts-types.md#dimension10) \| undefined| 是   | SideBarContainer组件内容区可显示的最小宽度。<br/>默认值：360vp<br/>取值范围：[0, +∞)<br/>设置为小于0时按默认值处理。<br/>取值为undefined时，按默认值处理。 |
+
+### showSideBarWithGesture
+
+ArkTS-Dyn: showSideBarWithGesture(value: boolean)
+
+ArkTS-Sta: showSideBarWithGesture(value: boolean | undefined)
+
+设置是否支持通过手势滑动来显示或隐藏侧边栏。未通过该接口设置时，不支持通过手势滑动显示或隐藏侧边栏。
+
+> **说明：** 
+>
+> - 手势滑动生效范围为侧边栏+内容区（不含分割线），滑动距离达到100vp时改变侧边栏显示或隐藏状态，最大可滑动距离等于侧边栏宽度。
+>
+> - 当侧边栏位于容器左侧时：
+>   - 侧边栏隐藏时可向右滑动展开侧边栏。
+>   - 侧边栏显示时可向左滑动关闭侧边栏。
+>
+> - 当侧边栏位于容器右侧时：
+>   - 侧边栏隐藏时可向左滑动展开侧边栏。
+>   - 侧边栏显示时可向右滑动关闭侧边栏。
+>
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：** 
+
+| 参数名 | 类型                                 | 必填 | 说明                                                         |
+| ------ | ------------------------------------ | ---- | ------------------------------------------------------------ |
+| value  | ArkTS-Dyn:boolean<br/>ArkTS-Sta:boolean \| undefined | 是   | 设置是否支持通过手势滑动显示或隐藏侧边栏。<br/>true：支持通过手势滑动显示或隐藏侧边栏。<br/>false或undefined：不支持通过手势滑动显示或隐藏侧边栏。 |
 
 ## ButtonStyle对象说明
 
 设置侧边栏控制按钮的样式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -485,7 +527,7 @@ minContentWidth优先于侧边栏的[maxSideBarWidth](#maxsidebarwidth)与sideBa
 | -------- | -------- | -------- | -------- | -------- |
 | left | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 设置侧边栏控制按钮距离容器左界限的间距。<br/>默认值：16vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>异常值时取默认值。 |
 | top | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 设置侧边栏控制按钮距离容器上界限的间距。<br/>默认值：48vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>异常值时取默认值。 |
-| width | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 设置侧边栏控制按钮的宽度。<br/>默认值：<br/>API version 9及以下默认值为32vp；从API version 10开始默认值为24vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>异常值时取默认值。 |
+| width | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 设置侧边栏控制按钮的宽度。<br/>默认值：<br/>API version 9及之前版本：32vp<br/>从API version 10开始：24vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>异常值时取默认值。 |
 | height | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 设置侧边栏控制按钮的高度。<br/>默认值：<br/>API version 9及之前版本：32vp<br/>从API version 10开始：24vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>异常值时取默认值。 |
 | icons | [ButtonIconOptions<sup>18+</sup>](#buttoniconoptions18对象说明) | 否 | 是 | 设置侧边栏控制按钮的图标。<br/>资源获取错误以及未设置该属性时，使用默认图标。 |
 
@@ -497,7 +539,9 @@ minContentWidth优先于侧边栏的[maxSideBarWidth](#maxsidebarwidth)与sideBa
 >
 > 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -507,15 +551,15 @@ minContentWidth优先于侧边栏的[maxSideBarWidth](#maxsidebarwidth)与sideBa
 
 | 名称       | 类型                           | 只读 | 可选 | 说明                                        |
 | --------- | ------------------------------- | ---- | ---- | ------------------------------------------ |
-| shown<sup>8+</sup>     | string&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 否   | 设置侧边栏显示时控制按钮的图标。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23         |
-| hidden<sup>8+</sup>    | string&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 否   | 设置侧边栏隐藏时控制按钮的图标。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23      |
-| switching<sup>8+</sup> | string&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 是   | 设置侧边栏显示和隐藏状态切换时控制按钮的图标。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| shown<sup>8+</sup>     | string&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 否   | 设置侧边栏显示时控制按钮的图标。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23         |
+| hidden<sup>8+</sup>    | string&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 否   | 设置侧边栏隐藏时控制按钮的图标。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23      |
+| switching<sup>8+</sup> | string&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 是   | 设置侧边栏显示和隐藏状态切换时控制按钮的图标。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## SideBarPosition<sup>9+</sup>枚举说明
 
 侧边栏显示位置。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -532,7 +576,21 @@ minContentWidth优先于侧边栏的[maxSideBarWidth](#maxsidebarwidth)与sideBa
 
 设置分割线的样式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+>  **说明：** 
+>
+>  针对侧边栏子组件设置通用属性[width](ts-universal-attributes-size.md#width)和[height](ts-universal-attributes-size.md#height)时，宽高都不生效。
+>
+>  针对侧边栏内容区设置通用属性[width](ts-universal-attributes-size.md#width)和[height](ts-universal-attributes-size.md#height)时，宽高都不生效，默认占满SideBarContainer的剩余空间。
+>
+>  当[showSideBar](#showsidebar)属性未设置时，依据组件大小进行自动显示：
+>
+>  - 小于[minSideBarWidth](#minsidebarwidth) + [minContentWidth](#mincontentwidth10)：默认不显示侧边栏。
+>
+>  - 大于等于minSideBarWidth + minContentWidth：默认显示侧边栏。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -542,20 +600,10 @@ minContentWidth优先于侧边栏的[maxSideBarWidth](#maxsidebarwidth)与sideBa
 
 | 名称        | 类型      | 只读 | 可选 | 说明                                     |
 | ----------- | ------------- | ---- | ---- | ---------------------------------------- |
-| strokeWidth | [Length](ts-types.md#length)        | 否 | 否   | 分割线的线宽。<br/>默认值：1vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>异常值时取默认值。<br/>**说明**：<br>分割线的宽度不支持百分比设置。优先级低于[通用属性height](ts-universal-attributes-size.md#height)，超过通用属性设置大小时，按照通用属性进行裁切。部分设备硬件中存在1像素取整后分割线不显示问题，建议使用2像素。 |
+| strokeWidth | [Length](ts-types.md#length)        | 否 | 否   | 分割线的线宽。<br/>默认值：1vp<br/>单位：vp<br/>取值范围：[0, +∞)<br/>异常值时取默认值。<br/>**说明**：<br/>分割线的宽度不支持百分比设置。优先级低于[通用属性height](ts-universal-attributes-size.md#height)，超过通用属性设置大小时，按照通用属性进行裁切。部分设备硬件中存在1像素取整后分割线不显示问题，建议使用2像素。 |
 | color       | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是   | 分割线的颜色。<br/>默认值：#000000，3%，黑色。   |
 | startMargin | [Length](ts-types.md#length)        | 否 | 是   | 分割线与侧边栏顶端的距离。<br/>默认值：0<br/>单位：vp<br/>取值范围：[0, +∞)<br/>异常值时取默认值。 |
 | endMargin   | [Length](ts-types.md#length)        | 否 | 是   | 分割线与侧边栏底端的距离。<br/>默认值：0<br/>单位：vp<br/>取值范围：[0, +∞)<br/>异常值时取默认值。 |
-
->  **说明：** 
->
->  针对侧边栏子组件设置[通用属性宽高](ts-universal-attributes-size.md)时，宽高都不生效。
->  针对侧边栏内容区设置[通用属性宽高](ts-universal-attributes-size.md)时，宽高都不生效，默认占满SideBarContainer的剩余空间。
->
->  当[showSideBar](#showsidebar)属性未设置时，依据组件大小进行自动显示：
->
->  - 小于[minSideBarWidth](#minsidebarwidth) + [minContentWidth](#mincontentwidth10)：默认不显示侧边栏。
->  - 大于等于minSideBarWidth + minContentWidth：默认显示侧边栏。
 
 ## 事件
 
@@ -575,7 +623,7 @@ ArkTS-Sta: onChange(callback: ((value: boolean) => void) | undefined)
 2. showSideBar属性自适应行为变化时。
 3. 分割线拖拽触发[autoHide](#autohide9)时。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -585,9 +633,9 @@ ArkTS-Sta: onChange(callback: ((value: boolean) => void) | undefined)
 
 **参数：** 
 
-| 参数名 | 类型    | 必填 | 说明                          |
+| 参数名    | 类型                          | 必填 | 说明                                                                                   |
 | ------ | ------- | ---- | ----------------------------- |
-| value  | ArkTS-Dyn: (value: boolean) => void<br/>ArkTS-Sta: ((value: boolean) => void) \| undefined| 是   | true表示显示，false表示隐藏。<br/>取值为undefined时，不使用回调函数。 |
+| callback  | ArkTS-Dyn: (value: boolean) => void<br/>ArkTS-Sta: ((value: boolean) => void) \| undefined| 是   | 侧边栏状态变化时触发的回调。<br/>value：侧边栏是否显示，true表示显示，false表示隐藏。<br/>取值为undefined时，不使用回调函数。 |
 
 
 ## 示例
@@ -599,27 +647,27 @@ ArkTS-Sta: onChange(callback: ((value: boolean) => void) | undefined)
 @Entry
 @Component
 struct SideBarContainerExample {
-  // $r("app.media.icon")需要替换为开发者所需的图像资源文件。
-  normalIcon: Resource = $r("app.media.icon");
-  selectedIcon: Resource = $r("app.media.icon");
-  @State arr: number[] = [1, 2, 3];
-  @State current: number = 1;
+  // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
+  normalIcon: Resource = $r('app.media.icon');
+  selectedIcon: Resource = $r('app.media.icon');
+  @State menuItems: number[] = [1, 2, 3];
+  @State selectedItemId: number = 1;
 
   build() {
     SideBarContainer(SideBarContainerType.Embed) {
       Column() {
-        ForEach(this.arr, (item: number) => {
+        ForEach(this.menuItems, (item: number) => {
           Column({ space: 5 }) {
-            Image(this.current === item ? this.selectedIcon : this.normalIcon).width(64).height(64)
-            Text("Index0" + item)
+            Image(this.selectedItemId === item ? this.selectedIcon : this.normalIcon).width(64).height(64)
+            Text('Index0' + item)
               .fontSize(25)
-              .fontColor(this.current === item ? '#0A59F7' : '#999')
+              .fontColor(this.selectedItemId === item ? '#0A59F7' : '#999')
               .fontFamily('source-sans-pro,cursive,sans-serif')
           }
           .onClick(() => {
-            this.current = item;
+            this.selectedItemId = item;
           })
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }.width('100%')
       .justifyContent(FlexAlign.SpaceEvenly)
       .backgroundColor('#19000000')

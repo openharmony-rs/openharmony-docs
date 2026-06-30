@@ -1243,6 +1243,25 @@ Unsupported data format.
 
 查看接口文档并使用接口支持的数据格式。
 
+## 7600208 HDR图片分解失败
+
+**错误信息**
+
+HDR image decomposition failed. Possible causes: 1. Decomposition processing is not supported. 2. Processing error occurs.
+
+**错误描述**
+
+HDR图片分解失败。
+
+**可能原因**
+
+1. 分解处理不被支持。
+2. HDR图片处理过程中发生错误。
+
+**处理步骤**
+
+检查HDR PixelMap的像素格式是否支持分解，或更换图片后重试。
+
 ## 7600301 申请内存失败
 
 **错误信息**

@@ -2,9 +2,9 @@
 
 <!--Kit: Content Embed Kit-->
 <!--Subsystem: officeservice -->
-<!--Owner: @wanxiaoguo-->
-<!--Designer: @zhuwei;@weiguoning-->
-<!--Tester: @yinjian-->
+<!--Owner: @qq_41146650-->
+<!--Designer: @gcw_nDnzjzHO;@wei-guoning-->
+<!--Tester: @sd_yinjian-->
 <!--Adviser: @jinqiuheng-->
 
 ## 概述
@@ -134,6 +134,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetContentEmbedInfo(const char *locale, C
 
 根据区域设置获取[ContentEmbed_Info](capi-contentembed-contentembed-info.md)实例。
 
+**需要权限：** ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION
+
 **起始版本：** 24
 
 **参数：**
@@ -147,7 +149,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetContentEmbedInfo(const char *locale, C
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_SYSTEM_ABNORMAL：表示系统服务工作异常。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_PERMISSION_DENIED：表示权限校验失败。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_SYSTEM_ABNORMAL：表示系统服务工作异常。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。 |
 
 ### OH_ContentEmbed_GetFormatCountFromInfo()
 
@@ -258,6 +260,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetContentEmbedFormatByOEidAndLocale(cons
 
 根据OEID和区域设置获取[ContentEmbed_Format](capi-contentembed-contentembed-format.md)实例。
 
+**需要权限：** ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION
+
 **起始版本：** 24
 
 **参数：**
@@ -272,7 +276,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetContentEmbedFormatByOEidAndLocale(cons
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_SYSTEM_ABNORMAL：表示系统服务工作异常。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_PERMISSION_DENIED：表示权限校验失败。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_SYSTEM_ABNORMAL：表示系统服务工作异常。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。 |
 
 ### OH_ContentEmbed_GetOEidFromFormat()
 
@@ -609,6 +613,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_StartWork(ContentEmbed_ExtensionPro
 
 连接服务端OE Extension，建立与OE Extension的通信通道。
 
+**需要权限：** ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION
+
 **起始版本：** 24
 
 **参数：**
@@ -621,7 +627,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_StartWork(ContentEmbed_ExtensionPro
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_CLIENT_CALLBACK_NOT_REGISTERED：表示必要的客户端回调未注册。<br>     CE_ERR_SYSTEM_ABNORMAL：表示系统服务异常。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。<br>     CE_ERR_CONNECT_LIMIT_EXCEED：表示OE Extension连接数超出限制。<br>     CE_ERR_FILE_NOT_GRANT：表示文件未被授权。<br>     CE_ERR_DISK_FULL：表示磁盘已满。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_PERMISSION_DENIED：表示权限校验失败。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_CLIENT_CALLBACK_NOT_REGISTERED：表示必要的客户端回调未注册。<br>     CE_ERR_SYSTEM_ABNORMAL：表示系统服务异常。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。<br>     CE_ERR_CONNECT_LIMIT_EXCEED：表示OE Extension连接数超出限制。<br>     CE_ERR_FILE_NOT_GRANT：表示文件未被授权。<br>     CE_ERR_DISK_FULL：表示磁盘已满。 |
 
 ### OH_ContentEmbed_Proxy_StopWork()
 
@@ -633,6 +639,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_StopWork(ContentEmbed_ExtensionProx
 
 断开与OE Extension的通信通道。
 
+**需要权限：** ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION
+
 **起始版本：** 24
 
 **参数：**
@@ -645,7 +653,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_StopWork(ContentEmbed_ExtensionProx
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_SYSTEM_ABNORMAL：表示系统服务异常。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码：<br>     CE_ERR_OK：表示操作成功。<br>     CE_PERMISSION_DENIED：表示权限校验失败。<br>     CE_ERR_PARAM_INVALID：表示参数检查失败。<br>     CE_ERR_SYSTEM_ABNORMAL：表示系统服务异常。<br>     CE_ERR_DEVICE_NOT_SUPPORTED：表示设备不支持。<br>     CE_ERR_IN_DLP_SANDBOX：表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_Proxy_GetSnapshot()
 

@@ -20,17 +20,29 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 
 ## Available
 
+**ArkTS-Dyn：**
+
+@interface Available { minApiVersion: string = '' }
+
+**ArkTS-Sta：**
+
+@Retention('SOURCE')
+
 @interface Available { minApiVersion: string = '' }
 
 系统提供的API注解能力，可用于标记API支持的最低可用版本。此注解可以标注在类、接口、变量、类型、模块、枚举上。在源码定义处添加注解后，编译工具会在使用处检查潜在的兼容性问题。当minApiVersion大于build-profile.json5中指定的compatibleSDKVersion字段，会生成兼容性警告。
 
-**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Base
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 <!--RP1-->
 | 名称 | 类型 | 只读 | 可选 | 说明                       |
@@ -149,3 +161,4 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 | ---------------------- | ---- | ------------------------------ |
 | COMPATIBILITY     | compatibility    | 支持消除兼容性告警。 |
 | SYSCAP     | syscap    | 支持消除多设备告警。 |
+| PERMISSION     | permission    | 支持消除权限告警。<br/>**起始版本：** 26.0.0 |

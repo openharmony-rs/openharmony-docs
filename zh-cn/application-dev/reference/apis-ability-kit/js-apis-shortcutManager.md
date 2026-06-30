@@ -4,11 +4,13 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
-本模块提供应用对于[快捷方式](../../quick-start/typical-scenario-configuration.md)的管理能力，包括设置快捷方式是否显示等。
+本模块提供应用对于[快捷方式](../../quick-start/typical-scenario-configuration.md)的管理能力，包括设置快捷方式是否显示等。通过快捷方式，用户可以从桌面快速启动应用的特定功能，提升应用的使用便捷性和用户粘性。典型使用场景包括：应用向用户提供常用功能的快速入口、根据用户使用习惯动态调整快捷方式的显示等。
 
 > **说明：**
+>
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
@@ -20,11 +22,15 @@ import { shortcutManager } from '@kit.AbilityKit';
 
 ## shortcutManager.setShortcutVisibleForSelf
 
-setShortcutVisibleForSelf(id: string, visible: boolean) : Promise\<void>
+setShortcutVisibleForSelf(id: string, visible: boolean): Promise\<void>
 
 设置当前应用指定的快捷方式是否显示。使用Promise异步回调。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -45,10 +51,11 @@ setShortcutVisibleForSelf(id: string, visible: boolean) : Promise\<void>
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 17700070 | The specified shortcut id is illegal. |
+| 17700070 | The specified shortcut id is not exist. |
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { shortcutManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -58,7 +65,22 @@ shortcutManager.setShortcutVisibleForSelf("shortcut_id", false)
   .then(() => {
     console.info('setShortcutVisibleForSelf success');
   }).catch((err: BusinessError) => {
-  console.error(`setShortcutVisibleForSelf errData is errCode:${err.code}  message:${err.message}`);
+    console.error(`setShortcutVisibleForSelf errData is errCode:${err.code}  message:${err.message}`);
+});
+```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { shortcutManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 请替换为module.json5配置文件中的shortcuts标签下实际配置的shortcutId字段
+shortcutManager.setShortcutVisibleForSelf("shortcut_id", false)
+  .then(() => {
+    console.info('setShortcutVisibleForSelf success');
+  }).catch((err: Error) => {
+    console.error(`setShortcutVisibleForSelf errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
 });
 ```
 
@@ -70,6 +92,10 @@ getAllShortcutInfoForSelf(): Promise\<Array\<ShortcutInfo>>
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                                         | 说明                                                         |
@@ -78,6 +104,7 @@ getAllShortcutInfoForSelf(): Promise\<Array\<ShortcutInfo>>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { shortcutManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -86,8 +113,22 @@ shortcutManager.getAllShortcutInfoForSelf()
   .then((data: shortcutManager.ShortcutInfo[]) => {
     console.info('getAllShortcutInfoForSelf shortcut data is' + JSON.stringify(data));
   }).catch((err: BusinessError) => {
-  console.error(`getAllShortcutInfoForSelf errData is errCode:${err.code}  message:${err.message}`);
+    console.error(`getAllShortcutInfoForSelf errData is errCode:${err.code}  message:${err.message}`);
 });
+```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { shortcutManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+shortcutManager.getAllShortcutInfoForSelf()
+  .then((data: shortcutManager.ShortcutInfo[]) => {
+    console.info('getAllShortcutInfoForSelf shortcut data is' + JSON.stringify(data));
+  }).catch((err: Error) => {
+    console.error(`getAllShortcutInfoForSelf errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
+  });
 ```
 
 ## shortcutManager.isShortcutSupported
@@ -96,11 +137,13 @@ isShortcutSupported(): boolean
 
 查询当前设备是否支持快捷方式。
 
-**起始版本：** 26.0.0
-
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -131,6 +174,10 @@ type ShortcutInfo = _ShortcutInfo
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
 | [_ShortcutInfo](./js-apis-bundleManager-shortcutInfo.md#shortcutinfo-1) | 应用module.json5配置文件中定义的快捷方式信息。 |
@@ -143,6 +190,10 @@ type ShortcutWant = _ShortcutWant
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
 | [_ShortcutWant](./js-apis-bundleManager-shortcutInfo.md#shortcutwant) | 快捷方式内定义的目标[wants](../../quick-start/module-configuration-file.md#wants标签)信息集合。 |
@@ -154,6 +205,10 @@ type ParameterItem = _ParameterItem
 快捷方式配置信息中的自定义数据。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Launcher
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |

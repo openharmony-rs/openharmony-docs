@@ -13,22 +13,20 @@
 下面以Worker响应"hello world"请求为例说明。
 
 
-1. 首先，创建一个执行任务的Worker。创建方法可参考[创建worker的注意事项](worker-introduction.md#创建worker的注意事项)。
+1. 首先，创建一个执行任务的Worker。创建方法可参考[创建Worker的注意事项](worker-introduction.md#创建worker的注意事项)。
 
-   <!-- @[create_worker_execute_multi_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/workers/Worker.ets) -->
+   <!-- @[create_worker_execute_multi_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/workers/Worker.ets) --> 
    
    ``` TypeScript
    import { ErrorEvent, MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
-   import { CopyEntry } from '../Sendable/CopyEntry';
    
    const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
    
-   // ...
-   
-   // Worker接收宿主线程的消息，做相应的处理
-   workerPort.onmessage = (e: MessageEvents) => {
-     let obj: CopyEntry[] = e.data;
-     console.info(`The type of the first set of data is ${obj[0].type}.`);
+   workerPort.onmessage = async (e: MessageEvents) => {
+     // ...
+     if (e.data === 'hello world') {
+       workerPort.postMessage('success');
+     }
    }
    ```
 
@@ -88,8 +86,12 @@
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
              .onClick(() => {
-               postMessageTest();
-               this.message = 'success';
+               postMessageTest().then(() => {
+                 this.message = 'success';
+               }).catch((e: BusinessError) => {
+                 this.message = 'failed';
+                 console.error(`taskpool execute postMessageTest error is: ${e}`);
+               })
              })
          }
          .width('100%')

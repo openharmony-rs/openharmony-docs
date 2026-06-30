@@ -1,8 +1,8 @@
 # 网页中安全区域计算和避让适配
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @KeeGitee-->
-<!--Designer: @LongLie-->
+<!--Owner: @sinat_22543221-->
+<!--Designer: @dzichou-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -20,6 +20,7 @@ Web组件默认布局在安全区域内。开启<!--RP1-->沉浸式效果<!--RP1
 
 - 通过[setWindowLayoutFullScreen](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9)设置应用窗口全屏。窗口全屏时，Web组件可布局至非安全区域。
 
+  ArkTS-Dyn示例：
   ```ts
   // EntryAbility.ets
   import { UIAbility } from '@kit.AbilityKit';
@@ -36,6 +37,27 @@ Web组件默认布局在安全区域内。开启<!--RP1-->沉浸式效果<!--RP1
   }
   ```
 
+  ArkTS-Sta示例：
+  ``` TypeScript
+  'use static'
+  
+  import { UIAbility } from '@kit.AbilityKit';
+  import { window } from '@kit.ArkUI';
+
+  export default class EntryAbility extends UIAbility {
+    // ...
+    onWindowStageCreate(windowStage: window.WindowStage): void {
+      windowStage.getMainWindow().then(window => {
+        // 设置窗口全屏
+        window.setWindowLayoutFullScreen(true);
+      });
+    }
+  }
+  ```
+
+<!-- -->
+
+  ArkTS-Dyn示例：
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -54,11 +76,56 @@ Web组件默认布局在安全区域内。开启<!--RP1-->沉浸式效果<!--RP1
   }
   ```
 
+  ArkTS-Sta示例：
+  ``` TypeScript
+  'use static'
+
+  import { Entry, Component, Web, Column } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+  
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller })
+          .width('100%').height('100%')
+      }
+    }
+  }
+  ```
+
 - 通过[expandSafeArea](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#expandsafearea)设置Web组件扩展安全区域，可以自定义扩展类型和方向。下面的示例中，Web组件可扩展至状态栏和导航栏，实现沉浸式效果。
 
 <!-- @[use_expand_safe_area_to_enable_immersive_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/CalcAdjustSafeArea.ets) -->
 
+ArkTS-Dyn示例：
 ``` TypeScript
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .width('100%').height('100%')
+        // 扩展至系统默认非安全区域（状态栏、导航栏），并设置只扩展上方区域和下方区域
+        .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+``` TypeScript
+'use static'
+
+import { Entry, Component, Web, Column, SafeAreaType, SafeAreaEdge } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 
 @Entry

@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供launcher应用使用的接口。
 
@@ -29,7 +29,7 @@ SystemCapability.BundleManager.BundleFramework
 
 ## innerBundleManager.getLauncherAbilityInfos<sup>(deprecated)</sup>
 
-getLauncherAbilityInfos(bundleName: string, userId: number, callback: AsyncCallback&lt;Array&lt;LauncherAbilityInfo&gt;&gt;) : void
+getLauncherAbilityInfos(bundleName: string, userId: number, callback: AsyncCallback&lt;Array&lt;LauncherAbilityInfo&gt;&gt;): void
 
 根据给定的Bundle名称获取LauncherAbilityInfos，使用callback异步回调。
 
@@ -60,7 +60,7 @@ SystemCapability.BundleManager.BundleFramework
 
 ## innerBundleManager.getLauncherAbilityInfos<sup>(deprecated)</sup>
 
-getLauncherAbilityInfos(bundleName: string, userId: number) : Promise&lt;Array&lt;LauncherAbilityInfo&gt;&gt;
+getLauncherAbilityInfos(bundleName: string, userId: number): Promise&lt;Array&lt;LauncherAbilityInfo&gt;&gt;
 
 根据给定的Bundle名称获取LauncherAbilityInfos，使用Promise异步回调。
 
@@ -95,7 +95,7 @@ SystemCapability.BundleManager.BundleFramework
 
 ## innerBundleManager.on<sup>(deprecated)</sup>
 
-on(type:"BundleStatusChange", bundleStatusCallback : BundleStatusCallback, callback: AsyncCallback&lt;string&gt;) : void
+on(type: 'BundleStatusChange', bundleStatusCallback: BundleStatusCallback, callback: AsyncCallback\<string>): void
 
 注册Callback。
 
@@ -125,7 +125,7 @@ SystemCapability.BundleManager.BundleFramework
 
 ## innerBundleManager.on<sup>(deprecated)</sup>
 
-on(type:"BundleStatusChange", bundleStatusCallback : BundleStatusCallback) : Promise&lt;string&gt;
+on(type: 'BundleStatusChange', bundleStatusCallback: BundleStatusCallback): Promise\<string>
 
 注册Callback。
 
@@ -160,7 +160,7 @@ SystemCapability.BundleManager.BundleFramework
 
 ## innerBundleManager.off<sup>(deprecated)</sup>
 
-off(type:"BundleStatusChange", callback: AsyncCallback&lt;string&gt;) : void
+off(type: 'BundleStatusChange', callback: AsyncCallback\<string>): void
 
 取消注册Callback。
 
@@ -189,7 +189,7 @@ SystemCapability.BundleManager.BundleFramework
 
 ## innerBundleManager.off<sup>(deprecated)</sup>
 
-off(type:"BundleStatusChange") : Promise&lt;string&gt;
+off(type: 'BundleStatusChange'): Promise\<string>
 
 取消注册Callback。
 
@@ -223,7 +223,7 @@ SystemCapability.BundleManager.BundleFramework
 
 ## innerBundleManager.getAllLauncherAbilityInfos<sup>(deprecated)</sup>
 
-getAllLauncherAbilityInfos(userId: number, callback: AsyncCallback&lt;Array&lt;LauncherAbilityInfo&gt;&gt;) : void
+getAllLauncherAbilityInfos(userId: number, callback: AsyncCallback&lt;Array&lt;LauncherAbilityInfo&gt;&gt;): void
 
 获取所有的LauncherAbilityInfos，使用callback异步回调。
 
@@ -252,7 +252,7 @@ SystemCapability.BundleManager.BundleFramework
 
 ## innerBundleManager.getAllLauncherAbilityInfos<sup>(deprecated)</sup>
 
-getAllLauncherAbilityInfos(userId: number) : Promise&lt;Array&lt;LauncherAbilityInfo&gt;&gt;
+getAllLauncherAbilityInfos(userId: number): Promise&lt;Array&lt;LauncherAbilityInfo&gt;&gt;
 
 获取LauncherAbilityInfos，使用Promise异步回调。
 
@@ -286,7 +286,7 @@ SystemCapability.BundleManager.BundleFramework
 
 ## innerBundleManager.getShortcutInfos<sup>(deprecated)</sup>
 
-getShortcutInfos(bundleName :string, callback: AsyncCallback&lt;Array&lt;ShortcutInfo&gt;&gt;) : void
+getShortcutInfos(bundleName: string, callback: AsyncCallback&lt;Array&lt;ShortcutInfo&gt;&gt;): void
 
 根据给定的Bundle名称获取快捷方式信息，使用callback异步回调。
 
@@ -315,7 +315,7 @@ SystemCapability.BundleManager.BundleFramework
 
 ## innerBundleManager.getShortcutInfos<sup>(deprecated)</sup>
 
-getShortcutInfos(bundleName : string) : Promise&lt;Array&lt;ShortcutInfo&gt;&gt;
+getShortcutInfos(bundleName: string): Promise&lt;Array&lt;ShortcutInfo&gt;&gt;
 
 根据给定的Bundle名称获取快捷方式信息，使用Promise异步回调。
 

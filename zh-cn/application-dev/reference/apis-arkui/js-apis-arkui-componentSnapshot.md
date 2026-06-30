@@ -19,9 +19,11 @@
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 对于使用[XComponent](arkui-ts/ts-basic-components-xcomponent.md)的场景，例如：Video或者相机流媒体展示类组件，不建议使用组件截图相关接口，建议使用[createPixelMapFromSurface](../apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmapfromsurface11)直接获取图片。
 >
-> - 如果组件自身内容不能填满组件大小区域，那么剩余位置截图返回的内容为透明像素。如果组件使用了[图像效果](arkui-ts/ts-universal-attributes-image-effect.md)类属性或其他的效果类属性，则可能产生非用户预期的截图结果。请排查是否需要填充组件透明内容区域，或使用[窗口截图](arkts-apis-window-Window.md#snapshot9)替代。
+> - 如果组件自身内容不能填满组件大小区域，那么剩余位置截图返回的内容为透明像素。如果组件使用了[图像效果](arkui-ts/ts-universal-attributes-image-effect.md)类属性或其他的效果类属性，则可能产生非用户预期的截图结果。请排查是否需要填充组件透明内容区域，或使用窗口截图接口[snapshot](arkts-apis-window-Window.md#snapshot9)替代。
 >
 > - 示例效果请以真机运行为准，当前 DevEco Studio预览器不支持。
 
@@ -46,7 +48,7 @@ get(id: string, callback: AsyncCallback<image.PixelMap>, options?: SnapshotOptio
 >
 > - 截图会获取最近一帧的绘制内容。如果在组件触发更新的同时调用截图，更新的渲染内容不会被截取到，截图会返回上一帧的绘制内容。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -134,7 +136,7 @@ get(id: string, options?: SnapshotOptions): Promise<image.PixelMap>
 > 
 > - 截图会获取最近一帧的绘制内容。如果在组件触发更新的同时调用截图，更新的渲染内容不会被截取到，截图会返回上一帧的绘制内容。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -230,7 +232,7 @@ createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap
 >
 > - 部分执行耗时任务的组件可能无法及时在截图前加载完成，因此会截取不到加载成功后的图像。例如：加载网络图片的[Image](arkui-ts/ts-basic-components-image.md)组件、[Web](../apis-arkweb/arkts-basic-components-web.md)组件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -344,7 +346,7 @@ createFromBuilder(builder: CustomBuilder, delay?: number, checkImageStatus?: boo
 >
 > - 部分执行耗时任务的组件可能无法及时在截图前加载完成，因此会截取不到加载成功后的图像。例如：加载网络图片的[Image](arkui-ts/ts-basic-components-image.md)组件、[Web](../apis-arkweb/arkts-basic-components-web.md)组件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -454,7 +456,7 @@ ArkTS-Sta: getSync(id: string, options?: SnapshotOptions): image.PixelMap | null
 >
 > 截图会获取最近一帧的绘制内容。如果在组件触发更新的同时调用截图，更新的渲染内容不会被截取到，截图会返回上一帧的绘制内容。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -481,7 +483,7 @@ ArkTS-Sta: getSync(id: string, options?: SnapshotOptions): image.PixelMap | null
 
 | 错误码ID  | 错误信息                |
 | ------ | ------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. <br/>**ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。  |
 | 100001 | Invalid ID. |
 | 160002 | Timeout. |
 | 160003 | Unsupported color space or dynamic range mode in snapshot options. |
@@ -534,136 +536,13 @@ struct SnapshotExample {
 
 ![componentget](figures/componentget.gif)
 
-## componentSnapshot.getSizeLimitation
-
-getSizeLimitation(): componentSnapshot.SnapshotSizeLimitation
-
-查询组件截图的最大尺寸限制。
-
-> **说明：**
->
-> 该接口需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)对象，然后通过该对象进行调用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
-**返回值：**
-
-| 类型                                                           | 说明             |
-| ------------------------------------------------------------ | -------------- |
-| componentSnapshot.[SnapshotSizeLimitation](#snapshotsizelimitation) | 组件截图的尺寸限制信息。 |
-
-**示例：**
-
-ArkTS-Dyn示例：
-
-```ts
-import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
-import { image } from '@kit.ImageKit';
-import { UIContext } from '@kit.ArkUI';
-
-class MyNodeController extends NodeController {
-  public node: FrameNode | null = null;
-  public imageNode: FrameNode | null = null;
-
-  makeNode(uiContext: UIContext): FrameNode | null {
-    this.node = new FrameNode(uiContext);
-    this.node.commonAttribute.width('100%').height('100%');
-
-    let image = typeNode.createNode(uiContext, 'Image');
-    image.initialize($r('app.media.startIcon')).width('100%').height('100%').autoResize(true);
-    this.imageNode = image;
-
-    this.node.appendChild(image);
-    return this.node;
-  }
-}
-
-const SNAPSHOT_NODE_WIDTH = 2000000;
-const SNAPSHOT_NODE_HEIGHT = 200;
-
-@Entry
-@Component
-struct SnapshotExample {
-  private myNodeController: MyNodeController = new MyNodeController();
-  @State pixmap: image.PixelMap | undefined = undefined;
-
-  build() {
-    Column() {
-      Column() {
-        Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
-        NodeContainer(this.myNodeController).width(SNAPSHOT_NODE_WIDTH).height(SNAPSHOT_NODE_HEIGHT).margin(5)
-      }
-
-      Button("UniqueId get snapshot")
-        .onClick(() => {
-          try {
-            let componentSnapshot = this.getUIContext().getComponentSnapshot();
-            // 检查尺寸限制
-            let limitation = componentSnapshot.getSizeLimitation();
-            console.info(`Max width: ${limitation.maxWidth}, Max height: ${limitation.maxHeight}`);
-            // 验证节点尺寸是否符合最大尺寸限制
-            if (limitation.maxWidth > SNAPSHOT_NODE_WIDTH && limitation.maxHeight > SNAPSHOT_NODE_HEIGHT) {
-              this.getUIContext()
-                .getComponentSnapshot()
-                .getWithUniqueId(this.myNodeController.imageNode?.getUniqueId(),
-                  { scale: 2, waitUntilRenderFinished: true })
-                .then((pixmap: image.PixelMap) => {
-                  this.pixmap = pixmap;
-                })
-                .catch((err: Error) => {
-                  console.error(`error: ${err}`);
-                })
-            } else {
-              console.info(`The screenshot size is too big, exceeding the GPU limitation`);
-            }
-          } catch (error) {
-            console.error(`UniqueId get snapshot Error: ${JSON.stringify(error)}`);
-          }
-        }).margin(10)
-    }
-    .alignItems(HorizontalAlign.Center)
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-```ts
-import { Entry, Column, Component, Button } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Column(undefined) {
-      Button("获取截图尺寸限制")
-        .onClick(() => {
-          let componentSnapshot = this.getUIContext().getComponentSnapshot();
-          let limitation = componentSnapshot.getSizeLimitation();
-          console.info(`Max width: ${limitation.maxWidth}, Max height: ${limitation.maxHeight}`);
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
 ## SnapshotSizeLimitation
 
 定义组件截图的尺寸限制。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -673,8 +552,8 @@ struct Index {
 
 | 名称        | 类型     | 只读 | 可选 | 说明                   |
 | --------- | ------ | ---- | ---- | -------------------- |
-| maxWidth  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 否   | 组件截图的最大宽度限制。<br>取值范围：（-∞，+∞）<br>单位：px |
-| maxHeight | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 否   | 组件截图的最大高度限制。<br>取值范围：（-∞，+∞）<br>单位：px |
+| maxWidth  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 组件截图的最大宽度限制。<br>取值范围：（-∞，+∞）<br>单位：px |
+| maxHeight | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 组件截图的最大高度限制。<br>取值范围：（-∞，+∞）<br>单位：px |
 
 ## SnapshotOptions<sup>12+</sup>
 
@@ -683,17 +562,17 @@ struct Index {
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称           | 类型            |    只读       |    可选           |   说明                    |
 | ---------------|------------     | -------------|---------------| -----------------------------|
-| scale           | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  是 | 指定截图时图形侧绘制pixelmap的缩放比例，比例过大时截图时间会变长，或者截图可能会失败。<br/>取值范围：[0, +∞)，当小于等于0时按默认情况处理。 <br/> 默认值：1 <br/>**说明：** <br/>请不要截取过大尺寸的图片，截图不建议超过屏幕尺寸的大小。当要截取的图片目标长宽超过底层限制时，截图会返回失败，不同设备的底层限制不同。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23   |
-| waitUntilRenderFinished    | boolean | 否 | 是  | 设置是否强制系统在截图前等待所有绘制指令执行完毕。true表示强制系统在截图前等待所有绘制指令执行完毕，false表示不强制系统在截图前等待所有绘制指令执行完毕。该选项可尽可能确保截图内容是最新的状态，应尽量开启。需要注意的是，开启后接口可能需要更长的时间返回，具体的时间依赖页面当时时刻需要重绘区域的大小。<br>默认值：false <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23        |
-| region<sup>15+</sup> | [SnapshotRegionType](#snapshotregiontype15) | 否  | 是 | 指定截图的矩形区域范围，默认为整个组件。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
-| colorMode<sup>23+</sup> | [ColorModeOptions](#colormodeoptions23) | 否  | 是 | 指定截图使用的色彩空间。<br/>默认值：{colorSpace: SRGB, isAuto: false}<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
-| dynamicRangeMode<sup>23+</sup> | [DynamicRangeModeOptions](#dynamicrangemodeoptions23) | 否  | 是 | 指定截图使用的动态范围模式。<br/>默认值：{dynamicRangeMode: STANDARD, isAuto: false}<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
+| scale           | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否  |  是 | 指定截图时图形侧绘制pixelmap的缩放比例，比例过大时截图时间会变长，或者截图可能会失败。<br/>取值范围：[0, +∞)，当小于等于0时按默认情况处理。 <br/> 默认值：1 <br/>**说明：** <br/>请不要截取过大尺寸的图片，截图不建议超过屏幕尺寸的大小。当要截取的图片目标长宽超过底层限制时，截图会返回失败，不同设备的底层限制不同。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23   |
+| waitUntilRenderFinished    | boolean | 否 | 是  | 设置是否强制系统在截图前等待所有绘制指令执行完毕。true表示强制系统在截图前等待所有绘制指令执行完毕，false表示不强制系统在截图前等待所有绘制指令执行完毕。该选项可尽可能确保截图内容是最新的状态，应尽量开启。需要注意的是，开启后接口可能需要更长的时间返回，具体的时间依赖页面当时时刻需要重绘区域的大小。<br>默认值：false <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23        |
+| region<sup>15+</sup> | [SnapshotRegionType](#snapshotregiontype15) | 否  | 是 | 指定截图的矩形区域范围，默认为整个组件。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| colorMode<sup>23+</sup> | [ColorModeOptions](#colormodeoptions23) | 否  | 是 | 指定截图使用的色彩空间。<br/>默认值：{colorSpace: SRGB, isAuto: false}<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
+| dynamicRangeMode<sup>23+</sup> | [DynamicRangeModeOptions](#dynamicrangemodeoptions23) | 否  | 是 | 指定截图使用的动态范围模式。<br/>默认值：{dynamicRangeMode: STANDARD, isAuto: false}<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## ColorModeOptions<sup>23+</sup>
 
 定义截图时所使用的色彩空间。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -810,7 +689,7 @@ struct SnapshotColorModeExample {
 
 定义截图所使用的动态范围模式。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -928,7 +807,7 @@ type SnapshotRegionType =  SnapshotRegion | LocalizedSnapshotRegion
 
 表示组件截图区域，取值类型为下表中的任一类型。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -945,7 +824,7 @@ type SnapshotRegionType =  SnapshotRegion | LocalizedSnapshotRegion
 
 定义组件截图的矩形区域。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -964,7 +843,7 @@ type SnapshotRegionType =  SnapshotRegion | LocalizedSnapshotRegion
 
 定义组件截图的矩形区域，start和end的值在布局方向为LTR时指定为left和right，在布局方向为RTL时指定为right和left。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -4,7 +4,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 ## 场景介绍
@@ -158,8 +158,8 @@
     >
     > - 应用安装检测：在拉起目标应用前，建议先检测应用是否已安装。
 
-    <!-- @[Deep Linking](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ObtainingTargetAppUrlInfo/entry/src/main/ets/pages/Index.ets) -->
-    
+   <!-- @[Deep_Linking](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ObtainingTargetAppUrlInfo/entry/src/main/ets/pages/Index.ets) -->
+
     ``` TypeScript
     import { common } from '@kit.AbilityKit'
     import { hilog } from '@kit.PerformanceAnalysisKit';

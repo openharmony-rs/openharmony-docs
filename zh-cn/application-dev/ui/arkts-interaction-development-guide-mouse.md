@@ -8,12 +8,12 @@
 
 ![mouse](figures/device_mouse.png)
 
-鼠标设备是2in1类型设备必不可少的输入设备，其特点是可以通过按键达成点击或滑动操作，也可以通过滚轮触发滑动，另外还有一些按键，这些分别通过MouseEvent及AxisEvent上报给应用。
+鼠标设备是2in1类型设备必不可少的输入设备，其特点是可以通过按键达成点击或滑动操作，也可以通过滚轮触发滑动，另外还有一些按键，这些分别通过[MouseEvent](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)及[AxisEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md#axisevent)上报给应用。
 
 >**说明：**
 >
 >所有单指可响应的触摸事件/手势事件，均可通过鼠标左键来操作和响应。
-> - 例如当我们需要开发单击Button跳转页面的功能、且需要支持手指点击和鼠标左键点击，那么只绑定一个点击事件（onClick）就可以实现该效果；
+> - 例如当我们需要开发单击[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)跳转页面的功能、且需要支持手指点击和鼠标左键点击，那么只绑定一个点击事件（[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)）就可以实现该效果；
 > - 若需要针对手指和鼠标左键的点击实现不一样的效果，可以在onClick回调中，使用回调参数中的source字段判断当前触发事件的来源是手指还是鼠标。
 
 ## 处理鼠标移动
@@ -29,15 +29,87 @@ onMouse(event: (event?: MouseEvent) => void)
 鼠标事件回调。每当鼠标指针在绑定该API的组件内产生行为（MouseAction）时，触发事件回调，参数为[MouseEvent](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)对象，表示触发此次的鼠标事件。该事件支持自定义冒泡设置，默认父子冒泡。常用于开发者自定义的鼠标行为逻辑处理。
 
 
-开发者可以通过回调中的MouseEvent对象获取触发事件的坐标（displayX/displayY/windowX/windowY/x/y）、按键（[MouseButton](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#mousebutton8)）、行为（[MouseAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#mouseaction8)）、时间戳（[timestamp](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#baseevent8)）、交互组件的区域（[EventTarget](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#eventtarget8)）、事件来源（[SourceType](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#sourcetype枚举说明8)）等。MouseEvent的回调函数stopPropagation用于设置当前事件是否阻止冒泡。
+开发者可以通过回调中的MouseEvent对象获取触发事件的坐标（displayX/displayY/windowX/windowY/x/y）、按键（[MouseButton](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#mousebutton8)）、行为（[MouseAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#mouseaction8)）、时间戳（[timestamp](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#属性)）、交互组件的区域（[EventTarget](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#eventtarget8)）、事件来源（[SourceType](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#sourcetype枚举说明8)）等。MouseEvent的回调函数stopPropagation用于设置当前事件是否阻止冒泡。
 
 > **说明：**
 >
 > 按键（MouseButton）的值：Left/Right/Middle/Back/Forward均对应鼠标上的实体按键，当这些按键被按下或松开时触发这些按键的事件。None表示没有鼠标按键按下或松开的状态下，仅移动鼠标所触发的事件。
 
+ArkTS-Dyn示例：
+
 <!-- @[mouse_move](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/mouseMove/MouseMove.ets) -->
 
 ``` TypeScript
+@Entry
+@Component
+struct MouseMove {
+  @State buttonText: string = '';
+  @State columnText: string = '';
+  @State text: string = 'OnMouse Sample Button';
+  @State color: Color = Color.Gray;
+
+  build() {
+    Column() {
+      Button(this.text, { type: ButtonType.Capsule })
+        .width(200)
+        .height(100)
+        .backgroundColor(this.color)
+        .onMouse((event?: MouseEvent) => { // 设置Button的onMouse回调
+          if (event) {
+            this.buttonText = 'Button onMouse:\n' + '' +
+              'button = ' + event.button + '\n' +
+              'action = ' + event.action + '\n' +
+              'x,y = ' + '\n' + '(' + event.x + ',' + event.y + ')' + '\n' +
+              'windowXY=' + '\n' + '(' + event.windowX + ',' + event.windowY + ')';
+          }
+        })
+      Column() {
+        Divider()
+        Text(this.buttonText).fontColor(Color.Green).padding(5)
+        Divider()
+        Text(this.columnText).fontColor(Color.Red).padding(5)
+      }
+      .width('100%')
+      .alignItems(HorizontalAlign.Start)
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+    .borderWidth(2)
+    .borderColor(Color.Red)
+    .onMouse((event?: MouseEvent) => { // Set the onMouse callback for the column.
+      if (event) {
+        this.columnText = 'Column onMouse:\n' + '' +
+          'button = ' + event.button + '\n' +
+          'action = ' + event.action + '\n' +
+          'x,y = ' + '\n' + '(' + event.x + ',' + event.y + ')' + '\n' +
+          'windowXY=' + '\n' + '(' + event.windowX + ',' + event.windowY + ')';
+      }
+    })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[mouse_move](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/mouseMove/MouseMove.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Component,
+  State,
+  Column,
+  Button,
+  Divider,
+  Text,
+  Color,
+  MouseEvent,
+  ButtonType,
+  HorizontalAlign,
+  FlexAlign
+} from '@kit.ArkUI';
+
 @Entry
 @Component
 struct MouseMove {
@@ -102,6 +174,9 @@ struct MouseMove {
 ![onMouse1](figures/onMouse_1.gif)
 
 如果需要阻止鼠标事件冒泡，可以通过调用stopPropagation方法进行设置。
+
+ArkTS-Dyn示例：
+
 <!-- @[stop_propagation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/stopPropagation/StopPropagation.ets) -->
 
 ``` TypeScript
@@ -155,6 +230,65 @@ struct StopPropagation {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[stop_propagation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/stopPropagation/StopPropagation.ets) -->
+
+``` TypeScript
+import { Entry, Component, State, Column, Button, Divider, Text, Color, MouseEvent, ButtonType, HorizontalAlign, FlexAlign } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct StopPropagation {
+  @State buttonText: string = '';
+  @State columnText: string = '';
+  @State text: string = 'OnMouse Sample Button';
+  @State color: Color = Color.Gray;
+
+  build() {
+    Column() {
+      Button(this.text, { type: ButtonType.Capsule })
+        .width(200)
+        .height(100)
+        .backgroundColor(this.color)
+        .onMouse((event?: MouseEvent) => { // 设置Button的onMouse回调
+          if (event) {
+            event.stopPropagation(); // 在Button的onMouse事件中设置阻止冒泡
+            this.buttonText = 'Button onMouse:\n' + '' +
+              'button = ' + event.button + '\n' +
+              'action = ' + event.action + '\n' +
+              'x,y = ' + '\n' + '(' + event.x + ',' + event.y + ')' + '\n' +
+              'windowXY=' + '\n' + '(' + event.windowX + ',' + event.windowY + ')';
+          }
+        })
+      Column() {
+        Divider()
+        Text(this.buttonText).fontColor(Color.Green).padding(5)
+        Divider()
+        Text(this.columnText).fontColor(Color.Red).padding(5)
+      }
+      .width('100%')
+      .alignItems(HorizontalAlign.Start)
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+    .borderWidth(2)
+    .borderColor(Color.Red)
+    .onMouse((event?: MouseEvent) => { // 设置Column的onMouse回调
+      if (event) {
+        this.columnText = 'Column onMouse:\n' + '' +
+          'button = ' + event.button + '\n' +
+          'action = ' + event.action + '\n' +
+          'x,y = ' + '\n' + '(' + event.x + ',' + event.y + ')' + '\n' +
+          'windowXY=' + '\n' + '(' + event.windowX + ',' + event.windowY + ')';
+      }
+    })
+  }
+}
+```
+
 ![onMouse2](figures/onMouse_2.gif)
 
 在子组件（Button）的onMouse中，通过回调参数event调用stopPropagation回调方法（如上）即可阻止Button子组件的鼠标事件冒泡到父组件Column上。
@@ -172,9 +306,43 @@ onHover(event: (isHover: boolean) => void)
 
 若组件绑定了该接口，当鼠标指针从组件外部进入到该组件的瞬间会触发事件回调，参数isHover等于true；鼠标指针离开组件的瞬间也会触发该事件回调，参数isHover等于false。
 
+ArkTS-Dyn示例：
+
 <!-- @[on_hover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/onHover/OnHover.ets) -->
 
 ``` TypeScript
+@Entry
+@Component
+struct OnHover {
+  @State hoverText: string = 'Not Hover';
+  @State color: Color = Color.Gray;
+
+  build() {
+    Column() {
+      Button(this.hoverText)
+        .width(200).height(100)
+        .backgroundColor(this.color)
+        .onHover((isHover?: boolean) => { // 使用onHover接口监听鼠标是否悬浮在Button组件上
+          if (isHover) {
+            this.hoverText = 'Hovered!';
+            this.color = Color.Green;
+          } else {
+            this.hoverText = 'Not Hover';
+            this.color = Color.Gray;
+          }
+        })
+    }.width('100%').height('100%').justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[on_hover](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/onHover/OnHover.ets) -->
+
+``` TypeScript
+import { Entry, Component, State, Column, Button, Color, FlexAlign } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct OnHover {
@@ -211,9 +379,11 @@ struct OnHover {
 
 ## 处理鼠标按键
 
-当用户按下鼠标上的按键时，会产生鼠标按下事件，可以通过[MouseEvent](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)访问事件的一些重要信息，如发生时间，鼠标按键(MouseButton: 左键/右键等)，也可以通过[**getModifierKeyState**](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#getmodifierkeystate12)接口获取到用户在使用鼠标时，物理键盘上的**ctrl/alt/shift**这几个修饰键的按下状态，可以通过组合判断它们的状态来实现一些便捷操作。
+当用户按下鼠标上的按键时，会产生鼠标按下事件，可以通过[MouseEvent](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)访问事件的一些重要信息，如发生时间，鼠标按键(MouseButton: 左键/右键等)，也可以通过[getModifierKeyState](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#getmodifierkeystate12)接口获取到用户在使用鼠标时，物理键盘上的**ctrl/alt/shift**这几个修饰键的按下状态，可以通过组合判断它们的状态来实现一些便捷操作。
 
 以下是一个通过处理鼠标按键实现快速多选的示例：
+
+ArkTS-Dyn示例：
 
 <!-- @[mouse_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseButton/MouseButton.ets) -->   
 
@@ -310,7 +480,11 @@ struct ListExample {
               // 判断修饰键状态
               let isCtrlPressing: boolean = false;
               if (event.getModifierKeyState) {
-                isCtrlPressing = event.getModifierKeyState(['Ctrl']);
+                try {
+                  isCtrlPressing = event.getModifierKeyState(['Ctrl']);
+                } catch (error) {
+                  console.error('Get modifier key state failed!')
+                }
               }
               // 如果没有按着ctrl键点鼠标，则强制清理掉其他选中的条目并只让当前条目选中
               if (!isCtrlPressing) {
@@ -335,11 +509,166 @@ struct ListExample {
       .friction(0.6)
       .edgeEffect(EdgeEffect.Spring)
       .width('90%')
+      .height('100%')
     }
     .width('100%')
     .height('100%')
     .backgroundColor(0xDCDCDC)
     .padding({ top: 5 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[mouse_button](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/MouseButton/MouseButton.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Component,
+  State,
+  Builder,
+  CommonMethod,
+  CustomStyles,
+  Column,
+  List,
+  ListItem,
+  LazyForEach,
+  Text,
+  Color,
+  MouseEvent,
+  MouseButton,
+  MouseAction,
+  IDataSource,
+  DataChangeListener,
+  Axis,
+  BarState,
+  EdgeEffect,
+  Padding,
+  TextAlign
+} from '@kit.ArkUI';
+
+class ListDataSource implements IDataSource<int> {
+  private list: int[] = [];
+  private listeners: DataChangeListener[] = [];
+
+  constructor(list: int[]) {
+    this.list = list;
+  }
+
+  totalCount(): int {
+    return this.list.length;
+  }
+
+  getData(index: int): int {
+    return this.list[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      this.listeners.push(listener);
+    }
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    let pos: int = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  // 通知控制器数据删除
+  notifyDataDelete(index: int): void {
+    this.listeners.forEach(listener => {
+      listener.onDataDelete(index);
+    });
+  }
+
+  // 在指定索引位置删除一个元素
+  public deleteItem(index: int): void {
+    this.list.splice(index, 1);
+    this.notifyDataDelete(index);
+  }
+}
+
+@Entry
+@Component
+struct ListExample {
+  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  private allSelectedItems: Array<int> = new Array<int>();
+  @State isSelected: boolean[] = [false, false, false, false, false, false, false, false, false, false];
+  selectedStyle: CustomStyles = (instance: CommonMethod): void => {
+    instance.backgroundColor(Color.Blue);
+  }
+
+  isItemSelected(item: int): boolean {
+    for (let i: int = 0; i < this.allSelectedItems.length; i++) {
+      if (this.allSelectedItems[i] === item) {
+        this.isSelected[item] = true;
+        return true;
+      }
+    }
+    this.isSelected[item] = false;
+    return false;
+  }
+
+  build() {
+    Column() {
+      List({ space: 10, initialIndex: 0 }) {
+        LazyForEach(this.arr, (index: int) => {
+          ListItem() {
+            Text('' + index)
+              .width('100%')
+              .height(100)
+              .fontSize(16)
+              .fontColor(this.isSelected[index] ? Color.White : Color.Black)
+              .textAlign(TextAlign.Center)
+          }
+          .backgroundColor(Color.White)
+          .selectable(true)
+          .selected(this.isSelected[index])
+          .stateStyles({
+            selected: this.selectedStyle
+          })
+          .onMouse((event: MouseEvent) => {
+            // 判断是否按下鼠标左键
+            if (event.button === MouseButton.Left && event.action === MouseAction.Press) {
+              // 判断之前是否已经是选中状态
+              let isSelected: boolean = this.isItemSelected(index);
+              // 判断修饰键状态
+              let isCtrlPressing: boolean = false;
+              if (event.getModifierKeyState) {
+                isCtrlPressing = event.getModifierKeyState!(['Ctrl']);
+              }
+              // 如果没有按着ctrl键点鼠标，则强制清理掉其他选中的条目并只让当前条目选中
+              if (!isCtrlPressing) {
+                this.allSelectedItems = [];
+                for (let i: int = 0; i < this.isSelected.length; i++) {
+                  this.isSelected[i] = false;
+                }
+              }
+              if (isSelected) {
+                this.allSelectedItems.filter(item => item !== index);
+                this.isSelected[index] = false;
+              } else {
+                this.allSelectedItems.push(index);
+                this.isSelected[index] = true;
+              }
+            }
+          })
+        }, (item: int) => item.toString())
+      }
+      .listDirection(Axis.Vertical)
+      .scrollBar(BarState.Off)
+      .friction(0.6)
+      .edgeEffect(EdgeEffect.Spring)
+      .width('90%')
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 5 } as Padding)
   }
 }
 ```
@@ -353,7 +682,7 @@ struct ListExample {
 鼠标滚轮轴事件的上报，每次都以[AxisAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#axisaction17).BEGIN类型开始，当停止滚动时以[AxisAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#axisaction17).End结束，慢速滚动时，会产生多段的BEGIN、END上报。当你处理axisVertical时，应确保理解它的数值含义与单位，其有以下特点：
 - 上报的数值单位为角度，为单次变化量，非总量。
 - 上报数值大小受系统设置中对滚轮放大倍数设置的影响。
-- 系统设置中的放大倍数通过AxisEvent中的scrollStep告知。
+- 系统设置中的放大倍数通过[AxisEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md#axisevent)中的scrollStep告知。
 - 向前滚动，上报数值为负，向后滚动，上报数值为正。
 
 如果使用滚动类组件，对于滚轮的响应，系统内部已实现，不需要额外处理。
@@ -367,6 +696,8 @@ struct ListExample {
 > 3. 但只要指针下有一个可以响应纵向滚动，则会优先处理纵向，不再处理横向。
 
 以下是纵向和横向的List响应滚轮的示例：
+
+ArkTS-Dyn示例：
 
 <!-- @[list_data_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseWheel/ListDataSource.ets) -->
 
@@ -428,7 +759,7 @@ export class ListDataSource implements IDataSource {
 }
 ```
 
-<!-- @[mouse_wheel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseWheel/MouseWheel.ets) -->
+<!-- @[mouse_wheel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseWheel/MouseWheel.ets) --> 
 
 ``` TypeScript
 import { ListDataSource } from './ListDataSource';
@@ -445,9 +776,9 @@ struct MouseWheel {
         .margin(20)
         .onClick(() => {
           if (this.dir1 === Axis.Vertical) {
-            this.dir1 = Axis.Horizontal
+            this.dir1 = Axis.Horizontal;
           } else {
-            this.dir1 = Axis.Vertical
+            this.dir1 = Axis.Vertical;
           }
         })
       List({ space: 20, initialIndex: 0 }) {
@@ -491,4 +822,127 @@ struct MouseWheel {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[list_data_source](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/MouseWheel/ListDataSource.ets) -->
+
+``` TypeScript
+import { IDataSource, DataChangeListener } from '@kit.ArkUI';
+
+export class ListDataSource implements IDataSource<number> {
+  private list: number[] = [];
+  private listeners: DataChangeListener[] = [];
+
+  constructor(list: number[]) {
+    this.list = list;
+  }
+
+  totalCount(): int {
+    return this.list.length;
+  }
+
+  getData(index: int): number {
+    return this.list[index];
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      this.listeners.push(listener);
+    }
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    let pos: int = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  // 通知控制器数据删除
+  notifyDataDelete(index: int): void {
+    this.listeners.forEach(listener => {
+      listener.onDataDelete(index);
+    });
+  }
+
+  // 通知控制器添加数据
+  notifyDataAdd(index: int): void {
+    this.listeners.forEach(listener => {
+      listener.onDataAdd(index);
+    });
+  }
+
+  // 在指定索引位置删除一个元素
+  public deleteItem(index: int): void {
+    this.list.splice(index, 1);
+    this.notifyDataDelete(index);
+  }
+
+  // 在指定索引位置插入一个元素
+  public insertItem(index: int, data: number): void {
+    this.list.splice(index, 0, data);
+    this.notifyDataAdd(index);
+  }
+}
+```
+
+<!-- @[mouse_wheel](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/MouseWheel/MouseWheel.ets) -->
+
+``` TypeScript
+import { Entry, Component, State, Column, Button, Text, List, ListItem, LazyForEach, MouseEvent, MouseAction, Axis, BarState, EdgeEffect, Padding, PanGesture, PanDirection, TextAlign, Margin } from '@kit.ArkUI';
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct MouseWheel {
+  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  @State dir1: Axis = Axis.Vertical;
+
+  build() {
+    Column() {
+      Button('Click to Change ListDirection')
+        .margin({ top: 20, right: 20, bottom: 20, left: 20 } as Margin)
+        .onMouse((event: MouseEvent) => {
+          if (event && event.action === MouseAction.Press) {
+            if (this.dir1 === Axis.Vertical) {
+              this.dir1 = Axis.Horizontal
+            } else {
+              this.dir1 = Axis.Vertical
+            }
+          }
+        })
+      List({ space: 20, initialIndex: 0 }) {
+        LazyForEach(this.arr, (item: number) => {
+          ListItem() {
+            Text('' + item)
+              .width('100%')
+              .height(100)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }
+          .margin({ top: 20, right: 20, bottom: 20, left: 20 } as Margin)
+        }, (item: number) => item.toString())
+      }
+      .borderWidth(1)
+      .listDirection(this.dir1) // 排列方向
+      .scrollBar(BarState.Off)
+      .friction(0.6)
+      .divider({
+        strokeWidth: 2,
+        color: 0xFFFFFF,
+        startMargin: 20,
+        endMargin: 20
+      }) // 每行之间的分界线
+      .edgeEffect(EdgeEffect.Spring) // 边缘效果设置为Spring
+      .width('90%')
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 20, right: 20, bottom: 20, left: 20 } as Margin)
+  }
+}
+```
 ![ListAxis](figures/listAxis.gif)

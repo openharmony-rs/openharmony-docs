@@ -6,10 +6,12 @@
 <!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
 
-该模块向云盘管理应用提供端云同步管理能力：包括全量下载的状态和停止原因，以及应用本地和云端文件数量信息。
+该模块向云盘管理应用提供端云同步管理能力，包括全量下载的状态和停止原因，以及应用本地和云端文件数量信息。开发者可在云盘管理应用中使用该模块监控应用云端文件的全量下载进度、处理下载停止原因，并统计应用本地和云端文件数量及大小。
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> 
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -22,6 +24,10 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 全量下载停止原因的枚举，默认值为NO_STOP。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
 
 | 名称                | 值  | 说明                                                   |
 | ------------------- | --- | ------------------------------------------------------ |
@@ -39,6 +45,10 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 | 名称      | 值  | 说明       |
 | --------- | --- | ---------- |
 | RUNNING   | 0   | 下载中。   |
@@ -51,17 +61,21 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 ### 属性
 
 | 名称            | 类型                                        | 只读 | 可选 | 说明                                                                          |
 | --------------- | ------------------------------------------- | ---- | ---- | ----------------------------------------------------------------------------- |
-| state           | [DownloadState](#downloadstate20)           | 否   | 否   | 下载任务的状态。                                                              |
-| successfulCount | number                                      | 否   | 否   | 已下载的文件个数，取值范围[0, INT32_MAX]，单位：个。进度异常时返回-1。        |
-| failedCount     | number                                      | 否   | 否   | 下载失败的文件个数，取值范围[0, INT32_MAX]，单位：个。进度异常时返回-1。      |
-| totalCount      | number                                      | 否   | 否   | 待下载文件总个数，取值范围[0, INT32_MAX]，单位：个。进度异常时返回-1。        |
-| downloadedSize  | number                                      | 否   | 否   | 已下载数据大小，取值范围[0, INT64_MAX)，单位：Byte。进度异常时返回INT64_MAX。 |
-| totalSize       | number                                      | 否   | 否   | 需要下载文件的总大小，取值范围[0, INT64_MAX)，单位：Byte。进度异常时返回INT64_MAX。 |
-| stopReason      | [DownloadStopReason](#downloadstopreason20) | 否   | 否   | 下载停止的原因。                                                              |
+| state           | [DownloadState](#downloadstate20)           | 否   | 否   | 下载任务的状态。 |
+| successfulCount | number                                      | 否   | 否   | 已下载的文件个数，正常取值范围[0, INT32_MAX]，单位：个。进度异常时返回-1。 |
+| failedCount     | number                                      | 否   | 否   | 下载失败的文件个数，正常取值范围[0, INT32_MAX]，单位：个。进度异常时返回-1。 |
+| totalCount      | number                                      | 否   | 否   | 待下载文件总个数，正常取值范围[0, INT32_MAX]，单位：个。进度异常时返回-1。 |
+| downloadedSize  | number                                      | 否   | 否   | 已下载数据大小，正常取值范围[0, INT64_MAX)，单位：Byte。进度异常时返回INT64_MAX。 |
+| totalSize       | number                                      | 否   | 否   | 需要下载文件的总大小，正常取值范围[0, INT64_MAX)，单位：Byte。进度异常时返回INT64_MAX。 |
+| stopReason      | [DownloadStopReason](#downloadstopreason20) | 否   | 否   | 下载停止的原因。 |
 
 ## CloudFileInfo<sup>20+</sup>
 
@@ -69,13 +83,17 @@ import { cloudSyncManager } from '@kit.CoreFileKit';
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
 ### 属性
 
 | 名称               | 类型   | 只读 | 可选 | 说明                                                             |
 | ------------------ | ------ | ---- | ---- | ---------------------------------------------------------------- |
-| cloudFileCount     | number | 否   | 否   | 本地未下载的云端文件总个数，取值范围[0, INT32_MAX]，单位：个。   |
-| cloudFileTotalSize | number | 否   | 否   | 本地未下载的云端文件总大小，取值范围[0, INT64_MAX]，单位：Byte。 |
-| localFileCount     | number | 否   | 否   | 本地未上传云端的文件总个数，取值范围[0, INT32_MAX]，单位：个。   |
-| localFileTotalSize | number | 否   | 否   | 本地未上传云端的文件总大小，取值范围[0, INT64_MAX]，单位：Byte。 |
-| bothFileCount      | number | 否   | 否   | 本地已上传云端的文件总个数，取值范围[0, INT32_MAX]，单位：个。   |
-| bothFileTotalSize | number | 否   | 否   | 本地已上传云端的文件总大小，取值范围[0, INT64_MAX]，单位：Byte。 |
+| cloudFileCount     | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否   | 否   | 本地未下载的云端文件总个数，取值范围[0, INT32_MAX]，单位：个。   |
+| cloudFileTotalSize | ArkTS-Dyn: number<br> ArkTS-Sta: long | 否   | 否   | 本地未下载的云端文件总大小，取值范围[0, INT64_MAX]，单位：Byte。 |
+| localFileCount     | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否   | 否   | 本地未上传云端的文件总个数，取值范围[0, INT32_MAX]，单位：个。   |
+| localFileTotalSize | ArkTS-Dyn: number<br> ArkTS-Sta: long | 否   | 否   | 本地未上传云端的文件总大小，取值范围[0, INT64_MAX]，单位：Byte。 |
+| bothFileCount      | ArkTS-Dyn: number<br> ArkTS-Sta: int | 否   | 否   | 本地已上传云端的文件总个数，取值范围[0, INT32_MAX]，单位：个。   |
+| bothFileTotalSize | ArkTS-Dyn: number<br> ArkTS-Sta: long | 否   | 否   | 本地已上传云端的文件总大小，取值范围[0, INT64_MAX]，单位：Byte。 |

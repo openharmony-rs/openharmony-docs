@@ -12,7 +12,7 @@
 >
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-term.md#mdm应用设备管理应用)开放。
+> 本模块接口仅对[MDM应用](../../mdm/mdm-kit-term.md#mdm应用)开放。
 > 
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.enterprise.adminManager](js-apis-enterprise-adminManager.md)。
 
@@ -26,7 +26,7 @@ import { adminManager } from '@kit.MDMKit';
 
 enableAdmin(admin: Want, enterpriseInfo: EnterpriseInfo, type: AdminType, callback: AsyncCallback\<void>): void
 
-激活指定的设备管理应用。超级设备管理应用仅在管理员用户下可激活。激活后，应用不可卸载，其[企业设备管理扩展能力](../../mdm/mdm-kit-term.md#企业设备管理扩展能力)组件将开机自启并在用户切换后自启。使用callback异步回调。
+激活指定的设备管理应用。超级设备管理应用仅在首用户（u100）下可激活。激活后，应用不可卸载，其[企业设备管理扩展能力](../../mdm/mdm-kit-term.md#enterpriseadminextensionability企业设备管理扩展能力)组件将开机自启并在用户切换后自启。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN
 
@@ -151,7 +151,7 @@ adminManager.enableAdmin(wantTemp, enterpriseInfo, adminManager.AdminType.ADMIN_
 
 enableAdmin(admin: Want, enterpriseInfo: EnterpriseInfo, type: AdminType, userId?: number): Promise\<void>
 
-激活当前/指定用户下指定的设备管理应用，其中超级管理应用仅能在管理员用户下被激活。使用promise异步回调。
+激活当前/指定用户下指定的设备管理应用，其中超级管理应用仅能在管理员用户下被激活。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN
 
@@ -374,7 +374,7 @@ adminManager.disableSuperAdmin(bundleName, (err) => {
 
 disableSuperAdmin(bundleName: String): Promise\<void>
 
-根据bundleName将超级设备管理应用解除激活。使用promise异步回调。
+根据bundleName将超级设备管理应用解除激活。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN
 
@@ -526,7 +526,7 @@ adminManager.isAdminEnabled(wantTemp, 100, (err, result) => {
 
 isAdminEnabled(admin: Want, userId?: number): Promise\<boolean>
 
-查询当前/指定用户下指定的设备管理应用是否被激活。使用promise异步回调。
+查询当前/指定用户下指定的设备管理应用是否被激活。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -627,7 +627,7 @@ adminManager.isSuperAdmin(bundleName, (err, result) => {
 
 isSuperAdmin(bundleName: String): Promise\<boolean>
 
-根据bundleName查询管理员用户下的超级设备管理应用是否被激活。使用promise异步回调。
+根据bundleName查询管理员用户下的超级设备管理应用是否被激活。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -677,7 +677,7 @@ adminManager.isSuperAdmin(bundleName).then((result) => {
 
 getSuperAdmin(): Promise\<Want>
 
-查询管理员用户下的超级设备管理应用。使用promise异步回调。
+查询管理员用户下的超级设备管理应用。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -775,7 +775,7 @@ adminManager.setEnterpriseInfo(wantTemp, enterpriseInfo, (err) => {
 
 setEnterpriseInfo(admin: Want, enterpriseInfo: EnterpriseInfo): Promise\<void>
 
-设置设备管理应用的企业信息。使用promise异步回调。
+设置设备管理应用的企业信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.SET_ENTERPRISE_INFO
 
@@ -886,7 +886,7 @@ adminManager.getEnterpriseInfo(wantTemp, (err, result) => {
 
 getEnterpriseInfo(admin: Want): Promise&lt;EnterpriseInfo&gt;
 
-获取设备管理应用的企业信息，使用promise异步回调。
+获取设备管理应用的企业信息，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -936,11 +936,15 @@ adminManager.getEnterpriseInfo(wantTemp).then((result) => {
 });
 ```
 
-## adminManager.subscribeManagedEvent
+## adminManager.subscribeManagedEvent<sup>(deprecated)</sup>
 
 subscribeManagedEvent(admin: Want, managedEvents: Array\<ManagedEvent>, callback: AsyncCallback\<void>): void
 
 订阅系统管理事件。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [subscribeManagedEventSync](./js-apis-enterprise-adminManager.md#adminmanagersubscribemanagedeventsync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SUBSCRIBE_MANAGED_EVENT
 
@@ -992,11 +996,15 @@ adminManager.subscribeManagedEvent(wantTemp, events, (err) => {
 });
 ```
 
-## adminManager.subscribeManagedEvent
+## adminManager.subscribeManagedEvent<sup>(deprecated)</sup>
 
 subscribeManagedEvent(admin: Want, managedEvents: Array\<ManagedEvent>): Promise\<void>
 
 订阅系统管理事件。使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [subscribeManagedEventSync](./js-apis-enterprise-adminManager.md#adminmanagersubscribemanagedeventsync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SUBSCRIBE_MANAGED_EVENT
 
@@ -1051,11 +1059,15 @@ adminManager.subscribeManagedEvent(wantTemp, events).then(() => {
 })
 ```
 
-## adminManager.unsubscribeManagedEvent
+## adminManager.unsubscribeManagedEvent<sup>(deprecated)</sup>
 
 unsubscribeManagedEvent(admin: Want, managedEvents: Array\<ManagedEvent>, callback: AsyncCallback\<void>): void
 
 取消订阅系统管理事件。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [unsubscribeManagedEventSync](./js-apis-enterprise-adminManager.md#adminmanagerunsubscribemanagedeventsync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SUBSCRIBE_MANAGED_EVENT
 
@@ -1107,11 +1119,15 @@ adminManager.unsubscribeManagedEvent(wantTemp, events, (err) => {
 });
 ```
 
-## adminManager.unsubscribeManagedEvent
+## adminManager.unsubscribeManagedEvent<sup>(deprecated)</sup>
 
 unsubscribeManagedEvent(admin: Want, managedEvents: Array\<ManagedEvent>): Promise\<void>
 
-取消订阅系统管理事件。使用promise异步回调。
+取消订阅系统管理事件。使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [unsubscribeManagedEventSync](./js-apis-enterprise-adminManager.md#adminmanagerunsubscribemanagedeventsync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SUBSCRIBE_MANAGED_EVENT
 
@@ -1289,7 +1305,7 @@ adminManager.authorizeAdmin(wantTemp, bundleName).then(() => {
 
 getAdmins(): Promise&lt;Array&lt;Want&gt;&gt;
 
-查询当前用户下的所有设备管理应用。使用promise异步回调。
+查询当前用户下的所有设备管理应用。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -1455,7 +1471,7 @@ setDelegatedPolicies(bundleName: string, accountId: number, policies: Array&lt;s
 | ----- | ----------------------------------- | ---- | ------- |
 | bundleName | String                  | 是    | 将要被委托的管理应用的包名。被委托应用的分发类型需为enterprise_normal和enterprise_mdm，可以通过[bundleManager.getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)接口查询应用自身的BundleInfo，其中BundleInfo.appInfo.appDistributionType为应用的分发类型。        |
 | accountId         | number                              | 是    | 用户ID，指定具体用户，取值范围：大于等于0。可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9) |
-| policies |  Array&lt;string&gt;                   | 是   | [委托策略列表](./js-apis-enterprise-adminManager.md#可委托策略列表)。 |
+| policies |  Array&lt;string&gt;                   | 是   | [委托策略列表](../../mdm/mdm-kit-appendix.md#可委托策略列表)。 |
 
 **错误码**：
 
@@ -1509,8 +1525,8 @@ try {
 
 | 名称                | 值  | 说明    |
 | ----------------- | ---- | ----- |
-| ADMIN_TYPE_NORMAL | 0x00 | 普通设备管理应用。 |
-| ADMIN_TYPE_SUPER  | 0x01 | 超级设备管理应用。 |
+| ADMIN_TYPE_NORMAL | 0x00 | 普通设备管理应用，激活后应用可卸载，其[企业设备管理扩展能力](../../mdm/mdm-kit-term.md#enterpriseadminextensionability企业设备管理扩展能力)组件将开机自启和组件进程死亡后能重新拉起。 |
+| ADMIN_TYPE_SUPER  | 0x01 | 超级设备管理应用，激活后应用不可卸载，其[企业设备管理扩展能力](../../mdm/mdm-kit-term.md#enterpriseadminextensionability企业设备管理扩展能力)组件将开机自启和组件进程死亡后能重新拉起。 |
 
 ## RunningMode<sup>19+</sup>
 

@@ -1,8 +1,8 @@
 # 形状裁剪
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -20,11 +20,13 @@ clip(value: boolean): T
 
 是否对子组件超出当前组件范围外的区域进行裁剪。不设置该接口时，默认不对子组件超出当前组件范围外的区域进行裁剪。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -50,11 +52,13 @@ clip(clip: Optional\<boolean>): T
 
 是否对子组件超出当前组件范围外的区域进行裁剪。不设置该接口时，默认不对子组件超出当前组件范围外的区域进行裁剪。与[clip<sup>12+</sup>](#clip12)相比，新增了对undefined类型的支持。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -76,11 +80,13 @@ clip(clip: Optional\<boolean>): T
 
 ## clip<sup>23+</sup>
 
-clip(value: boolean | undefined): this
+clip(value: boolean | undefined)
 
 是否对子组件超出当前组件范围外的区域进行裁剪。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -94,12 +100,6 @@ clip(value: boolean | undefined): this
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | value  | boolean \| undefined | 是   | 参数为boolean类型，设置是否按照父容器边缘轮廓进行裁剪。<br/>默认值：false <br/>true表示按照父容器边缘轮廓进行裁剪，false表示不对子组件进行裁剪。 <br/>**说明：** 设置为true后，子组件超出当前组件范围外的区域将不响应绑定的手势事件。<br/>当value的值为undefined时，恢复为不对子组件超出当前组件范围外的区域进行裁剪。 |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
 ## clip<sup>(deprecated)</sup>
 
 clip(value: boolean | CircleAttribute | EllipseAttribute | PathAttribute | RectAttribute): T
@@ -110,9 +110,9 @@ clip(value: boolean | CircleAttribute | EllipseAttribute | PathAttribute | RectA
 >
 > 从API version 7开始支持，从API version 12开始废弃，建议使用[clipShape](#clipshape12)替代。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -120,7 +120,7 @@ clip(value: boolean | CircleAttribute | EllipseAttribute | PathAttribute | RectA
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | boolean&nbsp;\|&nbsp;[CircleAttribute](ts-drawing-components-circle.md)&nbsp;\|&nbsp;[EllipseAttribute](ts-drawing-components-ellipse.md)&nbsp;\|&nbsp;[PathAttribute](ts-drawing-components-path.md)&nbsp;\|&nbsp;[RectAttribute](ts-drawing-components-rect.md) | 是   | 参数为相应类型的组件，按指定的形状对当前组件进行裁剪；参数为boolean类型时，设置是否按照父容器边缘轮廓进行裁剪。<br/>默认值：false <br/>**说明：** 参数为对应类型的组件时，裁剪不会导致被裁剪区域无法响应绑定的手势事件。参数为boolean类型时，裁剪会导致被裁剪区域无法响应绑定的手势事件。 |
+| value  | boolean \| [CircleAttribute](ts-drawing-components-circle.md) \| [EllipseAttribute](ts-drawing-components-ellipse.md) \| [PathAttribute](ts-drawing-components-path.md) \| [RectAttribute](ts-drawing-components-rect.md) | 是   | 参数为相应类型的组件，按指定的形状对当前组件进行裁剪；参数为boolean类型时，设置是否按照父容器边缘轮廓进行裁剪。<br/>默认值：false <br/>true表示按照父容器边缘轮廓进行裁剪，false表示不对子组件进行裁剪。 <br/>**说明：** 参数为对应类型的组件时，裁剪不会导致被裁剪区域无法响应绑定的手势事件。参数为boolean类型时，裁剪会导致被裁剪区域无法响应绑定的手势事件。 |
 
 **返回值：**
 
@@ -142,11 +142,13 @@ clipShape(value: CircleShape | EllipseShape | PathShape | RectShape): T
 >
 > 形状中的[fill](../js-apis-arkui-shape.md#fill)属性对clipShape接口不生效。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -158,7 +160,7 @@ clipShape(value: CircleShape | EllipseShape | PathShape | RectShape): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12) | 是   | 参数为相应类型的组件，按指定的形状（形状中可包含位置信息）对当前组件进行裁剪。<br/>**说明：** 裁剪不会导致被裁剪区域无法响应绑定的手势事件。 |
+| value  | [CircleShape](#circleshape12) \| [EllipseShape](#ellipseshape12) \| [PathShape](#pathshape12) \| [RectShape](#rectshape12) | 是   | 参数为相应类型的组件，按指定的形状（形状中可包含位置信息）对当前组件进行裁剪。<br/>**说明：** 裁剪不会导致被裁剪区域无法响应绑定的手势事件。 |
 
 **返回值：**
 
@@ -180,11 +182,13 @@ clipShape(shape: Optional\<CircleShape | EllipseShape | PathShape | RectShape>):
 >
 > 形状中的[fill](../js-apis-arkui-shape.md#fill)属性对clipShape接口不生效。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -196,7 +200,7 @@ clipShape(shape: Optional\<CircleShape | EllipseShape | PathShape | RectShape>):
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| shape  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12)> | 是   | 参数为相应类型的组件，按指定的形状（形状中可包含位置信息）对当前组件进行裁剪。<br/>**说明：** 裁剪不会导致被裁剪区域无法响应绑定的手势事件。<br/>当shape的值为undefined时，会重置当前值。 |
+| shape  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CircleShape](#circleshape12) \| [EllipseShape](#ellipseshape12) \| [PathShape](#pathshape12) \| [RectShape](#rectshape12)> | 是   | 参数为相应类型的组件，按指定的形状（形状中可包含位置信息）对当前组件进行裁剪。<br/>**说明：** 裁剪不会导致被裁剪区域无法响应绑定的手势事件。<br/>当shape的值为undefined时，会重置当前值。 |
 
 **返回值：**
 
@@ -206,7 +210,7 @@ clipShape(shape: Optional\<CircleShape | EllipseShape | PathShape | RectShape>):
 
 ## clipShape<sup>23+</sup>
 
-clipShape(value: CircleShape | EllipseShape | PathShape | RectShape | undefined): this
+clipShape(value: CircleShape | EllipseShape | PathShape | RectShape | undefined)
 
 按指定的形状（形状中可包含位置信息）对当前组件进行裁剪。
 
@@ -220,6 +224,8 @@ clipShape(value: CircleShape | EllipseShape | PathShape | RectShape | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn的接口是[clipShape](#clipshape12)和[clipShape<sup>18+</sup>](#clipshape18)。
@@ -230,77 +236,95 @@ clipShape(value: CircleShape | EllipseShape | PathShape | RectShape | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [CircleShape](../js-apis-arkui-shape.md#circleshape)&nbsp;\|&nbsp;[EllipseShape](../js-apis-arkui-shape.md#ellipseshape)&nbsp;\|&nbsp;[PathShape](../js-apis-arkui-shape.md#pathshape)&nbsp;\|&nbsp;[RectShape](../js-apis-arkui-shape.md#rectshape) \| undefined | 是   | 参数为相应类型的组件，按指定的形状（形状中可包含位置信息）对当前组件进行裁剪。<br/>**说明：** 裁剪不会导致被裁剪区域无法响应绑定的手势事件。<br/>当value的值为undefined时，会重置为当前值。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
+| value  | [CircleShape](../js-apis-arkui-shape.md#circleshape) \| [EllipseShape](../js-apis-arkui-shape.md#ellipseshape) \| [PathShape](../js-apis-arkui-shape.md#pathshape) \| [RectShape](../js-apis-arkui-shape.md#rectshape) \| undefined | 是   | 参数为相应类型的组件，按指定的形状（形状中可包含位置信息）对当前组件进行裁剪。<br/>**说明：** 裁剪不会导致被裁剪区域无法响应绑定的手势事件。<br/>当value的值为undefined时，会重置为当前值。 |
 
 ## CircleShape<sup>12+</sup>
 
-type CircleShape = CircleShape
+type CircleShape = import('../api/@ohos.arkui.shape').CircleShape
 
 导入CircleShape类型对象。
 
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**ArkTS-Dyn起始版本：** 12
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [CircleShape](../js-apis-arkui-shape.md#circleshape) | 圆形形状。 |
+| import('../api/@ohos.arkui.shape').[CircleShape](../js-apis-arkui-shape.md#circleshape) | 圆形形状。 |
 
 ## EllipseShape<sup>12+</sup>
 
-type EllipseShape = EllipseShape
+type EllipseShape = import('../api/@ohos.arkui.shape').EllipseShape
 
 导入EllipseShape类型对象。
 
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**ArkTS-Dyn起始版本：** 12
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [EllipseShape](../js-apis-arkui-shape.md#ellipseshape) | 椭圆形状。 |
+| import('../api/@ohos.arkui.shape').[EllipseShape](../js-apis-arkui-shape.md#ellipseshape) | 椭圆形状。 |
 
 ## PathShape<sup>12+</sup>
 
-type PathShape = PathShape
+type PathShape = import('../api/@ohos.arkui.shape').PathShape
 
 导入PathShape类型对象。
 
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**ArkTS-Dyn起始版本：** 12
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [PathShape](../js-apis-arkui-shape.md#pathshape) | 路径形状。 |
+| import('../api/@ohos.arkui.shape').[PathShape](../js-apis-arkui-shape.md#pathshape) | 路径形状。 |
 
 ## RectShape<sup>12+</sup>
 
-type RectShape = RectShape
+type RectShape = import('../api/@ohos.arkui.shape').RectShape
 
 导入RectShape类型对象。
 
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**ArkTS-Dyn起始版本：** 12
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [RectShape](../js-apis-arkui-shape.md#rectshape) | 矩形形状。 |
+| import('../api/@ohos.arkui.shape').[RectShape](../js-apis-arkui-shape.md#rectshape) | 矩形形状。 |
 
 ## mask<sup>12+</sup>
 
@@ -310,7 +334,9 @@ mask(value: ProgressMask): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -336,9 +362,11 @@ mask(mask: Optional\<ProgressMask>): T
 
 为组件上添加可调节进度的遮罩。与[mask<sup>12+</sup>](#mask12)相比，新增了对undefined类型的支持。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -360,11 +388,13 @@ mask(mask: Optional\<ProgressMask>): T
 
 ## mask<sup>23+</sup>
 
-mask(value: ProgressMask | undefined): this
+mask(value: ProgressMask | undefined)
 
 为组件上添加可调节进度的遮罩。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -378,12 +408,6 @@ mask(value: ProgressMask | undefined): this
 | ------ | ------------------------------- | ---- | ---------------------------------------------------- |
 | value  | [ProgressMask](#progressmask10) \| undefined | 是   | 在当前组件上加上可动态设置进度、最大值和颜色的遮罩。<br/>当value的值为undefined时，恢复为无进度遮罩效果。 |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
 ## mask<sup>(deprecated)</sup>
 
 mask(value: CircleAttribute | EllipseAttribute | PathAttribute | RectAttribute | ProgressMask): T
@@ -394,17 +418,19 @@ mask(value: CircleAttribute | EllipseAttribute | PathAttribute | RectAttribute |
 >
 > 从API version 7开始支持，从API version 12开始废弃，建议使用[maskShape](#maskshape12)替代。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                             |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------- |
-| value  | [CircleAttribute](ts-drawing-components-circle.md)&nbsp;\|&nbsp;[EllipseAttribute](ts-drawing-components-ellipse.md)&nbsp;\|&nbsp;[PathAttribute](ts-drawing-components-path.md)&nbsp;\|&nbsp;[RectAttribute](ts-drawing-components-rect.md) \|&nbsp;[ProgressMask](#progressmask10)<sup>10+</sup> | 是   | 在当前组件上加上指定形状的遮罩。 |
+| value  | [CircleAttribute](ts-drawing-components-circle.md) \| [EllipseAttribute](ts-drawing-components-ellipse.md) \| [PathAttribute](ts-drawing-components-path.md) \| [RectAttribute](ts-drawing-components-rect.md) \| [ProgressMask](#progressmask10)<sup>10+</sup> | 是   | 在当前组件上加上指定形状的遮罩。 |
 
 **返回值：**
 
@@ -418,11 +444,13 @@ maskShape(value: CircleShape | EllipseShape | PathShape | RectShape): T
 
 为组件上添加指定形状的遮罩。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -434,7 +462,7 @@ maskShape(value: CircleShape | EllipseShape | PathShape | RectShape): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                             |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------- |
-| value  | [CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12) | 是   | 在当前组件上加上指定形状的遮罩。 |
+| value  | [CircleShape](#circleshape12) \| [EllipseShape](#ellipseshape12) \| [PathShape](#pathshape12) \| [RectShape](#rectshape12) | 是   | 在当前组件上加上指定形状的遮罩。 |
 
 **返回值：**
 
@@ -448,11 +476,13 @@ maskShape(shape: Optional\<CircleShape | EllipseShape | PathShape | RectShape>):
 
 为组件上添加指定形状的遮罩。与[maskShape<sup>12+</sup>](#maskshape12)相比，新增了对undefined类型的支持。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -464,7 +494,7 @@ maskShape(shape: Optional\<CircleShape | EllipseShape | PathShape | RectShape>):
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| shape  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12)> | 是   | 在当前组件上加上指定形状的遮罩。<br/>当shape的值为undefined时，会重置当前值。 |
+| shape  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CircleShape](#circleshape12) \| [EllipseShape](#ellipseshape12) \| [PathShape](#pathshape12) \| [RectShape](#rectshape12)> | 是   | 在当前组件上加上指定形状的遮罩。<br/>当shape的值为undefined时，会重置当前值。 |
 
 **返回值：**
 
@@ -474,15 +504,17 @@ maskShape(shape: Optional\<CircleShape | EllipseShape | PathShape | RectShape>):
 
 ## maskShape<sup>23+</sup>
 
-maskShape(value: CircleShape | EllipseShape | PathShape | RectShape | undefined): this
+maskShape(value: CircleShape | EllipseShape | PathShape | RectShape | undefined)
 
 为组件上添加指定形状的遮罩。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[maskShape<sup>12+</sup>](#clipshape12)和[maskShape<sup>18+</sup>](#clipshape18)。
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[maskShape<sup>12+</sup>](#maskshape12)和[maskShape<sup>18+</sup>](#maskshape18)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -490,19 +522,15 @@ maskShape(value: CircleShape | EllipseShape | PathShape | RectShape | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                             |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------- |
-| value  | [CircleShape](../js-apis-arkui-shape.md#circleshape)&nbsp;\|&nbsp;[EllipseShape](../js-apis-arkui-shape.md#ellipseshape)&nbsp;\|&nbsp;[PathShape](../js-apis-arkui-shape.md#pathshape)&nbsp;\|&nbsp;[RectShape](../js-apis-arkui-shape.md#rectshape) \| undefined | 是   | 在当前组件上加上指定形状的遮罩。<br/>当value的值为undefined时，会重置为当前值。 |
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
+| value  | [CircleShape](../js-apis-arkui-shape.md#circleshape) \| [EllipseShape](../js-apis-arkui-shape.md#ellipseshape) \| [PathShape](../js-apis-arkui-shape.md#pathshape) \| [RectShape](../js-apis-arkui-shape.md#rectshape) \| undefined | 是   | 在当前组件上加上指定形状的遮罩。<br/>当value的值为undefined时，会重置为当前值。 |
 
 ## ProgressMask<sup>10+</sup>
 
 ProgressMask设置遮罩的进度、最大值和颜色。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -516,7 +544,9 @@ constructor(value: number, total: number, color: ResourceColor)
 
 构造ProgressMask对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -550,11 +580,11 @@ constructor(value: double, total: double, color: ResourceColor)
 
 **参数：**
 
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| -------- | ---------- | ------ | ------ | --------- |
-| value  | double                                     | 否 | 否 | 进度遮罩的当前值。<br/> 取值范围：[0.0, +∞) |
-| total  | double                                     | 否 | 否 | 进度遮罩的最大值。<br/> 取值范围：[0.0, +∞) |
-| color  | [ResourceColor](ts-types.md#resourcecolor) | 否 | 否 | 进度遮罩的颜色。   |
+| 参数名 | 类型    | 必填 | 说明        |
+| -------- | ---------- | ------ | ------ |
+| value  | double                                     | 是 | 进度遮罩的当前值。<br/> 取值范围：[0.0, +∞) |
+| total  | double                                     | 是 | 进度遮罩的最大值。<br/> 取值范围：[0.0, +∞) |
+| color  | [ResourceColor](ts-types.md#resourcecolor) | 是 | 进度遮罩的颜色。   |
 
 ### updateProgress<sup>10+</sup>
 
@@ -562,7 +592,9 @@ updateProgress(value: number): void
 
 更新进度遮罩的进度值。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -574,9 +606,7 @@ updateProgress(value: number): void
 
 **参数：**
 
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明           |
+| 参数名 | 类型 | 必填 | 说明 |
 | ------ | -------- | ---- | ------------------ |
 | value  | number   | 是   | 进度遮罩的当前值。<br/> 取值范围：[0.0, +∞) |
 
@@ -596,9 +626,9 @@ updateProgress(value: double): void
 
 **参数：**
 
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| -------- | ---------- | ------ | ------ | --------- |
-| value  | double   | 否 | 否 | 进度遮罩的当前值。<br/> 取值范围：[0.0, +∞) |
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | --- | --------- |
+| value  | double   | 是 | 进度遮罩的当前值。<br/> 取值范围：[0.0, +∞) |
 
 ### updateColor<sup>10+</sup>
 
@@ -606,7 +636,9 @@ updateColor(value: ResourceColor): void
 
 更新进度遮罩的颜色。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -616,9 +648,9 @@ updateColor(value: ResourceColor): void
 
 **参数：**
 
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| -------- | ---------- | ------ | ------ | --------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 否 | 否 | 进度遮罩的颜色。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------------------------------------- | ------ | -------------- |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是 | 进度遮罩的颜色。 |
 
 ### enableBreathingAnimation<sup>12+</sup>
 
@@ -626,7 +658,9 @@ enableBreathingAnimation(value: boolean): void
 
 进度满时的呼吸光晕动画开关。不设置该接口时，默认关闭呼吸光晕动画。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -636,8 +670,8 @@ enableBreathingAnimation(value: boolean): void
 
 **参数：**
 
-| 参数名 | 类型                                   | 必填 | 说明         |
-| ------ | ------------------------------------------ | ---- | ---------------- |
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------------------ | ---- | ---------------- |
 | value  | boolean | 是   | 是否开启呼吸光晕动画。<br/>true：开启呼吸光晕动画。<br/>false：关闭呼吸光晕动画。 |
 
 

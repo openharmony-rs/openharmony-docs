@@ -31,11 +31,13 @@ project/
 
 - 创建ArkTS-Sta子模块`library`，在`library/src/main/ets/components`目录创建页面。
 
-  ```TypeScript
+  <!-- @[create_resource](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ResourceInteropDyn/library/src/main/ets/components/MainPage.ets) -->
+  
+  ``` TypeScript
   // library/src/main/ets/components/MainPage.ets
   import { $r } from '@ohos.arkui.component';
   import transfer from '@ohos.transfer';
-
+  
   export function createResource(): Any {
     // $r("app.string.EFG")需替换为开发者所需要的资源
     let res = $r("app.string.EFG");
@@ -46,10 +48,10 @@ project/
 
 - 在ArkTS-Sta子模块`library`中导出页面。
 
-  ```TypeScript
-  // library/Index.ets
+  <!-- @[export_create_res](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ResourceInteropDyn/library/Index.ets) -->
+  
+  ``` TypeScript
   export { createResource } from './src/main/ets/components/MainPage';
-
   ```
 
 - 在主模块`entry`的`oh-package.json5`文件中配置子模块依赖。
@@ -64,18 +66,20 @@ project/
 
 - 在ArkTS-Dyn主模块中引入ArkTS-Sta的页面。
 
-  ```TypeScript
-  // entry/src/main/ets/pages/Index.ets
+  <!-- @[res_interop](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ResourceInteropDyn/entry/src/main/ets/pages/ResourcePage.ets) -->
+  
+  ``` TypeScript
+  // entry/src/main/ets/pages/ResourcePage.ets
   import { createResource } from 'library';
-
+  
   @Entry
   @Component
-  struct Index {
+  struct ResourcePage {
     // $r("app.string.res")需替换为开发者所需要的资源
     @State resText: Resource = $r("app.string.res");
     // $r("app.color.start_window_background"需替换为开发者所需要的资源
     @State resTextColor: Resource = $r("app.color.start_window_background");
-
+  
     build() {
       Column() {
         Button("createResource").height(35)

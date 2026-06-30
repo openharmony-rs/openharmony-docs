@@ -1,6 +1,6 @@
 # wrapBuilder：封装全局@Builder（ArkTS-Sta）
 
-  当在一个`struct`内使用多个全局`@Builder`函数实现UI的不同效果时，代码维护将变得非常困难，且页面不够整洁。此时，可以使用`wrapBuilder`封装全局`@Builder`。
+  当在一个`struct`内使用多个全局`@Builder`函数实现UI的不同效果时，代码维护将变得非常困难，且页面不够整洁。此时，可以使用[wrapBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder-static.md)封装全局`@Builder`。
 
   在阅读本文档前，建议提前阅读：[\@Builder](./arkts-builder.md)。
 
@@ -14,7 +14,7 @@
 
 ## 导入模块
 
-```js
+``` TypeScript
 import { WrappedBuilder, wrapBuilder } from '@kit.ArkUI';
 ```
 
@@ -22,13 +22,13 @@ import { WrappedBuilder, wrapBuilder } from '@kit.ArkUI';
 
 `wrapBuilder`是一个模板函数，返回一个`WrappedBuilder`对象。
 
-```ts
+``` TypeScript
 declare function wrapBuilder<T>(builder: T): WrappedBuilder<T>;
 ```
 
 同时 `WrappedBuilder`对象也是一个模板类。
 
-```ts
+``` TypeScript
 declare class WrappedBuilder<T> {
   builder: T;
 
@@ -42,7 +42,7 @@ declare class WrappedBuilder<T> {
 
 使用方法：
 
-```ts
+``` TypeScript
 let builderVar: WrappedBuilder<@Builder (p1: string, p2: number) => void> = wrapBuilder(MyBuilder)
 let builderArr: WrappedBuilder<@Builder (p1: string, p2: number) => void>[] = [wrapBuilder(MyBuilder)] // 可以放入数组
 ```
@@ -57,7 +57,8 @@ let builderArr: WrappedBuilder<@Builder (p1: string, p2: number) => void>[] = [w
 
 使用`@Builder`装饰器装饰的方法`MyBuilder`作为`wrapBuilder`的参数，再将`wrapBuilder`函数的返回值赋值给变量`globalBuilder`，以解决`@Builder`方法赋值给变量后无法使用的问题。
 
-```ts
+<!-- @[WrapBuilderVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/WrapBuilder/entry/src/main/ets/pages/WrapBuilderVariable.ets) -->
+``` TypeScript
 'use static'
 
 import { Builder, Component, Column, Entry, Row, Text, WrappedBuilder, wrapBuilder, State } from '@kit.ArkUI';
@@ -95,9 +96,10 @@ struct Index {
 
 ##  @Builder方法赋值给变量在UI语法中使用
 
-自定义组件Index使用`ForEach`进行不同`@Builder`函数的渲染，可以使用`builderArr`声明的`wrapBuilder`数组来实现不同的`@Builder`函数效果。整体代码会更加整洁。
+自定义组件Index使用[ForEach](../../reference/apis-arkui/arkui-ts/ts-rendering-control-foreach-sta.md)进行不同`@Builder`函数的渲染，可以使用`builderArr`声明的`wrapBuilder`数组来实现不同的`@Builder`函数效果。整体代码会更加整洁。
 
-```ts
+<!-- @[WrapBuilderForEach](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/WrapBuilder/entry/src/main/ets/pages/WrapBuilderForEach.ets) -->
+``` TypeScript
 'use static'
 
 import { Builder, Color, Column, Component, Entry, ForEach, Row, Text, WrappedBuilder, wrapBuilder, State } from '@kit.ArkUI';
@@ -150,7 +152,8 @@ struct Index {
 
 按引用传递参数时，传递的状态变量的改变会引起`@Builder`方法内的UI刷新。
 
-```ts
+<!-- @[WrapBuilderReference](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/WrapBuilder/entry/src/main/ets/pages/WrapBuilderReference.ets) -->
+``` TypeScript
 'use static'
 
 import { Builder, Button, ClickEvent, Column, Component, Entry, Text, WrappedBuilder, wrapBuilder, Observed, State } from '@kit.ArkUI';
@@ -192,7 +195,8 @@ struct Parent{
 
 使用`wrapBuilder`封装全局`@Builder`，实现全局`@Builder`的动态切换。
 
-```ts
+<!-- @[WrapBuilderDynamicSwitch](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/WrapBuilder/entry/src/main/ets/pages/WrapBuilderDynamicSwitch.ets) -->
+``` TypeScript
 'use static'
 
 import { Builder, Button, Column, ComponentV2, Entry, Text, WrappedBuilder, wrapBuilder, Local } from '@kit.ArkUI';

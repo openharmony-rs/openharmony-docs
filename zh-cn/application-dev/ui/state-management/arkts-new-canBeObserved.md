@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了判断对象是否为可被观察对象和获取对象关联的组件信息，开发者可以使用[canBeObserved接口](../../reference/apis-arkui/js-apis-stateManagement.md#canbeobserved23)。
+为了判断对象是否为可被观察对象和获取对象关联的组件信息，开发者可以使用[canBeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#canbeobserved23)。
 
 在使用该接口前，建议开发者对状态管理框架有基本的了解。提前阅读：[状态管理概述](./arkts-state-management-overview.md)。
 
@@ -618,7 +618,7 @@ reduceVolume(balloon: Balloon) {
 }
 ```
 
-两个方法调用canBeObserved接口返回结果一样（如下所示），表示两个方法接收的入参都是都是可被观察对象，且被UI组件所使用，UI可以正常刷新。
+两个方法调用canBeObserved接口返回结果一样（如下所示），表示两个方法接收的入参都是可被观察对象，且被UI组件所使用，UI可以正常刷新。
 
 ``` json5
 {

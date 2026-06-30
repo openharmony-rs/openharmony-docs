@@ -1,9 +1,9 @@
 # 配置ArkTS卡片的配置文件
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 卡片相关的配置文件包括[FormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md)配置和卡片配置。如果是[独立卡片包](./arkts-ui-widget-creation.md#方式二独立包方式创建卡片)，还会包含[独立卡片包配置](./arkts-ui-widget-configuration.md#独立卡片包配置)。
@@ -18,7 +18,7 @@
 
    配置示例如下：
 
-
+   ArkTS-Dyn示例：
   <!-- @[module_config_formCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormStandaloneDemo/entry/src/main/module.json5) --> 
   
   ``` JSON5
@@ -46,10 +46,39 @@
   }
   ```
   
+   ArkTS-Sta示例：
+  <!-- @[module_config_formCreateSta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/FormStandaloneDemoSta/entry/src/main/module.json5) --> 
+  
+  ``` JSON5
+  {
+    "module": {
+      // ...
+      "extensionAbilities": [
+        {
+          "name": "EntryFormAbility",
+          "srcEntry": "./ets/entryformability/EntryFormAbility.ets",
+          "label": "$string:EntryFormAbility_label",
+          "description": "$string:EntryFormAbility_desc",
+          "type": "form",
+          "metadata": [
+            {
+              "name": "ohos.extension.form",
+              "resource": "$profile:form_config"
+            }
+          ]
+        }
+      ],
+      // 只在独立卡片包形态中会使用，用来关联卡片包模块。
+      "formWidgetModule": "library",
+    }
+  }
+  ```
 
 ## 独立卡片包配置
 相对应地，在卡片包的[module.json5配置文件](../quick-start/module-configuration-file.md)中，`formExtensionModule`字段用来关联应用包的`module`。<br>
 配置示例如下：
+
+   ArkTS-Dyn示例：
 <!-- @[standalone_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormStandaloneDemo/library/src/main/module.json5) --> 
 
 ``` JSON5
@@ -60,6 +89,24 @@
     "description": "$string:shared_desc",
     "deviceTypes": [
       "phone"
+    ],
+    "deliveryWithInstall": true,
+    // 只在独立卡片包形态中会使用，用来关联应用包模块。
+    "formExtensionModule": "entry"
+  }
+}
+```
+   ArkTS-Sta示例：
+<!-- @[standaloneSta_config](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/FormStandaloneDemoSta/library/src/main/module.json5) --> 
+
+``` JSON5
+{
+  "module": {
+    "name": "library",
+    "type": "shared",
+    "description": "$string:shared_desc",
+    "deviceTypes": [
+      "default"
     ],
     "deliveryWithInstall": true,
     // 只在独立卡片包形态中会使用，用来关联应用包模块。
@@ -88,7 +135,7 @@
 | window | 用于定义与显示窗口相关的配置。<br/>**说明：**<br/>该字段仅对JS卡片生效。 | 对象 | 可缺省，缺省值参考[window标签](#window标签)表格。 |
 | isDefault | 表示该卡片是否为默认卡片(在卡片中心内希望优先展示的卡片)，每个应用有且只有一个默认卡片。<br/>-&nbsp;true：默认卡片。<br/>-&nbsp;false：非默认卡片。<br/>**说明：**<br/> 应用上架时每个应用只允许配置一张默认卡片。| 布尔值 | 否 |
 | colorMode<sup>(deprecated)</sup> | 表示卡片的主题样式，取值范围如下：<br/>-&nbsp;auto：跟随系统的颜色模式值选取主题。<br/>-&nbsp;dark：深色主题。<br/>-&nbsp;light：浅色主题。<br/>**说明：**<br/>1. 从API version 12开始支持该配置项，从API version 20开始废弃该配置项，卡片主题样式统一跟随系统的颜色模式。<br/>2. 该字段仅对JS卡片生效。 | 字符串 | 可缺省，缺省值为“auto”。 |
-| supportDimensions | 表示卡片支持的外观规格，取值范围：<!--RP5--><!--RP5End--><br/>-&nbsp;1&nbsp;\*&nbsp;2：表示1行2列的二宫格。<br/>-&nbsp;2&nbsp;\*&nbsp;2：表示2行2列的四宫格。<br/>-&nbsp;2&nbsp;\*&nbsp;4：表示2行4列的八宫格。<br/>-&nbsp;2&nbsp;\*&nbsp;3：表示2行3列的六宫格。<br/>-&nbsp;3&nbsp;\*&nbsp;3：表示3行3列的九宫格。<br/>-&nbsp;4&nbsp;\*&nbsp;4：表示4行4列的十六宫格。<br/>-&nbsp;6&nbsp;\*&nbsp;4：表示6行4列的二十四宫格。<br>**说明**：&nbsp;2&nbsp;\*&nbsp;3和&nbsp;3&nbsp;\*&nbsp;3仅支持手表设备<!--RP6--><!--RP6End-->。 | 字符串数组 | 否 |
+| supportDimensions | 表示卡片支持的外观规格，取值范围：<!--RP5--><!--RP5End--><br/>-&nbsp;1&nbsp;\*&nbsp;2：表示1行2列的二宫格。<br/>-&nbsp;2&nbsp;\*&nbsp;2：表示2行2列的四宫格。<br/>-&nbsp;2&nbsp;\*&nbsp;4：表示2行4列的八宫格。<br/>-&nbsp;2&nbsp;\*&nbsp;3：表示2行3列的六宫格。<br/>-&nbsp;3&nbsp;\*&nbsp;3：表示3行3列的九宫格。<br/>-&nbsp;4&nbsp;\*&nbsp;4：表示4行4列的十六宫格。<br/>-&nbsp;6&nbsp;\*&nbsp;4：表示6行4列的二十四宫格。<br>**说明**：具体设备支持情况参考[supportDimensions字段与设备支持关系表](#supportdimensions字段与设备支持关系表)。 | 字符串数组 | 否 |
 | defaultDimension | 表示卡片的默认尺寸，取值必须在该卡片supportDimensions配置的列表中。 | 字符串 | 否 |
 | updateEnabled | 表示卡片是否支持周期性刷新（包含定时刷新和定点刷新），取值范围：<br/>-&nbsp;true：表示支持周期性刷新，可以在定时刷新（updateDuration）和定点刷新（scheduledUpdateTime）两种方式任选其一，当两者同时配置时，定时刷新优先生效。<br/>-&nbsp;false：表示不支持周期性刷新。 | 布尔类型 | 否 |
 | scheduledUpdateTime | 表示卡片的[定点刷新](./arkts-ui-widget-passive-refresh.md#卡片定点刷新)的时刻，采用24小时制，精确到分钟，例如："10:30"。<br/>**说明：**<br/>updateDuration参数优先级高于scheduledUpdateTime，两者同时配置时，以updateDuration配置的刷新时间为准。 | 字符串 | 可缺省，缺省值为“0:0”，缺省时不进行定点刷新。 |
@@ -109,7 +156,7 @@
 |[funInteractionParams](#funinteractionparams标签)| 趣味交互类型互动卡片扩展字段。从API version 20开始，支持该字段。| 对象 | 可缺省，缺省为空。funInteractionParams 和 sceneAnimationParams 同时配置时识别为趣味交互类型互动卡片。|
 |[sceneAnimationParams](#sceneanimationparams标签)| [场景动效类型互动卡片](./arkts-ui-liveform-sceneanimation-overview.md)扩展字段。从API version 20开始，支持该字段。| 对象 | 可缺省，缺省为空。funInteractionParams 和 sceneAnimationParams 同时配置时识别为趣味交互类型互动卡片。|
 | resizable | 表示是否可以拖拽卡片调整大小。调整值必须在该卡片或者同groupId卡片的supportDimensions配置列表中。<br/>-&nbsp;true：可以调整大小。<br/>-&nbsp;false：不可以调整大小。<br/>**说明：**<br/>从API version 20开始，支持该字段。 | 布尔类型 | 可缺省，缺省值为false。 |
-| groupId | 表示一组卡片的共同id。多张卡片的groupId相同且resizable为true时，多张卡片的supportDimensions配置共享，推荐多张卡片功能相同且需要调整卡片尺寸时配置。<br>示例一：卡片A的groupId配置为'1'，resizeable配置为true，supportDimension为2\*2。卡片B的groupId配置为'1'，resizeable配置为true，supportDimension为2\*4。那么支持卡片A、B之间调整大小。<br>示例二：当supportDimension存在多个，resizable设置为true时，优先在同一张卡片之间调整大小。卡片A的resizeable配置为true，supportDimension为2\*2、2\*4，支持卡片A的两个尺寸之间调整大小。<br>示例三：卡片A的groupId配置为'1'，resizeable配置为true，supportDimension为1\*2。卡片B的groupId配置为'1'，resizeable配置为true，supportDimension为2\*2、2\*4、4\*4。卡片A可以调整到卡片B的默认尺寸，卡片B只支持在B卡片支持的三个尺寸之间调整大小，无法调整为卡片A。<br/>**说明：**<br/>从API version 20开始，支持该字段。 | 字符串 | 可缺省，空字符串。 |
+| groupId | 表示一组卡片的共同id。多张卡片的groupId相同且resizable为true时，多张卡片的supportDimensions配置共享，推荐多张卡片功能相同且需要调整卡片尺寸时配置。<br>示例一：卡片A的groupId配置为'1'，resizable配置为true，supportDimension为2\*2。卡片B的groupId配置为'1'，resizable配置为true，supportDimension为2\*4。那么支持卡片A、B之间调整大小。<br>示例二：当supportDimension存在多个，resizable设置为true时，优先在同一张卡片之间调整大小。卡片A的resizable配置为true，supportDimension为2\*2、2\*4，支持卡片A的两个尺寸之间调整大小。<br>示例三：卡片A的groupId配置为'1'，resizable配置为true，supportDimension为1\*2。卡片B的groupId配置为'1'，resizable配置为true，supportDimension为2\*2、2\*4、4\*4。卡片A可以调整到卡片B的默认尺寸，卡片B只支持在B卡片支持的三个尺寸之间调整大小，无法调整为卡片A。<br/>**说明：**<br/>从API version 20开始，支持该字段。 | 字符串 | 可缺省，空字符串。 |
 | [supportDeviceTypes](#supportdevicetypes标签) | 表示特定卡片支持的设备类型。例如，卡片的supportDeviceTypes字段配置了“phone”、“tablet”、“tv”，那么该卡片就支持在手机、平板、大屏上面显示。<br/>**说明：**<br/>从API version 22开始，支持该字段。 | 字符串数组 | 可缺省，缺省值：["phone", "tablet", "tv", "wearable", "car", "2in1"]。 |
 | [supportDevicePerformanceClasses](#supportdeviceperformanceclasses标签) | 表示特定卡片支持的设备性能等级信息。例如，卡片的supportDevicePerformanceClasses字段配置了“high”、“medium”、“low”，那么该卡片就支持在性能等级为“high”、“medium”、“low”设备上面显示。<br/>**说明：**<br/>从API version 22开始，支持该字段。 | 字符串数组 | 可缺省，缺省值：["high", "medium", "low"]。 |
 | [standby](#standby标签) | 待机屏保显示页面卡片扩展字段。<br/>**说明：**<br/>从API version 23开始，支持该字段。依赖系统实现待机屏保显示应用后展示 | 对象 | 可缺省，属性缺省值见[standby标签](#standby标签)。 |
@@ -155,7 +202,7 @@
 | abilityName       | 字符串 | 否  | 趣味交互场景LiveFormExtensionAbility名称，默认为空。                                                                                              |
 | targetBundleName  | 字符串 | 是  | 趣味交互场景[主包包名](https://developer.huawei.com/consumer/cn/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729)。       |
 | subBundleName     | 字符串 | 否  | 趣味交互场景[独立分包名](https://developer.huawei.com/consumer/cn/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729)，默认为空。|
-| keepStateDuration | 数值  | 否  | 趣味交互场景无交互时，激活态保持时长。默认值为10000，单位ms。取值为[0,60000]的整数，超过取值范围则取最大值60000。<br/>**说明：** 在API版本26.0.0之前该字段为[0,10000]的整数，超过取值范围则取默认值10000。                                               |
+| keepStateDuration | 数值  | 否  | 趣味交互场景无交互时，激活态保持时长。默认值为10000，单位ms。取值为(0,60000]的整数，超过取值范围则取最大值60000。<br/>**说明：** 在API版本26.0.0之前该字段为(0,10000]的整数，超过取值范围则取默认值10000。                                               |
 
 ```json5
 {
@@ -179,7 +226,7 @@
 |---------------------------------------|--------|----|----------------------------|
 | abilityName                           | 字符串 | 是  | 场景动效LiveFormExtensionAbility名称。|
 | disabledDesktopBehaviors | 字符串数组 | 否  | 支持的取值包括SWIPE_DESKTOP（滑动桌面）、PULL_DOWN_SEARCH（下拉全搜）、LONG_CLICK（长按）、DRAG（拖动）。可以取值一个或多个，缺省表示不禁用任何行为。<br/>**说明：**<br/>从API version 20开始支持该字段配置，功能仅对系统应用生效。 |
-| triggerTypes                           | 字符串数组 | 否  | 场景动效触发类型，支持的取值包括shake（摇一摇）。<br/>**说明：**<br/>从API version 26.0.0开始，支持该字段。|
+| triggerTypes                           | 字符串数组 | 否  | 场景动效触发类型，支持的取值包括shake（摇一摇）。<br/>**说明：**<br/>从API版本26.0.0开始，支持该字段。|
 
 <!--RP2-->
    ```json5
@@ -263,3 +310,18 @@
    }
    ```
 <!--RP1End-->
+
+### supportDimensions字段与设备支持关系表
+
+各类型设备支持的卡片尺寸规格。其中"仅锁屏"表示该尺寸仅适用于锁屏场景；"部分机型"表示具体支持情况需根据设备桌面宫格配置判断。
+
+| 卡片尺寸信息 | Phone | PC | 2in1 | Tablet | TV | Car | Wearable |
+|-------------|-------|----|------|------|------|------|------|
+|"1*2"|是|是|是|是|是|是|是|
+|"2*2"|是|是|是|是|是|是|是|
+|"2*4"|是|是|是|是|是|是|否|
+|"4*4"|是|是|是|是|是|是|否|
+|"1*1"|是（仅锁屏）|否|否|是（仅锁屏）|否|否|是|
+|"6*4"|是（部分机型）|是|是|是（部分机型）|否|否|否|
+|"2*3"|否|否|否|否|否|否|是|
+|"3*3"|否|否|否|否|否|否|是|

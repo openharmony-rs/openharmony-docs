@@ -24,6 +24,8 @@
 
 2. 在控件中，使用Text组件作为自绘编辑框的文本显示组件，使用状态变量inputText作为Text组件要显示的内容。
 
+   ArkTS-Dyn示例：
+   
    <!-- @[input_case_input_CustomInputText](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/components/CustomInput.ets) -->
    
    ``` TypeScript
@@ -57,9 +59,48 @@
      }
    ```
 
+   ArkTS-Sta示例：
+   
+   <!-- @[input_case_input_CustomInputText](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/components/CustomInput.ets) -->
+   
+   ``` TypeScript
+   import {
+     Component, State, Text, focusControl
+   } from '@kit.ArkUI';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { inputMethod } from '@kit.IMEKit';
+   import Log from '../model/Log';
+   
+   const TAG = '[Submenu]';
+   
+   @Component
+   export struct CustomInput {
+     @State inputText: string = ''; // inputText作为Text组件要显示的内容
+     private isAttach: boolean = false;
+     private inputController: inputMethod.InputMethodController = inputMethod.getController();
+   
+     build(): void {
+       Text(this.inputText) // Text组件作为自绘编辑框的文本显示组件。
+         .fontSize(16)
+         .width('100%')
+         .lineHeight(40)
+         .id('customInput')
+         .height(45)
+         .border({ color: '#554455', radius: 30, width: 1 })
+         .maxLines(1)
+         .onBlur(() => {
+           this.off();
+         })
+         .onClick(() => {
+           this.attachAndListener(); // 点击控件
+         })
+     }
+   ```
 
 3. 在控件中获取inputMethodController实例，先在文本点击时调用controller实例的attach方法绑定和拉起软键盘，再注册监听输入法插入文本、删除等方法。本示例仅展示插入、删除。
 
+   ArkTS-Dyn示例：
+   
    <!-- @[input_case_input_CustomInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/components/CustomInput.ets) -->
    
    ``` TypeScript
@@ -123,10 +164,89 @@
    }
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[input_case_input_CustomInput](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/components/CustomInput.ets) -->
+   
+   ``` TypeScript
+   import {
+     Component, State, Text, focusControl
+   } from '@kit.ArkUI';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { inputMethod } from '@kit.IMEKit';
+   import Log from '../model/Log';
+   
+   const TAG = '[Submenu]';
+   
+   @Component
+   export struct CustomInput {
+     @State inputText: string = ''; // inputText作为Text组件要显示的内容
+     private isAttach: boolean = false;
+     private inputController: inputMethod.InputMethodController = inputMethod.getController();
+   
+     build(): void {
+       Text(this.inputText) // Text组件作为自绘编辑框的文本显示组件。
+         .fontSize(16)
+         .width('100%')
+         .lineHeight(40)
+         .id('customInput')
+         .height(45)
+         .border({ color: '#554455', radius: 30, width: 1 })
+         .maxLines(1)
+         .onBlur(() => {
+           this.off();
+         })
+         .onClick(() => {
+           this.attachAndListener(); // 点击控件
+         })
+     }
+   
+     async attachAndListener() { // 绑定和设置监听
+       focusControl.requestFocus('customInput');
+       try {
+         await this.inputController?.attach(true, {
+           inputAttribute: {
+             textInputType: inputMethod.TextInputType.TEXT,
+             enterKeyType: inputMethod.EnterKeyType.SEARCH
+           }
+         });
+         if (!this.isAttach) {
+           this.inputController?.onInsertText((text) => {
+             this.inputText += text;
+           })
+           this.inputController?.onDeleteLeft((length) => {
+             this.inputText = this.inputText.substring(0, this.inputText.length - length);
+           })
+           this.isAttach = true;
+         }
+       } catch (err) {
+         let error = err as BusinessError;
+         Log.showError(TAG, `attach catch error: ${error.code} ${error.message}`);
+       }
+     }
+   
+     off(): void {
+       this.isAttach = false;
+       this.inputController?.offInsertText();
+       this.inputController?.offDeleteLeft();
+     }
+   }
+   ```
+   
 
 4. 在应用界面布局中引入该控件即可，此处假设使用界面为Index.ets和控件CustomInput.ets在同一目录下。
 
+   ArkTS-Dyn示例：
+
    <!-- @[input_case_input_CustomInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/pages/PrivatePreview.ets) -->
+   
+   ``` TypeScript
+   CustomInput()
+   ```
+
+   ArkTS-Sta示例：
+   
+   <!-- @[input_case_input_CustomInput](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/InputMethod/SimpleKeyboard/entry/src/main/ets/pages/PrivatePreview.ets) -->
    
    ``` TypeScript
    CustomInput()

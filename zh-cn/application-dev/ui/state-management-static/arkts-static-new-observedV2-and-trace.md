@@ -45,9 +45,9 @@ import { ObservedV2, Trace } from '@kit.ArkUI';
 
 - 在嵌套类中使用\@Trace装饰的属性具有被观测变化的能力。
 
-   ```ts
-   'use static'
+   <!-- @[TraceNestedClass](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedV2Trace/entry/src/main/ets/pages/TraceNestedClass.ets) -->
    
+   ``` TypeScript
    import { Column, ComponentV2, Entry, ObservedV2, Text, Trace } from '@kit.ArkUI';
    
    @ObservedV2
@@ -78,9 +78,9 @@ import { ObservedV2, Trace } from '@kit.ArkUI';
 
 - 在继承类中使用\@Trace装饰的属性具有被观测变化的能力。
 
-   ```ts
-   'use static'
+   <!-- @[TraceInheritClass](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedV2Trace/entry/src/main/ets/pages/TraceInheritClass.ets) -->
    
+   ``` TypeScript
    import { Column, ComponentV2, Entry, ObservedV2, Text, Trace } from '@kit.ArkUI';
    
    @ObservedV2
@@ -110,9 +110,9 @@ import { ObservedV2, Trace } from '@kit.ArkUI';
 
 - 类中使用\@Trace装饰的静态属性具有被观测变化的能力。
 
-   ```ts
-   'use static'
+   <!-- @[TraceStaticProperty](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedV2Trace/entry/src/main/ets/pages/TraceStaticProperty.ets) -->
    
+   ``` TypeScript
    import { Column, ComponentV2, Entry, ObservedV2, Text, Trace } from '@kit.ArkUI';
    
    @ObservedV2
@@ -150,9 +150,9 @@ import { ObservedV2, Trace } from '@kit.ArkUI';
 
 - 非\@Trace装饰的成员属性用在UI上无法触发UI刷新。
 
-   ```ts
-   'use static'
+   <!-- @[TraceUseRestrict](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedV2Trace/entry/src/main/ets/pages/TraceUseRestrict.ets) -->
    
+   ``` TypeScript
    import { Column, ComponentV2, Entry, ObservedV2, Text, Trace } from '@kit.ArkUI';
    
    @ObservedV2
@@ -239,9 +239,9 @@ import { ObservedV2, Trace } from '@kit.ArkUI';
 
 点击Button('change length')，length是被\@Trace装饰的属性，它的变化可以触发关联的UI组件，即UINode (1)的刷新，并输出"id: 1 renderTimes: x"的日志，其中x根据点击次数依次增长。
 
-```ts
-'use static'
+<!-- @[TraceNestedScene](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedV2Trace/entry/src/main/ets/pages/TraceNestedScene.ets) --> 
 
+``` TypeScript
 import { Button, Column, ComponentV2, Entry, ObservedV2, Text, Trace } from '@kit.ArkUI';
 
 @ObservedV2
@@ -270,22 +270,28 @@ struct Page {
   isRender(id: number): number {
     console.info(`id: ${id} renderTimes: ${this.renderTimes}`);
     this.renderTimes++;
-    return 40;
+    return 20;
   }
 
   build() {
     Column() {
       Text('pencil length' + this.son.bag.pencil.length) // UINode (1)
         .fontSize(this.isRender(1))
+        .margin(10)
       Button('change length')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           // 点击更改length值，UINode（1）会刷新
           this.son.bag.pencil.length += 100;
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![ObservedV2AndTrace_1](../figures/observedv2andtrace_1.gif)
 
 ### 继承类场景
 
@@ -293,9 +299,9 @@ struct Page {
 
 以下例子中，创建类Son和类Cousin的实例，点击Button('change Son age')和Button('change Cousin age')可以触发UI的刷新。
 
-```ts
-'use static'
+<!-- @[TraceInheritScene](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedV2Trace/entry/src/main/ets/pages/TraceInheritScene.ets) --> 
 
+``` TypeScript
 import { Button, Column, ComponentV2, Entry, FontWeight, ObservedV2, Row, Text, Trace } from '@kit.ArkUI';
 
 @ObservedV2
@@ -341,7 +347,7 @@ struct Index {
   isRender(id: number): number {
     console.info(`id: ${id} renderTimes: ${this.renderTimes}`);
     this.renderTimes++;
-    return 40;
+    return 20;
   }
 
   build() {
@@ -349,25 +355,34 @@ struct Index {
       Column() {
         Text(`Son ${this.son.age}`)
           .fontSize(this.isRender(1))
+          .margin(10)
           .fontWeight(FontWeight.Bold)
         Text(`Cousin ${this.cousin.age}`)
           .fontSize(this.isRender(2))
+          .margin(10)
           .fontWeight(FontWeight.Bold)
+        // son实例的age属性可观测
         Button('change Son age')
+          .width(300)
+          .margin(10)
           .onClick((e) => {
             this.son.age++;
           })
+        // cousin实例的age属性可观测
         Button('change Cousin age')
+          .width(300)
+          .margin(10)
           .onClick((e) => {
             this.cousin.age++;
           })
       }
       .width('100%')
     }
-    .height('100%')
   }
 }
 ```
+
+![ObservedV2AndTrace_2](../figures/observedv2andtrace_2.gif)
 
 ### \@Trace装饰基础类型的数组
 
@@ -375,11 +390,24 @@ struct Index {
 
 在下面的示例中\@ObservedV2装饰的Arr类中的属性numberArr是\@Trace装饰的数组，当使用数组API操作numberArr时，可以观测到对应的变化。注意使用数组长度进行判断以防越界访问。
 
-```ts
-'use static'
+<!-- @[TraceBasicArray](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedV2Trace/entry/src/main/ets/pages/TraceBasicArray.ets) --> 
 
-import { Button, Column, ComponentV2, Divider, Entry, FontWeight, 
-         ForEach, Row, Text, ObservedV2, Trace, List, ListItem } from '@kit.ArkUI';
+``` TypeScript
+import {
+  Button,
+  Column,
+  ComponentV2,
+  Divider,
+  Entry,
+  FontWeight,
+  ForEach,
+  Row,
+  Text,
+  ObservedV2,
+  Trace,
+  List,
+  ListItem
+} from '@kit.ArkUI';
 
 let nextId: number = 0;
 
@@ -401,100 +429,111 @@ struct Index {
 
   build() {
     Column() {
-      Text(`length: ${this.arr.numberArr.length}`)
-        .fontSize(40)
-      Divider()
+      // 展开arr.numberArr数组内容
+      Text(`arr.numberArr: ${this.arr.numberArr}`)
+        .fontSize(20)
+        .margin(10)
       if (this.arr.numberArr.length >= 3) {
         Text(`${this.arr.numberArr[0]}`)
-          .fontSize(40)
+          .fontSize(20)
+          .margin(10)
           .onClick((e) => {
             this.arr.numberArr[0]++;
           })
         Text(`${this.arr.numberArr[1]}`)
-          .fontSize(40)
+          .fontSize(20)
+          .margin(10)
           .onClick((e) => {
             this.arr.numberArr[1]++;
           })
         Text(`${this.arr.numberArr[2]}`)
-          .fontSize(40)
+          .fontSize(20)
+          .margin(10)
           .onClick((e) => {
             this.arr.numberArr[2]++;
           })
       }
 
-      Divider()
-
-      List() {
-        ForEach(this.arr.numberArr, (item: number, index: int) => {
-          ListItem() {
-            Row() {
-              Text(`${index} ${item}`)
-                .fontSize(40)
-            }
-          }
-        })
-      }
-      .height('20%')
-
       Button('push')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           this.arr.numberArr.push(50);
         })
 
       Button('pop')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           this.arr.numberArr.pop();
         })
 
       Button('shift')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           this.arr.numberArr.shift();
         })
 
       Button('splice')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           this.arr.numberArr.splice(1, 0 as int, 60);
         })
 
 
       Button('unshift')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           this.arr.numberArr.unshift(100);
         })
 
       Button('copywithin')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           this.arr.numberArr.copyWithin(0, 1, 2);
         })
 
       Button('fill')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           this.arr.numberArr.fill(0, 2, 4);
         })
 
       Button('reverse')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           this.arr.numberArr.reverse();
         })
 
       Button('sort')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           this.arr.numberArr.sort();
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![ObservedV2AndTrace_3](../figures/observedv2andtrace_3.gif)
 
 ### \@Trace装饰对象数组
 
 * \@Trace装饰对象数组personList以及Person类中的age属性，因此当personList、age改变时均可以观测到变化。
 * 点击Text组件更改age时，Text组件会刷新。
 
-   ```ts
-   'use static'
+   <!-- @[TraceObjectArray](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedV2Trace/entry/src/main/ets/pages/TraceObjectArray.ets) --> 
    
-   import { Column, ComponentV2, Divider, Entry, ForEach, ObservedV2, Row, Text, Trace } from '@kit.ArkUI';
+   ``` TypeScript
+   import { Column, ComponentV2, Divider, Entry, ForEach, ObservedV2, Row, Text, Trace, Button } from '@kit.ArkUI';
    
    let nextId: number = 0;
    
@@ -525,48 +564,53 @@ struct Index {
    
      build() {
        Column() {
+         // 遍历展示对象数组中每个元素的age值。
+         ForEach(this.info.personList, (item: Person, index: int) => {
+           Text(`${index} ${item.age}`)
+             .fontSize(20)
+             .margin(10)
+         })
          Text(`length: ${this.info.personList.length}`)
-           .fontSize(40)
-         Divider()
+           .fontSize(20)
+           .margin(10)
          if (this.info.personList.length >= 3) {
-           Text(`${this.info.personList[0].age}`)
-             .fontSize(40)
+           Button(`${this.info.personList[0].age}`)
+             .fontSize(20)
+             .margin(10)
              .onClick((e) => {
                this.info.personList[0].age++;
              })
    
-           Text(`${this.info.personList[1].age}`)
-             .fontSize(40)
+           Button(`${this.info.personList[1].age}`)
+             .fontSize(20)
+             .margin(10)
              .onClick((e) => {
                this.info.personList[1].age++;
              })
    
-           Text(`${this.info.personList[2].age}`)
-             .fontSize(40)
+           Button(`${this.info.personList[2].age}`)
+             .fontSize(20)
+             .margin(10)
              .onClick((e) => {
                this.info.personList[2].age++;
              })
          }
-   
-         Divider()
-   
-         ForEach(this.info.personList, (item: Person, index: int) => {
-           Text(`${index} ${item.age}`)
-             .fontSize(40)
-         })
        }
+       .width('100%')
      }
    }
    ```
+
+![ObservedV2AndTrace_4](../figures/observedv2andtrace_4.gif)
 
 ### \@Trace装饰Map类型
 
 * 被\@Trace装饰的Map类型属性可以观测到调用API带来的变化，包括 set、clear、delete。
 * 因为Info类被\@ObservedV2装饰且属性memberMap被\@Trace装饰，点击Button('init map')对memberMap赋值也可以观测到变化。
 
-   ```ts
-   'use static'
+   <!-- @[TraceMapType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedV2Trace/entry/src/main/ets/pages/TraceMapType.ets) -->
    
+   ``` TypeScript
    import { Button, Column, ComponentV2, Divider, Entry, ForEach, ObservedV2, Row, Text, Trace } from '@kit.ArkUI';
    
    @ObservedV2
@@ -584,29 +628,45 @@ struct Index {
          Column() {
            ForEach(Array.from(this.info.memberMap.entries()), (item: [number, string]) => {
              Text(`${item[0]}`)
-               .fontSize(30)
+               .fontSize(20)
+               .margin(10)
              Text(`${item[1]}`)
-               .fontSize(30)
+               .fontSize(20)
+               .margin(10)
              Divider()
            })
            Button('init map')
+             .width(300)
+             .margin(10)
              .onClick((e) => {
                this.info.memberMap = new Map<number, string>([[0, 'a'], [1, 'b'], [3, 'c']]);
              })
            Button('set new one')
+             .width(300)
+             .margin(10)
              .onClick((e) => {
+              // 新增键值对，触发UI刷新
                this.info.memberMap.set(4, 'd');
              })
            Button('clear')
+             .width(300)
+             .margin(10)
              .onClick((e) => {
+              // 清空Map，触发UI刷新
                this.info.memberMap.clear();
              })
            Button('set the key: 0')
+             .width(300)
+             .margin(10)
              .onClick((e) => {
+              // 更新键值对，触发UI刷新
                this.info.memberMap.set(0, 'aa');
              })
            Button('delete the first one')
+             .width(300)
+             .margin(10)
              .onClick((e) => {
+              // 删除键值对，触发UI刷新
                this.info.memberMap.delete(0);
              })
          }
@@ -617,14 +677,16 @@ struct Index {
    }
    ```
 
+![ObservedV2AndTrace_7](../figures/observedv2andtrace_7.gif)
+
 ### \@Trace装饰Set类型
 
 * 被\@Trace装饰的Set类型属性可以观测到调用API带来的变化，包括 add、clear、delete。
 * 因为Info类被\@ObservedV2装饰且属性memberSet被\@Trace装饰，点击Button('init set')对memberSet赋值也可以观察变化。
 
-   ```ts
-   'use static'
+   <!-- @[TraceSetType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedV2Trace/entry/src/main/ets/pages/TraceSetType.ets) -->
    
+   ``` TypeScript
    import { Button, Column, ComponentV2, Divider, Entry, ForEach, ObservedV2, Row, Text, Trace } from '@kit.ArkUI';
    
    @ObservedV2
@@ -642,23 +704,35 @@ struct Index {
          Column() {
            ForEach(Array.from(this.info.memberSet.entries()), (item: [number, number]) => {
              Text(`${item[0]}`)
-               .fontSize(30)
+               .fontSize(20)
+               .margin(10)
              Divider()
            })
            Button('init set')
+             .width(300)
+             .margin(10)
              .onClick((e) => {
                this.info.memberSet = new Set<number>([0, 1, 2, 3, 4]);
              })
            Button('set new one')
+             .width(300)
+             .margin(10)
              .onClick((e) => {
+              // 新增元素，触发UI刷新
                this.info.memberSet.add(5);
              })
            Button('clear')
+             .width(300)
+             .margin(10)
              .onClick((e) => {
+              // 清空Set，触发UI刷新
                this.info.memberSet.clear();
              })
            Button('delete the first one')
+             .width(300)
+             .margin(10)
              .onClick((e) => {
+              // 删除元素，触发UI刷新
                this.info.memberSet.delete(0);
              })
          }
@@ -669,14 +743,16 @@ struct Index {
    }
    ```
 
+![ObservedV2AndTrace_8](../figures/observedv2andtrace_8.gif)
+
 ### \@Trace装饰Date类型
 
 * \@Trace装饰的Date类型属性可以观测调用API带来的变化，包括 setFullYear、setMonth、setDate、setHours、setMinutes、setSeconds、setMilliseconds、setTime、setUTCFullYear、setUTCMonth、setUTCDate、setUTCHours、setUTCMinutes、setUTCSeconds、setUTCMilliseconds。
 * 因为Info类被\@ObservedV2装饰且属性selectedDate被\@Trace装饰，点击Button('set selectedDate to 2023-07-08')对selectedDate赋值也可以观测到变化。
 
-   ```ts
-   'use static'
+   <!-- @[TraceDateType](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedV2Trace/entry/src/main/ets/pages/TraceDateType.ets) -->
    
+   ``` TypeScript
    import { Button, Column, ComponentV2, DatePicker, Divider, Entry, ObservedV2, Trace } from '@kit.ArkUI';
    
    @ObservedV2
@@ -692,24 +768,32 @@ struct Index {
      build() {
        Column() {
          Button('set selectedDate to 2023-07-08')
+           .width(300)
            .margin(10)
            .onClick((e) => {
-             this.info.selectedDate = new Date('2023-07-08');
+            // 通过给info.selectedDate重新赋值新的Date实例，触发UI刷新
+            this.info.selectedDate = new Date('2023-07-08');
            })
          Button('increase the year by 1')
+           .width(300)
            .margin(10)
            .onClick((e) => {
-             this.info.selectedDate.setFullYear(this.info.selectedDate.getFullYear() + 1);
+            // 调用Date的setFullYear接口修改年份，触发UI刷新
+            this.info.selectedDate.setFullYear(this.info.selectedDate.getFullYear() + 1);
            })
          Button('increase the month by 1')
+           .width(300)
            .margin(10)
            .onClick((e) => {
-             this.info.selectedDate.setMonth(this.info.selectedDate.getMonth() + 1);
+            // 调用Date的setMonth接口修改月份，触发UI刷新
+            this.info.selectedDate.setMonth(this.info.selectedDate.getMonth() + 1);
            })
          Button('increase the day by 1')
+           .width(300)
            .margin(10)
            .onClick((e) => {
-             this.info.selectedDate.setDate(this.info.selectedDate.getDate() + 1);
+            // 调用Date的setDate接口修改日期，触发UI刷新
+            this.info.selectedDate.setDate(this.info.selectedDate.getDate() + 1);
            })
          DatePicker({
            start: new Date('1970-1-1'),
@@ -721,6 +805,8 @@ struct Index {
    }
    ```
 
+![ObservedV2AndTrace_9](../figures/observedv2andtrace_9.gif)
+
 ### 序列化和反序列化
 
 使用无参构造函数的@ObservedV2装饰的类可以使用JSON.stringify序列化和JSON.parse反序列化。
@@ -729,9 +815,9 @@ struct Index {
 
 **无参构造**
 
-```ts
-'use static'
+<!-- @[TraceSerializeNoParam](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedV2Trace/entry/src/main/ets/pages/TraceSerializeNoParam.ets) --> 
 
+``` TypeScript
 import { Button, Column, ComponentV2, Entry, Local, ObservedV2, Text, Trace } from '@kit.ArkUI';
 
 @ObservedV2
@@ -748,29 +834,40 @@ struct Index {
   build() {
     Column() {
       Text(`Source ${this.source.source} and message ${this.message}`)
+        .fontSize(20)
+        .margin(10)
       Button('+1')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           this.source.source += 1;
         })
       Button('Serialize')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           this.message = JSON.stringify(this.source);
         })
       Button('Deserialize')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           // 反序列化生成@Observed类并赋值
           this.source = JSON.parse<Source>('{"source": 123}', Type.from<Source>())!;
         })
     }
+    .width('100%')
   }
 }
 ```
 
+![ObservedV2AndTrace_5](../figures/observedv2andtrace_5.gif)
+
 **有参构造**
 
-```ts
-'use static'
+<!-- @[TraceSerializeWithParam](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ObservedV2Trace/entry/src/main/ets/pages/TraceSerializeWithParam.ets) --> 
 
+``` TypeScript
 import { Button, Column, ComponentV2, Entry, Local, ObservedV2, Text, Trace } from '@kit.ArkUI';
 
 @ObservedV2
@@ -797,20 +894,31 @@ struct Index {
   build() {
     Column() {
       Text(`Source ${this.source.source} and message ${this.message}`)
+        .fontSize(20)
+        .margin(10)
       Button('+1')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           this.source.source += 1;
         })
       Button('Serialize')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           this.message = JSON.stringify(this.source);
         })
       Button('Deserialize')
+        .width(300)
+        .margin(10)
         .onClick((e) => {
           // 使用JSON.parseJsonElement反序列生成JSONElement，再传入静态方法构建实例
           this.source = Source.FromJSON(JSON.parseJsonElement('{"source": 123}'));
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![ObservedV2AndTrace_6](../figures/observedv2andtrace_6.gif)

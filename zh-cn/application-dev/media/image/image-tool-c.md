@@ -1,4 +1,4 @@
-# 使用Image_NativeModule编辑图片Exif信息
+# 使用Image_NativeModule读取和编辑图片Exif信息
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
@@ -8,17 +8,43 @@
 
 Image Kit提供图片Exif信息的读取与编辑能力。
 
-Exif（Exchangeable image file format）是专门为数码相机的照片设定的文件格式，可以记录数码照片的属性信息和拍摄数据。当前支持JPEG、PNG、HEIF、WEBP<sup>23+</sup>、DNG<sup>23+</sup>格式，且需要图片包含Exif信息。
+Exif（Exchangeable image file format）是专门为数码相机的照片设定的文件格式，可以记录数码照片的属性信息和拍摄数据。需要图片包含Exif信息。
 
-在图库等应用中，需要查看或修改数码照片的Exif信息。当摄像机的手动镜头参数无法自动写入到Exif信息中，或者相机断电等原因会导致拍摄时间出错时，可手动修改错误的Exif数据。
+在图库、相机、图片编辑等应用中，开发者可以读取图片的拍摄时间、方向、焦距、地理位置等Exif信息，也可以在需要时修改部分Exif信息。例如，当摄像机的手动镜头参数无法自动写入Exif信息，或者因相机断电导致拍摄时间错误时，可手动修正对应的Exif数据。
 
-系统目前仅支持对部分Exif信息的查看和修改，具体支持的范围请参见：[变量](../../reference/apis-image-kit/capi-image-common-h.md#变量)里的OHOS_IMAGE_PROPERTY_XXX类型。需要注意的是，DNG格式图片仅支持读取Exif信息，不支持修改。
+系统目前仅支持读取和修改部分Exif信息，具体支持范围请参见[变量](../../reference/apis-image-kit/capi-image-common-h.md#变量)里的OHOS_IMAGE_PROPERTY_XXX类型。不同图片格式对Exif信息的读写支持情况如下。
+
+| 图片格式 | 读取Exif信息 | 修改Exif信息 |
+| -------- | -------- | -------- |
+| JPG/JPEG | 支持 | 支持 |
+| PNG | 支持 | 支持 |
+| HEIF | 支持 | 支持 |
+| WebP<sup>23+</sup> | 支持 | 支持 |
+| DNG<sup>23+</sup> | 支持 | 不支持 |
+
+## 接口说明
+
+Exif信息的读取与编辑相关C API如下，详细介绍请参考[image_source_native.h](../../reference/apis-image-kit/capi-image-source-native-h.md)。
+
+| 接口 | 说明 |
+| -------- | -------- |
+| [OH_ImageSourceNative_GetImageProperty()](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_getimageproperty) | 获取指定属性键的Exif信息。 |
+| [OH_ImageSourceNative_ModifyImageProperty()](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_modifyimageproperty) | 修改指定属性键的Exif信息。 |
+
+## 注意事项
+
+- 需要先创建OH_ImageSourceNative对象，再读取或编辑Exif信息。
+- 读取图片Exif信息前，需要确保应用对目标图片具有读取权限；修改图片Exif信息前，需要确保应用对目标图片具有写入权限。
+- 在部分图片来源或访问场景下，即使应用具有图片读取权限，系统也可能对GPS等隐私信息进行去隐私化处理，此时无法获取对应的Exif信息。
+- 图片文件需要包含Exif信息。对于没有Exif信息或不包含目标属性键的图片，读取结果可能为空或返回错误码。
+- 修改Exif信息前，需要确认图片格式和目标属性键支持写入。
+- 图片元数据可能包含拍摄位置等隐私信息，应用展示、上传或共享前应结合业务场景做好用户授权和隐私保护。
 
 ## 开发步骤
 
 ### 添加链接库
 
-在进行应用开发之前，开发者需要打开native工程的src/main/cpp/CMakeLists.txt，在target_link_libraries依赖中添加libimage_source.so 以及日志依赖libhilog_ndk.z.so。
+在进行应用开发之前，开发者需要打开Native工程的src/main/cpp/CMakeLists.txt，在target_link_libraries依赖中添加libimage_source.so以及日志依赖libhilog_ndk.z.so。
 
 ```txt
 target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
@@ -26,15 +52,13 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
 
 ### Native接口调用
 
-Exif信息的读取与编辑相关C API接口的详细介绍请参见[OH_ImageSourceNative_GetImageProperty()](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_getimageproperty)和[OH_ImageSourceNative_ModifyImageProperty()](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_modifyimageproperty)。
-
-在Deveco Studio新建Native C++应用，默认生成的项目中包含index.ets文件，在entry\src\main\cpp目录下会自动生成一个cpp文件（hello.cpp或napi_init.cpp，本示例以hello.cpp文件名为例）。在hello.cpp中实现C API接口调用逻辑，示例代码如下：
+在DevEco Studio中新建Native C++应用，默认生成的项目中包含index.ets文件，在entry/src/main/cpp目录下会自动生成一个cpp文件（hello.cpp或napi_init.cpp，本示例以hello.cpp文件名为例）。在hello.cpp中实现C API接口调用逻辑，示例代码如下：
 
 **读取和编辑图片Exif信息接口使用示例**
 
 > **说明：**
 >
-> 部分接口在API version 20以后才支持，需要开发者在进行开发时选择合适的API版本。
+> 部分接口从API version 20开始支持，需要开发者在进行开发时选择合适的API版本。
 
 1. 导入相关头文件。
 
@@ -103,7 +127,7 @@ Exif信息的读取与编辑相关C API接口的详细介绍请参见[OH_ImageSo
    >
    > 创建ImageSource对象可参考[图片解码](../image/image-source-c.md)。
 
-   <!-- @[editExif_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
+   <!-- @[editExif_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->      
    
    ``` C++
    // 获取指定property的value值。
@@ -123,12 +147,16 @@ Exif信息的读取与编辑相关C API接口的详细介绍请参见[OH_ImageSo
        Image_String getKey;
        getKey.data = key;
        getKey.size = keySize;
-       Image_String getValue;
+       Image_String getValue = {nullptr, 0};
        OH_LOG_INFO(LOG_APP, "OH_ImageSourceNative_GetImageProperty key: %{public}s.", getKey.data);
        Image_ErrorCode errCode = OH_ImageSourceNative_GetImagePropertyWithNull(g_thisImageSource->source,
                                                                                &getKey, &getValue);
        if (errCode != IMAGE_SUCCESS) {
            OH_LOG_ERROR(LOG_APP, "OH_ImageSourceNative_GetImageProperty failed, errCode: %{public}d.", errCode);
+           if (getValue.data != nullptr) {
+               free(getValue.data);
+               getValue.data = nullptr;
+           }
            return GetJsResult(env, errCode);
        }
        napi_value resultNapi = nullptr;

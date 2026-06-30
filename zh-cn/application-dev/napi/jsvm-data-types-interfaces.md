@@ -173,6 +173,14 @@ typedef enum {
     JSVM_COMPILE_COMPILE_PROFILE,
     /** switch for source map support. */
     JSVM_COMPILE_ENABLE_SOURCE_MAP,
+    /** background deserialize code cache result.
+     * @since 24
+     */
+    JSVM_COMPILE_BACKGROUND_DESERIALIZE_RESULT,
+    /** whether the code cache is rejected.
+     * @since 24
+     */
+    JSVM_COMPILE_CODE_CACHE_REJECTED,
 } JSVM_CompileOptionId;
 ```
 
@@ -237,7 +245,6 @@ typedef struct {
 } JSVM_ScriptOrigin;
 ```
 
-### JSVM
 ### 内存管理类型
 
 JSVM-API 包含以下内存管理类型：
@@ -627,7 +634,7 @@ static void RunScriptWithOption(JSVM_Env env, string& src,
     OH_JSVM_CreateStringUtf8(env, src.c_str(), src.size(), &jsSrc);
 
     uint8_t* data = dataPtr ? *dataPtr : nullptr;
-    auto compilMode = data ? JSVM_COMPILE_MODE_CONSUME_CODE_CACHE :  JSVM_COMPILE_MODE_DEFAULT;
+    auto compileMode = data ? JSVM_COMPILE_MODE_CONSUME_CODE_CACHE :  JSVM_COMPILE_MODE_DEFAULT;
     size_t length = lengthPtr ? *lengthPtr : 0;
     JSVM_Script script;
     // 编译js代码
@@ -643,7 +650,7 @@ static void RunScriptWithOption(JSVM_Env env, string& src,
     JSVM_CompileOptions option[3];
     option[0] = {
         .id = JSVM_COMPILE_MODE,
-        .content = { .num = compilMode }
+        .content = { .num = compileMode }
     };
     JSVM_CodeCache codeCache = {
         .cache = data,
@@ -2543,3 +2550,16 @@ static napi_value GetInstanceData(napi_env env1, napi_callback_info info)
 场景示例：
 
 [使用JSVM-API接口进行任务队列相关开发](use-jsvm-execute_tasks.md)
+
+### 后台反序列化
+
+**场景介绍**
+
+后台反序列化允许在后台线程中异步反序列化代码缓存，通过减少同步反序列化时间提升应用启动性能。
+
+**接口说明**
+
+| 接口 | 功能说明 |
+| -------- | -------- |
+| OH_JSVM_BackgroundDeserialize | 在线程池中反序列化 *JSVM_CodeCache*，通过 *OH_JSVM_ReleaseDeserializeResult* 接口释放 *JSVM_DeserializeResult*。 |
+| OH_JSVM_ReleaseDeserializeResult | 当 *JSVM_DeserializeResult* 不再被使用时进行释放。|

@@ -1,7 +1,7 @@
 # 通过自绘制接入无障碍
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zhanghangkai10241-->
+<!--Owner: @wangyinhua-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -37,6 +37,7 @@
 
 2. 获得无障碍接入provider并注册回调函数（以多实例场景为例）。
 
+   ArkTS-Dyn示例：
    <!-- @[abilitycap_one_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
    ``` C++
@@ -90,6 +91,54 @@
    // ...
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[abilitycap_one_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   
+   ``` C++
+   #include <arkui/native_interface_accessibility.h>
+   #include <string>
+   #include <hilog/log.h>
+   #include "AccessibilityManager.h"
+   #include "fakenode/fake_node.h"
+   // ...
+   void InitAccessibilityCallbacks()
+   {
+       g_callbacksWithInstance.findAccessibilityNodeInfosById = FindAccessibilityNodeInfosById;
+       g_callbacksWithInstance.findAccessibilityNodeInfosByText = FindAccessibilityNodeInfosByText;
+       g_callbacksWithInstance.findFocusedAccessibilityNode = FindFocusedAccessibilityNode;
+       g_callbacksWithInstance.findNextFocusAccessibilityNode = FindNextFocusAccessibilityNode;
+       g_callbacksWithInstance.executeAccessibilityAction = ExecuteAccessibilityAction;
+       g_callbacksWithInstance.clearFocusedFocusAccessibilityNode = ClearFocusedFocusAccessibilityNode;
+       g_callbacksWithInstance.getAccessibilityNodeCursorPosition = GetAccessibilityNodeCursorPosition;
+   }
+   
+   bool RegisterAccessibilityProvider(ArkUI_NodeHandle node, const std::string &id)
+   {
+       InitAccessibilityCallbacks();
+   
+       ArkUI_AccessibilityProvider *provider = nullptr;
+       int32_t ret = OH_ArkUI_NativeModule_GetNativeAccessibilityProvider(&node, &provider);
+       if (ret != 0 || provider == nullptr) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
+                        "GetNativeAccessibilityProvider failed, ret=%{public}d", ret);
+           return false;
+       }
+   
+       ret = OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance(
+           id.c_str(), provider, &g_callbacksWithInstance);
+       if (ret != 0) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
+                        "RegisterCallbackWithInstance failed, ret=%{public}d", ret);
+           return false;
+       }
+   
+       g_provider = provider;
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
+                    "RegisterAccessibilityProvider success, id=%{public}s", id.c_str());
+       return true;
+   }
+   ```
+
 3. 三方框架需要实现如下回调函数。
 
 - 基于指定的节点，查询所需的节点信息
@@ -101,6 +150,7 @@
   > - 根节点的属性中的[enabled](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityelementinfosetenabled)须设置为true。如果设置为false，根节点被禁用，无障碍系统会认为整个控件树都不可交互，从而忽略所有子节点的查询和操作。根节点作为整个控件树的入口，必须处于可用状态，才能保证无障碍服务正常工作。
   > - 根节点的属性中的[visible](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityelementinfosetvisible)须设置为true。无障碍系统只对可见的节点进行遍历和交互。如果设置为false，根节点不可见，整个控件树都会被无障碍服务忽略，导致三方框架的无障碍能力完全失效。确保用户在使用无障碍功能时，能感知到三方框架渲染的所有界面元素。
 
+   ArkTS-Dyn示例：
    <!-- @[abilitycap_two_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
    ``` C++
@@ -241,13 +291,125 @@
                             "FindAccessibilityNodeInfosById child2 count: %{public}ld", objects.size());
            }
        }
-       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "FindAccessibilityNodeInfosById end");
-       return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "FindAccessibilityNodeInfosById end");
+        return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+    }
+    ```
+
+   ArkTS-Sta示例：
+   <!-- @[abilitycap_two_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   
+   ``` C++
+   int32_t FindAccessibilityNodeInfosById(const char *instanceId, int64_t elementId,
+       ArkUI_AccessibilitySearchMode mode, int32_t requestId, ArkUI_AccessibilityElementInfoList *elementList)
+   {
+       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
+                    "FindAccessibilityNodeInfosById start, instanceId %{public}s elementId: %{public}ld",
+                    instanceId, elementId);
+       if (elementList == nullptr) {
+           return ARKUI_ACCESSIBILITY_NATIVE_RESULT_BAD_PARAMETER;
+       }
+       const int64_t parentOfRoot = -2100000;
+       if (elementId == -1) {
+           elementId = 0;
+       }
+   
+       if (mode == ARKUI_ACCESSIBILITY_NATIVE_SEARCH_MODE_PREFETCH_RECURSIVE_CHILDREN) {
+           auto rootNode = OH_ArkUI_AddAndGetAccessibilityElementInfo(elementList);
+           if (!rootNode) {
+               return ARKUI_ACCESSIBILITY_NATIVE_RESULT_FAILED;
+           }
+           OH_ArkUI_AccessibilityElementInfoSetElementId(rootNode, 0);
+           OH_ArkUI_AccessibilityElementInfoSetParentId(rootNode, parentOfRoot);
+           FakeWidget::Instance().fillAccessibilityElement(rootNode);
+   
+           ArkUI_AccessibleRect rect;
+           rect.leftTopX = ACC_NUMBER_ZERO;
+           rect.leftTopY = ACC_NUMBER_ZERO;
+           rect.rightBottomX = ACC_NUMBER_THIRD;
+           rect.rightBottomY = ACC_NUMBER_THIRD;
+           OH_ArkUI_AccessibilityElementInfoSetScreenRect(rootNode, &rect);
+           OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(rootNode, "no");
+   
+           auto objects = FakeWidget::Instance().GetAllObjects(instanceId);
+           int64_t childNodes[1024];
+           for (int i = 0; i < objects.size(); i++) {
+               int64_t childElementId = i + 1;
+               childNodes[i] = childElementId;
+               auto child = OH_ArkUI_AddAndGetAccessibilityElementInfo(elementList);
+               OH_ArkUI_AccessibilityElementInfoSetElementId(child, childElementId);
+               OH_ArkUI_AccessibilityElementInfoSetParentId(child, 0);
+               OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(child, "yes");
+               objects[i]->fillAccessibilityElement(child);
+   
+               ArkUI_AccessibleRect childRect;
+               childRect.leftTopX = i * ACC_NUMBER_FIRST;
+               childRect.leftTopY = ACC_NUMBER_FIRST;
+               childRect.rightBottomX = i * ACC_NUMBER_FIRST + ACC_NUMBER_FIRST;
+               childRect.rightBottomY = ACC_NUMBER_SECOND;
+               OH_ArkUI_AccessibilityElementInfoSetScreenRect(child, &childRect);
+           }
+           OH_ArkUI_AccessibilityElementInfoSetChildNodeIds(rootNode, objects.size(), childNodes);
+       } else if (mode == ARKUI_ACCESSIBILITY_NATIVE_SEARCH_MODE_PREFETCH_CURRENT) {
+           auto &widget = FakeWidget::Instance();
+           AccessibleObject *obj = nullptr;
+           if (elementId == 0) {
+               obj = &widget;
+           } else {
+               obj = widget.GetChild(elementId);
+           }
+           if (!obj) {
+               return ARKUI_ACCESSIBILITY_NATIVE_RESULT_FAILED;
+           }
+           auto node = OH_ArkUI_AddAndGetAccessibilityElementInfo(elementList);
+           OH_ArkUI_AccessibilityElementInfoSetElementId(node, elementId);
+           OH_ArkUI_AccessibilityElementInfoSetParentId(node, elementId == 0 ? parentOfRoot : 0);
+           OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(node, elementId == 0 ? "no" : "yes");
+           obj->fillAccessibilityElement(node);
+   
+           ArkUI_AccessibleRect nodeRect;
+           if (elementId == 0) {
+               nodeRect.leftTopX = ACC_NUMBER_ZERO;
+               nodeRect.leftTopY = ACC_NUMBER_ZERO;
+               nodeRect.rightBottomX = ACC_NUMBER_THIRD;
+               nodeRect.rightBottomY = ACC_NUMBER_THIRD;
+           } else {
+               int i = elementId - 1;
+               nodeRect.leftTopX = i * ACC_NUMBER_FIRST;
+               nodeRect.leftTopY = ACC_NUMBER_FIRST;
+               nodeRect.rightBottomX = i * ACC_NUMBER_FIRST + ACC_NUMBER_FIRST;
+               nodeRect.rightBottomY = ACC_NUMBER_SECOND;
+           }
+           OH_ArkUI_AccessibilityElementInfoSetScreenRect(node, &nodeRect);
+   
+           if (elementId == 0) {
+               auto objects = FakeWidget::Instance().GetAllObjects(instanceId);
+               int64_t childNodes[1024];
+               for (int i = 0; i < objects.size(); i++) {
+                   int64_t childElementId = i + 1;
+                   childNodes[i] = childElementId;
+                   auto child = OH_ArkUI_AddAndGetAccessibilityElementInfo(elementList);
+                   OH_ArkUI_AccessibilityElementInfoSetElementId(child, childElementId);
+                   OH_ArkUI_AccessibilityElementInfoSetParentId(child, 0);
+                   objects[i]->fillAccessibilityElement(child);
+   
+                   ArkUI_AccessibleRect childRect;
+                   childRect.leftTopX = i * ACC_NUMBER_FIRST;
+                   childRect.leftTopY = ACC_NUMBER_ZERO;
+                   childRect.rightBottomX = i * ACC_NUMBER_FIRST + ACC_NUMBER_FIRST;
+                   childRect.rightBottomY = ACC_NUMBER_SECOND;
+                   OH_ArkUI_AccessibilityElementInfoSetScreenRect(child, &childRect);
+               }
+               OH_ArkUI_AccessibilityElementInfoSetChildNodeIds(node, objects.size(), childNodes);
+           }
+       }
+       return ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL;
    }
    ```
 
 - 基于指定的节点，查询下一个可聚焦的无障碍节点
 
+   ArkTS-Dyn示例：
    <!-- @[abilitycap_three_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
    ``` C++
@@ -300,13 +462,51 @@
        OH_ArkUI_AccessibilityElementInfoSetScreenRect(elementInfo, &rect);
        auto eventInfo = OH_ArkUI_CreateAccessibilityEventInfo();
        OH_ArkUI_AccessibilityEventSetRequestFocusId(eventInfo, requestId);
-       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "%{public}ld", nextElementId);
-       return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "%{public}ld", nextElementId);
+        return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+    }
+    ```
+
+   ArkTS-Sta示例：
+   <!-- @[abilitycap_three_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   
+   ``` C++
+   int32_t FindNextFocusAccessibilityNode(const char *instanceId, int64_t elementId,
+       ArkUI_AccessibilityFocusMoveDirection direction, int32_t requestId,
+       ArkUI_AccessibilityElementInfo *elementInfo)
+   {
+       auto objects = FakeWidget::Instance().GetAllObjects(instanceId);
+       if ((elementId < 0) || (elementId > objects.size())) {
+           return ARKUI_ACCESSIBILITY_NATIVE_RESULT_FAILED;
+       }
+       int64_t nextElementId = -1;
+       if (direction == ARKUI_ACCESSIBILITY_NATIVE_DIRECTION_FORWARD) {
+           nextElementId = elementId + 1;
+       } else {
+           nextElementId = elementId - 1;
+       }
+       if ((nextElementId == -1) && (direction == ARKUI_ACCESSIBILITY_NATIVE_DIRECTION_BACKWARD)) {
+           nextElementId = objects.size();
+       }
+       if (nextElementId > objects.size() || nextElementId <= 0) {
+           return ARKUI_ACCESSIBILITY_NATIVE_RESULT_FAILED;
+       }
+       OH_ArkUI_AccessibilityElementInfoSetElementId(elementInfo, nextElementId);
+       OH_ArkUI_AccessibilityElementInfoSetParentId(elementInfo, 0);
+       objects[nextElementId - 1]->fillAccessibilityElement(elementInfo);
+       ArkUI_AccessibleRect rect;
+       rect.leftTopX = nextElementId * ACC_NUMBER_FIRST;
+       rect.leftTopY = ACC_NUMBER_ZERO;
+       rect.rightBottomX = nextElementId * ACC_NUMBER_FIRST + ACC_NUMBER_FIRST;
+       rect.rightBottomY = ACC_NUMBER_SECOND;
+       OH_ArkUI_AccessibilityElementInfoSetScreenRect(elementInfo, &rect);
+       return ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL;
    }
    ```
 
 - 基于指定的节点，查询满足指定组件文本内容的节点信息
 
+   ArkTS-Dyn示例：
    <!-- @[abilitycap_four_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
    ``` C++
@@ -317,13 +517,25 @@
        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
                     "FindAccessibilityNodeInfosByText start,instanceId %{public}s elementId: %{public}ld, "
                     "requestId: %{public}d, text: %{public}s.", instanceId,
-                    elementId, requestId, text);
-       return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+                     elementId, requestId, text);
+        return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+    }
+    ```
+
+   ArkTS-Sta示例：
+   <!-- @[abilitycap_four_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   
+   ``` C++
+   int32_t FindAccessibilityNodeInfosByText(const char *instanceId, int64_t elementId,
+       const char *text, int32_t requestId, ArkUI_AccessibilityElementInfoList *elementList)
+   {
+       return ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL;
    }
    ```
 
 - 基于指定的节点，查询已经聚焦的节点信息
 
+   ArkTS-Dyn示例：
    <!-- @[abilitycap_five_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
    ``` C++
@@ -334,13 +546,25 @@
        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
                     "FindFocusedAccessibilityNode start instanceId %{public}s, "
                     "elementId: %{public}ld, requestId: %{public}d, focusType: %{public}d",
-                    instanceId, elementId, requestId, static_cast<int32_t>(focusType));
-       return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+                     instanceId, elementId, requestId, static_cast<int32_t>(focusType));
+        return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+    }
+    ```
+
+   ArkTS-Sta示例：
+   <!-- @[abilitycap_five_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   
+   ``` C++
+   int32_t FindFocusedAccessibilityNode(const char *instanceId, int64_t elementId,
+       ArkUI_AccessibilityFocusType focusType, int32_t requestId, ArkUI_AccessibilityElementInfo *elementInfo)
+   {
+       return ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL;
    }
    ```
 
 - 基于指定的节点，执行指定的操作
 
+   ArkTS-Dyn示例：
    <!-- @[abilitycap_six_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
    ``` C++
@@ -437,13 +661,85 @@
                // 处理不支持的action行为。
                break;
        }
+        OH_ArkUI_DestoryAccessibilityElementInfo(element);
+        return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+    }
+    ```
+
+   ArkTS-Sta示例：
+   <!-- @[abilitycap_six_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   
+   ``` C++
+   void FillEvent(ArkUI_AccessibilityEventInfo *eventInfo, ArkUI_AccessibilityElementInfo *elementInfo,
+                  ArkUI_AccessibilityEventType eventType, std::string announcedText)
+   {
+       if (eventInfo == nullptr || elementInfo == nullptr) {
+           return;
+       }
+       OH_ArkUI_AccessibilityEventSetEventType(eventInfo, eventType);
+       OH_ArkUI_AccessibilityEventSetElementInfo(eventInfo, elementInfo);
+       if (eventType == ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ANNOUNCE_FOR_ACCESSIBILITY && announcedText.size() > 0) {
+           OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(eventInfo, announcedText.data());
+       }
+   }
+   
+   void SendAccessibilityAsyncEvent(ArkUI_AccessibilityElementInfo *elementInfo,
+                                    ArkUI_AccessibilityEventType eventType,
+                                    std::string announcedText)
+   {
+       auto eventInfo = OH_ArkUI_CreateAccessibilityEventInfo();
+       FillEvent(eventInfo, elementInfo, eventType, announcedText);
+       auto callback = [](int32_t errorCode) {
+           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT, "result: %{public}d", errorCode);
+       };
+       OH_ArkUI_SendAccessibilityAsyncEvent(g_provider, eventInfo, callback);
+   }
+   // ...
+   int32_t ExecuteAccessibilityAction(const char *instanceId, int64_t elementId,
+       ArkUI_Accessibility_ActionType action, ArkUI_AccessibilityActionArguments *actionArguments, int32_t requestId)
+   {
+       auto object = FakeWidget::Instance().GetChild(elementId);
+       if (!object) {
+           return ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL;
+       }
+       auto announcedText = object->GetAnnouncedForAccessibility();
+       auto element = OH_ArkUI_CreateAccessibilityElementInfo();
+       OH_ArkUI_AccessibilityElementInfoSetElementId(element, elementId);
+       switch (action) {
+           case ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLICK:
+               if (object) {
+                   object->OnClick();
+                   object->fillAccessibilityElement(element);
+               }
+               SendAccessibilityAsyncEvent(element, ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_CLICKED, announcedText);
+               break;
+           case ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_GAIN_ACCESSIBILITY_FOCUS:
+               if (object) {
+                   object->SetFocus(true);
+                   object->fillAccessibilityElement(element);
+               }
+               SendAccessibilityAsyncEvent(element, ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ACCESSIBILITY_FOCUSED,
+                                           announcedText);
+               break;
+           case ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CLEAR_ACCESSIBILITY_FOCUS:
+               if (object) {
+                   object->SetFocus(false);
+                   object->fillAccessibilityElement(element);
+               }
+               SendAccessibilityAsyncEvent(element, ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ACCESSIBILITY_FOCUS_CLEARED,
+                                           announcedText);
+               break;
+           default:
+               break;
+       }
        OH_ArkUI_DestoryAccessibilityElementInfo(element);
-       return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+       return ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL;
    }
    ```
 
 -  清除当前获焦的节点
 
+   ArkTS-Dyn示例：
    <!-- @[abilitycap_seven_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
    ``` C++
@@ -451,13 +747,24 @@
    {
        // 三方框架需要实现清除当前获焦的节点的行为。
        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
-                    "ClearFocusedFocusAccessibilityNode, instanceId %{public}s", instanceId);
-       return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+                     "ClearFocusedFocusAccessibilityNode, instanceId %{public}s", instanceId);
+        return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+    }
+    ```
+
+   ArkTS-Sta示例：
+   <!-- @[abilitycap_seven_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   
+   ``` C++
+   int32_t ClearFocusedFocusAccessibilityNode(const char *instanceId)
+   {
+       return ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL;
    }
    ```
 
 -  基于指定的节点，获取当前文本组件的光标位置
 
+   ArkTS-Dyn示例：
    <!-- @[abilitycap_eight_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
    ``` C++
@@ -468,18 +775,29 @@
        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, LOG_PRINT_TEXT,
                     "GetAccessibilityNodeCursorPosition, instanceId %{public}s "
                     "elementId: %{public}ld, requestId: %{public}d, index: %{public}d",
-                    instanceId, elementId, requestId, index);
-       return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+                     instanceId, elementId, requestId, index);
+        return OH_NATIVEXCOMPONENT_RESULT_SUCCESS;
+    }
+    ```
+
+   ArkTS-Sta示例：
+   <!-- @[abilitycap_eight_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
+   
+   ``` C++
+   int32_t GetAccessibilityNodeCursorPosition(const char *instanceId, int64_t elementId,
+       int32_t requestId, int32_t *index)
+   {
+       return ARKUI_ACCESSIBILITY_NATIVE_RESULT_SUCCESSFUL;
    }
    ```
 
-4. provider通过回调函数[OH_ArkUI_AccessibilityProviderRegisterCallback](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallback)或者[OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallbackwithinstance)对接成功后，可开启无障碍功能。
+provider通过回调函数[OH_ArkUI_AccessibilityProviderRegisterCallback](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallback)或者[OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallbackwithinstance)对接成功后，可开启无障碍功能。
 
 ## 基于CustomNode的自绘制接入方式
 
 > **说明：**
 >
-> - 基于CustomNode的自定义绘制容器组件，仅支持类型为[ARKUI_NODE_CUSTOM](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype)且无其他子节点的[native组件](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)。绘制容器组件的宽和高不能为0，避免被无障碍辅助应用忽略或错误处理子节点树。
+> - 基于CustomNode的自定义绘制容器组件，仅支持类型为[ARKUI_NODE_CUSTOM](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype)且无其他子节点的[ArkUI_Node](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)。绘制容器组件的宽和高不能为0，避免被无障碍辅助应用忽略或错误处理子节点树。
 
 以下示例提供了对接无障碍能力的实现方法，仅包含主要步骤，完整示例请参考[AccessibilityCustomCapi](https://gitcode.com/openharmony/applications_app_samples/pull/8450)。回调函数实现请参考[基于Xcomponent的自绘制接入方式](#基于xcomponent的自绘制接入方式)。完成回调函数实现后，开启无障碍功能，基于CustomNode构建渲染节点树的三方框架即可接入无障碍服务，实现控件树的无障碍交互与信息查询。
 

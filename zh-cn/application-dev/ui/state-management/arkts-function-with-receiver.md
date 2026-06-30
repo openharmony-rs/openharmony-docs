@@ -1,4 +1,10 @@
 # Function-with-Receiver：定义扩展组件样式（ArkTS-ST）
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zhangboren-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 在前文的示例中，可以使用[applyStyles](arkts-apply-styles.md)用于样式的重用，在applyStyles的基础上，我们提供了Function-with-Receiver，用于扩展原生组件样式。
 
@@ -12,9 +18,9 @@
 
 ### 语法
 
-如果是拓展Text组件样式，用户声明Function-with-Reciever函数的第一个入参需要名称为this，类型是TextAttribute。
+如果是拓展[Text](../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)组件样式，用户声明Function-with-Receiver函数的第一个入参需要名称为this，类型是TextAttribute。
 
-```ts
+``` TypeScript
 function functionName(this: TextAttribute, ...): TextAttribute { ... }
 ```
 
@@ -22,7 +28,7 @@ function functionName(this: TextAttribute, ...): TextAttribute { ... }
 
 - 和applyStyles不同，Function-with-Receiver支持封装指定组件的私有属性、私有事件和自身定义的全局方法。
 
-  ```ts
+  ``` TypeScript
   // Function-with-Receiver可以支持Text的私有属性fontColor
   function fancy(this: TextAttribute): TextAttribute {
     this.fontColor(Color.Red);
@@ -38,108 +44,122 @@ function functionName(this: TextAttribute, ...): TextAttribute { ... }
 
 - 和applyStyles不同，Function-with-Receiver方法支持参数，开发者可以在调用时传递参数，调用遵循TS方法传值调用。
 
-  ```ts
-  'use static'
-
+  <!-- @[ReceiverParam](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FunctionWithReceiver/entry/src/main/ets/pages/ReceiverParam.ets) --> 
+  
+  ``` TypeScript
   import { Color, Component, Entry, Row, Text, TextAttribute } from '@kit.ArkUI';
-
+  
   function fancy(this: TextAttribute, fontSize: number): TextAttribute {
     this.fontColor(Color.Red);
     this.fontSize(fontSize);
     return this;
   }
-
+  
   @Entry
   @Component
   struct FancyUse {
     build() {
       Row() {
         Text('Fancy')
+          .margin(10)
           .fancy(16)
         Text('Fancy')
+          .margin(10)
           .fancy(24)
       }
+      .height('100%')
     }
   }
   ```
 
+![function-with-receiver-0](./figures/function-with-receiver-0.png)
+
 - Function-with-Receiver的返回值声明为this，可以用于链式调用。
 
-  ```ts
-  'use static'
-
+  <!-- @[ReceiverChain](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FunctionWithReceiver/entry/src/main/ets/pages/ReceiverChain.ets) --> 
+  
+  ``` TypeScript
   import { Color, Component, Entry, Row, Text, TextAttribute } from '@kit.ArkUI';
-
+  
   function fancySize(this: TextAttribute, fontSize: number): TextAttribute {
     this.fontSize(fontSize);
     return this;
   }
-
+  
   function fancyColor(this: TextAttribute): TextAttribute {
     this.fontColor(Color.Red);
     return this;
   }
-
+  
   @Entry
   @Component
   struct FancyUse {
     build() {
       Row() {
         Text('Fancy')
+          .margin(10)
           .fancySize(16)
           .fancyColor() // 链式调用Function-with-Receiver
           .onClick((e) => { }) // 链式调用Text组件其他方法
       }
+      .height('100%')
     }
   }
   ```
 
+![function-with-receiver-1](./figures/function-with-receiver-1.png)
+
 - Function-with-Receiver方法的参数可以为function，作为Event事件的句柄。
 
-  ```ts
-  'use static'
+  <!-- @[ReceiverEvent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FunctionWithReceiver/entry/src/main/ets/pages/ReceiverEvent.ets) --> 
   
+  ``` TypeScript
   import { ClickEvent, Color, Component, Entry, Row, Text, TextAttribute, State } from '@kit.ArkUI';
-
+  
   function makeMeClick(this: TextAttribute, onClick: (e: ClickEvent) => void): TextAttribute {
-    this.backgroundColor(Color.Blue);
+    this.backgroundColor(Color.Pink);
     this.onClick(onClick);
     return this;
   }
-
+  
   @Entry
   @Component
   struct FancyUse {
     @State label: string = 'Hello World';
-
+  
     onClickHandler() {
       this.label = 'Hello ArkUI';
     }
-
+  
     build() {
       Row() {
         Text(`${this.label}`)
-          .makeMeClick((e: ClickEvent) => { 
+          .fontSize(20)
+          .margin(10)
+          .makeMeClick((e: ClickEvent) => {
             this.onClickHandler();
           })
       }
+      .height('100%')
     }
   }
   ```
 
+![function-with-receiver-2](./figures/function-with-receiver-2.gif)
+
 - Function-with-Receiver的参数可以为[状态变量](arkts-state-management-overview.md)，当状态变量改变时，UI可以正常的被刷新渲染。
 
-  ```ts
-  'use static'
-
+  <!-- @[ReceiverState](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FunctionWithReceiver/entry/src/main/ets/pages/ReceiverState.ets) --> 
+  
+  ``` TypeScript
   import { ClickEvent, Color, Component, Entry, Row, Text, TextAttribute, State } from '@kit.ArkUI';
-
+  
   function fancy(this: TextAttribute, fontSize: number): TextAttribute {
     this.fontColor(Color.Red);
     this.fontSize(fontSize);
     return this;
   }
-
+  
   @Entry
   @Component
   struct FancyUse {
@@ -147,15 +167,18 @@ function functionName(this: TextAttribute, ...): TextAttribute { ... }
     build() {
       Row() {
         Text('Fancy')
+          .margin(10)
           .fancy(this.fontSizeValue)
           .onClick((e: ClickEvent) => {
             this.fontSizeValue = 30;
           })
       }
+      .height('100%')
     }
   }
   ```
 
+![function-with-receiver-3](./figures/function-with-receiver-3.gif)
 
 ## 限制条件
 
@@ -168,12 +191,12 @@ function functionName(this: TextAttribute, ...): TextAttribute { ... }
 
 ## 使用场景
 
-以下示例声明了3个Text组件，每个Text组件均设置了fontStyle、fontWeight和backgroundColor样式。
+以下示例声明了3个Text组件，每个Text组件均设置了[fontStyle](../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontstyle)、[fontWeight](../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontweight23)和[backgroundColor](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor20)样式。
 
 
-```ts
-'use static'
+<!-- @[ReceiverScenarioBefore](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FunctionWithReceiver/entry/src/main/ets/pages/ReceiverScenarioBefore.ets) --> 
 
+``` TypeScript
 import { Color, Component, Entry, FontStyle, Row, Text } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 
@@ -187,26 +210,33 @@ struct FancyUse {
       Text(`${this.label}`)
         .fontStyle(FontStyle.Italic)
         .fontWeight(100)
-        .backgroundColor(Color.Blue)
+        .backgroundColor(Color.Grey)
+        .fontSize(20)
       Text(`${this.label}`)
         .fontStyle(FontStyle.Italic)
         .fontWeight(200)
         .backgroundColor(Color.Pink)
+        .fontSize(20)
       Text(`${this.label}`)
         .fontStyle(FontStyle.Italic)
         .fontWeight(300)
         .backgroundColor(Color.Orange)
-    }.margin('20%')
+        .fontSize(20)
+    }
+    .margin('5%')
+    .height('100%')
   }
 }
 ```
 
+![function-with-receiver-4](./figures/function-with-receiver-4.png)
+
 Function-with-Receiver将样式组合复用，使得代码更加简洁，增强可读性，示例如下。
 
 
-```ts
-'use static'
+<!-- @[ReceiverScenarioAfter](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FunctionWithReceiver/entry/src/main/ets/pages/ReceiverScenarioAfter.ets) --> 
 
+``` TypeScript
 import { Color, Component, FontStyle, Entry, Row, Text, TextAttribute, State } from '@kit.ArkUI';
 
 function fancyText(this: TextAttribute, weightValue: int, color: Color): TextAttribute {
@@ -224,12 +254,19 @@ struct FancyUse {
   build() {
     Row() {
       Text(`${this.label}`)
-        .fancyText(100, Color.Blue)
+        .margin(10)
+        .fancyText(100, Color.Grey)
       Text(`${this.label}`)
+        .margin(10)
         .fancyText(200, Color.Pink)
       Text(`${this.label}`)
+        .margin(10)
         .fancyText(300, Color.Orange)
-    }.margin('20%')
+    }
+    .margin('5%')
+    .height('100%')
   }
 }
 ```
+
+![function-with-receiver-5](./figures/function-with-receiver-5.png)

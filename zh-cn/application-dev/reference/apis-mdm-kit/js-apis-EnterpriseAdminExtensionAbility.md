@@ -6,7 +6,7 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供[企业设备管理扩展能力](../../mdm/mdm-kit-term.md#企业设备管理扩展能力)。
+本模块提供[企业设备管理扩展能力](../../mdm/mdm-kit-term.md#enterpriseadminextensionability企业设备管理扩展能力)。
 
 设备管理应用需要存在一个EnterpriseAdminExtensionAbility并重写相关接口，以此具备模块提供的各项能力，比如接收由系统发送的该应用被激活或者解除激活的通知。
 
@@ -540,7 +540,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 onKeyEvent(keyEvent: systemManager.KeyEvent): void
 
-[系统按键事件](./js-apis-enterprise-systemManager.md#keyevent23)回调。MDM应用需要通过[systemManager.addKeyEventPolicies](./js-apis-enterprise-systemManager.md#systemmanageraddkeyeventpolicies23)接口下发按键事件处理策略，当系统按键事件触发时，如果事件与已下发的策略匹配，则触发该回调。回调信息[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中包含当前发生的按键事件信息。
+[按键事件](./js-apis-enterprise-systemManager.md#keyevent23)回调。MDM应用需要通过[systemManager.addKeyEventPolicies](./js-apis-enterprise-systemManager.md#systemmanageraddkeyeventpolicies23)接口下发按键事件处理策略，当系统按键事件触发时，如果事件与已下发的策略匹配，则触发该回调。回调信息[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中包含当前发生的按键事件信息。
 
 单按键事件响应。设备单按键被触发时，[onKeyEvent](#onkeyevent23)会在按下和抬起时触发两次回调事件，可由[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中keyAction属性进行判断。[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中keyItems属性在单按键事件中可忽略。
 
@@ -803,6 +803,38 @@ import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onBundleUpdated(bundleName: string, accountId: number) {
     console.info(`Succeeded in calling onBundleUpdated callback, update bundle name : ${bundleName}, accountId: ${accountId}`);
+  }
+}
+```
+
+### onAdminPolicyChanged
+
+onAdminPolicyChanged(event: common.PolicyChangedEvent): void
+
+策略变更事件回调。超级设备管理应用可以通过接口[adminManager.subscribeManagedEventSync](js-apis-enterprise-adminManager.md#adminmanagersubscribemanagedeventsync)注册MANAGED_EVENT_POLICIES_CHANGED事件后可接收此回调。企业设备管理场景下，当任意MDM应用调用[策略变更上报列表](../../mdm/mdm-kit-appendix.md#策略变更上报列表)中的接口时，系统会通知当前用户下的超级设备管理应用。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+
+**参数：**
+
+| 参数名   | 类型                                  | 必填   | 说明      |
+| ----- | ----------------------------------- | ---- | ------- |
+| event | [common.PolicyChangedEvent](./js-apis-enterprise-common.md#policychangedevent) | 是    | 策略变更事件。 |
+
+**示例：**
+
+```ts
+import { EnterpriseAdminExtensionAbility, common } from '@kit.MDMKit';
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  onAdminPolicyChanged(event: common.PolicyChangedEvent) {
+    // 例如当MDM应用调用setPasswordPolicy接口设置密码策略时，输出示例为: Policy changed, bundleName : com.example.test, functionName: setPasswordPolicy, parameters: {"policy":{"complexityRegex":"^(?=.*[a-zA-Z])(?=.*\\d).{8},$","validityPeriod":1808309786000,"additionalDescription":"至少8个字符，且包含数字和字母。"}}, time: 1776773305379.
+    console.info(`Policy changed, bundleName : ${event.bundleName}, functionName: ${event.functionName}, parameters: ${event.parameters}, time: ${event.time}.`);
   }
 }
 ```

@@ -33,8 +33,8 @@ struct WebComponent {
       // 过滤用户需要的系统菜单项
       return (
         menuItem.id.equals(TextMenuItemId.CUT) ||
-        menuItem.id.equals(TextMenuItemId.COPY) ||
-        menuItem.id.equals(TextMenuItemId.PASTE)
+          menuItem.id.equals(TextMenuItemId.COPY) ||
+          menuItem.id.equals(TextMenuItemId.PASTE)
       );
     });
     let customItem1: TextMenuItem = {
@@ -52,11 +52,9 @@ struct WebComponent {
     };
     items.push(customItem1); // 在选项列表后添加新选项
     items.unshift(customItem2); // 在选项列表前添加选项
-    items.push(customItem1);
-    items.push(customItem1);
-    items.push(customItem1);
-    items.push(customItem1);
-    items.push(customItem1);
+    for (let i = 0; i < 5; i++) {
+      items.push(customItem1); // 重复添加选项，以便支持显示更多菜单
+    }
     return items;
   }
 
@@ -129,11 +127,9 @@ struct WebComponent {
     };
     items.push(customItem1); // 在选项列表后添加新选项
     items.unshift(customItem2); // 在选项列表前添加选项
-    items.push(customItem1);
-    items.push(customItem1);
-    items.push(customItem1);
-    items.push(customItem1);
-    items.push(customItem1);
+    for (let i = 0; i < 5; i++) {
+      items.push(customItem1); // 重复添加选项，以便支持显示更多菜单
+    }
     return items;
   }
 
@@ -1607,7 +1603,7 @@ struct WebComponent {
 **示例代码**
 
 ArkTS-Dyn示例：
-<!-- @[web_BindSelectionMenu_Text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenuText.ets) --> 
+<!-- @[web_BindSelectionMenu_Text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenuText.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -1678,12 +1674,15 @@ struct WebComponent {
     }
   }
   onBackPress(): boolean | void {
-    if (this.controller.accessStep(-1)) {
-      this.controller.backward();
-      return true;
-    } else {
-      return false;
+    try {
+      if (this.controller.accessStep(-1)) {
+        this.controller.backward();
+        return true;
+      }
+    } catch (err) {
+      console.error(`onBackPress failed with error: ${err.code}, ${err.message}`);
     }
+    return false;
   }
 }
 ```

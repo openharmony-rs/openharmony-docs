@@ -2,7 +2,7 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -557,7 +557,7 @@ class DrawingRenderNode extends RenderNode {
     let point1 : common2D.Point3d = {x: 100.0, y: 80.0, z:80.0};
     let point2 : common2D.Point3d = {x: 200.0, y: 10.0, z:40.0};
     let shadowFlag : drawing.ShadowFlag = drawing.ShadowFlag.ALL;
-    canvas.drawShadow(path, point1, point2, 30.0, 0xFF0000FF, 0xFFFF0000, shadowFlag);
+    canvas.drawShadow(path, point1, point2, 30.0, (0xFF0000FF).toInt(), (0xFFFF0000).toInt(), shadowFlag);
   }
 }
 ```
@@ -828,10 +828,29 @@ class DrawingRenderNode extends RenderNode {
   pixelMap: image.PixelMap | null = null;
 
   draw(context : DrawContext) {
-    const canvas = context.canvas;
+    const width = 1000;
+    const height = 1000;
+    const bufferSize = width * height * 4;
+    const color: ArrayBuffer = new ArrayBuffer(bufferSize);
+
+    const colorData = new Uint8Array(color);
+    for (let i = 0; i < colorData.length; i += 4) {
+      colorData[i] = 255;
+      colorData[i+1] = 156;
+      colorData[i+2] = 0;
+      colorData[i+3] = 255;
+    }
+
+    let opts : image.InitializationOptions = {
+      editable: true,
+      pixelFormat: image.PixelMapFormat.BGRA_8888,
+      size: { height, width }
+    }
+
+    let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
     let options = new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST);
-    if (this.pixelMap != null) {
-      canvas.drawImage(this.pixelMap!, 0.0, 0.0, options);
+    if (pixelMap != null) {
+      canvas.drawImage(pixelMap, 0.0, 0.0, options);
     }
   }
 }
@@ -918,8 +937,27 @@ class DrawingRenderNode extends RenderNode {
     let pen = new drawing.Pen();
     canvas.attachPen(pen);
     let rect: common2D.Rect = { left: 0.0, top: 0.0, right: 200.0, bottom: 200.0 };
-    if (this.pixelMap != null) {
-      canvas.drawImageRect(this.pixelMap!, rect);
+    const width = 1000;
+    const height = 1000;
+    const bufferSize = width * height * 4;
+    const color: ArrayBuffer = new ArrayBuffer(bufferSize);
+
+    const colorData = new Uint8Array(color);
+    for (let i = 0; i < colorData.length; i += 4) {
+      colorData[i] = 255;
+      colorData[i+1] = 156;
+      colorData[i+2] = 0;
+      colorData[i+3] = 255;
+    }
+
+    let opts : image.InitializationOptions = {
+      editable: true,
+      pixelFormat: image.PixelMapFormat.RGBA_8888,
+      size: { height, width }
+    }
+    let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+    if (pixelMap != null) {
+      canvas.drawImageRect(pixelMap, rect);
     }
     canvas.detachPen();
   }
@@ -1009,10 +1047,30 @@ pixelMap: image.PixelMap | null = null;
     const canvas = context.canvas;
     let pen = new drawing.Pen();
     canvas.attachPen(pen);
+    const width = 1000;
+    const height = 1000;
+    const bufferSize = width * height * 4;
+    const color: ArrayBuffer = new ArrayBuffer(bufferSize);
+
+    const colorData = new Uint8Array(color);
+    for (let i = 0; i < colorData.length; i += 4) {
+      colorData[i] = 255;
+      colorData[i+1] = 156;
+      colorData[i+2] = 0;
+      colorData[i+3] = 255;
+    }
+
+    let opts : image.InitializationOptions = {
+      editable: true,
+      pixelFormat: image.PixelMapFormat.RGBA_8888,
+      size: { height, width }
+    }
+
+    let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
     let srcRect: common2D.Rect = { left: 0.0, top: 0.0, right: 100.0, bottom: 100.0 };
     let dstRect: common2D.Rect = { left: 100.0, top: 100.0, right: 200.0, bottom: 200.0 };
-    if (this.pixelMap != null) {
-      canvas.drawImageRectWithSrc(this.pixelMap!, srcRect, dstRect);
+    if (pixelMap != null) {
+      canvas.drawImageRectWithSrc(pixelMap, srcRect, dstRect);
     }
     canvas.detachPen();
   }
@@ -1198,7 +1256,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
     const canvas = context.canvas;
-    canvas.drawColor(0xff000a0a, drawing.BlendMode.CLEAR);
+    canvas.drawColor((0xff000a0a).toInt(), drawing.BlendMode.CLEAR);
   }
 }
 ```
@@ -1223,8 +1281,8 @@ ArkTS-Sta: drawVertices(vertexMode: VertexMode, vertexCount: int, positions: Arr
 | ----------- | -------------  | ---- | ------------------------------- |
 | vertexMode   | [VertexMode](arkts-apis-graphics-drawing-e.md#vertexmode23) | 是   | 绘制顶点的连接方式。 |
 | vertexCount   | ArkTS-Dyn: number<br/>ArkTS-Sta: int    | 是   | 顶点数组元素的数量，值为大于等于3的整数。 |
-| positions  | [Array\<common2D.Point>](js-apis-graphics-common2D.md#point12)        | 是   | 描述顶点位置的数组，不能为空，其长度必须等于vertexCount。 |
-| texs    | [Array\<common2D.Point>](js-apis-graphics-common2D.md#point12) \| null  | 是   | 描述顶点对应纹理空间坐标的数组。其可以为空，表明纹理空间失效；若不为空，其长度必须等于vertexCount。 |
+| positions  | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)>     | 是   | 描述顶点位置的数组，不能为空，其长度必须等于vertexCount。 |
+| texs    | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)> \| null  | 是   | 描述顶点对应纹理空间坐标的数组。其可以为空，表明纹理空间失效；若不为空，其长度必须等于vertexCount。 |
 | colors      | ArkTS-Dyn: Array\<number> \| null<br/>ArkTS-Sta: Array\<int> \| null | 是   | 描述顶点对应颜色的数组，用于在三角形中进行插值。其可以为空，表明颜色效果为用户所设置的默认色；若不为空其长度必须等于vertexCount。 |
 | indexCount  | ArkTS-Dyn: number<br/>ArkTS-Sta: int         | 是   | 索引的数量。其值可以为0，且indices数组长度为0时可以画图；若不为0，则值必须为大于等于3的整数。|
 | indices  | ArkTS-Dyn: Array\<number> \| null<br/>ArkTS-Sta: Array\<int> \| null         | 是   | 描述顶点对应索引的数组。其可以为空，此时将忽略indexCount的合理传值（大于等于3的整数或等于0）；若不为空其长度必须等于indexCount。 |
@@ -1240,6 +1298,7 @@ ArkTS-Sta: drawVertices(vertexMode: VertexMode, vertexCount: int, positions: Arr
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
@@ -1262,6 +1321,35 @@ class DrawingRenderNode extends RenderNode {
     texsArray.push(texs2);
     texsArray.push(texs3);
     const colors = [0xFFFF0000, 0xFF00FF00, 0xFF0000FF];
+    const indices = [0, 1, 2];
+    canvas.drawVertices(drawing.VertexMode.TRIANGLESSTRIP_VERTEXMODE, 3, pointsArray, texsArray, colors, 3, indices,drawing.BlendMode.SRC);
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext): void {
+    const canvas = context.canvas;
+    let pointsArray = new Array<common2D.Point>();
+    const point1: common2D.Point = { x: 100.0, y: 100.0 };
+    const point2: common2D.Point = { x: 200.0, y: 100.0 };
+    const point3: common2D.Point = { x: 150.0, y: 200.0 };
+    pointsArray.push(point1);
+    pointsArray.push(point2);
+    pointsArray.push(point3);
+    let texsArray = new Array<common2D.Point>();
+    const texs1: common2D.Point = { x: 0.0, y: 0.0 };
+    const texs2: common2D.Point = { x: 1.0, y: 0.0 };
+    const texs3: common2D.Point = { x: 0.5, y: 1.0 };
+    texsArray.push(texs1);
+    texsArray.push(texs2);
+    texsArray.push(texs3);
+    const colors = [(0xFFFF0000).toInt(), (0xFF00FF00).toInt(), (0xFF0000FF).toInt()];
     const indices = [0, 1, 2];
     canvas.drawVertices(drawing.VertexMode.TRIANGLESSTRIP_VERTEXMODE, 3, pointsArray, texsArray, colors, 3, indices,drawing.BlendMode.SRC);
   }
@@ -1355,11 +1443,31 @@ class DrawingRenderNode extends RenderNode {
 
   draw(context : DrawContext) {
     const canvas = context.canvas;
-    if (this.pixelMap != null) {
+    const width = 1000;
+    const height = 1000;
+    const bufferSize = width * height * 4;
+    const color: ArrayBuffer = new ArrayBuffer(bufferSize);
+
+    const colorData = new Uint8Array(color);
+    for (let i = 0; i < colorData.length; i += 4) {
+      colorData[i] = 255;
+      colorData[i+1] = 156;
+      colorData[i+2] = 0;
+      colorData[i+3] = 255;
+    }
+
+    let opts : image.InitializationOptions = {
+      editable: true,
+      pixelFormat: image.PixelMapFormat.RGBA_8888,
+      size: { height, width }
+    }
+
+    let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+    if (pixelMap != null) {
       const brush = new drawing.Brush(); // 只支持brush，使用pen没有绘制效果。
       canvas.attachBrush(brush);
       let verts : Array<double> = [0.0, 0.0, 50.0, 0.0, 410.0, 0.0, 0.0, 180.0, 50.0, 180.0, 410.0, 180.0, 0.0, 360.0, 50.0, 360.0, 410.0, 360.0]; // 18
-      canvas.drawPixelMapMesh(this.pixelMap!, 2, 2, verts, 0, [0xFFFFFFFF,0xFFEFFFFF,0xFFFFEFFF,0xFFFFFFEF,0xFFFFFF00,0xFFEFFFF,0xFFEFFFF,0xFFEFFFF,0xFFEFFFF], 0);
+      canvas.drawPixelMapMesh(pixelMap, 2, 2, verts, 0, [(0xFFFFFFFF).toInt(),(0xFFFFFFFF).toInt(),(0xFFFFFFFF).toInt(),(0xFFFFFFFF).toInt(),(0xFFFFFFFF).toInt(),(0xFFFFFFFF).toInt(),(0xFFFFFFFF).toInt(),(0xFFFFFFFF).toInt(),(0xFFFFFFFF).toInt()], 0);
       canvas.detachBrush();
     }
   }
@@ -1466,7 +1574,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
     const canvas = context.canvas;
-    let color: int = 0xffff0000;
+    let color: int = (0xffff0000).toInt();
     canvas.clear(color);
   }
 }
@@ -2008,10 +2116,10 @@ ArkTS-Sta: drawGlyphs(glyphIds: Array\<int\>, glyphIdOffset: int, positions: Arr
 | 参数名          | 类型                                     | 必填 | 说明                                              |
 | ------         | -------------------                      | ---- | -----------                                      |
 | glyphIds       | ArkTS-Dyn: Array\<number\><br/>ArkTS-Sta: Array\<int\>               | 是   | 字形ID的数组。数组成员取值限定为整数，输入浮点数则仅保留整数部分。|
-| glyphIdOffset  | ArkTS-Dyn: number<br/>ArkTS-Sta: int                            | 是   | 在绘制字形ID数组之前要跳过的元素的数量。 取值限定为整数，输入浮点数则仅保留整数部分。若glyphCount为n，跳过长度为m，则有效glyphIds数组范围为glyphIds[m]~glyphIds[m+n]的部分。如果glyphIds数组长度小于“glyphIdOffset + glyphCount”则抛出错误码25900001。|
+| glyphIdOffset  | ArkTS-Dyn: number<br/>ArkTS-Sta: int                            | 是   | 在绘制字形ID数组之前要跳过的元素的数量。 取值限定为整数，输入浮点数则仅保留整数部分。<br>如果glyphCount为n，跳过长度为m，则有效glyphIds数组范围为[glyphIds[m], glyphIds[m+n])的部分。<br>如果glyphIds数组长度小于“glyphIdOffset + glyphCount”则抛出错误码25900001。<br>如果glyphIdOffset小于0则抛出错误码25900001。|
 | positions      | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)\> | 是   | 位置数组。|
-| positionOffset | ArkTS-Dyn: number<br/>ArkTS-Sta: int                            | 是   | 在绘制位置数组之前要跳过的元素的数量。取值限定为整数，输入浮点数则仅保留整数部分。若glyphCount为n，跳过长度为m，则有效positions数组范围为positions[m]~positions[m+n]的部分。如果positions数组长度小于“positionOffset + glyphCount”则抛出错误码25900001。|
-| glyphCount     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                            | 是   | 要绘制的字形的数目。数目小于或等于0，则不绘制任何内容。|
+| positionOffset | ArkTS-Dyn: number<br/>ArkTS-Sta: int                            | 是   | 在绘制位置数组之前要跳过的元素的数量。取值限定为整数，输入浮点数则仅保留整数部分。<br>如果glyphCount为n，跳过长度为m，则有效positions数组范围为[positions[m], positions[m+n])的部分。<br>如果positions数组长度小于“positionOffset + glyphCount”则抛出错误码25900001。<br>如果positionOffset小于0则抛出错误码25900001。|
+| glyphCount     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                            | 是   | 要绘制的字形的数目。数目小于或等于0，则不绘制任何内容，并抛出错误码25900001。<br>如果glyphCount与glyphIdOffset的和，或者glyphCount与positionOffset的和大于0x7FFFFFFF，则该计算结果按0x7FFFFFFF处理。|
 | font           | [Font](arkts-apis-graphics-drawing-Font.md)                     | 是   | 用于绘图的字体。|
 
 **错误码：**
@@ -2027,7 +2135,7 @@ ArkTS-Sta: drawGlyphs(glyphIds: Array\<int\>, glyphIdOffset: int, positions: Arr
 ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
-import { drawing } from '@kit.ArkGraphics2D';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
@@ -2047,8 +2155,8 @@ class DrawingRenderNode extends RenderNode {
 
 ArkTS-Sta示例：
 ```ts
-import { RenderNode } from '@kit.ArkUI';
-import { drawing } from '@kit.ArkGraphics2D';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
@@ -2088,7 +2196,7 @@ ArkTS-Sta: drawTextBlob(blob: TextBlob, x: double, y: double): void
 | x      | ArkTS-Dyn: number<br/>ArkTS-Sta: double             | 是   | 所绘制出的文字基线（下图蓝线）的左端点（下图红点）的横坐标，该参数为浮点数。 |
 | y      | ArkTS-Dyn: number<br/>ArkTS-Sta: double             | 是   | 所绘制出的文字基线（下图蓝线）的左端点（下图红点）的纵坐标，该参数为浮点数。 |
 
-![zh-ch_image_Text_Blob.png](figures/zh-ch_image_Text_Blob.png)
+![Text-Blob.png](figures/Text-Blob.png)
 
 **错误码：**
 
@@ -2166,7 +2274,7 @@ ArkTS-Sta: drawSingleCharacter(text: string, font: Font, x: double, y: double): 
 | x      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 所绘制出的字符基线（下图蓝线）的左端点（下图红点）的横坐标，该参数为浮点数。 |
 | y      | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 所绘制出的字符基线（下图蓝线）的左端点（下图红点）的纵坐标，该参数为浮点数。 |
 
-![zh-ch_image_Text_Blob.png](figures/zh-ch_image_Text_Blob.png)
+![Text-Blob.png](figures/Text-Blob.png)
 
 **错误码：**
 
@@ -2252,8 +2360,31 @@ ArkTS-Sta: drawSingleCharacterWithFeatures(text: string, font: Font, x: double, 
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { RenderNode } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    const font = new drawing.Font();
+    font.setSize(20);
+    let fontFeatures : Array<drawing.FontFeature> = [];
+    fontFeatures.push({name: 'calt', value: 0});
+    canvas.attachBrush(brush);
+    canvas.drawSingleCharacterWithFeatures("你", font, 100.0, 100.0, fontFeatures);
+    canvas.drawSingleCharacterWithFeatures("好", font, 180.0, 100.0, fontFeatures);
+    canvas.detachBrush();
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
@@ -3668,6 +3799,62 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+## isOpaque
+
+isOpaque(): boolean
+
+检查当前绘制到设备的图层是否不透明。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型                  | 说明           |
+| --------------------- | -------------- |
+| boolean | 返回当前绘制到设备的图层是否不透明的结果，true表示不透明，false表示透明。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    if (canvas.isOpaque()) {
+      console.info("canvas.isOpaque() returned true");
+    } else {
+      console.info("canvas.isOpaque() returned false");
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    if (canvas.isOpaque()) {
+      console.info("canvas.isOpaque() returned true");
+    } else {
+      console.info("canvas.isOpaque() returned false");
+    }
+  }
+}
+```
+
 ## resetMatrix<sup>12+</sup>
 
 resetMatrix(): void
@@ -4183,8 +4370,8 @@ class DrawingRenderNode extends RenderNode {
     let lattice = drawing.Lattice.createImageLattice(xDivs, yDivs, 4, 4);
     let dst: common2D.Rect = { left: 100, top: 0, right: 164, bottom: 64 };
     let dst1: common2D.Rect = { left: 200, top: 0, right: 360, bottom: 160 };
-    canvas.drawImageLattice(pixelMap, lattice, dst, drawing.FilterMode.FILTER_MODE_NEAREST); // 示例1
-    canvas.drawImageLattice(pixelMap, lattice, dst1, drawing.FilterMode.FILTER_MODE_NEAREST); // 示例2
+    canvas.drawImageLattice(pixelMap, lattice!, dst, drawing.FilterMode.FILTER_MODE_NEAREST); // 示例1
+    canvas.drawImageLattice(pixelMap, lattice!, dst1, drawing.FilterMode.FILTER_MODE_NEAREST); // 示例2
   }
 }
 ```

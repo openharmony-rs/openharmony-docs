@@ -6,7 +6,7 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-本模块提供屏幕截图的能力。
+本模块提供屏幕截图的能力，支持区域截图和全屏截图两种模式，帮助开发者实现屏幕内容的获取功能。
 
 >  **说明：**
 >
@@ -24,7 +24,7 @@ import { screenshot } from '@kit.ArkUI';
 
 表示截取图像的区域。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -47,14 +47,14 @@ import { screenshot } from '@kit.ArkUI';
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| displayId | ArkTS-Dyn: number <br> ArkTS-Sta: long |  否   | 是 | 表示截取图像的显示设备[Display](js-apis-display.md#display)的ID号，默认为0，该参数应为大于或等于0的整数，非整数会报参数错误。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 14 <br> **ArkTS-Sta起始版本：** 23 |
-| blackWindowIds<sup>21+</sup> | ArkTS-Dyn: Array&lt;number&gt;  <br>  ArkTS-Sta:  Array&lt;int&gt;  | 否  | 是 | 表示截取图像时不显示的窗口ID列表，默认为空。窗口ID应为大于0的整数，目前仅[闪控球窗口](js-apis-floatingBall.md)生效，窗口ID为非闪控球窗口、非整数、小于等于0、或者不存在的窗口ID时报参数错误，错误码为401。推荐使用[getFloatingBallWindowInfo()](js-apis-floatingBall.md#getfloatingballwindowinfo)方法获取闪控球窗口ID属性。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 23 |
+| displayId | ArkTS-Dyn: number <br> ArkTS-Sta: long |  否   | 是 | 表示截取图像的显示设备[Display](js-apis-display.md#display)的ID号，默认为0，该参数应为大于或等于0的整数，非整数会报参数错误。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 14 <br> **ArkTS-Sta起始版本：** 23 |
+| blackWindowIds<sup>21+</sup> | ArkTS-Dyn: Array&lt;number&gt;  <br>  ArkTS-Sta:  Array&lt;int&gt;  | 否  | 是 | 表示截取图像时不显示的窗口ID列表，默认为空。窗口ID应为大于0的整数，目前仅[闪控球窗口](js-apis-floatingBall.md)生效，窗口ID为非闪控球窗口、非整数、小于等于0、或者不存在的窗口ID时报参数错误，错误码为401。推荐使用[getFloatingBallWindowInfo()](js-apis-floatingBall.md#getfloatingballwindowinfo)方法获取闪控球窗口ID属性。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## PickInfo
 
 截取图像的信息。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -73,7 +73,7 @@ pick(): Promise&lt;PickInfo&gt;
 
 获取屏幕截图，当前仅支持获取displayId为0的屏幕截图（如果需要对扩展屏截图，可以通过[capture](#screenshotcapture14)接口实现），使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -81,7 +81,13 @@ pick(): Promise&lt;PickInfo&gt;
 
 **ArkTS-Sta起始版本：** 23
 
-**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**接口对比：** [pick](#screenshotpick)接口支持区域截屏，仅支持主屏幕（displayId为0），无需权限；[capture](#screenshotcapture14)接口支持全屏截屏，支持主屏幕和扩展屏（通过displayId参数指定），需要权限。
+
+**选取建议：** 需要区域截屏时使用[pick](#screenshotpick)接口；需要全屏截屏或扩展屏截屏时使用[capture](#screenshotcapture14)接口。
+
+**资源管理：** 返回的PickInfo中的PixelMap对象需要手动释放，使用完毕后必须调用[release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7)方法释放内存，否则可能导致内存泄漏。
 
 **返回值：**
 
@@ -106,17 +112,18 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // 调用pick接口获取屏幕截图
   let promise = screenshot.pick();
   promise.then((pickInfo: screenshot.PickInfo) => {
-    console.info('pick Pixel bytes number: ' + pickInfo.pixelMap.getPixelBytesNumber());
-    console.info('pick Rect: ' + pickInfo.pickRect);
+    console.info(`pick Pixel bytes number: ${pickInfo.pixelMap.getPixelBytesNumber()}`);
+    console.info(`pick Rect: ${pickInfo.pickRect}`);
     pickInfo.pixelMap.release(); // PixelMap使用完后及时释放内存
   }).catch((err: BusinessError) => {
-    console.error(`Failed to pick. Code: ' + Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to pick. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (exception) {
-  console.error(`Failed to pick Code: ' + Code: ${exception.code}, message: ${exception.message}`);
-};
+  console.error(`Failed to pick. Code: ${exception.code}, message: ${exception.message}`);
+}
 ```
 
 ArkTS-Sta示例：
@@ -127,15 +134,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let promise = screenshot.pick();
   promise.then((pickInfo: screenshot.PickInfo) => {
-    console.info('pick Pixel bytes number: ' + pickInfo.pixelMap.getPixelBytesNumber());
-    console.info('pick Rect: ' + pickInfo.pickRect);
+    console.info(`pick Pixel bytes number: ${pickInfo.pixelMap.getPixelBytesNumber()}`);
+    console.info(`pick Rect: ${pickInfo.pickRect}`);
     pickInfo.pixelMap.release(); // PixelMap使用完后及时释放内存
   }).catch((err: Error) => {
-    console.error(`Failed to pick. Code: ' + Code: ${err?.code}, message: ${err?.message}`);
+    console.error(`Failed to pick. Code: ${err?.code}, message: ${err?.message}`);
   });
 } catch (exception) {
   let error = exception as BusinessError;
-  console.error(`Failed to pick Code: ' + Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to pick Code: ${error.code}, message: ${error.message}`);
 };
 ```
 
@@ -147,7 +154,7 @@ capture(options?: CaptureOption): Promise&lt;image.PixelMap&gt;
 
 此接口可以通过设置不同的displayId截取不同屏幕的截图，且只能截取全屏；[pick](#screenshotpick)接口可实现区域截屏。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -155,9 +162,13 @@ capture(options?: CaptureOption): Promise&lt;image.PixelMap&gt;
 
 **ArkTS-Sta起始版本：** 23
 
-**设备行为差异：** 在API version 21之前，该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。从API version 21开始，该接口在Phone设备、2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 在API version 21之前，该接口在PC/2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。从API version 21开始，该接口在Phone设备、PC/2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
 
-**需要权限**：API version 22前，需申请ohos.permission.CUSTOM_SCREEN_CAPTURE权限；从API version 22开始，需要申请ohos.permission.CUSTOM_SCREEN_CAPTURE权限或ohos.permission.CUSTOM_SCREEN_RECORDING权限。
+**需要权限：** 
+- API版本22+：ohos.permission.CUSTOM_SCREEN_CAPTURE或ohos.permission.CUSTOM_SCREEN_RECORDING
+- API版本14-21：ohos.permission.CUSTOM_SCREEN_CAPTURE
+
+**资源管理：** 返回的PixelMap对象需要手动释放，使用完毕后必须调用[release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7)方法释放内存，否则可能导致内存泄漏。
 
 **参数：**
 
@@ -177,10 +188,10 @@ capture(options?: CaptureOption): Promise&lt;image.PixelMap&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------- |
-| 201     | Permission verification failed. The application does not have the permission required to call the API.|
-| 401     | Parameter error. Possible causes: 1.Incorrect parameter types. 2.Parameter verification failed.|
-| 801 | Capability not supported on this device.|
-| 1400003 | This display manager service works abnormally.|
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 401     | Parameter error. Possible causes: 1. Incorrect parameter types. 2. Parameter verification failed. |
+| 801 | Capability not supported on this device. |
+| 1400003 | This display manager service works abnormally. |
 
 **示例：**
 
@@ -190,13 +201,15 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
+// 配置截图参数，指定截取displayId为0的屏幕
 let captureOption: screenshot.CaptureOption = {
   "displayId": 0
 };
 try {
+  // 调用capture接口获取全屏截图
   let promise = screenshot.capture(captureOption);
   promise.then((pixelMap: image.PixelMap) => {
-    console.info('Succeeded in saving screenshot. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
+    console.info(`Succeeded in saving screenshot. Pixel bytes number: ${pixelMap.getPixelBytesNumber()}`);
     pixelMap.release(); // PixelMap使用完后及时释放内存
   }).catch((err: BusinessError) => {
     console.error(`Failed to save screenshot. Code: ${err.code}, message: ${err.message}`);
@@ -218,7 +231,7 @@ let captureOption: screenshot.CaptureOption = {
 try {
   let promise = screenshot.capture(captureOption);
   promise.then((pixelMap: image.PixelMap) => {
-    console.info('Succeeded in saving screenshot. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
+    console.info(`Succeeded in saving screenshot. Pixel bytes number: ${pixelMap.getPixelBytesNumber()}`);
     pixelMap.release(); // PixelMap使用完后及时释放内存
   }).catch((err: Error) => {
     console.error(`Failed to save screenshot. Code: ${err?.code}, message: ${err?.message}`);

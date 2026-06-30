@@ -14,6 +14,10 @@ typedef struct {...} JSVM_InitOptions
 
 初始化选项，用于初始化JavaScript虚拟机。
 
+**使用场景：** 嵌入JavaScript引擎的应用程序初始化，需要在应用中执行JavaScript代码的场景，需要自定义虚拟机配置的开发调试场景。
+
+**系统能力：** SystemCapability.ArkCompiler.JSVM
+
 **起始版本：** 11
 
 **相关模块：** [JSVM](capi-jsvm.md)

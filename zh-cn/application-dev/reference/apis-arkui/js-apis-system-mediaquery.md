@@ -11,7 +11,7 @@
 
 > **说明：**
 >
-> - 从API version 7 开始，该接口不再维护，推荐使用新接口[`@ohos.mediaquery`](js-apis-mediaquery.md)。
+> - 从API version 7 开始，该接口不再维护，推荐使用新接口[@ohos.mediaquery](js-apis-mediaquery.md)。
 > - 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
@@ -26,7 +26,7 @@ import mediaquery from '@system.mediaquery';
 
 定义MediaQuery接口。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +36,7 @@ matchMedia(condition: string): MediaQueryList
 
 根据媒体查询条件，创建MediaQueryList对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,7 +50,7 @@ matchMedia(condition: string): MediaQueryList
 
 | 类型           | 说明                                       |
 | -------------- | ---------------------------------------- |
-| [MediaQueryList](./js-apis-system-mediaquery.md#mediaquerylist) | 表示创建MediaQueryList对象的属性，详情见下表说明。 |
+| [MediaQueryList](./js-apis-system-mediaquery.md#mediaquerylist) | 创建MediaQueryList对象，详情见下表说明。 |
 
 **示例：**
 
@@ -62,7 +62,7 @@ let mMediaQueryList = mediaquery.matchMedia('(max-width: 466)');
 
 定义MediaQuery事件。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,7 +76,7 @@ let mMediaQueryList = mediaquery.matchMedia('(max-width: 466)');
 
 ### 属性
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -93,7 +93,7 @@ addListener(callback: (event: MediaQueryEvent) => void): void
 
 给MediaQueryList添加回调函数，回调函数应在onShow生命周期之前添加，即需要在onInit或onReady生命周期里添加。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -101,7 +101,7 @@ addListener(callback: (event: MediaQueryEvent) => void): void
 
 | 参数名      | 类型                               | 必填   | 说明             |
 | -------- | -------------------------------- | ---- | -------------- |
-| callback | (event: MediaQueryEvent) => void | 是    | 匹配条件发生变化的响应函数。 |
+| callback | (event: [MediaQueryEvent](#mediaqueryevent)) => void | 是    | 匹配条件发生变化时触发的回调。 |
 
 **示例：**
 
@@ -124,7 +124,7 @@ removeListener(callback: (event: MediaQueryEvent) => void): void
 
 移除MediaQueryList中的回调函数。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -132,7 +132,7 @@ removeListener(callback: (event: MediaQueryEvent) => void): void
 
 | 参数名      | 类型                                | 必填   | 说明             |
 | -------- | --------------------------------- | ---- | -------------- |
-| callback | (event: MediaQueryEvent) => void | 是    | 匹配条件发生变化的响应函数。 |
+| callback | (event: [MediaQueryEvent](#mediaqueryevent)) => void | 是    | 匹配条件发生变化时触发的回调。 |
 
 **示例：**
 

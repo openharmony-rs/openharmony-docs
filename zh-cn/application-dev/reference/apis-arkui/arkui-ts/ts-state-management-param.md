@@ -1,20 +1,29 @@
-# @Param
+# @Param：组件外部输入
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zany_pink-->
-<!--SE: @s10021109-->
-<!--TSE: @TerryTsao-->
-
-> **说明：**
->
-> 从API version 12开始，支持该装饰器。
+<!--Owner: @zhangboren-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 @Param用于状态管理V2中，接收外部输入，实现父子组件之前的单向数据同步。
 
 在ArkTS-Dyn中使用时，开发指南参考：[@Param：组件外部输入（ArkTS-Dyn）](../../../ui/state-management/arkts-new-param.md)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+> **说明：**
+>
+> 从API version 12开始，支持该装饰器。
+
+## @Param
+
+const Param: PropertyDecorator
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -23,6 +32,7 @@
 ```ts
 @ComponentV2
 struct Child {
+  // 使用@Param装饰器接收父组件传入的参数，实现父子组件单向数据同步
   @Param message: string = '';
   build() {
     Column() {
@@ -38,9 +48,11 @@ struct Index {
     Column() {
       Text(`Parent message: ${this.message}`)
       Button('change message')
+        // 设置点击事件，修改message的值，变更会单向同步到子组件
         .onClick(() => {
           this.message = 'Hello World';
         })
+      // 创建子组件Child，将message传入子组件的@Param变量
       Child({ message: this.message })
     }
   }

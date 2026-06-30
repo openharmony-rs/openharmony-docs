@@ -3,7 +3,7 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -86,7 +86,7 @@ import { common2D, drawing } from '@kit.ArkGraphics2D';
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
     const canvas = context.canvas;
-    let intervals = [10, 5];
+    let intervals: Array<double> = [10.0, 5.0];
     let effect = drawing.PathEffect.createDashPathEffect(intervals, 5);
   }
 }
@@ -260,7 +260,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 class DrawingRenderNode extends RenderNode {
   draw(context: DrawContext) {
     const canvas = context.canvas;
-    let intervals = [10, 5];
+    let intervals:Array<double> = [10.0, 5.0];
     let pathEffectOne = drawing.PathEffect.createDashPathEffect(intervals, 5);
     let pathEffectTwo = drawing.PathEffect.createDashPathEffect(intervals, 10);
     if (pathEffectOne == undefined || pathEffectTwo == undefined) {
@@ -364,7 +364,7 @@ ArkTS-Sta: static createDiscretePathEffect(segLength: double, dev: double, seedA
 **示例：**
 
 ```ts
-import { RenderNode } from '@kit.ArkUI';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {

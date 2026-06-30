@@ -51,23 +51,23 @@
     
     ``` TypeScript
     const DOMAIN = 0x0000;
-    
+        
     export let calendarMgr: calendarManager.CalendarManager | null = null;
     
     export let mContext: common.UIAbilityContext | null = null;
     
     export default class EntryAbility extends UIAbility {
       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        hilog.info(DOMAIN, 'testTag', '%{public}s', "Ability onCreate");
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
       }
     
       onDestroy(): void {
-        hilog.info(DOMAIN, 'testTag', '%{public}s', "Ability onDestroy");
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onDestroy');
       }
     
       onWindowStageCreate(windowStage: window.WindowStage): void {
-        // Main window is created, set main page for this ability
-        hilog.info(DOMAIN, 'testTag', '%{public}s', "Ability onWindowStageCreate");
+        // 主窗口已创建，请为此Ability设置主页
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
         windowStage.loadContent('pages/Index', (err, data) => {
           if (err.code) {
             hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
@@ -87,18 +87,18 @@
       }
     
       onWindowStageDestroy(): void {
-        // Main window is destroyed, release UI related resources
-        hilog.info(DOMAIN, 'testTag', '%{public}s', "Ability onWindowStageDestroy");
+        // 主窗口已销毁，释放 UI 相关资源
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
       }
     
       onForeground(): void {
-        // Ability has brought to foreground
-        hilog.info(DOMAIN, 'testTag', '%{public}s', "Ability onForeground");
+        // Ability 进入前台
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onForeground');
       }
     
       onBackground(): void {
-        // Ability has back to background
-        hilog.info(DOMAIN, 'testTag', '%{public}s', "Ability onBackground");
+        // Ability 进入后台
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onBackground');
       }
     }
     ```
@@ -113,9 +113,6 @@
     import { BusinessError } from '@kit.BasicServicesKit';
     import { calendarMgr } from '../entryability/EntryAbility';
     import { calendarManager } from '@kit.CalendarKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    
-    const DOMAIN = 0x0000;
     
     let calendar: calendarManager.Calendar | undefined = undefined;
     // 指定日历账户信息
@@ -133,12 +130,12 @@
     ``` TypeScript
     // 创建日历账户
     calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calendar) => {
-      hilog.info(DOMAIN, 'testTag', '%{public}s', `Succeeded in creating calendar data->${JSON.stringify(data)}`);
+      console.info('%{public}s', `Succeeded in creating calendar data->${JSON.stringify(data)}`);
       calendar = data;
       // 请确保日历账户创建成功后，再进行后续相关操作
       // ...
     }).catch((error: BusinessError) => {
-      hilog.error(DOMAIN, 'testTag', `Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
+      console.error(`Failed to create calendar. Code: ${error.code}, message: ${error.message}`);
     });
     ```
 
@@ -156,7 +153,7 @@
     calendarMgr?.getCalendar(calendarAccounts, (err, data) => {
       // 获取日历账户
       if (err) {
-        hilog.error(DOMAIN, 'testTag', `Failed to get calendar, Code is ${err.code}, message is ${err.message}`);
+        console.error(`Failed to get calendar, Code is ${err.code}, message is ${err.message}`);
       } else {
         const config: calendarManager.CalendarConfig = {
           // 打开日程提醒
@@ -166,9 +163,9 @@
         };
         // 设置日历配置信息
         data.setConfig(config).then(() => {
-          hilog.info(DOMAIN, 'testTag', '%{public}s', `Succeeded in setting config, data->${JSON.stringify(config)}`);
+          console.info('%{public}s', `Succeeded in setting config, data->${JSON.stringify(config)}`);
         }).catch((err: BusinessError) => {
-          hilog.error(DOMAIN, 'testTag', `Failed to set config. Code: ${err.code}, message: ${err.message}`);
+          console.error(`Failed to set config. Code: ${err.code}, message: ${err.message}`);
         })
       }
     });
@@ -181,9 +178,9 @@
     
     ``` TypeScript
     calendarMgr?.getCalendar(calendarAccount).then((data: calendarManager.Calendar) => {
-      hilog.info(DOMAIN, 'testTag', '%{public}s', `Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
+      console.info('%{public}s', `Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
     }).catch((err: BusinessError) => {
-      hilog.error(DOMAIN, 'testTag', `Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
+      console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
     });
     ```
 
@@ -193,9 +190,9 @@
     
     ``` TypeScript
     calendarMgr?.getCalendar().then((data: calendarManager.Calendar) => {
-      hilog.info(DOMAIN, 'testTag', '%{public}s', `Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
+      console.info('%{public}s', `Succeeded in getting calendar, data -> ${JSON.stringify(data)}`);
     }).catch((err: BusinessError) => {
-      hilog.error(DOMAIN, 'testTag', `Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
+      console.error(`Failed to get calendar. Code: ${err.code}, message: ${err.message}`);
     });
     ```
 
@@ -204,18 +201,18 @@
    由于涉及数据隐私安全，进行了权限管控的应用无法获取其他应用创建的账户信息。
    
     <!-- @[calendarData_getAllCalendars](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
-   
-   ``` TypeScript
-   calendarMgr?.getAllCalendars().then((data: calendarManager.Calendar[]) => {
-     hilog.info(DOMAIN, 'testTag', '%{public}s', `Succeeded in getting all calendars, data -> ${JSON.stringify(data)}`);
-     data.forEach((calendar) => {
-       const account = calendar.getAccount();
-       hilog.info(DOMAIN, 'testTag', '%{public}s', `account -> ${JSON.stringify(account)}`);
-     })
-   }).catch((err: BusinessError) => {
-     hilog.error(DOMAIN, 'testTag', `Failed to get all calendars. Code: ${err.code}, message: ${err.message}`);
-   });
-   ```
+    
+    ``` TypeScript
+    calendarMgr?.getAllCalendars().then((data: calendarManager.Calendar[]) => {
+      console.info('%{public}s', `Succeeded in getting all calendars, data -> ${JSON.stringify(data)}`);
+      data.forEach((calendar) => {
+        const account = calendar.getAccount();
+        console.info('%{public}s', `account -> ${JSON.stringify(account)}`);
+      })
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to get all calendars. Code: ${err.code}, message: ${err.message}`);
+    });
+    ```
 
 9. 删除指定的日历账户，删除账户后，该账户下的所有日程会全部删除。
 
@@ -223,12 +220,12 @@
     
     ``` TypeScript
     if (!calendar || calendar === null) {
-      hilog.error(DOMAIN, 'testTag', 'Failed to delete calendar. calendar is null');
+      console.error('Failed to delete calendar. calendar is null');
       return;
     }
     calendarMgr?.deleteCalendar(calendar).then(() => {
-      hilog.info(DOMAIN, 'testTag', '%{public}s', "Succeeded in deleting calendar");
+      console.info('%{public}s', 'Succeeded in deleting calendar');
     }).catch((err: BusinessError) => {
-      hilog.error(DOMAIN, 'testTag', `Failed to delete calendar. Code: ${err.code}, message: ${err.message}`);
+      console.error(`Failed to delete calendar. Code: ${err.code}, message: ${err.message}`);
     });
     ```

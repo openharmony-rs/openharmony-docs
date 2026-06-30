@@ -2,10 +2,10 @@
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
 <!--Owner: @wangJE-->
-<!--Designer: @lee_jet520-->
+<!--Designer: @yangjun044-->
 <!--Tester: @Ytt-test-->
 <!--Adviser: @w_Machine_cc-->
-linkEnhance模块提供高效的蓝牙连接和数据传输功能，增强设备间连接的稳定性。使用多通道合并算法，增加设备间连接数，提升跨设备数据传输能力，改善用户使用体验。
+linkEnhance模块提供高效的蓝牙连接和数据传输功能，增强设备间连接的稳定性。使用多通道合并算法解决传统蓝牙连接不稳定、连接数量受限等问题，提升跨设备数据传输能力，改善用户使用体验。
 
 > **说明：**
 >
@@ -25,11 +25,13 @@ import { linkEnhance } from '@kit.DistributedServiceKit';
 
 createServer(name:&nbsp;string):&nbsp;Server
 
-在服务端设备上，应用创建服务。通过start()开启后，该设备可作为服务端被其他设备连接。
+在服务端设备上，应用创建服务。通过start()开启后，该设备可作为服务端被其他设备连接。使用完毕后，需调用close()销毁Server对象释放资源。若需重新使用，需重新创建Server对象。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回错误码801，在其他设备类型中可正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -41,7 +43,7 @@ createServer(name:&nbsp;string):&nbsp;Server
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| name | string  | 是    | 自定义的非空字符串，标识应用的服务名，最大长度255字节。  |
+| name | string  | 是    | 自定义的非空字符串，标识应用的服务名，最大长度255字节。超出长度限制或传入空字符串时返回错误码32390206。  |
 
 **返回值：**
 
@@ -56,7 +58,7 @@ createServer(name:&nbsp;string):&nbsp;Server
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported because the linkEnhance function has been trimmed. <br>适用版本：26.0.0+ |
 | 32390203      | Duplicate server name.|
 | 32390206 | Invalid parameter.  |
 
@@ -84,13 +86,15 @@ try {
 
 createConnection(deviceId:&nbsp;string,&nbsp;name:&nbsp;string):&nbsp;Connection
 
-作为客户端的设备创建连接对象，以便后续向服务端设备发起连接。
+作为客户端的设备创建连接对象。创建Connection对象后，订阅on('connectResult')，然后调用connect()方法向服务端设备发起连接，连接成功后，可通过sendData()发送数据，当连接不需要使用，可调用close()销毁连接对象释放资源。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上调用会返回错误码801，在其他设备类型中可正常调用。
 
 **ArkTS-Dyn起始版本**：20
 
@@ -100,8 +104,8 @@ createConnection(deviceId:&nbsp;string,&nbsp;name:&nbsp;string):&nbsp;Connection
 
 | 参数名       | 类型                                      | 必填   | 说明        |
 | --------- | --------------------------------------- | ---- | --------- |
-| deviceId  | string | 是    | 连接的目标设备的deviceId，即对端设备的BLE MAC地址。BLE MAC的获取方法，请参考[查找设备](../../connectivity/bluetooth/ble-development-guide.md)。|
-| name      | string | 是    | 连接的目标设备的服务名，非空字符串，最大长度255字节。|
+| deviceId  | string | 是    | 连接的对端设备的deviceId，即对端设备的BLE MAC地址。BLE MAC的获取方法，请参考[查找设备](../../connectivity/bluetooth/ble-development-guide.md)。|
+| name      | string | 是    | 连接的目标设备的服务名，非空字符串，最大长度255字节。超出长度限制或传入空字符串时返回错误码32390206。|
 
 **返回值：**
 
@@ -116,7 +120,7 @@ createConnection(deviceId:&nbsp;string,&nbsp;name:&nbsp;string):&nbsp;Connection
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported because the linkEnhance function has been trimmed. <br>适用版本：26.0.0+ |
 | 32390206 | Invalid parameter.  |
 
 **示例：**
@@ -131,7 +135,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 const TAG = "testDemo";
 
 try {
-  let peerDeviceId: string = "00:11:22:33:44:55";
+  let peerDeviceId: string = "00:11:22:33:44:55"; // BLE MAC地址，需通过蓝牙扫描获取，详见参数说明
   hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
 } catch (err) {
@@ -153,11 +157,13 @@ try {
 
 start():&nbsp;void
 
-创建服务成功后，需要调用start()开启该服务，方可被客户端连接，最大服务个数为10。
+创建服务成功后，需要调用start()开启该服务，方可被客户端连接，最大服务个数为10。服务开启后，可通过stop()停止服务，可以重新通过start()再次开启服务。服务使用完毕后，需调用close()销毁Server对象释放资源。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，企业管控设备调用会返回错误码32390300，其他设备类型可正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -204,6 +210,8 @@ stop():&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：20
@@ -243,11 +251,13 @@ try {
 
 close():&nbsp;void
 
-当业务执行完毕，服务端清理资源时，调用close()方法，销毁Server对象，释放相关资源。之后如果再次与对端设备交互，需要重新创建Server对象。
+当业务执行完毕，服务端清理资源时，调用close()方法，销毁Server对象，释放相关资源。之后如果再次与对端设备交互，需要重新创建Server对象。close()会销毁Server对象并释放资源，之后需重新创建Server对象；stop()仅停止服务，Server对象仍可重新启动。如果还需重新启动服务，使用stop()；如果业务完全结束，使用close()。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -294,6 +304,8 @@ on(type: 'connectionAccepted', callback: Callback&lt;Connection&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **相关接口**：该接口对应的ArkTS-Sta接口是[onConnectionAccepted](#onconnectionaccepted-1)。
@@ -304,7 +316,7 @@ on(type: 'connectionAccepted', callback: Callback&lt;Connection&gt;): void
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'connectionAccepted'，收到对端连接，触发该事件。   |
-| callback | Callback&lt;[Connection](#connection)&gt; | 是    | 注册的回调函数。[Connection](#connection)返回的连接对象。 |
+| callback | Callback&lt;[Connection](#connection)&gt; | 是    | 回调函数，用于接收服务端连接事件。回调参数connection为建立连接的连接对象，类型为[Connection](#connection)。 |
 
 **错误码：**
 
@@ -345,13 +357,15 @@ try {
 
 off(type: 'connectionAccepted', callback?: Callback&lt;Connection&gt;): void
 
-取消注册connectionAccepted事件的回调监听。使用callback异步回调。
+取消注册connectionAccepted事件的回调监听。需要在创建服务成功后调用。使用callback异步回调。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -364,7 +378,7 @@ off(type: 'connectionAccepted', callback?: Callback&lt;Connection&gt;): void
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'connectionAccepted'，收到对端连接，触发该事件。   |
-| callback | Callback&lt;[Connection](#connection)&gt; | 否    | 注册的回调函数。[Connection](#connection)返回的连接对象。 |
+| callback | Callback&lt;[Connection](#connection)&gt; | 否 | 回调函数，用于接收服务端连接事件。回调参数connection为建立连接的连接对象，类型为[Connection](#connection)。需传入对应on方法最后一次注册的回调函数，用于取消该回调的订阅，默认缺省效果与传入行为一致。 |
 
 **错误码：**
 
@@ -414,6 +428,8 @@ on(type: 'serverStopped', callback: Callback&lt;number&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **相关接口**：该接口对应的ArkTS-Sta接口是[onServerStopped](#onserverstopped-1)。
@@ -424,8 +440,8 @@ on(type: 'serverStopped', callback: Callback&lt;number&gt;): void
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
-| type | string  | 是    |   事件回调类型，支持的事件为'serverStopped'，底层服务异常时，触发该事件。   |
-| callback | Callback&lt;number&gt; | 是    | 注册的回调函数，number为返回的错误码。 |
+| type | string | 是 | 事件回调类型，支持的事件为'serverStopped'，底层服务异常时触发。 |
+| callback |Callback&lt;number&gt; | 是 | 注册的回调函数，当底层服务异常停止时触发，number为返回的错误码。 |
 
 **错误码：**
 
@@ -453,7 +469,7 @@ try {
 
   // 订阅服务停止
   server.on('serverStopped', (reason: number): void => {
-    hilog.info(0x0000, TAG, 'serverStopped， reason= ' + reason);
+    hilog.info(0x0000, TAG, 'serverStopped, reason= ' + reason);
   });
   // 启动服务
   server.start();
@@ -467,13 +483,15 @@ try {
 
 off(type: 'serverStopped', callback?: Callback&lt;number&gt;): void
 
-取消注册serverStopped事件的回调监听。使用callback异步回调。
+取消注册serverStopped事件的回调监听。需要在创建服务成功后调用。使用callback异步回调。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -486,7 +504,7 @@ off(type: 'serverStopped', callback?: Callback&lt;number&gt;): void
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'serverStopped'，底层服务异常时触发。   |
-| callback | Callback&lt;number&gt; | 否    | 注册的回调函数，number为返回的错误码。 |
+| callback | Callback&lt;number&gt;| 否 | 注册的回调函数，当底层服务异常停止时触发，number为返回的错误码。需传入对应on方法最后一次注册的回调函数，用于取消该回调的订阅，默认缺省效果与传入行为一致。 |
 
 **错误码：**
 
@@ -512,11 +530,11 @@ try {
   // 使用服务名构造Server
   let server: linkEnhance.Server = linkEnhance.createServer(name);
   server.on('serverStopped', (reason: number): void => {
-    hilog.info(0x0000, TAG, 'serverStopped， reason= ' + reason);
+    hilog.info(0x0000, TAG, 'serverStopped, reason= ' + reason);
   });
   // 取消订阅服务停止
   server.off('serverStopped', (reason: number): void => {
-    hilog.info(0x0000, TAG, 'serverStopped， reason= ' + reason);
+    hilog.info(0x0000, TAG, 'serverStopped, reason= ' + reason);
   });
 } catch (err) {
   hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
@@ -536,6 +554,8 @@ onConnectionAccepted(callback: Callback&lt;Connection&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[on('connectionAccepted')](#onconnectionaccepted)。
@@ -545,7 +565,7 @@ onConnectionAccepted(callback: Callback&lt;Connection&gt;): void
 **参数：**
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
-| callback | Callback&lt;[Connection](#connection)&gt; | 是    | 注册的回调函数。[Connection](#connection)返回的连接对象。 |
+| callback | Callback&lt;[Connection](#connection)&gt; | 是    | 回调函数，用于接收服务端连接事件。回调参数connection为建立连接的连接对象，类型为[Connection](#connection)。 |
 
 **错误码：**
 
@@ -587,13 +607,15 @@ try {
 
 offConnectionAccepted(callback?: Callback&lt;Connection&gt;): void
 
-取消注册connectionAccepted事件的回调监听。使用callback异步回调。
+取消注册connectionAccepted事件的回调监听。需要在创建服务成功后调用。使用callback异步回调。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -605,7 +627,7 @@ offConnectionAccepted(callback?: Callback&lt;Connection&gt;): void
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
-| callback | Callback&lt;[Connection](#connection)&gt; | 否    | 注册的回调函数。[Connection](#connection)返回的连接对象。 |
+| callback | Callback&lt;[Connection](#connection)&gt; | 否 | 回调函数，用于接收服务端连接事件。回调参数connection为建立连接的连接对象，类型为[Connection](#connection)。需传入对应on方法最后一次注册的回调函数，用于取消该回调的订阅，默认缺省效果与传入行为一致。 |
 
 **错误码：**
 
@@ -655,6 +677,8 @@ onServerStopped(callback: Callback&lt;int&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[on('serverStopped')](#onserverstopped)。
@@ -665,7 +689,7 @@ onServerStopped(callback: Callback&lt;int&gt;): void
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
-| callback | Callback&lt;int&gt; | 是    | 注册的回调函数，int为返回的错误码。 |
+| callback |Callback&lt;number&gt; | 是 | 注册的回调函数，当底层服务异常停止时触发，number为返回的错误码。 |
 
 **错误码：**
 
@@ -693,7 +717,7 @@ try {
 
   // 订阅服务停止
   server.onServerStopped((reason: int): void => {
-    hilog.info(0x0000, TAG, 'serverStopped， reason= ' + reason);
+    hilog.info(0x0000, TAG, 'serverStopped, reason= ' + reason);
   });
   // 启动服务
   server.start();
@@ -706,13 +730,15 @@ try {
 
 offServerStopped(callback?: Callback&lt;int&gt;): void
 
-取消注册serverStopped事件的回调监听。使用callback异步回调。
+取消注册serverStopped事件的回调监听。需要在创建服务成功后调用。使用callback异步回调。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -724,7 +750,7 @@ offServerStopped(callback?: Callback&lt;int&gt;): void
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
-| callback | Callback&lt;int&gt; | 否    | 注册的回调函数，int为返回的错误码。 |
+| callback | Callback&lt;int&gt; | 否    | 注册的回调函数，当底层服务异常停止时触发，int为返回的错误码。 需传入对应on方法最后一次注册的回调函数，用于取消该回调的订阅，默认缺省效果与传入行为一致。|
 
 **错误码：**
 
@@ -750,11 +776,11 @@ try {
   // 使用服务名构造Server
   let server: linkEnhance.Server = linkEnhance.createServer(name);
   server.onServerStopped((reason: int): void => {
-    hilog.info(0x0000, TAG, 'serverStopped， reason= ' + reason);
+    hilog.info(0x0000, TAG, 'serverStopped, reason= ' + reason);
   });
   // 取消订阅服务停止
   server.offServerStopped((reason: int): void => {
-    hilog.info(0x0000, TAG, 'serverStopped， reason= ' + reason);
+    hilog.info(0x0000, TAG, 'serverStopped, reason= ' + reason);
   });
 } catch (err) {
   hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
@@ -766,6 +792,8 @@ try {
 客户端调用connect()后，返回的连接结果。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -791,15 +819,17 @@ try {
 
 connect():&nbsp;void
 
-在客户端执行，向服务端设备发起连接，最大连接个数限制为10。
+创建Connection对象成功后，在客户端执行，向服务端设备发起连接，最大连接个数限制为10。建议先通过on('connectResult')注册回调监听，再调用本方法获取连接结果，连接成功后，可通过sendData()发送数据，当连接不再使用时调用disconnect() 断开连接。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用返回错误码32390300，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本**：20
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('connectionAccepted')](#onconnectionaccepted)。
 
 **ArkTS-Sta起始版本**：23
 
@@ -810,7 +840,7 @@ connect():&nbsp;void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 32390204 | The number of connection exceeds the limit. |
+| 32390204 | The number of connections exceeds the limit. |
 | 32390300 | Internal error. |
 
 **示例：**
@@ -849,6 +879,8 @@ disconnect():&nbsp;void
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -894,11 +926,13 @@ try {
 
 close():&nbsp;void
 
-业务执行完毕后，任意设备可调用该接口销毁connection对象，释放资源。若需再次与对端设备交互，必须重新创建connection对象并调用`connect()`发起连接。
+业务执行完毕后，任意设备可调用该接口销毁connection对象，释放资源。若需再次与对端设备交互，必须重新创建connection对象并调用`connect()`发起连接。close()会销毁Connection对象并释放资源，之后需重新创建Connection对象；disconnect()仅断开连接，Connection对象仍可重新连接。如果还需要重新连接，使用disconnect()；如果业务完全结束，使用close()。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -950,6 +984,8 @@ getPeerDeviceId():&nbsp;string
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：20
@@ -984,8 +1020,7 @@ try {
   let peerDeviceId: string = "00:11:22:33:44:55";
   hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
-  connection.getPeerDeviceId();
-  hilog.info(0x0000, TAG, "peerDeviceId=%{public}s" + connection.getPeerDeviceId());
+  hilog.info(0x0000, TAG, "peerDeviceId=%{public}s", connection.getPeerDeviceId());
 } catch (err) {
   hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
@@ -1002,6 +1037,8 @@ sendData(data:&nbsp;ArrayBuffer):&nbsp;void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：20
@@ -1012,7 +1049,7 @@ sendData(data:&nbsp;ArrayBuffer):&nbsp;void
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| data | [ArrayBuffer](../../arkts-utils/arraybuffer-object.md) | 是    | 需要发送的数据，最大发送长度为1024字节。|
+| data | [ArrayBuffer](../../arkts-utils/arraybuffer-object.md) | 是    | 需要发送的数据，最大发送长度为1024字节。超出长度限制时返回错误码32390206。|
 
 **错误码：**
 
@@ -1042,9 +1079,9 @@ try {
     hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
     if (result.success) {
       let len = 1;
-      let arraybuffer = new ArrayBuffer(len); // 创建需要发送的数据
-      connection.sendData(arraybuffer);
-      hilog.info(0x0000, TAG, "sendData data connection peerDeviceId=%{public}s" + connection.getPeerDeviceId());
+      let arrayBuffer = new ArrayBuffer(len); // 创建需要发送的数据
+      connection.sendData(arrayBuffer);
+      hilog.info(0x0000, TAG, "sendData data connection peerDeviceId=%{public}s", connection.getPeerDeviceId());
       connection.disconnect();
     }
   });
@@ -1061,11 +1098,19 @@ on(type: 'connectResult', callback: Callback&lt;ConnectResult&gt;): void
 
 注册connect事件的回调监听，通过回调函数获取连接结果。使用callback进行异步回调。
 
+调用顺序：
+- 必须在调用connect()之前注册此监听，否则无法获取连接结果
+
+配对调用：
+- 使用完毕后，建议调用off('connectResult')取消监听，避免内存泄漏
+
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1129,6 +1174,8 @@ off(type: 'connectResult', callback?: Callback&lt;ConnectResult&gt;): void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **相关接口**：该接口对应的ArkTS-Sta接口是[offConnectResult](#offconnectresult-1)。
 
 **ArkTS-Dyn起始版本**：20
@@ -1138,7 +1185,7 @@ off(type: 'connectResult', callback?: Callback&lt;ConnectResult&gt;): void
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'connectResult'，完成`connect()`调用，触发该事件。   |
-| callback | Callback&lt;[ConnectResult](#connectresult)&gt; | 否    | 注册的回调函数。    |
+| callback | Callback&lt;[ConnectResult](#connectresult)&gt; | 否    | 注册的回调函数。 需传入对应on方法最后一次注册的回调函数，用于取消该回调的订阅，默认缺省效果与传入行为一致。   |
 
 **错误码：**
 
@@ -1187,6 +1234,8 @@ on(type: 'disconnected', callback: Callback&lt;number&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **相关接口**：该接口对应的ArkTS-Sta接口是[onDisconnected](#ondisconnected-1)。
@@ -1198,7 +1247,7 @@ on(type: 'disconnected', callback: Callback&lt;number&gt;): void
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'disconnected'，连接被动断开或底层异常断开时，触发该事件。   |
-| callback | Callback&lt;number&gt; | 是    | 注册的回调函数，number为返回的错误码。  |
+| callback |  Callback&lt;number&gt;| 是 | 注册的回调函数，连接被动断开或底层异常断开时触发，number为返回的错误码。 |
 
 **错误码：**
 
@@ -1244,6 +1293,8 @@ off(type: 'disconnected', callback?: Callback&lt;number&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **相关接口**：该接口对应的ArkTS-Sta接口是[offDisconnected](#offdisconnected-1)。
@@ -1255,7 +1306,7 @@ off(type: 'disconnected', callback?: Callback&lt;number&gt;): void
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'disconnected'，连接被动断开或底层异常断开时，触发该事件。   |
-| callback | Callback&lt;number&gt; | 否   | 注册的回调函数。number为返回的错误码。   |
+| callback | Callback&lt;number&gt; | 否   | 注册的回调函数，连接被动断开或底层异常断开时触发，number为返回的错误码。 需传入对应on方法最后一次注册的回调函数，用于取消该回调的订阅，默认缺省效果与传入行为一致。  |
 
 **错误码：**
 
@@ -1304,6 +1355,8 @@ on(type: 'dataReceived', callback: Callback&lt;ArrayBuffer&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **相关接口**：该接口对应的ArkTS-Sta接口是[onDataReceived](#ondatareceived-1)。
@@ -1315,7 +1368,7 @@ on(type: 'dataReceived', callback: Callback&lt;ArrayBuffer&gt;): void
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'dataReceived'，收到数据时，触发该事件。   |
-| callback | Callback&lt;[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)&gt; | 是    | 注册的回调函数。 |
+| callback | Callback&lt;[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)&gt; | 是    | 回调函数，用于接收对端设备发送的数据。回调参数data为接收到的数据，类型为ArrayBuffer。 |
 
 **错误码：**
 
@@ -1362,6 +1415,8 @@ off(type: 'dataReceived', callback?: Callback&lt;ArrayBuffer&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **相关接口**：该接口对应的ArkTS-Sta接口是[offDataReceived](#offdatareceived-1)。
@@ -1373,7 +1428,7 @@ off(type: 'dataReceived', callback?: Callback&lt;ArrayBuffer&gt;): void
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'dataReceived'，收到数据时，触发该事件。   |
-| callback | Callback&lt;[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)&gt; | 否    | 注册的回调函数。 |
+| callback | Callback&lt;[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)&gt; | 否    | 回调函数，用于接收对端设备发送的数据。回调参数data为接收到的数据，类型为ArrayBuffer。需传入对应on方法最后一次注册的回调函数，用于取消该回调的订阅，默认缺省效果与传入行为一致。 |
 
 **错误码：**
 
@@ -1417,13 +1472,15 @@ try {
 
 onConnectResult(callback: Callback&lt;ConnectResult&gt;): void
 
-注册connect事件的回调监听，通过回调函数获取连接结果。使用callback进行异步回调。
+注册connect事件的回调监听，通过回调函数获取连接结果。使用callback进行异步回调。须在调用connect()之前注册此监听，否则无法获取连接结果；使用完毕后，建议调用off('connectResult')取消监听，避免内存泄漏。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1484,6 +1541,8 @@ offConnectResult(callback?: Callback&lt;ConnectResult&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[off('connectResult')](#offconnectresult)。
@@ -1494,7 +1553,7 @@ offConnectResult(callback?: Callback&lt;ConnectResult&gt;): void
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
-| callback | Callback&lt;[ConnectResult](#connectresult)&gt; | 否    | 注册的回调函数。    |
+| callback | Callback&lt;[ConnectResult](#connectresult)&gt; | 否    | 注册的回调函数。需传入对应on方法最后一次注册的回调函数，用于取消该回调的订阅，默认缺省效果与传入行为一致。    |
 
 **错误码：**
 
@@ -1543,6 +1602,8 @@ onDisconnected(callback: Callback&lt;int&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[on('disconnected')](#ondisconnected)。
@@ -1553,7 +1614,7 @@ onDisconnected(callback: Callback&lt;int&gt;): void
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
-| callback | Callback&lt;int&gt; | 是    | 注册的回调函数，int为返回的错误码。  |
+| callback | Callback&lt;int&gt; | 是    | 注册的回调函数，连接被动断开或底层异常断开时触发，int为返回的错误码。  |
 
 **错误码：**
 
@@ -1599,6 +1660,8 @@ offDisconnected(callback?: Callback&lt;int&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[off('disconnected')](#offdisconnected)。
@@ -1609,7 +1672,7 @@ offDisconnected(callback?: Callback&lt;int&gt;): void
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
-| callback | Callback&lt;int&gt; | 否   | 注册的回调函数。int为返回的错误码。   |
+| callback | Callback&lt;int&gt; | 否   | 注册的回调函数，连接被动断开或底层异常断开时触发，int为返回的错误码。 需传入对应on方法最后一次注册的回调函数，用于取消该回调的订阅，默认缺省效果与传入行为一致。  |
 
 **错误码：**
 
@@ -1658,6 +1721,8 @@ onDataReceived(callback: Callback&lt;ArrayBuffer&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[on('dataReceived')](#ondatareceived)。
@@ -1668,7 +1733,7 @@ onDataReceived(callback: Callback&lt;ArrayBuffer&gt;): void
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
-| callback | Callback&lt;[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)&gt; | 是    | 注册的回调函数。 |
+| callback | Callback&lt;[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)&gt; | 是    | 注册的回调函数，用于接收对端设备发送的数据。回调参数data为接收到的数据，类型为ArrayBuffer。 |
 
 **错误码：**
 
@@ -1714,6 +1779,8 @@ offDataReceived(callback?: Callback&lt;ArrayBuffer&gt;): void
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异**: 该接口在不支持分布式业务的Wearable设备上无法调用到，在企业管控设备中调用无效果，在其他设备类型可以正常调用。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **相关接口**：该接口对应的ArkTS-Dyn接口是[off('dataReceived')](#offdatareceived)。
@@ -1724,7 +1791,7 @@ offDataReceived(callback?: Callback&lt;ArrayBuffer&gt;): void
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
-| callback | Callback&lt;[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)&gt; | 否    | 注册的回调函数。 |
+| callback | Callback&lt;[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)&gt; | 否    | 注册的回调函数，用于接收对端设备发送的数据。回调参数data为接收到的数据，类型为ArrayBuffer。需传入对应on方法最后一次注册的回调函数，用于取消该回调的订阅，默认缺省效果与传入行为一致。 |
 
 **错误码：**
 

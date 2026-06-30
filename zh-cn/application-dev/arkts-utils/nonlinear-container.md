@@ -1,8 +1,8 @@
 # 非线性容器
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
@@ -118,7 +118,7 @@ TreeSet支持增、删、改、查操作，常用API如下：
 | --------- | ------- | ------- |
 | 增加元素 | add(value: T) | 增加一个值。 |
 | 访问元素 | values() | 返回一个迭代器对象，包含set中的所有value值。 |
-| 访问元素 | entries() | 返回一个迭代器对象，包含类似键值对的数组，键值都是value。 |
+| 访问元素 | entries() | 返回一个迭代器对象，包含值的数组，值都是value。 |
 | 访问元素 | getFirstValue() | 获取set中排在首位的value值。 |
 | 访问元素 | getLastValue() | 获取set中排在末位的value值。 |
 | 访问元素 | forEach(callbackFn: (value?: T, key?: T, set?: TreeSet\<T>) => void, thisArg?: Object) | 遍历访问整个set的元素。 |
@@ -166,7 +166,7 @@ LightWeightSet依据泛型定义，采用更加轻量级的结构，初始默认
 
 LightWeightSet底层通过hash表结构实现value的唯一性，冲突策略采用线性探测法，查找策略基于二分查找法。
 
-LightWeightSet和[HashSet](../reference/apis-arkts/js-apis-hashset.md)都是用来存储键值的集合，但LightWeightSet的占用内存更小。
+LightWeightSet和[HashSet](../reference/apis-arkts/js-apis-hashset.md)都是用来存储值的集合，但LightWeightSet的占用内存更小。
 
 当需要存取某个集合或是对某个集合去重时，推荐使用占用内存更小的LightWeightSet。
 
@@ -178,7 +178,7 @@ LightWeightSet支持增、删、改、查操作。常用API如下：
 | 访问元素 | getIndexOf(key: T) | 获取对应的index值。 |
 | 访问元素 | ArkTS-Dyn: getValueAt(index: number) <br/> ArkTS-Sta: getValueAt(index: int) | 获取指定index对应的value值。 |
 | 访问元素 | values() | 返回一个迭代器对象，包含set中的所有value值。 |
-| 访问元素 | entries() | 返回一个迭代器对象，包含类似键值对的数组，键值都是value。 |
+| 访问元素 | entries() | 返回一个迭代器对象，包含值的数组，值都是value。 |
 | 访问元素 | forEach(callbackFn: (value?: T, key?: T, set?: LightWeightSet\<T>) => void, thisArg?: Object) | 遍历访问整个set的元素。 |
 | 访问元素 | ArkTS-Dyn: \[Symbol.iterator]():IterableIterator&lt;T&gt; <br/> ArkTS-Sta: $_iterator(): IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
 | 修改元素 | forEach(callbackFn: (value?: T, key?: T, set?: LightWeightSet\<T>) => void, thisArg?: Object) | 通过遍历对set中的元素进行操作，可能包括但不限于修改元素。 |
@@ -219,6 +219,8 @@ PlainArray支持增、删、改、查操作。常用API如下：
 
 此处列举常用的非线性容器HashMap、TreeMap、LightWeightMap、PlainArray的使用示例，包括导入模块、增加元素、访问元素及修改等操作，示例代码如下所示：
 
+ArkTS-Dyn示例：
+
 <!-- @[nonlinear_container](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/ArkTsContainerLibrary/NonlinearContainers/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
@@ -257,6 +259,53 @@ import { HashMap, TreeMap, LightWeightMap, PlainArray } from '@kit.ArkTS';
   // ...
   // PlainArray
   let plainArray: PlainArray<string> = new PlainArray();
+  plainArray.add(1, 'sdd'); // 增加一个键为1，值为'sdd'的元素
+  plainArray.add(2, 'sff'); // 增加一个键为2，值为'sff'的元素
+  console.info(`result: ${plainArray.get(1)}`); // 访问键为1的元素，获取值。输出：result: sdd
+  // ...
+  console.info(`result: ${plainArray.getKeyAt(1)}`); // 访问索引为1的元素，获取键。输出：result: 2
+```
+
+ArkTS-Sta示例：
+
+<!-- @[nonlinear_container](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/ArkTS-Sta/ArkTSRuntimeCoreLibrary/ArkTSContainerLibrary/NonlinearContainers/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
+// 导入HashMap，TreeMap，LightWeightMap，PlainArray模块
+import { HashMap, TreeMap, LightWeightMap, PlainArray } from '@kit.ArkTS';
+
+  // ...
+  // HashMap
+  let hashMap1: HashMap<string, int> = new HashMap<string, int>();
+  hashMap1.set('a', 123); // 增加一个键为'a'，值为123的元素
+  let hashMap2: HashMap<int, int> = new HashMap<int, int>();
+  hashMap2.set(4, 123); // 增加一个键为4，值为123的元素
+  console.info(`result: ${hashMap2.hasKey(4)}`); // 判断是否含有键为4的元素。输出：result: true
+  // ...
+  console.info(`result: ${hashMap1.get('a')}`); // 访问键为'a'的元素。输出：result: 123
+  // ...
+  // TreeMap
+  let treeMap: TreeMap<string, int> = new TreeMap<string, int>();
+  treeMap.set('a', 123); // 增加一个键为'a'，值为123的元素
+  treeMap.set('6', 356); // 增加一个键为'6'，值为356的元素
+  console.info(`result: ${treeMap.get('a')}`); // 访问键为'a'的元素。输出：result: 123
+  // ...
+  console.info(`result: ${treeMap.getFirstKey()}`); // 访问首元素。输出：result: 6
+  // ...
+  console.info(`result: ${treeMap.getLastKey()}`); // 访问尾元素。输出：result: a
+  // ...
+  // LightWeightMap
+  let lightWeightMap: LightWeightMap<string, int> = new LightWeightMap<string, int>();
+  lightWeightMap.set('x', 123); // 增加一个键为'x'，值为123的元素
+  lightWeightMap.set('8', 356); // 增加一个键为'8'，值为356的元素
+  console.info(`result: ${lightWeightMap.get('a')}`); // 访问键为'a'的元素。输出：result: undefined
+  // ...
+  console.info(`result: ${lightWeightMap.get('x')}`); // 访问键为'x'的元素，获取其值。输出：result: 123
+  // ...
+  console.info(`result: ${lightWeightMap.getIndexOfKey('8')}`); // 访问键为'8'的元素，获取其索引。输出：result: 0
+  // ...
+  // PlainArray
+  let plainArray: PlainArray<string> = new PlainArray<string>();
   plainArray.add(1, 'sdd'); // 增加一个键为1，值为'sdd'的元素
   plainArray.add(2, 'sff'); // 增加一个键为2，值为'sff'的元素
   console.info(`result: ${plainArray.get(1)}`); // 访问键为1的元素，获取值。输出：result: sdd

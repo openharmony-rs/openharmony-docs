@@ -22,11 +22,13 @@ ArkTS-Sta: borderImage(value: BorderImageOption | undefined): this
 
 设置组件的图片边框。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -36,7 +38,7 @@ ArkTS-Sta: borderImage(value: BorderImageOption | undefined): this
 
 | 参数名      | 类型                                            | 必填 | 说明                           |
 | ----------- | ----------------------------------------------- | ---- | -------------------------------- |
-| value | [BorderImageOption](#borderimageoption对象说明) | 是   | 图片边框或者渐变色边框设置接口。<br/>取值为undefined时，与不设置表现一致。 |
+| value | ArkTS-Dyn: [BorderImageOption](#borderimageoption对象说明)<br/>ArkTS-Sta: [BorderImageOption](#borderimageoption对象说明) \| undefined | 是   | 图片边框或者渐变色边框设置接口。<br/>取值为undefined时，与不设置表现一致。 |
 
 **返回值：**
 
@@ -46,9 +48,9 @@ ArkTS-Sta: borderImage(value: BorderImageOption | undefined): this
 
 ## BorderImageOption对象说明
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -59,9 +61,9 @@ ArkTS-Sta: borderImage(value: BorderImageOption | undefined): this
 <!--Table: 15%; 25%; 8%; 8%; 44%-->
 | 名称   | 类型                                                         | 只读 | 可选 | 说明                                                  |
 | ------ | ------------------------------------------------------------ | ---- |  ------------------------------------------------------------ |  ------------------------------------------------------------ |
-| source | string \| [Resource](ts-types.md#resource) \| [LinearGradient](#lineargradient) | 否 | 是 | 边框图源或者渐变色设置。参数类型为string类型时，用于设置边框图源，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。<br/>**说明：**<br>边框图源仅适用于容器组件，如[Row](ts-container-row.md)、[Column](ts-container-column.md)、[Flex](ts-container-flex.md)，在非容器组件上使用会失效。 |
+| source | ArkTS-Dyn: string \| [Resource](ts-types.md#resource) \| [LinearGradient](#lineargradient)<br/>ArkTS-Sta: string \| [Resource](ts-types.md#resource) \| [LinearGradientOptions](ts-universal-attributes-gradient-color.md#lineargradientoptions18对象说明) | 否 | 是 | 边框图源或者渐变色设置。参数类型为string类型时，用于设置边框图源，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。<br/>**说明：**<br>边框图源仅适用于容器组件，如[Row](ts-container-row.md)、[Column](ts-container-column.md)、[Flex](ts-container-flex.md)，在非容器组件上使用会失效 |
 | slice  | [Length](ts-types.md#length) \| [EdgeWidths](ts-types.md#edgewidths9)  \| [LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup>| 否 | 是 | 设置边框图片左上角、右上角、左下角以及右下角的切割宽高。<br/>默认值：0<br/>**说明：**<br/>设置负数时取默认值。<br/>参数类型为[Length](ts-types.md#length)时，统一设置四个角的宽高。<br/>参数类型为[EdgeWidths](ts-types.md#edgewidths9)时：<br/>-&nbsp;Top：设置图片上侧被切割的高。<br/>-&nbsp;Bottom：设置图片下侧被切割的高。<br/>-&nbsp;Left：设置图片左侧被切割的宽。<br/>-&nbsp;Right：设置图片右侧被切割的宽。 <br/>参数类型为[LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup>时：<br/>-&nbsp;Top：设置图片上侧被切割的高。<br/>-&nbsp;Bottom：设置图片下侧被切割的高。<br/>-&nbsp;Start：设置图片左侧被切割的宽。<br />从右至左显示语言模式下为设置图片右侧被切割的宽。<br/>-&nbsp;End：设置图片右侧被切割的宽。 <br/>从右至左显示语言模式下为设置图片左侧被切割的宽。|
-| width  | [Length](ts-types.md#length) \| [EdgeWidths](ts-types.md#edgewidths9) \| [LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup> | 否 | 是 | 设置图片边框宽度。<br/>默认值：0<br/>**说明：**<br/>设置负数时值取1。<br/>参数类型为[Length](ts-types.md#length)时，统一设置四条边框的宽度，设置负数时取默认值。<br/>参数类型为[EdgeWidths](ts-types.md#edgewidths9)时：<br/>-&nbsp;Top：设置图片边框上边框的宽。<br/>-&nbsp;Bottom：设置图片边框下边框的宽。<br/>-&nbsp;Left：设置图片边框左边框的宽。<br/>-&nbsp;Right：设置图片边框右边框宽。<br/>参数类型为[LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup>时：<br/>-&nbsp;Top：设置图片边框上边框的宽。<br/>-&nbsp;Bottom：设置图片边框下边框的宽。<br/>-&nbsp;Start：设置图片边框左边框的宽。<br />从右至左显示语言模式下为设置图片边框右边框宽。<br/>-&nbsp;End：设置图片边框右边框宽。<br />从右至左显示语言模式下为设置图片边框左边框的宽。 |
+| width  | [Length](ts-types.md#length) \| [EdgeWidths](ts-types.md#edgewidths9) \| [LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup> | 否 | 是 | 设置图片边框宽度。<br/>默认值：0<br/>**说明：**<br/>设置负数时取默认值。<br/>参数类型为[Length](ts-types.md#length)时，统一设置四条边框的宽度。<br/>参数类型为[EdgeWidths](ts-types.md#edgewidths9)时：<br/>-&nbsp;Top：设置图片边框上边框的宽。<br/>-&nbsp;Bottom：设置图片边框下边框的宽。<br/>-&nbsp;Left：设置图片边框左边框的宽。<br/>-&nbsp;Right：设置图片边框右边框宽。<br/>参数类型为[LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup>时：<br/>-&nbsp;Top：设置图片边框上边框的宽。<br/>-&nbsp;Bottom：设置图片边框下边框的宽。<br/>-&nbsp;Start：设置图片边框左边框的宽。<br />从右至左显示语言模式下为设置图片边框右边框宽。<br/>-&nbsp;End：设置图片边框右边框宽。<br />从右至左显示语言模式下为设置图片边框左边框的宽。 |
 | outset | [Length](ts-types.md#length) \| [EdgeWidths](ts-types.md#edgewidths9) \| [LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup> | 否 | 是 | 设置边框图片向外延伸距离。<br/>默认值：0<br/>**说明：**<br/>设置负数时取默认值。<br/>参数类型为[Length](ts-types.md#length)时，统一设置四条边框的向外延伸距离。<br/>参数类型为[EdgeWidths](ts-types.md#edgewidths9)时：<br/>-&nbsp;Top：设置边框图片上边框向外延伸的距离。<br/>-&nbsp;Bottom：设置边框图片下边框向外延伸的距离。<br/>-&nbsp;Left：设置边框图片左边框向外延伸的距离。<br/>-&nbsp;Right：设置边框图片右边框向外延伸的距离。<br/>参数类型为[LocalizedEdgeWidths](ts-types.md#localizededgewidths12)<sup>12+</sup>时：<br/>-&nbsp;Top：设置边框图片上边框向外延伸的距离。<br/>-&nbsp;Bottom：设置边框图片下边框向外延伸的距离。<br/>-&nbsp;Start：设置边框图片左边框向外延伸的距离。<br/>从右至左显示语言模式下为设置边框图片右边框向外延伸的距离。<br/>-&nbsp;End：设置边框图片右边框向外延伸的距离。<br/>从右至左显示语言模式下为设置边框图片左边框向外延伸的距离。 |
 | repeat | [RepeatMode](#repeatmode)                            | 否 | 是 | 设置被切割的图片在边框上的重复方式。<br/>默认值：RepeatMode.Stretch |
 | fill   | boolean                                                      | 否 | 是 | 设置边框图片是否中心填充。true表示中心填充，false表示非中心填充。<br/>默认值：false                     |
@@ -70,11 +72,15 @@ ArkTS-Sta: borderImage(value: BorderImageOption | undefined): this
 
 用于设置被切割的图片在边框上的重复方式。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 值                              | 说明                               |
 | ------- | ----------------------------------- | ----------------------------------- |
@@ -85,13 +91,13 @@ ArkTS-Sta: borderImage(value: BorderImageOption | undefined): this
 
 ## LinearGradient
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Dyn起始版本：** 9
 
 | 名称          | 类型   | 只读 | 可选 | 说明                      |
 | --------------- | ------ | ---- | ---- | ------------------------- |

@@ -10,7 +10,9 @@
 字体管理模块，提供给系统应用安装和卸载三方字体的能力。
 
 >  **说明：**
->  
+>
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 >  - 本模块首批接口从API version 19开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 >  - 本模块为系统接口。
@@ -21,17 +23,23 @@
 import { fontManager } from '@kit.LocalizationKit';
 ```
 
-## installFont
+## installFont<sup>19+</sup>
 
-installFont(path: string): Promise&lt;number&gt;
+ArkTS-Dyn: installFont(path: string): Promise&lt;number&gt;
 
-安装指定路径下的字体，使用promise异步回调。
+ArkTS-Sta: installFont(path: string): Promise&lt;int&gt;
+
+安装指定路径下的字体。使用Promise异步回调。
 
 **需要权限:** ohos.permission.UPDATE_FONT
 
 **系统能力:** SystemCapability.Global.FontManager
 
-**参数：** 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名   | 类型     | 必填   | 说明    |
 | ----- | ------ | ---- | ----- |
@@ -41,7 +49,7 @@ installFont(path: string): Promise&lt;number&gt;
 
 | 类型                    | 说明                     |
 | --------------------- | ---------------------- |
-| Promise&lt;number&gt; | 返回安装结果。返回为0表示安装成功，否则安装失败。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | 返回安装结果。返回为0表示安装成功，否则安装失败。 |
 
 **错误码：**
 
@@ -59,10 +67,10 @@ installFont(path: string): Promise&lt;number&gt;
 | 31100106 | Other error.     |
 
 **示例：**
-  ```ts
+```ts
   import { fontManager } from '@kit.LocalizationKit';
 
-  async installFont() {
+  async function installFont() {
     try {
       let res = await fontManager.installFont('fontPath');
       console.info('installFont suc. res is ' + res);
@@ -71,17 +79,23 @@ installFont(path: string): Promise&lt;number&gt;
     }
     return;
   }
-  ```
+```
 
-## uninstallFont
+## uninstallFont<sup>19+</sup>
 
-uninstallFont(fullName: string): Promise&lt;number&gt;
+ArkTS-Dyn: uninstallFont(fullName: string): Promise&lt;number&gt;
 
-卸载指定名称的字体，使用promise异步回调。
+ArkTS-Sta: uninstallFont(fullName: string): Promise&lt;int&gt;
+
+卸载指定名称的字体。使用Promise异步回调。
 
 **需要权限:** ohos.permission.UPDATE_FONT
 
 **系统能力:** SystemCapability.Global.FontManager
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -93,7 +107,7 @@ uninstallFont(fullName: string): Promise&lt;number&gt;
 
 | 类型                    | 说明                     |
 | --------------------- | ---------------------- |
-| Promise&lt;number&gt; | 返回卸载结果。返回为0表示卸载成功，否则卸载失败。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | 返回卸载结果。返回为0表示卸载成功，否则卸载失败。 |
 
 **错误码：**
 
@@ -108,10 +122,10 @@ uninstallFont(fullName: string): Promise&lt;number&gt;
 | 31100109 | Other error.                 |
 
 **示例：**
-  ```ts
+```ts
   import { fontManager } from '@kit.LocalizationKit';
 
-  async uninstallFont() {
+  async function uninstallFont() {
     try {
       let res = await fontManager.uninstallFont('fontName');
       console.info('uninstallFont suc. res is ' + res);
@@ -120,17 +134,23 @@ uninstallFont(fullName: string): Promise&lt;number&gt;
     }
     return;
   }
-  ```
+```
 
 ## dataMigration<sup>23+</sup>
 
-dataMigration(callback: DataMigrationCallback): int
+ArkTS-Dyn: dataMigration(callback: DataMigrationCallback): number
+
+ArkTS-Sta: dataMigration(callback: DataMigrationCallback): int
 
 设备升级时使用的数据迁移接口，用于拉起迁移任务。
 
 **需要权限:** ohos.permission.UPDATE_FONT
 
 **系统能力:** SystemCapability.Global.FontManager
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -142,7 +162,7 @@ dataMigration(callback: DataMigrationCallback): int
 
 | 类型                    | 说明                     |
 | --------------------- | ---------------------- |
-| int | 返回拉起数据迁移任务结果。返回为0表示拉起成功，否则拉起失败。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回拉起数据迁移任务结果。返回为0表示拉起成功，否则拉起失败。 |
 
 **错误码：**
 
@@ -156,30 +176,31 @@ dataMigration(callback: DataMigrationCallback): int
 | 31100111 | DataMigrationing.      |
 
 **示例：**
-  ```ts
-  import { fontManager } from '@kit.LocalizationKit';
+```ts
+import { fontManager } from '@kit.LocalizationKit';
 
-  dataMigration() {
-    const callback: fontManager.DataMigrationCallback = {
-      onHeartBeat: () => {
-        console.info('onHeartBeat callback');
-      },
-      onProgress(progress : fontManager.DataMigrationProgress) => {
-        console.info('onProgress callback');
-      },
-      onResult(result : int) => {
-        console.info('onResult callback');
-      }
-    }
-    try {
-      let res = await fontManager.dataMigration(callback);
-      console.info('dataMigration suc. res is ' + res);
-    } catch (error) {
-      console.error('dataMigration err.' + error.code);
-    }
-    return;
+class DataMigrationCallbackImpl implements fontManager.DataMigrationCallback {
+  onHeartBeat(): void {
+    console.info('onHeartBeat callback');
   }
-  ```
+  onProgress(progress : fontManager.DataMigrationProgress): void {
+    console.info('onProgress callback');
+  }
+  onResult(result : int): void {
+    console.info('onResult callback');
+  }
+}
+
+async function dataMigration() {
+  const callback = new DataMigrationCallbackImpl;
+  try {
+    let res: int = fontManager.dataMigration(callback);
+    console.info('dataMigration suc. res is ' + res);
+  } catch (error) {
+    console.error('dataMigration err.' + error.code);
+  }
+}
+```
 
 ## DataMigrationCallback<sup>23+</sup>
 
@@ -193,31 +214,36 @@ onHeartBeat(): void
 
 **系统能力：** SystemCapability.Global.FontManager
 
-**示例：**
-  ```ts
-  import { fontManager } from '@kit.LocalizationKit';
+**ArkTS-Dyn起始版本：** 23
 
-  dataMigration() {
-    const callback: fontManager.DataMigrationCallback = {
-      onHeartBeat: () => {
-        console.info('onHeartBeat callback');
-      },
-      onProgress(progress : fontManager.DataMigrationProgress) => {
-        console.info('onProgress callback');
-      },
-      onResult(result : int) => {
-        console.info('onResult callback');
-      }
-    }
-    try {
-      let res = await fontManager.dataMigration(callback);
-      console.info('dataMigration suc. res is ' + res);
-    } catch (error) {
-      console.error('dataMigration err.' + error.code);
-    }
-    return;
+**ArkTS-Sta起始版本：** 23
+
+**示例：**
+```ts
+import { fontManager } from '@kit.LocalizationKit';
+
+class DataMigrationCallbackImpl implements fontManager.DataMigrationCallback {
+  onHeartBeat(): void {
+    console.info('onHeartBeat callback');
   }
-  ```
+  onProgress(progress : fontManager.DataMigrationProgress): void {
+    console.info('onProgress callback');
+  }
+  onResult(result : int): void {
+    console.info('onResult callback');
+  }
+}
+
+async function dataMigration() {
+  const callback = new DataMigrationCallbackImpl;
+  try {
+    let res: int = fontManager.dataMigration(callback);
+    console.info('dataMigration suc. res is ' + res);
+  } catch (error) {
+    console.error('dataMigration err.' + error.code);
+  }
+}
+```
 
 ### onProgress<sup>23+</sup>
 
@@ -227,6 +253,10 @@ onProgress(progress : DataMigrationProgress): void
 
 **系统能力：** SystemCapability.Global.FontManager
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                               |
@@ -234,70 +264,78 @@ onProgress(progress : DataMigrationProgress): void
 | progress | [DataMigrationProgress](#datamigrationprogress23) | 是   | 数据迁移进度信息。 |
 
 **示例：**
-  ```ts
-  import { fontManager } from '@kit.LocalizationKit';
+```ts
+import { fontManager } from '@kit.LocalizationKit';
 
-  dataMigration() {
-    const callback: fontManager.DataMigrationCallback = {
-      onHeartBeat: () => {
-        console.info('onHeartBeat callback');
-      },
-      onProgress(progress : fontManager.DataMigrationProgress) => {
-        console.info('onProgress callback');
-      },
-      onResult(result : int) => {
-        console.info('onResult callback');
-      }
-    }
-    try {
-      let res = await fontManager.dataMigration(callback);
-      console.info('dataMigration suc. res is ' + res);
-    } catch (error) {
-      console.error('dataMigration err.' + error.code);
-    }
-    return;
+class DataMigrationCallbackImpl implements fontManager.DataMigrationCallback {
+  onHeartBeat(): void {
+    console.info('onHeartBeat callback');
   }
-  ```
+  onProgress(progress : fontManager.DataMigrationProgress): void {
+    console.info('onProgress callback');
+  }
+  onResult(result : int): void {
+    console.info('onResult callback');
+  }
+}
+
+async function dataMigration() {
+  const callback = new DataMigrationCallbackImpl;
+  try {
+    let res: int = fontManager.dataMigration(callback);
+    console.info('dataMigration suc. res is ' + res);
+  } catch (error) {
+    console.error('dataMigration err.' + error.code);
+  }
+}
+```
 
 ### onResult<sup>23+</sup>
 
-onResult(result : int): void
+ArkTS-Dyn: onResult(result : number): void
+
+ArkTS-Sta: onResult(result : int): void
 
 回调函数，用于返回数据迁移的结果。
 
 **系统能力：** SystemCapability.Global.FontManager
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                               |
 | ------- | ------ | ---- | ---------------------------------- |
-| result | int | 是   | 数据迁移结果。<br>0：数据迁移成功。<br>1：无需进行数据迁移。<br>2：获取用户ID失败。<br>3：检查目录失败。<br>4：初始化缓存目录失败。<br>5：打开源文件失败。<br>6：拷贝失败。<br>7：文件重命名失败。<br>8：文件删除失败。|
+| result | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 数据迁移结果。<br>0：数据迁移成功。<br>1：无需进行数据迁移。<br>2：获取用户ID失败。<br>3：检查目录失败。<br>4：初始化缓存目录失败。<br>5：打开源文件失败。<br>6：拷贝失败。<br>7：文件重命名失败。<br>8：文件删除失败。|
 
 **示例：**
-  ```ts
-  import { fontManager } from '@kit.LocalizationKit';
+```ts
+import { fontManager } from '@kit.LocalizationKit';
 
-  dataMigration() {
-    const callback: fontManager.DataMigrationCallback = {
-      onHeartBeat: () => {
-        console.info('onHeartBeat callback');
-      },
-      onProgress(progress : fontManager.DataMigrationProgress) => {
-        console.info('onProgress callback');
-      },
-      onResult(result : int) => {
-        console.info('onResult callback');
-      }
-    }
-    try {
-      let res = await fontManager.dataMigration(callback);
-      console.info('dataMigration suc. res is ' + res);
-    } catch (error) {
-      console.error('dataMigration err.' + error.code);
-    }
-    return;
+class DataMigrationCallbackImpl implements fontManager.DataMigrationCallback {
+  onHeartBeat(): void {
+    console.info('onHeartBeat callback');
   }
-  ```
+  onProgress(progress : fontManager.DataMigrationProgress): void {
+    console.info('onProgress callback');
+  }
+  onResult(result : int): void {
+    console.info('onResult callback');
+  }
+}
+
+async function dataMigration() {
+  const callback = new DataMigrationCallbackImpl;
+  try {
+    let res: int = fontManager.dataMigration(callback);
+    console.info('dataMigration suc. res is ' + res);
+  } catch (error) {
+    console.error('dataMigration err.' + error.code);
+  }
+}
+```
 
 ## DataMigrationProgress<sup>23+</sup>
 
@@ -305,7 +343,11 @@ onResult(result : int): void
 
 **系统能力：** SystemCapability.Global.FontManager
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 类型 | 只读 | 可选    | 说明  |
 | -------- | ---------------|--------|---------|-------------------------------- |
-| timeRemaining | int  |是 | 否 | 表示预计剩余时间，单位：秒。    |
-| progressPercentage | int |是 | 否 | 表示数据迁移百分比进展，取值：0-100。|
+| timeRemaining | ArkTS-Dyn: number<br>ArkTS-Sta: int  |是 | 否 | 表示预计剩余时间，单位：秒。    |
+| progressPercentage | ArkTS-Dyn: number<br>ArkTS-Sta: int |是 | 否 | 表示数据迁移百分比进展，取值：0-100。|

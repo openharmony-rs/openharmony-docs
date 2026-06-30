@@ -27,7 +27,7 @@ ArkTS中，ISendable类型的对象是Object类型的实例，遵循其基本特
 
 ISendable主要用在开发者自定义Sendable数据结构的场景中，ArkTS语言标准库中的容器类型（如[Array](arkts-apis-arkts-collections-Array.md)、[Map](arkts-apis-arkts-collections-Map.md)、[Set](arkts-apis-arkts-collections-Set.md)等）隐式地继承并实现了ISendable。
 
-**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Utils.Lang
 
@@ -59,9 +59,6 @@ class CustomData implements lang.ISendable {
 | BYTECODE  | "bytecode" | 注解将保留到编译产物中。 |
 
 ## Retention<sup>24+</sup>
-
-@interface Retention { policy: RetentionPolicy; }
-
 系统提供的API注解能力，可用于指定自定义注解的生命周期。此注解只能标注在其他注解声明上。在自定义注解上标注Retention注解后，根据policy的不同取值，编译器会对自定义注解执行不同的保留策略。
 
 **模型约束：** 此接口仅可在Stage模型下使用。

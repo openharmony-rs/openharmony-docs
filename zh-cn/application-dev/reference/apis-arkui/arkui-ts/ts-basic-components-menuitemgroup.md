@@ -24,7 +24,9 @@
 
 MenuItemGroup(value?: MenuItemGroupOptions)
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+构造MenuItem的分组。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,7 +42,7 @@ MenuItemGroup(value?: MenuItemGroupOptions)
 
 ## MenuItemGroupOptions对象说明
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -83,7 +85,7 @@ attributeModifier(modifier: AttributeModifier\<MenuItemGroupAttribute\> | Attrib
 
 | 参数名    | 类型                                                                                              | 只读 | 可选 | 说明                       |
 | --------- | ------------------------------------------------------------------------------------------------- | ---- | ---- | -------------------------- |
-| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md)\<[MenuItemGroupAttribute](#menuitemgroupattribute23)\>&nbsp;\|&nbsp;[AttributeModifier](ts-universal-attributes-attribute-modifier.md)\<[CommonMethod](./ts-component-general-attributes.md)\>&nbsp;\|&nbsp;undefined | 否   | 否   | MenuItemGroup组件的属性修改器。 |
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<[MenuItemGroupAttribute](#menuitemgroupattribute23)\>&nbsp;\|&nbsp;[AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod\>&nbsp;\|&nbsp;undefined | 否   | 否   | MenuItemGroup组件的属性修改器。<br/>CommonMethod：[通用属性](./ts-component-general-attributes.md) |
 
 ## 示例
 

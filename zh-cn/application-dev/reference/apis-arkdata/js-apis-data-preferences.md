@@ -28,7 +28,7 @@ import { preferences } from '@kit.ArkData';
 
 ## 常量
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -46,9 +46,11 @@ import { preferences } from '@kit.ArkData';
 
 getPreferences(context: Context, name: string, callback: AsyncCallback&lt;Preferences&gt;): void
 
-获取Preferences实例，使用callback异步回调。
+获取Preferences实例，通过name进行参数设置，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+应用首次调用该接口获取某个Preferences实例后，该实例会被缓存起来，后续再次调用时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -97,6 +99,8 @@ preferences.getPreferences(context, 'myStore', (err: BusinessError, val: prefere
 
 Stage模型示例：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -118,13 +122,38 @@ class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+let dataPreferences: preferences.Preferences | undefined = undefined;
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    preferences.getPreferences(this.context, 'myStore', (err: BusinessError | null, val: preferences.Preferences | undefined) => {
+      if (err) {
+        console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+        return;
+      }
+      dataPreferences = val;
+      console.info("Succeeded in getting preferences.");
+    })
+  }
+}
+```
+
 ## preferences.getPreferences
 
 getPreferences(context: Context, name: string): Promise&lt;Preferences&gt;
 
-获取Preferences实例，使用Promise异步回调。
+获取Preferences实例，通过name进行参数设置，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+应用首次调用该接口获取某个Preferences实例后，该实例会被缓存起来，后续再次调用时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -167,8 +196,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let context = featureAbility.getContext();
 
 let dataPreferences: preferences.Preferences | null = null;
-let promise = preferences.getPreferences(context, 'myStore');
-promise.then((object: preferences.Preferences) => {
+let sp = preferences.getPreferences(context, 'myStore');
+sp.then((object: preferences.Preferences) => {
   dataPreferences = object;
   console.info("Succeeded in getting preferences.");
 }).catch((err: BusinessError) => {
@@ -177,6 +206,8 @@ promise.then((object: preferences.Preferences) => {
 ```
 
 Stage模型示例：
+
+ArkTS-Dyn示例：
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -187,11 +218,32 @@ let dataPreferences: preferences.Preferences | null = null;
 
 class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
-    let promise = preferences.getPreferences(this.context, 'myStore');
-    promise.then((object: preferences.Preferences) => {
+    let sp = preferences.getPreferences(this.context, 'myStore');
+    sp.then((object: preferences.Preferences) => {
       dataPreferences = object;
       console.info("Succeeded in getting preferences.");
     }).catch((err: BusinessError) => {
+      console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+    })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+let dataPreferences: preferences.Preferences | undefined = undefined;
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let sp = preferences.getPreferences(this.context, 'myStore');
+    sp.then((object: preferences.Preferences | undefined) => {
+      dataPreferences = object;
+      console.info("Succeeded in getting preferences.");
+    }).catch((err) => {
       console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
     })
   }
@@ -202,9 +254,11 @@ class EntryAbility extends UIAbility {
 
 getPreferences(context: Context, options: Options, callback: AsyncCallback&lt;Preferences&gt;): void
 
-获取Preferences实例，使用callback异步回调。
+获取Preferences实例，通过Options进行参数设置，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+应用首次调用该接口获取某个Preferences实例后，该实例会被缓存起来，后续再次调用时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -258,6 +312,8 @@ preferences.getPreferences(context, options, (err: BusinessError, val: preferenc
 
 Stage模型示例：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -280,13 +336,39 @@ class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+let dataPreferences: preferences.Preferences | undefined = undefined;
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let options: preferences.Options = { name: 'myStore' };
+    preferences.getPreferences(this.context, options, (err: BusinessError | null, val: preferences.Preferences | undefined) => {
+      if (err) {
+        console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+        return;
+      }
+      dataPreferences = val;
+      console.info("Succeeded in getting preferences.");
+    })
+  }
+}
+```
+
 ## preferences.getPreferences<sup>10+</sup>
 
 getPreferences(context: Context, options: Options): Promise&lt;Preferences&gt;
 
-获取Preferences实例，使用Promise异步回调。
+获取Preferences实例，通过Options进行参数设置，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+应用首次调用该接口获取某个Preferences实例后，该实例会被缓存起来，后续再次调用时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -333,8 +415,8 @@ let context = featureAbility.getContext();
 
 let dataPreferences: preferences.Preferences | null = null;
 let options: preferences.Options = { name: 'myStore' };
-let promise = preferences.getPreferences(context, options);
-promise.then((object: preferences.Preferences) => {
+let sp = preferences.getPreferences(context, options);
+sp.then((object: preferences.Preferences) => {
   dataPreferences = object;
   console.info("Succeeded in getting preferences.");
 }).catch((err: BusinessError) => {
@@ -343,6 +425,8 @@ promise.then((object: preferences.Preferences) => {
 ```
 
 Stage模型示例：
+
+ArkTS-Dyn示例：
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -354,11 +438,34 @@ let dataPreferences: preferences.Preferences | null = null;
 class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     let options: preferences.Options = { name: 'myStore' };
-    let promise = preferences.getPreferences(this.context, options);
-    promise.then((object: preferences.Preferences) => {
+    let sp = preferences.getPreferences(this.context, options);
+    sp.then((object: preferences.Preferences) => {
       dataPreferences = object;
       console.info("Succeeded in getting preferences.");
     }).catch((err: BusinessError) => {
+      console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+    })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+let dataPreferences: preferences.Preferences | undefined = undefined;
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let options: preferences.Options = { name: 'myStore' };
+    let sp = preferences.getPreferences(this.context, 'myStore');
+    sp = preferences.getPreferences(this.context, options);
+    sp.then((object: preferences.Preferences | undefined) => {
+      dataPreferences = object;
+      console.info("Succeeded in getting preferences.");
+    }).catch((err) => {
       console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
     })
   }
@@ -371,7 +478,9 @@ getPreferencesSync(context: Context, options: Options): Preferences
 
 获取Preferences实例，此为同步接口。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+应用首次调用该接口获取某个Preferences实例后，该实例会被缓存起来，后续再次调用时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -440,13 +549,13 @@ class EntryAbility extends UIAbility {
 
 deletePreferences(context: Context, name: string, callback: AsyncCallback&lt;void&gt;): void
 
-从缓存中删除指定的Preferences实例，若Preferences实例有对应的持久化文件，则同时删除其持久化文件。使用callback异步回调。
+从缓存中删除指定的Preferences实例，若Preferences实例有对应的持久化文件，则同时删除其持久化文件。通过name进行参数设置，使用callback异步回调。
 
 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会导致数据一致性问题，应将Preferences实例置为null，系统会统一回收。
 
 不支持该接口与其他preference接口并发调用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -495,6 +604,8 @@ preferences.deletePreferences(context, 'myStore', (err: BusinessError) => {
 
 Stage模型示例：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -513,17 +624,37 @@ class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    preferences.deletePreferences(this.context, 'myStore', (err: BusinessError | null) => {
+      if (err) {
+        console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+        return;
+      }
+      console.info("Succeeded in deleting preferences.");
+    })
+  }
+}
+```
+
 ## preferences.deletePreferences
 
 deletePreferences(context: Context, name: string): Promise&lt;void&gt;
 
-从缓存中删除指定的Preferences实例，若Preferences实例有对应的持久化文件，则同时删除其持久化文件。使用Promise异步回调。
+从缓存中删除指定的Preferences实例，若Preferences实例有对应的持久化文件，则同时删除其持久化文件。通过name进行参数设置，使用Promise异步回调。
 
 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会导致数据一致性问题，应将Preferences实例置为null，系统会统一回收。
 
 不支持该接口与其他preference接口并发调用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -566,8 +697,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let context = featureAbility.getContext();
 
-let promise = preferences.deletePreferences(context, 'myStore');
-promise.then(() => {
+let sp = preferences.deletePreferences(context, 'myStore');
+sp.then(() => {
   console.info("Succeeded in deleting preferences.");
 }).catch((err: BusinessError) => {
   console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
@@ -576,6 +707,8 @@ promise.then(() => {
 
 Stage模型示例：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -583,10 +716,28 @@ import { window } from '@kit.ArkUI';
 
 class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
-    let promise = preferences.deletePreferences(this.context, 'myStore');
-    promise.then(() => {
+    let sp = preferences.deletePreferences(this.context, 'myStore');
+    sp.then(() => {
       console.info("Succeeded in deleting preferences.");
     }).catch((err: BusinessError) => {
+      console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+    })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let sp = preferences.deletePreferences(this.context, 'myStore');
+    sp.then(() => {
+      console.info("Succeeded in deleting preferences.");
+    }).catch((err) => {
       console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
     })
   }
@@ -597,13 +748,13 @@ class EntryAbility extends UIAbility {
 
 deletePreferences(context: Context, options: Options, callback: AsyncCallback&lt;void&gt;): void
 
-从缓存中删除指定的Preferences实例，若Preferences实例有对应的持久化文件，则同时删除其持久化文件。使用callback异步回调。
+从缓存中删除指定的Preferences实例，若Preferences实例有对应的持久化文件，则同时删除其持久化文件。通过Options进行参数设置，使用callback异步回调。
 
 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会导致数据一致性问题，应将Preferences实例置为null，系统会统一回收。
 
 不支持该接口与其他preference接口并发调用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -656,6 +807,8 @@ preferences.deletePreferences(context, options, (err: BusinessError) => {
 
 Stage模型示例：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -675,18 +828,38 @@ class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    preferences.deletePreferences(this.context, options, (err: BusinessError | null) => {
+      if (err) {
+        console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+        return;
+      }
+      console.info("Succeeded in deleting preferences.");
+    })
+  }
+}
+```
+
 
 ## preferences.deletePreferences<sup>10+</sup>
 
 deletePreferences(context: Context, options: Options): Promise&lt;void&gt;
 
-从缓存中删除指定的Preferences实例，若Preferences实例有对应的持久化文件，则同时删除其持久化文件。使用Promise异步回调。
+从缓存中删除指定的Preferences实例，若Preferences实例有对应的持久化文件，则同时删除其持久化文件。通过Options进行参数设置，使用Promise异步回调。
 
 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会导致数据一致性问题，应将Preferences实例置为null，系统会统一回收。
 
 不支持该接口与其他preference接口并发调用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -733,8 +906,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let context = featureAbility.getContext();
 
 let options: preferences.Options = { name: 'myStore' };
-let promise = preferences.deletePreferences(context, options);
-promise.then(() => {
+let sp = preferences.deletePreferences(context, options);
+sp.then(() => {
   console.info("Succeeded in deleting preferences.");
 }).catch((err: BusinessError) => {
   console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
@@ -742,6 +915,8 @@ promise.then(() => {
 ```
 
 Stage模型示例：
+
+ArkTS-Dyn示例：
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -751,10 +926,28 @@ import { window } from '@kit.ArkUI';
 class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     let options: preferences.Options = { name: 'myStore' };
-    let promise = preferences.deletePreferences(this.context, options);
-    promise.then(() => {
+    let sp = preferences.deletePreferences(this.context, options);
+    sp.then(() => {
       console.info("Succeeded in deleting preferences.");
     }).catch((err: BusinessError) => {
+      console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+    })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let sp = preferences.deletePreferences(this.context, options);
+    sp.then(() => {
+      console.info("Succeeded in deleting preferences.");
+    }).catch((err) => {
       console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
     })
   }
@@ -765,7 +958,7 @@ class EntryAbility extends UIAbility {
 
 removePreferencesFromCache(context: Context, name: string, callback: AsyncCallback&lt;void&gt;): void
 
-从缓存中移除指定的Preferences实例，使用callback异步回调。
+从缓存中移除指定的Preferences实例，通过name进行参数设置，使用callback异步回调。
 
 应用首次调用[getPreferences](#preferencesgetpreferences)接口获取某个Preferences实例后，该实例会被缓存起来，后续调用[getPreferences](#preferencesgetpreferences)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移除缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
 
@@ -773,7 +966,7 @@ removePreferencesFromCache(context: Context, name: string, callback: AsyncCallba
 
 若使用[GSKV存储模式](../../database/data-persistence-by-preferences.md#gskv存储)，推荐在进程退出时手动调用一次该接口。此操作会将数据缓存页写入磁盘，可一定程度上减少下一次调用getPreferences接口时的耗时。否则，下一次调用getPreferences接口时底层需要进行数据恢复，数据恢复的耗时取决于未写入磁盘的数据缓存页数量。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -820,6 +1013,8 @@ preferences.removePreferencesFromCache(context, 'myStore', (err: BusinessError) 
 
 Stage模型示例：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -838,11 +1033,31 @@ class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    preferences.removePreferencesFromCache(this.context, 'myStore', (err: BusinessError | null) => {
+      if (err) {
+        console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+        return;
+      }
+      console.info("Succeeded in removing preferences.");
+    })
+  }
+}
+```
+
 ## preferences.removePreferencesFromCache
 
 removePreferencesFromCache(context: Context, name: string): Promise&lt;void&gt;
 
-从缓存中移除指定的Preferences实例，使用Promise异步回调。
+从缓存中移除指定的Preferences实例，通过name进行参数设置，使用Promise异步回调。
 
 应用首次调用[getPreferences](#preferencesgetpreferences)接口获取某个Preferences实例后，该实例会被缓存起来，后续调用[getPreferences](#preferencesgetpreferences)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移除缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
 
@@ -850,7 +1065,7 @@ removePreferencesFromCache(context: Context, name: string): Promise&lt;void&gt;
 
 若使用[GSKV存储模式](../../database/data-persistence-by-preferences.md#gskv存储)，推荐在进程退出时手动调用一次该接口。此操作会将数据缓存页写入磁盘，可一定程度上减少下一次调用getPreferences接口时的耗时。否则，下一次调用getPreferences接口时底层需要进行数据恢复，数据恢复的耗时取决于未写入磁盘的数据缓存页数量。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -891,8 +1106,8 @@ import { featureAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let context = featureAbility.getContext();
-let promise = preferences.removePreferencesFromCache(context, 'myStore');
-promise.then(() => {
+let sp = preferences.removePreferencesFromCache(context, 'myStore');
+sp.then(() => {
   console.info("Succeeded in removing preferences.");
 }).catch((err: BusinessError) => {
   console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
@@ -901,6 +1116,8 @@ promise.then(() => {
 
 Stage模型示例：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -908,10 +1125,28 @@ import { window } from '@kit.ArkUI';
 
 class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
-    let promise = preferences.removePreferencesFromCache(this.context, 'myStore');
-    promise.then(() => {
+    let sp = preferences.removePreferencesFromCache(this.context, 'myStore');
+    sp.then(() => {
       console.info("Succeeded in removing preferences.");
     }).catch((err: BusinessError) => {
+      console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+    })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let sp = preferences.removePreferencesFromCache(this.context, 'myStore');
+    sp.then(() => {
+      console.info("Succeeded in removing preferences.");
+    }).catch((err) => {
       console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
     })
   }
@@ -922,7 +1157,7 @@ class EntryAbility extends UIAbility {
 
 removePreferencesFromCacheSync(context: Context, name: string): void
 
-从缓存中移除指定的Preferences实例，此为同步接口。
+从缓存中移除指定的Preferences实例，通过name进行参数设置，此为同步接口。
 
 应用首次调用[getPreferences](#preferencesgetpreferences)接口获取某个Preferences实例后，该实例会被缓存起来，后续调用[getPreferences](#preferencesgetpreferences)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移除缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
 
@@ -930,7 +1165,7 @@ removePreferencesFromCacheSync(context: Context, name: string): void
 
 若使用[GSKV存储模式](../../database/data-persistence-by-preferences.md#gskv存储)，推荐在进程退出时手动调用一次该接口。此操作会将数据缓存页写入磁盘，可一定程度上减少下一次调用getPreferences接口时的耗时。否则，下一次调用getPreferences接口时底层需要进行数据恢复，数据恢复的耗时取决于未写入磁盘的数据缓存页数量。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -962,6 +1197,7 @@ FA模型示例：
 ```ts
 // 获取context
 import { featureAbility } from '@kit.AbilityKit';
+
 let context = featureAbility.getContext();
 preferences.removePreferencesFromCacheSync(context, 'myStore');
 ```
@@ -983,7 +1219,7 @@ class EntryAbility extends UIAbility {
 
 removePreferencesFromCache(context: Context, options: Options, callback: AsyncCallback&lt;void&gt;): void
 
-从缓存中移除指定的Preferences实例，使用callback异步回调。
+从缓存中移除指定的Preferences实例，通过Options进行参数设置，使用callback异步回调。
 
 应用首次调用[getPreferences](#preferencesgetpreferences)接口获取某个Preferences实例后，该实例会被缓存起来，后续调用[getPreferences](#preferencesgetpreferences)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移除缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
 
@@ -991,7 +1227,7 @@ removePreferencesFromCache(context: Context, options: Options, callback: AsyncCa
 
 若使用[GSKV存储模式](../../database/data-persistence-by-preferences.md#gskv存储)，推荐在进程退出时手动调用一次该接口。此操作会将数据缓存页写入磁盘，可一定程度上减少下一次调用getPreferences接口时的耗时。否则，下一次调用getPreferences接口时底层需要进行数据恢复，数据恢复的耗时取决于未写入磁盘的数据缓存页数量。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1042,6 +1278,8 @@ preferences.removePreferencesFromCache(context, options, (err: BusinessError) =>
 
 Stage模型示例：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1061,11 +1299,31 @@ class EntryAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    preferences.removePreferencesFromCache(this.context, options, (err: BusinessError | null) => {
+      if (err) {
+        console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+        return;
+      }
+      console.info("Succeeded in removing preferences.");
+    })
+  }
+}
+```
+
 ## preferences.removePreferencesFromCache<sup>10+</sup>
 
 removePreferencesFromCache(context: Context, options: Options): Promise&lt;void&gt;
 
-从缓存中移除指定的Preferences实例，使用Promise异步回调。
+从缓存中移除指定的Preferences实例，通过Options进行参数设置，使用Promise异步回调。
 
 应用首次调用[getPreferences](#preferencesgetpreferences)接口获取某个Preferences实例后，该实例会被缓存起来，后续调用[getPreferences](#preferencesgetpreferences)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移除缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
 
@@ -1073,7 +1331,7 @@ removePreferencesFromCache(context: Context, options: Options): Promise&lt;void&
 
 若使用[GSKV存储模式](../../database/data-persistence-by-preferences.md#gskv存储)，推荐在进程退出时手动调用一次该接口。此操作会将数据缓存页写入磁盘，可一定程度上减少下一次调用getPreferences接口时的耗时。否则，下一次调用getPreferences接口时底层需要进行数据恢复，数据恢复的耗时取决于未写入磁盘的数据缓存页数量。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1118,8 +1376,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let context = featureAbility.getContext();
 let options: preferences.Options = { name: 'myStore' };
-let promise = preferences.removePreferencesFromCache(context, options);
-promise.then(() => {
+let sp = preferences.removePreferencesFromCache(context, options);
+sp.then(() => {
   console.info("Succeeded in removing preferences.");
 }).catch((err: BusinessError) => {
   console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
@@ -1127,6 +1385,8 @@ promise.then(() => {
 ```
 
 Stage模型示例：
+
+ArkTS-Dyn示例：
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -1136,10 +1396,28 @@ import { window } from '@kit.ArkUI';
 class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     let options: preferences.Options = { name: 'myStore' };
-    let promise = preferences.removePreferencesFromCache(this.context, options);
-    promise.then(() => {
+    let sp = preferences.removePreferencesFromCache(this.context, options);
+    sp.then(() => {
       console.info("Succeeded in removing preferences.");
     }).catch((err: BusinessError) => {
+      console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+    })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    let sp = preferences.removePreferencesFromCache(this.context, options);
+    sp.then(() => {
+      console.info("Succeeded in removing preferences.");
+    }).catch((err) => {
       console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
     })
   }
@@ -1150,7 +1428,7 @@ class EntryAbility extends UIAbility {
 
 removePreferencesFromCacheSync(context: Context, options: Options):void
 
-从缓存中移除指定的Preferences实例，此为同步接口。
+从缓存中移除指定的Preferences实例，通过Options进行参数设置，此为同步接口。
 
 应用首次调用[getPreferences](#preferencesgetpreferences)接口获取某个Preferences实例后，该实例会被缓存起来，后续调用[getPreferences](#preferencesgetpreferences)时不会再次从持久化文件中读取，直接从缓存中获取Preferences实例。调用此接口移除缓存中的实例之后，再次getPreferences将会重新读取持久化文件，生成新的Preferences实例。
 
@@ -1158,7 +1436,7 @@ removePreferencesFromCacheSync(context: Context, options: Options):void
 
 若使用[GSKV存储模式](../../database/data-persistence-by-preferences.md#gskv存储)，推荐在进程退出时手动调用一次该接口。此操作会将数据缓存页写入磁盘，可一定程度上减少下一次调用getPreferences接口时的耗时。否则，下一次调用getPreferences接口时底层需要进行数据恢复，数据恢复的耗时取决于未写入磁盘的数据缓存页数量。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1193,6 +1471,7 @@ FA模型示例：
 ```ts
 // 获取context
 import { featureAbility } from '@kit.AbilityKit';
+
 let context = featureAbility.getContext();
 let options: preferences.Options = { name: 'myStore' };
 preferences.removePreferencesFromCacheSync(context, options);
@@ -1215,7 +1494,7 @@ class EntryAbility extends UIAbility {
 ## StorageType<sup>18+</sup>
 Preferences的存储模式枚举。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1225,13 +1504,13 @@ Preferences的存储模式枚举。
 
 | 名称 | 值   | 说明 |
 | ---- | ---- | ---- |
-| XML |  0    | 表示[XML存储模式](../../database/data-persistence-by-preferences.md#xml存储)，这是Preferences的默认存储模式。<br>**特点：** 数据XML格式进行存储。对数据的操作发生在内存中，需要调用flush接口进行落盘。     |
-| GSKV |  1    |表示[GSKV存储模式](../../database/data-persistence-by-preferences.md#gskv存储)。<br>**特点：** 数据以GSKV数据库模式进行存储。对数据的操作实时落盘，无需调用flush接口对数据进行落盘。      |
+| XML |  0    | 表示[XML存储模式](../../database/data-persistence-by-preferences.md#xml存储)，这是Preferences的默认存储模式。<br>**特点：** 数据以XML格式进行存储。对数据的操作发生在内存中，需要调用[flush](#flush)接口进行落盘。     |
+| GSKV |  1    |表示[GSKV存储模式](../../database/data-persistence-by-preferences.md#gskv存储)。<br>**特点：** 数据以GSKV数据库模式进行存储。对数据的操作实时落盘，无需调用[flush](#flush)接口对数据进行落盘。      |
 
 
 > **说明：**
->   - 在选择存储模式前，建议调用isStorageTypeSupported检查当前平台是否支持对应存储模式。
->   - 当选择某一模式通过getPreferences接口获取实例后，不允许中途切换模式。
+>   - 在选择存储模式前，建议调用[isStorageTypeSupported](#preferencesisstoragetypesupported18)检查当前平台是否支持对应存储模式。
+>   - 当选择某一模式通过[preferences.getPreferences](#preferencesgetpreferences)接口获取实例后，不允许中途切换模式。
 >   - 首选项不支持不同模式间数据的迁移，若需将数据从一种模式切换至另一种模式，需通过读写首选项的形式进行数据迁移。
 >   - 若需要变更首选项的存储路径，不能通过移动或覆盖文件的方式进行，需通过读写首选项的形式进行数据迁移。
 
@@ -1240,7 +1519,7 @@ isStorageTypeSupported(type: StorageType): boolean
 
 判断当前平台是否支持传入的存储模式，此为同步接口。如果当前平台支持传入的存储模式时，该接口返回true；反之，返回false。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1288,9 +1567,9 @@ Preferences实例配置选项。
 
 | 名称        | 类型   | 只读 | 可选| 说明                                                         |
 | ----------- | ------ | ---- | ----| ------------------------------------------------------------ |
-| name        | string | 否  | 否 | Preferences实例的名称。名称长度需大于零且小于等于255字节，名称中不能包含'/'且不能以'/'结尾。 <br/>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                                   |
-| dataGroupId | string\|null\|undefined | 否  | 是 | 应用组ID，<!--RP1-->暂不支持指定dataGroupId在对应共享沙箱路径下创建Preferences实例。<!--RP1End--><br/>为可选参数。指定在此dataGroupId对应的沙箱路径下创建Preferences实例。当此参数不填时，默认在本应用沙箱目录下创建Preferences实例。<br/> **模型约束：** 此属性仅在Stage模型下可用。<br/>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23|
-| storageType<sup>18+</sup> | [StorageType](#storagetype18)\|null\|undefined | 否 | 是 | 存储模式，为可选参数。表示当前Preferences实例需要使用的存储模式。当此参数不填时，默认使用XML存储模式。当选择某种存储模式创建Preferences后，不支持中途切换存储模式。 <br/>**原子化服务API：** 从API version 18开始，该参数支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23|
+| name        | string | 否  | 否 | Preferences实例的名称。名称长度需大于零且小于等于255字节，名称中不能包含'/'且不能以'/'结尾。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23                                   |
+| dataGroupId | string\|null\|undefined | 否  | 是 | 应用组ID，<!--RP1-->暂不支持指定dataGroupId在对应共享沙箱路径下创建Preferences实例。<!--RP1End--><br>为可选参数。指定在此dataGroupId对应的沙箱路径下创建Preferences实例。当此参数不填时，默认在本应用沙箱目录下创建Preferences实例。<br> **模型约束：** 此属性仅在Stage模型下可用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该参数支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23|
+| storageType<sup>18+</sup> | [StorageType](#storagetype18)\|null\|undefined | 否 | 是 | 存储模式，为可选参数。表示当前Preferences实例需要使用的存储模式。当此参数不填时，默认使用XML存储模式。当选择某种存储模式创建Preferences后，不支持中途切换存储模式。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该参数支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23|
 
 
 ## Preferences
@@ -1306,7 +1585,7 @@ get(key: string, defValue: ValueType, callback: AsyncCallback&lt;ValueType&gt;):
 
 从缓存的Preferences实例中获取键对应的值，如果值为null或者非默认值类型，返回默认数据defValue，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1333,6 +1612,8 @@ get(key: string, defValue: ValueType, callback: AsyncCallback&lt;ValueType&gt;):
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1341,7 +1622,21 @@ dataPreferences.get('startup', 'default', (err: BusinessError, val: preferences.
     console.error("Failed to get value of 'startup'. code =" + err.code + ", message =" + err.message);
     return;
   }
-  console.info("Succeeded in getting value of 'startup'. val： " + val);
+  console.info("Succeeded in getting value of 'startup'. val: " + val);
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+dataPreferences!.get('startup', 'default', (err: BusinessError | null, val: preferences.ValueType | undefined) => {
+  if (err) {
+    console.error("Failed to get value of 'startup'. code =" + err.code + ", message =" + err.message);
+    return;
+  }
+  console.info("Succeeded in getting value of 'startup'. val: " + val);
 })
 ```
 
@@ -1351,7 +1646,7 @@ get(key: string, defValue: ValueType): Promise&lt;ValueType&gt;
 
 从缓存的Preferences实例中获取键对应的值，如果值为null或者非默认值类型，返回默认数据defValue，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1383,13 +1678,26 @@ get(key: string, defValue: ValueType): Promise&lt;ValueType&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let promise = dataPreferences.get('startup', 'default');
-promise.then((data: preferences.ValueType) => {
+let data = dataPreferences.get('startup', 'default');
+data.then((data: preferences.ValueType) => {
   console.info("Succeeded in getting value of 'startup'. Data: " + data);
 }).catch((err: BusinessError) => {
+  console.error("Failed to get value of 'startup'. code =" + err.code + ", message =" + err.message);
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+let promise = dataPreferences!.get('startup', 'default');
+promise.then((data: preferences.ValueType | undefined) => {
+  console.info("Succeeded in getting value of 'startup'. Data: " + data);
+}).catch((err) => {
   console.error("Failed to get value of 'startup'. code =" + err.code + ", message =" + err.message);
 })
 ```
@@ -1400,7 +1708,7 @@ getSync(key: string, defValue: ValueType): ValueType
 
 从缓存的Preferences实例中获取键对应的值，如果值为null或者非默认值类型，返回默认数据defValue，此为同步接口。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1432,8 +1740,16 @@ getSync(key: string, defValue: ValueType): ValueType
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let value: preferences.ValueType = dataPreferences.getSync('startup', 'default');
+```
+
+ArkTS-Sta示例：
+
+```ts
+let value: preferences.ValueType = dataPreferences!.getSync('startup', 'default');
 ```
 
 ### getAll
@@ -1442,7 +1758,7 @@ getAll(callback: AsyncCallback&lt;Object&gt;): void
 
 获取缓存的Preferences实例中的所有键值数据。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1462,10 +1778,12 @@ getAll(callback: AsyncCallback&lt;Object&gt;): void
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
-| 401      | Parameter error. Mandatory parameters are left unspecified.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.                       |
 | 15500000 | Inner error.                   |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1488,14 +1806,29 @@ dataPreferences.getAll((err: BusinessError, value: Object) => {
 })
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+dataPreferences!.getAll((err: BusinessError | null, value: Object | undefined) => {
+  if (err) {
+    console.error("Failed to get all key-values. code =" + err.code + ", message =" + err.message);
+    return;
+  }
+  let obj = value as Record<string, object>;
+  console.info("getAll keys = " + obj);
+})
+```
+
 
 ### getAll
 
 getAll(): Promise&lt;Object&gt;
 
-获取缓存的Preferences实例中的所有键值数据。
+获取缓存的Preferences实例中的所有键值数据，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1519,6 +1852,8 @@ getAll(): Promise&lt;Object&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1529,12 +1864,24 @@ function getObjKeys(obj: Object): string[] {
   return keys;
 }
 
-let promise = dataPreferences.getAll();
-promise.then((value: Object) => {
+let allData = dataPreferences.getAll();
+allData.then((value: Object) => {
   let allKeys = getObjKeys(value);
   console.info('getAll keys = ' + allKeys);
   console.info("getAll object = " + JSON.stringify(value));
 }).catch((err: BusinessError) => {
+  console.error("Failed to get all key-values. code =" + err.code + ", message =" + err.message);
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+let allData = dataPreferences!.getAll();
+allData.then((value: Object | undefined) => {
+  let obj = value as Record<string, object>;
+  console.info("getAll keys = " + obj);
+}).catch((err) => {
   console.error("Failed to get all key-values. code =" + err.code + ", message =" + err.message);
 })
 ```
@@ -1545,7 +1892,7 @@ getAllSync(): Object
 
 获取缓存的Preferences实例中的所有键值数据，此为同步接口。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1569,6 +1916,8 @@ getAllSync(): Object
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 // 由于ArkTS中无Object.keys，且无法使用for..in...
 // 若报ArkTS问题，请将此方法单独抽离至一个ts文件中并暴露，在需要用到的ets文件中引入使用
@@ -1583,6 +1932,14 @@ console.info('getAll keys = ' + allKeys);
 console.info("getAll object = " + JSON.stringify(value));
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let value1 = dataPreferences!.getAllSync();
+let obj = value1 as Record<string, object>;
+console.info('getAll keys = ' + obj);
+```
+
 ### put
 
 put(key: string, value: ValueType, callback: AsyncCallback&lt;void&gt;): void
@@ -1595,7 +1952,7 @@ put(key: string, value: ValueType, callback: AsyncCallback&lt;void&gt;): void
   >
   > 当对应的键已经存在时，put()方法会覆盖其值。可以使用hasSync()方法检查是否存在对应键值对。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1622,10 +1979,26 @@ put(key: string, value: ValueType, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 dataPreferences.put('startup', 'auto', (err: BusinessError) => {
+  if (err) {
+    console.error("Failed to put value of 'startup'. code =" + err.code + ", message =" + err.message);
+    return;
+  }
+  console.info("Succeeded in putting value of 'startup'.");
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+dataPreferences!.put('startup', 'auto', (err: BusinessError | null) => {
   if (err) {
     console.error("Failed to put value of 'startup'. code =" + err.code + ", message =" + err.message);
     return;
@@ -1647,7 +2020,7 @@ put(key: string, value: ValueType): Promise&lt;void&gt;
   >
   > 当对应的键已经存在时，put()方法会覆盖其值。可以使用hasSync()方法检查是否存在对应键值对。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1679,13 +2052,26 @@ put(key: string, value: ValueType): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let promise = dataPreferences.put('startup', 'auto');
-promise.then(() => {
+let putStartupPref = dataPreferences.put('startup', 'auto');
+putStartupPref.then(() => {
   console.info("Succeeded in putting value of 'startup'.");
 }).catch((err: BusinessError) => {
+  console.error("Failed to put value of 'startup'. code =" + err.code + ", message =" + err.message);
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+let putStartupPref = dataPreferences!.put('startup', 'auto');
+putStartupPref.then(() => {
+  console.info("Succeeded in putting value of 'startup'.");
+}).catch((err) => {
   console.error("Failed to put value of 'startup'. code =" + err.code + ", message =" + err.message);
 })
 ```
@@ -1703,7 +2089,7 @@ putSync(key: string, value: ValueType): void
   >
   > 当对应的键已经存在时，putSync()方法会覆盖其值。可以使用hasSync()方法检查是否存在对应键值对。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1729,8 +2115,16 @@ putSync(key: string, value: ValueType): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 dataPreferences.putSync('startup', 'auto');
+```
+
+ArkTS-Sta示例：
+
+```ts
+dataPreferences!.putSync('startup', 'auto');
 ```
 
 
@@ -1740,7 +2134,7 @@ has(key: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 检查缓存的Preferences实例中是否包含指定Key的存储键值对，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1752,8 +2146,8 @@ has(key: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名   | 类型                         | 必填 | 说明                                                         |
 | -------- | ---------------------------- | ---- | ------------------------------------------------------------ |
-| key      | string                       | 是   | 要检查的存储key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。                              |
-| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。返回Preferences实例是否包含给定key的存储键值对，true表示存在，false表示不存在。 |
+| key      | string                       | 是   | 要检查的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。                              |
+| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。返回Preferences实例是否包含给定Key的存储键值对，true表示存在，false表示不存在。 |
 
 **错误码：**
 
@@ -1766,10 +2160,30 @@ has(key: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 dataPreferences.has('startup', (err: BusinessError, val: boolean) => {
+  if (err) {
+    console.error("Failed to check the key 'startup'. code =" + err.code + ", message =" + err.message);
+    return;
+  }
+  if (val) {
+    console.info("The key 'startup' is contained.");
+  } else {
+    console.info("The key 'startup' is not contained.");
+  }
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+dataPreferences!.has('startup', (err: BusinessError | null, val: boolean | undefined) => {
   if (err) {
     console.error("Failed to check the key 'startup'. code =" + err.code + ", message =" + err.message);
     return;
@@ -1789,7 +2203,7 @@ has(key: string): Promise&lt;boolean&gt;
 
 检查缓存的Preferences实例中是否包含指定Key的存储键值对，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1801,13 +2215,13 @@ has(key: string): Promise&lt;boolean&gt;
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | 是   | 要检查的存储key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
+| key    | string | 是   | 要检查的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
 
 **返回值：**
 
 | 类型                   | 说明                                                         |
 | ---------------------- | ------------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise对象。返回Preferences实例是否包含给定key的存储键值对，true表示存在，false表示不存在。 |
+| Promise&lt;boolean&gt; | Promise对象。返回Preferences实例是否包含给定Key的存储键值对，true表示存在，false表示不存在。 |
 
 **错误码：**
 
@@ -1820,17 +2234,34 @@ has(key: string): Promise&lt;boolean&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let promise = dataPreferences.has('startup');
-promise.then((val: boolean) => {
+let isStartupSet = dataPreferences.has('startup');
+isStartupSet.then((val: boolean) => {
   if (val) {
     console.info("The key 'startup' is contained.");
   } else {
     console.info("The key 'startup' does not contain.");
   }
 }).catch((err: BusinessError) => {
+  console.error("Failed to check the key 'startup'. code =" + err.code + ", message =" + err.message);
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+let isStartupSet = dataPreferences!.has('startup');
+isStartupSet.then((val: boolean) => {
+  if (val) {
+    console.info("The key 'startup' is contained.");
+  } else {
+    console.info("The key 'startup' does not contain.");
+  }
+}).catch((err) => {
   console.error("Failed to check the key 'startup'. code =" + err.code + ", message =" + err.message);
 })
 ```
@@ -1842,7 +2273,7 @@ hasSync(key: string): boolean
 
 检查缓存的Preferences实例中是否包含指定Key的存储键值对，此为同步接口。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1854,13 +2285,13 @@ hasSync(key: string): boolean
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | 是   | 要检查的存储key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
+| key    | string | 是   | 要检查的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
 
 **返回值：**
 
 | 类型                   | 说明                                                         |
 | ---------------------- | ------------------------------------------------------------ |
-| boolean | 返回Preferences实例是否包含给定key的存储键值对，true表示存在，false表示不存在。 |
+| boolean | 返回Preferences实例是否包含给定Key的存储键值对，true表示存在，false表示不存在。 |
 
 **错误码：**
 
@@ -1873,8 +2304,21 @@ hasSync(key: string): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 let isExist: boolean = dataPreferences.hasSync('startup');
+if (isExist) {
+  console.info("The key 'startup' is contained.");
+} else {
+  console.info("The key 'startup' does not contain.");
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+let isExist: boolean = dataPreferences!.hasSync('startup');
 if (isExist) {
   console.info("The key 'startup' is contained.");
 } else {
@@ -1889,7 +2333,7 @@ delete(key: string, callback: AsyncCallback&lt;void&gt;): void
 
 从缓存的Preferences实例中删除名为给定Key的存储键值对，可通过[flush](#flush)将Preferences实例持久化，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1915,10 +2359,26 @@ delete(key: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 dataPreferences.delete('startup', (err: BusinessError) => {
+  if (err) {
+    console.error("Failed to delete the key 'startup'. code =" + err.code + ", message =" + err.message);
+    return;
+  }
+  console.info("Succeeded in deleting the key 'startup'.");
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+dataPreferences!.delete('startup', (err: BusinessError | null) => {
   if (err) {
     console.error("Failed to delete the key 'startup'. code =" + err.code + ", message =" + err.message);
     return;
@@ -1934,7 +2394,7 @@ delete(key: string): Promise&lt;void&gt;
 
 从缓存的Preferences实例中删除名为给定Key的存储键值对，可通过[flush](#flush)将Preferences实例持久化，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1946,7 +2406,7 @@ delete(key: string): Promise&lt;void&gt;
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | 是   | 要删除的存储key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
+| key    | string | 是   | 要删除的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
 
 **返回值：**
 
@@ -1965,6 +2425,8 @@ delete(key: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1972,7 +2434,18 @@ let promise = dataPreferences.delete('startup');
 promise.then(() => {
   console.info("Succeeded in deleting the key 'startup'.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to delete the key 'startup'. code =" + err.code +", message =" + err.message);
+  console.error("Failed to delete the key 'startup'. code =" + err.code + ", message =" + err.message);
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+let promise = dataPreferences!.delete('startup');
+promise.then(() => {
+  console.info("Succeeded in deleting the key 'startup'.");
+}).catch((err) => {
+  console.error("Failed to delete the key 'startup'. code =" + err.code + ", message =" + err.message);
 })
 ```
 
@@ -1983,7 +2456,7 @@ deleteSync(key: string): void
 
 从缓存的Preferences实例中删除名为给定Key的存储键值对，可通过[flush](#flush)将Preferences实例持久化，此为同步接口。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -1995,7 +2468,7 @@ deleteSync(key: string): void
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | 是   | 要删除的存储key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
+| key    | string | 是   | 要删除的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
 
 **错误码：**
 
@@ -2008,8 +2481,16 @@ deleteSync(key: string): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 dataPreferences.deleteSync('startup');
+```
+
+ArkTS-Sta示例：
+
+```ts
+dataPreferences!.deleteSync('startup');
 ```
 
 ### flush
@@ -2024,7 +2505,7 @@ flush(callback: AsyncCallback&lt;void&gt;): void
   >
   > 只在XML存储模式下使用，在GSKV存储模式下无需调用，因为当选择该模式时首选项对数据的操作会实时落盘。Preferences存储模式可见[存储模式说明](../../database/data-persistence-by-preferences.md#存储模式说明)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -2049,10 +2530,26 @@ flush(callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 dataPreferences.flush((err: BusinessError) => {
+  if (err) {
+    console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
+    return;
+  }
+  console.info("Succeeded in flushing.");
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+dataPreferences!.flush((err: BusinessError | null) => {
   if (err) {
     console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
     return;
@@ -2073,7 +2570,7 @@ flush(): Promise&lt;void&gt;
   >
   > 只在XML存储模式下使用，在GSKV存储模式下无需调用，因为当选择该模式时首选项对数据的操作会实时落盘。Preferences存储模式可见[存储模式说明](../../database/data-persistence-by-preferences.md#存储模式说明)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -2097,13 +2594,26 @@ flush(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let promise = dataPreferences.flush();
-promise.then(() => {
+let flushResult = dataPreferences.flush();
+flushResult.then(() => {
   console.info("Succeeded in flushing.");
 }).catch((err: BusinessError) => {
+  console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+let flushResult = dataPreferences!.flush();
+flushResult.then(() => {
+  console.info("Succeeded in flushing.");
+}).catch((err) => {
   console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
 })
 ```
@@ -2118,7 +2628,7 @@ flushSync(): void
   >
   > 当数据未修改或修改后的数据与缓存数据一致时，不会刷新持久化文件。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -2136,8 +2646,16 @@ flushSync(): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 dataPreferences.flushSync();
+```
+
+ArkTS-Sta示例：
+
+```ts
+dataPreferences!.flushSync();
 ```
 
 ### clear
@@ -2146,7 +2664,7 @@ clear(callback: AsyncCallback&lt;void&gt;): void
 
 清除缓存的Preferences实例中的所有数据，可通过[flush](#flush)将Preferences实例持久化，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -2171,10 +2689,26 @@ clear(callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 dataPreferences.clear((err: BusinessError) =>{
+  if (err) {
+    console.error("Failed to clear. code =" + err.code + ", message =" + err.message);
+    return;
+  }
+  console.info("Succeeded in clearing.");
+})
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+dataPreferences!.clear((err: BusinessError | null) =>{
   if (err) {
     console.error("Failed to clear. code =" + err.code + ", message =" + err.message);
     return;
@@ -2189,7 +2723,7 @@ clear(): Promise&lt;void&gt;
 
 清除缓存的Preferences实例中的所有数据，可通过[flush](#flush)将Preferences实例持久化，使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -2213,6 +2747,8 @@ clear(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2224,13 +2760,24 @@ promise.then(() => {
 })
 ```
 
+ArkTS-Sta示例：
+
+```ts
+let promise = dataPreferences!.clear();
+promise.then(() => {
+  console.info("Succeeded in clearing.");
+}).catch((err) => {
+  console.error("Failed to clear. code =" + err.code + ", message =" + err.message);
+})
+```
+
 ### clearSync<sup>10+</sup>
 
 clearSync(): void
 
 清除缓存的Preferences实例中的所有数据，可通过[flush](#flush)将Preferences实例持久化，此为同步接口。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -2240,15 +2787,30 @@ clearSync(): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 dataPreferences.clearSync();
+```
+
+ArkTS-Sta示例：
+
+```ts
+dataPreferences!.clearSync();
 ```
 
 ### on('change')
 
 on(type: 'change', callback: Callback&lt;string&gt;): void
 
-订阅数据变更，订阅的Key的值发生变更后，在执行[flush](#flush)方法后，触发callback回调。
+订阅数据变更，订阅的Key的值发生变更后，并且在执行[flush](#flush)方法后，触发callback回调。
+
+> **不同订阅方法的对比：**
+> - on('change')：订阅所有Key变化，适合全局数据变化感知需求。
+> - on('dataChange')：精确订阅指定Key的变化，适合关注特定数据场景，可回调返回具体值。
+> - on('multiProcessChange')：订阅多进程数据变化，适合多进程共享同一首选项文件的场景。
+> 
+> **选取建议：** 单进程应用推荐使用on('change')或on('dataChange')；多进程数据同步时使用on('multiProcessChange')；需要精确知道特定Key变化并获取新值时使用on('dataChange')。
 
   > **说明：**
   >
@@ -2256,7 +2818,7 @@ on(type: 'change', callback: Callback&lt;string&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onChange](#onchange23)。
 
@@ -2269,7 +2831,7 @@ on(type: 'change', callback: Callback&lt;string&gt;): void
 | 参数名   | 类型     | 必填 | 说明                                     |
 | -------- | -------- | ---- | ---------------------------------------- |
 | type     | string   | 是   | 事件类型，固定值'change'，表示数据变更。 |
-| callback | Callback&lt;string&gt; | 是   | 回调函数。     |
+| callback | Callback&lt;string&gt; | 是   | 回调函数，用于接收数据变更通知，回调参数为Key字符串，表示发生变更的键名称。     |
 
 **错误码：**
 
@@ -2292,7 +2854,7 @@ dataPreferences.on('change', observer);
 dataPreferences.putSync('startup', 'manual');
 dataPreferences.flush((err: BusinessError) => {
   if (err) {
-    console.error("Failed to flush. Cause: " + err);
+    console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
@@ -2321,7 +2883,7 @@ onChange(callback: Callback&lt;string&gt;): void
 
 | 参数名   | 类型     | 必填 | 说明                                     |
 | -------- | -------- | ---- | ---------------------------------------- |
-| callback | Callback&lt;string&gt; | 是   | 回调函数。     |
+| callback | Callback&lt;string&gt; | 是   | 回调函数，用于接收数据变更通知，回调参数为Key字符串，表示发生变更的键名称。     |
 
 **错误码：**
 
@@ -2343,7 +2905,7 @@ dataPreferences.onChange(observer);
 dataPreferences.putSync('startup', 'manual');
 dataPreferences.flush((err: BusinessError | null) => {
   if (err) {
-    console.error("Failed to flush. Cause: " + err);
+    console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
@@ -2356,17 +2918,17 @@ on(type: 'multiProcessChange', callback: Callback&lt;string&gt;): void
 
 订阅进程间数据变更，多个进程持有同一个首选项文件时，在任意一个进程（包括本进程）执行[flush](#flush)方法，持久化文件发生变更后，触发callback回调。
 
-本接口提供给申请了[dataGroupId](#options10)的应用进行使用，未申请的应用不推荐使用，多进程操作可能会损坏持久化文件，导致数据丢失。
+本接口提供给申请了[dataGroupId](#options10)的应用进行使用，未申请的应用不推荐使用（监听不到数据变更），多进程操作可能会损坏持久化文件，导致数据丢失。
 
   > **说明：**
   >
-  > 同一持久化文件在当前进程订阅进程间数据变更的最大数量为50次，超过最大限制后会订阅失败。建议在触发callback回调后及时取消订阅。
+  > 同一持久化文件在当前进程对多进程数据变更订阅的最大数量为50次，超过最大限制后订阅会失败。建议在触发callback回调后及时取消订阅。
   >
   > 当调用[removePreferencesFromCache](#preferencesremovepreferencesfromcache)或[deletePreferences](#preferencesdeletepreferences)后，订阅的数据变更会主动取消订阅，在重新[getPreferences](#preferencesgetpreferences)后需要重新订阅数据变更。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onMultiProcessChange](#onmultiprocesschange23)。
 
@@ -2379,7 +2941,7 @@ on(type: 'multiProcessChange', callback: Callback&lt;string&gt;): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 事件类型，固定值'multiProcessChange'，表示多进程间的数据变更。 |
-| callback | Callback&lt;string&gt; | 是   | 回调函数。                         |
+| callback | Callback&lt;string&gt; | 是   | 多进程间数据变更时触发的回调函数，回调参数为发生变更的Key字符串。                         |
 
 **错误码：**
 
@@ -2403,7 +2965,7 @@ dataPreferences.on('multiProcessChange', observer);
 dataPreferences.putSync('startup', 'manual');
 dataPreferences.flush((err: BusinessError) => {
   if (err) {
-    console.error("Failed to flush. Cause: " + err);
+    console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
@@ -2426,7 +2988,7 @@ onMultiProcessChange(callback: Callback&lt;string&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('onMultiProcessChange')](#onmultiprocesschange10)。
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('multiProcessChange')](#onmultiprocesschange10)。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
@@ -2436,7 +2998,7 @@ onMultiProcessChange(callback: Callback&lt;string&gt;): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;string&gt; | 是   | 回调函数。                         |
+| callback | Callback&lt;string&gt; | 是   | 多进程间数据变更时触发的回调函数，回调参数为发生变更的Key字符串。                         |
 
 **错误码：**
 
@@ -2459,7 +3021,7 @@ dataPreferences.onMultiProcessChange(observer);
 dataPreferences.putSync('startup', 'manual');
 dataPreferences.flush((err: BusinessError | null) => {
   if (err) {
-    console.error("Failed to flush. Cause: " + err);
+    console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
@@ -2470,7 +3032,7 @@ dataPreferences.flush((err: BusinessError | null) => {
 
 on(type: 'dataChange', keys: Array&lt;string&gt;,  callback: Callback&lt;Record&lt;string, ValueType&gt;&gt;): void
 
-精确订阅数据变更，只有被订阅的key值发生变更后，在执行[flush](#flush)方法后，触发callback回调。
+精确订阅数据变更，只有被订阅的Key值发生变更后，在执行[flush](#flush)方法后，触发callback回调。
 
   > **说明：**
   >
@@ -2478,7 +3040,7 @@ on(type: 'dataChange', keys: Array&lt;string&gt;,  callback: Callback&lt;Record&
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onDataChange](#ondatachange23)。
 
@@ -2491,8 +3053,8 @@ on(type: 'dataChange', keys: Array&lt;string&gt;,  callback: Callback&lt;Record&
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件类型，固定值'dataChange'，表示精确的数据变更。           |
-| keys     | Array&lt;string&gt;                                          | 是   | 需要订阅的key集合。                                          |
-| callback | Callback&lt;Record&lt;string, [ValueType](#valuetype)&gt;&gt; | 是   | 回调函数。回调支持返回多个键值对，其中键为发生变更的订阅key，值为变更后的数据：支持number、string、boolean、Array\<number>、Array\<string>、Array\<boolean>、Uint8Array、object类型。 |
+| keys     | Array&lt;string&gt;                                          | 是   | 需要订阅的Key集合。                                          |
+| callback | Callback&lt;Record&lt;string, [ValueType](#valuetype)&gt;&gt; | 是   | 回调函数。回调支持返回多个键值对，其中键为发生变更的订阅Key，类型为string；值为变更后的数据，类型为[ValueType](#valuetype)。 |
 
 **错误码：**
 
@@ -2520,7 +3082,7 @@ dataPreferences.putSync('name', 'xiaohong');
 dataPreferences.putSync('weight', 125);
 dataPreferences.flush((err: BusinessError) => {
   if (err) {
-    console.error("Failed to flush. Cause: " + err);
+    console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
@@ -2550,7 +3112,7 @@ onDataChange(keys: Array&lt;string&gt;, callback: Callback&lt;Record&lt;string, 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | keys     | Array&lt;string&gt;                                          | 是   | 需要订阅的key集合。                                          |
-| callback | Callback&lt;Record&lt;string, [ValueType](#valuetype)&gt;&gt; | 是   | 回调函数。回调支持返回多个键值对，其中键为发生变更的订阅key，值为变更后的数据：支持number、string、boolean、Array\<number>、Array\<string>、Array\<boolean>、Uint8Array、object类型。 |
+| callback | Callback&lt;Record&lt;string, [ValueType](#valuetype)&gt;&gt; | 是   | 回调函数。回调支持返回多个键值对，其中键为发生变更的订阅key，类型为string；值为变更后的数据，类型为[ValueType](#valuetype)。 |
 
 **错误码：**
 
@@ -2577,7 +3139,7 @@ dataPreferences.putSync('name', 'xiaohong');
 dataPreferences.putSync('weight', 125);
 dataPreferences.flush((err: BusinessError | null) => {
   if (err) {
-    console.error("Failed to flush. Cause: " + err);
+    console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
@@ -2592,7 +3154,7 @@ off(type: 'change', callback?: Callback&lt;string&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offChange](#offchange23)。
 
@@ -2605,7 +3167,7 @@ off(type: 'change', callback?: Callback&lt;string&gt;): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 事件类型，固定值'change'，表示数据变更。                     |
-| callback | Callback&lt;string&gt; | 否   | 需要取消的回调函数，不填写则全部取消。 |
+| callback | Callback&lt;string&gt; | 否   | 需要取消的回调函数，若不填写，表示取消所有已注册的回调函数；若填写，表示只取消指定的回调函数。 |
 
 **错误码：**
 
@@ -2628,7 +3190,7 @@ dataPreferences.on('change', observer);
 dataPreferences.putSync('startup', 'auto');
 dataPreferences.flush((err: BusinessError) => {
   if (err) {
-    console.error("Failed to flush. Cause: " + err);
+    console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
@@ -2654,7 +3216,7 @@ offChange(callback?: Callback&lt;string&gt;): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;string&gt; | 否   | 需要取消的回调函数，不填写则全部取消。 |
+| callback | Callback&lt;string&gt; | 否   | 需要取消的回调函数，若不填写，表示取消所有已注册的回调函数；若填写，表示只取消指定的回调函数。 |
 
 **错误码：**
 
@@ -2676,7 +3238,7 @@ dataPreferences.onChange(observer);
 dataPreferences.putSync('startup', 'auto');
 dataPreferences.flush((err: BusinessError | null) => {
   if (err) {
-    console.error("Failed to flush. Cause: " + err);
+    console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
@@ -2690,11 +3252,11 @@ off(type: 'multiProcessChange', callback?: Callback&lt;string&gt;): void
 
 取消订阅进程间数据变更。
 
-本接口提供给申请了[dataGroupId](#options10)的应用进行使用，未申请的应用不推荐使用，多进程操作可能会损坏持久化文件，导致数据丢失。
+本接口提供给申请了[dataGroupId](#options10)的应用进行使用，未申请的应用不推荐使用（监听不到数据变更），多进程操作可能会损坏持久化文件，导致数据丢失。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offMultiProcessChange](#offmultiprocesschange23)。
 
@@ -2707,7 +3269,7 @@ off(type: 'multiProcessChange', callback?: Callback&lt;string&gt;): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 事件类型，固定值'multiProcessChange'，表示多进程间的数据变更。 |
-| callback | Callback&lt;string&gt; | 否   | 需要取消的回调函数，不填写则全部取消。 |
+| callback | Callback&lt;string&gt; | 否   | 需要取消的回调函数，若不填写，表示取消所有已注册的回调函数；若填写，表示只取消指定的回调函数。 |
 
 **错误码：**
 
@@ -2730,7 +3292,7 @@ dataPreferences.on('multiProcessChange', observer);
 dataPreferences.putSync('startup', 'auto');
 dataPreferences.flush((err: BusinessError) => {
   if (err) {
-    console.error("Failed to flush. Cause: " + err);
+    console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
@@ -2744,7 +3306,7 @@ offMultiProcessChange(callback?: Callback&lt;string&gt;): void
 
 取消订阅进程间数据变更。
 
-本接口提供给申请了[dataGroupId](#options10)的应用进行使用，未申请的应用不推荐使用，多进程操作可能会损坏持久化文件，导致数据丢失。
+本接口提供给申请了[dataGroupId](#options10)的应用进行使用，未申请的应用不推荐使用（监听不到数据变更），多进程操作可能会损坏持久化文件，导致数据丢失。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -2758,7 +3320,7 @@ offMultiProcessChange(callback?: Callback&lt;string&gt;): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;string&gt; | 否   | 需要取消的回调函数，不填写则全部取消。 |
+| callback | Callback&lt;string&gt; | 否   | 需要取消的回调函数，若不填写，表示取消所有已注册的回调函数；若填写，表示只取消指定的回调函数。 |
 
 **错误码：**
 
@@ -2780,7 +3342,7 @@ dataPreferences.onMultiProcessChange(observer);
 dataPreferences.putSync('startup', 'auto');
 dataPreferences.flush((err: BusinessError | null) => {
   if (err) {
-    console.error("Failed to flush. Cause: " + err);
+    console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
@@ -2796,7 +3358,7 @@ off(type: 'dataChange', keys: Array&lt;string&gt;,  callback?: Callback&lt;Recor
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offDataChange](#offdatachange23)。
 
@@ -2809,8 +3371,8 @@ off(type: 'dataChange', keys: Array&lt;string&gt;,  callback?: Callback&lt;Recor
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件类型，固定值'dataChange'，表示精确的数据变更。           |
-| keys     | Array&lt;string&gt;                                          | 是   | 需要取消订阅的key集合，当keys为空数组时，表示取消订阅全部key；当keys为非空数组时，表示只取消订阅key集合中的key。 |
-| callback | Callback&lt;Record&lt;string, [ValueType](#valuetype)&gt;&gt; | 否   | 需要取消的回调函数，若callback不填写，表示所有的callback都需要处理；若callback填写，表示只处理该callback。 |
+| keys     | Array&lt;string&gt;                                          | 是   | 需要取消订阅的Key集合，当Keys为空数组时，表示取消订阅全部Key；当Keys为非空数组时，表示只取消订阅Key集合中的Key。 |
+| callback | Callback&lt;Record&lt;string, [ValueType](#valuetype)&gt;&gt; | 否   | 需要取消的回调函数，若不填写，表示取消所有已注册的回调函数；若填写，表示只取消指定的回调函数。 |
 
 **错误码：**
 
@@ -2838,7 +3400,7 @@ dataPreferences.putSync('name', 'xiaohong');
 dataPreferences.putSync('weight', 125);
 dataPreferences.flush((err: BusinessError) => {
   if (err) {
-    console.error("Failed to flush. Cause: " + err);
+    console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
@@ -2865,7 +3427,7 @@ offDataChange(keys: Array&lt;string&gt;, callback?: Callback&lt;Record&lt;string
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | keys     | Array&lt;string&gt;                                          | 是   | 需要取消订阅的key集合，当keys为空数组时，表示取消订阅全部key；当keys为非空数组时，表示只取消订阅key集合中的key。 |
-| callback | Callback&lt;Record&lt;string, [ValueType](#valuetype)&gt;&gt; | 否   | 需要取消的回调函数，若callback不填写，表示所有的callback都需要处理；若callback填写，表示只处理该callback。 |
+| callback | Callback&lt;Record&lt;string, [ValueType](#valuetype)&gt;&gt; | 否   | 需要取消的回调函数，若不填写，表示取消所有已注册的回调函数；若填写，表示只取消指定的回调函数。 |
 
 **错误码：**
 
@@ -2892,7 +3454,7 @@ dataPreferences.putSync('name', 'xiaohong');
 dataPreferences.putSync('weight', 125);
 dataPreferences.flush((err: BusinessError | null) => {
   if (err) {
-    console.error("Failed to flush. Cause: " + err);
+    console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
@@ -2928,7 +3490,7 @@ ArkTS-Sta: type ValueType = long | double | string | boolean | Array\<long> | Ar
 
 表示支持的值类型。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 

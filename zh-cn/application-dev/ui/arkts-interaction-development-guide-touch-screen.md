@@ -27,6 +27,9 @@
 ## 阻止冒泡
 
 参考[事件冒泡](./arkts-interaction-basic-principles.md#事件冒泡)了解冒泡机制，以下是一个简单示例，实现了只要点击在子组件区域内，就阻止父组件接收触摸事件：
+
+ArkTS-Dyn示例：
+
 <!-- @[prevent_bubbling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/PreventBubbling/PreventBubbling.ets) -->
 
 ``` TypeScript
@@ -38,6 +41,51 @@ const BUNDLE = 'MyApp_PreventBubbling';
 
 @Entry
 @ComponentV2
+struct PreventBubbling {
+  build() {
+    RelativeContainer() {
+      Column() { // 父组件
+        // 请将$r('app.string.preventEvent')替换为实际资源文件，在本示例中该资源文件的value值为"如果点中了我，就阻止父组件收到触摸事件"
+        Text($r('app.string.preventEvent'))
+          .fontColor(Color.White)
+          .height('40%')
+          .width('80%')
+          .backgroundColor(Color.Brown)
+          .alignSelf(ItemAlign.Center)
+          .padding(10)
+          .margin(20)
+          .onTouch((event: TouchEvent) => {
+            event.stopPropagation(); // 子组件优先接收到触摸事件后，阻止父组件接收事件
+          })
+      }
+      .justifyContent(FlexAlign.End)
+      .backgroundColor(Color.Green)
+      .height('100%')
+      .width('100%')
+      .onTouch((event: TouchEvent) => {
+        hilog.info(DOMAIN, TAG, BUNDLE + 'touch event received on parent');
+      })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[prevent_bubbling](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/PreventBubbling/PreventBubbling.ets) -->
+
+``` TypeScript
+import { Entry, Component, RelativeContainer, Column, Text, $r, Color, TouchEvent, ItemAlign, FlexAlign } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_PreventBubbling]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'MyApp_PreventBubbling';
+
+@Entry
+@Component
 struct PreventBubbling {
   build() {
     RelativeContainer() {
@@ -89,6 +137,9 @@ struct PreventBubbling {
 重采样之前的所有原始点信息也都保留下来上报给了应用，如果需要直接处理它们，则可通过`getHistoricalPoints(): Array`来获取。
 
 以下是一个简单示例：
+
+ArkTS-Dyn示例：
+
 <!-- @[samp_ling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/sampling/Sampling.ets) -->
 
 ``` TypeScript
@@ -124,9 +175,50 @@ struct Sampling {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[samp_ling](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/sampling/Sampling.ets) -->
+
+``` TypeScript
+import { Entry, Component, RelativeContainer, Column, Color, TouchEvent } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_Sampling]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'MyApp_Sampling';
+
+@Entry
+@Component
+struct Sampling {
+  build() {
+    RelativeContainer() {
+      Column()
+        .backgroundColor(Color.Green)
+        .height('100%')
+        .width('100%')
+        .onTouch((event: TouchEvent) => {
+          // 从event中获取历史点
+          let allHistoricalPoints = event.getHistoricalPoints();
+          if (allHistoricalPoints!.length !== 0) {
+            for (const point of allHistoricalPoints!) {
+              hilog.info(DOMAIN, TAG, BUNDLE + 'historical point: [' + point.touchObject.windowX +
+                ', ' + point.touchObject.windowY + ']');
+            }
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## 多指信息
 
 在支持多指触控的触屏设备上，上报的事件中同时包含了窗口所有按压手指的信息，可以通过**touches**获取，如下：
+
+ArkTS-Dyn示例：
+
 <!-- @[multiple_finger_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MultipleFingerInformation/MultipleFingerInformation.ets) -->
 
 ``` TypeScript
@@ -180,13 +272,69 @@ struct MultipleFingerInformation {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[multiple_finger_information](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/MultipleFingerInformation/MultipleFingerInformation.ets) -->
+
+``` TypeScript
+import { Entry, Component, RelativeContainer, Column, Color, TouchEvent, SourceType, TouchType } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_MultipleFingerInformation]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'MyApp_MultipleFingerInformation';
+
+@Entry
+@Component
+struct MultipleFingerInformation {
+  private currentFingerCount: int = 0;
+  private allFingerIds: int[] = [];
+
+  build() {
+    RelativeContainer() {
+      Column()
+        .backgroundColor(Color.Green)
+        .height('100%')
+        .width('100%')
+        .onTouch((event: TouchEvent) => {
+          if (event.source !== SourceType.TouchScreen) {
+            return;
+          }
+          // clear数组
+          this.allFingerIds.splice(0, this.allFingerIds.length);
+          // 从event中获取所有触点信息
+          let allFingers = event.touches;
+          if (allFingers.length > 0 && this.currentFingerCount === 0) {
+            // 第1根手指按下
+            hilog.info(DOMAIN, TAG, BUNDLE + 'fingers start to press down');
+            this.currentFingerCount = allFingers.length;
+          }
+          if (allFingers.length !== 0) {
+            for (const finger of allFingers) {
+              this.allFingerIds.push(finger.id);
+            }
+            hilog.info(DOMAIN, TAG, BUNDLE + 'current all fingers : ' + this.allFingerIds.toString());
+          }
+          if (event.type === TouchType.Up && event.touches.length === 1) {
+            // 所有手指都已抬起
+            hilog.info(DOMAIN, TAG, BUNDLE + 'all fingers already up');
+            this.currentFingerCount = 0;
+          }
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 不同触点通过id区分，id按照接触屏幕的顺序依次递增，与物理上的触点（手指）并无严格顺序对应关系。并且这些触点在**touches**数组中并非按照编号大小顺序排列，请不要依赖顺序进行访问，另外，直到所有触点全部离开屏幕之前，期间抬起的触点对应的编号，会在有触点按下时自动复用。
 
 以下是上面的示例在如下操作序列时产生的日志输出情况：
 
 ![finger ids](figures/finger_ids.png)
 
-按下手指① -> 按下手指② -> 按下手指③ -> 抬起手指② -> 抬起手指③ -> 按下手指② -> 抬起手指① -> 抬起手指③
+按下手指① -> 按下手指② -> 按下手指③ -> 抬起手指② -> 抬起手指③ -> 按下手指③ -> 抬起手指① -> 抬起手指③
 
 ```text
   fingers start to press down   // 按下手指①

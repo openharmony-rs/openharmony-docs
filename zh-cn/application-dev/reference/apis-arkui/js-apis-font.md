@@ -158,6 +158,8 @@ getSystemFontList(): Array\<string>
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -214,6 +216,8 @@ getFontByName(fontName: string): FontInfo
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -238,6 +242,8 @@ getFontByName(fontName: string): FontInfo
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -261,7 +267,7 @@ getFontByName(fontName: string): FontInfo
 
 > **说明：**
 >
-> 直接使用font可能导致实例不明确的问题，推荐通过使用[UIContext](./arkts-apis-uicontext-uicontext.md)中的[getFont](./arkts-apis-uicontext-uicontext.md#getfont)方法获取当前UI上下文关联的[Font](arkts-apis-uicontext-font.md)对象。
+> 直接使用font可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，推荐通过使用[UIContext](./arkts-apis-uicontext-uicontext.md)中的[getFont](./arkts-apis-uicontext-uicontext.md#getfont)方法获取当前UI上下文关联的[Font](arkts-apis-uicontext-font.md)对象。
 
 ```ts
 // xxx.ets
@@ -306,6 +312,8 @@ getUIFontConfig() : UIFontConfig
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -322,6 +330,8 @@ getUIFontConfig() : UIFontConfig
 系统的UI字体配置信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -341,6 +351,8 @@ getUIFontConfig() : UIFontConfig
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -359,6 +371,8 @@ getUIFontConfig() : UIFontConfig
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -375,6 +389,8 @@ getUIFontConfig() : UIFontConfig
 别名列表。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -393,6 +409,8 @@ getUIFontConfig() : UIFontConfig
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -409,6 +427,8 @@ getUIFontConfig() : UIFontConfig
 该字体集的备用字体。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

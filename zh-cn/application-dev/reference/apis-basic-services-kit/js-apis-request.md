@@ -114,7 +114,7 @@ type UploadHeaderReceiveCallback = (header: object) => void
 
 uploadFile(context: BaseContext, config: UploadConfig): Promise&lt;UploadTask&gt;
 
-创建并启动一个上传任务，使用Promise异步回调，支持HTTP协议。通过[on('complete'|'fail')](#oncomplete--fail9)可获取任务上传时的成功信息或错误信息。
+创建并启动一个上传任务，使用Promise异步回调，支持HTTP协议。通过[on('complete' | 'fail')<sup>9+</sup>](#oncomplete--fail9)可获取任务上传时的成功信息或错误信息。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -212,7 +212,7 @@ ArkTS-Sta示例：
 
 uploadFile(context: BaseContext, config: UploadConfig, callback: AsyncCallback&lt;UploadTask&gt;): void
 
-创建并启动一个上传任务，使用callback异步回调，支持HTTP协议。通过[on('complete'|'fail')](#oncomplete--fail9)可获取任务上传时的成功信息或错误信息。
+创建并启动一个上传任务，使用callback异步回调，支持HTTP协议。通过[on('complete' | 'fail')<sup>9+</sup>](#oncomplete--fail9)可获取任务上传时的成功信息或错误信息。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -445,14 +445,7 @@ on(type: 'progress', callback: (uploadedSize: number, totalSize: number) =&gt; v
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 订阅的事件类型。取值为'progress'，表示上传的进度信息，任务进度有进展时触发该事件。 |
-| callback | function | 是 | 上传任务进度的回调函数，返回已上传文件大小和上传文件总大小。 |
-
-  回调函数的参数：
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| uploadedSize | number | 是 | 当前已上传文件大小，单位为字节（B）。 |
-| totalSize | number | 是 | 上传文件的总大小，单位为字节（B）。 |
+| callback | (uploadedSize: number, totalSize: number) => void | 是 | 上传任务进度的回调函数，返回已上传文件大小和上传文件总大小，单位为字节（B）。 |
 
 **错误码：**
 
@@ -542,13 +535,7 @@ on(type: 'headerReceive', callback:  (header: object) =&gt; void): void
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 订阅的事件类型。<br>- 取值为'headerReceive'，HTTP请求接收到响应时触发该事件。 |
-  | callback | function | 是 | HTTP&nbsp;Response事件的回调函数，返回响应请求内容。 |
-
-  回调函数的参数：
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| header | object | 是 | HTTP响应。 |
+  | callback | (header: object) => void | 是 | HTTP&nbsp;Response事件的回调函数，返回响应请求内容。 |
 
 **错误码：**
 
@@ -781,14 +768,7 @@ off(type:  'progress',  callback?: (uploadedSize: number, totalSize: number) =&g
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 取消订阅的事件类型。<br>- 取值为'progress'，表示上传的进度信息。 |
-  | callback | function | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
-
-回调函数的参数
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| uploadedSize | number | 是 | 当前已上传文件大小，单位为字节（B）。 |
-| totalSize | number | 是 | 上传文件的总大小，单位为字节（B）。 |
+  | callback | (uploadedSize: number, totalSize: number) => void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码：**
 
@@ -889,13 +869,7 @@ off(type: 'headerReceive', callback?: (header: object) =&gt; void): void
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 取消订阅的事件类型。<br>- 取值为'headerReceive'，表示HTTP请求接收到响应。 |
-  | callback | function | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
-
-  回调函数的参数：
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| header | object | 是 | HTTP响应。 |
+  | callback | (header: object) => void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码：**
 
@@ -1415,6 +1389,7 @@ remove(callback: AsyncCallback&lt;boolean&gt;): void
 | responseCode | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否 | 否 | 上传任务返回码。返回0表示上传任务成功，返回其它值表示上传任务失败，具体请参见message参数中的上传任务结果描述信息。<br/>此处推荐使用[request.agent.create](#requestagentcreate10-1)创建上传任务，并获取标准错误码处理异常分支。 |
 | message | string | 否 | 否 | 上传任务结果描述信息。                           |
 
+**错误码：**
 其中，responseCode包含的返回码值如下。
 
 | 返回码 | 具体信息                               |
@@ -1801,7 +1776,7 @@ type DownloadFailCallback = (err: int) => void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| err | int | 是 | 下载失败的错误码，错误原因见[下载任务的错误码](#常量)。 |
+| err | int | 是 | 下载失败的错误码，错误原因见下载任务的错误码[常量](#常量)。 |
 
 ## DownloadTask
 
@@ -1829,14 +1804,7 @@ on(type: 'progress', callback: (receivedSize: number, totalSize: number) =&gt; v
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 订阅的事件类型。<br>- 取值为'progress'，表示下载的进度信息，当任务进度有进展时触发该事件。 |
-  | callback | function | 是 | 下载任务进度的回调函数，返回已上传文件大小和上传文件大小总和。 |
-
-  回调函数的参数：
-
-| 参数名 | 类型 | 必填 | 说明                                                                      |
-| -------- | -------- | -------- |----------------------------------|
-| receivedSize | number | 是 | 当前下载的进度，单位为字节（B）。                |
-| totalSize | number | 是 | 下载文件的总大小，单位为字节（B）。在下载过程中，若服务器使用chunk方式传输导致无法从请求头中获取文件总大小时，totalSize为 -1。 |
+  | callback | (receivedSize: number, totalSize: number) => void | 是 | 下载任务进度的回调函数，返回已下载文件大小和下载文件总大小，单位为字节（B）。在下载过程中，若服务器使用chunk方式传输导致无法从请求头中获取文件总大小时，totalSize为 -1。 |
 
 **错误码：**
 
@@ -1933,14 +1901,7 @@ off(type: 'progress', callback?: (receivedSize: number, totalSize: number) =&gt;
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 取消订阅的事件类型。<br>- 取值为'progress'，表示下载的进度信息。 |
-  | callback | function | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
-
-  回调函数的参数：
-
-| 参数名 | 类型 | 必填 | 说明                                                                      |
-| -------- | -------- | -------- |------------------------------------|
-| receivedSize | number | 是 | 当前下载的进度，单位为字节（B）。           |
-| totalSize | number | 是 | 下载文件的总大小，单位为字节（B）。在下载过程中，若服务器使用chunk方式传输导致无法从请求头中获取文件总大小时，totalSize为 -1。 |
+  | callback | (receivedSize: number, totalSize: number) => void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 
 **错误码：**
@@ -2582,13 +2543,7 @@ on(type: 'fail', callback: (err: number) =&gt; void): void
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 订阅的事件类型。<br>- 取值为'fail'，表示下载失败，任务失败时触发该事件。 |
-  | callback | function | 是 | 下载失败的回调函数。 |
-
-  回调函数的参数：
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| err | number | 是 | 下载失败的错误码，错误原因见[下载任务的错误码](#常量)。 |
+  | callback | (err: number) => void | 是 | 下载失败的回调函数。错误原因见'下载任务的错误码'[常量](#常量)。 |
 
 **错误码：**
 
@@ -2682,13 +2637,7 @@ off(type: 'fail', callback?: (err: number) =&gt; void): void
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 取消订阅的事件类型。<br>- 取值为'fail'，表示下载失败。 |
-  | callback | function | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
-
-  回调函数的参数：
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| err | number | 是 | 下载失败的错误码，错误原因见[下载任务的错误码](#常量)。 |
+  | callback | (err: number) => void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码：**
 
@@ -4113,11 +4062,11 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | 名称   | 类型     | 只读 | 可选 | 说明                            |
 |------|--------|----|----|-------------------------------|
 | downloadId | ArkTS-Dyn: number <br/>ArkTS-Sta: long | 否 | 否 | 下载任务id。 |
-| failedReason | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否 | 否 | 下载失败原因，可以是任何[下载任务的错误码](#常量)常量。 |
+| failedReason | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否 | 否 | 下载失败原因，可以是任何下载任务的错误码[常量](#常量)。 |
 | fileName | string | 否 | 否 | 下载的文件名。 |
 | filePath | string | 否 | 否 | 存储文件的URI。 |
-| pausedReason | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否 | 否 | 会话暂停的原因，可以是任何[下载任务暂停原因](#常量)常量。 |
-| status | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否 | 否 | 下载状态码，可以是任何[下载任务状态码](#常量)常量。 |
+| pausedReason | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否 | 否 | 会话暂停的原因，可以是任何下载任务暂停原因[常量](#常量)。 |
+| status | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否 | 否 | 下载状态码，可以是任何下载任务状态码[常量](#常量)。 |
 | targetURI | string | 否 | 否 | 下载文件的URI。 |
 | downloadTitle | string | 否 | 否 | 下载任务名称。 |
 | downloadTotalBytes | ArkTS-Dyn: number <br/>ArkTS-Sta: long | 否 | 否 | 下载的文件的总大小，单位为字节（B）。 |
@@ -4141,7 +4090,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 
 定义操作选项。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -4159,7 +4108,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 定义模式选项。<br>
 当应用的前台任务切换到后台一段时间后会显示运行失败或暂停，而后台任务不受此操作影响。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -4177,7 +4126,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 定义网络选项。<br>
 网络不满足设置条件时，未执行的任务会等待执行，执行中的任务将失败或暂停。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -4219,17 +4168,17 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 
 | 名称   | 类型     | 只读 | 可选 | 说明                            |
 |------|--------|----|----|-------------------------------|
-| path | string | 否 | 否 | 文件路径。<br/>- 相对路径，位于调用方的缓存路径下。<br/>例如："./xxx/yyy/zzz.html"、"xxx/yyy/zzz.html"。<br/>- internal协议路径，支持"internal://"及其子路径。internal为调用方（即传入的context）对应路径，"internal://cache"对应context.cacheDir。<br/>例如："internal://cache/path/to/file.txt"。<br/>- 应用沙箱目录，只支持到base及其子目录下。<br/>例如："/data/storage/el1/base/path/to/file.txt"。<br/>- file协议路径，必须匹配应用包名，只支持到base及其子目录下。<br/>例如："file://com.example.test/data/storage/el2/base/file.txt"。<br/>- 用户公共文件，仅支持上传任务。<br/>例如："file://media/Photo/path/to/file.img"。仅支持前台任务。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| mimeType<sup>(deprecated)</sup> | string | 否 | 是 | 文件的mimeType，通过文件名获取，默认值为文件名后缀。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式**：该属性仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：**  10 <br/> 从 API version 18 开始废弃，建议使用contentType替代。 |
+| path | string | 否 | 否 | 文件路径。<br/>- 相对路径，位于调用方的缓存路径下。<br/>例如："./xxx/yyy/zzz.html"、"xxx/yyy/zzz.html"。<br/>- internal协议路径，支持"internal://"及其子路径。internal为调用方（即传入的context）对应路径，"internal://cache"对应context.cacheDir。<br/>例如："internal://cache/path/to/file.txt"。<br/>- 应用沙箱目录，只支持到base及其子目录下。<br/>例如："/data/storage/el1/base/path/to/file.txt"。<br/>- file协议路径，必须匹配应用包名，只支持到base及其子目录下。<br/>例如："file://com.example.test/data/storage/el2/base/file.txt"。<br/>- 用户公共文件，仅支持上传任务。<br/>例如："file://media/Photo/path/to/file.img"。仅支持前台任务。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| mimeType<sup>(deprecated)</sup> | string | 否 | 是 | 文件的mimeType，通过文件名获取，默认值为文件名后缀。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式**：该属性仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：**  10 <br/> 从 API version 18 开始废弃，建议使用contentType替代。 |
 | contentType<sup>18+</sup> | string | 否 | 是 | 文件内容类型，默认值为文件名后缀。该选项会被填写到HTTP表单指定的Content-Type字段中。<br/>**ArkTS-Dyn起始版本：**  18 <br/>**ArkTS-Sta起始版本：**  23 |
-| filename | string | 否 | 是 | 文件名，默认值通过路径获取。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| extras | ArkTS-Dyn: object <br/>ArkTS-Sta: Record<string, string> | 否 | 是 | 文件信息的附加内容，该参数不会体现在HTTP请求中。默认值为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| filename | string | 否 | 是 | 文件名，默认值通过路径获取。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| extras | ArkTS-Dyn: object <br/>ArkTS-Sta: Record<string, string> | 否 | 是 | 文件信息的附加内容，该参数不会体现在HTTP请求中。默认值为空。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
 
 
 ## request.agent.FormItem<sup>10+</sup>
 任务的表单项信息。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -4250,30 +4199,30 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 
 | 名称   | 类型     | 只读 | 可选 | 说明                            |
 |------|--------|----|----|-------------------------------|
-| action | [Action](#requestagentaction10) | 否 | 否 | 任务操作选项。<br/>- UPLOAD表示上传任务。<br/>- DOWNLOAD表示下载任务。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| url | string | 否 | 否 | 资源地址。从API 6到API 14，最大长度为2048个字符；从API 15开始，最大长度为8192个字符。支持[HTTP拦截](../../basic-services/request/app-file-upload-download.md#http拦截)功能。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| title | string | 否 | 是 | 任务标题，其最大长度为256个字符，默认值为小写的 upload 或 download，与上面的 action 保持一致。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| description | string | 否 | 是 | 任务的详细信息，其最大长度为1024个字符，默认值为空字符串。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| mode | [Mode](#requestagentmode10) | 否 | 是 | 任务模式，默认为后台任务。从API version 20开始，下载到用户文件场景必须为request.agent.Mode.FOREGROUND。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| overwrite | boolean | 否 | 是 | 下载过程中路径已存在时的解决方案选择，默认为false。<br/>- true，覆盖已存在的文件。<br/>- false，下载失败。<br/>从API version 20开始，下载到用户文件场景必须为true。<br/>设置为 `true` 时，不建议创建多个任务同时往同一个文件下载内容，会导致文件内容混乱。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| method | string | 否 | 是 | 上传或下载HTTP的标准方法，包括GET、POST和PUT，不区分大小写。<br/>- 上传时，使用PUT或POST，默认值为PUT。<br/>- 下载时，使用GET或POST，默认值为GET。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| headers | ArkTS-Dyn: object <br/>ArkTS-Sta: Record<string, string> | 否 | 是 | 添加要包含在任务中的HTTP协议标志头。<br/>- 上传请求，默认的Content-Type为"multipart/form-data"。<br/>- 下载请求，默认的Content-Type为"application/json"。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| data | string \| Array&lt;[FormItem](#requestagentformitem10)&gt; | 否 | 是 | - 下载时，data为字符串类型，通常情况下使用json格式（object将被转换为json文本），默认为空。<br/>- 上传时，data是表单项数组Array&lt;[FormItem](#requestagentformitem10)&gt;。从API version 15开始，创建单个任务可以上传最多100个文件。默认为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| saveas | string | 否 | 是 | 保存下载文件的路径，包括如下几种：<br/>- 相对路径，位于调用方的缓存路径下，如"./xxx/yyy/zzz.html"、"xxx/yyy/zzz.html"。<br/>- internal协议路径，支持"internal://"及其子路径，internal为调用方（传入的context）对应路径，"internal://cache"对应context.cacheDir。如"internal://cache/path/to/file.txt"。<br/>- 应用沙箱目录，只支持到base及其子目录下，如"/data/storage/el1/base/path/to/file.txt"。<br/>- file协议路径，支持应用文件和用户文件，应用文件必须匹配应用包名，只支持到base及其子目录下，如"file://com.example.test/data/storage/el2/base/file.txt"。用户文件必须为调用方创建好的用户文件uri。<br/>从API version 20开始，除[下载网络资源文件至用户文件](../../basic-services/request/app-file-upload-download.md#下载网络资源文件至用户文件)外，其他可默认为调用方（即传入的context）对应的缓存路径。默认文件名从url的最后一个"/"后截取。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| network | [Network](#requestagentnetwork10) | 否 | 是 | 网络选项，当前支持无线网络WIFI和蜂窝数据网络CELLULAR，默认为ANY（WIFI或CELLULAR）。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| metered | boolean | 否 | 是 | 是否允许在按流量计费的网络中工作，默认为false。<br/>- true：是 <br/>- false：否<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| roaming | boolean | 否 | 是 | 是否允许在漫游网络中工作，默认为true。<br/>- true：是 <br/>- false：否<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| retry | boolean | 否 | 是 | 是否为后台任务启用自动重试，仅应用于后台任务，默认为true。<br/>- true：是 <br/>- false：否<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| redirect | boolean | 否 | 是 | 是否允许重定向，默认为true。<br/>- true：是 <br/>- false：否<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| action | [Action](#requestagentaction10) | 否 | 否 | 任务操作选项。<br/>- UPLOAD表示上传任务。<br/>- DOWNLOAD表示下载任务。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| url | string | 否 | 否 | 资源地址。从API 6到API 14，最大长度为2048个字符；从API 15开始，最大长度为8192个字符。支持[HTTP拦截](../../basic-services/request/app-file-upload-download.md#http拦截)功能。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| title | string | 否 | 是 | 任务标题，其最大长度为256个字符，默认值为小写的 upload 或 download，与上面的 action 保持一致。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| description | string | 否 | 是 | 任务的详细信息，其最大长度为1024个字符，默认值为空字符串。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| mode | [Mode](#requestagentmode10) | 否 | 是 | 任务模式，默认为后台任务。从API version 20开始，下载到用户文件场景必须为request.agent.Mode.FOREGROUND。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| overwrite | boolean | 否 | 是 | 下载过程中路径已存在时的解决方案选择，默认为false。<br/>- true，覆盖已存在的文件。<br/>- false，下载失败。<br/>从API version 20开始，下载到用户文件场景必须为true。<br/>设置为 `true` 时，不建议创建多个任务同时往同一个文件下载内容，会导致文件内容混乱。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| method | string | 否 | 是 | 上传或下载HTTP的标准方法，包括GET、POST和PUT，不区分大小写。<br/>- 上传时，使用PUT或POST，默认值为PUT。<br/>- 下载时，使用GET或POST，默认值为GET。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| headers | ArkTS-Dyn: object <br/>ArkTS-Sta: Record<string, string> | 否 | 是 | 添加要包含在任务中的HTTP协议标志头。<br/>- 上传请求，默认的Content-Type为"multipart/form-data"。<br/>- 下载请求，默认的Content-Type为"application/json"。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| data | string \| Array&lt;[FormItem](#requestagentformitem10)&gt; | 否 | 是 | - 下载时，data为字符串类型，通常情况下使用json格式（object将被转换为json文本），默认为空。<br/>- 上传时，data是表单项数组Array&lt;[FormItem](#requestagentformitem10)&gt;。从API version 15开始，创建单个任务可以上传最多100个文件。默认为空。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| saveas | string | 否 | 是 | 保存下载文件的路径，包括如下几种：<br/>- 相对路径，位于调用方的缓存路径下，如"./xxx/yyy/zzz.html"、"xxx/yyy/zzz.html"。<br/>- internal协议路径，支持"internal://"及其子路径，internal为调用方（传入的context）对应路径，"internal://cache"对应context.cacheDir。如"internal://cache/path/to/file.txt"。<br/>- 应用沙箱目录，只支持到base及其子目录下，如"/data/storage/el1/base/path/to/file.txt"。<br/>- file协议路径，支持应用文件和用户文件，应用文件必须匹配应用包名，只支持到base及其子目录下，如"file://com.example.test/data/storage/el2/base/file.txt"。用户文件必须为调用方创建好的用户文件uri。<br/>从API version 20开始，除[下载网络资源文件至用户文件](../../basic-services/request/app-file-upload-download.md#下载网络资源文件至用户文件)外，其他可默认为调用方（即传入的context）对应的缓存路径。默认文件名从url的最后一个"/"后截取。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| network | [Network](#requestagentnetwork10) | 否 | 是 | 网络选项，当前支持无线网络WIFI和蜂窝数据网络CELLULAR，默认为ANY（WIFI或CELLULAR）。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| metered | boolean | 否 | 是 | 是否允许在按流量计费的网络中工作，默认为false。<br/>- true：是 <br/>- false：否<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| roaming | boolean | 否 | 是 | 是否允许在漫游网络中工作，默认为true。<br/>- true：是 <br/>- false：否<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| retry | boolean | 否 | 是 | 是否为后台任务启用自动重试，仅应用于后台任务，默认为true。<br/>- true：是 <br/>- false：否<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| redirect | boolean | 否 | 是 | 是否允许重定向，默认为true。<br/>- true：是 <br/>- false：否<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
 | proxy<sup>12+</sup> | string | 否 | 是 | 设置代理地址，其最大长度为512个字符，默认为空。<br/>代理地址格式:"http://\<domain or address\>:\<port\>" <br/>**ArkTS-Dyn起始版本：**  12 <br/>**ArkTS-Sta起始版本：**  23 |
-| index | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否 | 是 | 任务的路径索引，通常情况下用于任务断点续传，默认为0。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| begins | ArkTS-Dyn: number <br/>ArkTS-Sta: long | 否 | 是 | 文件起点，单位为字节（B），通常情况下用于断点续传。默认值为0，取值为闭区间，表示从头开始传输。<br/>- 下载时，请求读取服务器开始下载文件时的起点位置（HTTP协议中设置"Range"选项）。<br/>- 上传时，读取需上传的文件的起点位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| ends | ArkTS-Dyn: number <br/>ArkTS-Sta: long | 否 | 是 | 文件终点，单位为字节（B），通常情况下用于断点续传。默认值为-1，取值为闭区间，表示传输到整个文件末尾结束。<br/>- 下载时，请求读取服务器开始下载文件时的结束位置（HTTP协议中设置"Range"选项）。<br/>- 上传时，读取需上传的文件的结束位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| gauge | boolean | 否 | 是 | 后台任务的过程进度通知策略，仅应用于后台任务，默认值为false。<br/>- false：代表仅完成或失败的通知。<br/>- true：发出每个进度已完成或失败的通知。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| precise | boolean | 否 | 是 | - 如果设置为true，在上传/下载无法获取文件大小时任务失败。<br/>- 如果设置为false，将文件大小设置为-1时任务继续。<br/>默认值为false。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| token | string | 否 | 是 | 任务令牌。查询带有token的任务需提供token并通过[request.agent.touch](#requestagenttouch10)查询，否则无法查询到指定任务。其最小为8个字节，最大为2048个字节。默认为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| index | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否 | 是 | 任务的路径索引，通常情况下用于任务断点续传，默认为0。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| begins | ArkTS-Dyn: number <br/>ArkTS-Sta: long | 否 | 是 | 文件起点，单位为字节（B），通常情况下用于断点续传。默认值为0，取值为闭区间，表示从头开始传输。<br/>- 下载时，请求读取服务器开始下载文件时的起点位置（HTTP协议中设置"Range"选项）。<br/>- 上传时，读取需上传的文件的起点位置。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| ends | ArkTS-Dyn: number <br/>ArkTS-Sta: long | 否 | 是 | 文件终点，单位为字节（B），通常情况下用于断点续传。默认值为-1，取值为闭区间，表示传输到整个文件末尾结束。<br/>- 下载时，请求读取服务器开始下载文件时的结束位置（HTTP协议中设置"Range"选项）。<br/>- 上传时，读取需上传的文件的结束位置。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| gauge | boolean | 否 | 是 | 后台任务的过程进度通知策略，仅应用于后台任务，默认值为false。<br/>- false：代表仅完成或失败的通知。<br/>- true：发出每个进度已完成或失败的通知。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| precise | boolean | 否 | 是 | - 如果设置为true，在上传/下载无法获取文件大小时任务失败。<br/>- 如果设置为false，将文件大小设置为-1时任务继续。<br/>默认值为false。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| token | string | 否 | 是 | 任务令牌。查询带有token的任务需提供token并通过[request.agent.touch](#requestagenttouch10)查询，否则无法查询到指定任务。其最小为8个字节，最大为2048个字节。默认为空。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
 | priority<sup>11+</sup> | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否 | 是 | 任务的优先级。前台任务的优先级比后台任务高。任务模式相同的情况下，该配置项的数字越小优先级越高，默认值为0。<br/>**ArkTS-Dyn起始版本：**  11 <br/>**ArkTS-Sta起始版本：**  23 |
-| extras | ArkTS-Dyn: object <br/>ArkTS-Sta: Record<string, string> | 否 | 是 | 配置的附加功能，默认为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| extras | ArkTS-Dyn: object <br/>ArkTS-Sta: Record<string, string> | 否 | 是 | 配置的附加功能，默认为空。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
 | multipart<sup>15+</sup> | boolean | 否 | 是 | 是否使用单个请求进行上传，单个请求上传时必定使用multipart/form-data。<br/>- false：每个文件使用一个请求传输。 <br/>- true：使用多文件单请求上传。 <br/>默认值为false。<br/>**ArkTS-Dyn起始版本：**  15 <br/>**ArkTS-Sta起始版本：**  23 |
 | notification<sup>15+</sup> | [Notification](#requestagentnotification15) | 否 | 是 | 通知栏自定义设置。默认值为`{}`。<br/>**ArkTS-Dyn起始版本：**  15 <br/>**ArkTS-Sta起始版本：**  23 |
 | minSpeed<sup>20+</sup> | [MinSpeed](#requestagentminspeed20) | 否 | 是 | 最低限速自定义设置，默认不启用最低限速。<br/>**ArkTS-Dyn起始版本：**  20 <br/>**ArkTS-Sta起始版本：**  23 |
@@ -4283,7 +4232,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 
 定义任务当前的状态。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -4307,7 +4256,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 ## request.agent.Progress<sup>10+</sup>
 任务进度的数据结构。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -4336,16 +4285,16 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 
 | 名称 | 值 | 说明                                                                             |
 | -------- | -------- |--------------------------------------------------------------------------------|
-| OTHERS | 0xFF | 表示其他故障。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| DISCONNECTED | 0x00 | 表示网络断开连接。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| TIMEOUT | 0x10 | 表示任务超时。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| PROTOCOL | 0x20 | 表示协议错误，例如：服务器内部错误（500）、无法处理的数据区间（416）等。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| PARAM<sup>12+</sup> | 0x30 | 表示参数错误，例如：url格式错误等。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  12 <br/>**ArkTS-Sta起始版本：**  23 |
-| FSIO | 0x40 | 表示文件系统io错误，例如：打开/查找/读取/写入/关闭。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
-| DNS<sup>12+</sup> | 0x50 | 表示DNS解析错误。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  12 <br/>**ArkTS-Sta起始版本：**  23 |
-| TCP<sup>12+</sup> | 0x60 | 表示TCP连接错误。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  12 <br/>**ArkTS-Sta起始版本：**  23 |
-| SSL<sup>12+</sup> | 0x70 | 表示SSL连接错误，例如：证书错误、证书校验失败错误等。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  12 <br/>**ArkTS-Sta起始版本：**  23 |
-| REDIRECT<sup>12+</sup> | 0x80 | 表示重定向错误。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  12 <br/>**ArkTS-Sta起始版本：**  23 |
+| OTHERS | 0xFF | 表示其他故障。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| DISCONNECTED | 0x00 | 表示网络断开连接。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| TIMEOUT | 0x10 | 表示任务超时。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| PROTOCOL | 0x20 | 表示协议错误，例如：服务器内部错误（500）、无法处理的数据区间（416）等。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| PARAM<sup>12+</sup> | 0x30 | 表示参数错误，例如：url格式错误等。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  12 <br/>**ArkTS-Sta起始版本：**  23 |
+| FSIO | 0x40 | 表示文件系统io错误，例如：打开/查找/读取/写入/关闭。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  10 <br/>**ArkTS-Sta起始版本：**  23 |
+| DNS<sup>12+</sup> | 0x50 | 表示DNS解析错误。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  12 <br/>**ArkTS-Sta起始版本：**  23 |
+| TCP<sup>12+</sup> | 0x60 | 表示TCP连接错误。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  12 <br/>**ArkTS-Sta起始版本：**  23 |
+| SSL<sup>12+</sup> | 0x70 | 表示SSL连接错误，例如：证书错误、证书校验失败错误等。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  12 <br/>**ArkTS-Sta起始版本：**  23 |
+| REDIRECT<sup>12+</sup> | 0x80 | 表示重定向错误。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：**  12 <br/>**ArkTS-Sta起始版本：**  23 |
 | LOW_SPEED<sup>20+</sup>  | 0x90 | 表示任务速度过低。<br/>**ArkTS-Dyn起始版本：**  20 <br/>**ArkTS-Sta起始版本：**  23 |
 
 ## request.agent.Filter<sup>10+</sup>
@@ -4395,7 +4344,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 ## request.agent.HttpResponse<sup>12+</sup>
 任务响应头的数据结构。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -4612,7 +4561,7 @@ type ProgressCallback = (progress: Progress) => void
 ### 属性
 包括任务id和任务的配置信息。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -4635,7 +4584,7 @@ on(event: 'progress', callback: (progress: [Progress](#requestagentprogress10)) 
 
 订阅任务进度的事件，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -4652,13 +4601,7 @@ on(event: 'progress', callback: (progress: [Progress](#requestagentprogress10)) 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 订阅的事件类型。<br>- 取值为'progress'，表示任务进度，任务进度有进展时触发该事件。 |
-  | callback | function | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
-
-回调函数的参数：
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
+  | callback | (progress: [Progress](#requestagentprogress10)) => void | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
 
 **错误码：**
 
@@ -4794,7 +4737,7 @@ on(event: 'completed', callback: (progress: [Progress](#requestagentprogress10))
 
 订阅任务完成事件，使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -4811,13 +4754,7 @@ on(event: 'completed', callback: (progress: [Progress](#requestagentprogress10))
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 订阅的事件类型。<br>- 取值为'completed'，表示任务完成，任务完成时触发该事件。 |
-  | callback | function | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
-
-回调函数的参数：
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
+  | callback | (progress: [Progress](#requestagentprogress10)) => void | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
 
 **错误码：**
 
@@ -4953,7 +4890,7 @@ on(event: 'failed', callback: (progress: [Progress](#requestagentprogress10)) =&
 
 订阅任务失败事件，使用callback异步回调。可通过调用[request.agent.show](#requestagentshow10-1)查看错误原因。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -4970,13 +4907,7 @@ on(event: 'failed', callback: (progress: [Progress](#requestagentprogress10)) =&
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 订阅的事件类型。<br>- 取值为'failed'，表示任务失败，任务失败时触发该事件。 |
-  | callback | function | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
-
-回调函数的参数：
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
+  | callback | (progress: [Progress](#requestagentprogress10)) => void | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
 
 **错误码：**
 
@@ -5127,13 +5058,7 @@ on(event: 'pause', callback: (progress: [Progress](#requestagentprogress10)) =&g
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 订阅的事件类型。<br>- 取值为'pause'，表示任务已暂停，任务暂停时触发该事件。 |
-  | callback | function | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
-
-回调函数的参数：
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
+  | callback | (progress: [Progress](#requestagentprogress10)) => void | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
 
 **错误码：**
 
@@ -5290,13 +5215,7 @@ on(event: 'resume', callback: (progress: [Progress](#requestagentprogress10)) =&
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 订阅的事件类型。<br>- 取值为'resume'，表示任务恢复，任务恢复时触发该事件。 |
-  | callback | function | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
-
-回调函数的参数：
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
+  | callback | (progress: [Progress](#requestagentprogress10)) => void | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
 
 **错误码：**
 
@@ -5459,13 +5378,7 @@ on(event: 'remove', callback: (progress: [Progress](#requestagentprogress10)) =&
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 订阅的事件类型。<br>- 取值为'remove'，表示任务被移除，任务移除时触发该事件。 |
-  | callback | function | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
-
-回调函数的参数：
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
+  | callback | (progress: [Progress](#requestagentprogress10)) => void | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
 
 **错误码：**
 
@@ -5607,7 +5520,7 @@ on(event: 'response', callback: Callback&lt;HttpResponse&gt;): void
 
 订阅任务响应头，使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -6060,7 +5973,7 @@ off(event: 'progress', callback?: (progress: [Progress](#requestagentprogress10)
 
 取消订阅任务进度事件。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -6077,13 +5990,7 @@ off(event: 'progress', callback?: (progress: [Progress](#requestagentprogress10)
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 取消订阅的事件类型。<br>- 取值为'progress'，表示任务进度。 |
-  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有进度回调函数。 |
-
-回调函数的参数：
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
+  | callback | (progress: [Progress](#requestagentprogress10)) => void | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有进度回调函数。 |
 
 
 **错误码：**
@@ -6236,7 +6143,7 @@ off(event: 'completed', callback?: (progress: [Progress](#requestagentprogress10
 
 取消订阅任务完成事件。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -6253,13 +6160,7 @@ off(event: 'completed', callback?: (progress: [Progress](#requestagentprogress10
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 取消订阅的事件类型。<br>- 取值为'completed'，表示任务完成。 |
-  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有完成回调函数。 |
-
-回调函数的参数：
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
+  | callback | (progress: [Progress](#requestagentprogress10)) => void | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有完成回调函数。 |
 
 
 **错误码：**
@@ -6412,7 +6313,7 @@ off(event: 'failed', callback?: (progress: [Progress](#requestagentprogress10)) 
 
 取消订阅任务失败事件。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -6429,13 +6330,7 @@ off(event: 'failed', callback?: (progress: [Progress](#requestagentprogress10)) 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 取消订阅的事件类型。<br>- 取值为'failed'，表示任务失败。 |
-  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有失败回调函数。 |
-
-回调函数的参数：
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息 |
+  | callback | (progress: [Progress](#requestagentprogress10)) => void | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有失败回调函数。 |
 
 **错误码：**
 
@@ -6602,13 +6497,7 @@ off(event: 'pause', callback?: (progress: [Progress](#requestagentprogress10)) =
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 取消订阅的事件类型。<br>- 取值为'pause'，表示任务暂停。 |
-  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有暂停回调函数。 |
-
-回调函数的参数：
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
+  | callback | (progress: [Progress](#requestagentprogress10)) => void | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有暂停回调函数。 |
 
 **错误码：**
 
@@ -6775,13 +6664,7 @@ off(event: 'resume', callback?: (progress: [Progress](#requestagentprogress10)) 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 取消订阅的事件类型。<br>- 取值为'resume'，表示任务恢复。 |
-  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有恢复回调函数。 |
-
-回调函数的参数：
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
+  | callback | (progress: [Progress](#requestagentprogress10)) => void | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有恢复回调函数。 |
 
 **错误码：**
 
@@ -6948,13 +6831,7 @@ off(event: 'remove', callback?: (progress: [Progress](#requestagentprogress10)) 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 取消订阅的事件类型。<br>- 取值为'remove'，表示任务被移除。 |
-  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有移除回调函数。 |
-
-回调函数的参数：
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
+  | callback | (progress: [Progress](#requestagentprogress10)) => void | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有移除回调函数。 |
 
 **错误码：**
 
@@ -7106,7 +6983,7 @@ off(event: 'response', callback?: Callback&lt;HttpResponse&gt;): void
 
 取消订阅任务响应事件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -7613,7 +7490,7 @@ start(callback: AsyncCallback&lt;void&gt;): void
 
 **需要权限**：ohos.permission.INTERNET
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -7743,7 +7620,7 @@ start(): Promise&lt;void&gt;
 
 **需要权限**：ohos.permission.INTERNET
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -8365,7 +8242,7 @@ stop(callback: AsyncCallback&lt;void&gt;): void
 
 停止任务，可以停止正在运行/正在等待/正在重试的任务，已停止的任务可被[start](#start10)恢复。使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -8491,7 +8368,7 @@ stop(): Promise&lt;void&gt;
 
 停止任务，可以停止正在运行/正在等待/正在重试的任务，已停止的任务可被[start](#start10)恢复。使用Promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -8702,7 +8579,7 @@ create(context: BaseContext, config: Config, callback: AsyncCallback&lt;Task&gt;
 
 **需要权限**：ohos.permission.INTERNET
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -8840,7 +8717,7 @@ create(context: BaseContext, config: Config): Promise&lt;Task&gt;
 
 **需要权限**：ohos.permission.INTERNET
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -9048,7 +8925,7 @@ remove(id: string, callback: AsyncCallback&lt;void&gt;): void
 
 移除属于调用方的指定任务，如果正在处理中，该任务将被迫停止。使用callback异步回调。在调用后任务对象和其回调函数会被释放。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -9110,7 +8987,7 @@ remove(id: string): Promise&lt;void&gt;
 
 移除属于调用方的指定任务，如果正在处理中，该任务将被迫停止。使用Promise异步回调。在调用后任务对象和其回调函数会被释放。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 

@@ -1,7 +1,7 @@
 # 无障碍控制操作
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zhanghangkai10241-->
+<!--Owner: @wangyinhua-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -10,10 +10,11 @@
 
 >**说明：**
 >
->  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 18开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
->  - 本模块首批接口从API version 18开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
->  - 目前仅支持通过开启无障碍模式触发。
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 目前仅支持通过开启无障碍模式触发。
 
 ## onAccessibilityFocus
 
@@ -23,9 +24,9 @@ ArkTS-Sta: onAccessibilityFocus(callback: AccessibilityFocusCallback | undefined
 
 设置无障碍节点获焦、失焦状态的回调函数。当状态发生变化时，触发回调函数。
 
-**卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,9 +52,9 @@ type AccessibilityFocusCallback = (isFocus: boolean) => void
 
 定义onAccessibilityFocus中使用的回调类型。
 
-**卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -73,11 +74,11 @@ ArkTS-Dyn: onAccessibilityActionIntercept(callback: AccessibilityActionIntercept
 
 ArkTS-Sta: onAccessibilityActionIntercept(callback: AccessibilityActionInterceptCallback | undefined): this
 
-该接口在无障碍模式下，可在无障碍控制操作触发前通知注册的回调函数，由注册方决定是否拦截该次无障碍动作，对不支持Click的组件注册也无法触发回调。
+该接口在无障碍模式下，可在无障碍控制操作触发前通知注册的回调函数，由注册方决定是否拦截该次无障碍控制操作，对不支持点击的组件注册也无法触发回调。
 
-**卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -101,11 +102,11 @@ ArkTS-Sta: onAccessibilityActionIntercept(callback: AccessibilityActionIntercept
 
 type AccessibilityActionInterceptCallback = (action: AccessibilityAction) => AccessibilityActionInterceptResult
 
-提供onAccessibilityActionIntercept中使用的回调函数参数类型。
+定义onAccessibilityActionIntercept中使用的回调类型。
 
-**卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -129,9 +130,9 @@ type AccessibilityActionInterceptCallback = (action: AccessibilityAction) => Acc
 
 定义组件当前触发的无障碍控制操作类型。
 
-**卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -141,16 +142,16 @@ type AccessibilityActionInterceptCallback = (action: AccessibilityAction) => Acc
 
 | 名称 | 值  | 说明             |
 | ---- | ---- | ------------------ |
-| UNDEFINED_ACTION | 0 | 未定义的无障碍操作。 |
+| UNDEFINED_ACTION | 0 | 未定义的无障碍控制操作。 |
 | ACCESSIBILITY_CLICK | 1 | 无障碍点击操作。 |
 
 ## AccessibilityActionInterceptResult<sup>20+</sup>枚举说明
 
 定义AccessibilityActionInterceptCallback的无障碍控制操作拦截结果。
 
-**卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -161,8 +162,8 @@ type AccessibilityActionInterceptCallback = (action: AccessibilityAction) => Acc
 | 名称 | 值  | 说明             |
 | ---- | ---- | ------------------ |
 | ACTION_INTERCEPT | 0 | 拦截当前组件接收的无障碍控制操作，回调处理结束后，不允许当前组件响应无障碍控制操作。 |
-| ACTION_CONTINUE | 1 | 拦截当前组件接收的无障碍控制操作, 回调处理结束后，仍然需要组件做出响应，执行当前组件的处理逻辑。 |
-| ACTION_RISE | 2 | 拦截执行当前组件接收的无障碍控制操作，回调处理结束后，仍然需要组件做出响应，执行当前组件的处理逻辑，并且将ACTION信息往父组件传递，传递到下一个使用了onAccessibilityActionIntercept的组件，触发当前组件中注册的回调，但不触发组件处理逻辑。处理完成后，可以继续使用RISE向父组件传递ACTION。 |
+| ACTION_CONTINUE | 1 | 不拦截当前组件接收的无障碍控制操作，回调处理结束后，允许当前组件响应无障碍控制操作，执行当前组件的处理逻辑。 |
+| ACTION_RISE | 2 | 不拦截当前组件接收的无障碍控制操作，回调处理结束后，仍然需要组件做出响应，执行当前组件的处理逻辑，并且将ACTION信息往父组件传递，传递到下一个使用了onAccessibilityActionIntercept的组件，触发该组件中注册的回调，但不触发该组件处理逻辑。处理完成后，可以继续使用RISE向父组件传递ACTION。 |
 
 ## 示例
 
@@ -180,12 +181,12 @@ struct SwitchBootcamp {
   build() {
     NavDestination() {
       Column() {
-        Text('onTouchIntercept')
+        Text('onAccessibilityActionIntercept')
         Row() {
           Text('Label message')
           Blank()
           Toggle({ type: ToggleType.Switch, isOn: $$this.isOn })
-            .onAccessibilityActionIntercept((action : AccessibilityAction) => {
+            .onAccessibilityActionIntercept((action: AccessibilityAction) => {
               if (action === AccessibilityAction.ACCESSIBILITY_CLICK) {
                 this.getUIContext().showAlertDialog({
                   title: '标题',
@@ -231,7 +232,7 @@ struct OnAccessibilityFocusExample {
       Column() {
         Text("onAccessibilityFocus doesn't take effect")
         Text("onAccessibilityFocus takes effect")
-        .onAccessibilityFocus((isFocus)=>{
+        .onAccessibilityFocus((isFocus) => {
           console.info(`[testingTag] isFocus current is ${isFocus}`)
           })
       }

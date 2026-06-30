@@ -1,9 +1,9 @@
 # LiveFormExtensionContext
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 LiveFormExtensionContext是[LiveFormExtensionAbility](./js-apis-app-form-LiveFormExtensionAbility.md)的上下文，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
 
@@ -12,6 +12,8 @@ LiveFormExtensionContext是[LiveFormExtensionAbility](./js-apis-app-form-LiveFor
 > 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块接口仅可在Stage模型下使用。
+>
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 
 ## 导入模块
 ```ts
@@ -28,6 +30,10 @@ import { common } from '@kit.AbilityKit';
 
 LiveFormExtensionContext提供允许访问特定于LiveFormExtensionAbility资源的能力，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 ### startAbilityByLiveForm
 
 startAbilityByLiveForm(want: Want): Promise&lt;void&gt;
@@ -43,6 +49,10 @@ startAbilityByLiveForm(want: Want): Promise&lt;void&gt;
 **系统能力：** SystemCapability.Ability.Form
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -68,6 +78,8 @@ startAbilityByLiveForm(want: Want): Promise&lt;void&gt;
 | 16501011 | The form can not support this operation.                       |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // MyLiveFormExtensionAbility.ets
@@ -115,6 +127,83 @@ struct MyLiveFormPage {
         });
     } catch (e) {
       console.error(`startAbilityByLiveForm failed, code is ${e?.code}, message is ${e?.message}`);
+    }
+  }
+
+  build() {
+    // 请开发者替换为实际的页面
+    Stack() {
+      Column()
+        .width('50%')
+        .height('50%')
+        .backgroundColor('#2875F5')
+    }
+    .width('100%')
+    .height('100%')
+    .onClick(() => {
+      // 3.在点击事件回调中直接使用该接口
+      console.info('MyLiveFormPage click to start ability');
+      if (!this.liveFormContext) {
+        console.info('MyLiveFormPage liveFormContext is empty');
+        return;
+      }
+      this.startAbilityByLiveForm();
+    })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// MyLiveFormExtensionAbility.ets
+'use static'
+import { formInfo, LiveFormInfo, LiveFormExtensionAbility } from '@kit.FormKit';
+import { UIExtensionContentSession } from '@kit.AbilityKit';
+
+export default class MyLiveFormExtensionAbility extends LiveFormExtensionAbility {
+  onLiveFormCreate(liveFormInfo: LiveFormInfo, session: UIExtensionContentSession) {
+    // 1.将LiveFormExtensionContext传给互动卡片的页面组件
+    let storage: LocalStorage = new LocalStorage();
+    storage.setOrCreate('context', this.context);
+    session.loadContent('pages/MyLiveFormPage', storage);
+  }
+};
+```
+
+```ts
+// pages/MyLiveFormPage.ets
+'use static'
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct MyLiveFormPage {
+  private storageForMyLiveFormPage: LocalStorage | undefined = undefined;
+  private liveFormContext: common.LiveFormExtensionContext | undefined = undefined;
+
+  aboutToAppear(): void {
+    // 2.获取LiveFormExtensionContext
+    this.storageForMyLiveFormPage = this.getUIContext().getSharedLocalStorage();
+    this.liveFormContext = this.storageForMyLiveFormPage?.get<common.LiveFormExtensionContext>('context');
+  }
+
+   private startAbilityByLiveForm(): void {
+    try {
+      // 请开发者替换为实际的want信息
+      this.liveFormContext?.startAbilityByLiveForm({
+        bundleName: 'com.example.liveformdemo',
+        abilityName: 'EntryAbility',
+      })
+        .then(() => {
+          console.info('startAbilityByLiveForm succeed');
+        })
+        .catch((error) => {
+          console.error(`startAbilityByLiveForm failed, code is ${error.code}, message is ${error.message}`);
+        });
+    } catch (error) {
+      console.error(`startAbilityByLiveForm failed, code is ${error.code}, message is ${error.message}`);
     }
   }
 

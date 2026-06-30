@@ -3,7 +3,7 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
 <!--Owner: @guoshengbang-->
-<!--Designer: @gcw_4D6e0BBd-->
+<!--Designer: @baozewei-->
 <!--Tester: @guoshengbang-->
 <!--Adviser: @fang-jinxu-->
 
@@ -314,7 +314,7 @@ static napi_value NativeStartPrintJob(napi_env env, napi_callback_info info) {
     Print_StringList pList = { 0 };
     ret = OH_Print_QueryPrinterList(&pList);
     LOGI("OH_Print_QueryPrinterList ret = %{public}d", ret);
-    if (ret == PRINT_ERROR_NONE) {
+    if (ret != PRINT_ERROR_NONE) {
         return n_ret;
     }
     LOGI("pList->count: %{public}d", pList.count);
@@ -330,7 +330,7 @@ static napi_value NativeStartPrintJob(napi_env env, napi_callback_info info) {
     const char *printerId = pList.list[0];
     Print_PrinterInfo *printerInfo = nullptr;
     ret = OH_Print_QueryPrinterInfo(printerId, &printerInfo);
-    if (ret == PRINT_ERROR_NONE) {
+    if (ret != PRINT_ERROR_NONE) {
         return n_ret;
     }
     // 打开要打印的文件，可以有多个，沙箱内合法路径
@@ -383,7 +383,7 @@ static napi_value Init(napi_env env, napi_value exports)
 EXTERN_C_END
 ```
 
-主页上新增一个按钮，单击调用c++的nativeStartPrintByNative直接发送任务。
+主页上新增一个按钮，单击调用c++的nativeStartPrintJob直接发送任务。
 ```ts
 // Index.ets
 

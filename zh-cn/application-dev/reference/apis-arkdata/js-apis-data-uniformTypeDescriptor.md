@@ -13,6 +13,8 @@
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -33,14 +35,14 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 | ENTITY<sup>11+</sup>                       | 'general.entity'                   | 所有表示物理存储类型的基类型，无归属类型。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23                          |
 | OBJECT<sup>11+</sup>                       | 'general.object'                   | 所有表示逻辑内容类型的基类型，无归属类型。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23                          |
 | COMPOSITE_OBJECT<sup>11+</sup>                       | 'general.composite-object'                   | 所有组合内容类型（例如PDF文件类型混合了文本和图片类数据）的基类型，归属类型为OBJECT。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23                          |
-| TEXT                       | 'general.text'                   | 所有文本的基类型，归属类型为OBJECT。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                          |
-| PLAIN_TEXT                | 'general.plain-text'             | 未指定编码的文本类型，没有标识符，归属类型为TEXT。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23        |
-| HTML                  | 'general.html'                   | HTML文本类型，归属类型为TEXT。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23               |
-| HYPERLINK         | 'general.hyperlink'              | 超链接类型，归属类型为TEXT。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                  |
+| TEXT                       | 'general.text'                   | 所有文本的基类型，归属类型为OBJECT。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                          |
+| PLAIN_TEXT                | 'general.plain-text'             | 未指定编码的文本类型，没有标识符，归属类型为TEXT。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23        |
+| HTML                  | 'general.html'                   | HTML文本类型，归属类型为TEXT。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23               |
+| HYPERLINK         | 'general.hyperlink'              | 超链接类型，归属类型为TEXT。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                  |
 | XML<sup>11+</sup>    | 'general.xml'                   | XML文本类型，归属类型为TEXT。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23                |
 | XHTML<sup>12+</sup>    | 'general.xhtml'                   | XHTML文本类型，归属类型为XML。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23                |
 | RSS<sup>12+</sup>    | 'general.rss'                   | RSS文本类型，归属类型为XML。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23                |
-| SMIL<sup>12+</sup>                         | 'com.real.smil'                    |  同步多媒体集成语言类型，归属类型为XML文本类型。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23       |
+| SMIL<sup>12+</sup>                         | 'com.real.smil'                    | 同步多媒体集成语言类型，归属类型为XML。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23       |
 | SOURCE_CODE<sup>11+</sup>                | 'general.source-code'                  | 所有源代码的基类型，归属类型为TEXT。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23        |
 | SCRIPT<sup>11+</sup>    | 'general.script'                  | 所有脚本语言源代码的基类型，归属类型为SOURCE_CODE。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23   |
 | SHELL_SCRIPT<sup>11+</sup>               | 'general.shell-script'                  | shell脚本类型，归属类型为SCRIPT。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23            |
@@ -71,7 +73,7 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 | KFX<sup>11+</sup>                       | 'com.amazon.kfx'                 | KFX电子书文件格式类型，归属类型为EBOOK。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23          |
 | MOBI<sup>11+</sup>             | 'com.amazon.mobi'               | MOBI电子书文件格式类型，归属类型为EBOOK。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23         |
 | MEDIA<sup>11+</sup>         | 'general.media'           | 所有媒体的基类型，归属类型为OBJECT。 <br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23                         |
-| IMAGE        | 'general.image'          | 所有图片的基类型，归属类型为MEDIA。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23               |
+| IMAGE        | 'general.image'          | 所有图片的基类型，归属类型为MEDIA。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23               |
 | JPEG<sup>11+</sup>                         | 'general.jpeg'                   | JPEG图片类型，归属类型为IMAGE。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23              |
 | PNG<sup>11+</sup>                        | 'general.png'                  | PNG图片类型，归属类型为IMAGE。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23               |
 | RAW_IMAGE<sup>11+</sup>                        | 'general.raw-image'                  | 所有原始图像格式的基类型，归属类型为IMAGE。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23          |
@@ -100,7 +102,7 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 | PDF<sup>11+</sup>                        | 'com.adobe.pdf'                  | PDF数据类型，归属类型为COMPOSITE_OBJECT。 <br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23       |
 | POSTSCRIPT<sup>11+</sup>                       | 'com.adobe.postscript'                 | PostScript数据类型，归属类型为COMPOSITE_OBJECT。 <br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23       |
 | ENCAPSULATED_POSTSCRIPT<sup>11+</sup>             | 'com.adobe.encapsulated-postscript'               | Encapsulated PostScript类型，归属类型为POSTSCRIPT。 <br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23       |
-| VIDEO       | 'general.video'           | 所有视频的基类型，归属类型为MEDIA。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23              |
+| VIDEO       | 'general.video'           | 所有视频的基类型，归属类型为MEDIA。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23              |
 | AVI<sup>11+</sup>        | 'general.avi'          | AVI视频类型，归属类型为VIDEO。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23               |
 | MPEG<sup>11+</sup>                         | 'general.mpeg'                   | MPEG-1或MPEG-2视频类型，归属类型为VIDEO。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23      |
 | MPEG4<sup>11+</sup>                        | 'general.mpeg-4'                  | MPEG-4视频类型，归属类型为VIDEO。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23               |
@@ -116,7 +118,7 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 | REALMEDIA<sup>12+</sup>                         | 'com.real.realmedia'                    | 流媒体视频类型，归属类型为VIDEO。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23       |
 | MATROSKA_VIDEO<sup>12+</sup>                         | 'org.matroska.mkv'                    | MKV视频类型，归属类型为VIDEO。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23       |
 | FLASH<sup>12+</sup>                         | 'com.adobe.flash'                    | FLASH视频类型，归属类型为VIDEO。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23       |
-| AUDIO       | 'general.audio'          | 所有音频的基类型，归属类型为MEDIA。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23              |
+| AUDIO       | 'general.audio'          | 所有音频的基类型，归属类型为MEDIA。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23              |
 | AAC<sup>11+</sup>                         | 'general.aac'                   | AAC音频类型，归属类型为AUDIO。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23               |
 | AIFF<sup>11+</sup>                        | 'general.aiff'                  | AIFF音频类型，归属类型为AUDIO。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23               |
 | ALAC<sup>11+</sup>                        | 'general.alac'                  | ALAC音频类型，归属类型为AUDIO。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23               |
@@ -137,9 +139,9 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 | SD2_AUDIO<sup>12+</sup>                         | 'com.digidesign.sd2-audio'                    | 单声道/立体声音频类型（Digidesign Sound Designer II），归属类型为AUDIO。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23         |
 | REALAUDIO<sup>12+</sup>                         | 'com.real.realaudio'                    | RealMedia音频类型，归属类型为AUDIO。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23      |
 | MATROSKA_AUDIO<sup>12+</sup>                         | 'org.matroska.mka'                    | MKA音频类型，归属类型为AUDIO。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23      |
-| FILE                       | 'general.file'                 | 所有文件的基类型，归属类型为ENTITY。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                         |
+| FILE                       | 'general.file'                 | 所有文件的基类型，归属类型为ENTITY。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                         |
 | DIRECTORY<sup>11+</sup>             | 'general.directory'               | 所有目录的基类型，归属类型为ENTITY。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23                          |
-| FOLDER        | 'general.folder'           | 所有文件夹的基类型，归属类型为DIRECTORY。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                        |
+| FOLDER        | 'general.folder'           | 所有文件夹的基类型，归属类型为DIRECTORY。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23                        |
 | SYMLINK<sup>11+</sup>        | 'general.symlink'          | 所有符号链接的基类型，归属类型为ENTITY。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23                        |
 | ARCHIVE<sup>11+</sup>                         | 'general.archive'                   | 所有文件和目录存档文件的基类型，归属类型为OBJECT。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23                   |
 | BZ2_ARCHIVE<sup>11+</sup>                        | 'general.bz2-archive'                  | BZ2存档文件类型，归属类型为ARCHIVE。 <br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23          |
@@ -154,7 +156,7 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 | GNU_TAR_ARCHIVE<sup>11+</sup>         | 'org.gnu.gnu-tar-archive'           | GNU存档文件类型，归属类型为ARCHIVE。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23          |
 | GNU_ZIP_ARCHIVE<sup>11+</sup>        | 'org.gnu.gnu-zip-archive'          | GZIP存档文件类型，归属类型为ARCHIVE。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23         |
 | GNU_ZIP_TAR_ARCHIVE<sup>11+</sup>                         | 'org.gnu.gnu-zip-tar-archive'                   | GZIP TAR存档文件类型，归属类型为ARCHIVE。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23      |
-| OPENXML<sup>12+</sup>                         | 'org.openxmlformats.openxml'                    |   开源XML基类型，归属类型为ARCHIVE。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23                      |
+| OPENXML<sup>12+</sup>                         | 'org.openxmlformats.openxml'                    | 开源XML基类型，归属类型为ARCHIVE。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23                      |
 | WORDPROCESSINGML_DOCUMENT<sup>12+</sup>                         | 'org.openxmlformats.wordprocessingml.document'                    | 开源XML文档类型，归属类型为OPENXML和COMPOSITE_OBJECT。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23      |
 | SPREADSHEETML_SHEET<sup>12+</sup>                         | 'org.openxmlformats.spreadsheetml.sheet'                    | 开源XML电子表格类型，归属类型为OPENXML和COMPOSITE_OBJECT。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23                      |
 | PRESENTATIONML_PRESENTATION<sup>12+</sup>                         | 'org.openxmlformats.presentationml.presentation'                    | 开源XML演示文稿类型，归属类型为OPENXML和COMPOSITE_OBJECT。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23                      |
@@ -179,7 +181,7 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 | CONTACT<sup>11+</sup>                        | 'general.contact'                  | 所有联系人类数据的基类型，归属类型为OBJECT。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23                       |
 | DATABASE<sup>11+</sup>                        | 'general.database'                  | 所有数据库文件的基类型，归属类型为OBJECT。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23                       |
 | MESSAGE<sup>11+</sup>                       | 'general.message'                 | 所有消息类数据的基类型，归属类型为OBJECT。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23                       |
-| EXECUTABLE<sup>12+</sup>                         | 'general.executable'                    |  所有可执行文件的基类型，归属类型为OBJECT。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23       |
+| EXECUTABLE<sup>12+</sup>                         | 'general.executable'                    | 所有可执行文件的基类型，归属类型为OBJECT。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23       |
 | PORTABLE_EXECUTABLE<sup>12+</sup>                         | 'com.microsoft.portable-executable'                    | Microsoft Windows应用程序类型，归属类型为EXECUTABLE。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23       |
 | SUN_JAVA_CLASS<sup>12+</sup>                         | 'com.sun.java-class'                    | Java类文件类型，归属类型为EXECUTABLE。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23       |
 | VCARD<sup>11+</sup>             | 'general.vcard'               | 所有电子名片类数据的基类型，归属类型为OBJECT。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23                       |
@@ -192,9 +194,9 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 | POSTSCRIPT_FONT<sup>12+</sup>                         | 'com.adobe.postscript-font'                    | PostScript 字体类型，归属类型为FONT。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23       |
 | POSTSCRIPT_PFB_FONT<sup>12+</sup>                         | 'com.adobe.postscript-pfb-font'                    | PostScript Font Binary字体类型，归属类型为FONT。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23       |
 | POSTSCRIPT_PFA_FONT<sup>12+</sup>                         | 'com.adobe.postscript-pfa-font'                    | Adobe Type 1 字体类型，归属类型为FONT。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23       |
-| OPENHARMONY_FORM                         | 'openharmony.form'                   | 系统定义的卡片类型，归属类型为OBJECT。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23              |
-| OPENHARMONY_APP_ITEM                        | 'openharmony.app-item'                  | 系统定义的桌面图标类型，归属类型为OBJECT。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23            |
-| OPENHARMONY_PIXEL_MAP                        | 'openharmony.pixel-map'                  | 系统定义的像素图类型，归属类型为IMAGE。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23             |
+| OPENHARMONY_FORM                         | 'openharmony.form'                   | 系统定义的卡片类型，归属类型为OBJECT。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23              |
+| OPENHARMONY_APP_ITEM                        | 'openharmony.app-item'                  | 系统定义的桌面图标类型，归属类型为OBJECT。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23            |
+| OPENHARMONY_PIXEL_MAP                        | 'openharmony.pixel-map'                  | 系统定义的像素图类型，归属类型为IMAGE。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23             |
 | OPENHARMONY_ATOMIC_SERVICE<sup>11+</sup>                        | 'openharmony.atomic-service'                  | 系统定义的原子化服务类型，归属类型为OBJECT。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23             |
 | OPENHARMONY_PACKAGE<sup>11+</sup>                        | 'openharmony.package'                  | 系统定义的包（即目录的打包文件），归属类型为DIRECTORY。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23             |
 | OPENHARMONY_HAP<sup>11+</sup>                        | 'openharmony.hap'                  | 系统定义的能力包，归属类型为OPENHARMONY_PACKAGE。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23             |
@@ -219,7 +221,7 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 
 | 名称    | 类型                    | 只读 | 可选 | 说明                                                       |
 | ------- | ----------------------- | ---- | ---- |----------------------------------------------------------|
-| typeId<sup>11+</sup>     | string | 否   | 否   | 标准化数据类型的ID（即[UTD列表](#uniformdatatype)中对应的枚举值），也可以是自定义UTD。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| typeId<sup>11+</sup>     | string | 否   | 否   | 标准化数据类型的ID（即[UTD预置列表](../../database/uniform-data-type-list.md)中各类型对应的UTD-ID），也可以是自定义UTD。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
 | belongingToTypes<sup>11+</sup>  | Array\<string>          | 否   | 否   | 标准化数据类型所归属的类型typeId列表。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
 | description<sup>11+</sup>     | string                  | 否   | 否   | 标准化数据类型的简要说明。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
 | referenceURL<sup>11+</sup>     | string                  | 否   | 否   | 标准化数据类型的参考链接URL，用于描述类型的详细信息。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
@@ -243,7 +245,7 @@ belongsTo(type: string): boolean
 
 | 参数名  | 类型 | 必填  | 说明                    |
 | -----  | ------  | ----  | ----------------------- |
-| type    | string  | 是    |所指定的标准化数据类型（即[UniformDataType](#uniformdatatype)中对应的枚举值）。   |
+| type    | string  | 是    |所指定的标准化数据类型（即[UTD预置列表](../../database/uniform-data-type-list.md)中各类型对应的UTD-ID）。   |
 
 **返回值：**
 
@@ -257,7 +259,7 @@ belongsTo(type: string): boolean
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -317,7 +319,7 @@ isLowerLevelType(type: string): boolean
 
 | 参数名  | 类型 | 必填  | 说明                    |
 | -----  | ------  | ----  | ----------------------- |
-| type    | string  | 是    |所指定的标准化数据类型（即[UniformDataType](#uniformdatatype)中对应的枚举值）。   |
+| type    | string  | 是    |所指定的标准化数据类型（即[UTD预置列表](../../database/uniform-data-type-list.md)中各类型对应的UTD-ID）。   |
 
 **返回值：**
 
@@ -331,7 +333,7 @@ isLowerLevelType(type: string): boolean
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -391,7 +393,7 @@ isHigherLevelType(type: string): boolean
 
 | 参数名  | 类型 | 必填  | 说明                    |
 | -----  | ------  | ----  | ----------------------- |
-| type    | string  | 是    |所指定的标准化数据类型（即[UniformDataType](#uniformdatatype)中对应的枚举值）。   |
+| type    | string  | 是    |所指定的标准化数据类型（即[UTD预置列表](../../database/uniform-data-type-list.md)中各类型对应的UTD-ID或自定义UTD-ID）。   |
 
 **返回值：**
 
@@ -405,7 +407,7 @@ isHigherLevelType(type: string): boolean
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -415,15 +417,16 @@ ArkTS-Dyn示例：
 import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try{
-    let typeObj : uniformTypeDescriptor.TypeDescriptor = uniformTypeDescriptor.getTypeDescriptor('general.source-code');
-    let ret = typeObj.isHigherLevelType('general.type-script');
-    if(ret) {
-        console.info('type general.source-code is higher level type of type general.type-script');
-    }
-} catch(e) {
-    let error: BusinessError = e as BusinessError;
-    console.error(`isHigherLevelType throws an exception. code is ${error.code}, message is ${error.message} `);
+try {
+  // 获取TypeDescriptor对象
+  let typeObj: uniformTypeDescriptor.TypeDescriptor = uniformTypeDescriptor.getTypeDescriptor('general.source-code');
+  let ret = typeObj.isHigherLevelType('general.type-script');
+  if (ret) {
+    console.info('type general.source-code is higher level type of type general.type-script');
+  }
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.error(`isHigherLevelType throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 ```
 
@@ -434,18 +437,17 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    let typeObj : uniformTypeDescriptor.TypeDescriptor | null = uniformTypeDescriptor.getTypeDescriptor('general.source-code');
-    if (!typeObj) {
-        console.info('TypeDescriptor not found');
-        return;
-    }
-    let ret = typeObj.isHigherLevelType('general.type-script');
-    if(ret) {
-        console.info('type general.source-code is higher level type of type general.type-script');
-    }
-} catch(e) {
-    let error: BusinessError = e as BusinessError;
-    console.info(`isHigherLevelType throws an exception. code is ${error.code}, message is ${error.message} `);
+  let typeObj: uniformTypeDescriptor.TypeDescriptor | null = uniformTypeDescriptor.getTypeDescriptor('general.source-code');
+  if (!typeObj) {
+    console.info('TypeDescriptor not found');
+  }
+  let ret = typeObj.isHigherLevelType('general.type-script');
+  if (ret) {
+    console.info('type general.source-code is higher level type of type general.type-script');
+  }
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.info(`isHigherLevelType throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 ```
 
@@ -479,7 +481,7 @@ equals(typeDescriptor: TypeDescriptor): boolean
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -489,15 +491,16 @@ ArkTS-Dyn示例：
 import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-try{
-    let typeA : uniformTypeDescriptor.TypeDescriptor = uniformTypeDescriptor.getTypeDescriptor('general.type-script');
-    let typeB : uniformTypeDescriptor.TypeDescriptor = uniformTypeDescriptor.getTypeDescriptor('general.python-script');
-    if(!typeA.equals(typeB)) {
-      console.info('typeA is not equal to typeB');
-    }
-} catch(e) {
-    let error: BusinessError = e as BusinessError;
-    console.error(`throws an exception. code is ${error.code}, message is ${error.message} `);
+try {
+  // 获取两个TypeDescriptor对象进行比较
+  let typeA: uniformTypeDescriptor.TypeDescriptor = uniformTypeDescriptor.getTypeDescriptor('general.type-script');
+  let typeB: uniformTypeDescriptor.TypeDescriptor = uniformTypeDescriptor.getTypeDescriptor('general.python-script');
+  if (!typeA.equals(typeB)) {
+    console.info('typeA is not equal to typeB');
+  }
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.error(`throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 ```
 
@@ -508,22 +511,22 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    let typeA : uniformTypeDescriptor.TypeDescriptor | null = uniformTypeDescriptor.getTypeDescriptor('general.type-script');
-    if (!typeA) {
-        console.info('TypeDescriptor not found');
-        return;
-    }
-    let typeB : uniformTypeDescriptor.TypeDescriptor | null = uniformTypeDescriptor.getTypeDescriptor('general.python-script');
-    if (!typeB) {
-        console.info('TypeDescriptor not found');
-        return;
-    }
-    if(!typeA.equals(typeB)) {
-      console.info('typeA is not equal to typeB');
-    }
-} catch(e) {
-    let error: BusinessError = e as BusinessError;
-    console.info(`throws an exception. code is ${error.code}, message is ${error.message} `);
+  let typeA: uniformTypeDescriptor.TypeDescriptor | null = uniformTypeDescriptor.getTypeDescriptor('general.type-script');
+  if (!typeA) {
+    console.info('TypeDescriptor not found');
+    return;
+  }
+  let typeB: uniformTypeDescriptor.TypeDescriptor | null = uniformTypeDescriptor.getTypeDescriptor('general.python-script');
+  if (!typeB) {
+    console.info('TypeDescriptor not found');
+    return;
+  }
+  if (!typeA.equals(typeB)) {
+    console.info('typeA is not equal to typeB');
+  }
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.info(`throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 ```
 
@@ -559,7 +562,7 @@ ArkTS-Sta: getTypeDescriptor(typeId: string): TypeDescriptor | null
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -570,22 +573,22 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    let typeObj : uniformTypeDescriptor.TypeDescriptor = uniformTypeDescriptor.getTypeDescriptor('com.adobe.photoshop-image');
-    if (typeObj) {
-        let typeId = typeObj.typeId;
-        let belongingToTypes = typeObj.belongingToTypes;
-        let description = typeObj.description;
-        let referenceURL = typeObj.referenceURL;
-        let iconFile = typeObj.iconFile;
-        let filenameExtensions = typeObj.filenameExtensions;
-        let mimeTypes = typeObj.mimeTypes;
-        console.info(`typeId: ${typeId}, belongingToTypes: ${belongingToTypes}, description: ${description}, referenceURL: ${referenceURL}, iconFile: ${iconFile}, filenameExtensions: ${filenameExtensions}, mimeTypes: ${mimeTypes}`);
-    } else {
-        console.info('type com.adobe.photoshop-image does not exist');
-    }
-} catch(e) {
-    let error: BusinessError = e as BusinessError;
-    console.error(`getTypeDescriptor throws an exception. code is ${error.code}, message is ${error.message} `);
+  let typeObj: uniformTypeDescriptor.TypeDescriptor = uniformTypeDescriptor.getTypeDescriptor('com.adobe.photoshop-image');
+  if (typeObj) {
+    let typeId = typeObj.typeId;
+    let belongingToTypes = typeObj.belongingToTypes;
+    let description = typeObj.description;
+    let referenceURL = typeObj.referenceURL;
+    let iconFile = typeObj.iconFile;
+    let filenameExtensions = typeObj.filenameExtensions;
+    let mimeTypes = typeObj.mimeTypes;
+    console.info(`typeId: ${typeId}, belongingToTypes: ${belongingToTypes}, description: ${description}, referenceURL: ${referenceURL}, iconFile: ${iconFile}, filenameExtensions: ${filenameExtensions}, mimeTypes: ${mimeTypes}`);
+  } else {
+    console.info('type com.adobe.photoshop-image does not exist');
+  }
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.error(`getTypeDescriptor throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 ```
 
@@ -596,23 +599,23 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    let typeObj : uniformTypeDescriptor.TypeDescriptor | null = uniformTypeDescriptor.getTypeDescriptor('com.adobe.photoshop-image');
-    if (typeObj) {
-        let typeId = typeObj.typeId;
-        let belongingToTypes = typeObj.belongingToTypes;
-        let description = typeObj.description;
-        let referenceURL = typeObj.referenceURL;
-        let iconFile = typeObj.iconFile;
-        let filenameExtensions = typeObj.filenameExtensions;
-        let mimeTypes = typeObj.mimeTypes;
-        console.info(`typeId: ${typeId}, belongingToTypes: ${belongingToTypes}, description: ${description}, referenceURL: ${referenceURL}, iconFile:
+  let typeObj: uniformTypeDescriptor.TypeDescriptor | null = uniformTypeDescriptor.getTypeDescriptor('com.adobe.photoshop-image');
+  if (typeObj) {
+    let typeId = typeObj.typeId;
+    let belongingToTypes = typeObj.belongingToTypes;
+    let description = typeObj.description;
+    let referenceURL = typeObj.referenceURL;
+    let iconFile = typeObj.iconFile;
+    let filenameExtensions = typeObj.filenameExtensions;
+    let mimeTypes = typeObj.mimeTypes;
+    console.info(`typeId: ${typeId}, belongingToTypes: ${belongingToTypes}, description: ${description}, referenceURL: ${referenceURL}, iconFile:
         ${iconFile}, filenameExtensions: ${filenameExtensions}, mimeTypes: ${mimeTypes}`);
-    } else {
-        console.info('type com.adobe.photoshop-image does not exist');
-    }
-} catch(e) {
-    let error: BusinessError = e as BusinessError;
-    console.info(`getTypeDescriptor throws an exception. code is ${error.code}, message is ${error.message} `);
+  } else {
+    console.info('type com.adobe.photoshop-image does not exist');
+  }
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.info(`getTypeDescriptor throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 ```
 
@@ -647,7 +650,7 @@ getUniformDataTypeByFilenameExtension(filenameExtension: string, belongsTo?: str
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -656,24 +659,24 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    let typeId = uniformTypeDescriptor.getUniformDataTypeByFilenameExtension('.ts', 'general.source-code');
-    if(typeId) {
-        console.info('typeId is general.type-script');
-    }
-} catch(e) {
-    let error: BusinessError = e as BusinessError;
-    console.error(`getUniformDataTypeByFilenameExtension throws an exception. code is ${error.code}, message is ${error.message} `);
+  let typeId = uniformTypeDescriptor.getUniformDataTypeByFilenameExtension('.ts', 'general.source-code');
+  if (typeId) {
+    console.info('typeId is general.type-script');
+  }
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.error(`getUniformDataTypeByFilenameExtension throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 
 // 根据“.myts”，“general.plain-text”查不到预置数据类型则按返回根据入参信息生成的动态类型。
 try {
-    let typeId = uniformTypeDescriptor.getUniformDataTypeByFilenameExtension('.myts', 'general.plain-text');
-    if(typeId) {
-        console.info('typeId is flex.************');
-    }
-} catch(e) {
-    let error: BusinessError = e as BusinessError;
-    console.error(`getUniformDataTypeByFilenameExtension throws an exception. code is ${error.code}, message is ${error.message} `);
+  let typeId = uniformTypeDescriptor.getUniformDataTypeByFilenameExtension('.myts', 'general.plain-text');
+  if (typeId) {
+    console.info('typeId is flex.************');
+  }
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.error(`getUniformDataTypeByFilenameExtension throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 ```
 
@@ -708,7 +711,7 @@ getUniformDataTypeByMIMEType(mimeType: string, belongsTo?: string): string
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -717,24 +720,24 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    let typeId = uniformTypeDescriptor.getUniformDataTypeByMIMEType('image/jpeg', 'general.image');
-    if(typeId) {
-        console.info('typeId is general.jpeg');
-    }
-} catch(e) {
-    let error: BusinessError = e as BusinessError;
-    console.error(`getUniformDataTypeByMIMEType throws an exception. code is ${error.code}, message is ${error.message} `);
+  let typeId = uniformTypeDescriptor.getUniformDataTypeByMIMEType('image/jpeg', 'general.image');
+  if (typeId) {
+    console.info('typeId is general.jpeg');
+  }
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.error(`getUniformDataTypeByMIMEType throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 
 // 根据“image/myimage”, “general.image”查不到预置数据类型则按返回根据入参信息生成的动态类型。
 try {
-    let typeId = uniformTypeDescriptor.getUniformDataTypeByMIMEType('image/myimage', 'general.image');
-    if(typeId) {
-        console.info('typeId is flex.************');
-    }
-} catch(e) {
-    let error: BusinessError = e as BusinessError;
-    console.error(`getUniformDataTypeByMIMEType throws an exception. code is ${error.code}, message is ${error.message} `);
+  let typeId = uniformTypeDescriptor.getUniformDataTypeByMIMEType('image/myimage', 'general.image');
+  if (typeId) {
+    console.info('typeId is flex.************');
+  }
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.error(`getUniformDataTypeByMIMEType throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 ```
 
@@ -743,6 +746,11 @@ try {
 getUniformDataTypesByFilenameExtension(filenameExtension: string, belongsTo?: string): Array\<string>
 
 根据给定的文件后缀名和所归属的标准化数据类型查询标准化数据类型ID列表。
+
+**使用场景：**
+- 展示某个文件后缀对应的所有可能数据类型
+- 文件类型选择器中提供多种类型选项
+- 分析文件格式与数据类型的对应关系
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -769,7 +777,7 @@ getUniformDataTypesByFilenameExtension(filenameExtension: string, belongsTo?: st
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -830,7 +838,7 @@ getUniformDataTypesByMIMEType(mimeType: string, belongsTo?: string): Array\<stri
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -839,23 +847,23 @@ import { uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    let typeIds = uniformTypeDescriptor.getUniformDataTypesByMIMEType('text/plain', 'general.text');
-    for (let typeId of typeIds) {
-        console.info(`typeId is ${typeId}`);
-    }
-} catch(e) {
-    let error: BusinessError = e as BusinessError;
-    console.error(`getUniformDataTypesByMIMEType throws an exception. code is ${error.code}, message is ${error.message} `);
+  let typeIds = uniformTypeDescriptor.getUniformDataTypesByMIMEType('text/plain', 'general.text');
+  for (let typeId of typeIds) {
+    console.info(`typeId is ${typeId}`);
+  }
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.error(`getUniformDataTypesByMIMEType throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 
 // 根据“image/myimage”, “general.image”查不到预置数据类型则按返回根据入参信息生成的动态类型列表。
 try {
-    let flexTypeIds = uniformTypeDescriptor.getUniformDataTypesByMIMEType('image/myimage', 'general.image');
-    for (let flexTypeId of flexTypeIds) {
-        console.info(`typeId is flex type, flex typeId is ${flexTypeId}`);
-    }
-} catch(e) {
-    let error: BusinessError = e as BusinessError;
-    console.error(`getUniformDataTypesByMIMEType throws an exception. code is ${error.code}, message is ${error.message} `);
+  let flexTypeIds = uniformTypeDescriptor.getUniformDataTypesByMIMEType('image/myimage', 'general.image');
+  for (let flexTypeId of flexTypeIds) {
+    console.info(`typeId is flex type, flex typeId is ${flexTypeId}`);
+  }
+} catch (e) {
+  let error: BusinessError = e as BusinessError;
+  console.error(`getUniformDataTypesByMIMEType throws an exception. code is ${error.code}, message is ${error.message} `);
 }
 ```

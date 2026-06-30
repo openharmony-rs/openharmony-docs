@@ -30,7 +30,6 @@ import { webview } from '@kit.ArkWeb';
 @ComponentV2
 struct NestedScroll {
   private scrollerForScroll: Scroller = new Scroller();
-  private listScroller: Scroller = new Scroller();
   controller: webview.WebviewController = new webview.WebviewController();
   @Local arr: Array<number> = [];
 
@@ -79,7 +78,7 @@ import {
   Text,
   Web,
   State,
-  Array,
+  GestureControl,
   TextAlign,
   NestedScrollMode
 } from '@kit.ArkUI';
@@ -89,7 +88,6 @@ import { webview } from '@kit.ArkWeb';
 @Component
 struct NestedScroll {
   private scrollerForScroll: Scroller = new Scroller();
-  private listScroller: Scroller = new Scroller();
   controller: webview.WebviewController = new webview.WebviewController(undefined);
   @State arr: Array<int> = new Array<int>();
 
@@ -375,7 +373,7 @@ import {
   ScrollState,
   WebBypassVsyncCondition,
   State,
-  Array,
+  GestureControl,
   TextAlign,
   OnScrollFrameBeginHandlerResult
 } from '@kit.ArkUI';
@@ -438,7 +436,7 @@ struct Index {
           })
           .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer,
             others: Array<GestureRecognizer>) => {
-            if (current.isBuiltIn() && current.getType() === 1) {
+            if (current.isBuiltIn() && current.getType() == GestureControl.GestureType.PAN_GESTURE) {
               return GestureJudgeResult.REJECT;
             }
             return GestureJudgeResult.CONTINUE;

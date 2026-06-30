@@ -30,52 +30,29 @@ GridRow(option?: GridRowOptions)
 
 栅格行布局容器。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[GridRow](#gridrow23)。
-
 **ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 |类型|必填|说明|
 |-----|-----|----|----|
-| option | [GridRowOptions](#gridrowoptions对象说明) | 否  | 栅格布局子组件参数。 |
-
-### GridRow<sup>23+</sup>
-
-GridRow(option?: GridRowOptions，content_?: CustomBuilder)
-
-栅格行布局容器。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
-**相关接口：** 该接口对应的ArkTS-Dyn的接口是[GridRow](#gridrow-1)。
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：** 
-
-| 参数名 |类型|必填|说明|
-|-----|-----|----|----|
-| option | [GridRowOptions](#gridrowoptions对象说明) | 否  | 栅格布局子组件参数。 |
-| content_  | [CustomBuilder](ts-types.md#custombuilder8) | 否    | 容器。 |
+| option | [GridRowOptions](#gridrowoptions对象说明) | 否  | 栅格布局子组件布局选项。 |
 
 ## GridRowOptions对象说明
 
 设置栅格行布局容器的布局选项。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -85,7 +62,7 @@ GridRow(option?: GridRowOptions，content_?: CustomBuilder)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-|columns| number \| [GridRowColumnOption](#gridrowcolumnoption) |  否 | 是  |设置布局列数。<br />取值为大于0的整数。<br/>- API version 20之前：默认值为12。<br/>- API version 20及之后：默认值为{ xs: 2, sm: 4, md: 8, lg: 12, xl: 12, xxl: 12 } <br />非法值：按默认值处理。|
+|columns| ArkTS-Dyn: number \| [GridRowColumnOption](#gridrowcolumnoption)<br/>ArkTS-Sta: int \| [GridRowColumnOption](#gridrowcolumnoption) |  否 | 是  |设置布局列数。<br />取值为大于0的整数。<br/>- API version 20之前：默认值为12。<br/>- API version 20及之后：默认值为{ xs: 2, sm: 4, md: 8, lg: 12, xl: 12, xxl: 12 } <br />非法值：按默认值处理。|
 |gutter|[Length](ts-types.md#length) \| [GutterOption](#gutteroption)|  否 | 是  |栅格布局间距。<br />默认值：0 <br />非法值：按默认值处理。<br />单位：vp |
 |breakpoints|[BreakPoints](#breakpoints)|  否 | 是  |设置断点值的断点数组以及基于应用窗口或容器尺寸的相应参照。<br />默认值：<br />{<br />value: ["320vp", "600vp", "840vp"],<br />reference: BreakpointsReference.WindowSize<br />} <br />非法值：按默认值处理。<br />单位：vp |
 |direction|[GridRowDirection](#gridrowdirection枚举说明)|  否 | 是  |栅格布局排列方向。<br />默认值：GridRowDirection.Row <br />非法值：按默认值处理。 |
@@ -94,9 +71,9 @@ GridRow(option?: GridRowOptions，content_?: CustomBuilder)
 
 栅格布局间距类型，用于描述栅格子组件不同方向的间距。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -131,9 +108,9 @@ columns: {md:4, lg:8} // 等于配置 columns: {xs:4, sm:4, md:4, lg:8, xl:8, xx
 
 每列栅格的宽度为GridRow的内容区大小减去栅格子组件的间距gutter，再除以总的栅格列数。比如，宽800px的GridRow设置columns为12，gutter设置为10px，padding设置为20px，那么每列栅格的宽度为(800 - 20 * 2 - 10 * 11) / 12。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -143,20 +120,20 @@ columns: {md:4, lg:8} // 等于配置 columns: {xs:4, sm:4, md:4, lg:8, xl:8, xx
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| xs  | number | 否   | 是   | 在栅格大小为xs的设备上，栅格容器组件的栅格列数。    |
-| sm  | number | 否    | 是  | 在栅格大小为sm的设备上，栅格容器组件的栅格列数。      |
-| md  | number | 否    | 是  | 在栅格大小为md的设备上，栅格容器组件的栅格列数。    |
-| lg  | number | 否   | 是   | 在栅格大小为lg的设备上，栅格容器组件的栅格列数。      |
-| xl  | number | 否    | 是  | 在栅格大小为xl的设备上，栅格容器组件的栅格列数。    |
-| xxl | number | 否    | 是  | 在栅格大小为xxl的设备上，栅格容器组件的栅格列数。    |
+| xs  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 是   | 在栅格大小为xs的设备上，栅格容器组件的栅格列数。    |
+| sm  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 是  | 在栅格大小为sm的设备上，栅格容器组件的栅格列数。      |
+| md  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 是  | 在栅格大小为md的设备上，栅格容器组件的栅格列数。    |
+| lg  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 是   | 在栅格大小为lg的设备上，栅格容器组件的栅格列数。      |
+| xl  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 是  | 在栅格大小为xl的设备上，栅格容器组件的栅格列数。    |
+| xxl | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 是  | 在栅格大小为xxl的设备上，栅格容器组件的栅格列数。    |
 
 ## GridRowSizeOption
 
 栅格在不同宽度设备类型下，gutter的大小。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -166,20 +143,20 @@ columns: {md:4, lg:8} // 等于配置 columns: {xs:4, sm:4, md:4, lg:8, xl:8, xx
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| xs  | [Length](ts-types.md#length) | 否  | 是   | 在最小宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp    |
-| sm  | [Length](ts-types.md#length) | 否  | 是   | 在小宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp      |
-| md  | [Length](ts-types.md#length) | 否  | 是   | 在中等宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp    |
-| lg  | [Length](ts-types.md#length) | 否  | 是   | 在大宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp      |
-| xl  | [Length](ts-types.md#length) | 否  | 是   | 在特大宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp    |
-| xxl | [Length](ts-types.md#length) | 否  | 是   | 在超大宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp    |
+| xs  | [Length](ts-types.md#length) | 否  | 是   | 在最小宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp<br/>单位：vp    |
+| sm  | [Length](ts-types.md#length) | 否  | 是   | 在小宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp<br/>单位：vp      |
+| md  | [Length](ts-types.md#length) | 否  | 是   | 在中等宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp<br/>单位：vp    |
+| lg  | [Length](ts-types.md#length) | 否  | 是   | 在大宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp<br/>单位：vp      |
+| xl  | [Length](ts-types.md#length) | 否  | 是   | 在特大宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp<br/>单位：vp    |
+| xxl | [Length](ts-types.md#length) | 否  | 是   | 在超大宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp<br/>单位：vp    |
 
 ## BreakPoints
 
 设置栅格容器组件的断点。更多断点的说明参考[栅格容器断点](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -205,9 +182,9 @@ columns: {md:4, lg:8} // 等于配置 columns: {xs:4, sm:4, md:4, lg:8, xl:8, xx
 
 设置栅格容器组件的断点参照物。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -228,15 +205,15 @@ columns: {md:4, lg:8} // 等于配置 columns: {xs:4, sm:4, md:4, lg:8, xl:8, xx
 >
 > - 栅格元素仅支持Row/RowReverse排列，不支持column/ColumnReverse方向排列。
 > - 栅格子组件仅能通过span、offset计算子组件位置与大小。多个子组件span超过规定列数时自动换行。
-> - 单个元素span大小超过最大列数时后台默认span为最大column数。
+> - 单个元素span大小超过最大列数时后台默认span为最大列数。
 > - 新一行的Offset加上子组件的span超过总列数时，将下一个子组件在新的一行放置。
 > - 例：Item1: GridCol({ span: 6 })， Item2: GridCol({ span: 8, offset:11 })。 
 >
 >   ![figures/gridRowOffsetToNextLine.png](figures/gridRowOffsetToNextLine.png)
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -261,9 +238,11 @@ ArkTS-Sta: alignItems(value: ItemAlign | undefined)
 
 设置GridRow中的GridCol垂直主轴方向对齐方式。GridCol本身也可通过alignSelf([ItemAlign](ts-appendix-enums.md#itemalign))设置自身对齐方式。当上述两种对齐方式都设置时，以GridCol自身设置为准。
 
-**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -277,19 +256,15 @@ ArkTS-Sta: alignItems(value: ItemAlign | undefined)
 | ------ | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | ArkTS-Dyn: [ItemAlign](ts-appendix-enums.md#itemalign)<br/>ArkTS-Sta: [ItemAlign](ts-appendix-enums.md#itemalign) \| undefined | 是   | GridRow中的GridCol垂直主轴方向对齐方式。<br/>默认值：ItemAlign.Start <br />非法值：按默认值处理。<br/>**说明**：<br/>ItemAlign支持的枚举：ItemAlign.Start、ItemAlign.Center、ItemAlign.End、ItemAlign.Stretch。<br/>取值为undefined时，按默认值处理。 |
 
-### attributeModifier<sup>12+</sup>
+### attributeModifier<sup>23+</sup>
 
-ArkTS-Dyn: attributeModifier(modifier: AttributeModifier\<GridRowAttribute>)
-
-ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<GridRowAttribute> | AttributeModifier\<CommonMethod> | undefined)
+attributeModifier(modifier: AttributeModifier\<GridRowAttribute> | AttributeModifier\<CommonMethod> | undefined)
 
 设置组件的动态属性。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -297,7 +272,7 @@ ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<GridRowAttribute> | At
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| modifier  | ArkTS-Dyn: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<GridRowAttribute><br/>ArkTS-Sta: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<GridRowAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置GridRow组件的属性。<br/>取值为undefined时，按默认值处理。 |
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<GridRowAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置GridRow组件的属性。<br/>取值为undefined时，按默认值处理。 |
 
 ## 事件
 
@@ -307,7 +282,7 @@ ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<GridRowAttribute> | At
 
 ArkTS-Dyn: onBreakpointChange(callback: (breakpoints: string) => void)
 
-ArkTS-Sta: onBreakpointChange(callback: ((breakpoints: string) => void) | undefined): this
+ArkTS-Sta: onBreakpointChange(callback: ((breakpoints: string) => void) | undefined)
 
 断点发生变化时触发回调。
 
@@ -315,9 +290,9 @@ ArkTS-Sta: onBreakpointChange(callback: ((breakpoints: string) => void) | undefi
 >
 > - 当[断点参照物](#breakpointsreference枚举说明)设置为BreakpointsReference.ComponentSize时，不建议在onBreakpointChange回调中动态修改GridRow组件的[padding](ts-universal-attributes-size.md#padding)或[margin](ts-universal-attributes-size.md#margin)属性值。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -329,7 +304,7 @@ ArkTS-Sta: onBreakpointChange(callback: ((breakpoints: string) => void) | undefi
 
 | 参数名   | 类型   | 必填   | 说明   |
 | ----- | ------ | ---- | ---------------------------------------- |
-| callback | ArkTS-Dyn: (breakpoints: string) => void<br/>ArkTS-Sta: ((breakpoints: string) => void) \| undefined |是|breakpoints取值为`"xs"`、`"sm"`、`"md"`、`"lg"`、`"xl"`、`"xxl"`。<br/>取值为undefined时，不使用回调函数。|
+| callback | ArkTS-Dyn: (breakpoints: string) => void<br/>ArkTS-Sta: ((breakpoints: string) => void) \| undefined |是|断点发生变化时触发的回调。<br/>breakpoints：断点值，取值为`"xs"`、`"sm"`、`"md"`、`"lg"`、`"xl"`、`"xxl"`。<br/>取值为undefined时，不使用回调函数。|
 
 ## 示例
 
@@ -448,7 +423,7 @@ struct AlignItemsDemo {
         ForEach(this.bgColors, (color: Color, index: number) => {
           GridCol({ span: 1 }) {
             Row() {
-            }.width('100%').height(`${(index + 1) * 20}%`) // GridCol设置不同的高度，方便观察alignItems属性的效果
+            }.width('100%').height(`${(index + 1) * 20}%`) // GridCol内的Row设置不同的高度，方便观察alignItems属性的效果
           }.borderColor(color).borderWidth(2)
         })
       }

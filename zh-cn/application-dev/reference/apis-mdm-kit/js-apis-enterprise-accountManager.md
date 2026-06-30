@@ -1,4 +1,4 @@
-# @ohos.enterprise.accountManager（账户管理）
+# @ohos.enterprise.accountManager（账号管理）
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima; @weizai16-->
@@ -6,7 +6,7 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供设备账户管理能力，包括禁止创建本地用户等。
+本模块提供设备账号管理能力，包括禁止创建本地账号等。
 
 > **说明：**
 >
@@ -41,7 +41,7 @@ disallowOsAccountAddition(admin: Want, disallow: boolean, accountId?: number): v
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
-| disallow  | boolean                                                 | 是   | 是否禁止创建本地用户，true表示禁止创建，false表示允许创建。  |
+| disallow  | boolean                                                 | 是   | 是否禁止创建本地账号，true表示禁止创建，false表示允许创建。  |
 | accountId | number                                                  | 否   | 用户ID，指定具体用户。当不传入此参数时，表示禁止所有用户添加账号；当传入此参数时，表示禁止指定用户添加账号。取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。 |
 
 **错误码**：
@@ -78,7 +78,7 @@ try {
 
 ## accountManager.isOsAccountAdditionDisallowed
 
-isOsAccountAdditionDisallowed(admin: Want, accountId?: number): boolean
+isOsAccountAdditionDisallowed(admin: Want | null, accountId?: number): boolean
 
 查询是否禁止用户添加账号。
 
@@ -93,7 +93,7 @@ isOsAccountAdditionDisallowed(admin: Want, accountId?: number): boolean
 
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。                          |
 | accountId | number                                                  | 否   | 用户ID，指定具体用户。当不传入此参数时，表示查询所有用户是否禁止添加账号；当传入此参数时，表示查询指定用户是否禁止添加账号。取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。 |
 
 **返回值：**
@@ -138,7 +138,7 @@ try {
 
 addOsAccountAsync(admin: Want, name: string, type: osAccount.OsAccountType): Promise&lt;osAccount.OsAccountInfo&gt;
 
-后台添加账号。使用promise异步回调。
+后台添加账号。使用Promise异步回调。
 > **说明：**
 > 
 > 该接口比较耗时，当调用此接口后，后续如果在应用主线程调用其他同步接口时需要等待该接口异步返回。
@@ -156,7 +156,7 @@ addOsAccountAsync(admin: Want, name: string, type: osAccount.OsAccountType): Pro
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
-| name   | string                                                       | 是   | 账号名，指要添加的账号的名称。无法创建同名、名称为空的账号。 |
+| name   | string                                                       | 是   | 账号名，指要添加的账号的名称。无法创建同名、名称为空的账号，创建同名账号时会报错误码9201003，创建名称为空的账号时会报错误码401。 |
 | type   | [osAccount.OsAccountType](../apis-basic-services-kit/js-apis-osAccount.md#osaccounttype) | 是   | 要添加的账号的类型。<br/>取值范围：ADMIN、NORMAL、GUEST。<br/>· ADMIN：管理员账号。<br/>· NORMAL：普通账号。<br/>· GUEST：访客账号。 |
 
 **返回值：**
@@ -390,3 +390,196 @@ async function getDomainAccountPolicy() {
 | authenticationValidityPeriod   | number | 否   | 是   |表示域账号认证Token的有效期（单位：s），取值范围是[-1,2147483647]。有效期起始时间为最后一次域账号的认证时间点，如登录、锁屏后解锁等。<br/>默认值为-1，表示Token永久有效。取值为0，表示Token立即失效。Token过期/失效后，用户进入系统时必须进行域账号认证，验证域账号和密码。 |
 | passwordValidityPeriod         | number | 否   | 是   |表示域账号密码有效期（单位：s），取值范围是[-1,2147483647]，有效期起始时间为设备侧最后一次修改密码的时间点。<br/>默认值为-1，表示域账号密码永久有效。 |
 | passwordExpirationNotification | number | 否   | 是   |表示域账号密码过期前提示时间（单位：s），取值范围是[0,2147483647]。<br/>默认值为0，表示域账号密码过期不提示。<br/>**说明**：passwordExpirationNotification需与passwordValidityPeriod配合使用，当系统时间大于或等于（设备侧最后一次修改域账号密码时间 + passwordValidityPeriod - passwordExpirationNotification）时，会发页面通知提示密码即将过期。 |
+
+## accountManager.createNormalOsAccount
+
+createNormalOsAccount(admin: Want, name: string): Promise&lt;osAccount.OsAccountInfo&gt;
+
+创建普通系统账号。最多可以创建2个normal类型的系统账号 ([osAccount.OsAccountType](../apis-basic-services-kit/js-apis-osAccount.md#osaccounttype)) 。
+> **说明：**
+> 
+> 该接口比较耗时，当调用此接口后，后续如果在应用主线程调用其他同步接口时需要等待该接口异步返回。
+> 
+> 创建系统账号对设备的性能影响较大，此接口仅支持12GB及以上运行内存的手机、平板设备使用。
+
+**起始版本**：26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_LOCAL_ACCOUNTS
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
+| name   | string                                                       | 是   | 系统账号名称。系统账号名称不能重复且不能为空，会报错误码9200012。 |
+
+**返回值：**
+
+| 类型                                                         | 说明                 |
+| ------------------------------------------------------------ | -------------------- |
+| Promise&lt;[osAccount.OsAccountInfo](../apis-basic-services-kit/js-apis-osAccount.md#osaccountinfo)&gt; | Promise对象，返回创建的系统账号信息。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed.                                 |
+| 9201003  | Failed to add an OS account.                                 |
+| 9201040  | The number of accounts reaches the upper limit.                           |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 204      | Access denied due to user access control policy. Possible causes: 1. The operation is restricted by the OS-account constraint; 2. The required privilege for the operation has not been granted. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例**：
+
+```ts
+import { accountManager } from '@kit.MDMKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { osAccount } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+// 创建普通系统账号，需要传入账号名称
+accountManager.createNormalOsAccount(wantTemp, "TestAccountName").then((accountInfo: osAccount.OsAccountInfo) => {
+  console.info('Succeeded in creating normal os account, accountInfo: ' + JSON.stringify(accountInfo));
+}).catch((err: BusinessError) => {
+  console.error(`Failed to create normal os account: code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## accountManager.removeOsAccount
+
+removeOsAccount(admin: Want, accountId: number): Promise&lt;void&gt;
+
+移除系统账号。当前仅支持手机、平板设备使用，可以移除使用[createNormalOsAccount](#accountmanagercreatenormalosaccount)创建的普通系统账号（normal类型）和[addOsAccountAsync](#accountmanageraddosaccountasync)创建的系统账号（admin、normal、guest类型），不可移除默认系统账号（ID为100）。
+
+**起始版本**：26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_LOCAL_ACCOUNTS
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
+| accountId   | number                                                  | 是   | 系统账号ID，指将被移除系统账号的ID。不可移除默认系统账号 (ID为100) ，会报错误码9201041。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed.                                 |
+| 9200016  | Service timeout.                                 |
+| 9201041  | Restricted account.                           |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 204      | Access denied due to user access control policy. Possible causes: 1. The operation is restricted by the OS-account constraint; 2. The required privilege for the operation has not been granted. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例**：
+
+```ts
+import { accountManager } from '@kit.MDMKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { osAccount } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+// 创建普通系统账号
+accountManager.createNormalOsAccount(wantTemp, "TestAccountName").then((accountInfo: osAccount.OsAccountInfo) => {
+  console.info('Succeeded in creating normal os account, accountInfo: ' + JSON.stringify(accountInfo));
+  // 根据系统账号ID移除创建的账号
+  let accountId: number = accountInfo.localId;
+  accountManager.removeOsAccount(wantTemp, accountId);
+  console.info(`Succeeded in removing os accountId:${accountId}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to create and remove normal os account: code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## accountManager.activateOsAccount
+
+activateOsAccount(admin: Want, accountId: number): Promise&lt;void&gt;
+
+切换系统账号。当前仅支持手机、平板设备使用，只能在[createNormalOsAccount](#accountmanagercreatenormalosaccount)创建的普通系统账号和默认系统账号 (ID为100) 之间切换。
+
+**起始版本**：26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                      |
+| accountId   | number                                                  | 是   | 系统账号ID。切换不存在的系统账号，会报错误码9200012。切换受限制的系统账号，例如使用[addOsAccountAsync](#accountmanageraddosaccountasync)创建的系统账号，会报错误码9201041。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed.                                 |
+| 9200016  | Service timeout.                                 |
+| 9201041  | Restricted account.                            |
+| 9201046  | The number of signed-in accounts reaches the upper limit.                            |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例**：
+
+```ts
+import { accountManager } from '@kit.MDMKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { osAccount } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+// 创建普通系统账号
+accountManager.createNormalOsAccount(wantTemp, "TestAccountName").then((accountInfo: osAccount.OsAccountInfo) => {
+  console.info('Succeeded in creating normal os account, accountInfo: ' + JSON.stringify(accountInfo));
+  // 根据系统账号ID切换账号
+  let accountId: number = accountInfo.localId;
+  accountManager.activateOsAccount(wantTemp, accountId);
+  console.info(`Succeeded in activating os accountId:${accountId}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to create and activate normal os account: code is ${err.code}, message is ${err.message}`);
+});
+```

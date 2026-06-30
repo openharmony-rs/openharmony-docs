@@ -1,9 +1,9 @@
 # Developing a JS Widget (Stage Model)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 The stage model is supported since API version 9. It is the mainstream model with a long evolution plan. This model is object-oriented and provides open application components as classes. You can derive application components for capability expansion.
 

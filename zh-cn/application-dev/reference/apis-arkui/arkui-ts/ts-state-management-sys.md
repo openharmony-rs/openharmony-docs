@@ -18,9 +18,9 @@
 
 ## SubscribedAbstractProperty\<T\>
 
-**卡片能力：** 从API version 9开始，支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,7 +66,7 @@ constructor(subscribeMe?: IPropertySubscriber,info?: string,);
 
 |参数名   |类型   |必填   |说明             |
 |---------|-----------|------------|--------------|
-|subscribeMe   |[IPropertySubscriber](#ipropertysubscriber)   |否   |变量属性。    |
+|subscribeMe   |[IPropertySubscriber](#ipropertysubscriber)   |否   |订阅者。    |
 |info   |string   |否   |变量信息。   |
 
 ### id
@@ -95,7 +95,7 @@ createTwoWaySync(subscribeMe?: IPropertySubscriber, info?: string): SyncedProper
 
 |参数名   |类型   |必填   |说明             |
 |---------|-----------|------------|--------------|
-|subscribeMe   |[IPropertySubscriber](#ipropertysubscriber)   |否   |变量属性。    |
+|subscribeMe   |[IPropertySubscriber](#ipropertysubscriber)   |否   |订阅者。    |
 |info   |string   |否   |变量信息。   |
 
 **返回值：**
@@ -116,7 +116,7 @@ createOneWaySync(subscribeMe?: IPropertySubscriber, info?: string): SyncedProper
 
 |参数名   |类型   |必填   |说明             |
 |---------|-----------|------------|--------------|
-|subscribeMe   |[IPropertySubscriber](#ipropertysubscriber)   |否   |变量属性。    |
+|subscribeMe   |[IPropertySubscriber](#ipropertysubscriber)   |否   |订阅者。    |
 |info   |string   |否   |变量信息。   |
 
 **返回值：**
@@ -311,7 +311,7 @@ private wrappedValue_;
 
 private source_;
 
-双向同步属性的数据源。
+单向同步属性的数据源。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -504,7 +504,7 @@ constructor();
 
 ## PersistentStorage
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

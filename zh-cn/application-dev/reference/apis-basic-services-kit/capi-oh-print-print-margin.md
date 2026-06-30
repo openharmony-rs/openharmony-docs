@@ -24,10 +24,52 @@ typedef struct {...} Print_Margin
 
 ### 成员变量
 
-| 名称                  | 描述     |
-| --------------------- | -------- |
-| uint32_t leftMargin   | 左边距，单位：毫米。 |
-| uint32_t topMargin    | 上边距，单位：毫米。 |
-| uint32_t rightMargin  | 右边距，单位：毫米。 |
-| uint32_t bottomMargin | 下边距，单位：毫米。 |
+| 名称 | 描述 | 
+| -------- | -------- |
+| uint32_t [leftMargin](#leftmargin) | 左边距，单位：毫米。 | 
+| uint32_t [topMargin](#topmargin) | 上边距，单位：毫米。 | 
+| uint32_t [rightMargin](#rightmargin) | 右边距，单位：毫米。 | 
+| uint32_t [bottomMargin](#bottommargin) | 下边距，单位：毫米。 | 
 
+
+## 结构体成员变量说明
+
+
+### bottomMargin
+
+```c
+uint32_t Print_Margin::bottomMargin
+```
+**描述**
+
+下边距。
+
+
+### leftMargin
+
+```c
+uint32_t Print_Margin::leftMargin
+```
+**描述**
+
+左边距。
+
+
+### rightMargin
+
+```c
+uint32_t Print_Margin::rightMargin
+```
+**描述**
+
+右边距。
+
+
+### topMargin
+
+```c
+uint32_t Print_Margin::topMargin
+```
+**描述**
+
+上边距。

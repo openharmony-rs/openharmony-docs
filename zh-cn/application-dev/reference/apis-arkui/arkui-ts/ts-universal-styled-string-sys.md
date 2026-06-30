@@ -10,9 +10,11 @@
 
 >  **说明：**
 >
->  该组件从API version 13开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 13开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  当前页面仅包含本模块的系统接口，其他公开接口参见[属性字符串](ts-universal-styled-string.md)。
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[属性字符串](ts-universal-styled-string.md)。
 
 ## StyledString
 
@@ -25,6 +27,10 @@ static marshalling(styledString: StyledString): ArrayBuffer
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -48,6 +54,10 @@ static marshalling(styledString: StyledString, callback: StyledStringMarshallCal
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -70,6 +80,10 @@ static unmarshalling(buffer: ArrayBuffer): Promise\<StyledString>
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -101,6 +115,10 @@ static unmarshalling(buffer: ArrayBuffer, callback: StyledStringUnmarshallCallba
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -134,9 +152,13 @@ type StyledStringMarshallingValue = UserDataSpan
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型  | 说明   |
 | ------ | ---------- |
-| [UserDataSpan](ts-universal-styled-string.md#userdataspan) | UserDataSpan样式。 |
+| [UserDataSpan](ts-universal-styled-string.md#userdataspan) | UserDataSpan自定义数据片段。 |
 
 ## StyledStringMarshallCallback<sup>19+</sup>
 
@@ -147,6 +169,10 @@ type StyledStringMarshallCallback = (marshallableVal: StyledStringMarshallingVal
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -169,6 +195,10 @@ type StyledStringUnmarshallCallback = (buf: ArrayBuffer) => StyledStringMarshall
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

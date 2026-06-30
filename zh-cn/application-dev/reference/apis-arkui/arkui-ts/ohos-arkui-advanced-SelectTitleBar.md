@@ -1,7 +1,7 @@
 # SelectTitleBar
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
+<!--Owner: @wangrunsen-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -58,7 +58,7 @@ ArkTS-Sta: SelectTitleBar({selected: int, options: Array&lt;SelectOption&gt;, me
 | subtitle | [ResourceStr](ts-types.md#resourcestr)                                      | 否 | - | 子标题。用于显示补充信息，需要显示子标题时传入，缺省时不显示子标题区域。 |
 | badgeValue | ArkTS-Dyn: number<br/>ArkTS-Sta: int          | 否 | - | 新事件标记。<br>取值范围：[-2147483648,2147483647]，超出范围时会加上或减去4294967296，使得值仍在范围内，非整数时会舍去小数部分取整数部分，如5.5取5。<br>**说明：** 小于等于0时不显示信息标记。<br>最大消息数99，超过最大消息时仅显示99+。超大数值属于异常值，不显示信息标记。 |
 | hidesBackButton | boolean                                                                     | 否 | - | 是否隐藏左侧的返回箭头。<br>默认值：false。true：隐藏，false：显示。|
-| onSelected | ArkTS-Dyn: (index:&nbsp;number)&nbsp;=&gt;&nbsp;void<br/>ArkTS-Sta: [OnSelectedCallback](#onselectedcallback23)         | 否 | - | 下拉菜单项目选中触发的回调函数，传入选中项的索引。下拉菜单选中后需要处理特定业务逻辑时时传入此参数，无特定业务逻辑时可缺省此参数。 |
+| onSelected | ArkTS-Dyn: ((index:&nbsp;number)&nbsp;=&gt;&nbsp;void)<br/>ArkTS-Sta: [OnSelectedCallback](#onselectedcallback23)         | 否 | - | 下拉菜单项目选中触发的回调函数，传入选中项的索引。下拉菜单选中后需要处理特定业务逻辑时传入此参数，无特定业务逻辑时可缺省此参数。 |
 
 > **说明：**
 > 
@@ -333,7 +333,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_selecttitlebar_example01](figures/zh-cn_image_selecttitlebar_example01.png)
+![zh-cn_image_selecttitlebar_example01](figures/image-selecttitlebar-example01.png)
 
 ### 示例2（右侧自定义按钮播报）
 从API version 18开始，该示例通过设置标题栏右侧自定义按钮属性accessibilityText、accessibilityDescription、accessibilityLevel自定义屏幕朗读播报文本。
@@ -594,7 +594,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_selecttitlebar_example02](figures/zh-cn_image_selecttitlebar_example02.png)
+![zh-cn_image_selecttitlebar_example02](figures/image-selecttitlebar-example02.png)
 
 ### 示例3（设置Symbol类型图标）
 从API version 18开始，该示例通过设置SelectTitleBarMenuItem的属性symbolStyle，展示了自定义Symbol类型图标。
@@ -870,4 +870,4 @@ struct Index {
 }
 ```
 
-![zh-cn_image_selecttitlebar_example03](figures/zh-cn_image_selecttitlebar_example03.png)
+![zh-cn_image_selecttitlebar_example03](figures/image-selecttitlebar-example03.png)

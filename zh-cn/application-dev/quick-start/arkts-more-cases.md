@@ -70,10 +70,9 @@ printObj('abc'); // abc
 ``` TypeScript
 function printObj(obj: string) {
   console.info(obj);
-  // ...
 }
-// ...
-          printObj('abc'); // abc
+
+printObj('abc'); // abc
 ```
 
 ### 标注JSON.parse返回值类型
@@ -849,13 +848,13 @@ declare namespace Test {
 export default Test;
 ```
 
-<!-- @[ts_namespace_app](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/tsPages/app.ets) -->  
+<!-- @[obtaining_the_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/ArkTsNoUntypedObjLiterals.ets) -->
 
 ``` TypeScript
 // app.ets
 import test from './test';
 
-let option = { id: '', type: 0 };
+let option: test.I = { id: '', type: 0 };
 test.foo('', option);
 ```
 
@@ -1052,7 +1051,7 @@ let t: typeof c = { value: 123 };
 <!-- @[no_type_query_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/module1.ets) -->  
 
 ``` TypeScript
-// 文件名：module1.ets
+// module1.ets
 class C {
   public value: number = 0
 }
@@ -1063,7 +1062,7 @@ export { C }
 <!-- @[no_type_query_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/module2.ets) -->  
 
 ``` TypeScript
-// 文件名：module2.ets
+// module2.ets
 import { C } from './module1'
 let t: C = { value: 123 };
 ```
@@ -1790,24 +1789,22 @@ class Test {
 <!-- @[strictProperty_initialization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromTypeScriptToArkTS/AdaptationCases/entry/src/main/ets/pages/StrictModeCheck.ets) -->  
 
 ``` TypeScript
-{
-  interface I {
-    name:string
-  }
+interface I {
+  name:string
+}
 
-  class A {}
+class A {}
 
-  class Test {
-    public a: number;
-    public b: string;
-    public c: boolean;
-    public d: I = { name:'abc' };
-    public e: A | null = null;
-    constructor(a:number, b:string, c:boolean) {
-      this.a = a;
-      this.b = b;
-      this.c = c;
-    }
+class Test {
+  public a: number;
+  public b: string;
+  public c: boolean;
+  public d: I = { name:'abc' };
+  public e: A | null = null;
+  constructor(a:number, b:string, c:boolean) {
+    this.a = a;
+    this.b = b;
+    this.c = c;
   }
 }
 ```
@@ -1895,7 +1892,7 @@ class Test {
 
 ​ 方式(ii) `prop?: A`
 
-​ 方式三(iii) `prop： A | undefined = undefined`
+​ 方式(iii) `prop: A | undefined = undefined`
 
 - 从性能角度看，`null`类型仅用于编译期的类型检查，不会影响虚拟机性能。而`undefined | A`被视为联合类型，运行时可能产生额外开销。
 - 从代码可读性、简洁性的角度来说，`prop?:A`是`prop： A | undefined = undefined`的语法糖，**推荐使用可选属性的写法**。

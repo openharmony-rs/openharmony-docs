@@ -344,8 +344,8 @@ NODE_TEXT_INPUT_SHOW_PASSWORD_ICON = 7012
 NODE_TEXT_INPUT_EDITING = 7013
 ```
 
-控制单行文本输入框编辑态属性，支持属性设置。<br>
-作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+控制单行文本输入框编辑态属性，支持属性设置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
 
@@ -354,7 +354,12 @@ NODE_TEXT_INPUT_EDITING = 7013
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | false表示退出编辑态，true表示维持现状。<br>属性获取方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： |
+| .value[0].i32 | false表示退出编辑态，true表示维持现状。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
 | .value[0].i32 | false表示退出编辑态，true表示维持现状。 |
 
 ## NODE_TEXT_INPUT_CANCEL_BUTTON
@@ -1214,6 +1219,30 @@ NODE_TEXT_INPUT_DECORATION = 7050
 | -- | -- |
 | .object | 装饰样式配置项。参数类型为[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)。 |
 
+## NODE_TEXT_INPUT_PUNCTUATION_OVERFLOW
+
+```c
+NODE_TEXT_INPUT_PUNCTUATION_OVERFLOW = 7053
+```
+
+设置TextInput组件是否启用行尾标点符号悬挂，支持属性设置，属性重置和属性获取。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 是否启用行尾标点符号悬挂。1表示启用标点符号悬挂，0表示不启用标点符号悬挂。默认值为0。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 是否启用行尾标点符号悬挂。 |
+
 
 ## NODE_TEXT_AREA_PLACEHOLDER
 
@@ -1357,13 +1386,13 @@ NODE_TEXT_AREA_CARET_COLOR = 8005
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 背景色数值，0xargb格式，形如 0xFFFF0000 表示红色。 |
+| .value[0].u32 | 光标颜色数值，0xargb格式，形如 0xFFFF0000 表示红色。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].u32 | 背景色数值，0xargb格式。 |
+| .value[0].u32 | 光标颜色数值，0xargb格式。 |
 
 ## NODE_TEXT_AREA_EDITING
 
@@ -1372,7 +1401,7 @@ NODE_TEXT_AREA_EDITING = 8006
 ```
 
 控制多行文本输入框编辑态属性，支持属性设置，属性获取接口。<br>
-作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
 
@@ -1381,7 +1410,12 @@ NODE_TEXT_AREA_EDITING = 8006
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | false表示退出编辑态，true表示维持现状。<br>属性获取方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式： |
+| .value[0].i32 | false表示退出编辑态，true表示维持现状。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
 | .value[0].i32 | false表示退出编辑态，true表示维持现状。 |
 
 ## NODE_TEXT_AREA_TYPE
@@ -2348,3 +2382,27 @@ NODE_TEXT_AREA_DECORATION = 8047
 | 类型 | 说明 |
 | -- | -- |
 | .object | 装饰样式配置项。参数类型为[OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)。 |
+
+## NODE_TEXT_AREA_PUNCTUATION_OVERFLOW
+
+```c
+NODE_TEXT_AREA_PUNCTUATION_OVERFLOW = 8050
+```
+
+设置TextArea组件是否启用行尾标点符号悬挂，支持属性设置，属性重置和属性获取。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 是否启用行尾标点符号悬挂。1表示启用标点符号悬挂，0表示不启用标点符号悬挂。默认值为0。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 是否启用行尾标点符号悬挂。 |

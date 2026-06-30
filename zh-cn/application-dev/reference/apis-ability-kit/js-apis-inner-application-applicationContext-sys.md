@@ -1,21 +1,23 @@
-# ApplicationContext(系统接口)
+# ApplicationContext (系统接口)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
+<!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
 ApplicationContext模块继承自[Context](js-apis-inner-application-context.md)，提供开发者应用级别的上下文的能力，包括提供注册及取消注册应用内组件生命周期的监听接口。
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[ApplicationContext](js-apis-inner-application-applicationContext.md)。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 本模块接口仅可在Stage模型下使用。
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[ApplicationContext](js-apis-inner-application-applicationContext.md)。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -42,6 +44,10 @@ preloadUIExtensionAbility(want: Want): Promise\<void\>
 **需要权限**：ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -71,6 +77,8 @@ preloadUIExtensionAbility(want: Want): Promise\<void\>
 | 16000050 | Internal error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { UIAbility, Want } from '@kit.AbilityKit';
@@ -102,7 +110,48 @@ export default class EntryAbility extends UIAbility {
       // 处理入参错误异常
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
-      console.error(`preloadUIExtensionAbility failed. code: ${code}, msg: ${message}`);
+      console.error(`preloadUIExtensionAbility failed. code: ${code}, message: ${message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    let want: Want = {
+      bundleName: 'com.ohos.uiextensionprovider',
+      abilityName: 'UIExtensionProvider',
+      moduleName: 'entry',
+      parameters: {
+        // 与UIExtensionAbility在module.json5中"type"字段配置一致
+        'ability.want.params.uiExtensionType': 'sys/commonUI'
+      } as Record<string, RecordData>
+    };
+    try {
+      let applicationContext = this.context.getApplicationContext();
+      applicationContext.preloadUIExtensionAbility(want)
+        .then(() => {
+          // 执行正常业务
+          console.info('preloadUIExtensionAbility succeed');
+        })
+        .catch((err) => {
+          // 处理业务逻辑错误
+          let code = (err as BusinessError).code;
+          let message = (err as BusinessError).message;
+          console.error('preloadUIExtensionAbility failed. code: $\{code}, message: $\{message}');
+        });
+    } catch (err) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`preloadUIExtensionAbility failed. code: ${code}, message: ${message}`);
     }
   }
 }

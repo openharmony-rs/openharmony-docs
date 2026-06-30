@@ -4,14 +4,14 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @shengu_lancer; @yylong; @rongShao-Z-->
 <!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 滚动条组件ScrollBar，用于配合可滚动组件使用，如[ArcList](ts-container-arclist.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)、[WaterFlow](ts-container-waterflow.md)。
 
 >  **说明：**
 >
-> - 本模块同时支持ArkTs-Dyn、ArkTs-Sta。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
@@ -56,6 +56,8 @@ ArkTS-Sta: enableNestedScroll(enabled: boolean | undefined)
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 14
@@ -86,6 +88,8 @@ ArkTS-Sta: scrollBarColor(color: ColorMetrics | undefined)
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 20
@@ -97,6 +101,24 @@ ArkTS-Sta: scrollBarColor(color: ColorMetrics | undefined)
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
 | color  |  ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)\><br/>ArkTS-Sta: [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)&nbsp;\|&nbsp;undefined | 是   | 滚动条的颜色。<br/>取值为undefined时，滚动条的颜色为'\#66182431'。<br/>默认值：ColorMetrics.numeric(0x66182431)   |
+
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<ScrollBarAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+动态设置ScrollBar组件的属性方法。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                         | 必填 | 说明                                                                                                                             |
+| -------- | -------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------- |
+| modifier | [AttributeModifier](./ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<ScrollBarAttribute> \| AttributeModifier\<CommonMethod> \| undefined | 是   | 在当前组件上，动态设置属性方法，支持使用if/else语法。<br/>CommonMethod：[通用属性](./ts-component-general-attributes.md)和[通用事件](./ts-component-general-events.md)。<br/>ScrollBarAttribute：当前组件的[属性](#属性)。 |
 
 ## ScrollBarOptions对象说明
 
@@ -189,7 +211,7 @@ struct ScrollBarExample {
 }
 ```
 
-![zh-cn_image_0000001232775585](figures/zh-cn_image_0000001232775585.gif)
+![scrollBar](figures/scrollBar.gif)
 
 ## 示例2（不设置子节点）
 
@@ -236,7 +258,7 @@ struct ScrollBarExample {
 }
 ```
 
-![zh-cn_image_scrollbar](figures/zh-cn_image_scrollbar.gif)
+![zh-cn_image_scrollbar](figures/image-scrollbar.gif)
 
 ## 示例3（支持嵌套滚动）
 

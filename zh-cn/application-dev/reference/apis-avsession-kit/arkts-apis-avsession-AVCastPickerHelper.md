@@ -1,7 +1,7 @@
 # Class (AVCastPickerHelper)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
@@ -25,9 +25,9 @@ import { avSession } from '@kit.AVSessionKit';
 
 constructor(context: Context)
 
-创建AVCastPickerHelper对象，获取context参考[getHostContext](../apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12)。
+创建AVCastPickerHelper对象，获取context请参考[getHostContext](../apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -82,9 +82,9 @@ struct Index {
 
 select(options?: AVCastPickerOptions): Promise\<void>
 
-通过选择模式拉起AVCastPicker界面，用户可以选择投播设备。接口采用Promise异步返回形式，传入可选参数AVCastPickerOptions对象，无返回值。
+通过选择模式拉起AVCastPicker界面，用户可以选择投播设备。接口采用Promise异步返回形式，传入可选参数AVCastPickerOptions对象，无返回结果。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -106,7 +106,7 @@ select(options?: AVCastPickerOptions): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md).
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -141,9 +141,9 @@ this.avCastPicker.select(avCastPickerOptions).then(() => {
 
 resetCommunicationDevice(): Promise\<void>
 
-将应用通话设备恢复至默认设备。比如在语音通话场景下，手机设备的通话装置将恢复成听筒。使用Promise异步回调。
+将应用通话设备恢复至默认设备。例如，在语音通话场景下，手机设备的通话装置将恢复为听筒。使用Promise异步回调。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -181,7 +181,7 @@ on(type: 'pickerStateChange', callback: Callback<AVCastPickerState\>) : void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onPickerStateChange](#onpickerstatechange23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -192,7 +192,7 @@ on(type: 'pickerStateChange', callback: Callback<AVCastPickerState\>) : void
 | 参数名   | 类型       | 必填 | 说明      |
 | --------| -----------|-----|------------|
 | type     | string    | 是   | 事件回调类型，支持事件`pickerStateChange`：当半模态窗口变化时，触发该事件。 |
-| callback | Callback\<[AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate)>       | 是   | 回调函数，参数state是变化后的半模态窗口状态。|
+| callback | Callback\<[AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate11)>       | 是   | 回调函数，参数state是变化后的半模态窗口状态。|
 
 **错误码：**
 
@@ -225,7 +225,7 @@ resetCommunicationDevice(): Promise\<void>
 
 例如，在语音通话场景中，音频输出将自动恢复至听筒。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -262,8 +262,6 @@ onPickerStateChange(callback: Callback<AVCastPickerState\>) : void
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('pickerStateChange')](#onpickerstatechange14)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 14开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **ArkTS-Sta起始版本：** 23
@@ -272,7 +270,7 @@ onPickerStateChange(callback: Callback<AVCastPickerState\>) : void
 
 | 参数名   | 类型       | 必填 | 说明      |
 | --------| -----------|-----|------------|
-| callback | Callback\<[AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate)>       | 是   | 回调函数，参数state是变化后的半模态窗口状态。|
+| callback | Callback\<[AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate11)>       | 是   | 回调函数，参数state是变化后的半模态窗口状态。|
 
 **错误码：**
 
@@ -306,7 +304,7 @@ off(type: 'pickerStateChange', callback?: Callback<AVCastPickerState\>) : void
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offPickerStateChange](#offpickerstatechange23)。
 
-**原子化服务API(仅ArkTS-Dyn)：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -316,7 +314,7 @@ off(type: 'pickerStateChange', callback?: Callback<AVCastPickerState\>) : void
 | 参数名   | 类型                                               | 必填 | 说明                                                    |
 | -------- | ------------------------------------------------ | ---- | ------------------------------------------------------ |
 | type     | string                                                       | 是   | 取消对应的监听事件，支持事件`pickerStateChange`。          |
-| callback | Callback\<[AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate)> | 否   | 回调函数，参数state是变化后的半模态窗口状态。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | Callback\<[AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate11)> | 否   | 回调函数，参数state是变化后的半模态窗口状态。<br>当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
@@ -356,7 +354,7 @@ offPickerStateChange(callback?: Callback<AVCastPickerState\>) : void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | Callback\<[AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate)> | 否   | 回调函数，参数state是变化后的半模态窗口状态。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | Callback\<[AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate11)> | 否   | 回调函数，参数state是变化后的半模态窗口状态。<br>当监听事件取消成功，err为null，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
