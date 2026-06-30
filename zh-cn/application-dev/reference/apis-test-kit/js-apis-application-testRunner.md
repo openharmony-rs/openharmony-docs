@@ -117,10 +117,10 @@ type OnStopFn = () => void
 
 当测试完成时，系统会在测试环境退出前触发该回调。
 
- **起始版本：** 26.0.0
- 
- **原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
- 
- **模型约束：** 此接口仅可在Stage模型下使用。
+**起始版本：** 26.0.0
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
