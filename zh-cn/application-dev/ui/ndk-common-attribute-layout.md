@@ -217,37 +217,63 @@ inline std::shared_ptr<ArkUITextNode> CreateOffsetItem()
 ![UICommonAttributeLayout_3](figures/UICommonAttributeLayout_3.jpg)
 
 ## 使用边框属性
-
-边框属性在NDK中的使用方式与上文一致，同样是先封装方法，再在具体组件上组合调用。方法封装如下。
-
 <!-- @[layout_border_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKLayoutSample/entry/src/main/cpp/ArkUINode.h) -->  
 
-```C
+``` C
 void SetBorderWidth(float width)
 {
     ArkUI_NumberValue value[] = {{.f32 = width}};
     ArkUI_AttributeItem item = {value, 1};
     nativeModule_->setAttribute(handle_, NODE_BORDER_WIDTH, &item);
 }
-
+void SetBorderWidth(float top, float right, float bottom, float left)
+{
+    ArkUI_NumberValue value[] = {{.f32 = top}, {.f32 = right}, {.f32 = bottom}, {.f32 = left}};
+    ArkUI_AttributeItem item = {value, 4};
+    nativeModule_->setAttribute(handle_, NODE_BORDER_WIDTH, &item);
+}
+void SetBorderRadius(float radius)
+{
+    ArkUI_NumberValue value[] = {{.f32 = radius}};
+    ArkUI_AttributeItem item = {value, 1};
+    nativeModule_->setAttribute(handle_, NODE_BORDER_RADIUS, &item);
+}
+void SetBorderRadius(float topLeft, float topRight, float bottomLeft, float bottomRight)
+{
+    ArkUI_NumberValue value[] = {
+        {.f32 = topLeft}, {.f32 = topRight}, {.f32 = bottomLeft}, {.f32 = bottomRight}
+    };
+    ArkUI_AttributeItem item = {value, 4};
+    nativeModule_->setAttribute(handle_, NODE_BORDER_RADIUS, &item);
+}
 void SetBorderColor(uint32_t color)
 {
     ArkUI_NumberValue value[] = {{.u32 = color}};
     ArkUI_AttributeItem item = {value, 1};
     nativeModule_->setAttribute(handle_, NODE_BORDER_COLOR, &item);
 }
-
+void SetBorderColor(uint32_t top, uint32_t right, uint32_t bottom, uint32_t left)
+{
+    ArkUI_NumberValue value[] = {{.u32 = top}, {.u32 = right}, {.u32 = bottom}, {.u32 = left}};
+    ArkUI_AttributeItem item = {value, 4};
+    nativeModule_->setAttribute(handle_, NODE_BORDER_COLOR, &item);
+}
 void SetBorderStyle(ArkUI_BorderStyle style)
 {
     ArkUI_NumberValue value[] = {{.i32 = style}};
     ArkUI_AttributeItem item = {value, 1};
     nativeModule_->setAttribute(handle_, NODE_BORDER_STYLE, &item);
 }
-
-void SetBorderRadius(float radius)
+void SetBorderStyle(
+    ArkUI_BorderStyle top, ArkUI_BorderStyle right, ArkUI_BorderStyle bottom, ArkUI_BorderStyle left)
 {
-    ArkUI_NumberValue value[] = {{.f32 = radius}};
-    ArkUI_AttributeItem item = {value, 1};
+    ArkUI_NumberValue value[] = {
+        {.i32 = top}, {.i32 = right}, {.i32 = bottom}, {.i32 = left}
+    };
+    ArkUI_AttributeItem item = {value, 4};
+    nativeModule_->setAttribute(handle_, NODE_BORDER_STYLE, &item);
+}
+```
     nativeModule_->setAttribute(handle_, NODE_BORDER_RADIUS, &item);
 }
 ```
