@@ -416,6 +416,9 @@ struct MyComponent {
 <!-- @[life_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/lifeCycle/Page.ets) -->   
 
 ``` TypeScript
+ import { hilog } from '@kit.PerformanceAnalysisKit';
+ const DOMAIN = 0xF811;
+ const TAG = '[Sample_ArkTSRouter]';
 // Page.ets
 @Entry
 @Component
@@ -425,18 +428,18 @@ struct Page {
 
   // 只有被@Entry装饰的组件才可以调用页面的生命周期
   onPageShow() {
-    console.info('Page onPageShow');
+    hilog.info(DOMAIN, TAG, 'Page onPageShow');
     this.num = 5;
   }
 
   // 只有被@Entry装饰的组件才可以调用页面的生命周期
   onPageHide() {
-    console.info('Page onPageHide');
+    hilog.info(DOMAIN, TAG, 'Page onPageHide');
   }
 
   // 只有被@Entry装饰的组件才可以调用页面的生命周期
   onBackPress() { // 不设置返回值按照false处理
-    console.info('Page onBackPress');
+    hilog.info(DOMAIN, TAG, 'Page onBackPress');
     this.textColor = Color.Grey;
     this.num = 0;
   }
