@@ -86,6 +86,8 @@ Video组件支持加载本地视频和网络视频。具体的数据源配置请
 
 ### 加载沙箱路径视频
 
+支持file://路径前缀的字符串，用于读取应用沙箱路径内的资源，需要确保应用沙箱目录路径下的文件存在并且有可读权限。
+
 <!-- @[sandbox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/Sandbox.ets) -->  
 
 ``` TypeScript
@@ -107,11 +109,11 @@ export struct Sandbox {
   }
 }
 ```
-}
-```
 
 
 ### 加载网络视频
+
+加载网络视频时，需要申请ohos.permission.INTERNET权限，具体申请方式请参考[声明权限](../security/AccessToken/declare-permissions.md)。此时，Video的src属性为网络视频的链接。
 
 <!-- @[online_video](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/OnlineVideo.ets) -->  
 
@@ -137,10 +139,10 @@ export struct OnlineVideo {
   }
 }
 ```
-  }
-}
-```
 
+ ## 添加属性	 
+ 
+ Video组件[属性](../reference/apis-arkui/arkui-ts/ts-media-components-video.md#属性)主要用于设置视频的播放形式。例如设置视频播放是否静音、播放是否显示控制条等。
 
 <!-- @[attribute_video](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/AttributeVideo.ets) -->  
 
@@ -219,6 +221,8 @@ Video控制器主要用于控制视频的状态，包括播放、暂停、停止
 
 - 默认控制器
 
+  默认的控制器支持视频的开始、暂停、进度调整、全屏显示四项基本功能。
+
   <!-- @[video_guide](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/VideoControl.ets) -->  
   
   ``` TypeScript
@@ -247,8 +251,11 @@ Video控制器主要用于控制视频的状态，包括播放、暂停、停止
     }
   }
   ```
-  }
-  ```
+  
+   - 自定义控制器	 
+ 
+ 
+   使用自定义的控制器，先关闭默认控制器，然后使用[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)以及[Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md)等组件进行自定义的控制与显示，适合自定义较强的场景下使用。
 
   <!-- @[customize_control](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/CustomizedControl.ets) -->  
   
@@ -311,9 +318,10 @@ Video控制器主要用于控制视频的状态，包括播放、暂停、停止
     }
   }
   ```
-      .height('40%')
-    }
-  }
+  
+ ## 其他说明	 
+ 
+ Video组件已经封装好了视频播放的基础能力，开发者无需进行视频实例的创建，视频信息的设置获取，只需要设置数据源以及基础信息即可播放视频，相对扩展能力较弱。如果开发者想自定义视频播放，请使用[AVPlayer](../media/media/media-kit-intro.md#avplayer)，下面是一个使用AVPlayer进行播放视频的简单示例，如果需要更详细信息或更复杂功能请参考[视频播放](../media/media/video-playback.md)。
   <!-- @[xcomponent_av_player](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/XComponentAVPlayer.ets) -->  
   
   ``` TypeScript
@@ -512,12 +520,6 @@ Video控制器主要用于控制视频的状态，包括播放、暂停、停止
         .width(this.isLayoutFullScreen ? this.windowWidth : 300)
       }
       .width('100%')
-      .height('100%')
-      .justifyContent(FlexAlign.Center)
-      .alignItems(HorizontalAlign.Center)
-    }
-  }
-  ```
       .height('100%')
       .justifyContent(FlexAlign.Center)
       .alignItems(HorizontalAlign.Center)
