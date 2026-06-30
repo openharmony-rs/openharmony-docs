@@ -187,7 +187,7 @@
        console.error('Failed to release Model and code is ' + err.code);
        // ...
      })
-   ```   
+   ```
 
 ## 图像向量化开发步骤
 
