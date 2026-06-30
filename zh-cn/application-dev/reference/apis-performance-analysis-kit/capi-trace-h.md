@@ -9,7 +9,13 @@
 
 ## 概述
 
-HiTraceMeter和HiTraceChain模块接口定义，通过这些接口实现性能打点和分布式跟踪功能。<br> 用户态trace格式使用竖线字符作为分隔符，所以通过HiTraceMeter接口传递的字符串类型参数应避免包含该字符，防止trace解析异常。<br> 用户态trace总长度限制512字符，超过的部分将会被截断。
+HiTraceMeter和HiTraceChain模块接口定义，通过这些接口实现性能打点和分布式跟踪功能。
+
+> **说明：**
+>
+> 调用HiTraceMeter打点接口时，模块将依据[用户态trace格式](../../dfx/hitracemeter-view.md#用户态trace格式说明)对传入参数格式化、封装，生成单条Trace日志并写入内核。
+>- 由于内核侧单条Trace日志最大长度限制为512Byte，且接口内部封装开销需预留92Byte，为保证日志数据完整可靠，业务接入时需自行控制入参整体长度不超出420Byte（总长度512Byte - 系统预留92Byte）。
+>- 由于接口内部格式化流程以“|”作为内容分隔标识符，为避免日志解析错乱、数据异常，用户传入的所有文本参数中禁止包含该字符。
 
 **引用文件：** <hitrace/trace.h>
 
@@ -366,7 +372,8 @@ HiTraceMeter跟踪信息埋点。<br> type为客户端发送[HITRACE_TP_CS](capi
 | [HiTrace_Communication_Mode](capi-trace-h.md#hitrace_communication_mode) mode | 跟踪通信模式，见[HiTrace_Communication_Mode](capi-trace-h.md#hitrace_communication_mode)。 |
 | [HiTrace_Tracepoint_Type](capi-trace-h.md#hitrace_tracepoint_type) type | 跟踪信息类型，见[HiTrace_Tracepoint_Type](capi-trace-h.md#hitrace_tracepoint_type)。 |
 | [const HiTraceId](capi-hitrace-hitraceid.md) *id | 实施信息埋点操作的[HiTraceId](capi-hitrace-hitraceid.md)。 |
-| const char *fmt | HiTraceMeter打点操作传入的trace说明信息的格式化字符串。 |
+| const char *fmt | HiTraceMeter打点操作传入的trace说明信息的格式化字符串，遵循 **ISO C（C89/C99/C17）printf 格式规范**。 |
+| ... |  与格式字符串fmt里参数类型对应的参数列表，参数数目、参数类型必须与格式字符串中的标识一一对应。 |
 
 ### OH_HiTrace_InitId()
 
@@ -718,7 +725,7 @@ void OH_HiTrace_StartTrace(const char *name)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *name | 跟踪的名字。 |
+| const char *name | 跟踪的名字。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name的长度不要超过420Byte。 |
 
 ### OH_HiTrace_FinishTrace()
 
@@ -752,7 +759,7 @@ void OH_HiTrace_StartAsyncTrace(const char *name, int32_t taskId)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *name | 异步跟踪的名字。 |
+| const char *name | 异步跟踪的名字。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name的长度不要超过420Byte。 |
 | int32_t taskId | 异步跟踪的ID。 异步跟踪开始和结束由于不是顺序发生的，所以需要通过name和每次执行唯一的taskId进行开始和结束的匹配。 |
 
 ### OH_HiTrace_FinishAsyncTrace()
@@ -794,7 +801,7 @@ void OH_HiTrace_CountTrace(const char *name, int64_t count)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *name | 整数变量跟踪的名字，不必与真实变量名相同。 |
+| const char *name | 整数变量跟踪的名字，不必与真实变量名相同。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name的长度不要超过420Byte。 |
 | int64_t count | 整数值。 |
 
 ### OH_HiTrace_StartTraceEx()
@@ -814,8 +821,9 @@ void OH_HiTrace_StartTraceEx(HiTrace_Output_Level level, const char *name, const
 | 参数项 | 描述 |
 | -- | -- |
 | [HiTrace_Output_Level](capi-trace-h.md#hitrace_output_level) level | 跟踪输出优先级。 |
-| const char *name | 同步跟踪的名字。 |
-| const char *customArgs | 键值对，多个键值对使用逗号分隔，例"key1=value1,key2=value2"。 |
+| const char *name | 同步跟踪的名字。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name和customArgs的长度之和不要超过420Byte。 |
+| const char *customArgs | 键值对，多个键值对使用逗号分隔，例"key1=value1,key2=value2"。 <br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name和customArgs的长度之和不要超过420Byte。|
+
 
 ### OH_HiTrace_FinishTraceEx()
 
@@ -852,10 +860,10 @@ void OH_HiTrace_StartAsyncTraceEx(HiTrace_Output_Level level, const char *name, 
 | 参数项 | 描述 |
 | -- | -- |
 | [HiTrace_Output_Level](capi-trace-h.md#hitrace_output_level) level | 跟踪输出优先级。 |
-| const char *name | 异步跟踪的名字。 |
+| const char *name | 异步跟踪的名字。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name、customCategory和customArgs的长度之和不要超过420Byte。 |
 | int32_t taskId | 异步跟踪的ID。 |
-| const char *customCategory | 自定义聚类名称，用于聚合同一类异步跟踪打点。 |
-| const char *customArgs | 键值对，多个键值对使用逗号分隔，例"key1=value1,key2=value2"。 |
+| const char *customCategory | 自定义聚类名称，用于聚合同一类异步跟踪打点。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name、customCategory和customArgs的长度之和不要超过420Byte。 |
+| const char *customArgs | 键值对，多个键值对使用逗号分隔，例"key1=value1,key2=value2"。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name、customCategory和customArgs的长度之和不要超过420Byte。 |
 
 ### OH_HiTrace_FinishAsyncTraceEx()
 
@@ -874,7 +882,7 @@ void OH_HiTrace_FinishAsyncTraceEx(HiTrace_Output_Level level, const char *name,
 | 参数项 | 描述 |
 | -- | -- |
 | [HiTrace_Output_Level](capi-trace-h.md#hitrace_output_level) level | 跟踪输出优先级。 |
-| const char *name | 异步跟踪的名字。 |
+| const char *name | 异步跟踪的名字。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name的长度不要超过420Byte。 |
 | int32_t taskId | 异步跟踪的ID。 |
 
 ### OH_HiTrace_CountTraceEx()
@@ -894,7 +902,7 @@ void OH_HiTrace_CountTraceEx(HiTrace_Output_Level level, const char *name, int64
 | 参数项 | 描述 |
 | -- | -- |
 | [HiTrace_Output_Level](capi-trace-h.md#hitrace_output_level) level | 跟踪输出优先级。 |
-| const char *name | 整数变量的名称，不必与实际变量名相同。 |
+| const char *name | 整数变量的名称，不必与实际变量名相同。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name的长度不要超过420Byte。 |
 | int64_t count | 整数值。 |
 
 ### OH_HiTrace_IsTraceEnabled()
