@@ -39,7 +39,7 @@ Obtains the serial port list. This API uses a promise to return the result, whic
 
 For details about the error codes, see [Common Error Codes](../errorcode-universal.md) and [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
 
-| Error Code| Error Message                                        |
+| ID| Error Message                                        |
 | -------- | ------------------------------------------------ |
 | 203      | This function is prohibited by enterprise management policies. |
 | 35700001 | Service error.                                   |
@@ -105,7 +105,7 @@ Opens a serial port device. When a serial port is opened for the first time, the
 
 For details about the error codes, see [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
 
-| Error Code| Error Message                         |
+| ID| Error Message                         |
 | -------- | --------------------------------- |
 | 35700001 | Service error.                    |
 | 35700002 | Invalid parameter.                |
@@ -160,7 +160,7 @@ Closes a serial port device. This API uses a promise to return the result.
 
 For details about the error codes, see [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | -------------------- |
 | 35700001 | Service error.       |
 | 35700005 | Port not open.       |
@@ -207,7 +207,7 @@ Writes data to a serial port device. The value range of the data length is (0, 4
 
 For details about the error codes, see [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
 
-| Error Code| Error Message                         |
+| ID| Error Message                         |
 | -------- | --------------------------------- |
 | 35700001 | Service error.                    |
 | 35700002 | Invalid parameter.                |
@@ -252,7 +252,7 @@ Listens for data receiving events on the serial port. This API uses an asynchron
 
 For details about the error codes, see [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
 
-| Error Code| Error Message                         |
+| ID| Error Message                         |
 | -------- | --------------------------------- |
 | 35700001 | Service error.                    |
 | 35700003 | Virtual serial port disconnected. |
@@ -291,7 +291,7 @@ Cancels listening for data receiving events on the serial port. This API uses an
 
 For details about the error codes, see [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | -------------------- |
 | 35700001 | Service error.       |
 | 35700005 | Port not open.       |
@@ -333,7 +333,7 @@ Flushes the serial port buffer, including the read buffer and write buffer. Data
 
 For details about the error codes, see [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
 
-| Error Code| Error Message                         |
+| ID| Error Message                         |
 | -------- | --------------------------------- |
 | 35700001 | Service error.                    |
 | 35700003 | Virtual serial port disconnected. |
@@ -374,7 +374,7 @@ Waits until all write requests are complete. This API uses a promise to return t
 
 For details about the error codes, see [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
 
-| Error Code| Error Message                         |
+| ID| Error Message                         |
 | -------- | --------------------------------- |
 | 35700001 | Service error.                    |
 | 35700003 | Virtual serial port disconnected. |
@@ -421,7 +421,7 @@ Sets the status of the Request to Send (RTS) signal. This API uses a promise to 
 
 For details about the error codes, see [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
 
-| Error Code| Error Message                         |
+| ID| Error Message                         |
 | -------- | --------------------------------- |
 | 35700001 | Service error.                    |
 | 35700003 | Virtual serial port disconnected. |
@@ -462,7 +462,7 @@ Obtains the status of the Clear to Send (CTS) signal. This API uses a promise to
 
 For details about the error codes, see [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
 
-| Error Code| Error Message                         |
+| ID| Error Message                         |
 | -------- | --------------------------------- |
 | 35700001 | Service error.                    |
 | 35700003 | Virtual serial port disconnected. |
@@ -503,7 +503,7 @@ Sends a BRK signal. This API uses a promise to return the result.
 
 For details about the error codes, see [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
 
-| Error Code| Error Message                         |
+| ID| Error Message                         |
 | -------- | --------------------------------- |
 | 35700001 | Service error.                    |
 | 35700003 | Virtual serial port disconnected. |
@@ -550,7 +550,7 @@ Sets the status of the data terminal ready (DTR) signal. This API uses a promise
 
 For details about the error codes, see [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
 
-| Error Code| Error Message                         |
+| ID| Error Message                         |
 | -------- | --------------------------------- |
 | 35700001 | Service error.                    |
 | 35700003 | Virtual serial port disconnected. |
@@ -591,7 +591,7 @@ Obtains the status of the data set ready (DSR) signal. This API uses a promise t
 
 For details about the error codes, see [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
 
-| Error Code| Error Message                         |
+| ID| Error Message                         |
 | -------- | --------------------------------- |
 | 35700001 | Service error.                    |
 | 35700003 | Virtual serial port disconnected. |
@@ -632,7 +632,7 @@ Subscribes to serial port disconnection events. This API uses an asynchronous ca
 
 For details about the error codes, see [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | -------------------- |
 | 35700001 | Service error.       |
 | 35700005 | Port not open.       |
@@ -670,7 +670,7 @@ Unsubscribes from serial port disconnection events.
 
 For details about the error codes, see [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | -------------------- |
 | 35700001 | Service error.       |
 | 35700005 | Port not open.       |

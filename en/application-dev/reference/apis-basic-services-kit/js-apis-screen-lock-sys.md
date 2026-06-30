@@ -84,7 +84,7 @@ Checks whether the screen is locked.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------------------- |
 | 202  | permission verification failed, application which is not a system application uses system API.         |
 
@@ -114,7 +114,7 @@ Unlocks the screen. This API uses an asynchronous callback to return the result.
 
 For details about error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Lock Error Codes](errorcode-screenlock.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 202  | permission verification failed, application which is not a system application uses system API.         |
@@ -159,7 +159,7 @@ Unlocks the screen. This API uses a promise to return the result.
 
 For details about error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Lock Error Codes](errorcode-screenlock.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------------------- |
 | 202  | permission verification failed, application which is not a system application uses system API.         |
 | 13200002  | the screenlock management service is abnormal.         |
@@ -203,7 +203,7 @@ Locks the screen. This API uses an asynchronous callback to return the result.
 
 For details about error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Lock Error Codes](errorcode-screenlock.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 201  | permission denied.         |
@@ -246,7 +246,7 @@ Locks the screen. This API uses a promise to return the result.
 
 For details about error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Lock Error Codes](errorcode-screenlock.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------------------- |
 | 201  | permission denied.         |
 | 202  | permission verification failed, application which is not a system application uses system API.         |
@@ -292,7 +292,7 @@ Registers a callback for system events related to screen locking. This API can b
 
 For details about error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Lock Error Codes](errorcode-screenlock.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 201  | permission denied.         |
@@ -338,7 +338,7 @@ Sends an event to the screen lock service. This API can be called only by screen
 
 For details about error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Lock Error Codes](errorcode-screenlock.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 201  | permission denied.         |
@@ -388,7 +388,7 @@ Sends an event to the screen lock service. This API can be called only by screen
 
 For details about error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Lock Error Codes](errorcode-screenlock.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 201  | permission denied.         |
