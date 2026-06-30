@@ -1,7 +1,7 @@
 # 使用ArkTS接口实现音频通话
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zyy0412-->
+<!--Owner: @ZhengYong21-->
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
