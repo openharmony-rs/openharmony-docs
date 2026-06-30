@@ -219,8 +219,6 @@ Video控制器主要用于控制视频的状态，包括播放、暂停、停止
 
 - 默认控制器
 
-  默认的控制器支持视频的开始、暂停、进度调整、全屏显示四项基本功能。
-
   <!-- @[video_guide](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/VideoControl.ets) -->  
   
   ``` TypeScript
@@ -228,7 +226,9 @@ Video控制器主要用于控制视频的状态，包括播放、暂停、停止
   @Entry
   @Component
   struct VideoGuide {
+    // $rawfile('videoTest.mp4')需要替换为开发者所需的影像资源文件
     @State videoSrc: Resource = $rawfile('videoTest.mp4');
+    // common/videoIcon.png需要替换为开发者所需的图像资源文件
     @State previewUri: string = 'common/videoIcon.png';
     @State curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X;
   
@@ -245,6 +245,8 @@ Video控制器主要用于控制视频的状态，包括播放、暂停、停止
       }
       .height('100%')
     }
+  }
+  ```
   }
   ```
 
