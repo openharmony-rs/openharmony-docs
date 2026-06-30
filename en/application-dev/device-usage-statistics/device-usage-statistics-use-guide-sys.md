@@ -6,11 +6,7 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
-<<<<<<< Updated upstream
-<!-- md-trans-meta sourceCommit=45bd746ae860f1fef969073ffaa0af763a0251fa translatedAt=2026-06-29T06:20:20.252Z pushedAt=2026-06-29T12:34:20.437Z -->
-=======
-<!-- md-trans-meta sourceCommit=45bd746ae860f1fef969073ffaa0af763a0251fa translatedAt=2026-06-29T06:20:20.252Z pushedAt=2026-06-29T09:44:37.055Z -->
->>>>>>> Stashed changes
+<!-- md-trans-meta sourceCommit=45bd746ae860f1fef969073ffaa0af763a0251fa translatedAt=2026-06-29T06:20:20.252Z pushedAt=2026-06-30T09:58:49.798Z -->
 
 ## When to Use
 
@@ -451,15 +447,4 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
             console.info('BUNDLE_ACTIVE unregisterAppGroupCallBack callback success.');
         }
     });
-<<<<<<< Updated upstream
     ```
-=======
-    ```
-
-
-
-
-
-
-
->>>>>>> Stashed changes
