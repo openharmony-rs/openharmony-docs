@@ -182,28 +182,8 @@
 
 3. 订阅握持手感知
 
-   <!-- @[motion_subscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
-
-   ```ts
-   try {
-      motion.on('holdingHandChanged', callback);
-      console.info("on succeeded");
-   } catch (err) {
-      let error = err as BusinessError;
-      console.error("Failed on and err code is " + error.code);
-   }
-   ```
+   <!-- @[motion_subscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
 
 4. 取消订阅握持手感知
 
-   <!-- @[motion_unsubscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
-   
-   ```ts
-   try {
-      motion.off('holdingHandChanged');
-      console.info("off succeeded");
-   } catch (err) {
-      let error = err as BusinessError;
-      console.error("Failed off and err code is " + error.code);
-   }
-   ```
+   <!-- @[motion_unsubscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
