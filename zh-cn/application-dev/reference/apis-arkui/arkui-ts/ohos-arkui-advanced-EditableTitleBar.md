@@ -175,7 +175,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_editabletitlebar_example01](figures/zh-cn_image_editabletitlebar_example01.png)
+![image-editabletitlebar-example-01](figures/image-editabletitlebar-example-01.png)
 
 ### 示例2（头像与背景模糊标题栏）
 该示例主要演示EditableTitleBar设置背景模糊、头像；取消右侧保存图标及自定义标题栏外边距的效果。
@@ -279,7 +279,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_editabletitlebar_example02](figures/zh-cn_image_editabletitlebar_example02.png)
+![image-editabletitlebar-example-02](figures/image-editabletitlebar-example-02.png)
 
 ### 示例3（右侧自定义按钮播报）
 从API version 18开始，该示例通过设置标题栏的右侧自定义按钮属性accessibilityText、accessibilityDescription、accessibilityLevel自定义屏幕朗读播报文本。
@@ -340,7 +340,7 @@ struct Index1 {
   }
 }
 ```
-![zh-cn_image_editabletitlebar_example03](figures/zh-cn_image_editabletitlebar_example03.png)
+![image-editabletitlebar-example-03](figures/image-editabletitlebar-example-03.png)
 
 ### 示例4（左侧图标设置为默认焦点）
 在获焦状态下，该示例通过设置标题栏属性leftIconDefaultFocus使左侧图标默认获焦。
@@ -486,4 +486,4 @@ struct Index {
 }
 ```
 
-![示例6-EditableTitleBar示例6 设置Symbol类型图标](figures/zh-cn_image_editabletitlebar_demo_06.png)
+![示例6-EditableTitleBar示例6 设置Symbol类型图标](figures/image-editabletitlebar-demo06.png)

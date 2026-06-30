@@ -1892,7 +1892,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_dispose](figures/zh-cn_image_dispose.gif)
+![zh-cn_image_dispose](figures/image-dispose.gif)
 
 ### commonAttribute<sup>12+</sup>
 
@@ -2423,7 +2423,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_disposeTree](figures/zh-cn_image_disposeTree.gif)
+![zh-cn_image_disposeTree](figures/image-disposeTree.gif)
 
 ### setCrossLanguageOptions<sup>15+</sup>
 

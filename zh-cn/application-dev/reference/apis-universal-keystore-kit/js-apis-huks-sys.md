@@ -74,8 +74,9 @@ generateKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions
   调用方必须是运行在User0~99（包含0和99）用户身份下的系统应用，同时需要申请ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS权限。允许应用安装到User0的配置指导，请参考[singleton|bool|false|是否允许应用安装到单用户下(U0)](../../../../zh-cn/device-dev/subsystems/subsys-app-privilege-config-guide.md#可由设备厂商配置的特权)
 
 ```ts
+/* 以生成AES密钥为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit"
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const aesKeyAlias = 'test_aesKeyAlias';
 const userId = 100;
@@ -104,6 +105,7 @@ function GetAesGenerateProperties(): Array<huks.HuksParam> {
   }]
 }
 
+/* 生成密钥 */
 async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam>) {
   const options: huks.HuksOptions = {
     properties: genProperties
@@ -114,7 +116,6 @@ async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam
     console.error("密钥生成失败，错误码是： " + err.code + " 错误码信息： " + err.message)
   })
 }
-
 
 export default function HuksAsUserTest() {
   console.info('begin huks as user test')
@@ -170,8 +171,9 @@ deleteKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 - 以下代码示例接口调用的前置条件同上文[generateKeyItemAsUser](#huksgeneratekeyitemasuser)的前置条件
 
 ```ts
+/* 以删除AES密钥为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit"
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const aesKeyAlias = 'test_aesKeyAlias';
 const userId = 100;
@@ -199,7 +201,7 @@ function GetAesGenerateProperties(): Array<huks.HuksParam> {
     value: userIdStorageLevel,
   }]
 }
-
+/* 1. 生成密钥 */
 async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam>) {
   const options: huks.HuksOptions = {
     properties: genProperties
@@ -209,7 +211,7 @@ async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam
     console.error("密钥生成失败，错误码是： " + err.code + " 错误码信息： " + err.message)
   })
 }
-
+/* 2. 删除密钥 */
 async function DeleteKey(keyAlias: string) {
   const options: huks.HuksOptions = {
     properties: [{
@@ -252,7 +254,7 @@ importKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 | 参数名   | 类型                        | 必填 | 说明                                |
 | -------- | --------------------------- | ---- | ----------------------------------- |
 | userId   | number                      | 是   | 用户ID。                 |
-| keyAlias | string                      | 是   | 密钥别名。密钥别名的长度范围为1~128字节，建议不包含个人信息等敏感词汇。                          |
+| keyAlias | string                      | 是   | 待导入密钥的别名。密钥别名的长度范围为1~128字节，建议不包含个人信息等敏感词汇。                          |
 | huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于导入时所需TAG和需要导入的密钥。其中密钥使用的算法、密钥用途、密钥长度为必选参数。 |
 
 **返回值：**
@@ -289,8 +291,9 @@ importKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 - 以下代码示例接口调用的前置条件同上文[generateKeyItemAsUser](#huksgeneratekeyitemasuser)的前置条件
 
 ```ts
+/* 以导入AES密钥为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit"
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const aesKeyAlias = 'test_aesKeyAlias';
 const userId = 100;
@@ -298,7 +301,6 @@ const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
 const plainAesKey128 = new Uint8Array([
   0xfb, 0x8b, 0x9f, 0x12, 0xa0, 0x83, 0x19, 0xbe, 0x6a, 0x6f, 0x63, 0x2a, 0x7c, 0x86, 0xba, 0xca
 ]);
-
 function GetAesGenerateProperties(): Array<huks.HuksParam> {
   return [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
@@ -321,7 +323,7 @@ function GetAesGenerateProperties(): Array<huks.HuksParam> {
     value: userIdStorageLevel,
   }]
 }
-
+/* 导入密钥明文 */
 async function ImportPlainKey(keyAlias: string, importProperties: Array<huks.HuksParam>, plainKey: Uint8Array) {
   const options: huks.HuksOptions = {
     properties: importProperties,
@@ -392,10 +394,11 @@ attestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 - 以下代码示例接口调用的前置条件同上文[generateKeyItemAsUser](#huksgeneratekeyitemasuser)的前置条件
 
 ```ts
+/* 以RSA密钥证明为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit"
+import { BusinessError } from '@kit.BasicServicesKit';
 
-function StringToUint8Array(str: string) {
+function stringToUint8Array(str: string) {
   let arr: number[] = [];
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
@@ -407,9 +410,9 @@ const rsaKeyAlias = 'test_rsaKeyAlias';
 const userId = 100;
 const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
 
-const securityLevel = StringToUint8Array('sec_level');
-const challenge = StringToUint8Array('challenge_data');
-const versionInfo = StringToUint8Array('version_info');
+const securityLevel = stringToUint8Array('sec_level');
+const challenge = stringToUint8Array('challenge_data');
+const versionInfo = stringToUint8Array('version_info');
 
 function GetRSA4096GenerateProperties(): Array<huks.HuksParam> {
   return [{
@@ -436,7 +439,7 @@ function GetRSA4096GenerateProperties(): Array<huks.HuksParam> {
     value: userIdStorageLevel,
   }]
 }
-
+/* 1. 生成密钥 */
 async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam>) {
   const options: huks.HuksOptions = {
     properties: genProperties
@@ -460,13 +463,13 @@ function GetAttestKeyProperties(keyAlias: string): Array<huks.HuksParam> {
     value: versionInfo
   }, {
     tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS,
-    value: StringToUint8Array(keyAlias)
+    value: stringToUint8Array(keyAlias)
   }, {
     tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
     value: userIdStorageLevel,
   })
 }
-
+/* 2. 获取密钥证书 */
 async function LetKeyAttest(keyAlias: string, keyOptions: Array<huks.HuksParam>) {
   let attestOptions: huks.HuksOptions = {
     properties: keyOptions,
@@ -548,10 +551,11 @@ anonAttestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptio
 - 以下代码示例接口调用的前置条件同上文[generateKeyItemAsUser](#huksgeneratekeyitemasuser)的前置条件
 
 ```ts
+/* 以RSA匿名密钥证明为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit"
+import { BusinessError } from '@kit.BasicServicesKit';
 
-function StringToUint8Array(str: string) {
+function stringToUint8Array(str: string) {
   let arr: number[] = [];
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
@@ -563,9 +567,9 @@ const rsaKeyAlias = 'test_rsaKeyAlias';
 const userId = 100;
 const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
 
-const securityLevel = StringToUint8Array('sec_level');
-const challenge = StringToUint8Array('challenge_data');
-const versionInfo = StringToUint8Array('version_info');
+const securityLevel = stringToUint8Array('sec_level');
+const challenge = stringToUint8Array('challenge_data');
+const versionInfo = stringToUint8Array('version_info');
 
 function GetRSA4096GenerateProperties(): Array<huks.HuksParam> {
   return [{
@@ -592,7 +596,7 @@ function GetRSA4096GenerateProperties(): Array<huks.HuksParam> {
     value: userIdStorageLevel,
   }]
 }
-
+/* 1. 生成密钥 */
 async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam>) {
   const options: huks.HuksOptions = {
     properties: genProperties
@@ -616,13 +620,13 @@ function GetAttestKeyProperties(keyAlias: string): Array<huks.HuksParam> {
     value: versionInfo
   }, {
     tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS,
-    value: StringToUint8Array(keyAlias)
+    value: stringToUint8Array(keyAlias)
   }, {
     tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
     value: userIdStorageLevel,
   })
 }
-
+/* 2. 获取匿名化密钥证书 */
 async function LetKeyAnonAttest(keyAlias: string, keyOptions: Array<huks.HuksParam>) {
   let attestOptions: huks.HuksOptions = {
     properties: keyOptions,
@@ -714,10 +718,11 @@ anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string, params: HuksPar
 - 以下代码示例接口调用的前置条件同上文[generateKeyItemAsUser](#huksgeneratekeyitemasuser)的前置条件
 
 ```ts
+/* 以ECC离线匿名密钥证明为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit"
+import { BusinessError } from '@kit.BasicServicesKit';
 
-function StringToUint8Array(str: string) {
+function stringToUint8Array(str: string) {
   let arr: number[] = [];
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
@@ -729,8 +734,9 @@ const userId = 100;
 const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
 const keyAliasString = "key anon local attest as user";
 
-const challenge = StringToUint8Array('challenge_data');
+const challenge = stringToUint8Array('challenge_data');
 
+/* 1. 生成密钥 */
 async function generateKey(alias: string) {
   let properties: Array<huks.HuksParam> = [
     {
@@ -765,9 +771,10 @@ async function generateKey(alias: string) {
   await huks.generateKeyItemAsUser(userId, alias, options);
 }
 
+/* 2. 离线获取匿名化密钥证书 */
 async function anonAttestKeyItemOfflineAsUser() {
   let aliasString = keyAliasString;
-  let aliasUint8 = StringToUint8Array(aliasString);
+  let aliasUint8 = stringToUint8Array(aliasString);
   let properties: Array<huks.HuksParam> = [
     {
       tag: huks.HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE,
@@ -853,8 +860,9 @@ importWrappedKeyItemAsUser(userId: number, keyAlias: string, wrappingKeyAlias: s
 - 注意：下文密码学相关的变量（如initializationVector、associatedData、nonce）赋值，均为参考样例，不能直接适用于业务功能逻辑。开发者需要根据自身场景使用合适的初始值。
 
 ```ts
+/* 以ECDH协商安全导入AES密钥为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit"
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
 const initializationVector = '0000000000000000';
@@ -871,7 +879,7 @@ const importedKeyAliasAes192 = "test_import_key_ecdh_aes192";
 const mask = [0x000000FF, 0x0000FF00, 0x00FF0000, 0xFF000000];
 
 
-function StringToUint8Array(str: string) {
+function stringToUint8Array(str: string) {
   let arr: number[] = [];
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
@@ -977,14 +985,14 @@ const importParamsCallerKek: huks.HuksOptions = {
     },
     {
       tag: huks.HuksTag.HUKS_TAG_IV,
-      value: StringToUint8Array(initializationVector)
+      value: stringToUint8Array(initializationVector)
     },
     {
       tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
       value: userIdStorageLevel,
     }
   ],
-  inData: StringToUint8Array(callerAes256Kek)
+  inData: stringToUint8Array(callerAes256Kek)
 }
 
 const importParamsAgreeKey: huks.HuksOptions = {
@@ -1015,7 +1023,7 @@ const importParamsAgreeKey: huks.HuksOptions = {
     },
     {
       tag: huks.HuksTag.HUKS_TAG_IV,
-      value: StringToUint8Array(initializationVector)
+      value: stringToUint8Array(initializationVector)
     },
     {
       tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
@@ -1069,11 +1077,11 @@ const encryptKeyCommonParams: huks.HuksOptions = {
     },
     {
       tag: huks.HuksTag.HUKS_TAG_NONCE,
-      value: StringToUint8Array(nonce)
+      value: stringToUint8Array(nonce)
     },
     {
       tag: huks.HuksTag.HUKS_TAG_ASSOCIATED_DATA,
-      value: StringToUint8Array(associatedData)
+      value: stringToUint8Array(associatedData)
     },
     {
       tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
@@ -1115,7 +1123,7 @@ const importWrappedAes192Params: huks.HuksOptions = {
     },
     {
       tag: huks.HuksTag.HUKS_TAG_IV,
-      value: StringToUint8Array(initializationVector)
+      value: stringToUint8Array(initializationVector)
     },
     {
       tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
@@ -1124,6 +1132,7 @@ const importWrappedAes192Params: huks.HuksOptions = {
   ]
 }
 
+/* 明文导入密钥 */
 async function PublicImportKeyItemFunc(
   userId: number,
   keyAlias: string, huksOptions: huks.HuksOptions) {
@@ -1140,6 +1149,7 @@ async function PublicImportKeyItemFunc(
   }
 }
 
+/* 删除密钥 */
 async function PublicDeleteKeyItemFunc(
   userId: number,
   keyAlias: string, huksOptions: huks.HuksOptions) {
@@ -1157,6 +1167,7 @@ async function PublicDeleteKeyItemFunc(
   }
 }
 
+/* 安全导入密钥 */
 async function PublicImportWrappedKeyFunc(
   userId: number,
   keyAlias: string, wrappingKeyAlias: string, huksOptions: huks.HuksOptions) {
@@ -1176,6 +1187,7 @@ async function PublicImportWrappedKeyFunc(
   }
 }
 
+/* 初始化密钥会话 */
 async function PublicInitFunc(
   userId: number,
   srcKeyAlias: string, huksOptions: huks.HuksOptions) {
@@ -1196,6 +1208,7 @@ async function PublicInitFunc(
   return handle;
 }
 
+/* 分段更新会话数据 */
 async function PublicUpdateSessionFunction(handle: number, huksOptions: huks.HuksOptions) {
   if (huksOptions?.inData?.length == undefined) {
     return [];
@@ -1246,6 +1259,7 @@ async function PublicUpdateSessionFunction(handle: number, huksOptions: huks.Huk
   return outData;
 }
 
+/* 结束密钥会话并进行相应的密钥操作 */
 async function PublicFinishSession(handle: number, huksOptions: huks.HuksOptions, inData: Array<number>) {
   let outData: Array<number> = [];
   console.info(`enter promise doFinish`);
@@ -1268,6 +1282,7 @@ async function PublicFinishSession(handle: number, huksOptions: huks.HuksOptions
   return new Uint8Array(outData);
 }
 
+/* 进行数据加密 */
 async function CipherFunction(
   userId: number,
   keyAlias: string, huksOptions: huks.HuksOptions) {
@@ -1277,6 +1292,7 @@ async function CipherFunction(
   return outData;
 }
 
+/* 进行ECDH协商 */
 async function AgreeFunction(
   userId: number,
   keyAlias: string, huksOptions: huks.HuksOptions, huksPublicKey: Uint8Array) {
@@ -1315,6 +1331,7 @@ async function AgreeFunction(
   return outSharedKey;
 }
 
+/* 导入KEK并协商共享密钥 */
 async function ImportKekAndAgreeSharedSecret(
   userId: number,
   callerKekAlias: string, importKekParams: huks.HuksOptions,
@@ -1326,6 +1343,7 @@ async function ImportKekAndAgreeSharedSecret(
   await PublicImportKeyItemFunc(userId, callerAgreeKeyAliasAes256, importParamsAgreeKey);
 }
 
+/* 生成密钥并导出公钥 */
 async function GenerateAndExportPublicKey(
   userId: number,
   keyAlias: string, huksOptions: huks.HuksOptions): Promise<Uint8Array> {
@@ -1369,10 +1387,11 @@ interface KeyEncAndKekEnc {
   outAgreeKeyEncTag: Uint8Array,
 }
 
+/* 加密待导入密钥和KEK */
 async function EncryptImportedPlainKeyAndKek(
   userId: number,
   keyAlias: string): Promise<KeyEncAndKekEnc> {
-  encryptKeyCommonParams.inData = StringToUint8Array(keyAlias)
+  encryptKeyCommonParams.inData = stringToUint8Array(keyAlias)
   const plainKeyEncData = await CipherFunction(userId, callerKekAliasAes256, encryptKeyCommonParams);
   const result: KeyEncAndKekEnc = {
     outPlainKeyEncData: new Uint8Array([]),
@@ -1383,7 +1402,7 @@ async function EncryptImportedPlainKeyAndKek(
   result.outKekEncTag = SubUint8ArrayOf(plainKeyEncData, plainKeyEncData.length - tagSize, plainKeyEncData.length)
   result.outPlainKeyEncData = SubUint8ArrayOf(plainKeyEncData, 0, plainKeyEncData.length - tagSize)
 
-  encryptKeyCommonParams.inData = StringToUint8Array(callerAes256Kek)
+  encryptKeyCommonParams.inData = stringToUint8Array(callerAes256Kek)
   const kekEncData = await CipherFunction(userId, callerAgreeKeyAliasAes256, encryptKeyCommonParams)
   result.outAgreeKeyEncTag = SubUint8ArrayOf(kekEncData, kekEncData.length - tagSize, kekEncData.length)
   result.outKekEncData = SubUint8ArrayOf(kekEncData, 0, kekEncData.length - tagSize)
@@ -1391,6 +1410,7 @@ async function EncryptImportedPlainKeyAndKek(
   return result
 }
 
+/* 构建封装数据并安全导入密钥 */
 async function BuildWrappedDataAndImportWrappedKey(plainKey: string, huksPubKey: Uint8Array,
   callerSelfPublicKey: Uint8Array, encData: KeyEncAndKekEnc) {
   const plainKeySizeBuff = new Uint8Array(4);
@@ -1409,8 +1429,8 @@ async function BuildWrappedDataAndImportWrappedKey(plainKey: string, huksPubKey:
       unsignedInt32Bytes + encData.outPlainKeyEncData.length
   );
   let index = 0;
-  const associatedDataArray = StringToUint8Array(associatedData);
-  const nonceArray = StringToUint8Array(nonce);
+  const associatedDataArray = stringToUint8Array(associatedData);
+  const nonceArray = stringToUint8Array(nonce);
 
   index += AssignLength(callerSelfPublicKey.length, wrappedData, index); // 4
   index += AssignData(callerSelfPublicKey, wrappedData, index); // 91
@@ -1436,6 +1456,7 @@ async function BuildWrappedDataAndImportWrappedKey(plainKey: string, huksPubKey:
   return wrappedData;
 }
 
+/* 安全导入密钥整体流程 */
 export async function HuksSecurityImportTest(userId: number) {
   const srcKeyAliasWrap = 'HUKS_Basic_Capability_Import_0200';
   const huksPubKey: Uint8Array = await GenerateAndExportPublicKey(userId, srcKeyAliasWrap, genWrappingKeyParams);
@@ -1515,8 +1536,9 @@ exportKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 - 以下代码示例接口调用的前置条件同上文[generateKeyItemAsUser](#huksgeneratekeyitemasuser)的前置条件
 
 ```ts
+/* 以导出RSA公钥为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit"
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const rsaKeyAlias = 'test_rsaKeyAlias';
 const userId = 100;
@@ -1548,6 +1570,7 @@ function GetRSA4096GenerateProperties(): Array<huks.HuksParam> {
   }]
 }
 
+/* 1. 生成密钥 */
 async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam>) {
   const options: huks.HuksOptions = {
     properties: genProperties
@@ -1559,6 +1582,7 @@ async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam
   })
 }
 
+/* 2. 导出公钥 */
 async function ExportPublicKey(keyAlias: string) {
   const options: huks.HuksOptions = {
     properties: [{
@@ -1635,8 +1659,9 @@ getKeyItemPropertiesAsUser(userId: number, keyAlias: string, huksOptions: HuksOp
 - 以下代码示例接口调用的前置条件同上文[generateKeyItemAsUser](#huksgeneratekeyitemasuser)的前置条件
 
 ```ts
+/* 以查询AES密钥属性为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit"
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const aesKeyAlias = 'test_aesKeyAlias';
 const userId = 100;
@@ -1665,6 +1690,7 @@ function GetAesGenerateProperties(): Array<huks.HuksParam> {
   }]
 }
 
+/* 1. 生成密钥 */
 async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam>) {
   const options: huks.HuksOptions = {
     properties: genProperties
@@ -1676,6 +1702,7 @@ async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam
   })
 }
 
+/* 2. 查询密钥属性 */
 async function GetKeyProperties(keyAlias: string) {
   const options: huks.HuksOptions = {
     properties: [{
@@ -1751,8 +1778,9 @@ hasKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : P
 - 以下代码示例接口调用的前置条件同上文[generateKeyItemAsUser](#huksgeneratekeyitemasuser)的前置条件
 
 ```ts
+/* 以查询AES密钥是否存在为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit"
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const aesKeyAlias = 'test_aesKeyAlias';
 const userId = 100;
@@ -1781,6 +1809,7 @@ function GetAesGenerateProperties(): Array<huks.HuksParam> {
   }]
 }
 
+/* 1. 生成密钥 */
 async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam>) {
   const options: huks.HuksOptions = {
     properties: genProperties
@@ -1792,6 +1821,7 @@ async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam
   })
 }
 
+/* 2. 查询密钥是否存在 */
 async function HasKey(keyAlias: string) {
   const options: huks.HuksOptions = {
     properties: [{
@@ -1870,8 +1900,9 @@ initSessionAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : 
 - 注意：下文密码学相关的变量（如initializationVector）赋值，均为参考样例，不能直接适用于业务功能逻辑。开发者需要根据自身场景使用合适的初始值。
 
 ```ts
+/* 以AES密钥加解密为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit"
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const aesKeyAlias = 'test_aesKeyAlias';
 const userId = 100;
@@ -1879,7 +1910,7 @@ const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
 const initializationVector = '001122334455';
 const plainText = '123456789';
 
-function StringToUint8Array(str: string) {
+function stringToUint8Array(str: string) {
   let arr: number[] = [];
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
@@ -1936,7 +1967,7 @@ function GetAesEncryptProperties(): Array<huks.HuksParam> {
     value: huks.HuksCipherMode.HUKS_MODE_CBC
   }, {
     tag: huks.HuksTag.HUKS_TAG_IV,
-    value: StringToUint8Array(initializationVector)
+    value: stringToUint8Array(initializationVector)
   }, {
     tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
     value: userIdStorageLevel,
@@ -1961,13 +1992,14 @@ function GetAesDecryptProperties(): Array<huks.HuksParam> {
     value: huks.HuksCipherMode.HUKS_MODE_CBC
   }, {
     tag: huks.HuksTag.HUKS_TAG_IV,
-    value: StringToUint8Array(initializationVector)
+    value: stringToUint8Array(initializationVector)
   }, {
     tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
     value: userIdStorageLevel,
   }]
 }
 
+/* 1. 生成密钥 */
 async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam>) {
   const options: huks.HuksOptions = {
     properties: genProperties
@@ -1979,10 +2011,11 @@ async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam
   })
 }
 
+/* 2. 加密数据 */
 async function EncryptData(keyAlias: string, encryptProperties: Array<huks.HuksParam>): Promise<Uint8Array> {
   const options: huks.HuksOptions = {
     properties: encryptProperties,
-    inData: StringToUint8Array(plainText)
+    inData: stringToUint8Array(plainText)
   }
   let handle: number = 0;
   let cipherData: Uint8Array = new Uint8Array([]);
@@ -2003,6 +2036,7 @@ async function EncryptData(keyAlias: string, encryptProperties: Array<huks.HuksP
   return cipherData
 }
 
+/* 3. 解密数据 */
 async function DecryptData(keyAlias: string, decryptProperties: Array<huks.HuksParam>, cipherData: Uint8Array) {
   const options: huks.HuksOptions = {
     properties: decryptProperties,

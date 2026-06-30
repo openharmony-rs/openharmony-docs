@@ -153,7 +153,7 @@ struct OH_Huks_Result OH_Huks_CopyParamSet(const struct OH_Huks_ParamSet *fromPa
 | 参数项 | 描述 |
 | -- | -- |
 | [const struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *fromParamSet | 指向要被复制的参数集的指针。 |
-| uint32_t fromParamSetSize | 被复制的参数集占用内存的大小。 |
+| uint32_t fromParamSetSize | 被复制的参数集占用内存的大小，单位：Byte。 |
 | [struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) **paramSet | 指向生成新的参数集的指针地址。 |
 
 **返回：**
@@ -254,7 +254,7 @@ struct OH_Huks_Result OH_Huks_IsParamSetValid(const struct OH_Huks_ParamSet *par
 | 参数项 | 描述 |
 | -- | -- |
 | [const struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *paramSet | 指向参数集的指针。 |
-| uint32_t size | 参数集占用的内存大小。 |
+| uint32_t size | 参数集占用的内存大小，单位：Byte。 |
 
 **返回：**
 

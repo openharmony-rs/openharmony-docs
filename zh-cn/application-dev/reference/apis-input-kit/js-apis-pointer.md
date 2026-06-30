@@ -41,7 +41,7 @@ setPointerVisible(visible: boolean, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801  | Capability not supported. |
+| 801  | Capability not supported.<br/>适用版本：18+ |
 
 **示例**：
 
@@ -101,7 +101,7 @@ setPointerVisible(visible: boolean): Promise&lt;void&gt;
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801  | Capability not supported. |
+| 801  | Capability not supported.<br/>适用版本：18+ |
 
 **示例**：
 
@@ -158,6 +158,7 @@ setPointerVisibleSync(visible: boolean): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -293,6 +294,7 @@ isPointerVisibleSync(): boolean
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -326,7 +328,7 @@ getPointerStyle(windowId: number, callback: AsyncCallback&lt;PointerStyle&gt;): 
 | 参数名       | 类型                                       | 必填   | 说明             |
 | -------- | ---------------------------------------- | ---- | -------------- |
 | windowId | number                                   | 是    | 窗口ID。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。<br>窗口ID合法并且对应窗口存在时，返回窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，默认返回全局鼠标光标样式。<br>如果通过[setPointerStyle](#pointersetpointerstyle)接口为不存在的窗口设置了鼠标光标样式，使用本接口可以正常获取到该光标样式。 |
-| callback | AsyncCallback&lt;[PointerStyle](#pointerstyle)&gt; | 是    | 回调函数。当获取鼠标样式类型成功，err为undefined，data为鼠标样式类型；否则为错误对象。 |
+| callback | AsyncCallback&lt;[PointerStyle](#pointerstyle)&gt; | 是    | 回调函数。当获取鼠标样式类型成功时，err为undefined，data为鼠标样式类型；否则为错误对象。在特定场景（在设置自定义光标样式的窗口上获取样式）下返回DEVELOPER_DEFINED_ICON。 |
 
 **错误码**：
 
@@ -364,6 +366,10 @@ struct Index {
             try {
               // 获取鼠标指针样式
               pointer.getPointerStyle(windowId, (error: BusinessError, style: pointer.PointerStyle) => {
+                if (error) {
+                  console.error(`Failed to get pointer style, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+                  return;
+                }
                 console.info(`Succeeded in getting pointer style, style: ${JSON.stringify(style)}.`);
               });
             } catch (error) {
@@ -478,6 +484,7 @@ getPointerStyleSync(windowId: number): PointerStyle
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -512,7 +519,7 @@ setPointerStyle(windowId: number, pointerStyle: PointerStyle, callback: AsyncCal
 | 参数名           | 类型                             | 必填   | 说明                                  |
 | ------------ | ------------------------------ | ---- | ----------------------------------- |
 | windowId     | number                         | 是    | 窗口ID。取值范围为大于等于0的整数。<br>窗口ID合法并且对应窗口存在时，可以设置窗口的鼠标光标样式。<br>窗口ID合法但窗口不存在时，也可以设置鼠标光标样式。<br>设置结果可通过[getPointerStyle](#pointergetpointerstyle)获取。 |
-| pointerStyle | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。                             |
+| pointerStyle | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。 不能传入DEVELOPER_DEFINED_ICON作为参数。 |
 | callback     | AsyncCallback&lt;void&gt;      | 是    | 回调函数。当设置鼠标样式类型成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
@@ -746,7 +753,7 @@ struct Index {
 | COLOR_SUCKER                     | 16   | 取色器     |![Colorsucker.png](./figures/Colorsucker.png)|
 | HAND_GRABBING                    | 17   | 并拢的手   |![Hand_Grabbing.png](./figures/Hand_Grabbing.png)|
 | HAND_OPEN                        | 18   | 张开的手   |![Hand_Open.png](./figures/Hand_Open.png)|
-| HAND_POINTING                    | 19   | 手形指针   |![Hand_Poniting.png](./figures/Hand_Pointing.png)|
+| HAND_POINTING                    | 19   | 手形指针   |![Hand_Pointing.png](./figures/Hand_Pointing.png)|
 | HELP                             | 20   | 帮助选择   |![Help.png](./figures/Help.png)|
 | MOVE                             | 21   | 移动     |![Move.png](./figures/Move.png)|
 | RESIZE_LEFT_RIGHT                | 22   | 内部左右调整 |![Resize_Left_Right.png](./figures/Resize_Left_Right.png)|
@@ -779,7 +786,7 @@ struct Index {
 | LASER_CURSOR<sup>22+</sup>        | 49   | 悬浮光标。手写笔进入空鼠模式时使用该光标，无法直接设置 。<br>空鼠模式支持通过手写笔在空中转动来控制屏幕上虚拟光标的移动，并借助笔身按键实现上下翻页功能，用于演示PPT、隔空操作等场景。|![Laser_Cursor.png](./figures/Laser_Cursor.png)|
 | LASER_CURSOR_DOT<sup>22+</sup>        | 50   | 点击光标。手写笔进入空鼠模式时使用该光标，无法直接设置 。<br>空鼠模式支持通过手写笔在空中转动来控制屏幕上虚拟光标的移动，并借助笔身按键实现上下翻页功能，用于演示PPT、隔空操作等场景。|![Laser_Cursor_Dot.png](./figures/Laser_Cursor_Dot.png)|
 | LASER_CURSOR_DOT_RED<sup>22+</sup>        | 51   | 激光笔光标。手写笔进入空鼠模式时使用该光标，无法直接设置 。<br>空鼠模式支持通过手写笔在空中转动来控制屏幕上虚拟光标的移动，并借助笔身按键实现上下翻页功能，用于演示PPT、隔空操作等场景。|![Laser_Cursor_Dot_Red.png](./figures/Laser_Cursor_Dot_Red.png)|
-| DEVELOPER_DEFINED_ICON<sup>22+</sup>        | -100 | 自定义光标，开发者可使用[setCustomCursor](#pointersetcustomcursor15)设置自定义光标，不支持使用[setPointerStyle](#pointersetpointerstyle-1)直接设置。 |自定义光标样式，通过接口设置。|
+| DEVELOPER_DEFINED_ICON<sup>22+</sup>        | -100 | 自定义光标，开发者可使用[setCustomCursor](#pointersetcustomcursor15)设置自定义光标，不支持使用[setPointerStyle](#pointersetpointerstyle-1)直接设置。 |自定义光标样式，通过接口设置。该参数用于getPointerStyle在特定场景（在设置自定义光标样式的窗口上获取样式）下返回数据，不能作为setCustomCursor、setPointerStyle接口入参使用。|
 
 ## pointer.setCustomCursor<sup>11+</sup>
 
@@ -787,13 +794,15 @@ setCustomCursor(windowId: number, pixelMap: image.PixelMap, focusX?: number, foc
 
 设置指定窗口的自定义光标样式，此接口仅支持设置本应用进程内窗口的自定义光标样式，如需通过UIExtensionAbility进程设置宿主窗口的自定义光标样式，请参阅[setCustomCursor](../apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcustomcursor)，使用Promise异步回调。
 
+应用窗口布局改变、热区切换、页面跳转、光标移出再回到窗口、光标在窗口不同区域移动，以上场景可能导致光标切换回系统样式，需要开发者重新设置光标样式。
+
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
 **参数**：
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| windowId  | number  | 是    | 窗口ID。                          |
+| windowId  | number  | 是    | 窗口ID。取值为大于0的整数。                          |
 | pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是    | 自定义光标资源。 |
 | focusX  | number | 否    | 自定义光标焦点x，取值范围：大于等于0，默认为0，单位为像素（px）。 |
 | focusY  | number | 否    | 自定义光标焦点y，取值范围：大于等于0，默认为0，单位为像素（px）。 |
@@ -889,7 +898,7 @@ setCustomCursor(windowId: number, cursor: CustomCursor, config: CursorConfig): P
 
 | 参数名    | 类型    | 必填    | 说明    |
 | -------- | -------- | -------- | -------- |
-| windowId  | number  | 是    | 窗口ID。                          |
+| windowId  | number  | 是    | 窗口ID。取值为大于0的整数。                          |
 | cursor  | [CustomCursor](#customcursor15) | 是    | 自定义光标资源。 |
 | config  | [CursorConfig](#cursorconfig15) | 是    | 自定义光标配置，用于配置是否根据系统设置调整光标大小。如果CursorConfig中followSystem设置为true，则光标大小的可调整范围为：[光标资源图大小，256×256]。 |
 
@@ -959,6 +968,8 @@ struct Index {
 setCustomCursorSync(windowId: number, pixelMap: image.PixelMap, focusX?: number, focusY?: number): void
 
 设置指定窗口的自定义光标样式，使用同步方式进行设置。此接口仅支持设置本应用进程内窗口的自定义光标样式，如需通过UIExtensionAbility进程设置宿主窗口的自定义光标样式，请参阅[setCustomCursor](../apis-arkui/arkts-apis-uicontext-cursorcontroller.md#setcustomcursor)。
+
+应用窗口布局改变、热区切换、页面跳转、光标移出再回到窗口、光标在窗口不同区域移动，以上场景可能导致光标切换回系统样式，需要开发者重新设置光标样式。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 

@@ -12,7 +12,7 @@ typedef struct {...} NativeDisplayManager_DisplayColorSpace
 
 ## Overview
 
-The struct describes all the color spaces supported by a display.
+Describes all the color spaces supported by a display.
 
 **Since**: 14
 
@@ -26,5 +26,5 @@ The struct describes all the color spaces supported by a display.
 
 | Name| Description|
 | -- | -- |
-| uint32_t colorSpaceLength | Number of color spaces supported by the display.|
-| uint32_t* colorSpaces | Data of the color spaces supported by the display.|
+| uint32_t colorSpaceLength | Number of the color spaces supported by a display.|
+| uint32_t* colorSpaces | Pointer to the color space array supported by a display.|

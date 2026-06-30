@@ -18,7 +18,7 @@
 
 menuDistortionMode(mode: DistortionMode)
 
-新材质下，设置下拉菜单的非线性动画模式。未通过该接口设置时，默认为DistortionMode.DISTORTION_AUTO。
+系统材质下，设置下拉菜单的非线性动画模式。未通过该接口设置时，默认为DistortionMode.DISTORTION_AUTO。
 
 **起始版本：** 26.0.0
 
@@ -32,13 +32,13 @@ menuDistortionMode(mode: DistortionMode)
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| mode | [DistortionMode](./ts-appendix-enums-sys.md#distortionmode) | 是 | 设置新材质下下拉菜单的非线性动画模式。 |
+| mode | [DistortionMode](./ts-appendix-enums-sys.md#distortionmode) | 是 | 设置系统材质下下拉菜单的非线性动画模式。 |
 
 ## menuEdgeLightMode
 
 menuEdgeLightMode(mode: EdgeLightMode)
 
-新材质下，设置下拉菜单的流光动画模式。未通过该接口设置时，默认为EdgeLightMode.EDGELIGHT_DISABLED。
+系统材质下，设置下拉菜单的流光动画模式。未通过该接口设置时，默认为EdgeLightMode.EDGELIGHT_DISABLED。
 
 **起始版本：** 26.0.0
 
@@ -52,5 +52,5 @@ menuEdgeLightMode(mode: EdgeLightMode)
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| mode | [EdgeLightMode](./ts-appendix-enums-sys.md#edgelightmode) | 是 | 设置新材质下下拉菜单的流光动画模式。 |
+| mode | [EdgeLightMode](./ts-appendix-enums-sys.md#edgelightmode) | 是 | 设置系统材质下下拉菜单的流光动画模式。 |
 

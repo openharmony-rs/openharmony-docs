@@ -3930,6 +3930,8 @@ Allows a system application to apply for IP addresses from the DHCP server.
 
 **Authorization mode**: system_grant
 
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable | car
+
 **Certificate-based authorization**: true
 
 **Since**: 12
@@ -4466,6 +4468,8 @@ A system application can create a virtual keyboard window only after obtaining t
 
 **Valid since**: 15
 
+**Supported devices**: PCs/2-in-1 devices
+
 ## ohos.permission.GET_FAMILY_INFO
 
 Allows a system application to obtain the group information of Family Sharing.
@@ -4994,6 +4998,22 @@ Allows a system application or system service to call kernel APIs for code decry
 With this permission, the application can access kernel APIs across processes to request decryption of encrypted code. This helps prevent unauthorized access and further safeguards application code assets.
 
 **Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: general devices
+
+**Valid since**: 20
+
+## ohos.permission.kernel.READ_PROTECT_RANGE
+
+Allow system applications or system services to access the code files of encrypted applications.
+
+With this permission, the system application or service can read the protected code files.
+
+**Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
@@ -5815,9 +5835,37 @@ Allows an application to obtain and set the car scenario mode.
 
 **Valid since**: 26.0.0
 
+## ohos.permission.vehicle.ACCESS_DFT_LOG
+
+Allows a system application to read directory logs of the vehicle log service, Bluetooth, system stability, and system upgrades.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
 ## ohos.permission.vehicle.AUTO_UPDATER
 
 Allows an application to send update instructions to the head unit.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
+## ohos.permission.vehicle.CAR_LOG_SERVICE
+
+Allows a system application to send commands to collect logs.
 
 **Permission level**: system_basic
 
@@ -6025,6 +6073,20 @@ Allows a system application to set and query the permissions required for runnin
 
 **Valid since**: 26.0.0
 
+## ohos.permission.CAMERA_SHARED
+
+Allows a system application to access the camera together with other applications.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Car
+
+**Valid since**: 26.0.0
+
 ## ohos.permission.ACCESS_DEVICE_INTERCONNECTIVITY
 
 Allows an application to use the device interconnectivity capability.
@@ -6143,6 +6205,20 @@ Allows an application to adjust the policy in gaming scenarios.
 
 **Valid since**: 26.0.0
 
+## ohos.permission.CLI_MANAGE_WEB_SANDBOX
+
+Allows a system application to manage sandbox applications of browsers.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 26.0.0
+
 ## ohos.permission.QUERY_CLI_TOOL
 
 Allows a system application to query CLI tools.
@@ -6213,6 +6289,20 @@ Allows an agent application to stop a specific application using CLI commands.
 
 **Valid since**: 26.0.0
 
+## ohos.permission.ACCESS_FUNCTION
+
+Allows a system application to access available functions.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**Valid since**: 26.1.0
+
 ## ohos.permission.ACCESS_MAPDATA_DIR
 
 Allows a system application to read and write map data.
@@ -6272,3 +6362,310 @@ Allows a system application to invoke ArkWebCore extended capabilities.
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
 
 **Valid since**: 26.0.0
+
+## ohos.permission.HDC_REPORT_INFO
+
+Allows a system application to subscribe to the hdc events.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.0.0
+
+## ohos.permission.vehicle.VEHICLE_THERMAL
+
+Allows an application to access thermal control information of the cockpit device.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.automotive.SET_ADAS_CMD
+
+Allows a system application to set advanced driver assistance systems (ADAS) commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.automotive.GET_ADAS_INFO
+
+Allows a system application to obtain advanced driver assistance systems (ADAS) information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.automotive.GET_CLUSTER_INFO
+
+Allows a system application to obtain cluster information on the head unit.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.automotive.SET_CLUSTER_CMD
+
+Allows a system application to set cluster commands on the head unit.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.automotive.SET_MMS_CMD
+
+Allows a system application to set MMS commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.automotive.GET_MMS_INFO
+
+Allows a system application to obtain MMS information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.automotive.GET_XCALL_INFO
+
+Allows a system application to obtain dedicated head unit communication information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.automotive.SET_XCALL_CMD
+
+Allows a system application to set dedicated head unit communication commands.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.automotive.SET_SECBOX_CMD
+
+Allows a system application to configure the secure box of the head unit.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.automotive.GET_SECBOX_INFO
+
+Allows a system application to obtain secure box information of the head unit.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.automotive.RECV_HUAP_INFO
+
+Allows a system application to receive HUAP data.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.automotive.SEND_HUAP_MSG
+
+Allows a system application to send HUAP messages.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.0
+
+## ohos.permission.ENTERPRISE_SPACE_FILE_TRANSFER_DATA_ACCESS
+ 	 
+Allows a system application to access the file cache path of the file transfer service.
+ 	 
+**Permission level**: system_basic
+ 	 
+**Authorization mode**: system_grant
+ 	 
+**Certificate-based authorization**: true
+ 	 
+**Supported devices**: PCs/2-in-1 devices
+ 	 
+**Valid since**: 26.0.0
+
+## ohos.permission.vehicle.MANAGE_TBOX_CELLULAR
+
+Allows an application to set cellular network information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
+## ohos.permission.vehicle.TBOX_CELLULAR_INFO
+
+Allows an application to read cellular network information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
+## ohos.permission.vehicle.MANAGE_TBOX_WIFI
+
+Allows an application to set TBox WiFi related information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
+## ohos.permission.vehicle.TBOX_WIFI_INFO
+
+Allows an application to obtain T-Box Wi-Fi–related information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
+## ohos.permission.vehicle.PACKET_CAPTURE_INFO
+
+Allows an application to trigger network packet capture.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
+## ohos.permission.vehicle.CCN_SELF_HEALING
+
+Allows the triggering of network self-check and self-healing.
+
+**Permission level**: system_basic
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
+## ohos.permission.MANAGE_CLONE_BUNDLE_PREFERENCES
+ 	 
+Allows an application to manage clone preferences.
+ 	 
+**Permission level**: system_basic
+ 	 
+**Authorization mode**: system_grant
+ 	 
+**Certificate-based authorization**: true
+ 	 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+ 	 
+**Valid since**: 26.1.0

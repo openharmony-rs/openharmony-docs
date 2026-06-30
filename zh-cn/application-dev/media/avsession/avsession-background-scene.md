@@ -21,7 +21,7 @@
 
   AVSession Kit（音视频播控服务）是系统提供的音视频管控服务，用于统一管理系统中音视频行为，帮助开发者快速构建音视频统一展示和控制能力。音视频类应用接入AVSession后，可以设置应用的数据（如正在播放的歌曲、歌曲的播放状态等）。用户可以通过系统播控中心来展示和控制不同应用的播放。AVSession会对后台的媒体播放有约束行为，因此，音频应用、听书类应用、视频应用等都需要接入AVSession。如果应用在没有创建AVSession的情况下进行上述业务，系统会在检测到应用退至后台时，停止对应的音视频播放，以达到约束应用行为的目的。
 
-- AVPlayer：参考[AVPlayer](../media/media-kit-intro.md#avplayer)说明。
+- AVPlayer：请参考[AVPlayer](../media/media-kit-intro.md#avplayer)说明。
 
   AVPlayer是一款功能强大的媒体播放器。使用AVPlayer可以实现端到端地播放多种音视频格式（如mp4、mp3、mkv、mpeg-ts等），开发者提供媒体源即可启动播放，无需关注复杂的解封装、解码处理。
 
@@ -43,7 +43,7 @@
 
 ### 启动播放器
 
-应用播放可以通过AudioRenderer、AVPlayer、其他第三方或自研的播放器来播放音视频。
+应用可以通过AudioRenderer、AVPlayer、其他第三方或自研的播放器来播放音视频。
 
 - AudioRenderer：使用AudioRenderer创建播放音频流时应该注意使用合适的音频流类型。流类型的不同对音量控制、音频焦点管理以及输入/输出设备都具有决定性影响。详细内容请参考[使用合适的音频流类型](../audio/using-right-streamusage-and-sourcetype.md)。<br>
   同时需要注意正确处理音频焦点，系统预设了默认的音频焦点策略，根据音频流的类型及启动的先后顺序，对所有播放和录制音频流进行统一管理。在应用播放或录制音频的过程中，若有其他音频流申请焦点，系统会根据焦点策略进行焦点处理。若判定本音频流的焦点有变化，系统会自动执行一些必要操作（如暂停、继续、降低音量、恢复音量等），并通过音频焦点事件（InterruptEvent）通知应用。详细内容请参考[处理音频焦点变化](../audio/audio-playback-concurrency.md#处理音频焦点变化)。<br>
@@ -58,11 +58,11 @@
 
 建议在应用启动或开始播放业务前创建AVSession，在应用进程结束或退出播放业务时释放，避免频繁创建和释放影响播放连续性。后台播放期间需确保AVSession对象实例一直存在，避免被系统回收，例如使用类成员变量而非局部变量保存。
 
-创建AVSession后，为了保证接入体验，要求设置以下元数据并注册以下控制命令。
+创建AVSession后，为了保证用户体验，要求设置以下元数据并注册以下控制命令。
 
-- 元数据：标题、副标题/歌手、封面图。具体操作请参考[设置元数据](avsession-access-scene.md#设置元数据)。
+- 元数据：标题、副标题/歌手、封面图。具体操作请参考[设置元数据信息](avsession-access-scene.md#设置元数据信息)。
 
-- 注册控制命令：播放/暂停。具体操作请参考[注册控制命令](avsession-access-scene.md#注册控制命令)。
+- 注册控制命令：播放/暂停。具体操作请参考[控制命令的处理](avsession-access-scene.md#控制命令的处理)。
 
 AVSession的接入开发请参考指南[应用接入AVSession场景介绍](avsession-access-scene.md)。
 

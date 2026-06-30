@@ -271,17 +271,17 @@
 
 | 名称                     | 值            | 说明                                                         |
 | ------------------------ | ------------- | ------------------------------------------------------------ |
-| Black                    | 0x000000      | ![zh-cn_image_0000001219864153](figures/zh-cn_image_0000001219864153.png) |
-| Blue                     | 0x0000ff      | ![zh-cn_image_0000001174104404](figures/zh-cn_image_0000001174104404.png) |
-| Brown                    | 0xa52a2a      | ![zh-cn_image_0000001219744201](figures/zh-cn_image_0000001219744201.png) |
-| Gray                     | 0x808080      | ![zh-cn_image_0000001174264376](figures/zh-cn_image_0000001174264376.png) |
-| Grey                     | 0x808080      | ![zh-cn_image_0000001174264376](figures/zh-cn_image_0000001174264376.png) |
-| Green                    | 0x008000      | ![zh-cn_image_0000001174422914](figures/zh-cn_image_0000001174422914.png) |
-| Orange                   | 0xffa500      | ![zh-cn_image_0000001219662661](figures/zh-cn_image_0000001219662661.png) |
-| Pink                     | 0xffc0cb      | ![zh-cn_image_0000001219662663](figures/zh-cn_image_0000001219662663.png) |
-| Red                      | 0xff0000      | ![zh-cn_image_0000001219662665](figures/zh-cn_image_0000001219662665.png) |
-| White                    | 0xffffff      | ![zh-cn_image_0000001174582866](figures/zh-cn_image_0000001174582866.png) |
-| Yellow                   | 0xffff00      | ![zh-cn_image_0000001174582864](figures/zh-cn_image_0000001174582864.png) |
+| Black                    | 0x000000      | ![black](figures/black.png) |
+| Blue                     | 0x0000ff      | ![blue](figures/blue.png) |
+| Brown                    | 0xa52a2a      | ![brown](figures/brown.png) |
+| Gray                     | 0x808080      | ![gray](figures/gray.png) |
+| Grey                     | 0x808080      | ![gray](figures/gray.png) |
+| Green                    | 0x008000      | ![green](figures/green.png) |
+| Orange                   | 0xffa500      | ![orange](figures/orange.png) |
+| Pink                     | 0xffc0cb      | ![pink](figures/pink.png) |
+| Red                      | 0xff0000      | ![red](figures/red.png) |
+| White                    | 0xffffff      | ![white](figures/white.png) |
+| Yellow                   | 0xffff00      | ![yellow](figures/yellow.png) |
 | Transparent<sup>9+</sup> | rgba(0,0,0,0) | 透明色                                                       |
 
 ## ColorSpace<sup>20+</sup>
@@ -413,7 +413,7 @@
 
 | 名称      | 值   | 说明                              |
 | --------- | ---- | --------------------------------- |
-| DEFAULT   | 0    | 白底蓝字（深色主题：白底=黑底）。 |
+| DEFAULT   | 0    | 白底蓝字（深色主题下为黑底蓝字）。 |
 | HIGHLIGHT | 1    | 蓝底白字。                        |
 
 ## DialogDisplayMode

@@ -1,9 +1,8 @@
 # @ohos.commonEventManager (Common Event) (System API)
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -49,9 +48,9 @@ Publishes a common event to a specified user. This API uses an asynchronous call
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
-| ID| Error Message                           |
+| Error Code| Error Message                           |
 | -------- | ----------------------------------- |
-| 202      | not system app.                     |  
+| 202      | Permission verification failed. A non-system application calls a system API.                     |  
 | 1500003  | The common event sending frequency too high. |
 | 1500006  | Invalid userId. |
 | 1500007  | Failed to send the message to the common event service. |
@@ -104,9 +103,9 @@ Publishes a common event to a specified user and specifies the information to be
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
-| ID| Error Message                           |
+| Error Code| Error Message                           |
 | -------- | ----------------------------------- |
-| 202      | not system app.                     |  
+| 202      | Permission verification failed. A non-system application calls a system API.                     |  
 | 1500003  | The common event sending frequency too high. |
 | 1500006  | Invalid userId. |
 | 1500007  | Failed to send the message to the common event service. |
@@ -158,17 +157,17 @@ Removes a sticky common event. This API uses an asynchronous callback to return 
 | Name  | Type                | Mandatory| Description                            |
 | -------- | -------------------- | ---- | -------------------------------- |
 | event    | string               | Yes  | Sticky common event to remove. For details, see [System Common Events](./common_event/commonEventManager-definitions.md).      |
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the sticky common event is successfully removed, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
-| ID| Error Message                           |
+| Error Code| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | The application does not have permission to call the interface.    |  
-| 202      | not system app.                     |  
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      |   
+| 201      | Permission verification failed. The application does not have the permission required to call the API.     |  
+| 202      | Permission verification failed. A non-system application calls a system API.                     |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.      |   
 | 1500004  | A third-party application cannot send system common events.                |
 | 1500007  | Failed to send the message to the common event service.             |
 | 1500008  | Failed to initialize the common event service.     |
@@ -215,11 +214,11 @@ Removes a sticky common event. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
-| ID| Error Message                           |
+| Error Code| Error Message                           |
 | -------- | ----------------------------------- |
-| 201      | The application does not have permission to call the interface.    |  
-| 202      | not system app.                     |  
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 201      | Permission verification failed. The application does not have the permission required to call the API.     |  
+| 202      | Permission verification failed. A non-system application calls a system API.                     |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.      | 
 | 1500004  | A third-party application cannot send system common events.                |
 | 1500007  | Failed to send the message to the common event service.             |
 | 1500008  | Failed to initialize the common event service.     |
@@ -259,10 +258,10 @@ Enables or disables static subscription for an application. This API uses an asy
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
-| ID| Error Message                           |
+| Error Code| Error Message                           |
 | -------- | ----------------------------------- |
-| 202      | not system app.                     |  
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 202      | Permission verification failed. A non-system application calls a system API.                     |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.      | 
 | 1500007  | Failed to send the message to the common event service.             |
 | 1500008  | Failed to initialize the common event service.     |
 
@@ -308,10 +307,10 @@ Enables or disables static subscription for an application. This API uses a prom
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
-| ID| Error Message                           |
+| Error Code| Error Message                           |
 | -------- | ----------------------------------- |
-| 202      | not system app.                     |  
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 202      | Permission verification failed. A non-system application calls a system API.                     |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.      | 
 | 1500007  | Failed to send the message to the common event service.             |
 | 1500008  | Failed to initialize the common event service.     |
 
@@ -357,10 +356,10 @@ Enables or disables the static subscription event for the current application an
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
 
-| ID| Error Message                                              |
+| Error Code| Error Message                                              |
 | -------- | ------------------------------------------------------ |
-| 202      | not system app.                     |  
-| 401     | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed.      | 
+| 202      | Permission verification failed. A non-system application calls a system API.                     |  
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.      | 
 | 1500007  | Failed to send the message to the common event service.        |
 | 1500008  | Failed to initialize the common event service. |
 

@@ -6,6 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:24:25.854Z pushedAt=2026-06-12T08:25:55.309Z -->
 
 The **keyEvent** module provides key events reported by a device. It is inherited from [InputEvent](js-apis-inputevent.md).
 
@@ -44,7 +45,7 @@ Defines a key.
 | Name       | Type| Read-Only| Optional| Description          |
 | ----------- | -------- | ---- | ---- | -------------- |
 | code        | [KeyCode](js-apis-keycode.md#keycode)  | No  | No  | Key code.        |
-| pressedTime | number   | No  | No  | Key press time, in μs.|
+| pressedTime | number   | No   | No   | Time when the key is pressed, in microseconds (μs) since the system starts. |
 | deviceId    | number   | No  | No  | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.  |
 
 ## KeyEvent

@@ -44,6 +44,7 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | An IPC connection error happened. |
 | 16500100 | Failed to obtain the configuration information. |
+| 16500101 | The application is not a system application. <br/>适用版本：9-11|
 | 16501000 | An internal functional error occurred. |
 
 **参数：**
@@ -74,7 +75,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     };
     this.context.startAbility(want, (error: BusinessError) => {
       if (error) {
-        console.error(`FormExtensionContext startAbility, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+        console.error(`FormExtensionContext startAbility, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
       } else {
         console.info('FormExtensionContext startAbility success');
       }
@@ -117,6 +118,7 @@ startAbility(want: Want): Promise&lt;void&gt;
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16500050 | An IPC connection error happened. |
 | 16500100 | Failed to obtain the configuration information. |
+| 16500101 | The application is not a system application. <br/>适用版本：9-11|
 | 16501000 | An internal functional error occurred. |
 
 **示例：**
@@ -219,10 +221,10 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
         console.info('----------- onConnect -----------');
       },
       onDisconnect(elementName) {
-        console.info('----------- onDisconnect -----------')
+        console.info('----------- onDisconnect -----------');
       },
       onFailed(code) {
-        console.error(`onFailed, code: ${code}`)
+        console.error(`onFailed, code: ${code}`);
       }
     };
 

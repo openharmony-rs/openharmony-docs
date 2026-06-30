@@ -1,8 +1,8 @@
 # FileUri开发指导(C/C++)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @lvzhenjie-->
-<!--Designer: @wang_zhangjun; @chenxi0605-->
+<!--Owner: @rainlost-->
+<!--Designer: @rainlost-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 

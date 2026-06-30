@@ -1,17 +1,18 @@
 # @ohos.multimodalAwareness.motion (Motion Awareness)
+
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
 <!--Designer: @zou_ye-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=d18790e6ef1247c1fd8194f3838e7698bf6e9bf2 translatedAt=2026-06-24T06:30:20.130Z pushedAt=2026-06-25T01:35:11.437Z -->
 
 The **motion** module provides the user motion awareness capabilities, including user gestures and actions.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 15. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
 
 ## Modules to Import
 
@@ -61,8 +62,8 @@ If the device does not support this function, error code 801 is returned.
 
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                           | Yes  | Event type. This parameter has a fixed value of **operatingHandChanged**.|
-| callback | Callback&lt;[OperatingHandStatus](#operatinghandstatus)&gt; | Yes  | Callback used to return the result.                                  |
+| type     | string                           | Yes  | Event type. The value is **operatingHandChanged**, indicating the operating hand status change.|
+| callback | Callback&lt;[OperatingHandStatus](#operatinghandstatus)&gt; | Yes  | Callback used to return the operating hand result.                                  |
 
 **Error codes**
 
@@ -109,7 +110,7 @@ Unsubscribes from operating hand change events.
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                           | Yes  | Event type. This parameter has a fixed value of **operatingHandChanged**.|
-| callback | Callback&lt;[OperatingHandStatus](#operatinghandstatus)&gt; | No  | Callback used to return the result.                                  |
+| callback | Callback&lt;[OperatingHandStatus](#operatinghandstatus)&gt; | No   | Callback used to return the operating hand result. The callback to unregister must be the same as the one passed in during subscription. If not specified, all callbacks currently listening for this event will be unregistered. |
 
 **Error codes**
 
@@ -191,7 +192,7 @@ Enables listening for holding hand status changes.
 
 | Name  | Type                                             | Mandatory| Description                                  |
 | -------- | ------------------------------------------------- | ---- | -------------------------------------- |
-| type     | string                                            | Yes  | Event type. The value **holdingHandChanged** indicates the holding hand status change event.|
+| type     | string                                            | Yes  | Event type. The value is **holdingHandChanged**, indicating the holding hand change.|
 | callback | Callback&lt;[HoldingHandStatus](#holdinghandstatus20)&gt; | Yes  | Callback used to return the holding hand status.        |
 
 **Error codes**
@@ -238,7 +239,7 @@ Disables listening for holding hand status changes.
 | Name  | Type                                             | Mandatory| Description                                          |
 | -------- | ------------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                            | Yes  | Event type. The value **holdingHandChanged** indicates the holding hand status change event.        |
-| callback | Callback&lt;[HoldingHandStatus](#holdinghandstatus20)&gt; | No  | Callback to unregister. If this parameter is not passed, all callbacks for the holding hand status change event will be unregistered.|
+| callback | Callback&lt;[HoldingHandStatus](#holdinghandstatus20)&gt; | No   | Callback used to return the holding hand status result. The callback to be unsubscribed must be the same as the one passed in during subscription. If not specified, all callbacks currently listening for this event will be unsubscribed. |
 
 **Error codes**
 

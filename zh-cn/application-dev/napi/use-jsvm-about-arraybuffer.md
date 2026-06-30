@@ -35,6 +35,8 @@ JSVM-API 接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开�
 
 cpp部分代码：
 
+<!-- @[oh_jsvm_get_arraybuffer_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArraybuffer/getarraybufferinfo/src/main/cpp/hello.cpp) -->
+
 ```cpp
 // hello.cpp
 #include "napi/native_api.h"
@@ -85,13 +87,13 @@ getArraybufferInfo(new ArrayBuffer(10));
 JSVM GetArraybufferInfo: success
 ```
 
-<!-- @[oh_jsvm_get_arraybuffer_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArraybuffer/getarraybufferinfo/src/main/cpp/hello.cpp) -->
-
 ### OH_JSVM_IsArraybuffer
 
 判断一个 JavaScript 对象是否为 ArrayBuffer 类型对象。
 
 cpp部分代码：
+
+<!-- @[oh_jsvm_is_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArraybuffer/isarraybuffer/src/main/cpp/hello.cpp) -->
 
 ```cpp
 // hello.cpp
@@ -138,8 +140,6 @@ JSVM IsArrayBuffer: success
 JSVM IsArrayBuffer: 1
 ```
 
-<!-- @[oh_jsvm_is_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArraybuffer/isarraybuffer/src/main/cpp/hello.cpp) -->
-
 ### OH_JSVM_DetachArraybuffer
 
 调用 ArrayBuffer 对象的 Detach 操作。
@@ -149,6 +149,8 @@ JSVM IsArrayBuffer: 1
 检查给定的 ArrayBuffer 是否已被分离。
 
 cpp部分代码：
+
+<!-- @[oh_jsvm_is_detached_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArraybuffer/isdetachedarraybuffer/src/main/cpp/hello.cpp) -->
 
 ```cpp
 // hello.cpp
@@ -215,13 +217,13 @@ JSVM IsDetachedArraybuffer: success
 JSVM IsArrayBuffer: 1
 ```
 
-<!-- @[oh_jsvm_is_detached_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArraybuffer/isdetachedarraybuffer/src/main/cpp/hello.cpp) -->
-
 ### OH_JSVM_CreateArraybuffer
 
 创建一个指定大小的 ArrayBuffer 对象。
 
 cpp部分代码：
+
+<!-- @[oh_jsvm_create_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArraybuffer/createarraybuffer/src/main/cpp/hello.cpp) -->
 
 ```cpp
 // hello.cpp
@@ -273,5 +275,3 @@ createArraybuffer(8);
 JSVM CreateArraybuffer: success
 JSVM ArrayBuffer length: 8
 ```
-
-<!-- @[oh_jsvm_create_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArraybuffer/createarraybuffer/src/main/cpp/hello.cpp) -->

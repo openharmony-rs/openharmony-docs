@@ -177,4 +177,4 @@ struct LongPressGestureExample {
 }
 ```
 
-![zh-cn_image_0000001174264380](figures/zh-cn_image_0000001174264380.gif)
+![longPressGesture](figures/longPressGesture.gif)

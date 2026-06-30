@@ -1,7 +1,7 @@
 # Navigation子页面
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @huangxiaolinabc-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -84,7 +84,7 @@ NavDestination提供了两种类型。
 
 ## 页面生命周期
 
-页面生命周期承载在NavDestination组件上，可分为三类：自定义组件生命周期、通用组件生命周期和[NavDestination生命周期](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#事件)。其中，[aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)和[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)是自定义组件的生命周期（NavDestination外层包含的自定义组件），[onAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear)和[onDisAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#ondisappear)是组件的通用生命周期。剩下的生命周期为NavDestination独有。
+页面生命周期承载在NavDestination组件上，可分为三类：自定义组件生命周期、通用组件生命周期和NavDestination生命周期[事件](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#事件)。其中，[aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)和[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)是自定义组件的生命周期（NavDestination外层包含的自定义组件），[onAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear)和[onDisAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#ondisappear)是组件的通用生命周期。剩下的生命周期为NavDestination独有。
 
 生命周期时序如下图所示：
 

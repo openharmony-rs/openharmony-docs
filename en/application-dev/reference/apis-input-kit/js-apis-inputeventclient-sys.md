@@ -6,6 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:23:38.074Z pushedAt=2026-06-12T07:44:08.364Z -->
 
 The **inputEventClient** module provides the capability of injecting key, mouse/touchpad, and touchscreen events.
 
@@ -45,7 +46,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied.  |
 | 202  | Permission denied, non-system app called system api.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -66,6 +67,7 @@ struct Index {
               keyDownDuration: 0,
               isIntercepted: false
             }
+            // Inject Event
             inputEventClient.injectEvent({ KeyEvent: backKeyDown });
 
             let backKeyUp: inputEventClient.KeyEvent = {
@@ -74,9 +76,10 @@ struct Index {
               keyDownDuration: 0,
               isIntercepted: false
             };
+            // Inject Event
             inputEventClient.injectEvent({ KeyEvent: backKeyUp });
           } catch (error) {
-            console.error(`Failed to inject KeyEvent, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to inject KeyEvent, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -108,7 +111,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied.  |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -135,6 +138,7 @@ struct Index {
             }
 
             let eventDown: EventDown = { keyEvent: backKeyDown }
+            // Inject key event
             inputEventClient.injectKeyEvent(eventDown);
 
             let backKeyUp: inputEventClient.KeyEvent = {
@@ -149,15 +153,17 @@ struct Index {
             }
 
             let eventUp: EventUp = { keyEvent: backKeyUp }
+            // Inject key event
             inputEventClient.injectKeyEvent(eventUp);
           } catch (error) {
-            console.error(`Failed to inject KeyEvent, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to inject KeyEvent, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
   }
 }
 ```
+
 ## inputEventClient.injectMouseEvent<sup>11+</sup>
 
 injectMouseEvent(mouseEvent: MouseEventData): void
@@ -182,7 +188,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied.  |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -228,6 +234,7 @@ struct Index {
             let mouseButtonUp: inputEventClient.MouseEventData = {
               mouseEvent: mouseButtonUpData
             }
+            // Inject Mouse Event
             inputEventClient.injectMouseEvent(mouseButtonUp);
 
             let mouseButtonDownData: MouseEvent = {
@@ -260,11 +267,12 @@ struct Index {
             let mouseButtonDown: inputEventClient.MouseEventData = {
               mouseEvent: mouseButtonDownData
             };
+            // Inject Mouse Event
             inputEventClient.injectMouseEvent(mouseButtonDown);
           }
 
           catch (error) {
-            console.error(`Failed to inject MouseEvent, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to inject MouseEvent, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -296,7 +304,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied.  |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -348,6 +356,7 @@ struct Index {
             let touchEventUp: inputEventClient.TouchEventData = {
               touchEvent: touchEventUpData
             }
+            // Inject touch event
             inputEventClient.injectTouchEvent(touchEventUp);
 
             let touchEventDownData: TouchEvent = {
@@ -365,9 +374,10 @@ struct Index {
             let touchEventDown: inputEventClient.TouchEventData = {
               touchEvent: touchEventDownData
             }
+            // Inject touch event
             inputEventClient.injectTouchEvent(touchEventDown);
           } catch (error) {
-            console.error(`Failed to inject touchEvent, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to inject touchEvent, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -399,8 +409,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied.  |
 | 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
-
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 ```ts
 import { inputEventClient } from '@kit.InputKit';
@@ -414,9 +423,10 @@ struct Index {
         .onClick(() => {
           try {
             let result = true;
+            // Authorized Event Injection
             inputEventClient.permitInjection(result);
           }catch(error){
-            console.error("failed:" + JSON.stringify(error));
+            console.error(`Failed to get inject permission, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -432,9 +442,9 @@ Defines the key event to inject.
 
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ---- | ---- | ------- |
-| isPressed       | boolean | No   |  No| Whether the key is pressed.<br>The value **true** indicates that the key is pressed, and the value **false** indicates the opposite.  |
+| isPressed       | boolean | No   |  No| Whether the key is pressed.<br>The value **true** indicates that the key is pressed, and the value **false** indicates that the key is released.  |
 | keyCode         | number  | No   |  No| Key code. Currently, only the **KEYCODE_BACK** key is supported.|
-| keyDownDuration | number  | No   |  No| Duration for pressing a key, in μs.          |
+| keyDownDuration | number  | No    |  No | Duration of key press, in microseconds (μs).           |
 | isIntercepted   | boolean | No   |  No| Whether the key event can be intercepted.<br>The value **true** indicates that the key event can be intercepted, and the value **false** indicates the opposite.|
 
 ## KeyEventData<sup>11+</sup>
@@ -468,3 +478,13 @@ Defines the touch event data.
 | --------- | ------ | ---- | ---- | ------- |
 | touchEvent | [TouchEvent](js-apis-touchevent.md#touchevent) | No   |  No| Touch event.  |
 | useGlobalCoordinate<sup>20+</sup> | boolean | No   |  Yes| Whether to use global coordinates to calculate the injected touch event. The default value is **false**. If this parameter is set to **false**, the coordinates of the relative coordinate system with the upper left corner of the specified screen as the origin are used to calculate the injected touch event. If this parameter is set to **true**, the coordinates of the global coordinate system with the upper left corner of the primary screen as the origin are used to calculate the injected touch event.  |
+
+## KeyEventInfo<sup>23+</sup>
+
+Defines the key event information injected by the user.
+
+**System capability:** SystemCapability.MultimodalInput.Input.InputSimulator
+
+| Name       | Type  | Read-Only  | Optional  | Description     |
+| --------- | ------ | ---- | ---- | ------- |
+| KeyEvent       | [KeyEvent](#keyevent) | No   |  No| Key injection description.   |

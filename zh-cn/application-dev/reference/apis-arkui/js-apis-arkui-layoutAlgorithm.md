@@ -40,11 +40,11 @@ import { LayoutAlgorithm, CustomLayoutAlgorithm, RowLayoutAlgorithm, ColumnLayou
 
 自定义布局算法类。
 
+**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
+
 > **说明：**
 >
 > CustomLayoutAlgorithm类对象可以作为[DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md)组件的入参指定布局算法。
-
-**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 ### onMeasure
 onMeasure(self: FrameNode, constraint: LayoutConstraint): void
@@ -54,8 +54,6 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint): void
 > **说明：**
 >
 > 在此函数中，开发者可以调用[FrameNode](js-apis-arkui-frameNode.md#framenode-1)的[getChild()](js-apis-arkui-frameNode.md#getchild12)方法获取子组件FrameNode，调用[FrameNode](js-apis-arkui-frameNode.md#framenode-1)的[measure()](js-apis-arkui-frameNode.md#measure12)方法测量子组件大小，参考DynamicLayout组件[示例1（自定义布局算法实现瀑布流布局）](./arkui-ts/ts-container-dynamiclayout.md#示例1自定义布局算法实现瀑布流布局)。
-
-**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -81,8 +79,6 @@ onLayout(self: FrameNode, position: Position): void
 >
 > 在此函数中，开发者可以调用[FrameNode](js-apis-arkui-frameNode.md#framenode-1)的[getChild()](js-apis-arkui-frameNode.md#getchild12)方法获取子组件FrameNode，调用[FrameNode](js-apis-arkui-frameNode.md#framenode-1)的[layout()](js-apis-arkui-frameNode.md#layout12)方法设置子组件位置，参考DynamicLayout组件[示例1（自定义布局算法实现瀑布流布局）](./arkui-ts/ts-container-dynamiclayout.md#示例1自定义布局算法实现瀑布流布局)。
 
-**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
-
 **模型约束：** 此接口仅可在Stage模型下使用。
   
 **卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
@@ -106,15 +102,13 @@ onLayout(self: FrameNode, position: Position): void
 
 水平方向线性布局算法类。
 
+**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
+
 > **说明：**
 >
 > RowLayoutAlgorithm类对象可以作为[DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md)组件的入参指定布局算法。
 
-**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
-
 ### 属性
-
-**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -137,8 +131,6 @@ constructor(option?: RowLayoutAlgorithmOptions)
 
 水平方向线性布局算法类的构造函数。
 
-**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
@@ -151,13 +143,13 @@ constructor(option?: RowLayoutAlgorithmOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| option | [RowLayoutAlgorithmOptions](#rowlayoutalgorithmoptions对象说明) | 否 | 水平方向线性布局算法的构造入参，设置布局算法的间距、主轴对齐方式、交叉轴对齐方式及主轴排列方向。|
+| option | [RowLayoutAlgorithmOptions](#rowlayoutalgorithmoptions) | 否 | 水平方向线性布局算法的构造入参，设置布局算法的间距、主轴对齐方式、交叉轴对齐方式及主轴排列方向。|
 
 **示例：**
 
 请参考DynamicLayout组件[示例2（切换布局算法）](./arkui-ts/ts-container-dynamiclayout.md#示例2切换布局算法)。
 
-## RowLayoutAlgorithmOptions对象说明
+## RowLayoutAlgorithmOptions
 
 设置水平方向线性布局算法的间距、主轴对齐方式、交叉轴对齐方式及主轴排列方向。
 
@@ -180,15 +172,13 @@ constructor(option?: RowLayoutAlgorithmOptions)
 
 垂直方向线性布局算法类。
 
+**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
+
 > **说明：**
 >
 > ColumnLayoutAlgorithm类对象可以作为[DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md)组件的入参指定布局算法。
 
-**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
-
 ### 属性
-
-**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -211,8 +201,6 @@ constructor(option?: ColumnLayoutAlgorithmOptions)
 
 垂直方向线性布局算法类的构造函数。
 
-**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
@@ -225,13 +213,13 @@ constructor(option?: ColumnLayoutAlgorithmOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| option | [ColumnLayoutAlgorithmOptions](#columnlayoutalgorithmoptions对象说明) | 否 | 垂直方向线性布局算法的构造入参，设置布局算法的间距、主轴对齐方式、交叉轴对齐方式及主轴排列方向。|
+| option | [ColumnLayoutAlgorithmOptions](#columnlayoutalgorithmoptions) | 否 | 垂直方向线性布局算法的构造入参，设置布局算法的间距、主轴对齐方式、交叉轴对齐方式及主轴排列方向。|
 
 **示例：**
 
 请参考DynamicLayout组件[示例2（切换布局算法）](./arkui-ts/ts-container-dynamiclayout.md#示例2切换布局算法)。
 
-## ColumnLayoutAlgorithmOptions对象说明
+## ColumnLayoutAlgorithmOptions
 
 设置垂直方向线性布局算法的间距、主轴对齐方式、交叉轴对齐方式及主轴排列方向。
 
@@ -254,16 +242,13 @@ constructor(option?: ColumnLayoutAlgorithmOptions)
 
 堆叠布局算法类。
 
+**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
+
 > **说明：**
 >
 > StackLayoutAlgorithm类对象可以作为[DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md)组件的入参指定布局算法。
 
-
-**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
-
 ### 属性
-
-**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -283,8 +268,6 @@ constructor(option?: StackLayoutAlgorithmOptions)
 
 堆叠布局算法类的构造函数。
 
-**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
@@ -297,13 +280,13 @@ constructor(option?: StackLayoutAlgorithmOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| option | [StackLayoutAlgorithmOptions](#stacklayoutalgorithmoptions对象说明) | 否 | 堆叠布局算法的构造入参，设置九宫格对齐格式。|
+| option | [StackLayoutAlgorithmOptions](#stacklayoutalgorithmoptions) | 否 | 堆叠布局算法的构造入参，设置九宫格对齐格式。|
 
 **示例：**
 
 请参考DynamicLayout组件[示例2（切换布局算法）](./arkui-ts/ts-container-dynamiclayout.md#示例2切换布局算法)。
 
-## StackLayoutAlgorithmOptions对象说明
+## StackLayoutAlgorithmOptions
 
 设置堆叠布局算法的对齐方式。
 
@@ -323,15 +306,13 @@ constructor(option?: StackLayoutAlgorithmOptions)
 
 网格布局算法类。
 
+**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
+
 > **说明：**
 >
 > GridLayoutAlgorithm类对象可以作为[DynamicLayout](./arkui-ts/ts-container-dynamiclayout.md)组件的入参指定布局算法。
 
-**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
-
 ### 属性
-
-**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -351,8 +332,6 @@ constructor(option?: GridLayoutAlgorithmOptions)
 
 网格布局算法类的构造函数。
 
-**装饰器类型：** [\@ObservedV2](../../ui/state-management/arkts-new-observedV2-and-trace.md)
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
@@ -363,13 +342,13 @@ constructor(option?: GridLayoutAlgorithmOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| option | [GridLayoutAlgorithmOptions](#gridlayoutalgorithmoptions对象说明) | 否 | 网格布局算法的构造入参，设置网格布局的列数、列间距、行间距。|
+| option | [GridLayoutAlgorithmOptions](#gridlayoutalgorithmoptions) | 否 | 网格布局算法的构造入参，设置网格布局的列数、列间距、行间距。|
 
 **示例：**
 
 请参考DynamicLayout组件[示例2（切换布局算法）](./arkui-ts/ts-container-dynamiclayout.md#示例2切换布局算法)。
 
-## GridLayoutAlgorithmOptions对象说明
+## GridLayoutAlgorithmOptions
 
 设置网格布局算法的列数模板、列间距、行间距。
 

@@ -21,6 +21,9 @@
 | ---- | ---- | ---- | ---- | ---- |
 | [getFullDom](#getfulldom) | 获取完整DOM树 | [FullDomCommand](#fulldomcommand) | [FullDomResult](#fulldomresult) | 返回树结构，不按筛选规则过滤节点。 |
 | [getLiteDom](#getlitedom) | 获取轻量DOM节点列表 | [LiteDomCommand](#litedomcommand) | [LiteDomResult](#litedomresult) | 返回扁平列表，支持按规则筛选节点。 |
+| [screenCapture](#screencapture) | 获取网页元素截图 | [ScreenCaptureCommand](#screencapturecommand) | [ScreenCaptureResult](#screencaptureresult) | 返回Base64编码图片数据，支持获取当前网页视口截图或视口内目标元素截图。 |
+
+交互类命令（click、focus、cursor_position、type、send_keys）请参见[AIPageInteraction](./arkts-apis-webview-AIPageInteraction.md)。
 
 ## 通用命令格式
 
@@ -436,5 +439,150 @@
       }
     }
   ]
+}
+```
+
+## screenCapture
+
+获取当前网页视口截图或视口内目标元素截图，返回Base64编码的图片数据。
+
+### ScreenCaptureCommand
+
+### 入参说明
+
+| 参数 | 子参数 | 参数项 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+| method | - | - | string | 是 | 命令名称，固定为`screenCapture`。 |
+| params | - | - | Object | 否 | 命令参数。不传或为空时获取当前网页视口截图。|
+| params | nodeid | - | string | 否 | 目标元素的节点标识，可通过[getFullDom](#getfulldom)或[getLiteDom](#getlitedom)返回的`id`字段获取。 |
+| params | xpath | - | string | 否 | 目标元素的XPath，可通过[getFullDom](#getfulldom)或[getLiteDom](#getlitedom)返回的`xpath`字段获取。 |
+
+> **说明：**
+>
+> - `nodeid`与`xpath`互斥，均传入时以`nodeid`为准。两者均未传入时，默认获取当前网页视口截图。
+> - 支持获取iframe元素截图，不支持跨域获取iframe内部元素截图；不支持获取同层渲染ArkUI组件的截图。
+
+### ScreenCaptureResult
+
+成功时返回PNG格式的Base64编码字符串。
+
+> **说明：**
+>
+> - `nodeid`格式错误，返回`{"code": 392, "message": "invalid param: nodeid"}`；`nodeid`中的`frameToken`或`documentToken`与当前页面不匹配，返回`{"code": 392, "message": "invalid param: nodeid, token mismatch"}`。
+> - 根据`nodeid`或`xpath`在页面中未找到目标元素，返回`{"code": 352, "message": "element not found"}`。
+
+### 示例
+
+通过节点标识获取目标元素截图：
+
+```json
+{
+  "method": "screenCapture",
+  "params": {
+    "nodeid": "frameToken|documentToken|12"
+  }
+}
+```
+
+通过XPath获取目标元素截图：
+
+```json
+{
+  "method": "screenCapture",
+  "params": {
+    "xpath": "/html/body/div/p[2]/a"
+  }
+}
+```
+
+> **说明：**
+>
+> - 开发者使用时需自行替换`nodeid`或`xpath`，可通过[getFullDom](#getfulldom)或[getLiteDom](#getlitedom)返回的`id`字段或`xpath`字段获取。
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+interface CaptureParams {
+  xpath?: string;
+  nodeid?: string;
+}
+
+interface PageCommand {
+  method: string;
+  params?: CaptureParams;
+}
+
+@Entry
+@Component
+struct Index {
+  private controller: webview.WebviewController = new webview.WebviewController();
+  @State imgData: string = '';
+  @State statusMsg: string = '';
+
+  async capture() {
+    this.imgData = '';
+    this.statusMsg = '';
+
+    try {
+      const cmd: PageCommand = {
+        method: 'screenCapture',
+        params: {
+          xpath: "/html/body/div/p[2]/a"
+        }
+      };
+
+      const res = await this.controller.executeAIPageCommand(JSON.stringify(cmd)) as string;
+
+      if (res.includes('"code"')) {
+        this.statusMsg = `截图失败：${res} `;
+        return;
+      }
+
+      this.imgData = res;
+      this.statusMsg = '✅ 截图成功';
+    } catch (e) {
+      const error = e as BusinessError;
+      this.statusMsg = `截图失败：${error.message}`;
+    }
+  }
+
+  build() {
+    Row() {
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .width('75%')
+        .height('100%')
+
+      Column({ space: 10 }) {
+        Button('执行截图')
+          .width('100%')
+          .onClick(() => this.capture())
+
+        Image(this.imgData ? `data:image/png;base64,${this.imgData}` : '')
+          .width('100%')
+          .aspectRatio(1)
+          .backgroundColor('#F0F0F0')
+          .objectFit(ImageFit.Contain)
+          .border({ width: 1, color: '#DCDCDC' })
+
+        if (this.statusMsg) {
+          Text(this.statusMsg)
+            .width('100%')
+            .fontSize(12)
+            .fontColor(this.statusMsg.includes('✅') ? '#4CAF50' : '#F44336')
+            .textAlign(TextAlign.Center)
+            .padding(8)
+            .backgroundColor(this.statusMsg.includes('✅') ? '#E8F5E9' : '#FFEBEE')
+            .borderRadius(4)
+        }
+      }
+      .width('25%')
+      .padding(10)
+      .height('100%')
+    }
+    .width('100%')
+    .height('100%')
+  }
 }
 ```

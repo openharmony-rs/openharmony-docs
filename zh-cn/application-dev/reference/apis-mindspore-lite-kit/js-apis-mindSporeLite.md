@@ -516,7 +516,7 @@ getAllNNRTDeviceDescriptions() : NNRTDeviceDescription[]
 try {
   let allDevices = mindSporeLite.getAllNNRTDeviceDescriptions();
   if (allDevices == null || allDevices.length === 0) {
-    console.error(`Failed to get NNRT device descriptions. Result: null or empty array`);
+    console.error('Failed to get NNRT device descriptions. Result: null or empty array');
   } else {
     console.info(`Succeeded in getting NNRT device descriptions. Device count: ${allDevices.length}`);
   }
@@ -860,7 +860,7 @@ import { common } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// The name of the preprocessed model input data file
+// 预处理后的模型输入数据文件名
 let inputName = 'input_data.bin';
 let modelFile: string = '/path/to/xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
@@ -926,6 +926,7 @@ import { common } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 预处理后的模型输入数据文件名
 let inputName = 'input_data.bin';
 let modelFile = '/path/to/xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
@@ -1370,6 +1371,7 @@ import { common } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 预处理后的模型输入数据文件名
 let inputName = 'input_data.bin';
 let modelFile = '/path/to/xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;
@@ -1432,6 +1434,7 @@ import { common } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 预处理后的模型输入数据文件名
 let inputName = 'input_data.bin';
 let modelFile = '/path/to/xxx.ms';
 let globalContext = new UIContext().getHostContext() as common.UIAbilityContext;

@@ -6,40 +6,47 @@
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:38:38.314Z pushedAt=2026-06-22T03:38:15.306Z -->
 
 ## Introduction
+
 An electronic device may have one or more secure elements (SEs), such as the embedded SE (eSE) and SIM card. Access control for SEs is implemented in accordance with the Global Platform Access Control (GPAC) specification.
 
 ## When to Use
-An application may need to write data to an SE to emulate an NFC card on the device. The NFC card data may be stored on an eSE or a SIM card. Generally, SEs are preset with rules for access control. An application must have related permissions and can access an SE only after a successful permission verification.
+
+An application can access an SE through APIs, for example, writing data to an SE to emulate an NFC card on an electronic device. The card data may be stored in an eSE or a SIM card SE. Generally, access control rules (GPAC specifications) are preset on the SE. The application must have the corresponding permissions, as described in [@ohos.secureElement (SE Channel Management)](../../reference/apis-connectivity-kit/js-apis-secureElement.md). In other words, the application can access the SE only after passing the access control permission verification of the element.
 
 ## Available APIs
-For details about the APIs and sample code, see [SE Management](../../reference/apis-connectivity-kit/js-apis-secureElement.md).
 
-The following table describes the APIs for SE access.
+For the complete API reference and sample code of the SE, see [@ohos.secureElement (SE Channel Management)](../../reference/apis-connectivity-kit/js-apis-secureElement.md).
 
-| API                            | Description                                                                      |
-| ---------------------------------- | ------------------------------------------------------------------------------ |
-| createService(): Promise\<SEService>                    | Creates an **SEService** instance for connecting to all available SEs in the system.                                                               |
-| getReaders(): Reader[]                      | Obtains available SE readers, which include all the SEs on the device.                                                               |
-| openSession(): Session                 | Opens a session to connect to an SE in this reader. This API returns a session instance.                                                               |
-| openLogicalChannel(aid: number[]): Promise\<Channel>                  | Opens a logical channel. This API returns a logical channel instance.                                                               |
-| transmit(command: number[]): Promise\<number[]> | Transmits application protocol data units (APDUs) to this SE.                                                               |
-| close(): void | Closes this channel.                                                           |
+The following APIs are required for accessing an SE.
 
+| Name                             | Supported Since    | Function Description                                                                       |
+| ---------------------------------- | ----- | ------------------------------------------------------------------------- |
+| createService(): Promise\<SEService>      |   API version 12   | Establishes a new connection that can be used to connect to all available SEs in the system.             |
+| getReaders(): Reader[]           | API version 10   | Returns an array of available SE readers, including all SEs supported on the device.                  |
+| openSession(): Session         | API version 10  | Creates a connection session on an SE reader instance and returns a session instance.                                  |
+| openLogicalChannel(aid: number[]): Promise\<Channel>       |  API version 10  | Opens a logical channel and returns a logical channel instance.              |
+| transmit(command: number[]): Promise\<number[]>   | API version 10   | Sends APDU data to the SE.                                   |
+| close(): void    |   API version 10  | Closes the channel.                                                            |
 
 ## How to Develop
 
 ### Accessing an SE
+
 1. Import related modules.
+
 2. Check whether the device supports SEs.
+
 3. Access an SE and read or write data.
+
 4. Release channel resources.
 
 > **NOTE**
 >
-> - Starting from API version 9, application development supports the stage model, which is recommended for long-term evolution.
-> - The high security level of SEs requires the build mode be set to Release for packaging; otherwise, the application will not run properly.
+> - Starting from API version 9, application development supports the [stage model](../../application-models/ability-terminology.md#stage-model), which is the recommended and long-term evolution model.
+> - Due to the high security level of the SE, you must set the build mode to release for packaging; otherwise, the app will not run properly.
 
 ```ts
 import { omapi } from '@kit.ConnectivityKit';

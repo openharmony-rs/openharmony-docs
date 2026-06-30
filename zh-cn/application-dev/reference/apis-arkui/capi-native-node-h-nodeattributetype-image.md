@@ -63,13 +63,13 @@ NODE_IMAGE_OBJECT_FIT = 4001
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 表示图片填充效果，取[ArkUI_ObjectFit](capi-native-type-h.md#arkui_objectfit)枚举值。 |
+| .value[0].i32 | 表示图片填充效果，取[ArkUI_ObjectFit](capi-image-h.md#arkui_objectfit)枚举值。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 表示图片填充效果，取[ArkUI_ObjectFit](capi-native-type-h.md#arkui_objectfit)枚举值。 |
+| .value[0].i32 | 表示图片填充效果，取[ArkUI_ObjectFit](capi-image-h.md#arkui_objectfit)枚举值。 |
 
 ## NODE_IMAGE_INTERPOLATION
 
@@ -87,13 +87,13 @@ NODE_IMAGE_INTERPOLATION = 4002
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 表示插值效果，取[ArkUI_ImageInterpolation](capi-native-type-h.md#arkui_imageinterpolation)枚举值。 |
+| .value[0].i32 | 表示插值效果，取[ArkUI_ImageInterpolation](capi-image-h.md#arkui_imageinterpolation)枚举值。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 表示插值效果，取[ArkUI_ImageInterpolation](capi-native-type-h.md#arkui_imageinterpolation)枚举值。 |
+| .value[0].i32 | 表示插值效果，取[ArkUI_ImageInterpolation](capi-image-h.md#arkui_imageinterpolation)枚举值。 |
 
 ## NODE_IMAGE_OBJECT_REPEAT
 
@@ -111,13 +111,13 @@ NODE_IMAGE_OBJECT_REPEAT = 4003
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 表示图片重复样式，取[ArkUI_ImageRepeat](capi-native-type-h.md#arkui_imagerepeat)枚举值。 |
+| .value[0].i32 | 表示图片重复样式，取[ArkUI_ImageRepeat](capi-image-h.md#arkui_imagerepeat)枚举值。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 表示图片重复样式，取[ArkUI_ImageRepeat](capi-native-type-h.md#arkui_imagerepeat)枚举值。 |
+| .value[0].i32 | 表示图片重复样式，取[ArkUI_ImageRepeat](capi-image-h.md#arkui_imagerepeat)枚举值。 |
 
 ## NODE_IMAGE_COLOR_FILTER
 
@@ -237,13 +237,13 @@ NODE_IMAGE_RENDER_MODE = 4008
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 参数类型[ArkUI_ImageRenderMode](capi-native-type-h.md#arkui_imagerendermode)。 |
+| .value[0].i32 | 参数类型[ArkUI_ImageRenderMode](capi-image-h.md#arkui_imagerendermode)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 参数类型[ArkUI_ImageRenderMode](capi-native-type-h.md#arkui_imagerendermode)。 |
+| .value[0].i32 | 参数类型[ArkUI_ImageRenderMode](capi-image-h.md#arkui_imagerendermode)。 |
 
 ## NODE_IMAGE_FIT_ORIGINAL_SIZE
 
@@ -487,13 +487,13 @@ NODE_IMAGE_DYNAMIC_RANGE_MODE = 4018
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 动态范围类型[ArkUI_DynamicRangeMode](capi-native-type-h.md#arkui_dynamicrangemode)，默认值为ARKUI_DYNAMIC_RANGE_MODE_STANDARD。 |
+| .value[0].i32 | 动态范围类型[ArkUI_DynamicRangeMode](capi-image-h.md#arkui_dynamicrangemode)，默认值为ARKUI_DYNAMIC_RANGE_MODE_STANDARD。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 动态范围类型[ArkUI_DynamicRangeMode](capi-native-type-h.md#arkui_dynamicrangemode)。 |
+| .value[0].i32 | 动态范围类型[ArkUI_DynamicRangeMode](capi-image-h.md#arkui_dynamicrangemode)。 |
 
 ## NODE_IMAGE_HDR_BRIGHTNESS
 
@@ -535,13 +535,13 @@ NODE_IMAGE_ORIENTATION = 4020
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 期望的图像内容显示方向[ArkUI_Orientation](capi-native-type-h.md#arkui_imagerotateorientation)，默认值为ARKUI_ORIENTATION_UP。 |
+| .value[0].i32 | 期望的图像内容显示方向[ArkUI_Orientation](capi-image-h.md#arkui_imagerotateorientation)，默认值为ARKUI_ORIENTATION_UP。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 期望的图像内容显示方向[ArkUI_Orientation](capi-native-type-h.md#arkui_imagerotateorientation)。 |
+| .value[0].i32 | 期望的图像内容显示方向[ArkUI_Orientation](capi-image-h.md#arkui_imagerotateorientation)。 |
 
 ## NODE_IMAGE_SUPPORT_SVG2
 
@@ -709,13 +709,13 @@ NODE_IMAGE_ANIMATOR_STATE = 19001
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 控制动画的播放状态，参数类型为[ArkUI_AnimationStatus](capi-native-type-h.md#arkui_animationstatus)，默认值为初始状态。 |
+| .value[0].i32 | 控制动画的播放状态，参数类型为[ArkUI_AnimationStatus](capi-image-animator-h.md#arkui_animationstatus)，默认值为初始状态。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 控制动画的播放状态，参数类型为[ArkUI_AnimationStatus](capi-native-type-h.md#arkui_animationstatus)。 |
+| .value[0].i32 | 控制动画的播放状态，参数类型为[ArkUI_AnimationStatus](capi-image-animator-h.md#arkui_animationstatus)。 |
 
 ## NODE_IMAGE_ANIMATOR_DURATION
 
@@ -805,13 +805,13 @@ NODE_IMAGE_ANIMATOR_FILL_MODE = 19005
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 当前播放方向下，动画开始前和结束后的状态，参数类型为[ArkUI_AnimationFillMode](capi-native-type-h.md#arkui_animationfillmode)，默认值为ARKUI_ANIMATION_FILL_MODE_FORWARDS。 |
+| .value[0].i32 | 当前播放方向下，动画开始前和结束后的状态，参数类型为[ArkUI_AnimationFillMode](capi-native-type-visual-h.md#arkui_animationfillmode)，默认值为ARKUI_ANIMATION_FILL_MODE_FORWARDS。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 当前播放方向下，动画开始前和结束后的状态，参数类型为[ArkUI_AnimationFillMode](capi-native-type-h.md#arkui_animationfillmode)。 |
+| .value[0].i32 | 当前播放方向下，动画开始前和结束后的状态，参数类型为[ArkUI_AnimationFillMode](capi-native-type-visual-h.md#arkui_animationfillmode)。 |
 
 ## NODE_IMAGE_ANIMATOR_ITERATION
 

@@ -46,7 +46,7 @@ Adds the permission to an application for accessing the serial port device.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission verification failed. A non-system application calls a system API. |

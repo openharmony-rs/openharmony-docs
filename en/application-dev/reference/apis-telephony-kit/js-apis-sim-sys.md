@@ -372,7 +372,7 @@ sim.getShowName(0).then((data: string) => {
 
 ## sim.setShowNumber<sup>8+</sup>
 
-setShowNumber\(slotId: number, number: string, callback: AsyncCallback\<void\>\): void
+setShowNumber\(slotId: number, teleNumber: string, callback: AsyncCallback\<void\>\): void
 
 Sets a display number for the SIM card in the specified slot. This API uses an asynchronous callback to return the result.
 
@@ -387,7 +387,7 @@ Sets a display number for the SIM card in the specified slot. This API uses an a
 | Name  | Type                     | Mandatory| Description                                  |
 | -------- | ------------------------- | ---- | -------------------------------------- |
 | slotId   | number                    | Yes  | Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2|
-| number   | string                    | Yes  | SIM card number.                             |
+| teleNumber   | string                    | Yes  | SIM card number.                             |
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.                            |
 
 **Error codes**
@@ -420,7 +420,7 @@ sim.setShowNumber(0, number, (err: BusinessError) => {
 
 ## sim.setShowNumber<sup>8+</sup>
 
-setShowNumber\(slotId: number, number: string\): Promise\<void\>
+setShowNumber\(slotId: number, teleNumber: string\): Promise\<void\>
 
 Sets a display number for the SIM card in the specified slot. This API uses a promise to return the result.
 
@@ -435,7 +435,7 @@ Sets a display number for the SIM card in the specified slot. This API uses a pr
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
 | slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2|
-| number | string | Yes  | SIM card number.                             |
+| teleNumber | string | Yes  | SIM card number.                             |
 
 **Return value**
 

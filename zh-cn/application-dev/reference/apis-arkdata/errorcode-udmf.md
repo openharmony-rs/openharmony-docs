@@ -26,7 +26,7 @@ Settings already exist. To reconfigure, remove the existing sharing options.
 
 **处理步骤**
 
-先调用[removeAppShareOptions](js-apis-data-unifiedDataChannel.md#unifieddatachannelremoveappshareoptions14)清除当前拖拽通道数据可使用的范围后，再调用[setAppShareOptions](js-apis-data-unifiedDataChannel.md#unifieddatachannelsetappshareoptions14)重新设置。
+先调用[removeAppShareOptions](js-apis-data-unifiedDataChannel.md#unifieddatachannelremoveappshareoptions14)清除当前拖拽通道数据可使用的范围，再调用[setAppShareOptions](js-apis-data-unifiedDataChannel.md#unifieddatachannelsetappshareoptions14)重新设置。
 
 <!--Del-->
 ## 20400002 标准化数据类型描述符格式错误

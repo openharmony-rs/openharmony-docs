@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @fei_1007-->
-<!--Designer: @gcw_sPCsris4; @qinliwen0417-->
+<!--Owner: @liu_hongxian-->
+<!--Designer: @shinmy; @qinliwen0417-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -51,7 +51,9 @@
      - 子窗的阴影和圆角消失。
      - 子窗矩形区域的左上部分变为透明不可交互，通过点击“Create Test Window”按钮，事件透传到该按钮，创建出绿色的测试窗口。
 
-```ts
+<!-- @[setWindowMaskSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/EventDistribution/setWindowMask/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -60,12 +62,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct Index {
   // ...
   private windowMaskSub: window.Window | undefined = undefined;
-  // ...
-  private winWidth: number  = 800;
-  private winHeight: number  = 800;
 
   // ...
-  // 设置子窗windowMask
   setWindowMask(window: window.Window) {
     let windowMask: Uint8Array = new Uint8Array(this.winWidth * this.winHeight);
     for (let i = 0; i < this.winHeight; i++) {
@@ -79,26 +77,36 @@ struct Index {
     }
     window.setWindowMaskWithAlpha(windowMask, this.winWidth, this.winHeight);
   }
+
   build() {
-    // ...
-    Button("setWindowMask for Sub Window")
-    .width('90%')
-    .type(ButtonType.Capsule)
-    .margin({
-    top: 10
-    }).fontSize(18)
-    .onClick(() => {
-    if(this.windowMaskSub) {
-      this.setWindowMask(this.windowMaskSub);
+    Row() {
+      Scroll(){
+        Column() {
+          // ...
+          Row() {
+            Button('setWindowMask for Sub Window')
+              .width('90%')
+              .type(ButtonType.Capsule)
+              .margin({
+                top: 10
+              }).fontSize(18)
+              .onClick(() => {
+                if(this.windowMaskSub) {
+                  this.setWindowMask(this.windowMaskSub);
+                }
+              })
+          }
+        }
+        .width('100%')
+      }
     }
-    })
-  // ...
+    .height('100%')
   }
+
 }
 ```
 
 ![setWindowMaskWithAlphaDemo](figures/setWindowMaskWithAlphaDemo.gif)
-
 
 ## 窗口阴影
 
@@ -109,29 +117,31 @@ struct Index {
 
   此处以子窗为例，调用setShadow()设置窗口边缘阴影。
 
-  ```ts
+  <!-- @[windowShadowSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowShadowSample/entry/src/main/ets/pages/Index.ets) --> 
+  
+  ``` TypeScript
   // Index.ets
   import { BusinessError } from '@kit.BasicServicesKit';
   import { window } from '@kit.ArkUI';
-
+  
   let subWindowClass: window.Window | undefined = undefined;
-
+  
   @Entry
   @Component
   struct Index {
     // ...
-
+  
     build() {
-    // ...
+      // ...
     }
-
+  
     private async showShadowSubWindow(): Promise<void> {
       let windowStage = AppStorage.get<window.WindowStage>('windowStage');
       if (!windowStage) {
         this.prompt = 'WindowStage is unavailable.';
         return;
       }
-
+  
       try {
         if (!subWindowClass) {
           subWindowClass = await windowStage.createSubWindow('shadowSubWindow');
@@ -159,21 +169,23 @@ struct Index {
 
   此处以全局悬浮窗为例，设置其窗口边缘阴影的模糊半径。
 
-  ```ts
+  <!-- @[window_shadow_radius](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowShadowRadiusSample/entry/src/main/ets/pages/Page1.ets) --> 
+  
+  ``` TypeScript
   // pages/page1.ets
   import { window } from '@kit.ArkUI';
-
+  
   @Entry
   @Component
   struct SliderDemo {
-    @State shadowRadiusValue: number = 0;
-
+    // ...
+  
     // 设置窗口边缘阴影的模糊半径
     setShadowRadius(val: number) {
       const floatWindowObj = AppStorage.get<window.Window>('floatWindow');
       floatWindowObj?.setWindowShadowRadius(val);
     }
-
+  
     build() {
       // ...
     }
@@ -182,28 +194,29 @@ struct Index {
 
   ![setWindowShadowRadius](figures/setWindowShadowRadius.gif)
 
-
 ## 设置窗口圆角<!--Del-->与模糊效果<!--DelEnd-->
 
 - 可通过[setWindowCornerRadius()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcornerradius17)接口设置窗口的圆角半径，仅支持子窗和全局悬浮窗使用。
 
   此处以全局悬浮窗为例，设置其窗口圆角。
 
-  ```ts
+  <!-- @[window_corner_radius](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowCornerRadiusSample/entry/src/main/ets/pages/Page1.ets) --> 
+  
+  ``` TypeScript
   // pages/page1.ets
   import { window } from '@kit.ArkUI';
-
+  
   @Entry
   @Component
   struct SliderDemo {
-    @State cornerRadiusValue: number = 0;
-
+    // ...
+  
     // 设置圆角
     setCornerRadius(val: number) {
       const floatWindowObj = AppStorage.get<window.Window>('floatWindow');
       floatWindowObj?.setWindowCornerRadius(val);
     }
-
+  
     build() {
       // ...
     }
@@ -217,23 +230,18 @@ struct Index {
 
 - 针对系统应用，可通过[setBackdropBlur()](../reference/apis-arkui/js-apis-window-sys.md#setbackdropblur9)接口设置窗口背景的模糊半径，仅支持系统窗口、全局悬浮窗和模态窗口使用。
 
-
 此处以全局悬浮窗为例，设置其窗口模糊效果（窗口内容的模糊半径、窗口背景的模糊半径）。
 
-```ts
+<!-- @[window_blur_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowBlurSample/entry/src/main/ets/pages/Page1.ets) --> 
+
+``` TypeScript
 // pages/page1.ets
 import { window } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct SliderDemo {
-  @State blurValue: number = 0;
-  @State backdropBlurValue: number = 0;
-  @State columnBg: Color = Color.Orange;
-
-  setColumnBg() {
-    this.columnBg = Color.Orange;
-  }
+  // ...
 
   // 设置窗口内容的模糊半径
   setBlur(val: number) {
@@ -250,11 +258,10 @@ struct SliderDemo {
   }
 
   build() {
-  // ...
+    // ...
   }
 }
 ```
-
 
 ![setBlur](figures/setBlur.gif)
 <!--DelEnd-->
@@ -283,8 +290,9 @@ struct SliderDemo {
 
 示例代码如下：
 
-```ts
-// Index.ets
+<!--@[backgroundColor_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/backgroundColor/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { ColorMetrics, window } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -293,8 +301,20 @@ const DOMAIN = 0x0000;
 @Entry
 @Component
 struct Index {
-  // ...
-  // 将0~255的通道值转换成两位十六进制字符串，用于拼接#AARRGGBB。
+  @StorageLink('mainWindow') mainWindow: window.Window | undefined = undefined;
+
+  @State alpha: number = 0;
+  @State red: number = 0;
+  @State green: number = 0;
+  @State blue: number = 0;
+  @State statusText: string = 'Move the sliders to change the current window background color.';
+  @State applyModeText: string = 'Current mode: string (#AARRGGBB)';
+
+  aboutToAppear(): void {
+    this.applyWindowBackgroundColor();
+  }
+
+  // 将0~255的通道值转换成两位十六进制字符串，用于拼接 #AARRGGBB。
   private toHex(value: number): string {
     return Math.round(value).toString(16).padStart(2, '0').toUpperCase();
   }
@@ -303,72 +323,28 @@ struct Index {
   private getColorValue(): string {
     return `#${this.toHex(this.alpha)}${this.toHex(this.red)}${this.toHex(this.green)}${this.toHex(this.blue)}`;
   }
-
-  // 使用string形式设置窗口背景色。
-  private applyWindowBackgroundColor(): void {
+ // ...
+  // 直接用ColorMetrics.rgba(...)设置窗口背景色。
+  private applyByColorMetrics(): void {
     if (!this.mainWindow) {
       this.statusText = 'Current window is unavailable.';
       return;
     }
-    const color = this.getColorValue();
-    this.mainWindow.setWindowBackgroundColor(color);
-    this.statusText = `setWindowBackgroundColor(${color}) success`;
-    hilog.info(DOMAIN, 'backgroundColor', this.statusText);
+
+    try {
+      const alpha = Math.round(this.alpha) / 255;
+      const colorMetrics = ColorMetrics.rgba(Math.round(this.red), Math.round(this.green), 
+                            Math.round(this.blue), alpha);
+      this.mainWindow.setWindowBackgroundColor(colorMetrics);
+      this.applyModeText = 'Current mode: ColorMetrics.rgba(...)';
+      this.statusText = `setWindowBackgroundColor(ColorMetrics.rgba(${Math.round(this.red)}, ${Math.round(this.green)}, ${Math.round(this.blue)}, ${alpha.toFixed(2)})) success`;
+      hilog.info(DOMAIN, 'backgroundColor', this.statusText);
+    } catch (err) {
+      this.statusText = `setWindowBackgroundColor by ColorMetrics failed: ${JSON.stringify(err)}`;
+      hilog.error(DOMAIN, 'backgroundColor', this.statusText);
+    }
   }
 
-  // 使用ColorMetrics.rgba(...)形式设置窗口背景色。
-  private applyByColorMetrics(): void {
-    const alpha = Math.round(this.alpha) / 255;
-    const colorMetrics = ColorMetrics.rgba(Math.round(this.red), Math.round(this.green), Math.round(this.blue), alpha);
-    this.mainWindow?.setWindowBackgroundColor(colorMetrics);
-    this.applyModeText = 'Current mode: ColorMetrics.rgba(...)';
-  }
-
-  // ...
-
-  build() {
-    // ...
-  }
-}
-```
-
-```ts
-// EntryAbility.ets
-import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { window } from '@kit.ArkUI';
-
-const DOMAIN = 0x0000;
-
-export default class EntryAbility extends UIAbility {
-  // ...
-
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    // ...
-    windowStage.getMainWindow((err: BusinessError, data) => {
-      if (err.code) {
-        hilog.error(DOMAIN, 'testTag', 'Failed to obtain the main window. Cause: %{public}s', JSON.stringify(err));
-        return;
-      }
-
-      const mainWindow: window.Window = data;
-      AppStorage.setOrCreate<window.Window>('mainWindow', mainWindow);
-      mainWindow.setWindowBackgroundColor('#00000000');
-
-      // 设置主窗口容器在焦点态和非焦点态时的背景色
-      const activeColor: string = '#00000000';
-      const inactiveColor: string = '#FF000000';
-      try {
-        mainWindow.setWindowContainerModalColor(activeColor, inactiveColor);
-        hilog.info(DOMAIN, 'testTag', 'Succeeded in setting window container color.');
-      } catch (exception) {
-        hilog.error(DOMAIN, 'testTag', 'Failed to set the window container color. Cause: %{public}s',
-          JSON.stringify(exception));
-      }
-    });
-  }
-
-  // ...
+ // ...
 }
 ```

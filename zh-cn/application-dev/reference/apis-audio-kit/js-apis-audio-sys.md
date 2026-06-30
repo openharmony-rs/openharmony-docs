@@ -248,6 +248,22 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 | category     | string | 否 | 否 | 音效分类。 |
 | flag        | [EffectFlag](#effectflag18) | 否 | 否 | 音效分类。 |
 
+## AudioSeparationVolumeType
+
+表示音频分离效果的音量类型。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+| 名称 | 值 | 说明 |
+| --- | --- | --- |
+| VOLUME_TYPE_VOCAL | 0 | 人声音量类型。 |
+
 ## StreamUsage
 
 枚举，音频流使用类型。
@@ -2360,7 +2376,7 @@ setAudioEffectProperty(propertyArray: Array\<AudioEffectProperty>): void
 | ------- | --------------------------------------------|
 | 201 | Permission denied. |
 | 202 | Caller is not a system application. |
-| 6800101 | Parameter verification failed. Possible causes: <br>1. More than one effect property name of the same effect property category are in the input array. <br>2. The input audioEffectProperties are not supported by the current device. <br>3. The name or catergory of the input audioEffectProperties is incorrect.|
+| 6800101 | Parameter verification failed. Possible causes: <br>1. More than one effect property name of the same effect property category are in the input array. <br>2. The input audioEffectProperties are not supported by the current device. <br>3. The name or category of the input audioEffectProperties is incorrect.|
 | 6800301 | System error. |
 
 **示例：**
@@ -2376,6 +2392,238 @@ try {
   let error = err as BusinessError;
   console.error(`setAudioEffectProperty ERROR: ${error}`);
 }
+```
+
+### isAudioSeparationEffectSupported
+
+isAudioSeparationEffectSupported(): boolean
+
+查询当前设备是否支持系统的音频分离效果。
+
+> **说明：**
+>
+> 应用在使用音频分离效果相关接口前，应先调用本接口确认设备是否支持。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| boolean | 当前设备是否支持音频分离效果。true表示支持，false表示不支持。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Caller is not a system application. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let isSupported: boolean = audioEffectManager.isAudioSeparationEffectSupported();
+console.info(`Audio separation effect is supported: ${isSupported}`);
+```
+
+### setAudioSeparationEffectEnabled
+
+setAudioSeparationEffectEnabled(enabled: boolean, uid: number, streamId?: number): Promise&lt;void&gt;
+
+为指定应用进程或音频播放流设置音频分离效果的启用状态。使用Promise异步回调。
+
+> **说明：**
+>
+> - 调用此接口前，应先调用[isAudioSeparationEffectSupported](js-apis-audio-sys.md#isaudioseparationeffectsupported)确认设备是否支持音频分离效果。
+> - 当streamId参数没有传入时，根据uid控制整个应用的音频分离效果开关；当streamId参数传入时，根据streamId控制指定音频播放流的音频分离效果开关。播放应用可通过[AudioRenderer.getAudioStreamIdSync](arkts-apis-audio-AudioRenderer.md#getaudiostreamidsync10)获取streamId。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| enabled | boolean | 是 | 音频分离效果的启用状态。true表示启用，false表示禁用。 |
+| uid | number | 是 | 表示目标应用进程ID。 |
+| streamId | number | 否 | 目标音频播放流的ID，默认值为-1。<br>如果没有传入此参数，则根据uid控制应用级别的音频分离效果开关。<br>播放应用可通过[AudioRenderer.getAudioStreamIdSync](arkts-apis-audio-AudioRenderer.md#getaudiostreamidsync10)获取streamId。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 201 | Permission denied. |
+| 202 | Caller is not a system application. |
+| 6800101 | Parameter verification failed. |
+| 6800104 | Effect is not supported in this device. |
+| 6800301 | Audio service error occurs like service died. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioEffectManager.setAudioSeparationEffectEnabled(true, 10001).then(() => {
+  console.info('Succeeded in setting audio separation effect enabled.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set audio separation effect enabled. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### onAudioSeparationEffectEnabledChange
+
+onAudioSeparationEffectEnabledChange(callback: Callback&lt;boolean&gt;): void
+
+订阅系统音频分离效果使能状态变更事件。
+
+系统中的音频分离效果状态可由系统播放控制应用设定，其他应用程序可以使用本接口监听状态变更事件。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | Callback&lt;boolean&gt; | 是 | 回调函数。当音频分离效果启用状态变化时，返回true表示启用，false表示禁用。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Caller is not a system application. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+audioEffectManager.onAudioSeparationEffectEnabledChange((isEnabled: boolean) => {
+  console.info(`Audio separation effect enabled state changed: ${isEnabled}`);
+});
+```
+
+### offAudioSeparationEffectEnabledChange
+
+offAudioSeparationEffectEnabledChange(callback?: Callback&lt;boolean&gt;): void
+
+取消订阅系统音频分离效果使能状态变更事件。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | Callback&lt;boolean&gt; | 否 | 需要取消的回调函数，默认值为空。如果不使用此参数，则取消之前在当前进程中订阅的所有回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Caller is not a system application. |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+audioEffectManager.offAudioSeparationEffectEnabledChange();
+```
+
+### setAudioSeparationEffectVolume
+
+setAudioSeparationEffectVolume(type: AudioSeparationVolumeType, volume: number): Promise&lt;void&gt;
+
+设置指定音量类型的音频分离效果音量。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.MANAGE_SYSTEM_AUDIO_EFFECTS
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | [AudioSeparationVolumeType](js-apis-audio-sys.md#audioseparationvolumetype) | 是 | 音频分离效果的音量类型。 |
+| volume | number | 是 | 目标音量值，取值范围为[0, 1]。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 201 | Permission denied. |
+| 202 | Caller is not a system application. |
+| 6800101 | Parameter verification failed. |
+| 6800104 | Effect is not supported in this device. |
+| 6800301 | Audio service error occurs like service died. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioEffectManager.setAudioSeparationEffectVolume(audio.AudioSeparationVolumeType.VOLUME_TYPE_VOCAL, 0.5).then(() => {
+  console.info('Succeeded in setting audio separation effect volume.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set audio separation effect volume. Code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ## AudioRoutingManager<sup>9+</sup>

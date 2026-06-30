@@ -500,96 +500,96 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    ```
 
    - 为确保预览卡片和被编辑卡片信息同步，新建卡片时，在onAddForm回调函数中需要判断'ohos.extra.param.key.edit_form_id'字段是否携带了卡片ID。如果携带了卡片ID，则就是预览卡片则需要从数据库获取被编辑卡片的信息。
-   <!-- @[FormEditDemo_EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
-   
-   ``` TypeScript
-   // entry/src/main/ets/entryformability/WidgetCard.ets
-   import { formBindingData, FormExtensionAbility, formInfo } from '@kit.FormKit';
-   import { Want } from '@kit.AbilityKit';
-   import { PreferencesUtil } from '../common/PreferencesUtil';
-   import { FormData } from '../common/CommonData';
-   
-   export default class EntryFormAbility extends FormExtensionAbility {
-     onAddForm(want: Want) {
-       let editFormId: string = '';
-       let formId: string = '';
-       // 初始化首选项数据库
-       let util = PreferencesUtil.getInstance();
-       let preferences = util.getPreferences(this.context);
-       if (want.parameters) {
-         formId = want.parameters[formInfo.FormParam.IDENTITY_KEY] as string;
-         editFormId = want.parameters['ohos.extra.param.key.edit_form_id'] as string;
+     <!-- @[FormEditDemo_EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
+     
+     ``` TypeScript
+     // entry/src/main/ets/entryformability/WidgetCard.ets
+     import { formBindingData, FormExtensionAbility, formInfo } from '@kit.FormKit';
+     import { Want } from '@kit.AbilityKit';
+     import { PreferencesUtil } from '../common/PreferencesUtil';
+     import { FormData } from '../common/CommonData';
+     
+     export default class EntryFormAbility extends FormExtensionAbility {
+       onAddForm(want: Want) {
+         let editFormId: string = '';
+         let formId: string = '';
+         // 初始化首选项数据库
+         let util = PreferencesUtil.getInstance();
+         let preferences = util.getPreferences(this.context);
+         if (want.parameters) {
+           formId = want.parameters[formInfo.FormParam.IDENTITY_KEY] as string;
+           editFormId = want.parameters['ohos.extra.param.key.edit_form_id'] as string;
+         }
+         // 如果是编辑页面的预览卡片需要在创建时把编辑的卡片信息更新到预览卡片上
+         if (editFormId && preferences) {
+           let formData: FormData = util.getValue(preferences, editFormId) as FormData;
+           return formBindingData.createFormBindingData({
+             'message': formData.text
+           });
+         }
+     
+         return formBindingData.createFormBindingData('');
        }
-       // 如果是编辑页面的预览卡片需要在创建时把编辑的卡片信息更新到预览卡片上
-       if (editFormId && preferences) {
-         let formData: FormData = util.getValue(preferences, editFormId) as FormData;
-         return formBindingData.createFormBindingData({
-           'message': formData.text
-         });
+     
+       onCastToNormalForm(formId: string) {
        }
-   
-       return formBindingData.createFormBindingData('');
+     
+       onUpdateForm(formId: string) {
+       }
+     
+       onFormEvent(formId: string, message: string) {
+       }
+     
+       onRemoveForm(formId: string) {
+       }
+     
+       onAcquireFormState(want: Want) {
+         return formInfo.FormState.READY;
+       }
      }
-   
-     onCastToNormalForm(formId: string) {
-     }
-   
-     onUpdateForm(formId: string) {
-     }
-   
-     onFormEvent(formId: string, message: string) {
-     }
-   
-     onRemoveForm(formId: string) {
-     }
-   
-     onAcquireFormState(want: Want) {
-       return formInfo.FormState.READY;
-     }
-   }
-   ```
+     ```
 
    - 卡片布局文件如下。
-   <!-- @[FormEditDemo_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/widget/pages/WidgetCard.ets) --> 
-   
-   ``` TypeScript
-   // entry/src/main/ets/widget/pages/WidgetCard.ets
-   let storage: LocalStorage = new LocalStorage();
-   
-   @Entry(storage)
-   @Component
-   struct WidgetCard {
-     @LocalStorageProp('message') title: string = 'Hello World';
-     readonly actionType: string = 'router';
-     readonly abilityName: string = 'EntryAbility';
-     readonly message: string = 'add detail';
-     readonly fullWidthPercent: string = '100%';
-     readonly fullHeightPercent: string = '100%';
-   
-     build() {
-       Row() {
-         Column() {
-           Text(this.title)
-             .fontSize($r('app.float.font_size'))
-             .fontWeight(FontWeight.Medium)
-             .fontColor($r('sys.color.font'))
-         }
-         .width(this.fullWidthPercent)
-       }
-       .height(this.fullHeightPercent)
-       .backgroundColor($r('sys.color.comp_background_primary'))
-       .onClick(() => {
-         postCardAction(this, {
-           action: this.actionType,
-           abilityName: this.abilityName,
-           params: {
-             message: this.message
+     <!-- @[FormEditDemo_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/widget/pages/WidgetCard.ets) --> 
+     
+     ``` TypeScript
+     // entry/src/main/ets/widget/pages/WidgetCard.ets
+     let storage: LocalStorage = new LocalStorage();
+     
+     @Entry(storage)
+     @Component
+     struct WidgetCard {
+       @LocalStorageProp('message') title: string = 'Hello World';
+       readonly actionType: string = 'router';
+       readonly abilityName: string = 'EntryAbility';
+       readonly message: string = 'add detail';
+       readonly fullWidthPercent: string = '100%';
+       readonly fullHeightPercent: string = '100%';
+     
+       build() {
+         Row() {
+           Column() {
+             Text(this.title)
+               .fontSize($r('app.float.font_size'))
+               .fontWeight(FontWeight.Medium)
+               .fontColor($r('sys.color.font'))
            }
-         });
-       })
+           .width(this.fullWidthPercent)
+         }
+         .height(this.fullHeightPercent)
+         .backgroundColor($r('sys.color.comp_background_primary'))
+         .onClick(() => {
+           postCardAction(this, {
+             action: this.actionType,
+             abilityName: this.abilityName,
+             params: {
+               message: this.message
+             }
+           });
+         })
+       }
      }
-   }
-   ```
+     ```
 
    - 新增CommonData.ets文件，用来定义卡片数据结构。
    <!-- @[FormEditDemo_CommonData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/common/CommonData.ets) --> 
@@ -851,44 +851,44 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    ```
 
    - 卡片布局文件如下。
-   <!-- @[FormEditUIAbility_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/widget/pages/WidgetCard.ets) --> 
-   
-   ``` TypeScript
-   // entry/src/main/ets/widget/pages/WidgetCard.ets
-   @Entry
-   @Component
-   struct WidgetCard {
-     @LocalStorageProp('message') title: string = 'Hello World';
-     readonly actionType: string = 'router';
-     readonly abilityName: string = 'EntryAbility';
-     readonly message: string = 'add detail';
-     readonly fullWidthPercent: string = '100%';
-     readonly fullHeightPercent: string = '100%';
-   
-     build() {
-       Row() {
-         Column() {
-           Text(this.title)
-             .fontSize($r('app.float.font_size'))
-             .fontWeight(FontWeight.Medium)
-             .fontColor($r('sys.color.font'))
-         }
-         .width(this.fullWidthPercent)
-       }
-       .height(this.fullHeightPercent)
-       .backgroundColor($r('sys.color.comp_background_primary'))
-       .onClick(() => {
-         postCardAction(this, {
-           action: this.actionType,
-           abilityName: this.abilityName,
-           params: {
-             message: this.message
+     <!-- @[FormEditUIAbility_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/widget/pages/WidgetCard.ets) --> 
+     
+     ``` TypeScript
+     // entry/src/main/ets/widget/pages/WidgetCard.ets
+     @Entry
+     @Component
+     struct WidgetCard {
+       @LocalStorageProp('message') title: string = 'Hello World';
+       readonly actionType: string = 'router';
+       readonly abilityName: string = 'EntryAbility';
+       readonly message: string = 'add detail';
+       readonly fullWidthPercent: string = '100%';
+       readonly fullHeightPercent: string = '100%';
+     
+       build() {
+         Row() {
+           Column() {
+             Text(this.title)
+               .fontSize($r('app.float.font_size'))
+               .fontWeight(FontWeight.Medium)
+               .fontColor($r('sys.color.font'))
            }
-         });
-       })
+           .width(this.fullWidthPercent)
+         }
+         .height(this.fullHeightPercent)
+         .backgroundColor($r('sys.color.comp_background_primary'))
+         .onClick(() => {
+           postCardAction(this, {
+             action: this.actionType,
+             abilityName: this.abilityName,
+             params: {
+               message: this.message
+             }
+           });
+         })
+       }
      }
-   }
-   ```
+     ```
 
 4. 新增PreferencesUtil文件，主要是来封装[Preferences](../database/data-persistence-by-preferences.md)首选项，供业务做持久化数据使用。
    <!-- @[FormEditUIAbility_PreferencesUtil](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/common/PreferencesUtil.ets) --> 

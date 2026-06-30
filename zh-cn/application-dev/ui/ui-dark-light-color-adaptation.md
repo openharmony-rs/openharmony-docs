@@ -81,7 +81,7 @@
 
 4. "自定义节点"适配
 
-    自定义节点BuilderNode和ComponentContent需手动传递系统环境变化事件，触发节点的全量更新，详细请参考[BuilderNode系统环境变化更新](../reference/apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12)。
+    自定义节点BuilderNode和ComponentContent需手动传递系统环境变化事件，触发节点的全量更新，详细请参考BuilderNode系统环境变化更新[updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12)。
 
     <!-- @[custom_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/pages/BuilderNodeAdaptation.ets) -->
     
@@ -196,7 +196,7 @@
 ``` TypeScript
 onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
   try {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
     this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT);
   } catch (err) {
     hilog.error(DOMAIN, 'testTag', 'Failed to set colorMode. Cause: %{public}s', JSON.stringify(err));
@@ -232,7 +232,7 @@ onCreate(): void {
 
 - 建议方法
 
-  当应用跟随系统深色或浅色模式时，建议采用[AbilityStage的监听回调](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onconfigurationupdate)或[Ability的监听回调](../reference/apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate)方式，主动监听系统深浅色模式变化。一旦颜色模式发生变化，应通过绑定状态变量等方法，执行特定的业务逻辑。
+  当应用跟随系统深色或浅色模式时，建议采用AbilityStage的监听回调[onConfigurationUpdate](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onconfigurationupdate)或Ability的监听回调[onConfigurationUpdate](../reference/apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate)方式，主动监听系统深浅色模式变化。一旦颜色模式发生变化，应通过绑定状态变量等方法，执行特定的业务逻辑。
 
 - 不推荐方法
 
@@ -286,7 +286,7 @@ onCreate(): void {
 
   - 根据实时读取的深浅色模式返回不同资源值。
 
-    开启深浅色切换优化选项后，可以采用[AbilityStage的监听回调](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onconfigurationupdate)或[Ability的监听回调](../reference/apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate)方式，主动监听系统深浅色模式变化，更新对应文本的文字颜色，示例代码如下：
+    开启深浅色切换优化选项后，可以采用AbilityStage的监听回调[onConfigurationUpdate](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onconfigurationupdate)或Ability的监听回调[onConfigurationUpdate](../reference/apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate)方式，主动监听系统深浅色模式变化，更新对应文本的文字颜色，示例代码如下：
 
       ```ts
       // EntryAbility.ets
@@ -405,9 +405,9 @@ onCreate(): void {
 
         colorModeChange() {
           if (this.mode % 2 === 0) {
-            return $r("app.color.color_light")
+            this.textColor = $r("app.color.color_light")
           } else {
-            return $r("app.color.color_night")
+            this.textColor = $r("app.color.color_night")
           }
         }
 
@@ -426,7 +426,7 @@ onCreate(): void {
 
 ## 利用反色能力快速适配深色模式
 
-从API version 20开始，对于有大量存量代码，之前已经通过[资源配置](#应用跟随系统的深浅色模式)模式或[主题](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md)方式，实现部分深色模式适配。可使用系统提供的反色能力，快速实现全量深色模式适配。
+从API version 20开始，对于有大量存量代码，之前已经通过[资源配置](#应用跟随系统的深浅色模式)模式或主题[WithTheme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md)方式，实现部分深色模式适配。可使用系统提供的反色能力，快速实现全量深色模式适配。
 
 这种方式虽然管理上不如资源配置和主题方式精细可控，但适配工作量更低，应用包也不会因为大量的资源配置而膨胀，同时也能够带来一定程度上可以接受的视觉效果。
 

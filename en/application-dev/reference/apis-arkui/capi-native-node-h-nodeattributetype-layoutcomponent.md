@@ -127,7 +127,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Whether the child components along the main axis are arranged reversely. The default value is **false**. If the value is **true**, the child components are arranged in reverse order in the vertical direction. If the value is **false**, the child components are arranged in normal order in the vertical direction.<br>If an invalid value is set, the default value is used.|
+| .value[0].i32 | Whether the child components along the main axis are arranged reversely. The default value is **false**. If the value is **true**, the child components are arranged reversely along the main axis. If the value is **false**, the child components are arranged in normal order along the main axis.<br>If an invalid value is set, the default value is used.|
 
 **Returns**
 

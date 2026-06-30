@@ -1,26 +1,26 @@
 # chart
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Zhang-Dong-hui-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=0e195b413ac684e2f8f44c9b887d66d23c5fa72f translatedAt=2026-06-22T03:29:11.074Z pushedAt=2026-06-22T06:11:26.361Z -->
 
 >  **NOTE**
 >
 >  This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
 
-The **\<chart>** component displays line charts, gauge charts, and bar charts.
+The **\<chart>** component displays line charts, bar charts, gauge charts, circle charts of progress, circle charts of loading, and circle charts of proportions.
 
 ## Required Permissions
 
 None
 
-
 ## Child Components
 
 Not supported
-
 
 ## Attributes
 
@@ -135,10 +135,7 @@ For the **gauge** charts, the following attributes are also supported.
 | ------- | ------ | ---- | ---- | ---------------------- |
 | percent | number | 0    | No   | Percentage of the current value to the total value. The value ranges from 0 to 100.|
 
-
 ## Styles
-
-
 
 In addition to the [universal styles](js-components-common-styles.md), the following styles are supported.
 
@@ -152,14 +149,12 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 | radius                   | &lt;length&gt; | -                          | No   | Radius of the scale bar of the gauge component. This style is supported by the gauge chart only. This style takes precedence over the **width** and **height** in the common styles, and must be used together with **center-x** and **center-y**. This style is supported by the gauge chart only.|
 | colors                   | Array          | -                          | No   | Color of each section for the scale bar of the gauge component.<br>For example, **colors: \#ff0000, \#00ff00**. This style is supported by the gauge chart only.|
 | weights                  | Array          | -                          | No   | Weight of each section for the scale bar of the gauge component.<br>For example, **weights: 2, 2**. This style is supported by the gauge chart only.|
-| font-family<sup>5+</sup> | Array          | -                          | No   | Font style of the description text. You can use a [custom font](js-components-common-customizing-font.md).|
+| font-family<sup>5+</sup> | Array          | -                          | No    | Font family of the description text. You can use a [custom font](js-components-common-customizing-font.md). |
 | font-size<sup>5+</sup>   | &lt;length&gt; | -                          | No   | Font size of the description text.                           |
-
 
 ## Events
 
 The [universal events](js-components-common-events.md) are supported.
-
 
 ## Methods
 
@@ -172,6 +167,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
 ## Example
 
 1. Line chart
+
    ```html
    <!-- xxx.hml -->
    <div class="container">
@@ -264,6 +260,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
    ![chart01](figures/chart01.png)
 
 2. Bar chart
+
    ```html
    <!-- xxx.hml -->
    <div class="container">
@@ -332,6 +329,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
    ![chart](figures/chart.png)
 
 3. Gauge chart
+
    ```html
    <!-- xxx.hml -->
    <div class="container">
@@ -361,6 +359,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
    ![gauge](figures/gauge.png)
 
 4. Circle chart of progresses, loading progresses, or proportions
+
    ```html
    <!-- xxx.hml -->
    <div class="container">
@@ -378,6 +377,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
        </stack>
    </div>
    ```
+
    ```css
    /* xxx.css */
    .container {
@@ -394,6 +394,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
        margin-top: 30px;
    }
    ```
+
    ```js
    // xxx.js
    export default {
@@ -431,4 +432,5 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
       }
    }
    ```
+
    ![rainbow](figures/rainbow.gif)

@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:50:35.595Z pushedAt=2026-06-26T03:00:41.289Z -->
 
 The network connection management module provides basic network capabilities. You can obtain the default active data network or the list of all active data networks, enable or disable the airplane mode, and obtain network capability information.
 
@@ -535,7 +536,7 @@ For details about the error codes, see [Network Connection Management Error Code
 | 202 | Nonsystem applications use system APIs. |
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error. |
-| 2100400 | The input network interface is incorrect. |
+| 2100400 | The input network interface name is incorrect. |
 
 **Example**
 
@@ -592,7 +593,7 @@ For details about the error codes, see [Network Connection Management Error Code
 | 202 | Nonsystem applications use system APIs. |
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error. |
-| 2100400 | The input network interface is incorrect. |
+| 2100400 | The input network interface name is incorrect. |
 
 **Example**
 
@@ -650,7 +651,7 @@ For details about the error codes, see [Network Connection Management Error Code
 | 202 | Nonsystem applications use system APIs. |
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error. |
-| 2100400 | The input network interface is incorrect. |
+| 2100400 | The input network interface name is incorrect. |
 
 **Example**
 
@@ -717,8 +718,8 @@ For details about the error codes, see [Network Connection Management Error Code
 | 202 | Nonsystem applications use system APIs. |
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error. |
-| 2100400 | The input network interface is incorrect. |
-| 2100401 | The input ip address not found. |
+| 2100400 | The input network interface name is incorrect. |
+| 2100401 | The input IP address is not found. |
 
 **Example**
 

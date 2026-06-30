@@ -150,7 +150,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_composetitlebar_example01](figures/zh-cn_image_composetitlebar_example01.png)
+![image-composetitlebar-example-01](figures/image-composetitlebar-example-01.png)
 
 ### 示例2（右侧自定义按钮播报）
 从API version 18开始，该示例通过设置标题栏右侧自定义按钮属性accessibilityText、accessibilityDescription、accessibilityLevel自定义屏幕朗读播报文本。
@@ -243,7 +243,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_composetitlebar_example02](figures/zh-cn_image_composetitlebar_example02.png)
+![image-composetitlebar-example-02](figures/image-composetitlebar-example-02.png)
 
 ### 示例3（设置Symbol类型图标）
 
@@ -325,4 +325,4 @@ struct Index {
 }
 ```
 
-![示例3-ComposeTitleBar示例3 设置Symbol类型图标](figures/zh-cn_image_composetitlebar_demo_03.png)
+![示例3-ComposeTitleBar示例3 设置Symbol类型图标](figures/image-composetitlebar-demo-03.png)

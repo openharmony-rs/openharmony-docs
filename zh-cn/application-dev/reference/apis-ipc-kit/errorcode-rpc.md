@@ -71,7 +71,7 @@ Failed to write data to the shared memory.
 
 **处理步骤**
 
-1. 请检查当前从共享内存所读内容是否已经超过了映射的总大小。
+1. 请检查当前向共享内存写入的内容是否已经超过了映射的总大小。
 2. 请检查是否设置了PROT_WRITE保护权限。
 
 ## 1900004 共享内存读数据失败
@@ -91,7 +91,7 @@ Failed to read data from the shared memory.
 
 **处理步骤**
 
-1. 请检查当前向共享内存所写内容是否已经超过了映射的总大小。
+1. 请检查当前从共享内存读取的内容是否已经超过了映射的总大小。
 2. 请检查是否设置了PROT_READ保护权限。
 
 ## 1900005 IPC对象权限错误
@@ -102,7 +102,7 @@ Operation allowed only for the proxy object.
 
 **错误描述**
 
-只有proxy对象允许该操作。
+只有RemoteProxy对象允许该操作。
 
 **可能原因**
 
@@ -120,7 +120,7 @@ Operation allowed only for the remote object.
 
 **错误描述**
 
-只有remote对象允许该操作。
+只有RemoteObject对象允许该操作。
 
 **可能原因**
 
@@ -148,9 +148,9 @@ Communication failed.
 **处理步骤**
 
 1. 请检查远程对象是否已经销毁。
-2. 请检查是否注册了死亡监听，并且远程对象发生析构又重新创建。
+2. 请检查是否注册了死亡监听。如果远程对象被销毁后重新创建，需要重新获取代理对象并更新本地引用。
 
-## 1900008 非法的ipc对象
+## 1900008 非法的IPC对象
 
 **错误信息**
 
