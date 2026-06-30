@@ -67,8 +67,6 @@
    import { intelligence } from '@kit.ArkData';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
-   
-
 
 2. 获取文本嵌入模型。
 
@@ -85,7 +83,6 @@
    let textEmbedding: intelligence.TextEmbedding;
    let modelInfo:  intelligence.CloudModelInfo;
    ```
-   
 
    <!-- @[aip_getTextEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
    
@@ -101,7 +98,6 @@
        // ...
      })
    ```
-   
 
 3. 加载文本嵌入模型。
 
@@ -120,8 +116,6 @@
        // ...
      })
    ```
-   
-
 
 4. 获取文本的分块。当数据长度超过限定时，使用splitText()接口将其分块，然后再进行数据向量化。
 
@@ -146,8 +140,6 @@
        // ...
      })
    ```
-   
-
 
 5. 获取给定文本的嵌入向量。给定的文本数据可以是单个文本或文本集合。
 
@@ -178,8 +170,6 @@
        // ...
      })
    ```
-   
-
 
 6. 释放文本嵌入模型。
 
@@ -197,8 +187,7 @@
        console.error('Failed to release Model and code is ' + err.code);
        // ...
      })
-   ```
-   
+   ```   
 
 ## 图像向量化开发步骤
 
@@ -210,8 +199,6 @@
    import { intelligence } from '@kit.ArkData';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
-   
-
 
 2. 获取图像嵌入模型。
 
@@ -227,7 +214,6 @@
    }
    let imageEmbedding: intelligence.ImageEmbedding;
    ```
-   
 
    <!-- @[aip_getImageEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
    
@@ -243,8 +229,6 @@
        // ...
      })
    ```
-   
-
 
 3. 加载图像嵌入模型。
 
@@ -263,8 +247,6 @@
         // ...
       })
     ```
-   
-
 
 4. 获取给定图像的嵌入向量。
 
@@ -284,8 +266,6 @@
         // ...
       })
     ```
-   
-
 
 5. 释放图像嵌入模型。
 
@@ -304,5 +284,3 @@
        // ...
      })
    ```
-   
-
