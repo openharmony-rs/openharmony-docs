@@ -36808,9 +36808,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets",
 				"functions":[
 					{
-						"end_line":387,
+						"end_line":442,
 						"name":"view_AudioCapturerState",
-						"start_line":384
+						"start_line":439
 					},
 					{
 						"end_line":291,
