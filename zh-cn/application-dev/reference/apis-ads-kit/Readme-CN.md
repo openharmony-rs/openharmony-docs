@@ -1,4 +1,4 @@
-# Ads Kit（广告服务）<!--ads-kit-reference-->
+# Ads Kit（广告服务）<!--ads-api-->
 <!--Kit: Ads Kit-->
 <!--Subsystem: Advertising-->
 <!--Owner: @SukiEvas-->
