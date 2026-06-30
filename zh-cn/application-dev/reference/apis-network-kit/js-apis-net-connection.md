@@ -506,7 +506,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
       console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
       return;
     }
-     console.info("Succeeded to get data: " + JSON.stringify(data));
+    console.info("Succeeded to get data: " + JSON.stringify(data));
   });
 });
 ```
