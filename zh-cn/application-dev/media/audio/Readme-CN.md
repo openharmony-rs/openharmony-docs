@@ -41,6 +41,7 @@
   - [推荐使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)
   - [使用AudioCapturer开发音频录制功能(ArkTs)](using-audiocapturer-for-recording.md)
   - [低时延音频录制(C/C++)](audio-fast-recording.md)
+  - [实现后台录音](background-recording.md)
   - [管理麦克风静音状态](mic-management.md)
   - [查询和监听其他应用录制状态](audio-recording-stream-management.md)
   - [录音并发策略说明](audio-recording-concurrency.md)
@@ -54,7 +55,9 @@
   - [响应输出设备变更时合理暂停](audio-output-device-change.md)
 - 音频通话<!--audio-call-->
   - [音频通话开发概述](audio-call-overview.md)
+  - [通话语音音效](audio-call-voice-effect.md)
   - [开发音频通话功能](audio-call-development.md)
+  - [使用ArkTS接口实现音频通话](using-arkts-audio-call.md)
 - 音频性能调优<!--audio-performance-optimization-->
   - [提升音频性能体验](audio-performance.md)
   - [音频工作组管理](audio-workgroup.md)
