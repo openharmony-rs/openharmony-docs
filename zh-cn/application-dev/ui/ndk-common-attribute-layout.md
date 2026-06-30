@@ -277,9 +277,6 @@ void SetBorderStyle(
     nativeModule_->setAttribute(handle_, NODE_BORDER_STYLE, &item);
 }
 ```
-    nativeModule_->setAttribute(handle_, NODE_BORDER_RADIUS, &item);
-}
-```
 
 当组件已经具备尺寸和间距后，可以继续叠加这些边框属性，构建轮廓和视觉分隔的效果。
 
