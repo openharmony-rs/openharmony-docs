@@ -32,7 +32,7 @@ EmbeddedComponent只能在UIAbility中使用，且被拉起的EmbeddedUIExtensio
 
 ## 接口
 
-EmbeddedComponent(loader: import('../api/@ohos.app.ability.Want').default, type: EmbeddedType, options: EmbeddedOptions)
+EmbeddedComponent(loader: import('../api/@ohos.app.ability.Want').default, type: EmbeddedType, options?: EmbeddedOptions)
 
 创建跨进程嵌入式组件，用于显示同包名EmbeddedUIExtensionAbility的UI。
 
@@ -46,7 +46,7 @@ EmbeddedComponent(loader: import('../api/@ohos.app.ability.Want').default, type:
 | --------------------- | ---------------------------------------------------------- | ---- | ------------------------------------ |
 | loader                | import('../api/@ohos.app.ability.[Want](../../apis-ability-kit/js-apis-app-ability-want.md)').default | 是   | 要加载的EmbeddedUIExtensionAbility。 |
 | type                  | [EmbeddedType](ts-appendix-enums.md#embeddedtype12)                              | 是   | 提供方的类型。                       |
-| options| [EmbeddedOptions](#embeddedoptions) | 是   | 需要传递的构造参数。<br>**起始版本：** 26.0.0                     |
+| options| [EmbeddedOptions](#embeddedoptions) | 否   | 需要传递的构造参数。<br>**起始版本：** 26.0.0                     |
 
 ## 属性
 
