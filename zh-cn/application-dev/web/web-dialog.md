@@ -535,6 +535,7 @@
 
     ArkTS-Sta示例：
     <!-- @[AchieveConfirmDialogPage2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ShowWebPageDialog/entry2/src/main/ets/pages/AchieveConfirmDialogPage2.ets) --> 
+    
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     import { ConfirmDialog } from '@ohos.arkui.advanced.Dialog';
@@ -549,7 +550,7 @@
       CustomDialogController
     } from '@ohos.arkui.component'
     import { State } from '@ohos.arkui.stateManagement'
-
+    
     @Entry
     @Component
     struct DialogConfirmDialog {
@@ -558,7 +559,7 @@
       @State result: JsResult | null = null;
       webviewController: webview.WebviewController = new webview.WebviewController(undefined);
       isChecked: boolean = false;
-      dialogControllerCheckBox: CustomDialogController = new CustomDialogController({
+      dialogControllerConfirmDialog: CustomDialogController = new CustomDialogController({
         builder: ConfirmDialog({
           title: this.title,
           content: this.message,
@@ -587,11 +588,11 @@
         }),
         onWillDismiss: () => {
           this.result?.handleCancel();
-          this.dialogControllerCheckBox.close();
+          this.dialogControllerConfirmDialog.close();
         },
         autoCancel: true
       })
-
+    
       build() {
         Column() {
           Web({ src: $rawfile('confirm.html'), controller: this.webviewController })
@@ -605,7 +606,7 @@
                   this.title = 'Confirm';
                   this.message = event.message;
                   this.result = event.result;
-                  this.dialogControllerCheckBox.open();
+                  this.dialogControllerConfirmDialog.open();
                 }
               }
               return true;
