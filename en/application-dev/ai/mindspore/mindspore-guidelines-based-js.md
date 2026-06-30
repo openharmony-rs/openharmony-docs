@@ -360,9 +360,9 @@ If you have other pre-trained models for image classification, convert the origi
 
 Touch the **photo** button on the device screen, select an image, and touch **OK**. The top 4 categories of the image are displayed below the image.
 
-![step1](figures/step1.png)         ![step2](figures/step2.png)  
+![step1](figures/step1.png)
 
-![step3](figures/step3.png)         ![step4](figures/step4.png) 
+                                   ![step4](figures/step4.png)
 
 ## Related Samples
 

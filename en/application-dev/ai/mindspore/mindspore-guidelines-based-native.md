@@ -587,9 +587,9 @@ struct Index {
 
 Touch the **photo** button on the device screen, select an image, and touch **OK**. The top 4 categories of the image are displayed below the image.
 
-![stepc1](figures/stepc1.png)           ![step2](figures/step2.png)
+![stepc1](figures/stepc1.png)           
 
-![step3](figures/step3.png)         ![stepc4](figures/stepc4.png) 
+                                    ![stepc4](figures/stepc4.png) 
 
 ## Related Samples
 
