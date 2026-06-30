@@ -346,7 +346,7 @@ off(type: 'connectionAccepted', callback?: Callback&lt;Connection&gt;): void
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'connectionAccepted'，收到对端连接，触发该事件。   |
-| callback | Callback&lt;[Connection](#connection)&gt; | 否 | 注册的回调函数，参数为连接对象[Connection](#connection)。 需传入on方法最后一次注册的回调函数，用于取消该回调的订阅，默认缺省效果与传入行为一致。|
+| callback | Callback&lt;[Connection](#connection)&gt; | 否 | 注册的回调函数，参数为连接对象[Connection](#connection)。 需传入对应on方法最后一次注册的回调函数，用于取消该回调的订阅，默认缺省效果与传入行为一致。|
 
 **错误码：**
 
@@ -460,7 +460,7 @@ off(type: 'serverStopped', callback?: Callback&lt;number&gt;): void
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'serverStopped'，底层服务异常时触发。   |
-| callback | Callback&lt;number&gt;| 否 | 注册的回调函数，当底层服务异常停止时触发，number为返回的错误码。需传入on方法最后一次注册的回调函数，用于取消该回调的订阅，默认缺省效果与传入行为一致。 |
+| callback | Callback&lt;number&gt;| 否 | 注册的回调函数，当底层服务异常停止时触发，number为返回的错误码。需传入对应on方法最后一次注册的回调函数，用于取消该回调的订阅，默认缺省效果与传入行为一致。 |
 
 **错误码：**
 
@@ -853,7 +853,7 @@ off(type: 'connectResult', callback?: Callback&lt;ConnectResult&gt;): void
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'connectResult'，完成`connect()`调用，触发该事件。   |
-| callback | Callback&lt;[ConnectResult](#connectresult)&gt; | 否    | 注册的回调函数。需传入on方法最后一次注册的回调函数，用于取消该回调的订阅，默认缺省效果与传入行为一致。 |
+| callback | Callback&lt;[ConnectResult](#connectresult)&gt; | 否    | 注册的回调函数。需传入对应on方法最后一次注册的回调函数，用于取消该回调的订阅，默认缺省效果与传入行为一致。 |
 
 **错误码：**
 
@@ -962,7 +962,7 @@ off(type: 'disconnected', callback?: Callback&lt;number&gt;): void
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'disconnected'，连接被动断开或底层异常断开时，触发该事件。   |
-| callback | Callback&lt;number&gt; | 否   | 注册的回调函数，连接被动断开或底层异常断开时触发，number为返回的错误码。需传入on方法最后一次注册的回调函数，用于取消该回调的订阅，默认缺省效果与传入行为一致。 |
+| callback | Callback&lt;number&gt; | 否   | 注册的回调函数，连接被动断开或底层异常断开时触发，number为返回的错误码。需传入对应on方法最后一次注册的回调函数，用于取消该回调的订阅，默认缺省效果与传入行为一致。 |
 
 **错误码：**
 
@@ -1072,7 +1072,7 @@ off(type: 'dataReceived', callback?: Callback&lt;ArrayBuffer&gt;): void
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'dataReceived'，收到数据时，触发该事件。   |
-| callback | Callback&lt;[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)&gt; | 否    | 回调函数，用于接收对端设备发送的数据。回调参数data为接收到的数据，类型为ArrayBuffer。需传入on方法最后一次注册的回调函数，用于取消该回调的订阅，默认缺省效果与传入行为一致。 |
+| callback | Callback&lt;[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)&gt; | 否    | 回调函数，用于接收对端设备发送的数据。回调参数data为接收到的数据，类型为ArrayBuffer。需传入对应on方法最后一次注册的回调函数，用于取消该回调的订阅，默认缺省效果与传入行为一致。 |
 
 **错误码：**
 
