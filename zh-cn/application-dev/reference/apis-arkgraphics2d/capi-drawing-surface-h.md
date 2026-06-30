@@ -8,9 +8,9 @@
 
 ## 概述
 
-本文件定义了与surface相关的功能函数，包括surface的创建、销毁和使用等。surface对象用于管理画布绘制的内容，支持通过图形处理器上下文创建离屏surface和与屏幕窗口绑定的surface，适用于需要进行图形处理器加速绘制和绘制内容上屏显示的场景。<br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
+本文件定义了与surface相关的功能函数，包括surface的创建、销毁和使用等。surface对象用于管理画布绘制的内容，支持通过图形处理器上下文创建离屏surface和与屏幕窗口绑定的surface。<br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
 
-**引用文件：** `<native_drawing/drawing_surface.h>`
+**引用文件：** \<native_drawing/drawing_surface.h\>
 
 **库：** libnative_drawing.so
 
@@ -26,11 +26,11 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_Drawing_Surface* OH_Drawing_SurfaceCreateFromGpuContext(OH_Drawing_GpuContext* gpuContext, bool flag, OH_Drawing_Image_Info imageInfo)](#oh_drawing_surfacecreatefromgpucontext) | 使用图形处理器上下文创建一个surface对象，用于管理画布绘制的内容。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>gpuContext为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
-| [OH_Drawing_Surface* OH_Drawing_SurfaceCreateOnScreen(OH_Drawing_GpuContext* gpuContext, OH_Drawing_Image_Info imageInfo, void* window)](#oh_drawing_surfacecreateonscreen) | 使用图形处理器上下文创建一个与屏幕窗口绑定的surface对象，用于管理画布绘制的内容。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>gpuContext或window为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。<br>imageInfo的宽高和window的宽高需保持一致。 |
-| [OH_Drawing_Canvas* OH_Drawing_SurfaceGetCanvas(OH_Drawing_Surface* surface)](#oh_drawing_surfacegetcanvas) | 通过surface对象获取画布对象。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>surface为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
-| [OH_Drawing_ErrorCode OH_Drawing_SurfaceFlush(OH_Drawing_Surface* surface)](#oh_drawing_surfaceflush) | 将surface对象上的画布绘制内容提交给图形处理器处理，完成绘制内容上屏显示。 |
-| [void OH_Drawing_SurfaceDestroy(OH_Drawing_Surface* surface)](#oh_drawing_surfacedestroy) | 销毁surface对象并回收该对象占用的内存。 |
+| [OH_Drawing_Surface* OH_Drawing_SurfaceCreateFromGpuContext(OH_Drawing_GpuContext* gpuContext, bool flag, OH_Drawing_Image_Info imageInfo)](#oh_drawing_surfacecreatefromgpucontext) | 使用图形处理器上下文创建一个surface对象，用于管理画布绘制的内容。当需要将绘制内容纳入缓存管理以提升性能时，flag设置为true；当绘制内容为临时数据、不需要长期缓存时，flag设置为false。若需将绘制内容上屏显示（配合[OH_Drawing_SurfaceFlush](#oh_drawing_surfaceflush)使用），请改用[OH_Drawing_SurfaceCreateOnScreen](#oh_drawing_surfacecreateonscreen)创建与屏幕窗口绑定的surface对象。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>gpuContext为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。使用完毕后，应调用[OH_Drawing_SurfaceDestroy](#oh_drawing_surfacedestroy)销毁surface对象并释放资源。 |
+| [OH_Drawing_Surface* OH_Drawing_SurfaceCreateOnScreen(OH_Drawing_GpuContext* gpuContext, OH_Drawing_Image_Info imageInfo, void* window)](#oh_drawing_surfacecreateonscreen) | 使用图形处理器上下文创建一个与屏幕窗口绑定的surface对象，用于管理画布绘制的内容。若不需要上屏显示，请改用[OH_Drawing_SurfaceCreateFromGpuContext](#oh_drawing_surfacecreatefromgpucontext)创建离屏surface对象。使用完毕后，应调用[OH_Drawing_SurfaceDestroy](#oh_drawing_surfacedestroy)销毁surface对象并释放资源。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>gpuContext或window为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。<br>imageInfo的宽高和window的宽高需保持一致，否则surface对象会创建失败并返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [OH_Drawing_Canvas* OH_Drawing_SurfaceGetCanvas(OH_Drawing_Surface* surface)](#oh_drawing_surfacegetcanvas) | 通过surface对象获取画布对象。典型使用流程：先通过[OH_Drawing_SurfaceCreateFromGpuContext](#oh_drawing_surfacecreatefromgpucontext)或[OH_Drawing_SurfaceCreateOnScreen](#oh_drawing_surfacecreateonscreen)创建surface对象，再调用本接口获取画布对象进行绘制，最后调用[OH_Drawing_SurfaceDestroy](#oh_drawing_surfacedestroy)销毁surface对象。若需将绘制内容上屏显示，应使用[OH_Drawing_SurfaceCreateOnScreen](#oh_drawing_surfacecreateonscreen)创建surface，并在绘制完成后调用[OH_Drawing_SurfaceFlush](#oh_drawing_surfaceflush)提交绘制内容。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>surface为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [OH_Drawing_ErrorCode OH_Drawing_SurfaceFlush(OH_Drawing_Surface* surface)](#oh_drawing_surfaceflush) | 将surface对象上的画布绘制内容提交给图形处理器处理，完成绘制内容上屏显示。该接口仅对通过[OH_Drawing_SurfaceCreateOnScreen](#oh_drawing_surfacecreateonscreen)创建的surface对象有效，对由[OH_Drawing_SurfaceCreateFromGpuContext](#oh_drawing_surfacecreatefromgpucontext)创建的离屏surface对象调用本接口没有任何效果。典型使用流程：先通过[OH_Drawing_SurfaceCreateOnScreen](#oh_drawing_surfacecreateonscreen)创建surface对象，再通过[OH_Drawing_SurfaceGetCanvas](#oh_drawing_surfacegetcanvas)获取画布对象进行绘制，最后调用本接口提交绘制内容上屏显示。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>surface为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [void OH_Drawing_SurfaceDestroy(OH_Drawing_Surface* surface)](#oh_drawing_surfacedestroy) | 销毁surface对象并回收该对象占用的内存。该接口应与[OH_Drawing_SurfaceCreateFromGpuContext](#oh_drawing_surfacecreatefromgpucontext)或[OH_Drawing_SurfaceCreateOnScreen](#oh_drawing_surfacecreateonscreen)配合使用，上述创建接口返回的surface对象在使用完毕后必须调用本接口销毁，否则会导致资源泄漏。调用本接口销毁surface对象后，通过[OH_Drawing_SurfaceGetCanvas](#oh_drawing_surfacegetcanvas)获取的画布对象不应再使用，其生命周期由surface对象管理。 |
 
 ## 函数说明
 
@@ -42,7 +42,7 @@ OH_Drawing_Surface* OH_Drawing_SurfaceCreateFromGpuContext(OH_Drawing_GpuContext
 
 **描述**
 
-使用图形处理器上下文创建一个surface对象，用于管理画布绘制的内容。适用于离屏渲染、纹理生成、图像处理等不需要直接上屏显示的场景。当需要将绘制内容纳入缓存管理以提升性能时，flag设置为true；当绘制内容为临时数据、不需要长期缓存时，flag设置为false。若需将绘制内容上屏显示（配合[OH_Drawing_SurfaceFlush](#oh_drawing_surfaceflush)使用），请改用[OH_Drawing_SurfaceCreateOnScreen](#oh_drawing_surfacecreateonscreen)创建与屏幕窗口绑定的surface对象。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>gpuContext为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。使用完毕后，应调用[OH_Drawing_SurfaceDestroy](#oh_drawing_surfacedestroy)销毁surface对象并释放资源。
+使用图形处理器上下文创建一个surface对象，用于管理画布绘制的内容。当需要将绘制内容纳入缓存管理以提升性能时，flag设置为true；当绘制内容为临时数据、不需要长期缓存时，flag设置为false。若需将绘制内容上屏显示（配合[OH_Drawing_SurfaceFlush](#oh_drawing_surfaceflush)使用），请改用[OH_Drawing_SurfaceCreateOnScreen](#oh_drawing_surfacecreateonscreen)创建与屏幕窗口绑定的surface对象。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>gpuContext为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。使用完毕后，应调用[OH_Drawing_SurfaceDestroy](#oh_drawing_surfacedestroy)销毁surface对象并释放资源。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -71,7 +71,7 @@ OH_Drawing_Surface* OH_Drawing_SurfaceCreateOnScreen(OH_Drawing_GpuContext* gpuC
 
 **描述**
 
-使用图形处理器上下文创建一个与屏幕窗口绑定的surface对象，用于管理画布绘制的内容。适用于需要在屏幕上实时显示绘制内容的场景，如游戏画面渲染、视频播放器叠加层显示、UI界面图形处理器加速绘制等。若不需要上屏显示（如离屏渲染、纹理生成、图像处理等场景），请改用[OH_Drawing_SurfaceCreateFromGpuContext](#oh_drawing_surfacecreatefromgpucontext)创建离屏surface对象。使用完毕后，应调用[OH_Drawing_SurfaceDestroy](#oh_drawing_surfacedestroy)销毁surface对象并释放资源。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>gpuContext或window为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。<br>imageInfo的宽高和window的宽高需保持一致，否则surface对象会创建失败并返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+使用图形处理器上下文创建一个与屏幕窗口绑定的surface对象，用于管理画布绘制的内容。若不需要上屏显示，请改用[OH_Drawing_SurfaceCreateFromGpuContext](#oh_drawing_surfacecreatefromgpucontext)创建离屏surface对象。使用完毕后，应调用[OH_Drawing_SurfaceDestroy](#oh_drawing_surfacedestroy)销毁surface对象并释放资源。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>gpuContext或window为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。<br>imageInfo的宽高和window的宽高需保持一致，否则surface对象会创建失败并返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 

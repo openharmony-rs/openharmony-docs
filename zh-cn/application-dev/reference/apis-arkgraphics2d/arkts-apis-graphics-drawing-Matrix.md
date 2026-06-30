@@ -79,7 +79,7 @@ let matrix2 = new drawing.Matrix(matrix);
 
 isAffine(): boolean
 
-判断当前矩阵是否为仿射矩阵。仿射矩阵是一种包括平移、旋转、缩放等变换的矩阵。常用于优化渲染路径、简化计算或验证矩阵类型等场景。
+判断当前矩阵是否为仿射矩阵。仿射矩阵是一种包括平移、旋转、缩放等变换的矩阵。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -104,7 +104,7 @@ console.info('isAffine :', isAffine);
 
 rectStaysRect(): boolean
 
-判断经过该矩阵映射后的矩形的形状是否仍为矩形。常用于视图布局优化、碰撞检测简化、渲染路径选择等场景。
+判断经过该矩阵映射后的矩形的形状是否仍为矩形。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -226,8 +226,8 @@ setScale(sx: number, sy: number, px: number, py: number): void
 | ----------- | ---------------------------------------- | ---- | ------------------- |
 | sx          | number                  | 是    | x轴方向缩放因子，为负数时可看作是先关于x = px作镜像翻转后再进行缩放，该参数为浮点数。     |
 | sy          | number                  | 是    | y轴方向缩放因子，为负数时可看作是先关于y = py作镜像翻转后再进行缩放，该参数为浮点数。     |
-| px          | number                  | 是    |  缩放中心点的x轴坐标，该参数为浮点数。单位为物理像素px。      |
-| py          | number                  | 是    |  缩放中心点的y轴坐标，该参数为浮点数。单位为物理像素px。      |
+| px          | number                  | 是    | 缩放中心点的x轴坐标，该参数为浮点数。单位为物理像素px。      |
+| py          | number                  | 是    | 缩放中心点的y轴坐标，该参数为浮点数。单位为物理像素px。      |
 
 **错误码：**
 
@@ -356,7 +356,7 @@ setMatrix(matrix: Array\<number\> \| Matrix): void
 
 | 参数名 | 类型                                                 | 必填 | 说明             |
 | ------ | ---------------------------------------------------- | ---- | ---------------- |
-| matrix | Array\<number\> \| [Matrix](arkts-apis-graphics-drawing-Matrix.md) | 是   | 用于更新的数组或矩阵。当类型为数组时，长度必须为9。 |
+| matrix | Array\<number\> \| [Matrix](arkts-apis-graphics-drawing-Matrix.md) | 是   | 用于更新的数组或矩阵。当类型为数组时，长度固定为9。 |
 
 **示例：**
 
@@ -470,7 +470,7 @@ if (matrix1.isEqual(matrix2)) {
 
 invert(matrix: Matrix): boolean
 
-将矩阵matrix设置为当前矩阵的逆矩阵，并返回是否设置成功的结果。常用于反向坐标变换（如将变换后的坐标还原回原坐标）、撤销已应用的变换等场景。
+将矩阵matrix设置为当前矩阵的逆矩阵，并返回是否设置成功的结果。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -780,7 +780,7 @@ matrix.preSkew(2.0, 1.0, 2.0, 1.0);
 
 mapRadius(radius: number): number
 
-返回半径为radius的圆经过当前矩阵映射形成的椭圆的平均半径。平均半径的平方为椭圆长轴长度和短轴长度的乘积。若当前矩阵包含透视变换，则该结果无意义。常用于图形绘制中估算变换后圆形笔触的粗细，或在测量场景中计算变换后圆形对象的等效半径。
+返回半径为radius的圆经过当前矩阵映射形成的椭圆的平均半径。平均半径的平方为椭圆长轴长度和短轴长度的乘积。若当前矩阵包含透视变换，则该结果无意义。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -904,7 +904,7 @@ console.info("matrix= "+matrix.getAll().toString());
 
 mapPoints(src: Array\<common2D.Point>): Array\<common2D.Point>
 
-通过矩阵变换将源点数组映射到目标点数组。常用于触摸事件坐标转换、路径变换、批量坐标映射等场景。
+通过矩阵变换将源点数组映射到目标点数组。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1014,7 +1014,7 @@ if (matrix.mapRect(dst, src)) {
 
 setRectToRect(src: common2D.Rect, dst: common2D.Rect, scaleToFit: ScaleToFit): boolean
 
-将当前矩阵设置为能使源矩形映射到目标矩形的变换矩阵。常用于内容自适应缩放、视图区域映射、图片裁剪显示等场景。
+将当前矩阵设置为能使源矩形映射到目标矩形的变换矩阵。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1058,7 +1058,7 @@ if (matrix.setRectToRect(src, dst, scaleToFit)) {
 
 setPolyToPoly(src: Array\<common2D.Point>, dst: Array\<common2D.Point>, count: number): boolean
 
-将当前矩阵设置为能够将源点数组映射到目标点数组的变换矩阵。源点和目标点的个数必须大于等于0，小于等于4。常用于图像透视校正、触摸坐标映射、图形对齐等场景。
+将当前矩阵设置为能够将源点数组映射到目标点数组的变换矩阵。源点和目标点的个数必须大于等于0，小于等于4。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1068,7 +1068,7 @@ setPolyToPoly(src: Array\<common2D.Point>, dst: Array\<common2D.Point>, count: n
 | --------------- | ------- | ---- | ----------------------------------------------------------- |
 | src | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)> | 是   | 源点数组，长度必须为count。 |
 | dst | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)> | 是   | 目标点数组，长度必须为count。 |
-| count | number | 是   | src和dst中点的数量，取值范围为[0, 4]，该参数为整数。 |
+| count | number | 是   | src和dst中点的数量，取值范围为[0, 4]，包含0和4，该参数为整数。 |
 
 **返回值：**
 

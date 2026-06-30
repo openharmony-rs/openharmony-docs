@@ -9,9 +9,9 @@
 
 ## 概述
 
-声明与绘图模块中的图形处理器上下文对象相关的函数，用于创建、配置和销毁图形处理器上下文对象，为绘图模块提供图形处理器加速渲染所需的上下文环境，适用于需要进行高性能图形渲染的场景。<br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
+声明与绘图模块中的图形处理器上下文对象相关的函数，用于创建、配置和销毁图形处理器上下文对象，为绘图模块提供图形处理器加速渲染所需的上下文环境。<br>本模块为单线程模型策略，需要调用方自行管理线程安全和上下文状态的切换。
 
-**引用文件：** <native_drawing/drawing_gpu_context.h>
+**引用文件：** \<native_drawing/drawing_gpu_context.h\>
 
 **库：** libnative_drawing.so
 
@@ -34,7 +34,7 @@
 | 名称 | 描述 |
 | -- | -- |
 | [OH_Drawing_GpuContext* OH_Drawing_GpuContextCreateFromGL(OH_Drawing_GpuContextOptions gpuContextOptions)](#oh_drawing_gpucontextcreatefromgl) | 用于创建一个使用OpenGL作为后端接口的图形处理器上下文对象。 |
-| [OH_Drawing_GpuContext* OH_Drawing_GpuContextCreate(void)](#oh_drawing_gpucontextcreate) | 用于创建一个图形处理器上下文对象，使用的后端类型取决于运行设备。 |
+| [OH_Drawing_GpuContext* OH_Drawing_GpuContextCreate(void)](#oh_drawing_gpucontextcreate) | 用于创建一个图形处理器上下文对象，使用的后端类型取决于运行设备。与已废弃的[OH_Drawing_GpuContextCreateFromGL](#oh_drawing_gpucontextcreatefromgl)相比，本接口不限定OpenGL后端，可根据运行设备自动选择合适的后端实现，推荐在新开发中使用本接口。具体后端类型由系统根据运行设备所支持的图形后端能力自动选择。 |
 | [void OH_Drawing_GpuContextDestroy(OH_Drawing_GpuContext* gpuContext)](#oh_drawing_gpucontextdestroy) | 用于销毁图形处理器上下文对象并回收该对象占用的内存。 |
 
 ## 函数说明
@@ -47,21 +47,17 @@ OH_Drawing_GpuContext* OH_Drawing_GpuContextCreateFromGL(OH_Drawing_GpuContextOp
 
 **描述**
 
-> **已废弃：** 从API version 18开始废弃，建议使用替代接口[OH_Drawing_GpuContextCreate](#oh_drawing_gpucontextcreate)。
-
-用于创建一个使用OpenGL作为后端接口的图形处理器上下文对象。适用于需要图形处理器加速的2D图形渲染场景，如游戏画面渲染、复杂动画绘制等高性能图形应用。
+用于创建一个使用OpenGL作为后端接口的图形处理器上下文对象。
 
 **配对调用：**
 - 调用此方法创建图形处理器上下文对象后，必须在使用完毕后调用[OH_Drawing_GpuContextDestroy](#oh_drawing_gpucontextdestroy)销毁该对象并回收内存。
-- 未调用OH_Drawing_GpuContextDestroy会导致上下文对象资源泄漏。
+- 未调用[OH_Drawing_GpuContextDestroy](#oh_drawing_gpucontextdestroy)会导致上下文对象资源泄漏。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
-**废弃版本：** 18
-
-**替代接口：** [OH_Drawing_GpuContextCreate](#oh_drawing_gpucontextcreate)
+**废弃版本：** 从API version 18开始废弃，建议使用替代接口[OH_Drawing_GpuContextCreate](#oh_drawing_gpucontextcreate)。
 
 
 **参数：**
@@ -84,11 +80,11 @@ OH_Drawing_GpuContext* OH_Drawing_GpuContextCreate(void)
 
 **描述**
 
-用于创建一个图形处理器上下文对象，使用的后端类型取决于运行设备。适用于需要图形处理器加速的2D图形渲染场景，如游戏画面渲染、复杂动画绘制等高性能图形应用，且不限定特定后端实现，可跨设备使用。与已废弃的[OH_Drawing_GpuContextCreateFromGL](#oh_drawing_gpucontextcreatefromgl)相比，本接口不限定OpenGL后端，可根据运行设备自动选择合适的后端实现，推荐在新开发中使用本接口。具体后端类型由系统根据运行设备所支持的图形后端能力自动选择。
+用于创建一个图形处理器上下文对象，使用的后端类型取决于运行设备。与已废弃的[OH_Drawing_GpuContextCreateFromGL](#oh_drawing_gpucontextcreatefromgl)相比，本接口不限定OpenGL后端，可根据运行设备自动选择合适的后端实现，推荐在新开发中使用本接口。具体后端类型由系统根据运行设备所支持的图形后端能力自动选择。
 
 **配对调用：**
 - 调用此方法创建图形处理器上下文对象后，必须在使用完毕后调用[OH_Drawing_GpuContextDestroy](#oh_drawing_gpucontextdestroy)销毁该对象并回收内存。
-- 未调用OH_Drawing_GpuContextDestroy会导致上下文对象资源泄漏。
+- 未调用[OH_Drawing_GpuContextDestroy](#oh_drawing_gpucontextdestroy)会导致上下文对象资源泄漏。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
