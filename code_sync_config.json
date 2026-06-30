@@ -14392,7 +14392,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/WatchCorrectUsage.ets",
 				"functions":[
 					{
-						"end_line":43,
+						"end_line":47,
 						"name":"executing_builder_function_watch_correct_usage",
 						"start_line":15
 					}
