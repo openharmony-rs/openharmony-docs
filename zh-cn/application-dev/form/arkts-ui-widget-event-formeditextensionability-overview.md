@@ -505,6 +505,53 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    - 为确保预览卡片和被编辑卡片信息同步，新建卡片时，在onAddForm回调函数中需要判断'ohos.extra.param.key.edit_form_id'字段是否携带了卡片ID。如果携带了卡片ID，则就是预览卡片则需要从数据库获取被编辑卡片的信息。
      <!-- @[FormEditDemo_EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets) --> 
      
+     ``` TypeScript
+     // entry/src/main/ets/entryformability/EntryFormAbility.ets
+     import { formBindingData, FormExtensionAbility, formInfo } from '@kit.FormKit';
+     import { Want } from '@kit.AbilityKit';
+     import { PreferencesUtil } from '../common/PreferencesUtil';
+     import { FormData } from '../common/CommonData';
+     
+     export default class EntryFormAbility extends FormExtensionAbility {
+       onAddForm(want: Want) {
+         let editFormId: string = '';
+         let formId: string = '';
+         // 初始化首选项数据库
+         let util = PreferencesUtil.getInstance();
+         let preferences = util.getPreferences(this.context);
+         if (want.parameters) {
+           formId = want.parameters[formInfo.FormParam.IDENTITY_KEY] as string;
+           editFormId = want.parameters['ohos.extra.param.key.edit_form_id'] as string;
+         }
+         // 如果是编辑页面的预览卡片需要在创建时把编辑的卡片信息更新到预览卡片上
+         if (editFormId && preferences) {
+           let formData: FormData = util.getValue(preferences, editFormId) as FormData;
+           return formBindingData.createFormBindingData({
+             'message': formData.text
+           });
+         }
+     
+         return formBindingData.createFormBindingData('');
+       }
+     
+       onCastToNormalForm(formId: string) {
+       }
+     
+       onUpdateForm(formId: string) {
+       }
+     
+       onFormEvent(formId: string, message: string) {
+       }
+     
+       onRemoveForm(formId: string) {
+       }
+     
+       onAcquireFormState(want: Want) {
+         return formInfo.FormState.READY;
+       }
+     }
+     ```
+     
 
    - 卡片布局文件如下。
      <!-- @[FormEditDemo_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/widget/pages/WidgetCard.ets) -->
