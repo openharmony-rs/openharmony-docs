@@ -116,7 +116,7 @@ enum ArkWeb_NetError
 | ARKWEB_ERR_HTTPS_PROXY_TUNNEL_RESPONSE_REDIRECT = -140 | 通过HTTPS代理创建SSL隧道连接的请求收到了302（临时重定向）响应。响应体可能包含请求失败原因的说明。 |
 | ARKWEB_ERR_SSL_CLIENT_AUTH_SIGNATURE_FAILED = -141 | 我们无法使用客户端证书的私钥签署SSL客户端身份验证握手的CertificateVerify数据。 |
 | ARKWEB_ERR_MSG_TOO_BIG = -142 | 消息对于传输来说太大了。（例如，UDP消息超过了大小阈值）。 |
-| ARKWEB_ERR_WS_PROTOCOL_ERROR = -145 | Websocket协议错误。表示由于帧格式错误或其他协议违规，我们正在终止连接。 |
+| ARKWEB_ERR_WS_PROTOCOL_ERROR = -145 | WebSocket协议错误。表示由于帧格式错误或其他协议违规，我们正在终止连接。 |
 | ARKWEB_ERR_ADDRESS_IN_USE = -147 | 当尝试绑定已使用的地址时返回。 |
 | ARKWEB_ERR_SSL_HANDSHAKE_NOT_COMPLETED = -148 | 由于SSL握手尚未完成，操作失败。 |
 | ARKWEB_ERR_SSL_BAD_PEER_PUBLIC_KEY = -149 | SSL对等方的公钥无效。 |
@@ -283,7 +283,7 @@ enum ArkWeb_NetError
 | ARKWEB_ERR_DNS_SEARCH_EMPTY = -805 | 后缀搜索列表规则阻止了给定主机名的解析。 |
 | ARKWEB_ERR_DNS_SORT_ERROR = -806 | 未能根据RFC3484对地址进行排序。 |
 | ARKWEB_ERR_DNS_SECURE_RESOLVER_HOSTNAME_RESOLUTION_FAILED = -808 | 未能解析DNS-over-HTTPS服务器的主机名。 |
-| ARKWEB_ERR_DNS_NAME_HTTPS_ONLY = -809 | DNS已识别请求因不安全的连接（http/ws）而被禁止。应用程序应该像处理HTTP重定向一样处理这个错误，将连接重定向到安全的https或wss。 |
+| ARKWEB_ERR_DNS_NAME_HTTPS_ONLY = -809 | DNS已识别请求因不安全的连接（HTTP/WS）而被禁止。应用程序应该像处理HTTP重定向一样处理这个错误，将连接重定向到安全的HTTPS或WSS。 |
 | ARKWEB_ERR_DNS_REQUEST_CANCELED = -810 | 与此任务相关的所有DNS请求已被取消。 |
 | ARKWEB_ERR_DNS_NO_MATCHING_SUPPORTED_ALPN = -811 | HTTPS记录的主机名解析预期未能使用受支持协议的ALPN值进行解析。 |
 
