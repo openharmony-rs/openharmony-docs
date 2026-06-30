@@ -339,6 +339,33 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    - 新增FormEditSecPage.ets文件用来实现二级编辑页布局。
    <!-- @[FormEditDemo_FormEditSecPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/pages/FormEditSecPage.ets) -->
    
+   ``` TypeScript
+   // entry/src/main/ets/pages/FormEditSecPage.ets
+   @Entry
+   @Component
+   struct FormEditSecPage {
+     @State message: string | ResourceStr = $r('app.string.button_three');
+   
+     build() {
+       RelativeContainer() {
+         Text(this.message)
+           .id('HelloWorld')
+           .fontSize($r('app.float.page_text_font_size'))
+           .fontWeight(FontWeight.Bold)
+           .alignRules({
+             center: { anchor: '__container__', align: VerticalAlign.Center },
+             middle: { anchor: '__container__', align: HorizontalAlign.Center }
+           })
+           .onClick(() => {
+             this.message = 'Welcome';
+           })
+       }
+       .height('100%')
+       .width('100%')
+     }
+   }
+   ```
+   
    - 加载布局文件。
 
        ```json5
