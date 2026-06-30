@@ -217,6 +217,9 @@ inline std::shared_ptr<ArkUITextNode> CreateOffsetItem()
 ![UICommonAttributeLayout_3](figures/UICommonAttributeLayout_3.jpg)
 
 ## 使用边框属性
+
+边框属性在NDK中的使用方式与上文一致，同样是先封装方法，再在具体组件上组合调用。方法封装如下。
+
 <!-- @[layout_border_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKLayoutSample/entry/src/main/cpp/ArkUINode.h) -->  
 
 ``` C
