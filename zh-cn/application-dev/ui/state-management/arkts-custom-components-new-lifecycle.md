@@ -744,7 +744,7 @@ Parent myBuilt
 Child myAppear
 Child myBuilt
 ```
-当showchild为默认值true时，该示例的生命周期流程图如下所示：
+当showChild为默认值true时，该示例的生命周期流程图如下所示：
 
 ![custom-component-lifecycle-demo2](figures/custom-component-lifecycle-nest.png)
 
@@ -904,7 +904,7 @@ GrandChild myAppear
 GrandChild myBuilt
 ```
 
-- 点击Button按钮，更改showChild为false，回收Child组件和GrandChild组件，执行Child和GrandChild的myRecycle函数。
+- 点击Button按钮，更改switch为false，回收Child组件和GrandChild组件，执行Child和GrandChild的myRecycle函数。
 
 ```text
 Child myRecycle
@@ -1182,38 +1182,38 @@ export struct SwiperExample {
   }
 }
 ```
-启动程序后，先按start按钮，此时只有swipe缓存的五个节点开始执行aboutToAppear和myAppear，非缓存的节点未触发aboutToAppear和myAppear。
+启动程序后，先按start按钮，此时只有Swiper缓存的五个节点开始执行aboutToAppear和myAppear，非缓存的节点未触发aboutToAppear和myAppear。
 
 日志输出信息如下：
 
 ```text
-SwiperPage:aboutToAppear 0
-SwiperPage:myAppear 0
-SwiperPage:aboutToAppear 11
-SwiperPage:myAppear 11
-SwiperPage:aboutToAppear 1
-SwiperPage:myAppear 1
-SwiperPage:aboutToAppear 10
-SwiperPage:myAppear 10
-SwiperPage:aboutToAppear 2
-SwiperPage:myAppear 2
+SwiperPage aboutToAppear 0
+SwiperPage myAppear 0
+SwiperPage aboutToAppear 11
+SwiperPage myAppear 11
+SwiperPage aboutToAppear 1
+SwiperPage myAppear 1
+SwiperPage aboutToAppear 10
+SwiperPage myAppear 10
+SwiperPage aboutToAppear 2
+SwiperPage myAppear 2
 ```
 
 此时关闭程序，缓存的五个节点正常触发aboutToDisappear，但是非缓存的节点触发aboutToDisappear前，会强制触发aboutToAppear。无论是否是缓存节点，myDisappear不会误触发myAppear。
 
 ```text
-SwiperPage:myDisappear 0
-SwiperPage:aboutToDisappear 0
-SwiperPage:myDisappear 1
-SwiperPage:aboutToDisappear 1
-SwiperPage:myDisappear 2
-SwiperPage:aboutToDisappear 2
-SwiperPage:aboutToAppear 3
-SwiperPage:myDisappear 3
-SwiperPage:aboutToDisappear 3
-SwiperPage:aboutToAppear 4
-SwiperPage:myDisappear 4
-SwiperPage:aboutToDisappear 4
+SwiperPage myDisappear 0
+SwiperPage aboutToDisappear 0
+SwiperPage myDisappear 1
+SwiperPage aboutToDisappear 1
+SwiperPage myDisappear 2
+SwiperPage aboutToDisappear 2
+SwiperPage aboutToAppear 3
+SwiperPage myDisappear 3
+SwiperPage aboutToDisappear 3
+SwiperPage aboutToAppear 4
+SwiperPage myDisappear 4
+SwiperPage aboutToDisappear 4
 ...
 ```
 

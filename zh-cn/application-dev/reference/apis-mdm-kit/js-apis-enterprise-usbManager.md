@@ -60,6 +60,7 @@ addAllowedUsbDevices(admin: Want, usbDeviceIds: Array\<UsbDeviceId>): void
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
+| 9200007 | The system ability works abnormally. |
 | 9200010  | A conflict policy has been configured.                       |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -144,7 +145,7 @@ try {
 
 ## usbManager.getAllowedUsbDevices
 
-getAllowedUsbDevices(admin: Want): Array\<UsbDeviceId>
+getAllowedUsbDevices(admin: Want | null): Array\<UsbDeviceId>
 
 获取USB设备可用名单。
 
@@ -159,7 +160,7 @@ getAllowedUsbDevices(admin: Want): Array\<UsbDeviceId>
 
 | 参数名 | 类型                                                    | 必填 | 说明                                   |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
 
 **返回值：**
 
@@ -201,7 +202,7 @@ try {
 
 setUsbStorageDeviceAccessPolicy(admin: Want, usbPolicy: UsbPolicy): void
 
-设置USB存储设备访问策略。
+设置USB存储设备（baseClass = 0x08）访问策略。
 
 > **说明**：
 > 在调用接口前，确保已暂停USB存储设备的读写操作，保证操作的稳定性和数据的完整性，否则可能出现不可预期的异常。
@@ -246,6 +247,7 @@ setUsbStorageDeviceAccessPolicy(admin: Want, usbPolicy: UsbPolicy): void
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
+| 9200007 | The system ability works abnormally. |
 | 9200010  | A conflict policy has been configured.                       |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
@@ -272,9 +274,9 @@ try {
 
 ## usbManager.getUsbStorageDeviceAccessPolicy
 
-getUsbStorageDeviceAccessPolicy(admin: Want): UsbPolicy
+getUsbStorageDeviceAccessPolicy(admin: Want | null): UsbPolicy
 
-获取USB存储设备访问策略。
+获取USB存储设备（baseClass = 0x08）访问策略。
 
 **需要权限：**
 
@@ -290,7 +292,7 @@ getUsbStorageDeviceAccessPolicy(admin: Want): UsbPolicy
 
 | 参数名 | 类型                                                    | 必填 | 说明                                   |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
 
 **返回值：**
 
@@ -456,7 +458,7 @@ try {
 
 ## usbManager.getDisallowedUsbDevices<sup>14+</sup>
 
-getDisallowedUsbDevices(admin: Want): Array\<UsbDeviceType>
+getDisallowedUsbDevices(admin: Want | null): Array\<UsbDeviceType>
 
 获取禁止使用的USB设备类型。
 
@@ -471,7 +473,7 @@ getDisallowedUsbDevices(admin: Want): Array\<UsbDeviceType>
 
 | 参数名 | 类型                                                    | 必填 | 说明                                   |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
 
 **返回值：**
 

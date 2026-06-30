@@ -1543,8 +1543,8 @@ Navigation作为路由组件，默认支持跨包跳转。
 基本实现跟上述Router动态路由类似。
 1. 开发者自定义路由管理模块，各个提供路由页面的模块均依赖此模块；
 2. 构建Navigation组件时，将NavPathStack注入路由管理模块，路由管理模块对NavPathStack进行封装，对外提供路由能力；
-3. 各个路由页面不再提供组件，转为提供@build封装的构建函数，并再通过WrappedBuilder封装后，实现全局封装；
-4. 各个路由页面将模块名称、路由名称、WrappedBuilder封装后构建函数注册如路由模块；
+3. 各个路由页面不再提供组件，转为提供[@Builder](../reference/apis-arkui/arkui-ts/ts-universal-builder-dynamic.md#builder)封装的构建函数，并再通过[WrappedBuilder](../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder)封装后，实现全局封装；
+4. 各个路由页面将模块名称、路由名称、WrappedBuilder封装后构建函数注册到路由模块；
 5. 当路由需要跳转到指定路由时，路由模块完成对指定路由模块的动态导入，并完成路由跳转。
 
 具体的构建过程，可以参考Navigation[自动生成动态路由](https://gitcode.com/HarmonyOS-Cases/cases/blob/master/CommonAppDevelopment/common/routermodule/README_AUTO_GENERATE.md)示例。

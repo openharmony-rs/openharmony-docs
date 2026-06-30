@@ -423,7 +423,7 @@ struct AlignItemsDemo {
         ForEach(this.bgColors, (color: Color, index: number) => {
           GridCol({ span: 1 }) {
             Row() {
-            }.width('100%').height(`${(index + 1) * 20}%`) // GridCol设置不同的高度，方便观察alignItems属性的效果
+            }.width('100%').height(`${(index + 1) * 20}%`) // GridCol内的Row设置不同的高度，方便观察alignItems属性的效果
           }.borderColor(color).borderWidth(2)
         })
       }

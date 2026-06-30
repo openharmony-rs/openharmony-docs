@@ -1,8 +1,8 @@
 # oh_file_uri.h
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @lvzhenjie-->
-<!--Designer: @wang_zhangjun; @chenxi0605-->
+<!--Owner: @rainlost-->
+<!--Designer: @rainlost-->
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @jinqiuheng-->
 

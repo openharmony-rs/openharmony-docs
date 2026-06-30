@@ -78,6 +78,10 @@ type OnVerifyPinCallback = (verifyPinEvent: VerifyPinEvent) => void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |

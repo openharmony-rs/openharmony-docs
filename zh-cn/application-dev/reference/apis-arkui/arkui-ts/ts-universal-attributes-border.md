@@ -217,7 +217,7 @@ struct BorderExample {
   build() {
     Column() {
       Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
-        // 线段
+        // 虚线
         Text('dashed')
           .borderStyle(BorderStyle.Dashed)
           .borderWidth(5)
@@ -363,7 +363,7 @@ struct BorderExample {
 
 ### 示例2（边框宽度类型和边框颜色）
 
-border属性的width、radius、color属性值使用LocalizedEdgeWidths类型和LocalizedEdgeColors类型。
+border属性的width使用LocalizedEdgeWidths类型，radius使用LocalizedBorderRadiuses类型，color使用LocalizedEdgeColors类型。
 
 **ArkTS-Dyn示例：**
 
@@ -377,7 +377,7 @@ struct BorderExample {
   build() {
     Column() {
       Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
-        // 线段
+        // 虚线
         Text('dashed')
           .borderStyle(BorderStyle.Dashed)
           .borderWidth(5)

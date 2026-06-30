@@ -1333,7 +1333,9 @@ NavDestination自定义动画接口。
 
 ## NavDestinationTransitionDelegate<sup>15+</sup>
 
-type NavDestinationTransitionDelegate = (operation: NavigationOperation, isEnter: boolean) => Array\<NavDestinationTransition> | undefined
+ArkTS-Dyn: type NavDestinationTransitionDelegate = (operation: NavigationOperation, isEnter: boolean) => Array\<NavDestinationTransition> | undefined
+
+ArkTS-Sta: type NavDestinationTransitionDelegate = (operation: NavigationOperation, isEnter: boolean) => (Array\<NavDestinationTransition> | undefined)
 
 NavDestination自定义转场动画的代理函数。
 

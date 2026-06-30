@@ -4431,7 +4431,7 @@ on(type: 'onAttach', callback: Callback\<void>): void
 
 | 参数名 | 类型      | 必填 | 说明                                                                   |
 | ------ | --------- | ---- | ---------------------------------------------------------------------- |
-| type   | string | 是   | 订阅CanvasRenderingContext2D与Canvas组件发生绑定的回调。<br>异常值undefined或null按无效值处理。 |
+| type   | string | 是   | 订阅CanvasRenderingContext2D与Canvas组件发生绑定的事件类型，固定为'onAttach'。<br>异常值undefined或null按无效值处理。 |
 | callback   | [Callback](ts-types.md#callback12)\<void> | 是   | 订阅CanvasRenderingContext2D与Canvas组件发生绑定后触发的回调。<br>异常值undefined或null按无效值处理。|
 
 **错误码：**
@@ -4468,7 +4468,7 @@ on(type: 'onDetach', callback: Callback\<void>): void
 
 | 参数名 | 类型      | 必填 | 说明                                                                   |
 | ------ | --------- | ---- | ---------------------------------------------------------------------- |
-| type   | string | 是   | 订阅CanvasRenderingContext2D与Canvas组件解除绑定的回调。<br>异常值undefined或null按无效值处理。 |
+| type   | string | 是   | 订阅CanvasRenderingContext2D与Canvas组件解除绑定的事件类型，固定为'onDetach'。<br>异常值undefined或null按无效值处理。 |
 | callback   | [Callback](ts-types.md#callback12)\<void> | 是   | 订阅CanvasRenderingContext2D与Canvas组件解除绑定后触发的回调。<br>异常值undefined或null按无效值处理。 |
 
 **错误码：**
@@ -4502,7 +4502,7 @@ off(type: 'onAttach', callback?: Callback\<void>): void
 
 | 参数名 | 类型      | 必填 | 说明                                                                   |
 | ------ | --------- | ---- | ---------------------------------------------------------------------- |
-| type   | string | 是   | 取消订阅CanvasRenderingContext2D与Canvas组件发生绑定的回调。<br>异常值undefined或null按无效值处理。 |
+| type   | string | 是   | 取消订阅CanvasRenderingContext2D与Canvas组件发生绑定的事件类型，固定为'onAttach'。<br>异常值undefined或null按无效值处理。 |
 | callback   | [Callback](ts-types.md#callback12)\<void> | 否   | 为空表示取消所有订阅CanvasRenderingContext2D与Canvas组件发生绑定后触发的回调。<br>非空则取消订阅发生绑定对应的回调。<br>异常值undefined或null按无效值处理。 |
 
 **错误码：**
@@ -4529,7 +4529,7 @@ off(type: 'onDetach', callback?: Callback\<void>): void
 
 | 参数名 | 类型      | 必填 | 说明                                                                   |
 | ------ | --------- | ---- | ---------------------------------------------------------------------- |
-| type   | string | 是   | 取消订阅CanvasRenderingContext2D与Canvas组件解除绑定的回调。<br>异常值undefined或null按无效值处理。 |
+| type   | string | 是   | 取消订阅CanvasRenderingContext2D与Canvas组件解除绑定的事件类型，固定为'onDetach'。<br>异常值undefined或null按无效值处理。 |
 | callback   | [Callback](ts-types.md#callback12)\<void> | 否   | 为空代表取消所有订阅CanvasRenderingContext2D与Canvas组件解除绑定后触发的回调。<br>非空代表取消订阅解除绑定对应的回调。<br>异常值undefined或null按无效值处理。 |
 
 **错误码：**

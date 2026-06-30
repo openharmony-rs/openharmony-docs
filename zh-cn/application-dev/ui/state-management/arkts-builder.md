@@ -560,7 +560,7 @@ struct PrivateBuilder {
 
 ![arkts-builder-usage-scenario1](figures/arkts-builder-usage-scenario1-1.gif)
 
-### 全局自定义构建函数
+### 使用全局自定义构建函数
 
 创建全局的`@Builder`函数，并在`Column`中通过`overBuilder()`方式调用。传递参数时，可以使用对象字面量形式，无论是简单类型还是复杂类型，值的任何变化都会触发UI界面的刷新。
 

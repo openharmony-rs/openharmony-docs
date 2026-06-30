@@ -529,6 +529,13 @@ TaskPool执行的任务函数必须使用@Concurrent装饰器修饰，由于Conc
 
 因此，TaskPool线程目前不支持执行普通的JS闭包函数。如果有相关诉求，开发者可以根据业务需要使用[Worker](worker-introduction.md)并发能力进行业务改造。
 
+## @Concurrent修饰的函数与async函数异同点是什么
+
+1. Concurrent函数常与taskpool配合使用以完成异步并发任务；async是用于处理异步操作的Promise语法糖，async函数返回Promise对象，实现异步操作。此两类函数的constructor.name属性均为`'AsyncFunction'`，通过[isAsyncFunction](../reference/apis-arkts/js-apis-util.md#isasyncfunction8)的异步函数类型检查的结果均为true。
+2. async函数会将返回值自动封装成Promise；Concurrent函数的返回值与被修饰函数保持一致，不会被自动封装。
+3. Concurrent函数不能访问闭包，函数内不可调用当前文件的其他普通函数；async函数无此限制。
+4. 使用[errorManager](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md)进行异常捕获时，@Concurrent修饰符不会改变被修饰函数的异常捕获行为；async函数会被[globalUnhandledRejectionDetected](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronglobalunhandledrejectiondetected18)和[unhandledRejection](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronunhandledrejection12)捕获。
+
 ## TaskPool任务执行后的结果如何保存到自定义的数据结构
 
 **问题描述**

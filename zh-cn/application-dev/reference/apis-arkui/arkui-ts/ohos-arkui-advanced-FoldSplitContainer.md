@@ -571,7 +571,7 @@ struct Index {
     extraRegionPosition: ExtraRegionPosition.TOP
   };
   // 悬停态布局配置
-  @State foldingRegionLayoutOptions: HoverModeRegionLayoutOptions = {
+  @State hoverModeRegionLayoutOptions: HoverModeRegionLayoutOptions = {
     horizontalSplitRatio: PresetSplitRatio.LAYOUT_3V2,
     showExtraRegion: false,
     extraRegionPosition: ExtraRegionPosition.TOP
@@ -638,34 +638,34 @@ struct Index {
       Column({ space: 4 }) {
         RadioOption({
           label: "悬停态水平宽度比",
-          value: this.foldingRegionLayoutOptions.horizontalSplitRatio,
+          value: this.hoverModeRegionLayoutOptions.horizontalSplitRatio,
           options: [
             {
               label: "1:1",
               value: PresetSplitRatio.LAYOUT_1V1,
               onChecked: () => {
-                this.foldingRegionLayoutOptions.horizontalSplitRatio = PresetSplitRatio.LAYOUT_1V1
+                this.hoverModeRegionLayoutOptions.horizontalSplitRatio = PresetSplitRatio.LAYOUT_1V1
               }
             },
             {
               label: "2:3",
               value: PresetSplitRatio.LAYOUT_2V3,
               onChecked: () => {
-                this.foldingRegionLayoutOptions.horizontalSplitRatio = PresetSplitRatio.LAYOUT_2V3
+                this.hoverModeRegionLayoutOptions.horizontalSplitRatio = PresetSplitRatio.LAYOUT_2V3
               }
             },
             {
               label: "3:2",
               value: PresetSplitRatio.LAYOUT_3V2,
               onChecked: () => {
-                this.foldingRegionLayoutOptions.horizontalSplitRatio = PresetSplitRatio.LAYOUT_3V2
+                this.hoverModeRegionLayoutOptions.horizontalSplitRatio = PresetSplitRatio.LAYOUT_3V2
               }
             },
             {
               label: "未定义",
               value: undefined,
               onChecked: () => {
-                this.foldingRegionLayoutOptions.horizontalSplitRatio = undefined
+                this.hoverModeRegionLayoutOptions.horizontalSplitRatio = undefined
               }
             },
           ]
@@ -673,36 +673,36 @@ struct Index {
 
         SwitchOption({
           label: "悬停态是否显示扩展区",
-          value: this.foldingRegionLayoutOptions.showExtraRegion,
+          value: this.hoverModeRegionLayoutOptions.showExtraRegion,
           onChange: (checked) => {
-            this.foldingRegionLayoutOptions.showExtraRegion = checked;
+            this.hoverModeRegionLayoutOptions.showExtraRegion = checked;
           }
         })
 
-        if (this.foldingRegionLayoutOptions.showExtraRegion) {
+        if (this.hoverModeRegionLayoutOptions.showExtraRegion) {
           RadioOption({
             label: "悬停态扩展区位置",
-            value: this.foldingRegionLayoutOptions.extraRegionPosition,
+            value: this.hoverModeRegionLayoutOptions.extraRegionPosition,
             options: [
               {
                 label: "顶部",
                 value: ExtraRegionPosition.TOP,
                 onChecked: () => {
-                  this.foldingRegionLayoutOptions.extraRegionPosition = ExtraRegionPosition.TOP
+                  this.hoverModeRegionLayoutOptions.extraRegionPosition = ExtraRegionPosition.TOP
                 }
               },
               {
                 label: "底部",
                 value: ExtraRegionPosition.BOTTOM,
                 onChecked: () => {
-                  this.foldingRegionLayoutOptions.extraRegionPosition = ExtraRegionPosition.BOTTOM
+                  this.hoverModeRegionLayoutOptions.extraRegionPosition = ExtraRegionPosition.BOTTOM
                 }
               },
               {
                 label: "未定义",
                 value: undefined,
                 onChecked: () => {
-                  this.foldingRegionLayoutOptions.extraRegionPosition = undefined
+                  this.hoverModeRegionLayoutOptions.extraRegionPosition = undefined
                 }
               },
             ]
@@ -849,7 +849,7 @@ struct Index {
           this.ExtraRegion()
         },
         expandedLayoutOptions: this.expandedRegionLayoutOptions,
-        hoverModeLayoutOptions: this.foldingRegionLayoutOptions,
+        hoverModeLayoutOptions: this.hoverModeRegionLayoutOptions,
         foldedLayoutOptions: this.foldedRegionLayoutOptions,
       })
     }

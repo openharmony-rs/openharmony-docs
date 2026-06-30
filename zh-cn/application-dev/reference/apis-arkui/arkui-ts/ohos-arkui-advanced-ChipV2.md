@@ -1,9 +1,9 @@
 # ChipV2
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @youzhi92-->
-<!--Designer: @youzhi92-->
-<!--Tester: @TerryTsao-->
+<!--Owner: @song-song-song-->
+<!--Designer: @fenglinbailu-->
+<!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ChipV2用于搜索框历史记录、邮件发送列表等场景。

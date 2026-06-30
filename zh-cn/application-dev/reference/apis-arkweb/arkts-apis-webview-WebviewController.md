@@ -751,6 +751,7 @@ data数据必须使用base64编码或将内容中的任何#字符编码为%23。
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048. <br/>适用版本：9-10 |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例：**
@@ -1399,6 +1400,8 @@ onActive(): void
 调用此接口通知Web组件进入前台激活状态。
 
 激活状态是应用与用户互动的状态。应用会保持这种状态，直到发生某些事件（例如收到来电或设备屏幕关闭）时将焦点从应用移开。
+
+若页面此前处于未激活状态，H5页面中通过document.addEventListener('visibilitychange',...)注册的事件监听器将被触发，document.visibilityState 从"hidden"变为"visible"。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

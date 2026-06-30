@@ -526,6 +526,10 @@ Web同层渲染的配置。
 ## VerifyPinEvent<sup>22+</sup>
 定义当需要用户进行PIN码认证时触发回调。
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
@@ -716,7 +720,7 @@ Web同层渲染的配置。
 | ArkTS-Dyn: object<br>ArkTS-Sta: jsObject     | object                                   | 否 | 否    | 参与注册的对象。只能声明方法，不能声明属性。                   |
 | name       | string                                   | 否 | 否    | 注册对象的名称，与window中调用的对象名一致。                |
 | methodList | Array\<string\>                          | 否 | 否    | 参与注册的应用侧JavaScript对象的同步方法。                 |
-| controller | ArkTS-Dyn: [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-apis-webview-WebviewController.md) <br/>ArkTS-Sta: [WebviewController<sup>22+</sup>](./arkts-apis-webview-WebviewController.md)| 否 | 否    |  控制器。从API version 9开始，WebController不再维护，建议使用WebviewController替代。 |
+| controller | ArkTS-Dyn: [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-basic-components-web-t.md#webviewcontroller9) <br/>ArkTS-Sta:  [WebviewController<sup>9+</sup>](./arkts-basic-components-web-t.md#webviewcontroller9)| 否 | 否    |  控制器。从API version 9开始，WebController不再维护，建议使用WebviewController替代。 |
 | asyncMethodList<sup>12+</sup>  | Array\<string\>      | 否 | 是    | 参与注册的应用侧JavaScript对象的异步方法。异步方法无法获取返回值。   |
 | permission<sup>12+</sup>  | string  | 否 | 是    | json字符串，默认为空，通过该字符串配置JSBridge的权限管控，可以定义object、method一级的url白名单。<br>JavaScriptProxy的permission参数支持resource/http/https协议，不支持file协议。<br>示例请参考[前端页面调用应用侧函数](../../web/web-in-page-app-function-invoking.md)。 |
 

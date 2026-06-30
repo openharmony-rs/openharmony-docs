@@ -368,8 +368,8 @@ struct Child {
   @State message: Message = new Message('AboutToReuse');
 
   aboutToReuse(params: Record<string, ESObject>) {
-    console.info("Recycle Child")
-    this.message = params.message as Message
+    console.info('Reuse Child');
+    this.message = params.message as Message;
   }
 
   build() {
