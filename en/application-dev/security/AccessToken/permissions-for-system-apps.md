@@ -5889,7 +5889,7 @@ Allows an application to read vehicle hardware information.
  	 
 **Supported devices**: cars
 
-**Since**: 26.0.0
+**Since**: 26.1.0
 
 ## ohos.permission.vehicle.WRITE_HARDWARE_CONFIG
  	 
@@ -5903,7 +5903,7 @@ Allows an application to write vehicle hardware information.
  	 
 **Supported devices**: cars
 
-**Since**: 26.0.0
+**Since**: 26.1.0
 
 ## ohos.permission.vehicle.READ_CAR_CDC_CONFIG
  	 
@@ -5917,7 +5917,7 @@ Allows an application to read vehicle and head unit configurations.
  	 
 **Supported devices**: cars
 
-**Since**: 26.0.0
+**Since**: 26.1.0
 
 ## ohos.permission.vehicle.WRITE_CAR_CDC_CONFIG
  	 
@@ -5931,7 +5931,7 @@ Allows an application to write vehicle and head unit configurations.
  	 
 **Supported devices**: cars
 
-**Since**: 26.0.0
+**Since**: 26.1.0
 
 ## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
