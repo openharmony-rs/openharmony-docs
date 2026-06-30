@@ -41,7 +41,7 @@
                 this.uiContext.showAlertDialog({
                   title: 'Warning',
                   message: event.message,
-                  confirm:{
+                  confirm: {
                     value: 'confirm',
                     action: () => {
                       console.info('Alert confirmed.');
