@@ -1,4 +1,4 @@
-﻿# @ohos.distributedsched.linkEnhance (增强连接)
+# @ohos.distributedsched.linkEnhance (增强连接)
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
 <!--Owner: @wangJE-->
@@ -765,8 +765,8 @@ try {
     hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
     if (result.success) {
       let len = 1;
-      let arraybuffer = new ArrayBuffer(len); // 创建需要发送的数据
-      connection.sendData(arraybuffer);
+      let arrayBuffer = new ArrayBuffer(len); // 创建需要发送的数据
+      connection.sendData(arrayBuffer);
       hilog.info(0x0000, TAG, "sendData data connection peerDeviceId=%{public}s", connection.getPeerDeviceId());
       connection.disconnect();
     }
