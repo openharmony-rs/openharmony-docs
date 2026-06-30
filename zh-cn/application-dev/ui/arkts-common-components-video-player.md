@@ -86,16 +86,15 @@ Video组件支持加载本地视频和网络视频。具体的数据源配置请
 
 ### 加载沙箱路径视频
 
-支持file://路径前缀的字符串，用于读取应用沙箱路径内的资源，需要确保应用沙箱目录路径下的文件存在并且有可读权限。
-
 <!-- @[sandbox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/Sandbox.ets) -->  
 
 ``` TypeScript
 // xxx.ets
-// ···
+// ...
 @Component
 export struct Sandbox {
   private controller: VideoController = new VideoController();
+  // 'file:///data/storage/el2/base/haps/entry/files/show.mp4'需要替换为开发者所需的实际视频沙箱路径
   private videoSrc: string = 'file:///data/storage/el2/base/haps/entry/files/show.mp4';
 
   build() {
@@ -106,6 +105,8 @@ export struct Sandbox {
       })
     }
   }
+}
+```
 }
 ```
 
