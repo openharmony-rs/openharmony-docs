@@ -17,7 +17,7 @@
 
 NDK通用布局属性的推荐使用方式是：先在节点类中封装属性设置方法，再在具体组件上调用。以下示例封装了一组固定尺寸与宽高比属性。
 
-<!-- @[layout_size_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKLayoutSample/entry/src/main/cpp/ArkUINode.h) -->
+<!-- @[layout_size_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKLayoutSample/entry/src/main/cpp/ArkUINode.h) -->  
 
 ```C
 void SetWidth(float width)
@@ -217,7 +217,7 @@ inline std::shared_ptr<ArkUITextNode> CreateOffsetItem()
 
 边框属性在NDK中的使用方式与上文一致，同样是先封装方法，再在具体组件上组合调用。方法封装如下。
 
-<!-- @[layout_border_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKLayoutSample/entry/src/main/cpp/ArkUINode.h) -->
+<!-- @[layout_border_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKLayoutSample/entry/src/main/cpp/ArkUINode.h) -->  
 
 ```C
 void SetBorderWidth(float width)
