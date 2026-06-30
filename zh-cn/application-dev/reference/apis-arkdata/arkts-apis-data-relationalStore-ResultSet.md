@@ -177,7 +177,7 @@ ArkTS-Sta: getColumnName(columnIndex: int): string
 
 | 参数名      | 类型   | 必填 | 说明                       |
 | ----------- | ------ | ---- | -------------------------- |
-| columnIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示结果集中指定列的索引。 |
+| columnIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定的列索引，从0开始。 |
 
 **返回值：**
 
@@ -1443,7 +1443,7 @@ getSendableRow(): sendableRelationalStore.ValuesBucket
 | 14800012     | ResultSet is empty or pointer index is out of bounds.                            |
 | 14800013     | Column index is out of bounds.                         |
 | 14800014     | The target instance is already closed.                               |
-| 14800021     | SQLite: Generic error.                        |
+| 14800021     | SQLite: Generic error. |
 | 14800022     | SQLite: Callback routine requested an abort.  |
 | 14800023     | SQLite: Access permission denied.             |
 | 14800024     | SQLite: The database file is locked.          |

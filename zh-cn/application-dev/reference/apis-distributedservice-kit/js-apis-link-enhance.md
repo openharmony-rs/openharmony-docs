@@ -325,7 +325,7 @@ on(type: 'connectionAccepted', callback: Callback&lt;Connection&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 32390206 | Invalid parameter.  |
+| 32390206 | Parameter invalid.  |
 
 **示例：**
 
@@ -378,7 +378,7 @@ off(type: 'connectionAccepted', callback?: Callback&lt;Connection&gt;): void
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'connectionAccepted'，收到对端连接，触发该事件。   |
-| callback | Callback&lt;[Connection](#connection)&gt; | 否 | 回调函数，用于接收服务端连接事件。回调参数connection为建立连接的连接对象，类型为[Connection](#connection)。 |
+| callback | Callback&lt;[Connection](#connection)&gt; | 否 | 回调函数，用于接收服务端连接事件。回调参数connection为建立连接的连接对象，类型为[Connection](#connection)。需传入对应on方法最后一次注册的回调函数，用于取消该回调的订阅，默认缺省效果与传入行为一致。 |
 
 **错误码：**
 
@@ -387,7 +387,7 @@ off(type: 'connectionAccepted', callback?: Callback&lt;Connection&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 32390206 | Invalid parameter.  |
+| 32390206 | Parameter invalid.  |
 
 **示例：**
 
@@ -450,7 +450,7 @@ on(type: 'serverStopped', callback: Callback&lt;number&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 32390206 | Invalid parameter.  |
+| 32390206 | Parameter invalid.  |
 
 **示例：**
 
@@ -504,7 +504,7 @@ off(type: 'serverStopped', callback?: Callback&lt;number&gt;): void
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'serverStopped'，底层服务异常时触发。   |
-| callback | Callback&lt;number&gt;| 否 | 注册的回调函数，当底层服务异常停止时触发，number为返回的错误码。 |
+| callback | Callback&lt;number&gt;| 否 | 注册的回调函数，当底层服务异常停止时触发，number为返回的错误码。需传入对应on方法最后一次注册的回调函数，用于取消该回调的订阅，默认缺省效果与传入行为一致。 |
 
 **错误码：**
 
@@ -513,7 +513,7 @@ off(type: 'serverStopped', callback?: Callback&lt;number&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 32390206 | Invalid parameter.  |
+| 32390206 | Parameter invalid.  |
 
 **示例：**
 
@@ -534,7 +534,7 @@ try {
   });
   // 取消订阅服务停止
   server.off('serverStopped', (reason: number): void => {
-    hilog.info(0x0000, TAG, 'serverStopped,  reason= ' + reason);
+    hilog.info(0x0000, TAG, 'serverStopped, reason= ' + reason);
   });
 } catch (err) {
   hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
@@ -574,7 +574,7 @@ onConnectionAccepted(callback: Callback&lt;Connection&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 32390206 | Invalid parameter.  |
+| 32390206 | Parameter invalid.  |
 
 **示例：**
 
@@ -627,7 +627,7 @@ offConnectionAccepted(callback?: Callback&lt;Connection&gt;): void
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
-| callback | Callback&lt;[Connection](#connection)&gt; | 否 | 回调函数，用于接收服务端连接事件。回调参数connection为建立连接的连接对象，类型为[Connection](#connection)。 |
+| callback | Callback&lt;[Connection](#connection)&gt; | 否 | 回调函数，用于接收服务端连接事件。回调参数connection为建立连接的连接对象，类型为[Connection](#connection)。需传入对应on方法最后一次注册的回调函数，用于取消该回调的订阅，默认缺省效果与传入行为一致。 |
 
 **错误码：**
 
@@ -636,7 +636,7 @@ offConnectionAccepted(callback?: Callback&lt;Connection&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 32390206 | Invalid parameter.  |
+| 32390206 | Parameter invalid.  |
 
 **示例：**
 
@@ -698,7 +698,7 @@ onServerStopped(callback: Callback&lt;int&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 32390206 | Invalid parameter.  |
+| 32390206 | Parameter invalid.  |
 
 **示例：**
 
@@ -717,7 +717,7 @@ try {
 
   // 订阅服务停止
   server.onServerStopped((reason: int): void => {
-    hilog.info(0x0000, TAG, 'serverStopped， reason= ' + reason);
+    hilog.info(0x0000, TAG, 'serverStopped, reason= ' + reason);
   });
   // 启动服务
   server.start();
@@ -750,7 +750,7 @@ offServerStopped(callback?: Callback&lt;int&gt;): void
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
-| callback | Callback&lt;int&gt; | 否    | 注册的回调函数，当底层服务异常停止时触发，int为返回的错误码。 |
+| callback | Callback&lt;int&gt; | 否    | 注册的回调函数，当底层服务异常停止时触发，int为返回的错误码。 需传入对应on方法最后一次注册的回调函数，用于取消该回调的订阅，默认缺省效果与传入行为一致。|
 
 **错误码：**
 
@@ -759,7 +759,7 @@ offServerStopped(callback?: Callback&lt;int&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 32390206 | Invalid parameter.  |
+| 32390206 | Parameter invalid.  |
 
 **示例：**
 
@@ -776,11 +776,11 @@ try {
   // 使用服务名构造Server
   let server: linkEnhance.Server = linkEnhance.createServer(name);
   server.onServerStopped((reason: int): void => {
-    hilog.info(0x0000, TAG, 'serverStopped， reason= ' + reason);
+    hilog.info(0x0000, TAG, 'serverStopped, reason= ' + reason);
   });
   // 取消订阅服务停止
   server.offServerStopped((reason: int): void => {
-    hilog.info(0x0000, TAG, 'serverStopped， reason= ' + reason);
+    hilog.info(0x0000, TAG, 'serverStopped, reason= ' + reason);
   });
 } catch (err) {
   hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
@@ -840,7 +840,7 @@ connect():&nbsp;void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 32390204 | The number of connection exceeds the limit. |
+| 32390204 | The number of connections exceeds the limit. |
 | 32390300 | Internal error. |
 
 **示例：**
@@ -1020,7 +1020,7 @@ try {
   let peerDeviceId: string = "00:11:22:33:44:55";
   hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
-  hilog.info(0x0000, TAG, "peerDeviceId=%{public}s" + connection.getPeerDeviceId());
+  hilog.info(0x0000, TAG, "peerDeviceId=%{public}s", connection.getPeerDeviceId());
 } catch (err) {
   hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
@@ -1080,8 +1080,8 @@ try {
     if (result.success) {
       let len = 1;
       let arrayBuffer = new ArrayBuffer(len); // 创建需要发送的数据
-      connection.sendData(arraybuffer);
-      hilog.info(0x0000, TAG, "sendData data connection peerDeviceId=%{public}s" + connection.getPeerDeviceId());
+      connection.sendData(arrayBuffer);
+      hilog.info(0x0000, TAG, "sendData data connection peerDeviceId=%{public}s", connection.getPeerDeviceId());
       connection.disconnect();
     }
   });
@@ -1185,7 +1185,7 @@ off(type: 'connectResult', callback?: Callback&lt;ConnectResult&gt;): void
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'connectResult'，完成`connect()`调用，触发该事件。   |
-| callback | Callback&lt;[ConnectResult](#connectresult)&gt; | 否    | 注册的回调函数。    |
+| callback | Callback&lt;[ConnectResult](#connectresult)&gt; | 否    | 注册的回调函数。 需传入对应on方法最后一次注册的回调函数，用于取消该回调的订阅，默认缺省效果与传入行为一致。   |
 
 **错误码：**
 
@@ -1306,7 +1306,7 @@ off(type: 'disconnected', callback?: Callback&lt;number&gt;): void
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'disconnected'，连接被动断开或底层异常断开时，触发该事件。   |
-| callback | Callback&lt;number&gt; | 否   | 注册的回调函数，连接被动断开或底层异常断开时触发，number为返回的错误码。   |
+| callback | Callback&lt;number&gt; | 否   | 注册的回调函数，连接被动断开或底层异常断开时触发，number为返回的错误码。 需传入对应on方法最后一次注册的回调函数，用于取消该回调的订阅，默认缺省效果与传入行为一致。  |
 
 **错误码：**
 
@@ -1428,7 +1428,7 @@ off(type: 'dataReceived', callback?: Callback&lt;ArrayBuffer&gt;): void
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   事件回调类型，支持的事件为'dataReceived'，收到数据时，触发该事件。   |
-| callback | Callback&lt;[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)&gt; | 否    | 回调函数，用于接收对端设备发送的数据。回调参数data为接收到的数据，类型为ArrayBuffer。 |
+| callback | Callback&lt;[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)&gt; | 否    | 回调函数，用于接收对端设备发送的数据。回调参数data为接收到的数据，类型为ArrayBuffer。需传入对应on方法最后一次注册的回调函数，用于取消该回调的订阅，默认缺省效果与传入行为一致。 |
 
 **错误码：**
 
@@ -1553,7 +1553,7 @@ offConnectResult(callback?: Callback&lt;ConnectResult&gt;): void
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
-| callback | Callback&lt;[ConnectResult](#connectresult)&gt; | 否    | 注册的回调函数。    |
+| callback | Callback&lt;[ConnectResult](#connectresult)&gt; | 否    | 注册的回调函数。需传入对应on方法最后一次注册的回调函数，用于取消该回调的订阅，默认缺省效果与传入行为一致。    |
 
 **错误码：**
 
@@ -1672,7 +1672,7 @@ offDisconnected(callback?: Callback&lt;int&gt;): void
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
-| callback | Callback&lt;int&gt; | 否   | 注册的回调函数，连接被动断开或底层异常断开时触发，int为返回的错误码。   |
+| callback | Callback&lt;int&gt; | 否   | 注册的回调函数，连接被动断开或底层异常断开时触发，int为返回的错误码。 需传入对应on方法最后一次注册的回调函数，用于取消该回调的订阅，默认缺省效果与传入行为一致。  |
 
 **错误码：**
 
@@ -1791,7 +1791,7 @@ offDataReceived(callback?: Callback&lt;ArrayBuffer&gt;): void
 
 | 参数名       | 类型                                    | 必填   | 说明    |
 | --------- | ------------------------------------- | ---- | ----- |
-| callback | Callback&lt;[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)&gt; | 否    | 注册的回调函数，用于接收对端设备发送的数据。回调参数data为接收到的数据，类型为ArrayBuffer。 |
+| callback | Callback&lt;[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)&gt; | 否    | 注册的回调函数，用于接收对端设备发送的数据。回调参数data为接收到的数据，类型为ArrayBuffer。需传入对应on方法最后一次注册的回调函数，用于取消该回调的订阅，默认缺省效果与传入行为一致。 |
 
 **错误码：**
 
