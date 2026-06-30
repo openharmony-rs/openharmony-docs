@@ -17,7 +17,7 @@
 - 方法1：直接查看AudioCapturer的[属性](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#属性)state：
 
   <!-- @[view_AudioCapturerState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
-
+  
   ``` TypeScript
   let audioCapturerState: audio.AudioState = audioCapturer.state;
   console.info(`Current state is: ${audioCapturerState }`)
