@@ -111,7 +111,7 @@ function getWhiteBalanceRange(session: camera.PhotoSession | camera.VideoSession
 
 ## getColorTintRange
 
-getColorTintRange(): Array\<number\>
+getColorTintRange(): Array\<int\>
 
 获取支持配置的白平衡色调调节范围。
 
@@ -127,7 +127,7 @@ getColorTintRange(): Array\<number\>
 
 | 类型        | 说明                          |
 | ---------- | ----------------------------- |
-| Array\<number\>   | 用于获取色调调节值的可调范围。若接口调用失败，返回undefined。|
+| Array\<int\>   | 用于获取色调调节值的可调范围。若接口调用失败，返回undefined。|
 
 **错误码：**
 
@@ -142,8 +142,8 @@ getColorTintRange(): Array\<number\>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function getColorTintRange(session: camera.PhotoSession | camera.VideoSession): Array<number> {
-  let range: Array<number> = [];
+function getColorTintRange(session: camera.PhotoSession | camera.VideoSession): Array<int> {
+  let range: Array<int> = [];
   try {
     range = session.getColorTintRange();
   } catch (error) {
