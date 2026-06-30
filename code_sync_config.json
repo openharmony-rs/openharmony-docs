@@ -29128,5 +29128,35 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/arkts-custom-components-freeze.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/LazyforEachTest.ets",
+				"functions":[
+					{
+						"end_line":156,
+						"name":"arkts_custom_components_freeze4",
+						"start_line":15
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/arkts-mvvm-v2.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/SettingPage.ets",
+				"functions":[
+					{
+						"end_line":54,
+						"name":"Main_SettingPage",
+						"start_line":17
+					}
+				]
+			}
+		]
 	}
 ]
