@@ -101,7 +101,7 @@ import { audio } from '@kit.AudioKit';
 
 ArkTS-Dyn示例：
 
-<!-- @[deviceChange_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioOutputDevice.ets) -->
+<!-- @[deviceChange_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioOutputDevice.ets) -->  
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';  // 导入audio模块。
@@ -182,7 +182,7 @@ async function selectOutputDevice() {
 
 ArkTS-Dyn示例：
 
-<!-- @[get_PreferOutputDeviceForRendererInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioOutputDevice.ets) -->
+<!-- @[get_PreferOutputDeviceForRendererInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioOutputDevice.ets) -->  
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';  // 导入audio模块。
@@ -234,7 +234,7 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 
 ArkTS-Dyn示例：
 
-<!-- @[listen_OutputDeviceChangeForRendererInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioOutputDevice.ets) -->
+<!-- @[listen_OutputDeviceChangeForRendererInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioOutputDevice.ets) -->  
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';  // 导入audio模块。
@@ -318,7 +318,7 @@ let audioSessionManager = audioManager.getSessionManager();
 
 ArkTS-Dyn示例：
 
-<!-- @[set_DefaultOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/ListenDeviceByAudioSession.ets) -->
+<!-- @[set_DefaultOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/ListenDeviceByAudioSession.ets) -->  
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';

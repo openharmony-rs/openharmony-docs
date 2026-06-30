@@ -76,7 +76,7 @@ let audioSessionManager = audioManager.getSessionManager();
 
 ArkTS-Dyn示例：
 
-<!-- @[select_MediaInputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/InputDeviceRoutingSwitching.ets) -->
+<!-- @[select_MediaInputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/InputDeviceRoutingSwitching.ets) -->  
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';  // 导入audio模块。
