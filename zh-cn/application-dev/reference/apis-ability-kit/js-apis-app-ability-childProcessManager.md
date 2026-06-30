@@ -659,7 +659,7 @@ ArkTS-Sta: startNativeChildProcess(entryPoint: string, args: ChildProcessArgs, o
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该接口在Tablet、PC/2in1中可正常调用，在其他设备类型中返回801错误码。
+**设备行为差异**：从API version 13开始，该接口在PC/2in1中可正常调用，在其他设备类型中返回801错误码。从API version 14开始，该接口在PC/2in1、Tablet中可正常调用，在其他设备类型中返回801错误码。
 
 **ArkTS-Dyn起始版本：** 13
 
