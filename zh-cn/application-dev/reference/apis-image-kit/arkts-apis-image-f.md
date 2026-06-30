@@ -6,6 +6,8 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+本模块提供图像处理相关功能，包括创建PixelMap、Picture、ImageSource、ImagePacker、ImageReceiver等图像对象，支持图像解码、编码、像素数据操作、图像变换等能力，适用于图像编辑、图像处理、相机预览截帧等场景。
+
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
@@ -21,7 +23,7 @@ import { image } from '@kit.ImageKit';
 
 createPicture(mainPixelmap : PixelMap): Picture
 
-通过主图的pixelmap创建一个Picture对象。
+通过主图的PixelMap创建一个Picture对象。
 
 由于图片占用内存较大，所以当Picture对象使用完成后，应主动调用[release](./arkts-apis-image-Picture.md#release13)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
@@ -35,7 +37,7 @@ createPicture(mainPixelmap : PixelMap): Picture
 
 | 参数名       | 类型                | 必填 | 说明             |
 | ------------ | ------------------- | ---- | ---------------- |
-| mainPixelmap | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 主图的pixelmap。 |
+| mainPixelmap | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 主图的PixelMap。 |
 
 **返回值：**
 
@@ -58,10 +60,10 @@ ArkTS-Dyn示例:
 async function CreatePicture(context: Context) {
   const resourceMgr = context.resourceManager;
   const rawFile = await resourceMgr.getRawFileContent("test.jpg");
-  let ops: image.SourceOptions = {
+  let opts: image.SourceOptions = {
     sourceDensity: 98,
   }
-  let imageSource: image.ImageSource = image.createImageSource(rawFile.buffer as ArrayBuffer, ops);
+  let imageSource: image.ImageSource = image.createImageSource(rawFile.buffer as ArrayBuffer, opts);
   let commodityPixelMap: image.PixelMap = await imageSource.createPixelMap();
   let pictureObj: image.Picture = image.createPicture(commodityPixelMap);
   if (pictureObj != null) {
@@ -147,7 +149,7 @@ class MySequence implements rpc.Parcelable {
       console.info('Succeeded in marshalling.');
       return true;
     } else {
-      console.error('Failed to marshall.');
+      console.error('Failed to marshal.');
       return false;
     }
   }
@@ -162,13 +164,13 @@ class MySequence implements rpc.Parcelable {
   }
 }
 
-async function Marshalling_UnMarshalling(context: Context) {
+async function marshallingUnmarshalling(context: Context) {
   const resourceMgr = context.resourceManager;
   const rawFile = await resourceMgr.getRawFileContent("test.jpg");
-  let ops: image.SourceOptions = {
+  let opts: image.SourceOptions = {
     sourceDensity: 98,
   }
-  let imageSource: image.ImageSource = image.createImageSource(rawFile.buffer as ArrayBuffer, ops);
+  let imageSource: image.ImageSource = image.createImageSource(rawFile.buffer as ArrayBuffer, opts);
   let commodityPixelMap: image.PixelMap = await imageSource.createPixelMap();
   let pictureObj: image.Picture = image.createPicture(commodityPixelMap);
   if (pictureObj != null) {
@@ -265,14 +267,14 @@ createPixelMapFromPixels(pixels: ArrayBuffer, param: InitializationOptions): Pro
 
 | 参数名  | 类型                                             | 必填 | 说明                                                             |
 | ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
-| pixels  | ArrayBuffer                                      | 是   | 图像像素数据的缓冲区，用于初始化PixelMap的像素。<br>缓冲区的像素格式需要由[InitializationOptions](arkts-apis-image-i.md#initializationoptions8).srcPixelFormat指定，否则默认缓冲区的像素格式为BGRA_8888。<br>**说明：** 缓冲区长度为：width * height * 单位像素字节数。 |
-| param | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | 是   | 创建图像的属性，包括尺寸、像素格式、透明度类型、缩放模式和是否可编辑。<br>**说明：** 如果像素格式被指定为ASTC_4x4，将使用该类型中定义的默认像素格式。 |
+| pixels  | ArrayBuffer                                      | 是   | 图像像素数据的缓冲区，用于初始化PixelMap的像素。缓冲区内的像素数据必须紧密排列，不可以包含内存对齐填充字节。<br>缓冲区的像素格式需要由[InitializationOptions](arkts-apis-image-i.md#initializationoptions8).srcPixelFormat指定，否则默认缓冲区的像素格式为BGRA_8888。<br>**说明：** 缓冲区长度为：图像宽度 * 图像高度 * 单位像素字节数。 |
+| param | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | 是   | 创建图像的初始化属性，包括尺寸、像素格式、透明度类型、缩放模式和是否可编辑。<br>**说明：** 如果像素格式被指定为ASTC_4x4，将使用该类型中定义的默认像素格式。 |
 
 **返回值：**
 
 | 类型                             | 说明                                                                    |
 | -------------------------------- | ----------------------------------------------------------------------- |
-| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)\> | Promise对象，返回创建的PixelMap。                      |
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)\> | Promise对象，返回创建的PixelMap对象，接口调用失败时会抛出异常。 |
 
 **错误码：**
 
@@ -286,6 +288,8 @@ createPixelMapFromPixels(pixels: ArrayBuffer, param: InitializationOptions): Pro
 | 7600305 | Failed to create the PixelMap. Possible causes: 1. Failed to perform pixel format conversion. 2. Internal data is corrupted. Please check the logs for detailed information. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -313,9 +317,42 @@ function DemoCreatePixelMapFromPixels() {
 
   image.createPixelMapFromPixels(pixels, config)
     .then((pixelMap: image.PixelMap) => {
-      console.info('创建PixelMap成功。');
+      console.info('Succeeded in creating PixelMap.');
     }).catch((e: BusinessError) => {
-      console.error(`创建PixelMap失败。错误码：${e.code} 错误信息：${e.message}`);
+      console.error(`Failed to create PixelMap. Code is ${e.code}, message is ${e.message}`);
+    });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function DemoCreatePixelMapFromPixels() {
+  const size: image.Size = {
+    width: 6,
+    height: 4
+  };
+  const pixels = new ArrayBuffer(size.width * size.height * 4); // 4为RGBA类型像素格式的单位像素字节数。
+  const pixelsArr = new Uint8Array(pixels);
+  for (let i = 0; i < pixelsArr.length; i += 4) {
+    // RGBA_8888格式下，下列数组索引依次为：R通道、G通道、B通道、A通道。
+    pixelsArr[i] = 0xFF;
+    pixelsArr[i + 1] = 0x00;
+    pixelsArr[i + 2] = 0x00;
+    pixelsArr[i + 3] = 0xFF;
+  }
+  const config: image.InitializationOptions = {
+    size,
+    srcPixelFormat: image.PixelMapFormat.RGBA_8888, // 缓冲区内的源像素数据的像素格式。
+    pixelFormat: image.PixelMapFormat.RGBA_8888, // 新创建的PixelMap的像素格式。
+    editable: true
+  };
+
+  image.createPixelMapFromPixels(pixels, config)
+    .then((pixelMap: image.PixelMap) => {
+      console.info('Succeeded in creating PixelMap.');
+    }).catch((e: Error) => {
+      console.error(`Failed to create PixelMap. Code is ${e.code}, message is ${e.message}`);
     });
 }
 ```
@@ -324,7 +361,7 @@ function DemoCreatePixelMapFromPixels() {
 
 createPixelMapFromPixelsSync(pixels: ArrayBuffer, param: InitializationOptions): PixelMap
 
-通过像素数据和图像属性创建PixelMap。传入的像素数据会进行拷贝并转换为[InitializationOptions](arkts-apis-image-i.md#initializationoptions8).pixelFormat指定的像素格式，用于初始化PixelMap的像素。
+通过像素数据和图像属性创建PixelMap。传入的像素数据会进行拷贝并转换为[InitializationOptions](arkts-apis-image-i.md#initializationoptions8).pixelFormat指定的像素格式，用于初始化PixelMap的像素。同步返回结果。
 
 > **说明：**
 >
@@ -347,14 +384,14 @@ createPixelMapFromPixelsSync(pixels: ArrayBuffer, param: InitializationOptions):
 
 | 参数名  | 类型                                             | 必填 | 说明                                                             |
 | ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
-| pixels  | ArrayBuffer                                      | 是   | 图像像素数据的缓冲区，用于初始化PixelMap的像素。<br>缓冲区的像素格式需要由[InitializationOptions](arkts-apis-image-i.md#initializationoptions8).srcPixelFormat指定，否则默认缓冲区的像素格式为BGRA_8888。<br>**说明：** 缓冲区长度为：width * height * 单位像素字节数。 |
-| param | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | 是   | 创建图像的属性，包括尺寸、像素格式、透明度类型、缩放模式和是否可编辑。<br>**说明：** 如果像素格式被指定为ASTC_4x4，将使用该类型中定义的默认像素格式。 |
+| pixels  | ArrayBuffer                                      | 是   | 图像像素数据的缓冲区，用于初始化PixelMap的像素。缓冲区内的像素数据必须紧密排列，不可以包含内存对齐填充字节。<br>缓冲区的像素格式需要由[InitializationOptions](arkts-apis-image-i.md#initializationoptions8).srcPixelFormat指定，否则默认缓冲区的像素格式为BGRA_8888。<br>**说明：** 缓冲区长度为：图像宽度 * 图像高度 * 单位像素字节数。 |
+| param | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | 是   | 创建图像的初始化属性，包括尺寸、像素格式、透明度类型、缩放模式和是否可编辑。<br>**说明：** 如果像素格式被指定为ASTC_4x4，将使用该类型中定义的默认像素格式。 |
 
 **返回值：**
 
 | 类型                             | 说明                                                                    |
 | -------------------------------- | ----------------------------------------------------------------------- |
-| [PixelMap](arkts-apis-image-PixelMap.md) | 返回创建的PixelMap。                                             |
+| [PixelMap](arkts-apis-image-PixelMap.md) | 返回创建的PixelMap对象，接口调用失败时会抛出异常。                    |
 
 **错误码：**
 
@@ -368,6 +405,8 @@ createPixelMapFromPixelsSync(pixels: ArrayBuffer, param: InitializationOptions):
 | 7600305 | Failed to create the PixelMap. Possible causes: 1. Failed to perform pixel format conversion. 2. Internal data is corrupted. Please check the logs for detailed information. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -395,10 +434,131 @@ function DemoCreatePixelMapFromPixelsSync() {
 
   try {
     const pixelMap = image.createPixelMapFromPixelsSync(pixels, config);
-    console.info('创建PixelMap成功。');
+    console.info('Succeeded in creating PixelMap.');
   } catch (e) {
     const error = e as BusinessError;
-    console.error(`创建PixelMap失败。错误码：${e.code} 错误信息：${e.message}`);
+    console.error(`Failed to create PixelMap. Code is ${error.code}, message is ${error.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function DemoCreatePixelMapFromPixelsSync() {
+  const size: image.Size = {
+    width: 6,
+    height: 4
+  };
+  const pixels = new ArrayBuffer(size.width * size.height * 4); // 4为RGBA类型像素格式的单位像素字节数。
+  const pixelsArr = new Uint8Array(pixels);
+  for (let i = 0; i < pixelsArr.length; i += 4) {
+    // RGBA_8888格式下，下列数组索引依次为：R通道、G通道、B通道、A通道。
+    pixelsArr[i] = 0xFF;
+    pixelsArr[i + 1] = 0x00;
+    pixelsArr[i + 2] = 0x00;
+    pixelsArr[i + 3] = 0xFF;
+  }
+  const config: image.InitializationOptions = {
+    size,
+    srcPixelFormat: image.PixelMapFormat.RGBA_8888, // 缓冲区内的源像素数据的像素格式。
+    pixelFormat: image.PixelMapFormat.RGBA_8888, // 新创建的PixelMap的像素格式。
+    editable: true
+  };
+
+  try {
+    const pixelMap = image.createPixelMapFromPixelsSync(pixels, config);
+    console.info('Succeeded in creating PixelMap.');
+  } catch (error) {
+    console.error(`Failed to create PixelMap. Code is ${error.code}, message is ${error.message}`);
+  }
+}
+```
+
+## image.createEmptyPixelMap
+
+createEmptyPixelMap(param: InitializationOptions): PixelMap
+
+通过图像属性创建空白PixelMap。
+
+> **说明：**
+>
+> - 此接口不支持创建以下像素格式的PixelMap：ASTC_4x4。
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名  | 类型                                             | 必填 | 说明                                                             |
+| ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
+| param | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | 是   | 创建图像的属性，包括尺寸、像素格式、透明度类型、缩放模式和是否可编辑。<br>**说明：** 如果像素格式被指定为ASTC_4x4，将使用该类型中定义的默认像素格式。 |
+
+**返回值：**
+
+| 类型                             | 说明                                                                    |
+| -------------------------------- | ----------------------------------------------------------------------- |
+| [PixelMap](arkts-apis-image-PixelMap.md) | 返回创建的空白PixelMap对象，接口调用失败时会抛出异常。              |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息 |
+| ------ | --------------------------------------------|
+| 7600206 | Invalid parameter. |
+| 7600301 | Failed to allocate memory. Possible causes: 1. The resulting PixelMap size is too large. 2. The system is out of memory. |
+| 7600305 | Failed to create the PixelMap. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function DemoCreateEmptyPixelMap() {
+  const config: image.InitializationOptions = {
+    size: { width: 6, height: 4 },
+    pixelFormat: image.PixelMapFormat.RGBA_8888, // 新创建的PixelMap的像素格式。
+    editable: true
+  };
+
+  try {
+    const pixelMap = image.createEmptyPixelMap(config);
+    console.info('Succeeded in creating empty PixelMap.');
+  } catch (e) {
+    const error = e as BusinessError;
+    console.error(`Failed to create empty PixelMap. Code is ${error.code}, message is ${error.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function DemoCreateEmptyPixelMap() {
+  const config: image.InitializationOptions = {
+    size: { width: 6, height: 4 },
+    pixelFormat: image.PixelMapFormat.RGBA_8888, // 新创建的PixelMap的像素格式。
+    editable: true
+  };
+
+  try {
+    const pixelMap = image.createEmptyPixelMap(config);
+    console.info('Succeeded in creating empty PixelMap.');
+  } catch (error) {
+    console.error(`Failed to create empty PixelMap. Code is ${error.code}, message is ${error.message}`);
   }
 }
 ```
@@ -407,11 +567,13 @@ function DemoCreatePixelMapFromPixelsSync() {
 
 createPixelMap(colors: ArrayBuffer, options: InitializationOptions): Promise\<PixelMap>
 
-通过像素数据和图像属性创建PixelMap，传入的像素数据默认按BGRA_8888格式解析。使用Promise异步回调。
+通过像素数据和图像属性创建PixelMap。传入的像素数据会进行拷贝并转换为[InitializationOptions](arkts-apis-image-i.md#initializationoptions8).pixelFormat指定的像素格式，用于初始化PixelMap的像素。使用Promise异步回调。
 
-由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
-
-从API版本26.0.0开始，建议使用[createPixelMapFromPixels](#imagecreatepixelmapfrompixels)代替，以获得更完善的异常处理能力。
+> **说明：**
+>
+> - 此接口不支持创建以下像素格式的PixelMap：RGBA_1010102、YCBCR_P010、YCRCB_P010和ASTC_4x4。
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+> - 从API版本26.0.0开始，建议使用[createPixelMapFromPixels](#imagecreatepixelmapfrompixels)代替，以获得更完善的异常处理能力。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -423,23 +585,24 @@ createPixelMap(colors: ArrayBuffer, options: InitializationOptions): Promise\<Pi
 
 | 参数名  | 类型                                             | 必填 | 说明                                                             |
 | ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
-| colors  | ArrayBuffer                                      | 是   | 图像像素数据的缓冲区，用于初始化PixelMap的像素。初始化前，缓冲区中的像素格式需要由[InitializationOptions](arkts-apis-image-i.md#initializationoptions8).srcPixelFormat指定，否则默认缓冲区的像素格式为BGRA_8888。<br>**说明：** 图像像素数据的缓冲区长度：length = width * height * 单位像素字节数。 |
-| options | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | 是   | 创建像素的属性，包括透明度，尺寸，缩略值，像素格式和是否可编辑。 |
+| colors  | ArrayBuffer                                      | 是   | 图像像素数据的缓冲区，用于初始化PixelMap的像素。缓冲区内的像素数据必须紧密排列，不可以包含内存对齐填充字节。<br>缓冲区的像素格式需要由[InitializationOptions](arkts-apis-image-i.md#initializationoptions8).srcPixelFormat指定，否则默认缓冲区的像素格式为BGRA_8888。<br>**说明：** 缓冲区长度为：图像宽度 * 图像高度 * 单位像素字节数。 |
+| options | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | 是   | 创建图像的初始化属性，包括尺寸、像素格式、透明度类型、缩放模式和是否可编辑。<br>**说明：** 如果像素格式被指定为ASTC_4x4，将使用该类型中定义的默认像素格式。 |
 
 **返回值：**
 
 | 类型                             | 说明                                                                    |
 | -------------------------------- | ----------------------------------------------------------------------- |
-| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)> | Promise对象，返回PixelMap。<br>当创建的pixelMap大小超过原图大小时，返回原图pixelMap大小。|
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)> | Promise对象，返回创建的PixelMap。<br>当创建的PixelMap大小超过源像素数据所能表示的图像大小时，返回按源像素数据所能表示的图像大小创建的PixelMap。|
 
 **示例：**
 
 ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function CreatePixelMap() {
-  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
+  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：width * height * 4。
   let opts: image.InitializationOptions = {
     size: { height: 4, width: 6 },
     srcPixelFormat: image.PixelMapFormat.RGBA_8888, // 缓冲区中的源像素数据的像素格式。
@@ -449,33 +612,27 @@ async function CreatePixelMap() {
   image.createPixelMap(color, opts).then((pixelMap: image.PixelMap) => {
     console.info('Succeeded in creating pixelmap.');
   }).catch((error: BusinessError) => {
-    console.error(`Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
+    console.error(`Failed to create pixelmap. Code is ${error.code}, message is ${error.message}`);
   })
 }
 ```
 
 ArkTS-Sta示例：
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
+```ts
 async function CreatePixelMap() {
-  try {
-    const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width * 4。
-    const opts: image.InitializationOptions = {
-      editable: true,
-      pixelFormat: image.PixelMapFormat.RGBA_8888,
-      size: { height: 4, width: 6 }
-    };
-    image.createPixelMap(color, opts, (err: BusinessError | null, pixelMap: image.PixelMap | undefined) => {
-      if (err) {
-        console.error(0x00000, 'CreatePixelMap', `Failed to create pixelmap. code is ${err.code}, message is ${err.message}`);
-      } else {
-        console.info(0x00000, 'CreatePixelMap', 'Succeeded in creating pixelmap.');
-      }
-    });
-  } catch (err) {
-    console.error(0x00000, 'CreatePixelMap', 'CreatePixelMap failed: ' + err);
-  }
+  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：width * height * 4。
+  let opts: image.InitializationOptions = {
+    size: { height: 4, width: 6 },
+    srcPixelFormat: image.PixelMapFormat.RGBA_8888, // 缓冲区中的源像素数据的像素格式。
+    pixelFormat: image.PixelMapFormat.RGBA_8888, // 新创建的PixelMap的像素格式。
+    editable: true
+  };
+  image.createPixelMap(color, opts).then((pixelMap: image.PixelMap) => {
+    console.info('Succeeded in creating pixelmap.');
+  }).catch((e: Error) => {
+    console.error(`Failed to create pixelmap. Code is ${e.code}, message is ${e.message}`);
+  })
 }
 ```
 
@@ -483,11 +640,13 @@ async function CreatePixelMap() {
 
 createPixelMap(colors: ArrayBuffer, options: InitializationOptions, callback: AsyncCallback\<PixelMap>): void
 
-通过像素数据和图像属性创建PixelMap，传入的像素数据默认按BGRA_8888格式解析。使用callback异步回调。
+通过像素数据和图像属性创建PixelMap。传入的像素数据会进行拷贝并转换为[InitializationOptions](arkts-apis-image-i.md#initializationoptions8).pixelFormat指定的像素格式，用于初始化PixelMap的像素。使用callback异步回调。
 
-由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
-
-从API版本26.0.0开始，建议使用[createPixelMapFromPixels](#imagecreatepixelmapfrompixels)代替，以获得更完善的异常处理能力。
+> **说明：**
+>
+> - 此接口不支持创建以下像素格式的PixelMap：RGBA_1010102、YCBCR_P010、YCRCB_P010和ASTC_4x4。
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+> - 从API版本26.0.0开始，建议使用[createPixelMapFromPixels](#imagecreatepixelmapfrompixels)代替，以获得更完善的异常处理能力。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -499,18 +658,17 @@ createPixelMap(colors: ArrayBuffer, options: InitializationOptions, callback: As
 
 | 参数名   | 类型                                             | 必填 | 说明                       |
 | -------- | ------------------------------------------------ | ---- | -------------------------- |
-| colors   | ArrayBuffer                                      | 是   | 图像像素数据的缓冲区，用于初始化PixelMap的像素。初始化前，缓冲区中的像素格式需要由[InitializationOptions](arkts-apis-image-i.md#initializationoptions8).srcPixelFormat指定，否则默认缓冲区的像素格式为BGRA_8888。<br>**说明：** 图像像素数据的缓冲区长度：length = width * height * 单位像素字节数。 |
-| options  | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | 是   | 创建像素的属性，包括透明度、尺寸、缩略值、像素格式和是否可编辑。 |
+| colors   | ArrayBuffer                                      | 是   | 图像像素数据的缓冲区，用于初始化PixelMap的像素。缓冲区内的像素数据必须紧密排列，不可以包含内存对齐填充字节。<br>缓冲区的像素格式需要由[InitializationOptions](arkts-apis-image-i.md#initializationoptions8).srcPixelFormat指定，否则默认缓冲区的像素格式为BGRA_8888。<br>**说明：** 缓冲区长度为：图像宽度 * 图像高度 * 单位像素字节数。 |
+| options  | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | 是   | 创建图像的初始化属性，包括尺寸、像素格式、透明度类型、缩放模式和是否可编辑。<br>**说明：** 如果像素格式被指定为ASTC_4x4，将使用该类型中定义的默认像素格式。 |
 | callback | AsyncCallback\<[PixelMap](arkts-apis-image-PixelMap.md)>           | 是   | 回调函数，当创建PixelMap成功，err为undefined，data为获取到的PixelMap对象；否则为错误对象。 |
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function CreatePixelMap() {
-  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
+function CreatePixelMap() {
+  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素缓冲区大小，取值为：width * height * 4。
   let opts: image.InitializationOptions = {
     size: { height: 4, width: 6 },
     srcPixelFormat: image.PixelMapFormat.RGBA_8888, // 缓冲区中的源像素数据的像素格式。
@@ -518,30 +676,170 @@ async function CreatePixelMap() {
     editable: true
   };
   image.createPixelMap(color, opts, (error: BusinessError, pixelMap: image.PixelMap) => {
-    if(error) {
-      console.error(`Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
+    if (error) {
+      console.error(`Failed to create PixelMap. Code is ${error.code}, message is ${error.message}`);
       return;
-    } else {
-      console.info('Succeeded in creating pixelmap.');
     }
-  })
+    console.info('Succeeded in creating PixelMap.');
+  });
+}
+```
+
+## image.createPixelMapSync<sup>12+</sup>
+
+createPixelMapSync(colors: ArrayBuffer, options: InitializationOptions): PixelMap
+
+通过像素数据和图像属性创建PixelMap。传入的像素数据会进行拷贝并转换为[InitializationOptions](arkts-apis-image-i.md#initializationoptions8).pixelFormat指定的像素格式，用于初始化PixelMap的像素。同步返回结果。
+
+> **说明：**
+>
+> - 此接口不支持创建以下像素格式的PixelMap：RGBA_1010102、YCBCR_P010、YCRCB_P010和ASTC_4x4。
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+> - 从API版本26.0.0开始，建议使用[createPixelMapFromPixelsSync](#imagecreatepixelmapfrompixelssync)代替，以获得更完善的异常处理能力。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型                                             | 必填 | 说明                                                             |
+| ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
+| colors  | ArrayBuffer                                      | 是   | 图像像素数据的缓冲区，用于初始化PixelMap的像素。缓冲区内的像素数据必须紧密排列，不可以包含内存对齐填充字节。<br>缓冲区的像素格式需要由[InitializationOptions](arkts-apis-image-i.md#initializationoptions8).srcPixelFormat指定，否则默认缓冲区的像素格式为BGRA_8888。<br>**说明：** 缓冲区长度为：图像宽度 * 图像高度 * 单位像素字节数。 |
+| options | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | 是   | 创建图像的初始化属性，包括尺寸、像素格式、透明度类型、缩放模式和是否可编辑。<br>**说明：** 如果像素格式被指定为ASTC_4x4，将使用该类型中定义的默认像素格式。 |
+
+**返回值：**
+
+| 类型                             | 说明                  |
+| -------------------------------- | --------------------- |
+| [PixelMap](arkts-apis-image-PixelMap.md) | 返回创建的PixelMap对象，接口调用失败时会抛出异常。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed|
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function CreatePixelMapSync() {
+  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素缓冲区大小，取值为：width * height * 4。
+  let opts: image.InitializationOptions = {
+    size: { height: 4, width: 6 },
+    srcPixelFormat: image.PixelMapFormat.RGBA_8888, // 缓冲区中的源像素数据的像素格式。
+    pixelFormat: image.PixelMapFormat.RGBA_8888, // 新创建的PixelMap的像素格式。
+    editable: true
+  };
+  try {
+    let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+    console.info('Succeeded in creating PixelMap.');
+    return pixelMap;
+  } catch (e) {
+    const error = e as BusinessError;
+    console.error(`Failed to create PixelMap. Code is ${error.code}, message is ${error.message}`);
+  }
 }
 ```
 
 ArkTS-Sta示例：
+
+```ts
+function CreatePixelMapSync() {
+  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素缓冲区大小，取值为：width * height * 4。
+  let opts: image.InitializationOptions = {
+    size: { height: 4, width: 6 },
+    srcPixelFormat: image.PixelMapFormat.RGBA_8888, // 缓冲区中的源像素数据的像素格式。
+    pixelFormat: image.PixelMapFormat.RGBA_8888, // 新创建的PixelMap的像素格式。
+    editable: true
+  };
+  try {
+    let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+    console.info('Succeeded in creating PixelMap.');
+    return pixelMap;
+  } catch (e) {
+    console.error(`Failed to create PixelMap. Code is ${e.code}, message is ${e.message}`);
+  }
+}
+```
+
+## image.createPixelMapSync<sup>12+</sup>
+
+createPixelMapSync(options: InitializationOptions): PixelMap
+
+通过图像属性创建空白PixelMap。同步返回结果。
+
+> **说明：**
+>
+> - 此接口不支持创建以下像素格式的PixelMap：ASTC_4x4。
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+> - 从API版本26.0.0开始，建议使用[createEmptyPixelMap](#imagecreateemptypixelmap)代替，以获得更完善的异常处理能力。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型                                             | 必填 | 说明                                                             |
+| ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
+| options | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | 是   | 创建图像的属性，包括尺寸、像素格式、透明度类型、缩放模式和是否可编辑。<br>**说明：** 如果像素格式被指定为ASTC_4x4，将使用该类型中定义的默认像素格式。 |
+
+**返回值：**
+| 类型                             | 说明                  |
+| -------------------------------- | --------------------- |
+| [PixelMap](arkts-apis-image-PixelMap.md) | 返回创建的PixelMap对象，接口调用失败时会抛出异常。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed|
+
+**示例：**
+
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function CreatePixelMap() {
-  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width * 4。
+function CreatePixelMapSync() {
   let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
-  image.createPixelMap(color, opts, (error: BusinessError<void> | null, pixelMap: image.PixelMap | undefined) => {
-    if(error) {
-      console.error(`Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
-    } else {
-      console.info('Succeeded in creating pixelmap.');
-    }
-  })
+  try {
+    let pixelMap: image.PixelMap = image.createPixelMapSync(opts);
+    console.info('Succeeded in creating PixelMap.');
+    return pixelMap;
+  } catch (e) {
+    const error = e as BusinessError;
+    console.error(`Failed to create PixelMap. Code is ${error.code}, message is ${error.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function CreatePixelMapSync() {
+  let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
+  try {
+    let pixelMap: image.PixelMap = image.createPixelMapSync(opts);
+    console.info('Succeeded in creating PixelMap.');
+    return pixelMap;
+  } catch (e) {
+    console.error(`Failed to create PixelMap. Code is ${e.code}, message is ${e.message}`);
+  }
 }
 ```
 
@@ -549,9 +847,12 @@ async function CreatePixelMap() {
 
 createPixelMapUsingAllocator(colors: ArrayBuffer, param: InitializationOptions, allocatorType?: AllocatorType): Promise\<PixelMap>
 
-通过属性创建以及指定内存类型创建PixelMap，默认采用BGRA_8888格式处理数据。使用Promise异步回调。
+通过像素数据和图像属性创建PixelMap，可以指定内存类型。传入的像素数据会进行拷贝并转换为[InitializationOptions](arkts-apis-image-i.md#initializationoptions8).pixelFormat指定的像素格式，用于初始化PixelMap的像素。使用Promise异步回调。
 
-由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+> **说明：**
+>
+> - 此接口不支持创建以下像素格式的PixelMap：ASTC_4x4。
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -563,15 +864,15 @@ createPixelMapUsingAllocator(colors: ArrayBuffer, param: InitializationOptions, 
 
 | 参数名   | 类型                                             | 必填 | 说明                       |
 | -------- | ------------------------------------------------ | ---- | -------------------------- |
-| colors   | ArrayBuffer                                      | 是   | 图像像素数据的缓冲区，用于初始化PixelMap的像素。初始化前，必须通过[InitializationOptions](arkts-apis-image-i.md#initializationoptions8).srcPixelFormat指定缓冲区中的像素格式。<br>**说明：** 图像像素数据的缓冲区长度：length = width * height * 单位像素字节数。 |
-| param  | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | 是   | 创建像素的属性，包括透明度、尺寸、缩略值、像素格式和是否可编辑。 |
-| allocatorType  | [AllocatorType](arkts-apis-image-e.md#allocatortype15)          | 否   | 指定创建pixelmap的内存类型，默认内存类型是AllocatorType.AUTO。<br> 1. image.AllocatorType.AUTO：不支持该内存类型的格式有UNKNOWN、YCBCR_P010、YCRCB_P010和ASTC_4x4。RGBA_1010102默认申请DMA内存。其他格式（RGB_565、RGBA_8888、BGRA_8888和RGBAF_16）尺寸大于512*512默认申请DMA内存，否则申请共享内存。<br>2. image.AllocatorType.DMA：RGBA_1010102、RGB_565、RGBA_8888、BGRA_8888和RGBAF_16支持DMA内存类型，其余格式不支持。<br>3. image.AllocatorType.SHARED：UNKNOWN、RGBA_1010102、YCBCR_P010、YCRCB_P010和ASTC_4x4不支持共享内存，其余格式支持。|
+| colors   | ArrayBuffer                                      | 是   | 图像像素数据的缓冲区，用于初始化PixelMap的像素。缓冲区内的像素数据必须紧密排列，不可以包含内存对齐填充字节。<br>初始化前，必须通过[InitializationOptions](arkts-apis-image-i.md#initializationoptions8).srcPixelFormat指定缓冲区的像素格式，否则会创建失败。<br>**说明：** 缓冲区长度为：图像宽度 * 图像高度 * 单位像素字节数。 |
+| param  | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | 是   | 创建图像的初始化属性，包括尺寸、像素格式、透明度类型、缩放模式和是否可编辑。<br>**说明：** 如果像素格式被指定为ASTC_4x4，将使用该类型中定义的默认像素格式。 |
+| allocatorType  | [AllocatorType](arkts-apis-image-e.md#allocatortype15)          | 否   | 指定创建PixelMap的内存类型，默认内存类型是AllocatorType.AUTO。<br> 1. image.AllocatorType.AUTO：不支持该内存类型的格式有UNKNOWN、YCBCR_P010、YCRCB_P010和ASTC_4x4。RGBA_1010102默认申请DMA内存。其他格式（RGB_565、RGBA_8888、BGRA_8888和RGBA_F16）尺寸大于512*512像素默认申请DMA内存，否则申请共享内存。<br>2. image.AllocatorType.DMA：RGBA_1010102、RGB_565、RGBA_8888、BGRA_8888和RGBA_F16支持DMA内存类型，其余格式不支持。<br>3. image.AllocatorType.SHARED：UNKNOWN、RGBA_1010102、YCBCR_P010、YCRCB_P010和ASTC_4x4不支持共享内存，其余格式支持。 |
 
 **返回值：**
 
 | 类型                             | 说明                                                                    |
 | -------------------------------- | ----------------------------------------------------------------------- |
-| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)> | Promise对象，返回PixelMap。|
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)> | Promise对象，返回创建的PixelMap对象，接口调用失败时会抛出异常。 |
 
 **错误码：**
 
@@ -585,11 +886,13 @@ createPixelMapUsingAllocator(colors: ArrayBuffer, param: InitializationOptions, 
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function CreatePixelMapUseAllocator() {
-  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
+function CreatePixelMapUseAllocator() {
+  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素缓冲区大小，取值为：width * height * 4。
   let opts: image.InitializationOptions = {
     size: { height: 4, width: 6 },
     srcPixelFormat: image.PixelMapFormat.RGBA_8888, // 缓冲区中的源像素数据的像素格式。
@@ -597,10 +900,29 @@ async function CreatePixelMapUseAllocator() {
     editable: true
   };
   image.createPixelMapUsingAllocator(color, opts, image.AllocatorType.AUTO).then((pixelMap: image.PixelMap) => {
-    console.info('Succeeded in creating pixelmap.');
+    console.info('Succeeded in creating PixelMap.');
   }).catch((error: BusinessError) => {
-    console.error("Failed to create pixelmap. code is ", error.code);
-  })
+    console.error(`Failed to create PixelMap. Code: ${error.code}, message: ${error.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function CreatePixelMapUseAllocator() {
+  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素缓冲区大小，取值为：width * height * 4。
+  let opts: image.InitializationOptions = {
+    size: { height: 4, width: 6 },
+    srcPixelFormat: image.PixelMapFormat.RGBA_8888, // 缓冲区中的源像素数据的像素格式。
+    pixelFormat: image.PixelMapFormat.RGBA_8888, // 新创建的PixelMap的像素格式。
+    editable: true
+  };
+  image.createPixelMapUsingAllocator(color, opts, image.AllocatorType.AUTO).then((pixelMap: image.PixelMap) => {
+    console.info('Succeeded in creating PixelMap.');
+  }).catch((error: Error) => {
+    console.error(`Failed to create PixelMap. Code: ${error.code}, message: ${error.message}`);
+  });
 }
 ```
 
@@ -608,9 +930,11 @@ async function CreatePixelMapUseAllocator() {
 
 createPixelMapFromParcel(sequence: rpc.MessageSequence): PixelMap
 
-从MessageSequence中获取PixelMap。
+从MessageSequence中反序列化并获取PixelMap。
 
-由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+> **说明：**
+>
+> 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -653,20 +977,20 @@ import { rpc } from '@kit.IPCKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 class MySequence implements rpc.Parcelable {
-  pixel_map: image.PixelMap;
-  constructor(conPixelmap: image.PixelMap) {
-    this.pixel_map = conPixelmap;
+  pixelMap: image.PixelMap;
+  constructor(pixelMap: image.PixelMap) {
+    this.pixelMap = pixelMap;
   }
   marshalling(messageSequence: rpc.MessageSequence) {
-    this.pixel_map.marshalling(messageSequence);
+    this.pixelMap.marshalling(messageSequence);
     return true;
   }
   unmarshalling(messageSequence: rpc.MessageSequence) {
     try {
-      this.pixel_map = image.createPixelMapFromParcel(messageSequence);
+      this.pixelMap = image.createPixelMapFromParcel(messageSequence);
     } catch(e) {
       let error = e as BusinessError;
-      console.error(`createPixelMapFromParcel error. code is ${error.code}, message is ${error.message}`);
+      console.error(`Failed to create PixelMap from parcel. Code is ${error.code}, message is ${error.message}`);
       return false;
     }
     return true;
@@ -698,10 +1022,10 @@ async function CreatePixelMapFromParcel() {
     let ret: MySequence = new MySequence(pixelMap);
     data.readParcelable(ret);
 
-    // 获取到pixelmap。
-    let newPixelmap = ret.pixel_map;
-    if (newPixelmap != undefined ) {
-      console.info('Get PixelMap successfully.')
+    // 获取到PixelMap。
+    let newPixelMap = ret.pixelMap;
+    if (newPixelMap != undefined) {
+      console.info('Succeeded in getting PixelMap.');
     }
   }
 }
@@ -713,10 +1037,10 @@ createPixelMapFromSurface(surfaceId: string, region: Region): Promise\<PixelMap>
 
 根据Surface ID和区域信息创建一个PixelMap对象。该区域的大小由[Region](arkts-apis-image-i.md#region8).size指定。使用Promise异步回调。
 
-由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
-
 > **说明：**
-> 当设备为折叠屏，且折叠状态切换时，可能因Surface自带旋转角度导致接口创建失败。需将宽高适配旋转角度。推荐使用[image.createPixelMapFromSurface](#imagecreatepixelmapfromsurface15)。
+>
+> - 当设备为折叠屏，且折叠状态切换时，可能因Surface自带旋转角度导致接口创建失败。需根据Surface的旋转角度相应调整传入的宽高值（如旋转90°或270°时互换宽与高）。推荐使用[image.createPixelMapFromSurface](#imagecreatepixelmapfromsurface15)。
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -752,12 +1076,12 @@ createPixelMapFromSurface(surfaceId: string, region: Region): Promise\<PixelMap>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function CreatePixelMapFromSurface(surfaceId: string) {
+function CreatePixelMapFromSurface(surfaceId: string) {
   let region: image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
-  image.createPixelMapFromSurface(surfaceId, region).then(() => {
-    console.info('Succeeded in creating pixelmap from Surface');
+  image.createPixelMapFromSurface(surfaceId, region).then((pixelMap: image.PixelMap) => {
+    console.info('Succeeded in creating PixelMap from Surface');
   }).catch((error: BusinessError) => {
-    console.error(`Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
+    console.error(`Failed to create PixelMap. Code is ${error.code}, message is ${error.message}`);
   });
 } 
 ```
@@ -766,12 +1090,12 @@ async function CreatePixelMapFromSurface(surfaceId: string) {
 
 createPixelMapFromSurfaceSync(surfaceId: string, region: Region): PixelMap
 
-以同步方式，根据Surface ID和区域信息创建一个PixelMap对象。该区域的大小由[Region](arkts-apis-image-i.md#region8).size指定。
-
-由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+根据Surface ID和区域信息创建一个PixelMap对象。该区域的大小由[Region](arkts-apis-image-i.md#region8).size指定。同步返回结果。
 
 > **说明：**
-> 当设备为折叠屏，且折叠状态切换时，可能因Surface自带旋转角度导致接口创建失败。需将宽高适配旋转角度。推荐使用[image.createPixelMapFromSurfaceSync](#imagecreatepixelmapfromsurfacesync15)。
+>
+> - 当设备为折叠屏，且折叠状态切换时，可能因Surface自带旋转角度导致接口创建失败。需根据Surface的旋转角度相应调整传入的宽高值（如旋转90°或270°时互换宽与高）。推荐使用[image.createPixelMapFromSurfaceSync](#imagecreatepixelmapfromsurfacesync15)。
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -790,7 +1114,7 @@ createPixelMapFromSurfaceSync(surfaceId: string, region: Region): PixelMap
 
 | 类型                             | 说明                  |
 | -------------------------------- | --------------------- |
-| [PixelMap](arkts-apis-image-PixelMap.md) | 成功同步返回PixelMap对象，失败抛出异常。 |
+| [PixelMap](arkts-apis-image-PixelMap.md) | 返回创建的PixelMap对象，接口调用失败时会抛出异常。 |
 
 **错误码：**
 
@@ -804,11 +1128,36 @@ createPixelMapFromSurfaceSync(surfaceId: string, region: Region): PixelMap
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
-async function CreatePixelMapFromSurfaceSync(surfaceId: string) {
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function CreatePixelMapFromSurfaceSync(surfaceId: string) {
   let region: image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
-  let pixelMap: image.PixelMap = image.createPixelMapFromSurfaceSync(surfaceId, region);
-  return pixelMap;
+  try {
+    let pixelMap: image.PixelMap = image.createPixelMapFromSurfaceSync(surfaceId, region);
+    console.info('Succeeded in creating PixelMap from Surface.');
+    return pixelMap;
+  } catch (e) {
+    const error = e as BusinessError;
+    console.error(`Failed to create PixelMap. Code is ${error.code}, message is ${error.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function CreatePixelMapFromSurfaceSync(surfaceId: string) {
+  let region: image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
+  try {
+    let pixelMap: image.PixelMap = image.createPixelMapFromSurfaceSync(surfaceId, region);
+    console.info('Succeeded in creating PixelMap from Surface.');
+    return pixelMap;
+  } catch (error) {
+    console.error(`Failed to create PixelMap. Code is ${error.code}, message is ${error.message}`);
+  }
 }
 ```
 
@@ -818,7 +1167,9 @@ createPixelMapFromSurface(surfaceId: string): Promise\<PixelMap>
 
 从Surface ID创建一个PixelMap对象。使用Promise异步回调。
 
-由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+> **说明：**
+>
+> 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -836,7 +1187,7 @@ createPixelMapFromSurface(surfaceId: string): Promise\<PixelMap>
 
 | 类型                             | 说明                  |
 | -------------------------------- | --------------------- |
-| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)> | Promise对象，返回PixelMap。 |
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)> | Promise对象，返回创建的PixelMap对象，接口调用失败时会抛出异常。 |
 
 **错误码：**
 
@@ -850,14 +1201,28 @@ createPixelMapFromSurface(surfaceId: string): Promise\<PixelMap>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function CreatePixelMapFromSurface(surfaceId: string) {
-  image.createPixelMapFromSurface(surfaceId).then(() => {
-    console.info('Succeeded in creating pixelmap from Surface');
+function CreatePixelMapFromSurface(surfaceId: string) {
+  image.createPixelMapFromSurface(surfaceId).then((pixelMap: image.PixelMap) => {
+    console.info('Succeeded in creating PixelMap from Surface');
   }).catch((error: BusinessError) => {
-    console.error(`Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
+    console.error(`Failed to create PixelMap. Code is ${error.code}, message is ${error.message}`);
+  });
+} 
+```
+
+ArkTS-Sta示例：
+
+```ts
+function CreatePixelMapFromSurface(surfaceId: string) {
+  image.createPixelMapFromSurface(surfaceId).then((pixelMap: image.PixelMap) => {
+    console.info('Succeeded in creating PixelMap from Surface');
+  }).catch((error: Error) => {
+    console.error(`Failed to create PixelMap. Code is ${error.code}, message is ${error.message}`);
   });
 } 
 ```
@@ -866,9 +1231,11 @@ async function CreatePixelMapFromSurface(surfaceId: string) {
 
 createPixelMapFromSurfaceSync(surfaceId: string): PixelMap
 
-从Surface ID创建一个PixelMap对象，同步返回PixelMap结果。
+从Surface ID创建一个PixelMap对象。同步返回结果。
 
-由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+> **说明：**
+>
+> 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -886,7 +1253,7 @@ createPixelMapFromSurfaceSync(surfaceId: string): PixelMap
 
 | 类型                             | 说明                  |
 | -------------------------------- | --------------------- |
-| [PixelMap](arkts-apis-image-PixelMap.md) | 成功同步返回PixelMap对象，失败抛出异常。 |
+| [PixelMap](arkts-apis-image-PixelMap.md) | 返回创建的PixelMap对象，接口调用失败时会抛出异常。 |
 
 **错误码：**
 
@@ -900,10 +1267,34 @@ createPixelMapFromSurfaceSync(surfaceId: string): PixelMap
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
-async function CreatePixelMapFromSurfaceSync(surfaceId: string) {
-  let pixelMap : image.PixelMap = image.createPixelMapFromSurfaceSync(surfaceId);
-  return pixelMap;
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function CreatePixelMapFromSurfaceSync(surfaceId: string) {
+  try {
+    let pixelMap: image.PixelMap = image.createPixelMapFromSurfaceSync(surfaceId);
+    console.info('Succeeded in creating PixelMap from Surface.');
+    return pixelMap;
+  } catch (e) {
+    const error = e as BusinessError;
+    console.error(`Failed to create PixelMap. Code is ${error.code}, message is ${error.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function CreatePixelMapFromSurfaceSync(surfaceId: string) {
+  try {
+    let pixelMap: image.PixelMap = image.createPixelMapFromSurfaceSync(surfaceId);
+    console.info('Succeeded in creating PixelMap from Surface.');
+    return pixelMap;
+  } catch (error) {
+    console.error(`Failed to create PixelMap. Code is ${error.code}, message is ${error.message}`);
+  }
 }
 ```
 
@@ -913,6 +1304,10 @@ createPixelMapFromSurfaceWithTransformation(surfaceId: string, transformEnabled:
 
 通过Surface的ID创建一个预览流画面的PixelMap对象。该Surface可能携带旋转或翻转的变换信息。使用Promise异步回调。
 
+> **说明：**
+>
+> 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -932,7 +1327,7 @@ createPixelMapFromSurfaceWithTransformation(surfaceId: string, transformEnabled:
 
 | 类型                             | 说明                  |
 | -------------------------------- | --------------------- |
-| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)\> | Promise对象，返回PixelMap。 |
+| Promise\<[PixelMap](arkts-apis-image-PixelMap.md)\> | Promise对象，返回创建的PixelMap对象，接口调用失败时会抛出异常。 |
 
 **错误码：**
 
@@ -948,26 +1343,27 @@ createPixelMapFromSurfaceWithTransformation(surfaceId: string, transformEnabled:
 **示例：**
 
 ArkTS-Dyn示例：
-```ts
-function DemoCreatePixelMapFromSurfaceWithTransformation(surfaceId: string, transformEnabled: boolean) {
-  image.createPixelMapFromSurfaceWithTransformation(surfaceId, transformEnabled).then((pixelMap: image.PixelMap) => {
-    console.info('Succeeded in creating pixelMap.');
-  }).catch((e: Error) => {
-    console.error(`Failed to create PixelMap. Code: ${e}`);
-  });
-}
-```
 
-ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function DemoCreatePixelMapFromSurfaceWithTransformation(surfaceId: string, transformEnabled: boolean) {
   image.createPixelMapFromSurfaceWithTransformation(surfaceId, transformEnabled).then((pixelMap: image.PixelMap) => {
-    console.info('PixelMap created successfully.');
+    console.info('Succeeded in creating PixelMap.');
+  }).catch((e: BusinessError) => {
+    console.error(`Failed to create PixelMap. Code: ${e.code}, message: ${e.message}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+function DemoCreatePixelMapFromSurfaceWithTransformation(surfaceId: string, transformEnabled: boolean) {
+  image.createPixelMapFromSurfaceWithTransformation(surfaceId, transformEnabled).then((pixelMap: image.PixelMap) => {
+    console.info('Succeeded in creating PixelMap.');
   }).catch((e: Error) => {
-    const error = e as BusinessError;
-    console.error(`Failed to create PixelMap. Code: ${error.code}, message: ${error.message}`);
+    console.error(`Failed to create PixelMap. Code: ${e.code}, message: ${e.message}`);
   });
 }
 ```
@@ -976,7 +1372,11 @@ function DemoCreatePixelMapFromSurfaceWithTransformation(surfaceId: string, tran
 
 createPixelMapFromSurfaceWithTransformationSync(surfaceId: string, transformEnabled: boolean): PixelMap
 
-通过Surface的ID创建一个预览流画面的PixelMap对象。该Surface可能携带旋转或翻转的变换信息。同步返回PixelMap结果。
+通过Surface的ID创建一个预览流画面的PixelMap对象。该Surface可能携带旋转或翻转的变换信息。同步返回结果。
+
+> **说明：**
+>
+> 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -997,7 +1397,7 @@ createPixelMapFromSurfaceWithTransformationSync(surfaceId: string, transformEnab
 
 | 类型                             | 说明                  |
 | -------------------------------- | --------------------- |
-| [PixelMap](arkts-apis-image-PixelMap.md) | 成功会同步返回PixelMap对象，失败则抛出异常。 |
+| [PixelMap](arkts-apis-image-PixelMap.md) | 返回创建的PixelMap对象，接口调用失败时会抛出异常。 |
 
 **错误码：**
 
@@ -1013,6 +1413,7 @@ createPixelMapFromSurfaceWithTransformationSync(surfaceId: string, transformEnab
 **示例：**
 
 ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1028,281 +1429,17 @@ function DemoCreatePixelMapFromSurfaceWithTransformationSync(surfaceId: string, 
 ```
 
 ArkTS-Sta示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function DemoCreatePixelMapFromSurfaceWithTransformationSync(surfaceId: string, transformEnabled: boolean) {
   try {
     const pixelMap: image.PixelMap = image.createPixelMapFromSurfaceWithTransformationSync(surfaceId, transformEnabled);
-    console.info('PixelMap created successfully.');
-  } catch (e: BusinessError) {
-    console.error(`Failed to create PixelMap. Code: ${e.code}, message: ${e.message}`);
+    console.info('Succeeded in creating pixelMap.');
+  } catch (error) {
+    console.error(`Failed to create PixelMap. Code: ${error.code}, message: ${error.message}`);
   }
-}
-```
-
-## image.createPixelMapSync<sup>12+</sup>
-
-createPixelMapSync(colors: ArrayBuffer, options: InitializationOptions): PixelMap
-
-通过像素数据和图像属性创建PixelMap，传入的像素数据默认按BGRA_8888格式解析。同步返回结果。
-
-由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
-
-从API版本26.0.0开始，建议使用[createPixelMapFromPixelsSync](#imagecreatepixelmapfrompixelssync)代替，以获得更完善的异常处理能力。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-| 参数名  | 类型                                             | 必填 | 说明                                                             |
-| ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
-| colors  | ArrayBuffer                                      | 是   | 图像像素数据的缓冲区，用于初始化PixelMap的像素。初始化前，缓冲区中的像素格式需要由[InitializationOptions](arkts-apis-image-i.md#initializationoptions8).srcPixelFormat指定，否则默认缓冲区的像素格式为BGRA_8888。<br>**说明：** 图像像素数据的缓冲区长度：length = width * height * 单位像素字节数。 |
-| options | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | 是   | 创建像素的属性，包括透明度，尺寸，缩略值，像素格式和是否可编辑。 |
-
-**返回值：**
-
-| 类型                             | 说明                  |
-| -------------------------------- | --------------------- |
-| [PixelMap](arkts-apis-image-PixelMap.md) | 成功同步返回PixelMap对象，失败抛出异常。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | --------------------------------------------|
-|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed|
-
-**示例：**
-
-```ts
-function CreatePixelMapSync() {
-  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
-  let opts: image.InitializationOptions = {
-    size: { height: 4, width: 6 },
-    srcPixelFormat: image.PixelMapFormat.RGBA_8888, // 缓冲区中的源像素数据的像素格式。
-    pixelFormat: image.PixelMapFormat.RGBA_8888, // 新创建的PixelMap的像素格式。
-    editable: true
-  };
-  let pixelMap : image.PixelMap = image.createPixelMapSync(color, opts);
-  return pixelMap;
-}
-```
-
-## image.createEmptyPixelMap
-
-createEmptyPixelMap(param: InitializationOptions): PixelMap
-
-通过图像属性创建空白PixelMap。
-
-> **说明：**
->
-> - 此接口不支持创建以下像素格式的PixelMap：ASTC_4x4。
-> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
-
-**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
-**参数：**
-
-| 参数名  | 类型                                             | 必填 | 说明                                                             |
-| ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
-| param | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | 是   | 创建图像的属性，包括尺寸、像素格式、透明度类型、缩放模式和是否可编辑。<br>**说明：** 如果像素格式被指定为ASTC_4x4，将使用该类型中定义的默认像素格式。 |
-
-**返回值：**
-
-| 类型                             | 说明                                                                    |
-| -------------------------------- | ----------------------------------------------------------------------- |
-| [PixelMap](arkts-apis-image-PixelMap.md) | 返回创建的空白PixelMap。                                         |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
-
-| 错误码ID | 错误信息 |
-| ------ | --------------------------------------------|
-| 7600206 | Invalid parameter. |
-| 7600301 | Failed to allocate memory. Possible causes: 1. The resulting PixelMap size is too large. 2. The system is out of memory. |
-| 7600305 | Failed to create the PixelMap. Possible cause: Internal data is corrupted. Please check the logs for detailed information. |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function DemoCreateEmptyPixelMap() {
-  const config: image.InitializationOptions = {
-    size: { width: 6, height: 4 },
-    pixelFormat: image.PixelMapFormat.RGBA_8888, // 新创建的PixelMap的像素格式。
-    editable: true
-  };
-
-  try {
-    const pixelMap = image.createEmptyPixelMap(config);
-    console.info('创建空白PixelMap成功。');
-  } catch (e) {
-    const error = e as BusinessError;
-    console.error(`创建空白PixelMap失败。错误码：${e.code} 错误信息：${e.message}`);
-  }
-}
-```
-
-## image.createPixelMapSync<sup>12+</sup>
-
-createPixelMapSync(options: InitializationOptions): PixelMap
-
-通过图像属性创建空白PixelMap，同步返回PixelMap结果。
-
-由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
-
-从API版本26.0.0开始，建议使用[createEmptyPixelMap](#imagecreateemptypixelmap)代替，以获得更完善的异常处理能力。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-| 参数名  | 类型                                             | 必填 | 说明                                                             |
-| ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
-| options | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | 是   | 创建像素的属性，包括透明度，尺寸，缩略值，像素格式和是否可编辑。 |
-
-**返回值：**
-| 类型                             | 说明                  |
-| -------------------------------- | --------------------- |
-| [PixelMap](arkts-apis-image-PixelMap.md) | 成功同步返回PixelMap对象，失败抛出异常。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | --------------------------------------------|
-|  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed|
-
-**示例：**
-
-```ts
-function CreatePixelMapSync() {
-  let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
-  let pixelMap : image.PixelMap = image.createPixelMapSync(opts);
-  return pixelMap;
-}
-```
-
-## image.createPixelMapUsingAllocatorSync<sup>20+</sup>
-
-createPixelMapUsingAllocatorSync(colors: ArrayBuffer, param: InitializationOptions, allocatorType?: AllocatorType): PixelMap
-
-通过像素数据和图像属性创建PixelMap，可以指定内存类型。同步返回结果。
-
-由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-| 参数名  | 类型                                             | 必填 | 说明                                                             |
-| ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
-| colors  | ArrayBuffer                                      | 是   | 图像像素数据的缓冲区，用于初始化PixelMap的像素。初始化前，必须通过[InitializationOptions](arkts-apis-image-i.md#initializationoptions8).srcPixelFormat指定缓冲区中的像素格式。<br>**说明：** 图像像素数据的缓冲区长度：length = width * height * 单位像素字节数。 |
-| param | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | 是   | 创建像素的属性，包括透明度、尺寸、缩略值、像素格式和是否可编辑。 |
-| allocatorType  | [AllocatorType](arkts-apis-image-e.md#allocatortype15)          | 否   | 指定创建pixelmap的内存类型，默认内存类型是AllocatorType.AUTO。<br> 1. image.AllocatorType.AUTO：不支持该内存类型的格式有UNKNOWN、YCBCR_P010、YCRCB_P010和ASTC_4x4。RGBA_1010102默认申请DMA内存。其他格式（RGB_565、RGBA_8888、BGRA_8888和RGBAF_16）尺寸大于512*512默认申请DMA内存，否则申请共享内存。<br>2. image.AllocatorType.DMA：RGBA_1010102、RGB_565、RGBA_8888、BGRA_8888和RGBAF_16支持DMA内存类型，其余格式不支持。<br>3. image.AllocatorType.SHARED：UNKNOWN、RGBA_1010102、YCBCR_P010、YCRCB_P010和ASTC_4x4不支持共享内存，其余格式支持。|
-
-**返回值：**
-
-| 类型                             | 说明                  |
-| -------------------------------- | --------------------- |
-| [PixelMap](arkts-apis-image-PixelMap.md) | 成功同步返回PixelMap对象，失败抛出异常。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | --------------------------------------------|
-|  7600201    | Unsupported operation. |
-|  7600301    | Memory alloc failed. |
-|  7600302    | Memory copy failed. |
-
-**示例：**
-
-```ts
-function CreatePixelMapUsingAllocatorSync() {
-  const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
-  let opts: image.InitializationOptions = {
-    size: { height: 4, width: 6 },
-    srcPixelFormat: image.PixelMapFormat.RGBA_8888, // 缓冲区中的源像素数据的像素格式。
-    pixelFormat: image.PixelMapFormat.RGBA_8888, // 新创建的PixelMap的像素格式。
-    editable: true
-  };
-  let pixelMap : image.PixelMap = image.createPixelMapUsingAllocatorSync(color, opts, image.AllocatorType.AUTO);
-  return pixelMap;
-}
-```
-
-## image.createPixelMapUsingAllocatorSync<sup>20+</sup>
-
-createPixelMapUsingAllocatorSync(param: InitializationOptions, allocatorType?: AllocatorType): PixelMap
-
-通过图像属性创建空白PixelMap，可以指定内存类型。同步返回PixelMap结果。
-
-由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 23
-
-**参数：**
-
-| 参数名  | 类型                                             | 必填 | 说明                                                             |
-| ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
-| param | [InitializationOptions](arkts-apis-image-i.md#initializationoptions8) | 是   | 创建像素的属性，包括透明度、尺寸、缩略值、像素格式和是否可编辑。 |
-| allocatorType  | [AllocatorType](arkts-apis-image-e.md#allocatortype15)          | 否   | 指定创建pixelmap的内存类型，默认内存类型是AllocatorType.AUTO。<br> 1. image.AllocatorType.AUTO：不支持该内存类型的格式有UNKNOWN和ASTC_4x4。RGBA_1010102、YCBCR_P010、YCRCB_P010格式默认申请DMA内存。其他格式（RGB_565, RGBA_8888, BGRA_8888, RGBAF_16）尺寸大于512*512默认申请DMA内存，否则申请共享内存。<br>2. image.AllocatorType.DMA：RGB_565、RGBA_8888、BGRA_8888、RGBAF_16、RGBA_1010102、YCBCR_P010和YCRCB_P010支持DMA内存类型，其余格式不支持。<br>3. image.AllocatorType.SHARED：UNKNOWN、RGBA_1010102、YCBCR_P010、YCRCB_P010和ASTC_4x4不支持共享内存，其余格式支持。|
-
-**返回值：**
-
-| 类型                             | 说明                  |
-| -------------------------------- | --------------------- |
-| [PixelMap](arkts-apis-image-PixelMap.md) | 成功同步返回PixelMap对象，失败抛出异常。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | --------------------------------------------|
-|  7600201    | Unsupported operation.|
-|  7600301    | Memory alloc failed. |
-
-**示例：**
-
-```ts
-function CreatePixelMapUsingAllocatorSync() {
-  let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
-  let pixelMap : image.PixelMap = image.createPixelMapUsingAllocatorSync(opts, image.AllocatorType.AUTO);
-  return pixelMap;
 }
 ```
 
@@ -1310,9 +1447,12 @@ function CreatePixelMapUsingAllocatorSync() {
 
 createPremultipliedPixelMap(src: PixelMap, dst: PixelMap, callback: AsyncCallback\<void>): void
 
-将PixelMap的透明通道非预乘模式转变为预乘模式，转换后的数据存入目标PixelMap。使用callback异步回调。
+将PixelMap的透明度类型从非预乘模式转换为预乘模式，转换后的数据存入目标PixelMap。适用于图像渲染管线需要预乘Alpha格式的场景，例如使用OpenGL等图形接口进行图像合成时。使用callback异步回调。
 
-由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+> **说明：**
+>
+> - 该转换仅支持包含Alpha通道的像素格式，但RGBA_F16除外。
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -1324,9 +1464,9 @@ createPremultipliedPixelMap(src: PixelMap, dst: PixelMap, callback: AsyncCallbac
 
 | 参数名   | 类型                                             | 必填 | 说明                       |
 | -------- | ------------------------------------------------ | ---- | -------------------------- |
-| src | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 源PixelMap对象。 |
-| dst | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 目标PixelMap对象。 |
-|callback | AsyncCallback\<void> | 是   | 回调函数，当创建PixelMap成功，err为undefined，否则为错误对象。 |
+| src | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 源PixelMap对象，透明度类型需为非预乘（AlphaType.UNPREMUL）。 |
+| dst | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 目标PixelMap对象，透明度类型需为预乘模式（AlphaType.PREMUL），其他属性（宽度、高度、像素格式等）必须与源PixelMap相同，转换后的数据将写入该对象。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数，当透明度类型转换成功时，err为undefined；否则为错误对象。 |
 
 **错误码：**
 
@@ -1344,27 +1484,26 @@ createPremultipliedPixelMap(src: PixelMap, dst: PixelMap, callback: AsyncCallbac
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function CreatePremultipliedPixelMap() {
-  const color: ArrayBuffer = new ArrayBuffer(16); // 16为需要创建的像素buffer大小，取值为：height * width *4。
+function CreatePremultipliedPixelMap() {
+  const color: ArrayBuffer = new ArrayBuffer(16); // 16为需要创建的像素缓冲区大小，取值为：width * height * 4。
   let bufferArr = new Uint8Array(color);
   for (let i = 0; i < bufferArr.length; i += 4) {
     bufferArr[i] = 255;
-    bufferArr[i+1] = 255;
-    bufferArr[i+2] = 122;
-    bufferArr[i+3] = 122;
+    bufferArr[i + 1] = 255;
+    bufferArr[i + 2] = 122;
+    bufferArr[i + 3] = 122;
   }
   let optsForUnpre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 } , alphaType: image.AlphaType.UNPREMUL}
-  let srcPixelmap = image.createPixelMapSync(color, optsForUnpre);
+  let srcPixelMap = image.createPixelMapSync(color, optsForUnpre);
   let optsForPre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 } , alphaType: image.AlphaType.PREMUL}
   let dstPixelMap = image.createPixelMapSync(optsForPre);
-  image.createPremultipliedPixelMap(srcPixelmap, dstPixelMap, (error: BusinessError) => {
-    if(error) {
-      console.error(`Failed to convert pixelmap, error code is ${error}`);
+  image.createPremultipliedPixelMap(srcPixelMap, dstPixelMap, (error: BusinessError) => {
+    if (error) {
+      console.error(`Failed to convert PixelMap. Code is ${error.code}, message is ${error.message}`);
       return;
-    } else {
-      console.info('Succeeded in converting pixelmap.');
     }
-  })
+    console.info('Succeeded in converting PixelMap.');
+  });
 }
 ```
 
@@ -1372,9 +1511,12 @@ async function CreatePremultipliedPixelMap() {
 
 createPremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise\<void>
 
-将PixelMap数据按照透明度非预乘格式转为预乘格式，转换后的数据存入另一个PixelMap。使用Promise异步回调。
+将PixelMap的透明度类型从非预乘模式转换为预乘模式，转换后的数据存入目标PixelMap。适用于图像渲染管线需要预乘Alpha格式的场景，例如使用OpenGL等图形接口进行图像合成时。使用Promise异步回调。
 
-由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+> **说明：**
+>
+> - 该转换仅支持包含Alpha通道的像素格式，但RGBA_F16除外。
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -1386,8 +1528,8 @@ createPremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise\<void>
 
 | 参数名   | 类型                                             | 必填 | 说明                       |
 | -------- | ------------------------------------------------ | ---- | -------------------------- |
-| src | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 源PixelMap对象。 |
-| dst | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 目标PixelMap对象。 |
+| src | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 源PixelMap对象，透明度类型需为非预乘（AlphaType.UNPREMUL）。 |
+| dst | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 目标PixelMap对象，透明度类型需为预乘模式（AlphaType.PREMUL），其他属性（宽度、高度、像素格式等）必须与源PixelMap相同，转换后的数据将写入该对象。 |
 
 **返回值：**
 
@@ -1411,24 +1553,24 @@ createPremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise\<void>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function CreatePremultipliedPixelMap() {
-  const color: ArrayBuffer = new ArrayBuffer(16); // 16为需要创建的像素buffer大小，取值为：height * width *4。
+function CreatePremultipliedPixelMap() {
+  const color: ArrayBuffer = new ArrayBuffer(16); // 16为需要创建的像素缓冲区大小，取值为：width * height * 4。
   let bufferArr = new Uint8Array(color);
   for (let i = 0; i < bufferArr.length; i += 4) {
     bufferArr[i] = 255;
-    bufferArr[i+1] = 255;
-    bufferArr[i+2] = 122;
-    bufferArr[i+3] = 122;
+    bufferArr[i + 1] = 255;
+    bufferArr[i + 2] = 122;
+    bufferArr[i + 3] = 122;
   }
   let optsForUnpre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 } , alphaType: image.AlphaType.UNPREMUL}
-  let srcPixelmap = image.createPixelMapSync(color, optsForUnpre);
+  let srcPixelMap = image.createPixelMapSync(color, optsForUnpre);
   let optsForPre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 } , alphaType: image.AlphaType.PREMUL}
   let dstPixelMap = image.createPixelMapSync(optsForPre);
-  image.createPremultipliedPixelMap(srcPixelmap, dstPixelMap).then(() => {
-    console.info('Succeeded in converting pixelmap.');
+  image.createPremultipliedPixelMap(srcPixelMap, dstPixelMap).then(() => {
+    console.info('Succeeded in converting PixelMap.');
   }).catch((error: BusinessError) => {
-    console.error(`Failed to convert pixelmap, error code is ${error}`);
-  })
+    console.error(`Failed to convert PixelMap. Code is ${error.code}, message is ${error.message}`);
+  });
 }
 ```
 
@@ -1436,9 +1578,12 @@ async function CreatePremultipliedPixelMap() {
 
 createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap, callback: AsyncCallback\<void>): void
 
-将PixelMap的透明通道预乘模式转变为非预乘模式，转换后的数据存入目标PixelMap。使用callback异步回调。
+将PixelMap的透明度类型从预乘模式转换为非预乘模式，转换后的数据存入目标PixelMap。适用于需要对像素原始颜色值进行直接处理的场景，例如图像编辑、像素级分析等。使用callback异步回调。
 
-由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+> **说明：**
+>
+> - 该转换仅支持包含Alpha通道的像素格式，但RGBA_F16除外。
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -1450,9 +1595,9 @@ createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap, callback: AsyncCallb
 
 | 参数名   | 类型                                             | 必填 | 说明                       |
 | -------- | ------------------------------------------------ | ---- | -------------------------- |
-| src | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 源PixelMap对象。 |
-| dst | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 目标PixelMap对象。|
-|callback | AsyncCallback\<void> | 是   | 回调函数，当创建PixelMap成功，err为undefined，否则为错误对象。|
+| src | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 源PixelMap对象，透明度类型需为预乘（AlphaType.PREMUL）。 |
+| dst | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 目标PixelMap对象，透明度类型需为非预乘模式（AlphaType.UNPREMUL），其他属性（宽度、高度、像素格式等）必须与源PixelMap相同，转换后的数据将写入该对象。 |
+|callback | AsyncCallback\<void> | 是   | 回调函数，当透明度类型转换成功时，err为undefined；否则为错误对象。|
 
 **错误码：**
 
@@ -1470,27 +1615,26 @@ createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap, callback: AsyncCallb
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function CreateUnpremultipliedPixelMap() {
-  const color: ArrayBuffer = new ArrayBuffer(16); // 16为需要创建的像素buffer大小，取值为：height * width *4。
+function CreateUnpremultipliedPixelMap() {
+  const color: ArrayBuffer = new ArrayBuffer(16); // 16为需要创建的像素缓冲区大小，取值为：width * height * 4。
   let bufferArr = new Uint8Array(color);
   for (let i = 0; i < bufferArr.length; i += 4) {
     bufferArr[i] = 255;
-    bufferArr[i+1] = 255;
-    bufferArr[i+2] = 122;
-    bufferArr[i+3] = 122;
+    bufferArr[i + 1] = 255;
+    bufferArr[i + 2] = 122;
+    bufferArr[i + 3] = 122;
   }
   let optsForPre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 } , alphaType: image.AlphaType.PREMUL}
-  let srcPixelmap = image.createPixelMapSync(color, optsForPre);
+  let srcPixelMap = image.createPixelMapSync(color, optsForPre);
   let optsForUnpre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 } , alphaType: image.AlphaType.UNPREMUL}
   let dstPixelMap = image.createPixelMapSync(optsForUnpre);
-  image.createUnpremultipliedPixelMap(srcPixelmap, dstPixelMap, (error: BusinessError) => {
-    if(error) {
-      console.error(`Failed to convert pixelmap, error code is ${error}`);
+  image.createUnpremultipliedPixelMap(srcPixelMap, dstPixelMap, (error: BusinessError) => {
+    if (error) {
+      console.error(`Failed to convert PixelMap. Code is ${error.code}, message is ${error.message}`);
       return;
-    } else {
-      console.info('Succeeded in converting pixelmap.');
     }
-  })
+    console.info('Succeeded in converting PixelMap.');
+  });
 }
 ```
 
@@ -1498,9 +1642,12 @@ async function CreateUnpremultipliedPixelMap() {
 
 createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise\<void>
 
-将PixelMap的透明通道预乘模式转变为非预乘模式，转换后的数据存入目标PixelMap。使用Promise异步回调。
+将PixelMap的透明度类型从预乘模式转换为非预乘模式，转换后的数据存入目标PixelMap。适用于需要对像素原始颜色值进行直接处理的场景，例如图像编辑、像素级分析等。使用Promise异步回调。
 
-由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+> **说明：**
+>
+> - 该转换仅支持包含Alpha通道的像素格式，但RGBA_F16除外。
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -1512,8 +1659,8 @@ createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise\<void>
 
 | 参数名  | 类型                                             | 必填 | 说明                                                             |
 | ------- | ------------------------------------------------ | ---- | ---------------------------------------------------------------- |
-| src | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 源PixelMap对象。 |
-| dst | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 目标PixelMap对象。 |
+| src | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 源PixelMap对象，透明度类型需为预乘（AlphaType.PREMUL）。 |
+| dst | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | 目标PixelMap对象，透明度类型需为非预乘模式（AlphaType.UNPREMUL），其他属性（宽度、高度、像素格式等）必须与源PixelMap相同，转换后的数据将写入该对象。 |
 
 **返回值：**
 
@@ -1537,24 +1684,24 @@ createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise\<void>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function CreateUnpremultipliedPixelMap() {
-  const color: ArrayBuffer = new ArrayBuffer(16); // 16为需要创建的像素buffer大小，取值为：height * width *4。
+function CreateUnpremultipliedPixelMap() {
+  const color: ArrayBuffer = new ArrayBuffer(16); // 16为需要创建的像素缓冲区大小，取值为：width * height * 4。
   let bufferArr = new Uint8Array(color);
   for (let i = 0; i < bufferArr.length; i += 4) {
     bufferArr[i] = 255;
-    bufferArr[i+1] = 255;
-    bufferArr[i+2] = 122;
-    bufferArr[i+3] = 122;
+    bufferArr[i + 1] = 255;
+    bufferArr[i + 2] = 122;
+    bufferArr[i + 3] = 122;
   }
   let optsForPre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 } , alphaType: image.AlphaType.PREMUL}
-  let srcPixelmap = image.createPixelMapSync(color, optsForPre);
+  let srcPixelMap = image.createPixelMapSync(color, optsForPre);
   let optsForUnpre: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 2, width: 2 } , alphaType: image.AlphaType.UNPREMUL}
   let dstPixelMap = image.createPixelMapSync(optsForUnpre);
-  image.createUnpremultipliedPixelMap(srcPixelmap, dstPixelMap).then(() => {
-    console.info('Succeeded in converting pixelmap.');
+  image.createUnpremultipliedPixelMap(srcPixelMap, dstPixelMap).then(() => {
+    console.info('Succeeded in converting PixelMap.');
   }).catch((error: BusinessError) => {
-    console.error(`Failed to convert pixelmap, error code is ${error}`);
-  })
+    console.error(`Failed to convert PixelMap. Code is ${error.code}, message is ${error.message}`);
+  });
 }
 ```
 
@@ -1580,7 +1727,7 @@ ArkTS-Sta: createImageSource(uri: string): ImageSource | undefined
 
 | 参数名 | 类型   | 必填 | 说明                               |
 | ------ | ------ | ---- | ---------------------------------- |
-| uri    | string | 是   | 图片路径，当前仅支持应用沙箱路径。<br>当前支持格式有：JPEG、PNG、GIF、BMP、WebP、DNG、HEIC<sup>12+</sup>、WBMP<sup>23+</sup>、HEIFS<sup>23+</sup>、TIFF<sup>23+</sup>、SVG<sup>10+</sup>（可参考[SVG标签说明](#svg标签说明)）、ICO<sup>11+</sup>。从API版本26.0.0开始，增加支持AVIF、AVIS格式。<br>部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats](arkts-apis-image-f.md#imagegetimagesourcesupportedformats20)接口，动态查询当前设备上的解码能力。 |
+| uri    | string | 是   | 图片路径，当前仅支持应用沙箱路径。<br>当前支持格式有：JPEG、PNG、GIF、BMP、WebP、DNG、HEIC<sup>12+</sup>、WBMP<sup>23+</sup>、HEIFS<sup>23+</sup>、TIFF<sup>23+</sup>、SVG<sup>10+</sup>（可参考[SVG标签说明](#svg标签说明)）、ICO<sup>11+</sup>。从API版本26.0.0开始，增加支持AVIF、AVIS格式。<br>部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats](#imagegetimagesourcesupportedformats20)接口，动态查询当前设备上的解码能力。 |
 
 **返回值：**
 
@@ -1644,7 +1791,7 @@ ArkTS-Sta: createImageSource(uri: string, options: SourceOptions): ImageSource |
 
 | 参数名  | 类型                            | 必填 | 说明                                |
 | ------- | ------------------------------- | ---- | ----------------------------------- |
-| uri     | string                          | 是   | 图片路径，当前仅支持应用沙箱路径（可参考[使用说明](../apis-core-file-kit/js-apis-file-fs.md#使用说明)）。<br>当前支持格式有：JPEG、PNG、GIF、BMP、WebP、DNG、HEIC<sup>12+</sup>、WBMP<sup>23+</sup>、HEIFS<sup>23+</sup>、TIFF<sup>23+</sup>、SVG<sup>10+</sup>（可参考[SVG标签说明](#svg标签说明)）、ICO<sup>11+</sup>。从API版本26.0.0开始，增加支持AVIF、AVIS格式。<br>部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats](arkts-apis-image-f.md#imagegetimagesourcesupportedformats20)接口，动态查询当前设备上的解码能力。 |
+| uri     | string                          | 是   | 图片路径，当前仅支持应用沙箱路径（可参考[使用说明](../apis-core-file-kit/js-apis-file-fs.md#使用说明)）。<br>当前支持格式有：JPEG、PNG、GIF、BMP、WebP、DNG、HEIC<sup>12+</sup>、WBMP<sup>23+</sup>、HEIFS<sup>23+</sup>、TIFF<sup>23+</sup>、SVG<sup>10+</sup>（可参考[SVG标签说明](#svg标签说明)）、ICO<sup>11+</sup>。从API版本26.0.0开始，增加支持AVIF、AVIS格式。<br>部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats](#imagegetimagesourcesupportedformats20)接口，动态查询当前设备上的解码能力。 |
 | options | [SourceOptions](arkts-apis-image-i.md#sourceoptions9) | 是   | 图片属性，包括图片像素密度、像素格式和图片尺寸。|
 
 **返回值：**
@@ -1863,7 +2010,7 @@ ArkTS-Sta: createImageSource(buf: ArrayBuffer): ImageSource | undefined
 ArkTS-Dyn示例：
 ```ts
 async function CreateImageSource() {
-  const buf: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
+  const buf: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素缓冲区大小，取值为：width * height * 4。
   const imageSourceObj: image.ImageSource = image.createImageSource(buf);
 }
 ```
@@ -2075,7 +2222,6 @@ async function CreateIncrementalImageSource(context : Context) {
   imageSourceIncrementalSApi.updateData(splitBuff1, false, 0, splitBuff1.byteLength).then(() => {
     imageSourceIncrementalSApi.updateData(splitBuff2, true, 0, splitBuff2.byteLength).then(() => {
       let pixelMap = imageSourceIncrementalSApi.createPixelMapSync();
-      let imageInfo = pixelMap.getImageInfoSync();
       console.info('Succeeded in creating pixelMap');
     }).catch((error : BusinessError) => {
       console.error(`Failed to updateData error code is ${error.code}, message is ${error.message}`);
@@ -2157,7 +2303,6 @@ async function CreateIncrementalImageSource(context : Context) {
   imageSourceIncrementalSApi.updateData(splitBuff1, false, 0, splitBuff1.byteLength).then(() => {
     imageSourceIncrementalSApi.updateData(splitBuff2, true, 0, splitBuff2.byteLength).then(() => {
       let pixelMap = imageSourceIncrementalSApi.createPixelMapSync();
-      let imageInfo = pixelMap.getImageInfoSync();
       console.info('Succeeded in creating pixelMap');
     }).catch((error : BusinessError) => {
       console.error(`Failed to updateData error code is ${error.code}, message is ${error.message}`);
@@ -2307,7 +2452,7 @@ createAuxiliaryPicture(buffer: ArrayBuffer, size: Size, type: AuxiliaryPictureTy
 | 参数名 | 类型                                            | 必填 | 说明                         |
 | ------ | ----------------------------------------------- | ---- | ---------------------------- |
 | buffer | ArrayBuffer                                     | 是   | 以buffer形式存放的图像数据。  |
-| size   | [Size](arkts-apis-image-i.md#size)                                   | 是   | 辅助图的尺寸。单位：px。    |
+| size   | [Size](arkts-apis-image-i.md#size)                                   | 是   | 辅助图的尺寸。单位：像素（px）。    |
 | type   | [AuxiliaryPictureType](arkts-apis-image-e.md#auxiliarypicturetype13) | 是   | 辅助图类型。                 |
 
 **返回值：**
@@ -2333,7 +2478,7 @@ async function CreateAuxiliaryPicture(context: Context) {
   const resourceMgr = context.resourceManager;
   const rawFile = await resourceMgr.getRawFileContent("hdr.jpg"); // 需要支持hdr的图片。
   let auxBuffer: ArrayBuffer = rawFile.buffer as ArrayBuffer;
-  let auxSize: Size = {
+  let auxSize: image.Size = {
     height: 180,
     width: 240
   };
@@ -2438,7 +2583,7 @@ ArkTS-Dyn: createImageReceiver(size: Size, format: ImageFormat, capacity: number
 
 ArkTS-Sta: createImageReceiver(size: Size, format: ImageFormat, capacity: int): ImageReceiver | undefined
 
-通过图片大小、图片格式、容量创建ImageReceiver实例。ImageReceiver做为图片的接收方、消费者，它的参数属性实际上不会对接收到的图片产生影响。图片属性的配置应在发送方、生产者进行，如相机预览流[createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)。
+通过图片大小、图片格式、容量创建ImageReceiver实例。ImageReceiver作为图片的接收方、消费者，它的参数属性实际上不会对接收到的图片产生影响。图片属性的配置应在发送方、生产者进行，如相机预览流[createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)。
 
 由于图片占用内存较大，所以当ImageReceiver实例使用完成后，应主动调用[release](./arkts-apis-image-ImageReceiver.md#release9)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
@@ -2452,7 +2597,7 @@ ArkTS-Sta: createImageReceiver(size: Size, format: ImageFormat, capacity: int): 
 
 | 参数名   | 类型   | 必填 | 说明                   |
 | -------- | ------ | ---- | ---------------------- |
-| size    | [Size](arkts-apis-image-i.md#size)  | 是   | 图像的默认大小。该参数不会影响接收到的图片大小，实际返回大小由生产者决定，如相机。       |
+| size    | [Size](arkts-apis-image-i.md#size)  | 是   | 图像的默认大小。单位：像素（px）。该参数不会影响接收到的图片大小，实际返回大小由生产者决定，如相机。       |
 | format   | [ImageFormat](arkts-apis-image-e.md#imageformat9) | 是   | 图像格式，取值为[ImageFormat](arkts-apis-image-e.md#imageformat9)常量（目前仅支持 ImageFormat:JPEG，实际返回格式由生产者决定，如相机）。             |
 | capacity | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 同时访问的最大图像数。该参数仅作为期望值，实际capacity由设备硬件决定。 |
 
@@ -2494,7 +2639,7 @@ let receiver: image.ImageReceiver = image.createImageReceiver(size, image.ImageF
 
 createImageReceiver(options?: ImageReceiverOptions): ImageReceiver | undefined
 
-通过ImageReceiverOptions创建ImageReceiver实例。ImageReceiver做为图片的接收方、消费者，其参数属性实际上不会对接收到的图片产生影响。图片属性的配置应在发送方、生产者进行，如相机预览流[createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)。
+通过ImageReceiverOptions创建ImageReceiver实例。ImageReceiver作为图片的接收方、消费者，其参数属性实际上不会对接收到的图片产生影响。图片属性的配置应在发送方、生产者进行，如相机预览流[createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)。
 
 由于图片占用内存较大，所以当ImageReceiver实例使用完成后，应主动调用[release](./arkts-apis-image-ImageReceiver.md#release9)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
@@ -2566,7 +2711,7 @@ ArkTS-Sta: createImageCreator(size: Size, format: ImageFormat, capacity: int): I
 
 | 参数名   | 类型   | 必填 | 说明                   |
 | -------- | ------ | ---- | ---------------------- |
-| size    | [Size](arkts-apis-image-i.md#size)  | 是   | 图像的默认大小。       |
+| size    | [Size](arkts-apis-image-i.md#size)  | 是   | 图像的默认大小。单位：像素（px）。       |
 | format   | [ImageFormat](arkts-apis-image-e.md#imageformat9) | 是   | 图像格式，如YCBCR_422_SP，JPEG。             |
 | capacity | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 同时访问的最大图像数。该参数仅作为期望值，实际capacity由设备硬件决定。 |
 
@@ -2617,8 +2762,8 @@ createImageReceiver(width: number, height: number, format: number, capacity: num
 
 | 参数名   | 类型   | 必填 | 说明                   |
 | -------- | ------ | ---- | ---------------------- |
-| width    | number | 是   | 图像的默认宽度。单位：px。该参数不会影响接收到的图片宽度，实际宽度由生产者决定，如相机。       |
-| height   | number | 是   | 图像的默认高度。单位：px。该参数不会影响接收到的图片高度，实际高度由生产者决定，如相机。       |
+| width    | number | 是   | 图像的默认宽度。单位：像素（px）。该参数不会影响接收到的图片宽度，实际宽度由生产者决定，如相机。       |
+| height   | number | 是   | 图像的默认高度。单位：像素（px）。该参数不会影响接收到的图片高度，实际高度由生产者决定，如相机。       |
 | format   | number | 是   | 图像格式，取值为[ImageFormat](arkts-apis-image-e.md#imageformat9)常量（目前仅支持 ImageFormat:JPEG，实际返回格式由生产者决定，如相机）。  |
 | capacity | number | 是   | 同时访问的最大图像数。该参数仅作为期望值，实际capacity由设备硬件决定。 |
 
@@ -2656,8 +2801,8 @@ createImageCreator(width: number, height: number, format: number, capacity: numb
 
 | 参数名   | 类型   | 必填 | 说明                   |
 | -------- | ------ | ---- | ---------------------- |
-| width    | number | 是   | 图像的默认宽度。单位：px。       |
-| height   | number | 是   | 图像的默认高度。单位：px。       |
+| width    | number | 是   | 图像的默认宽度。单位：像素（px）。       |
+| height   | number | 是   | 图像的默认高度。单位：像素（px）。       |
 | format   | number | 是   | 图像格式，如YCBCR_422_SP，JPEG。             |
 | capacity | number | 是   | 同时访问的最大图像数。该参数仅作为期望值，实际capacity由设备硬件决定。 |
 
