@@ -2056,6 +2056,6 @@ dlpPermission.getControlledAppLists().then((res) => {
 }).catch((error: BusinessError) => {
   console.error(JSON.stringify(error));
 }).finally(() => {
-  console.info("Completed getControlledAppLists operation");
+  console.info("Completed getControlledAppLists operation.");
 })
 ```
