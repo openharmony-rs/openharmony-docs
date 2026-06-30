@@ -6,7 +6,7 @@ Version 1.1
 Copyright (C) 2004, 2006 The Linux Foundation and its contributors.
 版权所有(C)2004,2006 Linux基金会及其贡献者。
 1 Letterman Drive
-莱特曼大道1号2
+莱特曼大道1号
 Suite D4700
 D4700室
 San Francisco, CA, 94129
