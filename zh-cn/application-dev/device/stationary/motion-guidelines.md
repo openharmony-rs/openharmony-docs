@@ -186,7 +186,19 @@
    
    ``` TypeScript
    try {
-     motion.on('holdingHandChanged', callback);
+   <!-- @[motion_unsubscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   try {
+     motion.off('holdingHandChanged');
+     console.info('off succeeded');
+     // ...
+   } catch (err) {
+     let error = err as BusinessError;
+     console.error('Failed off and err code is ' + error.code);
+     // ...
+   }
+   ```
      console.info('on succeeded');
      // ...
    } catch (err) {
