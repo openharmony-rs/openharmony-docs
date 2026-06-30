@@ -93,8 +93,8 @@
            OH_LOG_ERROR(LOG_APP, "CreatePreviewOutput failed.");
            return CAMERA_INVALID_ARGUMENT;
        }
-       return ret_;
        PreviewOutputRegisterCallback();
+       return ret_;
    }
    ```
 
