@@ -752,9 +752,7 @@ async function example18(context: common.UIAbilityContext) { // 需确保 contex
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**：
-- API版本26.0.0+：SystemCapability.FileManagement.UserFileService
-- API版本11-24：SystemCapability.FileManagement.UserFileService.FolderSelection
+**系统能力**：SystemCapability.FileManagement.UserFileService.FolderSelection
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- | ---- |
