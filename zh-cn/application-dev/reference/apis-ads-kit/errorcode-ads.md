@@ -31,7 +31,7 @@ System internal error.
 
 1. 重启设备后重试。
 
-2. 若您的问题仍无法解决，请优先通过企点QQ：800183590、[转人工链接](https://webpage.qidian.qq.com/qidian/chatv3/pc.html?linkType=1&env=ol&kfuin=2885820057&fid=365&key=646c4489e237ea477e85483a1791dfaa&cate=1&type=16&ftype=1&_type=wpa&qidian=true&waitTime=10005&clickid=ad71nq.wg8a2n.l1fu39si&callImType=1&delayTime=10&roleValue=1&roleData=474&translateSwitch=0&source=0&isLBS=0&isSsc=0&isCustomEntry=0&im_jump_from=v2_1)联系技术人员排查处理，若以上方式未能有效解决问题，可通过[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/add/101704353566310877?level2=101704353626565886&level3=101704354358694993&keyWord=Ads%20Kit)提交问题。
+2. 若您的问题仍无法解决，请优先通过企点QQ：800183590、[转人工链接](https://webpage.qidian.qq.com/qidian/chatv3/pc.html?linkType=1&env=ol&kfuin=2885820057&fid=365&key=646c4489e237ea477e85483a1791dfaa&cate=1&type=16&ftype=1&_type=wpa&qidian=true&waitTime=10005&clickid=ad71nq.wg8a2n.l1fu39si&callImType=1&delayTime=10&roleValue=1&roleData=474&translateSwitch=0&source=0&isLBS=0&isSsc=0&isCustomEntry=0&im_jump_from=v2_1)联系技术人员排查处理，若以上方式未能有效解决问题，可通过<!--RP1-->在线提单<!--RP1End-->提交问题。
 
 
 ## 21800003 广告请求加载失败
@@ -54,7 +54,7 @@ Failed to load the ad request.
 
 2. 请根据API参考检查广告请求参数是否符合要求。
 
-3. 单台设备多次请求仍无法请求到广告时，建议使用多台设备进行测试。若您的问题仍无法解决，请优先通过企点QQ：800183590、[转人工链接](https://webpage.qidian.qq.com/qidian/chatv3/pc.html?linkType=1&env=ol&kfuin=2885820057&fid=365&key=646c4489e237ea477e85483a1791dfaa&cate=1&type=16&ftype=1&_type=wpa&qidian=true&waitTime=10005&clickid=ad71nq.wg8a2n.l1fu39si&callImType=1&delayTime=10&roleValue=1&roleData=474&translateSwitch=0&source=0&isLBS=0&isSsc=0&isCustomEntry=0&im_jump_from=v2_1)联系技术人员排查处理，若以上方式未能有效解决问题，可通过[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/add/101704353566310877?level2=101704353626565886&level3=101704354358694993&keyWord=Ads%20Kit)提交问题。
+3. 单台设备多次请求仍无法请求到广告时，建议使用多台设备进行测试。若您的问题仍无法解决，请优先通过企点QQ：800183590、[转人工链接](https://webpage.qidian.qq.com/qidian/chatv3/pc.html?linkType=1&env=ol&kfuin=2885820057&fid=365&key=646c4489e237ea477e85483a1791dfaa&cate=1&type=16&ftype=1&_type=wpa&qidian=true&waitTime=10005&clickid=ad71nq.wg8a2n.l1fu39si&callImType=1&delayTime=10&roleValue=1&roleData=474&translateSwitch=0&source=0&isLBS=0&isSsc=0&isCustomEntry=0&im_jump_from=v2_1)联系技术人员排查处理，若以上方式未能有效解决问题，可通过<!--RP2-->在线提单<!--RP2End-->提交问题。
 
 
 ## 21800004 广告展示失败
