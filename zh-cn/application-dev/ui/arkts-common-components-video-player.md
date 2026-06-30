@@ -88,6 +88,7 @@ Video组件支持加载本地视频和网络视频。具体的数据源配置请
 
 支持file://路径前缀的字符串，用于读取应用沙箱路径内的资源，需要确保应用沙箱目录路径下的文件存在并且有可读权限。
 
+
 <!-- @[sandbox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/Sandbox.ets) -->  
 
 ``` TypeScript
@@ -140,9 +141,11 @@ export struct OnlineVideo {
 }
 ```
 
+
  ## 添加属性	 
  
  Video组件[属性](../reference/apis-arkui/arkui-ts/ts-media-components-video.md#属性)主要用于设置视频的播放形式。例如设置视频播放是否静音、播放是否显示控制条等。
+
 
 <!-- @[attribute_video](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/AttributeVideo.ets) -->  
 
@@ -165,11 +168,6 @@ export struct AttributeVideo {
         .controls(false) // 设置是否显示默认控制条
         .autoPlay(true) // 设置是否自动播放
         .loop(true) // 设置是否循环播放
-        .objectFit(ImageFit.Contain) // 设置视频填充模式
-    }
-  }
-}
-```
         .objectFit(ImageFit.Contain) // 设置视频填充模式
     }
   }
@@ -251,11 +249,10 @@ Video控制器主要用于控制视频的状态，包括播放、暂停、停止
     }
   }
   ```
-  
-   - 自定义控制器	 
- 
- 
-   使用自定义的控制器，先关闭默认控制器，然后使用[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)以及[Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md)等组件进行自定义的控制与显示，适合自定义较强的场景下使用。
+
+- 自定义控制器
+
+  使用自定义的控制器，先关闭默认控制器，然后使用[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)以及[Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md)等组件进行自定义的控制与显示，适合自定义较强的场景下使用。
 
   <!-- @[customize_control](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/CustomizedControl.ets) -->  
   
