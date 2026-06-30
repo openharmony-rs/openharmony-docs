@@ -80,7 +80,7 @@ enum HiCollie_ErrorCode
 | HICOLLIE_INVALID_TIMER_NAME = 29800003 | 无效的函数执行超时检测器名称。<br>**起始版本：** 18 |
 | HICOLLIE_INVALID_TIMEOUT_VALUE = 29800004 | 无效的函数执行超时时间阈值。<br>**起始版本：** 18                  |
 | HICOLLIE_WRONG_PROCESS_CONTEXT = 29800005 | 函数执行超时检测接入进程错误。<br>**起始版本：** 18                 |
-| HICOLLIE_WRONG_TIMER_ID_OUTPUT_PARAM = 29800006 | 用于保存返回的计时器id的指针不应为NULL。<br>**起始版本：** 18         |
+| HICOLLIE_WRONG_TIMER_ID_OUTPUT_PARAM = 29800006 | 用于保存返回的定时器id的指针不应为NULL。<br>**起始版本：** 18         |
 | OH_HICOLLIE_REACH_REPORT_LIMIT = 29800007 | 上报频率超过限制。<br>**起始版本：** 24         |
 
 ### HiCollie_Flag
@@ -356,13 +356,13 @@ HiCollie_ErrorCode OH_HiCollie_SetTimer(HiCollie_SetTimerParam param, int *id)
 | 参数项 | 描述 |
 | -- | -- |
 | [HiCollie_SetTimerParam](capi-hicollie-hicollie-settimerparam.md) param | 定时器配置参数，结构体类型。<br> 该接口用于定义定时器的名称、超时时间、回调函数等配置信息。详细接口参考[HiCollie_SetTimerParam](capi-hicollie-hicollie-settimerparam.md)。 |
-| int *id | 输出参数，返回的计时器id的指针不应为NULL。用于接收函数返回的定时器标识符，后续可使用该id调用OH_HiCollie_CancelTimer取消定时器。 |
+| int *id | 输出参数，返回的定时器id的指针不应为NULL。用于接收函数返回的定时器标识符，后续可使用该id调用OH_HiCollie_CancelTimer取消定时器。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | <ul><br>         <li> [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - 成功。</li><br>         <li> [HICOLLIE_INVALID_TIMER_NAME](capi-hicollie-h.md#hicollie_errorcode) 29800003 - 无效的计时器名称，不应为NULL或空字符串。</li><br>         <li> [HICOLLIE_INVALID_TIMEOUT_VALUE](capi-hicollie-h.md#hicollie_errorcode) 29800004 - 无效的超时值。</li><br>         <li> [HICOLLIE_WRONG_PROCESS_CONTEXT](capi-hicollie-h.md#hicollie_errorcode) 29800005 - 无效的接入检测进程上下文，appspawn与nativespawn进程中不可调用。</li><br>         <li> [HICOLLIE_WRONG_TIMER_ID_OUTPUT_PARAM](capi-hicollie-h.md#hicollie_errorcode) 29800006 - 用于保存返回的计时器id的指针，不应该为NULL。</li><br>         </ul> |
+| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | <ul><br>         <li> [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - 成功。</li><br>         <li> [HICOLLIE_INVALID_TIMER_NAME](capi-hicollie-h.md#hicollie_errorcode) 29800003 - 无效的定时器名称，不应为NULL或空字符串。</li><br>         <li> [HICOLLIE_INVALID_TIMEOUT_VALUE](capi-hicollie-h.md#hicollie_errorcode) 29800004 - 无效的超时值。</li><br>         <li> [HICOLLIE_WRONG_PROCESS_CONTEXT](capi-hicollie-h.md#hicollie_errorcode) 29800005 - 无效的接入检测进程上下文，appspawn与nativespawn进程中不可调用。</li><br>         <li> [HICOLLIE_WRONG_TIMER_ID_OUTPUT_PARAM](capi-hicollie-h.md#hicollie_errorcode) 29800006 - 用于保存返回的定时器id的指针，不应该为NULL。</li><br>         </ul> |
 
 ### OH_HiCollie_CancelTimer()
 
@@ -380,7 +380,7 @@ void OH_HiCollie_CancelTimer(int id)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int id | 执行[OH_HiCollie_SetTimer](capi-hicollie-h.md#oh_hicollie_settimer)函数后更新的计时器id。 |
+| int id | 执行[OH_HiCollie_SetTimer](capi-hicollie-h.md#oh_hicollie_settimer)函数后更新的定时器id。 |
 
 ### OH_HiCollie_FreezeCallback()
 
