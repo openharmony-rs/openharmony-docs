@@ -949,7 +949,7 @@ export struct TapImage {
 
   aboutToDisappear(): void {
     let innerEvent: emitter.InnerEvent = { eventId: this.index };
-    emitter.off(innerEvent);
+    emitter.off(innerEvent.eventId);
   }
 
   build() {
