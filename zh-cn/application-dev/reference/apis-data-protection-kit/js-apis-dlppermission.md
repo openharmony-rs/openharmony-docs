@@ -2003,7 +2003,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let appList: Array<string> = ["appId1", "appId2"];
 let userId: number = 100;
 dlpPermission.setControlledAppLists(appList, userId).then(() => {
-  console.info("Successfully set controlled appLists");
+  console.info("Successfully set controlled appLists.");
 }).catch((error: BusinessError) => {
   console.error(error.message);
 }).finally(() => {
