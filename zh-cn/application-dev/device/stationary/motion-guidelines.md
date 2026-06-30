@@ -164,6 +164,11 @@
 1. 导入模块。
 
    <!-- @[import_the_motion_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   import { motion } from '@kit.MultimodalAwarenessKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   ```
 
 
 2. 定义回调函数接收握持手结果
