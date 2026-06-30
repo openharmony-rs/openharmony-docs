@@ -10,7 +10,7 @@
 - ArkTS API<!--ads-arkts-->
   - [@ohos.advertising (广告服务框架)](js-apis-advertising.md)
   - [@ohos.identifier.oaid (开放匿名设备标识服务)](js-apis-oaid.md)
-  - [@ohos.advertising.AdsServiceExtensionAbility(广告扩展服务)](js-apis-adsserviceextensionability.md)
+  - [@ohos.advertising.AdsServiceExtensionAbility (广告扩展服务)](js-apis-adsserviceextensionability.md)
   - advertisement<!--ads-advert-->
     - [Advertisement (请求的广告内容)](js-apis-advertisement.md)
 - ArkTS组件<!--ads-comp-->
