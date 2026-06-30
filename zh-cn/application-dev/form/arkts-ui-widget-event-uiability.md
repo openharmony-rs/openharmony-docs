@@ -203,6 +203,88 @@
   
     <!-- @[widget_callee_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetcalleeentryability/WidgetCalleeEntryAbility.ts) -->
     
+    ``` TypeScript
+    // entry/src/main/ets/widgetcalleeentryability/WidgetCalleeEntryAbility.ts
+    import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+    import { window } from '@kit.ArkUI';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import { formBindingData, formProvider } from '@kit.FormKit';
+    import { rpc } from '@kit.IPCKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    
+    const TAG: string = 'WidgetCalleeEntryAbility';
+    const DOMAIN_NUMBER: number = 0xFF00;
+    const MSG_SEND_METHOD: string = 'funA';
+    const CONST_NUMBER_1: number = 1;
+    
+    class MyParcelable implements rpc.Parcelable {
+      num: number;
+      str: string;
+    
+      constructor(num: number, str: string) {
+        this.num = num;
+        this.str = str;
+      };
+    
+      marshalling(messageSequence: rpc.MessageSequence): boolean {
+        messageSequence.writeInt(this.num);
+        messageSequence.writeString(this.str);
+        return true;
+      };
+    
+      unmarshalling(messageSequence: rpc.MessageSequence): boolean {
+        this.num = messageSequence.readInt();
+        this.str = messageSequence.readString();
+        return true;
+      };
+    }
+    
+    // 在收到call事件后会触发callee监听的方法
+    let funACall = (data: rpc.MessageSequence): MyParcelable => {
+      // 获取call事件中传递的所有参数
+      let params: Record<string, string> = JSON.parse(data.readString());
+      if (params.formId !== undefined) {
+        let curFormId: string = params.formId;
+        let message: string = params.calleeDetail;
+        hilog.info(DOMAIN_NUMBER, TAG, `UpdateForm formId: ${curFormId}, message: ${message}`);
+        let formData: Record<string, string> = {
+          'calleeDetail': message
+        };
+        let formMsg: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
+        formProvider.updateForm(curFormId, formMsg).then(() => {
+          hilog.info(DOMAIN_NUMBER, TAG, `updateForm success.`);
+        }).catch((error: BusinessError) => {
+          hilog.error(DOMAIN_NUMBER, TAG, `updateForm failed, error code: ${error.code}, error message: ${error.message}`);
+        });
+      }
+      return new MyParcelable(CONST_NUMBER_1, 'aaa');
+    };
+    
+    export default class WidgetCalleeEntryAbility extends UIAbility {
+      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+          // 监听call事件所需的方法
+          this.callee.on(MSG_SEND_METHOD, funACall);
+        } catch (error) {
+          hilog.error(DOMAIN_NUMBER, TAG, `${MSG_SEND_METHOD} register failed, error code: ${error.code}, error message: ${error.message}`);
+        }
+      }
+    
+      onWindowStageCreate(windowStage: window.WindowStage): void {
+        // Main window is created, set main page for this ability
+        hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'Ability onWindowStageCreate');
+    
+        windowStage.loadContent('pages/Index', (err) => {
+          if (err.code) {
+            hilog.error(DOMAIN_NUMBER, TAG, `Failed to load the content.error code: ${err.code}, error message: ${err.message}`);
+            return;
+          }
+          hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in loading the content.');
+        });
+      }
+    }
+    ```
+    
   要拉起UIAbility至后台，需要在`module.json5`配置文件中，配置`ohos.permission.KEEP_BACKGROUND_RUNNING`权限。
     <!-- @[module_json5_request_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/module.json5) -->
     
