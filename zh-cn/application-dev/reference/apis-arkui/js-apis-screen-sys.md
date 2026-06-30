@@ -222,8 +222,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let screenClass: screen.Screen | null = null;
 // 获取所有屏幕对象
-screen.getAllScreens((err: BusinessError, data: Array<screen.Screen>) => {
-  const errCode: number = err.code;
+screen.getAllScreens((err: BusinessError | null, data: Array<screen.Screen> | undefined) => {
+  const errCode = err?.code;
   if (errCode) {
     console.error(`Failed to get all screens. Code: ${err?.code}, message: ${err?.message}`);
     return;
