@@ -127,7 +127,7 @@ export struct Scene2 {
         let phAccessHelper = photoAccessHelper.getPhotoAccessHelper(context);
         phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
           if (fetchResult !== undefined) {
-            let photoAsset: photoAccessHelper.PhotoAsset = fetchResult.getFirstObject();
+            let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
             if (photoAsset !== undefined) {
               console.info('getAssets successfully');
             }
@@ -212,6 +212,8 @@ async function example(
   phAccessHelper: photoAccessHelper.PhotoAccessHelper,
   context: common.UIAbilityContext
 ): Promise<string> {
+  let desFile: fileIo.File | null = null;
+  let srcFile: fileIo.File | null = null;
   try {
     // 指定要保存到应用程序沙盒目录中的图片的URI。
     let srcFileUri = context.filesDir + '/test.jpg';
@@ -234,8 +236,8 @@ async function example(
       await phAccessHelper.showAssetsCreationDialog(srcFileUris, photoCreationConfigs);
     console.info('Destination URIs: ' + JSON.stringify(desFileUris));
     // 将图片从沙盒目录写入媒体库中的目标URI。
-    let desFile: fileIo.File = await fileIo.open(desFileUris[0], fileIo.OpenMode.WRITE_ONLY);
-    let srcFile: fileIo.File = await fileIo.open(srcFileUri, fileIo.OpenMode.READ_ONLY);
+    desFile = await fileIo.open(desFileUris[0], fileIo.OpenMode.WRITE_ONLY);
+    srcFile = await fileIo.open(srcFileUri, fileIo.OpenMode.READ_ONLY);
     await fileIo.copyFile(srcFile.fd, desFile.fd);
     console.info('create asset by dialog successfully');
     return 'create asset by dialog successfully';
@@ -243,8 +245,12 @@ async function example(
     console.error(`failed to create asset by dialog successfully errCode is: ${err.code}, ${err.message}`);
     return `failed to create asset by dialog successfully errCode is: ${err.code}, ${err.message}`;
   } finally {
-    fileIo.closeSync(srcFile);
-    fileIo.closeSync(desFile);
+    if (srcFile) {
+      fileIo.closeSync(srcFile);
+    }
+    if (desFile) {
+      fileIo.closeSync(desFile);
+    }
   }
 }
 ```
