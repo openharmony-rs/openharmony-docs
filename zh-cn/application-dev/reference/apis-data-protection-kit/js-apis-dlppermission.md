@@ -2019,7 +2019,7 @@ getControlledAppLists(): Promise&lt;Array&lt;string&gt;&gt;
 
 >**说明：**
 >
-> - 该接口仅能查询通过[setControlledAppLists](#dlppermissionsetcontrolledapplists)设置的受企业DLP控制的应用程序列表。
+> 该接口仅能查询通过[setControlledAppLists](#dlppermissionsetcontrolledapplists)设置的受企业DLP控制的应用程序列表。
 
 **起始版本**：26.0.0
 
