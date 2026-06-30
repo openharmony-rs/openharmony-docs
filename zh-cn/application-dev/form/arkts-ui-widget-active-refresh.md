@@ -82,6 +82,93 @@
 
    <!-- @[update_by_message_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryformability/EntryFormAbility.ts) -->
    
+   ``` TypeScript
+   // entry/src/main/ets/entryformability/EntryFormAbility.ts
+   import { formBindingData, FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
+   import { Configuration, Want } from '@kit.AbilityKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   
+   // entry/src/main/ets/entryformability/EntryFormAbility.ts
+   const TAG: string = 'EntryFormAbility';
+   const DOMAIN_NUMBER: number = 0xFF00;
+   
+   export default class EntryFormAbility extends FormExtensionAbility {
+     onAddForm(want: Want): formBindingData.FormBindingData {
+       hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onAddForm');
+       hilog.info(DOMAIN_NUMBER, TAG, want.parameters?.[formInfo.FormParam.NAME_KEY] as string);
+       // 卡片使用方创建卡片时触发，卡片提供方需要返回卡片数据绑定类
+       let obj: Record<string, string> = {
+         'title': 'titleOnAddForm',
+         'detail': 'detailOnAddForm'
+       };
+       let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
+       return formData;
+     }
+   
+     onCastToNormalForm(formId: string): void {
+       // ...
+       hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onCastToNormalForm');
+     }
+   
+     onUpdateForm(formId: string): void {
+       // 若卡片支持定时更新/定点更新/卡片使用方主动请求更新功能，则提供方需要重写该方法以支持数据更新
+       hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onUpdateForm');
+       let obj: Record<string, string> = {
+         'title': 'titleOnUpdateForm',
+         'detail': 'detailOnUpdateForm'
+       };
+       let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
+       formProvider.updateForm(formId, formData).catch((error: BusinessError) => {
+         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] updateForm, error:' + JSON.stringify(error));
+       });
+     }
+   
+     onChangeFormVisibility(newStatus: Record<string, number>): void {
+       // ...
+       hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onChangeFormVisibility');
+     }
+   
+     onFormEvent(formId: string, message: string): void {
+       // 若卡片支持触发事件，则需要重写该方法并实现对事件的触发
+       hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${message}`);
+       class FormDataClass {
+         title: string = 'Title Update.'; // 和卡片布局中对应
+         detail: string = 'Description update success.'; // 和卡片布局中对应
+       }
+   
+       // 请根据业务替换为实际刷新的卡片数据
+       let formData = new FormDataClass();
+       let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(formData);
+       formProvider.updateForm(formId, formInfo).then(() => {
+         hilog.info(DOMAIN_NUMBER, TAG, 'FormAbility updateForm success.');
+       }).catch((error: BusinessError) => {
+         hilog.error(DOMAIN_NUMBER, TAG, `Operation updateForm failed. Cause: ${JSON.stringify(error)}`);
+       });
+     }
+   
+     onRemoveForm(formId: string): void {
+       // ...
+       hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onRemoveForm');
+       // ...
+     }
+   
+     onConfigurationUpdate(config: Configuration) {
+       // ...
+       hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onConfigurationUpdate:' + JSON.stringify(config));
+     }
+   
+   
+     onAcquireFormState(want: Want): formInfo.FormState {
+       // ...
+       return formInfo.FormState.READY;
+     }
+   
+   }
+   
+   ```
+   
 4. 资源文件如下。
    ```ts
    // entry/src/main/resources/zh_CN/element/string.json
