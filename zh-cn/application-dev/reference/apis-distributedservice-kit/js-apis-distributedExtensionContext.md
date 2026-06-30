@@ -34,11 +34,9 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): long
 
 将当前DistributedExtensionAbility连接到远端（其他设备上的）ServiceExtensionAbility（服务扩展能力），建立连接后通过onConnect回调返回的[rpc.IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject)代理与远端ServiceExtensionAbility进行跨设备IPC通信，以使用其对外提供的能力。适用于多设备协同场景，例如在当前设备上调用其他设备的后台服务能力。使用时，开发者首先通过Want中的deviceId指定目标设备、bundleName和abilityName指定目标ServiceExtensionAbility，并构造[ConnectOptions](../apis-ability-kit/js-apis-inner-ability-connectOptions.md)实现onConnect、onDisconnect、onFailed三个回调分别处理连接成功、连接断开和连接失败状态；随后调用connectServiceExtensionAbility发起连接并获取返回的连接ID，连接成功后在onConnect回调中拿到IRemoteObject代理对象，基于该代理与远端ServiceExtensionAbility进行IPC通信；使用完毕后需调用[disconnectServiceExtensionAbility](#distributedextensioncontextdisconnectserviceextensionability)断开连接并释放资源。
 
-ServiceExtensionAbility是一类特殊的[ExtensionAbility](../../application-models/extensionability-overview.md)组件，由系统提供，通常用于提供指定场景的后台服务能力，不支持开发者自定义。ServiceExtensionAbility可以被其他组件连接，并根据调用者的请求信息在后台处理相关事务。连接为长连接，系统不会自动断开，使用完毕后必须使用本接口返回的连接ID调用[disconnectServiceExtensionAbility](#distributedextensioncontextdisconnectserviceextensionability)断开连接并释放资源，否则会导致连接资源泄漏。组件启动规则详见[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
-
 **起始版本：** 26.0.0
 
-**模型约束**：此接口仅可在`Stage`模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 

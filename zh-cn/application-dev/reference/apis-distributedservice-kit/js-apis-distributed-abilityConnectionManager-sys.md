@@ -286,7 +286,7 @@ sendImage(sessionId:&nbsp;number,&nbsp;image:&nbsp;image.PixelMap,&nbsp;quality?
 
 createStream(sessionId:&nbsp;number,&nbsp;param:&nbsp;StreamParam):&nbsp;Promise&lt;number&gt;
 
-应用连接成功后，设备A或设备B可创建传输流用于发送图片和视频流。传输流是基于协同会话创建的数据通道，用于实现跨设备音视频数据的实时传输。创建成功后返回流ID，可用于后续流操作。业务结束后应及时销毁传输流，否则会增加系统功耗。使用Promise异步回调。适用于跨设备视频通话、屏幕共享或远程协作等实时传输场景。调用时先通过createStream()获取流ID，若为视频流则需获取SurfaceId并绑定，再调用startStream()启动传输；业务完成后依次调用stopStream()和destroyStream()释放资源。需特别注意，createStream()必须与destroyStream()配对使用，确保资源及时回收，避免功耗开销。 
+应用连接成功后，设备A或设备B可创建传输流用于发送图片和视频流。使用Promise异步回调。适用于跨设备视频通话、屏幕共享或远程协作等实时传输场景。调用时先通过createStream()获取流ID，若为视频流则需获取SurfaceId并绑定，再调用startStream()启动传输；业务完成后依次调用stopStream()和destroyStream()释放资源。需特别注意，createStream()必须与destroyStream()配对使用，确保资源及时回收，避免功耗开销。 
 
 **设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
@@ -313,13 +313,13 @@ createStream(sessionId:&nbsp;number,&nbsp;param:&nbsp;StreamParam):&nbsp;Promise
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[分布式设备管理错误码](./errorcode-device-manager.md)。
 
-| 错误码ID | 错误信息 | 说明 |
-| ------- | -------------------------------- | -------------------------------- |
-| 202      | Not system App.| |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.| |
-| 32300001      | Only one stream can be created for the current session.| 当前会话只能创建一个传输流，请确保在同一个会话中只调用一次createStream，如需创建新流请先销毁现有流。 |
-| 32300003      | Bitrate not supported.| 不支持的比特率，请检查StreamParam中的bitrate参数是否在设备支持的范围内，建议使用默认值80000。 |
-| 32300004      | Color space not supported.| 不支持的色彩空间，请检查StreamParam中的colorSpaceConversionTarget参数，确保使用支持的色彩空间类型。 |
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 202      | Not system App.                                              |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 32300001 | Only one stream can be created for the current session.      |
+| 32300003 | Bitrate not supported.                                       |
+| 32300004 | Color space not supported.                                   |
 
 **示例：**
 
@@ -402,7 +402,7 @@ setSurfaceId(streamId:&nbsp;number,&nbsp;surfaceId:&nbsp;string,&nbsp;param:&nbs
 
 getSurfaceId(streamId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;string
 
-获取指定传输流绑定的Surface的唯一标识符。Surface ID可用于将Surface与组件关联，实现音视频数据的显示。使用场景包括跨设备视频通话中，获取Surface ID并传递给XComponent组件，实现视频流的显示。
+获取指定传输流绑定的Surface的唯一标识符。Surface ID可用于将Surface与组件关联，实现音视频数据的显示。
 
 **设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
@@ -505,7 +505,7 @@ updateSurfaceParam(streamId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;v
 
 destroyStream(streamId:&nbsp;number):&nbsp;void
 
-发送图片和视频流等业务结束后，创建传输流的应用应及时销毁传输流，否则会增加系统功耗。需与createStream()方法配对使用，在业务结束后必须调用此方法销毁传输流以释放资源。使用场景包括跨设备视频通话结束、屏幕共享关闭、远程协作完成等业务场景结束后，及时销毁传输流以释放资源。
+发送图片和视频流等业务结束后，创建传输流的应用应及时销毁传输流，否则会增加系统功耗。需与createStream()方法配对使用，在业务结束后必须调用此方法销毁传输流以释放资源。
 
 **设备行为差异：** 该接口在不支持分布式业务的Wearable设备或被企业策略管控设备中调用会返回401错误码。
 
@@ -663,8 +663,8 @@ Surface配置参数。
 | width | number | 否    | 否   | 表示编码宽度，单位为像素。必须在流启动前设置，流启动后到停止前均无法更新。如需更新需要将流停止后重新配置。 |
 | height | number | 否    | 否  | 表示编码高度，单位为像素。必须在流启动前设置，流启动后到停止前均无法更新。如需更新需要将流停止后重新配置。 |
 | format | [VideoPixelFormat](#videopixelformat) | 否    | 是   | 表示视频像素格式，此选项必须在发送端配置。NV12适合大多数场景，NV21适合Android平台兼容场景。不同格式对压缩效率和视频质量有影响，建议根据实际需求选择。必须在流启动前设置，流启动后到停止前均无法更新。不传入时默认为NV21。 |
-| rotation | number | 否    | 是   | 表示视频的旋转角度（取值范围为{0, 90, 180, 270}，默认值为0）。0表示不旋转，90表示向右旋转90度（适合竖屏视频），180表示旋转180度，270表示向左旋转90度。不传入时默认为0。旋转操作可能影响编码性能，建议在需要时使用。 |
-| flip | [FlipOptions](#flipoptions) | 否    | 是   | 表示视频是否反转。HORIZONTAL表示水平翻转（适合镜像场景），VERTICAL表示垂直翻转。不传入时不进行翻转。翻转操作可能影响编码性能，建议在需要时使用。 |
+| rotation | number | 否    | 是   | 表示视频的旋转角度（取值范围为{0, 90, 180, 270}，默认值为0）。0表示不旋转，90表示向右旋转90度（适合竖屏视频），180表示旋转180度，270表示向左旋转90度。不传入时默认为0。 |
+| flip | [FlipOptions](#flipoptions) | 否    | 是   | 表示视频是否反转。HORIZONTAL表示水平翻转（适合镜像场景），VERTICAL表示垂直翻转。不传入时不进行翻转。 |
 
 ## FlipOptions
 

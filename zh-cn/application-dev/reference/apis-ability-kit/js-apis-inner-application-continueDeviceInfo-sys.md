@@ -28,12 +28,3 @@
 | dstDeviceId | string | 否    | 否    | 表示Mission迁移目标设备ID。长度范围1-128字符。超出长度限制时抛出异常。注意：此属性需在Stage模型下使用。 |
 | missionId | number | 否    | 否    | 表示Mission迁移任务ID。取值范围为非负整数。传入负数时抛出异常。注意：此属性需在Stage模型下使用。 |
 | wantParam | Record<string, Object> | 否    | 否    | 表示Mission迁移扩展参数，用于传递任务迁移时的自定义信息。可以包含开发者自定义的键值对，用于标识迁移场景或携带迁移相关的配置信息。注意：此属性需在Stage模型下使用。 |
-
-## 错误码
-
-以下错误码的详细介绍请参见[分布式任务管理错误码](js-apis-distributedMissionManager-sys.md#错误码)。
-
-| 错误码ID | 错误信息 | 可能原因 | 解决措施 |
-| ------- | ------- | ------- | ------- |
-| 401 | Parameter error. | 传入的参数值不合法，例如missionId传入负数，或设备ID长度超出1-128字符范围。 | 检查并确保传入的参数符合要求：missionId必须为非负整数，srcDeviceId和dstDeviceId长度必须在1-128字符范围内。 |
-

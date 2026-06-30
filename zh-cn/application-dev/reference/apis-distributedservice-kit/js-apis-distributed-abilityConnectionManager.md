@@ -229,14 +229,6 @@ destroyAbilityConnectionSession(sessionId:&nbsp;number):&nbsp;void
 | --------- | ---------------------------------------- | ---- |---------------------------------|
 | sessionId | number  | 是    | 待销毁的协同会话ID。<br />取值范围是大于100的整数。超出范围时返回错误码401。 |
 
-**错误码：**
-
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | -------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
   ```ts
@@ -385,22 +377,54 @@ acceptConnect(sessionId:&nbsp;number,&nbsp;token:&nbsp;string):&nbsp;Promise&lt;
 在设备B上，createAbilityConnectionSession接口调用并获取sessionId成功后，调用acceptConnect接口选择接受连接。
 
   ```ts
-  import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  export default class EntryAbility extends UIAbility {
-      onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
-        hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
-        let collabParam = wantParam["ohos.extra.param.key.supportCollaborateIndex"] as Record<string, Object>;
-        const collabToken = collabParam["ohos.dms.collabToken"] as string;
-        const reason = 'user_rejected';
-        hilog.info(0x0000, 'testTag', 'reject begin');
-        abilityConnectionManager.reject(collabToken, reason);
-        return AbilityConstant.CollaborateResult.REJECT;
-      }
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
   }
 
+  onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
+    let param = wantParam["ohos.extra.param.key.supportCollaborateIndex"] as Record<string, Object>
+    this.onCollab(param);
+    return 0;
+  }
+
+  onCollab(collabParam: Record<string, Object>) {
+    const sessionId = this.createSessionFromWant(collabParam);
+    if (sessionId == -1) {
+      hilog.info(0x0000, 'testTag', 'Invalid session ID.');
+      return;
+    }
+    const collabToken = collabParam["ohos.dms.collabToken"] as string;
+    abilityConnectionManager.acceptConnect(sessionId, collabToken).then(() => {
+      hilog.info(0x0000, 'testTag', 'acceptConnect success');
+    }).catch(() => {
+      hilog.error(0x0000, 'testTag', 'failed'); 
+    })
+  }
+
+  createSessionFromWant(collabParam: Record<string, Object>): number {
+    let sessionId = -1;
+    const peerInfo = collabParam["PeerInfo"] as abilityConnectionManager.PeerInfo;
+    if (peerInfo == undefined) {
+      return sessionId;
+    }
+
+    const options = collabParam["ConnectOption"] as abilityConnectionManager.ConnectOptions;
+    try {
+      sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
+      AppStorage.setOrCreate('sessionId', sessionId);
+      hilog.info(0x0000, 'testTag', 'createSession sessionId is' + sessionId);
+    } catch (error) {
+      hilog.error(0x0000, 'testTag', error);
+    }
+    return sessionId;
+  }
+}
   ```
 
 ## abilityConnectionManager.disconnect

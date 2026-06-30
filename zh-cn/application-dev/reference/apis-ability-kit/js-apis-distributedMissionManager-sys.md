@@ -128,7 +128,7 @@ registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback):
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. Please check the parameter definitions in the Parameters table above. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 

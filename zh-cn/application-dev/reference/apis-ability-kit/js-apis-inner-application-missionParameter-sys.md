@@ -28,7 +28,7 @@ import { distributedMissionManager } from '@kit.AbilityKit';
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
-**模型约束**：此接口仅可在Stage模型（应用模型）下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
