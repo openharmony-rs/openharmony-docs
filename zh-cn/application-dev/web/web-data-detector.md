@@ -33,7 +33,6 @@ import { webview } from '@kit.ArkWeb';
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World';
   webController: webview.WebviewController = new webview.WebviewController();
 
   build() {
