@@ -55,7 +55,7 @@ Web组件可以通过W3C标准协议接口访问摄像头和麦克风，通过[o
 在下面的示例中，点击前端界面中的'开启摄像头'按钮会触发权限请求，在弹出的对话框中单击'onConfirm'按钮后，打开摄像头和麦克风。
 
 - 应用侧代码。
-  
+  <!-- @[click_button_to_turn_on_camera_microphone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry/src/main/ets/pages/Index.ets) -->
 
 
 - 前端界面index.html代码。
