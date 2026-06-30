@@ -611,6 +611,7 @@ struct WebComponent {
         }
       }
       fileIo.close(dest.fd);
+      fileIo.close(srcFileDes.fd)
       return dest.path;
     } catch (err) {
       console.error(`copyLocalPicToDir failed with error: ${err.code}, ${err.message}`);
