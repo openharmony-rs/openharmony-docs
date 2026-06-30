@@ -1,4 +1,4 @@
-# 使用AudioRenderer开发音频播放功能(ArkTs)
+# 使用AudioRenderer开发音频播放功能(ArkTS)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @boxwall-->
