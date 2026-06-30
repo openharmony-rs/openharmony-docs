@@ -47,7 +47,7 @@ Obtains the current exposure mode.
 
 For details about the following error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code         | Error Message        |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 
@@ -89,7 +89,7 @@ Sets the exposure mode. Before setting, check whether the device supports the sp
 
 For details about the following error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code         | Error Message        |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 7400102                | Operation not allowed.                                 |
 | 7400103                |  Session not config.                                   |
@@ -130,7 +130,7 @@ Queries the center point of the exposure region.
 
 For details about the following error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code   | Error Message        |
+| ID   | Error Message        |
 |---------| --------------- |
 | 7400103 |  Session not config.                                   |
 
@@ -174,7 +174,7 @@ The coordinate system is based on the horizontal device direction with the devic
 
 For details about the following error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code         | Error Message        |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 
@@ -217,7 +217,7 @@ Before making the setting, it is recommended to first query the supported range 
 
 For details about the following Error Codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code         | Error Message        |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 7400102                |  Operation not allowed.                                |
 | 7400103                |  Session not config.                                   |
@@ -261,7 +261,7 @@ Queries the current exposure value.
 
 For details about the following error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code         | Error Message        |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 
@@ -304,7 +304,7 @@ Obtains the current exposure metering mode.
 
 For details about the following error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code         | Error Message        |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 7400102                |  Operation not allowed, the inputDevice or the session is abnormal.                                   |
 | 7400103                |  Session not config, only throw in session usage.                                   |
@@ -347,7 +347,7 @@ Sets the exposure metering mode.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code         | Error Message        |
+| ID         | Error Message        |
 | --------------- | --------------- |
 | 7400102                |  Operation not allowed, the inputDevice or the session is abnormal.                                   |
 | 7400103                |  Session not config, only throw in session usage.                                   |

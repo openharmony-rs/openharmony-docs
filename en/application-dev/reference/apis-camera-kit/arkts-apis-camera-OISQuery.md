@@ -47,7 +47,7 @@ Checks whether the specified OIS mode is supported.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400102 | Operation not allowed, the inputDevice or the session is abnormal. |
 | 7400103 | Session not config. |
@@ -97,7 +97,7 @@ Obtains the supported bias range on the specified OIS axis.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400102 | Operation not allowed, the inputDevice or the session is abnormal. |
 | 7400103 | Session not config. |
@@ -147,7 +147,7 @@ Obtains the bias step on the specified OIS axis.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400102 | Operation not allowed, the inputDevice or the session is abnormal. |
 | 7400103 | Session not config. |
@@ -191,7 +191,7 @@ Obtains the OIS mode.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400102 | Operation not allowed, the inputDevice or the session is abnormal. |
 | 7400103 | Session not config. |
@@ -241,7 +241,7 @@ Obtains the custom bias on the specified OIS axis.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400102 | Operation not allowed, the inputDevice or the session is abnormal. |
 | 7400103 | Session not config. |

@@ -46,7 +46,7 @@ Marks a [PreviewOutput](arkts-apis-camera-PreviewOutput.md) stream as secure out
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400102                |  Operation not allowed.                                  |
