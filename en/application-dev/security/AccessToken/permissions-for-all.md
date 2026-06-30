@@ -446,6 +446,8 @@ The configured icon and label information can be displayed in **Task Center** an
 
 Allows an application to start its UIAbility by using C APIs.
 
+After obtaining this permission, the application can start a UIAbility within the same application via C API.
+
 **Permission level**: normal
 
 **Authorization mode**: system_grant
