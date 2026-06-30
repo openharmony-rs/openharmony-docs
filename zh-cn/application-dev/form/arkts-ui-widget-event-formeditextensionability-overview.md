@@ -29,6 +29,81 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
 2. 新增EntryFormEditAbility文件，用于实现[FormEditExtensionAbility](../reference/apis-form-kit/js-apis-app-form-formEditExtensionAbility.md)的半模态编辑组件，并在form_config.json文件中配置[formConfigAbility](./arkts-ui-widget-configuration.md#配置文件字段说明)字段。
    - 半模态一级编辑页Ability的实现。
    <!-- @[FormEditDemo_EntryFormEditAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/entryformeditability/EntryFormEditAbility.ets) -->
+   
+   ``` TypeScript
+   // entry/src/main/ets/entryformeditability/EntryFormEditAbility.ets
+   import { FormEditExtensionAbility } from '@kit.FormKit';
+   import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
+   import { ExtensionEvent } from '../model/ExtensionEvent';
+   
+   const TAG: string = 'FormEditDemo[EntryFormEditAbility] -->';
+   let storage: LocalStorage = ExtensionEvent.getStorage();
+   
+   export default class EntryFormEditAbility extends FormEditExtensionAbility {
+     onCreate() {
+       console.info(`${TAG} onCreate`);
+     }
+   
+     onForeground(): void {
+       console.info(`${TAG} EntryFormEditAbility onForeground.....`);
+     }
+   
+     onBackground(): void {
+       console.info(`${TAG} EntryFormEditAbility onBackground......`);
+     }
+   
+     onDestroy(): void {
+       console.info(`${TAG} EntryFormEditAbility onDestroy......`);
+     }
+   
+     onSessionCreate(want: Want, session: UIExtensionContentSession) {
+       // 获取被编辑卡片的卡片ID和预览卡片的卡片ID，通过storage同步到一级编辑页中
+       const formId: string | undefined = want.parameters?.cardId as string;
+       const previewFormId: string | undefined = want.parameters?.previewCardId as string;
+   
+       if (formId) {
+         console.info(`${TAG} form id is ${formId}`);
+         storage.setOrCreate('formId', formId);
+       }
+       if (previewFormId) {
+         console.info(`${TAG} preview form id is ${previewFormId}`);
+         storage.setOrCreate('previewFormId', previewFormId);
+       }
+       let extensionEvent: ExtensionEvent = new ExtensionEvent();
+       extensionEvent.setStartSecondPage((): void => this.startSecondPage());
+       storage.setOrCreate('extensionEvent', extensionEvent);
+       storage.setOrCreate('context', this.context);
+       try {
+         // 拉起一级编辑页
+         session.loadContent('pages/FormEditExtension', storage);
+       } catch (e) {
+         console.error(`${TAG} EntryFormEditAbility loadContent err, Code: ${e.code}, Message: ${e.message}`);
+       }
+     }
+   
+     onSessionDestroy(session: UIExtensionContentSession) {
+       console.info(`${TAG} onSessionDestroy`);
+     }
+   
+     private startSecondPage() {
+       const bundleName: string = this.context.extensionAbilityInfo.bundleName;
+       const secPageAbilityName: string = 'FormEditSecPageAbility';
+       console.info(`${TAG} startSecondPage. bundleName: ${bundleName}, secPageAbilityName: ${secPageAbilityName}.`);
+       try {
+         // 拉起二级编辑页
+         this.context.startSecondPage({
+           bundleName: bundleName,
+           parameters: {
+             'secPageAbilityName': secPageAbilityName
+           }
+         });
+         console.info(`${TAG} startSecondPage success!`);
+       } catch (err) {
+         console.error(`${TAG} startSecondPage failed, Code: ${err.code}, Message: ${err.message}`);
+       }
+     }
+   };
+   ```
 
    - 半模态二级编辑页Ability的实现。
    <!-- @[FormEditDemo_FormEditSecPageAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/entryformeditability/FormEditSecPageAbility.ets) -->
