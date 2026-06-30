@@ -797,6 +797,8 @@ zh-cn/application-dev/media/audio/audio-playback-concurrency.md @funny_sunix @ha
 zh-cn/application-dev/media/audio/audio-playback-overview.md @boxwall @magekkkk @w_Machine_cc
 zh-cn/application-dev/media/audio/audio-playback-stream-management.md @boxwall @magekkkk @w_Machine_cc
 zh-cn/application-dev/media/audio/audio-recording-concurrency.md @funny_sunix @hao-liangfei @w_Machine_cc
+zh-cn/application-dev/media/audio/audio-recording-background-guidelines.md @zyy0412 @weixin_41398971 @w_Machine_cc
+zh-cn/application-dev/media/audio/audio-recording-no-audio-troubleshooting.md @zyy0412 @weixin_41398971 @w_Machine_cc
 zh-cn/application-dev/media/audio/audio-recording-overview.md @zyy0412 @weixin_41398971 @w_Machine_cc
 zh-cn/application-dev/media/audio/audio-recording-stream-management.md @zyy0412 @weixin_41398971 @w_Machine_cc
 zh-cn/application-dev/media/audio/audio-session-management.md @funny_sunix @hao-liangfei @w_Machine_cc

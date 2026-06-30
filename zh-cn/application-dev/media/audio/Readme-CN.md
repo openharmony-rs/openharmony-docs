@@ -40,6 +40,7 @@
   - [音频录制开发概述](audio-recording-overview.md)
   - [推荐使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)
   - [使用AudioCapturer开发音频录制功能(ArkTs)](using-audiocapturer-for-recording.md)
+  - [后台录音指导](audio-recording-background-guidelines.md)
   - [低时延音频录制(C/C++)](audio-fast-recording.md)
   - [管理麦克风静音状态](mic-management.md)
   - [查询和监听其他应用录制状态](audio-recording-stream-management.md)
@@ -64,6 +65,8 @@
   - [实时预览(C/C++)](audio-suite-real-time-rendering.md)
   - [音频格式转换(C/C++)](audio-suite-format-converter.md)
   - [空间渲染(C/C++)](audio-suite-space-render.md)
+- 常见问题和定位手段<!--audio-debugging-->
+  - [录音无声定位指导](audio-recording-no-audio-troubleshooting.md)
 - MIDI设备通信<!--midi-->
   - [OH_MIDI概述(C/C++)](midi-overview.md)
   - [使用OH_MIDI进行MIDI开发(C/C++)](using-ohmidi.md)
