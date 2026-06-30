@@ -8,7 +8,7 @@
 
 图像像素类，用于读取或写入图像数据以及获取图像信息，同时支持图像变换（缩放、平移、旋转、翻转、裁剪）、设置不透明度、提取Alpha通道、色彩空间设置等操作。在调用PixelMap的方法前，需要先通过[image.createPixelMapFromPixels](arkts-apis-image-f.md#imagecreatepixelmapfrompixels)或[image.createPixelMapUsingAllocator](arkts-apis-image-f.md#imagecreatepixelmapusingallocator20)系列接口传入像素数据创建一个PixelMap对象，也可以通过[ImageSource](arkts-apis-image-ImageSource.md)进行图片解码创建PixelMap对象。目前PixelMap序列化大小最大为128MB，超过会渲染失败。PixelMap大小的计算方式为：宽 \* 高 \* 每像素占用字节数（详情请参考[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)）。
 
-从API version 11开始，PixelMap支持通过[@ohos.worker（启动一个Worker）](../apis-arkts/js-apis-worker.md)跨线程调用。当PixelMap通过Worker或[@ohos.taskpool（启动任务池）](../apis-arkts/js-apis-taskpool.md)跨线程传输后，原线程的PixelMap的所有接口均不能继续调用，否则将抛出501或7600106（详情请参考[Image错误码](errorcode-image.md)）。
+从API version 11开始，PixelMap支持通过[@ohos.worker (启动一个Worker)](../apis-arkts/js-apis-worker.md)跨线程调用。当PixelMap通过Worker或[@ohos.taskpool (启动任务池)](../apis-arkts/js-apis-taskpool.md)跨线程传输后，原线程的PixelMap的所有接口均不能继续调用，否则将抛出501或7600106（详情请参考[Image错误码](errorcode-image.md)）。
 
 开发原子化服务请通过[ImageSource](arkts-apis-image-ImageSource.md)构建PixelMap对象。
 
