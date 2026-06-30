@@ -1,4 +1,11 @@
 # Obtaining Device Location Information (ArkTS)
+<!--Kit: Location Kit-->
+<!--Subsystem: Location-->
+<!--Owner: @xxthadsl-->
+<!--Designer: @liu-binjun-->
+<!--Tester: @gcw_MslijYkf-->
+<!--Adviser: @RayShih-->
+<!-- md-trans-meta sourceCommit=45bd746ae860f1fef969073ffaa0af763a0251fa translatedAt=2026-06-29T06:19:16.321Z pushedAt=2026-06-30T02:10:26.547Z -->
 
 ## When to Use
 
@@ -8,29 +15,29 @@ Real-time location of the device is recommended for location-sensitive services.
 
 ## Available APIs
 
-The following table lists the APIs used to obtain the device location information. For details, see (../../reference/apis-location-kit/js-apis-geoLocationManager.md).
+The following table lists the APIs used to obtain the device location information. For details, see [@ohos.geoLocationManager (Geolocation Manager)](../../reference/apis-location-kit/js-apis-geoLocationManager.md).
 
-This module supports only the WGS-84 coordinate system.
+This module supports only the WGS-84 coordinate system.<!--RP2--><!--RP2End-->
 
-| API| Description| 
+| API| Description|
 | -------- | -------- |
-| [on(type: 'locationChange', request: LocationRequest &#124; ContinuousLocationRequest, callback: Callback&lt;Location&gt;): void](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanageronlocationchange) | Registers a listener for location changes with a location request initiated.| 
-| [off(type: 'locationChange', callback?: Callback&lt;Location&gt;): void](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagerofflocationchange) | Unregisters the listener for location changes with the corresponding location request deleted.| 
-| [getCurrentLocation(request: CurrentLocationRequest &#124; SingleLocationRequest, callback: AsyncCallback&lt;Location&gt;): void](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation) | Obtains the current location. This API uses an asynchronous callback to return the result. | 
-| [getCurrentLocation(request?: CurrentLocationRequest &#124; SingleLocationRequest): Promise&lt;Location&gt;](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation-2) | Obtains the current location. This API uses a promise to return the result. | 
-| [getLastLocation(): Location](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagergetlastlocation) | Obtains the last known device location.| 
-| [isLocationEnabled(): boolean](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagerislocationenabled) | Checks whether the location switch is enabled.| 
+| [geoLocationManager.on('locationChange')](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanageronlocationchange) | Subscribes to location changes and initiates a location request. |
+| [geoLocationManager.off('locationChange')](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagerofflocationchange) | Unsubscribes from location changes and deletes the corresponding location request. |
+| [geoLocationManager.getCurrentLocation](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation) | Obtains the current location. This API uses an asynchronous callback to return the result.|
+| [geoLocationManager.getCurrentLocation](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation-2) | Obtains the current location. This API uses a promise to return the result.|
+| [geoLocationManager.getLastLocation](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagergetlastlocation) | Obtains the last location result. |
+| [geoLocationManager.isLocationEnabled](../../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagerislocationenabled) | Checks whether the location service is enabled. |
 
 ## How to Develop
 
 1. Before using system basic location capabilities, check whether your application has been granted the permission to access the device location information. If not, your application first needs to apply for the required permission. For details, see [Applying for Location Permissions](location-permission-guidelines.md).
 
 2. Import the **geoLocationManager** module by which you can implement all APIs related to the basic location capabilities.
-   
+
    ```ts
    import { geoLocationManager } from '@kit.LocationKit';
    ```
-3. Call **isLocationEnabled** to check whether the location switch is enabled. 
+3. Check whether the location switch is enabled.<br/>
    The return result is a Boolean value. The value **true** indicates that the location switch is enabled, and the value **false** indicates the opposite.
 
    ```ts
@@ -41,7 +48,7 @@ This module supports only the WGS-84 coordinate system.
        console.error("errCode:" + err.code + ", message:"  + err.message);
    }
    ```
-   If the location switch is not enabled, launch a dialog box asking the user to enable the switch. For details, see [Setting the Global Switch](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestglobalswitch12).
+   If the location switch is not enabled, launch the global switch settings dialog box to guide the user to enable the location switch. For details, see [requestGlobalSwitch](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestglobalswitch12).
 
 4. Obtain the current location of the device. It is mainly used in scenarios such as viewing of the current location, signing in/out, and service recommendation.
    - Method 1: Obtain the latest location in the system cache.<br>
@@ -67,7 +74,7 @@ This module supports only the WGS-84 coordinate system.
          Both the GNSS positioning and the network positioning technologies are used in the two location policies. This can lead to significant hardware resource consumption and power consumption.<br>
       - Set the location timeout interval by using **locatingTimeoutMs**.<br>
          Due to the impact of the ambient environment, device status, and system power consumption control policy, the location response delay may fluctuate greatly. You are advised to set the timeout interval for a single location to 10 seconds.<br>
-         
+
       The following code snippet uses **PRIORITY_LOCATING_SPEED** as an example.<br>
 
       ```ts
@@ -91,14 +98,14 @@ This module supports only the WGS-84 coordinate system.
    The coordinates obtained by this module are in the WGS-84 coordinate system. If you need to use coordinates in other coordinate systems, perform a coordinate system conversion.
 
    <!--RP1-->   You can use the SDK capabilities provided by a third-party map to implement coordinate system conversion.<!--RP1End-->
-   
+
 5. Obtain the device location continuously. It is mainly used in scenarios such as navigation, movement track, and travel.<br>
    Instantiate a [ContinuousLocationRequest](../../reference/apis-location-kit/js-apis-geoLocationManager.md#continuouslocationrequest12) object to notify the system of the type of location service to be provided for applications and the interval for reporting location information.<br>
    - Set the location scenario by using **locationScenario**.<br>
       You are advised to set **locationScenario** based on the application scenario. For details about the enum values of this parameter, see [UserActivityScenario](../../reference/apis-location-kit/js-apis-geoLocationManager.md#useractivityscenario12). For example, if **locationScenario** is set to **NAVIGATION**, the application will obtain the device location in both the indoor and outdoor scenarios for navigation.<br>
    - Set the interval for reporting location information by using **interval**.<br>
       The interval for reporting location information is in unit of seconds. The default value is **1**. Leave this parameter unspecified if there is no special requirement for the location reporting interval.
-   
+
    The following code snippet uses the map navigation scenario as an example.
 
    ```ts
