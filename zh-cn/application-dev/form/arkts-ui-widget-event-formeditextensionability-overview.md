@@ -381,6 +381,34 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
 
    - 新增ExtensionEvent文件，封装[startSecondPage](../reference/apis-form-kit/js-apis-inner-application-formEditExtensionContext.md#startsecondpage)方法到startFormEditSecondPage中，供业务使用。
    <!-- @[FormEditDemo_ExtensionEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/model/ExtensionEvent.ets) -->
+   
+   ``` TypeScript
+   // entry/src/main/ets/model/ExtensionEvent.ets
+   const TAG: string = 'FormEditDemo[ExtensionEvent] -->';
+   const LOCAL: Record<string, string> = { 'formId': '', 'previewFormId': '', 'message': '' };
+   
+   export class ExtensionEvent {
+     private static storage = new LocalStorage(LOCAL);
+   
+     public static getStorage(): LocalStorage {
+       return ExtensionEvent.storage;
+     }
+   
+     public setStartSecondPage(startSecondPage: () => void) {
+       console.info(`${TAG} setStartSecondPage`);
+       this.startSecondPage = startSecondPage;
+     }
+   
+     public async startFormEditSecondPage() {
+       console.info(`${TAG} startFormEditSecondPage call`);
+       this.startSecondPage();
+     }
+   
+     private startSecondPage: () => void = (): void => {
+       console.info(`${TAG} startSecondPage is empty!`);
+     };
+   }
+   ```
   
 
 4. 卡片信息持久化。每次进入卡片编辑页，预览卡片都需要与被编辑卡片保持一致，所以需要持久化卡片信息。
