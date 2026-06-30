@@ -112,7 +112,7 @@ ArkTS-Dyn: onKeyEventDispatch(event: Callback\<KeyEvent, boolean>): T
 
 ArkTS-Sta: onKeyEventDispatch(event: Callback\<KeyEvent, boolean> | undefined): this
 
-对应组件收到按键事件时，会触发该回调，该按键事件不会分发给其子组件。
+对应组件收到按键事件时，会触发该回调，该按键事件不会分发给其子组件。从API version 23开始，支持构造KeyEvent进行分发。API version 22及之前版本，不支持构造KeyEvent进行分发，只支持分发已有的按键事件。
 
 该回调的返回值为`true`时，视作该按键事件已被消费，不会[冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)给父组件处理。
 
