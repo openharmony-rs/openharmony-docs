@@ -4710,7 +4710,7 @@ try {
   })
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`An unexpected error occurred. Code: ${err.code}, message: ${err.message}`);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -4759,7 +4759,7 @@ try {
   })
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`An unexpected error occurred. Code: ${err.code}, message: ${err.message}`);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
