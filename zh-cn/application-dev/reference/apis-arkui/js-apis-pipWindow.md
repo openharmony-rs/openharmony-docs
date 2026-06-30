@@ -688,7 +688,7 @@ updateContentSize(width: number, height: number): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在Phone、Tablet、PC/2in1设备中可正常调用，在其他设备中不报错也不生效。
+**设备行为差异：** 该接口在Phone、Tablet、PC/2in1设备中可正常调用，在Car设备中仅支持固定大小尺寸，宽高比>1则为横屏小窗类型，宽高比<=1则为竖屏大窗类型。
 
 **参数：**
 
