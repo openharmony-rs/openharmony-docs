@@ -38,7 +38,7 @@ Based on the preceding flowchart, this document describes the initial creation, 
 
 4. On initial render, the **build** function of the built-in component is executed for rendering. If the child component is a custom component, the rendering creates an instance of the child component. During initial render, the framework records the mapping between state variables and components. When a state variable changes, the framework drives the related components to update.
 
-5. If **onDidBuild** is defined, this method is executed before the build method is executed.
+5. If **onDidBuild** is defined, this method is executed after the build method is executed.
 
 ## Custom Component Re-rendering
 
