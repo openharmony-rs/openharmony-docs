@@ -32,7 +32,7 @@ ConsoleMessage的信息级别。
 | ArkTS-Dyn: Info  <br>ArkTS-Sta: INFO | 2 | 消息级别。 |
 | ArkTS-Dyn: Warn  <br>ArkTS-Sta: WARN | 3 | 警告级别。 |
 | ArkTS-Dyn: Error <br>ArkTS-Sta: ERROR| 4 | 错误级别。 |
-| ArkTS-Dyn: Log   <br>ArkTS-Sta: LOG  | 5 | 日志级别。 <br/>**起始版本：** 23 <br/> **废弃版本：** 26.0.0 |
+| ArkTS-Dyn: Log   <br>ArkTS-Sta: LOG  | 5 | 日志级别。<br/> **废弃版本：** 26.0.0 |
 
 ## ConsoleMessageSource<sup>23+</sup>
 
