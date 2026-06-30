@@ -147,7 +147,8 @@ let policy: hiAppEvent.EventPolicy = {
       pageSwitchLogEnable: true, // 启用页面切换日志。从API version 24开始支持该参数
       extendPcLrPrinting: true, // 使能扩展打印pc和lr寄存器附近的内存值。从API版本26.0.0开始支持该参数
       logFileCutoffSzBytes: 102400, // 截断崩溃日志到100KB。从API版本26.0.0开始支持该参数
-      simplifyVmaPrinting: true // 使能精简打印maps。从API版本26.0.0开始支持该参数
+      simplifyVmaPrinting: true, // 使能精简打印maps。从API版本26.0.0开始支持该参数
+      collectMinidump: true // native崩溃场景，使能minidump。从API版本26.0.0开始支持该参数
     }
 };
 hiAppEvent.configEventPolicy(policy).then(() => {
