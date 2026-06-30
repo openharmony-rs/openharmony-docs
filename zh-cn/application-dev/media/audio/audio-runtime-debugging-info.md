@@ -46,10 +46,6 @@ target_link_libraries(sample PUBLIC libohaudio.so)
 
 ``` C++
 #include <ohaudio/native_audio_debugging_manager.h>
-#include <fcntl.h>
-#include <unistd.h>
-// 文件权限常量。
-constexpr mode_t FILE_PERMISSION = S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH; // 0644
 ```
 
 **ArkTS开发：**
@@ -74,11 +70,11 @@ import { fileIo as fileio } from '@kit.CoreFileKit';
 <!-- @[get_debug_manager_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/cpp/audio.cpp) -->
 
 ``` C++
-// 获取音频调试管理器。
+// 获取音频调试管理器
 OH_AudioDebuggingManager *debugManager = nullptr;
 OH_AudioCommon_Result result = OH_AudioManager_GetAudioDebuggingManager(&debugManager);
 if (result != AUDIOCOMMON_RESULT_SUCCESS || debugManager == nullptr) {
-    // 获取失败，处理错误。
+    // 获取失败，处理错误
     return;
 }
 ```
@@ -88,7 +84,7 @@ if (result != AUDIOCOMMON_RESULT_SUCCESS || debugManager == nullptr) {
 <!-- @[get_debug_manager_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-// 获取音频调试管理器。
+// 获取音频调试管理器
 const audioManager = audio.getAudioManager();
 const debugManager: audio.AudioDebuggingManager = audioManager.getDebuggingManager();
 ```
@@ -98,9 +94,358 @@ const debugManager: audio.AudioDebuggingManager = audioManager.getDebuggingManag
 <!-- @[all_audioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->
 
 ``` TypeScript
-// 获取音频调试管理器。
-const audioManager: audio.AudioManager = audio.getAudioManager();
-const debugManager: audio.AudioDebuggingManager = audioManager.getDebuggingManager();
+import audio from '@ohos.multimedia.audio';
+import fs from '@ohos.file.fs';
+import { ReadOptions, WriteOptions } from '@ohos.file.fs';
+import common from '@ohos.app.ability.common';
+import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
+import { PermissionRequestResult } from '@ohos.abilityAccessCtrl';
+import { BusinessError, Callback } from '@ohos.base';
+import {
+  Entry, Component, State, Scroll, Column, Row, Text, Color, FlexAlign, HorizontalAlign, TextOverflow, ClickEvent
+} from '@kit.ArkUI';
+const TAG = 'AudioCapturerDemo';
+let audioRenderer: audio.AudioRenderer | undefined = undefined;
+let audioCapturer: audio.AudioCapturer | undefined = undefined;
+
+let audioStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+  channels: audio.AudioChannel.CHANNEL_2,
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+};
+
+let audioCapturerInfo: audio.AudioCapturerInfo = {
+  source: audio.SourceType.SOURCE_TYPE_MIC,
+  capturerFlags: 0
+};
+
+// 使用显式兼容类承载静态接口参数，避免生成包含可选字段的对象字面量。
+class AudioCapturerOptionsCompat implements audio.AudioCapturerOptions {
+  streamInfo: audio.AudioStreamInfo;
+  capturerInfo: audio.AudioCapturerInfo;
+
+  constructor(streamInfo: audio.AudioStreamInfo, capturerInfo: audio.AudioCapturerInfo) {
+    this.streamInfo = streamInfo;
+    this.capturerInfo = capturerInfo;
+  }
+}
+
+class AudioRendererOptionsCompat implements audio.AudioRendererOptions {
+  streamInfo: audio.AudioStreamInfo;
+  rendererInfo: audio.AudioRendererInfo;
+
+  constructor(streamInfo: audio.AudioStreamInfo, rendererInfo: audio.AudioRendererInfo) {
+    this.streamInfo = streamInfo;
+    this.rendererInfo = rendererInfo;
+  }
+}
+
+let audioCapturerOptions: audio.AudioCapturerOptions = {
+  streamInfo: audioStreamInfo,
+  capturerInfo: audioCapturerInfo
+};
+
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+  rendererFlags: 0
+};
+
+let audioRendererOptions: audio.AudioRendererOptions = {
+  streamInfo: audioStreamInfo,
+  rendererInfo: audioRendererInfo
+};
+
+let file: fs.File | undefined = undefined;
+let readDataCallback: Callback<ArrayBuffer> = (_buffer: ArrayBuffer): void => {};
+let writeDataCallback: audio.AudioRendererWriteDataCallback;
+
+// ...
+
+// 采集回调将麦克风数据写入缓存 PCM 文件，供渲染侧读取。
+async function initArguments(context: common.UIAbilityContext): Promise<void> {
+  let bufferSize: long = 0;
+  let path = context.cacheDir;
+  let filePath = path + '/S16LE_2_48000.pcm';
+  file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+  readDataCallback = (buffer: ArrayBuffer) => {
+    let options: WriteOptions = {
+      offset: bufferSize,
+      length: Int.toLong(buffer.byteLength)
+    }
+    let targetFile = file;
+    if (targetFile === undefined) {
+      return;
+    }
+    fs.writeSync(targetFile.fd, buffer, options);
+    bufferSize += Int.toLong(buffer.byteLength);
+  };
+}
+
+// 渲染回调从缓存 PCM 文件读取数据，末尾不足一帧时填充静音。
+async function initRender(context: common.UIAbilityContext) {
+  let bufferSize: long = 0;
+  let path = context.cacheDir;
+  let filePath = path + '/S16LE_2_48000.pcm';
+  file = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
+  writeDataCallback = (buffer: ArrayBuffer) => {
+    let options: ReadOptions = {
+      offset: bufferSize,
+      length: Int.toLong(buffer.byteLength)
+    };
+
+    try {
+      let sourceFile = file;
+      if (sourceFile === undefined) {
+        return audio.AudioDataCallbackResult.INVALID;
+      }
+      let bufferLength: long = fs.readSync(sourceFile.fd, buffer, options);
+      let frameLength: int = buffer.byteLength;
+      bufferSize += Int.toLong(frameLength);
+      if (bufferLength < Int.toLong(frameLength)) {
+        // PCM S16LE 静音值为 0x00，补齐未读取到的尾部数据。
+        let view = new DataView(buffer);
+        for (let i: int = 0; i < frameLength; i++) {
+          if (Int.toLong(i) < bufferLength) {
+            continue;
+          }
+          view.setUint8(i, 0);
+        }
+      }
+      return audio.AudioDataCallbackResult.VALID;
+    } catch (error) {
+      console.error('Error reading file:', error);
+      return audio.AudioDataCallbackResult.INVALID;
+    }
+  };
+  try {
+    let renderer = await audio.createAudioRenderer(audioRendererOptions);
+    if (renderer === null) {
+      console.info(`${TAG}: creating AudioRenderer failed, renderer is null`);
+      return;
+    }
+    console.info(`${TAG}: creating AudioRenderer success`);
+    audioRenderer = renderer;
+    renderer.onWriteData(writeDataCallback);
+  } catch (err) {
+    let error = err as BusinessError;
+    console.info(`${TAG}: creating AudioRenderer failed, error: ${error.message}`);
+  }
+}
+
+// ...
+
+// 应用级快照：同时写入缓存文件并输出到 Hilog。
+async function printAppSnapshot(context: common.UIAbilityContext,
+  updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  try {
+    let path = context.cacheDir + '/app_snapshot.txt';
+    let snapshotFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE | fs.OpenMode.TRUNC);
+    audio.getAudioManager().getDebuggingManager().printAppInfo(snapshotFile.fd);
+    fs.closeSync(snapshotFile);
+    audio.getAudioManager().getDebuggingManager().printAppInfo(-1);
+    if (updateCallback) {
+      updateCallback(`App snapshot printed to system log and ${path}.`, false);
+    }
+  } catch (err) {
+    let error = err as BusinessError;
+    if (updateCallback) {
+      updateCallback(`Print app snapshot failed: ${error.message}`, true);
+    }
+  }
+}
+
+// 录音快照：同时写入缓存文件并输出到 Hilog。
+async function printCapturerSnapshot(context: common.UIAbilityContext,
+  updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  let capturer = audioCapturer;
+  if (capturer === undefined) {
+    if (updateCallback) {
+      updateCallback('AudioCapturer is not created.', true);
+    }
+    return;
+  }
+  try {
+    let path = context.cacheDir + '/capturer_snapshot.txt';
+    let snapshotFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE | fs.OpenMode.TRUNC);
+    audio.getAudioManager().getDebuggingManager().printCapturerInfo(capturer, snapshotFile.fd);
+    fs.closeSync(snapshotFile);
+    audio.getAudioManager().getDebuggingManager().printCapturerInfo(capturer, -1);
+    if (updateCallback) {
+      updateCallback(`Capturer snapshot printed to system log and ${path}.`, false);
+    }
+  } catch (err) {
+    let error = err as BusinessError;
+    if (updateCallback) {
+      updateCallback(`Print capturer snapshot failed: ${error.message}`, true);
+    }
+  }
+}
+
+// 播放快照：同时写入缓存文件并输出到 Hilog。
+async function printRendererSnapshot(context: common.UIAbilityContext,
+  updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  let renderer = audioRenderer;
+  if (renderer === undefined) {
+    if (updateCallback) {
+      updateCallback('AudioRenderer is not created.', true);
+    }
+    return;
+  }
+  try {
+    let path = context.cacheDir + '/renderer_snapshot.txt';
+    let snapshotFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE | fs.OpenMode.TRUNC);
+    audio.getAudioManager().getDebuggingManager().printRendererInfo(renderer, snapshotFile.fd);
+    fs.closeSync(snapshotFile);
+    audio.getAudioManager().getDebuggingManager().printRendererInfo(renderer, -1);
+    if (updateCallback) {
+      updateCallback(`Renderer snapshot printed to system log and ${path}.`, false);
+    }
+  } catch (err) {
+    let error = err as BusinessError;
+    if (updateCallback) {
+      updateCallback(`Print renderer snapshot failed: ${error.message}`, true);
+    }
+  }
+}
+
+// ...
+
+// ...
+
+// 创建采集器并注册读数据、状态变化回调。
+async function init(updateCallback?: (msg: string, isError: boolean) => void, stateCallback?:
+  (msg: string) => void): Promise<void> {
+  try {
+    let capturer = await audio.createAudioCapturer(audioCapturerOptions);
+    if (capturer === null) {
+      const errorMsg = `Invoke createAudioCapturer failed, capturer is null`;
+      console.error(errorMsg);
+      if (updateCallback) {
+        updateCallback(errorMsg, true);
+      }
+      return;
+    }
+    console.info(`${TAG}: create AudioCapturer success`);
+    const successMsg = `${TAG}: create AudioCapturer success`;
+    if (updateCallback) {
+      updateCallback(successMsg, false);
+    }
+    audioCapturer = capturer;
+    capturer.onReadData(readDataCallback);
+    await listenAudioCapturerState(stateCallback);
+  } catch (err) {
+    let error = err as BusinessError;
+    console.error(`Invoke createAudioCapturer failed, message is ${error.message}`);
+    const errorMsg = `Invoke createAudioCapturer failed, message is ${error.message}`;
+    if (updateCallback) {
+      updateCallback(errorMsg, true);
+    }
+  }
+}
+
+// 启动音频采集前先校验采集器状态。
+async function start(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  let capturer = audioCapturer;
+  if (capturer !== undefined) {
+    let state = capturer.state;
+    if (state !== audio.AudioState.STATE_PREPARED && state !== audio.AudioState.STATE_PAUSED &&
+      state !== audio.AudioState.STATE_STOPPED) {
+      console.error(`${TAG}: start failed`);
+      const errorMsg = `${TAG}: start failed`;
+      if (updateCallback) {
+        updateCallback(errorMsg, true);
+      }
+      return;
+    }
+    try {
+      await capturer.start();
+      const successMsg = 'Capturer start success.';
+      if (updateCallback) {
+        updateCallback(successMsg, false);
+      }
+      console.info('Capturer start success.');
+    } catch (err) {
+      const errorMsg = 'Capturer start failed.';
+      if (updateCallback) {
+        updateCallback(errorMsg, true);
+      }
+      console.error('Capturer start failed.');
+    }
+
+  }
+}
+
+// 停止音频采集。
+async function stop(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  let capturer = audioCapturer;
+  if (capturer !== undefined) {
+    let state = capturer.state;
+    if (state !== audio.AudioState.STATE_RUNNING && state !== audio.AudioState.STATE_PAUSED) {
+      console.info('Capturer is not running or paused');
+      const infoMsg = 'Capturer is not running or paused';
+      if (updateCallback) {
+        updateCallback(infoMsg, false);
+      }
+      return;
+    }
+    try {
+      await capturer.stop();
+      const successMsg = 'Capturer stop success.';
+      if (updateCallback) {
+        updateCallback(successMsg, false);
+      }
+      console.info('Capturer stop success.');
+    } catch (err) {
+      const errorMsg = 'Capturer stop failed.';
+      if (updateCallback) {
+        updateCallback(errorMsg, true);
+      }
+      console.error('Capturer stop failed.');
+    }
+
+  }
+}
+
+// 释放采集器和缓存文件句柄。
+async function release(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  let capturer = audioCapturer;
+  if (capturer !== undefined) {
+    let state = capturer.state;
+    if (state === audio.AudioState.STATE_RELEASED || state === audio.AudioState.STATE_NEW) {
+      console.info('Capturer already released');
+      const infoMsg = 'Capturer already released';
+      if (updateCallback) {
+        updateCallback(infoMsg, false);
+      }
+      return;
+    }
+    try {
+      await capturer.release();
+      let currentFile = file;
+      if (currentFile !== undefined) {
+        fs.closeSync(currentFile);
+        file = undefined;
+      }
+      console.info('Capturer release success.');
+      const successMsg = 'Capturer release success.';
+      if (updateCallback) {
+        updateCallback(successMsg, false);
+      }
+    } catch (err) {
+      const errorMsg = 'Capturer release failed.';
+      if (updateCallback) {
+        updateCallback(errorMsg, true);
+      }
+      console.error('Capturer release failed.');
+    }
+
+  }
+}
+
+// ...
+
+// ...
 ```
 
 ## 应用快照
@@ -125,14 +470,14 @@ const debugManager: audio.AudioDebuggingManager = audioManager.getDebuggingManag
 <!-- @[print_app_snapshot_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/cpp/audio.cpp) -->
 
 ``` C++
-// 打印应用快照到文件。
+// 打印应用快照到文件
 int32_t fd = open("/data/storage/el2/base/cache/audio_snapshot.txt", O_WRONLY | O_CREAT | O_TRUNC, FILE_PERMISSION);
 if (fd >= 0) {
     OH_AudioDebuggingManager_PrintAppInfo(debugManager, fd);
     close(fd);
 }
 
-// 也可将快照信息输出到hilog日志（fd < 0时输出到hilog）。
+// 也可将快照信息输出到hilog日志（fd < 0时输出到hilog）
 OH_AudioDebuggingManager_PrintAppInfo(debugManager, -1);
 ```
 
@@ -141,13 +486,15 @@ OH_AudioDebuggingManager_PrintAppInfo(debugManager, -1);
 <!-- @[print_app_snapshot_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-// 打印应用快照到文件。
+// 打印应用快照到文件
 const path = this.context.filesDir + '/audio_snapshot.txt';
-const file = fileio.openSync(path, 0o102 | 0o200, 0o644); // O_WRONLY | O_CREAT
-debugManager.printAppInfo(file.fd);
-fileio.closeSync(file);
+let fd: number = this.openSnapshotFile(path);
+if (fd >= 0) {
+  debugManager.printAppInfo(fd);
+  this.safeCloseFd(fd);
+}
 
-// 也可将快照信息输出到hilog日志（fd < 0时输出到hilog）。
+// 也可将快照信息输出到hilog日志（fd < 0时输出到hilog）
 debugManager.printAppInfo(-1);
 ```
 
@@ -156,14 +503,358 @@ debugManager.printAppInfo(-1);
 <!-- @[all_audioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->
 
 ``` TypeScript
-// 打印应用快照到文件。
-let path = this.context.cacheDir + '/app_snapshot.txt';
-let snapshotFile = fileio.openSync(path, fileio.OpenMode.READ_WRITE | fileio.OpenMode.CREATE | fileio.OpenMode.TRUNC);
-audio.getAudioManager().getDebuggingManager().printAppInfo(snapshotFile.fd);
-fileio.closeSync(snapshotFile);
+import audio from '@ohos.multimedia.audio';
+import fs from '@ohos.file.fs';
+import { ReadOptions, WriteOptions } from '@ohos.file.fs';
+import common from '@ohos.app.ability.common';
+import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
+import { PermissionRequestResult } from '@ohos.abilityAccessCtrl';
+import { BusinessError, Callback } from '@ohos.base';
+import {
+  Entry, Component, State, Scroll, Column, Row, Text, Color, FlexAlign, HorizontalAlign, TextOverflow, ClickEvent
+} from '@kit.ArkUI';
+const TAG = 'AudioCapturerDemo';
+let audioRenderer: audio.AudioRenderer | undefined = undefined;
+let audioCapturer: audio.AudioCapturer | undefined = undefined;
 
-// 也可将快照信息输出到hilog日志（fd < 0时输出到hilog）。
-audio.getAudioManager().getDebuggingManager().printAppInfo(-1);
+let audioStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+  channels: audio.AudioChannel.CHANNEL_2,
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+};
+
+let audioCapturerInfo: audio.AudioCapturerInfo = {
+  source: audio.SourceType.SOURCE_TYPE_MIC,
+  capturerFlags: 0
+};
+
+// 使用显式兼容类承载静态接口参数，避免生成包含可选字段的对象字面量。
+class AudioCapturerOptionsCompat implements audio.AudioCapturerOptions {
+  streamInfo: audio.AudioStreamInfo;
+  capturerInfo: audio.AudioCapturerInfo;
+
+  constructor(streamInfo: audio.AudioStreamInfo, capturerInfo: audio.AudioCapturerInfo) {
+    this.streamInfo = streamInfo;
+    this.capturerInfo = capturerInfo;
+  }
+}
+
+class AudioRendererOptionsCompat implements audio.AudioRendererOptions {
+  streamInfo: audio.AudioStreamInfo;
+  rendererInfo: audio.AudioRendererInfo;
+
+  constructor(streamInfo: audio.AudioStreamInfo, rendererInfo: audio.AudioRendererInfo) {
+    this.streamInfo = streamInfo;
+    this.rendererInfo = rendererInfo;
+  }
+}
+
+let audioCapturerOptions: audio.AudioCapturerOptions = {
+  streamInfo: audioStreamInfo,
+  capturerInfo: audioCapturerInfo
+};
+
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+  rendererFlags: 0
+};
+
+let audioRendererOptions: audio.AudioRendererOptions = {
+  streamInfo: audioStreamInfo,
+  rendererInfo: audioRendererInfo
+};
+
+let file: fs.File | undefined = undefined;
+let readDataCallback: Callback<ArrayBuffer> = (_buffer: ArrayBuffer): void => {};
+let writeDataCallback: audio.AudioRendererWriteDataCallback;
+
+// ...
+
+// 采集回调将麦克风数据写入缓存 PCM 文件，供渲染侧读取。
+async function initArguments(context: common.UIAbilityContext): Promise<void> {
+  let bufferSize: long = 0;
+  let path = context.cacheDir;
+  let filePath = path + '/S16LE_2_48000.pcm';
+  file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+  readDataCallback = (buffer: ArrayBuffer) => {
+    let options: WriteOptions = {
+      offset: bufferSize,
+      length: Int.toLong(buffer.byteLength)
+    }
+    let targetFile = file;
+    if (targetFile === undefined) {
+      return;
+    }
+    fs.writeSync(targetFile.fd, buffer, options);
+    bufferSize += Int.toLong(buffer.byteLength);
+  };
+}
+
+// 渲染回调从缓存 PCM 文件读取数据，末尾不足一帧时填充静音。
+async function initRender(context: common.UIAbilityContext) {
+  let bufferSize: long = 0;
+  let path = context.cacheDir;
+  let filePath = path + '/S16LE_2_48000.pcm';
+  file = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
+  writeDataCallback = (buffer: ArrayBuffer) => {
+    let options: ReadOptions = {
+      offset: bufferSize,
+      length: Int.toLong(buffer.byteLength)
+    };
+
+    try {
+      let sourceFile = file;
+      if (sourceFile === undefined) {
+        return audio.AudioDataCallbackResult.INVALID;
+      }
+      let bufferLength: long = fs.readSync(sourceFile.fd, buffer, options);
+      let frameLength: int = buffer.byteLength;
+      bufferSize += Int.toLong(frameLength);
+      if (bufferLength < Int.toLong(frameLength)) {
+        // PCM S16LE 静音值为 0x00，补齐未读取到的尾部数据。
+        let view = new DataView(buffer);
+        for (let i: int = 0; i < frameLength; i++) {
+          if (Int.toLong(i) < bufferLength) {
+            continue;
+          }
+          view.setUint8(i, 0);
+        }
+      }
+      return audio.AudioDataCallbackResult.VALID;
+    } catch (error) {
+      console.error('Error reading file:', error);
+      return audio.AudioDataCallbackResult.INVALID;
+    }
+  };
+  try {
+    let renderer = await audio.createAudioRenderer(audioRendererOptions);
+    if (renderer === null) {
+      console.info(`${TAG}: creating AudioRenderer failed, renderer is null`);
+      return;
+    }
+    console.info(`${TAG}: creating AudioRenderer success`);
+    audioRenderer = renderer;
+    renderer.onWriteData(writeDataCallback);
+  } catch (err) {
+    let error = err as BusinessError;
+    console.info(`${TAG}: creating AudioRenderer failed, error: ${error.message}`);
+  }
+}
+
+// ...
+
+// 应用级快照：同时写入缓存文件并输出到 Hilog。
+async function printAppSnapshot(context: common.UIAbilityContext,
+  updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  try {
+    let path = context.cacheDir + '/app_snapshot.txt';
+    let snapshotFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE | fs.OpenMode.TRUNC);
+    audio.getAudioManager().getDebuggingManager().printAppInfo(snapshotFile.fd);
+    fs.closeSync(snapshotFile);
+    audio.getAudioManager().getDebuggingManager().printAppInfo(-1);
+    if (updateCallback) {
+      updateCallback(`App snapshot printed to system log and ${path}.`, false);
+    }
+  } catch (err) {
+    let error = err as BusinessError;
+    if (updateCallback) {
+      updateCallback(`Print app snapshot failed: ${error.message}`, true);
+    }
+  }
+}
+
+// 录音快照：同时写入缓存文件并输出到 Hilog。
+async function printCapturerSnapshot(context: common.UIAbilityContext,
+  updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  let capturer = audioCapturer;
+  if (capturer === undefined) {
+    if (updateCallback) {
+      updateCallback('AudioCapturer is not created.', true);
+    }
+    return;
+  }
+  try {
+    let path = context.cacheDir + '/capturer_snapshot.txt';
+    let snapshotFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE | fs.OpenMode.TRUNC);
+    audio.getAudioManager().getDebuggingManager().printCapturerInfo(capturer, snapshotFile.fd);
+    fs.closeSync(snapshotFile);
+    audio.getAudioManager().getDebuggingManager().printCapturerInfo(capturer, -1);
+    if (updateCallback) {
+      updateCallback(`Capturer snapshot printed to system log and ${path}.`, false);
+    }
+  } catch (err) {
+    let error = err as BusinessError;
+    if (updateCallback) {
+      updateCallback(`Print capturer snapshot failed: ${error.message}`, true);
+    }
+  }
+}
+
+// 播放快照：同时写入缓存文件并输出到 Hilog。
+async function printRendererSnapshot(context: common.UIAbilityContext,
+  updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  let renderer = audioRenderer;
+  if (renderer === undefined) {
+    if (updateCallback) {
+      updateCallback('AudioRenderer is not created.', true);
+    }
+    return;
+  }
+  try {
+    let path = context.cacheDir + '/renderer_snapshot.txt';
+    let snapshotFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE | fs.OpenMode.TRUNC);
+    audio.getAudioManager().getDebuggingManager().printRendererInfo(renderer, snapshotFile.fd);
+    fs.closeSync(snapshotFile);
+    audio.getAudioManager().getDebuggingManager().printRendererInfo(renderer, -1);
+    if (updateCallback) {
+      updateCallback(`Renderer snapshot printed to system log and ${path}.`, false);
+    }
+  } catch (err) {
+    let error = err as BusinessError;
+    if (updateCallback) {
+      updateCallback(`Print renderer snapshot failed: ${error.message}`, true);
+    }
+  }
+}
+
+// ...
+
+// ...
+
+// 创建采集器并注册读数据、状态变化回调。
+async function init(updateCallback?: (msg: string, isError: boolean) => void, stateCallback?:
+  (msg: string) => void): Promise<void> {
+  try {
+    let capturer = await audio.createAudioCapturer(audioCapturerOptions);
+    if (capturer === null) {
+      const errorMsg = `Invoke createAudioCapturer failed, capturer is null`;
+      console.error(errorMsg);
+      if (updateCallback) {
+        updateCallback(errorMsg, true);
+      }
+      return;
+    }
+    console.info(`${TAG}: create AudioCapturer success`);
+    const successMsg = `${TAG}: create AudioCapturer success`;
+    if (updateCallback) {
+      updateCallback(successMsg, false);
+    }
+    audioCapturer = capturer;
+    capturer.onReadData(readDataCallback);
+    await listenAudioCapturerState(stateCallback);
+  } catch (err) {
+    let error = err as BusinessError;
+    console.error(`Invoke createAudioCapturer failed, message is ${error.message}`);
+    const errorMsg = `Invoke createAudioCapturer failed, message is ${error.message}`;
+    if (updateCallback) {
+      updateCallback(errorMsg, true);
+    }
+  }
+}
+
+// 启动音频采集前先校验采集器状态。
+async function start(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  let capturer = audioCapturer;
+  if (capturer !== undefined) {
+    let state = capturer.state;
+    if (state !== audio.AudioState.STATE_PREPARED && state !== audio.AudioState.STATE_PAUSED &&
+      state !== audio.AudioState.STATE_STOPPED) {
+      console.error(`${TAG}: start failed`);
+      const errorMsg = `${TAG}: start failed`;
+      if (updateCallback) {
+        updateCallback(errorMsg, true);
+      }
+      return;
+    }
+    try {
+      await capturer.start();
+      const successMsg = 'Capturer start success.';
+      if (updateCallback) {
+        updateCallback(successMsg, false);
+      }
+      console.info('Capturer start success.');
+    } catch (err) {
+      const errorMsg = 'Capturer start failed.';
+      if (updateCallback) {
+        updateCallback(errorMsg, true);
+      }
+      console.error('Capturer start failed.');
+    }
+
+  }
+}
+
+// 停止音频采集。
+async function stop(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  let capturer = audioCapturer;
+  if (capturer !== undefined) {
+    let state = capturer.state;
+    if (state !== audio.AudioState.STATE_RUNNING && state !== audio.AudioState.STATE_PAUSED) {
+      console.info('Capturer is not running or paused');
+      const infoMsg = 'Capturer is not running or paused';
+      if (updateCallback) {
+        updateCallback(infoMsg, false);
+      }
+      return;
+    }
+    try {
+      await capturer.stop();
+      const successMsg = 'Capturer stop success.';
+      if (updateCallback) {
+        updateCallback(successMsg, false);
+      }
+      console.info('Capturer stop success.');
+    } catch (err) {
+      const errorMsg = 'Capturer stop failed.';
+      if (updateCallback) {
+        updateCallback(errorMsg, true);
+      }
+      console.error('Capturer stop failed.');
+    }
+
+  }
+}
+
+// 释放采集器和缓存文件句柄。
+async function release(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  let capturer = audioCapturer;
+  if (capturer !== undefined) {
+    let state = capturer.state;
+    if (state === audio.AudioState.STATE_RELEASED || state === audio.AudioState.STATE_NEW) {
+      console.info('Capturer already released');
+      const infoMsg = 'Capturer already released';
+      if (updateCallback) {
+        updateCallback(infoMsg, false);
+      }
+      return;
+    }
+    try {
+      await capturer.release();
+      let currentFile = file;
+      if (currentFile !== undefined) {
+        fs.closeSync(currentFile);
+        file = undefined;
+      }
+      console.info('Capturer release success.');
+      const successMsg = 'Capturer release success.';
+      if (updateCallback) {
+        updateCallback(successMsg, false);
+      }
+    } catch (err) {
+      const errorMsg = 'Capturer release failed.';
+      if (updateCallback) {
+        updateCallback(errorMsg, true);
+      }
+      console.error('Capturer release failed.');
+    }
+
+  }
+}
+
+// ...
+
+// ...
 ```
 
 **输出示例：**
@@ -212,7 +903,7 @@ audioApp {
 <!-- @[print_renderer_snapshot_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/cpp/audio.cpp) -->
 
 ``` C++
-// 打印指定播放实例的快照。
+// 打印指定播放实例的快照
 int32_t fd = open("/data/storage/el2/base/cache/renderer_snapshot.txt",
     O_WRONLY | O_CREAT | O_TRUNC, FILE_PERMISSION);
 if (fd >= 0) {
@@ -226,11 +917,13 @@ if (fd >= 0) {
 <!-- @[print_renderer_snapshot_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-// 打印指定播放实例的快照。
+// 打印指定播放实例的快照
 const path = this.context.filesDir + '/renderer_snapshot.txt';
-const file = fileio.openSync(path, 0o102 | 0o200, 0o644);
-debugManager.printRendererInfo(renderer, file.fd);
-fileio.closeSync(file);
+let fd: number = this.openSnapshotFile(path);
+if (fd >= 0) {
+  debugManager.printRendererInfo(renderer, fd);
+  this.safeCloseFd(fd);
+}
 ```
 
 **ArkTS-Sta示例：**
@@ -238,14 +931,358 @@ fileio.closeSync(file);
 <!-- @[all_audioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->
 
 ``` TypeScript
-// 打印指定播放实例的快照。
-let path = this.context.cacheDir + '/renderer_snapshot.txt';
-let snapshotFile = fileio.openSync(path, fileio.OpenMode.READ_WRITE | fileio.OpenMode.CREATE | fileio.OpenMode.TRUNC);
-audio.getAudioManager().getDebuggingManager().printRendererInfo(renderer, snapshotFile.fd);
-fileio.closeSync(snapshotFile);
+import audio from '@ohos.multimedia.audio';
+import fs from '@ohos.file.fs';
+import { ReadOptions, WriteOptions } from '@ohos.file.fs';
+import common from '@ohos.app.ability.common';
+import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
+import { PermissionRequestResult } from '@ohos.abilityAccessCtrl';
+import { BusinessError, Callback } from '@ohos.base';
+import {
+  Entry, Component, State, Scroll, Column, Row, Text, Color, FlexAlign, HorizontalAlign, TextOverflow, ClickEvent
+} from '@kit.ArkUI';
+const TAG = 'AudioCapturerDemo';
+let audioRenderer: audio.AudioRenderer | undefined = undefined;
+let audioCapturer: audio.AudioCapturer | undefined = undefined;
 
-// 也可将快照信息输出到hilog日志（fd < 0时输出到hilog）。
-audio.getAudioManager().getDebuggingManager().printRendererInfo(renderer, -1);
+let audioStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+  channels: audio.AudioChannel.CHANNEL_2,
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+};
+
+let audioCapturerInfo: audio.AudioCapturerInfo = {
+  source: audio.SourceType.SOURCE_TYPE_MIC,
+  capturerFlags: 0
+};
+
+// 使用显式兼容类承载静态接口参数，避免生成包含可选字段的对象字面量。
+class AudioCapturerOptionsCompat implements audio.AudioCapturerOptions {
+  streamInfo: audio.AudioStreamInfo;
+  capturerInfo: audio.AudioCapturerInfo;
+
+  constructor(streamInfo: audio.AudioStreamInfo, capturerInfo: audio.AudioCapturerInfo) {
+    this.streamInfo = streamInfo;
+    this.capturerInfo = capturerInfo;
+  }
+}
+
+class AudioRendererOptionsCompat implements audio.AudioRendererOptions {
+  streamInfo: audio.AudioStreamInfo;
+  rendererInfo: audio.AudioRendererInfo;
+
+  constructor(streamInfo: audio.AudioStreamInfo, rendererInfo: audio.AudioRendererInfo) {
+    this.streamInfo = streamInfo;
+    this.rendererInfo = rendererInfo;
+  }
+}
+
+let audioCapturerOptions: audio.AudioCapturerOptions = {
+  streamInfo: audioStreamInfo,
+  capturerInfo: audioCapturerInfo
+};
+
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+  rendererFlags: 0
+};
+
+let audioRendererOptions: audio.AudioRendererOptions = {
+  streamInfo: audioStreamInfo,
+  rendererInfo: audioRendererInfo
+};
+
+let file: fs.File | undefined = undefined;
+let readDataCallback: Callback<ArrayBuffer> = (_buffer: ArrayBuffer): void => {};
+let writeDataCallback: audio.AudioRendererWriteDataCallback;
+
+// ...
+
+// 采集回调将麦克风数据写入缓存 PCM 文件，供渲染侧读取。
+async function initArguments(context: common.UIAbilityContext): Promise<void> {
+  let bufferSize: long = 0;
+  let path = context.cacheDir;
+  let filePath = path + '/S16LE_2_48000.pcm';
+  file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+  readDataCallback = (buffer: ArrayBuffer) => {
+    let options: WriteOptions = {
+      offset: bufferSize,
+      length: Int.toLong(buffer.byteLength)
+    }
+    let targetFile = file;
+    if (targetFile === undefined) {
+      return;
+    }
+    fs.writeSync(targetFile.fd, buffer, options);
+    bufferSize += Int.toLong(buffer.byteLength);
+  };
+}
+
+// 渲染回调从缓存 PCM 文件读取数据，末尾不足一帧时填充静音。
+async function initRender(context: common.UIAbilityContext) {
+  let bufferSize: long = 0;
+  let path = context.cacheDir;
+  let filePath = path + '/S16LE_2_48000.pcm';
+  file = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
+  writeDataCallback = (buffer: ArrayBuffer) => {
+    let options: ReadOptions = {
+      offset: bufferSize,
+      length: Int.toLong(buffer.byteLength)
+    };
+
+    try {
+      let sourceFile = file;
+      if (sourceFile === undefined) {
+        return audio.AudioDataCallbackResult.INVALID;
+      }
+      let bufferLength: long = fs.readSync(sourceFile.fd, buffer, options);
+      let frameLength: int = buffer.byteLength;
+      bufferSize += Int.toLong(frameLength);
+      if (bufferLength < Int.toLong(frameLength)) {
+        // PCM S16LE 静音值为 0x00，补齐未读取到的尾部数据。
+        let view = new DataView(buffer);
+        for (let i: int = 0; i < frameLength; i++) {
+          if (Int.toLong(i) < bufferLength) {
+            continue;
+          }
+          view.setUint8(i, 0);
+        }
+      }
+      return audio.AudioDataCallbackResult.VALID;
+    } catch (error) {
+      console.error('Error reading file:', error);
+      return audio.AudioDataCallbackResult.INVALID;
+    }
+  };
+  try {
+    let renderer = await audio.createAudioRenderer(audioRendererOptions);
+    if (renderer === null) {
+      console.info(`${TAG}: creating AudioRenderer failed, renderer is null`);
+      return;
+    }
+    console.info(`${TAG}: creating AudioRenderer success`);
+    audioRenderer = renderer;
+    renderer.onWriteData(writeDataCallback);
+  } catch (err) {
+    let error = err as BusinessError;
+    console.info(`${TAG}: creating AudioRenderer failed, error: ${error.message}`);
+  }
+}
+
+// ...
+
+// 应用级快照：同时写入缓存文件并输出到 Hilog。
+async function printAppSnapshot(context: common.UIAbilityContext,
+  updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  try {
+    let path = context.cacheDir + '/app_snapshot.txt';
+    let snapshotFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE | fs.OpenMode.TRUNC);
+    audio.getAudioManager().getDebuggingManager().printAppInfo(snapshotFile.fd);
+    fs.closeSync(snapshotFile);
+    audio.getAudioManager().getDebuggingManager().printAppInfo(-1);
+    if (updateCallback) {
+      updateCallback(`App snapshot printed to system log and ${path}.`, false);
+    }
+  } catch (err) {
+    let error = err as BusinessError;
+    if (updateCallback) {
+      updateCallback(`Print app snapshot failed: ${error.message}`, true);
+    }
+  }
+}
+
+// 录音快照：同时写入缓存文件并输出到 Hilog。
+async function printCapturerSnapshot(context: common.UIAbilityContext,
+  updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  let capturer = audioCapturer;
+  if (capturer === undefined) {
+    if (updateCallback) {
+      updateCallback('AudioCapturer is not created.', true);
+    }
+    return;
+  }
+  try {
+    let path = context.cacheDir + '/capturer_snapshot.txt';
+    let snapshotFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE | fs.OpenMode.TRUNC);
+    audio.getAudioManager().getDebuggingManager().printCapturerInfo(capturer, snapshotFile.fd);
+    fs.closeSync(snapshotFile);
+    audio.getAudioManager().getDebuggingManager().printCapturerInfo(capturer, -1);
+    if (updateCallback) {
+      updateCallback(`Capturer snapshot printed to system log and ${path}.`, false);
+    }
+  } catch (err) {
+    let error = err as BusinessError;
+    if (updateCallback) {
+      updateCallback(`Print capturer snapshot failed: ${error.message}`, true);
+    }
+  }
+}
+
+// 播放快照：同时写入缓存文件并输出到 Hilog。
+async function printRendererSnapshot(context: common.UIAbilityContext,
+  updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  let renderer = audioRenderer;
+  if (renderer === undefined) {
+    if (updateCallback) {
+      updateCallback('AudioRenderer is not created.', true);
+    }
+    return;
+  }
+  try {
+    let path = context.cacheDir + '/renderer_snapshot.txt';
+    let snapshotFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE | fs.OpenMode.TRUNC);
+    audio.getAudioManager().getDebuggingManager().printRendererInfo(renderer, snapshotFile.fd);
+    fs.closeSync(snapshotFile);
+    audio.getAudioManager().getDebuggingManager().printRendererInfo(renderer, -1);
+    if (updateCallback) {
+      updateCallback(`Renderer snapshot printed to system log and ${path}.`, false);
+    }
+  } catch (err) {
+    let error = err as BusinessError;
+    if (updateCallback) {
+      updateCallback(`Print renderer snapshot failed: ${error.message}`, true);
+    }
+  }
+}
+
+// ...
+
+// ...
+
+// 创建采集器并注册读数据、状态变化回调。
+async function init(updateCallback?: (msg: string, isError: boolean) => void, stateCallback?:
+  (msg: string) => void): Promise<void> {
+  try {
+    let capturer = await audio.createAudioCapturer(audioCapturerOptions);
+    if (capturer === null) {
+      const errorMsg = `Invoke createAudioCapturer failed, capturer is null`;
+      console.error(errorMsg);
+      if (updateCallback) {
+        updateCallback(errorMsg, true);
+      }
+      return;
+    }
+    console.info(`${TAG}: create AudioCapturer success`);
+    const successMsg = `${TAG}: create AudioCapturer success`;
+    if (updateCallback) {
+      updateCallback(successMsg, false);
+    }
+    audioCapturer = capturer;
+    capturer.onReadData(readDataCallback);
+    await listenAudioCapturerState(stateCallback);
+  } catch (err) {
+    let error = err as BusinessError;
+    console.error(`Invoke createAudioCapturer failed, message is ${error.message}`);
+    const errorMsg = `Invoke createAudioCapturer failed, message is ${error.message}`;
+    if (updateCallback) {
+      updateCallback(errorMsg, true);
+    }
+  }
+}
+
+// 启动音频采集前先校验采集器状态。
+async function start(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  let capturer = audioCapturer;
+  if (capturer !== undefined) {
+    let state = capturer.state;
+    if (state !== audio.AudioState.STATE_PREPARED && state !== audio.AudioState.STATE_PAUSED &&
+      state !== audio.AudioState.STATE_STOPPED) {
+      console.error(`${TAG}: start failed`);
+      const errorMsg = `${TAG}: start failed`;
+      if (updateCallback) {
+        updateCallback(errorMsg, true);
+      }
+      return;
+    }
+    try {
+      await capturer.start();
+      const successMsg = 'Capturer start success.';
+      if (updateCallback) {
+        updateCallback(successMsg, false);
+      }
+      console.info('Capturer start success.');
+    } catch (err) {
+      const errorMsg = 'Capturer start failed.';
+      if (updateCallback) {
+        updateCallback(errorMsg, true);
+      }
+      console.error('Capturer start failed.');
+    }
+
+  }
+}
+
+// 停止音频采集。
+async function stop(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  let capturer = audioCapturer;
+  if (capturer !== undefined) {
+    let state = capturer.state;
+    if (state !== audio.AudioState.STATE_RUNNING && state !== audio.AudioState.STATE_PAUSED) {
+      console.info('Capturer is not running or paused');
+      const infoMsg = 'Capturer is not running or paused';
+      if (updateCallback) {
+        updateCallback(infoMsg, false);
+      }
+      return;
+    }
+    try {
+      await capturer.stop();
+      const successMsg = 'Capturer stop success.';
+      if (updateCallback) {
+        updateCallback(successMsg, false);
+      }
+      console.info('Capturer stop success.');
+    } catch (err) {
+      const errorMsg = 'Capturer stop failed.';
+      if (updateCallback) {
+        updateCallback(errorMsg, true);
+      }
+      console.error('Capturer stop failed.');
+    }
+
+  }
+}
+
+// 释放采集器和缓存文件句柄。
+async function release(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  let capturer = audioCapturer;
+  if (capturer !== undefined) {
+    let state = capturer.state;
+    if (state === audio.AudioState.STATE_RELEASED || state === audio.AudioState.STATE_NEW) {
+      console.info('Capturer already released');
+      const infoMsg = 'Capturer already released';
+      if (updateCallback) {
+        updateCallback(infoMsg, false);
+      }
+      return;
+    }
+    try {
+      await capturer.release();
+      let currentFile = file;
+      if (currentFile !== undefined) {
+        fs.closeSync(currentFile);
+        file = undefined;
+      }
+      console.info('Capturer release success.');
+      const successMsg = 'Capturer release success.';
+      if (updateCallback) {
+        updateCallback(successMsg, false);
+      }
+    } catch (err) {
+      const errorMsg = 'Capturer release failed.';
+      if (updateCallback) {
+        updateCallback(errorMsg, true);
+      }
+      console.error('Capturer release failed.');
+    }
+
+  }
+}
+
+// ...
+
+// ...
 ```
 
 **输出示例：**
@@ -322,7 +1359,7 @@ audioRenderer {
 <!-- @[print_capturer_snapshot_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/cpp/audio.cpp) -->
 
 ``` C++
-// 打印指定录音实例的快照。
+// 打印指定录音实例的快照
 int32_t fd = open("/data/storage/el2/base/cache/capturer_snapshot.txt",
     O_WRONLY | O_CREAT | O_TRUNC, FILE_PERMISSION);
 if (fd >= 0) {
@@ -336,11 +1373,13 @@ if (fd >= 0) {
 <!-- @[print_capturer_snapshot_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-// 打印指定录音实例的快照。
+// 打印指定录音实例的快照
 const path = this.context.filesDir + '/capturer_snapshot.txt';
-const file = fileio.openSync(path, 0o102 | 0o200, 0o644);
-debugManager.printCapturerInfo(capturer, file.fd);
-fileio.closeSync(file);
+let fd: number = this.openSnapshotFile(path);
+if (fd >= 0) {
+  debugManager.printCapturerInfo(capturer, fd);
+  this.safeCloseFd(fd);
+}
 ```
 
 **ArkTS-Sta示例：**
@@ -348,14 +1387,358 @@ fileio.closeSync(file);
 <!-- @[all_audioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->
 
 ``` TypeScript
-// 打印指定录音实例的快照。
-let path = this.context.cacheDir + '/capturer_snapshot.txt';
-let snapshotFile = fileio.openSync(path, fileio.OpenMode.READ_WRITE | fileio.OpenMode.CREATE | fileio.OpenMode.TRUNC);
-audio.getAudioManager().getDebuggingManager().printCapturerInfo(capturer, snapshotFile.fd);
-fileio.closeSync(snapshotFile);
+import audio from '@ohos.multimedia.audio';
+import fs from '@ohos.file.fs';
+import { ReadOptions, WriteOptions } from '@ohos.file.fs';
+import common from '@ohos.app.ability.common';
+import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
+import { PermissionRequestResult } from '@ohos.abilityAccessCtrl';
+import { BusinessError, Callback } from '@ohos.base';
+import {
+  Entry, Component, State, Scroll, Column, Row, Text, Color, FlexAlign, HorizontalAlign, TextOverflow, ClickEvent
+} from '@kit.ArkUI';
+const TAG = 'AudioCapturerDemo';
+let audioRenderer: audio.AudioRenderer | undefined = undefined;
+let audioCapturer: audio.AudioCapturer | undefined = undefined;
 
-// 也可将快照信息输出到hilog日志（fd < 0时输出到hilog）。
-audio.getAudioManager().getDebuggingManager().printCapturerInfo(capturer, -1);
+let audioStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+  channels: audio.AudioChannel.CHANNEL_2,
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+};
+
+let audioCapturerInfo: audio.AudioCapturerInfo = {
+  source: audio.SourceType.SOURCE_TYPE_MIC,
+  capturerFlags: 0
+};
+
+// 使用显式兼容类承载静态接口参数，避免生成包含可选字段的对象字面量。
+class AudioCapturerOptionsCompat implements audio.AudioCapturerOptions {
+  streamInfo: audio.AudioStreamInfo;
+  capturerInfo: audio.AudioCapturerInfo;
+
+  constructor(streamInfo: audio.AudioStreamInfo, capturerInfo: audio.AudioCapturerInfo) {
+    this.streamInfo = streamInfo;
+    this.capturerInfo = capturerInfo;
+  }
+}
+
+class AudioRendererOptionsCompat implements audio.AudioRendererOptions {
+  streamInfo: audio.AudioStreamInfo;
+  rendererInfo: audio.AudioRendererInfo;
+
+  constructor(streamInfo: audio.AudioStreamInfo, rendererInfo: audio.AudioRendererInfo) {
+    this.streamInfo = streamInfo;
+    this.rendererInfo = rendererInfo;
+  }
+}
+
+let audioCapturerOptions: audio.AudioCapturerOptions = {
+  streamInfo: audioStreamInfo,
+  capturerInfo: audioCapturerInfo
+};
+
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+  rendererFlags: 0
+};
+
+let audioRendererOptions: audio.AudioRendererOptions = {
+  streamInfo: audioStreamInfo,
+  rendererInfo: audioRendererInfo
+};
+
+let file: fs.File | undefined = undefined;
+let readDataCallback: Callback<ArrayBuffer> = (_buffer: ArrayBuffer): void => {};
+let writeDataCallback: audio.AudioRendererWriteDataCallback;
+
+// ...
+
+// 采集回调将麦克风数据写入缓存 PCM 文件，供渲染侧读取。
+async function initArguments(context: common.UIAbilityContext): Promise<void> {
+  let bufferSize: long = 0;
+  let path = context.cacheDir;
+  let filePath = path + '/S16LE_2_48000.pcm';
+  file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+  readDataCallback = (buffer: ArrayBuffer) => {
+    let options: WriteOptions = {
+      offset: bufferSize,
+      length: Int.toLong(buffer.byteLength)
+    }
+    let targetFile = file;
+    if (targetFile === undefined) {
+      return;
+    }
+    fs.writeSync(targetFile.fd, buffer, options);
+    bufferSize += Int.toLong(buffer.byteLength);
+  };
+}
+
+// 渲染回调从缓存 PCM 文件读取数据，末尾不足一帧时填充静音。
+async function initRender(context: common.UIAbilityContext) {
+  let bufferSize: long = 0;
+  let path = context.cacheDir;
+  let filePath = path + '/S16LE_2_48000.pcm';
+  file = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
+  writeDataCallback = (buffer: ArrayBuffer) => {
+    let options: ReadOptions = {
+      offset: bufferSize,
+      length: Int.toLong(buffer.byteLength)
+    };
+
+    try {
+      let sourceFile = file;
+      if (sourceFile === undefined) {
+        return audio.AudioDataCallbackResult.INVALID;
+      }
+      let bufferLength: long = fs.readSync(sourceFile.fd, buffer, options);
+      let frameLength: int = buffer.byteLength;
+      bufferSize += Int.toLong(frameLength);
+      if (bufferLength < Int.toLong(frameLength)) {
+        // PCM S16LE 静音值为 0x00，补齐未读取到的尾部数据。
+        let view = new DataView(buffer);
+        for (let i: int = 0; i < frameLength; i++) {
+          if (Int.toLong(i) < bufferLength) {
+            continue;
+          }
+          view.setUint8(i, 0);
+        }
+      }
+      return audio.AudioDataCallbackResult.VALID;
+    } catch (error) {
+      console.error('Error reading file:', error);
+      return audio.AudioDataCallbackResult.INVALID;
+    }
+  };
+  try {
+    let renderer = await audio.createAudioRenderer(audioRendererOptions);
+    if (renderer === null) {
+      console.info(`${TAG}: creating AudioRenderer failed, renderer is null`);
+      return;
+    }
+    console.info(`${TAG}: creating AudioRenderer success`);
+    audioRenderer = renderer;
+    renderer.onWriteData(writeDataCallback);
+  } catch (err) {
+    let error = err as BusinessError;
+    console.info(`${TAG}: creating AudioRenderer failed, error: ${error.message}`);
+  }
+}
+
+// ...
+
+// 应用级快照：同时写入缓存文件并输出到 Hilog。
+async function printAppSnapshot(context: common.UIAbilityContext,
+  updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  try {
+    let path = context.cacheDir + '/app_snapshot.txt';
+    let snapshotFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE | fs.OpenMode.TRUNC);
+    audio.getAudioManager().getDebuggingManager().printAppInfo(snapshotFile.fd);
+    fs.closeSync(snapshotFile);
+    audio.getAudioManager().getDebuggingManager().printAppInfo(-1);
+    if (updateCallback) {
+      updateCallback(`App snapshot printed to system log and ${path}.`, false);
+    }
+  } catch (err) {
+    let error = err as BusinessError;
+    if (updateCallback) {
+      updateCallback(`Print app snapshot failed: ${error.message}`, true);
+    }
+  }
+}
+
+// 录音快照：同时写入缓存文件并输出到 Hilog。
+async function printCapturerSnapshot(context: common.UIAbilityContext,
+  updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  let capturer = audioCapturer;
+  if (capturer === undefined) {
+    if (updateCallback) {
+      updateCallback('AudioCapturer is not created.', true);
+    }
+    return;
+  }
+  try {
+    let path = context.cacheDir + '/capturer_snapshot.txt';
+    let snapshotFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE | fs.OpenMode.TRUNC);
+    audio.getAudioManager().getDebuggingManager().printCapturerInfo(capturer, snapshotFile.fd);
+    fs.closeSync(snapshotFile);
+    audio.getAudioManager().getDebuggingManager().printCapturerInfo(capturer, -1);
+    if (updateCallback) {
+      updateCallback(`Capturer snapshot printed to system log and ${path}.`, false);
+    }
+  } catch (err) {
+    let error = err as BusinessError;
+    if (updateCallback) {
+      updateCallback(`Print capturer snapshot failed: ${error.message}`, true);
+    }
+  }
+}
+
+// 播放快照：同时写入缓存文件并输出到 Hilog。
+async function printRendererSnapshot(context: common.UIAbilityContext,
+  updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  let renderer = audioRenderer;
+  if (renderer === undefined) {
+    if (updateCallback) {
+      updateCallback('AudioRenderer is not created.', true);
+    }
+    return;
+  }
+  try {
+    let path = context.cacheDir + '/renderer_snapshot.txt';
+    let snapshotFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE | fs.OpenMode.TRUNC);
+    audio.getAudioManager().getDebuggingManager().printRendererInfo(renderer, snapshotFile.fd);
+    fs.closeSync(snapshotFile);
+    audio.getAudioManager().getDebuggingManager().printRendererInfo(renderer, -1);
+    if (updateCallback) {
+      updateCallback(`Renderer snapshot printed to system log and ${path}.`, false);
+    }
+  } catch (err) {
+    let error = err as BusinessError;
+    if (updateCallback) {
+      updateCallback(`Print renderer snapshot failed: ${error.message}`, true);
+    }
+  }
+}
+
+// ...
+
+// ...
+
+// 创建采集器并注册读数据、状态变化回调。
+async function init(updateCallback?: (msg: string, isError: boolean) => void, stateCallback?:
+  (msg: string) => void): Promise<void> {
+  try {
+    let capturer = await audio.createAudioCapturer(audioCapturerOptions);
+    if (capturer === null) {
+      const errorMsg = `Invoke createAudioCapturer failed, capturer is null`;
+      console.error(errorMsg);
+      if (updateCallback) {
+        updateCallback(errorMsg, true);
+      }
+      return;
+    }
+    console.info(`${TAG}: create AudioCapturer success`);
+    const successMsg = `${TAG}: create AudioCapturer success`;
+    if (updateCallback) {
+      updateCallback(successMsg, false);
+    }
+    audioCapturer = capturer;
+    capturer.onReadData(readDataCallback);
+    await listenAudioCapturerState(stateCallback);
+  } catch (err) {
+    let error = err as BusinessError;
+    console.error(`Invoke createAudioCapturer failed, message is ${error.message}`);
+    const errorMsg = `Invoke createAudioCapturer failed, message is ${error.message}`;
+    if (updateCallback) {
+      updateCallback(errorMsg, true);
+    }
+  }
+}
+
+// 启动音频采集前先校验采集器状态。
+async function start(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  let capturer = audioCapturer;
+  if (capturer !== undefined) {
+    let state = capturer.state;
+    if (state !== audio.AudioState.STATE_PREPARED && state !== audio.AudioState.STATE_PAUSED &&
+      state !== audio.AudioState.STATE_STOPPED) {
+      console.error(`${TAG}: start failed`);
+      const errorMsg = `${TAG}: start failed`;
+      if (updateCallback) {
+        updateCallback(errorMsg, true);
+      }
+      return;
+    }
+    try {
+      await capturer.start();
+      const successMsg = 'Capturer start success.';
+      if (updateCallback) {
+        updateCallback(successMsg, false);
+      }
+      console.info('Capturer start success.');
+    } catch (err) {
+      const errorMsg = 'Capturer start failed.';
+      if (updateCallback) {
+        updateCallback(errorMsg, true);
+      }
+      console.error('Capturer start failed.');
+    }
+
+  }
+}
+
+// 停止音频采集。
+async function stop(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  let capturer = audioCapturer;
+  if (capturer !== undefined) {
+    let state = capturer.state;
+    if (state !== audio.AudioState.STATE_RUNNING && state !== audio.AudioState.STATE_PAUSED) {
+      console.info('Capturer is not running or paused');
+      const infoMsg = 'Capturer is not running or paused';
+      if (updateCallback) {
+        updateCallback(infoMsg, false);
+      }
+      return;
+    }
+    try {
+      await capturer.stop();
+      const successMsg = 'Capturer stop success.';
+      if (updateCallback) {
+        updateCallback(successMsg, false);
+      }
+      console.info('Capturer stop success.');
+    } catch (err) {
+      const errorMsg = 'Capturer stop failed.';
+      if (updateCallback) {
+        updateCallback(errorMsg, true);
+      }
+      console.error('Capturer stop failed.');
+    }
+
+  }
+}
+
+// 释放采集器和缓存文件句柄。
+async function release(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+  let capturer = audioCapturer;
+  if (capturer !== undefined) {
+    let state = capturer.state;
+    if (state === audio.AudioState.STATE_RELEASED || state === audio.AudioState.STATE_NEW) {
+      console.info('Capturer already released');
+      const infoMsg = 'Capturer already released';
+      if (updateCallback) {
+        updateCallback(infoMsg, false);
+      }
+      return;
+    }
+    try {
+      await capturer.release();
+      let currentFile = file;
+      if (currentFile !== undefined) {
+        fs.closeSync(currentFile);
+        file = undefined;
+      }
+      console.info('Capturer release success.');
+      const successMsg = 'Capturer release success.';
+      if (updateCallback) {
+        updateCallback(successMsg, false);
+      }
+    } catch (err) {
+      const errorMsg = 'Capturer release failed.';
+      if (updateCallback) {
+        updateCallback(errorMsg, true);
+      }
+      console.error('Capturer release failed.');
+    }
+
+  }
+}
+
+// ...
+
+// ...
 ```
 
 **输出示例：**
@@ -491,17 +1874,27 @@ audioLoopback {
 <!-- @[print_session_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
 
 ``` C++
-// audioSessionManager为已创建并激活的OH_AudioSessionManager实例。
-// 输出到hilog日志。
-OH_AudioDebuggingManager_PrintSessionInfo(debugManager, audioSessionManager, -1);
-
-// 输出到文件。
-int32_t fd = open("/data/storage/el2/base/cache/audio_session_snapshot.txt",
-    O_WRONLY | O_CREAT | O_TRUNC, FILE_PERMISSION);
-if (fd >= 0) {
-    OH_AudioDebuggingManager_PrintSessionInfo(debugManager, audioSessionManager, fd);
-    close(fd);
-}
+#include "ohaudio/native_audio_debugging_manager.h"
+// ...
+OH_AudioSessionManager *audioSessionManager;
+// ...
+    // 创建音频会话管理器。
+    OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
+    // 设置音频并发模式。
+    OH_AudioSession_Strategy strategy = {CONCURRENCY_MIX_WITH_OTHERS};
+    // 激活音频会话。
+    OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
+    
+    // 创建音频调试管理器。
+    OH_AudioDebuggingManager *audioDebuggingManager;
+    OH_AudioManager_GetAudioDebuggingManager(&audioDebuggingManager);
+    
+    // 输出到hilog日志。
+    OH_AudioDebuggingManager_PrintSessionInfo(audioDebuggingManager, audioSessionManager, -1);
+    
+    // fd 文件描述符，实际使用时请根据具体情况获取
+    // 输出到文件
+    OH_AudioDebuggingManager_PrintSessionInfo(audioDebuggingManager, audioSessionManager, fd);
 ```
 
 **ArkTS-Dyn示例：**
@@ -509,15 +1902,30 @@ if (fd >= 0) {
 <!-- @[print_session_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-// audioSessionManager为已创建并激活的audio.AudioSessionManager实例。
-// 输出到hilog日志。
-debugManager.printSessionInfo(audioSessionManager, -1);
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// ...
+import { fileIo as fs } from '@kit.CoreFileKit';
+// ...
+  // 设置音频并发模式。
+  let strategy: audio.AudioSessionStrategy = {
+    concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
+  };
+  // 激活音频会话。
+  await audioSessionManager.activateAudioSession(strategy);
 
-// 输出到文件。
-const path = this.context.filesDir + '/audio_session_snapshot.txt';
-const file = fileio.openSync(path, 0o102 | 0o200, 0o644);
-debugManager.printSessionInfo(audioSessionManager, file.fd);
-fileio.closeSync(file);
+  // 创建音频调试管理器。
+  let audioDebuggingManager: audio.AudioDebuggingManager = audioManager.getDebuggingManager();
+
+  // 输出到hilog日志。
+  audioDebuggingManager.printSessionInfo(audioSessionManager, -1);
+
+  // fd 文件描述符，实际使用时请根据具体情况获取
+  let filePath = context.filesDir + '/audio_session_info.txt';
+  let fd = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.WRITE_ONLY | fs.OpenMode.TRUNC).fd;
+  // 输出到文件。
+  audioDebuggingManager.printSessionInfo(audioSessionManager, fd);
+  fs.closeSync(fd);
 ```
 
 **ArkTS-Sta示例：**
@@ -525,25 +1933,29 @@ fileio.closeSync(file);
 <!-- @[print_session_info](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioSessionSampleJS-Sta/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-// audioSessionManager为已创建并激活的audio.AudioSessionManager实例。
-// 设置音频并发模式。
-let strategy: audio.AudioSessionStrategy = {
-  concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
-};
-// 激活音频会话。
-await audioSessionManager.activateAudioSession(strategy);
+import { audio } from '@kit.AudioKit';
+// ...
+import { fileIo, ReadOptions } from '@kit.CoreFileKit';
+// ...
+  // 设置音频并发模式。
+  let strategy: audio.AudioSessionStrategy = {
+    concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
+  };
+  // 激活音频会话。
+  await audioSessionManager.activateAudioSession(strategy);
 
-// 创建音频调试管理器。
-let audioDebuggingManager: audio.AudioDebuggingManager = audioManager.getDebuggingManager();
+  // 创建音频调试管理器。
+  let audioDebuggingManager: audio.AudioDebuggingManager = audioManager.getDebuggingManager();
 
-// 输出到hilog日志。
-audioDebuggingManager.printSessionInfo(audioSessionManager, -1);
+  // 输出到hilog日志。
+  audioDebuggingManager.printSessionInfo(audioSessionManager, -1);
 
-// 输出到文件。
-let filePath = this.context.filesDir + '/audio_session_info.txt';
-let fd = fileio.openSync(filePath, fileio.OpenMode.CREATE | fileio.OpenMode.WRITE_ONLY | fileio.OpenMode.TRUNC).fd;
-audioDebuggingManager.printSessionInfo(audioSessionManager, fd);
-fileio.closeSync(fd);
+  // fd 文件描述符，实际使用时请根据具体情况获取
+  let filePath = context.filesDir + '/audio_session_info.txt';
+  let fd = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.WRITE_ONLY | fileIo.OpenMode.TRUNC).fd;
+  // 输出到文件。
+  audioDebuggingManager.printSessionInfo(audioSessionManager, fd);
+  fileIo.closeSync(fd);
 ```
 
 **输出示例：**
@@ -586,18 +1998,34 @@ audioSession {
 <!-- @[audioSuite_PrintInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/print_info_to_file.cpp) -->
 
 ``` C++
-// engine为已创建的OH_AudioSuiteEngine实例。
-// 打印编创快照到文件。
-const char *filePath = "/data/storage/el2/base/cache/audio_suite_snapshot.txt";
-int32_t fd = open(filePath, O_WRONLY | O_CREAT | O_TRUNC, FILE_PERMISSION);
-if (fd >= 0) {
+#include <ohaudiosuite/native_audio_suite_base.h>
+#include <fcntl.h>
+#include <unistd.h>
+// ...
+    // engine为已创建的OH_AudioSuiteEngine实例，必须确保engine参数有效，否则输出内容为空。
     // pipeline为nullptr时输出所有管线，传入具体管线实例则仅输出该管线。
-    OH_AudioSuite_PrintInfo(engine, nullptr, fd);
-    close(fd);
-}
+    OH_AudioSuiteEngine *engine = audioSuiteEngine;
+    if (!engine) {
+        OH_AudioSuiteEngine_Create(&g_printInfoEngine);
+        engine = g_printInfoEngine;
+    }
 
-// 也可将快照信息输出到日志（fd < 0时输出到日志）。
-OH_AudioSuite_PrintInfo(engine, nullptr, -1);
+    // 打印编创快照到文件。
+    const char *filePath =
+        "/storage/Users/currentUser/Download/com.example.audiosuitesample/printfile/audio_snapshot.txt";
+    int fd = open(filePath, O_WRONLY | O_CREAT | O_APPEND, 0644);
+    if (fd < 0) {
+        // 文件打开失败，回退到日志输出。
+        // fd < 0表示输出到日志。
+        OH_AudioSuite_PrintInfo(engine, nullptr, -1);
+        napi_get_boolean(env, true, &result);
+        return result;
+    }
+    
+    // 输出所有管线信息到文件。
+    // nullptr表示输出engine下所有pipeline，fd为文件描述符。
+    OH_AudioSuite_Result ret = OH_AudioSuite_PrintInfo(engine, nullptr, fd);
+    close(fd);
 ```
 
 **输出示例：**
