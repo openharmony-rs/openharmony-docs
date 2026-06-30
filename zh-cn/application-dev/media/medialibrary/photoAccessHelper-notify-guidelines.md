@@ -68,7 +68,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     console.error('onCallback failed with err: ' + err);
     // ...
   } finally {
-    if (fetchResult != null) {
+    if (fetchResult !== null) {
       fetchResult.close();
     }
   }
@@ -130,7 +130,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     console.error('onCallback failed with err: ' + err);
     // ...
   } finally {
-    if (fetchResult != null) {
+    if (fetchResult !== null) {
       fetchResult.close();
     }
   }
@@ -189,7 +189,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     console.error('onCallback failed with err: ' + err);
     // ...
   } finally {
-    if (fetchResult != null) {
+    if (fetchResult !== null) {
       fetchResult.close();
     }
   }
@@ -248,7 +248,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     console.error('onCallback failed with err: ' + err);
     // ...
   } finally {
-    if (fetchResult != null) {
+    if (fetchResult !== null) {
       fetchResult.close();
     }
   }
