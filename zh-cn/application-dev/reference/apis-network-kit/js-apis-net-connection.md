@@ -1046,7 +1046,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
       console.info("Succeeded to get data: " + JSON.stringify(data));
   })
 }).catch((error: BusinessError) => {
-     console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -3199,7 +3199,7 @@ interface Data {
           console.error(`Failed to bind socket. Code:${error.code}, message:${error.message}`);
           return;
         } else {
-           console.info('Succeeded to getdefaultHttpProxy:' + JSON.stringify(data));
+          console.info('Succeeded to getdefaultHttpProxy:' + JSON.stringify(data));
         }
       });
     });
@@ -3222,7 +3222,7 @@ interface Data {
           console.error(`Failed to bind socket. Code:${error.code}, message:${error.message}`);
           return;
         } else {
-           console.info('Succeeded to get defaultHttpProxy: ' + JSON.stringify(data));
+          console.info('Succeeded to get defaultHttpProxy: ' + JSON.stringify(data));
         }
       });
     });
