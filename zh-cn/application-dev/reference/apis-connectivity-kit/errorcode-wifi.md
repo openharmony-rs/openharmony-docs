@@ -217,7 +217,7 @@ MAC地址为空。
 1. 重新执行关闭及打开Wi-Fi开关的操作。
 2. 如果步骤1无效，请尝试重启设备。
 
-### WIFI_OPT_P2P_ERR_INTENT
+### P2P internal service exception
 
 **错误信息**
 
