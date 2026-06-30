@@ -6,7 +6,7 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
-该模块主要提供常用的工具函数，实现字符串编解码（[TextEncoder](#textencoder)，[TextDecoder](#textdecoder)）、有理数运算（[RationalNumber<sup>8+</sup>](#rationalnumber8)）、缓冲区管理（[LRUCache<sup>9+</sup>](#lrucache9)）、范围判断（[ScopeHelper<sup>9+</sup>](#scopehelper9)）、Base64编解码（[Base64Helper<sup>9+</sup>](#base64helper9)）、内置对象类型检查（[types<sup>8+</sup>](#types8)）、对方法进行插桩和替换（[Aspect<sup>11+</sup>](#aspect11)）、虚拟机维测能力（[ArkTSVM<sup>23+</sup>](#arktsvm23)）、二进制流解码（[StringDecoder<sup>12+</sup>](#stringdecoder12)）、对象生命周期管理（[AutoFinalizer<sup>22+</sup>](#autofinalizer22)，[AutoFinalizerCleaner<sup>22+</sup>](#autofinalizercleaner22)）、堆内存阈值配置（[HeapMemoryThreshold<sup>24+</sup>](#heapmemorythreshold24)）等功能。此外还提供获取对象Hash值（[util.getHash<sup>12+</sup>](#utilgethash12)）、获取主线程栈追踪信息（[util.getMainThreadStackTrace<sup>20+</sup>](#utilgetmainthreadstacktrace20)）等工具函数。
+该模块主要提供常用的工具函数，实现字符串编解码（[TextEncoder](#textencoder)，[TextDecoder](#textdecoder)）、有理数运算（[RationalNumber<sup>8+</sup>](#rationalnumber8)）、缓冲区管理（[LRUCache<sup>9+</sup>](#lrucache9)）、范围判断（[ScopeHelper<sup>9+</sup>](#scopehelper9)）、Base64编解码（[Base64Helper<sup>9+</sup>](#base64helper9)）、内置对象类型检查（[types<sup>8+</sup>](#types8)）、对方法进行插桩和替换（[Aspect<sup>11+</sup>](#aspect11)）、虚拟机维测能力（[ArkTSVM<sup>23+</sup>](#arktsvm23)）、二进制流解码（[StringDecoder<sup>12+</sup>](#stringdecoder12)）、堆内存阈值配置（[HeapMemoryThreshold<sup>24+</sup>](#heapmemorythreshold24)）等功能。此外还提供获取对象Hash值（[util.getHash<sup>12+</sup>](#utilgethash12)）、获取主线程栈追踪信息（[util.getMainThreadStackTrace<sup>20+</sup>](#utilgetmainthreadstacktrace20)）等工具函数。
 
 > **说明：**
 >
