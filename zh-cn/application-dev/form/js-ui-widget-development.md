@@ -367,6 +367,33 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 代码导入请参考[创建卡片FormExtensionAbility](#创建卡片formextensionability)中的导入模块。
 <!-- @[JSForm_JsCardFormAbility_onUpdateForm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
 
+``` TypeScript
+// entry/src/main/ets/jscardformability/JsCardFormAbility.ets
+const TAG: string = 'JsCardFormAbility';
+// ...
+const DOMAIN_NUMBER: number = 0xFF00;
+// ...
+
+export default class JsCardFormAbility extends FormExtensionAbility {
+  // ...
+  onUpdateForm(formId: string): void {
+    // 若卡片支持定时更新/定点更新/卡片使用方主动请求更新功能，则卡片提供方需要重写该方法以支持数据更新
+    hilog.info(DOMAIN_NUMBER, TAG, 'onUpdateForm');
+    let obj: Record<string, string> = {
+      'title': 'titleOnUpdate',
+      'detail': 'detailOnUpdate'
+    };
+    let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
+    formProvider.updateForm(formId, formData).catch((error: BusinessError) => {
+      hilog.info(DOMAIN_NUMBER, TAG, 'updateForm, error:' + JSON.stringify(error));
+    });
+  }
+
+  // ...
+}
+
+```
+
 ### 开发卡片页面
 
 开发者可以使用类Web范式（HML+CSS+JSON）开发JS卡片页面。生成如下卡片页面，可以这样配置卡片页面文件：
