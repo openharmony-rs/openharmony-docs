@@ -123,5 +123,5 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001222948301](figures/zh-cn_image_0000001222948301.gif)
+![qrcode](figures/qrcode.gif)
 

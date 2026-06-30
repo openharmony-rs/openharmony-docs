@@ -42,7 +42,7 @@ Obtains the time elapsed since the Unix epoch. This API uses an asynchronous cal
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | -1       | Parameter check failed, permission denied, or system error. |
 
@@ -87,7 +87,7 @@ Obtains the time elapsed since the Unix epoch. This API uses an asynchronous cal
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | -1       | Parameter check failed, permission denied, or system error. |
 
@@ -138,7 +138,7 @@ Obtains the time elapsed since the Unix epoch. This API uses a promise to return
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | -1       | Parameter check failed, permission denied, or system error. |
 
@@ -182,7 +182,7 @@ Obtains the time elapsed since system startup, excluding the deep sleep time. Th
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | -1       | Parameter check failed, permission denied, or system error. |
 
@@ -227,7 +227,7 @@ Obtains the time elapsed since system startup, excluding the deep sleep time. Th
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | -1       | Parameter check failed, permission denied, or system error. |
 
@@ -278,7 +278,7 @@ Obtains the time elapsed since system startup, excluding the deep sleep time. Th
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | -1       | Parameter check failed, permission denied, or system error. |
 
@@ -322,7 +322,7 @@ Obtains the time elapsed since system startup, including the deep sleep time. Th
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | -1       | Parameter check failed, permission denied, or system error. |
 
@@ -367,7 +367,7 @@ Obtains the time elapsed since system startup, including the deep sleep time. Th
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | -1       | Parameter check failed, permission denied, or system error. |
 
@@ -418,7 +418,7 @@ Obtains the time elapsed since system startup, including the deep sleep time. Th
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | -1       | Parameter check failed, permission denied, or system error. |
 
@@ -461,7 +461,7 @@ Obtains the current system date. This API uses an asynchronous callback to retur
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | -1       | Parameter check failed, permission denied, or system error. |
 
@@ -506,7 +506,7 @@ Obtains the current system date. This API uses a promise to return the result.
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | -1       | Parameter check failed, permission denied, or system error. |
 
@@ -549,7 +549,7 @@ Obtains the system time zone. This API uses an asynchronous callback to return t
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | -1       | Parameter check failed, permission denied, or system error. |
 
@@ -594,7 +594,7 @@ Obtains the system time zone. This API uses a promise to return the result.
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| ID| Error Message                                   |
+| Error Code| Error Message                                   |
 | -------- | ------------------------------------------- |
 | -1       | Parameter check failed, permission denied, or system error. |
 
@@ -640,7 +640,7 @@ Sets the system time. This API uses an asynchronous callback to return the resul
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | -1       | Parameter check failed, permission denied, or system error. |
 
@@ -695,7 +695,7 @@ Sets the system time. This API uses a promise to return the result.
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | -1       | Parameter check failed, permission denied, or system error. |
 
@@ -743,7 +743,7 @@ Sets the system date. This API uses an asynchronous callback to return the resul
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | -1       | Parameter check failed, permission denied, or system error. |
 
@@ -797,7 +797,7 @@ Sets the system date. This API uses a promise to return the result.
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | -1       | Parameter check failed, permission denied, or system error. |
 
@@ -844,7 +844,7 @@ Sets the system time zone. This API uses an asynchronous callback to return the 
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | -1       | Parameter check failed, permission denied, or system error. |
 
@@ -897,7 +897,7 @@ Sets the system time zone. This API uses a promise to return the result.
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | -1       | Parameter check failed, permission denied, or system error. |
 

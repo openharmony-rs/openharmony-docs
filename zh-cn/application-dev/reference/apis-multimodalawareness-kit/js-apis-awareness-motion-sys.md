@@ -128,9 +128,9 @@ onPickupChange(callback: Callback&lt;PickupEvent&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | not system application.                                      |
-| 801      | Capability not supported.                                    |
-| 31500001 | Service exception.                                           |
+| 202      | Permission verification failed. A non-system application calls a system API.                                      |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities.                                    |
+| 31500001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception; 2. N-API invocation exception, invalid N-API status.                                           |
 
 **示例**：
 
@@ -138,13 +138,10 @@ onPickupChange(callback: Callback&lt;PickupEvent&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import { motion } from '@kit.MultimodalAwarenessKit';
 
-let callback: Callback<motion.PickupEvent> = (data: motion.PickupEvent) => {
-    console.info('callback succeeded: ' + data);
-};
-
 try {
-    motion.onPickupChange(callback);
-    console.info("onPickupChange succeeded");
+    motion.onPickupChange((data: motion.PickupEvent) => {
+        console.info('callback succeeded: ' + data);
+    });
 } catch (err) {
     let error = err as BusinessError;
     console.error("Failed onPickupChange and err code is " + error.code);
@@ -175,9 +172,9 @@ onRotateChange(callback: Callback&lt;RotateEvent&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | not system application.                                      |
-| 801      | Capability not supported.                                    |
-| 31500001 | Service exception.                                           |
+| 202      | Permission verification failed. A non-system application calls a system API.                                      |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities.                                    |
+| 31500001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception; 2. N-API invocation exception, invalid N-API status.                                           |
 
 **示例**：
 
@@ -185,13 +182,10 @@ onRotateChange(callback: Callback&lt;RotateEvent&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import { motion } from '@kit.MultimodalAwarenessKit';
 
-let callback: Callback<motion.RotateEvent> = (data: motion.RotateEvent) => {
-    console.info('callback succeeded: ' + data);
-};
-
 try {
-    motion.onRotateChange(callback);
-    console.info("onRotateChange succeeded");
+    motion.onRotateChange((data: motion.RotateEvent) => {
+        console.info('callback succeeded: ' + data);
+    });
 } catch (err) {
     let error = err as BusinessError;
     console.error("Failed onRotateChange and err code is " + error.code);
@@ -222,9 +216,9 @@ onSmartRotateChange(callback: Callback&lt;SmartRotateEvent&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | not system application.                                      |
-| 801      | Capability not supported.                                    |
-| 31500001 | Service exception.                                           |
+| 202      | Permission verification failed. A non-system application calls a system API.                                      |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities.                                    |
+| 31500001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception; 2. N-API invocation exception, invalid N-API status.                                           |
 
 **示例**：
 
@@ -232,13 +226,10 @@ onSmartRotateChange(callback: Callback&lt;SmartRotateEvent&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 import { motion } from '@kit.MultimodalAwarenessKit';
 
-let callback: Callback<motion.SmartRotateEvent> = (data: motion.SmartRotateEvent) => {
-    console.info('callback succeeded: physicalOrientation=' + data.physicalOrientation);
-};
-
 try {
-    motion.onSmartRotateChange(callback);
-    console.info("onSmartRotateChange succeeded");
+    motion.onSmartRotateChange((data: motion.SmartRotateEvent) => {
+        console.info('callback succeeded: physicalOrientation=' + data.physicalOrientation);
+    });
 } catch (err) {
     let error = err as BusinessError;
     console.error("Failed onSmartRotateChange and err code is " + error.code);
@@ -261,7 +252,7 @@ offPickupChange(callback?: Callback&lt;PickupEvent&gt;): void
 
 | 参数名   | 类型                                             | 必填 | 说明                                   |
 | -------- | ------------------------------------------------ | ---- | -------------------------------------- |
-| callback | Callback&lt;[PickupEvent](#pickupevent)&gt;     | 否   | 需取消的拾取事件回调函数。             |
+| callback | Callback&lt;[PickupEvent](#pickupevent)&gt;     | 否   | 需取消的拾取事件回调函数，若无此参数，则取消订阅拾取事件的所有回调函数。             |
 
 **错误码**：
 
@@ -269,8 +260,8 @@ offPickupChange(callback?: Callback&lt;PickupEvent&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | not system application.                                      |
-| 31500001 | Service exception.                                           |
+| 202      | Permission verification failed. A non-system application calls a system API.                                      |
+| 31500001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception; 2. N-API invocation exception, invalid N-API status.                                           |
 
 **示例**：
 
@@ -303,7 +294,7 @@ offRotateChange(callback?: Callback&lt;RotateEvent&gt;): void
 
 | 参数名   | 类型                                             | 必填 | 说明                                   |
 | -------- | ------------------------------------------------ | ---- | -------------------------------------- |
-| callback | Callback&lt;[RotateEvent](#rotateevent)&gt;     | 否   | 需取消的旋转事件回调函数。             |
+| callback | Callback&lt;[RotateEvent](#rotateevent)&gt;     | 否   | 需取消的旋转事件回调函数，若无此参数，则取消订阅旋转事件的所有回调函数。             |
 
 **错误码**：
 
@@ -311,8 +302,8 @@ offRotateChange(callback?: Callback&lt;RotateEvent&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | not system application.                                      |
-| 31500001 | Service exception.                                           |
+| 202      | Permission verification failed. A non-system application calls a system API.                                      |
+| 31500001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception; 2. N-API invocation exception, invalid N-API status.                                           |
 
 **示例**：
 
@@ -345,7 +336,7 @@ offSmartRotateChange(callback?: Callback&lt;SmartRotateEvent&gt;): void
 
 | 参数名   | 类型                                                     | 必填 | 说明                                       |
 | -------- | -------------------------------------------------------- | ---- | ------------------------------------------ |
-| callback | Callback&lt;[SmartRotateEvent](#smartrotateevent)&gt;   | 否   | 需取消的智能旋转事件回调函数。             |
+| callback | Callback&lt;[SmartRotateEvent](#smartrotateevent)&gt;   | 否   | 需取消的智能旋转事件回调函数，若无此参数，则取消订阅智能旋转事件的所有回调函数。             |
 
 **错误码**：
 
@@ -353,8 +344,8 @@ offSmartRotateChange(callback?: Callback&lt;SmartRotateEvent&gt;): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | not system application.                                      |
-| 31500001 | Service exception.                                           |
+| 202      | Permission verification failed. A non-system application calls a system API.                                      |
+| 31500001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception; 2. N-API invocation exception, invalid N-API status.                                           |
 
 **示例**：
 

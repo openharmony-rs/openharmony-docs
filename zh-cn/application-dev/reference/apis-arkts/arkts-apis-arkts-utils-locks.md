@@ -59,13 +59,13 @@ class A {
     let lock: ArkTSUtils.locks.AsyncLock = ArkTSUtils.locks.AsyncLock.request("lock_1");
     return lock.lockAsync(() => {
       return this.count_;
-    })
+    });
   }
   async setCount(count: number) {
     let lock: ArkTSUtils.locks.AsyncLock = ArkTSUtils.locks.AsyncLock.request("lock_1");
     await lock.lockAsync(() => {
       this.count_ = count;
-    })
+    });
   }
 }
 
@@ -77,12 +77,12 @@ class A {
   async getCount(): Promise<number> {
     return this.lock_.lockAsync(() => {
       return this.count_;
-    })
+    });
   }
   async setCount(count: number) {
     await this.lock_.lockAsync(() => {
       this.count_ = count;
-    })
+    });
   }
 }
 
@@ -219,7 +219,7 @@ console.info("The states size is " + states.length);
 
 lockAsync\<T>(callback: AsyncLockCallback\<T>): Promise\<T>
 
-在获取的锁下执行操作。该方法首先获取锁，然后调用回调，最后释放锁。回调在调用[lockAsync](#lockasync)的同一线程中以异步方式执行。
+在获取的锁下执行操作。该方法首先获取锁，然后调用回调，最后释放锁。若锁已被其他任务持有，当前请求将进入等待队列，待锁释放后按顺序获取锁。回调在调用[lockAsync](#lockasync)的同一线程中以异步方式执行。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -258,7 +258,7 @@ let p1 = lock.lockAsync<void>(() => {
 
 lockAsync\<T>(callback: AsyncLockCallback\<T>, mode: AsyncLockMode): Promise\<T>
 
-在获取的锁下执行操作。该方法首先获取锁，然后调用回调，最后释放锁。回调在调用[lockAsync](#lockasync)的同一线程中以异步方式执行。
+在获取的锁下执行操作。该方法首先获取锁，然后调用回调，最后释放锁。若锁已被其他任务持有，当前请求将进入等待队列，待锁释放后按顺序获取锁。回调在调用[lockAsync](#lockasync)的同一线程中以异步方式执行。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -556,9 +556,9 @@ conditionVariable.wait().then(() => {
 
 ### waitFor<sup>18+</sup>
 
-waitFor(timeout : number) : Promise\<void>
+waitFor(timeout: number): Promise\<void>
 
-异步调用进入等待中, 将在被唤醒或者等待时间结束后继续执行。使用Promise异步回调。
+异步调用进入等待中，将在被唤醒或者等待时间结束后继续执行。使用Promise异步回调。
 
 **原子化服务API**：从API version 18 开始，该接口支持在原子化服务中使用。
 
@@ -568,7 +568,7 @@ waitFor(timeout : number) : Promise\<void>
 
 | 名称 | 类型   | 必填 | 说明       |
 | -------- | -------- | ---- | ---------- |
-| timeout | number | 是   | 等待时间，单位为ms，正整数。 |
+| timeout | number | 是   | 等待时间，单位为毫秒，正整数。 |
 
 **返回值：**
 
@@ -587,7 +587,7 @@ conditionVariable.waitFor(3000).then(() => {
 
 ### notifyAll<sup>18+</sup>
 
-notifyAll() : void
+notifyAll(): void
 
 通知所有等待的线程。
 
@@ -608,7 +608,7 @@ conditionVariable.notifyAll();
 
 ### notifyOne<sup>18+</sup>
 
-notifyOne() : void
+notifyOne(): void
 
 通知第一个等待的线程。
 

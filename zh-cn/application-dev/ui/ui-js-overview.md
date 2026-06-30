@@ -17,7 +17,7 @@
 
 
 
-![zh-cn_image_0000001117452952](figures/zh-cn_image_0000001117452952.png)
+![Overall-Architecture](figures/Overall-Architecture.png)
 
 - **Application**
 

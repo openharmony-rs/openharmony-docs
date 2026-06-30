@@ -233,7 +233,7 @@
 | [Input_Result OH_Input_CursorInfo_IsVisible(Input_CursorInfo* cursorInfo, bool* visible)](#oh_input_cursorinfo_isvisible) | - | 获取指定鼠标光标信息对象对应的光标显示状态。|
 | [Input_Result OH_Input_CursorInfo_GetStyle(Input_CursorInfo* cursorInfo, Input_PointerStyle* style)](#oh_input_cursorinfo_getstyle) | - |获取指定鼠标光标信息对象对应的光标样式。|
 | [Input_Result OH_Input_CursorInfo_GetSizeLevel(Input_CursorInfo* cursorInfo, int32_t* sizeLevel)](#oh_input_cursorinfo_getsizelevel) | - | 获取指定鼠标光标信息对象对应的光标大小档位。|
-| [Input_Result OH_Input_CursorInfo_GetColor(Input_CursorInfo* cursorInfo, uint32_t* color)](#oh_input_cursorinfo_getcolor) | - | 获取指定鼠标光标信息对象对应的光标颜色, 使用32位ARGB整数表示。|
+| [Input_Result OH_Input_CursorInfo_GetColor(Input_CursorInfo* cursorInfo, uint32_t* color)](#oh_input_cursorinfo_getcolor) | - | 获取指定鼠标光标信息对象对应的光标颜色，使用32位ARGB整数表示。|
 | [Input_Result OH_Input_GetMouseEventCursorInfo(const struct Input_MouseEvent* mouseEvent, Input_CursorInfo* cursorInfo)](#oh_input_getmouseeventcursorinfo) | - | 获取鼠标事件的鼠标光标信息，包括光标显示状态、光标样式、光标大小档位、光标颜色。|
 | [Input_Result OH_Input_GetCursorInfo(Input_CursorInfo* cursorInfo, OH_PixelmapNative** pixelmap)](#oh_input_getcursorinfo) | - | 查询当前鼠标光标信息，包括光标显示状态、光标样式、光标大小档位、光标颜色。如果pixelmap参数非空，且光标样式为[DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle)，则会同时返回光标的PixelMap位图对象。 |
 | [Input_Result OH_Input_SetTouchEventPressure(struct Input_TouchEvent* touchEvent, double pressure)](#oh_input_settoucheventpressure) | - | 设置触屏输入事件的压力。 |
@@ -472,7 +472,7 @@ enum Input_TouchEventToolType
 | -- | -- |
 | TOOL_TYPE_FINGER = 0 | 表示手指。 |
 | TOOL_TYPE_PEN = 1 | 表示手写笔设备。 |
-| TOOL_TYPE_RUBBER = 2 | 表示橡皮檫类设备。 |
+| TOOL_TYPE_RUBBER = 2 | 表示橡皮擦类设备。 |
 | TOOL_TYPE_BRUSH = 3 | 表示画笔类设备。 |
 | TOOL_TYPE_PENCIL = 4 | 表示铅笔类设备。 |
 | TOOL_TYPE_AIRBRUSH = 5 | 表示喷枪类设备。 |
@@ -863,6 +863,8 @@ int32_t OH_Input_InjectKeyEvent(const struct Input_KeyEvent* keyEvent)
 从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API version 22开始，如果注入了修饰键（KEYCODE_META_LEFT、KEYCODE_META_RIGHT、KEYCODE_CTRL_LEFT、KEYCODE_CTRL_RIGHT、KEYCODE_ALT_LEFT、KEYCODE_ALT_RIGHT、KEYCODE_SHIFT_LEFT、KEYCODE_SHIFT_RIGHT、KEYCODE_CAPS_LOCK、KEYCODE_SCROLL_LOCK、KEYCODE_NUM_LOCK）的按压事件（KEY_ACTION_DOWN）时，请及时注入该按键的抬起事件（KEY_ACTION_UP），以避免该按键长时间处于按压状态。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+**设备行为差异**：该接口仅在PC/2in1设备上生效，在其他设备上调用无效果。
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
@@ -1906,7 +1908,7 @@ int64_t OH_Input_GetTouchEventActionTime(const struct Input_TouchEvent* touchEve
 
 | 类型 | 说明 |
 | -- | -- |
-| int64_t | 返回触屏输入事件发生的时间。 |
+| int64_t | 返回触屏输入事件发生的时间，表示系统启动运行至今逝去的微秒数，单位为微秒（μs）。 |
 
 ### OH_Input_SetTouchEventWindowId()
 
@@ -2314,7 +2316,7 @@ Input_Result OH_Input_SetAxisEventAxisValue(Input_AxisEvent* axisEvent,InputEven
 | -- | -- |
 | [Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | 轴事件对象，通过[OH_Input_CreateAxisEvent](#oh_input_createaxisevent)接口可以创建轴事件对象。<br>使用完需使用[OH_Input_DestroyAxisEvent](#oh_input_destroyaxisevent)接口销毁轴事件对象。 |
 | [InputEvent_AxisType](capi-oh-axis-type-h.md#inputevent_axistype) axisType | 轴类型，具体请参考[InputEvent_AxisType](capi-oh-axis-type-h.md#inputevent_axistype)。 |
-| double axisValue | 轴事件的值，正数向前滚动（例如，1.0表示向前滚动一个单位），负数向后滚动（例如，-1.0表示向后滚动一个单位）,零表示没有滚动。 |
+| double axisValue | 轴事件的值，正数向前滚动（例如，1.0表示向前滚动一个单位），负数向后滚动（例如，-1.0表示向后滚动一个单位），零表示没有滚动。 |
 
 **返回：**
 
@@ -2483,7 +2485,7 @@ Input_Result OH_Input_SetAxisEventSourceType(Input_AxisEvent* axisEvent, InputEv
 | 参数项 | 描述 |
 | -- | -- |
 | [Input_AxisEvent](capi-input-input-axisevent.md)* axisEvent | 轴事件对象，通过[OH_Input_CreateAxisEvent](#oh_input_createaxisevent)接口可以创建轴事件对象。<br>使用完需使用[OH_Input_DestroyAxisEvent](#oh_input_destroyaxisevent)接口销毁轴事件对象。 |
-| [InputEvent_SourceType](#inputevent_sourcetype) sourceType | 轴事件源类型,具体请参考[InputEvent_SourceType](#inputevent_sourcetype)。 |
+| [InputEvent_SourceType](#inputevent_sourcetype) sourceType | 轴事件源类型，具体请参考[InputEvent_SourceType](#inputevent_sourcetype)。 |
 
 **返回：**
 
@@ -2781,7 +2783,7 @@ Input_Result OH_Input_AddAxisEventMonitor(InputEvent_AxisEventType axisEventType
 | 参数项 | 描述 |
 | -- | -- |
 | [InputEvent_AxisEventType](capi-oh-axis-type-h.md#inputevent_axiseventtype) axisEventType | 要监听的轴事件类型，轴事件类型定义在[InputEvent_AxisEventType](capi-oh-axis-type-h.md#inputevent_axiseventtype)中。 |
-| [Input_AxisEventCallback](#input_axiseventcallback) callback | 回调函数，用于接收指定类型的轴事件 |
+| [Input_AxisEventCallback](#input_axiseventcallback) callback | 回调函数，用于接收指定类型的轴事件。 |
 
 **返回：**
 
@@ -3102,7 +3104,7 @@ Input_Hotkey *OH_Input_CreateHotkey(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Hotkey](capi-input-input-hotkey.md) | 如果操作成功,则返回一个[Input_Hotkey](capi-input-input-hotkey.md)指针对象。否则, 返回一个空指针， 可能的原因是内存分配失败。 |
+| [Input_Hotkey](capi-input-input-hotkey.md) | 如果操作成功，则返回一个[Input_Hotkey](capi-input-input-hotkey.md)指针对象。否则，返回一个空指针，可能的原因是内存分配失败。 |
 
 ### OH_Input_DestroyHotkey()
 
@@ -3146,7 +3148,7 @@ void OH_Input_SetPreKeys(Input_Hotkey *hotkey, int32_t *preKeys, int32_t size)
 | -- | -- |
 | [Input_Hotkey](capi-input-input-hotkey.md) *hotkey | hotkey 快捷键对象的实例。 |
 | int32_t *preKeys | preKeys 修饰键列表。 |
-| int32_t size | 修饰键个数， 取值范围1~2个。 |
+| int32_t size | 修饰键个数，取值范围[1, 2]。 |
 
 ### OH_Input_GetPreKeys()
 
@@ -3893,6 +3895,8 @@ int32_t OH_Input_InjectMouseEvent(const struct Input_MouseEvent* mouseEvent)
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
+**设备行为差异**：该接口仅在PC/2in1设备上正常调用，在其他设备上返回201错误码。
+
 **需要权限：** ohos.permission.CONTROL_DEVICE
 
 **起始版本：** 12
@@ -3953,7 +3957,7 @@ Input_Result OH_Input_QueryMaxTouchPoints(int32_t *count)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t *count | 设备支持的最大触屏报点数，count取值范围为0-10，-1表示未知数量。 |
+| int32_t *count | 设备支持的最大触屏报点数，count取值范围为[0, 10]，-1表示未知数量。 |
 
 **返回：**
 
@@ -3975,6 +3979,8 @@ int32_t OH_Input_InjectMouseEventGlobal(const struct Input_MouseEvent* mouseEven
 从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
+
+**设备行为差异**：该接口仅在PC/2in1设备上正常调用，在其他设备上返回201错误码。
 
 **起始版本：** 20
 
@@ -4090,6 +4096,8 @@ int32_t OH_Input_InjectTouchEventGlobal(const struct Input_TouchEvent* touchEven
 从API version 20开始，建议先使用[OH_Input_RequestInjection](#oh_input_requestinjection)请求授权。然后通过[OH_Input_QueryAuthorizedStatus](#oh_input_queryauthorizedstatus)查询授权状态，当授权状态为[AUTHORIZED](capi-oh-input-manager-h.md#input_injectionstatus)时，再使用该接口。<br>从API版本26.0.0开始，持有ohos.permission.CONTROL_DEVICE权限的调用方也可以直接使用本接口。
 
 **需要权限：** ohos.permission.CONTROL_DEVICE
+
+**设备行为差异**：该接口仅在PC/2in1设备上正常调用，在其他设备上返回201错误码。
 
 **起始版本：** 20
 
@@ -4823,7 +4831,7 @@ Input_Result OH_Input_CursorInfo_GetSizeLevel(Input_CursorInfo* cursorInfo, int3
 | 参数项 | 描述 |
 | -- | -- |
 | [Input_CursorInfo](capi-input-input-cursorinfo.md)* cursorInfo | 指定鼠标光标信息对象。可以通过[OH_Input_GetMouseEventCursorInfo](#oh_input_getmouseeventcursorinfo)查询指定鼠标事件的鼠标光标信息、或通过[OH_Input_GetCursorInfo](#oh_input_getcursorinfo)接口查询当前的鼠标光标信息。|
-| int32_t* sizeLevel | 鼠标光标信息的光标大小档位。取值范围为整数1~7，数值越大则光标越大。应用自定义光标[DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle)请以实际位图大小为准。|
+| int32_t* sizeLevel | 鼠标光标信息的光标大小档位。取值范围为整数[1, 7]，数值越大则光标越大。应用自定义光标[DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle)请以实际位图大小为准。|
 
 **返回：**
 
@@ -4839,7 +4847,7 @@ Input_Result OH_Input_CursorInfo_GetColor(Input_CursorInfo* cursorInfo, uint32_t
 
 **描述**
 
-获取指定鼠标光标信息对象对应的光标颜色, 使用32位ARGB整数表示。
+获取指定鼠标光标信息对象对应的光标颜色，使用32位ARGB整数表示。
 
 **起始版本：** 22
 
@@ -4848,7 +4856,7 @@ Input_Result OH_Input_CursorInfo_GetColor(Input_CursorInfo* cursorInfo, uint32_t
 | 参数项 | 描述 |
 | -- | -- |
 | [Input_CursorInfo](capi-input-input-cursorinfo.md)* cursorInfo | 指定鼠标光标信息对象。可以通过[OH_Input_GetMouseEventCursorInfo](#oh_input_getmouseeventcursorinfo)查询指定鼠标事件的鼠标光标信息、或通过[OH_Input_GetCursorInfo](#oh_input_getcursorinfo)接口查询当前的鼠标光标信息。|
-| uint32_t* color | 鼠标光标信息的光标颜色, 使用32位ARGB整数表示。应用自定义光标[DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle)请以实际位图颜色为准。|
+| uint32_t* color | 鼠标光标信息的光标颜色，使用32位ARGB整数表示。应用自定义光标[DEVELOPER_DEFINED_ICON](./capi-oh-pointer-style-h.md#input_pointerstyle)请以实际位图颜色为准。|
 
 **返回：**
 

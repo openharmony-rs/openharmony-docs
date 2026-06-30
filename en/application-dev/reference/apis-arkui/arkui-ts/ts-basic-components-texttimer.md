@@ -340,7 +340,7 @@ struct TextTimerExample {
 ```
 
 
-![en-us_image_0000001251007721](figures/en-us_image_0000001251007721.gif)
+![textTimer1](figures/textTimer1.gif)
 
 ### Example 2: Setting the Text Shadow Style
 

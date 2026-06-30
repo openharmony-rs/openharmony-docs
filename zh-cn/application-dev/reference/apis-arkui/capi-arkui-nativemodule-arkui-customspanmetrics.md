@@ -12,7 +12,7 @@ typedef struct ArkUI_CustomSpanMetrics ArkUI_CustomSpanMetrics
 
 ## 概述
 
-自定义段落组件的度量指标。
+自定义Span组件的度量指标。
 
 **起始版本：** 12
 

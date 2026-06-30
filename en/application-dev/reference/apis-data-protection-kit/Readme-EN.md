@@ -2,9 +2,10 @@
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
-<!--Designer: @lucky-jinduo-->
+<!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=907dbe833940a2647e3ff7ec970329a62449fd1c translatedAt=2026-06-23T11:52:53.861Z pushedAt=2026-06-24T02:59:01.562Z -->
 
 - ArkTS APIs<!--data-protection-arkts-->
   - [@ohos.dlpPermission (DLP)](js-apis-dlppermission.md)

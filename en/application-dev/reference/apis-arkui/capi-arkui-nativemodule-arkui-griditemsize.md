@@ -13,7 +13,7 @@ typedef struct {...} ArkUI_GridItemSize
 
 ## Overview
 
-Defines the return value structure for the **onGetIrregularSizeByIndex** callback in **Grid** layout options.
+Defines the return value for the **onGetIrregularSizeByIndex** callback in **Grid** layout options.
 
 **Since**: 22
 

@@ -32,7 +32,7 @@ EmbeddedComponent只能在UIAbility中使用，且被拉起的EmbeddedUIExtensio
 
 ## 接口
 
-EmbeddedComponent(loader: Want, type: EmbeddedType, options?: EmbeddedOptions)
+EmbeddedComponent(loader: import('../api/@ohos.app.ability.Want').default, type: EmbeddedType, options?: EmbeddedOptions)
 
 创建跨进程嵌入式组件，用于显示同包名EmbeddedUIExtensionAbility的UI。
 
@@ -44,9 +44,9 @@ EmbeddedComponent(loader: Want, type: EmbeddedType, options?: EmbeddedOptions)
 
 | 参数名                | 类型                          | 必填 |说明   |
 | --------------------- | ---------------------------------------------------------- | ---- | ------------------------------------ |
-| loader                | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 要加载的EmbeddedUIExtensionAbility。 |
+| loader                | import('../api/@ohos.app.ability.[Want](../../apis-ability-kit/js-apis-app-ability-want.md)').default | 是   | 要加载的EmbeddedUIExtensionAbility。 |
 | type                  | [EmbeddedType](ts-appendix-enums.md#embeddedtype12)                              | 是   | 提供方的类型。                       |
-| options| [EmbeddedOptions](#embeddedoptions) | 否   | 需要传递的构造项。<br>**起始版本：** 26.0.0                     |
+| options| [EmbeddedOptions](#embeddedoptions) | 否   | 需要传递的构造参数。<br>**起始版本：** 26.0.0                     |
 
 ## 属性
 
@@ -64,7 +64,7 @@ EmbeddedComponent(loader: Want, type: EmbeddedType, options?: EmbeddedOptions)
 
 ### onTerminated
 
-onTerminated(callback: Callback&lt;TerminationInfo&gt;)
+onTerminated(callback: import('../api/@ohos.base').Callback&lt;TerminationInfo&gt;)
 
 被拉起的EmbeddedUIExtensionAbility通过调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateselfwithresult)或者[terminateSelf](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateself)正常退出时，触发本回调函数。
 
@@ -80,7 +80,7 @@ onTerminated(callback: Callback&lt;TerminationInfo&gt;)
 
 | 参数名   | 类型   | 必填 | 说明     |
 | -------  | ------ | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](#terminationinfo)> | 是 | 回调函数，入参用于接收EmbeddedUIExtensionAbility的返回结果，类型为[TerminationInfo](#terminationinfo)。 |
+| callback | import('../api/@ohos.base').[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](#terminationinfo)> | 是 | 回调函数，入参用于接收EmbeddedUIExtensionAbility的返回结果，类型为[TerminationInfo](#terminationinfo)。 |
 
 > **说明：**
 >
@@ -89,7 +89,7 @@ onTerminated(callback: Callback&lt;TerminationInfo&gt;)
 
 ### onError
 
-onError(callback: ErrorCallback)
+onError(callback: import('../api/@ohos.base').ErrorCallback)
 
 被拉起的EmbeddedUIExtensionAbility在运行过程中发生异常时触发本回调。可通过回调参数中的code、name和message获取错误信息并做处理，业务错误码详细介绍请参见[UIExtension错误码](../errorcode-uiextension.md)。
 
@@ -105,7 +105,7 @@ onError(callback: ErrorCallback)
 
 | 参数名 | 类型                                                                         | 必填                                                                       | 说明      |
 | ------ | ---------------------------------------------------------------------------- | --------- | --------- |
-| callback    | [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是 | 回调函数，入参用于接收异常信息，类型为[BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)，可通过参数中的`code`、`name`和`message`获取错误信息并做处理。 |
+| callback    | import('../api/@ohos.base').[ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | 是 | 回调函数，入参用于接收异常信息，类型为[BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)，可通过参数中的`code`、`name`和`message`获取错误信息并做处理。 |
 
 > **说明：**
 >
@@ -200,7 +200,7 @@ DPI跟随策略，用于设置DPI，使其能够跟随宿主或EmbeddedUIExtensi
 | 名称 | 类型                      | 只读 | 可选 | 说明                                                 |
 | ---- | -------------------------| ---- | ---- | ---------------------------------------------------- |
 | code | number                                                     | 否 | 否 | 被拉起EmbeddedUIExtensionAbility退出时返回的结果码，返回的结果码由`terminateSelfWithResult`或者`terminateSelf`被调用时传入的数据决定。 |
-| want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | 否 | 是 | 被拉起EmbeddedUIExtensionAbility退出时返回的数据。   |
+| want | import('../api/@ohos.app.ability.[Want](../../apis-ability-kit/js-apis-app-ability-want.md)').default | 否 | 是 | 被拉起EmbeddedUIExtensionAbility退出时返回的数据。   |
 
 ## 示例（加载EmbeddedComponent）
 

@@ -609,4 +609,4 @@ struct SnapshotExample {
 }
 ```
 
-![en-us_image_getWithRange](figures/en-us_image_getWithRange.gif)
+![en-us_image_getWithRange](figures/image-getWithRange.gif)

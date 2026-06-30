@@ -348,7 +348,7 @@ struct TimePickerDialogExample {
 
 ### 示例6（设置弹窗背板）
 
-该示例通过maskRect设置弹窗背板。
+该示例通过配置[backgroundColor](#timepickerdialogoptions对象说明)，实现自定义背景效果。
 
 ```ts
 // xxx.ets

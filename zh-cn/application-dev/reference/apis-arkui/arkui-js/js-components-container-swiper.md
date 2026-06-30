@@ -28,8 +28,8 @@
 | 名称                             | 类型      | 默认值    | 必填   | 描述                                       |
 | ------------------------------ | ------- | ------ | ---- | ---------------------------------------- |
 | index                          | number  | 0      | 否    | 当前在容器中显示的子组件的索引值。                        |
-| autoplay                       | boolean | false  | 否    | 子组件是否自动播放，自动播放状态下，导航点不可操作<sup>5+</sup>。true为自动轮播，false为不自动轮播。  |
-| interval                       | number  | 3000   | 否    | 使用自动播放时播放的时间间隔，单位为ms。                    |
+| autoplay                       | boolean | false  | 否    | 子组件是否自动轮播，自动轮播状态下，导航点不可操作<sup>5+</sup>。true为自动轮播，false为不自动轮播。  |
+| interval                       | number  | 3000   | 否    | 使用自动轮播时轮播的时间间隔，单位为ms。                    |
 | indicator                      | boolean | true   | 否    | 是否启用导航点指示器，默认true。true为启用导航点指示器，false为不启用导航点指示器。                       |
 | digital<sup>5+</sup>           | boolean | false  | 否    | 是否启用数字导航点，默认为false。true为启用数字导航点，false为不启用数字导航点。<br/>必须设置indicator时才能生效数字导航点。 |
 | indicatordisabled<sup>5+</sup> | boolean | false  | 否    | 指示器是否禁止用户手势操作，设置为true时，指示器不会响应用户的点击拖拽。   |

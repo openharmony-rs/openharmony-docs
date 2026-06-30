@@ -8,7 +8,11 @@
 
 ## 概述
 
-提供标准的JavaScript引擎能力。功能概述：标准JS引擎是严格遵守ECMAScript规范的JavaScript代码执行引擎。支持[ECMAScript规范](https://ecma262.com/)定义的标准库，提供完备的[C++交互JS的native API](../../napi/jsvm-introduction.md)。通过JIT编译加速代码执行，为应用提供安全、高效的JS执行能力。标准JS引擎的能力通过一套稳定的ABI（Application Binary Interface，应用程序二进制接口），即JSVM-API（JavaScript Virtual Machine API）提供。JSVM-API支持动态链接到不同版本的JS引擎库，从而为开发者屏蔽掉不同引擎接口的差异。JSVM-API提供引擎生命周期管理、JS context管理、JS代码执行、JS/C++互操作、执行环境快照、code cache等能力。<br> 使用平台：arm64平台。<br> 使用方法：链接SDK中的libjsvm.so，并在C++代码中包含ark_runtime/jsvm.h头文件。<br>
+提供标准的JavaScript引擎能力。功能概述：标准JS引擎是严格遵守ECMAScript规范的JavaScript代码执行引擎。支持[ECMAScript规范](https://ecma262.com/)定义的标准库，提供完备的[C++交互JS的native API](../../napi/jsvm-introduction.md)。通过JIT编译加速代码执行，为应用提供安全、高效的JS执行能力。标准JS引擎的能力通过一套稳定的ABI（Application Binary Interface，应用程序二进制接口），即JSVM-API（JavaScript Virtual Machine API）提供。JSVM-API支持动态链接到不同版本的JS引擎库，从而为开发者屏蔽掉不同引擎接口的差异。JSVM-API提供引擎生命周期管理、JS context管理、JS代码执行、JS/C++互操作、执行环境快照、code cache等能力。
+
+**使用平台：** arm64平台。
+
+**使用方法：** 链接SDK中的libjsvm.so，并在C++代码中包含ark_runtime/jsvm.h头文件。
 
 **使用场景：** 需要实现C++与JavaScript的跨语言调用。
 
@@ -19,8 +23,6 @@
 **系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 11
-
-**支持设备类型：** Phone | PC/2in1 | Tablet | Wearable。具体支持情况可通过对应的API接口进行判断。
 
 ## 文件汇总
 

@@ -247,18 +247,18 @@
    
    ``` TypeScript
    Button('pss leak')
-       .type(ButtonType.Capsule)
-       .margin({
-         top: 20
-       })
-       .backgroundColor('#0D9FFB')
-       .width('80%')
-       .height('5%')
-       .onClick(() => {
-         // 设置一个简单的资源泄漏场景
-         hilog.info(0x0000, 'testTag', 'click pss leak button');
-         testNapi.leakMB(3072);
-       })
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('80%')
+     .height('5%')
+     .onClick(() => {
+       // 设置一个简单的资源泄漏场景
+       hilog.info(0x0000, 'testTag', 'click pss leak button');
+       testNapi.leakMB(3072);
+     })
    ```
 
 2. 添加 pss leak 相关内容：

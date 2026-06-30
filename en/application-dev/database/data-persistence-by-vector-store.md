@@ -1,11 +1,12 @@
 # Persisting Vector Store Data (ArkTS)
+
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @htt1997-->
 <!--Designer: @widecode-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-
+<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:41:18.811Z pushedAt=2026-06-22T08:31:01.279Z -->
 
 ## When to Use
 
@@ -15,6 +16,7 @@ Since API version 18, data in vector stores can be persisted.
 ## Basic Concepts
 
 - **ResultSet**: a set of query results, which allows access to the required data in flexible modes.
+
 - **floatvector**: vector data, for example, **[1.0, 3.0, 2.4, 5.1, 6.2, 11.7]**.
 
 ## Constraints
@@ -45,6 +47,7 @@ Types of database table fields are as follows.
 | TEXT | String.| Yes|
 | BLOB | Binary.| Yes|
 | FLOATVECTOR | Vector data.| Yes|
+| GEOMETRY (supported by devices running OpenHarmony 7.0.0 or later) | Geographic coordinate type. | Yes |
 
 ### Field Constraints
 
@@ -125,7 +128,7 @@ Functions in SQL statements are as follows.
 
 ## Available APIs
 
-The following lists only the APIs for persisting vector store data. For details about more APIs and their usage, see [RDB Store](../reference/apis-arkdata/arkts-apis-data-relationalStore.md).
+The following are APIs for the vector database persistence feature. For details about more APIs and their usage, see [@ohos.data.relationalStore (RDB Store)](../reference/apis-arkdata/arkts-apis-data-relationalStore.md).
 
 | API| Description|
 | -------- | -------- |
@@ -143,7 +146,7 @@ The following lists only the APIs for persisting vector store data. For details 
 1. Check whether the current system supports vector stores. The sample code is as follows:
 
    <!--@[vector_TS_isVectorSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)--> 
-   
+
    ``` TypeScript
    import { relationalStore } from '@kit.ArkData'; // Import a module.
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -171,7 +174,7 @@ The following lists only the APIs for persisting vector store data. For details 
    The sample code is as follows:
 
    <!--@[vector_TS_getStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)--> 
-   
+
    ``` TypeScript
    let store: relationalStore.RdbStore | undefined = undefined;
    /* context is the context of the application. The example here is for demonstration purposes only. */
@@ -198,11 +201,11 @@ The following lists only the APIs for persisting vector store data. For details 
    > **NOTE**
    >
    > **RelationalStore** does not provide explicit flush operations for data persistence. The data inserted is persisted.
-   
+
    The sample code is as follows:
 
    <!--@[vector_TS_execute_insert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
-   
+
    ``` TypeScript
    try {
      // Use parameter binding.
@@ -218,7 +221,7 @@ The following lists only the APIs for persisting vector store data. For details 
 4. Call **execute()** to modify or delete data. The sample code is as follows:
 
    <!--@[vector_TS_execute_update_and_delete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
-   
+
    ``` TypeScript
    // Modify data.
    try {
@@ -251,7 +254,7 @@ The following lists only the APIs for persisting vector store data. For details 
    The sample code is as follows:
 
    <!--@[vector_TS_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
-   
+
    ``` TypeScript
    // Perform single-table queries.
    try {
@@ -268,6 +271,17 @@ The following lists only the APIs for persisting vector store data. For details 
      // Do not use parameter binding.
      const QUERY_SQL1 = "select id, repr <-> '[6.2, 7.3]' as distance from test where id > 0 order by repr <-> '[6.2, 7.3]' limit 5;";
      resultSet = await store!.querySql(QUERY_SQL1);
+     resultSet!.close();
+   } catch (err) {
+     console.error(`query failed, code is ${err.code}, message is ${err.message}`);
+   }
+   
+   // Devices running OpenHarmony 7.0.0 or later support using expressions for weighted scoring and sorting queries based on expression scores.
+   try {
+     // Create the second table.
+     let CREATE_SQL = 'CREATE TABLE IF NOT EXISTS test1(id text PRIMARY KEY, location text, people text, age int, repr floatvector(2));';
+     await store!.execute(CREATE_SQL);
+     let resultSet = await store!.querySql('select *, (1000 * (location='local') + 500 * (people like 'Mike') + 100 * (age > 18)) as score from test1 where repr <-> '[6.2, 7.3]' < 0.8 order by score limit 5;');
      resultSet!.close();
    } catch (err) {
      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
@@ -305,7 +319,7 @@ The following lists only the APIs for persisting vector store data. For details 
 6. Create a view and query data. The sample code is as follows:
 
    <!--@[vector_TS_execute_create_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
-   
+
    ``` TypeScript
    // Perform view queries.
    try {
@@ -317,11 +331,11 @@ The following lists only the APIs for persisting vector store data. For details 
      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
    }
    ```
-   
+
 7. Query data using vector indexes.
 
    The vector store uses vectors as keys to provide efficient and fast search capabilities.
-   
+
    It supports the basic syntax and extended syntax as follows:
 
    - Basic syntax:
@@ -332,6 +346,7 @@ The following lists only the APIs for persisting vector store data. For details 
 
      DROP INDEX table_name.index_name;
      ```
+
    - Extended syntax:
 
      ```sql
@@ -369,7 +384,7 @@ The following lists only the APIs for persisting vector store data. For details 
    The sample code is as follows:
 
    <!--@[vector_TS_execute_create_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
-   
+
    ``` TypeScript
    // Basic syntax
    try {
@@ -393,14 +408,17 @@ The following lists only the APIs for persisting vector store data. For details 
 8. Manually reclaim disk fragmentation generated during index deletion. This function is supported since API version 20.
 
     After the vector store deletes vectors on the table where the GSDiskANN index has been created, disk defragmentation is automatically performed. However, automatic disk defragmentation may not be triggered in the following scenarios:
+
     - After vectors are deleted from the GSDiskANN index, the vector store is closed immediately.
+
     - After vectors are deleted in batches from the GSDiskANN index, no operation is performed on the table.
 
    Therefore, the following statement is provided for you to trigger the disk defragmentation from the GSDiskANN index:
+
    ```sql
    PRAGMA DISKANN_ASYNC_COLLECTING;
    ```
-  
+
    > **NOTE**
    >
    > - This statement is triggered to reclaim disk fragmentation from GSDiskANN indexes in all tables of the vector store at a time.
@@ -412,7 +430,7 @@ The following lists only the APIs for persisting vector store data. For details 
     The sample code is as follows:
 
    <!--@[vector_TS_execute_gsdiskann](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
-   
+
    ``` TypeScript
    try {
      // Manually trigger asynchronous deletion and sorting to execute disk defragmentation for all GSDiskANN indexes in the vector store.
@@ -423,7 +441,7 @@ The following lists only the APIs for persisting vector store data. For details 
    ```
 
 9. Configure the data aging policy, which allows the application data to be automatically deleted by time or space.
-   
+
    The syntax is as follows:
 
    ```sql
@@ -456,7 +474,7 @@ The following lists only the APIs for persisting vector store data. For details 
    The sample code is as follows:
 
    <!--@[vector_TS_execute_auto_dataAging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
-   
+
    ``` TypeScript
    try {
       // The write operation performed every 5 minutes will trigger a data aging task.
@@ -481,7 +499,7 @@ The following lists only the APIs for persisting vector store data. For details 
     The sample code is as follows:
 
     <!--@[vector_TS_execute_dataAging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
-    
+
     ``` TypeScript
     try {
       // Data compression and data aging are configured for the content column.
@@ -496,7 +514,7 @@ The following lists only the APIs for persisting vector store data. For details 
     Call **deleteRdbStore()** to delete the vector store and related database files. The sample code is as follows:
 
     <!--@[vector_TS_deleteStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
-    
+
     ``` TypeScript
     try {
       // Close the store object before deleting the database. Otherwise, the next call to getRdbStore() will fail.

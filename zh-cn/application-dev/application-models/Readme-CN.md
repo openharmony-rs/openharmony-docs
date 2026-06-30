@@ -49,6 +49,10 @@
       - [多端协同](hop-multi-device-collaboration.md)
     <!--DelEnd-->  
   - [进程模型](process-model-stage.md)
+    - [独立进程开发指导](isolation-process-development-guideline.md)
+    - [ArkTS子进程开发指导](arkts-child-process-development-guideline.md)
+    - [Native子进程开发指导](capi-nativechildprocess-development-guideline.md)
+    - [获取Native子进程退出信息](capi-nativechildprocess-exit-info.md)
   - [线程模型](thread-model-stage.md)
   <!--Del-->
   - 任务（Mission）管理（仅对系统应用开放）<!--mission-management-->
@@ -111,7 +115,5 @@
 - 基于ModularObjectExtensionAbility的模块化对象开发指导 (C/C++)<!--modular-object-extension-ability-->
   - [模块化对象模型概述 (C/C++)](modular-object-extension-overview.md)
   - [使用ModularObjectExtensionAbility实现模块化对象 (C/C++)](modular-object-extension-development.md)
-- Native子进程开发指导<!--native-childprocess-development-->
-    - [创建Native子进程](capi-nativechildprocess-development-guideline.md)
-    - [获取Native子进程退出信息](capi-nativechildprocess-exit-info.md)
+  - [使用Taihe实现ModularObjectExtensionAbility的IPC通信](modular-object-extension-ability-taihe.md)
 - [Ability Kit术语](ability-terminology.md)

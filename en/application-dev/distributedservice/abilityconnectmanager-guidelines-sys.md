@@ -27,7 +27,7 @@ Before you get started, familiarize yourself with the following concepts:
 
 - **UIAbility**
 
-  [UIAbility](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/uiability-overview) is a component that implements tasks specific to application UIs, such as lifecycle management, user interaction, and UI rendering.
+  [UIAbility](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/uiability-overview) is a component that implements tasks specific to application UIs, such as lifecycle management, user interaction, and UI rendering.
 
 
 - **Byte stream**
@@ -67,7 +67,7 @@ Cross-device connection management is built on a distributed component managemen
 
 ### Environment requirement
 
-You have logged in to devices A and B with the same HUAWEI ID and the two devices are successfully networked via [Device Manager](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/devicemanager-guidelines) APIs.
+You have logged in to devices A and B with the same HUAWEI ID and the two devices are successfully networked via [Device Manager](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/devicemanager-guidelines) APIs.
 
 
 ### Setting Up the Environment

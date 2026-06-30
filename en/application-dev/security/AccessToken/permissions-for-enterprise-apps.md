@@ -187,7 +187,7 @@ With this permission, the application can obtain Wi-Fi configurations, such as t
 
 **Authorization mode**: system_grant
 
-**Supported devices**: PCs/2-in-1 devices
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable | car
 
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->
@@ -207,6 +207,8 @@ With this permission, the application can add and delete Wi-Fi networks, and mod
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
+
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable | car
 
 <!--Del-->
 **Certificate-based authorization**: true<!--DelEnd-->

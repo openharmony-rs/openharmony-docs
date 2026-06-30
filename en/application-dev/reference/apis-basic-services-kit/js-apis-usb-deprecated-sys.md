@@ -44,7 +44,7 @@ Converts the USB function list in the string format to a numeric mask in Device 
 
 | Type  | Description              |
 | ------ | ------------------ |
-| number | Function list in numeric mask format after conversion.|
+| number | Numeric mask of the function list.|
 
 **Example**
 
@@ -67,7 +67,7 @@ Converts the USB function list in the numeric mask format to a string in Device 
 
 | Name| Type                          | Mandatory| Description             |
 | ------ | ------------------------------ | ---- | ----------------- |
-| funcs  | [FunctionType](#functiontype9) | Yes  | USB function list in numeric mask format.|
+| funcs  | [FunctionType](#functiontype9) | Yes  | Numeric mask of the function list.|
 
 **Return value**
 
@@ -96,7 +96,7 @@ Sets the current USB function list in Device mode.
 
 | Name| Type                          | Mandatory| Description             |
 | ------ | ------------------------------ | ---- | ----------------- |
-| funcs  | [FunctionType](#functiontype9) | Yes  | USB function list in numeric mask format.|
+| funcs  | [FunctionType](#functiontype9) | Yes  | Numeric mask of the function list.|
 
 **Return value**
 
@@ -151,7 +151,7 @@ Obtains the list of all physical USB ports.
 
 | Type                         | Description                 |
 | ----------------------------- | --------------------- |
-| [Array\<USBPort\>](#usbport9) | List of physical USB ports.|
+| Array\<[USBPort](#usbport9)\> | List of physical USB ports.|
 
 **Example**
 

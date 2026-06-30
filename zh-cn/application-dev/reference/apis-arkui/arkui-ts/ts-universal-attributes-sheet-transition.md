@@ -427,7 +427,7 @@ struct SheetTransitionExample {
 }
 ```
 
-![zh-cn_sheet](figures/zh-cn_sheet1.gif)
+![zh-cn_sheet](figures/sheet1.gif)
 
 ### 示例2（设置三个不同高度的挡位）
 
@@ -480,7 +480,7 @@ struct SheetTransitionExample {
 }
 ```
 
-![zh-cn_sheet](figures/zh-cn_sheet2.gif)
+![zh-cn_sheet](figures/sheet2.gif)
 
 ### 示例3（使用边框宽度和颜色）
 
@@ -536,11 +536,11 @@ struct SheetTransitionExample {
 
 从左至右显示语言模式示例图
 
-![zh-cn_sheet](figures/zh-cn_sheet3_ltr.png)
+![zh-cn_sheet](figures/sheet3-ltr.png)
 
 从右至左显示语言模式示例图
 
-![zh-cn_sheet](figures/zh-cn_sheet3_rtl.png)
+![zh-cn_sheet](figures/sheet3-rtl.png)
 
 ### 示例4（使用关闭回调函数）
 
@@ -592,7 +592,7 @@ struct bindSheetExample {
   }
 }
 ```
-![zh-cn_sheet](figures/zh-cn_sheet4.gif)
+![zh-cn_sheet](figures/sheet4.gif)
 
 ### 示例5（设置内容区刷新时机）
 
@@ -644,11 +644,11 @@ struct Index {
 ```
 跟手触发挡位切换时，松手才触发面板内容高度刷新
 
-![zh-cn_sheet](figures/zh-cn_sheet5_ltr.gif)
+![zh-cn_sheet](figures/sheet5-ltr.gif)
 
 跟手触发挡位切换时，跟手时期就会触发面板内容高度刷新
 
-![zh-cn_sheet](figures/zh-cn_sheet5_rtl.gif)
+![zh-cn_sheet](figures/sheet5-rtl.gif)
 
 ### 示例6（设置压缩模态内容）
 
@@ -764,7 +764,7 @@ struct ListenKeyboardHeightChange {
   }
 }
 ```
-![zh-cn_sheet](figures/zh-cn_sheet6.gif)
+![zh-cn_sheet](figures/sheet6.gif)
 
 ### 示例7（镜像场景下如何设置圆角属性）
 
@@ -817,11 +817,11 @@ struct SheetTransitionExample {
 
 从左至右显示语言模式示例图
 
-![zh-cn_sheet](figures/zh-cn_sheet7_ltr.png)
+![zh-cn_sheet](figures/sheet7-ltr.png)
 
 从右至左显示语言模式示例图
 
-![zh-cn_sheet](figures/zh-cn_sheet7_rtl.png)
+![zh-cn_sheet](figures/sheet7-rtl.png)
 
 ### 示例8（半模态Side侧边样式）
 
@@ -924,7 +924,7 @@ struct SheetSideExample {
 }
 ```
 
-![zh-cn_sheet](figures/sheet8_side.gif)
+![zh-cn_sheet](figures/sheet8-side.gif)
 
 ### 示例9（半模态ContentCover全屏样式）
 

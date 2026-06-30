@@ -45,7 +45,7 @@ let controller: windowAnimationManager.WindowAnimationController = {
     onStartAppFromLauncher(startingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
         console.info('onStartAppFromLauncher, the startingWindowTarget is: ' + startingWindowTarget);
         finishCallback.onAnimationFinish();
-      },
+    },
     onStartAppFromRecent(startingWindowTarget: windowAnimationManager.WindowAnimationTarget, finishCallback: windowAnimationManager.WindowAnimationFinishedCallback): void {
         console.info('onStartAppFromRecent, the startingWindowTarget is: ' + startingWindowTarget);
         finishCallback.onAnimationFinish();
@@ -344,7 +344,7 @@ Called when a window is minimized.
 
 | Name              | Type                           | Mandatory| Description            |
 | -------------------- | ------------------------------- | ---- | ---------------- |
-| minimizingWindowTarget | [WindowAnimationTarget](#windowanimationtarget)           | Yes  | Target window to minimize.   |
+| minimizingWindowTarget | [WindowAnimationTarget](#windowanimationtarget)           | Yes  | Target window to display the animation.   |
 | finishCallback       | [WindowAnimationFinishedCallback](#windowanimationfinishedcallback) | Yes  | Callback invoked when the animation is finished.|
 
 **Example**

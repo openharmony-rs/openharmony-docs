@@ -167,7 +167,7 @@ struct ScrollBarExample {
 }
 ```
 
-![zh-cn_image_0000001232775585](figures/zh-cn_image_0000001232775585.gif)
+![scrollBar](figures/scrollBar.gif)
 
 ## 示例2（不设置子节点）
 
@@ -214,7 +214,7 @@ struct ScrollBarExample {
 }
 ```
 
-![zh-cn_image_scrollbar](figures/zh-cn_image_scrollbar.gif)
+![zh-cn_image_scrollbar](figures/image-scrollbar.gif)
 
 ## 示例3（支持嵌套滚动）
 

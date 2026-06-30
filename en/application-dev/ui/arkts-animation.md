@@ -9,7 +9,7 @@
 
 The UI is an interface for users to interact with devices, containing various visual components (such as buttons and lists). Attributes serve as APIs to control the behavior of components. The change of attribute values will cause the UI to update. Animation adds smooth transition effects when the UI changes, allowing attribute values to gradually change from the start state to the end state, avoiding abruptness caused by instantaneous changes and maintaining the user's visual focus.
 
-![en-us_image_20230822](figures/en-us_image_20230822.gif)
+![en-us_image_20230822](figures/Animation-what.gif)
 
 Animations enable you to:
 

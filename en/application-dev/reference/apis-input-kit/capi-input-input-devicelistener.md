@@ -6,6 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:19:38.071Z pushedAt=2026-06-12T02:43:05.470Z -->
 
 ```c
 typedef struct Input_DeviceListener {...} Input_DeviceListener
@@ -13,7 +14,7 @@ typedef struct Input_DeviceListener {...} Input_DeviceListener
 
 ## Overview
 
-Defines a listener for device hot swap events.
+Defines the struct for listening for device hot swapping. It is applicable to applications that need to respond to input device connection and disconnection in real time, such as games and music players. By listening for device hot swapping events, applications can update the input status in a timely manner, improving user experience and avoiding exceptions caused by device disconnection.
 
 **Since**: 13
 
@@ -27,9 +28,8 @@ Defines a listener for device hot swap events.
 
 | Name| Description|
 | -- | -- |
-| [Input_DeviceAddedCallback](#input_deviceaddedcallback) deviceAddedCallback | Defines a callback used to receive device hot-plug events.|
-| [Input_DeviceRemovedCallback](#input_deviceremovedcallback) deviceRemovedCallback | Defines a callback used to receive device hot-unplug events.|
-
+| [Input_DeviceAddedCallback()](#input_deviceaddedcallback) deviceAddedCallback | Defines a callback used to receive device hot-plug events.|
+| [Input_DeviceRemovedCallback()](#input_deviceremovedcallback) deviceRemovedCallback | Defines a callback used to receive device hot-unplug events.|
 
 ### Member Functions
 

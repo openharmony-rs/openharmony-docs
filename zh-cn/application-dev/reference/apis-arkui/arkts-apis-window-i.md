@@ -25,7 +25,7 @@
 | ctx        | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 否 | 是 | 当前应用上下文信息。不设置，则默认为空。<br>FA模型下不需要使用该参数，即可创建子窗口，使用该参数时会报错。<br>Stage模型必须使用该参数，用于创建全局悬浮窗、模态窗或系统窗口。 <br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
 | displayId  | number                     | 否 | 是 | 当前屏幕ID。不设置，则默认为父窗口屏幕ID。<br>该参数应为非负整数，且对应屏幕ID存在。<br>扩展屏、异源虚拟屏场景下，全局悬浮窗可通过设置屏幕ID显示在指定屏幕上。<br>模态窗、系统窗设置屏幕ID无效，默认为父窗口屏幕ID。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core     |
 | parentId   | number                     | 否 | 是 | 父窗口ID。不设置，则默认为-1，默认父窗为当前应用上下文对应主窗。<br>FA模型下，该参数应为非负整数，且对应父窗口ID存在。<br>Stage模型下，该参数设置无效。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core                                               |
-| decorEnabled<sup>12+</sup> | boolean | 否 | 是 | 是否显示窗口装饰，仅在windowType为TYPE_DIALOG时生效。true表示显示，false表示不显示。此参数默认值为false。<br>**系统能力：** SystemCapability.Window.SessionManager |
+| decorEnabled<sup>12+</sup> | boolean | 否 | 是 | 是否显示窗口标题栏，仅在windowType为TYPE_DIALOG时生效。true表示显示，false表示不显示。此参数默认值为false。<br>**系统能力：** SystemCapability.Window.SessionManager |
 | title<sup>12+</sup> | string| 否 | 是 | `decorEnabled`属性设置为true时，窗口的标题内容。标题显示区域最右端不超过系统三键区域最左端，超过部分以省略号表示。不设置，则默认为空字符串。 <br>**系统能力：** SystemCapability.Window.SessionManager |
 
 ## SystemBarProperties
@@ -87,6 +87,10 @@
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+> **说明：** 
+
+> 与[RectInVP](#rectinvp23)相比，Rect使用像素（px）作为单位，适用于需要精确控制像素的场景；RectInVP使用虚拟像素作为单位，能够自动适配不同屏幕密度，更推荐在大多数UI场景中使用。
 
 | 名称   | 类型 | 只读 | 可选 | 说明               |
 | ------ | -------- | ---- | ---- | ------------------ |
@@ -266,18 +270,18 @@
 
 ## DecorButtonStyle<sup>14+</sup>
 
-系统装饰栏按钮样式。
+系统标题栏按钮样式。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 | 名称       | 类型      | 只读 | 可选 | 说明               |
 | ---------- | ------------- | ---- | ---- | ------------------ |
 | colorMode   | [ConfigurationConstant.ColorMode](../apis-ability-kit/js-apis-app-ability-configurationConstant.md#colormode) | 否   | 是   | 颜色模式。深色模式下按钮颜色适配为浅色，浅色模式下按钮颜色适配为深色。未设置则默认跟随系统颜色模式。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
-| buttonBackgroundSize   | number        | 否   | 是   | 按钮高亮显示时的大小，取值范围20vp-40vp，默认值28vp。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
-| spacingBetweenButtons  | number        | 否   | 是   | 按钮间距，取值范围8vp-24vp，默认值12vp。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
-| closeButtonRightMargin | number        | 否   | 是   | 关闭按钮右侧距窗口边距，取值范围6vp-22vp，默认值20vp。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
-| buttonIconSize<sup>20+</sup> | number        | 否   | 是   | 按键icon的大小，取值范围16vp-24vp，默认值20vp。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| buttonBackgroundCornerRadius<sup>20+</sup> | number        | 否   | 是   | 按键背板圆角半径，取值范围4vp-8vp，默认值4vp。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| buttonBackgroundSize   | number        | 否   | 是   | 按钮高亮显示时的大小，单位为vp，取值范围为[20, 40]，默认值为28。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| spacingBetweenButtons  | number        | 否   | 是   | 按钮间距，单位为vp，取值范围为[8, 24]，默认值为12。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| closeButtonRightMargin | number        | 否   | 是   | 关闭按钮右侧距窗口边距，单位为vp，取值范围为[6, 22]，默认值为20。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| buttonIconSize<sup>20+</sup> | number        | 否   | 是   | 按钮icon的大小，单位为vp，取值范围为[16, 24]，默认值为20。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| buttonBackgroundCornerRadius<sup>20+</sup> | number        | 否   | 是   | 按钮背板圆角半径，单位为vp，取值范围为[4, 8]，默认值为4。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## WindowLimits<sup>11+</sup>
 
@@ -586,7 +590,7 @@
 | 名称      | 类型  | 只读 | 可选 | 说明         |
 | ---------- | ---- | ---- | ---- | ----------- |
 | title<sup>11+</sup>    | string | 否 | 否 | 子窗口标题。标题显示区域最右端不超过系统三键区域最左端，超过部分以省略号表示。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。      |
-| decorEnabled<sup>11+</sup> | boolean | 否 | 否 | 子窗口是否显示装饰。true表示子窗口显示装饰，false表示子窗口不显示装饰。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
+| decorEnabled<sup>11+</sup> | boolean | 否 | 否 | 子窗口是否显示标题栏。true表示子窗口显示标题栏，false表示子窗口不显示标题栏。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
 | isModal<sup>12+</sup>    | boolean | 否 | 是 | 子窗口是否启用模态属性。true表示子窗口启用模态属性，false表示子窗口禁用模态属性。不设置，则默认为false。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。      |
 | modalityType<sup>14+</sup>    | [ModalityType](arkts-apis-window-e.md#modalitytype14) | 否 | 是 | 子窗口模态类型，仅当子窗口启用模态属性时生效。不设置，则默认为WINDOW_MODALITY。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。       |
 | windowRect<sup>18+</sup>    | [Rect](arkts-apis-window-i.md#rect7) | 否 | 是 | 子窗口矩形区域，其中子窗口存在大小限制，具体参考[resize()](arkts-apis-window-Window.md#resize9)方法。不设置且未调用[showWindow()](arkts-apis-window-Window.md#showwindow9)显示前，则默认为{left: 0, top: 0, width: 0, height: 0}。具体参考[子窗口开发指导](../../windowmanager/subwindow-guide.md)。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
@@ -603,9 +607,9 @@
 
 | 名称   | 类型 | 只读  | 可选 | 说明                    |
 | ------ | ---- | ----- | ---- | ----------------------- |
-| enable | boolean | 否 | 否 | 是否开启关键帧。true表示开启，false表示关闭。 |
-| interval | number | 否 | 是 | 设置关键帧布局切换的拖拽时间间隔，单位为毫秒，默认值为1000。取值为正整数，浮点数向下取整。与distance判断为或的关系：满足其一即开始布局切换。 |
-| distance | number | 否 | 是 | 设置关键帧布局切换的拖拽距离间隔，单位为px，默认值为1000。取值为0或正整数，浮点数向下取整。设置为0时，忽略拖拽距离因素。与interval判断为或的关系：满足其一即开始布局切换。|
+| enable | boolean | 否 | 否 | 是否开启关键帧。true表示开启关键帧策略，在拖拽窗口时会按照关键帧布局进行切换；false表示关闭关键帧策略，窗口拖拽时平滑过渡。 |
+| interval | number | 否 | 是 | 设置关键帧布局切换的拖拽时间间隔，单位为毫秒，默认值为1000。表示拖拽持续该时间后将触发布局切换，值越大需要拖拽越久才会切换。取值为正整数，浮点数向下取整。与distance判断为或的关系：满足其一即开始布局切换。 |
+| distance | number | 否 | 是 | 设置关键帧布局切换的拖拽距离间隔，单位为px，默认值为1000。表示拖拽距离达到该值后将触发布局切换，值越大需要拖拽越远才会切换。取值为0或正整数，浮点数向下取整。设置为0时，忽略拖拽距离因素，仅通过interval判断是否切换。与interval判断为或的关系：满足其一即开始布局切换。|
 | animationDuration | number | 否 | 是 | 设置关键帧布局的动效切换时间，单位为毫秒，默认值为100。取值为0或正整数，浮点数向下取整。 |
 | animationDelay | number | 否 | 是 | 设置关键帧布局切换动效延迟时间，单位为毫秒，默认值为100。取值为0或正整数，浮点数向下取整。 |
 

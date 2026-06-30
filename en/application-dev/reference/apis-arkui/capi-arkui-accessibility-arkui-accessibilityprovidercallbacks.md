@@ -29,7 +29,7 @@ Defines callback functions of a third-party operation [provider](capi-arkui-acce
 | [int32_t (\*findAccessibilityNodeInfosById)(int64_t elementId, ArkUI_AccessibilitySearchMode mode, int32_t requestId, ArkUI_AccessibilityElementInfoList* elementList)](#findaccessibilitynodeinfosbyid) | Finds node information for the specified node. Callback function implemented by the third-party platform and registered with the system.|
 | [int32_t (\*findAccessibilityNodeInfosByText)(int64_t elementId, const char* text, int32_t requestId,ArkUI_AccessibilityElementInfoList* elementList)](#findaccessibilitynodeinfosbytext) | Finds the nodes that contain specific text content. Callback function implemented by the third-party platform and registered with the system.|
 | [int32_t (\*findFocusedAccessibilityNode)(int64_t elementId, ArkUI_AccessibilityFocusType focusType, int32_t requestId, ArkUI_AccessibilityElementInfo* elementInfo)](#findfocusedaccessibilitynode) | Finds the node that has obtained the focus based on the focus type and returns the element information of the node. Callback function implemented by the third-party platform and registered with the system.|
-| [int32_t (\*findNextFocusAccessibilityNode)(int64_t elementId, ArkUI_AccessibilityFocusMoveDirection direction, int32_t requestId, ArkUI_AccessibilityElementInfo* elementInfo)](#findnextfocusaccessibilitynode) | Called to find the next focusable node based on the reference node, in the specified mode and direction.|
+| [int32_t (\*findNextFocusAccessibilityNode)(int64_t elementId, ArkUI_AccessibilityFocusMoveDirection direction, int32_t requestId, ArkUI_AccessibilityElementInfo* elementInfo)](#findnextfocusaccessibilitynode) | Finds the next node that can be focused based on the reference node. Callback function implemented by the third-party platform and registered with the system.|
 | [int32_t (\*executeAccessibilityAction)(int64_t elementId, ArkUI_Accessibility_ActionType action,ArkUI_AccessibilityActionArguments *actionArguments, int32_t requestId)](#executeaccessibilityaction) | Called to execute a specified action on a specified node.|
 | [int32_t (\*clearFocusedFocusAccessibilityNode)()](#clearfocusedfocusaccessibilitynode) | Called to clear the focus state of the current focused node.|
 | [int32_t (\*getAccessibilityNodeCursorPosition)(int64_t elementId, int32_t requestId, int32_t* index)](#getaccessibilitynodecursorposition) | Called to query the current cursor position of the specified node.|
@@ -126,7 +126,7 @@ int32_t (*findNextFocusAccessibilityNode)(int64_t elementId, ArkUI_Accessibility
 
 **Description**
 
-Called to find the next focusable node based on the reference node mode and search direction.
+Finds the next node that can be focused based on the reference node. Callback function implemented by the third-party platform and registered with the system.
 
 **Since**: 13
 

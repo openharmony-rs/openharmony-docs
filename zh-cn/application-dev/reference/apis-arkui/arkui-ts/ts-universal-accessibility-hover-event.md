@@ -76,8 +76,8 @@ type AccessibilityCallback = (isHover: boolean, event: AccessibilityHoverEvent) 
 | windowY                | number                         | 否 | 否 | 手指位置相对于应用窗口左上角的y轴坐标。<br/>单位：vp<br/> |
 | displayX               | number                         | 否 | 否 | 手指位置相对于应用屏幕左上角的x轴坐标。<br/>单位：vp<br/> |
 | displayY               | number                         | 否 | 否 | 手指位置相对于应用屏幕左上角的y轴坐标。<br/>单位：vp<br/> |
-| globalDisplayX<sup>20+</sup> | number                   | 否 | 是 | 手指位置相对于全局屏幕的左上角的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| globalDisplayY<sup>20+</sup> | number                   | 否 | 是 | 手指位置相对于全局屏幕的左上角的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| globalDisplayX<sup>20+</sup> | number                   | 否 | 是 | 手指位置相对于全局屏幕的左上角的x轴坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| globalDisplayY<sup>20+</sup> | number                   | 否 | 是 | 手指位置相对于全局屏幕的左上角的y轴坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## onAccessibilityHoverTransparent<sup>20+</sup>
 
@@ -116,7 +116,7 @@ type AccessibilityTransparentCallback = (event: TouchEvent) => void
 
 | 参数名              | 类型                                | 必填 | 说明                                                         |
 | ------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| event | [TouchEvent](ts-universal-events-touch.md#touchevent对象说明)| 是   | 原始touch事件。 <br/>**说明：** TouchEvent对象的触摸事件的类型[TouchType](ts-appendix-enums.md#touchtype)为四种无障碍悬浮事件类型中的一种，四种无障碍悬浮事件类型为HOVER_ENTER、HOVER_MOVE、HOVER_EXIT和HOVER_CANCEL。 |
+| event | [TouchEvent](ts-universal-events-touch.md#touchevent对象说明)| 是   | 原始Touch事件。 <br/>**说明：** TouchEvent对象的触摸事件的类型[TouchType](ts-appendix-enums.md#touchtype)为四种无障碍悬浮事件类型中的一种，四种无障碍悬浮事件类型为HOVER_ENTER、HOVER_MOVE、HOVER_EXIT和HOVER_CANCEL。 |
 
 ## 示例
 
@@ -176,7 +176,7 @@ struct TestExample {
     }
     .width('100%')
     .height('100%')
-    .onAccessibilityHoverTransparent((event?: TouchEvent) => {
+    .onAccessibilityHoverTransparent((event: TouchEvent) => {
       if (event) {
         // 手指按下触发
         if (event.type === TouchType.HOVER_ENTER) {

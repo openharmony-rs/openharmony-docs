@@ -49,7 +49,7 @@ this.myBuilderFunction()
 
 When local @Builder functions are passed between components, it is common to use **.bind(this)** to modify the function context. However, this approach may lead to inconsistencies between the visual component hierarchy and the underlying state management relationships. In contrast, @LocalBuilder maintains stable parent-child relationships regardless of **.bind(this)** usage. This means that the parent component of elements defined in @LocalBuilder remains fixed and immutable.
 
-![en-us_image_compatible_localBuilder](figures/en-us_image_compatible_localBuilder.png)
+![en-us_image_compatible_localBuilder](figures/image-compatible-localBuilder.png)
 
 > **NOTE**
 >

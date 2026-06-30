@@ -24,6 +24,14 @@
 
 | 名称 | 描述 |
 | -- | -- |
+| [common_attributes.h](capi-common-attributes-h.md) | 提供NativeModule通用属性和事件的类型定义。 |
+| [embedded_component.h](capi-embedded-component-h.md) | EmbeddedComponent组件相关的结构体和方法定义。 |
+| [image.h](capi-image-h.md) | 为NativeNode API提供Image节点类型定义。 |
+| [image_animator.h](capi-image-animator-h.md) | 为NativeNode API提供ImageAnimator节点类型定义。 |
+| [layout.h](capi-layout-h.md) | 定义布局相关的枚举和接口。 |
+| [node_attr_custom.h](capi-native-node-node-attributes-node-attr-custom-h.md) | 为NativeNode API提供自定义节点事件定义。 |
+| [navigation_router.h](capi-navigation-router-h.md) | 定义Navigation或Router组件的枚举和接口。 |
+| [swiper.h](capi-swiper-h.md) | 定义Swiper组件的枚举和接口。 |
 | [drag_and_drop.h](capi-drag-and-drop-h.md) | 提供NativeDrag相关接口定义。 |
 | [drawable_descriptor.h](capi-drawable-descriptor-h.md) | 提供NativeDrawableDescriptor接口的类型定义。 |
 | [native_animate.h](capi-native-animate-h.md) | 提供ArkUI在Native侧的动画接口定义集合。 |
@@ -36,4 +44,9 @@
 | [native_node.h](capi-native-node-h.md) | 提供NativeNode接口的类型定义。 |
 | [native_node_napi.h](capi-native-node-napi-h.md) | 提供ArkTS侧的FrameNode转换NodeHandle的方式。 |
 | [native_type.h](capi-native-type-h.md) | 提供NativeModule公共的类型定义。 |
+| [picker.h](capi-picker-h.md) | 为NativeNode API提供Picker节点类型定义。 |
+| [button.h](capi-button-h.md) | 为NativeNode API提供Button节点类型定义。 |
+| [checkbox.h](capi-checkbox-h.md) | 为NativeNode API提供Checkbox节点类型定义。 |
+| [slider.h](capi-slider-h.md) | 为NativeNode API提供Slider节点类型定义。 |
 | [styled_string.h](capi-styled-string-h.md) | 提供ArkUI在Native侧的属性字符串能力。 |
+| [xcomponent.h](capi-xcomponent-h.md) | XComponent组件的枚举类型定义。 |

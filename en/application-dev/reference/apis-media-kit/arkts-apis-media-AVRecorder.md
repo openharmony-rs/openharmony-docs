@@ -5,6 +5,7 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=4b1a2f751fcd33c52248528ed8c23a9b2935126b translatedAt=2026-06-23T01:03:07.264Z pushedAt=2026-06-23T06:12:23.656Z -->
 
 
 AVRecorder is a class for audio and video recording management. It provides APIs to record media assets. Before calling the methods of the AVRecorder class, you need to call the [createAVRecorder](arkts-apis-media-f.md#mediacreateavrecorder9) API to create an **AVRecorder** instance.
@@ -222,8 +223,8 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import image from '@ohos.multimedia.image';
-import media from '@ohos.multimedia.media';
+import { image } from '@kit.ImageKit';
+import { media } from '@kit.MediaKit';
 
 let watermark: image.PixelMap | undefined = undefined; // You can obtain a local resource file and convert it into a pixel map. The watermark image cannot be empty.
 let watermarkConfig: media.WatermarkConfiguration = { top: 100, left: 100, width: 100, height: 100 };
@@ -346,7 +347,7 @@ The **updateRotation** API can be called only after the [prepare](#prepare9-1) A
 
 | Name  | Type                | Mandatory| Description                       |
 | -------- | -------------------- | ---- | --------------------------- |
-| rotation | number | Yes  | Rotation angle, which can only be 0, 90, 180, or 270 degrees.|
+| rotation | number | Yes | Rotation angle, in degrees (°). Only 0°, 90°, 180°, and 270° are supported.|
 
 **Return value**
 
