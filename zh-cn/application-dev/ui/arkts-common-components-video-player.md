@@ -250,18 +250,16 @@ Video控制器主要用于控制视频的状态，包括播放、暂停、停止
   }
   ```
 
-- 自定义控制器
-
-  使用自定义的控制器，先关闭默认控制器，然后使用[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)以及[Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md)等组件进行自定义的控制与显示，适合自定义较强的场景下使用。
-
   <!-- @[customize_control](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/CustomizedControl.ets) -->  
-
+  
   ``` TypeScript
   // xxx.ets
   @Entry
   @Component
   struct CustomizedControl {
+    // $rawfile('videoTest.mp4')需要替换为开发者所需的影像资源文件
     @State videoSrc: Resource = $rawfile('videoTest.mp4');
+    // common/videoIcon.png需要替换为开发者所需的图像资源文件
     @State previewUri: string = 'common/videoIcon.png';
     @State curRate: PlaybackSpeed = PlaybackSpeed.Speed_Forward_1_00_X;
     // 初始化当前时间为0
@@ -269,7 +267,7 @@ Video控制器主要用于控制视频的状态，包括播放、暂停、停止
     // 初始化持续时间为0
     @State durationTime: number = 0;
     controller: VideoController = new VideoController();
-
+  
     build() {
       Row() {
         Column() {
@@ -309,6 +307,10 @@ Video控制器主要用于控制视频的状态，包括播放、暂停、停止
         }
         .width('100%')
       }
+      .height('40%')
+    }
+  }
+  ```
       .height('40%')
     }
   }
