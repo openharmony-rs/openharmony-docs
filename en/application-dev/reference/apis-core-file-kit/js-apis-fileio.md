@@ -1160,7 +1160,7 @@ Calculates the hash value of a file. This API uses an asynchronous callback to r
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. Use [hash.hash](js-apis-file-hash.md#hashhash-1)) instead.
+> This API is deprecated since API version 9. Use [hash.hash](js-apis-file-hash.md#hashhash-1) instead.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
