@@ -6581,7 +6581,7 @@ Allows an application to detect device.
 
 **Authorization mode**: system_grant
 
-**Certificate-based authorization**: false
+**Certificate-based authorization**: true
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
