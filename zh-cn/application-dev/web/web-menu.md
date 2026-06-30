@@ -848,10 +848,9 @@ struct SelectionMenuLongPress {
 
 ArkTS-Sta示例：
 <!-- @[web_PreviewBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebPreviewBuilder.ets) --> 
+<!-- @[web_PreviewBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebPreviewBuilder.ets) --> 
 
 ``` TypeScript
-'use static'
-
 import webview from '@ohos.web.webview';
 import { Entry, Text, Column, Component, Web, Image, Resource, Menu, ImageFit, Stack,
   WebContextMenuResult, Progress, UIContext, TextOverflow, MenuItem, TextAlign, CopyOptions,
@@ -914,7 +913,6 @@ struct SelectionMenuLongPress {
           .style({ strokeWidth: 3, enableSmoothEffect: true } as LinearStyleOptions)
           .backgroundColor(Color.White)
           .opacity(this.progressVisible ? 1 : 0)
-          .backgroundColor(Color.White)
       }.alignContent(Alignment.Bottom)
       Web({ src: this.linkURL, controller: this.previewController })
         .javaScriptAccess(true)
@@ -1026,7 +1024,6 @@ struct SelectionMenuLongPress {
   }
 }
 ```
-
 <!---->
 
 html示例
