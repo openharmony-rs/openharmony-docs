@@ -75,7 +75,7 @@ ArkTS-Sta: title(value: string | CustomBuilder | NavDestinationCommonTitle | Nav
 | 参数名 | 类型                                                         | 必填 | 说明       |
 | ------ | ------------------------------------------------------------ | ---- | ---------- |
 | value  | ArkTS-Dyn: string&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[NavDestinationCommonTitle](#navdestinationcommontitle)&nbsp;\|&nbsp;[NavDestinationCustomTitle](#navdestinationcustomtitle)&nbsp;\|&nbsp;[Resource<sup>14+</sup>](ts-types.md#resource)<br/>ArkTS-Sta: string&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[NavDestinationCommonTitle](#navdestinationcommontitle)&nbsp;\|&nbsp;[NavDestinationCustomTitle](#navdestinationcustomtitle)&nbsp;\|&nbsp;[Resource](ts-types.md#resource) \| undefined | 是   | 页面标题。<br/>取值为undefined时，无标题。 |
-| options<sup>12+</sup> | ArkTS-Dyn: [NavigationTitleOptions](ts-basic-components-navigation.md#navigationtitleoptions11)<br/>ArkTS-Sta: NavigationTitleOptions \| undefined  | 否   | 标题栏选项。<br/>取值为undefined时，按NavigationTitleOptions中的默认值处理。 |
+| options<sup>12+</sup> | ArkTS-Dyn: [NavigationTitleOptions](ts-basic-components-navigation.md#navigationtitleoptions11)<br/>ArkTS-Sta: NavigationTitleOptions \| undefined  | 否   | 标题栏选项。<br/>取值为undefined时，按NavigationTitleOptions中的默认值处理。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### hideTitleBar
 
@@ -108,6 +108,8 @@ ArkTS-Sta: hideTitleBar(hide: boolean | undefined, animated: boolean | undefined
 设置是否隐藏标题栏。与[hideTitleBar](#hidetitlebar)相比，新增标题栏显隐时是否使用动画。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -164,6 +166,8 @@ ArkTS-Sta: toolbarConfiguration(toolbarParam: Array&lt;ToolbarItem&gt; | CustomB
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 13
@@ -186,6 +190,8 @@ ArkTS-Sta: hideToolBar(hide: boolean | undefined, animated?: boolean | undefined
 设置是否隐藏工具栏。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -214,6 +220,8 @@ ArkTS-Sta: mode(value: NavDestinationMode | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -239,6 +247,8 @@ backButtonIcon(value: ResourceStr | PixelMap | SymbolGlyphModifier)
 > - 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -268,6 +278,8 @@ backButtonIcon(icon: ResourceStr | PixelMap | SymbolGlyphModifier, accessibility
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -292,6 +304,8 @@ backButtonIcon(icon: ResourceStr | PixelMap | SymbolGlyphModifier | undefined, a
 > 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
 
 设置标题栏返回键图标和无障碍播报内容。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -322,6 +336,8 @@ menus(value: Array&lt;NavigationMenuItem&gt; | CustomBuilder)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -350,6 +366,8 @@ menus(items: Array&lt;NavigationMenuItem&gt; | CustomBuilder, options?: Navigati
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -374,6 +392,8 @@ menus(items: Array&lt;NavigationMenuItem&gt; | CustomBuilder | undefined, option
 > 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
 
 设置页面右上角菜单。不设置时不显示菜单项。与[menus](#menus12)相比，新增菜单选项。使用Array<[NavigationMenuItem](ts-basic-components-navigation.md#navigationmenuitem)&gt; 写法时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -409,6 +429,8 @@ ArkTS-Sta: ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt; | undefi
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -440,6 +462,8 @@ ArkTS-Sta: systemBarStyle(style: SystemBarStyle | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -461,6 +485,8 @@ ArkTS-Sta: systemTransition(type: NavigationSystemTransitionType | undefined)
 设置NavDestination系统转场动画，支持分别设置系统标题栏动画和内容动画。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -485,6 +511,8 @@ ArkTS-Sta: recoverable(recoverable: boolean | undefined)
 > **说明：**
 >
 > 该接口需要配合Navigation的[recoverable](./ts-basic-components-navigation.md#recoverable14)接口使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -516,6 +544,8 @@ ArkTS-Sta: bindToScrollable(scrollers: Array&lt;Scroller&gt; | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 14
@@ -546,6 +576,8 @@ ArkTS-Sta: bindToNestedScrollable(scrollInfos: Array&lt;NestedScrollInfo&gt; | u
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 14
@@ -567,6 +599,8 @@ ArkTS-Sta: hideBackButton(hide: boolean | undefined)
 设置是否隐藏标题栏中的返回键。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -595,6 +629,8 @@ ArkTS-Sta: customTransition(delegate: NavDestinationTransitionDelegate | undefin
 > - 该属性与[systemTransition](#systemtransition14)同时设置时，后设置的属性生效。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -627,6 +663,8 @@ ArkTS-Sta: preferredOrientation(orientation: Orientation | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 19
@@ -658,6 +696,8 @@ ArkTS-Sta: enableStatusBar(enabled: boolean | undefined, animated?: boolean | un
 > - 设置系统状态栏的实际效果依赖于具体的设备支持情况，具体参考窗口的[setSpecificSystemBarEnabled](../arkts-apis-window-Window.md#setspecificsystembarenabled11)接口。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -692,6 +732,8 @@ ArkTS-Sta: enableNavigationIndicator(enabled: boolean | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 19
@@ -709,6 +751,8 @@ ArkTS-Sta: enableNavigationIndicator(enabled: boolean | undefined)
 attributeModifier(modifier: AttributeModifier\<NavDestinationAttribute> | AttributeModifier\<CommonMethod> | undefined)
 
 动态设置NavDestination组件的属性方法。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -728,6 +772,8 @@ NavDestination类型。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -742,6 +788,8 @@ NavDestination类型。
 ## NavigationSystemTransitionType<sup>14+</sup>枚举说明
 
 系统转场动画类型。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -780,6 +828,8 @@ ArkTS-Sta: onShown(callback: Callback&lt;VisibilityChangeReason&gt; | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
@@ -801,6 +851,8 @@ ArkTS-Sta: onHidden(callback: Callback&lt;VisibilityChangeReason&gt; | undefined
 当该NavDestination页面隐藏时触发此回调。从API version 21开始，支持通过VisibilityChangeReason说明onHidden触发的原因。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -828,6 +880,8 @@ ArkTS-Sta: onWillAppear(callback: VoidCallback | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -853,6 +907,8 @@ ArkTS-Sta: onWillShow(callback: VoidCallback | undefined)
 > 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -880,6 +936,8 @@ ArkTS-Sta: onWillHide(callback: VoidCallback | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -906,6 +964,8 @@ ArkTS-Sta: onWillDisappear(callback: VoidCallback | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -929,6 +989,8 @@ ArkTS-Sta: onBackPressed(callback:&nbsp;(()&nbsp;=&gt;&nbsp;boolean) | undefined
 返回值为true时，表示重写返回键逻辑，返回值为false时，表示回退到上一个页面。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -955,6 +1017,8 @@ ArkTS-Sta: onReady(callback: Callback\<NavDestinationContext\> | undefined)
 > 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1034,6 +1098,8 @@ NavDestination返回时触发该回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 15
@@ -1060,6 +1126,8 @@ NavDestination处于激活态（处于栈顶可操作，且上层无特殊组件
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 17开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 17
@@ -1085,6 +1153,8 @@ NavDestination处于非激活态（处于非栈顶不可操作，或处于栈顶
 > 从API version 22开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 17开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1113,6 +1183,8 @@ ArkTS-Sta: onNewParam(callback: Callback\<Object | null | undefined\> | undefine
 > - 从API version 22开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1207,6 +1279,8 @@ NavDestination自定义标题。
 
 NavDestination上下文信息。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称   | 类型     | 只读 | 可选 |  说明     |
@@ -1214,7 +1288,7 @@ NavDestination上下文信息。
 | pathInfo | [NavPathInfo](ts-basic-components-navigation.md#navpathinfo10) | 否    | 否 | 跳转NavDestination时指定的参数。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
 | pathStack  | [NavPathStack](ts-basic-components-navigation.md#navpathstack10) | 否    | 否 | 当前NavDestination所处的导航控制器。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
 | navDestinationId<sup>12+</sup> | string | 否    | 是 | 当前NavDestination的唯一ID，由系统自动生成，和组件通用属性id无关。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
-| mode<sup>22+</sup> | [NavDestinationMode](#navdestinationmode枚举说明11) | 否    | 是 | 当前NavDestination的类型。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 24 |
+| mode<sup>22+</sup> | [NavDestinationMode](#navdestinationmode枚举说明11) | 否    | 是 | 当前NavDestination的类型。 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 24 |
 
 ### getConfigInRouteMap<sup>12+</sup>
 
@@ -1223,6 +1297,8 @@ getConfigInRouteMap(): RouteMapConfig | undefined
 获取当前NavDestination的路由配置信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1243,6 +1319,8 @@ getConfigInRouteMap(): RouteMapConfig | undefined
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -1261,6 +1339,8 @@ getConfigInRouteMap(): RouteMapConfig | undefined
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 14
@@ -1277,6 +1357,8 @@ getConfigInRouteMap(): RouteMapConfig | undefined
 NavDestination激活态或者非激活态变化的原因。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 17开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1299,6 +1381,8 @@ NavDestination可见性发生变化的原因。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 21
@@ -1316,6 +1400,8 @@ NavDestination可见性发生变化的原因。
 NavDestination自定义动画接口。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1338,6 +1424,8 @@ type NavDestinationTransitionDelegate = (operation: NavigationOperation, isEnter
 NavDestination自定义转场动画的代理函数。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1365,6 +1453,8 @@ ArkTS-Dyn: type Orientation = import('../api/@ohos.window').default.Orientation
 ArkTS-Sta: type Orientation = window.Orientation
 
 Orientation实例对象。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
