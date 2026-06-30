@@ -61,6 +61,7 @@ struct Index {
 
 ArkTS-Sta示例：
 <!-- @[web_DataDetector_Highlighting](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebDataDetector/entry/src/main/ets/pages/WebDataDetectorHighlighting.ets) --> 
+<!-- @[web_DataDetector_Highlighting](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebDataDetector/entry/src/main/ets/pages/WebDataDetectorHighlighting.ets) --> 
 
 ``` TypeScript
 import { Entry, Row, Column, Component, Button, ClickEvent, Web, $rawfile } from '@ohos.arkui.component'
@@ -70,7 +71,6 @@ import { webview } from '@kit.ArkWeb'
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World';
   webController: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
@@ -96,7 +96,6 @@ struct Index {
   }
 }
 ```
-
 加载的html文件。
 ```html
 <!-- index.html -->
