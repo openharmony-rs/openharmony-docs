@@ -135,7 +135,7 @@ Failed to send the message to the common event service.
 
 **处理步骤**
 
-请勿频繁建立链接，稍后重新尝试。
+请勿频繁建立连接，稍后重新尝试。
 
 ##  1500008 公共事件服务端初始化失败
 

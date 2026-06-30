@@ -18,7 +18,7 @@ System service exception, please try again or reboot your device.
 
 1. 系统服务停止运行。
 
-2. 系统服务内部通讯发生异常。
+2. 系统服务内部通信发生异常。
 
 **处理步骤**
 

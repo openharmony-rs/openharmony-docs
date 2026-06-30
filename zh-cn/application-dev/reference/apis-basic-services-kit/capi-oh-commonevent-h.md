@@ -176,7 +176,7 @@ CommonEvent_SubscribeInfo* OH_CommonEvent_CreateSubscribeInfo(const char* events
 
 | 类型                             | 说明 |
 |--------------------------------| -- |
-| [CommonEvent_SubscribeInfo](capi-oh-commonevent-commonevent-subscribeinfo.md)* | 成功则返回订阅者信息,失败则返回NULL。 |
+| [CommonEvent_SubscribeInfo](capi-oh-commonevent-commonevent-subscribeinfo.md)* | 成功则返回订阅者信息，失败则返回NULL。 |
 
 ### OH_CommonEvent_SetPublisherPermission()
 
@@ -273,7 +273,7 @@ CommonEvent_Subscriber* OH_CommonEvent_CreateSubscriber(const CommonEvent_Subscr
 
 | 类型 | 说明 |
 | -- | -- |
-| [CommonEvent_Subscriber](#变量)* | 成功则返回订阅者,失败则返回NULL。 |
+| [CommonEvent_Subscriber](#变量)* | 成功则返回订阅者，失败则返回NULL。 |
 
 ### OH_CommonEvent_DestroySubscriber()
 

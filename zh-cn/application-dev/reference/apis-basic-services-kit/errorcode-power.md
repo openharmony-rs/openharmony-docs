@@ -61,7 +61,7 @@ Operation failed. The system is shutting down.
 
 **错误信息**
 
-The device activity is being refreshed too frequently; the minimum timeinterval is 100 ms.
+The device activity is being refreshed too frequently; the minimum time interval is 100 ms.
 
 **错误描述**
 

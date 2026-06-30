@@ -2008,7 +2008,7 @@ query(): Promise&lt;DownloadInfo&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃,建议使用[getTaskInfo](#gettaskinfo9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getTaskInfo](#gettaskinfo9)替代。
 
 **返回值：**
 
@@ -2485,7 +2485,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | multipart<sup>15+</sup> | boolean | 否 | 是 | 是否使用单个请求进行上传，单个请求上传时必定使用multipart/form-data。<br/>- false：每个文件使用一个请求传输。 <br/>- true：使用多文件单请求上传。 <br/>默认值为false。 |
 | notification<sup>15+</sup> | [Notification](#requestagentnotification15) | 否 | 是 | 通知栏自定义设置。默认值为`{}`。|
 | minSpeed<sup>20+</sup> | [MinSpeed](#requestagentminspeed20) | 否 | 是 | 最低限速自定义设置，默认不启用最低限速。|
-| timeout<sup>20+</sup> | [Timeout](#requestagenttimeout20) | 否 | 是 | 超时时间自定义设置，连接超时时间默认60秒，总超时时间默认604800秒（1周）。当retry参数为true时，[timeout](#requestagenttimeout20)事件会触发立即重试，导致[timeout](#requestagenttimeout20)在外部观察中被重试动作所掩盖，但内部[timeout](#requestagenttimeout20)条件已实际触发。若需显性观察[timeout](#requestagenttimeout20)事件，需关闭retry参数。|
+| timeout<sup>20+</sup> | [Timeout](#requestagenttimeout20) | 否 | 是 | 超时时间自定义设置，连接超时时间默认60秒，总超时时间默认604800秒（1周）。当retry参数为true时，[timeout](#requestagenttimeout20)事件会触发立即重试，导致[timeout](#requestagenttimeout20)在外部观察中被重试动作所掩盖，但内部[timeout](#requestagenttimeout20)条件已实际触发。若需显式观察[timeout](#requestagenttimeout20)事件，需关闭retry参数。|
 
 ## request.agent.State<sup>10+</sup>  
 
