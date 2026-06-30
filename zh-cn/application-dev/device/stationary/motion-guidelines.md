@@ -183,6 +183,18 @@
 3. 订阅握持手感知
 
    <!-- @[motion_subscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   try {
+     motion.on('holdingHandChanged', callback);
+     console.info('on succeeded');
+     // ...
+   } catch (err) {
+     let error = err as BusinessError;
+     console.error('Failed on and err code is ' + error.code);
+     // ...
+   }
+   ```
 
 4. 取消订阅握持手感知
 
