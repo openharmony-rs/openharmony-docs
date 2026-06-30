@@ -440,6 +440,8 @@
 
 允许应用通过C API启动同应用的UIAbility。
 
+获取该权限后，应用通过C API可启动同应用内的UIAbility。
+
 **权限级别**：normal
 
 **授权方式**：系统授权（system_grant）
