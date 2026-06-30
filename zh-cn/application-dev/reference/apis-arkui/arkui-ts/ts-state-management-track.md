@@ -7,13 +7,13 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-@Track用于状态管理V1中，观测class对象的属性级更新。
+@Track用于状态管理V1中，观测class对象的属性级更新，减少不必要的UI重渲染。
 
 在ArkTS-Dyn中使用时，开发指南参考：[@Track装饰器：class对象属性级更新（ArkTS-Dyn）](../../../ui/state-management/arkts-track.md)。
 
 > **说明：**
 >
-> 从API version 11开始，支持该装饰器。
+> 该装饰器从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## @Track
 
