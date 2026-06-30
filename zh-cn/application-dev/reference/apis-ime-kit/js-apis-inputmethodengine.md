@@ -2419,7 +2419,7 @@ panel.updatePanelRect(panelFlag, panelRect);
 updatePanelRectSync(flag: PanelFlag, rect: PanelRect): void
 
 预设置输入法应用横竖屏大小。
-> **警告：**
+> **说明：**
 > 
 > 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[updatePanelRect](#updatepanelrect)。
 
@@ -2486,11 +2486,9 @@ panel.updatePanelRectSync(panelFlag, panelRect);
 updatePanelRectSync(flag: PanelFlag, rect: EnhancedPanelRect): void
 
 预设置输入法应用横竖屏大小、位置、自定义避让区域以及热区。
-> **警告：**
+> **说明：**
 > 
 > 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[updatePanelRect](#updatepanelrect)。
-
-> **说明:**
 >
 > 仅用于SOFT_KEYBOARD类型，状态为FLG_FIXED或FLG_FLOATING的面板。此接口兼容[adjustPanelRect](#adjustpanelrect12)的调用方法，若入参rect仅填写属性landscapeRect和portraitRect，则默认调用[adjustPanelRect](#adjustpanelrect12)。
 >
@@ -3616,7 +3614,7 @@ inputClient.getForward(length).then((text: string) => {
 getForwardSync(length:number): string
 
 获取光标前固定长度的文本。
-> **警告：**
+> **说明：**
 > 
 > 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[getForward](#getforward9-1)。
 
@@ -3740,7 +3738,7 @@ inputClient.getBackward(length).then((text: string) => {
 getBackwardSync(length:number): string
 
 获取光标后固定长度的文本。
-> **警告：**
+> **说明：**
 > 
 > 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[getBackward](#getbackward9)。
 
@@ -3876,7 +3874,7 @@ inputClient.deleteForward(length).then((result: boolean) => {
 deleteForwardSync(length:number): void
 
 删除光标前固定长度的文本。
-> **警告：**
+> **说明：**
 > 
 > 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[deleteForward](#deleteforward9)。
 
@@ -4005,7 +4003,7 @@ inputClient.deleteBackward(length).then((result: boolean) => {
 deleteBackwardSync(length:number): void
 
 删除光标后固定长度的文本。
-> **警告：**
+> **说明：**
 > 
 > 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[deleteBackward](#deletebackward9-1)。
 
@@ -4133,7 +4131,7 @@ inputClient.insertText('test').then((result: boolean) => {
 insertTextSync(text: string): void
 
 插入文本。
-> **警告：**
+> **说明：**
 > 
 > 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[insertText](#inserttext9-1)。
 
@@ -4241,7 +4239,7 @@ inputClient.getEditorAttribute().then((editorAttribute: inputMethodEngine.Editor
 getEditorAttributeSync(): EditorAttribute
 
 获取编辑框属性值。
-> **警告：**
+> **说明：**
 > 
 > 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[getEditorAttribute](#geteditorattribute9)。
 
@@ -4357,7 +4355,7 @@ inputClient.moveCursor(inputMethodEngine.Direction.CURSOR_UP).then(() => {
 moveCursorSync(direction: number): void
 
 移动光标。
-> **警告：**
+> **说明：**
 > 
 > 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[moveCursor](#movecursor9)。
 
@@ -4478,7 +4476,7 @@ inputClient.selectByRange(range).then(() => {
 selectByRangeSync(range: Range): void
 
 根据索引范围选中文本。
-> **警告：**
+> **说明：**
 > 
 > 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[selectByRange](#selectbyrange10)。
 
@@ -4600,7 +4598,7 @@ inputClient.selectByMovement(movement).then(() => {
 selectByMovementSync(movement: Movement): void
 
 根据光标移动方向选中文本。
-> **警告：**
+> **说明：**
 > 
 > 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[selectByMovement](#selectbymovement10-1)。
 
@@ -4707,7 +4705,7 @@ inputClient.getTextIndexAtCursor().then((index: number) => {
 getTextIndexAtCursorSync(): number
 
 获取光标所在处的文本索引。
-> **警告：**
+> **说明：**
 > 
 > 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[getTextIndexAtCursor](#gettextindexatcursor10)。
 
@@ -4979,7 +4977,7 @@ inputClient.setPreviewText('test', range).then(() => {
 setPreviewTextSync(text: string, range: Range): void
 
 设置预上屏文本。
-> **警告：**
+> **说明：**
 > 
 > 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[setPreviewText](#setpreviewtext12)。
 
@@ -5058,13 +5056,11 @@ inputClient.finishTextPreview().then(() => {
 finishTextPreviewSync(): void
 
 结束预上屏。
-> **警告：**
+> **说明：**
 > 
 > 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[finishTextPreview](#finishtextpreview12)。
-
->**说明：**
 >
->若当前输入框已有预上屏状态文本，调用此接口后，预上屏内容将被系统正式上屏。
+> 若当前输入框已有预上屏状态文本，调用此接口后，预上屏内容将被系统正式上屏。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
