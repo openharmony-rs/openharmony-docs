@@ -3357,7 +3357,7 @@ findMatchingWlan(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, nee
   }
   ```
   
-## BluetoothSearchRequestParams<sup>26+</sup>
+## geoLocationManager.BluetoothSearchRequestParams<sup>26+</sup>
 
 蓝牙扫描请求参数。
 
