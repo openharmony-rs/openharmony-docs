@@ -25,7 +25,7 @@ Web组件内的H5页面加载完成后，自动识别并高亮标注页面内的
 页面中文本实体高亮后，将转变为超链接形式。触摸点击或鼠标左键点击实体，会根据实体类型弹出操作菜单。
 
 ArkTS-Dyn示例：
-<!-- @[web_DataDetector_Highlighting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDataDetector/entry/src/main/ets/pages/WebDataDetectorHighlighting.ets) -->
+<!-- @[web_DataDetector_Highlighting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDataDetector/entry/src/main/ets/pages/WebDataDetectorHighlighting.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -61,7 +61,7 @@ struct Index {
 ```
 
 ArkTS-Sta示例：
-<!-- @[web_DataDetector_Highlighting](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebDataDetector/entry/src/main/ets/pages/WebDataDetectorHighlighting.ets) -->
+<!-- @[web_DataDetector_Highlighting](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebDataDetector/entry/src/main/ets/pages/WebDataDetectorHighlighting.ets) --> 
 
 ``` TypeScript
 import { Entry, Row, Column, Component, Button, ClickEvent, Web, $rawfile } from '@ohos.arkui.component'

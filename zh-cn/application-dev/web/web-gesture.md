@@ -150,7 +150,7 @@ Web组件提供了接口[zoomAccess](../reference/apis-arkweb/arkts-basic-compon
 **示例代码**
 
 ArkTS-Dyn示例：
-<!-- @[ReturnLastWebPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/ReturnLastWebPage.ets) --> 
+<!-- @[ReturnLastWebPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/ReturnLastWebPage.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -184,7 +184,7 @@ struct Index {
 ```
 
 ArkTS-Sta示例：
-<!-- @[ReturnLastWebPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebGestureInteraction/entry/src/main/ets/pages/ReturnLastWebPage.ets) --> 
+<!-- @[ReturnLastWebPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebGestureInteraction/entry/src/main/ets/pages/ReturnLastWebPage.ets) -->
 
 ``` TypeScript
 'use static'

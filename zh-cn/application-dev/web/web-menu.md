@@ -674,7 +674,7 @@ struct WebComponent {
 以下示例中，PreviewBuilder定义了超链接对应菜单的弹出内容，用Web组件加载了超链接内容（需要注意PreviewBuilder中的Web组件不会接收事件），使用[Progress组件](../ui/arkts-common-components-progress-indicator.md)展示了加载进度。
 
 ArkTS-Dyn示例：
-<!-- @[web_PreviewBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebPreviewBuilder.ets) -->
+<!-- @[web_PreviewBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebPreviewBuilder.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -848,7 +848,7 @@ struct SelectionMenuLongPress {
 ```
 
 ArkTS-Sta示例：
-<!-- @[web_PreviewBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebPreviewBuilder.ets) -->
+<!-- @[web_PreviewBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebPreviewBuilder.ets) --> 
 
 ``` TypeScript
 'use static'
@@ -1061,7 +1061,7 @@ html示例
 3. 通过photoAccessHelper将应用沙箱中的图片保存至图库。
 
 ArkTS-Dyn示例：
-<!-- @[web_Save_Image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebSaveImage.ets) --> 
+<!-- @[web_Save_Image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebSaveImage.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -1187,7 +1187,7 @@ struct WebComponent {
 ```
 
 ArkTS-Sta示例：
-<!-- @[web_Save_Image](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebSaveImage.ets) -->
+<!-- @[web_Save_Image](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebSaveImage.ets) --> 
 
 ``` TypeScript
 'use static'
