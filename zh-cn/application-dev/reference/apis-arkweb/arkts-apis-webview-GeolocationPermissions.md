@@ -53,7 +53,7 @@ static allowGeolocation(origin: string, incognito?: boolean): void
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
-| 17100011 | Invalid origin.The origin format must follow defined in RFC 6454. |
+| 17100011 | Invalid origin. The origin format must follow defined in RFC 6454. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -143,7 +143,7 @@ static deleteGeolocation(origin: string, incognito?: boolean): void
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
-| 17100011 | Invalid origin.The origin format must follow defined in RFC 6454. |
+| 17100011 | Invalid origin. The origin format must follow defined in RFC 6454. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -234,7 +234,7 @@ static getAccessibleGeolocation(origin: string, callback: AsyncCallback\<boolean
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
-| 17100011 | Invalid origin.The origin format must follow defined in RFC 6454. |
+| 17100011 | Invalid origin. The origin format must follow defined in RFC 6454. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -342,7 +342,7 @@ static getAccessibleGeolocation(origin: string, incognito?: boolean): Promise\<b
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
-| 17100011 | Invalid origin.The origin format must follow defined in RFC 6454. |
+| 17100011 | Invalid origin. The origin format must follow defined in RFC 6454. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
