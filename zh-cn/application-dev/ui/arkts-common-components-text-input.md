@@ -880,13 +880,6 @@ this.getUIContext()
 
 <!-- @[textmenushowmode_create_textinput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/TextMenuShowSubWindow.ets) -->
 
-``` TypeScript
-// 请将$r('app.string.Service_MenuItems_Text')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，长按弹出文本选择菜单"
-TextInput({ text: $r('app.string.Service_MenuItems_Text') })
-  .fontSize(15)
-  .margin({ top: 100 })
-  .copyOption(CopyOptions.InApp)
-```
 
 
 
