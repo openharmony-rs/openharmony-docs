@@ -1029,15 +1029,15 @@ audioRoutingManager.on('preferredInputDeviceChangeForCapturerInfo', capturerInfo
 audioRoutingManager.off('preferredInputDeviceChangeForCapturerInfo', preferredInputDeviceChangeForCapturerInfoCallback);
 ```
 
-### declareDeviceTypesCompatibility
+## declareDeviceTypesCompatibility
 
 declareDeviceTypesCompatibility(deviceTypes: DeviceTypeArray): void
- 	 
-声明应用需要获取的设备类型。
+
+声明应用需要兼容的设备类型。
 
 > **说明：**
 >
-> API version 20及以上版本中支持的设备类型，默认返回的设备类型为匿名类型。如需获取具体设备类型，需要先调用该方法进行设备类型声明。
+> 对于API version 20及以上版本新增的设备类型，应用调用获取设备的相关接口时（例如[getAvailableDevices](arkts-apis-audio-AudioSessionManager.md#getavailabledevices21)），默认返回的设备类型为匿名类型。如需获取具体设备类型，需先调用该方法进行设备类型兼容声明。
 
 **起始版本：** 26.0.0
 
@@ -1049,7 +1049,7 @@ declareDeviceTypesCompatibility(deviceTypes: DeviceTypeArray): void
 
 | 参数名                       | 类型                                                         | 必填 | 说明                      |
 | --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
-| deviceTypes | [DeviceTypeArray](arkts-apis-audio-t.md#devicetypearray24) | 是   | [DeviceType](arkts-apis-audio-e.md#devicetype)数组。 |
+| deviceTypes | [DeviceTypeArray](arkts-apis-audio-t.md#devicetypearray) | 是   | [DeviceType](arkts-apis-audio-e.md#devicetype)数组。 |
 
 **错误码：**
 
