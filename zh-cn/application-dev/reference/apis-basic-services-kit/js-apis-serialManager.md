@@ -53,7 +53,7 @@ getPortList(): Readonly&lt;SerialPort&gt;[]
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 31400001 | Serial port management exception.                             |
+| 31400001 | Serial port management exception.                            |
 
 **示例：**
 
@@ -102,13 +102,12 @@ hasSerialRight(portId: number): boolean
 
 以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
-
-| 错误码ID | 错误信息                                                     | 说明 |
-| -------- | ------------------------------------------------------------ | --- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 参数错误。可能原因：1. 必选参数未传入；2. 参数类型错误；3. 参数校验失败。请检查参数是否正确传入。 |
-| 14400005 | Database operation exception. | 数据库操作异常。请尝试重新调用接口。 |
-| 31400001 | Serial port management exception. | 串口服务异常。可能原因：程序出现异常导致进程退出。处理步骤：检查是否连接设备，重新通过串口列表获取端口号。 |
-| 31400003 | PortId does not exist. | 端口号不存在。可能原因：设备连接异常导致原有端口号失效。处理步骤：插拔设备，再次尝试打开。 |
+| 错误码ID | 错误信息                                                     |	 
+| -------- | ------------------------------------------------------------ |	 
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |	 
+| 14400005 | Database operation exception. |	 
+| 31400001 | Serial port management exception. |	 
+| 31400003 | PortId does not exist. |
 
 **示例：**
 
@@ -163,12 +162,12 @@ requestSerialRight(portId: number): Promise&lt;boolean&gt;
 
 以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
-| 错误码ID | 错误信息                                                     | 说明 |
-| -------- | ------------------------------------------------------------ | --- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 参数错误。可能原因：1. 必选参数未传入；2. 参数类型错误；3. 参数校验失败。请检查参数是否正确传入。 |
-| 14400005 | Database operation exception. | 数据库操作异常。请尝试重新调用接口。 |
-| 31400001 | Serial port management exception. | 串口服务异常。可能原因：程序出现异常导致进程退出。处理步骤：检查是否连接设备，重新通过串口列表获取端口号。 |
-| 31400003 | PortId does not exist. | 端口号不存在。可能原因：设备连接异常导致原有端口号失效。处理步骤：插拔设备，再次尝试打开。 |
+| 错误码ID | 错误信息                                                     |	 
+| -------- | ------------------------------------------------------------ |	 
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |	 
+| 14400005 | Database operation exception. |	 
+| 31400001 | Serial port management exception. |	 
+| 31400003 | PortId does not exist. |
 
 **示例：**
 
@@ -228,23 +227,17 @@ open(portId: number): void
 |--------|--------|----|-------------|
 | portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)返回的[SerialPort](#serialport)对象。 |
 
-**返回值：**
-
-| 类型 | 说明 |
-| ---- | ---- |
-| void | 无返回值。打开串口设备成功时无返回，失败时抛出异常，可通过错误码表格了解失败原因。 |
-
 **错误码：**
 
 以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
-| 错误码ID | 错误信息                                                     | 说明 |
-| -------- | ------------------------------------------------------------ | --- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 参数错误。可能原因：1. 必选参数未传入；2. 参数类型错误；3. 参数校验失败。请检查参数是否正确传入。 |
-| 31400001 | Serial port management exception. | 串口服务异常。可能原因：程序出现异常导致进程退出。处理步骤：检查是否连接设备，重新通过串口列表获取端口号。 |
-| 31400002 | Access denied. Call requestSerialRight to request user authorization first. | 没有串口设备访问权限。可能原因：没有申请串口设备访问权限。处理步骤：调用requestSerialRight申请访问权限。 |
-| 31400003 | PortId does not exist. | 端口号不存在。可能原因：设备连接异常导致原有端口号失效。处理步骤：插拔设备，再次尝试打开。 |
-| 31400004 | The serial port device is occupied. | 串口设备已被占用。可能原因：重复打开串口设备。处理步骤：插拔设备，再次尝试打开。 |
+| 错误码ID | 错误信息                                                     |	 
+| -------- | ------------------------------------------------------------ |	 
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |	 
+| 31400001 | Serial port management exception. |	 
+| 31400002 | Access denied. Call requestSerialRight to request user authorization first. |	 
+| 31400003 | PortId does not exist. |	 
+| 31400004 | The serial port device is occupied. |
 
 **示例：**
 
@@ -327,12 +320,12 @@ getAttribute(portId: number): Readonly&lt;SerialAttribute&gt;
 
 以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
-| 错误码ID | 错误信息                                                     | 说明 |
-| -------- | ------------------------------------------------------------ | --- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 参数错误。可能原因：1. 必选参数未传入；2. 参数类型错误；3. 参数校验失败。请检查参数是否正确传入。 |
-| 31400001 | Serial port management exception. | 串口服务异常。可能原因：1. 串口设备未正确连接；2. 系统串口服务异常。请检查设备连接状态，或重启应用后重试。 |
-| 31400003 | PortId does not exist. | 端口号不存在。请先调用getPortList()获取有效的端口号列表，确保使用正确的portId。 |
-| 31400005 | The serial port device is not opened. Call the open API first. | 串口设备未打开。可能原因：使用未打开的设备。处理步骤：请先调用open接口打开设备，再进行后续操作。 |
+| 错误码ID | 错误信息                                                     |	 
+| -------- | ------------------------------------------------------------ |	 
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |	 
+| 31400001 | Serial port management exception. |	 
+| 31400003 | PortId does not exist. |	 
+| 31400005 | The serial port device is not opened. Call the open API first. |
 
 **示例：**
 
@@ -423,12 +416,12 @@ setAttribute(portId: number, attribute: SerialAttribute): void
 
 以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
-| 错误码ID | 错误信息                                                     | 说明 |
-| -------- | ------------------------------------------------------------ | --- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 参数错误。可能原因：1. 必选参数未传入；2. 参数类型错误；3. 参数校验失败。请检查参数是否正确传入。 |
-| 31400001 | Serial port management exception. | 串口服务异常。可能原因：1. 串口设备未正确连接；2. 系统串口服务异常。请检查设备连接状态，或重启应用后重试。 |
-| 31400003 | PortId does not exist. | 端口号不存在。可能原因：设备连接异常导致原有端口号失效。处理步骤：插拔设备，再次尝试打开。 |
-| 31400005 | The serial port device is not opened. Call the open API first. | 串口设备未打开。可能原因：使用未打开的设备。处理步骤：请先调用open接口打开设备，再进行后续操作。 |
+| 错误码ID | 错误信息                                                     |	 
+| -------- | ------------------------------------------------------------ |	 
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |	 
+| 31400001 | Serial port management exception. |	 
+| 31400003 | PortId does not exist. |	 
+| 31400005 | The serial port device is not opened. Call the open API first. |
 
 **示例：**
 
@@ -527,14 +520,14 @@ read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt
 
 以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
-| 错误码ID | 错误信息                                                     | 说明 |
-| -------- | ------------------------------------------------------------ | --- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 参数错误。可能原因：1. 必选参数未传入；2. 参数类型错误；3. 参数校验失败。请检查参数是否正确传入。 |
-| 31400001 | Serial port management exception. | 可能原因：1. 串口设备未正确连接；2. 系统串口服务异常。请检查设备连接状态，或重启应用后重试。 |
-| 31400003 | PortId does not exist. | 端口号不存在。请先调用getPortList()获取有效的端口号列表，确保使用正确的portId。 |
-| 31400005 | The serial port device is not opened. Call the open API first. | 串口设备未打开。可能原因：使用未打开的设备。处理步骤：请先调用open接口打开设备，再进行后续操作。 |
-| 31400006 | Data transfer timed out. | 数据传输超时。可能原因：1. 数据接收/发送时间超过设定的timeout值；2. 设备响应慢。建议：增加timeout参数值，或检查设备连接状态。 |
-| 31400007 | I/O exception. Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed. | IO异常。可能原因：1. 传输任务被异常取消；2. 用户接收的单次传输数据量超过了设置的缓冲区大小。处理步骤：设置符合传输场景要求的缓冲区大小后，重新启动传输任务。 |
+| 错误码ID | 错误信息                                                     |	 
+| -------- | ------------------------------------------------------------ |	 
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |	 
+| 31400001 | Serial port management exception. |	 
+| 31400003 | PortId does not exist. |	 
+| 31400005 | The serial port device is not opened. Call the open API first. |	 
+| 31400006 | Data transfer timed out. |	 
+| 31400007 | I/O exception. Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed. |
 
 **示例：**
 
@@ -634,14 +627,14 @@ readSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
 以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
-| 错误码ID | 错误信息                                                     | 说明 |
-| -------- | ------------------------------------------------------------ | --- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 参数错误。可能原因：1. 必选参数未传入；2. 参数类型错误；3. 参数校验失败。请检查参数是否正确传入。 |
-| 31400001 | Serial port management exception. | 串口服务异常。可能原因：1. 串口设备未正确连接；2. 系统串口服务异常。请检查设备连接状态，或重启应用后重试。 |
-| 31400003 | PortId does not exist. | 端口号不存在。请先调用getPortList()获取有效的端口号列表，确保使用正确的portId。 |
-| 31400005 | The serial port device is not opened. Call the open API first. | 串口设备未打开。可能原因：使用未打开的设备。处理步骤：请先调用open接口打开设备，再进行后续操作。 |
-| 31400006 | Data transfer timed out. | 数据传输超时。可能原因：1. 数据接收/发送时间超过设定的timeout值；2. 设备响应慢。建议：增加timeout参数值，或检查设备连接状态。 |
-| 31400007 | I/O exception. Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed. | IO异常。可能原因：1. 传输任务被异常取消；2. 用户接收的单次传输数据量超过了设置的缓冲区大小。处理步骤：设置符合传输场景要求的缓冲区大小后，重新启动传输任务。 |
+| 错误码ID | 错误信息                                                     |	 
+| -------- | ------------------------------------------------------------ |	 
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |	 
+| 31400001 | Serial port management exception. |	 
+| 31400003 | PortId does not exist. |	 
+| 31400005 | The serial port device is not opened. Call the open API first. |	 
+| 31400006 | Data transfer timed out. |	 
+| 31400007 | I/O exception. Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed. |
 
 **示例：**
 
@@ -735,14 +728,14 @@ write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&g
 
 以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
-| 错误码ID | 错误信息                                                     | 说明 |
-| -------- | ------------------------------------------------------------ | --- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 参数错误。可能原因：1. 必选参数未传入；2. 参数类型错误；3. 参数校验失败。请检查参数是否正确传入。 |
-| 31400001 | Serial port management exception. | 串口服务异常。可能原因：1. 串口设备未正确连接；2. 系统串口服务异常。请检查设备连接状态，或重启应用后重试。 |
-| 31400003 | PortId does not exist. | 端口号不存在。请先调用getPortList()获取有效的端口号列表，确保使用正确的portId。 |
-| 31400005 | The serial port device is not opened. Call the open API first. | 串口设备未打开。可能原因：使用未打开的设备。处理步骤：请先调用open接口打开设备，再进行后续操作。 |
-| 31400006 | Data transfer timed out. | 数据传输超时。可能原因：1. 数据接收/发送时间超过设定的timeout值；2. 设备响应慢。建议：增加timeout参数值，或检查设备连接状态。|
-| 31400007 | I/O exception. Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed. | IO异常。可能原因：1. 传输任务被异常取消；2. 用户接收的单次传输数据量超过了设置的缓冲区大小。处理步骤：设置符合传输场景要求的缓冲区大小后，重新启动传输任务。 |
+| 错误码ID | 错误信息                                                     |	 
+| -------- | ------------------------------------------------------------ |	 
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |	 
+| 31400001 | Serial port management exception. |	 
+| 31400003 | PortId does not exist. |	 
+| 31400005 | The serial port device is not opened. Call the open API first. |	 
+| 31400006 | Data transfer timed out. |	 
+| 31400007 | I/O exception. Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed. |
 
 **示例：**
 
@@ -843,14 +836,14 @@ writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
 以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
-| 错误码ID | 错误信息                                                     | 说明 |
-| -------- | ------------------------------------------------------------ | --- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 参数错误。可能原因：1. 必选参数未传入；2. 参数类型错误；3. 参数校验失败。请检查参数是否正确传入。 |
-| 31400001 | Serial port management exception. | 串口服务异常。可能原因：1. 串口设备未正确连接；2. 系统串口服务异常。请检查设备连接状态，或重启应用后重试。 |
-| 31400003 | PortId does not exist. | 端口号不存在。请先调用getPortList()获取有效的端口号列表，确保使用正确的portId。 |
-| 31400005 | The serial port device is not opened. Call the open API first. | 串口设备未打开。可能原因：使用未打开的设备。处理步骤：请先调用open接口打开设备，再进行后续操作。 |
-| 31400006 | Data transfer timed out. | 可能原因：1. 数据接收/发送时间超过设定的timeout值；2. 设备响应慢。建议：增加timeout参数值，或检查设备连接状态。 |
-| 31400007 | I/O exception. Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed. | IO异常。可能原因：1. 传输任务被异常取消；2. 用户接收的单次传输数据量超过了设置的缓冲区大小。处理步骤：设置符合传输场景要求的缓冲区大小后，重新启动传输任务。 |
+| 错误码ID | 错误信息                                                     |	 
+| -------- | ------------------------------------------------------------ |	 
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |	 
+| 31400001 | Serial port management exception. |	 
+| 31400003 | PortId does not exist. |	 
+| 31400005 | The serial port device is not opened. Call the open API first. |	 
+| 31400006 | Data transfer timed out. |	 
+| 31400007 | I/O exception. Possible causes: 1. The transfer was canceled. 2. The device offered more data than allowed. |
 
 **示例：**
 
@@ -937,22 +930,17 @@ close(portId: number): void
 |--------|--------|----|-------------|
 | portId | number | 是  | 来自[getPortList](#serialmanagergetportlist)获取的串口参数[SerialPort](#serialport)。 |
 
-**返回值：**
-
-| 类型 | 说明 |
-| ---- | ---- |
-| void | 无返回值。关闭串口成功时无返回，失败时抛出异常，可通过错误码表格了解失败原因。 |
-
 **错误码：**
 
 以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
-| 错误码ID | 错误信息                                                     | 说明 |
-| -------- | ------------------------------------------------------------ | --- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 参数错误。可能原因：1. 必选参数未传入；2. 参数类型错误；3. 参数校验失败。请检查参数是否正确传入。 |
-| 31400001 | Serial port management exception. | 串口服务异常。可能原因：1. 串口设备未正确连接；2. 系统串口服务异常。请检查设备连接状态，或重启应用后重试。 |
-| 31400003 | PortId does not exist. | 端口号不存在。请先调用getPortList()获取有效的端口号列表，确保使用正确的portId。 |
-| 31400005 | The serial port device is not opened. Call the open API first. | 串口设备未打开。可能原因：使用未打开的设备。处理步骤：请先调用open接口打开设备，再进行后续操作。 |
+| 错误码ID | 错误信息                                                     |	 
+| -------- | ------------------------------------------------------------ |	 
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |	 
+| 14400005 | Database operation exception.                                |	 
+| 31400001 | Serial port management exception. |	 
+| 31400002 | Access denied. Call requestSerialRight to request user authorization first. |	 
+| 31400003 | PortId does not exist. |
 
 **示例：**
 
@@ -1029,23 +1017,17 @@ cancelSerialRight(portId: number): void
 |--------|--------|----|-------------------------------------|
 | portId | number | 是  | 端口号，来自[getPortList](#serialmanagergetportlist)获取的串口参数[SerialPort](#serialport)。 |
 
-**返回值：**
-
-| 类型 | 说明 |
-| ---- | ---- |
-| void | 无返回值。取消权限成功时无返回，失败时抛出异常，可通过错误码表格了解失败原因。 |
-
 **错误码：**
 
 以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
-| 错误码ID | 错误信息                                                     | 说明 |
-| -------- | ------------------------------------------------------------ | --- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 参数错误。可能原因：1. 必选参数未传入；2. 参数类型错误；3. 参数校验失败。请检查参数是否正确传入。 |
-| 14400005 | Database operation exception. | 数据库操作异常。请检查系统数据库服务是否正常运行，或重启应用后重试。 |
-| 31400001 | Serial port management exception. | 串口服务异常。可能原因：1. 串口设备未正确连接；2. 系统串口服务异常。请检查设备连接状态，或重启应用后重试。 |
-| 31400002 | Access denied. Call requestSerialRight to request user authorization first. | 没有串口设备访问权限。可能原因：没有申请串口设备访问权限。处理步骤：调用requestSerialRight申请访问权限。 |
-| 31400003 | PortId does not exist. | 端口号不存在。请先调用getPortList()获取有效的端口号列表，确保使用正确的portId。 |
+| 错误码ID | 错误信息                                                     |	 
+| -------- | ------------------------------------------------------------ |	 
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |	 
+| 14400005 | Database operation exception.                                |	 
+| 31400001 | Serial port management exception. |	 
+| 31400002 | Access denied. Call requestSerialRight to request user authorization first. |	 
+| 31400003 | PortId does not exist. |
 
 **示例：**
 
