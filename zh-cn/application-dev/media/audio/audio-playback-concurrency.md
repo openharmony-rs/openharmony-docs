@@ -235,7 +235,7 @@ async function onAudioInterrupt(): Promise<void> {
           }
           // 若start()执行成功，则切换至音频播放状态。
           if (started) {
-            isPlay = true; // 此句为简化处理，代表应用切换至音频播放状态的若干操作。
+            isPlaying = true; // 此句为简化处理，代表应用切换至音频播放状态的若干操作。
           } else {
             // 音频继续播放的操作执行失败。
           }
