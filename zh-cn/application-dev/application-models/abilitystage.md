@@ -84,11 +84,11 @@ DevEco Studio默认工程中未自动生成AbilityStage，如需要使用Ability
 - 通过关闭应用进程，可以触发AbilityStage的onDestroy()生命周期回调。
 
   <!-- @[myAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AbilityStage/entry/src/main/ets/myabilitystage/MyAbilityStage.ets) -->
-
+  
   ``` TypeScript
   import { EnvironmentCallback, AbilityStage } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   export default class MyAbilityStage extends AbilityStage {
     onCreate(): void {
       console.info('AbilityStage onCreate');
@@ -113,7 +113,7 @@ DevEco Studio默认工程中未自动生成AbilityStage，如需要使用Ability
         console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
       }
     }
-
+  
     onDestroy(): void {
       // 通过onDestroy()方法，可以监听到Ability的销毁事件。
       console.info('AbilityStage onDestroy');
