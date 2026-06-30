@@ -413,8 +413,8 @@ export default class AVPlayerDemo {
    ```
 
    <!-- @[napi_asr_predict](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) --> 
-
-   ```c++
+   
+   ``` C++
    std::vector<int> LoopPredict(const OH_AI_ModelHandle model, const BinBuffer &n_layer_cross_k,
                                 const BinBuffer &n_layer_cross_v, const BinBuffer &logits_init,
                                 BinBuffer &out_n_layer_self_k_cache, BinBuffer &out_n_layer_self_v_cache,
