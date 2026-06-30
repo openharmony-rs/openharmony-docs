@@ -41,7 +41,7 @@ Obtains the distributed account information about an OS account. This API uses a
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | localId | number | Yes| ID of the target OS account.|
-  | callback | AsyncCallback&lt;[DistributedInfo](js-apis-distributed-account.md#distributedinfo)&gt; | Yes| Callback used to return the result. If the the distributed account information is obtained successfully, **err** is **undefined** and **data** is the distributed account information obtained. Otherwise, **err** is an error object.|
+  | callback | AsyncCallback&lt;[DistributedInfo](js-apis-distributed-account.md#distributedinfo)&gt; | Yes| Callback used to return the result. If the distributed account information is obtained successfully, **err** is **undefined** and **data** is the distributed account information obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 

@@ -3264,7 +3264,7 @@ For details about the error codes, see [Account Management Error Codes](./errorc
 
 **Example**
 
-Delete the the sub-profile whose ID is 100001 from OS account 100.
+Delete the sub-profile whose ID is 100001 from OS account 100.
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
