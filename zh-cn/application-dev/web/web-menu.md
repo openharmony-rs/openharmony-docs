@@ -1187,8 +1187,9 @@ struct WebComponent {
 }
 ```
 ``` TypeScript
-'use static'
+<!-- @[web_Save_Image](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebSaveImage.ets) --> 
 
+``` TypeScript
 import webview from '@ohos.web.webview';
 import { Entry, Column, Component, ClickEvent, Web, Context, Row, ResponseType, FlexAlign, SaveButton, Padding,
   SaveButtonOnClickResult, SaveButtonOptions, SaveIconStyle, SaveDescription, ButtonType, $rawfile, Color } from '@ohos.arkui.component';
@@ -1244,17 +1245,17 @@ struct WebComponent {
     let off: number = 0;
     let len: number = 0;
     let readLen: number = 0;
-    let srcFd: int = Number(srcFileDes.fd) as int;
+    let srcFd: int = Double.toInt(srcFileDes.fd);
     let srcOffset: number = srcFileDes.offset;
     let srcLength: number = srcFileDes.length;
     while (true) {
-      let readOptions: ReadOptions = { offset: srcOffset + off as long, length: bufsize as long};
+      let readOptions: ReadOptions = { offset: Double.toLong(srcOffset + off), length: Double.toLong(bufsize)};
       len = fs.readSync(srcFd, buf, readOptions);
       if (len <= 0) {
         break;
       }
       readLen += len;
-      let writeOptions: WriteOptions = { offset: off as long, length: len as long};
+      let writeOptions: WriteOptions = { offset: Double.toLong(off), length: Double.toLong(len)};
       fs.writeSync(dest.fd, buf, writeOptions);
       off += len;
       if ((srcLength - readLen) < bufsize) {
@@ -1265,6 +1266,7 @@ struct WebComponent {
       }
     }
     fs.close(dest.fd);
+    fs.close(srcFileDes.fd)
     return dstPath;
   }
 
@@ -1323,9 +1325,6 @@ struct WebComponent {
   }
 }
 ```
-
-<!---->
-
   ```html
   <!--index4.html-->
   <!DOCTYPE html>
