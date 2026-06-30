@@ -30,4 +30,4 @@ System internal error.
 
 1. 重启设备后重试。
 
-2. 若您的问题仍无法解决，请通过企点QQ：800183590、[转人工链接](https://webpage.qidian.qq.com/qidian/chatv3/pc.html?linkType=1&env=ol&kfuin=2885820057&fid=365&key=646c4489e237ea477e85483a1791dfaa&cate=1&type=16&ftype=1&_type=wpa&qidian=true&waitTime=10005&clickid=ad71nq.wg8a2n.l1fu39si&callImType=1&delayTime=10&roleValue=1&roleData=474&translateSwitch=0&source=0&isLBS=0&isSsc=0&isCustomEntry=0&im_jump_from=v2_1)、[在线提单](https://developer.huawei.com/consumer/cn/support/feedback/#/add/101704353566310877?level2=101704353626565886&level3=101704354358694993&keyWord=Ads%20Kit)提交问题。
+2. 若您的问题仍无法解决，请通过企点QQ：800183590、[转人工链接](https://webpage.qidian.qq.com/qidian/chatv3/pc.html?linkType=1&env=ol&kfuin=2885820057&fid=365&key=646c4489e237ea477e85483a1791dfaa&cate=1&type=16&ftype=1&_type=wpa&qidian=true&waitTime=10005&clickid=ad71nq.wg8a2n.l1fu39si&callImType=1&delayTime=10&roleValue=1&roleData=474&translateSwitch=0&source=0&isLBS=0&isSsc=0&isCustomEntry=0&im_jump_from=v2_1)、<!--RP1-->在线提单<!--RP1End-->提交问题。
