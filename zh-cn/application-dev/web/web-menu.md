@@ -413,7 +413,6 @@ struct SelectionMenuLongPress {
           .style({ strokeWidth: 3, enableSmoothEffect: true })
           .backgroundColor(Color.White)
           .opacity(this.progressVisible?1:0)
-          .backgroundColor(Color.White)
       }.alignContent(Alignment.Bottom)
       Web({src:$$.url,controller: new webview.WebviewController()})
         .javaScriptAccess(true)
