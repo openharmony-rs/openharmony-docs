@@ -314,31 +314,25 @@ Video控制器主要用于控制视频的状态，包括播放、暂停、停止
       .height('40%')
     }
   }
-  ```
-
-
-## 其他说明
-
-Video组件已经封装好了视频播放的基础能力，开发者无需进行视频实例的创建，视频信息的设置获取，只需要设置数据源以及基础信息即可播放视频，相对扩展能力较弱。如果开发者想自定义视频播放，请使用[AVPlayer](../media/media/media-kit-intro.md#avplayer)，下面是一个使用AVPlayer进行播放视频的简单示例，如果需要更详细信息或更复杂功能请参考[视频播放](../media/media/video-playback.md)。
   <!-- @[xcomponent_av_player](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/XComponentAVPlayer.ets) -->  
-
+  
   ``` TypeScript
   // xxx.ets
   import { window } from '@kit.ArkUI';
   import { AVPlayerController } from '../avplayertool/AVPlayerController';
   import { emitter } from '@kit.BasicServicesKit';
   import { CommonConstants, VideoDataType } from  '../common/constants/CommonConstants';
-  import { VideoData } from '../model/VideoData'
-  import { common } from '@kit.AbilityKit'
-
+  import { VideoData } from '../model/VideoData';
+  import { common } from '@kit.AbilityKit';
+  
   class VideoXComponentController extends XComponentController {
     private avPlayerController: AVPlayerController;
-
+  
     constructor(avPlayerController: AVPlayerController) {
       super();
       this.avPlayerController = avPlayerController;
     }
-
+  
     onSurfaceCreated(surfaceId: string): void {
       let source: VideoData = {
         type: VideoDataType.RAW_FILE,
@@ -348,7 +342,7 @@ Video组件已经封装好了视频播放的基础能力，开发者无需进行
       this.avPlayerController.initAVPlayer(source, surfaceId);
     }
   }
-
+  
   const MINUTE_UNIT = 60000;
   const SECOND_UNIT = 1000;
   const SECOND_TEN = 10;
@@ -357,7 +351,7 @@ Video组件已经封装好了视频播放的基础能力，开发者无需进行
     let second: string = ((time % MINUTE_UNIT) / SECOND_UNIT).toFixed(0);
     return `${min}:${(Number(second) < SECOND_TEN ? '0' : '') + second}`;
   }
-
+  
   @Entry
   @Component
   struct XComponentAVPlayer {
@@ -383,13 +377,13 @@ Video组件已经封装好了视频播放的基础能力，开发者无需进行
     @State windowHeight: number = 0;
     // 窗口实例。
     private windowClass: window.Window | null = null;
-
+  
     // 获取窗口实例。
     getWindow(): window.Window {
       const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
       return context.windowStage!.getMainWindowSync();
     }
-
+  
     aboutToAppear(): void {
       this.windowClass = this.getWindow();
       let properties = this.windowClass.getWindowProperties();
@@ -412,7 +406,7 @@ Video组件已经封装好了视频播放的基础能力，开发者无需进行
         }
       });
     }
-
+  
     // 设置沉浸式窗口。
     setFullScreen(isLayoutFullScreen: boolean) {
       window.getLastWindow(this.getUIContext().getHostContext()).then((win) => {
@@ -427,7 +421,7 @@ Video组件已经封装好了视频播放的基础能力，开发者无需进行
         console.error(`setFullScreen failed, message is ${err}`);
       });
     }
-
+  
     build() {
       Column() {
         Stack() {
@@ -518,6 +512,12 @@ Video组件已经封装好了视频播放的基础能力，开发者无需进行
         .width(this.isLayoutFullScreen ? this.windowWidth : 300)
       }
       .width('100%')
+      .height('100%')
+      .justifyContent(FlexAlign.Center)
+      .alignItems(HorizontalAlign.Center)
+    }
+  }
+  ```
       .height('100%')
       .justifyContent(FlexAlign.Center)
       .alignItems(HorizontalAlign.Center)
