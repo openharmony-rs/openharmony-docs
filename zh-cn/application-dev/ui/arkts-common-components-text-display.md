@@ -1823,7 +1823,7 @@ Text组件需要设置[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-com
 
   ![text_editmenuoptions](figures/text_editmenuoptions.gif)
 
-- 从API version 20开始，当文本选择区域变化后显示菜单之前触发[onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#属性-1)回调，可在该回调中进行菜单数据设置。
+- 从API version 20开始，当文本选择区域变化后显示菜单之前触发[onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#属性-1)回调，可在该回调中进行菜单数据设置，提供系统菜单自定义刷新能力。
 
   ArkTS-Dyn示例：
 
@@ -2591,7 +2591,7 @@ Text组件通过设置[TextMenuShowMode](../reference/apis-arkui/arkui-ts/ts-tex
     .copyOption(CopyOptions.InApp)
   ```
 
-  ![Text_menu_subwindow](figures/Text_menu_subwindow.gif)
+  ![Text-menu-subwindow](figures/Text-menu-subwindow.gif)
 
 ## 实现热搜榜
 

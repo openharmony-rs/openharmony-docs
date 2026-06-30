@@ -759,7 +759,7 @@ TextInput({ text: $r('app.string.show_selected_menu') })
   })
 ```
 
-![TextInput_edit_menu_options](figures/TextInput_edit_menu_options.gif)
+![TextInput-edit-menu-options](figures/TextInput-edit-menu-options.gif)
 
 ### 系统菜单中屏蔽系统菜单项
 
@@ -921,7 +921,7 @@ TextInput({ text: $r('app.string.Service_MenuItems_Text')})
 
 
 
-![TextInput_menu_subwindow](figures/TextInput_menu_subwindow.gif)
+![TextInput-menu-subwindow](figures/TextInput-menu-subwindow.gif)
 
 ## 设置输入框避让
 
