@@ -27,7 +27,7 @@ The input method application cannot create an application clone.
 
 1. Configure the application clone.
 
-    Configure the [multiAppMode](app-configuration-file.md#multiappmode) field in the **AppScope/application.json5** configuration file in the project. The code snippet is as follows:
+    Configure the [multiAppMode](app-configuration-file.md#multiappmode) field in the **AppScope/app.json5** configuration file in the project. The code snippet is as follows:
     <!-- @[app_clone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppClone/AppScope/app.json5) -->
 
     ``` JSON5
