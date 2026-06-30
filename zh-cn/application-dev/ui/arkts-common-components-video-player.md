@@ -315,13 +315,13 @@ Video控制器主要用于控制视频的状态，包括播放、暂停、停止
     }
   }
   ```
-  
-  
- ## 其他说明	 
- 
+
+
+## 其他说明
+
 Video组件已经封装好了视频播放的基础能力，开发者无需进行视频实例的创建，视频信息的设置获取，只需要设置数据源以及基础信息即可播放视频，相对扩展能力较弱。如果开发者想自定义视频播放，请使用[AVPlayer](../media/media/media-kit-intro.md#avplayer)，下面是一个使用AVPlayer进行播放视频的简单示例，如果需要更详细信息或更复杂功能请参考[视频播放](../media/media/video-playback.md)。
 <!-- @[xcomponent_av_player](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/XComponentAVPlayer.ets) -->  
-  
+
   ``` TypeScript
   // xxx.ets
   import { window } from '@kit.ArkUI';
