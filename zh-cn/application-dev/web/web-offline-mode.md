@@ -1,7 +1,7 @@
 # 使用离线Web组件
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @LHWu-->
+<!--Owner: @lollipopolive-->
 <!--Designer: @qianlf-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
