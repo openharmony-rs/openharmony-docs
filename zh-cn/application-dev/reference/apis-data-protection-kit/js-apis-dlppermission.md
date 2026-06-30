@@ -2007,7 +2007,7 @@ dlpPermission.setControlledAppLists(appList, userId).then(() => {
 }).catch((error: BusinessError) => {
   console.error(error.message);
 }).finally(() => {
-  console.info("Completed set controlled appLists operation");
+  console.info("Completed set controlled appLists operation.");
 });
 ```
 
