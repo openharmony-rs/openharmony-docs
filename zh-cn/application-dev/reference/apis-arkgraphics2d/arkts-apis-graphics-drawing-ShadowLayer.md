@@ -7,7 +7,7 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-阴影层对象，通过设置模糊半径、偏移量和颜色，可为图形、文本等绘制内容添加阴影渲染效果，适用于需要实现阴影、发光等视觉特效的场景。
+阴影层对象，通过设置模糊半径、偏移量和颜色，可为图形、文本等绘制内容添加阴影渲染效果。
 
 > **说明：**
 >
@@ -29,7 +29,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 static create(blurRadius: number, x: number, y: number, color: common2D.Color): ShadowLayer
 
-创建阴影层对象。适用于为图形、文本等绘制内容添加阴影、发光等视觉特效的场景。
+创建阴影层对象。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

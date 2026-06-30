@@ -83,7 +83,6 @@ void OH_Drawing_ColorSpaceDestroy(OH_Drawing_ColorSpace* colorSpace)
 
 销毁颜色空间对象，并回收该对象占用的内存。
 
-
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
@@ -92,5 +91,5 @@ void OH_Drawing_ColorSpaceDestroy(OH_Drawing_ColorSpace* colorSpace)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Drawing_ColorSpace](capi-drawing-oh-drawing-colorspace.md)* colorSpace | 指向待销毁的颜色空间对象[OH_Drawing_ColorSpace](capi-drawing-oh-drawing-colorspace.md)的指针。若为NULL，则不执行销毁操作。销毁后不应再使用该对象指针，否则可能导致未定义行为。 |
+| [OH_Drawing_ColorSpace](capi-drawing-oh-drawing-colorspace.md)* colorSpace | 指向待销毁的颜色空间对象[OH_Drawing_ColorSpace](capi-drawing-oh-drawing-colorspace.md)的指针。 |
 

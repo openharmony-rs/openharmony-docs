@@ -7,7 +7,7 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-图像滤波器，用于对图像应用各种滤波效果，支持创建模糊、颜色混合、级联组合、偏移、基于着色器等多种图像滤波器，适用于需要对图像进行特效处理与合成的场景。
+图像滤波器，用于对图像应用各种滤波效果，支持创建模糊、颜色混合、级联组合、偏移、基于着色器等多种图像滤波器。
 
 > **说明：**
 >
@@ -46,7 +46,7 @@ static createBlurImageFilter(sigmaX: number, sigmaY: number, tileMode: TileMode,
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | 返回创建的模糊图像滤波器，可用于画刷或画笔实现图像模糊效果。 |
+| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | 返回创建的模糊图像滤波器。 |
 
 **错误码：**
 
@@ -83,7 +83,7 @@ static createFromImage(pixelmap: image.PixelMap, srcRect?: common2D.Rect | null,
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | 返回基于图像创建的图像滤波器，可用于画刷或画笔实现图像纹理填充。 |
+| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | 返回基于图像创建的图像滤波器。 |
 
 **示例：**
 
@@ -152,7 +152,7 @@ static createBlendImageFilter(mode: BlendMode, background: ImageFilter, foregrou
 
 | 类型                  | 说明            |
 | --------------------- | -------------- |
-| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | 返回按照指定混合模式叠加后的图像滤波器，可用于画刷或画笔实现两种滤波效果的混合。 |
+| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | 返回按照指定混合模式叠加后的图像滤波器。 |
 
 **错误码：**
 
@@ -194,7 +194,7 @@ static createComposeImageFilter(cOuter: ImageFilter, cInner: ImageFilter): Image
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | 返回级联后的图像滤波器，可用于画刷或画笔实现两种滤波效果的叠加。 |
+| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | 返回级联后的图像滤波器。 |
 
 **示例：**
 
@@ -233,7 +233,7 @@ static createFromColorFilter(colorFilter: ColorFilter, imageFilter?: ImageFilter
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | 返回颜色滤波器叠加后的图像滤波器，可用于画刷或画笔实现颜色滤波效果。 |
+| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | 返回颜色滤波器叠加后的图像滤波器。 |
 
 **错误码：**
 
@@ -256,7 +256,7 @@ let imgFilter1 = drawing.ImageFilter.createFromColorFilter(colorFilter, imgFilte
 
 static createOffsetImageFilter(dx: number, dy: number, input?: ImageFilter | null): ImageFilter
 
-创建一个偏移滤波器，将输入的滤波器按照指定向量进行平移。适用于创建阴影偏移效果或位移动画等场景。
+创建一个偏移滤波器，将输入的滤波器按照指定向量进行平移。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -272,7 +272,7 @@ static createOffsetImageFilter(dx: number, dy: number, input?: ImageFilter | nul
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | 返回偏移后的图像滤波器，可用于画刷或画笔实现图像偏移或阴影效果。 |
+| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | 返回偏移后的图像滤波器。 |
 
 **示例：**
 
@@ -288,7 +288,7 @@ let offsetFilter = drawing.ImageFilter.createOffsetImageFilter(dx, dy, null);
 
 static createFromShaderEffect(shader: ShaderEffect): ImageFilter
 
-基于着色器创建一个图像滤波器。适用于需要将着色器效果转换为图像滤波器的场景。
+基于着色器创建一个图像滤波器。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -302,7 +302,7 @@ static createFromShaderEffect(shader: ShaderEffect): ImageFilter
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | 返回基于着色器创建的图像滤波器，可用于画刷或画笔实现着色器渲染效果。 |
+| [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) | 返回基于着色器创建的图像滤波器。 |
 
 **示例：**
 

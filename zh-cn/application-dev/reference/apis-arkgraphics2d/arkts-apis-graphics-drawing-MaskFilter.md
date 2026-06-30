@@ -7,7 +7,7 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-蒙版滤镜对象，用于对绘制内容施加模糊效果以创建阴影、发光等视觉效果。通过高斯模糊算法处理Alpha通道，常用于为图形边缘添加柔和或模糊的视觉效果。
+蒙版滤镜对象，用于对绘制内容施加模糊效果。
 
 > **说明：**
 >
@@ -37,14 +37,14 @@ static createBlurMaskFilter(blurType: BlurType, sigma: number): MaskFilter
 
 | 参数名     | 类型                   | 必填 | 说明                                 |
 | ---------- | --------------------- | ---- | ----------------------------------- |
-| blurType   | [BlurType](arkts-apis-graphics-drawing-e.md#blurtype12) | 是   | 模糊类型，用于指定蒙版滤镜的模糊操作方式。具体可选值及含义参见[BlurType](arkts-apis-graphics-drawing-e.md#blurtype12)枚举。                           |
-| sigma      | number                | 是   | 高斯模糊的标准偏差，单位为物理像素px，取值范围为(0, +∞)。 |
+| blurType   | [BlurType](arkts-apis-graphics-drawing-e.md#blurtype12) | 是   | 模糊类型，用于指定蒙版滤镜的模糊操作方式。                           |
+| sigma      | number                | 是   | 高斯模糊的标准偏差，必须为大于0的浮点数。单位为物理像素px。 |
 
 **返回值：**
 
 | 类型                      | 说明                |
 | ------------------------- | ------------------ |
-| [MaskFilter](arkts-apis-graphics-drawing-MaskFilter.md) | 返回创建的蒙版滤镜对象，可用于对绘制内容施加模糊效果，如创建阴影、发光等视觉特效。 |
+| [MaskFilter](arkts-apis-graphics-drawing-MaskFilter.md) | 返回创建的蒙版滤镜对象。 |
 
 **错误码：** 
  

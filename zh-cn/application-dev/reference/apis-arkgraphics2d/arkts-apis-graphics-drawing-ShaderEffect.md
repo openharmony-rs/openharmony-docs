@@ -7,7 +7,7 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-着色器，用于在绘图中填充颜色和渐变效果。画刷和画笔设置着色器后，会使用着色器效果而不是颜色属性去绘制，但此时画刷和画笔的透明度属性仍然生效。着色器支持创建单色着色器、线性渐变、径向渐变、扇形渐变、锥形渐变、图片着色器及混合着色器等多种类型，适用于需要在图形绘制中实现丰富色彩填充和渐变效果的场景。
+着色器，用于在绘图中填充颜色和渐变效果。画刷和画笔设置着色器后，会使用着色器效果而不是颜色属性去绘制，但此时画刷和画笔的透明度属性仍然生效。着色器支持创建单色着色器、线性渐变、径向渐变、扇形渐变、锥形渐变、图片着色器及混合着色器等多种类型。
 
 > **说明：**
 >
@@ -45,7 +45,7 @@ static createComposeShader(dstShaderEffect: ShaderEffect, srcShaderEffect: Shade
 
 | 类型    | 说明                       |
 | ------- | ------------------------- |
-| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回叠加后的着色器对象，可用于画刷或画笔实现两种着色器效果的混合绘制。 |
+| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回叠加后的着色器对象。 |
 
 **错误码：**
 
@@ -87,7 +87,7 @@ static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, tileY: TileM
 
 | 类型    | 说明                       |
 | ------- | ------------------------- |
-| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回基于图片的着色器对象，可用于画刷或画笔实现图片纹理填充。 |
+| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回基于图片的着色器对象。 |
 
 **错误码：**
 
@@ -156,7 +156,7 @@ static createColorShader(color: number): ShaderEffect
 
 | 类型    | 说明                       |
 | ------- | ------------------------- |
-| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回具有单一颜色的着色器对象，可用于画刷或画笔实现纯色填充。 |
+| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回具有单一颜色的着色器对象。 |
 
 **错误码：**
 
@@ -201,7 +201,7 @@ static createLinearGradient(startPt: common2D.Point, endPt: common2D.Point, colo
 
 | 类型    | 说明                       |
 | ------- | ------------------------- |
-| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回线性渐变着色器对象，可用于画刷或画笔实现两点之间的颜色渐变填充。 |
+| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回线性渐变着色器对象。 |
 
 **错误码：**
 
@@ -248,7 +248,7 @@ static createRadialGradient(centerPt: common2D.Point, radius: number, colors: Ar
 
 | 类型    | 说明                       |
 | ------- | ------------------------- |
-| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回径向渐变着色器对象，可用于画刷或画笔实现从圆心向外扩散的颜色渐变填充。 |
+| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回径向渐变着色器对象。 |
 
 **错误码：**
 
@@ -295,7 +295,7 @@ static createSweepGradient(centerPt: common2D.Point, colors: Array\<number>, mod
 
 | 类型    | 说明                       |
 | ------- | ------------------------- |
-| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回扇形渐变着色器对象，可用于画刷或画笔实现围绕圆心的扇形渐变填充。 |
+| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回扇形渐变着色器对象。 |
 
 **错误码：**
 
@@ -327,9 +327,9 @@ static createConicalGradient(startPt: common2D.Point, startRadius: number, endPt
 | 参数名 | 类型                                               | 必填 | 说明           |
 | ------ | -------------------------------------------------- | ---- | -------------- |
 | startPt  | [common2D.Point](js-apis-graphics-common2D.md#point12)  | 是   | 表示渐变的起始圆的圆心。 |
-| startRadius | number | 是   | 表示渐变的起始圆的半径，小于等于0时无效。该参数为浮点数。单位为物理像素px。 |
+| startRadius | number | 是   | 表示渐变的起始圆的半径，小于0时无效。该参数为浮点数。单位为物理像素px。 |
 | endPt  | [common2D.Point](js-apis-graphics-common2D.md#point12)  | 是   | 表示渐变的结束圆的圆心。 |
-| endRadius | number | 是   | 表示渐变的结束圆的半径，小于等于0时无效。该参数为浮点数。单位为物理像素px。 |
+| endRadius | number | 是   | 表示渐变的结束圆的半径，小于0时无效。该参数为浮点数。单位为物理像素px。 |
 | colors | Array\<number> | 是   | 表示在起始圆和结束圆之间分布的颜色数组，数组中的值为32位（ARGB）无符号整数。 |
 | mode  | [TileMode](arkts-apis-graphics-drawing-e.md#tilemode12) | 是   | 着色器效果平铺模式。 |
 | pos | Array\<number> \| null | 否   | 表示每种对应颜色在颜色数组中的相对位置。数组长度需和colors保持一致，数组的首个元素应当是0.0，末尾元素应当是1.0，中间的元素应当在0与1之间并且逐下标递增，表示colors中每个对应颜色的相对位置。默认为null，表示颜色均匀分布在起始圆和结束圆之间。 |
@@ -343,7 +343,7 @@ static createConicalGradient(startPt: common2D.Point, startRadius: number, endPt
 
 | 类型    | 说明                       |
 | ------- | ------------------------- |
-| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回锥形渐变着色器对象，可用于画刷或画笔实现两圆之间的锥面渐变填充。 |
+| [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | 返回锥形渐变着色器对象。 |
 
 **错误码：**
 

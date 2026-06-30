@@ -34,7 +34,7 @@
 | 名称 | 描述 |
 | -- | -- |
 | [OH_Drawing_SamplingOptions* OH_Drawing_SamplingOptionsCreate(OH_Drawing_FilterMode filterMode,OH_Drawing_MipmapMode mipmapMode)](#oh_drawing_samplingoptionscreate) | 创建一个采样选项对象。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>mipmapMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。<br>使用完毕后，必须调用[OH_Drawing_SamplingOptionsDestroy](#oh_drawing_samplingoptionsdestroy)销毁采样选项对象并释放内存，避免内存泄漏。 |
-| [OH_Drawing_SamplingOptions* OH_Drawing_SamplingOptionsCopy(OH_Drawing_SamplingOptions* samplingOptions)](#oh_drawing_samplingoptionscopy) | 拷贝一个已有采样选项对象。<br> 本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br> samplingOptions为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。副本为独立的新对象，使用完毕后，必须调用[OH_Drawing_SamplingOptionsDestroy](#oh_drawing_samplingoptionsdestroy)销毁副本对象并释放内存，避免内存泄漏。 |
+| [OH_Drawing_SamplingOptions* OH_Drawing_SamplingOptionsCopy(OH_Drawing_SamplingOptions* samplingOptions)](#oh_drawing_samplingoptionscopy) | 拷贝一个已有采样选项对象。<br> 本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br> samplingOptions为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。拷贝对象为独立的新对象，使用完毕后，必须调用[OH_Drawing_SamplingOptionsDestroy](#oh_drawing_samplingoptionsdestroy)销毁副本对象并释放内存，避免内存泄漏。 |
 | [void OH_Drawing_SamplingOptionsDestroy(OH_Drawing_SamplingOptions* samplingOptions)](#oh_drawing_samplingoptionsdestroy) | 销毁采样选项对象，并回收该对象占有的内存。 |
 
 ## 枚举类型说明
@@ -53,8 +53,8 @@ enum OH_Drawing_FilterMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| FILTER_MODE_NEAREST | 邻近过滤模式，采用最近邻采样，使用距离采样点最近的像素值。 |
-| FILTER_MODE_LINEAR | 线性过滤模式，采用线性插值采样，在相邻像素之间进行插值计算。 |
+| FILTER_MODE_NEAREST | 邻近过滤模式，采用最近邻采样，使用距离采样点最近的像素值。适合对性能要求高、对画面平滑度要求不高的场景。 |
+| FILTER_MODE_LINEAR | 线性过滤模式，采用线性插值采样，在相邻像素之间进行插值计算。适合对画面平滑度和质量要求较高的场景。 |
 
 ### OH_Drawing_MipmapMode
 
@@ -70,9 +70,9 @@ enum OH_Drawing_MipmapMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| MIPMAP_MODE_NONE | 忽略多级渐远纹理级别。 |
-| MIPMAP_MODE_NEAREST | 邻近多级渐远纹理级别采样。 |
-| MIPMAP_MODE_LINEAR | 两个邻近多级渐远纹理级别之间，线性插值采样。 |
+| MIPMAP_MODE_NONE | 忽略多级渐远纹理级别。适合不使用多级渐远纹理的场景。 |
+| MIPMAP_MODE_NEAREST | 邻近多级渐远纹理级别采样。适合性能优先的场景。 |
+| MIPMAP_MODE_LINEAR | 两个邻近多级渐远纹理级别之间，线性插值采样。适合对画质要求较高的场景。 |
 
 
 ## 函数说明
@@ -96,8 +96,8 @@ OH_Drawing_SamplingOptions* OH_Drawing_SamplingOptionsCreate(OH_Drawing_FilterMo
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Drawing_FilterMode](#oh_drawing_filtermode) filterMode | 过滤采样模式，用于指定图像采样时的过滤方式。FILTER_MODE_NEAREST为邻近过滤，采用最近邻采样，适合对性能要求高、对画面平滑度要求不高的场景；FILTER_MODE_LINEAR为线性过滤，采用线性插值采样，适合对画面平滑度和质量要求较高的场景。 |
-| [OH_Drawing_MipmapMode](#oh_drawing_mipmapmode) mipmapMode | 多级渐远纹理采样模式，用于指定多级渐远纹理的采样方式。MIPMAP_MODE_NONE为忽略多级渐远纹理级别，适合不使用多级渐远纹理的场景；MIPMAP_MODE_NEAREST为邻近多级渐远纹理级别采样，适合性能优先的场景；MIPMAP_MODE_LINEAR为两个邻近多级渐远纹理级别之间线性插值采样，适合对画质要求较高的场景。 |
+| [OH_Drawing_FilterMode](#oh_drawing_filtermode) filterMode | 过滤采样模式。 |
+| [OH_Drawing_MipmapMode](#oh_drawing_mipmapmode) mipmapMode | 多级渐远纹理采样模式。 |
 
 **返回：**
 
@@ -130,7 +130,7 @@ samplingOptions为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md)* samplingOptions | 指向采样选项对象OH_Drawing_SamplingOptions的指针。为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
+| [OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md)* samplingOptions | 指向采样选项对象OH_Drawing_SamplingOptions的指针。 |
 
 **返回：**
 
@@ -156,4 +156,4 @@ void OH_Drawing_SamplingOptionsDestroy(OH_Drawing_SamplingOptions* samplingOptio
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md)* samplingOptions | 指向采样选项对象OH_Drawing_SamplingOptions的指针。若为NULL，则不执行销毁操作。 |
+| [OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md)* samplingOptions | 指向采样选项对象[OH_Drawing_SamplingOptions](capi-drawing-oh-drawing-samplingoptions.md)的指针。 |
