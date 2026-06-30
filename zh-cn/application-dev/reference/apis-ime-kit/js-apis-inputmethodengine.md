@@ -1028,7 +1028,7 @@ createPanel(ctx: BaseContext, info: PanelInfo, callback: AsyncCallback\<Panel>):
 > **说明：**
 >
 > 单个输入法应用仅允许创建一个[软键盘类型](#paneltype10)和一个[状态栏类型](#paneltype10)的面板。<br>
-> 输入法面板不支持创建子窗口。例如：不支持使用[window.createWindow](../../zh-cn/windowmanager/application-window-fa.md#设置应用子窗口)、[bindContextMenu](../../zh-cn/reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu8)、[CustomDialog](../../zh-cn/reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)等接口创建子窗口弹窗。建议开发者采用非子窗的替代方案，如[弹出框](../../zh-cn/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md)、[bindMenu](../../zh-cn/reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu)或设置showInSubwindow为false。
+> 输入法面板不支持创建子窗口。例如：不支持使用window.createWindow[设置应用子窗口](../../windowmanager/application-window-fa.md#设置应用子窗口)、[bindContextMenu](../apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu8)、[CustomDialog](../apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)等接口创建子窗口弹窗。建议开发者采用非子窗的替代方案，如[弹出框](../apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md)、[bindMenu](../apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu)或设置showInSubwindow为false。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3742,7 +3742,7 @@ getBackwardSync(length:number): string
 获取光标后固定长度的文本。
 > **警告：**
 > 
-> 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[getBackward](#getbackward)。
+> 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[getBackward](#getbackward9)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3878,7 +3878,7 @@ deleteForwardSync(length:number): void
 删除光标前固定长度的文本。
 > **警告：**
 > 
-> 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[deleteForward](#deleteforward)。
+> 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[deleteForward](#deleteforward9)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4243,7 +4243,7 @@ getEditorAttributeSync(): EditorAttribute
 获取编辑框属性值。
 > **警告：**
 > 
-> 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[getEditorAttribute](#geteditorattribute)。
+> 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[getEditorAttribute](#geteditorattribute9)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4480,7 +4480,7 @@ selectByRangeSync(range: Range): void
 根据索引范围选中文本。
 > **警告：**
 > 
-> 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[selectByRange](#selectbyrange)。
+> 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[selectByRange](#selectbyrange10)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -4981,7 +4981,7 @@ setPreviewTextSync(text: string, range: Range): void
 设置预上屏文本。
 > **警告：**
 > 
-> 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[setPreviewText](#setpreviewtext)。
+> 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[setPreviewText](#setpreviewtext12)。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
