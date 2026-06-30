@@ -297,7 +297,7 @@ console.info("hasNameResult = " + hasNameResult);
 
 remove(obj: object, property: string): void
 
-从ArkTS对象中删除某种属性，可用于[JSON.parse](#jsonparse)解析JSON字符串之后，如清理敏感字段、移除冗余数据等场景。JSON.remove接口仅支持最外层为字典形式（即大括号而非中括号包围）的合法json串。
+JSON.remove接口仅支持最外层为字典形式（即大括号而非中括号包围）的合法JSON串。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
