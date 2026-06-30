@@ -88,6 +88,7 @@ try {
   let resultSet: relationalStore.ResultSet = await store.querySql("SELECT e1.NAME, e2.NAME, e1.AGE, e2.AGE FROM EMPLOYEE1 e1 LEFT JOIN EMPLOYEE2 e2 ON e1.SALARY=e2.SALARY");
   if (resultSet != undefined) {
     const names = resultSet.getColumnNames();
+    resultSet.close();
   }
 } catch (err) {
   console.error(`Failed to get column names: code:${err.code}, message:${err.message}`);
@@ -1318,6 +1319,7 @@ try {
   if (resultSet != undefined) {
     resultSet.goToFirstRow();
     const rowData = resultSet.getCurrentRowData();
+    resultSet.close();
   }
 } catch (err) {
   console.error(`Failed to get row data: code:${err.code}, message:${err.message}`);
@@ -1406,6 +1408,7 @@ try {
       position += rowsData.length;
     }
   }
+  resultSet.close();
 } catch (err) {
   console.error(`Failed to get rows data: code:${err.code}, message:${err.message}`);
 }
@@ -1483,8 +1486,10 @@ async function getDataByName(name: string, context: common.UIAbilityContext) {
   if (resultSet.rowCount > 0) {
     resultSet.goToFirstRow();
     const sendableValuesBucket = resultSet.getSendableRow();
+    resultSet.close();
     return sendableValuesBucket;
   } else {
+    resultSet.close();
     return null;
   }
 }

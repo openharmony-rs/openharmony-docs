@@ -468,7 +468,8 @@ async function queryByName(context: Context, name: string) {
     // 获取可用于跨线程传递的ValuesBucket返回查询结果
     return resultSet.getSendableRow();
   }
-  return null;
+  resultSet.close();
+ 	await store.close();
 }
 
 
