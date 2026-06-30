@@ -3205,7 +3205,7 @@ interface Data {
     });
   } else {
     let callback: (value: Data) => void = (value: Data) => {
-      console.info("Succeeded to get message, message:" + value.message + ",Succeeded to get remoteInfo:" + value.remoteInfo);
+      console.info("Succeeded to get message, message:" + value.message + ", Succeeded to get remoteInfo:" + value.remoteInfo);
     };
     udp.bind({address:"192.168.xxx.xxx",
               port:8080,
