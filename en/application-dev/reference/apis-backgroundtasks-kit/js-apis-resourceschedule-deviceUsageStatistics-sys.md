@@ -42,7 +42,7 @@ Checks whether an application is commonly used (with the value of **GroupType** 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -94,7 +94,7 @@ Checks whether an application is commonly used (with the value of **GroupType** 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -144,7 +144,7 @@ Checks whether an application is commonly used (with the value of **GroupType** 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -183,7 +183,7 @@ Queries the priority group of this application. This API uses a promise to retur
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -229,7 +229,7 @@ Queries the priority group of this application. This API uses an asynchronous ca
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -278,7 +278,7 @@ Queries the priority group of this application. This API returns the result sync
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -325,7 +325,7 @@ Queries the priority group of the application specified by **bundleName**. This 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -375,7 +375,7 @@ Queries the priority group of the application specified by **bundleName**. This 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -431,7 +431,7 @@ Queries the priority group of the application specified by **bundleName**. This 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -480,7 +480,7 @@ Sets a new group for the application specified by **bundleName**. This API uses 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -531,7 +531,7 @@ Sets a new group for the application specified by **bundleName**. This API uses 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -584,7 +584,7 @@ Queries the application usage duration statistics based on the specified start t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -640,7 +640,7 @@ Queries the application usage duration statistics based on the specified start t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -694,7 +694,7 @@ Queries the usage duration of an application (including cloned applications) bas
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -747,7 +747,7 @@ Queries application usage details based on the specified bundle name and applica
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -798,7 +798,7 @@ Queries the application usage duration statistics in the specified time frame at
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -858,7 +858,7 @@ Queries the application usage duration statistics in the specified time frame at
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -910,7 +910,7 @@ Queries events of all applications based on the specified start time and end tim
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -969,7 +969,7 @@ Queries events of all applications based on the specified start time and end tim
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -1019,7 +1019,7 @@ Queries events of this application based on the specified start time and end tim
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 202  | Not System App. |
 | 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
@@ -1075,7 +1075,7 @@ Queries events of this application based on the specified start time and end tim
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 202  | Not System App. |
 | 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
@@ -1131,7 +1131,7 @@ Queries statistics about system events (hibernation, wakeup, unlocking, and lock
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -1180,7 +1180,7 @@ Queries statistics about system events (hibernation, wakeup, unlocking, and lock
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -1236,7 +1236,7 @@ Queries the number of notifications from all applications based on the specified
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -1285,7 +1285,7 @@ Queries the number of notifications from all applications based on the specified
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -1336,7 +1336,7 @@ This API uses a promise to return a maximum of 1000 FA usage records sorted by t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -1387,7 +1387,7 @@ Queries the usage records of unused HAP files for each application in the FA mod
 
 For details about the error codes, see [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code       | Error Message                      |
+| ID       | Error Message                      |
 | ---------- | ----------------------------       |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -1445,7 +1445,7 @@ Queries a given number of usage records of unused HAP files for each application
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -1496,7 +1496,7 @@ Queries a given number of usage records of unused HAP files for each application
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -1554,7 +1554,7 @@ Registers a callback for application group changes. When an application group of
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -1609,7 +1609,7 @@ Registers a callback for application group changes. When an application group of
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -1665,7 +1665,7 @@ Unregisters the callback for application group changes. This API uses a promise 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
@@ -1710,7 +1710,7 @@ Unregisters the callback for application group changes. This API uses an asynchr
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DeviceUsageStatistics Error Codes](errorcode-DeviceUsageStatistics.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |

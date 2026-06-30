@@ -44,7 +44,7 @@ Sets the child process priority. After a child process is suppressed, the CPU re
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code   | Error Message            |
+| ID   | Error Message            |
 |----------|------------------|
 | 401      | Parameter error. Possible causes: priority is out of range. |
 
@@ -131,7 +131,7 @@ You can set to enter the power saving mode when:
 
 For details about the error codes, see [backgroundProcessManager Error Codes](errorcode-backgroundProcessManager.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code   | Error Message            |
+| ID   | Error Message            |
 |----------|------------------|
 | 201      | Permission denied. |
 | 801      | Capability not supported. |
@@ -181,7 +181,7 @@ Queries whether the process is in power saving mode. This API uses a promise to 
 
 For details about the error codes, see [backgroundProcessManager Error Codes](errorcode-backgroundProcessManager.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code   | Error Message            |
+| ID   | Error Message            |
 |----------|------------------|
 | 201      | Permission denied. |
 | 801      | Capability not supported. |
@@ -231,7 +231,7 @@ Obtains the power saving mode of a process. This API uses a promise to return th
 
 For details about the error codes, see [backgroundProcessManager Error Codes](errorcode-backgroundProcessManager.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code   | Error Message            |
+| ID   | Error Message            |
 |----------|------------------|
 | 201      | Permission denied. |
 | 801      | Capability not supported. |
