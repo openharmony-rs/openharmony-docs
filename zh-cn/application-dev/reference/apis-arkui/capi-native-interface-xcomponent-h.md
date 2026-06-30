@@ -47,8 +47,8 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [anonymous](#anonymous) | - | 枚举API访问状态。 |
-| [ArkUI_XComponent_ImageAnalyzerState](#arkui_xcomponent_imageanalyzerstate) | ArkUI_XComponent_ImageAnalyzerState | XComponent图像AI分析状态码. |
+| [anonymous](#anonymous) | - | 枚举API执行结果状态。 |
+| [ArkUI_XComponent_ImageAnalyzerState](#arkui_xcomponent_imageanalyzerstate) | ArkUI_XComponent_ImageAnalyzerState | XComponent图像AI分析状态码。 |
 | [OH_NativeXComponent_TouchEventType](#oh_nativexcomponent_toucheventtype) | OH_NativeXComponent_TouchEventType | 触摸事件类型。 |
 | [OH_NativeXComponent_TouchPointToolType](#oh_nativexcomponent_touchpointtooltype) | OH_NativeXComponent_TouchPointToolType | 触摸点工具类型。 |
 | [OH_NativeXComponent_EventSourceType](#oh_nativexcomponent_eventsourcetype) | OH_NativeXComponent_EventSourceType | 触摸事件源类型。 |
@@ -129,7 +129,7 @@
 | [int32_t OH_ArkUI_XComponent_Initialize(ArkUI_NodeHandle node)](#oh_arkui_xcomponent_initialize) | 初始化XComponent组件持有的Surface。 |
 | [int32_t OH_ArkUI_XComponent_Finalize(ArkUI_NodeHandle node)](#oh_arkui_xcomponent_finalize) | 销毁XComponent组件持有的Surface。 |
 | [int32_t OH_ArkUI_XComponent_IsInitialized(ArkUI_NodeHandle node, bool* isInitialized)](#oh_arkui_xcomponent_isinitialized) | 获取XComponent组件是否已经初始化的标志位。 |
-| [int32_t OH_ArkUI_XComponent_SetExpectedFrameRateRange(ArkUI_NodeHandle node, OH_NativeXComponent_ExpectedRateRange range)](#oh_arkui_xcomponent_setexpectedframeraterange) | 为此XComponent组件实例设置期望帧率。 |
+| [int32_t OH_ArkUI_XComponent_SetExpectedFrameRateRange(ArkUI_NodeHandle node, OH_NativeXComponent_ExpectedRateRange range)](#oh_arkui_xcomponent_setexpectedframeraterange) | 为此XComponent组件实例设置期望帧率范围。 |
 | [int32_t OH_ArkUI_XComponent_RegisterOnFrameCallback(ArkUI_NodeHandle node,void (\*callback)(ArkUI_NodeHandle node, uint64_t timestamp, uint64_t targetTimestamp))](#oh_arkui_xcomponent_registeronframecallback) | 为此XComponent组件实例注册帧回调函数。 |
 | [int32_t OH_ArkUI_XComponent_UnregisterOnFrameCallback(ArkUI_NodeHandle node)](#oh_arkui_xcomponent_unregisteronframecallback) | 为此XComponent组件实例取消注册帧回调函数。 |
 | [int32_t OH_ArkUI_XComponent_SetNeedSoftKeyboard(ArkUI_NodeHandle node, bool needSoftKeyboard)](#oh_arkui_xcomponent_setneedsoftkeyboard) | 为此XComponent组件实例设置是否需要软键盘。 |
@@ -161,7 +161,7 @@ enum anonymous
 **描述：**
 
 
-枚举API访问状态。
+枚举API执行结果状态。
 
 **起始版本：** 8
 
@@ -180,7 +180,7 @@ enum ArkUI_XComponent_ImageAnalyzerState
 **描述：**
 
 
-XComponent图像AI分析状态码.
+XComponent图像AI分析状态码。
 
 **起始版本：** 18
 
@@ -234,9 +234,9 @@ enum OH_NativeXComponent_TouchPointToolType
 | OH_NATIVEXCOMPONENT_TOOL_TYPE_RUBBER = 3 | 表示用橡皮擦。 |
 | OH_NATIVEXCOMPONENT_TOOL_TYPE_BRUSH = 4 | 表示用画笔。 |
 | OH_NATIVEXCOMPONENT_TOOL_TYPE_PENCIL = 5 | 表示用铅笔。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_AIRBRUSH = 6 | 表示用气笔。 |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_AIRBRUSH = 6 | 表示用喷枪。 |
 | OH_NATIVEXCOMPONENT_TOOL_TYPE_MOUSE = 7 | 表示用鼠标。 |
-| OH_NATIVEXCOMPONENT_TOOL_TYPE_LENS = 8 | 表示用晶状体。 |
+| OH_NATIVEXCOMPONENT_TOOL_TYPE_LENS = 8 | 表示用透镜。 |
 
 ### OH_NativeXComponent_EventSourceType
 
@@ -320,8 +320,8 @@ enum OH_NativeXComponent_TouchEvent_SourceTool
 | -- | -- |
 | OH_NATIVEXCOMPONENT_SOURCETOOL_UNKNOWN = 0 | 未知的触摸事件的源工具。 |
 | OH_NATIVEXCOMPONENT_SOURCETOOL_FINGER = 1 | 表示触摸事件的源工具是手指。 |
-| OH_NATIVEXCOMPONENT_SOURCETOOL_PEN = 2 | 表示触摸事件的源工具是钢笔。 |
-| OH_NATIVEXCOMPONENT_SOURCETOOL_RUBBER = 3 | 表示触摸事件的源工具是橡皮。 |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_PEN = 2 | 表示触摸事件的源工具是触笔。 |
+| OH_NATIVEXCOMPONENT_SOURCETOOL_RUBBER = 3 | 表示触摸事件的源工具是橡皮擦。 |
 | OH_NATIVEXCOMPONENT_SOURCETOOL_BRUSH = 4 | 表示触摸事件的源工具是笔刷。 |
 | OH_NATIVEXCOMPONENT_SOURCETOOL_PENCIL = 5 | 表示触摸事件的源工具是铅笔。 |
 | OH_NATIVEXCOMPONENT_SOURCETOOL_AIRBRUSH = 6 | 表示触摸事件的源工具是喷枪。 |
@@ -1992,7 +1992,7 @@ int32_t OH_ArkUI_XComponent_SetExpectedFrameRateRange(ArkUI_NodeHandle node, OH_
 **描述：**
 
 
-为此XComponent组件实例设置期望帧率。
+为此XComponent组件实例设置期望帧率范围。
 
 **起始版本：** 20
 

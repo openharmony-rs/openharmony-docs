@@ -26,7 +26,7 @@ typedef struct OH_NativeXComponent_Callback {...} OH_NativeXComponent_Callback
 
 | 名称 | 描述 |
 | -- | -- |
-| [void (\*OnSurfaceCreated)(OH_NativeXComponent* component, void* window)](#onsurfacecreated) | 创建Surface时调用。 |
+| [void (\*OnSurfaceCreated)(OH_NativeXComponent* component, void* window)](#onsurfacecreated) | 当Surface创建时调用。 |
 | [void (\*OnSurfaceChanged)(OH_NativeXComponent* component, void* window)](#onsurfacechanged) | 当Surface改变时调用。 |
 | [void (\*OnSurfaceDestroyed)(OH_NativeXComponent* component, void* window)](#onsurfacedestroyed) | 当Surface被销毁时调用。 |
 | [void (\*DispatchTouchEvent)(OH_NativeXComponent* component, void* window)](#dispatchtouchevent) | 当触摸事件被触发时调用。 |
@@ -42,7 +42,7 @@ void (*OnSurfaceCreated)(OH_NativeXComponent* component, void* window)
 **描述：**
 
 
-创建Surface时调用。
+当Surface创建时调用。
 
 **起始版本：** 8
 
