@@ -1249,7 +1249,7 @@ loadFontSyncWithCheck(name: string, path: string | Resource, index?: number): vo
 | 25900005 | Failed to get the file size. |
 | 25900006 | Failed to read the file. |
 | 25900007 | Empty file. |
-| 25900008 | Corrupt file. |
+| 25900008 | Corrupted file. |
 
 **示例：**
 
@@ -1328,7 +1328,7 @@ loadFontWithCheck(name: string, path: string | Resource, index?: number): Promis
 | 25900005 | Failed to get the file size. |
 | 25900006 | Failed to read the file. |
 | 25900007 | Empty file. |
-| 25900008 | Corrupt file. |
+| 25900008 | Corrupted file. |
 
 **示例：**
 
@@ -2909,6 +2909,7 @@ forceReuseRasterResult(isForce: boolean): void
 **示例：**
 
 ```ts
+// Index.ets
 import { text, drawing } from '@kit.ArkGraphics2D'
 import { image } from '@kit.ImageKit'
  
@@ -4469,6 +4470,7 @@ getTextStyle(): TextStyle
 **示例：**
 
 ```ts
+// Index.ets
 import { text } from "@kit.ArkGraphics2D"
 import { common2D } from '@kit.ArkGraphics2D'
 import { JSON } from "@kit.ArkTS";
