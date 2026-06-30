@@ -438,7 +438,7 @@ NODE_TRANSFORM = 25
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0...15].f32 | 16个浮点数字。 |
+| .value[0...15].f32 | 16个浮点数。 |
 
 ## NODE_SHADOW
 
@@ -834,7 +834,7 @@ NODE_SWEEP_GRADIENT = 43
 NODE_RADIAL_GRADIENT = 44
 ```
 
-径向渐变渐变效果，支持属性设置，属性重置和属性获取接口。<br>
+径向渐变效果，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -1097,7 +1097,7 @@ NODE_GEOMETRY_TRANSITION = 75
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 参数类型为1或者0。共享元素绑定的2个组件，针对出场元素未进行删除时是否要继续参与共享元素动画，默认未false，不参与保持原始位置不动。 |
+| .value[0].i32 | 参数类型为1或者0。共享元素绑定的2个组件，针对出场元素未进行删除时是否要继续参与共享元素动画，默认为false，不参与保持原始位置不动。 |
 | .string | 用于设置绑定关系，id置""清除绑定关系避免参与共享行为，id可更换重新建立绑定关系。同一个id只能有两个组件绑定且是in/out不同类型角色，不能多个组件绑定同一个id。 |
 
 ## NODE_RENDER_FIT

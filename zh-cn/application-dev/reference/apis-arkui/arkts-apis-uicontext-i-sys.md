@@ -16,7 +16,7 @@
 
 ## BackgroundLuminanceSamplingConfigs<sup>23+</sup>
 
-背景取色参数配置。
+背景亮度采样参数配置。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -28,7 +28,7 @@
 
 | 名称      | 类型 | 只读  | 可选 | 说明                    |
 | --------- | ---- | ----- | ---- | -----------------------|
-| samplingInterval  | number | 否 | 是 | 取色间隔，单位为毫秒，最小值180ms。<br> 默认值：500   |
+| samplingInterval  | number | 否 | 是 | 采样间隔，单位为毫秒，最小值180ms。<br> 默认值：500   |
 | brightThreshold     | number | 否 | 是 | 浅色亮度阈值：[0, 255]内的整数，设置的深色亮度阈值应小于浅色亮度阈值。<br> 默认值：220 |
 | darkThreshold     | number | 否 | 是 | 深色亮度阈值：[0, 255]内的整数，设置的深色亮度阈值应小于浅色亮度阈值。<br> 默认值：150 |
 | region     | [Edges](./js-apis-arkui-graphics.md#edgest12)\<[LengthMetrics](./js-apis-arkui-graphics.md#lengthmetrics12)\> | 否 | 是 | 相对组件的取色区域偏移，以组件自身的左上点为基准进行偏移计算。<br> 默认使用组件自身区域 |

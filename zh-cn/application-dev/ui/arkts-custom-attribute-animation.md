@@ -37,7 +37,7 @@ struct AnimatablePropertyExample {
         .animation({ duration: 2000, curve: Curve.Ease }) // 第三步:为自定义可动画属性接口绑定动画。
       Button('Play')
         .onClick(() => {
-          this.textWidth = this.textWidth == 80 ? 160 : 80; // 第四步：改变自定义可动画属性的参数，产生动画。
+          this.textWidth = this.textWidth === 80 ? 160 : 80; // 第四步：改变自定义可动画属性的参数，产生动画。
         })
     }
     .width('100%')

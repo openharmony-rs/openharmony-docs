@@ -298,7 +298,7 @@ constructor(type: Type, effect: Effect)
 | 参数名 | 类型                                   | 必填 | 说明           |
 | ------ | ------------------------------------------ | ---- | ------------------ |
 | type  | [Type](ts-appendix-enums.md#transitiontype)                                    | 是   | 转场类型。 |
-| effect  | [Effect](#transitioneffect10对象说明)                                     | 是   | 转场参数。 |
+| effect  | [Effect](#transitioneffect10对象说明)                                     | 是   | 转场效果。 |
 
 ### combine<sup>10+</sup>
 
@@ -324,7 +324,7 @@ combine(transitionEffect: TransitionEffect): TransitionEffect
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [TransitionEffect](#transitioneffect10对象说明) | 组合过渡效应。 |
+| [TransitionEffect](#transitioneffect10对象说明) | 组合过渡效果。 |
 
 ### animation<sup>10+</sup>
 

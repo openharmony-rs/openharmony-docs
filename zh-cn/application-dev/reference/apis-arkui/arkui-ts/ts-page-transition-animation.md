@@ -78,7 +78,7 @@ PageTransitionExit(value: PageTransitionOptions)
 
 onExit(event: PageTransitionCallback): PageTransitionExitInterface
 
-逐帧回调，直到出场动画结束，progress从0变化到1。
+逐帧回调，直到退场动画结束，progress从0变化到1。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,7 +88,7 @@ onExit(event: PageTransitionCallback): PageTransitionExitInterface
 
 | 参数名 | 类型                                                               | 必填 | 说明                                                |
 | ------ | ----------------------------------------------------------------- | ---- | ------------------------------------------------    |
-| event  | [PageTransitionCallback](#pagetransitioncallback18) | 是   | 出场动画的逐帧回调直到出场动画结束，progress从0变化到1。 |
+| event  | [PageTransitionCallback](#pagetransitioncallback18) | 是   | 退场动画的逐帧回调直到退场动画结束，progress从0变化到1。 |
 
 **示例：**
 
@@ -193,7 +193,7 @@ scale(value: ScaleOptions): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ScaleOptions](ts-universal-attributes-transformation.md#scaleoptions对象说明) | 是   | 设置页面转场时的缩放效果，为入场时起点和退场时终点的值。<br/>-&nbsp;x：横向放大倍数（或缩小比例）。<br/>-&nbsp;y：纵向放大倍数（或缩小比例）。<br/>-&nbsp;z：竖向放大倍数（或缩小比例）。<br/>-&nbsp;centerX、centerY缩放中心点。centerX和centerY默认值是"50%"，即默认以页面的中心点为旋转中心点。<br/>-&nbsp;中心点为(0, 0)代表页面的左上角。 |
+| value  | [ScaleOptions](ts-universal-attributes-transformation.md#scaleoptions对象说明) | 是   | 设置页面转场时的缩放效果，为入场时起点和退场时终点的值。<br/>-&nbsp;x：横向放大倍数（或缩小比例）。<br/>-&nbsp;y：纵向放大倍数（或缩小比例）。<br/>-&nbsp;z：竖向放大倍数（或缩小比例）。<br/>-&nbsp;centerX、centerY缩放中心点。centerX和centerY默认值是"50%"，即默认以页面的中心点为缩放中心点。<br/>-&nbsp;中心点为(0, 0)代表页面的左上角。 |
 
 **返回值：**
 
@@ -264,12 +264,12 @@ type PageTransitionCallback = (type: RouteType, progress: number) => void
 
 | 名称                | 值 | 说明                                                         |
 | ------------------- | ---- | -------------------------------------------------------- |
-| Left                | 1 | 设置到入场时表示从左边滑入，出场时表示滑出到左边。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Right               | 2 | 设置到入场时表示从右边滑入，出场时表示滑出到右边。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Top                 | 3 | 设置到入场时表示从上边滑入，出场时表示滑出到上边。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Bottom              | 4 | 设置到入场时表示从下边滑入，出场时表示滑出到下边。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| START<sup>12+</sup> | 5 |  设置LTR入场时表示从左边滑入，出场时表示滑出到左边。RTL入场时表示从右边滑入，出场时表示滑出到右边。<br />**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| END<sup>12+</sup>   | 6 | 设置LTR入场时表示从右边滑入，出场时表示滑出到右边。RTL入场时表示从左边滑入，出场时表示滑出到左边。<br />**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| Left                | 1 | 设置到入场时表示从左边滑入，退场时表示滑出到左边。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Right               | 2 | 设置到入场时表示从右边滑入，退场时表示滑出到右边。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Top                 | 3 | 设置到入场时表示从上边滑入，退场时表示滑出到上边。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Bottom              | 4 | 设置到入场时表示从下边滑入，退场时表示滑出到下边。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| START<sup>12+</sup> | 5 |  设置LTR入场时表示从左边滑入，退场时表示滑出到左边。RTL入场时表示从右边滑入，退场时表示滑出到右边。<br />**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| END<sup>12+</sup>   | 6 | 设置LTR入场时表示从右边滑入，退场时表示滑出到右边。RTL入场时表示从左边滑入，退场时表示滑出到左边。<br />**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## 示例
 
@@ -454,7 +454,7 @@ struct Index {
     .justifyContent(FlexAlign.Center)
   }
 
-  // 自定义方式2：使用系统提供的多种默认效果(平移、缩放、透明度等)
+  // 自定义方式1：配置提供的不同退入场平移效果
   pageTransition() {
     // 设置入场动效
     PageTransitionEnter({ duration: 200 })
@@ -495,7 +495,7 @@ struct Page1 {
     .justifyContent(FlexAlign.Center)
   }
 
-  // 自定义方式2：使用系统提供的多种默认效果(平移、缩放、透明度等)
+  // 自定义方式1：配置提供的不同退入场平移效果
   pageTransition() {
     PageTransitionEnter({ duration: 200 })
       .slide(SlideEffect.END) //Right

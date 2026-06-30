@@ -223,7 +223,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetStyle(ArkUI_Immersive
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ImmersiveMaterialHandle](./capi-arkui-nativemodule-arkui-immersivematerialhandle.md) material | 指向沉浸式材质对象的指针。 |
-| [ArkUI_ImmersiveStyle](#arkui_immersivestyle) style | 指向用于接收材质样式的变量的指针。 |
+| [ArkUI_ImmersiveStyle](#arkui_immersivestyle)* style | 指向用于接收材质样式的变量的指针。 |
 
 **返回：**
 
@@ -300,7 +300,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetApplyShadow(ArkUI_Imm
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_ImmersiveMaterialHandle](./capi-arkui-nativemodule-arkui-immersivematerialhandle.md) material | 指向沉浸式材质对象的指针。 |
-| bool applyShadow | 是否添加材质效果的阴影。true表示添加材质效果的阴影，false表示不添加材质效果的阴影。默认值为true。 |
+| bool applyShadow | 是否应用材质阴影效果。true表示应用材质阴影效果，false表示不应用材质阴影效果。默认值为true。 |
 
 **返回：**
 

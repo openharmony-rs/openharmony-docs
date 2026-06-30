@@ -56,7 +56,7 @@ DistortionComponent(options?: DistortionComponentOptions)
 
 | 名称        | 类型                                              | 只读  | 可选 | 说明                                                         |
 | ----------- | ------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| distortion  | [DistortionParam](#distortionparam) | 否  | 是  | 空间扭曲形变参数。通过指定四个角的位置关系和四条边的桶形变程度产生空间扭曲效果。                                        |
+| distortion  | [DistortionParam](#distortionparam) | 否  | 是  | 空间扭曲形变参数。通过指定四个角的位置关系和四条边的桶形扭曲程度产生空间扭曲效果。                                        |
 
 ## DistortionParam
 

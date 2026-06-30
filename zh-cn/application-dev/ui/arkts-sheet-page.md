@@ -170,7 +170,7 @@ struct OnWillDismiss_Dismiss {
           // 第二步：确认二次回调交互能力，此处用AlertDialog提示 "是否需要关闭半模态"
           this.getUIContext().showAlertDialog(
             {
-              // 请将$r('app.string.bindContentCover_label2')替换为实际资源文件，在本示例中该资源文件的value值为"示例2（自定义转场动画）"
+              // 请将$r('app.string.bindContentCover_label2')替换为实际资源文件，在本示例中该资源文件的value值为"是否需要关闭半模态"
               message: $r('app.string.bindContentCover_label2'),
               autoCancel: true,
               alignment: DialogAlignment.Bottom,

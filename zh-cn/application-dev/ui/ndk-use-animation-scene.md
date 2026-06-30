@@ -225,7 +225,7 @@
        nodeAPI->setAttribute(image, NODE_WIDTH, &textWidthItem);
        ArkUI_NumberValue textHeightValue[] = {{.f32 = 300}};
        ArkUI_AttributeItem textHeightItem = {.value = textHeightValue,
-                                             .size = sizeof(textWidthValue) / sizeof(ArkUI_NumberValue)};
+                                             .size = sizeof(textHeightValue) / sizeof(ArkUI_NumberValue)};
        nodeAPI->setAttribute(image, NODE_HEIGHT, &textHeightItem);
        ArkUI_NumberValue transformCenterValue[] = {0.0f, 0.0f, 0.0f, 0.5f, 0.5f};
        ArkUI_AttributeItem transformCenterItem = {.value = transformCenterValue,
@@ -315,7 +315,7 @@
        nodeAPI->setAttribute(firstImage, NODE_WIDTH, &textWidthItem);
        ArkUI_NumberValue textHeightValue[] = {{.f32 = 50}};
        ArkUI_AttributeItem textHeightItem = {.value = textHeightValue,
-                                             .size = sizeof(textWidthValue) / sizeof(ArkUI_NumberValue)};
+                                             .size = sizeof(textHeightValue) / sizeof(ArkUI_NumberValue)};
        nodeAPI->setAttribute(firstImage, NODE_HEIGHT, &textHeightItem);
        ArkUI_NumberValue borderRadiusValue[] = {{.f32 = 25}};
        ArkUI_AttributeItem borderRadiusItem = {.value = borderRadiusValue,
@@ -359,7 +359,7 @@
        nodeAPI->setAttribute(secondImage, NODE_WIDTH, &textWidthItem);
        ArkUI_NumberValue textHeightValue[] = {{.f32 = 200}};
        ArkUI_AttributeItem textHeightItem = {.value = textHeightValue,
-                                             .size = sizeof(textWidthValue) / sizeof(ArkUI_NumberValue)};
+                                             .size = sizeof(textHeightValue) / sizeof(ArkUI_NumberValue)};
        nodeAPI->setAttribute(secondImage, NODE_HEIGHT, &textHeightItem);
        ArkUI_NumberValue borderRadiusValue[] = {{.f32 = 50}};
        ArkUI_AttributeItem borderRadiusItem = {.value = borderRadiusValue,
@@ -456,7 +456,7 @@
    textNode->SetTextContent("这是关键帧动画");
    // 设置宽度为120，NUM_120 = 120
    textNode->SetWidth(NUM_120);
-   // 设置高度为120，NUM_120 = 120
+   // 设置高度为50，NUM_50 = 50
    textNode->SetHeight(NUM_50);
    // 创建Button，后续创建的关键帧动画作用在Button组件上
    auto button = std::make_shared<ArkUIButtonNode>();
@@ -539,7 +539,7 @@
            auto delay = OH_ArkUI_KeyframeAnimateOption_GetDelay(option);
            auto iter = OH_ArkUI_KeyframeAnimateOption_GetIterations(option);
            auto expected = OH_ArkUI_KeyframeAnimateOption_GetExpectedFrameRate(option); // 获取关键帧动画参数的期望帧率
-           auto dur0 = OH_ArkUI_KeyframeAnimateOption_GetDuration(option, NUM_1); // NUM_1 = 1
+           auto dur0 = OH_ArkUI_KeyframeAnimateOption_GetDuration(option, NUM_0); // NUM_0 = 0
            auto dur1 = OH_ArkUI_KeyframeAnimateOption_GetDuration(option, NUM_1);
            auto curves = OH_ArkUI_KeyframeAnimateOption_GetCurve(option, NUM_1); // 获取关键帧动画某段状态动画曲线
            g_keyframe_text->KeyframeAnimatetoToString(dur0, dur1, delay, iter, *expected);
@@ -644,7 +644,7 @@
                auto curves = OH_ArkUI_AnimatorOption_GetCurve(option); // 获取animator动画插值曲线
                auto begin = OH_ArkUI_AnimatorOption_GetBegin(option);
                auto end = OH_ArkUI_AnimatorOption_GetEnd(option); // 获取animator动画插值终点
-               auto expected = OH_ArkUI_AnimatorOption_GetExpectedFrameRateRange(option); // 获取关键帧动画参数的期望帧率
+               auto expected = OH_ArkUI_AnimatorOption_GetExpectedFrameRateRange(option); // 获取animator动画参数的期望帧率
                auto keyframeTime = OH_ArkUI_AnimatorOption_GetKeyframeTime(option, NUM_0); // 获取animator动画关键帧时间
                auto keyframeValue = OH_ArkUI_AnimatorOption_GetKeyframeValue(option, NUM_0); // 获取animator动画关键帧数值
                auto keyframeCurve = OH_ArkUI_AnimatorOption_GetKeyframeCurve(option, NUM_0); // 获取animator动画关键帧动画插值曲线

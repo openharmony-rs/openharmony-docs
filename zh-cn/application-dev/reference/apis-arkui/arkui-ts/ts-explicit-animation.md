@@ -65,7 +65,7 @@ interpolate(fraction:&nbsp;number): number
 
 | 类型   | 说明                                 |
 | ------ | ------------------------------------ |
-| number | 返回归一化time时间点对应的曲线插值。 |
+| number | 返回归一化时间点对应的曲线插值。 |
 
 ## FinishCallbackType<sup>11+</sup>
 

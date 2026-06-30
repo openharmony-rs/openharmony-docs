@@ -38,9 +38,9 @@ static createHDRColorWithLinearExposure(linearExposure: number, colorSpace: Colo
 | ------ | ------------- | ---- | ------------ |
 | linearExposure | number | 是 | 线性曝光系数，取值范围：[1, +∞)。1.0表示标准曝光系数，大于1.0的值表示线性增加的曝光程度。 |
 | colorSpace   | [ColorSpace](./arkui-ts/ts-appendix-enums.md#colorspace20) | 是   | 颜色空间，用于指定颜色的色彩空间。使用ColorSpace.DISPLAY_P3，需要对应窗口调用[setWindowColorSpace](./arkts-apis-window-Window.md#setwindowcolorspace9-1)接口，将当前窗口设置为广色域模式。 |
-| red   | number | 是   | 颜色的R分量（红色），值是0~1的浮动数值。 |
-| green | number | 是   | 颜色的G分量（绿色），值是0~1的浮动数值。 |
-| blue  | number | 是   | 颜色的B分量（蓝色），值是0~1的浮动数值。 |
+| red   | number | 是   | 颜色的R分量（红色），值是0~1的浮点数。 |
+| green | number | 是   | 颜色的G分量（绿色），值是0~1的浮点数。 |
+| blue  | number | 是   | 颜色的B分量（蓝色），值是0~1的浮点数。 |
 | alpha | number | 否   | 颜色的A分量（透明度），值是0.0~1.0的浮点数，默认值为1.0，不透明。|
 
 **返回值：**
@@ -67,9 +67,9 @@ static createHDRColorWithLogExposure(exposure: number, colorSpace: ColorSpace, r
 | ------ | ------------- | ---- | ------------ |
 | exposure | number | 是 | 指数型曝光系数，取值范围：[0, +∞)。0.0表示标准曝光系数，大于0.0的值表示指数级增加的曝光程度。 |
 | colorSpace   | [ColorSpace](./arkui-ts/ts-appendix-enums.md#colorspace20) | 是   | 颜色空间，用于指定颜色的色彩空间。使用ColorSpace.DISPLAY_P3，需要对应窗口调用[setWindowColorSpace](./arkts-apis-window-Window.md#setwindowcolorspace9-1)接口，将当前窗口设置为广色域模式。 |
-| red   | number | 是   | 颜色的R分量（红色），值是0~1的浮动数值。 |
-| green | number | 是   | 颜色的G分量（绿色），值是0~1的浮动数值。 |
-| blue  | number | 是   | 颜色的B分量（蓝色），值是0~1的浮动数值。 |
+| red   | number | 是   | 颜色的R分量（红色），值是0~1的浮点数。 |
+| green | number | 是   | 颜色的G分量（绿色），值是0~1的浮点数。 |
+| blue  | number | 是   | 颜色的B分量（蓝色），值是0~1的浮点数。 |
 | alpha | number | 否   | 颜色的A分量（透明度），值是0.0~1.0的浮点数，默认值为1.0，不透明。|
 
 **返回值：**

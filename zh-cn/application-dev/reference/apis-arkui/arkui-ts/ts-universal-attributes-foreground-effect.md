@@ -18,7 +18,7 @@
 
 foregroundEffect(options: ForegroundEffectOptions): T
 
-设置组件的前景属性。
+设置组件的前景效果。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -28,7 +28,7 @@ foregroundEffect(options: ForegroundEffectOptions): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                 |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| options | [ForegroundEffectOptions](#foregroundeffectoptions12) | 是   | 设置组件前景属性包括：模糊半径。 |
+| options | [ForegroundEffectOptions](#foregroundeffectoptions12) | 是   | 设置组件前景效果，包括：模糊半径。 |
 
 **返回值：**
 

@@ -36,7 +36,7 @@ ArkUI提供的Native侧动画接口集合。
 ### animateTo()
 
 ```c
-int32_t (*animateTo)(ArkUI_ContextHandle context, ArkUI_AnimateOption* option, ArkUI_ContextCallback* update,ArkUI_AnimateCompleteCallback* complete)
+int32_t (*animateTo)(ArkUI_ContextHandle context, ArkUI_AnimateOption* option, ArkUI_ContextCallback* update, ArkUI_AnimateCompleteCallback* complete)
 ```
 
 **描述：**

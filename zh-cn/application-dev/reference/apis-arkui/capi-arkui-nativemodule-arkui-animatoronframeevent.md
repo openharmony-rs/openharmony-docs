@@ -12,7 +12,7 @@ typedef struct ArkUI_AnimatorOnFrameEvent ArkUI_AnimatorOnFrameEvent
 
 ## 概述
 
-定义animator接收到帧时回调对象。
+定义animator接收到帧时的回调对象。
 
 **起始版本：** 12
 

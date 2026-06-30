@@ -272,7 +272,7 @@ type Matrix4Transit = import('../api/@ohos.matrix4').default.Matrix4Transit
 
 | 类型                              | 说明           |
 | --------------------------------- | -------------- |
-| import('../api/@ohos.matrix4').default.[Matrix4Transit](../js-apis-matrix4.md#matrix4transit)     | 单位矩阵对象。 |
+| import('../api/@ohos.matrix4').default.[Matrix4Transit](../js-apis-matrix4.md#matrix4transit)     | 矩阵变换对象。 |
 
 ## RotateOptions对象说明
 
