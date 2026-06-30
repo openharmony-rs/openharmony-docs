@@ -99,7 +99,7 @@ getNetAccessPolicy(): Promise\<NetAccessPolicy>
 
 **错误码：**
 
-以下错误码的详细介绍参见[应用联网错误码](errorcode-net-policy.md)。
+以下错误码的详细介绍参见[策略管理错误码](errorcode-net-policy.md)。
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
