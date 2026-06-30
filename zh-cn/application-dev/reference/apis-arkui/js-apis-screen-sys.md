@@ -129,7 +129,7 @@ getAllScreens(callback: AsyncCallback&lt;Array&lt;Screen&gt;&gt;, isNeedUnused?:
 | 参数名   | 类型                                                | 必填 | 说明                                   |
 | -------- | --------------------------------------------------- | ---- | -------------------------------------- |
 | callback | AsyncCallback&lt;Array&lt;[Screen](#screen)&gt;&gt; | 是   | 回调函数。返回当前获取的屏幕对象集合。 |
-| isNeedUnused | boolean | 否   | 是否需要未使用的屏幕信息。该参数为可选参数。如果未提供，则不会返回未使用的屏幕信息。<br>默认值为：false |
+| isNeedUnused | boolean | 否   | 是否需要提供未使用的屏幕信息。true表示返回值会提供未使用的屏幕信息，false表示不提供未使用的屏幕信息。<br>默认值为：false。 |
 
 **错误码：**
 
@@ -178,7 +178,7 @@ getAllScreens(isNeedUnused?: boolean): Promise&lt;Array&lt;Screen&gt;&gt;
 
 | 参数名   | 类型                                                | 必填 | 说明                                   |
 | -------- | --------------------------------------------------- | ---- | -------------------------------------- |
-| isNeedUnused | boolean | 否   | 是否需要未使用的屏幕信息。该参数为可选参数。如果未提供，则不会返回未使用的屏幕信息。<br>默认值为：false |
+| isNeedUnused | boolean | 否   | 是否需要提供未使用的屏幕信息。true表示返回值会提供未使用的屏幕信息，false表示不提供未使用的屏幕信息。<br>默认值为：false。 |
 
 **返回值：** 
 
@@ -1642,7 +1642,7 @@ screen.stopExpand(expandScreenIds).then(() => {
 | sourceMode<sup>10+</sup> | [ScreenSourceMode](#screensourcemode10)            | 是   | 否   | 屏幕来源模式。     |
 | serialNumber<sup>15+</sup> | string        | 是   | 是   | 扩展屏幕的序列号，默认返回为空字符串。 |
 | densityDpi | number        | 是   | 是   | 屏幕的物理像素密度，即每英寸的像素数。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| isInUse | boolean        | 是   | 是   | 标识屏幕正在使用中的状态。true表示屏幕已点亮、已接入系统显示服务，可正常渲染应用/系统界面；false表示屏幕未激活；取值为undefined时，表示设备不支持该状态上报，需兼容处理。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| isInUse | boolean        | 是   | 是   | 标识屏幕的使用状态。true表示屏幕使用中；false表示屏幕未使用；默认值为true。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ### setOrientation
 
