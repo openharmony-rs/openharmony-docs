@@ -452,7 +452,7 @@ In the preceding example:
 - For the state variable **@ObjectLink book: Book** in the **BookCard** component, **Book** is decorated with \@Observed, and **book** is received by \@ObjectLink. Changes to **book.name** can be observed by @ObjectLink. Therefore, whether you click **change bag.book.name** in the parent component **Index** or click **change book.name** in the child component **BookCard**, the **Text('BookCard: ${this.book.name}')** inside **BookCard** will update.
 - \@State is responsible for detecting the first-level changes of the outer object **Bag**, while @Observed + @ObjectLink is responsible for detecting the property changes of the inner object **Book**.
 
-### Object array
+### Object Array
 
 An object array is a frequently used data structure. The following example shows how to use an object array.
 
