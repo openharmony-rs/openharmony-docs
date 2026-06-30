@@ -307,7 +307,7 @@ remove(obj: object, property: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| obj | object | 是 | ArkTS对象，仅支持最外层为字典形式（即大括号而非中括号包围）的合法json串解析后的对象。|
+| obj | object | 是 | ArkTS对象，仅支持最外层为字典形式（即大括号而非中括号包围）的合法JSON串解析后的对象。|
 | property | string | 是 | 要删除的属性名称，用于指定需从ArkTS对象中移除的属性。|
 
 **示例：**
