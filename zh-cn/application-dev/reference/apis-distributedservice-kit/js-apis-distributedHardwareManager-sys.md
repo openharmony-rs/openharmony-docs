@@ -131,7 +131,7 @@ pauseDistributedHardware(description: HardwareDescriptor): Promise&lt;void&gt;
 
 resumeDistributedHardware(description: HardwareDescriptor): Promise&lt;void&gt;
 
-恢复被控端分布式硬件业务。被控端对应的分布式硬件业务恢复正常运行。使用promise异步回调，**必须在pauseDistributedHardware暂停后调用**，用于恢复已暂停的业务。调用此方法前需确保分布式硬件已启动。使用场景：当多设备协同场景下需要重新启用已暂停的硬件功能时；当系统资源恢复后重新激活非关键分布式硬件时；切换设备配置完成时恢复硬件同步功能。
+恢复被控端分布式硬件业务。被控端对应的分布式硬件业务恢复正常运行。使用promise异步回调，必须在pauseDistributedHardware暂停后调用，用于恢复已暂停的业务。调用此方法前需确保分布式硬件已启动。使用场景：当多设备协同场景下需要重新启用已暂停的硬件功能时；当系统资源恢复后重新激活非关键分布式硬件时；切换设备配置完成时恢复硬件同步功能。
 
 **需要权限**：ohos.permission.ACCESS_DISTRIBUTED_HARDWARE
 
