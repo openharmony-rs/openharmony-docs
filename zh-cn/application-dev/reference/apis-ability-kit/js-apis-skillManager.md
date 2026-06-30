@@ -6,7 +6,7 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @HelloCrease-->
 
-本模块提供技能（Skill）信息的查询能力，支持查询应用自身的技能信息、指定应用的技能信息以及所有应用的技能信息。AI 代理框架在规划任务时，可通过本模块查询设备上可用的技能，选择合适的技能来完成用户请求。
+本模块提供技能（Skill）信息的查询能力，支持查询应用自身的技能信息、指定应用的技能信息以及所有应用的技能信息。AI代理框架在规划任务时，可通过本模块查询设备上所有应用可用的技能，选择合适的技能来完成用户请求。通过技能信息查询，可以实现智能任务调度、能力匹配优化，提升AI代理的任务执行效率，降低开发者的技能集成复杂度。
 
 >
 >**说明：**
@@ -46,7 +46,7 @@ import { skillManager } from '@kit.AbilityKit';
 
 getSkillInfoForSelf(moduleName: string, skillName: string, flags: number): Promise\<[SkillInfo](js-apis-bundleManager-SkillInfo.md)\>
 
-获取调用方自身应用中指定模块下指定名称的技能信息。使用Promise异步回调。
+获取本应用中指定模块下指定名称的技能信息。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -98,7 +98,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getSkillInfoForSelf failed: error %{public}d  %{public}s', err.code, err.message);
+  hilog.error(0x0000, 'testTag', 'getSkillInfoForSelf failed: error %{public}d  %{public}s', code, message);
 }
 ```
 
@@ -106,7 +106,7 @@ try {
 
 getSkillInfosForSelf(flags: number): Promise\<Array\<[SkillInfo](js-apis-bundleManager-SkillInfo.md)\>\>
 
-获取调用方自身应用的所有技能信息。使用Promise异步回调。
+获取本应用的所有技能信息。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -126,7 +126,7 @@ getSkillInfosForSelf(flags: number): Promise\<Array\<[SkillInfo](js-apis-bundleM
 
 | 类型                                                        | 说明                                  |
 | ----------------------------------------------------------- | ------------------------------------- |
-| Promise\<Array\<[SkillInfo](js-apis-bundleManager-SkillInfo.md)\>\> | Promise对象，返回调用方自身应用的所有技能信息数组。|
+| Promise\<Array\<[SkillInfo](js-apis-bundleManager-SkillInfo.md)\>\> | Promise对象，返回调用方所在应用的所有技能信息数组。|
 
 
 **示例：**
@@ -146,7 +146,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getSkillInfosForSelf failed: error %{public}d  %{public}s', err.code, err.message);
+  hilog.error(0x0000, 'testTag', 'getSkillInfosForSelf failed: error %{public}d  %{public}s', code, message);
 }
 ```
 
@@ -218,7 +218,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getSkillInfo failed: error %{public}d  %{public}s', err.code, err.message);
+  hilog.error(0x0000, 'testTag', 'getSkillInfo failed: error %{public}d  %{public}s', code, message);
 }
 ```
 
@@ -284,7 +284,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getSkillInfos failed: error %{public}d  %{public}s', err.code, err.message);
+  hilog.error(0x0000, 'testTag', 'getSkillInfos failed: error %{public}d  %{public}s', code, message);
 }
 ```
 
@@ -292,7 +292,7 @@ try {
 
 getAllSkillInfos(flags: number, userId?: number): Promise\<Array\<[SkillInfo](js-apis-bundleManager-SkillInfo.md)\>\>
 
-获取设备上的所有技能信息。使用Promise异步回调。
+获取设备上安装应用的所有技能信息。使用Promise异步回调。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -347,7 +347,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getAllSkillInfos failed: error %{public}d  %{public}s', err.code, err.message);
+  hilog.error(0x0000, 'testTag', 'getAllSkillInfos failed: error %{public}d  %{public}s', code, message);
 }
 ```
 
@@ -355,7 +355,7 @@ try {
 
 type SkillInfo = _SkillInfo
 
-技能配置信息，用于定义AI 代理的技能能力。
+技能配置信息，用于定义AI代理的技能能力。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 

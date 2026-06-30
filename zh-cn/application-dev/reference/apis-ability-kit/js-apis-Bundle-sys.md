@@ -38,7 +38,7 @@ import bundle from '@ohos.bundle';
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[installer.getBundleInstaller](js-apis-installer-sys.md#bundleinstallergetbundleinstaller)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[installer.getBundleInstaller](js-apis-installer-sys.md#installergetbundleinstaller)替代。
 
 getBundleInstaller(): Promise&lt;BundleInstaller&gt;
 
@@ -79,7 +79,7 @@ bundle.getBundleInstaller().then((data) => {
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[installer.getBundleInstaller](js-apis-installer-sys.md#bundleinstallergetbundleinstaller)替代。
+> 从API version 7开始支持，从API version 9开始废弃，暂无替代接口。
 
 getBundleInstaller(callback: AsyncCallback&lt;BundleInstaller&gt;): void
 
@@ -120,7 +120,7 @@ bundle.getBundleInstaller((err, data) => {
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[cleanBundleCacheFiles](js-apis-bundleManager-sys.md#bundlemanagercleanbundlecachefiles)替代。
+> 从API version 8开始支持，从API version 9开始废弃，暂无替代接口。
 
 cleanBundleCacheFiles(bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -165,7 +165,7 @@ bundle.cleanBundleCacheFiles(bundleName, err => {
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[cleanBundleCacheFiles](js-apis-bundleManager-sys.md#bundlemanagercleanbundlecachefiles)替代。
+> 从API version 8开始支持，从API version 9开始废弃，暂无替代接口。
 
 cleanBundleCacheFiles(bundleName: string): Promise&lt;void&gt;
 
@@ -214,7 +214,7 @@ bundle.cleanBundleCacheFiles(bundleName).then(() => {
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[setApplicationEnabled](js-apis-bundleManager-sys.md#bundlemanagersetapplicationenabled)替代。
+> 从API version 8开始支持，从API version 9开始废弃，暂无替代接口。
 
 setApplicationEnabled(bundleName: string, isEnable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -260,7 +260,7 @@ bundle.setApplicationEnabled(bundleName, false, err => {
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[setApplicationEnabled](js-apis-bundleManager-sys.md#bundlemanagersetapplicationenabled)替代。
+> 从API version 8开始支持，从API version 9开始废弃，暂无替代接口。
 
 setApplicationEnabled(bundleName: string, isEnable: boolean): Promise&lt;void&gt;
 
@@ -310,7 +310,7 @@ bundle.setApplicationEnabled(bundleName, false).then(() => {
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[setAbilityEnabled](js-apis-bundleManager-sys.md#bundlemanagersetabilityenabled)替代。
+> 从API version 8开始支持，从API version 9开始废弃，暂无替代接口。
 
 setAbilityEnabled(info: AbilityInfo, isEnable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -340,7 +340,7 @@ SystemCapability.BundleManager.BundleFramework
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[setAbilityEnabled](js-apis-bundleManager-sys.md#bundlemanagersetabilityenabled)替代。
+> 从API version 8开始支持，从API version 9开始废弃，暂无替代接口。
 
 setAbilityEnabled(info: AbilityInfo, isEnable: boolean): Promise&lt;void&gt;
 
@@ -396,7 +396,7 @@ bundle.getAbilityInfo(bundleName, abilityName).then((abilityInfo) => {
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[getPermissionDef](js-apis-bundleManager-sys.md#bundlemanagergetpermissiondef)替代。
+> 从API version 8开始支持，从API version 9开始废弃，暂无替代接口。
 
 getPermissionDef(permissionName: string, callback: AsyncCallback&lt;PermissionDef&gt;): void
 
@@ -440,7 +440,7 @@ bundle.getPermissionDef(permission, (err, data) => {
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[getPermissionDef](js-apis-bundleManager-sys.md#bundlemanagergetpermissiondef)替代。
+> 从API version 8开始支持，从API version 9开始废弃，暂无替代接口。
 
 getPermissionDef(permissionName: string): Promise&lt;PermissionDef&gt;
 
@@ -484,7 +484,7 @@ bundle.getPermissionDef(permissionName).then((data) => {
 });
 ```
 
-## bundle.getBundleInfos<sup>deprecated</sup>
+## bundle.getBundleInfos<sup>(deprecated)</sup>
 
 getBundleInfos(bundleFlag: BundleFlag, userId?: number): Promise\<Array\<BundleInfo\>\>
 
@@ -534,7 +534,7 @@ bundle.getBundleInfos(bundleFlag, userId)
   })
 ```
 
-## bundle.getBundleInfos<sup>deprecated</sup>
+## bundle.getBundleInfos<sup>(deprecated)</sup>
 
 getBundleInfos(bundleFlag: BundleFlag, callback: AsyncCallback\<Array\<BundleInfo\>\>): void
 
@@ -577,7 +577,7 @@ bundle.getBundleInfos(bundleFlag, (err, data) => {
 })
 ```
 
-## bundle.getBundleInfos<sup>deprecated</sup>
+## bundle.getBundleInfos<sup>(deprecated)</sup>
 
 getBundleInfos(bundleFlag: BundleFlag, userId: number, callback: AsyncCallback\<Array\<BundleInfo\>\>): void
 
@@ -622,7 +622,7 @@ bundle.getBundleInfos(bundleFlag, userId, (err, data) => {
 })
 ```
 
-## bundle.getApplicationInfos<sup>deprecated</sup>
+## bundle.getApplicationInfos<sup>(deprecated)</sup>
 
 getApplicationInfos(bundleFlags: number, userId?: number): Promise\<Array\<ApplicationInfo\>\>
 
@@ -672,7 +672,7 @@ bundle.getApplicationInfos(bundleFlags, userId)
   })
 ```
 
-## bundle.getApplicationInfos<sup>deprecated</sup>
+## bundle.getApplicationInfos<sup>(deprecated)</sup>
 
 getApplicationInfos(bundleFlags: number, userId: number, callback: AsyncCallback\<Array\<ApplicationInfo\>\>): void
 
@@ -717,7 +717,7 @@ bundle.getApplicationInfos(bundleFlags, userId, (err, data) => {
 })
 ```
 
-## bundle.getApplicationInfos<sup>deprecated</sup>
+## bundle.getApplicationInfos<sup>(deprecated)</sup>
 
 getApplicationInfos(bundleFlags: number, callback: AsyncCallback\<Array\<ApplicationInfo\>\>): void
 
@@ -760,7 +760,7 @@ bundle.getApplicationInfos(bundleFlags, (err, data) => {
 })
 ```
 
-## ModuleRemoveFlag<sup>deprecated</sup>
+## ModuleRemoveFlag<sup>(deprecated)</sup>
 
 模块移除时与卡片、快捷方式是否有关联的标志。
 
@@ -783,7 +783,7 @@ bundle.getApplicationInfos(bundleFlags, (err, data) => {
 | FLAG_MODULE_NOT_USED_BY_SHORTCUT | 2 | 未被快捷方式使用。 |
 | FLAG_MODULE_USED_BY_SHORTCUT | 3 | 已被快捷方式使用。 |
 
-## SignatureCompareResult<sup>deprecated</sup>
+## SignatureCompareResult<sup>(deprecated)</sup>
 
 签名校验结果。
 
@@ -805,7 +805,7 @@ bundle.getApplicationInfos(bundleFlags, (err, data) => {
 | SIGNATURE_NOT_MATCHED | 1 | 签名不一致。 |
 | SIGNATURE_UNKNOWN_BUNDLE | 2 | 签名对应的包未知。 |
 
-## ShortcutExistence<sup>deprecated</sup>
+## ShortcutExistence<sup>(deprecated)</sup>
 
 查询快捷方式是否存在时返回的结果。
 
@@ -827,7 +827,7 @@ bundle.getApplicationInfos(bundleFlags, (err, data) => {
 | SHORTCUT_EXISTENCE_NOT_EXISTS | 1 | 不存在。 |
 | SHORTCUT_EXISTENCE_UNKNOW | 2 | 未知。 |
 
-## QueryShortCutFlag<sup>deprecated</sup>
+## QueryShortCutFlag<sup>(deprecated)</sup>
 
 用于指定快捷方式查询范围的标志。
 

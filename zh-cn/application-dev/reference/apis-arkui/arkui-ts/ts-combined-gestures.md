@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-手势识别组合，即两种及以上手势组合为复合手势，支持顺序识别、并发识别和互斥识别。
+手势识别组合，即两种及以上手势组合为复合手势，支持顺序识别、并行识别和互斥识别。
 
 >  **说明：**
 >
@@ -48,7 +48,7 @@ GestureGroup(mode: GestureMode, ...gesture: GestureType[])
 | 名称    | 值    | 说明                                       |
 | --------- | -------| ------------------------------------- |
 | Sequence | - | 顺序识别，根据注册顺序依次进行手势识别，直到所有手势识别成功。如果任一手势识别失败，则后续手势识别均无法完成。<br>在顺序识别手势组中，仅最后一个手势能响应onActionEnd事件。 |
-| Parallel | - | 并发识别，注册的手势同时识别，直到所有手势识别结束，手势识别互相不影响。     |
+| Parallel | - | 并行识别，注册的手势同时识别，直到所有手势识别结束，手势识别互相不影响。     |
 | Exclusive| - | 互斥识别，注册的手势同时识别，若有一个手势识别成功，则结束手势识别，其他手势识别均失败。       |
 
 
@@ -144,8 +144,8 @@ struct GestureGroupExample {
 
 按顺序首先触发长按事件：
 
-![zh-cn_image_0000001174104384](figures/zh-cn_image_0000001174104384.png)
+![GestureGroup](figures/GestureGroup.png)
 
 按顺序首先触发长按事件，长按事件识别结束之后，触发拖动事件，向右下方拖动：
 
- ![zh-cn_image1_0000001174104384](figures/zh-cn_image1_0000001174104384.png) 
+ ![triggeringEvent](figures/triggeringEvent.png) 

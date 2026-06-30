@@ -10,7 +10,7 @@
 
 - 窗口沉浸式能力：指对状态栏、导航栏等系统窗口进行控制，减少状态栏导航栏等系统界面的突兀感，从而使用户获得最佳体验的能力。沉浸式能力只在应用主窗口作为全屏窗口时生效。通常情况下，应用的辅助窗口（子窗、全局悬浮窗等）和处于自由窗口下的应用主窗口无法使用沉浸式能力。
 
-- 全局悬浮窗：全局悬浮窗是一种特殊的应用辅助窗口，具备在应用主窗口和对应Ability退至后台后仍然可以在前台显示的能力。全局悬浮窗可以用于应用退至后台后，使用小窗继续显示UI，例如音乐应用用于显示桌面歌词等。应用在创建全局悬浮窗前，需要申请对应的权限。
+- 全局悬浮窗：全局悬浮窗是一种特殊的应用辅助窗口，具备在应用主窗口和对应UIAbility退至后台后仍然可以在前台显示的能力。全局悬浮窗可以用于应用退至后台后，使用小窗继续显示UI，例如音乐应用用于显示桌面歌词等。应用在创建全局悬浮窗前，需要申请对应的权限。
 
 
 ## 场景介绍
@@ -143,7 +143,7 @@ export default class EntryAbility extends UIAbility {
    在调用`showWindow`之前，建议设置子窗口的大小和位置。
 
    如果没有设置子窗口的大小，调用`showWindow`后:
-    + [自由窗口](./window-terminology.md#自由窗口)状态下，默认子窗口大小为当前物理屏幕的大小。<!--RP3--><!--RP3End-->
+    + [自由窗口](./window-terminology.md#freeform-window自由窗口)状态下，默认子窗口大小为当前物理屏幕的大小。<!--RP3--><!--RP3End-->
     + 非自由窗口状态下，默认子窗口大小为主窗口大小。
 
 3. 加载显示子窗口的具体内容。
@@ -571,7 +571,7 @@ const TAG: string = '[Sample_CreatFloatWindow]';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
-    // 1.创建悬浮窗。
+    // 1.创建全局悬浮窗。
     let windowClass: window.Window | null = null;
     let config: window.Configuration = {
       name: 'floatWindow', windowType: window.WindowType.TYPE_FLOAT, ctx: this.context
@@ -584,7 +584,7 @@ export default class EntryAbility extends UIAbility {
       }
       hilog.info(DOMAIN, TAG, `Succeeded in creating the floatWindow. Data: ${JSON.stringify(data)}`);
       windowClass = data;
-      // 2.悬浮窗窗口创建成功后，设置悬浮窗的位置、大小及相关属性等。
+      // 2.全局悬浮窗窗口创建成功后，设置全局悬浮窗的位置、大小及相关属性等。
       windowClass.moveWindowTo(300, 300, (err: BusinessError) => {
         let errCode: number = err.code;
         if (errCode) {
@@ -601,7 +601,7 @@ export default class EntryAbility extends UIAbility {
         }
         hilog.info(DOMAIN, TAG, `Succeeded in changing the window size.`);
       });
-      // 3.为悬浮窗加载对应的目标页面。
+      // 3.为全局悬浮窗加载对应的目标页面。
       windowClass.setUIContent('pages/Index', (err: BusinessError) => {
         let errCode: number = err.code;
         if (errCode) {
@@ -609,7 +609,7 @@ export default class EntryAbility extends UIAbility {
           return;
         }
         hilog.info(DOMAIN, TAG, `Succeeded in loading the content.`);
-        // 3.显示悬浮窗。
+        // 3.显示全局悬浮窗。
         (windowClass as window.Window).showWindow((err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {
@@ -619,7 +619,7 @@ export default class EntryAbility extends UIAbility {
           hilog.info(DOMAIN, TAG, `Succeeded in showing the window.`);
         });
       });
-      // 4.销毁悬浮窗。当不再需要悬浮窗时，可根据具体实现逻辑，使用destroy对其进行销毁。
+      // 4.销毁全局悬浮窗。当不再需要全局悬浮窗时，可根据具体实现逻辑，使用destroy对其进行销毁。
     });
   }
 };

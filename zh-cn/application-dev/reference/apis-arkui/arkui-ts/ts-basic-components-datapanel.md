@@ -57,7 +57,7 @@ DataPanel(options: DataPanelOptions)
 | 名称            | 类型   | 只读 | 可选 | 说明 |
 | ----------------- | -------- | ----- | -------- | -------- |
 | values            | ArkTS-Dyn: number[] <br> ArkTS-Sta: double[]   | 否   | 否  | 数据值列表，最多包含9个数据，大于9个数据则取前9个数据。若数据值小于0则置为0。<br/>**ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23 |
-| max               | ArkTS-Dyn: number <br> ArkTS-Sta: double     | 否   | 是   |   -&nbsp;max大于0时，表示数据的最大值。<br/>-&nbsp;max小于等于0时，max等于value数组各项的和，按比例显示。<br/>默认值：100<br/>**ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23 |
+| max               | ArkTS-Dyn: number <br> ArkTS-Sta: double     | 否   | 是   |   -&nbsp;max大于0时，表示数据的最大值。<br/>-&nbsp;max小于等于0时，max等于values数组各项的和，按比例显示。<br/>默认值：100<br/>**ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23 |
 | type<sup>8+</sup> | [DataPanelType](#datapaneltype8枚举说明) | 否 | 是 | 数据面板的类型（不支持动态修改）。<br/>默认值：DataPanelType.Circle。<br/>**ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23|
 
 ## DataPanelType<sup>8+</sup>枚举说明
@@ -294,7 +294,7 @@ constructor(colorStops: ColorStop[])
 
 ## ColorStop<sup>10+</sup>
 
-颜色断点类型，用于描述渐进色颜色断点。
+颜色断点类型，用于描述渐变色颜色断点。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 

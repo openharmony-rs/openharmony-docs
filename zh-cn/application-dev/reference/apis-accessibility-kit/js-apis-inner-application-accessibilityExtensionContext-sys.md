@@ -160,7 +160,11 @@ type FocusCondition = 'forward' | 'backward' | 'findLast' | 'getForwardScrollAnc
 | result | [FocusMoveResultCode](./js-apis-accessibility-sys.md#focusmoveresultcode23)  | 否 | 否 | 查询无障碍节点返回结果类型。|
 
 
-## startAbility<sup>12+</sup>
+## AccessibilityExtensionContext
+
+辅助功能扩展的上下文环境。需要通过AccessibilityExtensionAbility子类实例获取AccessibilityExtensionContext的实例。
+
+### startAbility<sup>12+</sup>
 
 startAbility(want: Want): Promise\<void>
 
@@ -244,7 +248,7 @@ export default class AccessibilityManager {
 }
 ```
 
-## AccessibilityExtensionContext.getElements<sup>18+</sup>
+### getElements<sup>18+</sup>
 
 ArkTS-Dyn: getElements(windowId: number, elementId?: number): Promise<Array&lt;AccessibilityElement&gt;>
 
@@ -378,7 +382,7 @@ export default class AccessibilityManager {
 }
 ```
 
-## AccessibilityExtensionContext.getDefaultFocusedElementIds<sup>18+</sup>
+### getDefaultFocusedElementIds<sup>18+</sup>
 
 ArkTS-Dyn: getDefaultFocusedElementIds(windowId: number): Promise<Array&lt;number&gt;>
 
@@ -507,7 +511,7 @@ export default class AccessibilityManager {
 }
 ```
 
-## AccessibilityExtensionContext.holdRunningLockSync<sup>20+</sup>
+### holdRunningLockSync<sup>20+</sup>
 
 holdRunningLockSync(): void
 
@@ -574,7 +578,7 @@ export default class AccessibilityManager {
 }
 ```
 
-## AccessibilityExtensionContext.unholdRunningLockSync<sup>20+</sup>
+### unholdRunningLockSync<sup>20+</sup>
 
 unholdRunningLockSync(): void
 
@@ -641,19 +645,19 @@ export default class AccessibilityManager {
 }
 ```
 
-## AccessibilityExtensionContext.on('preDisconnect')<sup>20+</sup>
+### on('preDisconnect')<sup>20+</sup>
 
 on(type: 'preDisconnect', callback: Callback&lt;void&gt;): void
 
 向无障碍服务注册回调函数，在无障碍服务关闭该无障碍扩展服务前会执行该回调函数。使用callback异步回调。
 
-此注册函数需要与[notifyDisconnect](#accessibilityextensioncontextnotifydisconnect20)配合使用，如果不调用[notifyDisconnect](#accessibilityextensioncontextnotifydisconnect20)，则默认等待30秒后，无障碍扩展服务会自动关闭。
+此注册函数需要与[notifyDisconnect](#notifydisconnect20)配合使用，如果不调用[notifyDisconnect](#notifydisconnect20)，则默认等待30秒后，无障碍扩展服务会自动关闭。
 
 **需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onPreDisconnect](#accessibilityextensioncontextonpredisconnect23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[onPreDisconnect](#onpredisconnect23)。
 
 **系统接口**：此接口为系统接口。
 
@@ -721,19 +725,19 @@ export default class AccessibilityManager {
 }
 ```
 
-## AccessibilityExtensionContext.onPreDisconnect<sup>23+</sup>
+### onPreDisconnect<sup>23+</sup>
 
 onPreDisconnect(callback: Callback\<void>): void
 
 向无障碍服务注册回调函数，在无障碍服务关闭该无障碍扩展服务前会执行该回调函数。使用callback异步回调。
 
-此注册函数需要与[notifyDisconnect](#accessibilityextensioncontextnotifydisconnect20)配合使用，如果不调用[notifyDisconnect](#accessibilityextensioncontextnotifydisconnect20)，则默认等待30秒后，无障碍扩展服务会自动关闭。
+此注册函数需要与[notifyDisconnect](#notifydisconnect20)配合使用，如果不调用[notifyDisconnect](#notifydisconnect20)，则默认等待30秒后，无障碍扩展服务会自动关闭。
 
 **需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('preDisconnect')](#accessibilityextensioncontextonpredisconnect20)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('preDisconnect')](#onpredisconnect20)。
 
 **系统接口**：此接口为系统接口。
 
@@ -801,7 +805,7 @@ export default class AccessibilityManager {
 }
 ```
 
-## AccessibilityExtensionContext.off('preDisconnect')<sup>20+</sup>
+### off('preDisconnect')<sup>20+</sup>
 
 off(type: 'preDisconnect', callback?: Callback&lt;void&gt;): void
 
@@ -811,7 +815,7 @@ off(type: 'preDisconnect', callback?: Callback&lt;void&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offPreDisconnect](#accessibilityextensioncontextoffpredisconnect23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[offPreDisconnect](#offpredisconnect23)。
 
 **系统接口**：此接口为系统接口。
 
@@ -824,7 +828,7 @@ off(type: 'preDisconnect', callback?: Callback&lt;void&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 监听事件名，固定为‘preDisconnect’，即无障碍扩展服务即将关闭事件。 |
-| callback | Callback&lt;void&gt; | 否 |回调函数，取消指定无障碍扩展服务即将关闭时的回调。需与[on('preDisconnect')](#accessibilityextensioncontextonpredisconnect20)的callback一致。缺省时，表示注销所有已注册事件。|
+| callback | Callback&lt;void&gt; | 否 |回调函数，取消指定无障碍扩展服务即将关闭时的回调。需与[on('preDisconnect')](#onpredisconnect20)的callback一致。缺省时，表示注销所有已注册事件。|
 
 **错误码：**
 
@@ -879,7 +883,7 @@ export default class AccessibilityManager {
 }
 ```
 
-## AccessibilityExtensionContext.offPreDisconnect<sup>23+</sup>
+### offPreDisconnect<sup>23+</sup>
 
 offPreDisconnect(callback?: Callback\<void>): void
 
@@ -889,7 +893,7 @@ offPreDisconnect(callback?: Callback\<void>): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('preDisconnect')](#accessibilityextensioncontextoffpredisconnect20)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('preDisconnect')](#offpredisconnect20)。
 
 **系统接口**：此接口为系统接口。
 
@@ -901,7 +905,7 @@ offPreDisconnect(callback?: Callback\<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;void&gt; | 否 |回调函数，取消指定无障碍扩展服务即将关闭时的回调。需与[onPreDisconnect](#accessibilityextensioncontextonpredisconnect23)的callback一致。缺省时，表示注销所有已注册事件。|
+| callback | Callback&lt;void&gt; | 否 |回调函数，取消指定无障碍扩展服务即将关闭时的回调。需与[onPreDisconnect](#onpredisconnect23)的callback一致。缺省时，表示注销所有已注册事件。|
 
 **错误码：**
 
@@ -957,13 +961,13 @@ export default class AccessibilityManager {
 }
 ```
 
-## AccessibilityExtensionContext.notifyDisconnect<sup>20+</sup>
+### notifyDisconnect<sup>20+</sup>
 
 notifyDisconnect(): void
 
 通知无障碍服务可以关闭该无障碍扩展服务。
 
-此函数需要与注册预关闭接口[on('preDisconnect')](#accessibilityextensioncontextonpredisconnect20)配合使用，如果没有调用过注册预关闭函数，直接调用此函数不生效。
+此函数需要与注册预关闭接口[on('preDisconnect')](#onpredisconnect20)配合使用，如果没有调用过注册预关闭函数，直接调用此函数不生效。
 
 **需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
@@ -1026,7 +1030,7 @@ export default class AccessibilityManager {
 }
 ```
 
-## getAccessibilityFocusedElement<sup>20+</sup>
+### getAccessibilityFocusedElement<sup>20+</sup>
 
 getAccessibilityFocusedElement(): Promise\<AccessibilityElement>
 
@@ -1101,7 +1105,7 @@ export default class AccessibilityManager {
 }
 ```
 
-## getRootInActiveWindow<sup>20+</sup>
+### getRootInActiveWindow<sup>20+</sup>
 
 ArkTS-Dyn: getRootInActiveWindow(windowId ?: number): Promise\<AccessibilityElement>
 
@@ -1232,7 +1236,7 @@ export default class AccessibilityManager {
 }
 ```
 
-## getAccessibilityWindowsSync<sup>20+</sup>
+### getAccessibilityWindowsSync<sup>20+</sup>
 
 ArkTS-Dyn: getAccessibilityWindowsSync(displayId?: number): Array\<AccessibilityElement>
 
@@ -1319,7 +1323,7 @@ export default class AccessibilityManager {
 
 ## AccessibilityElement
 
-无障碍节点元素。在调用 **AccessibilityElement** 的 API 之前，应该调用 [AccessibilityExtensionContext.getAccessibilityFocusedElement()](#getaccessibilityfocusedelement20) 或 [AccessibilityExtensionContext.getRootInActiveWindow()](#getrootinactivewindow20) 来获取一个 **AccessibilityElement** 实例。
+无障碍节点元素。在调用AccessibilityElement的接口之前，应该调用[AccessibilityExtensionContext.getAccessibilityFocusedElement](#getaccessibilityfocusedelement20)或[AccessibilityExtensionContext.getRootInActiveWindow](#getrootinactivewindow20)来获取一个AccessibilityElement实例。
 
 **系统接口**：此接口为系统接口。
 
@@ -1842,7 +1846,7 @@ executeAction(action: AccessibilityAction, parameters?: Parameter): Promise\<voi
 
 根据action指定的操作类型和parameters传入的参数，执行特定操作。使用Promise异步回调。
 
-**需要权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **系统接口**：此接口为系统接口。
 
@@ -1937,15 +1941,15 @@ getParent(): Promise\<AccessibilityElement>
 
 获取无障碍节点元素的父元素。使用Promise异步回调。
 
-**需要权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **系统接口**：此接口为系统接口。
 
-**系统能力:** SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -1985,15 +1989,15 @@ getChildren(): Promise\<Array\<AccessibilityElement>>
 
 获取元素的子元素列表。使用Promise异步回调。
 
-**需要权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **系统接口**：此接口为系统接口。
 
-**系统能力:** SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -2033,15 +2037,15 @@ getRoot(): Promise\<AccessibilityElement>
 
 获取活动窗口中的根元素。使用Promise异步回调。
 
-**需要权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **系统接口**：此接口为系统接口。
 
-**系统能力:** SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -2080,15 +2084,15 @@ findElementByContent(condition: string): Promise\<Array\<AccessibilityElement>>
 
 根据内容查找元素。使用Promise异步回调。
 
-**需要权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **系统接口**：此接口为系统接口。
 
-**系统能力:** SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -2149,11 +2153,11 @@ findElementByFocusDirection(condition: FocusDirection): Promise\<AccessibilityEl
 
 **系统接口**：此接口为系统接口。
 
-**系统能力:** SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -2217,11 +2221,11 @@ findElementsByAccessibilityHintText(condition: string): Promise\<Array\<Accessib
 
 **系统接口**：此接口为系统接口。
 
-**系统能力:** SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -2289,11 +2293,11 @@ ArkTS-Sta: findElementById(condition: long): Promise\<AccessibilityElement>
 
 **系统接口**：此接口为系统接口。
 
-**系统能力:** SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -2357,11 +2361,11 @@ findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise\<Fo
 
 **需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
-**系统能力:** SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **ArkTS-Dyn起始版本**：23
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 

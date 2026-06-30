@@ -116,7 +116,7 @@
       console.info('decrypt ok.');
       // 把Uint8Array按utf-8编码为字符串
       let messageDecrypted = buffer.from(decryptText.data).toString('utf-8');
-      console.info('decrypted result string:' + messageDecrypted);
+      console.info('decrypted result string: ' + messageDecrypted);
     } else {
       console.error('decrypt failed.');
     }
@@ -206,7 +206,7 @@
       console.info('decrypt ok.');
       // 把Uint8Array按utf-8编码为字符串
       let messageDecrypted = buffer.from(decryptText.data).toString('utf-8');
-      console.info('decrypted result string:' + messageDecrypted);
+      console.info('decrypted result string: ' + messageDecrypted);
     } else {
       console.error('decrypt failed.');
     }

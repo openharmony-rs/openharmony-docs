@@ -3858,6 +3858,8 @@ addGlobalGestureListener(type: GestureListenerType, option: GestureObserverConfi
 
 该示例使用全局手势监听器实时追踪Tap、Pan和LongPress三个独立区域的触发状态，记录各手势的触发次数和最后操作信息，并在组件生命周期内自动管理监听器的注册与注销。
 
+ArkTS-Dyn示例：
+
 ```ts
 // Index.ets
 // 演示uiObserver.addGlobalGestureListener(type, option, callback)
@@ -4032,6 +4034,173 @@ struct Index {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Row, RowOptions, Text, Button, State, GestureEvent, TapGesture, PanGesture, LongPressGesture, FlexAlign } from '@kit.ArkUI';
+import { GestureListenerType, GestureActionPhase, GestureTriggerInfo, GestureListenerCallback } from '@ohos.arkui.UIContext';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = '全局手势监控';
+  @State tapCount: number = 0;
+  @State panCount: number = 0;
+  @State longPressCount: number = 0;
+  @State lastAction: string = '无';
+  @State lastArea: string = '无';
+
+  // 存储监听器回调引用，使用非可选类型并初始化
+  private tapCallback: GestureListenerCallback = (info: GestureTriggerInfo): void => {};
+  private panCallback: GestureListenerCallback = (info: GestureTriggerInfo): void => {};
+  private longPressCallback: GestureListenerCallback = (info: GestureTriggerInfo): void => {};
+
+  // 启用全局监听
+  aboutToAppear(): void {
+    this.addGlobalListeners();
+  }
+
+  // 终止全局监听
+  aboutToDisappear(): void {
+    this.removeGlobalListeners();
+  }
+
+  private addGlobalListeners(): void {
+    // Tap监听任务
+    this.tapCallback = (info: GestureTriggerInfo): void => {
+      if (info.event?.target?.id === 'tap-area') {
+        this.tapCount++;
+        this.lastAction = '点击';
+        this.lastArea = 'Tap区域';
+      }
+    };
+    this.getUIContext().getUIObserver().addGlobalGestureListener(
+      GestureListenerType.TAP,
+      { actionPhases: [GestureActionPhase.WILL_START, GestureActionPhase.WILL_END] },
+      this.tapCallback
+    );
+
+    // Pan监听任务
+    this.panCallback = (info: GestureTriggerInfo): void => {
+      if (info.event?.target?.id === 'pan-area') {
+        this.panCount++;
+        this.lastAction = '平移';
+        this.lastArea = 'Pan区域';
+      }
+    };
+    this.getUIContext().getUIObserver().addGlobalGestureListener(
+      GestureListenerType.PAN,
+      {
+        actionPhases: [GestureActionPhase.WILL_START, GestureActionPhase.WILL_END]
+      },
+      this.panCallback
+    );
+
+    // LongPress监听任务
+    this.longPressCallback = (info: GestureTriggerInfo): void => {
+      if (info.event?.target?.id === 'longpress-area') {
+        this.longPressCount++;
+        this.lastAction = '长按';
+        this.lastArea = 'LongPress区域';
+      }
+    };
+    this.getUIContext().getUIObserver().addGlobalGestureListener(
+      GestureListenerType.LONG_PRESS,
+      {
+        actionPhases: [GestureActionPhase.WILL_START, GestureActionPhase.WILL_END]
+      },
+      this.longPressCallback
+    );
+  }
+
+  private removeGlobalListeners(): void {
+    this.getUIContext().getUIObserver().removeGlobalGestureListener(GestureListenerType.TAP, this.tapCallback);
+    this.getUIContext().getUIObserver().removeGlobalGestureListener(GestureListenerType.PAN, this.panCallback);
+    this.getUIContext().getUIObserver().removeGlobalGestureListener(GestureListenerType.LONG_PRESS, this.longPressCallback);
+  }
+
+  build() {
+    Column() {
+      // 手势数据统计面板
+      Row({ space: 30 } as RowOptions) {
+        Column() {
+          Text('点击次数:').fontSize(16)
+          Text(`${this.tapCount}`).fontSize(24).fontColor('#FF6B81')
+        }
+        Column() {
+          Text('平移次数:').fontSize(16)
+          Text(`${this.panCount}`).fontSize(24).fontColor('#7BED9F')
+        }
+        Column() {
+          Text('长按次数:').fontSize(16)
+          Text(`${this.longPressCount}`).fontSize(24).fontColor('#70A1FF')
+        }
+      }
+      .margin(10)
+
+      Text(`最后动作: ${this.lastAction} (${this.lastArea})`)
+        .fontSize(18)
+        .margin(10)
+
+      // 手势区域
+      Row() {
+        Text('Tap区域').fontSize(18)
+      }
+      .id('tap-area')
+      .width('90%')
+      .height(120)
+      .margin(10)
+      .border({ width: 2, color: '#FF6B81' })
+      .justifyContent(FlexAlign.Center)
+      .gesture(TapGesture().onAction((event: GestureEvent): void => {
+        // 具体实现内容
+      }))
+
+      Row() {
+        Text('Pan区域').fontSize(18)
+      }
+      .id('pan-area')
+      .width('90%')
+      .height(120)
+      .margin(10)
+      .border({ width: 2, color: '#7BED9F' })
+      .justifyContent(FlexAlign.Center)
+      .gesture(
+        PanGesture()
+          .onActionStart((event: GestureEvent): void => {
+            // 具体实现内容
+          })
+          .onActionEnd((event: GestureEvent): void => {
+            // 具体实现内容
+          })
+      )
+
+      Row() {
+        Text('LongPress区域').fontSize(18)
+      }
+      .id('longpress-area')
+      .width('90%')
+      .height(120)
+      .margin(10)
+      .border({ width: 2, color: '#70A1FF' })
+      .justifyContent(FlexAlign.Center)
+      .gesture(
+        LongPressGesture()
+          .onAction((event: GestureEvent): void => {
+            // 具体实现内容
+          })
+          .onActionEnd((event: GestureEvent): void => {
+            // 具体实现内容
+          })
+      )
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ![example](figures/pangesture_uiobserver_listener.gif)
 
 ## removeGlobalGestureListener<sup>20+</sup>

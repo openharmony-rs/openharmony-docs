@@ -6,6 +6,10 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
+Web组件事件模块是ArkWeb框架中Web组件的事件回调接口集合，为开发者提供监听和响应Web组件各类运行时事件的机制。这些事件覆盖了Web页面加载的完整生命周期（从加载开始到完成）、JavaScript对话框交互、资源请求拦截与错误处理、安全认证（HTTP Auth、SSL错误、客户端证书）、权限管理、渲染进程状态、UI交互（上下文菜单、滚动、缩放、全屏）、窗口管理、同层渲染、性能度量以及多媒体设备状态等场景。开发者通过注册对应的事件回调，可以在Web组件运行过程中获取关键信息、拦截或自定义处理逻辑，实现应用对Web内容的精细管控和用户体验优化。
+
+当应用需要在嵌入式Web场景中对网页行为进行拦截、自定义或监控时——例如自定义JavaScript弹窗样式、拦截URL请求返回本地数据、处理SSL证书错误、管理摄像头/麦克风权限、监听页面加载进度、感知渲染进程异常、实现同层渲染交互等——应使用本模块提供的各事件回调API。
+
 通用事件仅支持[onAppear](../apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear)、[onDisAppear](../apis-arkui/arkui-ts/ts-universal-events-show-hide.md#ondisappear)、[onBlur](../apis-arkui/arkui-ts/ts-universal-focus-event.md#onblur)、[onFocus](../apis-arkui/arkui-ts/ts-universal-focus-event.md#onfocus)、[onDragEnd](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragend10)、[onDragEnter](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragenter)、[onDragStart](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart)、[onDragMove](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragmove)、[onDragLeave](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragleave)、[onDrop](../apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondrop)、[onHover](../apis-arkui/arkui-ts/ts-universal-events-hover.md#onhover)、[onMouse](../apis-arkui/arkui-ts/ts-universal-mouse-key.md#onmouse)、[onKeyEvent](../apis-arkui/arkui-ts/ts-universal-events-key.md#onkeyevent)、[onTouch](../apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)、[onVisibleAreaChange](../apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareachange)。
 
 > **说明：**
@@ -3074,19 +3078,27 @@ struct Index {
     ```
 
 ## onVerifyPin<sup>22+</sup>
-onVerifyPin(callback: OnVerifyPinCallback)
+ArkTS-Dyn: onVerifyPin(callback: OnVerifyPinCallback)
+
+ArkTS-Sta: onVerifyPin(callback: OnVerifyPinCallback | undefined)
 
 通知用户进行PIN码认证。使用callback异步回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback  | [OnVerifyPinCallback](./arkts-basic-components-web-t.md#onverifypincallback22) | 是 | 当需要用户进行PIN码认证时触发的回调。  |
+| callback  | ArkTS-Dyn: [OnVerifyPinCallback](./arkts-basic-components-web-t.md#onverifypincallback22)<br/>ArkTS-Sta: [OnVerifyPinCallback](./arkts-basic-components-web-t.md#onverifypincallback22) \| undefined | 是 | 当需要用户进行PIN码认证时触发的回调。  |
 
   **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -3171,6 +3183,106 @@ struct Index {
         })
         .onTitleReceive(event  => {
           console.info("title received " + event.title);
+        })
+
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { webview } from '@kit.ArkWeb';
+import { common } from '@kit.AbilityKit';
+import certMgrDialog from '@ohos.security.certManagerDialog';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Entry, State, Component, Column, Web, Button, Context, OnClientAuthenticationEvent, OnVerifyPinCallback, VerifyPinEvent, PinVerifyResult, CredentialType, OnErrorReceiveEvent, Alignment,ClickEvent } from "@kit.ArkUI"
+import { UIContext } from '@ohos.arkui.UIContext';
+import { canIUse } from '@internal.full.global';
+
+@Entry
+@Component
+struct Index {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  uiContext: UIContext | null = null;
+  context: Context | null = null;
+  @State type: CredentialType = CredentialType.CREDENTIAL_UKEY;
+  aboutToAppear(): void {
+    this.uiContext = this.getUIContext();
+    if (this.uiContext) {
+      const hostContext = this.uiContext?.getHostContext() as common.UIAbilityContext;
+      this.context = hostContext as Context;
+    }
+  }
+
+  build() {
+    Column() {
+      Button('加载需要客户端SSL证书的网站')
+        .onClick(() => {
+          this.controller.loadUrl("https://client.badssl.com")
+        }).height(60)
+      Web({ src: "https://www.bing.com/", controller: this.controller})
+        .domStorageAccess(true)
+        .fileAccess(true)
+        .onClientAuthenticationRequest((event:OnClientAuthenticationEvent):void => {
+          // 收到客户端证书请求事件
+          console.info(`RM001 onClientAuthenticationRequest`);
+          if (!this.context) {
+            console.error(`RM001 The context is not initialized`);
+          }
+          const nonNullContext = this.context!;
+          try {
+            let certTypes: Array<certMgrDialog.CertificateType> = [
+              certMgrDialog.CertificateType.CREDENTIAL_UKEY
+            ];
+            // 调用证书管理，打开证书选择框
+            certMgrDialog.openAuthorizeDialog(nonNullContext, { certTypes: certTypes })
+              .then((data: certMgrDialog.CertReference) => {
+                console.info(`RM001 openAuthorizeDialog request cred auth success`)
+                // 通知web选择的为ukey证书
+                event.handler.confirm(data.keyUri, CredentialType.CREDENTIAL_UKEY);
+              }).catch((err): void => {
+              console.error(`RM001 openAuthorizeDialog request cred auth failed, err.code:${err.code},err.message:${err.message}`);
+            })
+          } catch (e) {
+            console.error(`RM001 openAuthorizeDialog request cred auth failed, err: ${JSON.stringify(e)}`);
+          }
+        })
+        .onVerifyPin((event:VerifyPinEvent):void => {
+          // 收到PIN码认证请求事件
+          console.info('RM001 onVerifyPin')
+          if (!this.context) {
+            console.error(`RM001 The context is not initialized`);
+            return;
+          }
+          const nonNullContext = this.context!;
+          // 调用证书管理，打开PIN码输入框
+          certMgrDialog.openUkeyAuthDialog(nonNullContext, {keyUri: event.identity})
+            .then(() => {
+              // 通知webPIN码认证成功
+              console.info('RM001 onVerifyPin success');
+              event.handler.confirm(PinVerifyResult.PIN_VERIFICATION_SUCCESS);
+            }).catch((err):void => {
+            // 通知webPIN码认证失败
+            console.info('RM001 onVerifyPin fail');
+            event.handler.confirm(PinVerifyResult.PIN_VERIFICATION_FAILED);
+          })
+        })
+        .onErrorReceive((event:OnErrorReceiveEvent) => {
+          if (event) {
+            this.getUIContext().getPromptAction().showToast({
+              message: `ErrorCode: ${event.error.getErrorCode()}, ErrorInfo: ${event.error.getErrorInfo()}`,
+              alignment: Alignment.Center
+            })
+            console.info('RM001 getErrorInfo:' + event.error.getErrorInfo());
+            console.info('RM001 getErrorCode:' + event.error.getErrorCode());
+            console.info('RM001 url:' + event.request.getRequestUrl());
+          }
+        })
+        .onTitleReceive(event  => {
+          console.info("RM001 title received " + event.title);
         })
 
     }
@@ -3875,14 +3987,14 @@ ArkTS-Dyn示例：
     controller: webview.WebviewController = new webview.WebviewController();
     uiContext: UIContext = this.getUIContext();
 
-    // 组件的声明周期函数，创建组件实例后触发
+    // 组件的生命周期函数，创建组件实例后触发
     aboutToAppear(): void {
       let context : Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
       if (!context) {
         console.error("context is undefined");
         return;
       }
-      // 向用户请求位置权限
+      // 向用户请求位置权限，对整个应用生效
       atManager.requestPermissionsFromUser(context, ["ohos.permission.LOCATION", "ohos.permission.APPROXIMATELY_LOCATION"]).then((data) => {
         console.info('data:' + JSON.stringify(data));
         console.info('data permissions:' + data.permissions);
@@ -3894,9 +4006,11 @@ ArkTS-Dyn示例：
 
     build() {
       Column() {
+        // Web组件的geolocationAccess属性默认为true，可以显式配置为false以禁止Web组件获取地理位置信息
         Web({ src: $rawfile('index.html'), controller: this.controller })
           .geolocationAccess(true)
           .onGeolocationShow((event) => {
+            // 位置权限申请通知仅对当前Web组件生效，应用内的其他Web组件不受影响
             if (event) {
               this.uiContext.showAlertDialog({
                 title: 'title',
@@ -3904,11 +4018,13 @@ ArkTS-Dyn示例：
                 confirm: {
                   value: 'onConfirm',
                   action: () => {
+                    // 允许此站点位置权限请求
                     // invoke的第三个参数表示是否记住当前弹窗的选择状态，如果传入true，则下次不再弹出对话框
                     event.geolocation.invoke(event.origin, true, false);
                   }
                 },
                 cancel: () => {
+                  // 不允许此站点位置权限请求
                   // invoke的第三个参数表示是否记住当前弹窗的选择状态，如果传入true，则下次不再弹出对话框
                   event.geolocation.invoke(event.origin, false, false);
                 }
@@ -3934,9 +4050,11 @@ ArkTS-Sta示例：
 
     build() {
       Column() {
+        // Web组件的geolocationAccess属性默认为true，可以显式配置为false以禁止Web组件获取地理位置信息
         Web({ src: $rawfile('index.html'), controller: this.controller })
           .geolocationAccess(true)
           .onGeolocationShow((event) => {
+            // 位置权限申请通知仅对当前Web组件生效，应用内的其他Web组件不受影响
             if (event) {
               this.uiContext.showAlertDialog({
                 title: 'title',
@@ -3944,16 +4062,22 @@ ArkTS-Sta示例：
                 primaryButton: {
                   value: 'cancel',
                   action: () => {
+                    // 不允许此站点位置权限请求
+                    // invoke的第三个参数表示是否记住当前弹窗的选择状态，如果传入true，则下次不再弹出对话框
                     event.geolocation.invoke(event.origin, false, true);
                   }
                 },
                 secondaryButton: {
                   value: 'ok',
                   action: () => {
+                    // 允许此站点位置权限请求
+                    // invoke的第三个参数表示是否记住当前弹窗的选择状态，如果传入true，则下次不再弹出对话框
                     event.geolocation.invoke(event.origin, true, true);
                   }
                 },
                 cancel: () => {
+                  // 不允许此站点位置权限请求
+                  // invoke的第三个参数表示是否记住当前弹窗的选择状态，如果传入true，则下次不再弹出对话框
                   event.geolocation.invoke(event.origin, false, true);
                 }
               } as AlertDialogParamWithButtons)
@@ -8907,7 +9031,7 @@ ArkTS-Sta: onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChan
 
 通知用户当前网页中麦克风状态，麦克风有三个状态，未工作（None），捕获中（Active），暂停中（Paused）。使用callback异步回调。
 
-可以通过resumeMicrophone，pauseMicrophone，stopMicrophone这三个接口来切换麦克风的状态。这三个接口功能分别对应解除暂停，暂停，停止麦克风。示例使用场景详见[网页中麦克风的使用](./arkts-apis-webview-WebviewController.md#resumemicrophone23)。
+可以通过resumeMicrophone，pauseMicrophone，stopMicrophone这三个接口来切换麦克风的状态。这三个接口功能分别对应解除暂停，暂停，停止麦克风。示例使用场景详见[resumeMicrophone<sup>23+</sup>](./arkts-apis-webview-WebviewController.md#resumemicrophone23)。
 
 > **说明：**
 >

@@ -14,6 +14,10 @@
 
 ## Resource
 
+ArkTS-Dyn: type Resource = import('../api/global/resource').Resource
+
+ArkTS-Sta: type Resource = _Resource
+
 资源引用类型，用于设置组件属性的值。各类资源文件，需要放入特定子目录中存储管理，资源目录的示例请参考[资源分类](../../../quick-start/resource-categories-and-access.md#资源分类)。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
@@ -21,6 +25,14 @@
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型                    | 说明                        |
+| --------------------- | ------------------------- |
+| ArkTS-Dyn: import('../api/global/resource').[Resource](../../apis-localization-kit/js-apis-resource.md#resource-1)<br/>ArkTS-Sta: _[Resource](../../apis-localization-kit/js-apis-resource.md#resource-1)   | 资源引用类型。                    |
 
 可以通过`$r`或者`$rawfile`创建Resource类型对象，不可以修改Resource中的各属性的值。
 
@@ -46,6 +58,10 @@
 
 ## Length
 
+ArkTS-Dyn: type Length = string | number | Resource
+
+ArkTS-Sta: type Length = string | double | Resource
+
 长度类型，用于描述尺寸单位。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
@@ -57,10 +73,84 @@
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
 | string                | 需要显式指定[像素单位](ts-pixel-units.md)，如'10px'，也可设置百分比字符串，如'100%'。<br/>**说明：** <br/>不指定像素单位时，默认单位vp，如'10'，等同于10。 |
-| number                | 默认单位vp。                                |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double                | 默认单位vp。                                |
 | [Resource](#resource) | 资源引用类型，引入系统资源或者应用资源中的尺寸。               |
 
+## LengthMetricsUnit<sup>12+</sup>
+
+ArkTS-Dyn: type LengthMetricsUnit = import('../api/arkui/Graphics').LengthMetricsUnit
+
+ArkTS-Sta: type LengthMetricsUnit = _LengthMetricsUnit
+
+定义长度属性单位。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型                    | 说明                                     |
+| --------------------- | -------------------------------------- |
+|ArkTS-Dyn: import('../api/arkui/Graphics').[LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12)<br/>ArkTS-Sta:  _[LengthMetricsUnit](../js-apis-arkui-graphics.md#lengthmetricsunit12)  | 长度属性单位。 |
+
+## LengthMetrics<sup>12+</sup>
+
+ArkTS-Dyn: type LengthMetrics = import('../api/arkui/Graphics').LengthMetrics
+
+ArkTS-Sta: type LengthMetrics = _LengthMetrics
+
+定义长度属性。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型                    | 说明                                     |
+| --------------------- | -------------------------------------- |
+|ArkTS-Dyn: import('../api/arkui/Graphics').[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<br/>ArkTS-Sta: _[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 长度属性。 |
+
+## ColorMetrics<sup>12+</sup>
+
+ArkTS-Dyn: type ColorMetrics = import('../api/arkui/Graphics').ColorMetrics
+
+ArkTS-Sta: type ColorMetrics = _ColorMetrics
+
+定义混合颜色。
+
+**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型                    | 说明                                     |
+| --------------------- | -------------------------------------- |
+|ArkTS-Dyn: import('../api/arkui/Graphics').[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)<br/>ArkTS-Sta: _[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)   | 混合颜色。 |
+
 ## ResourceStr
+
+type ResourceStr = string | Resource
 
 字符串类型，用于描述字符串入参可以使用的类型。
 
@@ -77,7 +167,11 @@
 
 ## Padding
 
+type Padding = { top: Length; right: Length; bottom: Length; left: Length; }
+
 内边距类型，用于描述组件不同方向的内边距。
+
+引入该对象时，至少传入一个参数。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -85,12 +179,12 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| -------- | -------- | -------- | -------- | -------- |
-| top    | [Length](#length) | 否 | 是    | 上内边距，组件内元素距组件顶部的尺寸。  |
-| right  | [Length](#length) | 否 | 是    | 右内边距，组件内元素距组件右边界的尺寸。 |
-| bottom | [Length](#length) | 否 | 是    | 下内边距，组件内元素距组件底部的尺寸。  |
-| left   | [Length](#length) | 否 | 是    | 左内边距，组件内元素距组件左边界的尺寸。 |
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| top    | [Length](#length) | 否 | 上内边距，组件内元素距组件顶部的尺寸。  |
+| right  | [Length](#length) | 否 | 右内边距，组件内元素距组件右边界的尺寸。 |
+| bottom | [Length](#length) | 否 | 下内边距，组件内元素距组件底部的尺寸。  |
+| left   | [Length](#length) | 否 | 左内边距，组件内元素距组件左边界的尺寸。 |
 
 ## LocalizedPadding<sup>12+</sup>
 
@@ -113,7 +207,11 @@
 
 ## Margin
 
+type Margin = Padding
+
 外边距类型，用于描述组件不同方向的外边距。
+
+引入该对象时，至少传入一个参数。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -121,16 +219,17 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 类型                | 只读  |  可选   | 说明                   |
-| ------ | ----------------- | ---- | -------------------- | -------- |
-| top    | [Length](#length) | 否   |  是 | 上外边距，组件顶部距组件外元素的尺寸。  |
-| right  | [Length](#length) | 否   |  是 | 右外边距，组件右边界距组件外元素的尺寸。 |
-| bottom | [Length](#length) | 否   |  是 | 下外边距，组件底部距组件外元素的尺寸。  |
-| left   | [Length](#length) | 否   |  是 | 左外边距，组件左边界距组件外元素的尺寸。 |
+| 名称     | 类型                |  必填   | 说明                   |
+| ------ | ----------------- | ---- | -------- |
+| Margin    | [Padding](#padding) | 否 | 外边距类型，用于描述组件不同方向的外边距，其类型与内边距类型一致。|
 
 ## LocalizedMargin<sup>12+</sup>
 
+type LocalizedMargin = LocalizedPadding
+
 外边距类型，用于描述组件不同方向的外边距。
+
+引入该对象时，至少传入一个参数。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -140,14 +239,13 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 类型                | 只读  |  可选   | 说明                   |
-| ------ | ----------------- | ---- | -------------------- | -------- |
-| top    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | 否  | 是  | 上外边距，组件顶部距组件外元素的尺寸。  |
-| end    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | 否   | 是 | 右外边距，组件右边界距组件外元素的尺寸。<br />从右至左显示语言模式下为<br />左外边距，组件左边界距组件外元素的尺寸。 |
-| bottom | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | 否   | 是 | 下外边距，组件底部距组件外元素的尺寸。  |
-| start  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)<sup>12+</sup> | 否  | 是  | 左外边距，组件左边界距组件外元素的尺寸。<br />从右至左显示语言模式下为<br />右外边距，组件右边界距组件外元素的尺寸。 |
+| 名称     | 类型                | 必填 | 说明                   |
+| ------ | ----------------- | ---- | -------- |
+| LocalizedMargin    | [LocalizedPadding](#localizedpadding12) | 否 | 外边距类型，用于描述组件不同方向的外边距，其类型与内边距类型一致。|
 
 ## EdgeWidths<sup>9+</sup>
+
+type EdgeWidths = { top: Length; right: Length; bottom: Length; left: Length; }
 
 边框宽度类型，用于描述组件边框不同方向的宽度。
 
@@ -163,12 +261,30 @@
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称   | 类型 |只读|可选| 说明             |
-| ------ | ---- |------|------| ---------------- |
-| top    | [Length](#length) | 否|是    | 组件上边框宽度。 |
-| right  | [Length](#length) | 否|是    | 组件右边框宽度。 |
-| bottom | [Length](#length) | 否|是    | 组件下边框宽度。 |
-| left   | [Length](#length) | 否|是    | 组件左边框宽度。 |
+| 名称   | 类型 | 必填 | 说明             |
+| ------ | ---- | ------| ---------------- |
+| top    | [Length](#length) | 否 | 组件上边框宽度。 |
+| right  | [Length](#length) | 否 | 组件右边框宽度。 |
+| bottom | [Length](#length) | 否 | 组件下边框宽度。 |
+| left   | [Length](#length) | 否 | 组件左边框宽度。 |
+
+## EdgeWidth<sup>10+</sup>
+
+type EdgeWidth = EdgeWidths
+
+边框宽度类型，用于描述组件边框不同方向的宽度。
+
+引入该对象时，至少传入一个参数。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称   | 类型 | 必填 | 说明             |
+| ------ | ---- | ------| ---------------- |
+| EdgeWidth    | [EdgeWidths](#edgewidths9) | 否 | 组件边框不同方向的宽度。 |
 
 ## LocalizedEdgeWidths<sup>12+</sup>
 
@@ -197,6 +313,8 @@
 
 ## BorderRadiuses<sup>9+</sup>
 
+type BorderRadiuses = { topLeft: Length; topRight: Length; bottomLeft: Length; bottomRight: Length; }
+
 圆角类型，用于描述组件边框圆角半径。
 
 引用该对象时，至少传入一个参数。
@@ -211,12 +329,12 @@
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| -------- | -------- | -------- | -------- | -------- |
-| topLeft     | [Length](#length) | 否|是    | 组件左上角圆角半径。 |
-| topRight    | [Length](#length) | 否|是    | 组件右上角圆角半径。 |
-| bottomLeft  | [Length](#length) | 否|是    | 组件左下角圆角半径。 |
-| bottomRight | [Length](#length) | 否|是    | 组件右下角圆角半径。 |
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| topLeft     | [Length](#length) | 否 | 组件左上角圆角半径。 |
+| topRight    | [Length](#length) | 否 | 组件右上角圆角半径。 |
+| bottomLeft  | [Length](#length) | 否 | 组件左下角圆角半径。 |
+| bottomRight | [Length](#length) | 否 | 组件右下角圆角半径。 |
 
 ## LocalizedBorderRadiuses<sup>12+</sup>
 
@@ -245,6 +363,8 @@
 
 ## EdgeColors<sup>9+</sup>
 
+type EdgeColors = { top: ResourceColor; right: ResourceColor; bottom: ResourceColor; left: ResourceColor; }
+
 边框颜色，用于描述组件边框四条边的颜色。
 
 引入该对象时，至少传入一个参数。
@@ -259,12 +379,12 @@
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称   | 类型 |只读|可选| 说明             |
-| ------ | ---- |------|------| ---------------- |
-| top    | [ResourceColor](#resourcecolor) | 否|是    | 组件上边框颜色。 |
-| right  | [ResourceColor](#resourcecolor) | 否|是    | 组件右边框颜色。 |
-| bottom | [ResourceColor](#resourcecolor) | 否|是    | 组件下边框颜色。 |
-| left   | [ResourceColor](#resourcecolor) | 否|是    | 组件左边框颜色。 |
+| 名称   | 类型 | 必填| 说明             |
+| ------ | ---- | ------| ---------------- |
+| top    | [ResourceColor](#resourcecolor) | 否 | 组件上边框颜色。 |
+| right  | [ResourceColor](#resourcecolor) | 否 | 组件右边框颜色。 |
+| bottom | [ResourceColor](#resourcecolor) | 否 | 组件下边框颜色。 |
+| left   | [ResourceColor](#resourcecolor) | 否 | 组件左边框颜色。 |
 
 ## LocalizedEdgeColors<sup>12+</sup>
 
@@ -293,6 +413,8 @@
 
 ## EdgeStyles<sup>9+</sup>
 
+type EdgeStyles = { top: BorderStyle; right: BorderStyle; bottom: BorderStyle; left: BorderStyle; }
+
 边框样式，用于描述组件边框四条边的样式。
 
 引入该对象时，至少传入一个参数。
@@ -303,14 +425,16 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| -------- | -------- | -------- | -------- | -------- |
-| top    | [BorderStyle](ts-appendix-enums.md#borderstyle) | 否|是    | 组件上边框样式。 |
-| right  | [BorderStyle](ts-appendix-enums.md#borderstyle) | 否|是    | 组件右边框样式。 |
-| bottom | [BorderStyle](ts-appendix-enums.md#borderstyle) | 否|是    | 组件下边框样式。 |
-| left   | [BorderStyle](ts-appendix-enums.md#borderstyle) | 否|是    | 组件左边框样式。 |
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| top    | [BorderStyle](ts-appendix-enums.md#borderstyle) | 否 | 组件上边框样式。 |
+| right  | [BorderStyle](ts-appendix-enums.md#borderstyle) | 否 | 组件右边框样式。 |
+| bottom | [BorderStyle](ts-appendix-enums.md#borderstyle) | 否 | 组件下边框样式。 |
+| left   | [BorderStyle](ts-appendix-enums.md#borderstyle) | 否 | 组件左边框样式。 |
 
 ## Offset
+
+type Offset = { dx: Length; dy: Length; }
 
 相对布局完成位置坐标偏移量。
 
@@ -318,11 +442,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 类型                | 只读  |  可选   | 说明       |
-| ---- | ----------------- | ---- | -------- | -------- |
-| dx   | [Length](#length) | 否  |  否    | 水平方向偏移量。 |
-| dy   | [Length](#length) | 否  |  否    | 竖直方向偏移量。 |
-
+| 名称   | 类型                | 必填 | 说明       |
+| ---- | ----------------- | ---- | -------- |
+| dx   | [Length](#length) | 是  | 水平方向偏移量。 |
+| dy   | [Length](#length) | 是  | 竖直方向偏移量。 |
 ## ResourceColor
 
 type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Resource](#resource)
@@ -344,6 +467,8 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 
 ## LengthConstrain
 
+type LengthConstrain = { minLength: Length; maxLength: Length; }
+
 长度约束，用于对组件最大、最小长度做限制。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
@@ -352,10 +477,10 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称        | 类型                | 只读  |  可选   | 说明      |
-| --------- | ----------------- | ---- | ------- | -------- |
-| minLength | [Length](#length) | 否  |  否    | 组件最小长度。 |
-| maxLength | [Length](#length) | 否  |  否    | 组件最大长度。 |
+| 名称        | 类型                | 必填 | 说明      |
+| --------- | ----------------- | ---- | -------- |
+| minLength | [Length](#length) | 是 | 组件最小长度。 |
+| maxLength | [Length](#length) | 是 | 组件最大长度。 |
 
 
 ## Font
@@ -391,12 +516,12 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称             | 类型                     | 说明                             |
-| -------------- | ---------------------- | ------------------------------ |
-| width          | [Length](#length)      | 目标元素的宽度。<br/>单位：vp |
-| height         | [Length](#length)      | 目标元素的高度。<br/>单位：vp |
-| position       | [Position](#position) | 目标元素左上角在以父元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的位置。            |
-| globalPosition | [Position](#position) | 目标元素左上角在当前窗口坐标系中的位置。             |
+| 名称             | 类型                     | 只读 | 可选 | 说明                             |
+| -------------- | ---------------------- | --------| -----| ------------------------------ |
+| width          | [Length](#length)      | 否 | 否 | 目标元素的宽度。<br/>单位：vp |
+| height         | [Length](#length)      | 否 | 否 | 目标元素的高度。<br/>单位：vp |
+| position       | [Position](#position) | 否 | 否 | 目标元素左上角在以父元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的位置。            |
+| globalPosition | [Position](#position) | 否 | 否 | 目标元素左上角在当前窗口坐标系中的位置。             |
 
 ## Position
 
@@ -551,9 +676,19 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 
 组件属性方法参数可使用CustomBuilder类型来自定义UI描述。
 
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称            | 类型定义                   | 描述                                       |
 | ------------- | ---------------------- | ---------------------------------------- |
-| CustomBuilder | (()&nbsp;=&gt;&nbsp;any) \| void | 生成用户自定义组件，在使用时结合[@Builder](../../../ui/state-management/arkts-builder.md)使用。 |
+| CustomBuilder | **ArkTS-Dyn：**(()&nbsp;=&gt;&nbsp;any) \| void<br>**ArkTS-Sta：**@Builder (() => void) | 生成用户自定义组件，在使用时结合[@Builder](../../../ui/state-management/arkts-builder.md)使用。 |
 
 ## CustomBuilderT\<T><sup>23+</sup>
 
@@ -716,6 +851,8 @@ Navigation路由的构造方式类型。
 
 ## Dimension<sup>10+</sup>
 
+type Dimension = PX | VP | FP | LPX | Percentage | Resource
+
 长度类型，用于描述尺寸单位。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
@@ -732,10 +869,14 @@ Navigation路由的构造方式类型。
 | [VP](#vp10)                | 需要指定数字或vp像素单位，如10或'10vp'。 |
 | [FP](#fp10)                | 需要指定以fp像素单位，如'10fp'。|
 | [LPX](#lpx10)              | 需要指定以lpx像素单位，如'10lpx'。|
-| [Percentage](#percentage10)        | 需要指定以%像素单位，如'10%'。|
+| [Percentage](#percentage10)        | 需要指定以百分比单位，如'10%'。|
 | [Resource](#resource) | 资源引用类型，引入系统资源或者应用资源中的尺寸。|
 
 ## PX<sup>10+</sup>
+
+ArkTS-Dyn: type PX = { number }px
+
+ArkTS-Sta: type PX = string
 
 长度类型，用于描述以px像素单位为单位的长度。
 
@@ -747,9 +888,13 @@ Navigation路由的构造方式类型。
 
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
-| {number}px               | 需要指定以px像素单位，如'10px'。 |
+| ArkTS-Dyn: { number }px<br/>ArkTS-Sta: string     | 需要指定以px像素单位，如'10px'。 |
 
 ## VP<sup>10+</sup>
+
+ArkTS-Dyn: type VP = { number }vp | number
+
+ArkTS-Sta: type VP = string | double
 
 长度类型，用于描述以vp像素单位为单位的长度。
 
@@ -761,9 +906,13 @@ Navigation路由的构造方式类型。
 
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
-| {number}vp\|number | 需要指定数字或vp像素单位，如10或'10vp'。 |
+| ArkTS-Dyn: { number }vp \| number<br/>ArkTS-Sta: string \| double | 需要指定数字或vp像素单位，如10或'10vp'。 |
 
 ## FP<sup>10+</sup>
+
+ArkTS-Dyn: type FP = { number }fp
+
+ArkTS-Sta: type FP = string
 
 长度类型，用于描述以fp像素单位为单位的长度。
 
@@ -775,9 +924,13 @@ Navigation路由的构造方式类型。
 
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
-| {number}fp               | 需要指定以fp像素单位，如'10fp'。 |
+| ArkTS-Dyn: { number }fp <br/>ArkTS-Sta: string   | 需要指定以fp像素单位，如'10fp'。 |
 
 ## LPX<sup>10+</sup>
+
+ArkTS-Dyn: type LPX = { number }lpx
+
+ArkTS-Sta: type LPX = string
 
 长度类型，用于描述以lpx像素单位为单位的长度。
 
@@ -789,11 +942,11 @@ Navigation路由的构造方式类型。
 
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
-| {number}lpx               | 需要指定以lpx像素单位，如'10lpx'。 |
+| ArkTS-Dyn: { number }lpx<br/>ArkTS-Sta: string              | 需要指定以lpx像素单位，如'10lpx'。 |
 
 ## Percentage<sup>10+</sup>
 
-长度类型，用于描述以%像素单位为单位的长度。
+长度类型，用于描述以百分比单位为单位的长度。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -803,9 +956,11 @@ Navigation路由的构造方式类型。
 
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
-| {number}%               | 需要指定以%像素单位，如'10%'。 |
+| {number}%               | 需要指定以百分比单位，如'10%'。 |
 
 ## Degree<sup>10+</sup>
+
+type Degree = `${number}deg`
 
 角度类型，用于描述以deg像素单位为单位的长度。
 
@@ -833,14 +988,14 @@ Navigation路由的构造方式类型。
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称   | 类型定义 | 描述       |
-| ------ | ----------------------| ---------- |
-| X | [Dimension](#dimension10) | 跟手点X轴坐标。 |
-| Y | [Dimension](#dimension10) | 跟手点Y轴坐标。 |
+| 名称   | 类型 | 只读 | 可选 | 说明       |
+| ------ | ------|--------|--------| ---------- |
+| x | [Dimension](#dimension10) | 否 | 否 | 跟手点X轴坐标。 |
+| y | [Dimension](#dimension10) | 否 | 否 | 跟手点Y轴坐标。 |
 
 ## VoidCallback<sup>12+</sup>
 
-type VoidCallback：() => void;
+type VoidCallback = () => void
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -975,8 +1130,6 @@ type ResponsiveFillType = PresetFillType
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-
-
 | 类型                    | 说明                        |
 | --------------------- | ------------------------- |
 | [PresetFillType](../arkui-ts/ts-appendix-enums.md#presetfilltype22)                | 为不同响应式断点规格指定列数。                    |
@@ -1014,7 +1167,7 @@ type ResponsiveFillType = PresetFillType
 | top  | T    | 否|否|顶部边缘的属性。 |
 | bottom | T    | 否|否|底部边缘的属性。 |
 
-## Bias对象说明
+## Bias<sup>11+</sup>对象说明
 
 设置组件在锚点约束下的偏移参数。
 
@@ -1026,7 +1179,11 @@ type ResponsiveFillType = PresetFillType
 
 ![bias_vertical_example.png](figures/bias_vertical_example.png)
 
+**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1094,6 +1251,8 @@ type ResponsiveFillType = PresetFillType
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 26.0.0
@@ -1124,23 +1283,3 @@ type ResponsiveFillType = PresetFillType
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
 | name  | [ResourceStr](#resourcestr) | 否 | 否 | 自定义操作的名称，用于标识和绑定操作回调。<br/>**说明：**<br/>名称的文本长度需在128字节以内，超出部分将被截断。 |
 | onAction  | [VoidCallback](#voidcallback12) | 否 | 否 | 处理自定义操作的回调。 |
-
-## SmartGestureShortcutOptions
-
-智慧手势响应行为配置对象。
-
-**ArkTS-Dyn起始版本：** 26.0.0
-
-**ArkTS-Sta起始版本：** 26.0.0
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| ---- | ---- | ---- | ---- | ---- |
-| action | [GestureShortcut](ts-appendix-enums.md#gestureshortcut) | 否 | 是 | 智慧手势响应优先级。当前仅支持GestureShortcut.PRIMARY，表示组件在智慧手势的滑动，点击等操作中作为首选响应目标。<br/>默认值为GestureShortcut.PRIMARY。 |
-| enabled | boolean | 否 | 是 | 当前组件是否响应智慧手势。<br/>true表示组件响应智慧手势，false表示组件不响应智慧手势。<br/>默认值为false。 |
-| selectable | boolean | 否 | 是 | 组件被智慧手势操作选中后是否展示并保留选中态。<br/>true表示显示选中框，false表示不显示选中框。<br/>当enabled为true时，默认值为true；当enabled为false时，默认值为false。 |

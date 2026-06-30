@@ -386,6 +386,8 @@ export default class MyAbility extends UIAbility {
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23

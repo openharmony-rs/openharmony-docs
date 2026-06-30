@@ -493,7 +493,7 @@ struct Parent {
 
 2. 点击“countStorage ${this.playCount} incr by 1”，调用LocalStorage的set接口，更新LocalStorage中“countStorage”对应的属性，Child组件中的playCountLink绑定的组件会同步刷新。
 
-3. Text组件“playCount in LocalStorage for debug ${storage.get&lt;number&gt;('countStorage')}”没有同步刷新，因为storage.get&lt;number&gt;('countStorage')返回的是常规变量，常规变量的更新并不会引起Text组件的重新渲染。
+3. Text组件“playCount in LocalStorage for debug ${storageA.get&lt;int&gt;('countStorage')}”没有同步刷新，因为storageA.get&lt;int&gt;('countStorage')返回的是常规变量，常规变量的更新并不会引起Text组件的重新渲染。
 
 Child自定义组件中的变化：
 
@@ -518,15 +518,18 @@ struct Child {
   @LocalStorageLink('countStorage') playCountLink: int = 0;
 
   build() {
-    Row() {
+    Column() {
       Text(this.label)
-        .width(50).height(60).fontSize(12)
-      Text(`playCountLink ${this.playCountLink}: inc by 1`)
+        .fontSize(20)
+        .margin(10)
+      Button(`playCountLink ${this.playCountLink}: inc by 1`)
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.playCountLink += 1;
         })
-        .width(200).height(60).fontSize(12)
-    }.width(300).height(60)
+    }
+    .width(300)
   }
 }
 
@@ -537,35 +540,39 @@ struct Parent {
 
   build() {
     Column() {
-      Row() {
-        Text('Parent')
-          .width(50).height(60).fontSize(12)
-        Text(`playCount ${this.playCount} dec by 1`)
-          .onClick((e: ClickEvent) => {
-            this.playCount -= 1;
-          })
-          .width(250).height(60).fontSize(12)
-      }.width(300).height(60)
+      Text('Parent')
+        .fontSize(20)
+        .margin(10)
+      Button(`playCount ${this.playCount} dec by 1`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          this.playCount -= 1;
+        })
 
-      Row() {
-        Text('LocalStorage')
-          .width(50).height(60).fontSize(12)
-        Text(`countStorage ${this.playCount} incr by 1`)
-          .onClick((e: ClickEvent) => {
-            storageA.set<int>('countStorage', storageA.get<int>('countStorage')! + 1);
-          })
-          .width(250).height(60).fontSize(12)
-      }.width(300).height(60)
+      Text('LocalStorage')
+        .fontSize(20)
+        .margin(10)
+      Button(`countStorage ${this.playCount} incr by 1`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          storageA.set<int>('countStorage', storageA.get<int>('countStorage')! + 1);
+        })
 
       Child({ label: 'ChildA' })
       Child({ label: 'ChildB' })
 
       Text(`playCount in LocalStorage for debug ${storageA.get<int>('countStorage')}`)
-        .width(300).height(60).fontSize(12)
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
+
+![localstorage-link-brother](../figures/localstorage6.gif)
 
 ### 将LocalStorage实例从UIAbility共享到一个或多个页面
 
@@ -612,15 +619,18 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Text(`${this.propA}`)
-          .fontSize(50)
+        Text(`propA value is ${this.propA}`)
+          .fontColor('#87CEEB')
+          .fontSize(30)
+          .margin(10)
       }
       .width('100%')
     }
-    .height('100%')
   }
 }
 ```
+
+![localStorage_page_five_share](../figures/localstorage7.gif)
 
 > **说明：**
 >
@@ -667,14 +677,14 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Text(this.PropA)
-          .fontSize(50)
+        Text(`PropA value is ${this.PropA}`)
+          .fontSize(30)
+          .margin(10)
         // 使用LocalStorage实例localStorage2
         Child({ count: this.count }, localStorage2)
       }
       .width('100%')
     }
-    .height('100%')
   }
 }
 
@@ -686,11 +696,14 @@ struct Child {
   @LocalStorageLink('PropB') PropB: string = 'Hello World';
 
   build() {
-    Text(this.PropB)
-      .fontSize(50)
+    Text(`PropB value is ${this.PropB}`)
+      .fontSize(30)
+      .margin(10)
   }
 }
 ```
+
+![localStorage_page_six_local_storage](../figures/localstorage8.gif)
 
 当定义的属性不需要从父组件初始化变量时，第一个参数需要传{}。
 
@@ -718,14 +731,14 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Text(this.PropA)
-          .fontSize(50)
+        Text(`PropA value is ${this.PropA}`)
+          .fontSize(30)
+          .margin(10)
         // 使用LocalStorage实例localStorage2
         Child({}, localStorage2)
       }
       .width('100%')
     }
-    .height('100%')
   }
 }
 
@@ -737,11 +750,14 @@ struct Child {
   @LocalStorageLink('PropB') PropB: string = 'Hello World';
 
   build() {
-    Text(this.PropB)
-      .fontSize(50)
+    Text(`PropB value is ${this.PropB}`)
+      .fontSize(30)
+      .margin(10)
   }
 }
 ```
+
+![localStorage_page_six_local_storageA](../figures/localstorage9.gif)
 
 ### LocalStorage支持联合类型
 
@@ -760,13 +776,24 @@ struct StorageLinkComponent {
   build() {
     Column() {
       Text('@LocalStorageLink接口初始化，@LocalStorageLink取值')
-      Text(`${this.LinkA}`).fontSize(20).onClick((e: ClickEvent) => {
-        this.LinkA ? this.LinkA = null : this.LinkA = 1;
+        .fontSize(20)
+        .margin(10)
+      Button(`${this.LinkA}`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 改变LinkA变量的值
+          this.LinkA ? this.LinkA = null : this.LinkA = 1;
       })
-      Text(`${this.LinkB}`).fontSize(20).onClick((e: ClickEvent) => {
-        this.LinkB ? this.LinkB = undefined : this.LinkB = 1;
+      Button(`${this.LinkB}`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 改变LinkB变量的值
+          this.LinkB ? this.LinkB = undefined : this.LinkB = 1;
       })
     }
+    .width('100%')
     .borderWidth(3)
 
   }
@@ -780,13 +807,24 @@ struct StoragePropComponent {
   build() {
     Column() {
       Text('@LocalStoragePropRef接口初始化，@LocalStoragePropRef取值')
-      Text(`${this.PropA}`).fontSize(20).onClick((e: ClickEvent) => {
-        this.PropA ? this.PropA = null : this.PropA = 1;
+        .fontSize(20)
+        .margin(10)
+      Button(`${this.PropA}`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 改变PropA变量的值
+          this.PropA ? this.PropA = null : this.PropA = 1;
       })
-      Text(`${this.PropB}`).fontSize(20).onClick((e: ClickEvent) => {
-        this.PropB ? this.PropB = undefined : this.PropB = 1;
+      Button(`${this.PropB}`)
+        .width(300)
+        .margin(10)
+        .onClick((e: ClickEvent) => {
+          // 改变PropB变量的值
+          this.PropB ? this.PropB = undefined : this.PropB = 1;
       })
     }
+    .width('100%')
     .borderWidth(3)
   }
 }
@@ -807,6 +845,8 @@ struct Index {
 }
 ```
 
+![localStorage_page_local_storage_link](../figures/localstorage10.gif)
+
 ### 装饰Date类型变量
 
 在下面的示例中，\@LocalStorageLink装饰的selectedDate类型为Date，点击Button改变selectedDate的值，UI会随之刷新。
@@ -819,35 +859,48 @@ import { Button, ClickEvent, Column, Component, Entry, LocalStorageLink, Text } 
 @Entry
 @Component
 struct DateSample {
-  @LocalStorageLink('date') selectedDate: Date = new Date('2021-08-08');
+  @LocalStorageLink('date') selectedDate: Date = new Date('2021-08-08');  // 使用@LocalStorageLink装饰Date类型变量
 
   build() {
     Column() {
       Text(`${this.selectedDate}`)
+        .fontSize(20)
+        .margin(10)
       Button('set selectedDate to 2023-07-08')
+        .width(300)
         .margin(10)
         .onClick((e: ClickEvent) => {
+          // 通过给selectedDate重新赋值新的Date实例，触发UI刷新
           this.selectedDate = new Date('2023-07-08');
         })
       Button('increase the year by 1')
+        .width(300)
         .margin(10)
         .onClick((e: ClickEvent) => {
+          // 调用Date的setFullYear接口修改年份，触发UI刷新
           this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
         })
       Button('increase the month by 1')
+        .width(300)
         .margin(10)
         .onClick((e: ClickEvent) => {
+          // 调用Date的setMonth接口修改月份，触发UI刷新
           this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
         })
       Button('increase the day by 1')
+        .width(300)
         .margin(10)
         .onClick((e: ClickEvent) => {
+          // 调用Date的setDate接口修改日期，触发UI刷新
           this.selectedDate.setDate(this.selectedDate.getDate() + 1);
         })
-    }.width('100%')
+    }
+    .width('100%')
   }
 }
 ```
+
+![localStorage_local_date_sample](../figures/localstorage11.gif)
 
 ### 装饰Map类型变量
 
@@ -856,31 +909,54 @@ struct DateSample {
 <!-- @[LocalStorageMap](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/LocalStorageDecorator/entry/src/main/ets/pages/LocalStorageMap.ets) -->
 
 ``` TypeScript
-import { Button, ClickEvent, Column, Component, Entry, LocalStorageLink, Row, Text } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Entry, LocalStorageLink, Row, Text, ForEach } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct MapSample {
-  @LocalStorageLink('map') message: Map<number, string> = new Map<number, string>([[0, 'a'], [1, 'b'], [3, 'c']]);
+  @LocalStorageLink('map') message: Map<number, string> = new Map<number, string>([[0, 'a'], [1, 'b'], [3, 'c']]);  // 使用@LocalStorageLink装饰Map类型变量
 
   build() {
     Row() {
       Column() {
-        Text(`${this.message}`)
-        Button('init map').onClick((e: ClickEvent) => {
-          this.message = new Map<number, string>([[0, 'a'], [1, 'b'], [3, 'c']]);
+        ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
+          Text(`key: ${item[0]}, value: ${item[1]}`)
+            .fontSize(20)
+            .margin(10)
         })
-        Button('set new one').onClick((e: ClickEvent) => {
-          this.message.set(4, 'd');
+        Button('init map')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            this.message = new Map<number, string>([[0, 'a'], [1, 'b'], [3, 'c']]);
         })
-        Button('clear').onClick((e: ClickEvent) => {
-          this.message.clear();
+        Button('set new one')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            // 新增键值对，触发UI刷新
+            this.message.set(4, 'd');
         })
-        Button('replace the existing one').onClick((e: ClickEvent) => {
-          this.message.set(0, 'aa');
+        Button('clear')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            // 清空Map，触发UI刷新
+            this.message.clear();
         })
-        Button('delete the existing one').onClick((e: ClickEvent) => {
-          this.message.delete(0);
+        Button('replace the existing one')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            // 更新键值对，触发UI刷新
+            this.message.set(0, 'aa');
+        })
+        Button('delete the existing one')
+          .width(300)
+          .margin(10)
+          .onClick((e: ClickEvent) => {
+            // 删除键值对，触发UI刷新
+            this.message.delete(0);
         })
       }
       .width('100%')
@@ -889,6 +965,8 @@ struct MapSample {
   }
 }
 ```
+
+![localstorage-map](../figures/localstorage12.gif)
 
 ### 装饰Set类型变量
 
@@ -902,26 +980,39 @@ import { Button, ClickEvent, Column, Component, Entry, LocalStorageLink, Row, Te
 @Entry
 @Component
 struct SetSample {
-  @LocalStorageLink('set') memberSet: Set<number> = new Set<number>([0, 1, 2, 3, 4]);
+  @LocalStorageLink('set') memberSet: Set<number> = new Set<number>([0, 1, 2, 3, 4]);  // 使用@LocalStorageLink装饰Set类型变量
 
   build() {
     Row() {
       Column() {
-        Text(`${this.memberSet}`)
+        Text(`${Array.from(this.memberSet)}`)
+          .fontSize(20)
+          .margin(10)
         Button('init set')
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
             this.memberSet = new Set<number>([0, 1, 2, 3, 4]);
           })
         Button('set new one')
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
+            // 新增元素，触发UI刷新
             this.memberSet.add(5);
           })
         Button('clear')
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
+            // 清空Set，触发UI刷新
             this.memberSet.clear();
           })
         Button('delete the first one')
+          .width(300)
+          .margin(10)
           .onClick((e: ClickEvent) => {
+            // 删除元素，触发UI刷新
             this.memberSet.delete(0);
           })
       }
@@ -931,6 +1022,8 @@ struct SetSample {
   }
 }
 ```
+
+![localstorage-set](../figures/localstorage13.gif)
 
 ### 自定义组件外改变状态变量
 

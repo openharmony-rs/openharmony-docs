@@ -1,10 +1,10 @@
 # UI调优
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lushi871202-->
+<!--Owner: @lushi871202; @liwenzhen3-->
 <!--Designer: @lushi871202-->
 <!--Tester: @sally__-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @Brilliantry_Rui; @zhang_yixin13-->
 
 本章节主要介绍UI的dump和调优能力，用于提高开发效率和优化开发者体验。
 
@@ -13,16 +13,17 @@
 ### 状态管理hidumper能力
 状态管理接入[hidumper](../dfx/hidumper.md)，支持通过`-jsdump`获取状态变量关联的组件、自定义组件树等信息，方便开发者了解状态变量影响的UI范围，写出高性能应用代码。
 
-下面介绍jsdump每个参数的含义：
-- -viewHierarchy：打印自定义组件树信息，默认只打印根自定义组件。
-- -stateVariable：打印状态变量及关联的组件和同步对象的信息。ArkTS-Dyn当前命令不支持`-r`递归dump，ArkTS-Sta支持`-r`递归dump状态变量。
-- -registeredElementIds：打印当前自定义组件拥有的elementId。ArkTS-Dyn打印所有组件节点，ArkTS-Sta仅打印自定义子组件。
-- -inactiveComponents：[组件冻结](./state-management/arkts-custom-components-freeze.md)场景下非激活的组件列表。
-- -dumpAll：打印自定义组件树、状态变量和自定义组件的子组件和脏节点列表。ArkTS-Sta不打印脏节点列表。
+下面介绍`-jsdump`每个参数的含义：
+- `-viewHierarchy`：打印自定义组件树信息，默认只打印根自定义组件。
+- `-stateVariable`：打印状态变量及关联的组件和同步对象的信息。ArkTS-Dyn当前命令不支持`-r`递归dump，ArkTS-Sta支持`-r`递归dump状态变量。
+- `-registeredElementIds`：打印当前自定义组件拥有的elementId。
+- `-inactiveComponents`：[组件冻结](./state-management/arkts-custom-components-freeze.md)场景下非激活的组件列表。
+- `-dumpAll`：打印自定义组件树、状态变量和自定义组件的子组件和脏节点列表。ArkTS-Sta不打印脏节点列表。
+- `-h`：打印帮助信息。
 
 除上述命令外，开发者可以额外输入以下命令选择递归打印或指定打印某一个组件id的信息，如果没有指定，则默认打印页面的根节点的信息。
-- -r：递归从根节点打印，自定义组件和其拥有组件的elementId。默认值打印根节点信息。
-- -viewId：打印指定viewId的自定义组件的信息。
+- `-r`：递归从根节点打印，自定义组件和其拥有组件的elementId。默认值打印根节点信息。
+- `-viewId`：打印指定viewId的自定义组件的信息。
 
 ArkTS-Dyn和ArkTS-Sta两种模式的dump输出存在差异，下面分别介绍。
 
@@ -247,95 +248,102 @@ struct GrandChild {
 
 ArkTS-Sta的jsdump能力与ArkTS-Dyn存在以下差异：
 - stateVariable支持`-r`递归dump。
-- registeredElementIds仅打印自定义子组件，不包含系统组件（如Column、Text等）。
 - 不包含"Sync peers"和"Dirty Registered Element IDs"信息。
 
 
 命令：
 
 ```shell
-hdc shell hidumper -s WindowManagerService -a '-w 90 -jsdump -dumpAll -r'
+hdc shell hidumper -s WindowManagerService -a '-w 42 -jsdump -dumpAll -r'
 ```
 
 输出结果：
 
 ```text
 ---------------Static ComponentInfo---------------
-[-dumpAll, viewId=27, isRecursive=true]
+[-dumpAll, viewId=2, isRecursive=true]
 
 @Component
-entry.src.main.ets.pages.testcases.DocSample.Page[27]
+entry.src.main.ets.pages.testcases.DocSample.Page[2]
 
 View Hierarchy:
 
-|--entry.src.main.ets.pages.testcases.DocSample.Page[27]StaticComponent {isViewActive: true}
+|--entry.src.main.ets.pages.testcases.DocSample.Page[2]StaticComponent {isViewActive: true}
 
-  |--entry.src.main.ets.pages.testcases.DocSample.Child[31]StaticComponent {isViewActive: true}
+  |--entry.src.main.ets.pages.testcases.DocSample.Child[6]StaticComponent {isViewActive: true}
 
-    |--entry.src.main.ets.pages.testcases.DocSample.GrandChild[35]StaticComponent {isViewActive: true}
+    |--entry.src.main.ets.pages.testcases.DocSample.GrandChild[10]StaticComponent {isViewActive: true}
 
 State variables:
-|--entry.src.main.ets.pages.testcases.DocSample.Page[27]
+|--entry.src.main.ets.pages.testcases.DocSample.Page[2]
   @State 'message'[-1]
   |--Owned by @Component entry.src.main.ets.pages.testcases.DocSample.Page
-  |--DependentElements: Text[30]
-|--entry.src.main.ets.pages.testcases.DocSample.Child[31]
+  |--DependentElements: Text[5]
+|--entry.src.main.ets.pages.testcases.DocSample.Child[6]
   @Link 'message'[-1]
   |--Owned by @Component entry.src.main.ets.pages.testcases.DocSample.Child
-  |--DependentElements: Text[34]
-|--entry.src.main.ets.pages.testcases.DocSample.GrandChild[35]
+  |--DependentElements: Text[9]
+|--entry.src.main.ets.pages.testcases.DocSample.GrandChild[10]
   @Link 'message'[-1]
   |--Owned by @Component entry.src.main.ets.pages.testcases.DocSample.GrandChild
-  |--DependentElements: Text[38]
+  |--DependentElements: Text[13]
 
 Registered Element IDs:
 
-|--entry.src.main.ets.pages.testcases.DocSample.Page[27]: {
-    entry.src.main.ets.pages.testcases.DocSample.Child[31]
-  }[1]
+|--entry.src.main.ets.pages.testcases.DocSample.Page[2]: {
+    Column[4]
+    Text[5]
+    Child[6]
+  }[3]
 
-  |--entry.src.main.ets.pages.testcases.DocSample.Child[31]: {
-      entry.src.main.ets.pages.testcases.DocSample.GrandChild[35]
-    }[1]
+  |--entry.src.main.ets.pages.testcases.DocSample.Child[6]: {
+      Column[8]
+      Text[9]
+      GrandChild[10]
+    }[3]
 
-    |--entry.src.main.ets.pages.testcases.DocSample.GrandChild[35]: {
-      }[0]
+    |--entry.src.main.ets.pages.testcases.DocSample.GrandChild[10]: {
+        Column[12]
+        Text[13]
+      }[2]
 
-Total: 2
+Total: 8
 ```
 
 命令：
 
 ```shell
-hdc shell hidumper -s WindowManagerService -a '-w 90 -jsdump -dumpAll -viewId=31'
+hdc shell hidumper -s WindowManagerService -a '-w 42 -jsdump -dumpAll -viewId=6'
 ```
 
 输出结果：
 
 ```text
 ---------------Static ComponentInfo---------------
-[-dumpAll, viewId=31, isRecursive=false]
+[-dumpAll, viewId=6, isRecursive=false]
 
 @Component
-entry.src.main.ets.pages.testcases.DocSample.Child[31]
+entry.src.main.ets.pages.testcases.DocSample.Child[6]
 
 View Hierarchy:
 
-|--entry.src.main.ets.pages.testcases.DocSample.Child[31]StaticComponent {isViewActive: true}
+|--entry.src.main.ets.pages.testcases.DocSample.Child[6]StaticComponent {isViewActive: true}
 
-  |--entry.src.main.ets.pages.testcases.DocSample.GrandChild[35]StaticComponent {isViewActive: true}
+  |--entry.src.main.ets.pages.testcases.DocSample.GrandChild[10]StaticComponent {isViewActive: true}
 
 State variables:
-|--entry.src.main.ets.pages.testcases.DocSample.Child[31]
+|--entry.src.main.ets.pages.testcases.DocSample.Child[6]
   @Link 'message'[-1]
   |--Owned by @Component entry.src.main.ets.pages.testcases.DocSample.Child
-  |--DependentElements: Text[34]
+  |--DependentElements: Text[9]
 
 Registered Element IDs:
 
-|--entry.src.main.ets.pages.testcases.DocSample.Child[31]: {
-    entry.src.main.ets.pages.testcases.DocSample.GrandChild[35]
-  }[1]
+|--entry.src.main.ets.pages.testcases.DocSample.Child[6]: {
+    Column[8]
+    Text[9]
+    GrandChild[10]
+  }[3]
 ```
 
 

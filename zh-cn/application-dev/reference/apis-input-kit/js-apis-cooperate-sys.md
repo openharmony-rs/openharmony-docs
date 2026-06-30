@@ -515,7 +515,7 @@ on(type: 'cooperation', callback: AsyncCallback<{ deviceDescriptor: string, even
 
 | 参数名                | 类型                                                             | 必填 | 说明                            |
 | --------             | ----------------------------                                    | ---- | ----------------------------   |
-| type                 | string                                                          |  是  | 注册类型，取值”cooperation“。         |
+| type                 | string                                                          |  是  | 注册类型，取值'cooperation'。         |
 | callback             | AsyncCallback<{ deviceDescriptor: string, eventMsg: [EventMsg](#eventmsgdeprecated) }> |  是  | 回调函数。当接收键鼠穿越事件成功，err为undefined，data为键鼠穿越事件信息；否则为错误对象。    |
 
 **错误码**：
@@ -533,6 +533,7 @@ on(type: 'cooperation', callback: AsyncCallback<{ deviceDescriptor: string, even
 
 ```ts
 import { inputDeviceCooperate } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -572,7 +573,7 @@ off(type: 'cooperation', callback?: AsyncCallback\<void>): void
 
 | 参数名                | 类型                                                              | 必填    | 说明                           |
 | --------             | ----------------------------                                     | ----   | ----------------------------   |
-| type                 | string                                                           |  是    | 注册类型，取值“cooperation”。         |
+| type                 | string                                                           |  是    | 注册类型，取值'cooperation'。         |
 | callback             | AsyncCallback\<void> |  否  | 回调函数。当取消注册成功，err为undefined，否则为错误对象。若无此参数，则取消当前应用注册的所有回调函数。 |
 
 **错误码**：
@@ -590,6 +591,7 @@ off(type: 'cooperation', callback?: AsyncCallback\<void>): void
 
 ```ts
 import { inputDeviceCooperate } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -605,7 +607,7 @@ struct Index {
           }
           try {
             inputDeviceCooperate.on('cooperation', callbackOn);
-            inputDeviceCooperate.off("cooperation", callbackOn);
+            inputDeviceCooperate.off('cooperation', callbackOn);
           } catch (error) {
             console.error(`Failed to unregister callback function, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
@@ -616,6 +618,7 @@ struct Index {
 ```
 ```ts
 import { inputDeviceCooperate } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -631,7 +634,7 @@ struct Index {
           }
           try {
             inputDeviceCooperate.on('cooperation', callback);
-            inputDeviceCooperate.off("cooperation");
+            inputDeviceCooperate.off('cooperation');
           } catch (error) {
             console.error(`Failed to unregister callback function, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }

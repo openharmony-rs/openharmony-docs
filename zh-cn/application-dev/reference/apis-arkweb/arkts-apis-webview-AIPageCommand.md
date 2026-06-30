@@ -21,6 +21,9 @@
 | ---- | ---- | ---- | ---- | ---- |
 | [getFullDom](#getfulldom) | 获取完整DOM树 | [FullDomCommand](#fulldomcommand) | [FullDomResult](#fulldomresult) | 返回树结构，不按筛选规则过滤节点。 |
 | [getLiteDom](#getlitedom) | 获取轻量DOM节点列表 | [LiteDomCommand](#litedomcommand) | [LiteDomResult](#litedomresult) | 返回扁平列表，支持按规则筛选节点。 |
+| [screenCapture](#screencapture) | 获取网页元素截图 | [ScreenCaptureCommand](#screencapturecommand) | [ScreenCaptureResult](#screencaptureresult) | 返回Base64编码图片数据，支持获取当前网页视口截图或视口内目标元素截图。 |
+
+交互类命令（click、focus、cursor_position、type、send_keys）请参见[AIPageInteraction](./arkts-apis-webview-AIPageInteraction.md)。
 
 ## 通用命令格式
 
@@ -73,28 +76,28 @@
 | aria-description | aria-description | string | 节点`aria-description`属性值。字段值为空时不返回该字段。 |
 | rect | rect | Object | 节点矩形信息，包含`x`、`y`、`width`、`height`。 |
 | bounds | bounds | Object | 节点矩形信息，包含`x`、`y`、`left`、`top`、`right`、`bottom`、`width`、`height`。 |
-| visible | visible | boolean | 节点是否可见。 |
-| isInViewport | isInViewport | boolean | 节点是否在当前视口内。 |
-| clickable | clickable | boolean | 节点是否可点击。 |
-| touchable | touchable | boolean | 节点是否可触控。当前判断逻辑与`clickable`一致。 |
-| scrollable | scrollable | boolean | 节点是否可滚动。 |
-| inputable | inputable | boolean | 节点是否可输入。 |
+| visible | visible | boolean | 节点是否可见。true表示可见，false表示不可见。 |
+| isInViewport | isInViewport | boolean | 节点是否在当前视口内。true表示在当前视口内，false表示不在当前视口内。 |
+| clickable | clickable | boolean | 节点是否可点击。true表示可点击，false表示不可点击。 |
+| touchable | touchable | boolean | 节点是否可触控。true表示可触控，false表示不可触控。当前判断逻辑与`clickable`一致。 |
+| scrollable | scrollable | boolean | 节点是否可滚动。true表示可滚动，false表示不可滚动。 |
+| inputable | inputable | boolean | 节点是否可输入。true表示可输入，false表示不可输入。 |
 | url | url | string | 节点关联URL。按`href`、`src`、`action`、`data`、`poster`顺序读取并转换为完整URL。字段值为空时不返回该字段。 |
 | xpath | xpath | string | 节点XPath。字段值为空时不返回该字段。 |
 | hover | hover | string | 节点`cursor`样式值。字段值为空时不返回该字段。 |
-| mouseover | mouseover | boolean | 节点是否声明`mouseover`内联事件。 |
-| mouseenter | mouseenter | boolean | 节点是否声明`mouseenter`内联事件。 |
+| mouseover | mouseover | boolean | 节点是否声明`mouseover`内联事件。true表示已声明，false表示未声明。 |
+| mouseenter | mouseenter | boolean | 节点是否声明`mouseenter`内联事件。true表示已声明，false表示未声明。 |
 | value | value | string | 当节点为`select`元素时，返回当前选中值。 |
 | options | options | Array\<Object> | 当节点为`select`元素时，返回选项列表。 |
 | value_text | value_text | Array\<Object> | 当节点为`select`元素时，返回选项列表。 |
-| focusable | focusable | boolean | 节点是否可获取焦点。 |
-| editable | editable | boolean | 节点是否可编辑。 |
-| settable | settable | boolean | 节点是否可设置值。 |
-| checked | checked | boolean | 节点是否处于选中状态。 |
-| expanded | expanded | boolean | 节点是否处于展开状态。 |
-| pressed | pressed | boolean | 节点是否处于按下状态。 |
-| selected | selected | boolean | 节点是否处于选择状态。 |
-| required | required | boolean | 节点是否为必填项。 |
+| focusable | focusable | boolean | 节点是否可获取焦点。true表示可获取焦点，false表示不可获取焦点。 |
+| editable | editable | boolean | 节点是否可编辑。true表示可编辑，false表示不可编辑。 |
+| settable | settable | boolean | 节点是否可设置值。true表示可设置值，false表示不可设置值。 |
+| checked | checked | boolean | 节点是否处于选中状态。true表示处于选中状态，false表示不处于选中状态。 |
+| expanded | expanded | boolean | 节点是否处于展开状态。true表示处于展开状态，false表示不处于展开状态。 |
+| pressed | pressed | boolean | 节点是否处于按下状态。true表示处于按下状态，false表示不处于按下状态。 |
+| selected | selected | boolean | 节点是否处于选择状态。true表示处于选择状态，false表示不处于选择状态。 |
+| required | required | boolean | 节点是否为必填项。true表示为必填项，false表示为非必填项。 |
 | autocomplete | autocomplete | string | 节点自动完成信息，优先读取`aria-autocomplete`属性，其次读取`autocomplete`属性。字段值为空时不返回该字段。 |
 | keyshortcuts | keyshortcuts | string | 节点`aria-keyshortcuts`属性值。字段值为空时不返回该字段。 |
 
@@ -126,30 +129,30 @@
 | children_nodes | bounds | bottom | number | 节点矩形下边界。 |
 | children_nodes | bounds | width | number | 节点矩形宽度。 |
 | children_nodes | bounds | height | number | 节点矩形高度。 |
-| children_nodes | - | visible | boolean | 节点是否可见。 |
-| children_nodes | - | isInViewport | boolean | 节点是否在当前视口内。 |
-| children_nodes | - | clickable | boolean | 节点是否可点击。 |
-| children_nodes | - | touchable | boolean | 节点是否可触控。 |
-| children_nodes | - | scrollable | boolean | 节点是否可滚动。 |
-| children_nodes | - | inputable | boolean | 节点是否可输入。 |
+| children_nodes | - | visible | boolean | 节点是否可见。true表示可见，false表示不可见。 |
+| children_nodes | - | isInViewport | boolean | 节点是否在当前视口内。true表示在当前视口内，false表示不在当前视口内。 |
+| children_nodes | - | clickable | boolean | 节点是否可点击。true表示可点击，false表示不可点击。 |
+| children_nodes | - | touchable | boolean | 节点是否可触控。true表示可触控，false表示不可触控。 |
+| children_nodes | - | scrollable | boolean | 节点是否可滚动。true表示可滚动，false表示不可滚动。 |
+| children_nodes | - | inputable | boolean | 节点是否可输入。true表示可输入，false表示不可输入。 |
 | children_nodes | - | url | string | 节点关联URL。 |
 | children_nodes | - | xpath | string | 节点XPath。 |
 | children_nodes | - | hover | string | 节点`cursor`样式值。 |
-| children_nodes | - | mouseover | boolean | 节点是否声明`mouseover`内联事件。 |
-| children_nodes | - | mouseenter | boolean | 节点是否声明`mouseenter`内联事件。 |
+| children_nodes | - | mouseover | boolean | 节点是否声明`mouseover`内联事件。true表示已声明，false表示未声明。 |
+| children_nodes | - | mouseenter | boolean | 节点是否声明`mouseenter`内联事件。true表示已声明，false表示未声明。 |
 | children_nodes | - | value | string | `select`元素当前选中值。 |
 | children_nodes | - | options | Array\<Object> | `select`元素选项列表。 |
 | children_nodes | - | value_text | Array\<Object> | `select`元素选项列表。 |
 | children_nodes | options/value_text | value | string | `select`元素选项值。 |
 | children_nodes | options/value_text | text | string | `select`元素选项文本。 |
-| children_nodes | - | focusable | boolean | 节点是否可获取焦点。 |
-| children_nodes | - | editable | boolean | 节点是否可编辑。 |
-| children_nodes | - | settable | boolean | 节点是否可设置值。 |
-| children_nodes | - | checked | boolean | 节点是否处于选中状态。 |
-| children_nodes | - | expanded | boolean | 节点是否处于展开状态。 |
-| children_nodes | - | pressed | boolean | 节点是否处于按下状态。 |
-| children_nodes | - | selected | boolean | 节点是否处于选择状态。 |
-| children_nodes | - | required | boolean | 节点是否为必填项。 |
+| children_nodes | - | focusable | boolean | 节点是否可获取焦点。true表示可获取焦点，false表示不可获取焦点。 |
+| children_nodes | - | editable | boolean | 节点是否可编辑。true表示可编辑，false表示不可编辑。 |
+| children_nodes | - | settable | boolean | 节点是否可设置值。true表示可设置值，false表示不可设置值。 |
+| children_nodes | - | checked | boolean | 节点是否处于选中状态。true表示处于选中状态，false表示不处于选中状态。 |
+| children_nodes | - | expanded | boolean | 节点是否处于展开状态。true表示处于展开状态，false表示不处于展开状态。 |
+| children_nodes | - | pressed | boolean | 节点是否处于按下状态。true表示处于按下状态，false表示不处于按下状态。 |
+| children_nodes | - | selected | boolean | 节点是否处于选择状态。true表示处于选择状态，false表示不处于选择状态。 |
+| children_nodes | - | required | boolean | 节点是否为必填项。true表示为必填项，false表示为非必填项。 |
 | children_nodes | - | autocomplete | string | 节点自动完成信息。 |
 | children_nodes | - | keyshortcuts | string | 节点`aria-keyshortcuts`属性值。 |
 | children_nodes | - | attributes | Object | HTML属性集合。 |
@@ -297,28 +300,28 @@
 | aria-description | aria-description | string | 节点`aria-description`属性值。字段值为空时不返回该字段。 |
 | rect | rect | Object | 节点矩形信息，包含`x`、`y`、`width`、`height`。 |
 | bounds | bounds | Object | 节点矩形信息，包含`x`、`y`、`left`、`top`、`right`、`bottom`、`width`、`height`。 |
-| visible | visible | boolean | 节点是否可见。 |
-| isInViewport | isInViewport | boolean | 节点是否在当前视口内。 |
-| clickable | clickable | boolean | 节点是否可点击。 |
-| touchable | touchable | boolean | 节点是否可触控。当前判断逻辑与`clickable`一致。 |
-| scrollable | scrollable | boolean | 节点是否可滚动。 |
-| inputable | inputable | boolean | 节点是否可输入。 |
+| visible | visible | boolean | 节点是否可见。true表示可见，false表示不可见。 |
+| isInViewport | isInViewport | boolean | 节点是否在当前视口内。true表示在当前视口内，false表示不在当前视口内。 |
+| clickable | clickable | boolean | 节点是否可点击。true表示可点击，false表示不可点击。 |
+| touchable | touchable | boolean | 节点是否可触控。true表示可触控，false表示不可触控。当前判断逻辑与`clickable`一致。 |
+| scrollable | scrollable | boolean | 节点是否可滚动。true表示可滚动，false表示不可滚动。 |
+| inputable | inputable | boolean | 节点是否可输入。true表示可输入，false表示不可输入。 |
 | url | url | string | 节点关联URL。按`href`、`src`、`action`、`data`、`poster`顺序读取并转换为完整URL。字段值为空时不返回该字段。 |
 | xpath | xpath | string | 节点XPath。字段值为空时不返回该字段。 |
 | hover | hover | string | 节点`cursor`样式值。字段值为空时不返回该字段。 |
-| mouseover | mouseover | boolean | 节点是否声明`mouseover`内联事件。 |
-| mouseenter | mouseenter | boolean | 节点是否声明`mouseenter`内联事件。 |
+| mouseover | mouseover | boolean | 节点是否声明`mouseover`内联事件。true表示已声明，false表示未声明。 |
+| mouseenter | mouseenter | boolean | 节点是否声明`mouseenter`内联事件。true表示已声明，false表示未声明。 |
 | value | value | string | 当节点为`select`元素时，返回当前选中值。 |
 | options | options | Array\<Object> | 当节点为`select`元素时，返回选项列表。 |
 | value_text | value_text | Array\<Object> | 当节点为`select`元素时，返回选项列表。 |
-| focusable | focusable | boolean | 节点是否可获取焦点。 |
-| editable | editable | boolean | 节点是否可编辑。 |
-| settable | settable | boolean | 节点是否可设置值。 |
-| checked | checked | boolean | 节点是否处于选中状态。 |
-| expanded | expanded | boolean | 节点是否处于展开状态。 |
-| pressed | pressed | boolean | 节点是否处于按下状态。 |
-| selected | selected | boolean | 节点是否处于选择状态。 |
-| required | required | boolean | 节点是否为必填项。 |
+| focusable | focusable | boolean | 节点是否可获取焦点。true表示可获取焦点，false表示不可获取焦点。 |
+| editable | editable | boolean | 节点是否可编辑。true表示可编辑，false表示不可编辑。 |
+| settable | settable | boolean | 节点是否可设置值。true表示可设置值，false表示不可设置值。 |
+| checked | checked | boolean | 节点是否处于选中状态。true表示处于选中状态，false表示不处于选中状态。 |
+| expanded | expanded | boolean | 节点是否处于展开状态。true表示处于展开状态，false表示不处于展开状态。 |
+| pressed | pressed | boolean | 节点是否处于按下状态。true表示处于按下状态，false表示不处于按下状态。 |
+| selected | selected | boolean | 节点是否处于选择状态。true表示处于选择状态，false表示不处于选择状态。 |
+| required | required | boolean | 节点是否为必填项。true表示为必填项，false表示为非必填项。 |
 | autocomplete | autocomplete | string | 节点自动完成信息，优先读取`aria-autocomplete`属性，其次读取`autocomplete`属性。字段值为空时不返回该字段。 |
 | keyshortcuts | keyshortcuts | string | 节点`aria-keyshortcuts`属性值。字段值为空时不返回该字段。 |
 
@@ -350,30 +353,30 @@
 | nodes | bounds | bottom | number | 节点矩形下边界。 |
 | nodes | bounds | width | number | 节点矩形宽度。 |
 | nodes | bounds | height | number | 节点矩形高度。 |
-| nodes | - | visible | boolean | 节点是否可见。 |
-| nodes | - | isInViewport | boolean | 节点是否在当前视口内。 |
-| nodes | - | clickable | boolean | 节点是否可点击。 |
-| nodes | - | touchable | boolean | 节点是否可触控。 |
-| nodes | - | scrollable | boolean | 节点是否可滚动。 |
-| nodes | - | inputable | boolean | 节点是否可输入。 |
+| nodes | - | visible | boolean | 节点是否可见。true表示可见，false表示不可见。 |
+| nodes | - | isInViewport | boolean | 节点是否在当前视口内。true表示在当前视口内，false表示不在当前视口内。 |
+| nodes | - | clickable | boolean | 节点是否可点击。true表示可点击，false表示不可点击。 |
+| nodes | - | touchable | boolean | 节点是否可触控。true表示可触控，false表示不可触控。 |
+| nodes | - | scrollable | boolean | 节点是否可滚动。true表示可滚动，false表示不可滚动。 |
+| nodes | - | inputable | boolean | 节点是否可输入。true表示可输入，false表示不可输入。 |
 | nodes | - | url | string | 节点关联URL。 |
 | nodes | - | xpath | string | 节点XPath。 |
 | nodes | - | hover | string | 节点`cursor`样式值。 |
-| nodes | - | mouseover | boolean | 节点是否声明`mouseover`内联事件。 |
-| nodes | - | mouseenter | boolean | 节点是否声明`mouseenter`内联事件。 |
+| nodes | - | mouseover | boolean | 节点是否声明`mouseover`内联事件。true表示已声明，false表示未声明。 |
+| nodes | - | mouseenter | boolean | 节点是否声明`mouseenter`内联事件。true表示已声明，false表示未声明。 |
 | nodes | - | value | string | `select`元素当前选中值。 |
 | nodes | - | options | Array\<Object> | `select`元素选项列表。 |
 | nodes | - | value_text | Array\<Object> | `select`元素选项列表。 |
 | nodes | options/value_text | value | string | `select`元素选项值。 |
 | nodes | options/value_text | text | string | `select`元素选项文本。 |
-| nodes | - | focusable | boolean | 节点是否可获取焦点。 |
-| nodes | - | editable | boolean | 节点是否可编辑。 |
-| nodes | - | settable | boolean | 节点是否可设置值。 |
-| nodes | - | checked | boolean | 节点是否处于选中状态。 |
-| nodes | - | expanded | boolean | 节点是否处于展开状态。 |
-| nodes | - | pressed | boolean | 节点是否处于按下状态。 |
-| nodes | - | selected | boolean | 节点是否处于选择状态。 |
-| nodes | - | required | boolean | 节点是否为必填项。 |
+| nodes | - | focusable | boolean | 节点是否可获取焦点。true表示可获取焦点，false表示不可获取焦点。 |
+| nodes | - | editable | boolean | 节点是否可编辑。true表示可编辑，false表示不可编辑。 |
+| nodes | - | settable | boolean | 节点是否可设置值。true表示可设置值，false表示不可设置值。 |
+| nodes | - | checked | boolean | 节点是否处于选中状态。true表示处于选中状态，false表示不处于选中状态。 |
+| nodes | - | expanded | boolean | 节点是否处于展开状态。true表示处于展开状态，false表示不处于展开状态。 |
+| nodes | - | pressed | boolean | 节点是否处于按下状态。true表示处于按下状态，false表示不处于按下状态。 |
+| nodes | - | selected | boolean | 节点是否处于选择状态。true表示处于选择状态，false表示不处于选择状态。 |
+| nodes | - | required | boolean | 节点是否为必填项。true表示为必填项，false表示为非必填项。 |
 | nodes | - | autocomplete | string | 节点自动完成信息。 |
 | nodes | - | keyshortcuts | string | 节点`aria-keyshortcuts`属性值。 |
 | nodes | - | attributes | Object | HTML属性集合。 |
@@ -436,5 +439,209 @@
       }
     }
   ]
+}
+```
+
+## screenCapture
+
+获取当前网页视口截图或视口内目标元素截图，返回Base64编码的图片数据。
+
+### ScreenCaptureCommand
+
+### 入参说明
+
+| 参数 | 子参数 | 参数项 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+| method | - | - | string | 是 | 命令名称，固定为`screenCapture`。 |
+| params | - | - | Object | 否 | 命令参数。不传或为空时获取当前网页视口截图。|
+| params | nodeid | - | string | 否 | 目标元素的节点标识，可通过[getFullDom](#getfulldom)或[getLiteDom](#getlitedom)返回的`id`字段获取。 |
+| params | xpath | - | string | 否 | 目标元素的XPath，可通过[getFullDom](#getfulldom)或[getLiteDom](#getlitedom)返回的`xpath`字段获取。 |
+
+> **说明：**
+>
+> - `nodeid`与`xpath`互斥，均传入时以`nodeid`为准。两者均未传入时，默认获取当前网页视口截图。
+> - 支持获取iframe元素截图，不支持跨域获取iframe内部元素截图；不支持获取同层渲染ArkUI组件的截图。
+
+### ScreenCaptureResult
+
+成功时返回PNG格式的Base64编码字符串。
+
+> **说明：**
+>
+> - `nodeid`格式错误，返回`{"code": 392, "message": "invalid param: nodeid"}`；`nodeid`中的`frameToken`或`documentToken`与当前页面不匹配，返回`{"code": 392, "message": "invalid param: nodeid, token mismatch"}`。
+> - 根据`nodeid`或`xpath`在页面中未找到目标元素，返回`{"code": 352, "message": "element not found"}`。
+
+### 示例
+
+通过节点标识获取目标元素截图：
+
+```json
+{
+  "method": "screenCapture",
+  "params": {
+    "nodeid": "frameToken|documentToken|12"
+  }
+}
+```
+
+通过XPath获取目标元素截图：
+
+```json
+{
+  "method": "screenCapture",
+  "params": {
+    "xpath": "/html/body/div/p[2]/a"
+  }
+}
+```
+
+> **说明：**
+>
+> - 开发者使用时需自行替换`nodeid`或`xpath`，可通过[getFullDom](#getfulldom)或[getLiteDom](#getlitedom)返回的`id`字段或`xpath`字段获取。
+
+Ark-Dyn示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+interface CaptureParams {
+  xpath?: string;
+  nodeid?: string;
+}
+
+interface PageCommand {
+  method: string;
+  params?: CaptureParams;
+}
+
+@Entry
+@Component
+struct Index {
+  private controller: webview.WebviewController = new webview.WebviewController();
+  @State imgData: string = '';
+  @State statusMsg: string = '';
+
+  async capture() {
+    this.imgData = '';
+    this.statusMsg = '';
+
+    try {
+      const cmd: PageCommand = {
+        method: 'screenCapture',
+        params: {
+          xpath: "/html/body/div/p[2]/a"
+        }
+      };
+
+      const res = await this.controller.executeAIPageCommand(JSON.stringify(cmd)) as string;
+
+      if (res.includes('"code"')) {
+        this.statusMsg = `截图失败：${res} `;
+        return;
+      }
+
+      this.imgData = res;
+      this.statusMsg = '✅ 截图成功';
+    } catch (e) {
+      const error = e as BusinessError;
+      this.statusMsg = `截图失败：${error.message}`;
+    }
+  }
+
+  build() {
+    Row() {
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .width('75%')
+        .height('100%')
+
+      Column({ space: 10 }) {
+        Button('执行截图')
+          .width('100%')
+          .onClick(() => this.capture())
+
+        Image(this.imgData ? `data:image/png;base64,${this.imgData}` : '')
+          .width('100%')
+          .aspectRatio(1)
+          .backgroundColor('#F0F0F0')
+          .objectFit(ImageFit.Contain)
+          .border({ width: 1, color: '#DCDCDC' })
+
+        if (this.statusMsg) {
+          Text(this.statusMsg)
+            .width('100%')
+            .fontSize(12)
+            .fontColor(this.statusMsg.includes('✅') ? '#4CAF50' : '#F44336')
+            .textAlign(TextAlign.Center)
+            .padding(8)
+            .backgroundColor(this.statusMsg.includes('✅') ? '#E8F5E9' : '#FFEBEE')
+            .borderRadius(4)
+        }
+      }
+      .width('25%')
+      .padding(10)
+      .height('100%')
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+'use static'
+
+import { Button, Column, Component, Entry, Image, ImageFit, ColumnOptions, Row, State, Web } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  private controller: webview.WebviewController = new webview.WebviewController(undefined);
+  @State imgData: string = '';
+
+  capture(): void {
+    const cmdStr: string = '{"method":"screenCapture","params":{"xpath":"/html/body/div/p[2]/a"}}';
+    try {
+      this.controller.executeAIPageCommand(cmdStr).then((res: string) => {
+        this.imgData = res;
+      }).catch((e: Error) => {
+        console.error(`截图失败: ${(e as BusinessError).message}`);
+      });
+    } catch (e) {
+      console.error(`截图失败: ${(e as BusinessError).message}`);
+    }
+  }
+
+  build() {
+    Row() {
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .width('75%')
+        .height('100%')
+
+      Column({ space: 10 } as ColumnOptions) {
+        Button('执行截图')
+          .width('100%')
+          .onClick(() => {
+            this.capture();
+          })
+
+        Image(this.imgData ? `data:image/png;base64,${this.imgData}` : '')
+          .width('100%')
+          .aspectRatio(1)
+          .backgroundColor('#F0F0F0')
+          .objectFit(ImageFit.Contain)
+          .border({ width: 1, color: '#DCDCDC' })
+      }
+      .width('25%')
+      .padding(10)
+      .height('100%')
+    }
+    .width('100%')
+    .height('100%')
+  }
 }
 ```

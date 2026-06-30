@@ -52,7 +52,7 @@ matchMediaSync(condition: string): MediaQueryListener
 
 | 参数名    | 类型   | 必填 | 说明                                                         |
 | --------- | ------ | ---- | ------------------------------------------------------------ |
-| condition | string | 是   | 媒体事件的匹配条件，具体可参考[媒体查询语法规则](../../ui/arkts-layout-development-media-query.md#语法规则)。 |
+| condition | string | 是   | 媒体查询的匹配条件，具体可参考[媒体查询语法规则](../../ui/arkts-layout-development-media-query.md#语法规则)。 |
 
 **返回值：** 
 
@@ -232,7 +232,7 @@ listener.offChange(onPortrait) // 注销回调
 
 ## MediaQueryResult
 
-用于执行媒体查询操作。
+用于表示媒体查询的结果。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该类型支持在ArkTS卡片中使用。
 
@@ -249,7 +249,7 @@ listener.offChange(onPortrait) // 注销回调
 | 名称    | 类型    | 只读 | 可选 | 说明                 |
 | ------- | ------- | ---- | ---- | -------------------- |
 | matches | boolean | 是   | 否   | 是否符合匹配条件。true表示满足查询条件，false表示不满足查询条件。  |
-| media   | string  | 是   | 否   | 媒体事件的匹配条件。 |
+| media   | string  | 是   | 否   | 媒体查询的匹配条件。 |
 
 
 ### 示例

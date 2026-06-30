@@ -63,7 +63,7 @@
 
 ## LevelOrder<sup>18+</sup>
 
-type LevelOrder = LevelOrder
+type LevelOrder = import('../api/@ohos.promptAction').LevelOrder
 
 弹窗的显示顺序。
 
@@ -79,7 +79,7 @@ type LevelOrder = LevelOrder
 
 | 类型                                                  | 说明                 |
 | ----------------------------------------------------- | -------------------- |
-| [LevelOrder](../js-apis-promptAction.md#levelorder18) | 设置弹窗的显示顺序。 |
+| import('../api/@ohos.promptAction').[LevelOrder](../js-apis-promptAction.md#levelorder18) | 设置弹窗的显示顺序。 |
 
 ## AlertDialogParamWithConfirm对象说明
 
@@ -368,6 +368,8 @@ static show(value: AlertDialogParamWithConfirm | AlertDialogParamWithButtons | A
 
 该示例通过[AlertDialogParamWithConfirm](#alertdialogparamwithconfirm对象说明)、[AlertDialogParamWithButtons](#alertdialogparamwithbuttons对象说明)和[AlertDialogParamWithOptions](#alertdialogparamwithoptions10对象说明)实现了分别弹出一、二、三个按钮的弹窗。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -506,11 +508,156 @@ struct AlertDialogExample {
 }
 ```
 
-![zh-cn_image_alert](figures/zh-cn_image_alert.gif)
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, Margin, DialogAlignment, DialogButtonDirection,
+  DialogButtonStyle, DismissDialogAction, DismissReason, ColumnOptions, AlertDialogParamWithConfirm,
+  AlertDialogParamWithButtons, AlertDialogParamWithOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct AlertDialogExample {
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Button('one button dialog')
+        .onClick(() => {
+          this.getUIContext().showAlertDialog(
+            {
+              title: 'title',
+              message: 'text',
+              autoCancel: true,
+              alignment: DialogAlignment.Bottom,
+              offset: { dx: 0, dy: -20 },
+              gridCount: 3,
+              confirm: {
+                value: 'button',
+                action: () => {
+                  console.info('Button-clicking callback');
+                }
+              },
+              cancel: () => {
+                console.info('Closed callbacks');
+              },
+              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+                console.info(`reason= ${dismissDialogAction.reason}`);
+                console.info('AlertDialog onWillDismiss');
+                if (dismissDialogAction.reason === DismissReason.PRESS_BACK) {
+                  dismissDialogAction.dismiss();
+                }
+                if (dismissDialogAction.reason === DismissReason.TOUCH_OUTSIDE) {
+                  dismissDialogAction.dismiss();
+                }
+              }
+            } as AlertDialogParamWithConfirm
+          )
+        })
+        .backgroundColor(0x317aff)
+      Button('two button dialog')
+        .onClick(() => {
+          this.getUIContext().showAlertDialog(
+            {
+              title: 'title',
+              subtitle: 'subtitle',
+              message: 'text',
+              autoCancel: true,
+              alignment: DialogAlignment.Bottom,
+              gridCount: 4,
+              offset: { dx: 0, dy: -20 },
+              primaryButton: {
+                value: 'cancel',
+                action: () => {
+                  console.info('Callback when the first button is clicked');
+                }
+              },
+              secondaryButton: {
+                enabled: true,
+                defaultFocus: true,
+                style: DialogButtonStyle.HIGHLIGHT,
+                value: 'ok',
+                action: () => {
+                  console.info('Callback when the second button is clicked');
+                }
+              },
+              cancel: () => {
+                console.info('Closed callbacks');
+              },
+              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+                console.info(`reason= ${dismissDialogAction.reason}`);
+                console.info('AlertDialog onWillDismiss');
+                if (dismissDialogAction.reason === DismissReason.PRESS_BACK) {
+                  dismissDialogAction.dismiss();
+                }
+                if (dismissDialogAction.reason === DismissReason.TOUCH_OUTSIDE) {
+                  dismissDialogAction.dismiss();
+                }
+              }
+            } as AlertDialogParamWithButtons
+          )
+        }).backgroundColor(0x317aff)
+      Button('three button dialog')
+        .onClick(() => {
+          this.getUIContext().showAlertDialog(
+            {
+              title: 'title',
+              subtitle: 'subtitle',
+              message: 'text',
+              autoCancel: true,
+              alignment: DialogAlignment.Bottom,
+              gridCount: 4,
+              offset: { dx: 0, dy: -20 },
+              buttonDirection: DialogButtonDirection.HORIZONTAL,
+              buttons: [
+                {
+                  value: '按钮',
+                  action: () => {
+                    console.info('Callback when button1 is clicked');
+                  }
+                },
+                {
+                  value: '按钮',
+                  action: () => {
+                    console.info('Callback when button2 is clicked');
+                  }
+                },
+                {
+                  value: '按钮',
+                  enabled: true,
+                  defaultFocus: true,
+                  style: DialogButtonStyle.HIGHLIGHT,
+                  action: () => {
+                    console.info('Callback when button3 is clicked');
+                  }
+                },
+              ],
+              cancel: () => {
+                console.info('Closed callbacks');
+              },
+              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+                console.info(`reason= ${dismissDialogAction.reason}`);
+                console.info('AlertDialog onWillDismiss');
+                if (dismissDialogAction.reason === DismissReason.PRESS_BACK) {
+                  dismissDialogAction.dismiss();
+                }
+                if (dismissDialogAction.reason === DismissReason.TOUCH_OUTSIDE) {
+                  dismissDialogAction.dismiss();
+                }
+              }
+            } as AlertDialogParamWithOptions
+          )
+        }).backgroundColor(0x317aff)
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
+![image-alert](figures/image-alert.gif)
 
 ### 示例2（可在主窗外弹出的弹窗）
 
 在2in1设备上设置[AlertDialogParam](#alertdialogparam对象说明)中showInSubWindow属性的值为true时，可以弹出在主窗外显示的弹窗。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -576,11 +723,81 @@ struct AlertDialogExample {
 }
 ```
 
-![zh-cn_image_alert_showinsubwindow](figures/zh-cn_image_alert_showinsubwindow.jpg)
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, Margin, DialogAlignment, DialogButtonDirection,
+  DialogButtonStyle, DismissDialogAction, DismissReason, ColumnOptions, AlertDialogParamWithOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct AlertDialogExample {
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Button('one button dialog')
+        .onClick(() => {
+          this.getUIContext().showAlertDialog(
+            {
+              title: 'title',
+              subtitle: 'subtitle',
+              message: 'text',
+              autoCancel: true,
+              alignment: DialogAlignment.Center,
+              gridCount: 4,
+              showInSubWindow: true,
+              isModal: true,
+              offset: { dx: 0, dy: -20 },
+              buttonDirection: DialogButtonDirection.HORIZONTAL,
+              buttons: [
+                {
+                  value: '按钮',
+                  action: () => {
+                    console.info('Callback when button1 is clicked');
+                  }
+                },
+                {
+                  value: '按钮',
+                  action: () => {
+                    console.info('Callback when button2 is clicked');
+                  }
+                },
+                {
+                  value: '按钮',
+                  enabled: true,
+                  defaultFocus: true,
+                  style: DialogButtonStyle.HIGHLIGHT,
+                  action: () => {
+                    console.info('Callback when button3 is clicked');
+                  }
+                },
+              ],
+              cancel: () => {
+                console.info('Closed callbacks');
+              },
+              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+                console.info(`reason= ${dismissDialogAction.reason}`);
+                console.info('AlertDialog onWillDismiss');
+                if (dismissDialogAction.reason === DismissReason.PRESS_BACK) {
+                  dismissDialogAction.dismiss();
+                }
+                if (dismissDialogAction.reason === DismissReason.TOUCH_OUTSIDE) {
+                  dismissDialogAction.dismiss();
+                }
+              }
+            } as AlertDialogParamWithOptions)
+        })
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
+![image-alert-showinsubwindow](figures/image-alert-showinsubwindow.jpg)
 
 ### 示例3（设置弹窗的动画）
 
 该示例通过配置[AlertDialogParam](#alertdialogparam对象说明)中的transition属性来实现弹窗的显示和消失动画。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -623,11 +840,58 @@ struct AlertDialogExample {
 }
 ```
 
-![zh-cn_image_alert_animation](figures/zh-cn_image_alert_animation.gif)
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, Margin, DialogAlignment, TransitionEffect, Curve, ColumnOptions,
+  AlertDialogParamWithConfirm } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct AlertDialogExample {
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Button('AlertDialog Set Duration')
+        .onClick(() => {
+          this.getUIContext().showAlertDialog(
+            {
+              title: 'AlertDialog 1',
+              message: 'Set Animation Duration open 3 second, close 100ms',
+              autoCancel: true,
+              alignment: DialogAlignment.Top,
+              offset: { dx: 0, dy: -20 },
+              gridCount: 3,
+              transition: TransitionEffect.asymmetric(TransitionEffect.OPACITY
+                .animation({ duration: 3000, curve: Curve.Sharp })
+                .combine(TransitionEffect.scale({ x: 1.5, y: 1.5 }).animation({ duration: 3000, curve: Curve.Sharp })),
+                TransitionEffect.OPACITY.animation({ duration: 100, curve: Curve.Smooth })
+                  .combine(TransitionEffect.scale({ x: 0.5, y: 0.5 })
+                    .animation({ duration: 100, curve: Curve.Smooth }))),
+              confirm: {
+                value: 'button',
+                action: () => {
+                  console.info('Button-clicking callback');
+                }
+              },
+              cancel: () => {
+                console.info('Closed callbacks');
+              }
+            } as AlertDialogParamWithConfirm
+          )
+        })
+        .backgroundColor(0x317aff).height('88px')
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
+![image-alert-animation](figures/image-alert-animation.gif)
 
 ### 示例4（设置弹窗的样式）
 
 示例定义了AlertDialog的样式，包括宽度、高度、背景色、阴影等。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -688,11 +952,76 @@ struct AlertDialogExample {
 }
 ```
 
-![zh-cn_image_alert_style](figures/zh-cn_image_alert_style.gif)
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, Margin, DialogAlignment, BorderStyle, Color,
+  WordBreak, DismissDialogAction, DismissReason, ColumnOptions, AlertDialogParamWithConfirm } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct AlertDialogExample {
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Button('one button dialog')
+        .onClick(() => {
+          this.getUIContext().showAlertDialog(
+            {
+              title: 'title',
+              message: 'text',
+              autoCancel: true,
+              alignment: DialogAlignment.Center,
+              offset: { dx: 0, dy: -20 },
+              gridCount: 3,
+              width: 300,
+              height: 200,
+              cornerRadius: 20,
+              borderWidth: 1,
+              borderStyle: BorderStyle.Dashed, // 使用borderStyle属性，需要和borderWidth属性一起使用
+              borderColor: Color.Blue, // 使用borderColor属性，需要和borderWidth属性一起使用
+              backgroundColor: Color.White,
+              shadow: ({
+                radius: 20,
+                color: Color.Grey,
+                offsetX: 50,
+                offsetY: 0
+              }),
+              textStyle: { wordBreak: WordBreak.BREAK_ALL },
+              confirm: {
+                value: 'button',
+                action: () => {
+                  console.info('Button-clicking callback');
+                }
+              },
+              cancel: () => {
+                console.info('Closed callbacks');
+              },
+              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+                console.info(`reason= ${dismissDialogAction.reason}`);
+                console.info('AlertDialog onWillDismiss');
+                if (dismissDialogAction.reason === DismissReason.PRESS_BACK) {
+                  dismissDialogAction.dismiss();
+                }
+                if (dismissDialogAction.reason === DismissReason.TOUCH_OUTSIDE) {
+                  dismissDialogAction.dismiss();
+                }
+              }
+            } as AlertDialogParamWithConfirm
+          )
+        })
+        .backgroundColor(0x317aff)
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
+![image-alert-style](figures/image-alert-style.gif)
 
 ### 示例5（悬停态弹窗）
 
 <!--RP1-->该示例展示了在悬停态下设置dialog布局区域的效果。<!--RP1End-->
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -740,11 +1069,63 @@ struct AlertDialogExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, Margin, DialogAlignment, DismissDialogAction,
+  DismissReason, HoverModeAreaType, ColumnOptions, AlertDialogParamWithConfirm } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct AlertDialogExample {
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Button('one button dialog')
+        .onClick(() => {
+          this.getUIContext().showAlertDialog(
+            {
+              title: 'title',
+              message: 'text',
+              autoCancel: true,
+              alignment: DialogAlignment.Bottom,
+              gridCount: 3,
+              confirm: {
+                value: 'button',
+                action: () => {
+                  console.info('Button-clicking callback');
+                }
+              },
+              cancel: () => {
+                console.info('Closed callbacks');
+              },
+              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
+                console.info(`reason= ${dismissDialogAction.reason}`);
+                console.info('AlertDialog onWillDismiss');
+                if (dismissDialogAction.reason === DismissReason.PRESS_BACK) {
+                  dismissDialogAction.dismiss();
+                }
+                if (dismissDialogAction.reason === DismissReason.TOUCH_OUTSIDE) {
+                  dismissDialogAction.dismiss();
+                }
+              },
+              enableHoverMode: true,
+              hoverModeArea: HoverModeAreaType.TOP_SCREEN
+            } as AlertDialogParamWithConfirm
+          )
+        })
+        .backgroundColor(0x317aff)
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
 <!--RP2--><!--RP2End-->
 
 ### 示例6（弹窗生命周期）
 
 该示例展示了弹窗生命周期的相关接口的使用方法。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -796,13 +1177,69 @@ struct Example2 {
 }
 ```
 
-![zh-cn_image_alert_lifecycle](figures/zh-cn_image_alert_lifecycle.gif)
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, Text, State, Margin, DialogAlignment, ColumnOptions,
+  AlertDialogParamWithConfirm } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Example2 {
+  @State log: string = 'Log information:';
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Button('AlertDialog')
+        .onClick(() => {
+          this.getUIContext().showAlertDialog({
+            title: 'AlertDialog',
+            message: 'message',
+            autoCancel: true,
+            alignment: DialogAlignment.Bottom,
+            offset: { dx: 0, dy: -20 },
+            confirm: {
+              value: 'button',
+              action: () => {
+                console.info('AlertDialog Button-clicking callback');
+              }
+            },
+            cancel: () => {
+              console.info('Closed callbacks');
+            },
+            onDidAppear: () => {
+              this.log += '# onDidAppear';
+              console.info('AlertDialog,is onDidAppear!');
+            },
+            onDidDisappear: () => {
+              this.log += '# onDidDisappear';
+              console.info('AlertDialog,is onDidDisappear!');
+            },
+            onWillAppear: () => {
+              this.log = 'Log information:onWillAppear';
+              console.info('AlertDialog,is onWillAppear!');
+            },
+            onWillDisappear: () => {
+              this.log += '# onWillDisappear';
+              console.info('AlertDialog,is onWillDisappear!');
+            }
+          } as AlertDialogParamWithConfirm)
+        })
+      Text(this.log).fontSize(30).margin({ top: 200 } as Margin)
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
+![image-alert-lifecycle](figures/image-alert-lifecycle.gif)
 
 ### 示例7（自定义背景模糊效果参数）
 
 该示例通过配置[AlertDialogParam](#alertdialogparam对象说明)中的backgroundBlurStyleOptions属性，实现了自定义背景模糊效果。
 
 从API version 19开始，在AlertDialogParam中新增了backgroundBlurStyleOptions属性。
+
+ArkTS-Dyn示例：
 
 ```ts
 @Entry
@@ -847,13 +1284,63 @@ struct AlertDialogExample {
 }
 ```
 
-![zh-cn_image_alert_backgroundBlurStyleOptions](figures/zh-cn_image_alert_backgroundBlurStyleOptions.png)
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Stack, Image, Column, Button, $r, Alignment, BlurStyle,
+  ThemeColorMode, AdaptiveColor, AlertDialogParamWithButtons, BackgroundBlurStyleOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct AlertDialogExample {
+  build() {
+    Stack({ alignContent: Alignment.Top }) {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
+      Image($r('app.media.bg'))
+      Column() {
+        Button("AlertDialog")
+          .margin(20)
+          .onClick(() => {
+            this.getUIContext().showAlertDialog({
+              title: 'AlertDialog Title',
+              message: 'AlertDialog Text',
+              primaryButton: {
+                value: '确定',
+                action: () => {
+                  console.info('primaryButton');
+                }
+              },
+              secondaryButton: {
+                value: '取消',
+                action: () => {
+                  console.info('secondaryButton');
+                }
+              },
+              backgroundColor: undefined,
+              backgroundBlurStyle: BlurStyle.Thin,
+              backgroundBlurStyleOptions: {
+                colorMode: ThemeColorMode.LIGHT,
+                adaptiveColor: AdaptiveColor.AVERAGE,
+                scale: 1,
+                blurOptions: { grayscale: [20, 20] },
+              } as BackgroundBlurStyleOptions,
+            } as AlertDialogParamWithButtons);
+          })
+      }.width('100%')
+    }
+  }
+}
+```
+
+![image-alert-animation](figures/image-alert-animation.gif)
 
 ### 示例8（自定义背景效果参数）
 
 该示例通过配置[AlertDialogParam](#alertdialogparam对象说明)中的backgroundEffect属性，实现自定义背景效果。
 
 从API version 19开始，在AlertDialogParam中新增了backgroundEffect属性。
+
+ArkTS-Dyn示例：
 
 ```ts
 @Entry
@@ -899,4 +1386,53 @@ struct AlertDialogExample {
 }
 ```
 
-![zh-cn_image_alert_backgroundEffect](figures/zh-cn_image_alert_backgroundEffect.png)
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Stack, Image, Column, Button, $r, Alignment, BlurStyle, Color,
+  AlertDialogParamWithButtons } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct AlertDialogExample {
+  build() {
+    Stack({ alignContent: Alignment.Top }) {
+      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
+      Image($r('app.media.bg'))
+      Column() {
+        Button("AlertDialog")
+          .margin(20)
+          .onClick(() => {
+            this.getUIContext().showAlertDialog({
+              title: 'AlertDialog Title',
+              message: 'AlertDialog Text',
+              primaryButton: {
+                value: '确定',
+                action: () => {
+                  console.info('primaryButton');
+                }
+              },
+              secondaryButton: {
+                value: '取消',
+                action: () => {
+                  console.info('secondaryButton');
+                }
+              },
+              backgroundColor: undefined,
+              backgroundBlurStyle: BlurStyle.Thin,
+              backgroundEffect: {
+                radius: 60,
+                saturation: 0,
+                brightness: 1,
+                color: Color.White,
+                blurOptions: { grayscale: [20, 20] }
+              },
+            } as AlertDialogParamWithButtons);
+          })
+      }.width('100%')
+    }
+  }
+}
+```
+
+![image-alert-backgroundEffect](figures/image-alert-backgroundEffect.png)

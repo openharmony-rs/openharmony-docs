@@ -6,6 +6,8 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
+本文档提供 ArkWeb 组件中使用的类型定义，包括 Web 控制器及各类事件回调函数类型。其中，WebviewController 用于控制 Web 组件的行为；各类回调函数类型为开发者提供 Web 组件运行过程中多种事件场景的事件监听和处理能力。
+
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
@@ -18,7 +20,7 @@
 
 ArkTS-Dyn: type WebviewController = import('../api/@ohos.web.webview').default.WebviewController
 
-ArkTS-Sta: type WebviewController = WebviewController
+ArkTS-Sta: type WebviewController = import('../api/@ohos.web.webview').default.WebviewController
 
 提供Web控制器的方法。
 
@@ -30,7 +32,7 @@ ArkTS-Sta: type WebviewController = WebviewController
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| [WebviewController](./arkts-apis-webview-WebviewController.md)  | 通过WebviewController可以控制Web组件各种行为。一个WebviewController对象只能控制一个Web组件，且必须在Web组件和WebviewController绑定后，才能调用WebviewController上的方法（静态方法除外）。 |
+| [import('../api/@ohos.web.webview').default.WebviewController](./arkts-apis-webview-WebviewController.md)  | 通过WebviewController可以控制Web组件各种行为。一个WebviewController对象只能控制一个Web组件，且必须在Web组件和WebviewController绑定后，才能调用WebviewController上的方法（静态方法除外）。 |
 
 ## OnAdsBlockedCallback<sup>12+</sup>
 
@@ -75,6 +77,10 @@ type OnVerifyPinCallback = (verifyPinEvent: VerifyPinEvent) => void
 需要用户进行PIN码认证时触发的回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

@@ -1,19 +1,23 @@
-# @Watch
+# @Watch：状态变量更改通知
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zany_pink-->
-<!--SE: @s10021109-->
-<!--TSE: @TerryTsao-->
-
-> **说明：**
->
-> 从API version 7开始，支持该装饰器。
->
+<!--Owner: @zhangboren-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 @Watch装饰器用于状态管理V1中，监听状态变量的变化。
 
 在ArkTS-Dyn中使用时，开发指南参考：[@Watch装饰器：状态变量更改通知（ArkTS-Dyn）](../../../ui/state-management/arkts-watch.md)。
+
+> **说明：**
+>
+> 从API version 7开始，支持该装饰器。
+
+## @Watch
+
+const Watch: (value: string) => PropertyDecorator
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -33,9 +37,12 @@
 @Entry
 @Component
 struct Index {
+  // 使用@State声明状态变量count，并使用@Watch装饰器监听其变化
+  // 当count值变化时，自动调用名为'onChange'的回调函数
   @State @Watch('onChange') count: number = 0;
   @State total: number = 0;
 
+  // @Watch监听的回调函数，参数为发生变化的属性名
   onChange(propertyName: string): void {
     this.total += this.count;
   }
@@ -44,6 +51,7 @@ struct Index {
     Column() {
       Text(`Total: ${this.total}`)
       Button('change')
+        // 设置点击事件，点击后count值加1，触发@Watch回调
         .onClick(() => {
           this.count++;
         })

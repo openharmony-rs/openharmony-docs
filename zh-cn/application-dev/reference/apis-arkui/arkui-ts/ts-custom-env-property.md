@@ -1,4 +1,4 @@
-# \@CustomEnv：自定义环境变量
+# \@CustomEnv：自定义环境变量 (ArkTS-Dyn)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
@@ -29,7 +29,9 @@ CustomEnv\<T\>(key: CustomEnvKey\<S\>): PropertyDecorator
 
 **示例：**
 
-```ts
+``` TypeScript
+const custom = CustomEnvKey.create<string>();
+
 @Entry
 @Component
 struct Index {
@@ -75,6 +77,12 @@ static create\<T\>()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**示例：**
+
+``` TypeScript
+const custom = CustomEnvKey.create<string>();
+```
+
 ### constructor
 
 protected constructor()
@@ -86,10 +94,3 @@ protected constructor()
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**示例：**
-
-```ts
-const custom = CustomEnvKey.create<string>();
-@CustomEnv(custom) message: string = 'hello world';
-```

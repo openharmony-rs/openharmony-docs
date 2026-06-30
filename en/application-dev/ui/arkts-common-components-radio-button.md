@@ -32,7 +32,7 @@ Radio({ value: 'Radio2', group: 'radioGroup' })
 ```
 
 
-![en-us_image_0000001562820821](figures/en-us_image_0000001562820821.png)
+![radio-create](figures/radio-create.png)
 
 ## Adding Events
 
@@ -123,4 +123,4 @@ export struct RadioExample {
 ```
 
 
-![en-us_image_0000001562700457](figures/en-us_image_0000001562700457.gif)
+![radio-scenario](figures/radio-scenario.gif)

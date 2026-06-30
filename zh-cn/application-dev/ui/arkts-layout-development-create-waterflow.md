@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zcdqs; @rongShao-Z; @guozejun-->
+<!--Owner: @rongShao-Z; @guozejun-->
 <!--Designer: @zcdqs-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 瀑布流[WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)常用于展示图片信息，尤其在购物和资讯类应用中。
@@ -89,50 +89,57 @@ build() {
 
 ArkTS-Sta示例：
 
-```ts
-import { Entry, Text, Column, Component, WaterFlow, SectionOptions, Margin, WaterFlowLayoutMode, LazyForEach, WaterFlowSections, FlowItem, Color, Reusable, ColumnOptions, Row, TextAlign, Builder, LoadingProgress, Alignment, FlexAlign, WaterFlowOptions } from '@ohos.arkui.component';
+<!-- @[WaterFlowInfiniteScrolling_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponent/entry/src/main/ets/pages/waterFlow/WaterFlowInfiniteScrolling.ets) -->
 
-  @Builder
-  itemFoot() {
-    Row() {
-      LoadingProgress()
-        .color(Color.Blue).height(50).aspectRatio(1).width('20%')
-      Text(`正在加载`)
-        .fontSize(20)
-        .width('30%')
-        .height(50)
-        .align(Alignment.Center)
-        .margin({ top: 2 } as Margin)
-    }.width('100%').justifyContent(FlexAlign.Center)
-  }
+``` TypeScript
+@Builder
+itemFoot(): void {
+  Row() {
+    LoadingProgress()
+      .color(Color.Blue).height(50).aspectRatio(1).width('20%')
+    // 请将$r('app.string.waterFlow_text1')替换为实际资源文件，在本示例中该资源文件的value值为"正在加载 "
+    Text($r('app.string.waterFlow_text1'))
+      .fontSize(20)
+      .width('30%')
+      .height(50)
+      .align(Alignment.Center)
+      .margin({ top: 2 })
+  }.width('100%').justifyContent(FlexAlign.Center)
+}
 
-  build() {
-    Column({ space: 2 } as ColumnOptions) {
-      WaterFlow({ footer: this.itemFoot, layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW } as WaterFlowOptions) {
-        LazyForEach(this.dataSource, (item: number) => {
-          FlowItem() {
-            ReusableFlowItem({ item: item })
-          }
-          .width('100%')
-          .aspectRatio(this.itemHeightArray[item % 100] / this.itemWidthArray[item%100])
-          .backgroundColor(this.colors[item % 5])
-        }, (item: number): string => item.toString())
+build(): void {
+  NavDestination() {
+    Column({ space: 12 } as ColumnOptions) {
+      // ...
+        WaterFlow({ footer: this.itemFoot, layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW } as WaterFlowOptions) {
+          LazyForEach(this.dataSource, (item: int) => {
+            FlowItem() {
+              ReusableFlowItem({ item: item })
+            }
+            .width('100%')
+            .aspectRatio(this.itemHeightArray[item % 100] / this.itemWidthArray[item % 100])
+            .backgroundColor(this.colors[item % 5])
+          }, (item: int) => item.toString())
+        }
+        .columnsTemplate('1fr '.repeat(this.columns))
+        .backgroundColor(0xFAEEE0)
+        .width('100%')
+        .height('100%')
+        .layoutWeight(1)
+        // 触底加载数据
+        .onReachEnd(() => {
+          setTimeout(() => {
+            this.dataSource.addNewItems(100);
+          }, 1000)
+        })
       }
-      .columnsTemplate('1fr '.repeat(this.columns))
-      .backgroundColor(0xFAEEE0)
-      .width('100%')
-      .height('100%')
-      .layoutWeight(1)
-      // 触底加载数据。
-      .onReachEnd(() => {
-        setTimeout(() => {
-          this.dataSource.addNewItems(100);
-        }, 1000);
-      })
-    }
+      // ...
   }
+  .backgroundColor('#f1f2f3')
+  // 请将$r('app.string.WaterFlowInfiniteScrolling_title')替换为实际资源文件，在本示例中该资源文件的value值为"无限滚动（到达末尾时新增数据）"
+  .title($r('app.string.WaterFlowInfiniteScrolling_title'))
+}
 ```
-
 在此处应通过在数据末尾添加元素的方式来新增数据，不可直接修改dataArray后通过LazyForEach的[onDataReloaded](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#ondatareloaded)方法通知瀑布流重新加载数据。
 
 由于在瀑布流布局中，各子节点的高度不一致，下面的节点位置依赖于上面的节点，所以重新加载所有数据会触发整个瀑布流重新计算布局，可能会导致卡顿。在数据末尾增加数据后，应使用[onDataAdd](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#ondataadd8)通知，以使瀑布流能够识别新增数据并继续加载，同时避免对已有数据进行重复处理。
@@ -188,37 +195,44 @@ build() {
 
 ArkTS-Sta示例：
 
-```ts
-import { Entry, Text, Column, Component, WaterFlow, WaterFlowLayoutMode, LazyForEach, WaterFlowSections, FlowItem,  ColumnOptions, WaterFlowOptions } from '@ohos.arkui.component';
-  build() {
-    Column({ space: 2 } as ColumnOptions) {
-      WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW } as WaterFlowOptions) {
-        LazyForEach(this.dataSource, (item: number) => {
-          FlowItem() {
-            ReusableFlowItem({ item: item })
-          }
-          .width('100%')
-          .aspectRatio(this.itemHeightArray[item % 100] / this.itemWidthArray[item%100])
-          .backgroundColor(this.colors[item % 5])
-        }, (item: number): string => item.toString())
-      }
-      .columnsTemplate('1fr '.repeat(this.columns))
-      .backgroundColor(0xFAEEE0)
-      .width('100%')
-      .height('100%')
-      .layoutWeight(1)
-      // 即将触底时提前增加数据。
-      .onScrollIndex((first: number, last: number) => {
-        if (last + 20 >= this.dataSource.totalCount()) {
-          setTimeout(() => {
-            this.dataSource.addNewItems(100);
-          }, 1000);
-        }
-      })
-    }
-  }
-```
+<!-- @[waterFlowInfiniteScrollingEarly_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponent/entry/src/main/ets/pages/waterFlow/WaterFlowInfiniteScrollingEarly.ets) -->
 
+``` TypeScript
+build(): void {
+  NavDestination() {
+    Column({ space: 12 } as ColumnOptions) {
+      // ...
+        WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW } as WaterFlowOptions) {
+          LazyForEach(this.dataSource, (item: int) => {
+            FlowItem() {
+              ReusableFlowItem({ item: item })
+            }
+            .width('100%')
+            .aspectRatio(this.itemHeightArray[item % 100] / this.itemWidthArray[item % 100])
+            .backgroundColor(this.colors[item % 5])
+          }, (item: int) => item.toString())
+        }
+        .columnsTemplate('1fr '.repeat(this.columns))
+        .backgroundColor(0xFAEEE0)
+        .width('100%')
+        .height('100%')
+        .layoutWeight(1)
+        // 即将触底时提前增加数据
+        .onScrollIndex((first: int, last: int) => {
+          if (last + 20 >= this.dataSource.totalCount()) {
+            setTimeout(() => {
+              this.dataSource.addNewItems(100);
+            }, 1000);
+          }
+        })
+      }
+      // ...
+  }
+  .backgroundColor('#f1f2f3')
+  // 请将$r('app.string.WaterFlowInfiniteScrollingEarly_title')替换为实际资源文件，在本示例中该资源文件的value值为"无限滚动（提前新增数据）"
+  .title($r('app.string.WaterFlowInfiniteScrollingEarly_title'))
+}
+```
 ![](figures/waterflow-demo2.gif)
 
 ## 动态切换列数
@@ -311,74 +325,87 @@ export struct WaterFlowDynamicSwitchover {
 
 ArkTS-Sta示例：
 
-```ts
-import { Entry, Text, Column, Component, WaterFlow, SectionOptions, Margin, WaterFlowLayoutMode, LazyForEach, WaterFlowSections, FlowItem, Grid, Color, Reusable, Image, ForEach, GridItem, ImageFit, ColumnOptions, Button, ClickEvent, Row, TextAlign, Builder, LoadingProgress, Alignment, FlexAlign, WaterFlowOptions } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+<!-- @[waterFlowDynamicSwitchover_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponent/entry/src/main/ets/pages/waterFlow/WaterFlowDynamicSwitchover.ets) -->
 
-// 通过状态变量设置列数，可以按需修改触发布局更新。
-@State columns: number = 2;
-
+``` TypeScript
 @Reusable
 @Component
 struct ReusableListItem {
-  @State item: number = 0;
+  @State item: int = 0;
 
-  aboutToReuse(params: Record<string, number>) {
-    this.item = params.$_get('item') as number;
+  aboutToReuse(params: Record<string, int>): void {
+    this.item = params.get('item') ?? 0;
   }
 
-  build() {
+  build(): void {
     Row() {
-      // 注意：需要确保对应的jpg文件存在才会正常显示
-      Image('res/waterFlow(' + this.item % 5 + ').JPG')
+      Image('res/waterFlow(' + (this.item % 5).toString() + ').JPG')
         .objectFit(ImageFit.Fill)
         .height(100)
         .aspectRatio(1)
-      Text("N" + this.item).fontSize(12).height('16').layoutWeight(1).textAlign(TextAlign.Center)
+      Text('N' + this.item).fontSize(12).height('16').layoutWeight(1).textAlign(TextAlign.Center)
     }
   }
 }
 
-  build() {
-    Column({ space: 2 } as ColumnOptions) {
-      Button('切换列数').fontSize(20).onClick((e: ClickEvent) => {
-        if (this.columns === 2) {
-          this.columns = 1;
-        } else {
-          this.columns = 2;
-        }
-      })
-      WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW } as WaterFlowOptions) {
-        LazyForEach(this.dataSource, (item: number) => {
-          FlowItem() {
-            if (this.columns === 1) {
-              ReusableListItem({ item: item })
-            } else {
-              ReusableFlowItem({ item: item })
-            }
-          }
-          .width('100%')
-          .aspectRatio(this.columns === 2 ? this.itemHeightArray[item % 100] / this.itemWidthArray[item % 100] : 0)
-          .backgroundColor(this.colors[item % 5])
-        }, (item: number): string => item.toString())
-      }
-      .columnsTemplate('1fr '.repeat(this.columns))
-      .backgroundColor(0xFAEEE0)
-      .width('100%')
-      .height('100%')
-      .layoutWeight(1)
-      // 即将触底时提前增加数据。
-      .onScrollIndex((first: number, last: number) => {
-        if (last + 20 >= this.dataSource.totalCount()) {
-          setTimeout(() => {
-            this.dataSource.addNewItems(100);
-          }, 1000);
-        }
-      })
-    }
-  }
-```
+@Entry
+@Component
+export struct WaterFlowDynamicSwitchover {
+  // 通过状态变量设置列数，可以按需修改触发布局更新
+  @State columns: int = 2;
 
+  // ...
+  build(): void {
+    NavDestination() {
+      Column({ space: 12 } as ColumnOptions) {
+        // ...
+          Column({ space: 2 } as ColumnOptions) {
+            // 请将$r('app.string.waterFlow_text2')替换为实际资源文件，在本示例中该资源文件的value值为"切换列数 "
+            Button($r('app.string.waterFlow_text2')).fontSize(20).onClick(() => {
+              if (this.columns === 2) {
+                this.columns = 1;
+              } else {
+                this.columns = 2;
+              }
+            })
+            WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW } as WaterFlowOptions) {
+              LazyForEach(this.dataSource, (item: int) => {
+                FlowItem() {
+                  if (this.columns === 1) {
+                    ReusableListItem({ item: item })
+                  } else {
+                    ReusableFlowItem({ item: item })
+                  }
+                }
+                .width('100%')
+                .aspectRatio(this.columns === 2 ? this.itemHeightArray[item % 100] / this.itemWidthArray[item % 100] : 0)
+                .backgroundColor(this.colors[item % 5])
+              }, (item: int) => item.toString())
+            }
+            .columnsTemplate('1fr '.repeat(this.columns))
+            .backgroundColor(0xFAEEE0)
+            .width('100%')
+            .height('100%')
+            .layoutWeight(1)
+            // 即将触底时提前增加数据
+            .onScrollIndex((first: int, last: int) => {
+              if (last + 20 >= this.dataSource.totalCount()) {
+                setTimeout(() => {
+                  this.dataSource.addNewItems(100);
+                }, 1000);
+              }
+            })
+            // ...
+          }
+        }
+        // ...
+    }
+    .backgroundColor('#f1f2f3')
+    // 请将$r('app.string.WaterFlowDynamicSwitchover_title')替换为实际资源文件，在本示例中该资源文件的value值为"动态切换列数"
+    .title($r('app.string.WaterFlowDynamicSwitchover_title'))
+  }
+}
+```
 ![](figures/waterflow-columns.gif)
 
 ## 分组混合布局
@@ -504,113 +531,115 @@ export struct WaterFlowGroupingMixing {
 
 ArkTS-Sta示例：
 
-```ts
-import { Entry, Text, Column, Component, WaterFlow, SectionOptions, Margin, WaterFlowLayoutMode, LazyForEach, WaterFlowSections, FlowItem, Grid, Color, Reusable, Image, ForEach, GridItem, ImageFit, ColumnOptions, Button, ClickEvent, Row, TextAlign, Builder, LoadingProgress, Alignment, FlexAlign, WaterFlowOptions } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
-import { WaterFlowDataSource } from './WaterFlowDataSource';
+<!-- @[waterFlowGroupingMixing_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponent/entry/src/main/ets/pages/waterFlow/WaterFlowGroupingMixing.ets) -->
 
+``` TypeScript
 @Entry
 @Component
-struct WaterFlowDemo {
-  minSize: number = 80;
-  maxSize: number = 180;
-  colors: number[] = new Array<number>(0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F);
+export struct WaterFlowGroupingMixing {
+  minSize: int = 80;
+  maxSize: int = 180;
+  colors: int[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
   dataSource: WaterFlowDataSource = new WaterFlowDataSource(100);
-  private itemWidthArray: number[] = new Array<number>();
-  private itemHeightArray: number[] = new Array<number>();
-  private gridItems: number[] = new Array<number>();
+  private itemWidthArray: int[] = [];
+  private itemHeightArray: int[] = [];
+  private gridItems: int[] = [];
   @State sections: WaterFlowSections = new WaterFlowSections();
   sectionMargin: Margin = {
     top: 10,
     left: 5,
     bottom: 10,
     right: 5
-  } as Margin;
+  };
   oneColumnSection: SectionOptions = {
     itemsCount: 1,
     crossCount: 1,
     columnsGap: 5,
     rowsGap: 10,
     margin: this.sectionMargin,
-  } as SectionOptions;
+  };
   twoColumnSection: SectionOptions = {
     itemsCount: 98,
     crossCount: 2,
-  } as SectionOptions;
-  // 使用分组瀑布流时无法通过footer设置尾部组件，可以保留一个固定的分组作为footer。
+  };
+  // 使用分组瀑布流时无法通过footer设置尾部组件，可以保留一个固定的分组作为footer
   lastSection: SectionOptions = {
     itemsCount: 1,
     crossCount: 1,
-  } as SectionOptions;
+  };
 
-  // 计算FlowItem宽/高。
-  getSize() {
-    let ret = Math.floor(Math.random() * this.maxSize);
-    return (ret > this.minSize ? ret : this.minSize);
+  // 计算FlowItem宽/高
+  getSize(): int {
+    let ret: double = Math.floor(Math.random() * this.maxSize);
+    let result: int = Double.toInt(ret > this.minSize ? ret : this.minSize);
+    return result;
   }
 
-  // 设置FlowItem的宽/高数组。
-  setItemSizeArray() {
-    for (let i = 0; i < 100; i++) {
+  // 设置FlowItem的宽/高数组
+  setItemSizeArray(): void {
+    for (let i: int = 0; i < 100; i++) {
       this.itemWidthArray.push(this.getSize());
       this.itemHeightArray.push(this.getSize());
     }
   }
 
-  aboutToAppear() {
+  aboutToAppear(): void {
     this.setItemSizeArray();
-    for (let i = 0; i < 15; ++i) {
+    for (let i: int = 0; i < 15; ++i) {
       this.gridItems.push(i);
     }
-    // 所有分组的itemCount之和需要和WaterFlow下数据源的子节点总数相等，否则无法正常布局。
+    // 所有分组的itemCount之和需要和WaterFlow下数据源的子节点总数相等，否则无法正常布局
     let sectionOptions: SectionOptions[] = [this.oneColumnSection, this.twoColumnSection, this.lastSection];
     this.sections.splice(0, 0, sectionOptions);
   }
 
-  build() {
-    WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW, sections: this.sections } as WaterFlowOptions) {
-      LazyForEach(this.dataSource, (item: number) => {
-        FlowItem() {
-          if (item === 0) {
-            Grid() {
-              ForEach(this.gridItems, (day: number) => {
-                GridItem() {
-                  Text('GridItem').fontSize(14).height(16)
-                }.backgroundColor(0xFFC0CB)
-              }, (day: number):string => day.toString())
+  build(): void {
+    NavDestination() {
+      // ...
+        WaterFlow({ layoutMode: WaterFlowLayoutMode.SLIDING_WINDOW, sections: this.sections } as WaterFlowOptions) {
+          LazyForEach(this.dataSource, (item: int) => {
+            FlowItem() {
+              if (item === 0) {
+                Grid() {
+                  ForEach(this.gridItems, (day: int) => {
+                    GridItem() {
+                      Text('GridItem').fontSize(14).height('16')
+                    }.backgroundColor(0xFFC0CB)
+                  }, (day: int) => day.toString())
+                }
+                .height('30%')
+                .rowsGap(5)
+                .columnsGap(5)
+                .columnsTemplate('1fr '.repeat(5))
+                .rowsTemplate('1fr '.repeat(3))
+              } else {
+                ReusableFlowItem({ item: item })
+              }
             }
-            .height('30%')
-            .rowsGap(5)
-            .columnsGap(5)
-            .columnsTemplate('1fr '.repeat(5))
-            .rowsTemplate('1fr '.repeat(3))
-          } else {
-            ReusableFlowItem({ item: item })
-          }
+            .width('100%')
+            .aspectRatio(item != 0 ? this.itemHeightArray[item % 100] / this.itemWidthArray[item % 100] : 0)
+            .backgroundColor(item != 0 ? this.colors[item % 5] : Color.White)
+          }, (item: int) => item.toString())
         }
-        .width('100%')
-        .aspectRatio(item != 0 ? this.itemHeightArray[item % 100] / this.itemWidthArray[item % 100] : 0)
-        .backgroundColor(item != 0 ? this.colors[item % 5] : Color.White)
-      }, (item: number): string => item.toString())
-    }
-    .backgroundColor(0xFAEEE0)
-    .height('100%')
-    // 即将触底时提前增加数据。
-    .onScrollIndex((first: number, last: number) => {
-      if (last + 20 >= this.dataSource.totalCount()) {
-        setTimeout(() => {
-          this.dataSource.addNewItems(100);
-          // 增加数据后同步调整对应分组的itemCount。
-          this.twoColumnSection.itemsCount += 100;
-          this.sections.update(1, this.twoColumnSection);
-        }, 1000);
+        .backgroundColor(0xFAEEE0)
+        .height('100%')
+        // 即将触底时提前增加数据
+        .onScrollIndex((first: int, last: int) => {
+          if (last + 20 >= this.dataSource.totalCount()) {
+            setTimeout(() => {
+              this.dataSource.addNewItems(100);
+              // 增加数据后同步调整对应分组的itemCount
+              this.twoColumnSection.itemsCount += 100;
+              this.sections.update(1, this.twoColumnSection);
+            }, 1000);
+          }
+        })
+        .margin(10)
       }
-    })
-    .margin(10)
+      // ...
   }
 }
 ```
-
 >**说明：**
 >
 >使用分组混合布局时不支持单独设置footer，可以使用最后一个分组作为尾部组件。

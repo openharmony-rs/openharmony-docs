@@ -24,11 +24,15 @@
 import { bluetoothManager } from '@kit.MDMKit';
 ```
 
-## bluetoothManager.isBluetoothDisabled
+## bluetoothManager.isBluetoothDisabled<sup>(deprecated)</sup>
 
 isBluetoothDisabled(admin: Want): boolean
 
 查询蓝牙是否被禁用。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getDisallowedPolicy](./js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy24)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
 
@@ -82,11 +86,15 @@ try {
 };
 ```
 
-## bluetoothManager.setBluetoothDisabled
+## bluetoothManager.setBluetoothDisabled<sup>(deprecated)</sup>
 
 setBluetoothDisabled(admin: Want, disabled: boolean): void
 
 设置禁用蓝牙策略。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [setDisallowedPolicy](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy24)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
 

@@ -26,7 +26,7 @@
 **在CMake脚本中链接动态库**
 
 ``` C
-target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
+target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runtime.so libnative_display_manager.so)
 ```
 
 1. 添加头文件。
@@ -34,12 +34,14 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
    <!-- @[screenCapture_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/main.h) -->
    
    ``` C
+   #include "hilog/log.h"
    #include "napi/native_api.h"
+   #include <window_manager/oh_display_info.h>
+   #include <window_manager/oh_display_manager.h>
+   #include <AbilityKit/ability_runtime/application_context.h>
    #include <multimedia/player_framework/native_avscreen_capture.h>
    #include <multimedia/player_framework/native_avscreen_capture_base.h>
-   #include <multimedia/player_framework/native_avbuffer.h>
    #include <multimedia/player_framework/native_avscreen_capture_errors.h>
-   #include "hilog/log.h"
    #include <unistd.h>
    #include <fcntl.h>
    #include <string>
@@ -57,75 +59,71 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
 
    创建AVScreenCapture实例capture后，可以设置屏幕录制所需要的参数。
 
-   <!-- @[screenCapture_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[screenCapture_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->  
    
    ``` C++
-   void SetConfig(OH_AVScreenCaptureConfig &config)
-   {
-       OH_AudioCaptureInfo micCapInfo = {
-           .audioSampleRate = 48000,
-           .audioChannels = 2,
-           .audioSource = OH_MIC
-       };
+   // 录屏时获取麦克风或者内录，内录参数必填，如果都设置了，内录和麦克风的参数设置需要一致。
+   OH_AudioCaptureInfo micCapInfo = {
+       .audioSampleRate = 48000,
+       .audioChannels = 2,
+       .audioSource = OH_MIC
+   };
    
-       OH_AudioCaptureInfo innerCapInfo = {
-           .audioSampleRate = 48000,
-           .audioChannels = 2,
-           .audioSource = OH_ALL_PLAYBACK
-       };
+   OH_AudioCaptureInfo innerCapInfo = {
+       .audioSampleRate = 48000,
+       .audioChannels = 2,
+       .audioSource = OH_ALL_PLAYBACK
+   };
+   // 录屏音频输出规格配置。audioBitrate保证输出文件的比特率为设置的预期比特率，和audioSampleRate无强关联。
+   // 此处音频比特率取值为高质量录屏的取值。如果录屏内容以语音为主，不包含音乐、游戏音效等，可以降低为96000或48000。
+   OH_AudioEncInfo audioEncInfo = {
+       .audioBitrate = 48000,
+       .audioCodecformat = OH_AAC_LC
+   };
    
-       OH_AudioEncInfo audioEncInfo = {
-           .audioBitrate = 48000,
-           .audioCodecformat = OH_AAC_LC
-       };
+   // 获取屏幕信息
+   uint64_t displayId = 0;
+   NativeDisplayManager_ErrorCode ret = OH_NativeDisplayManager_GetDefaultDisplayId(&displayId);
    
-       OH_VideoCaptureInfo videoCapInfo = {
-           .videoFrameWidth = 720,
-           .videoFrameHeight = 1280,
-           .videoSource = OH_VIDEO_SOURCE_SURFACE_RGBA
-       };
-   
-       OH_VideoEncInfo videoEncInfo = {
-           .videoCodec = OH_H264,
-           .videoBitrate = 2000000,
-           .videoFrameRate = 30
-       };
-   
-       OH_AudioInfo audioInfo = {
-           .micCapInfo = micCapInfo,
-           .innerCapInfo = innerCapInfo,
-           .audioEncInfo = audioEncInfo
-       };
-   
-       OH_VideoInfo videoInfo = {
-           .videoCapInfo = videoCapInfo,
-           .videoEncInfo = videoEncInfo
-       };
-   
-       config = {
-           .captureMode = OH_CAPTURE_HOME_SCREEN,
-           .dataType = OH_ORIGINAL_STREAM, // 录屏数据类型，原始码流或文件
-           .audioInfo = audioInfo,
-           .videoInfo = videoInfo
-       };
+   NativeDisplayManager_DisplayInfo* displayInfo = nullptr;
+   ret = OH_NativeDisplayManager_CreateDisplayById(displayId, &displayInfo);
+   if (ret != DISPLAY_MANAGER_OK || !displayInfo) {
+       return;
    }
+   int32_t screenWidth = displayInfo->width;
+   int32_t screenHeight = displayInfo->height;
+   OH_VideoCaptureInfo videoCapInfo = {
+       .videoFrameWidth = screenWidth,
+       .videoFrameHeight = screenHeight,
+       .videoSource = OH_VIDEO_SOURCE_SURFACE_RGBA
+   };
+
+   OH_VideoEncInfo videoEncInfo = {
+       .videoCodec = OH_H264,
+       .videoBitrate = 2000000,
+       .videoFrameRate = 30
+   };
+
+   OH_AudioInfo audioInfo = {
+       .micCapInfo = micCapInfo,
+       .innerCapInfo = innerCapInfo,
+       .audioEncInfo = audioEncInfo
+   };
+
+   OH_VideoInfo videoInfo = {
+       .videoCapInfo = videoCapInfo,
+       .videoEncInfo = videoEncInfo
+   };
+
+   config = {
+       .captureMode = OH_CAPTURE_HOME_SCREEN,
+       .dataType = OH_CAPTURE_FILE, // 录屏数据类型，文件。
+       .audioInfo = audioInfo,
+       .videoInfo = videoInfo
+   };
    ```
-   方式一：需传入期望录制的窗口ID进行录屏。
 
-   ``` C++
-   // 如果期望录制单个窗口，需传入单个窗口ID；如果期望同时录制多个窗口，需传入期望录制的窗口ID列表。
-   std::vector<int32_t> missionIds = {88}; // 指定录制的窗口ID。
-   config.videoInfo.videoCapInfo.missionIDs = missionIds.data();
-   config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(missionIds.size());
-   config.captureMode = OH_CAPTURE_SPECIFIED_WINDOW; // 设置录屏模式为录制指定窗口。
-
-   // 设置为false，代表录屏启动后不弹出系统Picker，弹出隐私提示弹窗。
-   OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
-   OH_AVScreenCapture_StrategyForPickerPopUp(strategy, false);
-   OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
-   ```
-
-   方式二（推荐）：通过弹出屏幕捕获Picker列表方式，选择已打开的应用窗口进行窗口级录屏。
+   方式一（推荐）：通过弹出屏幕捕获Picker列表方式，选择已打开的应用窗口进行窗口级录屏。
 
    <!-- @[screenCapture_createCaptureStrategy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
    
@@ -133,6 +131,23 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
    // 通过弹出屏幕捕获Picker列表方式，选择已打开的应用窗口进行窗口级录屏。
    OH_AVScreenCapture_CaptureStrategy *strategy = OH_AVScreenCapture_CreateCaptureStrategy();
    OH_AVScreenCapture_StrategyForPickerPopUp(strategy, true);
+   OH_AVScreenCapture_SetCaptureStrategy(g_avCapture, strategy);
+   ```
+
+   方式二：需传入期望录制的窗口ID进行录屏。
+   
+   <!-- @[screenCapture_withWindow_forID](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   // 如果期望录制单个窗口，需传入单个窗口ID；如果期望同时录制多个窗口，需传入期望录制的窗口ID列表。
+   g_missionIds = {g_windowId}; // 指定录制的窗口ID。
+   config.videoInfo.videoCapInfo.missionIDs = g_missionIds.data();
+   config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(g_missionIds.size());
+   config.captureMode = OH_CAPTURE_SPECIFIED_WINDOW; // 设置录屏模式为录制指定窗口。
+   
+   // 设置为false，代表录屏启动后不弹出系统Picker，弹出隐私提示弹窗。
+   OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
+   OH_AVScreenCapture_StrategyForPickerPopUp(strategy, false);
    OH_AVScreenCapture_SetCaptureStrategy(g_avCapture, strategy);
    ```
 

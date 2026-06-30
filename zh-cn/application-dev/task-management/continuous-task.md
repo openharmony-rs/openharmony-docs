@@ -64,6 +64,7 @@
 1. 主动注册长时任务暂停监听的事件以避免蓝牙断连之后长时任务被系统直接取消，可参考[on('continuousTaskSuspend')](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustasksuspend20)，这样在蓝牙断连时系统不会立即取消长时任务，而是将其标记为暂停态。
 2. 为保证在蓝牙断连之后能及时恢复连接，在蓝牙连接之后通过[on('connectionStateChange')](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#onconnectionstatechange)订阅蓝牙连接状态变化的事件，断连之后通过[startScan](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#startscan15)主动发起BLE蓝牙扫描，订阅BLE设备扫描结果上报[on('BLEDeviceFind')](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#onbledevicefind15)事件，检测设备是否重回连接范围。
 3. 成功扫描到设备之后，应用需要通过[connect](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#connect)主动恢复蓝牙连接，使系统检测到蓝牙恢复连接后重新激活暂停的长时任务，实现重新保活。
+4. 从API版本26.0.0开始，[BR](../connectivity/terminology.md#br)蓝牙断开连接后一定时间内（具体时长受系统负载影响，最长可达十分钟），可通过[onAclStateChange](../reference/apis-connectivity-kit/js-apis-bluetooth-connection.md#connectiononaclstatechange)接口感知ACL连接状态变化，实现重新保活。
 
 关于MODE_NEARLINK（星闪业务）说明： 
 
@@ -98,6 +99,8 @@
 > 若音频在后台播放时被[打断](../media/audio/audio-playback-concurrency.md)，系统会自行检测和停止长时任务，音频重启播放时，需要再次申请长时任务。
 >
 > 后台播放音频的应用，在停止长时任务的同时，需要暂停或停止音频流，否则应用会被系统强制终止。
+>
+> 若应用后台录音被[打断](../media/audio/audio-playback-concurrency.md)，系统会自行检测和停止长时任务；若重启录音，需要再次申请长时任务。在此场景下，需要调用[setWillMuteWhenInterrupted](../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#setwillmutewheninterrupted20)接口，设置当前录制音频流启用静音打断模式。
 
 ## 接口说明
 
@@ -114,9 +117,9 @@
 
 ## 开发步骤
 
-本文以申请一个录制长时任务为例，实现如下功能：
+本文以申请一个音视频播放类型长时任务为例，实现如下功能：
 
-- 点击“申请长时任务”按钮，应用申请录制长时任务成功，通知栏显示“正在运行录制任务”通知。
+- 点击“申请长时任务”按钮，应用申请音视频播放类型长时任务成功，通知栏显示相关通知。
 
 - 点击“取消长时任务”按钮，取消长时任务，通知栏撤销相关通知。
 

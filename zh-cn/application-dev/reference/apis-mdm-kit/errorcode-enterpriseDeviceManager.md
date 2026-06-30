@@ -133,6 +133,7 @@ The specified user ID is invalid.
 
 1. 检查调用接口中指定的user ID是否是有效的user ID。
 2. 检查调用者user ID和指定设置的user ID是否是同一user ID，DA模式下不允许跨用户设置策略。
+<!--DelEnd-->
 
 ## 9200007 系统服务工作异常
 
@@ -155,7 +156,6 @@ The system ability works abnormally.
 **处理步骤**
 
 系统服务内部工作异常，请稍后重试，或者重启设备尝试。
-<!--DelEnd-->
 
 ## 9200008 系统订阅事件无效
 
@@ -334,6 +334,46 @@ Service timeout.
 **处理步骤**
 
 服务超时，请稍后重试。
+
+## 9200017 企业设备管理员自激活凭证无效
+
+**错误信息**
+
+The self-activation credential of the enterprise device administrator is invalid.
+
+**错误描述**
+
+当企业设备管理员自激活凭证无效时，方法将返回该错误码。
+
+**可能原因**
+
+1、企业ID不匹配。
+
+2、应用appIdentifier配置失败。
+
+3、激活凭证缺少必需字段或者证书链校验失败。
+
+**处理步骤**
+
+检查企业设备管理员自激活凭证是否正确。
+
+## 9200018 该设备非企业设备
+
+**错误信息**
+
+This device is not an enterprise device.
+
+**错误描述**
+
+该设备非企业设备。
+
+**可能原因**
+
+该设备非企业设备。
+
+**处理步骤**
+
+检查该设备是否设置为企业设备。
 
 ## 9201001 管理证书失败
 
@@ -605,7 +645,6 @@ Failed to enable or disable the activation lock.
 <!--RP2-->设备不支持激活锁服务。
 <!--RP2End-->
 
-
 ## 9201013 快捷栏中的应用数量已到最大值
 
 **错误信息**
@@ -776,6 +815,395 @@ A lock screen password has been set for the device.
 
 删除锁屏密码。
 
+## 9201022 系统磁盘空间不足导致应用安装失败
+
+**错误信息**
+
+Failed to install the HAP because of insufficient system disk space.
+
+**错误描述**
+
+当系统磁盘空间不足导致应用安装失败时，会产生此错误码。
+
+**可能原因**
+
+系统磁盘空间不足。
+
+**处理步骤**
+
+清理系统磁盘空间后重试。
+
+## 9201023 企业设备管理禁止安装导致应用安装失败
+
+**错误信息**
+
+Failed to install the HAP because enterprise device management disallows the installation.
+
+**错误描述**
+
+当企业设备管理禁止安装应用导致安装失败时，会产生此错误码。
+
+**可能原因**
+
+1. 应用不在允许安装名单中。
+2. 应用在禁止安装名单中。
+
+**处理步骤**
+
+1. 检查应用是否在允许安装名单中，不在名单中的应用不允许安装。
+2. 检查应用是否在禁止安装名单中，在名单中的应用不允许安装。
+
+## 9201024 HAP解析失败导致应用安装失败
+
+**错误信息**
+
+Failed to install the HAP because the HAP fails to be parsed.
+
+**错误描述**
+
+当HAP包解析失败导致应用安装失败时，会产生此错误码。
+
+**可能原因**
+
+该错误码表示HAP包解析失败，可能原因如下。
+1. HAP包文件损坏或不完整。
+2. HAP包格式不正确。
+3. HAP包配置文件错误。
+
+**处理步骤**
+
+1. 检查HAP包文件是否完整无损。
+2. 检查HAP包格式是否正确。
+3. 检查HAP包配置文件是否符合规范。
+
+## 9201025 HAP签名验证失败导致应用安装失败
+
+**错误信息**
+
+Failed to install the HAP because the HAP signature fails to be verified.
+
+**错误描述**
+
+当HAP包签名验证失败导致应用安装失败时，会产生此错误码。
+
+**可能原因**
+
+该错误码表示HAP签名验证失败，可能原因如下。
+1. HAP包签名无效。
+2. HAP包签名证书过期。
+3. HAP包签名证书不被信任。
+
+**处理步骤**
+
+1. 检查HAP包签名是否有效。
+2. 检查HAP包签名证书是否过期。
+3. 检查HAP包签名证书是否为可信证书。
+
+## 9201026 HAP路径无效或文件过大导致应用安装失败
+
+**错误信息**
+
+Failed to install the HAP because the HAP path is invalid or the HAP is too large.
+
+**错误描述**
+
+当HAP包路径无效或文件过大导致应用安装失败时，会产生此错误码。
+
+**可能原因**
+
+该错误码表示HAP路径无效或文件过大，可能原因如下。
+1. HAP包路径不存在或无效。
+2. HAP包文件超过系统限制大小。
+
+**处理步骤**
+
+1. 检查HAP包路径是否存在且有效。
+2. 检查HAP包文件大小是否在系统允许范围内。
+
+## 9201027 HAP配置信息不一致导致安装失败
+
+**错误信息**
+
+Failed to install the HAPs because they have different configuration information.
+
+**错误描述**
+
+当多个HAP包配置信息不一致导致安装失败时，会产生此错误码。
+
+**可能原因**
+
+同时安装多个HAP包时，HAP包的配置信息不一致。
+
+**处理步骤**
+
+检查待安装的多个HAP包配置信息是否一致。
+
+## 9201028 isolationMode配置不支持导致应用安装失败
+
+**错误信息**
+
+Failed to install the HAP because the isolationMode configured is not supported.
+
+**错误描述**
+
+当HAP包配置的isolationMode不被支持导致应用安装失败时，会产生此错误码。
+
+**可能原因**
+
+HAP包配置的isolationMode不被当前系统支持。
+
+**处理步骤**
+
+检查HAP包配置的isolationMode是否为系统支持的值。
+
+## 9201029 HAP版本过低导致应用安装失败
+
+**错误信息**
+
+Failed to install the HAP since the version of the HAP to install is too early.
+
+**错误描述**
+
+当HAP包版本过低导致应用安装失败时，会产生此错误码。
+
+**可能原因**
+
+待安装的HAP包版本低于已安装的应用版本。
+
+**处理步骤**
+
+使用更高版本的HAP包进行安装。
+
+## 9201030 VersionCode不大于当前版本导致应用安装失败
+
+**错误信息**
+
+Failed to install the HAP because the VersionCode to be updated is not greater than the current VersionCode.
+
+**错误描述**
+
+当更新安装的HAP包VersionCode不大于当前已安装版本导致安装失败时，会产生此错误码。
+
+**可能原因**
+
+待更新安装的HAP包VersionCode不大于当前已安装应用的VersionCode。
+
+**处理步骤**
+
+确保待安装的HAP包VersionCode大于当前已安装应用的VersionCode。
+
+## 9201031 依赖模块不存在导致应用安装失败
+
+**错误信息**
+
+Installation failed because the dependent module does not exist.
+
+**错误描述**
+
+当应用依赖的模块不存在导致安装失败时，会产生此错误码。
+
+**可能原因**
+
+应用依赖的模块未安装或不存在。
+
+**处理步骤**
+
+先安装应用依赖的模块，然后再安装该应用。
+
+## 9201032 指定用户ID不存在
+
+**错误信息**
+
+The specified user ID is not found.
+
+**错误描述**
+
+当指定的用户ID不存在时，会产生此错误码。
+
+**可能原因**
+
+指定的用户ID在系统中不存在。
+
+**处理步骤**
+
+检查指定的用户ID是否为有效的用户ID。
+
+可参考[包管理子系统通用错误码](../apis-ability-kit/errorcode-bundle.md)中的错误码17700004。
+
+## 9201033 overlay检查失败导致应用安装失败
+
+**错误信息**
+
+Failed to install the HAP because the overlay check failed.
+
+**错误描述**
+
+当安装overlay特征的应用时，指定的应用和待安装的overlay特征应用不为预置应用，或者目标应用/目标module是overlay特征的应用/module。
+
+**可能原因**
+
+1. 使用应用间的overlay特性时，overlay特征应用必须为预置应用。
+2. 使用应用间的overlay特性时，目标应用必须为预置应用。
+3. 使用应用间的overlay特性时，目标应用不能是具有overlay特征的应用。
+4. 目标module不能是具有overlay特征的module。
+
+**处理步骤**
+
+1. 检查overlay特征应用是否为预置应用。
+2. 检查目标应用是否为预置应用。
+3. 检查目标应用是否不为overlay特征的应用。
+4. 检查目标module是否不为overlay特征的module。
+
+## 9201034 HSP缺少必需权限导致应用安装失败
+
+**错误信息**
+
+Failed to install the HSP due to missing required permissions.
+
+**错误描述**
+
+当HSP包缺少必需权限导致安装失败时，会产生此错误码。
+
+**可能原因**
+
+HSP包缺少必需的权限配置。
+
+**处理步骤**
+
+检查HSP包是否包含所有必需的权限配置。
+
+## 9201035 跨应用共享库安装不被允许导致应用安装失败
+
+**错误信息**
+
+Installation failed because the installation of cross-app shared libraries is not allowed.
+
+**错误描述**
+
+当跨应用共享库安装不被允许导致应用安装失败时，会产生此错误码。
+
+**可能原因**
+
+系统不允许安装跨应用共享库。
+
+**处理步骤**
+
+确认当前场景是否允许安装跨应用共享库。
+
+## 9201036 数据代理URI错误导致应用安装失败
+
+**错误信息**
+
+Failed to install the HAP due to incorrect URI in the data proxy.
+
+**错误描述**
+
+当数据代理URI配置错误导致应用安装失败时，会产生此错误码。
+
+**可能原因**
+
+HAP包中数据代理的URI配置不正确。
+
+**处理步骤**
+
+检查HAP包中数据代理的URI配置是否正确。
+
+## 9201037 数据代理权限配置错误导致应用安装失败
+
+**错误信息**
+
+Failed to install the HAP due to incorrect permission configuration in the data proxy.
+
+**错误描述**
+
+当数据代理权限配置错误导致应用安装失败时，会产生此错误码。
+
+**可能原因**
+
+HAP包中数据代理的权限配置不正确。
+
+**处理步骤**
+
+检查HAP包中数据代理的权限配置是否正确。
+
+## 9201038 代码签名验证失败导致应用安装失败
+
+**错误信息**
+
+Failed to install the HAP due to code signature verification failure.
+
+**错误描述**
+
+当代码签名验证失败导致应用安装失败时，会产生此错误码。
+
+**可能原因**
+
+该错误码表示代码签名验证失败，可能原因如下。
+1. HAP包代码签名无效。
+2. HAP包代码签名证书不被信任。
+
+**处理步骤**
+
+1. 检查HAP包代码签名是否有效。
+2. 检查HAP包代码签名证书是否为可信证书。
+
+## 9201039 企业设备验证失败导致应用安装失败
+
+**错误信息**
+
+Failed to install the HAP due to enterprise device verification failure.
+
+**错误描述**
+
+当企业设备验证失败导致应用安装失败时，会产生此错误码。
+
+**可能原因**
+
+该错误码表示企业设备验证失败，可能原因如下。
+1. 设备不在企业设备管理范围内。
+2. 设备未通过企业设备管理验证。
+
+**处理步骤**
+
+确认设备是否在企业设备管理范围内，并通过企业设备管理验证。
+
+## 9201040 系统账号数量已达到最大限制
+
+**错误信息**
+
+The number of accounts reaches the upper limit.
+
+**错误描述**
+
+已创建的系统账号数量达到最大限制。
+
+**可能原因**
+
+当已创建系统账号的数量达到最大值，再创建新系统账号时，会产生此错误码。
+
+**处理步骤**
+
+确认已创建系统账号数量是否达到上限，及时移除不需要保留的系统账号。
+
+## 9201041 系统账号类型受限
+
+**错误信息**
+
+Restricted account.
+
+**错误描述**
+
+当前类型的系统账号不支持此类操作。
+
+**可能原因**
+
+1. 移除系统账号时，移除的是默认系统账号。
+2. 切换系统账号时，不支持切换为此类型系统账号。
+
+**处理步骤**
+
+确认系统账号的类型是否支持此类操作。
+
 ## 9201043 API调用的前置条件未满足
 
 **错误信息**
@@ -829,3 +1257,21 @@ This permission cannot be disallowed.
 **处理步骤**
 
 检查需要禁用的权限的APL等级是否为normal或system_basic。
+
+## 9201046 已登录系统账号数量达到上限
+
+**错误信息**
+
+The number of signed-in accounts reaches the upper limit.
+
+**错误描述**
+
+当前设备上已登录的系统账号数量达到最大上限。
+
+**可能原因**
+
+当前创建并登录的系统账号已达到最大限制。
+
+**处理步骤**
+
+尝试注销多余的系统账号，并及时移除不再需要保留的系统账号。

@@ -13,11 +13,11 @@
 
 ## SecurityLevel
 
-数据库的安全级别枚举。请使用枚举名称而非枚举值。数据库的安全等级仅支持由低向高设置，不支持由高向低设置。
+数据库的安全级别枚举。请使用枚举名称而非枚举值。数据库的安全级别仅支持由低向高设置，不支持由高向低设置。
 
 > **说明：**
 >
-> 若需要进行同步操作，数据库安全等级应不高于对端设备安全等级，具体可见[跨设备同步访问控制机制](../../database/sync-app-data-across-devices-overview.md#跨设备同步访问控制机制)。
+> 若需要进行同步操作，数据库安全级别应不高于对端设备安全级别，具体可见[跨设备同步访问控制机制](../../database/sync-app-data-across-devices-overview.md#跨设备同步访问控制机制)。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -85,10 +85,10 @@
 | 名称                              | 值   | 说明             |
 | ------------------------------- | --- | -------------- |
 | NONE_TOKENIZER     | 0  | 不使用分词器。<br>**ArkTS-Dyn起始版本：** 17<br>**ArkTS-Sta起始版本：** 23      |
-| ICU_TOKENIZER | 1 | 表示使用icu分词器，支持中文以及多国语言。指定icu分词器时，可指定使用哪种语言，例如zh_CN表示中文，tr_TR表示土耳其语等。详细支持的语言种类，请查阅[ICU分词器](https://gitcode.com/openharmony/third_party_icu/blob/master/icu4c/source/data/lang/zh.txt)。详细的语言缩写，请查阅该目录（[ICU支持的语言缩写](https://gitcode.com/openharmony/third_party_icu/tree/master/icu4c/source/data/locales)）下的文件名。<br>**ArkTS-Dyn起始版本：** 17<br>**ArkTS-Sta起始版本：** 23|
+| ICU_TOKENIZER | 1 | 表示使用icu分词器，支持中文以及多国语言。指定icu分词器时，可指定使用哪种语言，例如zh_CN表示中文，tr_TR表示土耳其语等。支持的语言种类，请查阅[ICU分词器](https://gitcode.com/openharmony/third_party_icu/blob/master/icu4c/source/data/lang/zh.txt)。语言缩写请查阅该目录（[ICU支持的语言缩写](https://gitcode.com/openharmony/third_party_icu/tree/master/icu4c/source/data/locales)）下的文件名。<br>**ArkTS-Dyn起始版本：** 17<br>**ArkTS-Sta起始版本：** 23|
 | CUSTOM_TOKENIZER<sup>18+</sup> | 2 | 表示使用自研分词器，可支持中文（简体、繁体）、英文、阿拉伯数字。CUSTOM_TOKENIZER相比ICU_TOKENIZER在分词准确率、常驻内存占用上更有优势。自研分词器支持默认分词模式和短词分词模式（short_words）两种，使用参数cut_mode可指定模式，不指定模式时使用默认模式。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
 
-在使用不同的分词器时，使用的创表语句会有所区别。
+在使用不同的分词器时，使用的建表语句会有所区别。
 
 **示例：**
 
@@ -102,7 +102,7 @@ import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
 // 此处示例在Stage模式、Ability中实现，使用者也可以在其他合理场景中使用
-class EntryAbility extends UIAbility {
+export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     let store: relationalStore.RdbStore | undefined = undefined;
     const STORE_CONFIG: relationalStore.StoreConfig = {
@@ -118,7 +118,7 @@ class EntryAbility extends UIAbility {
       console.error(`Get RdbStore failed, code is ${businessError.code},message is ${businessError.message}`);
     });
 
-    const SQL_CREATE_TABLE = "CREATE VIRTUAL TABLE example USING fts4(name, content, tokenize=icu zh_CN)";
+    const SQL_CREATE_TABLE = "CREATE VIRTUAL TABLE example USING fts4(name, content, tokenize='icu zh_CN')";
     if (store != undefined) {
       (store as relationalStore.RdbStore).executeSql(SQL_CREATE_TABLE, (err) => {
         if (err) {
@@ -140,7 +140,7 @@ import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
 // 此处示例在Stage模式、Ability中实现，使用者也可以在其他合理场景中使用
-class EntryAbility extends UIAbility {
+export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     let store: relationalStore.RdbStore | undefined = undefined;
     const STORE_CONFIG: relationalStore.StoreConfig = {
@@ -181,14 +181,14 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     console.info('custom tokenizer example: window stage create begin.');
     let store: relationalStore.RdbStore | undefined = undefined;
-    const storeConfig: relationalStore.StoreConfig = {
+    const SQL_CREATE_TABLE: relationalStore.StoreConfig = {
       name: "MyStore.db",
       securityLevel: relationalStore.SecurityLevel.S3
     };
     let customType = relationalStore.Tokenizer.CUSTOM_TOKENIZER;
     let customTypeSupported = relationalStore.isTokenizerSupported(customType);
     if (customTypeSupported) {
-      storeConfig.tokenizer = customType;
+      SQL_CREATE_TABLE.tokenizer = customType;
     } else {
       console.info('custom tokenizer example: not support custom tokenizer.');
       return;
@@ -201,10 +201,10 @@ export default class EntryAbility extends UIAbility {
       console.error(`Get RdbStore failed, code is ${businessError.code},message is ${businessError.message}`);
     });
 
-    const sqlCreateTable =
+    const SQL_CREATE_TABLE =
       "CREATE VIRTUAL TABLE example USING fts5(name, content, tokenize='customtokenizer cut_mode short_words')";
     if (store != undefined) {
-      (store as relationalStore.RdbStore).executeSql(sqlCreateTable, (err) => {
+      (store as relationalStore.RdbStore).executeSql(SQL_CREATE_TABLE, (err) => {
         if (err) {
           console.error(`custom tokenizer example: ExecuteSql failed, code is ${err.code},message is ${err.message}`);
           return;
@@ -390,7 +390,7 @@ export default class EntryAbility extends UIAbility {
 
 ## ProgressCode<sup>10+</sup>
 
-表示端云同步过程的状态。请使用枚举名称而非枚举值。
+表示端云同步过程的状态码。请使用枚举名称而非枚举值。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -471,7 +471,7 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-**模型约束：** 此接口仅在Stage模型下可用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称                | 值   | 说明                                    |
 | ------------------ | --- | ---------------------------------------- |

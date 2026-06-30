@@ -15,7 +15,7 @@
 分布式设备管理提供如下四大功能：
 
 - **发现**<br/>
-  发现周围终端设备并上报。周围设备需要连接同局域网或者同时打开蓝牙，可以根据设备类型、距离、设备是否可信等进行筛选。
+  发现周围终端设备并上报。周围设备需要连接同局域网或者同时打开蓝牙。
 
 - **绑定**<br/>
   不同设备协同合作完成分布式业务的前提是设备间可信，对于周边发现的不可信设备，可通过绑定使彼此建立可信关系，提供PIN码、碰、扫、靠等设备认证框架，支持对接各种认证交互接口。
@@ -200,38 +200,48 @@ ArkTS-Sta: startDiscovering(discoverParam: Record&lt;string, int | string&gt;, f
 
    ArkTS-Sta示例：
 
-   ```ts
-   type DiscoverySuccessResultData = distributedDeviceManager.DiscoverySuccessResult;
-   type DiscoveryFailureResultData = distributedDeviceManager.DiscoveryFailureResult;
-   type DeviceManagerParam = Record<string, int | string>;
-
+   <!-- @[start_discovering](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/DistributedAppDev/DistributedAuthentication-sta/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
+   
+   ``` TypeScript
    startDeviceDiscovery(): void {
-     if (typeof (this.deviceManager) == 'undefined') {
-       logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
+     if (this.deviceManager === undefined) {
+       logger.error('deviceManager has not initialized');
        return;
      }
-
-     let self = this;
+     this.discoverSuccessCallback = (data: distributedDeviceManager.DiscoverySuccessResult) => {
+       if (data === null) {
+         logger.info('onDiscoverSuccess data is null');
+         return;
+       }
+       logger.info('onDiscoverSuccess callback, device: ' + JSON.stringify(data.device));
+       this.deviceFound(data.device);
+     };
+   
+     this.discoverFailureCallback = (data: distributedDeviceManager.DiscoveryFailureResult) => {
+       logger.info('onDiscoverFailure callback, reason: ' + data.reason);
+     };
+   
+     this.serviceDieCallback = () => {
+       logger.error('serviceDie');
+     };
      try {
-       this.deviceManager.onDiscoverSuccess((data: DiscoverySuccessResultData) => {
-         logger.info('[DeviceManager.RemoteDeviceModel] deviceFound data=' + JSON.stringify(data));
-         self.deviceFound(data.device);
-       })
-       this.deviceManager.onDiscoverFailure((data: DiscoveryFailureResultData) => {
-         logger.info('[DeviceManager.RemoteDeviceModel] discoverFail data=' + JSON.stringify(data));
-       })
-       let discoverParam: DeviceManagerParam = {
+       logger.info('registering callbacks');
+       this.deviceManager!.onDiscoverSuccess(this.discoverSuccessCallback);
+       this.deviceManager!.onDiscoverFailure(this.discoverFailureCallback);
+       this.deviceManager!.onServiceDie(this.serviceDieCallback);
+       this.discoverList = [];
+       AppStorage.setOrCreate('discoverDeviceList', this.discoverList);
+       let discoverParam: Record<string, int | string> = {
          'discoverTargetType': 1
        };
-       let filterOptions: DeviceManagerParam = this.getFilterOptions();
+       let filterOptions: Record<string, int | string> = this.getFilterOptions();
        if (Object.entries(filterOptions).length == 0) {
-         this.deviceManager.startDiscovering(discoverParam);
+         this.deviceManager!.startDiscovering(discoverParam);
        } else {
-         this.deviceManager.startDiscovering(discoverParam, filterOptions);
+         this.deviceManager!.startDiscovering(discoverParam, filterOptions);
        }
-     } catch (err) {
-       let e: BusinessError = err as BusinessError;
-       logger.error('[DeviceManager.RemoteDeviceModel] startDeviceDiscovery failed err: ' + e.toString());
+     } catch (e) {
+       logger.error('startDeviceDiscovery failed err: ' + e.toString());
      }
    }
    ```
@@ -240,42 +250,56 @@ ArkTS-Sta: startDiscovering(discoverParam: Record&lt;string, int | string&gt;, f
 
    ArkTS-Dyn示例：
 
-   <!-- @[stop_discovering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
-
+   <!-- @[stop_discovering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) --> 
+   
    ``` TypeScript
    stopDeviceDiscovery(): void {
      if (typeof (this.deviceManager) == 'undefined') {
        logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
+       this.showErrMsg('deviceManager has not initialized');
        return;
      }
-
+     logger.info('[DeviceManager.RemoteDeviceModel] stopDeviceDiscovery');
      try {
        this.deviceManager.stopDiscovering();
        this.deviceManager.off('discoverSuccess');
        this.deviceManager.off('discoverFailure');
-     } catch (err) {
-       let error: BusinessError = err as BusinessError;
-       logger.error('[DeviceManager.RemoteDeviceModel] stopDeviceDiscovery failed err: ' + error.toString());
+     } catch (e) {
+       logger.error('[DeviceManager.RemoteDeviceModel] stopDeviceDiscovery failed err: ' + e.toString());
      }
    }
    ```
 
    ArkTS-Sta示例：
 
-   ```ts
+   <!-- @[stop_discovering](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/DistributedAppDev/DistributedAuthentication-sta/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
+   
+   ``` TypeScript
    stopDeviceDiscovery(): void {
-     if (typeof (this.deviceManager) == 'undefined') {
-       logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
+     if (this.deviceManager === undefined) {
+       logger.error('deviceManager has not initialized');
        return;
      }
-
+     logger.info('stopDeviceDiscovery');
+   
      try {
-       this.deviceManager.stopDiscovering();
-       this.deviceManager.offDiscoverSuccess();
-       this.deviceManager.offDiscoverFailure();
-     } catch (err) {
-       let error: BusinessError = err as BusinessError;
-       logger.error('[DeviceManager.RemoteDeviceModel] stopDeviceDiscovery failed err: ' + error.toString());
+       this.deviceManager!.stopDiscovering();
+       if (this.discoverSuccessCallback !== undefined) {
+         this.deviceManager!.offDiscoverSuccess(this.discoverSuccessCallback);
+         this.discoverSuccessCallback = () => {};
+       }
+   
+       if (this.discoverFailureCallback !== undefined) {
+         this.deviceManager!.offDiscoverFailure(this.discoverFailureCallback);
+         this.discoverFailureCallback = () => {};
+       }
+   
+       if (this.serviceDieCallback !== undefined) {
+         this.deviceManager!.offServiceDie(this.serviceDieCallback);
+         this.serviceDieCallback = () => {};
+       }
+     } catch (e) {
+       logger.error('stopDeviceDiscovery failed error: ' + e.toString());
      }
    }
    ```
@@ -344,39 +368,32 @@ ArkTS-Sta: bindTarget(deviceId: string, bindParam: Record&lt;string, int | strin
 
    ArkTS-Sta示例：
 
-   ```ts
-   type BindTargetResultData = distributedDeviceManager.BindTargetResult;
-   type DeviceManagerParam = Record<string, int | string>;
-
+   <!-- @[bind_target](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/DistributedAppDev/DistributedAuthentication-sta/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
+   
+   ``` TypeScript
    authenticateDevice(device: distributedDeviceManager.DeviceBasicInfo): void {
-     logger.info('[DeviceManager.RemoteDeviceModel] authenticateDevice ' + JSON.stringify(device));
-     if (typeof (this.deviceManager) == 'undefined') {
-       logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
+     if (this.deviceManager === undefined) {
+       logger.error('deviceManager has not initialized');
        return;
      }
-
      for (let i = 0; i < this.discoverList.length; i++) {
        if (this.discoverList[i].deviceId != device.deviceId) {
          continue;
        }
-
-       let bindParam: DeviceManagerParam = {
+       let bindParam: Record<string, int | string> = {
          'bindLevel': 3,
          'bindType': 1,
-         'targetPkgName': 'com.samples.devicemanager.sta',
+         'targetPkgName': 'com.samples.distributedauthenticationsta',
          'appName': 'DeviceManager-sta',
        };
        try {
-         this.deviceManager.bindTarget(device.deviceId, bindParam, (err: BusinessError, data: BindTargetResultData) => {
+         this.deviceManager!.bindTarget(device.deviceId, bindParam, (err: BusinessError | null, data: distributedDeviceManager.BindTargetResult | undefined) => {
            if (err) {
-             logger.error('[DeviceManager.RemoteDeviceModel] authenticateDevice error:' + JSON.stringify(err));
              return;
            }
-           logger.info('[DeviceManager.RemoteDeviceModel] authenticateDevice succeed:' + JSON.stringify(data));
-         })
-       } catch (err) {
-         let e: BusinessError = err as BusinessError;
-         logger.error('[DeviceManager.RemoteDeviceModel] authenticateDevice failed err: ' + e.toString());
+         });
+       } catch (e) {
+         logger.error('authenticateDevice failed err: ' + e.toString());
        }
      }
    }
@@ -384,18 +401,24 @@ ArkTS-Sta: bindTarget(deviceId: string, bindParam: Record&lt;string, int | strin
 
 4. 业务不再需要可信关系时，可调用[unbindTarget](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#unbindtarget)解除绑定关系。
 
+   <!-- @[unbind_target](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/DistributedAppDev/DistributedAuthentication-sta/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
+
    ```ts
    unAuthenticateDevice(device: distributedDeviceManager.DeviceBasicInfo): void {
-     if (typeof (this.deviceManager) == 'undefined') {
-       logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
+     if (this.deviceManager === undefined) {
+       logger.error('deviceManager has not initialized');
        return;
      }
 
-     try {
-       this.deviceManager.unbindTarget(device.deviceId);
-     } catch (err) {
-       let error: BusinessError = err as BusinessError;
-       logger.error('[DeviceManager.RemoteDeviceModel] unAuthenticateDevice failed err: ' + error.toString());
+     for (let i = 0; i < this.trustedDeviceList.length; i++) {
+       if (this.trustedDeviceList[i].deviceId != device.deviceId) {
+         continue;
+       }
+       try {
+         this.deviceManager!.unbindTarget(device.deviceId);
+       } catch (e) {
+         logger.error('unAuthenticateDevice failed err: ' + e.toString());
+       }
      }
    }
    ```
@@ -522,33 +545,38 @@ ArkTS-Sta: onDeviceStateChange(callback: Callback&lt;DeviceStateChangeResult&gt;
 
    ArkTS-Sta示例：
 
-   ```ts
-   type DeviceStateChangeResultData = distributedDeviceManager.DeviceStateChangeResult;
-
+   <!-- @[device_state_change](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/DistributedAppDev/DistributedAuthentication-sta/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
+   
+   ``` TypeScript
    registerDeviceStateListener(): void {
-     logger.info('[DeviceManager.RemoteDeviceModel] registerDeviceStateListener');
-     if (typeof (this.deviceManager) == 'undefined') {
-       logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
+     logger.info('registerDeviceStateListener');
+     if (this.deviceManager === undefined) {
+       logger.error('deviceManager has not initialized');
        return;
      }
-
+   
+     let self = this;
      try {
-       this.deviceManager.onDeviceStateChange((data: DeviceStateChangeResultData) => {
-         logger.info('[DeviceManager.RemoteDeviceModel] deviceStateChange data=' + JSON.stringify(data));
+       this.deviceManager!.onDeviceStateChange((data: distributedDeviceManager.DeviceStateChangeResult): void => {
+         if (data == null) {
+           return;
+         }
+         logger.info('deviceStateChange data received');
          switch (data.action) {
            case distributedDeviceManager.DeviceStateChange.AVAILABLE:
-             logger.info('[DeviceManager.RemoteDeviceModel] deviceStateChange ONLINE');
+             logger.info('deviceStateChange ONLINE');
+             // ...
              break;
            case distributedDeviceManager.DeviceStateChange.UNAVAILABLE:
-             logger.info('[DeviceManager.RemoteDeviceModel] deviceStateChange OFFLINE');
+             logger.info('deviceStateChange OFFLINE');
+             // ...
              break;
            default:
              break;
          }
-       })
-     } catch(err) {
-       let e: BusinessError = err as BusinessError;
-       logger.error('[DeviceManager.RemoteDeviceModel] deviceStateChange failed err: ' + e.toString());
+       });
+     } catch(e) {
+       logger.error('deviceStateChange failed err: ' + e.toString());
      }
    }
    ```
@@ -571,14 +599,22 @@ ArkTS-Sta: onDeviceStateChange(callback: Callback&lt;DeviceStateChangeResult&gt;
 
    ArkTS-Sta示例：
 
-   ```ts
+   <!-- @[release_device_manager](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/DistributedAppDev/DistributedAuthentication-sta/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
+   
+   ``` TypeScript
    releaseDeviceManager(): void {
-     if (typeof (this.deviceManager) == 'undefined') {
+     if (this.deviceManager === undefined) {
        return;
      }
-
-     this.deviceManager.offDeviceStateChange();
-     distributedDeviceManager.releaseDeviceManager(this.deviceManager);
+   
+     this.deviceManager!.offDeviceStateChange();
+     this.discoverSuccessCallback = () => {};
+     this.discoverFailureCallback = () => {};
+     this.serviceDieCallback = () => {};
+     let dm = this.deviceManager;
+     if (dm !== undefined) {
+       distributedDeviceManager.releaseDeviceManager(dm);
+     }
      this.deviceManager = undefined;
    }
    ```

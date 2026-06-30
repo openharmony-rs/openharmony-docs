@@ -36,6 +36,8 @@ on(type: 'prepareContinue', context: Context, callback: AsyncCallback&lt;Continu
 
 **ArkTS-Dyn起始版本：** 18
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备中调用会返回16300501错误码。
+
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -106,6 +108,8 @@ onPrepareContinue(context: Context, callback: AsyncCallback&lt;ContinueResultInf
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
 **ArkTS-Sta起始版本：** 23
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备中调用会返回16300501错误码。
 
 **参数**：
 
@@ -178,6 +182,8 @@ off(type: 'prepareContinue', context: Context, callback?: AsyncCallback&lt;Conti
 
 **ArkTS-Dyn起始版本：** 18
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
+
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -249,6 +255,8 @@ offPrepareContinue(context: Context, callback?: AsyncCallback\<ContinueResultInf
 
 **ArkTS-Sta起始版本：** 23
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
+
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -314,6 +322,8 @@ export default class MigrationAbility extends UIAbility {
 
 **ArkTS-Sta起始版本：** 23
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
+
 | 名称 | 类型                                                                            | 只读 | 可选 | 说明       |
 | -------- |-------------------------------------------------------------------------------|----|----|----------|
 | resultState | [ContinueStateCode](js-apis-app-ability-continueManager.md#continuestatecode) | 否  | 否  | 操作结果状态码。 |
@@ -328,6 +338,8 @@ export default class MigrationAbility extends UIAbility {
 **ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 23
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
 
 | 名称 | 值  | 说明    |
 | -------- |----|-------|

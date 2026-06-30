@@ -143,7 +143,7 @@ try {
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- | ------- |
 | type | string | 是   | 填写'formAdd'，表示卡片新增事件。 |
-| hostBundleName | string | 是 | 指定订阅卡片使用方包的bundleName。缺省则订阅所有卡片使用方的卡片新增事件。 |
+| hostBundleName | string | 是 | 指定订阅卡片使用方包的bundleName。 |
 | observerCallback | Callback&lt;formInfo.[RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt; | 是 | 回调函数。返回指定卡片使用方应用新增卡片的信息。 |
 
 **错误码：**
@@ -189,7 +189,7 @@ onFormAdd(hostBundleName: string, observerCallback: Callback\<formInfo.RunningFo
 
 | 参数名           | 类型                                                         | 必填 | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| hostBundleName   | string                                                       | 是   | 指定订阅卡片使用方包的bundleName。缺省则订阅所有卡片使用方的卡片新增事件。 |
+| hostBundleName   | string                                                       | 是   | 指定订阅卡片使用方包的bundleName。 |
 | observerCallback | Callback&lt;formInfo.[RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt; | 是   | 回调函数。返回指定卡片使用方应用新增卡片的信息。             |
 
 **错误码：**
@@ -234,7 +234,7 @@ try {
 
 off(type: 'formAdd', hostBundleName?: string, observerCallback?: Callback<formInfo.RunningFormInfo>): void;
 
-取消订阅卡片新增事件。使用callback异步回调，返回当前新增卡片的信息。
+取消订阅卡片新增事件。使用callback异步回调。
 
 **需要权限：** ohos.permission.OBSERVE_FORM_RUNNING
 
@@ -249,7 +249,7 @@ off(type: 'formAdd', hostBundleName?: string, observerCallback?: Callback<formIn
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- | ------- |
 | type | string | 是   | 填写'formAdd'，表示卡片新增事件。 |
-| hostBundleName | string | 否 | 指定订阅卡片使用方包的bundleName。<br> 填写该参数时，与注册时填写bundleName的on接口对应。<br> 缺省则订阅所有卡片使用方的卡片删除事件，与注册时未填写bundleName的on接口相对应。 |
+| hostBundleName | string | 否 | 指定订阅卡片使用方包的bundleName。<br> 填写该参数时，与注册时填写bundleName的on接口对应。<br> 缺省则取消订阅所有卡片使用方的卡片删除事件，与注册时未填写bundleName的on接口相对应。 |
 | observerCallback | Callback&lt;formInfo.[RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt; | 否 | 回调函数。返回当前新增卡片信息。缺省时，表示注销对应已注册事件回调。<br> 需与对应on('formAdd')的callback一致。|
 
 **错误码：**
@@ -307,7 +307,7 @@ offFormAdd(hostBundleName?: string, observerCallback?: Callback\<formInfo.Runnin
 
 | 参数名           | 类型                                                         | 必填 | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| hostBundleName   | string                                                       | 否   | 指定订阅卡片使用方包的bundleName。<br> 填写该参数时，与注册时填写bundleName的on接口对应。<br> 缺省则订阅所有卡片使用方的卡片删除事件，与注册时未填写bundleName的on接口相对应。 |
+| hostBundleName   | string                                                       | 否   | 指定订阅卡片使用方包的bundleName。<br> 填写该参数时，与注册时填写bundleName的on接口对应。<br> 缺省则取消订阅所有卡片使用方的卡片删除事件，与注册时未填写bundleName的on接口相对应。 |
 | observerCallback | Callback&lt;formInfo.[RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt; | 否   | 回调函数。返回当前新增卡片信息。缺省时，表示注销对应已注册事件回调。<br> 需与对应onFormAdd的callback一致。 |
 
 **错误码：**
@@ -469,7 +469,7 @@ try {
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- | ------- |
 | type | string | 是   | 填写'formRemove'，表示卡片删除事件。 |
-| hostBundleName | string | 是 | 指定订阅卡片使用方包的bundleName。缺省则订阅所有卡片使用方的卡片删除事件。 |
+| hostBundleName | string | 是 | 指定订阅卡片使用方包的bundleName。|
 | observerCallback | Callback&lt;formInfo.[RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt; | 是 | 回调函数。返回指定卡片使用方应用被删除卡片的信息。 |
 
 **错误码：**
@@ -515,7 +515,7 @@ onFormRemove(hostBundleName: string, observerCallback: Callback\<formInfo.Runnin
 
 | 参数名           | 类型                                                         | 必填 | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| hostBundleName   | string                                                       | 是   | 指定订阅卡片使用方包的bundleName。缺省则订阅所有卡片使用方的卡片删除事件。 |
+| hostBundleName   | string                                                       | 是   | 指定订阅卡片使用方包的bundleName。 |
 | observerCallback | Callback&lt;formInfo.[RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt; | 是   | 回调函数。返回指定卡片使用方应用被删除卡片的信息。           |
 
 **错误码：**
@@ -575,7 +575,7 @@ off(type: 'formRemove', hostBundleName?: string, observerCallback?: Callback&lt;
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- | ------- |
 | type | string | 是   | 填写'formRemove'，表示卡片删除事件。 |
-| hostBundleName | string | 否 | 指定订阅卡片使用方包的bundleName。<br> 填写该参数时，与注册时填写bundleName的on接口对应。<br> 缺省则订阅所有卡片使用方的卡片删除事件，与注册时未填写bundleName的on接口相对应。 |
+| hostBundleName | string | 否 | 指定订阅卡片使用方包的bundleName。<br> 填写该参数时，与注册时填写bundleName的on接口对应。<br> 缺省则取消订阅所有卡片使用方的卡片删除事件，与注册时未填写bundleName的on接口相对应。 |
 | observerCallback | Callback&lt;formInfo.[RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt; | 否 | 回调函数。返回当前删除卡片的信息。缺省时，表示注销对应已注册事件回调。<br> 需与对应on('formRemove')的callback一致。|
 
 **错误码：**
@@ -632,7 +632,7 @@ offFormRemove(hostBundleName?: string, observerCallback?: Callback\<formInfo.Run
 
 | 参数名           | 类型                                                         | 必填 | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| hostBundleName   | string                                                       | 否   | 指定订阅卡片使用方包的bundleName。<br> 填写该参数时，与注册时填写bundleName的on接口对应。<br> 缺省则订阅所有卡片使用方的卡片删除事件，与注册时未填写bundleName的on接口相对应。 |
+| hostBundleName   | string                                                       | 否   | 指定订阅卡片使用方包的bundleName。<br> 填写该参数时，与注册时填写bundleName的on接口对应。<br> 缺省则取消订阅所有卡片使用方的卡片删除事件，与注册时未填写bundleName的on接口相对应。 |
 | observerCallback | Callback&lt;formInfo.[RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt; | 否   | 回调函数。返回当前删除卡片的信息。缺省时，表示注销对应已注册事件回调。<br> 需与对应onFormRemove的callback一致。 |
 
 **错误码：**
@@ -712,8 +712,8 @@ try {
 import { formInfo, formObserver } from '@kit.FormKit';
 
 let callback = (data: formInfo.RunningFormInfo[]) => {
-  data.forEach(data => {
-    console.info(`form change visibility, formId: ${data.formId}`);
+  data.forEach(item => {
+    console.info(`form change visibility, formId: ${item.formId}`);
   });
 }
 
@@ -822,8 +822,8 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo[]) => {
-  data.forEach(data => {
-    console.info(`form change visibility, formId: ${data.formId}`);
+  data.forEach(item => {
+    console.info(`form change visibility, formId: ${item.formId}`);
   });
 }
 
@@ -913,7 +913,7 @@ try {
 | 参数名     | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type       | string                                                       | 是   | 仅允许填写'notifyVisible'，表示取消订阅通知卡片为可见的事件。 |
-| hostBundleName | string                                                       | 否   | 指定卡片使用方的bundleName，用于订阅卡片在该使用方的可见状态变更事件。<br> 填写该参数时，与注册时填写bundleName的on接口对应。 |
+| hostBundleName | string                                                       | 否   | 指定卡片使用方的bundleName，用于取消订阅卡片在该使用方的可见状态变更事件。<br> 填写该参数时，与注册时填写bundleName的on接口对应。 |
 | observerCallback   | Callback &lt;Array&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt;&gt; | 否   | 回调函数。返回取消订阅该事件的卡片信息列表。缺省时，表示注销对应已注册订阅的回调。<br> 需与对应on('notifyVisible')的callback一致。 |
 
 **错误码：**
@@ -933,8 +933,8 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo[]) => {
-  data.forEach(data => {
-    console.info(`form change visibility, formId: ${data.formId}`);
+  data.forEach(item => {
+    console.info(`form change visibility, formId: ${item.formId}`);
   });
 }
 
@@ -971,7 +971,7 @@ offNotifyVisible(hostBundleName?: string, observerCallback?: Callback\<Array\<fo
 
 | 参数名           | 类型                                                         | 必填 | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| hostBundleName   | string                                                       | 否   | 指定卡片使用方的bundleName，用于订阅卡片在该使用方的可见状态变更事件。<br> 填写该参数时，与注册时填写bundleName的on接口对应。 |
+| hostBundleName   | string                                                       | 否   | 指定卡片使用方的bundleName，用于取消订阅卡片在该使用方的可见状态变更事件。<br> 填写该参数时，与注册时填写bundleName的on接口对应。 |
 | observerCallback | Callback &lt;Array&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt;&gt; | 否   | 回调函数。返回取消订阅该事件的卡片信息列表。缺省时，表示注销对应已注册订阅的回调。<br> 需与对应onNotifyVisible的callback一致。 |
 
 **错误码：**
@@ -1050,8 +1050,8 @@ try {
 import { formInfo, formObserver } from '@kit.FormKit';
 
 let callback = (data: formInfo.RunningFormInfo[]) => {
-  data.forEach(data => {
-    console.info(`form change invisibility, formId: ${data.formId}`);
+  data.forEach(item => {
+    console.info(`form change invisibility, formId: ${item.formId}`);
   });
 }
 
@@ -1142,7 +1142,7 @@ try {
 | 参数名     | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type       | string                                                       | 是   | 仅允许填写'notifyInvisible'，表示订阅卡片不可见的事件。      |
-| hostBundleName | string                                                       | 是   | 指定卡片使用方的bundleName，用于订阅卡片在该使用方的可见状态变更事件。 |
+| hostBundleName | string                                                       | 是   | 指定卡片使用方的bundleName，用于订阅卡片在该使用方的不可见状态变更事件。 |
 | observerCallback   | Callback &lt;Array&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt;&gt; | 是   | 回调函数。返回订阅通知卡片不可见的卡片信息列表。          |
 
 **错误码：**
@@ -1162,8 +1162,8 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo[]) => {
-  data.forEach(data => {
-    console.info(`form change invisibility, formId: ${data.formId}`);
+  data.forEach(item => {
+    console.info(`form change invisibility, formId: ${item.formId}`);
   });
 }
 
@@ -1192,7 +1192,7 @@ onNotifyInvisible(hostBundleName: string, observerCallback: Callback\<Array\<for
 
 | 参数名           | 类型                                                         | 必填 | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| hostBundleName   | string                                                       | 是   | 指定卡片使用方的bundleName，用于订阅卡片在该使用方的可见状态变更事件。 |
+| hostBundleName   | string                                                       | 是   | 指定卡片使用方的bundleName，用于订阅卡片在该使用方的不可见状态变更事件。 |
 | observerCallback | Callback &lt;Array&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt;&gt; | 是   | 回调函数。返回订阅通知卡片不可见的卡片信息列表。             |
 
 **错误码：**
@@ -1252,7 +1252,7 @@ try {
 | 参数名     | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type       | string                                                       | 是   | 仅允许填写'notifyInvisible'，表示卡片可见性变更为不可见。    |
-| hostBundleName | string                                                       | 否   | 指定卡片使用方的bundleName，用于订阅卡片在该使用方的可见状态变更事件。<br> 填写该参数时，与注册时填写bundleName的on接口对应。<br>  |
+| hostBundleName | string                                                       | 否   | 指定卡片使用方的bundleName，用于取消订阅卡片在该使用方的不可见状态变更事件。<br> 填写该参数时，与注册时填写bundleName的on接口对应。<br>  |
 | observerCallback   | Callback &lt;Array&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt;&gt; | 否   | 回调函数。返回取消订阅通知卡片不可见的卡片信息列表。缺省时，表示注销对应已注册事件回调。<br/> 需与对应on('notifyInvisible')的callback一致。 |
 
 **错误码：**
@@ -1272,8 +1272,8 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo[]) => {
-  data.forEach(data => {
-    console.info(`form change invisibility, formId: ${data.formId}`);
+  data.forEach(item => {
+    console.info(`form change invisibility, formId: ${item.formId}`);
   });
 }
 
@@ -1313,7 +1313,7 @@ offNotifyInvisible(hostBundleName?: string, observerCallback?: Callback\<Array\<
 
 | 参数名           | 类型                                                         | 必填 | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| hostBundleName   | string                                                       | 否   | 指定卡片使用方的bundleName，用于订阅卡片在该使用方的可见状态变更事件。<br> 填写该参数时，与注册时填写bundleName的on接口对应。|
+| hostBundleName   | string                                                       | 否   | 指定卡片使用方的bundleName，用于取消订阅卡片在该使用方的不可见状态变更事件。<br> 填写该参数时，与注册时填写bundleName的on接口对应。|
 | observerCallback | Callback &lt;Array&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt;&gt; | 否   | 回调函数。返回取消订阅通知卡片不可见的卡片信息列表。缺省时，表示注销对应已注册事件回调。<br/> 需与对应onNotifyInvisible的callback一致。 |
 
 **错误码：**
@@ -1400,8 +1400,8 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      data.forEach(data => {
-        console.info(`formObserver getRunningFormInfos, formId: ${data.formId}`);
+      data.forEach(item => {
+        console.info(`formObserver getRunningFormInfos, formId: ${item.formId}`);
       });
     }
   }, 'com.example.ohos.formjsdemo');
@@ -1484,8 +1484,8 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      data.forEach(data => {
-        console.info(`formObserver getRunningFormInfos, formId: ${data.formId}`);
+      data.forEach(item => {
+        console.info(`formObserver getRunningFormInfos, formId: ${item.formId}`);
       });
     }
   }, true, 'com.example.ohos.formjsdemo');
@@ -1572,7 +1572,7 @@ try {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
@@ -1733,8 +1733,8 @@ let formInstanceFilter: formInfo.FormProviderFilter = {
 }
 try {
   formObserver.getRunningFormInfosByFilter(formInstanceFilter).then((data: formInfo.RunningFormInfo[]) => {
-    data.forEach(data => {
-      console.info(`formObserver getRunningFormInfosByFilter success, formId: ${data.formId}`);
+    data.forEach(item => {
+      console.info(`formObserver getRunningFormInfosByFilter success, formId: ${item.formId}`);
     });
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
@@ -1830,8 +1830,8 @@ try {
       if (error) {
         console.error(`error, code: ${error.code}, message: ${error.message}`);
       } else {
-        data.forEach(data => {
-          console.info(`formObserver getRunningFormInfosByFilter success, formId: ${data.formId}`);
+        data.forEach(item => {
+          console.info(`formObserver getRunningFormInfosByFilter success, formId: ${item.formId}`);
         });
       }
     });
@@ -2043,7 +2043,7 @@ try {
 
 getRunningFormInfoById(formId: string, callback: AsyncCallback&lt;formInfo.RunningFormInfo&gt;): void
 
-根据提供方信息查询已添加的卡片信息。使用callback异步回调。
+根据formId查询已添加的卡片信息。使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2334,7 +2334,7 @@ try {
 | 参数名           | 类型                                     | 必填 | 说明                                                         |
 | ---------------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
 | type             | string                                   | 是   | 填写'router'，表示订阅卡片的router事件。                             |
-| hostBundleName   | string                                   | 是   | 指定卡片使用方的bundleName。缺省则订阅所有卡片使用方的卡片的router事件。 |
+| hostBundleName   | string                                   | 是   | 指定卡片使用方的bundleName。 |
 | observerCallback | Callback&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt; | 是   | 回调函数。返回触发router事件的卡片信息。                    |
 
 **错误码：**
@@ -2378,7 +2378,7 @@ onRouter(hostBundleName: string, observerCallback: Callback\<formInfo.RunningFor
 
 | 参数名           | 类型                                                         | 必填 | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| hostBundleName   | string                                                       | 是   | 指定卡片使用方的bundleName。缺省则订阅所有卡片使用方的卡片的router事件。 |
+| hostBundleName   | string                                                       | 是   | 指定卡片使用方的bundleName。 |
 | observerCallback | Callback&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt; | 是   | 回调函数。返回触发router事件的卡片信息。                     |
 
 **错误码：**
@@ -2438,7 +2438,7 @@ try {
 | 参数名           | 类型                                     | 必填 | 说明                                                         |
 | ---------------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
 | type             | string                                   | 是   | 填写'router'，表示取消订阅卡片的router事件。                             |
-| hostBundleName   | string                                   | 否   | 指定订阅卡片使用方包的bundleName。<br>填写该参数时，与注册时填写bundleName的on接口对应。<br>缺省则订阅所有卡片使用方点击router类型卡片的事件，与注册时未填写bundleName的on接口相对应。 |
+| hostBundleName   | string                                   | 否   | 指定订阅卡片使用方包的bundleName。<br>填写该参数时，与注册时填写bundleName的on接口对应。<br>缺省则取消订阅所有卡片使用方点击router类型卡片的事件，与注册时未填写bundleName的on接口相对应。 |
 | observerCallback | Callback&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt; | 否   | 回调函数。返回触发router事件的卡片信息。缺省时，表示注销对应bundleName下已注册事件回调。<br>需与对应on('router')的callback一致。 |
 
 **错误码：**
@@ -2488,7 +2488,7 @@ offRouter(hostBundleName?: string, observerCallback?: Callback\<formInfo.Running
 
 | 参数名           | 类型                                                         | 必填 | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| hostBundleName   | string                                                       | 否   | 指定订阅卡片使用方包的bundleName。<br>填写该参数时，与注册时填写bundleName的on接口对应。<br>缺省则订阅所有卡片使用方点击router类型卡片的事件，与注册时未填写bundleName的on接口相对应。 |
+| hostBundleName   | string                                                       | 否   | 指定订阅卡片使用方包的bundleName。<br>填写该参数时，与注册时填写bundleName的on接口对应。<br>缺省则取消订阅所有卡片使用方点击router类型卡片的事件，与注册时未填写bundleName的on接口相对应。 |
 | observerCallback | Callback&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt; | 否   | 回调函数。返回触发router事件的卡片信息。缺省时，表示注销对应bundleName下已注册事件回调。<br>需与对应onRouter的callback一致。 |
 
 **错误码：**
@@ -2651,7 +2651,7 @@ try {
 | 参数名           | 类型                                     | 必填 | 说明                                                         |
 | ---------------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
 | type             | string                                   | 是   | 填写'message'，表示订阅卡片的message事件。                            |
-| hostBundleName   | string                                   | 是   | 指定卡片使用方的bundleName。缺省则订阅所有卡片使用方的卡片的message事件。 |
+| hostBundleName   | string                                   | 是   | 指定卡片使用方的bundleName |
 | observerCallback | Callback&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt; | 是   | 回调函数。返回触发message事件的卡片的信息。                    |
 
 **错误码：**
@@ -2695,7 +2695,7 @@ onMessage(hostBundleName: string, observerCallback: Callback\<formInfo.RunningFo
 
 | 参数名           | 类型                                                         | 必填 | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| hostBundleName   | string                                                       | 是   | 指定卡片使用方的bundleName。缺省则订阅所有卡片使用方的卡片的message事件。 |
+| hostBundleName   | string                                                       | 是   | 指定卡片使用方的bundleName。 |
 | observerCallback | Callback&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt; | 是   | 回调函数。返回触发message事件的卡片的信息。                  |
 
 **错误码：**
@@ -2964,7 +2964,7 @@ try {
 | 参数名           | 类型                                     | 必填 | 说明                                                         |
 | ---------------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
 | type             | string                                   | 是   | 填写'call'，表示订阅卡片的call事件。                               |
-| hostBundleName   | string                                   | 是   | 指定卡片使用方的bundleName。缺省则订阅所有卡片使用方的卡片的call事件。 |
+| hostBundleName   | string                                   | 是   | 指定卡片使用方的bundleName |
 | observerCallback | Callback&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt; | 是   | 回调函数。返回触发call事件的卡片信息。                    |
 
 **错误码：**
@@ -3008,7 +3008,7 @@ onCall(hostBundleName: string, observerCallback: Callback\<formInfo.RunningFormI
 
 | 参数名           | 类型                                                         | 必填 | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| hostBundleName   | string                                                       | 是   | 指定卡片使用方的bundleName。缺省则订阅所有卡片使用方的卡片的call事件。 |
+| hostBundleName   | string                                                       | 是   | 指定卡片使用方的bundleName。 |
 | observerCallback | Callback&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt; | 是   | 回调函数。返回触发call事件的卡片信息。                       |
 
 **错误码：**

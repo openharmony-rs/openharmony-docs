@@ -40,8 +40,6 @@ Popup(options: PopupOptions): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 11
@@ -59,8 +57,6 @@ Popup(options: PopupOptions): void
 PopupOptions定义Popup的具体样式参数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -84,14 +80,12 @@ PopupOptions定义Popup的具体样式参数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称       | 类型                                                         | 只读 | 可选 | 说明         |
 | ---------- | ------------------------------------------------------------ | ---- | ---- | ------------------ |
 | text       | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 否   | 设置文本内容。     <br /> **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 11 |
-| fontSize   | number \| string \| [Resource](ts-types.md#resource)         | 否   | 是   | 设置文本字体大小。<br />默认值：`$r('sys.float.ohos_id_text_size_body2')` <br/>string类型可选值：可以转化为数字的字符串（如'10'）或带长度单位的字符串（如'10px'），不支持设置百分比字符串。<br/>number：取值范围(0,+∞)。 <br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23|
+| fontSize   | number \| string \| [Resource](ts-types.md#resource)         | 否   | 是   | 设置文本字体大小。<br />默认值：`$r('sys.float.ohos_id_text_size_body2')` <br/>string类型可选值：可以转化为数字的字符串（如'10'）或带长度单位的字符串（如'10px'），不支持设置百分比字符串。<br/>number：取值范围(0,+∞)。为number类型时单位：fp。<br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23|
 | fontColor  | [ResourceColor](ts-types.md#resourcecolor)                   | 否   | 是   | 设置文本字体颜色。<br />默认值：`$r('sys.color.ohos_id_color_text_secondary')` <br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23|
 | fontWeight | number \| [FontWeight](ts-appendix-enums.md#fontweight) \| string | 否   | 是   | 设置文本字体粗细。<br/>number类型取值[100,900]，取值间隔为100，默认为400，取值越大，字体越粗。<br/>string类型仅支持number类型取值的字符串形式，例如“400”，以及“bold”、“bolder”、“lighter”、“regular” 、“medium”分别对应FontWeight中相应的枚举值。<br />默认值：FontWeight.Regular <br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23|
 | text<sup>23+</sup>       | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 是   | 设置文本内容。     <br /> **ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/> **ArkTS-Sta起始版本：** 23|
@@ -104,8 +98,6 @@ PopupButtonOptions定义按钮的相关属性和事件。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
-
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -113,7 +105,7 @@ PopupButtonOptions定义按钮的相关属性和事件。
 | --------- | ---------------------------------------------------- | ---- | ---- | ---------------------- |
 | text      | [ResourceStr](ts-types.md#resourcestr)               | 否   | 否   | 设置按钮内容。         <br /> **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 11|
 | action    | ArkTS-Dyn: () => void <br />  ArkTS-Sta: [Callback](ts-types.md#voidcallback12)                                             | 否   | 是   | 设置按钮click回调。 <br/> 默认不执行任何操作。 <br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23|
-| fontSize  | number \| string \| [Resource](ts-types.md#resource) | 否   | 是   | 设置按钮文本字体大小。 <br />默认值：`$r('sys.float.ohos_id_text_size_button2')`<br/>string类型可选值：可以转化为数字的字符串（如'10'）或带长度单位的字符串（如'10px'），不支持设置百分比字符串。<br/>设置值为异常值时取默认值。 <br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23|
+| fontSize  | number \| string \| [Resource](ts-types.md#resource) | 否   | 是   | 设置按钮文本字体大小。 <br />默认值：`$r('sys.float.ohos_id_text_size_button2')`<br/>string类型可选值：可以转化为数字的字符串（如'10'）或带长度单位的字符串（如'10px'），不支持设置百分比字符串。<br/>为number类型时单位：fp。<br/>设置值为异常值时取默认值。 <br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23|
 | fontColor | [ResourceColor](ts-types.md#resourcecolor)           | 否   | 是   | 设置按钮文本字体颜色。<br />默认值：`$r('sys.color.ohos_id_color_text_primary_activated')` <br/>**ArkTS-Dyn起始版本：** 11 <br/> **ArkTS-Sta起始版本：** 23|
 | text<sup>23+</sup>      | [ResourceStr](ts-types.md#resourcestr)               | 否   | 是   | 设置按钮内容。        <br /> **ArkTS模式：** 该接口仅适用于ArkTS-Sta。 <br/> **ArkTS-Sta起始版本：** 23|
 
@@ -124,8 +116,6 @@ PopupIconOptions定义图标的属性。
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

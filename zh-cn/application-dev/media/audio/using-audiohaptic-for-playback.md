@@ -1,4 +1,4 @@
-# 使用AudioHaptic开发音振协同播放功能(ArkTs)
+# 使用AudioHaptic开发音振协同播放功能(ArkTS)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
@@ -21,7 +21,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
 ### 开发步骤及注意事项
 
-以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS)。
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRendererSampleJS)。
 
 1. 获取音振管理器实例，并注册音频及振动资源，资源支持情况可以查看[AudioHapticManager](../../reference/apis-audio-kit/js-apis-audioHaptic.md#audiohapticmanager)。
 
@@ -31,7 +31,10 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
    > - 方式1：使用[registerSource](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersource)接口，通过文件URI来注册资源。
    > - 方式2（推荐）：从API version 20开始，支持使用[registerSourceFromFd](../../reference/apis-audio-kit/js-apis-audioHaptic.md#registersourcefromfd20)接口，通过文件描述符来注册资源，更便于开发者使用。
 
-   <!-- @[get_haptic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
+
+   ArkTS-Dyn示例：
+
+   <!-- @[get_haptic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->    
    
    ``` TypeScript
    import { audio, audioHaptic } from '@kit.AudioKit';
@@ -40,9 +43,6 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
    
    let audioHapticManagerInstance: audioHaptic.AudioHapticManager = audioHaptic.getAudioHapticManager();
    
-   // 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。	
-   // 推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
-
    // ...
      // 方法1：使用registerSource接口注册资源。
      let audioUri = 'data/audioTest.wav'; // 此处仅作示例，实际使用时需要将文件替换为应用目标音频资源的Uri。
@@ -50,11 +50,11 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
      let idForUri = 0;
    
      audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: number) => {
-       console.info(`Promise returned to indicate that the source id of the registered source ${value}.`);
+       console.info(`Succeeded in registering source, sourceId is ${value}.`);
        idForUri = value;
        // ...
      }).catch((err: BusinessError) => {
-       console.error(`Failed to register source ${err}`);
+       console.error(`Failed to register source. Code: ${err.code}, message: ${err.message}`);
        // ...
      });
      // ...
@@ -74,16 +74,85 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
        length: hapticFile.length,
      };
      audioHapticManagerInstance.registerSourceFromFd(audioFd, hapticFd).then((value: number) => {
-       console.info('Succeeded in doing registerSourceFromFd.');
+       console.info(`Succeeded in registering source from fd, sourceId is ${value}.`);
        idForFd = value;
        // ...
      }).catch((err: BusinessError) => {
-       console.error(`Failed to registerSourceFromFd. Code: ${err.code}, message: ${err.message}`);
+       console.error(`Failed to register source from fd. Code: ${err.code}, message: ${err.message}`);
+       // ...
+     });
+   ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[get_haptic](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRendererAndHapticSampleJS-Sta/entry/src/main/ets/pages/haptic.ets) -->  
+   
+   ``` TypeScript
+   import { audio, audioHaptic } from '@kit.AudioKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { common } from '@kit.AbilityKit';
+   
+   import { State } from '@ohos.arkui.stateManagement';
+   import {
+     Color,
+     ClickEvent,
+     Column,
+     Component,
+     Entry,
+     FlexAlign,
+     HorizontalAlign,
+     Row,
+     Scroll,
+     Text,
+     FontWeight
+   } from '@ohos.arkui.component';
+   
+   let audioHapticManagerInstance: audioHaptic.AudioHapticManager = audioHaptic.getAudioHapticManager();
+   
+   // ...
+     // 方法1：使用registerSource接口注册资源。
+     let audioUri = 'data/audioTest.wav'; // 此处仅作示例，实际使用时需要将文件替换为应用目标音频资源的Uri。
+     let hapticUri = 'data/hapticTest.json'; // 此处仅作示例，实际使用时需要将文件替换为应用目标振动资源的Uri。
+     let idForUri = 0;
+   
+     audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: Int) => {
+       console.info(`Succeeded in registering source, sourceId is ${value}.`);
+       idForUri = value;
+       // ...
+     }).catch((err: Error) => {
+       console.error(`Failed to register source. Code: ${err.code}, message: ${err.message}`);
+       // ...
+     });
+     // ...
+     // 方法2:使用registerSourceFromFd接口注册资源。
+     // 此处仅作示例,实际使用时需要将文件替换为应用rawfile目录下的对应文件。
+     let audioFile = context.resourceManager.getRawFdSync('audioTest.ogg');
+     let audioFd: audioHaptic.AudioHapticFileDescriptor = {
+       fd: audioFile.fd,
+       offset: audioFile.offset,
+       length: audioFile.length,
+     };
+     // 此处仅作示例,实际使用时需要将文件替换为应用rawfile目录下的对应文件。
+     let hapticFile = context.resourceManager.getRawFdSync('hapticTest.json');
+     let hapticFd: audioHaptic.AudioHapticFileDescriptor = {
+       fd: hapticFile.fd,
+       offset: hapticFile.offset,
+       length: hapticFile.length,
+     };
+     audioHapticManagerInstance.registerSourceFromFd(audioFd, hapticFd).then((value: Int) => {
+       console.info(`Succeeded in registering source from fd, sourceId is ${value}.`);
+       idForFd = value;
+       // ...
+     }).catch((err: Error) => {
+       console.error(`Failed to register source from fd. Code: ${err.code}, message: ${err.message}`);
        // ...
      });
    ```
 
 2. 设置音振播放器参数，各参数作用可以查看[AudioHapticManager](../../reference/apis-audio-kit/js-apis-audioHaptic.md#audiohapticmanager)。
+
+
+   ArkTS-Dyn示例：
 
    <!-- @[set_hapticparam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
 
@@ -95,7 +164,21 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
    audioHapticManagerInstance.setStreamUsage(idForFd, usage);
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[set_hapticparam](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRendererAndHapticSampleJS-Sta/entry/src/main/ets/pages/haptic.ets) -->
+   
+   ``` TypeScript
+   let latencyMode: audioHaptic.AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_NORMAL;
+   audioHapticManagerInstance.setAudioLatencyMode(idForFd, latencyMode);
+   
+   let usage: audio.StreamUsage = audio.StreamUsage.STREAM_USAGE_NOTIFICATION;
+   audioHapticManagerInstance.setStreamUsage(idForFd, usage);
+   ```
+
 3. 调用[createPlayer](../../reference/apis-audio-kit/js-apis-audioHaptic.md#createplayer)方法，创建AudioHapticPlayer实例。
+
+   ArkTS-Dyn示例：
 
    <!-- @[create_haptic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
    
@@ -113,7 +196,28 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
      });
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[create_haptic](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRendererAndHapticSampleJS-Sta/entry/src/main/ets/pages/haptic.ets) -->
+   
+   ``` TypeScript
+   let options: audioHaptic.AudioHapticPlayerOptions = {muteAudio: false, muteHaptics: false};
+   let audioHapticPlayer: audioHaptic.AudioHapticPlayer | undefined = undefined;
+   // ...
+       audioHapticManagerInstance.createPlayer(idForFd, options).then((value: audioHaptic.AudioHapticPlayer | null) => {
+         console.info('Succeeded in creating player.');
+         if (value)
+         audioHapticPlayer = value;
+         // ...
+       }).catch((err: Error) => {
+         console.error(`Failed to create player. Code: ${err.code}, message: ${err.message}`);
+         // ...
+       });
+   ```
+
 4. 调用[start](../../reference/apis-audio-kit/js-apis-audioHaptic.md#start)方法，开启音频播放并同步开启振动。
+
+   ArkTS-Dyn示例：
 
    <!-- @[haptic_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
    
@@ -127,7 +231,23 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
    });
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[haptic_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRendererAndHapticSampleJS-Sta/entry/src/main/ets/pages/haptic.ets) -->
+   
+   ``` TypeScript
+   audioHapticPlayer?.start().then(() => {
+     console.info('Succeeded in starting audio haptic player.');
+     // ...
+   }).catch((err: Error) => {
+     console.error(`Failed to start audio haptic player. Code: ${err.code}, message: ${err.message}`);
+     // ...
+   });
+   ```
+
 5. 调用[stop](../../reference/apis-audio-kit/js-apis-audioHaptic.md#stop)方法，停止音频播放并同步停止振动。
+
+   ArkTS-Dyn示例：
 
    <!-- @[haptic_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
    
@@ -141,7 +261,23 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
    });
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[haptic_stop](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRendererAndHapticSampleJS-Sta/entry/src/main/ets/pages/haptic.ets) -->
+   
+   ``` TypeScript
+   audioHapticPlayer?.stop().then(() => {
+     console.info('Succeeded in stopping audio haptic player.');
+     // ...
+   }).catch((err: Error) => {
+     console.error(`Failed to stop audio haptic player. Code: ${err.code}, message: ${err.message}`);
+     // ...
+   });
+   ```
+
 6. 调用[release](../../reference/apis-audio-kit/js-apis-audioHaptic.md#release)方法，释放AudioHapticPlayer实例。
+
+   ArkTS-Dyn示例：
 
    <!-- @[haptic_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
    
@@ -155,7 +291,23 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
    });
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[haptic_release](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRendererAndHapticSampleJS-Sta/entry/src/main/ets/pages/haptic.ets) -->
+   
+   ``` TypeScript
+   audioHapticPlayer?.release().then(() => {
+     console.info('Succeeded in releasing audio haptic player.');
+     // ...
+   }).catch((err: Error) => {
+     console.error(`Failed to release audio haptic player. Code: ${err.code}, message: ${err.message}`);
+     // ...
+   });
+   ```
+
 7. 调用[unregisterSource](../../reference/apis-audio-kit/js-apis-audioHaptic.md#unregistersource)方法，将已注册的音频及振动资源移除注册。
+
+   ArkTS-Dyn示例：
 
    <!-- @[haptic_unregist](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
    
@@ -166,6 +318,19 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
      // ...
    }).catch((err: BusinessError) => {
      console.error(`Failed to unregister source ${err}`);
+     // ...
+   });
+   ```
+   ArkTS-Sta示例：
+
+   <!-- @[haptic_unregist](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRendererAndHapticSampleJS-Sta/entry/src/main/ets/pages/haptic.ets) -->
+   
+   ``` TypeScript
+   audioHapticManagerInstance.unregisterSource(idForFd).then(() => {
+     console.info('Succeeded in unregistering source.');
+     // ...
+   }).catch((err: Error) => {
+     console.error(`Failed to unregister source. Code: ${err.code}, message: ${err.message}`);
      // ...
    });
    ```

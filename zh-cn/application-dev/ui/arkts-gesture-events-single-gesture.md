@@ -14,7 +14,7 @@ onClick与其他手势类型相同，也会参与命中测试、响应链收集�
 
 ArkTS-Dyn示例：
 
-<!-- @[click_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/OnClickGesture.ets) -->
+<!-- @[click_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/OnClickGesture.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -86,7 +86,7 @@ export struct OnClickGesture {
     this.judgeCount++;
   }
 
-  build() {
+  build(): void {
     NavDestination() {
       Column() {
         Column() {
@@ -195,7 +195,7 @@ import { $r, Column, ColumnOptions, Component, Entry, GestureEvent, NavDestinati
 export struct Tap {
   @State value: string = '';
 
-  build() {
+  build(): void {
     NavDestination() {
       Column({ space: 12 } as ColumnOptions) {
         Column() {
@@ -205,7 +205,12 @@ export struct Tap {
               TapGesture({ count: 2 })
                 .onAction((event: GestureEvent|undefined) => {
                   if(event){
-                    this.value = JSON.stringify(event.fingerList[0]);
+                    this.value = `{\"id\":${event.fingerList[0].id},\"hand\":${event.fingerList[0].hand},` +
+                      `\"globalX\":${event.fingerList[0].globalX},\"globalY\":${event.fingerList[0].globalY},` +
+                      `\"localX\":${event.fingerList[0].localX},\"localY\":${event.fingerList[0].localY},` +
+                      `\"displayX\":${event.fingerList[0].displayX},\"displayY\":${event.fingerList[0].displayY},` +
+                      `\"globalDisplayX\":${event.fingerList[0].globalDisplayX},` +
+                      `\"globalDisplayY\":${event.fingerList[0].globalDisplayY}}`;
                   }
                 }))
           Text(this.value)
@@ -300,7 +305,7 @@ import { $r, Column, ColumnOptions, Component, Entry, GestureEvent, LongPressGes
 export struct LongPress {
   @State count: int = 0;
 
-  build() {
+  build(): void {
     NavDestination() {
       Column({ space: 12 } as ColumnOptions) {
         Column() {
@@ -480,7 +485,7 @@ export struct VolumeControlDemo {
     );
   }
 
-  build() {
+  build(): void {
     NavDestination() {
       Column() {
         Row() {
@@ -628,7 +633,7 @@ export struct Pinch {
   @State pinchX: double = 0;
   @State pinchY: double = 0;
 
-  build() {
+  build(): void {
     NavDestination() {
       Column({ space: 12 } as ColumnOptions) {
         Column() {
@@ -758,7 +763,7 @@ export struct Rotation {
   @State angle: double = 0;
   @State rotateValue: double = 0;
 
-  build() {
+  build(): void {
     NavDestination() {
       Column({ space: 12 } as ColumnOptions) {
         Column() {
@@ -881,7 +886,7 @@ export struct Swipe {
   @State rotateAngle: double = 0;
   @State speed: double = 1;
 
-  build() {
+  build(): void {
     NavDestination() {
       Column({ space: 12 } as ColumnOptions) {
         Column() {

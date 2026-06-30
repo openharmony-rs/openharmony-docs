@@ -174,7 +174,7 @@ static globalConnect\<T extends object\>(type: ConnectOptions\<T\>): T | undefin
 
 | 参数名   |类型   |必填   | 说明                                                      |
 | ------------- | ------------|-------------------|-------------------------- |
-| type    |[ConnectOptions\<T\>](#connectoptionst18)    |是  |传入的connect参数，详细说明见ConnectOptions参数说明。 |
+| type    |[ConnectOptions\<T\>](#connectoptionst18)    |是  |传入的globalConnect参数，详细说明见ConnectOptions参数说明。 |
 
 **返回值：**
 
@@ -184,7 +184,7 @@ static globalConnect\<T extends object\>(type: ConnectOptions\<T\>): T | undefin
 
 > **说明：**
 >
-> 1、若未指定key，使用第二个参数作为默认构造器；否则使用第三个参数作为默认构造器（第二个参数非法也使用第三个参数作为默认构造器）。
+> 1、若未指定key，使用defaultCreator作为默认构造器；否则使用defaultCreator作为默认构造器（key非法也使用defaultCreator作为默认构造器）。
 >
 > 2、确保数据已经存储在PersistenceV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
 >
@@ -300,7 +300,7 @@ struct Page1 {
 
 如下展示globalConnect持久化Map类型的示例代码：
 ```typescript
-import { PersistenceV2, ConnectOptions } from '@kit.ArkUI';
+import { PersistenceV2 } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -500,7 +500,7 @@ struct Comp {
             Text(`report?.() '${ri.item.report?.()}'`)
           }
         })
-      // 步骤1：点击'add item'，显示`propA 'a' propB 'b'report?.'a' - 'b'`。
+      // 步骤1：点击'add item'，显示`propA 'a' propB 'b' report?.() 'a - b'`。
       // 步骤2：关闭应用。
       Button('add item')
         .onClick(() => {
@@ -1547,7 +1547,7 @@ struct ReusableChild {
 @ComponentV2({ 
   reusePool: 'shared', // 声明共享全局复用池
   poolAccepts: [ReusableChild], // 全局复用池接纳子组件类型ReusableChild
-  freezeWhenInactive: false // 关闭组件冻结功能。该参数必须声明reusePools时提供，也可以开启组件冻结。
+  freezeWhenInactive: false // 关闭组件冻结功能。该参数必须在声明reusePool时提供，也可以开启组件冻结。
 })
 struct Index {
   @Local showChild: boolean = true;
@@ -2124,7 +2124,7 @@ get value(): T
 
 | 类型             | 说明                                                         |
 | -------------------- | ------------------------------------------------------------ |
-| T |返回值类型为泛型参数T，与Binding\<T\>定义的类型一致。|
+| T |返回值类型为泛型参数T，与MutableBinding\<T\>定义的类型一致。|
 
 **示例：**
 
@@ -2181,7 +2181,7 @@ struct CompV2 {
 
 getReusePool(): IReusePool | undefined
 
-返回该自定义组件拥有的全局复用池。如果组件没有通过`reusePool`和`poolAccepts`配置复用池，则返回`undefined`。配置全局复用池方式请参考[全局复用开发指南](../../../application-dev/ui/state-management/arkts-global-reuse-pool.md)。
+返回该自定义组件拥有的全局复用池。如果组件或其上层组件没有通过`reusePool`和`poolAccepts`配置全局复用池，则返回`undefined`。配置全局复用池方式请参考[全局复用开发指南](../../../application-dev/ui/state-management/arkts-global-reuse-pool.md)。
 
 **起始版本：** 26.0.0
 
@@ -2214,8 +2214,7 @@ struct ReusableChild {
 @ComponentV2({ reusePool: 'perInstance', poolAccepts: [ReusableChild], freezeWhenInactive: false })
 struct PoolOwner {
   checkPool() {
-    const context = UIUtils.getCustomComponentContext(this);
-    const pool = context.getReusePool();
+    const pool = UIUtils.getCustomComponentContext(this).getReusePool();
     if (pool) {
       console.info('Global reuse pool configured.');
     } else {
@@ -2272,7 +2271,7 @@ getReusableInfo(constructor: ReusableComponentConstructor, reuseId?: string): IR
 
 | 类型 | 说明 |
 | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [IReusableInfo](#ireusableinfo)[] \| [IReusableInfo](#ireusableinfo) \| undefined | 如果此复用池未配置为接受给定的组件类型，则返回`undefined`。<br>如果将`reuseId`指定为参数，则返回单个`IReusableInfo`（即使计数为0 且maxCount为默认值）。<br>如果未指定`reuseId`且复用组件未使用reuseId，则返回单个`IReusableInfo`。<br>如果未指定`reuseId`但复用组件使用了reuseId，则返回一个`Array<IReusableInfo>`，为每个具有正计数或非默认maxCount的reuseId提供单独的条目，外加一个`reuseId: undefined`的条目。 |
+| [IReusableInfo](#ireusableinfo)[] \| [IReusableInfo](#ireusableinfo) \| undefined | 如果此复用池未配置为接受给定的组件类型，则返回`undefined`。<br>如果将`reuseId`指定为参数，则返回单个`IReusableInfo`（即使计数为0 且maxCount为默认值）。<br>如果未指定`reuseId`参数且复用组件在创建时未使用reuseId，则返回单个`IReusableInfo`。<br>如果未指定`reuseId`参数但复用组件在创建时使用了reuseId，则返回一个`Array<IReusableInfo>`，为每个具有正计数或非默认maxCount的reuseId提供单独的条目，外加一个`reuseId: undefined`的条目。 |
 
 **示例：**
 
@@ -2345,7 +2344,7 @@ struct PoolOwner {
 
 preRender(builder: WrappedBuilder\<[]\>, times: number): Promise\<void\>
 
-预创建@Reusable/@ReusableV2组件并将它们放入此复用池中。
+调用空闲任务以预创建可复用组件并在首次使用前将其放入复用池。
 
 **起始版本：** 26.0.0
 
@@ -2359,7 +2358,7 @@ preRender(builder: WrappedBuilder\<[]\>, times: number): Promise\<void\>
 
 | 参数名  | 类型                 | 必填 |  说明                            |
 | ------- | -------------------- | ---- | --------------------------------------------------------------------------------------------------------------------------------- |
-| builder | WrappedBuilder\<[]\> | 是   | 包含要执行`times`次的@Builder函数的 `WrappedBuilder`。每次执行应创建一个或多个@Reusable/@ReusableV2组件。 |
+| builder | [WrappedBuilder](././arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder)\<[]\> | 是   | 包含要执行`times`次的@Builder函数的 `WrappedBuilder`。每次执行应创建一个或多个[@Reusable](../../ui/state-management/arkts-create-custom-components.md#reusable)/[@ReusableV2](../../ui/state-management/arkts-create-custom-components.md#reusablev2)组件。 |
 | times   | number               | 是   | 执行@Builder函数的次数。                                                                                                          |
 
 **返回值：**
@@ -2379,12 +2378,12 @@ preRender(builder: WrappedBuilder\<[]\>, times: number): Promise\<void\>
 **示例：**
 
 ```ts
-import { UIUtils } from '@kit.ArkUI';
+import { UIUtils, IReusableInfo } from '@kit.ArkUI';
 
 @ReusableV2
 @ComponentV2
 struct ReusableComponent {
-  @Require @Param param: number;
+  @Param param: number = 8;
 
   aboutToAppear() {
     console.info('ReusableComponent aboutToAppear');
@@ -2402,7 +2401,7 @@ struct ReusableComponent {
 
 @Builder 
 function preRenderBuilder() {
-  ReusableComponent({ param: 0 })
+  ReusableComponent()
 }
 
 @Entry
@@ -2413,29 +2412,45 @@ struct Index {
   aboutToAppear() {
     // 获取池并调度预渲染。
     const pool = UIUtils.getCustomComponentContext(this).getReusePool();
-    // 预加载preRenderBuilder内的复用组件到当前的全局复用池中，执行一次preRenderBuilder。
-    pool!.preRender(new WrappedBuilder<[]>(preRenderBuilder.bind(this)), 1)
+    pool!.preRender(new WrappedBuilder<[]>(preRenderBuilder), 1)
       .then(() => {
-        this.onUIFullyLoaded = true;
+        console.info('ReusableComponent preRender completes');
       });
   }
 
+  checkPool() {
+    // 获取全局复用池内组件数量
+    const reusePool = UIUtils.getCustomComponentContext(this).getReusePool();
+    const reusableInfo: IReusableInfo = reusePool!.getReusableInfo(ReusableComponent) as IReusableInfo;
+    console.info(`ReusableComponent reuse pool count=${reusableInfo.count}`);
+  }
+
   build() {
-    Column() {
+    Column({ space: 5 }) {
+      Button('Switch')
+        .onClick(() => {
+          this.onUIFullyLoaded = !this.onUIFullyLoaded;
+        })
+        .width(100)
+      Button('Check pool')
+        .onClick(() => {
+          this.checkPool();
+        })
+        .width(100)
       CompA({ showFullUI: this.onUIFullyLoaded })
     }
+    .width('100%')
   }
 }
 
 @ComponentV2
 struct CompA {
   @Require @Param showFullUI: boolean;
-  @Local param: number = 8;
 
   build() {
     if (this.showFullUI) {
-      // 这将从池中复用预渲染的实例。
-      ReusableComponent({ param: this.param })
+      // 这将从池中复用预渲染的实例
+      ReusableComponent()
     }
   }
 }

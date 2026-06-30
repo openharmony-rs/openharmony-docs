@@ -12,6 +12,8 @@
 
 通过[openPopup](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#openpopup18)可以弹出气泡。
    
+ ArkTS-Dyn示例：
+
  <!-- @[open_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupBuildText.ets) -->
  
  ``` TypeScript
@@ -26,19 +28,48 @@
    });
  ```
 
+ ArkTS-Sta示例：
+
+ <!-- @[open_popup](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupBuildText.ets) -->
+ 
+ ``` TypeScript
+ this.promptAction.openPopup(this.contentNode as ComponentContent<Object>, { id: targetId }, {
+   enableArrow: true
+ })
+   .then(() => {
+     hilog.info(DOMAIN, 'popupBuildText', 'openPopup success');
+   })
+   .catch((err) => {
+     hilog.error(DOMAIN, 'popupBuildText', 'openPopup error: %{public}s', err);
+   });
+ ```
+
 ### 创建ComponentContent
    
    通过调用openPopup接口弹出气泡，需要定义ComponentContent，以提供自定义弹出框的内容。详细规格可参考[ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)说明。
    
+  ArkTS-Dyn示例：
+
   <!-- @[content_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) -->
   
   ``` TypeScript
   private contentNode: ComponentContent<Object> =
     new ComponentContent(this.uiContext, wrapBuilder(buildText), this.message);
   ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[content_node](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) -->
+  
+  ``` TypeScript
+  private contentNode: ComponentContent<Params> =
+    new ComponentContent<Params>(this.uiContext, wrapBuilder(buildText), new Params(this.message, this.promptActionClass));
+  ```
    
    如果在[wrapBuilder](../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder-static.md)中包含其他组件（例如：[Popup](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Popup.md)、[Chip](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)组件），则应在创建ComponentContent时设置[nestingBuilderSupported](../reference/apis-arkui/js-apis-arkui-builderNode.md#buildoptions12)属性为true。
    
+  ArkTS-Dyn示例：
+
   <!-- @[build_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupBuildText.ets) -->
   
   ``` TypeScript
@@ -91,6 +122,60 @@
     new ComponentContent(uiContext, wrapBuilder(buildText), message, { nestingBuilderSupported: true });
   ```
 
+  ArkTS-Sta示例：
+
+  <!-- @[build_text](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupBuildText.ets) -->
+  
+  ``` TypeScript
+  @Builder
+  export function buildText(params: Params): void {
+    Popup({
+      // 类型设置图标内容。
+      icon: {
+        // 请将$r('app.media.app_icon')替换为实际资源文件
+        image: $r('app.media.app_icon'),
+        width: 32,
+        height: 32,
+        fillColor: Color.White,
+        borderRadius: 10
+      } as PopupIconOptions,
+      // 设置文字内容。
+      title: {
+        text: `This is a Popup title 1`,
+        fontSize: 20,
+        fontColor: Color.Black,
+        fontWeight: FontWeight.Normal
+      } as PopupTextOptions,
+      // 设置文字内容。
+      message: {
+        text: `This is a Popup message 1`,
+        fontSize: 15,
+        fontColor: Color.Black
+      } as PopupTextOptions,
+      // 设置按钮内容。
+      buttons: [{
+        text: 'confirm',
+        action: (): void => {
+          hilog.info(DOMAIN, 'popupBuildText', 'confirm button click');
+        },
+        fontSize: 15,
+        fontColor: Color.Black,
+      },
+        {
+          text: 'cancel',
+          action: (): void => {
+            hilog.info(DOMAIN, 'popupBuildText', 'cancel button click');
+          },
+          fontSize: 15,
+          fontColor: Color.Black
+        },] as [PopupButtonOptions | undefined, PopupButtonOptions | undefined]
+    });
+  }
+  
+  let contentNode: ComponentContent<Params> =
+    new ComponentContent<Params>(uiContext, wrapBuilder(buildText), message);
+  ```
+
 
 ### 绑定组件信息
    
@@ -100,15 +185,28 @@
    
 - target的id属性设置为number类型，此时需要将id设置为对应组件的UniqueID，组件的UniqueID由系统保证唯一性。
    
+   ArkTS-Dyn示例：
+
    <!-- @[frame_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) -->
    
    ``` TypeScript
    let frameNode: FrameNode | null = this.uiContext.getFrameNodeByUniqueId(this.getUniqueId());
    let targetId = frameNode?.getChild(0)?.getUniqueId();
    ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[frame_node](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) -->
+   
+   ``` TypeScript
+   let frameNode: FrameNode | null = this.uiContext.getFrameNodeByUniqueId(this.getUniqueId());
+   let targetId: int = frameNode?.getChild(0)?.getUniqueId() as int;
+   ```
    
 - target的id属性设置为string类型，此时需要将id设置为对应组件的通用属性[id](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id)值。当无法保证id的唯一性时，如多团队开发或者复用自定义组件，可以通过设置componentId属性明确指定此id的范围来精确指定target，此时componentId属性可以设置为对应组件的父组件或者所在自定义组件的UniqueID。
    
+   ArkTS-Dyn示例：
+
    <!-- @[openPopupWithTargetIdString](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopupWithTargetIdString.ets) -->
    
    ``` TypeScript
@@ -145,13 +243,62 @@
      }
    }
    ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[openPopupWithTargetIdString](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopupWithTargetIdString.ets) -->
+   
+   ``` TypeScript
+   build(): void {
+     NavDestination() {
+       Column() {
+         Row() {
+           Button('button1')
+             .id(this.targetIdString)
+         }
+   
+         Row() {
+           Button('button2')
+             .id(this.targetIdString)
+         }
+   
+         Button('openPopup')
+           .onClick((): void => {
+             let frameNode: FrameNode | null = this.uiContext.getFrameNodeByUniqueId(this.getUniqueId());
+             let componentId: int = frameNode?.getChild(1)?.getChild(0)?.getChild(1)?.getUniqueId() as int;
+             if (componentId == undefined) {
+               this.componentId = 0;
+             } else {
+               this.componentId = componentId;
+             }
+             this.promptActionClass.setPromptAction(this.promptAction);
+             this.promptActionClass.setContentNode(this.contentNode as ComponentContent<Object>);
+             this.promptActionClass.setOptions(this.options);
+             this.promptActionClass.setIsPartialUpdate(false);
+             this.promptActionClass.setTarget({ id: this.targetIdString, componentId: this.componentId });
+             this.promptActionClass.openPopup();
+           })
+       }
+     }
+   }
+   ```
    
 
 ### 设置弹出气泡样式
    
    通过调用openPopup接口弹出气泡，可以设置[PopupCommonOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupcommonoptions18类型说明)属性调整气泡样式。
    
+  ArkTS-Dyn示例：
+
   <!-- @[private_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) -->
+  
+  ``` TypeScript
+  private options: PopupCommonOptions = { enableArrow: true };
+  ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[private_options](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) -->
   
   ``` TypeScript
   private options: PopupCommonOptions = { enableArrow: true };
@@ -161,6 +308,8 @@
 
 从API version 18开始，通过[updatePopup](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatepopup18)可以更新气泡的样式。支持全量更新和增量更新其气泡样式，不支持更新[PopupCommonOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupcommonoptions18类型说明)中的showInSubWindow、focusable、onStateChange、onWillDismiss和transition属性。
    
+  ArkTS-Dyn示例：
+
   <!-- @[update_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupBuildText.ets) -->
   
   ``` TypeScript
@@ -174,12 +323,30 @@
       hilog.error(0xFF00, 'popupBuildText', 'updatePopup error: ' + err.code + ' ' + err.message);
     });
   ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[update_popup](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupBuildText.ets) -->
+  
+  ``` TypeScript
+  this.promptAction.updatePopup(this.contentNode as ComponentContent<Object>, {
+    enableArrow: false
+  }, true)
+    .then(() => {
+      hilog.info(DOMAIN, 'popupBuildText', 'updatePopup success');
+    })
+    .catch((err) => {
+      hilog.error(DOMAIN, 'popupBuildText', 'updatePopup error: %{public}s', err);
+    });
+  ```
   
 
 ## 关闭气泡
 
 从API version 18开始，通过调用[closePopup](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#closepopup18)可以关闭气泡。
    
+  ArkTS-Dyn示例：
+
   <!-- @[close_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupBuildText.ets) -->
   
   ``` TypeScript
@@ -189,6 +356,20 @@
     })
     .catch((err: BusinessError) => {
       hilog.error(0xFF00, 'popupBuildText', 'closePopup error: ' + err.code + ' ' + err.message);
+    });
+  ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[close_popup](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupBuildText.ets) -->
+  
+  ``` TypeScript
+  this.promptAction.closePopup(this.contentNode as ComponentContent<Object>)
+    .then(() => {
+      hilog.info(DOMAIN, 'popupBuildText', 'closePopup success');
+    })
+    .catch((err) => {
+      hilog.error(DOMAIN, 'popupBuildText', 'closePopup error: %{public}s', err);
     });
   ```
   
@@ -201,6 +382,8 @@
 ## 在HAR包中使用全局气泡提示
 
 以下示例通过[HAR](../quick-start/har-package.md)包封装一个Popup，从而对外提供气泡的弹出、更新和关闭能力。
+
+  ArkTS-Dyn示例：
 
   <!-- @[main_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupMainPage.ets) -->
   
@@ -273,7 +456,88 @@
     }
   }
   ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[main_page](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupMainPage.ets) -->
   
+  ``` TypeScript
+  import {
+    ComponentContent,
+    PopupCommonOptions
+  } from '@kit.ArkUI';
+  import { PromptAction, TargetInfo } from '@ohos.arkui.UIContext';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  const DOMAIN: int = 0xFF00;
+  
+  export class PromptActionClass {
+    private promptAction: PromptAction | null = null;
+    private contentNode: ComponentContent<Object> | null = null;
+    private options: PopupCommonOptions | null = null;
+    private target: TargetInfo | null = null;
+    private isPartialUpdate: boolean = false;
+  
+    public setPromptAction(promptAction: PromptAction): void {
+      this.promptAction = promptAction;
+    }
+  
+    public setContentNode(node: ComponentContent<Object>): void {
+      this.contentNode = node;
+    }
+  
+    public setTarget(target: TargetInfo): void {
+      this.target = target;
+    }
+  
+    public setOptions(options: PopupCommonOptions): void {
+      this.options = options;
+    }
+  
+    public setIsPartialUpdate(isPartialUpdate: boolean): void {
+      this.isPartialUpdate = isPartialUpdate;
+    }
+  
+    public openPopup(): void {
+      if (this.promptAction != null) {
+        this.promptAction!.openPopup(this.contentNode as ComponentContent<Object>, this.target as TargetInfo, this.options as PopupCommonOptions)
+          .then(() => {
+            hilog.info(DOMAIN, 'popupMainPage', 'openPopup success');
+          })
+          .catch((err) => {
+            hilog.error(DOMAIN, 'popupMainPage', 'openPopup error: %{public}s', err);
+          });
+      }
+    }
+  
+    public closePopup(): void {
+      if (this.promptAction != null) {
+        this.promptAction!.closePopup(this.contentNode as ComponentContent<Object>)
+          .then(() => {
+            hilog.info(DOMAIN, 'popupMainPage', 'closePopup success');
+          })
+          .catch((err) => {
+            hilog.error(DOMAIN, 'popupMainPage', 'closePopup error: %{public}s', err);
+          });
+      }
+    }
+  
+    public updatePopup(options: PopupCommonOptions): void {
+      if (this.promptAction != null) {
+        this.promptAction!.updatePopup(this.contentNode as ComponentContent<Object>, options, this.isPartialUpdate)
+          .then(() => {
+            hilog.info(DOMAIN, 'popupMainPage', 'updatePopup success');
+          })
+          .catch((err) => {
+            hilog.error(DOMAIN, 'popupMainPage', 'updatePopup error: %{public}s', err);
+          });
+      }
+    }
+  }
+  ```
+  
+
+  ArkTS-Dyn示例：
 
   <!-- @[open_popup_main](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) -->
   
@@ -344,6 +608,103 @@
               }
               this.promptActionClass.setPromptAction(this.promptAction);
               this.promptActionClass.setContentNode(this.contentNode);
+              this.promptActionClass.setOptions(this.options);
+              this.promptActionClass.setIsPartialUpdate(false);
+              this.promptActionClass.setTarget({ id: this.targetId });
+              this.promptActionClass.openPopup();
+            })
+        }
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[open_popup_main](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) -->
+  
+  ``` TypeScript
+  import {
+    Entry,
+    Component,
+    Column,
+    Button,
+    Text,
+    NavDestination,
+    Builder,
+    FrameNode,
+    UIContext,
+    ComponentContent,
+    wrapBuilder,
+    PopupCommonOptions
+  } from '@kit.ArkUI';
+  import { PromptAction } from '@ohos.arkui.UIContext';
+  import { State } from '@ohos.arkui.stateManagement';
+  import { PromptActionClass } from './PopupMainPage';
+  
+  const ID: int = 0;
+  
+  export class Params {
+    public text: string = '';
+    public promptActionClass: PromptActionClass = new PromptActionClass();
+  
+    constructor(text: string, promptActionClass: PromptActionClass) {
+      this.text = text;
+      this.promptActionClass = promptActionClass;
+    }
+  }
+  
+  @Builder
+  function buildText(params: Params): void {
+    Column() {
+      Text(params.text)
+        .fontSize(20)
+        .margin({ top: 10 })
+      Button('Update')
+        .margin({ top: 10 })
+        .width(100)
+        .onClick((): void => {
+          params.promptActionClass.updatePopup({
+            enableArrow: false,
+          });
+        })
+      Button('Close')
+        .margin({ top: 10 })
+        .width(100)
+        .onClick((): void => {
+          params.promptActionClass.closePopup();
+        })
+    }.width(130).height(150)
+  }
+  
+  @Entry
+  @Component
+  export struct OpenPopup {
+    @State message: string = 'hello';
+    private uiContext: UIContext = this.getUIContext();
+    private promptAction: PromptAction = this.uiContext.getPromptAction();
+    private promptActionClass: PromptActionClass = new PromptActionClass();
+    private targetId: int = ID;
+    private contentNode: ComponentContent<Params> =
+      new ComponentContent<Params>(this.uiContext, wrapBuilder(buildText), new Params(this.message, this.promptActionClass));
+    private options: PopupCommonOptions = { enableArrow: true };
+  
+  
+    build(): void {
+      NavDestination() {
+        Column() {
+          Button('openPopup')
+            .margin({ top: 50, left: 100 })
+            .onClick((): void => {
+              let frameNode: FrameNode | null = this.uiContext.getFrameNodeByUniqueId(this.getUniqueId());
+              let targetId: int = frameNode?.getChild(0)?.getUniqueId() as int;
+              if (targetId == undefined) {
+                this.targetId = 0;
+              } else {
+                this.targetId = targetId;
+              }
+              this.promptActionClass.setPromptAction(this.promptAction);
+              this.promptActionClass.setContentNode(this.contentNode as ComponentContent<Object>);
               this.promptActionClass.setOptions(this.options);
               this.promptActionClass.setIsPartialUpdate(false);
               this.promptActionClass.setTarget({ id: this.targetId });

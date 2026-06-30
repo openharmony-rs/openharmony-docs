@@ -16,7 +16,7 @@
 
 应用要使用OHAudio提供的音频会话管理（AudioSessionManager）能力，需要添加对应的头文件。
 
-以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC)。
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSessionSampleC?_fb=blob)。
 
 ### 在 CMake 脚本中链接动态库
 
@@ -295,9 +295,7 @@ void AudioSessionStateChangedCallback(OH_AudioSession_StateChangedEvent event)
 
 从API version 24开始，应用可以通过[OH_AudioSessionManager_SetBehavior](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior)接口设置音频会话行为参数，在特定场景下获得更优的音频焦点体验。
 
-场景一：在游戏直播场景中，游戏应用可以设置[OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).VOIP_PRIVACY_TYPE_PUBLIC会话行为，使游戏组队的VoIP录音与直播录音可以同时进行。
-
-场景二：在用户观看直播的场景中，当其他应用启动音频流（如使用键盘录音转文字）打断直播时，会导致直播的音频和画面暂停，影响用户的观看体验。直播应用可以通过设置[OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).MUTE_WHEN_INTERRUPTED会话行为，使直播在被打断时保持静音播放而非暂停，避免画面中断。
+在用户观看直播的场景中，当其他应用启动音频流（如使用键盘录音转文字）打断直播时，会导致直播的音频和画面暂停，影响用户的观看体验。直播应用可以通过设置[OH_AudioSession_BehaviorFlags](../../reference/apis-audio-kit/capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).MUTE_WHEN_INTERRUPTED会话行为，使直播在被打断时保持静音播放而非暂停，避免画面中断。
 
 如果本应用未使用音频会话管理，也可以针对单条音频流设置独立的音频会话行为。对于播放流，详情请参考[OH_AudioRenderer_SetIndependentAudioSessionStrategy](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_setindependentaudiosessionstrategy)。对于录音流，详情请参考[OH_AudioCapturer_SetIndependentAudioSessionStrategy](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_setindependentaudiosessionstrategy)。
 
@@ -309,9 +307,7 @@ OH_AudioSessionManager_SetScene(audioSessionManager, AUDIO_SESSION_SCENE_MEDIA);
     
 // 本接口应在激活音频会话前调用。
 // 若音频会话在激活状态时调用此接口后，必须重新激活音频会话使其生效。
-// behavior参数支持位或操作，可同时设置多个会话行为标志。
-uint32_t behavior =
-    OH_AudioSession_BehaviorFlags::MUTE_WHEN_INTERRUPTED | OH_AudioSession_BehaviorFlags::VOIP_PRIVACY_TYPE_PUBLIC;
+uint32_t behavior = OH_AudioSession_BehaviorFlags::MUTE_WHEN_INTERRUPTED;
 OH_AudioSessionManager_SetBehavior(audioSessionManager, behavior);
     
 OH_AudioSession_Strategy strategy = {CONCURRENCY_PAUSE_OTHERS};

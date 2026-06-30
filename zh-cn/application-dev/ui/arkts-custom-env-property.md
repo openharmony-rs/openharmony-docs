@@ -1,4 +1,4 @@
-# \@CustomEnv：自定义环境变量
+# \@CustomEnv：自定义环境变量 (ArkTS-Dyn)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
@@ -18,13 +18,25 @@
 [\@CustomEnv](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenv)是响应式自定义环境变量装饰器，其功能包括：
 - 根据入参读取相应的自定义环境变量信息，详情见[\@CustomEnv使用方法](#customenv使用方法)。
 - 自定义环境变量改变时，通知\@CustomEnv装饰的变量更新，并触发\@CustomEnv关联组件刷新，以实现界面内容的更新。
-- 使用\@CustomEnv装饰的变量具有只读特性，不允许在组件内直接赋值。若需更新该变量的值，必须通过父组件的WithEnv组件配合`.customEnv()`方法进行更新。尝试对\@CustomEnv变量进行本地赋值将导致编译错误。
+- 使用\@CustomEnv装饰的变量具有只读特性，不允许开发者在初始化后对\@CustomEnv装饰的变量做整体赋值。如需更新该变量的值，必须通过父组件的WithEnv组件配合`.customEnv()`方法进行更新。尝试对\@CustomEnv变量赋值将导致编译错误。
 
-开发者可以根据自定义key使用\@CustomEnv装饰器声明响应式环境变量，实现组件间的状态共享。示例如下：
+开发者可以使用\@CustomEnv装饰器，并传入一个自定义的key，来声明响应式环境变量。示例如下：
 
 ```ts
+import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
+
 const custom = CustomEnvKey.create<string>();
-@CustomEnv(custom) varName: string = 'default value';
+
+@Entry
+@ComponentV2
+struct Index {
+  @CustomEnv(custom) varName: string = 'default value';
+
+  build() {
+    Column() {
+    }
+  }
+}
 ```
 
 其中：
@@ -47,7 +59,7 @@ const custom = CustomEnvKey.create<string>();
 | 传递规则       | 说明                                                         |
 | -------------- | ------------------------------------------------------------ |
 | 从父组件初始化 | \@CustomEnv装饰的变量仅允许本地初始化，无法从外部传入初始化。    |
-| 本地初始化向上查找  | \@CustomEnv装饰器向上查找父组件时，递归查找父组件，查找WithEnv通过customEnv设置的相同key的值。 |
+| \@CustomEnv装饰的变量初始化 | 初始化\@CustomEnv装饰的变量时，会优先向上递归查找父组件中通过WithEnv.customEnv注入的相同key的值；若找到，则使用该注入值，否则使用本地初始化值。|
 
 ### 观察变化
 
@@ -71,7 +83,7 @@ struct Index {
         })
 
       WithEnv() {
-        // 有WithEnv组件，显示this.customMessage的默认值'Hello'，点击Button后值更新为'Hello World'。
+        // 有WithEnv组件，Child的customMessage显示WithEnv提供的值'Hello'，点击Button后值更新为'Hello World'。
         Child()
       }.customEnv(custom, this.customMsg)
 
@@ -92,7 +104,7 @@ struct Child {
 ```
 
 ## \@CustomEnv和\@Env能力对比
-\@CustomEnv和[\@Env](./arkts-env-system-property.md)都是环境变量相关，但两者能力有较大的不同，具体能力对比见下表。
+\@CustomEnv和[\@Env](./arkts-env-system-property.md)都是环境变量相关，具体能力对比见下表。
 
 | 能力 | \@CustomEnv | \@Env|
 | ------------------ | ------------------ | ------------------ |
@@ -209,7 +221,6 @@ const custom = CustomEnvKey.create<string>();
 @Entry
 @ComponentV2
 struct Index {
-  @Local customMsg: string = 'Hello';
   @CustomEnv(custom) customMessage: string = 'parent';
 
   build() {
@@ -235,12 +246,12 @@ struct Child {
 
 \@CustomEnv变量初始化遵循以下流程：
 
-1. 从WithEnv组件中查找已有实例：
-   - 查找父组件是否为WithEnv组件。
-   - 如果不是WithEnv，则继续向上查找，直到查找到根节点。
-   - 若找到对应key的WithEnv组件，则获取组件提供的环境变量值并赋值给\@CustomEnv装饰的变量。
-2. 使用声明的变量初始值。
-   - 如果未找到对应的WithEnv组件，则使用CustomEnv装饰变量的本地初始值。
+1. 查找WithEnv组件中是否存在对应的key：
+   - 判断当前父组件是否为WithEnv组件。
+   - 若不是，则继续向上查找，直至根节点。
+   - 若找到对应key的WithEnv组件，则获取组件提供的环境变量值，赋值给\@CustomEnv装饰的变量。
+2. 使用\@CustomEnv声明的变量初始值：
+   - 若未找到对应的key的WithEnv组件，则使用\@CustomEnv装饰变量的本地初始值。
 
 流程图如下。
 
@@ -416,7 +427,7 @@ struct Index {
         })
 
       WithEnv() {
-        // 有WithEnv组件，显示this.customMessage的默认值'Hello'，点击Button后值更新为'Hello World'。
+        // 有WithEnv组件，Child的customMessage显示WithEnv提供的值'Hello'，点击Button后值更新为'Hello World'。        
         Child()
       }.customEnv(custom, this.customMsg)
 
@@ -865,7 +876,7 @@ struct SetSample {
 
 ### \@CustomEnv的V1/V2混用
 
-\@CustomEnv可以在\@Component和\@ComponentV2中使用，其遵循[V1V2混用的基本规则](./state-management/arkts-v1-v2-mixusage.md)。\@CustomEnv装饰的变量传递给V1时，遵循V1状态变量装饰器不能和[\@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md)装饰的class的规则。\@CustomEnv装饰的变量传递给V1时，遵循V2只有[\@Param](./state-management/arkts-new-param.md)可以接收外部变量的规则。
+\@CustomEnv可以在\@Component和\@ComponentV2中使用，其遵循[V1V2混用的基本规则](./state-management/arkts-v1-v2-mixusage.md)。\@CustomEnv装饰的变量传递给V1时，遵循V1状态变量装饰器不能和[\@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md)装饰的class的规则。\@CustomEnv装饰的变量传递给V2时，遵循V2只有[\@Param](./state-management/arkts-new-param.md)可以接收外部变量的规则。
 
 
 - \@CustomEnv装饰的变量传递给V1时，遵循V1状态变量装饰器不能接收\@ObservedV2装饰的class的规则。
@@ -898,7 +909,7 @@ struct PageOne {
 @Component
 struct Child {
   @Require @Prop message: string;
-  // @Prop customMessage: CustomValue; //  错误用法，V1的状态变量不能和ObservedV2连用。
+  // @Prop customMessage: CustomValue; //  错误用法，V1状态变量装饰器装饰的类型不能是ObservedV2装饰的class。
 
   build() {
     Column() {
@@ -960,7 +971,7 @@ struct Child {
 
 ![image](./figures/custom-env-14.gif)
 
-- \@CustomEnv提供状态管理V2的观察能力，当\@CustomEnv装饰的变量是\@Observed时，需要调用[enableV2Compatibility](../reference/apis-arkui/js-apis-stateManagement.md#enablev2compatibility19)使其具有观察类属性的能力，否则将无法观察类属性的变化。
+- \@CustomEnv提供状态管理V2的观察能力，当\@CustomEnv装饰的变量的类型被\@Observed装饰时，需要调用[enableV2Compatibility](../reference/apis-arkui/js-apis-stateManagement.md#enablev2compatibility19)使其具有观察类属性的能力，否则将无法观察类属性的变化。
 ```ts
 import { UIUtils } from '@kit.ArkUI';
 

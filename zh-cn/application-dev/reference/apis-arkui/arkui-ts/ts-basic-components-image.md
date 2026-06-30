@@ -85,7 +85,7 @@ Image加载成功且组件不设置宽高时，其显示大小自适应父组件
 <!--Table: 10%; 20%; 10%; 60%-->
 | 参数名  | 类型                                     | 必填   | 说明                                     |
 | ---- | ---------------------------------------- | ---- | ---------------------------------------- |
-| src  | [PixelMap](ts-image-common.md#pixelmap)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)\|&nbsp;[DrawableDescriptor](#drawabledescriptor10) | 是    | 图片的数据源，支持本地图片和网络图片，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。<br>1. PixelMap格式为像素图，常用于图片编辑的场景。<br>2. ResourceStr包含Resource和string格式。<br>string格式可用于加载网络图片和本地图片，常用于加载网络图片。使用相对路径引用本地图片时，建议参考[示例25（使用相对路径显示图片）](#示例25使用相对路径显示图片)，不支持跨包/跨模块调用该Image组件，建议使用Resource格式来管理需全局使用的图片资源。<br>从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resource目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable 设置为true，详见[resOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)中相关介绍。<br>- 支持`Base64`字符串。<br>- 传入的字符串为https网络图片地址时，建议参考[示例2（下载与显示静态网络图片）](#示例2下载与显示静态网络图片)。<br>- 支持file://路径前缀的字符串，应用沙箱URI：file://\<bundleName>/\<sandboxPath>。应用沙箱路径URI构造可参考[constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)。沙箱路径需要使用[fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径下的文件有可读权限。<br>Resource格式可以跨包/跨模块访问资源文件，是访问本地图片的推荐方式，具体示例参考[访问跨HAP/HSP包资源](../../../quick-start/resource-categories-and-access.md#访问跨haphsp包资源)。<br/>3. 当传入资源id或name为普通图片时，生成DrawableDescriptor对象。传入[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)类型可播放PixelMap数组动画。<br>**说明：**<br/>- ArkTS卡片上支持gif图片格式动效，但仅在显示时播放一次。<br/>- ArkTS卡片上不支持http:/\/等网络相关路径前缀和file:/\/路径前缀的字符串。 |
+| src  | [PixelMap](ts-image-common.md#pixelmap)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)\|&nbsp;[DrawableDescriptor](#drawabledescriptor10) | 是    | 图片的数据源，支持本地图片和网络图片，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。<br>1. PixelMap格式为像素图，常用于图片编辑的场景。<br>2. ResourceStr包含Resource和string格式。<br>string格式可用于加载网络图片和本地图片，常用于加载网络图片。使用相对路径引用本地图片时，建议参考[示例25（使用相对路径显示图片）](#示例25使用相对路径显示图片)，不支持跨包/跨模块调用该Image组件，建议使用Resource格式来管理需全局使用的图片资源。<br>从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resource目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable 设置为true，详见[resOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)中相关介绍。<br>- 支持`Base64`字符串。<br>- 传入的字符串为https网络图片地址时，建议参考[示例2（下载与显示静态网络图片）](#示例2下载与显示静态网络图片)。<br>- 支持file://路径前缀的字符串，应用沙箱URI：file://\<bundleName>/\<sandboxPath>。应用沙箱路径URI构造可参考[constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)。沙箱路径需要使用[fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径下的文件有可读权限。<br>Resource格式可以跨包/跨模块访问资源文件，是访问本地图片的推荐方式，具体示例参考[访问跨HAP/HSP包资源](../../../quick-start/resource-categories-and-access.md#访问跨haphsp包资源)。<br/>3. 当传入资源id或name为普通图片时，生成DrawableDescriptor对象。传入[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)类型可播放PixelMap数组动画。<br>**说明：**<br/>- ArkTS卡片上支持gif图片格式动效，但仅在显示时播放一次。<br/>- ArkTS卡片上不支持http:/\/等网络相关路径前缀和file:/\/路径前缀的字符串。 |
 
 ### Image<sup>23+</sup>
 
@@ -1287,7 +1287,7 @@ attributeModifier(modifier: AttributeModifier\<ImageAttribute> | AttributeModifi
 
 ## DrawableDescriptor<sup>10+</sup>
 
-type DrawableDescriptor = DrawableDescriptor
+type DrawableDescriptor = import ('../api/@ohos.arkui.drawableDescriptor').DrawableDescriptor
 
 作为Image组件的入参对象。
 
@@ -1303,11 +1303,11 @@ type DrawableDescriptor = DrawableDescriptor
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| [DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor)  | 返回一个DrawableDescriptor对象。 |
+| import ('../api/@ohos.arkui.drawableDescriptor').[DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor)  | 返回一个DrawableDescriptor对象。 |
 
 ## DrawingColorFilter<sup>12+</sup>
 
-ArkTS-Dyn: type DrawingColorFilter = ColorFilter
+ArkTS-Dyn: type DrawingColorFilter = import('../api/@ohos.graphics.drawing').default.ColorFilter
 
 ArkTS-Sta: type DrawingColorFilter = drawing.ColorFilter
 
@@ -1325,11 +1325,11 @@ ArkTS-Sta: type DrawingColorFilter = drawing.ColorFilter
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| ArkTS-Dyn: [ColorFilter](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md)<br/>ArkTS-Sta: drawing.[ColorFilter](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md) | 返回一个颜色滤波器。 |
+| ArkTS-Dyn: import('../api/@ohos.graphics.drawing').default.[ColorFilter](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md)<br/>ArkTS-Sta: drawing.[ColorFilter](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md) | 返回一个颜色滤波器。 |
 
 ## DrawingLattice<sup>12+</sup>
 
-ArkTS-Dyn: type DrawingLattice = Lattice
+ArkTS-Dyn: type DrawingLattice = import('../api/@ohos.graphics.drawing').default.Lattice
 
 ArkTS-Sta: type DrawingLattice = drawing.Lattice
 
@@ -1347,7 +1347,7 @@ ArkTS-Sta: type DrawingLattice = drawing.Lattice
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| ArkTS-Dyn: [Lattice](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Lattice.md)<br/>ArkTS-Sta: drawing.[Lattice](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Lattice.md) | 返回一个矩阵网格对象。 |
+| ArkTS-Dyn: import('../api/@ohos.graphics.drawing').default.[Lattice](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Lattice.md)<br/>ArkTS-Sta: drawing.[Lattice](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Lattice.md) | 返回一个矩阵网格对象。 |
 
 ## ImageMatrix<sup>15+</sup>对象说明
 
@@ -1543,7 +1543,7 @@ type ImageErrorCallback = (error: ImageError) => void
 
 ## BusinessError<sup>20+</sup>
 
-type BusinessError\<T = void> = BusinessError\<T>
+type BusinessError\<T = void> = import('../api/@ohos.base').BusinessError\<T>
 
 图片加载异常返回的错误信息。
 
@@ -1561,7 +1561,7 @@ type BusinessError\<T = void> = BusinessError\<T>
 
 | 类型  | 说明   |
 | ---- | ------ |
-| [BusinessError\<T>](../../apis-basic-services-kit/js-apis-base.md#businesserror) | 图片加载异常返回的错误信息。 |
+| import('../api/@ohos.base').[BusinessError\<T>](../../apis-basic-services-kit/js-apis-base.md#businesserror) | 图片加载异常返回的错误信息。 |
 
 以下是错误信息的详细介绍：ImageError的error属性为错误信息对象，其中code为错误码，message为错误信息。
 
@@ -1635,7 +1635,7 @@ type ImageOnCompleteCallback = (loadEvent?: ImageCompleteEvent) => void;
 
 ## RequestDownloadInfo<sup>23+</sup>
 
-ArkTS-Dyn: type RequestDownloadInfo = DownloadInfo
+ArkTS-Dyn: type RequestDownloadInfo = import('../api/@ohos.request.cacheDownload').default.DownloadInfo
 
 ArkTS-Sta: type RequestDownloadInfo = cacheDownload.DownloadInfo
 
@@ -1655,7 +1655,7 @@ ArkTS-Sta: type RequestDownloadInfo = cacheDownload.DownloadInfo
 
 | 类型  | 说明   |
 | ---- | ------ |
-| [DownloadInfo](../../apis-basic-services-kit/js-apis-request-cacheDownload.md#downloadinfo20) | 网络资源加载异常时返回的下载信息，包含资源信息、网络请求信息与性能统计信息。 |
+| ArkTS-Dyn: import('../api/@ohos.request.cacheDownload').default.[DownloadInfo](../../apis-basic-services-kit/js-apis-request-cacheDownload.md#downloadinfo20)<br/>ArkTS-Sta: cacheDownload.DownloadInfo | 网络资源加载异常时返回的下载信息，包含资源信息、网络请求信息与性能统计信息。 |
 
 ## 示例
 
@@ -1700,7 +1700,7 @@ struct ImageExample1 {
 }
 ```
 
-![zh-cn_image_0000001592882500](figures/zh-cn_image_0000001592882500.gif)
+![loadingImagesOfBasicTypes](figures/loadingImagesOfBasicTypes.gif)
 
 ### 示例2（下载与显示静态网络图片）
 
@@ -1765,7 +1765,7 @@ struct ImageExample2 {
 }
 ```
 
-![zh-cn_image_0000001607845173](figures/zh-cn_image_view2.png)
+![zh-cn_image_0000001607845173](figures/image-view2.png)
 
 ### 示例3（下载与显示网络gif图片）
 
@@ -1847,7 +1847,7 @@ struct ImageExample3 {
 }
 ```
 
-![zh-cn_image_0000001607845173](figures/zh-cn_image_0000001607845173.gif)
+![zh-cn_image_0000001607845173](figures/Dyn-sky.gif)
 
 ### 示例5（开启图像AI分析）
 
@@ -1899,7 +1899,7 @@ struct ImageExample4 {
 }
 ```
 
-![zh-cn_image_0000001607845173](figures/zh-cn_image_view4.gif)
+![zh-cn_image_0000001607845173](figures/image-view4.gif)
 <!--RP2End-->
 ### 示例6（通过slice拉伸图片）
 
@@ -2094,7 +2094,7 @@ struct ImageExample {
 }
 ```
 
-![zh-cn_image_0000001607845173](figures/zh-cn_image_view6.gif)
+![zh-cn_image_0000001607845173](figures/image-view6.gif)
 
 ### 示例9（为图像设置颜色滤镜效果）
 
@@ -2242,7 +2242,7 @@ struct ImageContentExample {
 }
 ```
 
-![imageContent](figures/zh-cn_image_view9.gif)
+![switchingBetweenDifferentTypes](figures/switchingBetweenDifferentTypes.gif)
 
 ### 示例12（配置隐私隐藏）
 
@@ -2267,7 +2267,7 @@ struct ImageExample {
 }
 ```
 
-![imageContent](figures/zh-cn_image_view10.gif)
+![securingSensitiveInformation](figures/securingSensitiveInformation.gif)
 
 ### 示例13（为图片设置扫光效果）
 
@@ -3163,4 +3163,4 @@ struct ImageExample {
 }
 ```
 
-![sandBox](figures/antialiased.PNG)
+![antialiased](figures/antialiased.PNG)

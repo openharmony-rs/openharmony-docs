@@ -109,9 +109,9 @@ try {
 
 ## launcherBundleManager.getLauncherAbilityInfo
 
-ArkTS-Dyn: getLauncherAbilityInfo(bundleName: string, userId: number) : Promise\<Array\<LauncherAbilityInfo\>\>
+ArkTS-Dyn: getLauncherAbilityInfo(bundleName: string, userId: number): Promise\<Array\<LauncherAbilityInfo\>\>
 
-ArkTS-Sta: getLauncherAbilityInfo(bundleName: string, userId: int) : Promise\<Array\<LauncherAbilityInfo\>\>
+ArkTS-Sta: getLauncherAbilityInfo(bundleName: string, userId: int): Promise\<Array\<LauncherAbilityInfo\>\>
 
 查询指定bundleName及用户的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)。使用Promise异步回调。
 
@@ -277,9 +277,9 @@ try {
 
 ## launcherBundleManager.getAllLauncherAbilityInfo
 
-ArkTS-Dyn: getAllLauncherAbilityInfo(userId: number) : Promise\<Array\<LauncherAbilityInfo\>\>
+ArkTS-Dyn: getAllLauncherAbilityInfo(userId: number): Promise\<Array\<LauncherAbilityInfo\>\>
 
-ArkTS-Sta: getAllLauncherAbilityInfo(userId: int) : Promise\<Array\<LauncherAbilityInfo\>\>
+ArkTS-Sta: getAllLauncherAbilityInfo(userId: int): Promise\<Array\<LauncherAbilityInfo\>\>
 
 查询指定用户下所有应用的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)。使用Promise异步回调。
 
@@ -361,7 +361,7 @@ try {
 
 ## launcherBundleManager.getShortcutInfo
 
-getShortcutInfo(bundleName :string, callback: AsyncCallback\<Array\<ShortcutInfo\>\>) : void
+getShortcutInfo(bundleName: string, callback: AsyncCallback\<Array\<ShortcutInfo\>\>): void
 
 查询当前用户下指定应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20)。使用callback异步回调。
 
@@ -445,7 +445,7 @@ try {
 
 ## launcherBundleManager.getShortcutInfo
 
-getShortcutInfo(bundleName : string) : Promise\<Array\<ShortcutInfo\>\>
+getShortcutInfo(bundleName: string): Promise\<Array\<ShortcutInfo\>\>
 
 查询当前用户下指定应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20)。使用Promise异步回调。
 
@@ -530,7 +530,7 @@ try {
 
 ## launcherBundleManager.getShortcutInfoSync<sup>10+</sup>
 
-getShortcutInfoSync(bundleName : string) : Array\<ShortcutInfo\>
+getShortcutInfoSync(bundleName: string): Array\<ShortcutInfo\>
 
 查询当前用户下指定应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20)。
 

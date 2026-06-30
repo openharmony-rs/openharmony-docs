@@ -496,7 +496,7 @@ ArkTS-Sta: recoverable(recoverable: boolean | undefined)
 
 | 参数名 | 类型         | 必填 | 说明               |
 | ------ | -------------- | ---- | ------------------ |
-| recoverable  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt;<br/>ArkTS-Sta: boolean \| undefined | 是   | NavDestination是否可恢复。<br/>取值为undefined时，按默认值处理。<br/>默认值：false<br/>true：路由栈可恢复。<br/>false：路由栈不可恢复。 |
+| recoverable  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt;<br/>ArkTS-Sta: boolean \| undefined | 是   | NavDestination是否可恢复，默认为不可恢复。<br/>默认值：false<br/>true：NavDestination可恢复。<br/>false：NavDestination不可恢复。 |
 
 ### bindToScrollable<sup>14+</sup>
 
@@ -764,7 +764,7 @@ NavDestination类型。
 > 1. 设置NavigationSystemTransitionType为TITLE时，系统转场只有标题栏动画。
 > 2. 设置NavigationSystemTransitionType为CONTENT时，系统转场只有内容区动画。
 >
-> 设置NONE或者TITLE时没有系统转场动画，设置CONTENT和DEFAULT时默认系统转场动画。
+> 设置NONE时没有系统转场动画，设置TITLE时只有标题栏系统转场动画，设置CONTENT和DEFAULT时默认系统转场动画。
 
 ## 事件
 
@@ -944,7 +944,7 @@ ArkTS-Sta: onBackPressed(callback:&nbsp;(()&nbsp;=&gt;&nbsp;boolean) | undefined
 
 ### onReady<sup>11+</sup>
 
-ArkTS-Dyn: onReady(callback: Callback\<NavDestinationContext\>)
+ArkTS-Dyn: onReady(callback: import('../api/@ohos.base').Callback\<NavDestinationContext\>)
 
 ArkTS-Sta: onReady(callback: Callback\<NavDestinationContext\> | undefined)
 
@@ -966,7 +966,7 @@ ArkTS-Sta: onReady(callback: Callback\<NavDestinationContext\> | undefined)
 
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| callback   | ArkTS-Dyn: Callback\<[NavDestinationContext](#navdestinationcontext11)\><br/>ArkTS-Sta: Callback\<[NavDestinationContext](#navdestinationcontext11)\> \| undefined    | 是   | 当NavDestination即将构建子组件之前会触发此回调。<br/>取值为undefined时，不使用回调函数。|
+| callback   | ArkTS-Dyn:  import('../api/@ohos.base').[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[NavDestinationContext](#navdestinationcontext11)\><br/>ArkTS-Sta: Callback\<[NavDestinationContext](#navdestinationcontext11)\> \| undefined    | 是   | 当NavDestination即将构建子组件之前会触发此回调。<br/>取值为undefined时，不使用回调函数。|
 
 ### onSaveState
 
@@ -1201,7 +1201,7 @@ NavDestination自定义标题。
 | 名称      | 类型                                       | 只读 | 可选 | 说明       |
 | ------- | ---------------------------------------- | ---- | ---- | -------- |
 | builder | [CustomBuilder](ts-types.md#custombuilder8) | 否    | 否 | 设置标题栏内容。 |
-| height  | [TitleHeight](ts-appendix-enums.md#titleheight9) \| [Length](ts-types.md#length) | 否    | 否 | 设置标题栏高度。<br/>取值范围：[0, +∞)。 |
+| height  | [TitleHeight](ts-appendix-enums.md#titleheight9) \| [Length](ts-types.md#length) | 否    | 否 | 设置标题栏高度。<br/>取值范围：[0, +∞)<br/>单位参考[Length](ts-types.md#length)类型的说明。  |
 
 ## NavDestinationContext<sup>11+</sup>
 
@@ -1333,7 +1333,9 @@ NavDestination自定义动画接口。
 
 ## NavDestinationTransitionDelegate<sup>15+</sup>
 
-type NavDestinationTransitionDelegate = (operation: NavigationOperation, isEnter: boolean) => Array\<NavDestinationTransition> | undefined
+ArkTS-Dyn: type NavDestinationTransitionDelegate = (operation: NavigationOperation, isEnter: boolean) => Array\<NavDestinationTransition> | undefined
+
+ArkTS-Sta: type NavDestinationTransitionDelegate = (operation: NavigationOperation, isEnter: boolean) => (Array\<NavDestinationTransition> | undefined)
 
 NavDestination自定义转场动画的代理函数。
 
@@ -1360,7 +1362,7 @@ NavDestination自定义转场动画的代理函数。
 
 ## Orientation<sup>19+</sup>
 
-ArkTS-Dyn: type Orientation = Orientation
+ArkTS-Dyn: type Orientation = import('../api/@ohos.window').default.Orientation
 
 ArkTS-Sta: type Orientation = window.Orientation
 
@@ -1376,13 +1378,15 @@ Orientation实例对象。
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| ArkTS-Dyn: [Orientation](../arkts-apis-window-e.md#orientation9)<br/>ArkTS-Sta: window.Orientation | 返回Orientation实例对象。 |
+| ArkTS-Dyn: import('../api/@ohos.window').default[Orientation](../arkts-apis-window-e.md#orientation9)<br/>ArkTS-Sta: window.Orientation | 返回Orientation实例对象。 |
 
 ## 示例
 
 ### 示例1（标题栏工具栏与可滚动类组件联动）
 
 以下示例主要演示NavDestination绑定可滚动容器组件来实现滚动内容时触发标题栏和工具栏显示隐藏的效果。
+
+ArkTS-Dyn示例：
 
 ```ts
 import { SymbolGlyphModifier } from '@kit.ArkUI';
@@ -1415,7 +1419,7 @@ struct MyPageOne {
                   .borderRadius(10)
                   .backgroundColor(Color.Gray)
               }
-            }, (item: string) => item);
+            }, (item: number) => item.toString());
           }.width('100%').height('80%').scrollBar(BarState.Off)
           .nestedScroll({ scrollForward: NestedScrollMode.SELF_FIRST, scrollBackward: NestedScrollMode.SELF_FIRST })
 
@@ -1430,7 +1434,7 @@ struct MyPageOne {
                 .borderRadius(10)
                 .backgroundColor(Color.Pink)
             }
-          }, (item: string) => item);
+          }, (item: number) => item.toString());
         }
       }
       .width('100%')
@@ -1476,7 +1480,7 @@ struct MyPageTwo {
               .borderRadius(10)
               .backgroundColor(Color.Gray)
           }
-        }, (item: string) => item);
+        }, (item: number) => item.toString());
       }.width('100%')
     }
     .title('PageTwo', { backgroundColor: Color.Yellow, barStyle: BarStyle.STACK })
@@ -1523,11 +1527,191 @@ struct Index {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  NavPathStack,
+  Navigation,
+  Stack,
+  Alignment,
+  Color,
+  StackOptions,
+  ButtonOptions,
+  ButtonType,
+  NavPathInfo,
+  NavDestination,
+  NavDestinationContext,
+  Text,
+  SymbolGlyphModifier,
+  Scroller,
+  Scroll,
+  List,
+  ForEach,
+  ListItem,
+  TextAlign,
+  BarState,
+  NestedScrollMode,
+  ScrollDirection,
+  EdgeEffect,
+  BarStyle,
+  ToolbarItem,
+  NavigationToolbarOptions,
+  FlexAlign,
+  $r,
+  State
+} from '@kit.ArkUI';
+
+@Component
+struct MyPageOne {
+  private listScroller: Scroller = new Scroller();
+  private scrollScroller: Scroller = new Scroller();
+  private arr: int[] = [];
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 30; i++) {
+      this.arr.push(i);
+    }
+  }
+
+  build() {
+    NavDestination() {
+      Scroll(this.scrollScroller) {
+        Column(undefined) {
+          List({ space: 0, initialIndex: 0, scroller: this.listScroller }) {
+            ForEach(this.arr, (item: int, index: int) => {
+              ListItem() {
+                Text('' + item)
+                  .height(100)
+                  .fontSize(16)
+                  .textAlign(TextAlign.Center)
+                  .width('90%')
+                  .margin({ left: '5%' })
+                  .borderRadius(10)
+                  .backgroundColor(Color.Gray)
+              }
+            });
+          }.width('100%').height('80%').scrollBar(BarState.Off)
+          .nestedScroll({ scrollForward: NestedScrollMode.SELF_FIRST, scrollBackward: NestedScrollMode.SELF_FIRST })
+
+          ForEach(this.arr, (item: int, index: int) => {
+            ListItem() {
+              Text('' + item)
+                .height(100)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+                .width('90%')
+                .margin({ top: '5%' })
+                .borderRadius(10)
+                .backgroundColor(Color.Pink)
+            }
+          });
+        }
+      }
+      .width('100%')
+      .scrollBar(BarState.Off)
+      .scrollable(ScrollDirection.Vertical)
+      .edgeEffect(EdgeEffect.Spring)
+    }
+    .title('PageOne', { backgroundColor: Color.Yellow, barStyle: BarStyle.STACK })
+    .toolbarConfiguration([
+      {
+        // $r('sys.symbol.phone_badge_star')需要替换为开发者所需的资源文件
+        value: 'item1',
+        symbolIcon: new SymbolGlyphModifier($r('sys.symbol.phone_badge_star'))
+      } as ToolbarItem
+    ], { backgroundColor: Color.Orange, barStyle: BarStyle.STACK } as NavigationToolbarOptions)
+    // 绑定有父子关系的可滚动容器组件
+    .bindToNestedScrollable([{ parent: this.scrollScroller, child: this.listScroller }])
+  }
+}
+
+@Component
+struct MyPageTwo {
+  private listScroller: Scroller = new Scroller();
+  private arr: int[] = [];
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 30; i++) {
+      this.arr.push(i);
+    }
+  }
+
+  build() {
+    NavDestination() {
+      List({ scroller: this.listScroller }) {
+        ForEach(this.arr, (item: int, index: int) => {
+          ListItem() {
+            Text('' + item)
+              .height(100)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .width('90%')
+              .margin({ left: '5%' })
+              .borderRadius(10)
+              .backgroundColor(Color.Gray)
+          }
+        });
+      }.width('100%')
+    }
+    .title('PageTwo', { backgroundColor: Color.Yellow, barStyle: BarStyle.STACK })
+    .toolbarConfiguration([
+      {
+        // $r('sys.symbol.phone_badge_star')需要替换为开发者所需的资源文件
+        value: 'item1',
+        symbolIcon: new SymbolGlyphModifier($r('sys.symbol.phone_badge_star'))
+      } as ToolbarItem
+    ], { backgroundColor: Color.Orange, barStyle: BarStyle.STACK } as NavigationToolbarOptions)
+    // 绑定可滚动容器组件
+    .bindToScrollable([this.listScroller])
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private stack: NavPathStack = new NavPathStack();
+
+  @Builder
+  MyPageMap(name: string): void {
+    if (name === 'myPageOne') {
+      MyPageOne();
+    } else {
+      MyPageTwo();
+    }
+  }
+
+  build() {
+    Navigation(this.stack) {
+      Column(undefined) {
+        Button('push PageOne').onClick(() => {
+          this.stack.pushPath(new NavPathInfo('myPageOne', undefined));
+        })
+        Button('push PageTwo').onClick(() => {
+          this.stack.pushPath(new NavPathInfo('myPageTwo', undefined));
+        })
+      }.height('40%').justifyContent(FlexAlign.SpaceAround)
+    }.width('100%')
+    .height('100%')
+    .title({ main: 'MainTitle', sub: 'subTitle' })
+    .navDestination(this.MyPageMap)
+  }
+}
+```
+
 ![navdestination_bind_scrollable](figures/navdestination_bind_scrollable.gif)
 
 ### 示例2（设置NavDestination自定义转场）
 
 以下示例主要演示NavDestination设置自定义转场动画属性[customTransition](#customtransition15)的效果。
+
+ArkTS-Dyn示例：
 
 ```ts
 @Entry
@@ -1562,7 +1746,6 @@ declare type voidFunc = () => void;
 @Component
 struct NavDest {
   @State name: string = 'NA';
-  @State destWidth: string = '100%';
   stack: NavPathStack = new NavPathStack();
   @State translateY: string = '0';
 
@@ -1664,6 +1847,194 @@ struct NavDest {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  NavPathStack,
+  Navigation,
+  Stack,
+  Alignment,
+  Color,
+  StackOptions,
+  ButtonOptions,
+  ButtonType,
+  NavPathInfo,
+  NavDestination,
+  NavDestinationContext,
+  Text,
+  SymbolGlyphModifier,
+  Scroller,
+  Scroll,
+  List,
+  ForEach,
+  ListItem,
+  TextAlign,
+  BarState,
+  NestedScrollMode,
+  ScrollDirection,
+  EdgeEffect,
+  BarStyle,
+  ToolbarItem,
+  NavigationToolbarOptions,
+  FlexAlign,
+  $r,
+  NavigationTitleMode,
+  FontWeight,
+  NavigationOperation,
+  NavDestinationTransition,
+  Curve,
+  State
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct NavDestinationCustomTransition {
+  stack: NavPathStack = new NavPathStack();
+
+  @Builder
+  pageMap(name: string) {
+    if (name) {
+      NavDest();
+    }
+  }
+
+  aboutToAppear(): void {
+    this.stack.pushPath(new NavPathInfo("dest0", undefined));
+  }
+
+  build() {
+    Navigation(this.stack) {
+      // empty
+    }
+    .navDestination(this.pageMap)
+    .hideNavBar(true)
+    .title('Main Page')
+    .titleMode(NavigationTitleMode.Mini)
+  }
+}
+
+declare type voidFunc = () => void;
+
+@Component
+struct NavDest {
+  @State name: string = 'NA';
+  @State destWidth: string = '100%';
+  stack: NavPathStack = new NavPathStack();
+  @State translateY: string = '0';
+
+  @Builder
+  titleBuilder(): void {
+    Text(this.name)
+      .fontSize(20)
+      .height(55)
+      .fontWeight(FontWeight.Bold)
+      .width('100%')
+      .padding({ left: 16, right: 16 })
+  }
+
+  build() {
+    NavDestination() {
+      Column(undefined) {
+        Button('push next page', { stateEffect: true, type: ButtonType.Capsule } as ButtonOptions)
+          .width('80%')
+          .height(40)
+          .margin(20)
+          .onClick(() => {
+            this.stack.pushPath(new NavPathInfo(this.name == 'PageOne' ? "PageTwo" : "PageOne", undefined));
+          })
+      }
+      .size({ width: '100%', height: '100%' })
+    }
+    .title(this.titleBuilder)
+    .translate({ y: this.translateY })
+    .onReady((context: NavDestinationContext) => {
+      this.name = context.pathInfo.name;
+      this.stack = context.pathStack;
+    })
+    .backgroundColor(this.name == 'PageOne' ? '#F1F3F5' : '#ff11dee5')
+    .customTransition(
+      (op: NavigationOperation, isEnter: boolean): Array<NavDestinationTransition> | undefined => {
+        console.info('[NavDestinationTransition]', 'reached delegate in frontend, op: ' + op + ', isEnter: ' + isEnter);
+
+        let transitionOneEvent: voidFunc = () => {
+          console.info('[NavDestinationTransition]', 'reached transitionOne, empty now!');
+        }
+        let transitionOneFinishEvent: voidFunc = () => {
+          console.info('[NavDestinationTransition]', 'reached transitionOneFinish, empty now!');
+        }
+        let transitionOneDuration: int = 500;
+        if (op === NavigationOperation.PUSH) {
+          if (isEnter) {
+            // ENTER_PUSH
+            this.translateY = '100%';
+            transitionOneEvent = () => {
+              console.info('[NavDestinationTransition]', 'transitionOne, push & isEnter');
+              this.translateY = '0';
+            }
+          } else {
+            // EXIT_PUSH
+            this.translateY = '0';
+            transitionOneEvent = () => {
+              console.info('[NavDestinationTransition]', 'transitionOne, push & !isEnter');
+              this.translateY = '0';
+            }
+            transitionOneDuration = 450;
+          }
+        } else if (op === NavigationOperation.POP) {
+          if (isEnter) {
+            // ENTER_POP
+            this.translateY = '0';
+            transitionOneEvent = () => {
+              console.info('[NavDestinationTransition]', 'transitionOne, pop & isEnter');
+              this.translateY = '0';
+            }
+          } else {
+            // EXIT_POP
+            this.translateY = '0';
+            transitionOneEvent = () => {
+              console.info('[NavDestinationTransition]', 'transitionOne, pop & !isEnter');
+              this.translateY = '100%';
+            }
+          }
+        }
+
+        let transitionOne: NavDestinationTransition = {
+          duration: transitionOneDuration,
+          delay: 0,
+          curve: Curve.Friction,
+          event: transitionOneEvent,
+          onTransitionEnd: transitionOneFinishEvent
+        };
+
+        let transitionTwoEvent: voidFunc = () => {
+          console.info('[NavDestinationTransition]', 'reached transitionTwo, empty now!');
+        }
+        let transitionTwo: NavDestinationTransition = {
+          duration: 1000,
+          delay: 0,
+          curve: Curve.EaseInOut,
+          event: transitionTwoEvent,
+          onTransitionEnd: () => {
+            console.info('[NavDestinationTransition]', 'reached Two\'s finish');
+          }
+        };
+
+        return [
+          transitionOne,
+          transitionTwo,
+        ];
+      })
+  }
+}
+```
+
 ![navdestination_custom_transition](figures/navdestination_custom_transition.gif)
 
 ### 示例3（设置指定的NavDestination系统转场）
@@ -1911,6 +2282,7 @@ struct HomeBody {
   }
 }
 ```
+
 ![navdestination_fade](figures/navdestination_fade_transition.gif)
 
 ![navdestination_explode](figures/navdestination_explode_transition.gif)
@@ -2007,6 +2379,7 @@ struct ExamplePage {
   }
 }
 ```
+
 ![navdestination_orientation](figures/navdestination_orientation.gif)
 
 ### 示例5（NavDestination的onActive与onInActive生命周期）

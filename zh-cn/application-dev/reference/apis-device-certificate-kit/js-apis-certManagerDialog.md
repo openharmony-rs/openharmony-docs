@@ -515,7 +515,9 @@ openAuthorizeDialog(context: common.Context, authorizeRequest: AuthorizeRequest)
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
-**设备行为差异：** 该接口在PC设备可正常调用，在其他设备中返回801错误码。
+**设备行为差异：**
+- 从API版本26.0.0开始，该接口在所有设备上无行为差异。
+- 在API版本22-24，当authorizeRequest.certTypes数组只包含CREDENTIAL_UKEY取值时，在PC/2in1设备可正常调用，在其他设备返回801错误码。当authorizeRequest.certTypes数组包含CREDENTIAL_UKEY和其他凭据类型时，在PC/2in1设备可正常调用，在其他设备上会忽略CREDENTIAL_UKEY类型的凭据。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
