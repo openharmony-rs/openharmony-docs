@@ -10,19 +10,21 @@
 
 > **说明：**
 >
-> - 本Class首批接口从API version 26.1.0开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
 > - 以下API需先使用UIContext中的[getDialogPresenter()](arkts-apis-uicontext-uicontext.md#getdialogpresenter)方法获取到DialogPresenter对象，再通过该对象调用对应方法。
+
+**起始版本：** 26.1.0
 
 ## present
 
 present(options?: dialog.DialogStyleOptions): Promise&lt;DialogResult&gt;
 
-提供一个固定样式的对话框，使用Promise异步回调返回对话结果。
+提供一个固定样式的对话框，返回对话结果。使用Promise异步回调。
 
 固定样式对话框的标题、副标题、消息、按钮及工作表项等均通过[dialog.DialogStyleOptions](js-apis-dialog.md#dialogstyleoptions)配置，弹窗本身的样式（背景、对齐、蒙层、避让等）继承自[dialog.DialogBaseOptions](js-apis-dialog.md#dialogbaseoptions)。
 
-**原子化服务API：** 从API version 26.1.0开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -54,6 +56,8 @@ present(options?: dialog.DialogStyleOptions): Promise&lt;DialogResult&gt;
 
 该示例通过调用present接口，展示了弹出固定样式对话框并通过Promise获取对话结果的功能。
 
+从API版本26.1.0开始，新增[present](#present)接口。
+
 ```ts
 import { DialogPresenter, DialogResult } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -66,22 +70,22 @@ struct Index {
 
   build() {
     Column() {
-      Button('present固定样式弹窗')
+      Button('Present fixed-style dialog')
         .onClick(() => {
           this.dialogPresenter.present({
-            title: '温馨提示',
-            message: { content: '这是一个固定样式弹窗' },
+            title: 'Tips',
+            message: { content: 'This is a fixed-style dialog' },
             buttons: [
               {
-                value: '取消',
+                value: 'Cancel',
                 action: () => {
-                  console.info('点击了取消按钮');
+                  console.info('Cancel button clicked');
                 }
               },
               {
-                value: '确定',
+                value: 'OK',
                 action: () => {
-                  console.info('点击了确定按钮');
+                  console.info('OK button clicked');
                 }
               }
             ]
@@ -98,11 +102,13 @@ struct Index {
 }
 ```
 
+![](figures/present-fixed-style-dialog.gif)
+
 ## present
 
 present(content: CustomBuilder \| CustomBuilderWithId \| ComponentContent&lt;Object&gt;, options?: dialog.DialogCustomOptions): Promise&lt;DialogResult&gt;
 
-提供一个自定义样式的对话框，其中包含所提供的内容，使用Promise异步回调返回对话结果。
+提供一个自定义样式的对话框，其中包含所提供的内容，返回对话结果。使用Promise异步回调。
 
 content参数通过联合类型接受CustomBuilder或ComponentContent：
 
@@ -116,7 +122,9 @@ content参数通过联合类型接受CustomBuilder或ComponentContent：
 >
 > [dialog.DialogBaseOptions](js-apis-dialog.md#dialogbaseoptions)中的isModal与showInSubWindow不能同时设置为true，否则只生效showInSubWindow = true，此时为非模态弹出框且不会显示蒙层，并在子窗口中显示。
 
-**原子化服务API：** 从API version 26.1.0开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -151,6 +159,8 @@ content参数通过联合类型接受CustomBuilder或ComponentContent：
 
 该示例通过调用present、update和dismiss接口，展示了弹出、更新以及关闭自定义对话框的功能。
 
+从API版本26.1.0开始，新增[present](#present)、[update](#update)、[dismiss](#dismiss)接口。
+
 ```ts
 import { ComponentContent, DialogPresenter, DialogResult, DialogBaseAlignment } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -169,9 +179,13 @@ function buildText(params: Params) {
       .fontSize(30)
       .fontWeight(FontWeight.Bold)
       .margin({ bottom: 36 })
-    Button('update更新弹窗')
+    Button('Update dialog')
       .onClick(() => {
-        dialogPresenter?.update(contentNode, { alignment: DialogBaseAlignment.BOTTOM })
+        dialogPresenter?.update(contentNode, {
+          maskColor: Color.Pink,
+          alignment: DialogBaseAlignment.CENTER_END,
+          offset: { dx: 0, dy: 30}
+        })
           .then(() => {
             console.info('update success');
           })
@@ -179,9 +193,9 @@ function buildText(params: Params) {
             console.error(`update error code is ${error.code}, message is ${error.message}`);
           })
       })
-    Button('dismiss关闭弹窗')
+    Button('Dismiss dialog')
       .onClick(() => {
-        dialogPresenter?.dismiss(dialogId)
+        dialogPresenter?.dismiss(contentNode)
           .then(() => {
             console.info('dismiss success');
           })
@@ -189,17 +203,16 @@ function buildText(params: Params) {
             console.error(`dismiss error code is ${error.code}, message is ${error.message}`);
           })
       })
-  }.backgroundColor('#FFF0F0F0')
+  }
 }
 
 let dialogPresenter: DialogPresenter | null = null;
 let contentNode: ComponentContent<Object> | null = null;
-let dialogId: number = 0;
 
 @Entry
 @Component
 struct Index {
-  @State message: string = '自定义弹窗';
+  @State message: string = 'custom dialog';
 
   aboutToAppear(): void {
     dialogPresenter = this.getUIContext().getDialogPresenter();
@@ -208,11 +221,12 @@ struct Index {
 
   build() {
     Column({ space: 10 }) {
-      Button('present自定义弹窗')
+      Button('Present custom dialog')
         .onClick(() => {
-          dialogPresenter?.present(contentNode, { isModal: true })
+          dialogPresenter?.present(contentNode, {
+            isModal: true
+          })
             .then((result: DialogResult) => {
-              dialogId = result.dialogId;
               console.info('present success, dialogId: ' + result.dialogId);
             })
             .catch((error: BusinessError) => {
@@ -224,15 +238,19 @@ struct Index {
 }
 ```
 
+![](figures/present-custom-style-dialog.gif)
+
 ## update
 
 update(content: ComponentContent&lt;Object&gt;, options?: dialog.DialogBaseOptions): Promise&lt;void&gt;
 
-更新已呈现的自定义对话框，使用Promise异步回调。
+更新已呈现的自定义对话框，无返回结果。使用Promise异步回调。
 
 content用于标识需要更新的对话框，options为需要更新的选项（背景、对齐、蒙层、避让等，继承自[dialog.DialogBaseOptions](js-apis-dialog.md#dialogbaseoptions)）。
 
-**原子化服务API：** 从API version 26.1.0开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -243,7 +261,7 @@ content用于标识需要更新的对话框，options为需要更新的选项（
 | 参数名  | 类型                                                         | 必填 | 说明                          |
 | ------- | ------------------------------------------------------------ | ---- | ----------------------------- |
 | content | [ComponentContent](./js-apis-arkui-ComponentContent.md)&lt;Object&gt; | 是   | 用于标识对话框的组件内容。     |
-| options | [dialog.DialogBaseOptions](js-apis-dialog.md#dialogbaseoptions) | 否   | 要更新的对话框选项。           |
+| options | [dialog.DialogBaseOptions](js-apis-dialog.md#dialogbaseoptions) | 否   | 要更新的对话框选项。目前仅支持更新alignment、offset、autoCancel、maskColor。  |
 
 **返回值：**
 
@@ -269,11 +287,13 @@ content用于标识需要更新的对话框，options为需要更新的选项（
 
 dismiss(target: number \| ComponentContent&lt;Object&gt;): Promise&lt;void&gt;
 
-关闭对话框，使用Promise异步回调。
+关闭对话框，无返回结果。使用Promise异步回调。
 
 接受对话框ID（由[present](#present)返回的[DialogResult](js-apis-dialog.md#dialogresult)中的dialogId）或[ComponentContent](./js-apis-arkui-ComponentContent.md)引用作为target，关闭对应的对话框。
 
-**原子化服务API：** 从API version 26.1.0开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -303,7 +323,9 @@ dismiss(target: number \| ComponentContent&lt;Object&gt;): Promise&lt;void&gt;
 
 **示例：**
 
-该示例通过调用dismiss接口，展示了分别通过对话框ID和组件内容关闭对话框的功能。对话框的弹出可参考[present](#present)的示例。
+该示例通过调用dismiss接口，展示了通过对话框ID关闭对话框的功能。对话框的弹出可参考[present](#present)的示例。
+
+从API版本26.1.0开始，新增[present](#present)、[dismiss](#dismiss)接口。
 
 ```ts
 import { DialogPresenter, DialogResult } from '@kit.ArkUI';
@@ -313,16 +335,16 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
 struct Index {
-  @State message: string = '自定义弹窗';
+  @State message: string = 'custom dialog';
   dialogPresenter: DialogPresenter | null = this.getUIContext().getDialogPresenter();
   dialogId: number = 0;
 
   @Builder
   customDialogComponent() {
     Column() {
-      Text('打开了一个弹窗').fontSize(20)
+      Text('A dialog is open').fontSize(20)
       Row({ space: 10 }) {
-        Button('关闭弹窗').onClick(() => {
+        Button('Close dialog').onClick(() => {
           try {
             this.getUIContext().getDialogPresenter().dismiss(this.dialogId)
           } catch (error) {
@@ -337,7 +359,7 @@ struct Index {
 
   build() {
     Column({ space: 10 }) {
-      Button('present自定义弹窗')
+      Button('Present custom dialog')
         .onClick(() => {
           this.dialogPresenter?.present(() => {this.customDialogComponent()},
             {
@@ -357,3 +379,5 @@ struct Index {
   }
 }
 ```
+
+![](figures/dismiss-dialog.gif)

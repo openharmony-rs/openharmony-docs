@@ -10,9 +10,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 26.1.0开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.arkui.dialog (对话框)](js-apis-dialog.md)。
+
+**起始版本：** 26.1.0
 
 ## 导入模块
 
@@ -20,7 +20,7 @@
 import { dialog } from '@kit.ArkUI';
 ```
 
-### DialogBaseOptions
+## DialogBaseOptions
 
 所有Dialog类型共享的基本选项，定义对话框的背景、边框、对齐、蒙层、避让等通用属性。本节仅列出系统接口属性，其他公开属性参见[DialogBaseOptions](js-apis-dialog.md#dialogbaseoptions)。
 

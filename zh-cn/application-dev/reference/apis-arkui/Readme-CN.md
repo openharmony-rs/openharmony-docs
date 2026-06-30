@@ -11,6 +11,7 @@
     - [@ohos.animator (动画)](js-apis-animator.md)
     - [@ohos.arkui.componentSnapshot (组件截图)](js-apis-arkui-componentSnapshot.md)
     - [@ohos.arkui.componentUtils (componentUtils)](js-apis-arkui-componentUtils.md)
+    - [@ohos.arkui.dialog (对话框)](js-apis-dialog.md)
     - [@ohos.arkui.dragController (DragController)](js-apis-arkui-dragController.md)
     - [@ohos.arkui.drawableDescriptor (DrawableDescriptor)](js-apis-arkui-drawableDescriptor.md)
     - [@ohos.arkui.inspector (布局回调)](js-apis-arkui-inspector.md)
@@ -28,6 +29,7 @@
       - [Class (ComponentUtils)](arkts-apis-uicontext-componentutils.md)
       - [Class (ContextMenuController)](arkts-apis-uicontext-contextmenucontroller.md)
       - [Class (CursorController)](arkts-apis-uicontext-cursorcontroller.md)
+      - [Class (DialogPresenter)](arkts-apis-uicontext-dialogpresenter.md)
       - [Class (DragController)](arkts-apis-uicontext-dragcontroller.md)
       - [Class (DynamicSyncScene)](arkts-apis-uicontext-dynamicsyncscene.md)
       - [Class (FocusController)](arkts-apis-uicontext-focuscontroller.md)
@@ -75,6 +77,7 @@
     - [getContext](js-apis-getContext.md)
     - [postCardAction](js-apis-postCardAction.md)
     <!--Del-->
+    - [@ohos.arkui.dialog (对话框)(系统接口)](js-apis-dialog-sys.md)
     - [@ohos.arkui.drawableDescriptor (DrawableDescriptor)(系统接口)](js-apis-arkui-drawableDescriptor-sys.md)
     - [@ohos.arkui.performanceMonitor (性能监测)(系统接口)](js-apis-arkui-performancemonitor-sys.md)
     - [@ohos.arkui.uiExtension (uiExtension)(系统接口)](js-apis-arkui-uiExtension-sys.md)
