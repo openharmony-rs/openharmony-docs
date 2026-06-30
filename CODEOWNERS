@@ -588,9 +588,9 @@ zh-cn/application-dev/ffrt/ffrt-glossary.md @chuchihtung @zhanglu161 @jinqiuheng
 zh-cn/application-dev/ffrt/ffrt-overview.md @chuchihtung @zhanglu161 @jinqiuheng
 zh-cn/application-dev/ffrt/Readme-CN.md @chuchihtung @zhanglu161 @jinqiuheng
 zh-cn/application-dev/file-management/app-file-access.md @wangke25 @gsl_1234 @wuchengjun5 @jinqiuheng
-zh-cn/application-dev/file-management/app-file-backup-extension.md @lvzhenjie @chenxi0605 @jinqiuheng
+zh-cn/application-dev/file-management/app-file-backup-extension.md @rainlost
 zh-cn/application-dev/file-management/app-file-backup-overview.md @lvzhenjie @chenxi0605 @jinqiuheng
-zh-cn/application-dev/file-management/app-file-backup-sys.md @lvzhenjie @chenxi0605 @jinqiuheng
+zh-cn/application-dev/file-management/app-file-backup-sys.md @rainlost
 zh-cn/application-dev/file-management/app-file-overview.md @wangfenging @liveery @zl_startup @jinqiuheng
 zh-cn/application-dev/file-management/app-fs-space-statistics.md @Dyylll @hwzhangchuang @yangwei_814916 @jinqiuheng
 zh-cn/application-dev/file-management/app-sandbox-directory.md @wangfenging @liveery @zl_startup @jinqiuheng
@@ -599,12 +599,12 @@ zh-cn/application-dev/file-management/dev-user-file-manager-sys.md @yangwei_8149
 zh-cn/application-dev/file-management/distributed-fs-overview.md @yangwei_814916 @hwzhangchuang @Dyylll @jinqiuheng
 zh-cn/application-dev/file-management/file-access-across-devices.md @yangwei_814916 @hwzhangchuang @Dyylll @jinqiuheng
 zh-cn/application-dev/file-management/file-copy-across-devices.md @yangwei_814916 @hwzhangchuang @Dyylll @jinqiuheng
-zh-cn/application-dev/file-management/file-persistPermission.md @lvzhenjie @hongjin-li_admin @chenxi0605 @JerryH1011 @jinqiuheng
+zh-cn/application-dev/file-management/file-persistPermission.md @rainlost
 zh-cn/application-dev/file-management/manage-external-storage-sys.md @wang_zhangjun @gzhuangzhuang @renguang1116 @jinqiuheng
 zh-cn/application-dev/file-management/native-environment-guidelines.md @wangke25 @gsl_1234 @wuchengjun5 @jinqiuheng
 zh-cn/application-dev/file-management/native-fileio-guidelines.md @wangke25 @gsl_1234 @wuchengjun5 @jinqiuheng
-zh-cn/application-dev/file-management/native-fileshare-guidelines.md @lvzhenjie @hongjin-li_admin @chenxi0605 @JerryH1011 @jinqiuheng
-zh-cn/application-dev/file-management/native-fileuri-guidelines.md @lvzhenjie @wang_zhangjun @chenxi0605 @jinqiuheng
+zh-cn/application-dev/file-management/native-fileshare-guidelines.md @rainlost
+zh-cn/application-dev/file-management/native-fileuri-guidelines.md @rainlost
 zh-cn/application-dev/file-management/Readme-CN.md @wangke25 @bubble_mao @gzhuangzhuang @gsl_1234 @jinqiuheng
 zh-cn/application-dev/file-management/request-dir-permission.md @wangke25 @gsl_1234 @wuchengjun5 @jinqiuheng
 zh-cn/application-dev/file-management/save-user-file.md @yangwei_814916 @hwzhangchuang @Dyylll @jinqiuheng
@@ -614,7 +614,7 @@ zh-cn/application-dev/file-management/set-security-label.md @wangke25 @gsl_1234 
 zh-cn/application-dev/file-management/share-app-file-configuration.md @renzehua @huangjieliang @zhanganxiang @zengyawen
 zh-cn/application-dev/file-management/share-app-file.md @gzhuangzhuang @wang_zhangjun @chenxi0605 @jinqiuheng
 zh-cn/application-dev/file-management/user-file-overview.md @yangwei_814916 @hwzhangchuang @Dyylll @jinqiuheng
-zh-cn/application-dev/file-management/user-file-uri-intro.md @gzhuangzhuang @wang_zhangjun @chenxi0605 @jinqiuheng
+zh-cn/application-dev/file-management/user-file-uri-intro.md @rainlost
 zh-cn/application-dev/form/arkts-form-overview.md @cx983299475 @xueyulong @HelloShuo @yangyuecheng
 zh-cn/application-dev/form/arkts-ui-liveform-funinteraction-development.md @Qian-Win @cx983299475 @HelloShuo @mahailong123456
 zh-cn/application-dev/form/arkts-ui-liveform-overview.md @Qian-Win @cx983299475 @HelloShuo @mahailong123456
@@ -3706,16 +3706,16 @@ zh-cn/application-dev/reference/apis-core-file-kit/capi-oh-archive-errcode-h.md 
 zh-cn/application-dev/reference/apis-core-file-kit/capi-oh-archive-h.md @rl123567 @selina_jiang @RainbowLLL @jinqiuheng
 zh-cn/application-dev/reference/apis-core-file-kit/capi-oh-cloud-disk-manager-h.md @oh_create_jiawei @jinqiuheng
 zh-cn/application-dev/reference/apis-core-file-kit/capi-oh-environment-h.md @wangke25 @gsl_1234 @wuchengjun5 @jinqiuheng
-zh-cn/application-dev/reference/apis-core-file-kit/capi-oh-file-share-h.md @lvzhenjie @hongjin-li_admin @chenxi0605 @JerryH1011 @jinqiuheng
-zh-cn/application-dev/reference/apis-core-file-kit/capi-oh-file-uri-h.md @lvzhenjie @wang_zhangjun @chenxi0605 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/capi-oh-file-share-h.md @rainlost
+zh-cn/application-dev/reference/apis-core-file-kit/capi-oh-file-uri-h.md @rainlost
 zh-cn/application-dev/reference/apis-core-file-kit/capi-oh-fileio-h.md @wangke25 @gsl_1234 @wuchengjun5 @jinqiuheng
 zh-cn/application-dev/reference/apis-core-file-kit/errorcode-clouddiskmanager-sys.md @yangwei_814916 @hwzhangchuang @Dyylll @jinqiuheng
 zh-cn/application-dev/reference/apis-core-file-kit/errorcode-filemanagement.md @wangke25 @gsl_1234 @wuchengjun5 @jinqiuheng
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-application-backupExtensionAbility-sys.md @lvzhenjie @chenxi0605 @jinqiuheng
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-application-backupExtensionAbility.md @lvzhenjie @chenxi0605 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-application-backupExtensionAbility-sys.md @rainlost
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-application-backupExtensionAbility.md @rainlost
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-document.md 无
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-backup-sys.md @lvzhenjie @chenxi0605 @jinqiuheng
-zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-backupextensioncontext.md @lvzhenjie @chenxi0605 @jinqiuheng
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-backup-sys.md @rainlost
+zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-backupextensioncontext.md @rainlost
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-clouddiskmanager-sys.md @yangwei_814916 @hwzhangchuang @Dyylll @jinqiuheng
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-cloudsync-sys.md @Hermits @reminder2352 @oh_create_jiawei @jinqiuheng
 zh-cn/application-dev/reference/apis-core-file-kit/js-apis-file-cloudsync.md @Hermits @reminder2352 @oh_create_jiawei @jinqiuheng

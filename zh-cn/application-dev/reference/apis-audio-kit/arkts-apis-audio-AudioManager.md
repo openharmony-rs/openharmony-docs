@@ -295,6 +295,31 @@ import { audio } from '@kit.AudioKit';
 let audioDeviceEnhanceManager: audio.AudioDeviceEnhanceManager = audioManager.getDeviceEnhanceManager();
 ```
 
+## getDebuggingManager
+
+getDebuggingManager(): AudioDebuggingManager
+
+获取音频调试管理器实例。该实例为单例，获取后可重复使用。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| [AudioDebuggingManager](arkts-apis-audio-AudioDebuggingManager.md) | 返回AudioDebuggingManager实例。 |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+let debugManager: audio.AudioDebuggingManager = audioManager.getDebuggingManager();
+```
+
 ## setAudioParameter<sup>(deprecated)</sup>
 
 setAudioParameter(key: string, value: string, callback: AsyncCallback&lt;void&gt;): void
