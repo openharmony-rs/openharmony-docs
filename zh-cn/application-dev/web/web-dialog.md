@@ -153,7 +153,7 @@
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>Document</title>
       <style>
-          button,label,input {
+          button, label, input {
           margin: 5px 0;
           }
       </style>
@@ -242,7 +242,7 @@
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>Document</title>
       <style>
-          button,label,input {
+          button, label, input {
           margin: 5px 0;
           }
       </style>
@@ -346,7 +346,7 @@
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>Document</title>
       <style>
-          button,label,input {
+          button, label, input {
           margin: 5px 0;
           }
       </style>
@@ -471,7 +471,7 @@
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title>Document</title>
       <style>
-          button,label,input {
+          button, label, input {
           margin: 5px 0;
           }
       </style>
