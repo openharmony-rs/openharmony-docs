@@ -1065,7 +1065,7 @@ Image_ErrorCode OH_PixelmapNative_WritePixelsToArea(OH_PixelmapNative *pixelmap,
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。<br>         IMAGE_BAD_PARAMETER：参数无效，例如：pixelmap或area有误。<br>         IMAGE_UNSUPPORTED_OPERATION：PixelMap不可编辑。<br>         IMAGE_UNKNOWN_ERROR：未知的内部错误，例如：不支持的像素格式。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。<br>         IMAGE_BAD_PARAMETER：参数无效，例如：pixelmap或area有误。<br>         IMAGE_UNSUPPORTED_OPERATION：Pixelmap不可编辑。<br>         IMAGE_UNKNOWN_ERROR：未知的内部错误，例如：不支持的像素格式。 |
 
 ### OH_PixelmapNative_GetArgbPixels()
 
@@ -2013,14 +2013,14 @@ Image_ErrorCode OH_PixelmapNative_SetMemoryName(OH_PixelmapNative *pixelmap, cha
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 被操作的OH_PixelmapNative指针。 |
-| char *name | 需要被设置的Pixelmap内存名称。DMA内存名字取值范围为[1, 255]，ASHMEM内存名字取值范围为[1, 244]。单位：字节（px）。 |
-| size_t *size | 需要被设置的Pixelmap内存名称的字节大小。DMA内存名字取值范围为[1, 255]，ASHMEM内存名字取值范围为[1, 244]。单位：字节（px）。 |
+| char *name | 需要被设置的Pixelmap内存名称。DMA内存名字取值范围为[1, 255]，SHARE_MEMORY内存名字取值范围为[1, 244]。单位：字节（Byte）。 |
+| size_t *size | 需要被设置的Pixelmap内存名称的字节大小。DMA内存名字取值范围为[1, 255]，SHARE_MEMORY内存名字取值范围为[1, 244]。单位：字节（Byte）。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>         IMAGE_BAD_PARAMETER：名字长度超过取值范围。DMA内存名字取值范围为[1, 255]，ASHMEM内存名字取值范围为[1, 244]。单位：字节（px）。<br>         IMAGE_UNSUPPORTED_MEMORY_FORMAT：既不是DMA内存也不是ASHMEM内存。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>         IMAGE_BAD_PARAMETER：名字长度超过取值范围。DMA内存名字取值范围为[1, 255]，SHARE_MEMORY内存名字取值范围为[1, 244]。单位：字节（Byte）。<br>         IMAGE_UNSUPPORTED_MEMORY_FORMAT：既不是DMA内存也不是SHARE_MEMORY内存。 |
 
 ### OH_PixelmapNative_GetByteCount()
 
