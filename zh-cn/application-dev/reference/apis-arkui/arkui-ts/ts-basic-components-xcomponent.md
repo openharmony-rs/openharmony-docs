@@ -224,6 +224,7 @@ hdrBrightness(brightness: number, type?: HdrType)
    | type取值 | hdrFormats需包含的HDRFormat |
    | -------- | -------- |
    | [HdrType](#hdrtype24枚举说明).AIHDR | [HDRFormat](../../apis-arkgraphics2d/js-apis-hdrCapability.md#hdrformat).VIDEO_AIHDR |
+   | [HdrType](#hdrtype24枚举说明).EDR | [HDRFormat](../../apis-arkgraphics2d/js-apis-hdrCapability.md#hdrformat).EDR |
 
 > **说明：**
 > 
@@ -256,6 +257,7 @@ HDR视频的高动态范围渲染类型。
 | ---- | -- | ---- |
 | DEFAULT | 0 | 默认HDR类型，使用标准高动态范围渲染模式。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 | AIHDR | 1 | AI HDR类型，使用AI算法对非HDR内容进行智能动态范围扩展，实现HDR的显示效果。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。|
+| EDR | 2 | EDR类型，应用完成HDR色调映射后，与SDR内容混合至SDR色彩空间。通过对混合后的EDR图层设置提亮系数，实现自绘制图层HDR提亮效果。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 ## 事件
 
 从API version 12开始，type为SURFACE或TEXTURE时，支持[通用事件](ts-component-general-events.md)。
