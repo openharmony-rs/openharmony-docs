@@ -224,9 +224,3 @@ struct WidgetCard {
 **UI of the FormMenu component**
 
 ![en-us_image_0000001616959836](figures/en-us_image_add_form_to_desktop.jpeg)
-
-**Result of using Add to home screen with the FormMenu component**
-
-The figure below shows the results when **formbindingdata** is empty (left), and when it is set to **{ data: 'share' }** (right).
-
-![en-us_image_0000001616959836](figures/en-us_image_add_form_to_desktop_result.jpeg)
