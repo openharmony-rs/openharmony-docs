@@ -149,16 +149,17 @@ Web({
 ArkTS-Sta示例：
 <!--code_no_check-->
 <!-- @[web_DataDetector_LongPress](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebDataDetector/entry/src/main/ets/pages/WebDataDetectorLongPress.ets) --> 
-```TypeScript
+
+``` TypeScript
 Web({
-src: $rawfile('index.html'),
-controller: this.webController
+  src: $rawfile('index.html'),
+  controller: this.webController
 })
-.enableDataDetector(true)
-.dataDetectorConfig({
-  enablePreviewMenu: true,  // 配置分词长按预览功能
-  types: []
-})
+  .enableDataDetector(true)
+  .dataDetectorConfig({
+    enablePreviewMenu: true,  // 配置分词长按预览功能
+    types: []
+  })
 ```
 
 在[copyOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#copyoptions11)不为CopyOptions.None时，长按被高亮的实体文本，会弹出预览菜单，如下图。
