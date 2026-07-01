@@ -885,15 +885,15 @@ on(type: 'openInfo', callback: AsyncCallback\<WebSocketOpenInfo\>): void
 
 订阅WebSocket的打开信息事件，使用callback异步回调。该事件用于获取WebSocket连接成功后的详细信息。该接口需要在调用[connect](#connect)发起连接请求前调用。
  
- **系统能力**：SystemCapability.Communication.NetStack
+ **系统能力: **SystemCapability.Communication.NetStack
  
- **ArkTS-Dyn起始版本：** 26.0.0
+ **ArkTS-Dyn起始版本: ** 26.0.0
  
- **ArkTS-Sta起始版本：** 26.0.0
+ **ArkTS-Sta起始版本: ** 26.0.0
  
- **模型约束**：此接口仅可在Stage模型下使用。
+ **模型约束: **此接口仅可在Stage模型下使用。
  
- **参数：**
+ **参数: **
 
  | 参数名   | 类型                    | 必填 | 说明                          |
  | -------- | ----------------------- | ---- | ----------------------------- |
@@ -925,13 +925,13 @@ ws.on('openInfo', (err: BusinessError, value: webSocket.WebSocketOpenInfo) => {
  >
  > 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
- **系统能力**：SystemCapability.Communication.NetStack
+ **系统能力: **SystemCapability.Communication.NetStack
  
- **ArkTS-Dyn起始版本：** 26.0.0
+ **ArkTS-Dyn起始版本: ** 26.0.0
  
- **ArkTS-Sta起始版本：** 26.0.0
+ **ArkTS-Sta起始版本: ** 26.0.0
 
- **模型约束**：此接口仅可在Stage模型下使用。
+ **模型约束: **此接口仅可在Stage模型下使用。
 
  **参数：**
 
@@ -1350,11 +1350,11 @@ on(type: 'dataEnd', callback: Callback\<void\>): void
 
 订阅WebSocket的数据接收结束事件。使用callback异步回调。
 
-**系统能力：** SystemCapability.Communication.NetStack
+**系统能力: ** SystemCapability.Communication.NetStack
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式: ** 该接口仅适用于ArkTS-Sta。
 
-**参数：**
+**参数: **
 
 | 参数名   |       类型        | 必填 |                  说明                   |
 | -------- | ---------------- | ---- | --------------------------------------- |
@@ -1378,11 +1378,11 @@ onDataEnd(callback: Callback\<void\>): void
 
 订阅WebSocket的数据接收结束事件。使用callback异步回调。
 
-**系统能力：** SystemCapability.Communication.NetStack
+**系统能力: ** SystemCapability.Communication.NetStack
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式: ** 该接口仅适用于ArkTS-Dyn。
 
-**参数：**
+**参数: **
 
 | 参数名   |       类型        | 必填 |                  说明                   |
 | -------- | ---------------- | ---- | --------------------------------------- |
@@ -2421,9 +2421,9 @@ onWebSocketServerClose(callback: ClientConnectionCloseCallback): void
 
 订阅WebSocketServer的关闭事件。使用callback异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式: ** 该接口仅适用于ArkTS-Sta。
 
-**系统能力：** SystemCapability.Communication.NetStack
+**系统能力: ** SystemCapability.Communication.NetStack
 
 **参数：**
 
@@ -2482,9 +2482,9 @@ offWebSocketServerClose(callback?: ClientConnectionCloseCallback): void
 >
 > 可以指定传入onWebSocketServerClose中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式: ** 该接口仅适用于ArkTS-Sta。
 
-**系统能力：** SystemCapability.Communication.NetStack
+**系统能力: ** SystemCapability.Communication.NetStack
 
 **参数：**
 
@@ -2630,21 +2630,21 @@ localServer.offWebSocketServerError();
 
 建立WebSocket连接时，可选参数的类型和说明。
 
-**系统能力：** SystemCapability.Communication.NetStack
+**系统能力: ** SystemCapability.Communication.NetStack
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**模型约束: **此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 |  只读  | 可选 | 说明                                                         |
 | ------ | ------ |------ | ---- | ------------------------------------------------------------ |
-| header | ArkTS-Dyn: Object<br>ArkTS-Sta: Record\<string, string> |  否  |  是   | 建立WebSocket连接可选参数，代表建立连接时携带的HTTP头信息。参数内容自定义，也可以不指定。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 6 <br>**ArkTS-Sta起始版本：** 23|
-| caPath<sup>11+</sup> | string |  否  |  是  | 如果设置了此参数，系统将使用用户指定路径的CA证书，(开发者需保证该路径下CA证书的可访问性)，否则将使用系统预设CA证书，系统预设CA证书位置：/etc/ssl/certs/cacert.pem。证书路径为沙箱映射路径（开发者可通过UIAbilityContext提供的能力获取应用沙箱路径）。目前仅支持格式为pem的文本证书。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
-| clientCert<sup>11+</sup> | [ClientCert](#clientcert11) |   否  |  是   | 支持传输客户端证书。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 |
-| proxy<sup>12+</sup> | [ProxyConfiguration](#proxyconfiguration12) |  否  | 是 | 通信过程中的代理信息，默认使用系统网络代理。<br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23 |
-| protocol<sup>12+</sup> | string |  否  | 是 | 自定义Sec-WebSocket-Protocol字段，默认为""。    <br>**ArkTS-Dyn起始版本：** 12 <br>**ArkTS-Sta起始版本：** 23          |
-| skipServerCertVerification<sup>20+</sup> | boolean | 否 | 是 | 是否跳过服务器证书验证。true表示跳过服务器证书验证，false表示不跳过服务器证书验证。默认为false。<br>**ArkTS-Dyn起始版本：** 20 <br>**ArkTS-Sta起始版本：** 26.0.0 |
-| pingInterval<sup>21+</sup> | number | 否 | 是 | 自定义[心跳检测](../../network/websocket-connection.md#场景介绍)时间，默认为30s。每pingInterval周期会发起心跳检测，设置为0则表示关闭心跳检测。最大值：30000s，最小值：0s。 |
-| pongTimeout<sup>21+</sup> | number | 否 | 是 | 自定义发起心跳检测后，超时断开时间，默认为30s。发起心跳检测后若pongTimeout时间未响应则断开连接。最大值：30000s，最小值：0s。pongTimeout须小于等于pingInterval。|
-| minSupportTlsProtocol | [TlsProtocol](#tlsprotocol) | 否 | 是 | 自定义支持的最低TLS协议版本。例如：设置该参数为TLS_V_1_1，则客户端可支持TLS协议版本有TLS1.1、TLS1.2、TLS1.3。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
+| header | ArkTS-Dyn: Object<br>ArkTS-Sta: Record\<string, string> |  否  |  是   | 建立WebSocket连接可选参数，代表建立连接时携带的HTTP头信息。参数内容自定义，也可以不指定。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本: ** 6 <br>**ArkTS-Sta起始版本: ** 23|
+| caPath<sup>11+</sup> | string |  否  |  是  | 如果设置了此参数，系统将使用用户指定路径的CA证书，(开发者需保证该路径下CA证书的可访问性)，否则将使用系统预设CA证书，系统预设CA证书位置：/etc/ssl/certs/cacert.pem。证书路径为沙箱映射路径（开发者可通过UIAbilityContext提供的能力获取应用沙箱路径）。目前仅支持格式为pem的文本证书。<br>**ArkTS-Dyn起始版本: ** 11 <br>**ArkTS-Sta起始版本: ** 23 |
+| clientCert<sup>11+</sup> | [ClientCert](#clientcert11) |   否  |  是   | 支持传输客户端证书。<br>**ArkTS-Dyn起始版本: ** 11 <br>**ArkTS-Sta起始版本: ** 23 |
+| proxy<sup>12+</sup> | [ProxyConfiguration](#proxyconfiguration12) |  否  | 是 | 通信过程中的代理信息，默认使用系统网络代理。<br>**ArkTS-Dyn起始版本: ** 12 <br>**ArkTS-Sta起始版本: ** 23 |
+| protocol<sup>12+</sup> | string |  否  | 是 | 自定义Sec-WebSocket-Protocol字段，默认为""。    <br>**ArkTS-Dyn起始版本: ** 12 <br>**ArkTS-Sta起始版本: ** 23          |
+| skipServerCertVerification<sup>20+</sup> | boolean | 否 | 是 | 是否跳过服务器证书验证。true表示跳过服务器证书验证，false表示不跳过服务器证书验证。默认为false。<br>**ArkTS-Dyn起始版本: ** 20 <br>**ArkTS-Sta起始版本: ** 26.0.0     |
+| pingInterval<sup>21+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 自定义[心跳检测](../../network/websocket-connection.md#场景介绍)时间，默认为30s。每pingInterval周期会发起心跳检测，设置为0则表示关闭心跳检测。最大值：30000s，最小值：0s。 |
+| pongTimeout<sup>21+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 自定义发起心跳检测后，超时断开时间，默认为30s。发起心跳检测后若pongTimeout时间未响应则断开连接。最大值：30000s，最小值：0s。pongTimeout须小于等于pingInterval。|
+| minSupportTlsProtocol | [TlsProtocol](#tlsprotocol) | 否 | 是 | 自定义支持的最低TLS协议版本。例如：设置该参数为TLS_V_1_1，则客户端可支持TLS协议版本有TLS1.1、TLS1.2、TLS1.3。<br>**ArkTS-Dyn起始版本: ** 26.0.0 <br>**ArkTS-Sta起始版本: ** 26.0.0|
 
 ## ClientCert<sup>11+</sup>
 
@@ -2844,13 +2844,13 @@ type ClientConnectionCloseCallback = (clientConnection: WebSocketConnection, clo
 
 关闭WebSocketServer连接时，订阅close事件得到的指定客户端的关闭结果。
 
-**系统能力：** SystemCapability.Communication.NetStack
+**系统能力: ** SystemCapability.Communication.NetStack
 
-**ArkTS-Dyn起始版本：** 19
+**ArkTS-Dyn起始版本: ** 19
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本: ** 23
 
-**参数：**
+**参数: **
 | 名称 | 类型   | 只读 | 可选 | 说明                            |
 | ---------------- | ------------------- | ---- | ------ | --------------------------------------------- |
 | clientConnection | [WebSocketConnection](#websocketconnection19) | 否 | 否 | 客户端信息，包括客户端的ip地址和端口号port。             |
@@ -2860,11 +2860,13 @@ type ClientConnectionCloseCallback = (clientConnection: WebSocketConnection, clo
 
 TLS协议类型。
 
-**系统能力：** SystemCapability.Communication.NetStack
+**系统能力: ** SystemCapability.Communication.NetStack
 
-**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Dyn起始版本: ** 26.0.0
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本: ** 26.0.0
+
+**模型约束: **此接口仅可在Stage模型下使用。
 
 |            名称         | 值   | 说明        |
 | ----------------------- | ---- | ---------- |
@@ -2877,16 +2879,16 @@ TLS协议类型。
 
 WebSocket连接成功后的详细信息。
 
-**系统能力**：SystemCapability.Communication.NetStack
+**系统能力: **SystemCapability.Communication.NetStack
 
-**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Dyn起始版本: ** 26.0.0
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本: ** 26.0.0
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**模型约束: **此接口仅可在Stage模型下使用。
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| status | int | 否 | 否 | 服务器返回的状态码。例如：101表示建链成功并升级为WebSocket协议。 |
+| status | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 服务器返回的状态码。例如：101表示建链成功并升级为WebSocket协议。 |
 | message | string | 否 | 否 | 服务器返回的状态信息。与status字段对应，例如：status=101时，该字段返回"Switching Protocols"。 |
 | protocol | string | 否 | 是 | 服务器返回的协商后的协议。 |
