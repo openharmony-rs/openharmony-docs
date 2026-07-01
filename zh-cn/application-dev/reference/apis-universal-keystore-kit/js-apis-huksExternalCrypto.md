@@ -44,7 +44,7 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 | HUKS_EXT_CRYPTO_TAG_UID | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_INT \| 200004    | 表示调用方的uid。 |
 | HUKS_EXT_CRYPTO_TAG_PURPOSE | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_INT \| 200005    | 表示证书链对应密钥的使用类型，具体类型详见[CertificatePurpose](../apis-device-certificate-kit/js-apis-certManager.md#certificatepurpose22)。 |
 | HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200007    | 表示获取资源ID所需的信息，格式和内容由厂商自定义。<br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。 |
-| HUKS_EXT_CRYPTO_TAG_ABILITY_INFO | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200008    | 表示密钥管理扩展自定义PIN码弹窗相关Ability列表信息，在注册密钥管理扩展时，同步注册，详见[provider注册示例](../../security/UniversalKeystoreKit/huks-extension-registration-and-unregistration-arkts.md)。注册了自定义弹窗，则在PIN码认证时允许拉起自定义弹窗，进行PIN码认证等操作。<br>HUKS_EXT_CRYPTO_TAG_ABILITY_INFO中的JSON列表由多个JSON对象组成，每个JSON对象包含两个字段：abilityName和index。字段应遵循以下要求：<br> 1.abilityName：长度范围为1~128字节。<br> 2.index：其值为resourceId，最大长度为512字节。该字段不允许重复，允许单个CryptoExtension下该字段为空，为空时传输空字符串。在搜索时优先匹配index对应的UIAbility，当不存在时返回index为空的UIAbility。<br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| HUKS_EXT_CRYPTO_TAG_ABILITY_INFO | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200008    | 表示密钥管理扩展自定义PIN码弹窗相关Ability列表信息，在注册密钥管理扩展时，同步注册，详见[provider注册示例](../../security/UniversalKeystoreKit/huks-extension-registration-and-unregistration-arkts.md)。注册了自定义弹窗，则在PIN码认证时允许拉起自定义弹窗，进行PIN码认证等操作。<br>HUKS_EXT_CRYPTO_TAG_ABILITY_INFO<br> 1.abilityName：长度范围为1~128字节。<br> 2.index：其值为resourceId，最大长度为512字节。该字段不允许重复，允许单个CryptoExtension下该字段为空，为空时传输空字符串。在搜索时优先匹配index对应的UIAbility，当不存在时返回index为空的UIAbility。<br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 | HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200009    | 表示CryptoExtensionAbility所属的HAP Bundle名称。<br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## HuksExternalCryptoParam
@@ -75,15 +75,15 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 
 ## HuksExternalPinAuthState
 
-表示Ukey PIN码管理的状态值的枚举。
+表示UKey PIN码管理的状态值的枚举。
 
 **系统能力：** SystemCapability.Security.Huks.CryptoExtension
 
 | 名称    | 值   | 说明   |
 | ------- | ---- | -------- |
-| HUKS_EXT_CRYPTO_PIN_NO_AUTH | 0 | Ukey PIN未认证。 |
-| HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED | 1 | Ukey PIN认证成功。 |
-| HUKS_EXT_CRYPTO_PIN_LOCKED  | 2 | Ukey PIN已锁定。 |
+| HUKS_EXT_CRYPTO_PIN_NO_AUTH | 0 | UKey PIN未认证。 |
+| HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED | 1 | UKey PIN认证成功。 |
+| HUKS_EXT_CRYPTO_PIN_LOCKED  | 2 | UKey PIN已锁定。 |
 
 ## huksExternalCrypto.registerProvider
 
@@ -101,7 +101,7 @@ registerProvider(providerName: string, params: Array\<HuksExternalCryptoParam>):
 
     - Action：string参数类型，在拉起自定义弹窗时want传输的Action为"UkeyPINAuth"。
     - appUid：number参数类型，通过want.parameters传输。"appUid"字段为应用id，开发者可以通过该字段完成应用隔离。
-    - keyUri：string参数类型，其值为resourceId，通过want.parameters传输，表示Ukey证书的索引。
+    - keyUri：string参数类型，其值为resourceId，通过want.parameters传输，表示UKey证书的索引。
   
 4. 开发者实现UIAbility时，应用需根据指定场景返回对应的错误码：
 
