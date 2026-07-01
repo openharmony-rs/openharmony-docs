@@ -1144,7 +1144,7 @@ enableHapticFeedback(isEnabled: boolean)
 ```json
 "requestPermissions": [
  {
-    "name": "ohos.permission.VIBRATE",
+    "name": "ohos.permission.VIBRATE"
  }
 ]
 ```
@@ -2428,7 +2428,7 @@ function CustomKeyboardBuilder(builderParams: BuilderParams) {
 struct TextInputExample {
   controller: TextInputController = new TextInputController();
   @State inputValue: string = "";
-  @State componentContent ?: ComponentContent<BuilderParams> = undefined;
+  @State componentContent?: ComponentContent<BuilderParams> = undefined;
   @State builderParam: BuilderParams = new BuilderParams(this.inputValue, this.controller);
   @State supportAvoidance: boolean = true;
 

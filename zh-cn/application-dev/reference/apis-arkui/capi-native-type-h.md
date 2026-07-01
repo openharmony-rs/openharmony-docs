@@ -6062,7 +6062,7 @@ typedef bool (*ArkUI_TextMenuItemClickCallback)(const ArkUI_TextMenuItem* item,i
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 是否拦截系统默认处理行为。<br> true：拦截系统默认处理行为，如点击“粘贴”、“复制”等文本菜单项时不再执行系统系统默认处理行为，仅执行开发者自定义处理行为。<br> false：不拦截系统默认处理行为，如点击“粘贴”、“复制”等文本菜单项时先执行开发者自定义处理行为，再执行系统默认处理行为。 |
+| bool | 是否拦截系统默认处理行为。<br> true：拦截系统默认处理行为，如点击“粘贴”、“复制”等文本菜单项时不再执行系统默认处理行为，仅执行开发者自定义处理行为。<br> false：不拦截系统默认处理行为，如点击“粘贴”、“复制”等文本菜单项时先执行开发者自定义处理行为，再执行系统默认处理行为。 |
 
 ### OH_ArkUI_TextEditMenuOptions_RegisterOnCreateMenuCallback()
 

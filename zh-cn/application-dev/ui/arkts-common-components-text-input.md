@@ -1,7 +1,7 @@
 # 文本输入 (TextInput/TextArea/Search)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @kangshihui-->
+<!--Owner: @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -81,7 +81,7 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
 
 TextInput、TextArea和Search都支持设置输入框类型，通过type属性进行设置，但是各组件的枚举值略有不同。下面以单行输入框为例进行说明。
 
-TextInput有以下类型可选择：Normal基本输入模式、Password密码输入模式、Email邮箱地址输入模式、Number纯数字输入模式、PhoneNumber电话号码输入模式、USER_NAME用户名输入模式、NEW_PASSWORD新密码输入模式、NUMBER_PASSWORD纯数字密码输入模式、<!--Del-->SCREEN_LOCK_PASSWORD锁屏应用密码输入模式、<!--DelEnd-->NUMBER_DECIMAL带小数点的数字输入模式、带URL的输入模式。通过[type](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#type)属性进行设置：
+TextInput有以下类型可选择：Normal基本输入模式、Password密码输入模式、Email邮箱地址输入模式、Number纯数字输入模式、PhoneNumber电话号码输入模式、USER_NAME用户名输入模式、NEW_PASSWORD新密码输入模式、NUMBER_PASSWORD纯数字密码输入模式、<!--Del-->SCREEN_LOCK_PASSWORD锁屏应用密码输入模式、<!--DelEnd-->NUMBER_DECIMAL带小数点的数字输入模式、URL带链接的输入模式。通过[type](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#type)属性进行设置：
 
 ### 基本输入模式（默认类型）
 
@@ -292,7 +292,6 @@ struct TextInputEventAdd {
           \n${this.textStr4}\n${this.textStr5}\n${this.textStr6}
           \n${this.textStr7}\n${this.textStr8}\n${this.textStr9}`)
           .fontSize(20)
-          .width('70%')
         TextInput({ text: this.text, placeholder: 'input your word...', controller: this.controller })
           .type(InputType.Password)
           .showPassword(this.passwordState)
@@ -461,7 +460,7 @@ struct DisableMenuItem {
           .caretStyle({ width: '4vp' })
           .editMenuOptions({
             onCreateMenu: (menuItems: Array<TextMenuItem>) => {
-              // menuItems不包含搜索和翻译
+              // menuItems不包含搜索、翻译和AI帮写
               return menuItems;
             },
             onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
@@ -601,7 +600,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
   hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
   windowStage.loadContent('pages/Index', (err, data) => {
-    let keyboardAvoidMode = windowStage.getMainWindowSync().getUIContext().getKeyboardAvoidMode();
+    windowStage.getMainWindowSync().getUIContext().getKeyboardAvoidMode();
     windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.OFFSET_WITH_CARET);
     if (err.code) {
       hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
