@@ -209,8 +209,8 @@
     ```
 
     ArkTS-Sta示例：
-
     <!-- @[AchieveAlertDialogPage2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage2.ets) -->
+    
     ``` TypeScript
     import { AlertDialog } from '@ohos.arkui.advanced.Dialog';
     import {
@@ -231,7 +231,7 @@
     } from '@ohos.arkui.component'
     import { State } from '@ohos.arkui.stateManagement'
     import { webview } from '@kit.ArkWeb';
-
+    
     @Entry
     @Component
     struct AlertDialogPage {
@@ -259,7 +259,7 @@
           this.dialogControllerAlert.close();
         }
       })
-
+    
       build() {
         Column() {
           Web({ src: $rawfile('alert.html'), controller: this.webviewController })
@@ -277,6 +277,7 @@
         }
       }
     }
+    ```
     ```
 
   加载的html。
