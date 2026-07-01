@@ -174,6 +174,12 @@
 2. 定义回调函数接收握持手结果
 
    <!-- @[motion_subscribe_holding_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->  
+   
+   ``` TypeScript
+   let callback:Callback<motion.HoldingHandStatus> = (data:motion.HoldingHandStatus) => {
+     console.info('callback succeeded' + data);
+   };
+   ```
 
 
 
