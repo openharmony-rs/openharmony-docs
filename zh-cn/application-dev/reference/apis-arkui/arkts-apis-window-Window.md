@@ -1695,7 +1695,7 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 
 设置应用主窗口或应用子窗口的布局是否为[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)，使用Promise异步回调。其余窗口调用不生效也不报错。
 
-沉浸式布局生效时，布局不避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。
+沉浸式布局生效时，布局不避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。<!--Del-->当前工具栏的显示或隐藏设置仅Car设备支持。<!--DelEnd-->
 
 非沉浸式布局生效时，布局避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件不会与其重叠。
 
@@ -1713,7 +1713,7 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------------------ | ------- | -- | ------------------------------------------------------------------------------------------------ |
-| isLayoutFullScreen | boolean | 是 | 窗口的布局是否为沉浸式布局（该沉浸式布局状态栏、<!--RP15-->工具栏或三键导航栏<!--RP15End-->仍然显示）。true表示沉浸式布局；false表示非沉浸式布局。 |
+| isLayoutFullScreen | boolean | 是 | 窗口的布局是否为沉浸式布局（该沉浸式布局状态栏、<!--RP15-->工具栏或三键导航栏<!--RP15End-->仍然显示）。true表示沉浸式布局；false表示非沉浸式布局。|
 
 **返回值：**
 
@@ -11761,7 +11761,7 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&l
 
 设置主窗口或子窗口的布局是否为[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)，使用callback异步回调。系统窗口调用不生效。
 
-沉浸式布局生效时，布局不避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。
+沉浸式布局生效时，布局不避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。<!--Del-->当前工具栏的显示或隐藏设置仅Car设备支持。<!--DelEnd-->
 
 非沉浸式布局生效时，布局避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件不会与其重叠。
 
@@ -12301,7 +12301,7 @@ setFullScreen(isFullScreen: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 设置主窗口或子窗口的布局是否为全屏布局，使用callback异步回调。
 
-全屏布局生效时，布局不避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。
+全屏布局生效时，布局不避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。<!--Del-->当前工具栏的显示或隐藏设置仅Car设备支持。<!--DelEnd-->
 
 非全屏布局生效时，布局避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件不会与其重叠。
 
@@ -12358,7 +12358,7 @@ setFullScreen(isFullScreen: boolean): Promise&lt;void&gt;
 
 设置主窗口或子窗口的布局是否为全屏布局，使用Promise异步回调。
 
-全屏布局生效时，布局不避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。
+全屏布局生效时，布局不避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。<!--Del-->当前工具栏的显示或隐藏设置仅Car设备支持。<!--DelEnd-->
 
 非全屏布局生效时，布局避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件不会与其重叠。
 
@@ -12418,7 +12418,7 @@ setLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&lt;void
 
 设置主窗口或子窗口的布局是否为[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)，使用callback异步回调。
 
-沉浸式布局生效时，布局不避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。
+沉浸式布局生效时，布局不避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。<!--Del-->当前工具栏的显示或隐藏设置仅Car设备支持。<!--DelEnd-->
 
 非沉浸式布局生效时，布局避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件不会与其重叠。
 
@@ -12475,7 +12475,7 @@ setLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 
 设置主窗口或子窗口的布局是否为[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)，使用Promise异步回调。
 
-沉浸式布局生效时，布局不避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。
+沉浸式布局生效时，布局不避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。<!--Del-->当前工具栏的显示或隐藏设置仅Car设备支持。<!--DelEnd-->
 
 非沉浸式布局生效时，布局避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件不会与其重叠。
 
