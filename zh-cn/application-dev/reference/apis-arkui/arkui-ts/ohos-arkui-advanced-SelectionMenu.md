@@ -320,7 +320,7 @@ struct Index {
         event.content.spans.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index) => {
           if (typeof (item as RichEditorTextSpanResult)['textStyle'] != 'undefined') {
             let span = item as RichEditorTextSpanResult;
-            console.info('test cut' + span.value);
+            console.info('test onCopy' + span.value);
             console.info('test start ' + span.offsetInSpan[0] + ' end: ' + span.offsetInSpan[1]);
           }
         })
@@ -331,7 +331,7 @@ struct Index {
         event.content.spans.forEach((item: RichEditorTextSpanResult | RichEditorImageSpanResult, index) => {
           if (typeof (item as RichEditorTextSpanResult)['textStyle'] != 'undefined') {
             let span = item as RichEditorTextSpanResult;
-            console.info('test onPaste' + span.value);
+            console.info('test onSelectAll' + span.value);
             console.info('test start ' + span.offsetInSpan[0] + ' end: ' + span.offsetInSpan[1]);
           }
         })

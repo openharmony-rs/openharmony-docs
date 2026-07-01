@@ -3379,8 +3379,6 @@ struct TextExample10 {
   @State str2: string = ""
   @State str3: string = ""
   @State str4: string = ""
-  textStyleAttrs: TextStyle =
-    new TextStyle({ fontWeight: FontWeight.Bolder, fontSize: LengthMetrics.vp(24), fontStyle: FontStyle.Italic });
   titleParagraphStyleAttr: ParagraphStyle =
     new ParagraphStyle({ paragraphSpacing: LengthMetrics.px(50), textIndent: LengthMetrics.vp(15) });
   mutableStyledString: MutableStyledString =
