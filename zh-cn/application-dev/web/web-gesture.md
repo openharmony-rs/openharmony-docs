@@ -82,8 +82,6 @@ ArkTS-Sta示例：
 <!-- @[DistinguishTwoGesture](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebGestureInteraction/entry/src/main/ets/pages/DistinguishTwoGesture.ets) --> 
 
 ``` TypeScript
-'use static'
-
 import { Column, Component, Entry, GestureEvent, PinchGesture, Web } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 import webview from '@ohos.web.webview';
