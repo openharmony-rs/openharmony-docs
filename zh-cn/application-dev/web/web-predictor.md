@@ -20,7 +20,6 @@
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
-// ...
 
 @Entry
 @Component
