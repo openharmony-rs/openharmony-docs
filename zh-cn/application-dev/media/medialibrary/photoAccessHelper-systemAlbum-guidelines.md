@@ -135,7 +135,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   };
 
   let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> | null = null;
-  let photoFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | null = null; 
+  let photoFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | null = null;
   try {
     albumFetchResult = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.SYSTEM,
       photoAccessHelper.AlbumSubtype.FAVORITE);
