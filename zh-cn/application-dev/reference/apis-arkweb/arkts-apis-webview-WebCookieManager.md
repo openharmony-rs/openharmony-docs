@@ -350,7 +350,6 @@ struct WebComponent {
 
 ## fetchCookie<sup>26+</sup>
 
-static fetchCookie(url: string, incognito: boolean): Promise\<string>
 static fetchCookie(url: string, incognito: boolean, includePartitionedCookies: boolean): Promise\<string>
 
 以Promise方式异步获取指定url对应cookie的值。可以获取partitioned cookies。
