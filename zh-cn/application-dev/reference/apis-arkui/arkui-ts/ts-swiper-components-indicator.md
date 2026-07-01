@@ -85,7 +85,7 @@ ArkTS-Sta: style(indicatorStyle: DotIndicator | DigitIndicator | undefined)
 
 > **说明：**
 >
-> 当indicatorStyle类型为DotIndicator且未与Swiper组件绑定时，[maxDisplayCount](ts-container-swiper.md#maxdisplaycount12)不生效。
+> 当indicatorStyle类型为DotIndicator且未与Swiper组件绑定时，API版本26.1.0之前[maxDisplayCount](ts-container-swiper.md#maxdisplaycount12)不生效，从API版本26.1.0开始生效。
 
 ### count
 
