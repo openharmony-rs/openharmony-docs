@@ -265,7 +265,7 @@ getColorTint(): int
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function getColorTint(session: camera.PhotoSession | camera.VideoSession): number {
+function getColorTint(session: camera.PhotoSession | camera.VideoSession): int {
   let colorTint: int = 0;
   try {
     colorTint = session.getColorTint();
