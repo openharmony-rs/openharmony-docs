@@ -48,7 +48,9 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 <!-- @[ControlWebGestureZooming](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebManagementZooming/entry/src/main/ets/pages/ControlWebGestureZooming.ets) --> 
+
 ``` TypeScript
+
 import { webview } from '@kit.ArkWeb';
 import { Entry, Component, Column, Web } from '@ohos.arkui.component';
 
