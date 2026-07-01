@@ -134,22 +134,28 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     predicates: predicates
   };
 
+  let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> | null = null;
+  let photoFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | null = null;
   try {
-    let albumFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = 
-      await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.SYSTEM, photoAccessHelper.AlbumSubtype.FAVORITE);
+    albumFetchResult = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.SYSTEM,
+      photoAccessHelper.AlbumSubtype.FAVORITE);
     let album: photoAccessHelper.Album = await albumFetchResult.getFirstObject();
     console.info('get favorite album successfully, albumUri: ' + album.albumUri);
 
-    let photoFetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
-      await album.getAssets(fetchOptions);
+    photoFetchResult = await album.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await photoFetchResult.getFirstObject();
     console.info('favorite album getAssets successfully, photoAsset displayName: ' + photoAsset.displayName);
-    photoFetchResult.close();
-    albumFetchResult.close();
     // ...
   } catch (err) {
     console.error('favorite failed with err: ' + err);
     // ...
+  } finally {
+    if (photoFetchResult) {
+      photoFetchResult.close();
+    }
+    if (albumFetchResult) {
+      albumFetchResult.close();
+    }
   }
 }
 ```
