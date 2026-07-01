@@ -231,7 +231,7 @@
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.release_type=%{public}s",
                           eventInfo["release_type"].asString().c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.cpu_abi=%{public}s",
-                         eventInfo["cpu_abi"].asString().c_str());
+                          eventInfo["cpu_abi"].asString().c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.app_running_unique_id=%{public}s",
                           eventInfo["app_running_unique_id"].asString().c_str());
                       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s",
