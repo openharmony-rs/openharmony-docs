@@ -588,9 +588,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 <!-- @[SaveFile](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageFileIO/entry/src/main/ets/pages/SaveFile.ets) --> 
 
-```ts
-'use static'
-
+``` TypeScript
 import picker from '@ohos.file.picker';
 import { $rawfile, AcceptableFileType, Column, Component, Entry, Web } from '@ohos.arkui.component';
 import webview from '@ohos.web.webview';
