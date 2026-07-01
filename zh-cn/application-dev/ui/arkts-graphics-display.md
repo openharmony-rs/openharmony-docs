@@ -250,7 +250,7 @@ PixelMap是图片解码后的像素图，具体用法请参考[Image Kit简介](
 ArkTS-Dyn示例：
 
 <!-- @[multimedia_pixel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/MultimediaPixelArt.ets) -->
-    
+
 ``` TypeScript
 import { http } from '@kit.NetworkKit';
 import { image } from '@kit.ImageKit';
