@@ -391,9 +391,9 @@ function getNode(): void {
 }
 ```
 
-> **说明：**
->
-> 可以通过以下代码查询节点路径参数path。
+ **说明：**
+
+可以通过以下代码查询节点路径参数path。
 
 ```ts
 import { Scene, Node } from '@kit.ArkGraphics3D';
