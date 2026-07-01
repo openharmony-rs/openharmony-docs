@@ -202,7 +202,7 @@ module.json5权限配置：
 ``` JSON5
 {
   "module": {
-    // ···
+    // ...
     "requestPermissions": [
       {
         "name" : "ohos.permission.READ_PASTEBOARD",
