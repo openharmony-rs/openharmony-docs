@@ -76,29 +76,29 @@ ArkUI提供多种弹出框，不同类型的弹出框具备不同的蒙层定制
 <!-- @[custom_dialog_control_autoCancel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
 
 ``` TypeScript
-  autoCancelOpt: promptAction.CustomDialogOptions = {
-    builder: () => {
-      this.myBuilder();
-    },
-    autoCancel: false,
-  } as promptAction.CustomDialogOptions;
-  // ···
-  build() {
-    NavDestination() {
-      Column() {
-        Button('openCustomDialog autoCancel:false')
-          .width('100%')
-          .margin({ top: 10 })
-          .onClick(() => {
-            this.getUIContext().getPromptAction().openCustomDialog(this.autoCancelOpt)
-          })
-         
-        // ···
-      }
-      .width('100%')
-      .height('100%')
+autoCancelOpt: promptAction.CustomDialogOptions = {
+  builder: () => {
+    this.myBuilder();
+  },
+  autoCancel: false,
+} as promptAction.CustomDialogOptions;
+// ...
+build() {
+  NavDestination() {
+    Column() {
+      Button('openCustomDialog autoCancel:false')
+        .width('100%')
+        .margin({ top: 10 })
+        .onClick(() => {
+          this.getUIContext().getPromptAction().openCustomDialog(this.autoCancelOpt);
+        })
+
+      // ...
     }
+    .width('100%')
+    .height('100%')
   }
+}
 ```
  ![dialog_mask_autoCancel](figures/dialog_mask_autoCancel.gif)
 
@@ -107,30 +107,30 @@ ArkUI提供多种弹出框，不同类型的弹出框具备不同的蒙层定制
 <!-- @[custom_dialog_control_modal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
 
 ``` TypeScript
-  modalOpt: promptAction.CustomDialogOptions = {
-    builder: () => {
-      this.myBuilder();
-    },
-    isModal: false,
-  } as promptAction.CustomDialogOptions;
-  // ···
-  build() {
-    NavDestination() {
-      Column() {
-        // ···
-        Button('openCustomDialog isModal:false')
-          .width('100%')
-          .margin({ top: 10 })
-          .onClick(() => {
-            this.getUIContext().getPromptAction().openCustomDialog(this.modalOpt)
-          })
+modalOpt: promptAction.CustomDialogOptions = {
+  builder: () => {
+    this.myBuilder();
+  },
+  isModal: false,
+} as promptAction.CustomDialogOptions;
+// ...
+build() {
+  NavDestination() {
+    Column() {
+      // ...
+      Button('openCustomDialog isModal:false')
+        .width('100%')
+        .margin({ top: 10 })
+        .onClick(() => {
+          this.getUIContext().getPromptAction().openCustomDialog(this.modalOpt);
+        })
 
-        // ···
-      }
-      .width('100%')
-      .height('100%')
+      // ...
     }
+    .width('100%')
+    .height('100%')
   }
+}
 ```
  ![dialog_mask_modal](figures/dialog_mask_modal.PNG)
 
@@ -145,36 +145,36 @@ ArkUI提供多种弹出框，不同类型的弹出框具备不同的蒙层定制
 <!-- @[custom_dialog_control_mask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
 
 ``` TypeScript
-  maskOpt: promptAction.CustomDialogOptions = {
-    builder: () => {
-      this.myBuilder();
-    },
-    maskRect: {
-      x: 0,
-      y: 10,
-      width: '100%',
-      height: '90%'
-    },
-    maskColor: '#33AA0000'
-  } as promptAction.CustomDialogOptions;
-  // ···
-  build() {
-    NavDestination() {
-      Column() {
-        // ···
-        Button('openCustomDialog maskOpt')
-          .width('100%')
-          .margin({ top: 10 })
-          .onClick(() => {
-            this.getUIContext().getPromptAction().openCustomDialog(this.maskOpt)
-          })
+maskOpt: promptAction.CustomDialogOptions = {
+  builder: () => {
+    this.myBuilder();
+  },
+  maskRect: {
+    x: 0,
+    y: 10,
+    width: '100%',
+    height: '90%'
+  },
+  maskColor: '#33AA0000'
+} as promptAction.CustomDialogOptions;
+// ...
+build() {
+  NavDestination() {
+    Column() {
+      // ...
+      Button('openCustomDialog maskOpt')
+        .width('100%')
+        .margin({ top: 10 })
+        .onClick(() => {
+          this.getUIContext().getPromptAction().openCustomDialog(this.maskOpt);
+        })
 
-        // ···
-      }
-      .width('100%')
-      .height('100%')
+      // ...
     }
+    .width('100%')
+    .height('100%')
   }
+}
 ```
  ![dialog_mask_mask](figures/dialog_mask_mask.PNG)
 
@@ -371,7 +371,7 @@ export struct CustomDialogControl {
     },
     maskColor: '#33AA0000'
   } as promptAction.CustomDialogOptions;
-  
+
   transitionOpt: promptAction.CustomDialogOptions = {
     builder: () => {
       this.myBuilder();
@@ -395,21 +395,21 @@ export struct CustomDialogControl {
           .width('100%')
           .margin({ top: 10 })
           .onClick(() => {
-            this.getUIContext().getPromptAction().openCustomDialog(this.autoCancelOpt)
+            this.getUIContext().getPromptAction().openCustomDialog(this.autoCancelOpt);
           })
-         
+
         Button('openCustomDialog isModal:false')
           .width('100%')
           .margin({ top: 10 })
           .onClick(() => {
-            this.getUIContext().getPromptAction().openCustomDialog(this.modalOpt)
+            this.getUIContext().getPromptAction().openCustomDialog(this.modalOpt);
           })
 
         Button('openCustomDialog maskOpt')
           .width('100%')
           .margin({ top: 10 })
           .onClick(() => {
-            this.getUIContext().getPromptAction().openCustomDialog(this.maskOpt)
+            this.getUIContext().getPromptAction().openCustomDialog(this.maskOpt);
           })
 
         Button('openCustomDialog transition')
