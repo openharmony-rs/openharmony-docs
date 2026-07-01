@@ -415,20 +415,30 @@ infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
 options: RichEditorOptions = { controller: this.controller };
-// ...
-      RichEditor(this.options)
-        // 请将$r('app.string.SetAttributes_Text_6')替换为实际资源文件，在本示例中该资源文件的value值为"此处为提示文本..."
-        .placeholder(resource.resourceToString($r('app.string.SetAttributes_Text_6')), {
-          fontColor: Color.Gray,
-          font: {
-            size: 15,
-            weight: FontWeight.Normal,
-            family: 'HarmonyOS Sans',
-            style: FontStyle.Normal
-          }
-        })
-        .width(300)
-        .height(50)
+
+build() {
+  Column() {
+    // ...
+    RichEditor(this.options)
+      // 请将$r('app.string.SetAttributes_Text_6')替换为实际资源文件，在本示例中该资源文件的value值为"此处为提示文本..."
+      .placeholder(resource.resourceToString($r('app.string.SetAttributes_Text_6')), {
+        fontColor: Color.Gray,
+        font: {
+          size: 15,
+          weight: FontWeight.Normal,
+          family: 'HarmonyOS Sans',
+          style: FontStyle.Normal
+        }
+      })
+      .width(300)
+      .height(50)
+    // ...
+  }.alignItems(HorizontalAlign.Start)
+  .backgroundColor('#fff')
+  .borderRadius(12)
+  .padding(12)
+  .width('100%')
+}
 ```
 
 ![alt text](figures/richeditor_image_placeholder.gif)
