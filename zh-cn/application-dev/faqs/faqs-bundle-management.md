@@ -197,5 +197,5 @@ private pid = process.pid;
 
 **参考链接**
 
-[supportWindowModes参考文档](../reference/apis-ability-kit/js-apis-bundleManager-abilityInfo.md#abilityinfo-1)
+[supportWindowModes](../reference/apis-ability-kit/js-apis-bundleManager-abilityInfo.md#abilityinfo-1)参考文档
 
