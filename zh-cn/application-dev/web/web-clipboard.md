@@ -248,6 +248,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 
 <!-- @[web_clipboard_event](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebClipboard/entry/src/main/ets/pages/WebClipboardEvent.ets) --> 
+
 ``` TypeScript
 import { Web, $rawfile, UIContext, Entry, Component, Column } from '@ohos.arkui.component'
 import webview from '@ohos.web.webview';
