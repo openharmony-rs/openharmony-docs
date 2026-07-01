@@ -391,6 +391,26 @@ function getNode(): void {
 }
 ```
 
+> **说明：**
+>
+> 可以通过以下代码查询节点路径参数path。
+
+```ts
+import { Scene, Node } from '@kit.ArkGraphics3D';
+
+// 打印给定节点的树状结构，每行表示一个节点的路径。
+function printNodeTree(node: Node | null): void {
+  if (!node) {
+    return;
+  }
+  console.info(node.path);
+  for (let i = 0; i < node.children.count(); i++) {
+    let child: Node | null = node.children.get(i);
+    printNodeTree(child);
+  }
+}
+```
+
 ## Geometry
 
 几何节点类型，用于承载可渲染的网格数据，并支持可选的形变功能，继承自[Node](#node)。
