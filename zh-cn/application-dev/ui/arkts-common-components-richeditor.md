@@ -150,7 +150,7 @@ ArkTS-Dyn示例：
 ``` TypeScript
 @Entry
 @Component
-export struct CreateRichEditor {
+struct CreateRichEditor {
   controllerNoStyledString: RichEditorController = new RichEditorController();
   optionsNoStyledString: RichEditorOptions = { controller: this.controllerNoStyledString };
   // ...
