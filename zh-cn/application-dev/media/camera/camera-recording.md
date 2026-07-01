@@ -57,7 +57,8 @@
    > 4.录像输出流帧率通过[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的videoProfiles属性，选择[VideoProfile](../../reference/apis-camera-kit/arkts-apis-camera-i.md#videoprofile)中[frameRateRange](../../reference/apis-camera-kit/arkts-apis-camera-i.md#frameraterange)满足实际业务需求的录像输出流videoProfile。
 
    <!-- @[camera_video_createAVRecorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->    
-   ```ts
+   
+   ``` TypeScript
    createVideoOutputFn(cameraManager: camera.CameraManager, videoProfileObj: camera.VideoProfile,
      surfaceId: string): camera.VideoOutput | undefined {
      let videoOutput: camera.VideoOutput | undefined = undefined;
@@ -69,32 +70,6 @@
        Logger.error(TAG, `createVideoOutputFn failed: ${err.code}`);
      }
      return videoOutput;
-   }
-   async prepareAVRecorder(): Promise<void> {
-     Logger.info(TAG, 'prepareAVRecorder is called');
-     let fd = this.initFd();
-     let videoConfig: media.AVRecorderConfig = {
-       audioSourceType: media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC,
-       videoSourceType: media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
-       profile: {
-         audioBitrate: Constants.AUDIO_BITRATE,
-         audioChannels: Constants.AUDIO_CHANNELS,
-         audioCodec: media.CodecMimeType.AUDIO_AAC,
-         audioSampleRate: Constants.AUDIO_SAMPLE_RATE,
-         fileFormat: media.ContainerFormatType.CFT_MPEG_4,
-         videoBitrate: Constants.VIDEO_BITRATE,
-         videoCodec: media.CodecMimeType.VIDEO_AVC,
-         videoFrameWidth: this.videoProfileObj.size.width,
-         videoFrameHeight: this.videoProfileObj.size.height,
-         videoFrameRate: this.videoProfileObj.frameRateRange.max
-       },
-       url: `fd://${fd.toString()}`,
-       rotation: this.curCameraDevice?.cameraOrientation
-     };
-     Logger.info(TAG, `prepareAVRecorder videoConfig: ${JSON.stringify(videoConfig)}`);
-     await this.avRecorder?.prepare(videoConfig).catch((err: BusinessError): void => {
-       Logger.error(TAG, `prepareAVRecorder prepare err: ${err.code}`);
-     });
    }
    ```
 
@@ -113,7 +88,8 @@
    先通过videoOutput的[start](../../reference/apis-camera-kit/arkts-apis-camera-VideoOutput.md#start-1)方法启动录像输出流，再通过avRecorder的[start](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#start9)方法开始录像。
 
    <!-- @[camera_video_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->    
-   ```ts
+   
+   ``` TypeScript
    async startVideo(): Promise<void> {
      Logger.info(TAG, 'startVideo is called');
      try {
@@ -133,7 +109,8 @@
    先通过avRecorder的[stop](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#stop9-1)方法停止录像，再通过videoOutput的[stop](../../reference/apis-camera-kit/arkts-apis-camera-VideoOutput.md#stop-1)方法停止录像输出流。
 
    <!-- @[camera_video_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->    
-   ```ts
+   
+   ``` TypeScript
    async stopVideo(): Promise<void> {
      Logger.info(TAG, 'stopVideo is called');
      if (!this.isRecording) {
