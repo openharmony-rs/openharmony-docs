@@ -3,13 +3,13 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
 <!--Owner: @guoshengbang-->
-<!--Designer: @gcw_4D6e0BBd-->
-<!--Tester: @guoshengbang-->
+<!--Designer: @baozewei-->
+<!--Tester: @baozewei-->
 <!--Adviser: @fang-jinxu-->
 
 该模块为打印扩展能力的操作API，提供调用打印扩展能力的接口。
 
-> **说明：**  
+> **说明：**
 > 本模块首批接口从API version 14开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 本模块接口仅可在Stage模型下使用。
 
@@ -18,6 +18,14 @@
 ```ts
 import { PrintExtensionAbility } from '@kit.BasicServicesKit';
 ```
+
+## 属性
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| context | [PrintExtensionContext](js-apis-PrintExtensionContext.md) | 否 | 否 | 打印服务扩展能力上下文。<br/>**起始版本：** 26.0.0<br/> |
 
 ## PrintExtensionAbility
 
