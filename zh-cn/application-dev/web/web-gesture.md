@@ -249,8 +249,6 @@ ArkTS-Sta示例：
 <!-- @[SetUserAgent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebGestureInteraction/entry/src/main/ets/pages/SetUserAgent.ets) --> 
 
 ``` TypeScript
-'use static'
-
 import { Column, Component, Entry, Web } from '@ohos.arkui.component';
 import webview from '@ohos.web.webview';
 
