@@ -150,42 +150,42 @@ export struct CreateRichEditor {
 <!-- @[richEditor_addText](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddTextContent.ets) --> 
 
 ``` TypeScript
-@Entry
-@Component
-export struct AddTextContent {
-  controller: RichEditorController = new RichEditorController();
-  options: RichEditorOptions = { controller: this.controller };
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
 
-  build() {
-    // ...
-            RichEditor(this.options)
-              .onReady(() => {
-                // 请将$r('app.string.AddTextContent_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"点击按钮在此处添加text。"
-                this.controller.addTextSpan(resource.resourceToString($r('app.string.AddTextContent_Text_1')), {
-                  style: {
-                    fontColor: Color.Black,
-                    fontSize: 15
-                  }
-                })
-              })
-              .border({ width: 1, color: Color.Gray })
-              .constraintSize({
-                maxHeight: 100
-              })
-              .width(300)
-              .margin(10)
-            // 请将$r('app.string.AddTextContent_Button_1')替换为实际资源文件，在本示例中该资源文件的value值为"addTextSpan"
-            Button($r('app.string.AddTextContent_Button_1'), {
-              buttonStyle: ButtonStyleMode.NORMAL
-            })
-              .height(30)
-              .fontSize(13)
-              .onClick(() => {
-                // 请将$r('app.string.AddTextContent_Text_2')替换为实际资源文件，在本示例中该资源文件的value值为"新添加一段文字。"
-                this.controller.addTextSpan(resource.resourceToString($r('app.string.AddTextContent_Text_2')))
-              })
-            // ...
-  }
+build() {
+  // ...
+    Column({ space: 3 }) {
+      RichEditor(this.options)
+        .onReady(() => {
+          // 请将$r('app.string.AddTextContent_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"点击按钮在此处添加text。"
+          this.controller.addTextSpan($r('app.string.AddTextContent_Text_1'), {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 15
+            }
+          })
+        })
+        .border({ width: 1, color: Color.Gray })
+        .constraintSize({
+          maxHeight: 100
+        })
+        .width(300)
+        .margin(10)
+      Row() {
+        // 请将$r('app.string.AddTextContent_Button_1')替换为实际资源文件，在本示例中该资源文件的value值为"addTextSpan"
+        Button($r('app.string.AddTextContent_Button_1'), {
+          buttonStyle: ButtonStyleMode.NORMAL
+        })
+        .height(30)
+        .fontSize(13)
+        .onClick(() => {
+          // 请将$r('app.string.AddTextContent_Text_2')替换为实际资源文件，在本示例中该资源文件的value值为"新添加一段文字。"
+          this.controller.addTextSpan($r('app.string.AddTextContent_Text_2'))
+        })
+      }.justifyContent(FlexAlign.Center).width('100%')
+    }
+  // ...
 }
 ```
 
