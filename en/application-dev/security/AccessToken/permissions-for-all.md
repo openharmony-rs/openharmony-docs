@@ -68,7 +68,7 @@ Allows an application to obtain the print framework capability.
 
 Allows an application to configure Bluetooth on a device, initiate or cancel a scan for Bluetooth devices, and pair with Bluetooth devices.
 
-
+ 
 
 **Permission level**: normal
 
@@ -80,7 +80,7 @@ Allows an application to configure Bluetooth on a device, initiate or cancel a s
 
 Allows an application to read data from an acceleration sensor, uncalibrated acceleration sensor, or linear acceleration sensor.
 
-
+ 
 
 **Permission level**: normal
 
@@ -150,7 +150,7 @@ With this permission, the application can obtain Wi-Fi information, including th
 
 Allows an application to read data from a gyroscope sensor or uncalibrated gyroscope sensor.
 
-
+ 
 
 **Permission level**: normal
 
