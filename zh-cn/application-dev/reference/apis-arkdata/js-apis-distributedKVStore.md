@@ -3752,7 +3752,7 @@ ArkTS-Sta: put(key: string, value: Uint8Array | string | long | double | boolean
 
 | **错误码ID** | **错误信息**                                 |
 | ------------ | -------------------------------------------- |
-| 14800047     | The WAL file size exceeds the default limit. |
+| 14800047     | The WAL file size exceeds the default limit.<br/>适用版本：10+ |
 
 **示例：**
 
@@ -3839,7 +3839,7 @@ ArkTS-Sta: put(key: string, value: Uint8Array | string | long | double | boolean
 
 | **错误码ID** | **错误信息**                                 |
 | ------------ | -------------------------------------------- |
-| 14800047     | The WAL file size exceeds the default limit. |
+| 14800047     | The WAL file size exceeds the default limit.<br/>适用版本：10+ |
 
 **示例：**
 
@@ -3914,7 +3914,7 @@ putBatch(entries: Entry[], callback: AsyncCallback&lt;void&gt;): void
 
 | **错误码ID** | **错误信息**                                 |
 | ------------ | -------------------------------------------- |
-| 14800047     | The WAL file size exceeds the default limit. |
+| 14800047     | The WAL file size exceeds the default limit.<br/>适用版本：10+ |
 
 **示例：**
 
@@ -4046,7 +4046,7 @@ putBatch(entries: Entry[]): Promise&lt;void&gt;
 
 | **错误码ID** | **错误信息**                                 |
 | ------------ | -------------------------------------------- |
-| 14800047     | The WAL file size exceeds the default limit. |
+| 14800047     | The WAL file size exceeds the default limit.<br/>适用版本：10+ |
 
 **示例：**
 
@@ -4159,7 +4159,7 @@ delete(key: string, callback: AsyncCallback&lt;void&gt;): void
 
 | **错误码ID** | **错误信息**                                 |
 | ------------ | -------------------------------------------- |
-| 14800047     | The WAL file size exceeds the default limit. |
+| 14800047     | The WAL file size exceeds the default limit.<br/>适用版本：10+ |
 
 **示例：**
 
@@ -4261,7 +4261,7 @@ delete(key: string): Promise&lt;void&gt;
 
 | **错误码ID** | **错误信息**                                 |
 | ------------ | -------------------------------------------- |
-| 14800047     | The WAL file size exceeds the default limit. |
+| 14800047     | The WAL file size exceeds the default limit.<br/>适用版本：10+ |
 
 **示例：**
 
@@ -4348,9 +4348,9 @@ deleteBatch(keys: string[], callback: AsyncCallback&lt;void&gt;): void
 
 以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
 
-| **错误码ID** | **错误信息**                                 |
-| ------------ | -------------------------------------------- |
-| 14800047     | The WAL file size exceeds the default limit. |
+| **错误码ID** | **错误信息**                                           |
+| ------------ |----------------------------------------------------|
+| 14800047     | The WAL file size exceeds the default limit.<br/>适用版本：10+ |
 
 **示例：**
 
@@ -4476,9 +4476,9 @@ deleteBatch(keys: string[]): Promise&lt;void&gt;
 
 以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
 
-| **错误码ID** | **错误信息**                                 |
-| ------------ | -------------------------------------------- |
-| 14800047     | The WAL file size exceeds the default limit. |
+| **错误码ID** | **错误信息**                                              |
+| ------------ |-------------------------------------------------------|
+| 14800047     | The WAL file size exceeds the default limit.<br/>适用版本：10+ |
 
 **示例：**
 
@@ -5444,7 +5444,7 @@ getResultSet(keyPrefix: string, callback: AsyncCallback&lt;KVStoreResultSet&gt;)
 | **错误码ID** | **错误信息**                           |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
-| 15100001     | Over max limits.                      |
+| 15100001     | Over max limits.<br/>适用版本：10+                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -5585,7 +5585,7 @@ getResultSet(keyPrefix: string): Promise&lt;KVStoreResultSet&gt;
 | **错误码ID** | **错误信息**                           |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max limits.                      |
+| 15100001     | Over max limits.<br/>适用版本：10+                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -5703,7 +5703,7 @@ getResultSet(query: Query, callback: AsyncCallback&lt;KVStoreResultSet&gt;): voi
 | **错误码ID** | **错误信息**                           |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max limits.                      |
+| 15100001     | Over max limits.<br/>适用版本：10+                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -5826,7 +5826,7 @@ getResultSet(query: Query): Promise&lt;KVStoreResultSet&gt;
 | **错误码ID** | **错误信息**                           |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max limits.                      |
+| 15100001     | Over max limits.<br/>适用版本：10+                      |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -7018,7 +7018,7 @@ startTransaction(callback: AsyncCallback&lt;void&gt;): void
 
 | **错误码ID** | **错误信息**                                 |
 | ------------ | -------------------------------------------- |
-| 14800047     | The WAL file size exceeds the default limit. |
+| 14800047     | The WAL file size exceeds the default limit.<br/>适用版本：10+ |
 
 **示例：**
 
@@ -7120,7 +7120,7 @@ startTransaction(): Promise&lt;void&gt;
 
 | **错误码ID** | **错误信息**                                 |
 | ------------ | -------------------------------------------- |
-| 14800047     | The WAL file size exceeds the default limit. |
+| 14800047     | The WAL file size exceeds the default limit.<br/>适用版本：10+ |
 
 **示例：**
 
@@ -10011,12 +10011,12 @@ getResultSet(keyPrefix: string, callback: AsyncCallback&lt;KVStoreResultSet&gt;)
 
 以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)和[通用错误码](../errorcode-universal.md)。
 
-| **错误码ID** | **错误信息**                           |
-| ------------ | -------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max limits.                      |
-| 15100003     | Database corrupted.                    |
-| 15100005     | Database or result set already closed. |
+| **错误码ID** | **错误信息**                                                                                                     |
+| ------------ |--------------------------------------------------------------------------------------------------------------|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 15100001     | Over max limits.<br/>适用版本：10+                                                                                |
+| 15100003     | Database corrupted.                                                                                          |
+| 15100005     | Database or result set already closed.                                                                       |
 
 **示例：**
 
@@ -10150,7 +10150,7 @@ getResultSet(keyPrefix: string): Promise&lt;KVStoreResultSet&gt;
 | **错误码ID** | **错误信息**                           |
 | ------------ | ------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max limits.                      |
+| 15100001     | Over max limits.<br/>适用版本：10+                      |
 | 15100003     | Database corrupted.                   |
 | 15100005     | Database or result set already closed. |
 
@@ -10230,7 +10230,7 @@ getResultSet(deviceId: string, keyPrefix: string, callback: AsyncCallback&lt;KVS
 | **错误码ID** | **错误信息**                           |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max limits.                      |
+| 15100001     | Over max limits.<br/>适用版本：10+                       |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -10350,7 +10350,7 @@ getResultSet(deviceId: string, keyPrefix: string): Promise&lt;KVStoreResultSet&g
 | **错误码ID** | **错误信息**                           |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max limits.                      |
+| 15100001     | Over max limits.<br/>适用版本：10+                       |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -10456,7 +10456,7 @@ getResultSet(deviceId: string, query: Query, callback: AsyncCallback&lt;KVStoreR
 | **错误码ID** | **错误信息**                           |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max limits.                      |
+| 15100001     | Over max limits.<br/>适用版本：10+                       |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -10601,7 +10601,7 @@ getResultSet(deviceId: string, query: Query): Promise&lt;KVStoreResultSet&gt;
 | **错误码ID** | **错误信息**                           |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max limits.                      |
+| 15100001     | Over max limits.<br/>适用版本：10+                       |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -10733,7 +10733,7 @@ getResultSet(query: Query): Promise&lt;KVStoreResultSet&gt;
 | **错误码ID** | **错误信息**                           |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max limits.                      |
+| 15100001     | Over max limits.<br/>适用版本：10+                       |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -10808,7 +10808,7 @@ getResultSet(query: Query, callback:AsyncCallback&lt;KVStoreResultSet&gt;): void
 | **错误码ID** | **错误信息**                           |
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
-| 15100001     | Over max limits.                      |
+| 15100001     | Over max limits.<br/>适用版本：10+                       |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
