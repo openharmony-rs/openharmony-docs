@@ -57,7 +57,7 @@ import { display } from '@kit.ArkUI';
 @Component
 struct rotation {
 
-  // 获取通过监听窗口的windowsSizeChange事件得到的屏幕显示方向
+  // 获取通过监听窗口的windowSizeChange事件得到的屏幕显示方向
   @StorageLink('orientation') myOrientation: display.Orientation = display.Orientation.PORTRAIT;
 
   build() {
