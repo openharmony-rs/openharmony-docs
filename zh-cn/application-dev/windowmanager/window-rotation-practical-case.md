@@ -21,7 +21,7 @@
 
 示例代码如下：
 
-<!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony-7.0-Beta1/code/DocsSample/ArkUISample/ArkUIWindowSamples/DeviceDifferentiationSample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/DeviceDifferentiationSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { window } from '@kit.ArkUI'
@@ -131,7 +131,7 @@ struct Index {
 
 4. 调用[setPreferredOrientation()](../reference/apis-arkui/arkts-apis-window-Window.md#setpreferredorientation9-1)接口设置旋转策略锁定显示方向。
 
-<!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony-7.0-Beta1/code/DocsSample/ArkUISample/ArkUIWindowSamples/ConvertOrientationAndRotationSample/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ConvertOrientationAndRotationSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { display, window } from '@kit.ArkUI';

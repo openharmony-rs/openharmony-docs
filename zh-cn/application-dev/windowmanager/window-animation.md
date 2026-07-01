@@ -38,7 +38,7 @@
 
    通过[getTransitionController()](../reference/apis-arkui/js-apis-window-sys.md#gettransitioncontroller9)接口获取控制器。后续的动画操作都由属性控制器来完成。
 
-   <!-- @[window_animation_config](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony-7.0-Beta1/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowAnimationSample/entry/src/main/ets/pages/AnimationConfig.ts) --> 
+   <!-- @[window_animation_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowAnimationSample/entry/src/main/ets/pages/AnimationConfig.ts) --> 
    
    ``` TypeScript
    import { window } from '@kit.ArkUI';
@@ -70,7 +70,7 @@
 
    通过动画函数[animateTo()](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)配置具体的属性动画，可通过[opacity()](../reference/apis-arkui/js-apis-window-sys.md#opacity9)设置窗口不透明度，通过[scale()](../reference/apis-arkui/js-apis-window-sys.md#scale9)设置缩放参数，通过[rotate()](../reference/apis-arkui/js-apis-window-sys.md#rotate9)设置旋转参数，通过[translate()](../reference/apis-arkui/js-apis-window-sys.md#translate9)设置平移参数。
 
-   <!-- @[window_animation_show](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony-7.0-Beta1/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowAnimationSample/entry/src/main/ets/pages/WindowAnimationDemo.ets) --> 
+   <!-- @[window_animation_show](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowAnimationSample/entry/src/main/ets/pages/WindowAnimationDemo.ets) --> 
    
    ``` TypeScript
    import { window } from '@kit.ArkUI';
@@ -131,7 +131,7 @@
 
    通过[completeTransition()](../reference/apis-arkui/js-apis-window-sys.md#completetransition9)传入true来设置属性转换的最终完成状态。如果传入false，则表示撤销本次转换。
 
-   <!-- @[window_animation_complete_transition](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony-7.0-Beta1/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowAnimationSample/entry/src/main/ets/pages/WindowAnimationDemo.ets) --> 
+   <!-- @[window_animation_complete_transition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowAnimationSample/entry/src/main/ets/pages/WindowAnimationDemo.ets) --> 
    
    ``` TypeScript
    struct WindowAnimationDemo {
@@ -168,7 +168,7 @@
 
    调用[showWithAnimation()](../reference/apis-arkui/js-apis-window-sys.md#showwithanimation9)接口，来显示窗口并播放动画。调用[hideWithAnimation()](../reference/apis-arkui/js-apis-window-sys.md#hidewithanimation9)接口，来隐藏窗口并播放动画。
 
-   <!-- @[window_animation_play](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony-7.0-Beta1/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowAnimationSample/entry/src/main/ets/pages/AnimationConfig.ts) --> 
+   <!-- @[window_animation_play](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowAnimationSample/entry/src/main/ets/pages/AnimationConfig.ts) --> 
    
    ``` TypeScript
    import { window } from '@kit.ArkUI';
@@ -204,7 +204,7 @@
 
 示例代码如下：
 
-<!-- @[window_animation_start_ability](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony-7.0-Beta1/code/DocsSample/ArkUISample/ArkUIWindowSamples/StartAbilityWithFadeinoutSample/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @[window_animation_start_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/StartAbilityWithFadeinoutSample/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { Want, StartOptions, common } from '@kit.AbilityKit';
@@ -269,7 +269,7 @@ struct Index {
 
 示例代码如下：
 
-<!-- @[window_destroy_transition_animation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony-7.0-Beta1/code/DocsSample/ArkUISample/ArkUIWindowSamples/AppTransitionAnimationSample/entry/src/main/ets/entryability/EntryAbility.ets) --> 
+<!-- @[window_destroy_transition_animation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AppTransitionAnimationSample/entry/src/main/ets/entryability/EntryAbility.ets) --> 
 
 ``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
