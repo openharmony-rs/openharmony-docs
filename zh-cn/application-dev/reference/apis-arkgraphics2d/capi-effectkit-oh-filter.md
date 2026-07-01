@@ -8,12 +8,12 @@
 <!--Adviser: @ge-yafang-->
 
 ```c
-typedef struct OH_Filter OH_Filter
+typedef struct OH_Filter OH_Filter;
 ```
 
 ## 概述
 
-滤镜结构体，用来生成滤镜位图。
+OH_Filter是滤镜结构体，用于生成滤镜位图，支持图像处理和特效应用场景，可对图像进行滤镜效果处理，提升图像视觉效果和用户体验。
 
 **起始版本：** 12
 
