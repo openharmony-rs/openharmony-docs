@@ -111,7 +111,9 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 <!-- @[ControlMouseAndKeyBoardZooming](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebManagementZooming/entry/src/main/ets/pages/ControlMouseAndKeyBoardZooming.ets) --> 
+
 ``` TypeScript
+
 import { webview } from '@kit.ArkWeb';
 import { KeyCode } from '@kit.InputKit';
 import { Entry, Component, Column, Web, KeyType, KeyEvent, ModifierKeyStateGetter } from '@ohos.arkui.component';
