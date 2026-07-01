@@ -45,9 +45,9 @@ getAllVolumes(): Promise&lt;Array&lt;Volume&gt;&gt;
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
-| 401 | The input parameter is invalid. Possible causes: Incorrect parameter types. |
+| 401 | The input parameter is invalid. Possible causes: Mandatory parameters are left unspecified. |
 | 13600001 | IPC error. |
-| 13900042 | Unknown error. Possible causes: System internal error. |
+| 13900042 | Unknown error. |
 
 **示例：**
 
@@ -86,9 +86,9 @@ getAllVolumes(callback: AsyncCallback&lt;Array&lt;Volume&gt;&gt;): void
 | -------- | -------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
-| 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | The input parameter is invalid. Possible causes: Mandatory parameters are left unspecified. |
 | 13600001 | IPC error. |
-| 13900042 | Unknown error. Possible causes: System internal error. |
+| 13900042 | Unknown error. |
 
 **示例：**
 
@@ -143,11 +143,11 @@ vfat、exfat及NTFS。
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
-| 13600003 | Failed to mount. Possible causes: 1. The filesystem is not supported. 2. The volume is not in the unmounted state. |
-| 13600005 | Incorrect volume state. Possible causes: The volume device is not in the required state for this operation. For mount/format/setVolumeDescription, ensure the volume is in the unmounted state; for unmount, ensure the volume is in the mounted state. |
-| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
-| 13900042 | Unknown error. Possible causes: System internal error. |
+| 13600002 | Not supported filesystem. |
+| 13600003 | Failed to mount. |
+| 13600005 | Incorrect volume state. |
+| 13600008 | No such object. |
+| 13900042 | Unknown error. |
 
 **示例：**
 
@@ -197,11 +197,11 @@ vfat、exfat及NTFS。
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
-| 13600003 | Failed to mount. Possible causes: 1. The filesystem is not supported. 2. The volume is not in the unmounted state. |
-| 13600005 | Incorrect volume state. Possible causes: The volume device is not in the required state for this operation. For mount/format/setVolumeDescription, ensure the volume is in the unmounted state; for unmount, ensure the volume is in the mounted state. |
-| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
-| 13900042 | Unknown error. Possible causes: System internal error. |
+| 13600002 | Not supported filesystem. |
+| 13600003 | Failed to mount. |
+| 13600005 | Incorrect volume state. |
+| 13600008 | No such object. |
+| 13900042 | Unknown error. |
 
 **示例：**
 
@@ -252,11 +252,11 @@ unmount(volumeId: string): Promise&lt;void&gt;
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
-| 13600004 | Failed to unmount. Possible causes: 1. The filesystem is not supported. 2. The volume is not in the mounted state. |
-| 13600005 | Incorrect volume state. Possible causes: The volume device is not in the required state for this operation. For mount/format/setVolumeDescription, ensure the volume is in the unmounted state; for unmount, ensure the volume is in the mounted state. |
-| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
-| 13900042 | Unknown error. Possible causes: System internal error. |
+| 13600002 | Not supported filesystem. |
+| 13600004 | Failed to unmount. |
+| 13600005 | Incorrect volume state. |
+| 13600008 | No such object. |
+| 13900042 | Unknown error. |
 
 **示例：**
 
@@ -300,11 +300,11 @@ unmount(volumeId: string, callback: AsyncCallback&lt;void&gt;): void
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
-| 13600004 | Failed to unmount. Possible causes: 1. The filesystem is not supported. 2. The volume is not in the mounted state. |
-| 13600005 | Incorrect volume state. Possible causes: The volume device is not in the required state for this operation. For mount/format/setVolumeDescription, ensure the volume is in the unmounted state; for unmount, ensure the volume is in the mounted state. |
-| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
-| 13900042 | Unknown error. Possible causes: System internal error. |
+| 13600002 | Not supported filesystem. |
+| 13600004 | Failed to unmount. |
+| 13600005 | Incorrect volume state. |
+| 13600008 | No such object. |
+| 13900042 | Unknown error. |
 
 **示例：**
 
@@ -355,8 +355,8 @@ getVolumeByUuid(uuid: string): Promise&lt;Volume&gt;
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001 | IPC error. |
-| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
-| 13900042 | Unknown error. Possible causes: System internal error. |
+| 13600008 | No such object. |
+| 13900042 | Unknown error. |
 
 **示例：**
 
@@ -400,8 +400,8 @@ getVolumeByUuid(uuid: string, callback: AsyncCallback&lt;Volume&gt;): void
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001 | IPC error. |
-| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
-| 13900042 | Unknown error. Possible causes: System internal error. |
+| 13600008 | No such object. |
+| 13900042 | Unknown error. |
 
 **示例：**
 
@@ -452,8 +452,8 @@ getVolumeById(volumeId: string): Promise&lt;Volume&gt;
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001 | IPC error. |
-| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
-| 13900042 | Unknown error. Possible causes: System internal error. |
+| 13600008 | No such object. |
+| 13900042 | Unknown error. |
 
 **示例：**
 
@@ -497,8 +497,8 @@ getVolumeById(volumeId: string, callback: AsyncCallback&lt;Volume&gt;): void
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001 | IPC error. |
-| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
-| 13900042 | Unknown error. Possible causes: System internal error. |
+| 13600008 | No such object. |
+| 13900042 | Unknown error. |
 
 **示例：**
 
@@ -550,10 +550,10 @@ setVolumeDescription(uuid: string, description: string): Promise&lt;void&gt;
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
-| 13600005 | Incorrect volume state. Possible causes: The volume device is not in the required state for this operation. For mount/format/setVolumeDescription, ensure the volume is in the unmounted state; for unmount, ensure the volume is in the mounted state. |
-| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
-| 13900042 | Unknown error. Possible causes: System internal error. |
+| 13600002 | Not supported filesystem. |
+| 13600005 | Incorrect volume state. |
+| 13600008 | No such object. |
+| 13900042 | Unknown error. |
 
 **示例：**
 
@@ -599,10 +599,10 @@ setVolumeDescription(uuid: string, description: string, callback: AsyncCallback&
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
-| 13600005 | Incorrect volume state. Possible causes: The volume device is not in the required state for this operation. For mount/format/setVolumeDescription, ensure the volume is in the unmounted state; for unmount, ensure the volume is in the mounted state. |
-| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
-| 13900042 | Unknown error. Possible causes: System internal error. |
+| 13600002 | Not supported filesystem. |
+| 13600005 | Incorrect volume state. |
+| 13600008 | No such object. |
+| 13900042 | Unknown error. |
 
 **示例：**
 
@@ -663,10 +663,10 @@ vfat和exfat。
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
-| 13600005 | Incorrect volume state. Possible causes: The volume device is not in the required state for this operation. For mount/format/setVolumeDescription, ensure the volume is in the unmounted state; for unmount, ensure the volume is in the mounted state. |
-| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
-| 13900042 | Unknown error. Possible causes: System internal error. |
+| 13600002 | Not supported filesystem. |
+| 13600005 | Incorrect volume state. |
+| 13600008 | No such object. |
+| 13900042 | Unknown error. |
 
 **示例：**
 
@@ -720,10 +720,10 @@ vfat和exfat。
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
-| 13600005 | Incorrect volume state. Possible causes: The volume device is not in the required state for this operation. For mount/format/setVolumeDescription, ensure the volume is in the unmounted state; for unmount, ensure the volume is in the mounted state. |
-| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
-| 13900042 | Unknown error. Possible causes: System internal error. |
+| 13600002 | Not supported filesystem. |
+| 13600005 | Incorrect volume state. |
+| 13600008 | No such object. |
+| 13900042 | Unknown error. |
 
 **示例：**
 
@@ -776,8 +776,8 @@ partition(diskId: string, type: number): Promise&lt;void&gt;
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001 | IPC error. |
-| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
-| 13900042 | Unknown error. Possible causes: System internal error. |
+| 13600008 | No such object. |
+| 13900042 | Unknown error. |
 
 **示例：**
 
@@ -823,8 +823,8 @@ partition(diskId: string, type: number, callback: AsyncCallback&lt;void&gt;): vo
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001 | IPC error. |
-| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
-| 13900042 | Unknown error. Possible causes: System internal error. |
+| 13600008 | No such object. |
+| 13900042 | Unknown error. |
 
 **示例：**
 
@@ -896,9 +896,9 @@ erase(volumeId: string): Promise&lt;void&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
-| 13600010 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Incorrect parameter values. |
-| 13600026 | Erase operation failed. Possible causes: 1. The filesystem is not supported. 2. The volume device is not available. |
+| 13600002 | Not supported filesystem. |
+| 13600010 | The input parameter is invalid. |
+| 13600026 | Erase operation failed. |
 
 **示例：**
 
@@ -951,7 +951,7 @@ eject(diskId: string): Promise&lt;void&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
+| 13600002 | Not supported filesystem. |
 
 **示例：**
 
@@ -1005,9 +1005,9 @@ createIsoImage(volumeId: string, filePath: string): Promise&lt;void&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
-| 13600005 | Incorrect volume state. Possible causes: The volume device is not in the required state for this operation. For mount/format/setVolumeDescription, ensure the volume is in the unmounted state; for unmount, ensure the volume is in the mounted state. |
-| 13600010 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Incorrect parameter values. |
+| 13600002 | Not supported filesystem. |
+| 13600005 | Incorrect volume state. |
+| 13600010 | The input parameter is invalid. |
 | 13600024 | Empty disc. |
 | 13600025 | Failed to write the ISO file. |
 
@@ -1066,9 +1066,9 @@ burn(volumeId: string, want: Want): Promise&lt;void&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
-| 13600010 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Incorrect parameter values. |
-| 13600028 | Burn operation failed. Possible causes: 1. The filesystem is not supported. 2. The disc is not writable. 3. The burn parameters are invalid. |
+| 13600002 | Not supported filesystem. |
+| 13600010 | The input parameter is invalid. |
+| 13600028 | Burn operation failed. |
 
 **示例：**
 
@@ -1129,8 +1129,8 @@ getOpProcess(volumeId: string): Promise&lt;number&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
-| 13600010 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Incorrect parameter values. |
+| 13600002 | Not supported filesystem. |
+| 13600010 | The input parameter is invalid. |
 
 **示例：**
 
@@ -1184,9 +1184,9 @@ verifyBurnData(volumeId: string, verType: VerifyType): Promise&lt;void&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
-| 13600010 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Incorrect parameter values. |
-| 13600030 | Verification failed. Possible causes: 1. The burn data verification type is not supported. 2. The volume device is not available. |
+| 13600002 | Not supported filesystem. |
+| 13600010 | The input parameter is invalid. |
+| 13600030 | Verification failed. |
 
 **示例：**
 
@@ -1284,8 +1284,8 @@ getDiskById(diskId: string): Promise&lt;Disk&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
-| 13600010 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Incorrect parameter values. |
+| 13600008 | No such object. |
+| 13600010 | The input parameter is invalid. |
 
 **示例：**
 
@@ -1338,8 +1338,8 @@ getPartitionTable(diskId: string): Promise&lt;PartitionTableInfo&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
-| 13600010 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Incorrect parameter values. |
+| 13600008 | No such object. |
+| 13600010 | The input parameter is invalid. |
 | 13600021 | Get partition table failed. |
 
 **示例：**
@@ -1394,10 +1394,10 @@ createPartition(diskId: string, params: PartitionParams): Promise&lt;void&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
-| 13600005 | Incorrect volume state. Possible causes: The volume device is not in the required state for this operation. For mount/format/setVolumeDescription, ensure the volume is in the unmounted state; for unmount, ensure the volume is in the mounted state. |
-| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
-| 13600010 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Incorrect parameter values. |
+| 13600002 | Not supported filesystem. |
+| 13600005 | Incorrect volume state. |
+| 13600008 | No such object. |
+| 13600010 | The input parameter is invalid. |
 | 13600022 | Create partition failed. |
 
 **示例：**
@@ -1458,9 +1458,9 @@ deletePartition(diskId: string, partitionNum: number): Promise&lt;void&gt;
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600005 | Incorrect volume state. Possible causes: The volume device is not in the required state for this operation. For mount/format/setVolumeDescription, ensure the volume is in the unmounted state; for unmount, ensure the volume is in the mounted state. |
-| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
-| 13600010 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Incorrect parameter values. |
+| 13600005 | Incorrect volume state. |
+| 13600008 | No such object. |
+| 13600010 | The input parameter is invalid. |
 | 13600023 | Delete partition failed. |
 
 **示例：**
@@ -1517,10 +1517,10 @@ formatPartition(diskId: string, partitionNum: number, params: FormatParams): Pro
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
 | 13600001 | IPC error. |
-| 13600002 | Not supported filesystem. Possible causes: The filesystem type of the volume is not supported by this operation. |
-| 13600005 | Incorrect volume state. Possible causes: The volume device is not in the required state for this operation. For mount/format/setVolumeDescription, ensure the volume is in the unmounted state; for unmount, ensure the volume is in the mounted state. |
-| 13600008 | No such object. Possible causes: The specified volumeId/uuid/diskId does not exist. |
-| 13600010 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Incorrect parameter values. |
+| 13600002 | Not supported filesystem. |
+| 13600005 | Incorrect volume state. |
+| 13600008 | No such object. |
+| 13600010 | The input parameter is invalid. |
 | 13600032 | Format partition failed. |
 
 **示例：**

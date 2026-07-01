@@ -47,14 +47,14 @@ deactivateUserKey(userId: number):void
 
 以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
 
-| 错误码ID | 错误信息 | 说明 |
-| -------- | -------- | -------- |
-| 201 | Permission verification failed. Possible causes: The application has not declared or obtained the required permission ohos.permission.STORAGE_MANAGER_CRYPT. | 权限校验失败。请确保已在module.json5中声明该权限，并通过系统应用方式获取授权。 |
-| 202 | The caller is not a system application. Possible causes: The application calling this interface is not a system application. Only system applications are allowed to call system interfaces. | 非系统应用调用。仅系统应用可调用此接口，请确保调用方为系统应用。 |
-| 401 | The input parameter is invalid. Possible causes: Mandatory parameters are left unspecified; Or input parameter has type different from the type the interface requires. | 参数无效。请检查参数是否已指定且类型正确，userId应为number类型且取值范围[100, 10736]。 |
-| 13600001 | IPC error. Possible causes: IPC communication failure with the storage service. | IPC通信错误。请检查存储服务是否正常运行，稍后重试。 |
-| 13600008 | No such object. Possible causes: Cannot find userkey for the specified user. | 找不到指定用户的密钥。请确认userId对应的用户已在设备上创建并拥有密钥。 |
-| 13600009 | User ID out of range. Possible causes: input parameter userId < 100 or userId > 10736. | 用户ID超出范围。请确保userId在[100, 10736]范围内。 |
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 401 | The input parameter is invalid. Possible causes: Mandatory parameters are left unspecified; Or input parameter has type different from the type the interface requires. |
+| 13600001 | IPC error. |
+| 13600008 | No such object. |
+| 13600009 | User ID out of range. Possible causes: input parameter userId < 100 or userId > 10736. |
 
 **示例：**
 
