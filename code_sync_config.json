@@ -3284,6 +3284,11 @@
 						"end_line":193,
 						"name":"init_callback",
 						"start_line":52
+					},
+					{
+						"end_line":356,
+						"name":"render_process",
+						"start_line":16
 					}
 				]
 			},
@@ -19948,6 +19953,16 @@
 						"end_line":525,
 						"name":"regist_renderchangechallback",
 						"start_line":31
+					},
+					{
+						"end_line":533,
+						"name":"unregist_renderchangechallback",
+						"start_line":530
+					},
+					{
+						"end_line":550,
+						"name":"get_allstreaminfo",
+						"start_line":32
 					}
 				]
 			},
@@ -19988,6 +20003,36 @@
 						"end_line":117,
 						"name":"get_haptic",
 						"start_line":16
+					},
+					{
+						"end_line":89,
+						"name":"set_hapticparam",
+						"start_line":83
+					},
+					{
+						"end_line":107,
+						"name":"create_haptic",
+						"start_line":24
+					},
+					{
+						"end_line":143,
+						"name":"haptic_start",
+						"start_line":127
+					},
+					{
+						"end_line":170,
+						"name":"haptic_stop",
+						"start_line":154
+					},
+					{
+						"end_line":197,
+						"name":"haptic_release",
+						"start_line":181
+					},
+					{
+						"end_line":214,
+						"name":"haptic_unregist",
+						"start_line":198
 					}
 				]
 			},
@@ -29906,6 +29951,56 @@
 						"end_line":79,
 						"name":"web_module_preview_pdf",
 						"start_line":66
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/audio/audio-fast-playback.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp",
+				"functions":[
+					{
+						"end_line":192,
+						"name":"Render_SetRendererWriteDataCallback",
+						"start_line":60
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/audio/audio-latency.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp",
+				"functions":[
+					{
+						"end_line":287,
+						"name":"Render_CheckLatencyMode",
+						"start_line":285
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/audio/using-ohaudio-for-playback.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp",
+				"functions":[
+					{
+						"end_line":255,
+						"name":"Render_SetVolume",
+						"start_line":249
+					},
+					{
+						"end_line":272,
+						"name":"Render_SetLatencyMode",
+						"start_line":268
 					}
 				]
 			}
