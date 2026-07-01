@@ -41,7 +41,7 @@
 | ----- | ---------------------------------------- | ---- | ------------------------- | ------------------------- |
 | type | [ButtonType](ts-basic-components-button.md#buttontype枚举说明) | 否   | 是   | 按钮显示样式。                     |
 | style  | [ButtonStyleMode](ts-basic-components-button.md#buttonstylemode11枚举说明)                 | 否   | 是   | 按钮的样式和重要程度。 |
-| role | [ButtonRole](ts-basic-components-button.md#buttonrole12枚举说明) | 否   | 是   | Button组件的角色。                     |
+| role | [ButtonRole](ts-basic-components-button.md#buttonrole12枚举说明) | 否   | 是   | 按钮组件的角色。                     |
 | fontSize  | [Length](ts-types.md#length)                 | 否   | 是   | 文本显示字号。 |
 | fontColor | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 文本显示颜色。                     |
 | fontWeight  | [FontWeight](ts-appendix-enums.md#fontweight)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string| 否   | 是   | 文本的字体粗细。number类型取值[100, 900]，取值间隔为100，取值越大，字体越粗。string类型仅支持number类型取值的字符串形式，例如"200"，以及"bold"、"bolder"、"lighter"、"regular"、"medium"，分别对应FontWeight中相应的枚举值。 |

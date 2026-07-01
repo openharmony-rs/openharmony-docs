@@ -122,7 +122,7 @@ lunar(value: boolean)
 
 lunar(isLunar: Optional\<boolean>)
 
-设置弹窗的日期是否显示为农历。与[lunar](#lunar)相比，isLunar参数新增了对undefined类型的支持。
+设置日期是否显示为农历。与[lunar](#lunar)相比，isLunar参数新增了对undefined类型的支持。
 
 > **说明：**
 >
@@ -349,7 +349,7 @@ onChange(callback: (value: DatePickerResult) => void)
 
 | 参数名 | 类型                                          | 必填 | 说明             |
 | ------ | --------------------------------------------- | ---- | ---------------- |
-| callback | (value: [DatePickerResult](#datepickerresult对象说明)) => void | 是   | 返回选中的时间。 |
+| callback | (value: [DatePickerResult](#datepickerresult对象说明)) => void | 是   | 返回选中的日期。 |
 
 ### onDateChange<sup>10+</sup>
 
