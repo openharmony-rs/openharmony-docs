@@ -186,8 +186,7 @@ function getRemoteDeviceId(): string | undefined {
     // 定义peer信息
     const peerInfo: abilityConnectionManager.PeerInfo = {
       deviceId: getRemoteDeviceId()!,
-      bundleName: 'com.example.myapplication', // 定义为被测应用包名，请开发者替换为实际包名
-      serviceName: 'test',
+      bundleName: 'com.example.myapplication',
       moduleName: 'entry',
       abilityName: 'EntryAbility',
     };
