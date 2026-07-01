@@ -762,7 +762,7 @@ function isLogViewAssistSupported(previewOutput: camera.PreviewOutput): boolean 
   } catch (error) {
       // 失败返回错误码error.code并处理。
       let err = error as BusinessError;
-      console.error(`The previewOutput.isLogViewAssistSupportedcall failed. error code: ${err.code}`);
+      console.error(`The previewOutput.isLogViewAssistSupported call failed. error code: ${err.code}`);
   }
   return supported;
 }
