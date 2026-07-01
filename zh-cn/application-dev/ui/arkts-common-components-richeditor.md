@@ -1283,7 +1283,7 @@ import { TextMenuController } from '@kit.ArkUI';
 
 @Entry
 @Component
-export struct DisableSystemServiceMenu {
+struct DisableSystemServiceMenu {
   controller: RichEditorController = new RichEditorController();
   options: RichEditorOptions = { controller: this.controller };
 
@@ -1299,27 +1299,29 @@ export struct DisableSystemServiceMenu {
 
   build() {
     // ...
-          RichEditor(this.options).onReady(() => {
-            // 请将$r('app.string.Demo_richEditor')替换为实际资源文件，在本示例中该资源文件的value值为"这是一个RichEditor"
-            this.controller.addTextSpan($r('app.string.Demo_richEditor'),
+      Column({ space: 12 }) {
+        RichEditor(this.options).onReady(() => {
+          // 请将$r('app.string.Demo_richEditor')替换为实际资源文件，在本示例中该资源文件的value值为"这是一个RichEditor"
+          this.controller.addTextSpan($r('app.string.Demo_richEditor'),
+            {
+              style:
               {
-                style:
-                {
-                  fontSize: 30
-                }
-              })
-          })
-            .height(60)
-            .editMenuOptions({
-              onCreateMenu: (menuItems: Array<TextMenuItem>) => {
-                // menuItems不包含被屏蔽的系统菜单项
-                return menuItems;
-              },
-              onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
-                return false;
+                fontSize: 30
               }
             })
-          // ...
+        })
+          .height(60)
+          .editMenuOptions({
+            onCreateMenu: (menuItems: Array<TextMenuItem>) => {
+              // menuItems不包含被屏蔽的系统菜单项
+              return menuItems;
+            },
+            onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
+              return false;
+            }
+          })
+      }
+    // ...
   }
 }
 ```
