@@ -293,6 +293,7 @@ export default class EntryAbility extends UIAbility {
    <!-- @[read_local_js_resource_from_rawfile_dir_via_file_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/PrecompileWebview.ets) -->    
    
    ``` TypeScript
+   // main/ets/pages/PrecompileWebview.ets 
    import { BuilderData } from './DynamicComponent';
    import { Config, configs } from './PrecompileConfig';
    
