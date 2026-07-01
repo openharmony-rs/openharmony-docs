@@ -535,7 +535,7 @@ struct NavigationDemo {
       }
       .width('100%')
       .mode(NavigationMode.Auto)
-      // $r('app.string.settings')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“设置”
+      // $r('app.string.settings')需要替换为开发者所需的字符串资源文件，资源文件中的value值为“设置”
       .title($r('app.string.settings')) // 设置标题文字
     }
     .size({ width: '100%', height: '100%' })
@@ -571,7 +571,7 @@ export struct PageOne {
   build() {
     NavDestination() {
       Column() {
-        // $r('app.string.settingPage')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“设置页面”
+        // $r('app.string.settingPage')需要替换为开发者所需的字符串资源文件，资源文件中的value值为“设置页面”
         Text(`${this.name}${this.context!.resourceManager.getStringSync($r('app.string.settingPage').id)}`)
           .width('100%')
           .fontSize(20)
@@ -590,7 +590,7 @@ export struct PageOne {
           .fontColor(0x666666)
           .textAlign(TextAlign.Center)
           .padding({ top: 45 })
-        // $r('app.string.return')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“返回”
+        // $r('app.string.return')需要替换为开发者所需的字符串资源文件，资源文件中的value值为“返回”
         Button($r('app.string.return'))
           .width('50%')
           .height(40)
@@ -680,7 +680,7 @@ export struct PageTwo {
             }
             .width('100%')
             .onClick(() => {
-              // $r('app.string.pageSettingParam')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“页面设置参数”
+              // $r('app.string.pageSettingParam')需要替换为开发者所需的字符串资源文件，资源文件中的value值为“页面设置参数”
               this.navPathStack.pushPathByName(`${item}`,
                 this.context!.resourceManager.getStringSync($r('app.string.pageSettingParam').id));
             })
