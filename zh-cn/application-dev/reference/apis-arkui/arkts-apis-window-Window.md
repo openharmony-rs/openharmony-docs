@@ -1740,8 +1740,7 @@ setWindowContainerModalColor(activeColor: string, inactiveColor: string): void
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 201     | Permission verification failed. The application does not have the permission required or a non-system application calls the API.<br/>适用版本：26.0.0+ |
-| 202     | Permission verification failed. A non-system application calls a system API.<br/>适用版本：20-24 |
+| 201     | Permission verification failed. The application does not have the permission required or a non-system application calls the API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. |
 | 1300004 | Unauthorized operation. |
