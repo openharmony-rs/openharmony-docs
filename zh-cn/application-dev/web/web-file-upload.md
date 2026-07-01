@@ -56,8 +56,6 @@ ArkTS-Sta示例：
 <!-- @[web_file_upload](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageFileIO/entry/src/main/ets/pages/UploadFiles.ets) --> 
 
 ``` TypeScript
-'use static'
-
 import picker from '@ohos.file.picker';
 import { $rawfile, Column, Component, Entry, Web } from '@ohos.arkui.component';
 import webview from '@ohos.web.webview';
