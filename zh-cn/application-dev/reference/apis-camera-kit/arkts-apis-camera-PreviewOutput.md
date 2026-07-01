@@ -789,7 +789,7 @@ LOG视频下，使能预览监看开关之前，可先使用方法[isLogViewAssi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID    | 错误信息                                           |
 | -------- |----------------------------------------------- |
