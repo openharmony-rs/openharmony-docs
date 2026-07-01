@@ -49,7 +49,7 @@
 以下示例通过改变Text组件宽度实现逐帧布局的效果。
 
 
-<!-- @[animatable_extend_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/AnimatableExtendDecorator/AnimatablePropertyText.ets) -->
+<!-- @[animatable_extend_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/AnimatableExtendDecorator/AnimatablePropertyText.ets) -->  
 
 ``` TypeScript
 @AnimatableExtend(Text)
