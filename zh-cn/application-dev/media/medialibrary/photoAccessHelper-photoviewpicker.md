@@ -137,7 +137,7 @@
    > **注意：**
    > 出于对用户隐私安全的保护，对媒体资源EXIF中的地理位置和拍摄参数信息做了去隐私化处理。如果需要获取被去隐私化的EXIF信息，需要[申请相册管理模块权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.MEDIA_LOCATION'。
 
-   <!-- @[PickerMediaLibrary_getMediaResource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/common/utils/MediaLibraryPickerUtils.ets) -->
+   <!-- @[PickerMediaLibrary_getMediaResource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/common/utils/MediaLibraryPickerUtils.ets) --> 
    
    ``` TypeScript
    static async getMediaResourceByUri(uri: string, context: common.Context, callback?: MediaDataHandlerCallback)
