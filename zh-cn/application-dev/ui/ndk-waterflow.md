@@ -60,6 +60,7 @@ public:
     {
         // 释放创建的组件。
         while (!cachedItems_.empty()) {
+            nodeApi_->disposeNode(cachedItems_.top());
             cachedItems_.pop();
         }
         // 释放Adapter相关资源。
