@@ -117,7 +117,9 @@ import { audio } from '@kit.AudioKit';  // 导入audio模块。
   });
   // ...
   // 取消监听音频设备状态变化。
-  audioRoutingManager.off('deviceChange');
+  audioRoutingManager.off('deviceChange', (deviceChanged: audio.DeviceChangeAction) => {
+    console.info('Should be no callback.');
+  });
 ```
 
 ArkTS-Sta示例：
