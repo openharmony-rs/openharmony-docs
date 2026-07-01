@@ -163,47 +163,23 @@
 
 1. 导入模块。
 
-   <!-- @[import_the_motion_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[import_the_motion_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->  
 
-   ```ts
-   import { motion } from '@kit.MultimodalAwarenessKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   ```
 
 2. 定义回调函数接收握持手结果
 
-   <!-- @[motion_subscribe_holding_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[motion_subscribe_holding_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->  
 
-   ```ts
-   let callback:Callback<motion.HoldingHandStatus> = (data:motion.HoldingHandStatus) => {
-     console.info('callback succeeded' + data);
-   };
-   ```
+
 
 3. 订阅握持手感知
 
-   <!-- @[motion_subscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[motion_subscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->  
 
-   ```ts
-   try {
-      motion.on('holdingHandChanged', callback);
-      console.info("on succeeded");
-   } catch (err) {
-      let error = err as BusinessError;
-      console.error("Failed on and err code is " + error.code);
-   }
-   ```
+
 
 4. 取消订阅握持手感知
 
-   <!-- @[motion_unsubscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[motion_unsubscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->  
    
-   ```ts
-   try {
-      motion.off('holdingHandChanged');
-      console.info("off succeeded");
-   } catch (err) {
-      let error = err as BusinessError;
-      console.error("Failed off and err code is " + error.code);
-   }
-   ```
+
