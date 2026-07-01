@@ -61,7 +61,7 @@ const htmlBlob = await clipboardItems[0].getType('text/html');
 > 通过异步剪贴板接口read()和readText()方法读取系统剪贴板数据，需[申请访问剪贴板权限](../basic-services/pasteboard/get-pastedata-permission-guidelines.md)：ohos.permission.READ_PASTEBOARD。
 
 ArkTS-Dyn示例：
-<!-- @[web_clipboard_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebClipboard/entry/src/main/ets/pages/WebClipboard.ets) -->
+<!-- @[web_clipboard_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebClipboard/entry/src/main/ets/pages/WebClipboard.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -80,7 +80,7 @@ struct WebComponent {
 ```
 
 ArkTS-Sta示例：
-<!-- @[web_clipboard_content](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebClipboard/entry/src/main/ets/pages/WebClipboard.ets) -->
+<!-- @[web_clipboard_content](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebClipboard/entry/src/main/ets/pages/WebClipboard.ets) --> 
 
 ``` TypeScript
 import { Web, $rawfile, UIContext, Entry, Component, Column } from '@ohos.arkui.component'
@@ -197,7 +197,7 @@ module.json5权限配置：
 
 **需要权限**：ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。
 
-<!-- @[web_clipboard_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebClipboard/entry/src/main/module.json5) -->
+<!-- @[web_clipboard_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebClipboard/entry/src/main/module.json5) --> 
 
 ``` JSON5
 {
@@ -227,7 +227,7 @@ module.json5权限配置：
 [剪贴板事件（Clipboard Event）](https://www.w3.org/TR/clipboard-apis/#clipboard-events-and-interfaces)描述了与剪贴板相关的cut、copy和paste事件。当用户执行剪切、复制或粘贴操作时，相应的事件将被触发。开发者可以通过监听这些事件，对系统剪贴板进行读写操作，或拦截默认行为，以更改复制或粘贴的结果。
 
 ArkTS-Dyn示例：
-<!-- @[web_clipboard_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebClipboard/entry/src/main/ets/pages/WebClipboardEvent.ets) -->
+<!-- @[web_clipboard_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebClipboard/entry/src/main/ets/pages/WebClipboardEvent.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -247,7 +247,7 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 
-<!-- @[web_clipboard_content](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebClipboard/entry/src/main/ets/pages/WebClipboardEvent.ets) -->
+<!-- @[web_clipboard_event](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebClipboard/entry/src/main/ets/pages/WebClipboardEvent.ets) --> 
 ``` TypeScript
 import { Web, $rawfile, UIContext, Entry, Component, Column } from '@ohos.arkui.component'
 import webview from '@ohos.web.webview';
@@ -334,7 +334,7 @@ struct WebComponent {
 开发者可以通过设置Web组件的[copyOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#copyoptions11)属性，来指定Web组件上剪贴板复制的范围。可以指定的选项有：CopyOptions.None（不支持复制）、CopyOptions.InApp（支持应用内复制）以及CopyOptions.LocalDevice（支持设备内复制）。默认值为：CopyOptions.LocalDevice，即默认支持设备内部的复制。
 
 ArkTS-Dyn示例：
-<!-- @[web_clipboard_copyOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebClipboard/entry/src/main/ets/pages/WebCopyOptions.ets) -->
+<!-- @[web_clipboard_copyOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebClipboard/entry/src/main/ets/pages/WebCopyOptions.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -355,7 +355,8 @@ struct WebComponent {
 ```
 
 ArkTS-Sta示例：
-<!-- @[web_clipboard_copyOptions](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebClipboard/entry/src/main/ets/pages/WebCopyOptions.ets) -->
+
+<!-- @[web_clipboard_copyOptions](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebClipboard/entry/src/main/ets/pages/WebCopyOptions.ets) --> 
 ``` TypeScript
 import { Web, $rawfile, UIContext, Entry, Component, Column, CopyOptions } from '@ohos.arkui.component'
 import { State } from '@ohos.arkui.stateManagement';
