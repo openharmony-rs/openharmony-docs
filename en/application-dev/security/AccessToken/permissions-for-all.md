@@ -62,8 +62,6 @@ Allows an application to obtain the print framework capability.
 
 **Authorization mode**: system_grant
 
-**Supported devices**: Phone | PC/2in1 | Tablet | TV
-
 **Valid since**: 10
 
 ## ohos.permission.DISCOVER_BLUETOOTH

@@ -3,13 +3,13 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
 <!--Owner: @guoshengbang-->
-<!--Designer: @gcw_4D6e0BBd-->
-<!--Tester: @guoshengbang-->
+<!--Designer: @baozewei-->
+<!--Tester: @baozewei-->
 <!--Adviser: @fang-jinxu-->
 
 该模块为基本打印的操作API，提供调用基础打印功能的接口。
 
-> **说明：**  
+> **说明：**
 > 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
@@ -825,7 +825,7 @@ ArkTS-Dyn: onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs
 
 ArkTS-Sta: onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs: PrintAttributes, fd: int, writeResultCallback: (jobId: string, writeResult: PrintFileCreationState) => void): void
 
-打印服务会通过本接口将一个空的pdf文件的文件描述符传给三方应用，由三方应用使用新的打印参数更新待打印文件，更新文件完成后通过本接口的回调方法writeResultCallback通知打印服务。 
+打印服务会通过本接口将一个空的pdf文件的文件描述符传给三方应用，由三方应用使用新的打印参数更新待打印文件，更新文件完成后通过本接口的回调方法writeResultCallback通知打印服务。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -1842,6 +1842,8 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 | supportedQualities | Array&lt;[PrintQuality](#printquality14)&gt; | 否 | 是 | 表示打印机支持的打印质量列表。 |
 | supportedOrientations | Array&lt;[PrintOrientationMode](#printorientationmode14)&gt; | 否 | 是 | 表示打印机支持的打印方向列表。 |
 | options | string | 否 | 是 | 表示打印机能力详细信息。 |
+| vendorPrinterPrefAbility | string | 否 | 是 | 表示打印机驱动的厂商打印机首选项设置界面。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0 |
+| vendorJobAttrAbility | string | 否 | 是 | 表示打印机驱动的厂商打印任务属性设置界面。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0 |
 
 ## PrintQuality<sup>14+</sup>
 
@@ -1916,6 +1918,7 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 | defaultCollate<sup>24+</sup> | boolean | 否 | 是 | 表示默认出纸顺序。true表示逐份打印，false表示逐页打印。默认值为逐份。**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本**：24<br/>**ArkTS-Sta起始版本**：24 |
 | defaultReverse<sup>24+</sup> | boolean | 否 | 是 | 表示默认打印顺序。true表示逆序打印，false表示正序打印。默认值为正序打印。**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本**：24<br/>**ArkTS-Sta起始版本**：24 |
 | options | string | 否 | 是 | 表示打印机首选项中不在以上字段中的其他字段，查询打印机或者从打印机驱动获取，以json格式存储在string中。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
+| vendorOptions | string | 否 | 是 | 表示以JSON格式字符串化的打印机驱动的厂商打印机首选项。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0 |
 
 ## PrinterEvent<sup>18+</sup>
 
@@ -2594,6 +2597,7 @@ print.startPrint(printJobData).then(() => {
 | isCollate | boolean | 否 | 是 | 表示打印顺序方式。true表示逐页打印，false表示逐份打印。默认值为true。 |
 | isSequential | boolean | 否 | 是 | 表示是否按照页面顺序打印。 |
 | options | string | 否 | 是 | 表示以JSON格式字符串化的对象。 |
+| vendorOptions | string | 否 | 是 | 表示以JSON格式字符串化的打印机驱动的厂商打印任务属性。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0 |
 
 ## PrintMargin<sup>24+</sup>
 
@@ -2739,6 +2743,7 @@ print.startPrint(printJobData).then(() => {
 | margin | [PrintMargin](#printmargin24) | 否 | 是 | 表示当前页边距设置。 |
 | preview | [PreviewAttribute](#previewattribute24) | 否 | 是 | 表示预览设置。 |
 | options | Object | 否 | 是 | 表示JSON对象字符串。 |
+| vendorOptions | string | 否 | 是 | 表示以JSON格式字符串化的打印机驱动的厂商打印任务属性。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0 |
 
 ## print.updatePrintJobState<sup>24+</sup>
 
@@ -3174,7 +3179,7 @@ import { print } from '@kit.BasicServicesKit';
 
 let watermarkCallback: print.WatermarkCallback = (jobId: string, fd: number) => {
     console.info('Watermark callback triggered, jobId: ' + jobId + ', fd: ' + fd);
-    
+
     try {
         // 处理水印后通知系统处理成功
         print.notifyWatermarkComplete(jobId, print.WatermarkHandleResult.WATERMARK_HANDLE_SUCCESS);
