@@ -1100,32 +1100,40 @@ options: RichEditorOptions = { controller: this.controller };
 
 infoShowController: RichEditorController = new RichEditorController();
 infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
-// ...
-        // 请将$r('app.string.xxx')替换为实际资源文件
-        RichEditor(this.options)
-          .onReady(() => {
-            this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_2')), {
-              style: {
-                fontColor: Color.Black,
-                fontSize: 15
-              }
-            })
+
+build() {
+  Column() {
+    // ...
+    Column({ space: 3 }) {
+      // 请将$r('app.string.xxx')替换为实际资源文件
+      RichEditor(this.options)
+        .onReady(() => {
+          this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_2')), {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 15
+            }
           })
-          .onSelectionChange((value: RichEditorRange) => {
-            this.infoShowController.addTextSpan('\n' + resource.resourceToString($r('app.string.AddEvent_Text_3')) +
-            value.start + ',' + value.end + ')', {
-              style: {
-                fontColor: Color.Gray,
-                fontSize: 10
-              }
-            })
+        })
+        .onSelectionChange((value: RichEditorRange) => {
+          this.infoShowController.addTextSpan('\n' + resource.resourceToString($r('app.string.AddEvent_Text_3')) +
+          value.start + ',' + value.end + ')', {
+            style: {
+              fontColor: Color.Gray,
+              fontSize: 10
+            }
           })
-          .width(300)
-          .height(50)
-        Text(resource.resourceToString($r('app.string.AddEvent_Text_4'))).fontSize(10).fontColor(Color.Gray).width(300)
-        RichEditor(this.infoShowOptions)
-          .width(300)
-          .height(70)
+        })
+        .width(300)
+        .height(50)
+      Text(resource.resourceToString($r('app.string.AddEvent_Text_4'))).fontSize(10).fontColor(Color.Gray).width(300)
+      RichEditor(this.infoShowOptions)
+        .width(300)
+        .height(70)
+    }
+    // ...
+  }
+}
 ```
 
 ![alt text](figures/richeditor_image_onSelectionChange.gif)
