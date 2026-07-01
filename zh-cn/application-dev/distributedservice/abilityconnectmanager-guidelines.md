@@ -284,7 +284,7 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
     })
     abilityConnectionManager.on('receiveData',sessionId,(callbackInfo) => {
       let decoder = util.TextDecoder.create('utf-8');
-      let str = decoder.decodeToString(new Uint8Array(callbackInfo.data));
+      let str = decoder.decodeWithStream(new Uint8Array(callbackInfo.data));
       AppStorage.setOrCreate<string>('receiveMessage', str);
     })
   }
