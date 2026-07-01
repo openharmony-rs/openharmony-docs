@@ -7,8 +7,11 @@
 <!--Tester: @hongmei_may-->
 <!--Adviser: @RayShih-->
 
-> **说明：**<br/>
+
+> **说明：**
+> 
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+
 
 ## 21800001 系统内部错误
 
@@ -18,7 +21,7 @@ System internal error.
 
 **错误描述**
 
-系统内部错误。
+系统内部错误（例如：注册或删除Web组件JavaScript对象失败）。
 
 **可能原因**
 
@@ -26,7 +29,10 @@ System internal error.
 
 **处理步骤**
 
-检查系统服务是否运行正常。
+1. 重启设备后重试。
+
+2. 若您的问题仍无法解决，请优先通过企点QQ：800183590、[转人工链接](https://webpage.qidian.qq.com/qidian/chatv3/pc.html?linkType=1&env=ol&kfuin=2885820057&fid=365&key=646c4489e237ea477e85483a1791dfaa&cate=1&type=16&ftype=1&_type=wpa&qidian=true&waitTime=10005&clickid=ad71nq.wg8a2n.l1fu39si&callImType=1&delayTime=10&roleValue=1&roleData=474&translateSwitch=0&source=0&isLBS=0&isSsc=0&isCustomEntry=0&im_jump_from=v2_1)联系技术人员排查处理，若以上方式未能有效解决问题，可通过<!--RP1-->在线提单<!--RP1End-->提交问题。
+
 
 ## 21800003 广告请求加载失败
 
@@ -40,17 +46,16 @@ Failed to load the ad request.
 
 **可能原因**
 
-1. 网络连接异常。
-
-2. 广告请求参数错误。
-
-3. 服务器无合适广告填充。
+1. 服务器无合适广告填充。设备是否返回广告，取决于广告底价设置、用户负反馈屏蔽或算法决策等因素，因此无法保证每次请求都有填充。
 
 **处理步骤**
 
 1. 请检查网络状态。
 
 2. 请根据API参考检查广告请求参数是否符合要求。
+
+3. 单台设备多次请求仍无法请求到广告时，建议使用多台设备进行测试。若您的问题仍无法解决，请优先通过企点QQ：800183590、[转人工链接](https://webpage.qidian.qq.com/qidian/chatv3/pc.html?linkType=1&env=ol&kfuin=2885820057&fid=365&key=646c4489e237ea477e85483a1791dfaa&cate=1&type=16&ftype=1&_type=wpa&qidian=true&waitTime=10005&clickid=ad71nq.wg8a2n.l1fu39si&callImType=1&delayTime=10&roleValue=1&roleData=474&translateSwitch=0&source=0&isLBS=0&isSsc=0&isCustomEntry=0&im_jump_from=v2_1)联系技术人员排查处理，若以上方式未能有效解决问题，可通过<!--RP2-->在线提单<!--RP2End-->提交问题。
+
 
 ## 21800004 广告展示失败
 
@@ -70,6 +75,7 @@ Failed to display the ad.
 
 请检查网络状态。
 
+
 ## 21800005 广告数据解析失败
 
 **错误信息**
@@ -87,39 +93,3 @@ Failed to parse the ad response.
 **处理步骤**
 
 请检查广告响应数据。
-
-## 401 请求广告参数错误
-
-**错误信息**
-
-Invalid input parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.
-
-**错误描述**
-
-请求广告参数错误。
-
-**可能原因**
-
-媒体在写入请求广告参数，校验异常等。
-
-**处理步骤**
-
-参考开发指导文档检查广告请求参数是否正确。
-
-## 801 请求广告返回错误码
-
-**错误信息**
-
-Device not supported.
-
-**错误描述**
-
-该设备不支持API，通常用于在设备已支持该SysCap时，针对其少量的API的支持处理。
-
-**可能原因**
-
-该设备不支持此API。
-
-**处理步骤**
-
-请检查该设备是否支持使用的API。
