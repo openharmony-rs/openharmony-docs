@@ -32,7 +32,7 @@ EmbeddedComponent只能在UIAbility中使用，且被拉起的EmbeddedUIExtensio
 
 ## 接口
 
-## EmbeddedComponent
+### EmbeddedComponent
 
 EmbeddedComponent(loader: import('../api/@ohos.app.ability.Want').default, type: EmbeddedType)
 
@@ -49,7 +49,7 @@ EmbeddedComponent(loader: import('../api/@ohos.app.ability.Want').default, type:
 | loader                | import('../api/@ohos.app.ability.[Want](../../apis-ability-kit/js-apis-app-ability-want.md)').default | 是   | 要加载的EmbeddedUIExtensionAbility。 |
 | type                  | [EmbeddedType](ts-appendix-enums.md#embeddedtype12)                              | 是   | 提供方的类型。                       |
 
-## EmbeddedComponent
+### EmbeddedComponent
 
 EmbeddedComponent(loader: import('../api/@ohos.app.ability.Want').default, type: EmbeddedType, options?: EmbeddedOptions)
 
