@@ -186,11 +186,6 @@
 
    <!-- @[motion_subscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
    
-   ``` TypeScript
-   try {
-     motion.on('holdingHandChanged', callback);
-   <!-- @[motion_unsubscribe_holding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
-   
 
 4. 取消订阅握持手感知
 
