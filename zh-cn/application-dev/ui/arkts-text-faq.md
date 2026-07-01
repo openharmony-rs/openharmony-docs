@@ -635,3 +635,72 @@ export struct CursorPersistsWhenTextInputIsCoveredExample {
 ```
 
 ![textInput_faq_show_handle](figures/textInput_faq_show_handle.gif)
+
+### 如何设置TextArea的文本最少展示行数并自适应高度
+
+**问题现象**
+
+设置TextArea的初始高度来控制最少文本展示行数，当输入文本超过初始高度时，TextArea的高度自适应。
+
+**解决措施**
+
+设置[minLines](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#minlines20)（从API version 20开始），或者设置height为"auto"，并使用[constraintSize](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize)自行计算高度。
+
+<!-- @[normal_question_text_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/NormalQuestion.ets) -->
+
+``` TypeScript
+import { MeasureUtils } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TextExample {
+  private textAreaPadding = 12;
+  private setMaxLines = 3;
+  private resourceManager = this.getUIContext().getHostContext()?.resourceManager;
+  // 请在resources\base\element\string.json文件中配置name为'NormalQuestion_change'，value为非空字符串的资源
+  private changeText = this.resourceManager?.getStringByNameSync('NormalQuestion_change') as string;
+  @State fullText: string = this.changeText;
+  @State originText: string = this.changeText;
+  @State uiContext: UIContext = this.getUIContext();
+  @State uiContextMeasure: MeasureUtils = this.uiContext.getMeasureUtils();
+  textSize: SizeOptions = this.uiContextMeasure.measureTextSize({
+    textContent: this.originText,
+    fontSize: 18
+  });
+
+  build() {
+    Column() {
+      TextArea({ text: 'minLines: ' + this.fullText })
+        .fontSize(18)
+        .width(300)
+        .minLines(3)
+
+      Blank(50)
+
+      TextArea({ text: 'constraintSize: ' + this.fullText })
+        .fontSize(18)
+        .padding({ top: this.textAreaPadding, bottom: this.textAreaPadding })
+        .width(300)
+        .height('auto')
+        .constraintSize({
+          // 结合padding计算，设置至少显示this.setMaxLines行文本
+          // 若涉及适老化字号缩放，需要监听并调整高度
+          minHeight: this.textAreaPadding * 2 +
+            this.setMaxLines * this.getUIContext().px2vp(Number(this.textSize.height))
+        })
+
+      Blank(50)
+      // 请将$r('app.string.NormalQuestion_AddInput')替换为实际资源文件，在本示例中该资源文件的value值为"增加输入"
+      Button($r('app.string.NormalQuestion_AddInput'))
+        .onClick(() => {
+          this.fullText += this.changeText;
+        })
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .padding({ top: 30 })
+  }
+}
+```
+
+![textinputkeyboardavoid](figures/textareaHeight.gif)
