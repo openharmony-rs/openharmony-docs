@@ -398,7 +398,7 @@
 
 ## ShowWindowOptions<sup>20+</sup>
 
-显示子窗口、全局悬浮窗或系统窗口时的参数。
+显示子窗口、应用主窗、全局悬浮窗口或系统窗口时的参数。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
