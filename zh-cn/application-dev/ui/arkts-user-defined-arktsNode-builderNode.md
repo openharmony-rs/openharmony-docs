@@ -1125,7 +1125,7 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
   
   @Builder
   function buildText() {
-    // @Builder中使用语法节点生成BuilderProxyNode。
+    // @Builder中使用语法节点生成BuilderProxyNode
     if (true) {
       MyComponent()
     }
@@ -1155,7 +1155,7 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
       this.rootNode = new FrameNode(context);
   
       if (AppStorage.has('textNode')) {
-        // 复用AppStorage中的BuilderNode。
+        // 复用AppStorage中的BuilderNode
         this.textNode = AppStorage.get<BuilderNode<[]>>('textNode') as BuilderNode<[]>;
         const parent = this.textNode.getFrameNode()?.getParent();
         if (parent) {
@@ -1164,7 +1164,7 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
       } else {
         this.textNode = new BuilderNode(context);
         this.textNode.build(wrapBuilder<[]>(buildText));
-        // 将创建的BuilderNode存入AppStorage。
+        // 将创建的BuilderNode存入AppStorage
         AppStorage.setOrCreate<BuilderNode<[]>>('textNode', this.textNode);
       }
       this.rootNode.appendChild(this.textNode.getFrameNode());
@@ -1188,9 +1188,9 @@ BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-re
             .backgroundColor('#FFF0F0F0')
           Button('Router pageTwo')
             .onClick(() => {
-              // 改变AppStorage中的状态变量触发Text节点的重新创建。
+              // 改变AppStorage中的状态变量触发Text节点的重新创建
               AppStorage.setOrCreate<boolean>('isShowText', false);
-              // 将BuilderNode从AppStorage中移除。
+              // 将BuilderNode从AppStorage中移除
               AppStorage.delete('textNode');
   
               this.getUIContext().getRouter().replaceNamedRoute({ name: 'pageTwo' });
