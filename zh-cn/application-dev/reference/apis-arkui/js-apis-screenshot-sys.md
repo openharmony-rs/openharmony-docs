@@ -99,6 +99,8 @@ save(options: ScreenshotOptions, callback: AsyncCallback&lt;image.PixelMap&gt;):
 
 获取屏幕截图，使用callback异步回调。
 
+返回的PixelMap对象需要手动释放，使用完毕后必须调用[release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7)方法释放内存，否则可能导致内存泄漏。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -110,8 +112,6 @@ save(options: ScreenshotOptions, callback: AsyncCallback&lt;image.PixelMap&gt;):
 **需要权限：**
 - API版本22+：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
 - API版本7-21：ohos.permission.CAPTURE_SCREEN。
-
-**资源管理：** 返回的PixelMap对象需要手动释放，使用完毕后必须调用[release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7)方法释放内存，否则可能导致内存泄漏。
 
 **参数：**
 
@@ -200,6 +200,8 @@ save(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
 获取屏幕截图，使用callback异步回调。
 
+返回的PixelMap对象需要手动释放，使用完毕后必须调用[release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7)方法释放内存，否则可能导致内存泄漏。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -211,8 +213,6 @@ save(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 **需要权限：**
 - API版本22+：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
 - API版本7-21：ohos.permission.CAPTURE_SCREEN。
-
-**资源管理：** 返回的PixelMap对象需要手动释放，使用完毕后必须调用[release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7)方法释放内存，否则可能导致内存泄漏。
 
 **参数：**
 
@@ -274,6 +274,8 @@ save(options?: ScreenshotOptions): Promise&lt;image.PixelMap&gt;
 
 获取屏幕截图，使用Promise异步回调。
 
+返回的PixelMap对象需要手动释放，使用完毕后必须调用[release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7)方法释放内存，否则可能导致内存泄漏。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -285,8 +287,6 @@ save(options?: ScreenshotOptions): Promise&lt;image.PixelMap&gt;
 **需要权限：**
 - API版本22+：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
 - API版本7-21：ohos.permission.CAPTURE_SCREEN。
-
-**资源管理：** 返回的PixelMap对象需要手动释放，使用完毕后必须调用[release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7)方法释放内存，否则可能导致内存泄漏。
 
 **参数：**
 
@@ -389,7 +389,8 @@ saveHdrPicture(options?: HdrScreenshotOptions): Promise&lt;Array&lt;image.PixelM
 获取屏幕截图，使用Promise异步回调。SDR为标准动态范围图，HDR为高动态范围图。
 - 当物理屏存在HDR资源（包括HDR资源被遮挡）时，无论HDR是否开启，该接口返回一个包含SDR和HDR的PixelMap数组。
 - 当物理屏不存在HDR资源时，与[save](#screenshotsave)接口返回一个SDR的PixelMap不同，该接口返回包含一个SDR的PixelMap数组。同时该接口不具备[save](#screenshotsave)接口的裁剪、拉伸、旋转功能。
-<br><br>
+
+返回的PixelMap对象数组中的每个PixelMap对象都需要手动释放，使用完毕后必须调用[release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7)方法释放内存，否则可能导致内存泄漏。
 
 **系统接口：** 此接口为系统接口。
 
@@ -402,8 +403,6 @@ saveHdrPicture(options?: HdrScreenshotOptions): Promise&lt;Array&lt;image.PixelM
 **需要权限：**
 - API版本22+：ohos.permission.CAPTURE_SCREEN 或 ohos.permission.CUSTOM_SCREEN_RECORDING。
 - API版本20-21：ohos.permission.CAPTURE_SCREEN。
-
-**资源管理：** 返回的PixelMap对象数组中的每个PixelMap对象都需要手动释放，使用完毕后必须调用[release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7)方法释放内存，否则可能导致内存泄漏。
 
 **参数：**
 
