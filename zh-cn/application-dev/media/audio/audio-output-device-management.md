@@ -197,8 +197,8 @@ let rendererInfo: audio.AudioRendererInfo = {
 // ...
 async function getPreferOutputDeviceForRendererInfo() {
   // ...
-  audioRoutingManager.getPreferOutputDeviceForRendererInfo(rendererInfo).then((desc: audio.AudioDeviceDescriptors) => {
-    console.info(`device descriptor: ${desc}`);
+  audioRoutingManager.getPreferOutputDeviceForRendererInfo(rendererInfo).then((data: audio.AudioDeviceDescriptors) => {
+    console.info(`device descriptor: ${data}`);
 
     // ...
   }).catch((err: BusinessError) => {
