@@ -24,9 +24,9 @@ glTF模型中引用的纹理图片支持以下格式：
 
 | 格式 | 支持情况 |
 |------|----------|
-| KTX（.ktx） | KTX 1.x； |
-| JPEG（.jpg/.jpeg） | JFIF、Exif、ICC_PROFILE标记的文件；<br>DQT、XMP、MPF、Adobe标记的文件，从 API verion 26 开始支持； |
-| PNG（.png） | 1、2、4、8、16位色深；灰度、灰度+Alpha、索引色、真彩、真彩+Alpha； |
+| KTX（.ktx） | 支持 KTX 1.x版本。 |
+| JPEG（.jpg/.jpeg） | 支持识别头部携带JFIF、Exif、ICC Profile标记的JPEG文件；<br>搭载OpenHarmony 7.0.0及以上版本的设备，新增支持识别头部包含DQT、XMP、MPF、Adobe标记的JPEG文件。 |
+| PNG（.png） | 支持标准PNG文件。 |
 
 1. 导入相关模块。
 
