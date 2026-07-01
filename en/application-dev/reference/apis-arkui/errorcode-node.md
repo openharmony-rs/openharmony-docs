@@ -74,11 +74,11 @@ The current FrameNode and the target FrameNode do not have a common ancestor nod
 
 **Description**
 
-This error code is reported when the current node and the target node do not have a common ancestor node.
+This error code is reported when the current node and the target node do not share a common ancestor node.
 
 **Possible Causes**
 
-The common ancestor node of the current node and the target node cannot be found.
+A common ancestor node between the current node and the target node could not be found.
 
 **Solution**
 

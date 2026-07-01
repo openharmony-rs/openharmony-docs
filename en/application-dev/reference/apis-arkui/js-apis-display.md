@@ -457,7 +457,7 @@ try {
 
 getPrimaryDisplaySync(): Display
 
-Obtains the information about the primary display. For devices other than PCs/2-in-1 devices, the **Display** object obtained is the built-in screen. For PCs/2-in-1 devices with an external screen, the **Display** object obtained is the parimary screen. For PCs/2-in-1 devices without an external screen, the **Display** object obtained is the built-in screen.
+Obtains the information about the primary display. For devices other than PCs/2-in-1 devices, the **Display** object obtained is the built-in screen. For PCs/2-in-1 devices with an external screen, the **Display** object obtained is the primary screen. For PCs/2-in-1 devices without an external screen, the **Display** object obtained is the built-in screen.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 

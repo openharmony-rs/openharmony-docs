@@ -198,7 +198,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name| Description|
 | -- | -- |
 | .value[0]?.i32 | Direction in which child components are arranged within the **Flex** container. The parameter type is [ArkUI_FlexDirection](capi-layout-h.md#arkui_flexdirection). The default value is **ARKUI_FLEX_DIRECTION_ROW**.|
-| .value[1]?.i32 | Arrangement rule. The parameter type is [ArkUI_FlexWrap](capi-layout-h.md#arkui_flexwrap). The default value is **ARKUI_FLEX_WRAP_NO_WRAP**.|
+| .value[1]?.i32 | Wrapping rule. The parameter type is [ArkUI_FlexWrap](capi-layout-h.md#arkui_flexwrap). The default value is **ARKUI_FLEX_WRAP_NO_WRAP**.|
 | .value[2]?.i32 | Alignment mode along the main axis. The parameter type is [ArkUI_FlexAlignment](capi-layout-h.md#arkui_flexalignment). The default value is **ARKUI_FLEX_ALIGNMENT_START**.|
 | .value[3]?.i32 | Alignment mode along the cross axis. The parameter type is [ArkUI_ItemAlignment](capi-layout-h.md#arkui_itemalignment). The default value is **ARKUI_ITEM_ALIGNMENT_START**.|
 | .value[4]?.i32 | Alignment mode for multi-line content when there is extra space in the cross axis. The parameter type is [ArkUI_FlexAlignment](capi-layout-h.md#arkui_flexalignment). The default value is **ARKUI_FLEX_ALIGNMENT_START**.|

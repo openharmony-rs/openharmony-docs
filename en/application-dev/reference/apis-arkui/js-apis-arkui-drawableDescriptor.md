@@ -844,7 +844,7 @@ A constructor used to create an **AnimatedDrawableDescriptor** object.
 | Name    | Type             | Mandatory | Description                                      |
 | --------- | ---------------- | ---- | ------------------------------------------ |
 | pixelMaps | Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>  | Yes  | **PixelMap** image data.|
-| options   | [AnimationOptions](#animationoptions12) | No  | Provides the configuration options for animation playback,                              |
+| options   | [AnimationOptions](#animationoptions12) | No  | Options for animation playback.                              |
 
 ### constructor<sup>21+</sup>
 
@@ -863,7 +863,7 @@ A constructor used to create an **AnimatedDrawableDescriptor** object.
 | Name    | Type             | Mandatory | Description                                      |
 | --------- | ---------------- | ---- | ------------------------------------------ |
 | src | [ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr) \| Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | Yes  | Animated image source address or [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) array.<br> The address (**ResourceStr**) supports the following formats: application resources (**Resource**), sandbox path (file://\<bundleName>/\<sandboxPath>), and Base64 string.|
-| options   | [AnimationOptions](#animationoptions12) | No  | Provides the configuration options for animation playback,|
+| options   | [AnimationOptions](#animationoptions12) | No  | Options for animation playback.|
 
 **Example**
 

@@ -396,7 +396,7 @@ You are advised to use [@ohos.window (Window)](arkts-apis-window.md) since API v
 
 | Name | Type                                                 | Mandatory| Description                                                        |
 | ------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| options | [RequestFullWindowOptions](#requestfullwindowoptions) | No  | Transition time from a non-full window to a full window when the full window is requested, in milliseconds. The default time is directly proportional to the distance from the non-full window to the full window.|
+| options | [RequestFullWindowOptions](#requestfullwindowoptions) | No  | Duration for transition from a non-full window to a full window when the full window is requested, in milliseconds. By default, the value is in direct proportion to the distance between the non-full window and the full window.|
 
 **Example**
 

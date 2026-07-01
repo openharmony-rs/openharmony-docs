@@ -228,7 +228,7 @@ One or four parameters can be passed:
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Corner radius.|
+| .value[0].f32 | Corner radius for the four borders.|
 
 2: Specify different corner radii for the four borders.<br>
 
@@ -268,7 +268,7 @@ One or four parameters can be passed:
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Border color, in 0xARGB format, for example, **0xFFFF11FF**.|
+| .value[0].u32 | Border color for the four borders, in 0xARGB format, for example, **0xFFFF11FF**.|
 
 2: Specify different colors for the four borders.<br>
 
@@ -308,7 +308,7 @@ One or four parameters can be passed:
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Border line style. The parameter type is [ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle). The default value is **ARKUI_BORDER_STYLE_SOLID**.|
+| .value[0].i32 | Line style for the four borders. The parameter type is [ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle). The default value is **ARKUI_BORDER_STYLE_SOLID**.|
 
 2: Specify different line styles for the four borders.<br>
 
@@ -897,7 +897,7 @@ One or four parameters can be passed:
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Border width, in percentage.|
+| .value[0].f32 | Width for the four borders, in percentage.|
 
 2: Specify different width values for the four borders.<br>
 
@@ -937,7 +937,7 @@ One or four parameters can be passed:
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Radius, in percentage.|
+| .value[0].f32 | Corner radius for the four borders, in percentage.|
 
 2: Specify different corner radii for the four borders.<br>
 
@@ -1058,7 +1058,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_IGNORE_LAYOUT_SAFE_AREA = 119
 ```
 
-Safe area to be ignored when extending the layout of the component. This attribute can be set, reset, and obtained as required through APIs.<br>
+Safe area to be ignored when expanding the layout of the component. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 **size** in the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) is invalid.<br>
 
@@ -1069,7 +1069,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name| Description|
 | -- | -- |
 | .value[0].u32 | Type of the safe area. The parameter type is [ArkUI_LayoutSafeAreaType](capi-layout-h.md#arkui_layoutsafeareatype). The default value is **ARKUI_LAYOUT_SAFE_AREA_TYPE_SYSTEM**. If an invalid value is set, the default value is used.|
-| .value[1].u32 | Edges for extending the safe area. The parameter type is [ArkUI_LayoutSafeAreaEdge](capi-layout-h.md#arkui_layoutsafeareaedge). The default value is **ARKUI_LAYOUT_SAFE_AREA_EDGE_ALL**. Example: **ARKUI_LAYOUT_SAFE_AREA_EDGE_TOP \| ARKUI_LAYOUT_SAFE_AREA_EDGE_BOTTOM**. If an invalid value is set, the default value is used.|
+| .value[1].u32 | Edges for expanding the safe area. The parameter type is [ArkUI_LayoutSafeAreaEdge](capi-layout-h.md#arkui_layoutsafeareaedge). The default value is **ARKUI_LAYOUT_SAFE_AREA_EDGE_ALL**. Example: **ARKUI_LAYOUT_SAFE_AREA_EDGE_TOP \| ARKUI_LAYOUT_SAFE_AREA_EDGE_BOTTOM**. If an invalid value is set, the default value is used.|
 
 **Returns**
 
