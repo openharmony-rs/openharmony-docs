@@ -297,7 +297,7 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
     })
     abilityConnectionManager.on('receiveData',sessionId,(callbackInfo) => {
       let decoder = util.TextDecoder.create('utf-8');
-      let str = decoder.decodeToString(new Uint8Array(callbackInfo.data));
+      let str = decoder.decodeWithStream(new Uint8Array(callbackInfo.data));
       AppStorage.setOrCreate<string>('receiveMessage', str);
     })
   }
@@ -337,7 +337,7 @@ function registerSessionEvent(sessionId: number): void {
   // 注册接收数据事件监听
   abilityConnectionManager.onReceiveData(sessionId, (callbackInfo) => {
     const decoder = util.TextDecoder.create('utf-8');
-    const str = decoder.decodeToString(new Uint8Array(callbackInfo.data));
+    const str = decoder.decodeWithStream(new Uint8Array(callbackInfo.data));
     AppStorage.setOrCreate<string>('receiveMessage', str);
   });
 
