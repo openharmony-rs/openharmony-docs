@@ -442,11 +442,21 @@ options: RichEditorOptions = { controller: this.controller };
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
 options: RichEditorOptions = { controller: this.controller };
-// ...
-      RichEditor(this.options)
-        // 请将$r('app.string.SetAttributes_Text_8')替换为实际资源文件，在本示例中该资源文件的value值为"组件设置了最大字符数：7"
-        .placeholder(resource.resourceToString($r('app.string.SetAttributes_Text_8')))
-        .maxLength(7)
+
+build() {
+  Column() {
+    // ...
+    RichEditor(this.options)
+      // 请将$r('app.string.SetAttributes_Text_8')替换为实际资源文件，在本示例中该资源文件的value值为"组件设置了最大字符数：7"
+      .placeholder(resource.resourceToString($r('app.string.SetAttributes_Text_8')))
+      .maxLength(7)
+    // ...
+  }.alignItems(HorizontalAlign.Start)
+  .backgroundColor('#fff')
+  .borderRadius(12)
+  .padding(12)
+  .width('100%')
+}
 ```
 
 ![max Length](figures/RichEditor_maxLength.gif)
