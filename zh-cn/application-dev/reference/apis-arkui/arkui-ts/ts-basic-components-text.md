@@ -1478,7 +1478,7 @@ textIndent(value: Length)
 
 ### tailIndents
 
-tailIndents(value: Optional<LengthMetrics | Array<LengthMetrics>>)
+tailIndents(value: Optional<LengthMetrics | Array\<LengthMetrics>>)
 
 设置文本尾部缩进。未通过该接口设置时，文本尾部缩进为0fp。
 
