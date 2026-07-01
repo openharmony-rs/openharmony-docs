@@ -1,8 +1,8 @@
 # avtranscoder_base.h
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
