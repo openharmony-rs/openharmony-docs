@@ -21,27 +21,27 @@ API version 20开始，ArkUI开发框架新增了[OH_ArkUI_RunTaskInScope](../re
 本示例展示OH_ArkUI_RunTaskInScope接口的基础使用方式，OH_ArkUI_NodeUtils_GetAttachedNodeHandleById用于获取前置实例页面内的组件，相关使用请参考[OH_ArkUI_NodeUtils_GetAttachedNodeHandleById](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_getattachednodehandlebyid)，此处userData传入的数据类型为最终要设置的组件指针，便于设置对应组件属性。
 
 
-<!-- @[runtaskinscopethree_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkScopeTask/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[runtaskinscopethree_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkScopeTask/entry/src/main/cpp/napi_init.cpp) -->  
 
 ``` C++
 const uint32_t VALUE_2 = 250;
 const uint32_t VALUE_3 = 480;
 ```
 
-<!-- @[runtaskinscopeone_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkScopeTask/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[runtaskinscopeone_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkScopeTask/entry/src/main/cpp/napi_init.cpp) -->  
 
 ``` C++
 //page1
 ArkUI_NodeHandle button = nodeAPI->createNode(ARKUI_NODE_BUTTON);
 ArkUI_AttributeItem LABEL_Item = {.string = "pageOneButton"};
-// 设置id，用于在第二个页面内通过接口查找
+//设置id，用于在第二个页面内通过接口查找
 ArkUI_AttributeItem id = {.string = "pageOneButton"};
 nodeAPI->setAttribute(button, NODE_ID, &id);
 nodeAPI->setAttribute(button, NODE_BUTTON_LABEL, &LABEL_Item);
 nodeAPI->addChild(textContainer, button);
 ```
 
-<!-- @[runtaskinscopetwo_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkScopeTask/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[runtaskinscopetwo_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkScopeTask/entry/src/main/cpp/napi_init.cpp) -->  
 
 ``` C++
 //page2
