@@ -1647,12 +1647,12 @@ struct Index {
     this.adapterController.nodeAdapter?.dispose();
   }
   build() {
-    Column() {
+    Column({ space: 10 }) {
       Text('ListNode Adapter');
       NodeContainer(this.adapterController)
         .width(300).height(300)
         .borderWidth(1).borderColor(Color.Black)
-      Row() {
+      Row({ space: 5 }) {
         Button('Reload')
           .onClick(() => {
             this.adapterController.nodeAdapter?.reloadData(50);
@@ -1667,7 +1667,7 @@ struct Index {
           })
       }
 
-      Row() {
+      Row({ space: 5 }) {
         Button('Remove')
           .onClick(() => {
             this.adapterController.nodeAdapter?.removeData(10, 10);
