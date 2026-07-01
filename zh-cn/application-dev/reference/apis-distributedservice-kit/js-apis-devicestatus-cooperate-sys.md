@@ -734,7 +734,7 @@ on(type: 'cooperateMessage', callback: Callback&lt;CooperateMessage&gt;): void;
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的接口ArkTS-Sta是[onCooperateMessage](#oncooperatemessage23)。
+**相关接口**：该接口对应的接口ArkTS-Sta是[onCooperateMessage](#cooperateoncooperatemessage23)。
 
 **需要权限**：ohos.permission.COOPERATE_MANAGER
 
@@ -784,7 +784,7 @@ off(type: 'cooperateMessage', callback?: Callback&lt;CooperateMessage&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的接口ArkTS-Sta是[offCooperateMessage](#offcooperatemessage23)。
+**相关接口**：该接口对应的接口ArkTS-Sta是[offCooperateMessage](#cooperateoffcooperatemessage23)。
 
 **需要权限**：ohos.permission.COOPERATE_MANAGER
 
@@ -848,7 +848,7 @@ try {
 ```
 
 
-## onCooperateMessage<sup>23+</sup>
+## cooperate.onCooperateMessage<sup>23+</sup>
 
 onCooperateMessage(callback: Callback&lt;CooperateMessage&gt;): void
 
@@ -893,7 +893,7 @@ try {
 }
 ```
 
-## offCooperateMessage<sup>23+</sup>
+## cooperate.offCooperateMessage<sup>23+</sup>
 
 offCooperateMessage(callback?: Callback&lt;CooperateMessage&gt;): void
 
@@ -951,7 +951,7 @@ on(type: 'cooperateMouse', networkId: string, callback: Callback&lt;MouseLocatio
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的接口ArkTS-Sta是[onCooperateMouseEvent](#oncooperatemouseevent23)。
+**相关接口**：该接口对应的接口ArkTS-Sta是[onCooperateMouseEvent](#cooperateoncooperatemouseevent23)。
 
 **需要权限**：ohos.permission.COOPERATE_MANAGER
 
@@ -1003,7 +1003,7 @@ off(type: 'cooperateMouse', networkId: string, callback?: Callback&lt;MouseLocat
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的接口ArkTS-Sta是[offCooperateMouseEvent](#offcooperatemouseevent23)。
+**相关接口**：该接口对应的接口ArkTS-Sta是[offCooperateMouseEvent](#cooperateoffcooperatemouseevent23)。
 
 **需要权限**：ohos.permission.COOPERATE_MANAGER
 
@@ -1067,7 +1067,7 @@ try {
 }
 ```
 
-## onCooperateMouseEvent<sup>23+</sup>
+## cooperate.onCooperateMouseEvent<sup>23+</sup>
 
 onCooperateMouseEvent(networkId: string, callback: Callback&lt;MouseLocation&gt;): void
 
@@ -1116,7 +1116,7 @@ try {
 }
 ```
 
-## offCooperateMouseEvent<sup>23+</sup>
+## cooperate.offCooperateMouseEvent<sup>23+</sup>
 
 offCooperateMouseEvent(networkId: string, callback?: Callback&lt;MouseLocation&gt;): void
 
