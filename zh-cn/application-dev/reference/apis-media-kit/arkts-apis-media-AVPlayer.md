@@ -63,7 +63,7 @@ on(type: 'stateChange', callback: OnAVPlayerStateChangeHandle): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 状态机切换事件回调类型，支持的事件：'stateChange'，用户操作和系统都会触发此事件。 |
-| callback<sup>12+</sup> | [OnAVPlayerStateChangeHandle](arkts-apis-media-t.md#onavplayerstatechangehandle12) | 是   | 状态机切换事件回调方法。 |
+| callback<sup>12+</sup> | [OnAVPlayerStateChangeHandle](arkts-apis-media-t.md#onavplayerstatechangehandle12) | 是   | 状态机切换事件回调方法，当前是覆盖触发。 |
 
 **示例：**
 
@@ -123,7 +123,7 @@ off(type: 'stateChange', callback?: OnAVPlayerStateChangeHandle): void
 | 参数名 | 类型   | 必填 | 说明                                                  |
 | ------ | ------ | ---- | ----------------------------------------------------- |
 | type   | string | 是   | 状态机切换事件回调类型，取消注册的事件：'stateChange' |
-| callback<sup>12+</sup>   | [OnAVPlayerStateChangeHandle](arkts-apis-media-t.md#onavplayerstatechangehandle12) | 否   | 状态机切换事件回调方法。如果填写该参数，仅取消注册此回调的方法，否则取消注册stateChange事件的所有回调方法。 |
+| callback<sup>12+</sup>   | [OnAVPlayerStateChangeHandle](arkts-apis-media-t.md#onavplayerstatechangehandle12) | 否   | 状态机切换事件回调方法。不支持只注销某个callback。 |
 
 **示例：**
 
