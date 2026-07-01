@@ -498,18 +498,18 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
     // 提供通用属性和事件的封装。
     #ifndef MYAPPLICATION_ARKUINODE_H
     #define MYAPPLICATION_ARKUINODE_H
-
+    
     #include "ArkUIBaseNode.h"
     #include "NativeModule.h"
     #include <arkui/native_node.h>
     #include <arkui/native_type.h>
-
+    
     namespace NativeModule {
-
+    
     class ArkUINode : public ArkUIBaseNode {
     public:
         explicit ArkUINode(ArkUI_NodeHandle handle) : ArkUIBaseNode(handle) {}
-
+    
         ~ArkUINode() override {}
         
         void SetWidth(float width)
@@ -542,7 +542,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
             ArkUI_AttributeItem item = {value, 1};
             nativeModule_->setAttribute(handle_, NODE_BACKGROUND_COLOR, &item);
         }
-
+    
     protected:
         // 组件树操作的实现类对接。
         void OnAddChild(const std::shared_ptr<ArkUIBaseNode> &child) override
@@ -559,7 +559,7 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
         }
     };
     } // namespace NativeModule
-
+    
     #endif // MYAPPLICATION_ARKUINODE_H
     ```
 
