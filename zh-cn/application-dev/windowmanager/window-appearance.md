@@ -51,7 +51,7 @@
      - 子窗的阴影和圆角消失。
      - 子窗矩形区域的左上部分变为透明不可交互，通过点击“Create Test Window”按钮，事件透传到该按钮，创建出绿色的测试窗口。
 
-<!-- @[setWindowMaskSample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony-7.0-Beta1/code/DocsSample/ArkUISample/ArkUIWindowSamples/EventDistribution/setWindowMask/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[setWindowMaskSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/EventDistribution/setWindowMask/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { window } from '@kit.ArkUI';
@@ -117,7 +117,7 @@ struct Index {
 
   此处以子窗为例，调用setShadow()设置窗口边缘阴影。
 
-  <!-- @[windowShadowSample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony-7.0-Beta1/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowShadowSample/entry/src/main/ets/pages/Index.ets) --> 
+  <!-- @[windowShadowSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowShadowSample/entry/src/main/ets/pages/Index.ets) --> 
   
   ``` TypeScript
   // Index.ets
@@ -169,7 +169,7 @@ struct Index {
 
   此处以全局悬浮窗为例，设置其窗口边缘阴影的模糊半径。
 
-  <!-- @[window_shadow_radius](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony-7.0-Beta1/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowShadowRadiusSample/entry/src/main/ets/pages/Page1.ets) --> 
+  <!-- @[window_shadow_radius](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowShadowRadiusSample/entry/src/main/ets/pages/Page1.ets) --> 
   
   ``` TypeScript
   // pages/page1.ets
@@ -200,7 +200,7 @@ struct Index {
 
   此处以全局悬浮窗为例，设置其窗口圆角。
 
-  <!-- @[window_corner_radius](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony-7.0-Beta1/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowCornerRadiusSample/entry/src/main/ets/pages/Page1.ets) --> 
+  <!-- @[window_corner_radius](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowCornerRadiusSample/entry/src/main/ets/pages/Page1.ets) --> 
   
   ``` TypeScript
   // pages/page1.ets
@@ -232,7 +232,7 @@ struct Index {
 
 此处以全局悬浮窗为例，设置其窗口模糊效果（窗口内容的模糊半径、窗口背景的模糊半径）。
 
-<!-- @[window_blur_effect](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony-7.0-Beta1/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowBlurSample/entry/src/main/ets/pages/Page1.ets) --> 
+<!-- @[window_blur_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowBlurSample/entry/src/main/ets/pages/Page1.ets) --> 
 
 ``` TypeScript
 // pages/page1.ets
