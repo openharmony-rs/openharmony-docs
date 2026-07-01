@@ -282,7 +282,7 @@ connectAbility(want: Want, options: ConnectOptions): number
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 10 开始废弃，建议使用[connectServiceExtensionAbility](#inputmethodextensioncontextconnectserviceextensionabilitydeprecated)替代。
+> 从API version 8 开始支持，从API version 10 开始废弃，建议使用[connectServiceExtensionAbility](#connectserviceextensionabilitydeprecated)替代。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -531,7 +531,7 @@ disconnectAbility(connection: number, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 10 开始废弃，建议使用[disconnectServiceExtensionAbility](#inputmethodextensioncontextdisconnectserviceextensionabilitydeprecated)替代。
+> 从API version 8 开始支持，从API version 10 开始废弃，建议使用[disconnectServiceExtensionAbility](#disconnectserviceextensionabilitydeprecated)替代。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -593,7 +593,7 @@ disconnectAbility(connection: number): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 10 开始废弃，建议使用[disconnectServiceExtensionAbility](#inputmethodextensioncontextdisconnectserviceextensionabilitydeprecated-1)替代。
+> 从API version 8 开始支持，从API version 10 开始废弃，建议使用[disconnectServiceExtensionAbility](#disconnectserviceextensionabilitydeprecated-1)替代。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
