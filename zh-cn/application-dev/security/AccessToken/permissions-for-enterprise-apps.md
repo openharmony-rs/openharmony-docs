@@ -747,3 +747,22 @@ UDID（Unified Device ID）是设备的唯一标识。
 **支持设备**：PC/2in1
 
 **起始版本**：26.0.0
+
+ ## ohos.permission.ENTERPRISE_MANAGE_BACKUP
+ 
+允许应用使用备份还原能力。
+
+获取该权限后，应用可以对用户数据和应用沙箱数据进行备份和还原操作。
+
+<!--RP2--><!--RP2End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.1.0
