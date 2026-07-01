@@ -658,6 +658,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/types/libentry/Index.d.ts",
+				"functions":[
+					{
+						"end_line":18,
+						"name":"index_image_classification_runDemo",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
@@ -2077,6 +2087,21 @@
 						"end_line":18,
 						"name":"index_asr_runDemo",
 						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp",
+				"functions":[
+					{
+						"end_line":297,
+						"name":"napi_asr_SuppressTokens",
+						"start_line":281
+					},
+					{
+						"end_line":612,
+						"name":"napi_asr_predict",
+						"start_line":375
 					}
 				]
 			}
@@ -58379,6 +58404,31 @@
 						"end_line":55,
 						"name":"audioSuite_PrintInfo",
 						"start_line":17
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ai/mindspore/mindspore-guidelines-based-js.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteArkTSDemo/entry/src/main/ets/pages/model.ets",
+				"functions":[
+					{
+						"end_line":48,
+						"name":"model_image_classification",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteArkTSDemo/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":351,
+						"name":"index_image_classification",
+						"start_line":16
 					}
 				]
 			}
