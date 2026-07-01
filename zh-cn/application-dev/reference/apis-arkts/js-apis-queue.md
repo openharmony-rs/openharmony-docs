@@ -6,7 +6,7 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
-Queue的特点是先进先出，在尾部增加元素，在头部删除元素。Queue基于循环队列的数据结构实现。
+Queue遵循先进先出原则：在尾部增加元素，在头部删除元素。Queue基于循环队列的数据结构实现。
 
 Queue和[Deque](js-apis-deque.md)相比，Queue在尾部增加元素，在头部删除元素；而Deque支持在两端进行增删操作。
 
@@ -46,7 +46,7 @@ import { Queue } from '@kit.ArkTS';
 
 constructor()
 
-Queue的构造函数，创建一个新的Queue实例，初始长度为0。Queue容器类使用静态语言实现，不支持自定义属性和方法。
+Queue的构造函数，创建一个新的Queue实例，初始长度为0。Queue容器类使用静态语言实现，限制了存储位置和属性，不支持自定义属性和方法。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -102,8 +102,8 @@ add(element: T): boolean
 
 ```ts
 class PersonInfo {
-  name: string = ""
-  age: string = ""
+  name: string = "";
+  age: string = "";
 }
 // 创建支持多种类型的Queue实例
 let queue = new Queue<number | string | PersonInfo | number[]>();
@@ -121,7 +121,7 @@ console.info("result:", queue.length);  // result: 4
 
 pop(): T
 
-删除队头元素，并返回被删除元素。
+删除队列头部元素，并返回被删除元素。当Queue为空时，返回undefined。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -131,7 +131,7 @@ pop(): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回删除的元素。 |
+| T | 返回删除的元素。当Queue为空时，返回undefined。 |
 
 **错误码：**
 
@@ -150,7 +150,7 @@ queue.add(4);
 queue.add(5);
 queue.add(2);
 queue.add(4);
-// 删除队头元素，并返回被删除元素
+// 删除队列头部元素，并返回被删除元素
 let result = queue.pop();
 console.info("result:", result);  // result: 2
 ```
@@ -159,7 +159,7 @@ console.info("result:", result);  // result: 2
 
 getFirst(): T
 
-获取队列的头元素（不会删除队头元素）。
+获取队列的头元素（不会删除队列的头元素）。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
