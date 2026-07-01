@@ -94,7 +94,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 
 <!-- @[register_listener_to_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MediaResourceChangeNotificationsSample/entry/src/main/ets/registerlistenertoalbumability/RegisterListenerToAlbumAbility.ets) -->
-<!-- @[register_listener_to_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MediaResourceChangeNotificationsSample/entry/src/main/ets/registerlistenertoalbumability/RegisterListenerToAlbumAbility.ets) -->
+
 ``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
