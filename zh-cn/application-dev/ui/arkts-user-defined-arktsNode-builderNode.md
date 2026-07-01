@@ -729,8 +729,7 @@ BuilderNode中提供了[postTouchEvent](../reference/apis-arkui/js-apis-arkui-bu
   function buildNode(param: Params = new Params('hello')) {
     Row() {
       Text(`C${param.item} -- `)
-      // 该自定义组件在BuilderNode中无法被正确复用
-      ChildComponent2({ item: param.item })
+      ChildComponent2({ item: param.item }) // 该自定义组件在BuilderNode中无法被正确复用
     }
   }
   
@@ -747,7 +746,7 @@ BuilderNode中提供了[postTouchEvent](../reference/apis-arkui/js-apis-arkui-bu
     }
   }
   
-  // 被回收复用的自定义组件，其状态变量会更新，而子自定义组件ChildComponent3中的状态变量也会更新，但BuilderNode会阻断这一传递过程。
+  // 被回收复用的自定义组件，其状态变量会更新，而子自定义组件ChildComponent3中的状态变量也会更新，但BuilderNode会阻断这一传递过程
   @Reusable
   @Component
   struct ReusableChildComponent {
@@ -760,18 +759,19 @@ BuilderNode中提供了[postTouchEvent](../reference/apis-arkui/js-apis-arkui-bu
     }
   
     aboutToRecycle(): void {
-      hilog.info(0xF811,'testTag','%{public}s',`${TEST_TAG} ReusableChildComponent aboutToRecycle ${this.item}`);
+      hilog.info(0xF811, 'testTag', '%{public}s', `${TEST_TAG} ReusableChildComponent aboutToRecycle ${this.item}`);
   
-      // 当开关为open，通过BuilderNode的reuse接口和recycle接口传递给其下的自定义组件，例如ChildComponent2，完成复用。
+      // 当开关为open，通过BuilderNode的reuse接口和recycle接口传递给其下的自定义组件，例如ChildComponent2，完成复用
       if (this.switch === 'open') {
         this.controller?.builderNode?.recycle();
       }
     }
   
     aboutToReuse(params: object): void {
-      hilog.info(0xF811,'testTag','%{public}s',`${TEST_TAG} ReusableChildComponent aboutToReuse ${JSON.stringify(params)}`);
+      hilog.info(0xF811, 'testTag', '%{public}s',
+        `${TEST_TAG} ReusableChildComponent aboutToReuse ${JSON.stringify(params)}`);
   
-      // 当开关为open，通过BuilderNode的reuse接口和recycle接口传递给其下的自定义组件，例如ChildComponent2，完成复用。
+      // 当开关为open，通过BuilderNode的reuse接口和recycle接口传递给其下的自定义组件，例如ChildComponent2，完成复用
       if (this.switch === 'open') {
         this.controller?.builderNode?.reuse(params);
       }
@@ -791,11 +791,11 @@ BuilderNode中提供了[postTouchEvent](../reference/apis-arkui/js-apis-arkui-bu
     @Prop item: string = 'false';
   
     aboutToReuse(params: Record<string, object>) {
-      hilog.info(0xF811,'testTag','%{public}s',`${TEST_TAG} ChildComponent2 aboutToReuse ${JSON.stringify(params)}`);
+      hilog.info(0xF811, 'testTag', '%{public}s', `${TEST_TAG} ChildComponent2 aboutToReuse ${JSON.stringify(params)}`);
     }
   
     aboutToRecycle(): void {
-      hilog.info(0xF811,'testTag','%{public}s',`${TEST_TAG} ChildComponent2 aboutToRecycle ${this.item}`);
+      hilog.info(0xF811, 'testTag', '%{public}s', `${TEST_TAG} ChildComponent2 aboutToRecycle ${this.item}`);
     }
   
     build() {
@@ -813,11 +813,11 @@ BuilderNode中提供了[postTouchEvent](../reference/apis-arkui/js-apis-arkui-bu
     @Prop item: string = 'false';
   
     aboutToReuse(params: Record<string, object>) {
-      hilog.info(0xF811,'testTag','%{public}s',`${TEST_TAG} ChildComponent3 aboutToReuse ${JSON.stringify(params)}`);
+      hilog.info(0xF811, 'testTag', '%{public}s', `${TEST_TAG} ChildComponent3 aboutToReuse ${JSON.stringify(params)}`);
     }
   
     aboutToRecycle(): void {
-      hilog.info(0xF811,'testTag','%{public}s',`${TEST_TAG} ChildComponent3 aboutToRecycle ${this.item}`);
+      hilog.info(0xF811, 'testTag', '%{public}s', `${TEST_TAG} ChildComponent3 aboutToRecycle ${this.item}`);
     }
   
     build() {
@@ -849,7 +849,7 @@ BuilderNode中提供了[postTouchEvent](../reference/apis-arkui/js-apis-arkui-bu
             ListItem() {
               ReusableChildComponent({
                 item: item,
-                switch: 'open' // 将open改为close可观察到，BuilderNode不通过reuse和recycle接口传递复用时，BuilderNode内部的自定义组件的行为表现。
+                switch: 'open' // 将open改为close可观察到，BuilderNode不通过reuse和recycle接口传递复用时，BuilderNode内部的自定义组件的行为表现
               })
             }
           }, (item: string) => item)
