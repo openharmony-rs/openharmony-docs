@@ -529,7 +529,7 @@ config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(g_missionIds2
 
 从API version 23开始，支持PC/2in1设备、Phone/Tablet设备通过[OH_AVScreenCapture_StrategyForPickerPopUp](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup)控制是否统一弹出选择共享内容弹窗。
 
-### OH_AVScreenCapture_StrategyForPickerPopUp为true
+**OH_AVScreenCapture_StrategyForPickerPopUp为true**
 
 代表设备录屏启动后统一弹出picker，无需指定录屏模式。
 
@@ -550,7 +550,7 @@ OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
 OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 ```
 
-### OH_AVScreenCapture_StrategyForPickerPopUp为false
+**OH_AVScreenCapture_StrategyForPickerPopUp为false**
 
 代表设备录屏启动后不弹出picker，仅弹出隐私保护弹窗，无需指定录屏模式。
 
@@ -573,7 +573,7 @@ OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 
 
 
-### OH_AVScreenCapture_StrategyForPickerPopUp为默认值
+**OH_AVScreenCapture_StrategyForPickerPopUp为默认值**
 
 对于PC/2in1设备、Phone/Tablet设备，录屏弹窗行为存在差异。
 
