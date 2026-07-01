@@ -12,7 +12,7 @@ typedef struct {...} ARKUI_TextPickerRangeContent
 
 ## 概述
 
-定义单列滑动数据选择器支持的图片资源结构体。
+定义单列滑动数据选择器支持的选项内容结构体，包含文本和图片资源。
 
 **起始版本：** 12
 
