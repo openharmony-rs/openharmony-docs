@@ -372,8 +372,8 @@
     ```
 
     ArkTS-Sta示例：
-
     <!-- @[AchieveConfirmDialogPage1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ShowWebPageDialog/entry2/src/main/ets/pages/AchieveConfirmDialogPage1.ets) --> 
+    
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     import {
@@ -387,14 +387,14 @@
       AlertDialogParamWithButtons
     } from '@ohos.arkui.component'
     import { State } from '@ohos.arkui.stateManagement'
-
+    
     @Entry
     @Component
     struct Index {
       @State message: string = 'Hello World';
       webviewController: webview.WebviewController = new webview.WebviewController(undefined);
       uiContext: UIContext = this.getUIContext();
-
+    
       build() {
         Column() {
           Web({ src: $rawfile('test.html'), controller: this.webviewController })
@@ -428,6 +428,7 @@
         }
       }
     }
+    ```
     ```
 
   加载的html。
