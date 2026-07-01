@@ -1799,17 +1799,17 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/CoreFile/PersistPermission/entry/src/main/ets/persistpermission/PersistPermission.ets",
 				"functions":[
 					{
-						"end_line":59,
+						"end_line":61,
 						"name":"persist_permission_example",
 						"start_line":17
 					},
 					{
-						"end_line":86,
+						"end_line":90,
 						"name":"revoke_permission_example",
 						"start_line":16
 					},
 					{
-						"end_line":116,
+						"end_line":122,
 						"name":"activate_permission_example",
 						"start_line":15
 					}
