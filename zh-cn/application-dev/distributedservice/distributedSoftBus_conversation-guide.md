@@ -1,6 +1,10 @@
 # 跨设备唤醒与消息传输开发指导
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
+<!--Owner: @wangrui7-->
+<!--Designer: @yangyang2-->
+<!--Tester: @Ytt-test-->
+<!--Adviser: @hu-zhiqiong-->
 
 ## 简介
 
