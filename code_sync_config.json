@@ -14888,7 +14888,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeCommon.ets",
 				"functions":[
 					{
-						"end_line":230,
+						"end_line":224,
 						"name":"frameNodeCommon_start_sta",
 						"start_line":17
 					}
@@ -14898,7 +14898,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeDraw.ets",
 				"functions":[
 					{
-						"end_line":187,
+						"end_line":206,
 						"name":"frameNodeDraw_start_sta",
 						"start_line":17
 					}
@@ -14908,7 +14908,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeTypeNode.ets",
 				"functions":[
 					{
-						"end_line":347,
+						"end_line":354,
 						"name":"frameNodeTypeNode_start_sta",
 						"start_line":17
 					}
@@ -14918,7 +14918,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/FrameNode/entry/src/main/ets/pages/samples/FrameNodeLazyForEachSelect.ets",
 				"functions":[
 					{
-						"end_line":311,
+						"end_line":312,
 						"name":"frameNodeLazyForEachSelect_start_sta",
 						"start_line":18
 					}
@@ -28003,7 +28003,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/RenderNode/entry/src/main/ets/pages/samples/CustomDraw.ets",
 				"functions":[
 					{
-						"end_line":109,
+						"end_line":110,
 						"name":"custom_draw_sta",
 						"start_line":18
 					}
