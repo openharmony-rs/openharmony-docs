@@ -224,6 +224,7 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
  <!-- @[cors_script](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/resources/resfile/js/script.js) -->    
  
  ``` JavaScript
+ // main/resources/resfile/js/script.js
  const body = document.body;
  const element = document.createElement('div');
  element.textContent = 'success';
