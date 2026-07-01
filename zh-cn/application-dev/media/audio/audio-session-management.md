@@ -419,7 +419,7 @@ AudioSession申请的焦点和AudioRenderer申请的焦点是同等地位。
 
    ArkTS-Dyn示例：
 
-   <!-- @[on_audio_session_state_changed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[on_audio_session_state_changed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
@@ -551,7 +551,7 @@ AudioSession申请的焦点和AudioRenderer申请的焦点是同等地位。
 
 ArkTS-Dyn示例：
 
-<!-- @[audio_session_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[audio_session_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
