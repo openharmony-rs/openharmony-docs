@@ -37,8 +37,8 @@
 | [UsbDdkConfigDescriptor](capi-usbddk-usbddkconfigdescriptor.md) | UsbDdkConfigDescriptor | 配置描述符。 |
 | [UsbRequestPipe](capi-usbddk-usbrequestpipe.md) | UsbRequestPipe | 请求管道，是USB数据传输请求的抽象。 |
 | [UsbDeviceMemMap](capi-usbddk-usbdevicememmap.md) | UsbDeviceMemMap | 设备内存映射，通过[OH_Usb_CreateDeviceMemMap](capi-usb-ddk-api-h.md#oh_usb_createdevicememmap)创建设备内存映射，使用内存映射后的缓冲区，获得更好的性能。 |
-| [Usb_DeviceArray](capi-usbddk-usb-devicearray.md) | Usb_DeviceArray | 设备ID清单，用于存放[OH_Usb_GetDevices](capi-usb-ddk-api-h.md#oh_usb_getdevices)接口获取到的设备ID列表和设备数量。 |
-| [Usb_NonRootHubArray](capi-usbddk-usb-nonroothubarray.md) | Usb_NonRootHubArray | 非根hub列表，用于存放[OH_Usb_GetNonRootHubs](capi-usb-ddk-api-h.md#oh_usb_getnonroothubs)接口获取到的非根hub设备ID列表和数量。 |
+| [Usb_DeviceArray](capi-usbddk-usb-devicearray.md) | Usb_DeviceArray | 设备ID清单，用于存放[OH_Usb_GetDevices](capi-usb-ddk-api-h.md#oh_usb_getdevices)接口获取到的设备ID列表和设备数量。开发者申请设备ID数组，使用完结构体后需释放成员内存，否则会造成资源泄漏。 |
+| [Usb_NonRootHubArray](capi-usbddk-usb-nonroothubarray.md) | Usb_NonRootHubArray | 非根集线器列表，用于存放[OH_Usb_GetNonRootHubs](capi-usb-ddk-api-h.md#OH_Usb_GetNonRootHubs)接口获取到的非根集线器设备ID列表和数量。开发者申请非根集线器ID数组，使用完结构体后需释放成员内存，否则会造成资源泄漏。 |
 
 ### 枚举
 
@@ -64,13 +64,13 @@ USB DDK 错误码定义。
 | -- | -- |
 | USB_DDK_SUCCESS = 0 | 操作成功。 |
 | USB_DDK_FAILED = -1 | 操作失败。 <br> **废弃版本：** 16 |
-| USB_DDK_NO_PERM = 201 | 没有权限。<br> **起始版本：** 14 |
-| USB_DDK_INVALID_PARAMETER = 401 | 非法参数，在API version 16之前值为-2。 |
-| USB_DDK_MEMORY_ERROR = 27400001 | 内存相关的错误，包括：内存不足、内存数据拷贝失败、内存申请失败等，在API version 16之前值为-3。 |
-| USB_DDK_INVALID_OPERATION = 27400002 | 非法操作，在API version 16之前值为-4。 |
-| USB_DDK_NULL_PTR = -5 | 空指针异常。 <br> **废弃版本：** 16 |
-| USB_DDK_DEVICE_BUSY = -6 | 设备忙。 <br> **废弃版本：** 16 |
-| USB_DDK_IO_FAILED = 27400003 | 设备I/O操作失败。<br> **起始版本：** 14 |
-| USB_DDK_TIMEOUT = 27400004 | 传输超时，在API version 16之前值为-7。 |
+| USB_DDK_NO_PERM = 201 | 没有权限。表示调用者没有足够的权限执行该操作。请确认已申请SystemCapability.Driver.USB.Extension系统能力。<br> **起始版本：** 14 |
+| USB_DDK_INVALID_PARAMETER = 401 | 非法参数，如参数为空、参数类型错误或参数超出范围等，在API version 16之前值为-2。 |
+| USB_DDK_MEMORY_ERROR = 27400001 | 内存相关的错误，包括：内存不足、内存数据拷贝失败、内存申请失败等，在API version 16之前值为-3。 <br> **废弃版本：** 16 |
+| USB_DDK_INVALID_OPERATION = 27400002 | 非法操作，如在设备未初始化时调用接口、在错误状态下执行操作等，在API version 16之前值为-4。 <br> **废弃版本：** 16 |
+| USB_DDK_NULL_PTR = -5 | 空指针异常，如传入的指针参数为NULL或内部使用空指针访问。 <br> **废弃版本：** 16 |
+| USB_DDK_DEVICE_BUSY = -6 | 设备忙，如设备正在执行其他操作或设备资源被占用。 <br> **废弃版本：** 16 |
+| USB_DDK_IO_FAILED = 27400003 | 设备I/O操作失败。请检查设备连接是否正常、设备是否支持该操作或数据传输是否超时。<br> **起始版本：** 14 |
+| USB_DDK_TIMEOUT = 27400004 | 传输超时。请检查设备响应是否正常或适当增加超时时间，在API version 16之前值为-7。 <br> **废弃版本：** 16 |
 
 
