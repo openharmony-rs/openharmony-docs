@@ -100,7 +100,7 @@ struct WebComponent {
             try {
               this.controller.requestFocus();
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
             }
           });
         Button('web2 requestFocus')
@@ -108,7 +108,7 @@ struct WebComponent {
             try {
               this.controller2.requestFocus();
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
             }
           });
       }
@@ -119,7 +119,7 @@ struct WebComponent {
         .onBlur(() => {
           this.webBorderColor = Color.Red;
         })
-        // ···
+        // ...
         .margin(3)
         .borderWidth(10)
         .borderColor(this.webBorderColor)
