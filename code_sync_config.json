@@ -19945,7 +19945,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/WantAbilityPage1.ets",
 				"functions":[
 					{
-						"end_line":71,
+						"end_line":73,
 						"name":"want_page",
 						"start_line":15
 					}
@@ -19955,7 +19955,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/WantAbilityPage2.ets",
 				"functions":[
 					{
-						"end_line":73,
+						"end_line":75,
 						"name":"want_ability",
 						"start_line":15
 					}
