@@ -12,7 +12,7 @@ typedef struct OH_AVTranscoder_Config OH_AVTranscoder_Config
 
 ## 概述
 
-初始化AVTranscoder_Config。
+初始化OH_AVTranscoder_Config。
 
 **起始版本：** 20
 
