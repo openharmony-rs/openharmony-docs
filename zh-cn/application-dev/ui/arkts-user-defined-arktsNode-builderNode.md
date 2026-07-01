@@ -1212,7 +1212,7 @@ PageTwo的实现如下：
   
   ``` TypeScript
   // ets/pages/RouterPage2.ets
-  // 该页面中存在一个按钮，可跳转回主页面，回到主页面后，原有的文字消失。
+  // 该页面中存在一个按钮，可跳转回主页面，回到主页面后，原有的文字消失
   import 'ets/pages/RouterPage1';
   
   @Entry({ routeName: 'pageTwo' })
