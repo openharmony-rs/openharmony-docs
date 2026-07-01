@@ -119,7 +119,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 3. 调用Album.getAssets接口获取图片资源。
 4. 调用[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取第一张图片。
 
-<!-- @[get_media_from_favorites](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SystemAlbumUsageSample/entry/src/main/ets/getmediafromfavoritesability/GetMediaFromFavoritesAbility.ets) -->
+<!-- @[get_media_from_favorites](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SystemAlbumUsageSample/entry/src/main/ets/getmediafromfavoritesability/GetMediaFromFavoritesAbility.ets) --> 
 
 ``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
