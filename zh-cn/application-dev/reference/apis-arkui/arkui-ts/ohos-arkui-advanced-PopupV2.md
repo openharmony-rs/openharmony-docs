@@ -58,7 +58,7 @@ PopupV2(options: PopupV2InitInfo): void
 | ----------- | ---------- | ------| --------------------------------- | --------------------------------- |
 | icon      | [ResourceStr](ts-types.md#resourcestr)                 | 否   | 是 | 设置PopupV2图标。<br/>**说明：** 默认值：''，不显示图标。  |
 | title     | [ResourceStr](ts-types.md#resourcestr)                        | 否   | 是  | 设置PopupV2标题文本。<br/>**说明：** 默认值：''，不显示标题文本。 |
-| message   | [ResourceStr](ts-types.md#resourcestr)                       | 是  | 否  | 设置PopupV2内容文本。<br/>**说明：** 默认值：''，不显示内容文本。|
+| message   | [ResourceStr](ts-types.md#resourcestr)                       | 否  | 否  | 设置PopupV2内容文本。<br/>**说明：** 默认值：''，不显示内容文本。|
 | titleModifier      | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)                | 否   | 是 | 设置标题文本属性，如设置标题颜色、字体大小、字重等。<br/>默认值：undefined，使用系统标题文本属性。|
 | iconModifier     | [ImageModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)                        | 否   | 是  | 设置图标属性，如图标颜色、大小、边框等。<br/>默认值：undefined，使用系统图标属性。|
 | messageModifier   | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)                       | 否  | 是  | 设置内容文本属性，如设置内容文本颜色、字体大小、字重等。<br/>默认值：undefined，使用系统内容文本属性。|
@@ -85,7 +85,7 @@ PopupV2Button定义按钮的相关属性和事件。
 | --------- | ---------------------------------------------------- | ---- | ---------------------- | ---------------------- |
 | text      | [ResourceStr](ts-types.md#resourcestr)               | 否  | 否  | 设置按钮内容。         |
 | action    | () => void                                           | 否   | 是  | 设置按钮点击回调。<br/>默认不执行任何操作。 |
-| buttonTextModifier  | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否   | 是  | 设置按钮文本属性，如设置文本颜色、字体大小等。默认值：undefined，值为undefined时，默认使用系统按钮文本属性。 |
+| buttonTextModifier  | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否   | 是  | 设置按钮文本属性，如设置文本颜色、字体大小等。默认值：undefined，值为undefined时，默认使用系统按钮文本属性。**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## 示例
 
