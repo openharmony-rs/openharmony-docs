@@ -171,7 +171,6 @@ close(): Promise&lt;void&gt;
 | 35700001 | Service error.       |
 | 35700005 | Port not open.       |
 
-
 **示例：**
 
 <!--code_no_check-->
