@@ -744,6 +744,12 @@ LOG视频下，查询是否支持辅助监看功能。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**返回值：**
+
+| 类型            | 说明                     |
+| -------------- | ----------------------- |
+| boolean | 是否支持辅助监看功能。true表示支持，false表示不支持。 |
+
 **示例：**
 
 ```ts
@@ -766,7 +772,7 @@ return supported;
 
 setLogViewAssistEnable(enable: boolean): void
 
-LOG视频下，使能预览监看开关之前，可先使用方法[isLogViewAssistSupported](#isLogViewAssistSupported26)查询设备是否支持预览辅助监看。
+LOG视频下，使能辅助监看之前，可先使用方法[isLogViewAssistSupported](#isLogViewAssistSupported26)查询设备是否支持预览辅助监看。
 
 > **说明：**
 > 
