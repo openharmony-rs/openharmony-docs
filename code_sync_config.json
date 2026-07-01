@@ -23119,6 +23119,26 @@
 						"start_line":18
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets",
+				"functions":[
+					{
+						"end_line":210,
+						"name":"content_node",
+						"start_line":200
+					},
+					{
+						"end_line":221,
+						"name":"dialog_controller_component",
+						"start_line":214
+					},
+					{
+						"end_line":232,
+						"name":"dialog_controller_id",
+						"start_line":225
+					}
+				]
 			}
 		]
 	},
@@ -23227,6 +23247,31 @@
 						"end_line":85,
 						"name":"custom_dialog_animation",
 						"start_line":18
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets",
+				"functions":[
+					{
+						"end_line":169,
+						"name":"custom_dialog_control_autoCancel",
+						"start_line":27
+					},
+					{
+						"end_line":168,
+						"name":"custom_dialog_control_modal",
+						"start_line":36
+					},
+					{
+						"end_line":167,
+						"name":"custom_dialog_control_mask",
+						"start_line":45
+					},
+					{
+						"end_line":172,
+						"name":"custom_dialog_control",
+						"start_line":16
 					}
 				]
 			}
@@ -23589,6 +23634,16 @@
 						"start_line":67
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets",
+				"functions":[
+					{
+						"end_line":99,
+						"name":"content_node",
+						"start_line":96
+					}
+				]
 			}
 		]
 	},
@@ -23662,6 +23717,21 @@
 						"end_line":92,
 						"name":"main_page",
 						"start_line":18
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets",
+				"functions":[
+					{
+						"end_line":66,
+						"name":"content_node",
+						"start_line":63
+					},
+					{
+						"end_line":99,
+						"name":"open_popup_main",
+						"start_line":16
 					}
 				]
 			}
