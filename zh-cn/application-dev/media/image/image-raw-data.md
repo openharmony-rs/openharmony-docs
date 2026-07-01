@@ -137,10 +137,10 @@
 
 4. 获取ImageRawData图片对象并打印像素值。
 
-   <!-- @[createImageRawData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+   <!-- @[createImageRawData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->      
    
    ``` TypeScript
-   async  createImageRawData(imageSource: image.ImageSource | undefined) : Promise<image.ImageRawData | undefined> {
+   async createImageRawData(imageSource: image.ImageSource | undefined) : Promise<image.ImageRawData | undefined> {
      if (!imageSource) {
        console.error('imageSource is undefined.');
        return undefined;
@@ -157,7 +157,7 @@
          value += array[i] + ', ';
        }
        console.info(`get dng rawdata is:${value}.`);
-       return data
+       return data;
      }).catch((err: BusinessError) => {
        console.error(`get dng rawdata failed.err: ${JSON.stringify(err)}`);
        return undefined;

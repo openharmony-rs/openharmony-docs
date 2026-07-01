@@ -1,4 +1,4 @@
-# @StorageLink：应用全局的UI状态存储
+# @StorageLink：AppStorage双向数据同步
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
@@ -27,16 +27,22 @@ const StorageLink: (value: string) => PropertyDecorator
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| value  | string | 是   | 用于标识AppStorage的属性。 |
+| value  | string | 是   | AppStorage中的属性键值，用于建立与对应属性值的双向数据同步。 |
 
 **示例：**
 
 ```ts
+// 创建AppStorage的初始数据，键为'LinkA'，值为47
+AppStorage.setOrCreate('LinkA', 47);
+// 创建AppStorage的初始数据，键为'LinkB'，值为undefined
+AppStorage.setOrCreate('LinkB', undefined);
+
 @Entry
 @Component
 struct StorageLinkComponent {
-  // 使用@StorageLink装饰器与AppStorage中'LinkA'属性建立双向绑定
+  // 使用@StorageLink装饰器与AppStorage中'LinkA'对应属性建立双向数据同步
   @StorageLink('LinkA') linkA: number | null = null;
+  // 使用@StorageLink装饰器与AppStorage中'LinkB'对应属性建立双向数据同步
   @StorageLink('LinkB') linkB: number | undefined = undefined;
 
   build() {
@@ -45,11 +51,13 @@ struct StorageLinkComponent {
       Text(`${this.linkA}`)
         .fontSize(20)
         .onClick(() => {
+          // 点击切换linkA的值，变更会同步到AppStorage
           this.linkA = this.linkA ? null : 1;
         })
       Text(`${this.linkB}`)
         .fontSize(20)
         .onClick(() => {
+          // 点击切换linkB的值，变更会同步到AppStorage
           this.linkB = this.linkB ? undefined : 1;
         })
     }

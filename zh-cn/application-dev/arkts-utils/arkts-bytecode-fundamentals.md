@@ -571,7 +571,7 @@ function foo3(a: number, b: number): void {}
 |  0xa2 |  IMM16    |  jnstricteqnull +AAAA |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc !== null`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
 |  0xa3 |  IMM16    |  jequndefined +AAAA   |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc == undefined`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
 |  0xa4 |  IMM16    |  jneundefined +AAAA   |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc != undefined`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
-|  0xa5 |  IMM16    |  jstrictequndefined +AAAA |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算a`cc === undefined`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
+|  0xa5 |  IMM16    |  jstrictequndefined +AAAA |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc === undefined`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
 |  0xa6 |  IMM16    |  jnstrictequndefined +AAAA    |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc !== undefined`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
 |  0xa7 |  V8_IMM16 |  jeq vAA, +BBBB   |  默认入参：acc：值<br>A：值<br>B：有符号的分支偏移量  |  计算`acc == A`，如果为真，则跳转到分支B。<br>指令功能未使能，暂不可用。   |
 |  0xa8 |  V8_IMM16 |  jne vAA, +BBBB   |  默认入参：acc：值<br>A：值<br>B：有符号的分支偏移量  |  计算`acc != A`，如果为真，则跳转到分支B。<br>指令功能未使能，暂不可用。   |
@@ -629,7 +629,7 @@ function foo3(a: number, b: number): void {}
 |  0xdc |  IMM8_ID16_V8 |  definepropertybyname RR, @AAAA, vBB  |  默认入参：acc：值<br>A：string id<br>B：对象 |  为对象B定义一个键值为A的属性，并将acc中的值存放到其中。   |
 |  0xfb |  PREF_NONE    |  callruntime.notifyconcurrentresult   |  默认入参：acc：并发函数的返回值  |  将并发函数的返回值通知运行时。<br>此指令仅出现在并发函数中。   |
 |  0xfc |  (deprecated)  | - | - | （弃用的操作码） |
-|  0xfd |  PREF_IMM16_V8_V8 |  wide.createobjectwithexcludedkeys +AAAA, vBB, vCC    |  A：范围寄存器数量<br>B：对象<br>C, ..., C + A：属性键值  |  基于对象B，创建一个排除了键值C, ..., C + A的对象，并将其存放到acc中。<br>这个指令用例支持使用析构和扩展语法创建对象。   |
+|  0xfd |  PREF_IMM16_V8_V8 |  wide.createobjectwithexcludedkeys +AAAA, vBB, vCC    |  A：范围寄存器数量<br>B：对象<br>C, ..., C + A：属性键值  |  基于对象B，创建一个排除了键值C, ..., C + A的对象，并将其存放到acc中。<br>这个指令用于支持使用析构和扩展语法创建对象。   |
 |  0xfe |  PREF_NONE    |  throw    |  默认入参：acc：异常  |  抛出acc中存放的异常。   |
 |  0x01fb   |  PREF_IMM8_V8_V8  |  callruntime.definefieldbyvalue RR, vAA, vBB  |  默认入参：acc：值<br>A：属性键值<br>B：对象  |  为对象B定义一个键值为A的属性，并将acc中的值存放到其中。   |
 |  0x01fc   |  (deprecated)  | - | - | （弃用的操作码） |

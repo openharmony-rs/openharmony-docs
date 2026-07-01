@@ -118,7 +118,7 @@ addText(text: string, textOperationOptions?: TextContentControllerOptions): numb
 
 setStyledPlaceholder(styledString: StyledString): void
 
-触发属性字符串的绑定或更新。
+设置属性字符串样式的占位文本，触发绑定或更新。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 

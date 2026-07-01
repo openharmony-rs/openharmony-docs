@@ -532,7 +532,7 @@ This error code is reported when operations are repeated on the float view.
 
 3. Before registering the float view callback, ensure that the callback has not been registered.
 
-## 1300031 Operation Not Supported in the Float View
+## 1300031 Operation Not Supported in the Current Float View State
 
 **Error Message**
 
@@ -540,7 +540,7 @@ The floatView state does not support this operation.
 
 **Description**
 
-The float view does not support the operation.
+This error code is reported when the operation is not supported in the current float view state.
 
 **Possible Causes**
 
@@ -552,9 +552,9 @@ The float view does not support the operation.
 
 **Solution**
 
-1. Before performing an operation, check the current status of the float view to ensure that it meets the state requirements of the API.
+1. Before performing an operation, check the current state of the float view to ensure that it meets the state requirements of the API.
 
-2. To stop the float view, ensure that the float view has been started.
+2. To stop the float view, ensure that it has been started.
 
 3. Wait until the float view stops (confirmed through the status change callback) and then perform the follow-up procedure.
 
@@ -600,9 +600,9 @@ This error code is reported when the float view fails to be started.
 
 **Possible Causes**
 
-1. Multiple float views are started for the same application.
+1. Multiple float views are repeatedly started for the same application.
 
-2. When the float view is started, the main window associated with the context is not displayed in the foreground.
+2. When the float view is started, the main window associated with the context is not in the foreground.
 
 **Solution**
 
@@ -610,7 +610,7 @@ This error code is reported when the float view fails to be started.
 
 2. Before starting the float view, ensure that the application window to which the context is passed is displayed in the foreground.
 
-## 1300034 Operation of the Float View Conflicts with Those of Other Float Views
+## 1300034 Operation of the Float View Conflicts with Those of Other Floating Windows
 
 **Error Message**
 

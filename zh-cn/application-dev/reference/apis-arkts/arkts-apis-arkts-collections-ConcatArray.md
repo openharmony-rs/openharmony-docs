@@ -64,7 +64,7 @@ readonly &#91;index: number&#93;: T
 **示例：**
 
 ```ts
-let concatArray : collections.ConcatArray<number> = new collections.Array<number>(1, 2, 4);
+let concatArray: collections.ConcatArray<number> = new collections.Array<number>(1, 2, 4);
 console.info("Element at index 1: ", concatArray[1]);
 ```
 

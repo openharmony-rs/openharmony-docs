@@ -41,7 +41,7 @@ Obtains the power consumption information list. This API uses a promise to retur
 
 For details about the error codes, see [Power Consumption Statistics Error Codes](errorcode-batteryStatistics.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Code  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4600101 | Failed to connect to the service. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
@@ -78,7 +78,7 @@ Obtains the power consumption information list. This API uses an asynchronous ca
 
 For details about the error codes, see [Power Consumption Statistics Error Codes](errorcode-batteryStatistics.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Code  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4600101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
@@ -100,7 +100,7 @@ batteryStats.getBatteryStats((err: Error, data : batteryStats.BatteryStatsInfo[]
 
 getAppPowerValue(uid: number): number
 
-Obtains the power consumption of an application, in unit of mAh.
+Obtains the power consumption of an application, in mAh.
 
 **System API**: This is a system API.
 
@@ -122,7 +122,7 @@ Obtains the power consumption of an application, in unit of mAh.
 
 For details about the error codes, see [Power Consumption Statistics Error Codes](errorcode-batteryStatistics.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Code  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4600101 | Failed to connect to the service. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
@@ -159,13 +159,13 @@ Obtains the proportion of the power consumption of an application.
 
 | Type  | Description                     |
 | ------ | ------------------------- |
-| number | Proportion of the power consumption of an application with this UID. The value ranges from 0.00 to 1.00.|
+| number | Proportion of the power consumption for an application with this UID. The value ranges from 0.00 to 1.00.|
 
 **Error codes**
 
 For details about the error codes, see [Power Consumption Statistics Error Codes](errorcode-batteryStatistics.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Code  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4600101 | Failed to connect to the service. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
@@ -186,7 +186,7 @@ try {
 
 getHardwareUnitPowerValue(type: ConsumptionType): number
 
-Obtains the power consumption of a hardware unit according to the consumption type, in unit of mAh.
+Obtains the power consumption of a hardware unit according to the consumption type, in mAh.
 
 **System API**: This is a system API.
 
@@ -208,7 +208,7 @@ Obtains the power consumption of a hardware unit according to the consumption ty
 
 For details about the error codes, see [Power Consumption Statistics Error Codes](errorcode-batteryStatistics.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Code  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4600101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
@@ -245,13 +245,13 @@ Obtains the proportion of the power consumption of a hardware unit according to 
 
 | Type  | Description                              |
 | ------ | ---------------------------------- |
-| number | Proportion of the power consumption of the hardware unit corresponding to the power consumption type. The value ranges from 0.00 to 1.00.|
+| number | Proportion of the power consumption for the hardware unit corresponding to the power consumption type. The value ranges from 0.00 to 1.00.|
 
 **Error codes**
 
 For details about the error codes, see [Power Consumption Statistics Error Codes](errorcode-batteryStatistics.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Code  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4600101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
@@ -280,9 +280,9 @@ Describes the device power consumption information.
 
 | Name | Type                               | Read-Only| Optional| Description                  |
 | ----- | ----------------------------------- | ---- | ---- | ---------------------- |
-| uid   | number                              | No  | No  | The uid related to power consumption information.   |
-| type  | [ConsumptionType](#consumptiontype) | No  | No  | The power consumption type.  |
-| power | number                              | No  | No  | The power consumption, in unit of mAh.       |
+| uid   | number                              | No  | No  | UID related to power consumption information.   |
+| type  | [ConsumptionType](#consumptiontype) | No  | No  | Power consumption type.  |
+| power | number                              | No  | No  | Power consumption, in unit of mAh.|
 
 ## ConsumptionType
 

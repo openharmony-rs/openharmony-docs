@@ -12,7 +12,7 @@ typedef struct ArkUI_CustomSpanMetrics ArkUI_CustomSpanMetrics
 
 ## Overview
 
-Defines a struct for the measurement metrics of a custom span.
+Customizes the metrics of the **Span** component.
 
 **Since**: 12
 

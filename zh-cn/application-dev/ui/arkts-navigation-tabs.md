@@ -82,7 +82,7 @@ Tabs() {
     Text($r('app.string.mine_content'))
       .fontSize(30)
   }
-  // app.string.mine_content资源文件中的value值为“我的”
+  // app.string.mine资源文件中的value值为“我的”
   .tabBar($r('app.string.mine'))
 }
 ```
@@ -679,7 +679,7 @@ export struct NumberOfCachesTabBar {
           .width(360)
           .height(296)
           .backgroundColor('#F1F3F5')
-          .cachedMaxCount(1, TabsCacheMode.CACHE_BOTH_SIDE)
+          .cachedMaxCount(2, TabsCacheMode.CACHE_BOTH_SIDE)
           // ...
   }
 }

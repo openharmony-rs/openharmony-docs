@@ -1,12 +1,12 @@
 # @ohos.web.WebNativeMessagingExtensionAbility (Web Native Messaging Extension Ability)
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @weixin_41848015-->
-<!--Designer: @libing23232323-->
+<!--Owner: @csliutt-private-->
+<!--Designer: @ringking0-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-WebNativeMessagingExtensionAbility为开发者提供Web原生消息通信的能力，继承自ExtensionAbility。
+WebNativeMessagingExtensionAbility是ArkWeb提供的Web原生消息通信扩展基类，继承自ExtensionAbility，允许Web页面通过Native Messaging机制与系统原生服务建立安全、双向的管道通信通道。开发者通过继承该类并实现其生命周期回调（如[onConnectNative](#onconnectnative)、[onDisconnectNative](#ondisconnectnative)、[onDestroy](#ondestroy)），可以在Web页面发起连接请求时感知连接建立、获取调用方身份与双向管道文件描述符（见[ConnectionInfo](#connectioninfo)），并在连接断开或扩展销毁时完成资源释放。该能力主要用于浏览器扩展与应用通信的场景；应用侧需自行管理管道读写、权限校验及Ability生命周期。
 
 > **说明:**
 >

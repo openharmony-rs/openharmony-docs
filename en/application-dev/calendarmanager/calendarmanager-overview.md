@@ -1,5 +1,13 @@
 # About This Kit
 
+<!--Kit: Calendar Kit-->
+<!--Subsystem: Applications-->
+<!--Owner: @qq_42718467-->
+<!--Designer: @windsky6-->
+<!--Tester: @z30055209-->
+<!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:37:24.506Z pushedAt=2026-06-17T12:25:26.378Z -->
+
 Calendar Kit provides calendar and event management capabilities, which usually refer to APIs that can be used to access and operate calendar data. These APIs allow you to integrate time-related event services (such as travel, catering, sports, and entertainment) in other applications with the system calendar to implement functions such as event management, creation, and query.
 
 ## Available Capabilities
@@ -10,7 +18,7 @@ Calendar Kit provides management capability for accounts and events.
 
   You can create a calendar account specific to your application, after which an account ID is returned. The account ID is the auto-increment primary key of the data table and is used as the unique identifier of the account.
 
-- Obtain the calendar account.
+- Obtain a calendar account.
 
   You can obtain information about a specified calendar account or all calendar accounts created by the current application.
 
@@ -22,7 +30,7 @@ Calendar Kit provides management capability for accounts and events.
 
   After obtaining the calendar account information, you can create an event under the obtained calendar account. When creating an event, you can set an event reminder and its notification is displayed when the set time arrives.
 
-  After a calendar account is created, an account ID is returned. The account ID is the auto-increment primary key of the data table and is used as the unique identifier of the account.
+  After an event is created, an event ID is returned. The ID is the auto-increment primary key of the data table and is used as the unique identifier of the event.
 
 - Delete an event.
 
@@ -38,7 +46,7 @@ Calendar Kit provides management capability for accounts and events.
 
 ## Features
 
-**One-click event service**: With the permanent authorization mechanism, after the user allows your application to read and write the system calendar, the corresponding event service can be written into the calendar in the form of deeplink. According to the reminder rules set by yourself, when an event is about to expire or expires, the corresponding service button will be displayed in the calendar application, notification, and widgets. Users can tap the button to redirect to the service landing page in one step.
+**One-tap event service**: Through a persistent authorization mechanism, you can write a service DeepLink to a calendar event after the user grants the application permission to read and write the system calendar. Based on the configured reminder rules, a corresponding service button is displayed in the calendar application, calendar notifications, calendar widgets, and other entry points when the event is approaching or due. Users can tap this button to open the DeepLink and go directly to the target service page.
 
 ## Working Principles
 
@@ -46,6 +54,22 @@ Calendar Kit provides a set of APIs for obtaining calendar accounts, and writing
 
 ## Constraints
 
-- To use the capabilities of Calendar Kit, you need to obtain the **ohos.permission.READ_CALENDAR** and **ohos.permission.WRITE_CALENDAR** permissions to read or write calendars and events. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
+- The capabilities and APIs provided by Calendar Kit are currently supported only in the stage model.
 
-- Currently, the capabilities and APIs of Calendar Kit can be used only in the stage model.
+- To use Calendar Kit capabilities, your application must obtain the permissions required to read or write calendars and events. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
+
+  - To read calendars or events, request the **ohos.permission.READ_CALENDAR** or **ohos.permission.READ_WHOLE_CALENDAR** permission.
+
+  - To add, delete, or modify calendars or events, request the **ohos.permission.WRITE_CALENDAR** or **ohos.permission.WRITE_WHOLE_CALENDAR** permission.
+
+The operations supported after the corresponding permissions are granted are listed in the following table.
+
+| Requested Permission | Supported Calendar Account Operation | Supported Event Operation |
+| ------------------------------ | -------------------------------------------- | ------------------------------------------------------------ |
+| ohos.permission.READ_CALENDAR | - Read the system default calendar account.<br>- Read calendar accounts created by the current application. | - Read events created by the current application under the system default calendar account.<br/>- Read events created by the current application under calendar accounts created by the current application. |
+| ohos.permission.WRITE_CALENDAR | - Add, delete, or modify calendar accounts created by the current application. | - Add, delete, or modify events created by the current application under the system default calendar account.<br>- Add, delete, or modify events created by the current application under calendar accounts created by the current application. |
+| ohos.permission.READ_WHOLE_CALENDAR | - Read all calendar accounts. | - Read events created by all applications. |
+| ohos.permission.WRITE_WHOLE_CALENDAR | - Add, delete, or modify all calendar accounts. | - Add, delete, or modify events created by all applications. |
+
+<!--RP1-->
+<!--RP1End-->

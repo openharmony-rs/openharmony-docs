@@ -390,7 +390,7 @@ Before reading this topic, you are advised to read [State Management Overview](.
     ```
 
 
-5. If a member variable is decorated with the **private** access modifier, the \@Require decorator, and the \@State, \@Prop, \@Provide, or \@BuilderParam decorator, ArkTS will perform validation and generate warning logs..
+5. If a member variable is decorated with the **private** access modifier, the \@Require decorator, and the \@State, \@Prop, \@Provide, or \@BuilderParam decorator, ArkTS will perform validation and generate warning logs.
 
    **Incorrect Usage**
     <!-- @[PrivateWithRequire_ErrorCase](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Restrictions/entry/src/main/ets/pages/privateWithRequire/PrivateWithRequireErrorCase.ets) -->

@@ -12,7 +12,7 @@ typedef struct {...} NativeDisplayManager_DisplaysInfo
 
 ## Overview
 
-The struct describes the information about displays of a device with multiple screens.
+Describes the information about displays of a device with multiple screens.
 
 **Since**: 14
 
@@ -27,4 +27,4 @@ The struct describes the information about displays of a device with multiple sc
 | Name| Description|
 | -- | -- |
 | uint32_t displaysLength | Number of displays of a device with multiple screens.|
-| [NativeDisplayManager_DisplayInfo](capi-nativedisplaymanager-displayinfo.md)* displaysInfo | An array of NativeDisplayManager_DisplayInfo structs, each containing information about a display.|
+| [NativeDisplayManager_DisplayInfo](capi-nativedisplaymanager-displayinfo.md)* displaysInfo | Pointer to the array of **NativeDisplayManager_DisplayInfo** structs, each containing information about a display.|

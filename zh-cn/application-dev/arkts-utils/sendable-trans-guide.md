@@ -362,7 +362,7 @@ runTests() {
 
 ``` TypeScript
 runTestsPb() {
-  taskpool.execute(observeProtobuf).then((res: test_pb) => {
+  taskpool.execute(observeProtobuf).then((res) => {
     this.pb = UIUtils.makeObserved(res)
   })
 }

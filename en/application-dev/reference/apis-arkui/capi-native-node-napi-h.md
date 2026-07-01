@@ -357,7 +357,7 @@ Obtains the state of the **NavDestination** component where the specified node i
 | Name| Description|
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node.|
-| [ArkUI_NavDestinationState](capi-native-type-h.md#arkui_navdestinationstate)* state | Pointer to the state of the **NavDestination** component. The result, if obtained successfully, is written back to this parameter.|
+| [ArkUI_NavDestinationState](capi-navigation-router-h.md#arkui_navdestinationstate)* state | Pointer to the state of the **NavDestination** component. The result, if obtained successfully, is written back to this parameter.|
 
 **Return value**
 
@@ -522,7 +522,7 @@ Obtains the status of the **Router** page where the specified node is located.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node.|
-| [ArkUI_RouterPageState](capi-native-type-h.md#arkui_routerpagestate)* state | Pointer to the status of the **Router** page. The result, if obtained successfully, is written back to this parameter.|
+| [ArkUI_RouterPageState](capi-navigation-router-h.md#arkui_routerpagestate)* state | Pointer to the status of the **Router** page. The result, if obtained successfully, is written back to this parameter.|
 
 **Return value**
 
@@ -691,5 +691,3 @@ Enables or disables event passthrough. Event passthrough indicates that an event
 | Type| Description|
 | -- | -- |
 | [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if the **UIContext** object is invalid.|
-
-<!--no_check-->

@@ -59,7 +59,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name| Description|
 | -- | -- |
 | .string | Image address. In API version 22 and earlier versions, the value can be a network image resource address, local image resource address, Base64 string, or [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) resource, but cannot be the address of an animated image such as an [SVG](arkui-js/js-components-svg.md), GIF, or WebP image. In API version 23 and later versions, animated images of the WebP and GIF types are supported. Only the first frame of the animated image is displayed. Other types of animated images are not supported.|
-| .value[0]?.i32 | Whether to repeat the image. This parameter is optional. The parameter type is [ArkUI_ImageRepeat](capi-native-type-h.md#arkui_imagerepeat). The default value is **ARKUI_IMAGE_REPEAT_NONE**.|
+| .value[0]?.i32 | Whether the image is repeated. This parameter is optional. The parameter type is [ArkUI_ImageRepeat](capi-image-h.md#arkui_imagerepeat). The default value is **ARKUI_IMAGE_REPEAT_NONE**.|
 | .object | **PixelMap** object. The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md). Either **.object** or **.string** must be set.|
 
 **Returns**
@@ -67,7 +67,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .string | Image address. In API version 22 and earlier versions, the value can be a network image resource address, local image resource address, Base64 string, or PixelMap resource, but cannot be the address of an animated image such as an SVG, GIF, or WebP image. In API version 23 and later versions, animated images of the WebP and GIF types are supported. Only the first frame of the animated image is displayed. Other types of animated images are not supported.|
-| .value[0].i32 | Whether the image is repeated. The parameter type is [ArkUI_ImageRepeat](capi-native-type-h.md#arkui_imagerepeat).|
+| .value[0].i32 | Whether the image is repeated. The parameter type is [ArkUI_ImageRepeat](capi-image-h.md#arkui_imagerepeat).|
 | .object | **PixelMap** object. The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md).|
 
 ## NODE_ID
@@ -133,13 +133,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Size of the background image. The value is an enumerated value of [ArkUI_ImageSize](capi-native-type-h.md#arkui_imagesize).|
+| .value[0].i32 | Background image size with style. The value is an enumerated value of [ArkUI_ImageSize](capi-image-h.md#arkui_imagesize).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Size of the background image. The value is an enumerated value of [ArkUI_ImageSize](capi-native-type-h.md#arkui_imagesize).|
+| .value[0].i32 | Background image size with style. The value is an enumerated value of [ArkUI_ImageSize](capi-image-h.md#arkui_imagesize).|
 
 ## NODE_BACKGROUND_IMAGE_POSITION
 

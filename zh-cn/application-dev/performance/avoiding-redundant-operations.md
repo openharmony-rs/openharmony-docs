@@ -176,6 +176,9 @@ struct NegativeOfDebug {
   @State string2: string = 'b';
 
   aboutToAppear() {
+    // 实际调用debug方法前会先将参数拼接为msg，再调用debug方法
+    // const msg = this.string1 + this.string2;
+    // hilog.debug(msg);
     hilog.debug(1003, 'Debug', (this.string1 + this.string2));
     // 业务代码
     // ...
@@ -185,9 +188,6 @@ struct NegativeOfDebug {
   }
 }
 
-// 实际调用debug方法前会先将参数拼接为msg，再调用debug方法
-const msg = this.string1 + this.string2;
-hilog.debug(msg);
 ```
 
 **正例**：

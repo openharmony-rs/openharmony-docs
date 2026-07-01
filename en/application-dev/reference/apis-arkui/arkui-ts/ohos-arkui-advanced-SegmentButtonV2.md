@@ -118,7 +118,7 @@ TabSegmentButtonV2({
 
 > **NOTE**
 >
-> Since API version 26.0.0, when **backgroundSystemMaterial** is set to a new material with automatic color inversion, **itemFontColor**, **itemSelectedFontColor**, **itemIconFillColor**, **itemSelectedIconFillColor**, **itemSymbolFontColor** and **itemSelectedSymbolFontColor** use special system resources that support color inversion. The colors will automatically adapt to the inverted color of the material background.
+> Since API version 26.0.0, when **backgroundSystemMaterial** is set to a system material with automatic color inversion, **itemFontColor**, **itemSelectedFontColor**, **itemIconFillColor**, **itemSelectedIconFillColor**, **itemSymbolFontColor**, and **itemSelectedSymbolFontColor** use special system resources that support color inversion. The colors will automatically adapt to the inverted color of the material background.
 
 ## CapsuleSegmentButtonV2
 
@@ -206,7 +206,7 @@ CapsuleSegmentButtonV2({
 
 > **NOTE**
 >
-> Since API version 26.0.0, when **backgroundSystemMaterial** is set to a new material with automatic color inversion, **itemFontColor**, **itemSelectedFontColor**, **itemIconFillColor**, **itemSelectedIconFillColor**, **itemSymbolFontColor** and **itemSelectedSymbolFontColor** use special system resources that support color inversion. The colors will automatically adapt to the inverted color of the material background.
+> Since API version 26.0.0, when **backgroundSystemMaterial** is set to a system material with automatic color inversion, **itemFontColor**, **itemSelectedFontColor**, **itemIconFillColor**, **itemSelectedIconFillColor**, **itemSymbolFontColor**, and **itemSelectedSymbolFontColor** use special system resources that support color inversion. The colors will automatically adapt to the inverted color of the material background.
 
 ## MultiCapsuleSegmentButtonV2
 
@@ -543,16 +543,16 @@ struct TabSegmentButtonV2Example {
           })
         }
 
-        Button (`Usage instructions for the isHybrid API, ${this.textItems[0].isHybrid}`) // false is displayed for text-only items.
+        Button(`Usage instructions for the isHybrid API, ${this.textItems[0].isHybrid}`) // false is displayed for text-only items.
           .width('70%')
 
-        Button (`Usage instructions for the isHybrid API, ${this.hybridItems[0].isHybrid}`) // true is displayed for items with both text and an icon.
+        Button(`Usage instructions for the isHybrid API, ${this.hybridItems[0].isHybrid}`) // true is displayed for items with both text and an icon.
           .width('70%')
 
-        Button ('Usage instructions for the hasHybrid API, ${this.textItems.hasHybrid}`) // false is displayed when a segmented button does not support items with both text and an icon.
+        Button(`Usage instructions for the hasHybrid API, ${this.textItems.hasHybrid}`) // false is displayed when a segmented button does not support items with both text and an icon.
           .width('70%')
 
-        Button ('Usage instructions for the hasHybrid API, ${this.hybridItems.hasHybrid}`) // true is displayed when a segmented button supports items with both text and an icon.
+        Button(`Usage instructions for the hasHybrid API, ${this.hybridItems.hasHybrid}`) // true is displayed when a segmented button supports items with both text and an icon.
           .width('70%')
       }
       .constraintSize({ minHeight: '100%' })
@@ -610,7 +610,7 @@ struct CapsuleSegmentButtonV2Example {
     // Sets the item text for the segmented button.
     { text: 'Phone' },
     { text: 'Tablet' },
-    { text: '2-in-1' }, 
+    { text: '2-in-1' },
     { text: 'Wearable' },
   ]);
   @Local textSelectedIndex: number = 0;
@@ -740,7 +740,7 @@ struct MultiCapsuleSegmentButtonV2Example {
     // Sets the item text for the segmented button.
     { text: 'Phone' },
     { text: 'Tablet' },
-    { text: '2-in-1' }, 
+    { text: '2-in-1' },
     { text: 'Wearable' },
   ]);
   @Local textSelectedIndexes: number[] = [0];

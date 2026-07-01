@@ -1733,7 +1733,7 @@ getUkeyCertificate(keyUri: string, ukeyInfo: UkeyInfo): Promise\<CMResult>
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **设备行为差异：**
-- 从API版本26.0.0开始，该接口在所有设备上无行为差异。
+- 从API版本26.0.0开始，该接口在Phone、PC/2in1、Tablet设备可正常调用，在其他设备中返回801错误码。
 - 在API版本22-24，该接口在PC/2in1设备可正常调用，在其他设备中返回801错误码。
 
 **参数**：
@@ -1795,6 +1795,8 @@ getUkeyCertificateList(ukeyProvider: string, ukeyInfo: UkeyInfo): Promise\<CMRes
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
 **系统能力：** SystemCapability.Security.CertificateManager
+
+**设备行为差异：** 该接口在Phone、PC/2in1、Tablet设备可正常调用，在其他设备中返回801错误码。
 
 **参数**：
 

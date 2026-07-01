@@ -12,7 +12,7 @@ typedef struct ArkUI_ShowCounterConfig ArkUI_ShowCounterConfig
 
 ## Overview
 
-Defines the text input character counter configuration.
+Defines the counter display configuration of a text box.
 
 **Since**: 22
 

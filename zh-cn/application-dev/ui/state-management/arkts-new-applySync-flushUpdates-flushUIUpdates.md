@@ -335,7 +335,7 @@ import { UIUtils } from '@kit.ArkUI';
         Text(`${this.count}`)
         Button('change count')
           .onClick(() => {
-          this.count++;
+            this.count++;
           })
           // ...
       }
