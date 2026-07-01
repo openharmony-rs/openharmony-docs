@@ -19,7 +19,7 @@
 ## 导入模块
 
 ```ts
-import { stream  } from '@kit.ArkTS';
+import { stream } from '@kit.ArkTS';
 ```
 
 ## Writable
@@ -84,7 +84,7 @@ write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): bool
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| chunk  | string \| Uint8Array | 否 | 需要写入的数据。默认值为undefined。当前版本不支持null、undefined和空字符串。 |
+| chunk  | string \| Uint8Array | 否 | 需要写入的数据。默认值为undefined。当前版本不支持传入null、undefined和空字符串，会抛出异常。 |
 | encoding  | string | 否   | 字符编码类型。默认值是'utf8'，当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
 | callback  | Function | 否   | 回调函数。默认不调用。 |
 
@@ -120,7 +120,7 @@ class TestWritable extends stream.Writable {
 }
 
 let writableStream = new TestWritable();
-writableStream.write('test', 'utf8');
+writableStream.write("test", "utf8");
 ```
 
 ArkTS-Sta示例：
@@ -194,8 +194,8 @@ class TestWritable extends stream.Writable {
 }
 
 let writableStream = new TestWritable();
-writableStream.write('test', 'utf8');
-writableStream.end('finish', 'utf8', () => {
+writableStream.write("test", "utf8");
+writableStream.end("finish", "utf8", () => {
   console.info("Writable is end"); // Writable is end
 });
 ```
@@ -263,7 +263,7 @@ class TestWritable extends stream.Writable {
 }
 
 let writableStream = new TestWritable();
-let result = writableStream.setDefaultEncoding('utf8');
+let result = writableStream.setDefaultEncoding("utf8");
 console.info("Writable is result", result); // Writable is result true
 ```
 
@@ -376,11 +376,11 @@ class TestWritable extends stream.Writable {
 
 let writableStream = new TestWritable();
 writableStream.cork();
-writableStream.write('data1', 'utf8');
-writableStream.write('data2', 'utf8');
+writableStream.write("data1", "utf8");
+writableStream.write("data2", "utf8");
 writableStream.uncork();
 writableStream.end();
-writableStream.on('finish', () => {
+writableStream.on("finish", () => {
   console.info("all Data is End"); // all Data is End
 });
 ```
@@ -450,7 +450,7 @@ let writable = new TestWritable();
 writable.on('error', () => {
   console.info("Writable event test", callbackCalled.toString()); // Writable event test false
 });
-writable.write('hello', 'utf8', () => {
+writable.write("hello", "utf8", () => {
 });
 ```
 
@@ -505,7 +505,7 @@ ArkTS-Dyn示例：
 class TestWritable extends stream.Writable {
   constructor() {
     super();
- }
+  }
 
   doWrite(chunk: string | Uint8Array, encoding: string, callback: Function) {
     callback();
@@ -517,9 +517,9 @@ let testListenerCalled = false;
 let testListener = () => {
   testListenerCalled = true;
 };
-writableStream.on('finish', testListener);
-writableStream.off('finish');
-writableStream.write('test');
+writableStream.on("finish", testListener);
+writableStream.off("finish");
+writableStream.write("test");
 writableStream.end();
 setTimeout(() => {
   console.info("Writable off test", testListenerCalled.toString()); // Writable off test false
@@ -531,7 +531,7 @@ ArkTS-Sta示例：
 class TestWritable extends stream.Writable {
   constructor() {
     super();
- }
+  }
 
   doWrite(chunk: string | Uint8Array, encoding: string, callback: Function) {
     callback.unsafeCall();
@@ -556,7 +556,7 @@ setTimeout(() => {
 
 doInitialize(callback: Function): void
 
-用户实现这个函数。该函数在可写流初始化阶段被调用，无需用户调用。使用callback异步回调。
+开发者实现这个函数。该函数在可写流初始化阶段被调用，无需开发者调用。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -627,7 +627,7 @@ class TestWritable extends stream.Writable {
 }
 
 let writableStream = new TestWritable();
-writableStream.write('data', 'utf8');
+writableStream.write("data", "utf8");
 ```
 
 ArkTS-Sta示例：
@@ -651,7 +651,7 @@ writableStream.write('data', 'utf8');
 
 doWritev(chunks: string[] | Uint8Array[], callback: Function): void
 
-提供一个数据批量写出接口供使用者实现，该接口函数会在数据被成功写出时自动调用，无需用户手动触发。使用callback异步回调。
+提供一个数据批量写出接口供开发者实现，该接口函数会在数据被成功写出时自动调用，无需开发者手动触发。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -686,8 +686,8 @@ class TestWritable extends stream.Writable {
 }
 
 let writableStream = new TestWritable();
-writableStream.write('data1', 'utf8');
-writableStream.write('data2', 'utf8');
+writableStream.write("data1", "utf8");
+writableStream.write("data2", "utf8");
 writableStream.uncork();
 writableStream.end();
 ```
@@ -798,7 +798,7 @@ Readable的构造函数。
 
 ```ts
 let option : stream.ReadableOptions = {
-  encoding : 'utf-8'
+  encoding : "utf-8"
 };
 let readableStream = new stream.Readable(option);
 ```
@@ -853,10 +853,10 @@ class TestReadable extends stream.Readable {
 }
 
 let readableStream = new TestReadable();
-readableStream.push('test');
+readableStream.push("test");
 readableStream.pause();
 let dataChunk = readableStream.read();
-console.info('Readable data is', dataChunk); // Readable data is test
+console.info("Readable data is", dataChunk); // Readable data is test
 ```
 
 ArkTS-Sta示例：
@@ -1027,7 +1027,7 @@ class TestReadable extends stream.Readable {
 }
 
 let readableStream = new TestReadable();
-let result = readableStream.setEncoding('utf8');
+let result = readableStream.setEncoding("utf8");
 console.info("Readable result", result); // Readable result true
 ```
 
@@ -1140,7 +1140,7 @@ class TestReadable extends stream.Readable {
   }
 
   doRead(size: number) {
-    this.push('test');
+    this.push("test");
     this.push(null);
   }
 }
@@ -1169,7 +1169,7 @@ class TestReadable extends stream.Readable {
   }
 
   doRead(size: int) {
-    this.push('test');
+    this.push("test");
     this.push(null);
   }
 }
@@ -1245,7 +1245,7 @@ let readable = new TestReadable();
 let writable = new TestWritable();
 readable.pipe(writable);
 readable.unpipe(writable);
-readable.on('data', () => {
+readable.on("data", () => {
   console.info("Readable test unpipe data event triggered");
 });
 // unpipe成功断开连接之后，data事件将不会触发，不会打印"Readable test unpipe data event triggered"
@@ -1304,7 +1304,7 @@ ArkTS-Sta: on(event: string, callback: Function): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'data' `\|`'end'` \| `'error'`\|`'readable'`\|`'pause'`\|`'resume'` 。<br/>\- `'close'`：完成[push()](#push)调用，传入null值，触发该事件。<br/>\- `'data'`：当流传递给消费者一个数据块时触发该事件。<br/>\- `'end'`：完成[push()](#push)调用，传入null值，触发该事件。<br/>\- `'error'`：流发生异常时触发。<br/>\- `'readable'`：当有可从流中读取的数据时触发该事件。<br/>\- `'pause'`：完成[pause()](#pause)调用，触发该事件。<br/>\- `'resume'`：完成[resume()](#resume)调用，触发该事件。 |
+| event    | string   | 是 | 事件回调类型，支持的事件包括：`'close'` \| `'data'` \| `'end'` \| `'error'` \| `'readable'` \| `'pause'` \| `'resume'` 。<br/>\- `'close'`：完成[push()](#push)调用，传入null值，触发该事件。<br/>\- `'data'`：当流传递给消费者一个数据块时触发该事件。<br/>\- `'end'`：完成[push()](#push)调用，传入null值，触发该事件。<br/>\- `'error'`：流发生异常时触发。<br/>\- `'readable'`：当有可从流中读取的数据时触发该事件。<br/>\- `'pause'`：完成[pause()](#pause)调用，触发该事件。<br/>\- `'resume'`：完成[resume()](#resume)调用，触发该事件。 |
 | callback | ArkTS-Dyn: Callback\<[emitter.EventData](../apis-basic-services-kit/js-apis-emitter.md#eventdata)\><br>ArkTS-Sta: Function | 是 | 回调函数，返回事件数据。 |
 
 **示例：**
@@ -1322,8 +1322,8 @@ class TestReadable extends stream.Readable {
 }
 
 let readable = new TestReadable();
-readable.push('test');
-readable.on('error', () => {
+readable.push("test");
+readable.on("error", () => {
   console.info("error event called"); // error event called
 });
 ```
@@ -1389,10 +1389,10 @@ function read() {
   console.info("read() called");
 }
 
-readable.setEncoding('utf8');
-readable.on('readable', read);
-readable.off('readable');
-readable.push('test');
+readable.setEncoding("utf8");
+readable.on("readable", read);
+readable.off("readable");
+readable.push("test");
 // off注销对readable事件的监听后，read函数不会被调用，"read() called"也不会被打印
 ```
 
@@ -1424,7 +1424,7 @@ readable.push('test');
 
 doInitialize(callback: Function): void
 
-使用者实现这个函数，这个函数在可读流第一次使用[on](#on-1)监听时被调用。使用callback异步回调。
+开发者实现这个函数，这个函数在可读流第一次使用[on](#on-1)监听时被调用。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1448,14 +1448,14 @@ class MyReadable extends stream.Readable {
   doInitialize(callback: Function) {
     super.doInitialize(callback);
     console.info("Readable doInitialize"); // Readable doInitialize
-}
+  }
 
   doRead(size: number) {
   }
 }
 
 let myReadable = new MyReadable();
-myReadable.on('data', () => {
+myReadable.on("data", () => {
 });
 ```
 
@@ -1513,7 +1513,7 @@ class TestReadable extends stream.Readable {
 }
 
 let readable = new TestReadable();
-readable.on('data', () => {
+readable.on("data", () => {
 });
 ```
 
@@ -1575,7 +1575,7 @@ class TestReadable extends stream.Readable {
 }
 
 let readable = new TestReadable();
-let testData = 'Hello world';
+let testData = "Hello world";
 readable.push(testData);
 console.info("Readable push test", readable.readableLength); // Readable push test 11
 ```
@@ -1700,7 +1700,7 @@ class TestDuplex extends stream.Duplex {
 }
 
 let duplexStream = new TestDuplex();
-let result = duplexStream.write('test', 'utf8');
+let result = duplexStream.write("test", "utf8");
 console.info("duplexStream result", result); // duplexStream result true
 ```
 
@@ -1780,7 +1780,7 @@ class TestDuplex extends stream.Duplex {
 }
 
 let duplexStream = new TestDuplex();
-duplexStream.end('test', 'utf8', () => {
+duplexStream.end("test", "utf8", () => {
   console.info("Duplex is end"); // Duplex is end
 });
 ```
@@ -1851,7 +1851,7 @@ class TestDuplex extends stream.Duplex {
 }
 
 let duplexStream = new TestDuplex();
-let result = duplexStream.setDefaultEncoding('utf8');
+let result = duplexStream.setDefaultEncoding("utf8");
 console.info("duplexStream is result", result); // duplexStream is result true
 ```
 
@@ -1927,7 +1927,7 @@ uncork(): boolean
 
 ArkTS-Dyn示例：
 ```ts
-let dataWritten = '';
+let dataWritten = "";
 class TestDuplex extends stream.Duplex {
   constructor() {
     super();
@@ -1944,8 +1944,8 @@ class TestDuplex extends stream.Duplex {
 
 let duplexStream = new TestDuplex();
 duplexStream.cork();
-duplexStream.write('a');
-duplexStream.write('b');
+duplexStream.write("a");
+duplexStream.write("b");
 duplexStream.uncork();
 console.info("Duplex test uncork", dataWritten); // Duplex test uncork ab
 ```
@@ -1979,7 +1979,7 @@ console.info("Duplex test uncork", dataWritten); // 期望结果: Duplex test un
 
 doWrite(chunk: string | Uint8Array, encoding: string, callback: Function): void
 
-数据写出接口是一个由使用者实现的函数，在数据被写出时自动调用，而不需要用户手动调用。使用callback异步回调。
+数据写出接口是一个由开发者实现的函数，在数据被写出时自动调用，而不需要开发者手动调用。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2016,7 +2016,7 @@ class TestDuplex extends stream.Duplex {
 }
 
 let duplexStream = new TestDuplex();
-duplexStream.write('data', 'utf8');
+duplexStream.write("data", "utf8");
 ```
 
 ArkTS-Sta示例：
@@ -2043,7 +2043,7 @@ duplexStream.write('data', 'utf8');
 
 doWritev(chunks: string[] | Uint8Array[], callback: Function): void
 
-数据分批写出接口是一个由使用者实现的函数，在数据被写出时自动调用，而不需要用户手动调用。使用callback异步回调。
+数据分批写出接口是一个由开发者实现的函数，在数据被写出时自动调用，而不需要开发者手动调用。使用callback异步回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2084,8 +2084,8 @@ class TestDuplex extends stream.Duplex {
 
 let duplexStream = new TestDuplex();
 duplexStream.cork();
-duplexStream.write('data1', 'utf8');
-duplexStream.write('data2', 'utf8');
+duplexStream.write("data1", "utf8");
+duplexStream.write("data2", "utf8");
 duplexStream.uncork();
 duplexStream.end();
 ```
@@ -2238,13 +2238,13 @@ class TestTransform extends stream.Transform {
   }
 
   doFlush(callback: Function) {
-    callback(null, 'test');
+    callback(null, "test");
   }
 }
 
 let transform = new TestTransform();
-transform.end('my test');
-transform.on('data', (data) => {
+transform.end("my test");
+transform.on("data", (data) => {
   console.info("data is", data.data); // data is test
 });
 ```
