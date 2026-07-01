@@ -770,45 +770,57 @@ options: RichEditorOptions = { controller: this.controller };
 
 infoShowController: RichEditorController = new RichEditorController();
 infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
-// ...
-        RichEditor(this.options)
-          .onReady(() => {
-            // 请将$r('app.string.AddEvent_Text_5')替换为实际资源文件，在本示例中该资源文件的value值为"组件内图文变化前，触发回调。\n图文变化后，触发回调。"
-            this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_5')), {
-              style: {
-                fontColor: Color.Black,
-                fontSize: 15
-              }
-            })
+
+build() {
+  Column() {
+    // ...
+    Column({ space: 3 }) {
+      RichEditor(this.options)
+        .onReady(() => {
+          // 请将$r('app.string.AddEvent_Text_5')替换为实际资源文件，在本示例中该资源文件的value值为"组件内图文变化前，触发回调。\n图文变化后，触发回调。"
+          this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_5')), {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 15
+            }
           })
-          .onWillChange((value: RichEditorChangeValue) => {
-            // 请将$r('app.string.AddEvent_Text_6')替换为实际资源文件，在本示例中该资源文件的value值为"组件内图文变化前，触发回调：\"
-            this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_6')) +
-            JSON.stringify(value), {
-              style: {
-                fontColor: Color.Gray,
-                fontSize: 10
-              }
-            })
-            return true;
+        })
+        .onWillChange((value: RichEditorChangeValue) => {
+          // 请将$r('app.string.AddEvent_Text_6')替换为实际资源文件，在本示例中该资源文件的value值为"组件内图文变化前，触发回调：\"
+          this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_6')) +
+          JSON.stringify(value), {
+            style: {
+              fontColor: Color.Gray,
+              fontSize: 10
+            }
           })
-          .onDidChange((rangeBefore: TextRange, rangeAfter: TextRange) => {
-            // 请将$r('app.string.AddEvent_Text_7')替换为实际资源文件，在本示例中该资源文件的value值为"\n图文变化后，触发回调：\n rangeBefore"
-            this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_7')) +
-            JSON.stringify(rangeBefore) + '\nrangeAfter: ' + JSON.stringify(rangeAfter), {
-              style: {
-                fontColor: Color.Gray,
-                fontSize: 10
-              }
-            })
+          return true;
+        })
+        .onDidChange((rangeBefore: TextRange, rangeAfter: TextRange) => {
+          // 请将$r('app.string.AddEvent_Text_7')替换为实际资源文件，在本示例中该资源文件的value值为"\n图文变化后，触发回调：\n rangeBefore"
+          this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_7')) +
+          JSON.stringify(rangeBefore) + '\nrangeAfter: ' + JSON.stringify(rangeAfter), {
+            style: {
+              fontColor: Color.Gray,
+              fontSize: 10
+            }
           })
-          .width(300)
-          .height(50);
-        // 请将$r('app.string.AddEvent_Text_4')替换为实际资源文件，在本示例中该资源文件的value值为"查看回调内容："
-        Text(resource.resourceToString($r('app.string.AddEvent_Text_4'))).fontSize(10).fontColor(Color.Gray).width(300);
-        RichEditor(this.infoShowOptions)
-          .width(300)
-          .height(70);
+        })
+        .width(300)
+        .height(50);
+      // 请将$r('app.string.AddEvent_Text_4')替换为实际资源文件，在本示例中该资源文件的value值为"查看回调内容："
+      Text(resource.resourceToString($r('app.string.AddEvent_Text_4'))).fontSize(10).fontColor(Color.Gray).width(300);
+      RichEditor(this.infoShowOptions)
+        .width(300)
+        .height(70);
+    }
+    // ...
+  }.alignItems(HorizontalAlign.Start)
+  .backgroundColor('#fff')
+  .borderRadius(12)
+  .padding(12)
+  .width('100%')
+}
 ```
 
 ![alt text](figures/richeditor_image_ondid.gif)
