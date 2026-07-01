@@ -846,6 +846,7 @@ if (store != undefined) {
     const res = resultSet.getString(resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
     console.info(`sharing resource: ${res}`);
     sharingResource = res;
+    resultSet.close();
   }).catch((err: BusinessError) => {
     console.error(`query sharing resource failed, code is ${err.code}, message is ${err.message}`);
   });
@@ -916,6 +917,7 @@ if (store != undefined) {
     const res = resultSet.getString(resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
     console.info(`sharing resource: ${res}`);
     sharingResource = res;
+    resultSet.close();
   });
 }
 ```
@@ -985,6 +987,7 @@ if (store != undefined) {
     const res = resultSet.getString(resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
     console.info(`sharing resource: ${res}`);
     sharingResource = res;
+    resultSet.close();
   });
 }
 ```
@@ -1465,7 +1468,8 @@ async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
     resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
     if (resultSet != undefined) {
       resultSet.goToNextRow();
-      const floatArray = resultSet.getFloat32Array(resultSet.getColumnIndex("FLOATARRAY"));
+      const name = resultSet.getFloat32Array(resultSet.getColumnIndex("FLOATARRAY"));
+      resultSet.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
