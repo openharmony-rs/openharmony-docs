@@ -18848,11 +18848,6 @@
 						"start_line":25
 					},
 					{
-						"end_line":37,
-						"name":"create_text_area",
-						"start_line":35
-					},
-					{
 						"end_line":47,
 						"name":"create_text_area_example",
 						"start_line":41
@@ -18881,26 +18876,6 @@
 						"end_line":48,
 						"name":"set_email_input_type_3",
 						"start_line":45
-					},
-					{
-						"end_line":57,
-						"name":"set_number_input_type_4",
-						"start_line":54
-					},
-					{
-						"end_line":66,
-						"name":"set_phonenumber_input_type_5",
-						"start_line":63
-					},
-					{
-						"end_line":75,
-						"name":"set_number_decimal_input_type_6",
-						"start_line":72
-					},
-					{
-						"end_line":84,
-						"name":"set_url_input_type_7",
-						"start_line":81
 					}
 				]
 			},
@@ -18961,6 +18936,16 @@
 						"end_line":33,
 						"name":"select_textarea",
 						"start_line":30
+					},
+					{
+						"end_line":79,
+						"name":"editMenu_create",
+						"start_line":23
+					},
+					{
+						"end_line":102,
+						"name":"editMenu_textinput",
+						"start_line":95
 					}
 				]
 			},
@@ -18996,28 +18981,11 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetProperty.ets",
-				"functions":[
-					{
-						"end_line":34,
-						"name":"set_omission_property",
-						"start_line":26
-					},
-					{
-						"end_line":45,
-						"name":"set_stroke_property",
-						"start_line":37
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetTextMargin.ets",
-				"functions":[
-					{
-						"end_line":32,
-						"name":"SetTextMargin",
-						"start_line":26
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/KeyboardAvoidance.ets",
@@ -19056,11 +19024,20 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/NormalQuestion.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/TextMenuShowSubWindow.ets",
 				"functions":[
 					{
-						"end_line":68,
-						"name":"normal_question_text_example",
-						"start_line":15
+						"end_line":30,
+						"name":"set_menu_options_with_textmenushowmode",
+						"start_line":22
+					},
+					{
+						"end_line":43,
+						"name":"textmenushowmode_create_textinput",
+						"start_line":37
 					}
 				]
 			}
@@ -21912,6 +21889,21 @@
 						"end_line":146,
 						"name":"Custom_Block_Menus",
 						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextMenuShowSubWindow.ets",
+				"functions":[
+					{
+						"end_line":30,
+						"name":"set_menu_options_with_textmenushowmode",
+						"start_line":22
+					},
+					{
+						"end_line":43,
+						"name":"textmenushowmode_create_text",
+						"start_line":37
 					}
 				]
 			}
@@ -30248,6 +30240,16 @@
 						"end_line":56,
 						"name":"Cursor_Persists_When_TextInput_Is_Covered",
 						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/NormalQuestion.ets",
+				"functions":[
+					{
+						"end_line":68,
+						"name":"normal_question_text_example",
+						"start_line":15
 					}
 				]
 			}
