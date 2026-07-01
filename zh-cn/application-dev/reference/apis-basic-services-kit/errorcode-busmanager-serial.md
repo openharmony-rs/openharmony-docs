@@ -22,7 +22,7 @@
 | 35700003 | Virtual serial port disconnected. |close、write、offDataRead、flush、drain、setRts、getCts、offDisconnect、setDtr|
 | 35700004 | Port already in use. | open |
 | 35700005 | Port not open. | close、write、onDataRead、offDataRead、flush、drain、setRts、getCts、sendBrk、onDisconnect、offDisconnect、setDtr |
-| 35700006 | Transmission timeout. | close |
+| 35700006 | Transmission timeout. | write |
 | 35700007 | User authorization required. | open |
 | 35700008 | Permission denied. | addPortAuthorization |
 
