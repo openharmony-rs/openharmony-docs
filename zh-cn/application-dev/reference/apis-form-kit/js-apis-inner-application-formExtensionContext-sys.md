@@ -75,7 +75,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     };
     this.context.startAbility(want, (error: BusinessError) => {
       if (error) {
-        console.error(`FormExtensionContext startAbility, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+        console.error(`FormExtensionContext startAbility, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
       } else {
         console.info('FormExtensionContext startAbility success');
       }
@@ -221,10 +221,10 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
         console.info('----------- onConnect -----------');
       },
       onDisconnect(elementName) {
-        console.info('----------- onDisconnect -----------')
+        console.info('----------- onDisconnect -----------');
       },
       onFailed(code) {
-        console.error(`onFailed, code: ${code}`)
+        console.error(`onFailed, code: ${code}`);
       }
     };
 
