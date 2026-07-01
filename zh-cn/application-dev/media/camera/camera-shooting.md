@@ -117,7 +117,7 @@
 
 
    <!-- @[camera_param_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->    
-   ```ts
+   ``` TypeScript
    configuringSession(photoSession: camera.PhotoSession | camera.VideoSession): void {
      // 判断设备是否支持闪光灯。
      let flashStatus: boolean = false;
