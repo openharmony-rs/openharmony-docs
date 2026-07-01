@@ -391,25 +391,32 @@ function getNode(): void {
 }
 ```
 
- **说明：**
+**说明：**
 
-可以通过以下代码查询节点路径参数path。
+可以通过以下代码查询节点路径参数path，打印给定节点的子树结构，每行表示从输入节点下一级开始到该节点的相对路径，去掉输入节点。
 
 ```ts
 import { Scene, Node } from '@kit.ArkGraphics3D';
 
 // 打印给定节点的树状结构，每行表示一个节点的路径。
-function printNodeTree(node: Node | null): void {
+function printNodeTreeInRelativePath(node: Node | null): void {
   if (!node) {
     return;
   }
-  console.info(node.path);
+  let basePath: string = node.path + node.name + '/';
+  let printRelative = (n: Node | null): void => {
+    if (!n) {
+      return;
+    }
+    console.info(n.path.substring(basePath.length + 1) + n.name);
+    for (let i = 0; i < n.children.count(); i++) {
+      printRelative(n.children.get(i));
+    }
+  }
   for (let i = 0; i < node.children.count(); i++) {
-    let child: Node | null = node.children.get(i);
-    printNodeTree(child);
+    printRelative(node.children.get(i));
   }
 }
-```
 
 ## Geometry
 
