@@ -5896,7 +5896,7 @@ audioSpatializationManager.offHeadTrackingEnabledChangeForAnyDevice();
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let headTrackingEnabledChangeForAnyDeviceCallback = (audioSpatialEnabledStateForDevice: audio.AudioSpatialEnabledStateForDevice) => {
   console.info(`deviceDescriptor: ${audioSpatialEnabledStateForDevice.deviceDescriptor}`);
-  console.info(`isSpatializationEnabled: ${audioSpatialEnabledStateForDevice.enabled}`);
+console.info(`isHeadTrackingEnabled: ${audioSpatialEnabledStateForDevice.enabled}`);
 };
 
 audioSpatializationManager.onHeadTrackingEnabledChangeForAnyDevice(headTrackingEnabledChangeForAnyDeviceCallback);
