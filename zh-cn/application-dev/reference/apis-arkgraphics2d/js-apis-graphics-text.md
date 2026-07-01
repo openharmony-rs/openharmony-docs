@@ -1760,7 +1760,7 @@ ArkTS-Sta: loadFontSyncWithCheck(name: string, path: string | Resource, index?: 
 | 25900005 | Failed to get the file size. |
 | 25900006 | Failed to read the file. |
 | 25900007 | Empty file. |
-| 25900008 | Corrupt file. |
+| 25900008 | Corrupted file. |
 
 **示例：**
 
@@ -1887,7 +1887,7 @@ ArkTS-Sta: loadFontWithCheck(name: string, path: string | Resource, index?: int)
 | 25900005 | Failed to get the file size. |
 | 25900006 | Failed to read the file. |
 | 25900007 | Empty file. |
-| 25900008 | Corrupt file. |
+| 25900008 | Corrupted file. |
 
 **示例：**
 
@@ -4190,6 +4190,7 @@ forceReuseRasterResult(isForce: boolean): void
 ArkTS-Dyn示例：
 
 ```ts
+// Index.ets
 import { text, drawing } from '@kit.ArkGraphics2D'
 import { image } from '@kit.ImageKit'
  
@@ -4236,6 +4237,7 @@ struct Index {
 ArkTS-Sta示例：
 
 ```ts
+// Index.ets
 import { Entry, Component, Column, Button, Image, ClickEvent} from '@ohos.arkui.component'
 import { State } from '@ohos.arkui.stateManagement'
 import { drawing } from '@kit.ArkGraphics2D'
@@ -6620,6 +6622,7 @@ getTextStyle(): TextStyle
 ArkTS-Dyn示例：
 
 ```ts
+// Index.ets
 import { text } from "@kit.ArkGraphics2D"
 import { common2D } from '@kit.ArkGraphics2D'
 import { JSON } from "@kit.ArkTS";
@@ -6678,6 +6681,7 @@ function numberToRGBA(colorNum: number): common2D.Color {
 ArkTS-Sta示例：
 
 ```ts
+// Index.ets
 import { Entry, Component, Column, Button, ClickEvent} from '@ohos.arkui.component'
 import { text } from "@kit.ArkGraphics2D"
 import { common2D } from '@kit.ArkGraphics2D'
