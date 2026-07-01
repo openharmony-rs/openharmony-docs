@@ -14,7 +14,7 @@
 
 ``` JSON5
 "requestPermissions":[
- // ...
+  // ...
   {
     "name" : "ohos.permission.INTERNET"
   }
