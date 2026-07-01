@@ -41,7 +41,7 @@
 | [OH_Drawing_Matrix* OH_Drawing_MatrixCreateRotation(float deg, float x, float y)](#oh_drawing_matrixcreaterotation) | 创建一个带旋转属性的矩阵对象。<br>该矩阵对象为：单位矩阵在(x, y)旋转中心点以度为单位进行旋转后得到的矩阵。调用此函数创建的矩阵对象，在使用完毕后必须调用[OH_Drawing_MatrixDestroy](capi-drawing-matrix-h.md#oh_drawing_matrixdestroy)释放该对象占用的内存，否则会导致内存泄漏。 |
 | [OH_Drawing_Matrix* OH_Drawing_MatrixCreateScale(float sx, float sy, float px, float py)](#oh_drawing_matrixcreatescale) | 创建一个带缩放属性的矩阵对象。<br>该矩阵对象为：单位矩阵在(px, py)缩放中心点以sx和sy为缩放因子进行缩放后得到的矩阵。调用此函数创建的矩阵对象，在使用完毕后必须调用[OH_Drawing_MatrixDestroy](#oh_drawing_matrixdestroy)释放该对象占用的内存。 |
 | [OH_Drawing_Matrix* OH_Drawing_MatrixCreateTranslation(float dx, float dy)](#oh_drawing_matrixcreatetranslation) | 创建一个带平移属性的矩阵对象。<br>该矩阵对象为：单位矩阵平移(dx, dy)后得到的矩阵。调用此函数创建的矩阵对象，在使用完毕后必须调用[OH_Drawing_MatrixDestroy](capi-drawing-matrix-h.md#oh_drawing_matrixdestroy)释放该对象占用的内存，否则会导致内存泄漏。 |
-| [void OH_Drawing_MatrixSetMatrix(OH_Drawing_Matrix* matrix, float scaleX, float skewX, float transX, float skewY, float scaleY, float transY, float persp0, float persp1, float persp2)](#oh_drawing_matrixsetmatrix) | 用于给矩阵对象设置变换参数，包括缩放、倾斜、位移和透视系数。9个参数按行排列对应3×3矩阵结构：| scaleX | skewX | transX || skewY | scaleY | transY || persp0 | persp1 | persp2 |<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>matrix为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER，请确保传入的matrix指针不为NULL。 |
+| [void OH_Drawing_MatrixSetMatrix(OH_Drawing_Matrix* matrix, float scaleX, float skewX, float transX, float skewY, float scaleY, float transY, float persp0, float persp1, float persp2)](#oh_drawing_matrixsetmatrix) | 用于给矩阵对象设置变换参数，包括缩放、倾斜、位移和透视系数。9个参数按行排列对应3×3矩阵结构：`scaleX, skewX, transX; skewY, scaleY, transY; persp0, persp1, persp2`。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>matrix为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER，请确保传入的matrix指针不为NULL。 |
 | [bool OH_Drawing_MatrixSetRectToRect(OH_Drawing_Matrix* matrix, const OH_Drawing_Rect* src, const OH_Drawing_Rect* dst, OH_Drawing_ScaleToFit stf)](#oh_drawing_matrixsetrecttorect) | 将矩阵以缩放方式适配目标矩形。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>matrix、src或dst任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER，请确保传入的matrix、src和dst指针均不为NULL。 |
 | [void OH_Drawing_MatrixPreRotate(OH_Drawing_Matrix* matrix, float degree, float px, float py)](#oh_drawing_matrixprerotate) | 将当前矩阵左乘一个围绕旋转中心点旋转degree指定角度的矩阵。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>matrix为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER，请确保传入的matrix指针不为NULL。 |
 | [void OH_Drawing_MatrixPreScale(OH_Drawing_Matrix* matrix, float sx, float sy, float px, float py)](#oh_drawing_matrixprescale) | 将当前矩阵左乘一个围绕缩放中心点按sx和sy指定缩放因子缩放的矩阵。本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>matrix为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER，请确保传入的matrix指针不为NULL。 |
@@ -61,7 +61,7 @@
 | [void OH_Drawing_MatrixMapPoints(const OH_Drawing_Matrix* matrix, const OH_Drawing_Point2D* src, OH_Drawing_Point2D* dst, int count)](#oh_drawing_matrixmappoints) | 通过矩阵变换将源点数组映射到目标点数组。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>matrix、src、dst任意一个为NULL或者count小于等于0时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 |
 | [bool OH_Drawing_MatrixMapRect(const OH_Drawing_Matrix* matrix, const OH_Drawing_Rect* src, OH_Drawing_Rect* dst)](#oh_drawing_matrixmaprect) | 将目标矩形设置为一个新的矩形，该矩形是能够包围源矩形的四个顶点通过矩阵变换映射后形成的新顶点的最小矩形。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>matrix、src或dst任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER，请确保传入的matrix、src和dst指针均不为NULL。 |
 | [bool OH_Drawing_MatrixIsEqual(OH_Drawing_Matrix* matrix, OH_Drawing_Matrix* other)](#oh_drawing_matrixisequal) | 判断两个矩阵是否相等。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>matrix、other任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER，请确保传入的matrix和other指针均不为NULL。 |
-| [bool OH_Drawing_MatrixIsIdentity(OH_Drawing_Matrix* matrix)](#oh_drawing_matrixisidentity) | 判断矩阵是否是单位矩阵。<br>单位矩阵为：<br>`| 1 0 0 |`<br>`| 0 1 0 |`<br>`| 0 0 1 |`<br>如需判断两个矩阵是否相等，请使用[OH_Drawing_MatrixIsEqual](#oh_drawing_matrixisequal)。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>matrix为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER，请确保传入的matrix指针不为NULL。 |
+| [bool OH_Drawing_MatrixIsIdentity(OH_Drawing_Matrix* matrix)](#oh_drawing_matrixisidentity) | 判断矩阵是否是单位矩阵。单位矩阵为：`[1 0 0; 0 1 0; 0 0 1]`。<br>如需判断两个矩阵是否相等，请使用[OH_Drawing_MatrixIsEqual](#oh_drawing_matrixisequal)。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>matrix为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER，请确保传入的matrix指针不为NULL。 |
 | [void OH_Drawing_MatrixDestroy(OH_Drawing_Matrix* matrix)](#oh_drawing_matrixdestroy) | 用于销毁矩阵对象并回收该对象占用的内存。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>matrix为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER，请确保传入的matrix指针不为NULL。 |
 | [OH_Drawing_ErrorCode OH_Drawing_MatrixPreConcat(OH_Drawing_Matrix* a, OH_Drawing_Matrix* b)](#oh_drawing_matrixpreconcat) | 对矩阵a左乘矩阵b。与[OH_Drawing_MatrixConcat](#oh_drawing_matrixconcat)功能类似，区别在于Concat将结果存入单独的total矩阵，而本方法直接修改矩阵a。 |
 | [OH_Drawing_ErrorCode OH_Drawing_MatrixIsAffine(const OH_Drawing_Matrix* matrix, bool* isAffine)](#oh_drawing_matrixisaffine) | 判断当前矩阵是否为仿射矩阵。仿射矩阵是一种包括平移、旋转或缩放等变换的矩阵。如需判断矩阵是否为单位矩阵，请使用[OH_Drawing_MatrixIsIdentity](#oh_drawing_matrixisidentity)。 |
@@ -237,9 +237,11 @@ void OH_Drawing_MatrixSetMatrix(OH_Drawing_Matrix* matrix, float scaleX, float s
 
 用于给矩阵对象设置变换参数，包括缩放、倾斜、位移和透视系数。9个参数按行排列对应3×3矩阵结构：
 
-| scaleX | skewX | transX |
-| skewY | scaleY | transY |
-| persp0 | persp1 | persp2 |
+```text
+scaleX  skewX   transX
+skewY   scaleY  transY
+persp0  persp1  persp2
+```
 
 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>matrix为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER，请确保传入的matrix指针不为NULL。
 
@@ -758,7 +760,7 @@ bool OH_Drawing_MatrixIsIdentity(OH_Drawing_Matrix* matrix)
 
 **描述**
 
-判断矩阵是否是单位矩阵。<br>单位矩阵为：<br>`| 1 0 0 |`<br>`| 0 1 0 |`<br>`| 0 0 1 |`<br>如需判断两个矩阵是否相等，请使用[OH_Drawing_MatrixIsEqual](#oh_drawing_matrixisequal)。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>matrix为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER，请确保传入的matrix指针不为NULL。
+判断矩阵是否是单位矩阵。单位矩阵为：`[1 0 0; 0 1 0; 0 0 1]`。<br>如需判断两个矩阵是否相等，请使用[OH_Drawing_MatrixIsEqual](#oh_drawing_matrixisequal)。<br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。<br>matrix为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER，请确保传入的matrix指针不为NULL。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 

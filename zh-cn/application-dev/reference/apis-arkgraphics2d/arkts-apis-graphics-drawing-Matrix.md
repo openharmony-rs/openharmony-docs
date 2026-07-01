@@ -1,4 +1,4 @@
-﻿# Class (Matrix)
+# Class (Matrix)
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
