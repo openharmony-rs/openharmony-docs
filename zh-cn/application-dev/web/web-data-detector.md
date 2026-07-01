@@ -136,14 +136,14 @@ ArkTS-Dyn示例：
 
 ``` TypeScript
 Web({
-src: $rawfile('index.html'),
-controller: this.webController
+  src: $rawfile('index.html'),
+  controller: this.webController
 })
-.enableDataDetector(true)
-.dataDetectorConfig({
-  enablePreviewMenu: true,  // 配置分词长按预览功能
-  types: []
-})
+  .enableDataDetector(true)
+  .dataDetectorConfig({
+    enablePreviewMenu: true,  // 配置分词长按预览功能
+    types: []
+  })
 ```
 
 ArkTS-Sta示例：
