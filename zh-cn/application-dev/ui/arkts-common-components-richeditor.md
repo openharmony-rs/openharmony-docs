@@ -95,7 +95,7 @@ export struct CreateRichEditor {
 ``` TypeScript
 @Entry
 @Component
-export struct CreateRichEditor {
+struct CreateRichEditor {
   controllerNoStyledString: RichEditorController = new RichEditorController();
   optionsNoStyledString: RichEditorOptions = { controller: this.controllerNoStyledString };
   // ...
