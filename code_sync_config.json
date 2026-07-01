@@ -6390,14 +6390,14 @@
 						"start_line":36
 					},
 					{
-						"end_line":129,
-						"name":"music_skill_try",
-						"start_line":56
-					},
-					{
 						"end_line":214,
 						"name":"music_skill_branch",
 						"start_line":88
+					},
+					{
+						"end_line":129,
+						"name":"music_skill_try",
+						"start_line":56
 					}
 				]
 			}
