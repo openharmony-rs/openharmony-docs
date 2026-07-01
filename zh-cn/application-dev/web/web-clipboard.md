@@ -358,6 +358,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 
 <!-- @[web_clipboard_copyOptions](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebClipboard/entry/src/main/ets/pages/WebCopyOptions.ets) --> 
+
 ``` TypeScript
 import { Web, $rawfile, UIContext, Entry, Component, Column, CopyOptions } from '@ohos.arkui.component'
 import { State } from '@ohos.arkui.stateManagement';
