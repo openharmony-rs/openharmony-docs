@@ -186,8 +186,8 @@ try {
   let bundleName: string = "com.example.demo";
   let abilityName: string = "EntryAbility";
 
-  conversation.registerConversationListener(bundleName, abilityName, (networkId: string, msg: ArrayBuffer) => {
-    hilog.info(0x0000, TAG, 'received message from networkId = ' + networkId + ', msg length = ' + msg.byteLength);
+  conversation.registerConversationListener(bundleName, abilityName, (deviceId: string, msg: ArrayBuffer) => {
+    hilog.info(0x0000, TAG, 'received message from deviceId = ' + deviceId + ', msg length = ' + msg.byteLength);
   });
   hilog.info(0x0000, TAG, 'registerConversationListener success');
 } catch (err) {
@@ -260,7 +260,7 @@ try {
 
 | 名称                    | 类型       |只读   | 可选   | 说明                 |
 | ----------------- | ------ | ----  | ---- | ------------------ |
-| networkId          | string | 否    |否    | 设备的networkId，在分布式网络中唯一标识一台设备的可变标识符，用于发送消息时的设备寻址。     |
+| networkId          | string | 否    |否    | 设备的networkId，在分布式网络中唯一标识一台设备的标识符，用于发送消息时的设备寻址。     |
 | deviceName           | string | 否    |否   | 设备名称。 |
 | deviceTypeId            | int | 否    |否    | 设备类型标识符，表示设备的类别（如手机、平板、电视、穿戴设备等）。 |
 | nearby            | boolean | 否    |否    | 设备是否在近场。 |
@@ -270,7 +270,7 @@ try {
 
 消息接收回调函数类型。
 
-**(networkId: string, msg: ArrayBuffer): void**
+**(deviceId: string, msg: ArrayBuffer): void**
 
 **系统能力**：SystemCapability.Communication.SoftBus.Core
 
@@ -282,5 +282,5 @@ try {
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| networkId  | string  | 是    | 发送消息的源设备的networkId。  |
+| deviceId  | string  | 是    | 发送消息的源设备的networkId或udid。  |
 | msg | ArrayBuffer  | 是    | 接收到的消息内容。  |
