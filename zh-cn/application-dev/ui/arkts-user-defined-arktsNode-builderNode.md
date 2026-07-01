@@ -2621,12 +2621,12 @@ struct FreezeBuildNode {
 3. 通过NodeContainer使用已经预渲染的页面。
 
     <!-- @[Main_ArkWebPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/ArkWebPage.ets) --> 
-
+    
     ``` TypeScript
     // 使用NodeController的Page页。
     // pages/ArkWebPage.ets
     import { createNWeb, getNWeb } from '../Common/CommonIndex';
-
+    
     @Entry
     @Component
     struct Index {
@@ -2635,7 +2635,7 @@ struct FreezeBuildNode {
           Column() {
             // NodeContainer用于与NodeController节点绑定，rebuild会触发makeNode。
             // Page页通过NodeContainer接口绑定NodeController，实现动态组件页面显示。
-            NodeContainer(getNWeb(''))
+            NodeContainer(getNWeb('https://www.example.com'))
               .height('90%')
               .width('100%')
               .id('ArkWebPage')
