@@ -56,7 +56,7 @@ static setAdsBlockRules(rulesFile: string, replace: boolean): void
 | 错误码ID | 错误信息                  |
 | -------- | ----------------------- |
 |  401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-|  801 | Capability not supported. |
+|  801 | Capability not supported.  <br/>适用版本：18+ |
 
 **示例：**
 
@@ -129,7 +129,7 @@ static addAdsBlockDisallowedList(domainSuffixes: Array\<string\>): void
 | 错误码ID | 错误信息                  |
 | -------- | ----------------------- |
 |  401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-|  801 | Capability not supported. |
+|  801 | Capability not supported.  <br/>适用版本：18+ |
 
 **示例：**
 
@@ -211,7 +211,7 @@ static removeAdsBlockDisallowedList(domainSuffixes: Array\<string\>): void
 | 错误码ID | 错误信息                  |
 | -------- | ----------------------- |
 |  401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-|  801 | Capability not supported. |
+|  801 | Capability not supported.  <br/>适用版本：18+ |
 
 **示例：**
 
@@ -282,7 +282,7 @@ static clearAdsBlockDisallowedList(): void
 
 | 错误码ID | 错误信息                  |
 | -------- | ----------------------- |
-|  801 | Capability not supported. |
+|  801 | Capability not supported.  <br/>适用版本：18+ |
 
 **示例：**
 
@@ -362,7 +362,7 @@ static addAdsBlockAllowedList(domainSuffixes: Array\<string\>): void
 | 错误码ID | 错误信息                  |
 | -------- | ----------------------- |
 |  401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-|  801 | Capability not supported. |
+|  801 | Capability not supported.  <br/>适用版本：18+ |
 
 **示例：**
 
@@ -447,7 +447,7 @@ static removeAdsBlockAllowedList(domainSuffixes: Array\<string\>): void
 | 错误码ID | 错误信息                  |
 | -------- | ----------------------- |
 |  401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-|  801 | Capability not supported. |
+|  801 | Capability not supported.  <br/>适用版本：18+ |
 
 **示例：**
 
@@ -518,7 +518,7 @@ static clearAdsBlockAllowedList(): void
 
 | 错误码ID | 错误信息                  |
 | -------- | ----------------------- |
-|  801 | Capability not supported. |
+|  801 | Capability not supported.  <br/>适用版本：18+ |
 
 **示例：**
 
