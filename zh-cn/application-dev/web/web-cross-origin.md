@@ -91,7 +91,7 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
   <!-- main/resources/rawfile/index.html -->
   <html>
   <head>
-  	<meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
   </head>
   <body>
   <script crossorigin src="./js/script.js"></script>
@@ -186,28 +186,28 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
       <title>Demo</title>
       <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no,   viewport-fit=cover">
       <script>
-  		function getFile() {
-  			var file = "file:///data/storage/el1/bundle/entry/resources/resfile/js/script.js";
+      function getFile() {
+        var file = "file:///data/storage/el1/bundle/entry/resources/resfile/js/script.js";
         // 使用file协议通过XMLHttpRequest跨域访问本地js文件。
-  			var xmlHttpReq = new XMLHttpRequest();
-  			xmlHttpReq.onreadystatechange = function(){
-  			    console.info("readyState:" + xmlHttpReq.readyState);
-  			    console.info("status:" + xmlHttpReq.status);
-  				if(xmlHttpReq.readyState == 4){
-  				    if (xmlHttpReq.status == 200) {
+        var xmlHttpReq = new XMLHttpRequest();
+        xmlHttpReq.onreadystatechange = function(){
+            console.info("readyState:" + xmlHttpReq.readyState);
+            console.info("status:" + xmlHttpReq.status);
+          if(xmlHttpReq.readyState == 4){
+              if (xmlHttpReq.status == 200) {
                   // 如果ets侧正确设置路径列表，则此处能正常获取资源
-  				        const element = document.getElementById('text');
+                  const element = document.getElementById('text');
                           element.textContent = "load " + file + " success";
-  				    } else {
+              } else {
                   // 如果ets侧不设置路径列表，则此处会触发CORS跨域检查错误
-  				        const element = document.getElementById('text');
+                  const element = document.getElementById('text');
                           element.textContent = "load " + file + " failed";
-  				    }
-  				}
-  			}
-  			xmlHttpReq.open("GET", file);
-  			xmlHttpReq.send(null);
-  		}
+              }
+          }
+        }
+        xmlHttpReq.open("GET", file);
+        xmlHttpReq.send(null);
+      }
       </script>
   </head>
 

@@ -215,9 +215,9 @@ OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_
 
 错误码定义：  
 
-NDK：[网络错误码(arkweb_net_error_list.h)](../reference/apis-arkweb/capi-arkweb-net-error-list-h.md)。  
+NDK：[arkweb_net_error_list.h](../reference/apis-arkweb/capi-arkweb-net-error-list-h.md)。  
 
-ArkTS：[网络错误码(@ohos.web.netErrorList.d.ts)](../reference/apis-arkweb/arkts-apis-netErrorList.md)。  
+ArkTS：[@ohos.web.netErrorList (ArkWeb网络协议栈错误列表)](../reference/apis-arkweb/arkts-apis-netErrorList.md)。  
 
 > **注意：**
 >
