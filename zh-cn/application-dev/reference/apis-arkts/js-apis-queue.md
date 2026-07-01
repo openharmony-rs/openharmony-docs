@@ -1,12 +1,11 @@
-# @ohos.util.Queue (线性容器Queue)
-<!--Kit: ArkTS-->
+# @ohos.util.Queue (线性容器Queue)<!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong; @lijin1039-->
 <!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
-Queue的特点是先进先出，在尾部增加元素，在头部删除元素。Queue基于循环队列的数据结构实现。
+Queue遵循先进先出原则：在尾部增加元素，在头部删除元素。Queue基于循环队列的数据结构实现。
 
 Queue和[Deque](js-apis-deque.md)相比，Queue在尾部增加元素，在头部删除元素；而Deque支持在两端进行增删操作。
 
@@ -145,9 +144,9 @@ console.info("result:", queue.length);  // result: 4
 ArkTS-Sta示例：
 
 ```ts
-class C1 {
-  name: string = ""
-  age: string = ""
+class PersonInfo {
+  name: string = "";
+  age: string = "";
 }
 let queue : Queue<int | string | C1 | int[]> = new Queue<int | string | C1 | int[]>();
 let result = queue.add("a");
@@ -177,7 +176,7 @@ pop(): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回删除的元素。 |
+| T | 返回删除的元素。当Queue为空时，返回undefined。 |
 
 **错误码：**
 
@@ -213,6 +212,7 @@ queue.add(4);
 queue.add(5);
 queue.add(2);
 queue.add(4);
+// 删除队列头部元素，并返回被删除元素
 let result = queue.pop();
 console.info("result:", result);  // result: 2
 ```

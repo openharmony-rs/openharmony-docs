@@ -214,7 +214,8 @@ stack.push(4);
 stack.push(5);
 stack.push(2);
 stack.push(4);
-let result = stack.pop();
+// 删除栈顶元素并返回该元素
+let result = stack.pop(); 
 console.info("result = " + result); // result = 4
 ```
 
