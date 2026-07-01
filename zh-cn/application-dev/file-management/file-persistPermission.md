@@ -45,7 +45,7 @@ export async function persistPermissionExample() {
     let documentSelectOptions = new picker.DocumentSelectOptions();
     let documentPicker = new picker.DocumentViewPicker();
     let uris = await documentPicker.select(documentSelectOptions);
-    // 可以组合授予多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE。
+    // 可以组合授予多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE。 
     // 注意：只能对已获取到的临时权限进行持久化授权操作，否则会报错。
     let policyInfo: fileShare.PolicyInfo = {
       uri: uris[0],
@@ -99,7 +99,7 @@ import { fileShare } from '@kit.CoreFileKit';
 export async function revokePermissionExample() {
   try {
     let uri = 'file://docs/storage/Users/username/tmp.txt';
-    // 可以组合取消多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE。
+    // 可以组合取消多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE。 
     // 注意：只能对已获取到的持久化权限进行取消持久化授权操作，否则会报错。
     let policyInfo: fileShare.PolicyInfo = {
       uri: uri,
@@ -153,7 +153,7 @@ import { fileShare } from '@kit.CoreFileKit';
 export async function activatePermissionExample() {
   try {
     let uri = 'file://docs/storage/Users/username/tmp.txt';
-    // 可以组合激活多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE。
+    // 可以组合激活多个权限，例如读写权限可使用 fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE。 
     // 注意：只能对已获取到的持久化权限进行激活持久化授权操作，否则会报错。
     let policyInfo: fileShare.PolicyInfo = {
       uri: uri,
