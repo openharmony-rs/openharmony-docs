@@ -75,7 +75,7 @@ struct Index {
                 });
               } catch (resError) {
                 console.error(
-                  `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                  `ErrorCode: ${(resError as BusinessError).code},  Message: ${(resError as BusinessError).message}`);
               }
             });
         })
