@@ -161,7 +161,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 3. 将指定媒体资源删除。
 
 <!-- @[register_for_monitoring_all_assets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MediaResourceChangeNotificationsSample/entry/src/main/ets/registerformonitoringallassetsability/RegisterForMonitoringAllAssetsAbility.ets) -->
-
+<!-- @[register_for_monitoring_all_assets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MediaResourceChangeNotificationsSample/entry/src/main/ets/registerformonitoringallassetsability/RegisterForMonitoringAllAssetsAbility.ets) -->
 ``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
