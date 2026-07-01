@@ -1257,14 +1257,14 @@ List(
            },
            {
              index: 3,
-             // app.string.birthday 资源文件中的value值为'性别'
+             // app.string.birthday 资源文件中的value值为'生日'
              name: $r('app.string.birthday'),
              label: 'xxxxxxxxx',
              type: 'Text'
            },
            {
              index: 4,
-             // app.string.gender 资源文件中的value值为''
+             // app.string.gender 资源文件中的value值为'性别'
              name: $r('app.string.gender'),
              label: 'xxxxxxxx',
              type: 'Text'
