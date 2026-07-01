@@ -258,7 +258,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.info(`a new form added, formId: ${data.formId}`);
+  console.info(`form deleted, formId: ${data.formId}`);
 }
 
 formObserver.off('formRemove', bundleName, callback);
