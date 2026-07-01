@@ -200,11 +200,12 @@ cpp部分代码：
 
 <!-- @[oh_jsvm_get_value_bigint_uint64](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutBigint/getvaluebigintuint64/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 // OH_JSVM_GetValueBigintUint64的样例方法
 static JSVM_Value GetValueBigintUint64(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -220,7 +221,7 @@ static JSVM_Value GetValueBigintUint64(JSVM_Env env, JSVM_CallbackInfo info)
         OH_JSVM_ThrowError(env, nullptr, "BigInt values have no lossless conversion");
         return nullptr;
     } else {
-        OH_LOG_INFO(LOG_APP, "JSVM GetValueBigintUint64 success");
+        OH_LOG_INFO(LOG_APP, "JSVM GetValueBigintUint64 success:%{public}d", lossLess);
     }
     JSVM_Value returnValue = nullptr;
     OH_JSVM_CreateBigintUint64(env, value, &returnValue);
@@ -236,7 +237,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"getValueBigintUint64", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char* srcCallNative = R"JS(getValueBigintUint64(BigInt(5555555555555555)))JS";
+const char* SRC_CALL_NATIVE = R"JS(getValueBigintUint64(BigInt(5555555555555555)))JS";
 ```
 
 预期的输出结果
@@ -297,11 +298,12 @@ cpp部分代码：
 
 <!-- @[oh_jsvm_get_value_bigint_int64](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutBigint/getvaluebigintint64/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 // OH_JSVM_GetValueBigintInt64的样例方法
 static JSVM_Value GetBigintInt64(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -317,7 +319,7 @@ static JSVM_Value GetBigintInt64(JSVM_Env env, JSVM_CallbackInfo info)
         OH_JSVM_ThrowError(env, nullptr, "BigInt values have no lossless conversion");
         return nullptr;
     } else {
-        OH_LOG_INFO(LOG_APP, "JSVM GetBigintInt64 success");
+        OH_LOG_INFO(LOG_APP, "JSVM GetBigintInt64 success:%{public}d", lossLess);
     }
     JSVM_Value returnValue = nullptr;
     OH_JSVM_CreateBigintInt64(env, value, &returnValue);
@@ -333,7 +335,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"getBigintInt64", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char* srcCallNative = R"JS(getBigintInt64(BigInt(-5555555555555555)))JS";
+const char* SRC_CALL_NATIVE = R"JS(getBigintInt64(BigInt(-5555555555555555)))JS";
 ```
 
 预期的输出结果

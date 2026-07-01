@@ -50,27 +50,30 @@ cpp部分代码：
 
 <!-- @[oh_jsvm_create_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmError/createerror/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
-// 捕获清除并打印错误，该函数作为公共函数，在本文档后续样例中不再声明和定义
-static void GetLastErrorAndClean(JSVM_Env env) {
+``` C++
+// 捕获清除并打印错误,该函数作为公共函数，在本文档后续样例中不再声明和定义
+static void GetLastErrorAndClean(JSVM_Env env)
+{
     // 调用OH_JSVM_GetAndClearLastException接口获取并清除最后一个未处理的异常。即使存在挂起的JavaScript异常，也可以调用此API
     JSVM_Value result = nullptr;
     JSVM_Status status = OH_JSVM_GetAndClearLastException(env, &result);
     // 打印错误信息
-    JSVM_Value message = nullptr;
-    JSVM_Value errorCode = nullptr;
+    JSVM_Value message;
+    JSVM_Value errorCode;
     OH_JSVM_GetNamedProperty((env), result, "message", &message);
     OH_JSVM_GetNamedProperty((env), result, "code", &errorCode);
-    char messageStr[256];
-    char codeStr[256];
-    OH_JSVM_GetValueStringUtf8(env, message, messageStr, 256, nullptr);
-    OH_JSVM_GetValueStringUtf8(env, errorCode, codeStr, 256, nullptr);
+    const int maxMessageLength = 256;
+    const int maxCodeLength = 256;
+    char messageStr[maxMessageLength];
+    char codeStr[maxCodeLength];
+    OH_JSVM_GetValueStringUtf8(env, message, messageStr, maxMessageLength, nullptr);
+    OH_JSVM_GetValueStringUtf8(env, errorCode, codeStr, maxCodeLength, nullptr);
     OH_LOG_INFO(LOG_APP, "JSVM error message: %{public}s, error code: %{public}s", messageStr, codeStr);
 }
 
 // OH_JSVM_CreateError的样例方法
-static JSVM_Value JsVmCreateThrowError(JSVM_Env env, JSVM_CallbackInfo info) {
+static JSVM_Value JsVmCreateThrowError(JSVM_Env env, JSVM_CallbackInfo info)
+{
     // 在JSVM环境中创建一个字符串，并将其存储在errorCode变量中
     JSVM_Value errorCode = nullptr;
     OH_JSVM_CreateStringUtf8(env, "-1", JSVM_AUTO_LENGTH, &errorCode);
@@ -91,12 +94,12 @@ static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = JsVmCreateThrowError},
 };
 static JSVM_CallbackStruct *method = param;
-// JsVmCreateThrowError方法别名，供JS调用
+// JsVmThrow方法别名，供JS调用
 static JSVM_PropertyDescriptor descriptor[] = {
     {"jsVmCreateThrowError", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char *srcCallNative = R"JS(jsVmCreateThrowError();)JS";
+const char *SRC_CALL_NATIVE = R"JS(jsVmCreateThrowError();)JS";
 ```
 
 预期输出结果
@@ -112,8 +115,7 @@ cpp部分代码：
 
 <!-- @[oh_jsvm_throw_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmError/throwerror/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 // OH_JSVM_ThrowError的样例方法
 static JSVM_Value JsVmThrowError(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -124,7 +126,7 @@ static JSVM_Value JsVmThrowError(JSVM_Env env, JSVM_CallbackInfo info)
         // 如果没有传递参数，直接抛出错误
         OH_JSVM_ThrowError(env, "-1", "has Error");
     } else if (argc == 1) {
-        size_t length = 0;
+        size_t length;
         // 通过入参获取到JavaScript侧传入的字符串长度。
         OH_JSVM_GetValueStringUtf8(env, argv[0], nullptr, 0, &length);
         char *buffer = new char[length + 1];
@@ -147,7 +149,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"jsVmThrowError", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char *srcCallNative = R"JS(jsVmThrowError();jsVmThrowError("self defined error message");)JS";
+const char *SRC_CALL_NATIVE = R"JS(jsVmThrowError();jsVmThrowError("self defined error message");)JS";
 ```
 
 预期输出结果：
@@ -164,10 +166,10 @@ cpp部分代码：
 
 <!-- @[oh_jsvm_throw_type_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmError/throwtypeerror/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 // OH_JSVM_ThrowTypeError的样例方法
-static JSVM_Value JsVmThrowTypeError(JSVM_Env env, JSVM_CallbackInfo info) {
+static JSVM_Value JsVmThrowTypeError(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
@@ -176,12 +178,12 @@ static JSVM_Value JsVmThrowTypeError(JSVM_Env env, JSVM_CallbackInfo info) {
         OH_JSVM_ThrowTypeError(env, "-1", "throwing type error");
     } else if (argc == 1) {
         size_t length = 0;
-        // 通过入参获取到javaScript侧传入的字符串长度
+        // 通过入参获取到JavaScript侧传入的字符串长度
         OH_JSVM_GetValueStringUtf8(env, argv[0], nullptr, 0, &length);
         char *buffer = new char[length + 1];
         // 获取入参的字符串内容
         OH_JSVM_GetValueStringUtf8(env, argv[0], buffer, length + 1, nullptr);
-        // 作为error信息填入到OH_JSVM_ThrowTypeError接口中
+        // 作为error信息填入到OH_JSVM_ThrowError接口中
         OH_JSVM_ThrowTypeError(env, "self defined error code", buffer);
         delete[] buffer;
     }
@@ -198,7 +200,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"jsVmThrowTypeError", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char *srcCallNative = R"JS(jsVmThrowTypeError();jsVmThrowTypeError("self defined error message");)JS";
+const char *SRC_CALL_NATIVE = R"JS(jsVmThrowTypeError();jsVmThrowTypeError("self defined error message");)JS";
 ```
 
 预期输出结果：

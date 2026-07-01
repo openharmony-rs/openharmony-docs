@@ -138,11 +138,12 @@ cpp 部分代码：
 
 <!-- @[oh_jsvm_coerce_to_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetoobject/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 // OH_JSVM_CoerceToObject的样例方法
 static JSVM_Value CoerceToObject(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -169,7 +170,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"coerceToObject", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char *srcCallNative = R"JS(coerceToObject(123))JS";
+const char *SRC_CALL_NATIVE = R"JS(coerceToObject(123))JS";
 ```
 
 预期结果：
@@ -437,11 +438,12 @@ cpp 部分代码：
 
 <!-- @[oh_jsvm_get_undefined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getundefined/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 // OH_JSVM_GetUndefined的样例方法
 static JSVM_Value GetUndefined(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -468,8 +470,6 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getUndefined", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// 样例测试js
-const char *srcCallNative = R"JS(getUndefined())JS";
 ```
 
 预期结果:

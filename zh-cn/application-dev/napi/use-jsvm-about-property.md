@@ -47,7 +47,7 @@ cpp部分代码：
 
 <!-- @[oh_jsvm_get_property_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getpropertynames/src/main/cpp/hello.cpp) -->
 
-```cpp
+``` C++
 // OH_JSVM_GetPropertyNames的样例方法
 static JSVM_Value GetPropertyNames(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -77,7 +77,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // 样例测试js
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
     let obj = '{ data: 0, message: "hello world"}';
     let script = getPropertyNames(obj);
 )JS";
@@ -198,7 +198,7 @@ cpp部分代码：
 
 <!-- @[oh_jsvm_has_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/hasproperty/src/main/cpp/hello.cpp) -->
 
-```cpp
+``` C++
 // OH_JSVM_HasProperty的样例方法
 static JSVM_Value HasProperty(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -207,7 +207,7 @@ static JSVM_Value HasProperty(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_Value args[2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     // 将参数传入OH_JSVM_HasProperty方法中，若接口调用成功则将结果转化为JSVM_Value类型抛出，否则抛出错误
-    bool result = false;
+    bool result;
     JSVM_Status status = OH_JSVM_HasProperty(env, args[0], args[1], &result);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "JSVM OH_JSVM_HasProperty fail");
@@ -231,7 +231,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // 样例测试js
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
     let obj = { data: 0, message: "hello world", 50: 1};
     hasProperty(obj, "data")
     hasProperty(obj, 0)
@@ -697,20 +697,20 @@ cpp部分代码：
 
 <!-- @[oh_jsvm_get_all_property_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutProperty/getallpropertynames/src/main/cpp/hello.cpp) -->
 
-```cpp
+``` C++
 // OH_JSVM_GetAllPropertyNames的样例方法
 static JSVM_Value GetAllPropertyNames(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    // 获取js侧传入的一个参数
+    // // 获取js侧传入的一个参数
     size_t argc = 1;
     JSVM_Value args[1];
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     // 获取给定对象的所有属性名称(自有属性)
     JSVM_Value result;
     JSVM_Status status = OH_JSVM_GetAllPropertyNames(env, args[0],
-                                         JSVM_KeyCollectionMode::JSVM_KEY_OWN_ONLY,
-                                         JSVM_KeyFilter::JSVM_KEY_WRITABLE,
-                                         JSVM_KeyConversion::JSVM_KEY_NUMBERS_TO_STRINGS, &result);
+                                                     JSVM_KeyCollectionMode::JSVM_KEY_OWN_ONLY,
+                                                     JSVM_KeyFilter::JSVM_KEY_WRITABLE,
+                                                     JSVM_KeyConversion::JSVM_KEY_NUMBERS_TO_STRINGS, &result);
     if (status != JSVM_OK) {
         OH_JSVM_ThrowError(env, nullptr, "Failed to get all property names");
         return nullptr;
@@ -730,7 +730,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // 样例测试js
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
     let obj = '{ data: 0, message: "hello world", 50: 1}';
     let script = getAllPropertyNames(obj);
 )JS";
