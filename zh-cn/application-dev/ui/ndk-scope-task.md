@@ -34,7 +34,7 @@ const uint32_t VALUE_3 = 480;
 //page1
 ArkUI_NodeHandle button = nodeAPI->createNode(ARKUI_NODE_BUTTON);
 ArkUI_AttributeItem LABEL_Item = {.string = "pageOneButton"};
-// 设置id，用于在第二个页面内通过接口查找
+//设置id，用于在第二个页面内通过接口查找
 ArkUI_AttributeItem id = {.string = "pageOneButton"};
 nodeAPI->setAttribute(button, NODE_ID, &id);
 nodeAPI->setAttribute(button, NODE_BUTTON_LABEL, &LABEL_Item);
