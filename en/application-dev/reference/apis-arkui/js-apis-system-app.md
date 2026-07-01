@@ -156,7 +156,7 @@ static terminate(): void
 
 Terminates the current ability. In the stage model, this API has no effect.
 
-This API is deprecated since API version 7. You are advised to use [@ohos.ability.featureAbility](../apis-ability-kit/js-apis-ability-featureAbility.md) instead.
+Since API version 7, you are advised to use [@ohos.ability.featureAbility (FeatureAbility Module)](../apis-ability-kit/js-apis-ability-featureAbility.md) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -246,7 +246,7 @@ Sets the maximum number of decoded images that can be cached in the memory to sp
 
 **setImageCacheCount** takes effect only when used in [onPageShow](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow) or [aboutToAppear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear) on the page decorated by @Entry.
 
-The **setImageCacheCount**, **setImageRawDataCacheSize**, and **setImageFileCacheSize** APIs are not flexible and will not be further evolved in future developments. In light of this, consider using [ImageKnife](https://gitcode.com/openharmony-tpc/ImageKnife) for more complex scenarios.
+The **setImageCacheCount**, **setImageRawDataCacheSize**, and **setImageFileCacheSize** APIs are not flexible and will not be further evolved in future developments. In light of this, consider using [ImageKnife](https://gitcode.com/CPF-ApplicationTPC/ImageKnife) for more complex scenarios.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -396,7 +396,7 @@ You are advised to use [@ohos.window (Window)](arkts-apis-window.md) since API v
 
 | Name | Type                                                 | Mandatory| Description                                                        |
 | ------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| options | [RequestFullWindowOptions](#requestfullwindowoptions) | No  | Duration for transition from the non-full window to the full window, in milliseconds. By default, the value is in direct proportion to the distance between the non-full window and the full window.|
+| options | [RequestFullWindowOptions](#requestfullwindowoptions) | No  | Transition time from a non-full window to a full window when the full window is requested, in milliseconds. The default time is directly proportional to the distance from the non-full window to the full window.|
 
 **Example**
 

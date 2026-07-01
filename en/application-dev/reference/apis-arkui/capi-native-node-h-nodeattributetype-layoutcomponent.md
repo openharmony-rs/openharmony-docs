@@ -35,13 +35,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Alignment mode. The parameter type is [ArkUI_Alignment](capi-native-type-h.md#arkui_alignment). The default value is **ARKUI_ALIGNMENT_CENTER**.|
+| .value[0].i32 | Alignment mode. The parameter type is [ArkUI_Alignment](capi-layout-h.md#arkui_alignment). The default value is **ARKUI_ALIGNMENT_CENTER**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Alignment mode. The parameter type is [ArkUI_Alignment](capi-native-type-h.md#arkui_alignment).|
+| .value[0].i32 | Alignment mode. The parameter type is [ArkUI_Alignment](capi-layout-h.md#arkui_alignment).|
 
 ## NODE_COLUMN_ALIGN_ITEMS
 
@@ -58,13 +58,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Horizontal alignment mode of the child components. The parameter type is [ArkUI_HorizontalAlignment](capi-native-type-h.md#arkui_horizontalalignment). The default value is **ARKUI_HORIZONTAL_ALIGNMENT_CENTER**.|
+| .value[0].i32 | Horizontal alignment mode of the child components. The parameter type is [ArkUI_HorizontalAlignment](capi-layout-h.md#arkui_horizontalalignment). The default value is **ARKUI_HORIZONTAL_ALIGNMENT_CENTER**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Horizontal alignment mode of the child components. The parameter type is [ArkUI_HorizontalAlignment](capi-native-type-h.md#arkui_horizontalalignment).|
+| .value[0].i32 | Horizontal alignment mode of the child components. The parameter type is [ArkUI_HorizontalAlignment](capi-layout-h.md#arkui_horizontalalignment).|
 
 ## NODE_COLUMN_JUSTIFY_CONTENT
 
@@ -81,13 +81,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Vertical alignment mode of the child components. The parameter type is [ArkUI_FlexAlignment](capi-native-type-h.md#arkui_flexalignment). The default value is **ARKUI_FLEX_ALIGNMENT_START**.|
+| .value[0].i32 | Vertical alignment mode of the child components. The parameter type is [ArkUI_FlexAlignment](capi-layout-h.md#arkui_flexalignment). The default value is **ARKUI_FLEX_ALIGNMENT_START**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Vertical alignment mode of the child components. The parameter type is [ArkUI_FlexAlignment](capi-native-type-h.md#arkui_flexalignment).|
+| .value[0].i32 | Vertical alignment mode of the child components. The parameter type is [ArkUI_FlexAlignment](capi-layout-h.md#arkui_flexalignment).|
 
 ## NODE_LINEAR_LAYOUT_SPACE
 
@@ -98,7 +98,7 @@ NODE_LINEAR_LAYOUT_SPACE = 1006002
 Spacing between the child components of **Column** or **Row**. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since:** 23
+**Since**: 23
 
 **Parameters**
 
@@ -121,7 +121,7 @@ NODE_LINEAR_LAYOUT_REVERSE = 1006003
 Whether the child components along the main axis in **Column** or **Row** are arranged reversely. This attribute can be set, reset, and obtained through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since:** 23
+**Since**: 23
 
 **Parameters**
 
@@ -150,13 +150,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Vertical alignment mode of the child components. The parameter type is [ArkUI_VerticalAlignment](capi-native-type-h.md#arkui_verticalalignment). The default value is **ARKUI_VERTICAL_ALIGNMENT_CENTER**.|
+| .value[0].i32 | Vertical alignment mode of the child components. The parameter type is [ArkUI_VerticalAlignment](capi-layout-h.md#arkui_verticalalignment). The default value is **ARKUI_VERTICAL_ALIGNMENT_CENTER**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Vertical alignment mode of the child components. The parameter type is [ArkUI_VerticalAlignment](capi-native-type-h.md#arkui_verticalalignment).|
+| .value[0].i32 | Vertical alignment mode of the child components. The parameter type is [ArkUI_VerticalAlignment](capi-layout-h.md#arkui_verticalalignment).|
 
 ## NODE_ROW_JUSTIFY_CONTENT
 
@@ -173,13 +173,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Horizontal alignment mode of the child components. The parameter type is [ArkUI_FlexAlignment](capi-native-type-h.md#arkui_flexalignment). The default value is **ARKUI_FLEX_ALIGNMENT_START**.|
+| .value[0].i32 | Horizontal alignment mode of the child components. The parameter type is [ArkUI_FlexAlignment](capi-layout-h.md#arkui_flexalignment). The default value is **ARKUI_FLEX_ALIGNMENT_START**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Horizontal alignment mode of the child components. The parameter type is [ArkUI_FlexAlignment](capi-native-type-h.md#arkui_flexalignment).|
+| .value[0].i32 | Horizontal alignment mode of the child components. The parameter type is [ArkUI_FlexAlignment](capi-layout-h.md#arkui_flexalignment).|
 
 ## NODE_FLEX_OPTION
 
@@ -189,6 +189,7 @@ NODE_FLEX_OPTION = MAX_NODE_SCOPE_NUM * ARKUI_NODE_FLEX = 1008000
 
 **Flex** attributes, which can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+**size** in the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) is invalid.<br>
 
 **Since**: 12
 
@@ -196,11 +197,11 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0]?.i32 | Direction in which child components are arranged within the **Flex** container. The parameter type is [ArkUI_FlexDirection](capi-native-type-h.md#arkui_flexdirection). The default value is **ARKUI_FLEX_DIRECTION_ROW**.|
-| .value[1]?.i32 | Wrapping rule. The parameter type is [ArkUI_FlexWrap](capi-native-type-h.md#arkui_flexwrap). The default value is **ARKUI_FLEX_WRAP_NO_WRAP**.|
-| .value[2]?.i32 | Alignment mode along the main axis. The parameter type is [ArkUI_FlexAlignment](capi-native-type-h.md#arkui_flexalignment). The default value is **ARKUI_FLEX_ALIGNMENT_START**.|
-| .value[3]?.i32 | Alignment mode along the cross axis. The parameter type is [ArkUI_ItemAlignment](capi-native-type-h.md#arkui_itemalignment). The default value is **ARKUI_ITEM_ALIGNMENT_START**.|
-| .value[4]?.i32 | Alignment mode for multi-line content when there is extra space in the cross axis. The parameter type is [ArkUI_FlexAlignment](capi-native-type-h.md#arkui_flexalignment). The default value is **ARKUI_FLEX_ALIGNMENT_START**.|
+| .value[0]?.i32 | Direction in which child components are arranged within the **Flex** container. The parameter type is [ArkUI_FlexDirection](capi-layout-h.md#arkui_flexdirection). The default value is **ARKUI_FLEX_DIRECTION_ROW**.|
+| .value[1]?.i32 | Arrangement rule. The parameter type is [ArkUI_FlexWrap](capi-layout-h.md#arkui_flexwrap). The default value is **ARKUI_FLEX_WRAP_NO_WRAP**.|
+| .value[2]?.i32 | Alignment mode along the main axis. The parameter type is [ArkUI_FlexAlignment](capi-layout-h.md#arkui_flexalignment). The default value is **ARKUI_FLEX_ALIGNMENT_START**.|
+| .value[3]?.i32 | Alignment mode along the cross axis. The parameter type is [ArkUI_ItemAlignment](capi-layout-h.md#arkui_itemalignment). The default value is **ARKUI_ITEM_ALIGNMENT_START**.|
+| .value[4]?.i32 | Alignment mode for multi-line content when there is extra space in the cross axis. The parameter type is [ArkUI_FlexAlignment](capi-layout-h.md#arkui_flexalignment). The default value is **ARKUI_FLEX_ALIGNMENT_START**.|
 
 **Returns**
 
@@ -220,8 +221,9 @@ NODE_FLEX_SPACE = 1008001
 
 Spacing between the child components within the **Flex** container. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+**size** in the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) is invalid.<br>
 
-**Since:** 23
+**Since**: 23
 
 **Parameters**
 

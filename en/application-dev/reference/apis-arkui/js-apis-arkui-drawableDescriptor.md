@@ -291,7 +291,7 @@ A constructor used to create a **PixelMapDrawableDescriptor** object through the
 
 | Name    | Type             | Mandatory | Description                                      |
 | --------- | ---------------- | ---- | ------------------------------------------ |
-| src | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\|[ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr)  | No| **PixelMap** image data. You can use application resources, system resources, sandbox paths (file://\<bundleName\>/\<sandboxPath\>), and Base64 strings to create **PixelMapDrawableDescriptor** objects.|
+| src | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\|[ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr)  | No| Image resource. A PixelMap image data, application resource, system resource, sandbox path (**file://\<bundleName\>/\<sandboxPath\>**), and Base64 character string can be passed to create a **PixelMapDrawableDescriptor** object.|
 
 **Example**
 
@@ -844,7 +844,7 @@ A constructor used to create an **AnimatedDrawableDescriptor** object.
 | Name    | Type             | Mandatory | Description                                      |
 | --------- | ---------------- | ---- | ------------------------------------------ |
 | pixelMaps | Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>  | Yes  | **PixelMap** image data.|
-| options   | [AnimationOptions](#animationoptions12) | No  | Animation options.                              |
+| options   | [AnimationOptions](#animationoptions12) | No  | Provides the configuration options for animation playback,                              |
 
 ### constructor<sup>21+</sup>
 
@@ -863,7 +863,7 @@ A constructor used to create an **AnimatedDrawableDescriptor** object.
 | Name    | Type             | Mandatory | Description                                      |
 | --------- | ---------------- | ---- | ------------------------------------------ |
 | src | [ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr) \| Array\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | Yes  | Animated image source address or [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) array.<br> The address (**ResourceStr**) supports the following formats: application resources (**Resource**), sandbox path (file://\<bundleName>/\<sandboxPath>), and Base64 string.|
-| options   | [AnimationOptions](#animationoptions12) | No  | Animation playback configuration.|
+| options   | [AnimationOptions](#animationoptions12) | No  | Provides the configuration options for animation playback,|
 
 **Example**
 
