@@ -145,8 +145,6 @@ ArkTS-Sta示例：
 <!-- @[WebFocusManagement](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebFocusManagement/entry/src/main/ets/pages/WebFocusManagement.ets) --> 
 
 ``` TypeScript
-'use static'
-
 import { Button, Color, Column, Component, Entry, Row, Web } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 import webview from '@ohos.web.webview';
@@ -187,9 +185,7 @@ struct WebComponent {
         .onBlur(() => {
           this.webBorderColor = Color.Red;
         })
-        // [StartExclude WebFocusManagement]
-        .id('web1')
-        // [EndExclude WebFocusManagement]
+        // ...
         .margin(3)
         .borderWidth(10)
         .borderColor(this.webBorderColor)
