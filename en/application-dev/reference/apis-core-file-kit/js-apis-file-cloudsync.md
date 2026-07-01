@@ -125,7 +125,7 @@ A constructor used to create a **FileSync** instance.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes:Incorrect parameter types. |
 
@@ -156,7 +156,7 @@ During initial registration of a callback, **4** is returned for **SyncState** i
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001  | IPC error. |
@@ -191,7 +191,7 @@ Removes the specified callback from the device-cloud sync progress.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001  | IPC error. |
@@ -228,7 +228,7 @@ Starts device-cloud sync of a file. This API uses a promise to return the result
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes:Incorrect parameter types. |
 | 13600001  | IPC error. |
@@ -274,7 +274,7 @@ Starts device-cloud sync of a file. This API uses an asynchronous callback to re
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001  | IPC error. |
@@ -318,7 +318,7 @@ Calling **stop** will stop the sync process. To resume the sync, call [start](#s
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes:Incorrect parameter types. |
 | 13600001  | IPC error. |
@@ -357,7 +357,7 @@ Calling **stop** will stop the sync process. To resume the sync, call [start](#s
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001  | IPC error. |
@@ -396,7 +396,7 @@ Obtains the last sync time. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes:Incorrect parameter types. |
 | 13600001  | IPC error. |
@@ -435,7 +435,7 @@ Obtains the last sync time. This API uses an asynchronous callback to return the
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001  | IPC error. |
@@ -475,7 +475,7 @@ A constructor used to create a **CloudFileCache** instance. Data is not shared b
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes:Incorrect parameter types. |
 
@@ -504,7 +504,7 @@ Registers a listener for the download progress of a file from the Drive Kit.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001  | IPC error. |
@@ -546,7 +546,7 @@ Registers a listener for the batch download of a file from the Drive Kit.
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.                                                                     |
 | 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
@@ -593,7 +593,7 @@ Removes the specified callback from the device-cloud file cache progress.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001  | IPC error. |
@@ -637,7 +637,7 @@ Removes the listener added via the [on](#onbatchdownload20) API for file batch d
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.                                                                     |
 | 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
@@ -685,7 +685,7 @@ Starts downloading a file from the Drive Kit to the local device. This API uses 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001  | IPC error. |
@@ -738,7 +738,7 @@ Starts downloading a file from the Drive Kit to the local device. This API uses 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001  | IPC error. |
@@ -792,7 +792,7 @@ Different batch download tasks can be distinguished by the task ID returned.
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 13600001 | IPC error. Possible causes: 1.IPC failed or timed out. 2.Failed to load the service.                                                                                              |
 | 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.                                                                     |
@@ -850,7 +850,7 @@ When **stop()** is called, the current file download process terminates, and dow
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001  | IPC error. |
@@ -895,7 +895,7 @@ When **stop()** is called, the current file download process terminates, and dow
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13600001  | IPC error. |
@@ -948,7 +948,7 @@ When **stopBatch()** is called, the batch download terminates. The **needClean**
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 13600001 | IPC error. Possible causes: 1.IPC failed or timed out. 2.Failed to load the service.                                                                                              |
 | 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.                                                                     |
@@ -997,7 +997,7 @@ Deletes a cache file. This API returns the result synchronously.
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 13600001 | IPC error. Possible causes:1.IPC failed or timed out. 2.Failed to load the service. |
 | 13900002 | No such file or directory. |
@@ -1101,7 +1101,7 @@ Obtains the list of files that fail to be downloaded in batches.
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
@@ -1155,7 +1155,7 @@ Obtains the list of files that are successfully downloaded in batches.
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
@@ -1209,7 +1209,7 @@ Subscribes to the change of a file. This API uses a callback to return the chang
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13900001  | Operation not permitted. |
@@ -1254,7 +1254,7 @@ Unsubscribes from the change of a file.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 13900001  | Operation not permitted. |
@@ -1367,7 +1367,7 @@ A constructor used to create a **FileVersion** instance.
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
@@ -1406,7 +1406,7 @@ If the number of cloud versions is greater than or equal to the length limit, th
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 13600001 | IPC error. Possible causes: 1.IPC failed or timed out. 2.Failed to load the service. |
 | 13900002 | No such file or directory. |
@@ -1464,7 +1464,7 @@ Obtains the content of a file of a specified version based on the version number
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 13600001 | IPC error. Possible causes: 1.IPC failed or timed out. 2.Failed to load the service. |
 | 13900002 | No such file or directory. |
@@ -1529,7 +1529,7 @@ Replaces the local file with the file of a historical version. Before replacemen
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 13600001 | IPC error. Possible causes: 1.IPC failed or timed out. 2.Failed to load the service. |
 | 13900002 | No such file or directory. |
@@ -1604,7 +1604,7 @@ Once the application is configured for manual conflict resolution, calling this 
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 13600001 | IPC error. Possible causes: 1.IPC failed or timed out. 2.Failed to load the service. |
 | 13900002 | No such file or directory. |
@@ -1656,7 +1656,7 @@ Clears the version conflict flag of the local file. If a conflict occurs, you ne
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 13600001 | IPC error. Possible causes: 1.IPC failed or timed out. 2.Failed to load the service. |
 | 13900002 | No such file or directory. |
@@ -1715,7 +1715,7 @@ Obtains the upload sync state of a cloud file. This API returns the result synch
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 13600001 | IPC error. Possible causes:1.IPC failed or timed out. 2.Failed to load the service. |
 | 13900002  | No such file or directory. |

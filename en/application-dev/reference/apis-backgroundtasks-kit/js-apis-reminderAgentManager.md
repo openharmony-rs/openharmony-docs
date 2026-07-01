@@ -47,7 +47,7 @@ Publishes a reminder. This API uses an asynchronous callback to return the resul
 
 For details about the error codes, see [reminderAgentManager Error Codes](errorcode-reminderAgentManager.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message|
+| ID  | Error Message|
 | --------- | ------- |
 | 401 | If the input parameter is not valid parameter. |
 | 1700001    | Notification is not enabled. |
@@ -104,7 +104,7 @@ Publishes a reminder. This API uses a promise to return the result.
 
 For details about the error codes, see [reminderAgentManager Error Codes](errorcode-reminderAgentManager.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message|
+| ID  | Error Message|
 | --------- | ------- |
 | 401 | If the input parameter is not valid parameter. |
 | 1700001    | Notification is not enabled. |
@@ -147,7 +147,7 @@ Cancels a reminder published. This API uses an asynchronous callback to return t
 
 For details about the error codes, see [reminderAgentManager Error Codes](errorcode-reminderAgentManager.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message|
+| ID  | Error Message|
 | --------- | ------- |
 | 401 | If the input parameter is not valid parameter. |
 | 1700003    | The reminder does not exist. |
@@ -193,7 +193,7 @@ Cancels a reminder published. This API uses a promise to return the result.
 
 For details about the error codes, see [reminderAgentManager Error Codes](errorcode-reminderAgentManager.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message|
+| ID  | Error Message|
 | --------- | ------- |
 | 401 | If the input parameter is not valid parameter. |
 | 1700003    | The reminder does not exist. |
@@ -231,7 +231,7 @@ Obtains all [valid (not yet expired) reminders](../../task-management/agent-powe
 
 For details about the error codes, see [reminderAgentManager Error Codes](errorcode-reminderAgentManager.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message|
+| ID  | Error Message|
 | --------- | ------- |
 | 401 | If the input parameter is not valid parameter. |
 | 1700004    | The bundle name does not exist. |
@@ -289,7 +289,7 @@ Obtains all [valid (not yet expired) reminders](../../task-management/agent-powe
 
 For details about the error codes, see [reminderAgentManager Error Codes](errorcode-reminderAgentManager.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message|
+| ID  | Error Message|
 | --------- | ------- |
 | 401 | If the input parameter is not valid parameter. |
 | 1700004    | The bundle name does not exist. |
@@ -345,7 +345,7 @@ Cancels all reminders set by the current application. This API uses an asynchron
 
 For details about the error codes, see [reminderAgentManager Error Codes](errorcode-reminderAgentManager.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message|
+| ID  | Error Message|
 | --------- | ------- |
 | 401 | If the input parameter is not valid parameter. |
 | 1700004    | The bundle name does not exist. |
@@ -383,7 +383,7 @@ Cancels all reminders set by the current application. This API uses a promise to
 
 For details about the error codes, see [reminderAgentManager Error Codes](errorcode-reminderAgentManager.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message|
+| ID  | Error Message|
 | --------- | ------- |
 | 401 | If the input parameter is not valid parameter. |
 | 1700004    | The bundle name does not exist. |
@@ -421,7 +421,7 @@ Adds a notification slot. This API uses an asynchronous callback to return the r
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                      |
+| ID| Error Message                                      |
 | -------- | ---------------------------------------------- |
 | 401      | If the input parameter is not valid parameter. |
 
@@ -470,7 +470,7 @@ Adds a notification slot. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                      |
+| ID| Error Message                                      |
 | -------- | ---------------------------------------------- |
 | 401      | If the input parameter is not valid parameter. |
 
@@ -511,7 +511,7 @@ Removes a specified notification slot. This API uses an asynchronous callback to
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                      |
+| ID| Error Message                                      |
 | -------- | ---------------------------------------------- |
 | 401      | If the input parameter is not valid parameter. |
 
@@ -557,7 +557,7 @@ Removes a specified notification slot. This API uses a promise to return the res
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                      |
+| ID| Error Message                                      |
 | -------- | ---------------------------------------------- |
 | 401      | If the input parameter is not valid parameter. |
 
@@ -593,7 +593,7 @@ Obtains all [valid (not yet expired) reminders](../../task-management/agent-powe
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 201      | Permission denied. |
 
@@ -655,7 +655,7 @@ Adds a non-reminder date for a recurring calendar reminder with a specific ID. F
 
 For details about the error codes, see [reminderAgentManager Error Codes](errorcode-reminderAgentManager.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                      |
+| ID| Error Message                                      |
 | -------- | ---------------------------------------------- |
 | 201      | Permission denied.                             |
 | 401      | If the input parameter is not valid parameter. |
@@ -700,7 +700,7 @@ Deletes all non-reminder dates for a recurring calendar reminder with a specific
 
 For details about the error codes, see [reminderAgentManager Error Codes](errorcode-reminderAgentManager.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | ---------------------------- |
 | 201      | Permission denied.           |
 | 1700003  | The reminder does not exist. |
@@ -743,7 +743,7 @@ Obtains all non-reminder dates for a recurring calendar reminder with a specific
 
 For details about the error codes, see [reminderAgentManager Error Codes](errorcode-reminderAgentManager.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | ---------------------------- |
 | 201      | Permission denied.           |
 | 1700003  | The reminder does not exist. |
@@ -792,7 +792,7 @@ Updates the agent-powered reminder with the specified ID. This API uses a promis
 
 For details about the error codes, see [reminderAgentManager Error Codes](errorcode-reminderAgentManager.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | ---------------------------- |
 | 201      | Permission denied.           |
 | 1700003  | The reminder does not exist. |
@@ -841,7 +841,7 @@ Cancels the notification card displayed in the notification center with the agen
 
 For details about the error codes, see [reminderAgentManager Error Codes](errorcode-reminderAgentManager.md).
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | ---------------------------- |
 | 1700003  | The reminder does not exist. |
 | 1700007  | If the input parameter is not valid parameter. |
@@ -888,7 +888,7 @@ Subscribes to agent-powered reminder state changes. This API uses a promise to r
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [reminderAgentManager Error Codes](errorcode-reminderAgentManager.md).
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | ---------------------------- |
 | 201      | Permission denied.           |
 | 1700007  | If the input parameter is not valid parameter. |
@@ -936,7 +936,7 @@ Unsubscribes from agent-powered reminder state changes. This API uses a promise 
 
 For details about the error codes, see [reminderAgentManager Error Codes](errorcode-reminderAgentManager.md).
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | ---------------------------- |
 | 1700007  | If the input parameter is not valid parameter. |
 

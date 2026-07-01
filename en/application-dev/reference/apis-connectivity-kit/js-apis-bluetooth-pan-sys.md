@@ -47,7 +47,7 @@ Disconnects from the PAN service of a device.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
@@ -92,7 +92,7 @@ Sets Bluetooth tethering, which shares a mobile connection.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |
@@ -137,7 +137,7 @@ Checks whether Bluetooth tethering is activated.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |202 | Non-system applications are not allowed to use system APIs. |

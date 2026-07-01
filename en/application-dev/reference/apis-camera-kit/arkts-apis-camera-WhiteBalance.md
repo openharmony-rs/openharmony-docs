@@ -43,7 +43,7 @@ Sets a white balance mode. Before the setting, run [isWhiteBalanceModeSupported]
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400103                |  Session not config.                                   |
@@ -83,7 +83,7 @@ Obtains the white balance mode in use.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 
@@ -126,7 +126,7 @@ Before the setting, run [getWhiteBalanceRange](arkts-apis-camera-WhiteBalanceQue
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400103                |  Session not config.                                   |
@@ -167,7 +167,7 @@ Obtains the current white balance value.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 

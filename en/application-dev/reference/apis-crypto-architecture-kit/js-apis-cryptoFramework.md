@@ -928,7 +928,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 801 | this operation is not supported. |
 | 17620001 | memory operation failed. |
@@ -1014,7 +1014,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 **Error codes**
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported.          |
@@ -1091,7 +1091,7 @@ Obtains the public key data that complies with the ASN.1 syntax and DER encoding
 **Error codes**
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed. |
@@ -1138,7 +1138,7 @@ Obtains the key data. This API returns the result synchronously. The key can be 
 **Error codes**
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed. |
@@ -1228,7 +1228,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 **Error codes**
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported.          |
@@ -1302,7 +1302,7 @@ Obtains the private key data that complies with the ASN.1 syntax and DER encodin
 **Error codes**
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed. |
@@ -1351,7 +1351,7 @@ Obtains the key data. This API returns the result synchronously. The key can be 
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed. |
@@ -1415,7 +1415,7 @@ Obtains the key data. This API returns the result synchronously. The key can be 
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported.          |
@@ -1477,7 +1477,7 @@ Obtains a public key from a private key. This API uses a promise to return the r
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 17620001 | memory operation failed. |
 | 17620002 | failed to convert parameters between arkts and c. |
@@ -1573,7 +1573,7 @@ Obtains a public key from a private key in synchronous mode.
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 17620001 | memory operation failed. |
 | 17620002 | failed to convert parameters between arkts and c. |
@@ -1704,7 +1704,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported. |
@@ -1765,7 +1765,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 17620001 | memory operation failed. |
 
@@ -1806,7 +1806,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 17620001 | memory operation failed. |
 
@@ -1853,7 +1853,7 @@ This API can be used only after a **symKeyGenerator** instance is created by usi
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message     |
+| ID| Error Message     |
 | -------- | ------------- |
 | 17620001 | memory operation failed. |
 
@@ -1900,7 +1900,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 **Error codes**
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message                                              |
+| ID| Error Message                                              |
 | -------- | --------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                                       |
@@ -1958,7 +1958,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | --------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                                |
@@ -2022,7 +2022,7 @@ This API can be used only after a **symKeyGenerator** instance is created by usi
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message                                              |
+| ID| Error Message                                              |
 | -------- | --------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                                       |
@@ -2076,7 +2076,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported. |
@@ -2128,7 +2128,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>Incorrect parameter types;|
 | 17620001 | memory operation failed.          |
@@ -2171,7 +2171,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
 | 17620001 | memory operation failed.          |
@@ -2212,7 +2212,7 @@ Generates a random key pair using this asymmetric key generator. This API return
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.          |
 | 17620001 | memory operation failed.          |
@@ -2260,7 +2260,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
@@ -2320,7 +2320,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
@@ -2378,7 +2378,7 @@ Parses the key data and generates an asymmetric key object. This API is synchron
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
@@ -2444,7 +2444,7 @@ Parses the key data and generates an asymmetric key object. This API uses a prom
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
 | 17620001 | memory operation failed.          |
@@ -2524,7 +2524,7 @@ Parses the key data and generates an asymmetric key object. Encrypted private ke
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
 | 17620001 | memory operation failed.          |
@@ -2596,7 +2596,7 @@ Converts data into an asymmetric key pair. This API returns the result synchrono
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
 | 17620001 | memory operation failed.          |
@@ -2676,7 +2676,7 @@ Parses the key data and generates an asymmetric key object. Encrypted private ke
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
 | 17620001 | memory operation failed.          |
@@ -2749,7 +2749,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported. |
@@ -2829,7 +2829,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>Incorrect parameter types;         |
 | 17620001 | memory operation failed.           |
@@ -2902,7 +2902,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.        |
 | 17620001 | memory operation failed.          |
@@ -2973,7 +2973,7 @@ If a key parameter of the [COMMON_PARAMS_SPEC](#asykeyspectype10) type is used t
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
 | 17620001 | memory operation failed.          |
@@ -3051,7 +3051,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>Mandatory parameters are left unspecified;         |
 | 17620001 | memory operation failed.          |
@@ -3124,7 +3124,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
 | 17620001 | memory operation failed.          |
@@ -3195,7 +3195,7 @@ If a key parameter of the [PRIVATE_KEY_SPEC](#asykeyspectype10) type is used to 
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.        |
 | 17620001 | memory operation failed.          |
@@ -3271,7 +3271,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes:<br> Incorrect parameter types;        |
 | 17620001 | memory operation failed.          |
@@ -3344,7 +3344,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
 | 17620001 | memory operation failed.          |
@@ -3415,7 +3415,7 @@ If [PUBLIC_KEY_SPEC](#asykeyspectype10) is used to create a key generator, the k
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.        |
 | 17620001 | memory operation failed.          |
@@ -3499,7 +3499,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801      | this operation is not supported. |
@@ -3552,7 +3552,7 @@ Converts the specified point data into a **Point** object based on the curve nam
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed. |
@@ -3600,7 +3600,7 @@ Obtains the point data in the specified format from a **Point** object. Currentl
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed. |
@@ -3661,7 +3661,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801      | this operation is not supported. |
@@ -3713,7 +3713,7 @@ Generates SM2 ciphertext in ASN.1 format.
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                    |
@@ -3768,7 +3768,7 @@ Obtains SM2 ciphertext parameters from the SM2 ciphertext in ASN.1 format.
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message                        |
+| ID| Error Message                        |
 | -------- | -------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                    |
@@ -3828,7 +3828,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported. |
@@ -3900,7 +3900,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message                                                |
+| ID| Error Message                                                |
 | -------- | --------------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                                            |
@@ -3940,7 +3940,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                                     |
@@ -3972,7 +3972,7 @@ This API can be used only after a [Cipher](#cipher) instance is created by using
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.           |
@@ -4025,7 +4025,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                               |
@@ -4073,7 +4073,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message                                    |
+| ID| Error Message                                    |
 | -------- | -------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                                |
@@ -4111,7 +4111,7 @@ See **NOTE** in **update()** for other precautions.
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.           |
@@ -4156,7 +4156,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 **Error codes**
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.           |
@@ -4261,7 +4261,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 **Error codes**
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message                                    |
+| ID| Error Message                                    |
 | -------- | -------------------------------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.                                |
@@ -4354,7 +4354,7 @@ See **NOTE** in [DataBlob](#datablob) for other precautions.
 **Error codes**
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message               |
+| ID| Error Message               |
 | -------- | ----------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.           |
@@ -4432,7 +4432,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported.          |
@@ -4480,7 +4480,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported.          |
@@ -4527,7 +4527,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 **Error codes**
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported.          |
@@ -4602,7 +4602,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
@@ -4639,7 +4639,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
@@ -4668,7 +4668,7 @@ The **Sign** class does not support repeated use of **initSync**.
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
@@ -4708,7 +4708,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
@@ -4753,7 +4753,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
@@ -4790,7 +4790,7 @@ This API can be called only after the [Sign](#sign) instance is initialized by u
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
@@ -4820,7 +4820,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
@@ -4855,7 +4855,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
@@ -4888,7 +4888,7 @@ Signs the data. This API returns the result synchronously.
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
@@ -5119,7 +5119,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported.          |
@@ -5166,7 +5166,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported.          |
@@ -5214,7 +5214,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported.          |
@@ -5281,7 +5281,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
@@ -5316,7 +5316,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
@@ -5343,7 +5343,7 @@ Initializes the **Verify** instance with a public key. This API returns the resu
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
@@ -5382,7 +5382,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
@@ -5426,7 +5426,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
@@ -5462,7 +5462,7 @@ This API can be called only after the [Verify](#verify) instance is initialized 
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
@@ -5493,7 +5493,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
@@ -5529,7 +5529,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
@@ -5563,7 +5563,7 @@ Verifies the signature. This API returns the verification result synchronously.
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
@@ -5826,7 +5826,7 @@ Recovers the original data from a signature. This API returns the result synchro
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
@@ -5941,7 +5941,7 @@ Recovers the original data from a signature. This API returns the result synchro
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
@@ -5977,7 +5977,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported.          |
@@ -6025,7 +6025,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 **Error codes**
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported.          |
@@ -6073,7 +6073,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported.          |
@@ -6127,7 +6127,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
@@ -6163,7 +6163,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
@@ -6196,7 +6196,7 @@ Generates a shared secret based on the given private key and public key. This AP
 **Error codes**
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
@@ -6285,7 +6285,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.       |
@@ -6349,7 +6349,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001| memory operation failed. |
@@ -6389,7 +6389,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001| memory operation failed. |
@@ -6419,7 +6419,7 @@ Updates the MD digest status. This API returns the result synchronously. **updat
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 | 17620001| memory operation failed. |
@@ -6450,7 +6450,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 17620001 | memory operation failed.           |
 | 17630001 | crypto operation error. |
@@ -6496,7 +6496,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 17620001 | memory operation failed.           |
 | 17630001 | crypto operation error. |
@@ -6536,7 +6536,7 @@ Generates an MD. This API returns the result synchronously.
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
 | 17620001 | memory operation failed. |
@@ -6580,7 +6580,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 17630001 | crypto operation error. |
 
@@ -6625,7 +6625,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.       |
@@ -6673,7 +6673,7 @@ For details about the supported specifications, see [MAC Overview and Algorithm 
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ------------------ |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.       |
@@ -6742,7 +6742,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001| memory operation failed. |
@@ -6776,7 +6776,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001| memory operation failed. |
@@ -6802,7 +6802,7 @@ Initializes the MAC computation using a symmetric key. This API returns the resu
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.     |
 | 17620001| memory operation failed. |
@@ -6835,7 +6835,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001| memory operation failed. |
@@ -6873,7 +6873,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001| memory operation failed. |
@@ -6904,7 +6904,7 @@ Updates the MAC status. This API returns the result synchronously.
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
 | 17620001| memory operation failed. |
@@ -6932,7 +6932,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 17620001 | memory operation failed.           |
 | 17630001 | crypto operation error. |
@@ -6984,7 +6984,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 17620001 | memory operation failed.           |
 | 17630001 | crypto operation error. |
@@ -7030,7 +7030,7 @@ Finishes the MAC computation. This API returns the result synchronously.
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.          |
 | 17620001 | memory operation failed.           |
@@ -7080,7 +7080,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 17630001 | crypto operation error. |
 
@@ -7143,7 +7143,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message    |
+| ID| Error Message    |
 | -------- | ------------ |
 | 17620001 | memory operation failed. |
 
@@ -7202,7 +7202,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
@@ -7253,7 +7253,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.           |
@@ -7302,7 +7302,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.           |
@@ -7342,7 +7342,7 @@ Enables the hardware entropy source.
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ----------------- |
 | 801 | this operation is not supported.          |
 | 17620001 | memory operation failed.      |
@@ -7394,7 +7394,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message          |
+| ID| Error Message          |
 | -------- | ----------------- |
 | 17620001 | memory operation failed.      |
 
@@ -7448,7 +7448,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported.          |
@@ -7501,7 +7501,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
@@ -7580,7 +7580,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
@@ -7657,7 +7657,7 @@ Generates a key based on the specified key derivation parameters. This API retur
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.  |
 | 17620001 | memory operation failed.          |
@@ -7729,7 +7729,7 @@ Generates r and s from the SM2 signature data in ASN1 DER format.
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 17620001 | memory operation failed.          |
 | 17620002 | failed to convert parameters between arkts and c. |
@@ -7784,7 +7784,7 @@ Converts an ECC/SM2 signature (r, s) to the ASN1 DER format.
 
 For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ---------------------- |
 | 17620001 | memory operation failed.          |
 | 17620002 | failed to convert parameters between arkts and c. |

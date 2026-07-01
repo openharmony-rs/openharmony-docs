@@ -41,7 +41,7 @@ Obtains the DLP sandbox gathering policy. This API uses a promise to return the 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -86,7 +86,7 @@ Obtains the DLP sandbox gathering policy. This API uses an asynchronous callback
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -144,7 +144,7 @@ Installs a DLP sandbox application for an application. This API uses a promise t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -197,7 +197,7 @@ Installs a DLP sandbox application for an application. This API uses an asynchro
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -255,7 +255,7 @@ Uninstalls a DLP sandbox application for an application. This API uses a promise
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -306,7 +306,7 @@ Uninstalls a DLP sandbox application for an application. This API uses an asynch
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -361,7 +361,7 @@ Subscribes to a DLP sandbox uninstall event.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -406,7 +406,7 @@ Unsubscribes from the DLP sandbox uninstall event.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -471,7 +471,7 @@ Adds a link file to the Filesystem in Userspace (FUSE). The link file is a virtu
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -543,7 +543,7 @@ Adds a link file to the FUSE. This API uses an asynchronous callback to return t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -620,7 +620,7 @@ Stops the read and write on the FUSE. This API uses a promise to return the resu
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -690,7 +690,7 @@ Stops the read and write on the FUSE. This API uses an asynchronous callback to 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -768,7 +768,7 @@ Resumes the read and write on the FUSE. This API uses a promise to return the re
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -839,7 +839,7 @@ Resumes the read and write on the FUSE. This API uses an asynchronous callback t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -924,7 +924,7 @@ Replaces a link file. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -998,7 +998,7 @@ Replaces a link file. This API uses an asynchronous callback to return the resul
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1084,7 +1084,7 @@ Deletes a link file from the FUSE. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1156,7 +1156,7 @@ Deletes a link file. This API uses an asynchronous callback to return the result
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1240,7 +1240,7 @@ Recovers the plaintext of a DLP file. This API uses a promise to return the resu
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1322,7 +1322,7 @@ Recovers the plaintext of a DLP file. This API uses an asynchronous callback to 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1415,7 +1415,7 @@ Closes this **DLPFile** instance. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1487,7 +1487,7 @@ Closes this **DLPFile** instance. This API uses an asynchronous callback to retu
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1570,7 +1570,7 @@ Generates a DLP file, which is an encrypted file that can be accessed only by au
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1649,7 +1649,7 @@ Generates a DLP file, which is an encrypted file that can be accessed only by au
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1735,7 +1735,7 @@ Opens a DLP file. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |
@@ -1814,7 +1814,7 @@ Opens a DLP file. This API uses an asynchronous callback to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DLP Service Error Codes](errorcode-dlp.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 202 | Non-system applications use system APIs. |

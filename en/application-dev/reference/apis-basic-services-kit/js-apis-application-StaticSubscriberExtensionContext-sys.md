@@ -63,7 +63,7 @@ Observe the following when using this API:
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](../apis-ability-kit/errorcode-ability.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201     | The application does not have permission to call the interface. |
 | 202     | The application is not system-app, can not use system-api. |
@@ -151,7 +151,7 @@ Observe the following when using this API:
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](../apis-ability-kit/errorcode-ability.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201     | The application does not have permission to call the interface. |
 | 202     | The application is not system-app, can not use system-api. |

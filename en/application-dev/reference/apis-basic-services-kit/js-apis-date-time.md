@@ -54,7 +54,7 @@ Obtains the time elapsed since the Unix epoch. This API uses an asynchronous cal
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                       |
+| ID| Error Message                                                       |
 | -------- |-------------------------------------------------------------------|
 | 401       | Parameter error. Possible causes: 1.Incorrect parameter types. |
 
@@ -99,7 +99,7 @@ Obtains the time elapsed since the Unix epoch. This API uses an asynchronous cal
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code   | Error Message                                                             |
+| ID   | Error Message                                                             |
 |----------|-------------------------------------------------------------------|
 | 401      | Parameter error. Possible causes: 1.Incorrect parameter types. |
 
@@ -150,7 +150,7 @@ Obtains the time elapsed since the Unix epoch. This API uses a promise to return
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message                                                             |
+| ID  | Error Message                                                             |
 |---------|-------------------------------------------------------------------|
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
 
@@ -194,7 +194,7 @@ Obtains the time elapsed since system startup, excluding the deep sleep time. Th
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message                                                             |
+| ID  | Error Message                                                             |
 |---------|-------------------------------------------------------------------|
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
 
@@ -239,7 +239,7 @@ Obtains the time elapsed since system startup, excluding the deep sleep time. Th
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message                                                             |
+| ID  | Error Message                                                             |
 |---------|-------------------------------------------------------------------|
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
 
@@ -290,7 +290,7 @@ Obtains the time elapsed since system startup, excluding the deep sleep time. Th
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message                                                             |
+| ID  | Error Message                                                             |
 |---------|-------------------------------------------------------------------|
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
 
@@ -334,7 +334,7 @@ Obtains the time elapsed since system startup, including the deep sleep time. Th
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message                                                             |
+| ID  | Error Message                                                             |
 |---------|-------------------------------------------------------------------|
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
 
@@ -379,7 +379,7 @@ Obtains the time elapsed since system startup, including the deep sleep time. Th
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message                                                             |
+| ID  | Error Message                                                             |
 |---------|-------------------------------------------------------------------|
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
 
@@ -430,7 +430,7 @@ Obtains the time elapsed since system startup, including the deep sleep time. Th
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message                                                             |
+| ID  | Error Message                                                             |
 |---------|-------------------------------------------------------------------|
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
 
@@ -509,7 +509,7 @@ Obtains the time elapsed since system startup. This API returns the result synch
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                                                                          |
+| ID| Error Message                                                                                                          |
 | -------- |----------------------------------------------------------------------------------------------------------------|
 | 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification<br> failed.This error code was added due to missing issues. |
 
@@ -548,7 +548,7 @@ Obtains the current system date. This API uses an asynchronous callback to retur
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                |
+| ID| Error Message                                                |
 |-------|------------------------------------------------------|
 | 401   | Parameter error. Possible causes: 1.System error. |
 
@@ -593,7 +593,7 @@ Obtains the current system date. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                |
+| ID| Error Message                                                |
 |-------|------------------------------------------------------|
 | 401   | Parameter error. Possible causes: 1.System error. |
 
@@ -761,7 +761,7 @@ Obtains the switch status of the automatic time setting. This API returns the re
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                                                                   |
+| ID| Error Message                                                                                                   |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 13000001    | Network connection error or OS error. Possible causes: 1.System memory is insufficient; 2.Calls the underlying system interface failed.|
 

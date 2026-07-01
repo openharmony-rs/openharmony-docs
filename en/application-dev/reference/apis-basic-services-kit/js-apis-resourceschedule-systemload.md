@@ -39,7 +39,7 @@ Enables listening for system load level changes. This API uses an asynchronous c
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 401 | Parameter error. Possible cause: 1. Callback parameter error; 2. Register a exist callback type; 3. Parameter verification failed. |
 
@@ -79,7 +79,7 @@ Disables listening for system load level changes. This API uses an asynchronous 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code | Error Message            |
+| ID | Error Message            |
 | ---- | --------------------- |
 | 401 | Parameter error. Possible cause: 1. Callback parameter error; 2. Unregister type has not register; 3. Parameter verification failed. |
 

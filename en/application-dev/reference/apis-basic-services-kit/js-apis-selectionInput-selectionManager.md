@@ -48,7 +48,7 @@ Registers a callback to listen for the word selection completion event. This API
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| Error Code  | Error Message                      |
+| ID  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600003   | The application calling the API does not match the application selected in the system settings. |
 
@@ -119,7 +119,7 @@ Obtains this selected text content. This API uses a promise to return the result
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Word Selection Service Error Codes](errorcode-selection.md).
 
-| Error Code  | Error Message                      |
+| ID  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600004   | The interface is called too frequently. |
@@ -170,7 +170,7 @@ Only one [MENU_PANEL](js-apis-selectionInput-selectionPanel.md#paneltype) and on
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| Error Code  | Error Message                      |
+| ID  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600003   | The application calling the API does not match the application selected in the system settings. |
@@ -244,7 +244,7 @@ Destroys the word selection panel. This API uses a promise to return the result.
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| Error Code  | Error Message                      |
+| ID  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 
@@ -363,7 +363,7 @@ Sets the page content for the word selection panel. This API uses a promise to r
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| Error Code  | Error Message                      |
+| ID  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600002   | This selection window has been destroyed. |
@@ -404,7 +404,7 @@ Shows the word selection panel. This API uses a promise to return the result.
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| Error Code  | Error Message                      |
+| ID  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600002   | This selection window has been destroyed. |
@@ -441,7 +441,7 @@ Hides the word selection panel. This API uses a promise to return the result.
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| Error Code  | Error Message                      |
+| ID  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600002   | This selection window has been destroyed. |
@@ -478,7 +478,7 @@ Moves the word selection panel by dragging. This API uses a promise to return th
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| Error Code  | Error Message                      |
+| ID  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600002   | This selection window has been destroyed. |
@@ -538,7 +538,7 @@ Moves the word selection panel to the specified coordinates on the screen. This 
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| Error Code  | Error Message                      |
+| ID  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600002   | This selection window has been destroyed. |
@@ -587,7 +587,7 @@ Moves the word selection panel to the specified coordinates on the screen. This 
 
 For details about the error codes, see [Word Selection Service Error Codes](errorcode-selection.md).
 
-| Error Code  | Error Message                      |
+| ID  | Error Message                      |
 | ---------- | ----------------------------- |
 | 33600001   | Selection service exception. |
 | 33600002   | This selection window has been destroyed. |

@@ -236,7 +236,7 @@ Checks whether the device supports HCE.
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message |
+| ID| Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -294,7 +294,7 @@ Checks whether an application is the default application of the specified servic
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message |
+| ID| Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
@@ -379,7 +379,7 @@ Starts HCE, including enabling this application to run in the foreground prefere
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message |
+| ID| Error Message |
 | ------- | -------|
 |201 | Permission denied.                 |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
@@ -431,7 +431,7 @@ Stops HCE, including canceling the subscription of APDU data, exiting this appli
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message |
+| ID| Error Message |
 | ------- | -------|
 |201 | Permission denied.                 |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
@@ -461,7 +461,7 @@ Subscribes to events indicating receiving of APDUs from the peer card reader. Th
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message |
+| ID| Error Message |
 | ------- | -------|
 |201 | Permission denied.                 |
 |401 | Invalid parameter.                 |
@@ -568,7 +568,7 @@ Unsubscribes from events indicating receiving of APDUs from the peer card reader
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message |
+| ID| Error Message |
 | ------- | -------|
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -656,7 +656,7 @@ Transmits an APDU to the peer card reader. This API uses a promise to return the
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message |
+| ID| Error Message |
 | ------- | -------|
 |201 | Permission denied.                 |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
@@ -722,7 +722,7 @@ Sends APDU data to the peer card reader. The application can call this API only 
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| Error Code| Error Message |
+| ID| Error Message |
 | ------- | -------|
 |201 | Permission denied.                 |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |

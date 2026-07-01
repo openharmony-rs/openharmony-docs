@@ -43,7 +43,7 @@ Subscribes to the block events of a print job. This API uses an asynchronous cal
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -87,7 +87,7 @@ Subscribes to the success events of a print job. This API uses an asynchronous c
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -131,7 +131,7 @@ Subscribes to the failure events of a print job. This API uses an asynchronous c
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -175,7 +175,7 @@ Subscribes to the cancellation events of a print job. This API uses an asynchron
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -219,7 +219,7 @@ Unsubscribes from the block events of a print job. This API uses an asynchronous
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -263,7 +263,7 @@ Unsubscribes from the success events of a print job. This API uses an asynchrono
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -307,7 +307,7 @@ Unsubscribes from the failure events of a print job. This API uses an asynchrono
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -351,7 +351,7 @@ Unsubscribes from the cancellation events of a print job. This API uses an async
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -402,7 +402,7 @@ Sends an empty PDF file descriptor to a third-party application. The third-party
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -454,7 +454,7 @@ Registers a listener for print job state changes.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -507,7 +507,7 @@ Prints files. This API uses an asynchronous callback to return the result. To st
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -559,7 +559,7 @@ Prints files. This API uses a promise to return the result. To start the system 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -605,7 +605,7 @@ Prints files. This API uses an asynchronous callback to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -674,7 +674,7 @@ Prints files. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -743,7 +743,7 @@ Prints a file. This API uses a promise to return the result. Currently, only the
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -1059,7 +1059,7 @@ Adds a printer to the printer discovery list. This API uses a promise to return 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -1112,7 +1112,7 @@ Updates the printer capabilities to the printer discovery list. This API uses a 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -1183,7 +1183,7 @@ Removes a printer from the printer discovery list. This API uses a promise to re
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -1228,7 +1228,7 @@ Obtains printer information based on the printer ID. This API uses a promise to 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -1393,7 +1393,7 @@ Obtains the list of printers added to the system. This API uses a promise to ret
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 
@@ -1447,7 +1447,7 @@ Registers a listener for the printer change events. This API uses a callback to 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -1486,7 +1486,7 @@ Unregisters the listener for printer state change events. This API uses a callba
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -1526,7 +1526,7 @@ Discovers printers by specifying the extension list. The discovered printers con
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 
@@ -1575,7 +1575,7 @@ Discovers printers by specifying the extension list. The discovered printers con
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 
@@ -1616,7 +1616,7 @@ Stops discovering printers. This API uses an asynchronous callback to return the
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 
@@ -1655,7 +1655,7 @@ Stops discovering printers. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 
@@ -1693,7 +1693,7 @@ Connects to a printer by printer ID. This API uses an asynchronous callback to r
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 
@@ -1739,7 +1739,7 @@ Connects to a printer by printer ID. This API uses a promise to return the resul
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 
@@ -1785,7 +1785,7 @@ Prints a file or binary data. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 
@@ -2019,7 +2019,7 @@ Updates the print job state. This API uses an asynchronous callback to return th
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | The application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -2070,7 +2070,7 @@ Updates the print job state. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -2117,7 +2117,7 @@ Updates the information of a printer in the system. This API uses a promise to r
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -2225,7 +2225,7 @@ Adds a printer to the system. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 | 13100003 | Add the printer to system failed. |
@@ -2298,7 +2298,7 @@ Registers an event listener for forcible watermark processing.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 
@@ -2342,7 +2342,7 @@ Deregisters an event listener for forcible watermark processing.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 
@@ -2390,7 +2390,7 @@ Notifies that watermark processing is complete.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                   |
+| ID| Error Message                                   |
 | -------- | ------------------------------------------- |
 | 201 | the application does not have permission to call this function. |
 

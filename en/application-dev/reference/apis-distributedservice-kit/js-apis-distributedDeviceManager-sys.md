@@ -199,7 +199,7 @@ Replies to the user's UI operation. This API can be used only by the PIN HAP of 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                       |
+| ID| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -253,7 +253,7 @@ Subscribes to the reply to the UI operation result. This API returns the result 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                       |
+| ID| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.    |
 | 202 | Permission verification failed. A non-system application calls a system API.                            |
@@ -311,7 +311,7 @@ Unsubscribes from the reply to the UI operation result. This API returns the res
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                       |
+| ID| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.    |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -356,7 +356,7 @@ Sets the heartbeat broadcast policy.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| Error Code| Error Message                                                       |
+| ID| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -409,7 +409,7 @@ Obtains the list of devices under the same account. This API uses a promise to r
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| Error Code| Error Message                                                       |
+| ID| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -465,7 +465,7 @@ Updates the device list. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| Error Code| Error Message                                                       |
+| ID| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -520,7 +520,7 @@ Obtains the device icon. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| Error Code| Error Message                                                       |
+| ID| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -586,7 +586,7 @@ Obtains the local device's display name with the specified length. This API uses
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| Error Code| Error Message                                                       |
+| ID| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -641,7 +641,7 @@ Sets the local device name. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| Error Code| Error Message                                                       |
+| ID| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -700,7 +700,7 @@ Sets the remote device name. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| Error Code| Error Message                                                       |
+| ID| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -759,7 +759,7 @@ Obtains the list of network devices according to the specified filter options. T
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| Error Code| Error Message                                                       |
+| ID| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -819,7 +819,7 @@ Queries the device identification based on the device ID.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| Error Code   | Error Message                                                                                                             |
+| ID   | Error Message                                                                                                             |
 |----------|-------------------------------------------------------------------------------------------------------------------|
 | 201      | User permission verify failed.            |
 | 202      | The caller is not a system application.                                    |
@@ -860,7 +860,7 @@ Restores the local device name by resetting the network settings.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| Error Code| Error Message                                                       |
+| ID| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
@@ -901,7 +901,7 @@ Restores the local device name by resetting the network settings.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](errorcode-device-manager.md).
 
-| Error Code| Error Message                                                       |
+| ID| Error Message                                                       |
 | -------- | --------------------------------------------------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |

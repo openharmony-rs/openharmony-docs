@@ -45,7 +45,7 @@ Activates an OS account. This API uses an asynchronous callback to return the re
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -106,7 +106,7 @@ Activates an OS account. This API uses a promise to return the result.
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -170,7 +170,7 @@ Currently, cross-logical-display activation is not supported. That is, you canno
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Account Management Error Codes](./errorcode-account.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -231,7 +231,7 @@ Deactivates an OS account. This API uses a promise to return the result.
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -288,7 +288,7 @@ Checks whether an OS account is activated. This API uses a promise to return the
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -344,7 +344,7 @@ Checks whether a constraint is enabled for an OS account. This API uses a promis
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -400,7 +400,7 @@ Checks whether an OS account is unlocked. This API uses a promise to return the 
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -448,7 +448,7 @@ Removes an OS account. This API uses an asynchronous callback to return the resu
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -509,7 +509,7 @@ Removes an OS account. This API uses a promise to return the result.
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -571,7 +571,7 @@ Removes a specified OS account based on the options. This API uses a promise to 
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -631,7 +631,7 @@ Sets or removes constraints for an OS account. This API uses an asynchronous cal
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -693,7 +693,7 @@ Sets or removes constraints for an OS account. This API uses a promise to return
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -746,7 +746,7 @@ Sets the name of an OS account. This API uses an asynchronous callback to return
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -807,7 +807,7 @@ Sets the name of an OS account. This API uses a promise to return the result.
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -869,7 +869,7 @@ Sets the type of a specified OS account. This API uses a promise to return the r
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
 | 202      | Not system application.                                      |
@@ -922,7 +922,7 @@ Queries the maximum number of OS accounts that can be created. This API uses an 
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 202 | Not system application.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -966,7 +966,7 @@ Queries the maximum number of OS accounts that can be created. This API uses a p
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 202 | Not system application.|
 | 12300001 | The system service works abnormally. |
@@ -1007,7 +1007,7 @@ Queries the maximum number of OS accounts allowed to log in to the system. This 
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 202 | Not system application.|
 | 12300001 | The system service works abnormally. |
@@ -1056,7 +1056,7 @@ Obtains all the enabled constraints of an OS account. This API uses a promise to
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1105,7 +1105,7 @@ Queries information about all the OS accounts created. This API uses an asynchro
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1152,7 +1152,7 @@ Queries information about all the OS accounts created. This API uses a promise t
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1198,7 +1198,7 @@ Creates an OS account. This API uses an asynchronous callback to return the resu
 
 **Error codes**
 
-| Error Code | Error Message                  |
+| ID | Error Message                  |
 | -------- | ------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1260,7 +1260,7 @@ Creates an OS account. This API uses a promise to return the result.
 
 **Error codes**
 
-| Error Code | Error Message                  |
+| ID | Error Message                  |
 | -------- | ------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1320,7 +1320,7 @@ Creates an OS account and associates it with the specified domain account. This 
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1385,7 +1385,7 @@ Creates an OS account and associates it with the specified domain account. This 
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1444,7 +1444,7 @@ Obtains information about the OS account to which the current process belongs. T
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1489,7 +1489,7 @@ Queries information about the OS account of the given ID. This API uses an async
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1547,7 +1547,7 @@ Queries information about the OS account of the given ID. This API uses a promis
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1598,7 +1598,7 @@ Obtains the profile photo of an OS account. This API uses an asynchronous callba
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1656,7 +1656,7 @@ Obtains the profile photo of an OS account. This API uses a promise to return th
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1708,7 +1708,7 @@ Sets a profile photo for an OS account. This API uses an asynchronous callback t
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1772,7 +1772,7 @@ Sets a profile photo for an OS account. This API uses a promise to return the re
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1829,7 +1829,7 @@ Subscribes to the OS account activation states, including the states of the acco
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1878,7 +1878,7 @@ Unsubscribes from the OS account activation states, including the states of the 
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1928,7 +1928,7 @@ The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -1977,7 +1977,7 @@ The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -2021,7 +2021,7 @@ The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -2070,7 +2070,7 @@ The ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission is supported since
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -2112,7 +2112,7 @@ Subscribes to one or more constraint change events of the OS account to which th
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ------------------- |
 | 202 | Not system application.|
 | 12300001 | The system service works abnormally. |
@@ -2156,7 +2156,7 @@ Unsubscribes from constraint change events associated with the specified callbac
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ------------------- |
 | 202 | Not system application.|
 | 12300001 | The system service works abnormally. |
@@ -2206,7 +2206,7 @@ Obtains the bundle ID based on the specified UID. This API uses an asynchronous 
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 202 | Not system application.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2258,7 +2258,7 @@ Obtains the bundle ID based on the specified UID. This API uses a promise to ret
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 202 | Not system application.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2308,7 +2308,7 @@ Obtains the bundle ID based on the specified UID. The API returns the result syn
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 202 | Not system application.|
 | 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -2350,7 +2350,7 @@ Checks whether the current process belongs to the main OS account. This API uses
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -2397,7 +2397,7 @@ Checks whether the current process belongs to the main OS account. This API uses
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -2449,7 +2449,7 @@ Obtains the ID of the foreground OS account running on a specified logical displ
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Account Management Error Codes](./errorcode-account.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -2503,7 +2503,7 @@ Obtains the logical display ID of the specified foreground OS account. This API 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Account Management Error Codes](./errorcode-account.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -2551,7 +2551,7 @@ Obtains the constraint source information of an OS account. This API uses an asy
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -2608,7 +2608,7 @@ Obtains the constraint source information of an OS account. This API uses a prom
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -2662,7 +2662,7 @@ Obtains the type of a specified OS account. This API uses a promise to return th
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -2718,7 +2718,7 @@ Binds a domain account to an OS account. This API uses a promise to return the r
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Account Management Error Codes](./errorcode-account.md).
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -2774,7 +2774,7 @@ Obtains the current OS account authorization manager.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 202 | Not system application.|
 
@@ -2825,7 +2825,7 @@ Acquires an authorization for the current process.
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | --- |
 | 201 | Permission denied. |
 | 202 | Not system application. |
@@ -2884,7 +2884,7 @@ Checks whether the current process has specified authorization.
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | --- |
 | 202 | Not system application. |
 | 12300001 | The system service works abnormally. |
@@ -2939,7 +2939,7 @@ Releases the specified authorization for the current process.
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | --- |
 | 202 | Not system application. |
 | 12300001 | The system service works abnormally. |
@@ -3036,7 +3036,7 @@ A constructor used to create an instance for user authentication.
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 202 | Not system application.|
 
@@ -3064,7 +3064,7 @@ Obtains this version number.
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 202 | Not system application.|
 
@@ -3103,7 +3103,7 @@ Obtains the available status of the authentication capability corresponding to t
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -3150,7 +3150,7 @@ Obtains the executor property based on the request. This API uses an asynchronou
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -3214,7 +3214,7 @@ Obtains the executor property based on the request. This API uses a promise to r
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -3277,7 +3277,7 @@ Obtains the specified property information of the associated executor based on t
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -3346,7 +3346,7 @@ Sets the property for the initialization algorithm. This API uses an asynchronou
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -3405,7 +3405,7 @@ Sets the property for the initialization algorithm. This API uses a promise to r
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -3462,7 +3462,7 @@ Prepares for remote authentication. This API uses a promise to return the result
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -3526,7 +3526,7 @@ Performs authentication of the current user.
 
 **Error codes**
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | --------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -3603,7 +3603,7 @@ Starts user authentication based on the specified challenge value, authenticatio
 
 **Error codes**
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | --------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -3684,7 +3684,7 @@ Authenticates a specified user. This API uses an asynchronous callback to return
 
 **Error codes**
 
-| Error Code| Error Message         |
+| ID| Error Message         |
 | -------- | --------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -3753,7 +3753,7 @@ Cancels an authentication.
 
 **Error codes**
 
-| Error Code| Error Message           |
+| ID| Error Message           |
 | -------- | ------------------ |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -3801,7 +3801,7 @@ Creates a PIN authentication instance.
 
 **Error codes**
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | ------------- |
 | 202 | Not system application.|
 
@@ -3831,7 +3831,7 @@ Registers a PIN inputer.
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -3874,7 +3874,7 @@ Unregisters this PIN inputer.
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -3911,7 +3911,7 @@ Registers a credential inputer.
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -3961,7 +3961,7 @@ Unregisters a credential inputer.
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -4508,7 +4508,7 @@ Registers a domain plug-in.
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -4562,7 +4562,7 @@ Unregisters this domain plug-in.
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -4604,7 +4604,7 @@ Authenticates a domain account.
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -4671,7 +4671,7 @@ Authenticates a specified domain account. You can specify authentication options
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -4741,7 +4741,7 @@ No permission is required since API version 11. Use the SDK of the latest versio
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 202 | Not system application.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -4799,7 +4799,7 @@ No permission is required since API version 11. Use the SDK of the latest versio
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 202 | Not system application.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -4856,7 +4856,7 @@ Checks whether a domain account exists. This API uses an asynchronous callback t
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -4919,7 +4919,7 @@ Checks whether a domain account exists. This API uses a promise to return the re
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -4976,7 +4976,7 @@ Updates the token of a domain account. An empty token means an invalid token. Th
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -5037,7 +5037,7 @@ Updates the token of a domain account. An empty token means an invalid token. Th
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -5090,7 +5090,7 @@ Obtains information about a specified domain account. This API uses an asynchron
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -5154,7 +5154,7 @@ Obtains information about a specified domain account. This API uses a promise to
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -5209,7 +5209,7 @@ Obtains the business access token of a domain account. This API uses an asynchro
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 202 | Not system application.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -5271,7 +5271,7 @@ Obtains the business access token of a domain account. This API uses a promise t
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 202 | Not system application.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -5333,7 +5333,7 @@ Checks whether the authentication of a domain account has expired. This API uses
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -5379,7 +5379,7 @@ A **constructor()** used to create an instance for managing the user identity.
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 202 | Not system application.|
 
@@ -5409,7 +5409,7 @@ Opens a session to obtain the challenge value. This API uses an asynchronous cal
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -5462,7 +5462,7 @@ Opens a session. This API returns a challenge value, which can be used to determ
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -5511,7 +5511,7 @@ Adds credentials of specified types, including the credential type, subtype, and
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -5584,7 +5584,7 @@ Updates credentials. This API uses an asynchronous callback to return the result
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -5663,7 +5663,7 @@ Closes this session to terminate IDM.
 
 **Error codes**
 
-| Error Code| Error Message                    |
+| ID| Error Message                    |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -5700,7 +5700,7 @@ Cancels an entry based on the challenge value.
 
 **Error codes**
 
-| Error Code| Error Message           |
+| ID| Error Message           |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -5744,7 +5744,7 @@ Deletes a user with an authentication token. This API uses an asynchronous callb
 
 **Error codes**
 
-| Error Code| Error Message       |
+| ID| Error Message       |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -5794,7 +5794,7 @@ Deletes user credentials.
 
 **Error codes**
 
-| Error Code| Error Message            |
+| ID| Error Message            |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -5845,7 +5845,7 @@ Obtains authentication information. This API uses an asynchronous callback to re
 
 **Error codes**
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | --------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -5893,7 +5893,7 @@ Obtains authentication information of the specified type. This API uses an async
 
 **Error codes**
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -5948,7 +5948,7 @@ Obtains authentication information. This API uses a promise to return the result
 
 **Error codes**
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -6000,7 +6000,7 @@ Obtains authentication information. This API uses a promise to return the result
 
 **Error codes**
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -6058,7 +6058,7 @@ Obtains the ID of the enrolled credential based on the credential type and accou
 
 **Error codes**
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -6112,7 +6112,7 @@ Subscribes to one or more types of credential change events. This API uses a cal
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -6167,7 +6167,7 @@ Unsubscribes from credential change events. If no callback is not specified, thi
 
 For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ------------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
@@ -6232,7 +6232,7 @@ Called to notify the caller the data is set.
 
 **Error codes**
 
-| Error Code| Error Message              |
+| ID| Error Message              |
 | -------- | ------------------- |
 | 202 | Not system application.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |

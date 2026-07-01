@@ -49,7 +49,7 @@ Changes the device-cloud file sync switch for an application. This API uses a pr
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -92,7 +92,7 @@ Changes the device-cloud file sync switch for an application. This API uses an a
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -141,7 +141,7 @@ Notifies the device-cloud service that the cloud data of a specific application 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -183,7 +183,7 @@ Notifies the device-cloud service that the cloud data of a specific application 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -247,7 +247,7 @@ Notifies the device-cloud service of the cloud data change information of a spec
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
@@ -292,7 +292,7 @@ Notifies the device-cloud service of the cloud data change information of a spec
 
 For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202 | Permission verification failed, application which is not a system application uses system API. |
@@ -344,7 +344,7 @@ Enables device-cloud synergy. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -391,7 +391,7 @@ Enables device-cloud synergy. This API uses an asynchronous callback to return t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -444,7 +444,7 @@ Disables device-cloud synergy. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -486,7 +486,7 @@ Disables device-cloud synergy. This API uses an asynchronous callback to return 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -549,7 +549,7 @@ Callback used to clear the cloud data locally. This API uses a promise to return
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -596,7 +596,7 @@ Callback used to clear the cloud data locally. This API uses an asynchronous cal
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code                    | Error Message       |
+| ID                    | Error Message       |
 | ---------------------------- | ---------- |
 | 201 | Permission verification failed. |
 | 202 | The caller is not a system application. |
@@ -653,7 +653,7 @@ Defines a constructor for creating an instance of the **DowngradeDownload** clas
 
 For details about the following error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                                                                                                                                         |
+| ID| Error Message                                                                                                                                                                         |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.                                                                                                 |
 | 202      | Permission verification failed, application which is not a system application uses system API.                                                                                    |
@@ -696,7 +696,7 @@ Obtains the size and count of files for applications requiring full download, in
 
 For details about the following error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                                                                                                                                         |
+| ID| Error Message                                                                                                                                                                         |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.                                                                                                 |
 | 202      | Permission verification failed, application which is not a system application uses system API.                                                                                    |
@@ -748,7 +748,7 @@ Repeated triggering of a full download task will throw an error (22400006).
 
 For details about the following error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                                                                                                                                         |
+| ID| Error Message                                                                                                                                                                         |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.                                                                                                 |
 | 202      | Permission verification failed, application which is not a system application uses system API.                                                                                    |
@@ -802,7 +802,7 @@ Stops the full download task triggered by [startDownload](#startdownload20). Thi
 
 For details about the following error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                                                                                                                                         |
+| ID| Error Message                                                                                                                                                                         |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.                                                                                                 |
 | 202      | Permission verification failed, application which is not a system application uses system API.                                                                                    |
@@ -875,7 +875,7 @@ if (needStop) {
 
 For details about the following error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
 
-  | Error Code| Error Message|
+  | ID| Error Message|
   | -------- | -------- |
   | 201 | Permission verification failed. |
   | 202 | The caller is not a system application. |

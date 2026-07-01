@@ -257,7 +257,7 @@ which can be obtained by calling [getSupportedFrameRates](#getsupportedframerate
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code       | Error Message       |
+| ID       | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400110                |  Unresolved conflicts with current configurations.     |
@@ -317,7 +317,7 @@ Obtains the profile that takes effect currently.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code  | Error Message                        |
+| ID  | Error Message                        |
 |---------|------------------------------|
 | 7400201 | Camera service fatal error.  |
 
@@ -371,7 +371,7 @@ Obtains the preview rotation angle.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code  | Error Message                        |
+| ID  | Error Message                        |
 |---------|------------------------------|
 | 7400201 | Camera service fatal error.  |
 
@@ -428,7 +428,7 @@ Sets the preview rotation angle.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code  | Error Message                        |
+| ID  | Error Message                        |
 |---------|------------------------------|
 | 7400101 | Parameter missing or parameter type incorrect.  |
 | 7400201 | Camera service fatal error.  |
@@ -472,7 +472,7 @@ Starts to output preview streams. This API uses an asynchronous callback to retu
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 
@@ -513,7 +513,7 @@ Starts to output preview streams. This API uses a promise to return the result.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 
@@ -654,7 +654,7 @@ Before enabling this feature, you can call [isBandwidthCompressionSupported](#is
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code   | Error Message                                          |
+| ID   | Error Message                                          |
 | -------- |----------------------------------------------- |
 | 7400102  | Operation not allowed. |
 | 7400103  | Session not config. |
@@ -696,7 +696,7 @@ Adds a surface for delayed preview. This API can run after [commitConfig](arkts-
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 

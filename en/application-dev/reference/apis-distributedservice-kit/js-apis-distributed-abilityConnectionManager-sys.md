@@ -45,7 +45,7 @@ Registers a listener for the collaborateEvent events. This API uses an asynchron
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
@@ -86,7 +86,7 @@ Registers a listener for the **receiveImage** events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
@@ -126,7 +126,7 @@ Unregisters the listener for the **collaborateEvent** events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
@@ -164,7 +164,7 @@ Unregisters the listener for the **receiveImage** events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
@@ -208,7 +208,7 @@ Sends images from one device to another after a connection is successfully estab
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
@@ -280,7 +280,7 @@ Creates transport streams to send images and videos from one device to another a
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](./errorcode-device-manager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
@@ -333,7 +333,7 @@ Sets the binding relationship between transport streams and surfaces.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
@@ -386,7 +386,7 @@ Obtains the unique ID of the surface bound to the specified transport streams.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
@@ -432,7 +432,7 @@ Updates the configuration of the surface bound to the specified transport stream
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
@@ -477,7 +477,7 @@ Destroys the transport streams after the sending of images and videos is complet
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
@@ -515,7 +515,7 @@ Starts transmission of the specified transport streams.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Device Management Error Codes](./errorcode-device-manager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
@@ -554,7 +554,7 @@ Stops transmission of the specified transport streams.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | ------- | -------------------------------- |
 | 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|

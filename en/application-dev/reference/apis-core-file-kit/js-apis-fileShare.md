@@ -127,7 +127,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
  
 If the permission persistence of some URIs fails, error code 13900001 will be returned and the **data** field provides error information of these URIs in the Array<[PolicyErrorResult](#policyerrorresult11)> format.
 
-| Error Code   | Error Message      |
+| ID   | Error Message      |
 |----------| --------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -204,7 +204,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 If the permission revocation of some URIs fails, error code 13900001 will be returned and the **data** field provides error information of these URIs in the Array<[PolicyErrorResult](#policyerrorresult11)> format.
 
-| Error Code| Error Message|
+| ID| Error Message|
 |----------| --------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -281,7 +281,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 If the permission activation of some URIs fails, error code 13900001 will be returned and the **data** field provides error information of these URIs in the Array<[PolicyErrorResult](#policyerrorresult11)> format.
 
-| Error Code   | Error Message      |
+| ID   | Error Message      |
 |----------| --------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -358,7 +358,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 If the permission deactivation of some URIs fails, error code 13900001 will be returned and the **data** field provides error information of these URIs in the Array<[PolicyErrorResult](#policyerrorresult11)> format.
 
-| Error Code   | Error Message      |
+| ID   | Error Message      |
 |----------| --------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -423,7 +423,7 @@ Checks persistent permissions. This API uses a promise to return the result.
 
 For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code   | Error Message      |
+| ID   | Error Message      |
 |----------| --------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported. |
