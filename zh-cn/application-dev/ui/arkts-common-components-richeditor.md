@@ -2189,28 +2189,36 @@ ArkTS-Dyn示例：
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
 options: RichEditorOptions = { controller: this.controller };
-// ...
-          RichEditor(this.options)
-            .onReady(() => {
-              // 请将$r('app.string.BackplaneHighlighting_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"点击按钮在此处选中0-2位置的文本。"
-              this.controller.addTextSpan(resource.resourceToString($r('app.string.BackplaneHighlighting_Text_1')), {
-                style: {
-                  fontColor: Color.Black,
-                  fontSize: 15
-                }
-              })
-            })
-            .width(300)
-            .height(60)
-          // 请将$r('app.string.BackplaneHighlighting_Button_1')替换为实际资源文件，在本示例中该资源文件的value值为"setSelection(0,2)"
-          Button($r('app.string.BackplaneHighlighting_Button_1'), {
-            buttonStyle: ButtonStyleMode.NORMAL
+
+build() {
+  // ...
+    Column({ space: 12 }) {
+      RichEditor(this.options)
+        .onReady(() => {
+          // 请将$r('app.string.BackplaneHighlighting_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"点击按钮在此处选中0-2位置的文本。"
+          this.controller.addTextSpan($r('app.string.BackplaneHighlighting_Text_1'), {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 15
+            }
           })
-            .height(30)
-            .fontSize(13)
-            .onClick(() => {
-              this.controller.setSelection(0, 2)
-            })
+        })
+        .width(300)
+        .height(60)
+      Row() {
+        // 请将$r('app.string.BackplaneHighlighting_Button_1')替换为实际资源文件，在本示例中该资源文件的value值为"setSelection(0,2)"
+        Button($r('app.string.BackplaneHighlighting_Button_1'), {
+          buttonStyle: ButtonStyleMode.NORMAL
+        })
+          .height(30)
+          .fontSize(13)
+          .onClick(() => {
+            this.controller.setSelection(0, 2)
+          })
+      }.justifyContent(FlexAlign.Center).width('100%')
+    }
+  // ...
+}
 ```
 
 ArkTS-Sta示例：
