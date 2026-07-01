@@ -153,7 +153,7 @@ horizontalScrolling(enabled: Optional\<boolean>)
 
 > **说明：**
 >
-> 以下场景不支持水平滚动：设置[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)<!--Del-->；启用[voiceButton](./ts-basic-components-textarea-sys.md#voicebutton23)<!--DelEnd-->。
+> 以下场景不支持水平滚动：设置[TextContentStyle](ts-appendix-enums.md#textcontentstyle10)的内联模式<!--Del-->；启用[voiceButton](./ts-basic-components-textarea-sys.md#voicebutton23)<!--DelEnd-->。
 
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 
