@@ -1,4 +1,4 @@
-# 使用AVTranscoder实现视频转码(ArkTS)
+# 使用AVTranscoder实现音视频转码(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @wang-haizhou6-->
