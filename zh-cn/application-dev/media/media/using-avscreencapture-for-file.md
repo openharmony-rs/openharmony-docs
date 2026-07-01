@@ -165,4 +165,4 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
 针对使用AVScreenCapture屏幕录制存文件的完整示例代码可参考：
 
-- [ScreenCaptureSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample?_fb=blob)
+- [ScreenCaptureSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample)
