@@ -111,7 +111,7 @@ mount(volumeId: string): Promise&lt;void&gt;
 
 当前仅支持以下文件系统的卷设备挂载：
 
-vfat、exfat及NTFS。
+vfat、exfat及ntfs。
 
 从API version 26.0.0开始支持ext4。
 
@@ -170,7 +170,7 @@ mount(volumeId: string, callback:AsyncCallback&lt;void&gt;):void
 
 当前仅支持以下文件系统的卷设备挂载：
 
-vfat、exfat及NTFS。
+vfat、exfat及ntfs。
 
 从API version 26.0.0开始支持ext4。
 
@@ -519,7 +519,7 @@ getVolumeById(volumeId: string, callback: AsyncCallback&lt;Volume&gt;): void
 
 setVolumeDescription(uuid: string, description: string): Promise&lt;void&gt;
 
-修改指定卷设备描述，使用Promise异步回调。当前仅支持修改NTFS和exfat两种文件系统类型的设备描述，只有处于卸载状态的卷设备可以修改设备描述。
+修改指定卷设备描述，使用Promise异步回调。当前仅支持修改ntfs和exfat两种文件系统类型的设备描述，只有处于卸载状态的卷设备可以修改设备描述。
 
 **系统接口**：此接口为系统接口。
 
@@ -573,7 +573,7 @@ setVolumeDescription(uuid: string, description: string): Promise&lt;void&gt;
 
 setVolumeDescription(uuid: string, description: string, callback: AsyncCallback&lt;void&gt;): void
 
-修改指定卷设备描述，使用callback异步回调。当前仅支持修改NTFS和exfat两种文件系统类型的设备描述，只有处于卸载状态的卷设备可以修改设备描述。
+修改指定卷设备描述，使用callback异步回调。当前仅支持修改ntfs和exfat两种文件系统类型的设备描述，只有处于卸载状态的卷设备可以修改设备描述。
 
 **系统接口**：此接口为系统接口。
 
@@ -1032,8 +1032,6 @@ burn(volumeId: string, want: Want): Promise&lt;void&gt;
 
 向指定卷设备刻录数据，使用Promise异步回调。
 
-光盘刻录是一个多步骤的协作过程，典型流程为：先调用createIsoImage接口创建ISO镜像，再调用burn接口向光盘刻录数据，刻录过程中可通过getOpProcess接口查询刻录进度，刻录完成后可调用verifyBurnData接口校验刻录数据的完整性。
-
 **起始版本**：26.0.0
 
 **需要权限**：ohos.permission.MOUNT_UNMOUNT_MANAGER
@@ -1049,7 +1047,7 @@ burn(volumeId: string, want: Want): Promise&lt;void&gt;
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | ---- |
 | volumeId | string | 是   | 卷设备ID，格式为vol-{主设备号}-{次设备号}。卷设备ID会随着插卡顺序不同而变化，请勿缓存后复用。 |
-| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 携带刻录配置信息的Want对象，包括diskName表示刻录光盘的名称，burnPath表示待刻录的目录或ISO镜像文件路径，isIsoImage表示是否为ISO镜像刻录（true表示刻录ISO镜像文件，false表示刻录数据目录），burnSpeed表示刻录速度（单位为MB/s，0表示自动选择最优速度），fsType表示文件系统类型（支持'ISO9660'和'UDF'）。 |
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 启动Ability的Want信息。 |
 
 **返回值：**
 
@@ -1562,7 +1560,7 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 | removable   | boolean | 否 | 否 | 表示卷设备是否可移除。当前仅支持查询可移除存储设备，因此该字段值始终为true。true表示可移除；false表示不可移除。 |
 | state       | number  | 否 | 否 | 卷设备状态标识：<br>0：卸载状态 UNMOUNTED。<br> 1：检查状态 CHECKING。<br> 2：挂载状态 MOUNTED。<br> 3：正在弹出状态 EJECTING。          |
 | path        | string  | 否 | 否 | 卷设备的挂载地址，一般为/mnt/data/external/{uuid}。卷设备的格式化会改变挂载路径。         |
-| fsType<sup>12+</sup>        | string  | 否 | 否 | 文件系统的类型，取值包括ext2、vfat、NTFS等。<br>**说明**：从API version 24开始，还支持ISO9660、UDF。      |
+| fsType<sup>12+</sup>        | string  | 否 | 否 | 文件系统的类型，取值包括ext2、vfat、ntfs等。<br>**说明**：从API version 24开始，还支持ISO9660、UDF。      |
 | partitionNum   | number  | 否 | 是 | 卷设备的分区号。该字段为可选字段，不存在时表示无分区号信息。<br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。         |
 | extraInfo   | string  | 否 | 是 | 卷设备的扩展信息，包含设备的附加属性数据，具体内容因设备类型不同而异。该字段为可选字段，不存在时表示无扩展信息。<br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。         |
 
@@ -1634,7 +1632,7 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 | startSector | number  | 否 | 否 | 分区的起始扇区号。        |
 | endSector   | number  | 否 | 否 | 分区的结束扇区号。           |
 | sizeBytes   | number  | 否 | 否 | 分区总大小，单位Byte。         |
-| fsType      | string  | 否 | 否 | 文件系统类型，当前支持的格式为ext4、vfat、exfat、NTFS、f2fs和hmfs。         |
+| fsType      | string  | 否 | 否 | 文件系统类型，当前支持的格式为ext4、vfat、exfat、ntfs、f2fs和hmfs。         |
 
 ## PartitionTableInfo
 
@@ -1679,7 +1677,7 @@ volumeManager.formatPartition(diskId, partitionNum, params).then(() => {
 | partitionNum | number  | 否 | 否 | 分区号。                 |
 | startSector | number  | 否 | 否 | 分区的起始扇区号。               |
 | endSector   | number  | 否 | 否 | 分区的结束扇区号。        |
-| typeCode    | string  | 否 | 否 | 文件系统代码，当前支持的格式为ext4、vfat、exfat、NTFS、f2fs和hmfs。           |
+| typeCode    | string  | 否 | 否 | 文件系统代码，当前支持的格式为ext4、vfat、exfat、ntfs、f2fs和hmfs。           |
 
 ## FormatParams
 
