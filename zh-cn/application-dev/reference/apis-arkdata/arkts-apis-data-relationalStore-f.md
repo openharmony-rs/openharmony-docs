@@ -50,20 +50,20 @@ getRdbStore支持多线程并发操作。
 | **错误码ID** | **错误信息**   |
 |-----------|---------|
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14800000  | Inner error.     |
-| 14800010  | Failed to open or delete the database by an invalid database path.   |
-| 14800011  | The current operation failed because the database is corrupted.    |
-| 14801001  | The operation is supported in the stage model only.    |
-| 14801002  | Invalid data group ID.   |
-| 14800017  | StoreConfig is changed. |
-| 14800020  | The secret key is corrupted or lost.   |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort.   |
-| 14800023  | SQLite: Access permission denied.    |
-| 14800027  | SQLite: Attempt to write a readonly database.   |
-| 14800028  | SQLite: Some kind of disk I/O error occurred.     |
-| 14800029  | SQLite: The database is full.  |
-| 14800030  | SQLite: Unable to open the database file.   |
+| 14800000  | Inner error. <br>适用版本：12+     |
+| 14800010  | Failed to open or delete the database by an invalid database path. <br>适用版本：12+   |
+| 14800011  | The current operation failed because the database is corrupted. <br>适用版本：12+    |
+| 14801001  | The operation is supported in the stage model only. <br>适用版本：10+    |
+| 14801002  | Invalid data group ID. <br>适用版本：10+   |
+| 14800017  | StoreConfig is changed. <br>适用版本：12+ |
+| 14800020  | The secret key is corrupted or lost. <br>适用版本：14+   |
+| 14800021  | SQLite: Generic error. <br>适用版本：12+ |
+| 14800022  | SQLite: Callback routine requested an abort. <br>适用版本：14+   |
+| 14800023  | SQLite: Access permission denied. <br>适用版本：14+    |
+| 14800027  | SQLite: Attempt to write a readonly database. <br>适用版本：12+   |
+| 14800028  | SQLite: Some kind of disk I/O error occurred. <br>适用版本：12+     |
+| 14800029  | SQLite: The database is full. <br>适用版本：12+  |
+| 14800030  | SQLite: Unable to open the database file. <br>适用版本：12+   |
 
 **示例：**
 
@@ -161,20 +161,20 @@ getRdbStore支持多线程并发操作。
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14800000  | Inner error. |
-| 14800010  | Failed to open or delete the database by an invalid database path. |
-| 14800011  | The current operation failed because the database is corrupted.  |
-| 14801001  | The operation is supported in the stage model only.                               |
-| 14801002  | Invalid data group ID.                             |
-| 14800017  | StoreConfig is changed. |
-| 14800020  | The secret key is corrupted or lost.   |
-| 14800021  | SQLite: Generic error. |
-| 14800022  | SQLite: Callback routine requested an abort.   |
-| 14800023  | SQLite: Access permission denied.    |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
+| 14800000  | Inner error. <br>适用版本：12+ |
+| 14800010  | Failed to open or delete the database by an invalid database path. <br>适用版本：12+ |
+| 14800011  | The current operation failed because the database is corrupted. <br>适用版本：12+  |
+| 14801001  | The operation is supported in the stage model only. <br>适用版本：10+  |
+| 14801002  | Invalid data group ID. <br>适用版本：10+  |
+| 14800017  | StoreConfig is changed. <br>适用版本：12+ |
+| 14800020  | The secret key is corrupted or lost. <br>适用版本：14+   |
+| 14800021  | SQLite: Generic error. <br>适用版本：12+ |
+| 14800022  | SQLite: Callback routine requested an abort. <br>适用版本：12+   |
+| 14800023  | SQLite: Access permission denied. <br>适用版本：12+    |
+| 14800027  | SQLite: Attempt to write a readonly database. <br>适用版本：12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred. <br>适用版本：12+ |
+| 14800029  | SQLite: The database is full. <br>适用版本：12+ |
+| 14800030  | SQLite: Unable to open the database file. <br>适用版本：12+ |
 
 **示例：**
 
@@ -267,18 +267,18 @@ getRdbStoreSync支持多线程并发操作。
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
-| 14800001  | Invalid args. |
-| 14800010  | Invalid database path. |
-| 14800011  | The current operation failed because the database is corrupted.  |
-| 14801001  | The operation is supported in the stage model only.                               |
-| 14801002  | Invalid data group ID.                             |
-| 14800017  | Config changed. |
-| 14800020  | The secret key is corrupted or lost.   |
-| 14800021  | SQLite: Generic error. |
-| 14800027  | SQLite: Attempt to write a readonly database. |
-| 14800028  | SQLite: Some kind of disk I/O error occurred. |
-| 14800029  | SQLite: The database is full. |
-| 14800030  | SQLite: Unable to open the database file. |
+| 14800001  | Invalid args. <br>适用版本：12+ |
+| 14800010  | Invalid database path. <br>适用版本：12+ |
+| 14800011  | The current operation failed because the database is corrupted. <br>适用版本：12+  |
+| 14801001  | The operation is supported in the stage model only. <br>适用版本：10+                               |
+| 14801002  | Invalid data group ID. <br>适用版本：10+                             |
+| 14800017  | Config changed. <br>适用版本：12+ |
+| 14800020  | The secret key is corrupted or lost. <br>适用版本：14+   |
+| 14800021  | SQLite: Generic error. <br>适用版本：12+ |
+| 14800027  | SQLite: Attempt to write a readonly database. <br>适用版本：12+ |
+| 14800028  | SQLite: Some kind of disk I/O error occurred. <br>适用版本：12+ |
+| 14800029  | SQLite: The database is full. <br>适用版本：12+ |
+| 14800030  | SQLite: Unable to open the database file. <br>适用版本：12+ |
 
 **示例：**
 
@@ -333,8 +333,8 @@ deleteRdbStore(context: Context, name: string, callback: AsyncCallback&lt;void&g
 | **错误码ID** | **错误信息**                        |
 |-----------|---------------------------------------|
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14800000  | Inner error.     |
-| 14800010  | Failed to open or delete the database by an invalid database path. |
+| 14800000  | Inner error. <br>适用版本：12+     |
+| 14800010  | Failed to open or delete the database by an invalid database path. <br>适用版本：12+ |
 
 **示例：**
 
@@ -412,8 +412,8 @@ deleteRdbStore(context: Context, name: string): Promise&lt;void&gt;
 | **错误码ID** | **错误信息**                                                                         |
 |-----------|----------------------------------------------------------------------------------|
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14800000  | Inner error.                                                                     |
-| 14800010  | Failed to open or delete the database by an invalid database path.                      |
+| 14800000  | Inner error. <br>适用版本：12+                                                                     |
+| 14800010  | Failed to open or delete the database by an invalid database path. <br>适用版本：12+                      |
 
 **示例：**
 
@@ -482,10 +482,10 @@ deleteRdbStore(context: Context, config: StoreConfig, callback: AsyncCallback\<v
 | **错误码ID** | **错误信息**          |
 |-----------|----------|
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 14800000  | Inner error.        |
-| 14800010  | Failed to open or delete the database by an invalid database path.        |
-| 14801001  | The operation is supported in the stage model only.         |
-| 14801002  | Invalid data group ID.        |
+| 14800000  | Inner error. <br>适用版本：12+      |
+| 14800010  | Failed to open or delete the database by an invalid database path. <br>适用版本：12+   |
+| 14801001  | The operation is supported in the stage model only. <br>适用版本：10+   |
+| 14801002  | Invalid data group ID. <br>适用版本：10+   |
 
 **示例：**
 
@@ -572,11 +572,11 @@ deleteRdbStore(context: Context, config: StoreConfig): Promise\<void>
 | **错误码ID** | **错误信息**             |
 |-----------|---------------------|
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801       | Capability not supported.      |
-| 14800000  | Inner error.      |
-| 14800010  | Failed to open or delete the database by an invalid database path.   |
-| 14801001  | The operation is supported in the stage model only.   |
-| 14801002  | Invalid data group ID.   |
+| 801       | Capability not supported. <br>适用版本：12+      |
+| 14800000  | Inner error. <br>适用版本：12+      |
+| 14800010  | Failed to open or delete the database by an invalid database path. <br>适用版本：12+   |
+| 14801001  | The operation is supported in the stage model only. <br>适用版本：10+   |
+| 14801002  | Invalid data group ID. <br>适用版本：10+   |
 
 **示例：**
 
@@ -744,7 +744,7 @@ getInsertSqlInfo(table: string, values: ValuesBucket, conflict?: ConflictResolut
 
 | **错误码ID** | **错误信息**             |
 |-----------|---------------------|
-| 14800001       | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
+| 14800001       | Invalid arguments. Possible causes: 1. Parameter is out of valid range. <br>适用版本：12+ |
 
 
 **示例：**
@@ -791,7 +791,7 @@ getUpdateSqlInfo(predicates: RdbPredicates, values: ValuesBucket, conflict?: Con
 
 | **错误码ID** | **错误信息**             |
 |-----------|---------------------|
-| 14800001       | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
+| 14800001       | Invalid arguments. Possible causes: 1. Parameter is out of valid range. <br>适用版本：12+ |
 
 
 **示例：**
@@ -837,7 +837,7 @@ getDeleteSqlInfo(predicates: RdbPredicates): SqlInfo
 
 | **错误码ID** | **错误信息**             |
 |-----------|---------------------|
-| 14800001       | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
+| 14800001       | Invalid arguments. Possible causes: 1. Parameter is out of valid range. <br>适用版本：12+ |
 
 
 **示例：**
@@ -876,7 +876,7 @@ getQuerySqlInfo(predicates: RdbPredicates, columns?: Array\<string>): SqlInfo
 
 | **错误码ID** | **错误信息**             |
 |-----------|---------------------|
-| 14800001       | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
+| 14800001       | Invalid arguments. Possible causes: 1. Parameter is out of valid range. <br>适用版本：12+ |
 
 
 **示例：**
