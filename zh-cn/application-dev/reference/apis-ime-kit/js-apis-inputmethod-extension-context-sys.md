@@ -39,7 +39,7 @@ class InputMethodExtAbility extends InputMethodExtensionAbility {
 
 InputMethodExtensionContext是InputMethodExtensionAbility的上下文环境，继承自ExtensionContext，用于操作输入法扩展相关的生命周期和状态。
 
-## InputMethodExtensionContext.terminateSelf<sup>(deprecated)</sup>
+### terminateSelf<sup>(deprecated)</sup>
 
 terminateSelf(callback: AsyncCallback&lt;void&gt;): void
 
@@ -47,7 +47,7 @@ terminateSelf(callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 10 开始废弃，建议使用[destroy](./js-apis-inputmethod-extension-context.md#inputmethodextensioncontextdestroy)替代。
+> 从API version 8 开始支持，从API version 10 开始废弃，建议使用[destroy](./js-apis-inputmethod-extension-context.md#destroy9)替代。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -80,7 +80,7 @@ class MyInputMethodExtensionAbility extends InputMethodExtensionAbility {
 }
 ```
 
-## InputMethodExtensionContext.terminateSelf<sup>(deprecated)</sup>
+### terminateSelf<sup>(deprecated)</sup>
 
 terminateSelf(): Promise&lt;void&gt;
 
@@ -88,7 +88,7 @@ terminateSelf(): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 10 开始废弃，建议使用[destroy](./js-apis-inputmethod-extension-context.md#inputmethodextensioncontextdestroy)替代。
+> 从API version 8 开始支持，从API version 10 开始废弃，建议使用[destroy](./js-apis-inputmethod-extension-context.md#destroy9)替代。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -119,7 +119,7 @@ class MyInputMethodExtensionAbility extends InputMethodExtensionAbility {
 }
 ```
 
-## InputMethodExtensionContext.startAbilityWithAccount<sup>(deprecated)</sup>
+### startAbilityWithAccount<sup>(deprecated)</sup>
 
 startAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback&lt;void&gt;): void
 
@@ -151,24 +151,24 @@ startAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback&l
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | not system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 16000001 | The specified ability does not exist. |
-| 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
-| 16000005 | The specified process does not have the permission. |
-| 16000006 | Cross-user operations are not allowed. |
-| 16000008 | The crowdtesting application expires. |
-| 16000009 | An ability cannot be started or stopped in Wukong mode. |
-| 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
-| 16000011 | The context does not exist. |
-| 16000012 | The application is controlled. |
-| 16000013 | The application is controlled by EDM. |
-| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module. |
-| 16000053 | The ability is not on the top of the UI. |
-| 16000055 | Installation-free timed out. |
-| 16200001 | The caller has been released. |
+| 201 | The application does not have permission to call the interface.<br>适用版本：8+ |
+| 202 | not system application.<br>适用版本：8+ |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.<br>适用版本：8+ |
+| 16000001 | The specified ability does not exist.<br>适用版本：8+ |
+| 16000002 | Incorrect ability type.<br>适用版本：8+ |
+| 16000004 | Cannot start an invisible component.<br>适用版本：8+ |
+| 16000005 | The specified process does not have the permission.<br>适用版本：8+ |
+| 16000006 | Cross-user operations are not allowed.<br>适用版本：8+ |
+| 16000008 | The crowdtesting application expires.<br>适用版本：8+ |
+| 16000009 | An ability cannot be started or stopped in Wukong mode.<br>适用版本：8+ |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden.<br>适用版本：8+ |
+| 16000011 | The context does not exist.<br>适用版本：8+ |
+| 16000012 | The application is controlled.<br>适用版本：8+ |
+| 16000013 | The application is controlled by EDM.<br>适用版本：8+ |
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module.<br>适用版本：8+ |
+| 16000053 | The ability is not on the top of the UI.<br>适用版本：8+ |
+| 16000055 | Installation-free timed out.<br>适用版本：8+ |
+| 16200001 | The caller has been released.<br>适用版本：8+ |
 
 **示例：**
 
@@ -195,7 +195,7 @@ class MyInputMethodExtensionAbility extends InputMethodExtensionAbility {
 }
 ```
 
-## InputMethodExtensionContext.startAbilityWithAccount<sup>(deprecated)</sup>
+### startAbilityWithAccount<sup>(deprecated)</sup>
 
 startAbilityWithAccount(want: Want, accountId: number): Promise&lt;void&gt;
 
@@ -232,24 +232,24 @@ startAbilityWithAccount(want: Want, accountId: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | not system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 16000001 | The specified ability does not exist. |
-| 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
-| 16000005 | The specified process does not have the permission. |
-| 16000006 | Cross-user operations are not allowed. |
-| 16000008 | The crowdtesting application expires. |
-| 16000009 | An ability cannot be started or stopped in Wukong mode. |
-| 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
-| 16000011 | The context does not exist. |
-| 16000012 | The application is controlled. |
-| 16000013 | The application is controlled by EDM. |
-| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module. |
-| 16000053 | The ability is not on the top of the UI. |
-| 16000055 | Installation-free timed out. |
-| 16200001 | The caller has been released. |
+| 201 | The application does not have permission to call the interface.<br>适用版本：8+ |
+| 202 | not system application.<br>适用版本：8+ |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.<br>适用版本：8+ |
+| 16000001 | The specified ability does not exist.<br>适用版本：8+ |
+| 16000002 | Incorrect ability type.<br>适用版本：8+ |
+| 16000004 | Cannot start an invisible component.<br>适用版本：8+ |
+| 16000005 | The specified process does not have the permission.<br>适用版本：8+ |
+| 16000006 | Cross-user operations are not allowed.<br>适用版本：8+ |
+| 16000008 | The crowdtesting application expires.<br>适用版本：8+ |
+| 16000009 | An ability cannot be started or stopped in Wukong mode.<br>适用版本：8+ |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden.<br>适用版本：8+ |
+| 16000011 | The context does not exist.<br>适用版本：8+ |
+| 16000012 | The application is controlled.<br>适用版本：8+ |
+| 16000013 | The application is controlled by EDM.<br>适用版本：8+ |
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module.<br>适用版本：8+ |
+| 16000053 | The ability is not on the top of the UI.<br>适用版本：8+ |
+| 16000055 | Installation-free timed out.<br>适用版本：8+ |
+| 16200001 | The caller has been released.<br>适用版本：8+ |
 
 **示例：**
 
@@ -274,7 +274,7 @@ class MyInputMethodExtensionAbility extends InputMethodExtensionAbility {
 }
 ```
 
-## InputMethodExtensionContext.connectAbility<sup>(deprecated)</sup>
+### connectAbility<sup>(deprecated)</sup>
 
 connectAbility(want: Want, options: ConnectOptions): number
 
@@ -309,17 +309,17 @@ connectAbility(want: Want, options: ConnectOptions): number
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 16000001 | The specified ability does not exist. |
-| 16000005 | The specified process does not have the permission. |
-| 16000011 | The context does not exist. |
-| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module. |
-| 16000002 | Incorrect ability type. [since 10] |
-| 16000004 | Cannot start an invisible component. [since 10] |
-| 16000006 | Cross-user operations are not allowed. [since 10] |
-| 16000008 | The crowdtesting application expires. [since 10] |
-| 16000053 | The ability is not on the top of the UI. [since 10] |
-| 16000055 | Installation-free timed out. [since 10] |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.<br>适用版本：8+ |
+| 16000001 | The specified ability does not exist.<br>适用版本：8+ |
+| 16000005 | The specified process does not have the permission.<br>适用版本：8+ |
+| 16000011 | The context does not exist.<br>适用版本：8+ |
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module.<br>适用版本：8+ |
+| 16000002 | Incorrect ability type.<br>适用版本：10+ |
+| 16000004 | Cannot start an invisible component.<br>适用版本：10+ |
+| 16000006 | Cross-user operations are not allowed.<br>适用版本：10+ |
+| 16000008 | The crowdtesting application expires.<br>适用版本：10+ |
+| 16000053 | The ability is not on the top of the UI.<br>适用版本：10+ |
+| 16000055 | Installation-free timed out.<br>适用版本：10+ |
 
 **示例：**
 
@@ -360,7 +360,7 @@ class MyInputMethodExtensionAbility extends InputMethodExtensionAbility {
 }
 ```
 
-## InputMethodExtensionContext.connectAbilityWithAccount<sup>(deprecated)</sup>
+### connectAbilityWithAccount<sup>(deprecated)</sup>
 
 connectAbilityWithAccount(want: Want, accountId: number): number
 
@@ -397,19 +397,19 @@ connectAbilityWithAccount(want: Want, accountId: number): number
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | not system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 16000001 | The specified ability does not exist. |
-| 16000005 | The specified process does not have the permission. |
-| 16000011 | The context does not exist. |
-| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module. |
-| 16000002 | Incorrect ability type. [since 10] |
-| 16000004 | Cannot start an invisible component. [since 10] |
-| 16000006 | Cross-user operations are not allowed. [since 10] |
-| 16000008 | The crowdtesting application expires. [since 10] |
-| 16000053 | The ability is not on the top of the UI. [since 10] |
-| 16000055 | Installation-free timed out. [since 10] |
+| 201 | The application does not have permission to call the interface.<br>适用版本：8+ |
+| 202 | not system application.<br>适用版本：8+ |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.<br>适用版本：8+ |
+| 16000001 | The specified ability does not exist.<br>适用版本：8+ |
+| 16000005 | The specified process does not have the permission.<br>适用版本：8+ |
+| 16000011 | The context does not exist.<br>适用版本：8+ |
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module.<br>适用版本：8+ |
+| 16000002 | Incorrect ability type.<br>适用版本：10+ |
+| 16000004 | Cannot start an invisible component.<br>适用版本：10+ |
+| 16000006 | Cross-user operations are not allowed.<br>适用版本：10+ |
+| 16000008 | The crowdtesting application expires.<br>适用版本：10+ |
+| 16000053 | The ability is not on the top of the UI.<br>适用版本：10+ |
+| 16000055 | Installation-free timed out.<br>适用版本：10+ |
 
 **示例：**
 
@@ -437,7 +437,7 @@ class MyInputMethodExtensionAbility extends InputMethodExtensionAbility {
 }
 ```
 
-## InputMethodExtensionContext.connectServiceExtensionAbility<sup>(deprecated)</sup>
+### connectServiceExtensionAbility<sup>(deprecated)</sup>
 
 connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
@@ -472,17 +472,17 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 16000001 | The specified ability does not exist. |
-| 16000005 | The specified process does not have the permission. |
-| 16000011 | The context does not exist. |
-| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module. |
-| 16000002 | Incorrect ability type. [since 10] |
-| 16000004 | Cannot start an invisible component. [since 10] |
-| 16000006 | Cross-user operations are not allowed. [since 10] |
-| 16000008 | The crowdtesting application expires. [since 10] |
-| 16000053 | The ability is not on the top of the UI. [since 10] |
-| 16000055 | Installation-free timed out. [since 10] |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.<br>适用版本：8+ |
+| 16000001 | The specified ability does not exist.<br>适用版本：8+ |
+| 16000005 | The specified process does not have the permission.<br>适用版本：8+ |
+| 16000011 | The context does not exist.<br>适用版本：8+ |
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module.<br>适用版本：8+ |
+| 16000002 | Incorrect ability type.<br>适用版本：10+ |
+| 16000004 | Cannot start an invisible component.<br>适用版本：10+ |
+| 16000006 | Cross-user operations are not allowed.<br>适用版本：10+ |
+| 16000008 | The crowdtesting application expires.<br>适用版本：10+ |
+| 16000053 | The ability is not on the top of the UI.<br>适用版本：10+ |
+| 16000055 | Installation-free timed out.<br>适用版本：10+ |
 
 **示例：**
 
@@ -523,7 +523,7 @@ class MyInputMethodExtensionAbility extends InputMethodExtensionAbility {
 }
 ```
 
-## InputMethodExtensionContext.disconnectAbility<sup>(deprecated)</sup>
+### disconnectAbility<sup>(deprecated)</sup>
 
 disconnectAbility(connection: number, callback: AsyncCallback&lt;void&gt;): void
 
@@ -552,9 +552,9 @@ disconnectAbility(connection: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 16000011 | The context does not exist. |
-| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.<br>适用版本：8+ |
+| 16000011 | The context does not exist.<br>适用版本：8+ |
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module.<br>适用版本：8+ |
 
 **示例：**
 
@@ -585,7 +585,7 @@ class MyInputMethodExtensionAbility extends InputMethodExtensionAbility {
 }
 ```
 
-## InputMethodExtensionContext.disconnectAbility<sup>(deprecated)</sup>
+### disconnectAbility<sup>(deprecated)</sup>
 
 disconnectAbility(connection: number): Promise&lt;void&gt;
 
@@ -619,9 +619,9 @@ disconnectAbility(connection: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 16000011 | The context does not exist. |
-| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.<br>适用版本：8+ |
+| 16000011 | The context does not exist.<br>适用版本：8+ |
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module.<br>适用版本：8+ |
 
 **示例：**
 
@@ -646,7 +646,7 @@ class MyInputMethodExtensionAbility extends InputMethodExtensionAbility {
 }
 ```
 
-## InputMethodExtensionContext.disconnectServiceExtensionAbility<sup>(deprecated)</sup>
+### disconnectServiceExtensionAbility<sup>(deprecated)</sup>
 
 disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback&lt;void&gt;): void
 
@@ -675,9 +675,9 @@ disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback&lt
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 16000011 | The context does not exist. |
-| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.<br>适用版本：8+ |
+| 16000011 | The context does not exist.<br>适用版本：8+ |
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module.<br>适用版本：8+ |
 
 **示例：**
 
@@ -708,7 +708,7 @@ class MyInputMethodExtensionAbility extends InputMethodExtensionAbility {
 }
 ```
 
-## InputMethodExtensionContext.disconnectServiceExtensionAbility<sup>(deprecated)</sup>
+### disconnectServiceExtensionAbility<sup>(deprecated)</sup>
 
 disconnectServiceExtensionAbility(connection: number): Promise&lt;void&gt;
 
@@ -742,9 +742,9 @@ disconnectServiceExtensionAbility(connection: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 16000011 | The context does not exist. |
-| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.<br>适用版本：8+ |
+| 16000011 | The context does not exist.<br>适用版本：8+ |
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed. 2. System service failed to communicate with dependency module.<br>适用版本：8+ |
 
 **示例：**
 
