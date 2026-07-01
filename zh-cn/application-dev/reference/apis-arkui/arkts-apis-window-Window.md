@@ -2103,7 +2103,7 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>): Promise&lt;void
 
 从OpenHarmony 5.0.0开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
 
-<!--Del-->在OpenHarmony 6.0.0之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony 6.0.0开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
+<!--Del-->在OpenHarmony v6.0 Release之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony v6.0 Release开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
 
 **参数：**
 
@@ -2182,7 +2182,7 @@ setSpecificSystemBarEnabled(name: SpecificSystemBar, enable: boolean, enableAnim
 
 从OpenHarmony 5.0.0开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
 
-<!--Del-->在OpenHarmony 6.0.0之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony 6.0.0开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
+<!--Del-->在OpenHarmony v6.0 Release之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony v6.0 Release开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
 
 **参数：**
 
@@ -2263,7 +2263,7 @@ setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&
 
 从<!--RP19-->OpenHarmony 5.0.0<!--RP19End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
 
-<!--Del-->在OpenHarmony 6.0.0之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony 6.0.0开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
+<!--Del-->在OpenHarmony v6.0 Release之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony v6.0 Release开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
 
 **参数：**
 
@@ -11625,7 +11625,7 @@ setWindowSystemBarProperties(systemBarProperties: SystemBarProperties, callback:
 
 从<!--RP5-->OpenHarmony 5.0.0<!--RP5End-->开始，该接口在支持并处于自由窗口状态的设备上调用不生效也不报错；在支持但不处于自由窗口状态的设备及不支持自由窗口状态的设备上可正常调用。
 
-<!--Del-->在OpenHarmony 6.0.0之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony 6.0.0开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
+<!--Del-->在OpenHarmony v6.0 Release之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony v6.0 Release开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -11713,7 +11713,7 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncC
 
 从<!--RP5-->OpenHarmony 5.0.0<!--RP5End-->开始，该接口在支持并处于自由窗口状态的设备上调用不生效也不报错；在支持但不处于自由窗口状态的设备及不支持自由窗口状态的设备上可正常调用。
 
-<!--Del-->在OpenHarmony 6.0.0之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony 6.0.0开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
+<!--Del-->在OpenHarmony v6.0 Release之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony v6.0 Release开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
 
 **参数：**
 
@@ -12565,7 +12565,7 @@ setSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncCallbac
 
 从<!--RP5-->OpenHarmony 5.0.0<!--RP5End-->开始，该接口在支持并处于自由窗口状态的设备上调用不生效也不报错；在支持但不处于自由窗口状态的设备及不支持自由窗口状态的设备上可正常调用。
 
-<!--Del-->在OpenHarmony 6.0.0之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony 6.0.0开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
+<!--Del-->在OpenHarmony v6.0 Release之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony v6.0 Release开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
 
 **参数：**
 
@@ -12630,7 +12630,7 @@ setSystemBarEnable(names: Array<'status' | 'navigation'>): Promise&lt;void&gt;
 
 从<!--RP5-->OpenHarmony 5.0.0<!--RP5End-->开始，该接口在支持并处于自由窗口状态的设备上调用不生效也不报错；在支持但不处于自由窗口状态的设备及不支持自由窗口状态的设备上可正常调用。
 
-<!--Del-->在OpenHarmony 6.0.0之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony 6.0.0开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
+<!--Del-->在OpenHarmony v6.0 Release之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony v6.0 Release开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
 
 **参数：**
 
@@ -12698,7 +12698,7 @@ setSystemBarProperties(systemBarProperties: SystemBarProperties, callback: Async
 
 从<!--RP5-->OpenHarmony 5.0.0<!--RP5End-->开始，该接口在支持并处于自由窗口状态的设备上调用不生效也不报错；在支持但不处于自由窗口状态的设备及不支持自由窗口状态的设备上可正常调用。
 
-<!--Del-->在OpenHarmony 6.0.0之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony 6.0.0开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
+<!--Del-->在OpenHarmony v6.0 Release之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony v6.0 Release开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
 
 **参数：**
 
@@ -12767,7 +12767,7 @@ setSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&lt;voi
 
 从<!--RP5-->OpenHarmony 5.0.0<!--RP5End-->开始，该接口在支持并处于自由窗口状态的设备上调用不生效也不报错；在支持但不处于自由窗口状态的设备及不支持自由窗口状态的设备上可正常调用。
 
-<!--Del-->在OpenHarmony 6.0.0之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony 6.0.0开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
+<!--Del-->在OpenHarmony v6.0 Release之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony v6.0 Release开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
 
 **参数：**
 
