@@ -256,7 +256,6 @@ ArkTS-Sta示例：
 <!-- @[WebFocusManagement2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebFocusManagement/entry/src/main/ets/pages/WebFocusManagement2.ets) --> 
 
 ``` TypeScript
-'use static'
 
 import { $rawfile, Column, Component, Entry, Web } from '@ohos.arkui.component';
 import webview from '@ohos.web.webview';
