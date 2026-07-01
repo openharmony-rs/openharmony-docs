@@ -111,6 +111,8 @@ ArkTS-Sta: hasSerialRight(portId: int): boolean
 | true | 表示已授权。 |
 | false | 表示未授权。 |
 
+**错误码：**
+
 以下错误码的详细介绍参见[通用错误码](../errorcode-universal.md)和[USB服务错误码](errorcode-usb.md)。
 
 | 错误码ID | 错误信息                                                     |
