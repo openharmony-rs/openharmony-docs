@@ -125,7 +125,7 @@ generateKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\
 | 12000015 | Failed to obtain the security information via UserIAM. |
 | 12000017 | The key with same alias is already exist.<br>适用版本：20+ |
 | 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
-| 12000011 | The queried entity does not exist. This may happen because the key resource ID specified by keyAlias has not been opened in the external crypto scenario. |
+| 12000011 | The queried entity does not exist. This may happen because the key resource ID specified by keyAlias has not been opened in the external crypto scenario.<br>适用版本：26.0.0+ |
 | 12000020 | the provider operation failed.<br>适用版本：26.0.0+ |
 | 12000021 | the UKey PIN is locked.<br>适用版本：26.0.0+ |
 | 12000023 | the UKey PIN not authenticated.<br>适用版本：26.0.0+ |
@@ -304,7 +304,7 @@ generateKeyItem(keyAlias: string, options: HuksOptions) : Promise\<void>
 | 12000015 | Failed to obtain the security information via UserIAM. |
 | 12000017 | the key with same alias is already exist.<br>适用版本：20+ |
 | 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
-| 12000011 | The queried entity does not exist. This may happen because the key resource ID specified by keyAlias has not been opened in the external crypto scenario. |
+| 12000011 | The queried entity does not exist. This may happen because the key resource ID specified by keyAlias has not been opened in the external crypto scenario.<br>适用版本：26.0.0+ |
 | 12000020 | the provider operation failed.<br>适用版本：26.0.0+ |
 | 12000021 | the UKey PIN is locked.<br>适用版本：26.0.0+ |
 | 12000023 | the UKey PIN not authenticated.<br>适用版本：26.0.0+ |
