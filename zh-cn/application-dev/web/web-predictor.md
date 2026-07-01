@@ -387,6 +387,7 @@ export default class EntryAbility extends UIAbility {
    <!-- @[dynamic_webview_component_loading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/Index.ets) -->    
    
    ``` TypeScript
+   // main/ets/pages/Index.ets
    import { webview } from '@kit.ArkWeb';
    import { NodeController } from '@kit.ArkUI';
    import { createNode } from './DynamicComponent';
