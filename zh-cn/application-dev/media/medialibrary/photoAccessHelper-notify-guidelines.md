@@ -214,7 +214,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 3. 将指定媒体资源删除。
 
 <!-- @[cancel_listening_uri](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MediaResourceChangeNotificationsSample/entry/src/main/ets/cancellisteninguriability/CancelListeningURIAbility.ets) -->
-
+<!-- @[cancel_listening_uri](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MediaResourceChangeNotificationsSample/entry/src/main/ets/cancellisteninguriability/CancelListeningURIAbility.ets) -->
 ``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
