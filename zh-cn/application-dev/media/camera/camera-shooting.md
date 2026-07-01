@@ -116,7 +116,7 @@
    配置相机的参数可以调整拍照的一些功能，包括闪光灯、变焦、焦距等。
 
 
-   <!-- @[camera_param_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+   <!-- @[camera_param_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->    
    ```ts
    configuringSession(photoSession: camera.PhotoSession | camera.VideoSession): void {
      // 判断设备是否支持闪光灯。
