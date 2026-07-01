@@ -26,7 +26,7 @@ type SpecificSystemBar = 'status' \| 'navigation' \| 'navigationIndicator'
 |------------|--------|
 | 'status'   | 状态栏。   |
 | 'navigation'   | 三键导航栏<!--RP13-->或工具栏。当前工具栏仅Car设备支持。<!--RP13End-->   |
-| 'navigationIndicator'   | <!--RP12-->导航条。OpenHarmony各设备不支持此能力。<!--RP12End--> |
+| 'navigationIndicator'   | 底部导航。<!--RP12-->OpenHarmony各设备不支持此能力。<!--RP12End--> |
 
 ## WindowAnimationCurveParam<sup>20+</sup>
 

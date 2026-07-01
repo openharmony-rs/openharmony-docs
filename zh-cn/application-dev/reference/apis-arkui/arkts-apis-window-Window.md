@@ -2099,9 +2099,9 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>): Promise&lt;void
 
 **设备行为差异：**
 
-在<!--RP19-->OpenHarmony 5.0.0<!--RP19End-->之前，该接口在所有设备中可正常调用。
+在OpenHarmony 5.0.0之前，该接口在所有设备中可正常调用。
 
-从<!--RP19-->OpenHarmony 5.0.0<!--RP19End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
+从OpenHarmony 5.0.0开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
 
 <!--Del-->在OpenHarmony 6.0.0之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony 6.0.0开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
 
@@ -2168,7 +2168,7 @@ export default class EntryAbility extends UIAbility {
 
 setSpecificSystemBarEnabled(name: SpecificSystemBar, enable: boolean, enableAnimation?: boolean): Promise&lt;void&gt;
 
-设置主窗口状态栏、<!--RP15-->工具栏或三键导航栏的显示或隐藏。当前工具栏的显示或隐藏设置仅Car设备支持。<!--RP15End-->使用Promise异步回调。
+设置主窗口状态栏、<!--RP20-->工具栏或三键导航栏的显示或隐藏。当前工具栏的显示或隐藏设置仅Car设备支持。<!--RP20End-->使用Promise异步回调。
 
 调用生效后返回并不表示状态栏、<!--RP15-->工具栏或三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。主窗口在非全屏/最大化模式（自由悬浮窗口模式、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
 
@@ -2178,9 +2178,9 @@ setSpecificSystemBarEnabled(name: SpecificSystemBar, enable: boolean, enableAnim
 
 **设备行为差异：**
 
-在<!--RP19-->OpenHarmony 5.0.0<!--RP19End-->之前，该接口在所有设备中可正常调用。
+在OpenHarmony 5.0.0之前，该接口在所有设备中可正常调用。
 
-从<!--RP19-->OpenHarmony 5.0.0<!--RP19End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
+从OpenHarmony 5.0.0开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
 
 <!--Del-->在OpenHarmony 6.0.0之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony 6.0.0开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
 
@@ -2269,7 +2269,7 @@ setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&
 
 | 参数名              | 类型                                        | 必填 | 说明                   |
 | ------------------- | ------------------------------------------- | ---- | ---------------------- |
-| systemBarProperties | [SystemBarProperties](arkts-apis-window-i.md#systembarproperties) | 是   | <!--Del-->三键导航栏、<!--DelEnd-->状态栏的属性。 |
+| systemBarProperties | [SystemBarProperties](arkts-apis-window-i.md#systembarproperties) | 是   | <!--Del-->三键导航栏或工具栏<!--DelEnd-->状态栏的属性。 |
 
 **返回值：**
 
@@ -11609,7 +11609,7 @@ try {
 
 setWindowSystemBarProperties(systemBarProperties: SystemBarProperties, callback: AsyncCallback&lt;void&gt;): void
 
-设置主窗口<!--Del-->三键导航栏、<!--DelEnd-->状态栏的属性，使用callback异步回调，<!--RP5-->该接口在PC/2in1设备上调用不生效。<!--RP5End-->
+设置主窗口状态栏<!--RP18-->、工具栏或三键导航栏的属性。当前工具栏的属性设置仅Car设备支持。<!--RP18End-->使用callback异步回调。
 
 子窗口调用后不生效。
 
@@ -11619,13 +11619,21 @@ setWindowSystemBarProperties(systemBarProperties: SystemBarProperties, callback:
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**设备行为差异：**
+
+在<!--RP5-->OpenHarmony 5.0.0<!--RP5End-->之前，该接口在所有设备中可正常调用。
+
+从<!--RP5-->OpenHarmony 5.0.0<!--RP5End-->开始，该接口在支持并处于自由窗口状态的设备上调用不生效也不报错；在支持但不处于自由窗口状态的设备及不支持自由窗口状态的设备上可正常调用。
+
+<!--Del-->在OpenHarmony 6.0.0之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony 6.0.0开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
 | 参数名              | 类型                                        | 必填 | 说明                   |
 | ------------------- | ------------------------------------------- | ---- | ---------------------- |
-| systemBarProperties | [SystemBarProperties](arkts-apis-window-i.md#systembarproperties) | 是   | <!--Del-->三键导航栏、<!--DelEnd-->状态栏的属性。 |
+| systemBarProperties | [SystemBarProperties](arkts-apis-window-i.md#systembarproperties) | 是   | <!--Del-->三键导航栏或工具栏<!--DelEnd-->状态栏的属性。 |
 | callback            | AsyncCallback&lt;void&gt;                   | 是   | 回调函数。             |
 
 **错误码：**
@@ -11687,7 +11695,7 @@ export default class EntryAbility extends UIAbility {
 
 setWindowSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncCallback&lt;void&gt;): void
 
-设置主窗口状态栏、<!--RP14-->工具栏或三键导航栏的显示或隐藏，状态栏通过status控制、工具栏或三键导航栏通过navigation控制。当前工具栏的显示或隐藏设置仅Car设备支持。<!--RP14End-->使用Promise异步回调。<br>从API version 12开始，<!--RP5-->该接口在PC/2in1设备上调用不生效。<!--RP5End-->
+设置主窗口状态栏、<!--RP14-->工具栏或三键导航栏的显示或隐藏，状态栏通过status控制、工具栏或三键导航栏通过navigation控制。当前工具栏的显示或隐藏设置仅Car设备支持。<!--RP14End-->使用callback异步回调。
 
 调用生效后返回并不表示状态栏、<!--RP15-->工具栏或三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。非全屏模式（自由悬浮窗口模式、分屏等场景）下配置不生效。
 
@@ -11698,6 +11706,14 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncC
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**设备行为差异：**
+
+在<!--RP5-->OpenHarmony 5.0.0<!--RP5End-->之前，该接口在所有设备中可正常调用。
+
+从<!--RP5-->OpenHarmony 5.0.0<!--RP5End-->开始，该接口在支持并处于自由窗口状态的设备上调用不生效也不报错；在支持但不处于自由窗口状态的设备及不支持自由窗口状态的设备上可正常调用。
+
+<!--Del-->在OpenHarmony 6.0.0之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony 6.0.0开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
 
 **参数：**
 
@@ -12533,7 +12549,7 @@ export default class EntryAbility extends UIAbility {
 
 setSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncCallback&lt;void&gt;): void
 
-设置主窗口状态栏、<!--RP14-->工具栏或三键导航栏的显示或隐藏，状态栏通过status控制、工具栏或三键导航栏通过navigation控制。当前工具栏的显示或隐藏设置仅Car设备支持。<!--RP14End-->使用Promise异步回调。<!--RP14End-->使用callback异步回调。<br>从API version 12开始，<!--RP5-->该接口在PC/2in1设备上调用不生效。<!--RP5End-->
+设置主窗口状态栏、<!--RP14-->工具栏或三键导航栏的显示或隐藏，状态栏通过status控制、工具栏或三键导航栏通过navigation控制。当前工具栏的显示或隐藏设置仅Car设备支持。<!--RP14End-->使用callback异步回调。
 
 调用生效后返回并不表示状态栏、<!--RP15-->工具栏或三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。非全屏模式（自由悬浮窗口模式、分屏等场景）下配置不生效。
 
@@ -12542,6 +12558,14 @@ setSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncCallbac
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setWindowSystemBarEnable()](#setwindowsystembarenable9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**设备行为差异：**
+
+在<!--RP5-->OpenHarmony 5.0.0<!--RP5End-->之前，该接口在所有设备中可正常调用。
+
+从<!--RP5-->OpenHarmony 5.0.0<!--RP5End-->开始，该接口在支持并处于自由窗口状态的设备上调用不生效也不报错；在支持但不处于自由窗口状态的设备及不支持自由窗口状态的设备上可正常调用。
+
+<!--Del-->在OpenHarmony 6.0.0之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony 6.0.0开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
 
 **参数：**
 
@@ -12590,7 +12614,7 @@ export default class EntryAbility extends UIAbility {
 
 setSystemBarEnable(names: Array<'status' | 'navigation'>): Promise&lt;void&gt;
 
-设置主窗口状态栏、<!--RP14-->工具栏或三键导航栏的显示或隐藏，状态栏通过status控制、工具栏或三键导航栏通过navigation控制。当前工具栏的显示或隐藏设置仅Car设备支持。<!--RP14End-->使用Promise异步回调。<br>从API version 12开始，<!--RP5-->该接口在PC/2in1设备上调用不生效。<!--RP5End-->
+设置主窗口状态栏、<!--RP14-->工具栏或三键导航栏的显示或隐藏，状态栏通过status控制、工具栏或三键导航栏通过navigation控制。当前工具栏的显示或隐藏设置仅Car设备支持。<!--RP14End-->使用Promise异步回调。
 
 调用生效后返回并不表示状态栏、<!--RP15-->工具栏或三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。非全屏模式（自由悬浮窗口模式、分屏等场景）下配置不生效。
 
@@ -12599,6 +12623,14 @@ setSystemBarEnable(names: Array<'status' | 'navigation'>): Promise&lt;void&gt;
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setWindowSystemBarEnable()](#setwindowsystembarenable9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**设备行为差异：**
+
+在<!--RP5-->OpenHarmony 5.0.0<!--RP5End-->之前，该接口在所有设备中可正常调用。
+
+从<!--RP5-->OpenHarmony 5.0.0<!--RP5End-->开始，该接口在支持并处于自由窗口状态的设备上调用不生效也不报错；在支持但不处于自由窗口状态的设备及不支持自由窗口状态的设备上可正常调用。
+
+<!--Del-->在OpenHarmony 6.0.0之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony 6.0.0开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
 
 **参数：**
 
@@ -12650,7 +12682,7 @@ export default class EntryAbility extends UIAbility {
 
 setSystemBarProperties(systemBarProperties: SystemBarProperties, callback: AsyncCallback&lt;void&gt;): void
 
-设置主窗口<!--Del-->三键导航栏、<!--DelEnd-->状态栏的属性，使用callback异步回调，<!--RP5-->该接口在PC/2in1设备上调用不生效。<!--RP5End-->
+设置主窗口状态栏<!--RP18-->、工具栏或三键导航栏的属性。当前工具栏的属性设置仅Car设备支持。<!--RP18End-->使用callback异步回调。
 
 子窗口调用后不生效。非全屏模式（自由悬浮窗口模式、分屏等场景）下配置不生效。
 
@@ -12660,11 +12692,19 @@ setSystemBarProperties(systemBarProperties: SystemBarProperties, callback: Async
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**设备行为差异：**
+
+在<!--RP5-->OpenHarmony 5.0.0<!--RP5End-->之前，该接口在所有设备中可正常调用。
+
+从<!--RP5-->OpenHarmony 5.0.0<!--RP5End-->开始，该接口在支持并处于自由窗口状态的设备上调用不生效也不报错；在支持但不处于自由窗口状态的设备及不支持自由窗口状态的设备上可正常调用。
+
+<!--Del-->在OpenHarmony 6.0.0之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony 6.0.0开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
+
 **参数：**
 
 | 参数名              | 类型                                        | 必填 | 说明                   |
 | ------------------- | ------------------------------------------- | ---- | ---------------------- |
-| systemBarProperties | [SystemBarProperties](arkts-apis-window-i.md#systembarproperties) | 是   | <!--Del-->三键导航栏、<!--DelEnd-->状态栏的属性。 |
+| systemBarProperties | [SystemBarProperties](arkts-apis-window-i.md#systembarproperties) | 是   | <!--Del-->三键导航栏或工具栏<!--DelEnd-->状态栏的属性。 |
 | callback            | AsyncCallback&lt;void&gt;                   | 是   | 回调函数。             |
 
 **示例：**
@@ -12711,7 +12751,7 @@ export default class EntryAbility extends UIAbility {
 
 setSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&lt;void&gt;
 
-设置主窗口<!--Del-->三键导航栏、<!--DelEnd-->状态栏的属性，使用Promise异步回调，<!--RP5-->该接口在PC/2in1设备上调用不生效。<!--RP5End-->
+设置主窗口状态栏<!--RP18-->、工具栏或三键导航栏的属性。当前工具栏的属性设置仅Car设备支持。<!--RP18End-->使用Promise异步回调。
 
 子窗口调用后不生效。
 
@@ -12720,6 +12760,14 @@ setSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&lt;voi
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[setWindowSystemBarProperties()](#setwindowsystembarproperties9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**设备行为差异：**
+
+在<!--RP5-->OpenHarmony 5.0.0<!--RP5End-->之前，该接口在所有设备中可正常调用。
+
+从<!--RP5-->OpenHarmony 5.0.0<!--RP5End-->开始，该接口在支持并处于自由窗口状态的设备上调用不生效也不报错；在支持但不处于自由窗口状态的设备及不支持自由窗口状态的设备上可正常调用。
+
+<!--Del-->在OpenHarmony 6.0.0之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony 6.0.0开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
 
 **参数：**
 
