@@ -7,7 +7,7 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
-HiChecker可以作为应用开发阶段使用的检测工具，用于检测代码运行过程中部分易忽略的问题，如应用线程出现耗时调用、应用进程中Ability资源泄露等问题。开发者可以通过日志记录或进程crash等形式查看具体问题并进行修改，提升应用的使用体验。
+HiChecker可以作为应用开发阶段使用的检测工具，用于检测代码运行过程中部分易忽略的问题，如应用线程出现耗时调用、应用进程中Ability资源泄漏等问题。开发者可以通过日志记录或进程crash等形式查看具体问题并进行修改，提升应用的使用体验。
 
 > **说明：**
 >
@@ -32,7 +32,7 @@ import { hichecker } from '@kit.PerformanceAnalysisKit';
 | RULE_CAUTION_TRIGGER_CRASH                       | bigint   | 1ULL << 62 | 告警规则，当有告警时让应用退出。                          |
 | RULE_THREAD_CHECK_SLOW_PROCESS                   | bigint   | 1ULL       | 检测规则，检测是否有耗时函数被调用。                      |
 | RULE_THREAD_CHECK_NETWORK_USAGE                  | bigint   | 1ULL << 1  | 检测规则，检测线程是否调用网络耗时接口。<br>**起始版本**: 26.0.0  |
-| RULE_CHECK_ABILITY_CONNECTION_LEAK               | bigint   | 1ULL << 33 | 检测规则，检测是否发生ability泄露。                      |
+| RULE_CHECK_ABILITY_CONNECTION_LEAK               | bigint   | 1ULL << 33 | 检测规则，检测是否发生ability泄漏。                      |
 | RULE_CHECK_ARKUI_PERFORMANCE<sup>11+</sup>       | bigint   | 1ULL << 34 | 检测规则，检测arkui性能。                               |
 
 ## hichecker.addCheckRule<sup>9+</sup>

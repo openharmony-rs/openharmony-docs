@@ -26,7 +26,7 @@
 | void OH_HiTrace_EnableFlag(const HiTraceId \*id, HiTrace_Flag flag) | 启用HiTraceId中指定的跟踪标志。 | 
 | void OH_HiTrace_Tracepoint(HiTrace_Communication_Mode mode, HiTrace_Tracepoint_Type type, const HiTraceId \*id, const char \*fmt, ...) | HiTraceMeter跟踪信息埋点。 | 
 
-下表所示的接口提供对HiTraceId的一些拓展操作，这些接口仅在C/C++中提供。
+下表所示的接口提供对HiTraceId的一些扩展操作，这些接口仅在C/C++中提供。
 
 | 方法 | 接口描述 | 
 | -------- | -------- |
