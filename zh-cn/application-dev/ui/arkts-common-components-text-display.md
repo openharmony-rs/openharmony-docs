@@ -720,7 +720,7 @@ Text() {
     .fontSize(16)
     .fontStyle(FontStyle.Italic)
     .decoration({ type: TextDecorationType.Underline, color: Color.Black })
-  // 请将$r('app.string.TextSpan_textContent_span_three')替换为实际资源文件，在本示例中该资源文件的value值为"我是Span3"
+  // 请将$r('app.string.TextSpan_textContent_span_three')替换为实际资源文件，在本示例中该资源文件的value值为"，我是Span3"
   Span($r('app.string.TextSpan_textContent_span_three'))
     .fontSize(16)
     .fontColor(Color.Grey)
@@ -1377,9 +1377,9 @@ Text组件通过设置[TextMenuShowMode](../reference/apis-arkui/arkui-ts/ts-tex
   ``` TypeScript
   // 请将$r('app.string.Service_MenuItems_Text')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，长按弹出文本选择菜单"
   Text($r('app.string.Service_MenuItems_Text'))
-    .fontSize(20)
+    .fontSize(15)
+    .margin({ top: 100 })
     .copyOption(CopyOptions.InApp)
-    .textAlign(TextAlign.Center)
   ```
 
   ![Text-menu-subwindow](figures/Text-menu-subwindow.gif)
