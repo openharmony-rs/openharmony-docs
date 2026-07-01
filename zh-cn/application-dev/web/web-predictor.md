@@ -360,6 +360,7 @@ export default class EntryAbility extends UIAbility {
    <!-- @[compile_resource_allocation_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/PrecompileConfig.ets) -->    
    
    ``` TypeScript
+   // main/ets/pages/PrecompileConfig.ets 
    import { webview } from '@kit.ArkWeb'
    
    export interface Config {
