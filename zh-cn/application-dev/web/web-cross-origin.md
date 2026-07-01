@@ -141,6 +141,7 @@ Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cro
   <!-- @[cors_loccross_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/LocCrossOriginResAccSol_two.ets) -->    
   
   ``` TypeScript
+  // main/ets/pages/LocCrossOriginResAccSol_two.ets
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
   
