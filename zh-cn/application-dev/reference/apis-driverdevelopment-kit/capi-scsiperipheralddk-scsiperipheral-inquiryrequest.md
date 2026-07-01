@@ -12,7 +12,7 @@ typedef struct ScsiPeripheral_InquiryRequest {...} ScsiPeripheral_InquiryRequest
 
 ## 概述
 
-SCSI命令（INQUIRY）的请求结构体，通常用于查询设备的基本信息。
+SCSI 命令（INQUIRY）的请求结构体，通常用于查询设备的基本信息。
 
 **起始版本：** 18
 
