@@ -150,7 +150,6 @@ struct WebComponent {
    
    ``` TypeScript
    // xxx.ets
-   // xxx.ets
    import { webview } from '@kit.ArkWeb';
    import { BusinessError } from '@kit.BasicServicesKit';
    
