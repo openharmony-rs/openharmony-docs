@@ -750,9 +750,10 @@
     ```
 
     ArkTS-Sta示例：
-    
     <!-- @[AchievePromptDialogPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ShowWebPageDialog/entry/src/main/ets/pages/AchievePromptDialogPage.ets) --> 
+    
     ``` TypeScript
+    
     import { CustomContentDialog } from '@ohos.arkui.advanced.Dialog';
     import {
       Entry,
@@ -771,7 +772,7 @@
     } from '@ohos.arkui.component'
     import { State } from '@ohos.arkui.stateManagement'
     import { webview } from '@kit.ArkWeb';
-
+    
     @Entry
     @Component
     struct PromptDialog {
@@ -780,7 +781,7 @@
       @State result: JsResult | null = null;
       promptResult: string = '';
       webviewController: webview.WebviewController = new webview.WebviewController(undefined);
-
+    
       // 自定义弹出框的内容区
       @Builder
       buildContent(): void {
@@ -823,7 +824,7 @@
           this.dialogController.close();
         }
       })
-
+    
       build() {
         Column() {
           Web({ src: $rawfile('prompt.html'), controller: this.webviewController })
@@ -843,6 +844,7 @@
         }
       }
     }
+    ```
     ```
 
   加载的html。
