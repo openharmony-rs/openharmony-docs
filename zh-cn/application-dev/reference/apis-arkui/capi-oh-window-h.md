@@ -137,11 +137,11 @@ int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool en
 
 **描述**
 
-设置主窗口是否显示<!--RP2-->三键导航栏或工具栏。<!--RP2End-->当前工具栏仅Car设备支持。
+设置主窗口是否显示<!--RP2-->工具栏或三键导航栏。当前工具栏仅Car设备支持。<!--RP2End-->
 
 **起始版本：** 15
 
-<!--RP3--><!--RP3End-->
+<!--Del-->**设备行为差异：** 在OpenHarmony 6.0.0之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony 6.0.0开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
 
 **参数：**
 

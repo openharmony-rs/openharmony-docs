@@ -1695,9 +1695,9 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 
 设置应用主窗口或应用子窗口的布局是否为[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)，使用Promise异步回调。其余窗口调用不生效也不报错。
 
-沉浸式布局生效时，布局不避让状态栏与<!--RP15-->三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。
+沉浸式布局生效时，布局不避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。
 
-非沉浸式布局生效时，布局避让状态栏与<!--RP15-->三键导航栏<!--RP15End-->，组件不会与其重叠。
+非沉浸式布局生效时，布局避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件不会与其重叠。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1713,7 +1713,7 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------------------ | ------- | -- | ------------------------------------------------------------------------------------------------ |
-| isLayoutFullScreen | boolean | 是 | 窗口的布局是否为沉浸式布局（该沉浸式布局状态栏、<!--RP15-->三键导航栏<!--RP15End-->仍然显示）。true表示沉浸式布局；false表示非沉浸式布局。 |
+| isLayoutFullScreen | boolean | 是 | 窗口的布局是否为沉浸式布局（该沉浸式布局状态栏、<!--RP15-->工具栏或三键导航栏<!--RP15End-->仍然显示）。true表示沉浸式布局；false表示非沉浸式布局。 |
 
 **返回值：**
 
@@ -2089,9 +2089,9 @@ export default class EntryAbility extends UIAbility {
 
 setWindowSystemBarEnable(names: Array<'status' | 'navigation'>): Promise&lt;void&gt;
 
-设置主窗口状态栏、工具栏、<!--RP14-->三键导航栏的可见模式，状态栏通过status控制、三键导航栏或工具栏通过navigation控制。<!--RP14End-->当前工具栏的可见模式设置仅Car设备支持。使用Promise异步回调。
+设置主窗口状态栏、<!--RP14-->工具栏或三键导航栏的显示或隐藏，状态栏通过status控制、工具栏或三键导航栏通过navigation控制。当前工具栏的显示或隐藏设置仅Car设备支持。<!--RP14End-->使用Promise异步回调。
 
-调用生效后返回并不表示状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。主窗口在非全屏/最大化模式（自由悬浮窗口模式、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
+调用生效后返回并不表示状态栏、<!--RP21-->工具栏或三键导航栏<!--RP21End-->的显示或隐藏已完成。主窗口在非全屏/最大化模式（自由悬浮窗口模式、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2109,7 +2109,7 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>): Promise&lt;void
 
 | 参数名 | 类型  | 必填 | 说明 |
 | ----- | ---------------------------- | -- | --------------------------------- |
-| names | Array<'status'\|'navigation'> | 是 | 设置窗口全屏/最大化模式时状态栏、<!--RP15-->三键导航栏<!--RP15End-->是否显示。<br>例如，需全部显示，该参数设置为['status',&nbsp;'navigation']；设置为[]，则不显示。 |
+| names | Array<'status'\|'navigation'> | 是 | 设置窗口全屏/最大化模式时状态栏、<!--RP15-->工具栏或三键导航栏<!--RP15End-->是否显示。<br>例如，需全部显示，该参数设置为['status',&nbsp;'navigation']；设置为[]，则不显示。 |
 
 **返回值：**
 
@@ -2168,9 +2168,9 @@ export default class EntryAbility extends UIAbility {
 
 setSpecificSystemBarEnabled(name: SpecificSystemBar, enable: boolean, enableAnimation?: boolean): Promise&lt;void&gt;
 
-设置主窗口状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏，使用Promise异步回调。
+设置主窗口状态栏、<!--RP15-->工具栏或三键导航栏的显示或隐藏。当前工具栏的显示或隐藏设置仅Car设备支持。<!--RP15End-->使用Promise异步回调。
 
-调用生效后返回并不表示状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。主窗口在非全屏/最大化模式（自由悬浮窗口模式、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
+调用生效后返回并不表示状态栏、<!--RP15-->工具栏或三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。主窗口在非全屏/最大化模式（自由悬浮窗口模式、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -2189,8 +2189,8 @@ setSpecificSystemBarEnabled(name: SpecificSystemBar, enable: boolean, enableAnim
 | 参数名 | 类型  | 必填 | 说明 |
 | ----- | ---------------------------- | -- | --------------------------------- |
 | name  | [SpecificSystemBar](arkts-apis-window-t.md#specificsystembar11) | 是 | 设置窗口全屏模式时，显示或隐藏的系统栏类型。 |
-| enable  | boolean | 是 | 设置窗口全屏模式时状态栏或<!--RP15-->三键导航栏<!--RP15End-->是否显示，true表示显示， false表示隐藏。|
-| enableAnimation<sup>12+</sup>  | boolean | 否 | 设置状态栏或<!--RP15-->三键导航栏<!--RP15End-->显示状态变化时是否使用动画，true表示使用， false表示不使用，默认值为false。|
+| enable  | boolean | 是 | 设置窗口全屏模式时状态栏或<!--RP15-->工具栏或三键导航栏<!--RP15End-->是否显示，true表示显示， false表示隐藏。|
+| enableAnimation<sup>12+</sup>  | boolean | 否 | 设置状态栏或<!--RP15-->工具栏或三键导航栏<!--RP15End-->显示状态变化时是否使用动画，true表示使用， false表示不使用，默认值为false。|
 
 **返回值：**
 
@@ -2249,7 +2249,7 @@ export default class EntryAbility extends UIAbility {
 
 setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&lt;void&gt;
 
-设置主窗口状态栏、工具栏、<!--RP19-->三键导航栏的属性。<!--RP19End-->当前工具栏的属性设置仅Car设备支持。使用Promise异步回调。
+设置主窗口状态栏、<!--RP19-->工具栏或三键导航栏的属性。当前工具栏的属性设置仅Car设备支持。<!--RP19End-->使用Promise异步回调。
 
 子窗口调用后不生效。主窗口在非全屏/最大化模式（自由悬浮窗口模式、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
 
@@ -2532,7 +2532,7 @@ getWindowStateSnapshot(): Promise&lt;string&gt;
 
 | 类型 | 说明 |
 | ------------------------------------- | ------------- |
-| Promise&lt;string&gt; | 返回当前窗口的设备形态信息，是JSON对象序列化后的结果，使用时需要先反序列化成JSON对象。返回示例：`{"isPcMode":false,"isSupportFreeWindowMode":true,"systemUiVisible":"1100"}`。<br/>返回值包含的不同字段的含义如下： <br/>- isPcMode：表示当前设备是否处于[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)，true表示处于[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)，false表示不处于[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)。当前在PC/2in1设备上返回true。<br/>- isSupportFreeWindowMode：表示当前设备是否支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)，true表示支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)，false表示不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)。<br/>- systemUiVisible：表示系统UI的显隐状态，是由0和1组成的长度为4的字符串，其中0表示隐藏，1表示显示。从左到右，第一位表示状态栏的显隐状态，第二位表示导航条或工具栏的显隐状态，<!--RP17-->第三位在OpenHarmony设备上暂不支持，默认值为0，第四位表示三键导航栏的显隐状态。<!--RP17End-->|当前工具栏的显隐状态仅Car设备支持。
+| Promise&lt;string&gt; | 返回当前窗口的设备形态信息，是JSON对象序列化后的结果，使用时需要先反序列化成JSON对象。返回示例：`{"isPcMode":false,"isSupportFreeWindowMode":true,"systemUiVisible":"1100"}`。<br/>返回值包含的不同字段的含义如下： <br/>- isPcMode：表示当前设备是否处于[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)，true表示处于[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)，false表示不处于[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)。当前在PC/2in1设备上返回true。<br/>- isSupportFreeWindowMode：表示当前设备是否支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)，true表示支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)，false表示不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)。<br/>- systemUiVisible：表示系统UI的显隐状态，是由0和1组成的长度为4的字符串，其中0表示隐藏，1表示显示。从左到右，第一位表示状态栏的显隐状态，第二位表示导航条的显隐状态，<!--RP17-->第三位在OpenHarmony设备上暂不支持，默认值为0，第四位表示三键导航栏或工具栏的显隐状态。当前工具栏的显隐状态仅Car设备支持。<!--RP17End-->|
 
 **错误码：**
 
@@ -11687,9 +11687,9 @@ export default class EntryAbility extends UIAbility {
 
 setWindowSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncCallback&lt;void&gt;): void
 
-<!--RP14-->设置主窗口状态栏、三键导航栏的可见模式，状态栏通过status控制、三键导航栏通过navigation控制。<!--RP14End-->使用callback异步回调。<br>从API version 12开始，<!--RP5-->该接口在PC/2in1设备上调用不生效。<!--RP5End-->
+设置主窗口状态栏、<!--RP14-->工具栏或三键导航栏的显示或隐藏，状态栏通过status控制、工具栏或三键导航栏通过navigation控制。当前工具栏的显示或隐藏设置仅Car设备支持。<!--RP14End-->使用Promise异步回调。<br>从API version 12开始，<!--RP5-->该接口在PC/2in1设备上调用不生效。<!--RP5End-->
 
-调用生效后返回并不表示状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。非全屏模式（自由悬浮窗口模式、分屏等场景）下配置不生效。
+调用生效后返回并不表示状态栏、<!--RP15-->工具栏或三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。非全屏模式（自由悬浮窗口模式、分屏等场景）下配置不生效。
 
 > **说明：**
 >
@@ -11703,7 +11703,7 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncC
 
 | 参数名   | 类型                          | 必填 | 说明                                                                                                                                          |
 | -------- | ----------------------------- | ---- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| names    | Array<'status'\|'navigation'> | 是   | 设置窗口全屏模式时状态栏和<!--RP15-->三键导航栏<!--RP15End-->是否显示。<br>例如，需全部显示，该参数设置为['status',&nbsp;'navigation']；设置为[]，则不显示。 |
+| names    | Array<'status'\|'navigation'> | 是   | 设置窗口全屏模式时状态栏和<!--RP15-->工具栏或三键导航栏<!--RP15End-->是否显示。<br>例如，需全部显示，该参数设置为['status',&nbsp;'navigation']；设置为[]，则不显示。 |
 | callback | AsyncCallback&lt;void&gt;     | 是   | 回调函数。                                                                                                                                    |
 
 **错误码：**
@@ -11761,9 +11761,9 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&l
 
 设置主窗口或子窗口的布局是否为[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)，使用callback异步回调。系统窗口调用不生效。
 
-沉浸式布局生效时，布局不避让状态栏与<!--RP15-->三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。
+沉浸式布局生效时，布局不避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。
 
-非沉浸式布局生效时，布局避让状态栏与<!--RP15-->三键导航栏<!--RP15End-->，组件不会与其重叠。
+非沉浸式布局生效时，布局避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件不会与其重叠。
 
 > **说明：**
 >
@@ -11783,7 +11783,7 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&l
 
 | 参数名             | 类型                      | 必填 | 说明                                                                                                          |
 | ------------------ | ------------------------- | ---- | ------------------------------------------------------------------------------------------------------------- |
-| isLayoutFullScreen | boolean                   | 是   | 窗口的布局是否为沉浸式布局（该沉浸式布局状态栏、<!--RP15-->三键导航栏<!--RP15End-->仍然显示）。true表示沉浸式布局；false表示非沉浸式布局。 |
+| isLayoutFullScreen | boolean                   | 是   | 窗口的布局是否为沉浸式布局（该沉浸式布局状态栏、<!--RP15-->工具栏或三键导航栏<!--RP15End-->仍然显示）。true表示沉浸式布局；false表示非沉浸式布局。 |
 | callback           | AsyncCallback&lt;void&gt; | 是   | 回调函数。                                                                                                    |
 
 **错误码：**
@@ -12301,9 +12301,9 @@ setFullScreen(isFullScreen: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 设置主窗口或子窗口的布局是否为全屏布局，使用callback异步回调。
 
-全屏布局生效时，布局不避让状态栏与<!--RP15-->三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。
+全屏布局生效时，布局不避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。
 
-非全屏布局生效时，布局避让状态栏与<!--RP15-->三键导航栏<!--RP15End-->，组件不会与其重叠。
+非全屏布局生效时，布局避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件不会与其重叠。
 
 > **说明：**
 >
@@ -12315,7 +12315,7 @@ setFullScreen(isFullScreen: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名       | 类型                      | 必填 | 说明                                           |
 | ------------ | ------------------------- | ---- | ---------------------------------------------- |
-| isFullScreen | boolean                   | 是   | 是否设为全屏布局（该全屏布局影响状态栏、<!--RP15-->三键导航栏<!--RP15End-->显示）。true表示全屏；false表示非全屏。 |
+| isFullScreen | boolean                   | 是   | 是否设为全屏布局（该全屏布局影响状态栏、<!--RP15-->工具栏或三键导航栏<!--RP15End-->显示）。true表示全屏；false表示非全屏。 |
 | callback     | AsyncCallback&lt;void&gt; | 是   | 回调函数。                                     |
 
 **示例：**
@@ -12358,9 +12358,9 @@ setFullScreen(isFullScreen: boolean): Promise&lt;void&gt;
 
 设置主窗口或子窗口的布局是否为全屏布局，使用Promise异步回调。
 
-全屏布局生效时，布局不避让状态栏与<!--RP15-->三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。
+全屏布局生效时，布局不避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。
 
-非全屏布局生效时，布局避让状态栏与<!--RP15-->三键导航栏<!--RP15End-->，组件不会与其重叠。
+非全屏布局生效时，布局避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件不会与其重叠。
 
 > **说明：**
 >
@@ -12372,7 +12372,7 @@ setFullScreen(isFullScreen: boolean): Promise&lt;void&gt;
 
 | 参数名       | 类型    | 必填 | 说明                                           |
 | ------------ | ------- | ---- | ---------------------------------------------- |
-| isFullScreen | boolean | 是   | 是否设为全屏布局（该全屏布局影响状态栏、<!--RP15-->三键导航栏<!--RP15End-->显示）。true表示全屏；false表示非全屏。 |
+| isFullScreen | boolean | 是   | 是否设为全屏布局（该全屏布局影响状态栏、<!--RP15-->工具栏或三键导航栏<!--RP15End-->显示）。true表示全屏；false表示非全屏。 |
 
 **返回值：**
 
@@ -12418,9 +12418,9 @@ setLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&lt;void
 
 设置主窗口或子窗口的布局是否为[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)，使用callback异步回调。
 
-沉浸式布局生效时，布局不避让状态栏与<!--RP15-->三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。
+沉浸式布局生效时，布局不避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。
 
-非沉浸式布局生效时，布局避让状态栏与<!--RP15-->三键导航栏<!--RP15End-->，组件不会与其重叠。
+非沉浸式布局生效时，布局避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件不会与其重叠。
 
 > **说明：**
 >
@@ -12432,7 +12432,7 @@ setLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&lt;void
 
 | 参数名             | 类型                      | 必填 | 说明                                                         |
 | ------------------ | ------------------------- | ---- | ------------------------------------------------------------ |
-| isLayoutFullScreen | boolean                   | 是   | 窗口的布局是否为沉浸式布局（该沉浸式布局不影响状态栏、<!--RP15-->三键导航栏<!--RP15End-->显示）。true表示沉浸式布局；false表示非沉浸式布局。 |
+| isLayoutFullScreen | boolean                   | 是   | 窗口的布局是否为沉浸式布局（该沉浸式布局不影响状态栏、<!--RP15-->工具栏或三键导航栏<!--RP15End-->显示）。true表示沉浸式布局；false表示非沉浸式布局。 |
 | callback           | AsyncCallback&lt;void&gt; | 是   | 回调函数。                                                   |
 
 **示例：**
@@ -12475,9 +12475,9 @@ setLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 
 设置主窗口或子窗口的布局是否为[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)，使用Promise异步回调。
 
-沉浸式布局生效时，布局不避让状态栏与<!--RP15-->三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。
+沉浸式布局生效时，布局不避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件可能产生与其重叠的情况。
 
-非沉浸式布局生效时，布局避让状态栏与<!--RP15-->三键导航栏<!--RP15End-->，组件不会与其重叠。
+非沉浸式布局生效时，布局避让状态栏与<!--RP15-->工具栏或三键导航栏<!--RP15End-->，组件不会与其重叠。
 
 > **说明：**
 >
@@ -12489,7 +12489,7 @@ setLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 
 | 参数名             | 类型    | 必填 | 说明                                                         |
 | ------------------ | ------- | ---- | ------------------------------------------------------------ |
-| isLayoutFullScreen | boolean | 是   | 窗口的布局是否为沉浸式布局（该沉浸式布局不影响状态栏、<!--RP15-->三键导航栏<!--RP15End-->显示）。true表示沉浸式布局；false表示非沉浸式布局。 |
+| isLayoutFullScreen | boolean | 是   | 窗口的布局是否为沉浸式布局（该沉浸式布局不影响状态栏、<!--RP15-->工具栏或三键导航栏<!--RP15End-->显示）。true表示沉浸式布局；false表示非沉浸式布局。 |
 
 **返回值：**
 
@@ -12533,9 +12533,9 @@ export default class EntryAbility extends UIAbility {
 
 setSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncCallback&lt;void&gt;): void
 
-<!--RP14-->设置主窗口状态栏、三键导航栏的可见模式，状态栏通过status控制、三键导航栏通过navigation控制。<!--RP14End-->使用callback异步回调。<br>从API version 12开始，<!--RP5-->该接口在PC/2in1设备上调用不生效。<!--RP5End-->
+设置主窗口状态栏、<!--RP14-->工具栏或三键导航栏的显示或隐藏，状态栏通过status控制、工具栏或三键导航栏通过navigation控制。当前工具栏的显示或隐藏设置仅Car设备支持。<!--RP14End-->使用Promise异步回调。<!--RP14End-->使用callback异步回调。<br>从API version 12开始，<!--RP5-->该接口在PC/2in1设备上调用不生效。<!--RP5End-->
 
-调用生效后返回并不表示状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。非全屏模式（自由悬浮窗口模式、分屏等场景）下配置不生效。
+调用生效后返回并不表示状态栏、<!--RP15-->工具栏或三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。非全屏模式（自由悬浮窗口模式、分屏等场景）下配置不生效。
 
 > **说明：**
 >
@@ -12547,7 +12547,7 @@ setSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncCallbac
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ---------------------------- | ---- | ------------------------------------------------------------ |
-| names    | Array<'status'\|'navigation'> | 是   | 设置窗口全屏模式时状态栏和<!--RP15-->三键导航栏<!--RP15End-->是否显示。<br>例如，需全部显示，该参数设置为['status',&nbsp;'navigation']；设置为[]，则不显示。 |
+| names    | Array<'status'\|'navigation'> | 是   | 设置窗口全屏模式时状态栏和<!--RP15-->工具栏或三键导航栏<!--RP15End-->是否显示。<br>例如，需全部显示，该参数设置为['status',&nbsp;'navigation']；设置为[]，则不显示。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。                                                   |
 
 
@@ -12590,9 +12590,9 @@ export default class EntryAbility extends UIAbility {
 
 setSystemBarEnable(names: Array<'status' | 'navigation'>): Promise&lt;void&gt;
 
-<!--RP14-->设置主窗口状态栏、三键导航栏的可见模式，状态栏通过status控制、三键导航栏通过navigation控制。<!--RP14End-->使用Promise异步回调。<br>从API version 12开始，<!--RP5-->该接口在PC/2in1设备上调用不生效。<!--RP5End-->
+设置主窗口状态栏、<!--RP14-->工具栏或三键导航栏的显示或隐藏，状态栏通过status控制、工具栏或三键导航栏通过navigation控制。当前工具栏的显示或隐藏设置仅Car设备支持。<!--RP14End-->使用Promise异步回调。<br>从API version 12开始，<!--RP5-->该接口在PC/2in1设备上调用不生效。<!--RP5End-->
 
-调用生效后返回并不表示状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。非全屏模式（自由悬浮窗口模式、分屏等场景）下配置不生效。
+调用生效后返回并不表示状态栏、<!--RP15-->工具栏或三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。非全屏模式（自由悬浮窗口模式、分屏等场景）下配置不生效。
 
 > **说明：**
 >
@@ -12604,7 +12604,7 @@ setSystemBarEnable(names: Array<'status' | 'navigation'>): Promise&lt;void&gt;
 
 | 参数名 | 类型  | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------ |
-| names  | Array<'status'\|'navigation'> | 是   | 设置窗口全屏模式时状态栏和<!--RP15-->三键导航栏<!--RP15End-->是否显示。<br>例如，需全部显示，该参数设置为['status',&nbsp;'navigation']；设置为[]，则不显示。 |
+| names  | Array<'status'\|'navigation'> | 是   | 设置窗口全屏模式时状态栏和<!--RP15-->工具栏或三键导航栏<!--RP15End-->是否显示。<br>例如，需全部显示，该参数设置为['status',&nbsp;'navigation']；设置为[]，则不显示。 |
 
 **返回值：**
 

@@ -40,8 +40,8 @@
 | Window         | setWindowBrightness(brightness: number, callback: AsyncCallback&lt;void&gt;): void | 设置屏幕亮度值。                                             |
 | Window         | resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void | 改变当前窗口大小。                                           |
 | Window         | setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt; | 设置主窗口或子窗口的布局是否为沉浸式布局。true表示沉浸式布局；false表示非沉浸式布局。|
-| Window         | setWindowSystemBarEnable(names: Array&lt;'status'\|'navigation'&gt;): Promise&lt;void&gt; | 设置主窗口状态栏、工具栏、<!--RP1-->三键导航栏的可见模式，状态栏通过status控制、三键导航栏或工具栏通过navigation控制。<!--RP1End-->当前工具栏的可见模式设置仅Car设备支持。使用Promise异步回调。<br>例如，该参数设置为['status',&nbsp;'navigation']，则全部显示；设置为[]，则不显示。|
-| Window         | setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&lt;void&gt; | 设置窗口内导航栏、状态栏属性。<br>`systemBarProperties`：导航栏、状态栏的属性集合。 |
+| Window         | setWindowSystemBarEnable(names: Array&lt;'status'\|'navigation'&gt;): Promise&lt;void&gt; | 设置主窗口状态栏、<!--RP1-->工具栏或三键导航栏的显示或隐藏，状态栏通过status控制、工具栏或三键导航栏通过navigation控制。当前工具栏的显示或隐藏设置仅Car设备支持。<!--RP1End-->使用Promise异步回调。<br>例如，该参数设置为['status',&nbsp;'navigation']，则全部显示；设置为[]，则不显示。|
+| Window         | setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&lt;void&gt; | 设置主窗口状态栏、<!--RP2-->工具栏或三键导航栏的属性。当前工具栏的属性设置仅Car设备支持。<!--RP2End-->使用Promise异步回调。<br>`systemBarProperties`：状态栏、<!--Del-->工具栏或三键导航栏<!--DelEnd-->的属性集合。 |
 | Window         | showWindow(callback: AsyncCallback\<void>): void             | 显示当前窗口。                                               |
 | Window         | on(type: 'touchOutside', callback: Callback&lt;void&gt;): void | 开启本窗口区域外的点击事件的监听。                           |
 | Window         | destroyWindow(callback: AsyncCallback&lt;void&gt;): void     | 销毁当前窗口。                                               |
