@@ -723,7 +723,7 @@ struct Parent {
 
 **Local Initialization**
 
-In V1 prior to API version 20, \@Consume decorated variables cannot be locally initialized. They must rely on a matching \@Provide from a parent component. Failure to find a corresponding \@Provide results in a runtime exception. After migration to V2, @Consumer allows local initialization. If the matching @Provider is found, the local default value is used.
+In V1 prior to API version 20, \@Consume decorated variables cannot be locally initialized. They must rely on a matching \@Provide from a parent component. Failure to find a corresponding \@Provide results in a runtime exception. After migration to V2, @Consumer allows local initialization. If the matching @Provider is not found, the local default value is used.
 
 V1:
 
