@@ -3393,7 +3393,7 @@ findMatchingWlan(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, nee
     console.error("findMatchingWlan: errCode " + error.code + ", errMessage " + error.message);
   }
    ```
- 	 
+
 ## geoLocationManager.getCurrentDistrict
 
 getCurrentDistrict(params?: DistrictRequestParams): Promise&lt;DistrictInfo&gt;
