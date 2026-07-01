@@ -107,7 +107,7 @@
 
 1. 定义媒体资源处理器[MediaAssetDataHandler](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetDataHandler.md)，系统在资源准备就绪时向应用回调onDataPrepared。
 
-   <!-- @[PickerMediaLibrary_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/common/utils/MediaLibraryPickerUtils.ets) -->
+   <!-- @[PickerMediaLibrary_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/common/utils/MediaLibraryPickerUtils.ets) --> 
    
    ``` TypeScript
    export class MediaAssetDataHandler implements photoAccessHelper.MediaAssetDataHandler<ArrayBuffer> {
