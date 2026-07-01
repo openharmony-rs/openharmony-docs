@@ -2586,10 +2586,9 @@ export struct DisableSystemServiceMenu {
 ``` TypeScript
 import { TextMenuController } from '@kit.ArkUI';
 
-
 @Entry
 @Component
-export struct DisableMenuItem {
+struct DisableMenuItem {
   controller: RichEditorController = new RichEditorController();
   options: RichEditorOptions = { controller: this.controller };
 
@@ -2605,26 +2604,28 @@ export struct DisableMenuItem {
 
   build() {
     // ...
-          RichEditor(this.options)
-            .onReady(() => {
-              // 请将$r('app.string.Demo_richEditor')替换为实际资源文件，在本示例中该资源文件的value值为"这是一个RichEditor"
-              this.controller.addTextSpan($r('app.string.Demo_richEditor'), {
-                style: {
-                  fontSize: 30
-                }
-              })
-            })
-            .height(60)
-            .editMenuOptions({
-              onCreateMenu: (menuItems: Array<TextMenuItem>) => {
-                // menuItems不包含搜索和翻译
-                return menuItems;
-              },
-              onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
-                return false;
+      Column({ space: 12 }) {
+        RichEditor(this.options)
+          .onReady(() => {
+            // 请将$r('app.string.Demo_richEditor')替换为实际资源文件，在本示例中该资源文件的value值为"这是一个RichEditor"
+            this.controller.addTextSpan($r('app.string.Demo_richEditor'), {
+              style: {
+                fontSize: 30
               }
             })
-          // ...
+          })
+          .height(60)
+          .editMenuOptions({
+            onCreateMenu: (menuItems: Array<TextMenuItem>) => {
+              // menuItems不包含搜索和翻译
+              return menuItems;
+            },
+            onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
+              return false;
+            }
+          })
+      }
+    // ...
   }
 }
 ```
