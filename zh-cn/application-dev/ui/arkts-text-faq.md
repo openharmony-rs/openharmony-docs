@@ -469,14 +469,14 @@ Text文本是自动折行的，当没有限制Text高度[height](../reference/ap
 
 若希望由selection触发自定义菜单，可将TextResponseType设置为DEFAULT。同时，在[Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md)组件上通过配置font属性，即可自定义菜单的字体大小，灵活适配界面设计需求。
   <!-- @[How_To_Set_Custom_Selection_Menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/faq/HowToSetCustomSelectionMenu.ets) -->
-
+  
   ``` TypeScript
   @Entry
   @Component
   export struct HowToSetCustomSelectionMenuExample {
     @State selectStart: number = 0;
     @State selectEnd: number = 0;
-
+  
     build() {
       NavDestination() {
         Column() {
