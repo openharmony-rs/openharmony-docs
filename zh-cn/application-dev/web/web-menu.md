@@ -1531,8 +1531,6 @@ ArkTS-Sta示例：
 <!-- @[web_Disable_long_press](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ArkWebMenu/entry/src/main/ets/pages/WebDisableLongPress.ets) --> 
 
 ``` TypeScript
-'use static'
-
 import { Entry, Column, Component } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 import { $rawfile, Web, EditMenuOptions, TextRange, TextMenuItem } from '@ohos.arkui.component';
