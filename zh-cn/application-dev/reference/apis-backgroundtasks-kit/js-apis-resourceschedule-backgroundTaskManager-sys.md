@@ -25,7 +25,7 @@ import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
 applyEfficiencyResources(request: EfficiencyResourcesRequest): void
 
-申请能效资源。
+申请或释放能效资源。
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 

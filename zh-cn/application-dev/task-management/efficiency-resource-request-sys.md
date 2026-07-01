@@ -15,9 +15,9 @@
 
 ### 基本概念
 
-- **能效资源申请接口** ：单独为进程申请CPU等资源的接口，保障系统应用在后台执行的诉求。申请CPU资源后，则应用或进程不被挂起。
+- **能效资源申请接口：** 单独为进程申请CPU等资源的接口，保障系统应用在后台执行的诉求。申请CPU资源后，则应用或进程不被挂起。
 
-- **系统特权应用**：配置[runningResourcesApply特权](../../device-dev/subsystems/subsys-app-privilege-config-guide.md#可由设备厂商配置的特权)应用的系统应用。
+- **系统特权应用：** 配置[runningResourcesApply特权](../../device-dev/subsystems/subsys-app-privilege-config-guide.md#可由设备厂商配置的特权)应用的系统应用。
 
 ### 约束与限制
 
@@ -33,7 +33,7 @@
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| applyEfficiencyResources(request: EfficiencyResourcesRequest): void | 申请能效资源 |
+| applyEfficiencyResources(request: EfficiencyResourcesRequest): void | 申请或释放能效资源 |
 | resetAllEfficiencyResources(): void | 释放全部能效资源 |
 
 **表2** 能效资源申请参数
@@ -52,7 +52,7 @@
 | -------- | -------- | -------- |
 | CPU | 1 | CPU资源，申请后应用进程不被挂起 |
 | COMMON_EVENT | 2 | 公共事件资源，申请后应用进程被挂起后，可以收到公共事件 |
-| TIMER | 4 | 公共事件资源，申请后应用进程被挂起后，Timer仍然可以唤醒应用 |
+| TIMER | 4 | 计时器，申请后应用进程被挂起后，Timer仍然可以唤醒应用 |
 | WORK_SCHEDULER | 8 | 延迟任务资源，申请后延迟任务管控变宽松 |
 | BLUETOOTH | 16 | 蓝牙资源，申请后应用进程被挂起后，蓝牙相关事件仍然可以唤醒应用 |
 | GPS | 32 | GPS资源，申请后应用进程被挂起后，GPS相关事件可以唤醒应用 |
