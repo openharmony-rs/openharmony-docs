@@ -163,7 +163,21 @@
    校验通过后，调用既有业务接口完成实际任务。入口脚本不承载业务逻辑，仅充当“参数适配器”，读取业务返回值与运行时异常，分别映射到SKILL.md声明的不同结果分支。
 
 
-   <!-- @[music_skill_try](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/music-assistant/scripts/MusicSkill.ets) -->
+   <!-- @[music_skill_try](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/music-assistant/scripts/MusicSkill.ets)  -->
+   
+   ``` TypeScript
+   
+   try {
+     // 直接调用应用内已有业务API
+     const playResult: PlayResult | null = MusicPlayer.searchAndPlay(songName, singer);
+     // 业务返回值 → 映射到"成功"或"未命中"分支（见 3.5）
+         // ...
+   } catch (e) {
+     // 业务异常 → 统一映射到 ERR_INTERNAL 分支（见 3.5）
+     const err = e as BusinessError;
+   // ...
+   }
+   ```
 
    3.5 按契约构造ExecuteResult并回传。
 
