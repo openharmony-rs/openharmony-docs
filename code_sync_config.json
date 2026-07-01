@@ -21444,6 +21444,16 @@
 						"start_line":18
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/lifeCycle/Page.ets",
+				"functions":[
+					{
+						"end_line":63,
+						"name":"life_page",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
