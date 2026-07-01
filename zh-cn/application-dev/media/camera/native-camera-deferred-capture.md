@@ -181,7 +181,7 @@
        return;
    }
    
-   // 请求图片数据：deliveryMode/quality等通过requestOptions控制，完成后进回调OnRequestImageDataPreparedWithDetails。
+// 请求图片数据：deliveryMode/quality等通过requestOptions控制，完成后进入回调OnRequestImageDataPreparedWithDetails。
    MediaLibrary_ErrorCode NDKCamera::MediaAssetManagerRequestImage(OH_MediaAsset *mediaAsset)
    {
        DRAWING_LOGD("NDKCamera::MediaAssetManagerRequestImage start! g_deliveryMode = %{public}d",
