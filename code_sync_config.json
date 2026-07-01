@@ -19355,9 +19355,9 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SmartGesture/entry/src/main/ets/pages/Case1.ets",
 				"functions":[
 					{
-						"end_line":122,
+						"end_line":129,
 						"name":"smartgesture_case1_controller",
-						"start_line":50
+						"start_line":51
 					},
 					{
 						"end_line":170,
@@ -19365,12 +19365,12 @@
 						"start_line":160
 					},
 					{
-						"end_line":106,
+						"end_line":113,
 						"name":"smartgesture_case1_proposal",
 						"start_line":19
 					},
 					{
-						"end_line":202,
+						"end_line":209,
 						"name":"smartgesture_case1",
 						"start_line":18
 					}
@@ -19390,7 +19390,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SmartGesture/entry/src/main/ets/pages/Case2.ets",
 				"functions":[
 					{
-						"end_line":166,
+						"end_line":173,
 						"name":"smartgesture_case2",
 						"start_line":18
 					}
@@ -19410,7 +19410,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SmartGesture/entry/src/main/ets/pages/Case3.ets",
 				"functions":[
 					{
-						"end_line":200,
+						"end_line":207,
 						"name":"smartgesture_case3",
 						"start_line":18
 					}
@@ -19430,7 +19430,7 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SmartGesture/entry/src/main/ets/pages/Case4.ets",
 				"functions":[
 					{
-						"end_line":214,
+						"end_line":221,
 						"name":"smartgesture_case4",
 						"start_line":18
 					}
