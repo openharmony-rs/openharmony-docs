@@ -5518,7 +5518,7 @@ static warmupServiceWorker(url: string): void
 
 | 错误码ID  | 错误信息                                                      |
 | -------- | ------------------------------------------------------------ |
-| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.          <br/>适用版本：21           |
+| 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2048.          <br/>适用版本：12-21           |
 | 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024. <br/>适用版本：22+          |
 
 **示例：**
