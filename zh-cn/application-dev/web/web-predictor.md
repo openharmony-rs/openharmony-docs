@@ -342,6 +342,7 @@ export default class EntryAbility extends UIAbility {
    <!-- @[write_code_for_business_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/BusinessWebview.ets) -->    
    
    ``` TypeScript
+   // main/ets/pages/BusinessWebview.ets
    import { BuilderData } from './DynamicComponent';
    
    @Builder
