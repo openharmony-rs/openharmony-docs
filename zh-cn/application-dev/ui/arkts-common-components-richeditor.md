@@ -674,34 +674,40 @@ ArkTS-Dyn示例：
 <!-- @[richEditor_getSpans](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/GetGraphicInfoInComponent.ets) --> 
 
 ``` TypeScript
-controller: RichEditorController = new RichEditorController();
-options: RichEditorOptions = { controller: this.controller };
-infoShowController: RichEditorController = new RichEditorController();
-infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
-// 创建两个富文本组件
-// ...
-          RichEditor(this.options)
-            .onReady(() => {
-              this.controller.addTextSpan(
-                // 请将$r('app.string.GetGraphicInfoInComponent_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"点击按钮获取此处span信息。"
-                resource.resourceToString($r('app.string.GetGraphicInfoInComponent_Text_1')), {
-                style: {
-                  fontColor: Color.Black,
-                  fontSize: 15
-                }
-              })
+@Entry
+@Component
+struct GetGraphicInfoInComponent {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+  infoShowController: RichEditorController = new RichEditorController();
+  infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
+  // 创建两个富文本组件
+  build() {
+    // ...
+      Column({ space: 3 }) {
+        RichEditor(this.options)
+          .onReady(() => {
+            this.controller.addTextSpan(
+              // 请将$r('app.string.GetGraphicInfoInComponent_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"点击按钮获取此处span信息。"
+              $r('app.string.GetGraphicInfoInComponent_Text_1'), {
+              style: {
+                fontColor: Color.Black,
+                fontSize: 15
+              }
             })
-            .width(300)
-            .height(50)
-          // 请将$r('app.string.GetGraphicInfoInComponent_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"点击按钮获取此处span信息。"
-          Text($r('app.string.GetGraphicInfoInComponent_Text_1')).fontSize(10).fontColor(Color.Gray).width(300);
-          RichEditor(this.infoShowOptions)
-            .width(300)
-            .height(50)
+          })
+          .width(300)
+          .height(50)
+        // 请将$r('app.string.GetGraphicInfoInComponent_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"点击按钮获取此处span信息。"
+        Text($r('app.string.GetGraphicInfoInComponent_Text_1')).fontSize(10).fontColor(Color.Gray).width(300);
+        RichEditor(this.infoShowOptions)
+          .width(300)
+          .height(50)
+        Row() {
           // 请将$r('app.string.GetGraphicInfoInComponent_Button_1')替换为实际资源文件，在本示例中该资源文件的value值为"getSpans"
           Button($r('app.string.GetGraphicInfoInComponent_Button_1'), {
             buttonStyle: ButtonStyleMode.NORMAL
-            })
+          })
             .height(30)
             .fontSize(13)
             .onClick(() => {
@@ -712,6 +718,11 @@ infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
                 }
               })
             })
+        }.justifyContent(FlexAlign.Center).width('100%')
+      }
+      // ...
+  }
+}
 ```
 
 ArkTS-Sta示例：
