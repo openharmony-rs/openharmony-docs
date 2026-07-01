@@ -25,7 +25,7 @@ Router路由的页面是一个`@Entry`修饰的Component，每一个页面都需
 
 以下为Router页面的示例。
 
-<!-- @[router_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Index.ets) -->
+<!-- @[router_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Index.ets) -->   
 
 ``` TypeScript
 // Index.ets
@@ -59,9 +59,9 @@ struct Index {
                 return;
               }
               hilog.info( DOMAIN, TAG, 'Invoke pushUrl succeeded.');
-            })
+            });
           })
-        // ···
+        // ...
       }
       .width('100%')
     }
@@ -670,8 +670,8 @@ Navigation作为路由组件，默认支持跨包跳转。
 基本实现跟上述Router动态路由类似。
 1. 开发者自定义路由管理模块，各个提供路由页面的模块均依赖此模块；
 2. 构建Navigation组件时，将NavPathStack注入路由管理模块，路由管理模块对NavPathStack进行封装，对外提供路由能力；
-3. 各个路由页面不再提供组件，转为提供@build封装的构建函数，并再通过WrappedBuilder封装后，实现全局封装；
-4. 各个路由页面将模块名称、路由名称、WrappedBuilder封装后构建函数注册如路由模块；
+3. 各个路由页面不再提供组件，转为提供[@Builder](../reference/apis-arkui/arkui-ts/ts-universal-builder-dynamic.md#builder)封装的构建函数，并再通过[WrappedBuilder](../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder)封装后，实现全局封装；
+4. 各个路由页面将模块名称、路由名称、WrappedBuilder封装后构建函数注册到路由模块；
 5. 当路由需要跳转到指定路由时，路由模块完成对指定路由模块的动态导入，并完成路由跳转。
 
 <!--RP1--><!--RP1End-->
@@ -728,16 +728,16 @@ export default class EntryAbility extends UIAbility {
     windowStage.getMainWindow((err: BusinessError, data) => {
       // ...
       let windowClass = data;
-      // 获取UIContext实例。
+      // 获取UIContext实例
       let uiContext: UIContext = windowClass.getUIContext();
-      // 获取UIObserver实例。
+      // 获取UIObserver实例
       let uiObserver : UIObserver = uiContext.getUIObserver();
-      // 注册NavDestination的状态监听.
+      // 注册NavDestination的状态监听
       uiObserver.on('navDestinationUpdate',(info) => {
         // NavDestinationState.ON_SHOWN = 0, NavDestinationState.ON_HIDE = 1
         if (info.state === 0) {
           // NavDestination组件显示时操作
-          hilog.info(DOMAIN, TAG, 'page ON_SHOWN:' + info.name.toString())
+          hilog.info(DOMAIN, TAG, 'page ON_SHOWN:' + info.name.toString());
         }
       })
     })
@@ -812,7 +812,7 @@ struct MyComponent {
 
   aboutToAppear() {
     this.navDesInfo = this.queryNavDestinationInfo();
-    hilog.info(DOMAIN, TAG, 'get navDestinationInfo: ' + JSON.stringify(this.navDesInfo))
+    hilog.info(DOMAIN, TAG, 'get navDestinationInfo: ' + JSON.stringify(this.navDesInfo));
   }
 
   build() {
