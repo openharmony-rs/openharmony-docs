@@ -184,7 +184,7 @@ static globalConnect\<T extends object\>(type: ConnectOptions\<T\>): T | undefin
 
 > **说明：**
 >
-> 1、若未指定key，使用defaultCreator作为默认构造器；否则使用defaultCreator作为默认构造器（key非法也使用defaultCreator作为默认构造器）。
+> 1、若未指定key，使用默认构造器defaultCreator返回数据的类名作为key存入PersistenceV2中。
 >
 > 2、确保数据已经存储在PersistenceV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
 >
