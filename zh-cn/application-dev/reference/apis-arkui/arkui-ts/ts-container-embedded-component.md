@@ -32,7 +32,9 @@ EmbeddedComponent只能在UIAbility中使用，且被拉起的EmbeddedUIExtensio
 
 ## 接口
 
-EmbeddedComponent(loader: import('../api/@ohos.app.ability.Want').default, type: EmbeddedType, options?: EmbeddedOptions)
+## EmbeddedComponent
+
+EmbeddedComponent(loader: import('../api/@ohos.app.ability.Want').default, type: EmbeddedType)
 
 创建跨进程嵌入式组件，用于显示同包名EmbeddedUIExtensionAbility的UI。
 
@@ -46,7 +48,26 @@ EmbeddedComponent(loader: import('../api/@ohos.app.ability.Want').default, type:
 | --------------------- | ---------------------------------------------------------- | ---- | ------------------------------------ |
 | loader                | import('../api/@ohos.app.ability.[Want](../../apis-ability-kit/js-apis-app-ability-want.md)').default | 是   | 要加载的EmbeddedUIExtensionAbility。 |
 | type                  | [EmbeddedType](ts-appendix-enums.md#embeddedtype12)                              | 是   | 提供方的类型。                       |
-| options| [EmbeddedOptions](#embeddedoptions) | 否   | 需要传递的构造参数。<br>**起始版本：** 26.0.0                     |
+
+## EmbeddedComponent
+
+EmbeddedComponent(loader: import('../api/@ohos.app.ability.Want').default, type: EmbeddedType, options?: EmbeddedOptions)
+
+创建跨进程嵌入式组件，用于显示同包名EmbeddedUIExtensionAbility的UI。相对于API version 12的接口，新增options参数用于传递构造参数。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名                | 类型                          | 必填 |说明   |
+| --------------------- | ---------------------------------------------------------- | ---- | ------------------------------------ |
+| loader                | import('../api/@ohos.app.ability.[Want](../../apis-ability-kit/js-apis-app-ability-want.md)').default | 是   | 要加载的EmbeddedUIExtensionAbility。 |
+| type                  | [EmbeddedType](ts-appendix-enums.md#embeddedtype12)                              | 是   | 提供方的类型。                       |
+| options| [EmbeddedOptions](#embeddedoptions) | 否   | 需要传递的构造参数。                     |
 
 ## 属性
 
