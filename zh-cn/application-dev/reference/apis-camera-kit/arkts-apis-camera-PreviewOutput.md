@@ -756,15 +756,15 @@ LOG视频下，查询是否支持辅助监看功能。
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function isLogViewAssistSupported(previewOutput: camera.PreviewOutput): boolean {
-let supported: boolean = false;
-try {
-    supported = previewOutput.isLogViewAssistSupported();
-} catch (error) {
-    // 失败返回错误码error.code并处理。
-    let err = error as BusinessError;
-    console.error(`The previewOutput.isLogViewAssistSupportedcall failed. error code: ${err.code}`);
-}
-return supported;
+  let supported: boolean = false;
+  try {
+      supported = previewOutput.isLogViewAssistSupported();
+  } catch (error) {
+      // 失败返回错误码error.code并处理。
+      let err = error as BusinessError;
+      console.error(`The previewOutput.isLogViewAssistSupportedcall failed. error code: ${err.code}`);
+  }
+  return supported;
 }
 ```
 
@@ -809,12 +809,12 @@ LOG视频下，使能辅助监看之前，可先使用方法[isLogViewAssistSupp
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function setLogViewAssistEnable(previewOutput: camera.PreviewOutput, enable: boolean): void {
-try {
-    previewOutput.setLogViewAssistEnable(enable);
-} catch (error) {
-    // 失败返回错误码error.code并处理。
-    let err = error as BusinessError;
-    console.error(`The previewOutput.setLogViewAssistEnable call failed. error code: ${err.code}`);
-}
+  try {
+      previewOutput.setLogViewAssistEnable(enable);
+  } catch (error) {
+      // 失败返回错误码error.code并处理。
+      let err = error as BusinessError;
+      console.error(`The previewOutput.setLogViewAssistEnable call failed. error code: ${err.code}`);
+  }
 }
 ```
