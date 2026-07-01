@@ -313,7 +313,7 @@ build() {
 
 Symbol内容暂不支持手势、复制、拖拽处理。
 
-<!-- @[richEditor_addSymbol](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddSymbolSpanContent.ets) -->
+<!-- @[richEditor_addSymbol](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddSymbolSpanContent.ets) --> 
 
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
