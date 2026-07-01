@@ -551,12 +551,6 @@ AudioSession申请的焦点和AudioRenderer申请的焦点是同等地位。
      });
    ```
 
-### 完整示例
-
-下面展示了使用AudioSession申请焦点策略的示例代码。
-
-ArkTS-Dyn示例：
-
 <!-- @[audio_session_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
@@ -614,6 +608,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
       case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION:
         // 此分支表示其他应用的非混音音频播放结束，系统可自行决定是否取消静音。
         break;
+      case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_MUTE:
+        // 此分支表示系统已将应用所有播放音频流静音。
+        break;
+      case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE:
+        // 此分支表示系统已将应用所有播放音频流解除静音。
+        break;
       default:
         break;
     }
@@ -638,6 +638,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
   // 停用AudioSession，即释放焦点并停用该应用正在播放的所有音频流。
   audioSessionManager.deactivateAudioSession().then(() => {
     console.info('Succeeded in deactivating audio session.');
+    // ...
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to deactivate audio session. Code: ${err.code}, message: ${err.message}`);
+    // ...
+  });
+```
     // ...
   }).catch((err: BusinessError) => {
     console.error(`Failed to deactivate audio session. Code: ${err.code}, message: ${err.message}`);
