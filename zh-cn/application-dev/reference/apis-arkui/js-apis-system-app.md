@@ -412,7 +412,7 @@ static requestFullWindow(options?: RequestFullWindowOptions): void
 
 | 参数名  | 类型                                                  | 必填 | 说明                                                         |
 | ------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| options | [RequestFullWindowOptions](#requestfullwindowoptions) | 否   | 请求全屏时，设定非全屏到全屏的过渡时间，单位为毫秒，默认时间与非全屏到全屏的距离成正比。 |
+| options | [RequestFullWindowOptions](#requestfullwindowoptions) | 否   | 请求全窗口时，设定非全窗口到全窗口的过渡时间，单位为毫秒，默认时间与非全窗口到全窗口的距离成正比。 |
 
 **示例：**
 
