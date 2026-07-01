@@ -97,7 +97,7 @@ BuilderNode的根节点直接作为[NodeController](../reference/apis-arkui/js-a
   
     makeNode(context: UIContext): FrameNode | null {
       this.textNode = new BuilderNode(context);
-      this.textNode.build(wrapBuilder<[Params]>(buildText), new Params(this.message))
+      this.textNode.build(wrapBuilder<[Params]>(buildText), new Params(this.message));
       return this.textNode.getFrameNode();
     }
   }
