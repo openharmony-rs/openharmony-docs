@@ -6,39 +6,41 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+Image Kit提供的枚举类型集合，涵盖图片像素格式、透明度类型、图片元数据、缩放模式、动态范围、内存分配等，用于在图片编解码、处理和显示场景中指定各类配置参数。
+
 > **说明：**
 >
 > 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## PixelMapFormat<sup>7+</sup>
 
-枚举，图片像素格式。
+表示图片像素格式的枚举。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 | 名称                   |   值   | 说明              |
 | ---------------------- | ------ | ----------------- |
 | UNKNOWN                | 0      | 未知格式。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。        |
-| ARGB_8888<sup>18+</sup> | 1 | 颜色信息由透明度（Alpha）与R（Red），G（Green），B（Blue）四部分组成，每个部分占8位，总共占32位。 该格式当前仅支持PixelMap的接口。|
-| RGB_565                | 2      | 颜色信息由R（Red），G（Green），B（Blue）三部分组成，R占5位，G占6位，B占5位，总共占16位。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。     |
-| RGBA_8888              | 3      | 颜色信息由R（Red），G（Green），B（Blue）与透明度（Alpha）四部分组成，每个部分占8位，总共占32位。对应[相机服务CameraFormat中的CAMERA_FORMAT_RGBA_8888](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
-| BGRA_8888<sup>9+</sup> | 4      | 颜色信息由B（Blue），G（Green），R（Red）与透明度（Alpha）四部分组成，每个部分占8位，总共占32位。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
-| RGB_888<sup>9+</sup>   | 5      | 颜色信息由R（Red），G（Green），B（Blue）三部分组成，每个部分占8位，总共占24位。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。   |
-| ALPHA_8<sup>9+</sup>   | 6      | 颜色信息仅包含透明度（Alpha），每个像素占8位。一个或多个像素组成一行像素，每行像素数据按4字节对齐，如果一行像素所占的字节数不是4的整数倍，则在行末填充空白字节以满足对齐要求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。   |
-| RGBA_F16<sup>9+</sup>  | 7      | 颜色信息由R（Red），G（Green），B（Blue）与透明度（Alpha）四部分组成，每个部分占16位，总共占64位。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。  |
-| NV21<sup>9+</sup>      | 8      | YVU像素排列，V分量在U分量之前。颜色信息由亮度分量Y和交错排列的色度分量V和U组成，其中Y分量占8位，UV分量因4：2：0采样平均占4位，总共平均占12位。对应[相机服务CameraFormat中的CAMERA_FORMAT_YUV_420_SP](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。      |
-| NV12<sup>9+</sup>      | 9      | YUV像素排列，U分量在V分量之前。颜色信息由亮度分量Y和交错排列的色度分量U和V组成，其中Y分量占8位，UV分量因4：2：0采样平均占4位，总共平均占12位。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。      |
-| RGBA_1010102<sup>12+</sup> | 10 | 颜色信息由R（Red），G（Green），B（Blue）与透明度（Alpha）四部分组成，其中R、G、B分别占10位，透明度占2位，总共占32位。 |
-| YCBCR_P010<sup>12+</sup> | 11 | 颜色信息由亮度分量Y和色度分量Cb与Cr组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位。对应[相机服务CameraFormat中的CAMERA_FORMAT_YCBCR_P010](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat)。  |
-| YCRCB_P010<sup>12+</sup> | 12 | 颜色信息由亮度分量Y和色度分量Cr与Cb组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位。对应[相机服务CameraFormat中的CAMERA_FORMAT_YCRCB_P010](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat)。  |
-| Y8 | 14 | 每个像素占8位，仅包含Y平面（亮度）的单通道灰度格式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。  |
+| ARGB_8888<sup>18+</sup> | 1 | 颜色信息由透明度（Alpha）与R（Red）、G（Green）、B（Blue）四部分组成，每个部分占8位，总共占32位，按照从高位到低位的顺序储存。该格式当前仅支持PixelMap的接口。|
+| RGB_565                | 2      | 颜色信息由R（Red）、G（Green）、B（Blue）三部分组成，R占5位，G占6位，B占5位，总共占16位，按照从高位到低位的顺序储存。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。     |
+| RGBA_8888              | 3      | 颜色信息由R（Red）、G（Green）、B（Blue）与透明度（Alpha）四部分组成，每个部分占8位，总共占32位，按照从高位到低位的顺序储存。对应[相机服务CameraFormat中的CAMERA_FORMAT_RGBA_8888](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
+| BGRA_8888<sup>9+</sup> | 4      | 颜色信息由B（Blue）、G（Green）、R（Red）与透明度（Alpha）四部分组成，每个部分占8位，总共占32位，按照从高位到低位的顺序储存。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
+| RGB_888<sup>9+</sup>   | 5      | 颜色信息由R（Red）、G（Green）、B（Blue）三部分组成，每个部分占8位，总共占24位，按照从高位到低位的顺序储存。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。   |
+| ALPHA_8<sup>9+</sup>   | 6      | 颜色信息仅包含透明度（Alpha），每个像素占8位，按照从高位到低位的顺序储存。一个或多个像素组成一行像素，每行像素数据按4字节对齐，如果一行像素所占的字节数不是4的整数倍，则在行末填充空白字节以满足对齐要求。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。   |
+| RGBA_F16<sup>9+</sup>  | 7      | 颜色信息由R（Red）、G（Green）、B（Blue）与透明度（Alpha）四部分组成，每个部分占16位，总共占64位，按照从高位到低位的顺序以FP16半精度浮点数的形式储存。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。  |
+| NV21<sup>9+</sup>      | 8      | YVU像素排列，V分量在U分量之前。颜色信息由亮度分量Y和交错排列的色度分量V和U组成，其中Y分量占8位，UV分量因4:2:0采样平均占4位，总共平均占12位，按照从高位到低位的顺序储存。对应[相机服务CameraFormat中的CAMERA_FORMAT_YUV_420_SP](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。      |
+| NV12<sup>9+</sup>      | 9      | YUV像素排列，U分量在V分量之前。颜色信息由亮度分量Y和交错排列的色度分量U和V组成，其中Y分量占8位，UV分量因4:2:0采样平均占4位，总共平均占12位，按照从高位到低位的顺序储存。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。      |
+| RGBA_1010102<sup>12+</sup> | 10 | 颜色信息由R（Red）、G（Green）、B（Blue）与透明度（Alpha）四部分组成，其中R、G、B分别占10位，透明度占2位，总共占32位，按照从高位到低位的顺序储存。 |
+| YCBCR_P010<sup>12+</sup> | 11 | 颜色信息由亮度分量Y和色度分量Cb与Cr组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位，按照从高位到低位的顺序储存。对应[相机服务CameraFormat中的CAMERA_FORMAT_YCBCR_P010](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat)。  |
+| YCRCB_P010<sup>12+</sup> | 12 | 颜色信息由亮度分量Y和色度分量Cr与Cb组成，每个分量有效10位，实际存储时，Y平面每个像素占16位数据（10位有效），UV平面交错排列，每4个像素占32位数据（每色度分量10位有效），平均有效占15位，按照从高位到低位的顺序储存。对应[相机服务CameraFormat中的CAMERA_FORMAT_YCRCB_P010](../apis-camera-kit/arkts-apis-camera-e.md#cameraformat)。  |
+| Y8 | 14 | 仅包含Y平面（亮度）的单通道灰度格式，每个像素占8位，按照从高位到低位的顺序储存。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。  |
 | ALPHA_U8 | 15 | 颜色信息仅包含透明度（Alpha），每个像素占8位，按照从高位到低位的顺序储存。所有像素紧密排列，不进行对齐。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。  |
 | ALPHA_F16 | 16 | 颜色信息仅包含透明度（Alpha），每个像素占16位，按照从高位到低位的顺序以FP16半精度浮点数的形式储存。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。  |
 | ASTC_4x4<sup>18+</sup> | 102 | 存储格式为ASTC 4x4格式，内存使用量仅为RGBA_8888的1/4。该格式仅用于直接显示场景，不支持像素访问或后期处理编辑，不支持仿射变换级联使用。  |
 
 ## AlphaType<sup>9+</sup>
 
-枚举，图像的透明度类型。
+表示图像的透明度类型的枚举。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -48,14 +50,14 @@
 
 | 名称     |   值   | 说明                    |
 | -------- | ------ | ----------------------- |
-| UNKNOWN  | 0      | 未知透明度。            |
-| OPAQUE   | 1      | 没有alpha或图片不透明。 |
-| PREMUL   | 2      | RGB预乘alpha。         |
-| UNPREMUL | 3      | RGB非预乘alpha。       |
+| UNKNOWN  | 0      | 未知透明度类型。            |
+| OPAQUE   | 1      | 没有Alpha通道或图片不透明。 |
+| PREMUL   | 2      | RGB通道预乘Alpha值。         |
+| UNPREMUL | 3      | RGB通道非预乘Alpha值。       |
 
 ## AuxiliaryPictureType<sup>13+</sup>
 
-枚举，辅助图的图像类型。
+表示辅助图的图像类型的枚举。
 
 辅助图不直接参与图片显示，且并非所有图片中都含有辅助图。
 
@@ -74,7 +76,7 @@
 
 ## MetadataType<sup>13+</sup>
 
-枚举，图片元数据类型。
+表示图片元数据类型的枚举。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -94,7 +96,7 @@
 
 ## ScaleMode<sup>9+</sup>
 
-枚举，图像的缩放模式。
+表示图像的缩放模式的枚举。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -109,7 +111,7 @@
 
 ## PropertyKey<sup>7+</sup>
 
-枚举，Exif（Exchangeable image file format）图像信息。
+表示Exif（Exchangeable image file format）图像信息的枚举。
 
 
 
@@ -122,8 +124,8 @@
 | ----------------- | ----------------------- | ----------------------- | ----------------------- |
 | NEW_SUBFILE_TYPE<sup>12+</sup>           | "NewSubfileType"            | 在Exif中，"NewSubfileType"字段用于标识子文件的数据类型，如全分辨率图像、缩略图或多帧图像的一部分。其值是位掩码，0代表全分辨率图像，1代表缩略图，2代表多帧图像的一部分。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'0');`<br />或`imageSource.modifyImageProperty(key,'Primary image');`<br />**读取结果示例：** "0" |
 | SUBFILE_TYPE<sup>12+</sup>               | "SubfileType"               | 此标签指示此子文件中的数据类型。标签已弃用，请使用NewSubfileType替代。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'1');`<br />或`imageSource.modifyImageProperty(key,'Full-resolution image data');`<br />**读取结果示例：** "1" |
-| IMAGE_WIDTH                               | "ImageWidth"                | 图片宽度。单位为像素（px）。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'4096');`<br />**读取结果示例：** "4096" |
-| IMAGE_LENGTH                              | "ImageLength"               | 图片长度。单位为像素（px）。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'3072');`<br />**读取结果示例：** "3072" |
+| IMAGE_WIDTH                               | "ImageWidth"                | 图片宽度。单位：像素（px）。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'4096');`<br />**读取结果示例：** "4096" |
+| IMAGE_LENGTH                              | "ImageLength"               | 图片长度。单位：像素（px）。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'3072');`<br />**读取结果示例：** "3072" |
 | BITS_PER_SAMPLE                           | "BitsPerSample"             | 像素各分量的位数，如RGB，3分量，格式是8,8,8。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 三个非负整数字符串，空格或者英文逗号隔开。<br />**修改示例：**`imageSource.modifyImageProperty(key,'8 8 8');`<br />或`imageSource.modifyImageProperty(key,'8,8,8');`<br />**读取结果示例：** "8,8,8" |
 | COMPRESSION<sup>12+</sup>                | "Compression"               | 图像压缩方案。<br/> 1："Uncompressed"。<br/> 2："CCITT RLE"。<br/> 3："T4/Group 3 Fax"。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入相应的数字或者字符串。<br/>**修改示例：**`imageSource.modifyImageProperty(key,'1');`<br />或`imageSource.modifyImageProperty(key,'Uncompressed');`<br />**读取结果示例：** "Uncompressed" |
 | PHOTOMETRIC_INTERPRETATION<sup>12+</sup> | "PhotometricInterpretation" | 像素构成，例如RGB或YCbCr。<br/> 0："Reversed mono"。<br/> 1："Normal mono"。<br/> 2："RGB"。<br/> 3："Palette"。<br/> 5："CMYK"。<br/> 6："YCbCr"。<br/> 8："CieLAB"。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入相应的数字或者字符串。<br/>**修改示例：**`imageSource.modifyImageProperty(key,'1');`<br />或`imageSource.modifyImageProperty(key,'Normal mono');`<br />**读取结果示例：** "Normal mono" |
@@ -153,7 +155,7 @@
 | YCBCR_POSITIONING<sup>12+</sup>          | "YCbCrPositioning"          | 色度分量相对于亮度分量的位置。<br/>1："Centered"，中心对齐（Centered），Cb/Cr分量的采样点相对于亮度像素点是居中对齐（常见）。<br/>2："Co-sited"，左上对齐（Co-sited）Cb/Cr分量和 Y 分量的采样点对齐在左上角。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入相应的数字或者字符串。 <br />**修改示例：**`imageSource.modifyImageProperty(key,'1');`<br />或`imageSource.modifyImageProperty(key,'Centered');`<br />**读取结果示例：** "Centered" |
 | REFERENCE_BLACK_WHITE<sup>12+</sup>      | "ReferenceBlackWhite"       | 参考黑点值和白点值。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'1');`<br />**读取结果示例：** "1,255, 0,255, 0,255" |
 | COPYRIGHT<sup>12+</sup>                  | "Copyright"                 | 图像的版权信息。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'desc');`<br />**读取结果示例：** "desc (Photographer) - [None] (Editor)" |
-| EXPOSURE_TIME<sup>9+</sup>                | "ExposureTime"              | 曝光时间。单位为秒（s）。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'1');`<br />或`imageSource.modifyImageProperty(key,'1/2');`<br />**读取结果示例：** "1/33 sec." |
+| EXPOSURE_TIME<sup>9+</sup>                | "ExposureTime"              | 曝光时间。单位：秒（s）。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'1');`<br />或`imageSource.modifyImageProperty(key,'1/2');`<br />**读取结果示例：** "1/33 sec." |
 | F_NUMBER<sup>9+</sup>                     | "FNumber"                   | 光圈值，例如f/1.8。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'1');`<br />或`imageSource.modifyImageProperty(key,'1/2');`<br />**读取结果示例：** "f/1.0" |
 | EXPOSURE_PROGRAM<sup>12+</sup>           | "ExposureProgram"           | 拍照时相机用来设置曝光的程序的类别。<br />0："Not defined"。<br />1："Manual"。  <br />2："Normal program"。<br/>3："Aperture priority"。<br />4："Shutter priority"。<br />5："Creative program (biased toward depth of field)"。<br/>6："Creative program (biased toward fast shutter speed)"。<br/>7："Portrait mode (for closeup photos with the background out of focus)"。<br/>8："Landscape mode (for landscape photos with the background in focus)"。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入相应的数字或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'0');`<br />或`imageSource.modifyImageProperty(key,'Not defined');`<br />**读取结果示例：** "Not defined" |
 | SPECTRAL_SENSITIVITY<sup>12+</sup>       | "SpectralSensitivity"       | 表示所用相机的每个通道的光谱灵敏度。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'SpectralSensitivity');`<br />**读取结果示例：** "SpectralSensitivity" |
@@ -188,7 +190,7 @@
 | GPS_AREA_INFORMATION<sup>12+</sup>       | "GPSAreaInformation"   | 记录GPS区域名的字符串。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'GPS Area Information');`<br />**读取结果示例：** "GPS Area Information" |
 | GPS_DATE_STAMP<sup>10+</sup>              | "GPSDateStamp"         | GPS日期戳。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 格式为“YY:MM:DD”。<br />**修改示例：**`imageSource.modifyImageProperty(key,'2020:07:07');`<br />**读取结果示例：** "2020:07:07" |
 | GPS_DIFFERENTIAL<sup>12+</sup>           | "GPSDifferential"      | 此字段表示GPS数据是否应用了差分校正，对于精确的位置准确性至关重要。<br/>  0："Without correction"，没有使用差分校正。<br/> 1："Correction applied"，使用差分校正。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入相应的数字或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'0');`<br />或`imageSource.modifyImageProperty(key,'Without correction');`<br />**读取结果示例：** "0" |
-| GPS_H_POSITIONING_ERROR<sup>12+</sup>    | "GPSHPositioningError" | 此标签指示水平定位误差，单位为米（m）。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'100');`<br />**读取结果示例：** "100" |
+| GPS_H_POSITIONING_ERROR<sup>12+</sup>    | "GPSHPositioningError" | 此标签指示水平定位误差。单位：米（m）。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'100');`<br />**读取结果示例：** "100" |
 | ISO_SPEED_RATINGS<sup>9+</sup>            | "ISOSpeedRatings"           | ISO感光度，例如400。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'3200');`<br />**读取结果示例：** "3200" |
 | PHOTOGRAPHIC_SENSITIVITY<sup>12+</sup>   | "PhotographicSensitivity" | 用于表示图像拍摄时所用的感光度值（ISO 值），也叫ISO Speed。该字段是Exif 2.3后的推荐字段，ISOSpeedRatings（Tag 0x8827）是早期使用的字段，类型和含义相同，若两个字段都存在，以`PhotographicSensitivity` 为主。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'3200');`<br />**读取结果示例：** "3200" |
 | OECF<sup>12+</sup>                       | "OECF"                      | 表示ISO 14524中规定的光电转换函数（OECF）。<br/>**读写能力：** 可读写。<br> | 该字段为特有格式，虽然支持读写，但目前版本不做解析。 |
@@ -205,7 +207,7 @@
 | OFFSET_TIME_ORIGINAL<sup>12+</sup>       | "OffsetTimeOriginal"  | 此标签记录原始图像创建时的UTC偏移量，对于时间敏感的应用至关重要。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'Offset Time Original');`<br />**读取结果示例：** "Offset Time Original" |
 | OFFSET_TIME_DIGITIZED<sup>12+</sup>      | "OffsetTimeDigitized" | 此标签记录图像数字化时的UTC偏移量，有助于准确调整时间戳。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'Offset Time Digitized');`<br />**读取结果示例：** "Offset Time Digitized" |
 | COMPONENTS_CONFIGURATION<sup>12+</sup>   | "ComponentsConfiguration"   | 压缩数据的特定信息。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** "Y Cb Cr -"。<br />**修改示例：**`imageSource.modifyImageProperty(key,'Y Cb Cr -');`<br />**读取结果示例：** "Y Cb Cr -" |
-| COMPRESSED_BITS_PER_PIXEL<sup>12+</sup>  | "CompressedBitsPerPixel"    | 用于压缩图像的压缩模式，单位为每像素位数。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'0.95');`<br />**读取结果示例：** "0.95" |
+| COMPRESSED_BITS_PER_PIXEL<sup>12+</sup>  | "CompressedBitsPerPixel"    | 用于压缩图像的压缩模式。单位：每像素位数（bit/px）。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'0.95');`<br />**读取结果示例：** "0.95" |
 | SHUTTER_SPEED<sup>12+</sup>              | "ShutterSpeedValue"         | 快门速度，以APEX（摄影曝光的加法系统）值表示。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'1');`<br />**读取结果示例：** "1.00 EV (1/2 sec.)" |
 | APERTURE_VALUE<sup>10+</sup>              | "ApertureValue"             | 光圈值。格式如4/1。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'5.6');`<br />**读取结果示例：** "5.60 EV (f/7.0)" |
 | BRIGHTNESS_VALUE<sup>12+</sup>           | "BrightnessValue"           | 图像的亮度值，以APEX单位表示。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'2');`<br />**读取结果示例：** "2.00 EV (13.71 cd/m^2)" |
@@ -215,7 +217,7 @@
 | METERING_MODE<sup>10+</sup>               | "MeteringMode"              | 测光模式。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入相应的数字或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'1');`<br />或`imageSource.modifyImageProperty(key,'Average');`<br />**读取结果示例：** "Average" |
 | LIGHT_SOURCE<sup>10+</sup>                | "LightSource"               | 光源。例如Fluorescent。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入相应的数字或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'1');`<br />或`imageSource.modifyImageProperty(key,'Daylight');`<br />**读取结果示例：** "Daylight" |
 | FLASH<sup>10+</sup>                      | "Flash"                     | 闪光灯，记录闪光灯状态。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入相应的数字或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'0x00');`<br />或`imageSource.modifyImageProperty(key,'Flash did not fire');`<br />**读取结果示例：** "Flash did not fire" |
-| FOCAL_LENGTH<sup>10+</sup>               | "FocalLength"               | 焦距。单位为毫米（mm）。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'50');`<br />或`imageSource.modifyImageProperty(key,'50/1');`<br />**读取结果示例：** "50.0 mm" |
+| FOCAL_LENGTH<sup>10+</sup>               | "FocalLength"               | 焦距。单位：毫米（mm）。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'50');`<br />或`imageSource.modifyImageProperty(key,'50/1');`<br />**读取结果示例：** "50.0 mm" |
 | SUBJECT_AREA<sup>12+</sup>               | "SubjectArea"          | 该标签指示整个场景中主要主体的位置和区域。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 两个非负有理数字符串，空格或者英文逗号隔开。<br />**修改示例：**`imageSource.modifyImageProperty(key,'50 50');`<br />或`imageSource.modifyImageProperty(key,'50,50');`<br />**读取结果示例：** "(x,y) = (50,50)" |
 | MAKER_NOTE<sup>12+</sup>                 | "MakerNote"                 | Exif/DCF制造商使用的标签，用于记录任何所需信息。<br/>在API version 12-19，该字段为只读；从API version 20开始，该字段可读写。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'Maker Note');`<br />**读取结果示例：** "Maker Note" |
 | USER_COMMENT<sup>10+</sup>               | "UserComment"               | 用户注释。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'User Comment');`<br />**读取结果示例：** "User Comment" |
@@ -224,8 +226,8 @@
 | SUBSEC_TIME_DIGITIZED<sup>12+</sup>      | "SubsecTimeDigitized"       | 用于为DateTimeDigitized标签记录秒的分数的标签。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'62900');`<br />**读取结果示例：** "62900" |
 | FLASHPIX_VERSION<sup>12+</sup>           | "FlashpixVersion"           | 该标签表示FPXR文件支持的Flashpix格式版本，增强了设备兼容性。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 版本号格式“1.0”。<br />**修改示例：**`imageSource.modifyImageProperty(key,'1.0');`<br />**读取结果示例：** "FlashPix Version 1.0" |
 | COLOR_SPACE<sup>12+</sup>                | "ColorSpace"                | 色彩空间信息标签，通常记录为色彩空间指定符。<br/>1："sRGB"，sRGB标准色彩空间（常见默认值）。<br/>2："Adobe RGB"，exif中未定义，但大量相机使用。<br/>0xffff："Uncalibrated"，表示未校准，颜色空间不明确。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入相应的数字或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'1');`<br />或`imageSource.modifyImageProperty(key,'sRGB');`<br />**读取结果示例：** "sRGB" |
-| PIXEL_X_DIMENSION<sup>10+</sup>          | "PixelXDimension"           | 像素X尺寸。单位为像素（px）。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'4096');`<br />**读取结果示例：** "4096" |
-| PIXEL_Y_DIMENSION<sup>10+</sup>           | "PixelYDimension"           | 像素Y尺寸。单位为像素（px）。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'3072');`<br />**读取结果示例：** "3072" |
+| PIXEL_X_DIMENSION<sup>10+</sup>          | "PixelXDimension"           | 像素X尺寸。单位：像素（px）。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'4096');`<br />**读取结果示例：** "4096" |
+| PIXEL_Y_DIMENSION<sup>10+</sup>           | "PixelYDimension"           | 像素Y尺寸。单位：像素（px）。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'3072');`<br />**读取结果示例：** "3072" |
 | RELATED_SOUND_FILE<sup>12+</sup>         | "RelatedSoundFile"          | 与图像数据相关的音频文件的名称。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'Related Sound File');`<br />**读取结果示例：** "Related Sound File" |
 | FLASH_ENERGY<sup>12+</sup>               | "FlashEnergy"               | 图像捕获时的闪光能量，以BCPS表示。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'5.0');`<br />或`imageSource.modifyImageProperty(key,'5/1');`<br />**读取结果示例：** "5" |
 | SPATIAL_FREQUENCY_RESPONSE<sup>12+</sup> | "SpatialFrequencyResponse"  | 相机或输入设备的空间频率表。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'Spatial Frequency Response');`<br />**读取结果示例：** "Spatial Frequency Response" |
@@ -242,7 +244,7 @@
 | EXPOSURE_MODE<sup>12+</sup>              | "ExposureMode"         | 拍摄时设置的曝光模式。<br/>0："Auto exposure"，自动曝光（Auto）。<br/>1："Manual exposure"，手动曝光（Manual）。<br/>2："Auto bracket"，自动曝光优先（Auto bracket）。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入相应的数字或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'0');`<br />或`imageSource.modifyImageProperty(key,'Auto exposure');`<br />**读取结果示例：** "Auto exposure" |
 | WHITE_BALANCE<sup>10+</sup>              | "WhiteBalance"         | 白平衡。<br/>0："Auto white balance"，自动白平衡。<br/>1："Manual white balance"，手动白平衡。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入相应的数字或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'0');`<br />或`imageSource.modifyImageProperty(key,'Auto white balance');`<br />**读取结果示例：** "Auto white balance" |
 | DIGITAL_ZOOM_RATIO<sup>12+</sup>         | "DigitalZoomRatio"     | 捕获时的数字变焦比率。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'1/2');`<br />**读取结果示例：** "0.5" |
-| FOCAL_LENGTH_IN_35_MM_FILM<sup>10+</sup> | "FocalLengthIn35mmFilm" | 换算成35mm等效焦距。单位为毫米（mm）。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'50');`<br />**读取结果示例：** "50" |
+| FOCAL_LENGTH_IN_35_MM_FILM<sup>10+</sup> | "FocalLengthIn35mmFilm" | 换算成35mm等效焦距。单位：毫米（mm）。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负整数字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'50');`<br />**读取结果示例：** "50" |
 | SCENE_CAPTURE_TYPE<sup>12+</sup>         | "SceneCaptureType"     | 捕获的场景类型。<br/>0："Standard"，标准。<br/>1："Landscape"，风景。<br/>2："Portrait"，人像。<br/>3："Night scene"，夜景。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：**  修改时传入相应的数字或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'0');`<br />或`imageSource.modifyImageProperty(key,'Standard');`<br />**读取结果示例：** "Standard" |
 | GAIN_CONTROL<sup>12+</sup>               | "GainControl"          | 整体图像增益调整的程度。<br/>0："Normal"，无增益控制。<br />1："Low gain up"，低增益提升。<br />2："High gain up"，高增益提升。<br/>3："Low gain down"， 低增益降低。<br />4："High gain down"，高增益降低。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：**  修改时传入相应的数字或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'0');`<br />或`imageSource.modifyImageProperty(key,'Normal');`<br />**读取结果示例：** "Normal" |
 | CONTRAST<sup>12+</sup>                   | "Contrast"             | 相机应用的对比度处理方向。<br/>0："Normal"，正常对比度。<br/>1："Soft"，软对比度。<br/>2："Hard"，硬对比度。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 修改时传入相应的数字或者字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'0');`<br />或`imageSource.modifyImageProperty(key,'Normal');`<br />**读取结果示例：** "Normal" |
@@ -262,7 +264,7 @@
 | SOURCE_EXPOSURE_TIMES_OF_COMPOSITE_IMAGE<sup>12+</sup> | "SourceExposureTimesOfCompositeImage" | 合成图像的源图像曝光时间。<br/>**读写能力：** 可读写。<br> | **修改传参格式说明：** 字符串。<br />**修改示例：**`imageSource.modifyImageProperty(key,'Source Exposure Times Of CompositeImage');`<br />**读取结果示例：** "Source Exposure Times Of CompositeImage" |
 | GAMMA<sup>12+</sup>                      | "Gamma"                | 表示系数伽马的值。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 非负有理数字符串。<br />**修改示例：**<br />`imageSource.modifyImageProperty(key,'1');`<br />**读取结果示例：** "1" |
 | DNG_VERSION<sup>12+</sup>                | "DNGVersion"                | DNG版本标签编码了符合DNG规范的四级版本号。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 四个非负整数字符串，空格或者英文逗号隔开。<br />**修改示例：**<br />`imageSource.modifyImageProperty(key,'1 1 1 1');`<br />或`imageSource.modifyImageProperty(key,'1,1,1,1');`<br />**读取结果示例：** "1,1,1,1" |
-| DEFAULT_CROP_SIZE<sup>12+</sup>          | "DefaultCropSize"           | DefaultCropSize指定了原始坐标中的最终图像大小，考虑了额外的边缘像素。单位为像素（px）。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 两个非负整数字符串，空格或者英文逗号隔开。<br />**修改示例：**`imageSource.modifyImageProperty(key,'400 400');`<br />或`imageSource.modifyImageProperty(key,'400,400');`<br />**读取结果示例：** "400,400" |
+| DEFAULT_CROP_SIZE<sup>12+</sup>          | "DefaultCropSize"           | DefaultCropSize指定了原始坐标中的最终图像大小，考虑了额外的边缘像素。单位：像素（px）。<br />**读写能力：** 可读写。<br> | **修改传参格式说明：** 两个非负整数字符串，空格或者英文逗号隔开。<br />**修改示例：**`imageSource.modifyImageProperty(key,'400 400');`<br />或`imageSource.modifyImageProperty(key,'400,400');`<br />**读取结果示例：** "400,400" |
 | GIF_LOOP_COUNT<sup>12+</sup>             | "GIFLoopCount"              | GIF图片循环次数。0表示无限循环，其他值表示循环次数。<br />**读写能力：** 只读。<br> | _ |
 | IS_XMAGE_SUPPORTED<sup>12+</sup> | "HwMnoteIsXmageSupported" | 是否支持XMAGE。<br />**读写能力：** 可读写。<br> | _ |
 | XMAGE_MODE<sup>12+</sup> | "HwMnoteXmageMode" | XMAGE水印模式。<br />**读写能力：** 可读写。<br> | _ |
@@ -298,12 +300,12 @@
 | FRONT_CAMERA<sup>12+</sup> | "HwMnoteFrontCamera" | 是否是前置相机自拍。<br />**读写能力：** 只读。<br> | _ |
 | ROLL_ANGLE<sup>11+</sup> | "HwMnoteRollAngle" | 滚动角度。<br />**读写能力：** 只读。<br> | _ |
 | PITCH_ANGLE<sup>11+</sup> | "HwMnotePitchAngle" | 俯仰角度。<br />**读写能力：** 只读。<br> | _ |
-| PHYSICAL_APERTURE<sup>10+</sup> | "HwMnotePhysicalAperture" | 物理孔径，光圈大小。单位为毫米（mm）。<br />**读写能力：** 只读。<br> | _ |
+| PHYSICAL_APERTURE<sup>10+</sup> | "HwMnotePhysicalAperture" | 物理孔径，光圈大小。单位：毫米（mm）。<br />**读写能力：** 只读。<br> | _ |
 | FOCUS_MODE<sup>11+</sup> | "HwMnoteFocusMode" | 对焦模式。<br />**读写能力：** 只读。<br> | _ |
 
 ## FragmentMapPropertyKey<sup>13+</sup>
 
-枚举，水印裁剪图图片信息。
+表示水印裁剪图图片信息的枚举。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -311,28 +313,28 @@
 | ------------- | --------------------- | ----------------------------------- |
 | X_IN_ORIGINAL | "XInOriginal"         | 水印裁剪图左上角在原始图中的X坐标。 |
 | Y_IN_ORIGINAL | "YInOriginal"         | 水印裁剪图左上角在原始图中的Y坐标。 |
-| WIDTH         | "FragmentImageWidth"  | 水印裁剪图的宽。单位为像素（px）。                    |
-| HEIGHT        | "FragmentImageHeight" | 水印裁剪图的高。单位为像素（px）。                    |
+| WIDTH         | "FragmentImageWidth"  | 水印裁剪图的宽。单位：像素（px）。                    |
+| HEIGHT        | "FragmentImageHeight" | 水印裁剪图的高。单位：像素（px）。                    |
 
 ## GifPropertyKey<sup>20+</sup>
 
-枚举，GIF图片信息。
+表示GIF图片信息的枚举。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 | 名称              | 值                | 说明                   |
 | ----------------- | ----------------- | --------------------- |
-| GIF_DELAY_TIME    | 'GifDelayTime'    | GIF图片钳制后的帧延迟时长。钳制范围为[100, 65535]。<br>单位为毫秒（ms）。 |
+| GIF_DELAY_TIME    | 'GifDelayTime'    | GIF图片钳制后的帧延迟时长。钳制范围为[100, 65535]。<br>单位：毫秒（ms）。 |
 | GIF_DISPOSAL_TYPE | 'GifDisposalType' | GIF图片的每帧处置方式。<br>- 0表示未指定。<br>- 1表示不处置。<br>- 2表示还原为背景色。<br>- 3表示还原为前一帧。<br>该值为正整数。 |
 | GIF_HAS_GLOBAL_COLOR_MAP | 'GifHasGlobalColorMap' | GIF图像是否包含全局调色板。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| GIF_CANVAS_WIDTH | 'GifCanvasWidth' | GIF图像的画布宽度。<br>单位为像素（px）。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| GIF_CANVAS_HEIGHT | 'GifCanvasHeight' | GIF图像的画布高度。<br>单位为像素（px）。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| GIF_CANVAS_WIDTH | 'GifCanvasWidth' | GIF图像的画布宽度。<br>单位：像素（px）。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| GIF_CANVAS_HEIGHT | 'GifCanvasHeight' | GIF图像的画布高度。<br>单位：像素（px）。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | GIF_LOOP_COUNT | 'GifLoopCount' | GIF图片循环次数。<br>取值为0或正整数。0表示无限循环，其他值表示实际循环次数。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| GIF_UNCLAMPED_DELAY_TIME | 'GifUnclampedDelayTime' | GIF图片未钳制的帧延迟时间。<br>单位为毫秒（ms）。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| GIF_UNCLAMPED_DELAY_TIME | 'GifUnclampedDelayTime' | GIF图片未钳制的帧延迟时间。<br>单位：毫秒（ms）。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## HeifsPropertyKey<sup>23+</sup>
 
-枚举，HEIF序列图片信息。
+表示HEIF序列图片信息的枚举。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -340,14 +342,14 @@
 
 | 名称              | 值                | 说明                   |
 | ----------------- | ----------------- | --------------------- |
-| HEIFS_DELAY_TIME    | 'HeifsDelayTime'    | HEIF序列图片的每帧延迟时长。<br>单位为毫秒（ms）。 |
-| HEIFS_UNCLAMPED_DELAY_TIME | 'HeifsUnclampedDelayTime' | HEIF序列图片未钳制的帧延迟时长。<br>单位为毫秒（ms）。<br>**起始版本：** 26.0.0 |
-| HEIFS_CANVAS_HEIGHT | 'HeifsCanvasHeight' | HEIF序列图片的画布高度。<br>单位为像素（px）。<br>**起始版本：** 26.0.0 |
-| HEIFS_CANVAS_WIDTH | 'HeifsCanvasWidth' | HEIF序列图片的画布宽度。<br>单位为像素（px）。<br>**起始版本：** 26.0.0 |
+| HEIFS_DELAY_TIME    | 'HeifsDelayTime'    | HEIF序列图片的每帧延迟时长。<br>单位：毫秒（ms）。 |
+| HEIFS_UNCLAMPED_DELAY_TIME | 'HeifsUnclampedDelayTime' | HEIF序列图片未钳制的帧延迟时长。<br>单位：毫秒（ms）。<br>**起始版本：** 26.0.0 |
+| HEIFS_CANVAS_HEIGHT | 'HeifsCanvasHeight' | HEIF序列图片的画布高度。<br>单位：像素（px）。<br>**起始版本：** 26.0.0 |
+| HEIFS_CANVAS_WIDTH | 'HeifsCanvasWidth' | HEIF序列图片的画布宽度。<br>单位：像素（px）。<br>**起始版本：** 26.0.0 |
 
 ## WebPPropertyKey<sup>24+</sup>
 
-枚举，WebP图片信息。
+表示WebP图片信息的枚举。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -355,15 +357,15 @@
 
 | 名称              | 值                | 说明                   |
 | ----------------- | ----------------- | --------------------- |
-| CANVAS_WIDTH    | 'WebPCanvasWidth'    | WebP图片的画布像素宽度。<br>单位为像素（px）。 |
-| CANVAS_HEIGHT    | 'WebPCanvasHeight'    | WebP图片的画布像素高度。<br>单位为像素（px）。 |
-| DELAY_TIME    | 'WebPDelayTime'    | WebP图片钳制后的帧延迟时长。钳制范围为[100, 65535]。<br>单位为毫秒（ms）。 |
-| UNCLAMPED_DELAY_TIME    | 'WebPUnclampedDelayTime'    | WebP图片未钳制的帧延迟时长。<br>单位为毫秒（ms）。 |
+| CANVAS_WIDTH    | 'WebPCanvasWidth'    | WebP图片的画布像素宽度。<br>单位：像素（px）。 |
+| CANVAS_HEIGHT    | 'WebPCanvasHeight'    | WebP图片的画布像素高度。<br>单位：像素（px）。 |
+| DELAY_TIME    | 'WebPDelayTime'    | WebP图片钳制后的帧延迟时长。钳制范围为[100, 65535]。<br>单位：毫秒（ms）。 |
+| UNCLAMPED_DELAY_TIME    | 'WebPUnclampedDelayTime'    | WebP图片未钳制的帧延迟时长。<br>单位：毫秒（ms）。 |
 | LOOP_COUNT    | 'WebPLoopCount'    | WebP图片动画循环的次数。如果取值为0，则表示不限次数。 |
 
 ## DngPropertyKey<sup>24+</sup>
 
-枚举，DNG图片信息。
+表示DNG图片信息的枚举。
 
 > **说明：**
 >
@@ -407,7 +409,7 @@
 | LINEAR_RESPONSE_LIMIT | 'LinearResponseLimit' | 线性响应上限，有效值范围为[0.0, 1.0]。 |
 | CAMERA_SERIAL_NUMBER | 'CameraSerialNumber' | 相机序列号。 |
 | LENS_INFO | 'LensInfo' | 镜头信息。 |
-| CHROMA_BLUR_RADIUS | 'ChromaBlurRadius' | 色度模糊半径，单位为像素（px）。 |
+| CHROMA_BLUR_RADIUS | 'ChromaBlurRadius' | 色度模糊半径。单位：像素（px）。 |
 | ANTI_ALIAS_STRENGTH | 'AntiAliasStrength' | 抗锯齿滤波器强度。 |
 | SHADOW_SCALE | 'ShadowScale' | 阴影区域缩放因子。 |
 | DNG_PRIVATE_DATA | 'DNGPrivateData' | 厂商私有数据块。 |
@@ -468,7 +470,7 @@
 
 ## PngPropertyKey
 
-枚举，PNG图片信息。
+表示PNG图片信息的枚举。
 
 > **说明：**
 >
@@ -501,7 +503,7 @@
 
 ## JfifPropertyKey
 
-枚举，JFIF图片信息。
+表示JFIF图片信息的枚举。
 
 > **说明：**
 >
@@ -523,7 +525,7 @@
 
 ## TiffPropertyKey
 
-枚举，TIFF图片信息。
+表示TIFF图片信息的枚举。
 
 > **说明：**
 >
@@ -547,9 +549,9 @@
 | Y_RESOLUTION | 'TiffYResolution' | 垂直方向分辨率（每分辨率单位的像素数）。 |
 | X_RESOLUTION | 'TiffXResolution' | 水平方向分辨率（每分辨率单位的像素数）。 |
 | WHITE_POINT | 'TiffWhitePoint' | 用于指定图像的白点（white point）色度坐标，即图像颜色空间中被认为是“白色”的参考点。 |
-| TILE_LENGTH | 'TiffTileLength' | 每个图像分块的高度。单位为像素（px）。 |
+| TILE_LENGTH | 'TiffTileLength' | 每个图像分块的高度。单位：像素（px）。 |
 | TRANSFER_FUNCTION | 'TiffTransferFunction' | 图像的传递函数，通常用于颜色校正。 |
-| TILE_WIDTH | 'TiffTileWidth' | 每个图像分块的宽度。单位为像素（px）。 |
+| TILE_WIDTH | 'TiffTileWidth' | 每个图像分块的宽度。单位：像素（px）。 |
 | MAKE | 'TiffMake' | 拍摄设备制造商。 |
 | MODEL | 'TiffModel' | 拍摄设备型号名称或编号。 |
 | HOST_COMPUTER | 'TiffHostComputer' | 用于图像处理的主机或系统。 |
@@ -560,7 +562,7 @@
 
 ## AvisPropertyKey
 
-枚举，AVIS图片信息。
+表示AVIS图片信息的枚举。
 
 > **说明：**
 >
@@ -574,11 +576,11 @@
 
 | 名称              | 值                | 说明                   |
 | ----------------- | ----------------- | --------------------- |
-| DELAY_TIME    | 'AvisDelayTime'    | AVIS图片的每帧播放时长。<br>单位为毫秒（ms）。 |
+| DELAY_TIME    | 'AvisDelayTime'    | AVIS图片的每帧播放时长。<br>单位：毫秒（ms）。 |
 
 ## ImageFormat<sup>9+</sup>
 
-枚举，图片格式。
+表示图片格式的枚举。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -589,7 +591,7 @@
 
 ## ComponentType<sup>9+</sup>
 
-枚举，图像的组件类型。
+表示图像的组件类型的枚举。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -625,7 +627,7 @@
 
 ## CropAndScaleStrategy<sup>18+</sup>
 
-枚举，裁剪与缩放的先后策略。
+表示裁剪与缩放的先后策略的枚举。
 
 如果在配置解码选项[DecodingOptions](arkts-apis-image-i.md#decodingoptions7)时，未填入参数cropAndScaleStrategy，并且同时设置了参数desiredRegion和desiredSize，由于系统对于不同图片格式采用的解码算法不同，最终解码效果将略有差异。
 
@@ -646,20 +648,20 @@
 
 ## HdrMetadataKey<sup>12+</sup>
 
-枚举，[pixelmap](arkts-apis-image-PixelMap.md)使用的HDR相关元数据信息的关键字。
+表示[PixelMap](arkts-apis-image-PixelMap.md)使用的HDR相关元数据信息的关键字的枚举。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 | 名称          | 值       | 说明         |
 | ------------- | ----------| ------------ |
-| HDR_METADATA_TYPE    | 0    | [pixelmap](arkts-apis-image-PixelMap.md)使用的元数据类型。  |
+| HDR_METADATA_TYPE    | 0    | [PixelMap](arkts-apis-image-PixelMap.md)使用的元数据类型。  |
 | HDR_STATIC_METADATA  | 1    | 静态元数据。   |
 | HDR_DYNAMIC_METADATA | 2    | 动态元数据。   |
 | HDR_GAINMAP_METADATA | 3    | Gainmap使用的元数据。   |
 
 ## HdrMetadataType<sup>12+</sup>
 
-枚举，[HdrMetadataKey](#hdrmetadatakey12)中HDR_METADATA_TYPE关键字对应的值。
+表示[HdrMetadataKey](#hdrmetadatakey12)中HDR_METADATA_TYPE关键字对应的值的枚举。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -672,34 +674,34 @@
 
 ## AntiAliasingLevel<sup>12+</sup>
 
-缩放时的缩放算法。
+缩放时的插值算法。可根据缩放质量和性能需求选择合适的级别。
 
-**原子化服务API**：从API version 14 开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 | 名称                   |   值   | 说明              |
 | ---------------------- | ------ | ----------------- |
-| NONE                | 0      | 最近邻插值算法。   |
-| LOW                 | 1      | 双线性插值算法。   |
-| MEDIUM              | 2      | 双线性插值算法，同时开启Mipmap。缩小图片时建议使用。   |
-| HIGH                | 3      | 三次插值算法。   |
+| NONE                | 0      | 最近邻插值算法。<br>速度最快，放大时会有明显的马赛克/锯齿感，适合对性能要求高、对画质要求低的快速缩放场景。 |
+| LOW                 | 1      | 双线性插值算法。<br>适合一般缩放场景。   |
+| MEDIUM              | 2      | 双线性插值算法，同时开启Mipmap。<br>适合缩小图片的场景，能极好地消除大幅缩小时的混叠与纹理闪烁。   |
+| HIGH                | 3      | 三次卷积插值算法。<br>适合对画质要求较高的放大场景。   |
 
 ## AllocatorType<sup>15+</sup>
 
-枚举，用于图像解码的内存类型。
+表示用于图像解码的内存类型的枚举。开发者可根据场景选择合适的内存申请类型。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 | 名称         | 值   | 说明                               |
 | ------------ | ---- | ---------------------------------- |
-| AUTO         | 0    | 系统决定内存申请方式。     |
-| DMA          | 1    | 使用DMA内存申请方式。            |
-| SHARE_MEMORY | 2    | 使用SHARE_MEMORY的内存申请方式。 |
+| AUTO         | 0    | 系统决定内存申请类型。     |
+| DMA          | 1    | 使用DMA（Direct Memory Access，直接内存访问）的内存类型，适用于对解码及渲染性能有较高要求的场景。根据设备硬件的差异可能会在每行像素的末尾产生用于内存对齐的空白填充字节。            |
+| SHARE_MEMORY | 2    | 使用共享内存（Share Memory）的内存类型。 |
 
 ## Orientation<sup>23+</sup>
 
-枚举，图像方向类型。
+表示图像方向类型的枚举。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -718,7 +720,7 @@
 
 ## FocusMode<sup>23+</sup>
 
-枚举，焦点模式类型。
+表示焦点模式类型的枚举。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -733,7 +735,7 @@
 
 ## XmageColorMode<sup>23+</sup>
 
-枚举，XMAGE颜色模式类型。
+表示XMAGE颜色模式类型的枚举。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -748,7 +750,7 @@
 
 ## XMPTagType
 
-枚举，XMP标签类型。
+表示XMP标签类型的枚举。
 
 **起始版本：** 26.0.0
 

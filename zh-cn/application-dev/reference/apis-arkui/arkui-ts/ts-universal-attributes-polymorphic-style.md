@@ -62,7 +62,7 @@ stateStyles(value: StateStyles): T
 | focused | any | 否 | 是 | 组件获焦状态的样式。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | clicked | any | 否 | 是 | 组件点击状态的样式。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | selected<sup>10+</sup> | object | 否 | 是 | 组件选中状态的样式。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| hovered | object | 否 | 是 | 组件悬浮状态的样式。<br/>**起始版本：** 26.0.0 <br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| hovered | object | 否 | 是 | 组件悬浮状态的样式。<br/>**起始版本：** 26.0.0 <br/>**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。 <br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 **selected选中状态说明**
 
