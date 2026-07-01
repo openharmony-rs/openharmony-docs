@@ -2211,6 +2211,100 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 })
 ```
 
+### findElementByFocusDirection
+
+findElementByFocusDirection(condition: FocusDirection, type: FocusRuleType): Promise\<AccessibilityElement>
+
+根据焦点方向和聚焦类型查找元素。使用Promise异步回调。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**参数：**
+
+| 名称 | 类型 | 必填 | 描述 |
+| -------- | ---- | -------- | ------------------------------------------------------------ |
+| condition | [FocusDirection](js-apis-inner-application-accessibilityExtensionContext.md#focusdirection) | 是 | 焦点方向。 |
+| type | [FocusRuleType](./js-apis-accessibility-sys.md#focusruletype) | 是 | 聚焦类型。 |
+
+**返回值：**
+
+| 类型                                      | 描述                   |
+| ---------------------------------------- | --------------------- |
+| Promise\<[AccessibilityElement](#accessibilityelement)> | Promise对象，返回指定焦点方向和聚焦类型的元素。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
+
+| 错误码ID  | 错误信息                                    |
+| ------- | ---------------------------------------- |
+| 201 | Permission verification failed.The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 9300006 | The target application failed to connect to accessibility service. |
+
+**示例：**
+
+```ts
+// Page.ets
+// 点击二级标题1使其成为无障碍焦点元素，向下方向、聚焦类型为标题的下一个焦点元素是二级标题2。
+  build() {
+    Text('Connect')
+        .id('connect')
+        .fontSize($r('app.float.page_text_font_size'))
+        .fontWeight(FontWeight.Bold)
+        
+    SubHeader({
+      secondaryTitle: '二级标题1',
+      operationType: OperationType.BUTTON,
+      operationItem: [{
+        value: '操作',
+        action: () => {
+          Prompt.showToast({ message: 'demo' });
+        }
+      }]
+    })
+
+    TextInput({ placeholder: 'please input...' })
+        .id('text_input')
+        .fontSize($r('app.float.page_text_font_size'))
+
+    SubHeader({
+      secondaryTitle: '二级标题2',
+      operationType: OperationType.BUTTON,
+      operationItem: [{
+        value: '操作',
+        action: () => {
+          Prompt.showToast({ message: 'demo' });
+        }
+      }]
+    })
+  }
+// ...
+
+// AccessibilityExtAbility.ets
+import { AccessibilityElement, FocusRuleType } from '@kit.AccessibilityKit';
+
+axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) => {
+    focus.findElementByFocusDirection('down', FocusRuleType.FOCUS_BY_TITLE).then((element: AccessibilityElement) => {
+        console.info("findElementByFocusDirection DOWN componentId: " + element.componentId);
+    }).catch((err: BusinessError) => {
+        console.error(`findElementByFocusDirection DOWN failed, code: ${err.code}, message: ${err.message}`);
+    })
+}).catch((err: BusinessError) => {
+  console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
+})
+```
+
 ### findElementsByAccessibilityHintText<sup>20+</sup>
 
 findElementsByAccessibilityHintText(condition: string): Promise\<Array\<AccessibilityElement>>
@@ -2397,6 +2491,100 @@ import { AccessibilityElement } from '@kit.AccessibilityKit';
 
 axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) => {
     focus.findElementsByCondition("bypassSelf", "forward").then((res: FocusMoveResult) => {
+        console.info("findElementsByCondition result: " + res.result);
+    }).catch((err: BusinessError) => {
+        console.error(`findElementsByCondition failed, code: ${err.code}, message: ${err.message}`);
+    })
+}).catch((err: BusinessError) => {
+  console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
+})
+```
+
+### findElementsByCondition
+
+findElementsByCondition(rule: FocusRule, condition: FocusCondition, type: FocusRuleType): Promise\<FocusMoveResult>
+
+查询满足条件的可聚焦节点。使用Promise异步回调。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**参数：**
+
+| 名称 | 类型 | 必填 | 描述 |
+| -------- | ---- | -------- | ------------------------------------------------------------ |
+| rule | [FocusRule](#focusrule23) | 是| 检查当前节点及其子节点的规则。 |
+| condition | [FocusCondition](#focuscondition23) | 是| 表示查询可聚焦节点方式。 |
+| type | [FocusRuleType](./js-apis-accessibility-sys.md#focusruletype) | 是 | 聚焦类型。 |
+
+**返回值：**
+
+| 类型                                      | 描述                   |
+| ---------------------------------------- | --------------------- |
+| Promise\<[FocusMoveResult](#focusmoveresult23)> | Promise对象，返回查询结果对象。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息                                    |
+| ------- | ---------------------------------------- |
+| 201 | Permission verification failed.The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+
+```ts
+// Page.ets
+  build() {
+    Text('Connect')
+        .id('connect')
+        .fontSize($r('app.float.page_text_font_size'))
+        .fontWeight(FontWeight.Bold)
+        
+    SubHeader({
+      secondaryTitle: '二级标题1',
+      operationType: OperationType.BUTTON,
+      operationItem: [{
+        value: '操作',
+        action: () => {
+          Prompt.showToast({ message: 'demo' });
+        }
+      }]
+    })
+
+    TextInput({ placeholder: 'please input...' })
+        .id('text_input')
+        .fontSize($r('app.float.page_text_font_size'))
+
+    SubHeader({
+      secondaryTitle: '二级标题2',
+      operationType: OperationType.BUTTON,
+      operationItem: [{
+        value: '操作',
+        action: () => {
+          Prompt.showToast({ message: 'demo' });
+        }
+      }]
+    })
+  }
+// ...
+
+// AccessibilityExtAbility.ets
+
+import { AccessibilityElement, FocusRuleType } from '@kit.AccessibilityKit';
+
+axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) => {
+    focus.findElementsByCondition("bypassSelf", "forward", FocusRuleType.FOCUS_BY_TITLE).then((res: FocusMoveResult) => {
         console.info("findElementsByCondition result: " + res.result);
     }).catch((err: BusinessError) => {
         console.error(`findElementsByCondition failed, code: ${err.code}, message: ${err.message}`);
