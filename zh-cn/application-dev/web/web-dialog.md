@@ -64,6 +64,7 @@
 
     ArkTS-Sta示例：
     <!-- @[AchieveAlertDialogPage1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage1.ets) -->
+    
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     import {
@@ -84,14 +85,14 @@
     } from '@ohos.arkui.component'
     import { State } from '@ohos.arkui.stateManagement'
     import { webview } from '@kit.ArkWeb';
-
+    
     @Entry
     @Component
     struct Index {
       @State message: string = 'Hello World';
       webviewController: webview.WebviewController = new webview.WebviewController(undefined);
       uiContext: UIContext = this.getUIContext();
-
+    
       build() {
         Row() {
           Web({ src: $rawfile('test.html'), controller: this.webviewController })
