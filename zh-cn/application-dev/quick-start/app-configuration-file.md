@@ -31,16 +31,6 @@
     "versionCode": 1000000,
     "versionName": "1.0.0",
     "icon": "$media:layered_image",
-    "alternateIcons": [
-      {
-        "name": "summer_theme",
-        "icon": "$media:layered-image"
-      },
-      {
-        "name": "winter_theme",
-        "icon": "$media:background"
-      }
-    ],
     "label": "$string:app_name",
     "description": "$string:description_application",
     "minAPIVersion": 9,
