@@ -109,11 +109,12 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     fetchColumns: [],
     predicates: predicates
   };
+
   let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> | null = null;
   try {
     fetchResult = await phAccessHelper.getAlbums(
-      photoAccessHelper.AlbumType.USER, 
-      photoAccessHelper.AlbumSubtype.USER_GENERIC, 
+      photoAccessHelper.AlbumType.USER,
+      photoAccessHelper.AlbumSubtype.USER_GENERIC,
       fetchOptions);
         
     let album: photoAccessHelper.Album = await fetchResult.getFirstObject();
