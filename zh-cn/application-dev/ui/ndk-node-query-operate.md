@@ -18,7 +18,7 @@ uniqueId是系统分配的唯一标识的节点Id。
 
 <!-- @[ndknodequeryoperate1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/InquireUniqueId.cpp) -->  
 
-```cpp
+``` C++
 const unsigned int VALUE_1 = 480;
 const unsigned int VALUE_2 = 300;
 const unsigned int VALUE_3 = 50;
