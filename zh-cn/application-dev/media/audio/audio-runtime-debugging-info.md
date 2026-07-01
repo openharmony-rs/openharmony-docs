@@ -436,6 +436,24 @@ debugManager.printLoopbackInfo(audioLoopback, file.fd);
 fs.closeSync(file);
 ```
 
+**ArkTS-Sta示例：**
+
+<!-- @[print_LoopbackInfo](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioLoopbackDebugInfo_Sta/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// audioLoopback为已创建并处于可用状态（AVAILABLE_IDLE或AVAILABLE_RUNNING）的AudioLoopback实例。
+let audioDebuggingManager: audio.AudioDebuggingManager = audioManager.getDebuggingManager();
+
+// 输出到hilog日志。
+audioDebuggingManager.printLoopbackInfo(audioLoopback, -1);
+
+// 输出到文件。
+let filePath = this.context.filesDir + '/audio_loopback_info.txt';
+let fd = fileio.openSync(filePath, fileio.OpenMode.CREATE | fileio.OpenMode.WRITE_ONLY | fileio.OpenMode.TRUNC).fd;
+audioDebuggingManager.printLoopbackInfo(audioLoopback, fd);
+fileio.closeSync(fd);
+```
+
 **输出示例：**
 
 ```text
