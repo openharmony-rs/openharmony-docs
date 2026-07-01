@@ -31,11 +31,13 @@
 
 ![live-form-click-timeline.png](figures/live-form-click-timeline.png)
 
-定时定点刷新互动卡片动效的时序图如下。
-
 **图4** 定时定点触发互动卡片动效时序图
 
 ![live-form-update-timeline.png](figures/live-form-update-timeline.png)
+
+**图5** 摇一摇触发互动卡片动效时序图
+
+![live-form-shake-timeline.png](figures/live-form-shake-timeline.png)
 
 ## 约束和限制
 
@@ -56,13 +58,13 @@
 | 4 * 4 | 不超过AD边长的125%。| 不超过AB边长的125%。|
 | 6 * 4 | 不超过AD边长的125%。| 不超过AB边长的110%。|
 
-**图5** 互动卡片动效区域申请规则说明
+**图6** 互动卡片动效区域申请规则说明
 
 ![live-form-overflow-rule.png](figures/live-form-overflow-rule.png)
 
 例如：某设备上一个2*2卡片宽度为158vp，高度为158vp。对应上图则有：
 
-（1）AD=158vp，AB=158vp，IJ=158\*1.5=237vp，IL=158\*1.5=237vp。
+（1）AD=158vp，AB=158vp，IJ=158\*1.5=237vp，JK=158\*1.5=237vp。
 
 （2）IA两点水平相距39.5vp，垂直相距39.5vp。
 

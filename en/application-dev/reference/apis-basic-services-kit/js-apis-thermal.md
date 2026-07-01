@@ -23,7 +23,7 @@ import {thermal} from '@kit.BasicServicesKit';
 
 registerThermalLevelCallback(callback: Callback&lt;ThermalLevel&gt;): void
 
-Registers a callback to be invoked when the thermal level changes. This API uses an asynchronous callback to return the result.
+Subscribes to thermal level changes. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.PowerManager.ThermalManager
 
@@ -37,7 +37,7 @@ Registers a callback to be invoked when the thermal level changes. This API uses
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 401     | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
@@ -58,7 +58,7 @@ try {
 
 unregisterThermalLevelCallback(callback?: Callback\<void>): void
 
-Unregisters from the thermal level changes. This API uses an asynchronous callback to return the result.
+Unsubscribes from thermal level changes. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.PowerManager.ThermalManager
 
@@ -72,7 +72,7 @@ Unregisters from the thermal level changes. This API uses an asynchronous callba
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 401     | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
@@ -139,7 +139,7 @@ thermal.subscribeThermalLevel((err: Error, level: thermal.ThermalLevel) => {
 
 unsubscribeThermalLevel(callback?: AsyncCallback\<void>): void
 
-Unsubscribes from the thermal level changes. This API uses an asynchronous callback to return the result.
+Unsubscribes from thermal level changes. This API uses an asynchronous callback to return the result.
 
 > **NOTE**<br>This API is supported since API version 8 and deprecated since API version 9. You are advised to use [thermal.unregisterThermalLevelCallback](#thermalunregisterthermallevelcallback9) instead.
 

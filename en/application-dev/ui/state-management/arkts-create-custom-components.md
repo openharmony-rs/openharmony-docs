@@ -71,15 +71,24 @@ struct ParentComponent {
 
 To fully understand the preceding example, a knowledge of the following concepts is essential:
 
-- [Basic Structure of a Custom Component](#basic-structure-of-a-custom-component)
-
-- [Member Functions/Variables](#member-functionsvariables)
-
-- [Rules for Custom Component Parameters](#rules-for-custom-component-parameters)
-
-- [build() Implementation Rules](#build-implementation-rules)
-
-- [Universal Style of a Custom Component](#universal-style-of-a-custom-component)
+- [Creating a Custom Component](#creating-a-custom-component)
+  - [Basic Usage of Custom Components](#basic-usage-of-custom-components)
+  - [Basic Structure of a Custom Component](#basic-structure-of-a-custom-component)
+    - [struct](#struct)
+    - [@Entry](#entry)
+    - [@Component](#component)
+    - [@ComponentV2](#componentv2)
+    - [build()](#build)
+    - [@Reusable](#reusable)
+    - [@ReusableV2](#reusablev2)
+  - [Member Functions/Variables](#member-functionsvariables)
+  - [Rules for Custom Component Parameters](#rules-for-custom-component-parameters)
+  - [build() Implementation Rules](#build-implementation-rules)
+  - [Universal Style of a Custom Component](#universal-style-of-a-custom-component)
+  - [Cross-Ability Migration of Custom Components](#cross-ability-migration-of-custom-components)
+  - [Constraints](#constraints)
+    - [V1 Custom Components Do Not Support Static Code Blocks](#v1-custom-components-do-not-support-static-code-blocks)
+    - [Mixing @Component and @ComponentV2](#mixing-component-and-componentv2)
 
 
 ## Basic Structure of a Custom Component
@@ -541,7 +550,7 @@ Whatever declared in **build()** are called UI descriptions. UI descriptions mus
   
   In ArkUI state management, UI re-render is driven by state.
 
-  ![en-us_image_0000001651365257](figures/en-us_image_0000001651365257.png)
+  ![en-us_image_0000001651365257](figures/State-UI-function.png)
 
   Therefore, do not change any state variable in the **build()** or \@Builder decorated method of a custom component. Otherwise, loop rendering may result. The impact of **Text('${this.count++}')** varies depending on the update mode:
 
@@ -594,7 +603,7 @@ struct ChildComponent {
 struct MyComponent {
   build() {
     Row() {
-      / / Property settings to the ChildComponent instead of Button in ChildComponent.
+      // Property settings to the ChildComponent instead of Button in ChildComponent.
       ChildComponent()
         .width(200)
         .height(300)

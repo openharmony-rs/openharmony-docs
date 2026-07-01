@@ -652,6 +652,20 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **起始版本**：18
 
+## ohos.permission.atomicService.MANAGE_STORAGE
+
+允许原子化服务小游戏进行存储空间大小的管理。
+
+<!--RP96--><!--RP96End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：20
+
 ## ohos.permission.MANAGE_SCREEN_TIME_GUARD
 
 允许应用调用屏幕时间守护相关接口，进行屏幕使用限制、应用访问控制、管控使用时间等操作。
@@ -710,7 +724,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 ## ohos.permission.USE_FLOAT_BALL
 
-允许应用使用全局闪控球的能力。
+允许应用使用闪控球的能力。
 
 <!--RP46--><!--RP46End-->
 
@@ -718,13 +732,15 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：系统授权（system_grant）
 
-**支持设备**：Phone | Tablet
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：20
 
+**变更信息**：从API版本26.0.0开始，增加支持在PC/2in1上申请。
+
 ## ohos.permission.AUTO_RESTORE_MAIN_WINDOW
 
-允许应用使用全局闪控球的自动恢复到应用主窗口的能力。
+允许应用使用闪控球的自动恢复到应用主窗口的能力。
 
 **申请条件**：需要与闪控球权限[ohos.permission.USE_FLOAT_BALL](#ohospermissionuse_float_ball)一起，才可申请此权限。
 
@@ -870,7 +886,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：系统授权（system_grant）
 
-**支持设备**：Phone | PC/2in1 | Tablet
+**支持设备**：Phone | PC/2in1 | Tablet | TV
 
 **起始版本**：21
 
@@ -1242,7 +1258,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 ## ohos.permission.FLOAT_VIEW
 
-允许应用使用应用浮窗。
+允许应用使用闪控窗。
 
 <!--RP78--><!--RP78End-->
 
@@ -1302,6 +1318,22 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **起始版本**：26.0.0
 
+## ohos.permission.ACCESS_GAME_BUDDY_SERVICE
+
+允许应用访问游戏伴随服务。
+
+获取该权限后，应用可使用游戏伴随服务提供的接口，比如获取正在运行的游戏应用截图、通过麦克风获取用户语音数据等。
+
+<!--RP93--><!--RP93End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone
+
+**起始版本**：26.0.0
+
 ## ohos.permission.KNOCK_COLLABORATION
 
 允许应用通过碰一碰的形式连接指定设备并实现信息交互和应用互动。
@@ -1329,3 +1361,62 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **支持设备**：PC/2in1 | Phone | Tablet
 
 **起始版本**：24
+
+## ohos.permission.kernel.SUPPORT_LOCAL_PLUGIN
+
+允许应用安装与加载自分发插件。
+
+<!--RP90--><!--RP90End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
+## ohos.permission.ALLOW_USE_BM
+
+允许应用在开发者模式下调用BM工具。
+
+<!--RP94--><!--RP94End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
+## ohos.permission.ACCESS_DIGITAL_IDENTITY
+
+允许应用使用数字身份服务导入数字凭证。
+
+获取该权限后，应用可以将用户的数字身份凭证导入设备，进行安全存储以及后续便捷出示。
+
+<!--RP91--><!--RP91End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.CAPTURE_PLAYBACK_DOWNLINK
+
+允许应用录制蜂窝通话下行数据。
+
+<!--RP95--><!--RP95End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | Tablet
+
+**起始版本**：26.0.0
+

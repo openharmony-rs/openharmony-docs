@@ -27,6 +27,7 @@ typedef struct Input_InterceptorEventCallback {...} Input_InterceptorEventCallba
 
 | 名称 | 描述 |
 | -- | -- |
+| [Input_KeyEventCallback](#input_keyeventcallback) keycallback | 按键事件的回调函数。 |
 | [Input_MouseEventCallback](#input_mouseeventcallback) mouseCallback | 鼠标事件的回调函数。 |
 | [Input_TouchEventCallback](#input_toucheventcallback) touchCallback | 触屏输入事件的回调函数。 |
 | [Input_AxisEventCallback](#input_axiseventcallback) axisCallback | 轴事件的回调函数。 |

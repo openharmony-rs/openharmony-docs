@@ -1,9 +1,9 @@
-# Es2abc编译器错误码
+# es2abc编译器错误码
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @huyunhui1; @oh-rgx1; @zmw1-->
-<!--Designer: @ctw-ian-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @zmw1; @huyunhui1-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @HelloCrease-->
 
@@ -23,7 +23,7 @@ SyntaxError: Concurrent function should only use import variable or local variab
 
 **错误描述**
 
-出现语法错误，编译器无法解析源文件中的某个语法结构，通常伴随具体的文件名与位置信息（行号与列号）
+出现语法错误，编译器无法解析源文件中的某个语法结构，通常伴随具体的文件名与位置信息（行号与列号）。
 
 **可能原因**
 
@@ -38,7 +38,7 @@ SyntaxError: Concurrent function should only use import variable or local variab
 2. 修复语法错误，如添加缺失的括号或关键字；
 3. 使用 DevEco Studio 的语法检查工具协助发现语法错误；
 4. 若使用新语法特性，确保当前编译器版本支持该特性；
-5. 如果存在使用加密软件，请关闭加密软件后重新编译。
+5. 如果使用了加密软件，请关闭加密软件后重新编译。
 
 ## 10706001 规格错误
 

@@ -1,8 +1,8 @@
 # Matrix2D
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,7 +10,7 @@
 
 Matrix2D的使用场景包括：
 
-1. [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)和[OffscreenCanvasRenderingContext2D](ts-offscreencanvasrenderingcontext2d.md)中调用[getTransform](ts-canvasrenderingcontext2d.md#gettransform)接口获取画布的图形变换矩阵Matrix2D对象，调用[setTransform](ts-canvasrenderingcontext2d.md#settransform-1)接口对后续绘制内容进行Matrix2D对象对应的图形变换。
+1. [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)和[OffscreenCanvasRenderingContext2D](ts-offscreencanvasrenderingcontext2d.md)中调用[getTransform](ts-components-canvas-common-method.md#gettransform)接口获取画布的图形变换矩阵Matrix2D对象，调用[setTransform](ts-components-canvas-common-method.md#settransform-1)接口对后续绘制内容进行Matrix2D对象对应的图形变换。
 
 2. [CanvasPattern](ts-components-canvas-canvaspattern.md)中调用[setTransform](ts-components-canvas-canvaspattern.md#settransform)接口对[CanvasPattern](ts-components-canvas-canvaspattern.md)对象进行Matrix2D对象对应的图形变换。
 
@@ -20,7 +20,7 @@ Matrix2D的使用场景包括：
 > 
 > 从 API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
-## 构造函数
+## 接口
 
 ### constructor<sup>10+</sup>
 
@@ -31,6 +31,8 @@ constructor()
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -43,6 +45,8 @@ constructor(unit: LengthMetricsUnit)
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -321,7 +325,7 @@ rotate(degree: number, rx?: number, ry?: number): Matrix2D
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| degree | number | 是  | 旋转弧度，取值范围无限制。顺时针方向为正弧度，可以通过`角度 * Math.PI / 180`将角度转换为弧度值传入该接口。<br>异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br>默认单位：弧度|
+| degree | number | 是  | 旋转角度，取值范围无限制。顺时针方向为正弧度，可以通过`角度 * Math.PI / 180`将角度转换为弧度值传入该接口。<br>异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br>默认单位：弧度|
 | rx     | number | 否  | 旋转点的水平方向坐标，取值范围无限制。<br>默认单位：vp<br>异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br>默认值：0    |
 | ry     | number | 否  | 旋转点的垂直方向坐标，取值范围无限制。<br>默认单位：vp<br>异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br>默认值：0    |
 
@@ -448,7 +452,7 @@ scale(sx?: number, sy?: number): Matrix2D
 
 **参数：**
 
-| 参数 | 类型   | 必填 | 描述               |
+| 参数名 | 类型   | 必填 | 说明               |
 | ---- | ------ | ---- | ------------------ |
 | sx   | number | 否   | 水平缩放比例系数，取值范围无限制。<br>异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br>默认值：1.0 |
 | sy   | number | 否   | 垂直缩放比例系数，取值范围无限制。<br>异常值undefined和null按无效值处理，NaN和Infinity会导致Matrix2D异常。<br>默认值：1.0 |

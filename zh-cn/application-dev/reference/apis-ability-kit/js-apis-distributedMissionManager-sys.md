@@ -22,6 +22,8 @@
 import { distributedMissionManager } from '@kit.AbilityKit';
 ```
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
+
 ## distributedMissionManager.registerMissionListener
 
 registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback, callback: AsyncCallback&lt;void&gt;): void;
@@ -33,6 +35,8 @@ registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback, 
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
 
 **参数：**
 
@@ -100,6 +104,8 @@ registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback):
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
 
 **参数：**
 
@@ -171,6 +177,8 @@ unRegisterMissionListener(parameter: MissionDeviceInfo, callback: AsyncCallback&
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
+
 **参数：**
 
 | 参数名       | 类型                                      | 必填   | 说明        |
@@ -219,6 +227,8 @@ unRegisterMissionListener(parameter: MissionDeviceInfo): Promise&lt;void&gt;
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
 
 **参数：**
 
@@ -269,6 +279,8 @@ startSyncRemoteMissions(parameter: MissionParameter, callback: AsyncCallback&lt;
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
 
 **参数：**
 
@@ -322,6 +334,8 @@ startSyncRemoteMissions(parameter: MissionParameter): Promise&lt;void&gt;
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
 
 **参数：**
 
@@ -379,6 +393,8 @@ stopSyncRemoteMissions(parameter: MissionDeviceInfo, callback: AsyncCallback&lt;
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
+
 **参数：**
 
 | 参数名       | 类型                                      | 必填   | 说明        |
@@ -429,6 +445,8 @@ stopSyncRemoteMissions(parameter: MissionDeviceInfo): Promise&lt;void&gt;
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
 
 **参数：**
 
@@ -482,6 +500,8 @@ continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback, callba
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
 
 **参数：**
 
@@ -550,6 +570,8 @@ continueMission(parameter: ContinueDeviceInfo, options: ContinueCallback): Promi
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
 
 **参数：**
 
@@ -621,6 +643,8 @@ continueMission(parameter: ContinueMissionInfo, callback: AsyncCallback&lt;void&
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
+
 **参数：**
 
 | 参数名       | 类型                                      | 必填   | 说明    |
@@ -681,6 +705,8 @@ continueMission(parameter: ContinueMissionInfo): Promise&lt;void&gt;
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
 
 **参数：**
 
@@ -746,6 +772,8 @@ on(type: 'continueStateChange',  callback: Callback&lt;ContinueCallbackInfo&gt;)
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
+
 **参数：**
 
 | 参数名       | 类型                                       | 必填   | 说明       |
@@ -788,6 +816,8 @@ off(type: 'continueStateChange',  callback?: Callback&lt;ContinueCallbackInfo&gt
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
+
 **参数：**
 
 | 参数名       | 类型                                       | 必填   | 说明       |
@@ -828,6 +858,8 @@ type MissionCallback = _MissionCallback
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
+
 | 类型 | 说明 |
 | --- | --- |
 | [_MissionCallback](js-apis-inner-application-missionCallbacks-sys.md) | 作为可以registerMissionListener的入参，表示开始同步后，建立的回调函数。 |
@@ -841,6 +873,8 @@ type MissionParameter = _MissionParameter
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
 
 | 类型 | 说明 |
 | --- | --- |
@@ -856,6 +890,8 @@ type MissionDeviceInfo = _MissionDeviceInfo
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
+
 | 类型 | 说明 |
 | --- | --- |
 | [_MissionDeviceInfo](js-apis-inner-application-missionDeviceInfo-sys.md) | 可以作为registerMissionListener的入参，表示注册监听时所需参数的枚举。 |
@@ -867,6 +903,8 @@ type MissionDeviceInfo = _MissionDeviceInfo
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
 
 | 名称           | 值       | 说明                                                         |
 | ------------- | --------- | ------------------------------------------------------------ |
@@ -880,6 +918,8 @@ type MissionDeviceInfo = _MissionDeviceInfo
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
 
 | 名称       | 类型    | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |

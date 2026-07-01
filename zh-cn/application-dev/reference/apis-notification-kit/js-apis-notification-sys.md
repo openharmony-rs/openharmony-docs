@@ -711,12 +711,6 @@ isNotificationEnabled(): Promise\<boolean\>
 
 **系统API**：此接口为系统接口，三方应用不支持调用。
 
-**参数：**
-
-| 参数名   | 类型         | 必填 | 说明       |
-| ------ | ------------ | ---- | ---------- |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是   | 指定应用的包信息。 |
-
 **返回值：**
 
 | 类型                                                        | 说明                                                         |

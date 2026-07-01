@@ -144,7 +144,7 @@ struct FlexExample1 {
 }
 ```
 
-![zh-cn_image_0000001219744189](figures/zh-cn_image_0000001219744189.PNG)
+![flex1](figures/flex1.PNG)
 
 ### 示例2（子组件单/多行排列）
 该示例通过设置wrap实现子组件单行或多行的排列效果。
@@ -192,7 +192,7 @@ struct FlexExample2 {
 }
 ```
 
-![zh-cn_image_0000001174264366](figures/zh-cn_image_0000001174264366.png)
+![flex2](figures/flex2.png)
 
 ### 示例3（子组件在主轴上的对齐格式）
 该示例通过设置justifyContent实现子组件在主轴上不同的对齐效果。
@@ -200,7 +200,7 @@ struct FlexExample2 {
 // xxx.ets
 @Component
 struct JustifyContentFlex {
-  justifyContent : number = 0;
+  justifyContent: number = 0;
 
   build() {
     Flex({ justifyContent: this.justifyContent }) {
@@ -243,7 +243,7 @@ struct FlexExample3 {
 }
 ```
 
-![zh-cn_image_0000001174582854](figures/zh-cn_image_0000001174582854.PNG)
+![flex3](figures/flex3.PNG)
 
 ### 示例4（子组件在交叉轴上的对齐方式）
 该示例通过设置alignItems实现子组件在交叉轴上的不同的对齐效果。
@@ -251,7 +251,7 @@ struct FlexExample3 {
 // xxx.ets
 @Component
 struct AlignItemsFlex {
-  alignItems : number = 0;
+  alignItems: number = 0;
 
   build() {
     Flex({ alignItems: this.alignItems }) {
@@ -294,7 +294,7 @@ struct FlexExample4 {
 }
 ```
 
-![zh-cn_image_0000001174422904](figures/zh-cn_image_0000001174422904.png)
+![flex4](figures/flex4.png)
 
 ### 示例5（多行内容的对齐方式）
 该示例通过设置alignContent实现多行内容的不同对齐效果。
@@ -357,7 +357,7 @@ struct FlexExample5 {
 }
 ```
 
-![zh-cn_image_0000001174422906](figures/zh-cn_image_0000001174422906.PNG)
+![flex5](figures/flex5.PNG)
 
 ### 示例6（子组件单/多行排列时的主/交叉轴间距）
 该示例通过设置space为单/多行排列的子组件确定在主/交叉轴上的间距。
@@ -366,7 +366,7 @@ import {LengthMetrics} from '@kit.ArkUI';
 
 @Entry
 @Component
-struct FlexExample2 {
+struct FlexExample6 {
   build() {
     Column() {
       Column({ space: 5 }) {
@@ -406,13 +406,13 @@ struct FlexExample2 {
 }
 ```
 
-![zh-cn_image_0000001174422907](figures/zh-cn_image_0000001174422907.PNG)
+![flex6](figures/flex6.PNG)
 
 ### 示例7（宽度自适应的Flex容器）
 该示例实现了Flex在宽度设置auto后可以自适应子组件布局的能力。
 ```ts
 @Component
-struct Demo {
+struct FlexExample7 {
   @Require @Prop text: string
 
   build() {
@@ -460,4 +460,4 @@ struct Index {
 }
 ```
 
-![zh-cn_flexDemo_7](figures/zh-cn_flexDemo_7.png)
+![flexDemo7](figures/flexDemo7.png)

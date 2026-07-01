@@ -5,7 +5,8 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:25:24.283Z pushedAt=2026-06-15T00:13:39.975Z -->
 
 The **touchEvent** module provides touch events reported by a device. It is inherited from [InputEvent](./js-apis-inputevent.md).
 
@@ -44,8 +45,8 @@ Defines the touch point information.
 
 | Name         | Type  | Read-Only  | Optional  | Description                                 |
 | ----------- | ------ | ---- | ---- | ----------------------------------- |
-| fixedDisplayX | number | No   | Yes   | **screenX** correction value in one-handed mode.|
-| fixedDisplayY | number | No   | Yes   | **screenY** correction value in one-handed mode.|
+| fixedDisplayX | number | No    | Yes    | Corrected value of the screenX coordinate in one-hand mode, in px. |
+| fixedDisplayY | number | No    | Yes    | Corrected value of the screenY coordinate in one-hand mode, in px. |
 | blobId<sup>24+</sup> | number | No   | Yes   | Touch point attribute ID. Currently, only single-finger touch is supported. The value **1** indicates left-hand touch, and the value **2** indicates right-hand touch.|
 
 ## TouchEvent

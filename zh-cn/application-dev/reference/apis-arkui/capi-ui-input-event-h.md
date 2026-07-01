@@ -328,7 +328,7 @@ enum anonymous4
 
 | 枚举项 | 描述 |
 | -- | -- |
-| UI_MOUSE_EVENT_ACTION_UNKNOWN = 0 | 无效行为。 |
+| UI_MOUSE_EVENT_ACTION_UNKNOWN = 0 | 无效行为。<br>**说明：** 此行为由系统侧处理，开发者无需关注。 |
 | UI_MOUSE_EVENT_ACTION_PRESS = 1 | 鼠标按键按下。 |
 | UI_MOUSE_EVENT_ACTION_RELEASE = 2 | 鼠标按键松开。 |
 | UI_MOUSE_EVENT_ACTION_MOVE = 3 | 鼠标移动。 |

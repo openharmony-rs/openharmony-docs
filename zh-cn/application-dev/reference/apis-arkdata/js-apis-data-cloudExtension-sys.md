@@ -6,17 +6,17 @@
 <!--Tester: @ltttjs; @logic42-->
 <!--Adviser: @ge-yafang-->
 
-端云共享Extension，提供第三方厂商适配共享云服务的能力。通过实现端云共享Extension提供的接口，对接端侧的数据共享到服务端，实现端云共享的发起、取消或退出，更改共享数据的操作权限、查询共享参与者、根据共享邀请码查询共享参与者、确认或更改共享邀请，并支持返回共享云服务的相关结果。
+端云共享Extension，提供第三方厂商适配共享云服务的能力。通过实现端云共享Extension提供的接口，将端侧的数据共享到服务端，实现端云共享的发起、取消或退出，更改共享数据的操作权限、查询共享参与者、根据共享邀请码查询共享参与者、确认或更改共享邀请，并支持返回共享云服务的相关结果。
 
-其中，端云共享资源标识是指：对于应用发起共享的每一条数据记录，该条数据在进行端云同步时会生成唯一的共享资源标识（字符串类型的值），此标识则作为该条数据记录共享时的识别标识。
+其中，端云共享资源标识是指：对于应用发起共享的每一条数据记录，该条数据在进行端云同步时会生成唯一的共享资源标识（字符串类型的值），此标识作为该条数据记录共享时的识别标识。
 
 端云共享参与者是指：共享发起者根据好友列表选中的参与当前数据共享的所有人员。
 
 端云共享邀请码是指：共享发起后，在共享的服务端会生成当前共享操作的邀请码，并将该邀请码附加到当前共享邀请中，通过推送消息推送到被邀请者的设备端，被邀请者可以通过该邀请码进行邀请的确认。
 
-同步云是指：端云同步的服务端，是同应用同账号跨设备的同步。
+同步云是指：端云同步的服务端，即同应用同账号跨设备的同步。
 
-共享云是指：端云共享的服务端，是同应用跨账号跨设备的共享。
+共享云是指：端云共享的服务端，即同应用跨账号跨设备的共享。
 
 > **说明：** 
 >
@@ -79,7 +79,7 @@ import { cloudExtension } from '@kit.ArkData';
 
 ## Flag
 
-描述数据库上执行操作的枚举。请使用枚举名称而非枚举值。
+描述数据库上执行操作的枚举。请使用枚举名而非枚举值。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -104,7 +104,7 @@ import { cloudExtension } from '@kit.ArkData';
 
 ## CloudType
 
-表示允许使用的云数据字段类型，接口参数具体类型根据其功能而定。
+表示云数据字段可使用的类型。各接口参数的实际类型视其功能而定。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -127,7 +127,7 @@ import { cloudExtension } from '@kit.ArkData';
 | 名称      | 类型                                                | 只读 | 可选 | 说明           |
 | --------- | --------------------------------------------------- | ---- | ---- | -------------- |
 | cloudInfo | [ServiceInfo](#serviceinfo)                         | 否   | 否  | 云服务信息。   |
-| apps      | Record&lt;string, [AppBriefInfo](#appbriefinfo)&gt; | 否   | 否   | 简要应用信息。 |
+| apps      | Record&lt;string, [AppBriefInfo](#appbriefinfo)&gt; | 否   | 否  | 简要应用信息。 |
 
 ## CloudData
 
@@ -139,7 +139,7 @@ import { cloudExtension } from '@kit.ArkData';
 | ---------- | ---------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | nextCursor | string                                                     | 否   | 否   | 查询游标。                                                   |
 | hasMore    | boolean                                                    | 否   | 否   | 服务器是否存在更多数据可供查询。true表示服务器上还有数据等待查询，false表示服务器上不存在可查询的数据。 |
-| values     | Array&lt;Record&lt;string, [CloudType](#cloudtype)&gt;&gt; | 否   | 否   | 需要查询数据的数组，包括data value（数据值）和[ExtensionValue](#extensionvalue)（扩展值）。 |
+| values     | Array&lt;Record&lt;string, [CloudType](#cloudtype)&gt;&gt; | 否   | 否   | 需要查询数据的数组，包括数据记录的实际值和[ExtensionValue](#extensionvalue)（扩展值）。 |
 
 ## AppBriefInfo
 
@@ -230,7 +230,7 @@ import { cloudExtension } from '@kit.ArkData';
 | 名称          | 类型   | 只读 | 可选 | 说明                   |
 | ------------- | ------ | ---- | ---- | ---------------------- |
 | databaseAlias | string | 否   | 否   | 服务器上数据库的名称。 |
-| id            | string | 否   | 否   | 订阅ID。              |
+| id            | string | 否   | 否   | 订阅ID。 |
 
 ## SubscribeInfo
 
@@ -251,8 +251,8 @@ import { cloudExtension } from '@kit.ArkData';
 
 | 名称     | 类型   | 只读 | 可选 | 说明                            |
 | -------- | ------ | ---- | ---- | ------------------------------- |
-| interval | number | 否   | 否    | 云数据库锁的持续时间，单位为s。 |
-| lockId   | number | 否   | 否    | 锁ID。                          |
+| interval | number | 否   | 否   | 云数据库锁的持续时间，单位为s。 |
+| lockId   | number | 否   | 否   | 锁ID。 |
 
 ## ErrorCode
 
@@ -275,6 +275,8 @@ import { cloudExtension } from '@kit.ArkData';
 createCloudServiceStub(instance: CloudService): Promise&lt;rpc.RemoteObject&gt;
 
 根据[CloudService](#cloudservice)类的实例创建对应的[RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject)对象，系统内部通过该对象调用[CloudService](#cloudservice)的实现接口。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -329,6 +331,8 @@ createShareServiceStub(instance: ShareCenter): Promise&lt;rpc.RemoteObject&gt;
 
 根据[ShareCenter](#sharecenter)类的实例创建对应的[RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject)对象，系统内部通过该对象调用[ShareCenter](#sharecenter)的实现接口，使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **参数：**
@@ -368,6 +372,8 @@ createCloudDBStub(instance: CloudDB): Promise&lt;rpc.RemoteObject&gt;
 
 根据[CloudDB](#clouddb)类的实例创建对应的[RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject)对象，系统内部通过该对象调用[CloudDB](#clouddb)的实现接口，使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **参数：**
@@ -406,6 +412,8 @@ class MyCloudService implements cloudExtension.CloudService {
 createAssetLoaderStub(instance: AssetLoader): Promise&lt;rpc.RemoteObject&gt;
 
 根据[AssetLoader](#assetloader)类的实例创建对应的[RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject)对象，系统内部通过该对象调用[AssetLoader](#assetloader)的实现接口，使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -450,13 +458,15 @@ generateId(count: number): Promise&lt;Result&lt;Array&lt;string&gt;&gt;&gt;
 
 为插入的云数据生成具有唯一性的ID。使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| count  | number | 是   | 表示要生成ID的数量。 |
+| count  | number | 是   | 表示要生成ID的数量。取值范围大于等于1。 |
 
 **返回值：**
 
@@ -487,6 +497,8 @@ class MyCloudDB implements cloudExtension.CloudDB {
 update(table: string, values: Array&lt;Record&lt;string, CloudType>>, extensions: Array&lt;Record&lt;string, CloudType>>): Promise&lt;Array&lt;Result&lt;Record&lt;string, CloudType>>>>
 
 通过该接口更新云上的数据。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -526,6 +538,8 @@ insert(table: string, values: Array<Record<string, CloudType>>, extensions: Arra
 
 将数据插入云数据库表中。使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **参数：**
@@ -564,6 +578,8 @@ delete(table: string, extensions: Array&lt;Record&lt;string, CloudType>>): Promi
 
 删除云数据库表中的指定数据。使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **参数：**
@@ -601,6 +617,8 @@ query(table: string, fields: Array&lt;string&gt;, queryCount: number, queryCurso
 
 在云数据库表中查询数据。使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **参数：**
@@ -609,7 +627,7 @@ query(table: string, fields: Array&lt;string&gt;, queryCount: number, queryCurso
 | ----------- | ------------- | ---- | ------------------------ |
 | table       | string        | 是   | 表名。                   |
 | fields      | Array&lt;string&gt; | 是   | 表示要查询的字段名数组。 |
-| queryCount  | number        | 是   | 表示要查询的数据记录条数。 |
+| queryCount  | number        | 是   | 表示要查询的数据记录条数。取值范围大于等于1。 |
 | queryCursor | string        | 是   | 表示要查询的游标。 |
 
 **返回值：**
@@ -647,6 +665,8 @@ lock(): Promise&lt;Result&lt;LockInfo&gt;&gt;
 
 为云数据库加锁。使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **返回值：**
@@ -658,8 +678,8 @@ lock(): Promise&lt;Result&lt;LockInfo&gt;&gt;
 **示例：**
 
 ```ts
-let test_time: number = 10;
-let test_lockId: number = 1;
+let testTime: number = 10;
+let testLockId: number = 1;
 class MyCloudDB implements cloudExtension.CloudDB {
   // ...
   async lock(): Promise<cloudExtension.Result<cloudExtension.LockInfo>> {
@@ -670,8 +690,8 @@ class MyCloudDB implements cloudExtension.CloudDB {
       code: cloudExtension.ErrorCode.SUCCESS,
       description: 'lock succeeded',
       value: {
-        interval: test_time,
-        lockId: test_lockId
+        interval: testTime,
+        lockId: testLockId
       }
     };
   }
@@ -684,6 +704,8 @@ class MyCloudDB implements cloudExtension.CloudDB {
 heartbeat(lockId: number): Promise&lt;Result&lt;LockInfo&gt;&gt;
 
 延长数据库的加锁时效。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -702,8 +724,8 @@ heartbeat(lockId: number): Promise&lt;Result&lt;LockInfo&gt;&gt;
 **示例：**
 
 ```ts
-let test_lockId: number = 1;
-let test_time: number = 10;
+let testLockId: number = 1;
+let testTime: number = 10;
 class MyCloudDB implements cloudExtension.CloudDB {
   // ...
   async heartbeat(lockId: number): Promise<cloudExtension.Result<cloudExtension.LockInfo>> {
@@ -714,8 +736,8 @@ class MyCloudDB implements cloudExtension.CloudDB {
       code: cloudExtension.ErrorCode.SUCCESS,
       description: 'heartbeat succeeded',
       value: {
-        interval: test_time,
-        lockId: test_lockId
+        interval: testTime,
+        lockId: testLockId
       }
     };
   }
@@ -728,6 +750,8 @@ class MyCloudDB implements cloudExtension.CloudDB {
 unlock(lockId: number): Promise&lt;Result&lt;boolean&gt;&gt;
 
 为云数据库解锁。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -772,6 +796,8 @@ getServiceInfo(): Promise<ServiceInfo&gt;
 
 获取服务器上的信息。使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **返回值：**
@@ -785,8 +811,8 @@ getServiceInfo(): Promise<ServiceInfo&gt;
 ```ts
 import { rpc } from '@kit.IPCKit';
 
-let test_space: number = 100;
-let test_userId: number = 1;
+let testSpace: number = 100;
+let testUserId: number = 1;
 
 class MyCloudService implements cloudExtension.CloudService {
   constructor() {}
@@ -797,9 +823,9 @@ class MyCloudService implements cloudExtension.CloudService {
     return {
       enableCloud: true,
       id: "test_id",
-      totalSpace: test_space,
-      remainingSpace: test_space,
-      user: test_userId,
+      totalSpace: testSpace,
+      remainingSpace: testSpace,
+      user: testUserId,
     };
   }
 }
@@ -811,13 +837,15 @@ getAppBriefInfo(): Promise<Record<string, AppBriefInfo>>
 
 获取简要应用信息。使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **返回值：**
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Promise&lt;Record&lt;string, [AppBriefInfo](#appbriefinfo)&gt;&gt; | Promise对象，返回与bundleName和 [AppBriefInfo](#appbriefinfo)相对应的键值对。 |
+| Promise&lt;Record&lt;string, [AppBriefInfo](#appbriefinfo)&gt;&gt; | Promise对象，返回以bundleName为键、[AppBriefInfo](#appbriefinfo)为值的键值对。 |
 
 **示例：**
 
@@ -843,9 +871,11 @@ class MyCloudService implements cloudExtension.CloudService {
 
 ### getAppSchema
 
- getAppSchema(bundleName: string): Promise&lt;Result&lt;AppSchema&gt;&gt;
+getAppSchema(bundleName: string): Promise&lt;Result&lt;AppSchema&gt;&gt;
 
 获取应用Schema（数据库模式）信息。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -888,7 +918,9 @@ class MyCloudService implements cloudExtension.CloudService {
 
 subscribe(subInfo: Record&lt;string, Array&lt;Database&gt;&gt;, expirationTime: number): Promise&lt;Result&lt;SubscribeInfo&gt;&gt;
 
-发起订阅，使用Promise异步回调。
+订阅云数据库的变化通知。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -908,7 +940,7 @@ subscribe(subInfo: Record&lt;string, Array&lt;Database&gt;&gt;, expirationTime: 
 **示例：**
 
 ```ts
-let test_time: number = 10;
+let testTime: number = 10;
 class MyCloudService implements cloudExtension.CloudService {
   constructor() {
   }
@@ -920,7 +952,7 @@ class MyCloudService implements cloudExtension.CloudService {
       code: cloudExtension.ErrorCode.SUCCESS,
       description: "subscribe success",
       value: {
-        expirationTime: test_time,
+        expirationTime: testTime,
         subscribe: {}
       }
     };
@@ -933,6 +965,8 @@ class MyCloudService implements cloudExtension.CloudService {
 unsubscribe(unsubscribeInfo: Record&lt;string, Array&lt;string&gt;&gt;): Promise&lt;number&gt;
 
 取消已订阅的云数据变化通知。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -965,9 +999,11 @@ class MyCloudService implements cloudExtension.CloudService {
 
 ### connectDB
 
- connectDB(bundleName: string, database: Database): Promise&lt;rpc.RemoteObject&gt;
+connectDB(bundleName: string, database: Database): Promise&lt;rpc.RemoteObject&gt;
 
 系统内部通过该接口获取[CloudDB](#clouddb)的[RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject)对象，可以通过[createCloudDBStub](#cloudextensioncreateclouddbstub)接口进行创建，使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -1009,6 +1045,8 @@ connectAssetLoader(bundleName: string, database: Database): Promise&lt;rpc.Remot
 
 系统内部通过该接口获取[AssetLoader](#assetloader)的[RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject)对象，可以通过[createAssetLoaderStub](#cloudextensioncreateassetloaderstub)接口进行创建，使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **参数：**
@@ -1049,14 +1087,16 @@ connectShareCenter(userId: number, bundleName: string): Promise&lt;rpc.RemoteObj
 
 系统内部通过该接口获取[ShareCenter](#sharecenter)的[RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject)对象，可以通过[createShareServiceStub](#cloudextensioncreateshareservicestub)接口进行创建，使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **参数：**
 
 | 参数名  | 类型                    | 必填 | 说明                                            |
 | ------- | ----------------------- | ---- | ----------------------------------------------- |
-| userId      | number  | 是   | 表示用户ID。         |
-| bundleName  | string  | 是   | 应用包名。   |
+| userId      | number  | 是   | 表示用户账号ID。|
+| bundleName  | string  | 是   | 应用包名。 |
 
 **返回值：**
 
@@ -1093,6 +1133,8 @@ download(table: string, gid: string, prefix: string, assets: Array&lt;CloudAsset
 
 通过该接口实现资产的下载。使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **参数：**
@@ -1128,6 +1170,8 @@ class MyAssetLoader implements cloudExtension.AssetLoader {
 upload(table: string, gid: string, assets: Array&lt;CloudAsset&gt;): Promise&lt;Array&lt;Result&lt;CloudAsset&gt;&gt;&gt;
 
 通过该接口实现资产的上传。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -1169,13 +1213,15 @@ share(userId: number, bundleName: string, sharingResource: string, participants:
 
 发起端云共享邀请。共享邀请时，需指定当前发起共享的应用、共享数据的资源标识和共享参与者，使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **参数：**
 
 | 参数名  | 类型                    | 必填 | 说明                                            |
 | ------- | ----------------------- | ---- | ----------------------------------------------- |
-| userId          | number  | 是   | 表示用户ID。  |
+| userId          | number  | 是   | 表示用户账号ID。  |
 | bundleName      | string  | 是   | 应用包名。    |
 | sharingResource | string  | 是   | 端云共享资源的标识。   |
 | participants    | Array&lt;[cloudData.sharing.Participant](js-apis-data-cloudData-sys.md#participant11)&gt;  | 是   | 端云共享参与者。   |
@@ -1202,12 +1248,12 @@ class MyShareCenter implements cloudExtension.ShareCenter {
     // ...
     // 返回服务端发起共享的返回结果
     let result: Array<cloudExtension.Result<Participant>> = [];
-    participants.forEach((item => {
+    participants.forEach(() => {
       result.push({
         code: cloudData.sharing.SharingCode.SUCCESS,
         description: 'share succeeded'    
       });
-    }));
+    });
     return {
       code: cloudData.sharing.SharingCode.SUCCESS,
       description: 'share succeeded',
@@ -1224,13 +1270,15 @@ unshare(userId: number, bundleName: string, sharingResource: string, participant
 
 取消端云共享。取消共享时，需指定当前取消共享的应用、取消共享数据的资源标识和取消共享的参与者，使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **参数：**
 
 | 参数名  | 类型                    | 必填 | 说明                                            |
 | ------- | ----------------------- | ---- | ----------------------------------------------- |
-| userId          | number  | 是   | 表示用户ID。  |
+| userId          | number  | 是   | 表示用户账号ID。  |
 | bundleName      | string  | 是   | 应用包名。    |
 | sharingResource | string  | 是   | 端云共享数据的资源标识。   |
 | participants    | Array&lt;[cloudData.sharing.Participant](js-apis-data-cloudData-sys.md#participant11)&gt;  | 是   | 端云共享参与者。   |
@@ -1257,12 +1305,12 @@ class MyShareCenter implements cloudExtension.ShareCenter {
     // ...
     // 返回服务端取消共享的返回结果
     let result: Array<cloudExtension.Result<Participant>> = [];
-    participants.forEach((item => {
+    participants.forEach(() => {
       result.push({
         code: cloudData.sharing.SharingCode.SUCCESS,
         description: 'unshare succeeded'    
-      })
-    }))
+      });
+    });
     return {
       code: cloudData.sharing.SharingCode.SUCCESS,
       description: 'unshare succeeded',
@@ -1279,13 +1327,15 @@ exit(userId: number, bundleName: string, sharingResource: string): Promise&lt;Re
 
 退出端云共享。退出共享时，需指定当前退出共享的应用以及退出共享数据的资源标识，使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **参数：**
 
 | 参数名  | 类型                    | 必填 | 说明                                            |
 | ------- | ----------------------- | ---- | ----------------------------------------------- |
-| userId          | number  | 是   | 表示用户ID。  |
+| userId          | number  | 是   | 表示用户账号ID。  |
 | bundleName      | string  | 是   | 应用包名。    |
 | sharingResource | string  | 是   | 端云共享资源标识。   |
 
@@ -1323,13 +1373,15 @@ changePrivilege(userId: number, bundleName: string, sharingResource: string, par
 
 更改已共享数据的操作权限。更改权限时，需指定当前更改权限的应用、更改权限数据的资源标识和更改权限的参与者，使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **参数：**
 
 | 参数名  | 类型                    | 必填 | 说明                                            |
 | ------- | ----------------------- | ---- | ----------------------------------------------- |
-| userId          | number  | 是   | 表示用户ID。  |
+| userId          | number  | 是   | 表示用户账号ID。  |
 | bundleName      | string  | 是   | 应用包名。    |
 | sharingResource | string  | 是   | 端云共享资源标识。   |
 | participants    | Array&lt;[cloudData.sharing.Participant](js-apis-data-cloudData-sys.md#participant11)&gt;  | 是   | 端云共享参与者。   |
@@ -1356,12 +1408,12 @@ class MyShareCenter implements cloudExtension.ShareCenter {
     // ...
     // 返回服务端更改权限的返回结果
     let result: Array<cloudExtension.Result<Participant>> = [];
-    participants.forEach((item => {
+    participants.forEach(() => {
       result.push({
         code: cloudData.sharing.SharingCode.SUCCESS,
         description: 'change privilege succeeded'    
-      })
-    }))
+      });
+    });
     return {
       code: cloudData.sharing.SharingCode.SUCCESS,
       description: 'change privilege succeeded',
@@ -1378,13 +1430,15 @@ queryParticipants(userId: number, bundleName: string, sharingResource: string): 
 
 查询当前端云共享的参与者。查询时，需指定当前查询参与者的应用、查询参与者数据的资源标识，使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **参数：**
 
 | 参数名  | 类型                    | 必填 | 说明                                            |
 | ------- | ----------------------- | ---- | ----------------------------------------------- |
-| userId          | number  | 是   | 表示用户ID。  |
+| userId          | number  | 是   | 表示用户账号ID。  |
 | bundleName      | string  | 是   | 应用包名。    |
 | sharingResource | string  | 是   | 端云共享资源标识。   |
 
@@ -1452,13 +1506,15 @@ queryParticipantsByInvitation(userId: number, bundleName: string, invitationCode
 
 根据邀请码查询端云共享参与者。查询时，需指定当前查询参与者的应用、共享数据的邀请码，使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **参数：**
 
 | 参数名  | 类型                    | 必填 | 说明                                            |
 | ------- | ----------------------- | ---- | ----------------------------------------------- |
-| userId          | number  | 是   | 表示用户ID。  |
+| userId          | number  | 是   | 表示用户账号ID。  |
 | bundleName      | string  | 是   | 应用包名。    |
 | invitationCode  | string  | 是   | 端云共享邀请码。   |
 
@@ -1526,13 +1582,15 @@ confirmInvitation(userId: number, bundleName: string, invitationCode: string, st
 
 被邀请者确认端云共享邀请。确认时，需指定当前确认邀请的应用、共享数据的邀请码以及确认状态，使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **参数：**
 
 | 参数名  | 类型                    | 必填 | 说明                                            |
 | ------- | ----------------------- | ---- | ----------------------------------------------- |
-| userId          | number  | 是   | 表示用户ID。  |
+| userId          | number  | 是   | 表示用户账号ID。  |
 | bundleName      | string  | 是   | 应用包名。    |
 | invitationCode  | string  | 是   | 端云共享邀请码。   |
 | state           | [cloudData.sharing.State](js-apis-data-cloudData-sys.md#state11)  | 是   | 共享邀请的确认状态。   |
@@ -1572,13 +1630,15 @@ changeConfirmation(userId: number, bundleName: string, sharingResource: string, 
 
 更改端云共享邀请。更改共享邀请时，需指定当前更改共享邀请的应用、共享数据的共享资源标识以及更改的状态，使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
 **参数：**
 
 | 参数名  | 类型                    | 必填 | 说明                                            |
 | ------- | ----------------------- | ---- | ----------------------------------------------- |
-| userId          | number  | 是   | 表示用户ID。  |
+| userId          | number  | 是   | 表示用户账号ID。  |
 | bundleName      | string  | 是   | 应用包名。    |
 | sharingResource | string  | 是   | 端云共享资源标识。   |
 | state           | [cloudData.sharing.State](js-apis-data-cloudData-sys.md#state11)  | 是   | 共享邀请的更改状态。   |
@@ -1620,10 +1680,10 @@ import { rpc } from '@kit.IPCKit';
 import { cloudData, cloudExtension } from '@kit.ArkData';
 
 type Participant = cloudData.sharing.Participant;
-let test_lockId: number = 1;
-let test_time: number = 10;
-let test_space: number = 100;
-let test_userId: number = 1;
+let testLockId: number = 1;
+let testTime: number = 10;
+let testSpace: number = 100;
+let testUserId: number = 1;
 
 class MyCloudDB implements cloudExtension.CloudDB {
   async generateId(count: number): Promise<cloudExtension.Result<Array<string>>> {
@@ -1685,8 +1745,8 @@ class MyCloudDB implements cloudExtension.CloudDB {
       code: cloudExtension.ErrorCode.SUCCESS,
       description: 'lock succeeded',
       value: {
-        interval: test_time,
-        lockId: test_lockId
+        interval: testTime,
+        lockId: testLockId
       }
     };
   }
@@ -1699,8 +1759,8 @@ class MyCloudDB implements cloudExtension.CloudDB {
       code: cloudExtension.ErrorCode.SUCCESS,
       description: 'heartbeat succeeded',
       value: {
-        interval: test_time,
-        lockId: test_lockId
+        interval: testTime,
+        lockId: testLockId
       }
     };
   }
@@ -1744,12 +1804,12 @@ class MyShareCenter implements cloudExtension.ShareCenter {
     // ...
     // 返回服务端发起共享的返回结果
     let result: Array<cloudExtension.Result<Participant>> = [];
-    participants.forEach((item => {
+    participants.forEach(() => {
       result.push({
         code: cloudData.sharing.SharingCode.SUCCESS,
         description: 'share succeeded'
-      })
-    }))
+      });
+    });
     return {
       code: cloudData.sharing.SharingCode.SUCCESS,
       description: 'share succeeded',
@@ -1764,12 +1824,12 @@ class MyShareCenter implements cloudExtension.ShareCenter {
     // ...
     // 返回服务端取消共享的返回结果
     let result: Array<cloudExtension.Result<Participant>> = [];
-    participants.forEach((item => {
+    participants.forEach(() => {
       result.push({
         code: cloudData.sharing.SharingCode.SUCCESS,
         description: 'unshare succeeded'
-      })
-    }))
+      });
+    });
     return {
       code: cloudData.sharing.SharingCode.SUCCESS,
       description: 'unshare succeeded',
@@ -1796,12 +1856,12 @@ class MyShareCenter implements cloudExtension.ShareCenter {
     // ...
     // 返回服务端更改权限的返回结果
     let result: Array<cloudExtension.Result<Participant>> = [];
-    participants.forEach((item => {
+    participants.forEach(() => {
       result.push({
         code: cloudData.sharing.SharingCode.SUCCESS,
         description: 'change privilege succeeded'
-      })
-    }))
+      });
+    });
     return {
       code: cloudData.sharing.SharingCode.SUCCESS,
       description: 'change privilege succeeded',
@@ -1925,9 +1985,9 @@ class MyCloudService implements cloudExtension.CloudService {
     return {
       enableCloud: true,
       id: "test_id",
-      totalSpace: test_space,
-      remainingSpace: test_space,
-      user: test_userId,
+      totalSpace: testSpace,
+      remainingSpace: testSpace,
+      user: testUserId,
     };
   }
 
@@ -1966,7 +2026,7 @@ class MyCloudService implements cloudExtension.CloudService {
       code: cloudExtension.ErrorCode.SUCCESS,
       description: "subscribe success",
       value: {
-        expirationTime: test_time,
+        expirationTime: testTime,
         subscribe: {}
       }
     };

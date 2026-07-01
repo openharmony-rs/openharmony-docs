@@ -23,7 +23,7 @@
 ### 自定义组件内自定义构建函数
 
 定义的语法：
-<!-- @[Custom_Component_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/CustomBuilderInComponent.ets) -->
+<!-- @[Custom_Component_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/CustomBuilderInComponent.ets) --> 
 
 ``` TypeScript
 @LocalBuilder
@@ -33,7 +33,7 @@ myBuilderFunction() {
 ```
 
 使用方法：
-<!-- @[Custom_Component_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/CustomBuilderInComponent.ets) -->
+<!-- @[Custom_Component_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/CustomBuilderInComponent.ets) --> 
 
 ``` TypeScript
 this.myBuilderFunction()
@@ -49,14 +49,14 @@ this.myBuilderFunction()
 
 跨组件传递局部\@Builder函数时，会使用.bind(this)更改函数上下文，但这可能会导致组件的父子关系与状态管理的父子关系不一致。而\@LocalBuilder无论是否使用.bind(this)，都不会改变组件的父子关系，即\@LocalBuilder中定义组件所属的父组件是确定的，无法被改变。
 
-![zh-cn_image_compatible_localBuilder](figures/zh-cn_image_compatible_localBuilder.png)
+![zh-cn_image_compatible_localBuilder](figures/image-compatible-localBuilder.png)
 
 > **说明：**
 >
 > bind()方法创建一个新的函数，称为绑定函数，当调用者绑定bind()时，该绑定函数会以创建时传入的第一个this作为原函数的this。
 
 下方用例中，当函数componentBuilder被\@Builder修饰时，显示效果为“Child”；当函数componentBuilder被\@LocalBuilder修饰时，显示效果是“Parent”。
-<!-- @[component_builder_modify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ComponentBuilderModify.ets) --> 
+<!-- @[component_builder_modify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ComponentBuilderModify.ets) -->  
 
 ``` TypeScript
 @Component
@@ -68,6 +68,7 @@ struct Child {
     Column() {
       this.customBuilderParam()
     }
+    .width('100%')
   }
 }
 
@@ -79,26 +80,33 @@ struct Parent {
   @Builder
   componentBuilder() {
     Text(`${this.label}`) // @Builder内的this指向实际调用点的组件，在这个用例中因为调用点在Child组件内，所以this实际指向Child组件
+      .fontSize(20)
+      .margin(10)
   }
 
   @LocalBuilder
   componentLocalBuilder() {
     Text(`${this.label}`) // @LocalBuilder内的this指向声明@LocalBuilder函数Parent组件
+      .fontSize(20)
+      .margin(10)
   }
 
   build() {
     Column() {
       Child({ customBuilderParam: this.componentBuilder }) // Child组件内调用customBuilderParam显示字符串Child。
-      Child({ customBuilderParam: this.componentLocalBuilder }) // Child组件内调用customBuilderParam显示字符串Parent，传递函数本身写法。
+      Child({ customBuilderParam: this.componentLocalBuilder }) // 传递函数本身写法，Child组件内调用customBuilderParam显示字符串Parent。
       Child({
         customBuilderParam: () => {
           this.componentLocalBuilder()
         }
-      }) // Child组件内调用customBuilderParam显示字符串Parent，() => { 函数调用 }写法。
+      }) // () => { 函数调用 }写法，Child组件内调用customBuilderParam显示字符串Parent。
     }
+    .width('100%')
   }
 }
 ```
+
+![arkts-localBuilder-0](../state-management/figures/arkts-localBuilder-0.png)
 
 ## 限制条件
 
@@ -117,12 +125,12 @@ struct Parent {
 
 - \@LocalBuilder内的UI语法遵循[UI语法规则](arkts-create-custom-components.md#build函数实现规则)。
 
-- 按回调传递和按引用传递时，支持\@Builder函数内UI组件刷新。按引用传递只在传入一个参数且该参数直接传入对象字面量时生效，有多个参数时不支持@Builder函数内UI组件刷新。
+- 按回调传递和按引用传递时，支持\@LocalBuilder函数内UI组件刷新。按引用传递只在传入一个参数且该参数直接传入对象字面量时生效，有多个参数时不支持\@LocalBuilder函数内UI组件刷新。
 
 ### 按回调传递参数
 
-从API version 20开始，开发者可以通过使用`UIUtils.makeBinding()`函数、`Binding`类和`MutableBinding`类实现\@Builder函数中状态变量的刷新。详情请参考[状态管理API文档](../../reference/apis-arkui/js-apis-stateManagement.md#makebinding20)。
-<!-- @[builder_make_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/BuilderMakeBinding.ets) --> 
+从API version 20开始，开发者可以通过使用`UIUtils.makeBinding()`函数、`Binding`类和`MutableBinding`类实现\@Builder函数中状态变量的刷新。详情请参考[makeBinding](../../reference/apis-arkui/js-apis-stateManagement.md#makebinding20)。
+<!-- @[builder_make_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/BuilderMakeBinding.ets) -->  
 
 ``` TypeScript
 import { UIUtils, Binding } from '@kit.ArkUI';
@@ -136,21 +144,28 @@ struct Parent {
   citeLocalBuilder(params: Binding<string>) {
     Row() {
       Text(`UseStateVarByReference: ${params.value}`)
+        .fontSize(20)
+        .margin(10)
     }
   }
 
   build() {
     Column() {
-      // 通过UIUtils.makeBinding()方法和Binding类，实现@Builder函数中状态变量的刷新
+      // 通过UIUtils.makeBinding()方法和Binding类，实现@LocalBuilder函数中状态变量的刷新
       this.citeLocalBuilder(UIUtils.makeBinding<string>(() => this.variableValue))
       Button('Click me')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.variableValue = 'Hi World';
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![arkts-localBuilder-1](../state-management/figures/arkts-localBuilder-1.gif)
 
 ### 按引用传递参数
 
@@ -161,7 +176,7 @@ struct Parent {
 > 若\@LocalBuilder函数和`$$`参数一起使用，子组件调用父组件的\@LocalBuilder函数，子组件传入的参数发生变化，不会引起\@LocalBuilder函数内的UI刷新。见常见错误[\@LocalBuilder函数和`$$`参数一起使用UI不刷新](#localbuilder函数和参数一起使用ui不刷新)。
 
 组件Parent内的\@LocalBuilder函数在build函数内调用，按键值对写法进行传值，当点击Click me时，\@LocalBuilder内的Text文本内容会随着状态变量内容的改变而改变。
-<!-- @[pass_by_reference_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ReferencePassing.ets) --> 
+<!-- @[pass_by_reference_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ReferencePassing.ets) -->  
 
 ``` TypeScript
 class ReferenceType {
@@ -177,6 +192,8 @@ struct Parent {
   citeLocalBuilder(params: ReferenceType) {
     Row() {
       Text(`UseStateVarByReference: ${params.paramString}`)
+        .fontSize(20)
+        .margin(10)
     }
   };
 
@@ -184,18 +201,24 @@ struct Parent {
     Column() {
       // 按键值对写法进行传值，传入的参数发生变化，会引起citeLocalBuilder内的UI刷新
       this.citeLocalBuilder({ paramString: this.variableValue })
-      Button('Click me').onClick(() => {
-        this.variableValue = 'Hi World';
-      })
+      Button('Click me')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.variableValue = 'Hi World';
+        })
     }
+    .width('100%')
   }
 }
 ```
 
+![arkts-localBuilder-2](../state-management/figures/arkts-localBuilder-2.gif)
+
 按引用传递参数时，如果在\@LocalBuilder函数内调用自定义组件，ArkUI提供`$$`作为按引用传递参数的范式。
 
 组件Parent内的\@LocalBuilder函数内调用自定义组件，且按照引用传递参数将值传递到自定义组件，当Parent组件内状态变量值发生变化时，\@LocalBuilder函数内的自定义组件HelloComponent的message值也会随之更新。
-<!-- @[pass_by_reference_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ParentRefSync.ets) --> 
+<!-- @[pass_by_reference_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ParentRefSync.ets) -->  
 
 ``` TypeScript
 class ReferenceType {
@@ -209,6 +232,8 @@ struct HelloComponent {
   build() {
     Row() {
       Text(`HelloComponent===${this.message}`)
+        .fontSize(20)
+        .margin(10)
     }
   }
 }
@@ -223,8 +248,11 @@ struct Parent {
     Row() {
       Column() {
         Text(`citeLocalBuilder===${$$.paramString}`)
+          .fontSize(20)
+          .margin(10)
         HelloComponent({ message: $$.paramString })
       }
+      .width('100%')
     }
   }
 
@@ -232,18 +260,24 @@ struct Parent {
     Column() {
       // 按引用传递参数，传入的参数发生变化，会引起citeLocalBuilder内的UI刷新
       this.citeLocalBuilder({ paramString: this.variableValue })
-      Button('Click me').onClick(() => {
-        this.variableValue = 'Hi World';
-      })
+      Button('Click me')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.variableValue = 'Hi World';
+        })
     }
+    .width('100%')
   }
 }
 ```
 
+![arkts-localBuilder-3](../state-management/figures/arkts-localBuilder-3.gif)
+
 当子组件引用父组件的\@LocalBuilder函数并传入状态变量时，状态变量的改变不会触发\@LocalBuilder函数内的UI刷新。这是因为调用\@LocalBuilder装饰的函数创建出来的组件绑定于父组件，而状态变量的刷新机制仅作用于当前组件及其子组件，对父组件无效。而使用\@Builder修饰函数可触发UI刷新，原因在于\@Builder改变了函数的this指向，使创建出来的组件绑定到子组件上，从而在子组件修改变量能够实现\@Builder中的UI刷新。
 
 下面示例中，组件Child将状态变量传递到Parent的\@Builder和\@LocalBuilder函数内。在\@Builder函数内，`this`指向Child，参数变化能触发UI刷新。在\@LocalBuilder函数内，`this`指向Parent，参数变化不会触发UI刷新。若\@LocalBuilder函数内引用Parent的状态变量发生变化，UI能正常刷新。
-<!-- @[pass_by_reference_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/BuilderThisDiff.ets) --> 
+<!-- @[pass_by_reference_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/BuilderThisDiff.ets) -->  
 
 ``` TypeScript
 class Data {
@@ -260,24 +294,42 @@ struct Parent {
   componentBuilder($$: Data) {
     // 点击Button 触发UI刷新
     Text('builder + $$')
+      .fontSize(20)
+      .margin(10)
     Text(`${'this -> ' + this.label}`)
+      .fontSize(20)
+      .margin(10)
     Text(`${'size : ' + $$.size}`)
+      .fontSize(20)
+      .margin(10)
   }
 
   @LocalBuilder
   componentLocalBuilder($$: Data) {
     // 点击Button 不会触发UI刷新
     Text('LocalBuilder + $$ data')
+      .fontSize(20)
+      .margin(10)
     Text(`${'this -> ' + this.label}`)
+      .fontSize(20)
+      .margin(10)
     Text(`${'size : ' + $$.size}`)
+      .fontSize(20)
+      .margin(10)
   }
 
   @LocalBuilder
   contentLocalBuilderNoArgument() {
     // 点击Button 触发UI刷新
     Text('LocalBuilder + local data')
+      .fontSize(20)
+      .margin(10)
     Text(`${'this -> ' + this.label}`)
+      .fontSize(20)
+      .margin(10)
     Text(`${'size : ' + this.data.size}`)
+      .fontSize(20)
+      .margin(10)
   }
 
   build() {
@@ -289,6 +341,7 @@ struct Parent {
         data: this.data
       })
     }
+    .width('100%')
   }
 }
 
@@ -311,20 +364,25 @@ struct Child {
       this.contentLocalBuilder({ size: this.data.size })
       this.contentLocalBuilderNoArgument()
       Button('add child size')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.data.size += 1;
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![arkts-localBuilder-4](../state-management/figures/arkts-localBuilder-4.gif)
 
 ### 按值传递参数
 
 调用\@LocalBuilder装饰的函数默认按值传递。当传递的参数为状态变量时，状态变量的改变不会引起\@LocalBuilder函数内的UI刷新。所以当使用状态变量的时候，推荐使用[按回调传递](#按回调传递参数)或[按引用传递](#按引用传递参数)。
 
 组件Parent将\@State修饰的label值按照函数传参方式传递到\@LocalBuilder函数内，此时\@LocalBuilder函数获取到的值为普通变量值，所以改变\@State修饰的label值时，\@LocalBuilder函数内的值不会发生改变。
-<!-- @[pass_by_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ValuePassing.ets) --> 
+<!-- @[pass_by_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ValuePassing.ets) -->  
 
 ``` TypeScript
 @Entry
@@ -336,7 +394,10 @@ struct Parent {
   citeLocalBuilder(paramA1: string) {
     Row() {
       Text(`UseStateVarByValue: ${paramA1}`)
+        .fontSize(20)
+        .margin(10)
     }
+    .height('100%')
   }
 
   build() {
@@ -345,9 +406,12 @@ struct Parent {
       // 改变@State修饰的label值时，@LocalBuilder函数内的值不会发生改变
       this.citeLocalBuilder(this.label)
     }
+    .width('100%')
   }
 }
 ```
+
+![arkts-localBuilder-5](../state-management/figures/arkts-localBuilder-5.png)
 
 ## 使用场景
 
@@ -355,7 +419,7 @@ struct Parent {
 
 在[@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件中使用局部的@LocalBuilder，修改变量时会触发UI刷新。
 
-<!-- @[LocalBuilder_in_V2_use](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/V2LocalBuilderUpdate.ets) --> 
+<!-- @[LocalBuilder_in_V2_use](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/V2LocalBuilderUpdate.ets) -->  
 
 ``` TypeScript
 @ObservedV2
@@ -377,6 +441,7 @@ struct ChildPage {
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
     }
+    .margin(20)
   }
 }
 
@@ -396,6 +461,7 @@ struct ParentPage {
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
     }
+    .margin(20)
   }
 
   @LocalBuilder
@@ -408,6 +474,7 @@ struct ParentPage {
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
     }
+    .margin(20)
   }
 
   build() {
@@ -415,39 +482,19 @@ struct ParentPage {
       Text(`info1: ${this.info1.name}  ${this.info1.age}`) // Text1
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
-      this.privateBuilder() // 调用局部@Builder
-      Line()
-        .width('100%')
-        .height(10)
-        .backgroundColor('#000000')
-        .margin(10)
+      this.privateBuilder() // 调用局部@LocalBuilder
       Text(`info2: ${this.info2.name}  ${this.info2.age}`) // Text2
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
-      this.privateBuilderSecond() // 调用局部@Builder
-      Line()
-        .width('100%')
-        .height(10)
-        .backgroundColor('#000000')
-        .margin(10)
+      this.privateBuilderSecond() // 调用局部@LocalBuilder
       Text(`info1: ${this.info1.name}  ${this.info1.age}`) // Text1
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
       ChildPage({ childInfo: this.info1 }) // 调用自定义组件
-      Line()
-        .width('100%')
-        .height(10)
-        .backgroundColor('#000000')
-        .margin(10)
       Text(`info2: ${this.info2.name}  ${this.info2.age}`) // Text2
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
       ChildPage({ childInfo: this.info2 }) // 调用自定义组件
-      Line()
-        .width('100%')
-        .height(10)
-        .backgroundColor('#000000')
-        .margin(10)
       Button('change info1&info2')
         .onClick(() => {
           this.info1 = { name: 'Cat', age: 18 }; // Text1不会刷新，原因是info1没被装饰器装饰，无法监听到值的改变。
@@ -458,13 +505,15 @@ struct ParentPage {
 }
 ```
 
+![arkts-localBuilder-6](../state-management/figures/arkts-localBuilder-6.gif)
+
 ## 常见问题
 ### @LocalBuilder函数和`$$`参数一起使用UI不刷新
 
 若\@LocalBuilder函数和`$$`参数一起使用，子组件调用父组件的\@LocalBuilder函数，子组件传入的参数发生变化，不会引起\@LocalBuilder函数内的UI刷新。
 
 【反例】
-<!-- @[problem_ui_not_refresh_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ProblemUINotRefreshOpposite.ets) -->
+<!-- @[problem_ui_not_refresh_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ProblemUINotRefreshOpposite.ets) --> 
 
 ``` TypeScript
 class LayoutSize {
@@ -514,7 +563,7 @@ struct Child {
 【正例】
 
 在声明@LocalBuilder的组件下创建状态变量并在@LocalBuilder函数内访问，可以在状态变量变化时更新@LocalBuilder内的UI组件。
-<!-- @[problem_ui_not_refresh_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ProblemUINotRefreshPositive.ets) --> 
+<!-- @[problem_ui_not_refresh_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ProblemUINotRefreshPositive.ets) -->  
 
 ``` TypeScript
 class LayoutSize {
@@ -569,7 +618,7 @@ struct Child {
 
 【反例】
 
-<!-- @[problem_ui_structure_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ProblemUIStructureOpposite.ets) -->
+<!-- @[problem_ui_structure_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ProblemUIStructureOpposite.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -609,7 +658,7 @@ struct Page {
 
  @LocalBuilder装饰的函数作为参数时，使用 `() => { 函数调用 }` 的形式，布局能够符合预期效果。
 
-<!-- @[problem_ui_structure_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ProblemUIStructurePositive.ets) -->
+<!-- @[problem_ui_structure_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ProblemUIStructurePositive.ets) --> 
 
 ``` TypeScript
 @Entry

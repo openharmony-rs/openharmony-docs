@@ -1,12 +1,12 @@
 # Extended Authentication Error Codes
 
-
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wmyao_mm-->
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:49:42.585Z pushedAt=2026-06-26T03:00:41.280Z -->
 
 > **NOTE**
 >
@@ -120,7 +120,6 @@ The input network type is not supported.
 
 Set the input network type to **1** (WLAN) or **2** (ETH).
 
-
 ## 33200007 Invalid eapCode Value
 
 **Error Message**
@@ -205,8 +204,24 @@ This error code is reported if a program fails to operate properly.
 
 **Possible causes**
 
-The program encounters an internal error.
+1. EAP packet processing exception, such as packet parsing failure or data format error. You can locate and analyze the issue by filtering log keywords **wpa_supplicant:EAP**.
+
+2. Authentication process exception, such as state machine error or authentication timeout without response. You can locate and analyze the issue by filtering log keywords **entering state**.
+
+3. Certificate processing failure, such as certificate loading failure, certificate parsing error, or key operation failure. You can locate and analyze the issue by filtering log keywords **wpa_supplicant:SSL**.
+
+4. Callback function exception, such as incorrect callback implementation or uncaught exception thrown. You can locate and analyze the issue by filtering log keywords **replyCustomEapData**.
+
+5. Communication failure, such as socket communication exception or connection disconnection. This cause is common for the [startEthEap](js-apis-net-eap.md#eapstartetheap) and [logOffEthEap](js-apis-net-eap.md#eaplogoffetheap) APIs. You can filter log keywords **startEap** or **stopEap** to check whether the command is delivered properly.
 
 **Solution**
 
-Reboot the system.
+1. Check system logs to locate the specific exception cause. Filter log keywords **supplicant** to locate EAP packet processing exceptions, and filter log keywords **replyCustomEapData** to locate callback function exceptions. For communication exceptions triggered by the [startEthEap](js-apis-net-eap.md#eapstartetheap) and [logOffEthEap](js-apis-net-eap.md#eaplogoffetheap) APIs, filter log keywords **startEap** or **stopEap** to locate the issue.
+
+2. Ensure that the EAP authentication process call sequence is correct, and avoid proceeding to the next step before the previous step is complete.
+
+3. Check whether the certificate and key configurations are correct, and ensure that the certificate format meets the requirements.
+
+4. Ensure that the callback is not unregistered repeatedly before unregistration, and is used normally after registration.
+
+5. If the problem persists, restart the device and try again.

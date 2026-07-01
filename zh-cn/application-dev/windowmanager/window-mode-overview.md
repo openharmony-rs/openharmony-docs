@@ -157,25 +157,25 @@
 
   - 对于应用主窗口：
 
-     - 应用主窗口仅在进入智慧多窗悬浮窗或全景多窗后，窗口处于自由悬浮窗口模式，详见[智慧多窗简介](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-intro)。
+    - 应用主窗口仅在进入智慧多窗悬浮窗或全景多窗后，窗口处于自由悬浮窗口模式，详见[智慧多窗简介](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-intro)。
 
-     - 不支持通过[resize()](../reference/apis-arkui/arkts-apis-window-Window.md#resize9)、[moveWindowTo()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowto9-1)等接口自由改变窗口大小和位置。
+    - 不支持通过[resize()](../reference/apis-arkui/arkts-apis-window-Window.md#resize9)、[moveWindowTo()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowto9-1)等接口自由改变窗口大小和位置。
 
-     - 同一屏幕上存在自由悬浮窗口的最大个数限制，超出限制时，打开新的自由悬浮窗口会替换最久未操作的自由悬浮窗口。最大个数限制在不同产品上存在差异，详见[智慧多窗简介](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-intro)的“悬浮窗”及“全局多窗”章节。
+    - 同一屏幕上存在自由悬浮窗口的最大个数限制，超出限制时，打开新的自由悬浮窗口会替换最久未操作的自由悬浮窗口。最大个数限制在不同产品上存在差异，详见[智慧多窗简介](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-intro)的“悬浮窗”及“全局多窗”章节。
 
-     - 主窗在自由悬浮窗口模式下固定存在顶部横条，用户可通过拖拽顶部横条移动该窗口、切换窗口模式等。
+    - 主窗在自由悬浮窗口模式下固定存在顶部横条，用户可通过拖拽顶部横条移动该窗口、切换窗口模式等。
 
-     - 用户可通过拖拽窗口边缘对窗口进行缩放。
+    - 用户可通过拖拽窗口边缘对窗口进行缩放。
 
   - 对于应用子窗口、全局悬浮窗、模态窗口及系统窗口：
 
-     - 固定以自由悬浮窗口模式显示，无法切换窗口模式。
+    - 固定以自由悬浮窗口模式显示，无法切换窗口模式。
 
-     - 支持通过[resize()](../reference/apis-arkui/arkts-apis-window-Window.md#resize9)、[moveWindowTo()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowto9-1)等接口自由改变窗口大小和位置。
+    - 支持通过[resize()](../reference/apis-arkui/arkts-apis-window-Window.md#resize9)、[moveWindowTo()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowto9-1)等接口自由改变窗口大小和位置。
 
-     - 无同时显示的最大个数限制，但受窗口最大数量限制（系统限制，当前单个应用进程中的窗口最大数量限制为256）。
+    - 无同时显示的最大个数限制，但受窗口最大数量限制（系统限制，当前单个应用进程中的窗口最大数量限制为256）。
 
-     - 无顶部横条。
+    - 无顶部横条。
 
   **适用场景：**
 

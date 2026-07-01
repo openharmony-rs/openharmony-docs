@@ -84,7 +84,7 @@ clip(value: boolean | CircleAttribute | EllipseAttribute | PathAttribute | RectA
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | boolean&nbsp;\|&nbsp;[CircleAttribute](ts-drawing-components-circle.md)&nbsp;\|&nbsp;[EllipseAttribute](ts-drawing-components-ellipse.md)&nbsp;\|&nbsp;[PathAttribute](ts-drawing-components-path.md)&nbsp;\|&nbsp;[RectAttribute](ts-drawing-components-rect.md) | 是   | 参数为相应类型的组件，按指定的形状对当前组件进行裁剪；参数为boolean类型时，设置是否按照父容器边缘轮廓进行裁剪。<br/>默认值：false <br/>**说明：** 参数为对应类型的组件时，裁剪不会导致被裁剪区域无法响应绑定的手势事件。参数为boolean类型时，裁剪会导致被裁剪区域无法响应绑定的手势事件。 |
+| value  | boolean&nbsp;\|&nbsp;[CircleAttribute](ts-drawing-components-circle.md)&nbsp;\|&nbsp;[EllipseAttribute](ts-drawing-components-ellipse.md)&nbsp;\|&nbsp;[PathAttribute](ts-drawing-components-path.md)&nbsp;\|&nbsp;[RectAttribute](ts-drawing-components-rect.md) | 是   | 参数为相应类型的组件，按指定的形状对当前组件进行裁剪；参数为boolean类型时，设置是否按照父容器边缘轮廓进行裁剪。<br/>默认值：false <br/>true表示按照父容器边缘轮廓进行裁剪，false表示不对子组件进行裁剪。 <br/>**说明：** 参数为对应类型的组件时，裁剪不会导致被裁剪区域无法响应绑定的手势事件。参数为boolean类型时，裁剪会导致被裁剪区域无法响应绑定的手势事件。 |
 
 **返回值：**
 
@@ -162,7 +162,7 @@ clipShape(shape: Optional\<CircleShape | EllipseShape | PathShape | RectShape>):
 
 ## CircleShape<sup>12+</sup>
 
-type CircleShape = CircleShape
+type CircleShape = import('../api/@ohos.arkui.shape').CircleShape
 
 导入CircleShape类型对象。
 
@@ -176,11 +176,11 @@ type CircleShape = CircleShape
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [CircleShape](../js-apis-arkui-shape.md#circleshape) | 圆形形状。 |
+| import('../api/@ohos.arkui.shape').[CircleShape](../js-apis-arkui-shape.md#circleshape) | 圆形形状。 |
 
 ## EllipseShape<sup>12+</sup>
 
-type EllipseShape = EllipseShape
+type EllipseShape = import('../api/@ohos.arkui.shape').EllipseShape
 
 导入EllipseShape类型对象。
 
@@ -194,11 +194,11 @@ type EllipseShape = EllipseShape
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [EllipseShape](../js-apis-arkui-shape.md#ellipseshape) | 椭圆形状。 |
+| import('../api/@ohos.arkui.shape').[EllipseShape](../js-apis-arkui-shape.md#ellipseshape) | 椭圆形状。 |
 
 ## PathShape<sup>12+</sup>
 
-type PathShape = PathShape
+type PathShape = import('../api/@ohos.arkui.shape').PathShape
 
 导入PathShape类型对象。
 
@@ -212,11 +212,11 @@ type PathShape = PathShape
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [PathShape](../js-apis-arkui-shape.md#pathshape) | 路径形状。 |
+| import('../api/@ohos.arkui.shape').[PathShape](../js-apis-arkui-shape.md#pathshape) | 路径形状。 |
 
 ## RectShape<sup>12+</sup>
 
-type RectShape = RectShape
+type RectShape = import('../api/@ohos.arkui.shape').RectShape
 
 导入RectShape类型对象。
 
@@ -230,7 +230,7 @@ type RectShape = RectShape
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| [RectShape](../js-apis-arkui-shape.md#rectshape) | 矩形形状。 |
+| import('../api/@ohos.arkui.shape').[RectShape](../js-apis-arkui-shape.md#rectshape) | 矩形形状。 |
 
 ## mask<sup>12+</sup>
 

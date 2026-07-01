@@ -44,7 +44,7 @@ typedef struct OH_AudioCapturer_Callbacks_Struct {...} OH_AudioCapturer_Callback
 ## 成员函数说明
 
 > **说明：**
-> 以下回调接口的返回值没有枚举定义，当前版本实现并不按返回值区分处理。但为保证后续版本可扩展，建议不要对返回值做额外处理，此时默认返回0；如果手动给定返回值，建议固定为0。
+> 以下回调接口的返回值没有枚举定义，当前版本实现并不按返回值区分处理，但为保证后续版本可扩展，默认使用0。
 
 ### OH_AudioCapturer_OnReadData()
 
@@ -145,5 +145,5 @@ int32_t (*OH_AudioCapturer_OnError)(OH_AudioCapturer* capturer, void* userData, 
 |--| -- |
 | [OH_AudioCapturer](capi-ohaudio-oh-audiocapturerstruct.md)* capturer | 指向[OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer)创建的音频流实例。 |
 | void* userData | 指向应用自定义的数据存储区域。 |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) error | 音频录制错误结果，可能为AUDIOSTREAM_ERROR_INVALID_PARAM、AUDIOSTREAM_ERROR_ILLEGAL_STATE 或者 AUDIOSTREAM_ERROR_SYSTEM。 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) error | 音频录制错误结果，可能为AUDIOSTREAM_ERROR_INVALID_PARAM、AUDIOSTREAM_ERROR_ILLEGAL_STATE或者 AUDIOSTREAM_ERROR_SYSTEM。 |
 
