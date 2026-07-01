@@ -286,7 +286,9 @@ struct WebComponent {
 
 ArkTS-Sta示例：
 <!-- @[ControlZoomByFixedRatio](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebManagementZooming/entry/src/main/ets/pages/ControlZoomByFixedRatio.ets) --> 
+
 ``` TypeScript
+
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Entry, Component, Column, Button, Web } from '@ohos.arkui.component';
