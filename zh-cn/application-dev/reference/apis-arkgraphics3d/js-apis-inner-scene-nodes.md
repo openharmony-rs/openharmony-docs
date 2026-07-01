@@ -393,7 +393,7 @@ function getNode(): void {
 
 **说明：**
 
-可以通过以下代码查询节点路径参数path，打印给定节点的子树结构，每行表示从输入节点下一级开始到该节点的相对路径，去掉输入节点。
+可以通过以下代码查询节点路径参数path。
 
 ```ts
 import { Scene, Node } from '@kit.ArkGraphics3D';
