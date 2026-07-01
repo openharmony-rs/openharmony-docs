@@ -146,7 +146,7 @@ struct WebComponent {
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
-// ...
+
 @Entry
 @Component
 struct WebComponent {
