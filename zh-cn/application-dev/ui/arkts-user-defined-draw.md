@@ -429,7 +429,7 @@
            }
        }
    
-       // 自定义内容背景层：绘制聊天界面背景
+       // 自定义内容层背景：绘制聊天界面背景
        void OnDrawBehind(ArkUI_NodeCustomEvent* event)
        {
            auto drawContext = OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw(event);
@@ -601,7 +601,7 @@
            OH_Drawing_BrushDestroy(textBrush);
        }
    
-       std::string message_ = "";
+       std::string message_ = "这是一条消息提示";
        bool maskVisible_ = false;
    };
    } // namespace NativeModule
