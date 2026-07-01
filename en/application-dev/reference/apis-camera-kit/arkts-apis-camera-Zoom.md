@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-Zoom inherits from [ZoomQuery](arkts-apis-camera-ZoomQuery.md).
+**Zoom** inherits from [ZoomQuery](arkts-apis-camera-ZoomQuery.md).
 
 It provides APIs related to zoom operations.
 
@@ -41,7 +41,7 @@ Sets a zoom ratio, with a maximum precision of two decimal places.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 
@@ -85,10 +85,10 @@ Obtains the zoom ratio in use.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
-| 7400201                |  Camera service fatal error.                           |
+| 7400201                |  Camera service fatal error.<br>Applicable versions: 12 and later          |
 
 **Example**
 
@@ -125,6 +125,14 @@ Sets smooth zoom.
 | ------------ | -------------- | ---- | ----------------- |
 | targetRatio  | number         | Yes  | Target zoom ratio. The supported zoom ratio range can be obtained by calling [getZoomRatioRange](arkts-apis-camera-ZoomQuery.md#getzoomratiorange11). If the value passed in is not within the supported range, the value within the precision range is retained.     |
 | mode         | [SmoothZoomMode](arkts-apis-camera-e.md#smoothzoommode11) | No  | Smooth zoom mode. The default value is **0**.    |
+
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| Error Code        | Error Message       |
+| --------------- | --------------- |
+| 7400103                |  Session not config.<br>Applicable versions: 11-17            |
 
 **Example**
 

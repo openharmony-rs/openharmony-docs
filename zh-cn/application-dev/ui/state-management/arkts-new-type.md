@@ -1,8 +1,8 @@
 # \@Type装饰器：标记类属性的类型
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zzq212050299-->
-<!--Designer: @s10021109-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -31,9 +31,9 @@
 
 1. 只能用在[\@ObservedV2](./arkts-new-observedV2-and-trace.md)装饰的类中，不能用在自定义组件中。
 
-   <!-- @[DataModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewType/entry/src/main/ets/pages/DataModel.ets) -->
-
-   ```ts
+   <!-- @[DataModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewType/entry/src/main/ets/pages/DataModel.ets) --> 
+   
+   ``` TypeScript
    class Sample {
      private data: number = 0;
    }
@@ -71,7 +71,7 @@
 
 ### 持久化数据
 
-<!-- @[NewType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewType/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[NewType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewType/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { PersistenceV2, Type } from '@kit.ArkUI';
@@ -98,13 +98,17 @@ struct TestCase {
   build() {
     Column() {
       Text('childNumber value:' + this.sample.sampleChild?.childNumber)
+        .fontSize(30)
+        .margin(10)
         .onClick(() => {
           this.sample.sampleChild = new SampleChild();
           this.sample.sampleChild.childNumber = 2;
           PersistenceV2.save(Sample);
         })
-        .fontSize(30)
     }
+    .width('100%')
   }
 }
 ```
+
+![type-sync-0](./figures/type-sync-0.gif)

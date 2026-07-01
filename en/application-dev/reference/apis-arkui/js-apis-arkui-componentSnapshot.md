@@ -17,9 +17,11 @@ For typical use cases (for example, long screenshots) and best practices of comp
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
+> - The APIs of this module can be used only in the stage model.
+>
 > - In scenarios where [XComponent](arkui-ts/ts-basic-components-xcomponent.md) is used to, for example, display video or camera streams, obtain images through [createPixelMapFromSurface](../apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmapfromsurface11), instead of through an API in this module.
 >
-> - If the content of a component does not fill the entire area allocated for it, any remaining space in the snapshot will be rendered as transparent pixels. In addition, if the component uses [image effects](arkui-ts/ts-universal-attributes-image-effect.md) or other effect-related attributes, the resulting snapshot may not be as expected. To address these potential issues, check whether to fill the component's transparent content area or to use an alternative method such as taking a [window screenshot](arkts-apis-window-Window.md#snapshot9).
+> - If the content of a component does not fill the entire area allocated for it, any remaining space in the snapshot will be rendered as transparent pixels. In addition, if the component uses [image effects](arkui-ts/ts-universal-attributes-image-effect.md) or other effect-related attributes, the resulting snapshot may not be as expected. To address these potential issues, check whether the component's transparent content area needs to be filled, or use the window screenshot API [snapshot](arkts-apis-window-Window.md#snapshot9) instead.
 >
 > - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
 
@@ -510,60 +512,13 @@ struct SnapshotExample {
 
 ![componentget](figures/componentget.gif)
 
-## componentSnapshot.getSizeLimitation
-
-getSizeLimitation(): componentSnapshot.SnapshotSizeLimitation
-
-Obtains the size limit of a component screenshot.
-
-> **NOTE**
->
-> Before calling this API, you need to obtain the [ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md) object using the [getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) method in [UIContext](arkts-apis-uicontext-uicontext.md).
-
-**Since**: 26.0.0
-
-**Model constraint**: This API can be used only in the stage model.
-
-**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Return value**
-
-| Type                                                          | Description            |
-| ------------------------------------------------------------ | -------------- |
-| componentSnapshot.[SnapshotSizeLimitation](#snapshotsizelimitation) | Size limit of a component screenshot.|
-
-**Example**
-
-```ts
-import { ComponentUtils } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Column() {
-      Button ("Obtain Screenshot Size Limit")
-        .onClick(() => {
-          let componentSnapshot = this.getUIContext().getComponentSnapshot();
-          let limitation = componentSnapshot.getSizeLimitation();
-          console.info(`Max width: ${limitation.maxWidth}, Max height: ${limitation.maxHeight}`);
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
 ## SnapshotSizeLimitation
 
 Defines the size limit of a component screenshot.
 
 **Since**: 26.0.0
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 
@@ -571,13 +526,14 @@ Defines the size limit of a component screenshot.
 
 | Name       | Type    | Read-Only| Optional| Description                  |
 | --------- | ------ | ---- | ---- | -------------------- |
-| maxWidth  | number | Yes  | No  | Maximum width of a component screenshot.<br>Value range: (-∞, +∞)<br>Unit: px.|
-| maxHeight | number | Yes  | No  | Maximum height of a component screenshot.<br>Value range: (-∞, +∞)<br>Unit: px.|
+| maxWidth  | number | No  | No  | Maximum width of a component screenshot.<br>Value range: (-∞, +∞)<br>Unit: px.|
+| maxHeight | number | No  | No  | Maximum height of a component screenshot.<br>Value range: (-∞, +∞)<br>Unit: px.|
 
 ## SnapshotOptions<sup>12+</sup>
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | Name          | Type           |    Read-Only      |    Optional          |   Description                   |
 | ---------------|------------     | -------------|---------------| -----------------------------|
 | scale           | number | No |  Yes| Scale ratio for rendering pixel maps during a snapshot. Note that a high scale ratio may increase the time taken for the snapshot or even result in a snapshot failure.<br>Value range: [0, +∞). If the value is less than or equal to 0, the default value is used.<br> Default value: **1**<br>**NOTE**<br>Avoid capturing images that are excessively large, ideally not larger than the screen size. If the size of the image to capture exceeds device-specific underlying limits, the capture will fail.<br>**Atomic service API**: This API can be used in atomic services since API version 12.   |

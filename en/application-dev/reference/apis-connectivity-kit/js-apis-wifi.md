@@ -47,10 +47,10 @@ Checks whether WLAN is enabled.
 import wifi from '@ohos.wifi';
 
 try {
-	let isWifiActive = wifi.isWifiActive();
-	console.info("isWifiActive:" + isWifiActive);
+  let isWifiActive = wifi.isWifiActive();
+  console.info("isWifiActive:" + isWifiActive);
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -80,9 +80,9 @@ Starts a scan for WLAN.
 import wifi from '@ohos.wifi';
 
 try {
-	wifi.scan();
+  wifi.scan();
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -94,10 +94,9 @@ Obtains the scan result. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [wifiManager.getScanInfos](js-apis-wifiManager.md#wifimanagergetscaninfolist10) instead.
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [wifiManager.getScanInfoList](js-apis-wifiManager.md#wifimanagergetscaninfolist10) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION or ohos.permission.GET_WIFI_PEERS_MAC (
-available only for system applications)
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
@@ -116,10 +115,9 @@ Obtains the scan result. This API uses an asynchronous callback to return the re
 
 > **NOTE**
 >
-> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [wifiManager.getScanInfos](js-apis-wifiManager.md#wifimanagergetscaninfolist10) instead.
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [wifiManager.getScanInfoList](js-apis-wifiManager.md#wifimanagergetscaninfolist10) instead.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION or ohos.permission.GET_WIFI_PEERS_MAC (
-available only for system applications)
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
@@ -233,7 +231,7 @@ Adds the configuration of an untrusted network. This API uses a promise to retur
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | Yes| WLAN configuration to add.|
+  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | Yes| WLAN configuration.|
 
 **Return value**
 
@@ -246,30 +244,30 @@ Adds the configuration of an untrusted network. This API uses a promise to retur
 import wifi from '@ohos.wifi';
 
 try {
-	let config:wifi.WifiDeviceConfig = {
-		ssid : "****",
-		bssid:  "****",
-		preSharedKey: "****",
-		isHiddenSsid: false,
-		securityType: 0,
-		creatorUid: 0,
-		disableReason: 0,
-		netId: 0,
-		randomMacType: 0,
-		randomMacAddr:  "****",
-		ipType: 0,
-		staticIp: {
-			ipAddress: 0,
-			gateway: 0,
-			dnsServers: [],
-			domains: []
-		}
-	}
-	wifi.addUntrustedConfig(config).then(result => {
-		console.info("result:" + JSON.stringify(result));
-	});	
+  let config:wifi.WifiDeviceConfig = {
+    ssid : "****",
+    bssid:  "****",
+    preSharedKey: "****",
+    isHiddenSsid: false,
+    securityType: 0,
+    creatorUid: 0,
+    disableReason: 0,
+    netId: 0,
+    randomMacType: 0,
+    randomMacAddr:  "****",
+    ipType: 0,
+    staticIp: {
+      ipAddress: 0,
+      gateway: 0,
+      dnsServers: [],
+      domains: []
+    }
+  }
+  wifi.addUntrustedConfig(config).then(result => {
+    console.info("result:" + JSON.stringify(result));
+  });  
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -291,7 +289,7 @@ Adds the configuration of an untrusted network. This API uses an asynchronous ca
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | Yes| WLAN configuration to add.|
+  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | Yes| WLAN configuration.|
   | callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is **true**. If the operation fails, **data** is **false**. If **err** is not **0**, an error has occurred.|
 
 **Example**
@@ -299,30 +297,30 @@ Adds the configuration of an untrusted network. This API uses an asynchronous ca
 import wifi from '@ohos.wifi';
 
 try {
-	let config:wifi.WifiDeviceConfig = {
-		ssid : "****",
-		bssid:  "****",
-		preSharedKey: "****",
-		isHiddenSsid: false,
-		securityType: 0,
-		creatorUid: 0,
-		disableReason: 0,
-		netId: 0,
-		randomMacType: 0,
-		randomMacAddr:  "****",
-		ipType: 0,
-		staticIp: {
-			ipAddress: 0,
-			gateway: 0,
-			dnsServers: [],
-			domains: []
-		}
-	}
-	wifi.addUntrustedConfig(config,(error,result) => {
-		console.info("result:" + JSON.stringify(result));
-	});	
+  let config:wifi.WifiDeviceConfig = {
+    ssid : "****",
+    bssid:  "****",
+    preSharedKey: "****",
+    isHiddenSsid: false,
+    securityType: 0,
+    creatorUid: 0,
+    disableReason: 0,
+    netId: 0,
+    randomMacType: 0,
+    randomMacAddr:  "****",
+    ipType: 0,
+    staticIp: {
+      ipAddress: 0,
+      gateway: 0,
+      dnsServers: [],
+      domains: []
+    }
+  }
+  wifi.addUntrustedConfig(config,(error,result) => {
+    console.info("result:" + JSON.stringify(result));
+  });  
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -344,7 +342,7 @@ Removes the configuration of an untrusted network. This API uses a promise to re
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | Yes| WLAN configuration to remove.|
+  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | Yes| WLAN configuration.|
 
 **Return value**
 
@@ -358,30 +356,30 @@ Removes the configuration of an untrusted network. This API uses a promise to re
 import wifi from '@ohos.wifi';
 
 try {
-	let config:wifi.WifiDeviceConfig = {
-		ssid : "****",
-		bssid:  "****",
-		preSharedKey: "****",
-		isHiddenSsid: false,
-		securityType: 0,
-		creatorUid: 0,
-		disableReason: 0,
-		netId: 0,
-		randomMacType: 0,
-		randomMacAddr:  "****",
-		ipType: 0,
-		staticIp: {
-			ipAddress: 0,
-			gateway: 0,
-			dnsServers: [],
-			domains: []
-		}
-	}
-	wifi.removeUntrustedConfig(config).then(result => {
-		console.info("result:" + JSON.stringify(result));
-	});	
+  let config:wifi.WifiDeviceConfig = {
+    ssid : "****",
+    bssid:  "****",
+    preSharedKey: "****",
+    isHiddenSsid: false,
+    securityType: 0,
+    creatorUid: 0,
+    disableReason: 0,
+    netId: 0,
+    randomMacType: 0,
+    randomMacAddr:  "****",
+    ipType: 0,
+    staticIp: {
+      ipAddress: 0,
+      gateway: 0,
+      dnsServers: [],
+      domains: []
+    }
+  }
+  wifi.removeUntrustedConfig(config).then(result => {
+    console.info("result:" + JSON.stringify(result));
+  });  
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -404,7 +402,7 @@ Removes the configuration of an untrusted network. This API uses an asynchronous
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | Yes| WLAN configuration to remove.|
+  | config | [WifiDeviceConfig](#wifideviceconfigdeprecated) | Yes| WLAN configuration.|
   | callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is **true**. If the operation fails, **data** is **false**. If **err** is not **0**, an error has occurred.|
 
 **Example**
@@ -412,30 +410,30 @@ Removes the configuration of an untrusted network. This API uses an asynchronous
 import wifi from '@ohos.wifi';
 
 try {
-	let config:wifi.WifiDeviceConfig = {
-		ssid : "****",
-		bssid:  "****",
-		preSharedKey: "****",
-		isHiddenSsid: false,
-		securityType: 0,
-		creatorUid: 0,
-		disableReason: 0,
-		netId: 0,
-		randomMacType: 0,
-		randomMacAddr:  "****",
-		ipType: 0,
-		staticIp: {
-			ipAddress: 0,
-			gateway: 0,
-			dnsServers: [],
-			domains: []
-		}
-	}
-	wifi.removeUntrustedConfig(config,(error,result) => {
-	console.info("result:" + JSON.stringify(result));
-	});	
+  let config:wifi.WifiDeviceConfig = {
+    ssid : "****",
+    bssid:  "****",
+    preSharedKey: "****",
+    isHiddenSsid: false,
+    securityType: 0,
+    creatorUid: 0,
+    disableReason: 0,
+    netId: 0,
+    randomMacType: 0,
+    randomMacAddr:  "****",
+    ipType: 0,
+    staticIp: {
+      ipAddress: 0,
+      gateway: 0,
+      dnsServers: [],
+      domains: []
+    }
+  }
+  wifi.removeUntrustedConfig(config,(error,result) => {
+  console.info("result:" + JSON.stringify(result));
+  });  
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -471,12 +469,12 @@ Obtains the WLAN signal level.
 import wifi from '@ohos.wifi';
 
 try {
-	let rssi = 0;
-	let band = 0;
-	let level = wifi.getSignalLevel(rssi,band);
-	console.info("level:" + JSON.stringify(level));
+  let rssi = 0;
+  let band = 0;
+  let level = wifi.getSignalLevel(rssi,band);
+  console.info("level:" + JSON.stringify(level));
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 
 ```
@@ -556,7 +554,7 @@ Represents the WLAN connection information.
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | No| No| Service set identifier (SSID) of the hotspot, in UTF-8 format. The maximum length is 32 bytes.|
 | bssid | string | No| No| BSSID of the hotspot, for example, **00:11:22:33:44:55**.|
-| rssi | number | No| No| Received signal strength indicator (RSSI) of the hotspot, in dBm.|
+| rssi | number | No| No| RSSI of the hotspot, in dBm.|
 | band | number | No| No| Frequency band of the WLAN access point (AP). The value **1** indicates 2.4 GHz, and the value **2** indicates 5 GHz.|
 | linkSpeed | number | No| No| Speed of the WLAN AP, in Mbit/s.|
 | frequency | number | No| No| Frequency of the WLAN AP.|
@@ -573,7 +571,7 @@ Enumerates the WLAN connection states.
 
 > **NOTE**
 >
-> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [WifiLinkedInfo](js-apis-wifiManager.md#connstate) instead.
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [ConnState](js-apis-wifiManager.md#connstate) instead.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
@@ -642,11 +640,11 @@ Checks whether the device supports the specified WLAN feature.
 import wifi from '@ohos.wifi';
 
 try {
-	let featureId = 0;
-	let ret = wifi.isFeatureSupported(featureId);
-	console.info("isFeatureSupported:" + ret);
+  let featureId = 0;
+  let ret = wifi.isFeatureSupported(featureId);
+  console.info("isFeatureSupported:" + ret);
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 
 ```
@@ -677,10 +675,10 @@ Obtains IP information.
 import wifi from '@ohos.wifi';
 
 try {
-	let info = wifi.getIpInfo();
-	console.info("info:" + JSON.stringify(info));
+  let info = wifi.getIpInfo();
+  console.info("info:" + JSON.stringify(info));
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -730,10 +728,10 @@ Obtains the country code.
 import wifi from '@ohos.wifi';
 
 try {
-	let code = wifi.getCountryCode();
-	console.info("code:" + code);
+  let code = wifi.getCountryCode();
+  console.info("code:" + code);
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -822,11 +820,11 @@ wifi.getP2pLinkedInfo((err, data:wifi.WifiP2pLinkedInfo) => {
        console.error("get p2p linked info error");
        return;
    }
-	console.info("get wifi p2p linked info: " + JSON.stringify(data));
+  console.info("get wifi p2p linked info: " + JSON.stringify(data));
 });
 
 wifi.getP2pLinkedInfo().then(data => {
-	console.info("get wifi p2p linked info: " + JSON.stringify(data));
+  console.info("get wifi p2p linked info: " + JSON.stringify(data));
 });
 ```
 
@@ -880,11 +878,11 @@ wifi.getCurrentGroup((err, data:wifi.WifiP2pGroupInfo) => {
        console.error("get current P2P group error");
        return;
    }
-	console.info("get current P2P group: " + JSON.stringify(data));
+  console.info("get current P2P group: " + JSON.stringify(data));
 });
 
 wifi.getCurrentGroup().then(data => {
-	console.info("get current P2P group: " + JSON.stringify(data));
+  console.info("get current P2P group: " + JSON.stringify(data));
 });
 ```
 
@@ -906,7 +904,7 @@ Obtains the P2P peer device list. This API uses a promise to return the result.
 
   | Type| Description|
   | -------- | -------- |
-  | Promise&lt;[WifiP2pDevice[]](#wifip2pdevicedeprecated)&gt; | Promise used to return the peer device list.|
+  | Promise&lt;[WifiP2pDevice](#wifip2pdevicedeprecated)[]&gt; | Promise used to return the peer device list.|
 
 
 ## wifi.getP2pPeerDevices<sup>(deprecated)</sup>
@@ -927,7 +925,7 @@ Obtains the P2P peer device list. This API uses an asynchronous callback to retu
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[WifiP2pDevice[]](#wifip2pdevicedeprecated)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the peer device list obtained. If **err** is not **0**, an error has occurred.|
+  | callback | AsyncCallback&lt;[WifiP2pDevice](#wifip2pdevicedeprecated)[]&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the peer device list obtained. If **err** is not **0**, an error has occurred.|
 
 **Example**
 ```ts
@@ -938,11 +936,11 @@ wifi.getP2pPeerDevices((err, data:wifi.WifiP2pDevice) => {
        console.error("get P2P peer devices error");
        return;
    }
-	console.info("get P2P peer devices: " + JSON.stringify(data));
+  console.info("get P2P peer devices: " + JSON.stringify(data));
 });
 
 wifi.getP2pPeerDevices().then(data => {
-	console.info("get P2P peer devices: " + JSON.stringify(data));
+  console.info("get P2P peer devices: " + JSON.stringify(data));
 });
 ```
 
@@ -1015,17 +1013,17 @@ Creates a P2P group.
 import wifi from '@ohos.wifi';
 
 try {
-	let config:wifi.WifiP2PConfig = {
-		deviceAddress: "****",
-		netId: 0,
-		passphrase: "*****",
-		groupName: "****",
-		goBand: 0
-	}
-	wifi.createGroup(config);	
-	
+  let config:wifi.WifiP2PConfig = {
+    deviceAddress: "****",
+    netId: 0,
+    passphrase: "*****",
+    groupName: "****",
+    goBand: 0
+  }
+  wifi.createGroup(config);  
+  
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1090,9 +1088,9 @@ Removes this P2P group.
 import wifi from '@ohos.wifi';
 
 try {
-	wifi.removeGroup();	
+  wifi.removeGroup();  
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1216,9 +1214,9 @@ Cancels this P2P connection.
 import wifi from '@ohos.wifi';
 
 try {
-	wifi.p2pCancelConnect();	
+  wifi.p2pCancelConnect();  
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1247,9 +1245,9 @@ Starts to discover devices.
 import wifi from '@ohos.wifi';
 
 try {
-	wifi.startDiscoverDevices();	
+  wifi.startDiscoverDevices();  
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1278,9 +1276,9 @@ Stops discovering devices.
 import wifi from '@ohos.wifi';
 
 try {
-	wifi.stopDiscoverDevices();	
+  wifi.stopDiscoverDevices();  
 }catch(error){
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1303,7 +1301,7 @@ Represents the P2P group information.
 | groupName | string | No| No| Group name.|
 | networkId | number | No| No| Network ID.|
 | frequency | number | No| No| Frequency of the group.|
-| clientDevices | [WifiP2pDevice[]](#wifip2pdevicedeprecated) | No| No| List of connected devices.|
+| clientDevices | [WifiP2pDevice](#wifip2pdevicedeprecated)[] | No| No| List of connected devices.|
 | goIpAddress | string | No| No| IP address of the group.|
 
 
@@ -1327,7 +1325,7 @@ Subscribes to WLAN state changes.
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiStateChange**.|
-  | callback | Callback&lt;number&gt; | Yes| Callback used to return the WLAN state.|
+  | callback | Callback&lt;number&gt; | Yes| Callback for status changes.|
 
 **WLAN states** 
 
@@ -1395,7 +1393,7 @@ Subscribes to WLAN connection state changes.
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiConnectionChange**.|
-  | callback | Callback&lt;number&gt; | Yes| Callback used to return the WLAN connection state.|
+  | callback | Callback&lt;number&gt; | Yes| Callback for status changes.|
 
 **WLAN connection states**
 
@@ -1460,7 +1458,7 @@ Subscribes to WLAN scan state changes.
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiScanStateChange**.|
-  | callback | Callback&lt;number&gt; | Yes| Callback used to return the WLAN scan state.|
+  | callback | Callback&lt;number&gt; | Yes| Callback for status changes.|
 
 **WLAN scan states**
 
@@ -1585,7 +1583,7 @@ Subscribes to hotspot state changes.
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **hotspotStateChange**.|
-  | callback | Callback&lt;number&gt; | Yes| Callback used to return the hotspot state.|
+  | callback | Callback&lt;number&gt; | Yes| Callback for status changes.|
 
 **Hotspot states**
 
@@ -1653,7 +1651,7 @@ Subscribes to P2P state changes.
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pStateChange**.|
-  | callback | Callback&lt;number&gt; | Yes| Callback used to return the P2P state.|
+  | callback | Callback&lt;number&gt; | Yes| Callback for status changes.|
 
 **P2P states**
 
@@ -1720,7 +1718,7 @@ Subscribes to P2P connection state changes.
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pConnectionChange**.|
-  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfodeprecated)&gt; | Yes| Callback used to return the P2P connection state.|
+  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfodeprecated)&gt; | Yes| Callback for status changes.|
 
 
 ## wifi.off('p2pConnectionChange')<sup>(deprecated)</sup>
@@ -1778,7 +1776,7 @@ Subscribes to P2P device state changes.
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pDeviceChange**.|
-  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevicedeprecated)&gt; | Yes| Callback used to return the P2P device state.|
+  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevicedeprecated)&gt; | Yes| Callback for status changes.|
 
 
 ## wifi.off('p2pDeviceChange')<sup>(deprecated)</sup>
@@ -1836,7 +1834,7 @@ Subscribes to P2P peer device state changes.
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pPeerDeviceChange**.|
-  | callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevicedeprecated)&gt; | Yes| Callback used to return the P2P peer device state.|
+  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevicedeprecated)[]&gt; | Yes| Callback for status changes.|
 
 
 ## wifi.off('p2pPeerDeviceChange')<sup>(deprecated)</sup>
@@ -1858,7 +1856,7 @@ Unsubscribes from P2P peer device state changes.
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pPeerDeviceChange**.|
-  | callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevicedeprecated)&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered.|
+  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevicedeprecated)[]&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks for the specified event will be unregistered.|
 
 **Example**
 ```ts
@@ -1894,7 +1892,7 @@ Subscribes to P2P persistent group state changes.
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pPersistentGroupChange**.|
-  | callback | Callback&lt;void&gt; | Yes| Callback used to return the P2P persistent group state.|
+  | callback | Callback&lt;void&gt; | Yes| Callback for status changes.|
 
 
 ## wifi.off('p2pPersistentGroupChange')<sup>(deprecated)</sup>
@@ -1953,7 +1951,7 @@ Subscribes to P2P device discovery state changes.
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pDiscoveryChange**.|
-  | callback | Callback&lt;number&gt; | Yes| Callback used to return the P2P device discovery state.|
+  | callback | Callback&lt;number&gt; | Yes| Callback for status changes.|
 
 **P2P discovered device states**
 

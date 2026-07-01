@@ -19,5 +19,3 @@ Defines a styled string style.<br>        [OH_ArkUI_SpanStyle_Create](capi-style
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
 **Header file**: [styled_string.h](capi-styled-string-h.md)
-
-<!--no_check-->

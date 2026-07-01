@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -21,6 +21,12 @@
     - [Class (MakerNoteHuaweiMetadata)](arkts-apis-image-MakerNoteHuaweiMetadata.md)
     - [Class (HeifsMetadata)](arkts-apis-image-HeifsMetadata.md)
     - [Class (WebPMetadata)](arkts-apis-image-WebPMetadata.md)
+    - [Class (GifMetadata)](arkts-apis-image-GifMetadata.md)
+    - [Class (JfifMetadata)](arkts-apis-image-JfifMetadata.md)
+    - [Class (TiffMetadata)](arkts-apis-image-TiffMetadata.md)
+    - [Class (PngMetadata)](arkts-apis-image-PngMetadata.md)
+    - [Class (XMPMetadata)](arkts-apis-image-XMPMetadata.md)
+    - [Class (AvisMetadata)](arkts-apis-image-AvisMetadata.md)
     - [Interface (Picture)](arkts-apis-image-Picture.md)
     - [Interface (PixelMap)](arkts-apis-image-PixelMap.md)
     - [Interfaces (其他)](arkts-apis-image-i.md)
@@ -125,6 +131,8 @@
     - [Image_Scale](capi-image-nativemodule-image-scale.md)
     - [OH_ComposeOptions](capi-image-nativemodule-oh-composeoptions.md)
     - [OH_ImageRawData](capi-image-nativemodule-oh-imagerawdata.md)
+    - [OH_PictureNative_AuxiliaryPictureCopyItem](capi-image-nativemodule-oh-picturenative-auxiliarypicturecopyitem.md)
+    - [OH_PictureNative_MetadataCopyItem](capi-image-nativemodule-oh-picturenative-metadatacopyitem.md)
 - 错误码<!--image-arkts-errcode-->
   - [Image错误码](errorcode-image.md)
   - [视频处理引擎错误码](errorcode-videoprocessingengine.md)

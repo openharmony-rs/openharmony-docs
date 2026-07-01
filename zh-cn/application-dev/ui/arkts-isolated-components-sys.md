@@ -12,9 +12,9 @@ IsolatedComponent组件是构建隔离组件的工具，能够帮助开发者创
 
 ## 基本概念
 
-[IsolatedComponent](../reference/apis-arkui/arkui-ts/ts-container-isolated-component-sys.md)旨在在本页面中嵌入并展示由独立Abc（即.abc文件）所提供的UI，其展示内容在受限的worker线程中执行。
+[IsolatedComponent](../reference/apis-arkui/arkui-ts/ts-container-isolated-component-sys.md)旨在在本页面中嵌入并展示由独立Abc（即.abc文件）所提供的UI，其展示内容在受限的[worker](../reference/apis-arkts/js-apis-worker.md)线程中执行。
 
-该组件通常用于有Abc热更新（可动态替换Isolated加载的abc文件，无需通过重新安装应用的方式实现内容更新）诉求的模块化开发场景。
+该组件通常用于有Abc热更新（可动态替换IsolatedComponent加载的abc文件，无需通过重新安装应用的方式实现内容更新）诉求的模块化开发场景。
 
 ## 约束与限制
 
@@ -82,7 +82,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 - 异常隔离
 
-  worker内错误不会导致主应用崩溃，通过onerror事件可控处理。
+  worker内错误不会导致主应用崩溃，通过[onerror](../reference/apis-arkts/js-apis-worker.md#属性)事件可控处理。
 
 ```ts
 // OhCardWorker.ets
@@ -100,9 +100,9 @@ IsolatedComponent({
   want: {
     "parameters": {
       // 资源路径
-      "resourcePath": `${getContext(this).filesDir}/${this.fileName}.hap`,
+      "resourcePath": `${this.getUIContext().getHostContext()?.filesDir}/${this.fileName}.hap`,
       // Abc文件校验后的沙箱路径
-      "abcPath": `/abcs${getContext(this).filesDir}/${this.fileName}`,
+      "abcPath": `/abcs${this.getUIContext().getHostContext()?.filesDir}/${this.fileName}`,
       // 需要显示页面的入口路径
       "entryPoint": `${this.bundleName}/entry/ets/pages/extension`,
     }
@@ -239,8 +239,8 @@ struct Index {
 
 3. 打开应用页面，点击"verifyAbc"按钮进行校验，输出"VerifyAbc successfully"日志；
 
-   ![zh-cn_image_0000001746521386](figures/zh-cn_image_0000001746521386.jpg)
+   ![zh-cn_image_0000001746521386](figures/verifyAbc.jpg)
 
-   ![zh-cn_image_0000001502381065](figures/zh-cn_image_0000001502381065.png)
+   ![zh-cn_image_0000001502381065](figures/VerifyAbc-successfully.png)
 
 4. 点击"showIsolatedComponent"按钮，显示IsolatedComponent组件，内容为"Hello World"。

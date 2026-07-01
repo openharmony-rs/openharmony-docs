@@ -57,7 +57,7 @@
 | color                    | &lt;color&gt;              | \#e6000000 | 否    | 多行文本框的文本颜色。                              |
 | font-size                | &lt;length&gt;             | 16px       | 否    | 多行文本框的文本尺寸。                              |
 | allow-scale              | boolean                    | true       | 否    | 多行文本框的文本尺寸是否跟随系统设置字体缩放尺寸进行放大缩小。true表示跟随系统放大缩小，false表示不跟随系统放大缩小。<br/>如果在config描述文件中针对ability配置了fontSize的config-changes标签，则应用不会重启而直接生效。 |
-| placeholder-color        | &lt;color&gt;              | \#99000000 | 否    | 多行文本框的提示文本颜色，type为text\|email\|date\|time\|number\|password时生效。 |
+| placeholder-color        | &lt;color&gt;              | \#99000000 | 否    | 多行文本框的提示文本颜色。 |
 | font-weight              | number&nbsp;\|&nbsp;string | normal     | 否    | 多行文本框的字体粗细，见[text组件font-weight的样式属性](js-components-basic-text.md#样式)。 |
 | font-family              | string                     | sans-serif | 否    | 多行文本框的字体列表，用逗号分隔，每个字体用字体名或者字体族名设置。列表中第一个系统中存在的或者通过[自定义字体](js-components-common-customizing-font.md)指定的字体，会被选中作为文本的字体。 |
 | caret-color<sup>6+</sup> | &lt;color&gt;              | -          | 否    | 设置输入光标的颜色。                               |
@@ -74,7 +74,7 @@
 | share<sup>5+</sup>        | {&nbsp;value:&nbsp;selectedText&nbsp;}   | 设置此事件后，进行文本选择操作后文本选择弹窗会出现分享按钮，点击分享按钮之后，触发该回调，返回选中的文本内容。 |
 | search<sup>5+</sup>       | {&nbsp;value:&nbsp;selectedText&nbsp;}   | 设置此事件后，进行文本选择操作后文本选择弹窗会出现搜索按钮，点击搜索按钮之后，触发该回调，返回选中的文本内容。 |
 | optionselect<sup>5+</sup> | {&nbsp;index:optionIndex,&nbsp;value:&nbsp;selectedText&nbsp;} | 文本选择弹窗中设置menuoptions属性后，用户在文本选择操作后，点击菜单项后触发该回调，返回点击的菜单项序号和选中的文本内容。 |
-| selectchange<sup>6+</sup> | {&nbsp;start:&nbsp;number，end:&nbsp;number&nbsp;} | 文本选择变化时触发事件。                             |
+| selectchange<sup>6+</sup> | {&nbsp;start:&nbsp;number,&nbsp;end:&nbsp;number&nbsp;} | 文本选择变化时触发事件。                             |
 
 
 ## 方法
@@ -112,4 +112,4 @@ change(e){
 }
 ```
 
-![zh-cn_image_0000001127125124](figures/zh-cn_image_0000001127125124.png)
+![value](figures/value.png)

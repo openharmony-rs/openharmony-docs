@@ -5,17 +5,17 @@
 <!--Owner: @yliupy-->
 <!--Designer: @sunyaozu-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
 The **intl** module provides basic i18n capabilities, such as time and date formatting, number formatting, and string sorting, through the standard i18n APIs defined in ECMA 402.
 
-The [i18n](js-apis-i18n.md) module provides enhanced i18n capabilities through supplementary interfaces that are not defined in ECMA 402. It works with the intl module to provide a complete suite of i18n capabilities.
+The [internationalization](js-apis-i18n.md) module provides internationalization APIs not defined in ECMA 402. It can be used together with this module to provide complete internationalization support capabilities.
 
 >  **NOTE**
 >
 >  - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
->  - The APIs of this module are based on the [CLDR](https://cldr.unicode.org) internationalization database. The processing results of the APIs may be adjusted as the CLDR standard evolves. For example, the return value of the [number formatting API](#numberformat) is used only for UI display. Do not hardcode the return value or make assumptions about the return value. Otherwise, version compatibility problems may occur. API version 12 corresponds to [CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42). For details about data changes, see the official CLDR documentation.
+>  - The APIs of this module are based on the [CLDR](https://cldr.unicode.org) internationalization database. The processing results of the APIs may be adjusted as the CLDR standard evolves. For example, the return value of the number formatting API can be used only for UI display. Do not hardcode or make assumptions about the return format, as doing so may cause version compatibility issues. API version 12 corresponds to [CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42). For details about data changes, see the [official CLDR documentation](https://cldr.unicode.org/).
 >
 >  - Since API version 11, some APIs of this module are supported in ArkTS widgets.
 >
@@ -57,7 +57,7 @@ import { intl } from '@kit.LocalizationKit';
 
 constructor()
 
-> This API is supported since API version 8 and deprecated since API version 20. You are advised to use [i18n.System.getSystemLocaleInstance](js-apis-i18n.md#getsystemlocaleinstance20) instead.
+> This API is supported since API version 8 and deprecated since API version 20. You are advised to use [Intl.Locale.constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/Locale) instead.
 
 Creates a **Locale** object.
 
@@ -71,7 +71,7 @@ Creates a **Locale** object.
 ```ts
 import { intl } from '@kit.LocalizationKit';
 
-// The current system locale is used by the default constructor.
+// The current locale ID is used by the default constructor.
 let locale = new intl.Locale();
 // Return the current system locale ID.
 let localeID = locale.toString();
@@ -95,7 +95,7 @@ Creates a **Locale** object.
 
 | Name                 | Type                              | Mandatory  | Description                          |
 | -------------------- | -------------------------------- | ---- | ---------------------------- |
-| locale               | string                           | Yes   | Locale information, which consists of the language, script, and country/region.|
+| locale               | string                           | Yes   | Locale ID, which consists of the language, script, and country/region.|
 | options             | [LocaleOptions](#localeoptionsdeprecated) | No   | Options for creating the **Locale** object.|
 
 **Example**
@@ -141,7 +141,7 @@ let localeID = locale.toString(); // localeID = 'en-GB'
 
 maximize(): Locale
 
-> This API is supported since API version 68 and deprecated since API version 20. You are advised to use [Intl.Locale.maximize](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/maximize) instead.
+> This API is supported since API version 6 and deprecated since API version 20. You are advised to use [Intl.Locale.maximize](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale/maximize) instead.
 
 Maximizes locale information by supplementing the missing script and country/region information.
 
@@ -239,9 +239,9 @@ Options for initializing the **Locale** object. Since API version 9, the **Local
 
 ## DateTimeFormat<sup>(deprecated)</sup>
 
-> This API is supported since API version 6 and deprecated since API version 20. You are advised to use [Intl.RelativeTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) instead.
+> This API is supported since API version 6 and deprecated since API version 20. You are advised to use [Intl.DateTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) instead.
 
-Performs date and time formatting.
+Provides the date and time formatting capability.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -425,7 +425,7 @@ Defines the options for a **DateTimeOptions** object. Since API version 9, the *
 
 | Name             | Type     | Read-Only  | Optional  | Description                                      |
 | --------------- | ------- | ---- | ---- |  ---------------------------------------- |
-| locale          | string  | No   | Yes   |Valid locale ID, for example, **zh-Hans-CN**.<br>The default value is the current system locale.          |
+| locale          | string  | No   | Yes   |Valid locale ID, for example, **zh-Hans-CN**.<br>The default value is the current locale ID.          |
 | dateStyle       | string  | No   | Yes    |Date display format. The value can be:<br>"long",&nbsp;"short",&nbsp;"medium",&nbsp;"full", or &nbsp;"auto".<br>For details about their display effects, see [Table 1](#appendix).|
 | timeStyle       | string  | No   | Yes    |Time display format. The value can be:<br>"long",&nbsp;"short",&nbsp;"medium",&nbsp;"full", or &nbsp;"auto".<br>For details about their display effects, see [Table 2](#appendix).|
 | hourCycle       | string  | No   | Yes    |Hour cycle. The value can be:<br>"h11",&nbsp;"h12",&nbsp;"h23", or &nbsp;"h24".<br>For the display effects when **dateStyle** or **timeStyle** is not set, see [Table 5](#appendix).<br>For the display effects when **dateStyle** or **timeStyle** is not set, see [Table 6](#appendix).|
@@ -447,7 +447,7 @@ Defines the options for a **DateTimeOptions** object. Since API version 9, the *
 
 ## NumberFormat
 
-Performs standard number formatting.
+Provides the standard number formatting capability.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -601,13 +601,11 @@ let notation: string | undefined = options.notation; // notation = 'scientific'
 
 Options for creating the **NumberFormat** object. Since API version 9, the **NumberOptions** attribute is changed from mandatory to optional.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
 **System capability**: SystemCapability.Global.I18n
 
 | Name                      | Type     | Read-Only  | Optional  |  Description                                      |
 | ------------------------ | ------- | ---- | ---- |  ---------------------------------------- |
-| locale                   | string  | No   | Yes   | Valid locale ID, for example, **zh-Hans-CN**.<br>The default value is the current system locale.<br>**Atomic service API**: This API can be used in atomic services since API version 12.              |
+| locale                   | string  | No   | Yes   | Valid locale ID, for example, **zh-Hans-CN**.<br>The default value is the current locale ID.<br>**Atomic service API**: This API can be used in atomic services since API version 12.              |
 | currency                 | string  | No   | Yes   | Currency unit. The value must comply with the [ISO-4217 standard](https://www.iso.org/iso-4217-currency-codes.html), for example, EUR, CNY, and USD.<br>From API version 12, a three-digit number is supported, for example, **978**, **156**, or **840**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.   |
 | currencySign             | string  | No   | Yes   | Currency unit symbol. The value can be **standard** or **accounting**.<br>The default value is **standard**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>For details about their display effects, see [Table 19](#appendix).|
 | currencyDisplay          | string  | No   | Yes   | Currency display mode. The value can be **symbol**, **narrowSymbol**, **code**, or **name**.<br>The default value is **symbol**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>For details about their display effects, see [Table 20](#appendix).|
@@ -632,7 +630,7 @@ Options for creating the **NumberFormat** object. Since API version 9, the **Num
 
 ## Collator<sup>8+</sup>
 
-Performs string collation.
+Provides the string collation capability.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -704,7 +702,7 @@ Compares two strings based on the specified collation rules.
 
 | Type    | Description                                      |
 | ------ | ---------------------------------------- |
-| number | Comparison result.<br>- If the value is a negative number, the first string comes before the second string.<br>- If the value is **0**, the first and second strings are in the same sequence.<br>- If the value is a positive number, the first string is comes after the second string.|
+| number | Comparison result.<br>- If the value is a negative number, the first string comes before the second string.<br>- If the value is **0**, the first and second strings are in the same sequence.<br>- If the value is a positive number, the first string comes after the second string.|
 
 **Example**
 ```ts
@@ -770,7 +768,7 @@ Since API version 9, the attributes in **CollatorOptions** are optional.
 
 > This API is supported since API version 8 and deprecated since API version 20. You are advised to use [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules) instead.
 
-Obtains the plural rule type.
+Provides the capability for obtaining the plural rule type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -881,7 +879,7 @@ Defines the options for creating a **PluralRules** object. Since API version 9, 
 | minimumIntegerDigits<sup>(deprecated)</sup>     | number | No   | Yes   | This parameter is supported since API version 8 and is deprecated since API version 20. You are advised to use **Intl.PluralRulesOptions.minimumIntegerDigits** instead. For details, see [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules#options).<br>Minimum number of digits allowed in the integer part of a number. The value ranges from **1** to **21**.<br>The default value is **1**.                 |
 | minimumFractionDigits<sup>(deprecated)</sup>    | number | No   | Yes   | This parameter is supported since API version 8 and is deprecated since API version 20. You are advised to use **Intl.PluralRulesOptions.minimumFractionDigits** instead. For details, see [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules#options).<br>Minimum number of digits in the fraction part of a number. The value ranges from **0** to **20**.<br>The default value is **0**.                 |
 | maximumFractionDigits<sup>(deprecated)</sup>    | number | No   | Yes   | This parameter is supported since API version 8 and is deprecated since API version 20. You are advised to use **Intl.PluralRulesOptions.maximumFractionDigits** instead. For details, see [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules#options).<br>Maximum number of digits in the fraction part of a number. The value ranges from **1** to **21**.<br>The default value is **3**.                 |
-| minimumSignificantDigits<sup>(deprecated)</sup> | number | No   | Yes   | This parameter is supported since API version 8 and is deprecated since API version 20. You are advised to use **Intl.PluralRulesOptions.maximumFractionDigits** instead. For details, see [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules#options).<br>Minimum number of the least significant digits. The value ranges from **1** to **21**.<br>The default value is **1**.                 |
+| minimumSignificantDigits<sup>(deprecated)</sup> | number | No   | Yes   | This parameter is supported since API version 8 and is deprecated since API version 20. You are advised to use **Intl.PluralRulesOptions.minimumSignificantDigits** instead. For details, see [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules#options).<br>Minimum number of the least significant digits. The value ranges from **1** to **21**.<br>The default value is **1**.                 |
 | maximumSignificantDigits<sup>(deprecated)</sup> | number | No   | Yes   | This parameter is supported since API version 8 and is deprecated since API version 20. You are advised to use **Intl.PluralRulesOptions.maximumSignificantDigits** instead. For details, see [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/PluralRules#options).<br>Maximum number of the least significant digits. The value ranges from **1** to **21**.<br>The default value is **21**.               |
 
 
@@ -889,7 +887,7 @@ Defines the options for creating a **PluralRules** object. Since API version 9, 
 
 > This API is supported since API version 8 and deprecated since API version 20. You are advised to use [Intl.RelativeTimeFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat) instead.
 
-Formats the relative time.
+Provides the relative time formatting capability.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -939,7 +937,7 @@ Creates a **RelativeTimeFormat** object.
 ```ts
 import { intl } from '@kit.LocalizationKit';
 
-// Create a RelativeTimeFormat object with the locale ID being zh-CN, localeMatcher being lookup, and style being long.
+// Use locale ID zh-CN to create a RelativeTimeFormat object with the localeMatcher set to lookup, numeric set to always, and style set to long.
 let formatter: intl.RelativeTimeFormat = new intl.RelativeTimeFormat('zh-CN', {
   localeMatcher: 'lookup',
   numeric: 'always',
@@ -1203,7 +1201,7 @@ The following uses **123000.123** as an example to show the parameter values and
 | 3 | 123,000.123 |
 | 4 | 123,000.1230 |
 
-**Table 3** Maximum number of fraction digits (maximumFractionDigits)
+**Table 13** Maximum number of fraction digits (maximumFractionDigits)
 
 | Value| Display Effect|
 | -------- | -------- |
@@ -1231,7 +1229,7 @@ The following uses **123000.123** as an example to show the parameter values and
 | true | 123,000.123 |
 | false | 123000.123 |
 
-**Table 7** Number notation (notation)
+**Table 17** Number notation (notation)
 
 | Value| Display Effect|
 | -------- | -------- |
@@ -1251,7 +1249,7 @@ The following uses **123000.123** as an example to show the parameter values and
 
 Assume that the currency unit is USD and the value is **-12300**.
 
-**Table 19** Currency sign (currencySign)
+**Table 19** Currency signs (currencySign)
 
 | Value| Display Effect|
 | -------- | -------- |
@@ -1291,7 +1289,7 @@ Assume that the unit name is **hectare** and the value is **-12300**.
 
 The following uses the relative time **1 day ago** and locale IDs **fr-FR** and **en-GB** as an example.
 
-**Table 11** Numeric representation (numeric)
+**Table 23** Numeric representation (numeric)
 
 | Value  | Description                                         | Display Effect (fr-FR)| Display Effect (en-GB)|
 | ------ | -------------------------------------------- | -------------- | --------------- |
@@ -1305,3 +1303,4 @@ The following uses the relative time **1 day ago** and locale IDs **fr-FR** and 
 | long   | Long relative time display  | il y a 1 jour  | 1 day ago       |
 | short  | Short relative time display  | il y a 1 j     | 1 day ago       |
 | narrow | Narrow relative time display| -1 j           | 1 day ago       |
+<!--no_check-->

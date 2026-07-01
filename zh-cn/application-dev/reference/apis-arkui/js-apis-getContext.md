@@ -1,14 +1,14 @@
 # getContext
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
 如果需要在页面中获得当前Ability的Context，可调用getContext接口获取当前页面关联的[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)或[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
 
-> **说明：**	
+> **说明：**
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 该接口仅限Stage模型使用。
 
@@ -43,7 +43,7 @@ getContext(component?: Object):Context
 
 ## Context
 
-type Context = Context
+type Context = import('../api/application/Context').default
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -53,7 +53,7 @@ type Context = Context
 
 | 类型 | 说明                             |
 | ------ | ------------------------------- |
-| [Context](../../application-models/application-context-stage.md)  | 返回当前组件所在Ability的Context，Context的具体类型为当前Ability关联的Context对象。例如：在UIAbility窗口中的页面调用该接口，返回类型为UIAbilityContext。在ExtensionAbility窗口中的页面调用该接口，返回类型为ExtensionContext。    |
+| import('../api/application/[Context](../../application-models/application-context-stage.md)').default  | 返回当前组件所在Ability的[Context](../../application-models/application-context-stage.md)，Context的具体类型为当前Ability关联的Context对象。例如：在UIAbility窗口中的页面调用该接口，返回类型为UIAbilityContext。在ExtensionAbility窗口中的页面调用该接口，返回类型为ExtensionContext。    |
 
 > **说明：**
 > 

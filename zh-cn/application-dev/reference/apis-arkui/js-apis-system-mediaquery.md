@@ -11,7 +11,7 @@
 
 > **说明：**
 >
-> - 从API version 7 开始，该接口不再维护，推荐使用新接口[`@ohos.mediaquery`](js-apis-mediaquery.md)。
+> - 从API version 7 开始，该接口不再维护，推荐使用新接口[@ohos.mediaquery](js-apis-mediaquery.md)。
 > - 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
@@ -50,7 +50,7 @@ matchMedia(condition: string): MediaQueryList
 
 | 类型           | 说明                                       |
 | -------------- | ---------------------------------------- |
-| [MediaQueryList](./js-apis-system-mediaquery.md#mediaquerylist) | 表示创建MediaQueryList对象的属性，详情见下表说明。 |
+| [MediaQueryList](./js-apis-system-mediaquery.md#mediaquerylist) | 创建MediaQueryList对象，详情见下表说明。 |
 
 **示例：**
 

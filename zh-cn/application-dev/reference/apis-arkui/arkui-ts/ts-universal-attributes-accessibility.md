@@ -1,7 +1,7 @@
 # 无障碍属性
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zhanghangkai10241-->
+<!--Owner: @wangyinhua-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -10,11 +10,13 @@
 
 >  **说明：**
 >
->  从API version 10 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 10 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## accessibilityGroup
 
-accessibilityGroup(value: boolean):T
+accessibilityGroup(value: boolean): T
 
 设置是否启用无障碍分组。启用无障碍分组后，组件及其子组件作为一整个可选组件，无障碍服务不再关注子组件内容。
 
@@ -42,7 +44,7 @@ accessibilityGroup(value: boolean):T
 
 ## accessibilityGroup<sup>14+</sup>
 
-accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions):T
+accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions): T
 
 设置是否启用无障碍分组。启用无障碍分组后，组件及其子组件作为一整个可选组件，无障碍服务不再关注子组件内容。
 
@@ -79,7 +81,7 @@ accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions)
 
 ## accessibilityText
 
-accessibilityText(value: string):T
+accessibilityText(value: string): T
 
 设置无障碍文本。当组件不包含文本属性时，开发人员可通过设置无障碍文本属性，使不包含文字信息的组件能够播报无障碍文本的内容；当组件同时包含文本属性时，在朗读场景优先播报无障碍文本。
 
@@ -103,7 +105,7 @@ accessibilityText(value: string):T
 
 ## accessibilityText<sup>12+</sup>
 
-accessibilityText(text: Resource):T
+accessibilityText(text: Resource): T
 
 设置无障碍文本，支持通过[Resource](ts-types.md#resource)引用资源文件。当组件不包含文本属性时，开发人员可通过设置无障碍文本属性，使不包含文字信息的组件能够播报无障碍文本的内容；当组件同时包含文本属性时，在朗读场景优先播报无障碍文本。
 
@@ -132,7 +134,7 @@ accessibilityText(text: Resource):T
 
 ## accessibilityDescription
 
-accessibilityDescription(value: string):T
+accessibilityDescription(value: string): T
 
 设置无障碍说明。该属性用于为用户进一步说明当前组件，开发人员可为组件设置相对较详细的解释文本，帮助用户理解将要执行的操作。
 
@@ -156,7 +158,7 @@ accessibilityDescription(value: string):T
 
 ## accessibilityDescription<sup>12+</sup>
 
-accessibilityDescription(description: Resource):T
+accessibilityDescription(description: Resource): T
 
 设置无障碍说明，支持通过[Resource](ts-types.md#resource)引用资源文件。该属性用于为用户进一步说明当前组件，开发人员可为组件设置相对较详细的解释文本，帮助用户理解将要执行的操作。
 
@@ -184,7 +186,7 @@ accessibilityDescription(description: Resource):T
 
 ## accessibilityLevel
 
-accessibilityLevel(value: string):T
+accessibilityLevel(value: string): T
 
 设置无障碍重要性。该属性用于控制某个组件是否可被无障碍辅助服务所识别。
 
@@ -199,7 +201,7 @@ accessibilityLevel(value: string):T
 <!--Table: 10%; 10%; 10%; 70%-->
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | string | 是   | 无障碍重要性，用于控制某个组件是否可被无障碍辅助服务所识别。<br/>支持的值为：<br/>"auto"：当前组件由无障碍辅助服务和ArkUl进行综合判断组件是否可被无障碍辅助服务所识别。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"<br/>**说明：**<br/>当accessibilityLevel设置成"auto"时，组件是否可被无障碍辅助服务所识别取决于以下多方面因素：<br/>1. 组件是否可被识别由无障碍辅助服务内部判断，自行选择。<br/>2. 若组件的父组件accessibilityGroup属性中isGroup设置为true，无障碍服务将不再关注其子组件内容，组件不可被无障碍辅助服务所识别。<br/>3. 若组件的父组件accessibilityLevel属性设置为"no-hide-descendants"，组件不可被无障碍辅助服务所识别。 |
+| value  | string | 是   | 无障碍重要性，用于控制某个组件是否可被无障碍辅助服务所识别。<br/>支持的值为：<br/>"auto"：当前组件由无障碍辅助服务和ArkUI进行综合判断组件是否可被无障碍辅助服务所识别。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"<br/>**说明：**<br/>当accessibilityLevel设置成"auto"时，组件是否可被无障碍辅助服务所识别取决于以下多方面因素：<br/>1. 组件是否可被识别由无障碍辅助服务内部判断，自行选择。<br/>2. 若组件的父组件accessibilityGroup属性中isGroup设置为true，无障碍服务将不再关注其子组件内容，组件不可被无障碍辅助服务所识别。<br/>3. 若组件的父组件accessibilityLevel属性设置为"no-hide-descendants"，组件不可被无障碍辅助服务所识别。 |
 
 **返回值：**
 
@@ -209,7 +211,7 @@ accessibilityLevel(value: string):T
 
 ## accessibilityVirtualNode<sup>11+</sup>
 
-accessibilityVirtualNode(builder: CustomBuilder):T
+accessibilityVirtualNode(builder: CustomBuilder): T
 
 设置无障碍虚拟子节点。对自绘制组件传入一个自定义的CustomBuilder，该CustomBuilder中的组件在后端仅做布局不做显示，辅助应用获取无障碍节点信息时会返回CustomBuilder中的节点信息。如使用画布组件[Canvas](./ts-components-canvas-canvas.md)时，可以通过虚拟节点设置相应位置和大小匹配的占位组件，让无障碍服务识别到对应区域的自绘制信息。
 
@@ -237,7 +239,7 @@ accessibilityVirtualNode(builder: CustomBuilder):T
 
 ## accessibilityChecked<sup>13+</sup>
 
-accessibilityChecked(isCheck: boolean):T
+accessibilityChecked(isCheck: boolean): T
 
 无障碍节点是否选中的状态维护，用于支持多选的情况使用，表示组件是否被选中。此接口只影响屏幕朗读场景下的组件状态播报信息。
 
@@ -266,7 +268,7 @@ accessibilityChecked(isCheck: boolean):T
 
 ## accessibilitySelected<sup>13+</sup>
 
-accessibilitySelected(isSelect: boolean):T
+accessibilitySelected(isSelect: boolean): T
 
 无障碍节点是否选中的状态维护，用于支持单选的情况使用，表示组件是否被选中。此接口只影响屏幕朗读场景下的组件状态播报信息。
 
@@ -295,7 +297,7 @@ accessibilitySelected(isSelect: boolean):T
 
 ## accessibilityRole<sup>18+</sup>
 
-accessibilityRole(role: AccessibilityRoleType):T
+accessibilityRole(role: AccessibilityRoleType): T
 
 设置无障碍组件类型，特定组件类型有特定的朗读方式，可以根据应用诉求，修改组件类型，用于控制无障碍模式下对组件的朗读方式和朗读内容。
 
@@ -336,7 +338,7 @@ accessibilityRole(role: AccessibilityRoleType):T
 | BLANK  | 4 | 空白填充组件。 |
 | BUTTON | 5 | 按钮。 |
 | BACK_BUTTON | 6 | 大图页返回按钮。 |
-| SHEET_DRAG_BAR | 7 | 滑动条。 |
+| SHEET_DRAG_BAR | 7 | 弹窗拖拽条。 |
 | CALENDAR_PICKER | 8 | 日历选择器组件。 |
 | CALENDAR | 9 | 日历。 |
 | CANVAS | 10 | 提供画布组件。 |
@@ -405,7 +407,7 @@ accessibilityRole(role: AccessibilityRoleType):T
 | POLYGON | 73 | 多边形绘制组件。 |
 | POLYLINE | 74 | 折线绘制组件。 |
 | POPUP | 75 | 显示特定样式气泡。 |
-| PROGRESS | 76 | 文本下载按钮。 |
+| PROGRESS | 76 | 进度条。 |
 | QRCODE | 77 | 二维码。 |
 | RADIO | 78 | 单选框。 |
 | RATING | 79 | 提供在给定范围内选择评分的组件。 |
@@ -457,7 +459,7 @@ accessibilityRole(role: AccessibilityRoleType):T
 
 ## accessibilityNextFocusId<sup>18+</sup>
 
-accessibilityNextFocusId(nextId: string):T
+accessibilityNextFocusId(nextId: string): T
 
 指定屏幕朗读扫动走焦过程中组件的下一个焦点。
 
@@ -479,9 +481,38 @@ accessibilityNextFocusId(nextId: string):T
 | -------- | -------- |
 | T | 返回当前对象。 |
 
+## accessibilityNextFocusId
+
+accessibilityNextFocusId(nextId: string, nextFocusParams: AccessibilityNextFocusParams | undefined): T
+
+指定屏幕朗读扫动走焦过程中组件的下一个焦点，并支持配置详细参数。
+
+通过[AccessibilityNextFocusParams](ts-types.md#accessibilitynextfocusparams)参数，可以配置是否在无障碍下一个焦点处理过程中查找后代节点中的焦点。
+
+**起始版本：** 26.0.0
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| nextId | string | 是   | 下一个被指定聚焦组件的[唯一标识id](ts-universal-attributes-component-id.md#id)。若唯一标识id无对应组件，则设置的accessibilityNextFocusId不存在，设置无效。 |
+| nextFocusParams | [AccessibilityNextFocusParams](ts-types.md#accessibilitynextfocusparams) \| undefined | 是   | 无障碍下一个焦点处理的详细参数，用于配置是否在后代节点中查找可聚焦节点。<br/>取值为undefined时，不配置下一个焦点处理的详细参数，不在后代节点中查找焦点。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回当前对象。 |
+
 ## accessibilityDefaultFocus<sup>18+</sup>
 
-accessibilityDefaultFocus(focus: boolean):T
+accessibilityDefaultFocus(focus: boolean): T
 
 为页面设置屏幕朗读初始焦点。
 
@@ -505,7 +536,7 @@ accessibilityDefaultFocus(focus: boolean):T
 
 ## accessibilityUseSamePage<sup>18+</sup>
 
-accessibilityUseSamePage(pageMode: AccessibilitySamePageMode):T
+accessibilityUseSamePage(pageMode: AccessibilitySamePageMode): T
 
 设置当前组件和宿主应用为同page模式。
 
@@ -546,7 +577,7 @@ accessibilityUseSamePage(pageMode: AccessibilitySamePageMode):T
 
 ## accessibilityScrollTriggerable<sup>18+</sup>
 
-accessibilityScrollTriggerable(isTriggerable: boolean):T
+accessibilityScrollTriggerable(isTriggerable: boolean): T
 
 设置无障碍节点是否支持屏幕朗读滚动操作。当屏幕朗读在扫动走焦时，若容器内当前页面无可聚焦的组件，会发起一次自动滚动操作。
 
@@ -571,7 +602,7 @@ accessibilityScrollTriggerable(isTriggerable: boolean):T
 
 ## accessibilityTextHint<sup>12+</sup>
 
-accessibilityTextHint(value: string):T
+accessibilityTextHint(value: string): T
 
 设置组件的文本提示信息，供无障碍辅助应用查询。
 
@@ -599,7 +630,7 @@ accessibilityTextHint(value: string):T
 
 ## accessibilityFocusDrawLevel<sup>19+</sup>
 
-accessibilityFocusDrawLevel(drawLevel: FocusDrawLevel):T
+accessibilityFocusDrawLevel(drawLevel: FocusDrawLevel): T
 
 无障碍焦点绿框的绘制层级设置功能。
 
@@ -676,6 +707,34 @@ accessibilityActionOptions(option: AccessibilityActionOptions | undefined): T
 | -------- | -------- |
 | T | 返回当前对象。 |
 
+## accessibilityCustomActions
+
+accessibilityCustomActions(actions: Array&lt;AccessibilityCustomAction&gt; | undefined): T
+
+设置组件的自定义无障碍操作，支持开发者设置一个自定义actions的数组，用于给组件按操作名进行自定义操作的回调绑定。
+
+**起始版本：** 26.0.0
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                         |
+| ------ | ------- | ---- | ------------------------------------------------------------ |
+| actions  | Array&lt;[AccessibilityCustomAction](ts-types.md#accessibilitycustomaction)&gt; \| undefined | 是   | 自定义无障碍操作数组，每个操作包含操作名称和回调，用于给组件按操作名进行自定义操作的回调绑定。<br/>**说明：**<br/>数组长度最大支持16个，超出部分将不生效。<br/>取值为undefined时，不设置自定义操作。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回当前组件。 |
+
 ## 示例
 
 ### 示例1（设置无障碍文本和无障碍说明）
@@ -687,8 +746,8 @@ accessibilityActionOptions(option: AccessibilityActionOptions | undefined): T
 @Entry
 @Component
 struct Index {
-
-  @Builder customAccessibilityNode() {
+  @Builder
+  customAccessibilityNode() {
     Column() {
       Text(`virtual node`)
     }
@@ -837,7 +896,7 @@ import { Want } from '@kit.AbilityKit';
 struct Index {
   @State message: string = 'Message: ';
   private want: Want = {
-    // EmbeddedComponent提供方的bunldename，根据实际情况配置。
+    // EmbeddedComponent提供方的bundleName，根据实际情况配置。
     bundleName: 'com.example.embeddeddemo',
     // EmbeddedComponent提供方的abilityName，根据实际情况配置。
     abilityName: 'ExampleEmbeddedAbility',
@@ -854,8 +913,6 @@ struct Index {
               .fontWeight(FontWeight.Medium)
             Column() {
               EmbeddedComponent(this.want, EmbeddedType.EMBEDDED_UI_EXTENSION)
-                .width('100%')
-                .height('90%')
                 .onTerminated((info) => {
                   this.message = 'Termination: code = ' + info.code + ', want = ' + JSON.stringify(info.want);
                 })
@@ -911,6 +968,7 @@ struct Index {
             .margin({ top: 15 })
             .accessibilityText($r('app.string.app_name'))
             .accessibilityDescription($r('app.string.module_desc'))
+
             Column() {
               Text('文本4')
                 .fontSize(18)
@@ -941,11 +999,10 @@ struct Index {
 @Entry
 @Component
 struct Index {
-  @State isSelected: boolean = false;
 
   build() {
     Column({ space: 20 }) {
-      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center}) {
+      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center }) {
         Text("是否开启功能")
         Toggle({ type: ToggleType.Switch, isOn: false })
           .selectedColor('#007DFF')
@@ -954,12 +1011,14 @@ struct Index {
             console.info('Component status:' + isOn);
           })
       }
-      .accessibilityGroup(true, {stateControllerRoleType : AccessibilityRoleType.TOGGLER,
-                                 actionControllerRoleType : AccessibilityRoleType.TOGGLER})
+      .accessibilityGroup(true, {
+        stateControllerRoleType: AccessibilityRoleType.TOGGLER,
+        actionControllerRoleType: AccessibilityRoleType.TOGGLER
+      })
       .width('80%')
-      .border({ color : Color.Black, width : 2 })
+      .border({ color: Color.Black, width: 2 })
 
-      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center}) {
+      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center }) {
         Text("是否开启功能")
         Toggle({ type: ToggleType.Switch, isOn: false })
           .selectedColor('#007DFF')
@@ -969,10 +1028,12 @@ struct Index {
           })
           .id("TestToggle")
       }
-      .accessibilityGroup(true, {stateControllerId : "TestToggle",
-                                 actionControllerId : "TestToggle"})
+      .accessibilityGroup(true, {
+        stateControllerId: "TestToggle",
+        actionControllerId: "TestToggle"
+      })
       .width('80%')
-      .border({ color : Color.Black, width : 2 })
+      .border({ color: Color.Black, width: 2 })
 
     }
     .height('100%')
@@ -1027,13 +1088,63 @@ struct Index {
           max: 100,
           style: SliderStyle.OutSet
         })
-          // 调整屏幕朗读手势下slider滑动的步长
-          .accessibilityActionOptions({ scrollStep : 10 })
+        // 调整屏幕朗读手势下slider滑动的步长
+          .accessibilityActionOptions({ scrollStep: 10 })
       }
       .width('80%')
     }
     .height('100%')
     .width('100%')
+  }
+}
+```
+
+### 示例9（设置自定义无障碍操作）
+
+本示例主要演示如何使用[accessibilityCustomActions](#accessibilitycustomactions)为组件设置自定义无障碍操作。开发者可以按操作名为组件进行自定义操作的回调绑定。
+
+从API版本26.0.0开始，新增accessibilityCustomActions。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State listData: Array<string> = ['列表项1', '列表项2', '列表项3', '列表项4'];
+
+  build() {
+    Column() {
+      List({ space: 10 }) {
+        ForEach(this.listData, (item: string, index: number) => {
+          ListItem() {
+            Row() {
+              Text(item)
+                .fontSize(16)
+              Blank()
+              Text('删除')
+                .fontSize(14)
+                .fontColor(Color.Red)
+            }
+            .width('100%')
+            .padding(10)
+            .onClick(() => {
+              console.info('[TestTag] click success!')
+            })
+            .accessibilityLevel('yes')
+            .accessibilityCustomActions([
+              {
+                name: 'deleteItem',
+                onAction: () => {
+                  this.listData.splice(index, 1);
+                }
+              }
+            ])
+          }
+        }, (item: string) => item)
+      }
+      .width('100%')
+      .height('100%')
+    }
   }
 }
 ```

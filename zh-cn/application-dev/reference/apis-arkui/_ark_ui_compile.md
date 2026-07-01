@@ -678,13 +678,13 @@ No such \'xxx\' resource in current module.
 The wrapBuilder\'s parameter should be a \'@Builder\' function.
 
 **错误描述**<br>
-wrapBuilder的参数必须为@Builder方法。
+wrapBuilder的参数必须为全局@Builder函数。
 
 **可能原因**<br>
-开发者使用其他类型变量或是普通函数作为wrapBuilder函数的参数导致报错。
+开发者使用其他类型变量、普通函数或者方法作为wrapBuilder函数的参数导致报错。
 
 **处理步骤**<br>
-修改wrapBuilder的参数为@Builder装饰器装饰的方法。
+修改wrapBuilder的参数为@Builder装饰器装饰的全局函数。
 
 ## 10905110 @Styles校验异常
 **错误信息**<br>
@@ -811,7 +811,7 @@ The \'xxx\' decorator can only be used with \'struct\'.
 装饰器无法装饰非struct。
 
 **可能原因**<br>
-开发者使用了@Componet、@ComponentV2等struct装饰器装饰了非struct比如函数等导致报错。
+开发者使用了@Component、@ComponentV2等struct装饰器装饰了非struct比如函数等导致报错。
 
 **处理步骤**<br>
 按照错误日志描述，正确使用对应装饰器即可。
@@ -1439,3 +1439,315 @@ reuseId属性不能用于@ReusableV2装饰的@ComponentV2自定义组件。
 
 **处理步骤**<br>
 根据错误描述修改，在正确场景下使用reuseId属性功能。
+
+## 10905363 V1装饰器不能装饰类型为Function或者() => void的变量
+**错误信息**<br>
+The V1 decorator \'xxx\' cannot be applied to a Function-type variable \'yyy\'.
+
+**错误描述**<br>
+ArkUI状态管理V1装饰器不能用于Function类型或者() => void类型的变量，会导致运行时出现错误；从API version 23开始，该问题提前至编译期拦截，避免潜在运行时异常。ArkUI状态管理V1装饰器包括：[\@State](../../../application-dev/ui/state-management/arkts-state.md), [\@Prop](../../../application-dev/ui/state-management//arkts-prop.md), [\@Link](../../../application-dev/ui/state-management/arkts-link.md), [\@Provide](../../../application-dev/ui/state-management//arkts-provide-and-consume.md), [\@Consume](../../../application-dev/ui/state-management/arkts-provide-and-consume.md), [\@StorageLink](../../../application-dev/ui/state-management/arkts-appstorage.md#storagelink), [\@StorageProp](../../../application-dev/ui/state-management/arkts-appstorage.md#storageprop), [\@LocalStorageLink](../../../application-dev/ui/state-management/arkts-localstorage.md#localstoragelink), [\@LocalStorageProp](../../../application-dev/ui/state-management/arkts-localstorage.md#localstorageprop), [\@ObjectLink](../../../application-dev/ui/state-management/arkts-observed-and-objectlink.md)。
+
+**可能原因**<br>
+开发者在Function类型或者() => void类型的变量上使用了V1装饰器。
+
+**处理步骤**<br>
+根据错误描述修改，删除用于Function类型或者() => void类型变量上的V1装饰器。
+
+## 10905360 \@Extend函数名不可以与属性名相同
+**错误信息**<br>
+The \'@Extend\' function cannot have the same name as the built-in style attribute \'xxx\' of the component \'yyy\'.
+
+**错误描述**<br>
+[\@Extend](../../../application-dev/ui/state-management/arkts-extend.md)函数名不可以与对应组件的内置属性名相同。
+
+**可能原因**<br>
+开发者将组件的\@Extend函数命名为组件内置属性同名函数名。
+
+**处理步骤**<br>
+根据错误描述修改，避免将\@Extend函数命名为组件内置属性同名函数名。
+
+## 10905361 \@Env装饰的变量不可以有初始值
+**错误信息**<br>
+The \'@Env\' property cannot be specified a default value.
+
+**错误描述**<br>
+[\@Env](../../../application-dev/ui/state-management/arkts-environment.md)装饰的变量不可以赋初始值。
+
+**可能原因**<br>
+开发者给\@Env装饰的变量赋初始值。
+
+**处理步骤**<br>
+根据错误描述修改，避免给\@Env装饰的变量赋初始值。
+
+##  10905250 \@Env装饰器只能在\@Component和\@ComponentV2装饰的struct中使用
+**错误信息**<br>
+The \'@Env\' decorator can only be used in structs decorated by \'@Component\' or \'@ComponentV2\'.
+
+**错误描述**<br>
+\@Env装饰器只能在\@Component和\@ComponentV2装饰的struct中使用。
+
+**可能原因**<br>
+开发者在class或者全局使用@Env装饰器。
+
+**处理步骤**<br>
+根据错误描述修改，仅在\@Component和\@ComponentV2装饰的struct中使用\@Env装饰器。
+
+##  10905251 \@Env装饰器只能用于声明特定类型或者其子类类型实例
+**错误信息**<br>
+The \'@Env\' decorator can only decorate \'WindowSizeLayoutBreakpointInfo\', \'SizeInVP\', \'Size\', \'UIEnvWindowAvoidAreaInfoPX\', \'UIEnvWindowAvoidAreaInfoVP\' classes or their child classes.
+
+**错误描述**<br>
+\@Env装饰器只能用于声明特定类型或者其子类类型实例。
+
+**可能原因**<br>
+开发者使用\@Env装饰器装饰除指定类型及其子类以外的类型实例。
+
+**处理步骤**<br>
+根据错误描述修改，仅使用\@Env装饰器装饰特定类型及其子类类型实例。
+
+##  10905252 构造\@ComponentV2装饰的struct时，\@Env装饰的变量仅能初始化\@Param装饰的状态变量
+**错误信息**<br>
+Within structs decorated with \'@ComponentV2\', \'@Env\' can only initialize variables decorated with \'@Param\'.
+
+**错误描述**<br>
+构造\@ComponentV2装饰的struct时，\@Env装饰的状态变量仅能初始化\@Param装饰的状态变量。
+
+**可能原因**<br>
+在构造\@ComponentV2装饰的struct时，开发者使用\@Env装饰的变量来初始化\@Param以外的装饰器装饰的状态变量。
+
+**处理步骤**<br>
+避免使用\@Env装饰的变量初始化\@Param以外的V2装饰器装饰的状态变量。
+
+## 10905253 构造\@Component装饰的struct时， \@Env装饰的变量仅能初始化普通变量
+**错误信息**<br>
+Within structs decorated with \'@Component\', \'@Env\' can only initialize regular (non-decorated) variables.
+
+**错误描述**<br>
+构造\@Component装饰的struct时， \@Env装饰的变量仅能初始化普通变量。
+
+**可能原因**<br>
+在构造\@Component装饰的struct时，开发者使用\@Env装饰的变量来初始化状态变量。
+
+**处理步骤**<br>
+构造\@Component装饰的struct时避免使用\@Env装饰的变量初始化状态变量。
+
+## 10905364 \@Link状态变量数据源增强校验
+**错误信息**<br>
+The type of the parent component's state variable initializing the \'@Link\' variable \'xxx\' must match the \'@Link\' variable's declared type.
+
+**错误描述**<br>
+父组件初始化子组件中\'@Link\'装饰的状态变量时的数据源也需要是对应类型的状态变量。
+
+**可能原因**<br>
+开发者使用状态变量的属性或者非对应类型的状态变量初始化\@Link装饰的状态变量。
+
+**处理步骤**<br>
+根据错误描述修改，使用类型对应的状态变量初始化\@Link装饰的状态变量。
+
+## 10905365 \@SyncMonitor装饰器仅接受常量字符串作为参数，不允许传入变量
+**错误信息**<br>
+Only constant expressions are supported as parameters in \'@SyncMonitor\'. Variables are not allowed.
+
+**错误描述**<br>
+[\@SyncMonitor](../../../application-dev/ui/state-management/arkts-new-syncmonitor.md)装饰器仅接受常量字符串作为参数，不允许传入变量。
+
+**可能原因**<br>
+开发者传入变量、常量或者函数返回值等类型作为\@SyncMonitor装饰器的参数。
+
+**处理步骤**<br>
+为了保证传入值的确定性，传入常量字符串作为\@SyncMonitor装饰器的参数。
+
+## 10905366 \@SyncMonitor无法观测不存在的变量或者非状态变量（通配符模式除外）
+**错误信息**<br>
+\'@SyncMonitor\' cannot observe non-existent variables or non-state variables, except in wildcard-based monitoring scenarios.
+
+**错误描述**<br>
+\@SyncMonitor无法观测不存在的变量或者非状态变量（通配符模式除外）。
+
+**可能原因**<br>
+开发者在\@SyncMonitor装饰器参数中传入了不存在的变量或者非状态变量。
+
+**处理步骤**<br>
+根据错误描述修改，在\@SyncMonitor装饰器参数中传入存在的状态变量。
+
+## 10905367 在\@SyncMonitor与\@Monitor的通配符观测场景下， '.*'符号必须配置在字符串的末尾
+**错误信息**<br>
+In wildcard-based monitoring scenarios with \'xxx\', the .* pattern must be placed at the end of the string.
+
+**错误描述**<br>
+在\@SyncMonitor与\@Monitor的通配符观测场景下， '.*'符号必须配置在字符串的末尾。
+
+**可能原因**<br>
+开发者在\@SyncMonitor或者\@Monitor的通配符观测场景下，错误地配置'.*'符号的位置。
+
+**处理步骤**<br>
+根据错误描述修改，配置'.*'符号于字符串末尾的正确位置。
+
+## 10905368 \@Env装饰器的参数与装饰的变量类型有严格键值匹配
+**错误信息**<br>
+Invalid parameter. State variables decorated with \'@Env\' of type \'xxx\' can only accept \'yyy\'.
+
+**错误描述**<br>
+\@Env装饰器的参数与装饰的变量类型有严格键值匹配。
+
+**可能原因**<br>
+开发者没有按照\@Env装饰器参数与类型的严格键值匹配传值导致报错。
+
+**处理步骤**<br>
+根据错误描述修改，按照描述提示传入正确的装饰器参数。
+
+## 10905369 在\@Component装饰的struct中，\@ComponentReuse装饰的函数需要定义特定的形参类型
+**错误信息**<br>
+In a struct decorated with \'@Component\', the function decorated with \'@ComponentReuse\' has the following input parameter: params : Record\<string, Object | null | undefined\>.
+
+**错误描述**<br>
+在\@Component装饰的struct中，\@ComponentReuse装饰的函数需要定义特定的形参类型。
+
+**可能原因**<br>
+开发者在\@Component装饰的struct里\@ComponentReuse装饰的函数中没有定义形参或是形参类型不准确。
+
+**处理步骤**<br>
+根据错误描述修改，在\@ComponentReuse装饰的函数中定义对应的形参类型。
+
+## 10905370 在\@ComponentV2装饰的struct中，\@ComponentReuse装饰的函数不能有入参
+**错误信息**<br>
+Methods decorated with \'@ComponentReuse\' in \'@ComponentV2\' cannot have input parameters.
+
+**错误描述**<br>
+在\@ComponentV2装饰的struct中，\@ComponentReuse装饰的函数不能有入参。
+
+**可能原因**<br>
+开发者在\@ComponentV2装饰的struct里\@ComponentReuse装饰的函数中定义了形参。
+
+**处理步骤**<br>
+根据错误描述修改，在\@ComponentReuse装饰的函数中删除定义的形参。
+
+## 10905371 特定生命周期装饰器装饰的方法不能有入参
+**错误信息**<br>
+Methods decorated with \'xxx\' cannot have input parameters.
+
+**错误描述**<br>
+特定生命周期装饰器（比如[\@ComponentRecycle](../../../application-dev/ui/state-management/arkts-custom-components-new-lifecycle.md)）装饰的方法不能有入参。
+
+**可能原因**<br>
+开发者在特定生命周期装饰器装饰的方法中定义了形参。
+
+**处理步骤**<br>
+根据错误描述修改，在特定生命周期装饰器装饰的函数中删除定义的形参。
+
+## 10905372 \@Monitor使用通配符场景下传给enableWildcard的值必须是布尔关键字
+**错误信息**<br>
+The value of 'enableWildcard' must be a Boolean keyword.
+
+**错误描述**<br>
+传给enableWildcard的值必须是布尔关键字。
+
+**可能原因**<br>
+开发者在\@Monitor使用通配符场景下传递了非布尔关键字的其他类型值给enableWildcard属性导致报错。
+
+**处理步骤**<br>
+使用true关键字或false关键字给enableWildcard属性。
+
+## 10905373 全局复用poolAccepts属性无法接受一个非复用组件
+**错误信息**<br>
+\'xxx\' is not a \'@Reusable\' or \'@ReusableV2\' component and cannot be added to poolAccepts.
+
+**错误描述**<br>
+全局复用poolAccepts属性无法接受一个非复用组件。
+
+**可能原因**<br>
+开发者开启全局复用后在poolAccepts属性中传入了一个非复用组件导致报错。
+
+**处理步骤**<br>
+使用全局复用时在poolAccepts中仅能传入复用组件。
+
+## 10905374 全局复用poolAccepts属性无法传入组件本身
+**错误信息**<br>
+\'xxx\' cannot list itself in poolAccepts. The pool is not yet ready when \'xxx\' is being constructed.
+
+**错误描述**<br>
+全局复用poolAccepts属性无法传入组件本身，复用池在组件构建时还未准备好。
+
+**可能原因**<br>
+开发者开启全局复用后在poolAccepts属性中传入了组件本身。
+
+**处理步骤**<br>
+使用全局复用时在poolAccepts中避免传入组件本身，否则一定导致报错。
+
+## 10905375 组件开启全局复用时必须同时传入reusePool属性和poolAccepts属性
+**错误信息**<br>
+\'xxx\' must provide both reusePool and poolAccepts. Neither can be omitted when using the global reuse pool.
+
+**错误描述**<br>
+全局复用池必须同时传入reusePool和poolAccepts属性，缺一不可。
+
+**可能原因**<br>
+开发者使用全局复用池时仅传入reusePool与poolAccepts属性其中之一，没有同时传入。
+
+**处理步骤**<br>
+根据错误描述修改，使用全局复用池时同时传入reusePool和poolAccepts。
+
+## 10905376 全局复用池poolAccepts不可以是空数组
+**错误信息**<br>
+PoolAccepts cannot be an empty array. Provide at least one \'@Reusable\' or \'@ReusableV2\' component.
+
+**错误描述**<br>
+全局复用池poolAccepts不可以是空数组。至少传入一个可复用组件。
+
+**可能原因**<br>
+开发者给全局复用池poolAccepts属性传入了空数组。
+
+**处理步骤**<br>
+全局复用池poolAccepts中至少传入一个可复用组件。
+
+## 10905377 全局复用池reusePool属性须传入正确类型
+**错误信息**<br>
+ReusePool must be either \'shared\' or \'perInstance\'. The value \'xxx\' is not valid.
+
+**错误描述**<br>
+全局复用池reusePool需要严格传入字符串\'shared\'或者\'perInstance\'， \'xxx\'是无效值。
+
+**可能原因**<br>
+开发者在全局复用池reusePool属性中传入\'shared\'或\'perInstance\'以外的非法值。
+
+**处理步骤**<br>
+全局复用池reusePool需要严格传入字符串\'shared\'或者\'perInstance\'。
+
+## 10905378 全局复用池reusePool属性须传入字符串
+**错误信息**<br>
+ReusePool can only accept string literal.
+
+**错误描述**<br>
+全局复用池reusePool属性必须传入字符串。
+
+**可能原因**<br>
+开发者在全局复用池reusePool属性中传入变量、常量或函数返回值等类型导致报错。
+
+**处理步骤**<br>
+全局复用池reusePool属性必须传入字符串。
+
+## 10905381 \@CustomEnv或\@Env装饰器装饰的变量类型需要与装饰器参数泛型一致
+**错误信息**<br>
+The type of the property decorated with \'xxx\' must be consistent with the generic type of the key.
+
+**错误描述**<br>
+\@CustomEnv或\@Env装饰器装饰的变量类型需要与装饰器参数泛型一致。
+
+**可能原因**<br>
+开发者定义的\@CustomEnv或\@Env装饰器装饰的变量类型与参数泛型不一致导致报错。
+
+**处理步骤**<br>
+根据错误描述修改，保持变量类型与参数泛型一致。
+
+## 10905382 \@CustomEnv装饰器参数需要符合特定语法格式
+**错误信息**<br>
+Invalid key for \'@CustomEnv\', \'@CustomEnv\' key must be global const and created from CustomEnvKey.create\<T\>().
+
+**错误描述**<br>
+\@CustomEnv装饰器参数需要符合特定语法格式（CustomEnvKey.create\<T\>()初始化的常量）。
+
+**可能原因**<br>
+开发者在\@CustomEnv装饰器中传入的参数不符合特定语法格式。
+
+**处理步骤**<br>
+按照CustomEnvKey.create\<T\>()初始化的常量要求修改传入\@CustomEnv装饰器的参数。

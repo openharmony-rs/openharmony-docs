@@ -50,6 +50,8 @@ PanGesture(options?: PanGestureHandlerOptions)
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -68,14 +70,14 @@ PanGesture(options?: PanGestureHandlerOptions)
 
 | 名称 | 值 | 说明 |
 | ---- | -- | ----- |
-| All | - | 所有方向。 |
-| Horizontal | - | 水平方向。 |
-| Vertical | - | 竖直方向。 |
-| Left | - | 向左滑动。 |
-| Right | - | 向右滑动。 |
-| Up | - | 向上滑动。 |
-| Down | - | 向下滑动。 |
-| None | - | 任何方向都不可触发滑动手势事件。 |
+| None | 0 | 任何方向都不可触发滑动手势事件。 |
+| Left | 1 | 向左滑动。 |
+| Right | 2 | 向右滑动。 |
+| Horizontal | 3 | 水平方向。 |
+| Up | 4 | 向上滑动。 |
+| Down | 8 | 向下滑动。 |
+| Vertical | 12 | 竖直方向。 |
+| All | 15 | 所有方向。 |
 
 
 ## PanGestureOptions
@@ -152,6 +154,8 @@ getDirection(): PanDirection
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
@@ -167,6 +171,8 @@ getDistance(): number
 获取触发滑动手势事件的最小滑动距离。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -255,6 +261,8 @@ onActionCancel(event: Callback\<GestureEvent\>)
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -325,8 +333,8 @@ struct PanGestureExample {
 
 向左滑动：
 
-![zh-cn_image_0000001174264374](figures/zh-cn_image_0000001174264374.png) 
+![panGesture2](figures/panGesture2.png) 
 
 点击按钮时，修改PanGesture触发条件为双指向左下方滑动：
 
- ![zh-cn_image1_0000001174264374](figures/zh-cn_image1_0000001174264374.png) 
+ ![panGesture](figures/panGesture.png) 

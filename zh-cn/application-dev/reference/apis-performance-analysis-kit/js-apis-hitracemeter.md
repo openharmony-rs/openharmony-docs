@@ -2,8 +2,8 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @qq_437963121-->
-<!--Designer: @kutcherzhou1; @MontSaintMichel-->
+<!--Owner: @yu_haoqiaida-->
+<!--Designer: @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -49,8 +49,8 @@ startTrace(name: string, taskId: number): void
 
 | 参数名 | 类型   | 必填 | 说明                                                                |
 | ------ | ------ | ---- |-------------------------------------------------------------------|
-| name   | string | 是   | 要跟踪的任务名称。<br/>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议该参数的长度不要超过420Byte。 |
-| taskId | number | 是   | 任务id。<br/>用来区分具有相同名称的多个不同的任务，需确保并发执行的同名任务之间的任务id具有唯一性。            |
+| name   | string | 是   | 要跟踪的任务名称。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议该参数的长度不要超过420Byte。 |
+| taskId | number | 是   | 任务id。<br>用来区分具有相同名称的多个不同的任务，需确保并发执行的同名任务之间的任务id具有唯一性。            |
 
 **示例：**
 
@@ -119,7 +119,7 @@ traceByValue(name: string, count: number): void
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| name   | string | 是   | 要跟踪的整数变量名称。<br/>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议该参数的长度不要超过420Byte。 |
+| name   | string | 是   | 要跟踪的整数变量名称。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议该参数的长度不要超过420Byte。 |
 | count  | number | 是   | 整数变量的值。         |
 
 **示例：**
@@ -169,10 +169,10 @@ startAsyncTrace(level: HiTraceOutputLevel, name: string, taskId: number, customC
 | 参数名         | 类型                                        | 必填 | 说明                                                                                                                                |
 | -------------- | ------------------------------------------- | ---- |-----------------------------------------------------------------------------------------------------------------------------------|
 | level          | [HiTraceOutputLevel](#hitraceoutputlevel19) | 是   | 跟踪输出级别。                                                                                                                           |
-| name           | string                                      | 是   | 要跟踪的任务名称。<br/>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name、customCategory、customArgs的长度之和不要超过420Byte。                            |
-| taskId         | number                                      | 是   | 任务id。<br/>用来区分具有相同名称的多个不同的任务，需确保并发执行的同名任务之间的任务id具有唯一性。                                                                        |
-| customCategory | string                                      | 是   | 自定义聚类名称，用于聚合同一类异步跟踪打点。<br/>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name、customCategory、customArgs的长度之和不要超过420Byte。               |
-| customArgs     | string                                      | 否   | 自定义键值对，格式key=value，多个键值对用逗号分隔，默认为空字符串。<br/>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name、customCategory、customArgs的长度之和不要超过420Byte。 |
+| name           | string                                      | 是   | 要跟踪的任务名称。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name、customCategory、customArgs的长度之和不要超过420Byte。                            |
+| taskId         | number                                      | 是   | 任务id。<br>用来区分具有相同名称的多个不同的任务，需确保并发执行的同名任务之间的任务id具有唯一性。                                                                        |
+| customCategory | string                                      | 是   | 自定义聚类名称，用于聚合同一类异步跟踪打点。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name、customCategory、customArgs的长度之和不要超过420Byte。               |
+| customArgs     | string                                      | 否   | 自定义键值对，格式key=value，多个键值对用逗号分隔，默认为空字符串。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name、customCategory、customArgs的长度之和不要超过420Byte。 |
 
 **示例：**
 
@@ -261,7 +261,7 @@ startSyncTrace(level: HiTraceOutputLevel, name: string, customArgs?: string): vo
 | 参数名     | 类型                                        | 必填 | 说明                                                                                     |
 | ---------- | ------------------------------------------- | ---- |----------------------------------------------------------------------------------------|
 | level      | [HiTraceOutputLevel](#hitraceoutputlevel19) | 是   | 跟踪输出级别。                                                                                |
-| name       | string                                      | 是   | 要跟踪的任务名称。<br/>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name和customArgs的总长度不要超过420Byte。 |
+| name       | string                                      | 是   | 要跟踪的任务名称。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name和customArgs的总长度不要超过420Byte。 |
 | customArgs | string                                      | 否   | 键值对，格式key=value，多个键值对用逗号分隔，默认值为空字符串。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议name和customArgs的总长度不要超过420Byte。                               |
 
 **示例：**
@@ -332,7 +332,7 @@ traceByValue(level: HiTraceOutputLevel, name: string, count: number): void
 | 参数名 | 类型                                        | 必填 | 说明                   |
 | ------ | ------------------------------------------- | ---- | ---------------------- |
 | level  | [HiTraceOutputLevel](#hitraceoutputlevel19) | 是   | 跟踪输出级别。         |
-| name   | string                                      | 是   | 要跟踪的整数变量名称。<br/>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议该参数的长度不要超过420Byte。 |
+| name   | string                                      | 是   | 要跟踪的整数变量名称。<br>由于单条trace记录的总长度限制为512Byte，超出部分将被截断，建议该参数的长度不要超过420Byte。 |
 | count  | number                                      | 是   | 整数变量的值。         |
 
 **示例：**

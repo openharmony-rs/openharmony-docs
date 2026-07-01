@@ -1,8 +1,8 @@
 # ArkUI_NodeAttributeType（基础属性）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW; @xiang-shouxing; @zju_ljz-->
-<!--Designer: @CCFFWW; @xiang-shouxing; @lanshouren-->
+<!--Owner: @hehongyang3; @wangyang2022; @zju_ljz-->
+<!--Designer: @hehongyang3; @wangyang2022; @lanshouren-->
 <!--Tester: @liuli0427; @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -59,7 +59,7 @@ NODE_BACKGROUND_IMAGE = 3
 | 参数项 | 描述 |
 | -- | -- |
 | .string | 图片地址。API version 22及之前版本，支持网络图片资源地址、本地图片资源地址、Base64和[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)资源，不支持[svg](arkui-js/js-components-svg.md)图片、gif和webp等类型的动图。从API version 23开始，新增支持webp和gif类型的动图，显示动图第一帧，不支持其他类型的动图。 |
-| .value[0]?.i32 | 可选值，repeat参数，参数类型[ArkUI_ImageRepeat](capi-native-type-h.md#arkui_imagerepeat)，默认值为ARKUI_IMAGE_REPEAT_NONE。 |
+| .value[0]?.i32 | 可选值，repeat参数，参数类型[ArkUI_ImageRepeat](capi-image-h.md#arkui_imagerepeat)，默认值为ARKUI_IMAGE_REPEAT_NONE。 |
 | .object | PixelMap图片数据，参数类型为[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)。`.object`参数和`.string`参数二选一，不可同时设置。 |
 
 **返回：**
@@ -67,7 +67,7 @@ NODE_BACKGROUND_IMAGE = 3
 | 类型 | 说明 |
 | -- | -- |
 | .string | 图片地址。API version 22及之前版本，支持网络图片资源地址、本地图片资源地址、Base64和PixelMap资源，不支持svg图片、gif和webp等类型的动图。从API version 23开始，新增支持webp和gif类型的动图，显示动图第一帧，不支持其他类型的动图。 |
-| .value[0].i32 | repeat参数，参数类型[ArkUI_ImageRepeat](capi-native-type-h.md#arkui_imagerepeat)。 |
+| .value[0].i32 | repeat参数，参数类型[ArkUI_ImageRepeat](capi-image-h.md#arkui_imagerepeat)。 |
 | .object | PixelMap图片数据，参数类型为[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)。 |
 
 ## NODE_ID
@@ -133,13 +133,13 @@ NODE_BACKGROUND_IMAGE_SIZE_WITH_STYLE = 31
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 背景图片的宽高样式，取[ArkUI_ImageSize](capi-native-type-h.md#arkui_imagesize)枚举值。 |
+| .value[0].i32 | 背景图片的宽高样式，取[ArkUI_ImageSize](capi-image-h.md#arkui_imagesize)枚举值。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 背景图片的宽高样式，取[ArkUI_ImageSize](capi-native-type-h.md#arkui_imagesize)枚举值。 |
+| .value[0].i32 | 背景图片的宽高样式，取[ArkUI_ImageSize](capi-image-h.md#arkui_imagesize)枚举值。 |
 
 ## NODE_BACKGROUND_IMAGE_POSITION
 
@@ -158,8 +158,8 @@ NODE_BACKGROUND_IMAGE_POSITION = 56
 | -- | -- |
 | .value[0].f32 | x轴位置，单位为px。 |
 | .value[1].f32 | y轴位置，单位为px。 |
-| .value[2]?.i32 | 可选值，对齐方式，参数类型[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)，默认值为ARKUI_ALIGNMENT_TOP_START。该参数从API version 21开始支持。 |
-| .value[3]?.i32 | 可选值，布局方向，参数类型[ArkUI_Direction](capi-native-type-h.md#arkui_direction)，默认值为ARKUI_DIRECTION_AUTO。多数场景下建议设置为AUTO，由系统自动处理布局方向；若需要固定方向，可设置为LTR或RTL。该参数从API version 21开始支持。 |
+| .value[2]?.i32 | 可选值，对齐方式，参数类型[ArkUI_Alignment](capi-layout-h.md#arkui_alignment)，默认值为ARKUI_ALIGNMENT_TOP_START。该参数从API version 21开始支持。 |
+| .value[3]?.i32 | 可选值，布局方向，参数类型[ArkUI_Direction](capi-layout-h.md#arkui_direction)，默认值为ARKUI_DIRECTION_AUTO。多数场景下建议设置为AUTO，由系统自动处理布局方向；若需要固定方向，可设置为LTR或RTL。该参数从API version 21开始支持。 |
 
 **返回：**
 
@@ -167,8 +167,8 @@ NODE_BACKGROUND_IMAGE_POSITION = 56
 | -- | -- |
 | .value[0].f32 | x轴位置，单位为px。 |
 | .value[1].f32 | y轴位置，单位为px。 |
-| .value[2].i32 | 对齐方式，参数类型[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)。该返回值从API version 21开始支持。 |
-| .value[3].i32 | 布局方向，参数类型[ArkUI_Direction](capi-native-type-h.md#arkui_direction)。该返回值从API version 21开始支持。 |
+| .value[2].i32 | 对齐方式，参数类型[ArkUI_Alignment](capi-layout-h.md#arkui_alignment)。该返回值从API version 21开始支持。 |
+| .value[3].i32 | 布局方向，参数类型[ArkUI_Direction](capi-layout-h.md#arkui_direction)。该返回值从API version 21开始支持。 |
 
 ## NODE_RENDER_GROUP
 
@@ -222,3 +222,27 @@ NODE_CLICK_DISTANCE = 97
 | 参数项 | 描述 |
 | -- | -- |
 | .value[0].f32 | 表示识别点击手势时允许手指在该范围内移动，单位为vp。 |
+
+## NODE_INSPECTOR_LABEL
+
+```c
+NODE_INSPECTOR_LABEL = 126
+```
+
+设置调测标签，帮助开发者分辨同类节点，提高开发和分析调试的效率。支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.0.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .string | 表示调测标签的内容。当传入空指针时本地调用无效，支持传入空字符串。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .string | 表示调测标签的内容。 |

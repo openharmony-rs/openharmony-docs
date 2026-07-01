@@ -24,6 +24,10 @@ import { SelectionExtensionContext } from '@kit.BasicServicesKit';
 
 ## SelectionExtensionContext
 
+**System capability**: SystemCapability.SelectionInput.Selection
+
+**Model constraint**: This API can be used only in the stage model.
+
 ### startAbility
 
 startAbility(want: Want): Promise\<void>
@@ -38,7 +42,7 @@ Starts an ability. This API uses a promise to return the result.
 
 | Name| Type                                                   | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | Want information of the ability to start, including the ability name and bundle name.|
+| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md#want) | Yes  | Want information of the ability to start, including the ability name and bundle name.|
 
 **Return value**
 
@@ -50,7 +54,7 @@ Starts an ability. This API uses a promise to return the result.
 
 For details about the error codes, see [Ability Error Codes](../apis-ability-kit/errorcode-ability.md).
 
-| ID| Error Message                                               |
+| Error Code| Error Message                                               |
 | -------- | ------------------------------------------------------- |
 | 16000001 | The specified ability does not exist.                   |
 | 16000002 | Incorrect ability type.                                 |
@@ -105,10 +109,10 @@ class SelectionExtAbility extends SelectionExtensionAbility {
       this.context.startAbility(wantAbility).then(() => {
         console.info(`startAbility success`);
       }).catch((err: BusinessError) => {
-        console.error(`startAbility error: ${err.code}, errormessage: ${err.message}`);
+        console.error(`startAbility error: ${err.code}, error message: ${err.message}`);
       })
     } catch (err) {
-      console.error(`startAbility error: ${err.code}, errormessage: ${err.message}`);
+      console.error(`startAbility error: ${err.code}, error message: ${err.message}`);
     }
     return new SelectionAbilityStub('remote');
   }

@@ -1,7 +1,7 @@
 # 使用code cache加速编译
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -30,6 +30,8 @@ JSVM提供了生成并使用code cache加速编译过程的方法，其获取和
 其中使用到的JSVM-API可以参考 [JSVM数据类型与接口说明](./jsvm-data-types-interfaces.md)，这里仅展示调用的步骤。
 
 外层跨语言交互的部分可以参考 [使用JSVM-API实现JS与C/C++语言交互开发流程](./use-jsvm-process.md)。
+
+<!-- @[jsvm_code_cache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmDebug/aboutcodecache/src/main/cpp/hello.cpp) -->
 
 ```c++
 #include "napi/native_api.h"
@@ -112,7 +114,6 @@ static JSVM_PropertyDescriptor descriptor[] = {
 // 样例测试js
 const char* srcCallNative = R"JS(globalThis.UseCodeCache())JS";
 ```
-<!-- @[jsvm_code_cache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmDebug/aboutcodecache/src/main/cpp/hello.cpp) -->
 
 预期的输出结果如下：
 ```txt

@@ -4,7 +4,7 @@
 <!--Subsystem: Account-->
 <!--Owner: @steven-q-->
 <!--Designer: @JiDong-CS1-->
-<!--Tester: @zhaimengchao-->
+<!--Tester: @pan9f-->
 <!--Adviser: @zengyawen-->
 
 本模块提供管理系统账号的基础能力，包括系统账号的添加、删除、查询、设置、订阅、启动等功能。
@@ -57,7 +57,9 @@ activateOsAccount(localId: number, callback: AsyncCallback&lt;void&gt;): void
 | 12300010 | Service busy. Possible causes: The target account is being operated. |
 | 12300016 | The number of logged in accounts reaches the upper limit. |
 
-**示例：** 激活ID为100的系统账号
+**示例：**
+
+激活ID为100的系统账号。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -100,7 +102,7 @@ activateOsAccount(localId: number): Promise&lt;void&gt;
 
 | 类型                | 说明                                  |
 | ------------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -116,7 +118,9 @@ activateOsAccount(localId: number): Promise&lt;void&gt;
 | 12300010 | Service busy. Possible causes: The target account is being operated. |
 | 12300016 | The number of logged in accounts reaches the upper limit. |
 
-**示例：** 激活ID为100的系统账号
+**示例：**
+
+激活ID为100的系统账号。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -180,6 +184,7 @@ activateOsAccount(localId: number, displayId: number): Promise&lt;void&gt;
 | 12300019 | Cross-display activation not supported. |
 
 **示例：**
+
 在ID为0的逻辑屏上激活ID为100的系统账号。
 
   ```ts
@@ -222,7 +227,7 @@ deactivateOsAccount(localId: number): Promise&lt;void&gt;
 
 | 类型                | 说明                                  |
 | ------------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -236,7 +241,9 @@ deactivateOsAccount(localId: number): Promise&lt;void&gt;
 | 12300008 | Restricted Account. |
 | 12300010 | Service busy. Possible causes: The target account is being operated. |
 
-**示例：** 注销ID为100的系统账号
+**示例：**
+
+注销ID为100的系统账号。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -289,7 +296,9 @@ isOsAccountActivated(localId: number): Promise&lt;boolean&gt;
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 
-**示例：** 判断ID为100的系统账号是否处于激活状态
+**示例：**
+
+判断ID为100的系统账号是否处于激活状态。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -343,7 +352,9 @@ isOsAccountConstraintEnabled(localId: number, constraint: string): Promise&lt;bo
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 
-**示例：** 判断ID为100的系统账号是否有禁止使用Wi-Fi的约束
+**示例：**
+
+判断ID为100的系统账号是否有禁止使用Wi-Fi的约束。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -367,7 +378,7 @@ isOsAccountConstraintEnabled(localId: number, constraint: string): Promise&lt;bo
 
 isOsAccountUnlocked(localId: number): Promise&lt;boolean&gt;
 
-检查指定系统账号是否已验证。使用Promise异步回调。
+检查指定系统账号是否已解锁。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -379,13 +390,13 @@ isOsAccountUnlocked(localId: number): Promise&lt;boolean&gt;
 
 | 参数名  | 类型   | 必填 | 说明                                                              |
 | ------- | ------ | ---- | --------------------------------------------------------------- |
-| localId | number | 是   | 系统账号ID。不填则检查当前系统账号是否已验证。 |
+| localId | number | 是   | 系统账号ID。用于指定要检查是否已解锁的系统账号。 |
 
 **返回值：**
 
 | 类型                   | 说明                                                               |
 | ---------------------- | ----------------------------------------------------------------- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示当前账号已认证解锁；返回false表示当前账号未认证解锁。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示当前账号已解锁；返回false表示当前账号未解锁。 |
 
 **错误码：**
 
@@ -494,7 +505,7 @@ removeOsAccount(localId: number): Promise&lt;void&gt;
 
 | 类型                | 说明                                  |
 | ------------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -615,7 +626,7 @@ setOsAccountConstraints(localId: number, constraints: Array&lt;string&gt;, enabl
 | ----------- | ------------------------- | ---- | ----------------------------------------------- |
 | localId     | number                    | 是   | 系统账号ID。               |
 | constraints | Array&lt;string&gt;       | 是   | 待设置/删除的[约束](js-apis-osAccount.md#系统账号约束列表)列表。        |
-| enable      | boolean                   | 是   | 设置(true)/删除(false) 。                          |
+| enable      | boolean                   | 是   | 设置(true)/删除(false)。                          |
 | callback    | AsyncCallback&lt;void&gt; | 是   | 回调函数。如果设置成功，err为null，否则为错误对象。 |
 
 **错误码：**
@@ -626,11 +637,13 @@ setOsAccountConstraints(localId: number, constraints: Array&lt;string&gt;, enabl
 | 202 | Not system application.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
-| 12300002 | Invalid localId or constraints.    |
+| 12300002 | Invalid localId or constraints. |
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
 
-**示例：** 给ID为100的系统账号设置禁止使用Wi-Fi的约束
+**示例：**
+
+给ID为100的系统账号设置禁止使用Wi-Fi的约束。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -675,8 +688,8 @@ setOsAccountConstraints(localId: number, constraints: Array&lt;string&gt;, enabl
 **返回值：**
 
 | 类型                | 说明                                 |
-| :------------------ | :----------------------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| ------------------ | ----------------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -690,7 +703,9 @@ setOsAccountConstraints(localId: number, constraints: Array&lt;string&gt;, enabl
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
 
-**示例：** 删除ID为100的系统账号的禁止使用Wi-Fi的约束
+**示例：**
+
+删除ID为100的系统账号的禁止使用Wi-Fi的约束。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -724,7 +739,7 @@ setOsAccountName(localId: number, localName: string, callback: AsyncCallback&lt;
 **参数：**
 
 | 参数名    | 类型                      | 必填 | 说明                                             |
-| :-------- | ------------------------- | ---- | ----------------------------------------------- |
+| -------- | ------------------------- | ---- | ----------------------------------------------- |
 | localId   | number                    | 是   | 系统账号ID。               |
 | localName | string                    | 是   | 账号名，最大长度为1024个字符。                          |
 | callback  | AsyncCallback&lt;void&gt; | 是   | 回调函数。如果设置成功，err为null，否则为错误对象。 |
@@ -741,7 +756,9 @@ setOsAccountName(localId: number, localName: string, callback: AsyncCallback&lt;
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
 
-**示例：** 将ID为100的系统账号的账号名设置成demoName
+**示例：**
+
+将ID为100的系统账号的账号名设置成demoName。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -786,7 +803,7 @@ setOsAccountName(localId: number, localName: string): Promise&lt;void&gt;
 
 | 类型                | 说明                                  |
 | ------------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -800,7 +817,9 @@ setOsAccountName(localId: number, localName: string): Promise&lt;void&gt;
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
 
-**示例：** 将ID为100的系统账号的账号名设置成demoName
+**示例：**
+
+将ID为100的系统账号的账号名设置成demoName。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1045,7 +1064,9 @@ getEnabledOsAccountConstraints(localId: number): Promise&lt;Array&lt;string&gt;&
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 
-**示例：** 获取ID为100的系统账号的全部约束
+**示例：**
+
+获取ID为100的系统账号的全部约束。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1170,7 +1191,7 @@ createOsAccount(localName: string, type: OsAccountType, callback: AsyncCallback&
 **参数：**
 
 | 参数名    | 类型                                                 | 必填 | 说明                                                                         |
-| :-------- | ---------------------------------------------------- | ---- | --------------------------------------------------------------------------- |
+| -------- | ---------------------------------------------------- | ---- | --------------------------------------------------------------------------- |
 | localName | string                                               | 是   | 创建的系统账号的名称。                                                        |
 | type      | [OsAccountType](js-apis-osAccount.md#osaccounttype)                      | 是   | 创建的系统账号的类型。                                                        |
 | callback  | AsyncCallback&lt;[OsAccountInfo](js-apis-osAccount.md#osaccountinfo)&gt; | 是   | 回调函数。如果创建成功，err为null，data为新创建的系统账号的信息；否则为错误对象。 |
@@ -1477,7 +1498,9 @@ queryOsAccountById(localId: number, callback: AsyncCallback&lt;OsAccountInfo&gt;
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 
-**示例：** 查询ID为100的系统账号信息
+**示例：**
+
+查询ID为100的系统账号信息。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1533,7 +1556,9 @@ queryOsAccountById(localId: number): Promise&lt;OsAccountInfo&gt;
 | 12300002 | Invalid localId. |
 | 12300003 | Account not found. |
 
-**示例：** 查询ID为100的系统账号信息
+**示例：**
+
+查询ID为100的系统账号信息。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1582,7 +1607,9 @@ getOsAccountProfilePhoto(localId: number, callback: AsyncCallback&lt;string&gt;)
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 
-**示例：** 获取ID为100的系统账号的头像
+**示例：**
+
+获取ID为100的系统账号的头像。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1638,7 +1665,9 @@ getOsAccountProfilePhoto(localId: number): Promise&lt;string&gt;
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 
-**示例：** 获取ID为100的系统账号的头像
+**示例：**
+
+获取ID为100的系统账号的头像。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1689,7 +1718,9 @@ setOsAccountProfilePhoto(localId: number, photo: string, callback: AsyncCallback
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
 
-**示例：** 给ID为100的系统账号设置头像
+**示例：**
+
+给ID为100的系统账号设置头像。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1737,7 +1768,7 @@ setOsAccountProfilePhoto(localId: number, photo: string): Promise&lt;void&gt;
 
 | 类型                | 说明                                 |
 | ------------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1751,7 +1782,9 @@ setOsAccountProfilePhoto(localId: number, photo: string): Promise&lt;void&gt;
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
 
-**示例：** 给ID为100的系统账号设置头像
+**示例：**
+
+给ID为100的系统账号设置头像。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2186,6 +2219,7 @@ getBundleIdForUid(uid: number, callback: AsyncCallback&lt;number&gt;): void
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // uid为进程uid，请通过应用信息获取
   let testUid: number = 1000000;
   try {
     accountManager.getBundleIdForUid(testUid, (err: BusinessError, bundleId: number) => {
@@ -2313,7 +2347,7 @@ isMainOsAccount(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名   | 类型                          | 必填 | 说明                                                               |
 | -------- | ---------------------------- | ---- | ----------------------------------------------------------------- |
-| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数，返回true表示当前账号为主账号，返回false表示当前账号非主账号。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。返回true表示当前账号为主账号，返回false表示当前账号非主账号。 |
 
 **错误码：**
 
@@ -2360,7 +2394,7 @@ isMainOsAccount(): Promise&lt;boolean&gt;
 
 | 类型                   | 说明                                                                  |
 | ---------------------- | --------------------------------------------------------------------- |
-| Promise&lt;boolean&gt; | Promise对象，返回true表示当前账号为主账号，返回false表示当前账号非主账号。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示当前账号为主账号，返回false表示当前账号非主账号。 |
 
 **错误码：**
 
@@ -2672,7 +2706,7 @@ bindDomainAccount(localId: number, domainAccountInfo: DomainAccountInfo): Promis
 
 | 参数名  | 类型   | 必填 | 说明         |
 | ------- | ------ | ---- | ------------ |
-| localId     | number | 是   |  要查询的系统账号ID。 |
+| localId     | number | 是   |  系统账号ID。 |
 | domainAccountInfo | [DomainAccountInfo](#domainaccountinfo8) | 是   | 域账号信息。          |
 
 **返回值：**
@@ -2683,7 +2717,7 @@ bindDomainAccount(localId: number, domainAccountInfo: DomainAccountInfo): Promis
 
 **错误码：**
 
-以下错误码的详细介绍请参见通用[通用错误码](../errorcode-universal.md)和[账号管理错误码](./errorcode-account.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[账号管理错误码](./errorcode-account.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
@@ -2715,7 +2749,7 @@ bindDomainAccount(localId: number, domainAccountInfo: DomainAccountInfo): Promis
     });
   } catch (e) {
     const err = e as BusinessError;
-    console.error(`bindDomainAccount error, errCode=${error.code}, errMsg=${error.message}`);
+    console.error(`bindDomainAccount error, errCode=${err.code}, errMsg=${err.message}`);
   }
   ```
 
@@ -2845,7 +2879,7 @@ hasAuthorization(privilege: string): Promise&lt;boolean&gt;
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象，返回true表示已获得指定特权的授权；返回false表示未获得指定特权的授权。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示已获得指定特权的授权；返回false表示未获得指定特权的授权。 |
 
 **错误码：**
 
@@ -2985,6 +3019,731 @@ try {
 | validityPeriod | number | 否 | 是 | 授权的有效期，默认值为300，单位为s。 |
 | token | Uint8Array | 否 | 是 | 授权令牌，默认为undefined。 |
 
+## osAccount.getOsAccountSubProfileManager
+
+getOsAccountSubProfileManager(): OsAccountSubProfileManager
+
+获取系统账号子身份资料管理器。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
+**返回值：**
+
+| 类型 | 说明 |
+| ----- | ----------- |
+| [OsAccountSubProfileManager](#osaccountsubprofilemanager) | 返回系统账号子身份管理器的实例对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息       |
+| -------- | ------------- |
+| 202 | Not system application.|
+
+**示例：**
+
+```ts
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+```
+
+## OsAccountSubProfileManager
+
+系统账号子身份资料管理器类。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
+### onOsAccountSubProfileEvent
+
+onOsAccountSubProfileEvent(events: OsAccountSubProfileEvent[], callback: Callback&lt;OsAccountSubProfileEventData&gt;): void
+
+订阅系统账号子身份资料的事件。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                                |
+| -------- | ------------------------- | ---- | -------------------------------------------------- |
+| events  | [OsAccountSubProfileEvent](#osaccountsubprofileevent)[]                    | 是   | 表示要订阅的事件数组。                  |
+| callback | Callback&lt;[OsAccountSubProfileEventData](#osaccountsubprofileeventdata)&gt; | 是   | 事件发生时调用的回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](./errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息             |
+| -------- | ------------------- |
+| 202 | Not system application.|
+| 12300001 | System service exception. |
+| 12300002 | Invalid event. |
+
+**示例：**
+
+订阅系统账号子身份的创建事件。
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let events: osAccount.OsAccountSubProfileEvent[] = [osAccount.OsAccountSubProfileEvent.CREATED];
+try {
+  subProfileManager.onOsAccountSubProfileEvent(events, (data: osAccount.OsAccountSubProfileEventData) => {
+    console.info('onOsAccountSubProfileEvent, event: ' + data.event + ', localId: ' + data.osAccountLocalId);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`onOsAccountSubProfileEvent failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### offOsAccountSubProfileEvent
+
+offOsAccountSubProfileEvent(callback?: Callback&lt;OsAccountSubProfileEventData&gt;): void
+
+取消订阅系统账号子身份资料的事件。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                                |
+| -------- | ------------------------- | ---- | -------------------------------------------------- |
+| callback | Callback&lt;[OsAccountSubProfileEventData](#osaccountsubprofileeventdata)&gt; | 否   | 需要取消订阅的回调，默认为空，表示取消的所有回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](./errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息             |
+| -------- | ------------------- |
+| 202 | Not system application.|
+| 12300001 | System service exception. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+try {
+  subProfileManager.offOsAccountSubProfileEvent();
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`offOsAccountSubProfileEvent failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### createOsAccountSubProfile
+
+createOsAccountSubProfile(osAccountLocalId: number): Promise&lt;OsAccountSubProfile&gt;
+
+创建一个系统账号子身份资料。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明               |
+| -------- | ------ | ---- | ------------------ |
+| osAccountLocalId | number | 是   | 目标系统账号的本地标识符。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;[OsAccountSubProfile](#osaccountsubprofile)&gt; | Promise对象，返回创建的子身份资料。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](./errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 12300001 | System service exception. |
+| 12300003 | The OS account not found. |
+| 12300008 | Restricted OS account. |
+| 12300010 | Service busy. Possible causes: The target OS account is being operated. |
+| 12300402 | The number of sub-profiles under the OS account has reached limit. |
+
+**示例：**
+
+创建ID为100的系统账号的子身份资料。
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let osAccountLocalId: number = 100;
+try {
+  subProfileManager.createOsAccountSubProfile(osAccountLocalId).then((subProfile: osAccount.OsAccountSubProfile) => {
+    console.info('createOsAccountSubProfile successfully, subProfileId: ' + subProfile.id);
+  }).catch((err: BusinessError) => {
+    console.error(`createOsAccountSubProfile failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`createOsAccountSubProfile exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### deleteOsAccountSubProfile
+
+deleteOsAccountSubProfile(osAccountLocalId: number, subProfileId: number): Promise&lt;void&gt;
+
+删除一个系统账号子身份资料。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明               |
+| -------- | ------ | ---- | ------------------ |
+| osAccountLocalId | number | 是   | 目标系统账号的本地标识符。 |
+| subProfileId | number | 是   | 子身份资料的标识符。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](./errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 12300001 | System service exception. |
+| 12300010 | Service busy. Possible causes: The OS account or sub-profile is being operated. |
+| 12300401 | Sub-profile not found. |
+| 12300403 | Restricted sub-profile cannot be deleted. |
+| 12300404 | The foreground sub-profile cannot be deleted. |
+
+**示例：**
+
+删除ID为100的系统账号中ID为100001的子身份资料。
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let osAccountLocalId: number = 100;
+let subProfileId: number = 100001;
+try {
+  subProfileManager.deleteOsAccountSubProfile(osAccountLocalId, subProfileId).then(() => {
+    console.info('deleteOsAccountSubProfile successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`deleteOsAccountSubProfile failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`deleteOsAccountSubProfile exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### switchOsAccountSubProfile
+
+switchOsAccountSubProfile(osAccountLocalId: number, subProfileId: number): Promise&lt;void&gt;
+
+切换至一个系统账号子身份资料。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明               |
+| -------- | ------ | ---- | ------------------ |
+| osAccountLocalId | number | 是   | 系统账号的本地标识符。 |
+| subProfileId | number | 是   | 子身份资料的标识符。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](./errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 12300001 | System service exception. |
+| 12300010 | Service busy. Possible causes: The OS account or sub-profile is being operated. |
+| 12300401 | Sub-profile not found. |
+| 12300403 | Restricted sub-profile cannot be switched to foreground. |
+| 12300405 | The foreground sub-profile bound with a logged-in distributed account cannot be directly switched to background. |
+
+**示例：**
+
+将ID为100的系统账号的当前子身份资料切换到ID为100001的子身份资料。
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let osAccountLocalId: number = 100;
+let subProfileId: number = 100001;
+try {
+  subProfileManager.switchOsAccountSubProfile(osAccountLocalId, subProfileId).then(() => {
+    console.info('switchOsAccountSubProfile successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`switchOsAccountSubProfile failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`switchOsAccountSubProfile exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### getOsAccountForegroundSubProfileId
+
+getOsAccountForegroundSubProfileId(): Promise&lt;number&gt;
+
+获取调用方所属系统账号的前台子身份资料的标识符。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;number&gt; | Promise对象，返回系统账号的前台子身份资料标识符。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](./errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202 | Not system application. |
+| 12300001 | System service exception. |
+| 12300401 | Sub-profile not found. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+try {
+  subProfileManager.getOsAccountForegroundSubProfileId().then((subProfileId: number) => {
+    console.info('getOsAccountForegroundSubProfileId successfully, subProfileId: ' + subProfileId);
+  }).catch((err: BusinessError) => {
+    console.error(`getOsAccountForegroundSubProfileId failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountForegroundSubProfileId exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### getOsAccountForegroundSubProfileId
+
+getOsAccountForegroundSubProfileId(osAccountLocalId: number): Promise&lt;number&gt;
+
+获取指定系统账号的前台子身份资料标识符。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明               |
+| -------- | ------ | ---- | ------------------ |
+| osAccountLocalId | number | 是   | 系统账号的本地标识符。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;number&gt; | Promise对象，返回系统账号前台子身份资料的标识符。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](./errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202 | Not system application. |
+| 12300001 | System service exception. |
+| 12300003 | OS account not found. |
+| 12300401 | The foreground sub-profile not found. |
+
+**示例：**
+
+获取ID为100的系统账号的前台子身份资料标识符。
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let osAccountLocalId: number = 100;
+try {
+  subProfileManager.getOsAccountForegroundSubProfileId(osAccountLocalId).then((subProfileId: number) => {
+    console.info('getOsAccountForegroundSubProfileId successfully, subProfileId: ' + subProfileId);
+  }).catch((err: BusinessError) => {
+    console.error(`getOsAccountForegroundSubProfileId failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountForegroundSubProfileId exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### getOsAccountSubProfileIds
+
+getOsAccountSubProfileIds(): Promise&lt;number[]&gt;
+
+获取调用方所属系统账号的子身份资料标识符列表。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.GET_LOCAL_ACCOUNT_IDENTIFIERS
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;number[]&gt; | Promise对象，返回子身份资料标识符列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](./errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 12300001 | System service exception. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+try {
+  subProfileManager.getOsAccountSubProfileIds().then((subProfileIds: number[]) => {
+    console.info('getOsAccountSubProfileIds successfully, subProfileIds: ' + subProfileIds);
+  }).catch((err: BusinessError) => {
+    console.error(`getOsAccountSubProfileIds failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountSubProfileIds exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### getOsAccountSubProfileIds
+
+getOsAccountSubProfileIds(osAccountLocalId: number): Promise&lt;number[]&gt;
+
+获取指定系统账号的子身份资料标识符列表。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.GET_LOCAL_ACCOUNT_IDENTIFIERS
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明               |
+| -------- | ------ | ---- | ------------------ |
+| osAccountLocalId | number | 是   | 系统账号的本地标识符。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;number[]&gt; | Promise对象，返回指定系统账号的子身份资料标识符列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](./errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 12300001 | System service exception. |
+| 12300003 | OS account not found. |
+
+**示例：**
+
+获取ID为100的系统账号的子身份资料标识符列表。
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let osAccountLocalId: number = 100;
+try {
+  subProfileManager.getOsAccountSubProfileIds(osAccountLocalId).then((subProfileIds: number[]) => {
+    console.info('getOsAccountSubProfileIds successfully, subProfileIds: ' + subProfileIds);
+  }).catch((err: BusinessError) => {
+    console.error(`getOsAccountSubProfileIds failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountSubProfileIds exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### getOsAccountSubProfile
+
+getOsAccountSubProfile(subProfileId: number): Promise&lt;OsAccountSubProfile&gt;
+
+获取调用方所属系统账号的子身份资料对象信息。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.GET_LOCAL_ACCOUNTS
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明               |
+| -------- | ------ | ---- | ------------------ |
+| subProfileId | number | 是   | 子身份资料的标识符。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;[OsAccountSubProfile](#osaccountsubprofile)&gt; | Promise对象，返回子身份资料对象信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](./errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 12300001 | System service exception. |
+| 12300401 | Sub-profile not found. |
+
+**示例：**
+
+获取ID为100001的子身份资料对象信息。
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let subProfileId: number = 100001;
+try {
+  subProfileManager.getOsAccountSubProfile(subProfileId).then((subProfile: osAccount.OsAccountSubProfile) => {
+    console.info('getOsAccountSubProfile successfully, subProfile: ' + JSON.stringify(subProfile));
+  }).catch((err: BusinessError) => {
+    console.error(`getOsAccountSubProfile failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountSubProfile exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### getOsAccountSubProfile
+
+getOsAccountSubProfile(osAccountLocalId: number, subProfileId: number): Promise&lt;OsAccountSubProfile&gt;
+
+获取指定系统账号的子身份资料对象信息。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.GET_LOCAL_ACCOUNTS 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明               |
+| -------- | ------ | ---- | ------------------ |
+| osAccountLocalId | number | 是   | 系统账号的本地标识符。 |
+| subProfileId | number | 是   | 子身份资料的标识符。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;[OsAccountSubProfile](#osaccountsubprofile)&gt; | Promise对象，返回子身份资料对象信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](./errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 12300001 | System service exception. |
+| 12300401 | Sub-profile not found. |
+
+**示例：**
+
+获取ID为100的系统账号中ID为100001的子身份资料对象信息。
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let osAccountLocalId: number = 100;
+let subProfileId: number = 100001;
+try {
+  subProfileManager.getOsAccountSubProfile(osAccountLocalId, subProfileId).then((subProfile: osAccount.OsAccountSubProfile) => {
+    console.info('getOsAccountSubProfile successfully, subProfile: ' + JSON.stringify(subProfile));
+  }).catch((err: BusinessError) => {
+    console.error(`getOsAccountSubProfile failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountSubProfile exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### getOsAccountLocalIdForSubProfile
+
+getOsAccountLocalIdForSubProfile(subProfileId: number): Promise&lt;number&gt;
+
+获取子身份资料所属系统账号的本地标识符。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明               |
+| -------- | ------ | ---- | ------------------ |
+| subProfileId | number | 是   | 子身份资料的标识符。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;number&gt; | Promise对象，返回子身份资料所属系统账号的本地ID。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](./errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202 | Not system application. |
+| 12300001 | System service exception. |
+| 12300401 | Sub-profile not found. |
+
+**示例：**
+
+获取ID为100001的子身份资料所属的系统账号本地标识符。
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let subProfileId: number = 100001;
+try {
+  subProfileManager.getOsAccountLocalIdForSubProfile(subProfileId).then((osAccountLocalId: number) => {
+    console.info('getOsAccountLocalIdForSubProfile successfully, osAccountLocalId: ' + osAccountLocalId);
+  }).catch((err: BusinessError) => {
+    console.error(`getOsAccountLocalIdForSubProfile failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountLocalIdForSubProfile exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## UserAuth<sup>8+</sup>
 
 用户认证类。
@@ -3026,7 +3785,7 @@ getVersion(): number
 **返回值：**
 
 | 类型   | 说明         |
-| :----- | :----------- |
+| ----- | ----------- |
 | number | 返回版本信息。|
 
 **错误码：**
@@ -3176,7 +3935,7 @@ getProperty(request: GetPropertyRequest): Promise&lt;ExecutorProperty&gt;
 **返回值：**
 
 | 类型                                                              | 说明                                                 |
-| :---------------------------------------------------------------- | :-------------------------------------------------- |
+| ---------------------------------------------------------------- | -------------------------------------------------- |
 | Promise&lt;[ExecutorProperty](#executorproperty8)&gt; | Promise对象，返回执行器属性信息。 |
 
 **错误码：**
@@ -3239,7 +3998,7 @@ getPropertyByCredentialId(credentialId: Uint8Array, keys: Array&lt;GetPropertyTy
 **返回值：**
 
 | 类型                                                              | 说明                                                 |
-| :---------------------------------------------------------------- | :-------------------------------------------------- |
+| ---------------------------------------------------------------- | -------------------------------------------------- |
 | Promise&lt;[ExecutorProperty](#executorproperty8)&gt; | Promise对象，返回执行器的属性信息。 |
 
 **错误码：**
@@ -3367,8 +4126,8 @@ setProperty(request: SetPropertyRequest): Promise&lt;void&gt;
 **返回值：**
 
 | 类型                  | 说明                                                           |
-| :-------------------- | :------------------------------------------------------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| -------------------- | ------------------------------------------------------------ |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3424,8 +4183,8 @@ prepareRemoteAuth(remoteNetworkId: string): Promise&lt;void&gt;
 **返回值：**
 
 | 类型                  | 说明                                                           |
-| :-------------------- | :------------------------------------------------------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| -------------------- | ------------------------------------------------------------ |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3647,7 +4406,7 @@ authUser(userId: number, challenge: Uint8Array, authType: AuthType, authTrustLev
 
 | 类型        | 说明               |
 | ---------- | ------------------ |
-| Uint8Array | 返回取消的上下文ID。 |
+| Uint8Array | 返回认证上下文ID，可用于取消认证操作。 |
 
 **错误码：**
 
@@ -3716,7 +4475,7 @@ cancelAuth(contextID: Uint8Array): void
 
 | 参数名    | 类型       | 必填  | 说明                                        |
 | ----------| ---------- | ---- | ------------------------------------------ |
-| contextID | Uint8Array | 是   | 指示身份验证上下文ID，此ID动态生成没有具体值。 |
+| contextID | Uint8Array | 是   | 指示身份验证上下文ID，此ID由认证流程动态生成，用于标识认证操作。 |
 
 **错误码：**
 
@@ -4696,9 +5455,11 @@ authWithPopup(callback: IUserAuthCallback): void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-**需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+**需要权限：**
 
-从API version 11开始无需申请权限，建议升级SDK版本。
+API版本11+：N/A
+
+API版本10：ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
 **参数：**
 
@@ -4753,15 +5514,17 @@ authWithPopup(localId: number, callback: IUserAuthCallback): void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-**需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+**需要权限：**
 
-从API version 11开始无需申请权限，建议升级SDK版本。
+API版本11+：N/A
+
+API版本10：ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| localId   | number  | 是   | 指示绑定域账号的系统账号的本地标识。|
+| localId   | number  | 是   | 指示绑定域账号的系统账号ID。|
 | callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 指示认证结果回调。|
 
 **错误码：**
@@ -4881,7 +5644,7 @@ hasAccount(domainAccountInfo: DomainAccountInfo): Promise&lt;boolean&gt;
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示指定的域账号已存在；返回false表示指定的域账号不存在。 |
 
 **错误码：**
@@ -4999,8 +5762,8 @@ updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array): Pro
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| ------------------------ | ----------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -5116,7 +5879,7 @@ getAccountInfo(options: GetDomainAccountInfoOptions): Promise&lt;DomainAccountIn
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;DomainAccountInfo&gt; | Promise对象，返回指定的域账号信息。 |
 
 **错误码：**
@@ -5233,7 +5996,7 @@ getAccessToken(businessParams: Record<string, Object>): Promise&lt;Uint8Array&gt
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;Uint8Array&gt; | Promise对象，返回业务访问令牌。 |
 
 **错误码：**
@@ -5295,7 +6058,7 @@ isAuthenticationExpired(domainAccountInfo: DomainAccountInfo): Promise&lt;boolea
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示指定的域账号已登录超期；返回false表示指定的域账号未登录超期。 |
 
 **错误码：**
@@ -5424,7 +6187,7 @@ openSession(accountId?: number): Promise&lt;Uint8Array&gt;
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;Uint8Array&gt; | Promise对象，返回挑战值。 |
 
 **错误码：**
@@ -5910,7 +6673,7 @@ getAuthInfo(authType: AuthType): Promise&lt;Array&lt;EnrolledCredInfo&gt;&gt;
 **返回值：**
 
 | 类型                                         | 说明                                                                     |
-| :------------------------------------------- | :----------------------------------------------------------------------- |
+| ------------------------------------------- | ----------------------------------------------------------------------- |
 | Promise&lt;Array&lt;[EnrolledCredInfo](#enrolledcredinfo8)&gt;&gt; | Promise对象，返回当前用户指定类型的所有已注册凭据信息。|
 
 **错误码：**
@@ -5962,7 +6725,7 @@ getAuthInfo(options?: GetAuthInfoOptions): Promise&lt;Array&lt;EnrolledCredInfo&
 **返回值：**
 
 | 类型                                         | 说明                                                                     |
-| :------------------------------------------- | :----------------------------------------------------------------------- |
+| ------------------------------------------- | ----------------------------------------------------------------------- |
 | Promise&lt;Array&lt;[EnrolledCredInfo](#enrolledcredinfo8)&gt;&gt; | Promise对象，返回当前用户指定类型的所有已注册凭据信息。|
 
 **错误码：**
@@ -6020,7 +6783,7 @@ getEnrolledId(authType: AuthType, accountId?: number): Promise&lt;Uint8Array&gt;
 **返回值：**
 
 | 类型                       | 说明                                                                     |
-| :------------------------ | :----------------------------------------------------------------------- |
+| ------------------------ | ----------------------------------------------------------------------- |
 | Promise&lt;Uint8Array&gt; | Promise对象，返回已注册的凭据ID。|
 
 **错误码：**
@@ -6557,6 +7320,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | RECOVERY_KEY<sup>12+</sup> | 8 | 表示键恢复类型。 |
 | PRIVATE_PIN<sup>14+</sup> | 16 | 表示隐私PIN类型。 |
 | COMPANION_DEVICE<sup>23+</sup> | 64 | 表示伴随设备认证类型。 |
+| CUSTOM | 128 | 自定义认证类型。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | DOMAIN<sup>9+</sup>  | 1024     | 表示域认证类型。|
 
 ## AuthSubType<sup>8+</sup>
@@ -6714,7 +7478,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 | 名称      | 类型   | 只读  | 可选  | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
-| localId      | number | 否 | 否  | 系统账号ID     |
+| localId      | number | 否 | 否  | 系统账号ID。     |
 | type | [ConstraintSourceType](#constraintsourcetype9) | 否 | 否  | 约束来源类型。 |
 
 ## ConstraintSourceType<sup>9+</sup>
@@ -6863,7 +7627,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 ## GetAuthInfoOptions<sup>12+</sup>
 
-表示[查询认证凭据信息](#getauthinfo12)的可选参数集合。
+表示查询认证凭据信息[getAuthInfo](#getauthinfo12)的可选参数集合。
 
 **系统接口：** 此接口为系统接口。
 
@@ -6905,7 +7669,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 
 ## AuthOptions<sup>12+</sup>
 
-表示[认证用户](#auth12)的可选参数集合。
+表示认证用户[auth](#auth12)的可选参数集合。
 
 **系统接口：** 此接口为系统接口。
 
@@ -6916,10 +7680,11 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | accountId          | number | 否 | 是  | 系统账号标识，默认为undefined。 |
 | authIntent         | [AuthIntent](#authintent12) | 否 | 是  | 认证意图，默认为undefined。 |
 | remoteAuthOptions  | [RemoteAuthOptions](#remoteauthoptions12) | 否 | 是  | 远程认证选项，默认为undefined。 |
+| additionalInfo     | string | 否 | 是  | 身份认证的附加信息，默认为undefined。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。  |
 
 ## GetInputDataOptions<sup>12+</sup>
 
-表示[通知调用者获取数据](#ongetdata8)的可选参数集合。
+表示通知调用者获取数据[onGetData](#ongetdata8)的可选参数集合。
 
 **系统接口：** 此接口为系统接口。
 
@@ -6971,3 +7736,60 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | 名称  | 类型       | 只读 | 可选 | 说明                         |
 | ----- | ---------- | ---- | ---- | ---------------------------- |
 | token | Uint8Array | 否   | 是   | 表示从认证管理接口获取的token。默认为空。 |
+
+## OsAccountSubProfileEvent
+
+枚举系统账号子身份资料的事件。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 值 | 说明 |
+| --- | --- | --- |
+| CREATED | 0 | 表示子身份创建完成事件，当系统账号子身份资料创建完成时触发。 |
+| DELETED | 1 | 表示子身份删除完成事件，当系统账号子身份资料删除完成时触发。 |
+| SWITCHING | 2 | 表示子身份即将切换事件，当系统账号子身份资料切换开始时触发。 |
+| SWITCHED | 3 | 表示子身份切换完成事件，当系统账号子身份资料切换完成时触发。 |
+
+## OsAccountSubProfileEventData
+
+系统账号子身份资料事件数据。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --- | --- | --- | --- | --- |
+| event | [OsAccountSubProfileEvent](#osaccountsubprofileevent) | 否 | 否 | 表示发生的事件。|
+| osAccountLocalId | number | 否 | 否 | 表示系统账号本地ID。 |
+| subProfileId | number | 否 | 否 | 表示系统账号子身份资料标识。 |
+| previousSubProfileId | number | 否 | 是 | 表示上一个系统账号子身份资料标识符。仅在SWITCHING和SWITCHED事件中有效。|
+
+## OsAccountSubProfile
+
+系统账号子身份资料的定义。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --- | --- | --- | --- | --- |
+| id | number | 否 | 否 | 系统账号子身份资料的标识符。 |
+| osAccountLocalId | number | 否 | 否 | 子身份资料所属系统账号的本地标识符。 |
+| index | number | 否 | 否 | 系统账号子身份资料的位置索引，取值范围：0~子身份资料个数减1。该索引在每个系统账号下唯一，由系统在创建子身份资料时自动分配。 |
+| distributedInfo | [distributedAccount.DistributedInfo](js-apis-distributed-account.md#distributedinfo) | 否 | 是 | 系统账号子身份资料绑定的分布式账号信息，默认为undefined。 |

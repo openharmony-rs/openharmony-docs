@@ -1,10 +1,12 @@
 # NotificationSlot
+
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=50e734d278c25dbb71273705da516c218b3754a1 translatedAt=2026-06-29T02:36:49.026Z pushedAt=2026-06-30T10:57:37.004Z -->
 
 The **NotificationSlot** module provides APIs for defining the notification slots. The notification reminder modes vary according to notification slots.
 
@@ -18,17 +20,17 @@ The **NotificationSlot** module provides APIs for defining the notification slot
 
 | Name                | Type                | Read-Only| Optional| Description                  |
 | -------------------- | ---------------------|---- | --- |----------------------|
-| type<sup>(deprecated)</sup> | [notification.SlotType](js-apis-notification.md#slottype) | No| Yes | Notification slot type.<br>This attribute is supported since API version 7 and deprecated since API version 11. You are advised to use **notificationType** instead.               |
-| notificationType<sup>11+</sup>                 | [notificationManager.SlotType](js-apis-notificationManager.md#slottype) | No| Yes | Notification slot type.               |
-| level<sup>(deprecated)</sup> | [notification.SlotLevel](js-apis-notificationManager.md#slotlevel) | No| Yes | Notification level.<br>This attribute is supported since API version 7 and deprecated since API version 20. You are advised to use **notificationLevel** instead.|
-| notificationLevel<sup>20+</sup>                 | [notificationManager.SlotLevel](js-apis-notificationManager.md#slotlevel) | No| Yes | Notification level.               |
-| desc                 | string                | No| Yes | Notification slot description. The value contains a maximum of 243 bytes. Excess part will be truncated.             |
-| badgeFlag            | boolean               | No| Yes | Whether to display the badge.<br> - **true**: Yes.<br> - **false**: No. The default value is **true**.             |
-| bypassDnd            | boolean               | No| Yes | Whether to bypass DND mode in the system.<br> - **true**: Yes.<br> - **false**: No. The default value is **false**.     |
-| lockscreenVisibility | number                | No| Yes | Mode for displaying the notification on the lock screen. Not supported currently.      |
-| vibrationEnabled     | boolean               | No| Yes | Whether to enable vibration for the notification.<br> - **true**: Yes.<br> - **false**: No. The default value is **false**.              |
-| sound                | string                | No| Yes | Name of the custom ringtone file for notifications. This file is stored in the **resources/rawfile** directory and supports formats such as M4A, AAC, MP3, OGG, WAV, FLAC, and AMR. The value contains a maximum of 243 bytes. Excess part will be truncated.             |
-| lightEnabled         | boolean               | No| Yes | Whether the indicator blinks for the notification.<br> - **true**: Yes.<br> - **false**: No. The default value is **false**.               |
-| lightColor           | number                | No| Yes | Indicator color of the notification. Not supported currently.              |
-| vibrationValues      | Array\<number\>       | No| Yes | Vibration mode of the notification. Not supported currently.             |
-| enabled<sup>9+</sup> | boolean               | Yes| Yes | Whether the notification is enabled.<br> - **true**: enabled.<br> - **false**: disabled.        |
+| notificationType<sup>11+</sup>                 | [notificationManager.SlotType](js-apis-notificationManager.md#slottype) | No | Yes  | Channel type. |
+| enabled<sup>9+</sup> | boolean               | Yes | Yes  | Whether to allow notifications to be published from this notification channel.<br> - **true**: yes.<br> - **false**: no.   |
+| notificationLevel<sup>20+</sup>                 | [notificationManager.SlotLevel](js-apis-notificationManager.md#slotlevel) | No | Yes  | Notification level, which is used to describe the display priority and alert intensity of notifications of this channel type.           |
+| desc                 | string                | No | Yes  | Description of the notification channel. The size cannot exceed 243 bytes, and the excess part will be truncated. |
+| badgeFlag            | boolean               | No | Yes  | Whether to display the badge. The default value is **true**.<br> - **true**: Display the badge.<br> - **false**: Do not display the badge.              |
+| bypassDnd            | boolean               | No | Yes  | Whether to bypass Do Not Disturb mode in the system. The default value is **false**.<br> - **true**: Bypass Do Not Disturb mode, and notifications will still be alerted in Do Not Disturb mode.<br> - **false**: Do not bypass Do Not Disturb mode, and notifications will not be alerted in Do Not Disturb mode.      |
+| vibrationEnabled     | boolean               | No | Yes  | Whether to enable vibration. The default value is **false**.<br> - **true**: yes.<br> - **false**: no.                  |
+| sound                | string                | No | Yes  | File name of the custom ringtone for notifications from this channel. The file is placed in the **resources/rawfile** directory, and formats such as M4A, AAC, MP3, OGG, WAV, FLAC, and AMR are supported. The size cannot exceed 243 bytes, and the excess part will be truncated. |
+| lightEnabled         | boolean               | No | Yes  | Whether to enable the light. The default value is **false**.<br> - **true**: yes.<br> - **false**: no.                        |
+| type<sup>(deprecated)</sup> | [notification.SlotType](js-apis-notification.md#slottype) | No | Yes  | Channel type.<br> This parameter is supported since API version 7 and deprecated since API version 11. It is recommended to use **notificationType** instead.        |
+| level<sup>(deprecated)</sup> | [notification.SlotLevel](js-apis-notificationManager.md#slotlevel) | No| Yes | Notification level.<br>This parameter is supported since API version 7 and deprecated since API version 20. It is recommended to use **notificationLevel** instead.|
+| lockscreenVisibility | number                | No| Yes | Mode for displaying the notification on the lock screen. This is a reserved capability and is not supported currently.      |
+| lightColor           | number                | No| Yes | Indicator color of the notification. This is a reserved capability and is not supported currently.              |
+| vibrationValues      | Array\<number\>       | No| Yes | Vibration mode of the notification. This is a reserved capability and is not supported currently.             |

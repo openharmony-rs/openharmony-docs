@@ -16,7 +16,7 @@
 
 overlay(value: string | CustomBuilder | ComponentContent, options?: OverlayOptions ): T
 
-在当前组件上，增加遮罩文本或者叠加自定义组件以及[ComponentContent](#componentcontent12)作为该组件的浮层。浮层的定位同样基于当前组件进行计算。浮层不通过组件树进行渲染，部分接口（例如[getRectangleById](../js-apis-arkui-componentUtils.md#componentutilsgetrectanglebyiddeprecated)）不支持获取浮层中的组件。
+在当前组件上，增加遮罩文本或者叠加自定义组件以及[ComponentContent](#componentcontent12)作为该组件的浮层。浮层的定位同样基于当前组件进行计算。浮层不通过组件树进行渲染，部分接口（例如[getRectangleById](../arkts-apis-uicontext-componentutils.md#getrectanglebyid)）不支持获取浮层中的组件。
 
 >**说明：**
 >
@@ -57,6 +57,8 @@ overlay(value: string | CustomBuilder | ComponentContent, options?: OverlayOptio
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                  | 类型                                       | 只读 | 可选  | 说明                                                |
@@ -78,6 +80,8 @@ overlay(value: string | CustomBuilder | ComponentContent, options?: OverlayOptio
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称    | 类型                                                      | 只读 | 可选  | 说明                                                |
@@ -87,17 +91,19 @@ overlay(value: string | CustomBuilder | ComponentContent, options?: OverlayOptio
 
 ## ComponentContent<sup>12+</sup>
 
-type ComponentContent\<T \= Object\> = ComponentContent\<T\>
+type ComponentContent\<T \= Object\> = import('../api/arkui/ComponentContent').ComponentContent\<T\>
 
 组件内容的实体封装。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型|说明 |
 | ----- | ----------------- |
-| [ComponentContent](../js-apis-arkui-ComponentContent.md)\<T\> | 组件内容的实体封装。|
+| import('../api/arkui/ComponentContent').[ComponentContent](../js-apis-arkui-ComponentContent.md)\<T\> | 组件内容的实体封装。|
 
 ## 示例
 
@@ -130,7 +136,7 @@ struct OverlayExample {
 }
 ```
 
-![zh-cn_image_0000001205769446](figures/zh-cn_image_0000001205769446.png)
+![floatingLayer](figures/floatingLayer.png)
 
 ### 示例2（通过builder设置浮层）
 
@@ -165,7 +171,7 @@ struct OverlayExample {
   }
 }
 ```
-![zh-cn_image_0000001210111632](figures/zh-cn_image_0000001210111632.png)
+![floatingLayer2](figures/floatingLayer2.png)
 
 ### 示例3（通过ComponentContent设置浮层）
 

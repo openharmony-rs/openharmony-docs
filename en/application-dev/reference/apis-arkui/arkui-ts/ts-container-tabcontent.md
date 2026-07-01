@@ -1,12 +1,12 @@
 # TabContent
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
-<!--Tester: @Giacinta-->
+<!--Owner: @Hu_ZeQi-->
+<!--Designer: @Hu_ZeQi-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **TabContent** component is used only in the **Tabs** component. It corresponds to the content view of a switched tab page.
+Defines the tab content view. This component is used only in [Tabs](ts-container-tabs.md).
 
 >  **NOTE**
 >
@@ -335,7 +335,7 @@ Sets the padding of the subtab. It cannot be set in percentage. When the paramet
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) | Yes  | Padding of the subtab.<br>Value range: [0, +∞]<br>Default value: **{left:8.0vp,right:8.0vp,top:17.0vp,bottom:18.0vp}**|
+| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) | Yes  | Padding of the subtab.<br>Value range: [0, +∞]<br>If the value is abnormal, the default value is used.<br>Default value: **{left:8.0vp,right:8.0vp,top:17.0vp,bottom:18.0vp}**|
 
 **Return value**
 
@@ -357,7 +357,7 @@ Sets the padding of the subtab. This API supports mirroring but does not support
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| padding | [LocalizedPadding](ts-types.md#localizedpadding12) | Yes  | Padding of the subtab.<br>Value range: [0, +∞]<br>Default value: **{start:LengthMetrics.vp(8),end:LengthMetrics.vp(8)**<br>**top:LengthMetrics.vp(17),bottom:LengthMetrics.vp(18)}**|
+| padding | [LocalizedPadding](ts-types.md#localizedpadding12) | Yes  | Padding of the subtab.<br>If the value is abnormal, the default value is used.<br>Value range: [0, +∞]<br>If the value is abnormal, the default value is used.<br>Default value: **{start:LengthMetrics.vp(8),end:LengthMetrics.vp(8)**<br>**top:LengthMetrics.vp(17),bottom:LengthMetrics.vp(18)}**|
 
 **Return value**
 
@@ -369,7 +369,7 @@ Sets the padding of the subtab. This API supports mirroring but does not support
 
 id(value: string): SubTabBarStyle
 
-Sets the [ID](ts-universal-attributes-component-id.md#id) of the subtab.
+Sets the subtab ID.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -379,7 +379,7 @@ Sets the [ID](ts-universal-attributes-component-id.md#id) of the subtab.
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | string | Yes  | [ID](ts-universal-attributes-component-id.md#id) of the subtab.|
+| value | string | Yes  | ID of a subtab.|
 
 **Return value**
 
@@ -397,7 +397,7 @@ Represents an indicator style object.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | --------- | ----------------------- |
-| color | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Color of the indicator and board.<br>Default value: **#FF007DFF**|
+| color | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Color of the indicator and board.<br>Default value: **#FF007DFF** (light blue)|
 | height | [Length](ts-types.md#length) | No| Yes| Height of the indicator. It cannot be set in percentage.<br>Default value: **2.0**<br>Unit: vp<br>Value range: [0, +∞)|
 | width | [Length](ts-types.md#length) | No| Yes| Width of the indicator. It cannot be set in percentage.<br>Default value: **0.0**<br>Unit: vp<br>Value range: [0, +∞)<br>**NOTE**<br>If this parameter is set to **0**, the tab text width will be used instead.|
 | borderRadius | [Length](ts-types.md#length) | No| Yes| Rounded corner radius of the indicator. It cannot be set in percentage.<br>Default value: **0.0**<br>Unit: vp<br>Value range: [0, +∞)|
@@ -643,7 +643,7 @@ Sets the ID of the bottom tab.
 
 | Name | Type                                  | Mandatory| Description          |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | string | Yes  | [ID](ts-universal-attributes-component-id.md#id) of the bottom tab.|
+| value | string | Yes  | Sets the ID of the bottom tab.|
 
 **Return value**
 
@@ -761,7 +761,11 @@ Called when the tab content is about to be hidden. The scenarios include the tab
 
 ### Example 1: Implementing Custom Tab Switching Synchronization
 
-This example demonstrates how to use **onAnimationStart** and **onChange** to implement synchronized switching between the tab bar and tab content.
+This example demonstrates how to use [onAnimationStart](ts-container-tabs.md#onanimationstart11) and [onChange](ts-container-tabs.md#onchange) to implement synchronized switching between the tab bar and tab content.
+
+> **NOTE**
+>
+> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOptions** in the module's **build-profile.json5** file > **resOptions** > **copyCodeResource**, and set **enable** to **true**. For details, see the description of [resOptions](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356).
 
 ```ts
 // xxx.ets
@@ -776,6 +780,7 @@ struct TabContentExample {
 
   @Builder tabBuilder(index: number) {
     Column() {
+      // The common directory is at the same level as the pages directory.
       Image(this.selectedIndex === index ? '/common/public_icon_on.svg' : '/common/public_icon_off.svg')
         .width(24)
         .height(24)
@@ -879,7 +884,11 @@ struct TabContentExample {
 
 ### Example 2: Implementing a Custom Side Tabs
 
-This example demonstrates how to create side tabs using **vertical** and **barPosition**.
+This example demonstrates how to create side tabs using [vertical](./ts-container-tabs.md#vertical) and [barPosition](./ts-container-tabs.md#barposition9).
+
+> **NOTE**
+>
+> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOptions** in the module's **build-profile.json5** file > **resOptions** > **copyCodeResource**, and set **enable** to **true**. For details, see the description of [resOptions](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356).
 
 ```ts
 // xxx.ets
@@ -894,6 +903,7 @@ struct TabContentExample {
 
   @Builder tabBuilder(index: number) {
     Column() {
+      // The common directory is at the same level as the pages directory.
       Image(this.selectedIndex === index ? '/common/public_icon_on.svg' : '/common/public_icon_off.svg')
         .width(24)
         .height(24)
@@ -947,7 +957,7 @@ struct TabContentExample {
 
 ### Example 3: Implementing Different Styles of Tabs
 
-This example demonstrates the implementation of subtabs, bottom tabs, and side tabs using **SubTabBarStyle** and **BottomTabBarStyle**.
+This example demonstrates how to create subtabs, bottom tabs, and side tabs using [SubTabBarStyle](#subtabbarstyle9) and [BottomTabBarStyle](#bottomtabbarstyle9).
 
 ```ts
 // xxx.ets
@@ -1119,7 +1129,7 @@ struct TabBarStyleExample {
 
 ### Example 4: Setting the Indicator for Subtabs
 
-This example demonstrates how to set the indicator for subtabs using the **indicator** property in **SubTabBarStyle**.
+This example demonstrates how to set the indicator for subtabs using the [indicator](#indicator10) property in **SubTabBarStyle**.
 
 ```ts
 // xxx.ets
@@ -1357,7 +1367,7 @@ struct TabsAttr {
 
 ### Example 5: Setting Adaptive Height for Subtab Text
 
-This example demonstrates how to achieve adaptive height for subtab text using **heightAdaptivePolicy**.
+This example demonstrates how to achieve adaptive height for subtab text using [heightAdaptivePolicy](#labelstyle10).
 
 ```ts
 // xxx.ets
@@ -1447,7 +1457,7 @@ struct TabsTextOverflow {
 
 ### Example 6: Setting Basic Attributes for Bottom Tabs
 
-This example demonstrates how to set basic attributes for bottom tabs using **padding**, **verticalAlign**, **layoutMode**, and **symmetricExtensible**.
+This example demonstrates how to set basic attributes for bottom tabs using [padding](#padding10), [verticalAlign](#verticalalign10), [layoutMode](#layoutmode10), and [symmetricExtensible](#symmetricextensible10).
 
 ```ts
 // xxx.ets
@@ -1599,9 +1609,13 @@ struct TabContentExample6 {
 
 ### Example 7: Setting Text and Icon Colors for Subtabs and Bottom Tabs
 
-This example demonstrates how to change the text color of subtabs and bottom tabs using **unselectedColor** and **selectedColor** in **labelStyle** and
+This example demonstrates how to change the text color of subtabs and bottom tabs using **unselectedColor** and **selectedColor** in [LabelStyle](#labelstyle10) and
 
-how to change the icon color of bottom tabs using **unselectedColor** and **selectedColor** in **iconStyle**.
+how to change the icon color of bottom tabs using **unselectedColor** and **selectedColor** in [iconStyle](#iconstyle12).
+
+> **NOTE**
+>
+> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOptions** in the module's **build-profile.json5** file > **resOptions** > **copyCodeResource**, and set **enable** to **true**. For details, see the description of [resOptions](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356).
 
 ```ts
 // xxx.ets
@@ -1650,6 +1664,7 @@ struct TabBarStyleExample {
           TabContent() {
             Column().width('100%').height('100%').backgroundColor(Color.Pink)
           }
+          // The common directory is at the same level as the pages directory.
           .tabBar(new BottomTabBarStyle('/common/public_icon_off.svg', 'pink')
             .labelStyle({ unselectedColor: Color.Red, selectedColor: Color.Green })
             .iconStyle({ unselectedColor: Color.Red, selectedColor: Color.Green })
@@ -1692,88 +1707,9 @@ struct TabBarStyleExample {
 
 ![tabContent](figures/tabContent6.gif)
 
-### Example 8: Setting a Custom Subtab
+### Example 8: Using Symbol Icons for Bottom Tabs
 
-This example sets **SubTabBarStyle** through **ComponentContent**.
-
-```ts
-// xxx.ets
-import { ComponentContent, UIContext } from '@kit.ArkUI';
-
-class Params {
-  text: string = '';
-
-  constructor(text: string) {
-    this.text = text;
-  }
-}
-
-@Builder
-function buildText(params: Params) {
-  Column() {
-    Text(params.text)
-      .fontSize(20)
-      .fontWeight(FontWeight.Bold)
-      .margin(20)
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  @State message1: string = 'tabBar1';
-  @State message2: string = 'tabBar2';
-  context: UIContext = this.getUIContext();
-  private count1 = 0;
-  private count2 = 0;
-  private controller: TabsController = new TabsController();
-  tabBar1: ComponentContent<Params> = new ComponentContent<Params>(this.context, wrapBuilder<[Params]>(buildText), new Params(this.message1));
-  tabBar2: ComponentContent<Params> = new ComponentContent<Params>(this.context, wrapBuilder<[Params]>(buildText), new Params(this.message2));
-
-  build() {
-    Row() {
-      Column() {
-        Button('Update tabBar1').width('90%').margin(20)
-          .onClick((event?: ClickEvent) => {
-            this.count1 += 1;
-            const message1 = 'Update 1_' + this.count1.toString();
-            this.tabBar1.update(new Params(message1));
-          })
-        Button('Update tabBar2').width('90%').margin(20)
-          .onClick((event?: ClickEvent) => {
-            this.count2 += 1;
-            const message2 = 'Update 2_' + this.count2.toString();
-            this.tabBar2.update(new Params(message2));
-          })
-        Tabs({ barPosition: BarPosition.Start, controller: this.controller }) {
-          TabContent() {
-            Column().width('100%').height('100%').backgroundColor(Color.Pink).borderRadius('12vp')
-          }.tabBar(new SubTabBarStyle(this.tabBar1))
-          TabContent() {
-            Column().width('100%').height('100%').backgroundColor(Color.Blue).borderRadius('12vp')
-          }.tabBar(SubTabBarStyle.of(this.tabBar2))
-        }
-        .vertical(false)
-        .barWidth(414)
-        .barHeight(96)
-        .width(414)
-        .height(414)
-        .backgroundColor('#F1F3F5')
-        .margin({ top: 20 })
-      }
-      .width('100%')
-      .height('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
-![tabContent7](figures/tabContent7.gif)
-
-### Example 9: Using Symbol Icons for Bottom Tabs
-
-This example shows how to use symbols as icons in **BottomTabBarStyle**.
+This example shows how to use symbols as icons in [BottomTabBarStyle](#bottomtabbarstyle9).
 
 ```ts
 // xxx.ets
@@ -1855,9 +1791,9 @@ struct Index {
 
 ![tabContent8](figures/tabBarSymbol.gif)
 
-### Example 10: Setting TabBar Using ComponentContent
+### Example 9: Setting TabBar Using ComponentContent
 
-This example demonstrates how to use **ComponentContent** to encapsulate component content and set the **TabBar**. The **update** API of **ComponentContent** is used to update the **TabBar**.
+This example demonstrates how to use [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1) to encapsulate component content and set the [TabBar](#tabbar18). The [update](../js-apis-arkui-ComponentContent.md#update) API of **ComponentContent** is used to update the **TabBar**.
 
 ```ts
 // xxx.ets
@@ -1961,9 +1897,9 @@ struct Index {
 
 ![tabContent9](figures/tabContent9.gif)
 
-### Example 11: Preloading Child Nodes Using ComponentContent
+### Example 10: Preloading Child Nodes Using ComponentContent
 
-This example demonstrates how to use **ComponentContent** to set the **TabBar** and preload child nodes using the **preloadItems** API of **TabsController**.
+This example demonstrates how to use **ComponentContent** to set the **TabBar** and preload child nodes using the [preloadItems](ts-container-tabs.md#preloaditems12) API of **TabsController**.
 
 ```ts
 // xxx.ets
@@ -2137,9 +2073,11 @@ struct MyComponent {
 
 ![tabContent9](figures/tabContent10.gif)
 
-### Example 12: Setting the Indicator of a Subtab to an Image
+### Example 11: Setting the Indicator of a Subtab to an Image
 
-Since API version 22, this example uses the **indicator** attribute in **SubTabBarStyle** to implement the subtab indicator in image format.
+Since API version 22, this example uses the [indicator](#indicator22) attribute in **SubTabBarStyle** to implement the subtab indicator in image format.
+
+ 
 
 ```ts
 import { DrawableDescriptor } from '@kit.ArkUI';

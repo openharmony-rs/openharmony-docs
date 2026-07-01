@@ -28,7 +28,7 @@ import { cacheDownload } from '@kit.BasicServicesKit';
 
 Enumerates secure communication protocols.
 
-**System capability**: SystemCapability.Request.FileTransferAgent
+**System capability:** SystemCapability.Request.FileTransferAgent
 
 | Name| Value|Description|
 | -------- | -------- |-------- |
@@ -39,7 +39,7 @@ Enumerates secure communication protocols.
 
 Enumerates the specific types of returned error code.
 
-**System capability**: SystemCapability.Request.FileTransferAgent
+**System capability:** SystemCapability.Request.FileTransferAgent
 
 | Name| Value|Description|
 | -------- | -------- |-------- |
@@ -53,41 +53,72 @@ Enumerates the specific types of returned error code.
 
 Enumerates cache update strategies.
 
-**System capability**: SystemCapability.Request.FileTransferAgent
+**System capability:** SystemCapability.Request.FileTransferAgent
 
 | Name| Value|Description|
 | -------- | -------- |-------- |
 | FORCE | 0 | Forcibly updates the cache, regardless of whether the cache already exists.|
 | LAZY | 1 | Updates the cache only when the cache does not exist.|
 
+## TimeoutOptions
+
+Enumerates the timeout configuration option of a task, including the timeout interval for checking network availability and the timeout interval for completing an HTTP request.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Request.FileTransferAgent
+
+| Name  | Type    | Read-Only| Optional| Description                           |
+|------|--------|----|----|-------------------------------|
+| networkCheckTimeout | number | No | Yes| Timeout interval for checking the network availability, in seconds. The value ranges from 0 to 20. The default value is **20**.<br>The ohos.permission.GET_NETWORK_INFO permission is required to check the network availability. If the permission is not granted, the network check fails until timeout.|
+| httpTotalTimeout | number | No | Yes| Timeout interval for completing an HTTP request, in seconds. The default value is **60** and the minimum value is **1**.|
+
+## RetryOptions
+
+Enumerates retry options of a task, which is used to set the maximum number of retries.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Request.FileTransferAgent
+
+| Name  | Type    | Read-Only| Optional| Description                           |
+|------|--------|----|----|-------------------------------|
+| maxRetryCount | number | No | Yes| Maximum number of retries when a task fails. The value ranges from 0 to 10. The default value is **1**.|
+
 ## CacheDownloadOptions
 
 Provides configuration options for download and cache, including HTTP options, transmission options, and task options.
 
-**System capability**: SystemCapability.Request.FileTransferAgent
+**System capability:** SystemCapability.Request.FileTransferAgent
 
 | Name  | Type    | Read-Only| Optional| Description                           |
 |------|--------|----|----|-------------------------------|
 | headers | Record\<string, string\> | No | Yes| Request header used by a download task during HTTP transfer. The default value is empty.|
-| sslType<sup>21+</sup> | [SslType](#ssltype21) | No | Yes| Secure communication protocol, such as TSL or TLCP. TLS is used by default. Currently, TLS and TLCP do not support two-way authentication.|
+| sslType<sup>21+</sup> | [SslType](#ssltype21) | No | Yes| Secure communication protocol, such as TLS or TLCP. TLS is used by default. Currently, TLS and TLCP do not support two-way authentication.|
 | caPath<sup>21+</sup> | string | No | Yes| CA certificate path. Currently, only the .pem certificate is supported. The CA certificate preset by the system is used by default.|
 | cacheStrategy<sup>23+</sup> | [CacheStrategy](#cachestrategy23) | No | Yes| Cache update strategies, including **FORCE** or **LAZY**. The **FORCE** policy is used by default.|
+| retry | [RetryOptions](#retryoptions) | No | Yes| Retry options of a task.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.|
+| timeout | [TimeoutOptions](#timeoutoptions) | No | Yes| Timeout options of a task.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.|
 
 ## ResourceInfo<sup>20+</sup>
 
 Describes the pre-downloaded resource information.
 
-**System capability**: SystemCapability.Request.FileTransferAgent
+**System capability:** SystemCapability.Request.FileTransferAgent
 
 | Name  | Type    | Read-Only| Optional| Description                           |
 |------|--------|----|----|-------------------------------|
-| size | number | Yes | No | Size of a pre-downloaded resource after decompression. If the value is a positive integer, the resource is successfully downloaded; if the value is **-1**, the resource fails to be downloaded.|
+| size | number | Yes | No | Size of a pre-downloaded resource after decompression, in bytes. If the value is a positive integer, the resource is successfully downloaded; if the value is **-1**, the resource fails to be downloaded.|
 
 ## NetworkInfo<sup>20+</sup>
 
 Describes the pre-downloaded network information.
 
-**System capability**: SystemCapability.Request.FileTransferAgent
+**System capability:** SystemCapability.Request.FileTransferAgent
 
 | Name        | Type      | Read-Only| Optional| Description               |
 |------------|----------|----|----|-------------------|
@@ -98,7 +129,7 @@ Describes the pre-downloaded network information.
 
 Describes the pre-downloaded performance information.
 
-**System capability**: SystemCapability.Request.FileTransferAgent
+**System capability:** SystemCapability.Request.FileTransferAgent
 
 | Name              | Type    | Read-Only| Optional| Description                           |
 |------------------|--------|----|----|-------------------------------|
@@ -114,7 +145,7 @@ Describes the pre-downloaded performance information.
 
 Describes the pre-downloaded download information.
 
-**System capability**: SystemCapability.Request.FileTransferAgent
+**System capability:** SystemCapability.Request.FileTransferAgent
 
 | Name         | Type                                   | Read-Only| Optional| Description       |
 |-------------|---------------------------------------|----|----|-----------|
@@ -126,7 +157,7 @@ Describes the pre-downloaded download information.
 
 Describes the error message returned when a pre-download error occurs.
 
-**System capability**: SystemCapability.Request.FileTransferAgent
+**System capability:** SystemCapability.Request.FileTransferAgent
 
 | Name         | Type                                   | Read-Only| Optional| Description       |
 |-------------|---------------------------------------|----|----|-----------|
@@ -147,9 +178,9 @@ Downloads a task from a specified URL. If the transfer is successful, the data i
 
 - This API returns the result synchronously, without blocking the calling thread.
 
-**Required permissions**: ohos.permission.INTERNET
+**Required permissions:** ohos.permission.INTERNET
 
-**System capability**: SystemCapability.Request.FileTransferAgent
+**System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters**
 
@@ -162,7 +193,7 @@ Downloads a task from a specified URL. If the transfer is successful, the data i
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID   | Error Message                                                                                                                                     |
+| Error Code   | Error Message                                                                                                                                     |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------|
 | 201      | permission denied.                                                                                                              |
 | 401      | parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
@@ -178,10 +209,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     sslType: cacheDownload.SslType.TLS,
     caPath: '/path/to/ca.pem',
     cacheStrategy: cacheDownload.CacheStrategy.FORCE,
+    retry: { maxRetryCount: 1 },
+    timeout: {
+      networkCheckTimeout: 20,
+      httpTotalTimeout: 60,
+    }
   };
-  
+
   try {
-    // Download the resource. If the download is successful, the resource will be cached to the specified file in the application memory or sandbox directory. 
+    // Download the resource. If the download is successful, the resource will be cached to the specified file in the application memory or sandbox directory.
     cacheDownload.download("https://www.example.com", options);
   } catch (err) {
     console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
@@ -198,7 +234,7 @@ Cancels an ongoing download task based on the URL. The saved memory cache and fi
 
 - When this API is used for synchronous execution, the calling thread is not blocked.
 
-**System capability**: SystemCapability.Request.FileTransferAgent
+**System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters**
 
@@ -210,7 +246,7 @@ Cancels an ongoing download task based on the URL. The saved memory cache and fi
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID   | Error Message                                                                                                                                     |
+| Error Code   | Error Message                                                                                                                                     |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------|
 | 401      | parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
@@ -249,7 +285,7 @@ Sets the upper limit of the memory cache size for the **cacheDownload** componen
 
 - This API returns the result synchronously, without blocking the calling thread.
 
-**System capability**: SystemCapability.Request.FileTransferAgent
+**System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters**
 
@@ -261,7 +297,7 @@ Sets the upper limit of the memory cache size for the **cacheDownload** componen
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID   | Error Message                                                                                                                                     |
+| Error Code   | Error Message                                                                                                                                     |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------|
 | 401      | parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
@@ -290,7 +326,7 @@ Sets the upper limit of the file cache size for the **cacheDownload** component.
 
 - This API returns the result synchronously, without blocking the calling thread.
 
-**System capability**: SystemCapability.Request.FileTransferAgent
+**System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters**
 
@@ -302,7 +338,7 @@ Sets the upper limit of the file cache size for the **cacheDownload** component.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID   | Error Message                                                                                                                                     |
+| Error Code   | Error Message                                                                                                                                     |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------|
 | 401      | parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
@@ -337,7 +373,7 @@ Sets the size of the download information list.
 
 - If the list size is increased using this API, the original information in the list remains unchanged; if the list size is decreased, the LRU mode is used by default to clear excess cached data in the list.
 
-**System capability**: SystemCapability.Request.FileTransferAgent
+**System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters**
 
@@ -372,9 +408,9 @@ Obtains the download information based on the URL. The download information is s
 
 - When the target information is stored in the memory, the existing cache data is replaced in the LRU mode.
 
-**Required permission**: ohos.permission.GET_NETWORK_INFO
+**Required permission:** ohos.permission.GET_NETWORK_INFO
 
-**System capability**: SystemCapability.Request.FileTransferAgent
+**System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters**
 
@@ -392,7 +428,7 @@ Obtains the download information based on the URL. The download information is s
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message              |
+| Error Code| Error Message              |
 |-------|--------------------|
 | 201   | permission denied. |
 
@@ -437,7 +473,7 @@ clearMemoryCache(): void
 
 Clears this memory cache.
 
-**System capability**: SystemCapability.Request.FileTransferAgent
+**System capability:** SystemCapability.Request.FileTransferAgent
 
 **Example**:
 
@@ -453,7 +489,7 @@ clearFileCache(): void
 
 Clears this file cache.
 
-**System capability**: SystemCapability.Request.FileTransferAgent
+**System capability:** SystemCapability.Request.FileTransferAgent
 
 **Example**:
 
@@ -469,13 +505,13 @@ onDownloadSuccess(url: string, callback: Callback&lt;void&gt;): void
 
 Subscribes to the pre-download completion events. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Request.FileTransferAgent
+**System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters**
 
 | Name| Type    | Mandatory| Description                  |
 |-----|--------|----|----------------------|
-| url | string | Yes | URL to be registered, with a maximum of 8192 bytes.|
+| url | string | Yes | URL of the callback to register, with a maximum of 8,192 bytes.|
 | callback | Callback&lt;void&gt; | Yes| Callback used to return the result.|
 
 **Example**:
@@ -502,13 +538,13 @@ onDownloadError(url: string, callback: Callback&lt;DownloadError&gt;): void
 
 Subscribes to the pre-download error events. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Request.FileTransferAgent
+**System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters**
 
 | Name| Type    | Mandatory| Description                  |
 |-----|--------|----|----------------------|
-| url | string | Yes | URL to be registered, with a maximum of 8192 bytes.|
+| url | string | Yes | URL of the callback to register, with a maximum of 8,192 bytes.|
 | callback | Callback&lt;[DownloadError](#downloaderror23)&gt; | Yes| Callback used to return the error information about the pre-download.|
 
 **Example**:
@@ -535,13 +571,13 @@ offDownloadSuccess(url: string, callback?: Callback&lt;void&gt;): void
 
 Unsubscribes from the pre-download completion events. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Request.FileTransferAgent
+**System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters**
 
 | Name| Type    | Mandatory| Description                  |
 |-----|--------|----|----------------------|
-| url | string | Yes | URL to be unregistered, with a maximum of 8192 bytes.|
+| url | string | Yes | URL of the callback to register, with a maximum of 8,192 bytes.|
 | callback | Callback&lt;void&gt; | No| Callback to unregister. If this parameter is left blank, all completion callback functions of the URL are unregistered.|
 
 **Example**:
@@ -570,13 +606,13 @@ offDownloadError(url: string, callback?: Callback&lt;DownloadError&gt;): void
 
 Unsubscribes from the pre-download error events. This API uses an asynchronous callback to return the result.
 
-**System capability**: SystemCapability.Request.FileTransferAgent
+**System capability:** SystemCapability.Request.FileTransferAgent
 
 **Parameters**
 
 | Name| Type    | Mandatory| Description                  |
 |-----|--------|----|----------------------|
-| url | string | Yes | URL to be unregistered, with a maximum of 8192 bytes.|
+| url | string | Yes | URL of the callback to unregister, with a maximum of 8,192 bytes.|
 | callback | Callback&lt;[DownloadError](#downloaderror23)&gt; | No| Callback used to return the error information about the pre-download. If this parameter is left blank, all error callback functions of the URL are unregistered.|
 
 **Example**:
@@ -596,5 +632,70 @@ Unsubscribes from the pre-download error events. This API uses an asynchronous c
     cacheDownload.download("https://www.example.com", {});
   } catch (err) {
     console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
+  }
+  ```
+
+## cacheDownload.setGlobalRetryOptions
+
+setGlobalRetryOptions(options?: RetryOptions): void
+
+Sets the global retry options of a task. This configuration takes effect when no specific retry configuration is set for a task. The retry configuration priority is as follows: task settings > global settings > default settings.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Request.FileTransferAgent
+
+**Parameters**
+
+| Name| Type    | Mandatory| Description                  |
+|-----|--------|----|----------------------|
+| options | [RetryOptions](#retryoptions) | No | Retry options of a task.|
+
+**Example**:
+
+  ```ts
+  try {
+    // Set the maximum number of retries for a task globally.
+    cacheDownload.setGlobalRetryOptions({
+      maxRetryCount: 1
+    });
+    cacheDownload.download("https://www.example.com", {});
+  } catch (err) {
+    console.error(`Failed to download the resource. err code: ${err?.code}, err message: ${err?.message}`);
+  }
+  ```
+
+## cacheDownload.setGlobalTimeoutOptions
+
+setGlobalTimeoutOptions(options?: TimeoutOptions): void
+
+Sets the global timeout options of a task. This configuration takes effect when no specific timeout configuration is set for a task. The timeout configuration priority is as follows: task settings > global settings > default settings.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Request.FileTransferAgent
+
+**Parameters**
+
+| Name| Type    | Mandatory| Description                  |
+|-----|--------|----|----------------------|
+| options | [TimeoutOptions](#timeoutoptions) | No | Timeout options of a task.|
+
+**Example**:
+
+  ```ts
+  try {
+    // Set the global timeout options of a task.
+    cacheDownload.setGlobalTimeoutOptions({
+      networkCheckTimeout: 20,
+      httpTotalTimeout: 60,
+    })
+    cacheDownload.download("https://www.example.com", {});
+  } catch (err) {
+    console.error(`Failed to download the resource. err code: ${err?.code}, err message: ${err?.message}`);
   }
   ```

@@ -55,6 +55,8 @@ onVisibleAreaChange(ratios: Array&lt;number&gt;, event: VisibleAreaChangeCallbac
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -92,6 +94,8 @@ onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleA
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -123,6 +127,8 @@ onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleA
 
 关于区域变化相关的参数。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型                                                | 只读 | 可选 | 说明                                                         |
@@ -138,6 +144,8 @@ type VisibleAreaChangeCallback = (isExpanding: boolean, currentRatio: number) =>
 组件可见区域变化事件的回调类型。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -354,7 +362,7 @@ struct ScrollExample {
   }
 }
 ```
-![zh-cn_visible_area_change.gif](figures/zh-cn_visible_area_change.gif)
+![visible-area-change.gif](figures/visible-area-change.gif)
 
 ### 示例3 (设置measureFromViewport子组件超出父组件显示)
 
@@ -466,4 +474,4 @@ struct OnVisibleAreaChangeSample {
   }
 }
 ```
-![zh-cn_visible_area_change.gif](figures/zh-cn_visible_area_change3.jpg)
+![visible-area-change.gif](figures/visible-area-change3.jpg)

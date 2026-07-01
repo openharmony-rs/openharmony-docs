@@ -1,7 +1,7 @@
 # JSVM-API 支持的数据类型和接口
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -245,7 +245,6 @@ typedef struct {
 } JSVM_ScriptOrigin;
 ```
 
-### JSVM
 ### 内存管理类型
 
 JSVM-API 包含以下内存管理类型：
@@ -635,7 +634,7 @@ static void RunScriptWithOption(JSVM_Env env, string& src,
     OH_JSVM_CreateStringUtf8(env, src.c_str(), src.size(), &jsSrc);
 
     uint8_t* data = dataPtr ? *dataPtr : nullptr;
-    auto compilMode = data ? JSVM_COMPILE_MODE_CONSUME_CODE_CACHE :  JSVM_COMPILE_MODE_DEFAULT;
+    auto compileMode = data ? JSVM_COMPILE_MODE_CONSUME_CODE_CACHE :  JSVM_COMPILE_MODE_DEFAULT;
     size_t length = lengthPtr ? *lengthPtr : 0;
     JSVM_Script script;
     // 编译js代码
@@ -651,7 +650,7 @@ static void RunScriptWithOption(JSVM_Env env, string& src,
     JSVM_CompileOptions option[3];
     option[0] = {
         .id = JSVM_COMPILE_MODE,
-        .content = { .num = compilMode }
+        .content = { .num = compileMode }
     };
     JSVM_CodeCache codeCache = {
         .cache = data,

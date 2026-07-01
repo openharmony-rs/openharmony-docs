@@ -1,8 +1,8 @@
 # 管理应用窗口（Stage模型）
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
@@ -10,7 +10,7 @@
 
 - 窗口沉浸式能力：指对状态栏、导航栏等系统窗口进行控制，减少状态栏导航栏等系统界面的突兀感，从而使用户获得最佳体验的能力。沉浸式能力只在应用主窗口作为全屏窗口时生效。通常情况下，应用的辅助窗口（子窗、全局悬浮窗等）和处于自由窗口下的应用主窗口无法使用沉浸式能力。
 
-- 全局悬浮窗：全局悬浮窗是一种特殊的应用辅助窗口，具备在应用主窗口和对应Ability退至后台后仍然可以在前台显示的能力。全局悬浮窗可以用于应用退至后台后，使用小窗继续显示UI，例如音乐应用用于显示桌面歌词等。应用在创建全局悬浮窗前，需要申请对应的权限。
+- 全局悬浮窗：全局悬浮窗是一种特殊的应用辅助窗口，具备在应用主窗口和对应UIAbility退至后台后仍然可以在前台显示的能力。全局悬浮窗可以用于应用退至后台后，使用小窗继续显示UI，例如音乐应用用于显示桌面歌词等。应用在创建全局悬浮窗前，需要申请对应的权限。
 
 
 ## 场景介绍
@@ -31,7 +31,7 @@
 
 ## 接口说明
 
-上述场景涉及的常用接口如下表所示。更多API说明请参见[API参考](../reference/apis-arkui/arkts-apis-window.md)。
+上述场景涉及的常用接口如下表所示。更多API说明请参见[@ohos.window (窗口)](../reference/apis-arkui/arkts-apis-window.md)。
 
 | 实例名         | 接口名                                                       | 描述                                                         |
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -123,8 +123,8 @@ export default class EntryAbility extends UIAbility {
 开发者可以按需创建应用子窗口，如弹窗等，并对其进行属性设置等操作。
 
 > **说明：**  
-> 以下几种场景不建议使用子窗口，建议优先考虑使用控件[overlay](../reference/apis-arkui/arkui-ts/ts-universal-attributes-overlay.md)能力实现。  
-> - 移动设备（手机、在非自由模式下的平板设备）场景下子窗不能超出处于悬浮窗模式、分屏模式的应用主窗口范围，与控件一致。  
+> 以下几种场景不建议使用子窗口，建议优先考虑使用控件[浮层](../reference/apis-arkui/arkui-ts/ts-universal-attributes-overlay.md)能力实现。
+> - 移动设备（手机、在非自由模式下的平板设备）场景下子窗不能超出处于智慧多窗悬浮窗模式、分屏模式的应用主窗口范围，与控件一致。  
 > - 分屏窗口与自由窗口模式下，主窗口位置大小发生改变时控件实时跟随变化能力优于子窗。  
 > - 部分设备平台下根据实际的系统配置限制，子窗只有系统默认的动效和圆角阴影，应用无法设置，自由度低。
 
@@ -134,7 +134,7 @@ export default class EntryAbility extends UIAbility {
 
    通过`createSubWindow`接口创建应用子窗口。
    
-   子窗口创建后默认是[沉浸式布局](../windowmanager/window-terminology.md#沉浸式布局)。
+   子窗口创建后默认是[沉浸式布局](../windowmanager/immersive-window-feature.md#沉浸式布局)。
 
 2. 设置子窗口属性。
 
@@ -143,7 +143,7 @@ export default class EntryAbility extends UIAbility {
    在调用`showWindow`之前，建议设置子窗口的大小和位置。
 
    如果没有设置子窗口的大小，调用`showWindow`后:
-    + [自由窗口](./window-terminology.md#自由窗口)状态下，默认子窗口大小为当前物理屏幕的大小。<!--RP3--><!--RP3End-->
+    + [自由窗口](./window-terminology.md#freeform-window自由窗口)状态下，默认子窗口大小为当前物理屏幕的大小。<!--RP3--><!--RP3End-->
     + 非自由窗口状态下，默认子窗口大小为主窗口大小。
 
 3. 加载显示子窗口的具体内容。
@@ -531,8 +531,7 @@ export default class EntryAbility extends UIAbility {
 };
 ```
 
-<!--RP2-->
-## 设置全局悬浮窗<!--RP2End-->
+## 设置全局悬浮窗（受限开放）
 
 全局悬浮窗可以在已有的任务基础上，创建一个始终在前台显示的窗口。即使创建全局悬浮窗的任务退至后台，全局悬浮窗仍然可以在前台显示。通常全局悬浮窗位于所有应用窗口之上，开发者可以创建全局悬浮窗，并对全局悬浮窗进行属性设置等操作。
 
@@ -540,7 +539,7 @@ export default class EntryAbility extends UIAbility {
 ### 开发步骤
 
 <!--RP1-->
-**前提条件：** 创建`WindowType.TYPE_FLOAT`即全局悬浮窗类型的窗口，需要申请`ohos.permission.SYSTEM_FLOAT_WINDOW`权限，配置方式请参见[system_basic等级应用申请权限的方式](../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
+**前提条件：** 创建WindowType.TYPE_FLOAT即全局悬浮窗类型的窗口，需要申请ohos.permission.SYSTEM_FLOAT_WINDOW权限，该权限为受控开放，权限申请方式请参考：[申请使用受限权限](../security/AccessToken/declare-permissions-in-acl.md)。
 <!--RP1End-->
 
 1. 创建全局悬浮窗。
@@ -572,7 +571,7 @@ const TAG: string = '[Sample_CreatFloatWindow]';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
-    // 1.创建悬浮窗。
+    // 1.创建全局悬浮窗。
     let windowClass: window.Window | null = null;
     let config: window.Configuration = {
       name: 'floatWindow', windowType: window.WindowType.TYPE_FLOAT, ctx: this.context
@@ -585,7 +584,7 @@ export default class EntryAbility extends UIAbility {
       }
       hilog.info(DOMAIN, TAG, `Succeeded in creating the floatWindow. Data: ${JSON.stringify(data)}`);
       windowClass = data;
-      // 2.悬浮窗窗口创建成功后，设置悬浮窗的位置、大小及相关属性等。
+      // 2.全局悬浮窗窗口创建成功后，设置全局悬浮窗的位置、大小及相关属性等。
       windowClass.moveWindowTo(300, 300, (err: BusinessError) => {
         let errCode: number = err.code;
         if (errCode) {
@@ -602,7 +601,7 @@ export default class EntryAbility extends UIAbility {
         }
         hilog.info(DOMAIN, TAG, `Succeeded in changing the window size.`);
       });
-      // 3.为悬浮窗加载对应的目标页面。
+      // 3.为全局悬浮窗加载对应的目标页面。
       windowClass.setUIContent('pages/Index', (err: BusinessError) => {
         let errCode: number = err.code;
         if (errCode) {
@@ -610,7 +609,7 @@ export default class EntryAbility extends UIAbility {
           return;
         }
         hilog.info(DOMAIN, TAG, `Succeeded in loading the content.`);
-        // 3.显示悬浮窗。
+        // 3.显示全局悬浮窗。
         (windowClass as window.Window).showWindow((err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {
@@ -620,7 +619,7 @@ export default class EntryAbility extends UIAbility {
           hilog.info(DOMAIN, TAG, `Succeeded in showing the window.`);
         });
       });
-      // 4.销毁悬浮窗。当不再需要悬浮窗时，可根据具体实现逻辑，使用destroy对其进行销毁。
+      // 4.销毁全局悬浮窗。当不再需要全局悬浮窗时，可根据具体实现逻辑，使用destroy对其进行销毁。
     });
   }
 };

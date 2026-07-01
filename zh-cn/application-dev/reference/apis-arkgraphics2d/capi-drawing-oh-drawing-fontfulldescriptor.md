@@ -2,7 +2,7 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
@@ -13,7 +13,7 @@ typedef struct OH_Drawing_FontFullDescriptor OH_Drawing_FontFullDescriptor
 
 ## 概述
 
-用于描述字体的详细信息，即字体描述符。
+用于描述字体的详细信息。
 
 **起始版本：** 22
 

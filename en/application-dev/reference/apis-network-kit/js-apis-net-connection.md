@@ -268,7 +268,7 @@ let options: http.HttpRequestOptions = {
   usingProxy: true, // This field specifies whether to use the network proxy. It is supported since API version 10.
 };
 // Initiate an HTTP request.
-httpRequest.request("EXAMPLE_URL", options, (err: Error, data: http.HttpResponse) => {
+httpRequest.request("EXAMPLE_URL", options, (err: BusinessError, data: http.HttpResponse) => {
   if (!err) {
    console.info(`Result: ${data.result}`);
    console.info(`code: ${data.responseCode}`);
@@ -490,6 +490,8 @@ Binds an application to the network specified by **netHandle**, so that the appl
 
 >**NOTE**
 >
+> When the application no longer uses the network or the network is unavailable, you need to unbind the application from the specified network to prevent the application from failing to access the Internet.
+> 
 > To unbind the application from the specified network, call [setAppNet](#connectionsetappnet9) and pass a **NetHandle** object with **netId** set to **0**. For details, see the following example.
 
 ```ts
@@ -519,24 +521,55 @@ For details about the error codes, see [Network Connection Management Error Code
 
 **Example**
 
+If an application is bound to a Wi-Fi network and the Wi-Fi signal is weak or the network is disconnected, the application cannot access the Internet if it is not unbound.
+
+The following example binds the application to a Wi-Fi network. It uses the [on('netAvailable')](#onnetavailable) API to bind the application when the Wi-Fi network is available, and the [on('netLost')](#onnetlost) API to unbind the application and switch to the default network when the Wi-Fi network is unavailable.
+
 ```ts
+
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-connection.getDefaultNet((error: BusinessError, netHandle: connection.NetHandle) => {
-  if (netHandle.netId == 0) {
-    // If no network is connected, the obtained netId of netHandle is 0, which is abnormal. You can add specific processing based on the service requirements.
-    return;
+// Create a NetConnection object. To bind only to the Wi-Fi network, set the network type to Wi-Fi.
+let netCon = connection.createNetConnection({
+  netCapabilities: {
+    bearerTypes: [connection.NetBearType.BEARER_WIFI]
   }
-  // The application accesses the network using the default network.
+});
+
+// Use the on API to enable listening for netAvailable events.
+netCon.on('netAvailable', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
   connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
     if (error) {
-      console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
+      console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
       return;
     }
-    console.info("Succeeded to get data: " + JSON.stringify(data));
+    console.info("Succeeded to setAppNet, netid: " + JSON.stringify(netHandle.netId));
   });
 });
+
+// Use the on API to enable listening for netLost events.
+netCon.on('netLost', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
+  // When the network is lost, proactively unbind the specified network.
+  netHandle.netId = 0;
+  connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
+    if (error) {
+      console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
+      return;
+    }
+    console.info("Succeeded to setAppNet, netid: " + JSON.stringify(netHandle.netId));
+  });
+});
+
+// Register a listener for network status change events. This API must be called after the on API.
+netCon.register((error: BusinessError) => {
+  if (error) {
+    console.error(JSON.stringify(error));
+  }
+});
+
 ```
 
 ## connection.setAppNet<sup>9+</sup>
@@ -557,17 +590,17 @@ Binds an application to the network specified by **netHandle**, so that the appl
 
 >**NOTE**
 >
+> When the application no longer uses the network or the network is unavailable, you need to unbind the application from the specified network to prevent the application from failing to access the Internet.
+> 
 > To unbind the application from the specified network, call [setAppNet](#connectionsetappnet9) and pass a **NetHandle** object with **netId** set to **0**. For details, see the following example.
 ```ts
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   netHandle.netId = 0;
-  connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
-    if (error) {
-      console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
-      return;
-    }
-    console.info("Succeeded to get data: " + JSON.stringify(data));
-  });
+  connection.setAppNet(netHandle).then(() => {
+    console.info("setAppNet success");
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
+  })
 });
 ```
 
@@ -591,22 +624,51 @@ For details about the error codes, see [Network Connection Management Error Code
 
 **Example**
 
+If an application is bound to a Wi-Fi network and the Wi-Fi signal is weak or the network is disconnected, the application cannot access the Internet if it is not unbound.
+
+The following example binds the application to a Wi-Fi network. It uses the [on('netAvailable')](#onnetavailable) API to bind the application when the Wi-Fi network is available, and the [on('netLost')](#onnetlost) API to unbind the application and switch to the default network when the Wi-Fi network is unavailable.
+
 ```ts
+
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
-  if (netHandle.netId == 0) {
-    // If no network is connected, the obtained netId of netHandle is 0, which is abnormal. You can add specific processing based on the service requirements.
-    return;
+// Create a NetConnection object. To bind only to the Wi-Fi network, set the network type to Wi-Fi.
+let netCon = connection.createNetConnection({
+  netCapabilities: {
+    bearerTypes: [connection.NetBearType.BEARER_WIFI]
   }
+});
 
+// Use the on API to enable listening for netAvailable events.
+netCon.on('netAvailable', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
   connection.setAppNet(netHandle).then(() => {
-    console.info("success");
+    console.info("setAppNet success, netid: " + JSON.stringify(netHandle.netId));
   }).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
   })
 });
+
+// Use the on API to enable listening for netLost events.
+netCon.on('netLost', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
+  // When the network is lost, proactively unbind the specified network.
+  netHandle.netId = 0;
+  connection.setAppNet(netHandle).then(() => {
+    console.info("setAppNet success, netid: " + JSON.stringify(netHandle.netId));
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
+  })
+});
+
+// Register a listener for network status change events. This API must be called after the on API.
+netCon.register((error: BusinessError) => {
+  if (error) {
+    console.error(JSON.stringify(error));
+  }
+});
+
 ```
 
 ## connection.getAllNets
@@ -1617,7 +1679,8 @@ Adds custom DNS rules for the specified host of the current application. This AP
 
 > **NOTE**
 >
-> You can call [removeCustomDnsRule](#connectionremovecustomdnsrule11) to delete a custom DNS rule or call [clearCustomDnsRules](#connectionclearcustomdnsrules11) to delete all custom DNS rules of the current application.
+> You can call [removeCustomDnsRule](#connectionremovecustomdnsrule11) to delete a custom DNS rule or call [clearCustomDnsRules](#connectionclearcustomdnsrules11) to delete all custom DNS rules of the current application.<br>
+> After a custom DNS rule is added by calling this API, it takes effect persistently, and there is no need to add the same rule repeatedly. When it is no longer needed, you can delete it using the methods described above.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -1668,7 +1731,8 @@ Adds custom DNS rules for the specified host of the current application. This AP
 
 > **NOTE**
 >
-> You can call [removeCustomDnsRule](#connectionremovecustomdnsrule11) to delete a custom DNS rule or call [clearCustomDnsRules](#connectionclearcustomdnsrules11) to delete all custom DNS rules of the current application.
+> You can call [removeCustomDnsRule](#connectionremovecustomdnsrule11) to delete a custom DNS rule or call [clearCustomDnsRules](#connectionclearcustomdnsrules11) to delete all custom DNS rules of the current application.<br>
+> After a custom DNS rule is added by calling this API, it takes effect persistently, and there is no need to add the same rule repeatedly. When it is no longer needed, you can delete it using the methods described above.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -1722,6 +1786,7 @@ Removes the custom DNS rules of the specified host from the current application.
 
 > **NOTE**
 >
+> Before deletion, ensure that no thread is currently using the custom rule to avoid conflicts.<br>
 > You can call [addCustomDnsRule](#connectionaddcustomdnsrule11) to add a custom rule.
 
 **Required permissions**: ohos.permission.INTERNET
@@ -1772,6 +1837,7 @@ Removes the custom DNS rules of the specified host from the current application.
 
 > **NOTE**
 >
+> Before deletion, ensure that no thread is currently using the custom rule to avoid conflicts.<br>
 > You can call [addCustomDnsRule](#connectionaddcustomdnsrule11) to add a custom rule.
 
 **Required permissions**: ohos.permission.INTERNET
@@ -1823,6 +1889,11 @@ clearCustomDnsRules(callback: AsyncCallback\<void\>): void
 
 Removes all custom DNS rules of the current application. This API uses an asynchronous callback to return the result.
 
+> **NOTE**
+>
+> Before deletion, ensure that no thread is currently using the existing custom rules to avoid conflicts.<br>
+> You can call [addCustomDnsRule](#connectionaddcustomdnsrule11) to add a custom rule.
+
 **Required permissions**: ohos.permission.INTERNET
 
 **System capability**: SystemCapability.Communication.NetManager.Core
@@ -1865,6 +1936,11 @@ connection.clearCustomDnsRules((error: BusinessError, data: void) => {
 clearCustomDnsRules(): Promise\<void\>
 
 Removes all custom DNS rules of the current application. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> Before deletion, ensure that no thread is currently using the existing custom rules to avoid conflicts.<br>
+> You can call [addCustomDnsRule](#connectionaddcustomdnsrule11) to add a custom rule.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -2611,7 +2687,7 @@ Queries the network route tracing information. This API uses a promise to return
 >
 > To call this API, the application needs to apply for the precise location permission. <!--RP1-->According to [Applying for Location Permissions (ArkTS)](../../device/location/location-permission-guidelines.md)<!--RP1End-->, the caller needs to apply for both **ohos.permission.APPROXIMATELY_LOCATION** and **ohos.permission.LOCATION**.
 
-**Since**: 26.0.0
+**Since:** 26.0.0
 
 **Required permissions**: ohos.permission.INTERNET, ohos.permission.ACCESS_NET_TRACE_INFO, ohos.permission.LOCATION, and ohos.permission.APPROXIMATELY_LOCATION
 
@@ -2672,7 +2748,7 @@ Queries network probe results. If an exception (for example, network disconnecti
 >
 > This API is used to perform network probe on a target host for a period of time to obtain the packet loss rate and RTT information.
 
-**Since**: 26.0.0
+**Since:** 26.0.0
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -2685,7 +2761,7 @@ Queries network probe results. If an exception (for example, network disconnecti
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | destination | string | Yes| Target domain name or IP address, for example, www.example.com or 8.8.8.8.|
-| duration | number | Yes| Probe duration, in seconds. The value must be a positive integer. The probe interval is one second. If no exception (such as network disconnection) occurs, the probe result is returned when the probe duration expires.|
+| duration | number | Yes| Probe duration, in seconds. The value range is [1, 1000]. The probe interval is one second. If no exception (such as network disconnection) occurs, the probe result is returned when the probe duration expires. This field indicates the total probe duration. If the value is too large, application thread resources may be occupied for a long time.|
 
 **Return value**
 
@@ -3575,23 +3651,23 @@ Enumerates TCP states.
 
 |            Name        | Value  | Description       |
 | ----------------------- | ---- | ---------- |
-| ESTABLISHED | 1  | The connection is established, and data can be sent and received properly. |
-| SYN_SENT    | 2  | The client sends SYN and waits for ACK+SYN from the server (the first step of the three-way handshake).|
-| SYN_RECV    | 3  | The server receives SYN and sends ACK+SYN, and waits for ACK from the client (the second step of the three-way handshake).|
-| FIN_WAIT1   | 4  | The active end sends FIN and waits for ACK from the peer end.|
-| FIN_WAIT2   | 5  | The active end receives ACK of FIN and waits for ACK from the peer end.|
-| TIME_WAIT   | 6  | The active end receives FIN from the peer end and replies with ACK. After two times of the maximum segment lifetime, the connection is completely released.|
-| CLOSE       | 7  | Initial/closed state, with no connection.|
-| CLOSE_WAIT  | 8  | The passive end receives FIN and sends ACK, and waits for FIN from the peer end.|
-| LAST_ACK    | 9  | The passive end sends FIN and waits for ACK from the peer end.|
-| LISTEN      | 10 | The server listens and waits for the client to connect.|
-| CLOSING     | 11 | Both ends send FIN and wait for ACK from each other.  |
+| TCP_ESTABLISHED | 1  | The connection is established, and data can be sent and received properly. |
+| TCP_SYN_SENT    | 2  | The client sends SYN and waits for ACK+SYN from the server (the first step of the three-way handshake).|
+| TCP_SYN_RECV    | 3  | The server receives SYN and sends ACK+SYN, and waits for ACK from the client (the second step of the three-way handshake).|
+| TCP_FIN_WAIT1   | 4  | The active end sends FIN and waits for ACK from the peer end.|
+| TCP_FIN_WAIT2   | 5  | The active end receives ACK of FIN and waits for ACK from the peer end.|
+| TCP_TIME_WAIT   | 6  | The active end receives FIN from the peer end and replies with ACK. After two times of the maximum segment lifetime, the connection is completely released.|
+| TCP_CLOSE       | 7  | Initial/closed state, with no connection.|
+| TCP_CLOSE_WAIT  | 8  | The passive end receives FIN and sends ACK, and waits for FIN from the peer end.|
+| TCP_LAST_ACK    | 9  | The passive end sends FIN and waits for ACK from the peer end.|
+| TCP_LISTEN      | 10 | The server listens and waits for the client to connect.|
+| TCP_CLOSING     | 11 | Both ends send FIN and wait for ACK from each other.  |
   
   ## PacketsType
 
 Defines the type of network probe data packets.
 
-**Since**: 26.0.0
+**Since:** 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
   
@@ -3615,6 +3691,40 @@ Represents the HTTP proxy configuration.
 | exclusionList  | Array\<string\> | No |No|List of the names of hosts that do not use a proxy. Host names can be domain names, IP addresses, or wildcards. The detailed matching rules are as follows:<br>- Domain name matching:<br>  - Exact match: The host name of the proxy server exactly matches any host name in the list.<br>  - Partial match: The host name of the proxy server contains any host name in the list.<br>For example, if **ample.com** is set in the host name list, **ample.com**, **www.ample.com**, and **ample.com:80** are matched, and **www.example.com** and **ample.com.org** are not matched.<br>- IP address matching: The host name of the proxy server exactly matches any IP address in the list.<br>- Both the domain name and IP address are added to the list for matching.<br>- A single asterisk (*) is the only valid wildcard. If the list contains only wildcards, the wildcards match all host names; that is, the HTTP proxy is disabled. A wildcard can only be added independently. It cannot be added to the list together with other domain names or IP addresses. Otherwise, the wildcard does not take effect.<br>- Host names are case insensitive.<br>- Protocol prefixes such as **http** and **https** are ignored during matching.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | username<sup>12+</sup>  | string | No|Yes |Name of the user who uses the proxy.<br>Note: This parameter takes effect only when the password parameter is set.|
 | password<sup>12+</sup>  | string | No| Yes| Password of the user who uses the proxy.<br>Note: The setting takes effect only when the username parameter is set.|
+
+## Socks5DnsStrategy
+
+Defines the DNS query strategy configuration of the SOCKS5 proxy.
+
+**Since:** 26.0.0
+
+**Model constraint**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+| Name            | Value  | Description                    |
+| --------------- | ------ | ------------------------ |
+| SYSTEM_MODE     | 0 | When the SOCKS5 proxy is used, the system performs DNS resolution.|
+| PROXY_MODE      | 1 | When the SOCKS5 proxy is used, the proxy server performs DNS resolution.|
+
+## Socks5Proxy
+
+Defines the SOCKS5 proxy configuration.
+
+**Since:** 26.0.0
+
+**Model constraint**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+| Name   | Type  | Read Only|Optional|Description                     |
+| ------ | ------ | --- |---|------------------------- |
+| host  | string | No | No|Host name of the proxy server.<br>**Note**: If this parameter is set to an empty string, no SOCKS5 proxy is configured.|
+| port  | number | No |No |Host port. Value range: [0, 65535]<br>**Note**: If the parameter value is not within the preceding range, no SOCKS5 proxy is configured.|
+| username | string | No|Yes |Name of the user who uses the proxy.<br>Note: This parameter takes effect only when the password parameter is set.|
+| password | string | No| Yes| Password of the user who uses the proxy.<br>Note: The setting takes effect only when the username parameter is set.|
+| dnsStrategy | [Socks5DnsStrategy](#socks5dnsstrategy) | No| Yes| Whether the system or the proxy server performs DNS resolution.<br>**Note**: If this parameter is not specified, the proxy server performs DNS resolution if the host name has the **socks5h://** prefix, and the system performs DNS resolution otherwise.|
+| exclusionList  | Array\<string\> | No |Yes|List of the names of hosts that do not use a proxy. Host names can be domain names, IP addresses, or wildcards. The detailed matching rules are as follows:<br>- Domain name matching:<br>  - Exact match: The host name of the proxy server exactly matches any host name in the list.<br>  - Partial match: The host name of the proxy server contains any host name in the list.<br>For example, if **"example.com"** is set in the host name list, "example.com", "www.example.com", and "example.com:80" will be matched, but "www.myexample.com" and "myexample.com.org" will not be matched.<br>- IP address matching: The host name of the proxy server exactly matches any IP address in the list.<br>- Both the domain name and IP address are added to the list for matching.<br>- A single asterisk (*) is the only valid wildcard. If the list contains only wildcards, the wildcards match all host names; that is, the HTTP proxy is disabled. A wildcard can only be added independently. It cannot be added to the list together with other domain names or IP addresses. Otherwise, the wildcard does not take effect.<br>- Host names are case insensitive.<br>6. Protocol prefixes such as http, https, socks5, and socks5h are not considered during host name matching.|
 
 ## NetSpecifier
 
@@ -3840,12 +3950,12 @@ Describes the TCP port state information.
 | Name   | Type  | Read Only|Optional|Description                     |
 | ------ | ------ | --- |---|------------------------- |
 | tcpLocalIp    | string | No| No|Local IP address of the TCP network.                      |
-| tcpLocalPort  | number | No| Yes|Local port of the TCP network. The value range is [0, 65535]. The default value is **0**.|
-| tcpRemoteIp   | string | No| Yes|Remote IP address of the TCP network. The default value is **0.0.0.0**. |
-| tcpRemotePort | number | No| Yes|Remote port of the TCP network. The value range is [0, 65535]. The default value is **0**.|
-| tcpUid        | number | No| Yes|UID of the process that listens for the TCP port. The default value is **0**.|
-| tcpPid        | number | No| Yes|UID of the user who listens for the TCP port. The default value is **0**.|
-| tcpState      | [TcpState](#tcpstate24) | No| Yes|TCP network state. The default value is **0**. |
+| tcpLocalPort  | number | No| No|Local port of the TCP network. The value range is \[0, 65535].|
+| tcpRemoteIp   | string | No| No|Remote IP address of the TCP network. |
+| tcpRemotePort | number | No| No|Remote port of the TCP network. The value range is \[0, 65535].|
+| tcpUid        | number | No| No|UID of the user who listens for the TCP port.|
+| tcpPid        | number | No| No|PID of the process that listens for the TCP port.|
+| tcpState      | [TcpState](#tcpstate24) | No| No|TCP network status. |
 
 
 ## UdpNetPortStatesInfo<sup>24+</sup>
@@ -3859,9 +3969,9 @@ Describes the UDP port state information.
 | Name   | Type  | Read Only|Optional|Description                     |
 | ------ | ------ | --- |---|------------------------- |
 | udpLocalIp    | string | No| No|Local IP address of the UDP network.                      |
-| udpLocalPort  | number | No| Yes|Local port of the UDP network. The value range is [0, 65535]. The default value is **0**.|
-| udpUid        | number | No| Yes|UID of the process that listens for the UDP port. The default value is **0**.|
-| udpPid        | number | No| Yes|UID of the user who listens for the UDP port. The default value is **0**.|
+| udpLocalPort  | number | No| No|Local port of the UDP network. The value range is \[0, 65535].|
+| udpUid        | number | No| No|UID of the user who listens for the UDP port.|
+| udpPid        | number | No| No|PID of the process that listens for the UDP port.|
 
 
 ## NetPortStatesInfo<sup>24+</sup>
@@ -3874,15 +3984,15 @@ Describes the information about the TCP and UDP ports that are currently listene
 
 | Name   | Type  | Read Only|Optional|Description                     |
 | ------ | ------ | --- |---|------------------------- |
-| tcpPortStatesInfo | Array\<[TcpNetPortStatesInfo>](#tcpnetportstatesinfo24)\> | No| No| TCP information currently listened for by the system.  |
-| udpPortStatesInfo | Array\<[UdpNetPortStatesInfo>](#udpnetportstatesinfo24)\> | No| No| UDP information currently listened for by the system.  |
+| tcpPortStatesInfo | Array\<[TcpNetPortStatesInfo](#tcpnetportstatesinfo24)\> | No| Yes| TCP information currently listened for by the system.  |
+| udpPortStatesInfo | Array\<[UdpNetPortStatesInfo](#udpnetportstatesinfo24)\> | No| Yes| UDP information currently listened for by the system.  |
   
  
 ## TraceRouteOptions
 
 Defines options for route tracing.
 
-**Since**: 26.0.0
+**Since:** 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
   
@@ -3890,7 +4000,7 @@ Defines options for route tracing.
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| maxJumpNumber | number | No| Yes| Maximum number of jumps. The maximum value is **30**, and the default value is **30**.|
+| maxJumpNumber | number | No| Yes| Maximum number of jumps. The value range is \[1, 30\]. The default value is **30**.|
 | packetsType | [PacketsType](#packetstype) | No| Yes| Type of the data packet used for probe. The default value is **NETCONN_PACKETS_ICMP**.|
   
 
@@ -3898,7 +4008,7 @@ Defines options for route tracing.
 
 Defines the route tracing information.
 
-**Since**: 26.0.0
+**Since:** 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
   
@@ -3915,7 +4025,7 @@ Defines the route tracing information.
 
 Defines the network probe result information.
 
-**Since**: 26.0.0
+**Since:** 26.0.0
 
 **Model restriction**: This API can be used only in the stage model.
   
@@ -3923,5 +4033,5 @@ Defines the network probe result information.
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| lossRate | number | No| No| Packet loss rate. The value ranges from 0 to 100. For example, 100 indicates 100% packet loss, and 50 indicates 50% packet loss.|
-| rtt | number[] | No| No| Round-trip time (RTT), in milliseconds. Multiple probe packets are sent to the target host. The number of probe packets is determined by the **duration** parameter in the [queryProbeResult](#connectionqueryproberesult) API. The array elements are the minimum, average, maximum, and standard deviation of the RTTs of these probe packets, respectively.|
+| lossRate | number | No| No| Packet loss rate. The value range is \[0, 100\]. For example, 100 indicates 100% packet loss, and 50 indicates 50% packet loss.|
+| rtt | number[] | No| No| Round-trip time (RTT), in milliseconds. When multiple probe packets are sent to the target host, the number of probe packets is determined by the **duration** parameter in the [queryProbeResult](#connectionqueryproberesult) API. The array elements are the minimum, average, maximum, and standard deviation of the RTTs of these probe packets, respectively.|

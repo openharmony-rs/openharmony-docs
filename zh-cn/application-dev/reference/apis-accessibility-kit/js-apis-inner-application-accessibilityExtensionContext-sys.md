@@ -47,8 +47,14 @@ class EntryAbility extends AccessibilityExtensionAbility {
 | offset              | string | 否   | 是|设置光标的偏移量，如：'1'。    |
 | spanId              | string | 否   |是 |对超链接文本进行点击操作时文本编号。                |
 | scrollType          | string | 否   | 是|组件滚动类型，包括'fullScreen'（全屏）和'halfScreen'（半屏）。 |
+| injectActionType    | [InjectActionType](./js-apis-accessibility-sys.md#injectactiontype) | 否   | 是|设置注入的动作。<br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。|
+| customAction          | string | 否   | 是| 执行[AccessibilityAction](./js-apis-accessibility-sys.md#accessibilityaction).EXECUTE_CUSTOM_ACTION时配置，表示自定义操作的名称。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| accessibilityFocusScene          | [AccessibilityFocusScene](./js-apis-accessibility-sys.md#accessibilityfocusscene) | 否   | 是| 执行[AccessibilityAction](./js-apis-accessibility-sys.md#accessibilityaction).ACCESSIBILITY_FOCUS时配置，用于设置无障碍聚焦的场景。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
-例如：选中文本输入框中index从0到7的字符时，executeAction(AccessibilityAction.SET_SELECTION, parameter)方法设置的参数如下:
+**示例：**
+
+选中文本输入框中index从0到7的字符时，executeAction(AccessibilityAction.SET_SELECTION, parameter)方法设置的参数如下:
+
 ```ts
 let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForWard: true }
 ```
@@ -133,7 +139,11 @@ type FocusCondition = 'forward' | 'backward' | 'findLast' | 'getForwardScrollAnc
 | result | [FocusMoveResultCode](./js-apis-accessibility-sys.md#focusmoveresultcode23)  | 否 | 否 | 查询无障碍节点返回结果类型。|
 
 
-## startAbility<sup>12+</sup>
+## AccessibilityExtensionContext
+
+辅助功能扩展的上下文环境。需要通过AccessibilityExtensionAbility子类实例获取AccessibilityExtensionContext的实例。
+
+### startAbility<sup>12+</sup>
 
 startAbility(want: Want): Promise\<void>
 
@@ -213,7 +223,7 @@ export default class AccessibilityManager {
 }
 ```
 
-## AccessibilityExtensionContext.getElements<sup>18+</sup>
+### getElements<sup>18+</sup>
 
 getElements(windowId: number, elementId?: number): Promise<Array&lt;AccessibilityElement&gt;>
 
@@ -292,7 +302,7 @@ export default class AccessibilityManager {
 }
 ```
 
-## AccessibilityExtensionContext.getDefaultFocusedElementIds<sup>18+</sup>
+### getDefaultFocusedElementIds<sup>18+</sup>
 
 getDefaultFocusedElementIds(windowId: number): Promise<Array&lt;number&gt;>
 
@@ -368,7 +378,7 @@ export default class AccessibilityManager {
 }
 ```
 
-## AccessibilityExtensionContext.holdRunningLockSync<sup>20+</sup>
+### holdRunningLockSync<sup>20+</sup>
 
 holdRunningLockSync(): void
 
@@ -431,7 +441,7 @@ export default class AccessibilityManager {
 }
 ```
 
-## AccessibilityExtensionContext.unholdRunningLockSync<sup>20+</sup>
+### unholdRunningLockSync<sup>20+</sup>
 
 unholdRunningLockSync(): void
 
@@ -494,13 +504,13 @@ export default class AccessibilityManager {
 }
 ```
 
-## AccessibilityExtensionContext.on('preDisconnect')<sup>20+</sup>
+### on('preDisconnect')<sup>20+</sup>
 
 on(type: 'preDisconnect', callback: Callback&lt;void&gt;): void
 
 向无障碍服务注册回调函数，在无障碍服务关闭该无障碍扩展服务前会执行该回调函数。使用callback异步回调。
 
-此注册函数需要与[notifyDisconnect](#accessibilityextensioncontextnotifydisconnect20)配合使用，如果不调用[notifyDisconnect](#accessibilityextensioncontextnotifydisconnect20)，则默认等待30秒后，无障碍扩展服务会自动关闭。
+此注册函数需要与[notifyDisconnect](#notifydisconnect20)配合使用，如果不调用[notifyDisconnect](#notifydisconnect20)，则默认等待30秒后，无障碍扩展服务会自动关闭。
 
 **需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
@@ -568,7 +578,7 @@ export default class AccessibilityManager {
 }
 ```
 
-## AccessibilityExtensionContext.off('preDisconnect')<sup>20+</sup>
+### off('preDisconnect')<sup>20+</sup>
 
 off(type: 'preDisconnect', callback?: Callback&lt;void&gt;): void
 
@@ -585,7 +595,7 @@ off(type: 'preDisconnect', callback?: Callback&lt;void&gt;): void
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 监听事件名，固定为‘preDisconnect’，即无障碍扩展服务即将关闭事件。 |
-| callback | Callback&lt;void&gt; | 否 |回调函数，取消指定无障碍扩展服务即将关闭时的回调。需与[on('preDisconnect')](#accessibilityextensioncontextonpredisconnect20)的callback一致。缺省时，表示注销所有已注册事件。|
+| callback | Callback&lt;void&gt; | 否 |回调函数，取消指定无障碍扩展服务即将关闭时的回调。需与[on('preDisconnect')](#onpredisconnect20)的callback一致。缺省时，表示注销所有已注册事件。|
 
 **错误码：**
 
@@ -640,13 +650,13 @@ export default class AccessibilityManager {
 }
 ```
 
-## AccessibilityExtensionContext.notifyDisconnect<sup>20+</sup>
+### notifyDisconnect<sup>20+</sup>
 
 notifyDisconnect(): void
 
 通知无障碍服务可以关闭该无障碍扩展服务。
 
-此函数需要与注册预关闭接口[on('preDisconnect')](#accessibilityextensioncontextonpredisconnect20)配合使用，如果没有调用过注册预关闭函数，直接调用此函数不生效。
+此函数需要与注册预关闭接口[on('preDisconnect')](#onpredisconnect20)配合使用，如果没有调用过注册预关闭函数，直接调用此函数不生效。
 
 **需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
@@ -705,9 +715,9 @@ export default class AccessibilityManager {
 }
 ```
 
-## getAccessibilityFocusedElement<sup>20+</sup>
+### getAccessibilityFocusedElement<sup>20+</sup>
 
-getAccessibilityFocusedElement(): Promise\<AccessibilityElement>;
+getAccessibilityFocusedElement(): Promise\<AccessibilityElement>
 
 获取当前获得焦点的元素。使用Promise异步回调。
 
@@ -776,9 +786,9 @@ export default class AccessibilityManager {
 }
 ```
 
-## getRootInActiveWindow<sup>20+</sup>
+### getRootInActiveWindow<sup>20+</sup>
 
-getRootInActiveWindow(windowId ?: number): Promise\<[AccessibilityElement](#accessibilityelement)>;
+getRootInActiveWindow(windowId ?: number): Promise\<AccessibilityElement>
 
 获取活动窗口根元素。使用Promise异步回调。
 
@@ -853,9 +863,9 @@ export default class AccessibilityManager {
 }
 ```
 
-## getAccessibilityWindowsSync<sup>20+</sup>
+### getAccessibilityWindowsSync<sup>20+</sup>
 
-getAccessibilityWindowsSync(displayId?: number): Array\<[AccessibilityElement](#accessibilityelement)>
+getAccessibilityWindowsSync(displayId?: number): Array\<AccessibilityElement>
 
 获取窗口列表。
 
@@ -934,7 +944,7 @@ export default class AccessibilityManager {
 
 ## AccessibilityElement
 
-无障碍节点元素。在调用 **AccessibilityElement** 的 API 之前，应该调用 [AccessibilityExtensionContext.getAccessibilityFocusedElement()](#getaccessibilityfocusedelement20) 或 [AccessibilityExtensionContext.getRootInActiveWindow()](#getrootinactivewindow20) 来获取一个 **AccessibilityElement** 实例。
+无障碍节点元素。在调用AccessibilityElement的接口之前，应该调用[AccessibilityExtensionContext.getAccessibilityFocusedElement](#getaccessibilityfocusedelement20)或[AccessibilityExtensionContext.getRootInActiveWindow](#getrootinactivewindow20)来获取一个AccessibilityElement实例。
 
 **系统接口**：此接口为系统接口。
 
@@ -981,7 +991,7 @@ export default class AccessibilityManager {
 | startIndex<sup>20+</sup>           | number                                                             | 否  | 是  | 屏幕上第一个列表项的索引。<br>默认值：0。|
 | text<sup>20+</sup>                 | string                                                             | 否  | 是  | 元素的文本内容。|
 | textLengthLimit<sup>20+</sup>      | number                                                             | 否  | 是  | 元素的最大文本长度。|
-| textMoveUnit<sup>20+</sup>         | [accessibility.TextMoveUnit](js-apis-accessibility.md#textmoveunit)| 否  | 是  | 文本朗读时的移动单位。<br>默认值：0。|
+| textMoveUnit<sup>20+</sup>         | [accessibility.TextMoveUnit](js-apis-accessibility.md#textmoveunit)| 否  | 是  | 文本朗读时的移动单位。<br>默认值：char。|
 | triggerAction<sup>20+</sup>        | [accessibility.Action](js-apis-accessibility.md#action)            | 否  | 是  | 触发元素事件的操作。|
 | type<sup>20+</sup>                 | [WindowType](js-apis-inner-application-accessibilityExtensionContext.md#windowtype)                                          | 否  | 是  | 元素的窗口类型。|
 | valueMax<sup>20+</sup>             | number                                                             | 否  | 是  | 最大值。<br>默认值：0。|
@@ -1009,6 +1019,10 @@ export default class AccessibilityManager {
 | clip<sup>20+</sup>  | boolean                                                            | 否  | 是  | 组件是否需要裁剪。true表示需要裁剪，false表示不需要裁剪。|
 | parentId<sup>20+</sup>             | number                                                             | 否  | 是  | 组件的父元素ID。|
 | childrenIds<sup>20+</sup>             | Array\<number>                                                             | 否  | 是  | 组件的子元素ID列表。|
+| isEssential             | boolean              | 否   | 是   | 表示元素对用户是否是必需的。true表示元素是必需的，false表示元素不是必需的，默认值为false。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| belongTreeId             | number              | 否   | 是   | 表示元素所属的组件树ID。默认值为-1。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| childrenTreeId             | number              | 否   | 是   | 表示元素的子组件树ID。默认值为-1。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| customActions             | Array\<string>                                                             | 否  | 是  | 元素支持的自定义操作列表。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 **示例：**
 ```ts
@@ -1170,10 +1184,10 @@ findElement(type: 'elementId', condition: number): Promise\<AccessibilityElement
 import { AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// elementId为10
+// elementId为10。
 let condition = 10;
 
-// rootElement是AccessibilityElement的实例
+// rootElement是AccessibilityElement的实例。
 rootElement.findElement('elementId', condition).then((data: AccessibilityElement) => {
   console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -1185,7 +1199,7 @@ rootElement.findElement('elementId', condition).then((data: AccessibilityElement
 
 findElement(type: 'textType', condition: string): Promise\<Array\<AccessibilityElement>>
 
-根据节点配置的accessibilityTextHint无障碍文本类型查询所有节点元素，使用Promise异步回调。
+根据节点配置的accessibilityTextHint无障碍文本类型查询所有节点元素。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1218,10 +1232,10 @@ findElement(type: 'textType', condition: string): Promise\<Array\<AccessibilityE
 import { AccessibilityElement } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// condition的内容需要与目标组件accessibilityTextHint属性的type字段值保持一致
+// condition的内容需要与目标组件accessibilityTextHint属性的type字段值保持一致。
 let condition = 'location'; 
 
-// rootElement是AccessibilityElement的实例
+// rootElement是AccessibilityElement的实例。
 rootElement.findElement('textType', condition).then((data: AccessibilityElement[]) => {
   console.info(`succeeded in finding element, ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -1233,7 +1247,7 @@ rootElement.findElement('textType', condition).then((data: AccessibilityElement[
 
 getCursorPosition(): Promise\<number>
 
-获取文本组件中光标位置，使用Promise异步回调。
+获取文本组件中光标位置。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1250,7 +1264,7 @@ getCursorPosition(): Promise\<number>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// rootElement是AccessibilityElement的实例
+// rootElement是AccessibilityElement的实例。
 rootElement.getCursorPosition().then((data: number) => {
   console.info(`succeeded in getting cursor position, ${data}`);
 }).catch((err: BusinessError) => {
@@ -1262,7 +1276,7 @@ rootElement.getCursorPosition().then((data: number) => {
 
 getCursorPosition(callback: AsyncCallback\<number>): void
 
-获取文本组件中光标位置，使用callback异步回调。
+获取文本组件中光标位置。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1279,7 +1293,7 @@ getCursorPosition(callback: AsyncCallback\<number>): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// rootElement是AccessibilityElement的实例
+// rootElement是AccessibilityElement的实例。
 rootElement.getCursorPosition((err: BusinessError, data: number) => {
   if (err && err.code) {
     console.error(`failed to get cursor position, Code is ${err.code}, message is ${err.message}`);
@@ -1296,7 +1310,7 @@ executeAction(action: AccessibilityAction, parameters?: Parameter): Promise\<voi
 
 根据action指定的操作类型和parameters传入的参数，执行特定操作。使用Promise异步回调。
 
-**需要权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **系统接口**：此接口为系统接口。
 
@@ -1326,55 +1340,60 @@ executeAction(action: AccessibilityAction, parameters?: Parameter): Promise\<voi
 | 9300005 | This action is not supported.            |
 
 **示例：**
-```ts
-// 无参数Action示例：
-import { AccessibilityAction } from '@kit.AccessibilityKit';
 
-// rootElement是AccessibilityElement的实例
-// Action描述中无明确要求的，均为无参数Action
-try {
-  await rootElement.executeAction(AccessibilityAction.CLICK);
-  console.info(`succeeded in performing action CLICK`);
-}catch (error){
-  console.error(`failed to perform action CLICK, Code is ${error?.code}, message is ${error?.message}`);
-}
-```
+- 无参数Action。
 
+  ```ts
+  // 无参数Action示例：
+  import { AccessibilityAction } from '@kit.AccessibilityKit';
 
+  // rootElement是AccessibilityElement的实例。
+  // Action描述中无明确要求的，均为无参数Action。
+  try {
+    await rootElement.executeAction(AccessibilityAction.CLICK);
+    console.info(`succeeded in performing action CLICK`);
+  }catch (error){
+    console.error(`failed to perform action CLICK, Code is ${error?.code}, message is ${error?.message}`);
+  }
+  ```
 
-```ts
-// 有参数Action示例：
-import { AccessibilityAction, Parameter } from '@kit.AccessibilityKit';
+- 有参数Action（setSelection）。
 
-try {
-  // selectTextBegin: 表示选择起始位置
-  // selectTextEnd: 表示选择结束位置
-  // selectTextInForWard: true表示为前光标，false表示为后光标
-  let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForWard: true }
-  // rootElement是AccessibilityElement的实例
-  // setSelection示例代码
-  rootElement.executeAction(AccessibilityAction.SET_SELECTION, p);
-  console.info(`succeeded in performing action SET_SELECTION`);
-}catch (error){
-  console.error(`failed to perform action SET_SELECTION, Code is ${error?.code}, message is ${error?.message}`);
-}
-```
+  ```ts
+  // 有参数Action示例：
+  import { AccessibilityAction, Parameter } from '@kit.AccessibilityKit';
 
-```ts
-// 有参数Action示例：
-import { AccessibilityAction, Parameter } from '@kit.AccessibilityKit';
+  try {
+    // selectTextBegin：表示选择起始位置。
+    // selectTextEnd：表示选择结束位置。
+    // selectTextInForWard：true表示为前光标，false表示为后光标。
+    let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForWard: true }
+    // rootElement是AccessibilityElement的实例。
+    // setSelection示例代码。
+    rootElement.executeAction(AccessibilityAction.SET_SELECTION, p);
+    console.info(`succeeded in performing action SET_SELECTION`);
+  }catch (error){
+    console.error(`failed to perform action SET_SELECTION, Code is ${error?.code}, message is ${error?.message}`);
+  }
+  ```
 
-try {
-  // offset: 表示光标的设置位置
-  let p : Parameter = { offset: '1' }
-  // rootElement是AccessibilityElement的实例
-  // setCursorPosition示例代码
-  rootElement.executeAction(AccessibilityAction.SET_CURSOR_POSITION, p);
-  console.info(`succeeded in performing action SET_CURSOR_POSITION`);
-}catch (error){
-  console.error(`failed to perform action SET_CURSOR_POSITION, Code is ${error?.code}, message is ${error?.message}`);
-}
-```
+- 有参数Action（setCursorPosition）。
+
+  ```ts
+  // 有参数Action示例：
+  import { AccessibilityAction, Parameter } from '@kit.AccessibilityKit';
+
+  try {
+    // offset：表示光标的设置位置。
+    let p : Parameter = { offset: '1' }
+    // rootElement是AccessibilityElement的实例。
+    // setCursorPosition示例代码。
+    rootElement.executeAction(AccessibilityAction.SET_CURSOR_POSITION, p);
+    console.info(`succeeded in performing action SET_CURSOR_POSITION`);
+  }catch (error){
+    console.error(`failed to perform action SET_CURSOR_POSITION, Code is ${error?.code}, message is ${error?.message}`);
+  }
+  ```
 
 ### getParent<sup>20+</sup>
 
@@ -1382,11 +1401,11 @@ getParent(): Promise\<AccessibilityElement>
 
 获取无障碍节点元素的父元素。使用Promise异步回调。
 
-**需要权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **系统接口**：此接口为系统接口。
 
-**系统能力:** SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **返回值：**
 
@@ -1426,11 +1445,11 @@ getChildren(): Promise\<Array\<AccessibilityElement>>
 
 获取元素的子元素列表。使用Promise异步回调。
 
-**需要权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **系统接口**：此接口为系统接口。
 
-**系统能力:** SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **返回值：**
 
@@ -1470,11 +1489,11 @@ getRoot(): Promise\<AccessibilityElement>
 
 获取活动窗口中的根元素。使用Promise异步回调。
 
-**需要权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **系统接口**：此接口为系统接口。
 
-**系统能力:** SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **返回值：**
 
@@ -1513,11 +1532,11 @@ findElementByContent(condition: string): Promise\<Array\<AccessibilityElement>>
 
 根据内容查找元素。使用Promise异步回调。
 
-**需要权限:** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+**需要权限：** ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
 **系统接口**：此接口为系统接口。
 
-**系统能力:** SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
@@ -1578,7 +1597,7 @@ findElementByFocusDirection(condition: FocusDirection): Promise\<AccessibilityEl
 
 **系统接口**：此接口为系统接口。
 
-**系统能力:** SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
@@ -1606,7 +1625,7 @@ findElementByFocusDirection(condition: FocusDirection): Promise\<AccessibilityEl
 
 ```ts
 // Page.ets
-// Click TextInput and then it is the accessibility focus element, up direction element is Text#connect
+// 点击TextInput使其成为无障碍焦点元素，向上方向的下一个焦点元素是Text#connect。
   build() {
     Text('Connect')
         .id('connect')
@@ -1642,7 +1661,7 @@ findElementsByAccessibilityHintText(condition: string): Promise\<Array\<Accessib
 
 **系统接口**：此接口为系统接口。
 
-**系统能力:** SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
@@ -1708,7 +1727,7 @@ findElementById(condition: number): Promise\<AccessibilityElement>
 
 **系统接口**：此接口为系统接口。
 
-**系统能力:** SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
@@ -1736,7 +1755,7 @@ findElementById(condition: number): Promise\<AccessibilityElement>
 
 ```ts
 // Page.ets
-// Click TextInput and then it is the accessibility focus element
+// 点击TextInput使其成为无障碍焦点元素。
   build() {
     Text('Connect')
         .id('connect')
@@ -1772,7 +1791,7 @@ findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise\<Fo
 
 **需要权限**：ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
-**系统能力:** SystemCapability.BarrierFree.Accessibility.Core
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
@@ -1826,3 +1845,14 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 | 名称                   | 类型                                                              | 只读 | 可选 | 说明              |
 |----------------------|--------------------------------------------------------------------|------|------|-------------------|
 | accessibilityStateDescription<sup>23+</sup> | string                                      | 否   | 是   | 元素的自定义无障碍状态播报文本信息。<br>**模型约束**：此接口仅可在Stage模型下使用。|
+| isEssential             | boolean              | 否   | 是   | 表示元素对用户是否是必需的。true表示元素是必需的，false表示元素不是必需的，默认值为false。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| belongTreeId             | number              | 否   | 是   | 表示元素所属的组件树ID。默认值为-1。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| childrenTreeId             | number              | 否   | 是   | 表示元素的子组件树ID。默认值为-1。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| currentItem             | [AccessibilityGrid](js-apis-inner-application-accessibilityExtensionContext-sys.md#accessibilitygrid20)              | 否   | 是   | 表示当前元素所在网格中的位置。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| span             | [AccessibilitySpan](js-apis-inner-application-accessibilityExtensionContext-sys.md#accessibilityspan20)[]              | 否   | 是   | 表示元素在网格布局中所跨越的行列范围数组。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| childrenIds             |      Array&lt;number&gt;         | 否   | 是   | 表示元素的子组件ID。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| parentId             | number              | 否   | 是   | 表示元素的父组件ID。默认值为-1。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| mainWindowId             | number              | 否   | 是   | 表示元素的主窗口ID。默认值为-1。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| accessibilityVisible             | boolean              | 否   | 是   | 表示元素是否是无障碍可见的。true表示元素是无障碍可见的，false表示元素是无障碍不可见的，默认值为true。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| navDestinationId             | number              | 否   | 是   | 表示元素所关联的导航目标ID。默认值为-1。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| customActions | Array\<string>                     | 否   | 是   | 元素支持的自定义操作列表。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|

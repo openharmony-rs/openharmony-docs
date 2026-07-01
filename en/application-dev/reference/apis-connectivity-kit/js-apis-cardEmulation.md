@@ -117,7 +117,7 @@ Before developing an application related to HCE, you must declare NFC-related at
 >1. The **actions** field must contain **ohos.nfc.cardemulation.action.HOST_APDU_SERVICE** and cannot be changed.
 >2. When declaring an AID (in compliance with ISO/IEC 7816-4), ensure that **name** is set to **payment-aid** or **other-aid**. Incorrect setting will cause a parsing failure.
 >3. The **name** field of **requestPermissions** must be **ohos.permission.NFC_CARD_EMULATION** and cannot be changed.
->4. Lite wearables support only the [FA model](../../application-models/ability-terminology.md#fa-model), with attribute configurations and API invocation methods differing from those of other device types. Refer to the example code for detailed implementations.
+>4. Lite wearables support only the [FA Model](../../application-models/ability-terminology.md#fa-model), with attribute configurations and API invocation methods differing from those of other device types. Refer to the example code for detailed implementations.
 
 ## Modules to Import
 
@@ -229,7 +229,7 @@ Checks whether the device supports HCE.
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| ID| Error Message |
+| Error Code| Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -286,7 +286,7 @@ Checks whether an application is the default application of the specified servic
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| ID| Error Message |
+| Error Code| Error Message |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
@@ -346,6 +346,68 @@ Starts HCE, including enabling this application to run in the foreground prefere
 | ------- | -------------------------------------- |
 | boolean | Returns **true** if HCE is started or has been started; returns **false** otherwise.|
 
+**ArkTS example**
+
+For details, see the example of [on](#on8).
+
+**JS example**
+
+```xml
+<!-- Applicable to lite wearables -->
+<!-- xxx.hml -->
+<div class="container">
+    <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+        Test
+    </text>
+    <input type="button" value="startHCE" style="width: 240px; height: 50px; margin: 5px;" onclick="onClick"></input>
+</div>
+```
+
+```css
+/* Applicable to lite wearables */
+/* xxx.css */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
+}
+.title {
+  font-size: 100px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+```
+
+```js
+// Applicable to lite wearables
+// xxx.js
+import cardEmulation from '@ohos.nfc.cardEmulation';
+
+export default  {
+    data: {
+        fontSize: '30px',
+        fontColor: '#FF1AFF00',
+    },
+    onClick() {
+        var hceService = new cardEmulation.HceService();
+        hceService.startHCE([
+            "F0010203040506", "A0000000041010"
+        ])
+    }
+}
+```
+
 ### start<sup>9+</sup>
 
 start(elementName: [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md), aidList: string[]): void
@@ -369,7 +431,7 @@ Starts HCE, including enabling this application to run in the foreground prefere
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| ID| Error Message |
+| Error Code| Error Message |
 | ------- | -------|
 |201 | Permission denied.                 |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
@@ -395,9 +457,65 @@ Stops HCE, including exiting the current application from the foreground, releas
 | ------- | -------------------------------------- |
 | boolean | **true** if HCE is stopped or disabled; **false** otherwise.|
 
-**Example**
+**ArkTS example**
 
 For details, see the example of [on](#on8).
+
+**JS example**
+
+```xml
+<!-- Applicable to lite wearables -->
+<!-- xxx.hml -->
+<div class="container">
+    <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+        Test
+    </text>
+    <input type="button" value="stopHCE" style="width: 240px; height: 50px; margin: 5px;" onclick="onClick"></input>
+</div>
+```
+
+```css
+/* Applicable to lite wearables */
+/* xxx.css */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
+}
+.title {
+  font-size: 100px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+```
+
+```js
+// Applicable to lite wearables
+// xxx.js
+import cardEmulation from '@ohos.nfc.cardEmulation';
+
+export default  {
+    data: {
+        fontSize: '30px',
+        fontColor: '#FF1AFF00',
+    },
+    onClick() {
+        var hceService = new cardEmulation.HceService();
+        hceService.stopHCE();
+    }
+}
+```
 
 ### stop<sup>9+</sup>
 
@@ -421,7 +539,7 @@ Stops HCE, including canceling the subscription of APDU data, exiting this appli
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| ID| Error Message |
+| Error Code| Error Message |
 | ------- | -------|
 |201 | Permission denied.                 |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
@@ -451,23 +569,22 @@ Subscribes to events indicating receiving of APDUs from the peer card reader. Th
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| ID| Error Message |
+| Error Code| Error Message |
 | ------- | -------|
 |201 | Permission denied.                 |
 |401 | Invalid parameter.                 |
 |801 | Capability not supported.          |
 
-**Example**
+**ArkTS example**
 ```js
 // Applicable to devices other than lite wearables
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { cardEmulation } from '@kit.ConnectivityKit';
 import { AsyncCallback } from '@kit.BasicServicesKit';
-import { ElementName } from './bundleManager/ElementName'
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { bundleManager, AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
 let hceService: cardEmulation.HceService = new cardEmulation.HceService();
-let element: ElementName;
+let element: bundleManager.ElementName;
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, param: AbilityConstant.LaunchParam) {
@@ -487,11 +604,11 @@ export default class EntryAbility extends UIAbility {
     hilog.info(0x0000, 'testHce', '%{public}s', 'Ability onDestroy');
     hceService.stop(element);
   }
-  // Implement other lifecycle functions as demanded.
+  // Other functions in the lifecycle
 }
 ```
 
-**Example**
+**JS example**
 <!--code_no_check_fa-->
 ```js
 // Applicable to lite wearables
@@ -529,7 +646,7 @@ export default {
   },
   onDestroy() {
   }
-  // Implement other lifecycle functions as demanded.
+  // Other functions in the lifecycle
 }
 ```
 
@@ -550,13 +667,13 @@ Unsubscribes from events indicating receiving of APDUs from the peer card reader
 | Name  | Type                   | Mandatory| Description                                        |
 | -------- | ----------------------- | ---- | -------------------------------------------- |
 | type     | string                  | Yes  | Event type. It has a fixed value of **hceCmd**.                        |
-| callback | AsyncCallback\<number[]> | No  | Event callback. Each number is represented in hexadecimal notation, with values ranging from 0x00 to 0xFF.|
+| callback | AsyncCallback\<number[]> | No  | Event callback. Each number is represented in hexadecimal notation, with values ranging from 0x00 to 0xFF. If this parameter is not set, this API unregisters the callback for the specified **type**.|
 
 **Error codes**
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| ID| Error Message |
+| Error Code| Error Message |
 | ------- | -------|
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -567,11 +684,10 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { cardEmulation } from '@kit.ConnectivityKit';
 import { AsyncCallback } from '@kit.BasicServicesKit';
-import { ElementName } from './bundleManager/ElementName'
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { bundleManager, AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
 let hceService: cardEmulation.HceService = new cardEmulation.HceService();
-let element: ElementName;
+let element: bundleManager.ElementName;
 const apduCallback: AsyncCallback<number[]> = (err, data) => {
   // Implement data processing and handle exceptions.
   console.info("AsyncCallback got apdu data");
@@ -592,7 +708,7 @@ export default class EntryAbility extends UIAbility {
     hceService.off('hceCmd', apduCallback);
     hceService.stop(element);
   }
-  // Implement other lifecycle functions as demanded.
+  // Other functions in the lifecycle
 }
 ```
 
@@ -614,6 +730,75 @@ Sends a response to the peer card reader.
 | Name      | Type    | Mandatory| Description                                              |
 | ------------ | -------- | ---- | -------------------------------------------------- |
 | responseApdu | number[] | Yes  | Response APDU sent to the peer card reader. The value consists of hexadecimal numbers ranging from **0x00** to **0xFF**.|
+
+**ArkTS example**
+
+For details, see the example of [transmit](#transmit9).
+
+**JS example**
+
+```xml
+<!-- Applicable to lite wearables -->
+<!-- xxx.hml -->
+<div class="container">
+    <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+        Test
+    </text>
+    <input type="button" value="sendResponse" style="width: 240px; height: 50px; margin: 5px;" onclick="onClick"></input>
+</div>
+```
+
+```css
+/* Applicable to lite wearables */
+/* xxx.css */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
+}
+.title {
+  font-size: 100px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+```
+
+```js
+// Applicable to lite wearables
+// xxx.js
+import cardEmulation from '@ohos.nfc.cardEmulation';
+
+export default  {
+    data: {
+        fontSize: '30px',
+        fontColor: '#FF1AFF00',
+    },
+    onClick() {
+        var hceService = new cardEmulation.HceService();
+        hceService.on("hceCmd", (err, res) => {
+            if(err.data === 0) {
+                console.info('callback => Operation hceCmd succeeded. Data: ${JSON.stringify(res)}');
+                hceService.sendResponse([0x00,0xa4,0x04,0x00,
+                    0x0e,0x32,0x50,0x41,0x59,0x2e,0x53,0x59,0x53,0x2e,0x44,0x44,
+                    0x46,0x30,0x31,0x00]);
+            } else {
+                console.info('callback => Operation hceCmd failed. Cause: ${JSON.stringify(err.data)}');
+            }
+        })
+    }
+}
+```
 
 ### transmit<sup>9+</sup>
 
@@ -643,7 +828,7 @@ Transmits an APDU to the peer card reader. This API uses a promise to return the
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| ID| Error Message |
+| Error Code| Error Message |
 | ------- | -------|
 |201 | Permission denied.                 |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
@@ -707,7 +892,7 @@ Sends APDU data to the peer card reader. The application can call this API only 
 
 For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 
-| ID| Error Message |
+| Error Code| Error Message |
 | ------- | -------|
 |201 | Permission denied.                 |
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |

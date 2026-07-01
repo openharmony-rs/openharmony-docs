@@ -10,7 +10,9 @@
 
 > **说明：**
 > 
-> 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ArkUI框架对以下组件实现了默认的拖拽能力，支持对数据的拖出或拖入响应。开发者也可以通过实现通用拖拽事件来自定义拖拽响应。
 
@@ -153,11 +155,12 @@ dragPreviewOptions(value: DragPreviewOptions, options?: DragInteractionOptions):
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 27%; 8%; 8%; 37%-->
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | --- |
 | mode | [DragPreviewMode](#dragpreviewmode11枚举说明) &nbsp;\|&nbsp; Array<[DragPreviewMode](#dragpreviewmode11枚举说明)><sup>12+</sup> | 否 | 是 | 表示拖拽过程中背板图处理模式。<br/>默认值：DragPreviewMode.AUTO<br/>当组件同时设置DragPreviewMode.AUTO和其它枚举值时，以DragPreviewMode.AUTO为准，其它枚举值设置无效。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | numberBadge<sup>12+</sup> | boolean &nbsp;\|&nbsp; number | 否 | 是 | 控制数量角标是否显示，或强制设置显示的数量。当设置数量角标时取值范围为[0，2<sup>31</sup>-1]，超过取值范围时会按默认状态处理。当设置为浮点数时，只显示整数部分。<br/>**说明：** <br>在多选拖拽场景，需通过该接口设置拖拽对象的数量。<br/>默认值：true。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| modifier<sup>12+</sup> | [ImageModifier](#imagemodifier12)| 否 | 是 | 用于配置拖拽背板图的样式Modifier对象，可使用图片组件所支持的属性和样式来配置背板图样式(参考示例6)，当前支持透明度，阴影，背景模糊度，圆角。文本拖拽只支持默认效果，不支持通过modifier进行自定义。<br/>1.透明度<br/>通过[opacity](ts-universal-attributes-opacity.md#opacity)设置不透明度，不透明度的取值范围为0-1。设置0或不设置时采用背板图透明度的默认值0.95，设置1或异常值时不透明。<br/>2.阴影<br/>通过[shadow](ts-universal-attributes-image-effect.md#shadow)设置阴影。<br/>3.背景模糊度<br/>通过[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11)或[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle9)设置背景模糊度，如果两者同时设置，以后设置的属性为准。<br/>4.圆角<br/>通过[border](ts-universal-attributes-border.md#border)或[borderRadius](ts-universal-attributes-border.md#borderradius)设置圆角，当同时在mode和modifier中设置圆角，mode设置的圆角显示优先级低于modifier设置。<br/>默认值：空，无法修改属性。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| modifier<sup>12+</sup> | [ImageModifier](#imagemodifier12)| 否 | 是 | 用于配置拖拽背板图的样式Modifier对象，可使用图片组件所支持的属性和样式来配置背板图样式（参考示例6），当前支持透明度，阴影，背景模糊度，圆角，材质效果。文本拖拽只支持默认效果，不支持通过modifier进行自定义。<br/>1.透明度。<br/>通过[opacity](ts-universal-attributes-opacity.md#opacity)设置不透明度，不透明度的取值范围为0-1。设置0或不设置时采用背板图透明度的默认值0.95，设置1或异常值时不透明。<br/>2.阴影。<br/>通过[shadow](ts-universal-attributes-image-effect.md#shadow)设置阴影。<br/>3.背景模糊度。<br/>通过[backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11)或[backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle9)设置背景模糊度，如果两者同时设置，以后设置的属性为准。<br/>4.圆角。<br/>通过[border](ts-universal-attributes-border.md#border)或[borderRadius](ts-universal-attributes-border.md#borderradius)设置圆角，当同时在mode和modifier中设置圆角，mode设置的圆角显示优先级低于modifier设置。<br/>5.材质效果，从API版本26.0.0开始支持。<br>通过[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)设置系统材质效果。<br/>默认值：空，拖拽背板不设置背板图样式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**说明：** <br>1.若节点已设置背景模糊或材质效果，直接用作拖拽预览会导致截图包含这些效果，与拖拽modifier属性冲突。建议使用[dragPreview](#dragpreview11)自定义不包含背景模糊和材质效果的预览。<br>2.[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial)的[colorInvert](../arkts-apis-uimaterial.md#immersiveoptions)参数在拖拽中不生效。|
 | sizeChangeEffect<sup>19+</sup> | [DraggingSizeChangeEffect](#draggingsizechangeeffect19枚举说明)<sup>19+</sup> | 否 | 是 | 用于选择长按浮起图与拖拽预览图过渡效果。<br/>默认值：DraggingSizeChangeEffect.DEFAULT。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
 
 ## DragPreviewMode<sup>11+</sup>枚举说明
@@ -195,6 +198,7 @@ dragPreviewOptions(value: DragPreviewOptions, options?: DragInteractionOptions):
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 25%; 15%; 8%; 8%; 44%-->
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | ---- |
 | isMultiSelectionEnabled | boolean | 否 | 是 | 表示拖拽过程中背板图是否支持多选聚拢效果。true表示支持多选聚拢效果，false表示不支持多选聚拢效果。该参数只在[Grid](ts-container-grid.md)和[List](ts-container-list.md)组件中的[GridItem](ts-container-griditem.md)组件和[ListItem](ts-container-listitem.md)组件生效。<br/>当一个item组件设置为多选拖拽时，该组件的子组件不可拖拽。聚拢组件预览图设置的优先级为[dragPreview](#dragpreview11)中的string，dragPreview中的PixelMap，组件自截图，不支持dragPreview中的Builder形式。<br/>不支持组件绑定[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu12)中参数存在isShown的模式。<br/>默认值：false<br/>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -205,7 +209,7 @@ dragPreviewOptions(value: DragPreviewOptions, options?: DragInteractionOptions):
 
 ## UniformDataType
 
-type UniformDataType = UniformDataType
+type UniformDataType = import('../api/@ohos.data.uniformTypeDescriptor').default.UniformDataType
 
 标准化数据类型。
 
@@ -215,11 +219,11 @@ type UniformDataType = UniformDataType
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| [UniformDataType](../../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype) | 标准化数据类型。|
+| import('../api/@ohos.data.uniformTypeDescriptor').default.[UniformDataType](../../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype) | 标准化数据类型。|
 
 ## ImageModifier<sup>12+</sup>
 
-type ImageModifier = ImageModifier
+type ImageModifier = import('../api/arkui/ImageModifier').ImageModifier
 
 图片组件modifier对象。
 
@@ -229,7 +233,7 @@ type ImageModifier = ImageModifier
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| [ImageModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 图片组件modifier对象。|
+| import('../api/arkui/ImageModifier').[ImageModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 图片组件modifier对象。|
 
 ## 示例
 ### 示例1（允许拖拽和落入）
@@ -1295,3 +1299,90 @@ struct CustomCard {
 ```
 
 ![customComponentAllowDrop.gif](figures/customComponentAllowDrop.gif)
+
+### 示例13（设置背板图材质效果）
+
+该示例通过配置[ImageModifier](#imagemodifier12)中的[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)属性，设置拖拽背板的材质效果。
+
+从API版本26.0.0开始，[DragPreviewOptions](#dragpreviewoptions11-1)接口中的modifier参数新增支持[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)属性。
+
+```ts
+// xxx.ets
+import { ImageModifier } from '@kit.ArkUI';
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct dragPreviewMaterialDemo {
+  @State materialIndex: number = 0;
+  @State materialName: string = 'ULTRA_THIN';
+  // 材质样式列表
+  @State materialList: uiMaterial.ImmersiveStyle[] = [
+    uiMaterial.ImmersiveStyle.ULTRA_THIN,
+    uiMaterial.ImmersiveStyle.THIN,
+    uiMaterial.ImmersiveStyle.REGULAR,
+    uiMaterial.ImmersiveStyle.THICK,
+    uiMaterial.ImmersiveStyle.ULTRA_THICK
+  ]
+  @State materialNames: string[] = [
+    'ULTRA_THIN', 'THIN', 'REGULAR', 'THICK', 'ULTRA_THICK'
+  ]
+
+  build() {
+    Row() {
+      Column() {
+        Text('当前材质样式：' + this.materialName)
+          .fontSize(16)
+          .margin({ bottom: 10 })
+
+        Button('切换材质样式')
+          .onClick(() => {
+            this.materialIndex++
+            if (this.materialIndex > this.materialList.length - 1) {
+              this.materialIndex = 0
+            }
+            this.materialName = this.materialNames[this.materialIndex]
+          })
+          .margin({ bottom: 20 })
+
+        Column() {
+          Text('材质效果')
+            .fontSize(20)
+            .fontColor(Color.White)
+            .margin({ top: 30, bottom: 10 })
+          Text('拖拽我查看效果')
+            .fontSize(14)
+            .fontColor(Color.White)
+        }
+        .width(150)
+        .height(150)
+        .backgroundColor('rgba(100, 150, 255, 0.3)')
+        .justifyContent(FlexAlign.Center)
+        .draggable(true)
+        .onDragStart((event: DragEvent) => {
+        })
+        .dragPreviewOptions({
+          modifier: new ImageModifier().systemMaterial(
+            new uiMaterial.ImmersiveMaterial({
+              style: this.materialList[this.materialIndex]
+            })
+          ) as ImageModifier
+        })
+
+        Text('操作说明：长按方块并拖拽\n查看不同材质效果')
+          .fontSize(14)
+          .fontColor(Color.Gray)
+          .margin({ top: 20 })
+          .textAlign(TextAlign.Center)
+      }
+      .width('100%')
+      .height('100%')
+      .padding(20)
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor('#f5f5f5')
+  }
+}
+```
+![material_drag.gif](figures/material_drag.gif)

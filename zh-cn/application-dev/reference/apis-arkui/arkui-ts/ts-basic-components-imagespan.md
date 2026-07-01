@@ -10,7 +10,9 @@
 
 >  **说明：**
 >
->  该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 
 ## 子组件
@@ -121,7 +123,7 @@ ImageSpan组件创建后，不支持动态修改该属性的值。
 
 ## 事件
 
-通用事件仅支持[点击事件](ts-universal-attributes-click.md)。还支持以下事件：
+通用事件仅支持[点击控制事件](ts-universal-attributes-click.md)。还支持以下事件：
 
 ### onComplete<sup>12+</sup>
 
@@ -181,15 +183,15 @@ type ImageCompleteCallback = (result: ImageLoadResult) => void
 
 | 名称                       | 类型   | 只读 | 可选 | 说明                                                         |
 | ---------------------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| width                        | number | 否   | 否 | 图片的宽。<br/>单位：[px](ts-pixel-units.md)                                    |
-| height                       | number | 否   | 否   | 图片的高。<br/>单位：[px](ts-pixel-units.md)                                    |
-| componentWidth               | number | 否   | 否   | 组件的宽。<br/>单位：[px](ts-pixel-units.md)                                    |
-| componentHeight              | number | 否   | 否   | 组件的高。<br/>单位：[px](ts-pixel-units.md)                                    |
+| width                        | number | 否   | 否 | 图片的宽。<br/>单位：[px](ts-pixel-units.md#基本像素单位)                                    |
+| height                       | number | 否   | 否   | 图片的高。<br/>单位：[px](ts-pixel-units.md#基本像素单位)                                    |
+| componentWidth               | number | 否   | 否   | 组件的宽。<br/>单位：[px](ts-pixel-units.md#基本像素单位)                                    |
+| componentHeight              | number | 否   | 否   | 组件的高。<br/>单位：[px](ts-pixel-units.md#基本像素单位)                                    |
 | loadingStatus                | number | 否   | 否   | 图片加载成功的状态值。<br/>**说明：**<br/>返回的状态值为0时，表示图片数据加载成功。返回的状态值为1时，表示图片解码成功。 |
-| contentWidth   | number | 否   | 否   | 图片实际绘制的宽度。<br/>单位：[px](ts-pixel-units.md)<br>**说明：**<br/>仅在loadingStatus返回1时有效。 |
-| contentHeight  | number | 否   | 否   | 图片实际绘制的高度。<br/>单位：[px](ts-pixel-units.md)<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
-| contentOffsetX | number | 否   | 否   | 实际绘制内容相对于组件自身的x轴偏移。<br/>单位：[px](ts-pixel-units.md)<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
-| contentOffsetY | number | 否   | 否   | 实际绘制内容相对于组件自身的y轴偏移。<br/>单位：[px](ts-pixel-units.md)<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
+| contentWidth   | number | 否   | 否   | 图片实际绘制的宽度。<br/>单位：[px](ts-pixel-units.md#基本像素单位)<br>**说明：**<br/>仅在loadingStatus返回1时有效。 |
+| contentHeight  | number | 否   | 否   | 图片实际绘制的高度。<br/>单位：[px](ts-pixel-units.md#基本像素单位)<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
+| contentOffsetX | number | 否   | 否   | 实际绘制内容相对于组件自身的x轴偏移。<br/>单位：[px](ts-pixel-units.md#基本像素单位)<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
+| contentOffsetY | number | 否   | 否   | 实际绘制内容相对于组件自身的y轴偏移。<br/>单位：[px](ts-pixel-units.md#基本像素单位)<br/>**说明：**<br/>仅在loadingStatus返回1时有效。 |
 
 
 
@@ -386,7 +388,7 @@ struct SpanExample {
           'scaleMode': 1, // 缩略值
           'size': { height: 100, width: 100 }
         };
-        //创建图片大小
+        // 创建图片大小
         imageSource.createPixelMap(option).then((pixelMap: PixelMap) => {
           this.imageAlt = pixelMap;
         })
@@ -417,7 +419,7 @@ struct SpanExample {
 ![imagespan](figures/image_span_alt.gif)
 ### 示例6（使用supportSvg2属性时，SVG图片的显示效果）
 
-从API version 22开始，该示例通过设置[supportSvg2](#supportsvg222)属性，使[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md#svg易用性提升)的SVG易用性提升能力生效。
+从API version 22开始，该示例通过设置[supportSvg2](#supportsvg222)属性，使[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)的[SVG易用性提升](ts-image-svg2-capabilities.md#svg易用性提升)能力生效。
 
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';

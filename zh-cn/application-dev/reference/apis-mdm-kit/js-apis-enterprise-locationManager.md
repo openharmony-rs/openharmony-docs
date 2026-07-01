@@ -1,8 +1,8 @@
 # @ohos.enterprise.locationManager（位置服务管理）
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -68,15 +68,15 @@ let wantTemp: Want = {
 };
 
 try {
-    locationManager.setLocationPolicy(wantTemp, locationManager.LocationPolicy.DISALLOW_LOCATION_SERVICE);
-    console.info(`Succeeded in setting location patch tag.`);
+  locationManager.setLocationPolicy(wantTemp, locationManager.LocationPolicy.DISALLOW_LOCATION_SERVICE);
+  console.info(`Succeeded in setting location patch tag.`);
 } catch(err) {
-    console.error(`Failed to get location patch tag. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set location policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 ## locationManager.getLocationPolicy
 
-getLocationPolicy(admin: Want): LocationPolicy
+getLocationPolicy(admin: Want | null): LocationPolicy
 
 查询位置服务管理策略。
 
@@ -90,7 +90,7 @@ getLocationPolicy(admin: Want): LocationPolicy
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。        |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
 
 **返回值：**
 
@@ -122,10 +122,10 @@ let wantTemp: Want = {
 };
 
 try {
-    let result: locationManager.LocationPolicy = locationManager.getLocationPolicy(wantTemp);
-    console.info(`Succeeded in getting location policy. policy: ${result}`);
+  let result: locationManager.LocationPolicy = locationManager.getLocationPolicy(wantTemp);
+  console.info(`Succeeded in getting location policy. policy: ${result}`);
 } catch(err) {
-    console.error(`Failed to get location policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get location policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 

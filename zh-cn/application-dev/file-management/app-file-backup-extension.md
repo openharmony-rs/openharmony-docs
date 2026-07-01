@@ -1,9 +1,9 @@
 # 应用接入数据备份恢复
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @lvzhenjie-->
-<!--Designer: @wang_zhangjun; @chenxi0605-->
-<!--Tester: @liuhonggang123-->
+<!--Owner: @rainlost-->
+<!--Designer: @rainlost-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 应用接入数据备份恢复需要通过BackupExtensionAbility实现。
@@ -14,7 +14,7 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
 
 ## 接口说明
 
-备份恢复扩展能力关键接口如下表所示。API的接口使用指导请参见[BackupExtensionAbility API参考](../reference/apis-core-file-kit/js-apis-application-backupExtensionAbility.md#backupextensionability)和[BackupExtensionContext API参考](../reference/apis-core-file-kit/js-apis-file-backupextensioncontext.md)。
+备份恢复扩展能力关键接口如下表所示。API的接口使用指导请参见[@ohos.application.BackupExtensionAbility (备份恢复扩展能力)](../reference/apis-core-file-kit/js-apis-application-backupExtensionAbility.md#backupextensionability)和[@ohos.file.BackupExtensionContext (备份恢复扩展能力)](../reference/apis-core-file-kit/js-apis-file-backupextensioncontext.md)。
 
 | 接口名                                                       | 描述             |
 | ------------------------------------------------------------ | ---------------- |

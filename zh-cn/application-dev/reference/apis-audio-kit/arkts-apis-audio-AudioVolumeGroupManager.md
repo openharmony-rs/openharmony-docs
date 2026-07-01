@@ -2,7 +2,7 @@
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -1036,7 +1036,7 @@ setMicrophoneMute(mute: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，替代接口仅面向系统应用开放。
+> 从API version 9开始支持，从API version 11开始废弃。
 
 **需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG，该权限仅系统应用可申请。
 
@@ -1071,7 +1071,7 @@ setMicrophoneMute(mute: boolean): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃，替代接口仅面向系统应用开放。
+> 从API version 9开始支持，从API version 11开始废弃。
 
 **需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG，该权限仅系统应用可申请。
 

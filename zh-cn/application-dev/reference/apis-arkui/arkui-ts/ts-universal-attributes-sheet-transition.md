@@ -1,8 +1,8 @@
 # 半模态转场
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,9 +10,11 @@
 
 >  **说明：**
 >
->  从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  不支持路由跳转。
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 不支持路由跳转。
 
 ## bindSheet
 
@@ -63,6 +65,7 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称              | 类型                                       | 只读 | 可选   | 说明              |
 | --------------- | --------------------------- | ------------- | ---- | --------------- |
 | height          | [SheetSize](#sheetsize枚举说明)&nbsp;\|&nbsp;[Length](ts-types.md#length) | 否 | 是   | 半模态高度，默认是LARGE。<br/>**说明：**<br/>1. API version 14开始，底部弹窗横屏时，无状态栏则最大高度为距离屏幕顶部8vp，有状态栏则最大高度为距离状态栏8vp。<br/>2. 底部弹窗时，当设置detents时，该属性设置无效。<br />3. 底部弹窗竖屏时，最大高度为距离状态栏8vp。<br />4. 居中弹窗和跟手弹窗设置类型为SheetSize.LARGE和SheetSize.MEDIUM无效，显示默认高度560vp。<br/>5. 居中弹窗和跟手弹窗最小高度为320vp，最大高度为窗口短边的90%。<br/>6. 居中弹窗和跟手弹窗当使用Length设置的高度时，高度大于最大高度，则显示最大高度，小于最小高度，则显示最小高度。<br/>7. 如果半模态使用SheetSize.FIT_CONTENT自适应模式，且类型设置为居中弹窗或跟手弹窗，API version 22及之前版本，高度大于最大高度时显示最大高度，高度小于最小高度时显示最小高度。从API version 23开始，高度大于最大高度时显示最大高度，高度小于最小高度时按照实际自适应高度生效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -101,6 +104,7 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 | enableFloatingDragBar<sup>20+</sup>              | boolean | 否 | 是   | 控制条是否悬浮显示，true为悬浮显示，false为不悬浮显示。<br />默认值：false <br /> **说明：** <br>悬浮效果只在控制条显示的场景生效，且控制条不占位。<br /> title传入[CustomBuilder](ts-types.md#custombuilder8)时enableFloatingDragBar始终为false。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | modalTransition<sup>20+</sup> | [ModalTransition](#modaltransition) | 否 | 是 | bindSheet全屏模态样式的系统转场方式。<br/>默认值：ModalTransition.DEFAULT<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | radiusRenderStrategy<sup>23+</sup> |  [RenderStrategy](ts-appendix-enums.md#renderstrategy22) | 否 | 是  |设置组件绘制圆角的模式。<br/>默认值：RenderStrategy.FAST <br/>**说明**: 当半模态设置模糊时，可通过设置为OFFSCREEN离屏模式解决半模态顶部或顶部圆角区域内显示效果异常问题。popup样式不支持设置组件绘制圆角模式。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| systemMaterial |  [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | 否 | 是  |设置组件的系统材质。<br/>默认值：undefined，会清除由该接口设置的材质效果。 <br/>**说明**: 不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](ts-universal-attributes-border.md#borderwidth)、阴影[shadow](ts-universal-attributes-image-effect.md#shadow)，不建议与上述接口一起使用。使用示例请参考[示例10（半模态设置系统材质）](#示例10半模态设置系统材质)。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## SheetSize枚举说明
 
@@ -423,7 +427,7 @@ struct SheetTransitionExample {
 }
 ```
 
-![zh-cn_sheet](figures/zh-cn_sheet1.gif)
+![zh-cn_sheet](figures/sheet1.gif)
 
 ### 示例2（设置三个不同高度的挡位）
 
@@ -476,7 +480,7 @@ struct SheetTransitionExample {
 }
 ```
 
-![zh-cn_sheet](figures/zh-cn_sheet2.gif)
+![zh-cn_sheet](figures/sheet2.gif)
 
 ### 示例3（使用边框宽度和颜色）
 
@@ -532,11 +536,11 @@ struct SheetTransitionExample {
 
 从左至右显示语言模式示例图
 
-![zh-cn_sheet](figures/zh-cn_sheet3_ltr.png)
+![zh-cn_sheet](figures/sheet3-ltr.png)
 
 从右至左显示语言模式示例图
 
-![zh-cn_sheet](figures/zh-cn_sheet3_rtl.png)
+![zh-cn_sheet](figures/sheet3-rtl.png)
 
 ### 示例4（使用关闭回调函数）
 
@@ -588,7 +592,7 @@ struct bindSheetExample {
   }
 }
 ```
-![zh-cn_sheet](figures/zh-cn_sheet4.gif)
+![zh-cn_sheet](figures/sheet4.gif)
 
 ### 示例5（设置内容区刷新时机）
 
@@ -640,11 +644,11 @@ struct Index {
 ```
 跟手触发挡位切换时，松手才触发面板内容高度刷新
 
-![zh-cn_sheet](figures/zh-cn_sheet5_ltr.gif)
+![zh-cn_sheet](figures/sheet5-ltr.gif)
 
 跟手触发挡位切换时，跟手时期就会触发面板内容高度刷新
 
-![zh-cn_sheet](figures/zh-cn_sheet5_rtl.gif)
+![zh-cn_sheet](figures/sheet5-rtl.gif)
 
 ### 示例6（设置压缩模态内容）
 
@@ -760,7 +764,7 @@ struct ListenKeyboardHeightChange {
   }
 }
 ```
-![zh-cn_sheet](figures/zh-cn_sheet6.gif)
+![zh-cn_sheet](figures/sheet6.gif)
 
 ### 示例7（镜像场景下如何设置圆角属性）
 
@@ -813,11 +817,11 @@ struct SheetTransitionExample {
 
 从左至右显示语言模式示例图
 
-![zh-cn_sheet](figures/zh-cn_sheet7_ltr.png)
+![zh-cn_sheet](figures/sheet7-ltr.png)
 
 从右至左显示语言模式示例图
 
-![zh-cn_sheet](figures/zh-cn_sheet7_rtl.png)
+![zh-cn_sheet](figures/sheet7-rtl.png)
 
 ### 示例8（半模态Side侧边样式）
 
@@ -920,7 +924,7 @@ struct SheetSideExample {
 }
 ```
 
-![zh-cn_sheet](figures/sheet8_side.gif)
+![zh-cn_sheet](figures/sheet8-side.gif)
 
 ### 示例9（半模态ContentCover全屏样式）
 
@@ -983,3 +987,67 @@ struct ContentCoverExample {
 }
 ```
 ![zh-cn_sheet](figures/sheet9_content_cover.gif)
+
+### 示例10（半模态设置系统材质）
+
+该示例通过半模态systemMaterial属性设置系统材质。
+
+从API版本26.0.0开始，[SheetOptions](./ts-universal-attributes-sheet-transition.md#sheetoptions)新增systemMaterial属性。
+
+```ts
+// xxx.ets
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SheetMaterialExample {
+  @State isShow: boolean = false;
+  @State sheetHeight: number = 300;
+  @State myMaterial: SystemUiMaterial | undefined = new uiMaterial.ImmersiveMaterial({
+    style: 0,
+  });
+
+  @Builder
+  myBuilder() {
+    Column({ space: 10 }) {
+      Text("Text")
+        .fontSize(20)
+        .margin(10)
+    }
+    .width('100%')
+    .height('100%')
+  }
+
+  build() {
+    Stack() {
+      // 请开发者替换为实际资源文件
+      Image($r('app.media.startIcon'))
+      Column() {
+        Button("open Sheet")
+          .onClick(() => {
+            this.isShow = true;
+          })
+          .fontSize(20)
+          .margin(10)
+          .bindSheet($$this.isShow, this.myBuilder(), {
+            height: this.sheetHeight,
+            // 以下接口不建议与systemMaterial一起使用
+            // borderWidth: 20,
+            // borderColor: Color.Red,
+            // backgroundColor: Color.Green,
+            // shadow: { radius: 30, type: ShadowType.COLOR, color: Color.Yellow },
+            // 某些材质效果不自带背景，会被backgroundColor设置的颜色覆盖，若要呈现此类材质效果，建议将背景色改为透明色
+            backgroundColor: Color.Transparent,
+            systemMaterial: this.myMaterial // 从API版本26.0.0开始，新增systemMaterial属性
+          })
+      }
+      .justifyContent(FlexAlign.Center)
+      .width('100%')
+      .height('100%')
+    }
+  }
+}
+```
+
+![zh-cn_sheet](figures/sheetMaterial-new-s.jpg)
+

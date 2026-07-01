@@ -124,10 +124,10 @@ For details about the algorithm specifications, see [SM2](crypto-asym-key-genera
   
   function generateSM2KeySync() {
     // Create an AsyKeyGenerator instance.
-    let rsaGenerator = cryptoFramework.createAsyKeyGenerator('SM2_256');
+    let sm2Generator = cryptoFramework.createAsyKeyGenerator('SM2_256');
     // Use AsyKeyGenerator to randomly generate an asymmetric key pair.
     try {
-      let keyPair = rsaGenerator.generateKeyPairSync();
+      let keyPair = sm2Generator.generateKeyPairSync();
       if (keyPair != null) {
         let pubKey = keyPair.pubKey;
         let priKey = keyPair.priKey;

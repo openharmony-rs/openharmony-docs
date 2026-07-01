@@ -4,7 +4,7 @@
 <!--Owner: @yao_dashuai-->
 <!--Designer: @yao_dashuai-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @HelloCrease-->
 
 在ES6(ECMAScript 6.0)模块设计中，使用import语法加载其他文件导出的内容是ECMA规范所定义的语法规则。为支持开发者使用该功能导入Native模块（so）导出的内容，ArkTS进行了相关适配，并提供了以下几种支持写法。
 
@@ -25,7 +25,7 @@ export const add: (a: number, b: number) => number;
 
 ``` TypeScript
 // NameImport.ets
-import { add } from 'libentry.so'
+import { add } from 'libentry.so';
 add(2, 3);
 ```
 
@@ -43,7 +43,7 @@ export const add: (a: number, b: number) => number;
 
 ``` TypeScript
 // DefaultImport.ets
-import entry from 'libentry.so'
+import entry from 'libentry.so';
 entry.add(2, 3);
 ```
 
@@ -61,7 +61,7 @@ export const add: (a: number, b: number) => number;
 
 ``` TypeScript
 // NamespaceImport.ets
-import * as entry from 'libentry.so'
+import * as entry from 'libentry.so';
 entry.add(2, 3);
 ```
 
@@ -109,14 +109,14 @@ export const add: (a: number, b: number) => number;
 
 ``` TypeScript
 // NamespaceExport.ets
-export * from 'libentry.so'
+export * from 'libentry.so';
 ```
 
 <!-- @[namespaceImport_fromExport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/ArktsImportNativeModule/entry/src/main/ets/pages/NamespaceImportFromExport.ets) -->    
 
 ``` TypeScript
 // NamespaceImportFromExport.ets
-import { add } from './NamespaceExport'
+import { add } from './NamespaceExport';
 add(2, 3);
 ```
 
@@ -127,7 +127,7 @@ add(2, 3);
 **反例：** 
 ``` TypeScript
 // test1.ets
-export * from 'libentry.so'
+export * from 'libentry.so';
 ```
 ``` TypeScript
 // test2.ets
@@ -160,7 +160,7 @@ import('libentry.so').then((entry:ESObject) => {
 
 ``` TypeScript
 // DynamicExport.ets
-import entry from 'libentry.so'
+import entry from 'libentry.so';
 export { entry }
 ```
 
@@ -180,7 +180,7 @@ import('./DynamicExport').then((ns:ESObject) => {
 **反例：** 
 ``` TypeScript
 // test1.ets
-export * from 'libentry.so'
+export * from 'libentry.so';
 ```
 ``` TypeScript
 // test2.ets

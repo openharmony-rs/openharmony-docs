@@ -12,7 +12,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 接口
 
@@ -32,7 +34,7 @@ ContentSlot(content: Content)
 
 ## Content
 
-type Content = Content
+type Content = import('../api/@ohos.arkui.node').Content
 
 定义ComponentContent和NodeContent的基类。
 
@@ -42,7 +44,7 @@ type Content = Content
 
 | 类型 | 说明                                                     |
 | ---- | ------------------------------------------------------------ |
-| [Content](../js-apis-arkui-Content.md)   | 定义ComponentContent和NodeContent的基类。 |
+| import('../api/@ohos.arkui.node').[Content](../js-apis-arkui-Content.md)   | 定义ComponentContent和NodeContent的基类。 |
 
 ## 示例
 
@@ -71,5 +73,5 @@ struct Parent {
 }
 ```
 
-上述代码中so的实现可参考[Native XComponent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NativeXComponent)。
+上述代码中so的实现可参考[Native XComponent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeXComponent)。
 

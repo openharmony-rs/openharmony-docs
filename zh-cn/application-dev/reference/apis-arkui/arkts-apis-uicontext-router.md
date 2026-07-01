@@ -1,12 +1,14 @@
 # Class (Router)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @tsj_20201-->
 <!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
-提供通过不同的url访问不同的页面，包括跳转到应用内的指定页面、同应用内的某个页面替换当前页面、返回上一页面或指定的页面等。
+提供通过不同的url访问不同的页面，包括跳转到应用内的指定页面、同应用内的某个页面替换当前页面、返回上一页面或指定的页面等。Router还支持命名路由跳转、页面栈管理、参数传递、返回确认对话框等能力，适用于需要统一管理页面导航流程、处理页面间数据传递的场景，与UIContext集成使用可实现灵活的路由控制。
+
+Router基于页面栈机制管理页面导航，页面栈支持的最大容量为32个页面。当调用pushUrl时，目标页面会被压入栈顶；调用replaceUrl时，当前页面会被弹出栈并销毁，目标页面压入栈顶；调用back时，栈顶页面会被弹出。
 
 > **说明：**
 >
@@ -14,13 +16,27 @@
 >
 > - 本Class首批接口从API version 10开始支持。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 以下API需先使用UIContext中的[getRouter()](arkts-apis-uicontext-uicontext.md#getrouter)方法获取到Router对象，再通过该对象调用对应方法。
+>
+> - Router提供了以下两种路由方式：
+>
+>   - **普通路由**（[pushUrl](#pushurl)/[replaceUrl](#replaceurl)）：通过url路径标识目标页面，适用于简单的页面跳转场景。
+>
+>   - **命名路由**（[pushNamedRoute](#pushnamedroute)/[replaceNamedRoute](#replacenamedroute)）：通过name标识目标页面，在跳转之前需要将目标跳转页面通过import将页面进行加载，适用于跨包跳转场景。
+>
+>   建议在页面路径可能变化或需要统一管理路由的场景下使用命名路由，其他场景使用普通路由。根据是否需要返回上一页来选择使用哪个方法。
 
 ## pushUrl
 
 pushUrl(options: router.RouterOptions): Promise&lt;void&gt;
 
 跳转到应用内的指定页面，使用Promise异步回调。
+
+> **说明：** 
+>
+> pushUrl()会在页面栈顶部添加新页面，页面栈深度+1（上限32页，超限报错误码100003），后续可调用back()返回到上一页面或调用replaceUrl()替换当前页面。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -30,13 +46,13 @@ pushUrl(options: router.RouterOptions): Promise&lt;void&gt;
 
 | 参数名     | 类型                                       | 必填   | 说明        |
 | ------- | ---------------------------------------- | ---- | --------- |
-| options | [router.RouterOptions](js-apis-router.md#routeroptions) | 是    | 跳转页面描述信息。 |
+| options | [router.RouterOptions](js-apis-router.md#routeroptions) | 是    | 跳转页面描述信息，包含url（目标页面路径）和params（传递的参数）等字段。<br/>**说明：** <br/>页面栈最大支持32个页面，建议跳转前通过[getStackSize](#getstacksize23)（从API version 23开始支持）检查当前栈大小，避免超出限制导致跳转失败（错误码100003）。API version 23之前可使用[getLength](#getlengthdeprecated)检查。 |
 
 **返回值：**
 
 | 类型                  | 说明      |
 | ------------------- | ------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -46,7 +62,7 @@ pushUrl(options: router.RouterOptions): Promise&lt;void&gt;
 | ------ | ---------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | Internal error. |
-| 100002 | Uri error. The URI of the page to redirect is incorrect or does not exist.           |
+| 100002 | Uri error. The URI of the page to redirect is incorrect or does not exist.  |
 | 100003 | Page stack error. Too many pages are pushed.  |
 
 **示例：**
@@ -55,8 +71,8 @@ pushUrl(options: router.RouterOptions): Promise&lt;void&gt;
 import { router } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// 定义传递参数的类
-class innerParams {
+// 定义传递参数的内部类
+class InnerParams {
   array: number[];
 
   constructor(tuple: number[]) {
@@ -64,11 +80,12 @@ class innerParams {
   }
 }
 
+// 定义路由参数类
 class RouterParams {
-  data: innerParams;
+  data: InnerParams;
 
   constructor(tuple: number[]) {
-    this.data = new innerParams(tuple);
+    this.data = new InnerParams(tuple);
   }
 }
 
@@ -77,8 +94,8 @@ class RouterParams {
 struct Index {
   async routePage() {
     let options: router.RouterOptions = {
-      url: 'pages/second',
-      params: new RouterParams([12, 45, 78])
+      url: 'pages/second',  // 跳转目标页面路径
+      params: new RouterParams([12, 45, 78])  // 传递的页面参数
     }
     this.getUIContext()
       .getRouter()
@@ -88,7 +105,7 @@ struct Index {
       })
       .catch((err: ESObject) => {
         console.error(`pushUrl failed, code is ${(err as BusinessError).code}, message is ${(err as BusinessError).message}`);
-      })
+      });
   }
 
   build() {
@@ -109,7 +126,7 @@ struct Index {
 
 ```ts
 // 在second页面中接收传递过来的参数
-class innerParams {
+class InnerParams {
   array: number[];
 
   constructor(tuple: number[]) {
@@ -118,10 +135,10 @@ class innerParams {
 }
 
 class RouterParams {
-  data: innerParams;
+  data: InnerParams;
 
   constructor(tuple: number[]) {
-    this.data = new innerParams(tuple);
+    this.data = new InnerParams(tuple);
   }
 }
 
@@ -138,6 +155,7 @@ struct Second {
         .fontSize(30)
         .onClick(() => {
           try {
+            // 开启返回询问对话框
             this.getUIContext().getRouter().showAlertBeforeBackPage({ message: 'Are you sure to return?' })
           } catch (error) {
             // TODO: Implement error handling.
@@ -172,7 +190,7 @@ pushUrl(options: router.RouterOptions, callback: AsyncCallback&lt;void&gt;): voi
 | 参数名      | 类型                                       | 必填   | 说明        |
 | -------- | ---------------------------------------- | ---- | --------- |
 | options  | [router.RouterOptions](js-apis-router.md#routeroptions) | 是    | 跳转页面描述信息。 |
-| callback | AsyncCallback&lt;void&gt;                | 是    | router跳转结果回调函数。<br/>当路由跳转成功时，error为undefined。当路由跳转失败时，error为系统返回的错误对象。|
+| callback | AsyncCallback&lt;void&gt;                | 是    | 页面跳转结果回调函数。<br/>当页面跳转成功时，error为undefined。当页面跳转失败时，error为系统返回的错误对象。|
 
 **错误码：**
 
@@ -182,7 +200,7 @@ pushUrl(options: router.RouterOptions, callback: AsyncCallback&lt;void&gt;): voi
 | ------ | ---------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | Internal error. |
-| 100002 | Uri error. The URI of the page to redirect is incorrect or does not exist.           |
+| 100002 | Uri error. The URI of the page to redirect is incorrect or does not exist.  |
 | 100003 | Page stack error. Too many pages are pushed.  |
 
 **示例：**
@@ -194,9 +212,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct Index {
   async routePage() {
+    // 调用pushUrl接口进行页面跳转
     this.getUIContext().getRouter().pushUrl({
-      url: 'pages/routerpage2',
-      params: {
+      url: 'pages/routerpage2',  // 跳转目标页面路径
+      params: {  // 传递的页面参数
         data1: 'message',
         data2: {
           data3: [123, 456, 789]
@@ -247,13 +266,13 @@ pushUrl(options: router.RouterOptions, mode: router.RouterMode): Promise&lt;void
 | 参数名     | 类型                                       | 必填   | 说明         |
 | ------- | ---------------------------------------- | ---- | ---------- |
 | options | [router.RouterOptions](js-apis-router.md#routeroptions) | 是    | 跳转页面描述信息。  |
-| mode    | [router.RouterMode](js-apis-router.md#routermode9) | 是    | 跳转页面使用的模式。 |
+| mode    | [router.RouterMode](js-apis-router.md#routermode9) | 是    | 跳转页面使用的模式，可选Standard（标准模式）或Single（单例模式）。建议根据页面栈管理需求选择：Standard模式适用于常规页面跳转；Single模式可避免相同页面重复入栈，适合登录页、主页等单例场景。 |
 
 **返回值：**
 
 | 类型                  | 说明      |
 | ------------------- | ------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -263,7 +282,7 @@ pushUrl(options: router.RouterOptions, mode: router.RouterMode): Promise&lt;void
 | ------ | ---------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | Internal error. |
-| 100002 | Uri error. The URI of the page to redirect is incorrect or does not exist.           |
+| 100002 | Uri error. The URI of the page to redirect is incorrect or does not exist.  |
 | 100003 | Page stack error. Too many pages are pushed.  |
 
 **示例：**
@@ -272,8 +291,9 @@ pushUrl(options: router.RouterOptions, mode: router.RouterMode): Promise&lt;void
 import { router } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 定义路由模式类
 class RouterTmp {
-  Standard: router.RouterMode = router.RouterMode.Standard;
+  Standard: router.RouterMode = router.RouterMode.Standard;  // 标准路由模式
 }
 
 let rtm: RouterTmp = new RouterTmp();
@@ -284,19 +304,19 @@ struct Index {
   async routePage() {
     this.getUIContext().getRouter().pushUrl({
         url: 'pages/routerpage2',
-        params: {
+        params: {  // 传递的页面参数
           data1: 'message',
           data2: {
             data3: [123, 456, 789]
           }
         }
-      }, rtm.Standard)
+      }, rtm.Standard)  // 使用标准路由模式
       .then(() => {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
         console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
-      })
+      });
   }
 
   build() {
@@ -333,8 +353,8 @@ pushUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncC
 | 参数名      | 类型                                       | 必填   | 说明         |
 | -------- | ---------------------------------------- | ---- | ---------- |
 | options  | [router.RouterOptions](js-apis-router.md#routeroptions) | 是    | 跳转页面描述信息。  |
-| mode     | [router.RouterMode](js-apis-router.md#routermode9) | 是    | 跳转页面使用的模式。 |
-| callback | AsyncCallback&lt;void&gt;                | 是    | router跳转结果回调函数。<br/>当路由跳转成功时，error为undefined。当路由跳转失败时，error为系统返回的错误对象。    |
+| mode     | [router.RouterMode](js-apis-router.md#routermode9) | 是    | 跳转页面使用的模式，可选Standard（标准模式）或Single（单例模式）。建议根据页面栈管理需求选择：Standard模式适用于常规页面跳转；Single模式可避免相同页面重复入栈，适合登录页、主页等单例场景。 |
+| callback | AsyncCallback&lt;void&gt;                | 是    | 页面跳转结果回调函数。<br/>当页面跳转成功时，error为undefined。当页面跳转失败时，error为系统返回的错误对象。    |
 
 **错误码：**
 
@@ -344,7 +364,7 @@ pushUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncC
 | ------ | ---------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | Internal error. |
-| 100002 | Uri error. The URI of the page to redirect is incorrect or does not exist.           |
+| 100002 | Uri error. The URI of the page to redirect is incorrect or does not exist.  |
 | 100003 | Page stack error. Too many pages are pushed.  |
 
 **示例：**
@@ -407,6 +427,10 @@ replaceUrl(options: router.RouterOptions): Promise&lt;void&gt;
 
 用应用内的某个页面替换当前页面，并销毁被替换的页面，使用Promise异步回调。
 
+> **说明：** 
+>
+> replaceUrl()会替换页面栈栈顶页面，页面栈深度维持不变。与pushUrl()的核心差异：pushUrl()入栈新页面、栈深度 + 1，replaceUrl()不改变栈深度。被替换的页面会直接销毁，无法通过back()回退访问。适用场景：登录成功跳转首页（避免回退至登录页）、页面重定向、临时中转页面跳转等。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -421,7 +445,7 @@ replaceUrl(options: router.RouterOptions): Promise&lt;void&gt;
 
 | 类型                  | 说明      |
 | ------------------- | ------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -431,7 +455,7 @@ replaceUrl(options: router.RouterOptions): Promise&lt;void&gt;
 | ------ | ---------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | The UI execution context is not found. This error code is thrown only in the standard system. |
-| 200002 | Uri error. The URI of the page to be used for replacement is incorrect or does not exist.                 |
+| 200002 | Uri error. The URI of the page to be used for replacement is incorrect or does not exist.  |
 
 **示例：**
 
@@ -442,9 +466,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct Index {
   async routePage() {
+    // 调用replaceUrl接口进行页面替换
     this.getUIContext().getRouter().replaceUrl({
-        url: 'pages/detail',
-        params: {
+        url: 'pages/detail',  // 替换的目标页面路径
+        params: {  // 传递的页面参数
           data1: 'message'
         }
       })
@@ -452,8 +477,8 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
-      })
+        console.error(`replaceUrl failed, code is ${error.code}, message is ${error.message}`);
+      });
   }
 
   build() {
@@ -490,7 +515,7 @@ replaceUrl(options: router.RouterOptions, callback: AsyncCallback&lt;void&gt;): 
 | 参数名      | 类型                                       | 必填   | 说明        |
 | -------- | ---------------------------------------- | ---- | --------- |
 | options  | [router.RouterOptions](js-apis-router.md#routeroptions) | 是    | 替换页面描述信息。 |
-| callback | AsyncCallback&lt;void&gt;                | 是    | router跳转结果回调函数。<br/>当路由跳转成功时，error为undefined。当路由跳转失败时，error为系统返回的错误对象。   |
+| callback | AsyncCallback&lt;void&gt;                | 是    | 页面替换结果回调函数。<br/>当页面替换成功时，error为undefined。当页面替换失败时，error为系统返回的错误对象。   |
 
 **错误码：**
 
@@ -513,7 +538,7 @@ struct Index {
   async routePage() {
     this.getUIContext().getRouter().replaceUrl({
       url: 'pages/detail',
-      params: {
+      params: {  // 传递的页面参数
         data1: 'message'
       }
     }, (err: Error) => {
@@ -550,7 +575,7 @@ struct Index {
 
 replaceUrl(options: router.RouterOptions, mode: router.RouterMode): Promise&lt;void&gt;
 
-用应用内的某个页面替换当前页面，并销毁被替换的页面，使用Promise异步回调。与[replaceUrl](#replaceurl)相比，新增了mode参数，即支持设置跳转页面使用的模式。
+用应用内的某个页面替换当前页面，并销毁被替换的页面，使用Promise异步回调。与[replaceUrl](#replaceurl)相比，新增了mode参数，即支持设置替换页面使用的模式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -561,13 +586,13 @@ replaceUrl(options: router.RouterOptions, mode: router.RouterMode): Promise&lt;v
 | 参数名     | 类型                                       | 必填   | 说明         |
 | ------- | ---------------------------------------- | ---- | ---------- |
 | options | [router.RouterOptions](js-apis-router.md#routeroptions) | 是    | 替换页面描述信息。  |
-| mode    | [router.RouterMode](js-apis-router.md#routermode9) | 是    | 跳转页面使用的模式。 |
+| mode    | [router.RouterMode](js-apis-router.md#routermode9) | 是    | 替换页面使用的模式，可选Standard（标准模式）或Single（单例模式）。建议根据页面栈管理需求选择：Standard模式适用于常规页面跳转；Single模式可避免相同页面重复入栈，适合登录页、主页等单例场景。 |
 
 **返回值：**
 
 | 类型                  | 说明      |
 | ------------------- | ------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -577,7 +602,7 @@ replaceUrl(options: router.RouterOptions, mode: router.RouterMode): Promise&lt;v
 | ------ | ---------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | Failed to get the delegate. This error code is thrown only in the standard system. |
-| 200002 | Uri error. The URI of the page to be used for replacement is incorrect or does not exist.                 |
+| 200002 | Uri error. The URI of the page to be used for replacement is incorrect or does not exist.  |
 
 **示例：**
 
@@ -605,8 +630,8 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
-      })
+        console.error(`replaceUrl failed, code is ${error.code}, message is ${error.message}`);
+      });
   }
 
   build() {
@@ -632,7 +657,7 @@ struct Index {
 
 replaceUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;): void
 
-用应用内的某个页面替换当前页面，并销毁被替换的页面。使用callback异步回调。与[replaceUrl](#replaceurl-1)相比，新增了mode参数，即支持设置跳转页面使用的模式。
+用应用内的某个页面替换当前页面，并销毁被替换的页面。使用callback异步回调。与[replaceUrl](#replaceurl-1)相比，新增了mode参数，即支持设置替换页面使用的模式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -643,8 +668,8 @@ replaceUrl(options: router.RouterOptions, mode: router.RouterMode, callback: Asy
 | 参数名      | 类型                                       | 必填   | 说明         |
 | -------- | ---------------------------------------- | ---- | ---------- |
 | options  | [router.RouterOptions](js-apis-router.md#routeroptions) | 是    | 替换页面描述信息。  |
-| mode     | [router.RouterMode](js-apis-router.md#routermode9) | 是    | 跳转页面使用的模式。 |
-| callback | AsyncCallback&lt;void&gt;                | 是    | router跳转结果回调函数。<br/>当路由跳转成功时，error为undefined。当路由跳转失败时，error为系统返回的错误对象。    |
+| mode     | [router.RouterMode](js-apis-router.md#routermode9) | 是    | 替换页面使用的模式，可选Standard（标准模式）或Single（单例模式）。建议根据页面栈管理需求选择：Standard模式适用于常规页面跳转；Single模式可避免相同页面重复入栈，适合登录页、主页等单例场景。 |
+| callback | AsyncCallback&lt;void&gt;                | 是    | 页面替换结果回调函数。<br/>当页面替换成功时，error为undefined。当页面替换失败时，error为系统返回的错误对象。    |
 
 **错误码：**
 
@@ -654,7 +679,7 @@ replaceUrl(options: router.RouterOptions, mode: router.RouterMode, callback: Asy
 | ------ | ---------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | The UI execution context is not found. This error code is thrown only in the standard system. |
-| 200002 | Uri error. The URI of the page to be used for replacement is incorrect or does not exist.               |
+| 200002 | Uri error. The URI of the page to be used for replacement is incorrect or does not exist.  |
 
 **示例：**
 
@@ -721,13 +746,13 @@ pushNamedRoute(options: router.NamedRouterOptions): Promise&lt;void&gt;
 
 | 参数名     | 类型                                       | 必填   | 说明        |
 | ------- | ---------------------------------------- | ---- | --------- |
-| options | [router.NamedRouterOptions](js-apis-router.md#namedrouteroptions10) | 是    | 跳转页面描述信息。 |
+| options | [router.NamedRouterOptions](js-apis-router.md#namedrouteroptions10) | 是    | 跳转页面描述信息，包含name（命名路由名称）和params（传递的参数）等字段。 |
 
 **返回值：**
 
 | 类型                  | 说明      |
 | ------------------- | ------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -738,7 +763,7 @@ pushNamedRoute(options: router.NamedRouterOptions): Promise&lt;void&gt;
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | Internal error. |
 | 100003 | Page stack error. Too many pages are pushed.  |
-| 100004 | Named route error. The named route does not exist.   |
+| 100004 | Named route error. The named route does not exist.  |
 
 **示例：**
 
@@ -749,9 +774,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct Index {
   async routePage() {
+    // 调用pushNamedRoute接口跳转到命名路由页面
     this.getUIContext().getRouter().pushNamedRoute({
-        name: 'myPage',
-        params: {
+        name: 'myPage',  // 命名路由名称
+        params: {  // 传递的页面参数
           data1: 'message',
           data2: {
             data3: [123, 456, 789]
@@ -762,8 +788,8 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
-      })
+        console.error(`pushNamedRoute failed, code is ${error.code}, message is ${error.message}`);
+      });
   }
 
   build() {
@@ -800,7 +826,7 @@ pushNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback&lt;vo
 | 参数名      | 类型                                       | 必填   | 说明        |
 | -------- | ---------------------------------------- | ---- | --------- |
 | options  | [router.NamedRouterOptions](js-apis-router.md#namedrouteroptions10) | 是    | 跳转页面描述信息。 |
-| callback | AsyncCallback&lt;void&gt;                | 是    | router跳转结果回调函数。<br/>当路由跳转成功时，error为undefined。当路由跳转失败时，error为系统返回的错误对象。   |
+| callback | AsyncCallback&lt;void&gt;                | 是    | 页面跳转结果回调函数。<br/>当页面跳转成功时，error为undefined。当页面跳转失败时，error为系统返回的错误对象。  |
 
 **错误码：**
 
@@ -874,13 +900,13 @@ pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Pro
 | 参数名     | 类型                                       | 必填   | 说明         |
 | ------- | ---------------------------------------- | ---- | ---------- |
 | options | [router.NamedRouterOptions](js-apis-router.md#namedrouteroptions10) | 是    | 跳转页面描述信息。  |
-| mode    | [router.RouterMode](js-apis-router.md#routermode9) | 是    | 跳转页面使用的模式。 |
+| mode    | [router.RouterMode](js-apis-router.md#routermode9) | 是    | 跳转页面使用的模式，可选Standard（标准模式）或Single（单例模式）。建议根据页面栈管理需求选择：Standard模式适用于常规页面跳转；Single模式可避免相同页面重复入栈，适合登录页、主页等单例场景。 |
 
 **返回值：**
 
 | 类型                  | 说明      |
 | ------------------- | ------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -909,11 +935,11 @@ let rtm:RouterTmp = new RouterTmp();
 struct Index {
   async routePage() {
     this.getUIContext().getRouter().pushNamedRoute({
-        name: 'myPage',
-        params: {
-          data1: 'message',
-          data2: {
-            data3: [123, 456, 789]
+      name: 'myPage',
+      params: {  // 传递的页面参数
+        data1: 'message',
+        data2: {
+          data3: [123, 456, 789]
           }
         }
       }, rtm.Standard)
@@ -921,8 +947,8 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
-      })
+        console.error(`pushNamedRoute failed, code is ${error.code}, message is ${error.message}`);
+      });
   }
 
   build() {
@@ -959,8 +985,8 @@ pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, call
 | 参数名      | 类型                                       | 必填   | 说明         |
 | -------- | ---------------------------------------- | ---- | ---------- |
 | options  | [router.NamedRouterOptions](js-apis-router.md#namedrouteroptions10) | 是    | 跳转页面描述信息。  |
-| mode     | [router.RouterMode](js-apis-router.md#routermode9) | 是    | 跳转页面使用的模式。 |
-| callback | AsyncCallback&lt;void&gt;                | 是    | router跳转结果回调函数。<br/>当路由跳转成功时，error为undefined。当路由跳转失败时，error为系统返回的错误对象。    |
+| mode     | [router.RouterMode](js-apis-router.md#routermode9) | 是    | 跳转页面使用的模式，可选Standard（标准模式）或Single（单例模式）。建议根据页面栈管理需求选择：Standard模式适用于常规页面跳转；Single模式可避免相同页面重复入栈，适合登录页、主页等单例场景。 |
+| callback | AsyncCallback&lt;void&gt;                | 是    | 页面跳转结果回调函数。<br/>当页面跳转成功时，error为undefined。当页面跳转失败时，error为系统返回的错误对象。    |
 
 **错误码：**
 
@@ -971,7 +997,7 @@ pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, call
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | Internal error. |
 | 100003 | Page stack error. Too many pages are pushed.  |
-| 100004 | Named route error. The named route does not exist.   |
+| 100004 | Named route error. The named route does not exist.  |
 
 **示例：**
 
@@ -1031,7 +1057,7 @@ struct Index {
 
 replaceNamedRoute(options: router.NamedRouterOptions): Promise&lt;void&gt;
 
-用指定的命名路由页面替换当前页面，并销毁被替换的页面，使用Promise异步回调。
+用指定的命名路由页面替换当前页面，并销毁被替换的页面，使用Promise异步回调。适用于大型应用中使用命名路由管理页面、路由路径可能变化时避免硬编码URL、模块化开发中各模块独立管理自己的命名路由等场景。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1047,7 +1073,7 @@ replaceNamedRoute(options: router.NamedRouterOptions): Promise&lt;void&gt;
 
 | 类型                  | 说明      |
 | ------------------- | ------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1068,9 +1094,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct Index {
   async routePage() {
+    // 调用replaceNamedRoute接口替换命名路由页面
     this.getUIContext().getRouter().replaceNamedRoute({
         name: 'myPage',
-        params: {
+        params: {  // 传递的页面参数
           data1: 'message'
         }
       })
@@ -1078,8 +1105,8 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
-      })
+        console.error(`replaceNamedRoute failed, code is ${error.code}, message is ${error.message}`);
+      });
   }
 
   build() {
@@ -1116,7 +1143,7 @@ replaceNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback&lt
 | 参数名      | 类型                                       | 必填   | 说明        |
 | -------- | ---------------------------------------- | ---- | --------- |
 | options  | [router.NamedRouterOptions](js-apis-router.md#namedrouteroptions10) | 是    | 替换页面描述信息。 |
-| callback | AsyncCallback&lt;void&gt;                | 是    | router跳转结果回调函数。<br/>当路由跳转成功时，error为undefined。当路由跳转失败时，error为系统返回的错误对象。   |
+| callback | AsyncCallback&lt;void&gt;                | 是    | 页面替换结果回调函数。<br/>当页面替换成功时，error为undefined。当页面替换失败时，error为系统返回的错误对象。   |
 
 **错误码：**
 
@@ -1139,7 +1166,7 @@ struct Index {
   async routePage() {
     this.getUIContext().getRouter().replaceNamedRoute({
       name: 'myPage',
-      params: {
+      params: {  // 传递的页面参数
         data1: 'message'
       }
     }, (err: Error) => {
@@ -1176,7 +1203,7 @@ struct Index {
 
 replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Promise&lt;void&gt;
 
-用指定的命名路由页面替换当前页面，并销毁被替换的页面，使用Promise异步回调。与[replaceNamedRoute](#replacenamedroute)相比，新增了mode参数，即支持设置跳转页面使用的模式。
+用指定的命名路由页面替换当前页面，并销毁被替换的页面，使用Promise异步回调。与[replaceNamedRoute](#replacenamedroute)相比，新增了mode参数，即支持设置替换页面使用的模式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1187,14 +1214,14 @@ replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): 
 | 参数名     | 类型                                       | 必填   | 说明         |
 | ------- | ---------------------------------------- | ---- | ---------- |
 | options | [router.NamedRouterOptions](js-apis-router.md#namedrouteroptions10) | 是    | 替换页面描述信息。  |
-| mode    | [router.RouterMode](js-apis-router.md#routermode9) | 是    | 跳转页面使用的模式。 |
+| mode    | [router.RouterMode](js-apis-router.md#routermode9) | 是    | 替换页面使用的模式，可选Standard（标准模式）或Single（单例模式）。建议根据页面栈管理需求选择：Standard模式适用于常规页面跳转；Single模式可避免相同页面重复入栈，适合登录页、主页等单例场景。 |
 
 
 **返回值：**
 
 | 类型                  | 说明      |
 | ------------------- | ------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1204,7 +1231,7 @@ replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): 
 | ------ | ---------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | Failed to get the delegate. This error code is thrown only in the standard system. |
-| 100004 | Named route error. The named route does not exist.       |
+| 100004 | Named route error. The named route does not exist.  |
 
 **示例：**
 
@@ -1232,8 +1259,8 @@ struct Index {
         console.info('succeeded');
       })
       .catch((error: BusinessError) => {
-        console.error(`pushUrl failed, code is ${error.code}, message is ${error.message}`);
-      })
+        console.error(`replaceNamedRoute failed, code is ${error.code}, message is ${error.message}`);
+      });
   }
 
   build() {
@@ -1259,7 +1286,7 @@ struct Index {
 
 replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;): void
 
-用指定的命名路由页面替换当前页面，并销毁被替换的页面。使用callback异步回调。与[replaceNamedRoute](#replacenamedroute-1)相比，新增了mode参数，即支持设置跳转页面使用的模式。
+用指定的命名路由页面替换当前页面，并销毁被替换的页面。使用callback异步回调。与[replaceNamedRoute](#replacenamedroute-1)相比，新增了mode参数，即支持设置替换页面使用的模式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1270,8 +1297,8 @@ replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, c
 | 参数名      | 类型                                       | 必填   | 说明         |
 | -------- | ---------------------------------------- | ---- | ---------- |
 | options  | [router.NamedRouterOptions](js-apis-router.md#namedrouteroptions10) | 是    | 替换页面描述信息。  |
-| mode     | [router.RouterMode](js-apis-router.md#routermode9) | 是    | 跳转页面使用的模式。 |
-| callback | AsyncCallback&lt;void&gt;                | 是    | router跳转结果回调函数。<br/>当路由跳转成功时，error为undefined。当路由跳转失败时，error为系统返回的错误对象。    |
+| mode     | [router.RouterMode](js-apis-router.md#routermode9) | 是    | 替换页面使用的模式，可选Standard（标准模式）或Single（单例模式）。建议根据页面栈管理需求选择：Standard模式适用于常规页面跳转；Single模式可避免相同页面重复入栈，适合登录页、主页等单例场景。 |
+| callback | AsyncCallback&lt;void&gt;                | 是    | 页面替换结果回调函数。<br/>当页面替换成功时，error为undefined。当页面替换失败时，error为系统返回的错误对象。    |
 
 **错误码：**
 
@@ -1340,6 +1367,10 @@ back(options?: router.RouterOptions ): void
 
 返回上一页面或指定的页面。
 
+> **说明：**
+>
+> 如果之前调用了showAlertBeforeBackPage()开启了返回询问对话框，则调用back()时会弹出确认对话框：用户选择"取消"则back()不执行，选择"确认"则继续执行；可通过hideAlertBeforeBackPage()关闭返回询问对话框。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -1348,7 +1379,7 @@ back(options?: router.RouterOptions ): void
 
 | 参数名     | 类型                                       | 必填   | 说明                                       |
 | ------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| options | [router.RouterOptions](js-apis-router.md#routeroptions) | 否    | 返回页面描述信息，其中参数url指路由跳转时返回到指定url的页面，如果页面栈中没有对应url的页面，则不响应该操作；如果栈中存在对应url的页面，则返回至index最大的同名页面。<br/>如果url未设置，则返回上一页，页面不会重新构建，页面栈里面的page不会回收，出栈后会被回收。 |
+| options | [router.RouterOptions](js-apis-router.md#routeroptions) | 否    | 返回页面描述信息。当需要返回到指定的页面时传入此参数（通过url指定目标页面）；当只需返回上一页时可以不传入此参数。url指定返回的目标页面：若页面栈中存在该url，则返回至index最大的同名页面；若不存在则不响应操作。若url未设置，则返回上一页（页面不会重新构建，出栈后会被回收）。 |
 
 **示例：**
 
@@ -1376,8 +1407,8 @@ back(index: number, params?: Object): void
 
 | 参数名     | 类型                              | 必填   | 说明         |
 | ------- | ------------------------------- | ---- | ---------- |
-| index | number | 是    | 跳转目标页面的索引值。 <br/> 取值范围：[0, +∞) |
-| params    | Object      | 否    | 页面返回时携带的参数。 |
+| index | number | 是    | 返回目标页面的索引值，从0开始计数（注意：与[getStateByIndex](#getstatebyindex12)的index参数不同，后者从1开始计数）。 <br/> 取值范围：[0, +∞)。如果index超出页面栈范围或不存在对应页面，则不响应用户操作。 |
+| params    | Object      | 否    | 页面返回时携带的参数。不传入时不携带参数。 |
 
 **示例：**
 
@@ -1407,6 +1438,10 @@ router.back(1, {info:'来自Home页'}); // 携带参数返回
 clear(): void
 
 清空页面栈中的所有历史页面，仅保留当前页面作为栈顶页面。
+
+> **说明：** 
+>
+> 调用 clear()方法会清空全部历史页面栈，最终仅保留当前页面，页面栈深度变为1。此时栈内无历史记录，back()回退接口将失效；但pushUrl()、replaceUrl()等跳转方法仍可正常使用，支持新增页面或替换当前页面。该操作具备不可逆特性，执行完成后用户无法回访任何历史页面，建议仅在退出登录、切换账号等业务场景下使用，调用前务必持久化存储关键页面状态数据。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1468,8 +1503,6 @@ getStackSize(): number
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -1551,7 +1584,7 @@ getStateByIndex(index: number): router.RouterState | undefined
 
 | 参数名     | 类型                              | 必填   | 说明         |
 | ------- | ------------------------------- | ---- | ---------- |
-| index    | number | 是   | 表示要获取的页面索引。 <br/> 取值范围：[1, +∞) |
+| index    | number | 是   | 表示要获取的页面索引，从1开始计数（注意：与[back](#back12)的index参数不同，后者从0开始计数）。 <br/> 取值范围：[1, +∞)。索引不存在时返回undefined。 |
 
 **返回值：**
 
@@ -1579,9 +1612,9 @@ if (options != undefined) {
 ```
 ## getStateByUrl<sup>12+</sup>
 
-getStateByUrl(url: string): Array<router.[RouterState](js-apis-router.md#routerstate)>
+getStateByUrl(url: string): Array\<router.RouterState>
 
-通过url获取当前页面的状态信息。
+通过url获取匹配指定url的页面的状态信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1591,7 +1624,7 @@ getStateByUrl(url: string): Array<router.[RouterState](js-apis-router.md#routers
 
 | 参数名     | 类型                              | 必填   | 说明         |
 | ------- | ------------------------------- | ---- | ---------- |
-| url    | string | 是   | 表示要获取对应页面信息的url。  |
+| url    | string | 是   | 表示要获取对应页面信息的url，需使用应用内页面路径格式。如果页面栈中没有对应url的页面，返回空数组。  |
 
 **返回值：**
 
@@ -1621,7 +1654,7 @@ for (let i: number = 0; i < options.length; i++) {
 
 showAlertBeforeBackPage(options: router.EnableAlertOptions): void
 
-开启页面返回询问对话框。
+开启页面返回询问对话框。调用此方法后，当用户触发返回操作（如点击返回键、调用back方法）时，系统会先弹出确认对话框询问用户是否返回；用户确认后才会执行返回操作，取消则留在当前页面。适用于表单填写页面（防止用户误触返回导致内容丢失）、重要操作确认页面（如支付、提交订单等）、内容编辑页面（用户可能有未保存的修改时）等场景。与hideAlertBeforeBackPage()方法成对使用：调用本方法开启对话框后，建议在适当时机调用hideAlertBeforeBackPage()关闭对话框。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1631,7 +1664,7 @@ showAlertBeforeBackPage(options: router.EnableAlertOptions): void
 
 | 参数名     | 类型                                       | 必填   | 说明        |
 | ------- | ---------------------------------------- | ---- | --------- |
-| options | [router.EnableAlertOptions](js-apis-router.md#enablealertoptions) | 是    | 文本弹窗信息描述。 |
+| options | [router.EnableAlertOptions](js-apis-router.md#enablealertoptions) | 是    | 文本弹窗信息描述，包含message（弹窗提示内容）等参数。 |
 
 **错误码：**
 
@@ -1668,7 +1701,7 @@ try {
 
 hideAlertBeforeBackPage(): void
 
-禁用页面返回询问对话框。
+禁用页面返回询问对话框。适用于用户已完成保存操作可以安全返回、页面状态切换后不再需要返回确认、需要动态控制返回行为等场景。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1691,11 +1724,13 @@ router.hideAlertBeforeBackPage();
 
 getParams(): Object
 
-获取发起跳转的页面往当前页传入的参数。
+获取发起跳转的页面往当前页传入的参数。参数在页面跳转时通过RouterOptions或NamedRouterOptions的params字段传递。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+
 
 **返回值：**
 

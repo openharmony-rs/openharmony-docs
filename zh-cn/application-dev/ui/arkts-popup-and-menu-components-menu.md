@@ -1,7 +1,7 @@
 # 菜单控制（Menu）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Armstrong15-->
+<!--Owner: @H-xinwei-->
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -31,7 +31,7 @@ Button('click for Menu')
   ])
 ```
 
-![zh-cn_image_0000001562940565](figures/zh-cn_image_0000001562940565.png)
+![zh-cn_image_0000001562940565](figures/Creating-Menu-Default.png)
 
 ## 创建自定义样式的菜单
 
@@ -135,7 +135,7 @@ Button('click for Menu')
   .bindMenu(this.MyMenu)
 ```
 
-![zh-cn_image_0000001511580924](figures/zh-cn_image_0000001511580924.png)
+![zh-cn_image_0000001511580924](figures/bindMenu-Attribute.png)
 
 ## 创建支持右键或长按的菜单
 

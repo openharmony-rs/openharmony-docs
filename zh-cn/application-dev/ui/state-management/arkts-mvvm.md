@@ -1,8 +1,8 @@
 # MVVM模式（V1）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zzq212050299-->
-<!--Designer: @s10021109-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -227,7 +227,7 @@ struct ThingComponent2 {
   @Prop isFinished: boolean;
 
   build() {
-    // 待办事项1
+      // 待办事项2
     Row({ space: 15 }) {
       if (this.isFinished) {
         // 请将$r('app.media.finished')替换为实际资源文件
@@ -292,7 +292,7 @@ struct PropLinkIndex {
 * 上个示例虽然拆分出了子组件，但发现组件1和组件2的代码非常相似，当渲染的组件除了数据外，其他设置都相同时，此时就需要使用[ForEach循环渲染](../../reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md)。
 * ForEach使用之后，冗余代码变得更少，并且代码结构更加清晰。
 
-<!-- @[foreach_update_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/ForEachIndex.ets) -->
+<!-- @[foreach_update_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/ForEachIndex.ets) --> 
 
 ``` TypeScript
 @Component
@@ -336,7 +336,7 @@ struct ForEachThingComponent {
   @Prop thing: string;
 
   build() {
-    // 待办事项1
+      // 待办事项
     Row({ space: 15 }) {
       if (this.isFinished) {
         // 请将$r('app.media.finished')替换为实际资源文件
@@ -388,11 +388,10 @@ struct ForEachIndex {
     // 请将$r('app.string.sleep')替换为实际资源文件，在本示例中该资源文件的value值为"1.30 睡觉"
     $r('app.string.sleep')
   ];
-  context1 = this.getUIContext().getHostContext();
 
   aboutToAppear(): void {
     for (let i = 0; i < this.planList.length; i++) {
-      this.planList[i] = this.context1!.resourceManager.getStringSync((this.planList[i] as Resource).id);
+      this.planList[i] = resource.resourceToString(this.planList[i] as Resource);
     };
   }
 
@@ -406,7 +405,7 @@ struct ForEachIndex {
 
       List() {
         ForEach(this.planList, (item: string) => {
-          // 待办事项1
+          // 待办事项
           ForEachThingComponent({ isFinished: this.isFinished, thing: item })
             .margin(5)
         })
@@ -430,7 +429,7 @@ struct ForEachIndex {
 * Builder方法用于组件内定义方法，可以使得相同代码可以在组件内进行复用。
 * 本示例不仅使用了[@Builder](./arkts-builder.md)方法进行去重，还对数据进行了移除，可以看到此时代码更加清晰易读，相对于最开始的代码，`@Entry`组件基本只用于处理页面构建逻辑，而不处理大量与页面设计无关的内容。
 
-<!-- @[builder_source_update_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/BuilderIndex.ets) -->
+<!-- @[builder_source_update_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/pages/BuilderIndex.ets) --> 
 
 ``` TypeScript
 @Observed
@@ -505,7 +504,7 @@ struct BuilderThingComponent {
   }
 
   build() {
-    // 待办事项1
+      // 待办事项
     Row({ space: 15 }) {
       if (this.isFinished) {
         // 请将$r('app.media.finished')替换为实际资源文件
@@ -518,8 +517,7 @@ struct BuilderThingComponent {
         .fontSize(24)
         .decoration({ type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None })
         .onClick(() => {
-          // 请将$r('app.string.la_la')替换为实际资源文件，在本示例中该资源文件的value值为"啦"
-          this.thing += this.getUIContext().getHostContext()!.resourceManager.getStringSync($r('app.string.la_la').id);
+          this.thing += 'lala';
         })
     }
     .height('8%')
@@ -542,7 +540,7 @@ struct BuilderIndex {
   aboutToAppear(): void {
     for (let i = 0; i < this.data.planList.length; i++) {
       this.data.planList[i] =
-        this.getUIContext().getHostContext()!.resourceManager.getStringSync((this.data.planList[i] as Resource).id);
+        resource.resourceToString(this.data.planList[i] as Resource);
     }
   }
 
@@ -556,7 +554,7 @@ struct BuilderIndex {
 
       List() {
         ForEach(this.data.planList, (item: string) => {
-          // 待办事项1
+          // 待办事项
           BuilderThingComponent({ isFinished: this.isFinished, thing: item })
             .margin(5)
         })
@@ -584,20 +582,6 @@ struct BuilderIndex {
 ## 通过MVVM开发备忘录实战
 
 上一章节展示了非MVVM模式下的代码组织方式。随着主页面代码的增加，应该采取合理的分层策略，使项目结构清晰，组件之间不互相引用，避免后期维护时牵一发而动全身，增加功能更新的困难。本章将通过对MVVM的核心文件组织模式，向开发者展示如何使用MVVM来重构上一章节的代码。
-
-### MVVM文件结构说明
-
-```txt
-├── src
-│   ├── ets
-│   │   ├── pages 存放页面组件。
-│   │   ├── views 存放业务组件。
-│   │   ├── shares 存放通用组件。
-│   │   └── viewmodel 数据服务。
-│   │   │   ├── LoginViewModel.ets 登录页ViewModel。
-│   │   │   └── xxxViewModel.ets 其他页ViewModel。
-│
-```
 
 ### 分层设计技巧
 
@@ -636,17 +620,17 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 ```txt
 ├── src
 │   ├── ets
-│   │   ├── model
+│   │   ├── model // 存放数据结构
 │   │   │   ├── ThingModel.ets
 │   │   │   └── TodoListModel.ets
-│   │   ├── pages
+│   │   ├── pages // 存放页面组件
 │   │   │   ├── Index.ets
-│   │   ├── views
+│   │   ├── views // 存放业务组件
 │   │   │   ├── AllChooseComponent.ets
 │   │   │   ├── ThingComponent.ets
 │   │   │   ├── TodoComponent.ets
 │   │   │   └── TodoListComponent.ets
-│   │   ├── viewmodel
+│   │   ├── viewmodel // 存放数据服务
 │   │   │   ├── ThingViewModel.ets
 │   │   │   └── TodoListViewModel.ets
 │   └── resources
@@ -670,7 +654,7 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 
   * TodoListModel.ets
 
-  <!-- @[to_do_list_model_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/model/TodoListModel.ets) --> 
+  <!-- @[to_do_list_model_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/model/TodoListModel.ets) -->   
   
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
@@ -696,6 +680,7 @@ View层根据需要来组织，但View层需要区分一下三种组件：
         let result = textDecoder.decodeToString(getJson, { stream: false });
         this.things = JSON.parse(result);
       } catch (error) {
+        // 任务加载失败，输出error信息，便于排查失败原因
         hilog.error(DOMAIN, TAG, 'Failed to load tasks. Cause: %{public}s', JSON.stringify(error.message));
       }
     }
@@ -892,7 +877,7 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 
   * ThingViewModel.ets
 
-  <!-- @[thing_view_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/viewmodel/ThingViewModel.ets) -->
+  <!-- @[thing_view_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/viewmodel/ThingViewModel.ets) --> 
   
   ``` TypeScript
   import ThingModel from '../model/ThingModel';
@@ -913,8 +898,7 @@ View层根据需要来组织，但View层需要区分一下三种组件：
     }
   
     addSuffixes(): void {
-      // 请在resources\base\element\string.json文件中配置name为'la_la'，value为非空字符串的资源
-      this.thingName += this.context.resourceManager.getStringSync($r('app.string.la_la').id);
+      this.thingName += 'lala';
     }
   }
   ```
@@ -922,7 +906,7 @@ View层根据需要来组织，但View层需要区分一下三种组件：
 
   * TodoListViewModel.ets
 
-  <!-- @[to_do_list_view_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/viewmodel/TodoListViewModel.ets) --> 
+  <!-- @[to_do_list_view_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsMvvmSample/entry/src/main/ets/viewmodel/TodoListViewModel.ets) -->  
   
   ``` TypeScript
   import ThingViewModel from './ThingViewModel';
@@ -949,6 +933,7 @@ View层根据需要来组织，但View层需要区分一下三种组件：
     }
   
     chooseAll(): void {
+      // 遍历所有待办事项，设置其完成状态
       for (let thing of this.things) {
         thing.isFinish = this.isChosen;
       }

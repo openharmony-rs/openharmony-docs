@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **ListItem** component displays specific items in the list. It must be used together with **List**.
@@ -157,7 +157,7 @@ Enumerates the sticky effects for list items.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [stickyStyle](ts-container-list.md#stickystyle9) of the **List** component instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [StickyStyle](ts-container-list.md#stickystyle9) of the **List** component instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -413,7 +413,7 @@ struct ListItemExample {
 }
 ```
 
-![en-us_image_0000001219864159](figures/en-us_image_0000001219864159.gif)
+![listItem1](figures/listItem1.gif)
 
 ### Example 2: Setting the Swipe Action Item
 This example shows how to set the swipe action item for a list item using **swipeAction**.
@@ -433,7 +433,11 @@ struct ListItemExample2 {
     Row() {
       Button('Delete').margin('4vp')
       Button('Set').margin('4vp').onClick(() => {
-        this.scroller.closeAllSwipeActions();
+        try {
+          this.scroller.closeAllSwipeActions();
+        } catch (error) {
+          console.info('Failed to close all swipe actions:', error);
+        }
       })
     }.padding('4vp').justifyContent(FlexAlign.SpaceEvenly)
   }

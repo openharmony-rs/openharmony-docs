@@ -6,19 +6,19 @@
 <!--Tester: @ltttjs; @logic42-->
 <!--Adviser: @ge-yafang-->
 
-端云服务提供端云协同、端云共享和端云策略。
+端云服务提供端云协同和端云共享能力。
 
-端云协同提供结构化数据（RDB Store）端云同步的能力。即：云作为数据的中心节点，通过与云的数据同步，实现数据云备份、同账号设备间的数据一致性。
+端云协同提供结构化数据（RDB Store，关系型数据库）端云同步的能力。即：云作为数据的中心节点，通过与云空间的数据同步，实现数据云备份、同账号设备间的数据一致性。
 
-端云共享是在端云协同能力基础上，实现跨账号的数据共享。其中，端云共享资源标识是指：对于应用发起共享的每一条数据记录，该条数据在进行端云同步时会生成唯一的共享资源标识（字符串类型的值），此标识则作为该条数据记录共享时的识别标识。
+端云共享是在端云协同能力基础上，实现跨账号的数据共享。其中，端云共享资源标识是指：对于应用发起共享的每一条数据记录，该条数据在进行端云同步时会生成唯一的共享资源标识（字符串类型的值），此标识作为该条数据记录共享时的识别标识。
 
-端云共享参与者是指： 共享发起者根据好友列表选中的参与当前数据共享的所有人员。
+端云共享参与者是指：共享发起者根据好友列表选中的参与当前数据共享的所有人员。
 
-端云共享邀请码是指： 共享发起后，在共享的服务端会生成当前共享操作的邀请码，并将该邀请码附加到当前共享邀请中，通过push消息推送到被邀请者的设备端，被邀请者可以通过该邀请码进行邀请的确认。
+端云共享邀请码是指：共享发起后，在共享的服务端会生成当前共享操作的邀请码，并将该邀请码附加到当前共享邀请中，通过推送消息推送到被邀请者的设备端，被邀请者可以通过该邀请码进行邀请的确认。
 
 该模块提供以下端云服务相关的常用功能：
 
-- [Config](#config)：提供配置端云协同的方法，包括云同步打开、关闭、清理数据、数据变化通知。
+- [Config](#config)：提供配置端云协同的方法，包括云同步打开、关闭、清除数据、数据变化通知。
 - [sharing](#sharing11)：提供端云共享的方法，包括发起共享、取消共享、退出共享、更改共享数据权限、查找共享参与者、确认邀请、更改已确认的邀请、查找共享资源。
 
 > **说明：** 
@@ -41,11 +41,11 @@ import { cloudData } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
-| 名称      | 说明                         |
-| --------- | ---------------------------- |
-| CLEAR_CLOUD_INFO | 清除从云端下载的数据的云标识，相关数据作为本地数据保存。 |
-| CLEAR_CLOUD_DATA_AND_INFO |清除从云端下载的数据，不包括本地已修改的云端数据。   |
-| CLEAR_CLOUD_NONE<sup>23+</sup> |不执行任何清除操作。   |
+| 名称      |  值 | 说明                         |
+| --------- | --- | ---------------------------- |
+| CLEAR_CLOUD_INFO | 0 | 清除从云端下载的数据的云标识（即数据来源于云端的标记信息），相关数据作为本地数据保存。 |
+| CLEAR_CLOUD_DATA_AND_INFO | 1 | 清除从云端下载的数据，不包括本地已修改的云端数据。   |
+| CLEAR_CLOUD_NONE<sup>23+</sup> | 2 | 不执行任何清除操作。   |
 
 ## ExtraData<sup>11+</sup>
 
@@ -55,37 +55,36 @@ import { cloudData } from '@kit.ArkData';
 
 | 名称      | 类型   | 只读 | 可选 | 说明                                                         |
 | --------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| eventId   | string | 否   | 否   | 如果传值为"cloud_data_change"，表示云数据变更。              |
-| extraData | string | 否   | 否   | 透传数据，extraData是json结构的字符串，其中必须包括"data"字段，"data"中是通知变更所需要的信息，包含账号、应用名、数据库名、数据库类型和数据库表名，所有字段均不能为空。
+| eventId   | string | 否   | 否   | 事件标识。当前仅支持"cloud_data_change"，表示云数据变更，传入其他值视为无效参数。 |
+| extraData | string | 否   | 否   | 透传数据，extraData为JSON结构的字符串，其中必须包括"data"字段，"data"中是通知变更所需要的信息，包含账号、应用包名、数据库名、数据库类型和数据库表名，所有字段均不能为空。 |
 
 **示例：**
 
 ```ts
-// accountId:用户打开的云账号ID
-// bundleName:应用包名
-// containerName:云上数据库名称
-// databaseScopes:云上数据库类型
-// recordTypes:云上数据库表名
+// accountId: 用户打开的云账号ID
+// bundleName: 应用包名
+// containerName: 云上数据库名称
+// databaseScopes: 云上数据库类型
+// recordTypes: 云上数据库表名
 
 let extraData: cloudData.ExtraData = {
   eventId: "cloud_data_change",
   extraData: '{"data": "{"accountId": "aaa", "bundleName": "com.bbb.xxx", "containerName": "alias", "databaseScopes": ["private", "shared"], "recordTypes": ["xxx", "yyy", "zzz"]}"}',
 }
-
 ```
 
 ## StatisticInfo<sup>12+</sup>
 
-返回数据，携带端云同步统计信息所需要的信息。
+端云同步的统计信息。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
 | 名称      | 类型   | 只读 | 可选 | 说明                                                  |
 | --------- | ------ | ---- | ---- |-----------------------------------------------------|
 | table   | string | 否   | 否   | 查询的表名。如返回值为"cloud_notes"，表示查询结果是表名为"cloud_notes"的同步信息。 |
-| inserted   | number | 否   | 否   | 本地新增且云端还未同步数据的条数，如返回值为2，表示本地新增2条数据且云端还未同步。          |
-| updated   | number | 否   | 否   | 云端同步之后本地或云端修改还未同步的条数，如返回值为2，表示本地或云端修改还有2条数据未同步。     |
-| normal | number | 否   | 否   | 端云一致的数据。如返回值为2，表示本地与云端一致的数据为2条。                     |
+| inserted   | number | 否   | 否   | 本地新增且未同步到云端的数据条数，如返回值为2，表示本地新增2条数据且还未同步到云端。          |
+| updated   | number | 否   | 否   | 云端同步之后，本地或云端修改还未同步的数据条数，如返回值为2，表示本地或云端修改还有2条数据未同步。 |
+| normal | number | 否   | 否   | 端云一致的数据条数。如返回值为2，表示本地与云端一致的数据为2条。 |
 
 ## SyncStatus<sup>18+</sup>
 
@@ -95,12 +94,12 @@ let extraData: cloudData.ExtraData = {
 
 | 名称      | 值   | 说明              |
 | -------- |-----|-----------------|
-| RUNNING | 0  | 表示端云同步任务处于运行状态。 |
-| FINISHED | 1   | 表示端云同步任务处于完成状态。 |
+| RUNNING | 0  | 端云同步任务正在运行中。 |
+| FINISHED | 1   | 端云同步任务已完成。 |
 
 ## SyncInfo<sup>12+</sup>
 
-返回数据，最近一次端云同步所需要的信息。
+端云同步信息，包含最近一次端云同步的时间、结果和状态。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
@@ -109,20 +108,24 @@ let extraData: cloudData.ExtraData = {
 | startTime  | Date                                                         | 否   | 否   | 最近一次端云同步的开始时间。 |
 | finishTime | Date                                                         | 否   | 否   | 最近一次端云同步的结束时间。 |
 | code       | [relationalStore.ProgressCode](arkts-apis-data-relationalStore-e.md#progresscode10) | 否 | 否 | 最近一次端云同步的结果。 |
-| syncStatus<sup>18+</sup> | [SyncStatus](#syncstatus18) | 否 | 是 | 最近一次端云同步的状态，默认值cloudData.SyncStatus.RUNNING。 |
+| syncStatus<sup>18+</sup> | [SyncStatus](#syncstatus18) | 否 | 是 | 最近一次端云同步的状态，默认值为cloudData.SyncStatus.RUNNING。 |
 
 ## DBSwitchInfo<sup>23+</sup>
 
 端云协同数据库开关配置信息。
 
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
+
 | 名称       | 类型            | 只读 | 可选 | 说明                       |
 | ---------- | -------------- | ---- | ---- | -------------------------- |
-| enable     | boolean           | 否   | 否   | 数据库是否启用端云协同的开关状态。true为打开端云协同开关，false为关闭该开关。 |
+| enable     | boolean           | 否   | 否   | 数据库是否启用端云协同开关。true为启用端云协同开关，false为不启用该开关。 |
 | tableInfo  | Record<string, boolean> | 否   | 是   | 表级别的端云协同开关配置信息。键为表名，值为该表的开关状态。true为打开该表的端云协同开关，false为关闭该表开关。当未配置该参数时，默认按照数据库级开关状态enable生效。 |
 
 ## SwitchConfig<sup>23+</sup>
 
 端云协同数据库级配置。
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
 | 名称       | 类型            | 只读 | 可选 | 说明                       |
 | ---------- | -------------- | ---- | ---- | -------------------------- |
@@ -131,6 +134,8 @@ let extraData: cloudData.ExtraData = {
 ## DBActionInfo<sup>23+</sup>
 
 端云协同数据库级清除配置信息。
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
 | 名称       | 类型            | 只读 | 可选 | 说明                       |
 | ---------- | -------------- | ---- | ---- | -------------------------- |
@@ -150,25 +155,29 @@ let extraData: cloudData.ExtraData = {
 | 名称       | 类型            | 只读 | 可选 | 说明                       |
 | ---------- | -------------- | ---- | ---- | -------------------------- |
 | bundleName | string           | 否   | 否   | 应用包名。 |
-| storeId    | string | 否   | 是   | 数据库名称。默认值为空字符串。 |
+| storeId    | string | 否   | 是   | 数据库名称。默认值为空字符串，此时查询该应用下所有数据库。 |
 
 ## ClearConfig<sup>23+</sup>
 
 端云协同数据库级清除配置。
 
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
+
 | 名称       | 类型            | 只读 | 可选 | 说明                       |
 | ---------- | -------------- | ---- | ---- | -------------------------- |
-| dbInfo     | Record<string, [DBActionInfo](#dbactioninfo23)>    | 否   | 否   | 要清除数据的库信息及清除规则。键为库名称，值为该库的清除配置信息。   |
+| dbInfo     | Record<string, [DBActionInfo](#dbactioninfo23)>    | 否   | 否   | 要清除数据的库信息及清除规则。键为数据库名称，值为该数据库的清除配置信息。   |
 
 ## Config
 
-提供配置端云协同的方法，包括云同步打开、关闭、清理数据、数据变化通知。
+提供配置端云协同的方法，包括云同步打开、关闭、清除数据、数据变化通知。
 
 ### enableCloud
 
 static enableCloud(accountId: string, switches: Record<string, boolean>, callback: AsyncCallback&lt;void&gt;): void
 
-打开端云协同，使用callback异步回调。
+打开端云协同开关，使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **需要权限**：ohos.permission.CLOUDDATA_CONFIG
 
@@ -178,9 +187,9 @@ static enableCloud(accountId: string, switches: Record<string, boolean>, callbac
 
 | 参数名    | 类型                            | 必填 | 说明                                                         |
 | --------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| accountId | string                          | 是   | 具体打开的云账号ID。                                         |
+| accountId | string                          | 是   | 已登录的云账号ID。                                         |
 | switches  | Record<string, boolean>         | 是   | 各应用的端云协同开关信息。true为打开该应用端云开关，false为关闭该应用端云开关。 |
-| callback  | AsyncCallback&lt;void&gt;       | 是   | 回调函数。                                                   |
+| callback  | AsyncCallback&lt;void&gt;       | 是   | 回调函数。当打开端云协同功能成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -198,7 +207,7 @@ static enableCloud(accountId: string, switches: Record<string, boolean>, callbac
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let account: string = 'test_id';
+let account: string = "test_id";
 let switches: Record<string, boolean> = { 'test_bundleName1': true, 'test_bundleName2': false };
 try {
   cloudData.Config.enableCloud(account, switches, (err: BusinessError) => {
@@ -218,7 +227,9 @@ try {
 
 static enableCloud(accountId: string, switches: Record<string, boolean>): Promise&lt;void&gt;
 
-打开端云协同，使用Promise异步回调。
+打开端云协同开关，使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **需要权限**：ohos.permission.CLOUDDATA_CONFIG
 
@@ -228,14 +239,14 @@ static enableCloud(accountId: string, switches: Record<string, boolean>): Promis
 
 | 参数名    | 类型                            | 必填 | 说明                                                         |
 | --------- | ------------------------------- | ---- | ------------------------------------------------------------ |
-| accountId | string                          | 是   | 具体打开的云账号ID。                                         |
+| accountId | string                          | 是   | 已登录的云账号ID。                                         |
 | switches  | Record<string, boolean>         | 是   | 各应用的端云协同开关信息。true为打开该应用端云开关，false为关闭该应用端云开关。 |
 
 **返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -253,7 +264,7 @@ static enableCloud(accountId: string, switches: Record<string, boolean>): Promis
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let account: string = 'test_id';
+let account: string = "test_id";
 let switches: Record<string, boolean> = { 'test_bundleName1': true, 'test_bundleName2': false };
 try {
   cloudData.Config.enableCloud(account, switches).then(() => {
@@ -273,6 +284,8 @@ static disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): voi
 
 关闭端云协同，使用callback异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **需要权限**：ohos.permission.CLOUDDATA_CONFIG
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
@@ -281,8 +294,8 @@ static disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): voi
 
 | 参数名    | 类型                      | 必填 | 说明                 |
 | --------- | ------------------------- | ---- | -------------------- |
-| accountId | string                    | 是   | 具体打开的云账号ID。 |
-| callback  | AsyncCallback&lt;void&gt; | 是   | 回调函数。           |
+| accountId | string                    | 是   | 已登录的云账号ID。 |
+| callback  | AsyncCallback&lt;void&gt; | 是   | 回调函数。当关闭端云协同成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -300,7 +313,7 @@ static disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): voi
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let account: string = 'test_id';
+let account: string = "test_id";
 try {
   cloudData.Config.disableCloud(account, (err: BusinessError) => {
     if (err === undefined) {
@@ -321,6 +334,8 @@ static disableCloud(accountId: string): Promise&lt;void&gt;
 
 关闭端云协同，使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **需要权限**：ohos.permission.CLOUDDATA_CONFIG
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
@@ -329,13 +344,13 @@ static disableCloud(accountId: string): Promise&lt;void&gt;
 
 | 参数名    | 类型   | 必填 | 说明                 |
 | --------- | ------ | ---- | -------------------- |
-| accountId | string | 是   | 具体打开的云账号ID。 |
+| accountId | string | 是   | 已登录的云账号ID。 |
 
 **返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -353,7 +368,7 @@ static disableCloud(accountId: string): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let account: string = 'test_id';
+let account: string = "test_id";
 try {
   cloudData.Config.disableCloud(account).then(() => {
     console.info('Succeeded in disabling cloud');
@@ -372,6 +387,8 @@ static changeAppCloudSwitch(accountId: string, bundleName: string, status: boole
 
 修改单个应用端云协同开关，使用callback异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **需要权限**：ohos.permission.CLOUDDATA_CONFIG
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
@@ -380,10 +397,10 @@ static changeAppCloudSwitch(accountId: string, bundleName: string, status: boole
 
 | 参数名    | 类型                            | 必填 | 说明                         |
 | --------- | ------------------------------- | ---- | ---------------------------- |
-| accountId | string                          | 是   | 具体打开的云账号ID。 |
-| bundleName| string                         | 是   | 应用名。 |
+| accountId | string                          | 是   | 已登录的云账号ID。 |
+| bundleName| string                         | 是   | 应用包名。 |
 | status    | boolean                        | 是   | 应用的端云协同开关信息。true为打开该应用端云开关，false为关闭该应用端云开关。 |
-| callback  | AsyncCallback&lt;void&gt;       | 是   | 回调函数。                   |
+| callback  | AsyncCallback&lt;void&gt;       | 是   | 回调函数。当修改单个应用端云协同开关成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -401,8 +418,8 @@ static changeAppCloudSwitch(accountId: string, bundleName: string, status: boole
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let account: string = 'test_id';
-let bundleName: string = 'test_bundleName';
+let account: string = "test_id";
+let bundleName: string = "test_bundleName";
 try {
   cloudData.Config.changeAppCloudSwitch(account, bundleName, true, (err: BusinessError) => {
     if (err === undefined) {
@@ -423,6 +440,8 @@ static changeAppCloudSwitch(accountId: string, bundleName: string, status: boole
 
 修改单个应用端云协同开关，使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **需要权限**：ohos.permission.CLOUDDATA_CONFIG
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
@@ -431,15 +450,15 @@ static changeAppCloudSwitch(accountId: string, bundleName: string, status: boole
 
 | 参数名    | 类型                            | 必填 | 说明                         |
 | --------- | ------------------------------- | ---- | ---------------------------- |
-| accountId | string                          | 是   | 具体打开的云账号ID。 |
-| bundleName| string                         | 是   | 应用名。 |
+| accountId | string                          | 是   | 已登录的云账号ID。 |
+| bundleName| string                         | 是   | 应用包名。 |
 | status    | boolean                        | 是   | 应用的端云协同开关信息。true为打开该应用端云开关，false为关闭该应用端云开关。 |
 
 **返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -457,8 +476,8 @@ static changeAppCloudSwitch(accountId: string, bundleName: string, status: boole
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let account: string = 'test_id';
-let bundleName: string = 'test_bundleName';
+let account: string = "test_id";
+let bundleName: string = "test_bundleName";
 try {
   cloudData.Config.changeAppCloudSwitch(account, bundleName, true).then(() => {
     console.info('Succeeded in changing App cloud switch');
@@ -479,6 +498,8 @@ static changeAppCloudSwitch(accountId: string, bundleName: string, status: boole
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统接口：** 此接口为系统接口。
+
 **需要权限**：ohos.permission.CLOUDDATA_CONFIG
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
@@ -487,8 +508,8 @@ static changeAppCloudSwitch(accountId: string, bundleName: string, status: boole
 
 | 参数名    | 类型                            | 必填 | 说明                         |
 | --------- | ------------------------------- | ---- | ---------------------------- |
-| accountId | string                          | 是   | 具体打开的云账号ID。 |
-| bundleName| string                         | 是   | 应用名。 |
+| accountId | string                          | 是   | 已登录的云账号ID。 |
+| bundleName| string                         | 是   | 应用包名。 |
 | status    | boolean                        | 是   | 应用的端云协同开关信息。true为打开该应用端云开关，false为关闭该应用端云开关。 |
 | config    | [SwitchConfig](#switchconfig23)   | 否   | 端云协同数据库级开关配置信息。端云协同开关优先级：应用级 > 数据库级 > 表级。当未配置该参数时，默认使用应用级的开关配置信息。|
 
@@ -513,8 +534,8 @@ static changeAppCloudSwitch(accountId: string, bundleName: string, status: boole
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let account: string = 'test_id';
-let bundleName: string = 'test_bundleName';
+let account: string = "test_id";
+let bundleName: string = "test_bundleName";
 let config: cloudData.SwitchConfig = {
   dbInfo: {
     'test_storeName1': {
@@ -544,6 +565,8 @@ static notifyDataChange(accountId: string, bundleName: string, callback: AsyncCa
 
 通知云端的数据变更，使用callback异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **需要权限**：ohos.permission.CLOUDDATA_CONFIG
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
@@ -552,9 +575,9 @@ static notifyDataChange(accountId: string, bundleName: string, callback: AsyncCa
 
 | 参数名     | 类型                      | 必填 | 说明                 |
 | ---------- | ------------------------- | ---- | -------------------- |
-| accountId  | string                    | 是   | 具体打开的云账号ID。 |
-| bundleName | string                    | 是   | 应用名。             |
-| callback   | AsyncCallback&lt;void&gt; | 是   | 回调函数。           |
+| accountId  | string                    | 是   | 已登录的云账号ID。 |
+| bundleName | string                    | 是   | 应用包名。             |
+| callback   | AsyncCallback&lt;void&gt; | 是   | 回调函数。当通知云端的数据变更成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -572,8 +595,8 @@ static notifyDataChange(accountId: string, bundleName: string, callback: AsyncCa
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let account: string = 'test_id';
-let bundleName: string = 'test_bundleName';
+let account: string = "test_id";
+let bundleName: string = "test_bundleName";
 try {
   cloudData.Config.notifyDataChange(account, bundleName, (err: BusinessError) => {
     if (err === undefined) {
@@ -590,9 +613,11 @@ try {
 
 ### notifyDataChange
 
-static notifyDataChange(accountId: string,bundleName: string): Promise&lt;void&gt;
+static notifyDataChange(accountId: string, bundleName: string): Promise&lt;void&gt;
 
 通知云端的数据变更，使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **需要权限**：ohos.permission.CLOUDDATA_CONFIG
 
@@ -602,14 +627,14 @@ static notifyDataChange(accountId: string,bundleName: string): Promise&lt;void&g
 
 | 参数名     | 类型   | 必填 | 说明                 |
 | ---------- | ------ | ---- | -------------------- |
-| accountId  | string | 是   | 具体打开的云账号ID。 |
-| bundleName | string | 是   | 应用名。             |
+| accountId  | string | 是   | 已登录的云账号ID。 |
+| bundleName | string | 是   | 应用包名。             |
 
 **返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -627,8 +652,8 @@ static notifyDataChange(accountId: string,bundleName: string): Promise&lt;void&g
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let account: string = 'test_id';
-let bundleName: string = 'test_bundleName';
+let account: string = "test_id";
+let bundleName: string = "test_bundleName";
 try {
   cloudData.Config.notifyDataChange(account, bundleName).then(() => {
     console.info('Succeeded in notifying the change of data');
@@ -643,9 +668,11 @@ try {
 
 ### notifyDataChange<sup>11+</sup>
 
- static notifyDataChange(extInfo: ExtraData, callback: AsyncCallback&lt;void&gt;):void
+static notifyDataChange(extInfo: ExtraData, callback: AsyncCallback&lt;void&gt;):void
 
 通知云端的数据变更，可以通过extInfo中的extraData字段指定变更的数据库名和表名，使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **需要权限**：ohos.permission.CLOUDDATA_CONFIG
 
@@ -664,7 +691,7 @@ try {
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, which is usually returned by VerifyAccessToken.|
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
 | 202      | Permission verification failed, application which is not a system application uses system API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 | 801      | Capability not supported.|
@@ -694,9 +721,11 @@ try {
 
 ### notifyDataChange<sup>11+</sup>
 
-static notifyDataChange(extInfo: ExtraData, userId: number,callback: AsyncCallback&lt;void&gt;):void
+static notifyDataChange(extInfo: ExtraData, userId: number, callback: AsyncCallback&lt;void&gt;):void
 
 通知云端的数据变更，可以通过extInfo中的extraData字段指定变更的数据库名和表名，可通过userId指定用户ID，使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **需要权限**：ohos.permission.CLOUDDATA_CONFIG
 
@@ -707,7 +736,7 @@ static notifyDataChange(extInfo: ExtraData, userId: number,callback: AsyncCallba
 | 参数名   | 类型                      | 必填 | 说明                                            |
 | -------- | ------------------------- | ---- | ----------------------------------------------- |
 | extInfo  | [ExtraData](#extradata11)   | 是   | 透传数据，包含通知数据变更后的应用信息。        |
-| userId   | number                    | 是   | 用户ID。对应为系统中现有的用户ID。 |
+| userId   | number                    | 是   | 用户ID，对应为系统中现有的用户ID。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当数据变更通知成功，err为undefined，否则为错误对象。|
 
 **错误码：**
@@ -716,7 +745,7 @@ static notifyDataChange(extInfo: ExtraData, userId: number,callback: AsyncCallba
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, which is usually returned by VerifyAccessToken.|
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
 | 202      | Permission verification failed, application which is not a system application uses system API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 | 801      | Capability not supported.|
@@ -751,6 +780,8 @@ static notifyDataChange(extInfo: ExtraData, userId?: number): Promise&lt;void&gt
 
 通知云端的数据变更，可以通过extInfo中的extraData字段指定变更的数据库名和表名，可通过userId指定用户ID，使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **需要权限**：ohos.permission.CLOUDDATA_CONFIG
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
@@ -759,14 +790,14 @@ static notifyDataChange(extInfo: ExtraData, userId?: number): Promise&lt;void&gt
 
 | 参数名  | 类型                    | 必填 | 说明                                            |
 | ------- | ----------------------- | ---- | ----------------------------------------------- |
-| extInfo | [ExtraData](#extradata11) | 是   | 透传数据 包含通知数据变更后的应用信息。         |
-| userId  | number                  | 否   | 表示用户ID。此参数是可选的，默认值是当前用户ID，如果指定了此参数，则该值必须是系统中现有的用户ID。 |
+| extInfo | [ExtraData](#extradata11) | 是   | 透传数据，包含通知数据变更后的应用信息。         |
+| userId  | number                  | 否   | 表示用户账号ID。此参数是可选的，默认值是当前用户账号ID，如果指定了此参数，则该值必须是系统中现有的用户账号ID。 |
 
 **返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -774,7 +805,7 @@ static notifyDataChange(extInfo: ExtraData, userId?: number): Promise&lt;void&gt
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, which is usually returned by VerifyAccessToken.|
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
 | 202      | Permission verification failed, application which is not a system application uses system API.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 | 801      | Capability not supported.|
@@ -807,6 +838,8 @@ static queryStatistics(accountId: string, bundleName: string, storeId?: string):
 
 查询端云统计信息，返回未同步、已同步且端云信息一致和已同步且端云信息不一致的统计信息，使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **需要权限**：ohos.permission.CLOUDDATA_CONFIG
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
@@ -815,7 +848,7 @@ static queryStatistics(accountId: string, bundleName: string, storeId?: string):
 
 | 参数名  | 类型      | 必填 | 说明                                |
 | ------- |---------| ---- |-----------------------------------|
-| accountId | string  | 是   | 具体打开的云账号ID。                       |
+| accountId | string  | 是   | 已登录的云账号ID。                       |
 | bundleName | string  | 是   | 应用包名。                             |
 | storeId  | string  | 否   | 数据库名称。默认值为空字符串，此时将查询当前应用所有的本地数据库。 |
 
@@ -823,7 +856,7 @@ static queryStatistics(accountId: string, bundleName: string, storeId?: string):
 
 | 类型                                                                                   | 说明                     |
 |--------------------------------------------------------------------------------------| ------------------------ |
-| Promise&lt;Record&lt;string, Array&lt;[StatisticInfo](#statisticinfo12)&gt;&gt;&gt; | 返回表名以及统计信息结果集。 |
+| Promise&lt;Record&lt;string, Array&lt;[StatisticInfo](#statisticinfo12)&gt;&gt;&gt; | 返回以表名为键、统计信息数组为值的结果集。 |
 
 **错误码：**
 
@@ -841,14 +874,14 @@ static queryStatistics(accountId: string, bundleName: string, storeId?: string):
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-const accountId:string = "accountId";
-const bundleName:string = "bundleName";
-const storeId:string = "storeId";
+const accountId: string = "accountId";
+const bundleName: string = "bundleName";
+const storeId: string = "storeId";
 
 cloudData.Config.queryStatistics(accountId, bundleName, storeId).then((result) => {
-    console.info(`Succeeded in querying statistics. Info is ${JSON.stringify(result)}`);
+  console.info(`Succeeded in querying statistics. Info is ${JSON.stringify(result)}`);
 }).catch((err: BusinessError) => {
-    console.error(`Failed to query statistics. Error code is ${err.code}, message is ${err.message}`);
+  console.error(`Failed to query statistics. Error code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -858,6 +891,8 @@ static queryLastSyncInfo(accountId: string, bundleName: string, storeId?: string
 
 查询上一次端云同步信息，使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **需要权限**：ohos.permission.CLOUDDATA_CONFIG
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
@@ -866,7 +901,7 @@ static queryLastSyncInfo(accountId: string, bundleName: string, storeId?: string
 
 | 参数名     | 类型   | 必填 | 说明                                                         |
 | ---------- | ------ | ---- | ------------------------------------------------------------ |
-| accountId  | string | 是   | 具体打开的云账号ID。                                         |
+| accountId  | string | 是   | 已登录的云账号ID。                                         |
 | bundleName | string | 是   | 应用包名。                                                   |
 | storeId    | string | 否   | 数据库名称。默认值为空字符串，此时查询当前应用下所有数据库上一次端云同步信息。 |
 
@@ -892,30 +927,32 @@ static queryLastSyncInfo(accountId: string, bundleName: string, storeId?: string
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-const accountId:string = "accountId";
-const bundleName:string = "bundleName";
-const storeId:string = "storeId";
+const accountId: string = "accountId";
+const bundleName: string = "bundleName";
+const storeId: string = "storeId";
 try {
-    cloudData.Config.queryLastSyncInfo(accountId, bundleName, storeId).then((result) => {
-    	console.info(`Succeeded in querying last syncinfo. Info is ${JSON.stringify(result)}`);
-	}).catch((err: BusinessError) => {
-    	console.error(`Failed to query last syncinfo. Error code is ${err.code}, message is ${err.message}`);
+  cloudData.Config.queryLastSyncInfo(accountId, bundleName, storeId).then((result) => {
+    console.info(`Succeeded in querying last syncinfo. Info is ${JSON.stringify(result)}`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to query last syncinfo. Error code is ${err.code}, message is ${err.message}`);
 	});
 } catch(e) {
-    let error = e as BusinessError;
-  	console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
-### queryLastSyncInfo
+### batchQueryLastSyncInfo
 
-static queryLastSyncInfo(accountId: string, bundleInfos: Array&lt;BundleInfo&gt;): Promise&lt;Record&lt;string, Record&lt;string, SyncInfo&gt;&gt;&gt;
+static batchQueryLastSyncInfo(accountId: string, bundleInfos: Array&lt;BundleInfo&gt;): Promise&lt;Record&lt;string, Record&lt;string, SyncInfo&gt;&gt;&gt;
 
 批量查询上一次端云同步的信息，使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **需要权限**：ohos.permission.CLOUDDATA_CONFIG
 
@@ -925,8 +962,8 @@ static queryLastSyncInfo(accountId: string, bundleInfos: Array&lt;BundleInfo&gt;
 
 | 参数名     | 类型   | 必填 | 说明                                                         |
 | ---------- | ------ | ---- | ------------------------------------------------------------ |
-| accountId  | string | 是   | 具体打开的云账号ID。                                         |
-| bundleInfos | Array&lt;[BundleInfo](#bundleinfo)&gt; | 是   | 批量查询的应用信息数组。数组支持的最大长度为30，超过最大长度或者空数组返回14800001错误码。 |
+| accountId  | string | 是   | 已登录的云账号ID。                                         |
+| bundleInfos | Array&lt;[BundleInfo](#bundleinfo)&gt; | 是   | 批量查询的应用信息数组。取值范围：数组长度为[1, 30]，超过该范围返回14800001错误码。 |
 
 **返回值：**
 
@@ -957,7 +994,7 @@ const bundleInfos: Array<cloudData.BundleInfo> = [
 ];
 
 try {
-  cloudData.Config.queryLastSyncInfo(accountId, bundleInfos).then((result) => {
+  cloudData.Config.batchQueryLastSyncInfo(accountId, bundleInfos).then((result) => {
     console.info(`Succeeded in querying last sync info. Result is ${JSON.stringify(result)}`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to query last sync info. Error code is ${err.code}, message is ${err.message}`);
@@ -978,6 +1015,8 @@ static onSyncInfoChanged(bundleInfos: Array&lt;BundleInfo&gt;, progress: Callbac
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统接口：** 此接口为系统接口。
+
 **需要权限**：ohos.permission.CLOUDDATA_CONFIG
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
@@ -986,8 +1025,8 @@ static onSyncInfoChanged(bundleInfos: Array&lt;BundleInfo&gt;, progress: Callbac
 
 | 参数名     | 类型   | 必填 | 说明                                                         |
 | ---------- | ------ | ---- | ------------------------------------------------------------ |
-| bundleInfos | Array&lt;[BundleInfo](#bundleinfo)&gt; | 是   | 订阅的应用信息数组。数组支持的最大长度为30，超过最大长度或者空数组返回14800001错误码。 |
-| progress | Callback&lt;Record&lt;string, Record&lt;string, [SyncInfo](#syncinfo12)&gt;&gt;&gt; | 是   | 同步信息变化回调函数。返回应用包名以及对应数据库的同步信息结果集。外层Record的键为应用包名，内层Record的键为数据库名。 |
+| bundleInfos | Array&lt;[BundleInfo](#bundleinfo)&gt; | 是   | 订阅的应用信息数组。取值范围：数组长度为[1, 30]，超过该范围返回14800001错误码。 |
+| progress | Callback&lt;Record&lt;string, Record&lt;string, [SyncInfo](#syncinfo12)&gt;&gt;&gt; | 是   | 回调函数。返回应用包名以及对应数据库的同步信息结果集。外层Record的键为应用包名，内层Record的键为数据库名。 |
 
 **错误码：**
 
@@ -1030,6 +1069,8 @@ static offSyncInfoChanged(bundleInfos: Array&lt;BundleInfo&gt;, progress?: Callb
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统接口：** 此接口为系统接口。
+
 **需要权限**：ohos.permission.CLOUDDATA_CONFIG
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
@@ -1038,8 +1079,8 @@ static offSyncInfoChanged(bundleInfos: Array&lt;BundleInfo&gt;, progress?: Callb
 
 | 参数名     | 类型   | 必填 | 说明                                                         |
 | ---------- | ------ | ---- | ------------------------------------------------------------ |
-| bundleInfos | Array&lt;[BundleInfo](#bundleinfo)&gt; | 是   | 取消订阅的应用信息数组。数组支持的最大长度为30，超过最大长度或者空数组返回14800001错误码。取消订阅时应用信息的storeId需要与订阅时保持一致。 |
-| progress | Callback&lt;Record&lt;string, Record&lt;string, [SyncInfo](#syncinfo12)&gt;&gt;&gt; | 否   | 同步信息变化回调函数。如果不传此参数，则取消所有订阅。 |
+| bundleInfos | Array&lt;[BundleInfo](#bundleinfo)&gt; | 是   | 取消订阅的应用信息数组。取值范围：数组长度为[1, 30]，超过该范围返回14800001错误码。取消订阅时应用信息的storeId需要与订阅时保持一致。 |
+| progress | Callback&lt;Record&lt;string, Record&lt;string, [SyncInfo](#syncinfo12)&gt;&gt;&gt; | 否   | 回调函数。如果传入此参数，则取消订阅指定的回调函数；如果不传此参数，则取消该应用的所有订阅。 |
 
 **错误码：**
 
@@ -1097,6 +1138,8 @@ static setGlobalCloudStrategy(strategy: StrategyType, param?: Array&lt;commonTyp
 
 设置全局云同步策略，使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **需要权限**：ohos.permission.CLOUDDATA_CONFIG
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
@@ -1106,13 +1149,13 @@ static setGlobalCloudStrategy(strategy: StrategyType, param?: Array&lt;commonTyp
 | 参数名     | 类型                                                                     | 必填 | 说明                |
 | ---------- |------------------------------------------------------------------------| ---- |-------------------|
 | strategy  | [StrategyType](js-apis-data-cloudData.md#strategytype)    | 是   | 配置的策略类型。          |
-| param | Array&lt;[commonType.ValueType](js-apis-data-commonType.md#valuetype)&gt; | 否   | 策略参数。不填写默认为空，默认取消所有配置。 |
+| param | Array&lt;[commonType.ValueType](js-apis-data-commonType.md#valuetype)&gt; | 否   | 策略参数。不填写时默认为空，默认取消所有配置。 |
 
 **返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1131,9 +1174,9 @@ static setGlobalCloudStrategy(strategy: StrategyType, param?: Array&lt;commonTyp
 import { BusinessError } from '@kit.BasicServicesKit';
 
 cloudData.Config.setGlobalCloudStrategy(cloudData.StrategyType.NETWORK, [cloudData.NetWorkStrategy.WIFI]).then(() => {
-    console.info('Succeeded in setting the global cloud strategy');
+  console.info('Succeeded in setting the global cloud strategy');
 }).catch((err: BusinessError) => {
-    console.error(`Failed to set global cloud strategy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to set global cloud strategy. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1143,6 +1186,8 @@ static cloudSync(bundleName: string, storeId: string, mode: relationalStore.Sync
 
 对指定应用的数据进行端云同步，使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **需要权限**：ohos.permission.CLOUDDATA_CONFIG
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
@@ -1151,16 +1196,16 @@ static cloudSync(bundleName: string, storeId: string, mode: relationalStore.Sync
 
 | 参数名      | 类型   | 必填 | 说明                  |
 | ---------- |--------| ---- |-----------------------|
-| bundleName | string | 是   | 待端云同步数据的应用名。|
+| bundleName | string | 是   | 待端云同步数据的应用包名。|
 | storeId    | string | 是   | 待端云同步的数据库名。  |
 | mode       | [relationalStore.SyncMode](arkts-apis-data-relationalStore-e.md#syncmode) | 是 | 端云同步类型。|
-| progress | Callback&lt;[relationalStore.ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 是 | 同步进度回调。 |
+| progress | Callback&lt;[relationalStore.ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 是 | 同步进度回调。返回ProgressDetails实例对象。 |
 
 **返回值：**
 
 | 类型                | 说明                     |
 | ------------------- | ----------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1179,25 +1224,27 @@ static cloudSync(bundleName: string, storeId: string, mode: relationalStore.Sync
 import { BusinessError } from '@kit.BasicServicesKit';
 import { relationalStore } from '@kit.ArkData';
 
-try{
+try {
   cloudData.Config.cloudSync("bundleName", "storeId", relationalStore.SyncMode.SYNC_MODE_TIME_FIRST, (progress)=>{
     console.info('Succeeded in getting progress details.');
   }).then(() => {
-      console.info('Succeeded in syncing cloud data.');
+    console.info('Succeeded in syncing cloud data.');
   }).catch((err: BusinessError) => {
-      console.error(`Failed to sync cloud data. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to sync cloud data. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (e) {
   let error = e as BusinessError;
-  console.error(`Failed to sync cloud data. Code: ${e.code}, message: ${e.message}`);
+  console.error(`Failed to sync cloud data. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
-###  clear
+### clear
 
-static clear(accountId: string, appActions: Record<string, ClearAction>,  callback: AsyncCallback&lt;void&gt;): void
+static clear(accountId: string, appActions: Record<string, ClearAction>, callback: AsyncCallback&lt;void&gt;): void
 
 清除本地下载的云端数据，使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **需要权限**：ohos.permission.CLOUDDATA_CONFIG
 
@@ -1207,9 +1254,9 @@ static clear(accountId: string, appActions: Record<string, ClearAction>,  callba
 
 | 参数名     | 类型                                                | 必填 | 说明                             |
 | ---------- | --------------------------------------------------- | ---- | -------------------------------- |
-| accountId  | string                                              | 是   | 具体打开的云账号ID。             |
+| accountId  | string                                              | 是   | 已登录的云账号ID。             |
 | appActions | Record<string, [ClearAction](#clearaction)>         | 是   | 要清除数据的应用信息及清除规则。 |
-| callback   | AsyncCallback&lt;void&gt;                           | 是   | 回调函数。                       |
+| callback   | AsyncCallback&lt;void&gt;                           | 是   | 回调函数。当清除本地下载的云端数据成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1236,7 +1283,7 @@ let appActions: dataType = {
 try {
   cloudData.Config.clear(account, appActions, (err: BusinessError) => {
     if (err === undefined) {
-      console.info('Succeeding in clearing cloud data');
+      console.info('Succeeded in clearing cloud data');
     } else {
       console.error(`Failed to clear cloud data. Code: ${err.code}, message: ${err.message}`);
     }
@@ -1253,6 +1300,8 @@ static clear(accountId: string, appActions: Record<string, ClearAction>): Promis
 
 清除本地下载的云端数据，使用Promise异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **需要权限**：ohos.permission.CLOUDDATA_CONFIG
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
@@ -1261,14 +1310,14 @@ static clear(accountId: string, appActions: Record<string, ClearAction>): Promis
 
 | 参数名     | 类型                                                | 必填 | 说明                             |
 | ---------- | --------------------------------------------------- | ---- | -------------------------------- |
-| accountId  | string                                              | 是   | 具体打开的云账号ID。             |
+| accountId  | string                                              | 是   | 已登录的云账号ID。             |
 | appActions | Record<string, [ClearAction](#clearaction)>         | 是   | 要清除数据的应用信息及清除规则。 |
 
 **返回值：**
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1294,7 +1343,7 @@ let appActions: dataType = {
 };
 try {
   cloudData.Config.clear(account, appActions).then(() => {
-    console.info('Succeeding in clearing cloud data');
+    console.info('Succeeded in clearing cloud data');
   }).catch((err: BusinessError) => {
     console.error(`Failed to clear cloud data. Code: ${err.code}, message: ${err.message}`);
   });
@@ -1312,6 +1361,8 @@ static clear(accountId: string, appActions: Record<string, ClearAction>, config?
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统接口：** 此接口为系统接口。
+
 **需要权限**：ohos.permission.CLOUDDATA_CONFIG
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
@@ -1320,9 +1371,9 @@ static clear(accountId: string, appActions: Record<string, ClearAction>, config?
 
 | 参数名     | 类型                                                | 必填 | 说明                             |
 | ---------- | --------------------------------------------------- | ---- | -------------------------------- |
-| accountId  | string                                              | 是   | 具体打开的云账号ID。             |
+| accountId  | string                                              | 是   | 已登录的云账号ID。             |
 | appActions | Record<string, [ClearAction](#clearaction)>         | 是   | 要清除数据的应用信息及清除规则。 |
-| config | Record<string, [ClearConfig](#clearconfig23)>         | 否   | 端云协同数据库级清除配置信息。键为应用名，值为该应用数据库清除规则。清除规则优先级：表级 > 数据库级 > 应用级。当未配置该参数时，默认使用应用级的数据清除方式。|
+| config | Record<string, [ClearConfig](#clearconfig23)>         | 否   | 端云协同数据库级清除配置信息。键为应用包名，值为该应用数据库清除规则。清除规则优先级：表级 > 数据库级 > 应用级。当未配置该参数时，默认使用应用级的数据清除方式。|
 
 **返回值：**
 
@@ -1366,9 +1417,141 @@ let config: Record<string, cloudData.ClearConfig> = {
 }
 try {
   cloudData.Config.clear(account, appActions, config).then(() => {
-    console.info('Succeeding in clearing cloud data');
+    console.info('Succeeded in clearing cloud data');
   }).catch((err: BusinessError) => {
     console.error(`Failed to clear cloud data. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### cloudSyncEx
+
+static cloudSyncEx(bundleInfo: BundleInfo, config: relationalStore.CloudSyncConfig, progress: Callback&lt;relationalStore.ProgressDetails&gt;): Promise&lt;void&gt;
+
+对指定应用的数据按照云同步配置信息进行端云同步，当[CloudSyncConfig](js-apis-data-relationalStore-sys.md#cloudsyncconfig)中的downloadOnly为true时，端云同步仅把云侧数据同步到本地，使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.CLOUDDATA_CONFIG
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------|------|------|
+| bundleInfo | [BundleInfo](#bundleinfo) | 是 | 应用包信息配置。BundleInfo的实例对象。 |
+| config | [relationalStore.CloudSyncConfig](js-apis-data-relationalStore-sys.md#cloudsyncconfig) | 是 | 云同步配置。 |
+| progress | Callback&lt;[relationalStore.ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 是 | 进度回调函数。返回ProgressDetails实例对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+|------|------|
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| 错误码ID | 错误信息                                             |
+| -------- | ---------------------------------------------------- |
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
+| 202      | Permission verification failed, application which is not a system application uses system API. |
+| 801      | Capability not supported because the device does not support the device-cloud capability. |
+| 14800001 | Invalid arguments. Possible causes: Empty conditions. |
+
+**示例：**
+
+```ts
+import { relationalStore } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleInfo: cloudData.BundleInfo = {
+  bundleName: 'com.example.myapplication',
+  // 其他BundleInfo字段...
+};
+
+let config: relationalStore.CloudSyncConfig = {
+  mode: relationalStore.SyncMode.SYNC_MODE_TIME_FIRST,
+  enablePredicate: true
+};
+
+try {
+  cloudData.Config.cloudSyncEx(bundleInfo, config, (progressDetails: relationalStore.ProgressDetails) => {
+    console.info(`Cloud sync progress: ${progressDetails.schedule}, code: ${progressDetails.code}`);
+  }).then(() => {
+    console.info('Succeeded in cloud sync');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to cloud sync. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### stopCloudSync
+
+static stopCloudSync(bundleInfos: Array&lt;BundleInfo&gt;): Promise&lt;void&gt;
+
+停止与云端的数据同步，使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.CLOUDDATA_CONFIG
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------|------|------|
+| bundleInfos | Array&lt;[BundleInfo](#bundleinfo)&gt; | 是 | 应用包信息配置数组。取值范围：数组长度为[1, 30]，超过该范围返回14800001错误码。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+|------|------|
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| 错误码ID | 错误信息                                             |
+| -------- | ---------------------------------------------------- |
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
+| 202      | Permission verification failed, application which is not a system application uses system API. |
+| 801      | Capability not supported because the device does not support the device-cloud capability. |
+| 14800001 | Invalid arguments. Possible causes: 1. bundlename is null; 2. the number of bundleInfos exceeds the upper limit or the number is 0. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleInfos: Array<cloudData.BundleInfo> = [
+  { bundleName: 'com.example.myapplication1' },
+  { bundleName: 'com.example.myapplication2' }
+];
+
+try {
+  cloudData.Config.stopCloudSync(bundleInfos).then(() => {
+    console.info('Succeeded in stopping cloud sync');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to stop cloud sync. Code: ${err.code}, message: ${err.message}`);
   });
 } catch (e) {
   let error = e as BusinessError;
@@ -1466,13 +1649,15 @@ try {
 | role        | [Role](#role11)           | 否   | 是   | 参与者的角色，为邀请者或被邀请者。默认为undefined。  |
 | state       | [State](#state11)         | 否   | 是   | 共享的状态。默认为undefined。 |
 | privilege   | [Privilege](#privilege11) | 否   | 是   | 指定的共享数据权限。默认为[Privilege](#privilege11)的默认值。 |
-| attachInfo  | string                    | 否   | 是   | 附加信息，用于拓展额外的参与者信息。如用于参与者身份校验的校验码等，默认为空字符串。 |
+| attachInfo  | string                    | 否   | 是   | 附加信息，用于扩展额外的参与者信息。如用于参与者身份校验的校验码等，默认为空字符串。 |
 
 ### allocResourceAndShare<sup>11+</sup>
 
 allocResourceAndShare(storeId: string, predicates: relationalStore.RdbPredicates, participants: Array&lt;Participant&gt;, columns?: Array&lt;string&gt;): Promise&lt;relationalStore.ResultSet&gt;
 
 根据谓词条件匹配的数据申请共享资源标识并发起共享，返回已共享资源的结果集。如果指定了列字段，则返回的结果集中同时包含对应列的字段值，使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -1535,7 +1720,6 @@ cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, [
 }).catch((err: BusinessError) => {
   console.error(`alloc resource and share failed, code is ${err.code},message is ${err.message}`);
 })
-
 ```
 
 ### allocResourceAndShare<sup>11+</sup>
@@ -1543,6 +1727,8 @@ cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, [
 allocResourceAndShare(storeId: string, predicates: relationalStore.RdbPredicates, participants: Array&lt;Participant&gt;, columns: Array&lt;string&gt;, callback: AsyncCallback&lt;relationalStore.ResultSet&gt;): void
 
 根据谓词条件匹配的数据申请共享资源标识并发起共享，返回已共享资源的结果集。并根据指定的列字段，返回的结果集中同时包含对应列的字段值，使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -1554,7 +1740,7 @@ allocResourceAndShare(storeId: string, predicates: relationalStore.RdbPredicates
 | predicates   | [relationalStore.RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | 表示查找共享资源标识的数据的谓词条件。 |
 | participants | Array&lt;[Participant](#participant11)&gt; | 是   | 端云共享的参与者。 |
 | columns      | Array&lt;string&gt;           | 是   | 表示要查找的列字段名。 |
-| callback     | AsyncCallback&lt;[relationalStore.ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt;  | 是  | 回调函数。 返回查询并共享的共享资源标识结果集。 |
+| callback     | AsyncCallback&lt;[relationalStore.ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt;  | 是  | 回调函数。返回查询并共享的共享资源标识结果集。 |
 
 **错误码：**
 
@@ -1602,7 +1788,6 @@ cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, [
   console.info(`sharing resource: ${res}`);
   sharingResource = res;
 })
-
 ```
 
 ### allocResourceAndShare<sup>11+</sup>
@@ -1610,6 +1795,8 @@ cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, [
 allocResourceAndShare(storeId: string, predicates: relationalStore.RdbPredicates, participants: Array&lt;Participant&gt;, callback: AsyncCallback&lt;relationalStore.ResultSet&gt;): void
 
 根据谓词条件匹配的数据申请共享资源标识并发起共享，返回已共享资源的结果集，使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -1668,7 +1855,6 @@ cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, (
   console.info(`sharing resource: ${res}`);
   sharingResource = res;
 })
-
 ```
 
 ### share<sup>11+</sup>
@@ -1676,6 +1862,8 @@ cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, (
 share(sharingResource: string, participants: Array&lt;Participant&gt;): Promise&lt;Result&lt;Array&lt;Result&lt;Participant&gt;&gt;&gt;&gt;
 
 根据指定的共享资源标识和共享参与者发起共享邀请，使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -1726,7 +1914,6 @@ cloudData.sharing.share('sharing_resource_test', participants).then((result) => 
 }).catch((err: BusinessError) => {
   console.error(`share failed, code is ${err.code},message is ${err.message}`);
 })
-
 ```
 
 ### share<sup>11+</sup>
@@ -1734,6 +1921,8 @@ cloudData.sharing.share('sharing_resource_test', participants).then((result) => 
 share(sharingResource: string, participants: Array&lt;Participant&gt;, callback: AsyncCallback&lt;Result&lt;Array&lt;Result&lt;Participant&gt;&gt;&gt;&gt;): void
 
 根据指定的共享资源标识和共享参与者发起共享邀请，使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -1781,7 +1970,6 @@ cloudData.sharing.share('sharing_resource_test', participants, ((err: BusinessEr
   }
   console.info(`share succeeded, result: ${result}`);
 }))
-
 ```
 
 ### unshare<sup>11+</sup>
@@ -1789,6 +1977,8 @@ cloudData.sharing.share('sharing_resource_test', participants, ((err: BusinessEr
 unshare(sharingResource: string, participants: Array&lt;Participant&gt;): Promise&lt;Result&lt;Array&lt;Result&lt;Participant&gt;&gt;&gt;&gt;
 
 根据指定的共享资源标识和共享参与者取消共享，使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -1839,7 +2029,6 @@ cloudData.sharing.unshare('sharing_resource_test', participants).then((result) =
 }).catch((err: BusinessError) => {
   console.error(`unshare failed, code is ${err.code},message is ${err.message}`);
 })
-
 ```
 
 ### unshare<sup>11+</sup>
@@ -1848,14 +2037,16 @@ unshare(sharingResource: string, participants: Array&lt;Participant&gt;, callbac
 
 根据指定的共享资源标识和共享参与者取消共享，使用callback异步回调。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **参数：**
 
 | 参数名    | 类型                            | 必填 | 说明                         |
 | --------- | ------------------------------- | ---- | ---------------------------- |
-| sharingResource  | string                                     | 是   | 共享数据的资源标志。 |
-| participants     | Array&lt;[Participant](#participant11)&gt; | 是   | 共享参与者。 |
+| sharingResource  | string                                     | 是   | 端云共享数据的资源标识。 |
+| participants     | Array&lt;[Participant](#participant11)&gt; | 是   | 端云共享参与者。 |
 | callback         | AsyncCallback&lt;[Result](#resultt11)&lt;Array&lt;[Result](#resultt11)&lt;[Participant](#participant11)&gt;&gt;&gt;&gt;  | 是   | 回调函数。返回取消共享的结果。 |
 
 **错误码：**
@@ -1894,7 +2085,6 @@ cloudData.sharing.unshare('sharing_resource_test', participants, ((err: Business
   }
   console.info(`unshare succeeded, result: ${result}`);
 }))
-
 ```
 
 ### exit<sup>11+</sup>
@@ -1902,6 +2092,8 @@ cloudData.sharing.unshare('sharing_resource_test', participants, ((err: Business
 exit(sharingResource: string): Promise&lt;Result&lt;void&gt;&gt;
 
 根据指定的共享资源标识退出共享，使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -1937,7 +2129,6 @@ cloudData.sharing.exit('sharing_resource_test').then((result) => {
 }).catch((err: BusinessError) => {
   console.error(`exit share failed, code is ${err.code},message is ${err.message}`);
 })
-
 ```
 
 ### exit<sup>11+</sup>
@@ -1945,6 +2136,8 @@ cloudData.sharing.exit('sharing_resource_test').then((result) => {
 exit(sharingResource: string, callback: AsyncCallback&lt;Result&lt;void&gt;&gt;): void
 
 根据指定的共享资源标识退出共享，使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -1977,7 +2170,6 @@ cloudData.sharing.exit('sharing_resource_test', ((err: BusinessError, result) =>
   }
   console.info(`exit share succeeded, result: ${result}`);
 }))
-
 ```
 
 ### changePrivilege<sup>11+</sup>
@@ -1985,6 +2177,8 @@ cloudData.sharing.exit('sharing_resource_test', ((err: BusinessError, result) =>
 changePrivilege(sharingResource: string, participants: Array&lt;Participant&gt;): Promise&lt;Result&lt;Array&lt;Result&lt;Participant&gt;&gt;&gt;&gt;
 
 根据指定的共享资源标识更改共享参与者对共享数据的操作权限，使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -2036,7 +2230,6 @@ cloudData.sharing.changePrivilege('sharing_resource_test', participants).then((r
 }).catch((err: BusinessError) => {
   console.error(`change privilege failed, code is ${err.code},message is ${err.message}`);
 })
-
 ```
 
 ### changePrivilege<sup>11+</sup>
@@ -2044,6 +2237,8 @@ cloudData.sharing.changePrivilege('sharing_resource_test', participants).then((r
 changePrivilege(sharingResource: string, participants: Array&lt;Participant&gt;, callback: AsyncCallback&lt;Result&lt;Array&lt;Result&lt;Participant&gt;&gt;&gt;&gt;): void
 
 根据指定的共享资源标识更改共享参与者对共享数据的操作权限，使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -2053,7 +2248,7 @@ changePrivilege(sharingResource: string, participants: Array&lt;Participant&gt;,
 | --------- | ------------------------------- | ---- | ---------------------------- |
 | sharingResource  | string                | 是   | 端云共享数据的资源标识。 |
 | participants     | Array&lt;[Participant](#participant11)&gt;  | 是   | 端云共享的参与者。 |
-| callback         | callback: AsyncCallback&lt;[Result](#resultt11)&lt;Array&lt;[Result](#resultt11)&lt;[Participant](#participant11)&gt;&gt;&gt;&gt;  | 是   | 回调函数。返回更改权限的结果。 |
+| callback         | AsyncCallback&lt;[Result](#resultt11)&lt;Array&lt;[Result](#resultt11)&lt;[Participant](#participant11)&gt;&gt;&gt;&gt;  | 是   | 回调函数。返回更改权限的结果。 |
 
 **错误码：**
 
@@ -2092,7 +2287,6 @@ cloudData.sharing.changePrivilege('sharing_resource_test', participants, ((err: 
   }
   console.info(`change privilege succeeded, result: ${result}`);
 }))
-
 ```
 
 ### queryParticipants<sup>11+</sup>
@@ -2100,6 +2294,8 @@ cloudData.sharing.changePrivilege('sharing_resource_test', participants, ((err: 
 queryParticipants(sharingResource: string): Promise&lt;Result&lt;Array&lt;Participant&gt;&gt;&gt;
 
 根据指定的共享资源标识查询当前共享的参与者，使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -2135,7 +2331,6 @@ cloudData.sharing.queryParticipants('sharing_resource_test').then((result) => {
 }).catch((err: BusinessError) => {
   console.error(`query participants failed, code is ${err.code},message is ${err.message}`);
 })
-
 ```
 
 ### queryParticipants<sup>11+</sup>
@@ -2143,6 +2338,8 @@ cloudData.sharing.queryParticipants('sharing_resource_test').then((result) => {
 queryParticipants(sharingResource: string, callback: AsyncCallback&lt;Result&lt;Array&lt;Participant&gt;&gt;&gt;): void
 
 根据指定的共享资源标识查询当前共享的参与者，使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -2175,7 +2372,6 @@ cloudData.sharing.queryParticipants('sharing_resource_test', ((err: BusinessErro
   }
   console.info(`query participants succeeded, result: ${result}`);
 }))
-
 ```
 
 ### queryParticipantsByInvitation<sup>11+</sup>
@@ -2183,6 +2379,8 @@ cloudData.sharing.queryParticipants('sharing_resource_test', ((err: BusinessErro
 queryParticipantsByInvitation(invitationCode: string): Promise&lt;Result&lt;Array&lt;Participant&gt;&gt;&gt;
 
 根据指定的共享邀请码查询当前共享的参与者，使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -2218,7 +2416,6 @@ cloudData.sharing.queryParticipantsByInvitation('sharing_invitation_code_test').
 }).catch((err: BusinessError) => {
   console.error(`query participants by invitation failed, code is ${err.code},message is ${err.message}`);
 })
-
 ```
 
 ### queryParticipantsByInvitation<sup>11+</sup>
@@ -2226,6 +2423,8 @@ cloudData.sharing.queryParticipantsByInvitation('sharing_invitation_code_test').
 queryParticipantsByInvitation(invitationCode: string, callback: AsyncCallback&lt;Result&lt;Array&lt;Participant&gt;&gt;&gt;): void
 
 根据指定的共享邀请码查询当前共享的参与者，使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -2258,7 +2457,6 @@ cloudData.sharing.queryParticipantsByInvitation('sharing_invitation_code_test', 
   }
   console.info(`query participants by invitation succeeded, result: ${result}`);
 }))
-
 ```
 
 ### confirmInvitation<sup>11+</sup>
@@ -2266,6 +2464,8 @@ cloudData.sharing.queryParticipantsByInvitation('sharing_invitation_code_test', 
 confirmInvitation(invitationCode: string, state: State): Promise&lt;Result&lt;string&gt;&gt;
 
 被邀请者根据共享邀请码确认当前邀请，并获取当前邀请的共享资源标识，使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -2304,7 +2504,6 @@ cloudData.sharing.confirmInvitation('sharing_invitation_code_test', cloudData.sh
 }).catch((err: BusinessError) => {
   console.error(`confirm invitation failed, code is ${err.code},message is ${err.message}`);
 })
-
 ```
 
 ### confirmInvitation<sup>11+</sup>
@@ -2312,6 +2511,8 @@ cloudData.sharing.confirmInvitation('sharing_invitation_code_test', cloudData.sh
 confirmInvitation(invitationCode: string, state: State, callback: AsyncCallback&lt;Result&lt;string&gt;&gt;): void
 
 被邀请者根据共享邀请码确认当前邀请，并获取当前邀请的共享资源标识，使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -2347,7 +2548,6 @@ cloudData.sharing.confirmInvitation('sharing_invitation_code_test', cloudData.sh
   console.info(`confirm invitation succeeded, result: ${result}`);
   shareResource = result.value;
 }))
-
 ```
 
 ### changeConfirmation<sup>11+</sup>
@@ -2355,6 +2555,8 @@ cloudData.sharing.confirmInvitation('sharing_invitation_code_test', cloudData.sh
 changeConfirmation(sharingResource: string, state: State): Promise&lt;Result&lt;void&gt;&gt;
 
 根据共享资源标识更改共享邀请的状态，使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -2391,14 +2593,15 @@ cloudData.sharing.changeConfirmation('sharing_resource_test', cloudData.sharing.
 }).catch((err: BusinessError) => {
   console.error(`change confirmation failed, code is ${err.code},message is ${err.message}`);
 })
-
 ```
 
 ### changeConfirmation<sup>11+</sup>
 
-changeConfirmation(sharingResource: string, state: State, callback: AsyncCallback&lt;Result&lt;void&gt;&gt;): void;
+changeConfirmation(sharingResource: string, state: State, callback: AsyncCallback&lt;Result&lt;void&gt;&gt;): void
 
 根据共享资源标识更改共享邀请的状态，使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -2432,6 +2635,5 @@ cloudData.sharing.changeConfirmation('sharing_resource_test', cloudData.sharing.
   }
   console.info(`change confirmation succeeded, result: ${result}`);
 }))
-
 ```
 <!--no_check-->

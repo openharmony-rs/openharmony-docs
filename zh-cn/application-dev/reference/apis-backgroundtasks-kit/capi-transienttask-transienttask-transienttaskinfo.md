@@ -5,7 +5,7 @@
 <!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 ```c
 typedef struct TransientTask_TransientTaskInfo {...} TransientTask_TransientTaskInfo
@@ -27,5 +27,5 @@ typedef struct TransientTask_TransientTaskInfo {...} TransientTask_TransientTask
 
 | 名称                                                                                                                            | 描述 |
 |-------------------------------------------------------------------------------------------------------------------------------| -- |
-| int32_t remainingQuota                                                                                                        | 当日剩余总配额。单位：毫秒。 |
-| [TransientTask_DelaySuspendInfo](capi-transienttask-transienttask-delaysuspendinfo.md) transientTasks[[TRANSIENT_TASK_MAX_NUM](capi-transient-task-type-h.md#宏定义)] | 已申请的所有短时任务信息。包括短时任务请求ID、剩余时间（单位：毫秒）。 |
+| int32_t remainingQuota                                                                                                        | 当日剩余短时任务总时间配额。单位：ms。取值范围：[0, 600000]。|
+| [TransientTask_DelaySuspendInfo](capi-transienttask-transienttask-delaysuspendinfo.md) transientTasks[[TRANSIENT_TASK_MAX_NUM](capi-transient-task-type-h.md#宏定义)] | 已申请的所有短时任务信息（同一时间最多3个）。包括短时任务请求ID、剩余时间（单位：ms）。 |

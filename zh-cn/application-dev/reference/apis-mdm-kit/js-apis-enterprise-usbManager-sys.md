@@ -1,8 +1,8 @@
 # @ohos.enterprise.usbManager（USB管理）(系统接口)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -14,7 +14,7 @@
 >
 > 本模块接口仅可在Stage模型下使用。
 >
-> 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-term.md#mdm应用设备管理应用)开放，需将[设备管理应用激活](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)后调用。
+> 本模块接口仅对[MDM应用](../../mdm/mdm-kit-term.md#mdm应用)开放，需通过[enableAdmin](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)接口将设备管理应用激活后调用。
 > 
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.enterprise.usbManager](js-apis-enterprise-usbManager.md)。
 
@@ -24,11 +24,15 @@
 import { usbManager } from '@kit.MDMKit';
 ```
 
-## usbManager.setUsbPolicy
+## usbManager.setUsbPolicy<sup>(deprecated)</sup>
 
 setUsbPolicy(admin: Want, usbPolicy: UsbPolicy, callback: AsyncCallback\<void>): void
 
 设置USB的读写策略。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [setUsbStorageDeviceAccessPolicy](./js-apis-enterprise-usbManager.md#usbmanagersetusbstoragedeviceaccesspolicy)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USB
 
@@ -80,11 +84,15 @@ usbManager.setUsbPolicy(wantTemp, policy, (err) => {
 })
 ```
 
-## usbManager.setUsbPolicy
+## usbManager.setUsbPolicy<sup>(deprecated)</sup>
 
 setUsbPolicy(admin: Want, usbPolicy: UsbPolicy): Promise\<void>
 
 设置USB的读写策略。使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [setUsbStorageDeviceAccessPolicy](./js-apis-enterprise-usbManager.md#usbmanagersetusbstoragedeviceaccesspolicy)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USB
 
@@ -140,11 +148,15 @@ usbManager.setUsbPolicy(wantTemp, policy).then(() => {
 })
 ```
 
-## usbManager.disableUsb<sup>11+</sup>
+## usbManager.disableUsb<sup>(deprecated)</sup>
 
 disableUsb(admin: Want, disable: boolean): void
 
 设置禁用或启用USB。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [setDisallowedPolicy](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy24)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USB
 
@@ -193,11 +205,15 @@ try {
 }
 ```
 
-## usbManager.isUsbDisabled<sup>11+</sup>
+## usbManager.isUsbDisabled<sup>(deprecated)</sup>
 
 isUsbDisabled(admin: Want): boolean
 
 查询USB是否禁用。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getDisallowedPolicy](./js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy24)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USB
 

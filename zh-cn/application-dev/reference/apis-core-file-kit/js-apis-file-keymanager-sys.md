@@ -1,9 +1,9 @@
 # @ohos.file.keyManager (用户密钥管理)(系统接口)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @gzhuangzhuang-->
+<!--Designer: @renguang1116; @wang_zhangjun-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 该模块提供用户密钥管理相关的常用功能：包括用户密钥卸载等。
@@ -47,7 +47,7 @@ deactivateUserKey(userId: number):void
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: Mandatory parameters are left unspecified; Or input parameter has type different from the type the interface requires. |
 | 13600001 | IPC error. |
-| 13600008 | No such object. Possible causes: Cannot find user key for the specified user. |
+| 13600008 | No such object. Possible causes: Cannot find userkey for the specified user. |
 | 13600009 | User ID out of range. Possible causes: input parameter userId < 100 or userId > 10736. |
 
 **示例：**

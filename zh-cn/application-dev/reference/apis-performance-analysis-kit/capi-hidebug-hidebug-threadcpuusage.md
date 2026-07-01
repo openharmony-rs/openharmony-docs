@@ -2,8 +2,8 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @hello_harmony; @leiguangyu-->
-<!--Designer: @kutcherzhou1-->
+<!--Owner: @leiguangyu-->
+<!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -13,7 +13,15 @@ typedef struct HiDebug_ThreadCpuUsage {...} HiDebug_ThreadCpuUsage
 
 ## 概述
 
-应用程序所有线程的CPU使用率结构体定义。
+当前进程所有线程的CPU使用率结构体定义。
+
+使用场景：
+
+应用性能监控：获取线程CPU使用率，监控应用的运行状态和性能瓶颈。
+
+线程性能优化：分析各线程的CPU占用情况，优化线程调度和资源分配。
+
+系统调试：在调试阶段追踪线程的CPU使用情况，定位性能问题。
 
 **起始版本：** 12
 

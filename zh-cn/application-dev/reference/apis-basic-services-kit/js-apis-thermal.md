@@ -23,7 +23,7 @@ import {thermal} from '@kit.BasicServicesKit';
 
 registerThermalLevelCallback(callback: Callback&lt;ThermalLevel&gt;): void
 
-**方法介绍：** 订阅热档位变化时的回调提醒。使用callback异步回调。
+订阅热档位变化时的回调提醒。使用callback异步回调。
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
@@ -58,7 +58,7 @@ try {
 
 unregisterThermalLevelCallback(callback?: Callback\<void>): void
 
-**方法介绍：** 取消订阅热档位变化时的回调提醒。使用callback异步回调。
+取消订阅热档位变化时的回调提醒。使用callback异步回调。
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
@@ -93,7 +93,7 @@ try {
 
 getLevel(): ThermalLevel
 
-**方法介绍：** 获取当前热档位信息。
+获取当前热档位信息。
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
@@ -115,9 +115,9 @@ console.info('thermal level is: ' + level);
 
 subscribeThermalLevel(callback: AsyncCallback&lt;ThermalLevel&gt;): void
 
-> **说明：**<br>从API version 8开始支持，从API version 9开始不再维护，建议使用[thermal.registerThermalLevelCallback](#thermalregisterthermallevelcallback9)替代。
+订阅热档位变化时的回调提醒。使用callback异步回调。
 
-**方法介绍：** 订阅热档位变化时的回调提醒。使用callback异步回调。
+> **说明：**<br>从API version 8开始支持，从API version 9开始不再维护，建议使用[thermal.registerThermalLevelCallback](#thermalregisterthermallevelcallback9)替代。
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
@@ -125,7 +125,7 @@ subscribeThermalLevel(callback: AsyncCallback&lt;ThermalLevel&gt;): void
 
 | 参数名   | 类型                              | 必填 | 说明                                                         |
 | -------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback&lt;[ThermalLevel](#thermallevel)&gt; | 是   | 回调函数。AsyncCallback只返回一个参数，为热档位信息。|
+| callback | AsyncCallback&lt;[ThermalLevel](#thermallevel)&gt; | 是   | 回调函数，返回变化后的热档位；该参数是一个函数类型。|
 
 **示例：**
 
@@ -139,9 +139,9 @@ thermal.subscribeThermalLevel((err: Error, level: thermal.ThermalLevel) => {
 
 unsubscribeThermalLevel(callback?: AsyncCallback\<void>): void
 
-> **说明：**<br>从API version 8开始支持，从API version 9开始不再维护，建议使用[thermal.unregisterThermalLevelCallback](#thermalunregisterthermallevelcallback9)替代。
+取消订阅热档位变化时的回调提醒。使用callback异步回调。
 
-**方法介绍：** 取消订阅热档位变化时的回调提醒。使用callback异步回调。
+> **说明：**<br>从API version 8开始支持，从API version 9开始不再维护，建议使用[thermal.unregisterThermalLevelCallback](#thermalunregisterthermallevelcallback9)替代。
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
@@ -163,9 +163,9 @@ thermal.unsubscribeThermalLevel(() => {
 
 getThermalLevel(): ThermalLevel
 
-> **说明：**<br>从API version 8开始支持，从API version 9开始不再维护，建议使用[thermal.getLevel](#thermalgetlevel9)替代。
+获取当前热档位信息。
 
-**方法介绍：** 获取当前热档位信息。
+> **说明：**<br>从API version 8开始支持，从API version 9开始不再维护，建议使用[thermal.getLevel](#thermalgetlevel9)替代。
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 

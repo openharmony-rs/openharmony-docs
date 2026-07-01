@@ -12,7 +12,7 @@
 
 谓词(DataSharePredicates)的使用场景如下：
 
-- 用于调用[关系型数据库](js-apis-data-relationalStore-sys.md)和[键值型数据库](js-apis-distributedKVStore-sys.md)系统接口时的检索条件使用。此种场景下，开发者根据使用的数据库类型参考对应的谓词使用方法。
+- 用于调用[关系型数据库](js-apis-data-relationalStore-sys.md)和[分布式键值数据库](js-apis-distributedKVStore-sys.md)系统接口时的检索条件使用。此种场景下，开发者根据使用的数据库类型参考对应的谓词使用方法。
 
 > **说明：** 
 >
@@ -37,13 +37,13 @@ import { dataSharePredicates } from '@kit.ArkData';
 
 contains(field: string, value: string): DataSharePredicates
 
-该接口用于配置谓词以匹配值包含指定字段的字段。
+该接口用于配置谓词以匹配字段包含指定值的字段。
 
 目前仅关系型数据库支持该谓词。
 
 **系统接口：**  此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
@@ -75,7 +75,7 @@ beginsWith(field: string, value: string): DataSharePredicates
 
 **系统接口：**  此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
@@ -107,7 +107,7 @@ endsWith(field: string, value: string): DataSharePredicates
 
 **系统接口：**  此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
@@ -135,11 +135,11 @@ isNull(field: string): DataSharePredicates
 
 该接口用于配置谓词以匹配值为null的字段。
 
-目前仅关系型数据库及键值型数据库支持该谓词。
+目前仅关系型数据库及分布式键值数据库支持该谓词。
 
 **系统接口：**  此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
@@ -166,11 +166,11 @@ isNotNull(field: string): DataSharePredicates
 
 该接口用于配置谓词以匹配值不为null的字段。
 
-目前仅关系型数据库及键值型数据库支持该谓词。
+目前仅关系型数据库及分布式键值数据库支持该谓词。
 
 **系统接口：**  此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
@@ -197,11 +197,11 @@ unlike(field: string, value: string): DataSharePredicates
 
 该接口用于配置谓词以匹配不类似指定通配符表达式的字段。
 
-目前仅关系型数据库及键值型数据库支持该谓词。
+目前仅关系型数据库及分布式键值数据库支持该谓词。
 
 **系统接口：**  此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
@@ -233,7 +233,7 @@ glob(field: string, value: string): DataSharePredicates
 
 **系统接口：**  此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
@@ -265,7 +265,7 @@ distinct(): DataSharePredicates
 
 **系统接口：**  此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **返回值：**
 
@@ -290,7 +290,7 @@ groupBy(fields: Array&lt;string&gt;): DataSharePredicates
 
 **系统接口：**  此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
@@ -321,7 +321,7 @@ indexedBy(field: string): DataSharePredicates
 
 **系统接口：**  此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
@@ -348,11 +348,11 @@ prefixKey(prefix: string): DataSharePredicates
 
 该接口用于配置谓词以匹配键前缀的指定字段。
 
-目前仅KVDB支持该谓词。
+目前仅分布式键值数据库支持该谓词。
 
 **系统接口：**  此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 
@@ -379,11 +379,11 @@ inKeys(keys: Array&lt;string&gt;): DataSharePredicates
 
 该接口用于配置谓词以匹配键在指定范围内的字段。
 
-目前仅KVDB支持该谓词。
+目前仅分布式键值数据库支持该谓词。
 
 **系统接口：**  此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **参数：**
 

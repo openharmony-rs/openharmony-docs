@@ -1,9 +1,9 @@
 # 像素单位
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
+<!--Owner: @fangzhiyuan1-->
+<!--Designer: @fangzhiyuan1-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ArkUI为开发者提供4种像素单位，采用vp为基准数据单位。
@@ -16,6 +16,7 @@ ArkUI为开发者提供4种像素单位，采用vp为基准数据单位。
 >
 > - 在UI实例未创建时，vp2px/px2vp使用默认屏幕的虚拟像素比进行转换。在该场景下，使用UIContext接口替换时，开发者可参考[像素单位转换接口替换为UIContext接口](../../../ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
 
+## 基本像素单位
 
 | 名称 | 描述                                                         |
 | ---- | ------------------------------------------------------------ |
@@ -280,4 +281,4 @@ struct Example {
 }
 ```
 
-![zh-cn_image_0000001169582302](figures/zh-cn_image_0000001169582302.png)
+![px](figures/px.png)

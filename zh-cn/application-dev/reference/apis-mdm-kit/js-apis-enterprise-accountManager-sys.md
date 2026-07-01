@@ -1,12 +1,12 @@
-# @ohos.enterprise.accountManager（账户管理）(系统接口)
+# @ohos.enterprise.accountManager（账号管理）(系统接口)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供设备帐户管理能力，包括禁止创建本地用户等。
+本模块提供设备账户管理能力，包括禁止创建本地账号等。
 
 > **说明：**
 >
@@ -14,7 +14,7 @@
 >
 > 本模块接口仅可在Stage模型下使用。
 >
-> 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-term.md#mdm应用设备管理应用)开放，需将[设备管理应用激活](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)后调用。
+> 本模块接口仅对[MDM应用](../../mdm/mdm-kit-term.md#mdm应用)开放，需调用[adminManager.enableAdmin](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)将设备管理应用激活后调用。
 > 
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.enterprise.accountManager](js-apis-enterprise-accountManager.md)。
 
@@ -24,11 +24,15 @@
 import { accountManager } from '@kit.MDMKit';
 ```
 
-## accountManager.disallowAddLocalAccount
+## accountManager.disallowAddLocalAccount<sup>(deprecated)</sup>
 
 disallowAddLocalAccount(admin: Want, disallow: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-禁止设备创建本地用户。使用callback异步回调。
+禁止设备创建本地账号。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [disallowOsAccountAddition](./js-apis-enterprise-accountManager.md#accountmanagerdisallowosaccountaddition)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
@@ -43,7 +47,7 @@ disallowAddLocalAccount(admin: Want, disallow: boolean, callback: AsyncCallback&
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。      |
-| disallow    | boolean     | 是    | 是否禁止创建本地用户，true表示禁止创建，false表示允许创建。                  |
+| disallow    | boolean     | 是    | 是否禁止创建本地账号，true表示禁止创建，false表示允许创建。                  |
 | callback | AsyncCallback&lt;void&gt;            | 是    | 回调函数。当接口调用成功，err为null，否则为错误对象。       |
 
 **错误码**：
@@ -79,11 +83,15 @@ accountManager.disallowAddLocalAccount(wantTemp, true, (err) => {
 });
 ```
 
-## accountManager.disallowAddLocalAccount
+## accountManager.disallowAddLocalAccount<sup>(deprecated)</sup>
 
 disallowAddLocalAccount(admin: Want, disallow: boolean): Promise&lt;void&gt;
 
-禁止设备创建本地用户。使用promise异步回调。
+禁止设备创建本地账号。使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [disallowOsAccountAddition](./js-apis-enterprise-accountManager.md#accountmanagerdisallowosaccountaddition)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
@@ -98,13 +106,13 @@ disallowAddLocalAccount(admin: Want, disallow: boolean): Promise&lt;void&gt;
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
 | admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| disallow    | boolean     | 是    | 是否禁止创建本地用户，true表示禁止创建，false表示允许创建。                  |
+| disallow    | boolean     | 是    | 是否禁止创建本地账号，true表示禁止创建，false表示允许创建。                  |
 
 **返回值：**
 
 | 类型                   | 说明                      |
 | --------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。当禁止创建本地用户失败时，抛出错误对象。 |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当禁止创建本地账号失败时，抛出错误对象。 |
 
 **错误码**：
 
@@ -138,11 +146,15 @@ accountManager.disallowAddLocalAccount(wantTemp, true).then(() => {
 });
 ```
 
-## accountManager.disallowAddOsAccountByUser<sup>11+</sup>
+## accountManager.disallowAddOsAccountByUser<sup>(deprecated)</sup>
 
 disallowAddOsAccountByUser(admin: Want, userId: number, disallow: boolean): void
 
 禁止用户添加账号。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [disallowOsAccountAddition](./js-apis-enterprise-accountManager.md#accountmanagerdisallowosaccountaddition)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
@@ -193,11 +205,15 @@ try {
 }
 ```
 
-## accountManager.isAddOsAccountByUserDisallowed<sup>11+</sup>
+## accountManager.isAddOsAccountByUserDisallowed<sup>(deprecated)</sup>
 
 isAddOsAccountByUserDisallowed(admin: Want, userId: number): boolean
 
 查询是否禁止某用户添加账号。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [isOsAccountAdditionDisallowed](./js-apis-enterprise-accountManager.md#accountmanagerisosaccountadditiondisallowed)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
@@ -253,11 +269,15 @@ try {
 }
 ```
 
-## accountManager.addOsAccount<sup>11+</sup>
+## accountManager.addOsAccount<sup>(deprecated)</sup>
 
 addOsAccount(admin: Want, name: string, type: osAccount.OsAccountType): osAccount.OsAccountInfo
 
 后台添加账号。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [addOsAccountAsync](./js-apis-enterprise-accountManager.md#accountmanageraddosaccountasync)
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_ACCOUNT_POLICY
 
@@ -273,7 +293,7 @@ addOsAccount(admin: Want, name: string, type: osAccount.OsAccountType): osAccoun
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                       |
 | name   | string                                                       | 是   | 用户ID，指定具体用户，取值范围：大于等于0。                  |
-| type   | [osAccount.OsAccountType](../apis-basic-services-kit/js-apis-osAccount.md#osaccounttype) | 是   | 要添加的账号的类型。<br/>取值范围：ADMIN、NORMAL、GUEST。<br/>· ADMIN：管理员帐号。<br/>· NORMAL：普通账号。<br/>· GUEST：访客账号。 |
+| type   | [osAccount.OsAccountType](../apis-basic-services-kit/js-apis-osAccount.md#osaccounttype) | 是   | 要添加的账号的类型。<br/>取值范围：ADMIN、NORMAL、GUEST。<br/>· ADMIN：管理员账号。<br/>· NORMAL：普通账号。<br/>· GUEST：访客账号。 |
 
 **返回值：**
 

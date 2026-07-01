@@ -1,7 +1,7 @@
 # OH_AVSession_AVPlaybackState
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
@@ -12,7 +12,7 @@ typedef struct OH_AVSession_AVPlaybackState OH_AVSession_AVPlaybackState
 
 ## 概述
 
-播控播放状态的对象。
+播放状态对象。
 
 **起始版本：** 23
 

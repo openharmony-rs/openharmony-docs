@@ -2,7 +2,7 @@
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: DistributedSched-->
 <!--Owner: @wangJE-->
-<!--Designer: @lee_jet520-->
+<!--Designer: @yangjun044-->
 <!--Tester: @Ytt-test-->
 <!--Adviser: @hu-zhiqiong-->
 
@@ -40,7 +40,7 @@ Peer server is not started.
 
 **可能原因**
 
-服务端未开启对应服务。
+服务端应用未成功启动对应的服务。
 
 **处理步骤**
 
@@ -58,11 +58,11 @@ The number of servers exceeds the limit.
 
 **可能原因**
 
-已申请的Server资源超过10个。
+已申请的服务资源超过10个。
 
 **处理步骤**
 
-已申请的Server资源数量过多，需要调用close()方法来释放Server资源。
+应用已申请的Server资源数量超过最大允许数量（10个），需要调用close()方法释放这些资源。
 
 ## 32390203 服务名重复注册
 
@@ -86,7 +86,7 @@ Duplicate server name.
 
 **错误信息**
 
-The number of connection exceeds the limit.
+The number of connections exceeds the limit.
 
 **错误描述**
 
@@ -94,11 +94,11 @@ The number of connection exceeds the limit.
 
 **可能原因**
 
-已申请的Connection资源超过10个。
+已申请的连接资源超过10个。
 
 **处理步骤**
 
-应用已申请的Connection资源数量超过最大允许数量(10个)，需要调用close()方法释放这些资源。
+应用已申请的Connection资源数量超过最大允许数量（10个），需要调用close()方法释放这些资源。
 
 ## 32390205 连接状态不可用
 
@@ -112,11 +112,11 @@ Connection is not ready.
 
 **可能原因**
 
-客户端或服务端应用正在使用已断开的连接，例如连接建立后因异常中断导致的连接状态改变。
+客户端或服务端应用尝试使用已断开的连接进行操作，例如连接建立后因异常中断导致的连接状态改变。
 
 **处理步骤**
 
-排查连接状态是否成功或已断开，尝试使用成功且未断开的连接进行操作。
+检查连接状态是否成功或已断开，尝试使用成功且未断开的连接进行操作。
 
 ## 32390206 参数非法
 
@@ -126,7 +126,7 @@ Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified
 
 **错误描述**
 
-参数错误。
+参数非法。
 
 **可能原因**
 
@@ -140,7 +140,7 @@ Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified
 
 **处理步骤**
 
-请检查必选参数是否已传入，以及传入的参数类型是否正确。如果参数校验失败，请参考API参考中的说明，按照可能的原因进行排查。
+请检查必选参数是否已传入，以及传入的参数类型是否正确。如果参数校验失败，请参考API参考中的说明，对照上述四种可能原因逐项排查。
 
 ## 32390300 内部错误
 
@@ -167,7 +167,7 @@ Internal error.
 
 查看错误日志，详细了解错误原因。针对不同原因做不同处理：
 
-1. 排查传入的deviceId与从蓝牙系统接口中获取到的deviceId是否一致；排查对端广播是否正在广播态。
+1. 排查传入的deviceId与从蓝牙系统接口中获取到的deviceId是否一致；排查对端设备是否正在广播。
 
 2. 排查客户端与服务端传入的name是否一致；排查是否按接口说明文档传入正确的name。
 

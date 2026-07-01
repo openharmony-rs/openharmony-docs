@@ -52,7 +52,7 @@ addMonitor/clearMonitor的路径参数不合法。
 
 **错误信息**
 
-monitorCallback is not a function or an anonymous function.
+addMonitor/clearMonitor failed because the monitorFunc is illegal, monitorFunc must be function or but cannot be an anonymous function.
 
 **错误描述**
 
@@ -60,7 +60,7 @@ addMonitor/clearMonitor的回调方法参数不合法。
 
 **可能原因**
 
-回调方法不是function类型，或者是匿名function。
+回调方法不是function类型，或者是匿名function类型。
 
 **处理步骤**
 
@@ -136,7 +136,7 @@ defaultCreator不是StorageDefaultCreator\<T\>类型。
 
 **处理步骤**
 
-确保connect/globalConnect传入的defaultCreator为StorageDefaultCreator\<T\>类型。以globalConnect为例，示例请参考[globalConnect示例](./js-apis-stateManagement.md#globalconnect18)。
+确保connect/globalConnect传入的defaultCreator为StorageDefaultCreator\<T\>类型。以globalConnect为例，示例请参考[globalConnect](./js-apis-stateManagement.md#globalconnect18)。
 
 ## 140105 PersistenceV2混用connect和globalConnect并使用相同的key
 
@@ -168,7 +168,7 @@ AreaMode Value Error! value range can only in EL1-EL5
 
 **可能原因**
 
-设置globalConnect参数[ConnectOptions](./js-apis-stateManagement.md#connectoptions18)的[areaMode](./js-apis-stateManagement.md#connectoptions18)属性范围不在EL1-EL5内。
+设置globalConnect参数[ConnectOptions](./js-apis-stateManagement.md#connectoptionst18)的[areaMode](./js-apis-stateManagement.md#connectoptionst18)属性范围不在EL1-EL5内。
 
 **处理步骤**
 
@@ -277,7 +277,7 @@ Old toolchain detected. Please upgrade to the latest.
 
 **错误描述**
 
-从API version 23开始，支持[\@Reusable](../../ui/state-management/arkts-reusable.md)（父组件）中创建[\@ComponentV2](../../ui/state-management/arkts-create-custom-components.md#componentv2)（子组件），但需要开发者使用API version 18及以上SDK，详情见[\@ReusableV2使用限制](../../ui/state-management/arkts-new-reusableV2.md#使用限制)。
+从API version 18开始，支持[\@Reusable](../../ui/state-management/arkts-reusable.md)（父组件）中创建[\@ComponentV2](../../ui/state-management/arkts-create-custom-components.md#componentv2)（子组件），但需要开发者使用API version 18及以上SDK，否则会有运行时报错，从API version 23开始，将返回此错误码，详情见[\@ReusableV2使用限制](../../ui/state-management/arkts-new-reusableV2.md#使用限制)。
 
 **可能原因**
 
@@ -323,7 +323,7 @@ Illegal variable value error with decorated variable
 
 使用状态管理V1的状态变量支持的类型，以\@State为例，详情见[\@State装饰器使用规则说明](../../ui/state-management/arkts-state.md#装饰器使用规则说明)。
 
-## 140116 AppStorageV2使用非法的key
+## 140116 AppStorageV2或PersistenceV2使用非法的key
 
 **错误信息**
 

@@ -6,11 +6,11 @@
 <!--Tester: @jiyong_sd-->
 <!--Adviser: @fang-jinxu-->
 
-本模块定义了OpenHarmony ArkTS API的注解类型，如生命周期最小可用版本等。
+本模块定义了OpenHarmony ArkTS API的注解类型，如生命周期最小可用版本、API告警屏蔽等，用于帮助开发者标识和管理API的兼容性、告警抑制等特性。该模块解决了开发者在跨版本开发、第三方SDK集成等场景中遇到的版本兼容性告警、权限告警、多设备适配告警等问题，通过注解方式抑制不必要的告警干扰，提高代码的可维护性和开发效率。
 
 > **说明：**
 >
-> - 本模块首批接口从 API version 22 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从 API version 22 开始支持。后续版本的新增接口，采用上角标单独标记起始版本。
 
 ## 导入模块
 
@@ -22,7 +22,7 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 
 @interface Available { minApiVersion: string = '' }
 
-系统提供的API注解能力，可用于标记API支持的最低可用版本。此注解可以标注在类、接口、变量、类型、模块、枚举上。在源码定义处添加注解后，编译工具会在使用处检查潜在的兼容性问题。当minApiVersion大于build-profile.json5中指定的compatibleSDKVersion字段，会生成兼容性警告。
+提供API注解能力，用于标记API支持的最低可用版本。此注解可以标注在类、接口、变量、类型、模块、枚举上。在源码定义处添加注解后，编译工具会在使用处检查潜在的兼容性问题。当minApiVersion大于build-profile.json5中指定的compatibleSDKVersion字段，会生成兼容性警告。
 
 **卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
@@ -35,7 +35,7 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 <!--RP1-->
 | 名称 | 类型 | 只读 | 可选 | 说明                       |
 | ---- | ---- | ---- | --- | -------------------------- |
-| minApiVersion | string | 否 | 否 | minApiVersion用于标识最低可用版本，由两部分组成：系统类型+版本号。仅当系统类型为OpenHarmony时可省略系统类型。例如：'OpenHarmony 20'，'20'。 |
+| minApiVersion | string | 否 | 否 | minApiVersion用于标识最低可用版本，由两部分组成：系统类型+版本号。仅当系统类型为OpenHarmony时可省略系统类型。例如：'OpenHarmony 20'，'20'。当minApiVersion大于build-profile.json5中指定的compatibleSDKVersion字段时，会生成兼容性警告。 |
 
 **示例：**
 
@@ -71,10 +71,10 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 @interface SuppressWarnings {
 
   rules: Array\<SuppressWarningsType>;
-  
+
 }  
 
-系统提供的API告警屏蔽功能，允许开发者通过注解的方式来抑制API调用时产生的告警。该功能可应用于类、函数、变量、类型、接口等API元素上。在源码中添加相应标注后，编译器会根据预设规则自动屏蔽对应的告警信息。
+系统提供的API告警屏蔽功能，允许开发者通过注解的方式抑制API调用时产生的告警。该功能可应用于类、函数、变量、类型、接口等API元素上。在源码中添加相应标注后，编译器会根据预设规则自动屏蔽对应的告警信息。适用于需要在特定场景下暂时忽略某些告警、避免编译器产生干扰性警告的情况，帮助开发者专注于关键问题，提高开发效率。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
@@ -86,30 +86,43 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 
 | 名称 | 类型 | 只读 | 可选 | 说明                       |
 | ---- | ---- | ---- | --- | -------------------------- |
-| rules | Array<[SuppressWarningsType](#suppresswarningstype23)> | 否 | 否 | 支持告警消除的规则集合|
+| rules | Array<[SuppressWarningsType](#suppresswarningstype23)> | 否 | 否 | 支持告警消除的规则集合，用于指定需要抑制的告警类型。可通过数组传入多个规则同时抑制多种告警。可选取值参见[SuppressWarningsType](#suppresswarningstype23)。|
 
 **注解使用示例：**
 
-预置条件：工程根目录下build-profile.json5文件设置的compatibleSdkVersion值为20。
+<!--RP2-->
+兼容性告警消除预置条件：OpenHarmony工程根目录下，build-profile.json5文件设置的compatibleSdkVersion值为20。
+<!--RP2End-->
+
+权限告警消除预置条件：module.json5配置文件的requestPermissions标签中没有申请权限。
+
+> **说明：**
+>
+> 用于容器节点时，会屏蔽节点下子节点产生的告警。
+>
+> 重复规则屏蔽时，仅生效代码位置上距离最近且符合规则的屏蔽类型
 
   ```typescript
-  import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicServicesKit';
+  import { SuppressWarnings, SuppressWarningsType } from '@kit.BasicServicesKit';
   import { photoAccessHelper } from '@kit.MediaLibraryKit';
   import { common } from '@kit.AbilityKit';
-  import { wifiManager } from '@kit.ConnectivityKit';
-  wifiManager.startScan();  // 该接口起始版本为21，直接调用会生成兼容性告警。
-  // The 'startScan' API is supported since SDK version 21. However, the current compatible SDK version is 20.
+  import { systemDateTime } from '@kit.BasicServicesKit';
+  // 兼容性告警消除部分
+  systemDateTime.getAutoTimeStatus();  // 该接口起始版本为21，直接调用会生成兼容性告警。
+  // The 'getAutoTimeStatus' API is supported since SDK version 21. However, the current compatible SDK version is 20.
 
   @SuppressWarnings({rules: [SuppressWarningsType.COMPATIBILITY]})
   function myFunc() {
-    wifiManager.startScan(); // 使用@SuppressWarnings注解后，告警被抑制。
+    systemDateTime.getAutoTimeStatus(); // 使用@SuppressWarnings注解后，兼容性告警被抑制。用于myFunc()容器节点时，子节点的兼容性告警也被抑制。
   }
 
   @SuppressWarnings({rules: [SuppressWarningsType.COMPATIBILITY]})
   class MyClass {
-    wifiScanResult = wifiManager.startScan(); // 使用@SuppressWarnings注解后，告警被抑制。
+    status = systemDateTime.getAutoTimeStatus(); // 使用@SuppressWarnings注解后，兼容性告警被抑制。
   }
 
+
+  // 权限告警消除部分
   async function savePhotoToGallery(context: common.UIAbilityContext) {
     let helper = photoAccessHelper.getPhotoAccessHelper(context);
     let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg');
@@ -117,53 +130,74 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
   }
 
   @SuppressWarnings({rules: [SuppressWarningsType.PERMISSION]})
+  async function savePhotoToGallerySuppressCompatibility(context: common.UIAbilityContext) {
+    let helper = photoAccessHelper.getPhotoAccessHelper(context);
+    @SuppressWarnings({rules: [SuppressWarningsType.COMPATIBILITY]}) // 如果同时存在两种屏蔽内容，仅生效最近的抑制类型。（兼容性告警被抑制，权限告警仍然存在）
+    let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg'); // 使用@SuppressWarnings注解后，兼容性告警被抑制，权限告警仍然存在。
+  }
+
+  @SuppressWarnings({rules: [SuppressWarningsType.PERMISSION]})
   async function savePhotoToGallerySuppress(context: common.UIAbilityContext) {
     let helper = photoAccessHelper.getPhotoAccessHelper(context);
-    let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg'); // 使用@SuppressWarnings注解后，告警被抑制。
+    let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg'); // 使用@SuppressWarnings注解后，权限告警被抑制。
   }
   ```
 
 // @SuppressWarnings \<SuppressWarningsType>
 
-本功能支持以单行注释形式快速抑制告警。添加注释后，编译器将根据规则自动屏蔽对应的告警信息。
+本功能支持以单行注释形式快速抑制告警。在触发告警的代码行上方添加注释后，编译器将根据规则自动屏蔽对应的告警信息。注释中的标识符与SuppressWarningsType枚举值对应（如compatibility对应COMPATIBILITY），仅对紧随其后的代码行生效。
 
 > **说明：**
 >
 > 仅支持单行注释(//)格式，示例：// @SuppressWarnings compatibility
 >
 > 不支持多行注释(/\*\*/)格式，示例：/\* @SuppressWarnings compatibility */
+>
+> 不支持屏蔽容器节点下的子节点
 
 **注释使用示例：**
 
-预置条件：工程根目录下build-profile.json5文件设置的compatibleSdkVersion值为20。
+<!--RP3-->
+兼容性告警消除预置条件：OpenHarmony工程根目录下，build-profile.json5文件设置的compatibleSdkVersion值为20。
+<!--RP3End-->
+
+权限告警消除预置条件：module.json5配置文件的requestPermissions标签中没有申请权限。
 
   ```typescript
-  import { Available } from '@kit.BasicServicesKit';
-  import { wifiManager } from '@kit.ConnectivityKit';
+  import { systemDateTime } from '@kit.BasicServicesKit';
   import { photoAccessHelper } from '@kit.MediaLibraryKit';
   import { common } from '@kit.AbilityKit';
-  wifiManager.startScan();  // 该接口起始版本为21，直接调用会生成兼容性告警。
-  // The 'startScan' API is supported since SDK version 21. However, the current compatible SDK version is 20.
+  // 兼容性告警消除部分
+  systemDateTime.getAutoTimeStatus();  // 该接口起始版本为21，直接调用会生成兼容性告警。
+  // The 'getAutoTimeStatus' API is supported since SDK version 21. However, the current compatible SDK version is 20.
 
   // @SuppressWarnings compatibility
-  wifiManager.startScan(); // 使用@SuppressWarnings注释后，告警被抑制。
+  systemDateTime.getAutoTimeStatus();  // 使用@SuppressWarnings注释后，兼容性告警被抑制。
 
+
+  // 权限告警消除部分
   async function savePhotoToGallery(context: common.UIAbilityContext) {
     let helper = photoAccessHelper.getPhotoAccessHelper(context);
     let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg');
+    // To use this API, you need to apply for the permissions: ohos.permission.WRITE_IMAGEVIDEO
+  }
+  // @SuppressWarnings permission
+  async function savePhotoToGallerySuppressNoUse(context: common.UIAbilityContext) {
+    let helper = photoAccessHelper.getPhotoAccessHelper(context);
+    let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg'); // 使用注释后，容器内子节点的告警不支持消除，仍会产生告警
     // To use this API, you need to apply for the permissions: ohos.permission.WRITE_IMAGEVIDEO
   }
 
   async function savePhotoToGallerySuppress(context: common.UIAbilityContext) {
     let helper = photoAccessHelper.getPhotoAccessHelper(context);
     // @SuppressWarnings permission
-    let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg'); // 使用@SuppressWarnings注释后，告警被抑制。
+    let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg'); // 使用@SuppressWarnings注释后，权限告警被抑制。
   }
   ```
 
 ## SuppressWarningsType<sup>23+</sup>
 
-支持消除告警的规则。
+支持消除告警的规则。帮助开发者根据实际需求选择性地屏蔽兼容性告警、多设备告警、权限告警等，在确保代码质量的同时减少不必要的告警干扰，提升开发体验。
 
 **卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 

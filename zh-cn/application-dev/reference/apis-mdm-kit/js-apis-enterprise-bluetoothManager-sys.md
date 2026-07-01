@@ -1,8 +1,8 @@
 # @ohos.enterprise.bluetoothManager（蓝牙管理）(系统接口)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -14,7 +14,7 @@
 >
 > 本模块接口仅可在Stage模型下使用。
 >
-> 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-term.md#mdm应用设备管理应用)开放，需将[设备管理应用激活](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)后调用。
+> 本模块接口仅对[MDM应用](../../mdm/mdm-kit-term.md#mdm应用)开放，需通过[enableAdmin](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)接口将设备管理应用激活后调用。
 > 
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.enterprise.bluetoothManager](js-apis-enterprise-bluetoothManager.md)。
 
@@ -24,11 +24,15 @@
 import { bluetoothManager } from '@kit.MDMKit';
 ```
 
-## bluetoothManager.isBluetoothDisabled
+## bluetoothManager.isBluetoothDisabled<sup>(deprecated)</sup>
 
 isBluetoothDisabled(admin: Want): boolean
 
 查询蓝牙是否被禁用。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getDisallowedPolicy](./js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicy24)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
 
@@ -82,11 +86,15 @@ try {
 };
 ```
 
-## bluetoothManager.setBluetoothDisabled
+## bluetoothManager.setBluetoothDisabled<sup>(deprecated)</sup>
 
 setBluetoothDisabled(admin: Want, disabled: boolean): void
 
 设置禁用蓝牙策略。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [setDisallowedPolicy](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy24)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
 

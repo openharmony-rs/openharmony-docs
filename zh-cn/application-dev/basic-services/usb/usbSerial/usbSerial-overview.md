@@ -5,7 +5,7 @@
 <!--Owner: @hwymlgitcode-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 ## 简介
 
@@ -42,7 +42,7 @@ USB串口服务主要包括两个阶段：
  
 **图1** USB串口收发数据流程
 
-![串口收发数据](../figures/zh-cn_image_22989BBB5490.png)
+![USB-service-comm](../figures/USB-service-comm.png)
 
 ### 约束和限制
 

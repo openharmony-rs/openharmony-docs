@@ -1,8 +1,8 @@
 # SoundPool (Sound Pool)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -36,6 +36,7 @@ These parameters are used to control the playback volume, number of loops, and p
 | leftVolume  | number | No| Yes | Volume of the left channel. The value range is [0.0, 1.0], and the default value is **1.0**.<br> When the volume exceeds the boundary value, the boundary value is automatically used.                      |
 | rightVolume | number  | No| Yes | Volume of the right channel. (Currently, the volume cannot be set separately for the left and right channels. The volume set for the left channel is used.) The value range is [0.0, 1.0], and the default value is **1.0**.<br> When the volume exceeds the boundary value, the boundary value is automatically used.|
 | priority  | number  | No| Yes | Priority for playing an audio stream. The value **0** indicates the lowest priority. A larger value indicates a higher priority.<br> The playback priority is determined by comparing the values. The value must be an integer greater than or equal to 0. The default value is **0**.<br> If this parameter is set to a negative value, it is automatically set to 0. If this parameter is set to a floating point number, only the integer part is used.    |
+| pitch  | number  | No| Yes | Pitch for playing an audio stream. The value range is [0.25, 4.0]. The default value is **1.0**.<br>When the pitch exceeds the boundary value, the boundary value is automatically used.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.      |
 
 ## ErrorType<sup>20+</sup>
 
@@ -125,7 +126,7 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 }
 media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: media.SoundPool) => {
   if (error) {
-    console.error(`Failed to create SoundPool. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to create SoundPool. Code: ${error.code}, message: ${error.message}`);
     return;
   } else {
     soundPool = soundPool_;
@@ -415,7 +416,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
         console.info('Succeeded in loading soundpool');
         soundID = soundId;
       }, (err: BusinessError) => {
-        console.error('Failed to load soundpool. Code: ${err.code}, message: ${err.message});
+        console.error(`Failed to load soundpool. Code: ${err.code}, message: ${err.message}`);
       });
     });
   }
@@ -451,7 +452,7 @@ function create(context: Context) {
         console.info('Succeeded in loading soundpool');
         soundID = soundId;
       }, (err: BusinessError) => {
-        console.error('Failed to load soundpool. Code: ${err.code}, message: ${err.message});
+        console.error(`Failed to load soundpool. Code: ${err.code}, message: ${err.message}`);
       });
     }
   });
@@ -512,6 +513,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
       leftVolume: 0.5, // range = 0.0-1.0
       rightVolume: 0.5, // range = 0.0-1.0
       priority: 0, // The sound playback has the lowest priority.
+      pitch: 1, // Original pitch. This parameter is available since API version 26.0.0.
     }
     soundPool.play(soundID, playParameters, (error: BusinessError, streamId: number) => {
       if (error) {
@@ -643,6 +645,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
       leftVolume: 0.5, // range = 0.0-1.0.
       rightVolume: 0.5, // range = 0.0-1.0.
       priority: 0, // The sound playback has the lowest priority.
+      pitch: 1, // Original pitch. This parameter is available since API version 26.0.0.
     }
 
     soundPool.play(soundID, playParameters).then((streamId: number) => {
@@ -769,7 +772,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool.stop(streamID).then(() => {
       console.info('Succeeded in stopping soundpool');
     }, (err: BusinessError) => {
-      console.error('Failed to stop soundpool Code: ${err.code}, message: ${err.message}');
+      console.error(`Failed to stop soundpool Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
@@ -777,7 +780,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 ### setLoop
 
-setLoop(streamID: number, loop: number, callback: AsyncCallback\<void>): void;
+setLoop(streamID: number, loop: number, callback: AsyncCallback\<void>): void
 
 Sets the loop mode. This API uses an asynchronous callback to return the result.
 
@@ -893,7 +896,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool.setLoop(streamID, 1).then(() => {
       console.info('Succeeded in setLooping soundpool, streamID:' + streamID);
     }).catch((err: BusinessError) => {
-      console.error('Failed to setLoop soundPool. Code: ${err.code}, message: ${err.message}');
+      console.error(`Failed to setLoop soundPool. Code: ${err.code}, message: ${err.message}`);
     });
   }
 });
@@ -1140,7 +1143,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
     soundPool.setRate(streamID, selectedAudioRendererRate).then(() => {
       console.info('Succeeded in setting Rate soundpool');
     }, (err: BusinessError) => {
-      console.error('Failed to set Rate. Code: ${err.code}, message: ${err.message});
+      console.error(`Failed to set Rate. Code: ${err.code}, message: ${err.message}`);
     });
   }
 });

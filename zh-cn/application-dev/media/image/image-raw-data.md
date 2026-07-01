@@ -3,7 +3,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -19,14 +19,14 @@
 
 1. 全局导入Image模块，根据实际需求导入对应的Kit模块。
    
-   <!-- @[decodingPixelMap_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->   
+   <!-- @[decodingPixelMap_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->    
    
    ``` TypeScript
-   // 导入相关模块包。
+   // 导入相关模块。
    import { image } from '@kit.ImageKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
    import { resourceManager } from '@kit.LocalizationKit';
    ```
 
@@ -50,7 +50,7 @@
      function getFileFd(context: Context, fileName: string): number | undefined {
        try {
          const filePath: string = context.cacheDir + '/' + fileName;
-         const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
+         const file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_ONLY);
          const fd: number = file?.fd;
          return fd;
        } catch (err) {
@@ -137,10 +137,10 @@
 
 4. 获取ImageRawData图片对象并打印像素值。
 
-   <!-- @[createImageRawData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+   <!-- @[createImageRawData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->      
    
    ``` TypeScript
-   async  createImageRawData(imageSource: image.ImageSource | undefined) : Promise<image.ImageRawData | undefined> {
+   async createImageRawData(imageSource: image.ImageSource | undefined) : Promise<image.ImageRawData | undefined> {
      if (!imageSource) {
        console.error('imageSource is undefined.');
        return undefined;
@@ -157,7 +157,7 @@
          value += array[i] + ', ';
        }
        console.info(`get dng rawdata is:${value}.`);
-       return data
+       return data;
      }).catch((err: BusinessError) => {
        console.error(`get dng rawdata failed.err: ${JSON.stringify(err)}`);
        return undefined;
@@ -170,13 +170,13 @@
 
    确认imageSource的异步方法已经执行完成，不再使用该变量后，可按需手动调用下面方法释放。
 
-   <!-- @[release_pixelMapDecoder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->   
+   <!-- @[release_pixelMapDecoder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->    
    
    ``` TypeScript
    async release(pixelMap: image.PixelMap | undefined, imageSource: image.ImageSource | undefined) {
-     pixelMap?.release();
+     await pixelMap?.release();
      pixelMap = undefined;
-     imageSource?.release();
+     await imageSource?.release();
      imageSource = undefined;
    }
    ```

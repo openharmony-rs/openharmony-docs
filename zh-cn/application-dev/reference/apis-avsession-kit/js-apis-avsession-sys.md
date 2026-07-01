@@ -1,7 +1,7 @@
 # @ohos.multimedia.avsession (媒体会话管理)(系统接口)
 <!--Kit: AVSession Kit-->
-<!--Subsystem:Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester:@chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
@@ -230,7 +230,7 @@ avSession.getHistoricalSessionDescriptors(1, (descriptors: avSession.AVSessionDe
 
 ## avSession.getHistoricalAVQueueInfos<sup>11+</sup>
 
-getHistoricalAVQueueInfos(maxSize: number, maxAppSize: number) : Promise\<Array\<Readonly\<AVQueueInfo>>>
+getHistoricalAVQueueInfos(maxSize: number, maxAppSize: number): Promise\<Array\<Readonly\<AVQueueInfo>>>
 
 获取全部的历史播放歌单。结果通过Promise异步回调方式返回。
 
@@ -939,7 +939,7 @@ on(type: 'sessionServiceDie', callback: () => void): void
 
 ```ts
 avSession.on('sessionServiceDie', () => {
-  console.info('on sessionServiceDie  : session is  Died ');
+  console.info('on sessionServiceDie : session is dead ');
 });
 ```
 
@@ -1187,7 +1187,7 @@ let cmd : avSession.AVControlCommandType = 'play';
 // let cmd : avSession.AVControlCommandType = 'fastForward';
 // let cmd : avSession.AVControlCommandType = 'rewind';
 let avcommand: avSession.AVControlCommand = {command:cmd};
-// let cmd : avSession.AVControlCommandType = 'seek';
+// let cmd: avSession.AVControlCommandType = 'seek';
 // let avcommand = {command:cmd, parameter:10};
 // let cmd : avSession.AVControlCommandType = 'setSpeed';
 // let avcommand = {command:cmd, parameter:2.6};
@@ -2018,7 +2018,7 @@ startDeviceLogging(url: string, maxSize?: number): Promise\<void>
 | 参数名   | 类型                                  | 必填 | 说明                                  |
 | -------- | ------------------------------------- | ---- | ------------------------------------- |
 | url | string                   | 是   | 目标文件描述符（打开文件的唯一标识）。 |
-| maxSize | number                   | 否   | 写入最大日志大小（以KB为单位）。 |
+| maxSize | number                   | 否   | 写入最大日志大小（以kB为单位）。 |
 
 **返回值：**
 
@@ -2241,7 +2241,7 @@ avSession.off('deviceStateChanged');
 
 ## AVCastController<sup>10+</sup>
 
-在投播建立后，调用[avSession.getAVCastController](arkts-apis-avsession-AVSession.md#getavcastcontroller10)后，返回会话控制器实例。控制器可查看会话ID，并可完成对会话发送命令及事件，获取会话元数据，播放状态信息等操作。
+投播建立后，调用[avSession.getAVCastController](arkts-apis-avsession-AVSession.md#getavcastcontroller10)可返回会话控制器实例。控制器可查看会话ID，并可完成对会话发送命令及事件，获取会话元数据，播放状态信息等操作。
 
 ### setDisplaySurface<sup>10+</sup>
 
@@ -2539,7 +2539,7 @@ struct Index {
 
 | 名称       | 类型           | 只读 | 可选 | 说明                   |
 | ---------- | -------------- | ---- | ----|------------------ |
-| ipAddress | string | 否 | 是  | 播放设备的ip地址。<br/>**系统接口：** 该接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast     |
+| ipAddress | string | 否 | 是  | 播放设备的IP地址。<br/>**系统接口：** 该接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast     |
 | providerId | number | 否    | 是 | 播放设备提供商。<br/>**系统接口：** 该接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast    |
 | authenticationStatus<sup>11+</sup> | number | 否  | 是 | 播放设备是否可信。默认为0。0代表设备不可信，1代表设备可信。<br/>**系统接口：** 该接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast    |
 | networkId<sup>13+</sup> | string | 否  |是 | 播放设备的网络ID。<br/>**系统接口：** 该接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
@@ -2575,10 +2575,48 @@ struct Index {
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
-**系统接口：** 此接口是系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称                |  值  | 说明         |
 | --------------------| ---- | ----------- |
 | CATEGORY_ACTIVE     |  1   | 允许在系统控制入口显示的会话类别。 |
 | CATEGORY_NOT_ACTIVE |  2   | 禁止在系统控制入口显示的会话类别。 |
 | CATEGORY_ALL        |  3   | 所有会话类别。 |
+
+## ConnectionState
+
+表示连接状态的枚举，仅包含系统接口部分。完整枚举定义请参见[ConnectionState](arkts-apis-avsession-e.md#connectionstate10)。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+| 名称                        | 值   | 说明         |
+| --------------------------- | ---- | ----------- |
+| STATE_AUTHENTICATING      | 10    | 与远端设备连接认证中。 |
+| STATE_MIRROR_TO_STREAM      | 11    | 从镜像模式切换到音视频投播。 |
+| STATE_STREAM_TO_MIRROR      | 12    | 从音视频投播切换到镜像模式。 |
+
+## ExtraKey
+
+表示定义在不同场景中使用的额外键的枚举，仅包含系统接口部分。完整枚举定义请参见[ExtraKey](arkts-apis-avsession-e.md#extrakey)。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+| 名称                        | 值   | 说明         |
+| --------------------------- | ---- | ----------- |
+| LIVE_VIEW_HIDDEN_WHEN_KEYGUARD      | 'hw_live_view_hidden_when_keyguard'    | 作为[setExtras](arkts-apis-avsession-AVSession.md#setextras10)接口传入的键，值传入bool类型列表，用于通知系统在锁屏时是否隐藏实况窗卡片。 |

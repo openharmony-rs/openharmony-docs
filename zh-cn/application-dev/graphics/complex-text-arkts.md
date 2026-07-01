@@ -1,7 +1,7 @@
 # 复杂文本绘制与显示（ArkTS）
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
@@ -103,7 +103,7 @@
 
 ### 效果展示
 
-![zh-cn_image_0000002246603733](figures/zh-cn_image_0000002246603733.png)
+![Effect](figures/Effect.png)
 
 
 ## 多行文本绘制与显示
@@ -167,7 +167,7 @@
 
    <!-- -->
 
-4. 初始化段落对象，并添加占位符和文本。
+4. 初始化段落对象，并添加文本。
 
    <!-- @[arkts_multi_line_text_drawing_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multiline/MultilineText.ets) -->
    
@@ -205,14 +205,14 @@
 
 | 段落样式设置（断词策略、文本对齐方式、最大行数限制） | 效果示意 | 
 | -------- | -------- |
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为3，断词策略为text.WordBreak.BREAK_WORD。 | ![zh-cn_image_0000002246563849](figures/zh-cn_image_0000002246563849.png) | 
-| 文本对齐方式为text.TextAlign.RIGHT，最大行数为3，断词策略为text.WordBreak.BREAK_WORD。 | ![zh-cn_image_0000002211443900](figures/zh-cn_image_0000002211443900.png) | 
-| 文本对齐方式为text.TextAlign.JUSTIFY，最大行数为10，断词策略为text.WordBreak.BREAK_WORD。 | ![zh-cn_image_complexArkTsDemoJustify](figures/zh-cn_image_complexArkTsDemoJustify.png) | 
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为3，断词策略为text.WordBreak.BREAK_ALL。 | ![zh-cn_image_0000002211603680](figures/zh-cn_image_0000002211603680.png) | 
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_ALL。 | ![zh-cn_image_0000002246563845](figures/zh-cn_image_0000002246563845.png) | 
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>不设置语言偏好。段落无连字符“-”断词效果。 | ![ts_word_break_hyphen_locale_undefined.jpg](figures/ts_word_break_hyphen_locale_undefined.jpg) | 
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>语言偏好为en-gb（英式英语）。段落产生连字符“-”断词效果，并根据语言偏好呈现英式语言环境断词效果。 | ![ts_word_break_hyphen_local_en-gb.jpg](figures/ts_word_break_hyphen_local_en-gb.jpg) | 
-| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>语言偏好为en-us（美式英语）。段落产生连字符“-”断词效果，并根据语言偏好呈现美式语言环境断词效果。 | ![ts_word_break_hyphen_local_en-us.jpg](figures/ts_word_break_hyphen_local_en-us.jpg) | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为3，断词策略为text.WordBreak.BREAK_WORD。 | ![BREAK-WORD-LEFT](figures/BREAK-WORD-LEFT.png) | 
+| 文本对齐方式为text.TextAlign.RIGHT，最大行数为3，断词策略为text.WordBreak.BREAK_WORD。 | ![BREAK-WORD-RIGHT](figures/BREAK-WORD-RIGHT.png) | 
+| 文本对齐方式为text.TextAlign.JUSTIFY，最大行数为10，断词策略为text.WordBreak.BREAK_WORD。 | ![complexArkTsDemoJustify](figures/complexArkTsDemoJustify.png) | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为3，断词策略为text.WordBreak.BREAK_ALL。 | ![BREAK-ALL-LEFT](figures/BREAK-ALL-LEFT.png) | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_ALL。 | ![BREAK-ALL-LEFT-10](figures/BREAK-ALL-LEFT-10.png) | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>不设置语言偏好。段落无连字符“-”断词效果。 | ![ts-hyphen-locale-undefined.jpg](figures/ts-hyphen-locale-undefined.jpg) | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>语言偏好为en-gb（英式英语）。段落产生连字符“-”断词效果，并根据语言偏好呈现英式语言环境断词效果。 | ![ts-hyphen-local-en-gb.jpg](figures/ts-hyphen-local-en-gb.jpg) | 
+| 文本对齐方式为text.TextAlign.LEFT，最大行数为10，断词策略为text.WordBreak.BREAK_HYPHEN，<br/>语言偏好为en-us（美式英语）。段落产生连字符“-”断词效果，并根据语言偏好呈现美式语言环境断词效果。 | ![ts-hyphen-local-en-us.jpg](figures/ts-hyphen-local-en-us.jpg) | 
 
 
 ## 多样式文本绘制与显示
@@ -242,6 +242,12 @@
 - **行高调整：** 调整行高可改变文本行的垂直间距，使行间距更松散或更紧凑，显著改善文本垂直截断问题，提高可读性。
 
 - **行间距调整：** 通过调整行间距的方式可以实现行高调整一样的效果，优化阅读体验。
+
+- **省略号样式设置：** 在文本内容超出显示区域时，可以使用省略号截断文本，支持头部、中部、尾部以及多行省略模式。
+
+- **文字换行方式设置：** 文本排版时支持不同的断行策略，可根据场景选择合适的换行方式。
+
+- **行首标点压缩：** 在排版中，通过开启行首标点压缩功能，将行首标点符号进行挤压处理，避免标点占用行首空间，提升排版紧凑度。
 
 ### 装饰线
 
@@ -290,6 +296,7 @@
 ### 自动间距
 
 使能自动间距，则会在文本排版时自动调整CJK（中文字符、日文字符、韩文字符）与西文（拉丁字母、西里尔字母、希腊字母）、CJK与数字、CJK与版权符号、版权符号与数字、版权符号与西文之间的间距。例如，在中英文混排场景中，使能自动间距即可在中英文切换的地方自动添加额外间距，提升阅读体验。
+
 关键示例如下：
 ```ts
 let myParagraphStyle: text.ParagraphStyle = {
@@ -380,8 +387,33 @@ let myParagraphStyle: text.ParagraphStyle = {
 
 具体使用效果可参见下文[示例八](#示例八行间距调整)。
 
+### 省略号样式设置
+
+从API version 22开始，支持设置省略号样式，在文本内容超出显示区域时截断文本。从API version 24开始，支持多行省略模式。
+
+通过[ParagraphStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)中的textStyle属性设置省略号模式，可选的省略号模式可见[EllipsisMode](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#ellipsismode)。
+
+需要注意，省略号相关属性需要在ParagraphStyle的textStyle中设置才生效，通过pushStyle设置的省略号属性不会生效。
+
+具体使用效果可参见下文[示例九](#示例九省略号样式)。
+
+### 文字换行方式设置
+
+从API version 22开始，支持在文本排版时设置断行策略，断行策略决定了文本如何在行尾进行换行处理。
+
+通过设置[ParagraphStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)中的breakStrategy属性可以控制断行策略，可选的断行策略可见[BreakStrategy](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#breakstrategy)。
+
+具体使用效果可参见下文[示例十](#示例十文字换行方式)。
+
+### 行首标点压缩
+
+从API version 23开始，在文本排版中支持行首标点压缩功能。通过启用行首标点压缩功能，可以将行首标点符号进行挤压处理，提升排版紧凑度。
+
+通过设置[ParagraphStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)中的compressHeadPunctuation属性设置是否启用行首标点压缩。
+
+具体使用效果可参见下文[示例十一](#示例十一行首标点压缩)。
+
 ### 示例一（装饰线、字体特征）
-这里以文本样式中的装饰线和字体特征为例，呈现多样式文本的绘制与显示。
 
 <!-- @[arkts_complex_style_example1_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample1.ets) -->
 
@@ -536,8 +568,8 @@ struct Font08 {
 
 | 样式设置（装饰线样式、字体特征） | 示意效果 | 
 | -------- | -------- |
-| 不开启装饰线和字体特征 | ![zh-cn_image_complexArkTsDemo1_1](figures/zh-cn_image_complexArkTsDemo1_1.png) | 
-| 开启装饰线和字体特征 | ![zh-cn_image_complexArkTsDemo1_2](figures/zh-cn_image_complexArkTsDemo1_2.png) | 
+| 不开启装饰线和字体特征 | ![complexArkTsDemo1-1](figures/complexArkTsDemo1-1.png) | 
+| 开启装饰线和字体特征 | ![complexArkTsDemo1-2](figures/complexArkTsDemo1-2.png) | 
 
 ### 示例二（可变字体、文本阴影、占位符）
 这里以可变字体、文本阴影、占位符三个特性为例，呈现多样式文本的绘制与显示。
@@ -605,7 +637,7 @@ class MyRenderNode extends RenderNode {
     // 绘制文本
     paragraph.paint(canvas, 0, 0);
 
-    //获取全部占位符的数组
+    // 获取全部占位符的数组
     let placeholderRects = paragraph.getRectsForPlaceholders();
     // 获取第一个占位符的左边界
     let left = placeholderRects[0].rect.left;
@@ -711,8 +743,8 @@ struct Font08 {
 
 | 样式设置（可变字体、文本阴影、占位符） | 示意效果 | 
 | -------- | -------- |
-| 不开启可变字体和文本阴影，不使用占位符 | ![zh-cn_image_complexArkTsDemo2_1](figures/zh-cn_image_complexArkTsDemo2_1.png) | 
-| 开启可变字体和文本阴影，使用占位符 | ![zh-cn_image_complexArkTsDemo2_2](figures/zh-cn_image_complexArkTsDemo2_2.png) | 
+| 不开启可变字体和文本阴影，不使用占位符 | ![complexArkTsDemo2-1](figures/complexArkTsDemo2-1.png) | 
+| 开启可变字体和文本阴影，使用占位符 | ![complexArkTsDemo2-2](figures/complexArkTsDemo2-2.png) | 
 
 ### 示例三（垂直对齐）
 这里以垂直对齐-居中对齐特性为例，呈现文本垂直方向排版的特性。
@@ -851,10 +883,10 @@ struct Font08 {
 具体示意效果如下所示：
 | 样式设置（垂直对齐） | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） | 
 | -------- | -------- |
-| 基线对齐（默认）| ![zh-cn_image_complexArkTsDemo2_1](figures/en_image_verticalAlignment_baseline.jpg) | 
-| 顶部对齐 | ![zh-cn_image_complexArkTsDemo2_2](figures/en_image_verticalAlignment_top.jpg) | 
-| 居中对齐 | ![zh-cn_image_complexArkTsDemo2_2](figures/en_image_verticalAlignment_center.jpg) | 
-| 底部对齐 | ![zh-cn_image_complexArkTsDemo2_2](figures/en_image_verticalAlignment_bottom.jpg) | 
+| 基线对齐（默认）| ![verticalAlignment-baseline](figures/verticalAlignment-baseline.jpg) | 
+| 顶部对齐 | ![verticalAlignment-top](figures/verticalAlignment-top.jpg) | 
+| 居中对齐 | ![verticalAlignment-center](figures/verticalAlignment-center.jpg) | 
+| 底部对齐 | ![verticalAlignment-bottom](figures/verticalAlignment-bottom.jpg) | 
 
 ### 示例四（上下标文本）
 这里以下标样式为例，呈现上下标文本排版特性。
@@ -1003,8 +1035,8 @@ struct Font08 {
 具体示意效果如下所示：
 | 样式设置（上下标） | 示意效果 | 
 | -------- | -------- |
-| 上标文本 | ![zh-cn_image_complexArkTsDemo2_1](figures/en_image_subscript.jpg) | 
-| 下标文本 | ![zh-cn_image_complexArkTsDemo2_2](figures/en_image_superscript.jpg) | 
+| 上标文本 | ![superscript](figures/superscript.jpg) | 
+| 下标文本 | ![subscript](figures/subscript.jpg) | 
 
 ### 示例五（高对比度）
 这里以高对比度为例，呈现高对比度文字的绘制与显示。
@@ -1139,8 +1171,8 @@ struct Font08 {
 
 | 高对比度设置 | 示意效果 | 
 | -------- | -------- |
-| 不开启高对比度 | ![zh-cn_image_complexArkTsDemo5_1](figures/zh-cn_image_complexArkTsDemo5_1.png) | 
-| 开启高对比度 | ![zh-cn_image_complexArkTsDemo5_2](figures/zh-cn_image_complexArkTsDemo5_2.png) | 
+| 不开启高对比度 | ![complexArkTsDemo5-1](figures/complexArkTsDemo5-1.png) | 
+| 开启高对比度 | ![complexArkTsDemo5-2](figures/complexArkTsDemo5-2.png) | 
 
 ### 示例六（行高调整方式一）
 这里以行高上限与行高下限设置相同值为例，呈现固定行高时的绘制表现。
@@ -1555,3 +1587,84 @@ struct Font08 {
 | -------- | -------- |
 | DISABLE_ALL | ![zh-cn_image_lineSpacingAndDisableBehavior](figures/LineSpacingAndDisableBehavior.png) |
 | ALL | ![zh-cn_image_lineSpacing](figures/LineSpacing.png) |
+
+### 示例九（省略号样式）
+以下示例展示了开启尾部省略号模式的文本截断效果。
+
+<!-- @[arkts_ellipsis_example_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample9.ets) -->
+
+``` TypeScript
+// 设置文本样式，包含省略号字符串和省略号模式
+let myTextStyle: text.TextStyle = {
+  color: {
+    alpha: 255,
+    red: 0,
+    green: 0,
+    blue: 0
+  },
+  fontSize: 40,
+  // 设置省略号字符串
+  ellipsis: '...',
+  // 设置省略号模式为尾部省略
+  ellipsisMode: text.EllipsisMode.END
+};
+// 设置段落样式，包含最大行数
+let myParagraphStyle: text.ParagraphStyle = {
+  textStyle: myTextStyle,
+  // 设置最大显示行数为2
+  maxLines: 2
+};
+```
+
+具体效果如下所示：
+
+| 省略号模式 | 示意效果 |
+| -------- | -------- |
+| 不开启省略号 | ![zh-cn_image_complexArkTsDemo9_1](figures/zh-cn_image_complexArkTsDemo9_1.png) |
+| 开启头部省略号 | ![zh-cn_image_complexArkTsDemo9_2](figures/zh-cn_image_complexArkTsDemo9_2.png) |
+| 开启中部省略号 | ![zh-cn_image_complexArkTsDemo9_3](figures/zh-cn_image_complexArkTsDemo9_3.png) |
+| 开启尾部省略号 | ![zh-cn_image_complexArkTsDemo9_4](figures/zh-cn_image_complexArkTsDemo9_4.png) |
+| 开启多行头部省略号 | ![zh-cn_image_complexArkTsDemo9_5](figures/zh-cn_image_complexArkTsDemo9_5.png) |
+| 开启多行中部省略号 | ![zh-cn_image_complexArkTsDemo9_6](figures/zh-cn_image_complexArkTsDemo9_6.png) |
+
+### 示例十（文字换行方式）
+以下示例展示了BALANCED断行策略对文本排版的影响。
+
+<!-- @[arkts_break_strategy_example_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample10.ets) -->
+
+``` TypeScript
+// 设置断行策略为均衡策略（BALANCED）
+let myParagraphStyle: text.ParagraphStyle = {
+  textStyle: myTextStyle,
+  // 设置断行策略为均衡策略，各行宽度尽量均衡
+  breakStrategy: text.BreakStrategy.BALANCED
+};
+```
+
+具体效果如下所示：
+
+| 断行策略 | 示意效果 |
+| -------- | -------- |
+| GREEDY | ![zh-cn_image_complexArkTsDemo10_1](figures/zh-cn_image_complexArkTsDemo10_1.png) |
+| BALANCED | ![zh-cn_image_complexArkTsDemo10_2](figures/zh-cn_image_complexArkTsDemo10_2.png) |
+| HIGH_QUALITY | ![zh-cn_image_complexArkTsDemo10_3](figures/zh-cn_image_complexArkTsDemo10_3.png) |
+
+### 示例十一（行首标点压缩）
+以下示例展示了开启行首标点压缩的排版对比效果。
+
+<!-- @[arkts_punctuation_compress_example_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample11.ets) -->
+
+``` TypeScript
+// 开启行首标点压缩
+let myParagraphStyle: text.ParagraphStyle = {
+  textStyle: myTextStyle,
+  compressHeadPunctuation: true
+};
+```
+
+具体效果如下所示：
+
+| 标点压缩设置 | 示意效果 |
+| -------- | -------- |
+| 未开启标点压缩 | ![zh-cn_image_complexArkTsDemo11_1](figures/zh-cn_image_complexArkTsDemo11_1.png) |
+| 开启标点压缩 | ![zh-cn_image_complexArkTsDemo11_2](figures/zh-cn_image_complexArkTsDemo11_2.png) |

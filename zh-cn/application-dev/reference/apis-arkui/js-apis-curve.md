@@ -1,8 +1,8 @@
 # @ohos.curves (插值计算)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -101,7 +101,7 @@ stepsCurve(count: number, end: boolean): ICurve
 
 ```ts
 import { curves } from '@kit.ArkUI';
-curves.stepsCurve(9, true)  //创建一个阶梯曲线
+curves.stepsCurve(9, true)  // 创建一个阶梯曲线
 ```
 
 
@@ -249,6 +249,8 @@ interpolatingSpring(velocity: number, mass: number, stiffness: number, damping: 
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -279,6 +281,8 @@ customCurve(interpolate: (fraction: number) => number): ICurve
 构造自定义曲线对象。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -477,4 +481,4 @@ struct ImageComponent {
 }
 ```
 
-![zh-cn_image_0000001174104410](figures/zh-cn_image_0000001174104410.gif)
+![zh-cn_image_0000001174104410](figures/curves-spring-example.gif)

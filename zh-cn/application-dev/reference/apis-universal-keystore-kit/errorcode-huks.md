@@ -15,104 +15,96 @@
 
 **错误信息**
 
-The ``${messageInfo}`` is not supported.
+The feature or capability is not supported.
 
 **错误描述**
 
-不支持``${messageInfo}``中给出的特性（功能）。
+当前调用的特性（功能）不支持使用，具体特性（功能）可通过打印的errorMessage获取。
 
 **可能原因**
 
-支持API，但是不支持API内部某些子特性（功能），如算法参数。
+1. 不支持使用的子特性。
+2. 不支持使用的算法参数。
 
 **处理步骤**
 
-调整API参数，使用支持的可替代参数。
+1. 查看errorMessage确认不支持的子特性，请避免在当前设备环境中调用该特性；如确属业务必要，请前往官方开发者社区提交反馈。
+2. 参考[HUKS开发指南](../../security/UniversalKeystoreKit/huks-overview.md)中各能力介绍及算法规格的具体章节，确认调用接口规格，调整API参数，使用支持的算法参数。
 
 ## 12000002 缺少密钥算法参数
 
 **错误信息**
 
-Failed to obtain the ``${messageInfo}``. It is not set in ParamSet.
+The algorithm param is missing.
 
 **错误描述**
 
-未设置相关参数，无法获取``${messageInfo}``中给出的参数。
+缺少密钥操作必要的算法参数。
 
 **可能原因**
 
-使用密钥时缺少相关参数。
+未添加当前密钥操作必要的参数，例如密钥算法、密钥长度、填充算法等。
 
 **处理步骤**
 
-1. 查看errorMessage确认缺少的密钥参数。
-2. 添加对应的正确的密钥参数。
+1. 查看errorMessage确认缺失的密钥参数。
+2. 参考[HUKS开发指南](../../security/UniversalKeystoreKit/huks-overview.md)中各能力介绍及算法规格的具体章节，确认调用接口规格，调整API参数，添加对应的密钥参数。
 
 ## 12000003 无效的密钥算法参数
 
 **错误信息**
 
-Invalid ``${messageInfo}``.
+The algorithm argument is invalid.
 
 **错误描述**
 
-使用了无效的参数，具体可见``${messageInfo}``。
+无效的密钥算法参数。
 
 **可能原因**
 
-使用密钥时相关参数无效。
+使用密钥时相关参数无效，例如算法和填充算法不匹配，算法和密钥操作不匹配等。
 
 **处理步骤**
 
 1. 查看errorMessage确认无效的密钥参数名。
-2. 修改对应的密钥参数。
+2. 参考[HUKS开发指南](../../security/UniversalKeystoreKit/huks-overview.md)中各能力介绍及算法规格的具体章节，确认调用接口规格，调整API参数，修改对应的密钥参数为合法值。
 
 ## 12000004 文件错误
 
 **错误信息**
 
-可能为以下的其中一种：
-
-- Insufficient storage space.
-- Invalid file size.
-- Failed to ``${messageInfo}``.
+The file operation failed.
 
 **错误描述**
 
-可能为以下的其中一种：
-
-- 磁盘空间已满。
-- 无效的文件大小。
-- 文件无法访问，具体原因可参考日志中给出的``${messageInfo}``。
+操作文件失败。
 
 **可能原因**
 
-文件操作错误。
+1. 磁盘空间已满。
+2. 获取文件大小失败。
+3. 文件无法操作，具体原因可参考返回的errorMessage。
 
 **处理步骤**
 
-1. 查看是否磁盘空间已经写满、文件系统是否有其他异常。
-2. 清理磁盘。
+1. 若磁盘空间已经写满，请先清理磁盘。
+2. 确认对应文件的操作权限，请查看[文件目录说明](../../file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)。
+3. 若文件系统存在其他异常，请前往官方开发者社区提交反馈。
 
 ## 12000005 进程通信错误
 
 **错误信息**
 
-可能为以下的其中一种：
-
-- Failed to get messages from IPC.
-- IPC ``${messageInfo}``.
+IPC communication failed.
 
 **错误描述**
 
-可能为以下的其中一种：
-
-- 无法从IPC获取消息。
-- IPC出错，具体原因可参考日志中给出的``${messageInfo}``。
+IPC通信失败。
 
 **可能原因**
 
-进程通信错误。
+1. 无法从IPC获取消息。
+2. IPC出错，具体原因可参考返回的errorMessage。
 
 **处理步骤**
 
@@ -122,15 +114,15 @@ Invalid ``${messageInfo}``.
 
 **错误信息**
 
-Crypto engine error or Ukey driver error.
+Crypto engine error or UKey driver error.
 
 **错误描述**
 
-算法库操作失败或者Ukey驱动失败。
+算法库操作失败或者UKey驱动失败。
 
 **可能原因**
 
-该错误码表示算法库操作失败或者Ukey驱动失败，可能原因如下。
+该错误码表示算法库操作失败或者UKey驱动失败，可能原因如下。
 
 1. 算法库加解密错误，可能是密文数据不对。
 2. 密钥参数不正确。
@@ -159,7 +151,7 @@ This credential is invalidated permanently.
 
 **处理步骤**
 
-1. 确认日志是哪种方式导致的认证不通过。
+1. 确认日志中记录的认证失败方式。
 2. 如果使用了正确参数，但是失效控制导致认证不通过，则该密钥已经无法使用。
 
 ## 12000008 密钥访问失败 - 密钥认证失败
@@ -193,7 +185,7 @@ This authentication token timed out.
 
 **可能原因**
 
-该密钥设置了用户认证访问控制属性，由于使用时间窗timeout导致无法通过认证。
+该密钥设置了用户认证访问控制属性，并指定了认证超时时间（timeout）。由于密钥init操作后未在timeout时间窗内完成用户认证，认证令牌超时失效，导致当前密钥会话失效。
 
 **处理步骤**
 
@@ -211,7 +203,7 @@ The number of key operation sessions has reached the limit.
 
 **可能原因**
 
-同时使用huks进行密钥会话操作的调用方（同应用或者跨应用）过多，已经达到上限（15个）。
+HUKS密钥操作会话数已达上限（15个），无法处理更多同应用或跨应用的调用请求。
 
 **处理步骤**
 
@@ -249,11 +241,17 @@ Device environment or input parameter abnormal.
 
 **可能原因**
 
-外部的硬件出错，文件错误等。
+<!--RP1-->
+外部硬件出错、文件错误或输入参数异常。
+ <!--RP1End-->
 
 **处理步骤**
 
-拿错误码与日志在社区反馈。
+<!--RP2-->
+1. 检查传入的参数是否合法，确认参数类型和取值范围符合要求。
+2. 检查设备环境是否正常，确认硬件和系统状态无异常。
+3. 如以上排查均未发现问题，将错误码与日志提交到社区进行反馈。
+<!--RP2End-->
 
 ## 12000013 密钥设置生物访问控制时，待绑定的凭据不存在
 
@@ -302,11 +300,11 @@ The credential does not exist.
 
 **错误信息**
 
-Failed to obtain the ``${messageInfo}`` information via UserIAM.
+Failed to obtain the information via UserIAM.
 
 **错误描述**
 
-无法通过UserIAM获取``${messageInfo}``的信息。
+无法通过UserIAM获取认证相关信息。
 
 **可能原因**
 
@@ -320,7 +318,7 @@ Failed to obtain the ``${messageInfo}`` information via UserIAM.
 
 **错误信息**
 
-The key with same alias is already exist.
+The key with same alias already exists.
 
 **错误描述**
 
@@ -370,7 +368,7 @@ The provider is already registered.
 
 **可能原因**
 
-注册的provider已存在。
+重复注册同名provider，或之前注册的provider未注销。
 
 **处理步骤**
 
@@ -394,33 +392,33 @@ The provider operation failed.
 
 根据下游返回的error code或者error message查看下游模块具体报错的原因。
 
-## 12000021 Ukey PIN码被锁
+## 12000021 UKey PIN码被锁定
 
 **错误信息**
 
-The Ukey PIN is locked.
+The UKey PIN is locked.
 
 **错误描述**
 
-Ukey PIN码被锁。
+UKey PIN码被锁定。
 
 **可能原因**
 
-PIN码输入错误次数过多导致被锁。
+PIN码输入错误次数过多导致被锁定。
 
 **处理步骤**
 
-咨询相关银行，解锁Ukey。
+咨询相关银行，解锁UKey。
 
-## 12000022 Ukey PIN码错误
+## 12000022 UKey PIN码错误
 
 **错误信息**
 
-The Ukey PIN is incorrect.
+The UKey PIN is incorrect.
 
 **错误描述**
 
-Ukey PIN码错误。
+UKey PIN码错误。
 
 **可能原因**
 
@@ -430,15 +428,15 @@ PIN码输入错误。
 
 输入正确PIN码。
 
-## 12000023 Ukey PIN码未认证
+## 12000023 UKey PIN码未认证
 
 **错误信息**
 
-The Ukey PIN is not authenticated.
+The UKey PIN is not authenticated.
 
 **错误描述**
 
-Ukey PIN码未认证。
+UKey PIN码未认证。
 
 **可能原因**
 
@@ -446,13 +444,13 @@ Ukey PIN码未认证。
 
 **处理步骤**
 
-执行操作需要进行PIN码认证，但实际PIN码尚未认证。
+先完成UKey PIN码认证，再执行需要认证的操作。
 
 ## 12000024 设备或资源繁忙
 
 **错误信息**
 
-The provider or Ukey is busy.
+The provider or UKey is busy.
 
 **错误描述**
 
@@ -464,7 +462,7 @@ The provider or Ukey is busy.
 
 **处理步骤**
 
-再次重试或者插拔Ukey后重试。
+再次重试或者插拔UKey后重试。
 
 ## 12000025 资源超过限制
 
@@ -483,3 +481,22 @@ The resource exceeds the limit.
 **处理步骤**
 
 检查是否有未释放资源，释放已有资源后重试。
+
+## 12000026 安全元件故障
+
+**错误信息**
+
+the secure element is not available.
+
+**错误描述**
+
+安全元件故障。
+
+**可能原因**
+
+安全元件故障。
+
+**处理步骤**
+
+1. 稍等片刻后重试，或重启设备后重试。
+2. 如以上操作均无法解决故障，将错误码与日志提交到社区进行反馈。

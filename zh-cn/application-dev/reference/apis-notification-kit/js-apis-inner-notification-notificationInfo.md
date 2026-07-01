@@ -1,7 +1,7 @@
 # NotificationInfo
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @cheerful_ricky-->
+<!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
@@ -19,10 +19,10 @@
 | 名称                 | 类型    | 只读 | 可选 | 说明                                            | 
 | -------------------- | ------ | ---- | ---- | ---------------------------------------------- |
 | hashCode             | string | 是   | 否   | 通知的唯一标识符。                               |
-| notificationSlotType | [notificationManager.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype)| 是 | 否 | 通知渠道类型。 |
-| content              | [NotificationExtensionContent](js-apis-inner-notification-notificationExtensionContent.md)      | 是 | 否 | 通知内容。     |
+| notificationSlotType | [notificationManager.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype)| 是 | 否 | 通知渠道类型，标识通知所属的渠道分类（如社交通讯、服务提醒等）。不同渠道类型对应不同的提醒方式。 |
+| content              | [NotificationExtensionContent](js-apis-inner-notification-notificationExtensionContent.md)      | 是 | 否 | 通知内容。包含通知的标题和正文。     |
 | bundleName           | string | 是   | 否   | 创建通知的包名。                                 |
 | appIndex             | number | 是   | 否   | 创建通知的应用包的分身索引标识，仅在分身应用中生效。|
 | appName              | string | 是   | 是   | 创建通知的应用程序名称。                          |
-| deliveryTime         | number | 是   | 是   | 通知发布的时间戳（毫秒数）。                      |
-| groupName            | string | 是   | 是   | 通知组名称。默认情况下此参数为空。                 |
+| deliveryTime         | number | 是   | 是   | 通知发布的时间戳。<br>数据格式：时间戳。<br>单位：毫秒。|
+| groupName            | string | 是   | 是   | 通知组名称。                                     |

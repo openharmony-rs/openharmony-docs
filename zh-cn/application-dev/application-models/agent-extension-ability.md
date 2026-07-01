@@ -4,12 +4,12 @@
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 ## 概述
 
-从API version 24开始，支持开发者使用[AgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)类型的组件提供智能体服务。系统应用可以连接其他应用实现的[AgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)组件，并使用相应的智能体服务。
+在跨应用协作场景下，开发者经常需要从系统应用调用其他应用提供的智能体服务，但缺少标准化的通信机制，导致集成成本高、安全认证复杂。从API version 24开始，支持开发者使用[AgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)类型的组件提供智能体服务。系统应用可以连接其他应用实现的[AgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)组件，并使用相应的智能体服务。通过使用该组件，可降低跨应用对接成本，保障通信安全，同时支持双向数据通道实时交互。
 
 > **说明**
 >
@@ -31,7 +31,7 @@
 
 3. 在AgentExtAbility.ets文件中，补充[AgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)的导入模块，自定义类AgentExtAbility继承[AgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)并实现生命周期回调。
 
-    <!-- @[ability_agent_service_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AgentExtensionAbility/entry/src/main/ets/AgentExtAbility/AgentExtAbility.ets) -->
+    <!-- @[ability_agent_service_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AgentExtensionAbility/entry/src/main/ets/agentextability/AgentExtAbility.ets) -->
     
     ``` TypeScript
     import { common, AgentExtensionAbility, Want } from '@kit.AbilityKit';
@@ -119,7 +119,7 @@
 
 应用可以在服务端AgentExtensionAbility组件的[onData()](../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md#ondata)方法中接收客户端传递的数据和[AgentHostProxy](../reference/apis-ability-kit/js-apis-inner-application-agentHostProxy.md)对象，并且可以通过调用[AgentHostProxy](../reference/apis-ability-kit/js-apis-inner-application-agentHostProxy.md)对象的[sendData()](../reference/apis-ability-kit/js-apis-inner-application-agentHostProxy.md#senddata)方法将数据发送给客户端。
 
-<!-- @[ability_agent_service_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AgentExtensionAbility/entry/src/main/ets/AgentExtAbility/AgentExtAbility.ets) -->
+<!-- @[ability_agent_service_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AgentExtensionAbility/entry/src/main/ets/agentextability/AgentExtAbility.ets) -->
 
 ``` TypeScript
 import { common, AgentExtensionAbility, Want } from '@kit.AbilityKit';
@@ -147,7 +147,7 @@ export default class AgentExtAbility extends AgentExtensionAbility {
 
 应用可以在服务端AgentExtensionAbility组件的[onAuth()](../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md#onauth)方法中接收客户端的安全认证请求以及[AgentHostProxy](../reference/apis-ability-kit/js-apis-inner-application-agentHostProxy.md)对象，并且可以通过[AgentHostProxy](../reference/apis-ability-kit/js-apis-inner-application-agentHostProxy.md)的[authorize()](../reference/apis-ability-kit/js-apis-inner-application-agentHostProxy.md#authorize)方法向客户端发送安全认证请求。
 
-<!-- @[ability_agent_service_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AgentExtensionAbility/entry/src/main/ets/AgentExtAbility/AgentExtAbility.ets) -->
+<!-- @[ability_agent_service_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AgentExtensionAbility/entry/src/main/ets/agentextability/AgentExtAbility.ets) -->
 
 ``` TypeScript
 import { common, AgentExtensionAbility, Want } from '@kit.AbilityKit';

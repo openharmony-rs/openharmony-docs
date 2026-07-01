@@ -39,11 +39,9 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 7. 调用[OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final)，获取authTag。
 
-   > **注意：**
+   > **说明：**
    >
-   > 在GCM模式下，final会返回authTag，作为解密操作时初始化的认证信息，需要手动保存。
-   >
-   > 在GCM模式下，算法库当前只支持16字节的authTag，作为解密操作时初始化的认证信息。
+   > 在GCM模式下，一次加密流程中，将每次update和最后final的结果拼接起来，会得到“密文 + authTag”, authTag为末尾的16字节。其余部分均为密文。如果final的data参数传入null，则final的结果就是authTag。
 
 ### 解密
 
@@ -55,7 +53,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 4. 调用[OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create)，指定字符串参数'AES128|GCM'，创建对称密钥类型为AES128、分组模式为GCM的Cipher实例，用于完成解密操作。
 
-5. 调用[OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init)，设置模式为加密（CRYPTO_DECRYPT_MODE），指定加密密钥（OH_CryptoSymKey），初始化解密Cipher实例。
+5. 调用[OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init)，设置模式为解密（CRYPTO_DECRYPT_MODE），指定解密密钥（OH_CryptoSymKey），初始化解密Cipher实例。
 
 6. 调用[OH_CryptoSymCipher_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update)，更新数据（密文）。
 

@@ -5,7 +5,8 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:19:36.981Z pushedAt=2026-06-12T02:34:12.668Z -->
 
 ```c
 typedef struct Input_AxisEvent Input_AxisEvent
@@ -13,7 +14,7 @@ typedef struct Input_AxisEvent Input_AxisEvent
 
 ## Overview
 
-Defines an axis event.
+Defines an axis event object, which is used to represent axis event data from an input device, such as joystick movement on a gamepad and mouse wheel scrolling. You can obtain axis value changes from the input device through axis events to implement precise input control and enhance user interaction experience.
 
 **Since**: 12
 

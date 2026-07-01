@@ -1,10 +1,11 @@
 # Functions
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=4b1a2f751fcd33c52248528ed8c23a9b2935126b translatedAt=2026-06-23T01:03:32.697Z pushedAt=2026-06-23T06:12:23.661Z -->
 
 > **NOTE**
 >
@@ -641,6 +642,94 @@ streams.push({url: "http://xxx/480p.flv", width: 854, height: 480, bitrate: 8000
 streams.push({url: "http://xxx/720p.flv", width: 1280, height: 720, bitrate: 2000000});
 streams.push({url: "http://xxx/1080p.flv", width: 1920, height: 1080, bitrate: 2000000});
 let mediaSource : media.MediaSource = media.createMediaSourceWithStreamData(streams);
+```
+
+## media.createMediaSourceWithFd
+
+createMediaSourceWithFd(fdSrc: AVFileDescriptor): MediaSource | undefined
+
+Creates a media source using a file descriptor.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
+
+**Parameters**
+
+| Name | Type                                | Mandatory| Description                                                 |
+| ------- | ------------------------------------ | ---- | ----------------------------------------------------- |
+| fdSrc | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9) | Yes| Media file descriptor.|
+
+**Return value**
+
+| Type                         | Description               |
+| ----------------------------- | ------------------- |
+| [MediaSource](arkts-apis-media-MediaSource.md) \| undefined | MediaSource instance.|
+
+**Example**
+
+```ts
+import { common } from '@kit.AbilityKit';
+
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let fdSrc = await context.resourceManager.getRawFd('xxx.mp4');
+let mediaSource : media.MediaSource | undefined = media.createMediaSourceWithFd(fdSrc);
+```
+
+## media.createMediaSourceWithDataSource
+
+createMediaSourceWithDataSource(dataSrc: AVDataSrcDescriptor): MediaSource | undefined
+
+Creates a media source using the custom data source.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
+
+**Parameters**
+
+| Name | Type                                | Mandatory| Description                                                 |
+| ------- | ------------------------------------ | ---- | ----------------------------------------------------- |
+| dataSrc | [AVDataSrcDescriptor](arkts-apis-media-i.md#avdatasrcdescriptor10) | Yes| Streaming media resource descriptor.|
+
+**Return value**
+
+| Type                         | Description               |
+| ----------------------------- | ------------------- |
+| [MediaSource](arkts-apis-media-MediaSource.md) \| undefined | MediaSource instance.|
+
+**Example**
+
+```ts
+import { common } from '@kit.AbilityKit';
+import { fileIo as fs, ReadOptions } from '@kit.CoreFileKit';
+
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let fileDescriptor = await context.resourceManager.getRawFd('xxx.mp4');
+let file = fs.openSync("xxx.mp4");
+let dataSrc: media.AVDataSrcDescriptor = {
+  fileSize: fileDescriptor.length,
+  callback: (buf: ArrayBuffer, length: number, pos?: number) => {
+    let readLen = 0;
+    if (pos) {
+      let option: ReadOptions = {
+        offset: pos,
+        length: length,
+      };
+      readLen = fs.readSync(file.fd, buf, option);
+    }
+    return readLen > 0 ? readLen : -1;
+  }
+}
+let mediaSource : media.MediaSource | undefined =  media.createMediaSourceWithDataSource(dataSrc);
 ```
 
 ## media.createAudioPlayer<sup>(deprecated)</sup>

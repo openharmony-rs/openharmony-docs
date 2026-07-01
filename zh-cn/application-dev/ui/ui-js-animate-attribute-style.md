@@ -1,8 +1,8 @@
 # 属性样式动画
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -89,7 +89,7 @@ text {
 ```
 
 
-![zh-cn_image_0000001217168141](figures/zh-cn_image_0000001217168141.gif)
+![animation3](figures/animation3.gif)
 
 
 > **说明：** 

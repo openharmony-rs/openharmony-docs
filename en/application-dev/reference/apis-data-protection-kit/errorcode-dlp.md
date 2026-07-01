@@ -1,10 +1,12 @@
 # DLP Service Error Codes
+
 <!--Kit: Data Protection Kit-->
 <!--Subsystem: Security-->
 <!--Owner: @winnieHuYu-->
-<!--Designer: @lucky-jinduo-->
+<!--Designer: @QRF-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=907dbe833940a2647e3ff7ec970329a62449fd1c translatedAt=2026-06-23T11:53:09.209Z pushedAt=2026-06-24T02:59:01.572Z -->
 
 > **NOTE**
 > 
@@ -22,7 +24,7 @@ Invalid parameters are specified.
 
 **Possible Causes**
 
-1. The value of **account** is empty or exceeds 1024 characters.
+1. The account is empty or exceeds 1024 characters.
 
 2. The account type is incorrect.
 
@@ -30,7 +32,7 @@ Invalid parameters are specified.
 
 4. The system time is later than the authorization expiration time.
 
-5. **Fd** is less than **0**.
+5. The file descriptor (FD) is less than 0.
 
 6. The value of **tokenId** is **0**.
 
@@ -42,7 +44,7 @@ Invalid parameters are specified.
 
 **Solution**
 
-Set parameters correctly.
+Check and pass in parameters that meet the requirements, including the account length, type, **aesKey**, IV format, relationship between system time and authorization time, FD, **tokenId**, package name, **appIndex**, and **userId**.
 
 ## 19100002 Encryption and Decryption Error
 
@@ -52,7 +54,7 @@ Credential service busy due to too many tasks or duplicate tasks.
 
 **Description**
 
-An error occurs in encryption or decryption.
+The encryption and decryption service is busy.
 
 **Possible Causes**
 
@@ -62,7 +64,7 @@ An error occurs in encryption or decryption.
 
 **Solution**
 
-Try again later.
+Wait for a while and try again. Control the number of concurrent tasks to no more than 100 to prevent such errors.
 
 ## 19100003 Encryption/Decryption Timeout
 
@@ -72,7 +74,7 @@ Credential task time out.
 
 **Description**
 
-The encryption or decryption timed out.
+The encryption and decryption operation for a Data Loss Prevention (DLP) file is not completed within the specified time, causing the operation to time out and fail.
 
 **Possible Causes**
 
@@ -90,7 +92,7 @@ Credential service error.
 
 **Description**
 
-An error occurs in the credential service.
+An internal error occurs in the DLP credential service, and the credential service cannot be provided normally.
 
 **Possible Causes**
 
@@ -110,7 +112,7 @@ Credential authentication server error.
 
 **Description**
 
-The credential authentication server is abnormal.
+An error occurs when communicating with the credential authentication server, and the credential authentication process cannot be completed.
 
 **Possible Causes**
 
@@ -138,7 +140,7 @@ The caller is not a DLP sandbox application.
 
 **Solution**
 
-The caller must be a DLP sandbox application.
+Check whether the application is a DLP sandbox application. The API is available only to DLP sandbox applications.
 
 ## 19100007 Access Denied for a DLP Sandbox Application
 
@@ -156,7 +158,7 @@ The caller is a DLP sandbox application.
 
 **Solution**
 
-The caller must be a DLP sandbox application.
+Confirm the application is not a DLP sandbox application. The API is not available to DLP sandbox applications.
 
 ## 19100008 Non-DLP File
 
@@ -170,7 +172,7 @@ The file is not a DLP file.
 
 **Possible Causes**
 
-The file is not a DLP file.
+An operation for DLP files is performed on a non-DLP file.
 
 **Solution**
 
@@ -194,15 +196,16 @@ The operation on the DLP file fails.
 
 3. The link file is not associated.
 
-4. The number of opened DLP files reaches 1000.
+4. More than 1000 DLP files are opened simultaneously.
 
 **Solution**
 
 1. Check the access permission.
 
-2. Wait for a while or restart the system and try again.
+2. Wait for a while or restart the device and try again. Ensure that the number of DLP files opened simultaneously does not exceed 1000.
 
 <!--Del-->
+
 ## 19100010 Read-Only DLP File
 
 **Error Message**
@@ -211,7 +214,7 @@ The DLP file is read only.
 
 **Description**
 
-The DLP file is read-only.
+The DLP file is set to read-only mode. Data cannot be written, and permissions cannot be modified.
 
 **Possible Causes**
 
@@ -221,7 +224,7 @@ The DLP file is read-only.
 
 **Solution**
 
-Check the permission on the file.
+This DLP file is a read-only file. Do not attempt to modify its permissions or write data to it.
 <!--DelEnd-->
 
 ## 19100011 System Service Abnormal
@@ -232,17 +235,17 @@ The system ability works abnormally.
 
 **Description**
 
-The system service is abnormal.
+DLP-related system services cannot run normally, causing related functions to be unavailable.
 
 **Possible Causes**
 
 1. The DLP permission service fails to start.
 
-2. The RPC object of the DLP permission service cannot be obtained.
+2. The remote procedure call (RPC) object of the DLP permission service cannot be obtained.
 
 3. The service, on which the DLP permission service depends, fails to start.
 
-4. The read or write of IPC data fails.
+4. The inter-process communication (IPC) data fails to be read or written.
 
 5. The service is not initialized.
 
@@ -258,7 +261,7 @@ System memory is insufficient.
 
 **Description**
 
-Failed to obtain the memory.
+The system memory is insufficient, and the memory resources required for the DLP operation cannot be requested.
 
 **Possible Causes**
 
@@ -266,7 +269,7 @@ The system memory is insufficient.
 
 **Solution**
 
-Try again later or restart the device.
+The system memory is insufficient. Try again later or restart the device.
 
 ## 19100013 User Access Denied
 
@@ -276,7 +279,7 @@ The user does not have the permission.
 
 **Description**
 
-The user has no permission.
+The currently login user does not have the permission to perform this operation or access this DLP file.
 
 **Possible Causes**
 
@@ -284,7 +287,7 @@ The current login account does not have the permission on the file.
 
 **Solution**
 
-Check the user permissions.
+Check whether the currently login account has the access permission for this file.
 
 ## 19100014 Account Not Logged In
 
@@ -294,7 +297,7 @@ Account not logged in.
 
 **Description**
 
-You have not logged in with an account.
+The user needs to log in to the account before performing this operation. The current account is not logged in or the login status has expired.
 
 **Possible Causes**
 
@@ -305,6 +308,7 @@ You have not logged in with the account of the corresponding type.
 Log in using your account.
 
 <!--Del-->
+
 ## 19100015 Upgrade Required
 
 **Error Message**
@@ -313,7 +317,7 @@ The system needs to be upgraded.
 
 **Description**
 
-The system needs to be upgraded.
+The current system version does not support this DLP function. The system needs to be upgraded to a version supporting this function.
 
 **Possible Causes**
 
@@ -332,11 +336,11 @@ The uri field is missing in the want parameter.
 
 **Description**
 
-The **want** parameter does not contain the URI.
+The **URI** field is missing in the **Want** parameter when the API is called.
 
 **Possible Causes**
 
-The **want** parameter does not contain the URI.
+The **URI** field is not included in the **Want** parameter when the API for DLP file operations is called. The **Want** parameter is used to specify the operation target and parameter configuration, and the **URI** field is mandatory.
 
 **Solution**
 
@@ -350,11 +354,11 @@ The displayName field is missing in the want parameter.
 
 **Description**
 
-The **want** parameter does not contain **displayName**.
+The **displayName** field is missing in the **Want** parameter when the API is called.
 
 **Possible Causes**
 
-The **want** parameter does not contain **displayName**.
+The **displayName** field is not included in the **Want** parameter when the API for DLP file operations is called. The **displayName** field is mandatory in DLP file operations.
 
 **Solution**
 
@@ -368,7 +372,7 @@ The application is not authorized.
 
 **Description**
 
-The application is not authorized.
+The application is not in the authorized application list for DLP files and has no permission to access or operate on DLP files.
 
 **Possible Causes**
 
@@ -376,9 +380,10 @@ The application is not in the authorized application list.
 
 **Solution**
 
-Add the application to the authorized application list.<!--RP1--><!--RP1End-->
+Request to include the application in the authorized application list.<!--RP1--><!--RP1End-->
 
 <!--Del-->
+
 ## 19100019 DLP File Has Expired
 
 **Error Message**
@@ -387,7 +392,7 @@ The DLP file has expired.
 
 **Description**
 
-The DLP file has expired.
+The DLP file has expired. Access to and operations on the file content cannot be continued.
 
 **Possible Causes**
 
@@ -399,6 +404,7 @@ Contact the file owner to authorize the file.
 <!--DelEnd-->
 
 <!--Del-->
+
 ## 19100020 Network Disconnected
 
 **Error Message**
@@ -407,7 +413,7 @@ No network connection.
 
 **Description**
 
-The device is not connected to Wi-Fi.
+The network connection is required to perform this operation. The device is not connected to the network or the network is not authenticated.
 
 **Possible Causes**
 
@@ -454,7 +460,11 @@ The parameter is invalid.
 
 **Solution**
 
-Set parameters correctly.
+Check the following parameters:
+
+1. Ensure that the policy format is correct.
+
+2. Ensure that the parameter value is within the valid range.
 
 ## 19110002 File Sensitive Content Identification Timed Out
 
@@ -464,11 +474,11 @@ Sensitive file content identification timed out.
 
 **Description**
 
-Identification of sensitive file content timed out.
+Identification of sensitive file content timed out. The identification process cannot be completed within the specified time.
 
 **Possible Causes**
 
-Identification of sensitive file content timed out.
+The processing time for sensitive file content identification exceeds the timeout threshold. Possible causes: The file is too large, the file content is highly complex, or the system resource usage is high.
 
 **Solution**
 
@@ -482,7 +492,7 @@ The file is not supported.
 
 **Description**
 
-The file is not supported.
+The passed-in file is not supported by the current operation. The path, type, or permission may not meet the requirements.
 
 **Possible Causes**
 
@@ -494,7 +504,13 @@ The file is not supported.
 
 **Solution**
 
-Check whether the input file is correct.
+Check the following:
+
+1. Ensure that the file path exists and is accessible.
+
+2. Ensure that the file type is supported.
+
+3. Ensure that the file permissions meet the requirements.
 
 ## 19110004 System Function Abnormal
 
@@ -504,7 +520,7 @@ A system error has occurred.
 
 **Description**
 
-The system function is abnormal.
+The internal function module of the system is running abnormally, causing the operations for file sensitive content identification to fail.
 
 **Possible Causes**
 
@@ -518,4 +534,4 @@ The system function is abnormal.
 
 **Solution**
 
-Try again later or restart the device.
+Try again later or restart the device when the internal system service is abnormal.

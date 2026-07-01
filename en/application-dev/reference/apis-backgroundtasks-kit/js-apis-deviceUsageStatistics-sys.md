@@ -4,7 +4,7 @@
 <!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 This module provides APIs for collecting statistics on device usage.
 
@@ -16,11 +16,11 @@ System applications can call these APIs to implement the following features:
 
 > **NOTE**
 >
-> - This module is deprecated since API version 9. You are advised to use [@ohos.resourceschedule.usageStatistics (Device Usage Statistics) (System API)](js-apis-resourceschedule-deviceUsageStatistics-sys.md) instead.
+> This module is deprecated since API version 9. You are advised to use [@ohos.resourceschedule.usageStatistics (Device Usage Statistics) (System API)](js-apis-resourceschedule-deviceUsageStatistics-sys.md) instead.
 >
-> - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.bundleState](js-apis-deviceUsageStatistics.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.bundleState](js-apis-deviceUsageStatistics.md).
 
 ## Modules to Import
 
@@ -52,7 +52,8 @@ Queries the application usage duration statistics based on the specified start t
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 
 bundleState.queryBundleStateInfos(0, 20000000000000, (err: BusinessError ,
   res: bundleState.BundleActiveInfoResponse ) => {
@@ -94,7 +95,8 @@ Queries the application usage duration statistics based on the specified start t
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 
 bundleState.queryBundleStateInfos(0, 20000000000000).then((res: bundleState.BundleActiveInfoResponse) => {
   console.info('BUNDLE_ACTIVE queryBundleStateInfos promise success.');
@@ -129,7 +131,8 @@ Queries the application usage duration statistics in the specified time frame at
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 
 bundleState.queryBundleStateInfoByInterval(bundleState.IntervalType.BY_OPTIMIZED, 0, 20000000000000, (err: BusinessError, res: Array<bundleState.BundleStateInfo>) => {
   if (err) {
@@ -174,7 +177,8 @@ Queries the application usage duration statistics in the specified time frame at
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 
 bundleState.queryBundleStateInfoByInterval(bundleState.IntervalType.BY_OPTIMIZED, 0, 20000000000000).then((res: Array<bundleState.BundleStateInfo>) => {
   console.info('BUNDLE_ACTIVE queryBundleStateInfoByInterval promise success.');
@@ -211,7 +215,8 @@ Queries events of all applications based on the specified start time and end tim
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 
 bundleState.queryBundleActiveStates(0, 20000000000000, (err: BusinessError, res: Array<bundleState.BundleActiveState>) => {
   if (err) {
@@ -255,7 +260,8 @@ Queries events of all applications based on the specified start time and end tim
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 
 bundleState.queryBundleActiveStates(0, 20000000000000).then((res: Array<bundleState.BundleActiveState>) => {
   console.info('BUNDLE_ACTIVE queryBundleActiveStates promise success.');
@@ -288,7 +294,8 @@ Queries the priority group of this application. This API uses a promise to retur
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 
 bundleState.queryAppUsagePriorityGroup().then((res: number) => {
   console.info('BUNDLE_ACTIVE QueryPackageGroup promise succeeded. result: ' + JSON.stringify(res));
@@ -317,7 +324,8 @@ Queries the priority group of this application. This API uses an asynchronous ca
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 
 bundleState.queryAppUsagePriorityGroup((err: BusinessError, res: number) => {
   if(err) {
@@ -350,7 +358,8 @@ Queries events of this application based on the specified start time and end tim
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 
 bundleState.queryCurrentBundleActiveStates(0, 20000000000000, (err: BusinessError, res: Array<bundleState.BundleActiveState>) => {
   if (err) {
@@ -392,7 +401,8 @@ Queries events of this application based on the specified start time and end tim
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 
 bundleState.queryCurrentBundleActiveStates(0, 20000000000000).then((res: Array<bundleState.BundleActiveState>) => {
   console.info('BUNDLE_ACTIVE queryCurrentBundleActiveStates promise success.');
@@ -417,15 +427,15 @@ Provides the usage duration information of an application.
 | Name                     | Type    | Mandatory  | Description                                      |
 | ------------------------ | ------ | ---- | ---------------------------------------- |
 | bundleName               | string | No   | Bundle name of the application.                                   |
-| abilityPrevAccessTime    | number | No   | Last time when the application was used.                            |
-| abilityInFgTotalTime     | number | No   | Total time that the application runs in the foreground.                            |
+| abilityPrevAccessTime    | number | No   | Last time when the application was used, in milliseconds.                            |
+| abilityInFgTotalTime     | number | No   | Total time that the application runs in the foreground, in milliseconds.                            |
 | id                       | number | Yes   | User ID.|
-| abilityPrevSeenTime      | number | No   | Last time when the application was visible in the foreground.|
-| abilitySeenTotalTime     | number | No   | Total time that the application is visible in the foreground.|
-| fgAbilityAccessTotalTime | number | No   | Total time that the application accesses the foreground.|
-| fgAbilityPrevAccessTime  | number | No   | Last time when the application accessed the foreground.|
-| infosBeginTime           | number | No   | Time logged in the first application usage record in the **BundleActiveInfo** object.|
-| infosEndTime             | number | No   | Time logged in the last application usage record in the **BundleActiveInfo** object.|
+| abilityPrevSeenTime      | number | No   | Last time when the application was visible in the foreground, in milliseconds.|
+| abilitySeenTotalTime     | number | No   | Total time that the application is visible in the foreground, in milliseconds.|
+| fgAbilityAccessTotalTime | number | No   | Total time that the application accesses the foreground, in milliseconds.|
+| fgAbilityPrevAccessTime  | number | No   | Last time when the application accessed the foreground, in milliseconds.|
+| infosBeginTime           | number | No   | Time logged in the first application usage record in the **BundleActiveInfo** object, in milliseconds.|
+| infosEndTime             | number | No   | Time logged in the last application usage record in the **BundleActiveInfo** object, in milliseconds.|
 
 ### merge<sup>(deprecated)</sup>
 
@@ -452,7 +462,7 @@ Provides information about an application event.
 | --------------------- | ------ | ---- | ---------------------------------------- |
 | bundleName            | string | No   | Bundle name of the application.                                   |
 | stateType             | number | No   | Application event type.                                 |
-| stateOccurredTime     | number | No   | Timestamp when the application event occurs.                             |
+| stateOccurredTime     | number | No   | Timestamp when the application event occurs, in milliseconds.                             |
 | appUsagePriorityGroup | number | No   | Group of the application by usage priority.|
 | indexOfLink           | string | No   | Shortcut ID.|
 | nameOfClass           | string | No   | Class name.|

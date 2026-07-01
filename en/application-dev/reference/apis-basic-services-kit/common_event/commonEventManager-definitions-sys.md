@@ -1,9 +1,8 @@
 # System Common Events (System API)
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -20,7 +19,6 @@ Common event types are defined in [Support enumeration of the ohos.commonEventMa
 
 ## Ability Kit
 
-
 ### COMMON_EVENT_BOOT_COMPLETED
 
 Indicates that the boot is complete and the system is loaded.
@@ -33,9 +31,7 @@ When the specified user finishes the boot process on the device, the common even
 
 **Required permissions**: ohos.permission.RECEIVER_STARTUP_COMPLETED (for system applications only)
 
-
 **Value**: "usual.event.BOOT_COMPLETED"
-
 
 
 ### COMMON_EVENT_PACKAGE_INSTALLATION_STARTED<sup>12+</sup>
@@ -50,7 +46,22 @@ When a new application starts to be installed by a specified user on the device,
 
 **Required permissions**: none
 
-**Value**: "usual.event.PACKAGE_INSTALLATION_STARTED"
+**Value**: usual.event.PACKAGE_INSTALLATION_STARTED
+
+
+### COMMON_EVENT_DYNAMIC_ICON_CHANGED<sup>12+</sup>
+
+Indicates that the dynamic icon has changed.
+
+This common event is sent when the dynamic icon of the application changes.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Required permissions**: none
+
+**Value**: "usual.event.DYNAMIC_ICON_CHANGED"
 
 
 ### COMMON_EVENT_BUNDLE_RESOURCES_CHANGED<sup>15+</sup>
@@ -65,7 +76,7 @@ This common event is sent when the bundle management resource data is updated in
 
 **Required permissions**: ohos.permission.GET_BUNDLE_RESOURCES
 
-**Value**: "usual.event.BUNDLE_RESOURCES_CHANGED"
+**Value**: usual.event.BUNDLE_RESOURCES_CHANGED
 
 
 ### COMMON_EVENT_DEFAULT_APPLICATION_CHANGED<sup>19+</sup>
@@ -87,7 +98,7 @@ This common event is sent when the default application for opening a file change
 
 Indicates that the application shortcut has changed.
 
-This common event is sent when the shortcut is changed (for example, when [setShortcutVisibleForSelf](../../apis-ability-kit/js-apis-shortcutManager.md#shortcutmanagersetshortcutvisibleforself) of the shortcutManager module is successfully called).
+This common event is sent when the shortcut is changed (for example, when [shortcutManager.setShortcutVisibleForSelf](../../apis-ability-kit/js-apis-shortcutManager.md#shortcutmanagersetshortcutvisibleforself) of the shortcutManager module is successfully called).
 
 **System API**: This is a system API.
 
@@ -108,7 +119,7 @@ Indicates that the kiosk mode is enabled. When this mode is on, the common event
 
 **Required permissions**: none
 
-**Value**: usual.event.KIOSK_MODE_ON
+**Value**: "usual.event.KIOSK_MODE_ON"
 
 
 ### COMMON_EVENT_KIOSK_MODE_OFF<sup>20+</sup>
@@ -121,7 +132,22 @@ Indicates that the kiosk mode is disabled. When this mode is off, the common eve
 
 **Required permissions**: none
 
-**Value**: usual.event.KIOSK_MODE_OFF
+**Value**: "usual.event.KIOSK_MODE_OFF"
+
+
+### COMMON_EVENT_APP_FIRST_LAUNCH<sup>24+</sup>
+
+Indicates that when the application is launched for the first time after installation, the common event service is triggered to publish this system common event.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.INSTALL_BUNDLE (for system applications only)
+
+**Value**: usual.event.APP_FIRST_LAUNCH
 
 
 ## Background Tasks Kit 
@@ -142,7 +168,7 @@ System applications can call JavaScript APIs to apply for removing resource usag
 
 **Required permissions**: none
 
-**Value**: "usual.event.DEVICE_IDLE_EXEMPTION_LIST_UPDATED"
+**Value**: usual.event.DEVICE_IDLE_EXEMPTION_LIST_UPDATED
 
 ## Basic Services Kit - Customization
 
@@ -160,11 +186,12 @@ This common event is sent when the system updates the device configuration direc
 
 **Value**: "usual.event.CUSTOM_CONFIG_POLICY_UPDATED"
 
+
 ### COMMON_EVENT_CUSTOM_ROAMING_REGION_UPDATED<sup>20+</sup>
 
 Indicates that the roaming area of a device is updated.
 
-When the attributes such as network injection, persistent Connection, and GPS location of a device change, the system identifies the roaming area and updates the parameters if the roaming area changes. After the update is complete, this common event is sent.
+When the attributes such as network injection, persistent connection, and GPS location of a device change, the system identifies the roaming area and updates the parameters if the roaming area changes. After the update is complete, this common event is sent.
 
 **System API**: This is a system API.
 
@@ -190,6 +217,21 @@ When the system charging type changes, the common event service is triggered to 
 
 **Value**: "usual.event.CHARGE_TYPE_CHANGED"
 
+### COMMON_EVENT_SCREEN_LOCK_EXITING
+
+Indicates the common event of exiting by locking the screen.
+
+Before exiting by locking the screen, the common event service is triggered to publish this event without checking whether the file system is decrypted.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Value**: "usual.event.SCREEN_LOCK_EXITING"
+
+## Basic Services Kit - Account
 
 ### COMMON_EVENT_USER_ADDED
 
@@ -197,7 +239,7 @@ Indicates that a user has been added to the system.
 
 When a system account is created, the common event service is triggered to publish this event carrying the system account ID.
 
-The system APIs related to this common event are **createOsAccount** and **createOsAccountForDomain**. For details, see [@ohos.account.osAccount](../js-apis-osAccount.md).
+The system APIs related to this common event are **createOsAccount** and **createOsAccountForDomain**. For details, see [@ohos.account.osAccount (System Account Management)](../js-apis-osAccount.md).
 
 **System API**: This is a system API.
 
@@ -214,7 +256,7 @@ Indicates that a user has been removed from the system.
 
 When a system account is removed, the common event service is triggered to publish this event carrying the system account ID.
 
-The system API related to this common event is **removeOsAccount**. For details, see [@ohos.account.osAccount](../js-apis-osAccount.md).
+The system API related to this common event is **removeOsAccount**. For details, see [@ohos.account.osAccount (System Account Management)](../js-apis-osAccount.md).
 
 **System API**: This is a system API.
 
@@ -227,11 +269,11 @@ The system API related to this common event is **removeOsAccount**. For details,
 
 ### COMMON_EVENT_DOMAIN_ACCOUNT_STATUS_CHANGED
 
-Indicates that the status of the domain account status changes.
+Indicates that domain account status changes.
 
 When a domain user account is authenticated, deleted, or has the token updated, the common event service is triggered to publish this event carrying the system account ID, domain name, and account status.
 
-The system APIs related to this common event are **removeOsAccount**, **DomainAccountManager.auth**, and **updateAccountToken**. For details, see [@ohos.account.osAccount](../js-apis-osAccount.md).
+The system APIs related to this common event are **removeOsAccount**, **DomainAccountManager.auth**, and **updateAccountToken**. For details, see [@ohos.account.osAccount (System Account Management)](../js-apis-osAccount.md).
 
 **System API**: This is a system API.
 
@@ -248,7 +290,7 @@ Indicates that a user switchover is complete.
 
 When a system account is switched, the common event service is triggered to publish this event carrying the system account ID.
 
-The system API related to this common event is **activateOsAccount**. For details, see [@ohos.account.osAccount](../js-apis-osAccount.md).
+The system API related to this common event is **activateOsAccount**. For details, see [@ohos.account.osAccount (System Account Management)](../js-apis-osAccount.md).
 
 **System API**: This is a system API.
 
@@ -285,10 +327,117 @@ After a user is locked, the common event service is triggered to publish this ev
 **Value**: "usual.event.USER_LOCKED"
 
 
+### COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_CREATED
+
+Creates an OS account sub-profile.
+
+When an OS account sub-profile is created successfully, the common event service is triggered to publish this event, carrying the OS account ID and sub-profile ID.
+
+**Since:** 26.0.0
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: none
+
+**Value**: "usual.event.OS_ACCOUNT_SUB_PROFILE_CREATED"
+
+### COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_DELETED
+
+Deletes an OS account sub-profile.
+
+When an OS account sub-profile is deleted successfully, the common event service is triggered to publish this event, carrying the OS account ID and sub-profile ID.
+
+**Since:** 26.0.0
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: none
+
+**Value**: "usual.event.OS_ACCOUNT_SUB_PROFILE_DELETED"
+
+### COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_SWITCHING
+
+Switches an OS account sub-profile.
+
+When an OS account sub-profile is being switched, the common event service is triggered to publish this event, carrying the OS account ID, and the sub-profile IDs before and after the switching.
+
+**Since:** 26.0.0
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: none
+
+**Value**: "usual.event.OS_ACCOUNT_SUB_PROFILE_SWITCHING"
+
+### COMMON_EVENT_OS_ACCOUNT_SUB_PROFILE_SWITCHED
+
+Defines a switched OS account sub-profile.
+
+When an OS account sub-profile has been switched, the common event service is triggered to publish this event, carrying the OS account ID, and the sub-profile IDs before and after the switching.
+
+**Since:** 26.0.0
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: none
+
+**Value**: "usual.event.OS_ACCOUNT_SUB_PROFILE_SWITCHED"
+
+### COMMON_EVENT_DISTRIBUTED_ACCOUNT_BOUND
+
+Binds a distributed account.
+
+When a distributed account is bound, the common event service is triggered to publish this event, carrying the OS account ID and sub-profile ID.
+
+**Since:** 26.0.0
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: none
+
+**Value**: "usual.event.DISTRIBUTED_ACCOUNT_BOUND"
+
+### COMMON_EVENT_DISTRIBUTED_ACCOUNT_UNBOUND
+
+Unbinds a distributed account.
+
+When a distributed account is unbound, the common event service is triggered to publish this event, carrying the OS account ID and sub-profile ID.
+
+**Since:** 26.0.0
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: none
+
+**Value**: "usual.event.DISTRIBUTED_ACCOUNT_UNBOUND"
+
 ## Core File Kit
 
-This topic lists the system common events provided by the file management subsystem to applications. For details about how to subscribe to system common events, see [@ohos.commonEventManager](../js-apis-commonEventManager.md).
-
+This topic lists the system common events provided by the file management subsystem to applications. For details about how to subscribe to system common events, see [@ohos.commonEventManager (Common Event)](../js-apis-commonEventManager.md).
 
 ### COMMON_EVENT_VOLUME_REMOVED
 
@@ -303,7 +452,6 @@ This common event is triggered when an external storage device is removed.
 **Required permissions**: ohos.permission.STORAGE_MANAGER
 
 **Value**: "usual.event.data.VOLUME_REMOVED"
-
 
 
 ### COMMON_EVENT_VOLUME_UNMOUNTED
@@ -380,6 +528,7 @@ When a data migration application starts the backup and restore framework to per
 
 **Value**: "usual.event.RESTORE_START"
 
+
 ### COMMON_EVENT_CLOUD_DISK_STATE_CHANGED<sup>21+</sup>
 
 Indicates that the sync root of the cloud disk has been updated.
@@ -392,7 +541,22 @@ When the sync root update is complete, the common event service is triggered to 
 
 **Required permissions**: ohos.permission.ACCESS_CLOUD_DISK_INFO (for system applications only)
 
-**Value**: usual.event.CLOUD_DISK_STATE_CHANGED
+**Value**: "usual.event.CLOUD_DISK_STATE_CHANGED"
+
+
+### COMMON_EVENT_RESTORE_END<sup>23+</sup>
+
+Represents the common event indicating the restore is complete for an application.
+
+When a data migration application starts the backup and restore framework to perform a restoration task, this common event is sent when the restore is complete.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Required permissions**: ohos.permission.RESTORE_END_NOTIFICATION (for system applications only)
+
+**Value**: "usual.event.RESTORE_END"
 
 ## Media Kit
 
@@ -408,8 +572,24 @@ This is a protected common event and can be sent only by the system.
 
 **Required permissions**: ohos.permission.RECEIVE_SMS (for system applications only)
 
-**Value**: usual.event.SCREEN_SHARE
+**Value**: "usual.event.SCREEN_SHARE"
 
+
+## Network Kit
+
+### COMMON_EVENT_VPN_CONNECTION_STATUS_CHANGED<sup>12+</sup>
+
+Indicates the common event that the VPN connection status has changed.
+
+This common event is sent when a VPN connection is established or disconnected.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Required permissions**: none
+
+**Value**: "usual.event.VPN_CONNECTION_STATUS_CHANGED"
 
 ## Telephony Kit
 
@@ -425,7 +605,7 @@ When the device receives an SMS message, the common event service is triggered t
 
 **Required permissions**: ohos.permission.RECEIVE_SMS (for system applications only)
 
-**Value**: usual.event.SMS_RECEIVED_COMPLETED
+**Value**: "usual.event.SMS_RECEIVED_COMPLETED"
 
 
 ### COMMON_EVENT_SMS_EMERGENCY_CB_RECEIVE_COMPLETED<sup>10+</sup>
@@ -440,7 +620,7 @@ When the device receives an emergency cell broadcast message, the common event s
 
 **Required permissions**: ohos.permission.RECEIVE_SMS (for system applications only)
 
-**Value**: usual.event.SMS_EMERGENCY_CB_RECEIVE_COMPLETED
+**Value**: "usual.event.SMS_EMERGENCY_CB_RECEIVE_COMPLETED"
 
 
 ### COMMON_EVENT_SMS_CB_RECEIVE_COMPLETED<sup>10+</sup>
@@ -455,10 +635,7 @@ When the device receives a cell broadcast message, the common event service is t
 
 **Required permissions**: ohos.permission.RECEIVE_SMS (for system applications only)
 
-**Value**: usual.event.SMS_CB_RECEIVE_COMPLETED
-
-
-
+**Value**: "usual.event.SMS_CB_RECEIVE_COMPLETED"
 
 
 ### COMMON_EVENT_OPERATOR_CONFIG_CHANGED<sup>10+</sup>
@@ -473,7 +650,7 @@ When the carrier configuration of the device is updated, the common event servic
 
 **Required permissions**: none
 
-**Value**: usual.event.OPERATOR_CONFIG_CHANGED
+**Value**: "usual.event.OPERATOR_CONFIG_CHANGED"
 
 
 ### COMMON_EVENT_SIM_CARD_DEFAULT_SMS_SUBSCRIPTION_CHANGED<sup>10+</sup>
@@ -488,7 +665,7 @@ When the default primary SIM card for the SMS service is updated, the common eve
 
 **Required permissions**: none
 
-**Value**: usual.event.DEFAULT_SMS_SUBSCRIPTION_CHANGED
+**Value**: "usual.event.DEFAULT_SMS_SUBSCRIPTION_CHANGED"
 
 
 ### COMMON_EVENT_SIM_CARD_DEFAULT_DATA_SUBSCRIPTION_CHANGED<sup>10+</sup>
@@ -503,7 +680,7 @@ When the default primary SIM card for the data service is updated, the common ev
 
 **Required permissions**: none
 
-**Value**: usual.event.DEFAULT_DATA_SUBSCRIPTION_CHANGED
+**Value**: "usual.event.DEFAULT_DATA_SUBSCRIPTION_CHANGED"
 
 
 ### COMMON_EVENT_SIM_CARD_DEFAULT_MAIN_SUBSCRIPTION_CHANGED<sup>10+</sup>
@@ -518,7 +695,7 @@ When the default primary SIM card of the device is updated, the common event ser
 
 **Required permissions**: none
 
-**Value**: usual.event.SIM.DEFAULT_MAIN_SUBSCRIPTION_CHANGED
+**Value**: "usual.event.SIM.DEFAULT_MAIN_SUBSCRIPTION_CHANGED"
 
 
 ### COMMON_EVENT_SET_PRIMARY_SLOT_STATUS<sup>11+</sup>
@@ -533,7 +710,7 @@ When the status of the action for setting the primary SIM card changes (for exam
 
 **Required permissions**: none
 
-**Value**: usual.event.SET_PRIMARY_SLOT_STATUS
+**Value**: "usual.event.SET_PRIMARY_SLOT_STATUS"
 
 
 ### COMMON_EVENT_PRIMARY_SLOT_ROAMING<sup>11+</sup>
@@ -548,7 +725,7 @@ When the roaming status of the default primary SIM card changes, the common even
 
 **Required permissions**: none
 
-**Value**: usual.event.PRIMARY_SLOT_ROAMING
+**Value**: "usual.event.PRIMARY_SLOT_ROAMING"
 
 
 ### COMMON_EVENT_SIM_CARD_DEFAULT_VOICE_SUBSCRIPTION_CHANGED<sup>10+</sup>
@@ -563,7 +740,7 @@ When the default primary SIM card for the voice service is updated, the common e
 
 **Required permissions**: none
 
-**Value**: usual.event.DEFAULT_VOICE_SUBSCRIPTION_CHANGED
+**Value**: "usual.event.DEFAULT_VOICE_SUBSCRIPTION_CHANGED"
 
 
 ### COMMON_EVENT_CELLULAR_DATA_STATE_CHANGED<sup>10+</sup>
@@ -578,7 +755,7 @@ When the cellular data state of the device is updated, the common event service 
 
 **Required permissions**: none
 
-**Value**: usual.event.CELLULAR_DATA_STATE_CHANGED
+**Value**: "usual.event.CELLULAR_DATA_STATE_CHANGED"
 
 
 ### COMMON_EVENT_INCOMING_CALL_MISSED<sup>10+</sup>
@@ -593,7 +770,7 @@ When an incoming call is missed on the device, the common event service is trigg
 
 **Required permissions**: ohos.permission.GET_TELEPHONY_STATE (for system applications only)
 
-**Value**: usual.event.INCOMING_CALL_MISSED
+**Value**: "usual.event.INCOMING_CALL_MISSED"
 
 
 ### COMMON_EVENT_RADIO_STATE_CHANGE<sup>10+</sup>
@@ -608,7 +785,7 @@ When there is a change in the radio state of the device modem, the common event 
 
 **Required permissions**: none
 
-**Value**: usual.event.RADIO_STATE_CHANGE
+**Value**: "usual.event.RADIO_STATE_CHANGE"
 
 
 ### COMMON_EVENT_SPECIAL_CODE<sup>10+</sup>
@@ -623,7 +800,7 @@ When a secret code is successfully sent on the device, the common event service 
 
 **Required permissions**: none
 
-**Value**: usual.event.DIALER_SPECIAL_CODE
+**Value**: "usual.event.DIALER_SPECIAL_CODE"
 
 
 ### COMMON_EVENT_AUDIO_QUALITY_CHANGE<sup>10+</sup>
@@ -638,7 +815,7 @@ When there is a change in the audio quality of the device, the common event serv
 
 **Required permissions**: none
 
-**Value**: usual.event.AUDIO_QUALITY_CHANGE
+**Value**: "usual.event.AUDIO_QUALITY_CHANGE"
 
 
 ## Reserved Common Event
@@ -657,7 +834,7 @@ When an STK command is sent, the common event service is triggered to publish th
 
 **Required permissions**: none
 
-**Value**: usual.event.STK_COMMAND
+**Value**: "usual.event.STK_COMMAND"
 
 
 ### COMMON_EVENT_STK_SESSION_END<sup>10+</sup>
@@ -672,7 +849,7 @@ When an STK session ends, the common event service is triggered to publish this 
 
 **Required permissions**: none
 
-**Value**: usual.event.STK_SESSION_END
+**Value**: "usual.event.STK_SESSION_END"
 
 
 ### COMMON_EVENT_STK_CARD_STATE_CHANGED<sup>10+</sup>
@@ -688,7 +865,7 @@ When the STK card state is updated, the common event service is triggered to pub
 **Required permissions**: none
 
 
-**Value**: usual.event.STK_CARD_STATE_CHANGED
+**Value**:"usual.event.STK_CARD_STATE_CHANGED"
 
 ### COMMON_EVENT_STK_ALPHA_IDENTIFIER<sup>10+</sup>
 
@@ -702,7 +879,8 @@ When an STK Alpha identifier is sent, the common event service is triggered to p
 
 **Required permissions**: none
 
-**Value**: usual.event.STK_ALPHA_IDENTIFIER
+**Value**: "usual.event.STK_ALPHA_IDENTIFIER"
+
 
 ### COMMON_EVENT_SMS_WAPPUSH_RECEIVE_COMPLETED<sup>10+</sup>
 
@@ -716,4 +894,4 @@ When the device receives a WAP push message, the common event service is trigger
 
 **Required permissions**: ohos.permission.RECEIVE_SMS (for system applications only)
 
-**Value**: usual.event.SMS_WAPPUSH_RECEIVE_COMPLETED
+**Value**: "usual.event.SMS_WAPPUSH_RECEIVE_COMPLETED"

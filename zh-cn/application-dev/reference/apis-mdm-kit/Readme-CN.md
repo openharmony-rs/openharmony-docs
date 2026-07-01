@@ -1,13 +1,13 @@
 # Mdm Kit（企业设备管理服务）<!--mdm-api-->
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
 - ArkTS API<!--mdm-arkts-->
-  - [@ohos.enterprise.accountManager（账户管理）](js-apis-enterprise-accountManager.md)
+  - [@ohos.enterprise.accountManager（账号管理）](js-apis-enterprise-accountManager.md)
   - [@ohos.enterprise.adminManager（admin权限管理）](js-apis-enterprise-adminManager.md)
   - [@ohos.enterprise.applicationManager（应用管理）](js-apis-enterprise-applicationManager.md)
   - [@ohos.enterprise.bluetoothManager（蓝牙管理）](js-apis-enterprise-bluetoothManager.md)
@@ -27,7 +27,7 @@
   - [@ohos.enterprise.EnterpriseAdminExtensionAbility（企业设备管理扩展能力）](js-apis-EnterpriseAdminExtensionAbility.md)
   - [@ohos.enterprise.telephony（通话管理）](js-apis-enterprise-telephonyManager.md)
   <!--Del-->
-  - [@ohos.enterprise.accountManager（账户管理）(系统接口)](js-apis-enterprise-accountManager-sys.md)
+  - [@ohos.enterprise.accountManager（账号管理）(系统接口)](js-apis-enterprise-accountManager-sys.md)
   - [@ohos.enterprise.adminManager（admin权限管理）(系统接口)](js-apis-enterprise-adminManager-sys.md)
   - [@ohos.enterprise.applicationManager（应用管理）(系统接口)](js-apis-enterprise-applicationManager-sys.md)
   - [@ohos.enterprise.bluetoothManager（蓝牙管理）(系统接口)](js-apis-enterprise-bluetoothManager-sys.md)

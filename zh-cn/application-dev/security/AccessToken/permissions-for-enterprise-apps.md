@@ -27,12 +27,16 @@
 
 允许应用下发文件管控策略。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
 
 **起始版本**：10
 
@@ -44,12 +48,16 @@
 
 当前扩展属性包括文件密级、文件标签。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
 
 **起始版本**：10
 
@@ -61,12 +69,14 @@
 
 获取该权限后，应用可以获取用户数据中指定文件的写权限，并修改文件。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：PC/2in1
 
@@ -76,12 +86,14 @@
 
 允许应用跨系统本地账号交互。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：7
 
@@ -93,12 +105,14 @@
 
 获取该权限后，应用可查询系统中指定或所有本地账号的身份标识。基于获取的身份标识，应用可进一步访问或管理目标本地账号。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：General
 
@@ -110,12 +124,14 @@
 
 可获取其他应用的运行态信息，包括Ability、Extension、Application的信息。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：7
 
@@ -127,12 +143,14 @@
 
 获取该权限后，可注册应用状态监听器。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：7
 
@@ -144,12 +162,14 @@
 
 如应用包名，版本等信息。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：7
 
@@ -161,14 +181,16 @@
 
 该权限允许应用获取SSID、PSK、加密方式等Wi-Fi配置的相关信息。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
-**支持设备**：PC/2in1
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：8
 
@@ -180,12 +202,16 @@
 
 该权限允许应用添加、删除Wi-Fi，以及修改Wi-Fi的配置信息。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：8
 
@@ -195,12 +221,14 @@
 
 允许应用查询域账号信息。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：10
 
@@ -210,12 +238,14 @@
 
 允许企业安全类应用查询安全审计事件。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：12
 
@@ -227,12 +257,14 @@
 
 获取权限后，可终止其他正在运行中的应用，允许它在必要时对系统中的进程进行管理和控制。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：12
 
@@ -244,11 +276,13 @@
 
 获取该权限后，可执行开启/关闭、连接、断开Wi-Fi等操作。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
-**ACL使能**：true
+**是否支持证书授权**：true
 
 **起始版本**：15
 
@@ -258,12 +292,14 @@
 
 在企业设备上企业应用使用私有的CA证书认证企业服务器时，该权限用于允许企业应用把私有CA证书安装到企业设备上，并对安装的CA证书进行管理操作。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：18
 
@@ -273,12 +309,14 @@
 
 当前仅2in1设备应用可申请此权限。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：12
 
@@ -290,12 +328,14 @@
 
 当前仅2in1设备应用可申请此权限。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：12
 
@@ -305,12 +345,14 @@
 
 允许应用获取域账号服务器配置。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：18
 
@@ -318,12 +360,14 @@
 
 允许应用管理域账号服务器配置。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：18
 
@@ -331,12 +375,14 @@
 
 允许应用管理域账号。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：18
 
@@ -344,12 +390,14 @@
 
 允许应用获取应用包的签名信息。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：18
 
@@ -357,12 +405,14 @@
 
 允许应用获取当前屏幕的可见窗口信息。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：18
 
@@ -372,12 +422,14 @@
 
 企业安全应用申请此权限后，可以阻断安全审计事件。这些事件包括文件创建，文件打开和文件删除等。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：PC/2in1
 
@@ -389,12 +441,14 @@
 
 获取此权限后，应用可作为AppServiceExtension被同应用或同在"appidentifierAllowList"配置中的应用拉起或连接。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：PC/2in1
 
@@ -406,12 +460,14 @@
 
 获取此权限后，允许企业网络安全软件获取802.1x报文并新增信息，完成定制化认证需求。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：PC/2in1
 
@@ -423,12 +479,14 @@
 
 特定用户是支持应用单例运行的用户。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：PC/2in1
 
@@ -440,12 +498,14 @@
 
 获取此权限后，可查询工作空间的基本信息，以及哪些空间已被设置成不可删除。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：PC/2in1
 
@@ -457,12 +517,14 @@
 
 获取该权限后，应用可以通过API为网络设置扩展属性以标识网络是内部网络还是外部网络。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：PC/2in1
 
@@ -472,12 +534,14 @@
 
 允许企业应用管理防病毒软件。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：PC/2in1
 
@@ -487,12 +551,14 @@
 
 允许企业防病毒软件向系统注册、更新基本信息。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：PC/2in1
 
@@ -502,12 +568,14 @@
 
 允许应用调用TPM（Trusted Platform Module）命令。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：PC/2in1
 
@@ -519,12 +587,14 @@
 
 获取此权限后，可以通过spaceManager.subscribeEvent和spaceManager.unsubscribeEvent，订阅和取消订阅企业数字空间相关事件。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：PC/2in1
 
@@ -536,12 +606,14 @@
 
 此权限仅面向杀毒软件开放申请。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：PC/2in1
 
@@ -553,12 +625,14 @@
 
 UDID（Unified Device ID）是设备的唯一标识。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **起始版本**：7
 
@@ -570,27 +644,105 @@ UDID（Unified Device ID）是设备的唯一标识。
 
 获取该权限后，应用可更新打印状态及打印机信息。
 
+<!--RP2--><!--RP2End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：PC/2in1
 
 **起始版本**：24
 
-## ohos.permission.ENTERPRISE_GET_INSTALLED_BUNDLE_LIST
+## ohos.permission.DLP_POLICY_MANAGER
 
-允许企业普通应用获取已安装全量应用列表。
+允许企业普通应用通过数据防泄漏能力管理透明加解密策略。
+
+获取该权限后，应用可管理透明加解密策略，如指定其他应用的文件操作需透明加解密、指定对应的加解密算法等。
 
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
 <!--Del-->
-**ACL使能**：true<!--DelEnd-->
+**是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
+## ohos.permission.SUPPORT_CROSS_APP_EMBED_FOR_OA
+
+允许应用跨应用拉起EmbeddedUIExtension。
+
+<!--RP3--><!--RP3End-->
+
+<!--RP2--><!--RP2End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
+## ohos.permission.SUPPORT_NP_PLUGIN_FOR_WEB
+
+允许应用释放插件库。
+
+<!--RP4--><!--RP4End-->
+
+<!--RP2--><!--RP2End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
+## ohos.permission.kernel.LOAD_CERTSIGN_LIBRARY_FOR_WEB
+
+允许应用加载二进制证书签名的插件库。
+
+<!--RP5--><!--RP5End-->
+
+<!--RP2--><!--RP2End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
+## ohos.permission.ENTERPRISE_GET_INSTALLED_BUNDLE_LIST
+
+允许企业普通应用获取已安装全量应用列表。
+
+<!--RP2--><!--RP2End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**是否支持证书授权**：true<!--DelEnd-->
 
 **支持设备**：PC/2in1
 

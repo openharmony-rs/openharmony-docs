@@ -12,6 +12,8 @@
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](./arkts-apis-uicontext-uicontext.md)说明。 
 
 ## 导入模块
@@ -111,9 +113,9 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 
 | 名称     | 类型 | 只读    | 可选     | 说明                               |
 | --------| ---- | -------------------| -------------------------------| -----------------------------------|
-| x       | number | 否       | 否    | x轴平移距离。<br />单位: px                       |
-| y       | number | 否       | 否    | y轴平移距离。<br />单位: px                       |
-| z       | number | 否       | 否     | z轴平移距离。<br />单位: px                       |
+| x       | number | 否       | 否    | x轴平移距离。<br />单位: vp                       |
+| y       | number | 否       | 否    | y轴平移距离。<br />单位: vp                       |
+| z       | number | 否       | 否     | z轴平移距离。<br />单位: vp                       |
 
 ### ScaleResult
 
@@ -123,11 +125,11 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 
 | 名称     | 类型 | 只读    | 可选   | 说明                               |
 | --------| ---- | ---- |-----------------------------------| -----------------------------------|
-| x       | number | 否       | 否 | x轴缩放倍数。<br />单位: px                       |
-| y       | number | 否       | 否  | y轴缩放倍数。<br />单位: px                       |
-| z       | number | 否       | 否 | z轴缩放倍数。<br />单位: px                       |
-| centerX | number | 否       | 否 | 变换中心点x轴坐标。<br />单位: px                  |
-| centerY | number | 否       | 否  | 变换中心点y轴坐标。<br />单位: px                |
+| x       | number | 否       | 否 | x轴缩放倍数。                       |
+| y       | number | 否       | 否  | y轴缩放倍数。                       |
+| z       | number | 否       | 否 | z轴缩放倍数。                       |
+| centerX | number | 否       | 否 | 变换中心点x轴坐标。<br />单位: vp                  |
+| centerY | number | 否       | 否  | 变换中心点y轴坐标。<br />单位: vp                |
 
 ### RotateResult
 
@@ -137,12 +139,12 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 
 | 名称     | 类型  | 只读    | 可选     | 说明                               |
 | --------| ---- | -----------------| ---------------------------------| -----------------------------------|
-| x       | number | 否       | 否  | 旋转轴向量x坐标。<br />单位: px                   |
-| y       | number | 否       | 否  | 旋转轴向量y坐标。<br />单位: px                   |
-| z       | number | 否       | 否  | 旋转轴向量z坐标。<br />单位: px                   |
-| angle   | number | 否       | 否  | 旋转角度。<br />单位: px                          |
-| centerX | number | 否       | 否  | 变换中心点x轴坐标。<br />单位: px                 |
-| centerY | number | 否       | 否  | 变换中心点y轴坐标。<br />单位: px                 |
+| x       | number | 否       | 否  | 旋转轴向量x坐标。                   |
+| y       | number | 否       | 否  | 旋转轴向量y坐标。                   |
+| z       | number | 否       | 否  | 旋转轴向量z坐标。                   |
+| angle   | number | 否       | 否  | 旋转角度。<br />单位: deg                          |
+| centerX | number | 否       | 否  | 变换中心点x轴坐标。<br />单位: vp                 |
+| centerY | number | 否       | 否  | 变换中心点y轴坐标。<br />单位: vp                 |
 
 ### Matrix4Result
 
@@ -154,7 +156,7 @@ type Matrix4Result = [number,number,number,number,number,number,number,number,nu
 
 | 类型 | 说明                               |
 | --------| -----------------------------------|
-| [number,number,number,number,<br />number,number,number,number,<br />number,number,number,number,<br />number,number,number,number] | 取值范围为长度为16（4\*4）的number数组，&nbsp;详情见四阶矩阵说明。<br/>单位: px  |
+| [number,number,number,number,<br />number,number,number,number,<br />number,number,number,number,<br />number,number,number,number] | 取值范围为长度为16（4\*4）的number数组，&nbsp;详情见四阶矩阵说明。  |
 
 **四阶矩阵说明：**
 

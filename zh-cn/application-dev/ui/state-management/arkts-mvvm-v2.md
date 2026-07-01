@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @katabanga-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -416,7 +416,7 @@ struct TaskItem {
 
   @Monitor('task.isFinish')
   onTaskFinished(mon: IMonitor) {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'task' + this.task.taskName + 'The completion status of the' + mon.value()?.before + 'has become' + mon.value()?.now);
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Task ' + this.task.taskName + ' completion status changed from ' + mon.value()?.before + ' to ' + mon.value()?.now);
   }
 
   build() {
@@ -536,7 +536,7 @@ struct TaskItem {
 
   @Monitor('task.isFinish')
   onTaskFinished(mon: IMonitor) {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'task' + this.task.taskName + 'The completion status of the' + mon.value()?.before + 'has become' + mon.value()?.now);
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Task ' + this.task.taskName + ' completion status changed from ' + mon.value()?.before + ' to ' + mon.value()?.now);
   }
 
   build() {
@@ -728,7 +728,7 @@ struct TaskItem {
 
   @Monitor('task.isFinish')
   onTaskFinished(mon: IMonitor) {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'task' + this.task.taskName + 'The completion status of the' + mon.value()?.before + 'has become' + mon.value()?.now);
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Task ' + this.task.taskName + ' completion status changed from ' + mon.value()?.before + ' to ' + mon.value()?.now);
   }
 
   build() {
@@ -908,7 +908,7 @@ struct TaskItem {
 
   @Monitor('task.isFinish')
   onTaskFinished(mon: IMonitor) {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'task' + this.task.taskName + 'The completion status of the' + mon.value()?.before + 'has become' + mon.value()?.now);
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Task ' + this.task.taskName + ' completion status changed from ' + mon.value()?.before + ' to ' + mon.value()?.now);
   }
 
   build() {
@@ -1060,13 +1060,17 @@ Model层负责管理应用的数据及其业务逻辑，通常与后端或数据
   
 - TaskListModel：任务的集合，提供从本地加载任务数据的功能。
 
-  <!-- @[Model_TaskListModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/model/TaskListModel.ets) --> 
+  <!-- @[Model_TaskListModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/model/TaskListModel.ets) -->      
   
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
   import { util } from '@kit.ArkTS';
   import TaskModel from './TaskModel';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
   
+  const DOMAIN = 0x0000;
+  
+  // Model层：TaskListModel负责加载任务列表
   export default class TaskListModel {
     public tasks: TaskModel[] = [];
   
@@ -1075,16 +1079,20 @@ Model层负责管理应用的数据及其业务逻辑，通常与后端或数据
     }
   
     async loadTasks(context: common.UIAbilityContext) {
-      let getJson = await context.resourceManager.getRawFileContent('defaultTasks.json');
-      let textDecoderOptions: util.TextDecoderOptions = { ignoreBOM: true };
-      let textDecoder = util.TextDecoder.create('utf-8', textDecoderOptions);
-      let result = textDecoder.decodeToString(getJson);
-      this.tasks = JSON.parse(result).map((task: TaskModel) => {
-        let newTask = new TaskModel();
-        newTask.taskName = task.taskName;
-        newTask.isFinish = task.isFinish;
-        return newTask;
-      });
+      try {
+        let getJson = await context.resourceManager.getRawFileContent('defaultTasks.json');
+        let textDecoderOptions: util.TextDecoderOptions = { ignoreBOM: true };
+        let textDecoder = util.TextDecoder.create('utf-8', textDecoderOptions);
+        let result = textDecoder.decodeToString(getJson);
+        this.tasks = JSON.parse(result).map((task: TaskModel) => {
+          let newTask = new TaskModel();
+          newTask.taskName = task.taskName;
+          newTask.isFinish = task.isFinish;
+          return newTask;
+        });
+      } catch (e) {
+        hilog.error(DOMAIN, 'testTag', 'Failed to getRawFileContent: %{public}s', JSON.stringify(e) ?? '');
+      }
     }
   }
   ```
@@ -1178,7 +1186,7 @@ View层负责应用程序的UI展示和与用户的交互。它只关注如何�
         Text('To do')
           .fontSize(40)
           .margin(10)
-        Text(`All Not Completed：${this.tasksUnfinished}`)
+        Text(`Unfinished task：${this.tasksUnfinished}`)
           .margin({ left: 10, bottom: 10 })
       }
     }
@@ -1204,7 +1212,7 @@ View层负责应用程序的UI展示和与用户的交互。它只关注如何�
   
     @Monitor('task.isFinish')
     onTaskFinished(mon: IMonitor) {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'task' + this.task.taskName + 'The completion status of the' + mon.value()?.before + 'has become' + mon.value()?.now);
+      hilog.info(0x0000, 'testTag', '%{public}s', 'Task ' + this.task.taskName + ' completion status changed from ' + mon.value()?.before + ' to ' + mon.value()?.now);
     }
   
     build() {
@@ -1356,7 +1364,7 @@ View层负责应用程序的UI展示和与用户的交互。它只关注如何�
   
 - SettingPage：设置页面，负责管理是否显示已完成任务的设置。通过AppStorageV2应用全局存储用户的设置，用户通过Toggle开关切换showCompletedTask状态。
 
-  <!-- @[Main_SettingPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/SettingPage.ets) -->
+  <!-- @[Main_SettingPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/SettingPage.ets) --> 
   
   ``` TypeScript
   // src/main/ets/pages/SettingPage.ets
@@ -1374,20 +1382,22 @@ View层负责应用程序的UI展示和与用户的交互。它只关注如何�
     @Local setting: Setting = AppStorageV2.connect(Setting, 'Setting', () => new Setting())!;
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   
-    build(){
-      Column(){
+    build() {
+      Column() {
         Text('Setting')
           .fontSize(40)
           .margin({ bottom: 10 })
         Row() {
           Text('Show completed tasks')
-          Toggle({ type: ToggleType.Switch, isOn:this.setting.showCompletedTask })
+          Toggle({ type: ToggleType.Switch, isOn: this.setting.showCompletedTask })
             .onChange((isOn) => {
               this.setting.showCompletedTask = isOn;
             })
         }
         Button('Back to To do')
-          .onClick(()=>this.context.terminateSelf())
+          .onClick(() => {
+            this.context.terminateSelf();
+          })
           .margin({ top: 10 })
       }
       .alignItems(HorizontalAlign.Start)
@@ -1400,4 +1410,4 @@ View层负责应用程序的UI展示和与用户的交互。它只关注如何�
 本指南通过待办事项应用示例，引入状态管理V2装饰器，并通过代码重构实现MVVM架构。最终将数据、业务逻辑和视图展示分层处理，使得代码结构更加清晰且易于维护。开发者通过正确应用Model、View和ViewModel分层结构，能够更好地理解和应用MVVM模式，进而在实际项目中提升开发效率、保证代码质量，并优化数据与UI的同步机制，简化整体开发流程。
 
 ## 代码示例
-[完整源码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry)
+<!--RP1-->[完整源码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM)<!--RP1End-->

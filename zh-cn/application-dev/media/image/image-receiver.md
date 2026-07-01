@@ -2,14 +2,14 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
 图片接收类ImageReceiver用于获取组件SurfaceId，接收最新的图片和读取下一张图片，以及释放ImageReceiver实例。
 
 > **说明：**
-> Receiver作为消费者，需要有对应的生产者提供数据才能实现完整功能。常见的生产者是相机的拍照流或预览流。ImageReceiver只作为图片的接收方、消费者，在ImageReceiver设置的size、format等属性实际上并不会生效，图片createImageReceiver时传入的参数不产生实际影响。图片属性需要在发送方、生产者进行设置，如[相机创建预览流](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)时配置[profile](../../reference/apis-camera-kit/arkts-apis-camera-i.md#profile)。
+> Receiver作为消费者，需要有对应的生产者提供数据才能实现完整功能。常见的生产者是相机的拍照流或预览流。ImageReceiver只作为图片的接收方、消费者，在ImageReceiver设置的size、format等属性实际上并不会生效，图片createImageReceiver时传入的参数不产生实际影响。图片属性需要在发送方、生产者进行设置，如在使用[createpreviewoutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)创建相机预览流时配置[profile](../../reference/apis-camera-kit/arkts-apis-camera-i.md#profile)。
 
 ImageReceiver可以接收相机预览流中的图片，实现[双路预览](../camera/camera-dual-channel-preview.md)。
 
@@ -32,12 +32,13 @@ ImageReceiver可以接收相机预览流中的图片，实现[双路预览](../c
    
 2. 创建ImageReceiver对象，通过ImageReceiver对象可获取预览流SurfaceId。
    
-   <!-- @[init_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ReceiverUtility.ets) -->   
+   <!-- @[init_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ReceiverUtility.ets) -->    
    
    ``` TypeScript
    async function initImageReceiver(): Promise<void> {
      // 创建ImageReceiver对象。createImageReceiver的参数不会对接收到的数据产生实际影响。
      let size: image.Size = { width: imageWidth, height: imageHeight };
+     // capacity为期望缓存数量，实际值由设备能力决定，此处8仅为示例值。
      let imageReceiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
      // 获取预览流SurfaceId。
      let imageReceiverSurfaceId = await imageReceiver.getReceivingSurfaceId();
@@ -47,7 +48,7 @@ ImageReceiver可以接收相机预览流中的图片，实现[双路预览](../c
 
 3. 注册监听处理预览流每帧图像数据：通过ImageReceiver中imageArrival事件监听获取底层返回的图像数据。详细的API说明请参考[ImageReceiver](../../reference/apis-image-kit/arkts-apis-image-ImageReceiver.md)。
 
-   <!-- @[On_imageArrival](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ReceiverUtility.ets) -->  
+   <!-- @[On_imageArrival](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ReceiverUtility.ets) -->   
    
    ``` TypeScript
    function onImageArrival(receiver: image.ImageReceiver) {
@@ -60,12 +61,13 @@ ImageReceiver可以接收相机预览流中的图片，实现[双路预览](../c
            return;
          }
          // 解析图像内容。
-         nextImage.getComponent(image.ComponentType.JPEG, async (err: BusinessError,
-           imgComponent: image.Component) => {
-           if (err || imgComponent === undefined) {
-             console.error('getComponent failed');
-           }
-           if (imgComponent.byteBuffer) {
+         (async () => {
+           try {
+             let imgComponent = await nextImage.getComponent(image.ComponentType.JPEG);
+             if (!imgComponent.byteBuffer) {
+               console.error('byteBuffer is null');
+               return;
+             }
              // 详情见下方解析图片buffer数据参考，本示例以方式一为例。
              let width = nextImage.size.width; // 获取图片的宽。
              let height = nextImage.size.height; // 获取图片的高。
@@ -75,7 +77,7 @@ ImageReceiver可以接收相机预览流中的图片，实现[双路预览](../c
              if (stride == width) {
                let pixelMap = await image.createPixelMap(imgComponent.byteBuffer, {
                  size: { height: height, width: width },
-                 srcPixelFormat: 8,
+                 srcPixelFormat: image.PixelMapFormat.NV21,
                })
              } else {
                // stride与width不一致。
@@ -88,16 +90,17 @@ ImageReceiver可以接收相机预览流中的图片，实现[双路预览](../c
                }
                let pixelMap = await image.createPixelMap(dstArr.buffer, {
                  size: { height: height, width: width },
-                 srcPixelFormat: 8,
+                 srcPixelFormat: image.PixelMapFormat.NV21,
                })
              }
-           } else {
-             console.error('byteBuffer is null');
+           } catch (error) {
+             console.error('getComponent failed');
+           } finally {
+             // 确保当前buffer没有在使用的情况下，可进行资源释放。
+             // 如果对buffer进行异步操作，需要在异步操作结束后再释放该资源（nextImage.release()）。
+             await nextImage.release();
            }
-           // 确保当前buffer没有在使用的情况下，可进行资源释放。
-           // 如果对buffer进行异步操作，需要在异步操作结束后再释放该资源（nextImage.release()）。
-           nextImage.release();
-         })
+         })();
        })
      })
    }
@@ -110,7 +113,7 @@ ImageReceiver可以接收相机预览流中的图片，实现[双路预览](../c
 
 方式一：去除imgComponent.byteBuffer中stride数据，拷贝得到新的buffer，调用不支持stride的接口处理buffer。
 
-<!-- @[adjust_bufferSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ReceiverUtility.ets) -->  
+<!-- @[adjust_bufferSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ReceiverUtility.ets) -->   
 
 ``` TypeScript
 // stride与width不一致。
@@ -122,18 +125,18 @@ for (let j = 0; j < height * 1.5; j++) {
 }
 let pixelMap = await image.createPixelMap(dstArr.buffer, {
   size: { height: height, width: width },
-  srcPixelFormat: 8,
+  srcPixelFormat: image.PixelMapFormat.NV21,
 })
 ```
 
 方式二：根据stride * height创建pixelMap，然后调用pixelMap的cropSync方法裁剪掉多余的像素。
 
-<!-- @[adjust_width](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ReceiverUtility.ets) -->  
+<!-- @[adjust_width](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ReceiverUtility.ets) -->   
 
 ``` TypeScript
-// 创建pixelMap，width宽传行距stride的值。
+// 创建pixelMap，width传入行距（stride）的值。
 let pixelMap = await image.createPixelMap(imgComponent.byteBuffer, {
-  size:{height: height, width: stride}, srcPixelFormat: 8});
+  size:{height: height, width: stride}, srcPixelFormat: image.PixelMapFormat.NV21});
 // 裁剪多余的像素。
 try {
   pixelMap.cropSync({size:{width:width, height:height}, x:0, y:0});

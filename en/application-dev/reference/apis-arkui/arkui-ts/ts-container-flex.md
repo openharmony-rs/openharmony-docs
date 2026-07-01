@@ -14,9 +14,9 @@ For details, see [Flex Layout](../../../ui/arkts-layout-development-flex-layout.
 >
 > - This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 > - The **Flex** component adapts the layout of flex items during rendering. This may affect the performance. Therefore, you are advised to use [Column](ts-container-column.md) or [Row](ts-container-row.md) instead under scenarios where consistently high performance is required. For best practices, see [Using Layout Components Properly](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-improve-layout-performance#section12745188175420).
-> - If the main axis length of the **Flex** component is unspecified, it follows the size of the parent container by default. If the **Flex** component contains child components for which [position](ts-universal-attributes-location.md#position) is set, the **Flex** component does not follow the size of the parent container. If the main axis length of the **Column** or **Row** component is unspecified, it follows the size of the child nodes by default.
+> - If the main axis length of the **Flex** component is unspecified, it follows the size of the parent container by default. If the **Flex** component contains child components for which [position](ts-universal-attributes-location.md#position) is set, the **Flex** component does not follow the size of the parent container. If the main axis length of the [Column](ts-container-column.md) or [Row](ts-container-row.md) component is unspecified, it follows the size of the child nodes by default.
 > - If **Flex**, **Column**, or **Row** containers have no child components and no explicit width or height settings, their default width or height is **-1**.
-> - You can set the main axis length of a **Flex** component to **auto** to make it adapt to the layout of its child components. This way, the **Flex** component's length is subject to the **constraintSize** attribute and the maximum and minimum length constraints passed from the parent container, with **constraintSize** taking precedence.
+> - The main axis length can be set to **auto** to enable the **Flex** component to adapt to the layout of its child components. In this case, the Flex component's length is determined by the [constraintSize](ts-universal-attributes-size.md#constraintsize) attribute and the maximum and minimum length limits passed by the parent container. The **constraintSize** attribute takes precedence.
 
 
 ## Child Components
@@ -142,7 +142,7 @@ struct FlexExample1 {
 }
 ```
 
-![en-us_image_0000001219744189](figures/en-us_image_0000001219744189.PNG)
+![flex1](figures/flex1.PNG)
 
 ### Example 2: Implementing Single- and Multi-Line Layouts
 This example demonstrates single-line and multi-line layouts for child components by setting the **wrap** property.
@@ -190,7 +190,7 @@ struct FlexExample2 {
 }
 ```
 
-![en-us_image_0000001174264366](figures/en-us_image_0000001174264366.png)
+![flex2](figures/flex2.png)
 
 ### Example 3: Setting Alignment Along the Main Axis
 This example demonstrates different alignment effects for child components along the main axis by setting the **justifyContent** property.
@@ -292,7 +292,7 @@ struct FlexExample4 {
 }
 ```
 
-![en-us_image_0000001174422904](figures/en-us_image_0000001174422904.png)
+![flex4](figures/flex4.png)
 
 ### Example 5: Setting Alignment of Multiple Lines
 This example demonstrates different alignment effects for multiple lines of content by setting the **alignContent** property.
@@ -355,7 +355,7 @@ struct FlexExample5 {
 }
 ```
 
-![en-us_image_0000001174422906](figures/en-us_image_0000001174422906.PNG)
+![flex5](figures/flex5.PNG)
 
 ### Example 6: Setting the Spacing Between Child Components Along the Main Axis or Cross Axis
 This example shows how to set the spacing between child components along the main axis or cross axis using the **space** property.
@@ -404,7 +404,7 @@ struct FlexExample2 {
 }
 ```
 
-![en-us_image_0000001174422907](figures/en-us_image_0000001174422907.PNG)
+![flex6](figures/flex6.PNG)
 
 ### Example 7: Implementing a Flex Component with Adaptive Width
 This example shows how the **Flex** component can automatically adjust to fit the layout of child components when the width is set to **auto**.
@@ -458,4 +458,4 @@ struct Index {
 }
 ```
 
-![en-us_flexDemo_7](figures/en-us_flexDemo_7.png)
+![flexDemo7](figures/flexDemo7.png)

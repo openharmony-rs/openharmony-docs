@@ -5,11 +5,11 @@
 <!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 ## 概述
 
-提供短时任务C接口。
+该模块提供短时任务C接口，用于申请、查询和取消短时任务。用于应用进入后台后需要在短时间内执行耗时操作，如状态保存、消息发送等。
 
 **起始版本：** 13
 ## 文件汇总

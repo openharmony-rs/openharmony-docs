@@ -88,13 +88,15 @@ width(widthValue: Length | LayoutPolicy): T
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名   | 类型                           | 必填   | 说明                  |
 | ----- | ---------------------------- | ---- | ------------------- |
-| widthValue | [Length](ts-types.md#length)&nbsp;\|&nbsp;[LayoutPolicy](ts-universal-attributes-size.md#layoutpolicy15) | 是    | 要设置的组件宽度。<br/>单位：vp |
+| widthValue | [Length](ts-types.md#length)&nbsp;\|&nbsp;[LayoutPolicy](ts-universal-attributes-size.md#layoutpolicy15) | 是    | 要设置的组件宽度或水平方向布局策略。<br/>单位：vp |
 
 **返回值：**
 
@@ -112,13 +114,15 @@ height(heightValue: Length | LayoutPolicy): T
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名   | 类型                           | 必填   | 说明                  |
 | ----- | ---------------------------- | ---- | ------------------- |
-| heightValue | [Length](ts-types.md#length)&nbsp;\|&nbsp;[LayoutPolicy](ts-universal-attributes-size.md#layoutpolicy15) | 是    | 要设置的组件高度。<br/>单位：vp |
+| heightValue | [Length](ts-types.md#length)&nbsp;\|&nbsp;[LayoutPolicy](ts-universal-attributes-size.md#layoutpolicy15) | 是    | 要设置的组件高度或垂直方向布局策略。<br/>单位：vp |
 
 **返回值：**
 
@@ -218,6 +222,8 @@ safeAreaPadding(paddingValue: Padding | LengthMetrics | LocalizedPadding): T
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -280,7 +286,7 @@ constraintSize(value: ConstraintSizeOptions): T
 
 | 参数名   | 类型                                       | 必填   | 说明                                       |
 | ----- | ---------------------------------------- | ---- | ---------------------------------------- |
-| value | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | 是    | 设置约束尺寸。constraintSize的优先级高于Width和Height。取值结果参考constraintSize取值对width/height影响。<br/>默认值：<br/>{<br/>minWidth:&nbsp;0,<br/>maxWidth:&nbsp;Infinity,<br/>minHeight:&nbsp;0,<br/>maxHeight:&nbsp;Infinity<br/>}<br/>异常值：数值开头的字符串仅解析出数字部分，非数值开头的字符串解析为0；其它异常值时，constraintSize属性恢复到不配置时的默认行为。<br/>单位：vp<br/> |
+| value | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | 是    | 设置约束尺寸。constraintSize的优先级高于[width](#width)和[height](#height)。取值结果参考constraintSize取值对width/height影响。<br/>默认值：<br/>{<br/>minWidth:&nbsp;0,<br/>maxWidth:&nbsp;Infinity,<br/>minHeight:&nbsp;0,<br/>maxHeight:&nbsp;Infinity<br/>}<br/>异常值：数值开头的字符串仅解析出数字部分，非数值开头的字符串解析为0；其它异常值时，constraintSize属性恢复到不配置时的默认行为。<br/>单位：vp|
 
 **返回值：**
 
@@ -306,6 +312,8 @@ constraintSize(value: ConstraintSizeOptions): T
 
 用于组件宽度和高度的布局策略。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称      | 类型   | 只读 | 可选 | 说明 |
@@ -325,6 +333,8 @@ constraintSize(value: ConstraintSizeOptions): T
 > - LayoutPolicy优先级低于constraintSize。
 > 
 > - 从API version 15开始，仅Row和Column组件的width和height属性支持设置LayoutPolicy类型参数，其他组件设置LayoutPolicy类型参数后与不设置宽度或高度表现一致；从API version 20开始，所有基础组件均支持设置LayoutPolicy类型参数。
+>
+> - 当Row、Column、Flex组件主轴尺寸自适应子组件，且子组件A仅交叉轴设置matchParent时，API版本26.0.0之前，子组件A不参与Row、Column、Flex组件的主轴尺寸测量过程，此时Row、Column、Flex组件主轴方向不自适应子组件A的尺寸；从API版本26.0.0开始，子组件A会参与Row、Column、Flex组件的主轴尺寸测量过程，此时Row、Column、Flex组件主轴方向会自适应子组件A的尺寸。交叉轴方向同理。具体变更效果参见[示例6（子组件单方向设置matchParent效果）](#示例6子组件单方向设置matchparent效果)。
 
 ## 示例
 
@@ -618,3 +628,44 @@ struct LayoutPolicyExample {
 ```
 
 ![layoutPolicyExample](figures/layoutPolicy_demo.jpg)
+
+### 示例6（子组件单方向设置matchParent效果）
+
+该示例展示Column组件自适应子组件且子组件仅单方向设置matchParent时的布局效果。从API版本26.0.0开始，Column组件高度自适应第一个和第二个子组件，宽度自适应第一个和第三个子组件。
+
+```ts
+@Entry
+@Component
+struct Demo {
+  build() {
+    Column() {
+      // API版本26.0.0之前，父组件高度计算为 padding + 组件1高度 = 30px * 2 + 200px = 260px, 宽度计算为 padding + 组件1宽度 = 30px * 2 + 200px = 260px
+      // 从API版本26.0.0开始，父组件高度计算为 padding + space + 组件1高度 + 组件2高度 = 30px * 2 + 30px + 200px + 200px = 490px, 宽度计算为 padding + max(组件1宽度, 组件3宽度) = 30px * 2 + max(200px, 400px) = 460px
+      Column({space: "30px"}) {
+        Column()
+          .width("200px")
+          .height("200px")
+          .backgroundColor('rgb(0, 74, 175)')
+
+        Column()
+          .width(LayoutPolicy.matchParent) // 子组件宽度与父组件内容区宽度保持一致
+          .height("200px")
+          .backgroundColor('rgb(0, 74, 175)')
+
+        Column()
+          .width("400px")
+          .height(LayoutPolicy.matchParent) // 子组件高度与父组件内容区高度保持一致
+          .backgroundColor('rgb(0, 74, 175)')
+      }
+      .width(LayoutPolicy.wrapContent)
+      .height(LayoutPolicy.wrapContent)
+      .backgroundColor('rgb(39, 135, 217)')
+      .padding("30px")
+    }.width("100%")
+  }
+}
+```
+
+|API版本26.0.0前|从API版本26.0.0开始|
+|--|--|
+|![](figures/singleMatchParentBefore.png)|![](figures/singleMatchParentAfter.png)|

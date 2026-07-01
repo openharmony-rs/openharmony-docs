@@ -1,7 +1,7 @@
 # @ohos.notificationExtensionSubscription (notificationExtensionSubscription模块)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @cheerful_ricky-->
+<!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
@@ -46,7 +46,7 @@ openSubscriptionSettings(context: UIAbilityContext): Promise\<void\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied or current device not supported.     |  
+| 201      | Permission denied or current device not supported.     |
 | 1600001  | Internal error.                     |
 | 1600018  | The notification settings window is already displayed.           |
 | 1600023  | The application does not implement the NotificationSubscriberExtensionAbility.           |
@@ -102,7 +102,7 @@ openSubscriptionSettingsWithResult(context: UIAbilityContext): Promise\<UserGran
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied or current device not supported.     |  
+| 201      | Permission denied or current device not supported.     |
 | 1600001  | Internal error.                     |
 | 1600018  | The notification settings window is already displayed.           |
 | 1600023  | The application does not implement the NotificationSubscriberExtensionAbility.           |
@@ -170,7 +170,7 @@ let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionIn
   }
 ];
 notificationExtensionSubscription.subscribe(infos).then(() => {
-  console.info("subscribe success");
+  console.info(`subscribe success`);
 }).catch((err: BusinessError) => {
   console.error(`subscribe fail: ${JSON.stringify(err)}`);
 });
@@ -208,7 +208,7 @@ unsubscribe(): Promise\<void\>
 ```ts
 
 notificationExtensionSubscription.unsubscribe().then(() => {
-  console.info("unsubscribe success");
+  console.info(`unsubscribe success`);
 }).catch((err: BusinessError) => {
   console.error(`unsubscribe fail: ${JSON.stringify(err)}`);
 });
@@ -273,7 +273,7 @@ isUserGranted(): Promise\<boolean\>
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission denied or current device not supported. | 
+| 201      | Permission denied or current device not supported. |
 | 1600001  | Internal error.                                      |
 | 1600003  | Failed to connect to the service.                           |
 
@@ -304,9 +304,9 @@ getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 
 **返回值：**
 
-| 类型     | 说明        | 
+| 类型     | 说明        |
 | ------- |-----------|
-| Promise\<[GrantedBundleInfo[]](./js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22)\>   | Promise对象，返回获取指定应用中“已获取的本机通知”通知开关开启的应用列表。        |
+| Promise\<[GrantedBundleInfo](js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22)[]\>   | Promise对象，返回获取指定应用中“已获取的本机通知”通知开关开启的应用列表。        |
 
 **错误码：**
 
@@ -314,7 +314,7 @@ getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied or current device not supported.     |  
+| 201      | Permission denied or current device not supported.     |
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service.          |
 

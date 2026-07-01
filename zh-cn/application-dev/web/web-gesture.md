@@ -80,7 +80,7 @@ struct Index {
 ## Web组件的手势拦截
 - ArkUI手势
 
-  ArkWeb会消费部分ArkUI手势，例如[滑动手势](../ui/arkts-gesture-events-single-gesture.md#滑动手势pangesture)，若希望自行处理这些手势而非由ArkWeb消费，可以参考ArkUI的[手势冲突处理](../ui/arkts-gesture-events-gesture-judge.md)。
+  ArkWeb会消费部分ArkUI手势，例如[滑动手势](../ui/arkts-gesture-events-single-gesture.md#滑动手势pangesture)，若希望自行处理这些手势而非由ArkWeb消费，可以参考ArkUI的[手势冲突处理](../ui/arkts-gesture-events-gesture-judge.md)，具体示例也可以参考[示例](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md#示例)。
 
 - ArkWeb手势
 
@@ -101,7 +101,7 @@ Web组件提供了接口[zoomAccess](../reference/apis-arkweb/arkts-basic-compon
 
 **示例代码**
 
-<!-- @[ReturnLastWebPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/ReturnLastWebPage.ets) --> 
+<!-- @[ReturnLastWebPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/ReturnLastWebPage.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -126,7 +126,7 @@ struct Index {
         return true;
       }
     } catch (err) {
-      console.error(`copyUrlPicToDir failed with error: ${err.code}, ${err.message}`);
+      console.error(`onBackPress failed with error: ${err.code}, ${err.message}`);
     }
     // 执行系统默认返回逻辑，返回上一个页面
     return false;
@@ -136,7 +136,7 @@ struct Index {
 
 ### 为什么Web组件加载后网页无法交互？
 
-网页可能基于其他平台的User-Agent进行判断。为解决此问题，可以在[Web组件中设置自定义User-Agent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10)，例如：
+网页可能基于其他平台的User-Agent进行判断。为解决此问题，可以使用[setCustomUserAgent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10)在Web组件中设置自定义User-Agent，例如：
 
 <!-- @[SetUserAgent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/SetUserAgent.ets) -->
 
@@ -160,4 +160,25 @@ struct Index {
     }
   }
 }
+```
+
+### 抛滑过快导致页面白屏的处理方法
+
+Web组件扩展了viewport meta标签，新增了max-fling-speed-x和max-fling-speed-y两个属性，用于控制页面的抛滑速度，开发者可根据实际需求调整属性值。
+
+> **说明**
+>
+> max-fling-speed-x表示限制横向的抛滑速度，max-fling-speed-y表示限制纵向的抛滑速度，单位为vp/s。
+
+以下是HTML片段示例：
+```html
+  <meta name="viewport" content="width=device-width, initial-scale=1, max-fling-speed-y=4500">
+```
+
+```html
+  <meta name="viewport" content="width=device-width, initial-scale=1, max-fling-speed-x=4500">
+```
+
+```html
+  <meta name="viewport" content="width=device-width, initial-scale=1, max-fling-speed-y=4500, max-fling-speed-x=4500">
 ```

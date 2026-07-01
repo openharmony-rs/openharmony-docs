@@ -9,6 +9,8 @@
 
 The **certManager** module provides system-level certificate management capabilities to implement management and secure use of certificates throughout their lifecycle (installation, storage, use, and destruction).
 
+This module can be used to verify the HTTPS certificate chain of an application server and log in to a website or application server through two-way HTTPS authentication.
+
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
@@ -23,7 +25,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 Enumerates the purposes of using the key.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
@@ -34,11 +36,11 @@ Enumerates the purposes of using the key.
 
 Enumerates the digest algorithms that can be used for signing and signature verification.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
-| CM_DIGEST_NONE | 0      | No digest algorithm is required. If this option is used, the service needs to pass in the data with the digest generated for signing or signature verification.|
+| CM_DIGEST_NONE | 0      | No digest algorithm is required. If this option is used, the application needs to pass in the data with the digest generated for signing or signature verification.|
 | CM_DIGEST_MD5 | 1      | MD5.|
 | CM_DIGEST_SHA1 | 2      | SHA-1.|
 | CM_DIGEST_SHA224 | 3      | SHA-224.|
@@ -51,7 +53,7 @@ Enumerates the digest algorithms that can be used for signing and signature veri
 
 Enumerates the padding modes that can be used for signing and signature verification.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
@@ -63,20 +65,20 @@ Enumerates the padding modes that can be used for signing and signature verifica
 
 Represents a set of parameters used for signing or signature verification, including the key usage purpose, padding mode, and digest algorithm.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name          | Type                             | Read-Only| Optional| Description                                                        |
 | -------------- | --------------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | purpose          | [CmKeyPurpose](#cmkeypurpose)                       | No | No | Purpose of using the key.|
-| padding        | [CmKeyPadding](#cmkeypadding)                       | No  | Yes | Padding mode.|
-| digest        | [CmKeyDigest](#cmkeydigest)                       | No  | Yes | Digest algorithm.|
+| padding        | [CmKeyPadding](#cmkeypadding)                       | No  | Yes | Padding mode. The default value is **CM_PADDING_PSS**, indicating that PSS padding is used.|
+| digest        | [CmKeyDigest](#cmkeydigest)                       | No  | Yes | Digest algorithm. The default value is **CM_DIGEST_SHA256**, indicating that SHA256 is used.|
 
 
 ## CertInfo
 
 Represents detailed information about a certificate.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name          | Type                             | Read-Only| Optional| Description                                                        |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -95,7 +97,7 @@ Represents detailed information about a certificate.
 
 Represents brief information about a certificate.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name          | Type                             | Read-Only| Optional| Description                                                        |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -108,7 +110,7 @@ Represents brief information about a certificate.
 
 Represents detailed information about a credential.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name          | Type                             | Read-Only| Optional| Description                                                        |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -124,7 +126,7 @@ Represents detailed information about a credential.
 
 Represents brief information about a credential.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name          | Type                             | Read-Only| Optional| Description                                                        |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -136,7 +138,7 @@ Represents brief information about a credential.
 
 Represents the result returned.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name          | Type                             | Read-Only| Optional| Description                                                        |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -154,7 +156,7 @@ Represents the result returned.
 
 Represents the handle to a signing or signature verification operation.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name          | Type                             | Read-Only| Optional| Description                                                        |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -162,23 +164,23 @@ Represents the handle to a signing or signature verification operation.
 
 ## CertBlob
 
-Represents the certificate data in binary format.
-
-**System capability**: System SystemCapability.Security.CertificateManager
+Certificate file data.
 
 **Since**: 26.0.0
 
+**System capability**: SystemCapability.Security.CertificateManager
+
 | Name       | Type                               | Read-Only| Optional| Description |
 | ----------- | ----------------------------------- | ---- | ---- | ---- |
-| certData    | Uint8Array                           | No  | No | Certificate file data.|
-| certFormat  | [CertFileFormat](#certfileformat)   | No  | Yes | Certificate file format.|
-| certScope   | [CertScope](#certscope18)         | No  | Yes | Scope of the CA certificate.|
+| certData    | Uint8Array                           | No  | No | File data of a certificate. The value contains up to 8196 bytes.|
+| certFormat  | [CertFileFormat](#certfileformat)   | No  | Yes | Certificate file format. The default value is **PEM_DER**.|
+| certScope   | [CertScope](#certscope18)         | No  | Yes | Scope of the CA certificate. The default value is **CURRENT_USER**.|
 
 ## CMErrorCode
 
 Enumerates the error codes used in the certificate management APIs.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
@@ -191,14 +193,14 @@ Enumerates the error codes used in the certificate management APIs.
 | CM_ERROR_NO_AUTHORIZATION<sup>12+</sup>  | 17500005      | The application has not obtained user authorization.|
 | CM_ERROR_DEVICE_ENTER_ADVSECMODE<sup>18+</sup> | 17500007 | The device enters the advanced security mode.|
 | CM_ERROR_STORE_PATH_NOT_SUPPORTED<sup>20+</sup> | 17500009 | The device does not support the specified certificate storage path.  |
-| CM_ERROR_ACCESS_UKEY_SERVICE_FAILED<sup>22+</sup> | 17500010 | The USB credential service fails to be accessed.  |
+| CM_ERROR_ACCESS_UKEY_SERVICE_FAILED<sup>22+</sup> | 17500010 | The USB key service fails to be accessed.  |
 | CM_ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup> | 17500011 | The input parameter validation fails.<br>For example, the parameter format is incorrect or the parameter range is invalid.  |
 
 ## CertType<sup>18+</sup>
 
 Enumerates the certificate types.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
@@ -209,7 +211,7 @@ Enumerates the certificate types.
 
 Enumerates the certificate scopes.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
@@ -220,30 +222,30 @@ Enumerates the certificate scopes.
 
 Enumerates the certificate algorithms.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name           | Value| Description                      |
 |---------------| ------ |--------------------------|
 | INTERNATIONAL | 1      | International cryptographic algorithm, such as RSA and NIST ECC.|
-| SM            | 2      | Commercial cryptographic algorithm, such as SM2 and SM4.     |
+| SM            | 2      | Commercial cryptographic algorithm, such as SM2 and SM4. Devices outside China do not support certificates using this algorithm.     |
 
 ## CertStoreProperty<sup>18+</sup>
 
 Represents the storage information about a certificate, including the certificate type and location.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name       | Type                               | Read-Only| Optional| Description                                         |
 |-----------|-----------------------------------| ---- | ------------------------------------------------------------ |---------------------------------------------|
 | certType  | [CertType](#certtype18)           | No | No | Type of the certificate.                                   |
 | certScope | [CertScope](#certscope18)         | No  | Yes | Scope of the certificate. This parameter is mandatory when **certType** is **CA_CERT_USER**.      |
-| certAlg<sup>20+</sup>   | [CertAlgorithm](#certalgorithm20) | No  | Yes | Certificate algorithm. This parameter is valid only when **certType** is set to **CA_CERT_SYSTEM**. The default value is **INTERNATIONAL**.|
+| certAlg<sup>20+</sup>   | [CertAlgorithm](#certalgorithm20) | No  | Yes | Certificate algorithm. This parameter is valid only when **certType** is set to **CA_CERT_SYSTEM**. The default value is **INTERNATIONAL**. Devices outside China do not support the SM algorithm.|
 
 ## AuthStorageLevel<sup>18+</sup>
 
 Enumerates the credential storage levels.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name        | Value  | Description                                      |
 | ------------ | ---- | ------------------------------------------ |
@@ -255,7 +257,7 @@ Enumerates the credential storage levels.
 
 Enumerates the usage of a credential.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name   | Value  | Description |
 | --------| ---- | -------- |
@@ -266,21 +268,21 @@ Enumerates the usage of a credential.
 
 ## UkeyInfo<sup>22+</sup>
 
-Provides USB credential attributes.
+Provides USB Key certificate credential attributes.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name          | Type | Read-Only| Optional| Description |
 | -------------- | ---- | ---- | ---- | ---- |
-| certPurpose  | [CertificatePurpose](#certificatepurpose22)  | No  | Yes | Credential usage.|
+| certPurpose  | [CertificatePurpose](#certificatepurpose22)  | No  | Yes | Credential usage. The default value is **PURPOSE_DEFAULT**.|
 
 ## CertFileFormat
 
 Represents the certificate file format.
 
-**System capability**: System SystemCapability.Security.CertificateManager
-
 **Since**: 26.0.0
+
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name      | Value| Description     |
 | ---------- | ------ | --------- |
@@ -291,11 +293,11 @@ Represents the certificate file format.
 
 installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: string, callback: AsyncCallback\<CMResult>): void
 
-Installs a private credential. This API uses an asynchronous callback to return the result.
+Installs a private credential. This API returns the result asynchronously through a callback.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -316,7 +318,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.    |
 | 17500003 | The keystore is in an invalid format or the keystore password is incorrect. |
-| 17500004 | The number of certificates or credentials reaches the maximum allowed. |
+| 17500004 | The number of certificates or credentials reaches the maximum allowed.<br>Applicable versions: 12 and later|
 
 **Example**
 ```ts
@@ -332,7 +334,7 @@ try {
     if (err != null) {
       console.error(`Failed to install private certificate. Code: ${err.code}, message: ${err.message}`);
     } else {
-      let uri: string = (cmResult?.uri == undefined) ? '' : cmResult.uri;
+      let uri: string = cmResult?.uri ?? '';
       console.info('Succeeded in installing private certificate.');
     }
   });
@@ -349,7 +351,7 @@ Installs a private credential. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -375,7 +377,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 | 17500003 | The keystore is in an invalid format or the keystore password is incorrect. |
-| 17500004 | The number of certificates or credentials reaches the maximum allowed. |
+| 17500004 | The number of certificates or credentials reaches the maximum allowed.<br>Applicable versions: 12 and later|
 
 **Example**
 
@@ -390,9 +392,10 @@ let keystore: Uint8Array = new Uint8Array([
 let keystorePwd: string = "123456";
 try {
   certificateManager.installPrivateCertificate(keystore, keystorePwd, 'test').then((cmResult) => {
-    let uri: string = (cmResult?.uri == undefined) ? '' : cmResult.uri;
+    let uri: string = cmResult?.uri ?? '';
     console.info('Succeeded in installing private certificate.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to install private certificate. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -408,7 +411,7 @@ Installs a private credential and specifies its storage level. This API uses a p
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -452,9 +455,10 @@ try {
   /* The credential can be used after the device is unlocked for the first time. */
   let level = certificateManager.AuthStorageLevel.EL2;
   certificateManager.installPrivateCertificate(keystore, keystorePwd, 'test', level).then((cmResult) => {
-    let uri: string = (cmResult?.uri == undefined) ? '' : cmResult.uri;
+    let uri: string = cmResult.uri ?? '';
     console.info('Succeeded in installing private certificate.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to install private certificate. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -470,7 +474,7 @@ Obtains detailed information about a private credential. This API uses an asynch
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -488,7 +492,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
-| 17500002 | The certificate does not exist. |
+| 17500002 | The certificate does not exist. Possible causes: 1. The certificate URI is incorrect; 2. The certificate has been uninstalled. Please check the certificate URI. |
 
 **Example**
 ```ts
@@ -503,7 +507,7 @@ try {
       if (cmResult?.credential == undefined) {
         console.info('The result of getting private certificate is undefined.');
       } else {
-        let list = cmResult.credential;
+        let list = cmResult?.credential;
         console.info('Succeeded in getting private certificate.');
       }
     }
@@ -517,11 +521,11 @@ try {
 
 getPrivateCertificate(keyUri: string): Promise\<CMResult>
 
-Obtains detailed information about a private credential. This API uses a promise to return the result.
+Obtains details about a private credential. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -560,7 +564,8 @@ try {
       let list = cmResult.credential;
       console.info('Succeeded in getting private certificate.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to get private certificate. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -576,7 +581,7 @@ Uninstalls a private credential. This API uses an asynchronous callback to retur
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -618,11 +623,11 @@ try {
 
 uninstallPrivateCertificate(keyUri: string): Promise\<void>
 
-Uninstalls a private credential. This API uses a promise to return the result.
+Uninstalls a specified private credential. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -656,7 +661,8 @@ let uri: string = 'test'; /* The service needs to use the unique identifier of t
 try {
   certificateManager.uninstallPrivateCertificate(uri).then((cmResult) => {
     console.info('Succeeded in uninstalling private certificate.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to uninstall private certificate. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -666,15 +672,15 @@ try {
 
 ## certificateManager.installUserTrustedCertificate
 
-installUserTrustedCertificate(certificate: CertBlob) : Promise\<CMResult>
+installUserTrustedCertificate(certificate: CertBlob): Promise\<CMResult>
 
-Installs a user CA certificate. This API uses a promise to return the result.
+Installs a user CA certificate. If the input parameter **certificate.certFormat** is set to **P7B**, the P7B certificate file can contain a maximum of 20 certificates. This API uses a promise to return the result.
+
+**Since**: 26.0.0
 
 **Required permissions**: ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT or ohos.permission.ACCESS_USER_TRUSTED_CERT
 
-**System capability**: System SystemCapability.Security.CertificateManager
-
-**Since**: 26.0.0
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -709,34 +715,35 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 /* The CA certificate data must be assigned by the service. In this example, the data is not CA certificate data. */
 let certData: Uint8Array = new Uint8Array([
-    0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
 ]);
 try {
-    let certBlob: certificateManager.CertBlob = {
-        certData: certData,
-        certFormat: certificateManager.CertFileFormat.PEM_DER,
-        certScope: certificateManager.CertScope.CURRENT_USER
-    };
-    certificateManager.installUserTrustedCertificate(certBlob).then((cmResult: certificateManager.CMResult) => {
-        let uri: string = (cmResult?.uri == undefined) ? '' : cmResult.uri;
-        console.info('Succeeded in installing user trusted certificate.');
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to install user trusted certificate. Code: ${err.code}, message: ${err.message}`);
-    })
-} catch (error: BusinessError) {
-    console.error(`Failed to install user trusted certificate. Code: ${error.code}, message: ${error.message}`);
+  let certBlob: certificateManager.CertBlob = {
+    certData: certData,
+    certFormat: certificateManager.CertFileFormat.PEM_DER,
+    certScope: certificateManager.CertScope.CURRENT_USER
+  };
+  certificateManager.installUserTrustedCertificate(certBlob).then((cmResult) => {
+    let uri: string = cmResult.uri ?? '';
+    console.info('Succeeded in installing user trusted certificate.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to install user trusted certificate. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to install user trusted certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
 ## certificateManager.installUserTrustedCertificateSync<sup>18+</sup>
 
-installUserTrustedCertificateSync(cert: Uint8Array, certScope: CertScope) : CMResult
+installUserTrustedCertificateSync(cert: Uint8Array, certScope: CertScope): CMResult
 
 Installs a user CA certificate.
 
 **Required permissions**: ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT<!--Del--> or ohos.permission.ACCESS_USER_TRUSTED_CERT<!--DelEnd-->
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -767,22 +774,22 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import {certificateManager} from '@kit.DeviceCertificateKit';
+import { certificateManager } from '@kit.DeviceCertificateKit';
 
 /* The CA certificate data must be assigned by the service. In this example, the data is not CA certificate data. */
 let certData: Uint8Array = new Uint8Array([
-    0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
 ]);
 try {
-    let result: certificateManager.CMResult = certificateManager.installUserTrustedCertificateSync(certData, certificateManager.CertScope.CURRENT_USER);
-    let certUri = result.uri;
-    if (certUri === undefined) {
-        console.error("The result of install user trusted certificate is undefined.");
-    } else {
-        console.info("Succeeded to install user trusted certificate.");
-    }
+  let result: certificateManager.CMResult = certificateManager.installUserTrustedCertificateSync(certData, certificateManager.CertScope.CURRENT_USER);
+  let certUri = result.uri;
+  if (certUri === undefined) {
+    console.error("The result of install user trusted certificate is undefined.");
+  } else {
+    console.info("Succeeded to install user trusted certificate.");
+  }
 } catch (error) {
-    console.error(`Failed to install user trusted certificate. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to install user trusted certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -794,7 +801,7 @@ Uninstalls a user CA certificate.
 
 **Required permissions**: ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT<!--Del--> or ohos.permission.ACCESS_USER_TRUSTED_CERT<!--DelEnd-->
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -816,13 +823,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import {certificateManager} from '@kit.DeviceCertificateKit';
+import { certificateManager } from '@kit.DeviceCertificateKit';
 
 let certUri: string = "test"; /* The service needs to use the certificate identifier to delete the certificate, which is not elaborated here. */
 try {
-    certificateManager.uninstallUserTrustedCertificateSync(certUri);
+  certificateManager.uninstallUserTrustedCertificateSync(certUri);
 } catch (error) {
-    console.error(`Failed to uninstall user trusted certificate. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to uninstall user trusted certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -830,11 +837,11 @@ try {
 
 init(authUri: string, spec: CMSignatureSpec, callback: AsyncCallback\<CMHandle>): void
 
-Initializes the signing or signature verification operation using the specified credential. This API uses an asynchronous callback to return the result.
+Initializes the signing or signature verification operation using the specified credential. This is the first step in the signing or signature verification process. Call the **update** and **finish** APIs in sequence to complete the operation. This API returns the result asynchronously through a callback.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -854,7 +861,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
-| 17500005 | The application is not authorized by the user. |
+| 17500005 | The application is not authorized by the user. Please call [openAuthorizeDialog](./js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog20) method to request user authorization for the certificate or credential.<br>Applicable versions: 12 and later|
 
 **Example**
 ```ts
@@ -887,7 +894,7 @@ Initializes the signing or signature verification operation using the specified 
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -912,7 +919,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
-| 17500005 | The application is not authorized by the user. |
+| 17500005 | The application is not authorized by the user.<br>Applicable versions: 12 and later|
 
 **Example**
 ```ts
@@ -928,7 +935,8 @@ const req: certificateManager.CMSignatureSpec = {
 try {
   certificateManager.init(uri, req).then((handle) => {
     console.info('Succeeded in initiating.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to init. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -940,17 +948,17 @@ try {
 
 update(handle: Uint8Array, data: Uint8Array, callback: AsyncCallback\<void>): void
 
-Updates the data for the signing or signature verification operation. This API uses an asynchronous callback to return the result.
+Updates the data for the signing or signature verification operation. This API must be called after the **init** operation. This API returns the result asynchronously through a callback.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
 | Name  | Type                                             | Mandatory| Description                      |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| handle | Uint8Array                   | Yes  | Handle of initialization. The value contains up to 8 bytes.|
+| handle | Uint8Array                   | Yes  | Operation handle, which needs to be obtained by calling [init](#certificatemanagerinit).|
 | data | Uint8Array                   | Yes  | Data to be signed or verified.|
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
@@ -996,13 +1004,13 @@ Updates the data for the signing or signature verification operation. This API u
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
 | Name  | Type                                             | Mandatory| Description                      |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| handle | Uint8Array                   | Yes  | Handle of initialization. The value contains up to 8 bytes.|
+| handle | Uint8Array                   | Yes  | Operation handle, which needs to be obtained by calling [init](#certificatemanagerinit).|
 | data | Uint8Array                   | Yes  | Data to be signed or verified.|
 
 **Return value**
@@ -1036,7 +1044,8 @@ let srcData: Uint8Array = new Uint8Array([
 try {
   certificateManager.update(cmHandle, srcData).then((result) => {
     console.info('Succeeded in updating.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to update. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -1048,17 +1057,17 @@ try {
 
 finish(handle: Uint8Array, callback: AsyncCallback\<CMResult>): void
 
-Finishes the signing operation. This API uses an asynchronous callback to return the result.
+Finishes the signing operation, which is the last step in the signing process. You need to call the **init** and **update** APIs before using this API. This API returns the result asynchronously through a callback.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
 | Name  | Type                                             | Mandatory| Description                      |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| handle | Uint8Array                   | Yes  | Handle of initialization. The value contains up to 8 bytes.|
+| handle | Uint8Array                   | Yes  | Operation handle, which needs to be obtained by calling [init](#certificatemanagerinit).|
 | callback | AsyncCallback\<[CMResult](#cmresult)> | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the signature, that is, **outData** of the [CMResult](#cmresult) object. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1085,7 +1094,7 @@ try {
       console.error(`Failed to finish. Code: ${err.code}, message: ${err.message}`);
     } else {
       if (cmResult?.outData != undefined) {
-        let signRes: Uint8Array = cmResult.outData;
+        let signRes = cmResult?.outData;
         console.info('Succeeded in finishing.');
       } else {
         console.info('The result of finishing is undefined.');
@@ -1105,13 +1114,13 @@ Finishes the signature verification operation. This API uses an asynchronous cal
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
 | Name  | Type                                             | Mandatory| Description                      |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| handle | Uint8Array                   | Yes  | Handle of initialization. The value contains up to 8 bytes.|
+| handle | Uint8Array                   | Yes  | Operation handle, which needs to be obtained by calling [init](#certificatemanagerinit).|
 | signature | Uint8Array                   | Yes  | Data to sign or verify.|
 | callback | AsyncCallback\<[CMResult](#cmresult)> | Yes  | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
@@ -1153,18 +1162,18 @@ try {
 
 finish(handle: Uint8Array, signature?: Uint8Array): Promise\<CMResult>
 
-Finishes the signing or signature verification operation. This API uses a promise to return the result.
+Finishes signing or signature verification. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
 | Name  | Type                                             | Mandatory| Description                      |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| handle | Uint8Array                   | Yes  | Handle of initialization. The value contains up to 8 bytes.|
-| signature | Uint8Array                   | No  | Signature data used for signature verification. This parameter needs to be specified only for signature verification.|
+| handle | Uint8Array                   | Yes  | Operation handle, which needs to be obtained by calling [init](#certificatemanagerinit).|
+| signature | Uint8Array                   | No  | Signature data used for signature verification. This parameter does not need to be passed for signing.|
 
 **Return value**
 
@@ -1195,12 +1204,13 @@ try {
   /* Finish the signing operation. */
   certificateManager.finish(cmHandle).then((cmResult) => {
     if (cmResult?.outData != undefined) {
-      let signRes1: Uint8Array = cmResult.outData;
+      let signRes1 = cmResult?.outData;
       console.info('Succeeded in finishing signature.');
     } else {
       console.info('The result of signature is undefined.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to finish signature. Code: ${err.code}, message: ${err.message}`);
   })
 
@@ -1211,7 +1221,8 @@ try {
   /* Finish the signature verification operation. */
   certificateManager.finish(cmHandle, signRes).then((cmResult) => {
     console.info('Succeeded in finishing verification.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to finish verification. Code: ${err.code}, message: ${err.message}`);
   })
 } catch(error) {
@@ -1227,7 +1238,7 @@ Aborts the signing or signature verification operation. This API uses an asynchr
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -1275,7 +1286,7 @@ Aborts the signing or signature verification operation. This API uses a promise 
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -1311,7 +1322,8 @@ let cmHandle: Uint8Array = new Uint8Array([
 try {
   certificateManager.abort(cmHandle).then((result) => {
     console.info('Succeeded in aborting.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to abort. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -1323,11 +1335,11 @@ try {
 
 getPublicCertificate(keyUri: string): Promise\<CMResult>
 
-Obtains detailed information about a public credential. This API uses a promise to return the result.
+Obtains the details about a user public credential. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -1367,7 +1379,8 @@ try {
       let cred = cmResult.credential;
       console.info('Succeeded in getting Public certificate.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to get Public certificate. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -1383,7 +1396,7 @@ Checks whether this application is authorized by the specified user credential. 
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -1420,7 +1433,8 @@ try {
     } else {
       console.info('The application is not authorized by the user.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to check if the application is authorized. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -1432,11 +1446,11 @@ try {
 
 getAllUserTrustedCertificates(): Promise\<CMResult>
 
-Obtains all user trusted root CA certificates of the device. This API uses a promise to return the result.
+Obtains the list of all user root CA certificates in the current user and device public directories. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Return value**
 
@@ -1468,7 +1482,8 @@ try {
       let list = cmResult.certList;
       console.info('Succeeded in getting all user trusted certificates.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to get all user trusted certificates. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -1480,11 +1495,11 @@ try {
 
 getAllUserTrustedCertificates(scope: CertScope): Promise\<CMResult>
 
-Obtains the user root CA certificates based on the certificate scope. This API uses a promise to return the result.
+Obtains the list of user root CA certificates based on the certificate storage path. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -1526,7 +1541,8 @@ try {
       let list = cmResult.certList;
       console.info('Succeeded in getting current user trusted certificates.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to get current user trusted certificates. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -1538,11 +1554,11 @@ try {
 
 getUserTrustedCertificate(certUri: string): Promise\<CMResult>
 
-Obtains the detailed information about a user root CA certificate. This API uses a promise to return the result.
+Obtains the details about a user root CA certificate. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -1581,7 +1597,8 @@ try {
       let cert = cmResult.certInfo;
       console.info('Succeeded in getting user trusted certificate.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to get user trusted certificate. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -1592,11 +1609,11 @@ try {
 
 getPrivateCertificates(): Promise\<CMResult>
 
-Obtains the credentials for installing the application. This API uses a promise to return the result asynchronously.
+Obtains the credentials for installing the application. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Return value**
 
@@ -1628,7 +1645,8 @@ try {
       let list = cmResult.credentialList;
       console.info('Succeeded in getting all private certificates installed by the application.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to get all private certificates installed by the application. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -1637,11 +1655,11 @@ try {
 ```
 ## certificateManager.getCertificateStorePath<sup>18+</sup>
 
-getCertificateStorePath(property: CertStoreProperty): string;
+getCertificateStorePath(property: CertStoreProperty): string
 
-Obtains the certificate storage path.
+Obtains the storage path of a certificate.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -1663,7 +1681,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |----------| ------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. For example, CertStoreProperty.certType is set to CA_CERT_USER, but CertStoreProperty.certScope is not specified.  |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
-| 17500009 | The device does not support the specified certificate storage path, For example, the device outside China does not support the certificate that uses SM algorithm. |
+| 17500009 | The device does not support the specified certificate storage path, For example, the device outside China does not support the certificate that uses SM algorithm.<br>Applicable versions: 20 and later|
 
 **Example**
 ```ts
@@ -1708,26 +1726,28 @@ try {
 
 getUkeyCertificate(keyUri: string, ukeyInfo: UkeyInfo): Promise\<CMResult>
 
-Obtains the details of a USB credential. This API uses a promise to return the result.
+Obtains details about a USB Key certificate credential. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
-**Device behavior differences**: This API can be properly called on PCs. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**:
+- Since API version26.0.0, this API can be properly called on phones, PCs/2-in-1 devices, and tablets. If it is called on other device types, error code 801 is returned.
+- In API versions 22 to 24, this API can be properly called on PCs and 2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
 | Name  | Type  | Mandatory| Description   |
 | -------- | ------- | ---- | ------ |
-| keyUri | string | Yes  | Unique identifier of a USB credential. The value contains up to 256 bytes.|
-| ukeyInfo | [UkeyInfo](#ukeyinfo22)  | Yes  | Attributes of a USB credential.|
+| keyUri | string | Yes  | Unique identifier of the USB Key certificate credential. The value contains up to 256 bytes.|
+| ukeyInfo | [UkeyInfo](#ukeyinfo22)  | Yes  | Attributes of the USB Key certificate credential.|
 
 **Return value**
 
 | Type | Description |
 | ----- | ----- |
-| Promise\<[CMResult](#cmresult)> | Promise used to return the obtained USB credential details.|
+| Promise\<[CMResult](#cmresult)> | Promise used to return details about the USB Key certificate credential, that is, **credentialDetailList** in [CMResult](#cmresult).|
 
 **Error codes**
 
@@ -1749,13 +1769,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let keyUri: string = 'test'; /* Unique identifier of the USB credential. The value is omitted here. */
 let ukeyInfo: certificateManager.UkeyInfo = { /* USB credential attributes. The value is omitted here. */
-    certPurpose: certificateManager.CertificatePurpose.PURPOSE_DEFAULT,
-  }
+  certPurpose: certificateManager.CertificatePurpose.PURPOSE_DEFAULT,
+}
 try {
   certificateManager.getUkeyCertificate(keyUri, ukeyInfo).then((cmResult) => {
-      let list = cmResult.credentialDetailList;
-      console.info('Succeeded in getting detail of USB key certificate.');
-  }).catch((err: BusinessError) => {
+    let list = cmResult.credentialDetailList;
+    console.info('Succeeded in getting detail of USB key certificate.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to get detail of USB key certificate. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -1767,28 +1788,28 @@ try {
 
 getUkeyCertificateList(ukeyProvider: string, ukeyInfo: UkeyInfo): Promise\<CMResult>
 
-Obtains the list of USB credential certificates. This API uses a promise to return the result.
-
-**Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
-
-**System capability**: System SystemCapability.Security.CertificateManager
+Obtains a USB Key certificate credential list. This API uses a promise to return the result.
 
 **Since**: 26.0.0
 
-**Device behavior differences**: This API can be properly called on PCs. If it is called on other device types, error code 801 is returned.
+**Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
+
+**System capability**: SystemCapability.Security.CertificateManager
+
+**Device behavior differences**: This API is supported on phones, PCs/2-in-1 devices, and tablets. On other devices, it returns error code 801.
 
 **Parameters**
 
 | Name      | Type                               | Mandatory| Description                                     |
 | ------------ | ----------------------------------- | ---- | ----------------------------------------- |
-| ukeyProvider | string                               | Yes  | USB credential provider.                      |
-| ukeyInfo     | [UkeyInfo](#ukeyinfo22)             | Yes  | Attributes of a USB credential.                    |
+| ukeyProvider | string                               | Yes  | USB key provider.                      |
+| ukeyInfo     | [UkeyInfo](#ukeyinfo22)             | Yes  | Attributes of the USB Key certificate credential.                    |
 
 **Return value**
 
 | Type                           | Description                                                        |
 | ------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CMResult](#cmresult)> | Promise used to return the operation result, that is, **credentialDetailList** in the [CMResult](#cmresult) object.|
+| Promise\<[CMResult](#cmresult)> | Promise used to return the USB Key certificate credential list, that is, **credentialDetailList** in [CMResult](#cmresult).|
 
 **Error codes**
 
@@ -1797,7 +1818,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID   | Error Message                                                                                                                                           |
 | ------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201         | Permission verification failed. The application does not have the permission required to call the API. |
-| 202         | Permission verification failed. A non-system application calls a system API. |
 | 801         | Capability not supported. |
 | 17500001    | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
 | 17500010    | Indicates that access USB key service failed. |
@@ -1811,16 +1831,82 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let ukeyProvider: string = 'testProvider'; /* USB credential provider, which is omitted here. */
 let ukeyInfo: certificateManager.UkeyInfo = { /* USB credential attributes. The value is omitted here. */
-    certPurpose: certificateManager.CertificatePurpose.PURPOSE_DEFAULT,
+  certPurpose: certificateManager.CertificatePurpose.PURPOSE_DEFAULT,
 }
 try {
-    certificateManager.getUkeyCertificateList(ukeyProvider, ukeyInfo).then((cmResult: certificateManager.CMResult) => {
-        let list: Array<certificateManager.Credential> = cmResult.credentialDetailList ?? [];
-        console.info('Succeeded in getting USB key certificate list.');
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to get USB key certificate list. Code: ${err.code}, message: ${err.message}`);
-    })
-} catch (error: BusinessError) {
-    console.error(`Failed to get USB key certificate list. Code: ${error.code}, message: ${error.message}`);
+  certificateManager.getUkeyCertificateList(ukeyProvider, ukeyInfo).then((cmResult) => {
+    let list: Array<certificateManager.Credential> = cmResult.credentialDetailList ?? [];
+    console.info('Succeeded in getting USB key certificate list.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to get USB key certificate list. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to get USB key certificate list. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## certificateManager.importUkeyCertificate
+
+importUkeyCertificate(keyUri: string, cert: Uint8Array, ukeyInfo: UkeyInfo): Promise\<void>
+
+Imports a certificate to the USB key. This API uses a promise to return the result.
+
+**Since**: 26.0.0
+
+**Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
+
+**System capability**: SystemCapability.Security.CertificateManager
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | ------ | ---- | ---- |
+| keyUri | string | Yes| URI of the USB key certificate credential.<br>The **keyUri** parameter is used to identify a certificate entity. It can be obtained by calling [getUkeyCertificateList](#certificatemanagergetukeycertificatelist). The maximum length is 256 bytes.|
+| cert | Uint8Array | Yes| Certificate data to be imported. The maximum length is 10 KB.<br>The certificate data format complies with the SKF specifications.|
+| ukeyInfo | [UkeyInfo](#ukeyinfo22) | Yes| Attributes of the USB Key certificate credential.<br>The value of **UkeyInfo.CertificatePurpose** can only be **PURPOSE_SIGN**, **PURPOSE_ENCRYPT**, or **PURPOSE_DEFAULT**.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
+
+| ID| Error Message|
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
+| 17500002 | The certificate identified by keyuri does not exist. |
+| 17500010 | Indicates that access USB key service failed. |
+| 17500011 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid. |
+
+**Example**
+
+```ts
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+/* keyUri and cert must be assigned based on the service. The data in this example is for reference only. */
+let keyUri: string = 'test'; /* URI of the USB key certificate, which can be obtained using the getUkeyCertificateList API. */
+let certData: Uint8Array = new Uint8Array([
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+]);
+let ukeyInfo: certificateManager.UkeyInfo = {
+  certPurpose: certificateManager.CertificatePurpose.PURPOSE_SIGN,
+};
+try {
+  certificateManager.importUkeyCertificate(keyUri, certData, ukeyInfo).then(() => {
+    console.info('Succeeded in importing USB key certificate.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to import USB key certificate. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  console.error(`Failed to import USB key certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```

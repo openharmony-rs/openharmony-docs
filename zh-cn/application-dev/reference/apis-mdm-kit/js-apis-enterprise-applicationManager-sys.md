@@ -1,8 +1,8 @@
 # @ohos.enterprise.applicationManager（应用管理）(系统接口)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -14,7 +14,7 @@
 >
 > 本模块接口仅可在Stage模型下使用。
 >
-> 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-term.md#mdm应用设备管理应用)开放，需将[设备管理应用激活](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)后调用。
+> 本模块接口仅对[MDM应用](../../mdm/mdm-kit-term.md#mdm应用)开放，需通过[enableAdmin](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)接口将设备管理应用激活后调用。
 > 
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.enterprise.applicationManager](js-apis-enterprise-applicationManager.md)。
 
@@ -24,11 +24,15 @@
 import { applicationManager } from '@kit.MDMKit';
 ```
 
-## applicationManager.addDisallowedRunningBundles
+## applicationManager.addDisallowedRunningBundles<sup>(deprecated)</sup>
 
 addDisallowedRunningBundles(admin: Want, appIds: Array\<string>, callback: AsyncCallback&lt;void&gt;): void
 
 添加应用至应用运行禁止名单，添加至禁止名单的应用不允许在当前用户下运行，不在禁止名单中的应用允许运行。使用callback异步回调。从API version 21开始，如果应用运行允许名单[addallowedRunningBundles](./js-apis-enterprise-applicationManager.md#applicationmanageraddallowedrunningbundles21)非空，就不能再通过本接口添加应用运行禁止名单，否则会报9200010冲突错误码。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [addDisallowedRunningBundlesSync](./js-apis-enterprise-applicationManager.md#applicationmanageradddisallowedrunningbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SET_APP_RUNNING_POLICY
 
@@ -83,11 +87,15 @@ applicationManager.addDisallowedRunningBundles(wantTemp, appIds, (err) => {
 });
 ```
 
-## applicationManager.addDisallowedRunningBundles
+## applicationManager.addDisallowedRunningBundles<sup>(deprecated)</sup>
 
 addDisallowedRunningBundles(admin: Want, appIds: Array\<string>, userId: number, callback: AsyncCallback&lt;void&gt;): void
 
 添加应用至应用运行禁止名单，添加至禁止名单的应用不允许在指定用户（通过userId指定）下运行，不在禁止名单中的应用允许运行。使用callback异步回调。从API version 21开始，如果应用运行允许名单[addallowedRunningBundles](./js-apis-enterprise-applicationManager.md#applicationmanageraddallowedrunningbundles21)非空，就不能再通过本接口添加应用运行禁止名单，否则会报9200010冲突错误码。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [addDisallowedRunningBundlesSync](./js-apis-enterprise-applicationManager.md#applicationmanageradddisallowedrunningbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SET_APP_RUNNING_POLICY
 
@@ -142,11 +150,15 @@ applicationManager.addDisallowedRunningBundles(wantTemp, appIds, 100, (err) => {
 });
 ```
 
-## applicationManager.addDisallowedRunningBundles
+## applicationManager.addDisallowedRunningBundles<sup>(deprecated)</sup>
 
 addDisallowedRunningBundles(admin: Want, appIds: Array\<string>, userId?: number): Promise&lt;void&gt;
 
-添加应用至应用运行禁止名单，添加至禁止名单的应用不允许在当前/指定用户下运行。使用promise异步回调。从API version 21开始，如果应用运行允许名单[addallowedRunningBundles](./js-apis-enterprise-applicationManager.md#applicationmanageraddallowedrunningbundles21)非空，就不能再通过本接口添加应用运行禁止名单，否则会报9200010冲突错误码。
+添加应用至应用运行禁止名单，添加至禁止名单的应用不允许在当前/指定用户下运行。使用Promise异步回调。从API version 21开始，如果应用运行允许名单[addallowedRunningBundles](./js-apis-enterprise-applicationManager.md#applicationmanageraddallowedrunningbundles21)非空，就不能再通过本接口添加应用运行禁止名单，否则会报9200010冲突错误码。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [addDisallowedRunningBundlesSync](./js-apis-enterprise-applicationManager.md#applicationmanageradddisallowedrunningbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SET_APP_RUNNING_POLICY
 
@@ -205,11 +217,15 @@ applicationManager.addDisallowedRunningBundles(wantTemp, appIds, 100).then(() =>
 });
 ```
 
-## applicationManager.removeDisallowedRunningBundles
+## applicationManager.removeDisallowedRunningBundles<sup>(deprecated)</sup>
 
 removeDisallowedRunningBundles(admin: Want, appIds: Array\<string>, callback: AsyncCallback&lt;void&gt;): void
 
 移除在应用运行禁止名单中的应用，在禁止名单存在的情况下，在应用运行禁止名单中的应用不允许在当前用户下运行。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [removeDisallowedRunningBundlesSync](./js-apis-enterprise-applicationManager.md#applicationmanagerremovedisallowedrunningbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SET_APP_RUNNING_POLICY
 
@@ -262,11 +278,15 @@ applicationManager.removeDisallowedRunningBundles(wantTemp, appIds, (err) => {
 });
 ```
 
-## applicationManager.removeDisallowedRunningBundles
+## applicationManager.removeDisallowedRunningBundles<sup>(deprecated)</sup>
 
 removeDisallowedRunningBundles(admin: Want, appIds: Array\<string>, userId: number, callback: AsyncCallback&lt;void&gt;): void
 
 移除在应用运行禁止名单中的应用，在禁止名单存在的情况下，在应用运行禁止名单中的应用不允许在指定用户（通过userId指定）下运行。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [removeDisallowedRunningBundlesSync](./js-apis-enterprise-applicationManager.md#applicationmanagerremovedisallowedrunningbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SET_APP_RUNNING_POLICY
 
@@ -320,11 +340,15 @@ applicationManager.removeDisallowedRunningBundles(wantTemp, appIds, 100, (err) =
 });
 ```
 
-## applicationManager.removeDisallowedRunningBundles
+## applicationManager.removeDisallowedRunningBundles<sup>(deprecated)</sup>
 
 removeDisallowedRunningBundles(admin: Want, appIds: Array\<string>, userId?: number): Promise&lt;void&gt;
 
-移除当前/指定用户在应用运行禁止名单中的应用，使用promise异步回调。
+移除当前/指定用户在应用运行禁止名单中的应用，使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [removeDisallowedRunningBundlesSync](./js-apis-enterprise-applicationManager.md#applicationmanagerremovedisallowedrunningbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SET_APP_RUNNING_POLICY
 
@@ -382,11 +406,15 @@ applicationManager.removeDisallowedRunningBundles(wantTemp, appIds, 100).then(()
 });
 ```
 
-## applicationManager.getDisallowedRunningBundles
+## applicationManager.getDisallowedRunningBundles<sup>(deprecated)</sup>
 
 getDisallowedRunningBundles(admin: Want, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 获取当前用户下的应用运行禁止名单。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getDisallowedRunningBundlesSync](./js-apis-enterprise-applicationManager.md#applicationmanagergetdisallowedrunningbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SET_APP_RUNNING_POLICY
 
@@ -434,11 +462,15 @@ applicationManager.getDisallowedRunningBundles(wantTemp, (err, result) => {
 });
 ```
 
-## applicationManager.getDisallowedRunningBundles
+## applicationManager.getDisallowedRunningBundles<sup>(deprecated)</sup>
 
 getDisallowedRunningBundles(admin: Want, userId: number, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 获取指定用户（通过userId指定）下的应用运行禁止名单。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getDisallowedRunningBundlesSync](./js-apis-enterprise-applicationManager.md#applicationmanagergetdisallowedrunningbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SET_APP_RUNNING_POLICY
 
@@ -489,11 +521,15 @@ applicationManager.getDisallowedRunningBundles(wantTemp, 100, (err, result) => {
 });
 ```
 
-## applicationManager.getDisallowedRunningBundles
+## applicationManager.getDisallowedRunningBundles<sup>(deprecated)</sup>
 
 getDisallowedRunningBundles(admin: Want, userId?: number): Promise&lt;Array&lt;string&gt;&gt;
 
-获取当前/指定用户下的应用运行禁止名单，使用promise异步回调。
+获取当前/指定用户下的应用运行禁止名单，使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [getDisallowedRunningBundlesSync](./js-apis-enterprise-applicationManager.md#applicationmanagergetdisallowedrunningbundlessync)
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SET_APP_RUNNING_POLICY
 

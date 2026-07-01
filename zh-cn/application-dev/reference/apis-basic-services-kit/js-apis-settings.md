@@ -715,7 +715,7 @@ openNetworkManagerSettings(context: Context): Promise\<boolean>
 
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
 | -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
-| context  | Context                | 是   | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| context  | Context                | 是   | 应用上下文（仅支持UIAbilityContext和UIExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 
 **返回值**：
 
@@ -1118,7 +1118,7 @@ openInputMethodSettings(context: Context): void
 
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
 | -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
-| context  | Context                | 是   | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| context  | Context                | 是   | 应用上下文（仅支持UIAbilityContext和UIExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 
 **错误码**：
 
@@ -1157,7 +1157,7 @@ openInputMethodDetail(context: Context, bundleName: string, inputMethodId: strin
 
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
 | -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
-| context  | Context                | 是   | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| context  | Context                | 是   | 应用上下文（仅支持UIAbilityContext和UIExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | bundleName      | string          | 是   | 拉起输入法的对应包名 |
 | inputMethodId   | string          | 是   | 输入法扩展在应用内唯一标识[id](../apis-ime-kit/js-apis-inputmethod.md#inputmethodproperty8)。 |
 
@@ -1194,13 +1194,13 @@ openBiometricsSettingsPage(context: Context): void
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
-**设备行为差异**：该接口在Phone、Tablet、PC/2in1设备中可正常调用，在其他设备调用不生效。
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、Wearable设备中可正常调用，在其他设备调用不生效。
 
 **参数**：
 
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
 | -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和UIExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 
 **错误码**：
 
@@ -1236,13 +1236,13 @@ openNfcSettingsPage(context: Context): void
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
-**设备行为差异**：该接口在Phone、Tablet设备中可正常调用，在其他设备调用不生效。
+**设备行为差异**：该接口在Phone、Tablet、Wearable设备中可正常调用，在其他设备调用不生效。
 
 **参数**：
 
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
 | -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和UIExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 
 **错误码**：
 
@@ -1268,6 +1268,252 @@ try {
 }
 ```
 
+## settings.openDoubleClickSettingsPage<sup>24+</sup>
+
+openDoubleClickSettingsPage(context: Context): void
+
+打开按键设置-双击下按键页面。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.Settings.Core
+
+**设备行为差异**：该接口仅在Wearable设备中可正常调用，在其他设备调用不生效。
+
+**参数**：
+
+| 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[设置数据项错误码](errorcode-settings.md)。
+
+| 错误码ID    | 错误信息                    |
+|----------|-------------------------|
+| 16900010 | 1. The parameter is incorrect. <br> 2. The parameter is not transferred or the transferred parameter is invalid.    |
+| 16900020 | 1. The setting page cannot be opened through redirection.<br> 2. Internal error |
+
+**示例**：
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openDoubleClickSettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the DoubleClick settings page. code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
+## settings.isDoubleClickAppForSelf<sup>24+</sup>
+
+isDoubleClickAppForSelf(): Promise\<boolean>
+
+判断双击下按键的默认启动应用是否为本应用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.Settings.Core
+
+**设备行为差异**：该接口仅在Wearable设备中可正常调用，在其他设备调用不生效。
+
+**返回值**：
+
+| 类型             | 说明                    |
+| ---------------- |-----------------------|
+| Promise\<boolean> | Promise对象。返回true表示是当前应用，返回false表示非当前应用。 |
+
+**示例**：
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+
+settings.isDoubleClickAppForSelf().then((result: boolean) => {
+  console.info(`isDoubleClickAppForSelf result: ${result}`);
+})
+```
+
+## settings.openMobileNetworkSettingsPage
+
+openMobileNetworkSettingsPage(context: Context): void
+
+打开移动网络设置页面。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.Settings.Core
+
+**设备行为差异**：该接口在Phone、Tablet设备中可正常调用，在其他设备调用不生效。
+
+**参数**：
+
+| 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和UIExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[设置数据项错误码](errorcode-settings.md)。
+
+| 错误码ID    | 错误信息                    |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+| 16900020 | Failed to open the settings page via redirection. |
+
+**示例**：
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openMobileNetworkSettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the mobile network settings page. code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
+## settings.openDisplaySettingsPage
+
+openDisplaySettingsPage(context: Context): void
+
+打开显示和亮度设置页面。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.Settings.Core
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1设备中可正常调用，在其他设备调用不生效。
+
+**参数**：
+
+| 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和UIExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[设置数据项错误码](errorcode-settings.md)。
+
+| 错误码ID    | 错误信息                    |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+| 16900020 | Failed to open the settings page via redirection. |
+
+**示例**：
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openDisplaySettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the display settings page. code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
+## settings.openScreenRefreshRateSettingsPage
+
+openScreenRefreshRateSettingsPage(context: Context): void
+
+打开屏幕刷新率设置页面。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.Settings.Core
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1设备中可正常调用，在其他设备调用不生效。
+
+**参数**：
+
+| 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和UIExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[设置数据项错误码](errorcode-settings.md)。
+
+| 错误码ID    | 错误信息                    |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+| 16900020 | Failed to open the settings page via redirection. |
+
+**示例**：
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openScreenRefreshRateSettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the screen refresh rate settings page. code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
+## settings.openSoundSettingsPage
+
+openSoundSettingsPage(context: Context): void
+
+打开声音和振动设置页面。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.Settings.Core
+
+**设备行为差异**：该接口在Phone、Tablet设备中可正常调用，在其他设备调用不生效。
+
+**参数**：
+
+| 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和UIExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[设置数据项错误码](errorcode-settings.md)。
+
+| 错误码ID    | 错误信息                    |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+| 16900020 | Failed to open the settings page via redirection. |
+
+**示例**：
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openSoundSettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the sound settings page. code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
 ## settings.openAboutDeviceSettingsPage
 
 openAboutDeviceSettingsPage(context: Context): void
@@ -1286,7 +1532,7 @@ openAboutDeviceSettingsPage(context: Context): void
 
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
 | -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和UIExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 
 **错误码**：
 
@@ -1314,7 +1560,7 @@ try {
 
 ## settings.openAppDetailSettingsPage
 
-openAppDetailSettingsPage(context: Context, bundleName: string, appIndex?: int): void
+openAppDetailSettingsPage(context: Context, bundleName: string, appIndex?: number): void
 
 打开应用详情设置页面。
 
@@ -1330,9 +1576,9 @@ openAppDetailSettingsPage(context: Context, bundleName: string, appIndex?: int):
 
 | 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
 | -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和UIExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | bundleName  | string | 是 | 应用包名 |
-| appIndex  | int | 否 | 应用分身的索引 |
+| appIndex  | number | 否 | 应用分身的索引 |
 
 **错误码**：
 

@@ -4,7 +4,7 @@
 <!--Owner: @huaxin05-->
 <!--Designer: @hu-kai45-->
 <!--Tester: @murphy1984-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @fang-jinxu-->
 
 The **systemTime** module provides system time and time zone features. You can obtain the system time and time zone by using the following APIs.
 
@@ -45,14 +45,14 @@ Obtains the time elapsed since the Unix epoch. This API uses an asynchronous cal
 
 | Name  | Type      | Mandatory| Description                            |
 | -------- | -------------- | ---- | ------------------ |
-| isNano   | boolean                     | Yes  | Whether the time to return is in nanoseconds.<br>- **true** means that the return result is in nanoseconds (ns).<br>- **false** means that the return result is in milliseconds (ms).|
+| isNano   | boolean                     | Yes  | Whether the time to return is in nanoseconds.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.|
 | callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the time elapsed since the Unix epoch.        |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                             |
+| Error Code| Error Message                                                             |
 | -------- |-------------------------------------------------------------------|
 | 401       | Parameter error. Possible causes: 1.Incorrect parameter types. |
 
@@ -97,7 +97,7 @@ Obtains the time elapsed since the Unix epoch. This API uses an asynchronous cal
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID   | Error Message                                                             |
+| Error Code   | Error Message                                                             |
 |----------|-------------------------------------------------------------------|
 | 401      | Parameter error. Possible causes: 1.Incorrect parameter types. |
 
@@ -136,7 +136,7 @@ Obtains the time elapsed since the Unix epoch. This API uses a promise to return
 
 | Name| Type   | Mandatory| Description                    |
 | ------ | ------- | ---- | ------------------------- |
-| isNano | boolean | No  | Whether the time to return is in nanoseconds. The default value is **false**.<br>- **true** means that the return result is in nanoseconds (ns).<br>- **false** means that the return result is in milliseconds (ms).|
+| isNano | boolean | No  | Whether the time to return is in nanoseconds. The default value is **false**.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.|
 
 **Return value**
 
@@ -148,7 +148,7 @@ Obtains the time elapsed since the Unix epoch. This API uses a promise to return
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message                                                             |
+| Error Code  | Error Message                                                             |
 |---------|-------------------------------------------------------------------|
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
 
@@ -185,14 +185,14 @@ Obtains the time elapsed since system startup, excluding the deep sleep time. Th
 
 | Name  | Type                       | Mandatory| Description  |
 | -------- | ---------- | ---- | -------------------------- |
-| isNano   | boolean                     | Yes  | Whether the time to return is in nanoseconds.<br>- **true** means that the return result is in nanoseconds (ns).<br>- **false** means that the return result is in milliseconds (ms).|
+| isNano   | boolean                     | Yes  | Whether the time to return is in nanoseconds.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.|
 | callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the time.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message                                                             |
+| Error Code  | Error Message                                                             |
 |---------|-------------------------------------------------------------------|
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
 
@@ -237,7 +237,7 @@ Obtains the time elapsed since system startup, excluding the deep sleep time. Th
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message                                                             |
+| Error Code  | Error Message                                                             |
 |---------|-------------------------------------------------------------------|
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
 
@@ -276,7 +276,7 @@ Obtains the time elapsed since system startup, excluding the deep sleep time. Th
 
 | Name| Type   | Mandatory| Description                             |
 | ------ | ------- | ---- | ----------------------------------- |
-| isNano | boolean | No  | Whether the time to return is in nanoseconds. The default value is **false**.<br>- **true** means that the return result is in nanoseconds (ns).<br>- **false** means that the return result is in milliseconds (ms).|
+| isNano | boolean | No  | Whether the time to return is in nanoseconds. The default value is **false**.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.|
 
 **Return value**
 
@@ -288,7 +288,7 @@ Obtains the time elapsed since system startup, excluding the deep sleep time. Th
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message                                                             |
+| Error Code  | Error Message                                                             |
 |---------|-------------------------------------------------------------------|
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
 
@@ -325,14 +325,14 @@ Obtains the time elapsed since system startup, including the deep sleep time. Th
 
 | Name  | Type                       | Mandatory| Description  |
 | -------- | --------------- | ---- | ------------------------------- |
-| isNano   | boolean                     | Yes  | Whether the time to return is in nanoseconds.<br>- **true** means that the return result is in nanoseconds (ns).<br>- **false** means that the return result is in milliseconds (ms).|
+| isNano   | boolean                     | Yes  | Whether the time to return is in nanoseconds.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.|
 | callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the time.  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message                                                             |
+| Error Code  | Error Message                                                             |
 |---------|-------------------------------------------------------------------|
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
 
@@ -371,13 +371,13 @@ Obtains the time elapsed since system startup, including the deep sleep time. Th
 
 | Name  | Type                       | Mandatory| Description     |
 | -------- | --------- | ---- | --------------------------- |
-| callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the time.  |
+| callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result.  |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message                                                             |
+| Error Code  | Error Message                                                             |
 |---------|-------------------------------------------------------------------|
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
 
@@ -416,7 +416,7 @@ Obtains the time elapsed since system startup, including the deep sleep time. Th
 
 | Name| Type   | Mandatory| Description                              |
 | ------ | ------- | ---- | ------------------------------- |
-| isNano | boolean | No  | Whether the time to return is in nanoseconds. The default value is **false**.<br>- **true** means that the return result is in nanoseconds (ns).<br>- **false** means that the return result is in milliseconds (ms).|
+| isNano | boolean | No  | Whether the time to return is in nanoseconds. The default value is **false**.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.|
 
 **Return value**
 
@@ -428,7 +428,7 @@ Obtains the time elapsed since system startup, including the deep sleep time. Th
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID  | Error Message                                                             |
+| Error Code  | Error Message                                                             |
 |---------|-------------------------------------------------------------------|
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
 
@@ -461,7 +461,7 @@ Obtains the time elapsed since the Unix epoch. This API returns the result synch
 
 | Name       | Type   | Mandatory| Description                                                        |
 | ------------- | ------- | ---- | ------------------------------------------------------------ |
-| isNanoseconds | boolean | No  | Whether the time to return is in nanoseconds.<br>- **true** means that the return result is in nanoseconds (ns).<br>- **false** means that the return result is in milliseconds (ms).<br>The default value is **false**.|
+| isNanoseconds | boolean | No  | Whether the time to return is in nanoseconds.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.<br>The default value is **false**.|
 
 **Return value**
 
@@ -495,7 +495,7 @@ Obtains the time elapsed since system startup. This API returns the result synch
 | Name       | Type                   | Mandatory| Description                                                                               |
 | ------------- | ----------------------- | ---- |-----------------------------------------------------------------------------------|
 | timeType      | [TimeType](#timetype10) | Yes  | Type of the time to be obtained. The value can only be `STARTUP` or `ACTIVE`.                                                 |
-| isNanoseconds | boolean                 | No  | Whether the time to return is in nanoseconds.<br>- **true** means that the return result is in nanoseconds (ns).<br>- **false** means that the return result is in milliseconds (ms).<br>The default value is **false**.|
+| isNanoseconds | boolean                 | No  | Whether the time to return is in nanoseconds.<br>- **true**: The result is in nanoseconds.<br>- **false**: The result is in milliseconds.<br>The default value is **false**.|
 
 **Return value**
 
@@ -507,7 +507,7 @@ Obtains the time elapsed since system startup. This API returns the result synch
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                                                          |
+| Error Code| Error Message                                                                                                          |
 | -------- |----------------------------------------------------------------------------------------------------------------|
 | 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification<br> failed.This error code was added due to missing issues. |
 
@@ -532,7 +532,7 @@ Obtains the current system date. This API uses an asynchronous callback to retur
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 10. You are advised to use the **new Date()** method described in [How do I convert a string in time format to a Date object?](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/faqs/faqs-arkui-arkts.md#how-do-i-convert-a-string-in-time-format-to-a-date-object-api-version-9) instead, which returns the **Date** instance object.
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use the **new Date()** method described in [How do I convert a string in time format to a Date object](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/faqs/faqs-arkui-arkts.md#how-do-i-convert-a-string-in-time-format-to-a-date-object-api-version-9) instead, which returns the **Date** instance object.
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -546,7 +546,7 @@ Obtains the current system date. This API uses an asynchronous callback to retur
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                |
+| Error Code| Error Message                                                |
 |-------|------------------------------------------------------|
 | 401   | Parameter error. Possible causes: 1.System error. |
 
@@ -577,7 +577,7 @@ Obtains the current system date. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 10. You are advised to use the **new Date()** method described in [How do I convert a string in time format to a Date object?](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/faqs/faqs-arkui-arkts.md#how-do-i-convert-a-string-in-time-format-to-a-date-object-api-version-9) instead, which returns the **Date** instance object.
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use the **new Date()** method described in [How do I convert a string in time format to a Date object](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/faqs/faqs-arkui-arkts.md#how-do-i-convert-a-string-in-time-format-to-a-date-object-api-version-9) instead, which returns the **Date** instance object.
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -591,7 +591,7 @@ Obtains the current system date. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                |
+| Error Code| Error Message                                                |
 |-------|------------------------------------------------------|
 | 401   | Parameter error. Possible causes: 1.System error. |
 
@@ -759,7 +759,7 @@ Obtains the switch status of the automatic time setting. This API returns the re
 
 For details about the error codes, see [Time and Time Zone Service Error Codes](./errorcode-time.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                                                   |
+| Error Code| Error Message                                                                                                   |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 13000001    | Network connection error or OS error. Possible causes: 1.System memory is insufficient; 2.Calls the underlying system interface failed.|
 

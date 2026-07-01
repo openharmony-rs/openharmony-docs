@@ -1,7 +1,7 @@
-# 长时任务开发指导（TaskPool）
+# 长时任务开发指导 (TaskPool)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
@@ -12,8 +12,9 @@
 
 1. 导入所需的模块。
 
-   ```ts
-   // Index.ets
+   <!-- @[taskpool_listen_sensor_data_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/LongTimeTaskGuide.ets) -->
+   
+   ``` TypeScript
    import { sensor } from '@kit.SensorServiceKit';
    import { taskpool } from '@kit.ArkTS';
    import { BusinessError, emitter } from '@kit.BasicServicesKit';
@@ -21,10 +22,11 @@
 
 2. 定义长时任务，内部监听sensor数据，并通过emitter注册销毁通知。
 
-   ```ts
-   // Index.ets
+   <!-- @[taskpool_listen_sensor_data_concurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/LongTimeTaskGuide.ets) -->
+   
+   ``` TypeScript
    @Concurrent
-   async function SensorListener() : Promise<void> {
+   async function sensorListener(): Promise<void> {
      sensor.on(sensor.SensorId.ACCELEROMETER, (data) => {
        emitter.emit({ eventId: 0 }, { data: data });
      }, { interval: 1000000000 });
@@ -36,10 +38,9 @@
    }
    ```
 
-3. 给sensor添加ohos.permission.ACCELEROMETER权限。
+3. 给sensor添加ohos.permission.ACCELEROMETER权限，在module.json5中添加如下代码。
 
    ```json
-   // module.json5
    "requestPermissions": [
      {
        "name": "ohos.permission.ACCELEROMETER"
@@ -86,14 +87,14 @@
              this.sensorTask = new taskpool.LongTask(sensorListener);
              emitter.on({ eventId: 0 }, (data) => {
                // Do something here
-               console.info(`Receive ACCELEROMETER data: {${data.data?.x}, ${data.data?.y}, ${data.data?.z}`);
+               console.info(`Receive ACCELEROMETER data: {${data.data?.x}, ${data.data?.y}, ${data.data?.z}}`);
              });
              taskpool.execute(this.sensorTask).then(() => {
+               this.addListener = 'success';
                console.info('Add listener of ACCELEROMETER success');
              }).catch((e: BusinessError) => {
-               // Process error
+               this.addListener = 'failed';
              })
-             this.addListener = 'success';
            })
          Text(this.deleteListener)
            .id('Delete listener')
@@ -104,10 +105,11 @@
              emitter.off(0);
              if (this.sensorTask != undefined) {
                taskpool.terminateTask(this.sensorTask);
+               this.deleteListener = 'success';
              } else {
                console.error('sensorTask is undefined.');
+               this.deleteListener = 'failed';
              }
-             this.deleteListener = 'success';
            })
        }
        .height('100%')

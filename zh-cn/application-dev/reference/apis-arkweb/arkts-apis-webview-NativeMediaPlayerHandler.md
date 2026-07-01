@@ -2,11 +2,11 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @zhangyao75477-->
-<!--Designer: @qiu-gongkai-->
+<!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-[CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12)回调函数的参数。应用通过该对象，将播放器的状态报告给ArkWeb内核。
+NativeMediaPlayerHandler 是[CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12)回调函数的参数。当应用使用[NativeMediaPlayerBridge](./arkts-apis-webview-NativeMediaPlayerBridge.md)接管网页媒体播放时，需要通过将播放器的各种状态变化实时同步给 ArkWeb 内核，确保网页 JavaScript 能够获取正确的播放器状态，ArkWeb 内核会将这些状态转换为标准的 HTML5 Media Events，触发网页中注册的事件监听器，从而保证网页功能的正常运行。
 
 > **说明：**
 >
@@ -74,7 +74,7 @@ handleMutedChanged(muted: boolean): void
 
 handlePlaybackRateChanged(playbackRate: number): void
 
-当播放器的播放速度发生变化时，调用该方法将播放速度通知给 ArkWeb 内核。
+当播放器的播放速率发生变化时，调用该方法将播放速率通知给 ArkWeb 内核。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -146,7 +146,7 @@ handleBufferedEndTimeChanged(bufferedEndTime: number): void
 
 handleEnded(): void
 
-当媒体播放结束时，调用该方法通知给 ArkWeb 内核。
+当媒体播放结束时，调用该方法将播放结束事件通知给 ArkWeb 内核。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -212,7 +212,7 @@ handleFullscreenChanged(fullscreen: boolean): void
 
 handleSeeking(): void
 
-当播放器进入 seek 状态时，调用该方法通知 ArkWeb 内核。
+当播放器进入seek状态时，调用该方法将seek进入事件通知 ArkWeb 内核。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -224,7 +224,7 @@ handleSeeking(): void
 
 handleSeekFinished(): void
 
-当播放器 seek 完成后，调用该方法通知 ArkWeb 内核。
+当播放器seek完成后，调用该方法将seek完成事件通知 ArkWeb 内核。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -236,7 +236,7 @@ handleSeekFinished(): void
 
 handleError(error: MediaError, errorMessage: string): void
 
-当播放器发生错误时， 调用该方法通知 ArkWeb 内核。
+当播放器发生错误时，调用该方法将错误通知 ArkWeb 内核。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -255,7 +255,7 @@ handleError(error: MediaError, errorMessage: string): void
 
 handleVideoSizeChanged(width: number, height: number): void
 
-当播放器解析出视频的尺寸时， 调用该方法通知 ArkWeb 内核。
+当播放器解析出视频的尺寸时， 调用该方法将视频尺寸通知 ArkWeb 内核。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -263,8 +263,8 @@ handleVideoSizeChanged(width: number, height: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| width  | number | 是 | 视频的宽，单位为像素，取值范围：[0, +∞) |
-| height | number | 是 | 视频的高，单位为像素，取值范围：[0, +∞) |
+| width  | number | 是 | 视频的宽，单位：像素，取值范围：[0, +∞) |
+| height | number | 是 | 视频的高，单位：像素，取值范围：[0, +∞) |
 
 **示例：**
 

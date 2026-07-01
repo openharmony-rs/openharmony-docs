@@ -4,15 +4,15 @@
 <!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 This module provides APIs for collecting statistics on device usage.
 
 > **NOTE**
 >
-> - The APIs of this module are deprecated since API version 9. The substitute APIs are open only to system applications.
+> The APIs of this module are deprecated since API version 9. The substitute APIs are open only to system applications.
 >
-> - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 
 ## Modules to Import
@@ -26,7 +26,7 @@ import bundleState from '@ohos.bundleState'
 isIdleState(bundleName: string, callback: AsyncCallback&lt;boolean&gt;): void
 > This API is supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications.
 
-Checks whether the application specified by **bundleName** is in the idle state. A third-party application can only check the idle state of itself. A system application can check the idle state of other applications only when it is granted with the **ohos.permission.BUNDLE_ACTIVE_INFO** permission. This API uses an asynchronous callback to return the result.
+Checks whether the application specified by **bundleName** is in the idle state. A third-party application can only check the idle state of itself. A system application can check the idle state of other applications only when it is granted with the ohos.permission.BUNDLE_ACTIVE_INFO permission. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 
@@ -40,7 +40,8 @@ Checks whether the application specified by **bundleName** is in the idle state.
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 // When a third-party application uses the sample code, change bundleName to its own bundle name.
 bundleState.isIdleState("com.ohos.camera", (err: BusinessError, res: boolean) => {
   if (err) {
@@ -56,7 +57,7 @@ bundleState.isIdleState("com.ohos.camera", (err: BusinessError, res: boolean) =>
 isIdleState(bundleName: string): Promise&lt;boolean&gt;
 > This API is supported since API version 7 and deprecated since API version 9. Its substitute is available only to system applications.
 
-Checks whether the application specified by **bundleName** is in the idle state. A third-party application can only check the idle state of itself. A system application can check the idle state of other applications only when it is granted with the **ohos.permission.BUNDLE_ACTIVE_INFO** permission. This API uses a promise to return the result. 
+Checks whether the application specified by **bundleName** is in the idle state. A third-party application can only check the idle state of itself. A system application can check the idle state of other applications only when it is granted with the ohos.permission.BUNDLE_ACTIVE_INFO permission. This API uses a promise to return the result. 
 
 **System capability**: SystemCapability.ResourceSchedule.UsageStatistics.AppGroup
 
@@ -75,7 +76,8 @@ Checks whether the application specified by **bundleName** is in the idle state.
 **Example**
 
 ```ts
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleState } from '@kit.BackgroundTasksKit';
 // When a third-party application uses the sample code, change bundleName to its own bundle name.
 bundleState.isIdleState("com.ohos.camera").then((res: boolean) => {
   console.info('BUNDLE_ACTIVE isIdleState promise succeeded, result: ' + JSON.stringify(res));

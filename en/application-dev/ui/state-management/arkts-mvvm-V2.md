@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @katabanga-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -388,7 +388,7 @@ struct TodoList {
 
 Building on the current task list functionality, you can enhance user experience with additional features, such as listening for task status changes and dynamically calculating the number of unfinished tasks. This is where the [\@Monitor](./arkts-new-monitor.md) and [\@Computed](./arkts-new-computed.md) decorators prove useful: \@Monitor is used to listen for deep changes in state variables, triggering custom callback methods when properties are modified. \@Computed decorates getter methods to detect changes in computed properties. It recalculates the value only once when dependencies change, reducing the overhead of redundant computations.
 
-In Example 7, \@Monitor is applied to listen for deep changes in the **isFinish** property of the **task** object within **TaskItem**. When the task status changes, the **onTasksFinished** callback is invoked to log the update. In addition, the number of unfinished tasks in **TodoList** is recorded using \@Computed to decorate **tasksUnfinished**, whose value automatically recalculates whenever task status change. Together, these two decorators enable deep listening of state variables and efficient computation of derived properties.
+In Example 7, \@Monitor is applied to listen for deep changes in the **isFinish** property of the **task** object within **TaskItem**. When the task status changes, the **onTaskFinished** callback is invoked to log the update. In addition, the number of unfinished tasks in **TodoList** is recorded using \@Computed to decorate **tasksUnfinished**, whose value automatically recalculates whenever task status change. Together, these two decorators enable deep listening of state variables and efficient computation of derived properties.
 
 **Example 7**
 
@@ -416,7 +416,7 @@ struct TaskItem {
 
   @Monitor('task.isFinish')
   onTaskFinished(mon: IMonitor) {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'task' + this.task.taskName + 'The completion status of the' + mon.value()?.before + 'has become' + mon.value()?.now);
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Task ' + this.task.taskName + ' completion status changed from ' + mon.value()?.before + ' to ' + mon.value()?.now);
   }
 
   build() {
@@ -536,7 +536,7 @@ struct TaskItem {
 
   @Monitor('task.isFinish')
   onTaskFinished(mon: IMonitor) {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'task' + this.task.taskName + 'The completion status of the' + mon.value()?.before + 'has become' + mon.value()?.now);
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Task ' + this.task.taskName + ' completion status changed from ' + mon.value()?.before + ' to ' + mon.value()?.now);
   }
 
   build() {
@@ -608,7 +608,7 @@ struct TodoList {
         Button('Setting')
           .onClick(() => {
             let wantInfo: Want = {
-              deviceId: '', // An empty deviceId indicates the local device.
+              deviceId: '', // If deviceId is empty, the device is the local device.
               bundleName: 'com.samples.statemgmtv2mvvm', // Replace it with the bundle name in AppScope/app.json5.
               abilityName: 'SettingAbility',
             };
@@ -728,7 +728,7 @@ struct TaskItem {
 
   @Monitor('task.isFinish')
   onTaskFinished(mon: IMonitor) {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'task' + this.task.taskName + 'The completion status of the' + mon.value()?.before + 'has become' + mon.value()?.now);
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Task ' + this.task.taskName + ' completion status changed from ' + mon.value()?.before + ' to ' + mon.value()?.now);
   }
 
   build() {
@@ -804,7 +804,7 @@ struct TodoList {
           .onClick(() => {
             let wantInfo: Want = {
               deviceId: '', // If deviceId is empty, the device is the local device.
-              bundleName: 'com.samples.statemgmtv2mvvm', // Replace it with the value of bundleName in AppScope/app.json5.
+              bundleName: 'com.samples.statemgmtv2mvvm', // Replace it with the bundle name in AppScope/app.json5.
               abilityName: 'SettingAbility',
             };
             this.context.startAbility(wantInfo);
@@ -908,7 +908,7 @@ struct TaskItem {
 
   @Monitor('task.isFinish')
   onTaskFinished(mon: IMonitor) {
-    hilog.info(0x0000, 'testTag', '%{public}s', 'task' + this.task.taskName + 'The completion status of the' + mon.value()?.before + 'has become' + mon.value()?.now);
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Task ' + this.task.taskName + ' completion status changed from ' + mon.value()?.before + ' to ' + mon.value()?.now);
   }
 
   build() {
@@ -982,7 +982,7 @@ struct TodoList {
         actionButton('All Not Completed', (): void => this.finishAll(false))
         actionButton('Setting', (): void => {
           let wantInfo: Want = {
-            deviceId: '', // An empty deviceId indicates the local device.
+            deviceId: '', // If deviceId is empty, the device is the local device.
             bundleName: 'com.samples.statemgmtv2mvvm', // Replace it with the bundle name in AppScope/app.json5.
             abilityName: 'SettingAbility',
           };
@@ -1060,13 +1060,17 @@ The Model layer manages application data and its service logic, typically intera
   
 - **TaskListModel**: a set of tasks, which provides functionality to load task data from local storage.
 
-  <!-- @[Model_TaskListModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/model/TaskListModel.ets) -->
+  <!-- @[Model_TaskListModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/model/TaskListModel.ets) -->      
   
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
   import { util } from '@kit.ArkTS';
-  import TaskModel from'./TaskModel';
+  import TaskModel from './TaskModel';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
   
+  const DOMAIN = 0x0000;
+  
+  // Model layer: TaskListModel is responsible for loading the task list.
   export default class TaskListModel {
     public tasks: TaskModel[] = [];
   
@@ -1074,17 +1078,21 @@ The Model layer manages application data and its service logic, typically intera
       this.tasks = tasks;
     }
   
-    async loadTasks(context: common.UIAbilityContext){
-      let getJson = await context.resourceManager.getRawFileContent('defaultTasks.json');
-      let textDecoderOptions: util.TextDecoderOptions = { ignoreBOM : true };
-      let textDecoder = util.TextDecoder.create('utf-8',textDecoderOptions);
-      let result = textDecoder.decodeToString(getJson);
-      this.tasks =JSON.parse(result).map((task: TaskModel)=>{
-        let newTask = new TaskModel();
-        newTask.taskName = task.taskName;
-        newTask.isFinish = task.isFinish;
-        return newTask;
-      });
+    async loadTasks(context: common.UIAbilityContext) {
+      try {
+        let getJson = await context.resourceManager.getRawFileContent('defaultTasks.json');
+        let textDecoderOptions: util.TextDecoderOptions = { ignoreBOM: true };
+        let textDecoder = util.TextDecoder.create('utf-8', textDecoderOptions);
+        let result = textDecoder.decodeToString(getJson);
+        this.tasks = JSON.parse(result).map((task: TaskModel) => {
+          let newTask = new TaskModel();
+          newTask.taskName = task.taskName;
+          newTask.isFinish = task.isFinish;
+          return newTask;
+        });
+      } catch (e) {
+        hilog.error(DOMAIN, 'testTag', 'Failed to getRawFileContent', JSON.stringify(e) ?? '');
+      }
     }
   }
   ```
@@ -1119,14 +1127,14 @@ The ViewModel layer manages UI state and service logic, acting as a bridge betwe
   
 - **TaskListViewModel**: encapsulates the task list and its management functionality, including loading tasks, updating task status in batches, adding tasks, and deleting tasks.
 
-  <!-- @[ViewModel_TaskListViewModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/viewmodel/TaskListViewModel.ets) -->
+  <!-- @[ViewModel_TaskListViewModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/viewmodel/TaskListViewModel.ets) --> 
   
   ``` TypeScript
   // src/main/ets/viewmodel/TaskListViewModel.ets
   import { common } from '@kit.AbilityKit';
   import { Type } from '@kit.ArkUI';
   import TaskListModel from '../model/TaskListModel';
-  import TaskViewModel from'./TaskViewModel';
+  import TaskViewModel from './TaskViewModel';
   
   @ObservedV2
   export default class TaskListViewModel {
@@ -1136,7 +1144,7 @@ The ViewModel layer manages UI state and service logic, acting as a bridge betwe
     async loadTasks(context: common.UIAbilityContext) {
       let taskList = new TaskListModel([]);
       await taskList.loadTasks(context);
-      for(let task of taskList.tasks){
+      for (let task of taskList.tasks) {
         let taskViewModel = new TaskViewModel();
         taskViewModel.updateTask(task);
         this.tasks.push(taskViewModel);
@@ -1144,7 +1152,7 @@ The ViewModel layer manages UI state and service logic, acting as a bridge betwe
     }
   
     finishAll(ifFinish: boolean): void {
-      for(let task of this.tasks){
+      for (let task of this.tasks) {
         task.isFinish = ifFinish;
       }
     }
@@ -1187,7 +1195,7 @@ The View layer is responsible for application UI rendering and user interactions
 
 - **ListView**: displays the task list and controls visibility of completed tasks based on settings. It depends on **TaskListViewModel** to obtain task data (including the task name, completion status, and delete button), which it renders using the **TaskItem** component. It also uses **TaskViewModel** and **TaskListViewModel** to handle user interactions, such as switching the task completion status and deleting a task.
 
-  <!-- @[View_ListView](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/view/ListView.ets) -->
+  <!-- @[View_ListView](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/view/ListView.ets) -->  
   
   ``` TypeScript
   // src/main/ets/view/ListView.ets
@@ -1201,9 +1209,10 @@ The View layer is responsible for application UI rendering and user interactions
   struct TaskItem {
     @Param task: TaskViewModel = new TaskViewModel();
     @Event deleteTask: () => void = () => {};
+  
     @Monitor('task.isFinish')
     onTaskFinished(mon: IMonitor) {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'task' + this.task.taskName + 'The completion status of the' + mon.value()?.before + 'has become' + mon.value()?.now);
+      hilog.info(0x0000, 'testTag', '%{public}s', 'Task ' + this.task.taskName + ' completion status changed from ' + mon.value()?.before + ' to ' + mon.value()?.now);
     }
   
     build() {
@@ -1245,7 +1254,7 @@ The View layer is responsible for application UI rendering and user interactions
   
 - **BottomView**: provides buttons (**All Finished**, **All Unfinished**, and **Settings**) and the text box for adding a task. Clicking **All Finished** or **All Unfinished** triggers **TaskListViewModel** to update the status of all tasks. Clicking **Settings** opens the **SettingAbility** settings page. Adding a task through the text box triggers **TaskListViewModel** to add the task to the task list.
 
-  <!-- @[View_BottomView](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/view/BottomView.ets) -->
+  <!-- @[View_BottomView](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/view/BottomView.ets) --> 
   
   ``` TypeScript
   // src/main/ets/view/BottomView.ets
@@ -1253,10 +1262,16 @@ The View layer is responsible for application UI rendering and user interactions
   import TaskViewModel from '../viewmodel/TaskViewModel';
   import TaskListViewModel from '../viewmodel/TaskListViewModel';
   
-  @Builder export function ActionButton(text: string|Resource, onClick:() => void) {
+  @Builder
+  export function ActionButton(text: string | Resource, onClick: () => void) {
     Button(text, { buttonStyle: ButtonStyleMode.NORMAL })
       .onClick(onClick)
-      .margin({ left: 10, right: 10, top: 5, bottom: 5 })
+      .margin({
+        left: 10,
+        right: 10,
+        top: 5,
+        bottom: 5
+      })
   }
   
   @ComponentV2
@@ -1272,10 +1287,11 @@ The View layer is responsible for application UI rendering and user interactions
           ActionButton('All Not Completed', (): void => this.taskList.finishAll(false))
         }
         .margin({ top: 10 })
-        Row(){
+  
+        Row() {
           ActionButton('Setting', (): void => {
             let wantInfo: Want = {
-              deviceId: '', // An empty deviceId indicates the local device.
+              deviceId: '', // If deviceId is empty, the device is the local device.
               bundleName: 'com.samples.statemgmtv2mvvm', // Replace it with the bundle name in AppScope/app.json5.
               abilityName: 'SettingAbility',
             };
@@ -1283,6 +1299,7 @@ The View layer is responsible for application UI rendering and user interactions
           })
         }
         .margin({ bottom: 5 })
+  
         Row() {
           TextInput({ placeholder: 'Add new tasks', text: this.newTaskName })
             .onChange((value) => this.newTaskName = value)

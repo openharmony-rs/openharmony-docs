@@ -2,7 +2,7 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -87,7 +87,7 @@ OH_Drawing_PenDestroy(pen);
 效果如下：
 
 
-![zh-cn_image_0000002194110913](figures/zh-cn_image_0000002194110913.png)
+![Drawing-Points](figures/Drawing-Points.png)
 
 
 ## 绘制圆弧
@@ -117,7 +117,7 @@ OH_Drawing_PenSetWidth(pen, 20);
 OH_Drawing_CanvasAttachPen(canvas, pen);
 // 创建矩形对象，左上坐标为（100，200）右下坐标为（500，300）
 OH_Drawing_Rect* rect = OH_Drawing_RectCreate(100, 200, 500, 300);
-// 基于矩形对象绘制圆弧，其实角度10°，扫描角度200°
+// 基于矩形对象绘制圆弧，起始角度10°，扫描角度200°
 OH_Drawing_CanvasDrawArc(canvas, rect, 10, 200);
 // 去除掉画布中的画笔
 OH_Drawing_CanvasDetachPen(canvas);
@@ -128,7 +128,7 @@ OH_Drawing_RectDestroy(rect);
 
 效果如下：
 
-![zh-cn_image_0000002158744174](figures/zh-cn_image_0000002158744174.png)
+![Drawing-Arc](figures/Drawing-Arc.png)
 
 
 ## 绘制圆
@@ -167,7 +167,7 @@ OH_Drawing_PointDestroy(point);
 
 效果如下：
 
-![zh-cn_image_0000002158584390](figures/zh-cn_image_0000002158584390.png)
+![Drawing-a-Circle](figures/Drawing-a-Circle.png)
 
 
 ## 绘制路径
@@ -237,7 +237,7 @@ OH_Drawing_PathDestroy(path);
 
 效果如下：
 
-![zh-cn_image_0000002194025277](figures/zh-cn_image_0000002194025277.png)
+![Drawing-a-Path](figures/Drawing-a-Path.png)
 
 
 ## 绘制区域
@@ -310,7 +310,7 @@ OH_Drawing_RectDestroy(rect);
 
 效果如下：
 
-![zh-cn_image_draw_rect](figures/zh-cn_image_draw_rect.png)
+![draw-rect](figures/draw-rect.png)
 
 
 ## 绘制圆角矩形
@@ -352,7 +352,7 @@ OH_Drawing_RoundRectDestroy(roundRect);
 效果如下：
 
 
-![zh-cn_image_0000002158744170](figures/zh-cn_image_0000002158744170.png)
+![Drawing-Rounded-Rectangle](figures/Drawing-Rounded-Rectangle.png)
 
 <!--RP1-->
 ## 相关实例

@@ -13,7 +13,7 @@
 
 以下权限的开放范围为普通应用，但需要通过[访问控制列表（ACL）](app-permission-mgmt-overview.md#权限机制中的基本概念)的方式跨级别申请。
 
-normal等级的应用需要将自身的APL等级声明为system_basic及以上，在开发应用安装包时，需要修改应用的HarmonyAppProvision配置文件即SDK目录下的“`Toolchains / _{Version} _/ lib / UnsgnedReleasedProfileTemplate.json`”文件，并重新进行应用签名。
+normal等级的应用需要将自身的APL等级声明为system_basic及以上，在开发应用安装包时，需要修改应用的HarmonyAppProvision配置文件即SDK目录下的“`Toolchains / _{Version} _/ lib / UnsignedReleasedProfileTemplate.json`”文件，并重新进行应用签名。
 
 **修改方式：**
 
@@ -94,7 +94,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 ## ohos.permission.READ_IMAGEVIDEO
 
-允许读取用户公共目录的图片或视频文件。
+允许读取用户本地公共目录的图片或视频文件。
 
 <!--RP27--><!--RP27End-->
 
@@ -103,6 +103,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **授权方式**：用户授权（user_grant）
 
 **起始版本**：9
+
+**变更信息**：在API版本9-24，申请该权限可访问云上和本地图片或视频文件；从API版本26.0.0开始，申请该权限仅能读取用户本地公共目录的图片或视频文件。
 
 ## ohos.permission.WRITE_IMAGEVIDEO
 
@@ -156,6 +158,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 当前仅2in1设备和平板上的应用可申请此权限。
 
+<!--RP15--><!--RP15End-->
+
 **权限级别**：system_basic
 
 **授权方式**：用户授权（user_grant）
@@ -196,11 +200,17 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：用户授权（user_grant）
 
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
 **起始版本**：11
 
 ## ohos.permission.FILE_ACCESS_PERSIST
 
 允许应用支持持久化访问文件Uri。
+
+> **说明：**
+>
+> 在API 12及以上版本，该权限等级变更为normal，应用可直接[声明使用](declare-permissions.md)；若需兼容API12之前版本，仍需按[受限权限申请方式](declare-permissions-in-acl.md)使用该权限。
 
 <!--RP18--><!--RP18End-->
 
@@ -222,9 +232,11 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：General
+
 **起始版本**：11
 
-**变更信息**：API 11，权限等级为system_core；从API 12开始，权限等级变更为system_basic，向普通应用开放。
+**变更信息**：API 11，权限等级为system_core；从API 12开始，权限等级变更为system_basic，向普通应用开放。从API 26.0.0开始，该权限支持在全设备上申请。
 
 ## ohos.permission.INPUT_MONITORING
 
@@ -302,6 +314,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 允许运营商应用添加eSIM配置文件。
 
+<!--RP86--><!--RP86End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -362,6 +376,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
 **起始版本**：14
 
 ## ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION
@@ -398,7 +414,11 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：PC/2in1 | Tablet
+
 **起始版本**：15
+
+**变更信息**：从API版本26.0.0开始，增加支持在平板上申请。
 
 ## ohos.permission.SET_PAC_URL
 
@@ -424,6 +444,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：Phone | PC/2in1 | Tablet
+
 **起始版本**：15
 
 ## ohos.permission.START_PROVISIONING_MESSAGE
@@ -435,6 +457,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：15
 
@@ -575,6 +599,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 1. 外设扩展驱动客户端权限声明中的value字段中描述的目标扩展驱动服务端已上架或一并上架。
 2. 被申请目标扩展驱动服务端对外提供能力与扩展外设驱动客户端业务诉求一致。
 
+<!--RP82--><!--RP82End-->
+
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
@@ -593,6 +619,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 1. 外设InterfaceClass为Mass Storage(0x08)、InterfaceSubClass为SCSI透明命令集(0x06)。
 2. 外设能够以对操作系统透明的方式来模拟SCSI设备。
+
+<!--RP83--><!--RP83End-->
 
 **权限级别**：system_basic
 
@@ -624,6 +652,20 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **起始版本**：18
 
+## ohos.permission.atomicService.MANAGE_STORAGE
+
+允许原子化服务小游戏进行存储空间大小的管理。
+
+<!--RP96--><!--RP96End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：20
+
 ## ohos.permission.MANAGE_SCREEN_TIME_GUARD
 
 允许应用调用屏幕时间守护相关接口，进行屏幕使用限制、应用访问控制、管控使用时间等操作。
@@ -633,6 +675,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone |  Tablet
 
 **起始版本**：20
 
@@ -680,7 +724,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 ## ohos.permission.USE_FLOAT_BALL
 
-允许应用使用全局闪控球的能力。
+允许应用使用闪控球的能力。
 
 <!--RP46--><!--RP46End-->
 
@@ -688,13 +732,15 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：系统授权（system_grant）
 
-**支持设备**：Phone | Tablet
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：20
 
+**变更信息**：从API版本26.0.0开始，增加支持在PC/2in1上申请。
+
 ## ohos.permission.AUTO_RESTORE_MAIN_WINDOW
 
-允许应用使用全局闪控球的自动恢复到应用主窗口的能力。
+允许应用使用闪控球的自动恢复到应用主窗口的能力。
 
 **申请条件**：需要与闪控球权限[ohos.permission.USE_FLOAT_BALL](#ohospermissionuse_float_ball)一起，才可申请此权限。
 
@@ -804,6 +850,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 允许应用读取所有的日历信息。
 
+<!--RP84--><!--RP84End-->
+
 **权限级别**：system_basic
 
 **授权方式**：用户授权（user_grant）
@@ -815,6 +863,8 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 ## ohos.permission.WRITE_WHOLE_CALENDAR
 
 允许应用添加、移除或更改所有的日历活动。
+
+<!--RP85--><!--RP85End-->
 
 **权限级别**：system_basic
 
@@ -836,7 +886,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：系统授权（system_grant）
 
-**支持设备**：Phone | PC/2in1 | Tablet
+**支持设备**：Phone | PC/2in1 | Tablet | TV
 
 **起始版本**：21
 
@@ -900,9 +950,11 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：手动设置授权（manual_settings）
 
-**支持设备**：PC/2in1
+**支持设备**：PC/2in1 | TV
 
 **起始版本**：22
+
+**变更信息**：从API版本26.0.0开始，增加支持在TV上申请。
 
 ## ohos.permission.ALLOW_EXTERNAL_NATIVE_CODE
 
@@ -1146,6 +1198,22 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **起始版本**：24
 
+## ohos.permission.GET_NETWORK_STATS
+
+允许应用查询其他应用的流量数据。
+
+<!--RP81--><!--RP81End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：General
+
+**起始版本**：10
+
+**变更信息**：API 10-11，ACL使能为false；从API 12开始，变更为true。对于API版本10-24，权限的开放范围为系统应用；从API版本26.0.0开始，开放范围变更为普通应用。
+
 ## ohos.permission.ACCESS_DLP_SERVICE
 
 允许应用或服务使用DLP提供的注册、解注册连云插件功能。
@@ -1156,7 +1224,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **授权方式**：系统授权（system_grant）
 
-**支持设备**：Phone | PC/2in1 | Tablet | Car
+**支持设备**：Phone | PC/2in1 | Tablet | TV
 
 **起始版本**：26.0.0
 
@@ -1190,7 +1258,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 ## ohos.permission.FLOAT_VIEW
 
-允许应用使用应用浮窗。
+允许应用使用闪控窗。
 
 <!--RP78--><!--RP78End-->
 
@@ -1215,3 +1283,140 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：26.0.0
+
+## ohos.permission.MANAGE_SKILL
+    
+允许应用使用skill的能力。
+
+获取该权限后，应用可以：
+
+- 查询skill包的信息
+- 监听skill包的安装、更新、卸载事件
+- 访问skill包安装的沙箱目录
+
+<!--RP87--><!--RP87End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
+## ohos.permission.kernel.AS_LDK_DRIVER
+
+允许应用安装PCIe驱动。
+
+<!--RP77--><!--RP77End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
+## ohos.permission.ACCESS_GAME_BUDDY_SERVICE
+
+允许应用访问游戏伴随服务。
+
+获取该权限后，应用可使用游戏伴随服务提供的接口，比如获取正在运行的游戏应用截图、通过麦克风获取用户语音数据等。
+
+<!--RP93--><!--RP93End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone
+
+**起始版本**：26.0.0
+
+## ohos.permission.KNOCK_COLLABORATION
+
+允许应用通过碰一碰的形式连接指定设备并实现信息交互和应用互动。
+
+<!--RP88--><!--RP88End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone
+
+**起始版本**：26.0.0
+
+## ohos.permission.PRINTER_DRIVER
+
+允许应用管理打印系统。
+
+<!--RP89--><!--RP89End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Phone | Tablet
+
+**起始版本**：24
+
+## ohos.permission.kernel.SUPPORT_LOCAL_PLUGIN
+
+允许应用安装与加载自分发插件。
+
+<!--RP90--><!--RP90End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
+## ohos.permission.ALLOW_USE_BM
+
+允许应用在开发者模式下调用BM工具。
+
+<!--RP94--><!--RP94End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
+## ohos.permission.ACCESS_DIGITAL_IDENTITY
+
+允许应用使用数字身份服务导入数字凭证。
+
+获取该权限后，应用可以将用户的数字身份凭证导入设备，进行安全存储以及后续便捷出示。
+
+<!--RP91--><!--RP91End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.CAPTURE_PLAYBACK_DOWNLINK
+
+允许应用录制蜂窝通话下行数据。
+
+<!--RP95--><!--RP95End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | Tablet
+
+**起始版本**：26.0.0
+

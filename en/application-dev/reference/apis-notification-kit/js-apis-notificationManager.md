@@ -1,12 +1,30 @@
 # @ohos.notificationManager (NotificationManager)
+
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=50e734d278c25dbb71273705da516c218b3754a1 translatedAt=2026-06-29T02:39:55.127Z pushedAt=2026-06-30T10:57:37.021Z -->
 
-The **NotificationManager** module provides notification management capabilities, covering notifications, notification slots, notification enabled status, and notification badge status.
+This module provides notification management capabilities, allowing applications to manage the complete lifecycle of notifications. This includes operations such as publishing, updating, and canceling notifications, creating and querying notification slots, querying and requesting authorization status for notification capabilities, setting application badges, and querying stored notifications in the notification center.
+
+**APIs used in combination**:
+
+The APIs of this module follow the following workflow of notifications: Authorization → Publishing → Cancellation → Channel Management. The APIs are designed to be used in combination with one another.
+
+1. **Authorization query and request process**: Before publishing a notification, first query the authorization status of the notification capability through **isNotificationEnabled**. If the notification capability is not authorized, guide the user to enable the notification permission through **requestEnableNotification**.
+
+2. **Notification publish and update process**: Publish a notification via the **publish** method, with the notification content specified through **NotificationRequest**. If a newly published notification has the same ID and tag as an existing one, the existing notification will be automatically updated. If the ID or tag differs, a new notification will be created instead.
+
+3. **Notification cancellation process**: Cancel a notification with a specified ID through **cancel**, cancel all notifications of this application through **cancelAll**, and cancel notifications under a specified group through **cancelGroup**.
+
+4. **Notification slot management process**: Create a notification slot through **addSlot**, query notification slot configurations through **getSlot**/**getSlots**, and delete notification slots through **removeSlot**/**removeAllSlots**. It is recommended to create the corresponding type of notification slot before publishing a notification. In addition to using **addSlot** to create a notification slot, you can also carry the **notificationSlotType** field in the [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) when publishing a notification. If a slot of the corresponding type does not exist, it will be automatically created.
+
+5. **Badge management process**: Set the badge number through **setBadgeNumber**, or when publishing a notification through the **publish** API, carry the number of badges to be incremented in the **badgeNumber** field of [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1).
+
+6. **Stored notification query process**: Obtain the number of stored notifications for this application in the notification center through **getActiveNotificationCount**, and obtain the details of stored notifications for this application in the notification center through **getActiveNotifications**.
 
 > **NOTE**
 >
@@ -24,7 +42,7 @@ publish(request: NotificationRequest, callback: AsyncCallback\<void\>): void
 
 Publishes a notification. This API uses an asynchronous callback to return the result.
 
-If the ID and label of the new notification are the same as that of the previous notification, the new one replaces the previous one.
+After a notification is published, it will be displayed as a notification widget in the device's notification center, status bar, etc. If the ID and tag of the newly published notification are the same as those of an already published notification, the new notification will replace the original one, achieving a notification update effect.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -41,20 +59,20 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                             |
 | -------- | ---------------------------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.    | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.    |
 | 1600001  | Internal error.                                      |
 | 1600002  | Marshalling or unmarshalling error.                  |
 | 1600003  | Failed to connect to the service.                    |
 | 1600004  | Notification disabled.                               |
 | 1600005  | Notification slot disabled.                          |
-| 1600007  | The notification does not exist.                     |
+| 1600007  | The notification does not exist.<br> Applicable versions: 11+                                                 |
 | 1600009  | The notification sending frequency reaches the upper limit.            |
 | 1600012  | No memory space.                                     |
-| 1600014  | No permission.                                       |
-| 1600015  | The current notification status does not support duplicate configurations. |
-| 1600016  | The notification version for this update is too low. |
-| 1600020  | The application is not allowed to send notifications due to permission settings. |
-| 2300007  | Network unreachable.                                 |
+| 1600014  | No permission.<br> Applicable versions: 11+                                                                   |
+| 1600015  | The current notification status does not support duplicate configurations.<br> Applicable versions: 11+       |
+| 1600016  | The notification version for this update is too low.<br> Applicable versions: 11+                             |
+| 1600020  | The application is not allowed to send notifications due to permission settings.<br> Applicable versions: 12+ |
+| 2300007  | Network unreachable.<br> Applicable versions: 11+                                                             |
 
 **Example**
 
@@ -90,7 +108,7 @@ publish(request: NotificationRequest): Promise\<void\>
 
 Publishes a notification. This API uses a promise to return the result.
 
-If the ID and label of the new notification are the same as that of the previous notification, the new one replaces the previous one.
+After a notification is published, it will be displayed as a notification card in the device's notification center, status bar, and other locations. If the ID and tag of the newly published notification are the same as those of an already published notification, the new notification will replace the original one, achieving a notification update effect.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -112,20 +130,20 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                             |
 | -------- | ---------------------------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.    | 
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.    |
 | 1600001  | Internal error.                                      |
 | 1600002  | Marshalling or unmarshalling error.                  |
 | 1600003  | Failed to connect to the service.                    |
 | 1600004  | Notification disabled.                               |
 | 1600005  | Notification slot disabled.                          |
-| 1600007  | The notification does not exist.                     |
+| 1600007  | The notification does not exist.<br> Applicable versions: 11+                                                 |
 | 1600009  | The notification sending frequency reaches the upper limit.            |
 | 1600012  | No memory space.                                     |
-| 1600014  | No permission.                                       |
-| 1600015  | The current notification status does not support duplicate configurations. |
-| 1600016  | The notification version for this update is too low. |
-| 1600020  | The application is not allowed to send notifications due to permission settings. |
-| 2300007  | Network unreachable.                                 |
+| 1600014  | No permission.<br> Applicable versions: 11+                                                                   |
+| 1600015  | The current notification status does not support duplicate configurations.<br> Applicable versions: 11+       |
+| 1600016  | The notification version for this update is too low.<br> Applicable versions: 11+                             |
+| 1600020  | The application is not allowed to send notifications due to permission settings.<br> Applicable versions: 12+ |
+| 2300007  | Network unreachable.<br> Applicable versions: 11+                                                             |
 
 **Example**
 
@@ -158,14 +176,18 @@ cancel(id: number, label: string, callback: AsyncCallback\<void\>): void
 
 Cancels a notification with the specified ID and label. This API uses an asynchronous callback to return the result.
 
+After cancellation, the corresponding notification will be removed from the notification center, status bar, and other locations, and will no longer be visible to the user. This is suitable for scenarios where a specific notification with a particular tag needs to be precisely canceled.
+
+Compared with [notificationManager.cancel(id, callback)](#notificationmanagercancel-2), which only passes in the notification ID, this API additionally passes in the **label** parameter, allowing precise cancellation of notifications with different tags under the same ID.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **Parameters**
 
 | Name    | Type                 | Mandatory| Description                |
 | -------- | --------------------- | ---- | -------------------- |
-| id       | number                | Yes  | Notification ID.              |
-| label    | string                | Yes  | Notification label.            |
+| id       | number                | Yes   | Notification ID, used to identify the target notification. This value is specified by the **id** field of [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) when a notification is published.               |
+| label    | string                | Yes   | Notification tag, used to distinguish notifications with different tags under the same ID. This value is specified by the **label** field of [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) when a notification is published.             |
 | callback | AsyncCallback\<void\> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -174,7 +196,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -200,7 +222,9 @@ notificationManager.cancel(0, "label", cancelCallback);
 
 cancel(id: number, label?: string): Promise\<void\>
 
-Cancels a notification with the specified ID and optional label. This API uses a promise to return the result.
+Cancels a published notification based on the notification ID and label. If the label is empty, it cancels the published notification that matches the specified notification ID and has an empty label. This API uses a promise to return the result.
+
+After cancellation, the corresponding notification will be removed from the notification center, status bar, and other locations, and will no longer be visible to the user.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -208,7 +232,7 @@ Cancels a notification with the specified ID and optional label. This API uses a
 
 | Name | Type  | Mandatory| Description    |
 | ----- | ------ | ---- | -------- |
-| id    | number | Yes  | Notification ID.  |
+| id    | number | Yes   | Notification ID, used to identify the target notification. This value is specified by the id field of [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) when publishing a notification.   |
 | label | string | No  | Notification label. This parameter is left empty by default.|
 
 **Return value**
@@ -223,7 +247,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -247,13 +271,17 @@ cancel(id: number, callback: AsyncCallback\<void\>): void
 
 Cancels a notification with the specified ID. This API uses an asynchronous callback to return the result.
 
+After cancellation, the corresponding notification will be removed from the notification center, status bar, etc., and will no longer be visible to the user.
+
+Compared with [notificationManager.cancel(id, label, callback)](#notificationmanagercancel), which includes the label parameter, this API does not pass in a label and will cancel the notification matching the specified ID. When a notification is published with a non-empty label, the `notificationManager.cancel(id, label, callback)` API must be used to cancel it.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **Parameters**
 
 | Name    | Type                 | Mandatory| Description                |
 | -------- | --------------------- | ---- | -------------------- |
-| id       | number                | Yes  | Notification ID.              |
+| id       | number                | Yes   | Notification ID, used to identify the target notification. This value is specified by the **id** field of [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) when a notification is published.               |
 | callback | AsyncCallback\<void\> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -262,7 +290,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -290,6 +318,8 @@ cancelAll(callback: AsyncCallback\<void\>): void
 
 Cancels all notifications of this application. This API uses an asynchronous callback to return the result.
 
+After cancellation, all notifications of the current application will be removed from the notification center, status bar, and other locations, and will no longer be visible to the user. This is suitable for scenarios such as application exit or when the user manually clears all notifications.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **Parameters**
@@ -304,7 +334,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -314,7 +344,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// cancel callback
+// cancelAll callback
 let cancelAllCallback = (err: BusinessError): void => {
   if (err) {
     console.error(`Failed to cancel all notification. Code is ${err.code}, message is ${err.message}`);
@@ -330,6 +360,8 @@ notificationManager.cancelAll(cancelAllCallback);
 cancelAll(): Promise\<void\>
 
 Cancels all notifications of this application. This API uses a promise to return the result.
+
+After cancellation, all notifications of the current application will be removed from the notification center, status bar, and other locations, and will no longer be visible to the user. This is suitable for scenarios such as application exit or when the user manually clears all notifications.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -367,13 +399,15 @@ addSlot(type: SlotType, callback: AsyncCallback\<void\>): void
 
 Adds a notification slot of a specified type. This API uses an asynchronous callback to return the result.
 
+The notification slot [NotificationSlot](js-apis-inner-notification-notificationSlot.md#notificationslot-1) defines the reminder type (such as alert sound, vibration, and banner) and level of a notification. Before publishing a notification, the application needs to create a corresponding type of notification slot first, or the system will automatically create a corresponding type of notification slot when the notification is published. Only one notification slot of the same type can be created.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **Parameters**
 
 | Name    | Type                 | Mandatory| Description                  |
 | -------- | --------------------- | ---- | ---------------------- |
-| type     | [SlotType](#slottype)              | Yes  | Type of the notification slot to add.|
+| type     | [SlotType](#slottype) | Yes   | Notification slot type to create. Different slot types correspond to different default [SlotLevel](#slotlevel) values, which affect the notification alert method. For example, **SOCIAL_COMMUNICATION** corresponds to **LEVEL_HIGH** (status bar icon + banner + sound), and **CONTENT_INFORMATION** corresponds to **LEVEL_MIN** (no status bar icon + no banner + no sound). |
 | callback | AsyncCallback\<void\> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.  |
 
 **Error codes**
@@ -382,7 +416,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -410,13 +444,15 @@ addSlot(type: SlotType): Promise\<void\>
 
 Adds a notification slot of a specified type. This API uses a promise to return the result.
 
+The notification slot [NotificationSlot](js-apis-inner-notification-notificationSlot.md#notificationslot-1) defines the reminder type (such as alert sound, vibration, and banner) and level of a notification. Before publishing a notification, the application needs to create a corresponding type of notification slot first, or the system will automatically create a corresponding type of notification slot when the notification is published. Only one notification slot of the same type can be created.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **Parameters**
 
 | Name| Type    | Mandatory| Description                  |
 | ---- | -------- | ---- | ---------------------- |
-| type | [SlotType](#slottype) | Yes  | Type of the notification slot to add.|
+| type | [SlotType](#slottype) | Yes | Notification slot type to create. Different slot types correspond to different default [SlotLevel](#slotlevel) values, which affect the notification alert method. For example, **SOCIAL_COMMUNICATION** corresponds to **LEVEL_HIGH** (status bar icon + banner + sound), and **CONTENT_INFORMATION** corresponds to **LEVEL_MIN** (no status bar icon + no banner + no sound). |
 
 **Return value**
 
@@ -430,7 +466,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -454,14 +490,16 @@ getSlot(slotType: SlotType, callback: AsyncCallback\<NotificationSlot\>): void
 
 Obtains a notification slot of a specified type. This API uses an asynchronous callback to return the result.
 
+This API is used to query the detailed configuration information of a created notification slot, including settings such as reminder method, level, and lock screen display. A corresponding type of notification slot must be created first through [addSlot](#notificationmanageraddslot), otherwise the obtained result will be empty.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **Parameters**
 
 | Name    | Type                             | Mandatory| Description                                                       |
 | -------- | --------------------------------- | ---- | ----------------------------------------------------------- |
-| slotType | [SlotType](#slottype)                          | Yes  | Type of a notification slot, such as social communication, service notification, content consultation, and so on.|
-| callback | AsyncCallback\<[NotificationSlot](js-apis-inner-notification-notificationSlot.md)\> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the obtained **NotificationSlot**; otherwise, **err** is an error object.                                       |
+| slotType | [SlotType](#slottype)                          | Yes  | Notification slot type, such as social communication, service reminder, and content consultation. |
+| callback | AsyncCallback\<[NotificationSlot](js-apis-inner-notification-notificationSlot.md)\> | Yes  | Callback used to return the result. If the notification slot is obtained successfully, **err** is **undefined** and **data** is the obtained **NotificationSlot**; otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -469,7 +507,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -497,13 +535,15 @@ getSlot(slotType: SlotType): Promise\<NotificationSlot\>
 
 Obtains a notification slot of a specified type. This API uses a promise to return the result.
 
+This API is used to query the detailed configuration information of a created notification slot, including settings such as reminder method, level, and lock screen display. A corresponding type of notification slot must be created first through [addSlot](#notificationmanageraddslot), otherwise the obtained result will be empty.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **Parameters**
 
 | Name    | Type    | Mandatory| Description                                                       |
 | -------- | -------- | ---- | ----------------------------------------------------------- |
-| slotType | [SlotType](#slottype) | Yes  | Type of a notification slot, such as social communication, service notification, content consultation, and so on.|
+| slotType | [SlotType](#slottype) | Yes | Notification slot type, such as social communication, service reminder, and content consultation. |
 
 **Return value**
 
@@ -517,7 +557,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -541,22 +581,23 @@ getSlots(callback: AsyncCallback\<Array\<NotificationSlot>>): void
 
 Obtains all notification slots of this application. This API uses an asynchronous callback to return the result.
 
+This API is used to batch query the configuration information of all notification slots created by the current application, including settings such as the type, reminder method, and level of each slot. This is suitable for scenarios where all slot configurations need to be viewed.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **Parameters**
 
 | Name    | Type                             | Mandatory| Description                |
 | -------- | --------------------------------- | ---- | -------------------- |
-| callback | AsyncCallback\<Array\<[NotificationSlot](js-apis-inner-notification-notificationSlot.md)\>\> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the obtained **NotificationSlot** array; otherwise, **err** is an error object.|
+| callback | AsyncCallback\<Array\<[NotificationSlot](js-apis-inner-notification-notificationSlot.md)\>\> | Yes | Callback used to return the result. If the notification slots are obtained successfully, **err** is **undefined** and **data** is the obtained **NotificationSlot** array. Otherwise, **err** is an error object. |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
 
-
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -582,6 +623,8 @@ notificationManager.getSlots(getSlotsCallback);
 getSlots(): Promise\<Array\<NotificationSlot>>
 
 Obtains all notification slots of this application. This API uses a promise to return the result.
+
+This API is used to batch query the configuration information of all notification slots created by the current application, including settings such as the type, reminder method, and level of each slot. This is suitable for scenarios where all slot configurations need to be viewed.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -619,13 +662,15 @@ removeSlot(slotType: SlotType, callback: AsyncCallback\<void\>): void
 
 Removes a notification slot of a specified type for this application. This API uses an asynchronous callback to return the result.
 
+After deletion, the corresponding type of notification slot and its configuration will be permanently removed. When a notification of this type is published subsequently, the system will automatically create a default slot. Notifications already published through this slot are not affected and can still be viewed in the notification center. This is suitable for scenarios where a slot needs to be deleted and then recreated for reconfiguration.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **Parameters**
 
 | Name    | Type                 | Mandatory| Description                                                       |
 | -------- | --------------------- | ---- | ----------------------------------------------------------- |
-| slotType | [SlotType](#slottype)              | Yes  | Type of a notification slot, such as social communication, service notification, content consultation, and so on.|
+| slotType | [SlotType](#slottype)              | Yes  | Notification slot type, such as social communication, service reminder, and content consultation. The created slot type must be passed in; otherwise, the deletion operation is invalid. |
 | callback | AsyncCallback\<void\> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.                                       |
 
 **Error codes**
@@ -634,7 +679,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -662,13 +707,15 @@ removeSlot(slotType: SlotType): Promise\<void\>
 
 Removes a notification slot of a specified type for this application. This API uses a promise to return the result.
 
+After deletion, the corresponding notification slot and its configuration will be permanently removed. When a notification of this type is published subsequently, the system will automatically create a default slot. Notifications already published through this slot are not affected and can still be viewed in the notification center. This is suitable for scenarios where a slot needs to be deleted and then recreated for reconfiguration.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **Parameters**
 
 | Name    | Type    | Mandatory| Description                                                       |
 | -------- | -------- | ---- | ----------------------------------------------------------- |
-| slotType | [SlotType](#slottype) | Yes  | Type of a notification slot, such as social communication, service notification, content consultation, and so on.|
+| slotType | [SlotType](#slottype) | Yes | Notification slot type, such as social communication, service reminder, and content consultation. The created slot type must be passed in; otherwise, the deletion operation is invalid. |
 
 **Return value**
 
@@ -682,7 +729,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -706,6 +753,8 @@ removeAllSlots(callback: AsyncCallback\<void\>): void
 
 Removes all notification slots for this application. This API uses an asynchronous callback to return the result.
 
+After deletion, all notification slots and their configurations of the current application will be permanently removed. When notifications are published subsequently, the system will automatically create slots of the corresponding types. Notifications already published through these slots are not affected and can still be viewed in the notification center. This is suitable for scenarios where all slot configurations need to be cleared at once.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **Parameters**
@@ -720,7 +769,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -745,6 +794,8 @@ notificationManager.removeAllSlots(removeAllSlotsCallback);
 removeAllSlots(): Promise\<void\>
 
 Removes all notification slots for this application. This API uses a promise to return the result.
+
+After deletion, all notification slots and their configurations of the current application will be permanently removed. When notifications are published subsequently, the system will automatically create slots of the corresponding types. Notifications already published through these slots are not affected and can still be viewed in the notification center. This is suitable for scenarios where all slot configurations need to be cleared at once.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -780,7 +831,9 @@ notificationManager.removeAllSlots().then(() => {
 
 isNotificationEnabled(callback: AsyncCallback\<boolean\>): void
 
-Checks whether notification is enabled for the specified application. This API uses an asynchronous callback to return the result.
+Queries the notification authorization status of the current application. This API uses an asynchronous callback to return the result.
+
+This API is used to check whether the current application is allowed to send notifications before publishing, preventing publish failures when notification authorization is disabled.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -796,12 +849,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                 |
 | -------- | ---------------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 201      | Permission denied.<br> Applicable versions: 9-10                                     |
+| 202      | Not system application to call the interface.<br> Applicable versions: 9-10                                     |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.     |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
-| 1600008  | The user does not exist.                   |
-| 17700001 | The specified bundle name was not found. |
+| 1600008  | The user does not exist.<br> Applicable versions: 11+                 |
+| 17700001 | The specified bundle name was not found.<br> Applicable versions: 11+ |
 
 **Example**
 
@@ -823,7 +878,9 @@ notificationManager.isNotificationEnabled(isNotificationEnabledCallback);
 
 isNotificationEnabled(): Promise\<boolean\>
 
-Checks whether notification is enabled for the specified application. This API uses a promise to return the result.
+Queries the notification authorization status of the current application. This API uses a promise to return the result.
+
+This API is used to check whether the current application is allowed to send notifications before publishing, preventing publish failures when notification authorization is disabled.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -839,11 +896,13 @@ For details about the error codes, see [Notification Error Codes](errorcode-noti
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
+| 201      | Permission denied.<br> Applicable versions: 9-10                                     |
+| 202      | Not system application to call the interface.<br> Applicable versions: 9-10                                     |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
-| 1600008  | The user does not exist.                   |
-| 17700001 | The specified bundle name was not found. |
+| 1600008  | The user does not exist.<br> Applicable versions: 11+                 |
+| 17700001 | The specified bundle name was not found.<br> Applicable versions: 11+ |
 
 **Example**
 
@@ -861,7 +920,9 @@ notificationManager.isNotificationEnabled().then((data: boolean) => {
 
 isNotificationEnabledSync(): boolean
 
-Checks whether notification is enabled for the specified application. This API returns the result synchronously.
+Synchronously queries the notification authorization status of the current application.
+
+This API is used to quickly check whether the current application is allowed to send notifications before publishing. It is synchronous and returns the result immediately after being called, suitable for scenarios where the enabled status needs to be obtained in a synchronous code flow.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -894,6 +955,8 @@ setBadgeNumber(badgeNumber: number): Promise\<void\>
 
 Sets the notification badge number. This API uses a promise to return the result.
 
+A badge is a numeric identifier displayed in the upper right corner of an application's desktop icon, used to prompt the user about the number of unprocessed notifications. After setting, the desktop icon will display the corresponding badge number. This is suitable for scenarios where the number of pending messages needs to be prompted on the desktop icon, such as the number of unread messages and to-do items.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
@@ -916,8 +979,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -942,6 +1005,8 @@ setBadgeNumber(badgeNumber: number, callback: AsyncCallback\<void\>): void
 
 Sets the notification badge number. This API uses an asynchronous callback to return the result.
 
+A badge is a numeric identifier displayed in the upper right corner of an application's desktop icon, used to prompt the user about the number of unprocessed notifications. After setting, the desktop icon will display the corresponding badge number. This is suitable for scenarios where the number of pending messages needs to be prompted on the desktop icon, such as the number of unread messages and to-do items.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
@@ -959,8 +1024,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
-| 801 | Capability not supported. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -987,6 +1052,8 @@ notificationManager.setBadgeNumber(badgeNumber, setBadgeNumberCallback);
 getBadgeNumber(): Promise\<number\>
 
 Obtains the badge number of this application. This API uses a promise to return the result.
+
+This API is used to query the badge number displayed on the current application's desktop icon.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -1024,6 +1091,8 @@ getActiveNotificationCount(callback: AsyncCallback\<number\>): void
 
 Obtains the number of active notifications of this application. This API uses an asynchronous callback to return the result.
 
+This API is used to query the number of notifications of the current application that are still active in the notification center (not deleted by the user or canceled by the program). This is suitable for scenarios where an unread notification count prompt needs to be displayed.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **Parameters**
@@ -1038,7 +1107,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1064,6 +1133,8 @@ notificationManager.getActiveNotificationCount(getActiveNotificationCountCallbac
 getActiveNotificationCount(): Promise\<number\>
 
 Obtains the number of active notifications of this application. This API uses a promise to return the result.
+
+This API is used to query the number of notifications of the current application in the notification center. This is suitable for scenarios where an unread notification count prompt needs to be displayed.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -1101,6 +1172,8 @@ getActiveNotifications(callback: AsyncCallback\<Array\<NotificationRequest>>): v
 
 Obtains the active notifications of this application. This API uses an asynchronous callback to return the result.
 
+This API is used to query the detailed information list of all stored notifications of the current application in the notification center, including the ID, tag, content, and creation time of each notification.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **Parameters**
@@ -1115,7 +1188,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1140,6 +1213,8 @@ notificationManager.getActiveNotifications(getActiveNotificationsCallback);
 getActiveNotifications(): Promise\<Array\<NotificationRequest\>\>
 
 Obtains the active notifications of this application. This API uses a promise to return the result.
+
+This API is used to query the detailed information list of all stored notifications of the current application in the notification center, including the ID, tag, content, and creation time of each notification.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -1185,7 +1260,7 @@ Obtains some information about the **wantAgent** field in [NotificationRequest](
 
 | Name | Type  | Mandatory| Description    |
 | ----- | ------ | ---- | -------- |
-| id    | number | Yes  | Notification ID.  |
+| id    | number | Yes   | Notification ID, used to identify the target notification. This value is specified by the **id** field of [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) when a notification is published.   |
 | label | string | No  | Notification label. This parameter is left empty by default.|
 
 **Return value**
@@ -1225,6 +1300,8 @@ cancelGroup(groupName: string, callback: AsyncCallback\<void\>): void
 
 Cancels notifications under a notification group of this application. This API uses an asynchronous callback to return the result.
 
+The notification group **groupName** is the group identifier specified through the **groupName** field of [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) when a notification is published. After cancellation, all notifications under this group will be removed from the notification center. This is suitable for scenarios where notifications need to be canceled in batches by service group.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **Parameters**
@@ -1240,7 +1317,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1267,6 +1344,8 @@ cancelGroup(groupName: string): Promise\<void\>
 
 Cancels notifications under a notification group of this application. This API uses a promise to return the result.
 
+The notification group **groupName** is the group identifier specified through the **groupName** field of [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) when a notification is published. After cancellation, all notifications under this group will be removed from the notification center. This is suitable for scenarios where notifications need to be canceled in batches by service group.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **Parameters**
@@ -1287,7 +1366,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1326,7 +1405,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1351,7 +1430,7 @@ notificationManager.isSupportTemplate(templateName, isSupportTemplateCallback);
 
 isSupportTemplate(templateName: string): Promise\<boolean\>
 
-Checks whether a specified template is supported before using [NotificationTemplate](js-apis-inner-notification-notificationTemplate.md) to publish a notification. This API uses a promise to return the result.
+Checks whether a specified template is supported before using [NotificationTemplate](./js-apis-inner-notification-notificationTemplate.md) to publish a notification. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -1373,7 +1452,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1419,12 +1498,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
-| 1600004  | Notification disabled.          |
-| 1600013  | A notification dialog box is already displayed.           |
+| 1600004  | Notification disabled.<br> Applicable versions: 11+         |
+| 1600013  | A notification dialog box is already displayed.<br> Applicable versions: 11+           |
 
 **Example**
 
@@ -1489,12 +1568,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
-| 1600004  | Notification disabled.          |
-| 1600013  | A notification dialog box is already displayed.           |
+| 1600004  | Notification disabled.<br> Applicable versions: 11+          |
+| 1600013  | A notification dialog box is already displayed.<br> Applicable versions: 11+           |
 
 **Example**
 
@@ -1547,12 +1626,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
-| 1600004  | Notification disabled.          |
-| 1600013  | A notification dialog box is already displayed.           |
+| 1600004  | Notification disabled.<br> Applicable versions: 11+          |
+| 1600013  | A notification dialog box is already displayed.<br> Applicable versions: 11+           |
 
 **Example**
 
@@ -1563,7 +1642,7 @@ let requestEnableNotificationCallback = (err: BusinessError): void => {
   if (err) {
     console.error(`requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
   } else {
-    console.info("requestEnableNotification success");
+    console.info(`requestEnableNotification success`);
   }
 };
 notificationManager.requestEnableNotification(requestEnableNotificationCallback);
@@ -1596,8 +1675,8 @@ For details about the error codes, see [Notification Error Codes](errorcode-noti
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
-| 1600004  | Notification disabled.          |
-| 1600013  | A notification dialog box is already displayed.           |
+| 1600004  | Notification disabled.<br> Applicable versions: 11+          |
+| 1600013  | A notification dialog box is already displayed.<br> Applicable versions: 11+           |
 
 **Example**
 
@@ -1605,19 +1684,21 @@ For details about the error codes, see [Notification Error Codes](errorcode-noti
 import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.requestEnableNotification().then(() => {
-  console.info("requestEnableNotification success");
+  console.info(`requestEnableNotification success`);
 }).catch((err: BusinessError) => {
   console.error(`requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
-## notificationManager.isDistributedEnabled   
+## notificationManager.isDistributedEnabled<sup>(deprecated)</sup>
 
 isDistributedEnabled(callback: AsyncCallback\<boolean>): void
 
 Checks whether the device supports cross-device notifications. This API uses an asynchronous callback to return the result.
 
-**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, **false** is returned.
+**Since**: 9
+
+**Deprecated from**: 26.0.0
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -1633,7 +1714,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      | 
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801      | Capability not supported.<br> Applicable versions: 26.0.0+                 |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1654,13 +1736,15 @@ let isDistributedEnabledCallback = (err: BusinessError, data: boolean): void => 
 notificationManager.isDistributedEnabled(isDistributedEnabledCallback);
 ```
 
-## notificationManager.isDistributedEnabled
+## notificationManager.isDistributedEnabled<sup>(deprecated)</sup>
 
 isDistributedEnabled(): Promise\<boolean>
 
 Checks whether the device supports cross-device notifications. This API uses a promise to return the result.
 
-**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, **false** is returned.
+**Since**: 9
+
+**Deprecated from**: 26.0.0
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -1676,6 +1760,7 @@ For details about the error codes, see [Notification Error Codes](errorcode-noti
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
+| 801      | Capability not supported.<br> Applicable versions: 26.0.0+                 |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
@@ -1699,6 +1784,8 @@ openNotificationSettings(context: UIAbilityContext): Promise\<void\>
 
 Opens the notification settings page of the application, which is displayed in semi-modal mode and can be used to set the notification enabling and notification mode. This API uses a promise to return the result.
 
+This is suitable for scenarios where users need to manually modify notification settings, such as a secondary request after a user denies authorization, or when the notification reminder method (vibration, ringtone, etc.) needs to be modified. When the [requestEnableNotification](#notificationmanagerrequestenablenotification10) dialog box is denied by the user, you can call this API to guide the user to the notification settings page to manually enable it.
+
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Notification.NotificationSettings
@@ -1721,7 +1808,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 801 | Capability not supported. |
+| 801 | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service.          |
 | 1600018  | The notification settings window is already displayed.           |
@@ -1757,7 +1844,9 @@ class MyAbility extends UIAbility {
 
 openNotificationSettingsWithResult(context: UIAbilityContext): Promise\<NotificationSetting\>
 
-Opens the notification settings page of the application, which is displayed in semi-modal mode and can be used to set the notification enabling and notification mode. This API uses a promise to return the result. When the semi-modal window is closed, the user-defined status is returned.
+Opens the notification settings page of the application, which is presented in a semi-modal window and can be used to set notification switches, notification reminder methods, etc. This API uses a promise to return the user-set status when the semi-modal window is closed.
+
+Unlike [openNotificationSettings](#notificationmanageropennotificationsettings13), this API returns a [NotificationSetting](#notificationsetting20) object when the semi-modal window is closed. You can determine whether the user has enabled the notification permission based on the returned result, thereby deciding subsequent logic.
 
 **Since**: 26.0.0
 
@@ -1819,7 +1908,7 @@ class MyAbility extends UIAbility {
 
 getNotificationSetting(): Promise\<NotificationSetting\>
 
-Obtains the notification settings of an application. This API uses a promise to return the result.
+Obtains the notification settings of the application, including the switch statuses for lock screen notifications, banner notifications, desktop badges, vibration, and ringtone. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -1902,7 +1991,7 @@ Enumerates the notification content types.
 | NOTIFICATION_CONTENT_BASIC_TEXT   | 0          | Normal text notification.         |
 | NOTIFICATION_CONTENT_LONG_TEXT    | 1          | Long text notification.        |
 | NOTIFICATION_CONTENT_PICTURE      | 2          | Picture-attached notification.         |
-| NOTIFICATION_CONTENT_CONVERSATION | 3          | Conversation notification. Not supported currently.|
+| NOTIFICATION_CONTENT_CONVERSATION | 3          | Conversation notification.|
 | NOTIFICATION_CONTENT_MULTILINE    | 4          | Multi-line text notification.       |
 | NOTIFICATION_CONTENT_SYSTEM_LIVE_VIEW<sup>11+</sup>    | 5 | Live view notification. A third-party application cannot directly create a notification of this type. After the system proxy creates a system live view, the third-party application publishes a notification with the same ID to update the specified content.|
 | NOTIFICATION_CONTENT_LIVE_VIEW<sup>11+</sup>    | 6 | Common live view notification. Available only to system applications. |
@@ -1910,6 +1999,8 @@ Enumerates the notification content types.
 ## SlotLevel
 
 Enumerates the notification level.
+
+This API is used to define the notification reminder behavior level of [NotificationSlot](js-apis-inner-notification-notificationSlot.md), affecting how the notification is displayed in the status bar, whether to show banners and alert sounds, etc.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -1921,10 +2012,11 @@ Enumerates the notification level.
 | LEVEL_DEFAULT                     | 3           | Notification is enabled, and the notification icon is displayed in the status bar, with an alert tone but no banner.|
 | LEVEL_HIGH                        | 4           | Notification is enabled, and the notification icon is displayed in the status bar, with an alert tone and banner.|
 
-
 ## SlotType
 
 Enumerates the notification slot types.
+
+Different types correspond to different [SlotLevel](#slotlevel) values, determining the reminder behavior of the notification.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1932,13 +2024,13 @@ Enumerates the notification slot types.
 
 | Name                | Value      | Description      |
 | -------------------- | -------- | ---------- |
-| UNKNOWN_TYPE         | 0 | Unknown type. This type corresponds to [SlotLevel](#slotlevel) being **LEVEL_MIN**.|
-| SOCIAL_COMMUNICATION | 1 | Notification slot for social communication. This type corresponds to [SlotLevel](#slotlevel) being **LEVEL_HIGH**.|
-| SERVICE_INFORMATION  | 2 | Notification slot for service information. This type corresponds to [SlotLevel](#slotlevel) being **LEVEL_HIGH**.|
-| CONTENT_INFORMATION  | 3 | Notification slot for content consultation. This type corresponds to [SlotLevel](#slotlevel) being **LEVEL_MIN**.|
-| LIVE_VIEW<sup>11+</sup>            | 4 | Live view. A third-party application cannot directly create a notification of this slot type. After the system proxy creates a system live view, the third-party application publishes a notification with the same ID to update the specified content. This type corresponds to [SlotLevel](#slotlevel) being **LEVEL_DEFAULT**.|
-| CUSTOMER_SERVICE<sup>11+</sup>     | 5 | Notification slot for customer service message. This type is used for messages between users and customer service providers. The messages must be initiated by users. This type corresponds to [SlotLevel](#slotlevel) being **LEVEL_DEFAULT**. |
-| OTHER_TYPES          | 0xFFFF | Notification slot for other purposes. This type corresponds to [SlotLevel](#slotlevel) being **LEVEL_MIN**.|
+| UNKNOWN_TYPE         | 0 | Unknown type. This type corresponds to the [SlotLevel](#slotlevel) of **LEVEL_MIN**.|
+| SOCIAL_COMMUNICATION | 1 | Social communication. This type corresponds to the [SlotLevel](#slotlevel) of **LEVEL_HIGH**. |
+| SERVICE_INFORMATION  | 2 | Service information. This type corresponds to the [SlotLevel](#slotlevel) of **LEVEL_HIGH**.|
+| CONTENT_INFORMATION  | 3 | Content information. This type corresponds to the [SlotLevel](#slotlevel) of **LEVEL_MIN**.|
+| LIVE_VIEW<sup>11+</sup>            | 4 | Live view. A third-party application cannot directly create a notification of this type. Instead, after the system proxy creates a notification, the third-party application can release the notification with the same ID to update the specified content<!--RP1--><!--RP1End-->. This type corresponds to the [SlotLevel](#slotlevel) of **LEVEL_DEFAULT**.|
+| CUSTOMER_SERVICE<sup>11+</sup>     | 5 | Customer service message. This type is used for messages between users and customer service providers. The messages must be initiated by users. This type corresponds to the [SlotLevel](#slotlevel) of **LEVEL_DEFAULT**. |
+| OTHER_TYPES          | 0xFFFF | Other types. This type corresponds to the [SlotLevel](#slotlevel) of **LEVEL_MIN**.|
 
 ## NotificationSetting<sup>20+</sup>
 
@@ -1954,6 +2046,20 @@ Describes the setting status of the notification mode switch.
 | bannerEnabled     | boolean | No  |  Yes | Whether to enable banner notification.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0<br> - **true**: enabled.<br> - **false**: disable.|
 | badgeNumberEnabled     | boolean | No  |  Yes | Whether to enable the display of notification badges.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0<br> - **true**: enabled.<br> - **false**: disable.|
 | notificationEnabled     | boolean | No  |  Yes | Whether to enable the application notification.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0<br> - **true**: enabled.<br> - **false**: disable.|
+
+## PriorityNotificationType<sup>23+</sup>
+
+Describes the priority type of a notification.
+
+**System capability**: SystemCapability.Notification.Notification
+
+| Name                 | Value  | Description                               |
+| --------------------| --- | --------------------------------- |
+| OTHER   | "OTHER"   | Default.            |
+| PRIMARY_CONTACT    | "PRIMARY_CONTACT"   | Primary contact.                 |
+| AT_ME  | "AT_ME"   | @me.            |
+| URGENT_MESSAGE   | "URGENT_MESSAGE"   | Urgent message.                 |
+| SCHEDULE_REMINDER   | "SCHEDULE_REMINDER"   | Schedule reminder.                 |
 
 ## BundleOption
 
@@ -2063,6 +2169,20 @@ Describes the notification request.
 | --- | --- |
 | [_NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) | Notification request.|
 
+## NotificationParameters<sup>24+</sup>
+
+type NotificationParameters = _NotificationParameters
+
+Describes partial information about the **wantAgent** in the notification request.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Notification.Notification
+
+| Type| Description|
+| --- | --- |
+| [_NotificationParameters](js-apis-inner-notification-notificationRequest.md#notificationparameters24) | Partial information about the **wantAgent** in the notification request.|
+
 ## DistributedOptions
 
 type DistributedOptions = _DistributedOptions
@@ -2158,17 +2278,3 @@ Describes the notification progress.
 | Type| Description|
 | --- | --- |
 | [_NotificationProgress](js-apis-inner-notification-notificationContent.md#notificationprogress11) | Notification progress.|
-
-## PriorityNotificationType<sup>23+</sup>
-
-Enumerates the priority notification types.
-
-**System capability**: SystemCapability.Notification.Notification
-
-| Name                | Value | Description                              |
-| --------------------| --- | --------------------------------- |
-| OTHER   | "OTHER"   | Default.           |
-| PRIMARY_CONTACT    | "PRIMARY_CONTACT"   | Primary contacts.                |
-| AT_ME  | "AT_ME"   | Message that mentions me.           |
-| URGENT_MESSAGE   | "URGENT_MESSAGE"   | Urgent message.                |
-| SCHEDULE_REMINDER   | "SCHEDULE_REMINDER"   | Schedule reminder.                |

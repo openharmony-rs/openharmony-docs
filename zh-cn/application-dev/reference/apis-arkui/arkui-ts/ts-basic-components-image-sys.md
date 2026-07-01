@@ -24,6 +24,8 @@ analyzerConfig(config: ImageAnalyzerConfig)
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -36,11 +38,13 @@ analyzerConfig(config: ImageAnalyzerConfig)
 
 edgeAntialiasing(value: number)
 
-设置SVG图源抗锯齿效果，仅对SVG图源生效。取值范围为$(0.333, 1.333]$，有效数字保留小数点后3位。
+设置SVG图源边缘抗锯齿效果，仅对SVG图源生效。取值范围为$(0.333, 1.333]$，有效数字保留小数点后3位。
 
 适用于超低分辨率设备（PPI低于200的设备）的SVG图源的锯齿优化，存在一定的性能影响，请谨慎使用。
 
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,7 +52,7 @@ edgeAntialiasing(value: number)
 
 | 参数名 | 类型   | 必填 | 说明                                |
 | ------ | ------ | ---- | ----------------------------------- |
-| value  | number | 是   | SVG图源抗锯齿效果。<br/>默认值：0.0 |
+| value  | number | 是   | SVG图源边缘抗锯齿效果。<br/>默认值：0.0 |
 
 ### pointLight<sup>11+</sup>
 
@@ -57,6 +61,8 @@ pointLight(value: PointLightStyle)
 设置点光源样式。
 
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,11 +76,13 @@ pointLight(value: PointLightStyle)
 
 enhancedImageQuality(imageQuality: ResolutionQuality)
 
-设置图像解码时的图像解码分辨率选项。
+设置增强的图像解码分辨率选项。
 
 该属性不支持 svg、[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)和[DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor) 等非解码图片类型。
 
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -86,14 +94,16 @@ enhancedImageQuality(imageQuality: ResolutionQuality)
 
 ## ResolutionQuality<sup>12+</sup>
 
-图像解码时的图像解码分辨率选项。
+type ResolutionQuality = import('../api/@ohos.multimedia.image').default.ResolutionQuality
+
+分辨率质量等级类型。
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 值                     | 说明                    |
-| ------ | --------------------------  | --------------------------  |
-| Low   | 1  | 低图像分辨率，解码时间适中。   |
-| Medium | 2 | 中等图像分辨率，解码时间适中。  |
-| High   | 3   | 高图像分辨率，解码时间长。    |
+| 类型     | 说明       |
+| ------ | ---------- |
+| import('../api/@ohos.multimedia.image').default.[ResolutionQuality](../../apis-image-kit/js-apis-image-sys.md#resolutionquality12) | 分辨率质量等级类型。 |

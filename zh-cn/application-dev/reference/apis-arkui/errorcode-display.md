@@ -56,7 +56,7 @@ This display manager service works abnormally.
 
 ## 1400004 参数异常
 **错误信息**<br>
-Parameter error. 
+Parameter error.
 
 **错误描述**<br>
 当传入参数异常时，会报此错误码。

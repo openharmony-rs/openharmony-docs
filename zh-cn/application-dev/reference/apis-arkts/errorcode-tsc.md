@@ -1,16 +1,16 @@
-# Typescript Compiler错误码介绍
+# TypeScript Compiler错误码介绍
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @zju-wyx-->
-<!--Designer: @xiao-peiyang; @liyancheng-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @huyunhui1; @liyancheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @HelloCrease-->
 
-TSC(Typescript Compiler)的错误码以'105'开头，是TSC编译流程中的报错提示，会在编辑器、控制台或日志文件中显示输出错误码和相对应的报错描述。
+TSC(TypeScript Compiler)的错误码以'105'开头，是TSC编译流程中的报错提示，会在编辑器、控制台或日志文件中显示输出错误码和相对应的报错描述。
 
 ## 10505001 TSC原生报错
 
-TSC原生报错：以'001'结尾，是Typescript Compiler检查中已有的原生报错规则。在TSC的编译流程中，常见的TSC原生报错原因包括：关键字或符号的缺失、赋值类型与接收类型不一致、类型或变量未定义等。这些问题通常是未按照[语言规范](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/introduction-to-arkts)编写代码导致的，开发者可以根据报错描述修改代码。
+TSC原生报错：以'001'结尾，是TypeScript Compiler检查中已有的原生报错规则。在TSC的编译流程中，常见的TSC原生报错原因包括：关键字或符号的缺失、赋值类型与接收类型不一致、类型或变量未定义等。这些问题通常是未按照[语言规范](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/introduction-to-arkts)编写代码导致的，开发者可以根据报错描述修改代码。
 
 ### 关键字或符号的缺失
 
@@ -106,12 +106,12 @@ a = b;
 **错误示例场景：**
 
 har1包中有js文件，存在导出接口：
-```
+```javascript
 // har1's src/main/ets/FileJs.js
 export let fileJs = 1;
 ```
 har2包引用har1包中该接口：
-```
+```typescript
 import { fileJs } from 'har1/src/main/ets/FileJs';
 ```
 
@@ -121,7 +121,7 @@ Cannot find module XXX or its corresponding type declarations.
 
 **错误描述**
 
-当字节码har中有js文件时，编译无法生成声明文件，导致其余模块无法导入。
+当字节码HAR中有js文件时，编译无法生成声明文件，导致其余模块无法导入。
 
 **可能原因**
 
@@ -129,18 +129,18 @@ js文件在编译时tsc不会生成对应的声明文件，导致其余模块无
 
 **处理步骤**
 
-若har包中的js文件需要提供对外导出功能，开发者需要：
+若HAR包中的js文件需要提供对外导出功能，开发者需要：
 
-1.在js文件同级目录中手动编写对应的.d.ts声明文件，并随har包一起编译发布，示例如下：
-```
+1.在js文件同级目录中手动编写对应的.d.ts声明文件，并随HAR包一起编译发布，示例如下：
+```typescript
 // har1's src/main/ets/FileJs.d.ts
 export declare let fileJs: number;
 ```
 2.在har1包顶层的Index.ets文件中增加export导出语句，示例如下：
-```
+```typescript
 export { fileJs } from './src/main/ets/FileJs';
 ```
 3.在har2包引用har1包中该接口，示例如下：
-```
+```typescript
 import { fileJs } from 'har1/src/main/ets/FileJs';
 ```

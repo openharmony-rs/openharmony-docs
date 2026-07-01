@@ -2,9 +2,10 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:40:46.245Z pushedAt=2026-06-22T12:45:35.444Z -->
 
 ## When to Use
 
@@ -12,7 +13,7 @@ The database encryption capability is provided to effectively protect the data s
 
 Database encryption allows data to be stored and used in ciphertext, ensuring data confidentiality and integrity.
 
-The encrypted database can be accessed only using an API, and the database file cannot be opened in other ways. Whether a database is encrypted is set when the database is created, and the setting cannot be changed.
+An encrypted database can only be accessed through APIs. The database file cannot be opened in other ways. The encryption attributes of a database are determined when the database is created and cannot be changed. Starting from API version 22, RDB stores support adjusting their encryption attributes through the [OH_Rdb_RekeyEx](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_rekeyex) API.
 
 Currently, only RDB stores (C/C++) support database encryption.
 
@@ -35,7 +36,7 @@ When **isEncrypted** is set to **true**, call **OH_Rdb_SetCryptoParam** to set c
 2. Include header files.
 
     <!-- @[encryption_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) --> 
-    
+
     ``` C++
     #include <cstring>
     #include "database/rdb/relational_store.h"
@@ -49,7 +50,7 @@ When **isEncrypted** is set to **true**, call **OH_Rdb_SetCryptoParam** to set c
     * Scenario 1: If no custom encryption/decryption parameter is configured, the default configuration is used.
 
       <!-- @[DefaultConfigRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
-    
+
       ``` C++
       OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
       OH_Rdb_SetDatabaseDir(config, "/data/storage/el2/database");
@@ -71,11 +72,11 @@ When **isEncrypted** is set to **true**, call **OH_Rdb_SetCryptoParam** to set c
 
 
     * Scenario 2: Call **OH_Rdb_SetCryptoParam** to configure encryption parameters. The database is encrypted and decrypted using the custom key and algorithm parameters.
-    
+
       If custom configuration is not required, you can use the default encryption configuration.
 
       <!-- @[CustomizedConfigRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
-    
+
       ``` C++
       OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
       OH_Rdb_SetDatabaseDir(config, "/data/storage/el2/database");

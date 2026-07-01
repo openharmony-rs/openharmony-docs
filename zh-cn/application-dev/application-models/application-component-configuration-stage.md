@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 在开发应用时，需要配置应用的一些标签，例如应用的包名、图标等标识特征的属性。本文描述了在开发应用需要配置的一些关键标签。
 
@@ -30,7 +30,4 @@ Module访问系统或其他应用受保护部分所需的权限信息需要在[m
 
 ## 应用启动模式配置
 
-从API version 20开始，支持应用配置startMode字段，设置不同的启动模式，且仅在launchType为[单实例模式](./uiability-launch-type.md#singleton启动模式)时生效，用于一个应用存在多个UIAbility的场景。需要在[app.json5配置文件](../quick-start/app-configuration-file.md#配置文件标签)中配置startMode标签。
-
-- 默认值为"mainTask"，表现为点击图标总是启动应用主UIAbility。
-- 可选值"recentTask"，表现为点击图标打开最近使用的UIAbility。
+从API version 20开始，支持应用在app.json5中配置startMode字段，设置不同的启动模式。使用约束与支持的取值等请参考app.json5[配置文件标签](../quick-start/app-configuration-file.md#配置文件标签)的startMode字段说明。

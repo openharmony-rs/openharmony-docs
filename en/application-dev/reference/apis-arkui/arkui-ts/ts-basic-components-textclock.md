@@ -47,6 +47,8 @@ Options used to build the **TextClock** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name           | Type     | Read-Only  | Optional | Description                                                    |
@@ -64,7 +66,7 @@ format(value: ResourceStr)
 
 Sets the time format, for example, **yyyy/MM/dd** or **yyyy-MM-dd**.
 
-**y**: year (yyyy indicates the complete year, and yy indicates the last two digits of the year.)<br>**M**: month (To display 01 for January, use **MM** instead.)<br>**d**: day (To display 01 for the first day, use **dd** instead.)<br>**E**: day of week (To display the full name, use **EEEE**; to display the abbreviation, use **E**, **EE**, or **EEE**.)<br>H: hour (24-hour format); h: hour (12-hour format)<br>**m**: minute<br>**s**: second<br>SS: centisecond (If the number of S characters in the format is less than 3, all are treated as centiseconds.)<br>SSS: millisecond (If the number of S characters in the format is greater than or equal to 3, all are treated as milliseconds.)<br>**a**: morning/afternoon (This parameter does not take effect when the hour part is set to **H**.)
+**y**: year (**yyyy** indicates the complete year, and **yy** indicates the last two digits of the year.)<br>**M**: month (To display 01 for January, use **MM** instead.)<br>**d**: day (To display 01 for the first day, use **dd** instead.)<br>**E**: day of week (To display the full name, use **EEEE**; to display the abbreviation, use **E**, **EE**, or **EEE**.)<br>**H**: hour (24-hour format); **h**: hour (12-hour format)<br>**m**: minute<br>**s**: second<br>**SS**: centisecond (If the number of S characters in the format is less than 3, all are treated as centiseconds.)<br>**SSS**: millisecond (If the number of S characters in the format is greater than or equal to 3, all are treated as milliseconds.)<br>**a**: morning/afternoon (This parameter does not take effect when the hour part is set to **H**.)
 
 Date separators: year, month, day, slash (/), hyphen (-), and period (.) (Custom separator styles are allowed. Letters cannot be used as separators, while Chinese characters can be treated as separators.)
 
@@ -92,29 +94,29 @@ The following table shows how different settings of **format** work out.
 
 | Input Format               | Display Effect           |
 | ----------------------- | ------------------- |
-| EEEE, M, d, yyyy      | Saturday, February 4, 2023|
-| MMM d, yyyy           | February 4, 2023       |
-| EEEE, M, d            | Saturday, February 4      |
-| MMM dd                 | February 4             |
-| MM/dd/yyyy              | 02/04/2023          |
-| EEEE MM dd          | Saturday February 04    |
-| yyyy       | 2023             |
-| yy       | 23               |
-| MM         | February               |
-| M              | February                |
-| dd (complete date)         | 04               |
-| d               | 4                |
-| EEEE (full name)       | Saturday             |
-| E, EE, EEE (abbreviation) | Sat               |
-| MMM d, yyyy           | February 4, 2023       |
-| yyyy/M/d                | 2023/2/4            |
-| yyyy-M-d                | 2023-2-4            |
-| yyyy.M.d                | 2023.2.4            |
+| EEEE, M d, yyyy      | Saturday, Feb 4, 2023|
+| M d, yyyy           | Feb 4, 2023       |
+| EEEE, M d            | Saturday, Feb 4      |
+| M d                 | Feb 4             |
+| MM/dd/yyyy              | Feb/04/2023         |
+| EEEE MM dd          | Saturday Feb 04    |
+| yyyy (4-digit year)       | 2023             |
+| yy (2-digit year)       | 23               |
+| MM         | Feb               |
+| M              | Feb                |
+| dd (2-digit day)         | 04               |
+| d              | 4                |
+| EEEE (full week name)       | Saturday             |
+| E, EE, EEE (abbreviated week name) | Sat               |
+| M d, yyyy           | Feb 4, 2023       |
+| yyyy/M/d                | 2023/Feb/4            |
+| yyyy-M-d                | 2023-Feb-4           |
+| yyyy.M.d                | 2023.Feb.4           |
 | HH:mm:ss   | 17:00:04            |
-| aa hh:mm:ss| 5:00:04 AM       |
+| aa hh:mm:ss| AM 5:00:04       |
 | hh:mm:ss   | 5:00:04             |
 | HH:mm         | 17:00               |
-| aa hh:mm      | 5:00 AM          |
+| aa hh:mm      | AM 5:00          |
 | hh:mm         | 5:00                |
 | mm:ss         | 00:04               |
 | mm:ss.SS | 00:04.91            |
@@ -138,7 +140,7 @@ Sets the font color.
 
 | Name| Type                                      | Mandatory| Description      |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Font color.<br>Default value for wearables: '#c5ffffff'; default value for other devices: 'e6182431'|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Font color.<br>Default value for wearables: **'#c5ffffff'**; default value for other devices: **'e6182431'**|
 
 ### fontSize
 
@@ -210,7 +212,7 @@ Sets the font family.
 
 | Name| Type                                  | Mandatory| Description                                                        |
 | ------ | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ResourceStr](ts-types.md#resourcestr) | Yes  | Font family. Default font: **'HarmonyOS Sans'**<br>The 'HarmonyOS Sans' font and [registered custom fonts](../js-apis-font.md) are supported for applications.<br>Only the 'HarmonyOS Sans' font is supported for widgets.|
+| value  | [ResourceStr](ts-types.md#resourcestr) | Yes  | Font family. Default font: **'HarmonyOS Sans'**<br>The **'HarmonyOS Sans'** font and [registered custom fonts](../js-apis-font.md) are supported for applications.<br>Only the **'HarmonyOS Sans'** font is supported for widgets.|
 
 ### textShadow<sup>11+</sup>
 
@@ -221,6 +223,8 @@ Sets the text shadow. It supports input parameters in an array to implement mult
 **Widget capability**: Since API version 11, this feature is supported in ArkTS widgets.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -248,6 +252,8 @@ For example, the input format for monospaced clock fonts is "ss01" on.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -264,13 +270,15 @@ Creates a content modifier.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                         | Mandatory| Description                                            |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier\<TextClockConfiguration>](#textclockconfiguration12)| Yes  | Content modifier to apply to the text clock.<br>**modifier**: content modifier. You need to customize a class to implement the **ContentModifier** API.|
+| modifier  | [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[TextClockConfiguration](#textclockconfiguration12)>| Yes  | Content modifier to apply to the text clock.<br>**modifier**: content modifier. You need to customize a class to implement the **ContentModifier** API.|
 
 ### dateTimeOptions<sup>12+</sup>
 
@@ -281,6 +289,8 @@ Sets whether to display a leading zero for the hour.
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -375,6 +385,8 @@ Stops the **<TextClock\>** component.
 You need a custom class to implement the **ContentModifier** API.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -623,7 +635,7 @@ struct Index {
         .margin('10%')
 
       Text('fontWeight').fontColor(0xCCCCCC)
-      Sets font weight.
+      // Set the font weight.
       TextClock()
         .fontWeight(FontWeight.Normal)
       TextClock()
@@ -640,3 +652,4 @@ struct Index {
   }
 }
 ```
+![TextClockFontExample](figures/text_clock_font_example.png)

@@ -2,8 +2,8 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @HarMonkey-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
@@ -25,7 +25,7 @@ add(attributes: AssetMap): Promise\<void>
 
 新增一条关键资产。使用Promise异步回调。
 
-设置[IS_PERSISTENT](#tag)属性时，需要申请ohos.permission.STORE_PERSISTENT_DATA权限，申请方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
+设置[Tag.IS_PERSISTENT](#tag)属性时，需要申请ohos.permission.STORE_PERSISTENT_DATA权限，申请方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -45,7 +45,7 @@ add(attributes: AssetMap): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
 | 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
@@ -92,7 +92,7 @@ addSync(attributes: AssetMap): void
 
 新增一条关键资产，使用同步方式返回结果。
 
-如果要设置[IS_PERSISTENT](#tag)属性，需要申请ohos.permission.STORE_PERSISTENT_DATA权限，申请方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
+如果要设置[Tag.IS_PERSISTENT](#tag)属性，需要申请ohos.permission.STORE_PERSISTENT_DATA权限，申请方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -106,7 +106,7 @@ addSync(attributes: AssetMap): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
 | 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
@@ -151,9 +151,9 @@ batchAdd(attributesArray: Array\<AssetMap>): Promise\<BatchResult>
 
 批量新增关键资产。使用Promise异步回调。
 
-设置[IS_PERSISTENT](#tag)属性时，需要申请ohos.permission.STORE_PERSISTENT_DATA权限，申请方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
+设置[Tag.IS_PERSISTENT](#tag)属性时，需要申请ohos.permission.STORE_PERSISTENT_DATA权限，申请方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
 
-批量新增的关键资产必须具有相同的[GROUP_ID](#tag)和[REQUIRE_ATTR_ENCRYPTED](#tag)属性。
+批量新增的关键资产必须具有相同的[Tag.GROUP_ID](#tag)和[Tag.REQUIRE_ATTR_ENCRYPTED](#tag)属性。
 
 批量新增的关键资产数量最大值为100。
 
@@ -165,7 +165,7 @@ batchAdd(attributesArray: Array\<AssetMap>): Promise\<BatchResult>
 
 | 参数名     | 类型     | 必填 | 说明                                                         |
 | ---------- | -------- | ---- | ------------------------------------------------------------ |
-| attributesArray | Array\<[AssetMap](#assetmap)> | 是   | 待新增关键资产的属性集合数组，包括关键资产明文、访问控制属性、自定义数据等。 |
+| attributesArray | Array\<[AssetMap](#assetmap)> | 是   | 待新增关键资产的属性集合数组，包括关键资产明文、访问控制属性、自定义数据等。数组长度最大值为100。 |
 
 **返回值：**
 
@@ -246,7 +246,7 @@ remove(query: AssetMap): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
 | 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
@@ -298,7 +298,7 @@ removeSync(query: AssetMap): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
 | 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
@@ -336,7 +336,7 @@ batchRemove(assetsToBeRemoved: Array\<AssetMap>): Promise\<void>
 
 批量删除符合条件的关键资产。使用Promise异步回调。
 
-批量删除的关键资产必须具有相同的[GROUP_ID](#tag)和[REQUIRE_ATTR_ENCRYPTED](#tag)属性。
+批量删除的关键资产必须具有相同的[Tag.GROUP_ID](#tag)和[Tag.REQUIRE_ATTR_ENCRYPTED](#tag)属性。
 
 批量删除的关键资产数量最大值为100。
 
@@ -348,7 +348,7 @@ batchRemove(assetsToBeRemoved: Array\<AssetMap>): Promise\<void>
 
 | 参数名     | 类型     | 必填 | 说明                                                         |
 | ---------- | -------- | ---- | ------------------------------------------------------------ |
-| assetsToBeRemoved | Array\<[AssetMap](#assetmap)> | 是   | 待删除关键资产的搜索条件数组，如别名、访问控制属性、自定义数据等。 |
+| assetsToBeRemoved | Array\<[AssetMap](#assetmap)> | 是   | 待删除关键资产的搜索条件数组，如别名、访问控制属性、自定义数据等。数组长度最大值为100。 |
 
 **返回值：**
 
@@ -423,7 +423,7 @@ update(query: AssetMap, attributesToUpdate: AssetMap): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
 | 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
@@ -480,7 +480,7 @@ updateSync(query: AssetMap, attributesToUpdate: AssetMap): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
 | 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
@@ -522,7 +522,7 @@ batchUpdate(sourceAttributes: Array\<AssetMap>, destAttributes: Array\<AssetMap>
 
 批量更新符合条件的关键资产。使用Promise异步回调。
 
-批量更新的关键资产必须具有相同的[GROUP_ID](#tag)和[REQUIRE_ATTR_ENCRYPTED](#tag)属性。
+批量更新的关键资产必须具有相同的[Tag.GROUP_ID](#tag)和[Tag.REQUIRE_ATTR_ENCRYPTED](#tag)属性。
 
 批量更新的关键资产数量最大值为100。
 
@@ -534,8 +534,8 @@ batchUpdate(sourceAttributes: Array\<AssetMap>, destAttributes: Array\<AssetMap>
 
 | 参数名             | 类型     | 必填 | 说明                                                         |
 | ------------------ | -------- | ---- | ------------------------------------------------------------ |
-| sourceAttributes | Array\<[AssetMap](#assetmap)> | 是   | 待更新关键资产的搜索条件数组。 |
-| destAttributes | Array\<[AssetMap](#assetmap)> | 是   | 待更新关键资产的属性集合数组。 |
+| sourceAttributes | Array\<[AssetMap](#assetmap)> | 是   | 待更新关键资产的搜索条件数组。数组最大长度为100，数组中所有元素的[Tag.GROUP_ID](#tag)和[Tag.REQUIRE_ATTR_ENCRYPTED](#tag)属性值必须相同。 |
+| destAttributes | Array\<[AssetMap](#assetmap)> | 是   | 待更新关键资产的属性集合数组。数组最大长度为100，且应与sourceAttributes长度保持一致，数组中所有元素的[Tag.GROUP_ID](#tag)和[Tag.REQUIRE_ATTR_ENCRYPTED](#tag)属性值必须相同。 |
 
 **返回值：**
 
@@ -556,6 +556,7 @@ batchUpdate(sourceAttributes: Array\<AssetMap>, destAttributes: Array\<AssetMap>
 | 24000010 | IPC failed.                                |
 | 24000011 | Calling the Bundle Manager service failed. |
 | 24000012 | Calling the OS Account service failed.     |
+| 24000013 | Calling the Access Token service failed.   |
 | 24000015 | Getting the system time failed.            |
 | 24000019 | Each value of [Tag.GROUP_ID](#tag) and [Tag.REQUIRE_ATTR_ENCRYPTED](#tag) in the array is not consistent. |
 
@@ -615,7 +616,7 @@ preQuery(query: AssetMap): Promise\<Uint8Array>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
 | 错误码ID | 错误信息                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -648,7 +649,7 @@ function stringToArray(str: string): Uint8Array {
 let query: asset.AssetMap = new Map();
 query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
 asset.preQuery(query).then((challenge: Uint8Array) => {
-  console.info(`Succeeded in pre-querying Asset.`);
+  console.info(`Succeeded in pre-querying Asset, the challenge is: `, challenge);
 });
 ```
 
@@ -676,7 +677,7 @@ preQuerySync(query: AssetMap): Uint8Array
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
 | 错误码ID | 错误信息                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -738,7 +739,7 @@ query(query: AssetMap): Promise\<Array\<AssetMap>>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
 | 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
@@ -808,7 +809,7 @@ querySync(query: AssetMap): Array\<AssetMap>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
 | 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
@@ -875,7 +876,7 @@ postQuery(handle: AssetMap): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
 | 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
@@ -918,7 +919,7 @@ postQuerySync(handle: AssetMap): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)。
 
 | 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
@@ -1016,13 +1017,13 @@ asset.querySyncResult(query).then((res: asset.SyncResult) => {
 | SECRET                    | TagType.BYTES &#124; 0x01  | 关键资产明文。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                                                 |
 | ALIAS                     | TagType.BYTES &#124; 0x02 | 关键资产别名，每条关键资产的唯一索引。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                         |
 | ACCESSIBILITY             | TagType.NUMBER &#124; 0x03 | 基于锁屏状态的访问控制。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                                       |
-| REQUIRE_PASSWORD_SET      | TagType.BOOL &#124; 0x04                   | 是否仅在设置了锁屏密码的情况下，可访问关键资产。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                 |
+| REQUIRE_PASSWORD_SET      | TagType.BOOL &#124; 0x04                   | 是否仅在设置了锁屏密码的情况下，可访问关键资产。true表示仅在设置了锁屏密码时可访问，false表示不受锁屏密码限制。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                 |
 | AUTH_TYPE                 | TagType.NUMBER &#124; 0x05 | 访问关键资产所需的用户认证类型。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                               |
-| AUTH_VALIDITY_PERIOD      | TagType.NUMBER &#124; 0x06 | 用户认证的有效期。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                                             |
+| AUTH_VALIDITY_PERIOD      | TagType.NUMBER &#124; 0x06 | 用户认证的有效期，单位为秒。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                                             |
 | AUTH_CHALLENGE            | TagType.BYTES &#124; 0x07     | 用户认证的挑战值。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                                         |
 | AUTH_TOKEN                | TagType.BYTES &#124; 0x08    | 用户认证通过的授权令牌。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                                           |
 | SYNC_TYPE                 | TagType.NUMBER &#124; 0x10 | 关键资产支持的同步类型。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                                       |
-| IS_PERSISTENT             | TagType.BOOL &#124; 0x11                         | 在应用卸载时是否保留关键资产。 |
+| IS_PERSISTENT             | TagType.BOOL &#124; 0x11                         | 在应用卸载时是否保留关键资产。true表示应用卸载时保留关键资产，false表示不保留关键资产。 |
 | DATA_LABEL_CRITICAL_1     | TagType.BYTES &#124; 0x20 | 关键资产附属信息，内容由业务自定义且**有完整性保护**。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。             |
 | DATA_LABEL_CRITICAL_2 | TagType.BYTES &#124; 0x21 | 关键资产附属信息，内容由业务自定义且**有完整性保护**。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | DATA_LABEL_CRITICAL_3 | TagType.BYTES &#124; 0x22 | 关键资产附属信息，内容由业务自定义且**有完整性保护**。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
@@ -1036,14 +1037,14 @@ asset.querySyncResult(query).then((res: asset.SyncResult) => {
 | DATA_LABEL_NORMAL_LOCAL_3<sup>12+</sup> | TagType.BYTES &#124; 0x36 | 关键资产附属的本地信息，内容由业务自定义且**无完整性保护**，该项信息不会进行同步。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | DATA_LABEL_NORMAL_LOCAL_4<sup>12+</sup> | TagType.BYTES &#124; 0x37 | 关键资产附属的本地信息，内容由业务自定义且**无完整性保护**，该项信息不会进行同步。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | RETURN_TYPE               | TagType.NUMBER &#124; 0x40 | 关键资产查询返回的结果类型。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                                         |
-| RETURN_LIMIT              | TagType.NUMBER &#124; 0x41                      | 关键资产查询返回的结果数量。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                                         |
+| RETURN_LIMIT              | TagType.NUMBER &#124; 0x41                      | 关键资产查询返回的结果的最大数量。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                                         |
 | RETURN_OFFSET             | TagType.NUMBER &#124; 0x42   | 关键资产查询返回的结果偏移量。<br>**说明：** 用于分批查询场景，指定从第几个开始返回。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                                 |
 | RETURN_ORDERED_BY         | TagType.NUMBER &#124; 0x43 | 关键资产查询返回的结果排序依据，仅支持按照附属信息排序。<br>**说明：** 默认按照关键资产新增的顺序返回。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | CONFLICT_RESOLUTION       | TagType.NUMBER &#124; 0x44 | 新增关键资产时的冲突（如：别名相同）处理策略。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。                             |
 | UPDATE_TIME<sup>12+</sup> | TagType.BYTES &#124; 0x45 | 数据的更新时间（时间戳形式）。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | OPERATION_TYPE<sup>12+</sup> | TagType.NUMBER &#124; 0x46 | 附加的操作类型。 |
-| REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | TagType.BOOL &#124; 0x47 | 是否加密业务自定义附属信息。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
-| GROUP_ID<sup>18+</sup> | TagType.BYTES &#124; 0x48 | 关键资产所属群组。<br> |
+| REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | TagType.BOOL &#124; 0x47 | 是否加密业务自定义附属信息。true表示加密业务自定义附属信息，false表示不加密。<br>**说明：** 批量新增、删除、更新关键资产时，数组中的每项必须具有相同的REQUIRE_ATTR_ENCRYPTED属性值。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| GROUP_ID<sup>18+</sup> | TagType.BYTES &#124; 0x48 | 关键资产所属群组。<br>**说明：** 批量新增、删除、更新关键资产时，数组中的每项必须具有相同的GROUP_ID属性值。 |
 | WRAP_TYPE<sup>18+</sup> | TagType.NUMBER &#124; 0x49 | 关键资产支持的加密导入导出类型。<br> |
 
 ## Value
@@ -1234,4 +1235,4 @@ type AssetMap = Map\<Tag, Value>
 | LIMIT_EXCEEDED | 24000016   |缓存数量超限。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | UNSUPPORTED | 24000017   |该子功能不支持。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | PARAM_VERIFICATION_FAILED<sup>20+</sup> | 24000018   |参数校验失败。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
-| INCONSISTENT_ATTRIBUTE | 24000019   |属性值不一致。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。|
+| INCONSISTENT_ATTRIBUTE | 24000019   |属性值不一致。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|

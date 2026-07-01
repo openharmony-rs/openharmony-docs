@@ -6,9 +6,9 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-**PhotoSession** inherits from [Session](arkts-apis-camera-Session.md), [Flash](arkts-apis-camera-Flash.md), [AutoExposure](arkts-apis-camera-AutoExposure.md), [WhiteBalance](arkts-apis-camera-WhiteBalance.md), [Focus](arkts-apis-camera-Focus.md), [Zoom](arkts-apis-camera-Zoom.md), [ColorManagement](arkts-apis-camera-ColorManagement.md), [AutoDeviceSwitch](arkts-apis-camera-AutoDeviceSwitch.md), and [Macro](arkts-apis-camera-Macro.md).
+**PhotoSession** inherits from [Session](arkts-apis-camera-Session.md), [Flash](arkts-apis-camera-Flash.md), [AutoExposure](arkts-apis-camera-AutoExposure.md), [WhiteBalance](arkts-apis-camera-WhiteBalance.md), [Focus](arkts-apis-camera-Focus.md), [Zoom](arkts-apis-camera-Zoom.md), [ColorManagement](arkts-apis-camera-ColorManagement.md), [AutoDeviceSwitch](arkts-apis-camera-AutoDeviceSwitch.md), [Macro](arkts-apis-camera-Macro.md), [ManualExposure](arkts-apis-camera-ManualExposure.md), [ManualFocus](arkts-apis-camera-ManualFocus.md), [ManualIso](arkts-apis-camera-ManualIso.md), [OIS](arkts-apis-camera-OIS.md), and [Aperture](arkts-apis-camera-Aperture.md).
 
-It implements a photo session, which provides operations on the flash, exposure, white balance, focus, zoom, color space, and macro mode.
+It implements a photo session, which provides operations on the flash, exposure, white balance, focus, zoom, color space, macro mode, manual exposure, manual focus, manual ISO setting, optical image stabilization (OIS), and aperture.
 
 **PhotoSession** is provided for the default photo mode. It is used to take standard photos. It supports multiple photo formats and resolutions, which are suitable for most daily photo capture scenarios.
 
@@ -50,7 +50,7 @@ Checks whether this session supports a preconfigured resolution.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID  | Error Message                       |
+| Error Code  | Error Message                       |
 |---------|-----------------------------|
 | 7400201 | Camera service fatal error. |
 
@@ -92,7 +92,7 @@ Preconfigures this session.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID  | Error Message                       |
+| Error Code  | Error Message                       |
 |---------|-----------------------------|
 | 7400201 | Camera service fatal error. |
 
@@ -486,5 +486,113 @@ Unsubscribes from macro state change events.
 ```ts
 function unregisterMacroStatusChanged(photoSession: camera.PhotoSession): void {
   photoSession.off('macroStatusChanged');
+}
+```
+
+## onIsoInfoChange<sup>24+</sup>
+
+onIsoInfoChange(callback: Callback\<IsoInfo\>): void
+
+Subscribes to ISO information change events.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name    | Type           | Mandatory| Description      |
+| -------- | -----------------| ---- | --------- |
+| callback | Callback\<[IsoInfo](arkts-apis-camera-i.md#isoinfo22)\> | Yes  | Callback used to obtain the ISO information.|
+
+**Example**
+
+```ts
+function onIsoInfoChange(photoSession: camera.PhotoSession): void {
+  photoSession.onIsoInfoChange((isoInfo: camera.IsoInfo) => {
+    console.info(`ISO info changed, iso: ${isoInfo.iso}`);
+  });
+}
+```
+
+## offIsoInfoChange<sup>24+</sup>
+
+offIsoInfoChange(callback?: Callback\<IsoInfo\>): void
+
+Unsubscribes from ISO information change events.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name    | Type           | Mandatory| Description      |
+| -------- | -----------------| ---- | --------- |
+| callback | Callback\<[IsoInfo](arkts-apis-camera-i.md#isoinfo22)\> | No  | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.|
+
+**Example**
+
+```ts
+function offIsoInfoChange(photoSession: camera.PhotoSession): void {
+  photoSession.offIsoInfoChange();
+}
+```
+
+## onExposureInfoChange<sup>24+</sup>
+
+onExposureInfoChange(callback: Callback\<ExposureInfo\>): void
+
+Subscribes to exposure information change events. After the exposure parameters are modified, the system returns the updated exposure information. This API uses an asynchronous callback to return the result.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name    | Type           | Mandatory| Description      |
+| -------- | -----------------| ---- | --------- |
+| callback | Callback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\> | Yes  | Callback used to obtain the exposure information.|
+
+**Example**
+
+```ts
+function onExposureInfoChange(photoSession: camera.PhotoSession): void {
+  photoSession.onExposureInfoChange((exposureInfo: camera.ExposureInfo) => {
+    console.info(`Exposure info changed, exposureTime: ${exposureInfo.exposureTime}`);
+  });
+}
+```
+
+## offExposureInfoChange<sup>24+</sup>
+
+offExposureInfoChange(callback?: Callback\<ExposureInfo\>): void
+
+Unsubscribes from exposure information change events. If you have subscribed to exposure information change events, cancel the subscription before releasing the camera object. This API uses an asynchronous callback to return the result.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name    | Type           | Mandatory| Description      |
+| -------- | -----------------| ---- | --------- |
+| callback | Callback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\> | No  | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.|
+
+**Example**
+
+```ts
+function offExposureInfoChange(photoSession: camera.PhotoSession): void {
+  photoSession.offExposureInfoChange();
 }
 ```

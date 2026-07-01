@@ -1,7 +1,7 @@
 # JSVM_ScriptOrigin
 <!--Kit: Common Basic Capability-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -13,6 +13,8 @@ typedef struct {...} JSVM_ScriptOrigin
 ## 概述
 
 某段JavaScript代码的原始信息，如sourceMap路径、源文件名、源文件中的起始行/列号等。
+
+**系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 12
 

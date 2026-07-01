@@ -5,7 +5,7 @@
 <!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供延迟任务注册、取消、查询的能力。在开发过程中，对于实时性要求不高的任务，可以调用本模块接口注册延迟任务，在系统空闲时根据性能、功耗、热等情况进行调度执行。开发指导请参考[延迟任务开发指南](../../task-management/work-scheduler.md)。
 
@@ -50,36 +50,36 @@ startWork(work: WorkInfo): void
 **示例：**
 
 ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { workScheduler } from '@kit.BackgroundTasksKit';
-  
-  let workInfo: workScheduler.WorkInfo = {
-      workId: 1,
-      batteryStatus:workScheduler.BatteryStatus.BATTERY_STATUS_LOW,
-      isRepeat: false,
-      isPersisted: true,
-      bundleName: "com.example.myapplication",
-      abilityName: "MyExtension",
-      parameters: {
-          mykey0: 1,
-          mykey1: "string value",
-          mykey2: true,
-          mykey3: 1.5
-      }
+import { BusinessError } from '@kit.BasicServicesKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
+
+let workInfo: workScheduler.WorkInfo = {
+  workId: 1,
+  batteryStatus: workScheduler.BatteryStatus.BATTERY_STATUS_LOW,
+  isRepeat: false,
+  isPersisted: true,
+  bundleName: 'com.example.myapplication',
+  abilityName: 'MyExtension',
+  parameters: {
+    intValue: 1,
+    stringValue: 'string value',
+    booleanValue: true,
+    floatValue: 1.5
   }
-  try{
-    workScheduler.startWork(workInfo);
-    console.info('workschedulerLog startWork success');
-  } catch (error) {
-    console.error(`workschedulerLog startwork failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
-  }
+}
+try {
+  workScheduler.startWork(workInfo);
+  console.info('workschedulerLog startWork success');
+} catch (error) {
+  console.error(`workschedulerLog startwork failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+}
 ```
 
 ## workScheduler.stopWork
 
 stopWork(work: WorkInfo, needCancel?: boolean): void
 
-取消延迟任务。
+停止当前执行的延迟任务，或移除周期性延迟任务，后续不再执行。
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -88,7 +88,7 @@ stopWork(work: WorkInfo, needCancel?: boolean): void
 | 参数名        | 类型                    | 必填   | 说明         |
 | ---------- | --------------------- | ---- | ---------- |
 | work       | [WorkInfo](#workinfo) | 是    | 要停止或移除的延迟任务。 |
-| needCancel | boolean               | 否    | 是否需要移除任务。<br>true表示停止并移除，false表示只停止不移除。默认为false。|
+| needCancel | boolean               | 否    | 是否需要移除任务。<br>true表示停止并移除，false表示只停止不移除。默认为false。<br>如果任务后续不再需要，建议设置为true以释放系统资源；如果任务可能需要重新触发，建议设置为false。|
 
 **错误码：**
 
@@ -105,29 +105,30 @@ stopWork(work: WorkInfo, needCancel?: boolean): void
 **示例：**
 
 ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { workScheduler } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
 
-  let workInfo: workScheduler.WorkInfo = {
-      workId: 1,
-      batteryStatus:workScheduler.BatteryStatus.BATTERY_STATUS_LOW,
-      isRepeat: false,
-      isPersisted: true,
-      bundleName: "com.example.myapplication",
-      abilityName: "MyExtension",
-      parameters: {
-          mykey0: 1,
-          mykey1: "string value",
-          mykey2: true,
-          mykey3: 1.5
-      }
-     }
-  try{
-    workScheduler.stopWork(workInfo, false);
-    console.info('workschedulerLog stopWork success');
-  } catch (error) {
-    console.error(`workschedulerLog stopWork failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+let workInfo: workScheduler.WorkInfo = {
+  workId: 1,
+  batteryStatus: workScheduler.BatteryStatus.BATTERY_STATUS_LOW,
+  isRepeat: false,
+  isPersisted: true,
+  bundleName: 'com.example.myapplication',
+  abilityName: 'MyExtension',
+  parameters: {
+    intValue: 1,
+    stringValue: 'string value',
+    booleanValue: true,
+    floatValue: 1.5
   }
+}
+try {
+  // 停止延迟任务，false表示只停止不移除任务
+  workScheduler.stopWork(workInfo, false);
+  console.info('workschedulerLog stopWork success');
+} catch (error) {
+  console.error(`workschedulerLog stopWork failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+}
 ```
 
 ## workScheduler.getWorkStatus
@@ -142,7 +143,7 @@ getWorkStatus(workId: number, callback : AsyncCallback\<WorkInfo>): void
 
 | 参数名      | 类型                                    | 必填   | 说明                                       |
 | -------- | ------------------------------------- | ---- | ---------------------------------------- |
-| workId   | number                                | 是    | 延迟任务Id。                                 |
+| workId   | number                                | 是    | 延迟任务ID。指定延迟任务的唯一标识符，用于查询指定延迟任务的状态信息。  |
 | callback | AsyncCallback\<[WorkInfo](#workinfo)> | 是    | 回调函数。如果workId有效，则返回从WorkSchedulerService获取的任务，否则抛出异常。 |
 
 **错误码：**
@@ -160,16 +161,16 @@ getWorkStatus(workId: number, callback : AsyncCallback\<WorkInfo>): void
 **示例：**
 
 ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { workScheduler } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
 
-  workScheduler.getWorkStatus(50, (error: BusinessError, res: workScheduler.WorkInfo) => {
-    if (error) {
-      console.error(`workschedulerLog getWorkStatus failed. code is ${error.code} message is ${error.message}`);
-    } else {
-      console.info(`workschedulerLog getWorkStatus success, ${JSON.stringify(res)}`);
-    }
-  });
+workScheduler.getWorkStatus(50, (error: BusinessError, res: workScheduler.WorkInfo) => {
+  if (error) {
+    console.error(`workschedulerLog getWorkStatus failed. code is ${error.code} message is ${error.message}`);
+  } else {
+    console.info(`workschedulerLog getWorkStatus success, ${JSON.stringify(res)}`);
+  }
+});
 ```
 
 ## workScheduler.getWorkStatus
@@ -184,7 +185,7 @@ getWorkStatus(workId: number): Promise\<WorkInfo>
 
 | 参数名    | 类型     | 必填   | 说明       |
 | ------ | ------ | ---- | -------- |
-| workId | number | 是    | 延迟任务Id。 |
+| workId | number | 是    | 延迟任务ID。指定延迟任务的唯一标识符，用于查询指定延迟任务的状态信息。 |
 
 **返回值：**
 
@@ -207,25 +208,25 @@ getWorkStatus(workId: number): Promise\<WorkInfo>
 **示例：**
 
 ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { workScheduler } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
 
-  workScheduler.getWorkStatus(50).then((res: workScheduler.WorkInfo) => {
-    console.info(`workschedulerLog getWorkStatus success, ${JSON.stringify(res)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`workschedulerLog getWorkStatus failed. code is ${error.code} message is ${error.message}`);
-  })
+workScheduler.getWorkStatus(50).then((res: workScheduler.WorkInfo) => {
+  console.info(`workschedulerLog getWorkStatus success, ${JSON.stringify(res)}`);
+}).catch((error: BusinessError) => {
+  console.error(`workschedulerLog getWorkStatus failed. code is ${error.code} message is ${error.message}`);
+})
 ```
 
-## workScheduler.obtainAllWorks<sup>(deprecated)<sup>
+## workScheduler.obtainAllWorks<sup>(deprecated)</sup>
 
-obtainAllWorks(callback : AsyncCallback\<void>) : Array\<WorkInfo>
+obtainAllWorks(callback: AsyncCallback\<void>) : Array\<WorkInfo>
 
 获取当前应用所有的延迟任务，使用Callback异步回调。
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 10开始废弃，建议使用[obtainAllWorks<sup>10+<sup>](#workschedulerobtainallworks10)替代。
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[obtainAllWorks<sup>10+</sup>](#workschedulerobtainallworks10)替代。
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -254,7 +255,7 @@ obtainAllWorks(callback : AsyncCallback\<void>) : Array\<WorkInfo>
 
 ## workScheduler.obtainAllWorks<sup>10+<sup>
 
-obtainAllWorks(callback : AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;): void
+obtainAllWorks(callback: AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;): void
 
 获取当前应用所有的延迟任务，使用Callback异步回调。
 
@@ -264,7 +265,7 @@ obtainAllWorks(callback : AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;): void
 
 | 参数名      | 类型                   | 必填   | 说明                              |
 | -------- | -------------------- | ---- | ------------------------------- |
-| callback |  AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt; | 是    | 回调函数，获取成功时，返回当前应用所有的延迟任务列表，否则抛出异常。 |
+| callback |  AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt; | 是    | 回调函数，获取成功时，error为undefined，res为当前应用所有的延迟任务列表；否则为错误对象。 |
 
 **错误码：**
 
@@ -280,16 +281,16 @@ obtainAllWorks(callback : AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;): void
 **示例：**
 
 ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { workScheduler } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
 
-  workScheduler.obtainAllWorks((error: BusinessError, res: Array<workScheduler.WorkInfo>) =>{
-    if (error) {
-      console.error(`workschedulerLog obtainAllWorks failed. code is ${error.code} message is ${error.message}`);
-    } else {
-      console.info(`workschedulerLog obtainAllWorks success, data is: ${JSON.stringify(res)}`);
-    }
-  });
+workScheduler.obtainAllWorks((error: BusinessError, res: Array<workScheduler.WorkInfo>) => {
+  if (error) {
+    console.error(`workschedulerLog obtainAllWorks failed. code is ${error.code} message is ${error.message}`);
+  } else {
+    console.info(`workschedulerLog obtainAllWorks success, data is: ${JSON.stringify(res)}`);
+  }
+});
 ```
 
 ## workScheduler.obtainAllWorks
@@ -320,14 +321,14 @@ obtainAllWorks(): Promise\<Array\<WorkInfo>>
 **示例：**
 
 ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { workScheduler } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
 
-  workScheduler.obtainAllWorks().then((res: Array<workScheduler.WorkInfo>) => {
-    console.info(`workschedulerLog obtainAllWorks success, data is: ${JSON.stringify(res)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`workschedulerLog obtainAllWorks failed. code is ${error.code} message is ${error.message}`);
-  })
+workScheduler.obtainAllWorks().then((res: Array<workScheduler.WorkInfo>) => {
+  console.info(`workschedulerLog obtainAllWorks success, data is: ${JSON.stringify(res)}`);
+}).catch((error: BusinessError) => {
+  console.error(`workschedulerLog obtainAllWorks failed. code is ${error.code} message is ${error.message}`);
+})
 ```
 
 ## workScheduler.stopAndClearWorks
@@ -352,22 +353,22 @@ stopAndClearWorks(): void
 **示例：**
 
 ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { workScheduler } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
 
-  try{
-    workScheduler.stopAndClearWorks();
-    console.info(`workschedulerLog stopAndClearWorks success`);
-  } catch (error) {
-    console.error(`workschedulerLog stopAndClearWorks failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
-  }
+try {
+  workScheduler.stopAndClearWorks();
+  console.info(`workschedulerLog stopAndClearWorks success`);
+} catch (error) {
+  console.error(`workschedulerLog stopAndClearWorks failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+}
 ```
 
-## workScheduler.isLastWorkTimeOut<sup>(deprecated)<sup>
+## workScheduler.isLastWorkTimeOut<sup>(deprecated)</sup>
 
 isLastWorkTimeOut(workId: number, callback : AsyncCallback\<void>): boolean
 
-> 从API version 9开始支持，从API version 10开始废弃，建议使用[isLastWorkTimeOut<sup>10+<sup>](#workschedulerislastworktimeout10)替代。
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[isLastWorkTimeOut<sup>10+</sup>](#workschedulerislastworktimeout10)替代。
 
 检查延迟任务的最后一次执行是否超时，使用Callback异步回调。
 
@@ -378,7 +379,7 @@ isLastWorkTimeOut(workId: number, callback : AsyncCallback\<void>): boolean
 | 参数名      | 类型                   | 必填   | 说明                                       |
 | -------- | -------------------- | ---- | ---------------------------------------- |
 | workId   | number               | 是    | 指定延迟任务的Id。                                 |
-| callback | AsyncCallback\<void> | 是    | 回调函数。 |
+| callback | AsyncCallback\<void> | 是    | 回调函数。当检查延迟任务的最后一次执行是否超时成功时，error为undefined，否则为错误对象。 |
 
 **返回值：**
 
@@ -400,7 +401,7 @@ isLastWorkTimeOut(workId: number, callback : AsyncCallback\<void>): boolean
 
 ## workScheduler.isLastWorkTimeOut<sup>10+<sup>
 
-isLastWorkTimeOut(workId: number, callback : AsyncCallback\<boolean>): void
+isLastWorkTimeOut(workId: number, callback: AsyncCallback\<boolean>): void
 
 检查延迟任务的最后一次执行是否超时，使用Callback异步回调。
 
@@ -428,16 +429,16 @@ isLastWorkTimeOut(workId: number, callback : AsyncCallback\<boolean>): void
 **示例：**
 
 ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { workScheduler } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
 
-  workScheduler.isLastWorkTimeOut(500, (error: BusinessError, res: boolean) =>{
-    if (error) {
-      console.error(`workschedulerLog isLastWorkTimeOut failed. code is ${error.code} message is ${error.message}`);
-    } else {
-      console.info(`workschedulerLog isLastWorkTimeOut success, data is: ${res}`);
-    }
-  });
+workScheduler.isLastWorkTimeOut(500, (error: BusinessError, res: boolean) => {
+  if (error) {
+    console.error(`workschedulerLog isLastWorkTimeOut failed. code is ${error.code} message is ${error.message}`);
+  } else {
+    console.info(`workschedulerLog isLastWorkTimeOut success, data is: ${res}`);
+  }
+});
 ```
 
 ## workScheduler.isLastWorkTimeOut
@@ -475,21 +476,21 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 **示例：**
 
 ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { workScheduler } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
 
-  workScheduler.isLastWorkTimeOut(500)
-    .then((res: boolean) => {
-      console.info(`workschedulerLog isLastWorkTimeOut success, data is: ${res}`);
-    })
-    .catch((error: BusinessError) =>  {
-      console.error(`workschedulerLog isLastWorkTimeOut failed. code is ${error.code} message is ${error.message}`);
-    });
+workScheduler.isLastWorkTimeOut(500)
+  .then((res: boolean) => {
+    console.info(`workschedulerLog isLastWorkTimeOut success, data is: ${res}`);
+  })
+  .catch((error: BusinessError) => {
+    console.error(`workschedulerLog isLastWorkTimeOut failed. code is ${error.code} message is ${error.message}`);
+  });
 ```
 
 ## WorkInfo
 
-延迟任务的具体信息, 用于设置延迟任务的触发条件等。
+延迟任务的具体信息，用于设置延迟任务的触发条件等。
 
 >  **说明：**
 >
@@ -510,13 +511,13 @@ isLastWorkTimeOut(workId: number): Promise\<boolean>
 | abilityName     | string                            | 否    | 否    |包内ability名称。 |
 | networkType     | [NetworkType](#networktype)       | 否    | 是    |网络类型。             |
 | isCharging      | boolean                           | 否    | 是    |是否充电，默认为false。<br>- true表示充电触发延迟任务回调。<br>- false表示不充电触发延迟任务回调。|
-| chargerType     | [ChargingType](#chargingtype)     | 否    | 是    |充电类型。             |
-| batteryLevel    | number                            | 否    | 是    |电量。<br>取值范围：[0, 100]        |
+| chargerType     | [ChargingType](#chargingtype)     | 否    | 是    |充电类型。需要与isCharging参数配合使用，当isCharging为true时，可进一步指定触发延迟任务的充电器类型。            |
+| batteryLevel    | number                            | 否    | 是    |电量。当设备电量高于或等于该值时触发延迟任务回调。<br>取值范围：[0, 100]        |
 | batteryStatus   | [BatteryStatus](#batterystatus)   | 否    | 是    |电池状态。             |
 | storageRequest  | [StorageRequest](#storagerequest) | 否    | 是    |存储状态。             |
 | isRepeat        | boolean                           | 否    | 是    |是否循环任务，默认为false。<br>- true表示循环任务。 <br>- false表示非循环任务。 |
 | repeatCycleTime | number                            | 否    | 是    |循环间隔，单位：ms。             |
-| repeatCount     | number                            | 否    | 是    |循环次数。             |
+| repeatCount     | number                            | 否    | 是    |循环次数。取值范围：正整数（大于0）。             |
 | isPersisted     | boolean                           | 否    | 是    |注册的延迟任务是否可保存在系统中，默认为false。<br>- true表示可保存，即系统重启后，任务可恢复。<br>- false表示不可保存。|
 | isDeepIdle      | boolean                           | 否    | 是    |是否要求设备进入空闲状态，默认为false。<br>- true表示需要。<br>- false表示不需要。   |
 | idleWaitTime    | number                            | 否    | 是    |空闲等待时间，单位：ms。           |

@@ -27,6 +27,8 @@ Multiple child components are supported.
 
 RelativeContainer()
 
+The **RelativeContainer** component is a container component used for relative layout of elements in complex scenarios.
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.

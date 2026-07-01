@@ -24,11 +24,12 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 Enumerates the error codes used in the certificate management APIs.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
 | CM_ERROR_NOT_SYSTEM_APP   | 202      | The caller is not a system application.<br> **System API**: This is a system API.|
+| CM_ERROR_PASSWORD_IS_ERR   | 17500008      | The password is incorrect.<br> **System API**: This is a system API.<br>**Since**: 26.0.0|
 
 ## certificateManager.getAllAppPrivateCertificates
 
@@ -38,7 +39,7 @@ Obtains all private credentials. This API uses an asynchronous callback to retur
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
 
@@ -52,7 +53,7 @@ Obtains all private credentials. This API uses an asynchronous callback to retur
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -91,7 +92,7 @@ Obtains all private credentials. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
 
@@ -105,7 +106,7 @@ Obtains all private credentials. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -126,7 +127,8 @@ try {
       let list = cmResult.credentialList;
       console.info('Succeeded in getting all app private certificates.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to get all app private certificates. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -142,7 +144,7 @@ Obtains all system credentials. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
 
@@ -156,7 +158,7 @@ Obtains all system credentials. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -177,7 +179,8 @@ try {
       let list = cmResult.credentialList;
       console.info('Succeeded in getting all system app certificates.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to get all system app certificates. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
@@ -191,13 +194,13 @@ getSystemTrustedCertificate(certUri: string): Promise\<CMResult>
 
 Obtains details about a CA certificate trusted by the system. This API is called only by the certificate management application. This API uses a promise to return the result.
 
+**Since**: 26.0.0
+
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
-
-**Since**: 26.0.0
 
 **Parameters**
 
@@ -215,7 +218,7 @@ Obtains details about a CA certificate trusted by the system. This API is called
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -237,10 +240,11 @@ try {
       let cert: certificateManager.CertInfo = cmResult.certInfo;
       console.info('Succeeded in getting system trusted certificate.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to get system trusted certificate. Code: ${err.code}, message: ${err.message}`);
   })
-} catch (error: BusinessError) {
+} catch (error) {
   console.error(`Failed to get system trusted certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -251,13 +255,13 @@ getSystemTrustedCertificateList(): Promise\<CMResult>
 
 Obtains the list of CA certificates trusted by the system. This API is called only by the certificate management application. This API uses a promise to return the result.
 
+**Since**: 26.0.0
+
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
-
-**Since**: 26.0.0
 
 **Return value**
 
@@ -269,7 +273,7 @@ Obtains the list of CA certificates trusted by the system. This API is called on
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -290,10 +294,11 @@ try {
       let list: Array<certificateManager.CertAbstract> = cmResult.certList;
       console.info('Succeeded in getting system trusted certificates.');
     }
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to get system trusted certificates. Code: ${err.code}, message: ${err.message}`);
   })
-} catch (error: BusinessError) {
+} catch (error) {
   console.error(`Failed to get system trusted certificates. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -304,13 +309,13 @@ setCertificateStatus(certUri: string, certType: CertType, enabled: boolean) : Pr
 
 Sets the status of a CA certificate. Currently, only the status of a user's CA certificate can be set. This API is called only by the certificate management application. This API uses a promise to return the result.
 
+**Since**: 26.0.0
+
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_USER_TRUSTED_CERT
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
-
-**Since**: 26.0.0
 
 **Parameters**
 
@@ -330,7 +335,7 @@ Sets the status of a CA certificate. Currently, only the status of a user's CA c
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -348,10 +353,11 @@ try {
   /* Set the user CA certificate status to enabled. */
   certificateManager.setCertificateStatus(certUri, certificateManager.CertType.CA_CERT_USER, true).then(() => {
     console.info('Succeeded in setting certificate status.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to set certificate status. Code: ${err.code}, message: ${err.message}`);
   })
-} catch (error: BusinessError) {
+} catch (error) {
   console.error(`Failed to set certificate status. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -362,13 +368,13 @@ uninstallAllUserTrustedCertificate() : Promise\<void>
 
 Uninstalls all CA certificates trusted by the user. This API is called only by the certificate management application. This API uses a promise to return the result.
 
+**Since**: 26.0.0
+
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_USER_TRUSTED_CERT
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
-
-**Since**: 26.0.0
 
 **Return value**
 
@@ -380,7 +386,7 @@ Uninstalls all CA certificates trusted by the user. This API is called only by t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID| Error Message     |
+| Error Code| Error Message     |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
@@ -394,10 +400,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   certificateManager.uninstallAllUserTrustedCertificate().then(() => {
     console.info('Succeeded in uninstalling all user trusted certificates.');
-  }).catch((err: BusinessError) => {
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
     console.error(`Failed to uninstall all user trusted certificates. Code: ${err.code}, message: ${err.message}`);
   })
-} catch (error: BusinessError) {
+} catch (error) {
   console.error(`Failed to uninstall all user trusted certificates. Code: ${error.code}, message: ${error.message}`);
 }
 ```
@@ -408,13 +415,13 @@ installPublicCertificate(keystore: Uint8Array, keystorePwd: string) : Promise\<C
 
 Installs the public credential of the user. This API is called only by the certificate management application. This API uses a promise to return the result.
 
+**Since**: 26.0.0
+
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
-
-**Since**: 26.0.0
 
 **Parameters**
 
@@ -433,7 +440,7 @@ Installs the public credential of the user. This API is called only by the certi
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID   | Error Message                                                                                                                                           |
+| Error Code   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -455,14 +462,15 @@ let keystore: Uint8Array = new Uint8Array([
 ]);
 let keystorePwd: string = "123456";
 try {
-    certificateManager.installPublicCertificate(keystore, keystorePwd).then((cmResult: certificateManager.CMResult) => {
-        let uri: string = (cmResult?.uri == undefined) ? '' : cmResult.uri;
-        console.info('Succeeded in installing public certificate.');
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to install public certificate. Code: ${err.code}, message: ${err.message}`);
-    })
-} catch (error: BusinessError) {
-    console.error(`Failed to install public certificate. Code: ${error.code}, message: ${error.message}`);
+  certificateManager.installPublicCertificate(keystore, keystorePwd).then((cmResult: certificateManager.CMResult) => {
+    let uri: string = (cmResult?.uri == undefined) ? '' : cmResult.uri;
+    console.info('Succeeded in installing public certificate.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to install public certificate. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to install public certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -472,13 +480,13 @@ uninstallPublicCertificate(keyUri: string) : Promise\<void>
 
 Uninstalls the public credential of the user. This API is called only by the certificate management application. This API uses a promise to return the result.
 
+**Since**: 26.0.0
+
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
-
-**Since**: 26.0.0
 
 **Parameters**
 
@@ -496,7 +504,7 @@ Uninstalls the public credential of the user. This API is called only by the cer
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID   | Error Message                                                                                                                                           |
+| Error Code   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -512,13 +520,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let keyUri: string = 'test'; /* Unique identifier of the user public credential. */
 try {
-    certificateManager.uninstallPublicCertificate(keyUri).then(() => {
-        console.info('Succeeded in uninstalling public certificate.');
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to uninstall public certificate. Code: ${err.code}, message: ${err.message}`);
-    })
-} catch (error: BusinessError) {
-    console.error(`Failed to uninstall public certificate. Code: ${error.code}, message: ${error.message}`);
+  certificateManager.uninstallPublicCertificate(keyUri).then(() => {
+    console.info('Succeeded in uninstalling public certificate.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to uninstall public certificate. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to uninstall public certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -528,13 +537,13 @@ getAllPublicCertificates() : Promise\<CMResult>
 
 Obtains the public credentials of all users. This API is called only by the certificate management application. This API uses a promise to return the result.
 
+**Since**: 26.0.0
+
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
-
-**Since**: 26.0.0
 
 **Return value**
 
@@ -546,7 +555,7 @@ Obtains the public credentials of all users. This API is called only by the cert
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID   | Error Message                                                                                                                                           |
+| Error Code   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -559,20 +568,21 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    certificateManager.getAllPublicCertificates().then((cmResult: certificateManager.CMResult) => {
-        if (cmResult === undefined) { // If the number of public credentials is 0, return undefined in cmResult.
-            console.info('The count of public certificates is 0.');
-        } else if (cmResult.credentialDetailList == undefined) {
-            console.info('The result of getting all public certificates is undefined.');
-        } else {
-            let list: Array<certificateManager.Credential> = cmResult.credentialDetailList;
-            console.info('Succeeded in getting all public certificates.');
-        }
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to get all public certificates. Code: ${err.code}, message: ${err.message}`);
-    })
-} catch (error: BusinessError) {
-    console.error(`Failed to get all public certificates. Code: ${error.code}, message: ${error.message}`);
+  certificateManager.getAllPublicCertificates().then((cmResult: certificateManager.CMResult) => {
+    if (cmResult === undefined) { // If the number of public credentials is 0, return undefined in cmResult.
+      console.info('The count of public certificates is 0.');
+    } else if (cmResult.credentialDetailList == undefined) {
+      console.info('The result of getting all public certificates is undefined.');
+    } else {
+      let list: Array<certificateManager.Credential> = cmResult.credentialDetailList;
+      console.info('Succeeded in getting all public certificates.');
+    }
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to get all public certificates. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to get all public certificates. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -582,13 +592,13 @@ grantPublicCertificate(keyUri: string, clientAppUid: number) : Promise\<CMResult
 
 Grants the permission for an application to use the public credentials of a user. This API is called only by the certificate management application. This API uses a promise to return the result.
 
+**Since**: 26.0.0
+
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
-
-**Since**: 26.0.0
 
 **Parameters**
 
@@ -607,7 +617,7 @@ Grants the permission for an application to use the public credentials of a user
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID   | Error Message                                                                                                                                           |
+| Error Code   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -624,14 +634,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let keyUri: string = 'test'; /* Unique identifier of the user public credential. */
 let clientAppUid: number = 1001; /* Application UID */
 try {
-    certificateManager.grantPublicCertificate(keyUri, clientAppUid).then((cmResult: certificateManager.CMResult) => {
-        let uri: string = (cmResult?.uri == undefined) ? '' : cmResult.uri;
-        console.info('Succeeded in granting public certificate.');
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to grant public certificate. Code: ${err.code}, message: ${err.message}`);
-    })
-} catch (error: BusinessError) {
-    console.error(`Failed to grant public certificate. Code: ${error.code}, message: ${error.message}`);
+  certificateManager.grantPublicCertificate(keyUri, clientAppUid).then((cmResult: certificateManager.CMResult) => {
+    let uri: string = (cmResult?.uri == undefined) ? '' : cmResult.uri;
+    console.info('Succeeded in granting public certificate.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to grant public certificate. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to grant public certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -641,13 +652,13 @@ getAuthorizedAppList(keyUri: string) : Promise\<CMResult>
 
 Obtains the list of authorized applications of a user's public credential. This API is called only by the certificate management application. This API uses a promise to return the result.
 
+**Since**: 26.0.0
+
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
-
-**Since**: 26.0.0
 
 **Parameters**
 
@@ -665,7 +676,7 @@ Obtains the list of authorized applications of a user's public credential. This 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID   | Error Message                                                                                                                                           |
+| Error Code   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -681,18 +692,19 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let keyUri: string = 'test'; /* Unique identifier of the user public credential. */
 try {
-     certificateManager.getAuthorizedAppList(keyUri).then((cmResult: certificateManager.CMResult) => {
-        if (cmResult?.appUidList == undefined) {
-            console.info('The result of getting authorized app list is undefined.');
-        } else {
-            let appUidList: Array<string> = cmResult.appUidList;
-            console.info('Succeeded in getting authorized app list.');
-        }
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to get authorized app list. Code: ${err.code}, message: ${err.message}`);
-    })
-} catch (error: BusinessError) {
-    console.error(`Failed to get authorized app list. Code: ${error.code}, message: ${error.message}`);
+  certificateManager.getAuthorizedAppList(keyUri).then((cmResult: certificateManager.CMResult) => {
+    if (cmResult?.appUidList == undefined) {
+      console.info('The result of getting authorized app list is undefined.');
+    } else {
+      let appUidList: Array<string> = cmResult.appUidList;
+      console.info('Succeeded in getting authorized app list.');
+    }
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to get authorized app list. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to get authorized app list. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -702,13 +714,13 @@ removeGrantedPublicCertificate(keyUri: string, clientAppUid: number) : Promise\<
 
 Removes the permission for an application to use the public credentials of a user. This API is called only by the certificate management application. This API uses a promise to return the result.
 
+**Since**: 26.0.0
+
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
-
-**Since**: 26.0.0
 
 **Parameters**
 
@@ -727,7 +739,7 @@ Removes the permission for an application to use the public credentials of a use
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID   | Error Message                                                                                                                                           |
+| Error Code   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -744,13 +756,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let keyUri: string = 'test'; /* Unique identifier of the user public credential. */
 let clientAppUid: number = 1001; /* Application UID */
 try {
-    certificateManager.removeGrantedPublicCertificate(keyUri, clientAppUid).then(() => {
-        console.info('Succeeded in removing granted public certificate.');
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to remove granted public certificate. Code: ${err.code}, message: ${err.message}`);
-    })
-} catch (error: BusinessError) {
-    console.error(`Failed to remove granted public certificate. Code: ${error.code}, message: ${error.message}`);
+  certificateManager.removeGrantedPublicCertificate(keyUri, clientAppUid).then(() => {
+    console.info('Succeeded in removing granted public certificate.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to remove granted public certificate. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to remove granted public certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -760,13 +773,13 @@ getAllAppPrivateCertificatesByUid(appUid: number) : Promise\<CMResult>
 
 Obtains all private credentials of a specified application. This API is called only by the certificate management application. This API uses a promise to return the result.
 
+**Since**: 26.0.0
+
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_CERT_MANAGER_INTERNAL
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
-
-**Since**: 26.0.0
 
 **Parameters**
 
@@ -784,7 +797,7 @@ Obtains all private credentials of a specified application. This API is called o
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID   | Error Message                                                                                                                                           |
+| Error Code   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -798,20 +811,21 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let appUid: number = 1001; /* Application UID */
 try {
-    certificateManager.getAllAppPrivateCertificatesByUid(appUid).then((cmResult: certificateManager.CMResult) => {
-        if (cmResult === undefined) { // If the number of private credentials is 0, return undefined in cmResult.
-            console.info('The count of private certificates is 0.');
-        } else if (cmResult.credentialDetailList == undefined) {
-            console.info('The result of getting all private certificates is undefined.');
-        } else {
-            let list: Array<certificateManager.Credential> = cmResult.credentialDetailList;
-            console.info('Succeeded in getting all private certificates.');
-        }
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to get all private certificates. Code: ${err.code}, message: ${err.message}`);
-    })
-} catch (error: BusinessError) {
-    console.error(`Failed to get all private certificates. Code: ${error.code}, message: ${error.message}`);
+  certificateManager.getAllAppPrivateCertificatesByUid(appUid).then((cmResult: certificateManager.CMResult) => {
+    if (cmResult === undefined) { // If the number of private credentials is 0, return undefined in cmResult.
+      console.info('The count of private certificates is 0.');
+    } else if (cmResult.credentialDetailList == undefined) {
+      console.info('The result of getting all private certificates is undefined.');
+    } else {
+      let list: Array<certificateManager.Credential> = cmResult.credentialDetailList;
+      console.info('Succeeded in getting all private certificates.');
+    }
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to get all private certificates. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to get all private certificates. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -821,13 +835,13 @@ installSystemAppCertificate(keystore: Uint8Array, keystorePwd: string): Promise\
 
 Installs the system application credential. This API is called only by the certificate management application. This API uses a promise to return the result.
 
+**Since**: 26.0.0
+
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_SYSTEM_APP_CERT
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
-
-**Since**: 26.0.0
 
 **Parameters**
 
@@ -846,7 +860,7 @@ Installs the system application credential. This API is called only by the certi
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID   | Error Message                                                                                                                                           |
+| Error Code   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -868,14 +882,15 @@ let keystore: Uint8Array = new Uint8Array([
 ]);
 let keystorePwd: string = "123456";
 try {
-    certificateManager.installSystemAppCertificate(keystore, keystorePwd).then((cmResult: certificateManager.CMResult) => {
-        let uri: string = (cmResult?.uri == undefined) ? '' : cmResult.uri;
-        console.info('Succeeded in installing system app certificate.');
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to install system app certificate. Code: ${err.code}, message: ${err.message}`);
-    })
-} catch (error: BusinessError) {
-    console.error(`Failed to install system app certificate. Code: ${error.code}, message: ${error.message}`);
+  certificateManager.installSystemAppCertificate(keystore, keystorePwd).then((cmResult: certificateManager.CMResult) => {
+    let uri: string = (cmResult?.uri == undefined) ? '' : cmResult.uri;
+    console.info('Succeeded in installing system app certificate.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to install system app certificate. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to install system app certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -885,13 +900,13 @@ getSystemAppCertificate(keyUri: string) : Promise\<CMResult>
 
 Obtains the credential details of the system application. This API is called only by the certificate management application. This API uses a promise to return the result.
 
+**Since**: 26.0.0
+
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_SYSTEM_APP_CERT
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
-
-**Since**: 26.0.0
 
 **Parameters**
 
@@ -909,7 +924,7 @@ Obtains the credential details of the system application. This API is called onl
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID   | Error Message                                                                                                                                           |
+| Error Code   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -925,18 +940,19 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let keyUri: string = 'test'; /* Unique identifier of the system application credential. */
 try {
-    certificateManager.getSystemAppCertificate(keyUri).then((cmResult: certificateManager.CMResult) => {
-        if (cmResult?.credential == undefined) {
-            console.info('The result of getting system app certificate is undefined.');
-        } else {
-        let cred: certificateManager.Credential = cmResult.credential;
-            console.info('Succeeded in getting system app certificate.');
-        }
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to get system app certificate. Code: ${err.code}, message: ${err.message}`);
-    })
-} catch (error: BusinessError) {
-    console.error(`Failed to get system app certificate. Code: ${error.code}, message: ${error.message}`);
+  certificateManager.getSystemAppCertificate(keyUri).then((cmResult: certificateManager.CMResult) => {
+    if (cmResult?.credential == undefined) {
+      console.info('The result of getting system app certificate is undefined.');
+    } else {
+      let cred: certificateManager.Credential = cmResult.credential;
+      console.info('Succeeded in getting system app certificate.');
+    }
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to get system app certificate. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to get system app certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -946,13 +962,13 @@ uninstallSystemAppCertificate(keyUri: string) : Promise\<void>
 
 Uninstalls the credential of the system application. This API is called only by the certificate management application. This API uses a promise to return the result.
 
+**Since**: 26.0.0
+
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER and ohos.permission.ACCESS_SYSTEM_APP_CERT
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
-
-**Since**: 26.0.0
 
 **Parameters**
 
@@ -970,7 +986,7 @@ Uninstalls the credential of the system application. This API is called only by 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID   | Error Message                                                                                                                                           |
+| Error Code   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -986,13 +1002,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let keyUri: string = 'test'; /* Unique identifier of the system application credential. */
 try {
-    certificateManager.uninstallSystemAppCertificate(keyUri).then(() => {
-        console.info('Succeeded in uninstalling system app certificate.');
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to uninstall system app certificate. Code: ${err.code}, message: ${err.message}`);
-    })
-} catch (error: BusinessError) {
-    console.error(`Failed to uninstall system app certificate. Code: ${error.code}, message: ${error.message}`);
+  certificateManager.uninstallSystemAppCertificate(keyUri).then(() => {
+    console.info('Succeeded in uninstalling system app certificate.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to uninstall system app certificate. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to uninstall system app certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1002,13 +1019,13 @@ uninstallAllAppCertificate() : Promise\<void>
 
 Uninstalls all system application credentials and public user credentials. This API is called only by the certificate management application. This API uses a promise to return the result.
 
+**Since**: 26.0.0
+
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER, ohos.permission.ACCESS_CERT_MANAGER_INTERNAL, and ohos.permission.ACCESS_SYSTEM_APP_CERT
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **System API**: This is a system API.
-
-**Since**: 26.0.0
 
 **Return value**
 
@@ -1020,7 +1037,7 @@ Uninstalls all system application credentials and public user credentials. This 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Error Codes](errorcode-certManager.md).
 
-| ID   | Error Message                                                                                                                                           |
+| Error Code   | Error Message                                                                                                                                           |
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
@@ -1033,12 +1050,13 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    certificateManager.uninstallAllAppCertificate().then(() => {
-        console.info('Succeeded in uninstalling all app certificates.');
-    }).catch((err: BusinessError) => {
-        console.error(`Failed to uninstall all app certificates. Code: ${err.code}, message: ${err.message}`);
-    })
-} catch (error: BusinessError) {
-    console.error(`Failed to uninstall all app certificates. Code: ${error.code}, message: ${error.message}`);
+  certificateManager.uninstallAllAppCertificate().then(() => {
+    console.info('Succeeded in uninstalling all app certificates.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to uninstall all app certificates. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to uninstall all app certificates. Code: ${error.code}, message: ${error.message}`);
 }
 ```

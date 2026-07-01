@@ -1,12 +1,14 @@
 # NotificationCommonDef
+
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=50e734d278c25dbb71273705da516c218b3754a1 translatedAt=2026-06-29T02:36:14.030Z pushedAt=2026-06-30T10:57:36.997Z -->
 
-Describes the bundle information of an application.
+The **NotificationCommonDef** module defines the common data structures used in notification-related APIs.
 
 > **NOTE**
 >

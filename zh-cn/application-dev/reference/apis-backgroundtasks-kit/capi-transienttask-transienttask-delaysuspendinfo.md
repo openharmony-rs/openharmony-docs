@@ -5,7 +5,7 @@
 <!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 ```c
 typedef struct TransientTask_DelaySuspendInfo {...} TransientTask_DelaySuspendInfo
@@ -28,6 +28,4 @@ typedef struct TransientTask_DelaySuspendInfo {...} TransientTask_DelaySuspendIn
 | 名称 | 描述 |
 | -- | -- |
 | int32_t requestId | 短时任务请求ID。 |
-| int32_t actualDelayTime | 剩余时间（单位：毫秒）。 |
-
-
+| int32_t actualDelayTime | 剩余时间（单位：ms）。取值范围：[0, 180000]。 |

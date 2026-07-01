@@ -43,6 +43,8 @@ onKeyEvent(event: Callback\<KeyEvent, boolean>): T
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -67,6 +69,8 @@ onKeyPreIme(event: Callback<KeyEvent, boolean>): T
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -90,6 +94,8 @@ onKeyEventDispatch(event: Callback\<KeyEvent, boolean>): T
 该回调的返回值为`true`时，视作该按键事件已被消费，不会[冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)给父组件处理。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -120,11 +126,11 @@ onKeyEventDispatch(event: Callback\<KeyEvent, boolean>): T
 | metaKey                               | number            |  否         |  否     |按键发生时元键（即键盘左下角紧挨Ctrl键或Fn标记了窗口logo的按键）的状态，1表示按压态，0表示未按压态。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | timestamp                             | number                 |  否      |  否     |事件时间戳。触发事件时距离系统启动的时间间隔，单位：ns。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | stopPropagation                       | () => void             |  否    |  否     |阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)传递。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                  |
-| intentionCode<sup>10+</sup>           | [IntentionCode](#intentioncode10) |  否   |  否     |按键对应的意图。<br/>默认值：IntentionCode.INTENTION_UNKNOWN。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
-| unicode<sup>14+</sup>                              | number              |  否         |  是     |按键的Unicode码值。支持范围为非空格的基本拉丁字符：0x0021-0x007E，不支持字符为0。组合键场景下，返回当前keyEvent对应按键的Unicode码值。 <br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
-| isNumLockOn<sup>19+</sup>                               | boolean              |  否        |  是    |NumLock是否锁定（true: 锁定；false: 解锁）。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。                     |
-| isCapsLockOn<sup>19+</sup>                               | boolean         |  否        |  是     |CapsLock是否锁定（true: 锁定；false: 解锁）。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。                     |
-| isScrollLockOn<sup>19+</sup>                               | boolean        |  否      |  是     |ScrollLock是否锁定（true: 锁定；false: 解锁）。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。                     |
+| intentionCode<sup>10+</sup>           | [IntentionCode](#intentioncode10) |  否   |  否     |按键对应的意图。<br/>默认值：IntentionCode.INTENTION_UNKNOWN。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。       |
+| unicode<sup>14+</sup>                              | number              |  否         |  是     |按键的Unicode码值。支持范围为非空格的基本拉丁字符：0x0021-0x007E，不支持字符为0。组合键场景下，返回当前keyEvent对应按键的Unicode码值。 <br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+| isNumLockOn<sup>19+</sup>                               | boolean              |  否        |  是    |NumLock是否锁定（true: 锁定；false: 解锁）。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。                     |
+| isCapsLockOn<sup>19+</sup>                               | boolean         |  否        |  是     |CapsLock是否锁定（true: 锁定；false: 解锁）。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。                     |
+| isScrollLockOn<sup>19+</sup>                               | boolean        |  否      |  是     |ScrollLock是否锁定（true: 锁定；false: 解锁）。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。                     |
 
 ### getModifierKeyState<sup>12+</sup>
 
@@ -133,6 +139,8 @@ getModifierKeyState?(keys: Array&lt;string&gt;): boolean
 获取功能键按压状态。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -158,17 +166,19 @@ getModifierKeyState?(keys: Array&lt;string&gt;): boolean
 
 ## IntentionCode<sup>10+</sup>
 
-type IntentionCode = IntentionCode
+type IntentionCode = import('../api/@ohos.multimodalInput.intentionCode').IntentionCode
 
 按键对应的意图。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 类型 | 说明 |
 | ----- | ----------------- |
-| [IntentionCode](../../apis-input-kit/js-apis-intentioncode.md#intentioncode) | 按键对应的意图。|
+| import('../api/@ohos.multimodalInput.intentionCode').[IntentionCode](../../apis-input-kit/js-apis-intentioncode.md#intentioncode) | 按键对应的意图。|
 
 ## 示例
 

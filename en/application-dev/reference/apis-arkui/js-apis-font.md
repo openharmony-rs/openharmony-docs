@@ -148,6 +148,8 @@ You are advised to use the [getSystemFontFullNamesByType](../apis-arkgraphics2d/
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
@@ -200,6 +202,8 @@ Obtains information about a system font based on the font name.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -220,6 +224,8 @@ Information about the system font.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name           | Type   | Read-Only| Optional | Description                      |
@@ -239,7 +245,7 @@ Information about the system font.
 
 > **NOTE**
 >
-> Directly using **font** can lead to the issue of ambiguous UI context. To avoid this, obtain the [Font](arkts-apis-uicontext-font.md) object associated with the current UI context by using the [getFont](./arkts-apis-uicontext-uicontext.md#getfont) API in [UIContext](./arkts-apis-uicontext-uicontext.md).
+> Directly using **font** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the [Font](arkts-apis-uicontext-font.md) object associated with the current UI context by using the [getFont](./arkts-apis-uicontext-uicontext.md#getfont) API in [UIContext](./arkts-apis-uicontext-uicontext.md).
 
 ```ts
 // xxx.ets
@@ -284,6 +290,8 @@ This API can only obtain the information in the configuration file. If the UI co
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Return value**
@@ -296,6 +304,8 @@ This API can only obtain the information in the configuration file. If the UI co
 UI font configuration of the system.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 | Name           | Type   | Read-Only| Optional | Description                      |
@@ -310,6 +320,8 @@ Defines a list of supported generic font families.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 | Name           | Type   | Read-Only| Optional | Description                      |
 | -------------- | ------- | ------------------------- | ------------------------- | ------------------------- |
@@ -323,6 +335,8 @@ Defines a list of fallback generic font families.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 | Name           | Type   | Read-Only| Optional | Description                      |
 | -------------- | ------- | ------------------------- | ------------------------- | ------------------------- |
@@ -334,6 +348,8 @@ Defines a list of fallback generic font families.
 Defines font alias configuration information.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 | Name           | Type   | Read-Only| Optional | Description                      |
@@ -347,6 +363,8 @@ Provides a mapping list between the original weight value of a font and the actu
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 | Name           | Type   | Read-Only| Optional | Description                      |
 | -------------- | ------- | ------- | ------------------------- | ------------------------- |
@@ -358,6 +376,8 @@ Provides a mapping list between the original weight value of a font and the actu
 Provides the fallback font of the font set.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 | Name           | Type   | Read-Only| Optional | Description                      |

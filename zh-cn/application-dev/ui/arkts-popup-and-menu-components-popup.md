@@ -46,7 +46,7 @@ export struct TextPopupExample {
 }
 ```
 
-![zh-cn_image_0000001511740524](figures/zh-cn_image_0000001511740524.png)
+![zh-cn_image_0000001511740524](figures/Creating-Text-Popup.png)
 
 ## 添加气泡状态变化的事件
 
@@ -136,7 +136,7 @@ export struct ButtonPopupExample {
 }
 ```
 
-![zh-cn_other_0000001500740342](figures/zh-cn_other_0000001500740342.jpeg)
+![zh-cn_other_0000001500740342](figures/Creating-Popup-with-Buttons.jpeg)
 
 ## 气泡的动画
 
@@ -266,7 +266,7 @@ export struct CustomPopupExample {
 
 使用者通过配置placement参数将弹出的气泡放到需要提示的位置。弹窗构造器会触发弹出提示信息，来引导使用者完成操作，也让使用者有更好的UI体验。
 
-![zh-cn_other_0000001500900234](figures/zh-cn_other_0000001500900234.jpeg)
+![zh-cn_other_0000001500900234](figures/Custom-Popup.jpeg)
 
 ## 气泡样式
 

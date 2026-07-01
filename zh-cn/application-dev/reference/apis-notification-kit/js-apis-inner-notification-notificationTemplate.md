@@ -1,12 +1,12 @@
 # NotificationTemplate
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-通知模板。
+通知模板。用于指定通知所使用的模板类型。
 
 > **说明：**
 >
@@ -20,5 +20,5 @@
 
 | 名称 | 类型                   | 只读 | 可选 | 说明       |
 | ---- | ---------------------- | ---- | ----|----------- |
-| name | string                 | 否 | 否   | 模板名称。当前仅支持表示下载进度的进度条通知模板，取值为'downloadTemplate'。|
-| data | Record<string, Object> | 否 | 否   | 模板数据。<br> - title: 表示下载标题。必填字段，值为字符串类型。<br> - fileName: 表示下载文件名。必填字段，值为字符串类型。<br> - progressValue: 表示下载进度，值为数值类型。 |
+| name | string                 | 否 | 否   | 模板名称。当前仅支持表示下载进度的进度条通知模板，取值为'downloadTemplate'。字符串长度不超过202字节，超出部分会被截断。不可为空字符串。|
+| data | Record<string, Object> | 否 | 否   | 模板数据。<br> - title: 表示下载标题。必填字段，值为字符串类型。<br> - fileName: 表示下载文件名。必填字段，值为字符串类型。<br> - progressValue: 表示下载进度，值为数值类型。建议取值范围为0~100，表示百分比进度。当`progressValue`取值小于或等于0时，进度为0；当其取值大于或等于100时，进度环消失，代表下载完成。 |

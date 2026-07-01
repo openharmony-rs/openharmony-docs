@@ -10,7 +10,9 @@
 
 >**说明：**
 >
->本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## GestureHandler\<T>
 
@@ -391,7 +393,7 @@ onActionCancel(event: Callback\<GestureEvent>): PanGestureHandler
 | ------------ | ---------------------------------|----- | ---- | -------------------- |
 | fingers | number | 否| 是 | 用于指定触发拖动的最少手指数，最小为1指，&nbsp;最大取值为10指。<br/>默认值：1<br/>取值范围：[1, 10]<br/>**说明：** <br/>当设置的值小于1或不设置时，会被转化为默认值。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | direction | [PanDirection](./ts-basic-gestures-pangesture.md#pandirection枚举说明) | 否| 是 | 用于指定触发拖动的手势方向，此枚举值支持逻辑与(&amp;)和逻辑或（\|）运算。<br/>默认值：PanDirection.All<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| distance | number | 否| 是 | 用于指定触发滑动手势事件的最小拖动距离，单位为vp。<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs组件](ts-container-tabs.md)滑动与该滑动手势事件同时存在时，可将distance值设为1，使拖动更灵敏，避免造成事件错乱。<br/>取值范围：[0, +∞)，当设定的值小于0时，按默认值处理。<br/>从API version 19开始，手写笔默认值为8，单位为vp。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| distance | number | 否| 是 | 用于指定触发滑动手势事件的最小拖动距离，单位为vp。<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs组件](ts-container-tabs.md)滑动与该滑动手势事件同时存在时，可将distance值设为1，使拖动更灵敏，避免造成事件错乱。<br/>取值范围：[0, +∞)，当设定的值小于0时，按默认值处理。<br/>从API version 19开始，手写笔默认值为8，单位为vp。<br/>使用[gestureModifier](./ts-universal-attributes-gesture-modifier.md#gesturemodifier)配置该字段时，单位为px。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | distanceMap<sup>19+</sup> |  Map<[SourceTool](ts-gesture-settings.md#sourcetool枚举说明9), number> | 否| 是 | 用于指定不同输入源触发滑动手势事件的最小拖动距离，单位为vp。<br/>手写笔默认值：8，其余输入源默认值：5<br/>取值范围：[0, +∞)，当设定的值小于0时，按默认值处理。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 
 ## SwipeGestureHandler
@@ -793,8 +795,8 @@ onCancel(event: Callback\<void>): GestureGroupHandler
 
 | 名称         | 类型                               | 只读    | 可选 | 说明                 |
 | ------------ | ---------------------------------|----- | ---- | -------------------- |
-| mode    | [GestureMode](./ts-combined-gestures.md#gesturemode枚举说明)                        | 否 | 否   | 设置[组合手势](ts-combined-gestures.md)识别模式。<br/>默认值：GestureMode.Sequence      |
-| gestures | [GestureHandler](#gesturehandlert)\<[TapGestureHandler](#tapgesturehandler) \| [LongPressGestureHandler](#longpressgesturehandler) \| [PanGestureHandler](#pangesturehandler) \| [SwipeGestureHandler](#swipegesturehandler) \| [PinchGestureHandler](#pinchgesturehandler) \| [RotationGestureHandler](#rotationgesturehandler) \| [GestureGroupHandler](#gesturegrouphandler)>[] | 否 | 否   | 设置手势组中需要包含的手势集合。<br/>**说明：**  <br/>当需要为一个组件同时添加单击和双击手势时，可在[组合手势](ts-combined-gestures.md)中添加两个[TapGesture](ts-basic-gestures-tapgesture.md)，需要双击手势在前，单击手势在后，否则不生效。 |
+| mode    | [GestureMode](./ts-combined-gestures.md#gesturemode枚举说明)                        | 否 | 否   | 设置组合手势识别模式。<br/>默认值：GestureMode.Sequence      |
+| gestures | [GestureHandler](#gesturehandlert)\<[TapGestureHandler](#tapgesturehandler) \| [LongPressGestureHandler](#longpressgesturehandler) \| [PanGestureHandler](#pangesturehandler) \| [SwipeGestureHandler](#swipegesturehandler) \| [PinchGestureHandler](#pinchgesturehandler) \| [RotationGestureHandler](#rotationgesturehandler) \| [GestureGroupHandler](#gesturegrouphandler)>[] | 否 | 否   | 设置手势组中需要包含的手势集合。<br/>**说明：**  <br/>当需要为一个组件同时添加单击和双击手势时，可在[GestureGroup](ts-combined-gestures.md)中添加两个[TapGesture](ts-basic-gestures-tapgesture.md)，需要双击手势在前，单击手势在后，否则不生效。 |
 
 ## GesturePriority枚举说明
 

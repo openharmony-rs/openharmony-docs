@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -66,9 +66,10 @@
 - 当装饰的数据类型为class或Object时，可以观察到自身的赋值和属性赋值的变化，即Object.keys(observedObject)返回的所有属性。示例如下：
   
   声明Person和Model类。
-  <!-- @[state_change_observation_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
+  <!-- @[state_change_observation_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) --> 
   
   ``` TypeScript
+  // 声明Person类
   class Person {
     public value: string;
   
@@ -77,6 +78,7 @@
     }
   }
   
+  // 声明Model类
   class Model {
     public value: string;
     public name: Person;
@@ -146,13 +148,13 @@
     @State count: number = 10;
     ```
 
-2. \@State不支持装饰Function类型的变量，API version 23之前，框架会抛出运行时错误。
+2. \@State不支持装饰Function类型的变量，API version 23之前，应用在运行时会出现错误。
 
-   从API version 23开始，添加对\@State装饰Function类型变量的校验，编译期会报错。
+   从API version 23开始，在应用编译时添加了相关校验，\@State装饰Function类型变量会提示ERROR，应在代码中删除Function类型变量的\@State装饰器。
 
 3. 父组件传入undefined时，\@State装饰的变量仍使用本地默认值进行初始化。
    
-   <!-- @[state_input_undefined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateInputUndefined.ets) -->
+   <!-- @[state_input_undefined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateInputUndefined.ets) --> 
    
    ``` TypeScript
    @Entry
@@ -172,6 +174,7 @@
    
    @Component
    struct Child {
+     // 子组件count本地默认值为0；父组件传入undefined时，框架会保留该本地默认值
      @State count: number | undefined = 0;
    
      build() {
@@ -188,7 +191,7 @@
 
 ### 装饰简单类型的变量
 
-以下示例为\@State装饰的简单类型，count被\@State装饰成为状态变量，count的改变引起Button组件的刷新：
+以下示例为\@State装饰的简单类型，count被\@State装饰成为状态变量，count的改变引起[Button](../../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)组件的刷新：
 
 - 当状态变量count改变时，只能查询到Button组件与之关联。
 
@@ -241,9 +244,10 @@
     struct EntryComponent {
       build() {
         Column() {
-          // 此处指定的参数都将在初始渲染时覆盖本地定义的默认值，并不是所有的参数都需要从父组件初始化
+          // count、increaseBy使用传入值1、2初始化；title未传入，使用本地默认值new Model('Hello World')初始化
           MyComponent({ count: 1, increaseBy: 2 })
             .width(300)
+          // title、count使用传入值new Model('Hello World 2')、7初始化；increaseBy未传入，使用本地默认值1初始化
           MyComponent({ title: new Model('Hello World 2'), count: 7 })
         }
       }
@@ -280,30 +284,6 @@
     ```
 
 ![Video-state](figures/Video-state.gif)
-
-从上述示例中，我们可以了解到\@State变量的初始化机制：
-
-1. 上述示例中，在没有外部传入的情况下，使用默认的值进行本地初始化：
-
-    <!-- @[state_scene_type_class_local_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeClass.ets) -->
-    
-    ``` TypeScript
-    // title没有外部传入，使用本地的值new Model('Hello World')进行初始化
-    MyComponent({ count: 1, increaseBy: 2 })
-    // increaseBy没有外部传入，使用本地的值1进行初始化
-    MyComponent({ title: new Model('Hello World 2'), count: 7 })
-    ```
-
-2. 上述示例中，在有外部传入的情况下，使用外部传入的值进行初始化：
-
-    <!-- @[state_scene_type_class_out_value_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeClass.ets) -->
-    
-    ``` TypeScript
-    // count和increaseBy均有外部传入，分别使用传入的1和2进行初始化
-    MyComponent({ count: 1, increaseBy: 2 })
-    // title和count均有外部传入，分别使用传入的new Model('Hello World 2')和7进行初始化
-    MyComponent({ title: new Model('Hello World 2'), count: 7 })
-    ```
 
 ### 装饰Array类型变量
 
@@ -563,7 +543,7 @@ struct DatePickerExample {
 
 ![state-date](figures/state-date.gif)
 
-### State支持联合类型实例
+### \@State支持联合类型实例
 
 \@State支持联合类型和undefined和null，在下面的示例中，count类型为number | undefined，点击Button改变count的值，视图会随之刷新。
 <!-- @[state_scene_joint_type_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneJointTypeInstance.ets) -->

@@ -1,9 +1,9 @@
 # 授权持久化(C/C++)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @lvzhenjie; @hongjin-li_admin-->
-<!--Designer: @chenxi0605; @JerryH1011-->
-<!--Tester: @leiyuqian-->
+<!--Owner: @rainlost-->
+<!--Designer: @rainlost-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 ## 场景介绍

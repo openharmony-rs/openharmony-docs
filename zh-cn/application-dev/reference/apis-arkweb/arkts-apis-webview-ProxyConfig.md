@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-可以通过该类提供的接口对代理进行配置。
+ProxyConfig是ArkWeb框架中用于配置网络代理规则的类，配合[ProxyController](./arkts-apis-webview-ProxyController.md)实现对应用中所有Web组件网络请求的代理控制。通过ProxyConfig，开发者可以灵活定义多种代理规则：指定特定URL使用特定代理服务器、指定某些URL直连服务器、定义绕过代理的规则等。
 
 > **说明：**
 >
@@ -21,6 +21,23 @@
 insertProxyRule(proxyRule: string, schemeFilter?: ProxySchemeFilter): void
 
 插入一条代理规则，与schemeFilter匹配的URL都会使用指定代理。如果schemeFilter为空，所有URL都将使用指定代理。
+
+代理格式为[scheme://]host[:port]。
+
+scheme是可选的，必须是HTTP、HTTPS或SOCKS。scheme默认值为HTTP。
+
+host是带括号的IPv6字面量、IPv4字面量或由点分隔的一个或多个标签。
+
+端口号是可选的，默认HTTP为80、HTTPS为443、SOCKS为1080。
+
+例如：
+- example.com host: example.com
+- https://example.com  scheme: https  host: example.com
+- example.com:8888     host: example.com  port: 8888
+- https://example.com:8888  scheme: https  host: example.com  port: 8888
+- 192.168.1.1  host: 192.168.1.1
+- 192.168.1.1:8888  host: 192.168.1.1 port: 8888
+- [10:20:30:40:50:60:70:80]
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

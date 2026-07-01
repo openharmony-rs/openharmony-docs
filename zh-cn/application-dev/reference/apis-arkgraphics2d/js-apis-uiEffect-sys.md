@@ -3,7 +3,7 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hanamaru-->
-<!--Designer: @gaoweihua-->
+<!--Designer: @chensiyi_CE-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
@@ -100,7 +100,61 @@ struct example {
   }
 }
 ```
+## uiEffect.createHdrDarkenBlender
 
+createHdrDarkenBlender(hdrBrightnessRatio: number, grayscaleFactor?: [number, number, number]): HdrDarkenBlender
+
+创建[HdrDarkenBlender](#hdrdarkenblender)实例用于HDR图层的压暗混合效果。
+
+**起始版本：**  26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名               | 类型                        | 必填  | 说明                                                              |
+| ------------------- | -------------------------- | ----  | ---------------------------------------------------------------- |
+| hdrBrightnessRatio           | number                    | 是   | HDR的提亮倍数。<br/>取值范围[1.0, 设备当前支持最大提亮倍数]。<br/>设置小于1.0的值时，按值为1.0处理；<br/>当值等于1.0时，为组件原本亮度；<br/>设置大于设备当前支持最大提亮倍数的值时，按值为设备当前支持最大提亮倍数处理，支持最大提亮倍数 = 设备最大亮度 / 设备默认亮度。<br/>设备最大亮度通过hdc命令获取：param get const.display.brightness.max <br/>设备默认亮度通过hdc命令获取：param get const.display.brightness.default                       |
+| grayscaleFactor       | [number, number, number]                      | 否   | 将RGB颜色转换为灰度值，该公式可根据色域切换。<br/>三个分量均无边界限制。<br/>默认值为标准灰度权重[0.299, 0.587, 0.114]。   |
+
+**返回值：**
+
+| 类型                                   | 说明                       |
+| ---------------------------------------- | ------------------------- |
+| [HdrDarkenBlender](#hdrdarkenblender) | 返回HDR压暗混合器，用于将压暗效果添加到指定的组件上。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 401  | CreateHdrDarkenBlender failed, parameter is null or undefined. |
+
+**示例：**
+```ts
+let blender : uiEffect.HdrDarkenBlender = 
+  uiEffect.createHdrDarkenBlender(1.3, [0.299, 0.587, 0.114]) 
+@Entry 
+@Component 
+struct example { 
+  build() { 
+    RelativeContainer() { 
+      Stack(){ 
+          Text("TextWord") 
+          Image($r("app.media.screenshot")) 
+            .width("100%") 
+            .height("100%") 
+            .advancedBlendMode(blender) 
+      } 
+    } 
+  } 
+}
+```
 ## Filter
 Filter效果类，用于将相应的效果添加到指定的组件上。在调用Filter的方法前，需要先通过[createFilter](js-apis-uiEffect.md#uieffectcreatefilter)创建一个Filter实例。
 
@@ -221,7 +275,7 @@ distort(distortionK: number): Filter
 | ------------- | --------------------- | ---- | ------------------------- |
 | distortionK  | number         | 是   | 畸变系数，表示透镜畸变的程度，取值范围为[-1, 1]。畸变系数设置小于-1的值时，按值为-1处理；设置大于1的值时，按值为1处理。|
 
-![zh-ch_image_Add_Distort.png](./figures/zh-ch_image_Add_Distort.png)
+![Add-Distort.png](./figures/Add-Distort.png)
 
 如上图是对图片组件分别设置畸变参数为-1，0，0.5，1的绘制结果。畸变参数小于0时，效果为桶形畸变；大于0时，效果为枕形畸变；越接近0时，畸变程度越小，等于0时，没有畸变效果。
 
@@ -857,6 +911,140 @@ struct VariableRadiusBlurExample {
 }
 ```
 
+### heatDistortion
+
+heatDistortion(param: HeatDistortionEffectParam): Filter
+
+应用热浪扭曲效果到图像，模拟热空气流动产生的视觉扭曲。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| param | [HeatDistortionEffectParam](#heatdistortioneffectparam) | 是 | 热浪扭曲效果的参数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| [Filter](#filter) | 返回添加了热浪扭曲效果的Filter。 |
+
+**示例：**
+
+```ts
+import { uiEffect } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct HeatDistortionExample {
+  @State intensity: number = 0.8;
+  @State noiseScale: number = 2.0;
+  @State riseWeight: number = 0.5;
+  @State progress: number = 0.3;
+
+  build() {
+    Stack() {
+      Image($r('app.media.test'))
+        .width('100%')
+        .height('100%')
+        .foregroundFilter(uiEffect.createFilter().heatDistortion({
+          intensity: this.intensity,
+          noiseScale: this.noiseScale,
+          riseWeight: this.riseWeight,
+          progress: this.progress
+        }))
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+### blurBubblesRise
+
+blurBubblesRise(param: BlurBubblesRiseEffectParam): Filter
+
+应用模糊气泡上升效果到图像，模拟气泡在液体中上升的梦幻模糊扭曲效果。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| param | [BlurBubblesRiseEffectParam](#blurbubblesriseeffectparam) | 是 | 模糊气泡上升效果的参数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| [Filter](#filter) | 返回添加了模糊气泡上升效果的Filter。 |
+
+**示例：**
+
+```ts
+import { uiEffect } from '@kit.ArkGraphics2D';
+import { image } from '@kit.ImageKit';
+
+@Entry
+@Component
+struct BlurBubblesRiseExample {
+  private context: Context | undefined = this.getUIContext().getHostContext();
+  @State blurIntensity: number = 0.8;
+  @State mixStrength: number = 0.6;
+  @State progress: number = 0.5;
+  @State maskImage: image.PixelMap | null = null;
+
+  aboutToAppear() {
+    if (this.context) {
+      this.getImagePixelMap(this.context)
+    }
+  }
+
+  getImagePixelMap(context: Context) {
+    let resourceMgr = context.resourceManager;
+    resourceMgr?.getMediaContent($r('app.media.drawBlurMask').id)
+      .then((val: Uint8Array) => {
+        let buffer: ArrayBuffer = val.buffer.slice(0, val.buffer.byteLength)
+        let imageSource: image.ImageSource = image.createImageSource(buffer);
+        imageSource.createPixelMap().then((pixelmap: image.PixelMap) => {
+          this.maskImage = pixelmap as PixelMap;
+        })
+      })
+  }
+
+  build() {
+    Stack() {
+      Image($r('app.media.test'))
+        .width('100%')
+        .height('100%')
+        .foregroundFilter(uiEffect.createFilter().blurBubblesRise({
+          blurIntensity: this.blurIntensity,
+          mixStrength: this.mixStrength,
+          progress: this.progress,
+          maskImage: this.maskImage
+        }))
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ## TileMode
 像素填充模式枚举。
 
@@ -1159,9 +1347,69 @@ struct Index {
 }
 ```
 
+### distortionCollapse
+
+distortionCollapse(distortionParam: DistortionParam): VisualEffect
+
+为组件添加非线性形变效果。
+
+> **说明：**
+>
+> - 该视效支持控件范围外的绘制，但仍会受到父控件Clip的影响。
+> - 因包含前景Filter，未与[EffectComponent](../apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md)组合使用时不兼容组件自身及子组件的部分视效（如[BrightnessBlender](#brightnessblender)或[systemMaterial](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect-sys.md#systemmaterial23)）。
+> - 支持对系统材质进行扭曲，但是与[EffectComponent](../apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md)组合使用时，会导致系统材质的背景扭曲。
+> - 调用该接口时，会创建与形变后区域等大的离屏画布，再将当前组件（含子组件）的内容绘制到离屏画布上，再对画布上的已有内容进行形变绘制。使用该实现方式时，如果不与[EffectComponent](../apis-arkui/arkui-ts/ts-container-effectcomponent-sys.md)组合使用，将导致[systemMaterial](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect-sys.md#systemmaterial23)、[backgroundEffect](../apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundeffect19)、[brightness](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#brightness)或[blur](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#blur19)等需要截屏的接口无法截取到正确的画面。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+| 参数名          | 类型                                | 必填 | 说明                   |
+| --------------- | ----------------------------------- | ---- | --------------------- |
+| distortionParam | [DistortionParam](../apis-arkui/arkui-ts/ts-container-distortioncomponent-sys.md#distortionparam) | 是   | 非线性形变效果的参数。设置为undefined或null时恢复为无非线性形变的效果。 |
+
+**返回值：**
+
+| 类型                          | 说明                                     |
+| ----------------------------- | ---------------------------------------- |
+| [VisualEffect](#visualeffect) | 返回添加了非线性形变效果的VisualEffect。 |
+
+**示例：**
+
+```ts
+import { uiEffect } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct Index {
+  private distortionParam: DistortionParam = {
+    topLeft: {x: 0.09, y: 0.007},
+    topRight: {x: 0.91, y: 0.007},
+    bottomRight: {x: 1.09, y: 0.702},
+    bottomLeft: {x: -0.09, y: 0.702},
+    barrelDistortion: {x: 0.551, y: 0.551, z: 0.092, w: 0.092},
+  }
+
+  build() {
+    Column() {
+      Image($r('app.media.man')).width('80%').height('80%')
+        .visualEffect(uiEffect.createEffect().distortionCollapse(this.distortionParam))
+    }
+    .justifyContent(FlexAlign.Center)
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
 ## Blender<sup>13+</sup>
 
-type Blender = BrightnessBlender | HdrBrightnessBlender
+type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender
 
 混合器类型，用于描述混合效果。
 
@@ -1173,6 +1421,7 @@ type Blender = BrightnessBlender | HdrBrightnessBlender
 | ----------------------------- | ------------------------------------------------- |
 | [BrightnessBlender](#brightnessblender) | 具有提亮效果的混合器。 |
 | [HdrBrightnessBlender](#hdrbrightnessblender20)<sup>20+</sup> | 具有提亮效果的混合器（支持HDR）。 |
+| [HdrDarkenBlender](#hdrdarkenblender) | 具有压暗效果的混合器（支持HDR）。<br> **起始版本：** 26.0.0 |
 
 ## BrightnessBlender
 提亮混合器，用于将提亮效果添加到指定的组件上。在调用BrightnessBlender前，需要先通过[createBrightnessBlender](#uieffectcreatebrightnessblender)创建一个BrightnessBlender实例。
@@ -1200,6 +1449,24 @@ type Blender = BrightnessBlender | HdrBrightnessBlender
 **系统能力：** SystemCapability.Graphics.Drawing
 
 **系统接口：** 此接口为系统接口。
+
+## HdrDarkenBlender
+
+支持HDR的压暗混合器，用于将压暗效果添加到指定的组件上。在调用HdrDarkenBlender前，需要先通过[createHdrDarkenBlender](#uieffectcreatehdrdarkenblender)创建一个HdrDarkenBlender实例。
+
+**起始版本：**  26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+| 名称  | 类型   | 只读 | 可选 | 说明                                     |
+| ----- | ------ | ---- | ---- | ---------------------------------------- |
+| hdrBrightnessRatio   | number | 否   | 否   | HDR的提亮倍数。<br/>取值范围[1.0, 设备当前支持最大提亮倍数]。<br/>设置小于1.0的值时，按值为1.0处理；<br/>当值等于1.0时，为组件原本亮度；<br/>设置大于设备当前支持最大提亮倍数的值时，按值为设备当前支持最大提亮倍数处理，支持最大提亮倍数 = 设备最大亮度 / 设备默认亮度。<br/>设备最大亮度通过hdc命令获取：param get const.display.brightness.max <br/>设备默认亮度通过hdc命令获取：param get const.display.brightness.default |
+| grayscaleFactor | [number, number, number] | 否   | 是   | 将RGB颜色转换为灰度值，该公式可根据色域切换。<br/>三个分量均无边界限制。<br/>默认值为标准灰度权重[0.299, 0.587, 0.114]。|
+
 
 ## Color<sup>20+</sup>
 
@@ -1681,3 +1948,41 @@ BrightnessBlender参数列表。
 | positiveCoefficient | [number, number, number]   | 否   | 否   | 基于基准饱和度的RGB正向调整参数。<br/>每个number的取值范围[-20, 20]。 |
 | negativeCoefficient | [number, number, number]   | 否   | 否   | 基于基准饱和度的RGB负向调整参数。<br/>每个number的取值范围[-20, 20]。 |
 | fraction            | number                     | 否   | 否   | 提亮效果的混合比例。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。  |
+
+## HeatDistortionEffectParam
+
+热浪扭曲效果的参数。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| intensity | number | 否 | 否 | 热浪扭曲的强度。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。<br/>0表示无扭曲，1表示最大扭曲程度。 |
+| noiseScale | number | 否 | 否 | 热浪扭曲的噪声缩放，控制噪声纹理的细度。<br/>取值范围[0.1, 5.0]，超出边界会在实现时自动截断。<br/>值越大，噪声纹理越细腻。 |
+| riseWeight | number | 否 | 否 | 热浪扭曲的上升权重，控制气泡的上升速度。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。<br/>值越大，向上运动越明显。 |
+| progress | number | 否 | 否 | 热浪扭曲的动画进度。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。<br/>0对应动画开始，1对应动画结束。 |
+
+## BlurBubblesRiseEffectParam
+
+模糊气泡上升效果的参数。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| blurIntensity | number | 否 | 否 | 模糊气泡上升效果的高斯模糊强度。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。<br/>0表示无模糊，1表示最大模糊程度。 |
+| mixStrength | number | 否 | 否 | 原图与模糊图的混合强度。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。<br/>0对应原图，1对应模糊后的图像。 |
+| progress | number | 否 | 否 | 模糊气泡上升效果的动画进度。<br/>取值范围[0, 1]，超出边界会在实现时自动截断。<br/>0对应动画开始，1对应动画结束。 |
+| maskImage | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 否 | 否 | 模糊气泡上升效果的遮罩图像，控制模糊气泡区域。<br/>被遮罩的区域有模糊效果，未遮罩的区域无模糊效果。 |

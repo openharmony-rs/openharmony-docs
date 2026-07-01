@@ -5,7 +5,8 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:20:17.893Z pushedAt=2026-06-12T03:03:28.841Z -->
 
 ```c
 typedef struct Input_KeyState Input_KeyState
@@ -13,7 +14,7 @@ typedef struct Input_KeyState Input_KeyState
 
 ## **Overview**
 
-Defines key information, which identifies a key pressing behavior. For example, the Ctrl key information contains the key value and key type.
+Defines key information used to identify key behavior. For example, the "Ctrl" key information includes the key value and key state. It is applicable to scenarios such as hotkey processing, input event state management, and key state detection.
 
 **Since**: 12
 

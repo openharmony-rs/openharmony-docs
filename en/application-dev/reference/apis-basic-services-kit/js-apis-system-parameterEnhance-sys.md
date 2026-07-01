@@ -2,7 +2,7 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Startup-->
 <!--Owner: @chenjinxiang3-->
-<!--Designer: @liveery-->
+<!--Designer: @chenjinxiang3-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
 
@@ -43,7 +43,7 @@ Obtains a value of the specified key. This API uses a promise to return the resu
 
 **Error codes**
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.incorrect parameter types; 3.parameter verification failed. |
 | 14700101 | System parameter not found.                                          |
@@ -80,7 +80,7 @@ Obtains a value of the specified key. This API uses an asynchronous callback to 
 
 **Error codes**
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.incorrect parameter types; 3.parameter verification failed. |
 | 14700101 | System parameter not found.                                          |
@@ -124,7 +124,7 @@ Obtains a value of the specified key. This API uses an asynchronous callback to 
 
 **Error codes**
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.incorrect parameter types; 3.parameter verification failed. |
 | 14700101 | System parameter not found.                                          |
@@ -174,7 +174,7 @@ Obtains a value of the specified key. This API uses a promise to return the resu
 
 **Error codes**
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.incorrect parameter types; 3.parameter verification failed. |
 | 14700101 | System parameter not found.                                          |
@@ -217,7 +217,7 @@ Sets a value for the specified key. This API uses a promise to return the result
 
 **Error codes**
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.incorrect parameter types; 3.parameter verification failed. |
 | 14700102 | Invalid system parameter value.                                          |
@@ -256,7 +256,7 @@ Sets a value of the specified key. This API uses an asynchronous callback to ret
 
 **Error codes**
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.incorrect parameter types; 3.parameter verification failed. |
 | 14700102 | Invalid system parameter value.                                          |
@@ -305,7 +305,7 @@ Sets a value of the specified key. This API uses a promise to return the result.
 
 **Error codes**
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.incorrect parameter types; 3.parameter verification failed. |
 | 14700102 | Invalid system parameter value.                                          |

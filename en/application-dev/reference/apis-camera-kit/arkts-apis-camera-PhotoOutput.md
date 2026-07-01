@@ -1,12 +1,14 @@
 # Interface (PhotoOutput)
+
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=df2388ac9ece670e2be6918a776640e250f776ef translatedAt=2026-06-25T02:36:26.611Z pushedAt=2026-06-25T06:57:19.546Z -->
 
-**PhotoOutput** implements output information used in a photo session. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
+PhotoOutput implements output information used in a photo session. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
 
 > **NOTE**
 >
@@ -38,7 +40,7 @@ Captures a photo with the default photo capture parameters. This API uses an asy
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400104                |  Session not running.                                  |
 | 7400201                |  Camera service fatal error.                           |
@@ -79,7 +81,7 @@ Captures a photo with the default photo capture parameters. This API uses a prom
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400104                |  Session not running.                                  |
 | 7400201                |  Camera service fatal error.                           |
@@ -119,7 +121,7 @@ Captures a photo with the specified photo capture parameters. This API uses an a
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400104                |  Session not running.                                  |
@@ -178,7 +180,7 @@ Captures a photo with the specified photo capture parameters. This API uses a pr
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400104                |  Session not running.                                  |
@@ -228,7 +230,7 @@ Subscribes to the events of returning available photos. This API uses an asynchr
 | Name    | Type     | Mandatory| Description                                 |
 | -------- | ---------- | --- | ------------------------------------ |
 | type     | string     | Yes  | Event type. The value is fixed at **'photoAvailable'**. The event can be listened for when a **photoOutput** instance is created.|
-| callback | AsyncCallback\<[Photo](arkts-apis-camera-Photo.md)\> | Yes  | Callback used to listen for the events of returning available photos.|
+| callback | AsyncCallback\<[Photo](arkts-apis-camera-Photo.md)\> | Yes  | Callback used to listen for the event of returning available photos.|
 
 **Example**
 
@@ -264,7 +266,7 @@ Unsubscribes from the events of returning available photos.
 
 | Name     | Type                   | Mandatory| Description                                      |
 | -------- | ---------------------- | ---- | ------------------------------------------ |
-| type     | string                 | Yes  | Event type. The value is fixed at **'photoAvailable'**. The event can be listened for when a photoOutput instance is created.|
+| type     | string                 | Yes  | Event type. The value is fixed at **'photoAvailable'**. The event can be listened for when a **photoOutput** instance is created.|
 | callback | AsyncCallback\<[Photo](arkts-apis-camera-Photo.md)\> | No  | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.|
 
 **Example**
@@ -308,7 +310,7 @@ Subscribes to the events of returning full-quality images and uncompressed image
 
 | Name    | Type     | Mandatory| Description                                 |
 | -------- | ---------- | --- | ------------------------------------ |
-| callback | Callback\<[CapturePhoto](arkts-apis-camera-CapturePhoto.md)\> | Yes  | Callback used to listen for the events of returning full-quality images and uncompressed images.|
+| callback | Callback\<[CapturePhoto](arkts-apis-camera-CapturePhoto.md)\> | Yes  | Callback used to listen for the event of returning full-quality images and uncompressed images.|
 
 **Example**
 
@@ -362,7 +364,7 @@ function unRegisterCapturePhotoOutputPhotoAvailable(photoOutput: camera.PhotoOut
 
 on(type: 'captureStartWithInfo', callback: AsyncCallback\<CaptureStartInfo\>): void
 
-Subscribes to capture start events. This API uses an asynchronous callback to return the result.
+Subscribes to capture start events. This API uses an asynchronous callback to return the [capture start ID](arkts-apis-camera-i.md#capturestartinfo11).
 
 > **NOTE**
 >
@@ -444,7 +446,7 @@ Checks whether taking moving photos is supported.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID      | Error Message      |
+| Error Code      | Error Message      |
 | -------------- | --------------- |
 | 7400201 |  Camera service fatal error. |
 
@@ -482,13 +484,13 @@ Enables or disables the feature of taking moving photos.
 
 | Name     | Type                   | Mandatory| Description                                      |
 | -------- | ---------------------- | ---- | ------------------------------------------ |
-| enabled  | boolean                | Yes  | Whether to enable the feature of taking moving photos. **true** to enable, **false** otherwise.    |
+| enabled  | boolean                | Yes  | Enables or disables the feature of taking moving photos. **true** to enable, **false** otherwise.    |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID   | Error Message                                          |
+| Error Code   | Error Message                                          |
 | -------- |------------------------------------------------|
 | 201      | permission denied.                             |
 | 7400101  | Parameter missing or parameter type incorrect. |
@@ -605,7 +607,7 @@ function isMirrorSupported(photoOutput: camera.PhotoOutput): boolean {
 
 enableMirror(enabled: boolean): void
 
-Enables or disables mirroring photo capture.
+Enables or disables dynamic photo capture.
 
 Before calling this API, check whether moving photo capture is supported by calling [isMovingPhotoSupported](#ismovingphotosupported12) and whether mirroring is supported by calling [isMirrorSupported](#ismirrorsupported).
 
@@ -617,18 +619,17 @@ Before calling this API, check whether moving photo capture is supported by call
 
 | Name     | Type                   | Mandatory| Description                       |
 |----------| ---------------------- | ---- |---------------------------|
-| enabled | boolean                | Yes  | Whether to enable mirroring photo capture. **true** to enable, **false** otherwise.|
+| enabled | boolean                | Yes  | Enables or disables dynamic photo capture. **true** to enable, **false** otherwise.|
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID   | Error Message                                          |
+| Error Code   | Error Message                                          |
 | -------- |------------------------------------------------|
 | 7400101  | Parameter missing or parameter type incorrect. |
 | 7400103  | Session not config.                    |
 | 7400201  | Camera service fatal error.            |
-
 
 **Example**
 
@@ -666,7 +667,7 @@ Obtains the supported video codec types of moving photos.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID       | Error Message                     |
+| Error Code       | Error Message                     |
 | --------------- | ---------------               |
 | 7400201         |  Camera service fatal error.  |
 
@@ -693,13 +694,13 @@ Sets a video codec type for moving photos.
 
 | Name       | Type                                 | Mandatory|  Description               |
 | ------------- |-------------------------------------|-------| ------------        |
-| codecType     | [VideoCodecType](arkts-apis-camera-e.md#videocodectype13) |  Yes   | Video codec type. |
+| codecType     | [VideoCodecType](arkts-apis-camera-e.md#videocodectype13) |  Yes   | Video codec type.<br>If the value is not within the enumerated value range, this parameter does not take effect. |
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID       | Error Message                     |
+| Error Code       | Error Message                     |
 | --------------- | ---------------               |
 | 7400201         |  Camera service fatal error.  |
 
@@ -1109,7 +1110,7 @@ Obtains the profile that takes effect currently.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID  | Error Message                        |
+| Error Code  | Error Message                        |
 |---------|------------------------------|
 | 7400201 | Camera service fatal error.  |
 
@@ -1137,7 +1138,8 @@ getPhotoRotation(deviceDegree?: number): ImageRotation
 
 Obtains the photo rotation angle.
 
-- Device's natural orientation: the default orientation for using a device. For example, the default orientation of the bar-type phone is in portrait mode, with the charging port facing downward.
+- Device' natural orientation: the default orientation for using a device. For example, the default orientation of the bar-type phone is in portrait mode, with the charging port facing downward.
+
 - Camera lens angle: equivalent to the angle at which the camera is rotated clockwise to match the device's natural orientation. For example, the rear camera sensor of a bar-type phone is installed in landscape mode. Therefore, it needs to be rotated by 90 degrees clockwise to match the device's natural orientation.
 
 **Model restriction**: This API can be used only in the stage model.
@@ -1162,8 +1164,9 @@ Obtains the photo rotation angle.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID  | Error Message                        |
+| Error Code  | Error Message                        |
 |---------|------------------------------|
+| 7400101 | Parameter missing or parameter type incorrect.<br>Applicable versions: 12-22  |
 | 7400201 | Camera service fatal error.  |
 
 **Example**
@@ -1290,7 +1293,7 @@ Checks whether the specified photo quality prioritization strategy is supported.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID     | Error Message    |
+| Error Code     | Error Message    |
 | ------------- | --------------- |
 | 7400201 |  Camera service fatal error, reconfiguring streams is needed to recover from failure. |
 
@@ -1336,7 +1339,7 @@ Before setting the strategy, you can call [isPhotoQualityPrioritizationSupported
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID   | Error Message                                          |
+| Error Code   | Error Message                                          |
 | -------- |----------------------------------------------- |
 | 7400102  | Operation not allowed. |
 | 7400201  | Camera service fatal error, reconfiguring streams is needed to recover from failure. |
@@ -1355,6 +1358,92 @@ function setPhotoQualityPrioritization(qualityPrioritization: camera.PhotoQualit
   } catch (error) {
     let err = error as BusinessError;
     console.error(`The setPhotoQualityPrioritization call failed. error code: ${err.code}`);
+  }
+}
+```
+
+## isAutoExtendedGainmapDeliverySupported
+
+isAutoExtendedGainmapDeliverySupported(): boolean
+
+Checks whether automatic extended gain map delivery is supported.
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Return value**
+
+| Type            | Description                     |
+| -------------- | ----------------------- |
+| boolean | Whether automatic extended gain map delivery is supported. The value **true** indicates it is supported, and the value **false** indicates it is not supported. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { camera } from '@kit.CameraKit';
+
+function isAutoExtendedGainmapDeliverySupported(photoOutput: camera.PhotoOutput): boolean {
+  let isSupported: boolean = false;
+  try {
+    isSupported = photoOutput.isAutoExtendedGainmapDeliverySupported();
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The isAutoExtendedGainmapDeliverySupported call failed. error code: ${err.code}`);
+  }
+  return isSupported;
+}
+```
+
+## enableAutoExtendedGainmapDelivery
+
+enableAutoExtendedGainmapDelivery(enabled: boolean): void
+
+Enables or disables automatic extended gain map delivery.
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name      | Type                    | Mandatory | Description                                       |
+| -------- | ---------------------- | ---- | ------------------------------------------ |
+| enabled  | boolean                | Yes   | Whether to enable automatic extended gain map delivery. The value **true** indicates it is enabled, and the value **false** indicates it is disabled.     |
+
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| Error Code    | Error Message                                           |
+| -------- |------------------------------------------------|
+| 7400102  | Operation not allowed. |
+| 7400103  | Session not config, only throw in session usage. |
+| 7400201  | Camera service fatal error. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { camera } from '@kit.CameraKit';
+
+function enableAutoExtendedGainmapDelivery(photoOutput: camera.PhotoOutput): void {
+  try {
+    photoOutput.enableAutoExtendedGainmapDelivery(true);
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The enableAutoExtendedGainmapDelivery call failed. error code: ${err.code}`);
   }
 }
 ```

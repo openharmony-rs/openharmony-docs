@@ -53,7 +53,7 @@ Allows the application to access images or videos in the user directory without 
 
 | Name                     | Type                                                                              | Mandatory | Decorator Type     | Description                                                                                                                                                                                                                                                                                                                                                           |
 |-------------------------|----------------------------------------------------------------------------------|-----|------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| pickerOptions           | [PickerOptions](#pickeroptions)                                                  | No  | - | Picker configuration parameters.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                                                                                                                                                    |
+| pickerOptions              | [PickerOptions](#pickeroptions)                                                  | No  | - | Picker configuration parameters.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                                                                                                                                                    |
 | onSelect                | (uri: string) => void                                                            | No  | - | Callback to be invoked when an image is selected by using **PhotoPickerComponent**. This callback returns the URI of the image selected to the application.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                                                                                                                           |
 | onDeselect              | (uri: string) => void                                                            | No  | - | Callback to be invoked when an image is deselected by using **PhotoPickerComponent**. This callback returns the URI of the image deselected to the application.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                                                                                                                     |
 | onItemClicked           | (itemInfo: [ItemInfo](#iteminfo), clickType: [ClickType](#clicktype)) => boolean | No  | - | Callback to be invoked when an item in a **PhotoPickerComponent** is clicked.<br>For an image (thumbnail item), if **true** is returned, the image is selected. Otherwise, the image is not selected and the URI is not granted with the permission. For a camera item, if **true** is returned, the system camera is started. Otherwise, the camera is not started and the application handles the request.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                                                                                                                   |
@@ -73,6 +73,7 @@ Allows the application to access images or videos in the user directory without 
 | onScrollStopAtEnd<sup>23+</sup> | [ScrollStopAtEndCallback](#scrollstopatendcallback23) | No| - | Callback to be invoked when the user stops scrolling and is positioned at the end of the grid content in the **PhotoPickerComponent**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | onPhotoBrowserChangeStart<sup>23+</sup> | [PhotoBrowserChangeStartCallback](#photobrowserchangestartcallback23) | No| - | Callback to be invoked when a grid view switches to the photo browser page or the photo browser page is switched.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | onError<sup>23+</sup> | [ErrorCallback](#errorcallback23) | No| - | Callback to be invoked when an error occurs during the use of the **PhotoPickerComponent**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| onPhotoBrowserZoom| [PhotoBrowserZoomCallback](#photobrowserzoomcallback) | No| - | Called when the user zooms in or out on a full image by using two fingers after entering the full image view through **PhotoPickerComponent**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>**Since**: 26.0.0|
 
 ## PickerOptions
 
@@ -82,9 +83,9 @@ Describes the configuration of a Picker. It inherits from [photoAccessHelper.Bas
 
 | Name                             | Type                                     | Read-Only| Optional | Description                                                                      |
 |---------------------------------|-----------------------------------------|-----|-----|--------------------------------------------------------------------------|
-| checkBoxColor                   | string                                  | No | Yes| Background color of the check box. The value is an 8-digit hexadecimal color code.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                  |
+| checkBoxColor                   | string                                  | No | Yes| Background color of the check box.<br>The value is an 8-digit hexadecimal color code. The first two digits indicate the transparency, and the last six digits indicate the RGB color value.<br>For example, '#FFFFFFFF' indicates a white opaque background, and '#80FF0000' indicates a semi-transparent red background.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                  |
 | backgroundColor                 | string                                  | No | Yes| Background color of the Picker grid page. The value is an 8-digit hexadecimal color code.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                            |
-| isRepeatSelectSupported         | boolean                                 | No | Yes| Whether a single image can be repeatedly selected. The value **true** means that a single image can be repeatedly selected. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                  |
+| isRepeatSelectSupported         | boolean                                 | No | Yes| Whether a single image can be repeatedly selected. **true** if supported, **false** otherwise. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                  |
 | checkboxTextColor               | string                                  | No | Yes| Text color in the check box. The value is an 8-digit hexadecimal color code. (This parameter is supported since API version 19. In earlier versions, the system defaults to white.)<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                       |
 | photoBrowserBackgroundColorMode | [PickerColorMode](#pickercolormode)     | No | Yes| Background color of the photo browser page. The options are **AUTO**, **LIGHT**, and **DARK**. The default value is **AUTO**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                       |
 | maxSelectedReminderMode         | [ReminderMode](#remindermode)           | No | Yes| Mode of the reminder when the number of selected items reaches the maximum. The options are **NONE**, **TOAST**, and **MASK**. The default value **TOAST**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                        |
@@ -92,7 +93,7 @@ Describes the configuration of a Picker. It inherits from [photoAccessHelper.Bas
 | selectMode                      | [SelectMode](#selectmode)               | No | Yes | Select mode, which can be **SINGLE_SELECT** or **MULTI_SELECT**. The default value is **MULTI_SELECT**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                     |
 | maxPhotoSelectNumber            | number                                  | No | Yes| Maximum number of images that can be selected. The maximum value is **500**, which is limited by **MaxSelected**. The default value is **500**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                          |
 | maxVideoSelectNumber            | number                                  | No | Yes| Maximum number of videos that can be selected. The maximum value is **500**, and it is restricted by the maximum number of media files that can be selected in the system. The default value is **500**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                          |
-| isSlidingSelectionSupported<sup>13+</sup>     | boolean                                 | No | Yes| Whether sliding selection (selecting multiple items by sliding finger across the screen) is supported. The value **true** means that sliding selection is supported. The default value is **false**. This parameter is not available for repeat selection.<br>**Atomic service API**: This API can be used in atomic services since API version 13.                                           |
+| isSlidingSelectionSupported<sup>13+</sup>     | boolean                                 | No | Yes| Whether to support multiple selections by sliding. **true**: yes; **false**: no. The default value is **false**. This parameter is not available for repeat selection.<br>**Atomic service API**: This API can be used in atomic services since API version 13.                                           |
 | photoBrowserCheckboxPosition<sup>13+</sup>    | [number, number]                        | No | Yes| Position of the check box on the photo browser page. The first parameter specifies the offset in the X direction, and the second parameter specifies the offset in the Y direction. The value range is [0, 1], which indicates the offset (from 0% to 100%) to the upper-left corner of the component. The default value is [0, 0].<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
 | gridMargin<sup>14+</sup>        | [Margin](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)                        | No | Yes| Margin of the component on a grid page.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | photoBrowserMargin<sup>14+</sup>    | [Margin](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)                        | No | Yes| Margin of the component on a photo browser page.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
@@ -106,7 +107,9 @@ Describes the configuration of a Picker. It inherits from [photoAccessHelper.Bas
 | isSlidingSupported<sup>23+</sup>         | boolean                         | No  | Yes| Whether scrolling in the **PhotoPickerComponent** is enabled. The value **true** means that scrolling is not blocked and the component responds to user scroll gestures. The value **false** means that scrolling is blocked and the component does not respond to user scroll gestures.<br>The default value is **true**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | edgeEffect<sup>23+</sup>         | [EdgeEffect](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)                         | No  | Yes| Scrolling effect when the Picker grid page reaches the edge.<br>The default value is [EdgeEffect.Spring](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect).<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | appAlbumFilters<sup>23+</sup>         | Array&lt;string&gt;                         | No  | Yes| Used to display only the album content corresponding to the specified bundle name.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
-| backgroundOpacity<sup>24+</sup>         | number                        | No  | Yes| Background opacity of the picker. The value ranges from 0 to 1. **0** indicates completely transparent, and **1** indicates completely opaque.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| backgroundOpacity<sup>24+</sup>         | number                        | No  | Yes| Background opacity of the picker. The value range is [0, 1]. **0** indicates completely transparent, and **1** indicates completely opaque.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| contextRecoveryInfo        | [photoAccessHelper.ContextRecoveryInfo](arkts-apis-photoAccessHelper-class.md#contextrecoveryinfo21)                        | No  | Yes| Information for restoring the PhotoPicker's state from the last exit.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>**Since**: 26.0.0|
+
 ## ItemsDeletedCallback<sup>13+</sup>
 
 type ItemsDeletedCallback = (baseItemInfos: Array&lt;BaseItemInfo&gt;) => void
@@ -217,17 +220,14 @@ Callback to be invoked when an item in a **PhotoPickerComponent** is clicked.
 
 ```ts
 import {
-    ClickResult,
-    ClickType,
-    DataType,
-    ItemInfo,
-    ItemClickedNotifyCallback,
-    PhotoPickerComponent,
-    PickerController,
-    PickerOptions,
+  ClickType,
+  DataType,
+  ItemInfo,
+  PhotoPickerComponent,
+  PickerController,
+  PickerOptions,
 } from '@kit.MediaLibraryKit';
-import { router } from '@kit.ArkUI';
-
+import { ClickResult, ItemClickedNotifyCallback } from '@ohos.file.PhotoPickerComponent';
 
 const DOMAIN = 0x0000;
 const TAG: string = 'clickedNotifyDemo';
@@ -278,7 +278,7 @@ private isOnClickedNotify: boolean = false;
     };
 
     aboutToAppear(): void {
-        let params = router.getParams() as Checks;
+        let params = this.getUIContext().getRouter().getParams() as Checks;
 
         this.pickerOptions.isSlidingSelectionSupported = true;
         this.pickerOptions.isSearchSupported = false;
@@ -382,7 +382,7 @@ Callback to be invoked when the user stops scrolling and is positioned at the en
 
 type PhotoBrowserChangeStartCallback = (targetPhotoInfo: BaseItemInfo) => void
 
-Callback to be invoked when the moving photo effect of the **PhotoPickerComponent** is enabled or disabled.
+Called when a grid view switches to the photo browser page or the photo browser page is switched.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -431,6 +431,26 @@ Callback to be invoked when an error occurs in the **PhotoPickerComponent**.
 | Name| Type                           | Mandatory| Description|
 | ----- |-------------------------------| ----- |----------------------------------------------|
 | pickerError  | [PickerError](#pickererror23) | Yes| Basic information about the error.|
+
+## PhotoBrowserZoomCallback 
+
+export type PhotoBrowserZoomCallback = (scale: double) => void
+
+Called when the large image is zoomed in or out after the large image is entered through the **PhotoPickerComponent**.
+
+**Since:** 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name| Type                           | Mandatory| Description|
+| ----- |-------------------------------| ----- |----------------------------------------------|
+| scale  | double | Yes| Scale of the image compared with the original image.|
 
 ## PickerController
 
@@ -551,7 +571,7 @@ Sets whether other UI elements are visible on the photo browser page. By default
 | Name        | Type                                                            | Mandatory | Description               |
 |-------------|----------------------------------------------------------------| ----- |-------------------|
 | elements    | Array&lt;[PhotoBrowserUIElement](#photobrowseruielement13)&gt; | Yes| Other UI elements on the photo browser page.|
-| isVisible | boolean                                                        | Yes| Whether the specified UI elements are visible. The value **true** means that they are visible. The default value is **false**.            |
+| isVisible | boolean                                                        | Yes| Whether the specified elements are visible. **true**: visible; **false**: not visible. The default value is **false**.            |
 
 ### replacePhotoPickerPreview<sup>15+</sup>
 
@@ -587,7 +607,7 @@ Saves files in a URI list. Generally, this API is used together with [replacePho
 |-------------|----------------------------------------------------------------| ----- |-------------------|
 | trustedUris     | Array&lt;string&gt; | Yes| URIs of the images or videos in the application sandbox path. Generally, **trustedUris** comes from **newUri** of new images generated by [replacePhotoPickerPreview](#replacephotopickerpreview15).|
 | callback  | AsyncCallback&lt;Array&lt;string&gt;&gt;          | Yes| URIs of the new files in Gallery.            |
-| configs | Array&lt;[photoAccessHelper.PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)&gt;          | No| Configuration parameters corresponding to the original files.<br>**NOTE**<br>If a **subtype** option is passed, the configuration does not take effect. Only DEFAULT images can be saved.<br>By default, the values of **title**, **fileNameExtension**, and **photoType** of **mediaItem** corresponding to **trustedUris** are used, and the value of **subtype** is fixed to **DEFAULT**.            |
+| configs | Array&lt;[photoAccessHelper.PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)&gt;          | No| Configuration parameters corresponding to the original files.<br>**NOTE**<br>1. If a **subtype** option is passed, the configuration does not take effect. Only **DEFAULT** images can be saved.<br>By default, the values of **title**, **fileNameExtension**, and **photoType** of **mediaItem** corresponding to **trustedUris** are used, and the value of **subtype** is fixed to **DEFAULT**.<br>2. This parameter does not take effect when [SaveMode](#savemode15) is set to **OVERWRITE**.            |
 | saveMode | [SaveMode](#savemode15)           | No| Mode for saving the files.<br>By default, the **SAVE_AS** mode is used to save the files as new files.            |
 
 ### updatePickerOptions<sup>22+</sup>
@@ -677,6 +697,26 @@ For details about the error codes, see [Media Library Error Codes](errorcode-med
 | ------ | ------------------------ |
 | Promise\<void> | Promise that returns no value.|
 
+### completed
+
+completed(): Promise\<CompletedResult>
+
+This API is used by an application to obtain the complete data after a selection operation is completed on the Picker page. The data can be used to restore the scene when the Picker is started next time.
+
+**Since:** 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Return value**
+
+| Type  | Description                    |
+| ------ | ------------------------ |
+| Promise\<[CompletedResult](#completedresult)> | Promise used to return the information about the restored scene.|
+
 ## BaseItemInfo
 
 Represents basic image and video information.
@@ -685,12 +725,12 @@ Represents basic image and video information.
 
 | Name    | Type   | Read-Only| Optional | Description                                               |
 |----------|--------|-----|-----|---------------------------------------------------|
-| uri      | string                | No| Yes  | URI of the image or video.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.           |
-| mimeType | string                | No| Yes  | MIME type of the image or video.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.      |
+| uri      | string                | No| Yes  | URI of the image or video.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**NOTE**<br>If the resource is a burst shot photo, only the cover image of the burst shot photo group is returned.<br>**Atomic service API**: This API can be used in atomic services since API version 12.           |
+| mimeType | string                | No| Yes  | MIME type of the image or video.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>You can determine the media type based on the prefix of the **mimeType** string. If the string starts with "image/", it indicates an image. If the string starts with "video/", it indicates a video. For details, see [Identifying Asset Types Using the mimeType Field](../../media/medialibrary/medialibrary-faqs/medialibrary-asset-judgment-faq.md#identifying-asset-types-using-the-mimetype-field).<br>**Atomic service API**: This API can be used in atomic services since API version 12.      |
 | width    | number                | No| Yes  | Width of the image or video, in px.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.      |
 | height   | number                | No| Yes  | Height of the image or video, in px.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.      |
 | size     | number                | No| Yes  | Size of the image or video, in bytes.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 12.    |
-| duration   | number                | No| Yes  | Video duration, in milliseconds. For an image or a moving photo, the value **-1** is returned.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| duration   | number                | No| Yes  | Video duration, in milliseconds.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | photoSubType<sup>21+</sup>   | [photoAccessHelper.PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)        | No| Yes  | Subtype of the photo. The options are **DEFAULT**, **MOVING_PHOTO**, and **BURST**.<br>The default value is **DEFAULT (0)**.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
 | dynamicRangeType<sup>21+</sup>   | [photoAccessHelper.DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12)                 | No| Yes  | Dynamic range type of the media file. The options are **HDR** and **SDR**.<br>For moving photos, this parameter specifies the dynamic range type of the cover image.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
 | orientation<sup>21+</sup>   | number             | No| Yes  | Image or video direction information.<br>1: **TOP-left**: The image is not rotated.<br>2: **TOP-right**: The image is flipped horizontally.<br>3: **Bottom-right**: The image is rotated by 180°.<br>4: **Bottom-left**: The image is flipped vertically.<br>5: **Left-top**: The image is flipped horizontally and then rotated clockwise by 270°.<br>6: **Right-top**: The image is rotated clockwise by 90°.<br>7: **Right-bottom**: The image is vertically flipped and then rotated clockwise by 90°.<br>8: **Left-bottom**: The image is rotated clockwise by 270°.<br>Images with mirroring information retain their original width and height attributes regardless of rotation, whereas images without such information have these attributes updated to reflect the post-rotation dimensions.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
@@ -698,8 +738,9 @@ Represents basic image and video information.
 | videoMode<sup>22+</sup> | [photoAccessHelper.VideoMode](arkts-apis-photoAccessHelper-e.md#videomode22) | No| Yes  | Log mode of a video file.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 ## ItemInfo
 
-Represents the image and video information. It inherits from [BaseItemInfo](#baseiteminfo), adding the parameter **itemType**.
- 
+It inherits from [BaseItemInfo](#baseiteminfo), adding the parameter **itemType**.
+
+Represents image and video information.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -723,7 +764,7 @@ Represents information about the photo browser page.
 
 ## AnimatorParams
 
-Animation parameters for entering or exiting the photo browser page.
+Defines animation parameters for entering or exiting the photo browser page.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -827,7 +868,9 @@ Describes the updatable attributes of the **PhotoPickerComponent**. These attrib
 | edgeEffect<sup>23+</sup>         | [EdgeEffect](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)                         | No  | Yes| Scrolling effect when the Picker grid page reaches the edge.<br>The default value is [EdgeEffect.Spring](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect).<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | appAlbumFilters<sup>23+</sup>         | Array&lt;string&gt;                         | No  | Yes| Used to display only the album content corresponding to the specified bundle name.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | autoPlayScenes<sup>23+</sup>      | Array\<[photoAccessHelper.AutoPlayScene](./arkts-apis-photoAccessHelper-class.md#autoplayscene23)\> | No  | Yes| Playback mode of the moving photo. The maximum array length is 2. If this limit is exceeded, the first two elements are used, and the extra ones are automatically ignored.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
-| backgroundOpacity<sup>24+</sup>         | number                         | No  | Yes| Background opacity of the picker. The value ranges from 0 to 1. **0** indicates completely transparent, and **1** indicates completely opaque.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| backgroundOpacity<sup>24+</sup>         | number                        | No  | Yes| Background opacity of the picker. The value range is [0, 1]. **0** indicates completely transparent, and **1** indicates completely opaque.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| gridMargin        | [Margin](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin) | No | Yes| Margin of the component grid.<br>**Since:** 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| photoBrowserMargin  | [Margin](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin) | No | Yes| Margin of the component large image.<br>**Since:** 26.0.0<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 ## PickerError<sup>23+</sup>
 
@@ -844,6 +887,24 @@ Describes the function name, error code, and message of the error returned when 
 | functionName | string | No  | No|Function name of the error.|
 | errorCode | number | No  | No| Error code.|
 | message | string | No  | No| Error message.|
+
+## CompletedResult
+
+Defines the information about the Picker's state from the last exit.
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name| Type                                            | Read-Only| Optional| Description     |
+| ---- | ------------------------------------------------ | ---- | ---- |---------|
+| photoUris | Array&lt;string&gt; | No  | No| URI of the selected image or video. The URI array can be used only by calling **photoAccessHelper.getAssets** in temporary authorization mode.|
+| contextRecoveryInfo |  [photoAccessHelper.ContextRecoveryInfo](arkts-apis-photoAccessHelper-class.md#contextrecoveryinfo21)   | No  | No| Context information of the PhotoPicker exit status. |
+| movingPhotoBadgeStates | Array&lt;[photoAccessHelper.MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22)&gt;  | No  | No| Moving photo badge states of the selected media files. When **isMovingPhotoBadgeShown** is set to **true**, **movingPhotoBadgeStates** contains the moving photo status. Otherwise, the value is empty.|
 
 ## DataType
 
@@ -1035,11 +1096,14 @@ Enumerates the aspect ratios for grid display in single-line display mode.
 | SQUARE_RATIO        | 0   | 1:1 ratio.   |
 | ORIGINAL_SIZE_RATIO | 1   | Original image aspect ratio.|
 
-## Example
+## Example 1: Using the PhotoPickerComponent Component
 
 ```ts
 // xxx.ets
-// In versions earlier than API version 23, you need to use the 'import { api1, api2,... } from @ohos.file.PhotoPickerComponent' import mode.
+// Since API version 23, you are advised to import required modules from '@kit.MediaLibraryKit'.
+// In versions earlier than API version 23, you need to import the required modules separately.
+// import { PhotoPickerComponent, PickerController, PickerOptions, DataType, BaseItemInfo, ItemInfo, PhotoBrowserInfo, ItemType, ClickType, MaxCountType, PhotoBrowserRange, PhotoBrowserUIElement, ItemsDeletedCallback, ExceedMaxSelectedCallback, CurrentAlbumDeletedCallback, videoPlayStateChangedCallback, VideoPlayerState } from '@ohos.file.PhotoPickerComponent';
+// import { photoAccessHelper } from '@ohos.file.photoAccessHelper';
 import {
   PhotoPickerComponent,
   PickerController,
@@ -1117,7 +1181,7 @@ struct PickerDemo {
       return true; // If true is returned, the system camera is started. If false is returned, the app processes its services.
     } else {
       if (clickType === ClickType.SELECTED) {
-        // The application performs its own service logic (not time-consuming operations, such as opening a large file using OpenSync).
+        // The application performs its own service logic (not time-consuming operations, such as opening a large file using openSync).
         if (uri) {
           this.selectUris.push(uri);
           this.pickerOptions.preselectedUris = [...this.selectUris];
@@ -1253,6 +1317,239 @@ struct PickerDemo {
         }
       }
     }
+  }
+}
+```
+
+## Example 2: Using PhotoPickerComponent to Implement the Drawer Component Effect
+
+Since API version 23, you can use the **isSlidingSupported** callback of [PickerOptions](#pickeroptions) and the **onScrollStopAtStart** and **onScrollStopAtEnd** callbacks of [PhotoPickerComponent](#photopickercomponent) to implement the drawer effect.
+
+```ts
+// xxx.ets
+import { display } from '@kit.ArkUI';
+import { PhotoPickerComponent, PickerController, PickerOptions } from '@kit.MediaLibraryKit';
+const enum DrawerState {
+  // Expanded state.
+  Expanding,
+  // Collapsed state.
+  Collapsing,
+  // Sliding state.
+  Sliding
+}
+
+@Entry
+@Component
+struct Drawer {
+  @State pickerController: PickerController = new PickerController();
+  private pickerOptions: PickerOptions = new PickerOptions();
+  // Screen height, in vp.
+  @State screenHeight: number = 0;
+  // Drawer height, in vp.
+  @State drawerHeight: number = 0;
+  // Drawer offset, in vp.
+  @State offsetY: number = 0;
+  // Whether the drawer is expanded.
+  @State isExpanded: boolean = false;
+  // Start position of dragging, in vp.
+  private startY: number = 0;
+  // Current dragging offset, in vp.
+  private currentOffset: number = 0;
+  // Percentage of the custom drawer height to the entire screen.
+  private drawerRatio: number = 0.8;
+  // Percentage of the custom drawer to be hidden during initialization.
+  private hideRatio: number = 0.8;
+  // Initialize the drawer to the collapsed state.
+  private drawerState: DrawerState = DrawerState.Collapsing;
+  // Gesture response threshold, which is used to determine whether the gesture is downward.
+  private pullingDownThreshold: number = -5;
+
+  aboutToAppear(): void {
+    // Obtain the display height.
+    let displayInfo = display.getDefaultDisplaySync();
+    this.screenHeight = displayInfo.height / displayInfo.densityPixels;
+    // Obtain the drawer height. In this example, the height is 0.8 times the display height, which can be customized.
+    this.drawerHeight = this.screenHeight * this.drawerRatio;
+    // Initially, the drawer is at the bottom and fully hidden. In this example, 80% of the drawer height is hidden.
+    this.offsetY = this.drawerHeight * this.hideRatio;
+    // The Picker does not support sliding during initialization.
+    this.pickerOptions.isSlidingSupported = false;
+    // No edge effect.
+    this.pickerOptions.edgeEffect = EdgeEffect.None;
+    // The search box is not displayed.
+    this.pickerOptions.isSearchSupported = false;
+  }
+
+  private scrollStopAtStart() {
+    // Change the state to expanded and disable the grid sliding.
+    this.drawerState = DrawerState.Expanding;
+    this.pickerController.updatePickerOptions({
+    isSlidingSupported: false
+  })
+  }
+
+  private toggleDrawer() {
+    if (this.isExpanded) {
+      this.hideDrawer();
+    } else {
+      this.showDrawer();
+    }
+  }
+
+  private hideDrawer() {
+    this.getUIContext()?.animateTo({
+      duration: 300,
+      curve: Curve.EaseOut,
+      onFinish: () => {
+        this.isExpanded = false;
+      }
+    }, () => {
+      this.drawerState = DrawerState.Collapsing;
+      this.offsetY = this.drawerHeight * 0.8;
+    })
+  }
+
+  private showDrawer() {
+    this.getUIContext()?.animateTo({
+      duration: 300,
+      curve: Curve.EaseOut,
+      onFinish: () => {
+        this.isExpanded = true;
+      }
+    }, () => {
+      this.drawerState = DrawerState.Expanding;
+      this.offsetY = 0;
+    })
+  }
+
+  build() {
+    RelativeContainer() {
+      // Main content area.
+      Column() {
+        Text('Main page content')
+          .fontSize(24)
+          .fontWeight(FontWeight.Bold)
+          .margin({ bottom: 20 })
+
+        Text('This is a bottom drawer effect implemented using RelativeContainer.')
+          .fontSize(16)
+          .fontColor('#666')
+          .margin({ bottom: 30 })
+          .textAlign(TextAlign.Center)
+          .width('80%')
+
+        Button(this.isExpanded? 'Collapse drawer' : 'Expand drawer')
+          .onClick(() => {
+            this.toggleDrawer();
+          })
+      }
+      .width('100%')
+      .padding(20)
+      .alignItems(HorizontalAlign.Center)
+      .backgroundColor('#f5f5f5')
+      .borderRadius(10)
+      .alignRules({
+        top: { anchor: '__container__', align: VerticalAlign.Top },
+        left: { anchor: '__container__', align: HorizontalAlign.Start },
+        right: { anchor: '__container__', align: HorizontalAlign.End },
+      })
+      .height('100%')
+
+      if (this.isExpanded) {
+        Column()
+          .width('100%')
+          .height('100%')
+          .backgroundColor('#80000000')
+          .alignRules({
+            top: { anchor: '__container__', align: VerticalAlign.Top },
+            left: { anchor: '__container__', align: HorizontalAlign.Start },
+            right: { anchor: '__container__', align: HorizontalAlign.End },
+            bottom: { anchor: '__container__', align: VerticalAlign.Bottom },
+          })
+          .onClick(() => {
+            this.hideDrawer();
+          })
+      }
+
+      Column() {
+        Row()
+          .width(50)
+          .height(5)
+          .backgroundColor('#CCC')
+          .borderRadius(3)
+          .margin({ top: 12, bottom: 8 })
+
+        Text ('Drawer menu')
+          .fontSize(18)
+          .fontWeight(FontWeight.Medium)
+          .margin({ bottom: 10 })
+
+        Divider()
+          .width('90%')
+          .margin({ bottom: 10 })
+
+        PhotoPickerComponent({
+          pickerOptions: this.pickerOptions,
+          pickerController: this.pickerController,
+          onScrollStopAtStart: this.scrollStopAtStart
+        })
+          .layoutWeight(1)
+          .width('100%')
+      }
+      .width('100%')
+      .height(this.drawerHeight)
+      .backgroundColor(Color.White)
+      .borderRadius({ topLeft: 20, topRight: 20 })
+      .shadow({ radius: 10, color: '#33000000' })
+      .alignRules({
+        left: { anchor: '__container__', align: HorizontalAlign.Start },
+        right: { anchor: '__container__', align: HorizontalAlign.End },
+        bottom: { anchor: '__container__', align: VerticalAlign.Bottom },
+      })
+      .translate({ y: this.offsetY })
+      .gesture(
+        PanGesture({ direction: PanDirection.Vertical })
+          // Record the position where the drawer starts to be dragged.
+          .onActionStart((event: GestureEvent) => {
+            this.startY = event.fingerList[0].globalY || 0;
+            this.currentOffset = this.offsetY;
+          })
+          .onActionUpdate((event: GestureEvent) => {
+            // If the drawer is in the Picker sliding state, do not change the drawer height and return directly.
+            if (this.drawerState === DrawerState.Sliding) {
+              return;
+            }
+            // If the drawer is expanded or collapsed, use gestures to further change the drawer state.
+            // Calculate the moving distance.
+            const deltaY = event.fingerList[0].globalY - this.startY || 0;
+            // When the drawer is expanded and the user swipes down, enable the grid sliding function and switch the drawer state to the sliding state.
+            if (this.drawerState === DrawerState.Expanding && deltaY < this.pullingDownThreshold) {
+              this.pickerController.updatePickerOptions({
+                isSlidingSupported: true
+              })
+              this.drawerState = DrawerState.Sliding
+            }
+            let newOffset = this.currentOffset + deltaY;
+            if (newOffset < 0) {
+              newOffset = 0;
+            }
+            this.offsetY = newOffset;
+          })
+          .onActionEnd(()=>{
+            // When the gesture ends, the drawer is automatically expanded or collapsed based on the position.
+            if (this.offsetY > this.drawerHeight / 2) {
+              // If the sliding distance exceeds half of the drawer height, the drawer is collapsed.
+              this.hideDrawer();
+            } else {
+              // If the sliding distance is less than half of the drawer height, the drawer is expanded.
+              this.showDrawer();
+            }
+          })
+      )
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor('#E0E0E0')
   }
 }
 ```

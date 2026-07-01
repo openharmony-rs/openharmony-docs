@@ -1,8 +1,8 @@
 # ArkUI_CrossLanguageOption
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -23,7 +23,7 @@ typedef struct ArkUI_CrossLanguageOption ArkUI_CrossLanguageOption
 **相关接口：** 
 | 名称                                                                              | 描述 |
 |---------------------------------------------------------------------------------| -- |
-| [OH_ArkUI_NodeUtils_SetCrossLanguageOption](capi-native-node-h.md#oh_arkui_nodeutils_setcrosslanguageoption) | 设置目标节点跨语言设置属性的能力。 |
+| [OH_ArkUI_NodeUtils_SetCrossLanguageOption](capi-native-node-h.md#oh_arkui_nodeutils_setcrosslanguageoption) | 设置目标节点跨语言设置属性的配置项。 |
 | [OH_ArkUI_NodeUtils_GetCrossLanguageOption](capi-native-node-h.md#oh_arkui_nodeutils_getcrosslanguageoption) | 获取目标节点跨语言设置属性的配置项。 |
 | [OH_ArkUI_CrossLanguageOption_Create](capi-native-type-h.md#oh_arkui_crosslanguageoption_create) | 创建跨语言配置项实例。 |
 | [OH_ArkUI_CrossLanguageOption_Destroy](capi-native-type-h.md#oh_arkui_crosslanguageoption_destroy) | 销毁跨语言配置项实例。 |

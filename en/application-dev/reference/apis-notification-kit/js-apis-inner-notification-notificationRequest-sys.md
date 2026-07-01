@@ -1,10 +1,12 @@
 # NotificationRequest (System API)
+
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=50e734d278c25dbb71273705da516c218b3754a1 translatedAt=2026-06-29T02:36:37.353Z pushedAt=2026-06-30T10:57:37.003Z -->
 
 The **NotificationRequest** module provides APIs for defining the notification request.
 
@@ -47,7 +49,6 @@ Describes distributed notification options.
 | ---------------------- | -------------- | ---- | ---- | ---------------------------------- |
 | remindType             | number         |  Yes |  Yes  | Notification reminder type.<br>**System API**: This is a system API. |
 
-
 ## NotificationFilter<sup>11+</sup>
 
 Describes the filter criteria for querying the live view.
@@ -61,7 +62,6 @@ Describes the filter criteria for querying the live view.
 | bundle          | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | No| No  | Bundle information of the live view.|
 | notificationKey | [notificationSubscribe.NotificationKey](js-apis-notificationSubscribe-sys.md#notificationkey) | No| No  | Notification information, including the notification ID and label.  |
 | extraInfoKeys   | Array\<string>                        | No|   Yes  | List of extra keys. If this parameter is left empty, all extra information is included.|
-
 
 ## NotificationCheckRequest<sup>11+</sup>
 
@@ -143,8 +143,8 @@ Defines the configuration of a geofence.
 | --------- | -------------------- | ---- | ---- | ---------------- |
 | longitude | number | No| No| Longitude of the geofence center. The value ranges from -180 to 180.|
 | latitude | number | No| No| Latitude of the geofence center. The value ranges from -90 to 90.|
-| radius | number | No| No| Geofence radius, in meters. The value ranges from 200 to 2000.|
-| delayTime | number | No| Yes| Delay time from geofence entry to event trigger, in seconds. The value ranges from 0 to 300. The default value is **0**.|
+| radius | number | No | No | Radius of the geofence, in meters. Value range: [200, 2000]. |
+| delayTime | number | No | Yes | Delay time of the geofence, in seconds. That is, the delay time before the geofence is triggered after entering the geofence. Value range: [0, 300]. Default value: **0** |
 | coordinateSystemType | [CoordinateSystemType](#coordinatesystemtype23) | No| No| Coordinate system type of the center point. |
 | monitorEvent | [MonitorEvent](#monitorevent23) | No  | No| Event type for monitoring a geofence.|
 

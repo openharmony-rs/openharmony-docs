@@ -25,7 +25,7 @@
 
 **授权方式**：系统授权（system_grant）
 
-**ACL使能**：false
+**是否支持证书授权**：false
 
 **起始版本**：10
 
@@ -37,7 +37,7 @@
 
 **授权方式**：系统授权（system_grant）
 
-**ACL使能**：false
+**是否支持证书授权**：false
 
 **起始版本**：11
 
@@ -49,7 +49,7 @@
 
 **授权方式**：系统授权（system_grant）
 
-**ACL使能**：false
+**是否支持证书授权**：false
 
 **起始版本**：7
 
@@ -61,7 +61,7 @@
 
 **授权方式**：系统授权（system_grant）
 
-**ACL使能**：false
+**是否支持证书授权**：false
 
 **起始版本**：10
 
@@ -73,7 +73,7 @@
 
 **授权方式**：系统授权（system_grant）
 
-**ACL使能**：false
+**是否支持证书授权**：false
 
 **起始版本**：9
 
@@ -85,7 +85,7 @@
 
 **授权方式**：系统授权（system_grant）
 
-**ACL使能**：false
+**是否支持证书授权**：false
 
 **起始版本**：10
 
@@ -97,7 +97,7 @@
 
 **授权方式**：系统授权（system_grant）
 
-**ACL使能**：false
+**是否支持证书授权**：false
 
 **起始版本**：10
 
@@ -109,7 +109,7 @@
 
 **授权方式**：系统授权（system_grant）
 
-**ACL使能**：false
+**是否支持证书授权**：false
 
 **起始版本**：10
 
@@ -121,7 +121,7 @@
 
 **授权方式**：系统授权（system_grant）
 
-**ACL使能**：false
+**是否支持证书授权**：false
 
 **起始版本**：9
 
@@ -133,7 +133,7 @@
 
 **授权方式**：系统授权（system_grant）
 
-**ACL使能**：false
+**是否支持证书授权**：false
 
 **起始版本**：10
 
@@ -145,7 +145,7 @@
 
 **授权方式**：系统授权（system_grant）
 
-**ACL使能**：false
+**是否支持证书授权**：false
 
 **起始版本**：10
 
@@ -157,7 +157,7 @@
 
 **授权方式**：系统授权（system_grant）
 
-**ACL使能**：false
+**是否支持证书授权**：false
 
 **起始版本**：10
 
@@ -171,7 +171,7 @@
 
 **授权方式**：系统授权（system_grant）
 
-**ACL使能**：false
+**是否支持证书授权**：false
 
 **支持设备**：Phone | TV | Tablet
 
@@ -185,7 +185,7 @@
 
 **授权方式**：系统授权（system_grant）
 
-**ACL使能**：false
+**是否支持证书授权**：false
 
 **起始版本**：9
 
@@ -197,6 +197,20 @@
 
 **授权方式**：系统授权（system_grant）
 
-**ACL使能**：false
+**是否支持证书授权**：false
 
 **起始版本**：11
+
+## ohos.permission.LOAD_NATIVE_LIBRARY
+
+允许系统应用通过动态加载库的方式构造函数初始化代码。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：false
+
+**支持设备**：Phone | PC/2-in-1 | Tablet | TV | Wearable | Car | LiteWearable | Router | Smartlock
+
+**起始版本**：26.0.0

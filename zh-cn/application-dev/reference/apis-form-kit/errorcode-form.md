@@ -1,9 +1,9 @@
 # 卡片错误码
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 > **说明：**
@@ -335,7 +335,7 @@ Some internal server error occurs.
 **可能原因**
 
 1. 当前系统繁忙。
-2. 当前系统数据内部数据异常。
+2. 当前系统内部数据异常。
 
 **处理步骤**
 

@@ -5,7 +5,7 @@
 <!--Owner: @hwymlgitcode-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 The **usb** module provides USB device management functions, including USB device list query, bulk data transfer, control transfer, and permission control.
 
@@ -44,7 +44,7 @@ Converts the USB function list in the string format to a numeric mask in Device 
 
 | Type  | Description              |
 | ------ | ------------------ |
-| number | Function list in numeric mask format.|
+| number | Numeric mask of the function list.|
 
 **Example**
 
@@ -67,13 +67,13 @@ Converts the USB function list in the numeric mask format to a string in Device 
 
 | Name| Type                          | Mandatory| Description             |
 | ------ | ------------------------------ | ---- | ----------------- |
-| funcs  | [FunctionType](#functiontype9) | Yes  | USB function list in numeric mask format.|
+| funcs  | [FunctionType](#functiontype9) | Yes  | Numeric mask of the function list.|
 
 **Return value**
 
 | Type  | Description                          |
 | ------ | ------------------------------ |
-| string | Function list in string format.|
+| string | Function list in string format after conversion.|
 
 **Example**
 
@@ -96,7 +96,7 @@ Sets the current USB function list in Device mode.
 
 | Name| Type                          | Mandatory| Description             |
 | ------ | ------------------------------ | ---- | ----------------- |
-| funcs  | [FunctionType](#functiontype9) | Yes  | USB function list in numeric mask format.|
+| funcs  | [FunctionType](#functiontype9) | Yes  | Numeric mask of the function list.|
 
 **Return value**
 
@@ -151,7 +151,7 @@ Obtains the list of all physical USB ports.
 
 | Type                         | Description                 |
 | ----------------------------- | --------------------- |
-| [Array\<USBPort\>](#usbport9) | List of physical USB ports.|
+| Array\<[USBPort](#usbport9)\> | List of physical USB ports.|
 
 **Example**
 

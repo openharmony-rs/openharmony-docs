@@ -1,7 +1,7 @@
 # SendableLruCache<K, V>
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
@@ -43,7 +43,7 @@ pro.put(2, 10);
 pro.put(1, 8);
 let result = pro.length;
 console.info('result = ' + result);
-// 期望输出：result = 2
+// 预期输出：result = 2
 ```
 
 ## constructor<sup>18+</sup>
@@ -60,7 +60,7 @@ constructor(capacity?: number)
 
 | 参数名   | 类型   | 必填 | 说明                         |
 | -------- | ------ | ---- | ---------------------------- |
-| capacity | number | 否   | 指示缓冲区的自定义容量。不传时，默认值为64，最大值不能超过2147483647；小于等于0时会抛出异常。 |
+| capacity | number | 否   | 指示缓冲区的自定义容量。不传时，默认值为64，最大值不能超过2147483647；小于等于0时会抛出异常。建议根据实际业务数据量设置合适的容量值，以平衡缓存命中率与内存占用。 |
 
 **示例：**
 
@@ -82,15 +82,7 @@ updateCapacity(newCapacity: number): void
 
 | 参数名      | 类型   | 必填 | 说明                         |
 | ----------- | ------ | ---- | ---------------------------- |
-| newCapacity | number | 是   | 指示要为缓冲区自定义的容量，最大值不能超过2147483647；小于等于0时会抛出异常。|
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID  | 错误信息                                    |
-| -------- | ------------------------------------------|
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| newCapacity | number | 是   | 指示要为缓冲区自定义的容量，最大值不能超过2147483647；小于等于0时会抛出异常。建议根据实际业务数据量设置合适的容量值，以平衡缓存命中率与内存占用。|
 
 **示例：**
 

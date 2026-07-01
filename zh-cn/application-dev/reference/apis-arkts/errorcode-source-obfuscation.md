@@ -1,10 +1,12 @@
 # 源码混淆错误码
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @zju-wyx-->
-<!--Designer: @xiao-peiyang; @dengxinyu-->
+<!--Owner: @oatuwwutao-->
+<!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @HelloCrease-->
+
+从API version 18开始，提供源码混淆错误码。开发者在编译遇到此类错误时，可通过本文档查询错误码的含义、可能原因及建议的处理步骤。
 
 > **说明：**
 >
@@ -18,7 +20,7 @@ Failed to open obfuscation config file from {path}.
 
 **错误描述**
 
-无法从{path}读取混淆规则配置文件。
+{path}路径下混淆规则配置文件缺失或路径有误，无法读取。
 
 **可能原因**
 
@@ -26,7 +28,7 @@ Failed to open obfuscation config file from {path}.
 
 **处理步骤**
 
-检查{path}是否存在，路径是否有误。具体可以参考[混淆配置规则文件示例](../../arkts-utils//source-obfuscation-guide.md#开启混淆步骤)。
+检查{path}是否存在，路径是否有误。具体可以参考[混淆配置规则文件示例](../../arkts-utils/source-obfuscation-guide.md#开启源码混淆步骤)。
 
 ## 10804002 nameCache.json文件内容格式错误
 
@@ -36,15 +38,15 @@ Failed to open namecache file from {nameCachePath}, Error message: SyntaxError: 
 
 **错误描述**
 
-无法从指定的名称缓存文件路径{nameCachePath}读取nameCache.json文件。
+指定的名称缓存文件路径{nameCachePath}下的JSON文件内容格式错误，不符合JSON文件格式要求。
 
 **可能原因**
 
-该路径下的JSON文件内容格式错误，不符合JSON文件格式要求。
+在混淆规则配置文件中通过-apply-namecache配置引用的nameCache.json文件内容格式错误，不符合JSON文件格式要求。
 
 **处理步骤**
 
-找到该{nameCachePath}文件，按照报错信息中提示的行号定位问题所在，并据此进行修改。
+找到该{nameCachePath}文件，按照报错信息中提示的行号定位问题所在，对照JSON格式规范修正语法错误（如缺少逗号、括号不匹配等），确保文件内容符合标准JSON格式。
 
 ## 10804003 keptNames.json文件生成失败
 
@@ -54,15 +56,15 @@ Failed to open keptNames.json from {defaultUnobfuscationPath}.
 
 **错误描述**
 
-无法从{defaultUnobfuscationPath}读取keptNames.json文件。
+{defaultUnobfuscationPath}路径下未生成keptNames.json文件。
 
 **可能原因**
 
-{defaultUnobfuscationPath}路径中没有生成keptNames.json文件。
+混淆规则配置中指定的{defaultUnobfuscationPath}路径中没有生成keptNames.json文件。
 
 **处理步骤**
 
-检查{defaultUnobfuscationPath}是否生成keptNames.json文件，若没有，清理缓存后重新编译。
+检查混淆规则配置中{defaultUnobfuscationPath}路径是否正确，确认该路径是否生成keptNames.json文件，若没有，清理缓存后重新编译。
 
 ## 10804004 nameCache.json文件不存在
 
@@ -72,17 +74,17 @@ The applied namecache file {nameCachePath} configured by {configPath} does not e
 
 **错误描述**
 
-无法从{nameCachePath}读取-apply-namecache规则配置的json文件。
+-apply-namecache规则配置的JSON文件{nameCachePath}不存在。
 
 **可能原因**
 
-在混淆规则配置文件obfuscation-rules.txt中，-apply-namecache配置的json文件不存在。
+在混淆规则配置文件obfuscation-rules.txt中，-apply-namecache配置的JSON文件不存在。-apply-namecache用于应用已有的名称缓存文件，以保持多次编译间混淆结果一致性。
 
 **处理步骤**
 
-在混淆规则配置文件obfuscation-rules.txt中，检查-apply-namecache配置的json文件路径是否正确。
+在混淆规则配置文件obfuscation-rules.txt中，检查-apply-namecache配置的JSON文件路径是否正确。若路径有误，修正为正确的JSON文件路径。
 
-## 10810001 混淆工具有误，导致文件混淆失败
+## 10810001 混淆工具内部错误
 
 **错误信息**
 
@@ -90,12 +92,12 @@ ArkTS:INTERNAL ERROR: Failed to obfuscate file 'entry/src/main/ets/entryability/
 
 **错误描述**
 
-混淆流程执行失败，无法完成文件混淆。
+ArkGuard混淆工具发生内部错误，导致文件混淆流程执行失败。
 
 **可能原因**
 
-ArkGuard源码混淆工具内部源码被未经授权的修改。
+ArkGuard源码混淆工具的核心文件被非官方途径修改或损坏。
 
 **处理步骤**
 
-请在DevEco Studio中定位路径`\DevEco-Studio\sdk\default\openharmony\ets\build-tools\ets-loader\node_modules\arkguard`，对比arkguard目录与其同级文件的最后修改日期。如存在差异，请重新下载安装该版本的IDE。
+在DevEco Studio中定位路径`\DevEco-Studio\sdk\default\openharmony\ets\build-tools\ets-loader\node_modules\arkguard`，对比arkguard目录与其同级文件的最后修改日期。如存在差异，重新下载安装该版本的DevEco Studio。

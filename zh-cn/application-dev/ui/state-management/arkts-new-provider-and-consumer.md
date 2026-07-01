@@ -2,13 +2,13 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
 \@Provider和\@Consumer用于跨组件层级数据双向同步，可以使得开发者不用拘泥于组件层级。
 
-\@Provider和\@Consumer属于状态管理V2装饰器，所以只能在\@ComponentV2中才能使用，在\@Component中使用会编译报错。
+\@Provider和\@Consumer属于状态管理V2装饰器，所以只能在[\@ComponentV2](./arkts-create-custom-components.md#componentv2)中才能使用，在[\@Component](./arkts-create-custom-components.md)中使用会编译报错。
 
 \@Provider和\@Consumer提供了跨组件层级数据双向同步的能力。在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)。常见问题请参考[组件内状态变量常见问题](./arkts-state-management-faq-inner-component.md)。
 
@@ -136,7 +136,7 @@ struct Child {
 | 传递规则       | 说明                                                         |
 | -------------- | ------------------------------------------------------------ |
 | 从父组件初始化 | \@Provider和\@Consumer装饰的变量仅允许本地初始化，不允许从外部传入初始化。 |
-| 初始化子组件   | \@Provider和\@Consumer装饰的变量可以初始化子组件中\@Param装饰的变量。 |
+| 初始化子组件   | \@Provider和\@Consumer装饰的变量可以初始化子组件中[\@Param](./arkts-new-param.md)装饰的变量。 |
 
 ## 使用限制
 
@@ -157,7 +157,7 @@ struct Child {
 2. 点击Parent中的按钮，改变\@Provider装饰的str，通知其对应的\@Consumer，对应UI刷新。
 3. 点击Child中的按钮，改变\@Consumer装饰的str，通知其对应的\@Provider，对应UI刷新。
 
-<!-- @[Twoway_Binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/TwowayBinding.ets) -->
+<!-- @[Twoway_Binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/TwowayBinding.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -168,11 +168,14 @@ struct Parent {
   build() {
     Column() {
       Button(this.str)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.str += '0';
         })
       Child()
     }
+    .width('100%')
   }
 }
 
@@ -184,13 +187,18 @@ struct Child {
   build() {
     Column() {
       Button(this.str)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.str += '0';
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![provider-sync-0](figures/provider-sync-0.gif)
 
 **未建立双向绑定**
 
@@ -202,7 +210,7 @@ struct Child {
 2. 点击Parent中的按钮，改变\@Provider装饰的str1，仅刷新\@Provider关联的Button组件。
 3. 点击Child中的按钮，改变\@Consumer装饰的str，仅刷新\@Consumer关联的Button组件。
 
-<!-- @[No_Twoway_Binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/NoTwowayBinding.ets) -->
+<!-- @[No_Twoway_Binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/NoTwowayBinding.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -213,11 +221,14 @@ struct Parent {
   build() {
     Column() {
       Button(this.str1)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.str1 += '0';
         })
       Child()
     }
+    .width('100%')
   }
 }
 
@@ -229,19 +240,24 @@ struct Child {
   build() {
     Column() {
       Button(this.str)
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.str += '0';
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![provider-sync-1](figures/provider-sync-1.gif)
 
 ### 装饰Array类型变量
 
 当装饰的对象是Array时，可以观察到Array整体的赋值，同时可以通过调用Array的接口`push`, `pop`, `shift`, `unshift`, `splice`, `copyWithin`, `fill`, `reverse`, `sort`更新Array中的数据。
 
-<!-- @[Decorative_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeArray.ets) -->
+<!-- @[Decorative_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeArray.ets) -->  
 
 ``` TypeScript
 @Entry
@@ -253,18 +269,30 @@ struct Parent {
     Row() {
       Column() {
         ForEach(this.count, (item: number) => {
-          Text(`parent: ${item}`).fontSize(30)
+          Text(`parent: ${item}`)
+            .fontSize(30)
+            .margin(10)
           Divider()
         })
-        Button('push').onClick(() => {
-          this.count.push(111);
-        })
-        Button('reverse').onClick(() => {
-          this.count.reverse();
-        })
-        Button('fill').onClick(() => {
-          this.count.fill(6);
-        })
+        // count被@Provider装饰，可以被观察到Array整体的赋值以及调用Array接口带来的变化
+        Button('push')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.count.push(111);
+          })
+        Button('reverse')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.count.reverse();
+          })
+        Button('fill')
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.count.fill(6);
+          })
         Child()
       }
       .width('100%')
@@ -280,29 +308,43 @@ struct Child {
   build() {
     Column() {
       ForEach(this.count, (item: number) => {
-        Text(`child: ${item}`).fontSize(30)
+        Text(`child: ${item}`)
+          .fontSize(30)
+          .margin(10)
         Divider()
       })
-      Button('push').onClick(() => {
-        this.count.push(222);
-      })
-      Button('reverse').onClick(() => {
-        this.count.reverse();
-      })
-      Button('fill').onClick(() => {
-        this.count.fill(8);
-      })
+      // count被@Consumer装饰，可以被观察到Array整体的赋值以及调用Array接口带来的变化
+      Button('push')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.count.push(222);
+        })
+      Button('reverse')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.count.reverse();
+        })
+      Button('fill')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.count.fill(8);
+        })
     }
     .width('100%')
   }
 }
 ```
 
+![provider-sync-2](figures/provider-sync-2.gif)
+
 ### 装饰Date类型变量
 
 当装饰Date类型变量时，可以观察到数据源对Date整体的赋值，以及调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds`带来的变化。
 
-<!-- @[Decorative_Date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeDate.ets) -->
+<!-- @[Decorative_Date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeDate.ets) -->  
 
 ``` TypeScript
 @Entry
@@ -313,24 +355,36 @@ struct Parent {
   build() {
     Column() {
       Text(`parent: ${this.selectedDate}`)
+        .fontSize(20)
+        .margin(10)
+      // selectedDate被@Provider装饰，可以被观察到Date整体的赋值以及调用Date接口带来的变化
       Button('update the new date')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.selectedDate = new Date('2023-07-07');
         })
       Button('increase the year by 1')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
         })
       Button('increase the month by 1')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
         })
       Button('increase the day by 1')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.selectedDate.setDate(this.selectedDate.getDate() + 1);
         })
       Child()
     }
+    .width('100%')
   }
 }
 
@@ -341,32 +395,46 @@ struct Child {
   build() {
     Column() {
       Text(`child: ${this.selectedDate}`)
+        .fontSize(20)
+        .margin(10)
+      // selectedDate被@Consumer装饰，可以被观察到Date整体的赋值以及调用Date接口带来的变化
       Button('update the new date')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.selectedDate = new Date('2025-01-01');
         })
       Button('increase the year by 1')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
         })
       Button('increase the month by 1')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
         })
       Button('increase the day by 1')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.selectedDate.setDate(this.selectedDate.getDate() + 1);
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![provider-sync-3](figures/provider-sync-3.gif)
 
 ### 装饰Map类型变量
 
 当装饰Map类型变量时，可以观察到数据源对Map整体的赋值，以及调用Map的接口`set`, `clear`, `delete`带来的变化。
 
-<!-- @[Decorative_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeMap.ets) -->
+<!-- @[Decorative_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeMap.ets) -->  
 
 ``` TypeScript
 @Entry
@@ -376,29 +444,50 @@ struct Parent {
 
   build() {
     Column() {
-      Text('Parent').fontSize(30)
+      Text('Parent')
+        .fontSize(20)
+        .margin(5)
       ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
-        Text(`${item[0]}`).fontSize(30)
-        Text(`${item[1]}`).fontSize(30)
+        Text(`${item[0]}`)
+          .fontSize(20)
+        Text(`${item[1]}`)
+          .fontSize(20)
         Divider()
       })
-      Button('init map').onClick(() => {
-        this.message = new Map([[0, 'aa'], [1, 'bb'], [3, 'cc']]);
-      })
-      Button('set new one').onClick(() => {
-        this.message.set(4, 'd');
-      })
-      Button('clear').onClick(() => {
-        this.message.clear();
-      })
-      Button('replace the first one').onClick(() => {
-        this.message.set(0, 'a~');
-      })
-      Button('delete the first one').onClick(() => {
-        this.message.delete(0);
-      })
+      // message被@Provider装饰，可以被观察到Map整体的赋值以及调用Map接口带来的变化
+      Button('init map')
+        .width(300)
+        .margin(5)
+        .onClick(() => {
+          this.message = new Map([[0, 'aa'], [1, 'bb'], [3, 'cc']]);
+        })
+      Button('set new one')
+        .width(300)
+        .margin(5)
+        .onClick(() => {
+          this.message.set(4, 'd');
+        })
+      Button('clear')
+        .width(300)
+        .margin(5)
+        .onClick(() => {
+          this.message.clear();
+        })
+      Button('replace the first one')
+        .width(300)
+        .margin(5)
+        .onClick(() => {
+          this.message.set(0, 'a~');
+        })
+      Button('delete the first one')
+        .width(300)
+        .margin(5)
+        .onClick(() => {
+          this.message.delete(0);
+        })
       Child()
     }
+    .width('100%')
   }
 }
 
@@ -408,37 +497,60 @@ struct Child {
 
   build() {
     Column() {
-      Text('Child').fontSize(30)
+      Text('Child')
+        .fontSize(20)
+        .margin(5)
       ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
-        Text(`${item[0]}`).fontSize(30)
-        Text(`${item[1]}`).fontSize(30)
+        Text(`${item[0]}`)
+          .fontSize(20)
+        Text(`${item[1]}`)
+          .fontSize(20)
         Divider()
       })
-      Button('init map').onClick(() => {
-        this.message = new Map([[0, 'dd'], [1, 'ee'], [3, 'ff']]);
-      })
-      Button('set new one').onClick(() => {
-        this.message.set(4, 'g');
-      })
-      Button('clear').onClick(() => {
-        this.message.clear();
-      })
-      Button('replace the first one').onClick(() => {
-        this.message.set(0, 'a*');
-      })
-      Button('delete the first one').onClick(() => {
-        this.message.delete(0);
-      })
+      // message被@Consumer装饰，可以被观察到Map整体的赋值以及调用Map接口带来的变化
+      Button('init map')
+        .width(300)
+        .margin(5)
+        .onClick(() => {
+          this.message = new Map([[0, 'dd'], [1, 'ee'], [3, 'ff']]);
+        })
+      Button('set new one')
+        .width(300)
+        .margin(5)
+        .onClick(() => {
+          this.message.set(4, 'g');
+        })
+      Button('clear')
+        .width(300)
+        .margin(5)
+        .onClick(() => {
+          this.message.clear();
+        })
+      Button('replace the first one')
+        .width(300)
+        .margin(5)
+        .onClick(() => {
+          this.message.set(0, 'a*');
+        })
+      Button('delete the first one')
+        .width(300)
+        .margin(5)
+        .onClick(() => {
+          this.message.delete(0);
+        })
     }
+    .width('100%')
   }
 }
 ```
+
+![provider-sync-4](figures/provider-sync-4.gif)
 
 ### 装饰Set类型变量
 
 当装饰Set类型变量时，可以观察到数据源对Set整体的赋值，以及调用Set的接口 `add`, `clear`, `delete`带来的变化。
 
-<!-- @[Decorative_Set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeSet.ets) -->
+<!-- @[Decorative_Set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeSet.ets) -->  
 
 ``` TypeScript
 @Entry
@@ -448,25 +560,43 @@ struct Parent {
 
   build() {
     Column() {
-      Text('Parent').fontSize(30)
+      Text('Parent')
+        .fontSize(30)
+        .margin(10)
       ForEach(Array.from(this.message.entries()), (item: [number, number]) => {
-        Text(`${item[0]}`).fontSize(30)
+        Text(`${item[0]}`)
+          .fontSize(30)
+          .margin(10)
         Divider()
       })
-      Button('init set').onClick(() => {
-        this.message = new Set([1, 2, 3, 4]);
-      })
-      Button('set new one').onClick(() => {
-        this.message.add(5);
-      })
-      Button('clear').onClick(() => {
-        this.message.clear();
-      })
-      Button('delete the first one').onClick(() => {
-        this.message.delete(1);
-      })
+      // message被@Provider装饰，可以被观察到Set整体的赋值以及调用Set接口带来的变化
+      Button('init set')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.message = new Set([1, 2, 3, 4]);
+        })
+      Button('set new one')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.message.add(5);
+        })
+      Button('clear')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.message.clear();
+        })
+      Button('delete the first one')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.message.delete(1);
+        })
       Child()
     }
+    .width('100%')
   }
 }
 
@@ -476,28 +606,47 @@ struct Child {
 
   build() {
     Column() {
-      Text('Child').fontSize(30)
+      Text('Child')
+        .fontSize(30)
+        .margin(10)
       ForEach(Array.from(this.message.entries()), (item: [number, number]) => {
-        Text(`${item[0]}`).fontSize(30)
+        Text(`${item[0]}`)
+          .fontSize(30)
+          .margin(10)
         Divider()
       })
-      Button('init set').onClick(() => {
-        this.message = new Set([1, 2, 3, 4, 5, 6]);
-      })
-      Button('set new one').onClick(() => {
-        this.message.add(7);
-      })
-      Button('clear').onClick(() => {
-        this.message.clear();
-      })
-      Button('delete the first one').onClick(() => {
-        this.message.delete(1);
-      })
+      // message被@Consumer装饰，可以被观察到Set整体的赋值以及调用Set接口带来的变化
+      Button('init set')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.message = new Set([1, 2, 3, 4, 5, 6]);
+        })
+      Button('set new one')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.message.add(7);
+        })
+      Button('clear')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.message.clear();
+        })
+      Button('delete the first one')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.message.delete(1);
+        })
     }
+    .width('100%')
   }
 }
 ```
 
+![provider-sync-5](figures/provider-sync-5.gif)
 
 ### \@Provider和\@Consumer装饰回调事件用于组件之间完成行为抽象
 
@@ -505,7 +654,7 @@ struct Child {
 
 在拖拽场景中，若需将子组件的拖拽起始位置信息同步给父组件，可参考以下示例。
 
-<!-- @[Drag_Drop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DragDrop.ets) -->
+<!-- @[Drag_Drop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DragDrop.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -522,8 +671,11 @@ struct Parent {
   build() {
     Column() {
       Text(`child position x: ${this.childX}, y: ${this.childY}`)
+        .fontSize(20)
+        .margin(10)
       Child()
     }
+    .width('100%')
   }
 }
 
@@ -533,6 +685,8 @@ struct Child {
 
   build() {
     Button('changed')
+      .width(300)
+      .margin(10)
       .draggable(true)
       .onDragStart((event: DragEvent) => {
         // 当前预览器上不支持通用拖拽事件
@@ -542,17 +696,19 @@ struct Child {
 }
 ```
 
+![provider-sync-6](figures/provider-sync-6.gif)
 
 ### \@Provider和\@Consumer装饰复杂类型，配合\@Trace一起使用
 
 1. \@Provider和\@Consumer只能观察到数据本身的变化。如果需要观察其装饰的复杂数据类型的属性变化，可以配合\@Trace一起使用，也可以使用[makeObserved](./arkts-new-makeObserved.md)将非可观察数据变为可观察数据。
 2. 装饰内置类型：Array、Map、Set、Date时，可以观察到某些API的变化，观察能力同[\@Trace](./arkts-new-observedV2-and-trace.md#观察变化)。
 
-<!-- @[Decorative_Complex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeComplex.ets) -->
+<!-- @[Decorative_Complex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeComplex.ets) -->  
 
 ``` TypeScript
 @ObservedV2
 class User {
+  // 复杂数据类型的属性被@Trace装饰，可以被观察到属性变化
   @Trace public name: string;
   @Trace public age: number;
 
@@ -571,18 +727,25 @@ struct Parent {
     Column() {
       Child()
       Button('add new user')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.users.push(new User('Molly', 18));
         })
       Button('age++')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.users[0].age++;
         })
       Button('change name')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.users[0].name = 'Shelly';
         })
     }
+    .width('100%')
   }
 }
 
@@ -594,21 +757,29 @@ struct Child {
     Column() {
       ForEach(this.users, (item: User) => {
         Column() {
-          Text(`name: ${item.name}`).fontSize(30)
-          Text(`age: ${item.age}`).fontSize(30)
+          Text(`name: ${item.name}`)
+            .fontSize(30)
+            .margin(10)
+          Text(`age: ${item.age}`)
+            .fontSize(30)
+            .margin(10)
           Divider()
         }
+        .width('100%')
       })
     }
+    .width('100%')
   }
 }
 ```
+
+![provider-sync-7](figures/provider-sync-7.gif)
 
 ### \@Provider重名时，\@Consumer向上查找其最近的\@Provider
 
 \@Provider可以在组件树上重名，\@Consumer会向上查找其最近父节点的\@Provider的数据。
 
-<!-- @[Provider_Same](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/ProviderSame.ets) -->
+<!-- @[Provider_Same](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/ProviderSame.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -620,6 +791,7 @@ struct Index {
     Column() {
       Parent()
     }
+    .width('100%')
   }
 }
 
@@ -631,8 +803,11 @@ struct Parent {
   build() {
     Column() {
       Text(`${this.val2}`)
+        .fontSize(20)
+        .margin(10)
       Child()
     }
+    .width('100%')
   }
 }
 
@@ -643,10 +818,15 @@ struct Child {
   build() {
     Column() {
       Text(`${this.val}`)
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
+
+![provider-sync-8](figures/provider-sync-8.png)
 
 上面的例子中：
 
@@ -657,7 +837,7 @@ struct Child {
 
 \@Provider和\@Consumer装饰的变量可以初始化子组件中\@Param装饰的变量。
 
-<!-- @[Decorative_Initialized](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeInitialized.ets) -->
+<!-- @[Decorative_Initialized](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeInitialized.ets) -->  
 
 ``` TypeScript
 @Entry
@@ -667,9 +847,13 @@ struct Index {
 
   build() {
     Column() {
-      Text(`Index @Provider val: ${this.val}`).fontSize(30)
+      Text(`Index @Provider val: ${this.val}`)
+        .fontSize(30)
+        .margin(10)
+      // @Provider装饰的变量val可以初始化@Param装饰的变量val2
       Parent({ val2: this.val })
     }
+    .width('100%')
   }
 }
 
@@ -680,13 +864,24 @@ struct Parent {
 
   build() {
     Column() {
-      Text(`Parent @Consumer val: ${this.val}`).fontSize(30)
-      Button('change val').onClick(() => {
-        this.val++;
-      })
-      Text(`Parent @Param val2: ${this.val2}`).fontSize(30)
+      Text(`Parent @Consumer val: ${this.val}`)
+        .fontSize(30)
+        .margin(10)
+      Button('change val')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.val++;
+        })
+      Text(`Parent @Param val2: ${this.val2}`)
+        .fontSize(30)
+        .margin(10)
+      // @Consumer装饰的变量val可以初始化@Param装饰的变量val
       Child({ val: this.val })
-    }.border({ width: 2, color: Color.Green })
+    }
+    .width('95%')
+    .border({ width: 2, color: Color.Green })
+    .height('45%')
   }
 }
 
@@ -696,11 +891,17 @@ struct Child {
 
   build() {
     Column() {
-      Text(`Child @Param val ${this.val}`).fontSize(30)
-    }.border({ width: 2, color: Color.Pink })
+      Text(`Child @Param val ${this.val}`)
+        .fontSize(30)
+        .margin(10)
+    }
+    .width('95%')
+    .border({ width: 2, color: Color.Pink })
   }
 }
 ```
+
+![provider-sync-9](figures/provider-sync-9.gif)
 
 上面的例子中：
 
@@ -717,11 +918,11 @@ struct Child {
 下面给出一个示例，实现如下功能：
 1. BuilderNode通过[全局自定义构建函数](arkts-builder.md#全局自定义构建函数)构建组件树，组件树的根[FrameNode](../../reference/apis-arkui/js-apis-arkui-frameNode.md)节点可通过[getFrameNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md#getframenode)获取，该节点可直接由[NodeController](../../reference/apis-arkui/js-apis-arkui-nodeController.md)返回并挂载于[NodeContainer](../../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)节点下。
 2. 挂载到自定义组件节点树时，BuilderNode会通过addBuilderNode方法挂载在自定义组件下，此时BuilderNode节点下的\@Consumer会向上查找\@Provider，根据key的匹配规则找到最近的\@Provider后，会和\@Provider建立双向同步关系。如果找不到配对的\@Provider，则\@Consumer仍使用默认值。
-3. 建立双向同步的关系后，如果\@Provider装饰变量的值和\@Consumer的默认值不同，则会回调\@Consumer的\@Monitor方法，以及与\@Consumer有同步关系的变量的\@Monitor方法，例如：\@Consumer通知其子组件中的\@Param触发\@Monitor方法。
+3. 建立双向同步的关系后，如果\@Provider装饰变量的值和\@Consumer的默认值不同，则会回调\@Consumer的\@Monitor方法，以及与\@Consumer有同步关系的变量的[\@Monitor](./arkts-new-monitor.md)方法，例如：\@Consumer通知其子组件中的\@Param触发\@Monitor方法。
 4. BuilderNode从组件树卸载后，\@Consumer会再次试图查找对应的\@Provider，如果发现从组件树卸载后无法再找到之前配对的\@Provider，则断开和\@Provider的双向同步关系，\@Consumer装饰的变量恢复成默认值。
 5. \@Consumer断开和\@Provider的连接，恢复成默认值时，会判断\@Consumer装饰变量的值相对于从\@Provider变为\@Consumer的默认值是否有变化，如果有变化，则会回调\@Consumer的\@Monitor方法以及与该\@Consumer存在同步关系的变量的\@Monitor方法。
 
-<!-- @[Builder_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/BuilderNode.ets) -->
+<!-- @[Builder_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/BuilderNode.ets) --> 
 
 ``` TypeScript
 import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
@@ -785,27 +986,37 @@ struct RemoChildDisconnectProvider {
   build() {
     Column({ space: 8 }) {
       Text(`Provider: ${this.content}`)
+        .fontSize(20)
+        .margin(10)
 
       // 添加BuilderNode，@Consumer与@Provider建立双向同步
       Button('add child')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.controllerIndex.addBuilderNode();
         })
 
       // 移除BuilderNode，@Consumer与@Provider断开连接，恢复默认值
       Button('remove child')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.controllerIndex.removeBuilderNode();
         })
 
       // 释放BuilderNode的子节点TestRemove，随后该子节点销毁，触发子节点的aboutToDisappear回调
       Button('dispose child')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.controllerIndex.disposeNode();
         })
 
       // @Provider/@Consumer双向同步更新
       Button('change Provider')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.content += 'Pro';
         })
@@ -831,21 +1042,27 @@ struct TestRemove {
   build() {
     Column() {
       Text('Consumer ' + this.content)
+        .fontSize(20)
+        .margin(10)
 
       // @Provider和@Consumer绑定的Text组件刷新，并回调@Provider和@Consumer的@Monitor方法
       Button('change cc')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.content += 'cc';
         })
     }
+    .width('100%')
   }
 }
 ```
 
+![provider-sync-10](figures/provider-sync-10.gif)
 
 上面的例子中：
 
-- 点击`add Child`，`TestRemove`中\@Consumer向上找到最近的`RemoChildDisconnectProvider`中的\@Provider，将\@Consumer从默认值更新为\@Provider的值，并回调\@Consumer的\@Monitor方法。
-- \@Provider和\@Consumer配对后，建立双向同步关系。点击`change Provider`和`Text(`change cc`)`，\@Provider和\@Consumer绑定的Text组件刷新，并回调\@Provider和\@Consumer的\@Monitor方法。
-- 点击`remove Child`，BuilderNode子节点从组件树卸载，`TestRemove`中的\@Consumer和`RemoChildDisconnectProvider`中的\@Provider断开连接，`TestRemove`中的\@Consumer恢复成默认值，并回调\@Consumer的\@Monitor方法。
-- 点击`dispose Child`，释放BuilderNode下的子节点`TestRemove`，随后该子节点销毁，执行aboutToDisappear回调。
+- 点击`add child`，`TestRemove`中\@Consumer向上找到最近的`RemoChildDisconnectProvider`中的\@Provider，将\@Consumer从默认值更新为\@Provider的值，并回调\@Consumer的\@Monitor方法。
+- \@Provider和\@Consumer配对后，建立双向同步关系。点击`change Provider`和`change cc`，\@Provider和\@Consumer绑定的Text组件刷新，并回调\@Provider和\@Consumer的\@Monitor方法。
+- 点击`remove child`，BuilderNode子节点从组件树卸载，`TestRemove`中的\@Consumer和`RemoChildDisconnectProvider`中的\@Provider断开连接，`TestRemove`中的\@Consumer恢复成默认值，并回调\@Consumer的\@Monitor方法。
+- 点击`dispose child`，释放BuilderNode下的子节点`TestRemove`，随后该子节点销毁，执行aboutToDisappear回调。

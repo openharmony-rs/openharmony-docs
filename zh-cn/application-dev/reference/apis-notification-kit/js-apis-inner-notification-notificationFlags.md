@@ -1,8 +1,8 @@
 # NotificationFlags
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -34,6 +34,6 @@
 
 | 名称           | 值  | 说明                               |
 | -------------- | --- | --------------------------------- |
-| TYPE_NONE      | 0   | 默认标志，与TYPE_OPEN效果相同。          |
+| TYPE_NONE      | 0   | 默认标志，与TYPE_OPEN效果相同。     |
 | TYPE_OPEN      | 1   | 通知标志打开。                     |
 | TYPE_CLOSE     | 2   | 通知标志关闭。                     |

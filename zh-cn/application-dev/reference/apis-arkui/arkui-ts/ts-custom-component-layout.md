@@ -26,6 +26,8 @@ ArkUI框架会在自定义组件确定尺寸时，将该自定义组件的节点
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -40,7 +42,7 @@ ArkUI框架会在自定义组件确定尺寸时，将该自定义组件的节点
 
 | 类型                        | 说明           |
 | --------------------------- | -------------- |
-| [SizeResult](#sizeresult10) | 组件尺寸信息。 |
+| [SizeResult](#sizeresult10) | 自定义组件自身的尺寸信息。 |
 
 ## onPlaceChildren<sup>10+</sup>
 
@@ -49,6 +51,8 @@ onPlaceChildren?(selfLayoutInfo: GeometryInfo, children: Array&lt;Layoutable&gt;
 ArkUI框架会在自定义组件确定位置时，将该自定义组件的子节点自身的尺寸范围通过onPlaceChildren传递给该自定义组件。不允许在onPlaceChildren函数中改变状态变量。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -70,17 +74,21 @@ ArkUI框架会在自定义组件确定位置时，将该自定义组件的子节
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| borderWidth | [EdgeWidth](ts-types.md#edgewidths9) |否|否| 父组件（自定义组件）边框宽度。<br>单位：vp。            |
+| borderWidth | [EdgeWidth](ts-types.md#edgewidth10) |否|否| 父组件（自定义组件）边框宽度。<br>单位：vp。            |
 | margin      | [Margin](ts-types.md#margin)       | 否|否|父组件（自定义组件）margin信息。 <br>单位：vp。       |
 | padding     | [Padding](ts-types.md#padding)   |否|否| 父组件（自定义组件）padding信息。<br>单位：vp。 |
 
 ## Layoutable<sup>10+</sup>
 
-子组件布局信息。
+子组件位置信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -89,7 +97,7 @@ ArkUI框架会在自定义组件确定位置时，将该自定义组件的子节
 | 名称         | 类型       | 只读|可选|  说明                                                      |
 |--------------|---------------------------------- | ------|-----------------------------------------------------|---------------------|
 | measureResult| [MeasureResult](#measureresult10) |   否|否| 子组件测量后的尺寸信息。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>单位：vp     |
-| uniqueId<sup>18+</sup>| number | 否 |是| 系统为子组件分配的唯一标识UniqueID。<br>取值范围[0,+∞)。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
+| uniqueId<sup>18+</sup>| number | 否 |是| 系统为子组件分配的唯一标识UniqueID。<br>取值范围[0,+∞)。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ### layout<sup>10+</sup>
 
@@ -98,6 +106,8 @@ layout(position: Position): void
 调用此方法对子组件的位置信息进行限制。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -115,13 +125,15 @@ getMargin(): DirectionalEdgesT\<number>
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
 | 类型                          | 说明                                        |
 |------------------------------------|---------------------------------------------|
-| [DirectionalEdgesT&lt;number&gt;](./ts-types.md#directionaledgestt12)  |  子组件的margin信息。   |
+| [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;  |  子组件的margin信息。   |
 
  ### getPadding<sup>12+</sup>
 
@@ -131,13 +143,15 @@ getPadding(): DirectionalEdgesT\<number>
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
  **返回值：**
 
 | 类型                          | 说明                                        |
 |------------------------------------|---------------------------------------------|
-| [DirectionalEdgesT&lt;number&gt;](./ts-types.md#directionaledgestt12)  |  子组件的padding信息。  |
+| [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;  |  子组件的padding信息。  |
 
 ### getBorderWidth<sup>12+</sup>
 
@@ -147,19 +161,23 @@ getBorderWidth(): DirectionalEdgesT\<number>
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
 | 类型                          | 说明                                        |
 |------------------------------------|---------------------------------------------|
-| [DirectionalEdgesT&lt;number&gt;](./ts-types.md#directionaledgestt12)  |  子组件的borderWidth信息。  |
+| [DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;  |  子组件的borderWidth信息。  |
 
 ## Measurable<sup>10+</sup>
 
-子组件位置信息。
+子组件尺寸信息。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -171,7 +189,7 @@ getBorderWidth(): DirectionalEdgesT\<number>
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| uniqueId<sup>18+</sup>| number | 否 | 是 | 系统为子组件分配的唯一标识UniqueID。|
+| uniqueId<sup>18+</sup>| number | 否 | 是 | 系统为子组件分配的唯一标识UniqueID。<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ### measure
 
@@ -180,6 +198,8 @@ getBorderWidth(): DirectionalEdgesT\<number>
  调用此方法限制子组件的尺寸范围。
 
  **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+ **模型约束：** 此接口仅可在Stage模型下使用。
 
  **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -204,13 +224,15 @@ getBorderWidth(): DirectionalEdgesT\<number>
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
  | 类型                               | 说明                     |
  |------------------------------------|-------------------------|
- |[DirectionalEdgesT&lt;number&gt;](./ts-types.md#directionaledgestt12)  | 子组件的margin信息。   |
+ |[DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;  | 子组件的margin信息。   |
 
 ### getPadding<sup>12+</sup>
 
@@ -220,13 +242,15 @@ getPadding(): DirectionalEdgesT\<number\>
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
  | 类型                               | 说明                     |
  |------------------------------------|-------------------------|
- |[DirectionalEdgesT&lt;number&gt;](./ts-types.md#directionaledgestt12)  | 子组件的padding信息。   |
+ |[DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;  | 子组件的padding信息。   |
 
  ### getBorderWidth<sup>12+</sup>
 
@@ -236,13 +260,15 @@ getBorderWidth(): DirectionalEdgesT\<number\>
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **返回值：**
 
  | 类型                               | 说明                     |
  |------------------------------------|-------------------------|
- |[DirectionalEdgesT&lt;number&gt;](./ts-types.md#directionaledgestt12)  | 子组件的borderWidth信息。|
+ |[DirectionalEdgesT](./ts-types.md#directionaledgestt12)&lt;number&gt;  | 子组件的borderWidth信息。|
 
 
 ## MeasureResult<sup>10+</sup>
@@ -250,6 +276,8 @@ getBorderWidth(): DirectionalEdgesT\<number\>
 测量后的组件布局信息。继承自[SizeResult](#sizeresult10)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -266,6 +294,8 @@ getBorderWidth(): DirectionalEdgesT\<number\>
 >- 使用自定义布局方法时，需要同时调用onMeasureSize和onPlaceChildren方法，否则可能出现布局异常。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -430,6 +460,7 @@ struct Index {
   }
 }
 
+// 通过builder的方式传递多个组件，作为自定义组件的一级子组件（即不包含容器组件，如Column）
 @Builder
 function ColumnChildren() {
   ForEach([1, 2, 3], (index: number) => { // 目前不支持使用lazyForEach语法。
@@ -449,20 +480,12 @@ struct CustomLayout {
   };
 
   @BuilderParam builder: () => void = this.doNothingBuilder;
-  @State startSize: number = 100;
   result: SizeResult = {
     width: 0,
     height: 0
   };
 
-  onPlaceChildren(selfLayoutInfo: GeometryInfo, children: Array<Layoutable>, constraint: ConstraintSizeOptions) {
-    let startPos = 300;
-    children.forEach((child) => {
-      let pos = startPos - child.measureResult.height;
-      child.layout({ x: pos, y: pos })
-    })
-  }
-
+  // 第一步：计算各子组件的大小
   onMeasureSize(selfLayoutInfo: GeometryInfo, children: Array<Measurable>, constraint: ConstraintSizeOptions) {
     let size = 100;
     children.forEach((child) => {
@@ -477,6 +500,14 @@ struct CustomLayout {
     this.result.width = 100;
     this.result.height = 400;
     return this.result;
+  }
+  // 第二步：放置各子组件的位置
+  onPlaceChildren(selfLayoutInfo: GeometryInfo, children: Array<Layoutable>, constraint: ConstraintSizeOptions) {
+    let startPos = 300;
+    children.forEach((child) => {
+      let pos = startPos - child.measureResult.height;
+      child.layout({ x: pos, y: pos })
+    })
   }
 
   build() {
@@ -718,7 +749,7 @@ struct CustomLayoutText {
 
   onMeasureSize(selfLayoutInfo: GeometryInfo, children: Array<Measurable>, constraint: ConstraintSizeOptions) {
     children.forEach((child) => {
-      let result: MeasureResult = child.measure({ maxWidth: 335, maxHeight: 50 }) // 设置自定义组件子组件大小的限制。
+      child.measure({ maxWidth: 335, maxHeight: 50 }) // 设置自定义组件子组件大小的限制。
     })
     this.result.width = 200;
     this.result.height = 130;

@@ -92,4 +92,4 @@ You can set universal styles for components in the **style** attribute or **.css
 </div>
 ```
 
-![en-us_image_0000001214837129](figures/en-us_image_0000001214837129.png)
+![boxSizing](figures/boxSizing.png)

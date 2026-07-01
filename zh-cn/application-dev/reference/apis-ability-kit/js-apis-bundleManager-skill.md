@@ -4,7 +4,7 @@
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 skill标签对象，可以通过[bundleManager.getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取skill([BundleInfo](./js-apis-bundleManager-bundleInfo.md)->[HapModuleInfo](./js-apis-bundleManager-hapModuleInfo.md)->[AbilityInfo](./js-apis-bundleManager-abilityInfo.md)或[ExtensionAbilityInfo](./js-apis-bundleManager-extensionAbilityInfo.md)中)信息，其中参数bundleFlags至少包含GET_BUNDLE_INFO_WITH_HAP_MODULE和GET_BUNDLE_INFO_WITH_ABILITY和GET_BUNDLE_INFO_WITH_SKILL。
 
@@ -21,19 +21,21 @@ import { bundleManager } from '@kit.AbilityKit';
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力**: SystemCapability.BundleManager.BundleFramework.Core
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
 | 名称     | 类型   | 只读 | 可选 | 说明       |
 | -------- | ------ | ---- | ---- | ---------- |
 | actions     | Array\<string> | 是   | 否   | Skill接收的[Action集合](js-apis-ability-wantConstant.md#action)。 |
 | entities    | Array\<string> | 是   | 否   | Skill接收的[Entity集合](js-apis-ability-wantConstant.md#entity)。   |
 | uris | Array\<SkillUri> | 是   | 否   | Want匹配的Uri集合。 |
-| domainVerify     | boolean | 是   | 否   | Skill接收的DomainVerify值，仅在AbilityInfo中存在，表示是否开启域名校验，取值为true表示开启域名校验，取值为false表示未开启域名校验。 |
+| domainVerify     | boolean | 是   | 否   | 标识是否开启域名校验，仅在AbilityInfo中存在。取值为true表示开启域名校验，需要进行域名验证；取值为false表示未开启域名校验。 |
 
 ## SkillUri
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
 | 名称            | 类型   | 只读 | 可选 | 说明                                                        |
 | --------------- | ------ | ---- | ---- | ----------------------------------------------------------- |
 | scheme          | string | 是   | 否   | 标识 URI 协议名，常见的有http、https、file、ftp等。          |

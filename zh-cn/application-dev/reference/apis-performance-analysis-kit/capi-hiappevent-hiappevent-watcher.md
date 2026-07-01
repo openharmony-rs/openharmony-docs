@@ -3,7 +3,7 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--Designer: @junjie_shi-->
+<!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -13,7 +13,7 @@ typedef struct HiAppEvent_Watcher HiAppEvent_Watcher
 
 ## 概述
 
-用于接收app事件的监听器。
+接收应用事件的监听器。用于对应用事件进行监听和处理。
 
 **起始版本：** 12
 

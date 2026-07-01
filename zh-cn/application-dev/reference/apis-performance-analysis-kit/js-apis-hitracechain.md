@@ -2,8 +2,8 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @qq_437963121-->
-<!--Designer: @kutcherzhou1; @MontSaintMichel-->
+<!--Owner: @yu_haoqiaida-->
+<!--Designer: @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -28,11 +28,11 @@ import { hiTraceChain } from '@kit.PerformanceAnalysisKit';
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | DEFAULT           | 0      | 缺省标志。       |
-| INCLUDE_ASYNC     | 1      | 异步调用标志。<br/>设置该标志，同时跟踪同步和异步调用；缺省只跟踪同步调用。 |
-| DONOT_CREATE_SPAN | 1 << 1 | 无分支标志。<br/>设置该标志，不创建分支信息；缺省创建分支信息。 |
-| TP_INFO           | 1 << 2 | 埋点标志。<br/>调试场景下设置该标志，调用信息埋点接口[tracepoint()](#hitracechaintracepoint)时，会打印埋点信息hilog日志；缺省不打印埋点信息hilog日志。 |
-| NO_BE_INFO        | 1 << 3 | 无开始结束信息标志。<br/>调试场景下设置该标志，调用开始跟踪接口[begin()](#hitracechainbegin)和结束跟踪接口[end()](#hitracechainend)时，分别会打印开始、结束跟踪信息hilog日志；缺省不打印开始、结束跟踪信息hilog日志。 |
-| DISABLE_LOG       | 1 << 4 | 日志关联标志。<br/>设置该标志，不会在hilog日志中附加HiTraceId信息；缺省会在hilog日志中附加HiTraceId信息。 |
+| INCLUDE_ASYNC     | 1      | 异步调用标志。<br>设置该标志，同时跟踪同步和异步调用；缺省只跟踪同步调用。 |
+| DONOT_CREATE_SPAN | 1 << 1 | 无分支标志。<br>设置该标志，不创建分支信息；缺省创建分支信息。 |
+| TP_INFO           | 1 << 2 | 埋点标志。<br>调试场景下设置该标志，调用信息埋点接口[tracepoint()](#hitracechaintracepoint)时，会打印埋点信息hilog日志；缺省不打印埋点信息hilog日志。 |
+| NO_BE_INFO        | 1 << 3 | 无开始结束信息标志。<br>调试场景下设置该标志，调用开始跟踪接口[begin()](#hitracechainbegin)和结束跟踪接口[end()](#hitracechainend)时，分别会打印开始、结束跟踪信息hilog日志；缺省不打印开始、结束跟踪信息hilog日志。 |
+| DISABLE_LOG       | 1 << 4 | 日志关联标志。<br>设置该标志，不会在hilog日志中附加HiTraceId信息；缺省会在hilog日志中附加HiTraceId信息。 |
 | FAILURE_TRIGGER   | 1 << 5 | 故障触发标志。预置标志，暂未启用。 |
 | D2D_TP_INFO       | 1 << 6 | 设备间埋点标志。TP_INFO的一个子集，调试场景下使用。<br>当已设置TP_INFO标志时，D2D_TP_INFO标志不生效；<br>当未设置TP_INFO标志时，设置D2D_TP_INFO标志，此时调用信息埋点接口[tracepoint()](#hitracechaintracepoint)，仅当mode参数为设备间通信DEVICE的情况下，会打印埋点信息hilog日志。 |
 
@@ -92,7 +92,7 @@ begin(name: string, flags?: number): HiTraceId
 
 | 参数名 | 类型 | 必填 | 说明                                             |
 | -------- | -------- | -------- |------------------------------------------------|
-| name  | string | 是 | 跟踪业务名。<br/>建议该参数的长度不要超过63Byte，超出部分将被截断。    |
+| name  | string | 是 | 跟踪业务名。<br>建议该参数的长度不要超过63Byte，超出部分将被截断。    |
 | flags | number | 否 | 跟踪标志组合，具体可参考[HiTraceFlag](#hitraceflag)，默认值为0。 |
 
 **返回值：**
@@ -264,7 +264,7 @@ type为客户端发送CS和客户端接收CR的信息埋点需配套使用；typ
 | mode | [HiTraceCommunicationMode](#hitracecommunicationmode) | 是 | 信息埋点需要指定的跟踪通信模式。 |
 | type | [HiTraceTracepointType](#hitracetracepointtype)| 是 | 信息埋点需要指定的跟踪埋点类型。 |
 | id   | [HiTraceId](#hitraceid) | 是 | 实施信息埋点操作的HiTraceId实例。 |
-| msg  | string | 否 | HiTraceMeter打点操作传入的trace说明信息，默认值为""。 |
+| msg  | string | 否 | HiTraceMeter打点操作传入的trace说明信息，默认值为""。<br>建议该参数的长度不要超过63Byte，超出部分将被截断。 |
 
 **示例：**
 

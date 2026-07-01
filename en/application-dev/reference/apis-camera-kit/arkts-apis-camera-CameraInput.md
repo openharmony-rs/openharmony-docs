@@ -40,7 +40,7 @@ Opens this camera device. This API uses an asynchronous callback to return the r
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400107                |  Can not use camera cause of conflict.               |
 | 7400108                |  Camera disabled cause of security reason.                                  |
@@ -54,7 +54,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 function openCameraInput(cameraInput: camera.CameraInput): void {
   cameraInput.open((err: BusinessError) => {
     if (err) {
-      console.error(`Failed to open the camera, error code: ${err.code}.`);
+      console.error(`Failed to open camera, error code: ${err.code}.`);
       return;
     }
     console.info('Callback returned with camera opened.');
@@ -82,7 +82,7 @@ Opens this camera device. This API uses a promise to return the result.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID  | Error Message                                     |
+| Error Code  | Error Message                                     |
 |---------|-------------------------------------------|
 | 7400102 | Operation not allowed.                    |
 | 7400107 | Can not use camera cause of conflict.     |
@@ -98,7 +98,7 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
   cameraInput.open().then(() => {
     console.info('Promise returned with camera opened.');
   }).catch((error: BusinessError) => {
-    console.error(`Failed to open the camera, error code: ${error.code}.`);
+    console.error(`Failed to open camera, error code: ${error.code}.`);
   });
 }
 ```
@@ -129,7 +129,7 @@ Opens this camera device. This API uses a promise to return the result.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400107                |  Can not use camera cause of conflict.               |
 | 7400108                |  Camera disabled cause of security reason.                                  |
@@ -144,7 +144,7 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
   cameraInput.open(true).then(() => {
     console.info('Promise returned with camera opened.');
   }).catch((error: BusinessError) => {
-    console.error(`Failed to open the camera, error code: ${error.code}.`);
+    console.error(`Failed to open camera, error code: ${error.code}.`);
   });
 }
 ```
@@ -175,7 +175,7 @@ Opens the camera with the specified concurrency type. This API uses a promise to
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID  | Error Message                                     |
+| Error Code  | Error Message                                     |
 |---------|-------------------------------------------|
 | 7400102 | Operation not allowed.                    |
 | 7400107 | Can not use camera cause of conflict.     |
@@ -191,7 +191,7 @@ function openCameraInput(cameraInput: camera.CameraInput): void {
   cameraInput.open(0).then(() => {
     console.info('Promise returned with camera opened.');
   }).catch((error: BusinessError) => {
-    console.error(`Failed to open the camera, error code: ${error.code}.`);
+    console.error(`Failed to open camera, error code: ${error.code}.`);
   });
 }
 ```
@@ -216,7 +216,7 @@ Closes this camera device. This API uses an asynchronous callback to return the 
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400201                |  Camera service fatal error.                                  |
 
@@ -256,7 +256,7 @@ Closes this camera device. This API uses a promise to return the result.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400201                |  Camera service fatal error.                                  |
 
@@ -350,7 +350,7 @@ Checks whether the physical camera orientation is adjustable in different fold s
 
 | Type       | Description                                        |
 | ---------- | -------------------------------------------- |
-| boolean    | Check result for whether the physical camera orientation is adjustable. **true** if adjustable, **false** otherwise. If the API call fails, undefined is returned.|
+| boolean    | Checks whether the physical camera orientation is adjustable in different fold states of the device. **true** if adjustable, **false** otherwise. If the API call fails, undefined is returned.|
 
 **Example**
 
@@ -375,7 +375,7 @@ Obtains the physical camera orientation in the current fold state of the device.
 
 | Type       | Description                                        |
 | ---------- | -------------------------------------------- |
-| number    | Physical camera orientation.|
+| number    | Physical camera orientation.<br>The value ranges from 0 to 360, in degrees.|
 
 **Example**
 
@@ -400,13 +400,13 @@ Enables or disables the use of the physical camera orientation.
 
 | Name    | Type                                        | Mandatory| Description                                              |
 | -------- | ------------------------------------------- | ---- |--------------------------------------------------|
-| isUsed  | boolean         | Yes  | Whether to enable the use of the physical camera orientation. **true** to enable, **false** otherwise.|
+| isUsed  | boolean         | Yes  | Enables or disables the use of the physical camera orientation. **true** to enable, **false** otherwise.|
 
 **Error codes**
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID  | Error Message                                     |
+| Error Code  | Error Message                                     |
 |---------|-------------------------------------------|
 | 7400102 | Operation not allowed.                    |
 | 7400201 | Camera service fatal error.               |

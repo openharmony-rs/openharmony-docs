@@ -1,7 +1,7 @@
 # 使用JSVM-API接口进行primitive类相关开发
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
@@ -40,6 +40,8 @@ JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开�
 
 cpp 部分代码：
 
+<!-- @[oh_jsvm_coerce_to_bool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetobool/src/main/cpp/hello.cpp) -->
+
 ```cpp
 // hello.cpp
 #include "napi/native_api.h"
@@ -74,7 +76,6 @@ static JSVM_PropertyDescriptor descriptor[] = {
 // 样例测试js
 const char *srcCallNative = R"JS(coerceToBool("123"))JS";
 ```
-<!-- @[oh_jsvm_coerce_to_bool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetobool/src/main/cpp/hello.cpp) -->
 
 预期结果：
 ```txt
@@ -86,6 +87,8 @@ JSVM OH_JSVM_CoerceToBool success:1
 用于将给定的JavaScript value强转为JavaScript number。
 
 cpp 部分代码：
+
+<!-- @[oh_jsvm_coerce_to_number](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetonumber/src/main/cpp/hello.cpp) -->
 
 ```cpp
 // hello.cpp
@@ -121,7 +124,6 @@ static JSVM_PropertyDescriptor descriptor[] = {
 // 样例测试js
 const char *srcCallNative = R"JS(coerceToNumber(true))JS";
 ```
-<!-- @[oh_jsvm_coerce_to_number](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetonumber/src/main/cpp/hello.cpp) -->
 
 预期结果：
 ```txt
@@ -133,6 +135,8 @@ JSVM OH_JSVM_CoerceToNumber success:1
 用于将给定的JavaScript value强转为JavaScript Object类型。
 
 cpp 部分代码：
+
+<!-- @[oh_jsvm_coerce_to_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetoobject/src/main/cpp/hello.cpp) -->
 
 ```cpp
 // hello.cpp
@@ -167,7 +171,6 @@ static JSVM_PropertyDescriptor descriptor[] = {
 // 样例测试js
 const char *srcCallNative = R"JS(coerceToObject(123))JS";
 ```
-<!-- @[oh_jsvm_coerce_to_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetoobject/src/main/cpp/hello.cpp) -->
 
 预期结果：
 ```txt
@@ -179,6 +182,8 @@ JSVM OH_JSVM_CoerceToObject success
 用于将给定的JavaScript value强转为JavaScript string类型。
 
 cpp 部分代码：
+
+<!-- @[oh_jsvm_coerce_to_string](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetostring/src/main/cpp/hello.cpp) -->
 
 ```cpp
 // hello.cpp
@@ -213,7 +218,6 @@ static JSVM_PropertyDescriptor descriptor[] = {
 // 样例测试js
 const char *srcCallNative = R"JS(coerceToString(22222))JS";
 ```
-<!-- @[oh_jsvm_coerce_to_string](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetostring/src/main/cpp/hello.cpp) -->
 
 预期结果：
 ```txt
@@ -225,6 +229,8 @@ JSVM OH_JSVM_CoerceToString success
 获取给定布尔值的JavaScript单例对象。
 
 cpp 部分代码：
+
+<!-- @[oh_jsvm_get_boolean](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getboolean/src/main/cpp/hello.cpp) -->
 
 ```cpp
 // hello.cpp
@@ -272,7 +278,6 @@ static JSVM_PropertyDescriptor descriptor[] = {
 const char *srcCallNative = R"JS(getBoolean(1, 2);
                                  getBoolean(1, 1))JS";
 ```
-<!-- @[oh_jsvm_get_boolean](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getboolean/src/main/cpp/hello.cpp) -->
 
 预期结果：
 ```txt
@@ -286,6 +291,8 @@ JSVM OH_JSVM_GetBoolean success:1
 使用这个函数将JavaScript中的布尔值转为等价的C布尔值。
 
 cpp 部分代码：
+
+<!-- @[oh_jsvm_get_value_bool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getvaluebool/src/main/cpp/hello.cpp) -->
 
 ```cpp
 // hello.cpp
@@ -325,7 +332,6 @@ const char *srcCallNative = R"JS(getValueBool("abc");
                                 getValueBool(true);
                                 getValueBool(false);)JS";
 ```
-<!-- @[oh_jsvm_get_value_bool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getvaluebool/src/main/cpp/hello.cpp) -->
 
 预期结果：
 ```txt
@@ -339,6 +345,8 @@ JSVM OH_JSVM_GetValueBool success:0
 用于获取全局JavaScript对象。该函数的主要作用是获取表示JavaScript全局对象的JSVM_Value，使JSVM模块能够与JavaScript运行时的全局对象进行交互。
 
 cpp 部分代码：
+
+<!-- @[oh_jsvm_get_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getglobal/src/main/cpp/hello.cpp) -->
 
 ```cpp
 // hello.cpp
@@ -373,7 +381,6 @@ static JSVM_PropertyDescriptor descriptor[] = {
 // 样例测试js
 const char *srcCallNative = R"JS(getGlobal())JS";
 ```
-<!-- @[oh_jsvm_get_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getglobal/src/main/cpp/hello.cpp) -->
 
 预期结果：
 ```txt
@@ -385,6 +392,8 @@ JSVM OH_JSVM_GetGlobal success
 用于获取 JavaScript null 对象。
 
 cpp 部分代码：
+
+<!-- @[oh_jsvm_get_null](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getnull/src/main/cpp/hello.cpp) -->
 
 ```cpp
 // hello.cpp
@@ -414,7 +423,6 @@ static JSVM_PropertyDescriptor descriptor[] = {
 // 样例测试js
 const char *srcCallNative = R"JS(getNull())JS";
 ```
-<!-- @[oh_jsvm_get_null](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getnull/src/main/cpp/hello.cpp) -->
 
 预期结果:
 ```txt
@@ -426,6 +434,8 @@ JSVM OH_JSVM_GetNull success
 用于获取 JavaScript undefined 对象。
 
 cpp 部分代码：
+
+<!-- @[oh_jsvm_get_undefined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getundefined/src/main/cpp/hello.cpp) -->
 
 ```cpp
 // hello.cpp
@@ -461,7 +471,6 @@ static JSVM_PropertyDescriptor descriptor[] = {
 // 样例测试js
 const char *srcCallNative = R"JS(getUndefined())JS";
 ```
-<!-- @[oh_jsvm_get_undefined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getundefined/src/main/cpp/hello.cpp) -->
 
 预期结果:
 ```txt

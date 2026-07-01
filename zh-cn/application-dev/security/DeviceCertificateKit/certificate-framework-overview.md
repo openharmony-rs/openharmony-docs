@@ -16,11 +16,11 @@
 
 ## 基本概念
 
-证书算法库框架提供X509证书的解析、序列化、X509证书签名验证、X509证书吊销列表、证书链校验器等相关的功能。
+证书算法库框架提供X.509证书的解析、序列化、X.509证书签名验证、X.509证书吊销列表、证书链校验器等相关的功能。
 
 在开发具体的功能前，开发者需要先了解证书领域的一些基本概念。包括但不限于：
 
-数字证书、数字证书标准X.509（本指导中的“X509”均代指X.509）、证书链、TBS（To Be Signed，待签名部分：指X.509证书中被签名的数据结构，通常包含版本号、序列号、签名算法标识、颁发者、有效期、主体、主体公钥信息和扩展等字段）、CRL（Certificate Revoked List，证书吊销列表）。
+数字证书、数字证书标准X.509、证书链、TBS（To Be Signed，待签名部分：指X.509证书中被签名的数据结构，通常包含版本号、序列号、签名算法标识、颁发者、有效期、主体、主体公钥信息和扩展等字段）、CRL（Certificate Revocation List，证书吊销列表）。
 
 ## 证书规格
 
@@ -28,27 +28,27 @@
 
 ### 证书链校验不包含对时间有效性的校验
 
-由于端侧系统时间不可信，证书链校验不包含对证书有效时间的校验。如果需要检查证书的时间有效性，可使用X509证书的[checkValidityWithDate()](../../reference/apis-device-certificate-kit/js-apis-cert.md#checkvaliditywithdate)方法进行检查。
+由于端侧系统时间不可信，证书链校验不包含对证书有效时间的校验。如果需要检查证书的时间有效性，可使用X.509证书的[checkValidityWithDate()](../../reference/apis-device-certificate-kit/js-apis-cert.md#checkvaliditywithdate)方法进行检查。
 
 ### 证书格式
 
 目前仅支持DER与PEM格式的证书。
 
-### X509证书的基本结构
+### X.509证书的基本结构
 
-![zh-cn_image_0000001743133236](figures/zh-cn_image_0000001743133236.png)
+![X509-certificate-structure](figures/X509-certificate-structure.png)
 
 样例证书文件：
 
-![zh-cn_image_0000001790212405](figures/zh-cn_image_0000001790212405.png)
+![sample-certificate-file](figures/sample-certificate-file.png)
 
-### X509证书吊销列表（CRL）基本结构
+### X.509证书吊销列表（CRL）基本结构
 
-![zh-cn_image_0000001790372133](figures/zh-cn_image_0000001790372133.png)
+![certificate-revocation-list-structure](figures/certificate-revocation-list-structure.png)
 
 样例CRL文件：
 
-![zh-cn_image_0000001743292436](figures/zh-cn_image_0000001743292436.png)
+![sample-CRL-file](figures/sample-CRL-file.png)
 
 ## 约束与限制
 
@@ -64,23 +64,24 @@
 - [证书链校验器对象的创建和校验](create-verify-cerchainvalidator-object.md)
 - [证书集合及证书吊销列表集合对象的创建和获取](create-get-cert-crl-object.md)
 - [证书链对象的创建和校验](create-verify-certchain-object.md)
-- [证书链校验时从p12文件构造TrustAnchor对象数组](create-trustanchor-from-p12.md)
+- [证书链校验时从PKCS #12文件构造TrustAnchor对象数组](create-trustanchor-from-p12.md)
 - [使用系统预置CA证书校验证书链](verify-certchain-by-systemca.md)
 - [证书CMS签名](create-cms-sign-object.md)
 - [证书CMS封装](create-cms-enveloped-object.md)
 - [证书CMS验签](create-cms-verify-object.md)
 - [证书CMS解封装](create-cms-decapsulation-object.md)
-- [证书PKCS12的创建和解析](create-parse-pkcs12.md)
+- [证书PKCS #12的创建和解析](create-parse-pkcs12.md)
 - [证书链在线校验证书吊销状态](create-verify-cerchainvalidator-revocation-object.md)
 - [证书链校验时下载缺失的中间CA证书](allow-download-Intermediate-Cert.md)
+- [构建并校验证书链](build-and-verify-cert-chain.md)
 
 证书算法库框架主要提供了以下类，开发者可以查阅对应API参考，了解以下接口：
 
 | 名称 | 类 | 功能 |
 | -------- | -------- | -------- |
-| X509证书 | [X509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#x509cert) | 提供X509证书的解析、序列化、X509证书签名验证、证书相关的信息查询等功能。 |
-| 证书扩展域段 | [CertExtension](../../reference/apis-device-certificate-kit/js-apis-cert.md#certextension10) | 提供X509证书中扩展域段的获取，如是否CA，CRL分发点等字段。 |
-| X509证书吊销列表 | [X509CRL](../../reference/apis-device-certificate-kit/js-apis-cert.md#x509crl11) | 提供X509证书吊销列表的解析、序列化、信息查询等功能。 |
+| X.509证书 | [X509Cert](../../reference/apis-device-certificate-kit/js-apis-cert.md#x509cert) | 提供X.509证书的解析、序列化、X.509证书签名验证、证书相关的信息查询等功能。 |
+| 证书扩展域段 | [CertExtension](../../reference/apis-device-certificate-kit/js-apis-cert.md#certextension10) | 提供X.509证书中扩展域段的获取，如是否CA，CRL分发点等字段。 |
+| X.509证书吊销列表 | [X509CRL](../../reference/apis-device-certificate-kit/js-apis-cert.md#x509crl11) | 提供X.509证书吊销列表的解析、序列化、信息查询等功能。 |
 | 证书链校验器 | [CertChainValidator](../../reference/apis-device-certificate-kit/js-apis-cert.md#certchainvalidator) | 提供证书链校验（不包括证书有效期的校验）、证书链算法名称查询的功能。 |
 | 证书和证书吊销列表集合 | [CertCRLCollection](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcrlcollection11) | 提供证书和证书吊销列表集合的查询功能。 |
-| X509证书链 | [X509CertChain](../../reference/apis-device-certificate-kit/js-apis-cert.md#x509certchain11) | 提供证书链校验、证书列表获取的功能。 |
+| X.509证书链 | [X509CertChain](../../reference/apis-device-certificate-kit/js-apis-cert.md#x509certchain11) | 提供证书链校验、证书列表获取的功能。 |

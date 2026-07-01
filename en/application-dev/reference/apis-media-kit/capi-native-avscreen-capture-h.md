@@ -1,8 +1,8 @@
 # native_avscreen_capture.h
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zzs_911-->
-<!--Designer: @stupig001-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -78,6 +78,9 @@ The file declares the APIs used to create an OH_AVScreenCapture instance.
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_GetMultiDisplayIdsSelected(OH_AVScreenCapture_UserSelectionInfo *selection, uint64_t** displayIds, size_t *count)](#oh_avscreencapture_getmultidisplayidsselected) | Obtains the list of display IDs selected by the user for recording on the picker page. This function is used in the [OH_AVScreenCapture_OnUserSelected](capi-native-avscreen-capture-base-h.md#oh_avscreencapture_onuserselected) callback. The **selection** pointer is destroyed after the callback is complete.|
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_GetMultiDisplayCaptureCapability(struct OH_AVScreenCapture *capture, uint64_t *displayIds, size_t count, OH_MultiDisplayCapability *capability)](#oh_avscreencapture_getmultidisplaycapturecapability) | Obtains the multi-screen recording capability information and determines whether the selected screens support joint recording.|
 | [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetPrivacyProtectCallback(struct OH_AVScreenCapture *capture, OH_AVScreenCapture_OnPrivacyProtect callback, void *userData)](#oh_avscreencapture_setprivacyprotectcallback) | Sets a privacy protection callback so that the application can respond to privacy protection events generated during screen capture. This API must be called before screen recording starts.|
+| [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForPause(OH_AVScreenCapture_CaptureStrategy *strategy, bool value)](#oh_avscreencapture_strategyforpause) | Allows screen capture to be paused.|
+| [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_PauseScreenCapture(struct OH_AVScreenCapture *capture)](#oh_avscreencapture_pausescreencapture) | Pauses screen capture.|
+| [OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResumeScreenCapture(struct OH_AVScreenCapture *capture)](#oh_avscreencapture_resumescreencapture) | Resumes screen capture.|
 
 ## Function Description
 
@@ -280,7 +283,7 @@ Obtains a video buffer. The application can call this function to obtain informa
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | Pointer to the OH_AVScreenCapture instance.|
 | int32_t *fence | Pointer to parameters for synchronization display.|
-| int64_t *timestamp | Pointer to the timestamp of the video frame.|
+| int64_t *timestamp | Pointer to the timestamp of the video frame. The unit is ns.|
 | [struct OH_Rect](capi-avscreencapture-oh-rect.md) *region | Pointer to the coordinates related to video display.|
 
 **Returns**
@@ -543,6 +546,10 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCanvasRotation(struct OH_AVScr
 
 Sets whether the captured screen data should rotate.<br> When **canvasRotation** is set to **true**, rotation is enabled and the captured screen data remains upright.<br> The default value is **false**.
 
+> **NOTE**
+>
+> Since API version 20, foldable PCs/2-in-1 devices are supported.
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 12
@@ -698,6 +705,11 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResizeCanvas(struct OH_AVScreenCa
 
 Adjusts the screen resolution.<br> This function is used to set the resolution of screen capture data. **width** indicates the screen width and **height** indicates the screen height.<br> Currently, this function supports only the scenario of capturing streams, but not the scenario of storing captured files. In addition, the caller of this function and the video data consumer must ensure that they support resolution changes of the received video data.
 
+Constraints:
+
+- This API can only be called during the running phase of screen recording.
+- When the auto-follow rotation configuration [OH_AVScreenCapture_StrategyForCanvasFollowRotation](#oh_avscreencapture_strategyforcanvasfollowrotation) is set, this API cannot be simultaneously called to adjust the screen recording resolution.
+
 **System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
 
 **Since**: 12
@@ -707,8 +719,8 @@ Adjusts the screen resolution.<br> This function is used to set the resolution o
 | Parameter| Description|
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | Pointer to the OH_AVScreenCapture instance.|
-| int32_t width | Width of the screen to capture.|
-| int32_t height | Height of the screen to capture.|
+| int32_t width | Width of the screen to capture. The unit is px.|
+| int32_t height | Height of the screen to capture. The unit is px.|
 
 **Returns**
 
@@ -763,7 +775,7 @@ Sets the maximum frame rate for screen capture.<br> This function must be called
 | Parameter| Description|
 | -- | -- |
 | [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | Pointer to the OH_AVScreenCapture instance.|
-| int32_t frameRate | Maximum frame rate for screen capture.|
+| int32_t frameRate | Maximum frame rate for screen capture. The unit is frames per second (FPS).|
 
 **Returns**
 
@@ -1075,7 +1087,7 @@ Obtains the screen capture object type selected by the user on the confirmation 
 | Parameter| Description|
 | -- | -- |
 | [OH_AVScreenCapture_UserSelectionInfo](capi-avscreencapture-oh-avscreencapture-userselectioninfo.md) *selection | Pointer to the OH_AVScreenCapture_UserSelectionInfo instance.|
-| int32_t* type | Pointer to the type of the capture object selected by the user. The value **0** means a screen, and **1** means a window.|
+| int32_t* type | Pointer to the type of the object to be captured. **0**: screen; **1**: window; **2**: application.|
 
 **Returns**
 
@@ -1339,11 +1351,11 @@ Obtains the multi-screen recording capability information and determines whether
 | OH_AVSCREEN_CAPTURE_ErrCode | **AV_SCREEN_CAPTURE_ERR_OK**: The operation is successful.<br>         **AV_SCREEN_CAPTURE_ERR_INVALID_VAL**: The input parameter **capture** is a null pointer.<br>         **AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed, and data fails to be obtained.|
 
 ### OH_AVScreenCapture_SetPrivacyProtectCallback()
-  
+
 ```c
 OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetPrivacyProtectCallback(struct OH_AVScreenCapture *capture, OH_AVScreenCapture_OnPrivacyProtect callback, void *userData)
 ```
- 
+
 **Description**
 
 Sets a privacy protection callback so that the application can respond to privacy protection events generated during screen capture. This API must be called before screen capture starts.
@@ -1363,3 +1375,76 @@ Sets a privacy protection callback so that the application can respond to privac
 | Type| Description|
 | -- | -- |
 | OH_AVSCREEN_CAPTURE_ErrCode | **AV_SCREEN_CAPTURE_ERR_OK**: The operation is successful.<br>         **AV_SCREEN_CAPTURE_ERR_INVALID_VAL**: The input screen capture instance or callback is a null pointer.|
+
+### OH_AVScreenCapture_StrategyForPause()
+
+```c
+OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_StrategyForPause(OH_AVScreenCapture_CaptureStrategy *strategy, bool value)
+```
+
+**Description**
+
+Allows screen capture to be paused.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [OH_AVScreenCapture_CaptureStrategy](capi-avscreencapture-oh-avscreencapture-capturestrategy.md) *strategy | Pointer to the OH_AVScreenCapture_CaptureStrategy instance.|
+| bool value | Whether to allow screen capture to be paused. **true**: yes; **false**: no. The default value is **false**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| OH_AVSCREEN_CAPTURE_ErrCode | **AV_SCREEN_CAPTURE_ERR_OK**: The operation is successful.<br>         **AV_SCREEN_CAPTURE_ERR_INVALID_VAL**: The pointer of the **strategy** parameter is null.|
+
+### OH_AVScreenCapture_PauseScreenCapture()
+
+```c
+OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_PauseScreenCapture(struct OH_AVScreenCapture *capture)
+```
+
+**Description**
+
+Pauses screen capture.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | Pointer to the initialized screen capture instance.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| OH_AVSCREEN_CAPTURE_ErrCode | **AV_SCREEN_CAPTURE_ERR_OK**: The operation is successful.<br>         **AV_SCREEN_CAPTURE_ERR_INVALID_VAL**: The input screen capture instance is a null pointer.<br>         **AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.|
+
+### OH_AVScreenCapture_ResumeScreenCapture()
+
+```c
+OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_ResumeScreenCapture(struct OH_AVScreenCapture *capture)
+```
+
+**Description**
+
+Resumes screen capture.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [struct OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | Pointer to the initialized screen capture instance.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| OH_AVSCREEN_CAPTURE_ErrCode | **AV_SCREEN_CAPTURE_ERR_OK**: The operation is successful.<br>         **AV_SCREEN_CAPTURE_ERR_INVALID_VAL**: The input screen capture instance is a null pointer.<br>         **AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT**: The operation is not allowed.|

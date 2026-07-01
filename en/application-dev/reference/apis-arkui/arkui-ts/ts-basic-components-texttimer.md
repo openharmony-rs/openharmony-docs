@@ -30,7 +30,7 @@ TextTimer(options?: TextTimerOptions)
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options |  [TextTimerOptions](#texttimeroptions)| No| Parameters of the **TextTimer** component.|
+| options |  [TextTimerOptions](#texttimeroptions)| No| Parameters of the **TextTimer** component. The default value is inherited from [TextTimerOptions](#texttimeroptions).|
 
 ## TextTimerOptions
 
@@ -340,7 +340,7 @@ struct TextTimerExample {
 ```
 
 
-![en-us_image_0000001251007721](figures/en-us_image_0000001251007721.gif)
+![textTimer1](figures/textTimer1.gif)
 
 ### Example 2: Setting the Text Shadow Style
 
@@ -411,11 +411,11 @@ function buildTextTimer(config: TextTimerConfiguration) {
       Column() {
         Text(config.isCountDown ? 'Countdown' : 'Count-up').fontColor(Color.White)
         Text(
-          (config.isCountDown ? 'Remaining' : 'Elapsed') + (config.isCountDown ?
+          (config.isCountDown ? 'Remaining ' : 'Elapsed ') + (config.isCountDown ?
             (Math.max(config.count / 1000 - config.elapsedTime / 100, 0)).toFixed(1) + '/' +
             (config.count / 1000).toFixed(0)
             : ((config.elapsedTime / 100).toFixed(0))
-          ) + 's')
+          ) + 's'
         ).fontColor(Color.White)
       }
     }
@@ -553,5 +553,3 @@ struct demo {
 ```
 
 ![](figures/text_timer_example_font_setting.png)
-
-<!--no_check-->

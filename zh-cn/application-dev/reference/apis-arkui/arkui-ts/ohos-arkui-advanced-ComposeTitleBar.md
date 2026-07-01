@@ -1,7 +1,7 @@
 # ComposeTitleBar
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
+<!--Owner: @wangrunsen-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -58,6 +58,7 @@ ComposeTitleBar({item?: ComposeTitleBarMenuItem, title: ResourceStr, subtitle?: 
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- |---|---| -------- |
 | value | [ResourceStr](ts-types.md#resourcestr) | 否 | 否 | 图标资源。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -149,7 +150,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_composetitlebar_example01](figures/zh-cn_image_composetitlebar_example01.png)
+![image-composetitlebar-example-01](figures/image-composetitlebar-example-01.png)
 
 ### 示例2（右侧自定义按钮播报）
 从API version 18开始，该示例通过设置标题栏右侧自定义按钮属性accessibilityText、accessibilityDescription、accessibilityLevel自定义屏幕朗读播报文本。
@@ -242,7 +243,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_composetitlebar_example02](figures/zh-cn_image_composetitlebar_example02.png)
+![image-composetitlebar-example-02](figures/image-composetitlebar-example-02.png)
 
 ### 示例3（设置Symbol类型图标）
 
@@ -324,4 +325,4 @@ struct Index {
 }
 ```
 
-![示例3-ComposeTitleBar示例3 设置Symbol类型图标](figures/zh-cn_image_composetitlebar_demo_03.png)
+![示例3-ComposeTitleBar示例3 设置Symbol类型图标](figures/image-composetitlebar-demo-03.png)

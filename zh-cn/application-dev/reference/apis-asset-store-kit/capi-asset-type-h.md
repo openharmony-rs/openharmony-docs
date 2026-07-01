@@ -2,8 +2,8 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @HarMonkey-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
@@ -28,19 +28,19 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [Asset_Blob](capi-assettype-asset-blob.md) | Asset_Blob | 二进制数组类型，即不定长的字节数组。 |
-| [Asset_Value](capi-assettype-asset-value.md) | Asset_Value | 关键资产属性内容。 |
-| [Asset_Attr](capi-assettype-asset-attr.md) | Asset_Attr | 关键资产属性。 |
-| [Asset_Result](capi-assettype-asset-result.md) | Asset_Result | 关键资产查询结果，用于定义一条关键资产。 |
-| [Asset_ResultSet](capi-assettype-asset-resultset.md) | Asset_ResultSet | 关键资产查询结果集合，用于定义多条关键资产。 |
+| [Asset_Value](capi-assettype-asset-value.md) | Asset_Value | 关键资产属性的值（内容）。 |
+| [Asset_Attr](capi-assettype-asset-attr.md) | Asset_Attr | 关键资产属性，属性由标签和值组成，以键值对的形式存在。 |
+| [Asset_Result](capi-assettype-asset-result.md) | Asset_Result | 单条关键资产的查询结果。 |
+| [Asset_ResultSet](capi-assettype-asset-resultset.md) | Asset_ResultSet | 多条关键资产的查询结果。 |
 | [Asset_SyncResult](capi-assettype-asset-syncresult.md) | Asset_SyncResult | 关键资产同步结果。 |
 
 ### 枚举
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [Asset_TagType](#asset_tagtype) | Asset_TagType | 关键资产属性的类型定义。 |
-| [Asset_Tag](#asset_tag) | Asset_Tag | 关键资产属性的名称。 |
-| [Asset_ResultCode](#asset_resultcode) | Asset_ResultCode | 调用ASSET返回的结果码。 |
+| [Asset_TagType](#asset_tagtype) | Asset_TagType | 关键资产属性标签的类型。 |
+| [Asset_Tag](#asset_tag) | Asset_Tag | 关键资产属性的标签。 |
+| [Asset_ResultCode](#asset_resultcode) | Asset_ResultCode | ASSET API使用的结果码。 |
 | [Asset_Accessibility](#asset_accessibility) | Asset_Accessibility | 基于锁屏状态的访问控制类型。 |
 | [Asset_AuthType](#asset_authtype) | Asset_AuthType | 关键资产支持的用户认证类型。 |
 | [Asset_SyncType](#asset_synctype) | Asset_SyncType | 关键资产支持的同步类型。 |
@@ -65,7 +65,7 @@ enum Asset_TagType
 
 **描述**
 
-关键资产属性的类型定义。
+关键资产属性标签的类型。
 
 **起始版本：** 11
 
@@ -83,7 +83,7 @@ enum Asset_Tag
 
 **描述**
 
-关键资产属性的名称。
+关键资产属性的标签。
 
 **起始版本：** 11
 
@@ -98,7 +98,7 @@ enum Asset_Tag
 | ASSET_TAG_AUTH_CHALLENGE = ASSET_TYPE_BYTES \| 0x07 | 表示认证时防重放用的挑战值，其值为bytes类型。 |
 | ASSET_TAG_AUTH_TOKEN = ASSET_TYPE_BYTES \| 0x08 | 表示用户认证后获取到的认证令牌，其值为bytes类型。 |
 | ASSET_TAG_SYNC_TYPE = ASSET_TYPE_NUMBER \| 0x10 | 表示关键资产的同步类型，其值为uint32_t类型。 |
-| ASSET_TAG_IS_PERSISTENT = ASSET_TYPE_BOOL \| 0x11 | 表示关键资产是否需持久化存储，其值为bool类型。<br>在调用OH_Asset_Add函数时传入该属性需要校验权限ohos.permission.STORE_PERSISTENT_DATA。 |
+| ASSET_TAG_IS_PERSISTENT = ASSET_TYPE_BOOL \| 0x11 | 表示关键资产是否需持久化存储，其值为bool类型。<br>在调用OH_Asset_Add函数时传入该属性需要校验权限ohos.permission.STORE_PERSISTENT_DATA，该权限申请方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。 |
 | ASSET_TAG_DATA_LABEL_CRITICAL_1 = ASSET_TYPE_BYTES \| 0x20 | 表示一个用户可自定义传入的字段，该字段不可被更新，其值为bytes类型。 |
 | ASSET_TAG_DATA_LABEL_CRITICAL_2 = ASSET_TYPE_BYTES \| 0x21 | 表示一个用户可自定义传入的字段，该字段不可被更新，其值为bytes类型。 |
 | ASSET_TAG_DATA_LABEL_CRITICAL_3 = ASSET_TYPE_BYTES \| 0x22 | 表示一个用户可自定义传入的字段，该字段不可被更新，其值为bytes类型。 |
@@ -130,7 +130,7 @@ enum Asset_ResultCode
 
 **描述**
 
-调用ASSET返回的结果码。
+ASSET API使用的结果码。
 
 **起始版本：** 11
 

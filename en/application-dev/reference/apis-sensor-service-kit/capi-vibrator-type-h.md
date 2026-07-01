@@ -2,8 +2,8 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @liuhaonan2-->
 <!--Adviser: @hu-zhiqiong-->
 
 ## Overview
@@ -71,7 +71,7 @@ Enumerates the vibration scenarios.
 
 | Enum Item| Description|
 | -- | -- |
-| VIBRATOR_USAGE_UNKNOWN = 0 | Unknown scenario|
+| VIBRATOR_USAGE_UNKNOWN = 0 | Unknown scenario, with the lowest priority|
 | VIBRATOR_USAGE_ALARM = 1 | Alarming|
 | VIBRATOR_USAGE_RING = 2 | Ringing|
 | VIBRATOR_USAGE_NOTIFICATION = 3 | Notification|

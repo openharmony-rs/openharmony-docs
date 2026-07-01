@@ -1,8 +1,8 @@
 # 动画动效
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -78,7 +78,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001174756776](figures/zh-cn_image_0000001174756776.gif)
+![animation2](figures/animation2.gif)
 
 > **说明：**
 > - 使用createAnimator创建动画对象时必须传入options参数。
@@ -233,7 +233,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001220635059](figures/zh-cn_image_0000001220635059.gif)
+![reverseAnimation](figures/reverseAnimation.gif)
 
 > **说明：** 
 >

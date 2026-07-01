@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:50:16.972Z pushedAt=2026-06-26T03:00:41.287Z -->
 
 > **NOTE**
 >
@@ -37,15 +38,21 @@ Invalid URL format or missing URL.
 
 **Description**
 
-This error code is reported if the URL format is incorrect.
+The URL format is incorrect or the URL is missing.
 
 **Cause**
 
-The format of the input URL is incorrect.
+1. The input URL contains illegal characters or does not conform to the format specification.
+
+2. The URL is empty or not passed in.
 
 **Solution**
 
-Specify a URL of the correct format.
+1. Check whether the format of the input URL is correct, and ensure that the URL does not contain illegal characters.
+
+2. Ensure that the URL parameter is not empty.
+
+3. You can search for the log keyword "HttpClient CURLcode result 3" to locate the error.
 
 ## 2300005 Failed to Resolve the Domain Name of the Proxy Server
 
@@ -77,15 +84,21 @@ This error code is reported if the domain name of the host cannot be resolved.
 
 **Cause**
 
-1. The input URL is incorrect.
+1. The input server domain name is incorrect or does not exist.
 
-2. The network connection is abnormal.
+2. The network is blocked or the DNS server is inaccessible.
+
+3. The local DNS cache is abnormal.
 
 **Solution**
 
-1. Specify a URL of the correct format.
+1. Check whether the domain name in the input URL is correct.
 
-2. Rectify network connection faults.
+2. Check the network connection status to ensure that the network is available.
+
+3. Try using another DNS server or flush the DNS cache.
+
+4. You can search for the log keyword "HttpClient CURLcode result 6" to locate the error.
 
 ## 2300007 Failed to Connect to the Server
 
@@ -95,15 +108,29 @@ Failed to connect to the server.
 
 **Description**
 
-This error code is reported if the server connection failed.
+Failed to establish a connection to the server.
 
 **Cause**
 
-The format of the input URL is incorrect.
+1. The server address or port is incorrect.
+
+2. The server is not started or cannot respond.
+
+3. The network connection is blocked by a firewall.
+
+4. The connection timed out.
 
 **Solution**
 
-Specify a URL of the correct format.
+1. Check whether the server address and port are correct.
+
+2. Confirm whether the server is running properly.
+
+3. Check whether the firewall configuration allows this connection.
+
+4. Check the network connectivity.
+
+5. You can search for the log keyword "HttpClient CURLcode result 7" to locate the error.
 
 ## 2300008 Invalid Data Returned by the Server
 
@@ -113,15 +140,25 @@ Invalid server response.
 
 **Description**
 
-This error code is reported if the data returned by the server is invalid.
+The server returned illegal data that cannot be parsed.
 
 **Cause**
 
-The server encounters an error and returns data in non-HTTP format.
+1. The data returned by the server does not conform to the HTTP protocol format.
+
+2. The proxy server configuration is incorrect, and the proxy address points to a non-HTTP proxy service.
+
+3. The service running on the requested port is not an HTTP/HTTPS service.
+
+4. The server or proxy did not return data according to the protocol specification.
 
 **Solution**
 
-Check the server implementation.
+1. Check the server implementation and ensure that the returned data is in a valid HTTP format.
+
+2. If a proxy is used, check whether the proxy configuration is correct, and ensure that the proxy address points to an HTTP proxy service.
+
+3. Check whether the target port of the request runs an HTTP/HTTPS service.
 
 ## 2300009 Access to Remote Resources Denied
 
@@ -171,11 +208,21 @@ This error code is reported if data returned by the server is incomplete.
 
 **Cause**
 
-This problem is probable due to server implementation.
+1. The server interrupts the connection during transmission.
+
+2. Network instability causes data transmission interruption.
+
+3. The size of the data returned by the server does not match the declared size.
 
 **Solution**
 
-Check the server implementation.
+1. Check whether the server implementation is normal.
+
+2. Ensure the stability of the network connection.
+
+3. Check whether a range request is set, causing partial transmission.
+
+4. You can search for the log keyword "HttpClient CURLcode result 18" to locate the error.
 
 ## 2300023 Failed to Write Received Data to a Disk or Application
 
@@ -185,17 +232,29 @@ Failed to write the received data to the disk or application.
 
 **Description**
 
-This error code is reported if an error occurs while writing received data to the disk or application.
+Failed to write received data to the disk or application.
 
 **Cause**
 
-- The application does not have the permission to write files or the file to be downloaded exceeds 5 MB.
+1. The application does not have the file write permission.
 
-- The **destroy** function is called before the data of the last request is fully received.
+2. The [request](./js-apis-http.md#request) API is called to download data exceeding the size limit (5 MB before API version 23, and 50 MB since API version 23), and the **maxLimit** parameter is not set in [HttpRequestOptions](./js-apis-http.md#httprequestoptions).
+
+3. Insufficient disk space.
+
+4. The [destroy](./js-apis-http.md#destroy) method was called before the data from the previous request was completely received, resulting in incomplete received data.
 
 **Solution**
 
-Check the application permission and the size of the file to be downloaded.
+1. Check whether the application has the file write permission.
+
+2. To download data exceeding 5 MB, set an appropriate **maxLimit** parameter in [HttpRequestOptions](./js-apis-http.md#httprequestoptions), or use the [requestInStream](./js-apis-http.md#requestinstream10) API to initiate a streaming request.
+
+3. Check whether the disk space is sufficient.
+
+4. Ensure that the [destroy](./js-apis-http.md#destroy) method is called after the request is complete.
+
+5. You can search for the log keyword "HttpClient CURLcode result 23" to locate the error.
 
 ## 2300025 Failed to Upload Data
 
@@ -245,7 +304,7 @@ This error code is reported if the memory is insufficient.
 
 **Cause**
 
-This error code is reported if the memory is insufficient.
+The memory is insufficient.
 
 **Solution**
 
@@ -263,11 +322,23 @@ This error code is reported if the operation times out.
 
 **Cause**
 
-The TCP connection or the read/write operation times out.
+1. TCP connection timed out (**connectTimeout** defaults to 60000 ms).
+
+2. Data read/write timed out (**readTimeout** defaults to 60000 ms).
+
+3. Network instability caused a response delay.
+
+4. The server load is too high, and the processing speed is slow.
 
 **Solution**
 
-Check whether the network is stable and the signal strength is strong. If the network is normal, check whether the server is overloaded or service processing is slow.
+1. Check the network connection status and ensure that the network is stable.
+
+2. Adjust the **readTimeout** or **connectTimeout** parameters as required.
+
+3. Check the server load.
+
+4. You can search for the log keyword "HttpClient CURLcode result 28" to locate the error.
 
 ## 2300047 Maximum Redirections Reached
 
@@ -331,15 +402,25 @@ Failed to receive data from the peer.
 
 **Description**
 
-This error code is reported if an error occurred while receiving network data from the peer end.
+Failed to receive data from the peer; network data reception failed.
 
 **Cause**
 
-This problem is probable due to a network fault.
+1. The network connection is interrupted or unstable.
+
+2. The server closed the connection.
+
+3. An exception occurred while the peer was sending data.
 
 **Solution**
 
-Rectify network faults.
+1. Check the network connection status.
+
+2. Ensure whether the server is running properly.
+
+3. Initiate the request again.
+
+4. You can search for the log keyword "HttpClient CURLcode result 56" to locate the error.
 
 ## 2300058 Local SSL Certificate Error
 
@@ -385,15 +466,29 @@ Invalid SSL peer certificate or SSH remote key.
 
 **Description**
 
-This error code is reported if the SSL certificate or SSH key of the remote server is incorrect.
+Remote server SSL certificate or SSH key verification failed.
 
 **Cause**
 
-The server identity cannot be verified, for example, the certificate has expired.
+1. The server certificate has expired.
+
+2. The certificate is not issued by a trusted CA.
+
+3. The certificate domain name does not match the requested domain name.
+
+4. SSL Pinning (**certificatePinning**) is configured for the certificate, but the public key hash does not match. The log prompts "Specified pinned public key did not match".
+
+5. The certificate chain is incomplete.
 
 **Solution**
 
-You are advised to locate the fault by referring to [Certificate Verification Process on the TLS Client](../../network/http-request.md#certificate-verification-process-on-the-tls-client).
+1. It is recommended to refer to [Certificate Verification Process on the TLS Client](../../network/http-request.md#certificate-verification-process-on-the-tls-client) to locate the cause of the problem.
+
+2. If **certificatePinning** is configured, check whether the public key hash is correct.
+
+3. Check whether the server certificate has expired or whether the domain name matches.
+
+4. You can search for the log keyword "HttpClient CURLcode result 60" to locate the error.
 
 ## 2300061 Unrecognized or Incorrect HTTP Encoding Format
 
@@ -497,7 +592,7 @@ This error code is reported if the file requested by the specified URL does not 
 
 **Cause**
 
-This error code is reported if the file requested by the specified URL does not exist.
+The file requested by the specified URL does not exist.
 
 **Solution**
 
@@ -551,11 +646,15 @@ This error code is reported if access to a certain domain is prohibited.
 
 **Cause**
 
-An incorrect server domain name is configured for the atomic service.
+1. The atomic service application did not correctly configure the server domain name.
+
+2. The accessed domain name is not in the configured trustlist.
+
+3. The domain name configuration has not taken effect yet (it takes more than one day for the configuration to take effect).
 
 **Solution**
 
-Configure a correct server domain name for the atomic service.
+Configure a correct server domain name for the atomic service. For details, see [Configuring Server Domain Names](https://developer.huawei.com/consumer/en/doc/atomic-guides/agc-help-harmonyos-server-domain). The server domain name configuration takes effect more than one day after being set.
 
 ## 2300999 Internal Error
 
@@ -565,12 +664,60 @@ Internal error.
 
 **Description**
 
-This error code is reported if an internal error occurs.
+Internal error of the HTTP module, usually caused by unmapped errors returned by the underlying network library or other internal exceptions.
 
 **Cause**
 
-An unknown error occurs.
+1. **Unmapped error from the underlying network library**:
+
+   - The HTTP error code mapping rule is 2300000 + CURL error code. When the error code returned by CURL is not defined in the mapping table, 2300999 is returned uniformly.
+
+   - For example, CURL error code 1 maps to 2300001, and CURL error code 28 maps to 2300028. If the error code returned by CURL has no corresponding mapping, 2300999 is returned.
+
+   - **Log keyword**: `CURLcode result` (The specific CURL error code value will be printed in the log.)
+
+2. **HTTP3 protocol issue**:
+
+   - When the HTTP3 protocol is used, there are other configuration errors before the request starts.
+
+   - **Log keyword**: `error_.GetErrorCode()=`. The request protocol is HTTP3.
+
+3. **Global interceptor verification failed**:
+
+   - The global request interceptor verification failed.
+
+   - **Log keywords**: `GlobalRequestInterceptorCheck fail`, `GlobalRequestInterceptorCheck failed`
 
 **Solution**
 
-Try again or contact technical support.
+1. **For underlying network library errors**:
+
+   - View the complete log to obtain the underlying CURL error code.
+
+   - Refer to the [CURL Error Code Documentation](https://curl.se/libcurl/c/libcurl-errors.html) to understand the specific error meaning.
+
+   - Take corresponding measures based on the error type (network connection, SSL certificate, timeout, etc.).
+
+2. **For HTTP3 protocol issues**:
+
+   - If the HTTP3 protocol is used, check whether there are other errors in the request configuration (such as URL format, permissions, etc.).
+
+   - Check the specific error information in the log and prioritize resolving that error.
+
+   - Consider downgrading to the HTTP/2 or HTTP/1.1 protocol.
+
+3. **For global interceptor issues**:
+
+   - Check whether a global HTTP interceptor is configured.
+
+   - Check whether the implementation of the interceptor callback is correct.
+
+4. **General measures**:
+
+   - Try to recreate the HTTP request object to avoid using an invalidated object.
+
+   - Check the memory usage to ensure that system resources are sufficient.
+
+   - If the problem persists, collect complete logs and submit a problem report, and contact technical support for help.
+
+   - Simplify the request configuration and locate which configuration item causes the problem.

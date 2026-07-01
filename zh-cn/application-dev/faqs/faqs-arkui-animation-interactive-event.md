@@ -1,10 +1,10 @@
 # ArkUI动画/交互事件开发常见问题(ArkTS)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin; @mayaolll; @yangfan229-->
-<!--Designer: @piggyguy; @yangfan229; @jiangdayuan-->
+<!--Owner: @yihao-lin; @huangxiaolinabc; @hehongyang3-->
+<!--Designer: @piggyguy; @hehongyang3; @jiangdayuan-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 ## 焦点事件onBlur/onFocus回调无法触发(API 9)
@@ -28,7 +28,7 @@
 
 **参考链接**
 
-[容器嵌套滚动样例](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#示例2嵌套滚动实现方式一)
+容器嵌套滚动[示例](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#示例2嵌套滚动实现方式一)
 
 
 ## 如何实现一个组件不停地旋转(API 9)
@@ -296,7 +296,7 @@ struct ComponentChild2 {
 
 **参考链接**
 
-1.[hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md)
+1.[hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)
 
 2.[自定义事件分发](../reference/apis-arkui/arkui-ts/ts-universal-attributes-on-child-touch-test.md)
 

@@ -1,9 +1,8 @@
 # System Common Events
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -16,7 +15,6 @@ Common event types are defined in [Support](../js-apis-commonEventManager.md#sup
 
 
 ## Ability Kit
-
 
 ### COMMON_EVENT_PACKAGE_RESTARTED
 
@@ -35,7 +33,6 @@ When the specified user restarts the application and kills all its processes, th
 **Required permissions**: none
 
 **Value**: "usual.event.PACKAGE_RESTARTED"
-
 
 
 ### COMMON_EVENT_PACKAGE_DATA_CLEARED
@@ -76,7 +73,6 @@ When the specified user applies a quick fix to the application on the device, th
 **Value**: "usual.event.QUICK_FIX_APPLY_RESULT"
 
 
-
 ### COMMON_EVENT_QUICK_FIX_REVOKE_RESULT<sup>10+</sup>
 
 Indicates the result of revoking a quick fix to the application.
@@ -90,7 +86,6 @@ When a quick fix to the application is revoked on the device, the event notifica
 **Value**: "usual.event.QUICK_FIX_REVOKE_RESULT"
 
 
-
 ### COMMON_EVENT_PACKAGE_ADDED
 
 Indicates that a new application package has been installed on the device.
@@ -101,7 +96,7 @@ When a new application is installed by a specified user on the device, the event
 > 
 > <!--Del-->System applications can listen for the installation event of themselves and other applications.<!--DelEnd-->
 > 
-> Third-party applications can only listen for the installation event of themselves.
+> By default, third-party applications can only listen for the installation event of themselves. If a third-party application needs to listen for the installation event of an InHouse application, the [appIdentifier](../../../quick-start/common-problem-of-application.md#what-is-appid) of the InHouse application must be configured in [allowListenBundleChangedEvent](../../../quick-start/app-configuration-file.md) of the **app.json5** file.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -120,7 +115,7 @@ When a specified application package is removed by a specified user on the devic
 > 
 > <!--Del-->System applications can listen for the uninstallation event of themselves and other applications.<!--DelEnd-->
 > 
-> Third-party applications can only listen for the uninstallation event of themselves.
+> By default, third-party applications can only listen for the uninstallation event of themselves. If a third-party application needs to listen for the uninstallation event of an InHouse application, the [appIdentifier](../../../quick-start/common-problem-of-application.md#what-is-appid) of the InHouse application must be configured in [allowListenBundleChangedEvent](../../../quick-start/app-configuration-file.md) of the **app.json5** file.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -161,7 +156,7 @@ When an application package installed on the device is updated or an ability in 
 > 
 > <!--Del-->System applications can listen for the change event of themselves and other applications.<!--DelEnd-->
 > 
-> Third-party applications can only listen for the change event of themselves.
+> By default, third-party applications can only listen for the change event of themselves. If a third-party application needs to listen for the change event of an InHouse application, the [appIdentifier](../../../quick-start/common-problem-of-application.md#what-is-appid) of the InHouse application must be configured in [allowListenBundleChangedEvent](../../../quick-start/app-configuration-file.md) of the **app.json5** file.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -180,7 +175,7 @@ When the cache of an application package installed on the device is cleared, the
 > 
 > <!--Del-->System applications can listen for the cache clearance event of themselves and other applications.<!--DelEnd-->
 > 
-> Third-party applications can only listen for the cache clearance event of themselves.
+> By default, third-party applications can only listen for the cache clearance event of themselves. If a third-party application needs to listen for the cache clearance event of an InHouse application, the [appIdentifier](../../../quick-start/common-problem-of-application.md#what-is-appid) of the InHouse application must be configured in [allowListenBundleChangedEvent](../../../quick-start/app-configuration-file.md) of the **app.json5** file.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -198,7 +193,6 @@ Indicates that application packages have been suspended.
 **Required permissions**: none
 
 **Value**: "usual.event.PACKAGES_SUSPENDED"
-
 
 
 ### COMMON_EVENT_MY_PACKAGE_SUSPENDED
@@ -223,9 +217,6 @@ Indicates that application packages have been unsuspended by the system.
 **Value**: "usual.event.MY_PACKAGE_UNSUSPENDED"
 
 
-
-
-
 ### COMMON_EVENT_MANAGE_PACKAGE_STORAGE
 
 Notifies the low memory state and package management should be started.
@@ -236,7 +227,23 @@ Notifies the low memory state and package management should be started.
 
 **Value**: "usual.event.MANAGE_PACKAGE_STORAGE"
 
+### COMMON_EVENT_SKILL_CHANGED<sup>26+</sup>
 
+Indicates that the skill applied on the device has changed.
+
+When an application including skills is installed, updated, or uninstalled by a specified user on the device, the event notification service is triggered to publish this event.
+
+> **NOTE**
+> 
+> By default, an application can only receive skill change events of itself.
+> 
+> After being granted with the ohos.permission.MANAGE_SKILL_PRIVILEGE permission, an application can receive skill change events of itself and other applications.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Required permissions**: none
+
+**Value**: "usual.event.SKILL_CHANGED"
 
 ## Account Kit
 
@@ -283,6 +290,8 @@ After the DataShare service is started, the event notification service is trigge
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Required permissions**: none
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
 
 **Value**: "usual.event.DATA_SHARE_READY"
 
@@ -463,7 +472,7 @@ When the device is unlocked with the lock screen password the first time after u
 
 Indicates a successful login from a distributed account.
 
-When a distributed account is successfully logged in, the event notification service is triggered to publish this event carrying the system account ID.
+When a distributed account is successfully logged in, the event notification service is triggered to publish this event carrying the system account ID and sub-profile ID.
 
 APIs related to this event: **setOsAccountDistributedInfo** and **updateOsAccountDistributedInfo** (discarded), and **setOsAccountDistributedInfoByLocalId**. The first two are public APIs, and the last one is a system API. For details, see [@ohos.account.distributedAccount (Distributed Account Management)](../js-apis-distributed-account.md).
 
@@ -480,7 +489,7 @@ APIs related to this event: **setOsAccountDistributedInfo** and **updateOsAccoun
 
 Indicates a successful logout from a distributed account.
 
-When a distributed account is successfully logged out, the event notification service is triggered to publish this event carrying the system account ID.
+When a distributed account is successfully logged out, the event notification service is triggered to publish this event carrying the system account ID and sub-profile ID.
 
 APIs related to this event: **setOsAccountDistributedInfo** and **updateOsAccountDistributedInfo** (discarded), and **setOsAccountDistributedInfoByLocalId**. The first two are public APIs, and the last one is a system API. For details, see [@ohos.account.distributedAccount (Distributed Account Management)](../js-apis-distributed-account.md).
 
@@ -497,7 +506,7 @@ APIs related to this event: **setOsAccountDistributedInfo** and **updateOsAccoun
 
 Indicates that the token of a distributed account is invalid.
 
-When the token of a distributed account is invalid, the event notification service is triggered to publish this event carrying the system account ID.
+When the token of a distributed account is invalid, the event notification service is triggered to publish this event carrying the system account ID and sub-profile ID.
 
 APIs related to this event: **setOsAccountDistributedInfo** and **updateOsAccountDistributedInfo** (discarded), and **setOsAccountDistributedInfoByLocalId**. The first two are public APIs, and the last one is a system API. For details, see [@ohos.account.distributedAccount (Distributed Account Management)](../js-apis-distributed-account.md).
 
@@ -515,7 +524,7 @@ APIs related to this event: **setOsAccountDistributedInfo** and **updateOsAccoun
 
 Indicates that a distributed account is deregistered.
 
-When a distributed account is deregistered, the event notification service is triggered to publish this event carrying the system account ID.
+When a distributed account is successfully logged out, the event notification service is triggered to publish this event carrying the system account ID and sub-profile ID.
 
 APIs related to this event: **setOsAccountDistributedInfo** and **updateOsAccountDistributedInfo** (discarded), and **setOsAccountDistributedInfoByLocalId**. The first two are public APIs, and the last one is a system API. For details, see [@ohos.account.distributedAccount (Distributed Account Management)](../js-apis-distributed-account.md).
 
@@ -540,7 +549,7 @@ When the screen is locked, the event notification service is triggered to publis
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**Value**: usual.event.SCREEN_LOCKED
+**Value**: "usual.event.SCREEN_LOCKED"
 
 
 
@@ -555,7 +564,7 @@ When the screen is unlocked, the event notification service is triggered to publ
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**Value**: usual.event.SCREEN_UNLOCKED
+**Value**: "usual.event.SCREEN_UNLOCKED"
 
 
 ### COMMON_EVENT_USER_PRESENT<sup>(deprecated)</sup>
@@ -569,7 +578,7 @@ Indicates the action of a common event that the user unlocks the device.
 
 **Required permissions**: none
 
-**Value**: usual.event.USER_PRESENT
+**Value**: "usual.event.USER_PRESENT"
 
 
 ### COMMON_EVENT_BATTERY_CHANGED
@@ -589,7 +598,7 @@ When any of the following information changes, the event notification service is
 
 Indicates that the battery level is low.
 
-When the battery level drops to lower than the low battery level set for the device, the event notification service is triggered to publish this event. <!--Del-->For details about how to set the low battery level percentage, see [Battery Level Customization](https://gitee.com/openharmony/docs/blob/master/en/device-dev/subsystems/subsys-power-battery-level-customization.md).<!--DelEnd-->
+When the battery level drops to lower than the low battery level set for the device, the event notification service is triggered to publish this event. <!--Del-->For details about how to set the low battery level percentage, see [Battery Level Customization](../../../../device-dev/subsystems/subsys-power-battery-level-customization.md).<!--DelEnd-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -734,7 +743,7 @@ When the system power saving mode changes, the event notification service is tri
 
 Indicates that the device's thermal level has changed.
 
-When the device's thermal level changes, the event notification service is triggered to publish this event. <!--Del-->For details about how to configure the device thermal level, see [Thermal Level Customization](https://gitee.com/openharmony/docs/blob/master/en/device-dev/subsystems/subsys-thermal_level.md).<!--DelEnd-->
+When the device's thermal level changes, the event notification service is triggered to publish this event. <!--Del-->For details about how to configure the device thermal level, see [Thermal Level Customization](../../../../device-dev/subsystems/subsys-thermal_level.md).<!--DelEnd-->
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -793,9 +802,47 @@ When the device exits the hibernation mode, the event notification service is tr
 
 **Value**: "usual.event.EXIT_HIBERNATE"
 
+### COMMON_EVENT_VOLUME_DECRYPTED
 
+Indicates that a specific volume on the device has been decrypted.
 
+When a specific volume on the device is decrypted, the event notification service is triggered to publish this event.
 
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Required permissions**: none
+
+**Value**: "usual.event.VOLUME_DECRYPTED"
+
+### COMMON_EVENT_VOLUME_ENCRYPTED
+
+Indicates that a specific volume on the device has been encrypted.
+
+When a specific volume on the device is encrypted, the event notification service is triggered to publish this event.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Required permissions**: none
+
+**Value**: "usual.event.VOLUME_ENCRYPTED"
+
+### COMMON_EVENT_VOLUME_ENCRYPTION_POLICY_SET
+
+Indicates that an encryption policy has been set for a specific volume on the device.
+
+When an encryption policy is set for a specific volume on the device, the event notification service is triggered to publish this event.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Required permissions**: ohos.permission.QUERY_VOLUME_ENCRYPTION_STATUS
+
+**Value**: "usual.event.VOLUME_ENCRYPTION_POLICY_SET"
 
 
 ## Connectivity Kit
@@ -984,20 +1031,6 @@ When a Wi-Fi access point is detected and proven to be available, the event noti
 **Value**: "usual.event.wifi.SCAN_FINISHED"
 
 
-### COMMON_EVENT_WIFI_SCAN_STATE
-
-Indicates that the Wi-Fi access point state has changed.
-
-When the Wi-Fi access point state changes, the event notification service is triggered to publish this event.
-
-**System capability**: SystemCapability.Notification.CommonEvent
-
-**Required permissions**: ohos.permission.LOCATION
-
-**Value**: "usual.event.wifi.SCAN_STATE"
-
-
-
 ### COMMON_EVENT_WIFI_RSSI_VALUE
 
   Indicates that the Wi-Fi signal strength (RSSI) has changed.
@@ -1121,7 +1154,7 @@ When the state of the Wi-Fi P2P peer device changes, the event notification serv
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
-**Value:** "usual.event.wifi.p2p.DEVICES_CHANGE"
+**Value**: "usual.event.wifi.p2p.DEVICES_CHANGE"
 
 
 ### COMMON_EVENT_WIFI_P2P_PEERS_DISCOVERY_STATE_CHANGED
@@ -1189,7 +1222,7 @@ When the system language is set, the event notification service is triggered to 
 
 **Required permissions**: none
 
-**Value**: usual.event.LOCALE_CHANGED
+**Value**: "usual.event.LOCALE_CHANGED"
 
 
 ## Network Kit
@@ -1214,7 +1247,7 @@ The following table lists the enum values and their corresponding connection sta
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**Value**: usual.event.CONNECTIVITY_CHANGE
+**Value**: "usual.event.CONNECTIVITY_CHANGE"
 
 
 ### COMMON_EVENT_AIRPLANE_MODE_CHANGED<sup>10+</sup>
@@ -1227,7 +1260,7 @@ When the airplane mode is enabled or disabled, the event notification service is
 
 **Required permissions**: none
 
-**Value**: usual.event.AIRPLANE_MODE
+**Value**: "usual.event.AIRPLANE_MODE"
 
 
 ### COMMON_EVENT_HTTP_PROXY_CHANGE<sup>10+</sup>
@@ -1240,8 +1273,7 @@ When the configuration information of the system global proxy or HTTP proxy on v
 
 **Required permissions**: none
 
-**Value**: usual.event.HTTP_PROXY_CHANGE
-
+**Value**: "usual.event.HTTP_PROXY_CHANGE"
 
 
 ## Telephony Kit
@@ -1258,8 +1290,7 @@ When there is a change in the SIM card status of the device, the event notificat
 
 **Required permissions**: none
 
-**Value**: usual.event.SIM_STATE_CHANGED
-
+**Value**: "usual.event.SIM_STATE_CHANGED"
 
 
 ### COMMON_EVENT_CALL_STATE_CHANGED<sup>10+</sup>
@@ -1272,8 +1303,7 @@ When the call state of the device is updated, the event notification service is 
 
 **Required permissions**: ohos.permission.GET_TELEPHONY_STATE (for system apps only)
 
-**Value**: usual.event.CALL_STATE_CHANGED
-
+**Value**: "usual.event.CALL_STATE_CHANGED"
 
 
 ### COMMON_EVENT_NETWORK_STATE_CHANGED<sup>10+</sup>
@@ -1286,7 +1316,7 @@ When the network state of the device is updated, the event notification service 
 
 **Required permissions**: none
 
-**Value**: usual.event.NETWORK_STATE_CHANGED
+**Value**: "usual.event.NETWORK_STATE_CHANGED"
 
 
 ### COMMON_EVENT_SIGNAL_INFO_CHANGED<sup>10+</sup>
@@ -1299,8 +1329,7 @@ When the signal information of the device is updated, the event notification ser
 
 **Required permissions**: none
 
-**Value**: usual.event.SIGNAL_INFO_CHANGED
-
+**Value**: "usual.event.SIGNAL_INFO_CHANGED"
 
 
 ## AppGallery Kit
@@ -1319,16 +1348,16 @@ When a user clicks **Agree** in a privacy dialog box, the event notification ser
 ## Multimodalinput Kit
 This topic lists the common system events provided by the Multimodalinput Kit to applications.
 
-### COMMON_EVENT_TABLET_MODE_CHANGED<sup>23+<sup>
+### COMMON_EVENT_TABLET_MODE_CHANGED<sup>23+</sup>
 
 Indicates that the tablet mode of a device (such as a tablet with bracket) has been changed.
 When the tablet mode of a device has been changed, the event notification service is triggered to publish this event.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
-**Value**: "usual.event.TABLET_MODE_CHANGED"
+**Value**: "usual.event.TABLET_MODE_CHANGED "
 
-### COMMON_EVENT_LID_STATE_CHANGED<sup>23+<sup>
+### COMMON_EVENT_LID_STATE_CHANGED<sup>23+</sup>
 
 Indicates that the lid state of a device (such as a laptop) has been changed.
 When the lid state of a device has been changed, the event notification service is triggered to publish this event.
@@ -1635,7 +1664,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: none
 
-**Value**: usual.event.DATE_CHANGED
+**Value**: "usual.event.DATE_CHANGED"
 
 ### COMMON_EVENT_USB_ACCESSORY_ATTACHED
 

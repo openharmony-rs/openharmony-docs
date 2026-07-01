@@ -11,18 +11,18 @@
 
 样例中可以看到GlobalSign自签名了证书，GlobalSign也签发了GlobalSign RSA OV SSL CA 2018的证书，GlobalSign RSA OV SSL CA 2018又签发了第三级证书。
 
-![zh-cn_image_0000001746997074](figures/zh-cn_image_0000001746997074.png)
+![certificate-chain-example](figures/certificate-chain-example.png)
 
 开发者可以参考示例将已有的多个证书构建出证书链数据。
 
 ## 开发步骤
 
-1. 导入[证书算法库框架模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
+1. 导入[证书模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
 
-2. [cert.createCertChainValidator](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatecertchainvalidator)创建证书链校验器对象。
+2. 调用[cert.createCertChainValidator](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatecertchainvalidator)创建证书链校验器对象。
 
 3. 基于已有的证书数据，创建证书链数据对象[CertChainData](../../reference/apis-device-certificate-kit/js-apis-cert.md#certchaindata)。
    
@@ -89,7 +89,13 @@ function certChainValidatorSample(): void {
   let algorithm = 'PKIX';
 
   // 创建一个证书链校验器实例。
-  let validator = cert.createCertChainValidator(algorithm);
+  let validator: cert.CertChainValidator;
+  try {
+    validator = cert.createCertChainValidator(algorithm);
+  } catch (err) {
+    console.error(`createCertChainValidator failed, errCode: ${err.code}, errMsg: ${err.message}`);
+    return;
+  }
 
   // CA证书数据。
   let uint8ArrayOfCaCertData = textEncoder.encodeInto(caCertData);

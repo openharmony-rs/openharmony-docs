@@ -1,16 +1,18 @@
 # 自定义属性设置
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022; @jiyujia926-->
+<!--Tester: @sally__; @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
 当开发者希望在组件上设置自定义的属性时，可以使用自定义属性设置功能。这些自定义属性可以在其对应的FrameNode上获取，从而实现更自由的组件管理。
 
 >  **说明：**
 >
->  从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## customProperty
 
@@ -54,7 +56,7 @@ type Optional\<T> = T | undefined
 
 | 类型 | 说明                       |
 | ---- | -------------------------- |
-| T | 表示该类型声明的对象是自定义类型。 |
+| T | 表示泛型T所指定的类型。 |
 | undefined | 表示该类型声明的对象是undefined。 |
 
 ## 示例

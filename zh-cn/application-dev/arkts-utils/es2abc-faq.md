@@ -2,10 +2,10 @@
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @huyunhui1; @oh-rgx1; @zmw1-->
-<!--Designer: @jokerxd-liu-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @huyunhui1; @zmw1-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @HelloCrease-->
 
 ## 字节码生成流程
 
@@ -31,11 +31,11 @@ The size of programs is expected to be 434, but is 432
 
 **可能原因**
 
-字节码har打包的兼容版本高于工程的兼容版本。
+字节码HAR打包的兼容版本高于工程的兼容版本。
 
 **解决措施**
 
-查看工程和har包的build-profile.json5文件中的“compatibleSdkVersionStage”字段，将工程中的“compatibleSdkVersionStage”字段调整至大于或者等于har包中的版本。
+查看工程和HAR包的build-profile.json5文件中的“compatibleSdkVersionStage”字段，将工程中的“compatibleSdkVersionStage”字段调整至大于或者等于HAR包中的版本。
 
 ## 编译时报Field {&harname/Index&1.0.0.moduleRecordIdx} has different value错误
 
@@ -65,7 +65,7 @@ GenerateProgram Failed!
 
    若HAR中Record与工程实际依赖不一致，也会触发冲突。
 
-2. ohpm缓存或编译缓存没有清除干净，导致同一Har包存在两个不同版本。
+2. ohpm缓存或编译缓存没有清除干净，导致同一HAR包存在两个不同版本。
 
    缓存中遗留了旧版本的HAR、ABC信息，使es2abc的Record索引校验失败。
 

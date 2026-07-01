@@ -1,4 +1,4 @@
-# 应用接入桌面歌词
+# 应用接入歌词组件
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @ccfriend@devil_red-->
@@ -6,47 +6,116 @@
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
-从API version 23开始，支持应用接入桌面歌词功能，将歌词以悬浮窗形式展示在系统桌面，让用户无需进入应用即可查看歌词，适用于音乐播放器或有歌词展示需求的音频类应用。
+从API version 23开始，系统提供歌词组件功能。歌词组件以悬浮窗形式显示于系统桌面，支持歌词内容展示、组件隐藏、组件锁定等操作。暂不支持应用对组件进行自定义样式设置。本文将说明应用接入歌词组件的开发步骤。
 
-桌面歌词采用悬浮窗形式显示，支持歌词内容的同步展示、窗口显示/隐藏控制及锁定操作。该功能可帮助应用快速实现桌面歌词显示能力，提升用户听歌体验。
-
-实现桌面歌词功能，需遵循以下流程：
-
-  1. 创建会话。
-  2. 判断当前系统版本是否支持桌面歌词功能，若支持则设置歌词元数据。
-  3. 通过接口控制歌词的使能与显示状态。
-  4. 监听系统侧的状态变化以同步UI。
-  5. 在退出时正确销毁会话。
-  
 ## 具体步骤
 
-1. 首先创建[AVSession实例](../avsession/avsession-access-scene.md#创建不同类型的会话)，通过[设置元数据](../avsession/avsession-access-scene.md#设置元数据)填入符合LRC格式的歌词内容。系统播控中心将解析该内容，实现歌词内容的同步展示。歌词内容必须包含时间标签及对应歌词文本。
+1. 调用[isDesktopLyricSupported](../../reference/apis-avsession-kit/arkts-apis-avsession-f.md#avsessionisdesktoplyricsupported23)接口判断系统/设备是否支持歌词组件能力，返回true时表示支持歌词组件能力。
+
+2. 创建[AVSession实例](../avsession/avsession-access-scene.md#创建不同类型的会话)，通过[设置元数据信息](avsession-access-scene.md#设置元数据信息)填入LRC格式的歌词数据，包含时间标签及对应的歌词文本。不符合LRC格式的歌词数据，系统可能存在解析异常导致无法展示歌词内容。
+
+3. 调用[enableDesktopLyric](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#enabledesktoplyric23)接口进行使能需传入参数true打开歌词组件。
+
+4. 歌词组件使能打开后默认是隐藏（不显示），应用可以通过接口主动显示/隐藏歌词组件，具体接口如下：
+   
+   **设置可见性：** 调用[setDesktopLyricVisible](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setdesktoplyricvisible23)接口，设置歌词组件是否显示。
+
+   **查询可见性：** 调用[isDesktopLyricVisible](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#isdesktoplyricvisible23)接口，查询当前歌词组件是否显示。
+
+5. 歌词组件使能打开后默认是非锁定状态，应用可以通过接口主动锁定/解锁歌词组件，具体接口如下：
+
+   **设置锁定状态：** 调用[setDesktopLyricState](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setdesktoplyricstate23)接口，设置歌词窗口是否锁定（限制歌词窗口的拖动、设置等操作）。
+   
+   **查询锁定状态：** 调用[getDesktopLyricState](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#getdesktoplyricstate23)接口，查询当前歌词组件锁定状态。
+
+6. 应用可以通过系统提供的回调监听歌词组件可见性、锁定状态的变化，具体接口如下：
+
+   **监听歌词组件是否可见：** 监听[onDesktopLyricVisibilityChanged](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#ondesktoplyricvisibilitychanged23)，回调返回false，表示当前歌词组件不可见；回调返回true，表示当前歌词组件可见。如需取消该监听，使用[offDesktopLyricVisibilityChanged](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#offdesktoplyricvisibilitychanged23)接口。
+
+   **监听歌词组件是否锁定：** 监听[onDesktopLyricStateChanged](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#ondesktoplyricstatechanged23)，回调返回false，表示当前歌词组件未锁定；回调返回true，表示当前歌词组件锁定。如需取消该监听，使用[offDesktopLyricStateChanged](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#offdesktoplyricstatechanged23)接口。
 
    > **说明：**
    >
-   > - 设置元数据时，必须包含lyric字段，否则桌面歌词功能无法生效。
-
-2. 应用根据自身业务需求，调用接口控制桌面歌词的使能与显示状态，同时提供用户入口供用户手动操作。可调用以下接口：
-
-   - **判断是否支持桌面歌词：** 调用[isDesktopLyricSupported](../../reference/apis-avsession-kit/arkts-apis-avsession-f.md#avsessionisdesktoplyricsupported23)接口，判断应用是否支持桌面歌词功能。
-   - **使能桌面歌词：** 调用[enableDesktopLyric](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#enabledesktoplyric23)接口，启用桌面歌词。
-   - **设置可见性：** 调用[setDesktopLyricVisible](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setdesktoplyricvisible23)接口，切换歌词窗口的可见性状态。
-   - **设置锁定状态：** 调用[setDesktopLyricState](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setdesktoplyricstate23)接口，设置歌词窗口的锁定状态，从而限制歌词窗口的拖动或关闭操作。
-
-3. 应用监听系统侧发出的桌面歌词状态变更通知，响应桌面歌词组件的控制并同步刷新应用内UI。
-
-    应用需监听系统侧发出的桌面歌词状态变更通知（如用户在系统设置中关闭了歌词），以便同步刷新应用内的开关状态。
-
-   > **说明：**
-   > 
-   > - 必须响应[onDesktopLyricEnabled](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSessionController.md#ondesktoplyricenabled23)和[offDesktopLyricEnabled](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSessionController.md#offdesktoplyricenabled23)回调，根据回调值更新UI，确保应用内UI与系统实际状态一致。
-
-4. 当应用退出时，必须销毁当前会话。
-
-    当应用退出或不再需要播放媒体时，必须主动销毁AVSession。销毁操作将导致关联的桌面歌词组件自动跟随退出。再次启动时，需重新初始化AVSession以恢复会话。
-
-   > **说明：**
-   >
-   > - 确保AVSession对象在后台播放期间不被系统回收，否则会导致歌词中断。
+   > 确保AVSession对象在后台播放期间不被系统回收/应用不主动释放，否则会导致歌词组件异常。
 
    <!-- @[setAVSessionInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProvider/entry/src/main/ets/pages/DesktopLyric.ets) -->
+   
+   ``` TypeScript
+   import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   // ...
+   
+   @Entry
+   @Component
+   struct Index {
+     @State message: string = 'hello world';
+     // ...
+   
+     build() {
+       Column() {
+         // ...
+         Text(this.message)
+           .onClick(async () => {
+             console.info(`DesktopLyric set start`);
+             let context = this.getUIContext().getHostContext() as Context;
+             // 假设已经创建了一个session，如何创建session可以参考之前的案例。
+             let session = await AVSessionManager.createAVSession(context, 'SESSION_NAME', 'audio');
+   
+             // 系统是否支持歌词组件
+             let isDesktopLyricSupported: boolean = false;
+             try {
+               isDesktopLyricSupported = await AVSessionManager.isDesktopLyricSupported();
+             } catch (err) {
+               console.error(`Failed to get isDesktopLyricSupported. Code: ${err.code}, message: ${err.message}`);
+             }
+             if (!isDesktopLyricSupported) {
+               return;
+             }
+   
+             try {
+               // 使能歌词组件
+               await session.enableDesktopLyric(true);
+             } catch (err) {
+               console.error(`enableDesktopLyric err. Code: ${err.code}, message: ${err.message}`);
+             }
+   
+             try {
+               // 监听歌词组件是否显示
+               session.onDesktopLyricVisibilityChanged((isVisible: boolean) => {
+                 console.info(`onDesktopLyricVisibilityChanged changed: ${isVisible}`)
+               });
+             } catch (err) {
+               console.error(`onDesktopLyricVisibilityChanged err. Code: ${err.code}, message: ${err.message}`);
+             }
+   
+             try {
+               // 监听歌词组件锁定状态
+               session.onDesktopLyricStateChanged((state) => {
+                 console.info(`onDesktopLyricStateChanged changed: ${state.isLocked}`)
+               });
+             } catch (err) {
+               console.error(`onDesktopLyricStateChanged err. Code: ${err.code}, message: ${err.message}`);
+             }
+   
+             try {
+               // 显示或隐藏歌词组件，歌词组件使能后默认隐藏
+               await session.setDesktopLyricVisible(true);
+             } catch (err) {
+               console.error(`setDesktopLyricVisible err. Code: ${err.code}, message: ${err.message}`);
+             }
+   
+             try {
+               // 锁定或解锁歌词组件，歌词组件使能后默认是解锁状态
+               await session.setDesktopLyricState({isLocked: true});
+             } catch (err) {
+               console.error(`setDesktopLyricState err. Code: ${err.code}, message: ${err.message}`);
+             }
+   
+             console.info(`DesktopLyric set done`);
+           })
+       }
+       .width('100%')
+       .height('100%')
+     }
+   }
+   ```

@@ -1,7 +1,7 @@
 # TabTitleBar
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
+<!--Owner: @wangrunsen-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -58,6 +58,7 @@ TabTitleBar({tabItems: Array&lt;TabTitleBarTabItem&gt;, menuItems?: Array&lt;Tab
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- |---|---| -------- |
 | value | [ResourceStr](ts-types.md#resourcestr) | 否 | 否 | 图标资源。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -178,7 +179,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_tabtitlebar_example01](figures/zh-cn_image_tabtitlebar_example01.png)
+![zh-cn_image_tabtitlebar_example01](figures/image-tabtitlebar-example01.png)
 
 ### 示例2（右侧自定义按钮播报）
 从API version 18开始，该示例通过设置标题栏右侧自定义按钮属性accessibilityText、accessibilityDescription、accessibilityLevel自定义屏幕朗读播报文本。
@@ -283,7 +284,7 @@ struct Index {
   }
 }
 ```
-![zh-cn_image_tabtitlebar_example02](figures/zh-cn_image_tabtitlebar_example02.png)
+![zh-cn_image_tabtitlebar_example02](figures/image-tabtitlebar-example02.png)
 
 ### 示例3（设置Symbol类型图标）
 从API version 18开始，该示例通过设置TabTitleBarTabItem、TabTitleBarMenuItem的属性symbolStyle，展示了自定义Symbol类型图标。
@@ -395,4 +396,4 @@ struct Index {
   }
 }
 ```
-![zh-cn_image_tabtitlebar_example03](figures/zh-cn_image_tabtitlebar_example03.png)
+![zh-cn_image_tabtitlebar_example03](figures/image-tabtitlebar-example03.png)

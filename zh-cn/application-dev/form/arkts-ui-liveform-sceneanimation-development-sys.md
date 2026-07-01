@@ -1,9 +1,9 @@
 # 场景动效类型互动卡片开发指导（仅对系统应用开放）
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 场景动效类型互动卡片基础开发指导，可以参考文档[场景动效类型互动卡片开发指导](arkts-ui-liveform-sceneanimation-development.md)。针对系统应用，场景动效类型互动卡片提供了**手势禁用配置**和**卡片长时间保持激活态**两个扩展能力。
 
@@ -438,7 +438,7 @@
             "4*4"
           ],
           "sceneAnimationParams": {
-            "abilityName": "MySystemLiveFormExtensionAbility"，
+            "abilityName": "MySystemLiveFormExtensionAbility",
             "disabledDesktopBehaviors": [
               "SWIPE_DESKTOP",
               "PULL_DOWN_SEARCH",

@@ -1,7 +1,7 @@
 # SplitLayout
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
+<!--Owner: @wangrunsen-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -86,16 +86,16 @@ struct Index {
 小于等于600vp布局：
 
 
-![zh-cn_image_0000001665553957](figures/zh-cn_image_0000001665553957.png)
+![Newsing-03](figures/Newsing-03.png)
 
 
 大于600vp且小于等于840vp的布局：
 
 
-![zh-cn_image_0000001616957408](figures/zh-cn_image_0000001616957408.png)
+![Newsing-01](figures/Newsing-01.png)
 
 
 大于840vp布局：
 
 
-![zh-cn_image_0000001617116972](figures/zh-cn_image_0000001617116972.png)
+![Newsing-02](figures/Newsing-02.png)

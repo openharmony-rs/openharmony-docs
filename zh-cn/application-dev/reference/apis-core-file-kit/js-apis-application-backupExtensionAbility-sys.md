@@ -1,9 +1,9 @@
 # @ohos.application.BackupExtensionAbility (备份恢复扩展能力)(系统接口)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @lvzhenjie-->
-<!--Designer: @wang_zhangjun; @chenxi0605-->
-<!--Tester: @liuhonggang123-->
+<!--Owner: @rainlost-->
+<!--Designer: @rainlost-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 BackupExtensionAbility模块提供备份恢复服务相关扩展能力，为应用提供扩展的备份恢复能力。
@@ -77,7 +77,7 @@ getBackupCompatibilityInfo(extInfo: string): Promise&lt;string&gt;
     async getBackupCompatibilityInfo(extInfo: string): Promise<string> {
       let ret: string = '';
       try {
-        // 此处仅以Json为示范，相应判断逻辑及相应字段由应用自定义
+        // 此处仅以JSON为示范，相应判断逻辑及相应字段由应用自定义
         if (!extInfo) {
           ret = '{"dbVersion": "1.0", "isThemCardEnable": "true"}';
         } else {
@@ -125,7 +125,7 @@ getRestoreCompatibilityInfo(extInfo: string): Promise&lt;string&gt;
     async getRestoreCompatibilityInfo(extInfo: string): Promise<string> {
       let ret: string = '';
       try {
-        // 此处仅以Json为示范，相应判断逻辑及相应字段由应用自定义
+        // 此处仅以JSON为示范，相应判断逻辑及相应字段由应用自定义
         if (!extInfo) {
           ret = '{"dbVersion": "1.0", "isThemCardEnable": "true"}';
         } else {

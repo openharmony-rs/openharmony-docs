@@ -1,10 +1,12 @@
 # Enums
+
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=4b1a2f751fcd33c52248528ed8c23a9b2935126b translatedAt=2026-06-23T01:03:34.184Z pushedAt=2026-06-23T06:12:23.663Z -->
 
 > **NOTE**
 >
@@ -128,11 +130,12 @@ Enumerates the media description keys.
 | MD_KEY_MIME_TYPE<sup>23+</sup>  | 'mime_type'  | MIME type of the track. The corresponding key value type is string. For audio and video tracks, the value is the same as that of **MD_KEY_CODEC_MIME**.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | MD_KEY_REFERENCE_TRACK_IDS<sup>23+</sup>  | 'ref_track_ids'  | Reference relationships between this track and other tracks. The corresponding key value type is string, with values separated by commas (,).<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | MD_KEY_TRACK_REFERENCE_TYPE<sup>23+</sup>  | 'track_ref_type'  | Auxiliary type of this track when it acts as a reference track. The corresponding key value type is string.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+
 ## FetchResult<sup>23+</sup>
 
 Enumerates the results of obtaining thumbnails in batches.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -173,6 +176,8 @@ Enumerates the playback metric keys.
 | TOTAL_DOWNLOAD_SIZE                | 'total_loading_bytes'                | Total loading size, in bytes.<br> **Model restriction**: This API can be used only in the stage model.            |
 | STALLING_COUNT                     | 'stalling_count'                     | Total number of stalling times.                        |
 | TOTAL_STALLING_TIME                | 'total_stalling_time'                | Total stalling duration, in milliseconds.      |
+| LIP_ASYNC_COUNT                    | 'lip_async_count'                    | Total number of audio-video async errors.<br>**Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.       |
+| TOTAL_LIP_ASYNC_TIME               | 'total_lip_async_time'               | Total duration of audio-video async errors, in milliseconds (ms).<br>**Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.       |
 
 ## BufferingInfoType<sup>8+</sup>
 
@@ -193,7 +198,7 @@ Enumerates the buffering event types.
 
 Enumerates the interruption modes of the audio files with the same ID in SoundPool.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -232,7 +237,7 @@ Enumerates the video playback seek modes, which can be passed in the **seek** AP
 
 Enumerates the **selectTrack** modes for video playback.
 
-**SwitchMode** can be passed as a parameter through the **selectTrack** method. Currently, both DASH and HLS video tracks support this extended parameter. (HLS video tracks support this extended parameter since API version 24.)
+**SwitchMode** can be passed as a parameter through the **selectTrack** method. Currently, both DASH and HLS video tracks support this extended parameter. (HLS video tracks support this extended parameter since API version 26.0.0.)
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 
@@ -415,6 +420,10 @@ Enumerates the screen capture states used in callbacks.
 | SCREENCAPTURE_STATE_ENTER_PRIVATE_SCENE  | 8    | The system enters a privacy page during screen capture.      |
 | SCREENCAPTURE_STATE_EXIT_PRIVATE_SCENE   | 9    | The system exits a privacy page during screen capture.      |
 | SCREENCAPTURE_STATE_STOPPED_BY_USER_SWITCHES   | 10    | Screen capture is interrupted by system user switchover.      |
+| SCREENCAPTURE_STATE_PAUSED_BY_USER       | 11   | Screen capture is paused by the user.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| SCREENCAPTURE_STATE_RESUMED_BY_USER      | 12   | Screen capture is resumed by the user.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| SCREENCAPTURE_STATE_PAUSED_BY_APP        | 13   | Screen capture is paused by the application.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| SCREENCAPTURE_STATE_RESUMED_BY_APP       | 14   | Screen capture is resumed by the application.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## AVScreenCaptureFillMode<sup>18+</sup>
 
@@ -438,6 +447,10 @@ Enumerates the display mode for the screen capture picker.
 | WINDOW_ONLY | 0    | Displays only a list of windows.|
 | SCREEN_ONLY | 1    | Displays only a list of screens.|
 | SCREEN_AND_WINDOW | 2    | Displays both screens and windows.|
+| APP_ONLY | 3    | Displays only applications.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
+| WINDOW_AND_APP | 4    | Displays both windows and applications.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
+| SCREEN_AND_APP | 5    | Displays both screens and applications.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
+| SCREEN_WINDOW_AND_APP | 6    | Displays screens, windows and applications.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
 
 ## AVMetricsEventType<sup>23+</sup>
 
@@ -448,6 +461,25 @@ Enumerates the metric events supported by the media service.
 | Name                      | Value  | Description                                  |
 | -------------------------- | ---- | -------------------------------------- |
 | AV_METRICS_EVENT_STALLING | 1    | Metric event indicating playback stalling.|
+
+## PlaylistLoopMode
+
+Enumerates the loop modes of playlist playback.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
+
+| Name                      | Value  | Description                                  |
+| -------------------------- | ---- | -------------------------------------- |
+| PLAYLIST_LOOP_MODE_ALL | 1    | Loop all.|
+| PLAYLIST_LOOP_MODE_ONE | 2    | Repeat one.|
+| PLAYLIST_LOOP_MODE_SHUFFLE | 3    | Shuffle.|
+| PLAYLIST_LOOP_MODE_NONE | 4    | Loop off.|
 
 ## AudioEncoder<sup>(deprecated)</sup>
 

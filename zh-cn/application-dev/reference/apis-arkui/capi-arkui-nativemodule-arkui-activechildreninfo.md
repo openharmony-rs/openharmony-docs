@@ -1,8 +1,8 @@
 # ArkUI_ActiveChildrenInfo
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@ typedef struct ArkUI_ActiveChildrenInfo ArkUI_ActiveChildrenInfo
 
 ## 概述
 
-定义ActiveChildrenInfo类信息。
+定义ActiveChildrenInfo结构体信息。
 
 **起始版本：** 14
 

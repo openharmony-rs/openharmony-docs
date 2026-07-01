@@ -10,7 +10,9 @@
 
 >  **说明：**
 >
->  从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 
 ## cursorControl
@@ -43,7 +45,7 @@ restoreDefault(): void
 
 ## PointerStyle
 
-type PointerStyle = pointer.PointerStyle
+type PointerStyle = import('../api/@ohos.multimodalInput.pointer').default.PointerStyle
 
 光标样式。
 
@@ -53,7 +55,7 @@ type PointerStyle = pointer.PointerStyle
 
 |类型|说明|
 | -- | -- |
-|[pointer.PointerStyle](../../apis-input-kit/js-apis-pointer.md#pointerstyle) |光标样式。|
+|import('../api/@ohos.multimodalInput.pointer').default.[PointerStyle](../../apis-input-kit/js-apis-pointer.md#pointerstyle) |光标样式。|
 
 > **说明：**
 > 

@@ -1,7 +1,7 @@
 # 全局配置项功能场景
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
@@ -21,7 +21,7 @@
    
    @Sendable
    class Config {
-     public lock: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock;
+     public lock: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
      public isLogin: boolean = false;
      public loginUser?: string;
      public wifiOn: boolean = false;
@@ -128,11 +128,11 @@
              })
              .onClick(async () => {
                if (!await config.getIsLogin() && this.input) {
-                 this.message = 'login: ' + this.input;
                  try {
-                   config.login(this.input);
+                   await config.login(this.input);
+                   this.message = 'login: ' + this.input;
                  } catch (e) {
-                   console.info('login failed');
+                   console.error('login failed');
                  }
                }
              })
@@ -146,11 +146,11 @@
              })
              .onClick(async () => {
                if (await config.getIsLogin()) {
-                 this.message = 'not login';
                  try {
-                   config.logout();
+                   await config.logout();
+                   this.message = 'not login';
                  } catch (e) {
-                   console.info('logout failed');
+                   console.error('logout failed');
                  }
                }
              })

@@ -40,6 +40,7 @@ Component3D组件配置选项。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
 | 名称        | 类型                               | 只读 | 可选   | 说明                                       |
 | --------- | -------------------------------- | ---- | ---- | ---------------------------------------- |
 | scene     | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[Scene](#scene12) | 否    | 是    | 3D模型资源文件或场景对象，默认值为undefined。<br/>当传入glTF（.gltf文件和.glb文件）模型时，组件以自动场景模式运行，框架会自动创建基础相机、光源和默认手势交互（旋转、缩放），其相关参数由框架内部管理，不支持外部修改，开发者仅可通过Component3D的属性对展示效果进行配置。<br/>当传入Scene对象时，组件以自定义场景模式运行，相机、光源及交互由开发者通过ArkGraphics 3D API自行创建和管理。<br/>当不填写此参数时，组件仅作为自定义渲染管线（shader/customRender）的输出容器使用。<br/>**说明：** <br/>自定义场景模式下未内置相机控制器，因此不会自动响应拖拽或缩放手势；如需交互，请开发者接入手势并更新相机的位置与旋转。 |
@@ -60,7 +61,7 @@ Component3D组件配置选项。
 
 ## Scene<sup>12+</sup>
 
-type Scene = Scene
+type Scene = import('../api/@ohos.graphics.scene').Scene
 
 设置3D场景。
 
@@ -70,7 +71,7 @@ type Scene = Scene
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| [Scene](../../apis-arkgraphics3d/js-apis-inner-scene.md#scene-1) | 用于设置场景。 |
+| import('../api/@ohos.graphics.scene').[Scene](../../apis-arkgraphics3d/js-apis-inner-scene.md#scene-1) | 用于设置场景。 |
 
 ## 属性
 
@@ -161,7 +162,7 @@ shaderInputBuffer(buffer: Array&lt;number&gt;)
 
 renderWidth(value: Dimension)
 
-设置3D渲染分辨率的宽度。渲染分辨率的长宽可以不同于控件的长宽，若渲染分辨率与控件分辨率长宽不一致时会上采样或下采样到控件长宽。
+设置3D渲染分辨率的宽度。渲染分辨率的宽高可以不同于控件的宽高，若渲染分辨率与控件分辨率宽高不一致时会上采样或下采样到控件宽高。
 
 不调用此属性时默认渲染分辨率。
 
@@ -181,7 +182,7 @@ renderWidth(value: Dimension)
 
 renderHeight(value: Dimension)
 
-设置3D渲染分辨率的长度。渲染分辨率的长宽可以不同于控件的长宽，若渲染分辨率与控件分辨率长宽不一致时会上采样或下采样到控件长宽。
+设置3D渲染分辨率的高度。渲染分辨率的宽高可以不同于控件的宽高，若渲染分辨率与控件分辨率宽高不一致时会上采样或下采样到控件宽高。
 
 不调用此属性时默认渲染分辨率。
 
@@ -195,7 +196,7 @@ renderHeight(value: Dimension)
 
 | 参数名 | 类型                                 | 必填 | 说明                 |
 | ------ | ------------------------------------ | ---- | -------------------- |
-| value  | [Dimension](ts-types.md#dimension10) | 是   | 3D渲染分辨率的长度，当前仅支持设置Dimension.Percentage，取值范围是[0, 100%]。 |
+| value  | [Dimension](ts-types.md#dimension10) | 是   | 3D渲染分辨率的高度，当前仅支持设置Dimension.Percentage，取值范围是[0, 100%]。 |
 
 ## 事件
 

@@ -1,4 +1,4 @@
-# MissionCallback (系统接口)
+# MissionCallbacks (系统接口)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @hobbycao-->
@@ -25,6 +25,8 @@ import { distributedMissionManager } from '@kit.AbilityKit';
 notifyMissionsChanged(deviceId: string): void
 
 注册任务监听的callback，通知任务变化。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -71,6 +73,8 @@ notifySnapshot(deviceId: string, mission: number): void
 
 注册任务监听的callback，通知快照变化。
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
@@ -115,6 +119,8 @@ distributedMissionManager.registerMissionListener(
 notifyNetDisconnect(deviceId: string, state: number): void
 
 注册任务监听的callback，通知断开连接。
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 

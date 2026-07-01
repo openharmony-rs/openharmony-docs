@@ -1,10 +1,11 @@
 # HID DDK Development
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:40:10.501Z pushedAt=2026-06-25T06:57:09.523Z -->
 
 ## Overview
 
@@ -89,7 +90,7 @@ libhid.z.so
    Use **OH_Hid_CreateDevice** in **hid_ddk_api.h** to create a HID device. If the operation is successful, a device ID is returned. If the operation fails, an [HidDdk error code](../../reference/apis-driverdevelopment-kit/capi-hid-ddk-types-h.md#hid_ddkerrcode) is returned.
 
    <!-- @[driver_hid1_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/inject_thread.cpp) --> 
-   
+
    ``` C++
    Hid_Device hidDevice = {
        .deviceName = deviceName.c_str(),
@@ -119,7 +120,7 @@ libhid.z.so
    Call **OH_Hid_EmitEvent** in **hid_ddk_api.h** to send an event to the device with the specified **deviceId**.
 
    <!-- @[driver_hid1_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/inject_thread.cpp) --> 
-   
+
    ``` C++
    // Send an event to the device identified by the specified deviceId. The event is injected by the physical peripheral through InjectEvent.
    int32_t ret = OH_Hid_EmitEvent(item.first, item.second.data(), (uint16_t)item.second.size());
@@ -133,7 +134,7 @@ libhid.z.so
    Call **OH_Hid_DestroyDevice** in **hid_ddk_api.h** to destroy the device after all requests are processed and before the application exits.
 
    <!-- @[driver_hid1_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/inject_thread.cpp) --> 
-   
+
    ``` C++
    // Destroy a HID device.
    int32_t res = OH_Hid_DestroyDevice(deviceId);
@@ -162,7 +163,7 @@ libhid.z.so
    Call **OH_Hid_Init** in **hid_ddk_api.h** to initialize the HidDdk.
 
    <!-- @[driver_hid_report_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/data_parser.cpp) --> 
-   
+
    ``` C++
    // Initialize the HidDdk.
    int32_t ret = OH_Hid_Init();
@@ -177,7 +178,7 @@ libhid.z.so
    Call **OH_Hid_Open** in **hid_ddk_api.h** to open the HID device.
 
    <!-- @[driver_hid_report_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/data_parser.cpp) --> 
-   
+
    ``` C++
    uint32_t bInterfaceNum1 = 0x00;
    // Open the HID device specified by deviceId and interfaceIndex1. Generally, it is a /dev/hidraw0 file.
@@ -202,7 +203,7 @@ libhid.z.so
      - Call **OH_Hid_Write** in **hid_ddk_api.h** to write an output report to the HID device.
 
        <!-- @[driver_hid_report_step3_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
-       
+
        ``` C++
        uint32_t bytesWritten;
        // Write a report.
@@ -216,7 +217,7 @@ libhid.z.so
      - Call **OH_Hid_SendReport** in **hid_ddk_api.h** to send an output report to the HID device.
 
        <!-- @[driver_hid_report_step3_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
-       
+
        ``` C++
        // Send an output report.
        int32_t ret = OH_Hid_SendReport(DataParser::GetInstance().getHidObject(), HID_OUTPUT_REPORT, dataBuff,
@@ -230,7 +231,7 @@ libhid.z.so
      - If the report type is **HID_FEATURE_REPORT** (feature report), call **OH_Hid_SendReport** in **hid_ddk_api.h** to send a feature report to the HID device.
 
        <!-- @[driver_hid_report_step3_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
-       
+
        ``` C++
        uint8_t dataBuff[NUM_EIGHT] = { 0x00 };
        string str(hexFormat);
@@ -248,7 +249,7 @@ libhid.z.so
      - Use **OH_Hid_SetNonBlocking** in **hid_ddk_api.h** to set the read mode.
 
        <!-- @[driver_hid_report_step4_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
-       
+
        ``` C++
        // nonblock: 1 (enabled); 0 (disabled)
        ret = OH_Hid_SetNonBlocking(DataParser::GetInstance().getHidObject(), nonblockTag);
@@ -262,7 +263,7 @@ libhid.z.so
      - Use **OH_Hid_Read** or **OH_Hid_ReadTimeout** in **hid_ddk_api.h** to read an input report from the HID device in non-blocking or blocking mode.
 
        <!-- @[driver_hid_report_step4_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
-       
+
        ``` C++
        if (nonblock) {
            ret = OH_Hid_Read(DataParser::GetInstance().getHidObject(), dataBuff, sizeof(dataBuff), &bytesRead);
@@ -276,7 +277,7 @@ libhid.z.so
      - Call **OH_Hid_GetReport** in **hid_ddk_api.h** to obtain an input report from the HID device.
 
        <!-- @[driver_hid_report_step4_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
-       
+
        ``` C++
        uint8_t dataBuff[NUM_NINE] = { 0x00 };
        // Obtain an input report.
@@ -292,7 +293,7 @@ libhid.z.so
      - If the report type is **HID_FEATURE_REPORT** (feature report), call **OH_Hid_GetReport** in **hid_ddk_api.h** to obtain a feature report from a HID device.
 
        <!-- @[driver_hid_report_step4_4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
-       
+
        ``` C++
        uint8_t dataBuff[NUM_EIGHT] = { 0x00 };
        // Specify the report ID.
@@ -311,7 +312,7 @@ libhid.z.so
     Call **OH_Hid_GetRawInfo** in **hid_ddk_api.h** to obtain the raw information about a HID device.<br>Call **OH_Hid_GetRawName** to obtain the raw name of a HID device.<br>Call **OH_Hid_GetPhysicalAddress** to obtain the physical address of a HID device.<br>Call **OH_Hid_GetRawUniqueId** to obtain the raw unique identifier of a HID device. The obtained information can be referenced by applications, for example, displaying device information on the GUI.
 
    <!-- @[driver_hid_report_step5_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
    Hid_RawDevInfo rawDevInfo;
    int32_t ret = OH_Hid_GetRawInfo(DataParser::GetInstance().getHidObject(), &rawDevInfo);
@@ -320,9 +321,9 @@ libhid.z.so
        return nullptr;
    }
    ```
-   
+
    <!-- @[driver_hid_report_step5_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
    char dataBuff[DATA_BUFF_SIZE];
    int32_t ret = OH_Hid_GetRawName(DataParser::GetInstance().getHidObject(), dataBuff, sizeof(dataBuff));
@@ -333,7 +334,7 @@ libhid.z.so
    ```
 
    <!-- @[driver_hid_report_step5_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
    char dataBuff[DATA_BUFF_SIZE];
    int32_t ret = OH_Hid_GetPhysicalAddress(DataParser::GetInstance().getHidObject(), dataBuff, sizeof(dataBuff));
@@ -343,8 +344,8 @@ libhid.z.so
    }
    ```
 
-   <!-- @[driver_hid_report_step5_4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 	
-   
+   <!-- @[driver_hid_report_step5_4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
+
    ``` C++
    uint8_t dataBuff[NUM_SIXTY_FOUR];
    int32_t ret = OH_Hid_GetRawUniqueId(DataParser::GetInstance().getHidObject(), dataBuff, sizeof(dataBuff));
@@ -359,7 +360,7 @@ libhid.z.so
    Call **OH_Hid_GetReportDescriptor** in **hid_ddk_api.h** to obtain the HID device report descriptor.
 
    <!-- @[driver_hid_report_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
    uint8_t dataBuff[DATA_BUFF_SIZE1];
    uint32_t bytesRead;
@@ -376,7 +377,7 @@ libhid.z.so
    Call **OH_Hid_Close** in **hid_ddk_api.h** to close the device.
 
    <!-- @[driver_hid_report_step7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
    Hid_DeviceHandle *hid = DataParser::GetInstance().getHidObject();
    int32_t ret1 = OH_Hid_Close(&hid);
@@ -388,7 +389,7 @@ libhid.z.so
    After the HID device is closed, call **OH_Hid_Release** in **hid_ddk_api.h** to release the HidDdk.
 
    <!-- @[driver_hid_report_step8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
    ret1 = OH_Hid_Release();
    if (ret1 != HID_DDK_SUCCESS) {

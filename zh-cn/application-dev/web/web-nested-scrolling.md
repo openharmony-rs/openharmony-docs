@@ -29,7 +29,6 @@ import { webview } from '@kit.ArkWeb';
 @ComponentV2
 struct NestedScroll {
   private scrollerForScroll: Scroller = new Scroller();
-  private listScroller: Scroller = new Scroller();
   controller: webview.WebviewController = new webview.WebviewController();
   @Local arr: Array<number> = [];
 
@@ -183,7 +182,7 @@ struct NestedScroll {
 
 **完整代码**
 
-<!-- @[nested_scrolling2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/WebNestedScroll.ets) --> 
+<!-- @[nested_scrolling2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/WebNestedScroll.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -226,7 +225,7 @@ struct Index {
         this.isWebAtEnd = true;
       }
     } catch (err) {
-      console.error(`copyUrlPicToDir failed with error: ${err.code}, ${err.message}`);
+      console.error(`checkScrollBottom failed with error: ${err.code}, ${err.message}`);
     }
   }
 

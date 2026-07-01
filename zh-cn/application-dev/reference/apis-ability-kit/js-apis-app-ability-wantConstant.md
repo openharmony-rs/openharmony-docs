@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 
 wantConstant模块提供了[Want](js-apis-app-ability-want.md)操作相关的系统预设枚举和常量，例如在启动Ability时常用的Flag、Param参数等。
@@ -36,7 +36,7 @@ import { wantConstant } from '@kit.AbilityKit';
 | SUPPORT_CONTINUE_PAGE_STACK_KEY<sup>10+</sup>    | ohos.extra.param.key.supportContinuePageStack  | 表示在跨端迁移过程中是否迁移页面栈信息。默认值为true，表示在跨端迁移过程中自动迁移页面栈信息。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。|
 | SUPPORT_CONTINUE_SOURCE_EXIT_KEY<sup>10+</sup>  | ohos.extra.param.key.supportContinueSourceExit      | 表示跨端迁移源端应用是否退出。默认值为true，表示在跨端迁移过程中源端应用自动退出。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。|
 | SHOW_MODE_KEY<sup>12+</sup>  | ohos.extra.param.key.showMode      | 表示[EmbeddableUIAbility](js-apis-app-ability-embeddableUIAbility.md)的显示模式，值为枚举类型[ShowMode](#showmode12)<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。|
-| PARAMS_STREAM<sup>12+</sup>  | ability.params.stream  | 表示授权给目标方的文件URI列表。对应的value必须是string类型的文件URI数组。文件URI的获取参考[fileUri](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) 。该字段需要与文件URI读写[Flags](js-apis-app-ability-wantConstant.md#flags)配合使用。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
+| PARAMS_STREAM<sup>12+</sup>  | ability.params.stream  | 表示授权给目标方的文件URI列表。对应的value必须是string类型的文件URI数组。文件URI的获取参考[fileUri](../apis-core-file-kit/js-apis-file-fileuri.md) 。该字段需要与文件URI读写[Flags](js-apis-app-ability-wantConstant.md#flags)配合使用。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | APP_CLONE_INDEX_KEY<sup>12+</sup>  | ohos.extra.param.key.appCloneIndex  | 表示分身应用索引。 <br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | CALLER_REQUEST_CODE<sup>12+</sup>  | ohos.extra.param.key.callerRequestCode  | 表示应用拉起的请求码。<br>当调用[startAbilityForResult](js-apis-inner-application-uiAbilityContext.md#startabilityforresult)或[openLink](js-apis-inner-application-uiAbilityContext.md#openlink12)拉起目标方Ability时，需要目标方返回结果。为了确保目标方能够将结果准确返回到调用方，系统会自动生成唯一的requestCode，以标识本次调用。 <br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | PAGE_PATH<sup>12+</sup>  | ohos.param.atomicservice.pagePath | 表示原子化服务的页面路径。<br>如果原子化服务的页面跳转是通过[router](../../ui/arkts-routing.md)实现的，可以使用该参数指定跳转的页面，例如"library/ets/pages/menu"。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。  |
@@ -51,7 +51,7 @@ import { wantConstant } from '@kit.AbilityKit';
 | LAUNCH_REASON_MESSAGE<sup>18+</sup>  | ohos.params.launchReasonMessage  | 表示应用拉起的原因。<br>调用方必须为系统应用，且需要申请ohos.permission.SET_LAUNCH_REASON_MESSAGE权限。当前取值支持：<br>"ReasonMessage_SystemShare"：表示系统分享拉起。<br>"ReasonMessage_DesktopShortcut"：表示桌面快捷方式拉起。<br>"ReasonMessage_Notification"：表示通知拉起。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。 |
 | DESTINATION_PLUGIN_ABILITY<sup>19+</sup>  | ohos.params.pluginAbility  | 指示目标Ability是插件Ability。 |
 | ATOMIC_SERVICE_SHARE_ROUTER<sup>20+</sup>  | ohos.params.atomicservice.shareRouter  | 表示被拉起的原子化服务的页面栈信息。仅当拉起方为UIAbilityContext，被拉起方为原子化服务时生效。<br>例如，某原子化服务中包含首页和第2页，如果希望直接拉起原子化服务的第2页，可以在拉起原子化服务时通过该字段传递第2页的页面栈信息。<br>**说明**：从API版本26.0.0开始，如果拉起方具有ohos.permission.START_ABILITY_TO_PAGE权限，目标方不是原子化服务也能生效。<br>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。 |
-| ABILITY_UNIFIED_DATA_KEY<sup>20+</sup>  | ohos.param.ability.udKey  | 表示基于[UDMF](../../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md)进行文件分享时使用的唯一标识。该字段只允许系统应用设置，三方应用可以读取。<br>当Want中存在URI授权Flag字段（即[FLAG_AUTH_READ_URI_PERMISSION](#flags)或[FLAG_AUTH_WRITE_URI_PERMISSION](#flags)），且同时存在PARAMS_STREAM字段时，该字段将不生效。 <br>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。|
+| ABILITY_UNIFIED_DATA_KEY<sup>20+</sup>  | ohos.param.ability.udKey  | 表示基于[unifiedDataChannel](../apis-arkdata/js-apis-data-unifiedDataChannel.md)进行文件分享时使用的唯一标识。该字段只允许系统应用设置，三方应用可以读取。<br>当Want中存在URI授权Flag字段（即[FLAG_AUTH_READ_URI_PERMISSION](#flags)或[FLAG_AUTH_WRITE_URI_PERMISSION](#flags)），且同时存在PARAMS_STREAM字段时，该字段将不生效。 <br>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。|
 
 ## Flags
 
@@ -79,3 +79,15 @@ import { wantConstant } from '@kit.AbilityKit';
 | WINDOW        | 0 | 表示独立窗口拉起模式。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。  |
 | EMBEDDED_FULL       | 1 | 表示嵌入式全屏拉起模式。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | EMBEDDED_HALF<sup>23+</sup>       | 2 | 表示嵌入式半屏拉起模式。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
+
+## Action
+
+表示要执行的通用操作。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Ability.AbilityBase
+
+| 名称                                | 值 | 说明           |
+| ----------------------------------- |---|--------------|
+| ACTION_SEND_TO_DATA        | ohos.want.action.sendToData | 指示启动向指定接收方发送消息界面的操作。  |

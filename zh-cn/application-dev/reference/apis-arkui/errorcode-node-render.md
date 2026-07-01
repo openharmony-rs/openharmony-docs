@@ -1,8 +1,8 @@
 # 渲染节点错误码
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -46,7 +46,7 @@ Node already has children.
 
 接入渲染节点流程时，排查使用的自定义节点是否已存在子节点。
 
-## 106403 当前渲染节点存在父组件
+## 106403 当前渲染节点存在父节点
 
 **错误信息**
 

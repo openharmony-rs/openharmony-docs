@@ -2,13 +2,15 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
-<!--Designer: @jiangdayuan-->
-<!--Tester: @Giacinta-->
+<!--Designer: @Hu_ZeQi-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
-导航点组件，提供圆点导航点以及数字导航点两种导航点样式。
+导航点组件，提供圆点和数字两种指示样式。
 
-将原[Swiper](ts-container-swiper.md)组件中的[indicator](ts-container-swiper.md#indicator)已有的能力作为一个单独组件提供给开发者使用。开发者可以不依赖Swiper组件单独显示导航点，也可以通过IndicatorComponentController与Swiper组件绑定使用。
+将原[Swiper](ts-container-swiper.md)组件中的[indicator](ts-container-swiper.md#indicator)已有的能力作为一个单独组件提供给开发者使用。
+
+开发者可以不依赖Swiper组件单独显示导航点，也可以通过[IndicatorComponentController](#indicatorcomponentcontroller)与Swiper组件绑定使用，适用于轮播图、引导页、图片浏览等需要展示当前位置的场景。
 
 当多个导航点组件和同一个Swiper绑定时，只有最后一个导航点组件能成功和Swiper绑定。
 
@@ -16,7 +18,9 @@
 
 >  **说明：**
 >
-> 该组件从API version 15开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 15开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 
 ## 子组件
@@ -41,7 +45,7 @@ IndicatorComponent(controller?: IndicatorComponentController)
 
 |参数名|类型|必填|说明|
 | ----- | ----- | -- |  --- |
-| controller |  [IndicatorComponentController](#indicatorcomponentcontroller) | 否 | 设置控制器，可通过该参数控制单独导航点进行导航点之间的跳转。 |
+| controller |  [IndicatorComponentController](#indicatorcomponentcontroller) | 否 | 设置控制器，可通过该参数控制单独导航点进行导航点之间的跳转。不传入时，导航点组件无法被外部控制。 |
 
 ## 属性
 
@@ -51,7 +55,7 @@ IndicatorComponent(controller?: IndicatorComponentController)
 
 style(indicatorStyle: DotIndicator | DigitIndicator)
 
-设置可选导航点指示器样式。
+设置导航点指示器样式。
 
 **卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
 
@@ -63,7 +67,7 @@ style(indicatorStyle: DotIndicator | DigitIndicator)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| indicatorStyle  | [DotIndicator](ts-container-swiper.md#dotindicator10)&nbsp;\|&nbsp;[DigitIndicator](ts-container-swiper.md#digitindicator10)&nbsp;| 是   | 可选导航点指示器样式。<br/> \- DotIndicator：圆点指示器样式。<br/> \- DigitIndicator：数字指示器样式。<br/>&nbsp;&nbsp;默认类型：DotIndicator。 |
+| indicatorStyle  | [DotIndicator](ts-container-swiper.md#dotindicator10)&nbsp;\|&nbsp;[DigitIndicator](ts-container-swiper.md#digitindicator10)&nbsp;| 是   | 导航点指示器样式。<br/> \- DotIndicator：圆点指示器样式，适用于展示简洁的位置提示。<br/> \- DigitIndicator：数字指示器样式，适用于需要明确显示当前位置的场景。<br/>&nbsp;&nbsp;默认类型：DotIndicator。 |
 
 > **说明：**
 >
@@ -73,9 +77,9 @@ style(indicatorStyle: DotIndicator | DigitIndicator)
 
 count(totalCount: number)
 
-设置导航点总数量。
+设置导航点总数量。未与Swiper绑定时，可通过该接口自定义导航点数量。
 
-单独导航点组件和Swiper绑定的时候，以Swiper的页面数量为准。
+Indicator组件与Swiper绑定时，以Swiper的页面数量为准。
 
 **卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
 
@@ -95,7 +99,7 @@ initialIndex(index: number)
 
 设置首次显示时当前导航点的索引值。设置小于0或大于等于导航点数量时，按照默认值0处理。
 
-单独导航点组件和Swiper绑定的时候，该属性不生效。
+Indicator组件与Swiper绑定时，该属性不生效。
 
 **卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
 
@@ -113,9 +117,9 @@ initialIndex(index: number)
 
 loop(isLoop: boolean)
 
-设置是否开启循环。
+设置导航点是否开启循环。
 
-单独导航点组件和Swiper绑定的时候，该属性不生效。
+Indicator组件与Swiper绑定时，该属性不生效。
 
 **卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
 
@@ -133,9 +137,9 @@ loop(isLoop: boolean)
 
 vertical(isVertical: boolean)
 
-设置是否为纵向滑动。
+设置导航点是否为纵向排列。
 
-单独导航点组件和Swiper绑定的时候，该属性不生效。
+Indicator组件与Swiper绑定时，该属性不生效。
 
 **卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
 
@@ -147,7 +151,7 @@ vertical(isVertical: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
-| isVertical  | boolean | 是   | 是否为纵向滑动。true为纵向滑动，false为横向滑动。<br/>默认值：false |
+| isVertical  | boolean | 是   | 是否为纵向排列。true为纵向排列，false为横向排列。<br/>默认值：false。 |
 
 ## 事件
 
@@ -169,7 +173,7 @@ onChange(event: Callback\<number>)
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| event  | [Callback](./ts-types.md#callback12)\<number> | 是   | 当前显示元素的索引变化时触发的回调。|
+| event  | [Callback](./ts-types.md#callback12)\<number> | 是   | 当前显示的选中导航点索引变化时触发的回调。|
 
 ## IndicatorComponentController
 
@@ -191,7 +195,7 @@ IndicatorComponentController的构造函数。
 
 showNext(): void
 
-跳转到下一导航点。
+跳转到下一导航点。适用于通过按钮或其他交互方式控制导航点切换的场景。
 
 **卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
 
@@ -203,7 +207,7 @@ showNext(): void
 
 showPrevious(): void
 
-跳转到上一导航点。
+跳转到上一导航点。适用于通过按钮或其他交互方式控制导航点切换的场景。
 
 **卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
 
@@ -215,7 +219,7 @@ showPrevious(): void
 
 changeIndex(index: number, useAnimation?: boolean): void
 
-翻至指定导航点。
+翻至指定导航点。适用于需要跳转到指定导航点的场景。
 
 **卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。
 
@@ -227,7 +231,7 @@ changeIndex(index: number, useAnimation?: boolean): void
 
 | 参数名      | 类型       | 必填  | 说明     |
 | -------- | ---------- | ---- | -------- |
-| index| number | 是    | 指定导航点在Swiper中的索引值。<br/>**说明：** <br/>设置的值小于0或大于最大导航点索引时，取0。 |
+| index| number | 是    | 指定导航点的索引值。<br/>**说明：** <br/>设置的值小于0或大于最大导航点索引时，取0。 |
 | useAnimation| boolean | 否    | 设置翻至指定导航点时是否有动效，true表示有动效，false表示没有动效。<br/>默认值：false。 |
 
 ## 示例
@@ -250,14 +254,14 @@ struct DotIndicatorDemo {
   build() {
     Column() {
       Swiper(this.swiperController) {
-        ForEach(this.list, (item: string) => {
+        ForEach(this.list, (item: number) => {
           Text(item.toString())
             .width('100%')
             .height(160)
             .backgroundColor(0xAFEEEE)
             .textAlign(TextAlign.Center)
             .fontSize(30)
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .cachedCount(2)
       .index(0)
@@ -286,7 +290,7 @@ struct DotIndicatorDemo {
         .count(6)
         .vertical(true)
         .onChange((index: number) => {
-          console.info("current index: " + index );
+          console.info('current index: ' + index);
         })
     }
   }
@@ -314,14 +318,14 @@ struct DigitIndicatorDemo {
   build() {
     Column() {
       Swiper(this.swiperController) {
-        ForEach(this.list, (item: string) => {
+        ForEach(this.list, (item: number) => {
           Text(item.toString())
             .width('100%')
             .height(160)
             .backgroundColor(0xAFEEEE)
             .textAlign(TextAlign.Center)
             .fontSize(30)
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }
       .cachedCount(2)
       .index(0)
@@ -347,7 +351,7 @@ struct DigitIndicatorDemo {
         .count(6)
         .vertical(true)
         .onChange((index: number) => {
-          console.info("current index: " + index );
+          console.info('current index: ' + index);
         })
     }
   }

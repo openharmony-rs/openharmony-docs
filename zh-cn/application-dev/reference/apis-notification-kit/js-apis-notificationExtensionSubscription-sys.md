@@ -1,7 +1,7 @@
 # @ohos.notificationExtensionSubscription (notificationExtensionSubscription模块)(系统接口)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @cheerful_ricky-->
+<!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
@@ -45,8 +45,8 @@ getAllSubscriptionBundles(): Promise\<BundleOption[]\>
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
 | 1600001  | Internal error.                                      |
 | 1600003  | Failed to connect to the service.                    |
 
@@ -90,8 +90,8 @@ getUserGrantedState(targetBundle: BundleOption): Promise\<boolean\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service.          |
 | 1600022  | The specified bundle is invalid.                          |
@@ -146,8 +146,8 @@ setUserGrantedState(targetBundle: BundleOption, enabled: boolean): Promise\<void
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
-| 202      | Not system application to call the interface.                                      |  
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service.          |
 | 1600022  | The specified bundle is invalid.                          |

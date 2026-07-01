@@ -5,7 +5,7 @@
 <!--Owner: @hwymlgitcode-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 This module provides the serial port management functions, including enabling and disabling the serial port of the device, writing and reading data, setting and obtaining the configuration parameters of the serial port, and managing permissions.
 
@@ -80,7 +80,7 @@ Checks whether the application has the permission to access the serial port devi
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14400005 | Database operation exception. |
@@ -141,7 +141,7 @@ Requests the permission for the application to access the serial port device. Af
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14400005 | Database operation exception. |
@@ -202,7 +202,7 @@ Opens a serial port device.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -278,7 +278,7 @@ Obtains the configuration parameters of a specified serial port.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -361,7 +361,7 @@ Sets the parameters of the serial port. If this method is not called, the defaul
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -453,7 +453,7 @@ Reads data from the serial port device asynchronously. This API uses a promise t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -540,7 +540,7 @@ Reads data from the serial port device synchronously.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -616,7 +616,7 @@ Writes data to the serial port device asynchronously. The length of data written
 |---------|------------|----|------------------|
 | portId  | number     | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).     |
 | buffer  | Uint8Array | Yes | Buffer for writing data.|
-| timeout | number     | No | Timeout interval for checking whether the buffer is writable, in milliseconds. If not, **0** is returned after the interval. The default value **0** is returned when data cannot be written into the target port.|
+| timeout | number     | No | Timeout interval, in milliseconds. Whether the buffer of the target port is writable within the specified time. If so, the API is processed properly; if not, a timeout message is returned after the specified time. The default value **0** is returned when data cannot be written into the target port.|
 
 **Return value**
 
@@ -628,7 +628,7 @@ Writes data to the serial port device asynchronously. The length of data written
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -704,7 +704,7 @@ Writes data to the serial port device synchronously. The length of data written 
 |---------|------------|----|------------------|
 | portId  | number     | Yes | Port number, which is the value of the **SerialPort** parameter obtained by [getPortList](#serialmanagergetportlist).    |
 | buffer  | Uint8Array | Yes | Destination buffer for writing data.|
-| timeout | number     | No | Timeout interval for checking whether the buffer is writable, in milliseconds. If not, **0** is returned after the interval. The default value **0** is returned when data cannot be written into the target port.|
+| timeout | number     | No | Timeout interval, in milliseconds. Whether the buffer of the target port is writable within the specified time. If so, the API is processed properly; if not, a timeout message is returned after the specified time. The default value **0** is returned when data cannot be written into the target port.|
 
 **Return value**
 
@@ -716,7 +716,7 @@ Writes data to the serial port device synchronously. The length of data written 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -797,7 +797,7 @@ Closes the serial port device.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 31400001 | Serial port management exception. |
@@ -875,7 +875,7 @@ Cancels the permission to access the serial port device when the application is 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
-| ID| Error Message                                                    |
+| Error Code| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14400005 | Database operation exception.                                |
@@ -935,10 +935,10 @@ Represents the configuration parameters of a serial port.
 
 | Name      |          Type       |  Read-Only  |  Optional| Description       |
 |----------|--------|----------|-----------|----------------------|
-| baudRate | [BaudRates](#baudrates) |   No  | No | Baud rate. |
-| dataBits | [DataBits](#databits)   |   No  | Yes | Data bits. The default value is **8**. |
+| baudRate | [BaudRates](#baudrates) |   No  | No | Baud rate of the serial port, in bit/s. |
+| dataBits | [DataBits](#databits)   |   No  | Yes | Data bits of the serial port, in bits. The default value is **8**. |
 | parity   | [Parity](#parity)       |   No  | Yes | Parity check. The default value is **None**, indicating that no parity check is performed.|
-| stopBits | [StopBits](#stopbits)   |   No  | Yes | Stop bits. The default value is **1**. |
+| stopBits | [StopBits](#stopbits)   |   No  | Yes | Stop bits of the serial port, in bits. The default value is **1**. |
 
 ## SerialPort
 
@@ -953,46 +953,46 @@ Represents the parameters of a serial port.
 
 ## BaudRates
 
-Enumerates the baud rates.
+Enumerates the baud rates, in bit/s.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
 | Name    | Value    | Description   |
 |-----------|-----------|-----------|
-| BAUDRATE_50  | 50  | The baud rate is 50 bit/s. |
-| BAUDRATE_75  | 75  | The baud rate is 75 bit/s. |
-| BAUDRATE_110  | 110  | The baud rate is 110 bit/s. |
-| BAUDRATE_134  | 134  | The baud rate is 134 bit/s. |
-| BAUDRATE_150  | 150  | The baud rate is 150 bit/s. |
-| BAUDRATE_200  | 200  | The baud rate is 200 bit/s. |
-| BAUDRATE_300  | 300  | The baud rate is 300 bit/s. |
-| BAUDRATE_600  | 600  | The baud rate is 600 bit/s. |
-| BAUDRATE_1200  | 1200  | The baud rate is 1200 bit/s. |
-| BAUDRATE_1800  | 1800  | The baud rate is 1800 bit/s. |
-| BAUDRATE_2400  | 2400  | The baud rate is 2400 bit/s. |
-| BAUDRATE_4800  | 4800  | The baud rate is 4800 bit/s. |
-| BAUDRATE_9600  | 9600  | The baud rate is 9600 bit/s. |
-| BAUDRATE_19200  | 19200  | The baud rate is 19200 bit/s. |
-| BAUDRATE_38400  | 38400  | The baud rate is 38400 bit/s. |
-| BAUDRATE_57600  | 57600  | The baud rate is 57600 bit/s. |
-| BAUDRATE_115200  | 115200  | The baud rate is 115200 bit/s. |
-| BAUDRATE_230400  | 230400  | The baud rate is 230400 bit/s. |
-| BAUDRATE_460800  | 460800  | The baud rate is 460800 bit/s. |
-| BAUDRATE_500000  | 500000  | The baud rate is 500000 bit/s. |
-| BAUDRATE_576000  | 576000  | The baud rate is 576000 bit/s. |
-| BAUDRATE_921600  | 921600  | The baud rate is 921600 bit/s. |
-| BAUDRATE_1000000  | 1000000  | The baud rate is 1000000 bit/s. |
-| BAUDRATE_1152000  | 1152000  | The baud rate is 1152000 bit/s. |
-| BAUDRATE_1500000  | 1500000  | The baud rate is 1500000 bit/s. |
-| BAUDRATE_2000000  | 2000000  | The baud rate is 2000000 bit/s. |
-| BAUDRATE_2500000  | 2500000  | The baud rate is 2500000 bit/s. |
-| BAUDRATE_3000000  | 3000000  | The baud rate is 3000000 bit/s. |
-| BAUDRATE_3500000  | 3500000  | The baud rate is 3500000 bit/s. |
-| BAUDRATE_4000000  | 4000000  | The baud rate is 4000000 bit/s. |
+| BAUDRATE_50  | 50  | The transmission baud rate is 50 bit/s. |
+| BAUDRATE_75  | 75  | The transmission baud rate is 75 bit/s. |
+| BAUDRATE_110  | 110  | The transmission baud rate is 110 bit/s. |
+| BAUDRATE_134  | 134  | The transmission baud rate is 134 bit/s. |
+| BAUDRATE_150  | 150  | The transmission baud rate is 150 bit/s. |
+| BAUDRATE_200  | 200  | The transmission baud rate is 200 bit/s. |
+| BAUDRATE_300  | 300  | The transmission baud rate is 300 bit/s. |
+| BAUDRATE_600  | 600  | The transmission baud rate is 600 bit/s. |
+| BAUDRATE_1200  | 1200  | The transmission baud rate is 1200 bit/s. |
+| BAUDRATE_1800  | 1800  | The transmission baud rate is 1800 bit/s. |
+| BAUDRATE_2400  | 2400  | The transmission baud rate is 2400 bit/s. |
+| BAUDRATE_4800  | 4800  | The transmission baud rate is 4800 bit/s. |
+| BAUDRATE_9600  | 9600  | The transmission baud rate is 9600 bit/s. |
+| BAUDRATE_19200  | 19200  | The transmission baud rate is 19,200 bit/s. |
+| BAUDRATE_38400  | 38400  | The transmission baud rate is 38,400 bit/s. |
+| BAUDRATE_57600  | 57600  | The transmission baud rate is 57,600 bit/s. |
+| BAUDRATE_115200  | 115200  | The transmission baud rate is 115,200 bit/s. |
+| BAUDRATE_230400  | 230400  | The transmission baud rate is 230,400 bit/s. |
+| BAUDRATE_460800  | 460800  | The transmission baud rate is 460,800 bit/s. |
+| BAUDRATE_500000  | 500000  | The transmission baud rate is 500,000 bit/s. |
+| BAUDRATE_576000  | 576000  | The transmission baud rate is 576,000 bit/s. |
+| BAUDRATE_921600  | 921600  | The transmission baud rate is 921,600 bit/s. |
+| BAUDRATE_1000000  | 1000000  | The transmission baud rate is 1,000,000 bit/s. |
+| BAUDRATE_1152000  | 1152000  | The transmission baud rate is 1,152,000 bit/s. |
+| BAUDRATE_1500000  | 1500000  | The transmission baud rate is 1,500,000 bit/s. |
+| BAUDRATE_2000000  | 2000000  | The transmission baud rate is 2,000,000 bit/s. |
+| BAUDRATE_2500000  | 2500000  | The transmission baud rate is 2,500,000 bit/s. |
+| BAUDRATE_3000000  | 3000000  | The transmission baud rate is 3,000,000 bit/s. |
+| BAUDRATE_3500000  | 3500000  | The transmission baud rate is 3,500,000 bit/s. |
+| BAUDRATE_4000000  | 4000000  | The transmission baud rate is 4,000,000 bit/s. |
 
 ## DataBits
 
-Enumerates the number of data bits.
+Enumerates the number of data bits, in bits.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
@@ -1019,7 +1019,7 @@ Enumerates the parity check modes.
 
 ## StopBits
 
-Enumerates of the number of stop bits.
+Enumerates the number of stop bits, in bits.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 

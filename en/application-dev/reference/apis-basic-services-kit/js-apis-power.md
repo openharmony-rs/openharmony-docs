@@ -5,7 +5,7 @@
 <!--Owner: @zhang-yinglie; @volcano_wang-->
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 The **power** module provides APIs for rebooting and shutting down the system, as well as querying the screen status. You can use these APIs to obtain the device activity status, power mode, and screen on/off status.
 > **NOTE**
@@ -45,8 +45,9 @@ console.info('power is active: ' + isActive);
 
 rebootDevice(reason: string): void
 
+Restarts the system.
+
 > **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9.<!--Del--> You are advised to use [power.reboot](js-apis-power-sys.md#powerreboot9) instead<!--DelEnd-->. The substitute API is available only for system applications.
-Reboots a device.
 
 **Required permissions**: ohos.permission.REBOOT (available only for system applications)
 
@@ -57,7 +58,7 @@ Reboots a device.
 
 | Name   | Type    | Mandatory  | Description   |
 | ------ | ------ | ---- | ----- |
-| reason | string | Yes   | Reason for system reboot.|
+| reason | string | Yes   | Reason for system reboot. For example, **updater** indicates that the device enters the update mode after restart. If this parameter is not specified, the system enters the normal mode after restart.|
 
 **Example**
 
@@ -104,7 +105,7 @@ Checks whether the device is in standby mode.
 
 For details about the error codes, see [Power Manager Error Codes](errorcode-power.md).
 
-| ID  | Error Message   |
+| Error Code  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 
@@ -123,9 +124,9 @@ try {
 
 isScreenOn(callback: AsyncCallback&lt;boolean&gt;): void
 
-> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [power.isActive](#powerisactive9) instead.
-
 Checks the screen status of the current device. This API uses an asynchronous callback to return the result.
+
+> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [power.isActive](#powerisactive9) instead.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -151,9 +152,9 @@ power.isScreenOn((err: Error, data: boolean) => {
 
 isScreenOn(): Promise&lt;boolean&gt;
 
-> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [power.isActive](#powerisactive9) instead.
-
 Checks the screen status of the current device. This API uses a promise to return the result.
+
+> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [power.isActive](#powerisactive9) instead.
 
 **System capability**: SystemCapability.PowerManager.PowerManager.Core
 
@@ -196,5 +197,5 @@ Enumerates the power key filtering strategies.
 
 | Name                   | Value  | Description                  |
 | ----------------------- | ---- | ---------------------- |
-| DISABLE_LONG_PRESS_FILTERING | 0  | Disables the power key filtering strategy. This is the default value.|
+| DISABLE_LONG_PRESS_FILTERING | 0  | Disables the filtering strategy for the long-press event of the power key. This is the default value.|
 | LONG_PRESS_FILTERING_ONCE | 1  | Filters the long-press event of the current power key once.|

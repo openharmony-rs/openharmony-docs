@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -114,7 +114,7 @@ change() {
 以下示例展示组件更新和\@Watch的处理步骤。count在CountModifier中由\@State装饰，在TotalView中由\@Prop装饰。
 
 
-<!-- @[count_modifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/CountModifier.ets) -->
+<!-- @[count_modifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/CountModifier.ets) --> 
 
 ``` TypeScript
 @Component
@@ -129,6 +129,8 @@ struct TotalView {
 
   build() {
     Text(`Total: ${this.total}`)
+      .fontSize(20)
+      .margin(10)
   }
 }
 
@@ -140,14 +142,19 @@ struct CountModifier {
   build() {
     Column() {
       Button('add to basket')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.count++;
         })
       TotalView({ count: this.count })
     }
+    .width('100%')
   }
 }
 ```
+
+![watch-count-modifier](figures/watch-count-modifier.gif)
 
 处理步骤：
 
@@ -163,7 +170,7 @@ struct CountModifier {
 以下示例说明了如何在子组件中观察\@Link变量。
 
 
-<!-- @[basket_modifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/BasketModifier.ets) -->
+<!-- @[basket_modifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/BasketModifier.ets) --> 
 
 ``` TypeScript
 class PurchaseItem {
@@ -232,7 +239,7 @@ struct BasketModifier {
 
 2. \@Link装饰的BasketViewer shopBasket值发生变化；
 
-3. 状态管理框架调用\@Watch函数BasketViewer onBasketUpdated 更新BasketViewer TotalPurchase的值；
+3. 状态管理框架调用\@Watch函数BasketViewer onBasketUpdated 更新BasketViewer totalPurchase的值；
 
 4. \@Link shopBasket的改变，新增了数组项，ForEach组件会执行item Builder，渲染构建新的Item项；\@State totalPurchase改变，对应的Text组件也重新渲染；重新渲染是异步发生的。
 
@@ -244,7 +251,7 @@ struct BasketModifier {
 
 为了展示\@Watch回调触发时间是根据状态变量真正变化的时间，本示例在子组件中同时使用\@Link和[\@ObjectLink](./arkts-observed-and-objectlink.md)装饰器，分别观察不同的状态对象。通过在父组件中更改状态变量并观察\@Watch回调的先后顺序，来表明@Watch触发的时机与赋值、同步的关系。
 
-<!-- @[parent_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/ParentComponent.ets) -->
+<!-- @[parent_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/ParentComponent.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -292,19 +299,26 @@ struct ParentComponent {
         .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text7').id) :
         this.getUIContext()
           .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text8').id)}`)
+        .fontSize(20)
+        .margin(10)
       Text(`${this.type2} ${this.taskB.isFinished ? this.getUIContext()
         .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text7').id) :
         this.getUIContext()
           .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text8').id)}`)
+        .fontSize(20)
+        .margin(10)
       ChildComponent({ taskA: this.taskA, taskB: this.taskB })
       // 请将$r('app.string.watch_text9')替换为实际资源文件，在本示例中该资源文件的value值为"切换任务状态"
       Button(this.getUIContext()
         .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text9').id))
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.taskB = new Task(!this.taskB.isFinished);
           this.taskA = new Task(!this.taskA.isFinished);
         })
     }
+    .width('100%')
   }
 }
 
@@ -338,14 +352,21 @@ struct ChildComponent {
         .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text7').id) :
         this.getUIContext()
           .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text8').id)}`)
+        .fontSize(20)
+        .margin(10)
       Text(`${this.type2} ${this.taskB.isFinished ? this.getUIContext()
         .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text7').id) :
         this.getUIContext()
           .getHostContext()!.resourceManager.getStringSync($r('app.string.watch_text8').id)}`)
+        .fontSize(20)
+        .margin(10)
     }
+    .width('100%')
   }
 }
 ```
+
+![watch-parent-component](figures/watch-parent-component.gif)
 
 处理步骤如下：
 
@@ -361,14 +382,14 @@ struct ChildComponent {
 
 3. 通过日志可以看到，父组件的回调顺序和修改顺序一致，而子组件中\@Link和\@ObjectLink的回调触发顺序与父组件中变量更新的顺序不同。这是因为父组件的变量更新是即时的，但子组件中\@Link和\@ObjectLink获取更新数据的时机不同。\@Link的状态更新是同步的，状态变化会立刻触发\@Watch回调。而\@ObjectLink的更新依赖于父组件的同步，当父组件刷新并将更新后的变量传递给子组件时，\@Watch回调才会触发，因此触发顺序略晚于\@Link。
 
-4. 这是符合预期的行为，展示了\@Watch回调的触发时机是根据状态变量真正变化的时间。因为\@Link直接同步，而\@ObjectLink需要等父组件更新子组件变量。类似地，\@Prop也可能表现出与\@ObjectLink类似的行为，其回调触发时间也会略晚。
+4. 这是符合预期的行为，展示了\@Watch回调的触发时机是根据状态变量真正变化的时间。因为\@Link直接同步，而\@ObjectLink需要等父组件更新子组件变量。类似地，当父组件的数据源变化时，\@Prop也会表现出与\@ObjectLink类似的行为，其回调触发时间也会略晚。
 
 ### 使用changedPropertyName进行不同的逻辑处理
 
 以下示例说明了如何在\@Watch函数中使用changedPropertyName进行不同的逻辑处理。
 
 
-<!-- @[use_property_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/UsePropertyName.ets) -->
+<!-- @[use_property_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/UsePropertyName.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -387,21 +408,34 @@ struct UsePropertyName {
 
   build() {
     Column() {
-      Text(`Number of apples: ${this.apple.toString()}`).fontSize(30)
-      Text(`Number of cabbages: ${this.cabbage.toString()}`).fontSize(30)
-      Text(`Total number of fruits: ${this.fruit.toString()}`).fontSize(30)
+      Text(`Number of apples: ${this.apple.toString()}`)
+        .fontSize(30)
+        .margin(10)
+      Text(`Number of cabbages: ${this.cabbage.toString()}`)
+        .fontSize(30)
+        .margin(10)
+      Text(`Total number of fruits: ${this.fruit.toString()}`)
+        .fontSize(30)
+        .margin(10)
       Button('Add apples')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.apple++;
         })
       Button('Add cabbages')
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.cabbage++;
         })
     }
+    .width('100%')
   }
 }
 ```
+
+![watch-use-property-name](figures/watch-use-property-name.gif)
 
 处理步骤如下：
 

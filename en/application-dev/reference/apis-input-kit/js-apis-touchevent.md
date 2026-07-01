@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **touchEvent** module provides touch events reported by a device. It is inherited from [InputEvent](./js-apis-inputevent.md).
 
@@ -27,10 +27,13 @@ Enumerates the touch event types.
 
 | Name    | Value  | Description  |
 | ------ | ------ | ---- |
-| CANCEL | 0 | Touch cancellation. The down event of the touchscreen is interrupted unexpectedly and does not close normally. For example, the **CANCEL** event is triggered when the finger is pressed but not lifted, the screen is rotated or folded, or a new hover occurs.|
-| DOWN   | 1 | Touch press.|
-| MOVE   | 2 | Touch moving.|
-| UP     | 3 | Touch release.|
+| CANCEL | 0 | Touch canceled. The **DOWN** event of the touchscreen is interrupted unexpectedly and does not close normally. For example, the **CANCEL** event is triggered when the finger is pressed but not lifted, the screen is rotated or folded, or a new hover occurs.|
+| DOWN   | 1 | Touch down.|
+| MOVE   | 2 | Touch moved.|
+| UP     | 3 | Touch up.|
+| PULL_DOWN  | 4 | Drag started.<br>**Since**: 26.0.0<br>**Model restriction:** This API can be used only in the stage model.|
+| PULL_MOVE  | 5 | Dragging.<br>**Since**: 26.0.0<br>**Model restriction:** This API can be used only in the stage model.|
+| PULL_UP    | 6 | Drag ended.<br>**Since**: 26.0.0<br>**Model restriction:** This API can be used only in the stage model.|
 
 ## ToolType
 
@@ -70,25 +73,25 @@ Defines the touch point information.
 | Name         | Type  | Read-Only  | Optional  | Description                                 |
 | ----------- | ------ | ---- | ---- | ----------------------------------- |
 | id          | number | No   | No   | Touch event ID.                               |
-| pressedTime | number | No   | No   | Press timestamp, in μs.                          |
-| screenX     | number | No   | No   | X coordinate of the touch event in the relative coordinate system with the upper-left corner of the specified screen as the origin. The value can only be an integer.   |
-| screenY     | number | No   | No   | Y coordinate of the touch event in the relative coordinate system with the upper-left corner of the specified screen as the origin. The value can only be an integer.   |
-| windowX     | number | No   | No   | X coordinate in the relative coordinate system with the upper-left corner of the window where the touch is located as the origin. The value can only be an integer.|
-| windowY     | number | No   | No   | Y coordinate in the relative coordinate system with the upper-left corner of the window where the touch is located as the origin. The value can only be an integer.|
+| pressedTime | number | No   | No   | Press timestamp, in microseconds (μs) since the system starts.                          |
+| screenX     | number | No   | No   | X coordinate of the touch event in the relative coordinate system with the upper-left corner of the specified screen as the origin. Currently, only integers are supported. The unit is pixels.   |
+| screenY     | number | No   | No   | Y coordinate of the touch event in the relative coordinate system with the upper-left corner of the specified screen as the origin. Currently, only integers are supported. The unit is pixels.   |
+| windowX     | number | No   | No   | X coordinate in the relative coordinate system with the upper-left corner of the window where the touch is located as the origin. Currently, only integers are supported. The unit is pixels.|
+| windowY     | number | No   | No   | Y coordinate in the relative coordinate system with the upper-left corner of the window where the touch is located as the origin. Currently, only integers are supported. The unit is pixels.|
 | pressure    | number | No   | No   | Pressure value. The value range is [0.0, 1.0]. The value **0.0** indicates that the pressure is not supported.      |
-| width       | number | No   | No   | Width of the touch area. The value can only be an integer.        |
-| height      | number | No   | No   | Height of the touch area. The value can only be an integer.        |
-| tiltX       | number | No   | No   | Angle relative to the YZ plane. The value range is [-90, 90]. A positive value indicates a rightward tilt.|
-| tiltY       | number | No   | No   | Angle relative to the XZ plane. The value range is [-90, 90]. A positive value indicates a downward tilt.|
-| toolX       | number | No   | No   | X coordinate of the tool area center in the relative coordinate system with the upper-left corner of the specified screen as the origin. The value can only be an integer. |
-| toolY       | number | No   | No   | Y coordinate of the tool area center in the relative coordinate system with the upper-left corner of the specified screen as the origin. The value can only be an integer. |
-| toolWidth   | number | No   | No   | Width of the tool area. The value can only be an integer. |
-| toolHeight  | number | No   | No   | Height of the tool area. The value can only be an integer. |
-| rawX        | number | No   | No   | X coordinate of the input device. The value can only be an integer.|
-| rawY        | number | No   | No   | Y coordinate of the input device. The value can only be an integer.|
+| width       | number | No   | No   | Width of the touch area, in pixels. The value can only be an integer.        |
+| height      | number | No   | No   | Height of the touch area, in pixels. The value can only be an integer.        |
+| tiltX       | number | No   | No   | Angle relative to the YZ plane, in degrees. The value range is [-90, 90]. A positive value indicates a rightward tilt.|
+| tiltY       | number | No   | No   | Angle relative to the XZ plane, in degrees. The value range is [-90, 90]. A positive value indicates a downward tilt.|
+| toolX       | number | No   | No   | X coordinate of the tool area center in the relative coordinate system with the upper-left corner of the specified screen as the origin. Currently, only integers are supported. The unit is pixels. |
+| toolY       | number | No   | No   | Y coordinate of the tool area center in the relative coordinate system with the upper-left corner of the specified screen as the origin. Currently, only integers are supported. The unit is pixels. |
+| toolWidth   | number | No   | No   | Width of the tool area, in pixels. The value can only be an integer. |
+| toolHeight  | number | No   | No   | Height of the tool area, in pixels. The value can only be an integer. |
+| rawX        | number | No   | No   | X coordinate of the input device. Currently, only integers are supported. The unit is pixels.|
+| rawY        | number | No   | No   | Y coordinate of the input device. Currently, only integers are supported. The unit is pixels.|
 | toolType    | [ToolType](#tooltype) | No   | No   | Tool type.                               |
-| globalX<sup>20+</sup> | number | No   | Yes   | X coordinate of the touch event in the global coordinate system with the upper-left corner of the primary screen as the origin. <!--Del--> When being used as an input parameter, this parameter is mandatory if the value of [TouchEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#toucheventdata11) is **true**, and its value can only be an integer. Otherwise, you do not need to set this parameter. In this case, the X coordinate of the relative coordinate system with the upper left corner of the specified screen as the origin is used to calculate the injected event. <!--DelEnd-->When being used as an output parameter, its value is reported by the system.|
-| globalY<sup>20+</sup> | number | No   | Yes   | Y coordinate of the touch event in the global coordinate system with the upper-left corner of the primary screen as the origin. <!--Del--> When being used as an input parameter, this parameter is mandatory if the value of [TouchEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#toucheventdata11) is **true**, and its value can only be an integer. Otherwise, you do not need to set this parameter. In this case, the Y coordinate of the relative coordinate system with the upper left corner of the specified screen as the origin is used to calculate the injected event. <!--DelEnd-->When being used as an output parameter, its value is reported by the system.|
+| globalX<sup>20+</sup> | number | No   | Yes   | X coordinate of the touch event in the global coordinate system with the upper-left corner of the primary screen as the origin, in px. <!--Del--> When being used as an input parameter, this parameter is mandatory if the value of [TouchEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#toucheventdata11) is **true**, and its value can only be an integer. Otherwise, you do not need to set this parameter. In this case, the X coordinate of the relative coordinate system with the upper left corner of the specified screen as the origin is used to calculate the injected event. <!--DelEnd-->When being used as an output parameter, its value is reported by the system.|
+| globalY<sup>20+</sup> | number | No   | Yes   | Y coordinate of the touch event in the global coordinate system with the upper-left corner of the primary screen as the origin, in px. <!--Del--> When being used as an input parameter, this parameter is mandatory if the value of [TouchEventData.useGlobalCoordinate](./js-apis-inputeventclient-sys.md#toucheventdata11) is **true**, and its value can only be an integer. Otherwise, you do not need to set this parameter. In this case, the Y coordinate of the relative coordinate system with the upper left corner of the specified screen as the origin is used to calculate the injected event. <!--DelEnd-->When being used as an output parameter, its value is reported by the system.|
 
 ## TouchEvent
 

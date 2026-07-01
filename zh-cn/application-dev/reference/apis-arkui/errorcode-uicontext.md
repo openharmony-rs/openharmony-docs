@@ -1,8 +1,8 @@
 # UI上下文错误码
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -112,9 +112,8 @@ The UIContext is not available.
 
 **可能原因**
 
-传入的实例非法或者对应的示例已销毁。
+传入的实例非法或者对应的实例已销毁。
 
 **处理步骤**
 
 传入有效的UIContext对象。
-

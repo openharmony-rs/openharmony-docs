@@ -11,6 +11,8 @@ The **Graphics** module provides APIs for defining attributes of a custom node.
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 
@@ -45,7 +47,7 @@ Sets or returns the position of the component.
 | ------------------- | ----------------------------------- |
 | [Vector2](#vector2) | A vector that contains two values: x and y.<br>Unit: vp.|
 
-## PositionT<sup>12+</sup>
+## PositionT\<T><sup>12+</sup>
 
 type PositionT\<T> = Vector2T\<T>
 
@@ -194,6 +196,25 @@ Represents a vector including three values: x, y, and z.
 | x    | number | No  | No  | Rotation angle along the x-axis.<br>Value range: (-∞, +∞).|
 | y    | number | No  | No  | Rotation angle along the y-axis.<br>Value range: (-∞, +∞).|
 | z    | number | No  | No  | Rotation angle along the z-axis.<br>Value range: (-∞, +∞).|
+
+## Vector4
+
+Defines a vector that contains the x, y, z, and w coordinate values.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name| Type  | Read-Only| Optional| Description    |
+| ---- | ------ | ---- | ---- | -------- |
+| x    | number | No | No  | X coordinate value of the vector.<br>Value range: (-∞, +∞).|
+| y    | number | No | No  | Y coordinate value of the vector.<br>Value range: (-∞, +∞).|
+| z    | number | No | No  | Z coordinate value of the vector.<br>Value range: (-∞, +∞).|
+| w    | number | No | No  | W coordinate value of the vector.<br>Value range: (-∞, +∞).|
 
 ## Vector2T\<T><sup>12+</sup>
 
@@ -575,6 +596,48 @@ struct SizeExample {
 ```
 ![image](figures/lengthMetricsDemo.png)
 
+### autoRefresh
+
+autoRefresh?(value: boolean): LengthMetrics
+
+Sets whether the **LengthMetrics** object automatically updates with system configuration changes.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+|-------|------|------|------|
+| value | boolean | Yes| Whether the **LengthMetrics** object constructed using [resource](#resource12) automatically refreshes the value when the system configuration changes.<br>**true**: The object proactively listens to the system configuration changes, and refreshes the value to the resource value corresponding to the configuration when the configuration changes.<br>**false**: The object does not proactively listen to the system configuration changes.|
+
+**Return value**
+
+| Type| Description|
+|------|------|
+| [LengthMetrics](#lengthmetrics12) | **LengthMetrics** object.|
+
+**Example**
+
+```ts
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MyStateSample {
+  @State lengthMetrics: LengthMetrics = LengthMetrics.resource($r('sys.float.ohos_id_button_min_width')).autoRefresh!(true)
+
+  build() {
+    Column() {
+      Button('Test LengthMetrics')
+        .padding({ top: this.lengthMetrics })
+    }
+  }
+}
+```
 
 ## ColorMetrics<sup>12+</sup>
 
@@ -860,6 +923,51 @@ struct ColorMetricsSample {
 }
 ```
 ![image](figures/colorMetricsDemo.png)
+
+### autoRefresh
+
+autoRefresh?(value: boolean): ColorMetrics
+
+Sets whether the **ColorMetrics** object automatically updates with system configuration changes.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+|-------|------|------|------|
+| value | boolean | Yes| Whether the **ColorMetrics** object constructed using [resourceColor](#resourcecolor12) automatically refreshes the color value when the system configuration changes.<br>**true**: The object proactively listens to the system configuration changes, and refreshes the value to the resource value corresponding to the configuration when the configuration changes.<br>**false**: The object does not proactively listen to the system configuration changes.|
+
+**Return value**
+
+| Type| Description|
+|------|------|
+| [ColorMetrics](#colormetrics12) | **ColorMetrics** object.|
+
+**Example**
+
+```ts
+import { ColorMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MyStateSample {
+  @State colorMetrics: ColorMetrics = ColorMetrics.resourceColor($r('sys.color.font_primary')).autoRefresh!(true)
+
+  build() {
+    Column() {
+      Text('Test ColorMetrics')
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(this.colorMetrics)
+  }
+}
+```
 
 ## Corners\<T><sup>12+</sup>
 
@@ -1965,3 +2073,53 @@ struct Index {
 }
 ```
 ![](figures/borderRadiuses_demo.png)
+
+## BackgroundBlur
+
+Sets a background blur effect.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name    | Type    | Read-Only| Optional| Description                                    |
+| -------- | -------- | ---- | ---- | ---------------------------------------- |
+| radius   | number   | No  | No  | Blur radius. The value range is [0, +∞). The default value is **0**. A negative value, **NaN**, and **Infinity** are invalid and treated as the default value. A larger value indicates a more obvious background blur effect. If the value is **0**, the background is not blurred.|
+| grayscale | [number, number] | No  | Yes  | Grayscale blur, with two parameters in the value range of [0, 127]. The default value is [0, 0]. The color gradation of the black and white in the image is adjusted to create different shades of gray. The first parameter indicates the degree of brightening the black color, and the second parameter indicates the degree of darkening the white color. A larger value indicates a more obvious adjustment (black and white become more gray). For example, if the value specified is (20, 20), the RGB value [0, 0, 0] (black) is adjusted to [20, 20, 20] (0+20), RGB value [255, 255, 255] (white) is adjusted to [235, 235, 235] (255-20), and the color pixels remain unchanged in the image.     |
+
+## ContentBlur
+
+Sets a content blur effect.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name    | Type    | Read-Only| Optional| Description                                    |
+| -------- | -------- | ---- | ---- | ---------------------------------------- |
+| radius   | number   | No  | No  | Blur radius. The value range is [0, +∞). The default value is **0**. A negative value, **NaN**, and **Infinity** are invalid and treated as the default value. A larger value indicates a more obvious blur effect. If the value is **0**, the content is not blurred.|
+| grayscale | [number, number] | No  | Yes  | Grayscale blur, with two parameters in the value range of [0, 127]. The default value is [0, 0]. The color gradation of the black and white in the image is adjusted to create different shades of gray. The first parameter indicates the degree of brightening the black color, and the second parameter indicates the degree of darkening the white color. A larger value indicates a more obvious adjustment (black and white become more gray). For example, if the value specified is (20, 20), the RGB value [0, 0, 0] (black) is adjusted to [20, 20, 20] (0+20), RGB value [255, 255, 255] (white) is adjusted to [235, 235, 235] (255-20), and the color pixels remain unchanged in the image.     |
+
+## ForegroundBlur
+
+Sets a foreground blur effect.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name  | Type  | Read-Only| Optional| Description                               |
+| ------ | ------ | ---- | ---- | ----------------------------------- |
+| radius | number | No  | No  | Blur radius. The value range is [0, +∞). The default value is **0**. A negative value, **NaN**, and **Infinity** are invalid and treated as the default value. A larger value indicates a more obvious foreground blur effect. If the value is **0**, the foreground is not blurred.|

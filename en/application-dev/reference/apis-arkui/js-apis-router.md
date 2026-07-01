@@ -1,7 +1,7 @@
 # @ohos.router (Page Routing) (Not Recommended)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @huangxiaolinabc-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -18,7 +18,7 @@ For routing management, it is recommended that you use the [Navigation](../../ui
 >
 > - The functionality of this module depends on UI context. This means that the APIs of this module cannot be used where [the UI context is ambiguous](../../ui/arkts-global-interface.md#ambiguous-ui-context). For details, see [UIContext](arkts-apis-uicontext-uicontext.md).
 >
-> - When using [pushUrl](arkts-apis-uicontext-router.md#pushurl-1) or [pushNamedRoute](arkts-apis-uicontext-router.md#pushnamedroute-1) with a callback to return the result, be aware that the stack information obtained through the callback using APIs such as [getLength](arkts-apis-uicontext-router.md#getlengthdeprecated) represents an intermediate state during the navigation operation. This temporary state might differ from the final stack information available after the stack operation is complete.
+> - When using [pushUrl](arkts-apis-uicontext-router.md#pushurl-1) or [pushNamedRoute](arkts-apis-uicontext-router.md#pushnamedroute-1) with a callback to return the result, be aware that the stack information obtained through the callback using APIs such as [getStackSize](arkts-apis-uicontext-router.md#getstacksize23) represents an intermediate state during the navigation operation. This temporary state might differ from the final stack information available after the stack operation is complete.
 
 ## Modules to Import
 
@@ -52,7 +52,7 @@ Navigates to a specified page in the application.
 
 | Type               | Description       |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -199,7 +199,7 @@ Navigates to a specified page in the application.
 
 | Type               | Description       |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -347,7 +347,7 @@ Replaces the current page with another one in the application and destroys the c
 
 | Type               | Description       |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -474,7 +474,7 @@ Replaces the current page with another one in the application and destroys the c
 
 | Type               | Description       |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -578,7 +578,7 @@ router.replaceUrl({
 
 pushNamedRoute(options: NamedRouterOptions): Promise&lt;void&gt;
 
-Navigates to a page using the named route. This API uses a promise to return the result.
+Navigates to a page using the named route.
 
 > **NOTE**
 >
@@ -587,6 +587,8 @@ Navigates to a page using the named route. This API uses a promise to return the
 > - Since API version 10, you can use the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Router](arkts-apis-uicontext-router.md) object associated with the current UI context.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -600,7 +602,7 @@ Navigates to a page using the named route. This API uses a promise to return the
 
 | Type               | Description       |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -657,7 +659,7 @@ For details, see [Named Route](../../ui/arkts-routing.md#named-route).
 
 pushNamedRoute(options: NamedRouterOptions, callback: AsyncCallback&lt;void&gt;): void
 
-Navigates to a page using the named route. This API uses a promise to return the result.
+Navigates to a page using the named route.
 
 > **NOTE**
 >
@@ -666,6 +668,8 @@ Navigates to a page using the named route. This API uses a promise to return the
 > - Since API version 10, you can use the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Router](arkts-apis-uicontext-router.md) object associated with the current UI context.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -726,7 +730,7 @@ router.pushNamedRoute({
 
 pushNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise&lt;void&gt;
 
-Navigates to a page using the named route. This API uses a promise to return the result.
+Navigates to a page using the named route.
 
 > **NOTE**
 >
@@ -735,6 +739,8 @@ Navigates to a page using the named route. This API uses a promise to return the
 > - Since API version 10, you can use the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Router](arkts-apis-uicontext-router.md) object associated with the current UI context.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -749,7 +755,7 @@ Navigates to a page using the named route. This API uses a promise to return the
 
 | Type               | Description       |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -804,7 +810,7 @@ router.pushNamedRoute({
 
 pushNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback: AsyncCallback&lt;void&gt;): void
 
-Navigates to a page using the named route. This API uses a promise to return the result.
+Navigates to a page using the named route.
 
 > **NOTE**
 >
@@ -813,6 +819,8 @@ Navigates to a page using the named route. This API uses a promise to return the
 > - Since API version 10, you can use the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Router](arkts-apis-uicontext-router.md) object associated with the current UI context.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -885,6 +893,8 @@ Replaces the current page with another one using the named route and destroys th
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -897,7 +907,7 @@ Replaces the current page with another one using the named route and destroys th
 
 | Type               | Description       |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -950,6 +960,8 @@ Replaces the current page with another one using the named route and destroys th
 > - Since API version 10, you can use the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Router](arkts-apis-uicontext-router.md) object associated with the current UI context.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1010,6 +1022,8 @@ Replaces the current page with another one using the named route and destroys th
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -1024,7 +1038,7 @@ Replaces the current page with another one using the named route and destroys th
 
 | Type               | Description       |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -1077,6 +1091,8 @@ Replaces the current page with another one using the named route and destroys th
 > - Since API version 10, you can use the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Router](arkts-apis-uicontext-router.md) object associated with the current UI context.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1165,6 +1181,8 @@ Returns to the specified page, which deletes all pages between the current page 
 > - Since API version 12, you can use the [getRouter](arkts-apis-uicontext-uicontext.md#getrouter) API in [UIContext](arkts-apis-uicontext-uicontext.md) to obtain the [Router](arkts-apis-uicontext-router.md) object associated with the current UI context.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1280,6 +1298,8 @@ Obtains the status information about a page by its index.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -1319,6 +1339,8 @@ Obtains the status information about a page by its URL.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -1356,7 +1378,7 @@ Describes the page routing state.
 | index | number | No  | No  | Index of the current page in the stack. The index starts from 1 from the bottom to the top of the stack.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | name  | string | No  | No  | Name of the current page, that is, the file name.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | path  | string | No  | No  | Path of the current page.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| params<sup>12+</sup>  | Object | No  | No  | Parameters carried on the current page.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                        |
+| params<sup>12+</sup>  | Object | No  | No  | Parameters carried on the current page.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model restriction**: This API can be used only in the stage model.                                        |
 
 ## router.showAlertBeforeBackPage<sup>(deprecated)</sup>
 
@@ -1500,8 +1522,8 @@ Describes the named route options.
 
 | Name  | Type  | Read-Only| Optional| Description                                                        |
 | ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| name   | string | No  | No  | Name of the target named route.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full|
-| params | Object | No  | Yes  | Data that needs to be passed to the target page during redirection. The target page can use **router.getParams()** to obtain the passed parameters, for example, **this.keyValue** (**keyValue** is the value of a key in **params**). In the web-like paradigm, these parameters can be directly used on the target page. If the field specified by **key** already exists on the target page, the passed value of the key will be displayed.<br>**NOTE**<br>The **params** parameter cannot pass objects returned by methods and system APIs, for example, **PixelMap** objects defined and returned by media APIs. To pass such objects, extract from them the basic type attributes to be passed, and then construct objects of the object type.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
+| name   | string | No  | No  | Name of the target named route.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Model restriction**: This API can be used only in the stage model.<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full|
+| params | Object | No  | Yes  | Data that needs to be passed to the target page during redirection. The target page can use **router.getParams()** to obtain the passed parameters, for example, **this.keyValue** (**keyValue** is the value of a key in **params**). In the web-like paradigm, these parameters can be directly used on the target page. If the field specified by **key** already exists on the target page, the passed value of the key will be displayed.<br>**NOTE**<br>The **params** parameter cannot pass objects returned by methods and system APIs, for example, **PixelMap** objects defined and returned by media APIs. To pass such objects, extract from them the basic type attributes to be passed, and then construct objects of the object type.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Model restriction**: This API can be used only in the stage model.<br>**System capability**: SystemCapability.ArkUI.ArkUI.Full |
 | recoverable<sup>14+</sup> | boolean | No  | Yes  | Whether the corresponding page is recoverable.<br>Default value: **true**. <br>**true**: The corresponding page is recoverable.<br>**false**: The corresponding page is not recoverable.<br>**NOTE**<br> If an application is switched to the background and is later closed by the system due to resource constraints or other reasons, a page marked as recoverable can be restored by the system when the application is brought back to the foreground. For more details, see [UIAbility Backup and Restore](../../application-models/ability-recover-guideline.md).<br>**System capability**: SystemCapability.ArkUI.ArkUI.Lite|
 
 ## Examples
@@ -1510,6 +1532,7 @@ Describes the named route options.
 
 The following sample code applies only to JavaScript files, not ArkTS files.
 
+<!--deprecated_code_no_check-->
 <!--code_no_check-->
 
 ```js
@@ -1525,13 +1548,14 @@ export default {
   }
 }
 ```
+<!--deprecated_code_no_check-->
 <!--code_no_check-->
 
 ```js
 // detail page
 export default {
   onInit() {
-    console.info('showData1:' + this.getUIContext().getRouter().getParams()['data1']);
+    console.info('showData1:' + router.getParams()['data1']);
   }
 }
 ```
@@ -1542,7 +1566,6 @@ export default {
 > 
 > Directly using **router** can lead to the issue of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain a [UIContext](arkts-apis-uicontext-uicontext.md) instance using **getUIContext**, and then obtain the associated **router** object using [getRouter](arkts-apis-uicontext-uicontext.md#getrouter).
 
-<!--deprecated_code_no_check-->
 ```ts
 // Navigate to the target page through router.pushUrl with the params parameter carried.
 import { router } from '@kit.ArkUI';
@@ -1801,6 +1824,8 @@ pages
    ├─ routerPage.hml
    └─ routerPage.js
 ```
+
+<!--code_no_check-->
 ```css
 /* index.css */
 .page {
@@ -1857,7 +1882,9 @@ pages
   background-color: #16a34a;
 }
 ```
-```hml
+
+<!--code_no_check-->
+```html
 <!--index.hml-->
 <div class="page">
     <text class="page-name">{{ pageName }}</text>
@@ -1867,6 +1894,9 @@ pages
     <input class="action-button action-button-secondary" type="button" value="replaceUrl to routerPage" onclick="replaceUrlToRouterPage"></input>
 </div>
 ```
+
+<!--deprecated_code_no_check-->
+<!--code_no_check-->
 ```js
 // index.js
 import router from '@ohos.router';
@@ -1895,6 +1925,8 @@ export default {
     }
 }
 ```
+
+<!--code_no_check-->
 ```css
 /* routerPage.css */
 .page {
@@ -1951,7 +1983,9 @@ export default {
   background-color: #16a34a;
 }
 ```
-```hml
+
+<!--code_no_check-->
+```html
 <!--routerPage.hml-->
 <div class="page">
     <text class="page-name">{{ pageName }}</text>
@@ -1961,6 +1995,9 @@ export default {
     <input class="action-button action-button-secondary" type="button" value="replaceUrl to index" onclick="replaceUrlToIndex"></input>
 </div>
 ```
+
+<!--deprecated_code_no_check-->
+<!--code_no_check-->
 ```js
 // routerPage.js
 import router from '@ohos.router';

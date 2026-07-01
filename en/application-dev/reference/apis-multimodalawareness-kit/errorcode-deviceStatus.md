@@ -1,4 +1,11 @@
 # Device Status Awareness Error Codes
+<!--Kit: Multimodal Awareness Kit-->
+<!--Subsystem: MultimodalAwareness-->
+<!--Owner: @dilligencer-->
+<!--Designer: @zou_ye-->
+<!--Tester: @judan-->
+<!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=d18790e6ef1247c1fd8194f3838e7698bf6e9bf2 translatedAt=2026-06-24T06:29:28.421Z pushedAt=2026-06-25T01:35:11.423Z -->
 
 > **NOTE**
 >
@@ -27,7 +34,7 @@ The service status is abnormal.
 
 **Error Message**
 
-Subscribe Failed.
+Subscription failed.
 
 **Symptom**
 
@@ -46,7 +53,7 @@ Subscription to change events has failed.
 
 **Error Message**
 
-UnSubscribe Failed.
+Unsubscription failed.
 
 **Symptom**
 

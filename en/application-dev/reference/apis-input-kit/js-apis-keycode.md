@@ -5,7 +5,8 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:24:18.955Z pushedAt=2026-06-12T08:24:27.880Z -->
 
 The **keyCode** module provides key codes of key devices, including keyboards, CDs, and gamepads.
 
@@ -314,9 +315,9 @@ Enumerates the key codes.
 | KEYCODE_KBDINPUTASSIST_NEXTGROUP |  2729 | Assist_Next_Group key, used to switch to the next input method in the input group              |
 | KEYCODE_KBDINPUTASSIST_ACCEPT    |  2730 | Keyboard Input-assisted Accept key          |
 | KEYCODE_KBDINPUTASSIST_CANCEL    |  2731 | Keyboard Input-assisted Cancel key         |
-| KEYCODE_MOUSE_ASSISTANT<sup>24+</sup>    |  2732 | Mouse AI Assistant key         |
-| KEYCODE_MOUSE_INTELLIGENCE_SELECTION<sup>24+</sup>    |  2733 | Mouse Smart Selection key         |
-| KEYCODE_AOD_SINGLE_CLICK         |  2740 | Single tapping the smart phone's touch screen event, which is used when the Always On Display is enabled<br>**Since**: 26.0.0 |
+| KEYCODE_MOUSE_ASSISTANT    |  2732 | Mouse AI assistant key.<br/>**Starting Version:** 26.0.0<br/>**Model constraint:** This API can only be used in the stage model.          |
+| KEYCODE_MOUSE_INTELLIGENCE_SELECTION    |  2733 | Mouse smart selection key.<br/>**Starting Version:** 26.0.0<br/>**Model constraint:** This API can only be used in the stage model.          |
+| KEYCODE_AOD_SINGLE_CLICK         |  2740 | Phone touchscreen single-click event, used in Always-On Display (AOD) mode.<br/>**Starting Version:** 26.0.0<br/>**Model constraint:** This API can only be used in the stage model.|
 | KEYCODE_FRONT                    |  2800 | Front key, which is used to launch the windshield defogger                  |
 | KEYCODE_SETUP                    |  2801 | Setup key                        |
 | KEYCODE_WAKEUP                   |  2802 | Wakeup key                        |
@@ -378,3 +379,6 @@ Enumerates the key codes.
 | KEYCODE_DAGGER_DOUBLE_CLICK<sup>18+</sup> | 3212 | Double tapping the smart watch's X-TAP sensor|
 | KEYCODE_DAGGER_LONG_PRESS<sup>18+</sup> | 3213 | Long-pressing the smart watch's X-TAP sensor|
 | KEYCODE_DIV<sup>20+</sup> | 3220 | Left button of the smart watch|
+| KEYCODE_XKEY | 3232 | Custom hotkey<br/>**Since:** 26.0.0<br/>**Model restriction:** This API can only be used in the stage model.|
+| KEYCODE_FINGERPRINT_SLIDE_UP | 3233 | Smart control key slide-up<br/>**Since:** 26.0.0<br/>**Model restriction:** This API can only be used in the stage model. |
+| KEYCODE_FINGERPRINT_SLIDE_DOWN | 3234 | Smart control key slide-down<br/>**Since:** 26.0.0<br/>**Model restriction:** This API can only be used in the stage model. |

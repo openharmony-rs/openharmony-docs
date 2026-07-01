@@ -34,7 +34,7 @@ GridRow(option?: GridRowOptions)
 **参数：**
 | 参数名 |类型|必填|说明|
 |-----|-----|----|----|
-| option | [GridRowOptions](#gridrowoptions对象说明) | 否  | 栅格布局子组件参数。 |
+| option | [GridRowOptions](#gridrowoptions对象说明) | 否  | 栅格行布局容器的布局选项。 |
 
 ## GridRowOptions对象说明
 
@@ -117,12 +117,12 @@ columns: {md:4, lg:8} // 等于配置 columns: {xs:4, sm:4, md:4, lg:8, xl:8, xx
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| xs  | [Length](ts-types.md#length) | 否  | 是   | 在最小宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp    |
-| sm  | [Length](ts-types.md#length) | 否  | 是   | 在小宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp      |
-| md  | [Length](ts-types.md#length) | 否  | 是   | 在中等宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp    |
-| lg  | [Length](ts-types.md#length) | 否  | 是   | 在大宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp      |
-| xl  | [Length](ts-types.md#length) | 否  | 是   | 在特大宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp    |
-| xxl | [Length](ts-types.md#length) | 否  | 是   | 在超大宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp    |
+| xs  | [Length](ts-types.md#length) | 否  | 是   | 在最小宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp<br/>单位：vp    |
+| sm  | [Length](ts-types.md#length) | 否  | 是   | 在小宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp<br/>单位：vp      |
+| md  | [Length](ts-types.md#length) | 否  | 是   | 在中等宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp<br/>单位：vp    |
+| lg  | [Length](ts-types.md#length) | 否  | 是   | 在大宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp<br/>单位：vp      |
+| xl  | [Length](ts-types.md#length) | 否  | 是   | 在特大宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp<br/>单位：vp    |
+| xxl | [Length](ts-types.md#length) | 否  | 是   | 在超大宽度类型设备上，栅格子组件的间距。<br/>默认值：0vp<br/>单位：vp    |
 
 ## BreakPoints
 
@@ -158,10 +158,10 @@ columns: {md:4, lg:8} // 等于配置 columns: {xs:4, sm:4, md:4, lg:8, xl:8, xx
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 说明 |
-| -------- | -------- |
-| WindowSize | 以窗口为参照。 |
-| ComponentSize | 以容器为参照。 |
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| WindowSize | 0 | 以窗口为参照。 |
+| ComponentSize | 1 | 以容器为参照。 |
 
 ## GridRowDirection枚举说明
 
@@ -171,7 +171,7 @@ columns: {md:4, lg:8} // 等于配置 columns: {xs:4, sm:4, md:4, lg:8, xl:8, xx
 >
 > - 栅格元素仅支持Row/RowReverse排列，不支持column/ColumnReverse方向排列。
 > - 栅格子组件仅能通过span、offset计算子组件位置与大小。多个子组件span超过规定列数时自动换行。
-> - 单个元素span大小超过最大列数时后台默认span为最大column数。
+> - 单个元素span大小超过最大列数时后台默认span为最大列数。
 > - 新一行的Offset加上子组件的span超过总列数时，将下一个子组件在新的一行放置。
 > - 例：Item1: GridCol({ span: 6 })， Item2: GridCol({ span: 8, offset:11 })。 
 >
@@ -201,6 +201,8 @@ alignItems(value: ItemAlign)
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -316,7 +318,7 @@ struct AlignItemsDemo {
         ForEach(this.bgColors, (color: Color, index: number) => {
           GridCol({ span: 1 }) {
             Row() {
-            }.width('100%').height(`${(index + 1) * 20}%`) // GridCol设置不同的高度，方便观察alignItems属性的效果
+            }.width('100%').height(`${(index + 1) * 20}%`) // GridCol内的Row设置不同的高度，方便观察alignItems属性的效果
           }.borderColor(color).borderWidth(2)
         })
       }

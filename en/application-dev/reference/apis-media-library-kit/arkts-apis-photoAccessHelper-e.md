@@ -1,10 +1,12 @@
 # Enums
+
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @yixiaoff-->
+<!--Owner: @zhaochang14-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=b4558baf2653dbc4e06627859cd656768663a602 translatedAt=2026-06-23T07:32:21.808Z pushedAt=2026-06-24T07:54:49.979Z -->
 
 > **NOTE**
 >
@@ -39,7 +41,7 @@ Enumerates the [PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md) types.
 
 | Name |  Value|  Description|
 | ----- |  ---- |  ---- |
-| DEFAULT |  0 |  Photo, which is the default type.|
+| DEFAULT |  0 |  Default photo. |
 | MOVING_PHOTO |  3 |  Moving photo.|
 | BURST |  4 |  Burst photo.|
 
@@ -79,6 +81,7 @@ Enumerate the album subtypes.
 | VIDEO  | 1026       | Video album.|
 | IMAGE<sup>12+</sup>               | 1031       | Photo album.|
 | SOURCE\_GENERIC<sup>23+</sup>     | 2049       | Source album.|
+| SOURCE_GENERIC_FROM_FILE_MANAGER     | 2050       | Source album from file management.<br>**Since:** 26.0.0 |
 | ANY    | 2147483647 | Any album.|
 
 ## PositionType<sup>16+</sup>
@@ -101,9 +104,9 @@ Enumerates the keys available for image or video files.
 
 | Name         | Value             | Description                                                      |
 | ------------- | ------------------- | ---------------------------------------------------------- |
-| URI           | 'uri'                 | URI of the file.<br>**Note**:<br>Only the [DataSharePredicates.equalTo](../apis-arkdata/js-apis-data-dataSharePredicates.md#equalto10) predicate can be used for this field during photo query.<br>**Atomic service API**: This API can be used in atomic services since API version 20.           |
+| URI           | 'uri'                 | URI of the file.<br>**NOTE**<br>To query photos, this field only supports the [DataSharePredicates.equalTo](../apis-arkdata/js-apis-data-dataSharePredicates.md#equalto) predicate.<br>**Atomic service API:** This API can be used in atomic services since API version 20.            |
 | PHOTO_TYPE    | 'media_type'           | Type of the file.<br>**Atomic service API**: This API can be used in atomic services since API version 20. |
-| DISPLAY_NAME  | 'display_name'        | File name displayed. The file name must meet the following requirements:<br>- A valid file name must include a base name and a supported image or video extension.<br>- The file name length ranges from 1 to 255.<br>- The base name must not contain any invalid characters, which are:.. \ / : * ? " ' ` < > \| { } [ ]<br>**Atomic service API**: This API can be used in atomic services since API version 20.     |
+| DISPLAY_NAME  | 'display_name'        | File name displayed. The file name must meet the following requirements:<br>- A valid file name must include a base name and a supported image or video extension.<br>- The file name length ranges from 1 to 255.<br>- The base name must not contain any invalid characters, which are:.. \ / : * ? " ' ` < > \| { } [ ].<br>**Atomic service API**: This API can be used in atomic services since API version 20.     |
 | SIZE          | 'size'                | File size, in bytes. The size of a moving photo includes the total size of the image and video.<br>**Atomic service API**: This API can be used in atomic services since API version 20.   |
 | DATE_ADDED    | 'date_added'          | Unix timestamp when the file was created, in seconds.<br>**Atomic service API**: This API can be used in atomic services since API version 20.        |
 | DATE_MODIFIED | 'date_modified'       | Unix timestamp when the file content (not the file name) was last modified, in seconds. This value is updated when the file content is modified, but not when the file name is modified.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
@@ -128,7 +131,8 @@ Enumerates the keys available for image or video files.
 | MEDIA_SUFFIX<sup>18+</sup>  | 'media_suffix'            | File name extension.                              |
 | OWNER_ALBUM_ID<sup>22+</sup>  | 'owner_album_id' | ID of the album to which the photo belongs.|
 | ASPECT_RATIO<sup>22+</sup>  | 'aspect_ratio'            | Aspect ratio of the image or video.<br> **Model restriction**: This API can be used only in the stage model.|
-| CHANGE_TIME<sup>23+</sup>  | 'change_time' | Time when the photo is changed.|
+| CHANGE_TIME<sup>23+</sup>  | 'change_time' | Change time of the photo (in seconds). |
+| LOCAL_ASSET_SIZE | 'local_asset_size' | Actual size of the local file (in bytes).<br>- This property only indicates the local file size. The default value **0** indicates a cloud-only file or a local file whose size has not been identified yet.<br>- When the local file is a moving photo and its mode changes, this property changes accordingly. For example, when the moving photo in the gallery is in the "motion off" state, this property only indicates the cover frame size.<br>**Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model. |
 
 ## AlbumKeys
 
@@ -141,7 +145,7 @@ Enumerates the album keys.
 | URI           | 'uri'                 | URI of the album.                                                  |
 | ALBUM_NAME    | 'album_name'          | Name of the album.                                                  |
 | ALBUM_LPATH<sup>23+</sup>          | 'lpath'                 | Virtual path of the album.<br>Albums and their virtual path values:<br>- Camera application album: '/DCIM/Camera'<br>- Screenshot application album: '/Pictures/Screenshots'<br>- Screen recording application album: '/Pictures/Screenrecords'<br>- User-created album: '/Pictures/Users/{Custom album name}'                    |
-| CHANGE_TIME<sup>23+</sup>          | 'change_time'                 | Time when the album is changed.                                                  |
+| CHANGE_TIME<sup>23+</sup>          | 'change_time'                 | Change time of the album, in seconds.                                                   |
 
 ## ResourceType<sup>11+</sup>
 
@@ -175,7 +179,7 @@ Enumerates the notification event types.
 
 | Name                     | Value  | Description                            |
 | ------------------------- | ---- | -------------------------------- |
-| NOTIFY_ADD                | 0    | A file asset or album is added.    |
+| NOTIFY_ADD                | 0    | A file asset or album is added.     |
 | NOTIFY_UPDATE             | 1    | A file asset or album is updated.    |
 | NOTIFY_REMOVE             | 2    | A file asset or album is removed.    |
 | NOTIFY_ALBUM_ADD_ASSET    | 3    | A file asset is added to the album.|
@@ -189,8 +193,8 @@ Enumerates the **DefaultChangeUri** subtypes.
 
 | Name             | Value                     | Description                                                        |
 | ----------------- | ----------------------- | ------------------------------------------------------------ |
-| DEFAULT_PHOTO_URI | 'file://media/Photo'      | Default **PhotoAsset** URI, which must be used with **forChildUris{true}** to subscribe to change notifications of all photo assets.|
-| DEFAULT_ALBUM_URI | 'file://media/PhotoAlbum' | Default album URI, which must be used with **forChildUris{true}** to subscribe to change notifications of all albums.|
+| DEFAULT_PHOTO_URI | 'file://media/Photo'      | Default **PhotoAsset** URI, which must be used with **forSubUri{true}** to subscribe to change notifications of all photo assets.|
+| DEFAULT_ALBUM_URI | 'file://media/PhotoAlbum' | Default album URI, which must be used with **forSubUri{true}** to subscribe to change notifications of all albums.|
 
 ## PhotoViewMIMETypes
 
@@ -329,9 +333,9 @@ Enumerates the types of changes that trigger the media asset or album change eve
 
 | Name                     | Value  | Description                            |
 | ------------------------- | ---- | -------------------------------- |
-| NOTIFY_CHANGE_ADD         | 0    | A media asset or an album is created.    |
-| NOTIFY_CHANGE_UPDATE      | 1    | A media asset or an album is modified.    |
-| NOTIFY_CHANGE_REMOVE      | 2    | A media asset or an album is deleted.    |
+| NOTIFY_CHANGE_ADD         | 0    | A media asset (image/video) or album is created.     |
+| NOTIFY_CHANGE_UPDATE      | 1    | A media asset (image/video) or album is changed.     |
+| NOTIFY_CHANGE_REMOVE      | 2    | A media asset (image/video) or album is deleted.     |
 
 ## PhotoSource<sup>20+</sup>
 
@@ -428,15 +432,15 @@ Enumerates the predicates.
 | NOT_BETWEEN    | 14   | Matches fields outside a specified range,<br>excluding both endpoints (open interval). It uses the first two elements of the **value** array, where the first element is the lower boundary and the second is the upper boundary. For example, in the array [1, 2, 3, 4], the first two elements are used, with 1 as the lower boundary and 2 as the upper boundary.|
 
 ## GridLevel<sup>23+</sup>
- 	  	 
+
 Enumerates the levels of grid columns after Picker is started.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
- 	
+
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-    
+
 | Name |  Value|  Description|
 | ----- |  ---- |  ---- |
 | SPACIOUS |  0 |  Spacious grid level. This level is the number of standard grid columns minus 1.|
@@ -444,15 +448,66 @@ Enumerates the levels of grid columns after Picker is started.
 | COMPACT |  2 |  Compact grid level. This level is the number of standard grid columns plus 1.|
 
 ## GridPinchModeType<sup>23+</sup>
-    
+
 Enumerates the grid pinch mode types.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
-    
+
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
-    
+
 | Name |  Value|  Description|
 | ----- |  ---- |  ---- |
 | FULL_FUNCTION_GRID | 0 | Users are allowed to pinch the grid, and then select it or click it to operate the large image.|
+
+## AvailabilityStatus
+
+Enumerates the availability status of the media library.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name |  Value|  Description|
+| ----- |  ---- |  ---- |
+| AVAILABLE |  'available' |  The media library is available.|
+| UNAVAILABLE |  'unavailable' |  The media library is unavailable.|
+
+## MediaAssetPermissionState
+
+Enumerates the permission states for reading media library assets.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name |  Value|  Description|
+| ----- |  ---- |  ---- |
+| URI_FORMAT_ERROR | 0 | The URI format is incorrect or the URI is not a media library URI.|
+| FILE_NOT_EXIST | 1 | The asset does not exist. The asset may be hidden, moved to the recycle bin, or permanently deleted.|
+| READ_PERMISSION | 2 | The application has the read permission when obtaining the asset.|
+| NO_READ_PERMISSION | 3 | The application does not have the read permission when obtaining the asset.|
+
+## PreferredCompatibleMode
+
+Enumerates the transcoding modes based on the configured asset compatibility.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name |  Value|  Description|
+| ----- |  ---- |  ---- |
+| DEFAULT |  0 |  Transcoding is performed based on the configured asset compatibility function.|
+| CURRENT |  1 |  No transcoding is performed. Assets are returned in their original format.|
+| COMPATIBLE |  2 |  All assets are transcoded into the most widely compatible format (such as JPEG).|
+<!--no_check-->

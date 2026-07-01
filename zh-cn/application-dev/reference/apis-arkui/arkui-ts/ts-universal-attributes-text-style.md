@@ -1,7 +1,7 @@
 # 输入框类组件通用接口 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @kangshihui-->
+<!--Owner: @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -12,7 +12,9 @@
 
 >  **说明：**
 >
->  从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## TextContentControllerBase
 
@@ -116,7 +118,7 @@ addText(text: string, textOperationOptions?: TextContentControllerOptions): numb
 
 setStyledPlaceholder(styledString: StyledString): void
 
-触发属性字符串的绑定或更新。
+设置属性字符串样式的占位文本，触发绑定或更新。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -270,7 +272,7 @@ setTextSelection选中文字时的配置。
 
 ## SymbolGlyphModifier<sup>12+</sup>
 
-type SymbolGlyphModifier = SymbolGlyphModifier
+type SymbolGlyphModifier = import('../api/arkui/SymbolGlyphModifier').SymbolGlyphModifier
 
 SymbolGlyphModifier类型，用于设置自定义图标小符号。
 
@@ -280,7 +282,7 @@ SymbolGlyphModifier类型，用于设置自定义图标小符号。
 
 | 类型  | 说明       |
 | ----- | -------- |
-| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 返回当前的SymbolGlyphModifier。 |
+| import('../api/arkui/SymbolGlyphModifier').[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 返回当前的SymbolGlyphModifier。 |
 
 ## TextContentControllerOptions<sup>15+</sup>
 

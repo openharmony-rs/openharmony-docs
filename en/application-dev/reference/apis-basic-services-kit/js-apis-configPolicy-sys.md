@@ -5,7 +5,7 @@
 <!--Owner: @liule_123-->
 <!--Designer: @sunshine_1984-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @fang-jinxu-->
 
 The **configPolicy** module provides APIs for obtaining the corresponding directory and file path based on the predefined custom configuration level.
 
@@ -42,7 +42,7 @@ For example, if the paths of **config.xml** on the device are **/system/etc/conf
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                      |
+| Error Code| Error Message                                                                      |
 | ------- | ---------------------------------------------------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types.|
 
@@ -85,7 +85,7 @@ Obtains the path of the configuration file with the highest priority. This API u
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                      |
+| Error Code| Error Message                                                                      |
 | ------- | ---------------------------------------------------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types.|
 
@@ -130,7 +130,7 @@ For example, if the paths of **config.xml** on the device are **/system/etc/conf
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                      |
+| Error Code| Error Message                                                                      |
 | ------- | ---------------------------------------------------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types.|
 
@@ -172,7 +172,7 @@ Obtains a list of all files with the specified names, in ascending order of prio
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                      |
+| Error Code| Error Message                                                                      |
 | ------- | ---------------------------------------------------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types.|
 
@@ -214,7 +214,7 @@ Obtains a list of configuration level directories, in ascending order of priorit
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                      |
+| Error Code| Error Message                                                                      |
 | ------- | ---------------------------------------------------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types.|
 
@@ -287,7 +287,7 @@ For example, if the paths of **config.xml** on the device are **/system/etc/conf
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                      |
+| Error Code| Error Message                                                                      |
 | ------- | ---------------------------------------------------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types.|
 
@@ -331,7 +331,7 @@ For example, if the paths of **config.xml** on the device are **/system/etc/conf
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                      |
+| Error Code| Error Message                                                                      |
 | ------- | ---------------------------------------------------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types.|
 
@@ -378,7 +378,7 @@ Obtains the path of the configuration file with the highest priority based on th
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                      |
+| Error Code| Error Message                                                                      |
 | ------- | ---------------------------------------------------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.|
 
@@ -429,7 +429,7 @@ Obtains the path of the configuration file with the highest priority based on th
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                      |
+| Error Code| Error Message                                                                      |
 | ------- | ---------------------------------------------------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.|
 
@@ -472,7 +472,7 @@ For example, if the paths of **config.xml** on the device are **/system/etc/conf
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                      |
+| Error Code| Error Message                                                                      |
 | ------- | ---------------------------------------------------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types.|
 
@@ -515,7 +515,7 @@ For example, if the paths of **config.xml** on the device are **/system/etc/conf
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                      |
+| Error Code| Error Message                                                                      |
 | ------- | ---------------------------------------------------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types.|
 
@@ -562,7 +562,7 @@ Obtains a list of all files of a specified file name based on the provided follo
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                      |
+| Error Code| Error Message                                                                      |
 | ------- | ---------------------------------------------------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.|
 
@@ -613,7 +613,7 @@ Obtains a list of all files of a specified file name based on the provided follo
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message                                                                      |
+| Error Code| Error Message                                                                      |
 | ------- | ---------------------------------------------------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.|
 

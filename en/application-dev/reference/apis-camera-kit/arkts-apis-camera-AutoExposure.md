@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-AutoExposure inherits from [AutoExposureQuery](arkts-apis-camera-AutoExposureQuery.md).
+**AutoExposure** inherits from [AutoExposureQuery](arkts-apis-camera-AutoExposureQuery.md).
 
 It provides APIs related to auto exposure.
 
@@ -45,7 +45,7 @@ Obtains the exposure mode in use.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 
@@ -87,9 +87,9 @@ Sets an exposure mode. Before the setting, call [isExposureModeSupported](arkts-
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
-| 7400102                | Operation not allowed.                                 |
+| 7400102                | Operation not allowed.<br>Applicable versions: 19 and later                                |
 | 7400103                |  Session not config.                                   |
 
 **Example**
@@ -128,7 +128,7 @@ Obtains the metering point of the camera device.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID  | Error Message       |
+| Error Code  | Error Message       |
 |---------| --------------- |
 | 7400103 |  Session not config.                                   |
 
@@ -172,7 +172,7 @@ The coordinate system is based on the horizontal device direction with the devic
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 
@@ -215,9 +215,9 @@ Before the setting, you are advised to use [getExposureBiasRange](arkts-apis-cam
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
-| 7400102                |  Operation not allowed.                                |
+| 7400102                |  Operation not allowed.<br>Applicable versions: 12 and later                |
 | 7400103                |  Session not config.                                   |
 
 **Example**
@@ -259,7 +259,7 @@ Obtains the exposure value in use.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| ID        | Error Message       |
+| Error Code        | Error Message       |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
 
@@ -279,5 +279,161 @@ function getExposureValue(photoSession: camera.PhotoSession): number {
     console.error(`The getExposureValue call failed. error code: ${err.code}`);
   }
   return exposureValue;
+}
+```
+
+## getExposureMeteringMode<sup>24+</sup>
+
+getExposureMeteringMode(): ExposureMeteringMode
+
+Obtains the exposure metering mode in use.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Return value**
+
+| Type       | Description                         |
+| ---------- | ----------------------------- |
+| [ExposureMeteringMode](arkts-apis-camera-e.md#exposuremeteringmode24)    | Exposure metering mode obtained.|
+
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| Error Code        | Error Message       |
+| --------------- | --------------- |
+| 7400102                |  Operation not allowed, the inputDevice or the session is abnormal.                                   |
+| 7400103                |  Session not config, only throw in session usage.                                   |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getExposureMeteringMode(photoSession: camera.PhotoSession): camera.ExposureMeteringMode {
+  let meteringMode: camera.ExposureMeteringMode = camera.ExposureMeteringMode.MATRIX;
+  try {
+    meteringMode = photoSession.getExposureMeteringMode();
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The getExposureMeteringMode call failed. error code: ${err.code}`);
+  }
+  return meteringMode;
+}
+```
+
+## setExposureMeteringMode<sup>24+</sup>
+
+setExposureMeteringMode(aeMeteringMode: ExposureMeteringMode): void
+
+Sets exposure metering mode.
+
+**Atomic service API**: This API can be used in atomic services since API version 24.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name     | Type                          | Mandatory | Description                          |
+| -------- | -------------------------------| ---- | ----------------------------- |
+| aeMeteringMode   | [ExposureMeteringMode](arkts-apis-camera-e.md#exposuremeteringmode24)  | Yes  | Exposure metering mode.                |
+
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| Error Code        | Error Message       |
+| --------------- | --------------- |
+| 7400102                |  Operation not allowed, the inputDevice or the session is abnormal.                                   |
+| 7400103                |  Session not config, only throw in session usage.                                   |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function setExposureMeteringMode(photoSession: camera.PhotoSession, aeMeteringMode: camera.ExposureMeteringMode): void {
+  try {
+    photoSession.setExposureMeteringMode(aeMeteringMode);
+  } catch (error) {
+    // If the operation fails, error.code is returned and processed.
+    let err = error as BusinessError;
+    console.error(`The setExposureMeteringMode call failed. error code: ${err.code}`);
+  }
+}
+```
+
+## onExposureStateChange
+
+onExposureStateChange(callback: Callback\<ExposureState\>): void
+
+Listens to exposure state change events. This API uses an asynchronous callback to return the result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name     | Type                   | Mandatory| Description                                      |
+| -------- | ---------------------- | ---- | ------------------------------------------ |
+| callback | Callback\<[ExposureState](arkts-apis-camera-e.md#exposurestate)\> | Yes  | Callback used to return the exposure state.           |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(exposureState: camera.ExposureState): void {
+  console.info(`exposureState: ${exposureState}`);
+}
+
+function registerPhotoOutputCaptureStart(captureSession: camera.PhotoSession): void {
+  captureSession.onExposureStateChange(callback);
+}
+```
+
+## offExposureStateChange
+
+offExposureStateChange(callback?: Callback\<ExposureState\>): void
+
+Unregisters the listener for exposure state change events. This API uses an asynchronous callback to return the result.
+
+**Since**: 26.0.0
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Parameters**
+
+| Name     | Type                   | Mandatory| Description                                      |
+| -------- | ---------------------- | ---- | ------------------------------------------ |
+| callback | Callback\<[ExposureState](arkts-apis-camera-e.md#exposurestate)\> | No  | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. If the callback object is null or an anonymous function, the subscriptions to the specified event with all the callbacks are canceled.    |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function callback(exposureState: camera.ExposureState): void {
+  console.info(`exposureState: ${exposureState}`);
+}
+
+function unregisterPhotoOutputCaptureStart(captureSession: camera.PhotoSession): void {
+  captureSession.offExposureStateChange(callback);
+}
+
+function unregisterPhotoOutputCaptureStartWithoutParam(captureSession: camera.PhotoSession): void {
+  captureSession.offExposureStateChange();
 }
 ```

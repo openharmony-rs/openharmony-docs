@@ -1,7 +1,7 @@
 # SubHeader
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
+<!--Owner: @wangrunsen-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -157,7 +157,7 @@ struct SubHeaderExample {
 }
 ```
 
-![zh-cn_image_subheader_example01](figures/zh-cn_image_subheader_example01.png)
+![zh-cn_image_subheader_example01](figures/image-subheader-example01.png)
 
 ### 示例2（双行文本内容型子标题）
 该示例主要演示子标题左侧为primaryTitle、secondaryTitle，右侧operationType类型为TEXT_ARROW。
@@ -186,7 +186,7 @@ struct SubHeaderExample {
 }
 ```
 
-![子标题2](figures/zh-cn_image_subheader_example02.png)
+![子标题2](figures/image-subheader-example02.png)
 
 ### 示例3（spinner型内容型子标题）
 该示例主要演示子标题左侧为select，右侧operationType类型为ICON_GROUP。
@@ -233,7 +233,7 @@ struct SubHeaderExample {
 }
 ```
 
-![zh-cn_image_subheader_example03](figures/zh-cn_image_subheader_example03.png)
+![zh-cn_image_subheader_example03](figures/image-subheader-example03.png)
 
 ### 示例4（设置左侧symbol图标）
 该示例主要演示子标题左侧icon设置symbol图标。
@@ -267,7 +267,7 @@ struct SubHeaderExample {
 }
 ```
 
-![子标题4](figures/zh-cn_image_subheader_example04.gif)
+![子标题4](figures/image-subheader-example04.gif)
 
 ### 示例5（设置右侧symbol图标）
 该示例主要演示子标题operationType设置为OperationType.ICON_GROUP，operationItem的value设置为symbol图标。
@@ -324,7 +324,7 @@ struct SubHeaderExample {
 }
 ```
 
-![zh-cn_image_subheader_example05](figures/zh-cn_image_subheader_example05.png)
+![zh-cn_image_subheader_example05](figures/image-subheader-example05.png)
 
 ### 示例6（自定义标题内容）
  该示例主要演示SubHeader设置titleBuilder自定义标题内容的效果。
@@ -366,7 +366,7 @@ struct SubHeaderExample {
   }
 }
 ```
-![zh-cn_image_subheader_example06](figures/zh-cn_image_subheader_example06.png)
+![zh-cn_image_subheader_example06](figures/image-subheader-example06.png)
 
 ### 示例7（自定义标题样式）
 该示例主要演示SubHeader设置标题和副标题字体样式以及标题内外边距的效果。
@@ -404,7 +404,7 @@ struct SubHeaderExample {
 }
 ```
 
-![子标题7](figures/zh-cn_image_subheader_example07.png)
+![子标题7](figures/image-subheader-example07.png)
 
 
 ### 示例8（右侧按钮自定义播报）
@@ -474,7 +474,7 @@ struct SubHeaderExample {
   }
 }
 ```
-![figures/zh-cn_image_subheader_example08](figures/zh-cn_image_subheader_example08.png)
+![figures/zh-cn_image_subheader_example08](figures/image-subheader-example08.png)
 
 ### 示例9（右侧按钮设置默认获焦）
 在获焦状态下，该示例通过设置SubHeader的右侧按钮属性defaultFocus使其默认获焦。
