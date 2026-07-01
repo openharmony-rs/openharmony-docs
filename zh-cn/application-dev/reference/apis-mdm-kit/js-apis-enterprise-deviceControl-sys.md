@@ -24,11 +24,15 @@
 import { deviceControl } from '@kit.MDMKit';
 ```
 
-## deviceControl.resetFactory
+## deviceControl.resetFactory<sup>(deprecated)</sup>
 
 resetFactory(admin: Want, callback: AsyncCallback\<void>): void
 
 使设备恢复出厂设置。使用callback异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [operateDevice](./js-apis-enterprise-deviceControl.md#devicecontroloperatedevice)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESET_DEVICE
 
@@ -78,11 +82,15 @@ deviceControl.resetFactory(wantTemp, (err) => {
 })
 ```
 
-## deviceControl.resetFactory
+## deviceControl.resetFactory<sup>(deprecated)</sup>
 
 resetFactory(admin: Want): Promise\<void>
 
 使设备恢复出厂设置。使用Promise异步回调。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [operateDevice](./js-apis-enterprise-deviceControl.md#devicecontroloperatedevice)
 
 **需要权限：** ohos.permission.ENTERPRISE_RESET_DEVICE
 
@@ -135,11 +143,15 @@ deviceControl.resetFactory(wantTemp).then(() => {
 })
 ```
 
-## deviceControl.shutdown<sup>11+</sup>
+## deviceControl.shutdown<sup>(deprecated)</sup>
 
 shutdown(admin: Want): void
 
 使设备关机。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [operateDevice](./js-apis-enterprise-deviceControl.md#devicecontroloperatedevice)
 
 **需要权限：** ohos.permission.ENTERPRISE_REBOOT
 
@@ -186,11 +198,15 @@ try {
 }
 ```
 
-## deviceControl.reboot<sup>11+</sup>
+## deviceControl.reboot<sup>(deprecated)</sup>
 
 reboot(admin: Want): void
 
 使设备重启。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [operateDevice](./js-apis-enterprise-deviceControl.md#devicecontroloperatedevice)
 
 **需要权限：** ohos.permission.ENTERPRISE_REBOOT
 
@@ -237,11 +253,15 @@ try {
 }
 ```
 
-## deviceControl.lockScreen<sup>11+</sup>
+## deviceControl.lockScreen<sup>(deprecated)</sup>
 
 lockScreen(admin: Want): void
 
 使设备屏幕锁定。设置之后设备立即锁屏。
+
+**废弃版本：** 26.0.0
+
+**替代接口：** [operateDevice](./js-apis-enterprise-deviceControl.md#devicecontroloperatedevice)
 
 **需要权限：** ohos.permission.ENTERPRISE_LOCK_DEVICE
 

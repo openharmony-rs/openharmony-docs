@@ -35,13 +35,13 @@ NODE_STACK_ALIGN_CONTENT = MAX_NODE_SCOPE_NUM * ARKUI_NODE_STACK = 1000000
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 对齐方式，数据类型[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)，默认值ARKUI_ALIGNMENT_CENTER。 |
+| .value[0].i32 | 对齐方式，数据类型[ArkUI_Alignment](capi-layout-h.md#arkui_alignment)，默认值ARKUI_ALIGNMENT_CENTER。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 对齐方式，数据类型[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)。 |
+| .value[0].i32 | 对齐方式，数据类型[ArkUI_Alignment](capi-layout-h.md#arkui_alignment)。 |
 
 ## NODE_COLUMN_ALIGN_ITEMS
 
@@ -58,13 +58,13 @@ NODE_COLUMN_ALIGN_ITEMS = MAX_NODE_SCOPE_NUM * ARKUI_NODE_COLUMN = 1006000
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 子组件在水平方向上的对齐格式，数据类型[ArkUI_HorizontalAlignment](capi-native-type-h.md#arkui_horizontalalignment)，默认值ARKUI_HORIZONTAL_ALIGNMENT_CENTER。 |
+| .value[0].i32 | 子组件在水平方向上的对齐格式，数据类型[ArkUI_HorizontalAlignment](capi-layout-h.md#arkui_horizontalalignment)，默认值ARKUI_HORIZONTAL_ALIGNMENT_CENTER。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 子组件在水平方向上的对齐格式，数据类型[ArkUI_HorizontalAlignment](capi-native-type-h.md#arkui_horizontalalignment)。 |
+| .value[0].i32 | 子组件在水平方向上的对齐格式，数据类型[ArkUI_HorizontalAlignment](capi-layout-h.md#arkui_horizontalalignment)。 |
 
 ## NODE_COLUMN_JUSTIFY_CONTENT
 
@@ -81,13 +81,13 @@ NODE_COLUMN_JUSTIFY_CONTENT = 1006001
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 子组件在垂直方向上的对齐格式，数据类型[ArkUI_FlexAlignment](capi-native-type-h.md#arkui_flexalignment)，默认值ARKUI_FLEX_ALIGNMENT_START。 |
+| .value[0].i32 | 子组件在垂直方向上的对齐格式，数据类型[ArkUI_FlexAlignment](capi-layout-h.md#arkui_flexalignment)，默认值ARKUI_FLEX_ALIGNMENT_START。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 子组件在垂直方向上的对齐格式，数据类型[ArkUI_FlexAlignment](capi-native-type-h.md#arkui_flexalignment)。 |
+| .value[0].i32 | 子组件在垂直方向上的对齐格式，数据类型[ArkUI_FlexAlignment](capi-layout-h.md#arkui_flexalignment)。 |
 
 ## NODE_LINEAR_LAYOUT_SPACE
 
@@ -150,13 +150,13 @@ NODE_ROW_ALIGN_ITEMS = MAX_NODE_SCOPE_NUM * ARKUI_NODE_ROW = 1007000
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 子组件在垂直方向上的对齐格式，数据类型[ArkUI_VerticalAlignment](capi-native-type-h.md#arkui_verticalalignment)，默认值ARKUI_VERTICAL_ALIGNMENT_CENTER。 |
+| .value[0].i32 | 子组件在垂直方向上的对齐格式，数据类型[ArkUI_VerticalAlignment](capi-layout-h.md#arkui_verticalalignment)，默认值ARKUI_VERTICAL_ALIGNMENT_CENTER。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 子组件在垂直方向上的对齐格式，数据类型[ArkUI_VerticalAlignment](capi-native-type-h.md#arkui_verticalalignment)。 |
+| .value[0].i32 | 子组件在垂直方向上的对齐格式，数据类型[ArkUI_VerticalAlignment](capi-layout-h.md#arkui_verticalalignment)。 |
 
 ## NODE_ROW_JUSTIFY_CONTENT
 
@@ -173,13 +173,13 @@ NODE_ROW_JUSTIFY_CONTENT = 1007001
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 子组件在水平方向上的对齐格式，数据类型[ArkUI_FlexAlignment](capi-native-type-h.md#arkui_flexalignment)，默认值ARKUI_FLEX_ALIGNMENT_START。 |
+| .value[0].i32 | 子组件在水平方向上的对齐格式，数据类型[ArkUI_FlexAlignment](capi-layout-h.md#arkui_flexalignment)，默认值ARKUI_FLEX_ALIGNMENT_START。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 子组件在水平方向上的对齐格式，数据类型[ArkUI_FlexAlignment](capi-native-type-h.md#arkui_flexalignment)。 |
+| .value[0].i32 | 子组件在水平方向上的对齐格式，数据类型[ArkUI_FlexAlignment](capi-layout-h.md#arkui_flexalignment)。 |
 
 ## NODE_FLEX_OPTION
 
@@ -189,6 +189,7 @@ NODE_FLEX_OPTION = MAX_NODE_SCOPE_NUM * ARKUI_NODE_FLEX = 1008000
 
 设置Flex属性，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
 
 **起始版本：** 12
 
@@ -196,11 +197,11 @@ NODE_FLEX_OPTION = MAX_NODE_SCOPE_NUM * ARKUI_NODE_FLEX = 1008000
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0]?.i32 | 子组件在Flex容器上排列的方向[ArkUI_FlexDirection](capi-native-type-h.md#arkui_flexdirection)，默认值为ARKUI_FLEX_DIRECTION_ROW。 |
-| .value[1]?.i32 | 排列规则[ArkUI_FlexWrap](capi-native-type-h.md#arkui_flexwrap)，默认值为ARKUI_FLEX_WRAP_NO_WRAP。 |
-| .value[2]?.i32 | 主轴上的对齐格式[ArkUI_FlexAlignment](capi-native-type-h.md#arkui_flexalignment)，默认值为ARKUI_FLEX_ALIGNMENT_START。 |
-| .value[3]?.i32 | 交叉轴上的对齐格式[ArkUI_ItemAlignment](capi-native-type-h.md#arkui_itemalignment)，默认值为ARKUI_ITEM_ALIGNMENT_START。 |
-| .value[4]?.i32 | 交叉轴中有额外的空间时，多行内容的对齐方式[ArkUI_FlexAlignment](capi-native-type-h.md#arkui_flexalignment)，默认值为ARKUI_FLEX_ALIGNMENT_START。 |
+| .value[0]?.i32 | 子组件在Flex容器上排列的方向[ArkUI_FlexDirection](capi-layout-h.md#arkui_flexdirection)，默认值为ARKUI_FLEX_DIRECTION_ROW。 |
+| .value[1]?.i32 | 排列规则[ArkUI_FlexWrap](capi-layout-h.md#arkui_flexwrap)，默认值为ARKUI_FLEX_WRAP_NO_WRAP。 |
+| .value[2]?.i32 | 主轴上的对齐格式[ArkUI_FlexAlignment](capi-layout-h.md#arkui_flexalignment)，默认值为ARKUI_FLEX_ALIGNMENT_START。 |
+| .value[3]?.i32 | 交叉轴上的对齐格式[ArkUI_ItemAlignment](capi-layout-h.md#arkui_itemalignment)，默认值为ARKUI_ITEM_ALIGNMENT_START。 |
+| .value[4]?.i32 | 交叉轴中有额外的空间时，多行内容的对齐方式[ArkUI_FlexAlignment](capi-layout-h.md#arkui_flexalignment)，默认值为ARKUI_FLEX_ALIGNMENT_START。 |
 
 **返回：**
 
@@ -220,6 +221,7 @@ NODE_FLEX_SPACE = 1008001
 
 设置Flex容器内子组件的间距，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。<br>
 
 **起始版本：** 23
 

@@ -22,7 +22,7 @@ import { pluginComponentManager } from '@kit.ArkUI';
 
 ### PushParameterForStage<sup>9+</sup>
 
-用于设置Stage模型下使用PluginManager.Push方法时需要传递的参数。
+用于设置Stage模型下使用pluginComponentManager.push方法时需要传递的参数。
 
 **模型约束：** 此接口仅适用于[Stage模型](arkui-ts/ts-basic-components-plugincomponent-sys.md#stage模型)。
 
@@ -41,7 +41,7 @@ import { pluginComponentManager } from '@kit.ArkUI';
 
 ### RequestParameterForStage<sup>9+</sup>
 
-用于设置Stage模型下使用PluginManager.Request方法时需要传递的参数。
+用于设置Stage模型下使用pluginComponentManager.request方法时需要传递的参数。
 
 **系统接口：** 此接口为系统接口。
 
@@ -110,7 +110,7 @@ pluginComponentManager.push(
 
 ### request<sup>9+</sup>
 
-request(param: RequestParameterForStage, callback: AsyncCallback&lt;RequestCallbackParameters&gt;): void
+request(param: RequestParameterForStage, callback: AsyncCallback&lt;RequestCallbackParameters&nbsp;\|&nbsp;void&gt;): void
 
 组件使用方向组件提供方主动请求组件。
 

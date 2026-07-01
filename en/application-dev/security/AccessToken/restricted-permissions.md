@@ -652,6 +652,20 @@ Allows an application to set the sandbox type to dynamic sandbox.
 
 **Since**: 18
 
+## ohos.permission.atomicService.MANAGE_STORAGE
+
+Allows a mini game of the atomic service type to manage its storage space.
+
+<!--RP96--><!--RP96End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 20
+
 ## ohos.permission.MANAGE_SCREEN_TIME_GUARD
 
 Allows an application to call the screen time guard APIs to restrict screen usage, apply application access control, and control the screen usage time.
@@ -718,9 +732,11 @@ Allows an application to use the global floating ball.
 
 **Authorization mode**: system_grant
 
-**Supported devices**: phones | tablets
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 20
+
+**Changelog**: Since API version 26.0.0, this permission is also available on PCs/2-in-1 devices.
 
 ## ohos.permission.AUTO_RESTORE_MAIN_WINDOW
 
@@ -870,7 +886,7 @@ With this permission, the application can choose the target applications for sys
 
 **Authorization mode**: system_grant
 
-**Supported devices**: phones | PCs/2-in-1 devices | tablets
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
 
 **Since**: 21
 
@@ -1302,6 +1318,21 @@ Allows an application to install the PCIe driver.
 
 **Since**: 26.0.0
 
+## ohos.permission.ACCESS_GAME_BUDDY_SERVICE
+
+Allows an application to access the game buddy service. 
+With this permission, the application can utilize the APIs provided by the game buddy service, such as capturing screenshots of running games and capturing user voice data via the microphone.
+
+<!--RP93--><!--RP93End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones
+
+**Since**: 26.0.0
+
 ## ohos.permission.KNOCK_COLLABORATION
 
 Allows an application to connect to a specific device using Tap-to-Transfer for information exchange and cross-device interaction.
@@ -1365,6 +1396,20 @@ Allows an application to import digital credentials using the digital identity s
 With this permission, the application can import the user's digital identity credentials into the device for secure storage and convenient presentation afterward.
 
 <!--RP91--><!--RP91End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | tablets
+
+**Since**: 26.0.0
+
+## ohos.permission.CAPTURE_PLAYBACK_DOWNLINK
+
+Allows an application to record downlink data of cellular calls.
+
+<!--RP95--><!--RP95End-->
 
 **Permission level**: system_basic
 

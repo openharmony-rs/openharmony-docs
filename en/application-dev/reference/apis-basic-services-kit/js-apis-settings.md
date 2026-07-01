@@ -315,7 +315,7 @@ Sets the value for a data item. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------- |
 | 201 | Permission denied. |
 
@@ -606,7 +606,7 @@ Sets the value for a data item. Unlike **setValue**, this API returns the result
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
+| Error Code| Error Message|
 | ------- | -------- |
 | 201 | Permission denied. |
 
@@ -727,7 +727,7 @@ Opens the WLAN settings window. This API uses a promise to return the result.
 
 For details about the error codes, see [Settings Error Codes](./errorcode-settings.md).
 
-| ID   | Error Message                   |
+| Error Code   | Error Message                   |
 |----------|-------------------------|
 | 14800000 | Parameter error.        |
 | 14800010 | Original service error. |
@@ -1118,13 +1118,13 @@ Open the input method settings page.
 
 | Name  | Type                  | Mandatory| Description                                                                                                                                        |
 | -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
-| context  | Context                | Yes  | Application context. Only UIAbilityContext and ExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
+| context  | Context                | Yes  | Application context. Only UIAbilityContext and UIExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 
 **Error codes**
 
 For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
 
-| ID   | Error Message                   |
+| Error Code   | Error Message                   |
 |----------|-------------------------|
 | 16900010 | Parameter error.        |
 
@@ -1157,7 +1157,7 @@ Opens the input method details page.
 
 | Name  | Type                  | Mandatory| Description                                                                                                                                        |
 | -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
-| context  | Context                | Yes  | Application context. Only UIAbilityContext and ExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
+| context  | Context                | Yes  | Application context. Only UIAbilityContext and UIExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | bundleName      | string          | Yes  | Bundle name of the input method to be started.|
 | inputMethodId   | string          | Yes  | Unique [ID](../apis-ime-kit/js-apis-inputmethod.md#inputmethodproperty8) of the input method extension in the application.|
 
@@ -1165,7 +1165,7 @@ Opens the input method details page.
 
 For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
 
-| ID   | Error Message                   |
+| Error Code   | Error Message                   |
 |----------|-------------------------|
 | 16900010 | Parameter error.        |
 
@@ -1194,7 +1194,7 @@ Opens the biometric recognition and password settings page.
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-**Device behavior differences**: This API can be properly called on phones, tablets, and PCs/2-in-1 devices. If it is called on other device types, it has no effect.
+**Device behavior differences**: This API is supported on phones, tablets, PCs/2-in-1 devices, and wearables. On other device types, it does not take effect.
 
 **Parameters**
 
@@ -1206,7 +1206,7 @@ Opens the biometric recognition and password settings page.
 
 For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
 
-| ID   | Error Message                   |
+| Error Code   | Error Message                   |
 |----------|-------------------------|
 | 16900010 | Parameter error.        |
 | 16900020 | Failed to open the settings page via redirection. |
@@ -1236,7 +1236,7 @@ Opens the NFC settings page.
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, it has no effect.
+**Device behavior differences:** This API is supported on phones, tablets, and wearables. On other device types, it does not take effect.
 
 **Parameters**
 
@@ -1248,7 +1248,7 @@ Opens the NFC settings page.
 
 For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
 
-| ID   | Error Message                   |
+| Error Code   | Error Message                   |
 |----------|-------------------------|
 | 16900010 | Parameter error.        |
 | 16900020 | Failed to open the settings page via redirection. |
@@ -1266,6 +1266,76 @@ try {
 } catch (err) {
   console.error(`Failed to open the NFC settings page. code: ${err?.code}, message: ${err?.message}`);
 }
+```
+
+## settings.openDoubleClickSettingsPage<sup>24+</sup>
+
+openDoubleClickSettingsPage(context: Context): void
+
+Opens the double-click settings page.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Applications.Settings.Core
+
+**Device behavior differences:** This API is supported on wearables. On other device types, it does not take effect.
+
+**Parameters**
+
+| Name  | Type                  | Mandatory| Description                                                                                                                                        |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes| Application context. Only UIAbilityContext and ExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
+
+**Error codes**
+
+For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
+
+| Error Code   | Error Message                   |
+|----------|-------------------------|
+| 16900010 | 1. The parameter is incorrect. <br> 2. The parameter is not transferred or the transferred parameter is invalid.    |
+| 16900020 | 1. The setting page cannot be opened through redirection.<br> 2. Internal error |
+
+**Example**
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openDoubleClickSettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the DoubleClick settings page. code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
+## settings.isDoubleClickAppForSelf<sup>24+</sup>
+
+isDoubleClickAppForSelf(): Promise\<boolean>
+
+Checks whether the default application started by double-pressing the down button is the current application.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Applications.Settings.Core
+
+**Device behavior differences:** This API is supported on wearables. On other device types, it does not take effect.
+
+**Return value**
+
+| Type            | Description                   |
+| ---------------- |-----------------------|
+| Promise\<boolean> | Promise used to return the result. The value **true** means the default application is the current application; the value **false** means the opposite.|
+
+**Example**
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+
+settings.isDoubleClickAppForSelf().then((result: boolean) => {
+  console.info(`isDoubleClickAppForSelf result: ${result}`);
+})
 ```
 
 ## settings.openMobileNetworkSettingsPage
@@ -1292,7 +1362,7 @@ Opens the mobile network settings page.
 
 For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
 
-| ID   | Error Message                   |
+| Error Code   | Error Message                   |
 |----------|-------------------------|
 | 16900010 | Parameter error.        |
 | 16900020 | Failed to open the settings page via redirection. |
@@ -1336,7 +1406,7 @@ Opens the display and brightness setting page.
 
 For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
 
-| ID   | Error Message                   |
+| Error Code   | Error Message                   |
 |----------|-------------------------|
 | 16900010 | Parameter error.        |
 | 16900020 | Failed to open the settings page via redirection. |
@@ -1380,7 +1450,7 @@ Opens the screen refresh rate setting page.
 
 For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
 
-| ID   | Error Message                   |
+| Error Code   | Error Message                   |
 |----------|-------------------------|
 | 16900010 | Parameter error.        |
 | 16900020 | Failed to open the settings page via redirection. |
@@ -1412,7 +1482,7 @@ Opens the sound and vibration setting page.
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-**Device behavior differences**: This API can be properly called on phones, tablets, and PCs/2-in-1 devices. If it is called on other device types, it has no effect.
+**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, it has no effect.
 
 **Parameters**
 
@@ -1424,7 +1494,7 @@ Opens the sound and vibration setting page.
 
 For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
 
-| ID   | Error Message                   |
+| Error Code   | Error Message                   |
 |----------|-------------------------|
 | 16900010 | Parameter error.        |
 | 16900020 | Failed to open the settings page via redirection. |
@@ -1468,7 +1538,7 @@ Opens the about device setting page.
 
 For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
 
-| ID   | Error Message                   |
+| Error Code   | Error Message                   |
 |----------|-------------------------|
 | 16900010 | Parameter error.        |
 | 16900020 | Failed to open the settings page via redirection. |
@@ -1490,7 +1560,7 @@ try {
 
 ## settings.openAppDetailSettingsPage
 
-openAppDetailSettingsPage(context: Context, bundleName: string, appIndex?: int): void
+openAppDetailSettingsPage(context: Context, bundleName: string, appIndex?: number): void
 
 Opens the application details setting page.
 
@@ -1508,13 +1578,13 @@ Opens the application details setting page.
 | -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
 | context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes| Application context. Only UIAbilityContext and ExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | bundleName  | string | Yes| Bundle name.|
-| appIndex  | int | No| Index of an application clone.|
+| appIndex  | number | No| Index of an application clone.|
 
 **Error codes**
 
 For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
 
-| ID   | Error Message                   |
+| Error Code   | Error Message                   |
 |----------|-------------------------|
 | 16900010 | Parameter error.        |
 | 16900020 | Failed to open the settings page via redirection. |

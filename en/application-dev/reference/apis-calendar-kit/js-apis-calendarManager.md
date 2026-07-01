@@ -97,7 +97,7 @@ export default class EntryAbility extends UIAbility {
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    // Main window is created, set main page for this ability
+    // The main window has been created. Set the main page for the Ability.
     console.info('Ability onWindowStageCreate');
 
     windowStage.loadContent('pages/Index', (err, data) => {
@@ -165,7 +165,7 @@ ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API v
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| ID   | Error Message                                                                                                                         |
+| Error Code   | Error Message                                                                                                                         |
 |----------| ------------------------------ |
 | 201      | Permission denied.                                                                                                            |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.                 |
@@ -226,7 +226,7 @@ ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API v
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| ID   | Error Message                       |
+| Error Code   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
@@ -277,7 +277,7 @@ ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API v
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| ID   | Error Message                       |
+| Error Code   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
@@ -347,7 +347,7 @@ ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API v
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| ID   | Error Message                       |
+| Error Code   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
@@ -410,7 +410,7 @@ ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API ver
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| ID   | Error Message                       |
+| Error Code   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
@@ -460,7 +460,7 @@ ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API ver
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| ID   | Error Message                       |
+| Error Code   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
@@ -527,7 +527,7 @@ ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API ver
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| ID   | Error Message                       |
+| Error Code   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: Incorrect parameter types.  |
@@ -574,7 +574,7 @@ ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API ver
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| ID   | Error Message                       |
+| Error Code   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
@@ -624,7 +624,7 @@ ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API ver
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| ID   | Error Message                       |
+| Error Code   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: Incorrect parameter types.  |
@@ -656,7 +656,7 @@ calendarMgr?.getAllCalendars().then((data: calendarManager.Calendar[]) => {
 
 editEvent(event: Event): Promise\<number>
 
-Edits an event on the event creation page, with no event ID specified in **Event**. The **instanceStartTime**, **instanceEndTime**, **identifier**, **attendee**, **service**, **isLunar**, and **timeZone** attributes cannot be set. This API uses a promise to return the result.
+Edits an event on the event creation page, with no event ID specified in **Event**. The **instanceStartTime**, **instanceEndTime**, **identifier**, **attendee**, **service**, **isLunar**, and **timeZone** attributes cannot be set. Important events cannot be added either. This API uses a promise to return the result.
 
 Events created using this API can be obtained and modified by the system calendar. Third-party applications can obtain and modify the events after they requested the **READ_WHOLE_CALENDAR** permission and the **WRITE_WHOLE_CALENDAR** permission, respectively.
 
@@ -679,7 +679,6 @@ Events created using this API can be obtained and modified by the system calenda
 **Example**
 
 ```typescript
-import { BusinessError } from '@kit.BasicServicesKit';
 // Configure the EntryAbility file based on the sample code in calendarManager.getCalendarManager.
 import { calendarMgr } from '../entryability/EntryAbility';
 import { calendarManager } from '@kit.CalendarKit';
@@ -737,7 +736,7 @@ ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API v
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| ID   | Error Message                       |
+| Error Code   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
@@ -804,7 +803,7 @@ ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API v
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| ID   | Error Message                       |
+| Error Code   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
@@ -864,7 +863,7 @@ ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API v
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| ID   | Error Message                       |
+| Error Code   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
@@ -938,7 +937,7 @@ ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API v
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| ID   | Error Message                       |
+| Error Code   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
@@ -1391,7 +1390,7 @@ ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API ver
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| ID   | Error Message                       |
+| Error Code   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
@@ -1447,7 +1446,7 @@ ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API ver
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| ID   | Error Message                       |
+| Error Code   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
@@ -1539,7 +1538,7 @@ ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API ver
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| ID   | Error Message                       |
+| Error Code   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
@@ -1640,7 +1639,7 @@ Sets the calendar configuration information. This API uses an asynchronous callb
 
 For details about the error codes, see [Calendar Error Codes](errorcode-calendarManager.md).
 
-| ID   | Error Message                  |
+| Error Code   | Error Message                  |
 |----------|------------------------|
 | 23900001 | Parameter value error. |
 
@@ -1700,7 +1699,7 @@ Sets the calendar configuration information. This API uses a promise to return t
 
 For details about the error codes, see [Calendar Error Codes](errorcode-calendarManager.md).
 
-| ID   | Error Message                  |
+| Error Code   | Error Message                  |
 |----------|------------------------|
 | 23900001 | Parameter value error. |
 
@@ -1803,7 +1802,7 @@ ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API ver
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| ID   | Error Message                       |
+| Error Code   | Error Message                       |
 |----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
@@ -1838,7 +1837,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
       console.error(`Failed to add event. Code: ${err.code}, message: ${err.message}`);
     });
     calendar?.queryEventInstances(date.getTime(), date.getTime() + 60 * 60 * 1000, undefined,
-      ['title', 'startTime', 'endTime', 'instanceStartTime', 'instanceEndTime',]).then((data: calendarManager.Event[]) => {
+      ['title', 'startTime', 'endTime', 'instanceStartTime', 'instanceEndTime']).then((data: calendarManager.Event[]) => {
       console.info(`Succeeded in getting event instances, data -> ${JSON.stringify(data)}`);
     }).catch((err: BusinessError) => {
       // Check whether the parameters are correct.
@@ -1880,7 +1879,7 @@ This API can be used to view and edit calendar events in the system calendar.
 
 For details about the error codes, see [Calendar Error Codes](errorcode-calendarManager.md).
 
-| ID   | Error Message                       |
+| Error Code   | Error Message                       |
 |----------| ------------------------------ |
 | 23900001 | Parameter value error. |
 | 23900005 | This event cannot be edited. |
@@ -1959,7 +1958,7 @@ Describes the calendar configuration information.
 | Name          | Type    | Read-Only   | Optional| Description                                                        |
 | -------------- |--------|-------|----| ------------------------------------------------------------ |
 | enableReminder | boolean | No    | Yes | Whether to enable the reminder for events in the calendar. The value **true** means to enable the reminder for events in the calendar, and **false** means the opposite. The default value is **true**.|
-| color          | number \| string | No  | Yes | Calendar color. If the value is a number, the value ranges from 0x000000 to 0xFFFFFF or from 0x00000000 to 0xFFFFFFFF. If the value is a string, the value contains 7 or 9 characters, for example, **#FFFFFF** or **#FFFFFFFFF**. If this parameter is not set, the default value **0xFF0A59F7** is used. If **undefined** or an incorrect value is input, an exception is thrown.|
+| color          | number \| string | No  | Yes | Calendar color. If the value is a number, the value ranges from 0x000001 to 0xFFFFFF or from 0x00000001 to 0xFFFFFFFF. If the value is a string, the value contains 7 or 9 characters, for example, **#FFFFFF** or **#FFFFFFFF**. If this parameter is not set, the default value **0xFF0A59F7** is used. If **undefined** or an incorrect value is input, an exception is thrown.|
 
 ## Event
 
@@ -2253,7 +2252,7 @@ Describes the recurrence rule of a recurring event.
 | expire              | number                                      | No  | Yes | End date of the recurrence period. The value is a 13-digit timestamp. If this parameter is not specified, the event has no end date.<br> If **expire**, **count**, and **interval** are set at the same time, the restriction that is reached first prevails.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                          |
 | count<sup>12+</sup>               | number                                      | No  | Yes | Number of times that an event recurs. The value is a non-negative integer. If the value is a floating point number, it is rounded down. If this parameter is left empty, the default value is **0**, indicating that the number of recurrence times is not limited and the event will continuously recur. If the value is negative, the effect is the same as that of **0**.<br> If **count**, **interval**, and **expire** are set at the same time, the restriction that is reached first prevails.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | interval<sup>12+</sup>            | number                                      | No  | Yes | Recurrence interval of a recurring event. The value is a non-negative integer. If the value is a floating point number, it is rounded down.<br> If this parameter is not specified, the default value is **0**. If the value is **0**, **1**, or negative, the event recurs every day, week, month, or year.<br> If **interval**, **count**, and **expire** are set at the same time, the restriction that is reached first prevails.<br>This property is related to the **recurrenceFrequency** rule. The recurrence interval varies according to the recurrence rule. For example, if the **interval** value is **2**, the following situations occur:<br>Daily recurrence: The event recurs every two days.<br>Weekly recurrence: The event recurs every two weeks.<br>Monthly recurrence: The event recurs every two months.<br>Yearly recurrence: The event recurs every two years.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| excludedDates<sup>12+</sup>       | number[]                                    | No  | Yes | Excluded dates set for a duplicate calendar event, in timestamp format. This parameter is not specified by default. If the value is **0** or a negative number, it is treated as an empty value.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                |
+| excludedDates<sup>12+</sup>       | number[]                                    | No  | Yes | Excluded dates set for a duplicate calendar event, in timestamp format. The value must be exactly the same as the start time (hour, minute, and second) of the event. Otherwise, the setting does not take effect. This parameter is not specified by default. If the value is **0** or a negative number, it is treated as an empty value.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                |
 | daysOfWeek<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by day of a week. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value range is [1, 7], corresponding to Monday to Sunday. Values outside this range are invalid and treated as empty values. The relevant field arrays are in one-to-one mapping. For example, if the values of **weeksOfMonth** and **daysOfWeek** are **[1, 2, 3]**, the event recurs on Monday of the first week, Tuesday of the second week, and Wednesday of the third week of each month.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                        |
 | daysOfMonth<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by day of a month. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value range is [1, 31], corresponding to the first to the thirty-first days of a month. Values outside this range are invalid and treated as empty values. The value **29**, **30**, or **31** is invalid if there is no such date in the month. The relevant field arrays are in one-to-one mapping. For example, if the values of **monthsOfYear** and **daysOfMonth** are **[1, 2, 3]**, the event recurs on January 1, February 2, and March 3.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                  |
 | daysOfYear<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by day of a year. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value range is [1, 366], corresponding to the first to the 366th days of a year. Values outside this range are invalid and treated as empty values. If a year only has 365 days, the value **366** is invalid.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                           |

@@ -12,7 +12,7 @@ typedef struct ArkUI_TextSelectionMenuOptions ArkUI_TextSelectionMenuOptions
 
 ## Overview
 
-Defines the custom text selection menu structure.
+Defines custom text selection menu options.
 
 **Since**: 22
 

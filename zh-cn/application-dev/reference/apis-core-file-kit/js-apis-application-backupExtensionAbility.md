@@ -1,8 +1,8 @@
 # @ohos.application.BackupExtensionAbility (备份恢复扩展能力)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @lvzhenjie-->
-<!--Designer: @chenxi0605-->
+<!--Owner: @rainlost-->
+<!--Designer: @rainlost-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
@@ -316,8 +316,8 @@ onProcess(): string
     private isPercentage: boolean = true // 可选字段，true表示需要按百分比的格式化展示进度，false或者不实现该字段表示按具体项数展示进度
 
     getMigrateProgress(): string {
-      this.migrateProgress = `{"progressInfo": [{"name": ${this.name}, "processed": ${this.processed}, "total": ${
-        this.total}, "isPercentage": ${this.isPercentage}}]}`;
+      this.migrateProgress = `{"progressInfo": [{"name": "${this.name}", "processed": "${this.processed}", "total": "${
+        this.total}", "isPercentage": "${this.isPercentage}"}]}`;
       return this.migrateProgress;
     }
 

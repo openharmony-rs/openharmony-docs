@@ -2163,8 +2163,10 @@ moveAbilityToBackground(): Promise\<void>
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：
-- 从API version 12开始，该接口仅在Phone、Wearable和TV设备中可正常调用，在其他设备上返回16000061错误码。
-- 从API version 13开始，该接口仅在Phone、Tablet、Wearable和TV设备中可正常调用，在其他设备上返回16000061错误码。
+- 从API version 12开始，该接口仅在Phone设备中可正常调用，在其他设备上返回16000061错误码。
+- 从API version 13开始，该接口仅在Phone和Tablet设备中可正常调用，在其他设备上返回16000061错误码。
+- 从API version 18开始，该接口仅在Phone、Tablet和Wearable设备中可正常调用，在其他设备上返回16000061错误码。
+- 从API version 19开始，该接口仅在Phone、Tablet、Wearable和TV设备中可正常调用，在其他设备上返回16000061错误码。
 
 **返回值：**
 

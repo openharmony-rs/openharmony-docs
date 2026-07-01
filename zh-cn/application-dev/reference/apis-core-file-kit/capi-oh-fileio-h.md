@@ -9,7 +9,7 @@
 
 ## 概述
 
-fileio模块接口定义，提供获取文件存储位置的native接口。
+fileio模块接口定义，提供获取文件存储位置的native接口，帮助应用根据文件存储位置选择合适的访问策略等。
 
 **引用文件：** <filemanagement/fileio/oh_fileio.h>
 
@@ -66,7 +66,7 @@ FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength, FileI
 
 **描述**
 
-获取文件存储位置。
+获取文件存储位置，调用成功后，会将文件的存储位置写入到输出参数location中。
 
 **起始版本：** 12
 
@@ -74,9 +74,9 @@ FileManagement_ErrCode OH_FileIO_GetFileLocation(char *uri, int uriLength, FileI
 
 | 参数项 | 描述 |
 | -- | -- |
-| char *uri | 指向入参uri的指针。 |
-| int uriLength | 入参uri字符串的长度。 |
-| [FileIO_FileLocation](capi-oh-fileio-h.md#fileio_filelocation) *location | 输出文件存储位置的指针。 |
+| char *uri | URI字符串的指针，用于指定需要查询存储位置的文件。 |
+| int uriLength | URI字符串的长度，不包含字符串结束符'\0'，单位为Byte。取值范围为(0，4096]。 |
+| [FileIO_FileLocation](capi-oh-fileio-h.md#fileio_filelocation) *location | 文件存储位置的指针。 |
 
 **返回：**
 

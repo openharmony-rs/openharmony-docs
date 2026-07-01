@@ -18,7 +18,7 @@ Image analysis feature is unsupported.
 
 **错误描述**
 
-当开发者调用startImageAnalyzer()接口时，若当前不支持AI分析功能，会抛出此错误码。
+当开发者调用startImageAnalyzer()接口时，若当前不支持AI图像分析功能，会抛出此错误码。
 
 **可能原因**
 

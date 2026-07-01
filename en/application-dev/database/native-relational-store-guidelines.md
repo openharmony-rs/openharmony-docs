@@ -2,9 +2,10 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:41:12.824Z pushedAt=2026-06-22T12:47:13.098Z -->
 
 ## When to Use
 
@@ -46,7 +47,7 @@ For details about the APIs, see [RDB](../reference/apis-arkdata/capi-rdb.md).
 | OH_Rdb_Execute(OH_Rdb_Store *store, const char *sql) | Executes an SQL statement that contains specified arguments but returns no value.|
 | OH_Rdb_Insert(OH_Rdb_Store *store, const char *table, OH_VBucket *valuesBucket) | Inserts a row of data into a table.|
 | int OH_Rdb_InsertWithConflictResolution(OH_Rdb_Store *store, const char *table, OH_VBucket *row, Rdb_ConflictResolution resolution, int64_t *rowId) | Inserts a row of data into a table with conflict resolutions.|
-| int OH_Rdb_UpdateWithConflictResolution(OH_Rdb_Store *store, OH_VBucket *row, OH_Predicates *predicates, Rdb_ConflictResolution resolution, int64_t *changes) | Updates a row of data in a table with conflict resolutions.|
+| int OH_Rdb_UpdateWithConflictResolution(OH_Rdb_Store *store, OH_VBucket *row, OH_Predicates *predicates, Rdb_ConflictResolution resolution, int64_t *changes) | Updates data in the database according to specified conditions, with support for configuring conflict resolution strategies. |
 | OH_Rdb_Update(OH_Rdb_Store *store, OH_VBucket *valuesBucket, OH_Predicates *predicates) | Updates data in an RDB store.|
 | OH_Rdb_Delete(OH_Rdb_Store *store, OH_Predicates *predicates) | Deletes data from an RDB store.|
 | int OH_Predicates_NotLike(OH_Predicates *predicates, const char *field, const char *pattern) | Sets an **OH_Predicates** object to match a string that is not similar to the specified value.|
@@ -269,7 +270,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     predicates2->destroy(predicates2);
     ```
     <!--@[rdb_OH_Rdb_Delete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->    
-    
+
     ``` C++
     // Delete data.
     OH_Predicates *predicates = OH_Rdb_CreatePredicates("EMPLOYEE");
@@ -324,7 +325,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     // Destroy the result set.
     cursor->destroy(cursor);
     ```
-   
+
    Configure predicates to match data in LIKE or NOT LIKE mode. <br>Example:
 
     <!--@[rdb_OH_Rdb_Query_by_like_and_notLike](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
@@ -448,7 +449,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     ```
 
     To configure the full-text search (FTS) dynamic library, use **OH_Rdb_SetPlugins**.
-    
+
     For details about the constraints, see the **pluginLibs** configuration item in [StoreConfig](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig).
 
     <!--@[rdb_OH_Rdb_SetPlugins](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
@@ -468,7 +469,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
    Call **OH_Rdb_CreateTransaction** to create a transaction object and use this object to execute the corresponding transaction operation.
 
     <!--@[rdb_OH_Rdb_CreateTransaction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->    
-    
+
     ``` C++
     OH_RDB_TransOptions *options = OH_RdbTrans_CreateOptions();
     // Configure the transaction type.
@@ -508,7 +509,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     Data_Asset **assets = OH_Data_Asset_CreateMultiple(2); // The number of created Data_Assets is 2
     ret = OH_Data_Asset_SetName(assets[0], "name1");
     ret = OH_Data_Asset_SetName(assets[1], "name2");
-    ret = OH_Values_PutAssets(values, assets, 2); // The number of Data_ Assets is 2
+    ret = OH_Values_PutAssets(values, assets, 2); // The number of Data_Assets is 2
     ret = OH_Data_Asset_DestroyMultiple(assets, 2); // The number of destroyed Data_Assets is 2
     
     uint64_t bigInt[] = {1, 2, 3, 4, 5};
@@ -640,15 +641,15 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     ```
 
 6. Attach a database.
-   
+
     Call **OH_Rdb_Attach** to attach an RDB store file to an RDB store so that the data in the attached RDB store can be directly accessed using the SQL statement.
-    
+
     This API does not support encrypted databases.
 
     After the **attach** API is called, the RDB store is switched to the non-WAL mode, which may undermine the performance. Before switching the mode, ensure that all **OH_Cursor** objects have been destroyed and all write operations have been completed. Otherwise, error 14800015 is reported.
-    
+
     The **attach** API cannot be called concurrently. Concurrent calls may cause the system to become unresponsive and trigger 14800015. If this occurs, try to call **attach()** again later.
-    
+
     When the attached database is no longer used, call **OH_Rdb_Detach** to detach it.
 
     <!--@[rdb_OH_Rdb_Attach_and_Detach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
@@ -876,7 +877,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     ```
 
 10. Delete the database. Call the **OH_Rdb_DeleteStoreV2** method to delete the RDB store and related database files. <br>Example:
-    
+
     <!--@[rdb_OH_Rdb_CloseStore_and_DeleteStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
 
     ``` C++

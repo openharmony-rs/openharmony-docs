@@ -6,7 +6,7 @@
 <!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
 
-该模块向应用提供端云同步能力，包括启动/停止端云同步以及启动/停止原图下载功能。
+该模块向应用提供端云同步能力，包括启动/停止端云同步以及启动/停止原文件下载功能。适用于需要同步本地文件与云端文件、监听同步进度、管理云文件缓存和处理文件版本冲突的场景。
 
 > **说明：**
 >
@@ -29,9 +29,9 @@ import { cloudSync } from '@kit.CoreFileKit';
 
 | 名称 |  值|  说明 |
 | ----- |  ---- |  ---- |
-| UPLOADING |  0 | 上行同步中。 |
+| UPLOADING |  0 | 上行同步中，表示本地文件正在同步到云端。 |
 | UPLOAD_FAILED |  1 | 上行同步失败。 |
-| DOWNLOADING |  2 | 下行同步中。 |
+| DOWNLOADING |  2 | 下行同步中，表示云端文件正在同步到本地。 |
 | DOWNLOAD_FAILED |  3 | 下行同步失败。 |
 | COMPLETED |  4 | 同步成功或首次注册同步状态回调成功均返回。 |
 | STOPPED |  5 | 同步已停止。 |
@@ -42,7 +42,7 @@ import { cloudSync } from '@kit.CoreFileKit';
 
 - 当前阶段，同步过程中，当开启无限量使用移动数据网络，移动数据网络和WIFI均不可用时，才会返回NETWORK_UNAVAILABLE；开启无限量使用移动数据网络，若有一种类型网络可用，则能正常同步。
 - 同步过程中，非充电场景下，电量低于10%，完成当前批上行同步后停止同步，返回低电量；
-- 触发同步时，非充电场景下，若电量低于10%，则不允许同步
+- 触发同步时，非充电场景下，若电量低于10%，则不允许同步。
 - 上行时，若云端空间不足，则文件上行失败，云端无该文件记录。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
@@ -121,7 +121,7 @@ constructor()
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
-| 401 | The input parameter is invalid. Possible causes:Incorrect parameter types. |
+| 401 | The input parameter is invalid. Possible causes: Incorrect parameter types. |
 
 **示例：**
 
@@ -133,7 +133,7 @@ let fileSync = new cloudSync.FileSync()
 
 on(event: 'progress', callback: Callback\<SyncProgress>): void
 
-云盘同步对象添加同步过程事件监听。
+云盘同步对象添加同步过程事件监听。适用于需要在界面展示同步进度或根据同步失败类型进行处理的场景。
 
 当应用首次注册callback时，SyncProgress中的SyncState初始返回值为4，代表COMPLETED；后续重新注册时，该值将反映实际同步结果，例如若上次上行失败，返回值为1，代表UPLOAD_FAILED。
 
@@ -144,7 +144,7 @@ on(event: 'progress', callback: Callback\<SyncProgress>): void
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | event | string | 是   | 订阅的事件类型，取值为'progress'（同步过程事件）。 |
-| callback | Callback\<[SyncProgress](#syncprogress12)> | 是   | 回调函数。同步过程事件。|
+| callback | Callback\<[SyncProgress](#syncprogress12)> | 是   | 回调函数。同步过程事件，首次注册时会返回当前同步状态。|
 
 **错误码：**
 
@@ -153,14 +153,14 @@ on(event: 'progress', callback: Callback\<SyncProgress>): void
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 
 **示例：**
 
 ```ts
 let fileSync = new cloudSync.FileSync();
 let callback = (pg: cloudSync.SyncProgress) => {
-  console.info("file sync state: " + pg.state + "error type: " + pg.error);
+  console.info(`file sync state: ${pg.state}, error type: ${pg.error}`);
 }
 
 fileSync.on('progress', callback);
@@ -170,7 +170,7 @@ fileSync.on('progress', callback);
 
 off(event: 'progress', callback?: Callback\<SyncProgress>): void
 
-云盘同步对象移除'progress'类型的指定callback回调。
+云盘同步对象移除'progress'类型的指定callback回调。需传入已通过[on('progress')](#onprogress12)注册的回调函数。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -179,7 +179,7 @@ off(event: 'progress', callback?: Callback\<SyncProgress>): void
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | event | string | 是   | 取消订阅的事件类型，取值为'progress'（同步过程事件）。|
-| callback | Callback\<[SyncProgress](#syncprogress12)> |  否   | 回调函数。同步过程事件， 默认值为null。 |
+| callback | Callback\<[SyncProgress](#syncprogress12)> |  否   | 回调函数。同步过程事件。填写时取消指定回调；不填写时取消所有已注册的同步过程事件回调。默认值为null。 |
 
 **错误码：**
 
@@ -188,7 +188,7 @@ off(event: 'progress', callback?: Callback\<SyncProgress>): void
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 
 **示例：**
 
@@ -196,7 +196,7 @@ off(event: 'progress', callback?: Callback\<SyncProgress>): void
 let fileSync = new cloudSync.FileSync();
 
 let callback = (pg: cloudSync.SyncProgress) => {
-  console.info("file sync state: " + pg.state + "error type: " + pg.error);
+  console.info(`file sync state: ${pg.state}, error type: ${pg.error}`);
 }
 
 fileSync.on('progress', callback);
@@ -208,7 +208,9 @@ fileSync.off('progress', callback);
 
 start(): Promise&lt;void&gt;
 
-异步方法启动云盘端云同步。使用Promise异步回调。
+异步方法启动云盘端云同步。适用于需要主动触发本地与云端文件同步的场景。使用Promise异步回调。
+
+非充电场景下，若设备电量低于10%，则不允许触发同步。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -224,8 +226,8 @@ start(): Promise&lt;void&gt;
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
-| 401 | The input parameter is invalid. Possible causes:Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 401 | The input parameter is invalid. Possible causes: Incorrect parameter types. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 22400001  | Cloud status not ready. |
 | 22400002  | Network unavailable. |
 | 22400003  | Low battery level. |
@@ -271,7 +273,7 @@ start(callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 22400001  | Cloud status not ready. |
 | 22400002  | Network unavailable. |
 | 22400003  | Low battery level. |
@@ -314,8 +316,8 @@ stop(): Promise&lt;void&gt;
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
-| 401 | The input parameter is invalid. Possible causes:Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 401 | The input parameter is invalid. Possible causes: Incorrect parameter types. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 
 **示例：**
 
@@ -354,7 +356,7 @@ stop(callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 
 **示例：**
 
@@ -392,8 +394,8 @@ getLastSyncTime(): Promise&lt;number&gt;
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
-| 401 | The input parameter is invalid. Possible causes:Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 401 | The input parameter is invalid. Possible causes: Incorrect parameter types. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 
 **示例：**
 
@@ -432,7 +434,7 @@ getLastSyncTime(callback: AsyncCallback&lt;number&gt;): void
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 
 **示例：**
 
@@ -471,7 +473,7 @@ constructor()
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
-| 401 | The input parameter is invalid. Possible causes:Incorrect parameter types. |
+| 401 | The input parameter is invalid. Possible causes: Incorrect parameter types. |
 
 **示例：**
 
@@ -501,7 +503,7 @@ on(event: 'progress', callback: Callback\<DownloadProgress>): void
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 
 **示例：**
 
@@ -543,7 +545,7 @@ on(event: 'batchDownload', callback: Callback&lt;MultiDownloadProgress&gt;): voi
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.                                                                     |
-| 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
 
@@ -590,7 +592,7 @@ off(event: 'progress', callback?: Callback\<DownloadProgress>): void
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 
 **示例：**
 
@@ -634,7 +636,7 @@ off(event: 'batchDownload', callback?: Callback&lt;MultiDownloadProgress&gt;): v
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.                                                                     |
-| 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
 
@@ -659,7 +661,7 @@ try {
 
 start(uri: string): Promise&lt;void&gt;
 
-异步方法启动云盘文件缓存。使用Promise异步回调。
+异步方法启动云盘文件缓存。适用于需要下载指定云文件到本地缓存的场景。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -667,7 +669,7 @@ start(uri: string): Promise&lt;void&gt;
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| uri | string | 是   | 待下载文件uri。 |
+| uri | string | 是   | 待缓存云文件的URI。 |
 
 **返回值：**
 
@@ -682,7 +684,7 @@ start(uri: string): Promise&lt;void&gt;
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002 | No such file or directory. |
 | 13900025 | No space left on device. |
 | 14000002 | Invalid URI. |
@@ -725,7 +727,7 @@ start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| uri | string | 是   | 待下载文件uri。 |
+| uri | string | 是   | 待缓存云文件的URI。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步启动云文件下载。 |
 
 **错误码：**
@@ -735,7 +737,7 @@ start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002 | No such file or directory. |
 | 13900025 | No space left on device. |
 | 14000002 | Invalid URI. |
@@ -763,7 +765,7 @@ fileCache.start(uri, (err: BusinessError) => {
 
 startBatch(uris: Array&lt;string&gt;, fileType?: DownloadFileType): Promise&lt;number&gt;
 
-启动云文件批量缓存。使用Promise异步回调。
+启动云文件批量缓存。适用于需要一次缓存多个云文件的场景。使用Promise异步回调。
 
 不同的批量缓存任务可以通过接口返回的任务ID区分。
 
@@ -788,11 +790,11 @@ startBatch(uris: Array&lt;string&gt;, fileType?: DownloadFileType): Promise&lt;n
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 13600001 | IPC error. Possible causes: 1.IPC failed or timed out. 2.Failed to load the service.                                                                                              |
+| 13600001 | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service.                                                                                              |
 | 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.                                                                     |
 | 14000002 | Invalid uri. |
 | 22400004 | Exceed the maximum limit.                                                                                                                                                         |
-| 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
 
@@ -831,8 +833,8 @@ stop(uri: string, needClean?: boolean): Promise&lt;void&gt;
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| uri | string | 是   | 待下载文件uri。 |
-| needClean<sup>12+</sup> | boolean | 否   | 是否删除已下载的文件。默认值为false表示不删除；true表示删除。<br>从API version12开始支持该参数。 |
+| uri | string | 是   | 待停止缓存的云文件URI。 |
+| needClean<sup>12+</sup> | boolean | 否   | 是否删除已下载的文件。默认值为false，表示保留缓存文件，再次调用start接口可重新启动下载；true表示删除缓存文件，再次下载需重新缓存。<br>从API version12开始支持该参数。 |
 
 **返回值：**
 
@@ -847,7 +849,7 @@ stop(uri: string, needClean?: boolean): Promise&lt;void&gt;
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002 | No such file or directory. |
 | 14000002 | Invalid URI. |
 
@@ -882,7 +884,7 @@ stop(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| uri | string | 是   | 待下载文件uri。 |
+| uri | string | 是   | 待停止缓存的云文件URI。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步停止云文件下载。 |
 
 **错误码：**
@@ -892,7 +894,7 @@ stop(uri: string, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
 | 401 | The input parameter is invalid. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 13600001  | IPC error. |
+| 13600001  | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002 | No such file or directory. |
 | 14000002 | Invalid URI. |
 
@@ -944,9 +946,9 @@ stopBatch(downloadId: number, needClean?: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 13600001 | IPC error. Possible causes: 1.IPC failed or timed out. 2.Failed to load the service.                                                                                              |
+| 13600001 | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service.                                                                                              |
 | 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.                                                                     |
-| 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
 
@@ -977,7 +979,7 @@ if (needStop && taskId > 0) {
 
 cleanFileCache(uri: string): void
 
-同步方法删除文件缓存。
+同步方法删除文件缓存，适用于需要释放指定文件本地缓存空间的场景。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -993,13 +995,13 @@ cleanFileCache(uri: string): void
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
-| 13600001 | IPC error. Possible causes:1.IPC failed or timed out. 2.Failed to load the service. |
+| 13600001 | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002 | No such file or directory. |
 | 13900010 | Try again. |
 | 13900012  | Permission denied by the file system. |
-| 13900020  | Parameter error. Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 13900020  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 14000002  | Invalid URI. |
-| 22400005  | Inner error. Possible causes:1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005  | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
 
@@ -1014,17 +1016,17 @@ let uri = fileUri.getUriFromPath(path);
 try {
   fileCache.cleanFileCache(uri);
 } catch (err) {
-  let error:BusinessError = err as BusinessError;
-  console.error("clean file cache failed with error message: " + err.message + ", error code: " + err.code);
+  let error: BusinessError = err as BusinessError;
+  console.error(`clean file cache failed with error message: ${error.message}, error code: ${error.code}`);
 }
 
 ```
 
-### cleanFileCache
+### cleanAllFileCache
 
-cleanFileCache(): Promise&lt;void&gt;
+cleanAllFileCache(): Promise&lt;void&gt;
 
-删除所有已缓存文件，未上云文件、写打开文件及缩略图文件不会被删除。使用Promise异步回调。
+删除所有已缓存文件，适用于需要释放本地云文件缓存空间的场景。未上云文件、写打开文件及缩略图文件不会被删除。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -1054,10 +1056,10 @@ import { fileUri } from '@kit.CoreFileKit';
 
 let fileCache = new cloudSync.CloudFileCache();
 
-fileCache.cleanFileCache().then(() => {
+fileCache.cleanAllFileCache().then(() => {
   console.info("clean file cache successfully");
 }).catch((err: BusinessError) => {
-  console.error("clean file cache failed with error message: " + err.message + ", error code: " + err.code);
+  console.error(`clean file cache failed with error message: ${err.message}, error code: ${err.code}`);
 });
 
 ```
@@ -1078,7 +1080,7 @@ getCachedTotalSize(): Promise&lt;number&gt;
 
 | 类型  | 说明 |
 | ------ | ---- |
-| Promise&lt;number&gt; | Promise对象，返回已缓存文件总大小。 |
+| Promise&lt;number&gt; | Promise对象，返回已缓存文件总大小，单位：Byte。 |
 
 **错误码：**
 
@@ -1182,7 +1184,7 @@ getFailedFiles(): Array&lt;FailedFileInfo&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
 
@@ -1236,7 +1238,7 @@ getSuccessfulFiles(): Array&lt;string&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
 
@@ -1272,7 +1274,7 @@ fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((download
 
 registerChange(uri: string, recursion: boolean, callback: Callback&lt;ChangeData&gt;): void
 
-订阅监听指定文件的变化通知。callback返回更改的数据。
+订阅监听指定文件的变化通知。适用于需要在指定文件或目录变化时实时更新业务状态的场景，callback返回更改的数据。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -1280,7 +1282,7 @@ registerChange(uri: string, recursion: boolean, callback: Callback&lt;ChangeData
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| uri | string | 是   | 待下载文件uri。 |
+| uri | string | 是   | 待监听文件或目录的URI。 |
 | recursion | boolean | 是   | true为监听该URI以及子文件和子目录，false为仅监听该URI文件。|
 | callback | Callback&lt;[ChangeData](#changedata12)&gt; | 是   | 回调函数，返回更改的数据。 |
 
@@ -1319,7 +1321,7 @@ cloudSync.unregisterChange(uri);
 
 unregisterChange(uri: string): void
 
-取消订阅监听指定文件的变化通知。
+取消订阅监听指定文件的变化通知。取消监听后，将不再收到该URI对应的变化通知。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -1327,7 +1329,7 @@ unregisterChange(uri: string): void
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| uri | string | 是   | 待下载文件uri。 |
+| uri | string | 是   | 待取消监听文件或目录的URI。 |
 
 **错误码：**
 
@@ -1449,7 +1451,7 @@ constructor()
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
-| 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
 
@@ -1488,14 +1490,14 @@ getHistoryVersionList(uri: string, versionNumLimit: number): Promise&lt;Array&lt
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
-| 13600001 | IPC error. Possible causes: 1.IPC failed or timed out. 2.Failed to load the service. |
+| 13600001 | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002 | No such file or directory. |
 | 13900010 | Try again. |
 | 13900012 | Permission denied by the file system. |
-| 13900020 | Invalid argument. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 14000002 | Invalid URI. |
 | 22400002 | Network unavailable. |
-| 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
 
@@ -1546,14 +1548,14 @@ downloadHistoryVersion(uri: string, versionId: string, callback: Callback&lt;[Ve
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
-| 13600001 | IPC error. Possible causes: 1.IPC failed or timed out. 2.Failed to load the service. |
+| 13600001 | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002 | No such file or directory. |
 | 13900010 | Try again. |
 | 13900012 | Permission denied by the file system. |
-| 13900020 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 13900020 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 14000002 | Invalid URI. |
 | 22400002 | Network unavailable. |
-| 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
 
@@ -1611,15 +1613,15 @@ replaceFileWithHistoryVersion(originalUri: string, versionUri: string): Promise&
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
-| 13600001 | IPC error. Possible causes: 1.IPC failed or timed out. 2.Failed to load the service. |
+| 13600001 | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002 | No such file or directory. |
 | 13900005 | I/O error. |
 | 13900008 | Bad file descriptor. |
 | 13900010 | Try again. |
 | 13900012 | Permission denied by the file system. |
-| 13900020 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 13900020 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 14000002 | Invalid URI. |
-| 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 | 22400007 | The version file specified to replace the original file does not exist. |
 
 **示例：**
@@ -1686,13 +1688,13 @@ isFileConflict(uri: string): Promise&lt;boolean&gt;
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
-| 13600001 | IPC error. Possible causes: 1.IPC failed or timed out. 2.Failed to load the service. |
+| 13600001 | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002 | No such file or directory. |
 | 13900010 | Try again. |
 | 13900012 | Permission denied by the file system. |
-| 13900020 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 13900020 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 14000002 | Invalid URI. |
-| 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
 
@@ -1716,7 +1718,7 @@ fileVersion.isFileConflict(uri).then((isConflict: boolean) => {
 
 clearFileConflict(uri: string): Promise&lt;void&gt;
 
-清除本地文件版本冲突标志。如果产生冲突，本地解决冲突后需要调用此方法来清除冲突标记，后续才可以触发自动同步机制，和云上保持一致。使用Promise异步回调。
+清除本地文件版本冲突标志。只有应用配置手动解冲突后，该方法才会生效。如果产生冲突，本地解决冲突后需要调用此方法来清除冲突标记，后续才可以触发自动同步机制，和云上保持一致。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -1738,13 +1740,13 @@ clearFileConflict(uri: string): Promise&lt;void&gt;
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
-| 13600001 | IPC error. Possible causes: 1.IPC failed or timed out. 2.Failed to load the service. |
+| 13600001 | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002 | No such file or directory. |
 | 13900010 | Try again. |
 | 13900012 | Permission denied by the file system. |
-| 13900020 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 13900020 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 14000002 | Invalid URI. |
-| 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005 | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
 
@@ -1797,15 +1799,15 @@ getCoreFileSyncState(uri: string): FileState
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
-| 13600001 | IPC error. Possible causes:1.IPC failed or timed out. 2.Failed to load the service. |
+| 13600001 | IPC error. Possible causes: 1. IPC failed or timed out. 2. Failed to load the service. |
 | 13900002  | No such file or directory. |
 | 13900004  | Interrupted system call. |
 | 13900010  | Try again. |
 | 13900012  | Permission denied by the file system. |
-| 13900020  | Invalid argument. Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 13900020  | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 13900031  | Function not implemented. |
 | 14000002  | Invalid URI. |
-| 22400005  | Inner error. Possible causes:1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
+| 22400005  | Inner error. Possible causes: 1. Failed to access the database or execute the SQL statement. 2. System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
 **示例：**
 

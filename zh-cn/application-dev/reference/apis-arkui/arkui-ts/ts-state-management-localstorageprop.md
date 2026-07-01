@@ -1,4 +1,4 @@
-# @LocalStorageProp：页面级UI状态存储
+# @LocalStorageProp：LocalStorage单向数据同步
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
@@ -27,14 +27,14 @@ const LocalStorageProp: (value: string) => PropertyDecorator
 
 | 参数名 | 类型   | 必填 | 说明                         |
 | ------ | ------ | ---- | ---------------------------- |
-| value  | string | 是   | 用于标识LocalStorage的属性。 |
+| value  | string | 是   | LocalStorage中的属性键值，用于建立与对应属性值的单向数据同步。 |
 
 **示例：**
 
 ```ts
 // 创建LocalStorage的初始数据，键为'PropA'，值为47
-let para: Record<string, number> = { 'PropA': 47 };
-let storage: LocalStorage = new LocalStorage(para);
+let initialData: Record<string, number> = { 'PropA': 47 };
+let storage: LocalStorage = new LocalStorage(initialData);
 
 // 使用@Entry装饰器标记入口组件，并传入LocalStorage实例
 @Entry(storage)
@@ -48,7 +48,7 @@ struct Parent {
     Column() {
       Button(`Parent from LocalStorage ${this.propA}`)
         // 设置点击事件，点击后propA值加1，但不会同步回LocalStorage
-        .onClick((e: ClickEvent) => {
+        .onClick(() => {
           this.propA += 1;
         })
       Child()

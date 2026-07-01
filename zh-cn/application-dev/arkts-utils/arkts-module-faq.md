@@ -88,11 +88,11 @@ ModuleImportStack:
 #2 &entry/src/main/ets/pages/Index&
 ```
 
-## cannot find module 'fileName'，which is application Entry Point.
+## cannot find module 'fileName', which is application Entry Point.
 
 **问题现象**
 
-应用启动时报错：cannot find module 'fileName'，which is application Entry Point。
+应用启动时报错：cannot find module 'fileName', which is application Entry Point.
 
 **可能原因**
 
@@ -126,7 +126,7 @@ ModuleImportStack:
 
 **问题现象**
 
-应用运行时报错：cannot find record 'fileName', please check request path，提示无法找到指定的模块或文件，导致应用运行异常。
+应用运行时报错：cannot find record 'fileName', please check request path.提示无法找到指定的模块或文件，导致应用运行异常。
 
 **可能原因**
 

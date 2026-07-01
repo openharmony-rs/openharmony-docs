@@ -8,7 +8,7 @@
 
 对于涉及多个音频流并发的场景，系统已预设了默认的[音频焦点策略](audio-playback-concurrency.md#音频焦点策略)，该策略将对所有音频流（包括播放和录制）实施统一的焦点管理。
 
-当系统提供的默认焦点策略不能满足应用需求时，应用可利用音频会话管理提供的接口，管理应用内音频流的焦点，自定义音频流的焦点策略，调整音频流释放焦点的时机，以满足特定需求。该篇文章的示例代码均为ArkTS，如果需要使用OHAudio开发请参考[使用OHAudio开发音频会话功能(C/C++)](using-ohaudio-for-session.md)。
+当系统提供的默认焦点策略不能满足应用需求时，应用可利用音频会话管理提供的接口，管理应用内音频流的焦点，自定义音频流的焦点策略，调整音频流释放焦点的时机，以满足特定需求。本文档的示例代码均为ArkTS，如果需要使用OHAudio开发请参考[使用OHAudio开发音频会话功能(C/C++)](using-ohaudio-for-session.md)。
 
 使用音频会话相关接口，可以实现以下功能：
 
@@ -31,7 +31,7 @@
 
 使用OHAudio开发请参考：[获取音频会话管理器](using-ohaudio-for-session.md#获取音频会话管理器)。
 
-<!-- @[get_session_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[get_session_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -40,6 +40,26 @@ import { audio } from '@kit.AudioKit';
 let audioManager = audio.getAudioManager();
 // 创建音频会话管理器。
 let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionManager();
+```
+
+## 设置会话级录音流静音提示
+
+从API version 24开始，当应用已在业务侧将当前音频会话内的录音流静音时，可以调用[setCapturerMuteHint](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setcapturermutehint24)接口将该状态上报给系统音频模块，系统音频模块会基于上报的状态调整策略以降低功耗。注意，此功能当前仅在部分PC/2in1设备上生效。该接口不会实际触发静音，也不会对录音数据做静音处理。它只是告知系统音频模块，应用已将当前音频会话内的录音流静音。应用仍需自行处理录音数据，例如不发送采集数据或发送静音数据。
+
+该接口仅允许在当前音频会话存在运行中的录音流时调用，否则会返回错误码`6800103`。若某条录音流同时调用了流级静音提示接口[AudioCapturer.setMuteHint](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setmutehint24)和会话级静音提示接口，流级设置优先级更高，以流级设置值为准。因此，当应用内多条录音流的静音状态一致时，可以使用会话级接口统一上报；当不同录音流静音状态不一致时，建议对具体录音流使用流级接口。若为了调用会话级接口而创建Mic音频源录音流，需要申请麦克风权限`ohos.permission.MICROPHONE`。当前未提供系统查询接口，如需在界面展示静音提示状态，应用需要自行维护最近一次设置成功的状态。以下示例中，`muteHint`为`true`表示上报静音提示，`false`表示解除静音提示。
+
+<!-- @[set_capturer_mute_hint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+try {
+  await audioSessionManager.setCapturerMuteHint(muteHint);
+  console.info(`setCapturerMuteHint ${muteHint} success.`);
+  // ...
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`setCapturerMuteHint ${muteHint} failed. Code: ${error.code}, message: ${error.message}`);
+  // ...
+}
 ```
 
 ## 音频会话策略
@@ -511,7 +531,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 启用静音建议通知后，本应用播放音频的同时，其他应用播放了不可与本应用并发播放的音频，本应用会收到静音建议通知，此时本应用可以选择不做处理，让本应用和其他应用进行并发播放；也可以选择将自身静音播放，让其他应用单独播放音频。
 
-启用混音播放下静音建议通知，需要先调用接口[setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)设置场景参数并订阅音频会话状态更改事件[AudioSessionStateChangedEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiosessionstatechangedevent20)，启用后再调用[activateAudioSession](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#activateaudiosession12)接口激活AudioSession。启用静音建议通知的前提是[AudioConcurrencyMode](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioconcurrencymode12)模式必须为CONCURRENCY_MIX_WITH_OTHERS。
+启用混音播放下静音建议通知，需要先调用接口[setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)设置场景参数，并调用[enableMuteSuggestionWhenMixWithOthers](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#enablemutesuggestionwhenmixwithothers23)开启功能，同时订阅音频会话状态更改事件[AudioSessionStateChangedEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiosessionstatechangedevent20)，最后调用[activateAudioSession](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#activateaudiosession12)接口激活AudioSession。启用静音建议通知的前提是[AudioConcurrencyMode](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioconcurrencymode12)模式必须为CONCURRENCY_MIX_WITH_OTHERS。
 
 <!-- @[enable_mute_suggestion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
 
@@ -545,9 +565,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 从API version 24开始，应用可以通过[setAudioSessionBehavior](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)接口设置音频会话行为参数，在特定场景下获得更优的音频焦点体验。
 
-场景一：在游戏直播场景中，游戏应用可以设置[AudioSessionBehaviorFlags](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosessionbehaviorflags24).VOIP_PRIVACY_TYPE_PUBLIC会话行为，使游戏组队的VoIP录音与直播录音可以同时进行。
-
-场景二：在用户观看直播的场景中，当其他应用启动音频流（如使用键盘录音转文字）打断直播时，会导致直播的音频和画面暂停，影响用户的观看体验。直播应用可以通过设置[AudioSessionBehaviorFlags](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosessionbehaviorflags24).MUTE_WHEN_INTERRUPTED会话行为，使直播在被打断时保持静音播放而非暂停，避免画面中断。
+在用户观看直播的场景中，当其他应用启动音频流（如使用键盘录音转文字）打断直播时，会导致直播的音频和画面暂停，影响用户的观看体验。直播应用可以通过设置[AudioSessionBehaviorFlags](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosessionbehaviorflags24).MUTE_WHEN_INTERRUPTED会话行为，使直播在被打断时保持静音播放而非暂停，避免画面中断。
 
 如果本应用未使用音频会话管理，也可以针对单条音频流设置独立的音频会话行为。对于播放流，详情请参考[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setindependentaudiosessionstrategy24)。对于录音流，详情请参考[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)。
 
@@ -563,9 +581,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
   // 本接口应在激活音频会话前调用。
   // 若音频会话在激活状态时调用此接口后，必须重新激活音频会话使其生效。
-  // behavior参数支持位或操作，可同时设置多个会话行为标志。
-  let behavior =
-    audio.AudioSessionBehaviorFlags.VOIP_PRIVACY_TYPE_PUBLIC | audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
+  let behavior = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
   audioSessionManager.setAudioSessionBehavior(behavior);
 
   // 设置音频会话策略。

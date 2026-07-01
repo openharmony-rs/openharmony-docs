@@ -122,7 +122,7 @@ Not all changes to state variables cause UI updates. Only changes that can be ob
     this.title.name.value = 'ArkUI';
     ```
 
-- When the decorated object is of the Date type, the following changes can be observed: (1) complete **Date** object reassignment; (2) property changes caused by calling **Date** APIs **setFullYear**, **setMonth**, **setDate**, **setHours**, **setMinutes**, **setSeconds**, **setMilliseconds**, **setTime**, **setUTCFullYear**, **setUTCMonth**, **setUTCDate**, **setUTCHours**, **setUTCMinutes**, **setUTCSeconds**, or **setUTCMilliseconds**. The value assignment of the nested attribute in the array item cannot be observed. For details, see [Decorating Variables of the Array Type](#decorating-variables-of-the-array-type).
+- When the decorated object is of the Array type, you can observe both the assignment to the entire Array and the assignment to individual array elements. In addition, updates to the array's data can be observed through calls to its APIs: **push**, **pop**, **shift**, **unshift**, **splice**, **copyWithin**, **fill**, **reverse**, and **sort**. However, property assignments on nested items within the array cannot be observed. For details, see [Decorating Variables of the Array Type](#decorating-variables-of-the-array-type).
 
 - When the decorated object is of the Date type, the following changes can be observed: (1) complete **Date** object reassignment; (2) property changes caused by calling **Date** APIs **setFullYear**, **setMonth**, **setDate**, **setHours**, **setMinutes**, **setSeconds**, **setMilliseconds**, **setTime**, **setUTCFullYear**, **setUTCMonth**, **setUTCDate**, **setUTCHours**, **setUTCMinutes**, **setUTCSeconds**, or **setUTCMilliseconds**.
 

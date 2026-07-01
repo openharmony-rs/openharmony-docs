@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:51:47.222Z pushedAt=2026-06-26T03:00:41.302Z -->
 
 Multicast DNS (MDNS) provides functions such as adding, removing, discovering, and resolving local services on a LAN.
 
@@ -33,8 +34,8 @@ Adds an MDNS service. This API uses an asynchronous callback to return the resul
 | Name       | Type                            | Mandatory| Description                                    |
 |-------------|----------------------------------|-----------|-------------------------------------------------|
 | context     | Context                          | Yes      | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
-| serviceInfo | [LocalServiceInfo](#localserviceinfo)                 | Yes       |   MDNS service information.     |
-| callback | AsyncCallback\<[LocalServiceInfo](#localserviceinfo)> | Yes       |   Callback used to return the result. If the operation is successful, **error** is **undefined** and **data** is the MDNS service information.     |
+| serviceInfo | [LocalServiceInfo](#localserviceinfo)                 | Yes        |   MDNS service information.      |
+| callback | AsyncCallback\<[LocalServiceInfo](#localserviceinfo)> | Yes        |   Callback used to return the result. If the service is added successfully, **error** is **undefined** and **data** is the local MDNS service information added.      |
 
 **Error codes**
 
@@ -58,6 +59,7 @@ For details about the error codes, see [MDNS Error Codes](errorcode-net-mdns.md)
 Stage model:
 
 <!--code_no_check-->
+
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -118,7 +120,6 @@ For details about the error codes, see [MDNS Error Codes](errorcode-net-mdns.md)
 | 2204008 | Failed to delete the service instance. |
 | 2204010 | Failed to send the message. |
 
-
 **Example**
 
 >**NOTE**
@@ -128,6 +129,7 @@ For details about the error codes, see [MDNS Error Codes](errorcode-net-mdns.md)
 Stage model:
 
 <!--code_no_check-->
+
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -182,7 +184,6 @@ For details about the error codes, see [MDNS Error Codes](errorcode-net-mdns.md)
 | 2204008 | Failed to delete the service instance. |
 | 2204010 | Failed to send the message. |
 
-
 **Example**
 
 >**NOTE**
@@ -192,6 +193,7 @@ For details about the error codes, see [MDNS Error Codes](errorcode-net-mdns.md)
 Stage model:
 
 <!--code_no_check-->
+
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -261,6 +263,7 @@ For details about the error codes, see [MDNS Error Codes](errorcode-net-mdns.md)
 Stage model:
 
 <!--code_no_check-->
+
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -323,6 +326,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 Stage model:
 
 <!--code_no_check-->
+
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -366,7 +370,6 @@ For details about the error codes, see [MDNS Error Codes](errorcode-net-mdns.md)
 | 2204006 | Request timeout.                |
 | 2204010 | Failed to send the message.                  |
 
-
 **Example**
 
 >**NOTE**
@@ -376,6 +379,7 @@ For details about the error codes, see [MDNS Error Codes](errorcode-net-mdns.md)
 Stage model:
 
 <!--code_no_check-->
+
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -415,7 +419,7 @@ Resolves an MDNS service. This API uses a promise to return the result.
 | Name       | Type                            | Mandatory| Description                                    |
 |-------------|--------------|-----------|-----------------------------------------------------|
 | context     | Context                          | Yes      | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
-| serviceInfo | [LocalServiceInfo](#localserviceinfo)                 | Yes       |   MDNS service information.     |
+| serviceInfo | [LocalServiceInfo](#localserviceinfo)                 | Yes        |   MDNS service information.      |
 
 **Return value**
 
@@ -445,6 +449,7 @@ For details about the error codes, see [MDNS Error Codes](errorcode-net-mdns.md)
 Stage model:
 
 <!--code_no_check-->
+
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -467,6 +472,7 @@ mdns.resolveLocalService(context, localServiceInfo).then((data: mdns.LocalServic
   console.info(JSON.stringify(data));
 });
 ```
+
 ## DiscoveryService
 
 Defines a **DiscoveryService** object for discovering MDNS services of the specified type.
@@ -490,6 +496,7 @@ Searches for MDNS services on the LAN.
 Stage model:
 
 <!--code_no_check-->
+
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -521,6 +528,7 @@ Stops searching for MDNS services on the LAN.
 Stage model:
 
 <!--code_no_check-->
+
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -557,6 +565,7 @@ Enables listening for **discoveryStart** events.
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 <!--code_no_check-->
+
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -599,6 +608,7 @@ Disables listening for **discoveryStart** events.
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 <!--code_no_check-->
+
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -645,6 +655,7 @@ Enables listening for **discoveryStop** events.
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 <!--code_no_check-->
+
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -687,6 +698,7 @@ Disables listening for **discoveryStop** events.
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 <!--code_no_check-->
+
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -733,6 +745,7 @@ Enables listening for **serviceFound** events.
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 <!--code_no_check-->
+
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -778,6 +791,7 @@ Disables listening for **serviceFound** events.
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 <!--code_no_check-->
+
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -827,6 +841,7 @@ Enables listening for **serviceLost** events.
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 <!--code_no_check-->
+
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -869,6 +884,7 @@ Disables listening for **serviceLost** events.
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 <!--code_no_check-->
+
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
