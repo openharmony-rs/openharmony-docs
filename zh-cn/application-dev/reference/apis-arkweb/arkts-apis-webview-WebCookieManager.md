@@ -93,7 +93,7 @@ struct WebComponent {
 }
 ```
 
-## fetchCookieSync<sup>26+</sup>
+## fetchCookieSync
 
 static fetchCookieSync(url: string, incognito?: boolean, includePartitionedCookies?: boolean): string
 
@@ -106,6 +106,8 @@ static fetchCookieSync(url: string, incognito?: boolean, includePartitionedCooki
 > - 为了获取可正常使用的cookie值，fetchCookieSync需传入完整链接。
 >
 > - fetchCookieSync用于获取所有的cookie值，每条cookie值之间会通过"; "进行分隔，但无法单独获取某一条特定的cookie值。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -348,11 +350,13 @@ struct WebComponent {
 }
 ```
 
-## fetchCookie<sup>26+</sup>
+## fetchCookie
 
 static fetchCookie(url: string, incognito: boolean, includePartitionedCookies: boolean): Promise\<string>
 
 以Promise方式异步获取指定url对应cookie的值。可以获取partitioned cookies。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
