@@ -1668,7 +1668,7 @@
         - [推荐使用OHAudio开发音频录制功能(C/C++)](media/audio/using-ohaudio-for-recording.md)
         - [使用AudioCapturer开发音频录制功能(ArkTs)](media/audio/using-audiocapturer-for-recording.md)
         - [低时延音频录制(C/C++)](media/audio/audio-fast-recording.md)
-        - [实现后台录音](media/audio/background-recording.md)
+        - [后台录音保持](media/audio/background-recording.md)
         - [管理麦克风静音状态](media/audio/mic-management.md)
         - [查询和监听其他应用录制状态](media/audio/audio-recording-stream-management.md)
         - [录音并发策略说明](media/audio/audio-recording-concurrency.md)
