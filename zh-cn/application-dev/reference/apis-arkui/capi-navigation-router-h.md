@@ -10,7 +10,7 @@
 
 定义Navigation或Router组件的枚举和接口。
 
-**引用文件：** <arkui/navigation_router.h>
+**引用文件：** <arkui/node_attributes/navigation_router.h>
 
 **库：** libace_ndk.z.so
 
