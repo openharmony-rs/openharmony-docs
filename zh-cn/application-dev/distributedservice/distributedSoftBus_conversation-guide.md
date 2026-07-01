@@ -41,7 +41,7 @@
 
 ## 接口说明
 
-常用接口说明如下表。具体API说明详见API参考：[@ohos.distributedSoftBus.conversation](../reference/apis-distributedservice-kit/js-apis-conversation.md)。
+常用接口说明如下表。具体API说明详见API参考：[@ohos.distributedSoftBus.conversation](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md)。
 
 | 接口名                                      | 功能描述                                                                                               |
 | ------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
@@ -52,9 +52,9 @@
 
 ## 分布式软总线会话开发指导
 
-- 接收端调用[registerConversationListener()接口](../reference/apis-distributedservice-kit/js-apis-conversation.md#registerconversationlistener)注册会话监听器，监听来自其他设备的消息。
-- 发送端调用[getTrustedDevices()接口](../reference/apis-distributedservice-kit/js-apis-conversation.md#gettrusteddevices)获取可信设备列表，选择目标设备后调用[postConversationData()接口](../reference/apis-distributedservice-kit/js-apis-conversation.md#postconversationdata)发送消息。
-- 不再需要接收消息时，调用[unregisterConversationListener()接口](../reference/apis-distributedservice-kit/js-apis-conversation.md#unregisterconversationlistener)注销监听器。
+- 接收端调用[registerConversationListener()接口](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#registerconversationlistener)注册会话监听器，监听来自其他设备的消息。
+- 发送端调用[getTrustedDevices()接口](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#gettrusteddevices)获取可信设备列表，选择目标设备后调用[postConversationData()接口](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#postconversationdata)发送消息。
+- 不再需要接收消息时，调用[unregisterConversationListener()接口](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#unregisterconversationlistener)注销监听器。
 
 ### 接收端开发指导
 
