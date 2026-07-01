@@ -78,7 +78,7 @@ export default class EntryAbility extends UIAbility {
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
-// ...
+
 @Entry
 @Component
 struct WebComponent {
