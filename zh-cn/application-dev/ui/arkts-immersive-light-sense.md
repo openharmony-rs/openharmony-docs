@@ -427,7 +427,7 @@ struct MaterialInfoPage {
    struct SheetMaterialPage {
      @State isShow: boolean = false;
      @State sheetHeight: number = 300;
-     @State myMaterial: SystemUiMaterial | undefined = new uiMaterial.ImmersiveMaterial({
+     @State myMaterial: uiMaterial.Material | undefined = new uiMaterial.ImmersiveMaterial({
        style: uiMaterial.ImmersiveStyle.ULTRA_THICK,
      });
    

@@ -45,7 +45,7 @@
   @Builder
   export function buildText(params: Params) {
     Popup({
-      // 类型设置图标内容。
+      // 设置图标内容。
       icon: {
         // 请将$r('app.media.app_icon')替换为实际资源文件
         image: $r('app.media.app_icon'),
@@ -61,7 +61,7 @@
         fontColor: Color.Black,
         fontWeight: FontWeight.Normal
       } as PopupTextOptions,
-      // 设置文字内容。
+      // 设置消息内容。
       message: {
         text: `This is a Popup message 1`,
         fontSize: 15,
@@ -206,7 +206,7 @@
   
   ``` TypeScript
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { ComponentContent, TargetInfo, PromptAction } from '@kit.ArkUI';
+  import { ComponentContent, TargetInfo, PromptAction, PopupCommonOptions } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   
   export class PromptActionClass {
@@ -279,7 +279,7 @@
   
   ``` TypeScript
   import { PromptActionClass } from './PopupMainPage';
-  import { ComponentContent, PromptAction } from '@kit.ArkUI';
+  import { ComponentContent, PromptAction, PopupCommonOptions } from '@kit.ArkUI';
   
   const ID: number = 0;
   

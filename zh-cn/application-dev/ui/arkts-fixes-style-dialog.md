@@ -144,7 +144,7 @@ export struct ShowDialogExample {
               } catch (error) {
                 let message = (error as BusinessError).message;
                 let code = (error as BusinessError).code;
-                console.error(`showdialog args error code is ${code}, message is ${message}`);
+                console.error(`showDialog args error code is ${code}, message is ${message}`);
               }
             })
         }.width('100%')
@@ -413,25 +413,25 @@ export struct TextPickerCNDialogExample {
         { text: '牡丹江市', children: [{ text: '东安区' }, { text: '西安区' }, { text: '爱民区' }] }]
     }
   ];
-  private select: number = 0;
+  private select: number[] = [0, 0, 0];
 
   build() {
-    // ···
+    // ...
       Column() {
         Button('showTextPickerDialog')
-        // ···
+        // ...
           .margin(30)
           .onClick(() => {
             this.getUIContext().showTextPickerDialog({
               range: this.fruits,
               selected: this.select,
               onAccept: (value: TextPickerResult) => {
-                this.select = value.index as number
+                this.select = value.index as number[]
               }
             });
           })
       }.width('100%').margin({ top: 5 })
-    // ···
+      // ...
   }
 }
 ```
@@ -484,7 +484,7 @@ export struct showActionSheetExample {
                 confirm: {
                   value: 'Confirm button',
                   action: () => {
-                    console.info('Get Alert Dialog handled');
+                    console.info('Get ActionSheet handled');
                   }
                 },
                 alignment: DialogAlignment.Center,
@@ -541,7 +541,6 @@ export struct showActionSheetExample {
 <!-- @[alert_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/AlertDialog.ets) -->
 
 ``` TypeScript
-import { PromptAction } from '@kit.ArkUI';
 
 @Entry
 @Component
