@@ -7,13 +7,13 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
 
-本模块提供划词管理能力，包括创建窗口、显示窗口、移动窗口、隐藏窗口、销毁窗口、监听鼠标划词事件、获取选中文本等。
+本模块提供划词管理能力，包括创建面板、显示面板、移动面板、隐藏面板、销毁面板、监听鼠标/触控板划词事件、获取选中文本等。典型使用流程为：先通过[on('selectionCompleted')](#selectionmanageronselectioncompleted)订阅划词完成事件，在回调中调用[getSelectionContent](#getselectioncontent)获取选中文本，然后通过[createPanel](#createpanel)创建划词面板，调用[setUiContent](#setuicontent)加载页面内容，再调用[moveToGlobalDisplay](#movetoglobaldisplay)移动面板到指定位置，最后通过[show](#show)显示面板。如不主动调用[hide](#hide)，面板在失焦时会自动隐藏。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 24开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - 本模块仅支持PC/2in1设备。
-> - 仅支持集成了划词扩展的应用调用。
+> - 本模块仅支持PC/2in1设备。开发者可通过canIUse('SystemCapability.SelectionInput.Selection')判断当前设备是否支持该功能。
+> - 仅支持集成了划词扩展的应用调用，划词扩展的实现请参见[SelectionExtensionAbility](js-apis-selectionInput-selectionExtensionAbility.md)。
 
 ## 导入模块
 
@@ -42,7 +42,7 @@ on(type: 'selectionCompleted', callback: Callback\<SelectionInfo>): void
 | 参数名   | 类型                                        | 必填 | 说明                                           |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                      | 是   | 设置监听类型，固定取值为'selectionCompleted'。 |
-| callback | Callback\<[SelectionInfo](#selectioninfo)> | 是   | 回调函数，返回当前划词信息。该回调仅在用户通过鼠标或触控板选中文本（鼠标左键双击/三击/按下滑动）后按下Ctrl键时触发。       |
+| callback | Callback\<[SelectionInfo](#selectioninfo)> | 是   | 回调函数，返回[SelectionInfo](#selectioninfo)。该回调仅在用户通过鼠标或触控板选中文本（鼠标左键双击/三击/按下滑动）后按下Ctrl键时触发。       |
 
 **错误码：**
 
@@ -58,11 +58,12 @@ on(type: 'selectionCompleted', callback: Callback\<SelectionInfo>): void
 import { selectionManager } from '@kit.BasicServicesKit';
 
 try {
+  // 订阅划词完成事件
   selectionManager.on('selectionCompleted', (info: selectionManager.SelectionInfo) => {
-    console.info(`Enter the callback function.`);
+    console.info('Enter the callback function.');
   });
 } catch (err) {
-  console.error(`Failed to register selectionCompleted callback: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to register selectionCompleted callback. Error code: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -81,22 +82,25 @@ off(type: 'selectionCompleted', callback?: Callback\<SelectionInfo>): void
 | 参数名   | 类型                                        | 必填 | 说明                                                         |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                      | 是   | 设置监听类型，固定取值为'selectionCompleted'。               |
-| callback | Callback\<[SelectionInfo](#selectioninfo)> | 否   | 回调函数，返回[SelectionInfo](#selectioninfo)。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | Callback\<[SelectionInfo](#selectioninfo)> | 否   | 需要取消的回调函数（即之前通过on方法订阅时的回调实例），返回[SelectionInfo](#selectioninfo)。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 
 ```ts
 import { selectionManager } from '@kit.BasicServicesKit';
 
+// 定义划词完成事件回调函数，用于订阅和取消订阅
 let selectionChangeCallback = (info: selectionManager.SelectionInfo) => {
-  console.info(`Enter the callback function.`);
+  console.info('Enter the callback function.');
 };
 
+// 先订阅划词完成事件回调，为后续取消订阅做准备
 selectionManager.on('selectionCompleted', selectionChangeCallback);
 try {
+  // 取消订阅划词完成事件
   selectionManager.off('selectionCompleted', selectionChangeCallback);
 } catch (err) {
-  console.error(`Failed to unregister selectionCompleted: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to unregister selectionCompleted. Error code: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -104,7 +108,7 @@ try {
 
 getSelectionContent(): Promise\<string>
 
-获取选中文本的内容。使用Promise异步回调。
+获取选中文本的内容。使用Promise异步回调。需在[on('selectionCompleted')](#selectionmanageronselectioncompleted)回调中调用，且仅在划词完成事件触发后有效。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
@@ -133,11 +137,14 @@ getSelectionContent(): Promise\<string>
 ```ts
 import { selectionManager } from '@kit.BasicServicesKit';
 
+// 订阅划词完成事件，在回调中获取选中文本
 selectionManager.on('selectionCompleted', async (info: selectionManager.SelectionInfo) => {
   try {
+    // 获取选中文本内容
     let content = await selectionManager.getSelectionContent();
+    console.info(`Succeeded in getting selection content: ${content}`);
   } catch (err) {
-    console.error(`Failed to get selection content: ${err.code}, error message: ${err.message}`);
+    console.error(`Failed to get selection content. Error code: ${err.code}, error message: ${err.message}`);
   }
 });
 ```
@@ -158,8 +165,8 @@ createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 
 | 参数名   | 类型        | 必填 | 说明                     |
 | ------- | ----------- | ---- | ------------------------ |
-| ctx     | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context) | 是   | 当前划词面板依赖的上下文信息。 |
-| info    | [PanelInfo](js-apis-selectionInput-selectionPanel.md#panelinfo)   | 是   | 划词面板信息。 |
+| ctx     | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context) | 是   | 当前划词面板依赖的上下文信息，需使用SelectionExtensionAbility提供的上下文。 |
+| info    | [PanelInfo](js-apis-selectionInput-selectionPanel.md#panelinfo)   | 是   | 划词面板的配置信息，用于指定面板类型、位置和尺寸等属性。 |
 
 **返回值：**
 | 类型   | 说明                                                                 |
@@ -183,8 +190,8 @@ import { rpc } from '@kit.IPCKit';
 import { Want } from '@kit.AbilityKit';
 
 class SelectionAbilityStub extends rpc.RemoteObject {
-  constructor(des: string) {
-    super(des);
+  constructor(descriptor: string) {
+    super(descriptor);
   }
   onRemoteMessageRequest(
     code: number,
@@ -198,20 +205,22 @@ class SelectionAbilityStub extends rpc.RemoteObject {
 
 class ServiceExtAbility extends SelectionExtensionAbility {
   onConnect(want: Want): rpc.RemoteObject {
+    // 配置划词面板信息，包括面板类型、位置和尺寸
     let panelInfo: PanelInfo = {
       panelType: PanelType.MENU_PANEL,
       x: 0,
       y: 0,
       width: 500,
       height: 200
-    }
+    };
     let selectionPanel: selectionManager.Panel | undefined = undefined;
+    // 创建划词面板
     selectionManager.createPanel(this.context, panelInfo)
       .then((panel: selectionManager.Panel) => {
         selectionPanel = panel;
         console.info('Succeed in creating panel.');
       }).catch((err: BusinessError) => {
-      console.error(`Failed to create panel: ${err.code}, error message: ${err.message}`);
+        console.error(`Failed to create panel. Error code: ${err.code}, error message: ${err.message}`);
     });
     return new SelectionAbilityStub('remote');
   }
@@ -223,7 +232,7 @@ export default ServiceExtAbility;
 
 destroyPanel(panel: Panel): Promise\<void>
 
-销毁划词面板。使用Promise异步回调。
+销毁划词面板。与[createPanel](#createpanel)配对使用，用于销毁由createPanel()创建的面板对象。使用Promise异步回调。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
@@ -256,8 +265,8 @@ import { rpc } from '@kit.IPCKit';
 import { Want } from '@kit.AbilityKit';
 
 class SelectionAbilityStub extends rpc.RemoteObject {
-  constructor(des: string) {
-    super(des);
+  constructor(descriptor: string) {
+    super(descriptor);
   }
   onRemoteMessageRequest(
     code: number,
@@ -271,32 +280,34 @@ class SelectionAbilityStub extends rpc.RemoteObject {
 
 class ServiceExtAbility extends SelectionExtensionAbility {
   onConnect(want: Want): rpc.RemoteObject {
+    // 配置划词面板信息，包括面板类型、位置和尺寸
     let panelInfo: PanelInfo = {
       panelType: PanelType.MENU_PANEL,
       x: 0,
       y: 0,
       width: 500,
       height: 200
-    }
+    };
     let selectionPanel: selectionManager.Panel | undefined = undefined;
-
+    // 先创建划词面板，获取面板实例用于后续销毁
     selectionManager.createPanel(this.context, panelInfo)
       .then((panel: selectionManager.Panel) => {
         console.info('Succeed in creating panel.');
         selectionPanel = panel;
         try {
           if (selectionPanel) {
+            // 销毁划词面板
             selectionManager.destroyPanel(selectionPanel).then(() => {
               console.info('Succeed in destroying panel.');
             }).catch((err: BusinessError) => {
-              console.error(`Failed to destroy panel: ${err.code}, error message: ${err.message}`);
+              console.error(`Failed to destroy panel. Error code: ${err.code}, error message: ${err.message}`);
             });
           }
         } catch (err) {
-          console.error(`Failed to destroy panel: ${err.code}, error message: ${err.message}`);
+          console.error(`Failed to destroy panel. Error code: ${err.code}, error message: ${err.message}`);
         }
       }).catch((err: BusinessError) => {
-      console.error(`Failed to create panel: ${err.code}, error message: ${err.message}`);
+        console.error(`Failed to create panel. Error code: ${err.code}, error message: ${err.message}`);
     });
     return new SelectionAbilityStub('remote');
   }
@@ -329,7 +340,7 @@ export default ServiceExtAbility;
 
 ## Panel
 
-划词面板。
+划词面板对象，通过[createPanel](#createpanel)创建，提供面板内容设置、显示、隐藏、移动及事件订阅等管理能力。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
@@ -371,16 +382,17 @@ setUiContent(path: string): Promise\<void>
 **示例：**
 <!--code_no_check-->
 ```ts
-import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // 为划词面板加载页面内容。selectionPanel为createPanel创建出的panel实例
   selectionPanel.setUiContent('pages/Index').then(() => {
     console.info('Succeeded in setting the content.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to setUiContent: ${err.code}, error message: ${err.message}`);
+    console.error(`Failed to setUiContent. Error code: ${err.code}, error message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to setUiContent: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to setUiContent. Error code: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -412,12 +424,13 @@ show(): Promise\<void>
 **示例：**
 <!--code_no_check-->
 ```ts
-import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+// 显示划词面板。selectionPanel为createPanel创建出的panel实例
 selectionPanel.show().then(() => {
   console.info('Succeeded in showing the panel.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to show panel: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to show panel. Error code: ${err.code}, error message: ${err.message}`);
 });
 ```
 
@@ -449,12 +462,13 @@ hide(): Promise\<void>
 **示例：**
 <!--code_no_check-->
 ```ts
-import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+// 隐藏划词面板。selectionPanel为createPanel创建出的panel实例
 selectionPanel.hide().then(() => {
   console.info('Succeeded in hiding the panel.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to hide panel: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to hide panel. Error code: ${err.code}, error message: ${err.message}`);
 });
 ```
 
@@ -462,7 +476,7 @@ selectionPanel.hide().then(() => {
 
 startMoving(): Promise\<void>
 
-使当前划词面板可以随鼠标拖动位置。使用Promise异步回调。该接口需要写在onTouch的回调函数中，并且事件类型为TouchType.Down。
+设置划词面板可随鼠标拖动移动位置。使用Promise异步回调。该接口需要写在onTouch的回调函数中，并且事件类型为TouchType.Down。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
@@ -486,7 +500,7 @@ startMoving(): Promise\<void>
 **示例：**
 <!--code_no_check-->
 ```ts
-import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 RelativeContainer() {
   /* 
@@ -496,10 +510,11 @@ RelativeContainer() {
 .onTouch((event: TouchEvent) => {
   if (event.type === TouchType.Down) {
     if (selectionPanel !== undefined) {
-      selectionPanel.startMoving().then(() => {   // selectionPanel为createPanel创建出的panel实例
+      // 使划词面板可随鼠标拖动位置。selectionPanel为createPanel创建出的panel实例
+      selectionPanel.startMoving().then(() => {
         console.info('Succeeded in startMoving the panel.');
       }).catch((err: BusinessError) => {
-        console.error(`Failed to startMoving panel: ${err.code}, error message: ${err.message}`);
+        console.error(`Failed to startMoving panel. Error code: ${err.code}, error message: ${err.message}`);
       });
     }
   }
@@ -525,8 +540,8 @@ moveTo(x: number, y: number): Promise\<void>
 
 | 参数名   | 类型                   | 必填 | 说明     |
 | -------- | ---------------------- | ---- | -------- |
-| x | number | 是   |x轴方向移动的值，单位为px。|
-| y | number | 是   |y轴方向移动的值，单位为px。|
+| x | number | 是   |目标位置的x轴坐标，单位为px。|
+| y | number | 是   |目标位置的y轴坐标，单位为px。|
 
 **返回值：**
 
@@ -546,16 +561,17 @@ moveTo(x: number, y: number): Promise\<void>
 **示例：**
 <!--code_no_check-->
 ```ts
-import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // 移动划词面板至屏幕指定位置。selectionPanel为createPanel创建出的panel实例
   selectionPanel.moveTo(200, 200).then(() => {
     console.info('Succeeded in moving the panel.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to move panel: ${err.code}, error message: ${err.message}`);
+    console.error(`Failed to move panel. Error code: ${err.code}, error message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to move panel: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to move panel. Error code: ${err.code}, error message: ${err.message}`);
 }
 ```
 <!--DelEnd-->
@@ -564,7 +580,7 @@ try {
 
 moveToGlobalDisplay(x: number, y: number): Promise\<void>
 
-移动划词面板至屏幕指定位置。使用Promise异步回调。
+移动划词面板至屏幕全局坐标系下的指定位置，支持移动到扩展屏上。使用Promise异步回调。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
@@ -574,8 +590,8 @@ moveToGlobalDisplay(x: number, y: number): Promise\<void>
 
 | 参数名   | 类型                   | 必填 | 说明     |
 | -------- | ---------------------- | ---- | -------- |
-| x | number | 是   |x轴方向移动的值，单位为px。|
-| y | number | 是   |y轴方向移动的值，单位为px。|
+| x | number | 是   |目标位置的x轴坐标，单位为px。|
+| y | number | 是   |目标位置的y轴坐标，单位为px。|
 
 **返回值：**
 
@@ -595,16 +611,17 @@ moveToGlobalDisplay(x: number, y: number): Promise\<void>
 **示例：**
 <!--code_no_check-->
 ```ts
-import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // 移动划词面板至屏幕指定位置。selectionPanel为createPanel创建出的panel实例
   selectionPanel.moveToGlobalDisplay(200, 200).then(() => {
     console.info('Succeeded in moving the panel.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to move panel: ${err.code}, error message: ${err.message}`);
+    console.error(`Failed to move panel. Error code: ${err.code}, error message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to move panel: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to move panel. Error code: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -612,7 +629,7 @@ try {
 
 on(type: 'destroyed', callback: Callback\<void>): void
 
-订阅划词窗口销毁事件。使用callback异步回调。
+订阅划词面板销毁事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
@@ -623,19 +640,18 @@ on(type: 'destroyed', callback: Callback\<void>): void
 | 参数名   | 类型                                        | 必填 | 说明                                           |
 | -------- | ------------------------------------------- | ---- | ---------------------------------------------- |
 | type     | string                                      | 是   | 设置监听类型，固定取值为'destroyed'。 |
-| callback | Callback\<void> | 是   | 回调函数，返回值为空。       |
+| callback | Callback\<void> | 是   | 回调函数，面板销毁时触发，返回值为空。       |
 
 **示例：**
 <!--code_no_check-->
 ```ts
-import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
-
 try {
+  // 订阅划词面板销毁事件。selectionPanel为createPanel创建出的panel实例
   selectionPanel.on('destroyed', () => {
     console.info('Panel has been destroyed.');
   });
 } catch (err) {
-  console.error(`Failed to register destroyed callback: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to register destroyed callback. Error code: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -643,7 +659,7 @@ try {
 
 off(type: 'destroyed', callback?: Callback\<void>): void
 
-取消订阅划词窗口销毁事件。使用callback异步回调。
+取消订阅划词面板销毁事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
@@ -654,17 +670,16 @@ off(type: 'destroyed', callback?: Callback\<void>): void
 | 参数名   | 类型                                        | 必填 | 说明                                                         |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                      | 是   | 设置监听类型，固定取值为'destroyed'。               |
-| callback | Callback\<void> | 否   | 回调函数，返回值为空。参数不填写时，取消订阅type对应的所有回调事件。|
+| callback | Callback\<void> | 否   | 需要取消的回调函数（即之前通过on方法订阅时的回调实例），返回值为空。参数不填写时，取消订阅type对应的所有回调事件。|
 
 **示例：**
 <!--code_no_check-->
 ```ts
-import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
-
 try {
+  // 取消订阅划词面板销毁事件。selectionPanel为createPanel创建出的panel实例
   selectionPanel.off('destroyed');
 } catch (err) {
-  console.error(`Failed to unregister destroyed: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to unregister destroyed. Error code: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -672,7 +687,7 @@ try {
 
 on(type: 'hidden', callback: Callback\<void>): void
 
-订阅划词窗口隐藏事件。使用callback异步回调。
+订阅划词面板隐藏事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
@@ -688,14 +703,13 @@ on(type: 'hidden', callback: Callback\<void>): void
 **示例：**
 <!--code_no_check-->
 ```ts
-import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
-
 try {
+  // 订阅划词面板隐藏事件。selectionPanel为createPanel创建出的panel实例
   selectionPanel.on('hidden', () => {
     console.info('Panel has been hidden.');
   });
 } catch (err) {
-  console.error(`Failed to register hidden callback: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to register hidden callback. Error code: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -703,7 +717,7 @@ try {
 
 off(type: 'hidden', callback?: Callback\<void>): void
 
-取消订阅划词窗口隐藏事件。使用callback异步回调。
+取消订阅划词面板隐藏事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
@@ -714,17 +728,16 @@ off(type: 'hidden', callback?: Callback\<void>): void
 | 参数名   | 类型                                        | 必填 | 说明                                                         |
 | -------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                      | 是   | 设置监听类型，固定取值为'hidden'。               |
-| callback | Callback\<void> | 否   | 回调函数，返回值为空。参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | Callback\<void> | 否   | 需要取消的回调函数（即之前通过on方法订阅时的回调实例），返回值为空。参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 <!--code_no_check-->
 ```ts
-import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
-
 try {
+  // 取消订阅划词面板隐藏事件。selectionPanel为createPanel创建出的panel实例
   selectionPanel.off('hidden');
 } catch (err) {
-  console.error(`Failed to unregister hidden: ${err.code}, error message: ${err.message}`);
+  console.error(`Failed to unregister hidden. Error code: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -738,6 +751,6 @@ try {
 
 | 名称         | 值 | 说明               |
 | ------------ | -- | ------------------ |
-| MOUSE_MOVE | 1 | 滑动选词类型。 |
-| DOUBLE_CLICK   | 2 | 双击选词类型。 |
-| TRIPLE_CLICK   | 3 | 三击选词类型。 |
+| MOUSE_MOVE | 1 | 滑动划词类型。 |
+| DOUBLE_CLICK   | 2 | 双击划词类型。 |
+| TRIPLE_CLICK   | 3 | 三击划词类型。 |
