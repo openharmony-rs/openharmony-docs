@@ -3390,7 +3390,7 @@ bool OH_CaptureSession_IsLockFocusTrackingSupported(const Camera_CaptureSession*
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 是否支持追焦跟踪功能，返回ture表示支持，返回false表示不支持。 |
+| bool | 是否支持追焦跟踪功能，返回true表示支持，返回false表示不支持。 |
 
 ### OH_CaptureSession_LockFocusTracking()
 
