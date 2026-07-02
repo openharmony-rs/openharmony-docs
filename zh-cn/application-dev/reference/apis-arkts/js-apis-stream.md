@@ -19,7 +19,7 @@
 ## 导入模块
 
 ```ts
-import { stream  } from '@kit.ArkTS';
+import { stream } from '@kit.ArkTS';
 ```
 
 ## Writable
@@ -39,7 +39,7 @@ import { stream  } from '@kit.ArkTS';
 | 名称    | 类型      | 只读 | 可选  | 说明        |
 | ------- | -------- | ------ | ------ | ----------- |
 | writableObjectMode  | boolean   | 是   | 否 | 指定可写流是否以对象模式工作。true表示流被配置为对象模式，false表示流处于非对象模式。当前版本只支持原始数据（字符串和Uint8Array），返回值为false。 |
-| writableHighWatermark | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 否  | 定义可写流缓冲区数据量的水位线大小。当前版本不支持开发者自定义修改水位线大小。调用[write()](#write)写入数据后，若缓冲区数据量达到该值，[write()](#write)会返回false。默认值为16 * 1024字节。|
+| writableHighWatermark | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 否  | 定义可写流缓冲区数据量的水位线大小，单位：字节。当前版本不支持开发者自定义修改水位线大小。调用[write()](#write)写入数据后，若缓冲区数据量达到该值，[write()](#write)会返回false。默认值为16 * 1024字节。|
 | writable | boolean | 是 | 否  | 表示可写流是否处于可写状态。true表示流当前是可写的，false表示流当前不再接受写入操作。|
 | writableLength | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 否  | 表示可写流缓冲区中待写入的字节数。|
 | writableCorked | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是  | 否 | 表示可写流cork状态计数。值大于0时，可写流处于强制写入缓冲区状态；值为0时，该状态解除。使用[cork()](#cork)方法时计数加一，使用[uncork()](#uncork)方法时计数减一，使用[end()](#end)方法时计数清零。|
@@ -84,7 +84,7 @@ write(chunk?: string | Uint8Array, encoding?: string, callback?: Function): bool
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| chunk  | string \| Uint8Array | 否 | 需要写入的数据。默认值为undefined。当前版本不支持null、undefined和空字符串。 |
+| chunk  | string \| Uint8Array | 否 | 需要写入的数据。默认值为undefined。当前版本不支持传入null、undefined和空字符串。 |
 | encoding  | string | 否   | 字符编码类型。默认值是'utf8'，当前版本支持'utf8'、'gb18030'、'gbk'以及'gb2312'。|
 | callback  | Function | 否   | 回调函数。默认不调用。 |
 
@@ -120,7 +120,7 @@ class TestWritable extends stream.Writable {
 }
 
 let writableStream = new TestWritable();
-writableStream.write('test', 'utf8');
+writableStream.write("test", "utf8");
 ```
 
 ArkTS-Sta示例：
@@ -137,7 +137,7 @@ class TestWritable extends stream.Writable {
 }
 
 let writableStream = new TestWritable();
-writableStream.write('test', 'utf8');
+writableStream.write("test", "utf8");
 ```
 
 ### end
@@ -194,8 +194,8 @@ class TestWritable extends stream.Writable {
 }
 
 let writableStream = new TestWritable();
-writableStream.write('test', 'utf8');
-writableStream.end('finish', 'utf8', () => {
+writableStream.write("test", "utf8");
+writableStream.end("finish", "utf8", () => {
   console.info("Writable is end"); // Writable is end
 });
 ```
@@ -216,8 +216,8 @@ class TestWritable extends stream.Writable {
 }
 
 let writableStream = new TestWritable();
-writableStream.write('test', 'utf8');
-writableStream.end('finish', 'utf8', () => {
+writableStream.write("test", "utf8");
+writableStream.end("finish", "utf8", () => {
   console.info("Writable is end"); // 期望结果: Writable is end
 });
 ```
@@ -263,7 +263,7 @@ class TestWritable extends stream.Writable {
 }
 
 let writableStream = new TestWritable();
-let result = writableStream.setDefaultEncoding('utf8');
+let result = writableStream.setDefaultEncoding("utf8");
 console.info("Writable is result", result); // Writable is result true
 ```
 
@@ -280,7 +280,7 @@ class TestWritable extends stream.Writable {
 }
 
 let writableStream = new TestWritable();
-let result = writableStream.setDefaultEncoding('utf8');
+let result = writableStream.setDefaultEncoding("utf8");
 console.info("Writable is result", result); // 期望结果: Writable is result true
 ```
 
@@ -376,11 +376,11 @@ class TestWritable extends stream.Writable {
 
 let writableStream = new TestWritable();
 writableStream.cork();
-writableStream.write('data1', 'utf8');
-writableStream.write('data2', 'utf8');
+writableStream.write("data1", "utf8");
+writableStream.write("data2", "utf8");
 writableStream.uncork();
 writableStream.end();
-writableStream.on('finish', () => {
+writableStream.on("finish", () => {
   console.info("all Data is End"); // all Data is End
 });
 ```
@@ -399,10 +399,10 @@ class TestWritable extends stream.Writable {
 
 let writableStream = new TestWritable();
 writableStream.cork();
-writableStream.write('data1', 'utf8');
-writableStream.write('data2', 'utf8');
+writableStream.write("data1", "utf8");
+writableStream.write("data2", "utf8");
 writableStream.uncork();
-writableStream.on('finish', () => {
+writableStream.on("finish", () => {
   console.info("all Data is End"); // 期望结果: all Data is End
 });
 writableStream.end();
@@ -519,7 +519,7 @@ let testListener = () => {
 };
 writableStream.on('finish', testListener);
 writableStream.off('finish');
-writableStream.write('test');
+writableStream.write("test");
 writableStream.end();
 setTimeout(() => {
   console.info("Writable off test", testListenerCalled.toString()); // Writable off test false
@@ -545,7 +545,7 @@ let testListener = () => {
 };
 writableStream.on('finish', testListener);
 writableStream.off('finish');
-writableStream.write('test');
+writableStream.write("test");
 writableStream.end();
 setTimeout(() => {
   console.info("Writable off test", testListenerCalled.toString()); // 期望结果: Writable off test false
@@ -853,7 +853,7 @@ class TestReadable extends stream.Readable {
 }
 
 let readableStream = new TestReadable();
-readableStream.push('test');
+readableStream.push("test");
 readableStream.pause();
 let dataChunk = readableStream.read();
 console.info('Readable data is', dataChunk); // Readable data is test
@@ -871,7 +871,7 @@ class TestReadable extends stream.Readable {
 }
 
 let readableStream = new TestReadable();
-readableStream.push('test');
+readableStream.push("test");
 readableStream.pause();
 let dataChunk = readableStream.read();
 console.info('Readable data is', dataChunk); // 期望结果: Readable data is test
@@ -1140,7 +1140,7 @@ class TestReadable extends stream.Readable {
   }
 
   doRead(size: number) {
-    this.push('test');
+    this.push("test");
     this.push(null);
   }
 }
@@ -1169,7 +1169,7 @@ class TestReadable extends stream.Readable {
   }
 
   doRead(size: int) {
-    this.push('test');
+    this.push("test");
     this.push(null);
   }
 }
@@ -1226,7 +1226,7 @@ class TestReadable extends stream.Readable {
   }
 
   doRead(size: number) {
-    this.push('test');
+    this.push("test");
     this.push(null);
   }
 }
@@ -1259,7 +1259,7 @@ class TestReadable extends stream.Readable {
   }
 
   doRead(size: int) {
-    this.push('test');
+    this.push("test");
     this.push(null);
   }
 }
@@ -1322,7 +1322,7 @@ class TestReadable extends stream.Readable {
 }
 
 let readable = new TestReadable();
-readable.push('test');
+readable.push("test");
 readable.on('error', () => {
   console.info("error event called"); // error event called
 });
@@ -1341,7 +1341,7 @@ class TestReadable extends stream.Readable {
 }
 
 let readable = new TestReadable();
-readable.push('test');
+readable.push("test");
 readable.on('error', (): void => {
   console.info("error event called"); // 期望结果: error event called
 });
@@ -1392,7 +1392,7 @@ function read() {
 readable.setEncoding('utf8');
 readable.on('readable', read);
 readable.off('readable');
-readable.push('test');
+readable.push("test");
 // off注销对readable事件的监听后，read函数不会被调用，"read() called"也不会被打印
 ```
 
@@ -1416,7 +1416,7 @@ function read() {
 readable.setEncoding('utf8');
 readable.on('readable', read);
 readable.off('readable');
-readable.push('test');
+readable.push("test");
 // off注销对readable事件的监听后，read函数不会被调用，"read() called"也不会被打印
 ```
 
@@ -1700,7 +1700,7 @@ class TestDuplex extends stream.Duplex {
 }
 
 let duplexStream = new TestDuplex();
-let result = duplexStream.write('test', 'utf8');
+let result = duplexStream.write("test", 'utf8');
 console.info("duplexStream result", result); // duplexStream result true
 ```
 
@@ -1721,7 +1721,7 @@ class TestDuplex extends stream.Duplex {
 }
 
 let duplexStream = new TestDuplex();
-let result = duplexStream.write('test', 'utf8');
+let result = duplexStream.write("test", 'utf8');
 console.info("duplexStream result", result); // 期望结果: duplexStream result true
 ```
 
@@ -1780,7 +1780,7 @@ class TestDuplex extends stream.Duplex {
 }
 
 let duplexStream = new TestDuplex();
-duplexStream.end('test', 'utf8', () => {
+duplexStream.end("test", 'utf8', () => {
   console.info("Duplex is end"); // Duplex is end
 });
 ```
@@ -1802,7 +1802,7 @@ class TestDuplex extends stream.Duplex {
 }
 
 let duplexStream = new TestDuplex();
-duplexStream.end('test', 'utf8', () => {
+duplexStream.end("test", 'utf8', () => {
   console.info("Duplex is end"); // 期望结果: Duplex is end
 });
 ```
@@ -2238,7 +2238,7 @@ class TestTransform extends stream.Transform {
   }
 
   doFlush(callback: Function) {
-    callback(null, 'test');
+    callback(null, "test");
   }
 }
 
@@ -2261,7 +2261,7 @@ class TestTransform extends stream.Transform {
   }
 
   doFlush(callback: Function) {
-    callback.unsafeCall('test');
+    callback.unsafeCall("test");
   }
 }
 
