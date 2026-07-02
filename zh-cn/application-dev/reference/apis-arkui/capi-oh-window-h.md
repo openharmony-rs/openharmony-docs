@@ -141,8 +141,6 @@ int32_t OH_WindowManager_SetWindowNavigationBarEnabled(int32_t windowId, bool en
 
 **起始版本：** 15
 
-<!--Del-->**设备行为差异：** 在OpenHarmony v6.0 Release之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony v6.0 Release开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
-
 **参数：**
 
 | 参数项 | 描述 |
