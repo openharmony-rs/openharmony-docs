@@ -602,7 +602,7 @@ struct Index {
       Row() {
         Checkbox({ name: 'Check box 1', group: 'checkboxGroup' })
           .onChange((value: boolean) => {
-            console.info('Check box 1 change to ' + value);
+            console.info('Check box 1: ' + value);
           })
         Text('Check box 1').fontSize(20)
       }
@@ -610,7 +610,7 @@ struct Index {
       Row() {
         Checkbox({ name: 'Check box 2', group: 'checkboxGroup' })
           .onChange((value: boolean) => {
-            console.info('Check box 2 change to ' + value);
+            console.info('Check box 2: ' + value);
           })
         Text('Check box 2').fontSize(20)
       }
