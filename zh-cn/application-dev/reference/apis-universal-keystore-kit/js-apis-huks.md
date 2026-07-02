@@ -123,7 +123,7 @@ generateKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\
 | 12000013 | queried credential does not exist. |
 | 12000014 | memory is insufficient. |
 | 12000015 | Failed to obtain the security information via UserIAM. |
-| 12000017 | The key with same alias is already exist.<br>适用版本：20+ |
+| 12000017 | The key with the same alias already exists.<br>适用版本：20+ |
 | 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 | 12000011 | The queried entity does not exist. This may happen because the key resource ID specified by keyAlias has not been opened in the external crypto scenario.<br>适用版本：26.0.0+ |
 | 12000020 | the provider operation failed.<br>适用版本：26.0.0+ |
@@ -302,7 +302,7 @@ generateKeyItem(keyAlias: string, options: HuksOptions) : Promise\<void>
 | 12000013 | queried credential does not exist. |
 | 12000014 | memory is insufficient. |
 | 12000015 | Failed to obtain the security information via UserIAM. |
-| 12000017 | the key with same alias is already exist.<br>适用版本：20+ |
+| 12000017 | The key with the same alias already exists.<br>适用版本：20+ |
 | 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 | 12000011 | The queried entity does not exist. This may happen because the key resource ID specified by keyAlias has not been opened in the external crypto scenario.<br>适用版本：26.0.0+ |
 | 12000020 | the provider operation failed.<br>适用版本：26.0.0+ |
@@ -670,7 +670,7 @@ importKeyItem(keyAlias: string, options: HuksOptions) : Promise\<void>
 | 12000013 | queried credential does not exist. |
 | 12000014 | memory is insufficient. |
 | 12000015 | Failed to obtain the security information via UserIAM. |
-| 12000017 | the key with same alias is already exist.<br>适用版本：20+ |
+| 12000017 | The key with same alias is already exist.<br>适用版本：20+ |
 | 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 
 **示例：**
@@ -1438,7 +1438,7 @@ API version 9-11系统能力为SystemCapability.Security.Huks.Extension；从API
 | 12000013 | queried credential does not exist. |
 | 12000014 | memory is insufficient. |
 | 12000015 | Failed to obtain the security information via UserIAM. |
-| 12000017 | the key with same alias is already exist.<br>适用版本：20+ |
+| 12000017 | The key with the same alias already exists.<br>适用版本：20+ |
 | 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 | 12000020 | the provider operation failed.<br>适用版本：26.0.0+ |
 | 12000021 | the UKey PIN is locked.<br>适用版本：26.0.0+ |
@@ -1661,7 +1661,7 @@ importWrappedKeyItem(keyAlias: string, wrappingKeyAlias: string, options: HuksOp
 | 12000013 | queried credential does not exist. |
 | 12000014 | memory is insufficient. |
 | 12000015 | Failed to obtain the security information via UserIAM. |
-| 12000017 | the key with same alias is already exist.<br>适用版本：20+ |
+| 12000017 | The key with the same alias already exists.<br>适用版本：20+ |
 | 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 | 12000020 | the provider operation failed.<br>适用版本：26.0.0+ |
 | 12000021 | the UKey PIN is locked.<br>适用版本：26.0.0+ |
