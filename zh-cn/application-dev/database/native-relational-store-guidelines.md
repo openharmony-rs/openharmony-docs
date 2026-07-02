@@ -385,9 +385,8 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     notLikePredicates->destroy(notLikePredicates);
     notLikeQueryCursor->destroy(notLikeQueryCursor);
     ```
-   配置谓词以GLOB模式或NOTGLOB模式匹配进行数据查询。示例代码如下：
     <!--@[rdb_OH_Rdb_Query_by_glob_and_notGlob](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)--> 
-
+    
     ``` C++
     OH_Predicates *globPredicates = OH_Rdb_CreatePredicates("EMPLOYEE");
     if (globPredicates == NULL) {
@@ -396,14 +395,15 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     }
     // 配置谓词以GLOB模式匹配
     OH_Predicates_Glob(globPredicates, "NAME", "zh*");
-    
+        
     char *colName[] = { "NAME", "AGE" };
-    auto *globQueryCursor = OH_Rdb_Query(store_, globPredicates, colName, 2); // the length of columnNamesis 2
+    auto *globQueryCursor = OH_Rdb_Query(store_, globPredicates, colName, 2); // the length of columnNames is 2
     if (globQueryCursor == NULL) {
         OH_LOG_ERROR(LOG_APP, "Query failed.");
         globPredicates->destroy(globPredicates);
         return;
     }
+    
     size_t dataLength = 0;
     int colIndex = -1;
     while (globQueryCursor->goToNextRow(globQueryCursor) == OH_Rdb_ErrCode::RDB_OK) {
@@ -415,7 +415,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     }
     globQueryCursor->destroy(globQueryCursor);
     globPredicates->destroy(globPredicates);
-    
+        
     OH_Predicates *notGlobPredicates = OH_Rdb_CreatePredicates("EMPLOYEE");
     if (notGlobPredicates == NULL) {
         OH_LOG_ERROR(LOG_APP, "CreatePredicates failed.");
@@ -423,7 +423,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     }
     // 配置谓词以NOT GLOB模式匹配
     OH_Predicates_NotGlob(notGlobPredicates, "NAME", "zh*");
-    auto *notGlobQueryCursor = OH_Rdb_Query(store_, notGlobPredicates, colName, 2); // the length ofcolumnNames is 2
+    auto *notGlobQueryCursor = OH_Rdb_Query(store_, notGlobPredicates, colName, 2); // the length of columnNames is 2
     if (notGlobQueryCursor == NULL) {
         OH_LOG_ERROR(LOG_APP, "Query failed.");
         notGlobPredicates->destroy(notGlobPredicates);
@@ -438,8 +438,10 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
         notGlobQueryCursor->getText(notGlobQueryCursor, colIndex, name2, dataLength + 1);
         free(name2);
     }
+    
     notGlobQueryCursor->destroy(notGlobQueryCursor);
     notGlobPredicates->destroy(notGlobPredicates);
+    ```
     ```
    如需指定排序时使用的语言规则，例如zh_CN表示中文，tr_TR表示土耳其语等。可调用OH_Rdb_SetLocale配置相应规则。
     <!--@[rdb_OH_Rdb_SetLocale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
