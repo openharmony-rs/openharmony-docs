@@ -447,10 +447,10 @@ class TestWritable extends stream.Writable {
 
 let callbackCalled = false;
 let writable = new TestWritable();
-writable.on('error', () => {
+writable.on("error", () => {
   console.info("Writable event test", callbackCalled.toString()); // Writable event test false
 });
-writable.write('hello', 'utf8', () => {
+writable.write("hello", "utf8", () => {
 });
 ```
 
@@ -471,7 +471,7 @@ let writable = new TestWritable();
 writable.on('error', (): void => {
   console.info("Writable event test", callbackCalled.toString()); // 期望结果: Writable event test false
 });
-writable.write('hello', 'utf8', () => {
+writable.write("hello", "utf8", () => {
 });
 ```
 
@@ -517,8 +517,8 @@ let testListenerCalled = false;
 let testListener = () => {
   testListenerCalled = true;
 };
-writableStream.on('finish', testListener);
-writableStream.off('finish');
+writableStream.on("finish", testListener);
+writableStream.off("finish");
 writableStream.write("test");
 writableStream.end();
 setTimeout(() => {
@@ -531,7 +531,7 @@ ArkTS-Sta示例：
 class TestWritable extends stream.Writable {
   constructor() {
     super();
- }
+  }
 
   doWrite(chunk: string | Uint8Array, encoding: string, callback: Function) {
     callback.unsafeCall();
@@ -543,8 +543,8 @@ let testListenerCalled = false;
 let testListener = () => {
   testListenerCalled = true;
 };
-writableStream.on('finish', testListener);
-writableStream.off('finish');
+writableStream.on("finish", testListener);
+writableStream.off("finish");
 writableStream.write("test");
 writableStream.end();
 setTimeout(() => {
@@ -627,7 +627,7 @@ class TestWritable extends stream.Writable {
 }
 
 let writableStream = new TestWritable();
-writableStream.write('data', 'utf8');
+writableStream.write("data", "utf8");
 ```
 
 ArkTS-Sta示例：
@@ -644,7 +644,7 @@ class TestWritable extends stream.Writable {
 }
 
 let writableStream = new TestWritable();
-writableStream.write('data', 'utf8');
+writableStream.write("data", "utf8");
 ```
 
 ### doWritev
@@ -686,8 +686,8 @@ class TestWritable extends stream.Writable {
 }
 
 let writableStream = new TestWritable();
-writableStream.write('data1', 'utf8');
-writableStream.write('data2', 'utf8');
+writableStream.write("data1", "utf8");
+writableStream.write("data2", "utf8");
 writableStream.uncork();
 writableStream.end();
 ```
@@ -708,8 +708,8 @@ class TestWritable extends stream.Writable {
 }
 
 let writableStream = new TestWritable();
-writableStream.write('data1', 'utf8');
-writableStream.write('data2', 'utf8');
+writableStream.write("data1", "utf8");
+writableStream.write("data2", "utf8");
 writableStream.uncork();
 writableStream.end();
 ```
@@ -798,7 +798,7 @@ Readable的构造函数。
 
 ```ts
 let option : stream.ReadableOptions = {
-  encoding : 'utf-8'
+  encoding : "utf-8"
 };
 let readableStream = new stream.Readable(option);
 ```
@@ -856,7 +856,7 @@ let readableStream = new TestReadable();
 readableStream.push("test");
 readableStream.pause();
 let dataChunk = readableStream.read();
-console.info('Readable data is', dataChunk); // Readable data is test
+console.info("Readable data is", dataChunk); // Readable data is test
 ```
 
 ArkTS-Sta示例：
@@ -874,7 +874,7 @@ let readableStream = new TestReadable();
 readableStream.push("test");
 readableStream.pause();
 let dataChunk = readableStream.read();
-console.info('Readable data is', dataChunk); // 期望结果: Readable data is test
+console.info("Readable data is", dataChunk); // 期望结果: Readable data is test
 ```
 
 ### resume
@@ -1027,7 +1027,7 @@ class TestReadable extends stream.Readable {
 }
 
 let readableStream = new TestReadable();
-let result = readableStream.setEncoding('utf8');
+let result = readableStream.setEncoding("utf8");
 console.info("Readable result", result); // Readable result true
 ```
 
@@ -1043,7 +1043,7 @@ class TestReadable extends stream.Readable {
 }
 
 let readableStream = new TestReadable();
-let result = readableStream.setEncoding('utf8');
+let result = readableStream.setEncoding("utf8");
 console.info("Readable result", result); // 期望结果: Readable result true
 ```
 
@@ -1245,7 +1245,7 @@ let readable = new TestReadable();
 let writable = new TestWritable();
 readable.pipe(writable);
 readable.unpipe(writable);
-readable.on('data', () => {
+readable.on("data", () => {
   console.info("Readable test unpipe data event triggered");
 });
 // unpipe成功断开连接之后，data事件将不会触发，不会打印"Readable test unpipe data event triggered"
@@ -1278,7 +1278,7 @@ let readable = new TestReadable();
 let writable = new TestWritable();
 readable.pipe(writable);
 readable.unpipe(writable);
-readable.on('data', () => {
+readable.on("data", () => {
   console.info("Readable test unpipe data event called");
 });
 // unpipe成功断开连接之后，data事件将不会触发，不会打印"Readable test unpipe data event called"
@@ -1317,7 +1317,7 @@ class TestReadable extends stream.Readable {
   }
 
   doRead(size: number) {
-    throw new Error('Simulated error');
+    throw new Error("Simulated error");
   }
 }
 
@@ -1336,13 +1336,13 @@ class TestReadable extends stream.Readable {
   }
 
   doRead(size: int) {
-    throw new Error('Simulated error');
+    throw new Error("Simulated error");
   }
 }
 
 let readable = new TestReadable();
 readable.push("test");
-readable.on('error', (): void => {
+readable.on("error", (): void => {
   console.info("error event called"); // 期望结果: error event called
 });
 ```
@@ -1389,9 +1389,9 @@ function read() {
   console.info("read() called");
 }
 
-readable.setEncoding('utf8');
-readable.on('readable', read);
-readable.off('readable');
+readable.setEncoding("utf8");
+readable.on("readable", read);
+readable.off("readable");
 readable.push("test");
 // off注销对readable事件的监听后，read函数不会被调用，"read() called"也不会被打印
 ```
@@ -1413,9 +1413,9 @@ function read() {
   console.info("read() called");
 }
 
-readable.setEncoding('utf8');
-readable.on('readable', read);
-readable.off('readable');
+readable.setEncoding("utf8");
+readable.on("readable", read);
+readable.off("readable");
 readable.push("test");
 // off注销对readable事件的监听后，read函数不会被调用，"read() called"也不会被打印
 ```
@@ -1455,7 +1455,7 @@ class MyReadable extends stream.Readable {
 }
 
 let myReadable = new MyReadable();
-myReadable.on('data', () => {
+myReadable.on("data", () => {
 });
 ```
 
@@ -1472,7 +1472,7 @@ class MyReadable extends stream.Readable {
 }
 
 let myReadable = new MyReadable();
-myReadable.on('data', () => {
+myReadable.on("data", () => {
 });
 ```
 
@@ -1513,7 +1513,7 @@ class TestReadable extends stream.Readable {
 }
 
 let readable = new TestReadable();
-readable.on('data', () => {
+readable.on("data", () => {
 });
 ```
 
@@ -1530,7 +1530,7 @@ class TestReadable extends stream.Readable {
 }
 
 let readable = new TestReadable();
-readable.on('data', () => {
+readable.on("data", () => {
 });
 ```
 
@@ -1575,7 +1575,7 @@ class TestReadable extends stream.Readable {
 }
 
 let readable = new TestReadable();
-let testData = 'Hello world';
+let testData = "Hello world";
 readable.push(testData);
 console.info("Readable push test", readable.readableLength); // Readable push test 11
 ```
@@ -1592,7 +1592,7 @@ class TestReadable extends stream.Readable {
 }
 
 let readable = new TestReadable();
-let testData = 'Hello world';
+let testData = "Hello world";
 readable.push(testData);
 console.info("Readable push test", readable.readableLength); // 期望结果: Readable push test 11
 ```
@@ -1700,7 +1700,7 @@ class TestDuplex extends stream.Duplex {
 }
 
 let duplexStream = new TestDuplex();
-let result = duplexStream.write("test", 'utf8');
+let result = duplexStream.write("test", "utf8");
 console.info("duplexStream result", result); // duplexStream result true
 ```
 
@@ -1721,7 +1721,7 @@ class TestDuplex extends stream.Duplex {
 }
 
 let duplexStream = new TestDuplex();
-let result = duplexStream.write("test", 'utf8');
+let result = duplexStream.write("test", "utf8");
 console.info("duplexStream result", result); // 期望结果: duplexStream result true
 ```
 
@@ -1780,7 +1780,7 @@ class TestDuplex extends stream.Duplex {
 }
 
 let duplexStream = new TestDuplex();
-duplexStream.end("test", 'utf8', () => {
+duplexStream.end("test", "utf8", () => {
   console.info("Duplex is end"); // Duplex is end
 });
 ```
@@ -1802,7 +1802,7 @@ class TestDuplex extends stream.Duplex {
 }
 
 let duplexStream = new TestDuplex();
-duplexStream.end("test", 'utf8', () => {
+duplexStream.end("test", "utf8", () => {
   console.info("Duplex is end"); // 期望结果: Duplex is end
 });
 ```
@@ -1851,7 +1851,7 @@ class TestDuplex extends stream.Duplex {
 }
 
 let duplexStream = new TestDuplex();
-let result = duplexStream.setDefaultEncoding('utf8');
+let result = duplexStream.setDefaultEncoding("utf8");
 console.info("duplexStream is result", result); // duplexStream is result true
 ```
 
