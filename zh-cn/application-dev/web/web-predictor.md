@@ -20,7 +20,6 @@
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
-// ...
 
 @Entry
 @Component
@@ -29,12 +28,6 @@ struct WebComponent {
 
   build() {
     Column() {
-      Button('loadData')
-        .onClick(() => {
-          if (this.webviewController.accessBackward()) {
-            this.webviewController.backward();
-          }
-        })
       Web({ src: 'https://www.example.com/', controller: this.webviewController })
         .onAppear(() => {
           // 指定第二个参数为true，代表要进行预连接，如果为false该接口只会对网址进行dns预解析
@@ -294,6 +287,7 @@ export default class EntryAbility extends UIAbility {
    <!-- @[read_local_js_resource_from_rawfile_dir_via_file_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/PrecompileWebview.ets) -->
    
    ``` TypeScript
+   // main/ets/pages/PrecompileWebview.ets 
    import { BuilderData } from './DynamicComponent';
    import { Config, configs } from './PrecompileConfig';
    
@@ -315,7 +309,7 @@ export default class EntryAbility extends UIAbility {
        try {
          controller.precompileJavaScript(config.url, content, config.options)
            .then(errCode => {
-             console.error('precompile successfully! ' + errCode);
+             console.info('precompile successfully! ' + errCode);
            }).catch((errCode: number) => {
              console.error('precompile failed. ' + errCode);
          });
@@ -460,6 +454,7 @@ export default class EntryAbility extends UIAbility {
    <!-- @[underlying_code_required_for_dynamic_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry4/src/main/ets/pages/DynamicComponent.ets) -->
    
    ``` TypeScript
+   // main/ets/pages/DynamicComponent.ets 
    import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
    
    export interface BuilderData {
@@ -474,7 +469,7 @@ export default class EntryAbility extends UIAbility {
      private rootNode: BuilderNode<BuilderData[]> | null = null;
      private wrappedBuilder: WrappedBuilder<BuilderData[]> | null = null;
    
-     constructor(wrappedBuilder: WrappedBuilder<BuilderData[]>,  context: UIContext) {
+     constructor(wrappedBuilder: WrappedBuilder<BuilderData[]>, context: UIContext) {
      storage = context.getSharedLocalStorage();
        super();
        this.wrappedBuilder = wrappedBuilder;
