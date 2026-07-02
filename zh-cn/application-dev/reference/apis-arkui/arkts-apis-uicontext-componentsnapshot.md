@@ -55,7 +55,7 @@ get(id: string, callback: AsyncCallback<image.PixelMap>, options?: componentSnap
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | Invalid ID.                                                  |
-| 160003   | Unsupported color space or dynamic range mode in snapshot options. |
+| 160003   | Unsupported color space or dynamic range mode in snapshot options.<br/>适用版本：23+ |
 
 **示例：** 
 
@@ -100,7 +100,7 @@ struct SnapshotExample {
 }
 ```
 
-![Getscreent](figures/Getscreent.gif)
+![Getscreen](figures/Getscreen.gif)
 
 ## get<sup>12+</sup>
 
@@ -143,7 +143,7 @@ ArkTS-Sta: get(id: string, options?: componentSnapshot.SnapshotOptions): Promise
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | Invalid ID.                                                  |
-| 160003   | Unsupported color space or dynamic range mode in snapshot options. |
+| 160003   | Unsupported color space or dynamic range mode in snapshot options.<br/>适用版本：23+ |
 
 **示例：** 
 
@@ -230,8 +230,8 @@ ArkTS-Sta: createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<ima
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | The builder is not a valid build function.                   |
 | 160001   | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled. |
-| 160003   | Unsupported color space or dynamic range mode in snapshot options. |
-| 160004   | isAuto(true) is not supported for offscreen node snapshots. |
+| 160003   | Unsupported color space or dynamic range mode in snapshot options.<br/>适用版本：23+ |
+| 160004   | isAuto(true) is not supported for offscreen node snapshots.<br/>适用版本：23+ |
 
 **示例：** 
 
@@ -335,8 +335,8 @@ ArkTS-Sta: createFromBuilder(builder: CustomBuilder, delay?: int, checkImageStat
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | The builder is not a valid build function.                   |
 | 160001   | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled. |
-| 160003   | Unsupported color space or dynamic range mode in snapshot options. |
-| 160004   | isAuto(true) is not supported for offscreen node snapshots. |
+| 160003   | Unsupported color space or dynamic range mode in snapshot options.<br/>适用版本：23+ |
+| 160004   | isAuto(true) is not supported for offscreen node snapshots.<br/>适用版本：23+ |
 
 **示例：** 
 
@@ -436,7 +436,7 @@ ArkTS-Sta: getSync(id: string, options?: componentSnapshot.SnapshotOptions): ima
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | Invalid ID. |
 | 160002 | Timeout. |
-| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
+| 160003 | Unsupported color space or dynamic range mode in snapshot options.<br/>适用版本：23+ |
 
 **示例：**
 
@@ -520,7 +520,7 @@ ArkTS-Sta: getWithUniqueId(uniqueId: int, options?: componentSnapshot.SnapshotOp
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | Invalid ID.                                                  |
-| 160003   | Unsupported color space or dynamic range mode in snapshot options. |
+| 160003   | Unsupported color space or dynamic range mode in snapshot options.<br/>适用版本：23+ |
 
 **示例：**
 
@@ -627,7 +627,7 @@ ArkTS-Sta: getSyncWithUniqueId(uniqueId: int, options?: componentSnapshot.Snapsh
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | Invalid ID. |
 | 160002 | Timeout. |
-| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
+| 160003 | Unsupported color space or dynamic range mode in snapshot options.<br/>适用版本：23+ |
 
 **示例：**
 
@@ -728,8 +728,8 @@ ArkTS-Sta: createFromComponent\<T extends Object>(content: ComponentContent\<T>,
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | The builder is not a valid build function.                   |
 | 160001   | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled. |
-| 160003   | Unsupported color space or dynamic range mode in snapshot options. |
-| 160004   | isAuto(true) is not supported for offscreen node snapshots. |
+| 160003   | Unsupported color space or dynamic range mode in snapshot options.<br/>适用版本：23+ |
+| 160004   | isAuto(true) is not supported for offscreen node snapshots.<br/>适用版本：23+ |
 
 **示例：** 
 
