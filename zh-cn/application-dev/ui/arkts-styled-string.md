@@ -1015,7 +1015,7 @@
   
   @Entry
   @Component
-  export struct StyledStringGestureStyle {
+  struct StyledStringGestureStyle {
     customSpan3: MyCustomSpan = new MyCustomSpan('99VIP88%off', 200, 40, 30);
     customSpanStyledString: MutableStyledString = new MutableStyledString(this.customSpan3);
     textController: TextController = new TextController();
