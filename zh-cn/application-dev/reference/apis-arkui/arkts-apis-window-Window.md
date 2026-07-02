@@ -2089,7 +2089,7 @@ export default class EntryAbility extends UIAbility {
 
 setWindowSystemBarEnable(names: Array<'status' | 'navigation'>): Promise&lt;void&gt;
 
-设置主窗口状态栏、<!--RP21-->工具栏或三键导航栏的显示或隐藏，状态栏通过status控制、工具栏或三键导航栏通过navigation控制。当前工具栏的显示或隐藏设置仅Car设备支持。<!--RP21End-->使用Promise异步回调。
+设置主窗口状态栏、<!--RP19-->工具栏或三键导航栏的显示或隐藏，状态栏通过status控制、工具栏或三键导航栏通过navigation控制。当前工具栏的显示或隐藏设置仅Car设备支持。<!--RP19End-->使用Promise异步回调。
 
 调用生效后返回并不表示状态栏、<!--RP15-->工具栏或三键导航栏<!--RP15End-->的显示或隐藏已完成。主窗口在非全屏/最大化模式（自由悬浮窗口模式、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
 
@@ -2102,8 +2102,6 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>): Promise&lt;void
 在OpenHarmony 5.0.0之前，该接口在所有设备中可正常调用。
 
 从OpenHarmony 5.0.0开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
-
-<!--Del-->在OpenHarmony v6.0 Release之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony v6.0 Release开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
 
 **参数：**
 
@@ -2168,7 +2166,7 @@ export default class EntryAbility extends UIAbility {
 
 setSpecificSystemBarEnabled(name: SpecificSystemBar, enable: boolean, enableAnimation?: boolean): Promise&lt;void&gt;
 
-设置主窗口状态栏、<!--RP20-->工具栏或三键导航栏的显示或隐藏。当前工具栏的显示或隐藏设置仅Car设备支持。<!--RP20End-->使用Promise异步回调。
+设置主窗口状态栏、<!--RP18-->工具栏或三键导航栏的显示或隐藏。当前工具栏的显示或隐藏设置仅Car设备支持。<!--RP18End-->使用Promise异步回调。
 
 调用生效后返回并不表示状态栏、<!--RP15-->工具栏或三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。主窗口在非全屏/最大化模式（自由悬浮窗口模式、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
 
@@ -2181,8 +2179,6 @@ setSpecificSystemBarEnabled(name: SpecificSystemBar, enable: boolean, enableAnim
 在OpenHarmony 5.0.0之前，该接口在所有设备中可正常调用。
 
 从OpenHarmony 5.0.0开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
-
-<!--Del-->在OpenHarmony v6.0 Release之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony v6.0 Release开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
 
 **参数：**
 
@@ -2249,7 +2245,7 @@ export default class EntryAbility extends UIAbility {
 
 setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&lt;void&gt;
 
-设置主窗口状态栏<!--RP18-->、工具栏或三键导航栏的属性。当前工具栏的属性设置仅Car设备支持。<!--RP18End-->使用Promise异步回调。
+设置主窗口状态栏<!--Del-->、工具栏或三键导航栏<!--DelEnd-->的属性。<!--Del-->当前工具栏的属性设置仅Car设备支持。<!--DelEnd-->使用Promise异步回调。
 
 子窗口调用后不生效。主窗口在非全屏/最大化模式（自由悬浮窗口模式、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
 
@@ -2259,11 +2255,9 @@ setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&
 
 **设备行为差异：**
 
-在<!--RP19-->OpenHarmony 5.0.0<!--RP19End-->之前，该接口在所有设备中可正常调用。
+在OpenHarmony 5.0.0之前，该接口在所有设备中可正常调用。
 
-从<!--RP19-->OpenHarmony 5.0.0<!--RP19End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
-
-<!--Del-->在OpenHarmony v6.0 Release之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony v6.0 Release开始，此接口在Car设备上可正常调用并生效。<!--DelEnd-->
+从OpenHarmony 5.0.0开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
 
 **参数：**
 
