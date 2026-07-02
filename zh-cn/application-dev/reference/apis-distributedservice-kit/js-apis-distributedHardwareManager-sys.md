@@ -97,13 +97,13 @@ pauseDistributedHardware(description: HardwareDescriptor): Promise&lt;void&gt;
 
 **错误码：**
 
-| 错误码ID | 错误信息                                             | 说明                                                     |
-| -------- | ---------------------------------------------------- | -------------------------------------------------------- |
-| 201      | Permission verification failed.                      | 权限验证失败，请确保已申请ohos.permission.ACCESS_DISTRIBUTED_HARDWARE权限。   |
-| 202      | Permission denied, non-system app called system api. | 权限被拒绝，非系统应用调用了系统接口，请确保应用为系统应用。       |
-| 401      | Input parameter error.                               | 输入参数错误，请检查参数类型和范围是否正确。               |
-| 24200101 | The specified distributed hardware is not started.   | 指定的分布式硬件未启动，请先启动分布式硬件服务。       |
-| 24200102 | The specified source device is not connected.        | 指定的源端设备未建立连接，请检查设备连接状态。         |
+| 错误码ID | 错误信息                                             |
+| -------- | ---------------------------------------------------- |
+| 201      | Permission verification failed.                      |
+| 202      | Permission denied, non-system app called system api. |
+| 401      | Input parameter error.                               |
+| 24200101 | The specified distributed hardware is not started.   |
+| 24200102 | The specified source device is not connected.        |
 
 **示例：**
 
@@ -151,13 +151,13 @@ resumeDistributedHardware(description: HardwareDescriptor): Promise&lt;void&gt;
 
 **错误码：**
 
-| 错误码ID | 错误信息                                             | 说明                                                     |
-| -------- | ---------------------------------------------------- | -------------------------------------------------------- |
-| 201      | Permission verification failed.                      | 权限验证失败，请确保已申请ohos.permission.ACCESS_DISTRIBUTED_HARDWARE权限。   |
-| 202      | Permission denied, non-system app called system api. | 权限被拒绝，非系统应用调用了系统接口，请确保应用为系统应用。       |
-| 401      | Input parameter error.                               | 输入参数错误，请检查参数类型和范围是否正确。               |
-| 24200101 | The specified distributed hardware is not started.   | 指定的分布式硬件未启动，请先启动分布式硬件服务。       |
-| 24200102 | The specified source device is not connected.        | 指定的源端设备未建立连接，请检查设备连接状态。         |
+| 错误码ID | 错误信息                                             |
+| -------- | ---------------------------------------------------- |
+| 201      | Permission verification failed.                      |
+| 202      | Permission denied, non-system app called system api. |
+| 401      | Input parameter error.                               |
+| 24200101 | The specified distributed hardware is not started.   |
+| 24200102 | The specified source device is not connected.        |
 
 **示例：**
 
@@ -207,13 +207,13 @@ stopDistributedHardware(description: HardwareDescriptor): Promise&lt;void&gt;
 
 **错误码：**
 
-| 错误码ID | 错误信息                                             | 说明                                                     |
-| -------- | ---------------------------------------------------- | -------------------------------------------------------- |
-| 201      | Permission verification failed.                      | 权限验证失败，请确保已申请ohos.permission.ACCESS_DISTRIBUTED_HARDWARE权限。   |
-| 202      | Permission denied, non-system app called system api. | 权限被拒绝，非系统应用调用了系统接口，请确保应用为系统应用。       |
-| 401      | Input parameter error.                               | 输入参数错误，请检查参数类型和范围是否正确。               |
-| 24200101 | The specified distributed hardware is not started.   | 指定的分布式硬件未启动，请先启动分布式硬件服务。       |
-| 24200102 | The specified source device is not connected.        | 指定的源端设备未建立连接，请检查设备连接状态。         |
+| 错误码ID | 错误信息                                             |
+| -------- | ---------------------------------------------------- |
+| 201      | Permission verification failed.                      |
+| 202      | Permission denied, non-system app called system api. |
+| 401      | Input parameter error.                               |
+| 24200101 | The specified distributed hardware is not started.   |
+| 24200102 | The specified source device is not connected.        |
 
 **示例：**
 
