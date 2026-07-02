@@ -17117,7 +17117,7 @@ void OH_ArkUI_FontConfigs_SetFontWeightConfigs(OH_ArkUI_FontConfigs* option, OH_
 
 **Description**
 
-Sets the text font weight configurations for the text font configuration object. When the object is a null pointer, if the user does not explicitly set the object, the default values of the parameters are used (that is, variable font weight adjustment is disabled by default, and the text font weight is updated based on the device font weight level by default). When the object is a null pointer, the default values are not used, and the text font weight behavior is the same as that of the parent component.
+Sets the text font weight configurations for the text font configuration object. When the value is not a null pointer, if the user does not explicitly make configurations, the default values of the parameters are used (that is, variable font weight adjustment is disabled by default, and the text font weight is updated based on the device font weight level by default). When the value is a null pointer, the default values are not used, and the text font weight behavior is the same as that of the parent component.
 
 **Since**: 24
 
