@@ -84,7 +84,7 @@ export default class EntryAbility extends UIAbility {
 | value      | [ValueType](js-apis-data-valuesBucket.md#valuetype)         | 否 | 是   | 共享配置的值。不填则为空字符串。<br/>**说明：** <br/>1. API版本26.0.0之前，字符串长度不超过4096个字节；从API版本26.0.0开始，默认允许的字符串最大长度为4096字节，可以在[DataProxyConfig](#dataproxyconfig20)中配置maxValueLength将最大长度扩展到102400字节。<br/>2. 当首次发布共享配置时，如果未填写，将默认设置为空字符串。在更新共享配置时，如果未填写，共享配置的值将不会被更新。     |
 | allowList  | string\[]                                         | 否 | 是   | 允许订阅和读取共享配置的应用程序列表。不填则为空的字符串数组。数组最大长度为256，超过256的部分不生效。当首次发布共享配置时，如果未填写，将默认为空的允许列表。在更新共享配置时，如果未填写，共享配置的允许列表将不会被更新。一个空的允许列表表示只有发布者能够访问该共享配置。 <br/>API版本26.0.0之前，数组中每个元素为应用的[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，单个appIdentifier最大长度128字节，超过128字节的appIdentifier不会生效。<br/>从API版本26.0.0开始，数组支持配置特殊字符串"all"（区分大小写）表示允许所有应用访问。|
 | isMultiValues      | boolean         | 否 | 是   | 表示是否为使用values的多值类型的共享配置。true表示本次发布的数据是多值类型，则value参数将被忽略。false表示非多值类型。默认为false。 <br/>**起始版本：** 26.0.0 |
-| values      | Record&lt;number, [ValueType](js-apis-data-valuesBucket.md#valuetype)&gt;         | 否 | 是   | 多值类型取值。Record中的第一个参数为key，key由用户指定，必须唯一。第二个参数为key对应的value。单个应用在单个URI下最多支持添加10个value，每个value最大长度为4096字节。同时，所有value的总长度受[DataProxyConfig](#dataproxyconfig20)中maxValueLength字段限制。该参数仅在isMultiValues设置为true时生效，且不允许为空。当isMultivalues为false时默认为undefined。 <br/>**起始版本：** 26.0.0 |
+| values      | Record&lt;number, [ValueType](js-apis-data-valuesBucket.md#valuetype)&gt;         | 否 | 是   | 多值类型取值。Record中的第一个参数为key，key由用户指定，必须唯一。第二个参数为key对应的value。单个应用在单个URI下最多支持添加10个value，每个value最大长度为4096字节。同时，所有value的总长度受[DataProxyConfig](#dataproxyconfig20)中maxValueLength字段限制。该参数仅在isMultiValues设置为true时生效，且不允许为空。当isMultiValues为false时默认为undefined。 <br/>**起始版本：** 26.0.0 |
 | trustProviders      | string[]         | 否 | 是   | 可对多值类型共享多值配置进行赋值的App列表。数组最多包含256个元素，超出部分无效。数组中每个元素为某个应用的[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)。appIdentifier最大长度为128字节，超过128字节的部分不生效。<br/>若首次发布共享配置时未设置该参数，则默认赋值列表为空。赋值列表为空表示仅发布者可以对多值类型的共享配置进行赋值。该数组支持特殊字符串"all"（区分大小写），表示允许所有应用对多值类型的共享配置进行赋值。该参数仅在isMultiValues设置为true时生效。<br/>**起始版本：** 26.0.0 |
 
 ## DataProxyChangeInfo<sup>20+</sup>
@@ -244,9 +244,9 @@ off(event: 'dataChange', uris: string[], config: DataProxyConfig, callback?: Asy
 取消订阅指定URI对应代理数据变更事件。
 
 **配对调用：**
-- 必须在已调用[on('dataChange')](#ondatachange20)订阅后使用
-- 取消订阅时需确保event、uris、config参数与订阅时一致
-- 如未指定callback参数，将取消该URI的所有已注册回调函数
+- 必须在已调用[on('dataChange')](#ondatachange20)订阅后使用。
+- 取消订阅时需确保event、uris、config参数与订阅时一致。
+- 如未指定callback参数，将取消该URI的所有已注册回调函数。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 

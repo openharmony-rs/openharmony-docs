@@ -23,15 +23,15 @@ import { collections } from '@kit.ArkTS';
 
 ## 属性
 
-**系统能力：** SystemCapability.Utils.Lang
-
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 | 名称   | 类型   | 只读 | 可选 | 说明              |
 | ------ | ------ | ---- | ---- | ----------------|
 | buffer | ArrayBuffer | 是   | 否  | ArkTS Int8Array底层使用的buffer。|
 | byteLength | number | 是   | 否   | ArkTS Int8Array所占的字节数。|
-| byteOffset | number | 是   | 否   | ArkTS Int8Array距离其ArrayBuffer起始位置的偏移。|
+| byteOffset | number | 是   | 否   | ArkTS Int8Array距离其ArrayBuffer起始位置的字节偏移。|
 | length | number | 是   | 否  | ArkTS Int8Array元素个数。|
 | BYTES_PER_ELEMENT | number | 是   | 否   | ArkTS Int8Array中每个元素所占的字节数。|
 
@@ -40,9 +40,9 @@ constructor()
 
 构造函数，用于创建一个空ArkTS Int8Array对象。
 
-**系统能力：** SystemCapability.Utils.Lang
-
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **错误码：**
 
@@ -55,6 +55,7 @@ constructor()
 **示例：**
 
 ```ts
+// 创建空的Int8Array对象
 let int8Array: collections.Int8Array = new collections.Int8Array();
 ```
 
@@ -75,7 +76,7 @@ constructor(length: number)
 
 **错误码：**
 
-以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                                  |
 | -------- | -------------------------------------------------------  |
@@ -102,11 +103,11 @@ constructor(array: ArrayLike\<number> | ArrayBuffer)
 
 | 参数名  | 类型   | 必填 | 说明                                                         |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| array |  ArrayLike\<number> \| ArrayBuffer | 是 | 用于构造ArkTS Int8Array的对象。当参数类型是ArrayBuffer时buffer所占的字节数须是4的整数倍。 |
+| array |  ArrayLike\<number> \| ArrayBuffer | 是 | 用于构造ArkTS Int8Array的对象。当参数类型是ArrayBuffer时buffer所占的字节数是1的整数倍。 |
 
 **错误码：**
 
-以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
@@ -117,13 +118,13 @@ constructor(array: ArrayLike\<number> | ArrayBuffer)
 ```ts
 // 例1 从一个ArrayLike构造对象
 let arrayLike = [1, 3, 5];
-let array: collections.Int8Array = new collections.Int8Array(arrayLike);
+let int8Array: collections.Int8Array = new collections.Int8Array(arrayLike);
 ```
 
 ```ts
 // 例2 从一个ArrayBuffer构造对象
 let arrayBuffer: collections.ArrayBuffer = new collections.ArrayBuffer(12);
-let array: collections.Int8Array = new collections.Int8Array(arrayBuffer);
+let int8Array: collections.Int8Array = new collections.Int8Array(arrayBuffer);
 ```
 
 ```ts
@@ -152,7 +153,7 @@ constructor(elements: Iterable\<number>)
 
 **错误码：**
 
-以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
@@ -180,13 +181,13 @@ constructor(buffer: ArrayBuffer, byteOffset?: number, length?: number)
 
 | 参数名  | 类型   | 必填 | 说明                                         |
 | ------- | ------ | ---- | ------------------------------------------ |
-| buffer | ArrayBuffer | 是 | 用于构造ArkTS Int8Array的ArrayBuffer对象。buffer所占的字节数须是4的整数倍。|
-| byteOffset | number | 否 | 指定buffer的字节偏移，从0开始，默认为0。 |
-| length | number | 否 | 指定ArkTS Int8Array的长度，默认为0。 |
+| buffer | ArrayBuffer | 是 | 用于构造ArkTS Int8Array的ArrayBuffer对象。buffer所占的字节数需是1的整数倍。|
+| byteOffset | number | 否 | 指定buffer的字节偏移，从0开始，默认值为0。 |
+| length | number | 否 | 指定ArkTS Int8Array的长度，默认值为0。取值需为非负整数，且需满足byteOffset + length < buffer.byteLength。|
 
 **错误码：**
 
-以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                                   |
 | -------- | -------------------------------------------------------   |
@@ -205,7 +206,7 @@ console.info("[" + int8Array1 + "]"); // [2, 3, 4, 5, 6]
 ## from
 static from(arrayLike: ArrayLike\<number>): Int8Array
 
-从一个ArrayLike或者可迭代对象中创建一个ArkTS Int8Array对象。
+从一个ArrayLike中创建一个ArkTS Int8Array对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -241,7 +242,7 @@ static from\<T>(arrayLike: ArrayLike\<T>, mapFn: TypedArrayFromMapFn\<T, number>
 **参数：**
 | 参数名  | 类型   | 必填 | 说明                                        |
 | ------- | ------ | ---- | ------------------------------------------|
-| arrayLike | ArrayLike\<T> | 是 | 用于构造ArrayLike对象。              |
+| arrayLike | ArrayLike\<T> | 是 | 用于构造ArkTS Int8Array的ArrayLike对象。              |
 | mapFn | [TypedArrayFromMapFn](arkts-apis-arkts-collections-Types.md#typedarrayfrommapfn)\<T, number> | 是 | 映射函数。|
 
 **返回值：**
@@ -282,7 +283,7 @@ static from(arrayLike: Iterable\<number>, mapFn?: TypedArrayFromMapFn\<number, n
 **参数：**
 | 参数名  | 类型   | 必填 | 说明                                |
 | ------- | ------ | ---- | -----------------------------------|
-| arrayLike | Iterable\<number> | 是 | 用于构造的可迭代对象。   |
+| arrayLike | Iterable\<number> | 是 | 用于构造ArkTS Int8Array的可迭代对象。   |
 | mapFn | [TypedArrayFromMapFn](arkts-apis-arkts-collections-Types.md#typedarrayfrommapfn)\<number, number> | 否 | 映射函数。如果省略，则不对元素进行加工处理。|
 
 **返回值：**
@@ -333,15 +334,16 @@ static of(...items: number[]): Int8Array
 **示例：**
 
 ```ts
-let arr: collections.Int8Array = collections.Int8Array.of(1, 2, 3, 4);
-console.info(arr.toString()); // 预期输出：1,2,3,4
+// 通过可变参数创建Int8Array对象
+let int8Array: collections.Int8Array = collections.Int8Array.of(1, 2, 3, 4);
+console.info(int8Array.toString()); // 预期输出：1,2,3,4
 ```
 
 ## toString<sup>18+</sup>
 
 toString(): string
 
-ArkTS Int8Array转换为字符串。
+将ArkTS Int8Array转换为字符串，各元素以逗号分隔拼接。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -355,7 +357,7 @@ ArkTS Int8Array转换为字符串。
 
 **错误码：**
 
-以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID    | 错误信息                                 |
 | -------- | ------------------------------------ |
@@ -365,8 +367,8 @@ ArkTS Int8Array转换为字符串。
 **示例：**
 
 ```ts
-let array = new collections.Int8Array([1, 2, 3, 4, 5]);
-let stringArray = array.toString();
+let int8Array = new collections.Int8Array([1, 2, 3, 4, 5]);
+let stringArray = int8Array.toString();
 console.info(stringArray); // 预期输出：1,2,3,4,5
 ```
 
@@ -374,7 +376,7 @@ console.info(stringArray); // 预期输出：1,2,3,4,5
 
 toLocaleString(): string
 
-根据当前应用的系统地区获取符合当前文化习惯的数字表示形式，让每个元素调用自己的toLocaleString方法把数字转换为字符串，然后使用逗号将每个元素的结果字符串按照顺序拼接成字符串。
+根据当前应用的系统地区获取符合当前文化习惯的数字表示形式，每个元素调用自己的toLocaleString方法将数字转换为字符串，然后使用逗号按顺序将各元素的结果拼接为字符串。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -388,7 +390,7 @@ toLocaleString(): string
 
 **错误码：**
 
-以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID    | 错误信息                                       |
 | -------- | ------------------------------------------ |
@@ -417,7 +419,7 @@ copyWithin(target: number, start: number, end?: number): Int8Array
 
 | 参数名  | 类型   | 必填 | 说明                                                         |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| target | number | 是 | 目标起始位置的下标，如果`target < 0`，则会从`target + array.length`位置开始。 |
+| target | number | 是 | 目标起始位置的下标，如果`target < 0`，则会从`target + Int8Array.length`位置开始。 |
 | start | number | 是 | 源起始位置下标，如果`start < 0`，则会从`start + Int8Array.length`位置开始。 |
 | end | number | 否 | 源终止位置下标（不包含end位置的元素），如果`end < 0`，则会从`end + Int8Array.length`位置终止。默认为ArkTS Int8Array的长度。|
 
@@ -425,11 +427,11 @@ copyWithin(target: number, start: number, end?: number): Int8Array
 
 | 类型         | 说明      |
 | ------------ | --------- |
-| Int8Array | 修改后的Int8Array。 |
+| Int8Array | 修改后的ArkTS Int8Array。 |
 
 **错误码：**
 
-以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------ |
@@ -439,9 +441,9 @@ copyWithin(target: number, start: number, end?: number): Int8Array
 **示例：**
 
 ```ts
-let array: collections.Int8Array = collections.Int8Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
+let int8Array: collections.Int8Array = collections.Int8Array.from([1, 2, 3, 4, 5, 6, 7, 8]);
 // Int8Array [1, 2, 3, 2, 3, 6, 7, 8]
-let copied: collections.Int8Array = array.copyWithin(3, 1, 3);
+let copied: collections.Int8Array = int8Array.copyWithin(3, 1, 3);
 ```
 
 ## some
@@ -467,7 +469,7 @@ some(predicate: TypedArrayPredicateFn\<number, Int8Array>): boolean
 
 **错误码：**
 
-以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ---------------------------------- |
@@ -479,6 +481,7 @@ some(predicate: TypedArrayPredicateFn\<number, Int8Array>): boolean
 ```ts
 let arrayLike = [-10, 20, -30, 40, -50];
 let int8Array: collections.Int8Array = new collections.Int8Array(arrayLike);
+// 判断是否存在小于0的元素
 int8Array.some((element: number) => element < 0); // true
 ```
 
@@ -505,7 +508,7 @@ every(predicate: TypedArrayPredicateFn\<number, Int8Array>): boolean
 
 **错误码：**
 
-以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
@@ -517,6 +520,7 @@ every(predicate: TypedArrayPredicateFn\<number, Int8Array>): boolean
 ```ts
 let arrayLike = [-10, 20, -30, 40, -50];
 let int8Array: collections.Int8Array = new collections.Int8Array(arrayLike);
+// 判断是否所有元素都大于0
 int8Array.every((element: number) => element > 0);  // false
 ```
 
@@ -545,7 +549,7 @@ fill(value: number, start?: number, end?: number): Int8Array
 
 **错误码：**
 
-以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
@@ -556,8 +560,11 @@ fill(value: number, start?: number, end?: number): Int8Array
 
 ```ts
 let arrayLike = [1, 2, 3];
+// 使用4填充所有元素
 new collections.Int8Array(arrayLike).fill(4); // Int8Array [4, 4, 4]
+// 从索引1开始填充4
 new collections.Int8Array(arrayLike).fill(4, 1); // Int8Array [1, 4, 4]
+// 从索引1到2（不含2）填充4
 new collections.Int8Array(arrayLike).fill(4, 1, 2); // Int8Array [1, 4, 3]
 ```
 
@@ -584,7 +591,7 @@ filter(predicate: TypedArrayPredicateFn\<number, Int8Array>): Int8Array
 
 **错误码：**
 
-以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
@@ -622,7 +629,7 @@ find(predicate: TypedArrayPredicateFn\<number, Int8Array>): number | undefined
 
 **错误码：**
 
-以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
@@ -660,7 +667,7 @@ findIndex(predicate: TypedArrayPredicateFn\<number, Int8Array>): number
 
 **错误码：**
 
-以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
@@ -692,7 +699,7 @@ forEach(callbackFn: TypedArrayForEachCallback\<number, Int8Array>): void
 
 **错误码：**
 
-以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
@@ -703,8 +710,9 @@ forEach(callbackFn: TypedArrayForEachCallback\<number, Int8Array>): void
 
 ```ts
 let int8Array: collections.Int8Array = collections.Int8Array.from([1, 2, 3]);
+// 遍历Int8Array的每个元素，打印元素值和索引
 int8Array.forEach((value: number, index: number, array: collections.Int8Array) => {
-  console.info(`Element ${value} at index ${index}`);
+  console.info("Element " + value + " at index " + index);
 });
 ```
 
@@ -722,7 +730,7 @@ indexOf(searchElement: number, fromIndex?: number): number
 | 参数名        | 类型   | 必填 | 说明                        |
 | ------------- | ------ | ---- | ---------------------------|
 | searchElement | number | 是   | 待索引的值。                |
-| fromIndex     | number | 否   | 搜索的起始下标。默认值为0。如果下标大于等于ArkTS Int8Array的长度，则返回-1。如果提供的下标值是负数，则被当做距离数组尾部的偏移，从前到后搜索。 |
+| fromIndex     | number | 否   | 搜索的起始下标。默认值为0。如果下标大于等于ArkTS Int8Array的长度，则返回-1。如果下标为负数，则被视为距离数组尾部的偏移，从前到后搜索。 |
 
 **返回值：**
 
@@ -732,7 +740,7 @@ indexOf(searchElement: number, fromIndex?: number): number
 
 **错误码：**
 
-以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
@@ -753,7 +761,7 @@ array.indexOf(9, -2); // 2
 
 lastIndexOf(searchElement: number, fromIndex?: number): number
 
-返回ArkTS Int8Array实例中最后一次出现searchElement的索引，如果对象不包含，则为-1。
+返回ArkTS Int8Array实例中最后一次出现searchElement的索引，如果ArkTS Int8Array中不包含该元素，则为-1。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -764,7 +772,7 @@ lastIndexOf(searchElement: number, fromIndex?: number): number
 | 参数名           | 类型     | 必填  | 说明                                                                                |
 | ------------- | ------ | --- | --------------------------------------------------------------------------------- |
 | searchElement | number | 是   | 待索引的值。                                                                            |
-| fromIndex     | number | 否   | 搜索的起始下标。默认值为0。如果下标大于等于ArkTS Int8Array的长度，则返回-1。如果提供的下标值是负数，则被当做距离数组尾部的偏移，从后到前搜索。 |
+| fromIndex     | number | 否   | 搜索的起始下标，从该位置开始往前查找。默认值为ArkTS Int8Array长度减1（即从末尾开始）。如果提供的下标值是负数，则被当作距离数组尾部的偏移，从后到前搜索。 |
 
 **返回值：**
 
@@ -814,7 +822,7 @@ join(separator?: string): string
 
 **错误码：**
 
-以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
@@ -851,7 +859,7 @@ map(callbackFn: TypedArrayMapCallback\<number, Int8Array>): Int8Array
 
 **错误码：**
 
-以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
@@ -887,7 +895,7 @@ reduce(callbackFn: TypedArrayReduceCallback\<number, number, Int8Array>): number
 
 **错误码：**
 
-以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID |                      错误信息                     |
 | -------- | ------------------------------------------------ |
@@ -906,7 +914,7 @@ let reducedValue: number = array.reduce((accumulator: number, value: number) => 
 
 reduceRight(callbackFn: TypedArrayReduceCallback\<number, number, Int8Array>): number
 
-反向遍历ArkTS Int8Array，对ArkTS Int8Array中的每个元素执行归约函数，并返回最终的归约结果。
+反向遍历ArkTS Int8Array，对每个元素执行归约函数，并返回最终的归约结果。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -953,7 +961,7 @@ reduce(callbackFn: TypedArrayReduceCallback\<number, number, Int8Array>, initial
 | 参数名    | 类型   | 必填 | 说明                                                 |
 | --------- | ------ | ---- | --------------------------------------------------- |
 | callbackFn | [TypedArrayReduceCallback](arkts-apis-arkts-collections-Types.md#typedarrayreducecallback)\<number, number, Int8Array> | 是  | 归约函数。 |
-| initialValue | number | 是  | 初始值。 |
+| initialValue | number | 是  | 归约函数首次调用时的初始累加值。 |
 
 
 **返回值：**
@@ -964,7 +972,7 @@ reduce(callbackFn: TypedArrayReduceCallback\<number, number, Int8Array>, initial
 
 **错误码：**
 
-以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
@@ -983,7 +991,7 @@ let reducedValue: number = array.reduce((accumulator: number, value: number) => 
 
 reduceRight\<U = number>(callbackFn: TypedArrayReduceCallback\<U, number, Int8Array>, initialValue: U): U
 
-反向遍历ArkTS Int8Array，对ArkTS Int8Array中的每个元素执行归约函数，且接收一个初始值作为归约函数首次调用的参数，并返回最终的归约结果。
+反向遍历ArkTS Int8Array，对每个元素执行归约函数，且接收一个初始值作为归约函数首次调用的参数，并返回最终的归约结果。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -993,7 +1001,7 @@ reduceRight\<U = number>(callbackFn: TypedArrayReduceCallback\<U, number, Int8Ar
 | 参数名    | 类型   | 必填 | 说明                                                 |
 | --------- | ------ | ---- | --------------------------------------------------- |
 | callbackFn | [TypedArrayReduceCallback](arkts-apis-arkts-collections-Types.md#typedarrayreducecallback)\<U, number, Int8Array> | 是  | 归约函数。 |
-| initialValue | U | 是  | 初始值。 |
+| initialValue | U | 是  | 归约函数首次调用时的初始累加值。 |
 
 **返回值：**
 
@@ -1042,7 +1050,7 @@ reduce\<U>(callbackFn: TypedArrayReduceCallback\<U, number, Int8Array>, initialV
 
 **错误码：**
 
-以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
@@ -1060,7 +1068,7 @@ let reducedValue: string = array.reduce<string>((accumulator: string, value: num
 ## reverse
 reverse(): Int8Array
 
-反转ArkTS Int8Array。
+反转ArkTS Int8Array中元素的顺序。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1101,11 +1109,11 @@ set(array: ArrayLike\<number>, offset?: number): void
 | 参数名    | 类型   | 必填 | 说明                                                 |
 | --------- | ------ | ---- | ---------------------------------------------------- |
 | array | ArrayLike\<number> | 是  | 用于设置的ArrayLike对象。|
-| offset | number | 否  | 写入的起始位置。默认为0。|
+| offset | number | 否  | 写入的起始位置。默认值为0。取值为非负整数，且offset + array.length不超过当前Int8Array的长度。|
 
 **错误码：**
 
-以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
@@ -1123,7 +1131,7 @@ array.set([1, 2, 3], 3); // Int8Array [0, 0, 0, 1, 2, 3, 0, 0]
 ## slice
 slice(start?: number, end?: number): Int8Array
 
-返回一个新的ArkTS Int8Array对象，其包含原ArkTS Int8Array指定范围的内容。
+返回一个新的ArkTS Int8Array对象，其包含原ArkTS Int8Array指定范围的内容。与subarray不同，slice返回的对象不会影响原数组。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1133,18 +1141,18 @@ slice(start?: number, end?: number): Int8Array
 
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- | -----------------------------------------------------|
-| start  | number | 否   | 开始索引，如果`start < 0`，则会从`start + Int8Array.length`位置开始。默认为0。 |
+| start  | number | 否   | 开始索引，如果`start < 0`，则会从`start + Int8Array.length`位置开始。默认值为0。 |
 | end    | number | 否   | 结束索引（不包括该元素），如果`end < 0`，则会到`end + Int8Array.length`位置结束。默认为ArkTS Int8Array的长度。|
 
 **返回值：**
 
 | 类型         | 说明      |
 | ------------ | --------- |
-| Int8Array | 新的ArkTS Int8Array对象。 |
+| Int8Array | 包含原ArkTS Int8Array指定范围元素的新ArkTS Int8Array对象。 |
 
 **错误码：**
 
-以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
@@ -1183,7 +1191,7 @@ sort(compareFn?: TypedArrayCompareFn\<number>): Int8Array
 
 **错误码：**
 
-以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------ |
@@ -1202,7 +1210,7 @@ array.sort((a: number, b: number) => b - a); // Int8Array [5, 4, 3, 2, 1]
 ## subarray
 subarray(begin?: number, end?: number): Int8Array
 
-从指定的位置截取数组，返回一个新的、基于相同ArkTS ArrayBuffer的ArkTS Int8Array对象。
+从指定的位置截取数组，返回一个新的、基于相同ArkTS ArrayBuffer的ArkTS Int8Array对象。由于返回的ArkTS Int16Array对象与原始ArkTS Int8Array对象共享同一个ArrayBuffer，修改其中一个会同时影响另一个。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1219,11 +1227,11 @@ subarray(begin?: number, end?: number): Int8Array
 
 | 类型         | 说明      |
 | ------------ | --------- |
-| Int8Array | 新的ArkTS Int8Array对象。|
+| Int8Array | 基于相同ArrayBuffer的新ArkTS Int8Array对象。|
 
 **错误码：**
 
-以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID |            错误信息                               |
 | -------- | -------------------------------------------------|
@@ -1250,7 +1258,7 @@ at(index: number): number | undefined
 **参数：**
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| index  | number | 是   | 要返回的Array元素的索引（从零开始），取值为整数。如果`index < 0`，则会访问`index + Int8Array.length`位置的元素。|
+| index  | number | 是   | 要返回的ArkTS Int8Array元素的索引（从零开始），取值为整数。如果`index < 0`，则会访问`index + Int8Array.length`位置的元素。|
 
 **返回值：**
 
@@ -1260,7 +1268,7 @@ at(index: number): number | undefined
 
 **错误码：**
 
-以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID |                       错误信息                    |
 | -------- | ------------------------------------------------ |
@@ -1279,7 +1287,7 @@ console.info("element: " + array.at(6));  // element: undefined
 ## includes
 includes(searchElement: number, fromIndex?: number): boolean
 
-判断ArkTS Int8Array是否包含特定元素。
+判断ArkTS Int8Array是否包含指定元素。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1300,7 +1308,7 @@ includes(searchElement: number, fromIndex?: number): boolean
 
 **错误码：**
 
-以下错误码详细介绍请参考[语言基础类库错误码](errorcode-utils.md)。
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
@@ -1329,7 +1337,7 @@ entries(): IterableIterator\<[number, number]>
 
 | 类型         | 说明      |
 | ------------ | --------- |
-| IterableIterator\<[number, number]>| 新的迭代器对象。 |
+| IterableIterator\<[number, number]>| 包含ArkTS Int8Array中每个元素键值对的迭代器对象。 |
 
 **错误码：**
 
@@ -1363,7 +1371,7 @@ keys(): IterableIterator\<number>
 
 | 类型         | 说明      |
 | ------------ | --------- |
-| IterableIterator\<number> | 新的迭代器对象。|
+| IterableIterator\<number> | 包含ArkTS Int8Array中每个元素的键（下标）的迭代器对象。|
 
 **错误码：**
 
@@ -1397,7 +1405,7 @@ values(): IterableIterator\<number>
 
 | 类型         | 说明      |
 | ------------ | --------- |
-| IterableIterator\<number> | 新的迭代器对象。|
+| IterableIterator\<number> | 包含ArkTS Int8Array中每个元素值的迭代器对象。|
 
 **错误码：**
 
@@ -1422,7 +1430,7 @@ for (const value of iterator) {
 
 [Symbol.iterator]\(): IterableIterator&lt;number&gt;
 
-返回一个迭代器，迭代器的每一项都是一个 JavaScript 对象，并返回该对象。
+返回一个迭代器，迭代器包含ArkTS Int8Array中的每个元素。
 
 > **说明：**
 >
@@ -1436,7 +1444,7 @@ for (const value of iterator) {
 
 | 类型                      | 说明             |
 | ------------------------- | ---------------- |
-| IterableIterator&lt;number&gt; | 返回一个迭代器。 |
+| IterableIterator&lt;number&gt; | 返回包含ArkTS Int8Array中每个元素值的迭代器对象。 |
 
 **错误码：**
 
@@ -1450,9 +1458,9 @@ for (const value of iterator) {
 
 ```ts
 let int8Array: collections.Int8Array = collections.Int8Array.from([1, 2, 3, 4, 5, 6]);
-
+// 通过迭代器迭代Int8Array
 for (let item of int8Array) {
-  console.info(`value : ${item}`);
+  console.info("value : " + item);
 }
 ```
 
@@ -1470,17 +1478,18 @@ for (let item of int8Array) {
 
 | 参数名    | 类型   | 必填 | 说明                     |
 | ----- | ------ | ---- | -------------------------- |
-| index | number | 是   | 所需代码单元的从零开始的索引。|
+| index | number | 是   | 从0开始的元素索引。取值范围为[0, Int8Array.length - 1]。|
 
 **返回值：**
 
 | 类型   | 说明                 |
 | ----- | ---------------------|
-| number | 返回number数据类型。 |
+| number | 返回指定索引位置的元素值。 |
 
 **示例：**
 
 ```ts
 let int8Array = collections.Int8Array.from([1, 2, 4]);
+// 通过索引访问Int8Array的元素
 console.info("Element at index 1: ", int8Array[1]);
 ```

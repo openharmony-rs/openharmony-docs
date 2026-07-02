@@ -2088,7 +2088,7 @@ Sets a background blur effect.
 
 | Name    | Type    | Read-Only| Optional| Description                                    |
 | -------- | -------- | ---- | ---- | ---------------------------------------- |
-| radius   | number   | No  | No  | Blur radius. The value range is [0, +∞). The default value is **0**, indicating that the background is not blurred. A larger value indicates a more obvious blur effect.|
+| radius   | number   | No  | No  | Blur radius. The value range is [0, +∞). The default value is **0**. A negative value, **NaN**, and **Infinity** are invalid and treated as the default value. A larger value indicates a more obvious background blur effect. If the value is **0**, the background is not blurred.|
 | grayscale | [number, number] | No  | Yes  | Grayscale blur, with two parameters in the value range of [0, 127]. The default value is [0, 0]. The color gradation of the black and white in the image is adjusted to create different shades of gray. The first parameter indicates the degree of brightening the black color, and the second parameter indicates the degree of darkening the white color. A larger value indicates a more obvious adjustment (black and white become more gray). For example, if the value specified is (20, 20), the RGB value [0, 0, 0] (black) is adjusted to [20, 20, 20] (0+20), RGB value [255, 255, 255] (white) is adjusted to [235, 235, 235] (255-20), and the color pixels remain unchanged in the image.     |
 
 ## ContentBlur
@@ -2105,7 +2105,7 @@ Sets a content blur effect.
 
 | Name    | Type    | Read-Only| Optional| Description                                    |
 | -------- | -------- | ---- | ---- | ---------------------------------------- |
-| radius   | number   | No  | No  | Blur radius. The value range is [0, +∞). The default value is **0**, indicating that the content is not blurred. A larger value indicates a more obvious blur effect.|
+| radius   | number   | No  | No  | Blur radius. The value range is [0, +∞). The default value is **0**. A negative value, **NaN**, and **Infinity** are invalid and treated as the default value. A larger value indicates a more obvious blur effect. If the value is **0**, the content is not blurred.|
 | grayscale | [number, number] | No  | Yes  | Grayscale blur, with two parameters in the value range of [0, 127]. The default value is [0, 0]. The color gradation of the black and white in the image is adjusted to create different shades of gray. The first parameter indicates the degree of brightening the black color, and the second parameter indicates the degree of darkening the white color. A larger value indicates a more obvious adjustment (black and white become more gray). For example, if the value specified is (20, 20), the RGB value [0, 0, 0] (black) is adjusted to [20, 20, 20] (0+20), RGB value [255, 255, 255] (white) is adjusted to [235, 235, 235] (255-20), and the color pixels remain unchanged in the image.     |
 
 ## ForegroundBlur
@@ -2122,4 +2122,4 @@ Sets a foreground blur effect.
 
 | Name  | Type  | Read-Only| Optional| Description                               |
 | ------ | ------ | ---- | ---- | ----------------------------------- |
-| radius | number | No  | No  | Blur radius. The value range is [0, +∞). The default value is **0**, indicating that the foreground is not blurred. A larger value indicates a more obvious blur effect.|
+| radius | number | No  | No  | Blur radius. The value range is [0, +∞). The default value is **0**. A negative value, **NaN**, and **Infinity** are invalid and treated as the default value. A larger value indicates a more obvious foreground blur effect. If the value is **0**, the foreground is not blurred.|

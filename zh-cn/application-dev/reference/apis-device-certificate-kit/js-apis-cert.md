@@ -7747,7 +7747,7 @@ async function crlMatch() {
 
 getIssuerX500DistinguishedName(): X500DistinguishedName
 
-获取颁发者的X509可分辨名称。
+获取颁发者的X.509可分辨名称。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7757,7 +7757,7 @@ getIssuerX500DistinguishedName(): X500DistinguishedName
 
 | 类型                  | 说明                                      |
 | --------------------- | ----------------------------------------- |
-| [X500DistinguishedName](#x500distinguishedname12) | X509的可分辨对象。 |
+| [X500DistinguishedName](#x500distinguishedname12) | X.509的可分辨对象。 |
 
 **错误码：**
 
@@ -9634,7 +9634,7 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
 
 getCertIssuerX500DistinguishedName(): X500DistinguishedName
 
-获取证书颁发者的X509可分辨名称。
+获取证书颁发者的X.509可分辨名称。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -9644,7 +9644,7 @@ getCertIssuerX500DistinguishedName(): X500DistinguishedName
 
 | 类型    | 说明                                                 |
 | ------- | ---------------------------------------------------- |
-| [X500DistinguishedName](#x500distinguishedname12) | X509的可分辨对象。|
+| [X500DistinguishedName](#x500distinguishedname12) | X.509的可分辨对象。|
 
 **错误码：**
 
@@ -12727,13 +12727,13 @@ createX500DistinguishedName(nameStr: string): Promise\<X500DistinguishedName>
 
 | 参数名   | 类型                          | 必填 | 说明                 |
 | -------- | ----------------------------- | ---- | -------------------- |
-| nameStr | string | 是 |X509定义的Name字符串格式，使用斜杠'/'进行分割可分辨名称，每个可分辨名称为“属性=值”形式，常用属性包括CN（通用名）、O（组织名）、OU（组织单位）、C（国家/地区）、ST（省/州）、L（市/区）。例如：/CN=example.com/O=Example/C=CN。|
+| nameStr | string | 是 |X.509定义的Name字符串格式，使用斜杠'/'进行分割可分辨名称，每个可分辨名称为“属性=值”形式，常用属性包括CN（通用名）、O（组织名）、OU（组织单位）、C（国家/地区）、ST（省/州）、L（市/区）。例如：/CN=example.com/O=Example/C=CN。|
 
 **返回值：**
 
 | 类型                            | 说明             |
 | ------------------------------- | ---------------- |
-| Promise\<[X500DistinguishedName](#x500distinguishedname12)> | 表示X509的可分辨对象。|
+| Promise\<[X500DistinguishedName](#x500distinguishedname12)> | 表示X.509的可分辨对象。|
 
 **错误码：**
 
@@ -12798,13 +12798,13 @@ createX500DistinguishedName(nameDer: Uint8Array): Promise\<X500DistinguishedName
 
 | 参数名   | 类型                          | 必填 | 说明                 |
 | -------- | ----------------------------- | ---- | -------------------- |
-| nameDer | Uint8Array | 是 |X509定义的Uint8Array类型的DER格式数据。|
+| nameDer | Uint8Array | 是 |X.509定义的Uint8Array类型的DER格式数据。|
 
 **返回值：**
 
 | 类型                            | 说明             |
 | ------------------------------- | ---------------- |
-| Promise\<[X500DistinguishedName](#x500distinguishedname12)> | 表示X509的可分辨对象。|
+| Promise\<[X500DistinguishedName](#x500distinguishedname12)> | 表示X.509的可分辨对象。|
 
 **错误码：**
 
@@ -12850,7 +12850,7 @@ async function createX500DistinguishedName() {
 ```
 ## X500DistinguishedName<sup>12+</sup>
 
-X509定义的Name类型的对象。
+X.509定义的Name类型的对象。
 
 ### getName<sup>12+</sup>
 

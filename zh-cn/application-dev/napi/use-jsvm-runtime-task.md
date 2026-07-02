@@ -16,7 +16,9 @@ JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开�
 
 创建多个JS运行时环境并运行JS代码
 
-```cpp
+<!-- @[runtime_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmDebug/runtimetask/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include <map>
 #include <mutex>
 #include <deque>
@@ -25,16 +27,15 @@ using namespace std;
 static map<int, JSVM_VM *> g_vmMap;
 static map<int, JSVM_Env *> g_envMap;
 static map<int, JSVM_CallbackStruct *> g_callBackStructMap;
-static uint32_t ENVTAG_NUMBER = 0;
-static std::mutex envMapLock;
-static int g_aa = 0;
-
-#define CHECK_COND(cond)                                                                                               \
-    do {                                                                                                               \
-        if (!(cond)) {                                                                                                 \
-            OH_LOG_ERROR(LOG_APP, "jsvm fail file: %{public}s line: %{public}d ret = false", __FILE__, __LINE__);      \
-            return -1;                                                                                                 \
-        }                                                                                                              \
+static uint32_t g_envtagNumber = 0;
+static std::mutex g_envMapLock;
+// ...
+#define CHECK_COND(cond)                                                                                          \
+    do {                                                                                                          \
+        if (!(cond)) {                                                                                            \
+            OH_LOG_ERROR(LOG_APP, "jsvm fail file: %{public}s line: %{public}d ret = false", __FILE__, __LINE__); \
+            return -1;                                                                                            \
+        }                                                                                                         \
     } while (0)
 
 class Task {
@@ -45,21 +46,24 @@ public:
 static map<int, deque<Task *>> g_taskQueueMap;
 
 // 自定义ConsoleInfo方法
-static JSVM_Value ConsoleInfo(JSVM_Env env, JSVM_CallbackInfo info) {
+static JSVM_Value ConsoleInfo(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1];
-    char log[256] = "";
-    size_t log_length = 0;
+    #define MAX_LOG_LENGTH 255
+    char log[MAX_LOG_LENGTH + 1] = "";
+    size_t logLength = 0;
     JSVM_CALL(OH_JSVM_GetCbInfo(env, info, &argc, args, NULL, NULL));
 
-    JSVM_CALL(OH_JSVM_GetValueStringUtf8(env, args[0], log, 255, &log_length));
-    log[255] = 0;
+    JSVM_CALL(OH_JSVM_GetValueStringUtf8(env, args[0], log, MAX_LOG_LENGTH, &logLength));
+    log[MAX_LOG_LENGTH] = 0;
     OH_LOG_INFO(LOG_APP, "JSVM API TEST: %{public}s", log);
     return nullptr;
 }
 
 // 自定义创建Promise方法用以在JS代码中创建Promise
-static JSVM_Value CreatePromise(JSVM_Env env, JSVM_CallbackInfo info) {
+static JSVM_Value CreatePromise(JSVM_Env env, JSVM_CallbackInfo info)
+{
     OH_LOG_INFO(LOG_APP, "JSVM API TEST: CreatePromise start");
     int envID = -1;
     // 通过当前env获取envID
@@ -80,7 +84,8 @@ static JSVM_Value CreatePromise(JSVM_Env env, JSVM_CallbackInfo info) {
     class ReadTask : public Task {
     public:
         ReadTask(JSVM_Env env, JSVM_Deferred deferred, int envNum) : env_(env), envID_(envNum), deferred_(deferred) {}
-        void Run() override {
+        void Run() override
+        {
             // string str = "TEST RUN OH_JSVM_ResolveDeferred";
             int envID = 0;
             for (auto it = g_envMap.begin(); it != g_envMap.end(); ++it) {
@@ -110,11 +115,13 @@ static JSVM_Value CreatePromise(JSVM_Env env, JSVM_CallbackInfo info) {
 }
 
 // 自定义Add方法
-static JSVM_Value Add(JSVM_Env env, JSVM_CallbackInfo info) {
+static JSVM_Value Add(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 2;
     JSVM_Value args[2];
     JSVM_CALL(OH_JSVM_GetCbInfo(env, info, &argc, args, NULL, NULL));
-    double num1 = 0, num2 = 0;
+    double num1 = 0;
+    double num2 = 0;
     JSVM_CALL(OH_JSVM_GetValueDouble(env, args[0], &num1));
     JSVM_CALL(OH_JSVM_GetValueDouble(env, args[1], &num2));
     JSVM_Value sum = nullptr;
@@ -123,7 +130,8 @@ static JSVM_Value Add(JSVM_Env env, JSVM_CallbackInfo info) {
 }
 
 // 自定义AssertEqual方法
-static JSVM_Value AssertEqual(JSVM_Env env, JSVM_CallbackInfo info) {
+static JSVM_Value AssertEqual(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 2;
     JSVM_Value args[2];
     JSVM_CALL(OH_JSVM_GetCbInfo(env, info, &argc, args, NULL, NULL));
@@ -139,20 +147,21 @@ static JSVM_Value AssertEqual(JSVM_Env env, JSVM_CallbackInfo info) {
     return nullptr;
 }
 
-static int fromOHStringValue(JSVM_Env &env, JSVM_Value &value, std::string &result) {
+static int fromOHStringValue(JSVM_Env &env, JSVM_Value &value, std::string &result)
+{
     size_t size = 0;
     CHECK_RET(OH_JSVM_GetValueStringUtf8(env, value, nullptr, 0, &size));
-    char *resultStr = new char[size + 1];
+    char resultStr[size + 1];
     CHECK_RET(OH_JSVM_GetValueStringUtf8(env, value, resultStr, size + 1, &size));
     result = resultStr;
-    delete[] resultStr;
     return 0;
 }
 
 // 提供创建JSVM运行环境的对外接口并返回对应唯一ID
-static int CreateJsCore(uint32_t *result) {
+static int CreateJsCore(uint32_t *result)
+{
     OH_LOG_INFO(LOG_APP, "JSVM CreateJsCore START");
-    g_taskQueueMap[ENVTAG_NUMBER] = deque<Task *>{};
+    g_taskQueueMap[g_envtagNumber] = deque<Task*> {};
 
     if (g_aa == 0) {
         JSVM_InitOptions init_options;
@@ -160,50 +169,57 @@ static int CreateJsCore(uint32_t *result) {
         CHECK(OH_JSVM_Init(&init_options));
         g_aa++;
     }
-    std::lock_guard<std::mutex> lock_guard(envMapLock);
+    std::lock_guard<std::mutex> lock_guard(g_envMapLock);
 
     // 虚拟机实例
-    g_vmMap[ENVTAG_NUMBER] = new JSVM_VM;
+    g_vmMap[g_envtagNumber] = new JSVM_VM;
     JSVM_CreateVMOptions options;
     JSVM_VMScope vmScope;
     memset(&options, 0, sizeof(options));
-    CHECK(OH_JSVM_CreateVM(&options, g_vmMap[ENVTAG_NUMBER]));
-    CHECK(OH_JSVM_OpenVMScope(*g_vmMap[ENVTAG_NUMBER], &vmScope));
+    CHECK(OH_JSVM_CreateVM(&options, g_vmMap[g_envtagNumber]));
+    CHECK(OH_JSVM_OpenVMScope(*g_vmMap[g_envtagNumber], &vmScope));
 
     // 新环境
-    g_envMap[ENVTAG_NUMBER] = new JSVM_Env;
-    g_callBackStructMap[ENVTAG_NUMBER] = new JSVM_CallbackStruct[4];
+    g_envMap[g_envtagNumber] = new JSVM_Env;
+    g_callBackStructMap[g_envtagNumber] = new JSVM_CallbackStruct[4];
 
     // 注册用户提供的本地函数的回调函数指针和数据，通过JSVM-API暴露给js
-    for (int i = 0; i < 4; i++) {
-        g_callBackStructMap[ENVTAG_NUMBER][i].data = nullptr;
+    constexpr int kLoopCount = 4;
+    for (int i = 0; i < kLoopCount; i++) {
+        g_callBackStructMap[g_envtagNumber][i].data = nullptr;
     }
-    g_callBackStructMap[ENVTAG_NUMBER][0].callback = ConsoleInfo;
-    g_callBackStructMap[ENVTAG_NUMBER][1].callback = Add;
-    g_callBackStructMap[ENVTAG_NUMBER][2].callback = AssertEqual;
-    g_callBackStructMap[ENVTAG_NUMBER][3].callback = CreatePromise;
+    const int consoleinfoIndex = 0;
+    const int addIndex = 1;
+    const int assertEqualIndex = 2;
+    const int createPromiseIndex = 3;
+    g_callBackStructMap[g_envtagNumber][consoleinfoIndex].callback = ConsoleInfo;
+    g_callBackStructMap[g_envtagNumber][addIndex].callback = Add;
+    g_callBackStructMap[g_envtagNumber][assertEqualIndex].callback = AssertEqual;
+    g_callBackStructMap[g_envtagNumber][createPromiseIndex].callback = CreatePromise;
     JSVM_PropertyDescriptor descriptors[] = {
-        {"consoleinfo", NULL, &g_callBackStructMap[ENVTAG_NUMBER][0], NULL, NULL, NULL, JSVM_DEFAULT},
-        {"add", NULL, &g_callBackStructMap[ENVTAG_NUMBER][1], NULL, NULL, NULL, JSVM_DEFAULT},
-        {"assertEqual", NULL, &g_callBackStructMap[ENVTAG_NUMBER][2], NULL, NULL, NULL, JSVM_DEFAULT},
-        {"createPromise", NULL, &g_callBackStructMap[ENVTAG_NUMBER][3], NULL, NULL, NULL, JSVM_DEFAULT},
+        { "consoleinfo", NULL, &g_callBackStructMap[g_envtagNumber][consoleinfoIndex], NULL, NULL, NULL, JSVM_DEFAULT },
+        { "add", NULL, &g_callBackStructMap[g_envtagNumber][addIndex], NULL, NULL, NULL, JSVM_DEFAULT },
+        { "assertEqual", NULL, &g_callBackStructMap[g_envtagNumber][assertEqualIndex], NULL, NULL, NULL, JSVM_DEFAULT },
+        { "createPromise", NULL, &g_callBackStructMap[g_envtagNumber][createPromiseIndex], NULL, NULL, NULL,
+            JSVM_DEFAULT },
     };
-    CHECK(OH_JSVM_CreateEnv(*g_vmMap[ENVTAG_NUMBER], sizeof(descriptors) / sizeof(descriptors[0]), descriptors,
-                            g_envMap[ENVTAG_NUMBER]));
-    CHECK(OH_JSVM_CloseVMScope(*g_vmMap[ENVTAG_NUMBER], vmScope));
+    CHECK(OH_JSVM_CreateEnv(
+        *g_vmMap[g_envtagNumber], sizeof(descriptors) / sizeof(descriptors[0]), descriptors, g_envMap[g_envtagNumber]));
+    CHECK(OH_JSVM_CloseVMScope(*g_vmMap[g_envtagNumber], vmScope));
 
     OH_LOG_INFO(LOG_APP, "JSVM CreateJsCore END");
-    *result = ENVTAG_NUMBER;
-    ENVTAG_NUMBER++;
+    *result = g_envtagNumber;
+    g_envtagNumber++;
     return 0;
 }
 
 // 对外提供释放JSVM环境接口，通过envId释放对应环境
-static int ReleaseJsCore(uint32_t coreEnvId) {
-    std::lock_guard<std::mutex> lock_guard(envMapLock);
-    
+static int ReleaseJsCore(uint32_t coreEnvId)
+{
     OH_LOG_INFO(LOG_APP, "JSVM ReleaseJsCore START");
     CHECK_COND(g_envMap.count(coreEnvId) != 0 && g_envMap[coreEnvId] != nullptr);
+
+    std::lock_guard<std::mutex> lock_guard(g_envMapLock);
 
     CHECK(OH_JSVM_DestroyEnv(*g_envMap[coreEnvId]));
     g_envMap[coreEnvId] = nullptr;
@@ -220,9 +236,10 @@ static int ReleaseJsCore(uint32_t coreEnvId) {
     return 0;
 }
 
-static std::mutex mutexLock;
+static std::mutex g_mutexLock;
 // 对外提供执行JS代码接口，通过coreID在对应的JSVM环境中执行JS代码
-static int EvaluateJS(uint32_t envId, const char *source, std::string &res) {
+static int EvaluateJS(uint32_t envId, const char *source, std::string &res)
+{
     OH_LOG_INFO(LOG_APP, "JSVM EvaluateJS START");
 
     CHECK_COND(g_envMap.count(envId) != 0 && g_envMap[envId] != nullptr);
@@ -234,7 +251,7 @@ static int EvaluateJS(uint32_t envId, const char *source, std::string &res) {
     JSVM_HandleScope handleScope;
     JSVM_Value result;
 
-    std::lock_guard<std::mutex> lock_guard(mutexLock);
+    std::lock_guard<std::mutex> lock_guard(g_mutexLock);
     {
         // 创建JSVM环境
         CHECK_RET(OH_JSVM_OpenVMScope(vm, &vmScope));
@@ -266,7 +283,7 @@ static int EvaluateJS(uint32_t envId, const char *source, std::string &res) {
             CHECK_RET(OH_JSVM_GetValueBool(env, result, &ret));
             ret ? res = "true" : res = "false";
         } else if (type == JSVM_NUMBER) {
-            int32_t num = 0;
+            int32_t num;
             CHECK_RET(OH_JSVM_GetValueInt32(env, result, &num));
             res = std::to_string(num);
         } else if (type == JSVM_OBJECT) {
@@ -287,28 +304,29 @@ static int EvaluateJS(uint32_t envId, const char *source, std::string &res) {
     return 0;
 }
 
-static int32_t TestJSVM() {
+static int32_t TestJSVM()
+{
     const char source1[] = "{\
-        let a = \"hello World\";\
-        consoleinfo(a);\
-        const mPromise = createPromise();\
-        mPromise.then((result) => {\
-          assertEqual(result, 0);\
-        });\
-        a;\
-    };";
+      let a = \"hello World\";\
+      consoleinfo(a);\
+      const mPromise = createPromise();\
+      mPromise.then((result) => {\
+        assertEqual(result, 0);\
+      });\
+      a;\
+  };";
 
     const char source2[] = "{\
-        let a = \"second hello\";\
-        consoleinfo(a);\
-        let b = add(99, 1);\
-        assertEqual(100, b);\
-        assertEqual(add(99, 1), 100);\
-        createPromise().then((result) => {\
-            assertEqual(result, 1);\
-        });\
-        a;\
-    };";
+      let a = \"second hello\";\
+      consoleinfo(a);\
+      let b = add(99, 1);\
+      assertEqual(100, b);\
+      assertEqual(add(99, 1), 100);\
+      createPromise().then((result) => {\
+          assertEqual(result, 1);\
+      });\
+      a;\
+  };";
 
     // 创建首个运行环境，并绑定TS回调
     uint32_t coreId1 = 0;
@@ -337,9 +355,9 @@ static int32_t TestJSVM() {
     return 0;
 }
 ```
-<!-- @[runtime_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmDebug/runtimetask/src/main/cpp/hello.cpp) -->
+
 预计的输出结果：
-```cpp
+``` C++
 JSVM CreateJsCore START
 JSVM CreateJsCore END
 TEST coreId: 0

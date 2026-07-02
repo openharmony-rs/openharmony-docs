@@ -7,11 +7,15 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
-以下权限仅对MDM（Mobile Device Management）设备管理应用开放。MDM应用的详细介绍，请参考[MDM Kit简介](../../mdm/mdm-kit-intro.md)。
+以下权限仅对MDM（Mobile Device Management）设备管理应用开放。
+
+<!--RP2-->
+MDM应用的详细介绍，请参考[MDM Kit简介](../../mdm/mdm-kit-intro.md)。
 
 > **注意：**
 > 
 > 以下权限不支持自动签名，因此在调试和发布阶段，均需参照[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)的步骤，完成手动签名。
+<!--RP2End-->
 
 ## ohos.permission.ENTERPRISE_GET_DEVICE_INFO
 
@@ -881,3 +885,20 @@
 **支持设备**：PC/2in1
 
 **起始版本**：26.0.0
+
+## ohos.permission.ENTERPRISE_REQUEST_PUBLISH_FORM
+
+允许设备管理应用在桌面添加卡片。
+
+<!--RP1--><!--RP1End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.1.0

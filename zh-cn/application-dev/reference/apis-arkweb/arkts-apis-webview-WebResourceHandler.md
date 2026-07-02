@@ -6,7 +6,9 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-通过WebResourceHandler，可以提供自定义的返回头以及返回体给Web组件。
+WebResourceHandler是自定义scheme拦截场景中用于向Web组件返回拦截请求结果的处理器。当WebSchemeHandler决定拦截一个请求后，开发者通过WebResourceHandler向Web组件提供自定义的响应头（didReceiveResponse）、响应体数据（didReceiveResponseBody），并通知请求完成（didFinish）或失败（didFail）。该接口实现了应用层对网络请求的完全自定义响应。
+
+WebResourceHandler与[WebSchemeHandler](./arkts-apis-webview-WebSchemeHandler.md)、[WebSchemeHandlerResponse](./arkts-apis-webview-WebSchemeHandlerResponse.md)配合使用：WebSchemeHandler的onRequestStart回调中接收WebResourceHandler实例，开发者构造WebSchemeHandlerResponse对象，通过WebResourceHandler的didReceiveResponse传入响应头，通过didReceiveResponseBody传入响应体数据，最后调用didFinish或didFail结束请求。调用didReceiveResponse是调用didFinish/didFail的前提条件。
 
 > **说明：**
 >

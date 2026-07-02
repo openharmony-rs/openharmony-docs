@@ -12,7 +12,7 @@ typedef struct AVSession_OutputDeviceInfo {...}
 
 ## 概述
 
-目标设备信息的定义。
+输出设备信息的定义。
 
 **起始版本：** 23
 

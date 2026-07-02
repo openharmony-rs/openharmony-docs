@@ -5,6 +5,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:34:51.189Z pushedAt=2026-06-23T10:41:46.936Z -->
 
 >  **NOTE**
 >  Supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
@@ -113,4 +114,4 @@ export default {
 }
 ```
 
-![en-us_image_0000001127125116](figures/en-us_image_0000001127125116.gif)
+![en-us_image_0000001127125116](figures/tab-example.gif)

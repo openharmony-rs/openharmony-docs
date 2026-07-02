@@ -12,6 +12,8 @@
 >
 > - 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
+> - 在OpenHarmony 7.0.0之前，支持在Tablet设备的非[电脑模式](../../windowmanager/freeform-window-overview.md#电脑模式)、Phone设备使用闪控球功能，其他设备不可用；从OpenHarmony 7.0.0开始，支持在Phone、PC/2in1、Tablet设备使用闪控球功能，其他设备不可用。
+>
 > - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canIUse()](../common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。
 
 **闪控球和闪控窗对比**
@@ -49,6 +51,7 @@ isFloatingBallEnabled(): boolean
 **示例：**
 
 ```ts
+// 判断当前设备是否支持闪控球功能
 let enable: boolean = floatingBall.isFloatingBallEnabled();
 console.info('Floating ball enabled is: ' + enable);
 ```
@@ -61,7 +64,7 @@ create(config: FloatingBallConfiguration): Promise&lt;FloatingBallController&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在Tablet设备的非电脑模式、Phone设备下可正常调用，在其他设备、Tablet设备的电脑模式下调用返回801错误码。
+**设备行为差异：** 在OpenHarmony 7.0.0之前，该接口在Tablet设备的非[电脑模式](../../windowmanager/freeform-window-overview.md#电脑模式)、Phone设备下可正常调用，在其他设备、Tablet设备的[电脑模式](../../windowmanager/freeform-window-overview.md#电脑模式)下调用返回801错误码。从OpenHarmony 7.0.0开始，支持在Phone、PC/2in1、Tablet设备使用，其他设备调用返回801错误码。
 
 **参数：**
 
@@ -91,20 +94,24 @@ create(config: FloatingBallConfiguration): Promise&lt;FloatingBallController&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 
+// 声明闪控球控制器实例
 let floatingBallController: floatingBall.FloatingBallController | undefined = undefined;
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回的结果为UIAbilityContext
 let ctx = this.getUIContext().getHostContext() as common.UIAbilityContext; 
+// 配置闪控球控制器参数
 let config: floatingBall.FloatingBallConfiguration = {
   context: ctx,
 };
 try {
+  // 创建闪控球控制器
   floatingBall.create(config).then((data: floatingBall.FloatingBallController) => {
+    // 保存控制器实例
     floatingBallController = data;
     console.info(`Succeeded in creating floating ball controller. Data: ${data}`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to create floating ball controller. Cause:${err.code}, message:${err.message}`);
   });
-} catch(e) {
+} catch (e) {
   console.error(`Failed to create floating ball controller. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -117,7 +124,7 @@ try {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
-| context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 否 | 否 | 表示上下文环境。|
+| context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 否 | 否 | 表示上下文环境，用于创建闪控球控制器时关联应用的主窗口。该参数不能为空，通常传入UIAbilityContext对象。|
 
 ## FloatingBallController
 
@@ -141,7 +148,7 @@ startFloatingBall(params: FloatingBallParams): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| params | [FloatingBallParams](#floatingballparams) | 是 | 启动闪控球的参数。 |
+| params | [FloatingBallParams](#floatingballparams) | 是 | 启动闪控球的参数，用于配置闪控球的标题、内容或背景色等。 |
 
 **返回值：**
 
@@ -170,18 +177,20 @@ startFloatingBall(params: FloatingBallParams): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 配置闪控球启动参数
 let startParams: floatingBall.FloatingBallParams = {
   template: floatingBall.FloatingBallTemplate.EMPHATIC,
   title: 'title',
   content: 'content'
 };
 try {
+  // 启动闪控球
   floatingBallController.startFloatingBall(startParams).then(() => {
     console.info('Succeeded in starting floating ball.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to start floating ball. Cause:${err.code}, message:${err.message}`);
   });
-} catch(e) {
+} catch (e) {
   console.error(`Failed to start floating ball. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -190,7 +199,7 @@ try {
 
 updateFloatingBall(params: FloatingBallParams): Promise&lt;void&gt;
 
-更新闪控球，使用Promise异步回调。
+更新闪控球，使用Promise异步回调。必须先调用[startFloatingBall()](#startfloatingball)启动闪控球后，才能调用此方法更新闪控球参数。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -198,7 +207,7 @@ updateFloatingBall(params: FloatingBallParams): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| params | [FloatingBallParams](#floatingballparams) | 是 | 更新闪控球的参数。 |
+| params | [FloatingBallParams](#floatingballparams) | 是 | 更新闪控球的参数，用于更新闪控球的标题、内容或背景色等。调用此接口更新闪控球时，模板类型template字段不可更改。 |
 
 **返回值：**
 
@@ -227,18 +236,20 @@ updateFloatingBall(params: FloatingBallParams): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 配置闪控球更新参数
 let updateParams: floatingBall.FloatingBallParams = {
   template: floatingBall.FloatingBallTemplate.EMPHATIC,
   title: 'title2',
   content: 'content2'
 };
 try {
+  // 更新闪控球
   floatingBallController.updateFloatingBall(updateParams).then(() => {
     console.info('Succeeded in updating floating ball.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to update floating ball. Cause:${err.code}, message:${err.message}`);
   });
-} catch(e) {
+} catch (e) {
   console.error(`Failed to update floating ball. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -272,6 +283,7 @@ stopFloatingBall(): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 停止闪控球
 floatingBallController.stopFloatingBall().then(() => {
   console.info('Succeeded in stopping floating ball.');
 }).catch((err: BusinessError) => {
@@ -308,12 +320,14 @@ on(type: 'stateChange', callback: Callback&lt;FloatingBallState&gt;): void
 **示例：**
 
 ```ts
+// 定义状态变化回调函数
 let onStateChange = (state: floatingBall.FloatingBallState) => {
   console.info('Floating ball stateChange: ' + state);
 };
 try {
+  // 注册闪控球状态变化监听
   floatingBallController.on('stateChange', onStateChange);
-} catch(e) {
+} catch (e) {
   console.error(`Failed to on stateChange floating ball. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -346,12 +360,14 @@ off(type: 'stateChange', callback?: Callback&lt;FloatingBallState&gt;): void
 **示例：**
 
 ```ts
+// 定义状态变化回调函数（需与注册时的回调一致）
 let onStateChange = (state: floatingBall.FloatingBallState) => {
   console.info('Floating ball stateChange: ' + state);
 };
 try {
+  // 取消闪控球状态变化监听
   floatingBallController.off('stateChange', onStateChange);
-} catch(e) {
+} catch (e) {
   console.error(`Failed to off stateChange floating ball. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -385,12 +401,14 @@ on(type: 'click', callback: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
+// 定义点击事件回调函数
 let onClick = () => {
   console.info('Floating ball onClick');
 };
 try {
+  // 注册闪控球点击监听
   floatingBallController.on('click', onClick);
-} catch(e) {
+} catch (e) {
   console.error(`Failed to on click floating ball. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -423,12 +441,14 @@ off(type: 'click', callback?: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
+// 定义点击事件回调函数（需与注册时的回调一致）
 let onClick = () => {
   console.info('Floating ball onClick');
 };
 try {
+  // 取消闪控球点击监听
   floatingBallController.off('click', onClick);
-} catch(e) {
+} catch (e) {
   console.error(`Failed to off click floating ball. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -437,7 +457,7 @@ try {
 
 getFloatingBallWindowInfo(): Promise&lt;FloatingBallWindowInfo&gt;
 
-获得闪控球窗口信息，使用Promise异步回调。
+获取闪控球窗口信息，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -465,6 +485,7 @@ getFloatingBallWindowInfo(): Promise&lt;FloatingBallWindowInfo&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 获取闪控球窗口信息
 floatingBallController.getFloatingBallWindowInfo().then((data: floatingBall.FloatingBallWindowInfo) => {
   console.info('Succeeded in getting floating ball window info. Info: ' + JSON.stringify(data));
 }).catch((err: BusinessError) => {
@@ -516,18 +537,20 @@ restoreMainWindow(want: Want): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Want } from '@kit.AbilityKit';
 
+// 配置要恢复的主窗口Want参数
 let want: Want = {
   bundleName: 'xxx.xxx.xxx',
   abilityName: 'EntryAbility'
 };
 try {
+  // 恢复应用主窗口并加载指定页面
   floatingBallController.restoreMainWindow(want).then(() => {
     console.info('Succeeded in restoring floating ball main window.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to restore floating ball main window. Cause code: ${err.code}, message: ${err.message}`);
   });
-} catch(e) {
-  console.error(`Failed to create floating ball controller. Cause:${e.code}, message:${e.message}`);
+} catch (e) {
+  console.error(`Failed to restore floating ball main window. Cause:${e.code}, message:${e.message}`);
 }
 ```
 
@@ -571,6 +594,7 @@ setFloatingBallVisibilityInApp(isVisible: boolean): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 设置闪控球在应用内不可见
 floatingBallController?.setFloatingBallVisibilityInApp(false).then(() => {
   console.info('Succeeded in setting floating ball visibility.');
 }).catch((err: BusinessError) => {
@@ -610,12 +634,14 @@ onDestroy(callback: Callback&lt;string&gt;): void
 **示例：**
 
 ```ts
+// 定义销毁事件回调函数
 let onDestroy = (reason: string) => {
   console.info('Floating ball has destroyed, reason: ' + reason);
 };
 try {
+  // 注册闪控球销毁事件监听
   floatingBallController?.onDestroy(onDestroy);
-} catch(e) {
+} catch (e) {
   console.error(`Failed to onDestroy floating ball. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -651,18 +677,20 @@ offDestroy(callback?: Callback&lt;string&gt;): void
 **示例：**
 
 ```ts
+// 定义销毁事件回调函数（需与注册时的回调一致）
 let onDestroy = (reason: string) => {
   console.info('Floating ball has destroyed, reason: ' + reason);
 };
 try {
+  // 取消闪控球销毁事件监听
   floatingBallController?.offDestroy(onDestroy);
-} catch(e) {
+} catch (e) {
   console.error(`Failed to offDestroy floating ball. Cause:${e.code}, message:${e.message}`);
 }
 // 取消所有监听
 try {
   floatingBallController?.offDestroy();
-} catch(e) {
+} catch (e) {
   console.error(`Failed to offDestroy all listeners. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -675,13 +703,13 @@ try {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
-| template | [FloatingBallTemplate](#floatingballtemplate) | 否 | 否 | 闪控球模板。 |
-| title | string | 否 | 否 | 闪控球标题，不可为空字符串，大小不超过64字节。 |
-| content | string | 否 | 是 | 闪控球内容，大小不超过64字节。不传入时默认为空字符串，不显示闪控球内容。 |
-| backgroundColor | string | 否 | 是 | 闪控球背景颜色，为不带透明度的十六进制颜色格式（例如'#008EF5'或'#FF008EF5'），不传入时闪控球跟随系统深浅色模式的默认背景色。 |
+| template | [FloatingBallTemplate](#floatingballtemplate) | 否 | 否 | 闪控球模板。不同模板对其他参数有不同要求，详见FloatingBallTemplate枚举说明。 |
+| title | string | 否 | 否 | 闪控球标题，不可为空字符串，大小不超过64字节。传入空字符串或超过64字节时返回错误码[1300019](errorcode-window.md#1300019-闪控球参数校验错误)。 |
+| content | string | 否 | 是 | 闪控球内容，大小不超过64字节。不传入时默认为空字符串，不显示闪控球内容。超过64字节时返回错误码[1300019](errorcode-window.md#1300019-闪控球参数校验错误)。 |
+| backgroundColor | string | 否 | 是 | 闪控球背景颜色，为不带透明度的十六进制颜色格式（例如'#008EF5'或'#FF008EF5'），不传入时闪控球跟随系统深浅色模式的默认背景色。格式错误时返回错误码[1300019](errorcode-window.md#1300019-闪控球参数校验错误)。不传入时闪控球跟随系统深浅色模式的默认背景色。 |
 | titleColor | string | 否 | 是 | 闪控球标题文字颜色，为不带透明度的十六进制颜色格式（例如'#008EF5'或'#FF008EF5'），不传入时根据背景色色度自动填充，若背景色为亮色则填充黑色('#E5000000')，若背景色为暗色则填充白色('#E5FFFFFF')。配置此属性时，必须配置背景色backgroundColor，否则返回错误码[1300019](errorcode-window.md#1300019-闪控球参数校验错误)。<br>**起始版本**：26.0.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | contentColor | string | 否 | 是 | 闪控球内容文字颜色，为不带透明度的十六进制颜色格式（例如'#008EF5'或'#FF008EF5'），不传入时根据背景色色度自动填充，若背景色为亮色则填充黑色('#99000000')，若背景色为暗色则填充白色('#99FFFFFF')。配置此属性时，必须配置背景色backgroundColor，否则返回错误码[1300019](errorcode-window.md#1300019-闪控球参数校验错误)。<br>**起始版本**：26.0.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
-| icon | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否 | 是 | 闪控球图标，图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)获取）。建议图标像素宽高为128px*128px。实际显示效果依赖于设备能力和闪控球UI样式。 |
+| icon | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否 | 是 | 闪控球图标，图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)获取），超过192KB时返回错误码[1300019](errorcode-window.md#1300019-闪控球参数校验错误)。建议图标像素宽高为128px*128px。实际显示效果依赖于设备能力和闪控球UI样式。 |
 | textUpdateAnimationType | [FloatingBallTextUpdateAnimationType](#floatingballtextupdateanimationtype) | 否 | 是 | 闪控球文本更新时的动画类型。默认为FloatingBallTextUpdateAnimationType.ANIMATION_NONE。<br>**起始版本**：26.0.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## FloatingBallState

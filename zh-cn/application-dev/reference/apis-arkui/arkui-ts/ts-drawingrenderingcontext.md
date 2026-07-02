@@ -156,7 +156,7 @@ struct CanvasExample {
             green: 0,
             blue: 0
           };
-          // 使用RGBA(0, 0, 0, 0)填充画布
+          // 使用RGBA(0, 0, 0, 0)清空画布
           this.context.canvas.clear(color);
           this.context.invalidate();
         })
