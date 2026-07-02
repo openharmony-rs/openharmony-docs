@@ -11625,7 +11625,7 @@ setWindowSystemBarProperties(systemBarProperties: SystemBarProperties, callback:
 
 | 参数名              | 类型                                        | 必填 | 说明                   |
 | ------------------- | ------------------------------------------- | ---- | ---------------------- |
-| systemBarProperties | [SystemBarProperties](arkts-apis-window-i.md#systembarproperties) | 是   | <!--Del-->三键导航栏或工具栏、<!--DelEnd-->状态栏的属性。 |
+| systemBarProperties | [SystemBarProperties](arkts-apis-window-i.md#systembarproperties) | 是   | <!--Del-->三键导航栏、<!--DelEnd-->状态栏的属性。 |
 | callback            | AsyncCallback&lt;void&gt;                   | 是   | 回调函数。             |
 
 **错误码：**
