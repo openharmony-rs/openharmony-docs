@@ -74,7 +74,7 @@
 
 2. 定义回调函数接收操作手结果
 
-   <!-- @[motion_subscribe_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->  
+   <!-- @[motion_subscribe_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
 
    ```ts
    let callback:Callback<motion.OperatingHandStatus> = (data:motion.OperatingHandStatus) => {
@@ -84,7 +84,7 @@
 
 3. 订阅操作手感知
 
-   <!-- @[motion_subscribe_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[motion_subscribe_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->  
 
    ```ts
    try {
