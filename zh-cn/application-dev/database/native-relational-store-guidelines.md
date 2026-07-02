@@ -328,7 +328,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
    配置谓词以LIKE模式或NOT LIKE模式匹配进行数据查询。示例代码如下：
 
     <!--@[rdb_OH_Rdb_Query_by_like_and_notLike](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)--> 
-
+    
     ``` C++
     OH_Predicates *likePredicates = OH_Rdb_CreatePredicates("EMPLOYEE");
     if (likePredicates == NULL) {
@@ -338,7 +338,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     likePattern->putText(likePattern, "zh%");
     // 配置谓词以LIKE模式匹配
     likePredicates->like(likePredicates, "NAME", likePattern);
-    
+        
     char *colName[] = { "NAME", "AGE" };
     auto *likeQueryCursor = OH_Rdb_Query(store_, likePredicates, colName, 2); // the length of columnNames is 2
     if (likeQueryCursor == NULL) {
@@ -355,10 +355,11 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
         likeQueryCursor->getText(likeQueryCursor, colIndex, name, dataLength + 1);
         free(name);
     }
+    
     likeQueryCursor->destroy(likeQueryCursor);
     likePredicates->destroy(likePredicates);
     likePattern->destroy(likePattern);
-    
+        
     OH_Predicates *notLikePredicates = OH_Rdb_CreatePredicates("EMPLOYEE");
     if (notLikePredicates == NULL) {
         OH_LOG_ERROR(LOG_APP, "CreatePredicates failed.");
@@ -366,7 +367,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     }
     // 配置谓词以NOT LIKE模式匹配
     OH_Predicates_NotLike(notLikePredicates, "NAME", "zh%");
-    auto *notLikeQueryCursor = OH_Rdb_Query(store_, notLikePredicates, colName, 2); // the length ofcolumnNames is 2
+    auto *notLikeQueryCursor = OH_Rdb_Query(store_, notLikePredicates, colName, 2); // the length of columnNames is 2
     if (notLikeQueryCursor == NULL) {
         notLikePredicates->destroy(notLikePredicates);
         return;
@@ -380,7 +381,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
         notLikeQueryCursor->getText(notLikeQueryCursor, colIndex, name2, dataLength + 1);
         free(name2);
     }
-    
+        
     notLikePredicates->destroy(notLikePredicates);
     notLikeQueryCursor->destroy(notLikeQueryCursor);
     ```
