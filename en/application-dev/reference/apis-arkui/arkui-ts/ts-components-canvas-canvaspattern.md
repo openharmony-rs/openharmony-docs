@@ -91,3 +91,5 @@ struct CanvasPatternPage {
 ```
 
 ![CanvasPattern](./figures/canvas_pattern.gif)
+
+<!--no_check-->
