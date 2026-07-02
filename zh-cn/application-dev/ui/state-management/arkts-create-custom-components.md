@@ -572,18 +572,18 @@ struct Son {
 
   ![zh-cn_image_0000001651365257](figures/zh-cn_image_0000001651365257.png)
 
-  所以，不能在自定义组件的build()或\@Builder方法里直接改变状态变量，这可能会造成循环渲染的风险。Text('${this.count++}')在全量更新或最小化更新会产生不同的影响：
+  所以，不能在自定义组件的`build()`或\@Builder方法里直接改变状态变量，这可能会造成循环渲染的风险。``Text(`${this.count++}`)``在全量更新或最小化更新会产生不同的影响：
 
-  - 全量更新（API8及以前版本）： ArkUI可能会陷入一个无限的重渲染的循环里，因为Text组件的每一次渲染都会改变应用的状态，就会再引起下一轮渲染的开启。 当 this.columnColor 更改时，都会执行整个build构建函数，因此，Text(`${this.count++}`)绑定的文本也会更改，每次重新渲染Text(`${this.count++}`)，又会使this.count状态变量更新，导致新一轮的build执行，从而陷入无限循环。
-  - 最小化更新（API9及以上版本）：当this.columnColor更新时，仅Column组件更新，Text组件不会更新。只有当this.textColor更改时，会去更新整个Text组件，其所有属性函数都会执行，所以会看到Text(`${this.count++}`)自增。因为目前UI以组件为单位进行更新，如果组件上某一个属性发生改变，会更新整个的组件。所以整体的更新链路是：this.textColor = Color.Pink -&gt;Text组件整个更新-&gt;this.count++ -&gt;Text组件整个更新。值得注意的是，这种写法在初次渲染时会导致Text组件渲染两次，影响性能。
+  - 全量更新（API8及以前版本）：ArkUI可能会陷入一个无限的重渲染的循环里，因为Text组件的每一次渲染都会改变应用的状态，就会再引起下一轮渲染的开启。 当`this.columnColor`更改时，都会执行整个`build()`构建函数，因此，``Text(`${this.count++}`)``绑定的文本也会更改，每次重新渲染``Text(`${this.count++}`)``，又会使`this.count`状态变量更新，导致新一轮的`build()`执行，从而陷入无限循环。
+  - 最小化更新（API9及以上版本）：当`this.columnColor`更新时，仅Column组件更新，Text组件不会更新。只有当`this.textColor`更改时，会去更新整个Text组件，其所有属性函数都会执行，所以会看到``Text(`${this.count++}`)``自增。因为目前UI以组件为单位进行更新，如果组件上某一个属性发生改变，会更新整个的组件。所以整体的更新链路是：`this.textColor = Color.Pink` -&gt; Text组件整个更新 -&gt; `this.count++` -&gt; Text组件整个更新。值得注意的是，这种写法在初次渲染时会导致Text组件渲染两次，影响性能。
   
-  build函数中更改应用状态的行为可能比上面的示例更加隐蔽，例如：
+  `build()`函数中更改应用状态的行为可能比上面的示例更加隐蔽，例如：
 
-  - 在\@Builder，[\@Extend](arkts-extend.md)或[\@Styles](arkts-style.md)方法内改变状态变量 。
+  - 在\@Builder，[\@Extend](arkts-extend.md)或[\@Styles](arkts-style.md)方法内改变状态变量。
 
-  - 在计算参数时调用函数中改变应用状态变量，例如 Text('${this.calcLabel()}')。
+  - 在计算参数时调用函数中改变应用状态变量，例如 ``Text(`${this.calcLabel()}`)``。
 
-  - 对当前数组做出修改，sort()改变了数组this.arr，随后的filter方法会返回一个新的数组。
+  - 对当前数组做出修改，`sort()`改变了数组`this.arr`，随后的`filter()`方法会返回一个新的数组。
 
     ```ts
     // 反例
