@@ -94,6 +94,8 @@
 | [OH_Camera_OISAxes](#oh_camera_oisaxes) | OH_Camera_OISAxes | 光学防抖（OIS）轴枚举。 |
 | [OH_Camera_ExposureState](#oh_camera_exposurestate) | OH_Camera_ExposureState | 枚举相机曝光状态。 |
 | [OH_Camera_MetadataObjectEmotion](#oh_camera_metadataobjectemotion) | OH_Camera_MetadataObjectEmotion | 元数据对象情绪类型枚举。 |
+| [OH_Camera_NotificationName](#oh_camera_notificationname) | OH_Camera_NotificationName | 相机通知名称枚举类型。 |
+| [OH_Camera_ProximityStateForFocus](#oh_camera_proximitystateforfocus) | OH_Camera_ProximityStateForFocus | 对焦物体和相机距离状态枚举类型。 |
 
 ### 函数
 
@@ -755,6 +757,38 @@ enum OH_Camera_MetadataObjectEmotion
 | OH_CAMERA_METADATA_OBJECT_EMOTION_SMILE = 2 | 微笑。<br>**起始版本：** 26.0.0 |
 | OH_CAMERA_METADATA_OBJECT_EMOTION_SURPRISE = 3 | 惊讶。<br>**起始版本：** 26.0.0 |
 
+### OH_Camera_NotificationName
+
+```c
+enum OH_Camera_NotificationName
+```
+
+**描述**
+
+相机通知名称枚举。
+
+**起始版本：** 26.0.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_CAMERA_DEFOCUS_FROM_PROXIMITY  = 0 | 相机因距离对焦物体过近导致失焦的通知。<br>**起始版本：** 26.0.0 |
+
+### OH_Camera_ProximityStateForFocus 
+
+```c
+enum OH_Camera_ProximityStateForFocus 
+```
+
+**描述**
+
+对焦物体和相机距离的状态枚举类型。
+
+**起始版本：** 26.0.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_CAMERA_PROXIMITY_STATE_IN_RANGE_RAISE_NONE   = 0 | 对焦物体和镜头距离在合理范围内。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_PROXIMITY_STATE_OUT_OF_RANGE_RAISE_REQUIRED   = 1 | 对焦物体和相机过近，需要远离对焦物体。<br>**起始版本：** 26.0.0 |
 
 ## 函数说明
 
