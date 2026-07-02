@@ -59,7 +59,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
    创建AVScreenCapture实例capture后，可以设置屏幕录制所需要的参数。
 
-   <!-- @[screenCapture_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[screenCapture_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->    
    
    ``` C++
    // 录屏时获取麦克风或者内录，内录参数必填，如果都设置了，内录和麦克风的参数设置需要一致。
@@ -75,13 +75,13 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
        .audioSource = OH_ALL_PLAYBACK
    };
    // 录屏音频输出规格配置。audioBitrate保证输出文件的比特率为设置的预期比特率，和audioSampleRate无强关联。
-   // 此处音频比特率取值为高质量录屏的取值。如果录屏内容以语音为主，不包含音乐、游戏音效等，可以降低为96000或48000。
+   // 为保证音频质量，此处音频比特率取值128000。如果录屏内容以语音为主，不包含音乐、游戏音效等，可以降低为96000或48000。
    OH_AudioEncInfo audioEncInfo = {
-       .audioBitrate = 48000,
+       .audioBitrate = 128000,
        .audioCodecformat = OH_AAC_LC
    };
    
-   // 获取屏幕信息
+   // 获取屏幕信息。
    uint64_t displayId = 0;
    NativeDisplayManager_ErrorCode ret = OH_NativeDisplayManager_GetDefaultDisplayId(&displayId);
    
@@ -97,24 +97,24 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
        .videoFrameHeight = screenHeight,
        .videoSource = OH_VIDEO_SOURCE_SURFACE_RGBA
    };
-
+   
    OH_VideoEncInfo videoEncInfo = {
        .videoCodec = OH_H264,
        .videoBitrate = 2000000,
        .videoFrameRate = 30
    };
-
+   
    OH_AudioInfo audioInfo = {
        .micCapInfo = micCapInfo,
        .innerCapInfo = innerCapInfo,
        .audioEncInfo = audioEncInfo
    };
-
+   
    OH_VideoInfo videoInfo = {
        .videoCapInfo = videoCapInfo,
        .videoEncInfo = videoEncInfo
    };
-
+   
    config = {
        .captureMode = OH_CAPTURE_HOME_SCREEN,
        .dataType = OH_CAPTURE_FILE, // 录屏数据类型，文件。
@@ -122,6 +122,8 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
        .videoInfo = videoInfo
    };
    ```
+   
+  
 
    方式一（推荐）：通过弹出屏幕捕获Picker列表方式，选择已打开的应用窗口进行窗口级录屏。
 
