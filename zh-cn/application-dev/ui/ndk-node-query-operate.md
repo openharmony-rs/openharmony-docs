@@ -606,8 +606,8 @@ const unsigned int VALUE_3 = 50;
 3. 在`nai_init.cpp`中，挂载Native节点。
 
    <!-- @[ndknodequeryoperate7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/napi_init.cpp) -->  
-
-   ```cpp
+   
+   ``` C++
    #include "Attribute_util.h"
    #include "napi/native_api.h"
    #include <arkui/native_interface.h>
@@ -620,34 +620,34 @@ const unsigned int VALUE_3 = 50;
    const unsigned int NUMBER_2 = 2;
    const unsigned int NUMBER_WIDTH = 100;
    const unsigned int NUMBER_HEIGHT = 100;
-
+   
    static napi_value Add(napi_env env, napi_callback_info info)
    {
        size_t argc = NUMBER_2;
        napi_value args[NUMBER_2] = {nullptr};
-
+   
        napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
+   
        napi_valuetype valuetype0;
        napi_typeof(env, args[0], &valuetype0);
-
+   
        napi_valuetype valuetype1;
        napi_typeof(env, args[1], &valuetype1);
-
+   
        double value0;
        napi_get_value_double(env, args[0], &value0);
-
+   
        double value1;
        napi_get_value_double(env, args[1], &value1);
-
+   
        napi_value sum;
        napi_create_double(env, value0 + value1, &sum);
-
+   
        return sum;
    }
-
+   
    static ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
-
+   
    static napi_value NAPI_Global_createNativeNode(napi_env env, napi_callback_info info)
    {
        size_t argc = 1;
@@ -670,7 +670,7 @@ const unsigned int VALUE_3 = 50;
        OH_ArkUI_NodeContent_AddNode(contentHandle, imageNode);
        return nullptr;
    }
-
+   
    EXTERN_C_START
    static napi_value Init(napi_env env, napi_value exports)
    {
@@ -683,7 +683,7 @@ const unsigned int VALUE_3 = 50;
        return exports;
    }
    EXTERN_C_END
-
+   
    static napi_module demoModule = {
        .nm_version = 1,
        .nm_flags = 0,
@@ -693,7 +693,7 @@ const unsigned int VALUE_3 = 50;
        .nm_priv = ((void*)0),
        .reserved = { 0 },
    };
-
+   
    extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
    {
        napi_module_register(&demoModule);
