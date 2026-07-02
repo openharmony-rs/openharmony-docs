@@ -1810,3 +1810,5 @@ Enumerates input event interception actions.
 | -------- | -------- | ---- |
 | CONTINUE | 0 | The event is permitted to propagate to the UI framework.|
 | BLOCK | 1 | The event is blocked from propagating to the UI framework.|
+
+<!--no_check-->
