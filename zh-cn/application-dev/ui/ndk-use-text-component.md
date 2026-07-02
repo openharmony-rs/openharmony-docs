@@ -274,13 +274,13 @@ Manager::nodeAPI_->setAttribute(text14, NODE_TEXT_OPTIMIZE_TRAILING_SPACE, &opti
 
 ### 设置文本尾部缩进
 
-通过如下属性设置文本尾部缩进。从API version 26.0.0开始，Text组件支持设置文本尾部缩进。
+通过如下属性设置文本尾部缩进。从API版本26.0.0开始，Text组件支持设置文本尾部缩进。
 
 **表9** 文本尾部缩进属性
 
 | 属性 | 说明 |
 |------|------|
-| [NODE_TEXT_TAIL_INDENTS](../reference/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_text_tail_indents) | 设置文本尾部缩进。从API version 26.0.0开始支持。 |
+| [NODE_TEXT_TAIL_INDENTS](../reference/apis-arkui/capi-native-node-h-nodeattributetype-text.md#node_text_tail_indents) | 设置文本尾部缩进。 |
 
 <!-- @[text_tail_indents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/native_node_sample/entry/src/main/cpp/TextMaker.cpp) -->
 
@@ -384,7 +384,7 @@ Text组件支持多种高级文本效果，如渐变、跑马灯等。
 
 通过如下属性设置渐变颜色效果。从API version 20开始，Text组件支持设置渐变颜色效果。
 
-**表9** 渐变效果属性
+**表10** 渐变效果属性
 
 | 属性 | 说明 |
 |------|------|
