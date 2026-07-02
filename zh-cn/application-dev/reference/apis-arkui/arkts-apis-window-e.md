@@ -38,7 +38,7 @@
 | TYPE_CUTOUT                      | 1    | 表示挖孔区域。<br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | TYPE_SYSTEM_GESTURE<sup>9+</sup> | 2    | 表示侧边返回手势区域。当前所有设备均无此类型避让区域。<br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core<br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | TYPE_KEYBOARD<sup>9+</sup>       | 3    | 表示固定态软键盘区域。<br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| TYPE_NAVIGATION_INDICATOR<sup>11+</sup> | 4    | 表示底部导航区域<!--Del-->或工具栏区域。当前工具栏仅Car设备支持<!--DelEnd-->。当三键导航显示时，底部导航避让区域始终存在。 <br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<!--Del-->*设备行为差异：** 在OpenHarmony 6.0.0之前，此接口在Car设备上调用不生效也不报错。从OpenHarmony 6.0.0开始，此接口在Car设备上可正常调用并生效。<!--DelEnd--> |
+| TYPE_NAVIGATION_INDICATOR<sup>11+</sup> | 4    | 表示底部导航区域<!--Del-->或工具栏区域。当前工具栏仅Car设备支持<!--DelEnd-->。当三键导航显示时，底部导航避让区域始终存在。 <br> **系统能力：** SystemCapability.WindowManager.WindowManager.Core <br> **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | TYPE_FLOAT_NAVIGATION | 5    | 表示三键导航区域。<!--RP12-->OpenHarmony各设备不支持此能力。<!--RP12End--> <br>**系统能力：** SystemCapability.Window.SessionManager<br> **起始版本：** 26.0.0<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。|
 
 <!--RP13--><!--RP13End-->
