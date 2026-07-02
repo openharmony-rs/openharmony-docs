@@ -503,17 +503,10 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    
 
    - 为确保预览卡片和被编辑卡片信息同步，新建卡片时，在onAddForm回调函数中需要判断'ohos.extra.param.key.edit_form_id'字段是否携带了卡片ID。如果携带了卡片ID，则就是预览卡片则需要从数据库获取被编辑卡片的信息。
-<<<<<<< HEAD
-     <!-- @[FormEditDemo_EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
-     
-     ``` TypeScript
-     // entry/src/main/ets/entryformability/WidgetCard.ets
-=======
      <!-- @[FormEditDemo_EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets) --> 
      
      ``` TypeScript
      // entry/src/main/ets/entryformability/EntryFormAbility.ets
->>>>>>> 40fa8f1e81c (同源代码)
      import { formBindingData, FormExtensionAbility, formInfo } from '@kit.FormKit';
      import { Want } from '@kit.AbilityKit';
      import { PreferencesUtil } from '../common/PreferencesUtil';
@@ -539,7 +532,6 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
          }
      
          return formBindingData.createFormBindingData('');
-<<<<<<< HEAD
        }
      
        onCastToNormalForm(formId: string) {
@@ -557,17 +549,11 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
        onAcquireFormState(want: Want) {
          return formInfo.FormState.READY;
        }
-=======
->>>>>>> 40fa8f1e81c (同源代码)
      }
      ```
 
    - 卡片布局文件如下。
-<<<<<<< HEAD
      <!-- @[FormEditDemo_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/widget/pages/WidgetCard.ets) --> 
-=======
-     <!-- @[FormEditDemo_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/widget/pages/WidgetCard.ets) -->
->>>>>>> 40fa8f1e81c (同源代码)
      
      ``` TypeScript
      // entry/src/main/ets/widget/pages/WidgetCard.ets
@@ -590,22 +576,6 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
                .fontSize($r('app.float.font_size'))
                .fontWeight(FontWeight.Medium)
                .fontColor($r('sys.color.font'))
-<<<<<<< HEAD
-=======
-           }
-           .width(this.fullWidthPercent)
-         }
-         .width(this.fullWidthPercent)
-       }
-       .height(this.fullHeightPercent)
-       .backgroundColor($r('sys.color.comp_background_primary'))
-       .onClick(() => {
-         postCardAction(this, {
-           action: this.actionType,
-           abilityName: this.abilityName,
-           params: {
-             message: this.message
->>>>>>> 40fa8f1e81c (同源代码)
            }
            .width(this.fullWidthPercent)
          }
@@ -889,11 +859,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    ```
 
    - 卡片布局文件如下。
-<<<<<<< HEAD
      <!-- @[FormEditUIAbility_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/widget/pages/WidgetCard.ets) --> 
-=======
-     <!-- @[FormEditUIAbility_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/widget/pages/WidgetCard.ets) -->
->>>>>>> 40fa8f1e81c (同源代码)
      
      ``` TypeScript
      // entry/src/main/ets/widget/pages/WidgetCard.ets
@@ -914,22 +880,6 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
                .fontSize($r('app.float.font_size'))
                .fontWeight(FontWeight.Medium)
                .fontColor($r('sys.color.font'))
-<<<<<<< HEAD
-=======
-           }
-           .width(this.fullWidthPercent)
-         }
-         .width(this.fullWidthPercent)
-       }
-       .height(this.fullHeightPercent)
-       .backgroundColor($r('sys.color.comp_background_primary'))
-       .onClick(() => {
-         postCardAction(this, {
-           action: this.actionType,
-           abilityName: this.abilityName,
-           params: {
-             message: this.message
->>>>>>> 40fa8f1e81c (同源代码)
            }
            .width(this.fullWidthPercent)
          }
