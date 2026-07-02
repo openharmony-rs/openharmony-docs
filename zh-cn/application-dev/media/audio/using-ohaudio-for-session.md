@@ -39,18 +39,18 @@ target_link_libraries(sample PUBLIC libohaudio.so)
 
 创建[OH_AudioSessionManager](../../reference/apis-audio-kit/capi-ohaudio-oh-audiosessionmanager.md)实例。在使用音频会话管理功能前，需要先通过[OH_AudioManager_GetAudioSessionManager](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md#oh_audiomanager_getaudiosessionmanager)创建音频会话管理实例。
 
-<!-- @[cget_sessionmanager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
+<!-- @[cget_sessionmanager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->  
 
 ``` C++
 OH_AudioSessionManager *audioSessionManager;
 // ...
     OH_AudioCommon_Result resultManager = OH_AudioManager_GetAudioSessionManager(&audioSessionManager);
-    OH_AudioCommon_Result result = OH_AudioSessionManager_RegisterStateChangeCallback(audioSessionManager,
-                                                                                      AudioSessionStateChangedCallback);
     if (resultManager == 0) {
         OH_LOG_Print(LOG_APP, LOG_INFO, g_audioSessionVariable->globalResmgr, SESSION_TAG,
                      " OH_AudioManager_GetAudioSessionManager success! ");
     }
+    OH_AudioCommon_Result result = OH_AudioSessionManager_RegisterStateChangeCallback(audioSessionManager,
+                                                                                      AudioSessionStateChangedCallback);    
 ```
 
 ## 激活音频会话
@@ -231,7 +231,7 @@ OH_AudioSessionManager_ActivateAudioSession(audioSessionManager, &strategy);
 
 **AudioSession申请焦点以及监听焦点变化事件的完整示例：**
 
-<!-- @[clistencallback_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->
+<!-- @[clistencallback_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) --> 
 
 ``` C++
 OH_AudioSessionManager *audioSessionManager;
@@ -267,6 +267,12 @@ void AudioSessionStateChangedCallback(OH_AudioSession_StateChangedEvent event)
         case AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION:
           // 此分支表示其他应用的非混音音频播放结束，系统可自行决定是否取消静音。
             break;
+        case AUDIO_SESSION_STATE_CHANGE_HINT_MUTE:
+          // 此分支表示系统已将音频静音。
+            break;
+        case AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE:
+          // 此分支表示系统已将音频解除静音。
+            break;            
         default:
             break;
     }

@@ -341,7 +341,7 @@ export struct DialogAnimationNew {
       delay: 500,
       playMode: PlayMode.Alternate,
       onFinish: () => {
-        hilog.info(DOMAIN, 'testTag', 'play end')
+        hilog.info(DOMAIN, 'testTag', 'play end');
       }
     },
     autoCancel: true,
