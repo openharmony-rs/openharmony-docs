@@ -1170,5 +1170,5 @@ Enumerates the number of stop bits, in bits.
 
 | Name    | Value    | Description   |
 |-----------|-----------|-----------|
-| STOPBIT_1 | 0 | The number of stop bits is 1.|
-| STOPBIT_2 | 1 | The number of stop bits is 2.|
+| STOPBIT_1 | 0 | The number of valid packet stop bits is 1.|
+| STOPBIT_2 | 1 | The number of valid packet stop bits is 2.|
