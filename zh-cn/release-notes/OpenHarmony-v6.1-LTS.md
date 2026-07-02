@@ -15,14 +15,16 @@ OpenHarmony在6.1 Release版本的基础上，更新发布6.1 LTS版本。相比
 
 ### 新增能力
 
-针对展锐P7885芯片开发板，新增如下能力：
+- 新增对统一SDK的支持。统一SDK是面向OpenHarmony生态提供的标准化开发工具套件，扩展了OpenHarmony SDK的能力，为开发者提供远场通信、基础语音、分享服务、基础视觉、桌面拓展、文件预览、推送服务、统一扫码服务等多维度开发能力。详见[HarmonyOS SDK for OpenHarmony](https://gitcode.com/harmonyos-sdk-for-openharmony/docs/blob/master/README.md)
 
-- 支持5G蜂窝通信能力，提供驻网、通话、短信、数据功能。
-- 支持统一渲染。
-- 支持GNSS卫星状态信息上报，可识别并上报GPS、北斗、GLONASS等卫星数据。
-- 适配星闪驱动，支持星闪SLE 1.0，支持星闪配对连接和数据传输。
-- 板载适配6类传感器：加速度计、陀螺仪、磁力计、接近传感器、环境光传感器、马达。
-- 板载36 PIN标准PCI-E接口，外接板支持USB+千兆以太网接口或者其他标准PCI-E板卡。
+- 针对展锐P7885芯片开发板，新增如下能力：
+
+  - 支持5G蜂窝通信能力，提供驻网、通话、短信、数据功能。
+  - 支持统一渲染。
+  - 支持GNSS卫星状态信息上报，可识别并上报GPS、北斗、GLONASS等卫星数据。
+  - 适配星闪驱动，支持星闪SLE 1.0，支持星闪配对连接和数据传输。
+  - 板载适配6类传感器：加速度计、陀螺仪、磁力计、接近传感器、环境光传感器、马达。
+  - 板载36 PIN标准PCI-E接口，外接板支持USB+千兆以太网接口或者其他标准PCI-E板卡。
 
 ### 新增预制应用  
 
@@ -122,3 +124,78 @@ OpenHarmony在6.1 Release版本的基础上，更新发布6.1 LTS版本。相比
 - 支持号码归属地/黄页/标记。
 - 支持移动数据、APN、数据漫游、网络模式设置。
 - 支持飞行模式拨号提示、接近光防误触。
+
+## 配套关系
+
+**表1** 版本软件和工具配套关系
+
+| 软件 | 版本 | 备注 | 
+| -------- | -------- | -------- |
+| OpenHarmony |  | NA | 
+| Public SDK |  | 面向应用开发者提供，不包含需要使用系统权限的系统接口。通过DevEco Studio默认获取的SDK为Public SDK。 | 
+| 统一SDK |  | 面向OpenHarmony生态提供的标准化开发工具套件，扩展了OpenHarmony SDK的能力。 |
+| HUAWEI DevEco Studio（可选） | 6.1.0 Release | OpenHarmony应用开发推荐使用。<br />*待发布后提供*。 | 
+| HUAWEI DevEco Device Tool（可选） | 4.0 Release | OpenHarmony智能设备集成开发环境推荐使用。<br />[请点击这里获取](https://device.harmonyos.com/cn/develop/ide#download)。 | 
+
+
+## 源码获取
+
+
+### 前提条件
+
+1. 注册gitcode账号。
+
+2. 注册gitcode的SSH公钥，请参考[gitcode帮助中心](https://docs.gitcode.com/docs/help/home/user_center/security_management/ssh)。
+
+3. 安装[git客户端](https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git)和[git-lfs](https://gitcode.com/gh_mirrors/gi/git-lfs?source_module=search_result_repo)并配置用户信息。
+  
+   ```shell
+   git config --global user.name "yourname"
+   git config --global user.email "your-email-address"
+   git config --global credential.helper store
+   ```
+
+4. 执行如下命令安装gitcode的repo工具。
+
+   下述命令中的安装路径以"~/bin"为例，请用户自行创建所需目录。
+  
+   ```shell
+   mkdir ~/bin
+   curl https://raw.gitcode.com/gitcode-dev/repo/raw/main/repo-py3 -o ~/bin/repo
+   chmod a+x ~/bin/repo
+   pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
+   ```
+
+5. 将repo添加到环境变量。
+
+   ```shell
+   vim ~/.bashrc               # 编辑环境变量
+   export PATH=~/bin:$PATH     # 在环境变量的最后添加一行repo路径信息
+   source ~/.bashrc            # 应用环境变量
+   ```
+
+
+### 通过repo获取
+
+
+
+
+### 从镜像站点获取
+
+
+
+## 修复缺陷列表
+
+**表3** 修复缺陷ISSUE列表
+
+| ISSUE单 | 问题描述 | 
+| ------- | ------- |
+
+
+## 遗留缺陷列表
+
+**表4** 遗留缺陷列表
+
+| ISSUE | 问题描述 | 影响 | 计划解决日期 | 
+| -------- | -------- | -------- | -------- |
+
