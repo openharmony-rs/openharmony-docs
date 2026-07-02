@@ -77,6 +77,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): long
 **示例：**
 
 ```ts
+<!--code_no_check-->
 import { AbilityConstant, Want } from '@kit.AbilityKit';
 import { DistributedExtensionAbility } from '@kit.DistributedServiceKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -194,6 +195,7 @@ disconnectServiceExtensionAbility(connection: long): Promise\<void\>
 **示例：**
 
 ```ts
+<!--code_no_check-->
 import { AbilityConstant, Want } from '@kit.AbilityKit';
 import { DistributedExtensionAbility } from '@kit.DistributedServiceKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
