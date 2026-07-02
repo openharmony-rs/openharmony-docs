@@ -348,30 +348,6 @@ type OnMenuItemClickWithTextCallback = (menuItem: TextMenuItem, value: string) =
 | ---- | ---- |
 | boolean | 菜单项点击事件的处理结果。返回true表示事件已处理，返回false表示未处理。 |
 
-## OnCreateMenuCallback
-
-type OnCreateMenuCallback = (menuItems: Array\<TextMenuItem>) => Array\<TextMenuItem>
-
-菜单创建时触发。
-
-**起始版本：** 26.0.0
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| ------ | ---- | ---- | ---- |
-| menuItems | Array\<[TextMenuItem](ts-text-common.md#textmenuitem12对象说明)> | 是 | 当前显示的菜单项。<br/>**说明：**<br/>对默认菜单项的名称、图标、快捷键提示修改不生效。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| ---- | ---- |
-| Array\<[TextMenuItem](ts-text-common.md#textmenuitem12对象说明)> | 处理后的菜单项。 |
-
 ## SelectionContainerEditMenuOptions
 
 SelectionContainer自定义编辑菜单选项。
@@ -384,7 +360,7 @@ SelectionContainer自定义编辑菜单选项。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| onCreateMenu | [OnCreateMenuCallback](#oncreatemenucallback) | 否 | 是 | 每次菜单显示前触发，传入默认菜单项并返回处理后的菜单项。默认值为空。 |
+| onCreateMenu | [OnCreateMenuCallback](ts-text-common.md#oncreatemenucallback) | 否 | 是 | 每次菜单显示前触发，传入默认菜单项并返回处理后的菜单项。默认值为空。 |
 | onMenuItemClick | [OnMenuItemClickWithTextCallback](#onmenuitemclickwithtextcallback) | 否 | 是 | 点击菜单项时触发，可拦截系统默认菜单执行行为。默认值为空。 |
 | onPrepareMenu | [OnPrepareMenuCallback](ts-text-common.md#onpreparemenucallback20) | 否 | 是 | 文本选中内容变化后、菜单显示前触发，可在该回调中调整菜单数据。默认值为空。 |
 
