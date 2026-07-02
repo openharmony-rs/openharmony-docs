@@ -593,7 +593,7 @@ let mediaSource : media.MediaSource = media.createMediaSourceWithUrl("http://xxx
 ```ts
 import { media } from "@kit.MediaKit";
 
-async function test(context: Context) {
+async function test(context: Context){
     // this.getUIContext().getHostContext();
     let mgr = context?.resourceManager;
     if (!mgr) {
@@ -674,10 +674,9 @@ createMediaSourceWithFd(fdSrc: AVFileDescriptor): MediaSource | undefined
 ```ts
 import { common } from '@kit.AbilityKit';
 
-async function example(context: common.UIAbilityContext) {
-  let fdSrc = await context.resourceManager.getRawFd('xxx.mp4');
-  let mediaSource: media.MediaSource | undefined = media.createMediaSourceWithFd(fdSrc);
-}
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let fdSrc = await context.resourceManager.getRawFd('xxx.mp4');
+let mediaSource : media.MediaSource | undefined = media.createMediaSourceWithFd(fdSrc);
 ```
 
 ## media.createMediaSourceWithDataSource
@@ -712,25 +711,24 @@ createMediaSourceWithDataSource(dataSrc: AVDataSrcDescriptor): MediaSource | und
 import { common } from '@kit.AbilityKit';
 import { fileIo as fs, ReadOptions } from '@kit.CoreFileKit';
 
-async function example(context: common.UIAbilityContext) {
-  let fileDescriptor = await context.resourceManager.getRawFd('xxx.mp4');
-  let file = fs.openSync("xxx.mp4");
-  let dataSrc: media.AVDataSrcDescriptor = {
-    fileSize: fileDescriptor.length,
-    callback: (buf: ArrayBuffer, length: number, pos?: number) => {
-      let readLen = 0;
-      if (pos) {
-        let option: ReadOptions = {
-          offset: pos,
-          length: length,
-        };
-        readLen = fs.readSync(file.fd, buf, option);
-      }
-      return readLen > 0 ? readLen : -1;
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let fileDescriptor = await context.resourceManager.getRawFd('xxx.mp4');
+let file = fs.openSync("xxx.mp4");
+let dataSrc: media.AVDataSrcDescriptor = {
+  fileSize: fileDescriptor.length,
+  callback: (buf: ArrayBuffer, length: number, pos?: number) => {
+    let readLen = 0;
+    if (pos) {
+      let option: ReadOptions = {
+        offset: pos,
+        length: length,
+      };
+      readLen = fs.readSync(file.fd, buf, option);
     }
-  };
-  let mediaSource: media.MediaSource | undefined = media.createMediaSourceWithDataSource(dataSrc);
+    return readLen > 0 ? readLen : -1;
+  }
 }
+let mediaSource : media.MediaSource | undefined =  media.createMediaSourceWithDataSource(dataSrc);
 ```
 
 ## media.createAudioPlayer<sup>(deprecated)</sup>
