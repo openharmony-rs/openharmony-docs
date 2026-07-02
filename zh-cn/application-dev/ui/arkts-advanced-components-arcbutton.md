@@ -306,7 +306,7 @@ ArcButton有上弧形按钮和下弧形按钮两种类型。使用[position](../
 
 ArkTS-Dyn示例：
 
-<!-- @[module_json_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/module.json5) -->
+<!-- @[module_json_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/module.json5) --> 
 
 ``` JSON5
 "module": {
