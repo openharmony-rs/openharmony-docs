@@ -30,7 +30,7 @@ ArkWeb的网络协议栈错误列表
 | ------------- | -- |----------------------------------------- |
 |NET_OK | 0 |  访问正常。  |
 |ERR_IO_PENDING | -1 | 异步IO操作尚未完成。|
-|ERR_FAILED | -2 | 一般性的错误。 |
+|ERR_FAILED | -2 | 一般性的错误，网页加载失败请参考[定位网页加载问题](../../web/web-page-loading.md)。 |
 |ERR_ABORTED | -3 | 操作已被中止。|
 |ERR_INVALID_ARGUMENT | -4 | 参数无效。 |
 |ERR_INVALID_HANDLE | -5 | 文件描述符的句柄是无效的。|
