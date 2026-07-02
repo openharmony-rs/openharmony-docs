@@ -87,7 +87,7 @@ static void onMessage(struct WebSocket *wsClient, char *data, uint32_t length)
     }
     tmp[length] = '\0';
     OH_LOG_INFO(LOG_APP, "onMessage: len: %{public}u, data: %{public}s", length, tmp);
-    delete[] tmp;    
+    delete[] tmp;
 }
 
 static void onError(struct WebSocket *wsClient, WebSocket_ErrorResult errorResult)
