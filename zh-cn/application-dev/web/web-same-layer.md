@@ -767,7 +767,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
       this.height_ = params.height;
       this.type_ = params.type;
     }
-    // 必须要重写的方法，用于构建节点数、返回节点数挂载在对应NodeContainer中。
+    // 必须要重写的方法，用于构建节点树、返回节点树挂载在对应NodeContainer中。
     // 在对应NodeContainer创建的时候调用、或者通过rebuild方法调用刷新。
     makeNode(uiContext: UIContext): FrameNode | null{
       if (this.isDestroy_) { // rootNode为null。
@@ -779,7 +779,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
           this.rootNode.build(
             wrapBuilder(videoBuilder), {textOne: 'myButton', width : this.width_, height : this.height_});
         } else {
-          // other
+          return null;
         }
       }
       // 返回FrameNode节点。
@@ -871,7 +871,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
                 .width(this.widthMap.get(componentId))
                 .height(this.heightMap.get(componentId))
             }, (embedId: string) => embedId)
-            // Web组件加载本地test.html页面。
+            // Web组件加载本地test3.html页面。
             Web({ src: $rawfile('test3.html'), controller: this.browserTabController })
               // 配置同层渲染开关开启。
               .enableNativeEmbedMode(true)
@@ -891,12 +891,12 @@ display，position，z-index，visibility，opacity, background-color，backgrou
                     width : this.uiContext.px2vp(embed.info?.width), height : this.uiContext.px2vp(embed.info?.height)});
                   this.edges = {left: `${embed.info?.position?.x as number}px`, top: `${embed.info?.position?.y as number}px`};
                   nodeController.setDestroy(false);
-                  // 根据Web传入的embed的id属性作为key，将nodeController存入Map。
+                  // 根据Web传入的embed的id属性作为key，将nodeController存入map。
                   this.nodeControllerMap.set(componentId, nodeController);
                   this.widthMap.set(componentId,  this.uiContext.px2vp(embed.info?.width));
                   this.heightMap.set(componentId,  this.uiContext.px2vp(embed.info?.height));
                   this.positionMap.set(componentId, this.edges);
-                  // 将Web传入的embed的id属性存入@State状态数组变量中，用于动态创建nodeContainer节点容器，需要将push动作放在set之后。
+                  // 将Web传入的embed的id属性存入@State状态数组变量中，用于动态创建NodeContainer节点容器，需要将push动作放在set之后。
                   this.componentIdArr.push(componentId);
                 } else if (embed.status === NativeEmbedStatus.UPDATE) {
                   let nodeController = this.nodeControllerMap.get(componentId);
