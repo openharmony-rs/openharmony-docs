@@ -509,16 +509,16 @@ const unsigned int VALUE_3 = 50;
 1. ArkTS侧接入Native组件。
 
    <!-- @[ndknodequeryoperate6_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/ets/pages/Attribute.ets) -->  
-
+   
    ``` TypeScript
-
+   
    import testNapi from 'libentry.so';
    import { NodeContent } from '@kit.ArkUI';
-
+   
    @Component
    struct ImageContent {
      private nodeContent: NodeContent = new NodeContent();
-
+   
      aboutToAppear() {
        // 通过C-API创建节点，并添加到管理器nodeContent上
        testNapi.createNativeNode(this.nodeContent);
@@ -530,7 +530,7 @@ const unsigned int VALUE_3 = 50;
        }
      }
    }
-
+   
    @Entry
    @Component
    struct Index {
