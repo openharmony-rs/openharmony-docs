@@ -415,9 +415,9 @@ async function release(context: common.UIAbilityContext) {
         console.info('Succeeded in releasing audio renderer.');
         // ...
       }
-      // 关闭沙箱文件。
- 	    await context.resourceManager.closeRawFd('S16LE_2_48000.pcm');
     });
+    // 关闭沙箱文件。
+    await context.resourceManager.closeRawFd('S16LE_2_48000.pcm');
   }
 }
 ```
