@@ -772,7 +772,7 @@ function isLogViewAssistSupported(previewOutput: camera.PreviewOutput): boolean 
 
 setLogViewAssistEnable(enable: boolean): void
 
-LOG视频下，使能辅助监看之前，可先使用方法[isLogViewAssistSupported](#isLogViewAssistSupported26)查询设备是否支持预览辅助监看。
+LOG视频下，使能辅助监看之前，可先使用方法[isLogViewAssistSupported](#islogviewassistsupported)查询设备是否支持预览辅助监看。
 
 > **说明：**
 > 
