@@ -34,7 +34,7 @@
 
 ### 搭建环境
 
-1. 在开发PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，版本要求在4.1及以上。
+1. 在开发PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download)，版本要求在4.1及以上。
 2. 将public-SDK更新到API 26.1.0或以上，具体操作参见[更新指南](../tools/openharmony_sdk_upgrade_assistant.md)。
 3. 用USB线缆将两台调测设备（设备A和设备B）连接到开发PC。
 4. 确保两台设备已开启网络连接，并登录相同账号。
