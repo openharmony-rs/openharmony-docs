@@ -235,8 +235,8 @@ struct WebComponent {
       Button('createWebPrintDocumentAdapter')
         .onClick(() => {
           try {
-            let webPrintDocadapter = this.controller.createWebPrintDocumentAdapter('example.pdf');
-            print.print('example_jobid', webPrintDocadapter, myPrintAttributes, this.getUIContext().getHostContext() as common.UIAbilityContext);
+            let webPrintDocAdapter = this.controller.createWebPrintDocumentAdapter('example.pdf');
+            print.print('example_jobid', webPrintDocAdapter, myPrintAttributes, this.getUIContext().getHostContext() as common.UIAbilityContext);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
