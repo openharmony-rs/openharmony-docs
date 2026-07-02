@@ -370,6 +370,9 @@
    >
    > 当应用完成查询数据操作，不再使用结果集（ResultSet）时，请及时调用close方法关闭结果集，释放系统为其分配的内存。
 
+   当前RDB还支持进行FTS全文检索，可以根据中文或者英文进行文本检索，针对中文分词器支持ICU分词器。
+
+   以中文关键字检索为例：
    <!--@[persistence_chinese_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)--> 
    
    ``` TypeScript
@@ -396,9 +399,6 @@
      } catch (error) {
        const err = error as BusinessError;
        hilog.error(DOMAIN, 'rdbDataPersistence', `Query failed. code: ${err.code}, message: ${err.message}.`);
-     }
-   }
-   ```
      }
    }
    ```
@@ -508,6 +508,9 @@
 
 8. 删除数据库。
 
+   调用deleteRdbStore()方法，删除数据库及数据库相关文件。示例代码如下：
+
+   Stage模型示例：
    <!--@[persistence_delete_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)--> 
    
    ``` TypeScript
@@ -518,9 +521,6 @@
        hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to delete RdbStore. Code:${err.code}, message:${err.message}`);
        return;
      }
-     hilog.info(DOMAIN, 'rdbDataPersistence', 'Succeeded in deleting RdbStore.');
-   });
-   ```
      hilog.info(DOMAIN, 'rdbDataPersistence', 'Succeeded in deleting RdbStore.');
    });
    ```
