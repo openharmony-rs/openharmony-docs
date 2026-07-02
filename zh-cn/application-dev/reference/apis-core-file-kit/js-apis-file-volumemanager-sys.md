@@ -154,7 +154,7 @@ mount(volumeId: string): Promise&lt;void&gt;
 
 vfat、exfat及ntfs。
 
-从API version 26.0.0开始支持ext4。
+从API版本26.0.0开始支持ext4。
 
 **系统接口**：此接口为系统接口。
 
@@ -234,7 +234,7 @@ mount(volumeId: string, callback:AsyncCallback&lt;void&gt;):void
 
 vfat、exfat及ntfs。
 
-从API version 26.0.0开始支持ext4。
+从API版本26.0.0开始支持ext4。
 
 **系统接口**：此接口为系统接口。
 
@@ -893,7 +893,7 @@ format(volumeId: string, fsType: string): Promise&lt;void&gt;
 
 vfat和exfat。
 
-从API version 26.0.0开始支持ext4文件系统的格式化。
+从API版本26.0.0开始支持ext4文件系统的格式化。
 
 只有处于卸载状态的卷设备可以进行格式化，格式化后卷设备的uuid、挂载路径和卷设备描述均会发生变化。
 
@@ -912,7 +912,7 @@ vfat和exfat。
   | 参数名       | 类型   | 必填 | 说明 |
   | ----------- | ------ | ---- | ---- |
   | volumeId    | string | 是   | 卷设备ID，格式为vol-{主设备号}-{次设备号}。卷设备须处于卸载状态，否则返回错误码13600005。卷设备ID会随着插卡顺序不同而变化，请勿缓存后复用。 |
-  | fsType    | string | 是   | 文件系统类型，当前支持vfat、exfat。<br>**说明**：从API version 26.0.0开始，支持ext4。 |
+  | fsType    | string | 是   | 文件系统类型，当前支持vfat、exfat。<br>**说明**：从API版本26.0.0开始，支持ext4。 |
 
 **返回值：**
 
@@ -977,7 +977,7 @@ format(volumeId: string, fsType: string, callback: AsyncCallback&lt;void&gt;): v
 
 vfat和exfat。
 
-从API version 26.0.0开始支持ext4文件系统的格式化。
+从API版本26.0.0开始支持ext4文件系统的格式化。
 
 只有处于卸载状态的卷设备可以进行格式化，格式化后卷设备的uuid、挂载路径和卷设备描述均会发生变化。
 
@@ -996,7 +996,7 @@ vfat和exfat。
   | 参数名   | 类型                      | 必填 | 说明                          |
   | -------- | ------------------------- | ---- | ----------------------------- |
   | volumeId | string                    | 是   | 卷设备ID。                |
-  | fsType    | string | 是   | 文件系统类型，当前支持vfat、exfat。<br>**说明**：从API version 26.0.0开始，支持ext4。 |
+  | fsType    | string | 是   | 文件系统类型，当前支持vfat、exfat。<br>**说明**：从API版本26.0.0开始，支持ext4。 |
   | callback | AsyncCallback&lt;void&gt;  | 是   | 对指定卷设备格式化后的回调。  |
 
 **错误码：**
