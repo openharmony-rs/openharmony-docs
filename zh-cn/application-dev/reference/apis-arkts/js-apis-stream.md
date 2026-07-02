@@ -531,7 +531,7 @@ ArkTS-Sta示例：
 class TestWritable extends stream.Writable {
   constructor() {
     super();
-  }
+ }
 
   doWrite(chunk: string | Uint8Array, encoding: string, callback: Function) {
     callback.unsafeCall();
@@ -1169,7 +1169,7 @@ class TestReadable extends stream.Readable {
   }
 
   doRead(size: int) {
-    this.push("test");
+    this.push('test');
     this.push(null);
   }
 }
@@ -2182,7 +2182,7 @@ class TestTransform extends stream.Transform {
 }
 
 let tr = new TestTransform();
-tr.write('hello');
+tr.write("hello");
 ```
 
 ArkTS-Sta示例：
