@@ -534,7 +534,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 });
 ```
 
-## NetFirewallRule
+## NetFirewallRule<sup>15+</sup>
 
 防火墙规则信息结构。
 
