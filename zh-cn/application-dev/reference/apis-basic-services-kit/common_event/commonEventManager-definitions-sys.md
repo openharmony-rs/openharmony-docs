@@ -651,7 +651,7 @@
 **取值：** "usual.event.data.VOLUME_EJECT"
 
 
-### COMMON_EVENT_DISK_VOLUME_STATE_CHANGE
+### COMMON_EVENT_DISK_VOLUME_STATE_CHANGE<sup>26+</sup>
 
 表示系统数据盘卷状态发生变化的公共事件。
 
@@ -660,12 +660,6 @@
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
-
-**ArkTS-Dyn起始版本**：26.0.0
-
-**ArkTS-Sta起始版本**：26.0.0
-
-**模型约束**：此接口仅可在Stage模型下使用。
 
 **订阅者所需权限：** ohos.permission.STORAGE_MANAGER
 
