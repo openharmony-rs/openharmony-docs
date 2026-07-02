@@ -617,8 +617,8 @@
 | 名称            | 值 | 说明               |
 | ------------- | ------ | ---------------- |
 | Row           | 0 | 主轴与行方向一致作为布局模式。  |
-| RowReverse    | 1 | 与Row方向相反方向进行布局。  |
-| Column        | 2 | 主轴与列方向一致作为布局模式。  |
+| Column        | 1 | 主轴与列方向一致作为布局模式。  |
+| RowReverse    | 2 | 与Row方向相反方向进行布局。  |
 | ColumnReverse | 3 | 与Column相反方向进行布局。 |
 
 ## FlexWrap
@@ -937,8 +937,8 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 | Start    | 1 | 元素在Flex容器中，沿交叉轴方向首部对齐。                    |
 | Center   | 2 | 元素在Flex容器中，沿交叉轴方向居中对齐。                    |
 | End      | 3 | 元素在Flex容器中，沿交叉轴方向底部对齐。                    |
-| Stretch  | 4 | 元素在Flex容器中，沿交叉轴方向拉伸填充。容器为Flex且设置Wrap为FlexWrap.Wrap或FlexWrap.WrapReverse时，元素拉伸到与当前行/列交叉轴长度最长的元素尺寸。其余情况下，无论元素尺寸是否设置，均拉伸到容器尺寸。 |
-| Baseline | 5 | 元素在Flex容器中，交叉轴方向文本基线对齐。                  |
+| Baseline | 4 | 元素在Flex容器中，交叉轴方向文本基线对齐。                  |
+| Stretch  | 5 | 元素在Flex容器中，沿交叉轴方向拉伸填充。容器为Flex且设置Wrap为FlexWrap.Wrap或FlexWrap.WrapReverse时，元素拉伸到与当前行/列交叉轴长度最长的元素尺寸。其余情况下，无论元素尺寸是否设置，均拉伸到容器尺寸。 |
 
 ## ImageRepeat
 
