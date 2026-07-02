@@ -6,7 +6,7 @@
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
 
-异常提示，适用于有异常需要提示异常内容的情况。
+异常提示V2组件，适用于有异常需要提示异常内容的情况。
 
 该组件基于[状态管理（V2）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)实现，相较于[状态管理（V1）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，状态管理（V2）增强了对数据对象的深度观察与管理能力，不再局限于组件层级。借助状态管理（V2），开发者可以通过该组件更灵活地控制异常提示的数据和状态，实现更高效的用户界面刷新。
 
