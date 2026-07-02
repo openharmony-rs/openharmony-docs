@@ -188,7 +188,7 @@ function getWhiteBalance(session: camera.PhotoSession | camera.VideoSession): nu
 
 ## setColorTint
 
-setColorTint(colorTint: int): void
+setColorTint(colorTint: number): void
 
 设置白平衡的色调调节值。
 
@@ -206,7 +206,7 @@ setColorTint(colorTint: int): void
 
 | 参数名      | 类型                     | 必填 | 说明                 |
 | -------- | ----------------------- | ---- | ------------------- |
-| colorTint | int | 是   | 设置手动白平衡色调调节值。 |
+| colorTint | number | 是   | 设置手动白平衡色调调节值。 |
 
 **错误码：**
 
@@ -222,7 +222,7 @@ setColorTint(colorTint: int): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function setColorTint(session: camera.PhotoSession | camera.VideoSession): void {
-  let colorTint: int = 0;
+  let colorTint: number = 0;
   try {
     session.setColorTint(colorTint);
   } catch (error) {
@@ -234,7 +234,7 @@ function setColorTint(session: camera.PhotoSession | camera.VideoSession): void 
 
 ## getColorTint
 
-getColorTint(): int
+getColorTint(): number
 
 获取当前白平衡的色调调节值。
 
@@ -250,7 +250,7 @@ getColorTint(): int
 
 | 类型        | 说明                          |
 | ---------- | ----------------------------- |
-| int    | 返回当前白平衡色调调节值。 |
+| number    | 返回当前白平衡色调调节值。 |
 
 **错误码：**
 
@@ -265,8 +265,8 @@ getColorTint(): int
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function getColorTint(session: camera.PhotoSession | camera.VideoSession): int {
-  let colorTint: int = 0;
+function getColorTint(session: camera.PhotoSession | camera.VideoSession): number {
+  let colorTint: number = 0;
   try {
     colorTint = session.getColorTint();
   } catch (error) {
