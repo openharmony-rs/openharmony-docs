@@ -6,7 +6,7 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-本模块提供管理屏幕的一些基础能力，包括获取屏幕对象，监听屏幕变化，创建和销毁虚拟屏幕等。
+本模块提供管理屏幕的一些基础能力，包括获取屏幕对象，监听屏幕变化，创建和销毁虚拟屏幕等。适用于多屏显示管理、投屏应用等场景，可帮助开发者统一管理所有[物理屏](../../displaymanager/display-terminology.md#物理屏)，提升多屏协同体验和显示能力。
 
 > **说明：**
 >
@@ -44,7 +44,7 @@ getAllScreens(callback: AsyncCallback&lt;Array&lt;Screen&gt;&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
 | 1400001 | Invalid display or screen. |
 
 **示例：**
@@ -53,10 +53,11 @@ getAllScreens(callback: AsyncCallback&lt;Array&lt;Screen&gt;&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let screenClass: screen.Screen | null = null;
+// 获取所有屏幕对象
 screen.getAllScreens((err: BusinessError, data: Array<screen.Screen>) => {
   const errCode: number = err.code;
   if (errCode) {
-    console.error(`Failed to get all screens. Code:${err.code}, message is ${err.message}`);
+    console.error(`Failed to get all screens. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
@@ -88,7 +89,7 @@ getAllScreens(): Promise&lt;Array&lt;Screen&gt;&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
 | 1400001 | Invalid display or screen. |
 
 **示例：**
@@ -97,6 +98,7 @@ getAllScreens(): Promise&lt;Array&lt;Screen&gt;&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let screenClass: screen.Screen | null = null;
+// 获取所有屏幕对象
 let promise: Promise<Array<screen.Screen>> = screen.getAllScreens();
 promise.then((data: Array<screen.Screen>) => {
   if(data.length > 0){
@@ -104,7 +106,7 @@ promise.then((data: Array<screen.Screen>) => {
   }
   console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to get all screens. Code: ${err.code}, message : ${err.message}`);
+  console.error(`Failed to get all screens. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -122,8 +124,8 @@ on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback&lt;number&
 
 | 参数名    | 类型                   | 必填 | 说明                                                        |
 | --------- | ---------------------- | ---- | ----------------------------------------------------------- |
-| eventType | string                 | 是   | 监听事件。<br/>-eventType为"connect"表示屏幕连接事件。<br/>-eventType为"disconnect"表示断开屏幕连接事件。<br/>-eventType为"change"表示屏幕状态改变事件。 |
-| callback  | Callback&lt;number&gt; | 是   | 回调函数。返回屏幕的id，该参数为整数。                                    |
+| eventType | string                 | 是   | 监听事件类型。<br>-"connect"：屏幕连接事件。<br>-"disconnect"：断开屏幕连接事件。<br>-"change"：屏幕状态改变事件。 |
+| callback  | Callback&lt;number&gt; | 是   | 回调函数。返回屏幕的ID，该参数为整数。 |
 
 **错误码：**
 
@@ -131,15 +133,16 @@ on(eventType: 'connect' | 'disconnect' | 'change', callback: Callback&lt;number&
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 **示例：**
 
 ```ts
 let callback: Callback<number> = (data: number) => {
-  console.info(`Succeeded in registering the callback for screen changes. Data: ${data}`)
+  console.info(`Succeeded in registering the callback for screen changes. Data: ${data}`);
 };
+// 开启屏幕连接事件的监听
 screen.on('connect', callback);
 ```
 
@@ -157,8 +160,8 @@ off(eventType: 'connect' | 'disconnect' | 'change', callback?: Callback&lt;numbe
 
 | 参数名    | 类型                   | 必填 | 说明                                                         |
 | --------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| eventType | string                 | 是   | 监听事件。<br/>-eventType为"connect"表示屏幕连接事件。<br/>-eventType为"disconnect"表示断开屏幕连接事件。<br/>-eventType为"change"表示屏幕状态改变事件。 |
-| callback  | Callback&lt;number&gt; | 否   | 回调函数。返回屏幕的id，该参数为整数。                                     |
+| eventType | string                 | 是   | 监听事件类型。<br>-"connect"：屏幕连接事件。<br>-"disconnect"：断开屏幕连接事件。<br>-"change"：屏幕状态改变事件。 |
+| callback  | Callback&lt;number&gt; | 否   | 回调函数。返回屏幕的ID，该参数为整数。若无此参数，则取消该eventType监听的所有回调函数。                                     |
 
 **错误码：**
 
@@ -166,16 +169,18 @@ off(eventType: 'connect' | 'disconnect' | 'change', callback?: Callback&lt;numbe
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 **示例：**
 
 ```ts
 let callback: Callback<number> = (data: number) => {
-  console.info(`Succeeded in unregistering the callback for screen changes. Data: ${data}`)
+  console.info(`Succeeded in unregistering the callback for screen changes. Data: ${data}`);
 };
+// 关闭传入的callback监听
 screen.off('connect', callback);
+// 如果通过on注册多个callback，同时关闭所有callback监听
 screen.off('connect');
 ```
 
@@ -195,7 +200,7 @@ makeMirror(mainScreen:number, mirrorScreen:Array&lt;number&gt;, callback: AsyncC
 | ------------ | --------------------------- | ---- |--------------------|
 | mainScreen   | number                      | 是   | 主屏幕ID，该参数仅支持整数输入。  |
 | mirrorScreen | Array&lt;number&gt;         | 是   | 镜像屏幕ID集合，其中ID应为整数。 |
-| callback     | AsyncCallback&lt;number&gt; | 是   | 回调函数。返回镜像屏幕的群组id，其中id为整数。  |
+| callback     | AsyncCallback&lt;number&gt; | 是   | 回调函数。返回镜像屏幕的群组ID，其中ID为整数。  |
 
 **错误码：**
 
@@ -203,8 +208,8 @@ makeMirror(mainScreen:number, mirrorScreen:Array&lt;number&gt;, callback: AsyncC
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400001 | Invalid display or screen. |
 
 **示例：**
@@ -212,12 +217,14 @@ makeMirror(mainScreen:number, mirrorScreen:Array&lt;number&gt;, callback: AsyncC
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let mainScreenId: number = 0;
-let mirrorScreenIds: Array<number> = [1, 2, 3];
+// 屏幕ID需通过getAllScreens()获取
+let mainScreenId: number = 0; // 主屏ID
+let mirrorScreenIds: Array<number> = [1, 2, 3]; // 镜像屏ID集合
+// 设置屏幕为镜像模式
 screen.makeMirror(mainScreenId, mirrorScreenIds, (err: BusinessError, data: number) => {
   const errCode: number = err.code;
   if (errCode) {
-    console.error(`Failed to set screen mirroring. Code:${err.code}, message is ${err.message}`);
+    console.error(`Failed to set screen mirroring. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info(`Succeeded in setting screen mirroring. Data: ${data}`);
@@ -245,7 +252,7 @@ makeMirror(mainScreen:number, mirrorScreen:Array&lt;number&gt;): Promise&lt;numb
 
 | 类型                  | 说明                              |
 | --------------------- |---------------------------------|
-| Promise&lt;number&gt; | Promise对象。返回镜像屏幕的群组id，其中id为整数。 |
+| Promise&lt;number&gt; | Promise对象。返回镜像屏幕的群组ID，其中ID为整数。 |
 
 **错误码：**
 
@@ -253,8 +260,8 @@ makeMirror(mainScreen:number, mirrorScreen:Array&lt;number&gt;): Promise&lt;numb
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400001 | Invalid display or screen. |
 
 **示例：**
@@ -262,12 +269,14 @@ makeMirror(mainScreen:number, mirrorScreen:Array&lt;number&gt;): Promise&lt;numb
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let mainScreenId: number = 0;
-let mirrorScreenIds: Array<number> = [1, 2, 3];
+// 屏幕ID需通过getAllScreens()获取
+let mainScreenId: number = 0; // 主屏ID
+let mirrorScreenIds: Array<number> = [1, 2, 3]; // 镜像屏ID集合
+// 设置屏幕为镜像模式
 screen.makeMirror(mainScreenId, mirrorScreenIds).then((data: number) => {
   console.info(`Succeeded in setting screen mirroring. Data: ${data}`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to set screen mirroring. Code:${err.code}, message is ${err.message}`);
+  console.error(`Failed to set screen mirroring. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -285,7 +294,7 @@ stopMirror(mirrorScreen:Array&lt;number&gt;, callback: AsyncCallback&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明                                      |
 | ------------ | --------------------------- | --- |-----------------------------------------|
-| mirrorScreen | Array&lt;number&gt;         | 是   | 镜像屏幕ID集合，其中ID应为整数。 mirrorScreen数组大小不应超过1000。 |
+| mirrorScreen | Array&lt;number&gt;         | 是   | 镜像屏幕ID集合，ID应为整数。mirrorScreen数组大小不应超过1000。 |
 | callback     | AsyncCallback&lt;void&gt; | 是   | 回调函数。当停止屏幕镜像模式成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -294,8 +303,8 @@ stopMirror(mirrorScreen:Array&lt;number&gt;, callback: AsyncCallback&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 1400001 | Invalid display or screen. |
 
 **示例：**
@@ -303,11 +312,13 @@ stopMirror(mirrorScreen:Array&lt;number&gt;, callback: AsyncCallback&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let mirrorScreenIds: Array<number> = [1, 2, 3];
+// 屏幕ID需通过getAllScreens()获取
+let mirrorScreenIds: Array<number> = [1, 2, 3]; // 镜像屏ID集合
+// 停止屏幕镜像模式
 screen.stopMirror(mirrorScreenIds, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
-    console.error(`Failed to stop mirror screens. Code:${err.code}, message is ${err.message}`);
+    console.error(`Failed to stop mirror screens. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info('Succeeded in stopping mirror screens.');
@@ -342,8 +353,8 @@ stopMirror(mirrorScreen:Array&lt;number&gt;): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 1400001 | Invalid display or screen. |
 
 **示例：**
@@ -351,11 +362,13 @@ stopMirror(mirrorScreen:Array&lt;number&gt;): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let mirrorScreenIds: Array<number> = [1, 2, 3];
+// 屏幕ID需通过getAllScreens()获取
+let mirrorScreenIds: Array<number> = [1, 2, 3]; // 镜像屏ID集合
+// 停止屏幕镜像模式
 screen.stopMirror(mirrorScreenIds).then(() => {
   console.info('Succeeded in stopping mirror screens.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to stop mirror screens.Code:${err.code}, message is ${err.message}`);
+  console.error(`Failed to stop mirror screens. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -381,7 +394,7 @@ makeUnique(uniqueScreen: Array&lt;number&gt;): Promise&lt;Array&lt;number&gt;&gt
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise对象。返回异源屏幕的displayId集合，其中id为大于0的整数。|
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象。返回异源屏幕的屏幕ID集合，其中ID为大于0的整数。|
 
 **错误码：**
 
@@ -389,8 +402,8 @@ makeUnique(uniqueScreen: Array&lt;number&gt;): Promise&lt;Array&lt;number&gt;&gt
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed, non-system application uses system API. |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
@@ -400,11 +413,13 @@ makeUnique(uniqueScreen: Array&lt;number&gt;): Promise&lt;Array&lt;number&gt;&gt
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uniqueScreenIds: Array<number> = [1001, 1002, 1003];
+// 屏幕ID需通过getAllScreens()获取
+let uniqueScreenIds: Array<number> = [1001, 1002, 1003]; // 异源屏ID集合
+// 设置屏幕为异源模式
 screen.makeUnique(uniqueScreenIds).then((data: Array<number>) => {
   console.info('Succeeded in making unique screens.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to make unique screens. Code:${err.code}, message is ${err.message}`);
+  console.error(`Failed to make unique screens. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -434,8 +449,8 @@ createVirtualScreen(options:VirtualScreenOption, callback: AsyncCallback&lt;Scre
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400001 | Invalid display or screen. |
 
 **示例：**
@@ -453,18 +468,19 @@ class VirtualScreenOption {
   supportsFocus ?: boolean = true;
 }
 
-let option : VirtualScreenOption = { 
+let option: VirtualScreenOption = { 
   name: 'screen01',
   width: 1080,
   height: 2340,
   density: 2,
   surfaceId: '',
   supportsFocus: false
-};
+}; // 创建虚拟屏幕的参数
+// 创建虚拟屏幕
 screen.createVirtualScreen(option, (err: BusinessError, data: screen.Screen) => {
   const errCode: number = err.code;
   if (errCode) {
-    console.error(`Failed to create the virtual screen. Code:${err.code}, message is ${err.message}`);
+    console.error(`Failed to create the virtual screen. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   screenClass = data;
@@ -503,8 +519,8 @@ createVirtualScreen(options:VirtualScreenOption): Promise&lt;Screen&gt;
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400001 | Invalid display or screen. |
 
 **示例：**
@@ -522,20 +538,21 @@ class VirtualScreenOption {
   supportsFocus ?: boolean = true;
 }
 
-let option : VirtualScreenOption = { 
+let option: VirtualScreenOption = { 
   name: 'screen01',
   width: 1080,
   height: 2340,
   density: 2,
   surfaceId: '',
   supportsFocus: false
-};
+}; // 创建虚拟屏幕的参数
 
+// 创建虚拟屏幕
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
   screenClass = data;
   console.info(`Succeeded in creating the virtual screen. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to create the virtual screen. Code:${err.code}, message is ${err.message}`);
+  console.error(`Failed to create the virtual screen. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -553,7 +570,7 @@ destroyVirtualScreen(screenId:number, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| screenId | number                    | 是   | 屏幕的id，该参数仅支持整数输入。                                                   |
+| screenId | number                    | 是   | 屏幕的ID，该参数仅支持整数输入。                                                   |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当销毁虚拟屏幕成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -562,8 +579,8 @@ destroyVirtualScreen(screenId:number, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400001 | Invalid display or screen. |
 | 1400002 | Unauthorized operation. |
 
@@ -572,11 +589,13 @@ destroyVirtualScreen(screenId:number, callback: AsyncCallback&lt;void&gt;): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let screenId: number = 1;
+// 屏幕ID需通过getAllScreens()获取或从createVirtualScreen()返回值获取
+let screenId: number = 1; // 虚拟屏ID
+// 销毁虚拟屏幕
 screen.destroyVirtualScreen(screenId, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
-    console.error(`Failed to destroy the virtual screen. Code:${err.code}, message is ${err.message}`);
+    console.error(`Failed to destroy the virtual screen. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info('Succeeded in destroying the virtual screen.');
@@ -597,7 +616,7 @@ destroyVirtualScreen(screenId:number): Promise&lt;void&gt;
 
 | 参数名   | 类型   | 必填 | 说明       |
 | -------- | ------ | ---- | ---------- |
-| screenId | number | 是   | 屏幕的id，该参数仅支持整数输入。 |
+| screenId | number | 是   | 屏幕的ID，该参数仅支持整数输入。 |
 
 **返回值：**
 
@@ -611,8 +630,8 @@ destroyVirtualScreen(screenId:number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400001 | Invalid display or screen. |
 | 1400002 | Unauthorized operation. |
 
@@ -621,11 +640,13 @@ destroyVirtualScreen(screenId:number): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let screenId: number = 1;
+// 屏幕ID需通过getAllScreens()获取或从createVirtualScreen()返回值获取
+let screenId: number = 1; // 虚拟屏ID
+// 销毁虚拟屏幕
 screen.destroyVirtualScreen(screenId).then(() => {
   console.info('Succeeded in destroying the virtual screen.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to destroy the virtual screen.Code:${err.code}, message is ${err.message}`);
+  console.error(`Failed to destroy the virtual screen. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -645,7 +666,7 @@ setVirtualScreenSurface(screenId:number, surfaceId: string, callback: AsyncCallb
 
 | 参数名    | 类型                      | 必填 | 说明                                                         |
 | --------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| screenId  | number                    | 是   | 屏幕的id，该参数仅支持整数输入。                                                   |
+| screenId  | number                    | 是   | 屏幕的ID，该参数仅支持整数输入。                                                   |
 | surfaceId | string                    | 是   | 代表虚拟屏幕的surface标识符，surfaceId值可自行定义，由用户指定某一实际存在的surface对应的surfaceId。 |
 | callback  | AsyncCallback&lt;void&gt; | 是   | 回调函数。当设置虚拟屏幕surface成功，err为undefined，否则为错误对象。 |
 
@@ -656,8 +677,8 @@ setVirtualScreenSurface(screenId:number, surfaceId: string, callback: AsyncCallb
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400001 | Invalid display or screen. |
 
 **示例：**
@@ -674,10 +695,11 @@ struct Index {
   setVirtualScreenSurface = () => {
     let screenId: number = 1;
     let surfaceId = this.xComponentController.getXComponentSurfaceId();
+    // 设置虚拟屏幕的surface
     screen.setVirtualScreenSurface(screenId, surfaceId, (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
-      console.error(`Failed to set the surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
+      console.error(`Failed to set the surface for the virtual screen. Code: ${err.code}, message: ${err.message}`);
       return;
     }
       console.info('Succeeded in setting the surface for the virtual screen.');
@@ -717,7 +739,7 @@ setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&lt;void&gt;
 
 | 参数名    | 类型   | 必填 | 说明          |
 | --------- | ------ | ---- | ------------- |
-| screenId  | number | 是   | 屏幕的id，该参数仅支持整数输入。    |
+| screenId  | number | 是   | 屏幕的ID，该参数仅支持整数输入。    |
 | surfaceId | string | 是   | 代表虚拟屏幕的surface标识符，surfaceId值可自行定义，由用户指定某一实际存在的surface对应的surfaceId。 |
 
 **返回值：**
@@ -733,8 +755,8 @@ setVirtualScreenSurface(screenId:number, surfaceId: string): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400001 | Invalid display or screen. |
 
 **示例：**
@@ -751,10 +773,11 @@ struct Index {
   setVirtualScreenSurface = () => {
     let screenId: number = 1;
     let surfaceId = this.xComponentController.getXComponentSurfaceId();
+    // 设置虚拟屏幕的surface
     screen.setVirtualScreenSurface(screenId, surfaceId).then(() => {
       console.info('Succeeded in setting the surface for the virtual screen.');
     }).catch((err: BusinessError) => {
-      console.error(`Failed to set the surface for the virtual screen. Code:${err.code}, message is ${err.message}`);
+      console.error(`Failed to set the surface for the virtual screen. Code: ${err.code}, message: ${err.message}`);
     });
   }
   build() {
@@ -789,7 +812,7 @@ setScreenPrivacyMaskImage(screenId:number, image?: image.PixelMap): Promise&lt;v
 
 | 参数名    | 类型   | 必填 | 说明          |
 | --------- | ------ | ---- | ------------- |
-| screenId  | number | 是   | 屏幕的id，该参数仅支持正整数输入。    |
+| screenId  | number | 是   | 屏幕的ID，该参数仅支持正整数输入。    |
 | image | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 屏幕的隐私蒙版图片，不传入则使用默认隐私蒙版图片。 |
 
 **返回值：**
@@ -804,8 +827,8 @@ setScreenPrivacyMaskImage(screenId:number, image?: image.PixelMap): Promise&lt;v
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
@@ -817,18 +840,20 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
 const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
-let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
-image.createPixelMap(color, opts).then((pixelMap: image.PixelMap) => {
+let options: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
+image.createPixelMap(color, options).then((pixelMap: image.PixelMap) => {
   console.info('Succeeded in creating pixelmap.');
-  let screenId: number = 1;
+  // 屏幕ID需通过getAllScreens()获取
+  let screenId: number = 1; // 屏幕ID
+  // 设置屏幕的隐私蒙版图片
   screen.setScreenPrivacyMaskImage(screenId, pixelMap).then(() => {
     console.info('Succeeded in setting the privacy mask image for the screen.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to set the privacy mask image for the screen. Code:${err.code}, message is ${err.message}`);
+    console.error(`Failed to set the privacy mask image for the screen. Code: ${err.code}, message: ${err.message}`);
   });
 }).catch((error: BusinessError) => {
-  console.error(`Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
-})
+  console.error(`Failed to create pixelmap. Code: ${error.code}, message: ${error.message}`);
+});
 ```
 
 ## screen.isScreenRotationLocked
@@ -853,17 +878,18 @@ isScreenRotationLocked(): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 查询当前自动转屏是否锁定
 screen.isScreenRotationLocked().then((isLocked: boolean) => {
   console.info(`Succeeded in getting the screen rotation lock status. isLocked: ${isLocked}`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to get the screen rotation lock status. Code:${err.code}, message is ${err.message}`);
+  console.error(`Failed to get the screen rotation lock status. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -889,17 +915,18 @@ isScreenRotationLocked(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 查询当前自动转屏是否锁定
 screen.isScreenRotationLocked((err: BusinessError, isLocked: boolean) => {
   const errCode: number = err.code;
   if (errCode) {
-    console.error(`Failed to get the screen rotation lock status. Code:${err.code}, message is ${err.message}`);
+    console.error(`Failed to get the screen rotation lock status. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info(`Succeeded in getting the screen rotation lock status. isLocked: ${isLocked}`);
@@ -936,8 +963,8 @@ setScreenRotationLocked(isLocked: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -945,10 +972,11 @@ setScreenRotationLocked(isLocked: boolean): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let isLocked: boolean = false;
+// 设置自动转屏开关为未锁定
 screen.setScreenRotationLocked(isLocked).then(() => {
   console.info('Succeeded in unlocking auto rotate');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to unlock auto rotate. Code:${err.code}, message is ${err.message}`);
+  console.error(`Failed to unlock auto rotate. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -977,8 +1005,8 @@ setScreenRotationLocked(isLocked: boolean, callback: AsyncCallback&lt;void&gt;):
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -986,10 +1014,11 @@ setScreenRotationLocked(isLocked: boolean, callback: AsyncCallback&lt;void&gt;):
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let isLocked: boolean = false;
+// 设置自动转屏开关为未锁定
 screen.setScreenRotationLocked(isLocked, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
-    console.error(`Failed to unlock auto rotate. Code:${err.code}, message is ${err.message}`);
+    console.error(`Failed to unlock auto rotate. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info('Succeeded in unlocking auto rotate.');
@@ -1010,8 +1039,8 @@ setMultiScreenMode(primaryScreenId: number, secondaryScreenId: number, secondary
 
 | 参数名       | 类型                 | 必填 | 说明                |
 | ------------ | ------------------- | ---- |--------------------|
-| primaryScreenId   | number           | 是  | 主屏的id，该参数应为非负整数。如果输入的数字包含小数部分，向下取整。|
-| secondaryScreenId | number           | 是  | 扩展屏幕的id，该参数应为非负整数。如果输入的数字包含小数部分，向下取整。|
+| primaryScreenId   | number           | 是  | 主屏的ID，该参数应为非负整数。如果输入的数字包含小数部分，向下取整。|
+| secondaryScreenId | number           | 是  | 扩展屏幕的ID，该参数应为非负整数。如果输入的数字包含小数部分，向下取整。|
 | secondaryScreenMode | [MultiScreenMode](#multiscreenmode13)  | 是  | 扩展屏幕的显示模式。|
 
 **返回值：**
@@ -1026,8 +1055,8 @@ setMultiScreenMode(primaryScreenId: number, secondaryScreenId: number, secondary
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed, non-system application uses system API. |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
@@ -1035,13 +1064,15 @@ setMultiScreenMode(primaryScreenId: number, secondaryScreenId: number, secondary
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let primaryScreenId: number = 0;
-let secondaryScreenId: number = 12;
+// 屏幕ID需通过getAllScreens()获取
+let primaryScreenId: number = 0; // 主屏ID
+let secondaryScreenId: number = 12; // 扩展屏ID
 let screenMode: screen.MultiScreenMode = screen.MultiScreenMode.SCREEN_MIRROR;
+// 设置扩展屏幕的显示模式为镜像模式
 screen.setMultiScreenMode(primaryScreenId, secondaryScreenId, screenMode).then(() => {
   console.info('Succeeded in setting multi screen mode. Data: ');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to set multi screen mode. Code:${err.code}, message is ${err.message}`);
+  console.error(`Failed to set multi screen mode. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1049,7 +1080,7 @@ screen.setMultiScreenMode(primaryScreenId, secondaryScreenId, screenMode).then((
 
 setMultiScreenRelativePosition(mainScreenOptions: MultiScreenPositionOptions, secondaryScreenOptions: MultiScreenPositionOptions): Promise&lt;void&gt;
 
-仅在扩展模式下，设置主屏和扩展屏幕的位置信息，使用Promise异步回调。
+仅在扩展模式下，设置主屏和扩展屏幕的位置信息，使用Promise异步回调。通过设置startX和startY坐标，可确定各屏幕在虚拟显示空间中的相对位置，实现屏幕排列布局。例如，设置扩展屏幕的startX为主屏幕宽度值，可实现扩展屏幕位于主屏幕右侧的布局。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1074,8 +1105,8 @@ setMultiScreenRelativePosition(mainScreenOptions: MultiScreenPositionOptions, se
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed, non-system application uses system API. |
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
 
@@ -1084,22 +1115,24 @@ setMultiScreenRelativePosition(mainScreenOptions: MultiScreenPositionOptions, se
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 屏幕ID需通过getAllScreens()获取
 let mainScreenOptions: screen.MultiScreenPositionOptions = {
-  id : 0,
+  id : 0,  // 主屏ID
   startX : 0,
   startY : 0
-};
+}; // 主屏的位置信息
 
 let secondaryScreenOptions: screen.MultiScreenPositionOptions = {
-  id : 12,
+  id : 12,  // 扩展屏ID
   startX : 1000,
   startY : 1000
-};
+}; // 扩展屏幕的位置信息
 
+// 设置主屏和扩展屏幕的位置信息
 screen.setMultiScreenRelativePosition(mainScreenOptions, secondaryScreenOptions).then(() => {
   console.info('Succeeded in setting multi screen relative position.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to set multi screen relative position. Code:${err.code}, message is ${err.message}`);
+  console.error(`Failed to set multi screen relative position. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 ## screen.resizeVirtualScreen<sup>24+</sup>
@@ -1132,24 +1165,26 @@ resizeVirtualScreen(screenId: number, width: number, height: number): Promise&lt
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 801     | Capability not supported. Function can not work because the current device does not support this ability.|
-| 1400001 | Invalid display or screen.|
-| 1400003 | This display manager service works abnormally.|
-| 1400004 | Parameter error. Possible cause: 1. Invalid parameter range.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 801     | Capability not supported. Function can not work because the current device does not support this ability. |
+| 1400001 | Invalid display or screen. |
+| 1400003 | This display manager service works abnormally. |
+| 1400004 | Parameter error. Possible cause: 1. Invalid parameter range. |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let screenId: number = 1000;
+// 虚拟屏ID需从createVirtualScreen()返回值获取
+let screenId: number = 1000; // 虚拟屏ID
 let width: number = 1920;
 let height: number = 1080;
+// 修改虚拟屏的尺寸
 screen.resizeVirtualScreen(screenId, width, height).then(() => {
   console.info(`Succeeded in resizing virtual screen: screenId=${screenId}, width=${width}, height=${height}`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to set screen area mirroring. Code:${err.code}, message is ${err.message}`);
+  console.error(`Failed to set screen area mirroring. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1175,7 +1210,7 @@ makeMirrorWithRegion(mainScreen:number, mirrorScreen:Array&lt;number&gt;, mainSc
 
 | 类型                  | 说明                              |
 | --------------------- |---------------------------------|
-| Promise&lt;number&gt; | Promise对象。返回镜像屏幕的群组id，其中id为正整数。 |
+| Promise&lt;number&gt; | Promise对象。返回镜像屏幕的群组ID，其中ID为正整数。 |
 
 **错误码：**
 
@@ -1183,7 +1218,7 @@ makeMirrorWithRegion(mainScreen:number, mirrorScreen:Array&lt;number&gt;, mainSc
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
 | 1400001 | Invalid display or screen. |
 
 **示例：**
@@ -1191,18 +1226,21 @@ makeMirrorWithRegion(mainScreen:number, mirrorScreen:Array&lt;number&gt;, mainSc
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let mainScreenId: number = 0;
-let mirrorScreenIds: Array<number> = [1, 2, 3];
+// 屏幕ID需通过getAllScreens()获取
+let mainScreenId: number = 0; // 主屏ID
+let mirrorScreenIds: Array<number> = [1, 2, 3]; // 镜像屏ID集合
+// 主屏创建镜像的矩形区域
 let mainScreenRegion: screen.Rect = {
   left : 0,
   top : 0,
   width : 1920,
   height : 1080
 };
+// 将屏幕的某一矩形区域设置为镜像模式
 screen.makeMirrorWithRegion(mainScreenId, mirrorScreenIds, mainScreenRegion).then((data: number) => {
   console.info(`Succeeded in setting screen mirroring. Data: ${data}`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to set screen area mirroring. Code:${err.code}, message is ${err.message}`);
+  console.error(`Failed to set screen area mirroring. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1225,7 +1263,7 @@ makeExpand(options:Array&lt;ExpandOption&gt;, callback: AsyncCallback&lt;number&
 | 参数名   | 类型                                       | 必填 | 说明                         |
 | -------- | ------------------------------------------ | ---- |----------------------------|
 | options  | Array&lt;[ExpandOption](#expandoption)&gt; | 是   | 设置扩展屏幕的参数集合。               |
-| callback | AsyncCallback&lt;number&gt;                     | 是   | 回调函数。返回扩展屏幕的群组id，其中id为整数。 |
+| callback | AsyncCallback&lt;number&gt;                     | 是   | 回调函数。返回扩展屏幕的群组ID，其中ID为整数。 |
 
 **错误码：**
 
@@ -1233,8 +1271,8 @@ makeExpand(options:Array&lt;ExpandOption&gt;, callback: AsyncCallback&lt;number&
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400001 | Invalid display or screen. |
 
 **示例：**
@@ -1251,10 +1289,11 @@ class ExpandOption {
 let mainScreenOption: ExpandOption = { screenId: 0, startX: 0, startY: 0 };
 let otherScreenOption: ExpandOption = { screenId: 1, startX: 1080, startY: 0 };
 let expandOptionArray : ExpandOption[] = [ mainScreenOption, otherScreenOption ];
+// 将屏幕设置为扩展模式
 screen.makeExpand(expandOptionArray, (err: BusinessError, data: number) => {
   const errCode: number = err.code;
   if (errCode) {
-    console.error(`Failed to expand the screen. Code:${err.code}, message is ${err.message}`);
+    console.error(`Failed to expand the screen. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   groupId = data;
@@ -1286,7 +1325,7 @@ makeExpand(options:Array&lt;ExpandOption&gt;): Promise&lt;number&gt;
 
 | 类型                  | 说明                              |
 | --------------------- |---------------------------------|
-| Promise&lt;number&gt; | Promise对象。返回扩展屏幕的群组id，其中id为整数。 |
+| Promise&lt;number&gt; | Promise对象。返回扩展屏幕的群组ID，其中ID为整数。 |
 
 **错误码：**
 
@@ -1294,8 +1333,8 @@ makeExpand(options:Array&lt;ExpandOption&gt;): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400001 | Invalid display or screen. |
 
 **示例：**
@@ -1311,11 +1350,11 @@ class ExpandOption {
 let mainScreenOption: ExpandOption = { screenId: 0, startX: 0, startY: 0 };
 let otherScreenOption: ExpandOption = { screenId: 1, startX: 1080, startY: 0 };
 let expandOptionArray : ExpandOption[] = [ mainScreenOption, otherScreenOption ];
-screen.makeExpand(expandOptionArray).then((
-  data: number) => {
+// 将屏幕设置为扩展模式
+screen.makeExpand(expandOptionArray).then((data: number) => {
   console.info(`Succeeded in expanding the screen. Data: ${data}`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to expand the screen. Code:${err.code}, message is ${err.message}`);
+  console.error(`Failed to expand the screen. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1346,8 +1385,8 @@ stopExpand(expandScreen:Array&lt;number&gt;, callback: AsyncCallback&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 1400001 | Invalid display or screen. |
 
 **示例：**
@@ -1355,11 +1394,12 @@ stopExpand(expandScreen:Array&lt;number&gt;, callback: AsyncCallback&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let expandScreenIds: Array<number> = [1, 2, 3];
+let expandScreenIds: Array<number> = [1, 2, 3]; // 扩展屏幕ID集合
+// 停止屏幕的扩展模式
 screen.stopExpand(expandScreenIds, (err: BusinessError) => {
   const errCode: number = err.code;
   if (errCode) {
-    console.error(`Failed to stop expand screens. Code:${err.code}, message is ${err.message}`);
+    console.error(`Failed to stop expand screens. Code: ${err.code}, message: ${err.message}`);
     return;
   }
   console.info('Succeeded in stopping expand screens.');
@@ -1398,8 +1438,8 @@ stopExpand(expandScreen:Array&lt;number&gt;): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 1400001 | Invalid display or screen. |
 
 **示例：**
@@ -1407,11 +1447,12 @@ stopExpand(expandScreen:Array&lt;number&gt;): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let expandScreenIds: Array<number> = [1, 2, 3];
+let expandScreenIds: Array<number> = [1, 2, 3]; // 扩展屏幕ID集合
+// 停止屏幕的扩展模式
 screen.stopExpand(expandScreenIds).then(() => {
   console.info('Succeeded in stopping expand screens.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to stop expand screens. Code:${err.code}, message is ${err.message}`);
+  console.error(`Failed to stop expand screens. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1425,7 +1466,7 @@ screen.stopExpand(expandScreenIds).then(() => {
 
 | 名称     | 类型 | 只读 | 可选 | 说明                |
 | -------- | -------- | ---- | ---- | ------------------- |
-| screenId | number   | 否   | 否   | 屏幕的id，该参数应为整数。          |
+| screenId | number   | 否   | 否   | 屏幕的ID，该参数应为整数。          |
 | startX   | number   | 否   | 否   | 屏幕的起始X轴坐标，该参数应为整数。 |
 | startY   | number   | 否   | 否   | 屏幕的起始Y轴坐标，该参数应为整数。 |
 
@@ -1452,9 +1493,9 @@ screen.stopExpand(expandScreenIds).then(() => {
 
 | 名称    | 类型     | 只读 | 可选  | 说明                |
 | -------- | -------- | ---- | ---- | ------------------- |
-| id       | number   | 否   | 否   | 屏幕的ID，该参数应为正整数，非正整数会作为非法参数报错。|
-| startX   | number   | 否   | 否   | 屏幕的起始X轴坐标。以两块屏幕外接矩形的左上顶点为原点，向右为正方向。该参数应为正整数，非正整数会作为非法参数报错。 |
-| startY   | number   | 否   | 否   | 屏幕的起始Y轴坐标。以两块屏幕外接矩形的左上顶点为原点，向下为正方向。该参数应为正整数，非正整数会作为非法参数报错。 |
+| id       | number   | 否   | 否   | 屏幕的ID，该参数应为非负整数，否则会作为非法参数报错。|
+| startX   | number   | 否   | 否   | 屏幕的起始X轴坐标。以两块屏幕外接矩形的左上顶点为原点，向右为正方向。该参数应为非负整数，否则会作为非法参数报错。 |
+| startY   | number   | 否   | 否   | 屏幕的起始Y轴坐标。以两块屏幕外接矩形的左上顶点为原点，向下为正方向。该参数应为非负整数，否则会作为非法参数报错。 |
 
 ## VirtualScreenOption
 
@@ -1472,7 +1513,7 @@ screen.stopExpand(expandScreenIds).then(() => {
 | density   | number   | 否   | 否   | 指定虚拟屏幕的密度，该参数为浮点数。 |
 | surfaceId | string   | 否   | 否   | 指定虚拟屏幕的surfaceId。        |
 | supportsFocus<sup>22+</sup> | boolean | 否 | 是  | 指定虚拟屏幕是否可获得焦点。true表示可获焦，false表示不可获焦，默认值为true。 |
-| userId<sup>24+</sup> | number | 否 | 是  | 指定虚拟屏幕的用户ID，该参数为整数。默认值为-1。 |
+| userId<sup>24+</sup> | number | 否 | 是  | 指定虚拟屏幕的用户ID，该参数为整数。默认值为-1。<br>**设备行为差异：** 该参数仅在Car设备中生效，其他设备不生效也不报错。 |
 
 ## Screen
 
@@ -1490,8 +1531,8 @@ screen.stopExpand(expandScreenIds).then(() => {
 | 名称              | 类型                                       | 只读 | 可选 | 说明                                                          |
 | ----------------- | ---------------------------------------------- | ---- | ---- |-------------------------------------------------------------|
 | id                | number                                         | 是   | 否   | 屏幕的ID，该参数为整数。                           |
-| rsId<sup>21+</sup> |number | 是 | 否 | 屏幕端口的id，该参数为整数。|
-| parent            | number                                         | 是   | 否   | 屏幕所属群组的id，该参数为整数。             |
+| rsId<sup>21+</sup> |number | 是 | 否 | 屏幕端口的ID，该参数为整数。|
+| parent            | number                                         | 是   | 否   | 屏幕所属群组的ID，该参数为整数。             |
 | supportedModeInfo | Array&lt;[ScreenModeInfo](#screenmodeinfo)&gt; | 是   | 否   | 屏幕支持的模式集合。   |
 | activeModeIndex   | number                                         | 是   | 否   | 当前屏幕所处模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化。该参数为整数。 |
 | orientation       | [Orientation](#orientation)                     | 是   | 否   | 屏幕方向。       |
@@ -1509,6 +1550,12 @@ setOrientation(orientation: Orientation, callback: AsyncCallback&lt;void&gt;): v
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+**设备行为差异：**
+
+- 针对Phone、Tablet设备：在[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下调用不生效不报错；在非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下可正常调用，对于部分设备对屏幕有强约束（由产品配置决定），无需旋转的，调用此接口不生效。
+- 针对PC/2in1设备：折叠屏设备处于悬停态时，调用此接口不生效不报错。其他情况可正常调用生效。
+- 针对其他设备：接口行为未定义，不保证屏幕方向发生变化。
+
 **参数：**
 
 | 参数名      | 类型                        | 必填 | 说明                                                         |
@@ -1522,8 +1569,8 @@ setOrientation(orientation: Orientation, callback: AsyncCallback&lt;void&gt;): v
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
@@ -1540,7 +1587,7 @@ class VirtualScreenOption {
   supportsFocus ?: boolean = true;
 }
 
-let option : VirtualScreenOption = {
+let option: VirtualScreenOption = {
   name: 'screen01',
   width: 1080,
   height: 2340,
@@ -1549,19 +1596,21 @@ let option : VirtualScreenOption = {
   supportsFocus: false
 };
 
+// 创建虚拟屏幕
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
   let screenClass: screen.Screen = data;
   console.info(`Succeeded in creating the virtual screen. Data: ${JSON.stringify(data)}`);
+  // 设置屏幕方向为垂直方向
   screenClass.setOrientation(screen.Orientation.VERTICAL, (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
-      console.error(`Failed to set the vertical orientation. Code:${err.code}, message is ${err.message}`);
+      console.error(`Failed to set the vertical orientation. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in setting the vertical orientation.');
   });
 }).catch((err: BusinessError) => {
-  console.error(`Failed to create the virtual screen. Code:${err.code}, message is ${err.message}`);
+  console.error(`Failed to create the virtual screen. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1574,6 +1623,12 @@ setOrientation(orientation: Orientation): Promise&lt;void&gt;
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**设备行为差异：**
+
+- 针对Phone、Tablet设备：在[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下调用不生效不报错；在非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下可正常调用，对于部分设备对屏幕有强约束（由产品配置决定），无需旋转的，调用此接口不生效。
+- 针对PC/2in1设备：折叠屏设备处于悬停态时，调用此接口不生效不报错。其他情况可正常调用生效。
+- 针对其他设备：接口行为未定义，不保证屏幕方向发生变化。
 
 **参数：**
 
@@ -1593,8 +1648,8 @@ setOrientation(orientation: Orientation): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
@@ -1611,7 +1666,7 @@ class VirtualScreenOption {
   supportsFocus ?: boolean = true;
 }
 
-let option : VirtualScreenOption = {
+let option: VirtualScreenOption = {
   name: 'screen01',
   width: 1080,
   height: 2340,
@@ -1620,17 +1675,19 @@ let option : VirtualScreenOption = {
   supportsFocus: false
 };
 
+// 创建虚拟屏幕
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
   let screenClass: screen.Screen = data;
   console.info(`Succeeded in creating the virtual screen. Data: ${JSON.stringify(data)}`);
+  // 设置屏幕方向为垂直方向
   let promise: Promise<void> = screenClass.setOrientation(screen.Orientation.VERTICAL);
   promise.then(() => {
     console.info('Succeeded in setting the vertical orientation.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to set the vertical orientation. Code:${err.code}, message is ${err.message}`);
+    console.error(`Failed to set the vertical orientation. Code: ${err.code}, message: ${err.message}`);
   });
 }).catch((err: BusinessError) => {
-  console.error(`Failed to create the virtual screen. Code:${err.code}, message is ${err.message}`);
+  console.error(`Failed to create the virtual screen. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1642,6 +1699,8 @@ setOrientation(orientation: Orientation, orientationOptions?: OrientationOptions
 
 可通过orientationOptions参数指定旋转时是否带有动画、是否忽略系统窗口的旋转锁定。
 
+不传入orientationOptions参数时，接口行为与`setOrientation(orientation: Orientation): Promise<void>`相同。
+
 当设置的方向符合应用旋转策略（可通过配置module.json5文件中abilities标签的orientation字段设置应用旋转策略）时，屏幕方向才会发生改变；当设置方向不符合应用旋转策略时，屏幕方向不会发生变化，且接口不会抛出异常。
 
 **起始版本：** 26.0.0
@@ -1651,6 +1710,12 @@ setOrientation(orientation: Orientation, orientationOptions?: OrientationOptions
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**设备行为差异：**
+
+- 针对Phone、Tablet设备：在[自由多窗模式](../../windowmanager/window-terminology.md#free-multi-window-mode自由多窗模式)下调用不生效不报错；在非[自由多窗模式](../../windowmanager/window-terminology.md#free-multi-window-mode自由多窗模式)下可正常调用，对于部分设备对屏幕有强约束（由产品配置决定），无需旋转的，调用此接口不生效。
+- 针对PC/2in1设备：折叠屏设备处于悬停态时，调用此接口不生效不报错。其他情况可正常调用生效。
+- 针对其他设备：接口行为未定义，不保证屏幕方向发生变化。
 
 **参数：**
 
@@ -1663,7 +1728,7 @@ setOrientation(orientation: Orientation, orientationOptions?: OrientationOptions
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise\<void> | Promise对象，无返回结果。 |
+| Promise\<void> | 无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -1671,7 +1736,7 @@ setOrientation(orientation: Orientation, orientationOptions?: OrientationOptions
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
@@ -1685,19 +1750,21 @@ let orientationOptions : screen.OrientationOptions = {
 };
 
 let screenClass: screen.Screen | null = null;
+// 获取所有屏幕对象
 let screensPromise: Promise<Array<screen.Screen>> = screen.getAllScreens();
 screensPromise.then((data: Array<screen.Screen>) => {
   if (data.length > 0) {
     screenClass = data[0];
+    // 设置屏幕方向为垂直方向，带动画且不忽略旋转锁定
     let promise: Promise<void> = screenClass.setOrientation(screen.Orientation.VERTICAL, orientationOptions);
     promise.then(() => {
       console.info('Succeeded in setting the vertical orientation with orientationOptions.');
     }).catch((err: BusinessError) => {
-      console.error(`Failed to set the vertical orientation with orientationOptions. Code:${err.code}, message is ${err.message}`);
+      console.error(`Failed to set the vertical orientation with orientationOptions. Code: ${err.code}, message: ${err.message}`);
     });
   }
 }).catch((err: BusinessError) => {
-  console.error(`Failed to get all screens. Code:${err.code}, message is ${err.message}`);
+  console.error(`Failed to get all screens. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1715,7 +1782,7 @@ setScreenActiveMode(modeIndex: number, callback: AsyncCallback&lt;void&gt;): voi
 
 | 参数名    | 类型                      | 必填 | 说明                                                         |
 | --------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| modeIndex | number                    | 是   | 模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化，该参数仅支持整数输入。索引为screen中[ScreenModeInfo](#screenmodeinfo)属性的模式id。 |
+| modeIndex | number                    | 是   | 模式索引。模式索引的当前值和值的范围，会根据屏幕当前分辨率、刷新率和设备硬件差异产生变化，该参数仅支持整数输入。索引为screen中[ScreenModeInfo](#screenmodeinfo)属性的模式ID。 |
 | callback  | AsyncCallback&lt;void&gt; | 是   | 回调函数。当设置屏幕当前显示模式成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -1724,8 +1791,8 @@ setScreenActiveMode(modeIndex: number, callback: AsyncCallback&lt;void&gt;): voi
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
@@ -1742,7 +1809,7 @@ class VirtualScreenOption {
   supportsFocus ?: boolean = true;
 }
 
-let option : VirtualScreenOption = {
+let option: VirtualScreenOption = {
   name: 'screen01',
   width: 1080,
   height: 2340,
@@ -1751,20 +1818,22 @@ let option : VirtualScreenOption = {
   supportsFocus: false
 };
 
+// 创建虚拟屏幕
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
   let screenClass: screen.Screen = data;
   console.info(`Succeeded in creating the virtual screen. Data: ${JSON.stringify(data)}`);
   let modeIndex: number = 0;
+  // 设置屏幕当前显示模式
   screenClass.setScreenActiveMode(modeIndex, (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
-      console.error(`Failed to set screen active mode 0. Code:${err.code}, message is ${err.message}`);
+      console.error(`Failed to set screen active mode 0. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in setting the screen active mode 0.');
   });
 }).catch((err: BusinessError) => {
-  console.error(`Failed to create the virtual screen. Code:${err.code}, message is ${err.message}`);
+  console.error(`Failed to create the virtual screen. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1796,8 +1865,8 @@ setScreenActiveMode(modeIndex: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
@@ -1814,7 +1883,7 @@ class VirtualScreenOption {
   supportsFocus ?: boolean = true;
 }
 
-let option : VirtualScreenOption = {
+let option: VirtualScreenOption = {
   name: 'screen01',
   width: 1080,
   height: 2340,
@@ -1823,18 +1892,20 @@ let option : VirtualScreenOption = {
   supportsFocus: false
 };
 
+// 创建虚拟屏幕
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
   let screenClass: screen.Screen = data;
   console.info(`Succeeded in creating the virtual screen. Data: ${JSON.stringify(data)}`);
   let modeIndex: number = 0;
+  // 设置屏幕当前显示模式
   let promise: Promise<void> = screenClass.setScreenActiveMode(modeIndex);
   promise.then(() => {
     console.info('Succeeded in setting screen active mode 0.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to set screen active mode 0.Code:${err.code}, message is ${err.message}`);
+    console.error(`Failed to set screen active mode 0. Code: ${err.code}, message: ${err.message}`);
   });
 }).catch((err: BusinessError) => {
-  console.error(`Failed to create the virtual screen. Code:${err.code}, message is ${err.message}`);
+  console.error(`Failed to create the virtual screen. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1861,8 +1932,8 @@ setDensityDpi(densityDpi: number, callback: AsyncCallback&lt;void&gt;): void;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
@@ -1880,7 +1951,7 @@ class VirtualScreenOption {
   supportsFocus ?: boolean = true;
 }
 
-let option : VirtualScreenOption = {
+let option: VirtualScreenOption = {
   name: 'screen01',
   width: 1080,
   height: 2340,
@@ -1889,19 +1960,21 @@ let option : VirtualScreenOption = {
   supportsFocus: false
 };
 
+// 创建虚拟屏幕
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
   let screenClass: screen.Screen = data;
   console.info(`Succeeded in creating the virtual screen. Data: ${JSON.stringify(data)}`);
+  // 设置屏幕的像素密度
   screenClass.setDensityDpi(densityDpi, (err: BusinessError) => {
     const errCode: number = err.code;
     if (errCode) {
-      console.error(`Failed to set the pixel density of the screen to 320. Code:${err.code}, message is ${err.message}`);
+      console.error(`Failed to set the pixel density of the screen to 320. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in setting the density dpi.');
   });
 }).catch((err: BusinessError) => {
-  console.error(`Failed to create the virtual screen. Code:${err.code}, message is ${err.message}`);
+  console.error(`Failed to create the virtual screen. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1933,8 +2006,8 @@ setDensityDpi(densityDpi: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
@@ -1952,7 +2025,7 @@ class VirtualScreenOption {
   supportsFocus ?: boolean = true;
 }
 
-let option : VirtualScreenOption = {
+let option: VirtualScreenOption = {
   name: 'screen01',
   width: 1080,
   height: 2340,
@@ -1961,16 +2034,18 @@ let option : VirtualScreenOption = {
   supportsFocus: false
 };
 
+// 创建虚拟屏幕
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
   let screenClass: screen.Screen = data;
+  // 设置屏幕的像素密度
   let promise: Promise<void> = screenClass.setDensityDpi(densityDpi);
   promise.then(() => {
     console.info('Succeeded in setting the pixel density of the screen to 320.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to set the pixel density of the screen to 320. Code:${err.code}, message is ${err.message}`);
+    console.error(`Failed to set the pixel density of the screen to 320. Code: ${err.code}, message: ${err.message}`);
   });
 }).catch((err: BusinessError) => {
-  console.error(`Failed to create the virtual screen. Code:${err.code}, message is ${err.message}`);
+  console.error(`Failed to create the virtual screen. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -2018,7 +2093,7 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 | id          | number   | 否   | 否   | 模式ID，所支持的模式由具体设备分辨率和刷新率决定，该参数为整数。 | 
 | width       | number   | 否   | 否   | 屏幕的宽度，单位为px，该参数为整数。                                |
 | height      | number   | 否   | 否   | 屏幕的高度，单位为px，该参数为整数。                                |
-| refreshRate | number   | 否   | 否   | 屏幕的刷新率，单位为hz，该参数为整数。                                     |
+| refreshRate | number   | 否   | 否   | 屏幕的刷新率，单位为Hz，该参数为整数。                                     |
 
 ## Rect<sup>19+</sup>
 
@@ -2050,4 +2125,4 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 | 名称        | 类型 | 只读 | 可选 | 说明                                               |
 | ----------- | -------- | ---- | ---- | -------------------------------------------------- |
 | needAnimation          | boolean   | 否   | 是   |  是否带动画旋转。true表示带动画旋转屏幕，false表示不带动画旋转屏幕。默认值为true。 | 
-| ignoreRotationLock     | boolean   | 否   | 是   |  是否忽略旋转锁定。true表示即使某些系统窗口锁定屏幕旋转，也允许屏幕旋转；false表示当系统窗口锁定屏幕旋转时，不允许屏幕旋转。默认值为false。<br> **设备行为差异：** 该字段仅在PC/2in1设备（非折叠PC）和其他设备的电脑模式下生效，在其他设备中调用不生效不报错。|
+| ignoreRotationLock     | boolean   | 否   | 是   |  是否忽略旋转锁定。true表示即使某些系统窗口锁定屏幕旋转，也允许屏幕旋转；false表示当系统窗口锁定屏幕旋转时，不允许屏幕旋转。默认值为false。<br> **设备行为差异：** 该字段仅在PC/2in1设备（非折叠PC）和其他设备的[电脑模式](../../windowmanager/window-terminology.md#pc-mode电脑模式)下生效，在其他设备中调用不生效不报错。|

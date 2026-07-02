@@ -29,3 +29,4 @@
   <!--Del-->
   - [音频模板概述(仅对系统应用开放)](using-avsession-AVMusicTemplateController-sys.md)
   <!--DelEnd-->
+- [AVSession Kit术语](avsession-glossary.md)

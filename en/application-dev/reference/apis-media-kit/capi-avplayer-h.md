@@ -1,7 +1,7 @@
 # avplayer.h
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xushubo; @chennotfound-->
+<!--Owner: @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
@@ -113,8 +113,11 @@ The **avplayer.h** file declares the AVPlayer APIs. You can use the native AVPla
 | [uint32_t OH_AVPlayer_GetTrackCount(OH_AVPlayer *player)](#oh_avplayer_gettrackcount) | - | Obtains the number of tracks of the media source of the AVPlayer.|
 | [OH_AVFormat *OH_AVPlayer_GetTrackFormat(OH_AVPlayer *player, uint32_t trackIndex)](#oh_avplayer_gettrackformat) | - | Obtains the track information of the AVPlayer by index.|
 | [OH_AVFormat *OH_AVPlayer_GetPlaybackStatisticMetrics(OH_AVPlayer *player)](#oh_avplayer_getplaybackstatisticmetrics) | - | Obtains the statistic metrics of the current AVPlayer. This API can be called when the playback resource is set and the AVPlayer is in the prepared, playing, paused, completed, or stopped state.<br> Note that you need to manually release the lifecycle of the [OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md) pointer object.|
+| [OH_AVErrCode OH_AVPlayer_SetPCMOutputCallback(OH_AVPlayer *player, OH_AVPlayerPCMOutputCallback callback, void *userData)](#oh_avplayer_setpcmoutputcallback) | - | Sets the callback for audio PCM data output. This API can be called when the AVPlayer is in the idle or initialized state.|
 | [OH_AVPlayerVideoOutput* OH_AVPlayer_SetVideoSideOutput(OH_AVPlayer *player, OHNativeWindow *window)](#oh_avplayer_setvideosideoutput) | - | Sets the callback for decoded video frame output. This API can be called when the AVPlayer is in the idle or initialized state.|
 | [OH_VideoOutputResult OH_AVPlayerVideoOutput_GetNewestVideoSample(OH_AVPlayerVideoOutput *videoOutput)](#oh_avplayervideooutput_getnewestvideosample) | - | Obtains a decoded video frame. This API can be called when the AVPlayer is in the paused or playing state.|
+| [OH_AVErrCode OH_AVPlayer_SetPCMProcessorCallback(OH_AVPlayer *player, OH_AVPlayerPCMProcessorCallback callback, void *userData)](#oh_avplayer_setpcmprocessorcallback) | - | Sets the callback for audio PCM data postprocessing. This API can be called when the AVPlayer is in the idle or initialized state.|
+| [OH_AVErrCode OH_AVPlayer_SetPCMProcessorMaxLen(OH_AVPlayer *player, int32_t maxProcessedPCMLen)](#oh_avplayer_setpcmprocessormaxlen) | - | Sets the maximum amount of data that can be returned at a time by the audio postprocessing callback. Some data can be cached and output together with the PCM data returned next time.<br> This API can be called when the AVPlayer is in the idle or initialized state.|
 
 ## Function Description
 
@@ -405,7 +408,7 @@ OH_AVErrCode OH_AVPlayer_ReleaseSync(OH_AVPlayer *player)
 
 **Description**
 
-Synchronously releases an OH_AVPlayer instance.<br> The synchronous function ensures that the display buffer of the playback window is released, with a long time. Therefore, you need to design an asynchronous mechanism.
+Synchronously releases an **OH_AVPlayer** instance.<br> The synchronous function ensures that the display buffer of the playback window is released, with a long time. Therefore, you need to design an asynchronous mechanism.
 
 **System capability**: SystemCapability.Multimedia.Media.AVPlayer
 
@@ -633,13 +636,13 @@ Sets the playback rate of an AVPlayer within the valid range.<br> The supported 
 | Parameter| Description|
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
-| float rate | Playback rate. The value ranges from 0.125 to 4.|
+| float rate | Playback rate. The value range is [0.125, 8.0] for API version 26.0.0 or later and [0.125, 4.0] for API versions earlier than 26.0.0.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The playback speed is set successfully.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The function is called when the AVPlayer is not in the allowed state, or it is called during live streaming.<br>         **AV_ERR_INVALID_VAL**: The input parameter **player** is nullptr, or **rate** is out of range.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The playback speed is set successfully.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: This method is called in an unsupported state or during livestreaming.<br>         **AV_ERR_INVALID_VAL**: The input player is a null pointer, or the configured rate is out of range.|
 
 ### OH_AVPlayer_GetPlaybackSpeed()
 
@@ -2112,6 +2115,32 @@ Obtains the statistic metrics of the current AVPlayer. This API can be called wh
 | -- | -- |
 | [OH_AVFormat *](../apis-avcodec-kit/capi-core-oh-avformat.md) | If the operation is successful, the statistic metrics of the current AVPlayer are returned. (For details about the key values, see [Variables](../apis-media-kit/capi-avplayer-base-h.md#variables) in **avplayer_base.h**.) Otherwise, **nullptr** is returned.<br> Possible failure cause: The input **player** pointer is invalid.|
 
+### OH_AVPlayer_SetPCMOutputCallback()
+
+```c
+OH_AVErrCode OH_AVPlayer_SetPCMOutputCallback(OH_AVPlayer *player, OH_AVPlayerPCMOutputCallback callback, void *userData)
+```
+
+**Description**
+
+Sets the callback for audio PCM data output. This API can be called when the AVPlayer is in the idle or initialized state.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
+| [OH_AVPlayerPCMOutputCallback](capi-avplayer-base-h.md#oh_avplayerpcmoutputcallback) callback | Pointer to the callback function. **nullptr** indicates that the callback is deregistered.|
+| void *userData | Pointer to user data.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | Execution result of the function.<br>         **AV_ERR_OK**: The execution is successful.<br>         **AV_ERR_INVALID_VAL**: The input player is a null pointer, or **OH_AVPlayer_SetPCMOutputCallback()** fails.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The function is called in an unsupported state.|
+
 ### OH_AVPlayer_SetVideoSideOutput()
 
 ```c
@@ -2160,3 +2189,54 @@ Obtains a decoded video frame. This API can be called when the AVPlayer is in th
 | Type| Description|
 | -- | -- |
 | [OH_VideoOutputResult](capi-avplayer-base-h.md#oh_videooutputresult) | **OH_VIDEO_OUTPUT_OK**: A decoded video frame is obtained.<br>         **OH_VIDEO_OUTPUT_NO_IMAGE**: No frame is available for rendering.|
+
+### OH_AVPlayer_SetPCMProcessorCallback()
+
+```c
+OH_AVErrCode OH_AVPlayer_SetPCMProcessorCallback(OH_AVPlayer *player, OH_AVPlayerPCMProcessorCallback callback, void *userData)
+```
+
+**Description**
+
+Sets the callback for audio PCM data postprocessing. This API can be called when the AVPlayer is in the idle or initialized state.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
+| [OH_AVPlayerPCMProcessorCallback](capi-avplayer-base-h.md#oh_avplayerpcmprocessorcallback) callback | Pointer to the callback function. **nullptr** indicates that the callback is deregistered.|
+| void *userData | Pointer to user data.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| OH_AVErrCode | Execution result of the function.<br>         **AV_ERR_OK**: The execution is successful.<br>         **AV_ERR_INVALID_VAL**: The input player is a null pointer, or **OH_AVPlayer_SetPCMProcessorCallback()** fails.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The function is called in an unsupported state.|
+
+### OH_AVPlayer_SetPCMProcessorMaxLen()
+
+```c
+OH_AVErrCode OH_AVPlayer_SetPCMProcessorMaxLen(OH_AVPlayer *player, int32_t maxProcessedPCMLen)
+```
+
+**Description**
+
+Sets the maximum amount of data that can be returned at a time by the audio postprocessing callback. Some data can be cached and output together with the PCM data returned next time.<br> This API can be called when the AVPlayer is in the idle or initialized state.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the **OH_AVPlayer** instance.|
+| int32_t maxProcessedPCMLen | Maximum amount of data that can be returned at a time. The unit is byte and the value range is (0, 5 MB].<br> **OH_AVPlayerPCMProcessorCallback **ensures that the returned AVBuffer capacity is not less than this value.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| OH_AVErrCode | Execution result of the function.<br>         **AV_ERR_OK**: The execution is successful.<br>         **AV_ERR_INVALID_VAL**: The input player is a null pointer, or the **maxProcessedPCMLen** parameter is invalid.<br>         **AV_ERR_OPERATE_NOT_PERMIT**: The function is called in an unsupported state.|

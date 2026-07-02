@@ -54,7 +54,7 @@
 
 ## NodeRenderState<sup>20+</sup>
 
-组件的渲染状态。
+节点的渲染状态。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 

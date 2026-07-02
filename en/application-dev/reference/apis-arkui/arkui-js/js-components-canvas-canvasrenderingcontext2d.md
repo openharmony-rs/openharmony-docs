@@ -1,10 +1,12 @@
 # CanvasRenderingContext2D
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=236b1482bf31e926fd91d5f29276a56a58780a2f translatedAt=2026-06-22T07:52:01.518Z pushedAt=2026-06-23T02:26:37.458Z -->
 
 >  **NOTE**
 >
@@ -12,8 +14,8 @@
 
 **CanvasRenderingContext2D** allows you to draw rectangles, text, images, and other objects on a [canvas component](./js-components-canvas-canvas.md).
 
-
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -51,28 +53,27 @@
 
   ![enabled-anti-aliasing](figures/enabled-anti-aliasing.png)
 
-
 ## Properties
+
 | Name                                      | Type                                      | Description                                      |
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | [fillStyle](#fillstyle)                  | &lt;color&gt;&nbsp;\|&nbsp;[CanvasGradient](js-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](../../apis-arkui/arkui-ts/ts-components-canvas-canvaspattern.md) | Style used to fill an area.<br>- When the type is **\<color>**, this parameter indicates the color of the filling area.<br>- When the type is **CanvasGradient**, this parameter indicates a gradient object, which is created using the **createLinearGradient()** method.<br>- When the type is **CanvasPattern**, this parameter indicates a canvas pattern, which is created using the **createPattern()** method.<br>If the value is out of the range, the color is set to black.|
 | [lineWidth](#linewidth)                  | number                                   | Line width.                              |
-| [strokeStyle](#strokestyle)              | &lt;color&gt;&nbsp;\|&nbsp;[CanvasGradient](js-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](../../apis-arkui/arkui-ts/ts-components-canvas-canvaspattern.md) | Stroke style.<br>-&nbsp. If the type is &lt;color&gt;, the color used for the stroke is set.<br>- When the type is **CanvasGradient**, this parameter indicates a gradient object, which is created using the **createLinearGradient()** method.<br>- When the type is **CanvasPattern**, this parameter indicates a canvas pattern, which is created using the **createPattern()** method.|
-| [lineCap](#linecap)                      | string                                   | Style of the line endpoints. The options are as follows:<br>- **butt**: The endpoints of the line are squared off.<br>- **round**: The endpoints of the line are rounded.<br>-&nbsp;square: The line endpoint ends with a square. In this style, a rectangle with the same length as the line segment thickness and half the width of the line segment thickness is added.<br>Default value: butt|
+| [strokeStyle](#strokestyle)              | &lt;color&gt;&nbsp;\|&nbsp;[CanvasGradient](js-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](../../apis-arkui/arkui-ts/ts-components-canvas-canvaspattern.md) | Stroke style.<br>- If the type is &lt;color&gt;, the color used for the stroke is set.<br>- When the type is **CanvasGradient**, this parameter indicates a gradient object, which is created using the **createLinearGradient()** method.<br>- When the type is **CanvasPattern**, this parameter indicates a canvas pattern, which is created using the **createPattern()** method.|
+| [lineCap](#linecap)                      | string                                   | Style of the line endpoints. The options are as follows:<br>- **butt**: The endpoints of the line are squared off.<br>- **round**: The endpoints of the line are rounded.<br>-&nbsp;**square**: The line endpoint ends with a square. In this style, a rectangle with the same length as the line segment thickness and half the width of the line segment thickness is added.<br>Default value: butt|
 | [lineJoin](#linejoin)                    | string                                   | Style of the shape used to join line segments. The options are as follows:<br>- **round**: The intersection is a sector, whose radius at the rounded corner is equal to the line width.<br>- **bevel**: The intersection is a triangle. The rectangular corner of each line is independent.<br>- **miter**: The intersection has a miter corner by extending the outside edges of the lines until they meet. You can view the effect of this attribute in **miterLimit**.<br>Default value: **miter**|
 | [miterLimit](#miterlimit)                | number                                   | Maximum miter length. The miter length is the distance between the inner corner and the outer corner where two lines meet.<br>Default value: **10**  |
-| [font](#font)                            | string                                   | Font style.<br>Syntax: ctx.font="font-style font-weight font-size font-family"<sup>5+</sup><br>- (Optional) **font-style**: font style. Available values are **normal** and **italic**.<br>- (Optional) **font-weight**: font weight. Available values are as follows: **normal**, **bold**, **bolder**, **lighter**, **100**, **200**, **300**, **400**, **500**, **600**, **700**, **800**, **900**.<br>- (Optional) **font-size**: font size and row height. The unit can only be pixels.<br>Sets the font family. The value can be -&nbsp;font-family (optional), sans-serif,&nbsp;serif,&nbsp;monospace.<br>Default value: **"normal&nbsp;normal&nbsp;14px&nbsp;sans-serif"**|
+| [font](#font)                            | string                                   | Font style.<br>Syntax: ctx.font="font-style font-weight font-size font-family"<sup>5+</sup><br>- (Optional) **font-style**: font style. Available values are **normal** and **italic**.<br>- (Optional) **font-weight**: font weight. Available values are as follows: **normal**, **bold**, **bolder**, **lighter**, **100**, **200**, **300**, **400**, **500**, **600**, **700**, **800**, **900**.<br>- (Optional) **font-size**: font size and row height. The unit can only be pixels.<br>- (Optional) **font-family**: font family. Available values are as follows: **sans-serif**,&nbsp;**serif**,&nbsp;**monospace**.<br>Default value: **"normal&nbsp;normal&nbsp;14px&nbsp;sans-serif"**|
 | [textAlign](#textalign)                  | string                                   | Text alignment mode. Available values are as follows:<br>- **left**: The text is left-aligned.<br>- **right**: The text is right-aligned.<br>- **center**: The text is center-aligned.<br>- **start**: The text is aligned with the start bound.<br>- **end**: The text is aligned with the end bound.<br>In the **ltr** layout mode, the value **start** equals **left**. In the **rtl** layout mode, the value **start** equals **right**.<br>Default value: **left**|
-| [textBaseline](#textbaseline)            | string                                   | Horizontal alignment mode of text. Available values are as follows:<br>- **alphabetic**: The text baseline is the normal alphabetic baseline.<br>- **top**: The text baseline is on the top of the text bounding box.<br>- **hanging**: The text baseline is a hanging baseline over the text.<br>- **middle**: The text baseline is in the middle of the text bounding box.<br>- **ideographic**: The text baseline is the ideographic baseline. If a character exceeds the alphabetic baseline, the ideographic baseline is located at the bottom of the excessive character.<br>- **bottom**: The text baseline is at the bottom of the text bounding box. The difference between &nbsp; and &nbsp; ideographic &nbsp; is that &nbsp; ideographic &nbsp; does not need to consider the lower-case letters.<br>Default value: **alphabetic**|
-| [globalAlpha](#globalalpha)              | number                                   | Sets the alpha value.<br>The value ranges from 0.0 (completely transparent) to 1.0 (completely opaque). If the set value is less than 0.0, **0.0** will be used. If the set value is greater than 1.0, **1.0** will be used.  |
+| [textBaseline](#textbaseline)            | string                                   | Horizontal alignment mode of text. Available values are as follows:<br>- **alphabetic**: The text baseline is the normal alphabetic baseline.<br>- **top**: The text baseline is on the top of the text bounding box.<br>- **hanging**: The text baseline is a hanging baseline over the text.<br>- **middle**: The text baseline is in the middle of the text bounding box.<br>- **ideographic**: The text baseline is the ideographic baseline. If a character exceeds the alphabetic baseline, the ideographic baseline is located at the bottom of the excessive character.<br>- **bottom**: The text baseline is at the bottom of the text bounding box. Its difference from the ideographic baseline is that the ideographic baseline does not consider letters in the next line.<br>Default value: **alphabetic**|
+| [globalAlpha](#globalalpha)              | number                                   | Alpha value.<br>The value ranges from 0.0 (completely transparent) to 1.0 (completely opaque). If the set value is less than 0.0, **0.0** will be used. If the set value is greater than 1.0, **1.0** will be used.  |
 | [lineDashOffset](#linedashoffset)        | number                                   | Offset of the dashed line. The precision is float.<br>Default value: **0.0**.         |
-| [globalCompositeOperation](#globalcompositeoperation) | string                                   | Composition operation type. Available values are as follows: **source-over**, **source-atop**, **source-in**, **source-out**, **destination-over**, **destination-atop**, **destination-in**, **destination-out**, **lighter**, copy, and **xor**. For details, see [Operation types](#globalcompositeoperation).<br>Default value: **source-over**|
+| [globalCompositeOperation](#globalcompositeoperation) | string                                   | Composition operation type. Available values are as follows: **source-over**, **source-atop**, **source-in**, **source-out**, **destination-over**, **destination-atop**, **destination-in**, **destination-out**, **lighter**, **copy**, and **xor**. For details, see [Operation types](#globalcompositeoperation).<br>Default value: **source-over**|
 | [shadowBlur](#shadowblur)                | number                                   | Blur level during shadow drawing. A larger value indicates a more blurred effect. The precision is float.<br>Default value: **0.0**.|
 | [shadowColor](#shadowcolor)              | &lt;color&gt;                            | Shadow color when a shadow is drawn.                           |
 | [shadowOffsetX](#shadowoffsetx)          | number                                   | Horizontal offset between the shadow and the original object when a shadow is drawn.                     |
 | [shadowOffsetY](#shadowoffsety)          | number                                   | Vertical offset between the shadow and the original object when a shadow is drawn.                     |
 | [imageSmoothingEnabled](#imagesmoothingenabled) | boolean                                  | Whether to adjust the image smoothness during image drawing. The value **true** means to enable this feature, and **false** means the opposite.<br>Default value: **true**.|
-
 
 ### fillStyle
 
@@ -95,8 +96,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001166962736](figures/en-us_image_0000001166962736.png)
-
+![fillStyle](figures/fillStyle.png)
 
 ### lineWidth
 
@@ -120,8 +120,7 @@ export default {
 
 ```
 
-![en-us_image_0000001166484430](figures/en-us_image_0000001166484430.png)
-
+![lineWidth](figures/lineWidth.png)
 
 ### strokeStyle
 
@@ -145,8 +144,7 @@ export default {
 }
 ```
 
-
-![en-us_image_0000001212124299](figures/en-us_image_0000001212124299.png)
+![strokeStyle](figures/strokeStyle.png)
 
 ### lineCap
 
@@ -229,8 +227,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001167001464](figures/en-us_image_0000001167001464.png)
-
+![miterLimit](figures/miterLimit.png)
 
 ### font
 
@@ -253,8 +250,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001167046832](figures/en-us_image_0000001167046832.png)
-
+![font](figures/font.png)
 
 ### textAlign
 
@@ -292,8 +288,7 @@ export default {
 
 ```
 
-
-![en-us_image_0000001167472798](figures/en-us_image_0000001167472798.png)
+![textAlign](figures/textAlign.png)
 
 ### textBaseline
 
@@ -329,7 +324,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001169315920](figures/en-us_image_0000001169315920.png)
+![textBaseline](figures/textBaseline.png)
 
 ### globalAlpha
 
@@ -356,7 +351,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001167953648](figures/en-us_image_0000001167953648.png)
+![globalAlpha](figures/globalAlpha.png)
 
 ### lineDashOffset
 
@@ -381,7 +376,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001167950468](figures/en-us_image_0000001167950468.png)
+![lineDashOffset](figures/lineDashOffset.png)
 
 ### globalCompositeOperation
 
@@ -458,7 +453,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001168111514](figures/en-us_image_0000001168111514.png)
+![shadowBlur](figures/shadowBlur.png)
 
 ### shadowColor
 
@@ -483,7 +478,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001168111610](figures/en-us_image_0000001168111610.png)
+![shadowColor](figures/shadowColor.png)
 
 ### shadowOffsetX
 
@@ -509,8 +504,7 @@ export default {
 }
 ```
 
-
-![en-us_image_0000001167631876](figures/en-us_image_0000001167631876.png)
+![shadowOffsetX](figures/shadowOffsetX.png)
 
 ### shadowOffsetY
 
@@ -564,9 +558,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001167952236](figures/en-us_image_0000001167952236.png)
-
-
+![imageSmoothingEnabled](figures/imageSmoothingEnabled.png)
 
 ## Method
 
@@ -627,6 +619,7 @@ Clears the content in a rectangle on the canvas.
 | height | number | Yes| Height of the rectangle.<br>Unit: vp.     |
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -649,12 +642,11 @@ Clears the content in a rectangle on the canvas.
 
   ![example-clearRect](figures/example-clearRect.png)
 
-
 ### strokeRect
 
 strokeRect(x: number, y: number, width:number, height: number): void
 
-Draws a rectangle stroke on the canvas.
+Draws a rectangle stroke on the canvas. The rectangle's interior is not filled.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -668,6 +660,7 @@ Draws a rectangle stroke on the canvas.
 | height | number | Yes| Height of the rectangle.<br>Unit: vp.    |
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -688,7 +681,6 @@ Draws a rectangle stroke on the canvas.
 
   ![example2-strokeRect](figures/example2-strokeRect.png)
 
-
 ### fillText
 
 fillText(text: string, x: number, y: number): void
@@ -706,6 +698,7 @@ Draws filled text on the canvas.
 | y    | number | Yes| Y coordinate of the lower left corner of the text to be drawn.<br>Unit: vp.|
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -744,6 +737,7 @@ Draws a text stroke on the canvas.
 | y    | number | Yes| Y coordinate of the lower left corner of the text to be drawn.<br>Unit: vp.|
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -786,6 +780,7 @@ Returns a **TextMetrics** object used to obtain the width of specified text.
 | TextMetrics | Object that contains the text width. You can obtain the width by **TextMetrics.width**.|
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -807,10 +802,10 @@ Returns a **TextMetrics** object used to obtain the width of specified text.
   }
   ```
 
-  ![en-us_image_0000001169142476](figures/en-us_image_0000001169142476.png)
-
+  ![measureText](figures/measureText.png)
 
 ### stroke
+
 stroke(): void
 
 Draws a stroke.
@@ -818,6 +813,7 @@ Draws a stroke.
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -840,10 +836,10 @@ Draws a stroke.
   }
   ```
 
-  ![en-us_image_0000001236697937](figures/en-us_image_0000001236697937.png)
-
+  ![bluecursor](figures/bluecursor.png)
 
 ### beginPath
+
 beginPath(): void
 
 Creates a drawing path.
@@ -851,6 +847,7 @@ Creates a drawing path.
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -876,8 +873,8 @@ Creates a drawing path.
 
   ![example-beginPath](figures/example-beginPath.png)
 
-
 ### moveTo
+
 moveTo(x: number, y: number): void
 
 Moves a drawing path to a target position on the canvas.
@@ -892,6 +889,7 @@ Moves a drawing path to a target position on the canvas.
 | y    | number | Yes| Y coordinate of the target position.<br>Unit: vp.|
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -913,10 +911,10 @@ Moves a drawing path to a target position on the canvas.
   }
   ```
 
-  ![en-us_image_0000001169309948](figures/en-us_image_0000001169309948.png)
-
+  ![moveTo](figures/moveTo.png)
 
 ### lineTo
+
 lineTo(x: number, y: number): void
 
 Connects the current point to a target position using a straight line.
@@ -931,6 +929,7 @@ Connects the current point to a target position using a straight line.
 | y    | number | Yes| Y coordinate of the target position.<br>Unit: vp.|
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -952,10 +951,10 @@ Connects the current point to a target position using a straight line.
   }
   ```
 
-  ![en-us_image_0000001169469914](figures/en-us_image_0000001169469914.png)
-
+  ![lineTo01](figures/lineTo01.png)
 
 ### closePath
+
 closePath(): void
 
 Draws a closed path.
@@ -963,6 +962,7 @@ Draws a closed path.
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -986,7 +986,7 @@ Draws a closed path.
   }
   ```
 
-  ![en-us_image_0000001169151508](figures/en-us_image_0000001169151508.png)
+  ![closePath](figures/closePath.png)
 
 ### createPattern
 
@@ -1010,6 +1010,7 @@ Creates a pattern for image filling based on a specified source image and repeti
 | Object | Pattern of image filling.|
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -1033,7 +1034,7 @@ Creates a pattern for image filling based on a specified source image and repeti
   }
   ```
 
-  ![en-us_image_0000001169301188](figures/en-us_image_0000001169301188.png)
+  ![createPattern](figures/createPattern.png)
 
 ### bezierCurveTo
 
@@ -1055,6 +1056,7 @@ Creates a path for a cubic Bezier curve.
 | y    | number | Yes| Y coordinate of the end point of the path.<br>Unit: vp.   |
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -1096,6 +1098,7 @@ Create a path for a quadratic Bezier curve.
 | y    | number | Yes| Y coordinate of the end point of the path.<br>Unit: vp.|
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -1117,10 +1120,10 @@ Create a path for a quadratic Bezier curve.
   }
   ```
 
-  ![en-us_image_0000001169461910](figures/en-us_image_0000001169461910.png)
-
+  ![quadraticCurveTo](figures/quadraticCurveTo.png)
 
 ### arc
+
 arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, counterclockwise?: boolean): void
 
 Draws an arc on the canvas.
@@ -1139,6 +1142,7 @@ Draws an arc on the canvas.
 | counterclockwise | boolean | No| Whether to draw the arc counterclockwise. The value true indicates counterclockwise, and the value false indicates clockwise.<br>Default value: **false**. |
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -1159,7 +1163,7 @@ Draws an arc on the canvas.
   }
   ```
 
-  ![en-us_image_0000001169470288](figures/en-us_image_0000001169470288.png)
+  ![arc](figures/arc.png)
 
 ### arcTo
 
@@ -1180,6 +1184,7 @@ Draws an arc based on the radius and points on the arc.
 | radius | number | Yes| Radius of the arc.<br>Unit: vp.       |
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -1200,7 +1205,7 @@ Draws an arc based on the radius and points on the arc.
   }
   ```
 
-  ![en-us_image_0000001169143586](figures/en-us_image_0000001169143586.png)
+  ![arcTo](figures/arcTo.png)
 
 ### ellipse
 
@@ -1224,6 +1229,7 @@ Draws an ellipse in the specified rectangular region on the canvas.
 | counterclockwise | number | No| Whether to draw the ellipse counterclockwise. The value **0** means clockwise, and **1** means counterclockwise. Other values are processed by default.<br>Unit: vp.<br>Default value: **0**|
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -1246,8 +1252,8 @@ Draws an ellipse in the specified rectangular region on the canvas.
 
   ![example-ellipse](figures/example-ellipse.png)
 
-
 ### rect
+
 rect(x: number, y: number, width: number, height: number): void
 
 Creates a rectangle.
@@ -1264,6 +1270,7 @@ Creates a rectangle.
 | height | number | Yes| Height of the rectangle.<br>Unit: vp.     |
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -1294,6 +1301,7 @@ Fills the area inside a closed path.
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -1324,6 +1332,7 @@ Sets the current path to a clipping path.
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -1347,7 +1356,7 @@ Sets the current path to a clipping path.
   }
   ```
 
-  ![en-us_image_0000001169303414](figures/en-us_image_0000001169303414.png)
+  ![clip](figures/clip.png)
 
 ### rotate
 
@@ -1364,6 +1373,7 @@ Rotates a canvas clockwise around its coordinate axes.
 | rotate | number | Yes| Clockwise rotation angle. You can use **Math.PI / 180** to convert the angle to a radian.<br>Unit: vp.|
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -1383,7 +1393,7 @@ Rotates a canvas clockwise around its coordinate axes.
   }
   ```
 
-  ![en-us_image_0000001169463368](figures/en-us_image_0000001169463368.png)
+  ![rotate](figures/rotate.png)
 
 ### scale
 
@@ -1401,6 +1411,7 @@ Scales a canvas based on scale factors.
 | y    | number | Yes| Vertical scaling value.<br>Unit: vp.|
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -1425,7 +1436,7 @@ Scales a canvas based on scale factors.
 
 ### transform
 
-transform(scaleX: number, skewX: number, skewY: number, scale: number, translateX: number, translateY: number): void
+transform(scaleX: number, skewX: number, skewY: number, scaleY: number, translateX: number, translateY: number): void
 
 Defines a transformation matrix. To transform a graph, you only need to set parameters of the matrix. The coordinates of the graph are multiplied by the matrix values to obtain new coordinates of the transformed graph. You can use the matrix to implement multiple transform effects.
 
@@ -1450,6 +1461,7 @@ Defines a transformation matrix. To transform a graph, you only need to set para
 | translateY | number | Yes| Vertical movement value.<br>Unit: vp.|
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -1479,7 +1491,7 @@ Defines a transformation matrix. To transform a graph, you only need to set para
 
 ### setTransform
 
-setTransform(scaleX: number, skewX: number, skewY: number, scale: number, translateX: number, translateY: number): void
+setTransform(scaleX: number, skewX: number, skewY: number, scaleY: number, translateX: number, translateY: number): void
 
 Resets the existing transformation matrix and creates a new transformation matrix by using the same parameters as the **transform()** API.
 
@@ -1497,6 +1509,7 @@ Resets the existing transformation matrix and creates a new transformation matri
 | translateY | number | Yes| Vertical movement value.<br>Unit: vp.|
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -1519,7 +1532,7 @@ Resets the existing transformation matrix and creates a new transformation matri
   }
   ```
 
-  ![en-us_image_0000001168984880](figures/en-us_image_0000001168984880.png)
+  ![setTransform](figures/setTransform.png)
 
 ### translate
 
@@ -1537,6 +1550,7 @@ Moves the origin of the coordinate system.
 | y    | number | Yes| Vertical translation value.<br>Unit: vp.|
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -1557,7 +1571,7 @@ Moves the origin of the coordinate system.
   }
   ```
 
-  ![en-us_image_0000001169144864](figures/en-us_image_0000001169144864.png)
+  ![translate](figures/translate.png)
 
 ### createPath2D<sup>6+</sup>
 
@@ -1579,6 +1593,7 @@ Creates a **Path2D** object.
   [Path2D](js-components-canvas-path2d.md)
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -1631,6 +1646,7 @@ Draws an image.
 | dHeight | number                         | Yes| Height of the drawing area.<br>Unit: vp.                              |
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -1663,6 +1679,7 @@ Restores the saved drawing context.
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -1690,6 +1707,7 @@ Saves the current drawing context.
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -1732,6 +1750,7 @@ Creates a linear gradient color and returns a CanvasGradient object. For details
 | Object | Created **CanvasGradient** object.|
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -1759,7 +1778,7 @@ Creates a linear gradient color and returns a CanvasGradient object. For details
   }
   ```
 
-  ![en-us_image_0000001169303416](figures/en-us_image_0000001169303416.png)
+  ![createLinearGradient](figures/createLinearGradient.png)
 
 ### createRadialGradient<sup>6+</sup>
 
@@ -1775,10 +1794,10 @@ Creates a radial gradient and returns a CanvasGradient object. For details, see 
 | ------ | ------- | ---- | ---------------------------- |
 | x0   | number | Yes| X coordinate of the start circle.<br>Unit: vp.        |
 | y0   | number | Yes| Y coordinate of the start circle.<br>Unit: vp.        |
-| r0   | number | Yes| Radius of the start circle, The value must be a non-negative finite number.<br>Unit: vp.|
+| r0   | number | Yes| Radius of the start circle. The value must be a non-negative finite number.<br>Unit: vp.|
 | x1   | number | Yes| X coordinate of the end circle.<br>Unit: vp.        |
 | y1   | number | Yes| Y coordinate of the end circle.<br>Unit: vp.        |
-| r1   | number | Yes| Radius of the end circle, The value must be a non-negative finite number.<br>Unit: vp.|
+| r1   | number | Yes| Radius of the end circle. The value must be a non-negative finite number.<br>Unit: vp.|
 
 **Return value**
 
@@ -1787,6 +1806,7 @@ Creates a radial gradient and returns a CanvasGradient object. For details, see 
 | Object | Created **CanvasGradient** object.|
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -1814,7 +1834,7 @@ Creates a radial gradient and returns a CanvasGradient object. For details, see 
   }
   ```
 
-  ![en-us_image_0000001169463370](figures/en-us_image_0000001169463370.png)
+  ![createRadialGradient](figures/createRadialGradient.png)
 
 ### createImageData
 
@@ -1838,6 +1858,7 @@ Creates a new, blank, and specified-size ImageData object. For details, see [Ima
 | [ImageData](js-components-canvas-imagedata.md) | Created **ImageData** object.|
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -1860,7 +1881,7 @@ Creates a new, blank, and specified-size ImageData object. For details, see [Ima
 
 createImageData(imageData: ImageData): ImageData
 
-Creates an ImageData object with the same width and height as the existing ImageData object, but does not copy the image data. For details, see [ImageData object] (js-components-canvas-imagedata.md).
+Creates an **ImageData** object with the same width and height as the existing **ImageData** object, but does not copy the image data. For details, see [ImageData](js-components-canvas-imagedata.md).
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1877,6 +1898,7 @@ Creates an ImageData object with the same width and height as the existing Image
 | [ImageData](js-components-canvas-imagedata.md) | Created **ImageData** object.|
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -1920,6 +1942,7 @@ Creates an [ImageData object](js-components-canvas-imagedata.md) based on the pi
 | [ImageData](js-components-canvas-imagedata.md) | **ImageData** object that contains pixels in the specified area on the canvas.|
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -1959,6 +1982,7 @@ Crops the image data and fills it into a new rectangle.
 | dirtyHeight | number | Yes| Height of the rectangular area to crop the source image.<br>Unit: vp.              |
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -1983,6 +2007,7 @@ Crops the image data and fills it into a new rectangle.
       }
   }
   ```
+
 ![jsCanvasPutimagedata](figures/jsCanvasPutimagedata.png)
 
 ### putImageData
@@ -2002,6 +2027,7 @@ Puts the **ImageData** onto a rectangular area on the canvas.
 | dy          | number | Yes| Y-axis offset of the rectangular area on the canvas.<br>Unit: vp.               |
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -2087,6 +2113,7 @@ Sets the dash line style.
 | segments | Array | Yes| An array describing the interval of alternate line segments and length of spacing.|
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -2124,6 +2151,7 @@ Obtains the dash line style.
 | Array | An array describing the interval of alternate line segments and length of spacing.|
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -2157,6 +2185,7 @@ Displays the specified [ImageBitmap](js-components-canvas-imagebitmap.md) object
 | bitmap | [ImageBitmap](js-components-canvas-imagebitmap.md) | Yes| **ImageBitmap** object to display.|
 
 **Example**
+
   ```html
   <!-- xxx.hml -->
   <div>
@@ -2181,4 +2210,4 @@ Displays the specified [ImageBitmap](js-components-canvas-imagebitmap.md) object
   }
   ```
 
-  ![en-us_image_0000001168984882](figures/en-us_image_0000001168984882.png)
+  ![transferFromImageBitmap](figures/transferFromImageBitmap.png)

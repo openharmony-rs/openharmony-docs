@@ -96,25 +96,6 @@ if (!lockState.isLocked) {
 }
 ```
 
-**复用认证结果流程**：
-
-```javascript
-// 以下为阐述调用逻辑的伪代码，仅提供步骤说明，不提供详细的可执行代码。
-// 1. 配置复用参数。
-let authParam = {
-  challenge: new Uint8Array([]), // challenge用于防止重放攻击，必须使用安全随机数生成器获取。
-  authType: [userAuth.UserAuthType.FACE],
-  authTrustLevel: userAuth.AuthTrustLevel.ATL3,
-  reuseUnlockResult: {
-    reuseMode: userAuth.ReuseMode.AUTH_TYPE_RELEVANT,
-    reuseDuration: 300000 // 5分钟
-  }
-};
-
-// 2. 查询可复用的认证结果。
-let reusableToken = userAuth.queryReusableAuthResult(authParam);
-```
-
 ## 导入模块
 
 ```ts
@@ -197,7 +178,7 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 > 如果身份认证解锁（包括设备解锁）后，在有效时间内凭据发生了变化，身份认证的结果依然可以复用，认证结果中返回当前实际的EnrolledState。若复用认证结果时，之前认证时所使用的身份认证凭据已经被删除：
 >
 > - 如果删除的是人脸、指纹，则认证结果依然可以复用，只是返回的EnrolledState中credentialCount和credentialDigest均为0。
-> - 如果删除的是锁屏口令，则此次复用会失败，系统将要求用户重新进行认证。
+> - 如果删除的是锁屏口令，则此次复用会失败。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -342,7 +323,7 @@ try {
 | -------------------- | ----------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | title                | string                              |  否  |  否  | 用户认证界面的标题，建议传入认证目的，例如用于支付、登录应用等，不支持传空字串，最大长度为500字符。标题会显示在认证界面，帮助用户理解当前认证的目的，提升用户信任度和配合度。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | navigationButtonText | string                              |  否  |  是  | 导航按键的说明文本，最大长度为60字符。点击该按钮可触发应用自定义的操作，如跳转到自定义认证页面或取消认证等。在单指纹、单人脸场景下支持，从API 18开始，增加支持人脸+指纹组合认证场景。默认为不展示自定义导航按键。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| uiContext<sup>18+</sup>            | Context               |  否  |  是  | 以模应用弹窗方式显示身份认证对话框，仅支持在2in1设备上使用。传入有效的uiContext后，认证对话框将以模应用弹窗方式显示，认证结果返回后应用需先获取控件释放消息（订阅[on('authTip')](#onauthtip20)并等待WIDGET_RELEASED状态）才能弹出其他窗口。如果没有此参数或其他类型的设备，身份认证对话框将以模系统弹窗方式显示，此时控件释放后应用可直接进行后续操作。<br>**默认值：** 以模系统弹窗方式显示身份认证对话框。<br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
+| uiContext<sup>18+</sup>            | Context               |  否  |  是  | 以模应用弹窗方式显示身份认证对话框，从API版本18开始，支持在2in1设备上使用。从API版本26.0.0开始，支持在Phone、Tablet设备上使用。传入有效的uiContext后，认证对话框将以模应用弹窗方式显示，认证结果返回后应用需先获取控件释放消息（订阅[on('authTip')](#onauthtip20)并等待WIDGET_RELEASED状态）才能弹出其他窗口。如果没有此参数或其他类型的设备，身份认证对话框将以模系统弹窗方式显示，此时控件释放后应用可直接进行后续操作。<br>**默认值：** 以模系统弹窗方式显示身份认证对话框。<br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 
 ## UserAuthResult<sup>10+</sup>
 

@@ -8,10 +8,10 @@
 
 ## 简介
 
-从API Version 26开始，JSVM-API提供了堆内存管理相关的核心能力，包含**获取原始堆快照**和**监控堆内存阈值**两类关键接口：
+从API版本26.0.0开始，JSVM-API提供了堆内存管理相关的核心能力，包含**获取原始堆快照**和**监控堆内存阈值**两类关键接口：
 
-- `OH_JSVM_TakeRawHeapSnapshot`：获取当前JS虚拟机（VM）的原始堆快照（二进制格式）并输出到指定流，可用于堆内存分析、内存泄漏定位、调试等场景；
-- `OH_JSVM_SetHeapThresholdCallback`：为VM注册堆内存阈值回调函数，当堆内存使用量达到指定阈值时自动触发回调；
+- `OH_JSVM_TakeRawHeapSnapshot`：获取当前JS虚拟机（VM）的原始堆快照（二进制格式）并输出到指定流，可用于堆内存分析、内存泄漏定位、调试等场景。
+- `OH_JSVM_SetHeapThresholdCallback`：为VM注册堆内存阈值回调函数，当堆内存使用量达到指定阈值时自动触发回调。
 - `OH_JSVM_ClearHeapThresholdCallback`：移除已注册的堆内存阈值回调函数，释放相关资源。
 
 开发者可通过这些接口实现堆内存的全生命周期监控、快照采集与分析，辅助优化内存使用效率、排查内存相关问题。

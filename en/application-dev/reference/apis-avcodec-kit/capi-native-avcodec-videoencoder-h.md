@@ -22,11 +22,40 @@ The file declares the APIs used for video encoding.
 
 **Sample**: [AVCodec](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)
 
-The following figures show the APIs supported by each version and the APIs that can be called in different states.
+The support status of APIs for each version, mode, and state is described in the following table.
 
-![meaning](figures/meaning.PNG)
+### API State Matrix
 
-![description of encode api history](figures/video-encode-api.PNG)
+The following provides an overview of whether the API can be called in different states. A checkmark (√) indicates that the API can be called, and a cross (×) indicates that it cannot be called.
+
+| API| Initialized | Configured | Prepared | Flushed | Running | EndOfStream | Error | Released |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| OH_VideoEncoder_CreateByMime<sup>9+</sup> | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
+| OH_VideoEncoder_CreateByName<sup>9+</sup> | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
+| OH_VideoEncoder_CreatePrimaryWithPreproc | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
+| OH_VideoEncoder_CreateSecondaryFromPrimary | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
+| OH_VideoEncoder_RegisterCallback<sup>11+</sup> | √ | √ | × | × | × | × | × | × |
+| OH_VideoEncoder_RegisterParameterCallback<sup>12+</sup> | √ | × | × | × | × | × | × | × |
+| OH_VideoEncoder_OnNeedInputParameter<sup>12+</sup> | × | × | × | × | √ | × | × | × |
+| OH_VideoEncoder_Configure<sup>9+</sup> | √ | × | × | × | × | × | × | × |
+| OH_VideoEncoder_Prepare<sup>9+</sup> | × | √ | × | × | × | × | × | × |
+| OH_VideoEncoder_SetParameter<sup>9+</sup> | × | × | × | √ | √ | √ | × | × |
+| OH_VideoEncoder_GetSurface<sup>9+</sup> | × | √ | × | × | × | × | × | × |
+| OH_VideoEncoder_GetInputDescription<sup>10+</sup> | × | √ | √ | √ | √ | √ | × | × |
+| OH_VideoEncoder_PushInputBuffer<sup>11+</sup> | × | × | × | × | √ | × | × | × |
+| OH_VideoEncoder_PushInputParameter<sup>12+</sup> | × | × | × | × | √ | × | × | × |
+| OH_VideoEncoder_NotifyEndOfStream<sup>9+</sup> | × | × | × | × | √ | × | × | × |
+| OH_VideoEncoder_GetOutputDescription<sup>9+</sup> | √ | √ | √ | √ | √ | √ | × | × |
+| OH_VideoEncoder_FreeOutputBuffer<sup>11+</sup> | × | × | × | × | √ | √ | × | × |
+| OH_VideoEncoder_Start<sup>9+</sup> | × | × | √ | √ | × | × | × | × |
+| OH_VideoEncoder_Stop<sup>9+</sup> | × | × | × | √ | √ | √ | × | × |
+| OH_VideoEncoder_Flush<sup>9+</sup> | × | × | × | × | √ | √ | × | × |
+| OH_VideoEncoder_Reset<sup>9+</sup> | √ | √ | √ | √ | √ | √ | √ | × |
+| OH_VideoEncoder_Destroy<sup>9+</sup> | √ | √ | √ | √ | √ | √ | √ | × |
+| OH_VideoEncoder_QueryInputBuffer<sup>20+</sup> | × | × | × | × | √ | × | × | × |
+| OH_VideoEncoder_GetInputBuffer<sup>20+</sup> | × | × | × | × | √ | × | × | × |
+| OH_VideoEncoder_QueryOutputBuffer<sup>20+</sup> | × | × | × | × | √ | × | × | × |
+| OH_VideoEncoder_GetOutputBuffer<sup>20+</sup> | × | × | × | × | √ | × | × | × |
 
 ## Summary
 
@@ -43,6 +72,8 @@ The following figures show the APIs supported by each version and the APIs that 
 | [typedef void (\*OH_VideoEncoder_OnNeedInputParameter)(OH_AVCodec *codec, uint32_t index, OH_AVFormat *parameter, void *userData)](#oh_videoencoder_onneedinputparameter) | OH_VideoEncoder_OnNeedInputParameter | Defines the pointer to the function that is called when new input parameters are required for a frame with the specified index. It takes effect only in surface mode.|
 | [OH_AVCodec *OH_VideoEncoder_CreateByMime(const char *mime)](#oh_videoencoder_createbymime) | - | Creates a video encoder instance based on a MIME type. This function is recommended.|
 | [OH_AVCodec *OH_VideoEncoder_CreateByName(const char *name)](#oh_videoencoder_createbyname) | - | Creates a video encoder instance based on an encoder name. To use this function, you must know the exact name of the encoder. The encoder name can be obtained through capability query.|
+| [OH_AVErrCode OH_VideoEncoder_CreatePrimaryWithPreproc(const char *mime, OH_AVCodec **codec)](#oh_videoencoder_createprimarywithpreproc) | - | Creates a primary video encoder instance that supports pre-processing. It can be used to configure pre-processing parameters such as downsampling, cropping, and frame dropping. A secondary encoder can be derived from this primary encoder to enable dual-output encoding with one input.|
+| [OH_AVErrCode OH_VideoEncoder_CreateSecondaryFromPrimary(OH_AVCodec *primary, OH_AVCodec **codec)](#oh_videoencoder_createsecondaryfromprimary) | - | Creates a secondary video encoder instance from the primary encoder. The secondary video encoder shares the input source with the primary encoder and allows independent configuration of encoding parameters and pre-processing parameters.|
 | [OH_AVErrCode OH_VideoEncoder_Destroy(OH_AVCodec *codec)](#oh_videoencoder_destroy) | - | Clears the internal resources of a video encoder and destroys the encoder instance. You only need to call the function once.|
 | [OH_AVErrCode OH_VideoEncoder_SetCallback(OH_AVCodec *codec, OH_AVCodecAsyncCallback callback, void *userData)](#oh_videoencoder_setcallback) | - | Sets an OH_AVCodecCallback callback so that your application can respond to events generated by a video encoder. This function must be called prior to **OH_VideoEncoder_Prepare**. (It is deprecated from API version 11.)|
 | [OH_AVErrCode OH_VideoEncoder_RegisterCallback(OH_AVCodec *codec, OH_AVCodecCallback callback, void *userData)](#oh_videoencoder_registercallback) | - | Registers an OH_AVCodecCallback callback so that your application can respond to events generated by a video encoder. This function must be called prior to **OH_VideoEncoder_Prepare**.|
@@ -173,6 +204,72 @@ Creates a video encoder instance based on an encoder name. To use this function,
 | -- | -- |
 | [OH_AVCodec](capi-codecbase-oh-avcodec.md) * | Pointer to the video encoder instance created.<br> If the encoder name is not supported or the memory is insufficient, NULL is returned.|
 
+### OH_VideoEncoder_CreatePrimaryWithPreproc()
+
+```c
+OH_AVErrCode OH_VideoEncoder_CreatePrimaryWithPreproc(const char *mime, OH_AVCodec **codec)
+```
+
+**Description**
+
+Creates a primary video encoder instance that supports pre-processing. The encoder provides the following capabilities:
+1. Pre-processing features (downsampling, cropping, and frame dropping).
+2. Creation of a secondary encoder from this primary encoder to enable dual-output encoding with one input.
+
+The encoder created via this API supports only the surface mode, and does not support the buffer mode or synchronous mode. After the encoder is successfully created, it must be destroyed via [OH_VideoEncoder_Destroy](#oh_videoencoder_destroy).
+
+**System capability**: SystemCapability.Multimedia.Media.VideoEncoder
+
+**Since:** 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| const char *mime | MIME type string, which cannot be **NULL**. It must be a supported type.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) **codec | Double pointer used to receive the created codec instance. It cannot be **NULL**. Once successfully created, the instance must be destroyed via [OH_VideoEncoder_Destroy](#oh_videoencoder_destroy).|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The **mime** parameter is **NULL**, the **codec** parameter is **NULL**, or the MIME type is not supported.<br>**AV_ERR_NO_MEMORY**: Memory allocation fails.|
+
+### OH_VideoEncoder_CreateSecondaryFromPrimary()
+
+```c
+OH_AVErrCode OH_VideoEncoder_CreateSecondaryFromPrimary(OH_AVCodec *primary, OH_AVCodec **codec)
+```
+
+**Description**
+
+Creates a secondary video encoder instance from the primary encoder. The secondary encoder:
+1. Shares the input source with the primary encoder.
+2. Can be configured with independent encoding parameters.
+3. Supports different pre-processing parameters.
+4. Can be started and stopped independently (not dependent on the start/stop state of the primary encoder).
+5. Has a lifecycle shorter than that of the primary encoder.
+6. A primary encoder can have only one secondary encoder at a time.
+
+A secondary encoder must be created after the primary encoder is successfully created. Once a secondary encoder is successfully created, it must be destroyed via [OH_VideoEncoder_Destroy](#oh_videoencoder_destroy). You are advised to destroy the secondary encoder before destroying the primary encoder.
+
+**System capability**: SystemCapability.Multimedia.Media.VideoEncoder
+
+**Since:** 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) *primary | Handle to the primary encoder, which must be created via [OH_VideoEncoder_CreatePrimaryWithPreproc](#oh_videoencoder_createprimarywithpreproc) and cannot be **NULL**.|
+| [OH_AVCodec](capi-codecbase-oh-avcodec.md) **codec | Double pointer used to receive the created secondary encoder instance. It cannot be **NULL**. Once successfully created, the instance must be destroyed via [OH_VideoEncoder_Destroy](#oh_videoencoder_destroy).|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>**AV_ERR_INVALID_VAL**: The **primary** parameter is **NULL**, the **codec** parameter is **NULL**, or the encoder corresponding to **primary** is not a valid primary encoder.<br>**AV_ERR_OPERATE_NOT_PERMIT**: The primary encoder already has an associated secondary encoder.<br>**AV_ERR_NO_MEMORY**: Memory allocation fails.|
+
 ### OH_VideoEncoder_Destroy()
 
 ```c
@@ -267,7 +364,7 @@ OH_AVErrCode OH_VideoEncoder_RegisterParameterCallback(OH_AVCodec *codec, OH_Vid
 
 **Description**
 
-Registers an OH_AVCodecCallback input parameter callback so that your application can respond to events generated by a video encoder. In surface encoding mode, this function must be called when frame parameters need to be set,<br> and it must be called before [OH_VideoEncoder_Configure](#oh_videoencoder_configure).
+Registers an input parameter callback so that your application can respond to events generated by a video encoder. In surface encoding mode, this function must be called when frame parameters need to be set,<br> and it must be called before [OH_VideoEncoder_Configure](#oh_videoencoder_configure).
 
 **System capability**: SystemCapability.Multimedia.Media.VideoEncoder
 

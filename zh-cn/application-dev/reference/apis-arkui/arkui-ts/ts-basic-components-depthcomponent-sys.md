@@ -58,6 +58,7 @@ DepthComponent(background: ResourceStr | PixelMap, options?: DepthComponentOptio
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | depthSpace | [DepthSpaceType](#depthspacetype) | 否 | 是 | 景深空间类型。 |
+| render3DScale | number | 否 | 是 | 3D渲染窗口的缩放比例，同时作用于宽度和高度。取值范围：(0.0, 1.0]，超出该范围的值无效（继承之前的取值，如果之前未设置取默认值）。默认值：1.0。 |
 
 ## DepthSpaceType
 
@@ -86,9 +87,9 @@ DepthComponent(background: ResourceStr | PixelMap, options?: DepthComponentOptio
 
 ### depthMap
 
-depthMap(depthMap: ResourceStr | PixelMap)
+depthMap(depthMap: ResourceStr | PixelMap, callback?: DepthMapCallback)
 
-设置用于景深计算和渲染的深度图。
+设置用于景深计算和渲染的深度图。使用callback异步回调。
 
 > **说明：**
 >
@@ -108,6 +109,7 @@ depthMap(depthMap: ResourceStr | PixelMap)
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | depthMap | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 深度图资源或PixelMap对象，引用方式与静态背景图一致。仅背景为静态图时需要设置深度图。深度图需要与背景图的分辨率保持一致。 |
+| callback | [DepthMapCallback](#depthmapcallback) | 否 | 深度图加载完成时的回调函数。加载成功时error.code为0，加载失败时error中包含错误码和错误信息。 |
 
 ### camera
 
@@ -152,6 +154,68 @@ light(light: DepthLightParams)
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | light | [DepthLightParams](#depthlightparams) | 是 | 光照参数，包含方向、颜色和强度。 |
+
+## 事件
+
+### onComplete
+
+onComplete(callback: DepthComponentCompleteCallback)
+
+背景资源加载成功时触发该回调。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | [DepthComponentCompleteCallback](#depthcomponentcompletecallback) | 是 | 背景资源加载成功的回调函数。 |
+
+### onError
+
+onError(callback: DepthComponentErrorCallback)
+
+背景资源加载出现错误时触发该回调。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | [DepthComponentErrorCallback](#depthcomponenterrorcallback) | 是 | 背景资源加载失败的回调函数。 |
+
+## DepthMapCallback
+
+深度图资源加载完成时的回调函数。使用callback异步回调。
+
+type DepthMapCallback = (error: BusinessError&lt;void&gt;) => void
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| error | [BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)&lt;void&gt; | 是 | 深度图资源加载完成时返回的错误信息。加载成功时error.code为0，加载失败时error中包含错误码和错误信息。 |
 
 ## DepthCameraParams
 
@@ -228,6 +292,81 @@ light(light: DepthLightParams)
 | color | [DepthColorRGB](ts-universal-attributes-spatial-effect-sys.md#depthcolorrgb) | 否 | 否 | 光照颜色。 |
 | intensity | number | 否 | 否 | 光照强度。无单位，取值范围[0, +∞)。<br>建议取值范围[0, 1]，当设置为0时，无光照。 |
 
+## DepthComponentCompleteCallback
+
+背景资源加载成功的回调函数。使用callback异步回调。
+
+type DepthComponentCompleteCallback = (event: DepthComponentCompleteEvent) => void
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| event | [DepthComponentCompleteEvent](#depthcomponentcompleteevent) | 是 | 背景资源加载成功的事件信息。 |
+
+## DepthComponentCompleteEvent
+
+背景资源加载成功的事件信息。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| componentWidth | number | 是 | 否 | 组件宽度，单位为vp。 |
+| componentHeight | number | 是 | 否 | 组件高度，单位为vp。 |
+
+## DepthComponentErrorCallback
+
+背景资源加载失败的回调函数。使用callback异步回调。
+
+type DepthComponentErrorCallback = (error: DepthComponentErrorEvent) => void
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| error | [DepthComponentErrorEvent](#depthcomponenterrorevent) | 是 | 背景资源加载失败的事件信息。 |
+
+## DepthComponentErrorEvent
+
+背景资源加载失败的事件信息。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| componentWidth | number | 是 | 否 | 组件宽度，单位为vp。 |
+| componentHeight | number | 是 | 否 | 组件高度，单位为vp。 |
+| error | [BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)&lt;void&gt; | 是 | 是 | 加载失败的错误信息。 |
+
 ## 示例
 
 ### 示例1（实现文字视觉倾斜且部分内容被图片遮挡）
@@ -257,21 +396,37 @@ struct DepthComponentInstanceExample {
             occlusionWeight: 0.5
           })
       }
-      .width('100%')
-      .height('100%')
-      .depthMap($r('app.media.depth_map')) // 请开发者替换为实际的资源文件
-      .camera({
-        position: { x: 0, y: 0, z: 0 },
-        quaternion: { x: 0, y: 0, z: 0, w: 1 },
-        yFov: 1.05,
-        zNear: 0.1,
-        zFar: 100
-      })
-      .light({
-        direction: { x: 0, y: 0, z: -1 },
-        color: { red: 255, green: 255, blue: 255 },
-        intensity: 1
-      })
+        .width('100%')
+        .height('100%')
+        .depthMap($r('app.media.depth_map'), (error: BusinessError<void>) => {
+          // 请开发者替换为实际的资源文件
+          if (error && error.code !== 0) {
+            console.error(`Depth map load failed: ${error.code} - ${error.message}`);
+          } else {
+            console.info('Depth map loaded successfully');
+          }
+        })
+        .camera({
+          position: { x: 0, y: 0, z: 0 },
+          quaternion: { x: 0, y: 0, z: 0, w: 1 },
+          yFov: 1.05,
+          zNear: 0.1,
+          zFar: 100
+        })
+        .light({
+          direction: { x: 0, y: 0, z: -1 },
+          color: { red: 255, green: 255, blue: 255 },
+          intensity: 1
+        })
+        .onComplete((event: DepthComponentCompleteEvent) => {
+          console.info(`Background loaded: ${event.componentWidth}x${event.componentHeight}`);
+        })
+        .onError((event: DepthComponentErrorEvent) => {
+          console.error(`Background load failed: ${event.componentWidth}x${event.componentHeight}`);
+          if (event.error) {
+            console.error(`Error: ${event.error.code} - ${event.error.message}`);
+          }
+        })
     }
     .width('100%')
     .padding(16)
@@ -302,21 +457,21 @@ struct DepthComponentInstanceExample {
             occlusionWeight: 1.0
           })
       }
-      .width('100%')
-      .height('100%')
-      .depthMap($r('app.media.depth_map')) // 请开发者替换为实际的资源文件
-      .camera({
-        position: { x: 0, y: 0, z: 0 },
-        quaternion: { x: 0, y: 0, z: 0, w: 1 },
-        yFov: 1.05,
-        zNear: 0.1,
-        zFar: 100
-      })
-      .light({
-        direction: { x: 0, y: 0, z: -1 },
-        color: { red: 255, green: 255, blue: 255 },
-        intensity: 1
-      })
+        .width('100%')
+        .height('100%')
+        .depthMap($r('app.media.depth_map')) // 请开发者替换为实际的资源文件
+        .camera({
+          position: { x: 0, y: 0, z: 0 },
+          quaternion: { x: 0, y: 0, z: 0, w: 1 },
+          yFov: 1.05,
+          zNear: 0.1,
+          zFar: 100
+        })
+        .light({
+          direction: { x: 0, y: 0, z: -1 },
+          color: { red: 255, green: 255, blue: 255 },
+          intensity: 1
+        })
     }
     .width('100%')
     .padding(16)
@@ -327,7 +482,7 @@ struct DepthComponentInstanceExample {
 
 ### 示例3（实现截取部分渲染内容）
 
-该示例通过配置移轴相机[cameraBufferCrop](#depthcameraparams)，配合深度图实现截取部分渲染内容。
+该示例通过配置移轴相机[cameraBufferCrop](#camerabuffercrop)，配合深度图实现截取部分渲染内容。
 
 从API版本26.0.0开始，新增DepthCameraParams的cameraBufferCrop属性。
 
@@ -347,27 +502,27 @@ struct DepthComponentInstanceExample {
             occlusionWeight: 1.0
           })
       }
-      .width('100%')
-      .height('100%')
-      .depthMap($r('app.media.depth_map')) // 请开发者替换为实际的资源文件
-      .camera({
-        position: { x: 0, y: 0, z: 0 },
-        quaternion: { x: 0, y: 0, z: 0, w: 1 },
-        yFov: 1.05,
-        zNear: 0.1,
-        zFar: 100,
-        cameraBufferCrop: {
-          bufferWidth: 1262,       // 背景图 background 宽度
-          bufferHeight: 2560,      // 背景图 background 高度
-          cropOffset: {x: 100.0, y: 100.0} as CropOffset,
-          cropScale: 0.65
-        }
-      })
-      .light({
-        direction: { x: 0, y: 0, z: -1 },
-        color: { red: 255, green: 255, blue: 255 },
-        intensity: 1
-      })
+        .width('100%')
+        .height('100%')
+        .depthMap($r('app.media.depth_map')) // 请开发者替换为实际的资源文件
+        .camera({
+          position: { x: 0, y: 0, z: 0 },
+          quaternion: { x: 0, y: 0, z: 0, w: 1 },
+          yFov: 1.05,
+          zNear: 0.1,
+          zFar: 100,
+          cameraBufferCrop: {
+            bufferWidth: 1262,       // 背景图 background 宽度
+            bufferHeight: 2560,      // 背景图 background 高度
+            cropOffset: { x: 100.0, y: 100.0 },
+            cropScale: 0.65
+          }
+        })
+        .light({
+          direction: { x: 0, y: 0, z: -1 },
+          color: { red: 255, green: 255, blue: 255 },
+          intensity: 1
+        })
     }
     .width('100%')
     .padding(16)

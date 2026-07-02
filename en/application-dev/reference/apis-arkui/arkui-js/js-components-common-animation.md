@@ -12,6 +12,7 @@
 
 Components support dynamic rotation, translation, and scaling effects. These effects can be set in the **style** attribute or CSS files.
 
+## Attributes
 
 | Name                               | Type                                      | Description                                      |
 | --------------------------------- | ---------------------------------------- | ---------------------------------------- |
@@ -111,7 +112,7 @@ If there is no default value for when an animation will start or end, you can ex
 ```
 
 
-![en-us_image_0000001173324797](figures/en-us_image_0000001173324797.gif)
+![Animation-Styles02](figures/Animation-Styles02.gif)
 
 ```html
 <!-- xxx.hml -->
@@ -160,7 +161,7 @@ export default {
 ```
 
 
-![en-us_image_0000001127285034](figures/en-us_image_0000001127285034.gif)
+![animation-styles](figures/animation-styles.gif)
 
 ```html
 <!-- xxx.hml -->
@@ -219,7 +220,7 @@ export default {
 ```
 
 
-![en-us_image_0000001152833768](figures/en-us_image_0000001152833768.gif)
+![animation-styles01](figures/animation-styles01.gif)
 
 
 >  **NOTE**
@@ -227,4 +228,4 @@ export default {
 >
 >  The following figure shows the meanings of **end** and **start** in the **steps** function.
 >
->  ![en-us_image_0000001127125220](figures/en-us_image_0000001127125220.png)
+>  ![steps](figures/steps.png)

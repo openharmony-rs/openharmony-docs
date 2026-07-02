@@ -4,7 +4,7 @@
 <!--Owner: @maorh-->
 <!--Designer: @keerecles-->
 <!--Tester: @TerryTsao-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 > **说明**
 >
@@ -29,7 +29,7 @@ LazyForEach从提供的数据源中按需迭代数据，并在每次迭代过程
 | dataSource    | [IDataSource](#idatasource)                       | 是   | LazyForEach数据源，需要开发者实现相关接口。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                  |
 | itemGenerator | (item:&nbsp;any, index: number)&nbsp;=&gt;&nbsp;void   | 是   | 子组件生成函数，为数组中的每一个数据项创建一个子组件。<br/>**说明：**<br/>- item是当前数据项（可选），index是数据项索引值（可选）。<br/>- itemGenerator的函数体必须使用大括号{...}。<br />- itemGenerator每次迭代只能并且必须生成一个子组件。<br />- itemGenerator中可以使用if语句，但是必须保证if语句每个分支都会创建一个相同类型的子组件。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | keyGenerator  | (item:&nbsp;any, index: number)&nbsp;=&gt;&nbsp;string | 否   | 键值生成函数，用于给数据源中的每一个数据项生成唯一且固定的键值。修改数据源中的一个数据项若不影响其生成的键值，则对应组件不会被更新，否则此处组件就会被重建更新。`keyGenerator`参数是可选的，但是，为了使开发框架能够更好地识别数组更改并正确更新组件，建议提供。<br/>默认值为空回调函数。<br/>**说明：**<br/>- item是当前数据项（可选），index是数据项索引值（可选）。<br/>- `keyGenerator`缺省时，使用默认的键值生成函数，即`(item: Object, index: number) => { return viewId + '-' + index.toString(); }`，生成键值仅受索引值index影响（viewId在编译器转换过程中生成，同一个LazyForEach组件内的viewId一致）。<br/>- 为保证`LazyForEach`正确、高效地更新子组件，避免渲染结果异常、渲染效率降低等问题，键值应满足以下条件。<br/>1. 键值具有唯一性，每个数据项对应的键值互不相同。<br/>2. 键值具有一致性，数据项不变时对应的键值也不变。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| options   | [LazyForEachOptions](#lazyforeachoptions)   | 否   | 开发者配置项，用于配置内存优化策略。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。   |
+| options   | [LazyForEachOptions](#lazyforeachoptions)   | 否   | 开发者配置项，用于使能自定义组件冻结和配置内存优化策略、资源释放策略。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。   |
 
 > **说明：** 
 >
@@ -466,7 +466,15 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 ## LazyForEachOptions
 
-配置LazyForEach的内存优化策略。
+配置LazyForEach的资源释放策略、内存优化策略和使能自定义组件冻结这些开发者自选项。
+
+> **说明：** 
+>
+> 1. 注意：在使用LazyForEachOptions时，必须保证键值生成函数已经定义，否则会导致LazyForEach渲染异常。
+>
+> 2. 自定义组件冻结：在LazyForEach下，直接使用自定义节点时，使用该配置选择是否使能自定义组件的冻结功能。
+>
+> 3. 资源释放策略：LazyForEach会管理屏上区域节点和预加载区域节点，当节点滑动出预加载区域离开LazyForEach的管理范围时，LazyForEach不再管理该节点，该节点资源被释放。默认使用BATCH模式，LazyForEach会在当帧将所有将释放的节点释放；PROGRESSIVE模式会逐个释放资源，在释放每个节点资源时判断当前帧的时间是否足够，如果不够就会放到后续帧释放。在此策略下，LazyForEach可能会持有节点资源，缓存池中的节点来不及扩充，在快速获取节点的场景下会导致复用率下降，开发者根据应用情况选择资源释放策略。
 
 **起始版本：** 26.0.0
 
@@ -478,7 +486,65 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 | 名称 | 类型                       | 只读 | 可选 | 说明            |
 | ------ | --------------- | ---- | ---- | ------- |
+| customComponentFreezeMode   | [LazyForEachCustomComponentFreezeMode](#lazyforeachcustomcomponentfreezemode) | 否 | 是   | 选择是否使能自定义组件冻结。<br>默认为[AUTO](#lazyforeachcustomcomponentfreezemode)。        |
+| releaseStrategy  | [LazyForEachReleaseStrategy](#lazyforeachreleasestrategy)   | 否 | 是   | 为LazyForEach配置资源释放策略。<br>默认使用[BATCH](#lazyforeachreleasestrategy)，批量释放节点。           |
 | memoryOptimizationStrategy   | [LazyForEachMemOptStrategy](#lazyforeachmemoptstrategy) | 否 | 是   | LazyForEach的内存优化策略。该参数在创建LazyForEach时设定，不支持动态修改。<br>默认值：[DEFAULT](#lazyforeachmemoptstrategy) |
+
+## LazyForEachCustomComponentFreezeMode
+
+选择是否使能自定义组件冻结。
+
+> **说明：** 
+>
+> 1. 该配置仅在LazyForEach下直接使用自定义组件时添加，其他情况不适用。
+>
+> 2. 开发者可以在应用的配置文件[module.json5配置文件](../../../quick-start/module-configuration-file.md)中添加metadata参数，在metadata字段中配置name为enableCustomComponentFreeze，value支持取值true或false。true表示使能自定义组件冻结，false表示不使能自定义组件冻结，具体写法可以参考以下示例。
+
+module.json5配置文件示例。
+
+```json
+{
+  "module": {
+    "metadata": [
+      {
+        "name": "enableCustomComponentFreeze",
+        "value": "false"
+      }
+    ]
+  }
+}
+```
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 值                    | 说明                 |
+| ------ | ------------------- | -------------------- |
+| AUTO   |   0       | 跟随module.json5配置文件中metadata的设置。   |
+| DISABLED  | 1    | 不使能自定义组件冻结。    |
+| ENABLED  | 2     | 使能自定义组件冻结。    |
+
+## LazyForEachReleaseStrategy
+
+选择LazyForEach的资源释放方式。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 值                    | 说明                 |
+| ------ | ------------------- | -------------------- |
+| BATCH   |   0       | BATCH为默认使用的资源释放策略，该策略在当前帧释放掉所有废弃节点资源。如果存在节点复用，这时候能够最大化使用复用的能力，但如果存在复杂节点，资源释放时间较长。大量节点在当前帧释放可能会导致超大帧，影响性能。   |
+| PROGRESSIVE  | 1    | PROGRESSIVE为根据节点释放时间和当帧剩余时间自动调整节点释放的策略，如果当前帧时间不足以释放剩余节点，会放到后续帧继续释放，避免超大帧的出现，优化性能。此时，LazyForEach会继续持有节点，可能导致复用率下降，在节点大量产生来不及释放的情况下，内存会相应地升高。开发者需关注性能和内存的影响，合理选择内存释放策略。    |
 
 ## LazyForEachMemOptStrategy
 
@@ -565,3 +631,4 @@ struct MemoryOptimizeDemo {
   }
 }
 ```
+

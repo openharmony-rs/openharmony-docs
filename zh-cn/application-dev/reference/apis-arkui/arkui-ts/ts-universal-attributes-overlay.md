@@ -91,7 +91,7 @@ overlay(value: string | CustomBuilder | ComponentContent, options?: OverlayOptio
 
 ## ComponentContent<sup>12+</sup>
 
-type ComponentContent\<T \= Object\> = ComponentContent\<T\>
+type ComponentContent\<T \= Object\> = import('../api/arkui/ComponentContent').ComponentContent\<T\>
 
 组件内容的实体封装。
 
@@ -103,7 +103,7 @@ type ComponentContent\<T \= Object\> = ComponentContent\<T\>
 
 | 类型|说明 |
 | ----- | ----------------- |
-| [ComponentContent](../js-apis-arkui-ComponentContent.md)\<T\> | 组件内容的实体封装。|
+| import('../api/arkui/ComponentContent').[ComponentContent](../js-apis-arkui-ComponentContent.md)\<T\> | 组件内容的实体封装。|
 
 ## 示例
 
@@ -136,7 +136,7 @@ struct OverlayExample {
 }
 ```
 
-![zh-cn_image_0000001205769446](figures/zh-cn_image_0000001205769446.png)
+![floatingLayer](figures/floatingLayer.png)
 
 ### 示例2（通过builder设置浮层）
 
@@ -171,7 +171,7 @@ struct OverlayExample {
   }
 }
 ```
-![zh-cn_image_0000001210111632](figures/zh-cn_image_0000001210111632.png)
+![floatingLayer2](figures/floatingLayer2.png)
 
 ### 示例3（通过ComponentContent设置浮层）
 

@@ -24,7 +24,7 @@ createWindow(config: Configuration, callback: AsyncCallback&lt;Window&gt;): void
 
 创建子窗口或者系统窗口，使用callback异步回调。
 
-非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
+非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
 
 自由窗口状态下，子窗口参数[decorEnabled](arkts-apis-window-i.md#configuration9)为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。
 
@@ -49,11 +49,12 @@ createWindow(config: Configuration, callback: AsyncCallback&lt;Window&gt;): void
 | ------- | -------------------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801     | Capability not supported. createWindow can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. createWindow can not work correctly due to limited device capabilities.<br/>适用版本：12+ |
 | 1300001 | Repeated operation. Possible cause: The window has been created and can not be created again. |
-| 1300002 | This window state is abnormal. Possible cause: Invalid parent window type, parent window cannot be a subWindow. |
-| 1300004 | Unauthorized operation. Possible cause: The window type in the configuration is invalid. |
+| 1300002 | This window state is abnormal. Possible cause: Invalid parent window type, parent window cannot be a subWindow.<br/>适用版本：12+ |
+| 1300004 | Unauthorized operation. Possible cause: The window type in the configuration is invalid.<br/>适用版本：12+ |
 | 1300006 | This window context is abnormal. |
+| 1300008 | The display device is abnormal.<br/>适用版本：9-16 |
 | 1300009 | The parent window is invalid. |
 
 **示例：**
@@ -95,7 +96,7 @@ createWindow(config: Configuration): Promise&lt;Window&gt;
 
 创建子窗口或者系统窗口，使用Promise异步回调。
 
-非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
+非[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态下，子窗口创建后默认是[沉浸式布局](../../windowmanager/immersive-window-feature.md#沉浸式布局)。
 
 自由窗口状态下，子窗口参数[decorEnabled](arkts-apis-window-i.md#configuration9)为false时，子窗口创建后为沉浸式布局；子窗口参数decorEnabled为true，子窗口创建后为非沉浸式布局。
 
@@ -125,11 +126,12 @@ createWindow(config: Configuration): Promise&lt;Window&gt;
 | ------- | -------------------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801     | Capability not supported. createWindow can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. createWindow can not work correctly due to limited device capabilities.<br/>适用版本：12+ |
 | 1300001 | Repeated operation. Possible cause: The window has been created and can not be created again. |
-| 1300002 | This window state is abnormal. Possible cause: Invalid parent window type, parent window cannot be a subWindow. |
-| 1300004 | Unauthorized operation. Possible cause: The window type in the configuration is invalid. |
+| 1300002 | This window state is abnormal. Possible cause: Invalid parent window type, parent window cannot be a subWindow.<br/>适用版本：12+ |
+| 1300004 | Unauthorized operation. Possible cause: The window type in the configuration is invalid.<br/>适用版本：12+ |
 | 1300006 | This window context is abnormal. |
+| 1300008 | The display device is abnormal.<br/>适用版本：9-16 |
 | 1300009 | The parent window is invalid. |
 
 **示例：**
@@ -480,7 +482,7 @@ shiftAppWindowPointerEvent(sourceWindowId: number, targetWindowId: number): Prom
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -552,7 +554,7 @@ shiftAppWindowTouchEvent(sourceWindowId: number, targetWindowId: number, fingerI
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -717,6 +719,7 @@ getAllWindowLayoutInfo(displayId: number): Promise&lt;Array&lt;WindowLayoutInfo&
 |----------| ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
 | 801      | Capability not supported. Function getAllWindowLayoutInfo can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal.<br/>适用版本：15-18 |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 
 **示例：**
@@ -825,7 +828,8 @@ getVisibleWindowInfo(): Promise&lt;Array&lt;WindowInfo&gt;&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 201     | Permission verification failed. The application does not have the permission required to call the API. Possible cause: Need ohos.permission.VISIBLE_WINDOW_INFO permission. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. Possible cause: Need ohos.permission.VISIBLE_WINDOW_INFO permission.<br>适用版本：18+ |
+| 202 | Permission verification failed, non-system application uses system API.<br>适用版本：12-17 |
 | 801     | Capability not supported. Function getVisibleWindowInfo can not work correctly due to limited device capabilities. |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 
@@ -990,7 +994,7 @@ setStartWindowBackgroundColor(moduleName: string, abilityName: string, color: Co
 | -------- | ----------------------------- | ---- | -------------------------------------------------------- |
 | moduleName     | string                        | 是   | 需要设置的UIAbility所属模块名，moduleName的长度范围为0-200字节，仅支持设置当前同一应用包名内的模块。模块名由开发者在[module.json5配置文件](../../quick-start/module-configuration-file.md#配置文件标签)中的name字段指定。 |
 | abilityName     | string                        | 是   | 需要设置的UIAbility名字，abilityName的长度范围为0-200字节，仅支持设置当前同一应用包名内的abilityName。UIAbility名由开发者在[module.json5配置文件abilities标签](../../quick-start/module-configuration-file.md#abilities标签)的name字段指定。 |
-| color | [ColorMetrics](js-apis-arkui-graphics.md#colormetrics12) | 是   | 设置的启动页背景色。                       |
+| color | [ColorMetrics](js-apis-arkui-graphics.md#colormetrics12) | 是   | 设置的启动页背景色。 |
 
 **返回值：**
 

@@ -3,7 +3,7 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--Designer: @junjie_shi-->
+<!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -40,6 +40,7 @@ Defines the names of all predefined event parameters. In addition to custom even
 | [OH_APP_CRASH_PARAM_LOG_FILE_CUTOFF_SZ_BYTES](#oh_app_crash_param_log_file_cutoff_sz_bytes) "log_file_cutoff_sz_bytes"                                                        | Used to set the log specifications of the **CPP_CRASH** type in the **APP_CRASH** event, that is, truncate **CPP_CRASH** logs based on the configured parameter value.<br>**Since**: 24 |
 | [OH_APP_CRASH_PARAM_SIMPLIFY_VMA_PRINTING](#oh_app_crash_param_simplify_vma_printing) "simplify_vma_printing"                                                        | Used to set the log specifications of the **CPP_CRASH** type in the **APP_CRASH** event, that is, whether to print only the VMA mapping information of the address in the crash log to reduce the size of the **CPP_CRASH** log file.<br>**Since**: 24 |
 | [OH_APP_CRASH_PARAM_MERGE_CPPCRASH_APP_LOG](#oh_app_crash_param_merge_cppcrash_app_log) "merge_cppcrash_app_log"                                                        | Used to set the log specifications of the **CPP_CRASH** type in the **APP_CRASH** event, that is, whether to combine the logs of the specified file in the application sandbox in the **CPP_CRASH** scenario.<br>**Since**: 24 |
+| [OH_APP_CRASH_PARAM_COLLECT_MINIDUMP](#oh_app_crash_param_collect_minidump) "collect_minidump"  | Used to set the log specifications of the **CPP_CRASH** type in the **APP_CRASH** event, that is, whether to collect minidump logs in the **CPP_CRASH** scenario.<br>**Since:** 26.0.0 |
 
 
 ## Macro Description
@@ -199,3 +200,15 @@ Used to set the log specifications of the **CPP_CRASH** type in the **APP_CRASH*
 Used to set the log specifications of the **CPP_CRASH** type in the **APP_CRASH** event, that is, whether to combine the logs of the specified file in the application sandbox in the **CPP_CRASH** scenario.
 
 **Since**: 24
+
+### OH_APP_CRASH_PARAM_COLLECT_MINIDUMP
+
+```c
+#define OH_APP_CRASH_PARAM_COLLECT_MINIDUMP "collect_minidump"
+```
+
+**Description**
+
+Used to set the log specifications of the **CPP_CRASH** type in the **APP_CRASH** event, that is, whether to collect minidump logs in the **CPP_CRASH** scenario.
+
+**Since:** 26.0.0

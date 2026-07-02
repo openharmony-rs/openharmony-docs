@@ -8,7 +8,7 @@
 
 ## 概述
 
-声明输入音频格式、输出音频格式底层数据结构和格式转换接口的定义。
+声明输入音频格式、输出音频格式底层数据结构和格式转换接口。
 
 **引用文件：** <ohaudiosuite/native_audio_converter.h>
 
@@ -26,7 +26,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_AudioConverter_Format](capi-audioconverter-oh-audioconverter-format.md) | OH_AudioConverter_Format | 定义音频转换器格式数据结构，用于描述基本音频格式。 |
+| [OH_AudioConverter_Format](capi-audioconverter-oh-audioconverter-format.md) | OH_AudioConverter_Format | 定义音频转换器的数据结构，用于描述音频格式。|
 | [OH_AudioConverterStruct](capi-audioconverter-oh-audioconverterstruct.md) | OH_AudioConverter | 声明音频格式转换器。<br> 音频转换器的句柄用于执行与音频转换器相关的功能。 |
 
 ### 枚举
@@ -62,15 +62,15 @@ enum OH_AudioConverter_Result
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AUDIOCONVERTER_SUCCESS = 0 |  调用成功。<br>**起始版本：** 26.0.0 |
-| AUDIOCONVERTER_ERROR_INVALID_PARAM = 1 |  函数输入参数无效。<br>**起始版本：** 26.0.0 |
+| AUDIOCONVERTER_SUCCESS = 0 |  函数调用成功。<br>**起始版本：** 26.0.0 |
+| AUDIOCONVERTER_ERROR_INVALID_PARAM = 1 |  函数输入参数无效。例如传入的格式转换器指针为nullptr。<br>**起始版本：** 26.0.0 |
 | AUDIOCONVERTER_ERROR_UNSUPPORTED_FORMAT = 2 |  不支持的音频格式。例如不支持的编码类型、采样格式等。<br>**起始版本：** 26.0.0 |
-| AUDIOCONVERTER_ERROR_SYSTEM = 3 |  系统通用错误。<br>**起始版本：** 26.0.0 |
-| AUDIOCONVERTER_ERROR_MEMORY_ALLOC_FAILED = 4 |  内存分配失败。<br>**起始版本：** 26.0.0 |
-| AUDIOCONVERTER_ERROR_BUFFER_TOO_SMALL = 5 |  缓冲容量不足。<br>**起始版本：** 26.0.0 |
-| AUDIOCONVERTER_ERROR_NOT_INITIALIZED = 6 |  音频转换器实例未初始化。<br>**起始版本：** 26.0.0 |
-| AUDIOCONVERTER_ERROR_CALLBACK_INVALID = 7 |  回调函数无效。<br>**起始版本：** 26.0.0 |
-| AUDIOCONVERTER_ERROR_CALLBACK_NOT_SET = 8 |  未设置回调函数。<br>**起始版本：** 26.0.0 |
+| AUDIOCONVERTER_ERROR_SYSTEM = 3 |  系统错误。例如使用已销毁的格式转换器执行格式转换。<br>**起始版本：** 26.0.0 |
+| AUDIOCONVERTER_ERROR_MEMORY_ALLOC_FAILED = 4 |  内存分配失败。例如内部输出数据缓冲区内存分配失败。<br>**起始版本：** 26.0.0 |
+| AUDIOCONVERTER_ERROR_BUFFER_TOO_SMALL = 5 |  输出缓存容量不足。例如设置的存储输出数据的容量不足以存储一帧输出数据量。<br>**起始版本：** 26.0.0 |
+| AUDIOCONVERTER_ERROR_NOT_INITIALIZED = 6 |  音频转换器实例未初始化。例如未创建格式转换器直接执行格式转换处理函数。<br>**起始版本：** 26.0.0 |
+| AUDIOCONVERTER_ERROR_CALLBACK_INVALID = 7 |  输入回调函数无效。例如输入回调函数返回数据量小于0或大于最大值400KB。<br>**起始版本：** 26.0.0 |
+| AUDIOCONVERTER_ERROR_CALLBACK_NOT_SET = 8 |  未设置回调函数。例如输入回调函数指针为nullptr。<br>**起始版本：** 26.0.0 |
 
 ### OH_AudioConverter_InputStatus
 
@@ -127,16 +127,15 @@ OH_AudioConverter_Result OH_AudioConverter_Create(const OH_AudioConverter_Format
 
 | 参数项 | 描述 |
 | --- | --- |
-| [const OH_AudioConverter_Format](capi-audioconverter-oh-audioconverter-format.md)* inputFormat | 配置指向输入音频格式的指针。 |
-| inputFormat | 配置指向输入音频格式的指针。 |
-| [const OH_AudioConverter_Format](capi-audioconverter-oh-audioconverter-format.md)* outputFormat | 配置指向输出音频格式的指针。 |
+| const [OH_AudioConverter_Format](capi-audioconverter-oh-audioconverter-format.md)* inputFormat | 指向输入音频格式的指针。 |
+| const [OH_AudioConverter_Format](capi-audioconverter-oh-audioconverter-format.md)* outputFormat | 指向输出音频格式的指针。 |
 | [OH_AudioConverter](capi-audioconverter-oh-audioconverterstruct.md)** converter | 指向可用的音频转换器的指针。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioConverter_Result](capi-native-audio-converter-h.md#oh_audioconverter_result) | AUDIOCONVERTER_SUCCESS：函数执行成功。<br>         AUDIOCONVERTER_ERROR_INVALID_PARAM：输入参数无效。<br>         AUDIOCONVERTER_ERROR_UNSUPPORTED_FORMAT：音频输入/输出格式组合不支持。<br>         AUDIOCONVERTER_ERROR_MEMORY_ALLOC_FAILED：内存分配失败。<br>         AUDIOCONVERTER_ERROR_SYSTEM：如果系统存在内存分配失败等其他异常情况。 |
+| [OH_AudioConverter_Result](capi-native-audio-converter-h.md#oh_audioconverter_result) | AUDIOCONVERTER_SUCCESS：创建格式转换器成功，可以正常执行后续流程。<br>         AUDIOCONVERTER_ERROR_INVALID_PARAM：函数输入参数无效，需要检查传入的格式转换器指针是否非nullptr。<br>         AUDIOCONVERTER_ERROR_UNSUPPORTED_FORMAT：音频输入/输出格式组合不支持，输入或输出格式超出允许范围，需要检查配置的音频格式。<br>          AUDIOCONVERTER_ERROR_SYSTEM：系统错误，需要检查是否使用已销毁的格式转换器执行格式转换。 |
 
 ### OH_AudioConverter_Destroy()
 
@@ -175,7 +174,7 @@ typedef int32_t (*OH_AudioConverter_RequestDataCallback)(void* userData, const v
 | -- | -- |
 | void\* userData | 传递给回调函数的用户自定义数据。 |
 | const void\*\* outInputData | 指向回调函数设置的指向输入音频数据缓冲区的指针。 |
-| [OH_AudioConverter_InputStatus](capi-native-audio-converter-h.md#oh_audioconverter_inputstatus)\* outStatus | 通过回调函数设置，以通知转换器数据流状态是否可用。 |
+| [OH_AudioConverter_InputStatus](capi-native-audio-converter-h.md#oh_audioconverter_inputstatus)\* outStatus | 通过回调函数设置，用于通知转换器输入数据的状态。 |
 
 **返回：**
 
@@ -208,7 +207,7 @@ OH_AudioConverter_Result OH_AudioConverter_SetInputCallback(OH_AudioConverter* c
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioConverter_Result](capi-native-audio-converter-h.md#oh_audioconverter_result) | AUDIOCONVERTER_SUCCESS：如果执行成功。<br>         AUDIOCONVERTER_ERROR_INVALID_PARAM：如果参数无效，例如转换器指针为nullptr等。<br>         AUDIOCONVERTER_ERROR_NOT_INITIALIZED：如果转换器实例未初始化。<br>         AUDIOCONVERTER_ERROR_CALLBACK_INVALID：如果回调函数无效，例如回调函数返回无效等。<br>         AUDIOCONVERTER_ERROR_SYSTEM：如果系统存在内存分配失败的异常情况。 |
+| [OH_AudioConverter_Result](capi-native-audio-converter-h.md#oh_audioconverter_result) | AUDIOCONVERTER_SUCCESS：设置输入回调函数成功，可以正常执行后续流程。<br>         AUDIOCONVERTER_ERROR_INVALID_PARAM：函数输入参数无效，需要检查传入的格式转换器指针是否非nullptr。<br>         AUDIOCONVERTER_ERROR_NOT_INITIALIZED：格式转换器未初始化，需要检查当前格式转换器是否有效。<br>         AUDIOCONVERTER_ERROR_CALLBACK_INVALID：回调函数无效，需要检查输入回调函数返回数据量是否在允许范围内。<br>         AUDIOCONVERTER_ERROR_CALLBACK_NOT_SET：回调函数未设置，需要检查回调函数指针是否非空。<br>         AUDIOCONVERTER_ERROR_SYSTEM：系统错误，需要检查是否使用已销毁的格式转换器执行格式转换。 |
 
 ### OH_AudioConverter_Process()
 
@@ -236,4 +235,4 @@ OH_AudioConverter_Result OH_AudioConverter_Process(OH_AudioConverter* converter,
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioConverter_Result](capi-native-audio-converter-h.md#oh_audioconverter_result) | AUDIOCONVERTER_SUCCESS：如果执行成功。<br>         AUDIOCONVERTER_ERROR_INVALID_PARAM：如果参数无效，例如转换器指针为nullptr等。<br>         AUDIOCONVERTER_ERROR_NOT_INITIALIZED：如果转换器实例未初始化。<br>         AUDIOCONVERTER_ERROR_CALLBACK_INVALID：如果回调函数无效，例如回调函数返回了无效值等。<br>         AUDIOCONVERTER_ERROR_CALLBACK_NOT_SET：转换器未绑定任何输入回调函数。<br>         AUDIOCONVERTER_ERROR_BUFFER_TOO_SMALL：输出缓冲区容量不足。<br>         AUDIOCONVERTER_ERROR_SYSTEM：如果系统存在调用底层转换函数失败和内存分配失败的异常情况。 |
+| [OH_AudioConverter_Result](capi-native-audio-converter-h.md#oh_audioconverter_result) | AUDIOCONVERTER_SUCCESS：PCM音频数据格式转换成功，可以正常执行后续流程。<br>         AUDIOCONVERTER_ERROR_INVALID_PARAM：函数输入参数无效，需要检查传入的格式转换器指针是否非nullptr。<br>         AUDIOCONVERTER_ERROR_NOT_INITIALIZED：格式转换器未初始化，需要检查当前格式转换器是否有效。<br>         AUDIOCONVERTER_ERROR_CALLBACK_INVALID：输入回调函数无效，需要检查输入回调函数返回数据量是否在允许范围内。<br>         AUDIOCONVERTER_ERROR_CALLBACK_NOT_SET：回调函数未设置，需要检查回调函数是否已成功设置并且函数指针是否非空。<br>         AUDIOCONVERTER_ERROR_BUFFER_TOO_SMALL：输出缓冲区容量不足，需要检查设置的存储输出数据的缓冲区容量是否足够存放一帧输出数据。<br>          AUDIOCONVERTER_ERROR_SYSTEM：系统错误，需要检查是否使用已销毁的格式转换器执行格式转换。 |

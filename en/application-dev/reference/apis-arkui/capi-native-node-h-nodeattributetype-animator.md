@@ -195,8 +195,8 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Start angle of the linear gradient. When [ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection) is set to **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM**, the **angle** attribute takes effect. Otherwise, the **direction** attribute is used as the main layout mode. A positive value indicates a clockwise rotation from the origin, (0, 0). The default value is **180**.|
-| .value[1].i32 | Direction of the linear gradient. When the **direction** attribute is set to a value other than **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM**, the **angle** attribute does not take effect. The parameter type is [ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection).|
+| .value[0].f32 | Start angle of the linear gradient. When [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection) is set to **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM**, the **angle** attribute takes effect. Otherwise, the **direction** attribute is used as the main layout mode. A positive value indicates a clockwise rotation from the origin, (0, 0). The default value is **180**.|
+| .value[1].i32 | Direction of the linear gradient. When the **direction** attribute is set to a value other than **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM**, the **angle** attribute does not take effect. The parameter type is [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection).|
 | .value[2].i32 | Whether the colors are repeated. The default value is **false**.|
 | .object | The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md). It specifies an array of color stops, each of which consists of a color and its stop position. Invalid colors are automatically skipped.|
 | colors | Colors of the color stops.|
@@ -279,13 +279,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Whether to show or hide the component. The parameter type is [ArkUI_Visibility](capi-native-type-h.md#arkui_visibility). The default value is **ARKUI_VISIBILITY_VISIBLE**.|
+| .value[0].i32 | Whether to show or hide the component. The parameter type is [ArkUI_Visibility](capi-common-attributes-h.md#arkui_visibility). The default value is **ARKUI_VISIBILITY_VISIBLE**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Whether the component is shown or hidden. The parameter type is [ArkUI_Visibility](capi-native-type-h.md#arkui_visibility). The default value is **ARKUI_VISIBILITY_VISIBLE**.|
+| .value[0].i32 | Whether the component is shown or hidden. The parameter type is [ArkUI_Visibility](capi-common-attributes-h.md#arkui_visibility). The default value is **ARKUI_VISIBILITY_VISIBLE**.|
 
 ## NODE_CLIP
 
@@ -456,13 +456,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Shadow effect of the current component. The parameter type is [ArkUI_ShadowStyle](capi-native-type-h.md#arkui_shadowstyle).|
+| .value[0].i32 | Shadow effect of the current component. The parameter type is [ArkUI_ShadowStyle](capi-native-type-visual-h.md#arkui_shadowstyle).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Shadow effect of the current component. The parameter type is [ArkUI_ShadowStyle](capi-native-type-h.md#arkui_shadowstyle).|
+| .value[0].i32 | Shadow effect of the current component. The parameter type is [ArkUI_ShadowStyle](capi-native-type-visual-h.md#arkui_shadowstyle).|
 
 ## NODE_CUSTOM_SHADOW
 
@@ -484,7 +484,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[1]?.i32 | Whether to enable the coloring strategy. The value **1** means to enable the coloring strategy, and **0** means the opposite. The default value is **0**.|
 | .value[2]?.f32 | Offset of the shadow along the x-axis, in px.|
 | .value[3]?.f32 | Offset of the shadow along the y-axis, in px.|
-| .value[4]?.i32 | Shadow type. The parameter type is [ArkUI_ShadowType](capi-native-type-h.md#arkui_shadowtype). The default value is **ARKUI_SHADOW_TYPE_COLOR**.|
+| .value[4]?.i32 | Shadow type. The parameter type is [ArkUI_ShadowType](capi-native-type-visual-h.md#arkui_shadowtype). The default value is **ARKUI_SHADOW_TYPE_COLOR**.|
 | .value[5]?.u32 | Shadow color, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
 | .value[6]?.u32 | Whether to fill the shadow. The value **1** means to fill the shadow, and **0** means the opposite.|
 
@@ -496,7 +496,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[1].i32 | Whether the coloring strategy is enabled.|
 | .value[2].f32 | Offset of the shadow along the x-axis, in px.|
 | .value[3].f32 | Offset of the shadow along the y-axis, in px.|
-| .value[4].i32 | Shadow type. The parameter type is [ArkUI_ShadowType](capi-native-type-h.md#arkui_shadowtype). The default value is **ARKUI_SHADOW_TYPE_COLOR**.|
+| .value[4].i32 | Shadow type. The parameter type is [ArkUI_ShadowType](capi-native-type-visual-h.md#arkui_shadowtype). The default value is **ARKUI_SHADOW_TYPE_COLOR**.|
 | .value[5].u32 | Shadow color, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
 | .value[6].u32 | Whether the shadow is filled. The value **1** means that the shadow is filled, and **0** means the opposite.|
 
@@ -516,7 +516,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Blur type. The value is an enumerated value of [ArkUI_BlurStyle](capi-native-type-h.md#arkui_blurstyle).|
+| .value[0].i32 | Blur type. The value is an enumerated value of [ArkUI_BlurStyle](capi-native-type-visual-h.md#arkui_blurstyle).|
 | .value[1]?.i32 | Color mode. The value is an enumerated value of [ArkUI_ColorMode](capi-native-type-h.md#arkui_colormode).|
 | .value[2]?.i32 | Adaptive color mode. The value is an enumerated value of [ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor).|
 | .value[3]?.f32 | Blur degree. The value range is [0.0, 1.0].|
@@ -527,7 +527,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Blur type. The value is an enumerated value of [ArkUI_BlurStyle](capi-native-type-h.md#arkui_blurstyle).|
+| .value[0].i32 | Blur type. The value is an enumerated value of [ArkUI_BlurStyle](capi-native-type-visual-h.md#arkui_blurstyle).|
 | .value[1].i32 | Color mode. The value is an enumerated value of [ArkUI_ColorMode](capi-native-type-h.md#arkui_colormode).|
 | .value[2].i32 | Adaptive color mode. The value is an enumerated value of [ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor).|
 | .value[3].f32 | Blur degree. The value range is [0.0, 1.0].|
@@ -608,10 +608,10 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].f32 | Opacity values of the start and end points.|
 | .value[1].i32 | Animation duration, in ms.|
-| .value[2].i32 | Animation curve type. The value is an enumerated value of [ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve).|
+| .value[2].i32 | Animation curve type. The value is an enumerated value of [ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve).|
 | .value[3]?.i32 | Animation delay duration, in ms.|
 | .value[4]?.i32 | Number of times the animation is played.|
-| .value[5]?.i32 | Animation playback mode. The value is an enumerated value of [ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode).|
+| .value[5]?.i32 | Animation playback mode. The value is an enumerated value of [ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode).|
 | .value[6]?.f32 | Animation playback speed.|
 
 **Returns**
@@ -620,10 +620,10 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].f32 | Opacity values of the start and end points.|
 | .value[1].i32 | Animation duration, in ms.|
-| .value[2].i32 | Animation curve type. The value is an enumerated value of [ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve).|
+| .value[2].i32 | Animation curve type. The value is an enumerated value of [ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve).|
 | .value[3].i32 | Animation delay duration, in ms.|
 | .value[4].i32 | Number of times the animation is played.|
-| .value[5].i32 | Animation playback mode. The value is an enumerated value of [ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode).|
+| .value[5].i32 | Animation playback mode. The value is an enumerated value of [ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode).|
 | .value[6].f32 | Animation playback speed.|
 
 ## NODE_ROTATE_TRANSITION
@@ -648,10 +648,10 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[3].f32 | Angle.|
 | .value[4].f32 | Line of sight. The default value is **0.0f**.|
 | .value[5].i32 | Animation duration, in ms.|
-| .value[6].i32 | Animation curve type. The value is an enumerated value of [ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve).|
+| .value[6].i32 | Animation curve type. The value is an enumerated value of [ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve).|
 | .value[7]?.i32 | Animation delay duration, in ms.|
 | .value[8]?.i32 | Number of times the animation is played.|
-| .value[9]?.i32 | Animation playback mode. The value is an enumerated value of [ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode).|
+| .value[9]?.i32 | Animation playback mode. The value is an enumerated value of [ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode).|
 | .value[10]?.f32 | Animation playback speed.|
 
 **Returns**
@@ -664,10 +664,10 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[3].f32 | Angle.|
 | .value[4].f32 | Line of sight.|
 | .value[5].i32 | Animation duration, in ms.|
-| .value[6].i32 | Animation curve type. The value is an enumerated value of [ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve).|
+| .value[6].i32 | Animation curve type. The value is an enumerated value of [ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve).|
 | .value[7].i32 | Animation delay duration, in ms.|
 | .value[8].i32 | Number of times the animation is played.|
-| .value[9].i32 | Animation playback mode. The value is an enumerated value of [ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode).|
+| .value[9].i32 | Animation playback mode. The value is an enumerated value of [ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode).|
 | .value[10].f32 | Animation playback speed.|
 
 ## NODE_SCALE_TRANSITION
@@ -690,10 +690,10 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[1].f32 | Scale factor along the y-axis.|
 | .value[2].f32 | Scale factor along the z-axis.|
 | .value[3].i32 | Animation duration, in ms.|
-| .value[4].i32 | Animation curve type. The value is an enumerated value of [ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve).|
+| .value[4].i32 | Animation curve type. The value is an enumerated value of [ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve).|
 | .value[5]?.i32 | Animation delay duration, in ms.|
 | .value[6]?.i32 | Number of times the animation is played.|
-| .value[7]?.i32 | Animation playback mode. The value is an enumerated value of [ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode).|
+| .value[7]?.i32 | Animation playback mode. The value is an enumerated value of [ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode).|
 | .value[8]?.f32 | Animation playback speed.|
 
 **Returns**
@@ -704,10 +704,10 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[1].f32 | Scale factor along the y-axis.|
 | .value[2].f32 | Scale factor along the z-axis.|
 | .value[3].i32 | Animation duration, in ms.|
-| .value[4].i32 | Animation curve type. The value is an enumerated value of [ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve).|
+| .value[4].i32 | Animation curve type. The value is an enumerated value of [ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve).|
 | .value[5].i32 | Animation delay duration, in ms.|
 | .value[6].i32 | Number of times the animation is played.|
-| .value[7].i32 | Animation playback mode. The value is an enumerated value of [ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode).|
+| .value[7].i32 | Animation playback mode. The value is an enumerated value of [ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode).|
 | .value[8].f32 | Animation playback speed.|
 
 ## NODE_TRANSLATE_TRANSITION
@@ -730,10 +730,10 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[1].f32 | Translation distance along the y-axis, in vp. The default value is **0.0**.|
 | .value[2].f32 | Translation distance along the z-axis, in vp. The default value is **0.0**.|
 | .value[3].i32 | Animation duration, in ms.|
-| .value[4].i32 | Animation curve type. The value is an enumerated value of [ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve).|
+| .value[4].i32 | Animation curve type. The value is an enumerated value of [ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve).|
 | .value[5]?.i32 | Animation delay duration, in ms.|
 | .value[6]?.i32 | Number of times the animation is played.|
-| .value[7]?.i32 | Animation playback mode. The value is an enumerated value of [ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode).|
+| .value[7]?.i32 | Animation playback mode. The value is an enumerated value of [ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode).|
 | .value[8]?.f32 | Animation playback speed.|
 
 **Returns**
@@ -744,10 +744,10 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[1].f32 | Translation distance along the y-axis, in vp.|
 | .value[2].f32 | Translation distance along the z-axis, in vp.|
 | .value[3].i32 | Animation duration, in ms.|
-| .value[4].i32 | Animation curve type. The value is an enumerated value of [ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve).|
+| .value[4].i32 | Animation curve type. The value is an enumerated value of [ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve).|
 | .value[5].i32 | Animation delay duration, in ms.|
 | .value[6].i32 | Number of times the animation is played.|
-| .value[7].i32 | Animation playback mode. The value is an enumerated value of [ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode).|
+| .value[7].i32 | Animation playback mode. The value is an enumerated value of [ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode).|
 | .value[8].f32 | Animation playback speed.|
 
 ## NODE_MOVE_TRANSITION
@@ -766,24 +766,24 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Transition edge. The parameter type is [ArkUI_TransitionEdge](capi-native-type-h.md#arkui_transitionedge).|
+| .value[0].i32 | Transition edge. The parameter type is [ArkUI_TransitionEdge](capi-native-type-visual-h.md#arkui_transitionedge).|
 | .value[1].i32 | Animation duration, in ms.|
-| .value[2].i32 | Animation curve type. The value is an enumerated value of [ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve).|
+| .value[2].i32 | Animation curve type. The value is an enumerated value of [ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve).|
 | .value[3]?.i32 | Animation delay duration, in ms.|
 | .value[4]?.i32 | Number of times the animation is played.|
-| .value[5]?.i32 | Animation playback mode. The value is an enumerated value of [ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode).|
+| .value[5]?.i32 | Animation playback mode. The value is an enumerated value of [ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode).|
 | .value[6]?.f32 | Animation playback speed.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Transition edge. The parameter type is [ArkUI_TransitionEdge](capi-native-type-h.md#arkui_transitionedge).|
+| .value[0].i32 | Transition edge. The parameter type is [ArkUI_TransitionEdge](capi-native-type-visual-h.md#arkui_transitionedge).|
 | .value[1].i32 | Animation duration, in ms.|
-| .value[2].i32 | Animation curve type. The value is an enumerated value of [ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve).|
+| .value[2].i32 | Animation curve type. The value is an enumerated value of [ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve).|
 | .value[3].i32 | Animation delay duration, in ms.|
 | .value[4].i32 | Number of times the animation is played.|
-| .value[5].i32 | Animation playback mode. The value is an enumerated value of [ArkUI_AnimationPlayMode](capi-native-type-h.md#arkui_animationplaymode).|
+| .value[5].i32 | Animation playback mode. The value is an enumerated value of [ArkUI_AnimationPlayMode](capi-native-type-visual-h.md#arkui_animationplaymode).|
 | .value[6].f32 | Animation playback speed.|
 
 ## NODE_SWEEP_GRADIENT
@@ -882,11 +882,11 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| 1. Rectangle| .value[0].u32: fill color, in 0xARGB format.<br>.value[1].u32: stroke color, in 0xARGB format.<br>.value[2].f32: stroke width, in vp.<br>.value[3].i32: mask type. The parameter type is [ArkUI_MaskType](capi-native-type-h.md#arkui_masktype). The value is **ARKUI_MASK_TYPE_RECTANGLE**.<br>.value[4].f32: width of the rectangle, in vp.<br>.value[5].f32: height of the rectangle, in vp.<br>.value[6].f32: width of the rounded corner of the rectangle, in vp.<br>.value[7].f32: height of the rounded corner of the rectangle, in vp.<br>.value[8]?.f32: radius of the upper left corner of the rectangle, in vp.<br>.value[9]?.f32: radius of the lower left corner of the rectangle, in vp.<br>.value[10]?.f32: radius of the upper right corner of the rectangle, in vp.<br>.value[11]?.f32: radius of the lower right corner of the rectangle, in vp.|
-| 2. Circle| .value[0].u32: fill color, in 0xARGB format.<br>.value[1].u32: stroke color, in 0xARGB format.<br>.value[2].f32: stroke width, in vp.<br>.value[3].i32: mask type. The parameter type is [ArkUI_MaskType](capi-native-type-h.md#arkui_masktype). The value is **ARKUI_MASK_TYPE_CIRCLE**.<br>.value[4].f32: width of the circle, in vp.<br>.value[5].f32: height of the circle, in vp.|
-| 3. Ellipse| .value[0].u32: fill color, in 0xARGB format.<br>.value[1].u32: stroke color, in 0xARGB format.<br>.value[2].f32: stroke width, in vp.<br>.value[3].i32: mask type. The parameter type is [ArkUI_MaskType](capi-native-type-h.md#arkui_masktype). The value is **ARKUI_MASK_TYPE_ELLIPSE**.<br>.value[4].f32: width of the ellipse, in vp.<br>.value[5].f32: height of the ellipse, in vp.|
-| 4. Path| .value[0].u32: fill color, in 0xARGB format.<br>.value[1].u32: stroke color, in 0xARGB format.<br>.value[2].f32: stroke width, in vp.<br>.value[3].i32: mask type. The parameter type is [ArkUI_MaskType](capi-native-type-h.md#arkui_masktype). The value is **ARKUI_MASK_TYPE_PATH**.<br>.value[4].f32: width of the path, in vp.<br>.value[5].f32: height of the path, in vp.<br>.string: command string for drawing the path.|
-| 5. Progress| .value[0].i32: mask type. The parameter type is [ArkUI_MaskType](capi-native-type-h.md#arkui_masktype). The value is **ARKUI_MASK_TYPE_PROGRESS**.<br>.value[1].f32: current value of the progress indicator.<br>.value[2].f32: maximum value of the progress indicator.<br>.value[3].u32: color of the progress indicator.|
+| 1. Rectangle| .value[0].u32: fill color, in 0xARGB format.<br>.value[1].u32: stroke color, in 0xARGB format.<br>.value[2].f32: stroke width, in vp.<br>.value[3].i32: mask type. The parameter type is [ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype). The value is **ARKUI_MASK_TYPE_RECTANGLE**.<br>.value[4].f32: width of the rectangle, in vp.<br>.value[5].f32: height of the rectangle, in vp.<br>.value[6].f32: width of the rounded corner of the rectangle, in vp.<br>.value[7].f32: height of the rounded corner of the rectangle, in vp.<br>.value[8]?.f32: radius of the upper left corner of the rectangle, in vp.<br>.value[9]?.f32: radius of the lower left corner of the rectangle, in vp.<br>.value[10]?.f32: radius of the upper right corner of the rectangle, in vp.<br>.value[11]?.f32: radius of the lower right corner of the rectangle, in vp.|
+| 2. Circle| .value[0].u32: fill color, in 0xARGB format.<br>.value[1].u32: stroke color, in 0xARGB format.<br>.value[2].f32: stroke width, in vp.<br>.value[3].i32: mask type. The parameter type is [ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype). The value is **ARKUI_MASK_TYPE_CIRCLE**.<br>.value[4].f32: width of the circle, in vp.<br>.value[5].f32: height of the circle, in vp.|
+| 3. Ellipse| .value[0].u32: fill color, in 0xARGB format.<br>.value[1].u32: stroke color, in 0xARGB format.<br>.value[2].f32: stroke width, in vp.<br>.value[3].i32: mask type. The parameter type is [ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype). The value is **ARKUI_MASK_TYPE_ELLIPSE**.<br>.value[4].f32: width of the ellipse, in vp.<br>.value[5].f32: height of the ellipse, in vp.|
+| 4. Path| .value[0].u32: fill color, in 0xARGB format.<br>.value[1].u32: stroke color, in 0xARGB format.<br>.value[2].f32: stroke width, in vp.<br>.value[3].i32: mask type. The parameter type is [ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype). The value is **ARKUI_MASK_TYPE_PATH**.<br>.value[4].f32: width of the path, in vp.<br>.value[5].f32: height of the path, in vp.<br>.string: command string for drawing the path.|
+| 5. Progress| .value[0].i32: mask type. The parameter type is [ArkUI_MaskType](capi-native-type-visual-h.md#arkui_masktype). The value is **ARKUI_MASK_TYPE_PROGRESS**.<br>.value[1].f32: current value of the progress indicator.<br>.value[2].f32: maximum value of the progress indicator.<br>.value[3].u32: color of the progress indicator.|
 
 **Returns**
 
@@ -914,15 +914,15 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Blend mode of the current component. The parameter type is [ArkUI_BlendMode](capi-native-type-h.md#arkui_blendmode). The default value is **ARKUI_BLEND_MODE_NONE**.|
-| .value[1]?.i32 | How the specified blend mode is applied. The parameter type is [ArkUI_BlendApplyType](capi-native-type-h.md#arkui_blendapplytype). The default value is **BLEND_APPLY_TYPE_FAST**.|
+| .value[0].i32 | Blend mode of the current component. The parameter type is [ArkUI_BlendMode](capi-native-type-visual-h.md#arkui_blendmode). The default value is **ARKUI_BLEND_MODE_NONE**.|
+| .value[1]?.i32 | How the specified blend mode is applied. The parameter type is [ArkUI_BlendApplyType](capi-native-type-visual-h.md#arkui_blendapplytype). The default value is **BLEND_APPLY_TYPE_FAST**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Blend mode of the current component. The parameter type is [ArkUI_BlendMode](capi-native-type-h.md#arkui_blendmode). The default value is **ARKUI_BLEND_MODE_NONE**.|
-| .value[1].i32 | How the specified blend mode is applied. The parameter type is [ArkUI_BlendApplyType](capi-native-type-h.md#arkui_blendapplytype). The default value is **BLEND_APPLY_TYPE_FAST**.|
+| .value[0].i32 | Blend mode of the current component. The parameter type is [ArkUI_BlendMode](capi-native-type-visual-h.md#arkui_blendmode). The default value is **ARKUI_BLEND_MODE_NONE**.|
+| .value[1].i32 | How the specified blend mode is applied. The parameter type is [ArkUI_BlendApplyType](capi-native-type-visual-h.md#arkui_blendapplytype). The default value is **BLEND_APPLY_TYPE_FAST**.|
 
 ## NODE_GRAY_SCALE
 
@@ -1116,13 +1116,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | How the final state of the component's content is rendered. The value is an enumerated value of [ArkUI_RenderFit](capi-native-type-h.md#arkui_renderfit).|
+| .value[0].i32 | How the final state of the component's content is rendered. The value is an enumerated value of [ArkUI_RenderFit](capi-native-type-visual-h.md#arkui_renderfit).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | How the final state of the component's content is rendered. The value is an enumerated value of [ArkUI_RenderFit](capi-native-type-h.md#arkui_renderfit).|
+| .value[0].i32 | How the final state of the component's content is rendered. The value is an enumerated value of [ArkUI_RenderFit](capi-native-type-visual-h.md#arkui_renderfit).|
 
 ## NODE_OUTLINE_COLOR
 
@@ -1195,7 +1195,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Foreground blur style. The value is an enumerated value of [ArkUI_BlurStyle](capi-native-type-h.md#arkui_blurstyle).|
+| .value[0].i32 | Foreground blur style. The value is an enumerated value of [ArkUI_BlurStyle](capi-native-type-visual-h.md#arkui_blurstyle).|
 | .value[1]?.i32 | Color mode used for the foreground blur. The value is an enumerated value of [ArkUI_ColorMode](capi-native-type-h.md#arkui_colormode).|
 | .value[2]?.i32 | Adaptive color mode used for the foreground blur. The value is an enumerated value of [ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor).|
 | .value[3]?.f32 | Blur degree. The value range is [0.0, 1.0].|
@@ -1206,7 +1206,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Foreground blur style. The value is an enumerated value of [ArkUI_BlurStyle](capi-native-type-h.md#arkui_blurstyle).|
+| .value[0].i32 | Foreground blur style. The value is an enumerated value of [ArkUI_BlurStyle](capi-native-type-visual-h.md#arkui_blurstyle).|
 | .value[1].i32 | Color mode used for the foreground blur. The value is an enumerated value of [ArkUI_ColorMode](capi-native-type-h.md#arkui_colormode).|
 | .value[2].i32 | Adaptive color mode used for the foreground blur. The value is an enumerated value of [ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor).|
 | .value[3].f32 | Blur degree. The value range is [0.0, 1.0].|

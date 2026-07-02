@@ -1,8 +1,8 @@
 # Path2D
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -16,7 +16,7 @@
 >
 >  Path2D对象的方法无法对[CanvasRenderingContext2D](./ts-canvasrenderingcontext2d.md)和[OffscreenCanvasRenderingContext2D](./ts-offscreencanvasrenderingcontext2d.md)对象中设置的路径生效。
 
-## 构造函数
+## 接口
 
 ### constructor
 
@@ -39,6 +39,8 @@ constructor(unit: LengthMetricsUnit)
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,6 +78,8 @@ constructor(path: Path2D, unit: LengthMetricsUnit)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
@@ -112,6 +116,8 @@ constructor(description: string, unit: LengthMetricsUnit)
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -173,7 +179,7 @@ addPath(path: Path2D, transform?: Matrix2D): void
   }
   ```
 
-  ![zh-cn_image_0000001238712467](figures/zh-cn_image_0000001238712467.png)
+  ![addPath](figures/addPath.png)
 
 
 ### closePath
@@ -219,7 +225,7 @@ closePath(): void
   }
   ```
 
-  ![zh-cn_image_0000001193872542](figures/zh-cn_image_0000001193872542.png)
+  ![closePath](figures/closePath.png)
 
 
 ### moveTo
@@ -236,7 +242,7 @@ moveTo(x: number, y: number): void
 
 **参数：**
 
-| 参数   | 类型     | 必填 | 描述       |
+| 参数名   | 类型     | 必填 | 说明       |
 | ---- | ------ | ---- | -------- |
 | x    | number | 是 | 目标点X轴坐标。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
 | y    | number | 是 | 目标点Y轴坐标。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
@@ -278,7 +284,7 @@ moveTo(x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001194032502](figures/zh-cn_image_0000001194032502.png)
+  ![moveTo](figures/moveTo.png)
 
 
 ### lineTo
@@ -332,7 +338,7 @@ lineTo(x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001238832437](figures/zh-cn_image_0000001238832437.png)
+  ![lineTo3](figures/lineTo3.png)
 
 
 ### bezierCurveTo
@@ -351,10 +357,10 @@ bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number,
 
 | 参数名  | 类型     | 必填 |  说明   |
 | ----- | -------- | ---- | ---------- |
-| cp1x | number | 是 | 第一个贝塞尔参数的x坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
-| cp1y | number | 是 | 第一个贝塞尔参数的y坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
-| cp2x | number | 是 | 第二个贝塞尔参数的x坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
-| cp2y | number | 是 | 第二个贝塞尔参数的y坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
+| cp1x | number | 是 | 第一个贝塞尔控制点的x坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
+| cp1y | number | 是 | 第一个贝塞尔控制点的y坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
+| cp2x | number | 是 | 第二个贝塞尔控制点的x坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
+| cp2y | number | 是 | 第二个贝塞尔控制点的y坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
 | x    | number | 是 | 路径结束时的x坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp    |
 | y    | number | 是 | 路径结束时的y坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp    |
 
@@ -387,7 +393,7 @@ bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number,
   }
   ```
 
-  ![zh-cn_image_0000001239032455](figures/zh-cn_image_0000001239032455.png)
+  ![bezierCurveTo3](figures/bezierCurveTo3.png)
 
 
 ### quadraticCurveTo
@@ -406,8 +412,8 @@ quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void
 
 | 参数名  | 类型     | 必填 |  说明   |
 | ----- | -------- | ---- | ---------- |
-| cpx  | number | 是 | 贝塞尔参数的x坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
-| cpy  | number | 是 | 贝塞尔参数的y坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
+| cpx  | number | 是 | 贝塞尔控制点的x坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
+| cpy  | number | 是 | 贝塞尔控制点的y坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
 | x    | number | 是 | 路径结束时的x坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
 | y    | number | 是 | 路径结束时的y坐标值。<br>API version 18之前，设置NaN或Infinity时，整条路径不显示；设置null或undefined时，当前接口不生效。API version 18及以后，设置NaN、Infinity、null或undefined时当前接口不生效，其他传入有效参数的路径方法正常绘制。<br>默认单位：vp |
 
@@ -432,7 +438,7 @@ quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void
             this.path2Db.moveTo(10, 10)
             this.path2Db.quadraticCurveTo(100, 100, 200, 20)
             this.context.stroke(this.path2Db)
-        })
+          })
       }
       .width('100%')
       .height('100%')
@@ -440,7 +446,7 @@ quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001238952419](figures/zh-cn_image_0000001238952419.png)
+  ![quadraticCurveTo3](figures/quadraticCurveTo3.png)
 
 
 ### arc
@@ -494,7 +500,7 @@ arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, 
   }
   ```
 
-  ![zh-cn_image_0000001194192488](figures/zh-cn_image_0000001194192488.png)
+  ![arc](figures/arc.png)
 
 
 ### arcTo
@@ -548,7 +554,7 @@ arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void
   }
   ```
 
-  ![zh-cn_image_0000001194352486](figures/zh-cn_image_0000001194352486.png)
+  ![arcTo2](figures/arcTo2.png)
 
 
 ### ellipse
@@ -604,7 +610,7 @@ ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number
   }
   ```
 
-  ![zh-cn_image_0000001238712471](figures/zh-cn_image_0000001238712471.png)
+  ![ellipse](figures/ellipse.png)
 
 
 ### rect
@@ -656,7 +662,7 @@ rect(x: number, y: number, w: number, h: number): void
   }
   ```
 
-  ![zh-cn_image_0000001193872544](figures/zh-cn_image_0000001193872544.png)
+  ![rect](figures/rect.png)
 
 ### roundRect<sup>20+</sup>
 
@@ -667,6 +673,8 @@ roundRect(x: number, y: number, w: number, h: number, radii?: number | Array\<nu
 **卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -684,9 +692,9 @@ roundRect(x: number, y: number, w: number, h: number, radii?: number | Array\<nu
 
 以下错误码的详细介绍请参见[Canvas组件错误码](../errorcode-canvas.md)。
 
-| 错误码ID | 错误信息 | 可能原因 |
-| -------- | -------- | -------- |
-| 103701   | Parameter error.| 1. The param radii is a list that has zero or more than four elements; 2. The param radii contains negative value. |
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 103701   | Parameter error. Possible causes:<br> 1. The param radii is a list that has zero or more than four elements.<br> 2. The param radii contains negative value.|
 
 **示例：**
 

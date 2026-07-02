@@ -9,15 +9,16 @@
 
 ## Overview
 
-Defines the enums, structs, and macros used in the HUKS functions.
+Defines enums, structs, macros, and error codes in HUKS.
 
 **File to include**: <huks/native_huks_type.h>
 
 **Library**: libhuks_ndk.z.so
 
-**System capability**: SystemCapability.Security.Huks.Core
+**System capability:**
 
-The preceding system capability is available since API version 20. From API versions 9 to 19, the system capability is **SystemCapability.Security.Huks.Core**.
+- API version 20+: SystemCapability.Security.Huks.Core
+- API version 9-19: SystemCapability.Security.Huks
 
 **Since**: 9
 
@@ -27,50 +28,50 @@ The preceding system capability is available since API version 20. From API vers
 
 ### Structs
 
-| Name| Description|
-| -- | -- |
-| [OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | Defines the struct of the returned data, including a status code and related description.|
-| [OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) | Defines the struct of a binary large object (BLOB).|
-| [OH_Huks_Param](capi-hukstypeapi-oh-huks-param.md) | Defines the struct of the parameters in a parameter set.|
-| [OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) | Defines the struct of a parameter set.|
-| [OH_Huks_CertChain](capi-hukstypeapi-oh-huks-certchain.md) | Defines the struct of a certificate chain.|
-| [OH_Huks_KeyInfo](capi-hukstypeapi-oh-huks-keyinfo.md) | Defines the struct of key information.|
-| [OH_Huks_PubKeyInfo](capi-hukstypeapi-oh-huks-pubkeyinfo.md) | Defines the struct of the public key information.|
-| [OH_Huks_KeyMaterialRsa](capi-hukstypeapi-oh-huks-keymaterialrsa.md) | Defines the struct of a Rivest-Shamir-Adleman (RSA) key.|
-| [OH_Huks_KeyMaterialEcc](capi-hukstypeapi-oh-huks-keymaterialecc.md) | Defines the struct of an Elliptic Curve Cryptography (ECC) key.|
-| [OH_Huks_KeyMaterialDsa](capi-hukstypeapi-oh-huks-keymaterialdsa.md) | Defines the struct of a DSA key.|
-| [OH_Huks_KeyMaterialDh](capi-hukstypeapi-oh-huks-keymaterialdh.md) | Defines the struct of a Diffie-Hellman (DH) key.|
-| [OH_Huks_KeyMaterial25519](capi-hukstypeapi-oh-huks-keymaterial25519.md) | Defines the struct of a 25519 key.|
-| [OH_Huks_KeyAliasSet](capi-hukstypeapi-oh-huks-keyaliasset.md) | Defines the struct of a key alias set.|
+| Name| typedef Keyword| Description|
+| -- | -- | -- |
+| [OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | OH_Huks_Result | Defines the struct of the returned data, including a status code and related description.|
+| [OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) | OH_Huks_Blob | Defines the struct of a binary large object (BLOB).|
+| [OH_Huks_Param](capi-hukstypeapi-oh-huks-param.md) | OH_Huks_Param | Defines the struct of a parameter.|
+| [OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) | OH_Huks_ParamSet | Defines the struct of a parameter set.|
+| [OH_Huks_CertChain](capi-hukstypeapi-oh-huks-certchain.md) | OH_Huks_CertChain | Defines the struct of a certificate chain.|
+| [OH_Huks_KeyInfo](capi-hukstypeapi-oh-huks-keyinfo.md) | OH_Huks_KeyInfo | Defines the struct of key information.|
+| [OH_Huks_PubKeyInfo](capi-hukstypeapi-oh-huks-pubkeyinfo.md) | OH_Huks_PubKeyInfo | Defines the struct of the public key information.|
+| [OH_Huks_KeyMaterialRsa](capi-hukstypeapi-oh-huks-keymaterialrsa.md) | OH_Huks_KeyMaterialRsa | Defines the struct of a Rivest-Shamir-Adleman (RSA) key.|
+| [OH_Huks_KeyMaterialEcc](capi-hukstypeapi-oh-huks-keymaterialecc.md) | OH_Huks_KeyMaterialEcc | Defines the struct of an Elliptic Curve Cryptography (ECC) key.|
+| [OH_Huks_KeyMaterialDsa](capi-hukstypeapi-oh-huks-keymaterialdsa.md) | OH_Huks_KeyMaterialDsa | Defines the struct of a DSA key.|
+| [OH_Huks_KeyMaterialDh](capi-hukstypeapi-oh-huks-keymaterialdh.md) | OH_Huks_KeyMaterialDh | Defines the struct of a Diffie-Hellman (DH) key.|
+| [OH_Huks_KeyMaterial25519](capi-hukstypeapi-oh-huks-keymaterial25519.md) | OH_Huks_KeyMaterial25519 | Defines the struct of a 25519 key.|
+| [OH_Huks_KeyAliasSet](capi-hukstypeapi-oh-huks-keyaliasset.md) | OH_Huks_KeyAliasSet | Defines the struct of a key alias set.|
 
 ### Enums
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [OH_Huks_KeyPurpose](#oh_huks_keypurpose) | - | Enumerates the key purposes.|
-| [OH_Huks_KeyDigest](#oh_huks_keydigest) | - | Enumerates the digest algorithms.|
-| [OH_Huks_KeyPadding](#oh_huks_keypadding) | - | Enumerates the padding algorithm types.|
-| [OH_Huks_CipherMode](#oh_huks_ciphermode) | - | Cipher mode.|
-| [OH_Huks_KeySize](#oh_huks_keysize) | - | Enumerates the key sizes of different algorithms.|
-| [OH_Huks_KeyAlg](#oh_huks_keyalg) | - | Enumerates the algorithms for keys.|
-| [OH_Huks_AlgSuite](#oh_huks_algsuite) | - | Enumerates the algorithm suites that can be used for importing of a key in cipher text.|
-| [OH_Huks_KeyGenerateType](#oh_huks_keygeneratetype) | - | Enumerates the types of the key generated.|
-| [OH_Huks_KeyFlag](#oh_huks_keyflag) | - | Enumerates the key generation types.|
-| [OH_Huks_KeyStorageType](#oh_huks_keystoragetype) | - | Enumerates the key storage types.|
-| [OH_Huks_ImportKeyType](#oh_huks_importkeytype) | - | Enumerates the types of the key to import. By default, a public key is imported. This field is not required when a symmetric key is imported.|
-| [OH_Huks_RsaPssSaltLenType](#oh_huks_rsapsssaltlentype) | - | Enumerates the length types of the salt value in PSS padding mode.|
-| [OH_Huks_ErrCode](#oh_huks_errcode) | - | Enumerates error codes.|
-| [OH_Huks_TagType](#oh_huks_tagtype) | - | Enumerates the types of the parameters in a parameter set.|
-| [OH_Huks_UserAuthType](#oh_huks_userauthtype) | - | Enumerates the user authentication types in key access control.|
-| [OH_Huks_AuthAccessType](#oh_huks_authaccesstype) | - | Enumerates the rules for invalidating a key.|
-| [OH_Huks_AuthStorageLevel](#oh_huks_authstoragelevel) | - | Enumerates the security levels for storing the key generated or imported.|
-| [OH_Huks_ChallengeType](#oh_huks_challengetype) | - | Enumerates the types of the challenge generated when a key is used.|
-| [OH_Huks_UserAuthMode](#oh_huks_userauthmode) | - | Enumerates the user authentication modes in key access control.|
-| [OH_Huks_ChallengePosition](#oh_huks_challengeposition) | - | Enumerates the positions of the 8-byte valid value in a custom challenge generated.|
-| [OH_Huks_SecureSignType](#oh_huks_securesigntype) | - | Enumerates the signature types of the key generated or imported.|
+| [OH_Huks_KeyPurpose](#oh_huks_keypurpose) | OH_Huks_KeyPurpose | Enumerates the key purposes. Multiple purposes can be combined using bitwise OR (\|).|
+| [OH_Huks_KeyDigest](#oh_huks_keydigest) | OH_Huks_KeyDigest | Enumerates the digest algorithms.|
+| [OH_Huks_KeyPadding](#oh_huks_keypadding) | OH_Huks_KeyPadding | Enumerates the padding algorithm types.|
+| [OH_Huks_CipherMode](#oh_huks_ciphermode) | OH_Huks_CipherMode | Cipher mode.|
+| [OH_Huks_KeySize](#oh_huks_keysize) | OH_Huks_KeySize | Enumerates the key sizes of different algorithms.|
+| [OH_Huks_KeyAlg](#oh_huks_keyalg) | OH_Huks_KeyAlg | Enumerates the algorithms for keys.|
+| [OH_Huks_AlgSuite](#oh_huks_algsuite) | OH_Huks_AlgSuite | Enumerates the algorithm suites that can be used for importing of a key in cipher text.|
+| [OH_Huks_KeyGenerateType](#oh_huks_keygeneratetype) | OH_Huks_KeyGenerateType | Enumerates the types of the key generated.|
+| [OH_Huks_KeyFlag](#oh_huks_keyflag) | OH_Huks_KeyFlag | Enumerates the key generation types.|
+| [OH_Huks_KeyStorageType](#oh_huks_keystoragetype) | OH_Huks_KeyStorageType | Enumerates the key storage types.|
+| [OH_Huks_ImportKeyType](#oh_huks_importkeytype) | OH_Huks_ImportKeyType | Enumerates the types of the key to import. By default, a public key is imported. This field is not required when a symmetric key is imported.|
+| [OH_Huks_RsaPssSaltLenType](#oh_huks_rsapsssaltlentype) | OH_Huks_RsaPssSaltLenType | Enumerates the length types of the salt value in PSS padding mode of the RSA algorithm.|
+| [OH_Huks_ErrCode](#oh_huks_errcode) | OH_Huks_ErrCode | Enumerates error codes.|
+| [OH_Huks_TagType](#oh_huks_tagtype) | OH_Huks_TagType | Enumerates parameter types.|
+| [OH_Huks_UserAuthType](#oh_huks_userauthtype) | OH_Huks_UserAuthType | Enumerates the user authentication types in key access control.|
+| [OH_Huks_AuthAccessType](#oh_huks_authaccesstype) | OH_Huks_AuthAccessType | Enumerates the rules for invalidating a key.|
+| [OH_Huks_AuthStorageLevel](#oh_huks_authstoragelevel) | OH_Huks_AuthStorageLevel | Enumerates the security levels for storing the key generated or imported.|
+| [OH_Huks_ChallengeType](#oh_huks_challengetype) | OH_Huks_ChallengeType | Enumerates the types of the challenge generated when a key is used.|
+| [OH_Huks_UserAuthMode](#oh_huks_userauthmode) | OH_Huks_UserAuthMode | Enumerates the user authentication modes in key access control.|
+| [OH_Huks_ChallengePosition](#oh_huks_challengeposition) | OH_Huks_ChallengePosition | Enumerates the positions of the 8-byte valid value in a custom challenge generated.|
+| [OH_Huks_SecureSignType](#oh_huks_securesigntype) | OH_Huks_SecureSignType | Enumerates the signature types of the key generated or imported.|
 | [OH_Huks_KeyClassType](#oh_huks_keyclasstype) | OH_Huks_KeyClassType | Key type.|
-| [OH_Huks_KeyWrapType](#oh_huks_keywraptype) | - | Enumerates the wrap type of the key generated or imported.|
-| [OH_Huks_Tag](#oh_huks_tag) | - | Enumerates the tags contained in a parameter set.|
+| [OH_Huks_KeyWrapType](#oh_huks_keywraptype) | OH_Huks_KeyWrapType | Enumerates the wrap type of the key generated or imported.|
+| [OH_Huks_Tag](#oh_huks_tag) | OH_Huks_Tag | Enumerates the tags contained in a parameter set.|
 
 ### Macros
 
@@ -90,7 +91,7 @@ The preceding system capability is available since API version 20. From API vers
 | TOKEN_CHALLENGE_LEN 32 | Byte length of the challenge value during access control.<br>**Since**: 9|
 | SHA256_SIGN_LEN 32 | Byte length of the SHA-256 signature.<br>**Since**: 9|
 | TOKEN_SIZE 32 | Byte length of the challenge value during access control.<br>**Since**: 9|
-| MAX_AUTH_TIMEOUT_SECOND 60 | Maximum user authentication timeout.<br>**Since**: 9|
+| MAX_AUTH_TIMEOUT_SECOND 60 | Maximum user authentication timeout interval, in seconds.<br>**Since**: 9|
 | SECURE_SIGN_VERSION 0x01000001 | Version of the secure signature data.<br>**Since**: 9|
 
 ## Enum Description
@@ -103,7 +104,7 @@ enum OH_Huks_KeyPurpose
 
 **Description**
 
-Enumerates the key purposes.
+Enumerates the key purposes. Multiple purposes can be combined using bitwise OR (\|).
 
 **Since**: 9
 
@@ -378,7 +379,7 @@ enum OH_Huks_RsaPssSaltLenType
 
 **Description**
 
-Enumerates the length types of the salt value in PSS padding mode.
+Enumerates the length types of the salt value in PSS padding mode of the RSA algorithm.
 
 **Since**: 10
 
@@ -424,11 +425,11 @@ Enumerates error codes.
 | OH_HUKS_ERR_CODE_KEY_ALREADY_EXIST = 12000017 | A key with the same name already exists.<br>**Since**: 20|
 | OH_HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018 | An input parameter is invalid.<br>**Since**: 20|
 | OH_HUKS_ERR_CODE_ITEM_EXISTS = 12000019 | The entity already exists.<br>**Since**: 22|
-| OH_HUKS_ERR_CODE_EXTERNAL_MODULE = 12000020 | The provider or Ukey internal execution fails.<br>**Since**: 22|
-| OH_HUKS_ERR_CODE_PIN_LOCKED = 12000021 | PIN locked.<br>**Since**: 22|
+| OH_HUKS_ERR_CODE_EXTERNAL_MODULE = 12000020 | The provider or UKey internal execution fails.<br>**Since**: 22|
+| OH_HUKS_ERR_CODE_PIN_LOCKED = 12000021 | The PIN is locked.<br>**Since**: 22|
 | OH_HUKS_ERR_CODE_PIN_INCORRECT = 12000022 | Incorrect PIN.<br>**Since**: 22|
 | OH_HUKS_ERR_CODE_PIN_NO_AUTH = 12000023 | PIN authentication fails.<br>**Since**: 22|
-| OH_HUKS_ERR_CODE_BUSY = 12000024 | The provider or Ukey resources are being used.<br>**Since**: 22|
+| OH_HUKS_ERR_CODE_BUSY = 12000024 | The provider or UKey resources are being used.<br>**Since**: 22|
 | OH_HUKS_ERR_CODE_EXCEED_LIMIT = 12000025 | The resource limit is exceeded.<br>**Since**: 22|
 
 ### OH_Huks_TagType
@@ -439,7 +440,7 @@ enum OH_Huks_TagType
 
 **Description**
 
-Enumerates the types of the parameters in a parameter set.
+Enumerates parameter types.
 
 **Since**: 9
 
@@ -447,8 +448,8 @@ Enumerates the types of the parameters in a parameter set.
 | -- | -- |
 | OH_HUKS_TAG_TYPE_INVALID = 0 << 28 | Invalid tag type.|
 | OH_HUKS_TAG_TYPE_INT = 1 << 28 | int32_t.|
-| OH_HUKS_TAG_TYPE_UINT = 2 << 28 | uin32_t.|
-| OH_HUKS_TAG_TYPE_ULONG = 3 << 28 | uin64_t.|
+| OH_HUKS_TAG_TYPE_UINT = 2 << 28 | uint32_t.|
+| OH_HUKS_TAG_TYPE_ULONG = 3 << 28 | uint64_t.|
 | OH_HUKS_TAG_TYPE_BOOL = 4 << 28 | Boolean.|
 | OH_HUKS_TAG_TYPE_BYTES = 5 << 28 | [OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md).|
 
@@ -513,7 +514,7 @@ Enumerates the security levels for storing the key generated or imported.
 | OH_HUKS_AUTH_STORAGE_LEVEL_ECE = 2 | The key can be accessed only when the device is unlocked.|
 > **NOTE**
 >
->  When using a key whose storage level is ECE, you are advised to clear the session resources created using the key by detecting the [lock screen event](../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_screen_locked) to ensure security.
+>  When using a key whose storage level is ECE, you are advised to clear the session resources created using the key by detecting the [COMMON_EVENT_SCREEN_LOCKED](../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_screen_locked) event to ensure security.
 ### OH_Huks_ChallengeType
 
 ```c
@@ -569,9 +570,9 @@ Enumerates the positions of the 8-byte valid value in a custom challenge generat
 | Enum| Description|
 | -- | -- |
 | OH_HUKS_CHALLENGE_POS_0 = 0 | Bytes 0 to 7.|
-| OH_HUKS_CHALLENGE_POS_1 | Bytes 8 to 15.|
-| OH_HUKS_CHALLENGE_POS_2 | Bytes 16 to 23.|
-| OH_HUKS_CHALLENGE_POS_3 | Bytes 24 to 31.|
+| OH_HUKS_CHALLENGE_POS_1 = 1 | Bytes 8 to 15.|
+| OH_HUKS_CHALLENGE_POS_2 = 2 | Bytes 16 to 23.|
+| OH_HUKS_CHALLENGE_POS_3 = 3 | Bytes 24 to 31.|
 
 ### OH_Huks_SecureSignType
 
@@ -604,7 +605,7 @@ Key type.
 | Enum| Description|
 | -- | -- |
 | OH_HUKS_KEY_CLASS_DEFAULT = 0 | Default type. The key is stored in HUKS.|
-| OH_HUKS_KEY_CLASS_EXTENSION = 1 | The key is stored in the external encryption provider.|
+| OH_HUKS_KEY_CLASS_EXTENSION = 1 | The key is stored in an external encryption capability provider.|
 
 ### OH_Huks_KeyWrapType
 
@@ -636,12 +637,12 @@ Enumerates the tags contained in a parameter set.<br> 1 to 200: key parameter ta
 
 | Enum| Description|
 | -- | -- |
-| OH_HUKS_TAG_ALGORITHM = OH_HUKS_TAG_TYPE_UINT \| 1 | Algorithm type.|
-| OH_HUKS_TAG_PURPOSE = OH_HUKS_TAG_TYPE_UINT \| 2 | Key purpose.|
-| OH_HUKS_TAG_KEY_SIZE = OH_HUKS_TAG_TYPE_UINT \| 3 | Key length.|
-| OH_HUKS_TAG_DIGEST = OH_HUKS_TAG_TYPE_UINT \| 4 | Digest algorithm.|
-| OH_HUKS_TAG_PADDING = OH_HUKS_TAG_TYPE_UINT \| 5 | Padding algorithm.|
-| OH_HUKS_TAG_BLOCK_MODE = OH_HUKS_TAG_TYPE_UINT \| 6 | Cipher mode.|
+| OH_HUKS_TAG_ALGORITHM = OH_HUKS_TAG_TYPE_UINT \| 1 | Algorithm type. For details, see [OH_Huks_KeyAlg](capi-native-huks-type-h.md#oh_huks_keyalg).|
+| OH_HUKS_TAG_PURPOSE = OH_HUKS_TAG_TYPE_UINT \| 2 | Key purpose. For details, see [OH_Huks_KeyPurpose](capi-native-huks-type-h.md#oh_huks_keypurpose).|
+| OH_HUKS_TAG_KEY_SIZE = OH_HUKS_TAG_TYPE_UINT \| 3 | Key length, in bits. For details, see [OH_Huks_KeySize](capi-native-huks-type-h.md#oh_huks_keysize).|
+| OH_HUKS_TAG_DIGEST = OH_HUKS_TAG_TYPE_UINT \| 4 | Digest algorithm. For details, see [OH_Huks_KeyDigest](capi-native-huks-type-h.md#oh_huks_keydigest).|
+| OH_HUKS_TAG_PADDING = OH_HUKS_TAG_TYPE_UINT \| 5 | Padding algorithm. For details, see [OH_Huks_KeyPadding](capi-native-huks-type-h.md#oh_huks_keypadding).|
+| OH_HUKS_TAG_BLOCK_MODE = OH_HUKS_TAG_TYPE_UINT \| 6 | Encryption mode. For details, see [OH_Huks_CipherMode](capi-native-huks-type-h.md#oh_huks_ciphermode).|
 | OH_HUKS_TAG_KEY_TYPE = OH_HUKS_TAG_TYPE_UINT \| 7 | Key type.|
 | OH_HUKS_TAG_ASSOCIATED_DATA = OH_HUKS_TAG_TYPE_BYTES \| 8 | Associated authentication data.|
 | OH_HUKS_TAG_NONCE = OH_HUKS_TAG_TYPE_BYTES \| 9 | **NONCE** field for key encryption and decryption.|
@@ -655,16 +656,16 @@ Enumerates the tags contained in a parameter set.<br> 1 to 200: key parameter ta
 | OH_HUKS_TAG_AGREE_PRIVATE_KEY_ALIAS = OH_HUKS_TAG_TYPE_BYTES \| 21 | Alias of the private key used for key agreement.|
 | OH_HUKS_TAG_AGREE_PUBLIC_KEY = OH_HUKS_TAG_TYPE_BYTES \| 22 | Public key used for key agreement.|
 | OH_HUKS_TAG_KEY_ALIAS = OH_HUKS_TAG_TYPE_BYTES \| 23 | Key alias.|
-| OH_HUKS_TAG_DERIVE_KEY_SIZE = OH_HUKS_TAG_TYPE_UINT \| 24 | Size of the derived key.|
+| OH_HUKS_TAG_DERIVE_KEY_SIZE = OH_HUKS_TAG_TYPE_UINT \| 24 | Size of the derived key, in bytes.|
 | OH_HUKS_TAG_IMPORT_KEY_TYPE = OH_HUKS_TAG_TYPE_UINT \| 25 | Type of the imported key. For details, see [OH_Huks_ImportKeyType](capi-native-huks-type-h.md#oh_huks_importkeytype).|
-| OH_HUKS_TAG_UNWRAP_ALGORITHM_SUITE = OH_HUKS_TAG_TYPE_UINT \| 26 | Algorithm suite used for importing a key in ciphertext.|
+| OH_HUKS_TAG_UNWRAP_ALGORITHM_SUITE = OH_HUKS_TAG_TYPE_UINT \| 26 | Suite of the imported encryption key. For details, see [OH_Huks_AlgSuite](capi-native-huks-type-h.md#oh_huks_algsuite).|
 | OH_HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG = OH_HUKS_TAG_TYPE_UINT \| 29 | Storage type of the derived key or key produced after key agreement. For details, see [OH_Huks_KeyStorageType](capi-native-huks-type-h.md#oh_huks_keystoragetype).|
-| OH_HUKS_TAG_RSA_PSS_SALT_LEN_TYPE = OH_HUKS_TAG_TYPE_UINT \| 30 | Salt length type when the PSS padding mode is used with the RSA algorithm.|
+| OH_HUKS_TAG_RSA_PSS_SALT_LEN_TYPE = OH_HUKS_TAG_TYPE_UINT \| 30 | Salt length type when the padding mode of the RSA algorithm is PSS. For details, see [OH_Huks_RsaPssSaltLenType](capi-native-huks-type-h.md#oh_huks_rsapsssaltlentype).|
 | OH_HUKS_TAG_ALL_USERS = OH_HUKS_TAG_TYPE_BOOL \| 301 | All users in the multi-user scenario.|
 | OH_HUKS_TAG_USER_ID = OH_HUKS_TAG_TYPE_UINT \| 302 | Multi-user ID.|
 | OH_HUKS_TAG_NO_AUTH_REQUIRED = OH_HUKS_TAG_TYPE_BOOL \| 303 | Whether key access control is required.|
-| OH_HUKS_TAG_USER_AUTH_TYPE = OH_HUKS_TAG_TYPE_UINT \| 304 | User authentication type in key access control.|
-| OH_HUKS_TAG_AUTH_TIMEOUT = OH_HUKS_TAG_TYPE_UINT \| 305 | Timeout duration for key access.|
+| OH_HUKS_TAG_USER_AUTH_TYPE = OH_HUKS_TAG_TYPE_UINT \| 304 | User authentication mode in key access control. For details, see [OH_Huks_UserAuthType](capi-native-huks-type-h.md#oh_huks_userauthtype).|
+| OH_HUKS_TAG_AUTH_TIMEOUT = OH_HUKS_TAG_TYPE_UINT \| 305 | Timeout duration for key access in key access control, in seconds.|
 | OH_HUKS_TAG_AUTH_TOKEN = OH_HUKS_TAG_TYPE_BYTES \| 306 | Authentication token for the key.|
 | OH_HUKS_TAG_KEY_AUTH_ACCESS_TYPE = OH_HUKS_TAG_TYPE_UINT \| 307 | Key access control type, which must be set together with the user authentication type. For details, see [OH_Huks_AuthAccessType](capi-native-huks-type-h.md#oh_huks_authaccesstype).|
 | OH_HUKS_TAG_KEY_SECURE_SIGN_TYPE = OH_HUKS_TAG_TYPE_UINT \| 308 | Signature type of the key generated or imported.|
@@ -674,12 +675,12 @@ Enumerates the tags contained in a parameter set.<br> 1 to 200: key parameter ta
 | OH_HUKS_TAG_AUTH_STORAGE_LEVEL = OH_HUKS_TAG_TYPE_UINT \| 316 | Security levels for storing the key. For details, see [OH_Huks_AuthStorageLevel](capi-native-huks-type-h.md#oh_huks_authstoragelevel).<br>**Since**: 11|
 | OH_HUKS_TAG_USER_AUTH_MODE = OH_HUKS_TAG_TYPE_UINT \| 319 | User authentication mode in key access control. For details, see [OH_Huks_UserAuthMode](capi-native-huks-type-h.md#oh_huks_userauthmode).<br>**Since**: 12|
 | OH_HUKS_TAG_ATTESTATION_CHALLENGE = OH_HUKS_TAG_TYPE_BYTES \| 501 | Challenge value used in the attestation.|
-| OH_HUKS_TAG_ATTESTATION_APPLICATION_ID = OH_HUKS_TAG_TYPE_BYTES \| 502 | ID of the application, to which the key belongs, in key attestation.|
+| OH_HUKS_TAG_ATTESTATION_APPLICATION_ID = OH_HUKS_TAG_TYPE_BYTES \| 502 | ID of the application that has the key during key authentication.|
 | OH_HUKS_TAG_ATTESTATION_ID_ALIAS = OH_HUKS_TAG_TYPE_BYTES \| 511 | Alias used in key attestation.|
 | OH_HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO = OH_HUKS_TAG_TYPE_BYTES \| 514 | Security level used in key attestation.|
 | OH_HUKS_TAG_ATTESTATION_ID_VERSION_INFO = OH_HUKS_TAG_TYPE_BYTES \| 515 | Version information used in key attestation.|
 | OH_HUKS_TAG_KEY_OVERRIDE = OH_HUKS_TAG_TYPE_BOOL \| 520 | Whether to overwrite the key with the same name.<br>**Since**: 20|
-| OH_HUKS_TAG_AE_TAG_LEN = OH_HUKS_TAG_TYPE_UINT \| 521 | **AEAD** length in CCM mode.<br>**Since**: 22|
+| OH_HUKS_TAG_AE_TAG_LEN = OH_HUKS_TAG_TYPE_UINT \| 521 | Length of the specified AEAD in CCM mode.<br>**Since**: 22|
 | OH_HUKS_TAG_KEY_CLASS = OH_HUKS_TAG_TYPE_UINT \| 522 | Key type, which is used to distinguish the key managed by HUKS on the device from the key stored in an external device.<br>**Since**: 22|
 | OH_HUKS_TAG_KEY_ACCESS_GROUP = OH_HUKS_TAG_TYPE_BYTES \| 523 | Group ID. Keys can be shared among the same group of developers with the same developer ID.<br>**Since**: 23|
 | OH_HUKS_TAG_IS_KEY_ALIAS = OH_HUKS_TAG_TYPE_BOOL \| 1001 | Whether it is a key alias.|
@@ -691,7 +692,7 @@ Enumerates the tags contained in a parameter set.<br> 1 to 200: key parameter ta
 | OH_HUKS_TAG_KEY_FLAG = OH_HUKS_TAG_TYPE_UINT \| 1007 | Key flag. For details, see [OH_Huks_KeyFlag](capi-native-huks-type-h.md#oh_huks_keyflag).|
 | OH_HUKS_TAG_IS_ASYNCHRONIZED = OH_HUKS_TAG_TYPE_UINT \| 1008 | Whether the invocation is asynchronous.|
 | OH_HUKS_TAG_KEY_DOMAIN = OH_HUKS_TAG_TYPE_UINT \| 1011 | Key domain.|
-| OH_HUKS_TAG_IS_DEVICE_PASSWORD_SET = OH_HUKS_TAG_TYPE_BOOL \| 1012 | Whether the key is accessible only when the user sets a lock screen password.<br> **True** indicates that the key can be generated and used only when a password is set.<br>**Since**: 11|
+| OH_HUKS_TAG_IS_DEVICE_PASSWORD_SET = OH_HUKS_TAG_TYPE_BOOL \| 1012 | Whether the key is accessible only when the user sets a lock screen password.<br> **true** indicates that the key can be generated and used only when a password is set. **false** indicates that the key can be generated and used without setting a password.<br>**Since**: 11|
 | OH_HUKS_TAG_AE_TAG = OH_HUKS_TAG_TYPE_BYTES \| 10009 | AEAD in GCM mode.|
 | OH_HUKS_TAG_SYMMETRIC_KEY_DATA = OH_HUKS_TAG_TYPE_BYTES \| 20001 | Symmetric key data.|
 | OH_HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA = OH_HUKS_TAG_TYPE_BYTES \| 20002 | Public key data of the asymmetric key pair.|

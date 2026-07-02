@@ -393,7 +393,7 @@ onActionCancel(event: Callback\<GestureEvent>): PanGestureHandler
 | ------------ | ---------------------------------|----- | ---- | -------------------- |
 | fingers | number | 否| 是 | 用于指定触发拖动的最少手指数，最小为1指，&nbsp;最大取值为10指。<br/>默认值：1<br/>取值范围：[1, 10]<br/>**说明：** <br/>当设置的值小于1或不设置时，会被转化为默认值。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | direction | [PanDirection](./ts-basic-gestures-pangesture.md#pandirection枚举说明) | 否| 是 | 用于指定触发拖动的手势方向，此枚举值支持逻辑与(&amp;)和逻辑或（\|）运算。<br/>默认值：PanDirection.All<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| distance | number | 否| 是 | 用于指定触发滑动手势事件的最小拖动距离，单位为vp。<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs组件](ts-container-tabs.md)滑动与该滑动手势事件同时存在时，可将distance值设为1，使拖动更灵敏，避免造成事件错乱。<br/>取值范围：[0, +∞)，当设定的值小于0时，按默认值处理。<br/>从API version 19开始，手写笔默认值为8，单位为vp。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| distance | number | 否| 是 | 用于指定触发滑动手势事件的最小拖动距离，单位为vp。<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs组件](ts-container-tabs.md)滑动与该滑动手势事件同时存在时，可将distance值设为1，使拖动更灵敏，避免造成事件错乱。<br/>取值范围：[0, +∞)，当设定的值小于0时，按默认值处理。<br/>从API version 19开始，手写笔默认值为8，单位为vp。<br/>使用[gestureModifier](./ts-universal-attributes-gesture-modifier.md#gesturemodifier)配置该字段时，单位为px。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | distanceMap<sup>19+</sup> |  Map<[SourceTool](ts-gesture-settings.md#sourcetool枚举说明9), number> | 否| 是 | 用于指定不同输入源触发滑动手势事件的最小拖动距离，单位为vp。<br/>手写笔默认值：8，其余输入源默认值：5<br/>取值范围：[0, +∞)，当设定的值小于0时，按默认值处理。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 
 ## SwipeGestureHandler

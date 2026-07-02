@@ -1,4 +1,4 @@
-# 基于ArkTS脚本开发应用Skill
+# 基于ArkTS脚本的应用Skill开发指导
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -8,8 +8,6 @@
 <!--Adviser: @HelloCrease-->
 
 ## 概述
-
-随着系统智能体（Agent）逐步成为用户与操作系统交互的新入口，用户诉求正从“打开某个应用”演化为“完成某件具体的事”。自然语言表达的，往往不再是对某个入口的访问，而是对应用内某项细粒度业务能力的直接调用。
 
 从API版本26.0.0开始，Ability Kit支持将应用内业务能力以Skill形式开放给系统智能体调用。Skill提供一种声明式的能力外化机制：开发者将应用内可被外部调用的业务能力组织为若干能力单元，每个单元由一份描述文件（声明其触发场景、入参约束与返回值契约）与一份ArkTS入口脚本（将外部调用桥接到应用内既有业务实现）共同构成，并通过模块配置绑定到指定Ability的运行上下文。运行时，系统智能体依据描述文件完成“意图—能力”的语义匹配，并将结果转化为面向用户的自然语言回复。
 
@@ -30,7 +28,7 @@
 
 ## 开发步骤
 
-下文以“音乐助手Skill（`music-assistant`）”为示例，演示如何在自有应用中接入按名称播放音乐（`playMusicByName`）与播放控制（`controlPlayback`）。
+下文以“音乐助手Skill（`music-assistant`）”为示例，演示如何在自有应用中，通过代码开发和封装，实现按名称播放音乐（`playMusicByName`）与播放控制（`controlPlayback`）的能力。
 
 1. 创建文件和目录。
 
@@ -165,7 +163,21 @@
    校验通过后，调用既有业务接口完成实际任务。入口脚本不承载业务逻辑，仅充当“参数适配器”，读取业务返回值与运行时异常，分别映射到SKILL.md声明的不同结果分支。
 
 
-   <!-- @[music_skill_try](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/music-assistant/scripts/MusicSkill.ets) -->
+   <!-- @[music_skill_try](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/music-assistant/scripts/MusicSkill.ets)  -->
+   
+   ``` TypeScript
+   
+   try {
+     // 直接调用应用内已有业务API
+     const playResult: PlayResult | null = MusicPlayer.searchAndPlay(songName, singer);
+     // 业务返回值 → 映射到"成功"或"未命中"分支（见 3.5）
+         // ...
+   } catch (e) {
+     // 业务异常 → 统一映射到 ERR_INTERNAL 分支（见 3.5）
+     const err = e as BusinessError;
+   // ...
+   }
+   ```
 
    3.5 按契约构造ExecuteResult并回传。
 
@@ -372,4 +384,4 @@
 
 针对应用Skill开发，可参考以下相关实例：
 
-- [音乐助手Skill示例工程（music-assistant）](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide)
+- [音乐助手Skill示例工程（music-assistant）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide)

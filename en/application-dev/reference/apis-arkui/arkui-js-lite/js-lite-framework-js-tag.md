@@ -17,12 +17,12 @@ The "js" tag contains the instance name and page route information.
 
 >  **NOTE**
 >
->  The "name" and "pages" tags are configured in the "js" tag of the **config.json** file.
+>  The "name" and "pages" tags are configured in the "js" tag of the configuration file.
 
 
-## pages
+## "pages"
 
-The **"pages"** defines the route information of each page. Each page consists of the page path and page name. The following is an example:
+Defines the route information of each page. Each page consists of the page path and page name. The page file name is the page name. For example:
 
 
 ```json

@@ -64,7 +64,7 @@ readonly &#91;index: number&#93;: T
 **示例：**
 
 ```ts
-let concatArray : collections.ConcatArray<number> = new collections.Array<number>(1, 2, 4);
+let concatArray: collections.ConcatArray<number> = new collections.Array<number>(1, 2, 4);
 console.info("Element at index 1: ", concatArray[1]);
 ```
 
@@ -93,7 +93,7 @@ join(separator?: string): string
 **示例：**
 
 ```ts
-let concatArray : collections.ConcatArray<string> = new collections.Array<string>('a', 'b', 'c');
+let concatArray: collections.ConcatArray<string> = new collections.Array<string>('a', 'b', 'c');
 let joinedString = concatArray.join('-'); // 返回 "a-b-c"
 ```
 
@@ -122,6 +122,6 @@ slice(start?: number, end?: number): ConcatArray\<T>
 **示例：**
 
 ```ts
-let concatArray : collections.ConcatArray<number> = new collections.Array<number>(1, 2, 3, 4, 5);
-let slicedArray = concatArray.slice(1, 3); // 返回[2, 3]，原Array保持不变
+let concatArray: collections.ConcatArray<number> = new collections.Array<number>(1, 2, 3, 4, 5);
+let slicedArray = concatArray.slice(1, 3); // 返回[2, 3]，原ConcatArray保持不变
 ```

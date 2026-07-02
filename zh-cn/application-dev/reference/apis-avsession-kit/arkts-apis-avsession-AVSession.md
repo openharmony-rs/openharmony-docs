@@ -648,6 +648,7 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}): Promise\<voi
 | args |{[key: string]: Object}| 是   | 需要传递的会话事件内容。|
 
 > **说明：**
+>
 > 参数args支持的数据类型有：字符串、数字、布尔值、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want (Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
 
 **返回值：**
@@ -658,7 +659,7 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}): Promise\<voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -692,7 +693,7 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}, callback: Asy
 | callback | AsyncCallback\<void>                          | 是   | 回调函数。当会话事件设置成功，err为undefined，否则返回错误对象。 |
 
 > **说明：**
-
+>
 > 参数args支持的数据类型有：字符串、数字、布尔值、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want (Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
 
 **错误码：**
@@ -1434,6 +1435,156 @@ try {
   currentAVSession.setBackgroundPlayMode(avSession.BackgroundPlayMode.ENABLE_BACKGROUND_PLAY);
 } catch (err) {
   console.error(`setBackgroundPlayMode BusinessError: code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## setSupportedPlaySpeeds
+
+setSupportedPlaySpeeds(speeds: Array\<number>): Promise\<void>
+
+设置应用支持的播放倍速列表。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明       |
+| ------ | ------ | ---- | ---------- |
+| speeds | Array\<number\> | 是   | 支持的播放倍速列表。 |
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
+```ts
+try {
+  let speeds: number[] = [0.5, 1, 1.25, 1.5];
+  await currentAVSession.setSupportedPlaySpeeds(speeds);
+  console.info('Succeeded in setting supported play speeds.');
+} catch (err) {
+  console.error(`setSupportedPlaySpeeds BusinessError: code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## setSupportedLoopModes
+
+setSupportedLoopModes(loopModes: Array\<LoopMode>): Promise\<void>
+
+设置应用支持的循环模式列表。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明       |
+| ------ | ------ | ---- | ---------- |
+| loopModes | Array\<[LoopMode](./arkts-apis-avsession-e.md#loopmode10)\> | 是   | 支持的循环模式列表。 |
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
+```ts
+try {
+  let loopModes: avSession.LoopMode[] = [
+    avSession.LoopMode.LOOP_MODE_SEQUENCE,
+    avSession.LoopMode.LOOP_MODE_SINGLE,
+    avSession.LoopMode.LOOP_MODE_LIST
+  ];
+  await currentAVSession.setSupportedLoopModes(loopModes);
+  console.info('Succeeded in setting supported loop modes.');
+} catch (err) {
+  console.error(`setSupportedLoopModes BusinessError: code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## setMediaCenterControlType
+
+setMediaCenterControlType(type: Array\<AVMediaCenterControlType>): Promise\<void>
+
+设置应用支持的控制类型列表。使用Promise异步回调。
+
+设置优先显示在播控中心的控制类型列表，若未设置控制类型优先级，播控中心将根据[AVSessionType](arkts-apis-avsession-t.md#avsessiontype10)显示，具体显示规则参考[创建不同类型的会话](../../media/avsession/avsession-access-scene.md#创建不同类型的会话)。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明       |
+| ------ | ------ | ---- | ---------- |
+| type | Array\<[AVMediaCenterControlType](./arkts-apis-avsession-t.md#avmediacentercontroltype)\> | 是   | 优先在播控中心显示的控制类型列表。 |
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
+```ts
+try {
+  let controlTypes: avSession.AVMediaCenterControlType[] = [
+    'playNext',
+    'playPrevious',
+    'setSpeed',
+    'setLoopMode'
+  ];
+  await currentAVSession.setMediaCenterControlType(controlTypes);
+  console.info('Succeeded in setting media center control type.');
+} catch (err) {
+  console.error(`setMediaCenterControlType BusinessError: code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -2304,7 +2455,7 @@ on(type:'playWithAssetId', callback: Callback\<string>): void
 | 参数名   | 类型                 | 必填 | 说明     |
 | -------- | -------------------- | ---- | --------- |
 | type     | string               | 是   | 事件回调类型，支持的事件是`'playWithAssetId'`，当指定资源id进行播放时，触发该事件回调。 |
-| callback | Callback\<string> | 是   | 回调函数。参数assetId是媒体id。      |
+| callback | Callback\<string> | 是   | 回调函数。参数assetId是媒体ID。      |
 
 **错误码：**
 
@@ -2339,7 +2490,7 @@ off(type: 'playWithAssetId', callback?: Callback\<string>): void
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | type     | string               | 是   | 关闭对应的监听事件，支持的事件是`'playWithAssetId'`。 |
-| callback | Callback\<string> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。参数assetId是媒体id。                            |
+| callback | Callback\<string> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。参数assetId是媒体ID。                            |
 
 **错误码：**
 
@@ -3792,10 +3943,11 @@ currentAVSession.getAllCastDisplays().then((data: Array< avSession.CastDisplayIn
 
 on(type:'playFromAssetId', callback: (assetId: number) => void): void
 
-设置媒体id播放监听事件。
+设置媒体ID播放监听事件。
 
 > **说明：**
-> 从 API version 11 开始支持，从 API version 20 开始废弃。建议使用[on('playWithAssetId')](#onplaywithassetid20)设置媒体id播放监听事件。
+>
+> 从API version 11开始支持，从API version 20开始废弃。建议使用[on('playWithAssetId')](#onplaywithassetid20)设置媒体ID播放监听事件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3805,8 +3957,8 @@ on(type:'playFromAssetId', callback: (assetId: number) => void): void
 
 | 参数名   | 类型                 | 必填 | 说明     |
 | -------- | -------------------- | ---- | --------- |
-| type     | string               | 是   | 事件回调类型，支持的事件是`'playFromAssetId'`，当媒体id播放时，触发该事件回调。 |
-| callback | (assetId: number) => void | 是   | 回调函数。参数assetId是媒体id。      |
+| type     | string               | 是   | 事件回调类型，支持的事件是`'playFromAssetId'`，当媒体ID播放时，触发该事件回调。 |
+| callback | (assetId: number) => void | 是   | 回调函数。参数assetId是媒体ID。      |
 
 **错误码：**
 
@@ -3830,10 +3982,11 @@ currentAVSession.on('playFromAssetId', (assetId: number) => {
 
 off(type: 'playFromAssetId', callback?: (assetId: number) => void): void
 
-取消媒体id播放事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+取消媒体ID播放事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 > **说明：**
-> 从 API version 11 开始支持，从 API version 20 开始废弃。建议使用[off('playWithAssetId')](#offplaywithassetid20)取消媒体id播放事件监听。
+>
+> 从API version 11开始支持，从API version 20开始废弃。建议使用[off('playWithAssetId')](#offplaywithassetid20)取消媒体ID播放事件监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3844,7 +3997,7 @@ off(type: 'playFromAssetId', callback?: (assetId: number) => void): void
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | type     | string               | 是   | 关闭对应的监听事件，支持的事件是`'playFromAssetId'`。 |
-| callback | (assetId: number) => void | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。参数assetId是媒体id。                            |
+| callback | (assetId: number) => void | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。参数assetId是媒体ID。                            |
 
 **错误码：**
 

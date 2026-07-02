@@ -21,7 +21,7 @@ import { serial } from '@kit.BasicServicesKit';
 
 addPortAuthorization(tokenId: string, deviceId: string): Promise&lt;void&gt;
 
-添加应用程序访问串口的权限。仅用于弹出串口授权弹窗的系统应用。使用Promise异步回调。
+添加应用程序访问串口的权限。仅用于会弹出串口授权弹窗的系统应用。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -58,11 +58,9 @@ addPortAuthorization(tokenId: string, deviceId: string): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { serial } from "@kit.BasicServicesKit";
-
 // 添加串口访问权限（仅系统应用可用）
-let tokenId: string = '123456';
-let deviceId: string = '/dev/ttyUSB0';
+let tokenId: string = "123456";
+let deviceId: string = "/dev/ttyUSB0";
 serial.addPortAuthorization(tokenId, deviceId).then(() => {
   console.info('addPortAuthorization success');
 }).catch((error: Error) => {

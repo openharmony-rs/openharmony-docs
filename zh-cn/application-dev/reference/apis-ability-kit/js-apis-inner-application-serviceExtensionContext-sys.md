@@ -65,7 +65,7 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -76,20 +76,20 @@ startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden.        |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -152,7 +152,7 @@ startAbility(want: Want, options?: StartOptions): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -163,20 +163,20 @@ startAbility(want: Want, options?: StartOptions): Promise\<void>
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000010 | The call with the continuation and prepare continuation flag is forbidden.        |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -237,31 +237,31 @@ startAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
-| 16000002 | Incorrect ability type. |
+| 16000002 | Incorrect ability type. <br>适用版本：9-11 |
 | 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
-| 16000010 | The call with the continuation and prepare continuation flag is forbidden.        |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. <br>适用版本：9-11 |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -343,18 +343,18 @@ startAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<
 | 16000011 | The context does not exist.        |
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
-| 16000019 | No matching ability is found. |
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -425,26 +425,28 @@ startAbilityWithAccount(want: Want, accountId: number, options: StartOptions, ca
 | 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. <br>适用版本：9 |
 | 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. <br>适用版本：9 |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -534,18 +536,18 @@ startAbilityWithAccount(want: Want, accountId: number, options?: StartOptions): 
 | 16000011 | The context does not exist.        |
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
-| 16000019 | No matching ability is found. |
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -612,14 +614,14 @@ startServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000004 | Cannot start an invisible component. <br>适用版本：10+ |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16200001 | The caller has been released. |
 
@@ -688,14 +690,14 @@ startServiceExtensionAbility(want: Want): Promise\<void>
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000004 | Cannot start an invisible component. <br>适用版本：10+ |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16200001 | The caller has been released. |
 
@@ -767,14 +769,14 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback:
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000004 | Cannot start an invisible component. <br>适用版本：10+ |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16200001 | The caller has been released. |
 
@@ -852,14 +854,14 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000004 | Cannot start an invisible component. <br>适用版本：10+ |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000019 | No matching ability is found. |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
+| 16000019 | No matching ability is found. <br>适用版本：12+ |
 | 16000050 | Internal error. |
 | 16200001 | The caller has been released. |
 
@@ -940,14 +942,14 @@ startAbilityAsCaller(want: Want, callback: AsyncCallback\<void>): void
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -1018,14 +1020,14 @@ startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback\
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -1107,14 +1109,14 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise\<void>
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported. |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid. |
-| 16000076 | The app instance key is invalid. |
-| 16000077 | The number of app instances reaches the limit. |
-| 16000078 | The multi-instance is not supported. |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified. |
-| 16000080 | Creating a new instance is not supported. |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：12+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -1170,12 +1172,12 @@ stopServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
 | 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000004 | Cannot start an invisible component. <br>适用版本：10+ |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000011 | The context does not exist.        |
@@ -1242,12 +1244,12 @@ stopServiceExtensionAbility(want: Want): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
 | 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000004 | Cannot start an invisible component. <br>适用版本：10+ |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000011 | The context does not exist.        |
@@ -1321,7 +1323,7 @@ stopServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback: 
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000004 | Cannot start an invisible component. <br>适用版本：10+ |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000011 | The context does not exist.        |
@@ -1401,7 +1403,7 @@ stopServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\<
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000004 | Cannot start an invisible component. <br>适用版本：10+ |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000011 | The context does not exist.        |
@@ -1464,6 +1466,9 @@ terminateSelf(callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000001 | The specified ability does not exist. <br>适用版本：9 |
+| 16000004 | Cannot start an invisible component. <br>适用版本：9 |
+| 16000005 | The specified process does not have the permission. <br>适用版本：9 |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000011 | The context does not exist.        |
 | 16000050 | Internal error. |
@@ -1511,6 +1516,9 @@ terminateSelf(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
+| 16000001 | The specified ability does not exist. <br>适用版本：9 |
+| 16000004 | Cannot start an invisible component. <br>适用版本：9 |
+| 16000005 | The specified process does not have the permission. <br>适用版本：9 |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
 | 16000011 | The context does not exist.        |
 | 16000050 | Internal error. |
@@ -1570,16 +1578,16 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 | 201 | The application does not have permission to call the interface. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
-| 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000002 | Incorrect ability type. <br>适用版本：10+ |
+| 16000004 | Cannot start an invisible component. <br>适用版本：10+ |
 | 16000005 | The specified process does not have the permission. |
-| 16000006 | Cross-user operations are not allowed. |
-| 16000008 | The crowdtesting application expires. |
-| 16000053 | The ability is not on the top of the UI. |
-| 16000055 | Installation-free timed out. |
+| 16000006 | Cross-user operations are not allowed. <br>适用版本：10+ |
+| 16000008 | The crowdtesting application expires. <br>适用版本：10+ |
+| 16000053 | The ability is not on the top of the UI. <br>适用版本：10+ |
+| 16000055 | Installation-free timed out. <br>适用版本：10+ |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled. |
-| 16000013 | The application is controlled by EDM. |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
 | 16000050 | Internal error. |
 
 **示例：**
@@ -1646,7 +1654,7 @@ connectServiceExtensionAbilityWithAccount(want: Want, accountId: number, options
 | -------- | -------- | -------- | -------- |
 | want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的Want信息。 |
 | accountId | number | 是 | 系统账号的账号ID。 |
-| options | ConnectOptions | 是 | 远端对象实例。 |
+| options | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | 是 | 远端对象实例。 |
 
 **返回值：**
 
@@ -1664,16 +1672,16 @@ connectServiceExtensionAbilityWithAccount(want: Want, accountId: number, options
 | 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
-| 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000002 | Incorrect ability type. <br>适用版本：10+ |
+| 16000004 | Cannot start an invisible component. <br>适用版本：10+ |
 | 16000005 | The specified process does not have the permission. |
-| 16000006 | Cross-user operations are not allowed. |
-| 16000008 | The crowdtesting application expires. |
-| 16000053 | The ability is not on the top of the UI. |
-| 16000055 | Installation-free timed out. |
+| 16000006 | Cross-user operations are not allowed. <br>适用版本：10+ |
+| 16000008 | The crowdtesting application expires. <br>适用版本：10+ |
+| 16000053 | The ability is not on the top of the UI. <br>适用版本：10+ |
+| 16000055 | Installation-free timed out. <br>适用版本：10+ |
 | 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled. |
-| 16000013 | The application is controlled by EDM. |
+| 16000012 | The application is controlled. <br>适用版本：10+ |
+| 16000013 | The application is controlled by EDM. <br>适用版本：10+ |
 | 16000050 | Internal error. |
 
 **示例：**
@@ -1885,10 +1893,12 @@ startAbilityByCall(want: Want): Promise&lt;Caller&gt;
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
+| 16000005 | The specified process does not have the permission. <br>适用版本：9 |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
+| 16200001 | The caller has been released. <br>适用版本：9 |
 
 **示例：**
 
@@ -1991,8 +2001,8 @@ startRecentAbility(want: Want, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
+| 202 | The application is not system-app, can not use system-api. <br>适用版本：14+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -2006,14 +2016,14 @@ startRecentAbility(want: Want, callback: AsyncCallback\<void>): void
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported.  |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid.  |
-| 16000076 | The app instance key is invalid.  |
-| 16000077 | The number of app instances reaches the limit.  |
-| 16000078 | The multi-instance is not supported.  |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified.  |
-| 16000080 | Creating a new instance is not supported.  |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：14+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -2078,10 +2088,11 @@ startRecentAbility(want: Want, options: StartOptions, callback: AsyncCallback\<v
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
+| 202 | The application is not system-app, can not use system-api. <br>适用版本：14+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. <br>适用版本：9 |
 | 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
@@ -2091,14 +2102,14 @@ startRecentAbility(want: Want, options: StartOptions, callback: AsyncCallback\<v
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported.  |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid.  |
-| 16000076 | The app instance key is invalid.  |
-| 16000077 | The number of app instances reaches the limit.  |
-| 16000078 | The multi-instance is not supported.  |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified.  |
-| 16000080 | Creating a new instance is not supported.  |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：14+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -2158,14 +2169,20 @@ startRecentAbility(want: Want, options?: StartOptions): Promise\<void>
 | want | [Want](js-apis-app-ability-want.md) | 是 | 需要启动Ability的Want信息。 |
 | options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。 |
 
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
 **错误码：**
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
+| 201 | The application does not have permission to call the interface. <br>适用版本：10+ |
+| 202 | The application is not system-app, can not use system-api. <br>适用版本：14+ |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -2179,14 +2196,14 @@ startRecentAbility(want: Want, options?: StartOptions): Promise\<void>
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
 | 16000055 | Installation-free timed out. |
-| 16000071 | App clone is not supported.  |
-| 16000072 | App clone or multi-instance is not supported. |
-| 16000073 | The app clone index is invalid.  |
-| 16000076 | The app instance key is invalid.  |
-| 16000077 | The number of app instances reaches the limit.  |
-| 16000078 | The multi-instance is not supported.  |
-| 16000079 | The APP_INSTANCE_KEY cannot be specified.  |
-| 16000080 | Creating a new instance is not supported.  |
+| 16000071 | App clone is not supported. <br>适用版本：14+ |
+| 16000072 | App clone or multi-instance is not supported. <br>适用版本：14+ |
+| 16000073 | The app clone index is invalid. <br>适用版本：14+ |
+| 16000076 | The app instance key is invalid. <br>适用版本：14+ |
+| 16000077 | The number of app instances reaches the limit. <br>适用版本：14+ |
+| 16000078 | The multi-instance is not supported. <br>适用版本：14+ |
+| 16000079 | The APP_INSTANCE_KEY cannot be specified. <br>适用版本：14+ |
+| 16000080 | Creating a new instance is not supported. <br>适用版本：14+ |
 | 16200001 | The caller has been released. |
 
 **示例：**
@@ -2270,7 +2287,7 @@ startAbilityByCallWithAccount(want: Want, accountId: number): Promise&lt;Caller&
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
-| 16000005 | Static permission denied. The specified process does not have the permission. |
+| 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist. |
@@ -2354,9 +2371,14 @@ requestModalUIExtension(pickerWant: Want): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
+| 201 | The application does not have permission to call the interface. <br>适用版本：11 |
 | 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000001 | The specified ability does not exist. <br>适用版本：11 |
+| 16000002 | Incorrect ability type. <br>适用版本：11 |
+| 16000004 | Cannot start an invisible component. <br>适用版本：11 |
 | 16000050 | Internal error. |
+| 16200001 | The caller has been released. <br>适用版本：11 |
 
 **示例：**
 
@@ -2426,9 +2448,14 @@ requestModalUIExtension(pickerWant: Want, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
+| 201 | The application does not have permission to call the interface. <br>适用版本：11 |
 | 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000001 | The specified ability does not exist. <br>适用版本：11 |
+| 16000002 | Incorrect ability type. <br>适用版本：11 |
+| 16000004 | Cannot start an invisible component. <br>适用版本：11 |
 | 16000050 | Internal error. |
+| 16200001 | The caller has been released. <br>适用版本：11 |
 
 **示例：**
 
@@ -2514,18 +2541,18 @@ openLink(link: string, options?: OpenLinkOptions): Promise&lt;void&gt;
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Cannot start an invisible component. |
+| 16000004 | Failed to start the invisible ability. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
-| 16000010 | The call with the continuation and prepare continuation flag is forbidden.        |
+| 16000010 | The call with the continuation flag is forbidden.        |
 | 16000011 | The context does not exist.        |
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
 | 16000019 | No matching ability is found. |
 | 16200001 | The caller has been released. |
-| 16000136 | The UIAbility is prohibited from launching itself via App Linking. |
+| 16000136 | The UIAbility is prohibited from launching itself via App Linking. <br>适用版本：23+ |
 
 **示例：**
 
@@ -2692,7 +2719,6 @@ startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 | 16000002 | Incorrect ability type.                             |
 | 16000004 | Cannot start an invisible component.              |
 | 16000005 | The specified process does not have the permission. |
-| 16000006 | Cross-user operations are not allowed.              |
 | 16000008 | The crowdtesting application expires.               |
 | 16000011 | The context does not exist.                         |
 | 16000012 | The application is controlled.                      |

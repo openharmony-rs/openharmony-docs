@@ -355,6 +355,7 @@ setPasswordPolicy(admin: Want, policy: PasswordPolicy): void
 | ------- | ---------------------------------------------------------------------------- |
 | 9200001 | The application is not an administrator application of the device.                        |
 | 9200002 | The administrator application does not have permission to manage the device. |
+| 9200007 | The system ability works abnormally. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
@@ -374,6 +375,7 @@ let policy: securityManager.PasswordPolicy = {
   complexityRegex: '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*])[a-zA-Z\\d!@#$%^&*]{8,}$',
   validityPeriod: 1,
   additionalDescription: '至少八个字符，至少一个大写字母，一个小写字母，一个数字和一个特殊字符',
+  passwordAlgs: securityManager.PasswordAlgs.SCRYPT_HKDF_SM4,
 };
 try {
   securityManager.setPasswordPolicy(wantTemp, policy);
@@ -385,7 +387,7 @@ try {
 
 ## securityManager.getPasswordPolicy
 
-getPasswordPolicy(admin: Want): PasswordPolicy
+getPasswordPolicy(admin: Want | null): PasswordPolicy
 
 获取设备锁屏口令策略。
 
@@ -399,7 +401,7 @@ getPasswordPolicy(admin: Want): PasswordPolicy
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
 
 **返回值：**
 
@@ -618,7 +620,7 @@ try {
 
 ## securityManager.getAppClipboardPolicy
 
-getAppClipboardPolicy(admin: Want, tokenId?: number): string
+getAppClipboardPolicy(admin: Want | null, tokenId?: number): string
 
 获取设备剪贴板策略。
 
@@ -632,7 +634,7 @@ getAppClipboardPolicy(admin: Want, tokenId?: number): string
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。      |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
 | tokenId | number | 否 | 目标应用的身份标识。可通过[bundleManager.getApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)获取accessTokenId。 |
 
 **返回值：**
@@ -730,7 +732,7 @@ try {
 
 ## securityManager.getAppClipboardPolicy<sup>18+</sup>
 
-getAppClipboardPolicy(admin: Want, bundleName: string, accountId: number): string
+getAppClipboardPolicy(admin: Want | null, bundleName: string, accountId: number): string
 
 获取指定用户下指定应用的设备剪贴板策略。
 
@@ -744,7 +746,7 @@ getAppClipboardPolicy(admin: Want, bundleName: string, accountId: number): strin
 
 | 参数名     | 类型                                                      | 必填  | 说明                                                                                                                                                        |
 | -------    | ------------------------------------------------------- | --- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                                                                                                                               |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
 | bundleName | string                                                  | 是   | 被设置剪贴板策略的应用包名。                                                                                                                            |
 | accountId  | number                                                  | 是   | 用户ID，指定具体用户，取值范围：大于等于0。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
@@ -1071,6 +1073,7 @@ setExternalSourceExtensionsPolicy(admin: Want, policy: common.ManagedPolicy): vo
 | 9200010 | A conflict policy has been configured.                                          |
 | 9200012 | Parameter verification failed.                                          |
 | 201     | Permission verification failed. The application does not have the permission required to call the API.                                          |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例：**
 
@@ -1093,7 +1096,7 @@ try {
 
 ## securityManager.getExternalSourceExtensionsPolicy<sup>22+</sup>
 
-getExternalSourceExtensionsPolicy(admin: Want): common.ManagedPolicy
+getExternalSourceExtensionsPolicy(admin: Want | null): common.ManagedPolicy
 
 获取外部来源扩展程序的管控策略。
 
@@ -1109,7 +1112,7 @@ getExternalSourceExtensionsPolicy(admin: Want): common.ManagedPolicy
 
 | 参数名     | 类型                                                      | 必填  | 说明                                                                                                                                                        |
 | -------    | ------------------------------------------------------- | --- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md#want) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。      |                                                                               
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。<br>当设备存在多个MDM应用时，API版本26.0.0之前，传入Want时查询对应企业设备管理应用设置的策略。从API版本26.0.0开始，新增支持传入null时查询实际生效的策略。|
 
 **返回值：**
 
@@ -1126,6 +1129,7 @@ getExternalSourceExtensionsPolicy(admin: Want): common.ManagedPolicy
 | 9200001 | The application is not an administrator application of the device.                                                                              |
 | 9200002 | The administrator application does not have permission to manage the device.                                                                    |
 | 201     | Permission verification failed. The application does not have the permission required to call the API.                                          |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例：**
 
@@ -1941,6 +1945,7 @@ try {
 | complexityRegex | string | 否 | 是 | 口令复杂度正则表达式。 |
 | validityPeriod | number | 否 | 是 | 密码有效期（单位：毫秒）。 |
 | additionalDescription | string | 否 | 是 | 口令复杂度描述文本，例如：密码中必须包含字母、数字、特殊字符，至少8个字符，最多30个字符。 |
+| passwordAlgs | [PasswordAlgs](#passwordalgs) | 否 | 是 | 处理口令数据使用的加密算法。设置后，PC/2in1设备上将原始口令处理成口令凭据会使用该参数指定的加密算法，其他设备无效果。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## ClipboardPolicy
 
@@ -1997,3 +2002,18 @@ try {
 | ----------- | --------| ---- | ----| ---------------------------- |
 | intervalsRow | number | 否   | 否 | 显示水印的行数。|
 | intervalsCol | number | 否   | 否 | 显示水印的列数。|
+
+## PasswordAlgs
+
+处理口令数据使用的加密算法。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称         | 值 | 说明                            |
+| ----------- | -------- | ------------------------------- |
+| SCRYPT_HKDF_AES | 0  | SCRYPT-HKDF-AES组合加密算法。 |
+| SCRYPT_HKDF_SM4 | 1  | SCRYPT-HKDF-SM4组合加密算法。 |

@@ -27,7 +27,7 @@
 
 手势拖拽（手指/手写笔）触发拖拽流程：
 
-![zh-cn_image_0000001562820825](figures/zh-cn_image_0000001562820825.png)
+![drag-gesture](figures/drag-gesture.png)
 
 ### ​鼠标拖拽
 
@@ -243,12 +243,12 @@
 
    在实现onDrop回调的情况下，还可以在onDragMove中设置[DragResult](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragresult10枚举说明)为DROP_ENABLED，并将[DragBehavior](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragbehavior10)设置为COPY或MOVE，以此来控制角标中的加号是否显示。当设置为COPY时，角标显示加号；设置为MOVE时，角标不显示加号。
 
-   <!-- @[set_drag_behavior_move](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+   <!-- @[set_drag_behavior_move](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) --> 
    
    ``` TypeScript
    .onDragMove((event) => {
-     event.setResult(DragResult.DROP_ENABLED)
-     event.dragBehavior = DragBehavior.COPY
+     event.setResult(DragResult.DROP_ENABLED);
+     event.dragBehavior = DragBehavior.COPY;
    })
    ```
 
@@ -256,7 +256,7 @@
 
    需要设置onDrop回调函数，并在回调函数中处理拖拽数据，显式设置拖拽结果。
 
-   <!-- @[set_on_drop_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
+   <!-- @[set_on_drop_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) --> 
    
    ``` TypeScript
    .onDrop((dragEvent?: DragEvent) => {
@@ -270,7 +270,7 @@
        this.imgState = Visibility.None;
        // 显式设置result为successful，则将该值传递给拖出方的onDragEnd
        event.setResult(DragResult.DRAG_SUCCESSFUL);
-     })
+     });
    })
    ```
 
@@ -565,12 +565,27 @@ export struct DefaultDrag {
 
    截图的获取可以在选中组件时通过调用[this.getUIContext().getComponentSnapshot().get()](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md#get12)方法获取。以下示例通过获取组件对应id的方法进行截图。
 
-   <!-- @[grid_previewData_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
+   <!-- @[grid_previewData_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) --> 
    
    ``` TypeScript
    @State previewData: DragItemInfo[] = [];
    @State isSelectedGrid: boolean[] = [];
    // ...
+   build() {
+     NavDestination() {
+       Column({ space: 5 }) {
+         // ...
+         Grid() {
+           // ...
+             GridItem() {
+               Column()
+                 .backgroundColor(Color.Blue)
+                 .width(50)
+                 .height(50)
+                 .opacity(1.0)
+                 .id('grid' + idx)
+             }
+             // ...
              .onClick(() => {
                this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
                if (this.isSelectedGrid[idx]) {
@@ -587,13 +602,20 @@ export struct DefaultDrag {
                  // ...
                }
              })
+             // ...
+         }
+         // ...
+       }.width('100%').margin({ top: 5 }).height('100%')
+     }
+     // ...
+   }
    ```
 
 3. 多选显示效果。
 
     通过[stateStyles](../reference/apis-arkui/arkui-ts/ts-universal-attributes-polymorphic-style.md#statestyles)可以设置选中态和非选中态的显示效果，方便区分。
 
-    <!-- @[grid_styles_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
+    <!-- @[grid_styles_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) --> 
     
     ``` TypeScript
     @Styles
@@ -607,21 +629,58 @@ export struct DefaultDrag {
     }
     
     // ...
+    build() {
+      NavDestination() {
+        Column({ space: 5 }) {
+          // ...
+          Grid() {
+            // ...
+              GridItem() {
+                Column()
+                  .backgroundColor(Color.Blue)
+                  .width(50)
+                  .height(50)
+                  .opacity(1.0)
+                  .id('grid' + idx)
+              }
+              // ...
               .stateStyles({
                 normal: this.normalStyles,
                 selected: this.selectStyles
               })
+              // ...
+          }
+          // ...
+        }.width('100%').margin({ top: 5 }).height('100%')
+      }
+      // ...
+    }
     ```
 
 4. 适配数量角标。
 
     多选拖拽的数量角标当前需要应用使用[dragPreviewOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#dragpreviewoptions11)中的numberBadge参数设置，开发者需要根据当前选中的节点数量来设置数量角标。
 
-    <!-- @[grid_numberBadge_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) -->
+    <!-- @[grid_numberBadge_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridEts.ets) --> 
     
     ``` TypeScript
     @State numberBadge: number = 0;
     // ...
+    build() {
+      NavDestination() {
+        Column({ space: 5 }) {
+          // ...
+          Grid() {
+            // ...
+              GridItem() {
+                Column()
+                  .backgroundColor(Color.Blue)
+                  .width(50)
+                  .height(50)
+                  .opacity(1.0)
+                  .id('grid' + idx)
+              }
+              // ...
               .onClick(() => {
                 this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
                 if (this.isSelectedGrid[idx]) {
@@ -635,11 +694,18 @@ export struct DefaultDrag {
               })
               // 多选场景右上角数量角标需要应用设置numberBadge参数
               .dragPreviewOptions({ numberBadge: this.numberBadge })
+              // ...
+          }
+          // ...
+        }.width('100%').margin({ top: 5 }).height('100%')
+      }
+      // ...
+    }
     ```
 
 **完整示例：**
 
-<!-- @[gridExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExample.ets) -->
+<!-- @[gridExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExample.ets) --> 
 
 ``` TypeScript
 import { image } from '@kit.ImageKit';
@@ -655,12 +721,12 @@ struct GridEts {
 
   @Styles
   normalStyles(): void {
-    .opacity(1.0)
+    .opacity(1.0);
   }
 
   @Styles
   selectStyles(): void {
-    .opacity(0.4)
+    .opacity(0.4);
   }
 
   onPageShow(): void {
@@ -702,7 +768,7 @@ build() {
             selected: this.selectStyles
           })
           .onClick(() => {
-            this.isSelectedGrid[idx] = !this.isSelectedGrid[idx]
+            this.isSelectedGrid[idx] = !this.isSelectedGrid[idx];
             if (this.isSelectedGrid[idx]) {
               this.numberBadge++;
               let gridItemName = 'grid' + idx;
@@ -711,8 +777,8 @@ build() {
                 this.pixmap = pixmap;
                 this.previewData[idx] = {
                   pixelMap: this.pixmap
-                }
-              })
+                };
+              });
             } else {
               this.numberBadge--;
             }
@@ -763,7 +829,7 @@ build() {
 
    自定义落位动效通过[animateTo](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)接口设置动画相关的参数来实现。例如，可以改变组件的大小。
 
-   <!-- @[drop_customDropAnimation_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) -->
+   <!-- @[drop_customDropAnimation_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) --> 
    
    ``` TypeScript
    customDropAnimation =
@@ -772,8 +838,8 @@ build() {
          this.imageWidth = 200;
          this.imageHeight = 200;
          this.imgState = Visibility.None;
-       })
-     }
+       });
+     };
    ```
     
 
@@ -781,7 +847,7 @@ build() {
 
    设置onDrop回调函数，接收拖拽数据。拖拽落位动效通过[executeDropAnimation](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#executedropanimation18)函数执行，设置[useCustomDropAnimation](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#属性)为true禁用系统默认动效。
 
-   <!-- @[drop_column_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) -->
+   <!-- @[drop_column_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) --> 
    
    ``` TypeScript
    Column() {
@@ -800,7 +866,7 @@ build() {
      this.imageHeight = Number(rect.height);
      this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
      dragEvent.useCustomDropAnimation = true;
-     dragEvent.executeDropAnimation(this.customDropAnimation)
+     dragEvent.executeDropAnimation(this.customDropAnimation);
    })
    ```
     
@@ -954,7 +1020,7 @@ export struct DropAnimationExample {
 
    当数据量较大时，建议在选择数据时通过[addRecord](../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md#addrecord)添加数据记录，以避免在拖拽过程中集中添加数据而导致显著的性能消耗。
 
-   <!-- @[gridExample_onclick](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExamples.ets) -->
+   <!-- @[gridExample_onclick](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/grid/GridExamples.ets) --> 
    
    ``` TypeScript
    .onClick(() => {
@@ -974,8 +1040,8 @@ export struct DropAnimationExample {
          this.pixmap = pixmap;
          this.previewData[idx] = {
            pixelMap: this.pixmap
-         }
-       })
+         };
+       });
      } else {
        this.numberBadge--;
        for (let i = 0; i < this.isSelectedGrid.length; i++) {
@@ -1378,16 +1444,16 @@ Spring Loading的整个过程包含三个阶段：悬停检测 -> 回调通知 -
 
   为了达到提醒效果，为目标组件也增加`onDragEnter`和`onDragLeave`的处理。当用户拖拽文字进入到组件范围时，变化背景色，以提醒用户在此处停留。
 
-  <!-- @[springLoading_onDragEnter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) -->
+  <!-- @[springLoading_onDragEnter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/springloading/SpringLoading.ets) --> 
   
   ``` TypeScript
   .onDragEnter(() => {
     // 当用户拖拽进入按钮范围，即提醒用户，此处是可以处理数据的
-    this.buttonBackgroundColor = this.reminderColor
+    this.buttonBackgroundColor = this.reminderColor;
   })
   .onDragLeave(() => {
     // 当用户拖拽离开按钮范围，恢复UI
-    this.buttonBackgroundColor = this.normalColor
+    this.buttonBackgroundColor = this.normalColor;
   })
   ```
   

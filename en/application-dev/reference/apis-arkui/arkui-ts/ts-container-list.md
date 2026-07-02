@@ -4,7 +4,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @huchuyun-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **List** component provides a list container that presents a series of list items arranged in a column with the same width. It supports presentations of the same type of data in a multiple and coherent row style, for example, images or text.
@@ -1628,7 +1628,7 @@ struct ListExample {
 }
 ```
 
-![en-us_image_0000001174264378](figures/en-us_image_0000001174264378.gif)
+![list1](figures/list1.gif)
 
 
 ### Example 2: Setting Child Element Alignment

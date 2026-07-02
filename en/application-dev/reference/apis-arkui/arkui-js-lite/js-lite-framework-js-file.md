@@ -32,11 +32,11 @@ export default {
 }
 ```
 
-## Application Object<sup>10+</sup>
+## Application Object <sup>10+</sup>
 
 | Attribute    | Type      | Description                                      |
 | ------ | -------- | ---------------------------------------- |
-| getApp | Function | Obtains the data object exposed in **app.js** from the page JS file. This API works globally.|
+| getApp | Function | Obtains the object exposed in the **app.js** file from the **.js** file of the page. This API works globally.|
 
 > **NOTE**
 >

@@ -66,17 +66,18 @@
 
    ```ts
    import { huks, huksExternalCrypto, CryptoExtensionAbility, HuksCryptoExtensionCertInfo, HuksCryptoExtensionResult } from '@kit.UniversalKeystoreKit';
-   import { util } from '@kit.ArkTS'
-   import { cryptoFramework } from '@kit.CryptoArchitectureKit'
+   import { util } from '@kit.ArkTS';
+   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+   import { deviceInfo } from '@kit.BasicServicesKit';
 
-   class CryptoExtension extends CryptoExtensionAbility {
+   export class CryptoExtension extends CryptoExtensionAbility {
      // 本步骤内的接口函数实现均需在class内，为方便开发者理解及使用，每个接口函数在下文详细解释。
    }
    ```
 
    **接口介绍：**
 
-   （1）onOpenResource在Ukey签名验签操作中用于打开指定资源（如建立会话或连接）。resourceId表示要打开的资源标识，应用身份可以在params中由[HUKS_EXT_CRYPTO_TAG_UID](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。当调用成功时，返回值中的resultCode成员设置为0，handle成员非空；调用失败时，resultCode携带错误码信息。
+   （1）onOpenResource在UKey签名验签操作中用于打开指定资源（如建立会话或连接）。resourceId表示要打开的资源标识，应用身份可以在params中由[HUKS_EXT_CRYPTO_TAG_UID](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。当调用成功时，返回值中的resultCode成员设置为0，handle成员非空；调用失败时，resultCode携带错误码信息。
 
    ```ts
    onOpenResource(resourceId: string, params: Array<huksExternalCrypto.HuksExternalCryptoParam>): Promise<HuksCryptoExtensionResult> {
@@ -92,8 +93,14 @@
        return Promise.resolve(result);
      }
 
-     // 解析 resource index
-     let index: string = JSON.parse(resourceId)['index'];
+     // 解析 resource index，API版本不同解析方式也不同。
+     let index: string;
+     const apiVersion = deviceInfo.sdkApiVersion;
+     if (apiVersion >= 26) {
+       index = resourceId;
+     } else {
+       index = JSON.parse(resourceId)['index'];
+     }
 
      // ...
      let res: HuksCryptoExtensionResult = {
@@ -114,7 +121,7 @@
    }
    ```
 
-   （2）onCloseResource在Ukey签名验签操作中用于关闭指定资源（如释放会话或连接）。handle为待关闭资源的句柄，应用身份可以在params中由[HUKS_EXT_CRYPTO_TAG_UID](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。当调用成功时，返回值中的resultCode成员设置为0；调用失败时，resultCode携带错误码信息。
+   （2）onCloseResource在UKey签名验签操作中用于关闭指定资源（如释放会话或连接）。handle为待关闭资源的句柄，应用身份可以在params中由[HUKS_EXT_CRYPTO_TAG_UID](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。当调用成功时，返回值中的resultCode成员设置为0；调用失败时，resultCode携带错误码信息。
 
    ```ts
    onCloseResource(handle: string, params: Array<huksExternalCrypto.HuksExternalCryptoParam>): Promise<HuksCryptoExtensionResult> {
@@ -140,7 +147,7 @@
    }
    ```
 
-   （3）onGetProperty在Ukey签名验签操作中用于获取指定资源的属性信息。handle为资源句柄，propertyId为待获取的属性标识，应用身份可以在params中由[HUKS_EXT_CRYPTO_TAG_UID](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。当调用成功时，返回值中的resultCode成员设置为0，返回值中的property成员包含属性信息。调用失败时，resultCode携带错误码信息。
+   （3）onGetProperty在UKey签名验签操作中用于获取指定资源的属性信息。handle为资源句柄，propertyId为待获取的属性标识，应用身份可以在params中由[HUKS_EXT_CRYPTO_TAG_UID](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。当调用成功时，返回值中的resultCode成员设置为0，返回值中的property成员包含属性信息。调用失败时，resultCode携带错误码信息。
 
    在onGetProperty中须实现导出公钥功能，以便上游业务使用PIN加密传输并完成PIN码认证。加密算法支持RSA、SM2等。当入参propertyId为SKF_ExportPublicKey时，返回的公钥信息采用JSON格式，包含以下4个必选字段，分别是publicKey（公钥数据）、algo（算法类型及密钥长度）、transformation（密码学操作参数，如填充模式）、size（公钥数据长度）。具体实现可参考下方示例代码中onGetProperty接口的相关部分。
 
@@ -219,7 +226,7 @@
    }
    ```
 
-   （5）onAuthUkeyPin用于在Ukey签名之前验证PIN码。加密后的PIN码通过param中传入[HUKS_EXT_CRYPTO_TAG_UKEY_PIN](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带，需使用onGetProperty中保存的私钥进行解密。
+   （5）onAuthUkeyPin用于在UKey签名之前验证PIN码。加密后的PIN码通过param中传入[HUKS_EXT_CRYPTO_TAG_UKEY_PIN](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带，需使用onGetProperty中保存的私钥进行解密。
 
    当PIN码校验成功时，返回值中的resultCode成员设置为0，返回值中的authState设置为[HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalpinauthstate)。当PIN码不正确时，resultCode携带错误码信息，返回值中的retryCount设置为剩余重试次数，每次认证失败重试次数减1，当重试次数为0时，resultCode设置为[HUKS_CRYPTO_EXTENSION_ERR_PIN_LOCKED](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#hukscryptoextensionresultcode)，authState设置为[HUKS_EXT_CRYPTO_PIN_LOCKED](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalpinauthstate)。
 
@@ -320,7 +327,7 @@
    }
    ```
 
-   （8）onInitSession在Ukey签名验签操作中用于初始化密钥会话。应用身份可以在param中由[HUKS_EXT_CRYPTO_TAG_UID](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。当调用成功时，返回值中的resultCode成员设置为0，handle成员非空。调用失败时，resultCode携带错误码信息。
+   （8）onInitSession在UKey签名验签操作中用于初始化密钥会话。应用身份可以在param中由[HUKS_EXT_CRYPTO_TAG_UID](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。当调用成功时，返回值中的resultCode成员设置为0，handle成员非空。调用失败时，resultCode携带错误码信息。
 
    ```ts
    onInitSession(handle: string, params: huks.HuksOptions): Promise<HuksCryptoExtensionResult> {
@@ -348,7 +355,7 @@
    }
    ```
 
-   （9）onUpdateSession在Ukey签名验签操作中用于分段传输大批量数据。应用身份可以在param中由[HUKS_EXT_CRYPTO_TAG_UID](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。当调用成功时，返回值中的resultCode成员设置为0。调用失败时，resultCode携带错误码信息。
+   （9）onUpdateSession在UKey签名验签操作中用于分段传输大批量数据。应用身份可以在param中由[HUKS_EXT_CRYPTO_TAG_UID](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。当调用成功时，返回值中的resultCode成员设置为0。调用失败时，resultCode携带错误码信息。
 
    ```ts
    onUpdateSession(handle: string, params: huks.HuksOptions): Promise<HuksCryptoExtensionResult> {
@@ -377,7 +384,7 @@
    }
    ```
 
-   （10）onFinishSession在Ukey签名操作中用于传输最后一段明文，在验签操作中用于传输签名。应用身份可以在param中由[HUKS_EXT_CRYPTO_TAG_UID](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。当调用成功时，返回值中的resultCode成员设置为0。调用失败时，resultCode携带错误码信息。
+   （10）onFinishSession在UKey签名操作中用于传输最后一段明文，在验签操作中用于传输签名。应用身份可以在param中由[HUKS_EXT_CRYPTO_TAG_UID](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。当调用成功时，返回值中的resultCode成员设置为0。调用失败时，resultCode携带错误码信息。
 
    ```ts
    onFinishSession(handle: string, params: huks.HuksOptions): Promise<HuksCryptoExtensionResult> {
@@ -435,7 +442,7 @@
    }
    ```
 
-   （12）onEnumCertificates在Ukey签名验签操作中用于枚举证书列表。应用身份可以在params中由[HUKS_EXT_CRYPTO_TAG_UID](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。当调用成功时，返回值中的resultCode成员设置为0，返回值中的certs成员包含证书列表（类型为Array<[HuksCryptoExtensionCertInfo](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#hukscryptoextensioncertinfo)>）。调用失败时，resultCode携带错误码信息。
+   （12）onEnumCertificates在UKey签名验签操作中用于枚举证书列表。应用身份可以在params中由[HUKS_EXT_CRYPTO_TAG_UID](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数携带。当调用成功时，返回值中的resultCode成员设置为0，返回值中的certs成员包含证书列表（类型为Array<[HuksCryptoExtensionCertInfo](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#hukscryptoextensioncertinfo)>）。调用失败时，resultCode携带错误码信息。
 
    ```ts
    onEnumCertificates(params: Array<huksExternalCrypto.HuksExternalCryptoParam>): Promise<HuksCryptoExtensionResult> {
@@ -624,7 +631,7 @@
 
 ### 注册CryptoExtensionAbility
 
-驱动HAP检测到Ukey存在时，向系统注册CryptoExtensionAbility。例如：Ukey插入等。
+驱动HAP检测到UKey存在时，向系统注册CryptoExtensionAbility。例如：UKey插入等。
 
 **示例：**
 
@@ -647,7 +654,7 @@ huksExternalCrypto.registerProvider(provider, ExtPropertiesTemp);
 
 ### 解注册CryptoExtensionAbility
 
-驱动HAP检测到Ukey不存在时，向系统解注册CryptoExtensionAbility。例如：Ukey拔出等。
+驱动HAP检测到UKey不存在时，向系统解注册CryptoExtensionAbility。例如：UKey拔出等。
 
 **示例：**
 

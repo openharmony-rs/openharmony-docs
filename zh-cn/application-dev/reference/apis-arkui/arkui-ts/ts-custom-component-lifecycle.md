@@ -145,7 +145,7 @@ struct IndexComponent {
   }
 }
 ```
-![zh-cn_image_lifecycle](figures/zh-cn_image_lifecycle.gif)
+![zh-cn_image_lifecycle](figures/image-lifecycle.gif)
 
 ## onNewParam<sup>19+</sup>
 
@@ -318,8 +318,8 @@ struct Child {
   @State message: Message = new Message('AboutToReuse');
 
   aboutToReuse(params: Record<string, ESObject>) {
-    console.info("Recycle Child")
-    this.message = params.message as Message
+    console.info('Reuse Child');
+    this.message = params.message as Message;
   }
 
   build() {
@@ -472,6 +472,8 @@ onWillApplyTheme函数用于获取当前组件上下文的Theme对象，在创�
 ## Theme<sup>12+</sup>
 
 type Theme = import('../api/@ohos.arkui.theme').Theme
+
+主题对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

@@ -1,10 +1,12 @@
 # Enums
+
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=4b1a2f751fcd33c52248528ed8c23a9b2935126b translatedAt=2026-06-23T01:03:34.184Z pushedAt=2026-06-23T06:12:23.663Z -->
 
 > **NOTE**
 >
@@ -128,6 +130,7 @@ Enumerates the media description keys.
 | MD_KEY_MIME_TYPE<sup>23+</sup>  | 'mime_type'  | MIME type of the track. The corresponding key value type is string. For audio and video tracks, the value is the same as that of **MD_KEY_CODEC_MIME**.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | MD_KEY_REFERENCE_TRACK_IDS<sup>23+</sup>  | 'ref_track_ids'  | Reference relationships between this track and other tracks. The corresponding key value type is string, with values separated by commas (,).<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | MD_KEY_TRACK_REFERENCE_TYPE<sup>23+</sup>  | 'track_ref_type'  | Auxiliary type of this track when it acts as a reference track. The corresponding key value type is string.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+
 ## FetchResult<sup>23+</sup>
 
 Enumerates the results of obtaining thumbnails in batches.
@@ -173,6 +176,8 @@ Enumerates the playback metric keys.
 | TOTAL_DOWNLOAD_SIZE                | 'total_loading_bytes'                | Total loading size, in bytes.<br> **Model restriction**: This API can be used only in the stage model.            |
 | STALLING_COUNT                     | 'stalling_count'                     | Total number of stalling times.                        |
 | TOTAL_STALLING_TIME                | 'total_stalling_time'                | Total stalling duration, in milliseconds.      |
+| LIP_ASYNC_COUNT                    | 'lip_async_count'                    | Total number of audio-video async errors.<br>**Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.       |
+| TOTAL_LIP_ASYNC_TIME               | 'total_lip_async_time'               | Total duration of audio-video async errors, in milliseconds (ms).<br>**Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.       |
 
 ## BufferingInfoType<sup>8+</sup>
 
@@ -442,6 +447,10 @@ Enumerates the display mode for the screen capture picker.
 | WINDOW_ONLY | 0    | Displays only a list of windows.|
 | SCREEN_ONLY | 1    | Displays only a list of screens.|
 | SCREEN_AND_WINDOW | 2    | Displays both screens and windows.|
+| APP_ONLY | 3    | Displays only applications.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
+| WINDOW_AND_APP | 4    | Displays both windows and applications.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
+| SCREEN_AND_APP | 5    | Displays both screens and applications.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
+| SCREEN_WINDOW_AND_APP | 6    | Displays screens, windows and applications.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
 
 ## AVMetricsEventType<sup>23+</sup>
 

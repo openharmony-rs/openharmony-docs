@@ -86,8 +86,12 @@
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
              .onClick(() => {
-               postMessageTest();
-               this.message = 'success';
+               postMessageTest().then(() => {
+                 this.message = 'success';
+               }).catch((e: BusinessError) => {
+                 this.message = 'failed';
+                 console.error(`taskpool execute postMessageTest error is: ${e}`);
+               })
              })
          }
          .width('100%')

@@ -675,6 +675,73 @@ if (avScreenCaptureRecorder != undefined) {
   });
 }
 ```
+## setContentAutoRotation
+
+setContentAutoRotation(enable: boolean): Promise\<void>
+
+设置捕获的屏幕内容是否自动旋转以保持图像直立。使用Promise异步回调。
+
+> **说明：**
+>
+> 需在[startRecording](arkts-apis-media-AVScreenCaptureRecorder.md#startrecording12)接口调用前调用此接口。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**参数：**
+
+| 参数名 | 类型                                   | 必填 | 说明                       |
+| ------ | -------------------------------------- | ---- | -------------------------- |
+| enable | boolean | 是   | 表示是否启用自动旋转，默认值为false。true表示启用自动旋转，输出帧中的图像内容将保持直立。 |
+
+**返回值：**
+
+| 类型           | 说明                                       |
+| -------------- | ------------------------------------------ |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | -------------------------------------- |
+| 801  | Capability not supported. Return by promise.  |
+| 5400102  | Operation not allowed. Return by promise.    |
+| 5400105  | Service died. Return by promise. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 初始化avScreenCaptureRecorder。
+let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
+media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
+  if (captureRecorder != null) {
+    avScreenCaptureRecorder = captureRecorder;
+    console.info('Succeeded in creating avScreenCaptureRecorder');
+  } else {
+    console.error('Failed to create avScreenCaptureRecorder');
+  }
+}).catch((error: BusinessError) => {
+  console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
+});
+
+// 其余流程。
+
+// 调用setContentAutoRotation方法。
+if (avScreenCaptureRecorder != undefined) {
+  avScreenCaptureRecorder.setContentAutoRotation(true).then(() => {
+    console.info('Succeeded in enabling setContentAutoRotation.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to enable setContentAutoRotation. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
 
 ## release<sup>12+</sup>
 

@@ -1,7 +1,7 @@
 # @ohos.router (Page Routing) (Not Recommended)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @huangxiaolinabc-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -52,7 +52,7 @@ Navigates to a specified page in the application.
 
 | Type               | Description       |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -199,7 +199,7 @@ Navigates to a specified page in the application.
 
 | Type               | Description       |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -347,7 +347,7 @@ Replaces the current page with another one in the application and destroys the c
 
 | Type               | Description       |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -474,7 +474,7 @@ Replaces the current page with another one in the application and destroys the c
 
 | Type               | Description       |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -602,7 +602,7 @@ Navigates to a page using the named route.
 
 | Type               | Description       |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -755,7 +755,7 @@ Navigates to a page using the named route.
 
 | Type               | Description       |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -907,7 +907,7 @@ Replaces the current page with another one using the named route and destroys th
 
 | Type               | Description       |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -1038,7 +1038,7 @@ Replaces the current page with another one using the named route and destroys th
 
 | Type               | Description       |
 | ------------------- | --------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -1896,6 +1896,7 @@ pages
 ```
 
 <!--deprecated_code_no_check-->
+<!--code_no_check-->
 ```js
 // index.js
 import router from '@ohos.router';
@@ -1996,6 +1997,7 @@ export default {
 ```
 
 <!--deprecated_code_no_check-->
+<!--code_no_check-->
 ```js
 // routerPage.js
 import router from '@ohos.router';

@@ -1,8 +1,8 @@
 # 绑定半模态页面（bindSheet）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -16,7 +16,7 @@
 
  - 半模态内嵌[UIExtension](../reference/apis-arkui/js-apis-arkui-uiExtension.md)时，不支持再在UIExtension内拉起半模态/弹窗。
 
- - 若无二次确认或者自定义关闭行为的场景，不建议使用[shouldDismiss/onWillDismiss](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)接口。
+ - 若无二次确认或者自定义关闭行为的场景，不建议使用[shouldDismiss](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)/[onWillDismiss](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)接口。
 
 ## 生命周期
 
@@ -158,6 +158,7 @@ struct OnWillDismiss_Dismiss {
         this.isShow = true
       })
       .margin(120)
+      // 第一步：创建半模态页面
       .bindSheet($$this.isShow, this.myBuilder(), {
         height: SheetSize.MEDIUM,
         blurStyle: BlurStyle.Thick,

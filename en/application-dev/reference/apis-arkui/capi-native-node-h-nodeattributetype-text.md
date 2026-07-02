@@ -404,7 +404,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name| Description|
 | -- | -- |
 | .value[0].f32 | Blur radius of the shadow, in vp.|
-| .value[1].i32 | Shadow type. The parameter type is [ArkUI_ShadowType](capi-native-type-h.md#arkui_shadowtype). The default value is **ARKUI_SHADOW_TYPE_COLOR**.|
+| .value[1].i32 | Shadow type. The parameter type is [ArkUI_ShadowType](capi-native-type-visual-h.md#arkui_shadowtype). The default value is **ARKUI_SHADOW_TYPE_COLOR**.|
 | .value[2].u32 | Shadow color, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
 | .value[3].f32 | Offset of the shadow along the x-axis, in vp.|
 | .value[4].f32 | Offset of the shadow along the y-axis, in vp.|
@@ -414,7 +414,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .value[0].f32 | Blur radius of the shadow, in vp.|
-| .value[1].i32 | Shadow type. The parameter type is [ArkUI_ShadowType](capi-native-type-h.md#arkui_shadowtype).|
+| .value[1].i32 | Shadow type. The parameter type is [ArkUI_ShadowType](capi-native-type-visual-h.md#arkui_shadowtype).|
 | .value[2].u32 | Shadow color, in 0xARGB format.|
 | .value[3].f32 | Offset of the shadow along the x-axis, in vp.|
 | .value[4].f32 | Offset of the shadow along the y-axis, in vp.|
@@ -844,7 +844,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name| Description|
 | -- | -- |
 | .value[0].f32 | Start angle of the linear gradient. The setting takes effect only when **direction** is set to **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM**. A positive value indicates a clockwise rotation from the origin, (0, 0). The default value is **180**.|
-| .value[1].i32 | Direction of the linear gradient. The parameter type is [ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection). When a direction other than **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM** is set, the **angle** attribute is ignored. The default value is **ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM**.|
+| .value[1].i32 | Direction of the linear gradient. The parameter type is [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection). When a direction other than **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM** is set, the **angle** attribute is ignored. The default value is **ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM**.|
 | .value[2].i32 | Whether the colors are repeated. The value **false** means that the colors are not repeated, and **true** means the opposite. The default value is **false**.|
 | .object | The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md). It specifies an array of color stops, each of which consists of a color and its stop position. Invalid colors are automatically skipped.|
 | colors | Colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
@@ -856,7 +856,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .value[0].f32 | Start angle of the linear gradient. The set value is used only when **ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM** is used. In other cases, the default value **0** is used.|
-| .value[1].i32 | Direction of the linear gradient. The parameter type is [ArkUI_LinearGradientDirection](capi-native-type-h.md#arkui_lineargradientdirection).|
+| .value[1].i32 | Direction of the linear gradient. The parameter type is [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection).|
 | .value[2].i32 | Whether the colors are repeated. The value **0** means that the colors are not repeated, and **1** means the opposite. The default value is **0**.|
 | .object | The parameter type is [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md). It specifies an array of color stops, each of which consists of a color and its stop position. Invalid colors are automatically skipped.|
 | colors | Colors of the color stops, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
@@ -1061,7 +1061,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Multiple value of the multiple line height mode. The default value is **0**, indicating that the default line height is used.|
+| .value[0].f32 | Multiple value of the multiple line height mode. The default value is **0**, indicating that the default line height is used.|
 
 **Returns**
 
@@ -1181,7 +1181,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_TEXT_COMPRESS_LEADING_PUNCTUATION = 1048
 ```
 
-Whether to enable the feature of compressing punctuations at the beginning of a text line. This attribute can be set, reset, and obtained as required through APIs.<br>
+Whether to enable leading punctuation compression. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 23
@@ -1191,13 +1191,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Whether to enable the feature of compressing punctuations at the beginning of a text line.<br>**true** to enable; **false** otherwise. The default value is **false**.|
+| .value[0].i32 | Whether to enable leading punctuation compression.<br>**true** to enable; **false** otherwise. The default value is **false**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Whether the feature of compressing punctuations is enabled at the beginning of a text line.|
+| .value[0].i32 | Whether leading punctuation compression is enabled.|
 
 ## NODE_TEXT_INCLUDE_FONT_PADDING
 
@@ -1337,6 +1337,55 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .object | Text controller. The parameter type is [ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md).|
 
+## NODE_TEXT_PUNCTUATION_OVERFLOW
+
+```c
+NODE_TEXT_PUNCTUATION_OVERFLOW = 1055
+```
+
+Whether to enable punctuation hanging at the end of a line for the **Text** component. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[0].i32 | Whether to enable punctuation hanging at the end of a line. The value **1** means to enable, and **0** means the opposite. The default value is **0**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[0].i32 | Whether to enable punctuation hanging at the end of a line.|
+
+## NODE_TEXT_TAIL_INDENTS
+
+```c
+NODE_TEXT_TAIL_INDENTS = 1056
+```
+
+Tail indentation of each line in a text block.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+
+**Since**: 26.0.0
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| .value[i].i32 | Tail indentation value of the *i*th line of text, in vp. The value range is [0, +∞). When the value of **.size** is **1**, all lines share the same tail indentation value (specified by **.value[0].i32**). When the value of **.size** is greater than **1**, the *i*th line uses the tail indentation value (specified by **.value[0].i32**). When the number of text lines exceeds the value of **.size**, the excess part reuses **.value[.size - 1].i32**.|
+| .size | Number of valid indentation values, that is, the number of actually-used elements in the **.value** array.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[i].i32 | Tail indentation value of the *i*th line of text, in vp.|
+| .size | Number of valid indentation values, that is, the number of actually-used elements in the **.value** array.|
 
 ## NODE_SPAN_CONTENT
 
@@ -1541,14 +1590,14 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .string | Placeholder image address for the image span. GIF images are not supported.|
+| .string | Placeholder image address for the **imageSpan** component. GIF images are not supported.|
 | .object | **PixelMap** object. The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md).<br>Either **.object** or **.string** must be set.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .string | Placeholder image address.|
+| .string | Placeholder image address for the **imageSpan** component.|
 | .object | **PixelMap** object. The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md).|
 
 ## NODE_IMAGE_SPAN_BASELINE_OFFSET

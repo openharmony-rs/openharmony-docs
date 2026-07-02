@@ -4,10 +4,10 @@
 <!--Subsystem: Account-->
 <!--Owner: @steven-q-->
 <!--Designer: @JiDong-CS1-->
-<!--Tester: @zhaimengchao-->
+<!--Tester: @pan9f-->
 <!--Adviser: @zengyawen-->
 
-The **appAccount** module provides APIs for adding, deleting, modifying, and querying application account information, and supports inter-application authentication and distributed data synchronization.
+The **appAccount** module provides APIs for adding, deleting, modifying, and querying application account information. The application-level account isolation mechanism is used for application account management. The account information of each application is managed separately.
 
 > **NOTE**
 >
@@ -55,7 +55,7 @@ Creates an application account with the given name. This API uses an asynchronou
 
 | Name     | Type                   | Mandatory | Description              |
 | -------- | ------------------------- | ----- | -------------------- |
-| name     | string                    | Yes   | Name of the application account.         |
+| name     | string                    | Yes   | Name of the application account. The value contains a maximum of 512 characters.         |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -101,7 +101,7 @@ Creates an application account with custom data. This API uses an asynchronous c
 
 | Name      | Type                       | Mandatory  | Description                                      |
 | --------- | ------------------------- | ---- | ---------------------------------------- |
-| name      | string                    | Yes   | Name of the application account.                             |
+| name      | string                    | Yes   | Name of the application account. The value contains a maximum of 512 characters.                             |
 | options | [CreateAccountOptions](#createaccountoptions9) | Yes   | Options for creating the application account. You can customize data based on service requirements, but do not add sensitive data (such as passwords and tokens).|
 | callback  | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.            |
 
@@ -153,7 +153,7 @@ Creates an application account with custom data. This API uses a promise to retu
 
 | Name      | Type    | Mandatory  | Description                                      |
 | --------- | ------ | ---- | ---------------------------------------- |
-| name      | string | Yes   | Name of the application account.                             |
+| name      | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.                             |
 | options | [CreateAccountOptions](#createaccountoptions9) | No   | Options for creating the application account. You can customize data based on service requirements, but do not add sensitive data (such as passwords and tokens). <br>By default, no value is passed in, which means no additional information needs to be added for the account.|
 
 **Return value**
@@ -200,7 +200,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 createAccountImplicitly(owner: string, callback: AuthCallback): void
 
-Creates an application account implicitly based on the specified account owner. This API uses an asynchronous callback to return the result.
+Creates an application account automatically by the authenticator based on the specified owner. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -208,7 +208,7 @@ Creates an application account implicitly based on the specified account owner. 
 
 | Name     | Type               | Mandatory  | Description                     |
 | -------- | --------------------- | ---- | ----------------------- |
-| owner    | string                | Yes   | Owner of the application account. The value is the bundle name of the application.         |
+| owner    | string                | Yes   | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters.         |
 | callback | [AuthCallback](#authcallback9) | Yes   | Authenticator callback used to return the result.|
 
 **Error codes**
@@ -282,7 +282,7 @@ Creates an application account implicitly based on the specified account owner a
 
 | Name     | Type                   | Mandatory  | Description                     |
 | -------- | --------------------- | ---- | ----------------------- |
-| owner    | string                | Yes   | Owner of the application account. The value is the bundle name of the application.         |
+| owner    | string                | Yes   | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters.         |
 | options    | [CreateAccountImplicitlyOptions](#createaccountimplicitlyoptions9)   | Yes   | Options for implicitly creating the account.         |
 | callback | [AuthCallback](#authcallback9) | Yes   | Authenticator callback used to return the result.        |
 
@@ -361,7 +361,7 @@ Removes an application account. This API uses an asynchronous callback to return
 
 | Name     | Type                       | Mandatory  | Description              |
 | -------- | ------------------------- | ---- | ---------------- |
-| name     | string                    | Yes   | Name of the application account.     |
+| name     | string                    | Yes   | Name of the application account. The value contains a maximum of 512 characters.     |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -406,12 +406,12 @@ Removes an application account. This API uses a promise to return the result.
 
 | Name | Type    | Mandatory  | Description         |
 | ---- | ------ | ---- | ----------- |
-| name | string | Yes   | Name of the application account.|
+| name | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.|
 
 **Return value**
 
 | Type                 | Description                   |
-| :------------------ | :-------------------- |
+| ------------------ | -------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
@@ -454,8 +454,8 @@ Sets the access to the data of an account for an application. This API uses an a
 
 | Name       | Type                     | Mandatory  | Description                               |
 | ------------ | ------------------------- | ---- | --------------------------------- |
-| name         | string                    | Yes   | Name of the application account.                          |
-| bundleName   | string                    | Yes   | Bundle name of the application.                        |
+| name         | string                    | Yes   | Name of the application account. The value contains a maximum of 512 characters.                          |
+| bundleName   | string                    | Yes   | Bundle name of the application. The value contains a maximum of 512 characters.                        |
 | isAccessible | boolean                   | Yes   | Whether the access is allowed. The value **true** means to allow the access; the value **false** means the opposite.|
 | callback     | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
@@ -502,14 +502,14 @@ Sets the access to the data of an account for an application. This API uses a pr
 
 | Name       | Type    | Mandatory  | Description       |
 | ---------- | ------ | ---- | --------- |
-| name       | string | Yes   | Name of the application account.  |
-| bundleName | string | Yes   | Bundle name of the application.|
+| name       | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.  |
+| bundleName | string | Yes   | Bundle name of the application. The value contains a maximum of 512 characters.|
 | isAccessible | boolean | Yes   | Whether the access is allowed. The value **true** means to allow the access; the value **false** means the opposite.|
 
 **Return value**
 
 | Type                 | Description                   |
-| :------------------ | :-------------------- |
+| ------------------ | -------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
@@ -545,7 +545,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 checkAppAccess(name: string, bundleName: string, callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks whether an application can access the data of an account. This API uses an asynchronous callback to return the result.
+Checks whether the caller can access the account data that belongs to the target application. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -553,8 +553,8 @@ Checks whether an application can access the data of an account. This API uses a
 
 | Name       | Type                       | Mandatory  | Description                               |
 | ---------- | ------------------------- | ---- | --------------------------------- |
-| name       | string                    | Yes   | Name of the application account.                          |
-| bundleName | string                    | Yes   | Bundle name of the application.                        |
+| name       | string                    | Yes   | Name of the application account. The value contains a maximum of 512 characters.                          |
+| bundleName | string                    | Yes   | Bundle name of the application. The value contains a maximum of 512 characters.                        |
 | callback   | AsyncCallback&lt;boolean&gt; | Yes   | Callback used to return the result. The value **true** means the application can access the account data; the value **false** means the opposite.|
 
 **Error codes**
@@ -592,7 +592,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 checkAppAccess(name: string, bundleName: string): Promise&lt;boolean&gt;
 
-Checks whether an application can access the data of an account. This API uses a promise to return the result.
+Checks whether the caller can access the account data that belongs to the target application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -600,8 +600,8 @@ Checks whether an application can access the data of an account. This API uses a
 
 | Name       | Type    | Mandatory  | Description       |
 | ---------- | ------ | ---- | --------- |
-| name       | string | Yes   | Name of the application account.  |
-| bundleName | string | Yes   | Bundle name of the application.|
+| name       | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.  |
+| bundleName | string | Yes   | Bundle name of the application. The value contains a maximum of 512 characters.|
 
 **Return value**
 
@@ -651,7 +651,7 @@ Sets data synchronization for an application account. This API uses an asynchron
 
 | Name     | Type                       | Mandatory  | Description                       |
 | -------- | ------------------------- | ---- | ------------------------- |
-| name     | string                    | Yes   | Name of the application account.                  |
+| name     | string                    | Yes   | Name of the application account. The value contains a maximum of 512 characters.                  |
 | isEnabled | boolean                   | Yes   | Whether to enable data synchronization. The value **true** means that data synchronization is enabled, and **false** means the opposite.      |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
@@ -696,13 +696,13 @@ Sets data synchronization for an application account. This API uses a promise to
 
 | Name     | Type     | Mandatory  | Description         |
 | -------- | ------- | ---- | ----------- |
-| name     | string  | Yes   | Name of the application account.    |
+| name     | string  | Yes   | Name of the application account. The value contains a maximum of 512 characters.    |
 | isEnabled | boolean | Yes   | Whether to enable data synchronization. The value **true** means that data synchronization is enabled, and **false** means the opposite.|
 
 **Return value**
 
 | Type                 | Description                   |
-| :------------------ | :-------------------- |
+| ------------------ | -------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
@@ -748,7 +748,7 @@ Checks whether data synchronization is enabled for an application account. This 
 
 | Name     | Type                          | Mandatory  | Description                   |
 | -------- | ---------------------------- | ---- | --------------------- |
-| name     | string                       | Yes   | Name of the application account.              |
+| name     | string                       | Yes   | Name of the application account. The value contains a maximum of 512 characters.              |
 | callback | AsyncCallback&lt;boolean&gt; | Yes   | Callback used to return the result. The value **true** means data synchronization is enabled for the application account; the value **false** means the opposite.|
 
 **Error codes**
@@ -796,12 +796,12 @@ Checks whether data synchronization is enabled for an application account. This 
 
 | Name | Type    | Mandatory  | Description     |
 | ---- | ------ | ---- | ------- |
-| name | string | Yes   | Name of the application account.|
+| name | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.|
 
 **Return value**
 
 | Type                    | Description                   |
-| :--------------------- | :-------------------- |
+| --------------------- | -------------------- |
 | Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means data synchronization is enabled for the application account; the value **false** means the opposite.|
 
 **Error codes**
@@ -845,9 +845,9 @@ Sets a credential for an application account. This API uses an asynchronous call
 
 | Name           | Type                       | Mandatory  | Description           |
 | -------------- | ------------------------- | ---- | ------------- |
-| name           | string                    | Yes   | Name of the application account.    |
-| credentialType | string                    | Yes   | Credential type.    |
-| credential     | string                    | Yes   | Credential value.      |
+| name           | string                    | Yes   | Name of the application account. The value contains a maximum of 512 characters.    |
+| credentialType | string                    | Yes   | Credential type. The value is user-defined and contains a maximum of 1024 characters.    |
+| credential     | string                    | Yes   | Credential value. The value is user-defined and contains a maximum of 1024 characters.      |
 | callback       | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the credential is set successfully, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -892,14 +892,14 @@ Sets a credential for an application account. This API uses a promise to return 
 
 | Name           | Type    | Mandatory  | Description        |
 | -------------- | ------ | ---- | ---------- |
-| name           | string | Yes   | Name of the application account.  |
-| credentialType | string | Yes   | Credential type.|
-| credential     | string | Yes   | Credential value.   |
+| name           | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.  |
+| credentialType | string | Yes   | Credential type. The value is user-defined and contains a maximum of 1024 characters.|
+| credential     | string | Yes   | Credential value. The value is user-defined and contains a maximum of 1024 characters.   |
 
 **Return value**
 
 | Type                | Description                   |
-| :------------------ | :-------------------- |
+| ------------------ | -------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
@@ -942,8 +942,8 @@ Obtains the credential of an application account. This API uses an asynchronous 
 
 | Name           | Type                         | Mandatory  | Description            |
 | -------------- | --------------------------- | ---- | -------------- |
-| name           | string                      | Yes   | Name of the application account.       |
-| credentialType | string                      | Yes   | Credential type.|
+| name           | string                      | Yes   | Name of the application account. The value contains a maximum of 512 characters.       |
+| credentialType | string                      | Yes   | Credential type. The value is user-defined and contains a maximum of 1024 characters.|
 | callback       | AsyncCallback&lt;string&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the credential obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -989,13 +989,13 @@ Obtains the credential of an application account. This API uses a promise to ret
 
 | Name         | Type    | Mandatory  | Description        |
 | -------------- | ------ | ---- | ---------- |
-| name           | string | Yes   | Name of the application account.|
-| credentialType | string | Yes   | Credential type.|
+| name           | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.|
+| credentialType | string | Yes   | Credential type. The value is user-defined and contains a maximum of 1024 characters.|
 
 **Return value**
 
 | Type                   | Description                   |
-| :-------------------- | :-------------------- |
+| -------------------- | -------------------- |
 | Promise&lt;string&gt; | Promise used to return the credential obtained.|
 
 **Error codes**
@@ -1038,10 +1038,10 @@ Sets custom data for an application account. This API uses an asynchronous callb
 **Parameters**
 
 | Name     | Type                       | Mandatory  | Description               |
-| -------- | ------------------------- | ---- | ----------------- |
-| name     | string                    | Yes   | Name of the application account.|
-| key      | string                    | Yes   | Key of the custom data.|
-| value    | string                    | Yes   | Value of the custom data.|
+| -------- | ------ | ---- | ----------------- |
+| name     | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.|
+| key      | string | Yes   | Key of the custom data. The value contains a maximum of 1024 characters.|
+| value    | string | Yes   | Value of the custom data. Do not include sensitive data. The value contains a maximum of 1024 characters.|
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1087,14 +1087,14 @@ Sets custom data for an application account. This API uses a promise to return t
 
 | Name  | Type| Mandatory | Description             |
 | ----- | ------ | ---- | ----------------- |
-| name  | string | Yes   | Name of the application account.  |
-| key   | string | Yes   | Key of the custom data.|
-| value | string | Yes   | Value of the custom data.|
+| name  | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.  |
+| key   | string | Yes   | Key of the custom data. The value contains a maximum of 1024 characters.|
+| value | string | Yes   | Value of the custom data. The value contains a maximum of 1024 characters.|
 
 **Return value**
 
 | Type                 | Description                   |
-| :------------------ | :-------------------- |
+| ------------------ | -------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
@@ -1138,8 +1138,8 @@ Obtains the custom data of an application account based on the specified key. Th
 
 | Name   | Type                       | Mandatory | Description                    |
 | -------- | --------------------------- | ----- | ------------------------ |
-| name     | string                      | Yes   | Name of the application account.          |
-| key      | string                      | Yes   | Key of the custom data.        |
+| name     | string                      | Yes   | Name of the application account. The value contains a maximum of 512 characters.          |
+| key      | string                      | Yes   | Key of the custom data. The value contains a maximum of 1024 characters.        |
 | callback | AsyncCallback&lt;string&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the custom data value obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1185,8 +1185,8 @@ Obtains the custom data of an application account based on the specified key. Th
 
 | Name | Type    | Mandatory  | Description       |
 | ---- | ------ | ---- | --------- |
-| name | string | Yes   | Name of the application account.  |
-| key  | string | Yes   | Key of the custom data.|
+| name | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.  |
+| key  | string | Yes   | Key of the custom data. The value contains a maximum of 1024 characters.|
 
 **Return value**
 
@@ -1235,8 +1235,8 @@ Obtains the custom data of an application account based on the specified key. Th
 
 | Name | Type    | Mandatory  | Description       |
 | ---- | ------ | ---- | --------- |
-| name | string | Yes   | Name of the application account.  |
-| key  | string | Yes   | Key of the custom data.|
+| name | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.  |
+| key  | string | Yes   | Key of the custom data. The value contains a maximum of 1024 characters.|
 
 **Return value**
 
@@ -1363,7 +1363,7 @@ Obtains the application accounts that can be accessed by the invoker based on th
 
 | Name     | Type                                      | Mandatory  | Description       |
 | -------- | ---------------------------------------- | ---- | --------- |
-| owner    | string                                   | Yes   | Owner of the application account. The value is the bundle name of the application.   |
+| owner    | string                                   | Yes   | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters.   |
 | callback | AsyncCallback&lt;Array&lt;[AppAccountInfo](#appaccountinfo)&gt;&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is null and **data** is the application account information obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1408,7 +1408,7 @@ Obtains the application accounts that can be accessed by the invoker based on th
 
 | Name  | Type    | Mandatory  | Description    |
 | ----- | ------ | ---- | ------ |
-| owner | string | Yes   | Owner of the application account. The value is the bundle name of the application.|
+| owner | string | Yes   | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters.|
 
 **Return value**
 
@@ -1456,7 +1456,7 @@ Subscribes to account information changes of apps.
 
 | Name     | Type                                      | Mandatory  | Description                            |
 | -------- | ---------------------------------------- | ---- | ------------------------------ |
-| type     | 'accountChange'                          | Yes   | Event type to subscribe to. The value is **'accountChange'**. An event will be reported when the account information of the target application changes.|
+| type     | 'accountChange'                          | Yes   | Event type to unsubscribe from. The value is **'accountChange'**.|
 | owners   | Array&lt;string&gt;                      | Yes   | Application bundle names of the account.                     |
 | callback | Callback&lt;Array&lt;[AppAccountInfo](#appaccountinfo)&gt;&gt; | Yes   | Callback registered to return the list of changed application accounts.          |
 
@@ -1547,9 +1547,9 @@ Authenticates an application account. This API uses an asynchronous callback to 
 
 | Name     | Type                   | Mandatory  | Description             |
 | -------- | --------------------- | ---- | --------------- |
-| name     | string                | Yes   | Name of the application account.    |
-| owner    | string                | Yes   | Owner of the application account. The value is the bundle name of the application. |
-| authType | string                | Yes   | Authentication type.          |
+| name     | string                | Yes   | Name of the application account. The value contains a maximum of 512 characters.    |
+| owner    | string                | Yes   | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
+| authType | string                | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters.          |
 | callback | [AuthCallback](#authcallback9) | Yes   | Authenticator callback used to return the result.|
 
 **Error codes**
@@ -1624,9 +1624,9 @@ Authenticates an application account. This API uses an asynchronous callback to 
 
 | Name     | Type                   | Mandatory  | Description             |
 | -------- | --------------------- | ---- | --------------- |
-| name     | string                | Yes   | Name of the application account.    |
-| owner    | string                | Yes   | Owner of the application account. The value is the bundle name of the application. |
-| authType | string                | Yes   | Authentication type.          |
+| name     | string                | Yes   | Name of the application account. The value contains a maximum of 512 characters.    |
+| owner    | string                | Yes   | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
+| authType | string                | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters.          |
 | options  | Record<string, Object>  | Yes   | Options for the authentication.      |
 | callback | [AuthCallback](#authcallback9) | Yes   | Authenticator callback used to return the result.|
 
@@ -1697,7 +1697,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 getAuthToken(name: string, owner: string, authType: string, callback: AsyncCallback&lt;string&gt;): void
 
-Obtains the authorization token of the specified authentication type for an application account. This API uses an asynchronous callback to return the result.
+Obtains the authorization token of the specified authorization type for an application account. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -1705,9 +1705,9 @@ Obtains the authorization token of the specified authentication type for an appl
 
 | Name     | Type                         | Mandatory  | Description         |
 | -------- | --------------------------- | ---- | ----------- |
-| name     | string                      | Yes   | Name of the application account.   |
-| owner    | string                      | Yes   | Owner of the application account. The value is the bundle name of the application.|
-| authType | string                      | Yes   | Authentication type.      |
+| name     | string                      | Yes   | Name of the application account. The value contains a maximum of 512 characters.   |
+| owner    | string                      | Yes   | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters.|
+| authType | string                      | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters.      |
 | callback | AsyncCallback&lt;string&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the authorization token value obtained. Otherwise, **err** is an error object.   |
 
 **Error codes**
@@ -1746,7 +1746,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 getAuthToken(name: string, owner: string, authType: string): Promise&lt;string&gt;
 
-Obtains the authorization token of the specified authentication type for an application account. This API uses a promise to return the result.
+Obtains the authorization token of the specified authorization type for an application account. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -1754,9 +1754,9 @@ Obtains the authorization token of the specified authentication type for an appl
 
 | Name     | Type    | Mandatory  | Description         |
 | -------- | ------ | ---- | ----------- |
-| name     | string | Yes   | Name of the application account.   |
-| owner    | string | Yes   | Owner of the application account. The value is the bundle name of the application.|
-| authType | string | Yes   | Authentication type.      |
+| name     | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.   |
+| owner    | string | Yes   | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters.|
+| authType | string | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters.      |
 
 **Return value**
 
@@ -1797,7 +1797,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 setAuthToken(name: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;): void
 
-Sets an authorization token of the specific authentication type for an application account. This API uses an asynchronous callback to return the result.
+Sets an authorization token of the specific authorization type for an application account. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -1805,9 +1805,9 @@ Sets an authorization token of the specific authentication type for an applicati
 
 | Name     | Type                       | Mandatory  | Description      |
 | -------- | ------------------------- | ---- | -------- |
-| name     | string                    | Yes   | Name of the application account.|
-| authType | string                    | Yes   | Authentication type.   |
-| token    | string                    | Yes   | Authorization token.|
+| name     | string                    | Yes   | Name of the application account. The value contains a maximum of 512 characters.|
+| authType | string                    | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters.   |
+| token    | string                    | Yes   | Authorization token. The value contains a maximum of 1024 characters.|
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1845,7 +1845,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 setAuthToken(name: string, authType: string, token: string): Promise&lt;void&gt;
 
-Sets an authorization token of the specific authentication type for an application account. This API uses a promise to return the result.
+Sets an authorization token of the specific authorization type for an application account. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -1853,9 +1853,9 @@ Sets an authorization token of the specific authentication type for an applicati
 
 | Name     | Type    | Mandatory  | Description      |
 | -------- | ------ | ---- | -------- |
-| name     | string | Yes   | Name of the application account.|
-| authType | string | Yes   | Authentication type.   |
-| token    | string | Yes   | Authorization token.|
+| name     | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.|
+| authType | string | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters.   |
+| token    | string | Yes   | Authorization token. The value contains a maximum of 1024 characters.|
 
 **Return value**
 
@@ -1896,7 +1896,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 deleteAuthToken(name: string, owner: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;): void
 
-Deletes the authorization token of the specified authentication type for an application account. This API uses an asynchronous callback to return the result.
+Deletes the authorization token of the specified authorization type for an application account. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -1904,10 +1904,10 @@ Deletes the authorization token of the specified authentication type for an appl
 
 | Name     | Type                       | Mandatory  | Description          |
 | -------- | ------------------------- | ---- | ------------ |
-| name     | string                    | Yes   | Name of the application account.    |
-| owner    | string                    | Yes   | Owner of the application account. The value is the bundle name of the application. |
-| authType | string                    | Yes   | Authentication type.       |
-| token    | string                    | Yes   | Authorization token. If the token does not exist, no operation is performed.|
+| name     | string                    | Yes   | Name of the application account. The value contains a maximum of 512 characters.    |
+| owner    | string                    | Yes   | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
+| authType | string                    | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters.       |
+| token    | string                    | Yes   | Authorization token. If the token does not exist, no operation is performed. The value contains a maximum of 1024 characters.|
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.    |
 
 **Error codes**
@@ -1946,7 +1946,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 deleteAuthToken(name: string, owner: string, authType: string, token: string): Promise&lt;void&gt;
 
-Deletes the authorization token of the specified authentication type for an application account. This API uses a promise to return the result.
+Deletes the authorization token of the specified authorization type for an application account. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -1954,10 +1954,10 @@ Deletes the authorization token of the specified authentication type for an appl
 
 | Name     | Type    | Mandatory  | Description          |
 | -------- | ------ | ---- | ------------ |
-| name     | string | Yes   | Name of the application account.    |
-| owner    | string | Yes   | Owner of the application account. The value is the bundle name of the application. |
-| authType | string | Yes   | Authentication type.       |
-| token    | string | Yes   | Authorization token. If the token does not exist, no operation is performed.|
+| name     | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.    |
+| owner    | string | Yes   | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
+| authType | string | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters.       |
+| token    | string | Yes   | Authorization token. If the token does not exist, no operation is performed. The value contains a maximum of 1024 characters.|
 
 **Return value**
 
@@ -2006,9 +2006,9 @@ Sets the visibility of an authorization token to an application. This API uses a
 
 | Name       | Type                       | Mandatory  | Description                       |
 | ---------- | ------------------------- | ---- | ------------------------- |
-| name       | string                    | Yes   | Name of the application account.                 |
-| authType   | string                    | Yes   | Authentication type.                    |
-| bundleName | string                    | Yes   | Bundle name of the application.             |
+| name       | string                    | Yes   | Name of the application account. The value contains a maximum of 512 characters.                 |
+| authType   | string                    | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters.                    |
+| bundleName | string                    | Yes   | Bundle name of the application. The value contains a maximum of 512 characters.             |
 | isVisible  | boolean                   | Yes   | Whether the authorization token is visible to the application. The value **true** means the authorization token is visible to the application; the value **false** means the opposite.|
 | callback   | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
@@ -2057,9 +2057,9 @@ Sets the visibility of an authorization token to an application. This API uses a
 
 | Name     | Type                       | Mandatory  | Description                       |
 | ---------- | ------------------------- | ---- | ------------------------- |
-| name       | string                    | Yes   | Name of the application account.                 |
-| authType   | string                    | Yes   | Authentication type.                    |
-| bundleName | string                    | Yes   | Bundle name of the application.             |
+| name       | string                    | Yes   | Name of the application account. The value contains a maximum of 512 characters.                 |
+| authType   | string                    | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters.                    |
+| bundleName | string                    | Yes   | Bundle name of the application. The value contains a maximum of 512 characters.             |
 | isVisible  | boolean                   | Yes   | Whether the authorization token is visible to the application. The value **true** means the authorization token is visible to the application; the value **false** means the opposite.|
 
 **Return value**
@@ -2102,7 +2102,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 checkAuthTokenVisibility(name: string, authType: string, bundleName: string, callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks the visibility of an authorization token of the specified authentication type to an application. This API uses an asynchronous callback to return the result.
+Checks the visibility of an authorization token of the specified authorization type to an application. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -2110,9 +2110,9 @@ Checks the visibility of an authorization token of the specified authentication 
 
 | Name       | Type                          | Mandatory  | Description         |
 | ---------- | ---------------------------- | ---- | ----------- |
-| name       | string                       | Yes   | Name of the application account.   |
-| authType   | string                       | Yes   | Authentication type.      |
-| bundleName | string                       | Yes   | Bundle name of the application.|
+| name       | string                       | Yes   | Name of the application account. The value contains a maximum of 512 characters.   |
+| authType   | string                       | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters.      |
+| bundleName | string                       | Yes   | Bundle name of the application. The value contains a maximum of 512 characters.|
 | callback   | AsyncCallback&lt;boolean&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** can be **true** (the authorization token is visible to the application) or **false** (the authorization token is not visible to the application). If the operation fails, **err** is an error object.   |
 
 **Error codes**
@@ -2151,7 +2151,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 checkAuthTokenVisibility(name: string, authType: string, bundleName: string): Promise&lt;boolean&gt;
 
-Checks the visibility of an authorization token of the specified authentication type to an application. This API uses a promise to return the result.
+Checks the visibility of an authorization token of the specified authorization type to an application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -2159,9 +2159,9 @@ Checks the visibility of an authorization token of the specified authentication 
 
 | Name       | Type    | Mandatory  | Description           |
 | ---------- | ------ | ---- | ------------- |
-| name       | string | Yes   | Name of the application account.     |
-| authType   | string | Yes   | Authentication type.        |
-| bundleName | string | Yes   | Bundle name of the application.|
+| name       | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.     |
+| authType   | string | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters.        |
+| bundleName | string | Yes   | Bundle name of the application. The value contains a maximum of 512 characters.|
 
 **Return value**
 
@@ -2211,8 +2211,8 @@ Obtains all tokens visible to the invoker for an application account. This API u
 
 | Name     | Type                                      | Mandatory  | Description         |
 | -------- | ---------------------------------------- | ---- | ----------- |
-| name     | string                                   | Yes   | Name of the application account.   |
-| owner    | string                                   | Yes   | Owner of the application account. The value is the bundle name of the application.|
+| name     | string                                   | Yes   | Name of the application account. The value contains a maximum of 512 characters.   |
+| owner    | string                                   | Yes   | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters.|
 | callback | AsyncCallback&lt;Array&lt;[AuthTokenInfo](#authtokeninfo9)&gt;&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is a list of all tokens visible to the invoker. Otherwise, **err** is an error object.   |
 
 **Error codes**
@@ -2258,8 +2258,8 @@ Obtains all tokens visible to the invoker for an application account. This API u
 
 | Name  | Type    | Mandatory  | Description         |
 | ----- | ------ | ---- | ----------- |
-| name  | string | Yes   | Name of the application account.   |
-| owner | string | Yes   | Owner of the application account. The value is the bundle name of the application.|
+| name  | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.   |
+| owner | string | Yes   | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters.|
 
 **Return value**
 
@@ -2300,7 +2300,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 getAuthList(name: string, authType: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setAuthTokenVisibility](#setauthtokenvisibility9). This API uses an asynchronous callback to return the result.
+Obtains the authorization list of the specified authorization type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setAuthTokenVisibility](#setauthtokenvisibility9). This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -2308,8 +2308,8 @@ Obtains the authorization list of the specified authentication type for an appli
 
 | Name     | Type                                      | Mandatory  | Description                     |
 | -------- | ---------------------------------------- | ---- | ----------------------- |
-| name     | string                                   | Yes   | Name of the application account.               |
-| authType | string                                   | Yes   | Authentication type.|
+| name     | string                                   | Yes   | Name of the application account. The value contains a maximum of 512 characters.               |
+| authType | string                                   | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters.|
 | callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is a list of authorized bundles obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -2347,7 +2347,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 getAuthList(name: string, authType: string): Promise&lt;Array&lt;string&gt;&gt;
 
-Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setAuthTokenVisibility](#setauthtokenvisibility9). This API uses a promise to return the result.
+Obtains the authorization list of the specified authorization type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setAuthTokenVisibility](#setauthtokenvisibility9). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -2355,8 +2355,8 @@ Obtains the authorization list of the specified authentication type for an appli
 
 | Name     | Type    | Mandatory  | Description                     |
 | -------- | ------ | ---- | ------------------------------ |
-| name     | string | Yes   | Name of the application account.               |
-| authType | string | Yes   | Authentication type.|
+| name     | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.               |
+| authType | string | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters.|
 
 **Return value**
 
@@ -2530,7 +2530,7 @@ Obtains the authenticator information of an application. This API uses an asynch
 
 | Name     | Type                                    | Mandatory  | Description         |
 | -------- | -------------------------------------- | ---- | ----------- |
-| owner    | string                                 | Yes   | Owner of the application account. The value is the bundle name of the application.|
+| owner    | string                                 | Yes   | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters.|
 | callback | AsyncCallback&lt;[AuthenticatorInfo](#authenticatorinfo8)&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the authenticator information obtained. Otherwise, **err** is an error object.   |
 
 **Error codes**
@@ -2576,7 +2576,7 @@ Obtains the authenticator information of an application. This API uses a promise
 
 | Name  | Type    | Mandatory  | Description         |
 | ----- | ------ | ---- | ----------- |
-| owner | string | Yes   | Owner of the application account. The value is the bundle name of the application.|
+| owner | string | Yes   | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters.|
 
 **Return value**
 
@@ -2625,8 +2625,8 @@ Checks whether an application account has specific labels. This API uses an asyn
 
 | Name        | Type                      | Mandatory | Description            |
 | -------------- | ------------------------- | ----- | --------------- |
-| name           | string                    | Yes   | Name of the application account. |
-| owner          | string                    | Yes   | Owner of the application account. The value is the bundle name of the application.|
+| name           | string                    | Yes   | Name of the application account. The value contains a maximum of 512 characters. |
+| owner          | string                    | Yes   | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters.|
 | labels         | Array&lt;string&gt;       | Yes   | Labels to check.      |
 | callback       | AsyncCallback&lt;boolean&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** can be **true** or **false**. The value **true** means the application account has the labels; the value **false** means the opposite. If the operation fails, **err** is an error object. |
 
@@ -2677,8 +2677,8 @@ Checks whether an application account has specific labels. This API uses a promi
 
 | Name        | Type                      | Mandatory | Description            |
 | -------------- | ------------------------- | ----- | --------------- |
-| name           | string                    | Yes   | Name of the application account. |
-| owner          | string                    | Yes   | Owner of the application account. The value is the bundle name of the application.|
+| name           | string                    | Yes   | Name of the application account. The value contains a maximum of 512 characters. |
+| owner          | string                    | Yes   | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters.|
 | labels         | Array&lt;string&gt;       | Yes   | Labels to check.      |
 
 **Return value**
@@ -2724,7 +2724,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 deleteCredential(name: string, credentialType: string, callback: AsyncCallback&lt;void&gt;): void
 
-Deletes the credential of the specified type from an application account. This API uses an asynchronous callback to return the result.
+Deletes the credential for the specified type of an application account. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -2732,8 +2732,8 @@ Deletes the credential of the specified type from an application account. This A
 
 | Name        | Type                      | Mandatory | Description           |
 | -------------- | ------------------------- | ----- | -------------- |
-| name           | string                    | Yes   | Name of the application account.|
-| credentialType | string                    | Yes   | Credential type.     |
+| name           | string                    | Yes   | Name of the application account. The value contains a maximum of 512 characters.|
+| credentialType | string                    | Yes   | Credential type. The value is user-defined and contains a maximum of 1024 characters.     |
 | callback       | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -2771,7 +2771,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 deleteCredential(name: string, credentialType: string): Promise&lt;void&gt;
 
-Deletes the credential of the specified type from an application account. This API uses a promise to return the result.
+Deletes the credential for the specified type of an application account. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -2779,8 +2779,8 @@ Deletes the credential of the specified type from an application account. This A
 
 | Name        | Type  | Mandatory  | Description           |
 | -------------- | ------ | ----- | --------------- |
-| name           | string | Yes   | Name of the application account.|
-| credentialType | string | Yes   | Credential type.      |
+| name           | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.|
+| credentialType | string | Yes   | Credential type. The value is user-defined and contains a maximum of 1024 characters.      |
 
 **Return value**
 
@@ -2924,7 +2924,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 verifyCredential(name: string, owner: string, callback: AuthCallback): void
 
-Verifies the credential of an application account. This API uses an asynchronous callback to return the result.
+Verifies the validity of a specified account credential. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -2932,8 +2932,8 @@ Verifies the credential of an application account. This API uses an asynchronous
 
 | Name   | Type                 | Mandatory | Description                    |
 | -------- | --------------------- | ----- | ----------------------- |
-| name     | string                | Yes   | Name of the application account.         |
-| owner    | string                | Yes   | Owner of the application account. The value is the bundle name of the application.       |
+| name     | string                | Yes   | Name of the application account. The value contains a maximum of 512 characters.         |
+| owner    | string                | Yes   | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters.       |
 | callback | [AuthCallback](#authcallback9) | Yes   | Callback used to return the result.|
 
 **Error codes**
@@ -2976,7 +2976,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 verifyCredential(name: string, owner: string, options: VerifyCredentialOptions, callback: AuthCallback): void
 
-Verifies the user credential. This API uses an asynchronous callback to return the result.
+Verifies the credential of an application account. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -2984,8 +2984,8 @@ Verifies the user credential. This API uses an asynchronous callback to return t
 
 | Name   | Type                   | Mandatory | Description                    |
 | -------- | ----------------------- | ----- | ----------------------- |
-| name     | string                  | Yes   | Name of the application account.         |
-| owner    | string                  | Yes   | Owner of the application account. The value is the bundle name of the application.       |
+| name     | string                  | Yes   | Name of the application account. The value contains a maximum of 512 characters.         |
+| owner    | string                  | Yes   | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters.       |
 | options  | [VerifyCredentialOptions](#verifycredentialoptions9) | Yes   | Options for credential verification.         |
 | callback | [AuthCallback](#authcallback9)   | Yes   | Callback used to return the result.|
 
@@ -3083,7 +3083,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 
 setAuthenticatorProperties(owner: string, options: SetPropertiesOptions, callback: AuthCallback): void
 
-Sets the authenticator properties. This API uses an asynchronous callback to return the result.
+Sets the authenticator attributes of an application. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -3141,7 +3141,7 @@ Adds an application account with the given name. This API uses an asynchronous c
 
 > **NOTE**
 >
->This API is supported since API version 7 and deprecated since API version 9. Use [createAccount](#createaccount9) instead.
+>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [createAccount](#createaccount9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -3149,7 +3149,7 @@ Adds an application account with the given name. This API uses an asynchronous c
 
 | Name     | Type                       | Mandatory  | Description                  |
 | -------- | ------------------------- | ---- | -------------------- |
-| name     | string                    | Yes   | Name of the application account.         |
+| name     | string                    | Yes   | Name of the application account. The value contains a maximum of 512 characters.         |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Example**
@@ -3170,7 +3170,7 @@ Adds an application account name and additional information. This API uses an as
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [createAccount](#createaccount9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [createAccount](#createaccount9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -3178,7 +3178,7 @@ Adds an application account name and additional information. This API uses an as
 
 | Name      | Type                       | Mandatory  | Description                                      |
 | --------- | ------------------------- | ---- | ---------------------------------------- |
-| name      | string                    | Yes   | Name of the application account.                             |
+| name      | string                    | Yes   | Name of the application account. The value contains a maximum of 512 characters.                             |
 | extraInfo | string                    | Yes   | Additional information (information that can be converted to the string type). It cannot contain sensitive information, such as the application account password and token.|
 | callback  | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.            |
 
@@ -3199,7 +3199,7 @@ addAccount(name: string, extraInfo?: string): Promise&lt;void&gt;
 Adds an application account name and additional information. This API uses a promise to return the result.
 
 > **NOTE** 
-> This API is supported since API version 7 and deprecated since API version 9. Use [createAccount](#createaccount9-2) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [createAccount](#createaccount9-2) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -3207,7 +3207,7 @@ Adds an application account name and additional information. This API uses a pro
 
 | Name      | Type    | Mandatory  | Description                                      |
 | --------- | ------ | ---- | ---------------------------------------- |
-| name      | string | Yes   | Name of the application account.                           |
+| name      | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.                           |
 | extraInfo | string | No   | Additional information (information that can be converted to the string type). <br>The additional information cannot be sensitive information (such as the password and token) of the application account.<br>By default, no value is passed, which means no additional information needs to be added for the account.|
 
 **Return value**
@@ -3230,13 +3230,13 @@ Adds an application account name and additional information. This API uses a pro
 
 ### addAccountImplicitly<sup>(deprecated)</sup>
 
-addAccountImplicitly(owner: string, authType: string, options: {[key: string]: any;}, callback: AuthenticatorCallback): void
+addAccountImplicitly(owner: string, authType: string, options: { [key: string]: any }, callback: AuthenticatorCallback): void
 
 Adds an application account implicitly based on the specified owner. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [createAccountImplicitly](#createaccountimplicitly9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [createAccountImplicitly](#createaccountimplicitly9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -3244,8 +3244,8 @@ Adds an application account implicitly based on the specified owner. This API us
 
 | Name     | Type                   | Mandatory  | Description                     |
 | -------- | --------------------- | ---- | ----------------------- |
-| owner    | string                | Yes   | Owner of the application account. The value is the bundle name of the application.         |
-| authType | string                | Yes   | Authentication type. The authentication type is customized. |
+| owner    | string                | Yes   | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters.         |
+| authType | string                | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters. |
 | options  | {[key: string]: any}  | Yes   | Options for the authentication, which can be set as required.|
 | callback | [AuthenticatorCallback](#authenticatorcallbackdeprecated) | Yes   | Authenticator callback used to return the result.        |
 
@@ -3298,7 +3298,7 @@ Deletes an application account. This API uses an asynchronous callback to return
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [removeAccount](#removeaccount9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [removeAccount](#removeaccount9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -3306,7 +3306,7 @@ Deletes an application account. This API uses an asynchronous callback to return
 
 | Name     | Type                       | Mandatory  | Description              |
 | -------- | ------------------------- | ---- | ---------------- |
-| name     | string                    | Yes   | Name of the application account.     |
+| name     | string                    | Yes   | Name of the application account. The value contains a maximum of 512 characters.     |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Example**
@@ -3327,7 +3327,7 @@ Deletes an application account. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [removeAccount](#removeaccount9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [removeAccount](#removeaccount9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -3335,12 +3335,12 @@ Deletes an application account. This API uses a promise to return the result.
 
 | Name | Type    | Mandatory  | Description         |
 | ---- | ------ | ---- | ----------- |
-| name | string | Yes   | Name of the application account.|
+| name | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.|
 
 **Return value**
 
 | Type                 | Description                   |
-| :------------------ | :-------------------- |
+| ------------------ | -------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Example**
@@ -3359,11 +3359,11 @@ Deletes an application account. This API uses a promise to return the result.
 
 disableAppAccess(name: string, bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
-Disables an application account from accessing an application. This API uses an asynchronous callback to return the result.
+Disables access to the third-party application with the specified package name using the specified third-party application account. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [setAppAccess](#setappaccess9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [setAppAccess](#setappaccess9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -3371,9 +3371,9 @@ Disables an application account from accessing an application. This API uses an 
 
 | Name       | Type                       | Mandatory  | Description                               |
 | ---------- | ------------------------- | ---- | --------------------------------- |
-| name       | string                    | Yes   | Name of the application account.                 |
-| bundleName | string                    | Yes   | Bundle name of the application.                        |
-| callback   | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
+| name       | string                    | Yes   | Name of the application account. The value contains a maximum of 512 characters.                 |
+| bundleName | string                    | Yes   | Bundle name of the application. The value contains a maximum of 512 characters.                        |
+| callback   | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If access to the third-party application with the specified package name using the specified third-party application account is disabled successfully, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Example**
 
@@ -3393,7 +3393,7 @@ Disables an application account from accessing an application. This API uses a p
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [setAppAccess](#setappaccess9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [setAppAccess](#setappaccess9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -3401,13 +3401,13 @@ Disables an application account from accessing an application. This API uses a p
 
 | Name       | Type    | Mandatory  | Description              |
 | ---------- | ------ | ---- | ---------------- |
-| name       | string | Yes   | Name of the target application account.|
-| bundleName | string | Yes   | Bundle name of the application.       |
+| name       | string | Yes   | Name of the target application account. The value contains a maximum of 512 characters.|
+| bundleName | string | Yes   | Bundle name of the application. The value contains a maximum of 512 characters.       |
 
 **Return value**
 
 | Type                 | Description                   |
-| :------------------ | :-------------------- |
+| ------------------ | -------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Example**
@@ -3426,11 +3426,11 @@ Disables an application account from accessing an application. This API uses a p
 
 enableAppAccess(name: string, bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
-Enables an application account to access an application. This API uses an asynchronous callback to return the result.
+Enables an application to access an application account. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [setAppAccess](#setappaccess9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [setAppAccess](#setappaccess9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -3438,8 +3438,8 @@ Enables an application account to access an application. This API uses an asynch
 
 | Name       | Type                       | Mandatory  | Description                               |
 | ---------- | ------------------------- | ---- | --------------------------------- |
-| name       | string                    | Yes   | Name of the application account.                          |
-| bundleName | string                    | Yes   | Bundle name of the application.                        |
+| name       | string                    | Yes   | Name of the application account. The value contains a maximum of 512 characters.                          |
+| bundleName | string                    | Yes   | Bundle name of the application. The value contains a maximum of 512 characters.                        |
 | callback   | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Example**
@@ -3460,11 +3460,11 @@ Enables an application account to access an application. This API uses an asynch
 
 enableAppAccess(name: string, bundleName: string): Promise&lt;void&gt;
 
-Enables an application account to access an application. This API uses a promise to return the result.
+Enables an application to access an application account. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [setAppAccess](#setappaccess9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [setAppAccess](#setappaccess9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -3472,13 +3472,13 @@ Enables an application account to access an application. This API uses a promise
 
 | Name       | Type    | Mandatory  | Description       |
 | ---------- | ------ | ---- | --------- |
-| name       | string | Yes   | Name of the application account.  |
-| bundleName | string | Yes   | Bundle name of the application.|
+| name       | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.  |
+| bundleName | string | Yes   | Bundle name of the application. The value contains a maximum of 512 characters.|
 
 **Return value**
 
 | Type                 | Description                   |
-| :------------------ | :-------------------- |
+| ------------------ | -------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Example**
@@ -3501,7 +3501,7 @@ Checks whether data synchronization is enabled for an application account. This 
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [checkDataSyncEnabled](#checkdatasyncenabled9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [checkDataSyncEnabled](#checkdatasyncenabled9) instead.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -3511,7 +3511,7 @@ Checks whether data synchronization is enabled for an application account. This 
 
 | Name     | Type                          | Mandatory  | Description                   |
 | -------- | ---------------------------- | ---- | --------------------- |
-| name     | string                       | Yes   | Name of the application account.              |
+| name     | string                       | Yes   | Name of the application account. The value contains a maximum of 512 characters.              |
 | callback | AsyncCallback&lt;boolean&gt; | Yes   | Callback used to return the result. The value **true** means data synchronization is enabled for the application account; the value **false** means the opposite.|
 
 **Example**
@@ -3536,7 +3536,7 @@ Checks whether data synchronization is enabled for an application account. This 
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [checkDataSyncEnabled](#checkdatasyncenabled9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [checkDataSyncEnabled](#checkdatasyncenabled9-1) instead.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -3546,7 +3546,7 @@ Checks whether data synchronization is enabled for an application account. This 
 
 | Name | Type    | Mandatory  | Description     |
 | ---- | ------ | ---- | ------- |
-| name | string | Yes   | Name of the application account.|
+| name | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.|
 
 **Return value**
 
@@ -3582,10 +3582,10 @@ Sets a credential for an application account. This API uses an asynchronous call
 
 | Name           | Type                       | Mandatory  | Description           |
 | -------------- | ------------------------- | ---- | ------------- |
-| name           | string                    | Yes   | Name of the application account.    |
-| credentialType | string                    | Yes   | Credential type.    |
-| credential     | string                    | Yes   | Credential value.     |
-| callback       | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
+| name           | string                    | Yes   | Name of the application account. The value contains a maximum of 512 characters.    |
+| credentialType | string                    | Yes   | Credential type. The value is user-defined and contains a maximum of 1024 characters.    |
+| credential     | string                    | Yes   | Credential value. The value is user-defined and contains a maximum of 1024 characters.     |
+| callback       | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If a credential is successfully set for an application account, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Example**
 
@@ -3617,14 +3617,14 @@ Sets a credential for an application account. This API uses a promise to return 
 
 | Name           | Type    | Mandatory  | Description        |
 | -------------- | ------ | ---- | ---------- |
-| name           | string | Yes   | Name of the application account.  |
-| credentialType | string | Yes   | Credential type.|
-| credential     | string | Yes   | Credential value.|
+| name           | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.  |
+| credentialType | string | Yes   | Credential type. The value is user-defined and contains a maximum of 1024 characters.|
+| credential     | string | Yes   | Credential value. The value is user-defined and contains a maximum of 1024 characters.|
 
 **Return value**
 
 | Type                 | Description                   |
-| :------------------ | :-------------------- |
+| ------------------ | -------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Example**
@@ -3647,7 +3647,7 @@ Sets additional information for an application account. This API uses an asynchr
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [setCustomData](#setcustomdata9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [setCustomData](#setcustomdata9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -3655,7 +3655,7 @@ Sets additional information for an application account. This API uses an asynchr
 
 | Name      | Type                       | Mandatory  | Description             |
 | --------- | ------------------------- | ---- | --------------- |
-| name      | string                    | Yes   | Name of the application account.        |
+| name      | string                    | Yes   | Name of the application account. The value contains a maximum of 512 characters.        |
 | extraInfo | string                    | Yes   | Additional information (information that can be converted to the string type). It cannot contain sensitive information, such as the application account password and token.      |
 | callback  | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
@@ -3681,7 +3681,7 @@ Sets additional information for an application account. This API uses a promise 
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [setCustomData](#setcustomdata9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [setCustomData](#setcustomdata9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -3689,13 +3689,13 @@ Sets additional information for an application account. This API uses a promise 
 
 | Name      | Type    | Mandatory  | Description       |
 | --------- | ------ | ---- | --------- |
-| name      | string | Yes   | Name of the application account.  |
+| name      | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.  |
 | extraInfo | string | Yes   | Additional information (information that can be converted to the string type). It cannot contain sensitive information, such as the application account password and token.|
 
 **Return value**
 
 | Type                 | Description                   |
-| :------------------ | :-------------------- |
+| ------------------ | -------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Example**
@@ -3718,7 +3718,7 @@ Sets data synchronization for an application account. This API uses an asynchron
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [setDataSyncEnabled](#setdatasyncenabled9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [setDataSyncEnabled](#setdatasyncenabled9) instead.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -3728,7 +3728,7 @@ Sets data synchronization for an application account. This API uses an asynchron
 
 | Name     | Type                       | Mandatory  | Description                       |
 | -------- | ------------------------- | ---- | ------------------------- |
-| name     | string                    | Yes   | Name of the application account.                 |
+| name     | string                    | Yes   | Name of the application account. The value contains a maximum of 512 characters.                 |
 | isEnable | boolean                   | Yes   | Whether to enable data synchronization. The value **true** means that data synchronization is enabled, and **false** means the opposite.  |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
@@ -3754,7 +3754,7 @@ Sets data synchronization for an application account. This API uses a promise to
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [setDataSyncEnabled](#setdatasyncenabled9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [setDataSyncEnabled](#setdatasyncenabled9-1) instead.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -3764,13 +3764,13 @@ Sets data synchronization for an application account. This API uses a promise to
 
 | Name     | Type     | Mandatory  | Description         |
 | -------- | ------- | ---- | ----------- |
-| name     | string  | Yes   | Name of the application account.    |
+| name     | string  | Yes   | Name of the application account. The value contains a maximum of 512 characters.    |
 | isEnable | boolean | Yes   | Whether to enable data synchronization. The value **true** means that data synchronization is enabled, and **false** means the opposite.|
 
 **Return value**
 
 | Type                 | Description                   |
-| :------------------ | :-------------------- |
+| ------------------ | -------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Example**
@@ -3793,7 +3793,7 @@ Sets data to be associated with an application account. This API uses an asynchr
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [setCustomData](#setcustomdata9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [setCustomData](#setcustomdata9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -3801,7 +3801,7 @@ Sets data to be associated with an application account. This API uses an asynchr
 
 | Name     | Type                       | Mandatory  | Description               |
 | -------- | ------------------------- | ---- | ----------------- |
-| name     | string                    | Yes   | Name of the application account.          |
+| name     | string                    | Yes   | Name of the application account. The value contains a maximum of 512 characters.          |
 | key      | string                    | Yes   | Key of the associated data.|
 | value    | string                    | Yes   | Value of the data to set.        |
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
@@ -3828,7 +3828,7 @@ Sets data to be associated with an application account. This API uses a promise 
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [setCustomData](#setcustomdata9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [setCustomData](#setcustomdata9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -3836,14 +3836,14 @@ Sets data to be associated with an application account. This API uses a promise 
 
 | Name  | Type    | Mandatory  | Description               |
 | ----- | ------ | ---- | ----------------- |
-| name  | string | Yes   | Name of the application account.          |
+| name  | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.          |
 | key      | string | Yes   | Key of the associated data.|
 | value    | string | Yes   | Value of the data to set.|
 
 **Return value**
 
 | Type                 | Description                   |
-| :------------------ | :-------------------- |
+| ------------------ | -------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Example**
@@ -3866,7 +3866,7 @@ Obtains information about all accessible application accounts. This API uses an 
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getAllAccounts](#getallaccounts9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getAllAccounts](#getallaccounts9) instead.
 
 **Required permissions**: ohos.permission.GET_ALL_APP_ACCOUNTS (available only for system applications)
 
@@ -3900,7 +3900,7 @@ Obtains information about all accessible application accounts. This API uses a p
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getAllAccounts](#getallaccounts9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getAllAccounts](#getallaccounts9-1) instead.
 
 **Required permissions**: ohos.permission.GET_ALL_APP_ACCOUNTS (available only for system applications)
 
@@ -3932,7 +3932,7 @@ Obtains the application accounts that can be accessed by the invoker based on th
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getAccountsByOwner](#getaccountsbyowner9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getAccountsByOwner](#getaccountsbyowner9) instead.
 
 **Required permissions**: ohos.permission.GET_ALL_APP_ACCOUNTS (available only for system applications)
 
@@ -3942,8 +3942,8 @@ Obtains the application accounts that can be accessed by the invoker based on th
 
 | Name     | Type                                      | Mandatory  | Description       |
 | -------- | ---------------------------------------- | ---- | --------- |
-| owner    | string                                   | Yes   | Owner of the application account. The value is the bundle name of the application.   |
-| callback | AsyncCallback&lt;Array&lt;[AppAccountInfo](#appaccountinfo)&gt;&gt; | Yes   | Callback used to return information about all accessible application accounts.|
+| owner    | string                                   | Yes   | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters.   |
+| callback | AsyncCallback&lt;Array&lt;[AppAccountInfo](#appaccountinfo)&gt;&gt; | Yes   | Callback used to return the result. If the the application accounts are obtained successfully, **err** is **null** and **data** is a list of application accounts obtained. Otherwise, **err** is an error object.|
 
 **Example**
 
@@ -3968,7 +3968,7 @@ Obtains the application accounts that can be accessed by the invoker based on th
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getAccountsByOwner](#getaccountsbyowner9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getAccountsByOwner](#getaccountsbyowner9-1) instead.
 
 **Required permissions**: ohos.permission.GET_ALL_APP_ACCOUNTS (available only for system applications)
 
@@ -3978,7 +3978,7 @@ Obtains the application accounts that can be accessed by the invoker based on th
 
 | Name  | Type    | Mandatory  | Description    |
 | ----- | ------ | ---- | ------ |
-| owner | string | Yes   | Owner of the application account. The value is the bundle name of the application.|
+| owner | string | Yes   | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters.|
 
 **Return value**
 
@@ -4007,7 +4007,7 @@ Obtains the credential of an application account. This API uses an asynchronous 
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getCredential](#getcredential9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getCredential](#getcredential9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4015,8 +4015,8 @@ Obtains the credential of an application account. This API uses an asynchronous 
 
 | Name           | Type                         | Mandatory  | Description            |
 | -------------- | --------------------------- | ---- | -------------- |
-| name           | string                      | Yes   | Name of the application account.       |
-| credentialType | string                      | Yes   | Credential type.|
+| name           | string                      | Yes   | Name of the application account. The value contains a maximum of 512 characters.       |
+| credentialType | string                      | Yes   | Credential type. The value is user-defined and contains a maximum of 1024 characters.|
 | callback       | AsyncCallback&lt;string&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the credential obtained. Otherwise, **err** is an error object.|
 
 **Example**
@@ -4041,7 +4041,7 @@ Obtains the credential of an application account. This API uses a promise to ret
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getCredential](#getcredential9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getCredential](#getcredential9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4049,13 +4049,13 @@ Obtains the credential of an application account. This API uses a promise to ret
 
 | Name           | Type    | Mandatory  | Description        |
 | -------------- | ------ | ---- | ---------- |
-| name           | string | Yes   | Name of the application account.   |
-| credentialType | string | Yes   | Credential type.|
+| name           | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.   |
+| credentialType | string | Yes   | Credential type. The value is user-defined and contains a maximum of 1024 characters.|
 
 **Return value**
 
 | Type                   | Description                   |
-| :-------------------- | :-------------------- |
+| -------------------- | -------------------- |
 | Promise&lt;string&gt; | Promise used to return the credential obtained.|
 
 **Example**
@@ -4078,7 +4078,7 @@ Obtains additional information of an application account. Additional information
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getCustomData](#getcustomdata9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getCustomData](#getcustomdata9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4086,7 +4086,7 @@ Obtains additional information of an application account. Additional information
 
 | Name     | Type                         | Mandatory  | Description             |
 | -------- | --------------------------- | ---- | --------------- |
-| name     | string                      | Yes   | Name of the application account.        |
+| name     | string                      | Yes   | Name of the application account. The value contains a maximum of 512 characters.        |
 | callback | AsyncCallback&lt;string&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the additional information obtained. Otherwise, **err** is an error object.|
 
 **Example**
@@ -4111,7 +4111,7 @@ Obtains additional information of an application account. Additional information
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getCustomData](#getcustomdata9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getCustomData](#getcustomdata9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4119,13 +4119,13 @@ Obtains additional information of an application account. Additional information
 
 | Name | Type    | Mandatory  | Description     |
 | ---- | ------ | ---- | ------- |
-| name | string | Yes   | Name of the application account.|
+| name | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.|
 
 **Return value**
 
 | Type                   | Description                   |
-| :-------------------- | :-------------------- |
-| Promise&lt;string&gt; | Promise used to return the additional information obtained.|
+| -------------------- | -------------------- |
+| Promise&lt;string&gt; | Promise used to return the additional information of the application account.|
 
 **Example**
 
@@ -4147,7 +4147,7 @@ Obtains the associated data of an application account based on the specified key
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getCustomData](#getcustomdata9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getCustomData](#getcustomdata9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4155,7 +4155,7 @@ Obtains the associated data of an application account based on the specified key
 
 | Name     | Type                         | Mandatory  | Description               |
 | -------- | --------------------------- | ---- | ----------------- |
-| name     | string                      | Yes   | Name of the application account.          |
+| name     | string                      | Yes   | Name of the application account. The value contains a maximum of 512 characters.          |
 | key      | string                      | Yes   | Key of the associated data.        |
 | callback | AsyncCallback&lt;string&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the data obtained. Otherwise, **err** is an error object.|
 
@@ -4177,11 +4177,11 @@ Obtains the associated data of an application account based on the specified key
 
 getAssociatedData(name: string, key: string): Promise&lt;string&gt;
 
-Obtains data associated with an application account. This API uses a promise to return the result.
+Obtains data to be associated with an application account. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [getCustomData](#getcustomdata9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getCustomData](#getcustomdata9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4189,13 +4189,13 @@ Obtains data associated with an application account. This API uses a promise to 
 
 | Name | Type    | Mandatory  | Description       |
 | ---- | ------ | ---- | --------- |
-| name | string | Yes   | Name of the application account.  |
+| name | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.  |
 | key  | string | Yes   | Key of the associated data.|
 
 **Return value**
 
 | Type                   | Description                   |
-| :-------------------- | :-------------------- |
+| -------------------- | -------------------- |
 | Promise&lt;string&gt; | Promise used to return the data obtained.|
 
 **Example**
@@ -4218,7 +4218,7 @@ Subscribes to account information changes of apps.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [on('accountChange')](#onaccountchange9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [on('accountChange')](#onaccountchange9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4255,7 +4255,7 @@ Unsubscribes from account information changes.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [off('accountChange')](#offaccountchange9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [off('accountChange')](#offaccountchange9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4288,13 +4288,13 @@ Unsubscribes from account information changes.
 
 ### authenticate<sup>(deprecated)</sup>
 
-authenticate(name: string, owner: string, authType: string, options: {[key: string]: any;}, callback: AuthenticatorCallback): void
+authenticate(name: string, owner: string, authType: string, options: { [key: string]: any }, callback: AuthenticatorCallback): void
 
 Authenticates an application account. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [auth](#auth9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [auth](#auth9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4302,9 +4302,9 @@ Authenticates an application account. This API uses an asynchronous callback to 
 
 | Name     | Type                   | Mandatory  | Description             |
 | -------- | --------------------- | ---- | --------------- |
-| name     | string                | Yes   | Name of the application account.    |
-| owner    | string                | Yes   | Owner of the application account. The value is the bundle name of the application. |
-| authType | string                | Yes   | Authentication type.          |
+| name     | string                | Yes   | Name of the application account. The value contains a maximum of 512 characters.    |
+| owner    | string                | Yes   | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
+| authType | string                | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters.          |
 | options  | {[key: string]: any}  | Yes   | Options for the authentication.      |
 | callback | [AuthenticatorCallback](#authenticatorcallbackdeprecated) | Yes   | Authenticator callback used to return the result.|
 
@@ -4353,11 +4353,11 @@ Authenticates an application account. This API uses an asynchronous callback to 
 
 getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCallback&lt;string&gt;): void
 
-Obtains the authorization token of the specified authentication type for an application account. This API uses an asynchronous callback to return the result.
+Obtains the authorization token of the specified authorization type for an application account. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [getAuthToken](#getauthtoken9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getAuthToken](#getauthtoken9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4365,9 +4365,9 @@ Obtains the authorization token of the specified authentication type for an appl
 
 | Name     | Type                         | Mandatory  | Description         |
 | -------- | --------------------------- | ---- | ----------- |
-| name     | string                      | Yes   | Name of the application account.   |
-| owner    | string                      | Yes   | Owner of the application account. The value is the bundle name of the application.|
-| authType | string                      | Yes   | Authentication type.      |
+| name     | string                      | Yes   | Name of the application account. The value contains a maximum of 512 characters.   |
+| owner    | string                      | Yes   | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters.|
+| authType | string                      | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters.      |
 | callback | AsyncCallback&lt;string&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the authorization token value obtained. Otherwise, **err** is an error object.  |
 
 **Example**
@@ -4389,11 +4389,11 @@ Obtains the authorization token of the specified authentication type for an appl
 
 getOAuthToken(name: string, owner: string, authType: string): Promise&lt;string&gt;
 
-Obtains the authorization token of the specified authentication type for an application account. This API uses a promise to return the result.
+Obtains the authorization token of the specified authorization type for an application account. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [getAuthToken](#getauthtoken9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getAuthToken](#getauthtoken9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4401,9 +4401,9 @@ Obtains the authorization token of the specified authentication type for an appl
 
 | Name     | Type    | Mandatory  | Description         |
 | -------- | ------ | ---- | ----------- |
-| name     | string | Yes   | Name of the application account.   |
-| owner    | string | Yes   | Owner of the application account. The value is the bundle name of the application.|
-| authType | string | Yes   | Authentication type.      |
+| name     | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.   |
+| owner    | string | Yes   | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters.|
+| authType | string | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters.      |
 
 **Return value**
 
@@ -4427,11 +4427,11 @@ Obtains the authorization token of the specified authentication type for an appl
 
 setOAuthToken(name: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;): void
 
-Sets an authorization token of the specific authentication type for an application account. This API uses an asynchronous callback to return the result.
+Sets an authorization token of the specific authorization type for an application account. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [setAuthToken](#setauthtoken9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [setAuthToken](#setauthtoken9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4439,9 +4439,9 @@ Sets an authorization token of the specific authentication type for an applicati
 
 | Name     | Type                       | Mandatory  | Description      |
 | -------- | ------------------------- | ---- | -------- |
-| name     | string                    | Yes   | Name of the application account.|
-| authType | string                    | Yes   | Authentication type.   |
-| token    | string                    | Yes   | Authorization token.|
+| name     | string                    | Yes   | Name of the application account. The value contains a maximum of 512 characters.|
+| authType | string                    | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters.   |
+| token    | string                    | Yes   | Authorization token. The value contains a maximum of 1024 characters.|
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.|
 
 **Example**
@@ -4462,11 +4462,11 @@ Sets an authorization token of the specific authentication type for an applicati
 
 setOAuthToken(name: string, authType: string, token: string): Promise&lt;void&gt;
 
-Sets an authorization token of the specific authentication type for an application account. This API uses a promise to return the result.
+Sets an authorization token of the specific authorization type for an application account. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [setAuthToken](#setauthtoken9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [setAuthToken](#setauthtoken9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4474,9 +4474,9 @@ Sets an authorization token of the specific authentication type for an applicati
 
 | Name     | Type    | Mandatory  | Description      |
 | -------- | ------ | ---- | -------- |
-| name     | string | Yes   | Name of the application account.|
-| authType | string | Yes   | Authentication type.   |
-| token    | string | Yes   | Authorization token.|
+| name     | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.|
+| authType | string | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters.   |
+| token    | string | Yes   | Authorization token. The value contains a maximum of 1024 characters.|
 
 **Return value**
 
@@ -4500,11 +4500,11 @@ Sets an authorization token of the specific authentication type for an applicati
 
 deleteOAuthToken(name: string, owner: string, authType: string, token: string, callback: AsyncCallback&lt;void&gt;): void
 
-Deletes the authorization token of the specified authentication type for an application account. This API uses an asynchronous callback to return the result.
+Deletes the authorization token of the specified authorization type for an application account. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [deleteAuthToken](#deleteauthtoken9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [deleteAuthToken](#deleteauthtoken9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4512,10 +4512,10 @@ Deletes the authorization token of the specified authentication type for an appl
 
 | Name     | Type                       | Mandatory  | Description          |
 | -------- | ------------------------- | ---- | ------------ |
-| name     | string                    | Yes   | Name of the application account.    |
-| owner    | string                    | Yes   | Owner of the application account. The value is the bundle name of the application. |
-| authType | string                    | Yes   | Authentication type.       |
-| token    | string                    | Yes   | Authorization token.|
+| name     | string                    | Yes   | Name of the application account. The value contains a maximum of 512 characters.    |
+| owner    | string                    | Yes   | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
+| authType | string                    | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters.       |
+| token    | string                    | Yes   | Authorization token. The value contains a maximum of 1024 characters.|
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.    |
 
 **Example**
@@ -4537,11 +4537,11 @@ Deletes the authorization token of the specified authentication type for an appl
 
 deleteOAuthToken(name: string, owner: string, authType: string, token: string): Promise&lt;void&gt;
 
-Deletes the authorization token of the specified authentication type for an application account. This API uses a promise to return the result.
+Deletes the authorization token of the specified authorization type for an application account. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [deleteAuthToken](#deleteauthtoken9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [deleteAuthToken](#deleteauthtoken9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4549,10 +4549,10 @@ Deletes the authorization token of the specified authentication type for an appl
 
 | Name     | Type    | Mandatory  | Description          |
 | -------- | ------ | ---- | ------------ |
-| name     | string | Yes   | Name of the application account.    |
-| owner    | string | Yes   | Owner of the application account. The value is the bundle name of the application. |
-| authType | string | Yes   | Authentication type.       |
-| token    | string | Yes   | Authorization token.|
+| name     | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.    |
+| owner    | string | Yes   | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters. |
+| authType | string | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters.       |
+| token    | string | Yes   | Authorization token. The value contains a maximum of 1024 characters.|
 
 **Return value**
 
@@ -4580,7 +4580,7 @@ Sets the visibility of an authorization token to an application. This API uses a
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [setAuthTokenVisibility](#setauthtokenvisibility9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [setAuthTokenVisibility](#setauthtokenvisibility9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4588,9 +4588,9 @@ Sets the visibility of an authorization token to an application. This API uses a
 
 | Name       | Type                       | Mandatory  | Description                       |
 | ---------- | ------------------------- | ---- | ------------------------- |
-| name       | string                    | Yes   | Name of the application account.                 |
-| authType   | string                    | Yes   | Authentication type.                    |
-| bundleName | string                    | Yes   | Bundle name of the application.             |
+| name       | string                    | Yes   | Name of the application account. The value contains a maximum of 512 characters.                 |
+| authType   | string                    | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters.                    |
+| bundleName | string                    | Yes   | Bundle name of the application. The value contains a maximum of 512 characters.             |
 | isVisible  | boolean                   | Yes   | Whether the authorization token is visible to the application. The value **true** means the authorization token is visible to the application; the value **false** means the opposite.|
 | callback   | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object.                 |
 
@@ -4617,7 +4617,7 @@ Sets the visibility of an authorization token to an application. This API uses a
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [setAuthTokenVisibility](#setauthtokenvisibility9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [setAuthTokenVisibility](#setauthtokenvisibility9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4625,9 +4625,9 @@ Sets the visibility of an authorization token to an application. This API uses a
 
 | Name       | Type     | Mandatory  | Description          |
 | ---------- | ------- | ---- | ------------ |
-| name       | string  | Yes   | Name of the application account.    |
-| authType   | string  | Yes   | Authentication type.       |
-| bundleName | string  | Yes   | Bundle name of the application.|
+| name       | string  | Yes   | Name of the application account. The value contains a maximum of 512 characters.    |
+| authType   | string  | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters.       |
+| bundleName | string  | Yes   | Bundle name of the application. The value contains a maximum of 512 characters.|
 | isVisible  | boolean | Yes   | Whether the authorization token is visible to the application. The value **true** means the authorization token is visible to the application; the value **false** means the opposite.       |
 
 **Return value**
@@ -4652,11 +4652,11 @@ Sets the visibility of an authorization token to an application. This API uses a
 
 checkOAuthTokenVisibility(name: string, authType: string, bundleName: string, callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks the visibility of an authorization token of the specified authentication type to an application. This API uses an asynchronous callback to return the result.
+Checks the visibility of an authorization token of the specified authorization type to an application. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [checkAuthTokenVisibility](#checkauthtokenvisibility9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [checkAuthTokenVisibility](#checkauthtokenvisibility9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4664,9 +4664,9 @@ Checks the visibility of an authorization token of the specified authentication 
 
 | Name       | Type                          | Mandatory  | Description         |
 | ---------- | ---------------------------- | ---- | ----------- |
-| name       | string                       | Yes   | Name of the application account.   |
-| authType   | string                       | Yes   | Authentication type.      |
-| bundleName | string                       | Yes   | Bundle name of the application.|
+| name       | string                       | Yes   | Name of the application account. The value contains a maximum of 512 characters.   |
+| authType   | string                       | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters.      |
+| bundleName | string                       | Yes   | Bundle name of the application. The value contains a maximum of 512 characters.|
 | callback   | AsyncCallback&lt;boolean&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** can be **true** (the authorization token is visible to the application) or **false** (the authorization token is not visible to the application). If the operation fails, **err** is an error object.   |
 
 **Example**
@@ -4688,11 +4688,11 @@ Checks the visibility of an authorization token of the specified authentication 
 
 checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): Promise&lt;boolean&gt;
 
-Checks the visibility of an authorization token of the specified authentication type to an application. This API uses a promise to return the result.
+Checks the visibility of an authorization token of the specified authorization type to an application. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [checkAuthTokenVisibility](#checkauthtokenvisibility9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [checkAuthTokenVisibility](#checkauthtokenvisibility9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4700,9 +4700,9 @@ Checks the visibility of an authorization token of the specified authentication 
 
 | Name       | Type    | Mandatory  | Description           |
 | ---------- | ------ | ---- | ------------- |
-| name       | string | Yes   | Name of the application account.     |
-| authType   | string | Yes   | Authentication type.        |
-| bundleName | string | Yes   | Bundle name of the application.|
+| name       | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.     |
+| authType   | string | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters.        |
+| bundleName | string | Yes   | Bundle name of the application. The value contains a maximum of 512 characters.|
 
 **Return value**
 
@@ -4731,7 +4731,7 @@ Obtains all tokens visible to the invoker for an application account. This API u
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [getAllAuthTokens](#getallauthtokens9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getAllAuthTokens](#getallauthtokens9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4739,8 +4739,8 @@ Obtains all tokens visible to the invoker for an application account. This API u
 
 | Name     | Type                                      | Mandatory  | Description         |
 | -------- | ---------------------------------------- | ---- | ----------- |
-| name     | string                                   | Yes   | Name of the application account.   |
-| owner    | string                                   | Yes   | Owner of the application account. The value is the bundle name of the application.|
+| name     | string                                   | Yes   | Name of the application account. The value contains a maximum of 512 characters.   |
+| owner    | string                                   | Yes   | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters.|
 | callback | AsyncCallback&lt;Array&lt;[OAuthTokenInfo](#oauthtokeninfodeprecated)&gt;&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is a list of all tokens visible to the invoker. Otherwise, **err** is an error object.   |
 
 **Example**
@@ -4766,7 +4766,7 @@ Obtains all tokens visible to the invoker for an application account. This API u
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [getAllAuthTokens](#getallauthtokens9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getAllAuthTokens](#getallauthtokens9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4774,8 +4774,8 @@ Obtains all tokens visible to the invoker for an application account. This API u
 
 | Name  | Type    | Mandatory  | Description         |
 | ----- | ------ | ---- | ----------- |
-| name  | string | Yes   | Name of the application account.   |
-| owner | string | Yes   | Owner of the application account. The value is the bundle name of the application.|
+| name  | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.   |
+| owner | string | Yes   | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters.|
 
 **Return value**
 
@@ -4800,11 +4800,11 @@ Obtains all tokens visible to the invoker for an application account. This API u
 
 getOAuthList(name: string, authType: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setOAuthTokenVisibility](#setoauthtokenvisibilitydeprecated). This API uses an asynchronous callback to return the result.
+Obtains the authorization list of the specified authorization type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setOAuthTokenVisibility](#setoauthtokenvisibilitydeprecated). This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [getAuthList](#getauthlist9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getAuthList](#getauthlist9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4812,8 +4812,8 @@ Obtains the authorization list of the specified authentication type for an appli
 
 | Name     | Type                                      | Mandatory  | Description                     |
 | -------- | ---------------------------------------- | ---- | ----------------------- |
-| name     | string                                   | Yes   | Name of the application account.               |
-| authType | string                                   | Yes   | Authentication type.|
+| name     | string                                   | Yes   | Name of the application account. The value contains a maximum of 512 characters.               |
+| authType | string                                   | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters.|
 | callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is a list of authorized bundles obtained. Otherwise, **err** is an error object.              |
 
 **Example**
@@ -4834,11 +4834,11 @@ Obtains the authorization list of the specified authentication type for an appli
 
 getOAuthList(name: string, authType: string): Promise&lt;Array&lt;string&gt;&gt;
 
-Obtains the authorization list of the specified authentication type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setOAuthTokenVisibility](#setoauthtokenvisibilitydeprecated). This API uses a promise to return the result.
+Obtains the authorization list of the specified authorization type for an application account. The authorization list contains all authorized bundles. The token authorization list is set by [setOAuthTokenVisibility](#setoauthtokenvisibilitydeprecated). This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [getAuthList](#getauthlist9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getAuthList](#getauthlist9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4846,8 +4846,8 @@ Obtains the authorization list of the specified authentication type for an appli
 
 | Name     | Type    | Mandatory  | Description                     |
 | -------- | ------ | ---- | ----------------------- |
-| name     | string | Yes   | Name of the application account.               |
-| authType | string | Yes   | Authentication type.|
+| name     | string | Yes   | Name of the application account. The value contains a maximum of 512 characters.               |
+| authType | string | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters.|
 
 **Return value**
 
@@ -4875,7 +4875,7 @@ Obtains the authenticator callback for an authentication session. This API uses 
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [getAuthCallback](#getauthcallback9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getAuthCallback](#getauthcallback9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4920,7 +4920,7 @@ Obtains the authenticator callback for an authentication session. This API uses 
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [getAuthCallback](#getauthcallback9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getAuthCallback](#getauthcallback9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4968,7 +4968,7 @@ Obtains the authenticator information of an application. This API uses an asynch
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [queryAuthenticatorInfo](#queryauthenticatorinfo9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [queryAuthenticatorInfo](#queryauthenticatorinfo9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -4976,7 +4976,7 @@ Obtains the authenticator information of an application. This API uses an asynch
 
 | Name     | Type                                    | Mandatory  | Description         |
 | -------- | -------------------------------------- | ---- | ----------- |
-| owner    | string                                 | Yes   | Owner of the application account. The value is the bundle name of the application.|
+| owner    | string                                 | Yes   | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters.|
 | callback | AsyncCallback&lt;[AuthenticatorInfo](#authenticatorinfo8)&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the authenticator information obtained. Otherwise, **err** is an error object.   |
 
 **Example**
@@ -5002,7 +5002,7 @@ Obtains the authenticator information of an application. This API uses a promise
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [queryAuthenticatorInfo](#queryauthenticatorinfo9-1) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [queryAuthenticatorInfo](#queryauthenticatorinfo9-1) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -5010,7 +5010,7 @@ Obtains the authenticator information of an application. This API uses a promise
 
 | Name  | Type    | Mandatory  | Description         |
 | ----- | ------ | ---- | ----------- |
-| owner | string | Yes   | Owner of the application account. The value is the bundle name of the application.|
+| owner | string | Yes   | Owner of the application account. The value is the bundle name of the application. The value contains a maximum of 1024 characters.|
 
 **Return value**
 
@@ -5050,7 +5050,7 @@ Defines authorization token information.
 
 | Name              | Type           | Read-Only | Optional  | Description             |
 | -------------------- | -------------- | -----| ----- | ---------------- |
-| authType            | string         | No| No   | Authentication type.  |
+| authType            | string         | No| No   | Authorization type.  |
 | token               | string         | No| No   | Value of the authorization token.      |
 | account | [AppAccountInfo](#appaccountinfo) | No| Yes   | Information about the account to which the token belongs. By default, no value is passed in.|
 
@@ -5060,13 +5060,13 @@ Defines authorization token information.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [AuthTokenInfo](#authtokeninfo9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [AuthTokenInfo](#authtokeninfo9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
 | Name              | Type           | Read-Only | Optional  | Description             |
 | -------------------- | -------------- | ----- | ----- | ---------------- |
-| authType             | string         | No| No   | Authentication type.  |
+| authType             | string         | No| No   | Authorization type.  |
 | token                | string         | No| No   | Value of the authorization token.      |
 
 ## AuthenticatorInfo<sup>8+</sup>
@@ -5100,7 +5100,7 @@ Defines the options for creating an application account.
 
 | Name    | Type    | Read-Only | Optional  | Description        |
 | ------- | ------ | ---- | ---- | ---------- |
-| customData   | Record<string, string> | No| Yes   | Custom data. By default, no value is passed in.|
+| customData   | Record<string, string> | No| Yes   | Custom data. By default, no value is passed in. Do not include sensitive data.|
 
 ## CreateAccountImplicitlyOptions<sup>9+</sup>
 
@@ -5111,7 +5111,7 @@ Defines the options for implicitly creating an application account.
 | Name    | Type    | Read-Only | Optional  | Description        |
 | ------- | ------ | ---- | ---- | ---------- |
 | requiredLabels   | Array&lt;string&gt; | No| Yes   | Required labels. By default, no value is passed in.|
-| authType   | string | No| Yes   | Authentication type. By default, no value is passed in.|
+| authType   | string | No| Yes   | Authorization type. By default, no value is passed in.|
 | parameters   | Record<string, Object> | No| Yes   | Custom parameter object. By default, no value is passed in.|
 
 ## SelectAccountsOptions<sup>9+</sup>
@@ -5157,17 +5157,17 @@ Enumerates the constants.
 
 | Name                           | Value                   | Description                  |
 | -------------------------------- | ---------------------- | ----------------------- |
-| ACTION_ADD_ACCOUNT_IMPLICITLY<sup>(deprecated)</sup>    | 'addAccountImplicitly' | Operation of adding an account implicitly.<br>Note: This API is supported since API version 8 and deprecated since API version 9. Use **ACTION_CREATE_ACCOUNT_IMPLICITLY** instead. |
+| ACTION_ADD_ACCOUNT_IMPLICITLY<sup>(deprecated)</sup>    | 'addAccountImplicitly' | Action for adding an account implicitly.<br>Note: This API is supported since API version 8 and deprecated since API version 9. Use **ACTION_CREATE_ACCOUNT_IMPLICITLY** instead. |
 | ACTION_AUTHENTICATE<sup>(deprecated)</sup>              | 'authenticate'         | Authentication operation.<br>Note: This API is supported since API version 8 and deprecated since API version 9. Use **ACTION_AUTH** instead.        |
-| ACTION_CREATE_ACCOUNT_IMPLICITLY<sup>9+</sup>    | 'createAccountImplicitly' | Operation of creating an account implicitly. |
+| ACTION_CREATE_ACCOUNT_IMPLICITLY<sup>9+</sup>    | 'createAccountImplicitly' | Action for creating an account implicitly. |
 | ACTION_AUTH<sup>9+</sup>              | 'auth'         | Authentication operation.        |
-| ACTION_VERIFY_CREDENTIAL<sup>9+</sup>    | 'verifyCredential' | Operation of verifying credentials. |
-| ACTION_SET_AUTHENTICATOR_PROPERTIES<sup>9+</sup> | 'setAuthenticatorProperties' | Operation of setting authenticator properties.     |
+| ACTION_VERIFY_CREDENTIAL<sup>9+</sup>    | 'verifyCredential' | Action for verifying credentials. |
+| ACTION_SET_AUTHENTICATOR_PROPERTIES<sup>9+</sup> | 'setAuthenticatorProperties' | Action for setting authenticator properties.     |
 | KEY_NAME                         | 'name'                 | Name of the application account. |
 | KEY_OWNER                        | 'owner'                | Bundle name of the application account owner.|
 | KEY_TOKEN                        | 'token'                | Token.        |
 | KEY_ACTION                       | 'action'               | Operation.        |
-| KEY_AUTH_TYPE                    | 'authType'             | Authentication type.    |
+| KEY_AUTH_TYPE                    | 'authType'             | Authorization type.    |
 | KEY_SESSION_ID                   | 'sessionId'            | Session ID.    |
 | KEY_CALLER_PID                   | 'callerPid'            | PID of the caller.   |
 | KEY_CALLER_UID                   | 'callerUid'            | UID of the caller.   |
@@ -5180,7 +5180,7 @@ Enumerates the constants.
 Enumerates the result codes.
 
 > **NOTE**<br>
-> This API is supported since API version 8 and deprecated since API version 9. For details, see [Account Management Error Codes](errorcode-account.md).
+> This enum is supported since API version 8 and deprecated since API version 9. You are advised to use [Account Management Error Codes](errorcode-account.md) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -5198,17 +5198,17 @@ Enumerates the result codes.
 | ERROR_OAUTH_LIST_TOO_LARGE          | 10009 | The size of the OAuth list exceeds the limit. |
 | ERROR_OAUTH_SERVICE_BUSY            | 10010 | The OAuth service is busy. |
 | ERROR_OAUTH_SERVICE_EXCEPTION       | 10011 | The OAuth service is abnormal. |
-| ERROR_OAUTH_SESSION_NOT_EXIST       | 10012 | The session to be authenticated does not exist.  |
+| ERROR_OAUTH_SESSION_NOT_EXIST       | 10012 | The authentication session does not exist.  |
 | ERROR_OAUTH_TIMEOUT                 | 10013 | The authentication timed out.     |
 | ERROR_OAUTH_TOKEN_NOT_EXIST         | 10014 | The authorization token does not exist.|
-| ERROR_OAUTH_TOKEN_TOO_MANY          | 10015 | The number of OAuth tokens reaches the limit. |
+| ERROR_OAUTH_TOKEN_TOO_MANY          | 10015 | The number of tokens reaches the limit. |
 | ERROR_OAUTH_UNSUPPORT_ACTION        | 10016 | The authentication operation is not supported. |
-| ERROR_OAUTH_UNSUPPORT_AUTH_TYPE     | 10017 | The authentication type is not supported. |
+| ERROR_OAUTH_UNSUPPORT_AUTH_TYPE     | 10017 | The authorization type is not supported. |
 | ERROR_PERMISSION_DENIED             | 10018 | The required permission is missing.     |
 
 ## AuthCallback<sup>9+</sup>
 
-Implements authenticator callbacks.
+Defines authenticator callbacks.
 
 ### onResult<sup>9+</sup>
 
@@ -5243,7 +5243,7 @@ Called to return the result of an authentication request.
         authType: 'getSocialData'
       }
     };
-    callback.onResult(appAccount.ResultCode.SUCCESS, result);
+    callback.onResult(0, result);
   }).catch((err: BusinessError) => {
     console.error(`getAuthCallback err: code is ${err.code}, message is ${err.message}`);
   });
@@ -5290,7 +5290,7 @@ Called to redirect a request.
           authType: 'getSocialData'
         }
       };
-      callback.onResult(appAccount.ResultCode.SUCCESS, result);
+      callback.onResult(0, result);
     }
   }
   ```
@@ -5325,17 +5325,17 @@ Provides OAuth authenticator callbacks.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [AuthCallback](#authcallback9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [AuthCallback](#authcallback9) instead.
 
 ### onResult<sup>(deprecated)</sup>
 
-onResult: (code: number, result: {[key: string]: any;}) =&gt; void
+onResult: (code: number, result: { [key: string]: any }) =&gt; void
 
 Called to return the result of an authentication request.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [onResult](#onresult9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [onResult](#onresult9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -5373,7 +5373,7 @@ Called to redirect a request.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [onRequestRedirected](#onrequestredirected9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [onRequestRedirected](#onrequestredirected9) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -5411,7 +5411,7 @@ Called to redirect a request.
 
 ## Authenticator<sup>8+</sup>
 
-Provides APIs to operate the authenticator.
+Defines an authenticator.
 
 ### createAccountImplicitly<sup>9+</sup>
 
@@ -5430,13 +5430,13 @@ Creates an application account implicitly based on the specified account owner. 
 
 ### addAccountImplicitly<sup>(deprecated)</sup>
 
-addAccountImplicitly(authType: string, callerBundleName: string, options: {[key: string]: any;}, callback: AuthenticatorCallback): void
+addAccountImplicitly(authType: string, callerBundleName: string, options: { [key: string]: any }, callback: AuthenticatorCallback): void
 
-Adds an application account implicitly based on the specified authentication type and options. This API uses an asynchronous callback to return the result.
+Adds an application account implicitly based on the specified authorization type and options. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [createAccountImplicitly](#createaccountimplicitly9-2) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [createAccountImplicitly](#createaccountimplicitly9-2) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -5444,7 +5444,7 @@ Adds an application account implicitly based on the specified authentication typ
 
 | Name             | Type                   | Mandatory  | Description             |
 | ---------------- | --------------------- | ---- | --------------- |
-| authType         | string                | Yes   | Authentication type.     |
+| authType         | string                | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters.     |
 | callerBundleName | string                | Yes   | Bundle name of the authentication requester.      |
 | options          | {[key: string]: any}  | Yes   | Options for the authentication.     |
 | callback         | [AuthenticatorCallback](#authenticatorcallbackdeprecated) | Yes   | Authenticator callback used to return the result.|
@@ -5461,20 +5461,20 @@ Authenticates an application account. This API uses an asynchronous callback to 
 
 | Name             | Type                   | Mandatory  | Description             |
 | ---------------- | --------------------- | ---- | --------------- |
-| name             | string                | Yes   | Name of the application account.       |
-| authType         | string                | Yes   | Authentication type.     |
+| name             | string                | Yes   | Name of the application account. The value contains a maximum of 512 characters.       |
+| authType         | string                | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters.     |
 | options          | Record<string, Object>  | Yes   | Options for the authentication.     |
 | callback         | [AuthCallback](#authcallback9) | Yes   | Authenticator callback used to return the result.|
 
 ### authenticate<sup>(deprecated)</sup>
 
-authenticate(name: string, authType: string, callerBundleName: string, options: {[key: string]: any;}, callback: AuthenticatorCallback): void
+authenticate(name: string, authType: string, callerBundleName: string, options: { [key: string]: any }, callback: AuthenticatorCallback): void
 
 Authenticates an application account to obtain the OAuth token. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. Use [auth](#auth9-2) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [auth](#auth9-2) instead.
 
 **System capability**: SystemCapability.Account.AppAccount
 
@@ -5482,8 +5482,8 @@ Authenticates an application account to obtain the OAuth token. This API uses an
 
 | Name             | Type                   | Mandatory  | Description             |
 | ---------------- | --------------------- | ---- | --------------- |
-| name             | string                | Yes   | Name of the application account.       |
-| authType         | string                | Yes   | Authentication type.     |
+| name             | string                | Yes   | Name of the application account. The value contains a maximum of 512 characters.       |
+| authType         | string                | Yes   | Authorization type. The value is user-defined and contains a maximum of 1024 characters.     |
 | callerBundleName | string                | Yes   | Bundle name of the authentication requester.      |
 | options          | {[key: string]: any}  | Yes   | Options for the authentication.     |
 | callback         | [AuthenticatorCallback](#authenticatorcallbackdeprecated) | Yes   | Authenticator callback used to return the result.|
@@ -5500,7 +5500,7 @@ Verifies the credential of an application account. This API uses an asynchronous
 
 | Name             | Type                   | Mandatory  | Description             |
 | ---------------- | --------------------- | ---- | --------------- |
-| name      | string                   | Yes   | Name of the application account.             |
+| name      | string                   | Yes   | Name of the application account. The value contains a maximum of 512 characters.             |
 | options   | [VerifyCredentialOptions](#verifycredentialoptions9)  | Yes   | Options for credential verification.           |
 | callback  | [AuthCallback](#authcallback9)    | Yes   | Authenticator callback used to return the result.|
 
@@ -5539,7 +5539,7 @@ Checks the account labels. This API uses an asynchronous callback to return the 
 
 | Name             | Type                   | Mandatory  | Description             |
 | ---------------- | --------------------- | ---- | --------------- |
-| name      | string                | Yes   | Name of the application account.             |
+| name      | string                | Yes   | Name of the application account. The value contains a maximum of 512 characters.             |
 | labels    | Array&lt;string&gt;          | Yes   | Labels to check.                  |
 | callback  | [AuthCallback](#authcallback9) | Yes   | Authenticator callback used to return the result.|
 
@@ -5559,7 +5559,7 @@ Checks whether an application account can be deleted. This API uses an asynchron
 
 | Name             | Type                   | Mandatory  | Description             |
 | ---------------- | --------------------- | ---- | --------------- |
-| name      | string                | Yes   | Name of the application account.             |
+| name      | string                | Yes   | Name of the application account. The value contains a maximum of 512 characters.             |
 | callback  | [AuthCallback](#authcallback9) | Yes   | Authenticator callback used to return the result.|
 
 **Example**

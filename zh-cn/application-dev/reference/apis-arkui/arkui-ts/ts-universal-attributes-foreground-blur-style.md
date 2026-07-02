@@ -178,4 +178,4 @@ struct ForegroundBlurStyleDemo {
 }
 ```
 
-![zh-cn_image_background_blur_style](figures/zh-cn_image_foreground_blur_style.png)
+![zh-cn_image_background_blur_style](figures/image-foreground-blur_style.png)

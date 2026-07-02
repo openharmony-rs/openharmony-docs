@@ -2,7 +2,7 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zcdqs-->
+<!--Owner: @guozejun-->
 <!--Designer: @zcdqs-->
 <!--Tester: @liuzhenshuo-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -13,7 +13,7 @@ typedef struct {...} ArkUI_GridItemRect
 
 ## Overview
 
-Defines the return value structure for the **onGetRectByIndex** callback in **Grid** layout options.
+Defines the return value for the **onGetRectByIndex** callback in **Grid** layout options.
 
 **Since**: 22
 

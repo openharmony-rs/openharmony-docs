@@ -7,7 +7,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-使用Image_NativeModule解码HDR图片，获取解码结果的动态范围信息，并根据业务需要处理HDR图片、SDR回退图和带有GainMap辅助图的Picture对象。
+使用Image_NativeModule解码HDR图片，获取解码结果的动态范围信息，并根据业务需要处理HDR图片、SDR图片和带有GainMap辅助图的Picture对象。
 
 HDR（High Dynamic Range，高动态范围）图片相比SDR（Standard Dynamic Range，标准动态范围）图片，可以记录更丰富的亮度层次和色彩信息。应用在解码HDR图片时，需要关注图片源是否包含HDR信息、设备是否支持HDR解码、解码结果是否仍为HDR，以及后续显示、编辑、编码或分享场景是否需要回退为SDR。当前系统仅支持JPEG格式和HEIF格式的HDR图片，且在接口调用方未主动配置相关参数的情况下，默认使用SDR处理。
 
@@ -35,7 +35,6 @@ HDR图片解码主要包含以下流程：
 | 动态范围 | 表示图像亮度信息的表达范围。解码时可通过动态范围参数指定期望输出HDR或SDR。 |
 | GainMap | 一种HDR兼容方案，图片中包含SDR主图和表示亮度增益信息的辅助图。支持HDR的设备可结合主图和GainMap生成HDR效果；不支持HDR时可使用SDR主图进行兼容显示。 |
 | Picture | 多图对象，可承载主图和辅助图。对于带GainMap的图片，可通过Picture相关接口获取辅助图或合成HDR PixelMap。 |
-| PixelMap | 解码后的像素图对象。应用可通过PixelMap图像信息判断解码结果是否为HDR，并根据业务处理像素数据。 |
 
 > **说明：**
 >
@@ -56,10 +55,6 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 具体接口说明请参考[Image_NativeModule](../../reference/apis-image-kit/capi-image-nativemodule.md)。
 
 在DevEco Studio新建Native C++应用，默认生成的项目中包含index.ets文件，在entry\src\main\cpp目录下会自动生成一个cpp文件（hello.cpp或napi_init.cpp，本示例以hello.cpp文件名为例）。在hello.cpp中实现C API接口调用逻辑，示例代码如下：
-
-> **说明：**
->
-> 部分接口在较高API version才支持，需要开发者在进行开发时选择合适的API版本。
 
 1. 导入相关头文件。
 
