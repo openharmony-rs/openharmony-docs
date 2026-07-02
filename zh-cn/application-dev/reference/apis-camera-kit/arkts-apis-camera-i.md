@@ -297,7 +297,7 @@
 | type        | [MetadataObjectType](arkts-apis-camera-e.md#metadataobjecttype)   |  是  |  否  | metadata 类型。    |
 | timestamp   | number                                      |  是  |  否  | 当前时间戳。单位为纳秒（ns）。|
 | boundingBox | [Rect](#rect)                               |  是  |  否  | metadata 区域框。  |
- isLockFocusTracked | boolean                              |  是  |  是  | 是否已锁定焦点跟踪。true表示已锁定，false表示未锁定。  |
+| isLockFocusTracked | boolean                              |  是  |  是  | 是否已锁定焦点跟踪。true表示已锁定，false表示未锁定。  |
 
 ## MetadataBasicFaceObject
 
