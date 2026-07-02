@@ -274,7 +274,7 @@ Manager::nodeAPI_->setAttribute(text14, NODE_TEXT_OPTIMIZE_TRAILING_SPACE, &opti
 
 ### 设置文本尾部缩进
 
-通过如下属性设置文本尾部缩进。从API version 26.0.0开始，Text组件支持设置文本尾部缩进。
+通过如下属性设置文本尾部缩进。从API版本26.0.0开始，Text组件支持设置文本尾部缩进。
 
 **表9** 文本尾部缩进属性
 
