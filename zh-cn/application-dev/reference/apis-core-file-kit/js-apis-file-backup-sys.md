@@ -461,7 +461,7 @@ onProcess (bundleName: string, process: string): void
 
 **起始版本**：26.0.0
 
-onFileReadyBatch : OnFileReadyBatch
+onFileReadyBatch: OnFileReadyBatch
 
 当一批文件准备好发送给客户端时调用。如果回调成功执行，则返回[Array&lt;File&gt;](#file)。否则，返回一个**err**对象。
 
