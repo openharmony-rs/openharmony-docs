@@ -85,14 +85,16 @@
 3. 订阅操作手感知
 
    <!-- @[motion_subscribe_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) -->  
-
-   ```ts
+   
+   ``` TypeScript
    try {
-      motion.on('operatingHandChanged', callback);
-      console.info("on succeeded");
+     motion.on('operatingHandChanged', callback);
+     console.info('on succeeded');
+     // ...
    } catch (err) {
-      let error = err as BusinessError;
-      console.error("Failed on and err code is " + error.code);
+     let error = err as BusinessError;
+     console.error('Failed on and err code is ' + error.code);
+     // ...
    }
    ```
 
