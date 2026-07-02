@@ -93,6 +93,8 @@ enum ColorSpaceName
 | DISPLAY_P3_SRGB = DISPLAY_P3 | 表示色彩原色为P3_D65，传输特性为SRGB，色彩范围为Full的色彩空间。 |
 | DISPLAY_P3_HLG = P3_HLG | 表示色彩原色为P3_D65，传输特性为HLG，色彩范围为Full的色彩空间。 |
 | DISPLAY_P3_PQ = P3_PQ | 表示色彩原色为P3_D65，传输特性为PQ，色彩范围为Full的色彩空间。 |
+| BT2020_LOG_FULL = 27 | 表示色彩原色为BT2020，传输特性为PRIV_LOG，色彩范围为Full的色彩空间。 |
+| BT2020_LOG_LIMIT = 28 | 表示色彩原色为BT2020，传输特性为PRIV_LOG，色彩范围为Limit的色彩空间。 |
 | CUSTOM = 5 | 表示自定义色彩空间。 |
 
 

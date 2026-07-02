@@ -53,6 +53,8 @@
 | [Camera_ErrorCode OH_PreviewOutput_IsBandwidthCompressionSupported(Camera_PreviewOutput* previewOutput, bool* isSupported)](#oh_previewoutput_isbandwidthcompressionsupported) | - | 检查是否支持预览带宽压缩（指通过编码减少数据量，降低其在传输链路中的带宽占用）。 |
 | [Camera_ErrorCode OH_PreviewOutput_EnableBandwidthCompression(Camera_PreviewOutput* previewOutput, bool enabled)](#oh_previewoutput_enablebandwidthcompression) | - | 使能预览带宽压缩。<br>该接口只能在使用[OH_CaptureSession_CommitConfig()](capi-capture-session-h.md#oh_capturesession_commitconfig)接口之前调用，否则会影响预览流出流格式。 |
 | [Camera_ErrorCode OH_PreviewOutput_AddDeferredSurface(const Camera_PreviewOutput* previewOutput, const char* surfaceId)](#oh_previewoutput_adddeferredsurface) | - | 配置延迟预览的Surface。 |
+| [bool OH_PreviewOutput_IsLogViewAssistSupported(const Camera_PreviewOutput* previewOutput)](#oh_previewoutput_islogviewassistsupported) | - | 检查是否支持辅助监看功能。|
+| [Camera_ErrorCode OH_PreviewOutput_SetLogViewAssistEnable(Camera_PreviewOutput* previewOutput, bool enable)](#oh_previewoutput_setlogviewassistenable) | - | 使能辅助监看功能。<br>该接口只能在使用[OH_CaptureSession_CommitConfig()](capi-capture-session-h.md#oh_capturesession_commitconfig)接口之后调用。 |
 
 ## 函数说明
 
