@@ -1163,14 +1163,14 @@ async function testgetAsyKeySpec() {
 
 getEncodedDer(format: string): DataBlob
 
-支持根据指定的密钥格式（如规范、压缩状态等），获取符合ASN.1语法和DER编码的公钥数据。目前仅支持ECC压缩和非压缩格式的公钥数据。
+支持根据指定的密钥格式（如规范、压缩状态等），获取符合ASN.1语法和DER编码的公钥数据。
 
 > **说明：**
 >
 > 本接口和[Key.getEncoded()](#getencoded)的区别是：
 >
 > 1. 本接口可根据入参决定数据的输出格式。
-> 2. [Key.getEncoded()](#getencoded)接口，不支持指定密钥格式，生成的数据格式与原始数据格式保持一致。（原始数据格式，指通过[convertKey](#convertkey-3)接口生成密钥对象时的数据格式）。
+> 2. [Key.getEncoded()](#getencoded)接口，不支持指定密钥格式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1180,7 +1180,7 @@ getEncodedDer(format: string): DataBlob
 
 | 参数名 | 类型                  | 必填 | 说明                 |
 | ---- | --------------------- | ---- | -------------------- |
-| format  | string | 是   | 用于指定当前密钥格式。<br>在API版本12-24，取值仅支持"X509\|COMPRESSED"和"X509\|UNCOMPRESSED"。<br>从API版本26.0.0开始，RSA公钥格式取值支持"PKCS1"和"X509"。 |
+| format  | string | 是   | 用于指定当前密钥格式。支持EC密钥，format取值支持"X509\|COMPRESSED"和"X509\|UNCOMPRESSED"。<br>从API版本26.0.0开始，支持RSA密钥，format取值支持"PKCS1"和"X509"。<br>从API版本26.0.0开始，支持ML-DSA和ML-KEM密钥，format取值支持"X509"。 |
 
 **返回值：**
 
@@ -1480,14 +1480,10 @@ getEncodedDer(format: string): DataBlob
 
 支持根据指定的密钥格式（如采用哪个规范），获取满足ASN.1语法、DER编码的私钥数据。
 
-在API版本12-24，仅支持获取PKCS #8格式的ECC私钥数据。
-
-从API版本26.0.0开始，增加支持获取PKCS #1和PKCS #8格式的RSA私钥数据。
-
 > **说明：**
 >
 > 本接口和[Key.getEncoded()](#getencoded)的区别是：<br/>
-> 1. 本接口可根据入参决定数据的输出格式，当前支持获取PKCS #8格式的ECC私钥数据。
+> 1. 本接口可根据入参决定数据的输出格式。
 > 2. [Key.getEncoded()](#getencoded)接口，不支持指定密钥格式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -1498,7 +1494,7 @@ getEncodedDer(format: string): DataBlob
 
 | 参数名 | 类型                  | 必填 | 说明                 |
 | ---- | --------------------- | ---- | -------------------- |
-| format  | string | 是   | 用于指定当前密钥格式。<br>在API版本12-24，取值仅支持"PKCS8"。<br>从API版本26.0.0开始，RSA私钥格式支持"PKCS1"和"PKCS8"。 |
+| format  | string | 是   | 用于指定当前密钥格式。支持EC密钥，format取值支持"PKCS8"。<br>从API版本26.0.0开始，支持RSA密钥，format取值支持"PKCS1"和"PKCS8"。<br>从API版本26.0.0开始，支持ML-DSA和ML-KEM密钥，format取值支持"PKCS8"。 |
 
 **返回值：**
 
