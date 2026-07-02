@@ -323,7 +323,7 @@ The @SyncMonitor decorator is used to listen for state variable changes in state
 
 **Error codes**:
 
-For details about the error codes, see [State Management Error Codes](./errorcode-stateManagement.md).
+For details about the error codes, see [State Management Error Codes](../errorcode-stateManagement.md).
 
 | ID| Error Message            |
 | -------- | -------------------- |
