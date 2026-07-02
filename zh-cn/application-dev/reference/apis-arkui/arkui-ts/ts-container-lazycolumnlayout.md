@@ -350,7 +350,7 @@ struct LazyColumnLayoutSample1 {
 <!--code_no_check-->
 ```ts
 import { LazyColumnLayout, LazyColumnLayoutAttribute } from '@kit.ArkUI';
-// MyDataSource是自定义数据源类，实现了LazyForEach所需的IDataSource接口。
+// MyDataSource是自定义数据源类，实现了LazyForEach所需的IDataSource接口
 import { MyDataSource } from './MyDataSource';
 
 @Entry
@@ -364,6 +364,7 @@ struct LazyColumnLayoutStickyDemo {
     }
   }
 
+  // 构建头部组件
   @Builder
   HeaderBuilder() {
     Row() {
@@ -408,6 +409,7 @@ struct LazyColumnLayoutStickyDemo {
       }
       .header(this.HeaderBuilder)
       .footer(this.FooterBuilder)
+      // 设置头部和尾部同时吸附
       .sticky(StickyStyle.BOTH)
     }
     .width('100%')

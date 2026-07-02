@@ -242,7 +242,7 @@ MyDataSource实现了[LazyForEach](ts-rendering-control-lazyforeach.md)数据源
 <!--code_no_check-->
 ```ts
 import { LengthMetrics } from '@kit.ArkUI';
-// MyDataSource是自定义数据源类，实现了LazyForEach所需的IDataSource接口。
+// MyDataSource是自定义数据源类，实现了LazyForEach所需的IDataSource接口
 import { MyDataSource } from './MyDataSource';
 
 @Entry
@@ -406,7 +406,7 @@ export class MyDataSource<T> extends BasicDataSource<T> {
 <!--code_no_check-->
 ```ts
 import { LengthMetrics } from '@kit.ArkUI';
-// MyDataSource是自定义数据源类，实现了LazyForEach所需的IDataSource接口。
+// MyDataSource是自定义数据源类，实现了LazyForEach所需的IDataSource接口
 import { MyDataSource } from './MyDataSource';
 
 @Entry
@@ -414,6 +414,7 @@ import { MyDataSource } from './MyDataSource';
 struct LazyVGridLayoutStickyDemo {
   private arr:MyDataSource<number> = new MyDataSource<number>();
 
+  // 构建头部组件
   @Builder
   HeaderBuilder() {
     Column() {
@@ -458,6 +459,7 @@ struct LazyVGridLayoutStickyDemo {
         .columnsGap(LengthMetrics.vp(10))
         .header(this.HeaderBuilder)
         .footer(this.FooterBuilder)
+        // 设置头部和尾部同时吸附
         .sticky(StickyStyle.BOTH)
       }.padding(10)
       .rowsGap(10)
@@ -484,7 +486,7 @@ struct LazyVGridLayoutStickyDemo {
 <!--code_no_check-->
 ```ts
 import { LazyColumnLayout, LazyColumnLayoutAttribute, LengthMetrics } from '@kit.ArkUI';
-// MyDataSource是自定义数据源类，实现了LazyForEach所需的IDataSource接口。
+// MyDataSource是自定义数据源类，实现了LazyForEach所需的IDataSource接口
 import { MyDataSource } from './MyDataSource';
 
 @Entry
