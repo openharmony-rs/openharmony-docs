@@ -70,15 +70,13 @@ registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback, 
        console.info('NotifyNetDisconnect state ' + JSON.stringify(state));	 
      }	 
      try {	 
-       // 调用registerMissionListener接口	 
-   
-   
+       // 调用registerMissionListener接口
        distributedMissionManager.registerMissionListener(	 
          { deviceId: "" },	 
          {	 
-           notifyMissionsChanged: NotifyMissionsChanged,	 
-           notifySnapshot: NotifySnapshot,	 
-           notifyNetDisconnect: NotifyNetDisconnect	 
+           notifyMissionsChanged: NotifyMissionsChanged,
+           notifySnapshot: NotifySnapshot,
+           notifyNetDisconnect: NotifyNetDisconnect
          },	 
          (error: BusinessError) => {	 
            if (error) {	 
@@ -147,7 +145,7 @@ registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback):
    }	 
    try {	 
        // 调用registerMissionListener接口	 
-@@ -158,8 +159,8 @@ registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback):	 
+       registerMissionListener(parameter: MissionDeviceInfo, options: MissionCallback):	 
          }).then(() => {	 
            console.info('registerMissionListener finished. ');	 
        }).catch((error: BusinessError) => {	 
