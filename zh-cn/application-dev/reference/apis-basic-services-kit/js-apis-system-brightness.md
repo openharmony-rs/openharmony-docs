@@ -38,6 +38,8 @@ getValue(options?: GetBrightnessOptions): void
 
 获得设备当前的屏幕亮度值。
 
+**模型约束：** 此接口可在FA模型和Stage模型下使用。
+
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 **参数：**
@@ -114,6 +116,8 @@ export default {
 setValue(options?: SetBrightnessOptions): void
 
 设置设备当前的屏幕亮度值。
+
+**模型约束：** 此接口可在FA模型和Stage模型下使用。
 
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
@@ -193,6 +197,8 @@ getMode(options?: GetBrightnessModeOptions): void
 
 获得当前屏幕亮度模式。
 
+**模型约束：** 此接口可在FA模型和Stage模型下使用。
+
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 **参数：**
@@ -269,6 +275,8 @@ export default {
 setMode(options?: SetBrightnessModeOptions): void
 
 设置设备当前的屏幕亮度模式。
+
+**模型约束：** 此接口可在FA模型和Stage模型下使用。
 
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
@@ -352,6 +360,8 @@ setKeepScreenOn(options?: SetKeepScreenOnOptions): void
 > - 除Lite Wearable外，从API version 7开始不再维护，建议使用[window.setWindowKeepScreenOn()](../apis-arkui/arkts-apis-window-Window.md#setwindowkeepscreenon9)替代。
 > - 在Lite Wearable上，该接口仅能阻止系统无活动超时灭屏（自动），无法阻止用户主动操作（如盖屏）、常亮时刻结束等导致的灭屏。
 
+**模型约束：** 此接口可在FA模型和Stage模型下使用。
+
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 **参数：**
@@ -428,6 +438,8 @@ export default {
 
 获取屏幕亮度的参数对象。
 
+**模型约束：** 此接口可在FA模型和Stage模型下使用。
+
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 | 名称     | 类型                                                      | 必填 | 说明                                                         |
@@ -439,6 +451,8 @@ export default {
 ## SetBrightnessOptions<sup>(deprecated)</sup>
 
 设置屏幕亮度的参数对象。
+
+**模型约束：** 此接口可在FA模型和Stage模型下使用。
 
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
@@ -453,6 +467,8 @@ export default {
 
 包含屏幕亮度的对象。
 
+**模型约束：** 此接口可在FA模型和Stage模型下使用。
+
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 | 名称 | 类型 | 可读 | 可写 | 说明 |
@@ -462,6 +478,8 @@ export default {
 ## GetBrightnessModeOptions<sup>(deprecated)</sup>
 
 获取屏幕亮度模式的参数对象。
+
+**模型约束：** 此接口可在FA模型和Stage模型下使用。
 
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
@@ -474,6 +492,8 @@ export default {
 ## SetBrightnessModeOptions<sup>(deprecated)</sup>
 
 设置屏幕亮度模式的参数对象。
+
+**模型约束：** 此接口可在FA模型和Stage模型下使用。
 
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
@@ -488,6 +508,8 @@ export default {
 
 包含屏幕亮度模式的对象。
 
+**模型约束：** 此接口可在FA模型和Stage模型下使用。
+
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
 | 名称 | 类型 | 可读 | 可写 | 说明 |
@@ -497,6 +519,8 @@ export default {
 ## SetKeepScreenOnOptions<sup>(deprecated)</sup>
 
 设置屏幕常亮的参数对象。
+
+**模型约束：** 此接口可在FA模型和Stage模型下使用。
 
 **系统能力：** SystemCapability.PowerManager.DisplayPowerManager.Lite
 
