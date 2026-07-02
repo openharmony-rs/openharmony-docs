@@ -62,14 +62,17 @@ EXTERN_C_END
 
     ```c++
     napi_value CreatePixelMapTest(napi_env env, napi_callback_info info) {
+        const int32_t PIXEL_FORMAT_BGRA_8888 = 4;
+ 	    const uint32_t ALPHA_TYPE_UNKNOWN = 0;
+
         napi_value udfVar = nullptr;
         napi_value pixelMap = nullptr;
 
         struct OhosPixelMapCreateOps createOps;
         createOps.width = 4;
         createOps.height = 6;
-        createOps.pixelFormat = 4;
-        createOps.alphaType = 0;
+        createOps.pixelFormat = PIXEL_FORMAT_BGRA_8888;
+        createOps.alphaType = ALPHA_TYPE_UNKNOWN;
         size_t bufferSize = createOps.width * createOps.height * 4;
         void *buff = malloc(bufferSize);
         if (buff == nullptr) {
@@ -168,35 +171,36 @@ EXTERN_C_END
         OH_PixelMap_SetOpacity(native, opacity);
 
         // 设置缩放比例。
-        // scaleX: 宽为原来的0.5。
-        // scaleY: 高为原来的0.5。
+        // scaleX：宽为原来的0.5倍。
+        // scaleY：高为原来的0.5倍。
         float scaleX = 0.5;
         float scaleY = 0.5;
         OH_PixelMap_Scale(native, scaleX, scaleY);
 
         // 设置偏移。
-        // translateX: 向下偏移50。
-        // translateY: 向右偏移50。
+        // translateX：向下偏移50像素。
+        // translateY：向右偏移50像素。
         float translateX = 50;
         float translateY = 50;
         OH_PixelMap_Translate(native, translateX, translateY);
 
-        // 设置顺时针旋转90度。
+        // 设置旋转角。
+        // angle：顺时针旋转90度。
         float angle = 90;
         OH_PixelMap_Rotate(native, angle);
 
-        // 设置翻转
-        // flipX: 水平翻转，0为不翻转，1为翻转。
-        // flipY: 垂直翻转，0为不翻转，1为翻转。
+        // 设置翻转。
+        // flipX：水平翻转，0为不翻转，1为翻转。
+        // flipY：垂直翻转，0为不翻转，1为翻转。
         int32_t flipX = 0;
         int32_t flipY = 1;
         OH_PixelMap_Flip(native, flipX, flipY);
 
         // 设置裁剪区域。
-        // cropX: 裁剪起始点横坐标。
-        // cropY: 裁剪起始点纵坐标。
-        // cropH: 裁剪高度10，方向为从上往下（裁剪后的图片高度为10）。
-        // cropW: 裁剪宽度10，方向为从左到右（裁剪后的图片宽度为10）。
+        // cropX：裁剪起始点横坐标。
+        // cropY：裁剪起始点纵坐标。
+        // cropH：裁剪高度10，方向为从上往下（裁剪后的图片高度为10）。
+        // cropW：裁剪宽度10，方向为从左到右（裁剪后的图片宽度为10）。
         int32_t cropX = 1;
         int32_t cropY = 1;
         int32_t cropW = 10;
@@ -205,10 +209,12 @@ EXTERN_C_END
 
         // 获取PixelMap对象数据的内存地址，并锁定该内存。
         void *pixelAddr = nullptr;
-        OH_PixelMap_AccessPixels(native, &pixelAddr);
+        int32_t ret = OH_PixelMap_AccessPixels(native, &pixelAddr);
 
-        // 释放PixelMap对象数据的内存锁。
-        OH_PixelMap_UnAccessPixels(native);
+        if (ret == IMAGE_RESULT_SUCCESS) {
+            // 释放PixelMap对象数据的内存锁。
+            OH_PixelMap_UnAccessPixels(native);
+        }
 
         return result;
     }
