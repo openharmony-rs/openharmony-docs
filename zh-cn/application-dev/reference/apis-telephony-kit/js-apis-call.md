@@ -173,6 +173,48 @@ call.makeCall("138xxxxxxxx", (err: BusinessError) => {
 });
 ```
 
+## call.makeCallWithToken
+
+makeCallWithToken\(phoneNumber: string, options?: MakeCallOptions\): Promise\<string\>;
+
+进入拨号界面，显示被叫号码。返回鉴权令牌。使用Promise异步回调。
+
+**起始版本**: 26.0.0
+
+**系统能力**：SystemCapability.Applications.Contacts
+
+**参数：**
+
+| 参数名      | 类型                      | 必填 | 说明                                       |
+| ----------- | ------------------------- | ---- | ------------------------------------------ |
+| phoneNumber | string                    | 是   | 电话号码。                                 |
+| options    | [MakeCallOptions](#makecalloptions24) | 否   | 通话中携带的附加信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error code.                          |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+// 从API15开始支持tel格式电话号码，如："tel:13xxxx"
+call.makeCall("138xxxxxxxx", (err: BusinessError) => {
+    if (err) {
+        console.error(`makeCall fail, err->${JSON.stringify(err)}`);
+    } else {
+        console.info(`makeCall success`);
+    }
+});
+```
+
 
 ## call.makeCall<sup>7+</sup>
 
@@ -890,6 +932,7 @@ answerCall\(callback: AsyncCallback\<void\>\): void
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service. |
@@ -936,6 +979,7 @@ hangUpCall\(callback: AsyncCallback\<void\>\): void
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service. |
@@ -983,6 +1027,7 @@ rejectCall\(callback: AsyncCallback\<void\>\): void
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Operation failed. Cannot connect to service. |
@@ -1097,6 +1142,7 @@ call.getCallTransferInfo(type, number)
 |        名称              | 类型                               | 只读 | 可选 | 说明                                                                                             |
 | ------------------------ | ---------------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------------- |
 | isHideDialScreen               | boolean                            | 否   | 是   | 是否隐藏拨号界面，true表示隐藏，false表示不隐藏。   |
+| isCustomAccessibility          | boolean                            | 否   | 是   | 第三方应用是否支持自定义辅助功能，true表示支持，false表示不支持。<br>**起始版本:** 26.0.0    |
 
 
 ## TelCallState<sup>21+</sup>
@@ -1191,10 +1237,10 @@ call.getCallTransferInfo(type, number)
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
-|          名称            |                 类型               | 必填 |       说明       |
-| ------------------------ | ---------------------------------- | ---- | ---------------- |
-| status                   | [TransferStatus](#transferstatus) |  是  | 转移状态。         |
-| startHour   | number                             |  是  | 开始时间的小时数。 |
-| startMinute | number                             |  是  | 开始时间的分钟数。 |
-| endHour     | number                             |  是  | 结束时间的小时数。 |
-| endMinute   | number                             |  是  | 结束时间的分钟数。 |
+|          名称            |                 类型               | 只读 | 可选 |       说明       |
+| ------------------------ | ---------------------------------- | ---- | ---- | ---------------- |
+| status                   | [TransferStatus](#transferstatus) | 否 |  否  | 转移状态。         |
+| startHour   | number                             | 否 |  否  | 开始时间的小时数。 |
+| startMinute | number                             | 否 |  否  | 开始时间的分钟数。 |
+| endHour     | number                             | 否 |  否  | 结束时间的小时数。 |
+| endMinute   | number                             | 否 |  否  | 结束时间的分钟数。 |
