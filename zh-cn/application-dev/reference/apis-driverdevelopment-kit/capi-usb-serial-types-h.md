@@ -80,7 +80,6 @@ enum UsbSerial_FlowControl
 | USB_SERIAL_NO_FLOW_CONTROL = 0 | 无流量控制。适用于低速传输或无需流控的场景，但可能导致数据丢失。 |
 | USB_SERIAL_SOFTWARE_FLOW_CONTROL = 1 | 软件流控。使用XON/XOFF字符控制，适用于不支持硬件流控的设备。 |
 | USB_SERIAL_HARDWARE_FLOW_CONTROL = 2 | 硬件流控。使用RTS/CTS信号线，适用于高速数据传输，可靠性高。 |
-| USB_SERIAL_HARDWARE_FLOW_CONTROL = 2 | 硬件流控。 |
 
 ### UsbSerial_Parity
 

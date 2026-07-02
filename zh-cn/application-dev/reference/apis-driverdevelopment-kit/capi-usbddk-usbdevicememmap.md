@@ -27,7 +27,7 @@ typedef struct UsbDeviceMemMap {...} UsbDeviceMemMap
 | 名称 | 描述 |
 | -- | -- |
 | uint8_t* const address | 映射后的缓冲区地址。 |
-| const size_t size | 缓冲区大小，必须大于 0，单位为字节。 |
+| const size_t size | 缓冲区大小（单位：字节），必须大于 0。 |
 | uint32_t offset | 所使用的缓冲区的偏移量，默认为0，表示没有偏移，从映射后的缓冲区地址address开始。 |
 | uint32_t bufferLength | 所使用的缓冲区的长度，默认等于缓冲区大小 size，表示使用全部的缓冲区。 |
 | uint32_t transferredLength | 实际传输的数据长度（单位：字节）。 |
