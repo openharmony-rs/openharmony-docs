@@ -16,7 +16,7 @@ typedef struct Hid_AbsAxesArray {...} Hid_AbsAxesArray
 
 **起始版本：** 11
 
-**相关模块：** [HidDdk](capi-hidddk.md)（Human Interface Device Driver Development Kit）
+**相关模块：** [HidDdk](capi-hidddk.md)
 
 **所在头文件：** [hid_ddk_types.h](capi-hid-ddk-types-h.md)
 
