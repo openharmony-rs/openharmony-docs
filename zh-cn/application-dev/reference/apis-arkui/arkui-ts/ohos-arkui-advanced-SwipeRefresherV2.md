@@ -46,8 +46,6 @@ SwipeRefresherV2 ({content?: ResourceStr, isLoading: boolean})
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**跨平台能力：** 从API版本26.0.0开始，该接口支持跨平台使用。
-
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明      |
 | -------- | -------- | -------- | -------- |----------|
 | content | [ResourceStr](ts-types.md#resourcestr) | 否 | \@Param | 内容加载时显示的文本。<br/>默认值：空字符串。<br/>**说明**：如果文本大于列宽时，文本被截断。 |
