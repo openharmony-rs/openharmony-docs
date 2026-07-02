@@ -597,7 +597,7 @@ Navigation作为路由组件，默认支持跨包跳转。
    <!-- @[router_hsp22](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/router/Hsp22.ets) -->
    
    ``` TypeScript
-   export { PageInHSP } from './src/main/ets/pages/PageInHSP'
+   export { PageInHSP } from './src/main/ets/pages/PageInHSP';
    ```
 
 3. 使用跨包路由方式跳转时，需要在当前应用包的oh-package.json5文件中配置依赖。例如：
@@ -739,8 +739,8 @@ export default class EntryAbility extends UIAbility {
           // NavDestination组件显示时操作
           hilog.info(DOMAIN, TAG, 'page ON_SHOWN:' + info.name.toString());
         }
-      })
-    })
+      });
+    });
   }
 }
 ```
@@ -808,7 +808,7 @@ export struct NavDestinationExample {
 
 @Component
 struct MyComponent {
-  navDesInfo: uiObserver.NavDestinationInfo | undefined
+  navDesInfo: uiObserver.NavDestinationInfo | undefined;
 
   aboutToAppear() {
     this.navDesInfo = this.queryNavDestinationInfo();

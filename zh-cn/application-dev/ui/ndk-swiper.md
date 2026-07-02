@@ -18,7 +18,7 @@ ArkUI开发框架支持在NDK接口使用滑块视图容器Swiper，提供子组
 
 本示例仅展示核心功能代码，完整示例请参考工程<!--RP1-->[NDKSwiperSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKSwiperSample)<!--RP1End-->。
 
-<!-- @[swiper_create](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKSwiperSample/entry/src/main/cpp/NativeEntry.cpp) -->
+<!-- @[swiper_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKSwiperSample/entry/src/main/cpp/NativeEntry.cpp) -->
 
 ``` C++
 ArkUI_NativeNodeAPI_1 *nodeApi = nullptr;
@@ -42,7 +42,7 @@ AddChild(swiper, nodeApi);
 
 本示例仅展示核心功能代码，完整示例请参考工程<!--RP1-->[NDKSwiperSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKSwiperSample)<!--RP1End-->。
 
-<!-- @[swiper_attribute](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKSwiperSample/entry/src/main/cpp/NativeEntry.cpp) -->
+<!-- @[swiper_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKSwiperSample/entry/src/main/cpp/NativeEntry.cpp) -->
 
 ``` C++
 // 设置常用属性
@@ -68,7 +68,7 @@ nodeApi->setAttribute(swiper, NODE_SWIPER_AUTO_PLAY, &item);
 
 本示例仅展示核心功能代码，完整示例请参考工程<!--RP1-->[NDKSwiperSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKSwiperSample)<!--RP1End-->。
 
-<!-- @[indicator_attribute](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKSwiperSample/entry/src/main/cpp/NativeEntry.cpp) -->
+<!-- @[indicator_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKSwiperSample/entry/src/main/cpp/NativeEntry.cpp) -->
 
 ``` C++
 // 设置导航指示器属性
@@ -99,7 +99,7 @@ OH_ArkUI_SwiperIndicator_Dispose(swiperIndicatorStyle);
 
 本示例仅展示核心功能代码，完整示例请参考工程<!--RP1-->[NDKSwiperSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKSwiperSample)<!--RP1End-->。
 
-<!-- @[swiper_event](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKSwiperSample/entry/src/main/cpp/NativeEntry.cpp) -->
+<!-- @[swiper_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKSwiperSample/entry/src/main/cpp/NativeEntry.cpp) -->
 
 ``` C++
 // 注册翻页事件监听
