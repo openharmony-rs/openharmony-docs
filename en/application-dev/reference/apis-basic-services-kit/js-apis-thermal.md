@@ -37,7 +37,7 @@ Subscribes to thermal level changes. This API uses an asynchronous callback to r
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 401     | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
@@ -72,7 +72,7 @@ Unsubscribes from thermal level changes. This API uses an asynchronous callback 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code  | Error Message   |
+| ID  | Error Message   |
 |---------|---------|
 | 401     | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
