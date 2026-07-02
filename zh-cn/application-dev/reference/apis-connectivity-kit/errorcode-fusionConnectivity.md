@@ -99,7 +99,7 @@ The device has not initiated ranging.
 
 **处理步骤**
 
-建议发起测距后再进行后续操作。
+建议先调用[startRanging](js-apis-fusionConnectivity-ranging.md#rangingstartranging)发起测距后再进行后续操作。
 
 ## 34900051 该设备已发起测距
 
@@ -117,7 +117,7 @@ The device has already initiated ranging.
 
 **处理步骤**
 
-建议不要在已经发起测距后重复发起，可以先结束测距再重新发起测距。
+建议不要在已经发起测距后重复发起，可以先调用[stopRanging](js-apis-fusionConnectivity-ranging.md#rangingstopranging)结束测距后再重新调用[startRanging](js-apis-fusionConnectivity-ranging.md#rangingstartranging)发起测距。
 
 ## 34900052 不支持指定类型的测距服务
 
@@ -135,7 +135,7 @@ The specified type of ranging service is not supported.
 
 **处理步骤**
 
-该类型服务并不支持测距。
+该类型服务并不支持测距，请参考[RangingTypes](js-apis-fusionConnectivity-ranging.md#rangingrangingtypes)使用有效的测距类型。
 
 ## 34900053 测距服务关闭
 
