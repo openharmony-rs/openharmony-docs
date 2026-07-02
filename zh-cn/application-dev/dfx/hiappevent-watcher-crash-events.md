@@ -147,7 +147,8 @@ let policy: hiAppEvent.EventPolicy = {
       pageSwitchLogEnable: true // 启用页面切换日志。ArkTS-Dyn起始版本：24；ArkTS-Sta起始版本：24
       extendPcLrPrinting: true, // 使能扩展打印pc和lr寄存器附近的内存值。ArkTS-Dyn起始版本：26.0.0；ArkTS-Sta起始版本：26.0.0
       logFileCutoffSzBytes: 102400, // 截断崩溃日志到100KB。ArkTS-Dyn起始版本：26.0.0；ArkTS-Sta起始版本：26.0.0
-      simplifyVmaPrinting: true // 使能精简打印maps。ArkTS-Dyn起始版本：26.0.0；ArkTS-Sta起始版本：26.0.0
+      simplifyVmaPrinting: true, // 使能精简打印maps。ArkTS-Dyn起始版本：26.0.0；ArkTS-Sta起始版本：26.0.0
+      collectMinidump: true // native崩溃场景，使能minidump。ArkTS-Dyn起始版本：26.0.0；ArkTS-Sta起始版本：26.0.0
     }
 };
 hiAppEvent.configEventPolicy(policy).then(() => {
