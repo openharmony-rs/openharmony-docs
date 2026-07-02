@@ -591,7 +591,7 @@ try {
 3. 调用restore接口恢复数据。
 
     ArkTS-Dyn示例：
-    <!-- @[invokeTheRestoreInterfaceToRestoreData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+    <!-- @[invokeTheRestoreInterfaceToRestoreData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->  
     
     ``` TypeScript
     let store: relationalStore.RdbStore | undefined = undefined;
