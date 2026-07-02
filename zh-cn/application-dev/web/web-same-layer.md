@@ -515,7 +515,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
       this.type_ = params.type;
     }
   
-    // 必须要重写的方法，用于构建节点数、返回节点数挂载在对应NodeContainer中。
+    // 必须要重写的方法，用于构建节点树、返回节点树挂载在对应NodeContainer中。
     // 在对应NodeContainer创建的时候调用、或者通过rebuild方法调用刷新。
     makeNode(uiContext: UIContext): FrameNode | null {
       if (this.isDestroy_) { // rootNode为null。
@@ -611,7 +611,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
             }, (embedId: string) => embedId)
             // Web组件加载本地test2.html页面。
             Web({src: $rawfile('test2.html'), controller: this.browserTabController})
-            // 注册同层标签为'object'，类型为'test'前缀
+              // 注册同层标签为'object'，类型为'test'前缀
               .registerNativeEmbedRule('object', 'test')
               // 配置同层渲染开关开启。
               .enableNativeEmbedMode(true)
@@ -636,7 +636,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
                     top: `${embed.info?.position?.y as number}px`
                   };
                   nodeController.setDestroy(false);
-                  //根据Web传入的embed的id属性作为key，将nodeController存入Map。
+                  // 根据Web传入的embed的id属性作为key，将nodeController存入Map。
                   this.nodeControllerMap.set(componentId, nodeController);
                   this.widthMap.set(componentId, this.uiContext.px2vp(embed.info?.width));
                   this.heightMap.set(componentId, this.uiContext.px2vp(embed.info?.height));
