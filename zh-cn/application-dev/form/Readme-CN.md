@@ -11,7 +11,7 @@
   - [创建ArkTS卡片](arkts-ui-widget-creation.md)
   - [配置ArkTS卡片的配置文件](arkts-ui-widget-configuration.md)
   - [管理ArkTS卡片生命周期](arkts-ui-widget-lifecycle.md)
-  - [ArkTS卡片进程模型](arkts-ui-widget-process.md)<!--RP5--><!--RP5End-->
+  - [ArkTS卡片进程模型](arkts-ui-widget-process.md)
   - ArkTS卡片提供方开发指导<!--arkts-ui-widget-->
     - ArkTS卡片UI界面开发<!--arkts-ui-widget-page-->
       - [ArkTS卡片界面开发概述](arkts-ui-widget-page-overview.md)
@@ -53,6 +53,8 @@
       <!--Del-->
       - [场景动效类型互动卡片开发指导（仅对系统应用开放）](arkts-ui-liveform-sceneanimation-development-sys.md)
       <!--DelEnd-->
+   - ArkTs卡片最佳实践<!--arkts-ui-best practice-->
+      <!--RP5--><!--RP5End-->
   - [ArkTS卡片适配常见问题](arkts-ui-widget-adapt-faq.md)
 - JS卡片开发<!--form-js-ui-->
   - [JS卡片概述](js-ui-widget-overview.md)
