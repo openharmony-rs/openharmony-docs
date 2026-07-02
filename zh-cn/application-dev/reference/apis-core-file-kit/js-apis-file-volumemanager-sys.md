@@ -1376,7 +1376,7 @@ ArkTS-Sta: getOpProcess(volumeId: string): Promise&lt;int&gt;
 
 | 类型                   | 说明       |
 | ---------------------- | ---------- |
-| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回光驱刻录操作进度，进度值为0-100的整数。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回当前操作的进度，进度值为0-100的整数。 |
 
 **错误码：**
 
