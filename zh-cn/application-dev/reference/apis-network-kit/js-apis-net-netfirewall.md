@@ -246,7 +246,8 @@ let ipRule: netFirewall.NetFirewallRule = {
       startPort: 443,
       endPort: 443
     }],
-  userId: 100
+  userId: 100,
+  interface:"wlan0"
 };
 netFirewall.addNetFirewallRule(ipRule).then((result: number) => {
   console.info('rule Id: ', result);
@@ -270,7 +271,8 @@ let domainRule: netFirewall.NetFirewallRule = {
       isWildcard: true,
       domain: "*.example.cn"
     }],
-  userId: 100
+  userId: 100,
+  interface:"wlan0"
 };
 netFirewall.addNetFirewallRule(domainRule).then((result: number) => {
   console.info('rule Id: ', result);
@@ -290,7 +292,8 @@ let dnsRule: netFirewall.NetFirewallRule = {
    primaryDns: "4.4.4.4",
    standbyDns: "8.8.8.8",
   },
-  userId: 100
+  userId: 100,
+  interface:"wlan0"
 };
 netFirewall.addNetFirewallRule(dnsRule).then((result: number) => {
   console.info('rule Id: ', result);
@@ -416,7 +419,8 @@ let ipRuleUpd: netFirewall.NetFirewallRule = {
       startIp: "10.20.1.1",
       endIp: "10.20.1.10"
     }],
-  userId: 100
+  userId: 100,
+  interface:"wlan0"
 };
 netFirewall.updateNetFirewallRule(ipRuleUpd).then(() => {
   console.info('update firewall rule success.');
@@ -554,6 +558,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 | remotePorts | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | 否 |是 |远端端口。当type=RULE_IP时有效，否则将被忽略。最多10个。   |
 | domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | 否 |是 |域名列表，当type=RULE_DOMAIN时有效，否则将被忽略，目前不支持中文域名。         |
 | dns         | [NetFirewallDnsParams](#netfirewalldnsparams)               | 否 |是 |DNS：当type=RULE_DNS时有效，否则将被忽略。当type=RULE_DNS时，该字段不能为空。                 |
+| interface   | string                                                      | 否 |否 |物理网口特定接口，当type=RULE_IP时有效，否则将被忽略。                   |
 
 ## RequestParam
 
