@@ -43,7 +43,7 @@
   - [使用Web组件的广告过滤功能](web-adsblock.md)
   - [坚盾守护模式](web-secure-shield-mode.md)
 - 管理网页加载与浏览记录<!--web-manage-loading-browsing-->
-  - [使用Web组件加载页面](web-page-loading-with-web-components.md)
+  - [使用Web组件加载页面](web-page-loading-with-web-components.md)<!--RP4--><!--RP4End-->
   - [管理页面跳转及浏览记录导航](web-redirection-and-browsing-history-mgmt.md)
   - [拦截Web组件发起的网络请求](web-scheme-handler.md)
   - [自定义页面请求响应](web-resource-interception-request-mgmt.md)
