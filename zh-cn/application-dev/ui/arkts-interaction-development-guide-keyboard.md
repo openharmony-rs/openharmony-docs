@@ -303,7 +303,7 @@ struct KeyEventPreventBubble {
 
 ![zh-cn_image_0000001511900508](figures/onKeyEvent02.gif)
 
-使用OnKeyPreIme屏蔽在输入框中使用方向左键。
+使用onKeyPreIme屏蔽在输入框中使用方向左键。
 
 ArkTS-Dyn示例：
 
@@ -489,7 +489,7 @@ struct Index {
 
 ![zh-cn_image_00012427111](figures/onKeyEvent03.PNG)
 
-使用OnKeyPreIme实现回车提交（建议使用物理键盘）。
+使用onKeyPreIme实现回车提交（建议使用物理键盘）。
 
 ArkTS-Dyn示例：
 
