@@ -1,4 +1,4 @@
-# node_attr_custom.h
+# custom_attributes.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
@@ -10,7 +10,7 @@
 
 为NativeNode API提供自定义节点事件定义。
 
-**引用文件：** <arkui/node_attributes/node_attr_custom.h>
+**引用文件：** <arkui/node_attributes/custom_attributes.h>
 
 **库：** libace_ndk.z.so
 

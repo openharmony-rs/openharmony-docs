@@ -20,7 +20,7 @@
 
 ![](figures/drawModifier.png)
 
-开发者可以通过注册相应的事件类型来实现不同层级的自定义绘制，不同层级对应的枚举如下，NDK接口支持的事件类型范围请参考[ArkUI_NodeCustomEventType](../reference/apis-arkui/capi-native-node-node-attributes-node-attr-custom-h.md#arkui_nodecustomeventtype)枚举值。
+开发者可以通过注册相应的事件类型来实现不同层级的自定义绘制，不同层级对应的枚举如下，NDK接口支持的事件类型范围请参考[ArkUI_NodeCustomEventType](../reference/apis-arkui/capi-native-node-node-attributes-custom-attributes-h.md#arkui_nodecustomeventtype)枚举值。
 
 | 事件类型 | 说明 |
 | --- | --- |

@@ -695,7 +695,7 @@
       - [ArkUI_NodeAttributeType（XComponent组件相关属性）](capi-native-node-h-nodeattributetype-xcomponent.md)
       - [ArkUI_NodeAttributeType（EmbeddedComponent组件相关属性）](capi-native-node-h-nodeattributetype-embeddedcomponent.md)
       - [ArkUI_NodeAttributeType（其他）](capi-native-node-h-nodeattributetype-other.md)
-    - [node_attr_custom.h](capi-native-node-node-attributes-node-attr-custom-h.md)
+    - [node_attr_custom.h](capi-native-node-node-attributes-custom-attributes-h.md)
     - [native_node_napi.h](capi-native-node-napi-h.md)
     - [native_render.h](capi-native-render-h.md)
     - [native_type.h](capi-native-type-h.md)
