@@ -48,7 +48,7 @@ GestureGroup(mode: GestureMode, ...gesture: GestureType[])
 
 onCancel(event: () => void)
 
-手势识别成功，接收到触摸取消事件，触发回调。
+手势识别后，接收到触摸取消事件时，触发此回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -88,7 +88,7 @@ struct GestureGroupExample {
     .margin(20)
     .border({ width: 3, style: this.borderStyles })
     .gesture(
-      // 以下组合手势为顺序识别，当长按手势事件未正常触发时则不会触发滑动手势事件
+      // 以下组合手势为顺序识别，当长按手势事件未正常触发时则不会触发拖动手势事件
       GestureGroup(GestureMode.Sequence,
         LongPressGesture({ repeat: true })
           .onAction((event?: GestureEvent) => {
