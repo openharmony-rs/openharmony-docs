@@ -276,7 +276,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
        this.type_ = params.type;
      }
    
-     // 必须要重写的方法，用于构建节点数、返回节点数挂载在对应NodeContainer中。
+     // 必须要重写的方法，用于构建节点树、返回节点树挂载在对应NodeContainer中。
      // 在对应NodeContainer创建的时候调用、或者通过rebuild方法调用刷新。
      makeNode(uiContext: UIContext): FrameNode | null {
        if (this.isDestroy_) { // rootNode为null。
