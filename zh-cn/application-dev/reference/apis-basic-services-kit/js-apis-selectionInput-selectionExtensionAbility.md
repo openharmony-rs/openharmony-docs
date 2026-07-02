@@ -7,12 +7,12 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
 
-本模块提供划词扩展功能，用于用户通过鼠标、触控板等方式选择文本后的搜索、翻译等场景。
+本模块提供划词扩展功能，支持开发者通过继承SelectionExtensionAbility实现自定义的划词扩展服务（如监听划词事件、创建划词面板、显示划词面板等）。用于用户通过鼠标、触控板选中文本后的搜索、翻译等交互场景。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 24开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - 本模块仅支持PC/2in1设备。
+> - 本模块仅支持PC/2in1设备。开发者可通过canIUse('SystemCapability.SelectionInput.Selection')判断当前设备是否支持该功能。
 
 ## 导入模块
 
@@ -33,7 +33,7 @@ import { SelectionExtensionAbility } from '@kit.BasicServicesKit';
 
 onConnect(want: Want): rpc.RemoteObject
 
-当SelectionExtensionAbility实例完成创建时，系统会触发该回调，开发者可在该回调中执行初始化逻辑（如定义变量、加载资源、监听划词事件等）。
+当SelectionExtensionAbility实例完成创建时，系统会触发该回调，开发者可在该回调中执行初始化逻辑（如定义变量、加载资源、订阅划词完成事件等）。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
@@ -60,17 +60,26 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const TAG: string = '[SelectionExtensionAbility]';
 
+// 定义RPC通信桩类，用于客户端和服务端之间的IPC通信
 class StubTest extends rpc.RemoteObject {
-  constructor(des: string) {
-    super(des);
+  constructor(descriptor: string) {
+    super(descriptor);
   }
-  onConnect(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence, option: rpc.MessageOption) {
+  onRemoteMessageRequest(
+    code: number,
+    data: rpc.MessageSequence,
+    reply: rpc.MessageSequence,
+    options: rpc.MessageOption
+  ): boolean | Promise<boolean> {
+    return true;
   }
 }
 
 class ServiceExtAbility extends SelectionExtensionAbility {
+  // 实现onConnect生命周期回调，在SelectionExtensionAbility完成创建时返回RPC通信对象
   onConnect(want: Want): rpc.RemoteObject {
     hilog.info(0x0000, TAG, `onConnect, want: ${want.abilityName}`);
+    // 返回RPC通信桩对象，用于客户端与服务端建立IPC通信
     return new StubTest('test');
   }
 }
@@ -80,9 +89,7 @@ class ServiceExtAbility extends SelectionExtensionAbility {
 
 onDisconnect(): void
 
-当SelectionExtensionAbility实例被销毁（例如用户关闭划词开关或切换划词应用）时，系统触发该回调。开发者可以在该生命周期中执行资源清理、数据保存等相关操作。使用同步回调或Promise异步回调。
-
-在执行完onDisconnect生命周期回调后，应用可能会退出，从而可能导致onDisconnect中的异步函数未能正确执行，比如异步写入数据库。推荐使用Promise异步回调，避免因应用退出导致onDisconnect中的异步函数（比如异步写入数据库）未能正确执行。
+当SelectionExtensionAbility实例被销毁（例如用户关闭划词开关或切换划词应用）时，系统触发该回调。开发者可以在该生命周期中执行资源清理、数据保存等相关操作。
 
 仅当SelectionExtensionAbility正常退出时会触发该回调，异常退出场景（例如低内存终止进程）不会触发该回调。
 
@@ -99,6 +106,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 const TAG: string = '[SelectionExtensionAbility]';
 
 class ServiceExtAbility extends SelectionExtensionAbility {
+  // 实现onDisconnect生命周期回调，在SelectionExtensionAbility被销毁时执行资源清理
   onDisconnect(): void {
     hilog.info(0x0000, TAG, `onDisconnect`);
   }
