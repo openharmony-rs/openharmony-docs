@@ -4129,7 +4129,7 @@ netCon.unregister((error: BusinessError|null) => {
 
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
-| netId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否  |  网络ID，取值为0代表没有默认网络，其余有效取值必须大于等于100。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| netId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否  |  网络ID，取值为0代表没有默认网络，其余有效取值必须大于等于100。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
 
 ### bindSocket<sup>9+</sup>
 
@@ -4917,8 +4917,8 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
-| netHandle            | [NetHandle](#nethandle)                             | 否 | 否   |网络句柄。|
-| connectionProperties | [ConnectionProperties](#connectionproperties)       | 否 | 否   |网络连接信息。           |
+| netHandle            | [NetHandle](#nethandle)                             | 否 | 否   |网络句柄。<br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 23|
+| connectionProperties | [ConnectionProperties](#connectionproperties)       | 否 | 否   |网络连接信息。<br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 23           |
 
 ## NetBlockStatusInfo<sup>11+</sup>
 
@@ -4934,8 +4934,8 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
-| netHandle            | [NetHandle](#nethandle)               | 否 | 否   |网络句柄。   |
-| blocked              | boolean                               | 否 | 否   | 标识当前网络是否是堵塞状态。true：标识当前网络是堵塞状态；false：标识当前网络不是堵塞状态。 |
+| netHandle            | [NetHandle](#nethandle)               | 否 | 否   |网络句柄。 <br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 23  |
+| blocked              | boolean                               | 否 | 否   | 标识当前网络是否是堵塞状态。true：标识当前网络是堵塞状态；false：标识当前网络不是堵塞状态。<br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 23 |
 
 ## ConnectionProperties
 
@@ -4967,7 +4967,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 | 名称           | 类型                        | 只读 | 可选|     说明      |
 | -------------- | ---------------|------------ | --- |-------------- |
 | interface      | string                      | 否 | 否 |网卡名称。<br> **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br> **ArkTS-Dyn起始版本：** 8|
-| iface      | string                      | 否 | 否 |网卡名称。<br> **ArkTS模式：** 该接口仅适用于ArkTS-Sta。 <br> **ArkTS-Sta起始版本：** 22|
+| iface      | string                      | 否 | 否 |网卡名称。<br> **ArkTS模式：** 该接口仅适用于ArkTS-Sta。 <br> **ArkTS-Sta起始版本：** 23|
 | destination    | [LinkAddress](#linkaddress) | 否 | 否 |目的地址。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|
 | gateway        | [NetAddress](#netaddress)   | 否 | 否 |网关地址。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|
 | hasGateway     | boolean                     | 否 | 否 |true：有网关；false：无网关。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|
