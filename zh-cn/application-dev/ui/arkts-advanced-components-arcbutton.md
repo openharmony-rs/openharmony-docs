@@ -310,11 +310,12 @@ ArkTS-Dyn示例：
 
 ``` JSON5
 "module": {
-  // ···
+  // ...
   "deviceTypes": [
+    "default",
     "wearable"
   ],
-  // ···
+  // ...
 }
 ```
 
