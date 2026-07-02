@@ -77,7 +77,6 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): long
 **示例：**
 
 ```ts
-<!--code_no_check-->
 import { AbilityConstant, Want } from '@kit.AbilityKit';
 import { DistributedExtensionAbility } from '@kit.DistributedServiceKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -93,12 +92,12 @@ const DOMAIN = 0xFF00;
 export default class DistributedExtAbility extends DistributedExtensionAbility {
 
 
-  onCreate(want: Want) {
+  onCreate (want:Want) {
     hilog.info(DOMAIN, TAG, 'onCreate');
     this.testConnectServiceExtensionAbility();
   }
 
-  onCollaborate(wantParam: Record<string, Object>) {
+  onCollaborate (wantParam: Record<string, Object>) {
     hilog.info(DOMAIN, TAG, 'onCollaborate');
     return AbilityConstant.CollaborateResult.ACCEPT;
   }
@@ -107,27 +106,24 @@ export default class DistributedExtAbility extends DistributedExtensionAbility {
     hilog.info(DOMAIN, TAG, 'onDestroy');
   }
 
-  connectId: number = -1;
+  connectId:number = -1;
   private testConnectServiceExtensionAbility() {
     hilog.info(DOMAIN, TAG, 'testConnectServiceExtensionAbility');
     let deviceId1: string = '';
     try {
-      // 创建设备管理器实例
       let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
       deviceId1 = dmInstance.getLocalDeviceId();
       const message: string = 'local device id: ' + deviceId1;
       hilog.info(DOMAIN, TAG, message);
-    } catch (e) {
-      let err: BusinessError = e as BusinessError;
-      console.error(`Failed to get local device ID. Code: ${err.code}, message: ${err.message}`);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error('getLocalDeviceId errCode:' + e.code + ',errMessage:' + e.message);
     }
-    // 构造连接远端ServiceExtensionAbility所需的Want参数
     const targetWant:Want = {
       deviceId: deviceId1,
       bundleName: 'com.example.test0002',
       abilityName: 'ServiceExtAbility',
     }
-    // 构造连接选项，包含连接成功、断开、失败的回调函数
     const options: common.ConnectOptions = {
       onConnect: (name: bundleManager.ElementName, remote: rpc.IRemoteObject): void => {
         const message: string = 'onConnect: ' + name;
@@ -143,14 +139,13 @@ export default class DistributedExtAbility extends DistributedExtensionAbility {
       }
     };
     try {
-      // 连接远端ServiceExtensionAbility，并获取连接ID
-      const id = this.context.connectServiceExtensionAbility(targetWant, options);
+      const id: number = this.context.connectServiceExtensionAbility(targetWant, options);
       this.connectId = id;
       const message: string = 'connect called, id=' + id;
       hilog.info(DOMAIN, TAG, message);
-    } catch (e) {
-      let err: BusinessError = e as BusinessError;
-      console.error(`Failed to connect service. Code: ${err.code}, message: ${err.message}`);
+    } catch (err) {
+      const message: string = 'connect error: ' + err;
+      hilog.info(DOMAIN, TAG, message);
     }
   }
 }
@@ -190,20 +185,23 @@ disconnectServiceExtensionAbility(connection: long): Promise\<void\>
 
 以下错误码的详细介绍请参见[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
-| 错误码ID | 错误信息 |
+| 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 16000003 | The connection id does not exist. |
-| 16000011 | The ability has been destroyed. The context is no longer valid. |
-| 16000050 | Internal error. |
+| 16000003 | The connection id does not exist.                            |
+| 16000011 | The ability has been destroyed. The context is no longer valid, meaning the context does not exist. |
+| 16000050 | Internal error.                                              |
 
 **示例：**
 
 ```ts
-<!--code_no_check-->
 import { AbilityConstant, Want } from '@kit.AbilityKit';
 import { DistributedExtensionAbility } from '@kit.DistributedServiceKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { common } from '@kit.AbilityKit';
+import { rpc } from '@kit.IPCKit';
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleManager } from '@kit.AbilityKit';
 
 
 const TAG = 'DistributedExtAbility';
@@ -212,11 +210,11 @@ const DOMAIN = 0xFF00;
 export default class DistributedExtAbility extends DistributedExtensionAbility {
 
 
-  onCreate() {
+  onCreate (want:Want) {
     hilog.info(DOMAIN, TAG, 'onCreate');
   }
 
-  onCollaborate(wantParam: Record<string, Object>) {
+  onCollaborate (wantParam: Record<string, Object>) {
     hilog.info(DOMAIN, TAG, 'onCollaborate');
     return AbilityConstant.CollaborateResult.ACCEPT;
   }
@@ -226,18 +224,11 @@ export default class DistributedExtAbility extends DistributedExtensionAbility {
     this.testDisconnectServiceExtensionAbility();
   }
 
-  connectId: number = -1; // 注意：在实际使用时，需先通过connectServiceExtensionAbility接口获取有效的连接ID，并等待onConnect回调确认连接成功后，才能调用disconnectServiceExtensionAbility断开连接
+  connectId:number = -1;
 
-  private async testDisconnectServiceExtensionAbility() {
+  private testDisconnectServiceExtensionAbility() {
     hilog.info(DOMAIN, TAG, 'testDisconnectServiceExtensionAbility');
-    try {
-      // 断开与远端ServiceExtensionAbility的连接
-      await this.context.disconnectServiceExtensionAbility(this.connectId);
-      hilog.info(DOMAIN, TAG, 'disconnect success');
-    } catch (e) {
-      let err: BusinessError = e as BusinessError;
-      hilog.error(DOMAIN, TAG, `disconnect errCode: ${err.code}, errMessage: ${err.message}`);
-    }
+    this.context.disconnectServiceExtensionAbility(this.connectId);
   }
 }
 ```
