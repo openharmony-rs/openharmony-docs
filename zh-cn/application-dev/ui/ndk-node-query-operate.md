@@ -269,21 +269,21 @@ const unsigned int VALUE_3 = 50;
 1. ArkTS侧接入Native组件。
 
    <!-- @[ndknodequeryoperate4_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/ets/pages/MoveTo.ets) -->  
-
+   
    ``` TypeScript
    // MoveTo.ets
    import nativeNode from 'libentry.so';
    import { NodeContent } from '@kit.ArkUI';
-
+   
    @Entry
    @Component
    struct MoveTo {
      private rootSlot = new NodeContent();
-
+   
      aboutToAppear(): void {
        nativeNode.createMoveToNode(this.rootSlot);
      }
-
+   
      build() {
        Scroll() {
          Column({ space: 15 }) {
