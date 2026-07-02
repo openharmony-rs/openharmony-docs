@@ -69,7 +69,7 @@
              */
             promptAction.showToast({ message: $r('app.string.Stop_dragging_prompt')  });
           })
-          .tag('longpress')
+          .tag('longPress')
       ))
       ```
 
@@ -111,7 +111,7 @@
            请将$r('app.string.Drag_instructions')替换为实际资源文件，在本示例中该资源文件的value值为"包括上下两层组件，上层组件绑定长按手势，
            下层组件绑定拖拽。其中上层组件下半区域绑定手势拦截，使该区域响应下层拖拽手势。"
             */
-           Text($r('app.string.Drag_instructions')).width('100%').fontSize(20).fontColor('0xffdd00')
+           Text($r('app.string.Drag_instructions')).width('100%').fontSize(20).fontColor('#ffdd00')
            Stack({ alignContent: Alignment.Center }) {
              Column() {
                // 模拟上半区和下半区
@@ -119,7 +119,7 @@
                Stack().width('200vp').height('100vp').backgroundColor(Color.Blue)
              }.width('200vp').height('200vp')
    
-             // Stack的下半区是绑定了滑动手势的图像区域。
+             // Stack的下半区是绑定了拖拽手势的图像区域。
              // $r('sys.media.ohos_app_icon') 需要替换为开发者所需的资源文件
              Image($r('sys.media.ohos_app_icon'))
                .draggable(true)
@@ -724,8 +724,8 @@
 @Entry
 @ComponentV2
 struct Index {
-  @Local progress: number = 496000; // 初始进度，秒
-  @Local total: number = 27490000; // 总时长，秒
+  @Local progress: number = 496000; // 初始进度，毫秒
+  @Local total: number = 27490000; // 总时长，毫秒
   @Local currentWidth: string = '100%';
   @Local currentHeight: string = '100%';
   @Local playbackProgress: string = '';

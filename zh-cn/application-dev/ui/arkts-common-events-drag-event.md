@@ -462,7 +462,7 @@ export struct DefaultDrag {
                 .height(this.imageHeight)
                 .draggable(true)
                 .margin({ left: 15 })
-                .border({ color: Color.Black, width: 1 })// 控制角标显示类型为MOVE，即不显示角标
+                .border({ color: Color.Black, width: 1 })// 控制角标显示类型为COPY，即显示加号角标
                 .onDragMove((event) => {
                   event.setResult(DragResult.DROP_ENABLED);
                   event.dragBehavior = DragBehavior.COPY;
@@ -1112,7 +1112,7 @@ struct GridEts {
   unifiedData: UnifiedData | undefined = undefined;
   timeout: number = 1;
   finished: boolean = false;
-  dragEvent: DragEvent | undefined;
+  dragEvent: DragEvent | undefined = undefined;
 
   @Styles
   normalStyles(): void{

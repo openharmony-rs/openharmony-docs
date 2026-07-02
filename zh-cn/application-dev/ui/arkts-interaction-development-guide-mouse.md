@@ -75,7 +75,7 @@ struct MouseMove {
     .justifyContent(FlexAlign.Center)
     .borderWidth(2)
     .borderColor(Color.Red)
-    .onMouse((event?: MouseEvent) => { // Set the onMouse callback for the column.
+    .onMouse((event?: MouseEvent) => { // 设置Column的onMouse回调
       if (event) {
         this.columnText = 'Column onMouse:\n' + '' +
           'button = ' + event.button + '\n' +
