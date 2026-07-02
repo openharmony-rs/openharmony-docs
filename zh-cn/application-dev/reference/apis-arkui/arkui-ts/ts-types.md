@@ -741,7 +741,7 @@ type Dimension = PX | VP | FP | LPX | Percentage | Resource
 | [VP](#vp10)                | 需要指定数字或vp像素单位，如10或'10vp'。 |
 | [FP](#fp10)                | 需要指定以fp像素单位，如'10fp'。|
 | [LPX](#lpx10)              | 需要指定以lpx像素单位，如'10lpx'。|
-| [Percentage](#percentage10)        | 需要指定以%像素单位，如'10%'。|
+| [Percentage](#percentage10)        | 需要指定以百分比单位，如'10%'。|
 | [Resource](#resource) | 资源引用类型，引入系统资源或者应用资源中的尺寸。|
 
 ## PX<sup>10+</sup>
@@ -818,7 +818,7 @@ type LPX = { number }lpx
 
 ## Percentage<sup>10+</sup>
 
-长度类型，用于描述以%像素单位为单位的长度。
+长度类型，用于描述以百分比单位为单位的长度。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -828,7 +828,7 @@ type LPX = { number }lpx
 
 | 类型                    | 说明                                     |
 | --------------------- | -------------------------------------- |
-| {number}%               | 需要指定以%像素单位，如'10%'。 |
+| {number}%               | 需要指定以百分比单位，如'10%'。 |
 
 ## Degree<sup>10+</sup>
 
@@ -1092,6 +1092,8 @@ type ResponsiveFillType = PresetFillType
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ------ | ---- | ---- | ---- |

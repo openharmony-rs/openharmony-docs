@@ -969,8 +969,6 @@ showInSubWindow(showInSubWindow:Optional\<boolean>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 在PC/2in1设备中可生效，在其他设备类型中不生效。
-
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明           |

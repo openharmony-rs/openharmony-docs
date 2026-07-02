@@ -524,3 +524,39 @@ A system error has occurred.
 **处理步骤**
 
 系统服务内部工作异常，请稍后重试或重启设备。
+
+## 19100023 指定的用户ID与当前用户ID不一致
+
+**错误信息**
+
+The specified userId is inconsistent with the current userId.
+
+**错误描述**
+
+指定的用户ID与当前用户ID不一致。
+
+**可能原因**
+
+指定的用户ID与当前用户ID不一致。
+
+**处理步骤**
+
+请确保传入的用户ID与当前用户ID一致。当前用户ID可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。
+
+## 19100024 个人空间用户不支持设置受控应用
+
+**错误信息**
+
+The specified userId belongs to a personal space user and cannot be managed.
+
+**错误描述**
+
+指定的用户ID属于个人空间用户，无法设置受控应用列表。
+
+**可能原因**
+
+指定的用户ID属于个人空间用户，无法设置受控应用列表。
+
+**处理步骤**
+
+请确保传入的用户ID不属于个人空间用户。

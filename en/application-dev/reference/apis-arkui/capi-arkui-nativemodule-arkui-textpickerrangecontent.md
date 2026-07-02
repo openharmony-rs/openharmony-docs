@@ -12,13 +12,13 @@ typedef struct {...} ARKUI_TextPickerRangeContent
 
 ## Overview
 
-Defines the image resource struct for the single-column text picker.
+Defines the option content supported by the single-column text picker, including text and image resources.
 
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [native_type.h](capi-native-type-h.md)
+**Header file**: [picker.h](capi-picker-h.md)
 
 ## Summary
 
@@ -26,5 +26,5 @@ Defines the image resource struct for the single-column text picker.
 
 | Name| Description|
 | -- | -- |
-| const char* icon | Image resource.|
-| const char* text | Text information.|
+| const char* icon | Pointer to the image resource.|
+| const char* text | Pointer to the text information.|

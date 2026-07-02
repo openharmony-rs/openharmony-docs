@@ -10,10 +10,11 @@
 
 若涉及网络文档获取，需在module.json5中配置网络访问权限。添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
-<!-- @[web_module_preview_pdf](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/module.json5) -->
+<!-- @[web_module_preview_pdf](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/module.json5) --> 
 
 ``` JSON5
 "requestPermissions":[
+  // ...
   {
     "name" : "ohos.permission.INTERNET"
   }
