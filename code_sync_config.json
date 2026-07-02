@@ -56629,6 +56629,11 @@
 						"end_line":322,
 						"name":"screenCapture_buffer_strategy_pickerPopUp",
 						"start_line":309
+					},
+					{
+						"end_line":372,
+						"name":"screenCapture_buffer_strategy_pickerPopUpFalse",
+						"start_line":359
 					}
 				]
 			}
