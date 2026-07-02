@@ -284,7 +284,7 @@ SQL语句中的函数，如下所示：
    } catch (err) {
      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
    }
-
+   
    // 子查询
    try {
      // 创建第二张表
