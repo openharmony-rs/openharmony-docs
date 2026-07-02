@@ -101,14 +101,16 @@
 4. 取消订阅操作手感知
 
    <!-- @[motion_unsubscribe_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
-
-   ```ts
+   
+   ``` TypeScript
    try {
-      motion.off('operatingHandChanged');
-      console.info("off succeeded");
+     motion.off('operatingHandChanged');
+     console.info('off succeeded');
+     // ...
    } catch (err) {
-      let error = err as BusinessError;
-      console.error("Failed off and err code is " + error.code);
+     let error = err as BusinessError;
+     console.error('Failed off and err code is ' + error.code);
+     // ...
    }
    ```
 
