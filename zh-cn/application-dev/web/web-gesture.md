@@ -101,7 +101,7 @@ Web组件提供了接口[zoomAccess](../reference/apis-arkweb/arkts-basic-compon
 
 **示例代码**
 
-<!-- @[ReturnLastWebPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/ReturnLastWebPage.ets) --> 
+<!-- @[ReturnLastWebPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/ReturnLastWebPage.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -126,7 +126,7 @@ struct Index {
         return true;
       }
     } catch (err) {
-      console.error(`copyUrlPicToDir failed with error: ${err.code}, ${err.message}`);
+      console.error(`onBackPress failed with error: ${err.code}, ${err.message}`);
     }
     // 执行系统默认返回逻辑，返回上一个页面
     return false;

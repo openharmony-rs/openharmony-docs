@@ -5,7 +5,8 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:40:39.518Z pushedAt=2026-06-25T06:57:31.069Z -->
 
 ## When to Use
 
@@ -50,7 +51,7 @@ const DOMAIN = 0x0000;
 struct Index {
   @State isPhysicalKeyboardExist: boolean = false;
   @State message: string = "Click to obtain the device list and monitor device hot-plug events";
-  keyBoards: Map<number, inputDevice.KeyboardType> = new Map();
+  keyboards: Map<number, inputDevice.KeyboardType> = new Map();
 
   // ...
 
@@ -69,7 +70,7 @@ struct Index {
                     if (type === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD) {
                       // The physical keyboard is connected.
                       this.isPhysicalKeyboardExist = true;
-                      this.keyBoards.set(data[i], type);
+                      this.keyboards.set(data[i], type);
                     }
                   });
                 }
@@ -82,14 +83,14 @@ struct Index {
                   if (type === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD && data.type === 'add') {
                     // The physical keyboard is inserted.
                     this.isPhysicalKeyboardExist = true;
-                    this.keyBoards.set(data.deviceId, type);
+                    this.keyboards.set(data.deviceId, type);
                   }
                 });
-                if (this.keyBoards.get(data.deviceId) === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD &&
+                if (this.keyboards.get(data.deviceId) === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD &&
                   data.type === 'remove') {
                   // The physical keyboard is removed.
                   this.isPhysicalKeyboardExist = false;
-                  this.keyBoards.delete(data.deviceId);
+                  this.keyboards.delete(data.deviceId);
                 }
               });
               this.message = "Device monitoring enabled successfully"

@@ -3307,7 +3307,7 @@ setDownloadMediaEntityStatus(single: MediaEntity): Promise&lt;void&gt;
 
 | 参数名 | 类型                                                         | 必填 | 说明       |
 | ------ | ------------------------------------------------------------ | ---- | ---------- |
-| single | [MediaEntity](arkts-apis-avMusicTemplate-i.md#mediaentity) | 是   | 媒体实体。 |
+| single | [MediaEntity](arkts-apis-avMusicTemplate-i.md#mediaentity) | 是   | 单曲。 |
 
 **返回值：**
 

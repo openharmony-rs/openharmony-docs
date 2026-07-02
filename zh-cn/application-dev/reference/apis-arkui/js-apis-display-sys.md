@@ -62,7 +62,7 @@ try {
   // 获取默认Display对象
   displayClass = display.getDefaultDisplaySync();
 
-  let ret: boolean = true;
+  let ret: boolean | undefined = undefined;
   try {
     // 查询默认屏幕上是否有隐私窗口
     ret = display.hasPrivateWindow(displayClass.id);
@@ -311,7 +311,7 @@ addVirtualScreenBlocklist(windowIds: Array\<number>): Promise\<void>
 | ------- | ----------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 801     | Capability not supported.Function addVirtualScreenBlocklist can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. Function addVirtualScreenBlocklist can not work correctly due to limited device capabilities. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**
@@ -444,12 +444,12 @@ let displayClass: display.Display | null = null;
 displayClass = display.getDefaultDisplaySync();
 // 查询是否包含沉浸式窗口
 displayClass.hasImmersiveWindow((err: BusinessError, data: boolean) => {
-    const errCode: number = err.code;
-    if (errCode) {
-      console.error(`Failed to check whether there is immersive window. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info(`Succeeded in checking whether there is immersive window. data: ${data}`);
+  const errCode: number = err.code;
+  if (errCode) {
+    console.error(`Failed to check whether there is immersive window. Code: ${err.code}, message: ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in checking whether there is immersive window. data: ${data}`);
 });
 ```
 ### hasImmersiveWindow<sup>11+</sup>

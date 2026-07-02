@@ -12,7 +12,7 @@ typedef struct ArkUI_Context* ArkUI_ContextHandle
 
 ## Overview
 
-Defines the pointer to the ArkUI native UI context.
+Defines a context instance object pointer of the ArkUI native UI.
 
 **Since**: 12
 

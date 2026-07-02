@@ -36,7 +36,7 @@
 | blue                 | \#0000ff | ![blue](figures/blue.png) |
 | blueviolet           | \#8a2be2 | ![blueviolet](figures/blueviolet.png) |
 | brown                | \#a52a2a | ![brown](figures/brown.png) |
-| burlywood            | \#deB887 | ![burlywood](figures/burlywood.png) |
+| burlywood            | \#deb887 | ![burlywood](figures/burlywood.png) |
 | cadetblue            | \#5f9ea0 | ![cadetblue](figures/cadetblue.png) |
 | chartreuse           | \#7fff00 | ![chartreuse](figures/chartreuse.png) |
 | chocolate            | \#d2691e | ![chocolate](figures/chocolate.png) |
@@ -122,6 +122,7 @@
 | midnightblue         | \#191970 | ![midnightblue](figures/midnightblue.png) |
 | mintcream            | \#f5fffa | ![mintcream](figures/mintcream.png) |
 | mistyrose            | \#ffe4e1 | ![mistyrose](figures/mistyrose.png) |
+| moccasin             | \#ffe4b5 | ![moccasin](figures/moccasin.png)
 | navajowhite          | \#ffdead | ![navajowhite](figures/navajowhite.png) |
 | navy                 | \#000080 | ![navy](figures/navy.png) |
 | oldlace              | \#fdf5e6 | ![oldlace](figures/oldlace.png) |

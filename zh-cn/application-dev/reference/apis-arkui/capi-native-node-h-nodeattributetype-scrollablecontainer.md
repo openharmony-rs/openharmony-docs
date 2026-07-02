@@ -60,7 +60,7 @@ NODE_SCROLL_BAR_WIDTH = 1002001
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].f32 | 滚动条宽度，单位vp，默认值4。<br>取值范围：设置为小于0的值时，按默认值处理。设置为0时，不显示滚动条。 |
+| .value[0].f32 | 滚动条宽度，单位vp，默认值4。<br>取值范围：设置为小于0的值时，按默认值处理，儿童智能表则恢复至默认值5vp。设置为0时，不显示滚动条。 |
 
 **返回：**
 
@@ -84,7 +84,7 @@ NODE_SCROLL_BAR_COLOR = 1002002
 
 | 参数项 | 描述 |
 | -- | -- |
-| .data[0].u32 | 滚动条颜色，0xargb类型。默认值：0x66182431。 |
+| .data[0].u32 | 滚动条颜色，0xargb类型。儿童智能表的默认值颜色：0xffffffff，表示白色（100%不透明度），其他设备默认值：0x66182431，表示深蓝灰色（40%不透明度）。 |
 
 **返回：**
 
@@ -564,7 +564,7 @@ NODE_SCROLL_BAR_MARGIN = 1002022
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].f32 | 设置滚动条起始边距，默认值为0，单位：vp。 |
+| .value[0].f32 | 设置滚动条起始边距，儿童智能表默认值为42，其他设备默认值为0，单位：vp。 |
 | .value[1].f32 | 设置滚动条末尾边距，默认值为0，单位：vp。 |
 
 **返回：**
@@ -758,13 +758,13 @@ NODE_LIST_DIRECTION = MAX_NODE_SCOPE_NUM * ARKUI_NODE_LIST = 1003000
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | List组件排列方向，数据类型[ArkUI_Axis](capi-native-type-h.md#arkui_axis)，默认值ARKUI_AXIS_VERTICAL。 |
+| .value[0].i32 | List组件排列方向，数据类型[ArkUI_Axis](capi-layout-h.md#arkui_axis)，默认值ARKUI_AXIS_VERTICAL。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | List组件排列方向，数据类型[ArkUI_Axis](capi-native-type-h.md#arkui_axis)。 |
+| .value[0].i32 | List组件排列方向，数据类型[ArkUI_Axis](capi-layout-h.md#arkui_axis)。 |
 
 ## NODE_LIST_STICKY
 
@@ -1586,13 +1586,13 @@ NODE_WATER_FLOW_LAYOUT_DIRECTION = MAX_NODE_SCOPE_NUM * ARKUI_NODE_WATER_FLOW = 
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 主轴方向，参数类型[ArkUI_FlexDirection](capi-native-type-h.md#arkui_flexdirection)。默认值[ARKUI_FLEX_DIRECTION_COLUMN](capi-native-type-h.md#arkui_flexdirection)。 |
+| .value[0].i32 | 主轴方向，参数类型[ArkUI_FlexDirection](capi-layout-h.md#arkui_flexdirection)。默认值[ARKUI_FLEX_DIRECTION_COLUMN](capi-layout-h.md#arkui_flexdirection)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 主轴方向，参数类型[ArkUI_FlexDirection](capi-native-type-h.md#arkui_flexdirection)。 |
+| .value[0].i32 | 主轴方向，参数类型[ArkUI_FlexDirection](capi-layout-h.md#arkui_flexdirection)。 |
 
 ## NODE_WATER_FLOW_COLUMN_TEMPLATE
 

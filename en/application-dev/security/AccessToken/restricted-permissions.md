@@ -652,6 +652,20 @@ Allows an application to set the sandbox type to dynamic sandbox.
 
 **Since**: 18
 
+## ohos.permission.atomicService.MANAGE_STORAGE
+
+Allows a mini game of the atomic service type to manage its storage space.
+
+<!--RP96--><!--RP96End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 20
+
 ## ohos.permission.MANAGE_SCREEN_TIME_GUARD
 
 Allows an application to call the screen time guard APIs to restrict screen usage, apply application access control, and control the screen usage time.
@@ -718,9 +732,11 @@ Allows an application to use the global floating ball.
 
 **Authorization mode**: system_grant
 
-**Supported devices**: phones | tablets
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 20
+
+**Changelog**: Since API version 26.0.0, this permission is also available on PCs/2-in-1 devices.
 
 ## ohos.permission.AUTO_RESTORE_MAIN_WINDOW
 
@@ -870,7 +886,7 @@ With this permission, the application can choose the target applications for sys
 
 **Authorization mode**: system_grant
 
-**Supported devices**: phones | PCs/2-in-1 devices | tablets
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
 
 **Since**: 21
 
@@ -1299,6 +1315,21 @@ Allows an application to install the PCIe driver.
 **Authorization mode**: system_grant
 
 **Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.0
+
+## ohos.permission.ACCESS_GAME_BUDDY_SERVICE
+
+Allows an application to access the game buddy service. 
+With this permission, the application can utilize the APIs provided by the game buddy service, such as capturing screenshots of running games and capturing user voice data via the microphone.
+
+<!--RP93--><!--RP93End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones
 
 **Since**: 26.0.0
 

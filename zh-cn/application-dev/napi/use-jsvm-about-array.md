@@ -50,33 +50,36 @@ JSVM-API 接口开发流程参考[使用 JSVM-API 实现 JS 与 C/C++ 语言交�
 
 cpp 部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_create_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/createarray/src/main/cpp/hello.cpp) -->  
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// CreateArray注册回调
-static int DIFF_VALUE_FIVE = 5;
+#include "hilog/log.h"
+
+// ...
+
+static int g_diffValueFive = 5;
 // OH_JSVM_CreateArray的样例方法
 static JSVM_Value CreateArray(JSVM_Env env, JSVM_CallbackInfo info)
 {
     // 创建一个空数组
     JSVM_Value array = nullptr;
     JSVM_Status status = OH_JSVM_CreateArray(env, &array);
+    // 对创建的数组进行赋值
+    for (int i = 0; i < g_diffValueFive; i++) {
+        JSVM_Value element;
+        OH_JSVM_CreateInt32(env, i, &element);
+        OH_JSVM_SetElement(env, array, i, element);
+    }
     if (status != JSVM_OK) {
         OH_LOG_ERROR(LOG_APP, "JSVM CreateArray fail");
-        return nullptr;
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM CreateArray success");
     }
-    // 对创建的数组进行赋值
-    for (int i = 0; i < DIFF_VALUE_FIVE; i++) {
-        JSVM_Value element;
-        JSVM_CALL(OH_JSVM_CreateInt32(env, i, &element));
-        JSVM_CALL(OH_JSVM_SetElement(env, array, i, element));
-    }
     return array;
 }
+// CreateArray注册回调
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = CreateArray},
 };
@@ -86,14 +89,13 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"createArray", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
   function testCreateArray() {
     return createArray();
   }
   testCreateArray();
 )JS";
 ```
-<!-- @[oh_jsvm_create_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/createarray/src/main/cpp/hello.cpp) -->
 
 预计的输出结果：
 ```txt
@@ -105,11 +107,15 @@ JSVM CreateArray success
 
 cpp 部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_create_array_with_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/createarraywithlength/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
+
 // OH_JSVM_CreateArrayWithLength的样例方法
 static JSVM_Value CreateArrayWithLength(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -119,7 +125,7 @@ static JSVM_Value CreateArrayWithLength(JSVM_Env env, JSVM_CallbackInfo info)
     // 解析传递的参数OH_JSVM_GetCbInfo
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
     // 获取传递的数组长度
-    int32_t length = 0;
+    int32_t length;
     OH_JSVM_GetValueInt32(env, argv[0], &length);
     // 使用OH_JSVM_CreateArrayWithLength创建传递固定长度的数组
     JSVM_Status status = OH_JSVM_CreateArrayWithLength(env, length, &result);
@@ -127,8 +133,8 @@ static JSVM_Value CreateArrayWithLength(JSVM_Env env, JSVM_CallbackInfo info)
         // 给创建的数组设置值
         for (int32_t i = 0; i < length; i++) {
             JSVM_Value value;
-            JSVM_CALL(OH_JSVM_CreateInt32(env, i, &value));
-            JSVM_CALL(OH_JSVM_SetElement(env, result, i, value));
+            OH_JSVM_CreateInt32(env, i, &value);
+            OH_JSVM_SetElement(env, result, i, value);
         }
         OH_LOG_INFO(LOG_APP, "JSVM CreateArrayWithLength success");
     } else {
@@ -146,15 +152,14 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"createArrayWithLength", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
 let num = 7;
-function testCreateArrayWithLength(num){
+function testCreateArrayWithLength(num) {
     return createArrayWithLength(num);
 }
 testCreateArrayWithLength(num);
 )JS";
 ```
-<!-- @[oh_jsvm_create_array_with_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/createarraywithlength/src/main/cpp/hello.cpp) -->
 
 预计的输出结果：
 ```txt
@@ -166,13 +171,17 @@ JSVM CreateArrayWithLength success
 
 cpp 部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_create_typedarray](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/createtypedarray/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
+
 // OH_JSVM_CreateTypedarray的样例方法
-static int DIFF_VALUE_THREE = 3;
+static int g_diffValueThree = 3;
 static JSVM_Value CreateTypedArray(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
@@ -215,7 +224,7 @@ static JSVM_Value CreateTypedArray(JSVM_Env env, JSVM_CallbackInfo info)
             elementSize = sizeof(int8_t);
             break;
     }
-    size_t length = DIFF_VALUE_THREE;
+    size_t length = g_diffValueThree;
     JSVM_Value arrayBuffer = nullptr;
     JSVM_Value typedArray = nullptr;
     void *data;
@@ -240,7 +249,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"createTypedArray", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
 const type = {
     INT8_ARRAY: 0,
     UINT8_ARRAY: 1,
@@ -258,7 +267,6 @@ createTypedArray(type.INT8_ARRAY);
 createTypedArray(type.INT32_ARRAY);
 )JS";
 ```
-<!-- @[oh_jsvm_create_typedarray](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/createtypedarray/src/main/cpp/hello.cpp) -->
 
 预计的输出结果：
 ```txt
@@ -271,9 +279,15 @@ JSVM CreateTypedArray success
 
 cpp 部分代码：
 
-```cpp
-static int DIFF_VALUE_FOUR = 4;
-static int DIFF_VALUE_TWELVE = 12;
+<!-- @[oh_jsvm_create_dataview](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/createdataview/src/main/cpp/hello.cpp) -->
+
+``` C++
+#include "napi/native_api.h"
+#include "ark_runtime/jsvm.h"
+#include "hilog/log.h"
+// ...
+
+
 // OH_JSVM_CreateDataview的样例方法
 static JSVM_Value CreateDataView(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -283,9 +297,9 @@ static JSVM_Value CreateDataView(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_Value arrayBuffer = nullptr;
     JSVM_Value result = nullptr;
     // DataView的字节长度
-    size_t byteLength = DIFF_VALUE_TWELVE;
+    size_t byteLength = g_diffValueFour;
     // 字节偏移量
-    size_t byteOffset = DIFF_VALUE_FOUR;
+    size_t byteOffset = g_diffValueTwelve;
     // 获取回调函数的参数信息
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     // 将参数转换为对象类型
@@ -294,12 +308,16 @@ static JSVM_Value CreateDataView(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_Status status = OH_JSVM_CreateDataview(env, byteLength, arrayBuffer, byteOffset, &result);
     // 获取DataView的指针和长度信息
     uint8_t *data = nullptr;
+    size_t length = 0;
     // 为DataView赋值
-    int32_t infoType = 0;
+    for (size_t i = 0; i < length; i++) {
+        data[i] = static_cast<uint8_t>(i + 1);
+    }
+    int32_t infoType;
     OH_JSVM_GetValueInt32(env, args[1], &infoType);
-    size_t returnLength = 0;
+    size_t returnLength;
     JSVM_Value returnArrayBuffer = nullptr;
-    size_t returnOffset = 0;
+    size_t returnOffset;
     enum InfoType { BYTE_LENGTH, ARRAY_BUFFER, BYTE_OFFSET };
     // 获取dataview信息
     OH_JSVM_GetDataviewInfo(env, result, &returnLength, (void **)&data, &returnArrayBuffer, &returnOffset);
@@ -307,7 +325,7 @@ static JSVM_Value CreateDataView(JSVM_Env env, JSVM_CallbackInfo info)
     switch (infoType) {
         case BYTE_LENGTH:
             JSVM_Value len;
-            JSVM_CALL(OH_JSVM_CreateInt32(env, returnLength, &len));
+            OH_JSVM_CreateInt32(env, returnLength, &len);
             returnResult = len;
             if (status != JSVM_OK) {
                 OH_LOG_ERROR(LOG_APP, "JSVM CreateDataView fail");
@@ -316,22 +334,20 @@ static JSVM_Value CreateDataView(JSVM_Env env, JSVM_CallbackInfo info)
             }
             break;
         case ARRAY_BUFFER:
-            {
-                bool isArraybuffer = false;
-                JSVM_CALL(OH_JSVM_IsArraybuffer(env, returnArrayBuffer, &isArraybuffer));
-                JSVM_Value isArray;
-                OH_JSVM_GetBoolean(env, isArraybuffer, &isArray);
-                returnResult = isArray;
-                if (status != JSVM_OK) {
-                    OH_LOG_ERROR(LOG_APP, "JSVM CreateDataView fail");
-                } else {
-                    OH_LOG_INFO(LOG_APP, "JSVM CreateDataView success, isArraybuffer: %{public}d", isArraybuffer);
-                }
-                break;
+            bool isArraybuffer;
+            OH_JSVM_IsArraybuffer(env, returnArrayBuffer, &isArraybuffer);
+            JSVM_Value isArray;
+            OH_JSVM_GetBoolean(env, isArraybuffer, &isArray);
+            returnResult = isArray;
+            if (status != JSVM_OK) {
+                OH_LOG_ERROR(LOG_APP, "JSVM CreateDataView fail");
+            } else {
+                OH_LOG_INFO(LOG_APP, "JSVM CreateDataView success, isArraybuffer: %{public}d", isArraybuffer);
             }
+            break;
         case BYTE_OFFSET:
             JSVM_Value offset;
-            JSVM_CALL(OH_JSVM_CreateInt32(env, returnOffset, &offset));
+            OH_JSVM_CreateInt32(env, returnOffset, &offset);
             returnResult = offset;
             if (status != JSVM_OK) {
                 OH_LOG_ERROR(LOG_APP, "JSVM CreateDataView fail");
@@ -354,7 +370,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"createDataView", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
  let BYTE_LENGTH = 0;
  createDataView(new ArrayBuffer(16), BYTE_LENGTH);
  let IS_ARRAYBUFFER = 1;
@@ -363,7 +379,6 @@ const char *srcCallNative = R"JS(
  createDataView(new ArrayBuffer(16), BYTE_OFFSET);
 )JS";
 ```
-<!-- @[oh_jsvm_create_dataview](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/createdataview/src/main/cpp/hello.cpp) -->
 
 预计的输出结果：
 ```txt
@@ -377,19 +392,22 @@ JSVM CreateDataView success, returnOffset: 4
 
 cpp 部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_get_array_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/getarraylength/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
+
 // OH_JSVM_GetArrayLength的样例方法
 static JSVM_Value GetArrayLength(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     JSVM_Value result = nullptr;
-    // 这里要对length进行初始化
-    uint32_t length = 0;
+    uint32_t length;
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     // 检查参数是否为数组
     bool isArray = false;
@@ -398,17 +416,10 @@ static JSVM_Value GetArrayLength(JSVM_Env env, JSVM_CallbackInfo info)
         OH_LOG_INFO(LOG_APP, "JSVM Argument must be an array");
         return nullptr;
     }
-    /*
-     * 当成功获取数组长度时，length会被赋值成实际JSArray的长度，接口返回JSVM_OK状态码；
-     * 当args[0]不是一个JSArray类型。例如，当args[0]是一个proxy对象时，无法获取长度。
-     * 此时，length维持原值不变，接口返回JSVM_ARRAY_EXPECTED状态码。
-     */
-    JSVM_Status status = OH_JSVM_GetArrayLength(env, args[0], &length);
-    if (status == JSVM_OK) {
-        // 创建返回值
-        JSVM_CALL(OH_JSVM_CreateInt32(env, length, &result));
-        OH_LOG_INFO(LOG_APP, "JSVM length: %{public}d", length);
-    }
+    OH_JSVM_GetArrayLength(env, args[0], &length);
+    // 创建返回值
+    OH_JSVM_CreateInt32(env, length, &result);
+    OH_LOG_INFO(LOG_APP, "JSVM length: %{public}d", length);
     return result;
 }
 // GetArrayLength注册回调
@@ -421,12 +432,11 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"getArrayLength", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
 let data = [0, 1, 2, 3, 4, 5];
 getArrayLength(data);
 )JS";
 ```
-<!-- @[oh_jsvm_get_array_length](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/getarraylength/src/main/cpp/hello.cpp) -->
 
 预计的输出结果：
 ```txt
@@ -438,11 +448,15 @@ JSVM length: 6
 
 cpp 部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_get_typedarray_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/gettypedarrayinfo/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
+
 // OH_JSVM_GetTypedarrayInfo的样例方法
 static JSVM_Value GetTypedArrayInfo(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -452,14 +466,14 @@ static JSVM_Value GetTypedArrayInfo(JSVM_Env env, JSVM_CallbackInfo info)
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
 
     // 将第二个参数转为int32类型便于比较
-    int32_t infoTypeParam = 0;
+    int32_t infoTypeParam;
     OH_JSVM_GetValueInt32(env, args[1], &infoTypeParam);
     // 定义枚举类型与ArkTS侧枚举类型infoType顺序含义一致
     enum InfoType { INFO_TYPE, INFO_LENGTH, INFO_ARRAY_BUFFER, INFO_BYTE_OFFSET };
     void *data;
     JSVM_TypedarrayType type;
-    size_t byteOffset = 0;
-    size_t length = 0;
+    size_t byteOffset;
+    size_t length;
     JSVM_Value arrayBuffer = nullptr;
     // 调用接口OH_JSVM_GetTypedarrayInfo获得TypedArray类型数据的信息
     JSVM_Status status = OH_JSVM_GetTypedarrayInfo(env, args[0], &type, &length, &data, &arrayBuffer, &byteOffset);
@@ -481,7 +495,7 @@ static JSVM_Value GetTypedArrayInfo(JSVM_Env env, JSVM_CallbackInfo info)
         case INFO_LENGTH:
             // TypedArray中的元素数
             JSVM_Value jsvmLength;
-            JSVM_CALL(OH_JSVM_CreateInt32(env, length, &jsvmLength));
+            OH_JSVM_CreateInt32(env, length, &jsvmLength);
             result = jsvmLength;
             if (status != JSVM_OK) {
                 OH_LOG_ERROR(LOG_APP, "JSVM GetTypedArrayInfo fail");
@@ -492,7 +506,7 @@ static JSVM_Value GetTypedArrayInfo(JSVM_Env env, JSVM_CallbackInfo info)
         case INFO_BYTE_OFFSET:
             // TypedArray数组的第一个元素所在的基础原生数组中的字节偏移量
             JSVM_Value jsvmOffset;
-            JSVM_CALL(OH_JSVM_CreateInt32(env, byteOffset, &jsvmOffset));
+            OH_JSVM_CreateInt32(env, byteOffset, &jsvmOffset);
             result = jsvmOffset;
             if (status != JSVM_OK) {
                 OH_LOG_ERROR(LOG_APP, "JSVM GetTypedArrayInfo fail");
@@ -501,20 +515,18 @@ static JSVM_Value GetTypedArrayInfo(JSVM_Env env, JSVM_CallbackInfo info)
             }
             break;
         case INFO_ARRAY_BUFFER:
-            {
-                // TypedArray下的ArrayBuffer
-                bool isArrayBuffer = false;
-                JSVM_CALL(OH_JSVM_IsArraybuffer(env, arrayBuffer, &isArrayBuffer));
-                JSVM_Value isArray;
-                OH_JSVM_GetBoolean(env, isArrayBuffer, &isArray);
-                result = isArray;
-                if (status != JSVM_OK) {
-                    OH_LOG_ERROR(LOG_APP, "JSVM GetTypedArrayInfo fail");
-                } else {
-                    OH_LOG_INFO(LOG_APP, "JSVM GetTypedArrayInfo success, isArrayBuffer: %{public}d", isArrayBuffer);
-                }
-                break;
+            // TypedArray下的ArrayBuffer
+            bool isArrayBuffer;
+            OH_JSVM_IsArraybuffer(env, arrayBuffer, &isArrayBuffer);
+            JSVM_Value isArray;
+            OH_JSVM_GetBoolean(env, isArrayBuffer, &isArray);
+            result = isArray;
+            if (status != JSVM_OK) {
+                OH_LOG_ERROR(LOG_APP, "JSVM GetTypedArrayInfo fail");
+            } else {
+                OH_LOG_INFO(LOG_APP, "JSVM GetTypedArrayInfo success, isArrayBuffer: %{public}d", isArrayBuffer);
             }
+            break;
         default:
             break;
     }
@@ -530,7 +542,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"getTypedArrayInfo", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
 // is JSVM_INT8_ARRAY
 getTypedArrayInfo(new Int8Array(3), 0);
 // length
@@ -541,7 +553,6 @@ getTypedArrayInfo(new Int8Array(5), 2);
 getTypedArrayInfo(new Int8Array(1), 3);
 )JS";
 ```
-<!-- @[oh_jsvm_get_typedarray_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/gettypedarrayinfo/src/main/cpp/hello.cpp) -->
 
 预计的输出结果：
 ```txt
@@ -556,11 +567,15 @@ JSVM GetTypedArrayInfo success, byteOffset: 0
 
 cpp 部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_get_dataview_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/getdataviewinfo/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
+
 // OH_JSVM_GetDataviewInfo的样例方法
 static JSVM_Value GetDataViewInfo(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -569,14 +584,14 @@ static JSVM_Value GetDataViewInfo(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_Value args[2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     // 将第二个参数转为int32类型的数字
-    int32_t infoType = 0;
+    int32_t infoType;
     OH_JSVM_GetValueInt32(env, args[1], &infoType);
-    size_t byteLength = 0;
+    size_t byteLength;
     void *data;
     JSVM_Value arrayBuffer = nullptr;
-    size_t byteOffset = 0;
+    size_t byteOffset;
     // 定义枚举类型与ArkTS侧枚举类型infoType顺序含义一致
-    enum infoTypeEnum { BYTE_LENGTH, ARRAY_BUFFER, BYTE_OFFSET };
+    enum InfoTypeEnum { BYTE_LENGTH, ARRAY_BUFFER, BYTE_OFFSET };
     // 获取dataview信息
     JSVM_Status status = OH_JSVM_GetDataviewInfo(env, args[0], &byteLength, &data, &arrayBuffer, &byteOffset);
     JSVM_Value result = nullptr;
@@ -584,7 +599,7 @@ static JSVM_Value GetDataViewInfo(JSVM_Env env, JSVM_CallbackInfo info)
         case BYTE_LENGTH:
             // 返回查询DataView的长度
             JSVM_Value len;
-            JSVM_CALL(OH_JSVM_CreateInt32(env, byteLength, &len));
+            OH_JSVM_CreateInt32(env, byteLength, &len);
             result = len;
             if (status != JSVM_OK) {
                 OH_LOG_ERROR(LOG_APP, "JSVM GetDataViewInfo fail");
@@ -593,24 +608,22 @@ static JSVM_Value GetDataViewInfo(JSVM_Env env, JSVM_CallbackInfo info)
             }
             break;
         case ARRAY_BUFFER:
-            {
-                // 判断DataView的Info里的arraybuffer是否为arraybuffer
-                bool isArrayBuffer = false;
-                JSVM_CALL(OH_JSVM_IsArraybuffer(env, arrayBuffer, &isArrayBuffer));
-                JSVM_Value isArray;
-                OH_JSVM_GetBoolean(env, isArrayBuffer, &isArray);
-                result = isArray;
-                if (status != JSVM_OK) {
-                    OH_LOG_ERROR(LOG_APP, "JSVM GetDataViewInfo fail");
-                } else {
-                    OH_LOG_INFO(LOG_APP, "JSVM GetDataViewInfo success, isArrayBuffer: %{public}d", isArrayBuffer);
-                }
-                break;
+            // 判断DataView的Info里的arraybuffer是否为arraybuffer
+            bool isArrayBuffer;
+            OH_JSVM_IsArraybuffer(env, arrayBuffer, &isArrayBuffer);
+            JSVM_Value isArray;
+            OH_JSVM_GetBoolean(env, isArrayBuffer, &isArray);
+            result = isArray;
+            if (status != JSVM_OK) {
+                OH_LOG_ERROR(LOG_APP, "JSVM GetDataViewInfo fail");
+            } else {
+                OH_LOG_INFO(LOG_APP, "JSVM GetDataViewInfo success, isArrayBuffer: %{public}d", isArrayBuffer);
             }
+            break;
         case BYTE_OFFSET:
             // 返回查询DataView的偏移量
             JSVM_Value offset;
-            JSVM_CALL(OH_JSVM_CreateInt32(env, byteOffset, &offset));
+            OH_JSVM_CreateInt32(env, byteOffset, &offset);
             result = offset;
             if (status != JSVM_OK) {
                 OH_LOG_ERROR(LOG_APP, "JSVM GetDataViewInfo fail");
@@ -633,24 +646,23 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"getDataViewInfo", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
 // bytelength
-getDataViewInfo(new DataView(new Int8Array([2,5]).buffer), 0);
+getDataViewInfo(new DataView(new Int8Array([2, 5]).buffer), 0);
 // is arraybuffer
 let data = 'a';
 let isarraybuffer = 1;
 getDataViewInfo(data, isarraybuffer);
 // is arraybuffer
-data = new DataView(new Int8Array([2,5,3]).buffer);
+data = new DataView(new Int8Array([2, 5, 3]).buffer);
 isarraybuffer = 1;
 getDataViewInfo(data, isarraybuffer);
 // byte_offset
-data = new DataView(new Int8Array([2,5,3]).buffer);
+data = new DataView(new Int8Array([2, 5, 3]).buffer);
 isarraybuffer = 2;
 getDataViewInfo(data, isarraybuffer);
 )JS";
 ```
-<!-- @[oh_jsvm_get_dataview_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/getdataviewinfo/src/main/cpp/hello.cpp) -->
 
 预计的输出结果：
 ```txt
@@ -665,11 +677,15 @@ JSVM GetDataViewInfo success, byteOffset: 0
 
 cpp 部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_is_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/isarray/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
+
 // OH_JSVM_IsArray的样例方法
 static JSVM_Value IsArray(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -679,7 +695,7 @@ static JSVM_Value IsArray(JSVM_Env env, JSVM_CallbackInfo info)
     bool result = false;
     JSVM_Status status = OH_JSVM_IsArray(env, args[0], &result);
     JSVM_Value returnValue = nullptr;
-    JSVM_CALL(OH_JSVM_GetBoolean(env, result, &returnValue));
+    OH_JSVM_GetBoolean(env, result, &returnValue);
     if (status != JSVM_OK) {
         OH_LOG_ERROR(LOG_APP, "JSVM IsArray fail");
     } else {
@@ -702,7 +718,6 @@ let data = [1, 2, 3, 4, 5];
 isArray(data);
 )JS";
 ```
-<!-- @[oh_jsvm_is_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/isarray/src/main/cpp/hello.cpp) -->
 
 预计的输出结果：
 ```txt
@@ -714,16 +729,20 @@ JSVM IsArray success, IsArray: 1
 
 cpp 部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_set_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/setelement/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
+
 // OH_JSVM_SetElement的样例方法
-static int DIFF_VALUE_THREE = 3;
+static int g_diffValueThree = 3;
 static JSVM_Value SetElement(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    size_t argc = DIFF_VALUE_THREE;
+    size_t argc = g_diffValueThree;
     JSVM_Value args[3] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     int32_t index = 0;
@@ -746,12 +765,10 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"setElement", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char *srcCallNative = R"JS(
-let data = [1, 2, 3, 4, 5];
-setElement(data, 3, undefined);
+const char *SRC_CALL_NATIVE = R"JS(
+setElement(3);
 )JS";
 ```
-<!-- @[oh_jsvm_set_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/setelement/src/main/cpp/hello.cpp) -->
 
 预计的输出结果：
 ```txt
@@ -763,19 +780,24 @@ JSVM SetElement success
 
 cpp 部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_get_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/getelement/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
+
 // OH_JSVM_GetElement的样例方法
-static JSVM_Value GetElement(JSVM_Env env, JSVM_CallbackInfo info) {
+static JSVM_Value GetElement(JSVM_Env env, JSVM_CallbackInfo info)
+{
     // 获取js侧传入的两个参数
     size_t argc = 2;
     JSVM_Value args[2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     // 获取请求元素的索引值
-    uint32_t index = 0;
+    uint32_t index;
     OH_JSVM_GetValueUint32(env, args[1], &index);
     // 获取请求索引位置的元素值并存储在result中
     JSVM_Value result = nullptr;
@@ -797,12 +819,11 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"getElement", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
 let arr = [10, 'hello', null, true];
 getElement(arr, 3);
 )JS";
 ```
-<!-- @[oh_jsvm_get_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/getelement/src/main/cpp/hello.cpp) -->
 
 预计的输出结果：
 ```txt
@@ -814,29 +835,33 @@ JSVM GetElement success
 
 cpp 部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_has_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/haselement/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 // OH_JSVM_HasElement的样例方法
-static JSVM_Value HasElement(JSVM_Env env, JSVM_CallbackInfo info) {
+static JSVM_Value HasElement(JSVM_Env env, JSVM_CallbackInfo info)
+{
     // 获取js侧传入的两个参数
     size_t argc = 2;
     JSVM_Value args[2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     // 获取要判断的元素的索引
-    uint32_t index = 0;
+    uint32_t index;
     OH_JSVM_GetValueUint32(env, args[1], &index);
     // 判断指定索引位置的元素是否存在
     bool hasElement = true;
     JSVM_Status status = OH_JSVM_HasElement(env, args[0], index, &hasElement);
     // 将boolean结果转换为JSVM_Value并返回
     JSVM_Value result = nullptr;
+    OH_JSVM_GetBoolean(env, hasElement, &result);
     if (status != JSVM_OK) {
         OH_LOG_ERROR(LOG_APP, "JSVM hasElement fail");
     } else {
-        OH_JSVM_GetBoolean(env, hasElement, &result);
         OH_LOG_INFO(LOG_APP, "JSVM hasElement: %{public}d", hasElement);
     }
     return result;
@@ -857,7 +882,6 @@ hasElement(arr, 0);
 hasElement(arr, 4);
 )JS";
 ```
-<!-- @[oh_jsvm_has_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/haselement/src/main/cpp/hello.cpp) -->
 
 预计的输出结果：
 ```txt
@@ -870,29 +894,34 @@ JSVM hasElement: 0
 
 cpp 部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_delete_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/deleteelement/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
+
 // OH_JSVM_DeleteElement的样例方法
-static JSVM_Value DeleteElement(JSVM_Env env, JSVM_CallbackInfo info) {
+static JSVM_Value DeleteElement(JSVM_Env env, JSVM_CallbackInfo info)
+{
     // 获取js侧传入的两个参数
     size_t argc = 2;
     JSVM_Value args[2] = {nullptr};
-    JSVM_CALL(OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr));
+    OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     // 获取要删除的元素的索引
-    uint32_t index = 0;
-    JSVM_CALL(OH_JSVM_GetValueUint32(env, args[1], &index));
+    uint32_t index;
+    OH_JSVM_GetValueUint32(env, args[1], &index);
     // 尝试删除请求索引位置的元素
     bool deleted = true;
     JSVM_Status status = OH_JSVM_DeleteElement(env, args[0], index, &deleted);
     // 将boolean结果转换为JSVM_Value并返回
     JSVM_Value result = nullptr;
+    OH_JSVM_GetBoolean(env, deleted, &result);
     if (status != JSVM_OK) {
         OH_LOG_ERROR(LOG_APP, "JSVM DeleteElement fail");
     } else {
-        OH_JSVM_GetBoolean(env, deleted, &result);
         OH_LOG_INFO(LOG_APP, "JSVM DeleteElement: %{public}d", deleted);
     }
     return result;
@@ -907,12 +936,11 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"deleteElement", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // 样例测试js
-const char *srcCallNative = R"JS(
+const char *SRC_CALL_NATIVE = R"JS(
 let arr = [10, 'hello', null, true];
 deleteElement(arr, 0);
 )JS";
 ```
-<!-- @[oh_jsvm_delete_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/deleteelement/src/main/cpp/hello.cpp) -->
 
 预计的输出结果：
 ```txt
@@ -924,27 +952,32 @@ JSVM DeleteElement: 1
 
 cpp 部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_is_dataview](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/isdataview/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
+
 // OH_JSVM_IsDataview的样例方法
-static JSVM_Value IsDataView(JSVM_Env env, JSVM_CallbackInfo info) {
+static JSVM_Value IsDataView(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
     // 调用OH_JSVM_IsDataview接口判断给定入参是否为DataView数据。
     bool result = false;
     JSVM_Status status = OH_JSVM_IsDataview(env, args[0], &result);
-    JSVM_Value isDataView = nullptr;
-    OH_JSVM_GetBoolean(env, result, &isDataView);
+    JSVM_Value isDateView = nullptr;
+    OH_JSVM_GetBoolean(env, result, &isDateView);
     if (status != JSVM_OK) {
         OH_LOG_ERROR(LOG_APP, "JSVM IsDataView fail");
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM IsDataView: %{public}d", result);
     }
-    return isDataView;
+    return isDateView;
 }
 // IsDataView注册回调
 static JSVM_CallbackStruct param[] = {
@@ -962,7 +995,6 @@ let dataView = new DataView(buffer);
 isDataView(dataView);
 )JS";
 ```
-<!-- @[oh_jsvm_is_dataview](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/isdataview/src/main/cpp/hello.cpp) -->
 
 预计的输出结果：
 ```txt
@@ -974,13 +1006,18 @@ JSVM IsDataView: 1
 
 cpp 部分代码：
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_is_typedarray](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/istypedarray/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
+
 // OH_JSVM_IsTypedarray的样例方法
-static JSVM_Value IsTypedarray(JSVM_Env env, JSVM_CallbackInfo info) {
+static JSVM_Value IsTypedarray(JSVM_Env env, JSVM_CallbackInfo info)
+{
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -1009,7 +1046,6 @@ const char *srcCallNative = R"JS(
 isTypedarray(new Uint16Array([1, 2, 3, 4]));
 )JS";
 ```
-<!-- @[oh_jsvm_is_typedarray](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArray/istypedarray/src/main/cpp/hello.cpp) -->
 
 预计的输出结果：
 ```txt

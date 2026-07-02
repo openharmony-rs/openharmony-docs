@@ -433,7 +433,7 @@ export class ListDataSource implements IDataSource {
 }
 ```
 
-<!-- @[mouse_wheel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseWheel/MouseWheel.ets) -->
+<!-- @[mouse_wheel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseWheel/MouseWheel.ets) --> 
 
 ``` TypeScript
 import { ListDataSource } from './ListDataSource';
@@ -450,9 +450,9 @@ struct MouseWheel {
         .margin(20)
         .onClick(() => {
           if (this.dir1 === Axis.Vertical) {
-            this.dir1 = Axis.Horizontal
+            this.dir1 = Axis.Horizontal;
           } else {
-            this.dir1 = Axis.Vertical
+            this.dir1 = Axis.Vertical;
           }
         })
       List({ space: 20, initialIndex: 0 }) {

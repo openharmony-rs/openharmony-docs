@@ -6,13 +6,13 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-该模块提供画中画基础功能，包括判断当前系统是否支持画中画功能，以及创建画中画控制器用于启动或停止画中画等。适用于视频播放、视频通话或视频会议场景下，以小窗（画中画）模式呈现内容。
+该模块提供画中画基础功能，包括判断当前系统是否支持画中画功能，以及创建画中画控制器用于启动或停止画中画等。支持用户在进行其他操作时以小窗形式继续观看视频内容，提升多任务处理效率。适用于视频播放、视频通话、视频会议或车载影像场景下，以小窗（画中画）模式呈现内容。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> - 在<!--RP2-->OpenHarmony 6.0<!--RP2End-->之前，支持在Phone、Tablet设备使用画中画功能，其他设备不可用；从<!--RP2-->OpenHarmony 6.0<!--RP2End-->开始，支持在Phone、PC/2in1、Tablet设备使用画中画功能，其他设备不可用。
+> - 在<!--RP2-->OpenHarmony 6.0<!--RP2End-->之前，支持在Phone、Tablet设备使用画中画功能，其他设备不可用；从<!--RP2-->OpenHarmony 6.0<!--RP2End-->开始，支持在Phone、PC/2in1、Tablet设备使用画中画功能，其他设备不可用；从OpenHarmony 7.0.0开始，支持在Phone、PC/2in1、Tablet、Car设备使用画中画功能，其他设备不可用。
 >
 > - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canIUse()](../common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。
 >
@@ -23,6 +23,19 @@
 ```ts
 import { PiPWindow } from '@kit.ArkUI';
 ```
+
+
+## PiPTemplateType
+
+画中画模板类型枚举。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称            | 值   | 说明                                   |
+|---------------|-----|--------------------------------------|
+| VIDEO_DRIVE   | 4   | 表示将要切换为画中画播放的媒体类型是车载影像，系统依此加载车载影像模板。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0 开始，该接口支持在原子化服务中使用。<br> **设备行为差异：** 该模板类型在Car设备中正常调用，在其他设备中返回801错误码。|
 
 ## PiPController
 
@@ -36,7 +49,7 @@ import { PiPWindow } from '@kit.ArkUI';
 
 isPiPSupported(): boolean
 
-判断当前设备是否支持画中画功能。
+判断当前设备是否支持画中画功能。在启动画中画前，建议先调用此方法判断设备是否支持画中画功能，以避免在不支持的设备上调用画中画相关接口导致功能异常。
 
 **系统接口：** 此接口为系统接口。
 
@@ -66,9 +79,11 @@ try {
   if (!this.pipController) {
     return;
   }
+  // pipController需通过PiPWindow.create()方法获取
+  // 判断当前设备是否支持画中画功能
   let isSupported: boolean = this.pipController!.isPiPSupported();
-  console.info('isPiPSupported:' + isSupported);
+  console.info('isPiPSupported: ' + isSupported);
 } catch (exception) {
-  console.error(`Failed to check if pip is supported. Cause code: ${exception.code}, message: ${exception.message}`);
+  console.error(`Failed to check if pip is supported. Code: ${exception.code}, message: ${exception.message}`);
 }
 ```

@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:49:16.459Z pushedAt=2026-06-26T03:00:41.269Z -->
 
 ## Overview
 
@@ -198,7 +199,7 @@ Boolean value indicating whether host name–based plaintext HTTP is allowed.
 | -- | -- |
 | int32_t | **0**: Success.<br>         **201**: Permission denied.<br>         **401**: Parameter error.|
 
-### OH_Netstack_IsCleartextCfgByComponent
+### OH_Netstack_IsCleartextCfgByComponent()
 
 ```c
 int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *componentCfg);

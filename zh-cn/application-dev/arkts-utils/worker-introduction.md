@@ -158,7 +158,7 @@ const workerInstance4: worker.ThreadWorker = new worker.ThreadWorker('../../work
 
 3. 在entry模块的oh-package.json5文件中配置HAR包的依赖。
 
-   <!-- @[config_har_dependency](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/oh-package.json5) -->
+   <!-- @[config_har_dependency](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/WorkerIntroduction/entry/oh-package.json5) --> 
    
    ``` JSON5
    {
@@ -169,6 +169,7 @@ const workerInstance4: worker.ThreadWorker = new worker.ThreadWorker('../../work
      "author": "",
      "license": "",
      "dependencies": {
+       // ...
        "har": "file:../har"
      }
    }

@@ -63,6 +63,8 @@ pick(): Promise&lt;PickInfo&gt;
 
 获取屏幕截图，当前仅支持获取displayId为0的屏幕截图（如果需要对扩展屏截图，可以通过[capture](#screenshotcapture14)接口实现），使用Promise异步回调。
 
+返回的PickInfo中的PixelMap对象需要手动释放，使用完毕后必须调用[release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7)方法释放内存，否则可能导致内存泄漏。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -72,8 +74,6 @@ pick(): Promise&lt;PickInfo&gt;
 **接口对比：** [pick](#screenshotpick)接口支持区域截屏，仅支持主屏幕（displayId为0），无需权限；[capture](#screenshotcapture14)接口支持全屏截屏，支持主屏幕和扩展屏（通过displayId参数指定），需要权限。
 
 **选取建议：** 需要区域截屏时使用[pick](#screenshotpick)接口；需要全屏截屏或扩展屏截屏时使用[capture](#screenshotcapture14)接口。
-
-**资源管理：** 返回的PickInfo中的PixelMap对象需要手动释放，使用完毕后必须调用[release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7)方法释放内存，否则可能导致内存泄漏。
 
 **返回值：**
 
@@ -118,6 +118,8 @@ capture(options?: CaptureOption): Promise&lt;image.PixelMap&gt;
 
 此接口可以通过设置不同的displayId截取不同屏幕的截图，且只能截取全屏；[pick](#screenshotpick)接口可实现区域截屏。
 
+返回的PixelMap对象需要手动释放，使用完毕后必须调用[release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7)方法释放内存，否则可能导致内存泄漏。
+
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
@@ -127,8 +129,6 @@ capture(options?: CaptureOption): Promise&lt;image.PixelMap&gt;
 **需要权限：** 
 - API版本22+：ohos.permission.CUSTOM_SCREEN_CAPTURE或ohos.permission.CUSTOM_SCREEN_RECORDING
 - API版本14-21：ohos.permission.CUSTOM_SCREEN_CAPTURE
-
-**资源管理：** 返回的PixelMap对象需要手动释放，使用完毕后必须调用[release()](../apis-image-kit/arkts-apis-image-PixelMap.md#release7)方法释放内存，否则可能导致内存泄漏。
 
 **参数：**
 
@@ -167,7 +167,7 @@ try {
   // 调用capture接口获取全屏截图
   let promise = screenshot.capture(captureOption);
   promise.then((pixelMap: image.PixelMap) => {
-    console.info('Succeeded in saving screenshot. Pixel bytes number: ' + pixelMap.getPixelBytesNumber());
+    console.info(`Succeeded in saving screenshot. Pixel bytes number: ${pixelMap.getPixelBytesNumber()}`);
     pixelMap.release(); // PixelMap使用完后及时释放内存
   }).catch((err: BusinessError) => {
     console.error(`Failed to save screenshot. Code: ${err.code}, message: ${err.message}`);

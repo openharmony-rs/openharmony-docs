@@ -292,7 +292,7 @@ async function testAgree() {
 <!-- -->
 
 ### DH密钥协商用例
-<!-- @[key_agreement_dh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyExchange/entry/src/main/ets/pages/DH.ets) -->
+<!-- @[key_agreement_dh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyExchange/entry/src/main/ets/pages/DH.ets) -->  
 
 ``` TypeScript
 
@@ -509,13 +509,13 @@ async function huksDhAgreeInHuks(keyAlias: string, peerPubKey: Uint8Array,
     properties: [...dhAgree, ...onlyUsedInHuks],
     inData: peerPubKey
   };
-  await huks.updateSession(handle, dhAgreeUpdatePubKey);
-  const dhAgreeAliceFinnish: huks.HuksOptions = {
+  await updateSession(handle, dhAgreeUpdatePubKey);
+  const dhAgreeAliceFinish: huks.HuksOptions = {
     properties: [...dhAgreeFinishParams, {
       tag: huks.HuksTag.HUKS_TAG_KEY_ALIAS, value: stringToUint8Array(aliasAgreedKey)
     }], inData: new Uint8Array([])
   };
-  await finishSession(handle, dhAgreeAliceFinnish);
+  await finishSession(handle, dhAgreeAliceFinish);
 }
 
 async function huksDhAgreeInHuksTest(
@@ -524,11 +524,11 @@ async function huksDhAgreeInHuksTest(
   aliasAgreedKeyFromA: string, aliasAgreedKeyFromB: string) {
 
   await huksDhAgreeInHuks(aliasA, pubKeyB, aliasAgreedKeyFromA);
-  const aliceAgreedExist = await huks.isKeyItemExist(aliasAgreedKeyFromA, emptyOptions);
+  const aliceAgreedExist = await isKeyItemExist(aliasAgreedKeyFromA, emptyOptions);
   console.info(`ok! aliceAgreedExist in huks is ${aliceAgreedExist}`);
 
   await huksDhAgreeInHuks(aliasB, pubKeyA, aliasAgreedKeyFromB);
-  const bobAgreedExist = await huks.isKeyItemExist(aliasAgreedKeyFromB, emptyOptions);
+  const bobAgreedExist = await isKeyItemExist(aliasAgreedKeyFromB, emptyOptions);
   console.info(`ok! bobAgreedExist in huks is ${bobAgreedExist}`);
 
   await deleteKeyItem(aliasAgreedKeyFromA, emptyOptions);

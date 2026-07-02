@@ -1,5 +1,4 @@
 # @ohos.advertising.AdsServiceExtensionAbility (广告扩展服务)
-
 <!--Kit: Ads Kit-->
 <!--Subsystem: Advertising-->
 <!--Owner: @SukiEvas-->
@@ -29,13 +28,13 @@ import { RespCallback } from '@kit.AdsKit';
 
 广告请求回调。
 
-**系统能力：** SystemCapability.Advertising.Ads
+**系统能力：**  SystemCapability.Advertising.Ads
 
 **参数：**
 
 | **参数名** | **类型** | 必填 | 说明 | 
 | -------- | -------- | -------- | -------- |
-| respData | Map&lt;string, Array&lt;advertising.[Advertisement](js-apis-advertising.md#advertisement)&gt;&gt; | 是   | 广告请求回调数据，是以广告位ID为键，存储请求到的广告内容的映射集合。 |
+| respData | Map&lt;string, Array&lt;advertising.[Advertisement](js-apis-advertisement.md#advertisement)&gt;&gt; | 是 | 广告请求回调数据，是以广告位ID为键，存储请求到的广告内容的映射集合。 | 
 
 **示例：**
 

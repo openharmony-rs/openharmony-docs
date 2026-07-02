@@ -5793,6 +5793,20 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.CLI_MANAGE_WEB_SANDBOX
+
+允许系统应用管理浏览器沙箱分身应用。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
 ## ohos.permission.EXEMPT_MOTION_SENSORS_RESTRICTION
 
 允许应用豁免传感器管控。
@@ -6291,6 +6305,20 @@
 
 **起始版本**：26.0.0
 
+## ohos.permission.ACCESS_FUNCTION
+
+允许系统应用访问可用的函数。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.1.0
+
 ## ohos.permission.ACCESS_MAPDATA_DIR
 
 允许系统应用读写地图数据。
@@ -6574,3 +6602,101 @@
 **支持设备**：PC/2in1
 
 **起始版本**：26.0.0
+
+## ohos.permission.vehicle.MANAGE_TBOX_CELLULAR
+
+允许应用设置蜂窝网络相关信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.vehicle.TBOX_CELLULAR_INFO
+
+允许应用读取蜂窝网络相关信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.vehicle.MANAGE_TBOX_WIFI
+
+允许应用设置TBox Wi-Fi相关信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.vehicle.TBOX_WIFI_INFO
+
+允许应用获取TBox Wi-Fi相关信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.vehicle.PACKET_CAPTURE_INFO
+
+允许应用触发网络抓包。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.vehicle.CCN_SELF_HEALING
+
+允许应用触发网络的自检自愈。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.0
+
+## ohos.permission.MANAGE_CLONE_BUNDLE_PREFERENCES
+
+允许应用管理分身偏好设置。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+
+**起始版本**：26.1.0
