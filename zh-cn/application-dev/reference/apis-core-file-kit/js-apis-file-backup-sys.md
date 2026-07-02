@@ -29,6 +29,7 @@ import { backup } from '@kit.CoreFileKit';
 | ---------- | ------ | ---- | ---- |--------------------------------------------------------------------------------------------------- |
 | bundleName | string | 否   | 否 | 应用名称，可通过[bundleManager.BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md)提供的获取方式获取。 |
 | uri        | string | 否   | 否 | 应用沙箱内待传输文件的名称，当前uri尚未升级为标准格式，仅接受0-9a-zA-Z下划线(_)点(.)组成的名称。      |
+| uris        | Array&lt;string&gt; | 否   | 是 | 应用沙箱内待传输文件的名称数组，当前uris尚未升级为标准格式，仅接受0-9a-zA-Z下划线(_)点(.)组成的名称。      |
 
 ## FileData
 
@@ -453,6 +454,60 @@ onProcess (bundleName: string, process: string): void
   onProcess: (bundleName: string, process: string) => {
     console.info('onProcess bundleName : ' + bundleName);
     console.info('onProcess processInfo : ' + process);
+  }
+  ```
+
+### onFileReadyBatch
+
+**起始版本**：26.0.0
+
+onFileReadyBatch : OnFileReadyBatch
+
+当一批文件准备好发送给客户端时调用。如果回调成功执行，则返回[Array&lt;File&gt;](#file)。否则，返回一个**err**对象。
+
+> **NOTE**
+>
+> **OnFileReadyBatch**返回的**Array&lt;File&gt;**是文件数组 file.backup.[File](#file)。返回的文件属于备份服务。一旦文件关闭，备份服务应清理该文件所使用的资源。但是，客户端必须先关闭文件句柄。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.StorageService.Backup
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                            |
+| ---------- | ------ | ---- | ------------------------------- |
+| error | BusinessError&lt;void&gt; | 是   | 返回错误。                        |
+| files     | Array&lt;File&gt; | 是   | [Array&lt;File&gt;](#file) 的信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 13600001 | IPC error.               |
+| 13900005 | I/O error.               |
+| 13900011 | Out of memory.           |
+| 13900020 | Invalid argument.        |
+| 13900025 | No space left on device. |
+| 13900042 | Unknown error.           |
+
+**示例：**
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
+
+  onFileReadyBatch: (error: BusinessError<void>, files: Array<File>) => void {
+    if (err) {
+      console.error(`onFileReadyBatch failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    for (let file of files) {
+      console.info(`onFileReadyBatch success with file: ${file.bundleName}, ${file.uri}`);
+      fileIo.closeSync(file.fd);
+    }
   }
   ```
 
@@ -955,6 +1010,43 @@ type OnBackupSizeReport = (reportInfo: string) => void
   onBackupSizeReport: (OnBackupSizeReport: backup.OnBackupSizeReport) => {
     console.info('dataSizeCallback success');
     console.info('dataSizeCallback report : ' + OnBackupSizeReport);
+  }
+  ```
+
+## OnFileReadyBatch
+
+**起始版本**：26.0.0
+
+type OnFileReadyBatch = (error: BusinessError&lt;void&gt;, files: Array&lt;File&gt;) => void
+
+当服务器将文件发送回客户端时，如果回调成功触发，则返回一个包含文件内容的数组；如果回调失败，则返回一个**err**错误对象。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.StorageService.Backup
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                            |
+| ---------- | ------ | ---- | ------------------------------- |
+| error | BusinessError&lt;void&gt; | 是   | 返回错误。                        |
+| files     | Array&lt;File&gt; | 是   | [Array&lt;File&gt;](#file) 的信息。 |
+
+**示例：**
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
+
+  onFileReadyBatch: (error: BusinessError<void>, files: Array<File>) => void {
+    if (err) {
+      console.error(`onFileReadyBatch failed. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    for (let file of files) {
+      console.info(`onFileReadyBatch success with file: ${file.bundleName}, ${file.uri}`);
+      fileIo.closeSync(file.fd);
+    }
   }
   ```
 
@@ -3482,6 +3574,125 @@ async function testGetApkFileHandle() {
   }
 }
 ```
+
+### getFileHandles
+
+**起始版本**：26.0.0
+
+getFileHandles(fileMeta: FileMeta): Promise&lt;void&gt;
+
+从服务中获取共享文件的句柄。该接口使用Promise方式返回结果。
+
+> **说明**
+>
+> - 该接口属于零拷贝特性，可以减少不必要的内存拷贝，提升传输效率。零拷贝方法详见[@ohos.file.fs](js-apis-file-fs.md)提供的零拷贝接口，如[fileIo.copyFile](js-apis-file-fs.md#fileiocopyfile)。
+> - 使用**getFileHandles**接口前，需要先获取**SessionRestore**实例，并通过**appendBundles**方法添加需要恢复数据的应用。
+> - 可以通过**onFileReadyBatch**获取文件句柄，当客户端文件操作完成后，需要使用**publishFile**发布文件。
+> - 根据待恢复文件数量，可多次调用**getFileHandles**接口。
+> - 待恢复文件不能是相对路径（../）或软链接。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.BACKUP
+
+**系统能力**：SystemCapability.FileManagement.StorageService.Backup
+
+**参数：**
+
+| 参数名   | 类型                  | 必填 | 说明               |
+| -------- | --------------------- | ---- | ------------------ |
+| fileMeta | [FileMeta](#filemeta) | 是   | 恢复文件的元数据。 |
+
+**返回值：**
+
+| 类型                | 说明                    |
+| ------------------- | ----------------------- |
+| Promise&lt;void&gt; | Promise对象。无返回值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 13600001 | IPC error.              |
+| 13900001 | Operation not permitted. |
+| 13900020 | Invalid argument.        |
+| 13900042 | Unknown error.          |
+
+**示例：**
+
+  ```ts
+  import { fileIo, backup} from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let generalCallbacks: backup.GeneralCallbacks = {
+    onFileReady: (err: BusinessError, file: backup.File) => {
+      if (err) {
+        console.error(`onFileReady failed. Code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('onFileReady success');
+      fileIo.closeSync(file.fd);
+    },
+    onFileReadyBatch: (error: BusinessError<void>, files: Array<File>) => void {
+      if (err) {
+        console.error(`onFileReadyBatch failed. Code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      for (let file of files) {
+        console.info(`onFileReadyBatch success with file: ${file.bundleName}, ${file.uri}`);
+        fileIo.closeSync(file.fd);
+      }
+    },
+    onBundleBegin: (err: BusinessError<string|void>, bundleName: string) => {
+      if (err) {
+        console.error(`onBundleBegin failed. Code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('onBundleBegin success');
+    },
+    onBundleEnd: (err: BusinessError<string|void>, bundleName: string) => {
+      if (err) {
+        console.error(`onBundleEnd failed. Code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('onBundleEnd success');
+    },
+    onAllBundlesEnd: (err: BusinessError) => {
+      if (err) {
+        console.error(`onAllBundlesEnd failed. Code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('onAllBundlesEnd success');
+    },
+    onBackupServiceDied: () => {
+      console.info('service died');
+    },
+    onResultReport: (bundleName: string, result: string) => {
+      console.info(`onResultReport success, bundleName: ${bundleName}, result: ${result}`);
+    },
+    onProcess: (bundleName: string, process: string) => {
+      console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
+    }
+  };
+  let sessionRestore = new backup.SessionRestore(generalCallbacks); // Create a restore process.
+  async function getFileHandles() {
+    let testArray: string[] = ["test1", "test2"];
+    try {
+      let fileMeta: backup.FileMeta = {
+        bundleName: "com.example.hiworld",
+        uri: "test.txt",
+        uris: testArray
+      }
+      await sessionRestore.getFileHandles(fileMeta);
+      console.info('getFileHandles success');
+    } catch (error) {
+      let err: BusinessError = error as BusinessError;
+      console.error(`getFileHandles failed. Code: ${err.code}, message: ${err.message}`);
+    }
+  }
+  ```
 
 ## IncrementalBackupSession<sup>12+</sup>
 
