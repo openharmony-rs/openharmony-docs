@@ -312,7 +312,7 @@ try {
   node = null;
 } catch (err) {
   let error = err as BusinessError;
-  console.error('AppendChild ' + error);
+  console.error(`Failed to append child. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -2925,6 +2925,7 @@ try {
       kvStore.getEntries('batch_test_string_key', (err: BusinessError, entries: distributedKVStore.Entry[]) => {
         if (err) {
           console.error(`Failed to get Entries. Code: ${err.code}, message: ${err.message}`);
+          return;
         }
         console.info('Succeeded in getting Entries');
         console.info(`entries.length: ${entries.length}`);
@@ -3302,7 +3303,7 @@ removeDeviceData(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                  | 必填 | 说明                   |
 | -------- | ------------------------- | ---- | ---------------------- |
-| deviceId | string                    | 是   | 设备的networkId，标识要查询其数据的设备，不能为空。 |
+| deviceId | string                    | 是   | 设备的networkId，标识要删除其数据的设备，不能为空。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。删除指定设备的数据成功，err为undefined，否则为错误对象。    |
 
 **错误码：**
@@ -3333,6 +3334,8 @@ try {
       kvStore.removeDeviceData(deviceId, async (err: BusinessError) => {
         if (err) {
           console.error(`Failed to remove device data. Code: ${err.code}, message: ${err.message}`);
+        } else {
+          console.info('Succeeded in removing device data');
           if (kvStore) {
             kvStore.get(KEY_TEST_STRING_ELEMENT, async (err: BusinessError, data: boolean | string | number | Uint8Array) => {
                 if (err) {
@@ -3342,8 +3345,6 @@ try {
                 console.info(`Succeeded in getting data.data=${data}`);
               });
           }
-        } else {
-          console.info('Succeeded in removing device data');
         }
       });
     }
@@ -3370,7 +3371,7 @@ removeDeviceData(deviceId: string): Promise&lt;void&gt;
 
 | 参数名   | 类型 | 必填 | 说明                   |
 | -------- | -------- | ---- | ---------------------- |
-| deviceId | string   | 是   | 设备的networkId，标识要查询其数据的设备，不能为空。 |
+| deviceId | string   | 是   | 设备的networkId，标识要删除其数据的设备，不能为空。 |
 
 **返回值：**
 
@@ -4709,7 +4710,7 @@ try {
   })
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`An unexpected error occurred. Code: ${err.code}, message: ${err.message}`);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -4758,7 +4759,7 @@ try {
   })
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`An unexpected error occurred. Code: ${err.code}, message: ${err.message}`);
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
