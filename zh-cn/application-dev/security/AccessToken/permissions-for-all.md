@@ -446,7 +446,7 @@
 
 允许应用通过C API启动同应用的UIAbility。
 
-获取该权限后，应用通过C API可启动同应用内的UIAbility。
+仅用于在Native层启动同应用内的UIAbility，适用于C/C++调用接口拉起UIAbility的场景。
 
 **权限级别**：normal
 
