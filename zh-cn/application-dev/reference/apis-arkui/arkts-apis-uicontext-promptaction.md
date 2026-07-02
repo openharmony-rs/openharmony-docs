@@ -705,7 +705,7 @@ openCustomDialog\<T extends Object>(dialogContent: ComponentContent\<T>, options
 
 **示例：**
 
-该示例通过监听[系统环境信息](../apis-ability-kit/js-apis-app-ability-configuration.md)（系统语言、深浅色等）的变化，调用[ComponentContent\<T>](./js-apis-arkui-ComponentContent.md) 的[update](../apis-arkui/js-apis-arkui-builderNode.md#update)和[updateConfiguration](../apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12)实现自定义弹窗的数据更新及节点的全量刷新。
+该示例通过监听[@ohos.app.ability.Configuration (环境变量)](../apis-ability-kit/js-apis-app-ability-configuration.md)（系统语言、深浅色等）的变化，调用[ComponentContent\<T>](./js-apis-arkui-ComponentContent.md) 的[update](../apis-arkui/js-apis-arkui-builderNode.md#update)和[updateConfiguration](../apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12)实现自定义弹窗的数据更新及节点的全量刷新。
 ```ts
 import { ComponentContent } from '@kit.ArkUI';
 import { AbilityConstant, Configuration, EnvironmentCallback, ConfigurationConstant } from '@kit.AbilityKit';
