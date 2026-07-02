@@ -202,7 +202,7 @@ const unsigned int VALUE_3 = 50;
    }
    } // namespace NativeModule
    
-   #endif //MYAPPLICATION_GETNODEBYID_H
+   #endif // MYAPPLICATION_GETNODEBYID_H
    ```
 
 3. 在`NativeEntry.cpp`中，挂载Native节点。
@@ -444,7 +444,7 @@ const unsigned int VALUE_3 = 50;
    }
    } // namespace NativeModule
    
-   #endif //MYAPPLICATION_MOVETO_H
+   #endif // MYAPPLICATION_MOVETO_H
    ```
 
 3. 在`NativeEntry.cpp`中，挂载Native节点。
