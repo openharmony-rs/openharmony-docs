@@ -10,7 +10,7 @@
 
 当应用进行音频输入时，系统会根据音频流类型选择对应的输入设备（SOURCE_TYPE_MIC：内置MIC录音；SOURCE_TYPE_VOICE_COMMUNICATION：跟随当前输出设备）。若默认输入设备不满足应用需求，应用可通过[setBluetoothAndNearlinkPreferredRecordCategory](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setbluetoothandnearlinkpreferredrecordcategory21)或[selectMediaInputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#selectmediainputdevice21)实现音频输入设备路由切换。
 
-以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS)。
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS)。
 
 ## 选择使用蓝牙或者星闪设备进行录音
 
@@ -95,7 +95,7 @@ let currentInputDeviceChangedCallback = (currentInputDeviceChangedEvent: audio.C
     // ...
 
     // 当前可选音频输入设备列表不为空时,可进行选择。
-    if (data[0]) {
+    if (data.length > 0) {
       // 选择输入设备。
       await audioSessionManager.selectMediaInputDevice(data[0]).then(() => {
         console.info('Succeeded in selecting media input device.');
