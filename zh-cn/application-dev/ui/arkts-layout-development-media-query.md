@@ -189,6 +189,7 @@ struct MediaQueryExample {
   }
 
   aboutToAppear() {
+    // 绑定当前应用实例
     // 绑定回调函数
     this.listener.on('change', (mediaQueryResult: mediaquery.MediaQueryResult) => {
       this.onPortrait(mediaQueryResult);
