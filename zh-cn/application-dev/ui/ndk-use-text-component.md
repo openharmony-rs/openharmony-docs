@@ -284,11 +284,11 @@ Manager::nodeAPI_->setAttribute(text14, NODE_TEXT_OPTIMIZE_TRAILING_SPACE, &opti
 
 <!-- @[text_tail_indents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/native_node_sample/entry/src/main/cpp/TextMaker.cpp) -->
 
- ``` C++
-  ArkUI_NumberValue multiValues[] = { { .f32 = 0.0f }, { .f32 = 50.0f }, { .f32 = 100.0f } };
-  ArkUI_AttributeItem tailIndentItem2 = { .value = multiValues, .size = 3 };
-  Manager::nodeAPI_->setAttribute(text2, NODE_TEXT_TAIL_INDENTS, &tailIndentItem2);
-  ```
+``` C++
+ArkUI_NumberValue multiValues[] = { { .f32 = 0.0f }, { .f32 = 50.0f }, { .f32 = 100.0f } };
+ArkUI_AttributeItem tailIndentItem2 = { .value = multiValues, .size = 3 };
+Manager::nodeAPI_->setAttribute(text2, NODE_TEXT_TAIL_INDENTS, &tailIndentItem2);
+```
 
 ## 添加子组件
 
