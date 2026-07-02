@@ -5,6 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=fd10fbb9e5b5e2e1e561a46b9ca4925a29d1a0a3 translatedAt=2026-06-30T12:26:14.273Z pushedAt=2026-07-02T09:00:12.452Z -->
 
 The **Counter** component provides an operation to increase or decrease the number.
 
@@ -42,6 +43,8 @@ Sets whether to enable the increment button.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
@@ -57,6 +60,8 @@ enableDec(value: boolean)
 Sets whether to enable the decrement button.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -150,4 +155,4 @@ struct CounterExample {
 }
 ```
 
-![en-us_image_0000001219982711](figures/en-us_image_0000001219982711.gif)
+![counter](figures/counter.gif)
