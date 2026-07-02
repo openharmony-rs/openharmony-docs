@@ -23084,6 +23084,16 @@
 						"start_line":18
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":71,
+						"name":"module_json_config",
+						"start_line":17
+					}
+				]
 			}
 		]
 	},
