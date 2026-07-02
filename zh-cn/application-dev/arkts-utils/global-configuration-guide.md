@@ -128,9 +128,9 @@
              })
              .onClick(async () => {
                if (!await config.getIsLogin() && this.input) {
-                 this.message = 'login: ' + this.input;
                  try {
-                   config.login(this.input);
+                   await config.login(this.input);
+                   this.message = 'login: ' + this.input;
                  } catch (e) {
                    console.error('login failed');
                  }
@@ -146,9 +146,9 @@
              })
              .onClick(async () => {
                if (await config.getIsLogin()) {
-                 this.message = 'not login';
                  try {
-                   config.logout();
+                   await config.logout();
+                   this.message = 'not login';
                  } catch (e) {
                    console.error('logout failed');
                  }
