@@ -6578,6 +6578,16 @@
 						"end_line":590,
 						"name":"on_audio_session_state_changed",
 						"start_line":22
+					},
+					{
+						"end_line":393,
+						"name":"get_session_manager",
+						"start_line":17
+					},
+					{
+						"end_line":427,
+						"name":"set_capturer_mute_hint",
+						"start_line":407
 					}
 				]
 			},
@@ -6618,6 +6628,11 @@
 						"end_line":228,
 						"name":"cset_session_behavior",
 						"start_line":213
+					},
+					{
+						"end_line":314,
+						"name":"cset_capturer_mute_hint",
+						"start_line":305
 					}
 				]
 			}
@@ -13158,6 +13173,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets",
+				"functions":[
+					{
+						"end_line":341,
+						"name":"set_mute_hint",
+						"start_line":320
+					}
+				]
 			}
 		]
 	},
@@ -14756,6 +14781,11 @@
 						"end_line":340,
 						"name":"SetCapturerLoopbackEffectEnabled",
 						"start_line":336
+					},
+					{
+						"end_line":492,
+						"name":"cset_mute_hint",
+						"start_line":483
 					}
 				]
 			}
