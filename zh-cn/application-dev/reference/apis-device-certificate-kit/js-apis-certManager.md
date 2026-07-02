@@ -175,7 +175,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | uri         | string    | 否  | 是   | 表示证书或凭据的唯一标识符，最大长度为256字节。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
 | outData         | Uint8Array    | 否  | 是   | 表示签名结果。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
 | credentialDetailList<sup>22+</sup>         | Array<[Credential](#credential)>    | 否  | 是   | 表示凭据详细信息。<br/>**ArkTS-Dyn起始版本**：22<br/>**ArkTS-Sta起始版本**：23 |
-| uriList         | Array\<string>    | 否  | 是   | 表示证书URI列表。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0 |
+| uriList         | Array\<string>    | 否  | 是   | 表示证书URI列表。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## CMHandle
 
@@ -200,6 +200,8 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 **ArkTS-Sta起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.Security.CertificateManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称        | 类型                                | 只读 | 可选 | 说明  |
 | ----------- | ----------------------------------- | ---- | ---- | ---- |
@@ -340,6 +342,8 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 **ArkTS-Sta起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.Security.CertificateManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称       | 值 | 说明      |
 | ---------- | ------ | --------- |
@@ -768,6 +772,8 @@ installUserTrustedCertificate(certificate: CertBlob): Promise\<CMResult>
 **需要权限：** ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT<!--Del-->或ohos.permission.ACCESS_USER_TRUSTED_CERT<!--DelEnd-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数**：
 
@@ -1963,6 +1969,8 @@ getUkeyCertificateList(ukeyProvider: string, ukeyInfo: UkeyInfo): Promise\<CMRes
 
 **设备行为差异：** 该接口在Phone、PC/2in1、Tablet设备可正常调用，在其他设备中返回801错误码。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数**：
 
 | 参数名       | 类型                                | 必填 | 说明                                      |
@@ -2026,6 +2034,8 @@ importUkeyCertificate(keyUri: string, cert: Uint8Array, ukeyInfo: UkeyInfo): Pro
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **设备行为差异：** 该接口在Phone、PC/2in1、Tablet设备可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数**：
 
