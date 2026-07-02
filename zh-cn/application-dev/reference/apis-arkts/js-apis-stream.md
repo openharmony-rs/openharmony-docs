@@ -874,7 +874,7 @@ let readableStream = new TestReadable();
 readableStream.push("test");
 readableStream.pause();
 let dataChunk = readableStream.read();
-console.info('Readable data is', dataChunk); // 期望结果: Readable data is test
+console.info("Readable data is", dataChunk); // 期望结果: Readable data is test
 ```
 
 ### resume
