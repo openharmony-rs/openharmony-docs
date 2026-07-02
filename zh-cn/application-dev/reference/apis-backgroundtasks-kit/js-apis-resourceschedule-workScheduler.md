@@ -368,7 +368,7 @@ obtainAllWorks(callback: AsyncCallback\<void>) : Array\<WorkInfo>
 | 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9700003 | System service operation failed. |
 
-## workScheduler.obtainAllWorks<sup>10+<sup>
+## workScheduler.obtainAllWorks<sup>10+</sup>
 
 obtainAllWorks(callback: AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;): void
 
@@ -536,7 +536,7 @@ isLastWorkTimeOut(workId: number, callback : AsyncCallback\<void>): boolean
 
 | 参数名      | 类型                   | 必填   | 说明                                       |
 | -------- | -------------------- | ---- | ---------------------------------------- |
-| workId   | number               | 是    | 指定延迟任务的Id。                                 |
+| workId   | number               | 是    | 延迟任务ID。指定延迟任务的唯一标识符，用于检查延迟任务的最后一次执行是否超时。|
 | callback | AsyncCallback\<void> | 是    | 回调函数。 |
 
 **返回值：**
@@ -575,8 +575,8 @@ ArkTS-Sta: isLastWorkTimeOut(workId: int, callback: AsyncCallback\<boolean>): vo
 
 | 参数名      | 类型                   | 必填   | 说明                                       |
 | -------- | -------------------- | ---- | ---------------------------------------- |
-| workId   | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 是    | 指定延迟任务的Id。                                 |
-| callback | AsyncCallback\<boolean> | 是    | 回调函数。当检查延迟任务的最后一次执行是否超时成功时，error为undefined，否则为错误对象。 |
+| workId   | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 是    | 延迟任务ID。指定延迟任务的唯一标识符，用于检查延迟任务的最后一次执行是否超时。|
+| callback | AsyncCallback\<boolean> | 是    | 回调函数。返回true表示指定任务的最后一次执行超时，false表示未超时。 |
 
 **错误码：**
 
@@ -640,7 +640,7 @@ ArkTS-Sta: isLastWorkTimeOut(workId: int): Promise\<boolean>
 
 | 参数名    | 类型     | 必填   | 说明       |
 | ------ | ------ | ---- | -------- |
-| workId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是    | 指定延迟任务的Id。 |
+| workId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是    | 延迟任务ID。指定延迟任务的唯一标识符，用于检查延迟任务的最后一次执行是否超时。 |
 
 **返回值：**
 
