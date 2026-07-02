@@ -729,7 +729,7 @@ setAppNet(netHandle: NetHandle): Promise\<void\>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
