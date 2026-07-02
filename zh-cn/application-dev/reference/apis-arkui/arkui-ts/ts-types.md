@@ -964,7 +964,7 @@ Callback<T,V = void> = (data: T) => V;
 
 type ResponsiveFillType = PresetFillType
 
-响应式布局填充模式，用于WaterFlow、Grid、List和Swiper组件。
+响应式布局填充模式，用于WaterFlow、Grid、List、Swiper和LazyVWaterFlowLayout组件。LazyVWaterFlowLayout组件从API版本26.0.0开始支持。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -978,7 +978,7 @@ type ResponsiveFillType = PresetFillType
 
 ## ItemFillPolicy<sup>22+</sup>
 
-定义一个适用于WaterFlow、Grid、List和Swiper组件的响应式布局策略。
+定义一个适用于WaterFlow、Grid、List、Swiper和LazyVWaterFlowLayout组件的响应式布局策略。LazyVWaterFlowLayout组件从API版本26.0.0开始支持。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 

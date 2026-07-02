@@ -79,7 +79,7 @@ scrollBarColor(color: Color | number | string | Resource): T
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| color  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string | 是   | 滚动条的颜色。<br/>儿童智能表的默认值颜色为'\#ffffff'，表示白色（100%不透明度）。其他设备默认值为'\#182431'，表示深蓝灰色（40%不透明度），<br/>number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。 |
+| color  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 滚动条的颜色。<br/>儿童智能表的默认值颜色为'\#ffffff'，表示白色（100%不透明度）。其他设备默认值为'\#182431'，表示深蓝灰色（40%不透明度），<br/>number为HEX格式颜色，支持rgb或者argb，示例：0xffffff。string为rgb或者argb格式颜色，示例：'#ffffff'。 |
 
 **返回值：**
 
