@@ -471,7 +471,7 @@ struct BindContextMenuDemo {
     $r('app.string.modal_transition_text26'),
     // 请将$r('app.string.modal_transition_text27')替换为实际资源文件，在本示例中该资源文件的value值为"搜一搜"
     $r('app.string.modal_transition_text27')];
-  // 请将$r('app.media.icon_2')替换为实际资源文件 
+  // 请将$r('app.media.icon_2')替换为实际资源文件
   private pics: Resource[] = [$r('app.media.icon_1'), $r('app.media.icon_2')];
 
   // 通过@Builder构建自定义菜单项

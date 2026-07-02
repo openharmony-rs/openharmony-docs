@@ -208,7 +208,7 @@
             center: [50, 50],
             start: 0,
             end: 360,
-            repeating: false, //只在颜色断点角度覆盖范围内产生颜色渐变效果，其余范围内不重复
+            repeating: false, // 只在颜色断点角度覆盖范围内产生颜色渐变效果，其余范围内不重复
             colors: [
               [0xf56c6c, 0],
               [0xffffff, 0.125],
