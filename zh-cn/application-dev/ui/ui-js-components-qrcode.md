@@ -162,7 +162,7 @@ qrcode{
 
 ```js
 // index.js
-export default{
+export default {
   data: {
     textVal: ''
   },
