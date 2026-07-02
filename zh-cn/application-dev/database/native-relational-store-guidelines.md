@@ -340,7 +340,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     likePredicates->like(likePredicates, "NAME", likePattern);
     
     char *colName[] = { "NAME", "AGE" };
-    auto *likeQueryCursor = OH_Rdb_Query(store_, likePredicates, colName, 2); // the length of columnNamesis 2
+    auto *likeQueryCursor = OH_Rdb_Query(store_, likePredicates, colName, 2); // the length of columnNames is 2
     if (likeQueryCursor == NULL) {
         likePredicates->destroy(likePredicates);
         likePattern->destroy(likePattern);
