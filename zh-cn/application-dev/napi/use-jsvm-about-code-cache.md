@@ -112,6 +112,9 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"UseCodeCache", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
+
+// 样例测试JS
+const char *SRC_CALL_NATIVE = R"JS(UseCodeCache();)JS";
 ```
 
 预期的输出结果如下：
