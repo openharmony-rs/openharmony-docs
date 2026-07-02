@@ -333,7 +333,7 @@ SQL语句中的函数，如下所示：
 
    ArkTS-Dyn示例：
 
-   <!--@[vector_TS_query](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+    <!--@[vector_TS_query](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)--> 
    
    ``` TypeScript
    let resultSet: relationalStore.ResultSet | undefined = undefined;
