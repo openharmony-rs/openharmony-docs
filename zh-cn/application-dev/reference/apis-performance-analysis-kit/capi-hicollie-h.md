@@ -43,8 +43,8 @@ HiCollie模块提供检测业务线程卡死、卡顿，以及上报卡死事件
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [typedef void (\*OH_HiCollie_Task)(void)](#oh_hicollie_task) | OH_HiCollie_Task | 在业务线程卡死检测中，通过实现该函数来检测业务线程是否卡住。<br> HiCollie将在业务线程中每3秒调用一次该函数。<br> 例如：该函数可实现向业务线程发送消息，在业务线程接收到消息之后，设置一个标记，检查这个标记，确定业务线程是否卡住。 |
-| [typedef void (\*OH_HiCollie_BeginFunc)(const char* eventName)](#oh_hicollie_beginfunc) | OH_HiCollie_BeginFunc | 卡顿检测中，该函数用于记录业务线程处理事件的开始时间。<br> 由HiCollie检查事件的执行时间，如果超过预设阈值，上报jank事件。<br> 该函数在每个事件处理前插入，与[OH_HiCollie_EndFunc](capi-hicollie-h.md#oh_hicollie_endfunc)接口配套使用。 |
-| [typedef void (\*OH_HiCollie_EndFunc)(const char* eventName)](#oh_hicollie_endfunc) | OH_HiCollie_EndFunc | 卡顿检测中，该函数记录业务线程处理事件的结束时间，并检查业务线程处理事件是否卡顿。<br> 由HiCollie检查事件的执行时间，如果超过预设阈值，上报jank事件。<br> 该函数在每个事件处理后插入，与[OH_HiCollie_BeginFunc](capi-hicollie-h.md#oh_hicollie_beginfunc)接口配套使用。 |
+| [typedef void (\*OH_HiCollie_BeginFunc)(const char* eventName)](#oh_hicollie_beginfunc) | OH_HiCollie_BeginFunc | 卡顿检测中，该函数用于记录业务线程处理事件的开始时间。<br> 由HiCollie检查事件的执行时间，如果超过阈值（默认阈值：150ms），上报jank事件。<br> 该函数在每个事件处理前插入，与[OH_HiCollie_EndFunc](capi-hicollie-h.md#oh_hicollie_endfunc)接口配套使用。 |
+| [typedef void (\*OH_HiCollie_EndFunc)(const char* eventName)](#oh_hicollie_endfunc) | OH_HiCollie_EndFunc | 卡顿检测中，该函数记录业务线程处理事件的结束时间，并检查业务线程处理事件是否卡顿。<br> 由HiCollie检查事件的执行时间，如果超过阈值（默认阈值：150ms），上报jank事件。<br> 该函数在每个事件处理后插入，与[OH_HiCollie_BeginFunc](capi-hicollie-h.md#oh_hicollie_beginfunc)接口配套使用。 |
 | [HiCollie_ErrorCode OH_HiCollie_Init_StuckDetection(OH_HiCollie_Task task)](#oh_hicollie_init_stuckdetection) | - | 注册应用业务线程卡死的周期性检测任务。Hicollie通过在业务线程中定期调用用户实现的回调函数，检查业务线程是否能够正常响应，从而判断线程是否卡死。<br> 用户实现回调函数，用于定时检测业务线程卡死情况。<br> **说明：**<br> - 默认检测时间：3s上报BUSSINESS_THREAD_BLOCK_3S告警事件，6s上报BUSSINESS_THREAD_BLOCK_6S卡死事件。<br> - 该接口使用默认的3s和6s检测时间。如果需要自定义检测时间，请使用OH_HiCollie_Init_StuckDetectionWithTimeout接口。<br> - 仅能在非主线程中调用该接口。 |
 | [HiCollie_ErrorCode OH_HiCollie_Init_StuckDetectionWithTimeout(OH_HiCollie_Task task, uint32_t stuckTimeout)](#oh_hicollie_init_stuckdetectionwithtimeout) | - | 注册应用业务线程卡死的周期性检测任务。用户实现回调函数，用于定时检测业务线程卡死情况。<br> 开发者可以设置卡死检测时间，可设置的时间范围：[3, 15]，单位：秒。<br>**说明：**<br> - 如果默认的3s和6s检测时间不满足实际业务需求，使用该接口可以自定义卡死检测时间；否则建议使用OH_HiCollie_Init_StuckDetection接口。<br> - 仅能在非主线程中调用该接口。 |
 | [HiCollie_ErrorCode OH_HiCollie_Init_JankDetection(OH_HiCollie_BeginFunc* beginFunc, OH_HiCollie_EndFunc* endFunc, HiCollie_DetectionParam param)](#oh_hicollie_init_jankdetection) | - | 注册应用业务线程卡顿检测的回调函数。<br> 线程卡顿监控功能需要开发者实现两个卡顿检测回调函数，分别放在业务线程处理事件的前后。作为插桩函数，监控业务线程处理事件执行情况。<br> **说明：** <br> 仅能在非主线程中调用该接口。 |
@@ -80,7 +80,7 @@ enum HiCollie_ErrorCode
 | HICOLLIE_INVALID_TIMER_NAME = 29800003 | 无效的函数执行超时检测器名称。<br>**起始版本：** 18 |
 | HICOLLIE_INVALID_TIMEOUT_VALUE = 29800004 | 无效的函数执行超时时间阈值。<br>**起始版本：** 18                  |
 | HICOLLIE_WRONG_PROCESS_CONTEXT = 29800005 | 函数执行超时检测接入进程错误。<br>**起始版本：** 18                 |
-| HICOLLIE_WRONG_TIMER_ID_OUTPUT_PARAM = 29800006 | 用于保存返回的计时器id的指针不应为NULL。<br>**起始版本：** 18         |
+| HICOLLIE_WRONG_TIMER_ID_OUTPUT_PARAM = 29800006 | 用于保存返回的定时器id的指针不应为NULL。<br>**起始版本：** 18         |
 | OH_HICOLLIE_REACH_REPORT_LIMIT = 29800007 | 上报频率超过限制。<br>**起始版本：** 24         |
 
 ### HiCollie_Flag
@@ -148,7 +148,7 @@ typedef void (*OH_HiCollie_BeginFunc)(const char* eventName)
 
 **描述**
 
-卡顿检测中，该函数用于记录业务线程处理事件的开始时间。<br> 由HiCollie检查事件的执行时间，如果超过预设阈值，上报jank事件。<br> 该函数在每个事件处理前插入，与[OH_HiCollie_EndFunc](capi-hicollie-h.md#oh_hicollie_endfunc)接口配套使用。
+卡顿检测中，该函数用于记录业务线程处理事件的开始时间。<br> 由HiCollie检查事件的执行时间，如果超过阈值（默认阈值：150ms），上报jank事件。<br> 该函数在每个事件处理前插入，与[OH_HiCollie_EndFunc](capi-hicollie-h.md#oh_hicollie_endfunc)接口配套使用。
 
 **起始版本：** 12
 
@@ -166,7 +166,7 @@ typedef void (*OH_HiCollie_EndFunc)(const char* eventName)
 
 **描述**
 
-卡顿检测中，该函数记录业务线程处理事件的结束时间，并检查业务线程处理事件是否卡顿。<br> 由HiCollie检查事件的执行时间，如果超过预设阈值，上报jank事件。<br> 该函数在每个事件处理后插入，与[OH_HiCollie_BeginFunc](capi-hicollie-h.md#oh_hicollie_beginfunc)接口配套使用。
+卡顿检测中，该函数记录业务线程处理事件的结束时间，并检查业务线程处理事件是否卡顿。<br> 由HiCollie检查事件的执行时间，如果超过阈值（默认阈值：150ms），上报jank事件。<br> 该函数在每个事件处理后插入，与[OH_HiCollie_BeginFunc](capi-hicollie-h.md#oh_hicollie_beginfunc)接口配套使用。
 
 **起始版本：** 12
 
@@ -200,7 +200,7 @@ HiCollie_ErrorCode OH_HiCollie_Init_StuckDetection(OH_HiCollie_Task task)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_HiCollie_Task](capi-hicollie-h.md#oh_hicollie_task) task | 每3秒执行一次的周期性检测任务，用于检测业务线程是否卡住。 |
+| [OH_HiCollie_Task](capi-hicollie-h.md#oh_hicollie_task) task | 周期性检测任务，执行间隔为3秒，用于检测业务线程是否卡住。 |
 
 **返回：**
 
@@ -261,7 +261,7 @@ HiCollie_ErrorCode OH_HiCollie_Init_JankDetection(OH_HiCollie_BeginFunc* beginFu
 | -- | -- |
 | [OH_HiCollie_BeginFunc](capi-hicollie-h.md#oh_hicollie_beginfunc)* beginFunc | 业务线程执行任务前的回调函数，函数指针类型。需要在业务线程处理每个事件之前调用，用于记录业务线程处理事件的开始时间。 |
 | [OH_HiCollie_EndFunc](capi-hicollie-h.md#oh_hicollie_endfunc)* endFunc | 业务线程执行任务后的回调函数，函数指针类型。需要在业务线程处理每个事件之后调用，用于记录业务线程处理事件的结束时间，并检查业务线程处理事件是否卡顿。 |
-| [HiCollie_DetectionParam](capi-hicollie-hicollie-detectionparam.md) param | 扩展参数以供将来使用。 |
+| [HiCollie_DetectionParam](capi-hicollie-hicollie-detectionparam.md) param | 扩展参数以供将来使用，当前暂不使用，传入默认值0即可。 |
 
 **返回：**
 
@@ -299,7 +299,7 @@ HiCollie_ErrorCode OH_HiCollie_Report(bool* isSixSecond)
 
 | 类型 | 说明 |
 | -- | -- |
-| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | <ul><br>         <li> HICOLLIE_SUCCESS 0 - 成功。</li><br>         <li> HICOLLIE_INVALID_ARGUMENT 401 - 开始函数和结束函数两者都必须有值或为空，否则将返回该错误值。</li><br>         <li> HICOLLIE_WRONG_THREAD_CONTEXT 29800001 - 调用线程错误。仅能在非主线程中调用该函数。</li><br>         <li> HICOLLIE_REMOTE_FAILED 29800002 - 远程调用错误。请求IPC远程服务失败。</li><br>         </ul> |
+| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | <ul><br>         <li> HICOLLIE_SUCCESS 0 - 成功。</li><br>         <li> HICOLLIE_INVALID_ARGUMENT 401 - 无效参数。输入参数isSixSecond不能是空指针。</li><br>         <li> HICOLLIE_WRONG_THREAD_CONTEXT 29800001 - 调用线程错误。仅能在非主线程中调用该函数。</li><br>         <li> HICOLLIE_REMOTE_FAILED 29800002 - 远程调用错误。请求IPC远程服务失败。</li><br>         </ul> |
 
 ### OH_HiCollie_ReportInputBlock()
 
@@ -356,13 +356,13 @@ HiCollie_ErrorCode OH_HiCollie_SetTimer(HiCollie_SetTimerParam param, int *id)
 | 参数项 | 描述 |
 | -- | -- |
 | [HiCollie_SetTimerParam](capi-hicollie-hicollie-settimerparam.md) param | 定时器配置参数，结构体类型。<br> 该接口用于定义定时器的名称、超时时间、回调函数等配置信息。详细接口参考[HiCollie_SetTimerParam](capi-hicollie-hicollie-settimerparam.md)。 |
-| int *id | 返回的计时器id的指针不应为NULL。 |
+| int *id | 输出参数，返回的定时器id的指针不应为NULL。用于接收函数返回的定时器标识符，后续可使用该id调用OH_HiCollie_CancelTimer取消定时器。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | <ul><br>         <li> [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - 成功。</li><br>         <li> [HICOLLIE_INVALID_TIMER_NAME](capi-hicollie-h.md#hicollie_errorcode) 29800003 - 无效的计时器名称，不应为NULL或空字符串。</li><br>         <li> [HICOLLIE_INVALID_TIMEOUT_VALUE](capi-hicollie-h.md#hicollie_errorcode) 29800004 - 无效的超时值。</li><br>         <li> [HICOLLIE_WRONG_PROCESS_CONTEXT](capi-hicollie-h.md#hicollie_errorcode) 29800005 - 无效的接入检测进程上下文，appspawn与nativespawn进程中不可调用。</li><br>         <li> [HICOLLIE_WRONG_TIMER_ID_OUTPUT_PARAM](capi-hicollie-h.md#hicollie_errorcode) 29800006 - 用于保存返回的计时器id的指针，不应该为NULL。</li><br>         </ul> |
+| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | <ul><br>         <li> [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - 成功。</li><br>         <li> [HICOLLIE_INVALID_TIMER_NAME](capi-hicollie-h.md#hicollie_errorcode) 29800003 - 无效的定时器名称，不应为NULL或空字符串。</li><br>         <li> [HICOLLIE_INVALID_TIMEOUT_VALUE](capi-hicollie-h.md#hicollie_errorcode) 29800004 - 无效的超时值。</li><br>         <li> [HICOLLIE_WRONG_PROCESS_CONTEXT](capi-hicollie-h.md#hicollie_errorcode) 29800005 - 无效的接入检测进程上下文，appspawn与nativespawn进程中不可调用。</li><br>         <li> [HICOLLIE_WRONG_TIMER_ID_OUTPUT_PARAM](capi-hicollie-h.md#hicollie_errorcode) 29800006 - 用于保存返回的定时器id的指针，不应该为NULL。</li><br>         </ul> |
 
 ### OH_HiCollie_CancelTimer()
 
@@ -380,7 +380,7 @@ void OH_HiCollie_CancelTimer(int id)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int id | 执行[OH_HiCollie_SetTimer](capi-hicollie-h.md#oh_hicollie_settimer)函数后更新的计时器id。 |
+| int id | 执行[OH_HiCollie_SetTimer](capi-hicollie-h.md#oh_hicollie_settimer)函数后更新的定时器id。 |
 
 ### OH_HiCollie_FreezeCallback()
 
@@ -390,7 +390,7 @@ typedef size_t (*OH_HiCollie_FreezeCallback)(OH_HiCollie_Freeze_Type type, void*
 
 **描述**
 
-冻屏事件使用的回调[OH_HiCollie_SetFreezeCallback](capi-hicollie-h.md#oh_hicollie_setfreezecallback)。
+冻屏事件回调函数指针，通过[OH_HiCollie_SetFreezeCallback](capi-hicollie-h.md#oh_hicollie_setfreezecallback)接口设置。
 
 **起始版本：** 24
 
@@ -428,7 +428,7 @@ void* OH_HiCollie_SetFreezeCallback(OH_HiCollie_FreezeCallback callback)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_HiCollie_FreezeCallback](capi-hicollie-h.md#oh_hicollie_freezecallback) callback | 回调函数。 |
+| [OH_HiCollie_FreezeCallback](capi-hicollie-h.md#oh_hicollie_freezecallback) callback | 冻屏事件回调函数，函数指针类型。用于在系统检测到冻屏事件时调用。 |
 
 **返回：**
 
@@ -463,7 +463,7 @@ HiCollie_ErrorCode OH_HiCollie_AssociateProcessReport(bool isFreezeEvent)
 
 | 类型 | 说明 |
 | -- | -- |
-| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | <ul><br>         <li> HICOLLIE_SUCCESS 0 - 成功。</li><br>         <li> OH_HICOLLIE_REACH_REPORT_LIMIT：29800007 - 上报频率过高。</li><br>         </ul> |
+| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | <ul><br>         <li> HICOLLIE_SUCCESS 0 - 成功。</li><br>         <li> OH_HICOLLIE_REACH_REPORT_LIMIT 29800007 - 上报频率过高。1分钟内最多上报1次冻屏事件。</li><br>         </ul> |
 
 > **说明：**
 >

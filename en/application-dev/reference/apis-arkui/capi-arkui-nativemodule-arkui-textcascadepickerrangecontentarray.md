@@ -12,10 +12,10 @@ typedef struct ArkUI_TextCascadePickerRangeContentArray ArkUI_TextCascadePickerR
 
 ## Overview
 
-Defines the list for a multi-column cascading picker.
+Defines an array of multi-column cascade pickers.
 
 **Since**: 19
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [native_type.h](capi-native-type-h.md)
+**Header file**: [picker.h](capi-picker-h.md)

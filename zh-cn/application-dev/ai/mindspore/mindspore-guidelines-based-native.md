@@ -330,9 +330,9 @@
 
 1. 在 entry/src/main/cpp/types/libentry/Index.d.ts，定义ArkTS接口`runDemo()` 。内容如下：
 
-   <!-- @[index_image_classification_runDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/types/libentry/index.d.ts) -->
+   <!-- @[index_image_classification_runDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/types/libentry/Index.d.ts) -->
    
-   ```typescript
+   ``` TypeScript
    export const runDemo: (a: number[], b:Object) => Array<number>;
    ```
 
@@ -353,10 +353,9 @@
 2. 根据模型的输入尺寸，调用[@ohos.multimedia.image](../../reference/apis-image-kit/arkts-apis-image.md) （实现图片处理）、[@ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md) （实现基础文件操作） API对选择图片进行裁剪、获取图片buffer数据，并进行标准化处理。
 3. 在 entry/src/main/ets/pages/Index.ets 中，调用封装的ArkTS模块，最后对推理结果进行处理。
 
-<!-- @[index_image_classification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[index_image_classification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/ets/pages/Index.ets) --> 
 
-```typescript
-// Index.ets
+``` TypeScript
 import msliteNapi from 'libentry.so';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -380,16 +379,19 @@ struct Index {
   @State maxIndex: number = 0;
   @State maxArray: Array<number> = [];
   @State maxIndexArray: Array<number> = [];
+  // ...
 
   build() {
     Row() {
       Column() {
         Text(this.message)
+        // ...
         Button() {
           Text('photo')
             .fontSize(30)
             .fontWeight(FontWeight.Bold)
         }
+        // ...
         .onClick(() => {
           let resMgr = this.getUIContext()?.getHostContext()?.getApplicationContext().resourceManager;
           if (resMgr === null || resMgr === undefined){
@@ -524,9 +526,9 @@ struct Index {
 
                         hilog.info(0xFF00, TAG, '%{public}s',
                           `MS_LITE_LOG: *** Finished MSLite Demo ***`);
-                      }).catch((error: BusinessError) => {
-                        hilog.error(0xFF00, TAG, '%{public}s',
-                          `MS_LITE_ERR: getRawFileContent promise error is: ${error}`);
+                        }).catch((error: BusinessError) => {
+                          hilog.error(0xFF00, TAG, '%{public}s',
+                            `MS_LITE_ERR: getRawFileContent promise error is: ${error}`);
                       })
                     })
                     // 5.关闭文件

@@ -1,5 +1,4 @@
 # @ohos.advertising.AutoAdComponent (轮播广告展示组件)
-
 <!--Kit: Ads Kit-->
 <!--Subsystem: Advertising-->
 <!--Owner: @SukiEvas-->
@@ -37,9 +36,9 @@ AutoAdComponent({
 
 **装饰器类型：**\@Component
 
-**元服务API：** 从API version 12开始，该接口支持在元服务中使用。
+**元服务API：**  从API version 12开始，该接口支持在元服务中使用。
 
-**系统能力：** SystemCapability.Advertising.Ads
+**系统能力：**  SystemCapability.Advertising.Ads
 
 **参数：**
 
@@ -126,7 +125,7 @@ build(): void
 用于创建AutoAdComponent对象的构造函数。
 
 
-**元服务API：** 从API version 12开始，该接口支持在元服务中使用。
+**元服务API：**  从API version 12开始，该接口支持在元服务中使用。
 
 
-**系统能力：** SystemCapability.Advertising.Ads
+**系统能力：**  SystemCapability.Advertising.Ads

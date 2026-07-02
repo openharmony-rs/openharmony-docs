@@ -14,7 +14,7 @@
 
 type HdrMetadataValue = HdrMetadataType | HdrStaticMetadata | ArrayBuffer | HdrGainmapMetadata
 
-PixelMap使用的HDR元数据值类型，和[HdrMetadataKey](arkts-apis-image-e.md#hdrmetadatakey12)关键字相对应。
+PixelMap使用的HDR元数据值类型，与[HdrMetadataKey](arkts-apis-image-e.md#hdrmetadatakey12)关键字对应。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -22,5 +22,5 @@ PixelMap使用的HDR元数据值类型，和[HdrMetadataKey](arkts-apis-image-e.
 | ------------------- | ----------------------------------------------- |
 | [HdrMetadataType](arkts-apis-image-e.md#hdrmetadatatype12) | [HdrMetadataKey](arkts-apis-image-e.md#hdrmetadatakey12)中HDR_METADATA_TYPE关键字对应的元数据值类型。 |
 | [HdrStaticMetadata](arkts-apis-image-i.md#hdrstaticmetadata12) | [HdrMetadataKey](arkts-apis-image-e.md#hdrmetadatakey12)中HDR_STATIC_METADATA关键字对应的元数据值类型。 |
-| ArrayBuffer | [HdrMetadataKey](arkts-apis-image-e.md#hdrmetadatakey12)中HDR_DYNAMIC_METADATA关键字对应的元数据值类型。 |
+| ArrayBuffer | [HdrMetadataKey](arkts-apis-image-e.md#hdrmetadatakey12)中HDR_DYNAMIC_METADATA关键字对应的元数据值类型，存储HDR动态元数据，格式遵循相关HDR动态元数据标准。 |
 | [HdrGainmapMetadata](arkts-apis-image-i.md#hdrgainmapmetadata12) | [HdrMetadataKey](arkts-apis-image-e.md#hdrmetadatakey12)中HDR_GAINMAP_METADATA关键字对应的元数据值类型。 |

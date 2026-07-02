@@ -38,4 +38,4 @@ handleFileList(fileList: Array\<string\>): void
 
 | 参数名      | 类型            | 必填  | 说明         |
 | -------- | --------------- | ---- | ------------ |
-| fileList | Array\<string\> | 是   | 需要进行操作的文件列表。 |
+| fileList | Array\<string\> | 是   | 用户选择的文件列表。 |

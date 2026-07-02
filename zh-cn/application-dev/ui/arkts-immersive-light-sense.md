@@ -43,7 +43,7 @@
 
 - **自适应设备能力**：沉浸光感会根据设备算力自动调整效果表现，高档设备呈现完整效果，中低档设备自动降级，无需开发者手动适配，确保应用在各类设备上流畅运行。
 
-- **极简接入**：通过应用级开关即可一键开启沉浸光感，Dialog、Menu、Chip等组件默认支持，无需额外代码改动即可获得高品质视觉效果。支持应用级开启的组件清单请参见[MaterialState](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)。
+- **极简接入**：通过应用级开关即可一键开启沉浸光感，[Dialog](arkts-base-dialog-overview.md)、[菜单控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md)、[Chip](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)等组件默认支持，无需额外代码改动即可获得高品质视觉效果。支持应用级开启的完整组件清单请参见[MaterialState](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)。
 
 - **深浅色自适应**：沉浸式系统材质能够根据系统的深浅色模式自动展现不同的效果，无需开发者额外处理。
 
@@ -76,7 +76,11 @@
 }
 ```
 
-[MaterialState](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)提供应用级沉浸式系统材质配置的三种状态DEFAULT、ENABLE和DISABLE，即对应json5配置中的三个value枚举值。
+MaterialState提供应用级沉浸式系统材质配置的三种状态DEFAULT、ENABLE和DISABLE，即对应json5配置中的三个value枚举值。
+
+> **说明：**
+>
+> 支持应用级沉浸式系统材质的组件包括：[弹出框Dialog](arkts-base-dialog-overview.md)、[即时反馈（Toast）](arkts-create-toast.md)、[AlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md)、[ChipGroup](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ChipGroup.md)、[Chip](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)、[Select](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md)、[菜单控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md)、[Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md)、[SegmentButton](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md)、[SegmentButtonV2](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md)、[Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md)、[bindSheet](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)、[SelectionMenu](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SelectionMenu.md)、[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)（设置[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9)后长按或双击触发的文本菜单）。
 
 开发者可以通过[uiMaterial.getMaterialInfo()](../reference/apis-arkui/arkts-apis-uimaterial.md#uimaterialgetmaterialinfo)获取当前应用的材质配置状态，并根据配置状态决定组件行为。
 
@@ -179,9 +183,9 @@ struct MaterialInfoPage {
    
    ![material-column](../reference/apis-arkui/figures/material-column.PNG)
    
-   **Button交互形变示例**
+   **Column交互形变示例**
    
-   以下示例为[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)组件同时设置ULTRA_THIN样式和[interactive](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)交互形变效果，用户按压按钮时组件会产生弹性形变，松手后自动恢复，增强交互的视觉反馈。
+   以下示例为[Column](../reference/apis-arkui/arkui-ts/ts-container-column.md)组件同时设置ULTRA_THIN样式和[interactive](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)交互形变效果，用户按压时组件会产生弹性形变，松手后自动恢复，增强交互的视觉反馈。
    
    <!-- @[ButtonInteractive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/ets/pages/immersiveLightSense/ButtonInteractive.ets) -->
    
@@ -267,7 +271,7 @@ struct MaterialInfoPage {
    }
    ```
    
-   ![materialLightEffect](../reference/apis-arkui/figures/materialLightEffect.gif)
+   ![materialLightEffect](../reference/apis-arkui/figures/materialLightEffectAndInteractive.gif)
 
 2. 通过组件独有接口设置。
 
@@ -561,23 +565,6 @@ struct MaterialInfoPage {
    ```
    
    如果需要全局禁用所有组件的沉浸式系统材质，可在module.json5中将metadata的value设置为"disable"。
-   
-   <!-- @[MaterialStateConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImmersiveLightSense/entry/src/main/module.json5) -->
-   
-   ``` JSON5
-   {
-     "module": {
-       "name": "entry",
-       "type": "entry",
-       // ...
-       "metadata": [{
-         "name": "ohos.arkui.UIMaterial.state",
-         "value": "enable"
-       }],
-       // ...
-     }
-   }
-   ```
 
 ### 开启后的效果
 

@@ -148,7 +148,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_DATE_PICKER_TEXT_STYLE = 13005
 ```
 
-Text color, font size, and font weight for all items except the top, bottom, and selected items in the date picker. This attribute can be set, reset, and obtained as required through APIs.<br>
+Text color, font size, and font weight for all items except edge items and selected items in the date picker. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
@@ -244,7 +244,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_DATE_PICKER_CAN_LOOP = 13009
 ```
 
-Whether to enable looping for the picker. This attribute can be set, reset, and obtained as required through APIs.<br>
+Whether to enable looping for the date picker. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 20
@@ -340,7 +340,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_TIME_PICKER_TEXT_STYLE = 14003
 ```
 
-Text color, font size, and font weight of all items except the top, bottom, and selected items in the time picker. This attribute can be set, reset, and obtained as required through APIs.<br>
+Text color, font size, and font weight for all items except edge items and selected items in the time picker. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
@@ -649,7 +649,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_TEXT_PICKER_DEFAULT_PICKER_ITEM_HEIGHT = 15008
 ```
 
-Height of each item in the picker. This attribute can be set, reset, and obtained as required through APIs.<br>
+Height of each item in the text picker. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12

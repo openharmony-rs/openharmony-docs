@@ -12,7 +12,7 @@ typedef struct ArkUI_SystemFontStyleEvent ArkUI_SystemFontStyleEvent
 
 ## Overview
 
-Defines a system font style event.
+Defines a system font style change event.
 
 **Since**: 12
 

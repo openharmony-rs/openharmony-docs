@@ -116,10 +116,10 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name| Description|
 | -- | -- |
 | .string | Overlay text.|
-| .value[0]?.i32 | Position of the overlay relative to the component. This parameter is optional. The parameter type is [ArkUI_Alignment](capi-native-type-h.md#arkui_alignment). The default value is **ARKUI_ALIGNMENT_TOP_START**.|
+| .value[0]?.i32 | Position of the overlay relative to the component. This parameter is optional. The parameter type is [ArkUI_Alignment](capi-layout-h.md#arkui_alignment). The default value is **ARKUI_ALIGNMENT_TOP_START**.|
 | .value[1]?.f32 | Offset of the overlay relative to the upper left corner of itself on the x-axis, in vp. This parameter is optional. The default value is **0** vp.|
 | .value[2]?.f32 | Offset of the overlay relative to the upper left corner of itself on the y-axis, in vp. This parameter is optional. The default value is **0** vp.|
-| .value[3]?.i32 | Layout direction of the overlay. This parameter is optional. The parameter type is [ArkUI_Direction](capi-native-type-h.md#arkui_direction). The default value is **ARKUI_DIRECTION_LTR**.<br>In most scenarios, this parameter should be set to **Auto**, which allows the system to automatically handle the layout direction. If specific directions need to be maintained in certain scenarios, set this parameter to **LTR** (left-to-right) or **RTL** (right-to-left). It is supported since API version 21.|
+| .value[3]?.i32 | Layout direction of the overlay. This parameter is optional. The parameter type is [ArkUI_Direction](capi-layout-h.md#arkui_direction). The default value is **ARKUI_DIRECTION_LTR**.<br>In most scenarios, this parameter should be set to **Auto**, which allows the system to automatically handle the layout direction. If specific directions need to be maintained in certain scenarios, set this parameter to **LTR** (left-to-right) or **RTL** (right-to-left). It is supported since API version 21.|
 | .object | Node tree used for overlay. The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md). The default value is **nullptr**. It is supported since API version 21.|
 
 **Returns**
@@ -127,10 +127,10 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Type| Description|
 | -- | -- |
 | .string | Overlay text.|
-| .value[0].i32 | Position of the overlay relative to the component. The parameter type is [ArkUI_Alignment](capi-native-type-h.md#arkui_alignment). The default value is **ARKUI_ALIGNMENT_TOP_START**.|
+| .value[0].i32 | Position of the overlay relative to the component. The parameter type is [ArkUI_Alignment](capi-layout-h.md#arkui_alignment). The default value is **ARKUI_ALIGNMENT_TOP_START**.|
 | .value[1].f32 | Offset of the overlay relative to the upper left corner of itself on the x-axis, in vp.|
 | .value[2].f32 | Offset of the overlay relative to the upper left corner of itself on the y-axis, in vp.|
-| .value[3].i32 | Layout direction of the overlay. The parameter type is [ArkUI_Direction](capi-native-type-h.md#arkui_direction). The default value is **ARKUI_DIRECTION_LTR**. It is supported since API version 21.|
+| .value[3].i32 | Layout direction of the overlay. The parameter type is [ArkUI_Direction](capi-layout-h.md#arkui_direction). The default value is **ARKUI_DIRECTION_LTR**. It is supported since API version 21.|
 | .object | Node tree used for overlay. The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md). It is supported since API version 21.|
 
 ## NODE_FOCUS_STATUS
@@ -198,7 +198,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name| Description|
 | -- | -- |
 | .value[0]?.u32 | Types of the expanded safe area, which are enumerated values of [ArkUI_SafeAreaType](capi-native-type-h.md#arkui_safeareatype). Example: **ARKUI_SAFE_AREA_TYPE_SYSTEM \| ARKUI_SAFE_AREA_TYPE_CUTOUT**.|
-| .value[1]?.u32 | Edges for expanding the safe area, which are enumerated values of [ArkUI_SafeAreaEdge](capi-native-type-h.md#arkui_safeareaedge). Example: **ARKUI_SAFE_AREA_EDGE_TOP \| ARKUI_SAFE_AREA_EDGE_BOTTOM**.|
+| .value[1]?.u32 | Types of the expanded safe area edge, which are enumerated values of [ArkUI_SafeAreaEdge](capi-layout-h.md#arkui_safeareaedge). Example: **ARKUI_SAFE_AREA_EDGE_TOP \| ARKUI_SAFE_AREA_EDGE_BOTTOM**.|
 
 **Returns**
 
@@ -460,8 +460,8 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .data[0].i32 | Event tool type for the response region. The parameter type is [ArkUI_ResponseRegionSupportedTool](capi-common-attributes-h.md#arkui_responseregionsupportedtool). The default value is **ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_ALL**.|
 | .data[1].f32 | X coordinate of the touch point relative to the upper left corner of the component, in vp. The default value is **0.0**.|
 | .data[2].f32 | Y coordinate of the touch point relative to the upper left corner of the component, in vp. The default value is **0.0**.|
-| .data[3].f32 | Width of the response area, in percentage. The default value is **100.0**.|
-| .data[4].f32 | Height of the response area, in percentage. The default value is **100.0**.|
+| .data[3].f32 | Width of the response region, in percentage. The default value is **100.0**.|
+| .data[4].f32 | Height of the response region, in percentage. The default value is **100.0**.|
 | .data[5...].f32 | Multiple response regions that can be set. The sequence of the parameters is the same as the preceding.|
 
 **Returns**
@@ -471,8 +471,8 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .data[0].i32 | Event tool type for the response region. The parameter type is [ArkUI_ResponseRegionSupportedTool](capi-common-attributes-h.md#arkui_responseregionsupportedtool). The default value is **ARKUI_RESPONSE_REGIN_SUPPORTED_TOOL_ALL**.|
 | .data[1].f32 | X coordinate of the touch point relative to the upper left corner of the component, in vp. The default value is **0.0**.|
 | .data[2].f32 | Y coordinate of the touch point relative to the upper left corner of the component, in vp. The default value is **0.0**.|
-| .data[3].f32 | Width of the response area, in percentage. The default value is **100.0**.|
-| .data[4].f32 | Height of the response area, in percentage. The default value is **100.0**.|
+| .data[3].f32 | Width of the response region, in percentage. The default value is **100.0**.|
+| .data[4].f32 | Height of the response region, in percentage. The default value is **100.0**.|
 | .data[5...].f32 | Multiple response regions that can be set. The sequence of the parameters is the same as the preceding.|
 
 ## NODE_MONOPOLIZE_EVENTS

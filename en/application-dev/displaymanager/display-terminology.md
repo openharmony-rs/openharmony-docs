@@ -1,10 +1,11 @@
 # Display Management Development Terminology
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
+<!--Owner: @fei_1007-->
 <!--Designer: @hejunfei1991-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=45bd746ae860f1fef969073ffaa0af763a0251fa translatedAt=2026-06-29T06:20:05.683Z pushedAt=2026-06-30T03:19:44.674Z -->
 
 Display management development centers on two core concepts: logical screens and physical screens.
 

@@ -12,7 +12,7 @@ typedef struct ArkUI_TextCascadePickerRangeContentArray ArkUI_TextCascadePickerR
 
 ## 概述
 
-定义多列联动数据选择器的列表。
+定义多列联动数据选择器的数组。
 
 **起始版本：** 19
 

@@ -41,11 +41,11 @@ cpp部分代码
 
 <!-- @[oh_jsvm_get_vm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/getvm/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
 
 // OH_JSVM_GetVM的样例方法
 static JSVM_Value GetVM(JSVM_Env env, JSVM_CallbackInfo info)
@@ -72,6 +72,8 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getVM", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
+
+const char *SRC_CALL_NATIVE = R"JS(getVM())JS";
 ```
 
 样例测试JS
@@ -93,11 +95,11 @@ cpp部分代码
 
 <!-- @[oh_jsvm_get_heap_statistics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/getheapstatistics/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 #include "napi/native_api.h"
+#include "hilog/log.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+// ...
 
 // OH_JSVM_GetHeapStatistics的样例方法
 void PrintHeapStatistics(JSVM_HeapStatistics result)
@@ -141,6 +143,8 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getHeapStatistics", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
+
+const char *SRC_CALL_NATIVE = R"JS(getHeapStatistics())JS";
 ```
 
 样例测试JS

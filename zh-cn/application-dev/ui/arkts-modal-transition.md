@@ -46,7 +46,7 @@
    // 模态转场控制变量
    @State isPresent: boolean = false;
 
-  Button('Click to present modal view')
+   Button('Click to present modal view')
      // 通过选定的模态接口，绑定模态展示界面，ModalTransition是内置的ContentCover转场动画类型，这里选择None代表系统不加默认动画，通过onDisappear控制状态变量变换
      .bindContentCover(this.isPresent, this.MyBuilder(), {
                modalTransition: ModalTransition.NONE,

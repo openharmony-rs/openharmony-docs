@@ -158,8 +158,8 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].f32 | Position along the x-axis, in px.|
 | .value[1].f32 | Position along the y-axis, in px.|
-| .value[2]?.i32 | Alignment mode. This parameter is optional. The parameter type is [ArkUI_Alignment](capi-native-type-h.md#arkui_alignment). The default value is **ARKUI_ALIGNMENT_TOP_START**. This parameter is supported since API version 21.|
-| .value[3]?.i32 | Layout direction. This parameter is optional. The parameter type is [ArkUI_Direction](capi-native-type-h.md#arkui_direction). The default value is **ARKUI_DIRECTION_AUTO**. In most scenarios, you are advised to set this parameter to **AUTO**, so that the system automatically handles the layout direction. If a fixed direction is required, set this parameter to **LTR** or **RTL**. This parameter is supported since API version 21.|
+| .value[2]?.i32 | Alignment mode. This parameter is optional. The parameter type is [ArkUI_Alignment](capi-layout-h.md#arkui_alignment). The default value is **ARKUI_ALIGNMENT_TOP_START**. This parameter is supported since API version 21.|
+| .value[3]?.i32 | Layout direction. This parameter is optional. The parameter type is [ArkUI_Direction](capi-layout-h.md#arkui_direction). The default value is **ARKUI_DIRECTION_AUTO**. In most scenarios, you are advised to set this parameter to **AUTO**, so that the system automatically handles the layout direction. If a fixed direction is required, set this parameter to **LTR** or **RTL**. This parameter is supported since API version 21.|
 
 **Returns**
 
@@ -167,8 +167,8 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].f32 | Position along the x-axis, in px.|
 | .value[1].f32 | Position along the y-axis, in px.|
-| .value[2].i32 | Alignment mode. The parameter type is [ArkUI_Alignment](capi-native-type-h.md#arkui_alignment). This return value is supported since API version 21.|
-| .value[3].i32 | Layout direction. The parameter type is [ArkUI_Direction](capi-native-type-h.md#arkui_direction). This return value is supported since API version 21.|
+| .value[2].i32 | Alignment mode. The parameter type is [ArkUI_Alignment](capi-layout-h.md#arkui_alignment). This return value is supported since API version 21.|
+| .value[3].i32 | Layout direction. The parameter type is [ArkUI_Direction](capi-layout-h.md#arkui_direction). This return value is supported since API version 21.|
 
 ## NODE_RENDER_GROUP
 

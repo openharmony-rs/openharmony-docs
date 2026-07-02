@@ -10,7 +10,7 @@
 
 定义Swiper组件的枚举和接口。
 
-**引用文件：** <arkui/swiper.h>
+**引用文件：** <arkui/node_attributes/swiper.h>
 
 **库：** libace_ndk.z.so
 

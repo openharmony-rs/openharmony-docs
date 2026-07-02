@@ -1,16 +1,19 @@
 # @ohos.notificationExtensionSubscription (notificationExtensionSubscription)
+
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=50e734d278c25dbb71273705da516c218b3754a1 translatedAt=2026-06-29T02:37:37.772Z pushedAt=2026-06-30T10:57:37.016Z -->
 
 The **notificationExtensionSubscription** module provides capabilities for managing notification extension, including opening the extension settings screen, subscribing to/unsubscribing from notification extension, and obtaining/setting the notification authorization status.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 22. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+
 ## Modules to Import
 
 ```ts
@@ -304,9 +307,9 @@ Obtains the applications that are allowed to access device notifications. This A
 
 **Return value**
 
-| Type    | Description       | 
+| Type    | Description       |
 | ------- |-----------|
-| Promise\<[GrantedBundleInfo[]](./js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22)\>   | Promise used to return the applications obtained.       |
+| Promise\<[GrantedBundleInfo](js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22)[]\>   | Promise used to return the list of applications that are allowed to access device notifications.        |
 
 **Error codes**
 

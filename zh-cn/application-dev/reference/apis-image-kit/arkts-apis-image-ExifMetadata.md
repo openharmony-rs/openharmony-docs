@@ -40,7 +40,7 @@ import { image } from '@kit.ImageKit';
 | imageDescription                    | string                                             | 否   | 是   | 图像描述。                                                   |
 | make                                | string                                             | 否   | 是   | 拍摄设备的品牌制造商名称。                                   |
 | model                               | string                                             | 否   | 是   | 相机型号。                                                   |
-| stripOffsets                        | number[]                                           | 否   | 是   | 图像数据的分块存储偏移量，单位为字节。<br/>为提高大图像访问效率，原始像素数据被分割为多个连续区块（称为条带）。<br/>此标签按顺序存储每个条带在文件中的起始位置偏移量。 |
+| stripOffsets                        | number[]                                           | 否   | 是   | 图像数据的分块存储偏移量，单位为字节（Byte）。<br/>为提高大图像访问效率，原始像素数据被分割为多个连续区块（称为条带）。<br/>此标签按顺序存储每个条带在文件中的起始位置偏移量。 |
 | orientation                         | [Orientation](arkts-apis-image-e.md#orientation23) | 否   | 是   | 图像方向。                                                   |
 | samplesPerPixel                     | number                                             | 否   | 是   | 记录每个像素的颜色分量数量，适用于RGB（红绿蓝，Red Green Blue）和YCbCr（亮度-蓝色色差-红色色差，Luma-Chrominance）色彩模型。<br/>由于这两种模型都是三分量模型（一个亮度分量加两个色度分量，或三个颜色通道），因此该标签的标准值为3。<br/>对于JPEG压缩图像，此标签将会被对应的JPEG标记替换。 |
 | rowsPerStrip                        | number                                             | 否   | 是   | 每条图像数据的行数。                                         |
@@ -104,7 +104,7 @@ import { image } from '@kit.ImageKit';
 | oecf                                | ArrayBuffer                                        | 否   | 是   | ISO 14524中规定的光电转换函数（OECF）。 |
 | sensitivityType                     | number                                             | 否   | 是   | 灵敏度类型。                                                 |
 | standardOutputSensitivity           | number                                             | 否   | 是   | 标准输出灵敏度。                                             |
-| recommendedExposureIndex            | number                                             | 否   | 是   | GPS测量模式。                                                |
+| recommendedExposureIndex            | number                                             | 否   | 是   | 推荐曝光指数。                                                |
 | isoSpeedLatitudeyyy                 | number                                             | 否   | 是   | 表示相机传感器在单次曝光中可记录的最大动态范围。单位为EV。 |
 | isoSpeedLatitudezzz                 | number                                             | 否   | 是   | 表示相机传感器在过曝方向保护高光细节的能力边界。单位为EV。 |
 | exifVersion                         | string                                             | 否   | 是   | 支持的Exif标准的版本。                                       |
@@ -193,7 +193,7 @@ static createInstance(): ExifMetadata
 async function exifMetadataCreateInstance(context: Context) {
   let exifMetadata = image.ExifMetadata.createInstance();
   if (exifMetadata != undefined) {
-    console.info("createInstance successfully.");
+    console.info("Succeeded in creating an ExifMetadata instance.");
   }
 }
 ```
@@ -249,9 +249,9 @@ async function exifMetadataGetProperties(context: Context) {
   let metaData = await imageSource.readImageMetadata(["ImageWidth", "ImageLength"]);
   if (metaData != undefined && metaData.exifMetadata != undefined) {
     await metaData.exifMetadata.getProperties(["ImageWidth", "ImageLength"]).then((data) => {
-      console.info('Get properties ',JSON.stringify(data));
+      console.info(`Succeeded in getting properties. Data: ${JSON.stringify(data)}.`);
     }).catch((error: BusinessError) => {
-      console.error(`Failed to get properties. error.code is ${error.code}, error.message is ${error.message}`);
+      console.error(`Failed to get properties. Code: ${error.code}, message: ${error.message}.`);
     });
   } else {
     console.error('Metadata is null.');
@@ -360,10 +360,9 @@ async function exifMetadataGetAllProperties(context: Context) {
   if (metaData != undefined && metaData.exifMetadata != undefined) {
     await metaData.exifMetadata.getAllProperties().then((data) => {
       const count = Object.keys(data).length;
-      console.info('Metadata have ', count, ' properties');
-      console.info(`Get metadata all properties: ${data}`);
+      console.info(`Succeeded in getting all properties. Count: ${count}, data: ${JSON.stringify(data)}.`);
     }).catch((error: BusinessError) => {
-      console.error(`Failed to get metadata all properties. error.code is ${error.code}, error.message is ${error.message}`);
+      console.error(`Failed to get all properties. Code: ${error.code}, message: ${error.message}.`);
     });
   } else {
     console.error('Metadata is null.');
@@ -407,9 +406,9 @@ async function exifMetadataClone(context: Context) {
   if (metaData != undefined && metaData.exifMetadata != undefined) {
     let new_metadata = await metaData.exifMetadata.clone();
     new_metadata.getProperties(["ImageWidth"]).then((data1) => {
-      console.info(`Clone new_metadata and get Properties: ${data1}`);
+      console.info(`Succeeded in cloning metadata and getting properties. Data: ${JSON.stringify(data1)}.`);
     }).catch((err: BusinessError) => {
-      console.error(`Failed to clone new_metadata. error.code: ${err.code}, error.message: ${err.message}`);
+      console.error(`Failed to clone metadata and get properties. Code: ${err.code}, message: ${err.message}.`);
     });
   } else {
     console.error('Metadata is null.');

@@ -34,7 +34,7 @@ pushUrl(options: RouterOptions): Promise&lt;void&gt;
 
 > **说明：**
 >
-> - 从API version 9开始支持，从API version 18开始废弃，建议使用[pushUrl](arkts-apis-uicontext-router.md#pushurl)替代。pushUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 9开始支持，从API version 18开始废弃，建议使用[pushUrl(options: router.RouterOptions)](arkts-apis-uicontext-router.md#pushurl)替代。pushUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
@@ -111,7 +111,7 @@ pushUrl(options: RouterOptions, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> - 从API version 9开始支持，从API version 18开始废弃，建议使用[pushUrl](arkts-apis-uicontext-router.md#pushurl-1)替代。pushUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 9开始支持，从API version 18开始废弃，建议使用[pushUrl(options: router.RouterOptions, callback: AsyncCallback&lt;void&gt;)](arkts-apis-uicontext-router.md#pushurl-1)替代。pushUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
@@ -180,7 +180,7 @@ pushUrl(options: RouterOptions, mode: RouterMode): Promise&lt;void&gt;
 
 > **说明：**
 >
-> - 从API version 9开始支持，从API version 18开始废弃，建议使用[pushUrl](arkts-apis-uicontext-router.md#pushurl-2)替代。pushUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 9开始支持，从API version 18开始废弃，建议使用[pushUrl(options: router.RouterOptions, mode: router.RouterMode)](arkts-apis-uicontext-router.md#pushurl-2)替代。pushUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
@@ -258,7 +258,7 @@ pushUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCallback&lt;voi
 
 > **说明：**
 >
-> - 从API version 9开始支持，从API version 18开始废弃，建议使用[pushUrl](arkts-apis-uicontext-router.md#pushurl-3)替代。pushUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 9开始支持，从API version 18开始废弃，建议使用[pushUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)](arkts-apis-uicontext-router.md#pushurl-3)替代。pushUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
@@ -329,7 +329,7 @@ replaceUrl(options: RouterOptions): Promise&lt;void&gt;
 
 > **说明：**
 >
-> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用[replaceUrl](arkts-apis-uicontext-router.md#replaceurl)替代。replaceUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用[replaceUrl(options: router.RouterOptions)](arkts-apis-uicontext-router.md#replaceurl)替代。replaceUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
@@ -395,7 +395,7 @@ replaceUrl(options: RouterOptions, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用[replaceUrl](arkts-apis-uicontext-router.md#replaceurl-1)替代。replaceUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用[replaceUrl(options: router.RouterOptions, callback: AsyncCallback&lt;void&gt;)](arkts-apis-uicontext-router.md#replaceurl-1)替代。replaceUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
@@ -454,7 +454,7 @@ replaceUrl(options: RouterOptions, mode: RouterMode): Promise&lt;void&gt;
 
 > **说明：**
 >
-> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用[replaceUrl](arkts-apis-uicontext-router.md#replaceurl-2)替代。replaceUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用[replaceUrl(options: router.RouterOptions, mode: router.RouterMode)](arkts-apis-uicontext-router.md#replaceurl-2)替代。replaceUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
@@ -522,7 +522,7 @@ replaceUrl(options: RouterOptions, mode: RouterMode, callback: AsyncCallback&lt;
 
 > **说明：**
 >
-> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用[replaceUrl](arkts-apis-uicontext-router.md#replaceurl-3)替代。replaceUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 9开始支持，除Lite Wearable外，从API version 18开始废弃，建议使用[replaceUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)](arkts-apis-uicontext-router.md#replaceurl-3)替代。replaceUrl需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
@@ -582,7 +582,7 @@ pushNamedRoute(options: NamedRouterOptions): Promise&lt;void&gt;
 
 > **说明：**
 >
-> - 从API version 10开始支持，从API version 18开始废弃，建议使用[pushNamedRoute](arkts-apis-uicontext-router.md#pushnamedroute)替代。pushNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[pushNamedRoute(options: router.NamedRouterOptions)](arkts-apis-uicontext-router.md#pushnamedroute)替代。pushNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
@@ -663,7 +663,7 @@ pushNamedRoute(options: NamedRouterOptions, callback: AsyncCallback&lt;void&gt;)
 
 > **说明：**
 >
-> - 从API version 10开始支持，从API version 18开始废弃，建议使用[pushNamedRoute](arkts-apis-uicontext-router.md#pushnamedroute-1)替代。pushNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[pushNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback&lt;void&gt;)](arkts-apis-uicontext-router.md#pushnamedroute-1)替代。pushNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
@@ -734,7 +734,7 @@ pushNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise&lt;void&g
 
 > **说明：**
 >
-> - 从API version 10开始支持，从API version 18开始废弃，建议使用[pushNamedRoute](arkts-apis-uicontext-router.md#pushnamedroute-2)替代。pushNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode)](arkts-apis-uicontext-router.md#pushnamedroute-2)替代。pushNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
@@ -814,7 +814,7 @@ pushNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback: AsyncCal
 
 > **说明：**
 >
-> - 从API version 10开始支持，从API version 18开始废弃，建议使用[pushNamedRoute](arkts-apis-uicontext-router.md#pushnamedroute-3)替代。pushNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)](arkts-apis-uicontext-router.md#pushnamedroute-3)替代。pushNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
@@ -887,7 +887,7 @@ replaceNamedRoute(options: NamedRouterOptions): Promise&lt;void&gt;
 
 > **说明：**
 >
-> - 从API version 10开始支持，从API version 18开始废弃，建议使用[replaceNamedRoute](arkts-apis-uicontext-router.md#replacenamedroute)替代。replaceNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[replaceNamedRoute(options: router.NamedRouterOptions)](arkts-apis-uicontext-router.md#replacenamedroute)替代。replaceNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
@@ -955,7 +955,7 @@ replaceNamedRoute(options: NamedRouterOptions, callback: AsyncCallback&lt;void&g
 
 > **说明：**
 >
-> - 从API version 10开始支持，从API version 18开始废弃，建议使用[replaceNamedRoute](arkts-apis-uicontext-router.md#replacenamedroute-1)替代。replaceNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[replaceNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback&lt;void&gt;)](arkts-apis-uicontext-router.md#replacenamedroute-1)替代。replaceNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
@@ -1016,7 +1016,7 @@ replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode): Promise&lt;voi
 
 > **说明：**
 >
-> - 从API version 10开始支持，从API version 18开始废弃，建议使用[replaceNamedRoute](arkts-apis-uicontext-router.md#replacenamedroute-2)替代。replaceNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode)](arkts-apis-uicontext-router.md#replacenamedroute-2)替代。replaceNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
@@ -1086,7 +1086,7 @@ replaceNamedRoute(options: NamedRouterOptions, mode: RouterMode, callback: Async
 
 > **说明：**
 >
-> - 从API version 10开始支持，从API version 18开始废弃，建议使用[replaceNamedRoute](arkts-apis-uicontext-router.md#replacenamedroute-3)替代。replaceNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 10开始支持，从API version 18开始废弃，建议使用[replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, callback: AsyncCallback&lt;void&gt;)](arkts-apis-uicontext-router.md#replacenamedroute-3)替代。replaceNamedRoute需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
@@ -1148,7 +1148,7 @@ back(options?: RouterOptions ): void
 
 > **说明：**
 >
-> - 从API version 8开始支持，从API version 18开始废弃，建议使用[back](arkts-apis-uicontext-router.md#back)替代。back需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 8开始支持，从API version 18开始废弃，建议使用[back](arkts-apis-uicontext-router.md#back)(options?: router.RouterOptions)替代。back需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
@@ -1176,7 +1176,7 @@ back(index: number, params?: Object): void;
 
 > **说明：**
 >
-> - 从API version 12开始支持，从API version 18开始废弃，建议使用[back](arkts-apis-uicontext-router.md#back12)替代。back需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
+> - 从API version 12开始支持，从API version 18开始废弃，建议使用[back(index: number, params?: Object)](arkts-apis-uicontext-router.md#back12)替代。back需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取[Router](arkts-apis-uicontext-router.md)实例，然后通过该实例进行调用。
 >
 > - 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)方法获取当前UI上下文关联的[Router](arkts-apis-uicontext-router.md)对象。
 
@@ -1691,7 +1691,7 @@ push(options: RouterOptions): void
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[pushUrl](arkts-apis-uicontext-router.md#pushurl)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[pushUrl(options: router.RouterOptions)](arkts-apis-uicontext-router.md#pushurl)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1737,7 +1737,7 @@ replace(options: RouterOptions): void
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[replaceUrl](arkts-apis-uicontext-router.md#replaceurl)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[replaceUrl(options: router.RouterOptions)](arkts-apis-uicontext-router.md#replaceurl)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Lite
 

@@ -123,14 +123,14 @@ generateKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\
 | 12000013 | queried credential does not exist. |
 | 12000014 | memory is insufficient. |
 | 12000015 | Failed to obtain the security information via UserIAM. |
-| 12000017 | The key with same alias is already exist. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000011 | The queried entity does not exist. This may happen because the key resource ID specified by keyAlias has not been opened in the external crypto scenario. |
-| 12000020 | the provider operation failed. |
-| 12000021 | the UKey PIN is locked. |
-| 12000023 | the UKey PIN not authenticated. |
-| 12000024 | the provider or UKey is busy. |
-| 12000026 | the secure element is not available. |
+| 12000017 | The key with the same alias already exists.<br>适用版本：20+ |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000011 | The queried entity does not exist. This may happen because the key resource ID specified by keyAlias has not been opened in the external crypto scenario.<br>适用版本：26.0.0+ |
+| 12000020 | the provider operation failed.<br>适用版本：26.0.0+ |
+| 12000021 | the UKey PIN is locked.<br>适用版本：26.0.0+ |
+| 12000023 | the UKey PIN not authenticated.<br>适用版本：26.0.0+ |
+| 12000024 | the provider or UKey is busy.<br>适用版本：26.0.0+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -302,14 +302,14 @@ generateKeyItem(keyAlias: string, options: HuksOptions) : Promise\<void>
 | 12000013 | queried credential does not exist. |
 | 12000014 | memory is insufficient. |
 | 12000015 | Failed to obtain the security information via UserIAM. |
-| 12000017 | the key with same alias is already exist. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000011 | The queried entity does not exist. This may happen because the key resource ID specified by keyAlias has not been opened in the external crypto scenario. |
-| 12000020 | the provider operation failed. |
-| 12000021 | the UKey PIN is locked. |
-| 12000023 | the UKey PIN not authenticated. |
-| 12000024 | the provider or UKey is busy. |
-| 12000026 | the secure element is not available. |
+| 12000017 | The key with the same alias already exists.<br>适用版本：20+ |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000011 | The queried entity does not exist. This may happen because the key resource ID specified by keyAlias has not been opened in the external crypto scenario.<br>适用版本：26.0.0+ |
+| 12000020 | the provider operation failed.<br>适用版本：26.0.0+ |
+| 12000021 | the UKey PIN is locked.<br>适用版本：26.0.0+ |
+| 12000023 | the UKey PIN not authenticated.<br>适用版本：26.0.0+ |
+| 12000024 | the provider or UKey is busy.<br>适用版本：26.0.0+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -377,7 +377,7 @@ deleteKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<v
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 
 **示例：**
 
@@ -514,7 +514,7 @@ deleteKeyItem(keyAlias: string, options: HuksOptions) : Promise\<void>
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 
 **示例：**
 
@@ -567,12 +567,13 @@ API version 9-11系统能力为SystemCapability.Security.Huks.Extension；从API
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine. |
+| 12000011 | queried entity does not exist.<br>适用版本：9-19 |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000013 | queried credential does not exist. |
 | 12000014 | memory is insufficient. |
 | 12000015 | Failed to obtain the security information via UserIAM. |
-| 12000017 | The key with same alias is already exist. |
-| 12000018 | the group id specified by the access group tag is invalid. |
+| 12000017 | The key with same alias is already exist.<br>适用版本：20+ |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 
 **示例：**
 
@@ -664,12 +665,13 @@ importKeyItem(keyAlias: string, options: HuksOptions) : Promise\<void>
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine. |
+| 12000011 | queried entity does not exist.<br>适用版本：9-19 |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000013 | queried credential does not exist. |
 | 12000014 | memory is insufficient. |
 | 12000015 | Failed to obtain the security information via UserIAM. |
-| 12000017 | the key with same alias is already exist. |
-| 12000018 | the group id specified by the access group tag is invalid. |
+| 12000017 | The key with same alias is already exist.<br>适用版本：20+ |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 
 **示例：**
 
@@ -760,7 +762,7 @@ attestKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<H
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 
 **示例：**
 
@@ -904,7 +906,7 @@ attestKeyItem(keyAlias: string, options: HuksOptions) : Promise\<HuksReturnResul
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 
 **示例：**
 
@@ -1038,8 +1040,8 @@ anonAttestKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallbac
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000026 | the secure element is not available. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1174,14 +1176,16 @@ anonAttestKeyItem(keyAlias: string, options: HuksOptions) : Promise\<HuksReturnR
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
 | 12000001 | algorithm mode is not supported. |
+| 12000002 | algorithm param is missing.<br>适用版本：11-11 |
+| 12000003 | algorithm param is invalid.<br>适用版本：11-11 |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine. |
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000026 | the secure element is not available. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1433,13 +1437,13 @@ API version 9-11系统能力为SystemCapability.Security.Huks.Extension；从API
 | 12000013 | queried credential does not exist. |
 | 12000014 | memory is insufficient. |
 | 12000015 | Failed to obtain the security information via UserIAM. |
-| 12000017 | the key with same alias is already exist. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000020 | the provider operation failed. |
-| 12000021 | the UKey PIN is locked. |
-| 12000023 | the UKey PIN not authenticated. |
-| 12000024 | the provider or UKey is busy. |
-| 12000026 | the secure element is not available. |
+| 12000017 | The key with the same alias already exists.<br>适用版本：20+ |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000020 | the provider operation failed.<br>适用版本：26.0.0+ |
+| 12000021 | the UKey PIN is locked.<br>适用版本：26.0.0+ |
+| 12000023 | the UKey PIN not authenticated.<br>适用版本：26.0.0+ |
+| 12000024 | the provider or UKey is busy.<br>适用版本：26.0.0+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1656,13 +1660,13 @@ importWrappedKeyItem(keyAlias: string, wrappingKeyAlias: string, options: HuksOp
 | 12000013 | queried credential does not exist. |
 | 12000014 | memory is insufficient. |
 | 12000015 | Failed to obtain the security information via UserIAM. |
-| 12000017 | the key with same alias is already exist. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000020 | the provider operation failed. |
-| 12000021 | the UKey PIN is locked. |
-| 12000023 | the UKey PIN not authenticated. |
-| 12000024 | the provider or UKey is busy. |
-| 12000026 | the secure element is not available. |
+| 12000017 | The key with the same alias already exists.<br>适用版本：20+ |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000020 | the provider operation failed.<br>适用版本：26.0.0+ |
+| 12000021 | the UKey PIN is locked.<br>适用版本：26.0.0+ |
+| 12000023 | the UKey PIN not authenticated.<br>适用版本：26.0.0+ |
+| 12000024 | the provider or UKey is busy.<br>适用版本：26.0.0+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1708,16 +1712,18 @@ API version 9-11系统能力为SystemCapability.Security.Huks.Extension；从API
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
 | 12000001 | algorithm mode is not supported. |
+| 12000002 | algorithm param is missing.<br>适用版本：9-11 |
+| 12000003 | algorithm param is invalid.<br>适用版本：9-11 |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine. |
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000020 | the provider operation failed. |
-| 12000024 | the provider or UKey is busy. |
-| 12000026 | the secure element is not available. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000020 | the provider operation failed.<br>适用版本：26.0.0+ |
+| 12000024 | the provider or UKey is busy.<br>适用版本：26.0.0+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1772,16 +1778,18 @@ exportKeyItem(keyAlias: string, options: HuksOptions) : Promise\<HuksReturnResul
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
 | 12000001 | algorithm mode is not supported. |
+| 12000002 | algorithm param is missing.<br>适用版本：9-11 |
+| 12000003 | algorithm param is invalid.<br>适用版本：9-11 |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine. |
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000020 | the provider operation failed. |
-| 12000024 | the provider or UKey is busy. |
-| 12000026 | the secure element is not available. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000020 | the provider operation failed.<br>适用版本：26.0.0+ |
+| 12000024 | the provider or UKey is busy.<br>适用版本：26.0.0+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -1839,7 +1847,7 @@ wrapKeyItem(keyAlias: string, params: HuksOptions): Promise\<HuksReturnResult>
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
 | 12000018 | the input parameter is invalid. |
-| 12000026 | the secure element is not available. |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 <!--RP2--><!--RP2End-->
 
@@ -1882,7 +1890,7 @@ unwrapKeyItem(keyAlias: string, params: HuksOptions, wrappedKey: Uint8Array): Pr
 | 12000014 | memory is insufficient. |
 | 12000015 | Failed to obtain the security information via UserIAM. |
 | 12000018 | the input parameter is invalid. |
-| 12000026 | the secure element is not available. |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 <!--RP3--><!--RP3End-->
 
@@ -2075,16 +2083,16 @@ API version 9-11系统能力为SystemCapability.Security.Huks.Extension；从API
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
 | 12000001 | algorithm mode is not supported. |
-| 12000002 | algorithm param is missing. |
-| 12000003 | algorithm param is invalid. |
+| 12000002 | algorithm param is missing.<br>适用版本：9-11 |
+| 12000003 | algorithm param is invalid.<br>适用版本：9-11 |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine. |
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000026 | the secure element is not available. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -2139,16 +2147,16 @@ getKeyItemProperties(keyAlias: string, options: HuksOptions) : Promise\<HuksRetu
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
 | 12000001 | algorithm mode is not supported. |
-| 12000002 | algorithm param is missing. |
-| 12000003 | algorithm param is invalid. |
+| 12000002 | algorithm param is missing.<br>适用版本：9-11 |
+| 12000003 | algorithm param is invalid.<br>适用版本：9-11 |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine. |
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000026 | the secure element is not available. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -2200,7 +2208,7 @@ isKeyItemExist(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 
 **示例：**
 
@@ -2348,7 +2356,7 @@ isKeyItemExist(keyAlias: string, options: HuksOptions) : Promise\<boolean>
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 
 **示例：**
 
@@ -2400,7 +2408,7 @@ hasKeyItem(keyAlias: string, options: HuksOptions, callback: AsyncCallback\<bool
 | 12000006 | error occurred in crypto engine. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 
 **示例：**
 
@@ -2465,7 +2473,7 @@ hasKeyItem(keyAlias: string, options: HuksOptions) : Promise\<boolean>
 | 12000006 | error occurred in crypto engine. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 
 **示例：**
 
@@ -2526,12 +2534,12 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the input parameter is invalid. Possible causes: 1. the aead length is invalid. 2. the group id specified by the access group tag is invalid. |
-| 12000020 | the provider operation failed. |
-| 12000021 | the UKey PIN is locked. |
-| 12000023 | the UKey PIN not authenticated. |
-| 12000024 | the provider or UKey is busy. |
-| 12000026 | the secure element is not available. |
+| 12000018 | the input parameter is invalid. Possible causes: 1. the aead length is invalid. 2. the group id specified by the access group tag is invalid.<br>适用版本：22+ |
+| 12000020 | the provider operation failed.<br>适用版本：22+ |
+| 12000021 | the UKey PIN is locked.<br>适用版本：22+ |
+| 12000023 | the UKey PIN not authenticated.<br>适用版本：22+ |
+| 12000024 | the provider or UKey is busy.<br>适用版本：22+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 ## huks.initSession<sup>9+</sup>
 
@@ -2576,12 +2584,12 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the input parameter is invalid. Possible causes: 1. the aead length is invalid. 2. the group id specified by the access group tag is invalid. |
-| 12000020 | the provider operation failed. |
-| 12000021 | the UKey PIN is locked. |
-| 12000023 | the UKey PIN not authenticated. |
-| 12000024 | the provider or UKey is busy. |
-| 12000026 | the secure element is not available. |
+| 12000018 | the input parameter is invalid. Possible causes: 1. the aead length is invalid. 2. the group id specified by the access group tag is invalid.<br>适用版本：22+ |
+| 12000020 | the provider operation failed.<br>适用版本：22+ |
+| 12000021 | the UKey PIN is locked.<br>适用版本：22+ |
+| 12000023 | the UKey PIN not authenticated.<br>适用版本：22+ |
+| 12000024 | the provider or UKey is busy.<br>适用版本：22+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 ## huks.updateSession<sup>9+</sup>
 
@@ -2623,12 +2631,12 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000020 | the provider operation failed. |
-| 12000021 | the UKey PIN is locked. |
-| 12000023 | the UKey PIN not authenticated. |
-| 12000024 | the provider or UKey is busy. |
-| 12000026 | the secure element is not available. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000020 | the provider operation failed.<br>适用版本：22+ |
+| 12000021 | the UKey PIN is locked.<br>适用版本：22+ |
+| 12000023 | the UKey PIN not authenticated.<br>适用版本：22+ |
+| 12000024 | the provider or UKey is busy.<br>适用版本：22+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 ## huks.updateSession<sup>9+</sup>
 
@@ -2671,8 +2679,8 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000026 | the secure element is not available. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 ## huks.updateSession<sup>9+</sup>
 
@@ -2720,12 +2728,12 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000020 | the provider operation failed. |
-| 12000021 | the UKey PIN is locked. |
-| 12000023 | the UKey PIN not authenticated. |
-| 12000024 | the provider or UKey is busy. |
-| 12000026 | the secure element is not available. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000020 | the provider operation failed.<br>适用版本：22+ |
+| 12000021 | the UKey PIN is locked.<br>适用版本：22+ |
+| 12000023 | the UKey PIN not authenticated.<br>适用版本：22+ |
+| 12000024 | the provider or UKey is busy.<br>适用版本：22+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 ## huks.finishSession<sup>9+</sup>
 
@@ -2767,13 +2775,13 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000017 | The key with same alias is already exist. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000020 | the provider operation failed. |
-| 12000021 | the UKey PIN is locked. |
-| 12000023 | the UKey PIN not authenticated. |
-| 12000024 | the provider or UKey is busy. |
-| 12000026 | the secure element is not available. |
+| 12000017 | The key with same alias is already exist.<br>适用版本：20+ |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000020 | the provider operation failed.<br>适用版本：22+ |
+| 12000021 | the UKey PIN is locked.<br>适用版本：22+ |
+| 12000023 | the UKey PIN not authenticated.<br>适用版本：22+ |
+| 12000024 | the provider or UKey is busy.<br>适用版本：22+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 ## huks.finishSession<sup>9+</sup>
 
@@ -2816,9 +2824,9 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000017 | The key with same alias is already exist. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000026 | the secure element is not available. |
+| 12000017 | The key with same alias is already exist.<br>适用版本：20+ |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 ## huks.finishSession<sup>9+</sup>
 
@@ -2866,13 +2874,13 @@ huks.initSession、huks.updateSession、huks.finishSession为三段式接口，�
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000017 | The key with same alias is already exist. |
-| 12000018 | the group id specified by the access group tag is invalid. |
-| 12000020 | the provider operation failed. |
-| 12000021 | the UKey PIN is locked. |
-| 12000023 | the UKey PIN not authenticated. |
-| 12000024 | the provider or UKey is busy. |
-| 12000026 | the secure element is not available. |
+| 12000017 | The key with same alias is already exist.<br>适用版本：20+ |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
+| 12000020 | the provider operation failed.<br>适用版本：22+ |
+| 12000021 | the UKey PIN is locked.<br>适用版本：22+ |
+| 12000023 | the UKey PIN not authenticated.<br>适用版本：22+ |
+| 12000024 | the provider or UKey is busy.<br>适用版本：22+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 ## huks.abortSession<sup>9+</sup>
 
@@ -2904,11 +2912,11 @@ abortSession终止密钥操作。使用callback异步回调。
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine or UKey driver. |
 | 12000012 | Device environment or input parameter abnormal. |
-| 12000018 | the group id specified by the access group tag is invalid. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 | 12000014 | memory is insufficient. |
-| 12000020 | the provider operation failed. |
-| 12000024 | the provider or UKey is busy. |
-| 12000026 | the secure element is not available. |
+| 12000020 | the provider operation failed.<br>适用版本：22+ |
+| 12000024 | the provider or UKey is busy.<br>适用版本：22+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -3325,11 +3333,11 @@ abortSession终止密钥操作。使用Promise异步回调。
 | 12000005 | IPC communication failed. |
 | 12000006 | error occurred in crypto engine or UKey driver. |
 | 12000012 | Device environment or input parameter abnormal. |
-| 12000018 | the group id specified by the access group tag is invalid. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 | 12000014 | memory is insufficient. |
-| 12000020 | the provider operation failed. |
-| 12000024 | the provider or UKey is busy. |
-| 12000026 | the secure element is not available. |
+| 12000020 | the provider operation failed.<br>适用版本：22+ |
+| 12000024 | the provider or UKey is busy.<br>适用版本：22+ |
+| 12000026 | the secure element is not available.<br>适用版本：26.0.0+ |
 
 **示例：**
 
@@ -3435,7 +3443,7 @@ listAliases(options: HuksOptions): Promise\<HuksListAliasesReturnResult>
 | 12000005 | IPC communication failed. |
 | 12000012 | Device environment or input parameter abnormal. |
 | 12000014 | memory is insufficient. |
-| 12000018 | the group id specified by the access group tag is invalid. |
+| 12000018 | the group id specified by the access group tag is invalid.<br>适用版本：23+ |
 
 **示例：**
 

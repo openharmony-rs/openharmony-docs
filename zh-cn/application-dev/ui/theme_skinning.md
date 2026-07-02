@@ -44,7 +44,7 @@
     import { Theme, ThemeControl } from '@kit.ArkUI';
     import { gAppTheme } from './AppTheme';
     
-    //在页面build前执行ThemeControl
+    // 在页面build前执行ThemeControl
     ThemeControl.setDefaultTheme(gAppTheme);
     
     @Entry
@@ -226,7 +226,7 @@
   ``` TypeScript
   import { CustomColors, CustomTheme, Theme } from '@kit.ArkUI';
   import { common } from '@kit.AbilityKit';
-  //请将$r('app.color.xxx')替换为实际资源文件
+  // 请将$r('app.color.xxx')替换为实际资源文件
   class AppColors implements CustomColors {
     public fontPrimary: ResourceColor = $r('app.color.brand_purple');
     public backgroundEmphasize: ResourceColor = $r('app.color.brand_purple');

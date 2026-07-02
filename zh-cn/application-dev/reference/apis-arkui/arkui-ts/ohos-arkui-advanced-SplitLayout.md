@@ -32,7 +32,7 @@ import { SplitLayout } from '@kit.ArkUI';
 
 ## SplitLayout
 
-SplitLayout({mainImage: Resource, primaryText: string, secondaryText?: string, tertiaryText?: string, container: ()&nbsp;=&gt;&nbsp;void })
+SplitLayout({mainImage: ResourceStr, primaryText: ResourceStr, secondaryText?: ResourceStr, tertiaryText?: ResourceStr, container: ()&nbsp;=&gt;&nbsp;void })
 
 **装饰器类型：**@Component
 

@@ -137,7 +137,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].f32 to .value[19].f32| Filter matrix array.|
 | .size | 5 x 4 filter array size.|
-| .object | Pointer to the color filter. The parameter type is **OH_Drawing_ColorFilter**.<br>Either **.object** or **.size** must be set.|
+| .object | Color filter pointer. The parameter type is **OH_Drawing_ColorFilter**.<br>Either **.object** or **.size** must be set.|
 
 **Returns**
 
@@ -145,7 +145,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].f32 to .value[19].f32| Filter matrix array.|
 | .size | 5 x 4 filter array size.|
-| .object | Pointer to the color filter. The parameter type is **OH_Drawing_ColorFilter**.|
+| .object | Color filter pointer. The parameter type is **OH_Drawing_ColorFilter**.|
 
 ## NODE_IMAGE_AUTO_RESIZE
 
@@ -237,13 +237,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Image rendering mode. The parameter type is [ArkUI_ImageRenderMode](capi-image-h.md#arkui_imagerendermode).|
+| .value[0].i32 | Image rendering mode. The value is an enumerated value of [ArkUI_ImageRenderMode](capi-image-h.md#arkui_imagerendermode).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Image rendering mode. The parameter type is [ArkUI_ImageRenderMode](capi-image-h.md#arkui_imagerendermode).|
+| .value[0].i32 | Image rendering mode. The value is an enumerated value of [ArkUI_ImageRenderMode](capi-image-h.md#arkui_imagerendermode).|
 
 ## NODE_IMAGE_FIT_ORIGINAL_SIZE
 

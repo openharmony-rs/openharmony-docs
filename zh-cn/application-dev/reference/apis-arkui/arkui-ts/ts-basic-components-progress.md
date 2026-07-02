@@ -624,7 +624,6 @@ function myProgress(config: ProgressConfiguration) {
 struct Index {
   @State currentValue: number = 0;
   modifier = new MyProgressModifier('rgb(39, 135, 217)');
-  @State myModifier: (MyProgressModifier | undefined) = this.modifier;
 
   build() {
     Column() {

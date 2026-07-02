@@ -43,11 +43,12 @@ cpp部分代码：
 
 <!-- @[oh_jsvm_get_value_uint32](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmBasicDataTypes/getvalueuint32/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 
 // OH_JSVM_GetValueUint32的样例方法
 static JSVM_Value GetValueUint32(JSVM_Env env, JSVM_CallbackInfo info)
@@ -80,7 +81,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // 样例测试js
-const char* srcCallNative = R"JS(getValueUint32(123))JS";
+const char* SRC_CALL_NATIVE = R"JS(getValueUint32(123))JS";
 ```
 
 预期的输出结果：
@@ -97,11 +98,12 @@ cpp部分代码：
 
 <!-- @[oh_jsvm_get_value_int32](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmBasicDataTypes/getvalueint32/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 
 // OH_JSVM_GetValueInt32的样例方法
 static JSVM_Value GetValueInt32(JSVM_Env env, JSVM_CallbackInfo info)
@@ -135,7 +137,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // 样例测试js
-const char* srcCallNative = R"JS(getValueInt32(-123))JS";
+const char* SRC_CALL_NATIVE = R"JS(getValueInt32(-123))JS";
 ```
 
 预期的输出结果：
@@ -152,11 +154,12 @@ cpp部分代码：
 
 <!-- @[oh_jsvm_get_value_int64](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmBasicDataTypes/getvalueint64/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 
 // OH_JSVM_GetValueInt64的样例方法
 static JSVM_Value GetValueInt64(JSVM_Env env, JSVM_CallbackInfo info)
@@ -171,7 +174,7 @@ static JSVM_Value GetValueInt64(JSVM_Env env, JSVM_CallbackInfo info)
     if (status != JSVM_OK) {
         OH_LOG_ERROR(LOG_APP, "JSVM GetValueInt64 fail");
     } else {
-        OH_LOG_INFO(LOG_APP, "JSVM GetValueInt64 success: %{public}ld", result64);
+        OH_LOG_INFO(LOG_APP, "JSVM GetValueInt64 success: %{public}d", result64);
     }
     return args[0];
 }
@@ -187,7 +190,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // 样例测试js
-const char* srcCallNative = R"JS(getValueInt64(-123))JS";
+const char* SRC_CALL_NATIVE = R"JS(getValueInt64(-123))JS";
 ```
 
 预期的输出结果：
@@ -204,11 +207,12 @@ cpp部分代码：
 
 <!-- @[oh_jsvm_get_value_double](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmBasicDataTypes/getvaluedouble/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 
 // OH_JSVM_GetValueDouble的样例方法
 static JSVM_Value GetDouble(JSVM_Env env, JSVM_CallbackInfo info)
@@ -237,7 +241,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // 样例测试js
-const char* srcCallNative = R"JS(getDouble(-110.0456))JS";
+const char* SRC_CALL_NATIVE = R"JS(getDouble(-110.0456))JS";
 ```
 
 预期的输出结果：
@@ -254,11 +258,12 @@ cpp部分代码：
 
 <!-- @[oh_jsvm_create_int32](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmBasicDataTypes/createint32/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 
 // OH_JSVM_CreateInt32的样例方法
 static JSVM_Value CreateInt32(JSVM_Env env, JSVM_CallbackInfo info)
@@ -288,7 +293,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // 样例测试js
-const char* srcCallNative = R"JS(createInt32())JS";
+const char* SRC_CALL_NATIVE = R"JS(createInt32())JS";
 ```
 
 预期的输出结果：
@@ -305,11 +310,12 @@ cpp部分代码：
 
 <!-- @[oh_jsvm_create_uint32](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmBasicDataTypes/createuint32/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 
 // OH_JSVM_CreateUint32的样例方法
 static JSVM_Value CreateUInt32(JSVM_Env env, JSVM_CallbackInfo info)
@@ -343,7 +349,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // 样例测试js
-const char* srcCallNative = R"JS(createUInt32())JS";
+const char* SRC_CALL_NATIVE = R"JS(createUInt32())JS";
 ```
 
 预期的输出结果：
@@ -360,15 +366,18 @@ cpp部分代码：
 
 <!-- @[oh_jsvm_create_int64](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmBasicDataTypes/createint64/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 
 // OH_JSVM_CreateInt64的样例方法
 static JSVM_Value CreateInt64(JSVM_Env env, JSVM_CallbackInfo info)
 {
+    // int64是有符号的64位整数类型，可以表示范围从-2^63到2^63 - 1的整数，即 -9223372036854775808到9223372036854775807
+    // 要表示的整数值
     int64_t value = 2147483648;
     // 创建JavaScript中的int64数字
     JSVM_Value result = nullptr;
@@ -394,7 +403,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // 样例测试js
-const char* srcCallNative = R"JS(createInt64())JS";
+const char* SRC_CALL_NATIVE = R"JS(createInt64())JS";
 ```
 
 预期的输出结果：
@@ -411,12 +420,12 @@ cpp部分代码：
 
 <!-- @[oh_jsvm_create_double](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmBasicDataTypes/createdouble/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// CreateDouble注册回调
+#include "hilog/log.h"
+// ...
+
 
 // OH_JSVM_CreateDouble的样例方法
 static JSVM_Value CreateDouble(JSVM_Env env, JSVM_CallbackInfo info)
@@ -445,7 +454,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // 样例测试js
-const char* srcCallNative = R"JS(createDouble())JS";
+const char* SRC_CALL_NATIVE = R"JS(createDouble())JS";
 ```
 
 预期的输出结果：

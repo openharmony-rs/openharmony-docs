@@ -170,7 +170,7 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 
 | 参数名字 | 类型 | 参数含义 | 详细介绍 | 
 | -------- | -------- | -------- | -------- |
-| fp_unwind | bool | true表示使用fp回栈方式进行回栈；<br/>false表示使用dwarf回栈方式进行回栈。 | fp回栈是利用了x29寄存器保存的fp指针，函数的fp指针始终指向父函数（调用方）的fp指针，调优服务根据这一特点进行回栈，根据ip计算相对PC，然后查找maps对应区间来进行符号化。<br/>由于现在编译期越来越优化，出现寄存器重用或者编译禁用fp，会导致fp方式回不出相应的栈；混合栈情况下，fp不会记录多重混合，于是便需要dwarf回栈方式做更精确的回栈。<br/>dwarf回栈是根据pc寄存器在map表中查找对应的map信息，由于dwarf是逐级解析调用栈，所以其性能会比fp有劣化。<br/>注意：fp回栈暂不支持调优非aarch64架构的设备。 | 
+| fp_unwind | bool | true表示使用fp回栈方式进行回栈；<br/>false表示使用dwarf回栈方式进行回栈。 | FP回栈机制依赖于x29寄存器保存的帧指针（FP），该指针始终指向调用方函数的FP。调优服务正是基于这一特性，通过FP链回溯调用栈，并根据指令指针（IP）计算出相对于程序计数器（PC）的偏移量，随后查找maps文件中的对应内存区间以完成符号化。<br/>随着编译器优化级别的提升，寄存器重用或编译时禁用FP等优化手段，往往导致FP回栈无法准确还原调用栈。此外，在涉及混合栈的场景下，FP机制也无法完整记录多重混合的调用信息。因此，需要引入DWARF回栈方式，以实现更精确的调用栈回溯。<br/>DWARF回栈是根据pc寄存器在map表中查找对应的map信息，由于DWARF是逐级解析调用栈，所以其性能会比FP有劣化。<br/>注意：FP回栈暂不支持调优非aarch64架构的设备。 | 
 | statistics_interval | int | 统计间隔，表示将一个统计周期内的栈进行汇总，单位：s。 | 为实现长时间轻量化采集，提供统计模式抓栈。如果更关注调优时的性能，只需要知道每个调用栈出现的次数和总大小，不需要知道每一次具体时间，可以使用统计模式。 | 
 | process_name | string | 需要进行内存调优的进程名 | 和/proc/节点下的进程名一致。 | 
 | startup_mode | bool | 是否抓取进程启动阶段内存。默认不抓取启动阶段内存。 | 记录进程孵化启动到调优结束这个期间内堆内存分配的信息。 | 
@@ -819,7 +819,7 @@ plugin_configs {
 }
 CONFIG
 ```
-此命令示例抓取整机网络数据信息。执行命令后，通过hdc file recv /data/local/tmp/hiprofiler_data.htrace将文件导出到当前模板，然后通过smartperf打开并解析。结果示例如下图：
+此命令示例抓取整机网络数据信息。执行命令后，通过hdc file recv /data/local/tmp/hiprofiler_data.htrace将文件导出到当前目录，然后通过smartperf打开并解析。结果示例如下图：
 
 ![network_001.png](figures/network_001.png)
 

@@ -5,6 +5,7 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=50e734d278c25dbb71273705da516c218b3754a1 translatedAt=2026-06-29T02:37:33.635Z pushedAt=2026-06-30T10:57:37.013Z -->
 
 The **Notification** module provides notification management capabilities, covering notifications, notification slots, notification subscription, notification enabled status, and notification badge status.
 
@@ -710,12 +711,6 @@ Checks whether notification is enabled for this application. This API uses a pro
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
 
 **System API**: This is a system API and cannot be called by third-party applications.
-
-**Parameters**
-
-| Name  | Type        | Mandatory| Description      |
-| ------ | ------------ | ---- | ---------- |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes  | Bundle information of the application.|
 
 **Return value**
 

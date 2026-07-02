@@ -10,7 +10,7 @@
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-## 111001 Internal Error
+## 111001 Failed to Load Resources
 
 **Error Message**
 

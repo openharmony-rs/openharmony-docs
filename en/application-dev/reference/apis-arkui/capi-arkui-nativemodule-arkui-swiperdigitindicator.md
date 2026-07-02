@@ -1,7 +1,7 @@
 # ArkUI_SwiperDigitIndicator
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @huangxiaolinabc-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -12,10 +12,10 @@ typedef struct ArkUI_SwiperDigitIndicator ArkUI_SwiperDigitIndicator
 
 ## Overview
 
-Defines the style of the digit navigation indicator for the **Swiper** component.
+Defines the style of the digit navigation indicator for the **Swiper** component, which is used to display the current position and total number of pages in digits.
 
 **Since**: 19
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [native_type.h](capi-native-type-h.md)
+**Header file**: [swiper.h](capi-swiper-h.md)

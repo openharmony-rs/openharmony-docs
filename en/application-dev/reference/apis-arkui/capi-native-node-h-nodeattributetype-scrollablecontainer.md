@@ -60,7 +60,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Width of the scrollbar, in vp. The default value is **4**.<br>If this parameter is set to a value less than or equal to 0, the default value is used. The value **0** means not to show the scrollbar.|
+| .value[0].f32 | Width of the scrollbar, in vp. The default value is **4**.<br>Value range: If the value is less than 0, the default value is used. For kids' smartwatches, the default value is restored to 5 vp. The value **0** means not to show the scrollbar.|
 
 **Returns**
 
@@ -84,7 +84,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .data[0].u32 | Color of the scrollbar, in 0xARGB format. The default value is **0x66182431**.|
+| .data[0].u32 | Color of the scrollbar, in 0xARGB format. The default value for kids' smartwatches is **0xffffffff**, indicating white (100% non-transparent). For other devices, the default value is **0x66182431**, indicating dark blue-gray (40% non-transparent).|
 
 **Returns**
 
@@ -564,7 +564,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Start margin of the scrollbar, in vp. The default value is **0**.|
+| .value[0].f32 | Margin of the scrollbar. The default value is **42** for kids' smartwatches and **0** for other devices. The unit is vp.|
 | .value[1].f32 | End margin of the scrollbar, in vp. The default value is **0**.|
 
 **Returns**
@@ -758,13 +758,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Direction in which the list items are arranged. The parameter type is [ArkUI_Axis](capi-native-type-h.md#arkui_axis). The default value is **ARKUI_AXIS_VERTICAL**.|
+| .value[0].i32 | Direction in which the list items are arranged. The parameter type is [ArkUI_Axis](capi-layout-h.md#arkui_axis). The default value is **ARKUI_AXIS_VERTICAL**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Direction in which the list items are arranged. The parameter type is [ArkUI_Axis](capi-native-type-h.md#arkui_axis).|
+| .value[0].i32 | Direction in which the list items are arranged. The parameter type is [ArkUI_Axis](capi-layout-h.md#arkui_axis).|
 
 ## NODE_LIST_STICKY
 
@@ -1586,13 +1586,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Direction of the main axis. The parameter type is [ArkUI_FlexDirection](capi-native-type-h.md#arkui_flexdirection). The default value is [ARKUI_FLEX_DIRECTION_COLUMN](capi-native-type-h.md#arkui_flexdirection).|
+| .value[0].i32 | Main axis direction. The parameter type is [ArkUI_FlexDirection](capi-layout-h.md#arkui_flexdirection). The default value is [ARKUI_FLEX_DIRECTION_COLUMN](capi-layout-h.md#arkui_flexdirection).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Direction of the main axis. The parameter type is [ArkUI_FlexDirection](capi-native-type-h.md#arkui_flexdirection).|
+| .value[0].i32 | Main axis direction. The parameter type is [ArkUI_FlexDirection](capi-layout-h.md#arkui_flexdirection).|
 
 ## NODE_WATER_FLOW_COLUMN_TEMPLATE
 
@@ -2655,7 +2655,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Whether to enable the edge fade effect. **0**: The edge fade effect is disabled. **1**: The edge fade effect is enabled. The default value is **0**.|
+| .value[0].i32 | Whether to enable the edge fade effect. **0**: Disable the edge fade effect. **1**: Enable the edge fade effect. The default value is **0**.|
 | .value[1]?.f32 | Length of the edge fade effect. The unit is vp. The default value is **32**.|
 
 **Returns**

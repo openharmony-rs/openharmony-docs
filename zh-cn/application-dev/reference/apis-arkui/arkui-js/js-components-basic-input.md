@@ -1,7 +1,7 @@
 # input
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @kangshihui-->
+<!--Owner: @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -126,7 +126,7 @@
      width: 60%;
      background-color: gray;
      margin-top: 20px;
-    }
+   }
    ```
    
    ```js
@@ -150,7 +150,7 @@
          error: 'error text'
        });
      },
-    }
+   }
    ```
 
 

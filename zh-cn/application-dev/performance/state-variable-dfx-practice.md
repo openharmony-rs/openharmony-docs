@@ -125,7 +125,7 @@ struct SpecialImage {
 
 运行上述示例并分别点击按钮，可以看到点击Move按钮和Scale按钮时组件SpecialImage都出现了刷新，运行效果图如下。
 
-![](./figures/state_variable_dfx_pratice_pic1.gif) 
+![](./figures/state-variable-dfx-practice-pic1.gif) 
 
 下面以自定义组件ComponentA和其中的状态变量uiStyle为例介绍工具的使用过程。
 
@@ -135,7 +135,7 @@ struct SpecialImage {
 ```shell
 hdc shell "hidumper -s WindowManagerService -a '-a'"
 ```
-![](./figures/state_variable_dfx_pratice_pic2.png) 
+![](./figures/state-variable-dfx-practice-pic2.png) 
 
 3、基于上一步获取的窗口Id 11，使用-viewHierarchy命令携带-r 参数递归打印应用的自定义组件树。从结果中找到目标组件ComponentA，后面括号中的内容即为组件ComponentA的节点Id 70。
 ```shell
@@ -179,7 +179,7 @@ hdc shell "hidumper -s WindowManagerService -a '-w 11 -jsdump -stateVariables -v
 
 所以当uiStyle变化时，影响的组件范围为自定义组件SpecialImage以及系统组件Stack[79]和Image[81]。
 
-![](./figures/state_variable_dfx_pratice_pic3.png) 
+![](./figures/state-variable-dfx-practice-pic3.png) 
 
 示例中组件SpecialImage仅使用了uiStyle传递到specialImageUiStyle中的属性scaleX、scaleY，但是点击Move按钮修改uiStyle中的属性translateY时引起的uiStyle变化也会导致组件SpecialImage的刷新，所以可以将uiStyle中的属性scaleX、scaleY提取到状态变量scaleStyle中，属性translateX和translateY提取到状态变量translateStyle中，仅传递scaleStyle给组件SpecialImage，避免不必要的刷新。
 
@@ -247,7 +247,7 @@ struct SpecialImage {
 
 修改后的示例运行效果图如下，只有点击Scale按钮时SpecialImage产生刷新现象，点击Move按钮时SpecialImage不会刷新。
 
-![](./figures/state_variable_dfx_pratice_pic4.gif) 
+![](./figures/state-variable-dfx-practice-pic4.gif) 
 
 可以使用上文步骤再次获取ComponentA组件的状态变量信息如下，可以看到ComponentA中状态变量scaleStyle影响组件SpecialImage[74]和Image[78]，状态变量translateStyle影响组件Stack[76]，translateStyle的变化不会再导致SpecialImage的刷新。
 ```shell
@@ -313,7 +313,7 @@ struct ComponentB {
 ```shell
 hdc shell "hidumper -s WindowManagerService -a '-a'"
 ```
-![](./figures/state_variable_dfx_pratice_pic5.png) 
+![](./figures/state-variable-dfx-practice-pic5.png) 
 
 2、打印自定义组件树。
 
@@ -368,9 +368,8 @@ hdc shell "hidumper -s WindowManagerService -a '-w 11 -jsdump -stateVariables'"
 - Sync peers： 要同步的其他状态变量和其所属的组件。
 - Dependent components：当前状态变量在此组件中关联的节点Id，即依赖该变量的系统或自定义组件的节点Id。
 
-**注意：**
-
--stateVariables只支持打印指定viewId的状态变量信息，不支持递归打印。所以只能获取单个自定义组件的状态变量信息进行逐级分析，目前无法从全局查看某个状态变量影响到的所有组件。
+>**注意：**
+> -stateVariables只支持打印指定viewId的状态变量信息，不支持递归打印。所以只能获取单个自定义组件的状态变量信息进行逐级分析，目前无法从全局查看某个状态变量影响到的所有组件。
 
 4、打印所有信息，包含自定义组件树和状态变量信息。未指定节点时默认打印根节点，携带-viewId参数打印指定节点信息，携带-r参数递归打印。
 ```shell
@@ -378,7 +377,7 @@ hdc shell "hidumper -s WindowManagerService -a '-w 11 -jsdump -dumpAll'"
 ```
 输出结果如下图：
 
-![](./figures/state_variable_dfx_pratice_pic6.png) 
+![](./figures/state-variable-dfx-practice-pic6.png) 
 
 1、自定义组件树，对应命令-viewHierarchy。
 

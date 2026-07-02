@@ -1,7 +1,7 @@
 # ArkUI_SwiperIndicator
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
+<!--Owner: @huangxiaolinabc-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -12,10 +12,10 @@ typedef struct ArkUI_SwiperIndicator ArkUI_SwiperIndicator
 
 ## Overview
 
-Defines the navigation indicator style of the **Swiper** component.
+Defines the navigation indicator style of the **Swiper** component, which is used to display the current position and switching status in scenarios such as carousel.
 
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Header file**: [native_type.h](capi-native-type-h.md)
+**Header file**: [swiper.h](capi-swiper-h.md)

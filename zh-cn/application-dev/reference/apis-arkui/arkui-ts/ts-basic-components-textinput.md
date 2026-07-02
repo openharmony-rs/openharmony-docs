@@ -693,7 +693,7 @@ passwordRules(value: string)
 
 cancelButton(options: CancelButtonOptions)
 
-设置右侧清除按钮样式，仅支持图片类型的图标。不支持[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)。示例请参考[示例4（设置右侧清除按钮样式）](#示例4设置右侧清除按钮样式)。
+设置右侧清除按钮样式，仅支持图片类型的图标。不支持[TextInputStyle](#textinputstyle9枚举说明)的内联模式。示例请参考[示例4（设置右侧清除按钮样式）](#示例4设置右侧清除按钮样式)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -711,7 +711,7 @@ cancelButton(options: CancelButtonOptions)
 
 selectAll(value: boolean)
 
-设置初始状态时，是否全选文本。不支持[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)。
+设置初始状态时，是否全选文本。不支持[TextInputStyle](#textinputstyle9枚举说明)的内联模式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -735,7 +735,7 @@ showCounter(value: boolean, options?: InputCounterOptions)
 
 当输入字符数大于最大字符数乘百分比值时，显示字符计数器。如果用户设置计数器时不设置InputCounterOptions，那么当前输入字符数超过最大字符数时，边框和计数器下标将变为红色。用户同时设置参数value为true和[InputCounterOptions](ts-universal-attributes-text-style.md#inputcounteroptions11对象说明)，当thresholdPercentage数值在有效区间内，且输入字符数超过最大字符数时，边框和计数器下标将变为红色，框体抖动。highlightBorder设置为false，则不显示红色边框，计数器默认显示红色，框体抖动。
 
-[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)、[密码模式](../../../ui/arkts-common-components-text-input.md#密码模式)下字符计数器不显示。
+[TextInputStyle](#textinputstyle9枚举说明)的内联模式、[密码模式](../../../ui/arkts-common-components-text-input.md#密码模式)下字符计数器不显示。
 
 [示例5（设置计数器）](#示例5设置计数器)展示了设置showCounter的效果。
 
@@ -908,7 +908,7 @@ Font Feature当前支持的属性参见[fontFeature](ts-basic-components-text.md
 
 wordBreak(value: WordBreak)
 
-设置文本断行规则。该属性在组件设置[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)时样式生效，但对placeholder文本无效。
+设置文本断行规则。该属性在组件设置[TextInputStyle](#textinputstyle9枚举说明)的内联模式时样式生效，但对placeholder文本无效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -930,7 +930,7 @@ wordBreak(value: WordBreak)
 
 textOverflow(value: TextOverflow)
 
-设置文本超长时的显示方式。仅在[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)的编辑态、非编辑态下支持。
+设置文本超长时的显示方式。仅在[TextInputStyle](#textinputstyle9枚举说明)值为内联模式的编辑态、非编辑态下支持。
 
 文本截断是按字进行。例如，英文以单词为最小单位进行截断，若需要以字母为单位进行截断，可将wordBreak属性设置为WordBreak.BREAK_ALL。
 
@@ -946,10 +946,10 @@ textOverflow(value: TextOverflow)
 
 | 参数名 | 类型                                                          | 必填 | 说明                                                                                                |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------------------------------------------------------------------------- |
-| value  | [TextOverflow](ts-appendix-enums.md#textoverflow)            | 是   | 文本超长时的显示方式。<br/>[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)非编辑态下默认值：TextOverflow.Ellipsis <br/>内联模式编辑态下默认值：TextOverflow.Clip                     |
+| value  | [TextOverflow](ts-appendix-enums.md#textoverflow)            | 是   | 文本超长时的显示方式。<br/>[TextInputStyle](#textinputstyle9枚举说明)的内联模式非编辑态下默认值：TextOverflow.Ellipsis <br/>内联模式编辑态下默认值：TextOverflow.Clip                     |
 
 >  **说明：**  
->   TextInput组件不支持设置TextOverflow.MARQUEE模式，当设置为TextOverflow.MARQUEE模式时，[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)非编辑态下显示为TextOverflow.Ellipsis，内联模式编辑态下以及非内联模式下显示为TextOverflow.Clip。
+>   TextInput组件不支持设置TextOverflow.MARQUEE模式，当设置为TextOverflow.MARQUEE模式时，[TextInputStyle](#textinputstyle9枚举说明)的内联模式非编辑态下显示为TextOverflow.Ellipsis，内联模式编辑态下以及非内联模式下显示为TextOverflow.Clip。
 >
 >  未设置内联模式时，按照默认风格显示。若此时设置textOverflow，则不生效。
 
@@ -1087,7 +1087,7 @@ lineBreakStrategy(strategy: LineBreakStrategy)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| strategy | [LineBreakStrategy](ts-appendix-enums.md#linebreakstrategy12) | 是   | 文本的折行规则。 <br />默认值：LineBreakStrategy.GREEDY <br/>**说明：**<br/>仅设置[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)时该属性生效。 |
+| strategy | [LineBreakStrategy](ts-appendix-enums.md#linebreakstrategy12) | 是   | 文本的折行规则。 <br />默认值：LineBreakStrategy.GREEDY <br/>**说明：**<br/>仅设置[TextInputStyle](#textinputstyle9枚举说明)的内联模式时该属性生效。 |
 
 ### editMenuOptions<sup>12+</sup>
 
@@ -1144,7 +1144,7 @@ enableHapticFeedback(isEnabled: boolean)
 ```json
 "requestPermissions": [
  {
-    "name": "ohos.permission.VIBRATE",
+    "name": "ohos.permission.VIBRATE"
  }
 ]
 ```
@@ -1309,7 +1309,7 @@ maxFontScale(scale: Optional\<number | Resource>)
 
 cancelButton(symbolOptions: CancelButtonSymbolOptions)
 
-设置右侧清除按钮样式，仅支持symbol图标。不支持[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)。示例请参考[示例15（设置symbol类型清除按钮）](#示例15设置symbol类型清除按钮)。
+设置右侧清除按钮样式，仅支持symbol图标。不支持[TextInputStyle](#textinputstyle9枚举说明)的内联模式。示例请参考[示例15（设置symbol类型清除按钮）](#示例15设置symbol类型清除按钮)。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1327,7 +1327,7 @@ cancelButton(symbolOptions: CancelButtonSymbolOptions)
 
 ellipsisMode(mode: Optional\<EllipsisMode>)
 
-设置省略位置。ellipsisMode属性仅在[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)下生效，需要配合overflow设置为TextOverflow.Ellipsis使用，单独设置ellipsisMode属性不生效。
+设置省略位置。ellipsisMode属性仅在[TextInputStyle](#textinputstyle9枚举说明)的内联模式下生效，需要配合overflow设置为TextOverflow.Ellipsis使用，单独设置ellipsisMode属性不生效。
 
 非编辑态时正常生效，编辑态时EllipsisMode.START和EllipsisMode.CENTER仅在maxLines设置为1时生效，EllipsisMode.END、EllipsisMode.MULTILINE_START和EllipsisMode.MULTILINE_CENTER正常生效。
 
@@ -1618,7 +1618,7 @@ selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
 | 名称    | 说明                                                         |
 | ------- | ------------------------------------------------------------ |
 | Default | 默认风格，光标宽1.5vp，光标高度与文本选中底板高度和字体大小相关。 |
-| Inline  | 内联输入风格。文本选中底板高度与输入框高度相同。<br/>内联输入是在有明显的编辑态/非编辑态的区分场景下使用，例如：文件列表视图中的重命名。<br/>不支持showError属性。<br/>[内联模式](../../../ui/arkts-common-components-text-input.md#内联模式)下，不支持拖入文本。 |
+| Inline  | 内联输入风格，也称内联模式。文本选中底板高度与输入框高度相同。<br/>内联输入是在有明显的编辑态/非编辑态的区分场景下使用，例如：文件列表视图中的重命名。<br/>不支持showError属性。<br/>内联模式下，不支持拖入文本。 |
 
 ## PasswordIcon<sup>10+</sup>对象说明
 
@@ -2428,7 +2428,7 @@ function CustomKeyboardBuilder(builderParams: BuilderParams) {
 struct TextInputExample {
   controller: TextInputController = new TextInputController();
   @State inputValue: string = "";
-  @State componentContent ?: ComponentContent<BuilderParams> = undefined;
+  @State componentContent?: ComponentContent<BuilderParams> = undefined;
   @State builderParam: BuilderParams = new BuilderParams(this.inputValue, this.controller);
   @State supportAvoidance: boolean = true;
 

@@ -16,7 +16,7 @@
 ## 定义font-face
 
 ```js
-// xxx.js
+/* xxx.css */
 @font-face {   
   font-family: font; 
   src: url('/common/font.ttf'); 

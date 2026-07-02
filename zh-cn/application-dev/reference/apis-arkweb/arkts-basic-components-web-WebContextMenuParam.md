@@ -90,7 +90,7 @@ getUnfilteredLinkUrl(): string
 
 getSourceUrl(): string
 
-获取sourceUrl链接。
+获取元素的src属性对应的URL链接地址。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

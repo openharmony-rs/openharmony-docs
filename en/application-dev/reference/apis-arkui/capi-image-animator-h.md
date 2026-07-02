@@ -28,7 +28,7 @@ Defines **ImageAnimator** node types for **NativeNode** APIs.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [ArkUI_ImageAnimatorFrameInfo](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md) | ArkUI_ImageAnimatorFrameInfo | Defines the image frame information.|
+| [ArkUI_ImageAnimatorFrameInfo](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md) | ArkUI_ImageAnimatorFrameInfo | Defines the image animation frame information.|
 
 ### Enums
 

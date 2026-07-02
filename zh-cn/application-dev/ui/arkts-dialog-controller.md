@@ -87,7 +87,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
       
 4. 初始化一个弹出框控制器，并通过设置控制器参数来初始化一个弹出框内容实体对象。最后，通过调用[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)中的[getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取[PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md)对象，再通过该对象调用[openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)接口，并且设置初始化的内容实体对象和控制器参数以创建弹出框。
 
-   <!-- @[content_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+   <!-- @[content_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) --> 
    
    ``` TypeScript
    let dialogController: promptAction.CommonController = new promptAction.DialogController();
@@ -96,7 +96,7 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
        new Params(this.message, dialogController));
    this.getUIContext().getPromptAction().openCustomDialogWithController(
      contentNode, dialogController, this.baseDialogOptions).catch((err: BusinessError) => {
-     hilog.error(0x0000, 'dialogController',
+     hilog.error(DOMAIN, 'dialogController',
        'openCustomDialogWithController error: ' + err.code + ' ' + err.message);
    });
    ```
@@ -133,14 +133,14 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
       
 2. 初始化一个弹出框控制器，并通过调用[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)中的[getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取[PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md)对象，再通过该对象调用[presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)接口，设置初始化的内容实体对象和控制器参数以创建弹出框。
 
-   <!-- @[dialog_controller_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+   <!-- @[dialog_controller_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) --> 
    
    ``` TypeScript
    let dialogController: promptAction.CommonController = new promptAction.DialogController();
    this.getUIContext().getPromptAction().presentCustomDialog(() => {
      this.customDialogComponent(dialogController);
    }, dialogController, this.dialogOptions).catch((err: BusinessError) => {
-     hilog.error(0x0000, 'dialogController', 'presentCustomDialog error: ' + err.code + ' ' + err.message);
+     hilog.error(DOMAIN, 'dialogController', 'presentCustomDialog error: ' + err.code + ' ' + err.message);
    });
    ```
    
@@ -182,14 +182,14 @@ ArkUI的弹出框控制器在绑定弹出框后，可提供对弹出框的操作
       
 2. 初始化一个弹出框控制器，并通过调用[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)中的[getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取[PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md)对象，再通过该对象调用[presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)接口，设置初始化的内容实体对象和控制器参数以创建弹出框。
 
-   <!-- @[dialog_controller_id](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+   <!-- @[dialog_controller_id](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) --> 
    
    ``` TypeScript
    let dialogController: promptAction.CommonController = new promptAction.DialogController();
    this.getUIContext().getPromptAction().presentCustomDialog((dialogId: number) => {
      this.customDialogComponentWithId(dialogId, dialogController);
    }, dialogController, this.dialogOptions).catch((err: BusinessError) => {
-     hilog.error(0x0000, 'dialogController', 'presentCustomDialog error: ' + err.code + ' ' + err.message);
+     hilog.error(DOMAIN, 'dialogController', 'presentCustomDialog error: ' + err.code + ' ' + err.message);
    });
    ```
    

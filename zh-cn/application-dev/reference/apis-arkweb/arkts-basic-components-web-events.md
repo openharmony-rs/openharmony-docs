@@ -2397,14 +2397,14 @@ onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
     controller: webview.WebviewController = new webview.WebviewController();
     uiContext: UIContext = this.getUIContext();
 
-    // 组件的声明周期函数，创建组件实例后触发
+    // 组件的生命周期函数，创建组件实例后触发
     aboutToAppear(): void {
       let context : Context | undefined = this.uiContext.getHostContext() as common.UIAbilityContext;
       if (!context) {
         console.error("context is undefined");
         return;
       }
-      // 向用户请求位置权限
+      // 向用户请求位置权限，对整个应用生效
       atManager.requestPermissionsFromUser(context, ["ohos.permission.LOCATION", "ohos.permission.APPROXIMATELY_LOCATION"]).then((data) => {
         console.info('data:' + JSON.stringify(data));
         console.info('data permissions:' + data.permissions);
@@ -2416,9 +2416,11 @@ onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
 
     build() {
       Column() {
+        // Web组件的geolocationAccess属性默认为true，可以显式配置为false以禁止Web组件获取地理位置信息
         Web({ src: $rawfile('index.html'), controller: this.controller })
           .geolocationAccess(true)
           .onGeolocationShow((event) => {
+            // 位置权限申请通知仅对当前Web组件生效，应用内的其他Web组件不受影响
             if (event) {
               this.uiContext.showAlertDialog({
                 title: 'title',
@@ -2426,11 +2428,13 @@ onGeolocationShow(callback: Callback\<OnGeolocationShowEvent\>)
                 confirm: {
                   value: 'onConfirm',
                   action: () => {
+                    // 允许此站点位置权限请求
                     // invoke的第三个参数表示是否记住当前弹窗的选择状态，如果传入true，则下次不再弹出对话框
                     event.geolocation.invoke(event.origin, true, false);
                   }
                 },
                 cancel: () => {
+                  // 不允许此站点位置权限请求
                   // invoke的第三个参数表示是否记住当前弹窗的选择状态，如果传入true，则下次不再弹出对话框
                   event.geolocation.invoke(event.origin, false, false);
                 }

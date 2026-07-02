@@ -14,6 +14,6 @@
   - [Obtaining Device Location Information (C/C++)](location-guidelines-capi.md)
 - [Geocoding and Reverse Geocoding](geocode-guidelines.md)<!--RP2--><!--RP2End-->
 <!--Del-->
-- [Geofencing](geofence-guidelines.md)
+- [Geofencing Development Based on Device Location](geofence-guidelines.md)
 <!--DelEnd-->
 - [Samples](app-samples.md)<!--RP3--><!--RP3End-->

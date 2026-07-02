@@ -47,8 +47,8 @@ static allowGeolocation(origin: string, incognito?: boolean): void
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
-| 17100011 | Invalid origin.                             |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| 17100011 | Invalid origin. The origin format must follow defined in RFC 6454. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -61,13 +61,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
-  origin: string = "file:///";
+  origin: string = 'file:///';
 
   build() {
     Column() {
       Button('allowGeolocation')
         .onClick(() => {
           try {
+            // 允许指定源使用地理位置接口
             webview.GeolocationPermissions.allowGeolocation(this.origin);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -100,8 +101,8 @@ static deleteGeolocation(origin: string, incognito?: boolean): void
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
-| 17100011 | Invalid origin.                             |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| 17100011 | Invalid origin. The origin format must follow defined in RFC 6454. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -114,13 +115,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
-  origin: string = "file:///";
+  origin: string = 'file:///';
 
   build() {
     Column() {
       Button('deleteGeolocation')
         .onClick(() => {
           try {
+            // 清除指定源的地理位置权限状态
             webview.GeolocationPermissions.deleteGeolocation(this.origin);
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -154,8 +156,8 @@ static getAccessibleGeolocation(origin: string, callback: AsyncCallback\<boolean
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
-| 17100011 | Invalid origin.                             |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| 17100011 | Invalid origin. The origin format must follow defined in RFC 6454. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -168,13 +170,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
-  origin: string = "file:///";
+  origin: string = 'file:///';
 
   build() {
     Column() {
       Button('getAccessibleGeolocation')
         .onClick(() => {
           try {
+            // 以回调方式异步获取指定源的地理位置权限状态
             webview.GeolocationPermissions.getAccessibleGeolocation(this.origin, (error, result) => {
               if (error) {
                 console.error(`getAccessibleGeolocationAsync error, ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -219,8 +222,8 @@ static getAccessibleGeolocation(origin: string, incognito?: boolean): Promise\<b
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
-| 17100011 | Invalid origin.                             |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| 17100011 | Invalid origin. The origin format must follow defined in RFC 6454. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -233,13 +236,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
-  origin: string = "file:///";
+  origin: string = 'file:///';
 
   build() {
     Column() {
       Button('getAccessibleGeolocation')
         .onClick(() => {
           try {
+            // 以Promise方式异步获取指定源的地理位置权限状态
             webview.GeolocationPermissions.getAccessibleGeolocation(this.origin)
               .then(result => {
                 console.info('getAccessibleGeolocationPromise result: ' + result);
@@ -277,7 +281,7 @@ static getStoredGeolocation(callback: AsyncCallback\<Array\<string>>, incognito?
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -296,6 +300,7 @@ struct WebComponent {
       Button('getStoredGeolocation')
         .onClick(() => {
           try {
+            // 以回调方式异步获取已存储地理位置权限状态的所有源信息
             webview.GeolocationPermissions.getStoredGeolocation((error, origins) => {
               if (error) {
                 console.error(`getStoredGeolocationAsync error, ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -340,7 +345,7 @@ static getStoredGeolocation(incognito?: boolean): Promise\<Array\<string>>
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -359,6 +364,7 @@ struct WebComponent {
       Button('getStoredGeolocation')
         .onClick(() => {
           try {
+            // 以Promise方式异步获取已存储地理位置权限状态的所有源信息
             webview.GeolocationPermissions.getStoredGeolocation()
               .then(origins => {
                 let origins_str: string = origins.join();
@@ -407,6 +413,7 @@ struct WebComponent {
       Button('deleteAllGeolocation')
         .onClick(() => {
           try {
+            // 清除所有源的地理位置权限状态
             webview.GeolocationPermissions.deleteAllGeolocation();
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);

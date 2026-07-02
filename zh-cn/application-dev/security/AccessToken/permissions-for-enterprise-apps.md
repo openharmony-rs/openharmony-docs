@@ -7,7 +7,8 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
-以下权限面向<!--Del-->系统应用和<!--DelEnd-->企业类应用开放。
+<!--RP1-->
+以下权限面向系统应用和企业类应用开放。
 
 企业类应用包括企业普通应用和MDM（Mobile Device Management）设备管理应用。
 
@@ -15,7 +16,7 @@
 
 - 仅在企业定制设备上运行，不会在普通消费者设备上运行。
 - 分发类型分别为enterprise_normal（企业普通应用）和enterprise_mdm（MDM应用）。
-<!--RP1--><!--RP1End-->
+<!--RP1End-->
 
 企业类应用可参考[声明权限](declare-permissions.md)，申请以下权限。
 
@@ -747,3 +748,22 @@ UDID（Unified Device ID）是设备的唯一标识。
 **支持设备**：PC/2in1
 
 **起始版本**：26.0.0
+
+ ## ohos.permission.ENTERPRISE_MANAGE_BACKUP
+ 
+允许应用使用备份还原能力。
+
+获取该权限后，应用可以对用户数据和应用沙箱数据进行备份和还原操作。
+
+<!--RP2--><!--RP2End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**是否支持证书授权**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.1.0

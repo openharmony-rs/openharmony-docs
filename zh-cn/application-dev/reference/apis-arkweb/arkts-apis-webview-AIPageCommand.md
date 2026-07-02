@@ -76,28 +76,28 @@
 | aria-description | aria-description | string | 节点`aria-description`属性值。字段值为空时不返回该字段。 |
 | rect | rect | Object | 节点矩形信息，包含`x`、`y`、`width`、`height`。 |
 | bounds | bounds | Object | 节点矩形信息，包含`x`、`y`、`left`、`top`、`right`、`bottom`、`width`、`height`。 |
-| visible | visible | boolean | 节点是否可见。 |
-| isInViewport | isInViewport | boolean | 节点是否在当前视口内。 |
-| clickable | clickable | boolean | 节点是否可点击。 |
-| touchable | touchable | boolean | 节点是否可触控。当前判断逻辑与`clickable`一致。 |
-| scrollable | scrollable | boolean | 节点是否可滚动。 |
-| inputable | inputable | boolean | 节点是否可输入。 |
+| visible | visible | boolean | 节点是否可见。true表示可见，false表示不可见。 |
+| isInViewport | isInViewport | boolean | 节点是否在当前视口内。true表示在当前视口内，false表示不在当前视口内。 |
+| clickable | clickable | boolean | 节点是否可点击。true表示可点击，false表示不可点击。 |
+| touchable | touchable | boolean | 节点是否可触控。true表示可触控，false表示不可触控。当前判断逻辑与`clickable`一致。 |
+| scrollable | scrollable | boolean | 节点是否可滚动。true表示可滚动，false表示不可滚动。 |
+| inputable | inputable | boolean | 节点是否可输入。true表示可输入，false表示不可输入。 |
 | url | url | string | 节点关联URL。按`href`、`src`、`action`、`data`、`poster`顺序读取并转换为完整URL。字段值为空时不返回该字段。 |
 | xpath | xpath | string | 节点XPath。字段值为空时不返回该字段。 |
 | hover | hover | string | 节点`cursor`样式值。字段值为空时不返回该字段。 |
-| mouseover | mouseover | boolean | 节点是否声明`mouseover`内联事件。 |
-| mouseenter | mouseenter | boolean | 节点是否声明`mouseenter`内联事件。 |
+| mouseover | mouseover | boolean | 节点是否声明`mouseover`内联事件。true表示已声明，false表示未声明。 |
+| mouseenter | mouseenter | boolean | 节点是否声明`mouseenter`内联事件。true表示已声明，false表示未声明。 |
 | value | value | string | 当节点为`select`元素时，返回当前选中值。 |
 | options | options | Array\<Object> | 当节点为`select`元素时，返回选项列表。 |
 | value_text | value_text | Array\<Object> | 当节点为`select`元素时，返回选项列表。 |
-| focusable | focusable | boolean | 节点是否可获取焦点。 |
-| editable | editable | boolean | 节点是否可编辑。 |
-| settable | settable | boolean | 节点是否可设置值。 |
-| checked | checked | boolean | 节点是否处于选中状态。 |
-| expanded | expanded | boolean | 节点是否处于展开状态。 |
-| pressed | pressed | boolean | 节点是否处于按下状态。 |
-| selected | selected | boolean | 节点是否处于选择状态。 |
-| required | required | boolean | 节点是否为必填项。 |
+| focusable | focusable | boolean | 节点是否可获取焦点。true表示可获取焦点，false表示不可获取焦点。 |
+| editable | editable | boolean | 节点是否可编辑。true表示可编辑，false表示不可编辑。 |
+| settable | settable | boolean | 节点是否可设置值。true表示可设置值，false表示不可设置值。 |
+| checked | checked | boolean | 节点是否处于选中状态。true表示处于选中状态，false表示不处于选中状态。 |
+| expanded | expanded | boolean | 节点是否处于展开状态。true表示处于展开状态，false表示不处于展开状态。 |
+| pressed | pressed | boolean | 节点是否处于按下状态。true表示处于按下状态，false表示不处于按下状态。 |
+| selected | selected | boolean | 节点是否处于选择状态。true表示处于选择状态，false表示不处于选择状态。 |
+| required | required | boolean | 节点是否为必填项。true表示为必填项，false表示为非必填项。 |
 | autocomplete | autocomplete | string | 节点自动完成信息，优先读取`aria-autocomplete`属性，其次读取`autocomplete`属性。字段值为空时不返回该字段。 |
 | keyshortcuts | keyshortcuts | string | 节点`aria-keyshortcuts`属性值。字段值为空时不返回该字段。 |
 
@@ -129,30 +129,30 @@
 | children_nodes | bounds | bottom | number | 节点矩形下边界。 |
 | children_nodes | bounds | width | number | 节点矩形宽度。 |
 | children_nodes | bounds | height | number | 节点矩形高度。 |
-| children_nodes | - | visible | boolean | 节点是否可见。 |
-| children_nodes | - | isInViewport | boolean | 节点是否在当前视口内。 |
-| children_nodes | - | clickable | boolean | 节点是否可点击。 |
-| children_nodes | - | touchable | boolean | 节点是否可触控。 |
-| children_nodes | - | scrollable | boolean | 节点是否可滚动。 |
-| children_nodes | - | inputable | boolean | 节点是否可输入。 |
+| children_nodes | - | visible | boolean | 节点是否可见。true表示可见，false表示不可见。 |
+| children_nodes | - | isInViewport | boolean | 节点是否在当前视口内。true表示在当前视口内，false表示不在当前视口内。 |
+| children_nodes | - | clickable | boolean | 节点是否可点击。true表示可点击，false表示不可点击。 |
+| children_nodes | - | touchable | boolean | 节点是否可触控。true表示可触控，false表示不可触控。 |
+| children_nodes | - | scrollable | boolean | 节点是否可滚动。true表示可滚动，false表示不可滚动。 |
+| children_nodes | - | inputable | boolean | 节点是否可输入。true表示可输入，false表示不可输入。 |
 | children_nodes | - | url | string | 节点关联URL。 |
 | children_nodes | - | xpath | string | 节点XPath。 |
 | children_nodes | - | hover | string | 节点`cursor`样式值。 |
-| children_nodes | - | mouseover | boolean | 节点是否声明`mouseover`内联事件。 |
-| children_nodes | - | mouseenter | boolean | 节点是否声明`mouseenter`内联事件。 |
+| children_nodes | - | mouseover | boolean | 节点是否声明`mouseover`内联事件。true表示已声明，false表示未声明。 |
+| children_nodes | - | mouseenter | boolean | 节点是否声明`mouseenter`内联事件。true表示已声明，false表示未声明。 |
 | children_nodes | - | value | string | `select`元素当前选中值。 |
 | children_nodes | - | options | Array\<Object> | `select`元素选项列表。 |
 | children_nodes | - | value_text | Array\<Object> | `select`元素选项列表。 |
 | children_nodes | options/value_text | value | string | `select`元素选项值。 |
 | children_nodes | options/value_text | text | string | `select`元素选项文本。 |
-| children_nodes | - | focusable | boolean | 节点是否可获取焦点。 |
-| children_nodes | - | editable | boolean | 节点是否可编辑。 |
-| children_nodes | - | settable | boolean | 节点是否可设置值。 |
-| children_nodes | - | checked | boolean | 节点是否处于选中状态。 |
-| children_nodes | - | expanded | boolean | 节点是否处于展开状态。 |
-| children_nodes | - | pressed | boolean | 节点是否处于按下状态。 |
-| children_nodes | - | selected | boolean | 节点是否处于选择状态。 |
-| children_nodes | - | required | boolean | 节点是否为必填项。 |
+| children_nodes | - | focusable | boolean | 节点是否可获取焦点。true表示可获取焦点，false表示不可获取焦点。 |
+| children_nodes | - | editable | boolean | 节点是否可编辑。true表示可编辑，false表示不可编辑。 |
+| children_nodes | - | settable | boolean | 节点是否可设置值。true表示可设置值，false表示不可设置值。 |
+| children_nodes | - | checked | boolean | 节点是否处于选中状态。true表示处于选中状态，false表示不处于选中状态。 |
+| children_nodes | - | expanded | boolean | 节点是否处于展开状态。true表示处于展开状态，false表示不处于展开状态。 |
+| children_nodes | - | pressed | boolean | 节点是否处于按下状态。true表示处于按下状态，false表示不处于按下状态。 |
+| children_nodes | - | selected | boolean | 节点是否处于选择状态。true表示处于选择状态，false表示不处于选择状态。 |
+| children_nodes | - | required | boolean | 节点是否为必填项。true表示为必填项，false表示为非必填项。 |
 | children_nodes | - | autocomplete | string | 节点自动完成信息。 |
 | children_nodes | - | keyshortcuts | string | 节点`aria-keyshortcuts`属性值。 |
 | children_nodes | - | attributes | Object | HTML属性集合。 |
@@ -300,28 +300,28 @@
 | aria-description | aria-description | string | 节点`aria-description`属性值。字段值为空时不返回该字段。 |
 | rect | rect | Object | 节点矩形信息，包含`x`、`y`、`width`、`height`。 |
 | bounds | bounds | Object | 节点矩形信息，包含`x`、`y`、`left`、`top`、`right`、`bottom`、`width`、`height`。 |
-| visible | visible | boolean | 节点是否可见。 |
-| isInViewport | isInViewport | boolean | 节点是否在当前视口内。 |
-| clickable | clickable | boolean | 节点是否可点击。 |
-| touchable | touchable | boolean | 节点是否可触控。当前判断逻辑与`clickable`一致。 |
-| scrollable | scrollable | boolean | 节点是否可滚动。 |
-| inputable | inputable | boolean | 节点是否可输入。 |
+| visible | visible | boolean | 节点是否可见。true表示可见，false表示不可见。 |
+| isInViewport | isInViewport | boolean | 节点是否在当前视口内。true表示在当前视口内，false表示不在当前视口内。 |
+| clickable | clickable | boolean | 节点是否可点击。true表示可点击，false表示不可点击。 |
+| touchable | touchable | boolean | 节点是否可触控。true表示可触控，false表示不可触控。当前判断逻辑与`clickable`一致。 |
+| scrollable | scrollable | boolean | 节点是否可滚动。true表示可滚动，false表示不可滚动。 |
+| inputable | inputable | boolean | 节点是否可输入。true表示可输入，false表示不可输入。 |
 | url | url | string | 节点关联URL。按`href`、`src`、`action`、`data`、`poster`顺序读取并转换为完整URL。字段值为空时不返回该字段。 |
 | xpath | xpath | string | 节点XPath。字段值为空时不返回该字段。 |
 | hover | hover | string | 节点`cursor`样式值。字段值为空时不返回该字段。 |
-| mouseover | mouseover | boolean | 节点是否声明`mouseover`内联事件。 |
-| mouseenter | mouseenter | boolean | 节点是否声明`mouseenter`内联事件。 |
+| mouseover | mouseover | boolean | 节点是否声明`mouseover`内联事件。true表示已声明，false表示未声明。 |
+| mouseenter | mouseenter | boolean | 节点是否声明`mouseenter`内联事件。true表示已声明，false表示未声明。 |
 | value | value | string | 当节点为`select`元素时，返回当前选中值。 |
 | options | options | Array\<Object> | 当节点为`select`元素时，返回选项列表。 |
 | value_text | value_text | Array\<Object> | 当节点为`select`元素时，返回选项列表。 |
-| focusable | focusable | boolean | 节点是否可获取焦点。 |
-| editable | editable | boolean | 节点是否可编辑。 |
-| settable | settable | boolean | 节点是否可设置值。 |
-| checked | checked | boolean | 节点是否处于选中状态。 |
-| expanded | expanded | boolean | 节点是否处于展开状态。 |
-| pressed | pressed | boolean | 节点是否处于按下状态。 |
-| selected | selected | boolean | 节点是否处于选择状态。 |
-| required | required | boolean | 节点是否为必填项。 |
+| focusable | focusable | boolean | 节点是否可获取焦点。true表示可获取焦点，false表示不可获取焦点。 |
+| editable | editable | boolean | 节点是否可编辑。true表示可编辑，false表示不可编辑。 |
+| settable | settable | boolean | 节点是否可设置值。true表示可设置值，false表示不可设置值。 |
+| checked | checked | boolean | 节点是否处于选中状态。true表示处于选中状态，false表示不处于选中状态。 |
+| expanded | expanded | boolean | 节点是否处于展开状态。true表示处于展开状态，false表示不处于展开状态。 |
+| pressed | pressed | boolean | 节点是否处于按下状态。true表示处于按下状态，false表示不处于按下状态。 |
+| selected | selected | boolean | 节点是否处于选择状态。true表示处于选择状态，false表示不处于选择状态。 |
+| required | required | boolean | 节点是否为必填项。true表示为必填项，false表示为非必填项。 |
 | autocomplete | autocomplete | string | 节点自动完成信息，优先读取`aria-autocomplete`属性，其次读取`autocomplete`属性。字段值为空时不返回该字段。 |
 | keyshortcuts | keyshortcuts | string | 节点`aria-keyshortcuts`属性值。字段值为空时不返回该字段。 |
 
@@ -353,30 +353,30 @@
 | nodes | bounds | bottom | number | 节点矩形下边界。 |
 | nodes | bounds | width | number | 节点矩形宽度。 |
 | nodes | bounds | height | number | 节点矩形高度。 |
-| nodes | - | visible | boolean | 节点是否可见。 |
-| nodes | - | isInViewport | boolean | 节点是否在当前视口内。 |
-| nodes | - | clickable | boolean | 节点是否可点击。 |
-| nodes | - | touchable | boolean | 节点是否可触控。 |
-| nodes | - | scrollable | boolean | 节点是否可滚动。 |
-| nodes | - | inputable | boolean | 节点是否可输入。 |
+| nodes | - | visible | boolean | 节点是否可见。true表示可见，false表示不可见。 |
+| nodes | - | isInViewport | boolean | 节点是否在当前视口内。true表示在当前视口内，false表示不在当前视口内。 |
+| nodes | - | clickable | boolean | 节点是否可点击。true表示可点击，false表示不可点击。 |
+| nodes | - | touchable | boolean | 节点是否可触控。true表示可触控，false表示不可触控。 |
+| nodes | - | scrollable | boolean | 节点是否可滚动。true表示可滚动，false表示不可滚动。 |
+| nodes | - | inputable | boolean | 节点是否可输入。true表示可输入，false表示不可输入。 |
 | nodes | - | url | string | 节点关联URL。 |
 | nodes | - | xpath | string | 节点XPath。 |
 | nodes | - | hover | string | 节点`cursor`样式值。 |
-| nodes | - | mouseover | boolean | 节点是否声明`mouseover`内联事件。 |
-| nodes | - | mouseenter | boolean | 节点是否声明`mouseenter`内联事件。 |
+| nodes | - | mouseover | boolean | 节点是否声明`mouseover`内联事件。true表示已声明，false表示未声明。 |
+| nodes | - | mouseenter | boolean | 节点是否声明`mouseenter`内联事件。true表示已声明，false表示未声明。 |
 | nodes | - | value | string | `select`元素当前选中值。 |
 | nodes | - | options | Array\<Object> | `select`元素选项列表。 |
 | nodes | - | value_text | Array\<Object> | `select`元素选项列表。 |
 | nodes | options/value_text | value | string | `select`元素选项值。 |
 | nodes | options/value_text | text | string | `select`元素选项文本。 |
-| nodes | - | focusable | boolean | 节点是否可获取焦点。 |
-| nodes | - | editable | boolean | 节点是否可编辑。 |
-| nodes | - | settable | boolean | 节点是否可设置值。 |
-| nodes | - | checked | boolean | 节点是否处于选中状态。 |
-| nodes | - | expanded | boolean | 节点是否处于展开状态。 |
-| nodes | - | pressed | boolean | 节点是否处于按下状态。 |
-| nodes | - | selected | boolean | 节点是否处于选择状态。 |
-| nodes | - | required | boolean | 节点是否为必填项。 |
+| nodes | - | focusable | boolean | 节点是否可获取焦点。true表示可获取焦点，false表示不可获取焦点。 |
+| nodes | - | editable | boolean | 节点是否可编辑。true表示可编辑，false表示不可编辑。 |
+| nodes | - | settable | boolean | 节点是否可设置值。true表示可设置值，false表示不可设置值。 |
+| nodes | - | checked | boolean | 节点是否处于选中状态。true表示处于选中状态，false表示不处于选中状态。 |
+| nodes | - | expanded | boolean | 节点是否处于展开状态。true表示处于展开状态，false表示不处于展开状态。 |
+| nodes | - | pressed | boolean | 节点是否处于按下状态。true表示处于按下状态，false表示不处于按下状态。 |
+| nodes | - | selected | boolean | 节点是否处于选择状态。true表示处于选择状态，false表示不处于选择状态。 |
+| nodes | - | required | boolean | 节点是否为必填项。true表示为必填项，false表示为非必填项。 |
 | nodes | - | autocomplete | string | 节点自动完成信息。 |
 | nodes | - | keyshortcuts | string | 节点`aria-keyshortcuts`属性值。 |
 | nodes | - | attributes | Object | HTML属性集合。 |

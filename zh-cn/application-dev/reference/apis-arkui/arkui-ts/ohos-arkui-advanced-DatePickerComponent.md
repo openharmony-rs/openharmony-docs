@@ -159,7 +159,7 @@ CommonOptions定义日期时间选择器的通用选项。
 | loop | boolean | 否 | 是 | 设置是否启用循环模式。<br/>- true：启用循环模式。<br/>- false：不启用循环模式。<br/>默认值：true |
 | onChange | [Callback](ts-types.md#callback12)<[DatePickerComponentResult](#datepickercomponentresult)> | 否 | 是 | 选择日期或时间后触发该回调。 |
 | onScrollStop | [Callback](ts-types.md#callback12)<[DatePickerComponentResult](#datepickercomponentresult)> | 否 | 是 | 选择器项被选中且滚动停止时触发该回调。 |
-| enableHapticFeedback | boolean | 否 | 是 | 启用或禁用音振反馈。<br/>默认值：true<br/>- true：开启音振反馈。<br/>- false：不开启音振反馈。<br />**说明**：<br/>1. 设置为true后，其生效情况取决于系统的硬件是否支持。<br/>2. 开启触控反馈时，需要在工程的[module.json5](../../../quick-start/module-configuration-file.md)中配置requestPermissions字段以开启振动权限，配置如下：<br />"requestPermissions": [{"name": "ohos.permission.VIBRATE"}] |
+| enableHapticFeedback | boolean | 否 | 是 | 启用或禁用触控反馈。<br/>默认值：true<br/>- true：开启触控反馈。<br/>- false：不开启触控反馈。<br />**说明**：<br/>1. 设置为true后，其生效情况取决于系统的硬件是否支持。<br/>2. 开启触控反馈时，需要在工程的[module.json5](../../../quick-start/module-configuration-file.md)中配置requestPermissions字段以开启振动权限，配置如下：<br />"requestPermissions": [{"name": "ohos.permission.VIBRATE"}] |
 
 
 **起始日期、结束日期和选中日期的异常情形说明：**

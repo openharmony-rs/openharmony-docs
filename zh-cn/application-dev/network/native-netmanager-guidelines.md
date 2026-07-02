@@ -64,6 +64,7 @@ libnet_connection.so
 #include "napi/native_api.h"
 #include "network/netmanager/net_connection.h"
 #include "network/netmanager/net_connection_type.h"
+#include "hilog/log.h"
 ```
 ### 构建工程
 
@@ -176,30 +177,35 @@ libnet_connection.so
    struct Index {
      @State message: string = ''; // 用于展示日志消息
      // ...
-   
      build() {
-       Column() { // 显示 Logger 输出的日志
-         // ...
-         Text(this.message)
-           .fontSize(16)
-           .fontColor(Color.Black)
-           .margin({ bottom: 10 })
-           .id('test-message') // 为测试消息设置 ID，便于测试获取内容
-   
-         Button($r('app.string.GetDefaultNet'))
-           .onClick(() => {
-             this.GetDefaultNet();
-           })
+       Scroll() {
+         Column() { // 显示 Logger 输出的日志
+           // ...
+           Text(this.message)
+             .fontSize(16)
+             .fontColor('#333333')
+             .margin({ bottom: 10 })
+             .id('test-message')
+           Button($r('app.string.GetDefaultNet'))
+             .onClick(() => {
+               this.GetDefaultNet();
+             })
              // ...
-   
-         Button($r('app.string.CodeNumber'))
-           .onClick(() => {
-             this.CodeNumber();
-           })
+           Button($r('app.string.CodeNumber'))
+             .onClick(() => {
+               this.CodeNumber();
+             })
              // ...
-       }.width('100%').height('100%').justifyContent(FlexAlign.Center);
+         }
+         .width('100%')
+         .justifyContent(FlexAlign.Start)
+       }
+       .width('100%')
+       .height('100%')
+       .scrollable(ScrollDirection.Vertical)
+       .scrollBar(BarState.Auto)
+       .backgroundColor('#F5F5F5')
      }
-     
      GetDefaultNet() {
        let netId = testNetManager.NetId();
        // ...
@@ -229,8 +235,9 @@ libnet_connection.so
              // ...
              break;
          }
-       // ...
+         // ...
      }
+   
      // ...
    }
    ```

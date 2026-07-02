@@ -1124,6 +1124,7 @@ cancelAccessoryRight(accessory: USBAccessory): void
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 try {
@@ -1212,6 +1213,7 @@ openAccessory(accessory: USBAccessory): USBAccessoryHandle
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { fileIo } from '@kit.CoreFileKit';
@@ -1259,6 +1261,7 @@ closeAccessory(accessoryHandle: USBAccessoryHandle): void
 
 **示例：**
 
+<!--code_no_check-->
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 try {

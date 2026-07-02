@@ -33,7 +33,7 @@ PIN码认证。使用Promise异步回调。
 
 | 参数名   | 类型 | 必填 | 说明 |
 | -------- | -------- | ---- | -------|
-| resourceId | string | 是   | Ukey中某容器的资源ID，可通过[openAuthorizeDialog](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取，其结果中附带resourceId。 |
+| resourceId | string | 是   | UKey中某容器的资源ID，可通过[openAuthorizeDialog](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取，其结果中附带resourceId。 |
 | params  | Array\<[HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> | 是   | 操作时需传入的参数，必选TAG：[HUKS_EXT_CRYPTO_TAG_UKEY_PIN](js-apis-huksExternalCrypto.md#huksexternalcryptotag)。 |
 
 **返回值：**
@@ -51,15 +51,15 @@ PIN码认证。使用Promise异步回调。
 | 202 | The caller is not a system application and is not allowed to use system applications. |
 | 801 | api is not supported. |
 | 12000005 | IPC communication failed. |
-| 12000006 | the Ukey driver operation failed. |
+| 12000006 | the UKey driver operation failed. |
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. This error may occur if the process function is not found, or due to other issues. |
 | 12000014 | memory is insufficient. |
 | 12000018 | the input parameter is invalid. |
 | 12000020 | the provider operation failed. |
-| 12000021 | the Ukey PIN is locked. |
-| 12000022 | the Ukey PIN is incorrect. |
-| 12000024 | the provider or Ukey is busy. |
+| 12000021 | the UKey PIN is locked. |
+| 12000022 | the UKey PIN is incorrect. |
+| 12000024 | the provider or UKey is busy. |
 
 **示例：**
 
