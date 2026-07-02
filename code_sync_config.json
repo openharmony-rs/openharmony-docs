@@ -25213,6 +25213,56 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/webSameLayer/entry/src/main/ets/pages/enableNativeEmbedMode.ets",
+				"functions":[
+					{
+						"end_line":32,
+						"name":"enablenativeembedmode",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/webSameLayer/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets",
+				"functions":[
+					{
+						"end_line":277,
+						"name":"rendertxtboxsamelayer_two",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/webSameLayer/entry/src/main/ets/pages/NodeController.ets",
+				"functions":[
+					{
+						"end_line":260,
+						"name":"nodecontroller",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/webSameLayer/entry/src/main/ets/pages/NativeEmbedOverlay.ets",
+				"functions":[
+					{
+						"end_line":269,
+						"name":"nativeembedoverlay",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/webSameLayer/entry/src/main/ets/pages/renderingTextureMapAlignm.ets",
+				"functions":[
+					{
+						"end_line":208,
+						"name":"renderingtexturemapalignm",
+						"start_line":17
+					}
+				]
 			}
 		]
 	},
