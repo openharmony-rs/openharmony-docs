@@ -68,11 +68,11 @@ let ret: number = usbManager.usbFunctionsFromString(funcs);
 
 usbFunctionsToString(funcs: FunctionType): string
 
-在设备模式下，将数字掩码形式的USB功能列表转化为字符串。
+在设备模式下，将数字掩码形式的USB功能列表转化为字符串。适用于需要将当前USB功能状态以字符串形式显示或保存的场景，如在日志中记录当前功能配置、在UI界面展示当前功能等。
 
 > **说明：**
 >
-> 从 API version 9开始支持，从API version 12开始废弃。建议使用 [getStringFromFunctions](#getstringfromfunctions12) 替代。
+> 从API version 9开始支持，从API version 12开始废弃。建议使用 [getStringFromFunctions](#getstringfromfunctions12) 替代。
 
 **系统接口：** 此接口为系统接口。
 
@@ -103,7 +103,7 @@ usbFunctionsToString(funcs: FunctionType): string
 
 ```ts
 // 定义USB功能类型组合
-let funcs: number = usbManager.FunctionType.ACM | usbManager.FunctionType.ECM;
+let funcs: usbManager.FunctionType = usbManager.FunctionType.ACM | usbManager.FunctionType.ECM;
 // 将数字掩码转化为字符串
 let ret: string = usbManager.usbFunctionsToString(funcs);
 ```
@@ -112,11 +112,11 @@ let ret: string = usbManager.usbFunctionsToString(funcs);
 
 setCurrentFunctions(funcs: FunctionType): Promise\<void\>
 
-在设备模式下，设置当前的USB功能列表。使用Promise异步回调。调用成功后，设备的USB功能将切换为指定的功能列表。适用于系统应用需要动态切换USB设备模式的场景。
+在设备模式下，设置当前的USB功能列表。使用Promise异步回调。调用成功后，设备的USB功能将切换为指定的功能列表。
 
 > **说明：**
 >
-> 从 API version 9开始支持，从API version 12开始废弃。建议使用 [setDeviceFunctions](#setdevicefunctions12) 替代。
+> 从API version 9开始支持，从API version 12开始废弃。建议使用 [setDeviceFunctions](#setdevicefunctions12) 替代。
 
 **系统接口：** 此接口为系统接口。
 
@@ -126,13 +126,13 @@ setCurrentFunctions(funcs: FunctionType): Promise\<void\>
 
 | 参数名 | 类型                          | 必填 | 说明              |
 | ------ | ----------------------------- | ---- | ----------------- |
-| funcs  | [FunctionType](#functiontype) | 是   | 功能列表对应的数字掩码。 |
+| funcs  | [FunctionType](#functiontype) | 是   | 功能列表对应的数字掩码，可通过位运算组合多个功能。 |
 
 **返回值：**
 
 | 类型                | 说明          |
 | ------------------- | ------------- |
-| Promise\<void\> | Promise对象。调用成功时无返回值，调用失败时抛出异常。 |
+| Promise<void> | Promise对象。调用成功时无返回值，调用失败时抛出异常。 |
 
 **错误码：**
 
@@ -148,7 +148,7 @@ setCurrentFunctions(funcs: FunctionType): Promise\<void\>
 ```ts
 import {BusinessError} from '@kit.BasicServicesKit';
 // 设置USB功能类型为HDC
-let funcs: number = usbManager.FunctionType.HDC;
+let funcs: usbManager.FunctionType = usbManager.FunctionType.HDC;
 // 异步设置当前USB功能
 usbManager.setCurrentFunctions(funcs).then(() => {
     console.info('usb setCurrentFunctions successfully.');
