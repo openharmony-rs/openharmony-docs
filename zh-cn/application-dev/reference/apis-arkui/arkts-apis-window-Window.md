@@ -3214,7 +3214,7 @@ setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&
 **设备行为差异：**
 
 在OpenHarmony 5.0.0之前，该接口在所有设备中可正常调用。
- 	 
+
 从OpenHarmony 5.0.0开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上调用不生效也不报错；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#freeform-window自由窗口)状态的设备上可正常调用。
 
 **ArkTS-Dyn起始版本：** 9
