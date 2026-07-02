@@ -202,18 +202,23 @@ struct enumusage {
 **装饰器修饰Class使用示例：**
 <!-- @[example_modify_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/SendableObjectIntroduction/class/Index.ets) --> 
 
-```ts
+``` TypeScript
+export { MainPage } from './src/main/ets/components/MainPage';
+
 @Sendable
 class SendableTestClass {
-  desc: string = "sendable: this is SendableTestClass ";
+  desc: string = 'sendable: this is SendableTestClass ';
   num: number = 5;
   printName() {
-    console.info("sendable: SendableTestClass desc is: " + this.desc);
+    console.info('sendable: SendableTestClass desc is: ' + this.desc);
   }
-  getNum(): number {
+  get getNum(): number {
     return this.num;
   }
 }
+
+let object = new SendableTestClass;
+export { object }
 ```
 
 **装饰器修饰Function使用示例：**
