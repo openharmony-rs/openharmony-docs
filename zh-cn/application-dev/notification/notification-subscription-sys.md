@@ -63,6 +63,8 @@
 1. 申请`ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER`权限，配置方式请参见[申请应用权限](../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
 
 2. 导入通知订阅模块。
+
+   ArkTS-Dyn示例：
    
    ```ts
    import { notificationSubscribe, notificationManager } from '@kit.NotificationKit';
@@ -73,7 +75,20 @@
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
+   ArkTS-Sta示例：
+   
+   ```ts
+   import { notificationSubscribe, notificationManager } from '@kit.NotificationKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+
+   const TAG: string = '[SubscribeOperations]';
+   const DOMAIN_NUMBER: int = 0xFF00;
+   ```
+
 3. 创建订阅者对象。
+
+   ArkTS-Dyn示例：
    
    ```ts
    let subscriber: notificationSubscribe.NotificationSubscriber = {
@@ -126,13 +141,79 @@
      },
    };
    ```
+
+   ArkTS-Sta示例：
    
+   ```ts
+   let subscriber: notificationSubscribe.NotificationSubscriber = {
+     onConsume: (data:notificationSubscribe.SubscribeCallbackData) => {
+       let req: notificationManager.NotificationRequest = data.request;
+       hilog.info(DOMAIN_NUMBER, TAG, `onConsume callback. req.id: ${req.id}`);
+     },
+     onCancel: (data:notificationSubscribe.SubscribeCallbackData) => {
+       let req: notificationManager.NotificationRequest = data.request;
+       hilog.info(DOMAIN_NUMBER, TAG, `onCancel callback. req.id: ${req.id}`);
+     },
+     onUpdate: (data) => {
+       hilog.info(DOMAIN_NUMBER, TAG, `onUpdate callback. req.id: ${data.sortedHashCode}`);
+     },
+     onConnect: () => {
+       hilog.info(DOMAIN_NUMBER, TAG, `onConnect callback.`);
+     },
+     onDisconnect: () => {
+       hilog.info(DOMAIN_NUMBER, TAG, `onDisconnect callback.`);
+     },
+     onDestroy: () => {
+       hilog.info(DOMAIN_NUMBER, TAG, `onDestroy callback.`);
+     },
+     onDoNotDisturbChanged: (mode) => {
+       hilog.info(DOMAIN_NUMBER, TAG, `onDoNotDisturbChanged callback. mode: ${JSON.stringify(mode)}`);
+     },
+     onEnabledNotificationChanged: (callbackData) => {
+       hilog.info(DOMAIN_NUMBER, TAG, `onEnabledNotificationChanged callback. callbackData: ${JSON.stringify(callbackData)}`);
+     },
+     onBadgeChanged: (data) => {
+       hilog.info(DOMAIN_NUMBER, TAG, `onBadgeChanged callback. data: ${JSON.stringify(data)}`);
+     },
+     onBatchCancel: (data) => {
+       hilog.info(DOMAIN_NUMBER, TAG, `onBatchCancel callback. data: ${JSON.stringify(data)}`);
+     },
+     onEnabledPriorityChanged: (callbackData) => {
+       hilog.info(DOMAIN_NUMBER, TAG, `onEnabledPriorityChanged callback. callbackData: ${JSON.stringify(callbackData)}`);
+     },
+     onEnabledPriorityByBundleChanged: (callbackData) => {
+       hilog.info(DOMAIN_NUMBER, TAG, `onEnabledPriorityByBundleChanged callback. callbackData: ${JSON.stringify(callbackData)}`);
+     },
+     onSystemUpdate: (data) => {
+       hilog.info(DOMAIN_NUMBER, TAG, `onSystemUpdate callback. data: ${JSON.stringify(data)}`);
+     },
+     onEnabledSilentReminderChanged: (callbackData) => {
+       hilog.info(DOMAIN_NUMBER, TAG, `onEnabledSilentReminderChanged callback. callbackData: ${JSON.stringify(callbackData)}`);
+     },
+     onBadgeEnabledChanged: (data) => {
+       hilog.info(DOMAIN_NUMBER, TAG, `onBadgeEnabledChanged callback. data: ${JSON.stringify(data)}`);
+     },
+   };
+   ```
+
 4. 发起通知订阅。
+
+   ArkTS-Dyn示例：
    
    ```ts
    notificationSubscribe.subscribeNotification(subscriber).then(() => {
      hilog.info(DOMAIN_NUMBER, TAG, "subscribeNotification success");
    }).catch((err: BusinessError) => {
+     hilog.error(DOMAIN_NUMBER, TAG, `subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+   });
+   ```
+
+   ArkTS-Sta示例：
+   
+   ```ts
+   notificationSubscribe.subscribeNotification(subscriber).then(() => {
+     hilog.info(DOMAIN_NUMBER, TAG, "subscribeNotification success");
+   }).catch((err) => {
      hilog.error(DOMAIN_NUMBER, TAG, `subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
    });
    ```
