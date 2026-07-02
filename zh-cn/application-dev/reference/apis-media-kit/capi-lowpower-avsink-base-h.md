@@ -61,7 +61,7 @@ OH_AVErrCode OH_AVSamplesBuffer_AppendOneBuffer(OH_AVSamplesBuffer *samplesBuffe
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_NO_MEMORY：framePacketBuffer没有足够的剩余容量来追加一个OH_AVBuffer。<br> AV_ERR_UNKNOWN：未知错误。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br> AV_ERR_INVALID_VAL：参数为nullptr或参数非法。<br> AV_ERR_NO_MEMORY：samplesBuffer没有足够的剩余容量来追加一个OH_AVBuffer。<br> AV_ERR_UNKNOWN：未知错误。 |
 
 ### OH_AVSamplesBuffer_GetRemainedCapacity()
 
@@ -85,7 +85,7 @@ int32_t OH_AVSamplesBuffer_GetRemainedCapacity(OH_AVSamplesBuffer *samplesBuffer
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | OH_AVSamplesBuffer实例剩余可使用容量，单位为字节。如果sampleBuffer或data pointer为nullptr或无效，则返回3。 |
+| int32_t | OH_AVSamplesBuffer实例剩余可使用容量，单位为字节。如果samplesBuffer或data pointer为nullptr或无效，则返回3。 |
 
 ### OH_LowPowerAVSink_GetCapability()
 
