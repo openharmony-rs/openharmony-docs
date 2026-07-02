@@ -299,7 +299,7 @@ In the grid layout, you can specify the arrangement direction of child component
 
     ![en-us_image_0000001511740488](figures/en-us_image_0000001511740488.png)
 
-- When child components are arranged from right to left (default):
+- When child components are arranged from right to left:
 
 
     <!-- @[GridLayoutDirectionRowReverse_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutDirectionRowReverse.ets) -->
