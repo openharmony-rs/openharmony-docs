@@ -1,4 +1,4 @@
-# @ohos.distributedSoftbus.conversation
+# @ohos.distributedSoftbus.conversation (跨设备唤醒与消息传输)(系统接口)
 <!--Kit: Distributed Service Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @wangrui7-->
@@ -6,11 +6,11 @@
 <!--Tester: @Ytt-test-->
 <!--Adviser: @hu-zhiqiong-->
 
-conversation模块通过软总线能力，为Agent提供多设备交互能力。提供基础的Agent互联工具，包括获取设备列表、唤醒设备和发送消息。通过本模块，应用可以获取同一账号下的可信设备，注册监听以接收跨设备消息，并通过会话通道向指定设备发送消息。
+conversation模块基于分布式软总线，为应用提供跨设备交互能力，包括获取可信设备列表、发送和接收会话数据。通过本模块，应用可以获取同一账号下的可信设备，注册监听器以接收跨设备数据，并通过会话通道向指定设备发送数据。适用于需要跨设备协作和多设备数据传递的场景，可降低跨设备交互的开发复杂度。
 
-> **说明：**
->
-> 本模块首批接口从API version 26.1.0开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+**起始版本：** 26.1.0
+
+> **说明**：
 >
 > 本模块接口为系统接口，仅可在Stage模型下使用。
 
@@ -24,7 +24,7 @@ import { conversation } from '@kit.DistributedServiceKit';
 
 getTrustedDevices(): DeviceNodeInfo[]
 
-获取所有可信设备的设备信息。返回所有同账号可信设备列表。
+获取所有同账号可信设备信息。典型使用场景包括：跨设备数据发送前查询可用目标设备。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC 和 ohos.permission.sec.ACCESS_UDID
 
@@ -34,13 +34,15 @@ getTrustedDevices(): DeviceNodeInfo[]
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**返回值：**
+**返回值**：
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
 | [DeviceNodeInfo[]](#devicenodeinfo) | 获取到的设备信息列表。 |
 
-**错误码：**
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[跨设备唤醒与消息传输错误码](errorcode-conversation.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -49,14 +51,14 @@ getTrustedDevices(): DeviceNodeInfo[]
 | 801      | Capability not supported.|
 | 2000001  | Internal error.|
 
-**示例：**
+**示例**：
 
 ```ts
 import { conversation } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const TAG = "conversationDemo";
+const TAG = 'conversationDemo';
 
 try {
   let devices: conversation.DeviceNodeInfo[] = conversation.getTrustedDevices();
@@ -74,7 +76,7 @@ try {
 
 postConversationData(deviceId:&nbsp;string,&nbsp;bundleName:&nbsp;string,&nbsp;abilityName:&nbsp;string,&nbsp;msg:&nbsp;ArrayBuffer):&nbsp;Promise&lt;void&gt;
 
-向指定设备发送会话数据。通过目标设备的networkId或udid标识目标设备，消息将发送到远端设备指定包名和Ability名的应用。
+向目标设备发送会话数据。目标设备须为同一账号下的可信设备，数据通过分布式软总线会话通道发送，以目标设备的networkId或UDID进行设备寻址，路由至远端设备上与指定包名和Ability名匹配的已注册监听应用。典型使用场景包括：跨设备协同指令发送。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC 和 ohos.permission.sec.ACCESS_UDID
 
@@ -84,22 +86,24 @@ postConversationData(deviceId:&nbsp;string,&nbsp;bundleName:&nbsp;string,&nbsp;a
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**参数：**
+**参数**：
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| deviceId  | string  | 是    | 目标设备的networkId或udid。可通过调用[getTrustedDevices()](#conversationgettrusteddevices)获取。  |
-| bundleName | string  | 是    | 消息发送目标包名，需与远端设备上已注册会话监听的应用包名一致。  |
-| abilityName | string  | 是    | 消息发送目标Ability名，需与远端设备上已注册会话监听的Ability名一致。  |
-| msg | ArrayBuffer  | 是    | 要发送的消息内容。  |
+| deviceId  | string  | 是    | 目标设备的networkId或UDID。可通过调用[getTrustedDevices()](#conversationgettrusteddevices)获取。传入无效值时返回错误码401。  |
+| bundleName | string  | 是    | 数据发送目标包名，需与远端设备上通过[registerConversationListener](#conversationregisterconversationlistener)注册会话监听的应用包名一致。不满足此要求时，数据将无法送达目标应用。传入无效或空值时返回错误码401。  |
+| abilityName | string  | 是    | 数据发送目标Ability名，需与远端设备上已注册会话监听的Ability名一致。不满足此要求时，数据将无法送达目标应用。传入无效或空值时返回错误码401。  |
+| msg | ArrayBuffer  | 是    | 要发送的数据内容，为ArrayBuffer格式的二进制数据，不能为空。数据结构由应用层协议定义。传入空数据或无效数据时返回错误码401。  |
 
-**返回值：**
+**返回值**：
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象。resolve表示发送会话数据成功，reject表示发送失败并返回错误信息。 |
 
-**错误码：**
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[跨设备唤醒与消息传输错误码](errorcode-conversation.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -108,22 +112,22 @@ postConversationData(deviceId:&nbsp;string,&nbsp;bundleName:&nbsp;string,&nbsp;a
 | 401      | Invalid parameter. The deviceId, bundleName, abilityName or msg is invalid or empty.|
 | 801      | Capability not supported.|
 | 2000001  | Internal error.|
-| 2004001  | Remote not support.|
+| 2004001  | Remote not supported.|
 | 2004002  | Duplicate calls, previous call still in progress.|
 | 2004003  | Send data failed.|
 | 2004004  | Wait remote ack timeout.|
 
-**示例：**
+**示例**：
 
 ```ts
 import { conversation } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const TAG = "conversationDemo";
+const TAG = 'conversationDemo';
 
 try {
-  let deviceId: string = "device_network_id_or_udid";
+  let deviceId: string = "device_network_id_or_udid"; // deviceId需通过调用conversation.getTrustedDevices()获取目标设备的networkId或UDID
   let bundleName: string = "com.example.demo";
   let abilityName: string = "EntryAbility";
   let msg: ArrayBuffer = new ArrayBuffer(10);
@@ -145,7 +149,9 @@ try {
 
 registerConversationListener(bundleName:&nbsp;string,&nbsp;abilityName:&nbsp;string,&nbsp;dataCallback:&nbsp;DataCallback):&nbsp;void
 
-注册会话监听，接收来自可信设备的消息。注册后，当指定包名和Ability名收到消息时，将调用指定的回调函数。同一包名和Ability名只能注册一个监听器，重复注册将替换之前已注册的监听器。
+注册会话监听，接收来自同一账号下可信设备的数据。当远端设备通过分布式软总线会话通道发送数据到达本地设备后，软总线将数据分发至与包名和Ability名匹配的已注册回调函数。同一包名和Ability名只能注册一个监听器，重复注册将覆盖之前已注册的监听器。
+
+**配对调用**：需与[unregisterConversationListener](#conversationunregisterconversationlistener)配对使用，在不再需要接收消息时应调用注销监听器以释放资源，未注销可能导致资源持续占用。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC 和 ohos.permission.sec.ACCESS_UDID
 
@@ -155,15 +161,17 @@ registerConversationListener(bundleName:&nbsp;string,&nbsp;abilityName:&nbsp;str
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**参数：**
+**参数**：
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| bundleName  | string  | 是    | 接收消息的包名，需与本应用的包名一致。  |
-| abilityName | string  | 是    | 接收消息的Ability名，需与本应用中的Ability名一致。  |
-| dataCallback | [DataCallback](#datacallback)  | 是    | 收到消息时的回调函数。  |
+| bundleName  | string  | 是    | 接收数据的包名，需与本应用的包名一致。不满足此要求时，监听器可能无法正确接收数据。传入无效或空值时返回错误码401。  |
+| abilityName | string  | 是    | 接收数据的Ability名，需与本应用中的Ability名一致。不满足此要求时，监听器可能无法正确接收数据。传入无效或空值时返回错误码401。  |
+| dataCallback | [DataCallback](#datacallback)  | 是    | 收到数据时的回调函数，用于接收跨设备数据。传入无效值时返回错误码401。  |
 
-**错误码：**
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[跨设备唤醒与消息传输错误码](errorcode-conversation.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -173,14 +181,14 @@ registerConversationListener(bundleName:&nbsp;string,&nbsp;abilityName:&nbsp;str
 | 801      | Capability not supported.|
 | 2000001  | Internal error.|
 
-**示例：**
+**示例**：
 
 ```ts
 import { conversation } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const TAG = "conversationDemo";
+const TAG = 'conversationDemo';
 
 try {
   let bundleName: string = "com.example.demo";
@@ -200,7 +208,7 @@ try {
 
 unregisterConversationListener(bundleName:&nbsp;string,&nbsp;abilityName:&nbsp;string):&nbsp;void
 
-取消注册指定包名和Ability名的会话监听。调用此接口后，应用将不再接收消息。如果之前没有向指定包名和Ability名的应用注册过监听器，此接口返回成功。
+注销指定包名和Ability名的会话监听。需与[registerConversationListener](#conversationregisterconversationlistener)配对使用，用于注销已注册的会话监听器。同一包名和Ability名只能注册一个监听器，重复注册会覆盖之前的监听器，注销后将移除当前生效的监听器。调用此接口后，应用将不再接收对应包名和Ability名的会话数据。如果之前未注册过指定包名和Ability名的监听器，此接口同样返回成功。
 
 **需要权限**：ohos.permission.DISTRIBUTED_DATASYNC 和 ohos.permission.sec.ACCESS_UDID
 
@@ -210,14 +218,16 @@ unregisterConversationListener(bundleName:&nbsp;string,&nbsp;abilityName:&nbsp;s
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**参数：**
+**参数**：
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| bundleName  | string  | 是    | 要取消监听的包名。  |
-| abilityName | string  | 是    | 要取消监听的Ability名。  |
+| bundleName  | string  | 是    | 要取消监听的包名，需与注册监听时使用的包名一致。传入无效或空值时返回错误码401。  |
+| abilityName | string  | 是    | 要取消监听的Ability名，需与注册监听时使用的Ability名一致。传入无效或空值时返回错误码401。  |
 
-**错误码：**
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[跨设备唤醒与消息传输错误码](errorcode-conversation.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -227,14 +237,14 @@ unregisterConversationListener(bundleName:&nbsp;string,&nbsp;abilityName:&nbsp;s
 | 801      | Capability not supported.|
 | 2000001  | Internal error.|
 
-**示例：**
+**示例**：
 
 ```ts
 import { conversation } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const TAG = "conversationDemo";
+const TAG = 'conversationDemo';
 
 try {
   let bundleName: string = "com.example.demo";
@@ -250,7 +260,7 @@ try {
 
 ## DeviceNodeInfo
 
-设备节点信息，包括networkId、设备名称、设备类型、近场状态和udid。
+设备节点信息，包括networkId、设备名称、设备类型标识符、近场状态和UDID。
 
 **系统能力**：SystemCapability.Communication.SoftBus.Core
 
@@ -260,15 +270,15 @@ try {
 
 | 名称                    | 类型       |只读   | 可选   | 说明                 |
 | ----------------- | ------ | ----  | ---- | ------------------ |
-| networkId          | string | 否    |否    | 设备的networkId，在分布式网络中唯一标识一台设备的标识符，用于发送消息时的设备寻址。     |
+| networkId          | string | 否    |否    | 设备的networkId，在分布式网络中唯一标识一台设备，用于发送数据时的设备寻址。与UDID互为替代标识，发送数据时可任选其一。     |
 | deviceName           | string | 否    |否   | 设备名称。 |
-| deviceTypeId            | int | 否    |否    | 设备类型标识符，表示设备的类别（如手机、平板、电视、穿戴设备等）。 |
-| nearby            | boolean | 否    |否    | 设备是否在近场。 |
-| udid            | string | 否    |否    | 设备的UDID，唯一标识一台设备，用于发送消息时的设备寻址。 |
+| deviceTypeId            | number | 否    |否    | 设备类型标识符，表示设备的类别，取值为整数（如手机、平板、电视、穿戴设备等对应的类型标识值）。 |
+| nearby            | boolean | 否    |否    | 设备是否在近场。true表示设备在近场，false表示设备不在近场。 |
+| udid            | string | 否    |否    | 设备的UDID，唯一标识一台设备，用于发送数据时的设备寻址。与networkId不同，UDID为设备的永久唯一标识，不随网络拓扑变化而改变，两者互为替代标识，发送数据时可任选其一。 |
 
 ## DataCallback
 
-消息接收回调函数类型。
+数据接收回调函数类型。
 
 **(deviceId: string, msg: ArrayBuffer): void**
 
@@ -278,9 +288,9 @@ try {
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**参数：**
+**参数**：
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| deviceId  | string  | 是    | 发送消息的源设备的networkId或udid。  |
-| msg | ArrayBuffer  | 是    | 接收到的消息内容。  |
+| deviceId  | string  | 是    | 发送数据的源设备的networkId或UDID。  |
+| msg | ArrayBuffer  | 是    | 接收到的数据内容，为ArrayBuffer格式的二进制数据，数据格式与发送端发送的数据格式一致，由应用层协议定义。  |
