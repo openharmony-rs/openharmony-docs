@@ -30,6 +30,7 @@
   - [@ohos.FusionConnectivity.partnerAgent (设备状态通知模块)](js-apis-fusionConnectivity-partnerAgent.md)
   - [@ohos.FusionConnectivity.PartnerAgentExtensionContext (设备状态通知能力上下文)](js-apis-fusionConnectivity-partnerAgentExtensionContext.md)
   - [@ohos.FusionConnectivity.PartnerAgentExtensionAbility (支持设备状态通知的ExtensionAbility组件)](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md)
+  - [@ohos.FusionConnectivity.ranging (测距模块)](js-apis-fusionConnectivity-ranging.md)
   <!--Del-->
   - [@ohos.bluetooth.a2dp(蓝牙a2dp模块)(系统接口)](js-apis-bluetooth-a2dp-sys.md)
   - [@ohos.bluetooth.access(蓝牙access模块)(系统接口)](js-apis-bluetooth-access-sys.md)
