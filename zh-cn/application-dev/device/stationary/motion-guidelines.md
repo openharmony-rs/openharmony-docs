@@ -117,14 +117,16 @@
 5. 获取最新操作手状态
 
    <!-- @[motion_get_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Motion/entry/src/main/ets/pages/Index.ets) --> 
-
-   ```ts
+   
+   ``` TypeScript
    try {
-      let data:motion.OperatingHandStatus = motion.getRecentOperatingHandStatus();
-      console.info('get succeeded' + data);
+     let data:motion.OperatingHandStatus = motion.getRecentOperatingHandStatus();
+     console.info('get succeeded' + data);
+     // ...
    } catch (err) {
-      let error = err as BusinessError;
-      console.error("Failed get and err code is " + error.code);
+     let error = err as BusinessError;
+     console.error('Failed get and err code is ' + error.code);
+     // ...
    }
    ```
 
