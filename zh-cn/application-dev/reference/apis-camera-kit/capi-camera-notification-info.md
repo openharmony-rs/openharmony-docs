@@ -32,7 +32,6 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-
 | [Camera_ErrorCode OH_CameraNotificationInfo_GetNotificationName(const OH_Camera_NotificationInfo* notificationInfo, OH_Camera_NotificationName* name)](#oh_cameranotificationinfo_getnotificationname) | - | 从摄像头通知信息实例中获取通知名称。 |
 | [Camera_ErrorCode OH_CameraNotificationInfo_GetProximityStateForFocus(const OH_Camera_NotificationInfo* notificationInfo, OH_Camera_ProximityStateForFocus* state)](#oh_cameranotificationinfo_getproximitystateforfocus) | - | 从相机通知信息实例中获取对焦物体与镜头是否过近的状态。 |
 | [void OH_CameraNotificationInfo_Destroy(OH_Camera_NotificationInfo* notificationInfo)](#oh_cameranotificationinfo_destroy) | - | 销毁相机通知信息实例。 |
