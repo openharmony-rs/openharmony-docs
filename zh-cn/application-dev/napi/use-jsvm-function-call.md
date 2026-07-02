@@ -36,10 +36,8 @@ cpp测试全量代码，入口为TEST_FUNC
 #include "napi/native_api.h"
 #include "hilog/log.h"
 #include "ark_runtime/jsvm.h"
-
 #define LOG_DOMAIN 0x3200
 #define LOG_TAG "APP"
-
 #define CHECK_RET(cond)                                                                                                \
     if ((cond)) {                                                                                                      \
         const JSVM_ExtendedErrorInfo *info;                                                                            \
@@ -98,8 +96,8 @@ static int32_t TEST_FUNC()
         OH_JSVM_Init(&initOptions);
     }
     CHECK_RET(OH_JSVM_CreateVM(nullptr, &vm));
-    CHECK_RET(OH_JSVM_OpenVMScope(vm, &vmScope));
     CHECK_RET(OH_JSVM_CreateEnv(vm, 0, nullptr, &env));
+    CHECK_RET(OH_JSVM_OpenVMScope(vm, &vmScope));
     CHECK_RET(OH_JSVM_OpenEnvScope(env, &envScope));
     CHECK_RET(OH_JSVM_OpenHandleScope(env, &handleScope));
 
@@ -134,8 +132,8 @@ static int32_t TEST_FUNC()
 
     CHECK_RET(OH_JSVM_CloseHandleScope(env, handleScope));
     CHECK_RET(OH_JSVM_CloseEnvScope(env, envScope));
-    CHECK_RET(OH_JSVM_DestroyEnv(env));
     CHECK_RET(OH_JSVM_CloseVMScope(vm, vmScope));
+    CHECK_RET(OH_JSVM_DestroyEnv(env));
     CHECK_RET(OH_JSVM_DestroyVM(vm));
     return 0;
 }

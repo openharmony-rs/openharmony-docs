@@ -10,7 +10,7 @@
 
 为NativeNode API提供ImageAnimator节点类型定义。
 
-**引用文件：** <arkui/image_animator.h>
+**引用文件：** <arkui/node_attributes/image_animator.h>
 
 **库：** libace_ndk.z.so
 

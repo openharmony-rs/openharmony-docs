@@ -91,7 +91,7 @@ type=time：
 
 ```html
 <!-- xxx.hml -->
-<div class="container" @swipe="handleSwipe">
+  <div class="container">
   <text class="title">
     Selected：{{time}}
   </text>
@@ -149,10 +149,10 @@ export default {
     return `${this.fill(hours)}:${this.fill(minutes)}`;
   },
   onShow() {
-        this.$refs.pickerViewObj.rotation({focus: true})
+    this.$refs.pickerViewObj.rotation({focus: true})
   },
   onHide() {
-      this.$refs.pickerViewObj.rotation({focus: false})
+    this.$refs.pickerViewObj.rotation({focus: false})
   }
 }
 ```

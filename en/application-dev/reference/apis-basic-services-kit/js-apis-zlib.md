@@ -140,7 +140,7 @@ Compresses a file. This API uses an asynchronous callback to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                              |
+| ID| Error Message                              |
 | -------- | --------------------------------------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 900001   | The input source file is invalid.      |
@@ -207,7 +207,7 @@ Compresses a file. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                              |
+| ID| Error Message                              |
 | -------- | ------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 900001   | The input source file is invalid.      |
@@ -269,7 +269,7 @@ Decompresses a file. This API uses an asynchronous callback to return the result
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                              |
+| ID| Error Message                              |
 | -------- | --------------------------------------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 900001   | The input source file is invalid.      |
@@ -338,7 +338,7 @@ Decompresses a file. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                              |
+| ID| Error Message                              |
 | ------ | ------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 900001 | The input source file is invalid.      |
@@ -398,7 +398,7 @@ Decompresses a file. This API uses an asynchronous callback to return the result
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                              |
+| ID| Error Message                              |
 | -------- | --------------------------------------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 900001   | The input source file is invalid.      |
@@ -455,7 +455,7 @@ Obtains the original size of a compressed file. This API uses a promise to retur
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                              |
+| ID| Error Message                              |
 | ------ | ------------------------------------- |
 | 401 | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 900001 | The input source file is invalid.      |
@@ -510,7 +510,7 @@ Compresses multiple specified files. This API uses a promise to return the resul
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 900001   | The input source file is invalid.                            |
@@ -625,7 +625,7 @@ Calculates the Adler-32 checksum. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                              |
+| ID| Error Message                              |
 | -------- | --------------------------------------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
@@ -677,7 +677,7 @@ Combines two Adler-32 checksums. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                              |
+| ID| Error Message                              |
 | -------- | --------------------------------------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
@@ -739,7 +739,7 @@ Updates a CRC-32 checksum. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                              |
+| ID| Error Message                              |
 | -------- | --------------------------------------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
@@ -793,7 +793,7 @@ Combines two CRC-32 checksums. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                              |
+| ID| Error Message                              |
 | -------- | --------------------------------------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
@@ -855,7 +855,7 @@ Updates a CRC-64 checksum. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                              |
+| ID| Error Message                              |
 | -------- | --------------------------------------|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
@@ -1109,7 +1109,7 @@ Compresses the source buffer into the destination buffer. This API uses a promis
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800007 | The input buffer is incorrect, and the output buffer is too small to accommodate the compressed or decompressed data. |
@@ -1164,7 +1164,7 @@ Compresses the source buffer into the destination buffer. This API uses a promis
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -1219,7 +1219,7 @@ Decompresses the compressed data into the raw data. This API uses a promise to r
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800005 | The input data is incorrect. For example, the data does not conform to the zlib compression format, the compressed data is corrupted, or the data is not compressed. |
@@ -1280,7 +1280,7 @@ Decompresses the compressed data into the raw data. This API uses a promise to r
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800005 | The input data is incorrect. For example, the data does not conform to the zlib compression format, the compressed data is corrupted, or the data is not compressed. |
@@ -1339,7 +1339,7 @@ Calculates the maximum size of the compressed data to be returned. This API uses
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 
@@ -1392,7 +1392,7 @@ Validates the checksum inside the compression stream. This API uses a promise to
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -1451,7 +1451,7 @@ Finds the synchronization point of a decompression stream. This API uses a promi
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -1510,7 +1510,7 @@ Skips invalid compressed data until a possible complete refresh point is found. 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -1602,7 +1602,7 @@ Resets the state of the decompression stream to retain the allocated Huffman tre
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -1662,7 +1662,7 @@ Initializes the dictionary content of a decompression stream based on the given 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -1760,7 +1760,7 @@ Resets the status of the specified decompression stream and updates the window s
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -1819,7 +1819,7 @@ Resets the status of the specified decompression stream to the initial state to 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -1880,7 +1880,7 @@ Sets the initial number of bits and bit value in the specified decompression str
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -1939,7 +1939,7 @@ Marks the location of the input data for random access. This API uses a promise 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 
@@ -1998,7 +1998,7 @@ Initializes a decompression stream with the specified **windowBits**. This API u
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -2053,7 +2053,7 @@ Initializes a decompression stream. This API uses a promise to return the result
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 
@@ -2108,7 +2108,7 @@ Obtains the header information of a gzip file before decompressing data. This AP
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -2168,7 +2168,7 @@ Obtains the content and length of the decompression dictionary used in a decompr
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -2227,7 +2227,7 @@ Releases all dynamically allocated data structs of a decompression stream. This 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -2291,7 +2291,7 @@ Copies a decompression stream. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -2351,7 +2351,7 @@ Describes the number of Huffman trees used in a decompression stream. This API u
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 
@@ -2411,7 +2411,7 @@ Initializes the internal stream state for decompression before using the **infla
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -2446,7 +2446,7 @@ Releases all memory allocated by the **inflateBackInit()** function. This API us
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -2485,7 +2485,7 @@ Implements decompression and uses callbacks to process input and output data. Th
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -2700,7 +2700,7 @@ Inflates data. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -2787,7 +2787,7 @@ Initializes a compression stream with a specified compression level. This API us
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -2851,7 +2851,7 @@ Initializes a compression stream with the specified compression level, compressi
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -2912,7 +2912,7 @@ Deflates data. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -2977,7 +2977,7 @@ Releases all dynamically allocated data structs of a compression stream. This AP
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -3047,7 +3047,7 @@ Calculates the maximum size of the compressed data. This API uses a promise to r
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 
@@ -3111,7 +3111,7 @@ Provides the header information of a gzip file when **deflateInit2()** requests 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -3176,7 +3176,7 @@ Copies a compression stream. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -3241,7 +3241,7 @@ Initializes the compression dictionary from a given sequence of bytes. This API 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -3306,7 +3306,7 @@ Obtains the content and length of the decompression dictionary used in a compres
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -3379,7 +3379,7 @@ Fine-tunes the internal compression parameters of **deflate**. This API uses a p
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -3443,7 +3443,7 @@ Equivalent to call the **deflateEnd** API and then the **deflateInit** API. Howe
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -3507,7 +3507,7 @@ Resets the initialized compression stream, but retains the compression parameter
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -3571,7 +3571,7 @@ Returns the number of bytes and bits of output that has been generated but not y
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -3637,7 +3637,7 @@ Dynamically updates the compression level and compression strategy. This API use
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -3703,7 +3703,7 @@ Inserts bits and values into the compression stream. This API uses a promise to 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -4035,7 +4035,7 @@ Associates gzip file with the file descriptor (fd) and opens the file for readin
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800002 | No such file or access mode error.                           |
@@ -4105,7 +4105,7 @@ Sets the internal buffer size for the current library function. This API uses a 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800009   | Internal structure error. |
@@ -4178,7 +4178,7 @@ Opens the .gz file in the specified path for reading and decompressing, or compr
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800002 | No such file or access mode error.                           |
@@ -4361,7 +4361,7 @@ Clears all pending output of the file. Closes the file and releases the decompre
 
 For details about the error codes, see [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                 |
+| ID| Error Message                 |
 | -------- | ------------------------- |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
 | 17800006 | Memory allocation failed. |
@@ -4491,7 +4491,7 @@ Describes the last error message that reported for the file. This API uses a pro
 
 For details about the error codes, see [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | -------------- |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
 
@@ -4566,7 +4566,7 @@ Reads and decompresses a byte from a file. This API uses a promise to return the
 
 For details about the error codes, see [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                 |
+| ID| Error Message                 |
 | -------- | ------------------------- |
 | 17800009 | Internal structure error. |
 
@@ -4638,7 +4638,7 @@ Flushes all pending output into a compressed file. This API uses a promise to re
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -4710,7 +4710,7 @@ Compresses data blocks that are declared with size and nitems from the buffer an
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800009 | Internal structure error.                                    |
@@ -4787,7 +4787,7 @@ Decompresses and reads data from a gzip file. This API uses a promise to return 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800009 | Internal structure error.                                    |
@@ -4860,7 +4860,7 @@ Implements the same functions as that of **gzclose()** for writing or appending.
 
 For details about the error codes, see [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                 |
+| ID| Error Message                 |
 | -------- | ------------------------- |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
 | 17800006 | Memory allocation failed. |
@@ -4923,7 +4923,7 @@ Implements the same functions as that of **gzclose()** for reading only. This AP
 
 For details about the error codes, see [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message      |
+| ID| Error Message      |
 | -------- | -------------- |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
 
@@ -4994,7 +4994,7 @@ Compresses the uncompressed bytes of the declared length in the buffer and write
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800009 | Internal structure error.                                    |
@@ -5069,7 +5069,7 @@ Pushes **c** back into the input stream so that it will be read as the first cha
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800009 | Internal structure error.                                    |
@@ -5136,7 +5136,7 @@ Returns the start position of the next **gzread** or **gzwrite** in the file. Th
 
 For details about the error codes, see [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                 |
+| ID| Error Message                 |
 | -------- | ------------------------- |
 | 17800009 | Internal structure error. |
 
@@ -5206,7 +5206,7 @@ Dynamically updates the compression level and compression strategy of a file. Th
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -5278,7 +5278,7 @@ Sets the start position to the offset position relative to the next **gzread** o
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800009 | Internal structure error.                                    |
@@ -5342,7 +5342,7 @@ Repositions the file pointer to the beginning of the file. This feature is appli
 
 For details about the error codes, see [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                 |
+| ID| Error Message                 |
 | -------- | ------------------------- |
 | 17800009 | Internal structure error. |
 
@@ -5413,7 +5413,7 @@ Reads a maximum of **len** uncompressed bytes from a file and decompresses them 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800009 | Internal structure error.                                    |
@@ -5492,7 +5492,7 @@ Compresses the given null-terminated strings and writes them to the file, exclud
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800009 | Internal structure error.                                    |
@@ -5562,7 +5562,7 @@ Compresses **char** converted to an unsigned character and writes it to a file. 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800009 | Internal structure error.                                    |
@@ -5633,7 +5633,7 @@ Converts and formats the parameters under the control of the string format and t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800004 | Compression or decompression stream error, which may be caused by an initialization error in the zlib stream structure or a modified structure. |
@@ -5698,7 +5698,7 @@ Returns the current compressed read or write offset of the file. This API uses a
 
 For details about the error codes, see [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                 |
+| ID| Error Message                 |
 | -------- | ------------------------- |
 | 17800009 | Internal structure error. |
 
@@ -5767,7 +5767,7 @@ Reads bytes from a compressed file until len-1 characters are read, a newline ch
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [zlib Error Codes](./errorcode-zlib.md).
 
-| Error Code| Error Message                                                    |
+| ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 17800009 | Internal structure error.                                    |

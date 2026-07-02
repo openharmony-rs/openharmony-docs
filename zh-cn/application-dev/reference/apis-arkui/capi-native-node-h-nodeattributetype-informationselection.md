@@ -230,13 +230,13 @@ NODE_DATE_PICKER_ENABLE_HAPTIC_FEEDBACK = 13008
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].f32 | 是否开启触控反馈。默认值：true，true表示开启触控反馈，false则表示不开启触控反馈。 |
+| .value[0].i32 | 是否开启触控反馈。默认值：true，true表示开启触控反馈，false则表示不开启触控反馈。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].f32 | 是否开启触控反馈。 |
+| .value[0].i32 | 是否开启触控反馈。 |
 
 ## NODE_DATE_PICKER_CAN_LOOP
 
@@ -713,13 +713,13 @@ NODE_TEXT_PICKER_ENABLE_HAPTIC_FEEDBACK = 15010
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].f32 | 是否开启触控反馈。默认值：true，true表示开启触控反馈，false则表示不开启触控反馈。 |
+| .value[0].i32 | 是否开启触控反馈。默认值：true，true表示开启触控反馈，false则表示不开启触控反馈。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].f32 | 是否开启触控反馈。 |
+| .value[0].i32 | 是否开启触控反馈。 |
 
 ## NODE_TEXT_PICKER_SELECTED_BACKGROUND_STYLE
 
@@ -738,7 +738,6 @@ NODE_TEXT_PICKER_SELECTED_BACKGROUND_STYLE = 15011
 | 参数项 | 描述 |
 | -- | -- |
 | .value[0].u32 | 背景颜色，采用 0xARGB 格式，例如，<b>0xFF1122FF</b>。 |
-| .value[1].f32 | 四个角的圆角半径，单位为VP。 |
 | .value[1].f32 | 左上角的圆角半径，单位为VP。 |
 | .value[2].f32 | 右上角的圆角半径，单位为VP。 |
 | .value[3].f32 | 左下角的圆角半径，单位为VP。 |
@@ -996,7 +995,7 @@ NODE_CALENDAR_PICKER_TEXT_STYLE = 16003
 | -- | -- |
 | .value[0]?.u32 | 入口区的文本颜色。 |
 | .value[1]?.f32 | 入口区的文本字号，单位为fp。 |
-| .value[2]?.i32 | 入口区的文本字体粗细，参数类型[ArkUI_FontWeight](capi-native-type-h.md#arkui_fontweight)。 |
+| .value[2]?.i32 | 入口区的文本字体粗细，参数类型[ArkUI_FontWeight](capi-text-h.md#arkui_fontweight)。 |
 
 **返回：**
 
@@ -1004,7 +1003,7 @@ NODE_CALENDAR_PICKER_TEXT_STYLE = 16003
 | -- | -- |
 | .value[0].u32 | 入口区的文本颜色。 |
 | .value[1].f32 | 入口区的文本字号，单位为fp。 |
-| .value[2].i32 | 入口区的文本字体粗细，参数类型[ArkUI_FontWeight](capi-native-type-h.md#arkui_fontweight)。 |
+| .value[2].i32 | 入口区的文本字体粗细，参数类型[ArkUI_FontWeight](capi-text-h.md#arkui_fontweight)。 |
 
 ## NODE_CALENDAR_PICKER_START
 

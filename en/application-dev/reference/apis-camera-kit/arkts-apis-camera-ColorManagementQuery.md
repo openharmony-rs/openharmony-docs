@@ -39,7 +39,7 @@ Obtains the supported color spaces.
 
 For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
 
-| Error Code        | Error Message       |
+| ID        | Error Message       |
 | --------------- | --------------- |
 | 7400103         | Session not config, only throw in session usage.<br>Applicable versions: 12-17|
 

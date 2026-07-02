@@ -28,7 +28,7 @@ Select(options: Array\<SelectOption>)
 
 | Name | Type                                          | Mandatory| Description          |
 | ------- | ---------------------------------------------- | ---- | -------------- |
-| options | Array\<[SelectOption](#selectoption)\> | Yes  | Options of the drop-down menu.|
+| options | [Array](../../apis-arkts/arkts-apis-arkts-collections-Array.md)\<[SelectOption](#selectoption)\> | Yes  | Options of the drop-down menu.|
 
 ## SelectOption
 
@@ -273,7 +273,7 @@ Sets the text style of the drop-down button. When **size** is set to **0**, the 
 
 | Name| Type                    | Mandatory| Description                                                        |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Font](ts-types.md#font) | Yes  | Text style of the drop-down button.<br>For API versions 11 and earlier, the default value is as follows:<br>{<br>size:&nbsp;`$r('sys.float.ohos_id_text_size_button1')`,<br>weight:&nbsp;FontWeight.Medium<br>} <br>Since API version 12: The default value of **size** is **$r('sys.float.ohos_id_text_size_button2')** in the case of **controlSize.SMALL** and **$r('sys.float.ohos_id_text_size_button1')** in other cases.|
+| value  | [Font](ts-types.md#font) | Yes  | Text style of the drop-down button.<br>For API versions 11 and earlier, the default value is as follows:<br>{<br>size:&nbsp;`$r('sys.float.ohos_id_text_size_button1')`,<br>weight:&nbsp;FontWeight.Medium<br>} <br>Since API version 12, if [controlSize](#controlsize12) is set to **ControlSize.SMALL**, the default value of **size** is **$r('sys.float.ohos_id_text_size_button2')**. Otherwise, the value is **$r('sys.float.ohos_id_text_size_button1')**.|
 
 ### font<sup>18+</sup>
 
@@ -291,7 +291,7 @@ Sets the text style of the drop-down button. When **size** is set to **0**, the 
 
 | Name    | Type                                                        | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| selectFont | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Font](ts-types.md#font)> | Yes  | Text style of the drop-down button.<br>If **controlSize** is set to **controlSize.SMALL**, the default value of **size** is **$r('sys.float.ohos_id_text_size_button2')**. Otherwise, the default value is **$r('sys.float.ohos_id_text_size_button1')**.<br>If **selectFont** is set to **undefined**, the default font style is used.|
+| selectFont | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Font](ts-types.md#font)> | Yes  | Text style of the drop-down button.<br>If [controlSize](#controlsize12) is set to **ControlSize.SMALL**, the default value of **size** is **$r('sys.float.ohos_id_text_size_button2')**. Otherwise, the value is **$r('sys.float.ohos_id_text_size_button1')**.<br>If **selectFont** is set to **undefined**, the default font style is used.|
 
 ### fontColor
 
@@ -325,7 +325,7 @@ Sets the font color of the drop-down button. Compared with [fontColor](#fontcolo
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Font color of the drop-down button.<br>When **resColor** is set to **undefined**, the default value is a blend of **$r('sys.color.ohos_id_color_text_primary')** with the opacity of **$r('sys.color.ohos_id_alpha_content_primary')**.<br>If **value** is set to **undefined**, the previous value is retained.|
+| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Font color of the drop-down button.<br>When **resColor** is set to **undefined**, the default value is a blend of **$r('sys.color.ohos_id_color_text_primary')** with the opacity of **$r('sys.color.ohos_id_alpha_content_primary')**.|
 
 ### selectedOptionBgColor
 
@@ -461,7 +461,7 @@ Sets the background color of options in the drop-down menu. Compared with [optio
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Background color of options in the drop-down menu.<br>When the value of resColor is undefined, the background color of the drop-down menu item is Color.White.|
+| resColor | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Background color of options in the drop-down menu.<br>When the value of **resColor** is **undefined**, the background color of the drop-down menu item is **Color.White**.|
 
 ### optionFont
 
@@ -549,7 +549,7 @@ Sets the spacing between the text and arrow of a drop-down menu option. This att
 
 | Name| Type                        | Mandatory| Description                                            |
 | ------ | ---------------------------- | ---- | ------------------------------------------------ |
-| value  | [Length](ts-types.md#length) | Yes  | Spacing between the text and arrow of a drop-down menu option.<br>Default value: **8**<br>Note: For the string type, percentage values are not supported.|
+| value  | [Length](ts-types.md#length) | Yes  | Spacing between the text and arrow of a drop-down menu option.<br>Default value: **8vp**<br>Note: For the string type, percentage values are not supported.|
 
 ### space<sup>18+</sup>
 
@@ -567,7 +567,7 @@ Sets the spacing between the text and arrow of a drop-down menu option. This att
 
 | Name     | Type                                                        | Mandatory| Description                                                        |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| spaceLength | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Length](ts-types.md#length)> | Yes  | Spacing between the text and arrow of an option.<br>If **spaceLength** is set to **undefined**, the default value **8** is used.|
+| spaceLength | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[Length](ts-types.md#length)> | Yes  | Spacing between the text and arrow of an option.<br>If **spaceLength** is set to **undefined**, the default value **8vp** is used.|
 
 ### arrowPosition<sup>10+</sup>
 
@@ -915,7 +915,7 @@ optionTextModifier(modifier: Optional\<TextModifier>)
 
 Creates an option text modifier to customize the text style of unselected options in the drop-down menu. After **optionTextModifier** is applied, the unselected option text style will be completely customized by the developer.
 
-If both [optionFont](#optionfont) and **Font** of **optionTextModifier** are set, [optionFont](#optionfont) takes precedence. Any unspecified attributes in **optionFont** will use default values.
+If the font of both [optionFont](#optionfont) and **optionTextModifier** is set, [optionFont](#optionfont) takes precedence for styling unselected option text. Any unspecified attributes in **optionFont** will use default values.
 
 > **NOTE**
 >
@@ -939,7 +939,7 @@ selectedOptionTextModifier(modifier: Optional\<[TextModifier](ts-universal-attri
 
 Creates a selected-option text modifier to customize the text style of selected options in the drop-down menu. After **selectedOptionTextModifier** is applied, the selected-option text style will be completely customized by the developer.
 
-If both [selectedOptionFont](#selectedoptionfont) and **Font** of **selectedOptionTextModifier** are set, [selectedOptionFont](#selectedoptionfont) takes precedence. If **selectedOptionFont** is not set, [optionFont](#optionfont) settings are applied. Any unspecified attributes in **selectedOptionFont** or **optionFont** will use default values.
+If the font of both [selectedOptionFont](#selectedoptionfont) and **selectedOptionTextModifier** is set, [selectedOptionFont](#selectedoptionfont) takes precedence for styling unselected option text. If [selectedOptionFont](#selectedoptionfont) is not set, [optionFont](#optionfont) settings are applied. Any unspecified attributes in **selectedOptionFont** or **optionFont** will use default values.
 
 > **NOTE**
 >
@@ -968,8 +968,6 @@ Sets whether the drop-down menu is displayed in the subwindow. If this API is no
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Device behavior difference**: This API is supported on PCs and 2-in-1 devices but not available on other devices.
 
 **Parameters**
 
@@ -1114,10 +1112,10 @@ Enumerates the drop-down menu avoidance modes.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name               | Description            |
-| ------------------- | ------------------ |
-| COVER_TARGET        | If there is not enough space below the target component, cover the target component.|
-| AVOID_AROUND_TARGET | If there is not enough space around the target component, compress and display in the largest available space (scrollable).|
+| Name               | Value| Description            |
+| ------------------- | ----- | ------------------ |
+| COVER_TARGET        | 0 | If there is not enough space below the target component, cover the target component.|
+| AVOID_AROUND_TARGET | 1 | If there is not enough space around the target component, compress and display in the largest available space (scrollable).|
 
 ## MenuItemConfiguration<sup>12+</sup>
 
@@ -1242,13 +1240,21 @@ struct SelectExample {
         .menuAlign(MenuAlignType.START, { dx: 0, dy: 0 })
         .optionWidth(200)
         .optionHeight(300)
+        /**
+         * Callback triggered when a drop-down menu option is selected.
+         * index: subscript of the selected option.
+         * text: text of the selected option (optional).
+         */
         .onSelect((index: number, text?: string | undefined) => {
           console.info('Select:' + index);
+          // Update the state for the selected index.
           this.index = index;
+          // Update the text displayed in the selection box if the text value exists.
           if (text) {
             this.text = text;
           }
         })
+        // Overlay the target component when there is no sufficient space below the component.
         .avoidance(AvoidanceMode.COVER_TARGET);
     }.width('100%')
   }
@@ -1297,13 +1303,20 @@ struct SelectExample {
         .space(this.space)
         .arrowPosition(this.arrowPosition)
         .menuAlign(MenuAlignType.START, { dx: 0, dy: 0 })
+        /**
+         * Callback triggered when a drop-down menu option is selected.
+         * index: subscript of the selected option.
+         * text: text of the selected option (optional).
+         */
         .onSelect((index: number, text?: string | undefined) => {
           console.info('Select:' + index);
+          // Update the state for the selected index.
           this.index = index;
           if (text) {
             this.text = text;
           }
         })
+        // Overlay the target component when there is no sufficient space below the component.
         .avoidance(AvoidanceMode.COVER_TARGET);
     }.width('100%')
   }
@@ -1318,6 +1331,11 @@ This example implements a custom drop-down menu, each option of which consists o
 ```ts
 import { SymbolGlyphModifier } from '@kit.ArkUI';
 
+/**
+ * Custom content modifier for drop-down menu options
+ * Implement the standard ContentModifier to replace the default item layout of the drop-down panel.
+ * Allow custom text to be appended at the end of each menu item.
+ */
 class MyMenuItemContentModifier implements ContentModifier<MenuItemConfiguration> {
   modifierText: string = "";
 
@@ -1330,19 +1348,27 @@ class MyMenuItemContentModifier implements ContentModifier<MenuItemConfiguration
   }
 }
 
+/**
+ * UI builder for custom drop-down menu items
+ * Fully override the menu item layout: text on the left side, icon, custom text, and outlined triangular shape.
+ * @param configuration Configuration object for menu items, containing value, index, icon, custom content modifier and other related data.
+ */
 @Builder
 function MenuItemBuilder(configuration: MenuItemConfiguration) {
   Row() {
     Text(configuration.value)
     Blank()
+    // Render the system vector symbol icon first.
     if (configuration.symbolIcon) {
       SymbolGlyph().attributeModifier(configuration.symbolIcon).fontSize(24)
     } else if (configuration.icon) {
       Image(configuration.icon).size({ width: 24, height: 24 })
     }
     Blank(30)
+    // Retrieve and display the suffix text passed by the custom content modifier.
     Text((configuration.contentModifier as MyMenuItemContentModifier).modifierText)
     Blank(30)
+    // Draw a custom triangular path shape with only a stroke and no fill color.
     Path()
       .width('100px')
       .height('150px')
@@ -1351,6 +1377,7 @@ function MenuItemBuilder(configuration: MenuItemConfiguration) {
       .stroke(Color.Black)
       .strokeWidth(3)
   }
+  .padding({left: 8, top: 8})
   .onClick(() => {
     configuration.triggerSelect(configuration.index, configuration.value.valueOf().toString());
   })
@@ -1376,6 +1403,7 @@ struct SelectExample {
             console.info('Select index:' + index);
             console.info('Select text:' + text);
           })
+          // Bind the custom menu item modifier to replace the default layout of the drop-down panel.
           .menuItemContentModifier(new MyMenuItemContentModifier("Content Modifier"))
 
       }.alignItems(VerticalAlign.Center).height('50%')
@@ -1414,6 +1442,12 @@ struct SelectExample {
         .menuAlign(MenuAlignType.START, { dx: 0, dy: 0 })
         .optionWidth(200)
         .optionHeight(300)
+        /**
+         * Custom configuration for dividers between drop-down options
+         * strokeWidth: width of the divider.
+         * color: color of the divider.
+         * startMargin/endMargin: left and right margins of the divider.
+         */
         .divider({
           strokeWidth: 5,
           color: Color.Blue,
@@ -1463,6 +1497,7 @@ struct SelectExample {
         .menuAlign(MenuAlignType.START, { dx: 0, dy: 0 })
         .optionWidth(200)
         .optionHeight(300)
+        // Pass null to divider to hide dividers between options.
         .divider(null)
         .onSelect((index: number, text?: string | undefined) => {
           console.info('Select:' + index);
@@ -1485,6 +1520,10 @@ This example illustrates how to configure the text and arrow styles of the **Sel
 ```ts
 import { TextModifier, SymbolGlyphModifier } from "@kit.ArkUI";
 
+/**
+ * Use TextModifier to control the text display style of the selection box.
+ * Use SymbolGlyphModifier to customize the size and color of the drop-down arrow icon on the right.
+ */
 @Entry
 @Component
 struct SelectExample {
@@ -1494,6 +1533,7 @@ struct SelectExample {
   symbolGlyphModifier: SymbolGlyphModifier = new SymbolGlyphModifier();
 
   aboutToAppear(): void {
+    // Initialize the global style of the main text.
     this.textModifier
       .maxLines(2)
       .fontSize(18)
@@ -1502,6 +1542,7 @@ struct SelectExample {
       .fontWeight(FontWeight.Medium)
       .textOverflow({overflow:TextOverflow.Clip})
 
+    // Initialize the style of the drop-down arrow icon.
     this.symbolGlyphModifier
       .fontSize(25)
       .fontColor(['#999999'])
@@ -1518,7 +1559,9 @@ struct SelectExample {
       ])
         .selected(this.index)
         .value(this.text)
+        // Bind a custom text modifier to control the text style.
         .textModifier(this.textModifier)
+        // Bind a modifier to customize the drop-down arrow.
         .arrowModifier(this.symbolGlyphModifier)
         .onSelect((index: number, text?: string) => {
           console.info('Select:' + index);
@@ -1552,6 +1595,9 @@ This example demonstrates how to use the [optionTextModifier](#optiontextmodifie
 ```ts
 import { TextModifier } from "@kit.ArkUI";
 
+/**
+ * Use two separate TextModifier instances to individually control the text styles of regular options and selected options in the drop-down panel.
+ */
 @Entry
 @Component
 struct SelectExample {
@@ -1560,6 +1606,7 @@ struct SelectExample {
   optionTextModifier: TextModifier = new TextModifier();
   selectedOptionTextModifier: TextModifier = new TextModifier();
   aboutToAppear(): void {
+    // Initialize the text style for regular drop-down options.
     this.optionTextModifier
       .maxLines(1)
       .fontSize(16)
@@ -1568,6 +1615,7 @@ struct SelectExample {
       .fontWeight(FontWeight.Normal)
       .width(200)
 
+    // Initialize the text style for selected drop-down options (highlighted).
     this.selectedOptionTextModifier
       .maxLines(1)
       .fontSize(18)
@@ -1595,7 +1643,9 @@ struct SelectExample {
             this.text = text;
           }
         })
+        // Bind the text modifier for regular option text.
         .optionTextModifier(this.optionTextModifier)
+        // Bind the text modifier for selected option text to implement highlighted styles for selected items.
         .selectedOptionTextModifier(this.selectedOptionTextModifier)
         .margin({ top: 20,left:30 })
         .borderRadius(12)
@@ -1629,6 +1679,12 @@ struct Index {
     RelativeContainer() {
       Select([{ value: "SelectItem" }, { value: "SelectItem" }, { value: "SelectItem" },])
         .value("Select")
+        **
+         * Complete style customization for dividers between drop-down options
+         * strokeWidth: width of the divider. The unit is vp, which is used for consistent adaptation across different screens.
+         * color: light gray.
+         * mode: EMBEDDED_IN_MENU embedded mode.
+         */
         .dividerStyle({
           strokeWidth: LengthMetrics.vp(5),
           color: '#d5d5d5',
@@ -1672,6 +1728,11 @@ struct SelectExample {
         .menuAlign(MenuAlignType.START, { dx: 0, dy: 0 })
         .optionWidth(200)
         .optionHeight(300)
+        /**
+         * Outline style configuration for the drop-down menu
+         * width: outline width set to 5 vp.
+         * color: outline color set to blue.
+         */
         .menuOutline({
           width: '5vp',
           color: Color.Blue
@@ -1703,10 +1764,21 @@ The **keyboardAvoidMode** and **minKeyboardAvoidDistance** APIs are added since 
 import { inputMethod } from '@kit.IMEKit';
 import { LengthMetrics } from '@kit.ArkUI';
 
+/**
+ * Sample demonstrating the Select drop-down component with automatic input method attachment
+ * Configure the keyboard avoidance policy for the pop-up menu, triggering input method attachment with a 2-second delay upon the click of the drop-down box.
+ */
 @Entry
 @Component
 struct Index {
-  private inputController: inputMethod.InputMethodController = inputMethod.getController();
+  private inputController: inputMethod.InputMethodController | null = null;
+  onPageShow(): void {
+    try {
+      this.inputController = inputMethod.getController();
+    } catch (err) {
+      console.error("get input method controller fail: ", JSON.stringify(err));
+    }
+  }
 
   build() {
     RelativeContainer() {
@@ -1720,7 +1792,9 @@ struct Index {
           center: { anchor: '__container__', align: VerticalAlign.Center },
           middle: { anchor: '__container__', align: HorizontalAlign.Center },
         })
+        // Set the soft keyboard avoidance mode to translate and resize the popup menu to prevent occlusion by the keyboard.
         .keyboardAvoidMode(MenuKeyboardAvoidMode.TRANSLATE_AND_RESIZE)
+        // Set the minimum reserved distance of 20 vp between the popup menu and the soft keyboard.
         .minKeyboardAvoidDistance(LengthMetrics.vp(20))
         .onClick(() => {
           setTimeout(() => {
@@ -1732,13 +1806,23 @@ struct Index {
     .width('100%')
   }
 
+  /**
+   * This is an asynchronous method to attach and listen to the input method.
+   * 1. Proactively request focus for the page with Index.
+   * 2. Verify the validity of the input method controller instance.
+   * 3. Attach the input method by configuring the text input type and search enter key.
+   */
   async attachAndListener() {
     focusControl.requestFocus('Index')
+    if (!this.inputController) {
+      console.error('inputController instance is null!');
+      return;
+    }
     try {
       await this.inputController.attach(true, {
         inputAttribute: {
-          textInputType: inputMethod.TextInputType.TEXT,
-          enterKeyType: inputMethod.EnterKeyType.SEARCH
+          textInputType: inputMethod.TextInputType.TEXT, // Regular text input type.
+          enterKeyType: inputMethod.EnterKeyType.SEARCH // Search enter key.
         }
       })
     } catch (err) {
@@ -1768,9 +1852,17 @@ struct Index {
         { value: 'SelectOption' },
         { value: 'SelectOption' }])
         .value('Click Show Options')
+        /**
+         * Configure immersive frosted material for the selection box.
+         * ULTRA_THIN: ultra-thin translucent frosted effect with high transparency, making underlying content more visible.
+         */
         .systemMaterial(new uiMaterial.ImmersiveMaterial({
             style: uiMaterial.ImmersiveStyle.ULTRA_THIN
           }))
+        /**
+         * Configure immersive frosted material for the drop-down panel.
+         * THICK: thick frosted effect with lower transparency and stronger occlusion.
+         */
         .menuSystemMaterial(new uiMaterial.ImmersiveMaterial({
             style: uiMaterial.ImmersiveStyle.THICK
           }))

@@ -332,13 +332,13 @@ NODE_SWIPER_EDGE_EFFECT_MODE = 1001012
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 边缘滑动效果，参数类型[ArkUI_EdgeEffect](capi-native-type-h.md#arkui_edgeeffect)，<br>默认值为ARKUI_EDGE_EFFECT_SPRING。 |
+| .value[0].i32 | 边缘滑动效果，参数类型[ArkUI_EdgeEffect](capi-scroll-h.md#arkui_edgeeffect)，<br>默认值为ARKUI_EDGE_EFFECT_SPRING。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 边缘滑动效果，参数类型[ArkUI_EdgeEffect](capi-native-type-h.md#arkui_edgeeffect)。 |
+| .value[0].i32 | 边缘滑动效果，参数类型[ArkUI_EdgeEffect](capi-scroll-h.md#arkui_edgeeffect)。 |
 
 ## NODE_SWIPER_NODE_ADAPTER
 

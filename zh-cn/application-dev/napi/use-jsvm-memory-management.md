@@ -33,11 +33,12 @@ cpp部分代码：
 
 <!-- @[oh_jsvm_adjust_external_memory](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/adjustexternalmemory/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 // OH_JSVM_AdjustExternalMemory的样例方法
 static JSVM_Value AdjustExternalMemory(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -64,6 +65,8 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"adjustExternalMemory", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
+
+const char *SRC_CALL_NATIVE = R"JS(adjustExternalMemory())JS";
 ```
 
 样例测试JS
@@ -75,7 +78,7 @@ const char *srcCallNative = R"JS(adjustExternalMemory())JS";
 输出结果：
 
 在LOG中输出以下信息：
-```cpp
+``` C++
 JSVM OH_JSVM_AdjustExternalMemory: success
 JSVM Allocate memory size: 1048576
 ```
@@ -87,11 +90,12 @@ cpp部分代码：
 
 <!-- @[oh_jsvm_memory_pressure_notification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/memorypressurenotification/src/main/cpp/hello.cpp) -->
 
-```cpp
-// hello.cpp
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 // OH_JSVM_MemoryPressureNotification的样例方法
 static JSVM_Value MemoryPressureNotification(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -101,7 +105,8 @@ static JSVM_Value MemoryPressureNotification(JSVM_Env env, JSVM_CallbackInfo inf
         OH_LOG_ERROR(LOG_APP, "JSVM OH_JSVM_MemoryPressureNotification: failed");
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM OH_JSVM_MemoryPressureNotification: success");
-        OH_LOG_INFO(LOG_APP, "JSVM Current JSVM memory pressure level: %{public}d", JSVM_MEMORY_PRESSURE_LEVEL_CRITICAL);
+        OH_LOG_INFO(LOG_APP, "JSVM Current JSVM memory pressure level: %{public}d",
+                    JSVM_MEMORY_PRESSURE_LEVEL_CRITICAL);
     }
     return nullptr;
 }
@@ -114,6 +119,8 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"memoryPressureNotification", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
+
+const char *SRC_CALL_NATIVE = R"JS(memoryPressureNotification())JS";
 ```
 
 样例测试JS
@@ -125,7 +132,7 @@ const char *srcCallNative = R"JS(memoryPressureNotification())JS";
 输出结果：
 
 在LOG中输出以下信息：
-```cpp
+``` C++
 JSVM OH_JSVM_MemoryPressureNotification: success
 JSVM Current JSVM memory pressure level: 2
 ```

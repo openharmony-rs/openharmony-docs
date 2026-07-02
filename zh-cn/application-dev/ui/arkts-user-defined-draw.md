@@ -81,7 +81,7 @@
     
 4. [OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecustomevent_getdrawcontextindraw)通过自定义组件事件获取绘制上下文，并将其传入[OH_ArkUI_DrawContext_GetCanvas](../reference/apis-arkui/capi-native-type-h.md#oh_arkui_drawcontext_getcanvas)以获取Canvas画布指针，该指针随后将转换为[OH_Drawing_Canvas](../reference/apis-arkgraphics2d/capi-drawing-oh-drawing-canvas.md)指针进行绘制。
 
-   <!-- @[drawCanvas_Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeDrawPageSample/entry/src/main/cpp/Drawing.h) -->
+   <!-- @[drawCanvas_Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeDrawPageSample/entry/src/main/cpp/Drawing.h) -->  
    
    ``` C
    // 获取自定义事件绘制的上下文。
@@ -266,7 +266,7 @@
 
 3. 使用自定义绘制组件和自定义容器创建示例界面。
 
-    <!-- @[arkUICustomNodeCpp_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/NativeEntry.cpp) -->
+    <!-- @[arkUICustomNodeCpp_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/NativeEntry.cpp) --> 
     
     ``` C++
     #include <arkui/native_node_napi.h>
@@ -311,6 +311,80 @@
         g_env = env;
         return nullptr;
     }
+    napi_value CreateNativeMessageRoot(napi_env env, napi_callback_info info)
+    {
+        constexpr int32_t messageMaskWidth = 400;
+        constexpr int32_t messageMaskHeight = 200;
+    
+        size_t argc = 1;
+        napi_value args[1] = {nullptr};
+    
+        napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    
+        // 避免重复创建导致的重复挂载
+        NativeEntry::GetInstance()->DisposeRootNode();
+    
+        // 获取NodeContent
+        ArkUI_NodeContentHandle contentHandle;
+        OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
+        NativeEntry::GetInstance()->SetContentHandle(contentHandle);
+    
+        auto nodeAPI = NativeModuleInstance::GetInstance()->GetNativeNodeAPI();
+        auto rootColumn = std::make_shared<ArkUIColumnNode>();
+        auto rootColumnHandle = rootColumn->GetHandle();
+        
+        // 设置根容器样式
+        ArkUI_NumberValue paddingValue[] = {{.f32 = 20.0f}};
+        ArkUI_AttributeItem paddingItem = {paddingValue, 1};
+        nodeAPI->setAttribute(rootColumnHandle, NODE_PADDING, &paddingItem);
+    
+        ArkUI_NumberValue bgColorValue[] = {{.u32 = 0xFFFFFFFF}};
+        ArkUI_AttributeItem bgColorItem = {bgColorValue, 1};
+        nodeAPI->setAttribute(rootColumnHandle, NODE_BACKGROUND_COLOR, &bgColorItem);
+        
+        // 创建消息气泡组件
+        auto maskNode = std::make_shared<ArkUIMessageMaskNode>();
+        maskNode->SetWidth(messageMaskWidth);
+        maskNode->SetHeight(messageMaskHeight);
+        maskNode->SetMessage("您有一条新消息");
+        maskNode->SetMaskVisible(false);  // 初始不显示蒙层
+        
+        // 创建按钮用于切换蒙层效果
+        auto buttonNode = std::make_shared<ArkUINode>(nodeAPI->createNode(ARKUI_NODE_BUTTON));
+        auto buttonHandle = buttonNode->GetHandle();
+        
+        // 设置按钮文本
+        ArkUI_AttributeItem labelItem;
+        const char* buttonLabel = "切换蒙层效果";
+        labelItem.string = buttonLabel;
+        nodeAPI->setAttribute(buttonHandle, NODE_BUTTON_LABEL, &labelItem);
+        
+        // 设置按钮样式
+        ArkUI_NumberValue marginValue[] = {{.f32 = 20.0f}};
+        ArkUI_AttributeItem marginItem = {marginValue, 1};
+        nodeAPI->setAttribute(buttonHandle, NODE_MARGIN, &marginItem);
+        
+        ArkUI_NumberValue btnBgColorValue[] = {{.u32 = 0xFF2787D9}};
+        ArkUI_AttributeItem btnBgColorItem = {btnBgColorValue, 1};
+        nodeAPI->setAttribute(buttonHandle, NODE_BACKGROUND_COLOR, &btnBgColorItem);
+    
+        // 设置按钮点击事件
+        auto onClick = [](ArkUI_NodeEvent *event) {
+            auto maskNode = (ArkUIMessageMaskNode *)OH_ArkUI_NodeEvent_GetUserData(event);
+            static bool highlighted = false;
+            highlighted = !highlighted;
+            maskNode->SetMaskVisible(highlighted);
+        };
+        buttonNode->RegisterOnClick(onClick, maskNode.get());
+        
+        // 将组件添加到根容器
+        rootColumn->AddChild(buttonNode);
+        rootColumn->AddChild(maskNode);
+    
+        // 保持Native侧对象到管理类中，维护生命周期
+        NativeEntry::GetInstance()->SetRootNode(rootColumn);
+        return nullptr;
+    }
     
     napi_value DestroyNativeRoot(napi_env env, napi_callback_info info)
     {
@@ -337,7 +411,7 @@
 
 2. 创建消息蒙层组件封装对象。
 
-   <!-- @[messageMaskNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/ArkUIMessageMaskNode.h) -->
+   <!-- @[messageMaskNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/ArkUIMessageMaskNode.h) --> 
    
    ``` C
    #ifndef MYAPPLICATION_ARKUIMESSAGEMASKNODE_H
@@ -429,7 +503,7 @@
            }
        }
    
-       // 自定义内容背景层：绘制聊天界面背景
+       // 自定义内容层背景：绘制聊天界面背景
        void OnDrawBehind(ArkUI_NodeCustomEvent* event)
        {
            auto drawContext = OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw(event);
@@ -601,7 +675,7 @@
            OH_Drawing_BrushDestroy(textBrush);
        }
    
-       std::string message_ = "";
+       std::string message_ = "这是一条消息提示";
        bool maskVisible_ = false;
    };
    } // namespace NativeModule
