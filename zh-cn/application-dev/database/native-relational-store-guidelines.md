@@ -327,7 +327,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
    
    配置谓词以LIKE模式或NOT LIKE模式匹配进行数据查询。示例代码如下：
 
-    <!--@[rdb_OH_Rdb_Query_by_like_and_notLike](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
+    <!--@[rdb_OH_Rdb_Query_by_like_and_notLike](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)--> 
 
     ``` C++
     OH_Predicates *likePredicates = OH_Rdb_CreatePredicates("EMPLOYEE");
@@ -478,7 +478,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     int res = OH_Rdb_CreateTransaction(store_, options, &trans);
     OH_RdbTrans_DestroyOptions(options);
     ```
-    <!--@[rdb_trans_insert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
+    <!--@[rdb_trans_insert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)--> 
 
     ``` C++
     char transCreateTableSql[] =
@@ -651,7 +651,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     
     当不再使用附加数据时，可调用OH_Rdb_Detach分离附加数据库。
 
-    <!--@[rdb_OH_Rdb_Attach_and_Detach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
+    <!--@[rdb_OH_Rdb_Attach_and_Detach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)--> 
 
     ``` C++
     char attachStoreTableCreateSql[] = "CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, "

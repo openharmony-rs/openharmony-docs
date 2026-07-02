@@ -74,7 +74,7 @@
     
       如果开发者不关心加密算法及参数，使用默认加密配置即可，无需创建和配置自定义加密参数。
 
-      <!-- @[CustomizedConfigRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
+      <!-- @[CustomizedConfigRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) --> 
     
       ``` C++
       OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();

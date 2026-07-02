@@ -120,7 +120,7 @@
    2. 同时需要在应用首次启动时弹窗向用户申请授权，使用方式请参见[向用户申请授权](../security/AccessToken/request-user-authorization.md)。
 
 3. 创建关系型数据库，创建数据表，并将需要进行跨设备同步的数据表设置为分布式表，默认采用多设备协同表模式进行数据存储和管理。
-   <!--@[setDefaultDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
+   <!--@[setDefaultDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->  
    
    ``` TypeScript
    const context = new UIContext().getHostContext() as common.UIAbilityContext;
@@ -315,7 +315,7 @@
 ## 使用单版本表模式进行数据同步
 
 使用单版本表模式进行数据同步，基本开发步骤与[使用多设备协同表模式进行数据同步](#使用多设备协同表模式进行数据同步)相似。不过在创建数据表时（即使用多设备协同表模式进行数据同步中的步骤3），需要将进行跨设备同步的数据表设置为SINGLE_VERSION单版本类型。示例如下：
-   <!--@[setSingleDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
+   <!--@[setSingleDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->  
    
    ``` TypeScript
    const context = new UIContext().getHostContext() as common.UIAbilityContext;
