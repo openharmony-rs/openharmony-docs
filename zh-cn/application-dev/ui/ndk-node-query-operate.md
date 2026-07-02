@@ -559,11 +559,11 @@ const unsigned int VALUE_3 = 50;
 2. 新建`Attribute_util.h`用于设置组件属性。
 
    <!-- @[ndknodequeryoperate7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/Attribute_util.h) -->  
-
-   ```c
+   
+   ``` C
    #ifndef MYAPPLICATION_ATTRIBUTE_UTIL_H
    #define MYAPPLICATION_ATTRIBUTE_UTIL_H
-
+   
    #include <arkui/native_node.h>
    #include <cstdint>
    #include <string>
