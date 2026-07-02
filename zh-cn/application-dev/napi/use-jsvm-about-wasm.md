@@ -65,7 +65,7 @@ cpp 部分代码：
 // 判断一个 JSVM_Value 是否是 wasm module
 static bool IsWasmModuleObject(JSVM_Env env, JSVM_Value value)
 {
-    bool result;
+    bool result = false;
     JSVM_Status status = OH_JSVM_IsWasmModuleObject(env, value, &result);
     CHECK_STATUS(status == JSVM_OK);
     return result;
@@ -155,7 +155,7 @@ static void VerifyAddWasmInstance(JSVM_Env env, JSVM_Value wasmInstance)
     const int argumentCount = 2;
     status = OH_JSVM_CallFunction(env, undefined, add, argumentCount, argv, &result);
     CHECK_STATUS(status == JSVM_OK);
-    int32_t resultInt32;
+    int32_t resultInt32 = 0;
     OH_JSVM_GetValueInt32(env, result, &resultInt32);
     CHECK_STATUS(resultInt32 == 3);
 }
@@ -201,7 +201,7 @@ static JSVM_Value WasmDemo(JSVM_Env env, JSVM_CallbackInfo info)
     CHECK_STATUS(status == JSVM_OK);
 
     // 使用 wasm code 反序列化来生成 wasm module
-    bool cacheRejected;
+    bool cacheRejected = false;
     JSVM_Value wasmModule2;
     status = OH_JSVM_CompileWasmModule(env, wasmBytecode, wasmBytecodeLength, cacheBuffer.data(), cacheBuffer.size(),
                                        &cacheRejected, &wasmModule2);
