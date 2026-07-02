@@ -1036,13 +1036,13 @@ display，position，z-index，visibility，opacity, background-color，backgrou
             break;
           case 'completed': // 播放接口后触发该状态机上报。
             console.info('AVPlayer state completed called.');
-            avPlayer.stop(); // 调用播放接口。
+            avPlayer.stop(); // 调用停止播放接口。
             break;
           case 'stopped': // stop接口后触发该状态机上报。
             console.info('AVPlayer state stopped called.');
             avPlayer.reset(); // 调用reset接口初始化avplayer状态。
             break;
-          case 'released': // 播放接口后触发该状态机上报。
+          case 'released': // 退出后触发该状态机上报。
             console.info('AVPlayer state released called.');
             break;
           default:
