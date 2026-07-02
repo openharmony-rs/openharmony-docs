@@ -181,7 +181,7 @@ struct WebComponent {
       Row() {    
         Flex() {    
           TextInput({ text: this.input_text, placeholder: this.main_url, controller: this.text_input_controller})    
-            .id('input_url')    
+            .id('urlInput')    
             .height(40)    
             .margin(5)    
             .borderColor(Color.Blue)    
