@@ -451,7 +451,7 @@ try {
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
 | resourceTypes   | number  | 否    | 否    | 申请的资源类型。取值参考[ResourceType](#resourcetype)。                               |
 | isApply         | boolean | 否    | 否    | 申请或释放资源。<br>- true表示申请资源。<br>- false表示释放部分资源。 |
-| timeOut         | number  | 否    | 否    | 资源使用时间，单位：ms。设置后资源会在指定时间后自动释放。当isPersist为true时，此字段不生效。             |
+| timeOut         | number  | 否    | 否    | 资源使用时间，单位：ms。设置后能效资源会在指定时间后自动释放。当isPersist为true时，此字段不生效。             |
 | isPersist       | boolean | 否    | 是    | 是否永久持有资源，默认为false。<br>- true表示永久持有。<br>- false表示有限时间内持有。|
 | isProcess       | boolean | 否    | 是    | 进程或应用申请，默认为false。<br>- true表示进程申请，能效资源只对当前进程有效。<br>- false表示应用申请，能效资源对整个应用的所有进程有效。         |
 | reason          | string  | 否    | 否    | 申请资源原因。                |
@@ -490,7 +490,7 @@ try {
 | [resourceTypes](#resourcetype) | number  | 否    | 否    | 能效资源类型。     |
 | timeout                        | number  | 否    | 否    | 超时时间，单位：ms。 |
 | isPersistent                   | boolean | 否    | 否    | 是否永久持有资源，默认为false。取值为true表示永久持有。取值为false表示有限时间内持有。      |
-| isForProcess                   | boolean | 否    | 否    | 进程或应用申请，取值为true表示进程申请。取值为false表示应用申请。   |
+| isForProcess                   | boolean | 否    | 否    | 进程或应用申请，取值为true表示进程申请，能效资源只对当前进程有效。取值为false表示应用申请，能效资源对整个应用的所有进程有效。   |
 | reason                         | string  | 否    | 否    | 申请资源原因。       |
 | uid                            | number  | 否    | 否    | 应用的UID。     |
 | pid                            | number  | 否    | 否    | 应用进程的PID。   |
