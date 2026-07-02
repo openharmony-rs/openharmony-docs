@@ -798,6 +798,36 @@ enum OH_Camera_ProximityStateForFocus
 | OH_CAMERA_PROXIMITY_STATE_IN_RANGE_RAISE_NONE   = 0 | 对焦物体和镜头距离在合理范围内。<br>**起始版本：** 26.0.0 |
 | OH_CAMERA_PROXIMITY_STATE_OUT_OF_RANGE_RAISE_REQUIRED   = 1 | 对焦物体和相机过近，需要远离对焦物体。<br>**起始版本：** 26.0.0 |
 
+### OH_Camera_AutomotiveCameraPosition
+
+```c
+enum OH_Camera_AutomotiveCameraPosition
+```
+
+**描述**
+
+Car设备摄像头位置的枚举。
+
+**起始版本：** 26.0.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_OTHER = 0 | Car设备外部其他位置摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_FRONT = 1 | Car设备外部前侧摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_REAR = 2 | Car设备外部后侧摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_LEFT = 3 | Car设备外部左侧摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_RIGHT = 4 | Car设备外部右侧摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_OTHER = 5 | Car设备内部其他位置摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_LEFT = 6 | Car设备内部第一排左侧摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_CENTER = 7 | Car设备内部第一排中央摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_RIGHT = 8 | Car设备内部第一排右侧摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_LEFT = 9 | Car设备内部第二排左侧摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_CENTER = 10 | Car设备内部第二排中央摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_RIGHT = 11 | Car设备内部第二排右侧摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_LEFT = 12 | Car设备内部第三排左侧摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_CENTER = 13 | Car设备内部第三排中央摄像头。<br>**起始版本：** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_RIGHT = 14 | Car设备内部第三排右侧摄像头。<br>**起始版本：** 26.0.0 |
+
 ## 函数说明
 
 ### OH_Camera_GetCameraManager()
