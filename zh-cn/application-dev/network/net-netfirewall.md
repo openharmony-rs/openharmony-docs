@@ -136,7 +136,7 @@
          endPort: 443
        }] as IpPort[],
      userId: 100,
-     interface:"以太网适配器 VMware Network Adapter VMnet1"
+     interface:"wlan0"
    };
    // 添加防火墙规则。
    netFirewall.addNetFirewallRule(ipRule).then((result: number) => {
@@ -207,7 +207,7 @@
        domain: '*.HarmonyOS.cn'
      }] as domain[],
      userId: 100,
-     interface:"以太网适配器 VMware Network Adapter VMnet1"
+     interface:"wlan0"
    };
    
    // 添加防火墙规则。
