@@ -134,12 +134,12 @@ addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 
 > **说明**
 > 
-> 1. 防火墙规则优先级说明（[setNetFirePolicy](#netfirewallsetnetfirewallpolicy)和[addNetFirewallRule](#netfirewalladdnetfirewallrule)无调用顺序要求）：
->    - 调用[setNetFirePolicy](#netfirewallsetnetfirewallpolicy)设置默认策略为阻止，调用[addNetFirewallRule](#netfirewalladdnetfirewallrule)新增显式规则，规则优先级由高到低为：
+> 1. 防火墙规则优先级说明（[setNetFirePolicy](#netfirewallsetnetfirepolicy)和[addNetFirewallRule](#netfirewalladdnetfirewallrule)无调用顺序要求）：
+>    - 调用[setNetFirePolicy](#netfirewallsetnetfirepolicy)设置默认策略为阻止，调用[addNetFirewallRule](#netfirewalladdnetfirewallrule)新增显式规则，规则优先级由高到低为：
 >      - 显式阻止规则
 >      - 显式允许规则
 >      - 默认阻止策略
->    - 调用[setNetFirePolicy](#netfirewallsetnetfirewallpolicy)设置默认策略为允许，调用[addNetFirewallRule](#netfirewalladdnetfirewallrule)新增显式规则，规则优先级由高到低为：
+>    - 调用[setNetFirePolicy](#netfirewallsetnetfirepolicy)设置默认策略为允许，调用[addNetFirewallRule](#netfirewalladdnetfirewallrule)新增显式规则，规则优先级由高到低为：
 >      - 显式允许规则
 >      - 显式阻止规则
 >      - 默认允许策略
