@@ -36,6 +36,10 @@ createDeviceManager(bundleName: string): DeviceManager
 
 **设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                                 | 必填 | 说明                                                        |
@@ -81,6 +85,10 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 **设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                                 | 必填 | 说明                                |
@@ -121,6 +129,10 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 **设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称           | 类型  | 只读| 可选              |  说明    |
 | ---------------------- | ------------------------- | --- | ---- | -------- |
 | deviceId               | string                    | 否 | 否  | 设备标识符。实际值为udid-hash与appid和盐值基于sha256方式进行混淆后的值。|
@@ -136,19 +148,124 @@ releaseDeviceManager(deviceManager: DeviceManager): void
 
 **设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称         | 值  | 说明              |
 | ----------- | ---- | --------------- |
 | UNKNOWN     | 0    | 设备物理上线，此时状态未知，在状态更改为可用之前，分布式业务无法使用。           |
 | AVAILABLE   | 1    | 设备可用状态，表示设备间信息已在分布式数据中同步完成，可以运行分布式业务。 |
 | UNAVAILABLE | 2    | 设备物理下线，此时状态未知。           |
 
-## DeviceManager
+## DeviceStateChangeResult<sup>23+</sup>
 
-设备管理实例，是分布式设备管理方法的调用入口，提供设备发现、设备认证、状态监听和信息查询等能力。在调用DeviceManager的方法前，需要先通过createDeviceManager构建一个DeviceManager实例dmInstance。
+设备状态改变结果信息。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型 | 只读       | 可选  | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| action | [DeviceStateChange](#devicestatechange) | 否 | 否 | 设备状态信息。 |
+| device | [DeviceBasicInfo](#devicebasicinfo) | 否 | 否| 分布式设备基本信息。 |
+
+## DeviceNameChangeResult<sup>23+</sup>
+
+设备名字改变结果信息。
+
+**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+
+**系统能力**： SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型 | 只读       | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| deviceName | string | 否 | 否 | 设备名字。 |
+
+## DiscoveryFailureResult<sup>23+</sup>
+
+设备发现失败原因。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型 | 只读   | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| reason | int | 否 | 否 | 失败错误号。 |
+
+## DiscoverySuccessResult<sup>23+</sup>
+
+设备发现成功，发现的设备信息。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型 | 只读   | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | --------|
+| device | [DeviceBasicInfo](#devicebasicinfo) | 否 | 否 | 分布式设备基本信息。 |
+
+## ServiceDieData<sup>23+</sup>
+
+DeviceManager 服务进程退出信息。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| 无 | - | - | 该类型不包含成员。 |
+
+## BindTargetResult<sup>23+</sup>
+
+认证设备结果信息。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型 | 只读   | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| deviceId | string | 否 | 否 | 设备标识符。实际值为udid-hash与appid和盐值基于sha256方式进行混淆后的值。应用安装后，该标识保持不变；应用卸载重装后，该标识会发生变化。 |
+
+## DeviceManager
+
+设备管理实例，用于获取可信设备和本地设备的相关信息。在调用DeviceManager的方法前，需要先通过createDeviceManager构建一个DeviceManager实例dmInstance。
+
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 ### getAvailableDeviceListSync
 
@@ -161,6 +278,10 @@ getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -205,6 +326,10 @@ getAvailableDeviceList(callback: AsyncCallback&lt;Array&lt;DeviceBasicInfo&gt;&g
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -256,6 +381,10 @@ getAvailableDeviceList(): Promise&lt;Array&lt;DeviceBasicInfo&gt;&gt;
 
 **设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
   | 类型                                                       | 说明                               |
@@ -304,6 +433,10 @@ getLocalDeviceNetworkId(): string
 
 **设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
   | 类型                      | 说明              |
@@ -349,6 +482,10 @@ getLocalDeviceName(): string
 
 **设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
   | 类型                      | 说明              |
@@ -384,7 +521,9 @@ getLocalDeviceName(): string
 
 ### getLocalDeviceType
 
-getLocalDeviceType(): number
+ArkTS-Dyn: getLocalDeviceType(): number
+
+ArkTS-Sta: getLocalDeviceType(): int
 
 获取本地设备类型。
 
@@ -394,11 +533,17 @@ getLocalDeviceType(): number
 
 **设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
+
+ArkTS-Dyn类型说明：
 
   | 类型                      | 说明              |
   | ------------------------- | ---------------- |
-  | number                    | <!--RP1-->返回本地设备类型。<!--RP1End--> |
+  | ArkTS-Dyn: number <br /> ArkTS-Sta: int | <!--RP1-->返回本地设备类型。<!--RP1End--> |
 
 **错误码：**
 
@@ -411,19 +556,33 @@ getLocalDeviceType(): number
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
-    // 创建设备管理实例
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-    // 获取本地设备类型
     let deviceType: number = dmInstance.getLocalDeviceType();
-    console.info('local device type: ' + JSON.stringify(deviceType));
+    console.info('local device type: ' + deviceType);
   } catch (err) {
-    let error: BusinessError = err as BusinessError;
-    console.error(`Failed to get local device type. Code: ${error.code}, message: ${error.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`getLocalDeviceType errCode: ${e.code}, errMessage: ${e.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    let deviceType: int = dmInstance.getLocalDeviceType();
+    console.info('local device type: ' + deviceType);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`getLocalDeviceType errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -438,6 +597,10 @@ getLocalDeviceId(): string
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -484,6 +647,10 @@ getDeviceName(networkId: string): string
 
 **设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
   | 参数名       | 类型                                     | 必填   | 说明        |
@@ -519,7 +686,7 @@ getDeviceName(networkId: string): string
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
     // 通过设备网络标识获取设备名称
     let deviceName: string = dmInstance.getDeviceName(networkId);
-    console.info('device name: ' + JSON.stringify(deviceName)); 
+    console.info('device name: ' + JSON.stringify(deviceName));
   } catch (err) {
     let error: BusinessError = err as BusinessError;
     console.error(`Failed to get device name. Code: ${error.code}, message: ${error.message}`);
@@ -528,7 +695,9 @@ getDeviceName(networkId: string): string
 
 ### getDeviceType
 
-getDeviceType(networkId: string): number
+ArkTS-Dyn: getDeviceType(networkId: string): number
+
+ArkTS-Sta: getDeviceType(networkId: string): int
 
 通过指定设备的网络标识获取该设备类型。
 
@@ -537,6 +706,10 @@ getDeviceType(networkId: string): number
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -573,7 +746,7 @@ getDeviceType(networkId: string): number
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
     // 通过设备网络标识获取设备类型
     let deviceType: number = dmInstance.getDeviceType(networkId);
-    console.info('device type: ' + JSON.stringify(deviceType)); 
+    console.info('device type: ' + JSON.stringify(deviceType));
   } catch (err) {
     let error: BusinessError = err as BusinessError;
     console.error(`Failed to get device type. Code: ${error.code}, message: ${error.message}`);
@@ -691,7 +864,7 @@ stopDiscovering(): void
 
 ### bindTarget
 
-bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , callback: AsyncCallback&lt;{deviceId: string;}>): void
+bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , callback: AsyncCallback&lt;{deviceId: string;}&gt;): void
 
 认证设备，将发现的不可信设备通过认证流程绑定为可信设备。认证过程中，系统会根据bindParam中指定的认证类型发起认证请求，认证成功后设备将加入可信设备列表，可通过getAvailableDeviceListSync查询。当不再需要与目标设备进行分布式业务时，可调用unbindTarget解除绑定。使用callback异步回调。
 
@@ -861,6 +1034,52 @@ on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange;
   }
   ```
 
+### onDeviceStateChange<sup>23+</sup>
+
+onDeviceStateChange(callback: Callback&lt;DeviceStateChangeResult&gt;): void
+
+注册设备状态回调，以便在设备状态发生变化时根据应用捆绑包名通知应用。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是 [on('deviceStateChange')](#ondevicestatechange)。
+
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+  | 参数名       | 类型                                     | 必填   | 说明                             |
+  | -------- | ---------------------------------------- | ---- | ------------------------------ |
+  | callback | Callback&lt;[DeviceStateChangeResult](#devicestatechangeresult23)&gt; | 是    | 指示要注册的设备状态回调，返回设备状态和设备信息。      |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+
+**示例：**
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    dmInstance.onDeviceStateChange((data: distributedDeviceManager.DeviceStateChangeResult) => {
+      console.info('deviceStateChange on:' + JSON.stringify(data));
+    });
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`deviceStateChange errCode: ${e.code}, errMessage: ${e.message}`);
+  }
+  ```
+
 ### off('deviceStateChange')
 
 off(type: 'deviceStateChange', callback?: Callback&lt;{ action: DeviceStateChange; device: DeviceBasicInfo; }&gt;): void
@@ -918,6 +1137,52 @@ off(type: 'deviceStateChange', callback?: Callback&lt;{ action: DeviceStateChang
   }
   ```
 
+### offDeviceStateChange<sup>23+</sup>
+
+offDeviceStateChange(callback?: Callback&lt;DeviceStateChangeResult&gt;): void
+
+取消注册设备状态回调。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是 [off('deviceStateChange')](#offdevicestatechange)。
+
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+  | 参数名       | 类型                                     | 必填   | 说明                          |
+  | -------- | ---------------------------------------- | ---- | ---- |
+  | callback | Callback&lt;[DeviceStateChangeResult](#devicestatechangeresult23)&gt; | 否    | 指示要取消注册的设备状态回调，返回设备状态和设备信息。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+
+**示例：**
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    dmInstance.offDeviceStateChange((data: distributedDeviceManager.DeviceStateChangeResult) => {
+      console.info('deviceStateChange' + JSON.stringify(data));
+    });
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`deviceStateChange errCode: ${e.code}, errMessage: ${e.message}`);
+  }
+  ```
+
 ### on('discoverSuccess')
 
 on(type: 'discoverSuccess', callback: Callback&lt;{ device: DeviceBasicInfo; }&gt;): void
@@ -960,7 +1225,7 @@ on(type: 'discoverSuccess', callback: Callback&lt;{ device: DeviceBasicInfo; }&g
       networkId: ''
     };
   }
-  
+
   try {
     // 创建设备管理实例
     let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
@@ -971,6 +1236,52 @@ on(type: 'discoverSuccess', callback: Callback&lt;{ device: DeviceBasicInfo; }&g
   } catch (err) {
     let error: BusinessError = err as BusinessError;
     console.error(`Failed to register discover success callback. Code: ${error.code}, message: ${error.message}`);
+  }
+  ```
+
+### onDiscoverSuccess<sup>23+</sup>
+
+onDiscoverSuccess(callback: Callback&lt;DiscoverySuccessResult&gt;): void
+
+注册发现设备成功回调监听。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是 [on('discoverSuccess')](#ondiscoversuccess)。
+
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+  | 参数名       | 类型                                     | 必填   | 说明                         |
+  | -------- | ---------------------------------------- | ---- | -------------------------- |
+  | callback | Callback&lt;[DiscoverySuccessResult](#discoverysuccessresult23)&gt; | 是    | 注册设备发现的回调方法。               |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+
+**示例：**
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    dmInstance.onDiscoverSuccess((data: distributedDeviceManager.DiscoverySuccessResult) => {
+      console.info('discoverSuccess:' + JSON.stringify(data));
+    });
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`discoverSuccess errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -1030,6 +1341,52 @@ off(type: 'discoverSuccess', callback?: Callback&lt;{ device: DeviceBasicInfo; }
   }
   ```
 
+### offDiscoverSuccess<sup>23+</sup>
+
+offDiscoverSuccess(callback?: Callback&lt;DiscoverySuccessResult&gt;): void
+
+取消注册设备发现成功回调。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是 [off('discoverSuccess')](#offdiscoversuccess)。
+
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+  | 参数名       | 类型                                     | 必填   | 说明                             |
+  | -------- | ---------------------------------------- | ---- | ------------------------------ |
+  | callback | Callback&lt;[DiscoverySuccessResult](#discoverysuccessresult23)&gt; | 否    | 指示要取消注册的设备发现回调，返回设备状态和设备信息。              |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+
+**示例：**
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    dmInstance.offDiscoverSuccess((data: distributedDeviceManager.DiscoverySuccessResult) => {
+      console.info('discoverSuccess' + JSON.stringify(data));
+    });
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`discoverSuccess errCode: ${e.code}, errMessage: ${e.message}`);
+  }
+  ```
+
 ### on('deviceNameChange')
 
 on(type: 'deviceNameChange', callback: Callback&lt;{ deviceName: string; }&gt;): void
@@ -1047,7 +1404,7 @@ on(type: 'deviceNameChange', callback: Callback&lt;{ deviceName: string; }&gt;):
   | 参数名       | 类型                                     | 必填   | 说明                             |
   | -------- | ---------------------------------------- | ---- | ------------------------------ |
   | type     | string                                   | 是    | 注册设备名称改变回调，以便在设备名称改变时通知应用，固定为deviceNameChange。 |
-  | callback | Callback&lt;{&nbsp;deviceName:&nbsp;string;}&gt; | 是    | 注册设备名称改变的回调方法，返回变更后的设备名称。                |
+  | callback | Callback&lt;{&nbsp;deviceName:&nbsp;string;}&gt; | 是    | 注册设备名称改变的回调方法，返回变更后的设备名称。                 |
 
 **错误码：**
 
@@ -1078,6 +1435,52 @@ on(type: 'deviceNameChange', callback: Callback&lt;{ deviceName: string; }&gt;):
   } catch (err) {
     let error: BusinessError = err as BusinessError;
     console.error(`Failed to register device name change callback. Code: ${error.code}, message: ${error.message}`);
+  }
+  ```
+
+### onDeviceNameChange<sup>23+</sup>
+
+onDeviceNameChange(callback: Callback&lt;DeviceNameChangeResult&gt;): void
+
+注册设备名称变更回调，以便在设备名称改变时通知应用程序。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是 [on('deviceNameChange')](#ondevicenamechange)。
+
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+  | 参数名       | 类型                                     | 必填   | 说明                             |
+  | -------- | ---------------------------------------- | ---- | ------------------------------ |
+  | callback | Callback&lt;[DeviceNameChangeResult](#devicenamechangeresult23)&gt; | 是    | 注册设备名称改变的回调方法。                 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+
+**示例：**
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    dmInstance.onDeviceNameChange((data: distributedDeviceManager.DeviceNameChangeResult) => {
+      console.info('deviceNameChange on:' + JSON.stringify(data));
+    });
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`deviceNameChange errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -1132,6 +1535,52 @@ off(type: 'deviceNameChange', callback?: Callback&lt;{ deviceName: string; }&gt;
   }
   ```
 
+### offDeviceNameChange<sup>23+</sup>
+
+offDeviceNameChange(callback?: Callback&lt;DeviceNameChangeResult&gt;): void
+
+取消注册设备名称变更回调监听。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是 [off('deviceNameChange')](#offdevicenamechange)。
+
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+  | 参数名       | 类型                                     | 必填   | 说明                             |
+  | -------- | ---------------------------------------- | ---- | ------------------------------ |
+  | callback | Callback&lt;[DeviceNameChangeResult](#devicenamechangeresult23)&gt; | 否    | 指示要取消注册设备名称改变的回调方法。                 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+
+**示例：**
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    dmInstance.offDeviceNameChange((data: distributedDeviceManager.DeviceNameChangeResult) => {
+      console.info('deviceNameChange' + JSON.stringify(data));
+    });
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`deviceNameChange errCode: ${e.code}, errMessage: ${e.message}`);
+  }
+  ```
+
 ### on('discoverFailure')
 
 on(type: 'discoverFailure', callback: Callback&lt;{ reason: number; }&gt;): void
@@ -1180,6 +1629,52 @@ on(type: 'discoverFailure', callback: Callback&lt;{ reason: number; }&gt;): void
   } catch (err) {
     let error: BusinessError = err as BusinessError;
     console.error(`Failed to register discover failure callback. Code: ${error.code}, message: ${error.message}`);
+  }
+  ```
+
+### onDiscoverFailure<sup>23+</sup>
+
+onDiscoverFailure(callback: Callback&lt;DiscoveryFailureResult&gt;): void
+
+注册设备发现失败回调监听。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是 [on('discoverFailure')](#ondiscoverfailure)。
+
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+  | 参数名       | 类型                                     | 必填   | 说明                |
+  | -------- | ---------------------------------------- | ---- | ----------------- |
+  | callback | Callback&lt;[DiscoveryFailureResult](#discoveryfailureresult23)&gt; | 是    | 注册设备发现失败的回调方法。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+
+**示例：**
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    dmInstance.onDiscoverFailure((data: distributedDeviceManager.DiscoveryFailureResult) => {
+      console.info('discoverFailure' + JSON.stringify(data));
+    });
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`discoverFailure errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 
@@ -1234,6 +1729,52 @@ off(type: 'discoverFailure', callback?: Callback&lt;{ reason: number; }&gt;): vo
   }
   ```
 
+### offDiscoverFailure<sup>23+</sup>
+
+offDiscoverFailure(callback?: Callback&lt;DiscoveryFailureResult&gt;): void
+
+取消注册设备发现失败回调。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是 [off('discoverFailure')](#offdiscoverfailure)。
+
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+  | 参数名       | 类型                    | 必填   | 说明                                       |
+  | -------- | ----------------------- | ---- | ---------------------------------------- |
+  | callback | Callback&lt;[DiscoveryFailureResult](#discoveryfailureresult23)&gt; | 否    | 指示要取消注册的设备发现失败回调。                       |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+
+**示例：**
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    dmInstance.offDiscoverFailure((data: distributedDeviceManager.DiscoveryFailureResult) => {
+      console.info('discoverFailure' + JSON.stringify(data));
+    });
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`discoverFailure errCode: ${e.code}, errMessage: ${e.message}`);
+  }
+  ```
+
 ### on('serviceDie')
 
 on(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
@@ -1281,6 +1822,52 @@ on(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
   }
   ```
 
+### onServiceDie<sup>23+</sup>
+
+onServiceDie(callback: Callback&lt;ServiceDieData&gt;): void
+
+注册设备管理服务死亡回调，以便在服务死亡时通知应用程序。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是 [on('serviceDie')](#onservicedie)。
+
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+  | 参数名       | 类型                    | 必填   | 说明                                       |
+  | -------- | ----------------------- | ---- | ---------------------------------------- |
+  | callback | Callback&lt;[ServiceDieData](#servicediedata23)&gt; | 是    | 注册serviceDie的回调方法。                       |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+
+**示例：**
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    dmInstance.onServiceDie((data: distributedDeviceManager.ServiceDieData) => {
+      console.info('serviceDie on');
+    });
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`serviceDie errCode: ${e.code}, errMessage: ${e.message}`);
+  }
+  ```
+
 ### off('serviceDie')
 
 off(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
@@ -1298,7 +1885,7 @@ off(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
   | 参数名       | 类型                    | 必填   | 说明                                       |
   | -------- | ----------------------- | ---- | ---------------------------------------- |
   | type     | string                  | 是    | 取消注册serviceDie回调，固定为serviceDie。 |
-  | callback | Callback&lt;{}&gt; | 否    | 指示要取消注册的serviceDie回调。如果指定该参数则取消对应callback，否则取消所有已注册的serviceDie回调。                  |
+  | callback | Callback&lt;{}&gt; | 否    | 指示要取消注册的serviceDie回调。如果指定该参数则取消对应callback，否则取消所有已注册的serviceDie回调。                     |
 
 **错误码：**
 
@@ -1327,3 +1914,50 @@ off(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
     console.error(`Failed to unregister service die callback. Code: ${error.code}, message: ${error.message}`);
   }
   ```
+
+### offServiceDie<sup>23+</sup>
+
+offServiceDie(callback?: Callback&lt;ServiceDieData&gt;): void
+
+取消注册设备管理服务死亡回调。使用callback异步回调。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是 [off('serviceDie')](#offservicedie)。
+
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC
+
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+  | 参数名       | 类型                    | 必填   | 说明                                       |
+  | -------- | ----------------------- | ---- | ---------------------------------------- |
+  | callback | Callback&lt;[ServiceDieData](#servicediedata23)&gt; | 否    | 取消注册serviceDie的回调方法。                     |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+
+**示例：**
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    dmInstance.offServiceDie((data: distributedDeviceManager.ServiceDieData) => {
+      console.info('serviceDie off');
+    });
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`serviceDie errCode: ${e.code}, errMessage: ${e.message}`);
+  }
+  ```
+
