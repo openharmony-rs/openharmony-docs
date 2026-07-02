@@ -2851,7 +2851,7 @@ type ClientConnectionCloseCallback = (clientConnection: WebSocketConnection, clo
 **参数：**
 | 参数名 | 类型   | 必填 | 说明                            |
 | ---------------- | ------------------- | ----  | --------------------------------------------- |
-| clientConnection | [WebSocketConnection](#websocketconnection19) | 是 | 客户端信息，包括客户端的ip地址和端口号port。             |
+| clientConnection | [WebSocketConnection](#websocketconnection19) | 是 | 客户端信息，包括客户端的IP地址和端口号port。             |
 | closeReason | [CloseResult](#closeresult10) | 是 | 关闭WebSocket连接时，订阅close事件得到的关闭结果。 |
 
 ## TlsProtocol
