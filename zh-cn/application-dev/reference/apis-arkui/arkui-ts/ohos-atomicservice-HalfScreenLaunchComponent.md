@@ -53,6 +53,13 @@ HalfScreenLaunchComponent({ content: Callback\<void>, appId: string, options?: A
 
 该示例展示如何嵌入式拉起手机充值服务。
 
+> **说明：**
+>
+>由于嵌入式原子化服务运行在独立进程，其崩溃异常不会直接暴露在宿主的日志中。本地调试时可通过以下方式查看真实报错栈：  
+>1. 打开DevEco Studio的HiLog面板。  
+>2. 将左上角的模式切换为User logs of selected app。  
+>3. 在右侧进程列表中，选择被拉起的原子化服务进程（被拉起原子化服务的包名，且后缀带有embeddable字样）。
+
 ```ts
 import { HalfScreenLaunchComponent } from '@kit.ArkUI';
 
@@ -86,10 +93,3 @@ struct Index {
 
 }
 ```
-
-> **说明：**
->
->由于嵌入式元服务运行在独立进程，其崩溃异常不会直接暴露在宿主的日志中。本地调试时可通过以下方式查看真实报错栈：  
->1. 打开DevEco Studio的HiLog面板。  
->2. 将左上角的模式切换为User logs of selected app。  
->3. 在右侧进程列表中，选择被拉起的元服务进程（被拉起元服务的包名，且后缀带有embeddable字样）。
