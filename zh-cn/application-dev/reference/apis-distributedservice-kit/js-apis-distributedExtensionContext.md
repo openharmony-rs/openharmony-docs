@@ -58,21 +58,21 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): long
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
-| 错误码ID | 错误信息 | 说明 |
-| -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 参数错误。可能的导致原因：1. 必选参数未指定；2. 参数类型错误；3. 参数校验失败。请检查参数类型和范围，确保必选参数已正确填写。 |
-| 16000001 | The specified ability does not exist. | 指定的ability不存在。请检查ability名称、bundle名称等配置是否正确。 |
-| 16000002 | Incorrect ability type. | ability类型错误。请检查ability类型是否符合要求。 |
-| 16000004 | Cannot start an invisible component. | 无法启动不可见组件。请检查组件是否配置为可见。 |
-| 16000005 | The specified process does not have the permission. | 指定进程没有权限。请检查是否已申请相应权限。 |
-| 16000006 | Cross-user operations are not allowed. | 不允许跨用户操作。请检查操作是否涉及跨用户调用。 |
-| 16000008 | The crowdtesting application expires. | 众测应用已过期。请更新应用版本或重新申请。 |
-| 16000011 | The context does not exist. | context不存在。请检查ability是否已被销毁。 |
-| 16000012 | The application is controlled. | 应用被管控。请检查应用是否被系统管控。 |
-| 16000013 | The application is controlled by EDM. | 应用被EDM管控。请检查EDM策略配置。 |
-| 16000050 | Internal error. | 内部错误。请稍后重试。 |
-| 16000053 | The ability is not on the top of the UI. | ability不在UI顶层。请检查ability是否为当前前台页面。 |
-| 16000055 | Installation-free timed out. | 免安装超时。请检查网络连接或重新尝试。 |
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. |
+| 16000004 | Cannot start an invisible component. |
+| 16000005 | The specified process does not have the permission. |
+| 16000006 | Cross-user operations are not allowed. |
+| 16000008 | The crowdtesting application expires. |
+| 16000011 | The context does not exist. |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
+| 16000050 | Internal error. |
+| 16000053 | The ability is not on the top of the UI. |
+| 16000055 | Installation-free timed out. |
 
 **示例：**
 
@@ -190,11 +190,11 @@ disconnectServiceExtensionAbility(connection: long): Promise\<void\>
 
 以下错误码的详细介绍请参见[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
-| 错误码ID | 错误信息 | 说明 |
-| -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 16000003 | The connection id does not exist. | 连接ID不存在。请检查连接ID是否正确，或连接是否已被断开。 |
-| 16000011 | The ability has been destroyed. The context is no longer valid. | ability已被销毁，context不再有效。请避免在ability销毁后使用context。 |
-| 16000050 | Internal error. | 内部错误。请稍后重试。 |
+| 错误码ID | 错误信息 |
+| -------- | ------------------------------------------------------------ |
+| 16000003 | The connection id does not exist. |
+| 16000011 | The ability has been destroyed. The context is no longer valid. |
+| 16000050 | Internal error. |
 
 **示例：**
 

@@ -94,42 +94,39 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
 1. 在设备A上，调用createAbilityConnectionSession()接口创建协同会话并返回sessionId。
 
    ```ts
-    import { abilityConnectionManager, distributedDeviceManager } from '@kit.DistributedServiceKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    
-    let deviceManager: distributedDeviceManager.DeviceManager;
-    
-    function initDmClass(): void {
-      try {
-        // 创建设备管理器实例
-        deviceManager = distributedDeviceManager.createDeviceManager('com.example.remotephotodemo');
-      } catch (err) {
-        const error: BusinessError = err as BusinessError;
-        hilog.error(0x0000, 'testTag', `createDeviceManager failed. Code: ${error.code}, message: ${error.message}`);
-      }
-    }
-    
+   import { abilityConnectionManager, distributedDeviceManager } from '@kit.DistributedServiceKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   let dmClass: distributedDeviceManager.DeviceManager;
+   
+   function initDmClass(): void {
+     try {
+       dmClass = distributedDeviceManager.createDeviceManager('com.example.remotephotodemo');
+     } catch (err) {
+       hilog.error(0x0000, 'testTag', 'createDeviceManager err: ' + JSON.stringify(err));
+     }
+   }
+   
    function getRemoteDeviceId(): string | undefined {
      initDmClass();
-     if (typeof deviceManager === 'object' && deviceManager !== null) {
+     if (typeof dmClass === 'object' && dmClass !== null) {
        hilog.info(0x0000, 'testTag', 'getRemoteDeviceId begin');
-       let deviceList = deviceManager.getAvailableDeviceListSync();
-       if (typeof (deviceList) === 'undefined' || typeof (deviceList.length) === 'undefined') {
+       let list = dmClass.getAvailableDeviceListSync();
+       if (typeof (list) === 'undefined' || typeof (list.length) === 'undefined') {
          hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: list is null');
          return;
        }
-       if (deviceList.length === 0) {
+       if (list.length === 0) {
          hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: list is empty');
          return;
        }
-       return deviceList[0].networkId;
+       return list[0].networkId;
      } else {
-       hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: deviceManager is null');
+       hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: dmClass is null');
        return;
      }
    }
-    
+   
    @Entry
    @Component
    struct Index {
@@ -142,73 +139,72 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
          abilityName: 'EntryAbility',
          serviceName: 'collabTest'
        };
-        const connectionParams: Record<string, string> = {
-          'newKey1': 'value1',
-        };
-    
+       const myRecord: Record<string, string> = {
+         "newKey1": "value1",
+       };
+   
        // 定义连接选项
-        const connectOptions: abilityConnectionManager.ConnectOptions = {
-          needSendData: true,
-          startOptions: abilityConnectionManager.StartOptionParams.START_IN_FOREGROUND,
-          parameters: connectionParams
-        };
+       const connectOptions: abilityConnectionManager.ConnectOptions = {
+         needSendData: true,
+         startOptions: abilityConnectionManager.StartOptionParams.START_IN_FOREGROUND,
+         parameters: myRecord
+       };
        let context = this.getUIContext().getHostContext();
-        try {
-          // 创建应用间的协同会话
-          let sessionId = abilityConnectionManager.createAbilityConnectionSession('collabTest', context, peerInfo, connectOptions);
-          hilog.info(0x0000, 'testTag', 'createSession sessionId is', sessionId);
-         } catch (error) {
-          const err: BusinessError = error as BusinessError;
-          hilog.error(0x0000, 'testTag', `createAbilityConnectionSession failed. Code: ${err.code}, message: ${err.message}`);
-        }
-      }
+       try {
+         let sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", context, peerInfo, connectOptions);
+         hilog.info(0x0000, 'testTag', 'createSession sessionId is', sessionId);
+       } catch (error) {
+         hilog.error(0x0000, 'testTag', error);
+       }
+     }
+   
+     build() {
+     }
    }
    ```
    
 2. 在设备B上，对于createAbilityConnectionSession接口的调用，可在应用被拉起后触发协同生命周期函数onCollaborate时，在onCollaborate内进行。
 
    ```ts
-    import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-    import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-    import { hilog } from '@kit.PerformanceAnalysisKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-     
-    export default class EntryAbility extends UIAbility {
-      onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
-        hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
-        let param = wantParam["ohos.extra.param.key.supportCollaborateIndex"] as Record<string, Object>
-        this.onCollab(param);
-        return 0;
-      }
-     
-      onCollab(collabParam: Record<string, Object>) {
-        const sessionId = this.createSessionFromWant(collabParam);
-        if (sessionId == -1) {
-          hilog.info(0x0000, 'testTag', 'Invalid session ID.');
-          return;
-        }
-      }
-     
-      createSessionFromWant(collabParam: Record<string, Object>): number {
-        let sessionId = -1;
-        const peerInfo = collabParam["PeerInfo"] as abilityConnectionManager.PeerInfo; // 从want参数中提取对端信息
-        if (peerInfo == undefined) {
-          return sessionId;
-        }
-     
-        const options = collabParam["ConnectOption"] as abilityConnectionManager.ConnectOptions;
-        try {
-          // 创建应用间的协同会话
-          sessionId = abilityConnectionManager.createAbilityConnectionSession('collabTest', this.context, peerInfo, options);
-          AppStorage.setOrCreate('sessionId', sessionId);
-          hilog.info(0x0000, 'testTag', 'createSession sessionId is' + sessionId);
-        } catch (error) {
-          const err: BusinessError = error as BusinessError;
-          hilog.error(0x0000, 'testTag', `createAbilityConnectionSession failed. Code: ${err.code}, message: ${err.message}`);
-        }
-        return sessionId;
-      }
-    }
+   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+    
+   export default class EntryAbility extends UIAbility {
+     onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
+       hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
+       let param = wantParam["ohos.extra.param.key.supportCollaborateIndex"] as Record<string, Object>
+       this.onCollab(param);
+       return 0;
+     }
+    
+     onCollab(collabParam: Record<string, Object>) {
+       const sessionId = this.createSessionFromWant(collabParam);
+       if (sessionId == -1) {
+         hilog.info(0x0000, 'testTag', 'Invalid session ID.');
+         return;
+       }
+     }
+    
+     createSessionFromWant(collabParam: Record<string, Object>): number {
+       let sessionId = -1;
+       const peerInfo = collabParam["PeerInfo"] as abilityConnectionManager.PeerInfo;
+       if (peerInfo == undefined) {
+         return sessionId;
+       }
+    
+       const options = collabParam["ConnectOption"] as abilityConnectionManager.ConnectOptions;
+       try {
+         sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
+         AppStorage.setOrCreate('sessionId', sessionId);
+         hilog.info(0x0000, 'testTag', 'createSession sessionId is' + sessionId);
+       } catch (error) {
+         hilog.error(0x0000, 'testTag', error);
+       }
+       return sessionId;
+     }
+   }
+   
    ```
 
 ## abilityConnectionManager.destroyAbilityConnectionSession
@@ -236,7 +232,7 @@ destroyAbilityConnectionSession(sessionId:&nbsp;number):&nbsp;void
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   hilog.info(0x0000, 'testTag', 'destroyAbilityConnectionSession called');
-  let sessionId = 101;
+  let sessionId = 100;
   abilityConnectionManager.destroyAbilityConnectionSession(sessionId);
   ```
 
@@ -270,7 +266,7 @@ getPeerInfoById(sessionId:&nbsp;number):&nbsp;PeerInfo&nbsp;|&nbsp;undefined
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -280,7 +276,7 @@ getPeerInfoById(sessionId:&nbsp;number):&nbsp;PeerInfo&nbsp;|&nbsp;undefined
 
   hilog.info(0x0000, 'testTag', 'getPeerInfoById called');
   // sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
-  let sessionId = 101;
+  let sessionId = 100;
   // 获取指定会话中对端应用信息
   const peerInfo = abilityConnectionManager.getPeerInfoById(sessionId);
   ```
@@ -322,21 +318,18 @@ connect(sessionId:&nbsp;number):&nbsp;Promise&lt;ConnectResult&gt;
 设备A上创建协同会话成功并获得会话ID后，调用connect()方法启动UIAbility连接，并拉起设备B应用。
 
   ```ts
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  // sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
-  let sessionId = 101;
-  // 建立协同会话连接
-  abilityConnectionManager.connect(sessionId).then((connectResult) => {
-    if (!connectResult.isConnected) {
-      hilog.info(0x0000, 'testTag', 'connect failed');
-      return;
-    }
-  }).catch((error: BusinessError) => {
-    hilog.error(0x0000, 'testTag', `connect failed. Code: ${error.code}, message: ${error.message}`);
-  });
+let sessionId = 100;
+abilityConnectionManager.connect(sessionId).then((ConnectResult) => {
+  if (!ConnectResult.isConnected) {
+    hilog.info(0x0000, 'testTag', 'connect failed');
+    return;
+  }
+}).catch(() => {
+  hilog.error(0x0000, 'testTag', "connect failed");
+})
   ```
 
 ## abilityConnectionManager.acceptConnect
@@ -486,44 +479,6 @@ reject(token:&nbsp;string,&nbsp;reason:&nbsp;string):&nbsp;void;
 **示例：**
 
   ```ts
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-
-  hilog.info(0x0000, 'testTag', 'disconnect begin');
-  // sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
-  let sessionId = 101;
-  // 断开UIAbility的连接
-  abilityConnectionManager.disconnect(sessionId);
-  ```
-
-## abilityConnectionManager.reject
-
-reject(token:&nbsp;string,&nbsp;reason:&nbsp;string):&nbsp;void;
-
-在跨端应用协同过程中，当需要拒绝对端应用的连接请求时，可调用此接口向对端发送拒绝原因。
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**系统能力**：SystemCapability.DistributedSched.AppCollaboration
-
-**参数：**
-
-| 参数名       | 类型                                      | 必填   | 说明    |
-| --------- | --------------------------------------- | ---- | ----- |
-| token | string | 是    | 用于协作服务管理的令牌，该值通过wantParam参数中'ohos.dms.collabToken'键获取。超出范围时返回错误码401。    |
-| reason | string | 是    | 连接被拒绝的原因。最大长度为256字符。    |
-
-**错误码：**
-
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | -------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
-**示例：**
-
-  ```ts
   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -533,7 +488,7 @@ reject(token:&nbsp;string,&nbsp;reason:&nbsp;string):&nbsp;void;
         hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
         let collabParam = wantParam["ohos.extra.param.key.supportCollaborateIndex"] as Record<string, Object>;
         const collabToken = collabParam["ohos.dms.collabToken"] as string;
-        const reason = 'user_rejected';
+        const reason = 'test';
         hilog.info(0x0000, 'testTag', 'reject begin');
         abilityConnectionManager.reject(collabToken, reason);
         return AbilityConstant.CollaborateResult.REJECT;
@@ -577,7 +532,7 @@ on(type:&nbsp;'connect',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callba
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   // sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
-  let sessionId = 101;
+  let sessionId = 100;
   abilityConnectionManager.on("connect", sessionId,(callbackInfo) => {
     hilog.info(0x0000, 'testTag', 'session connect, sessionId is', callbackInfo.sessionId);
   });
@@ -618,7 +573,7 @@ off(type:&nbsp;'connect',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;Call
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 
   // sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
-  let sessionId = 101;
+  let sessionId = 100;
   abilityConnectionManager.off("connect", sessionId);
 
   ```
@@ -658,7 +613,7 @@ on(type:&nbsp;'disconnect',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Cal
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   // sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
-  let sessionId = 101;
+  let sessionId = 100;
   abilityConnectionManager.on("disconnect", sessionId,(callbackInfo) => {
     hilog.info(0x0000, 'testTag', 'session disconnect, sessionId is', callbackInfo.sessionId);
   });
@@ -740,7 +695,7 @@ on(type:&nbsp;'receiveMessage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   // sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
-  let sessionId = 101;
+  let sessionId = 100;
   abilityConnectionManager.on("receiveMessage", sessionId,(callbackInfo) => {
     hilog.info(0x0000, 'testTag', 'receiveMessage, sessionId is', callbackInfo.sessionId);
   });
@@ -782,7 +737,7 @@ off(type:&nbsp;'receiveMessage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nb
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   // sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
-  let sessionId = 101;
+  let sessionId = 100;
   abilityConnectionManager.off("receiveMessage", sessionId);
 
   ```
@@ -822,7 +777,7 @@ on(type:&nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Ca
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   // sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
-  let sessionId = 101;
+  let sessionId = 100;
   abilityConnectionManager.on("receiveData", sessionId,(callbackInfo) => {
     hilog.info(0x0000, 'testTag', 'receiveData, sessionId is', callbackInfo.sessionId);
   });
@@ -864,7 +819,7 @@ off(type:&nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   // sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
-  let sessionId = 101;
+  let sessionId = 100;
   abilityConnectionManager.off("receiveData", sessionId);
 
   ```
@@ -905,17 +860,15 @@ sendMessage(sessionId:&nbsp;number,&nbsp;msg:&nbsp;string):&nbsp;Promise&lt;void
 **示例：**
 
   ```ts
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-  // sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
-  let sessionId = 101;
-  // 向对端设备发送文本信息
-  abilityConnectionManager.sendMessage(sessionId, 'message send success').then(() => {
-    hilog.info(0x0000, 'testTag', 'sendMessage success');
-  }).catch((error: BusinessError) => {
-    hilog.error(0x0000, 'testTag', `sendMessage failed. Code: ${error.code}, message: ${error.message}`);
-  });
+let sessionId = 100;
+abilityConnectionManager.sendMessage(sessionId, "message send success").then(() => {
+  hilog.info(0x0000, 'testTag', "sendMessage success");
+}).catch(() => {
+  hilog.error(0x0000, 'testTag', "connect failed");
+})
   ```
 
 ## abilityConnectionManager.sendData
@@ -954,21 +907,19 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 **示例：**
 
   ```ts
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  import { util } from '@kit.ArkTS';
+import { abilityConnectionManager } from '@kit.DistributedServiceKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { util } from '@kit.ArkTS';
 
-  let textEncoder = util.TextEncoder.create('utf-8');
-  const arrayBuffer  = textEncoder.encodeInto('data send success');
+let textEncoder = util.TextEncoder.create("utf-8");
+const arrayBuffer  = textEncoder.encodeInto("data send success");
 
-  // sessionId需通过createAbilityConnectionSession接口创建并获取，此处仅为示例
-  let sessionId = 101;
-  // 向对端设备发送字节流数据
-  abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
-    hilog.info(0x0000, 'testTag', 'sendData success');
-  }).catch((error: BusinessError) => {
-    hilog.error(0x0000, 'testTag', `sendData failed. Code: ${error.code}, message: ${error.message}`);
-  });
+let sessionId = 100;
+abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
+  hilog.info(0x0000, 'testTag', "sendMessage success");
+}).catch(() => {
+  hilog.error(0x0000, 'testTag', "sendMessage failed");
+})
   ```
 
 ## PeerInfo
