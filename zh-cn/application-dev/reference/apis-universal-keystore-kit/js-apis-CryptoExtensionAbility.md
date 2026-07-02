@@ -78,6 +78,7 @@ import { huks, huksExternalCrypto, CryptoExtensionAbility } from '@kit.Universal
 | property  | Array<[huksExternalCrypto.HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> | 否   | 是   | 属性。 |
 | outData  | Uint8Array | 否   | 是   | 返回的数据。 |
 | resourceId | string | 否 | 是 | 返回的资源ID。默认值为空。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| errInfo | [huksExternalCrypto.HuksExternalErrorInfo](js-apis-huksExternalCrypto.md#huksexternalerrorinfo) | 否 | 是 | 返回的详细错误信息。默认值为{0，""}。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## HuksCryptoExtensionParam
 
@@ -91,7 +92,7 @@ import { huks, huksExternalCrypto, CryptoExtensionAbility } from '@kit.Universal
 
 | 名称 | 类型  | 只读 | 可选 | 说明 |
 | ------ | ------ | ---- | ---- | ------ |
-| tag  | [huksExternalCrypto.HuksExternalCryptoTag](js-apis-huksExternalCrypto.md#huksexternalcryptotag) \| [HuksTag](js-apis-huks.md#hukstag) \| number | 否   | 否   | 标签。 |
+| tag  | [huksExternalCrypto.HuksExternalCryptoTag](js-apis-huksExternalCrypto.md#huksexternalcryptotag) \| [huks.HuksTag](js-apis-huks.md#hukstag) \| number | 否   | 否   | 标签。 |
 | value  | boolean \| number \| bigint \| Uint8Array | 否   | 否   | 标签对应值。 |
 
 ## HuksCryptoExtensionParams
