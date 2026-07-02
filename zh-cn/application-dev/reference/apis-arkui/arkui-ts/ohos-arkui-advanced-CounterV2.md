@@ -12,9 +12,9 @@ CounterV2组件用于精确调节数值。
 
 > **说明：**
 >
-> - 该组件接口仅可在Stage模型下使用。
->
 > - 如果CounterV2设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到CounterV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议CounterV2设置通用属性和通用事件。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 **起始版本：** 26.0.0
 
