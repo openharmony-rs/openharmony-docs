@@ -585,7 +585,7 @@ Camera_ErrorCode OH_PreviewOutput_SetLogViewAssistEnable(Camera_PreviewOutput* p
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)* previewOutput | 传递当前要使能辅助监看的预览输出实例。 |
+| [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)* previewOutput | 指向当前要使能辅助监看的预览输出实例的指针。 |
 | bool enable | 是否使能预览辅助监看。true表示使能，false表示不使能。 |
 
 **返回：**
