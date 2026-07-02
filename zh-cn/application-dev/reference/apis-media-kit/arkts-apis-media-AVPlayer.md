@@ -63,7 +63,7 @@ on(type: 'stateChange', callback: OnAVPlayerStateChangeHandle): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 状态机切换事件回调类型，支持的事件：'stateChange'，用户操作和系统都会触发此事件。 |
-| callback<sup>12+</sup> | [OnAVPlayerStateChangeHandle](arkts-apis-media-t.md#onavplayerstatechangehandle12) | 是   | 状态机切换事件回调方法，当前是多次注册只有最后一个才生效，即覆盖触发。 |
+| callback<sup>12+</sup> | [OnAVPlayerStateChangeHandle](arkts-apis-media-t.md#onavplayerstatechangehandle12) | 是   | 状态机切换事件回调方法，若存在是多次注册，则最后一次注册生效，即覆盖触发。 |
 
 **示例：**
 
