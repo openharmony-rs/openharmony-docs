@@ -682,7 +682,7 @@ installUserTrustedCertificate(certificate: CertBlob): Promise\<CMResult>
 
 **起始版本：** 26.0.0
 
-**需要权限：** ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT或ohos.permission.ACCESS_USER_TRUSTED_CERT
+**需要权限：** ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT<!--Del-->或ohos.permission.ACCESS_USER_TRUSTED_CERT<!--DelEnd-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 

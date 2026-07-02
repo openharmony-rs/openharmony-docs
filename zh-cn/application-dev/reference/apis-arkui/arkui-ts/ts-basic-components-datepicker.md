@@ -341,7 +341,7 @@ onChange(callback: (value: DatePickerResult) => void)
 
 滑动DatePicker文本内容后，选项完全归位至选中项位置时，触发该回调。不能通过双向绑定的状态变量触发。
 
-从API version 8开始支持，从API version 10开始废弃，建议使用[onDateChange](#ondatechange10)替代。
+从API version 8开始支持，从API version 10开始废弃，建议使用[onDateChange(callback:Callback\<Date>)](#ondatechange10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
