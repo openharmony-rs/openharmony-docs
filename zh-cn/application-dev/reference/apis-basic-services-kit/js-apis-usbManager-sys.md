@@ -7,7 +7,7 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
 
-本模块主要提供管理USB设备的相关功能，包括主机上查询USB设备列表、批量数据传输、控制命令传输、权限控制等；设备上端口管理、功能切换及查询等。
+本模块主要提供管理USB设备的相关功能，包括主机上查询USB设备列表、批量数据传输、控制命令传输、权限控制等；设备上端口管理、功能切换及查询等。适用于需要与USB外设进行数据交互、管理USB设备权限、动态切换USB设备模式等场景。作为系统接口，本模块提供系统级权限控制机制，帮助系统应用实现灵活的USB设备管理，满足不同业务场景下的USB通信需求。
 
 > **说明：**
 > 
@@ -24,11 +24,11 @@ import { usbManager } from '@kit.BasicServicesKit';
 
 usbFunctionsFromString(funcs: string): number
 
-在设备模式下，将字符串形式的USB功能列表转化为数字掩码。
+在设备模式下，将字符串形式的USB功能列表转化为数字掩码。适用于需要将配置文件或用户输入的字符串形式USB功能列表转换为系统内部使用的数字掩码的场景，以便后续调用setDeviceFunctions等接口设置USB功能。
 
 > **说明：**
 >
-> 从 API version 9开始支持，从API version 12开始废弃。建议使用 [getFunctionsFromString](#getfunctionsfromstring12) 替代。
+> 从API version 9开始支持，从API version 12开始废弃。建议使用 [getFunctionsFromString](#getfunctionsfromstring12) 替代。
 
 **系统接口：** 此接口为系统接口。
 
@@ -53,13 +53,13 @@ usbFunctionsFromString(funcs: string): number
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 202      | Permission denied. Normal application do not have permission to use system api.                         |
+| 202      | Permission denied. Normal application do not have permission to use system api. Possible causes: The application is not a system application or does not have required system permissions. Solution: Apply for the required system permissions or use public APIs. |
 
 **示例：**
 
 ```ts
 // 定义USB功能字符串
-let funcs: string = "acm";
+let funcs: string = 'acm';
 // 将字符串转化为数字掩码
 let ret: number = usbManager.usbFunctionsFromString(funcs);
 ```
