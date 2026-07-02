@@ -15,14 +15,15 @@
 > 本文档提供串口通信接口调用的错误码说明，帮助开发者快速定位和解决串口通信问题。适用于开发串口通信应用、调试串口通信异常等场景。以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
 ## 错误码汇总
+
 | 错误码ID | 错误信息 | 触发接口 |
 | --- | --- | --- |
-| 35700001 | Service error. | open、close、write、onDataRead、offDataRead、flush、drain、setRts、getCts、sendBrk、onDisconnect、setDtr|
-| 35700002 | Invalid parameter. | close |
-| 35700003 | Virtual serial port disconnected. |close、write、offDataRead、flush、drain、setRts、getCts、offDisconnect、setDtr|
+| 35700001 | Service error. | getSerialPortList、open、close、write、onDataRead、offDataRead、flush、drain、setRts、getCts、getDsr、sendBrk、onDisconnect、offDisconnect、setDtr |
+| 35700002 | Invalid parameter. | open、write |
+| 35700003 | Virtual serial port disconnected. |open、write、onDataRead、flush、drain、setRts、getCts、sendBrk、getDsr、setDtr |
 | 35700004 | Port already in use. | open |
-| 35700005 | Port not open. | open、close、write、onDataRead、offDataRead、flush、drain、setRts、getCts、sendBrk、onDisconnect、offDisconnect、setDtr |
-| 35700006 | Transmission timeout. | close |
+| 35700005 | Port not open. | close、write、onDataRead、offDataRead、flush、drain、setRts、getCts、sendBrk、getDsr、setDtr、onDisconnect、offDisconnect |
+| 35700006 | Transmission timeout. | write |
 | 35700007 | User authorization required. | open |
 | 35700008 | Permission denied. | addPortAuthorization |
 
