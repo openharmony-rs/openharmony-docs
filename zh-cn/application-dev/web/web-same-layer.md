@@ -225,6 +225,24 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 
    ArkTS-Sta示例：
    <!-- @[enablenativeembedmode](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/webSameLayer/entry/src/main/ets/pages/enableNativeEmbedMode.ets) --> 
+   
+   ``` TypeScript
+   import { Entry, Component, Web, Column } from '@kit.ArkUI';
+   import { webview } from '@kit.ArkWeb';
+   @Entry
+   @Component
+   struct WebComponent {
+     controller: webview.WebviewController = new webview.WebviewController();
+   
+     build() {
+       Column() {
+         Web({ src: 'www.example.com', controller: this.controller })
+         // 配置同层渲染开关开启。
+           .enableNativeEmbedMode(true)
+       }
+     }
+   }
+   ```
 
 3. 创建自定义组件。
 
