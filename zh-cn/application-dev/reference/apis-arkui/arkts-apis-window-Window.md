@@ -18438,7 +18438,7 @@ setWindowSystemBarProperties(systemBarProperties: SystemBarProperties, callback:
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，建议使用Promise方式的[setWindowSystemBarProperties()](#setwindowsystembarproperties9)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[setWindowSystemBarProperties()](#setwindowsystembarproperties9)替代。
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
@@ -18520,7 +18520,7 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncC
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，建议使用Promise方式的[setWindowSystemBarEnable()](#setwindowsystembarenable9)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[setWindowSystemBarEnable()](#setwindowsystembarenable9)替代。
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
@@ -18598,7 +18598,7 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&l
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 12开始废弃，建议使用Promise方式的[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代。
+> 从API version 9开始支持，从API version 12开始废弃，建议使用[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代。
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
@@ -19190,7 +19190,7 @@ setFullScreen(isFullScreen: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 6开始支持，从API version 9开始废弃，建议联合使用[setWindowSystemBarEnable()](#setwindowsystembarenable9)和[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代实现全屏。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[setWindowSystemBarEnable()](#setwindowsystembarenable9)和[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代。
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
@@ -19251,7 +19251,7 @@ setFullScreen(isFullScreen: boolean): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 6开始支持，从API version 9开始废弃，建议联合使用[setWindowSystemBarEnable()](#setwindowsystembarenable9)和[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代实现全屏。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[setWindowSystemBarEnable()](#setwindowsystembarenable9)和[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代。
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
