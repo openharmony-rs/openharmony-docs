@@ -538,10 +538,7 @@ destroyStream(streamId:&nbsp;number):&nbsp;void
 
   let sessionId = 100;
   hilog.info(0x0000, 'testTag', 'destroyStream called');
-  abilityConnectionManager.createStream(sessionId, {name: 'receive', role: 0}).then((streamId) => {
-    // 销毁传输流
-    abilityConnectionManager.destroyStream(streamId);
-  });
+  abilityConnectionManager.destroyStream(sessionId);
   ```
 
 ## abilityConnectionManager.startStream
@@ -568,11 +565,11 @@ startStream(streamId:&nbsp;number):&nbsp;void
 
 以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[分布式设备管理错误码](./errorcode-device-manager.md)。
 
-| 错误码ID | 错误信息 | 说明 |
-| ------- | -------------------------------- | -------------------------------- |
-| 202      | Not system App.| |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.| |
-| 32300002      | The stream at the receive end is not started. | 接收端的传输流未启动，请先启动接收端流后再启动发送端流；或传输流未完成Surface绑定，请先调用setSurfaceId进行绑定。 |
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
+| 32300002      | The stream at the receive end is not started. |
 
 **示例：**
 
@@ -582,10 +579,7 @@ startStream(streamId:&nbsp;number):&nbsp;void
 
   let sessionId = 100;
   hilog.info(0x0000, 'testTag', 'startStream called');
-  abilityConnectionManager.createStream(sessionId, {name: 'receive', role: 0}).then((streamId) => {
-    // 启动传输流
-    abilityConnectionManager.startStream(streamId);
-  });
+  abilityConnectionManager.startStream(sessionId);
   ```
 
 ## abilityConnectionManager.stopStream
@@ -625,10 +619,7 @@ stopStream(streamId:&nbsp;number):&nbsp;void
 
   let sessionId = 100;
   hilog.info(0x0000, 'testTag', 'stopStream called');
-  abilityConnectionManager.createStream(sessionId, {name: 'receive', role: 0}).then((streamId) => {
-    // 停止传输流
-    abilityConnectionManager.stopStream(streamId);
-  });
+  abilityConnectionManager.stopStream(sessionId);
   ```
 
 ## StreamParam
