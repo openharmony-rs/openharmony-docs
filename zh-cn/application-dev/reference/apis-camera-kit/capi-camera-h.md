@@ -130,6 +130,7 @@ enum Camera_ErrorCode
 | CAMERA_DEVICE_PREEMPTED = 7400109 | 因被抢占而无法使用相机。 |
 | CAMERA_UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS = 7400110 | 与当前配置存在冲突。<br>**起始版本：** 12 |
 | CAMERA_SERVICE_FATAL_ERROR = 7400201 | 相机服务异常。<br> 比如没有相机权限、相机服务重启、跨进程调用异常等。 |
+| CAMERA_ERROR_CAPABILITY_NOT_SUPPORTED = 7400114 | 表示设备当前不支持该能力。 <br>**起始版本：** 26.0.0 |
 
 ### Camera_Status
 

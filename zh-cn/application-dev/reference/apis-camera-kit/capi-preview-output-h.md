@@ -53,6 +53,8 @@
 | [Camera_ErrorCode OH_PreviewOutput_IsBandwidthCompressionSupported(Camera_PreviewOutput* previewOutput, bool* isSupported)](#oh_previewoutput_isbandwidthcompressionsupported) | - | 检查是否支持预览带宽压缩（指通过编码减少数据量，降低其在传输链路中的带宽占用）。 |
 | [Camera_ErrorCode OH_PreviewOutput_EnableBandwidthCompression(Camera_PreviewOutput* previewOutput, bool enabled)](#oh_previewoutput_enablebandwidthcompression) | - | 使能预览带宽压缩。<br>该接口只能在使用[OH_CaptureSession_CommitConfig()](capi-capture-session-h.md#oh_capturesession_commitconfig)接口之前调用，否则会影响预览流出流格式。 |
 | [Camera_ErrorCode OH_PreviewOutput_AddDeferredSurface(const Camera_PreviewOutput* previewOutput, const char* surfaceId)](#oh_previewoutput_adddeferredsurface) | - | 配置延迟预览的Surface。 |
+| [bool OH_PreviewOutput_IsLogViewAssistSupported(const Camera_PreviewOutput* previewOutput)](#oh_previewoutput_islogviewassistsupported) | - | 检查是否支持辅助监看功能。|
+| [Camera_ErrorCode OH_PreviewOutput_SetLogViewAssistEnable(Camera_PreviewOutput* previewOutput, bool enable)](#oh_previewoutput_setlogviewassistenable) | - | 使能辅助监看功能。<br>该接口只能在使用[OH_CaptureSession_CommitConfig()](capi-capture-session-h.md#oh_capturesession_commitconfig)接口之后调用。 |
 
 ## 函数说明
 
@@ -542,4 +544,51 @@ Camera_ErrorCode OH_PreviewOutput_AddDeferredSurface(const Camera_PreviewOutput*
 | -- | -- |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。 |
 
+### OH_PreviewOutput_IsLogViewAssistSupported()
 
+```c
+bool OH_PreviewOutput_IsLogViewAssistSupported(const Camera_PreviewOutput* previewOutput)
+```
+
+**描述**
+
+检查是否支持辅助监看功能。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)* previewOutput | 预览输出实例。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| bool | 是否支持辅助监看的结果。true表示支持，false表示不支持。 |
+
+### OH_PreviewOutput_SetLogViewAssistEnable()
+
+```c
+Camera_ErrorCode OH_PreviewOutput_SetLogViewAssistEnable(Camera_PreviewOutput* previewOutput, bool enable)
+```
+
+**描述**
+
+使能辅助监看功能。<br> 该接口只能在使用[OH_CaptureSession_CommitConfig()](capi-capture-session-h.md#oh_capturesession_commitconfig)接口之后调用。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)* previewOutput | 指向当前要使能辅助监看的预览输出实例的指针。 |
+| bool enable | 是否使能预览辅助监看。true表示使能，false表示不使能。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     CAMERA_ERROR_CAPABILITY_NOT_SUPPORTED: 表示设备当前不支持该能力。<br>    CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SESSION_NOT_CONFIG：相机会话未配置。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
