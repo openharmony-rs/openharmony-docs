@@ -128,7 +128,7 @@ static JSVM_Value EscapableHandleScopeTest(JSVM_Env env, JSVM_CallbackInfo info)
         return nullptr;
     }
     // 在可逃逸的句柄作用域内创建一个obj
-    JSVM_Value obj;
+    JSVM_Value obj = nullptr;
     OH_JSVM_CreateObject(env, &obj);
     // 在对象中添加属性
     JSVM_Value value = nullptr;
@@ -206,7 +206,7 @@ static JSVM_Value UseReference(JSVM_Env env, JSVM_CallbackInfo info)
     }
 
     // 增加传入引用的引用计数并返回生成的引用计数
-    uint32_t result;
+    uint32_t result = 0;
     OH_JSVM_ReferenceRef(env, g_ref, &result);
     OH_LOG_INFO(LOG_APP, "JSVM OH_JSVM_ReferenceRef, count = %{public}d.", result);
     const int resultValue = 2;
@@ -216,7 +216,7 @@ static JSVM_Value UseReference(JSVM_Env env, JSVM_CallbackInfo info)
     }
 
     // 减少传入引用的引用计数并返回生成的引用计数
-    uint32_t num;
+    uint32_t num = 0;
     OH_JSVM_ReferenceUnref(env, g_ref, &num);
     OH_LOG_INFO(LOG_APP, "JSVM OH_JSVM_ReferenceUnref, count = %{public}d.", num);
     if (num != 1) {
@@ -281,7 +281,7 @@ static int AddFinalizer(JSVM_VM vm, JSVM_Env env)
     JSVM_HandleScope handleScope;
     CHECK_RET(OH_JSVM_OpenHandleScope(env, &handleScope));
     // 创建 object 并设置回调
-    JSVM_Value obj;
+    JSVM_Value obj = nullptr;
     CHECK_RET(OH_JSVM_CreateObject(env, &obj));
     CHECK_RET(OH_JSVM_AddFinalizer(
         env, obj, nullptr,

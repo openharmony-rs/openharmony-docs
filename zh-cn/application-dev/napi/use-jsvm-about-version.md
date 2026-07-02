@@ -61,13 +61,13 @@ static JSVM_Value GetVMInfo(JSVM_Env env, JSVM_CallbackInfo info)
     return nullptr;
 }
 
-// IsStrictEquals注册回调
+// GetVersion和GetVMInfo注册回调
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = GetVersion},
     {.data = nullptr, .callback = GetVMInfo},
 };
 static JSVM_CallbackStruct *method = param;
-// IsStrictEquals方法别名，供JS调用
+// GetVersion和GetVMInfo方法别名，供JS调用
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getVersion", nullptr, method, nullptr, nullptr, nullptr, JSVM_DEFAULT},
     {"getVMInfo", nullptr, method + 1, nullptr, nullptr, nullptr, JSVM_DEFAULT},
