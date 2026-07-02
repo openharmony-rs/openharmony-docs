@@ -42,7 +42,7 @@ TaskPool支持使用异步队列来控制任务的并发度，能有效避免资
 
 3. 创建异步队列并执行采集任务。
 
-   <!-- @[trigger_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/TaskpoolAsyncLevel.ets) -->
+   <!-- @[trigger_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/TaskpoolAsyncLevel.ets) --> 
    
    ``` TypeScript
    // TaskpoolAsyncLevel.ets
