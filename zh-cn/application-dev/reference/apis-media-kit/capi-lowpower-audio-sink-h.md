@@ -329,7 +329,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Destroy(OH_LowPowerAudioSink* sink)
 
 **描述**
 
-清理LowPowerAudioSink内部资源，销毁LowPowerAudioSink实例。建议在OH_LowPowerAudioSink_Stop后调用。不能重复销毁。
+清理LowPowerAudioSink内部资源，销毁LowPowerAudioSink实例。不能重复销毁。
 
 **起始版本：** 20
 
