@@ -521,7 +521,7 @@ registerGlobalCallObject(instanceName: string, globalCallObject: Object): void
 
 | 错误码ID | 错误信息                                |
 | -------- | ----------------------------------------- |
-| 10200004 | Worker instance is not running.           |
+| 10200004 | The Worker instance is not running.           |
 
 **示例：**
 ```ts
@@ -591,7 +591,7 @@ unregisterGlobalCallObject(instanceName?: string): void
 
 | 错误码ID | 错误信息                                |
 | -------- | ----------------------------------------- |
-| 10200004 | Worker instance is not running. |
+| 10200004 | The Worker instance is not running. |
 
 **示例：**
 ```ts
@@ -711,7 +711,7 @@ removeEventListener(type: string, callback?: WorkerEventListener): void
 
 | 错误码ID | 错误信息                      |
 | -------- | ------------------------------- |
-| 10200004 | Worker instance is not running. |
+| 10200004 | The Worker instance is not running. |
 
 **示例：**
 
@@ -759,7 +759,7 @@ dispatchEvent(event: Event): boolean
 
 | 错误码ID | 错误信息                      |
 | -------- | ------------------------------- |
-| 10200004 | Worker instance is not running. |
+| 10200004 | The Worker instance is not running. |
 
 **示例：**
 
@@ -797,7 +797,7 @@ removeAllListener(): void
 
 | 错误码ID | 错误信息                      |
 | -------- | ------------------------------- |
-| 10200004 | Worker instance is not running. |
+| 10200004 | The Worker instance is not running. |
 
 **示例：**
 
@@ -1202,7 +1202,7 @@ Worker线程调用宿主线程上注册的对象的指定方法，此调用对Wo
 
 | 错误码ID | 错误信息                                |
 | -------- | ----------------------------------------- |
-| 10200004 | Worker instance is not running.           |
+| 10200004 | The Worker instance is not running.           |
 | 10200006 | An exception occurred during serialization. |
 | 10200019 | The globalCallObject is not registered. |
 | 10200020 | The method to be called is not callable or is an async method or a generator. |
