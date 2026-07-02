@@ -6473,6 +6473,31 @@
 						"end_line":177,
 						"name":"richEditor_eventChange",
 						"start_line":108
+					},
+					{
+						"end_line":250,
+						"name":"richEditor_eventInput",
+						"start_line":182
+					},
+					{
+						"end_line":344,
+						"name":"richEditor_eventPaste",
+						"start_line":17
+					},
+					{
+						"end_line":403,
+						"name":"richEditor_eventCut",
+						"start_line":348
+					},
+					{
+						"end_line":464,
+						"name":"richEditor_eventCopy",
+						"start_line":408
+					},
+					{
+						"end_line":103,
+						"name":"richEditor_eventSelectChange",
+						"start_line":51
 					}
 				]
 			},
@@ -6513,6 +6538,111 @@
 						"end_line":291,
 						"name":"richEditor_maxLines",
 						"start_line":248
+					},
+					{
+						"end_line":243,
+						"name":"richEditor_placeholder",
+						"start_line":204
+					},
+					{
+						"end_line":328,
+						"name":"richEditor_maxLength",
+						"start_line":296
+					},
+					{
+						"end_line":199,
+						"name":"richEditor_color",
+						"start_line":158
+					},
+					{
+						"end_line":153,
+						"name":"richEditor_bindSelectionMenu",
+						"start_line":70
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/CreateRichEditor.ets",
+				"functions":[
+					{
+						"end_line":111,
+						"name":"richEditor_create",
+						"start_line":17
+					},
+					{
+						"end_line":112,
+						"name":"richEditor_create_span",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddTextContent.ets",
+				"functions":[
+					{
+						"end_line":70,
+						"name":"richEditor_addText",
+						"start_line":19
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddImageContent.ets",
+				"functions":[
+					{
+						"end_line":70,
+						"name":"richEditor_addImage",
+						"start_line":19
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddSymbolSpanContent.ets",
+				"functions":[
+					{
+						"end_line":71,
+						"name":"richEditor_addSymbol",
+						"start_line":20
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/GetGraphicInfoInComponent.ets",
+				"functions":[
+					{
+						"end_line":78,
+						"name":"richEditor_getSpans",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/BackplaneHighlighting.ets",
+				"functions":[
+					{
+						"end_line":66,
+						"name":"richEditor_selection",
+						"start_line":20
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/DisableSystemServiceMenu.ets",
+				"functions":[
+					{
+						"end_line":75,
+						"name":"richEditor_disableSystemMenu",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/DisableMenuItem.ets",
+				"functions":[
+					{
+						"end_line":74,
+						"name":"richEditor_disableMenu",
+						"start_line":16
 					}
 				]
 			}
