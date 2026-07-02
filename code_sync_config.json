@@ -30860,5 +30860,45 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-rotation-transition-animation.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/rotation/template2/Index.ets",
+				"functions":[
+					{
+						"end_line":53,
+						"name":"rotation_page",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/entryability/EntryAbility.ets",
+				"functions":[
+					{
+						"end_line":144,
+						"name":"window_stage",
+						"start_line":21
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/arkts-animatable-extend.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/AnimatableExtendDecorator/AnimatablePropertyText.ets",
+				"functions":[
+					{
+						"end_line":42,
+						"name":"animatable_extend_text",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
