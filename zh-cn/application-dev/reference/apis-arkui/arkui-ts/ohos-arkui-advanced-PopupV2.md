@@ -63,7 +63,7 @@ PopupV2(options: PopupV2InitInfo): void
 | iconModifier     | [ImageModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)                        | 否   | 是  | 设置图标属性，如图标颜色、大小、边框等。<br/>默认值：undefined，使用系统图标属性。|
 | messageModifier   | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)                       | 否  | 是  | 设置内容文本属性，如设置内容文本颜色、字体大小、字重等。<br/>默认值：undefined，使用系统内容文本属性。|
 | showClose | boolean \| [Resource](ts-types.md#resource)                | 否   | 是  | 设置PopupV2关闭按钮。true：显示关闭按钮；false：不显示关闭按钮。Resource类型：显示对应的图标。<br/>默认值：true|
-| onClose   | Callback<void>                                                   | 否   | 是  | 设置PopupV2关闭按钮回调函数。<br/>默认不设置关闭按钮回调函数。|
+| onClose   | Callback\<void\>                                                   | 否   | 是  | 设置PopupV2关闭按钮回调函数。<br/>默认不设置关闭按钮回调函数。|
 | buttons   | [[PopupV2Button](#popupv2button)?,[PopupV2Button](#popupv2button)?] | 否   | 是  | 设置PopupV2操作按钮，按钮最多设置两个。默认不显示按钮。<br/>默认值：[{ text: '' }, { text: '' }] | 
 | direction | [Direction](ts-appendix-enums.md#direction)                                             | 否                                | 是                               | 布局方向。<br/>默认值：Direction.Auto |
 | maxWidth  | [Dimension](ts-types.md#dimension10)                                             | 否                                | 是                               |  设置PopupV2的最大宽度，通过此接口PopupV2可以自定义宽度显示。<br/>默认值：400vp<br/>**说明：** <br/>1. 在使用引用资源类型时，规定其参数类型要与属性方法本身类型一致。<br/>2. maxWidth是数字类型，支持float和整型，例如`$r('app.float.maxWidth')`、`$r('app.integer.maxWidth')`。<br/>3. 当类型为Resource时，如果未设置单位，默认单位为px。 |
@@ -84,7 +84,7 @@ PopupV2Button定义按钮的相关属性和事件。
 | 名称      | 类型                                                 | 只读 | 可选 | 说明                 |
 | --------- | ---------------------------------------------------- | ---- | ---------------------- | ---------------------- |
 | text      | [ResourceStr](ts-types.md#resourcestr)               | 否  | 否  | 设置按钮内容。         |
-| action    | Callback<void>                                            | 否   | 是  | 设置按钮点击回调。<br/>默认不执行任何操作。 |
+| action    | Callback\<void\>                                            | 否   | 是  | 设置按钮点击回调。<br/>默认不执行任何操作。 |
 | buttonTextModifier  | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否   | 是  | 设置按钮文本属性，如设置文本颜色、字体大小等。默认值：undefined，值为undefined时，默认使用系统按钮文本属性。**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## 示例
