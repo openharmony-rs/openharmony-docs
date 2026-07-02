@@ -10,7 +10,7 @@
 
 定义CustomSpan相关的枚举和接口。
 
-**引用文件：** <arkui/custom_span.h>
+**引用文件：** <arkui/node_attributes/custom_span.h>
 
 **库：** libace_ndk.z.so
 
