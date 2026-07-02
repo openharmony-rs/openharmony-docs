@@ -1873,10 +1873,6 @@ To solve the port exception problem, perform the following steps:
 
 4. Locate the problem based on the **hdc.log** file.
 
-> **NOTE**
->
-> For more FAQs, see [FAQs](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs/faqs-performance-analysis-kit).
-
 ## hdc Error Codes
 
 ### E000001 hdc Version Too Early
