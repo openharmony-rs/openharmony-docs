@@ -210,6 +210,8 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
   <!-- @[button_case_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/ButtonCaseTouch.ets) -->
   
   ``` TypeScript
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
   const DOMAIN = 0x0000;
   // xxx.ets
   @Entry
@@ -321,7 +323,7 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
       }.title('pageThree')
       .onBackPressed(() => {
         const popDestinationInfo = this.pathStack.pop(); // 弹出路由栈栈顶元素
-        /// 请将$r('app.string.return_value')替换为实际资源文件，在本示例中该资源文件的value值为"返回值"
+        // 请将$r('app.string.return_value')替换为实际资源文件，在本示例中该资源文件的value值为"返回值"
         hilog.info(DOMAIN, 'testTag', 'pop' + $r('app.string.return_value') + JSON.stringify(popDestinationInfo));
         return true;
       })
