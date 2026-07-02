@@ -129,6 +129,7 @@ enum Camera_ErrorCode
 | CAMERA_DEVICE_DISABLED = 7400108 | 由于安全原因，相机已禁用。 |
 | CAMERA_DEVICE_PREEMPTED = 7400109 | 因被抢占而无法使用相机。 |
 | CAMERA_UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS = 7400110 | 与当前配置存在冲突。<br>**起始版本：** 12 |
+| CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST = 7400113 | 可选属性不存在。<br>**起始版本：** 26.0.0 |
 | CAMERA_SERVICE_FATAL_ERROR = 7400201 | 相机服务异常。<br> 比如没有相机权限、相机服务重启、跨进程调用异常等。 |
 
 ### Camera_Status
@@ -456,6 +457,13 @@ enum Camera_MetadataObjectType
 | FACE_DETECTION = 0 | 元数据的对象类型，用于人脸检测。<br> 从API version 23开始，推荐使用新枚举值[CAMERA_METADATA_OBJECT_TYPE_FACE_DETECTION](capi-camera-h.md#camera_metadataobjecttype)。 |
 | CAMERA_METADATA_OBJECT_TYPE_FACE_DETECTION = 0 | 元数据的对象类型，用于人脸检测。<br>**起始版本：** 23 |
 | CAMERA_METADATA_OBJECT_TYPE_HUMAN_BODY = 1 | 元数据的对象类型，用于人体检测。<br>**起始版本：** 23 |
+| CAMERA_METADATA_OBJECT_TYPE_CAT_FACE = 2 | 元数据的对象类型，用于猫脸检测。<br>**起始版本：** 26.0.0 |
+| CAMERA_METADATA_OBJECT_TYPE_CAT_BODY = 3 | 元数据的对象类型，用于猫体检测。<br>**起始版本：** 26.0.0 |
+| CAMERA_METADATA_OBJECT_TYPE_DOG_FACE = 4 | 元数据的对象类型，用于狗脸检测。<br>**起始版本：** 26.0.0 |
+| CAMERA_METADATA_OBJECT_TYPE_DOG_BODY = 5 | 元数据的对象类型，用于狗体检测。<br>**起始版本：** 26.0.0 |
+| CAMERA_METADATA_OBJECT_TYPE_SALIENT_DETECTION = 6 | 元数据的对象类型，用于显著性物体检测。<br>**起始版本：** 26.0.0 |
+| CAMERA_METADATA_OBJECT_TYPE_BAR_CODE_DETECTION = 7 | 元数据的对象类型，用于二维码检测。<br>**起始版本：** 26.0.0 |
+| CAMERA_METADATA_OBJECT_TYPE_BASIC_FACE_DETECTION = 8 | 元数据的对象类型，用于基础人脸检测。<br>**起始版本：** 26.0.0 |
 
 ### Camera_TorchMode
 
