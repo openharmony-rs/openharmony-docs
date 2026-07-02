@@ -53,7 +53,7 @@
       <!--Del-->
       - [场景动效类型互动卡片开发指导（仅对系统应用开放）](arkts-ui-liveform-sceneanimation-development-sys.md)
       <!--DelEnd-->
-   - ArkTs卡片最佳实践<!--arkts-ui-best practice-->
+   - ArkTS卡片最佳实践<!--arkts-ui-best practice-->
       <!--RP5--><!--RP5End-->
   - [ArkTS卡片适配常见问题](arkts-ui-widget-adapt-faq.md)
 - JS卡片开发<!--form-js-ui-->
