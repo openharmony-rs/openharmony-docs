@@ -1001,6 +1001,31 @@
 						"start_line":63
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/ThirdpartyWearableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets",
+				"functions":[
+					{
+						"end_line":241,
+						"name":"callback_start",
+						"start_line":17
+					},
+					{
+						"end_line":242,
+						"name":"quick_start",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/ThirdpartyWearableDemo/entry/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":73,
+						"name":"quick_start",
+						"start_line":63
+					}
+				]
 			}
 		]
 	},
@@ -1476,6 +1501,21 @@
 						"start_line":29
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ClearDuplicateNotifications.ets",
+				"functions":[
+					{
+						"end_line":19,
+						"name":"clear_duplicate_notifications_header",
+						"start_line":16
+					},
+					{
+						"end_line":52,
+						"name":"pub_appMsgId_notify",
+						"start_line":29
+					}
+				]
 			}
 		]
 	},
@@ -1487,6 +1527,26 @@
 				"functions":[
 					{
 						"end_line":81,
+						"name":"reapply_notify_auth_halfModal",
+						"start_line":63
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/RequestEnableNotification.ets",
+				"functions":[
+					{
+						"end_line":24,
+						"name":"request_enable_notification_header",
+						"start_line":16
+					},
+					{
+						"end_line":57,
+						"name":"request_enable_notification_permission",
+						"start_line":36
+					},
+					{
+						"end_line":82,
 						"name":"reapply_notify_auth_halfModal",
 						"start_line":63
 					}
@@ -1504,6 +1564,36 @@
 						"end_line":111,
 						"name":"create_launch_uiAbility_agent_info",
 						"start_line":91
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets",
+				"functions":[
+					{
+						"end_line":25,
+						"name":"add_behavior_intent_header",
+						"start_line":16
+					},
+					{
+						"end_line":114,
+						"name":"create_launch_uiAbility_agent_info",
+						"start_line":94
+					},
+					{
+						"end_line":52,
+						"name":"create_pub_event_agent_info",
+						"start_line":37
+					},
+					{
+						"end_line":168,
+						"name":"create_get_agent",
+						"start_line":116
+					},
+					{
+						"end_line":165,
+						"name":"pub_want_agent_req_notify",
+						"start_line":131
 					}
 				]
 			}
@@ -30041,6 +30131,206 @@
 						"end_line":272,
 						"name":"Render_SetLatencyMode",
 						"start_line":268
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/notification/notification-badge.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets",
+				"functions":[
+					{
+						"end_line":24,
+						"name":"manage_notification_badges_header",
+						"start_line":16
+					},
+					{
+						"end_line":71,
+						"name":"add_badge_count",
+						"start_line":63
+					},
+					{
+						"end_line":85,
+						"name":"reduce_badge_count",
+						"start_line":77
+					},
+					{
+						"end_line":106,
+						"name":"increase_badge_count_seq",
+						"start_line":91
+					},
+					{
+						"end_line":127,
+						"name":"update_badge_count_idempotent",
+						"start_line":112
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/notification/notification-cancel.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/CancelNotification.ets",
+				"functions":[
+					{
+						"end_line":23,
+						"name":"cancel_notification_header",
+						"start_line":16
+					},
+					{
+						"end_line":68,
+						"name":"cancel_notification_content",
+						"start_line":58
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/notification/notification-customized-ringtone.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets",
+				"functions":[
+					{
+						"end_line":27,
+						"name":"specified_customized_ringtone_header",
+						"start_line":16
+					},
+					{
+						"end_line":65,
+						"name":"specified_resources_rawfile",
+						"start_line":63
+					},
+					{
+						"end_line":83,
+						"name":"specified_customized_ringtone_getAppContext",
+						"start_line":72
+					},
+					{
+						"end_line":99,
+						"name":"specified_customized_ringtone_copyToSandbox",
+						"start_line":84
+					},
+					{
+						"end_line":104,
+						"name":"specified_sandbox_file",
+						"start_line":100
+					},
+					{
+						"end_line":54,
+						"name":"specified_customized_ringtone_publish_notification",
+						"start_line":34
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/notification/notification-slot.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationWays.ets",
+				"functions":[
+					{
+						"end_line":23,
+						"name":"manage_notification_ways_header",
+						"start_line":16
+					},
+					{
+						"end_line":43,
+						"name":"create_type_channel",
+						"start_line":33
+					},
+					{
+						"end_line":64,
+						"name":"get_type_channel",
+						"start_line":48
+					},
+					{
+						"end_line":81,
+						"name":"delete_type_channel",
+						"start_line":69
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/notification/notification-update.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/UpdateNotification.ets",
+				"functions":[
+					{
+						"end_line":23,
+						"name":"update_notification_header",
+						"start_line":16
+					},
+					{
+						"end_line":63,
+						"name":"pub_progress_bar_notify",
+						"start_line":35
+					},
+					{
+						"end_line":97,
+						"name":"update_prog_only_notify",
+						"start_line":68
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/notification/progress-bar-notification.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/PublishNotification.ets",
+				"functions":[
+					{
+						"end_line":23,
+						"name":"publish_notification_header",
+						"start_line":16
+					},
+					{
+						"end_line":97,
+						"name":"check_progress_template_download",
+						"start_line":88
+					},
+					{
+						"end_line":131,
+						"name":"pub_progress_template_req_notify",
+						"start_line":103
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/notification/text-notification.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/PublishNotification.ets",
+				"functions":[
+					{
+						"end_line":23,
+						"name":"publish_notification_header",
+						"start_line":16
+					},
+					{
+						"end_line":53,
+						"name":"pub_plaintext_req_notify",
+						"start_line":33
+					},
+					{
+						"end_line":83,
+						"name":"pub_multi_line_req_notify",
+						"start_line":58
 					}
 				]
 			}
