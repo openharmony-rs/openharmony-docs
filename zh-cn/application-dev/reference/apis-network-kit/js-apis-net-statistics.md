@@ -718,6 +718,7 @@ ArkTS-Sta: getUidRxBytes(uid: int, callback: AsyncCallback\<long>): void
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
+| 201       | Permission denied. <br>  适用版本：26.0.0+    |
 | 401       | Parameter error.                             |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error.                       |
@@ -784,6 +785,7 @@ ArkTS-Sta: getUidRxBytes(uid: int): Promise\<long>
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
+| 201       | Permission denied. <br>  适用版本：26.0.0+    |
 | 401       | Parameter error.                             |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error.                       |
@@ -842,6 +844,7 @@ ArkTS-Sta: getUidTxBytes(uid: int, callback: AsyncCallback\<long>): void
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
+| 201       | Permission denied. <br>  适用版本：26.0.0+    |
 | 401       | Parameter error.                             |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error.                       |
@@ -908,6 +911,7 @@ ArkTS-Sta: getUidTxBytes(uid: int): Promise\<long>
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
+| 201       | Permission denied. <br>  适用版本：26.0.0+    |
 | 401       | Parameter error.                             |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error.                       |
