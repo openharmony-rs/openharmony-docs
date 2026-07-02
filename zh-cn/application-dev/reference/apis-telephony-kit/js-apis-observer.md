@@ -1240,7 +1240,7 @@ onCommunicationStateChange\(callback?: Callback\<boolean\>, options?:ObserverOpt
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | callback | Callback\<boolean\>                    | 是 | 回调函数。返回true表示5A状态为使能态；返回false表示5A状态为非使能态。 |
-| options  | [ObserverOptions](#observeroptions11)  | 否 | 电话相关事件订阅参数可选项，指定事件订阅的卡槽ID, 默认为当前默认数据卡槽ID。         |
+| options  | [ObserverOptions](#observeroptions11)  | 否 | 电话相关事件订阅参数可选项，指定事件订阅的卡槽ID，默认为当前默认数据卡槽ID。         |
 
 
 **错误码：**
@@ -1280,7 +1280,7 @@ offCommunicationStateChange\(callback?: Callback\<boolean\>, options?:ObserverOp
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | callback | Callback\<boolean\>                    | 是 | 回调函数。返回true表示5A状态为使能态；返回false表示5A状态为非使能态。 |
-| options  | [ObserverOptions](#observeroptions11)  | 否 | 电话相关事件订阅参数可选项，指定事件订阅的卡槽ID, 默认为当前默认数据卡槽ID。          |
+| options  | [ObserverOptions](#observeroptions11)  | 否 | 电话相关事件订阅参数可选项，指定事件订阅的卡槽ID，默认为当前默认数据卡槽ID。          |
 
 
 **错误码：**
