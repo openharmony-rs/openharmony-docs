@@ -52172,6 +52172,11 @@
 						"end_line":1880,
 						"name":"text_direction",
 						"start_line":1875
+					},
+					{
+						"end_line":2666,
+						"name":"text_tail_indents",
+						"start_line":2662
 					}
 				]
 			}
