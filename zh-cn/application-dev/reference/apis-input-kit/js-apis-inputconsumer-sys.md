@@ -99,7 +99,7 @@ struct Index {
 
 ## inputConsumer.onKey<sup>23+</sup>
 
-onKey(callback: Callback&lt;KeyOptions&gt;): void
+onKey(keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): void
 
 订阅系统快捷键，当满足条件的组合按键输入事件发生时，使用Callback异步方式上报组合按键数据。
 
