@@ -328,7 +328,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
    配置谓词以LIKE模式或NOT LIKE模式匹配进行数据查询。示例代码如下：
 
     <!--@[rdb_OH_Rdb_Query_by_like_and_notLike](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)--> 
-
+    
     ``` C++
     OH_Predicates *likePredicates = OH_Rdb_CreatePredicates("EMPLOYEE");
     if (likePredicates == NULL) {
@@ -338,7 +338,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     likePattern->putText(likePattern, "zh%");
     // 配置谓词以LIKE模式匹配
     likePredicates->like(likePredicates, "NAME", likePattern);
-    
+        
     char *colName[] = { "NAME", "AGE" };
     auto *likeQueryCursor = OH_Rdb_Query(store_, likePredicates, colName, 2); // the length of columnNames is 2
     if (likeQueryCursor == NULL) {
@@ -355,10 +355,11 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
         likeQueryCursor->getText(likeQueryCursor, colIndex, name, dataLength + 1);
         free(name);
     }
+    
     likeQueryCursor->destroy(likeQueryCursor);
     likePredicates->destroy(likePredicates);
     likePattern->destroy(likePattern);
-    
+        
     OH_Predicates *notLikePredicates = OH_Rdb_CreatePredicates("EMPLOYEE");
     if (notLikePredicates == NULL) {
         OH_LOG_ERROR(LOG_APP, "CreatePredicates failed.");
@@ -366,7 +367,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     }
     // 配置谓词以NOT LIKE模式匹配
     OH_Predicates_NotLike(notLikePredicates, "NAME", "zh%");
-    auto *notLikeQueryCursor = OH_Rdb_Query(store_, notLikePredicates, colName, 2); // the length ofcolumnNames is 2
+    auto *notLikeQueryCursor = OH_Rdb_Query(store_, notLikePredicates, colName, 2); // the length of columnNames is 2
     if (notLikeQueryCursor == NULL) {
         notLikePredicates->destroy(notLikePredicates);
         return;
@@ -380,13 +381,12 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
         notLikeQueryCursor->getText(notLikeQueryCursor, colIndex, name2, dataLength + 1);
         free(name2);
     }
-    
+        
     notLikePredicates->destroy(notLikePredicates);
     notLikeQueryCursor->destroy(notLikeQueryCursor);
     ```
-   配置谓词以GLOB模式或NOTGLOB模式匹配进行数据查询。示例代码如下：
     <!--@[rdb_OH_Rdb_Query_by_glob_and_notGlob](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)--> 
-
+    
     ``` C++
     OH_Predicates *globPredicates = OH_Rdb_CreatePredicates("EMPLOYEE");
     if (globPredicates == NULL) {
@@ -395,14 +395,15 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     }
     // 配置谓词以GLOB模式匹配
     OH_Predicates_Glob(globPredicates, "NAME", "zh*");
-    
+        
     char *colName[] = { "NAME", "AGE" };
-    auto *globQueryCursor = OH_Rdb_Query(store_, globPredicates, colName, 2); // the length of columnNamesis 2
+    auto *globQueryCursor = OH_Rdb_Query(store_, globPredicates, colName, 2); // the length of columnNames is 2
     if (globQueryCursor == NULL) {
         OH_LOG_ERROR(LOG_APP, "Query failed.");
         globPredicates->destroy(globPredicates);
         return;
     }
+    
     size_t dataLength = 0;
     int colIndex = -1;
     while (globQueryCursor->goToNextRow(globQueryCursor) == OH_Rdb_ErrCode::RDB_OK) {
@@ -414,7 +415,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     }
     globQueryCursor->destroy(globQueryCursor);
     globPredicates->destroy(globPredicates);
-    
+        
     OH_Predicates *notGlobPredicates = OH_Rdb_CreatePredicates("EMPLOYEE");
     if (notGlobPredicates == NULL) {
         OH_LOG_ERROR(LOG_APP, "CreatePredicates failed.");
@@ -422,7 +423,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     }
     // 配置谓词以NOT GLOB模式匹配
     OH_Predicates_NotGlob(notGlobPredicates, "NAME", "zh*");
-    auto *notGlobQueryCursor = OH_Rdb_Query(store_, notGlobPredicates, colName, 2); // the length ofcolumnNames is 2
+    auto *notGlobQueryCursor = OH_Rdb_Query(store_, notGlobPredicates, colName, 2); // the length of columnNames is 2
     if (notGlobQueryCursor == NULL) {
         OH_LOG_ERROR(LOG_APP, "Query failed.");
         notGlobPredicates->destroy(notGlobPredicates);
@@ -437,8 +438,10 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
         notGlobQueryCursor->getText(notGlobQueryCursor, colIndex, name2, dataLength + 1);
         free(name2);
     }
+    
     notGlobQueryCursor->destroy(notGlobQueryCursor);
     notGlobPredicates->destroy(notGlobPredicates);
+    ```
     ```
    如需指定排序时使用的语言规则，例如zh_CN表示中文，tr_TR表示土耳其语等。可调用OH_Rdb_SetLocale配置相应规则。
     <!--@[rdb_OH_Rdb_SetLocale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
@@ -475,74 +478,74 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     OH_RdbTransOption_SetType(options, RDB_TRANS_DEFERRED);
     OH_Rdb_Transaction *trans = nullptr;
     // 创建事务对象
-    int res = OH_Rdb_CreateTransaction(store_, options, &trans);
-    OH_RdbTrans_DestroyOptions(options);
-    ```
     <!--@[rdb_trans_insert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)--> 
-
+    
     ``` C++
     char transCreateTableSql[] =
         "CREATE TABLE IF NOT EXISTS transaction_table (id INTEGER PRIMARY KEY AUTOINCREMENT, data1 INTEGER, "
         "data2 INTEGER, data3 FLOAT, data4 TEXT, data5 BLOB, data6 ASSET, data7 ASSETS, data8 UNLIMITED INT, "
         "data9 FLOATVECTOR);";
-    
+        
     auto *execResult = OH_Value_Create();
-    
+        
     // 通过事务对象执行创建数据库表SQL语句
     int ret = OH_RdbTrans_Execute(trans, transCreateTableSql, nullptr, &execResult);
-    
+        
     // 创建OH_Data_Values实例
     OH_Data_Values *values = OH_Values_Create();
     ret = OH_Values_PutInt(values, 1); // The value of id is 1
-    ret = OH_Values_PutInt(values, 2); // The value of datat2 is 2
-    ret = OH_Values_PutReal(values, 1.1); // The value of datat3 is 1.1
-    ret = OH_Values_PutText(values, "1"); // The value of datat3 is 1
+    ret = OH_Values_PutInt(values, 2); // The value of data2 is 2
+    ret = OH_Values_PutReal(values, 1.1); // The value of data3 is 1.1
+    ret = OH_Values_PutText(values, "1"); // The value of data3 is 1
     unsigned char val[] = {1, 2};
     ret = OH_Values_PutBlob(values, val, sizeof(val) / sizeof(val[0]));
-    
+        
     Data_Asset *asset = OH_Data_Asset_CreateOne();
     ret = OH_Data_Asset_SetName(asset, "name");
     ret = OH_Values_PutAsset(values, asset);
     OH_Data_Asset_DestroyOne(asset);
-    
+        
     Data_Asset **assets = OH_Data_Asset_CreateMultiple(2); // The number of created Data_Assets is 2
     ret = OH_Data_Asset_SetName(assets[0], "name1");
     ret = OH_Data_Asset_SetName(assets[1], "name2");
     ret = OH_Values_PutAssets(values, assets, 2); // The number of Data_Assets is 2
     ret = OH_Data_Asset_DestroyMultiple(assets, 2); // The number of destroyed Data_Assets is 2
-    
+        
     uint64_t bigInt[] = {1, 2, 3, 4, 5};
     ret = OH_Values_PutUnlimitedInt(values, 0, bigInt, sizeof(bigInt) / sizeof(bigInt[0]));
-    
+        
     const char *insertSql = "INSERT INTO transaction_table "
                             "(data1, data2, data3, data4, data5, data6, data7, data8) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     OH_Data_Value *outValue = nullptr;
-    
+        
     // 通过事务对象执行数据插入SQL语句
     ret = OH_RdbTrans_Execute(trans, insertSql, values, &outValue);
     OH_Value_Destroy(outValue);
     OH_Values_Destroy(values);
-    
+        
     OH_VBucket *transValueBucket = OH_Rdb_CreateValuesBucket();
-    transValueBucket->putInt64(transValueBucket, "data1", 1); // The value of datat1 is 1
-    transValueBucket->putInt64(transValueBucket, "data2", 2); // The value of datat2 is 2
-    transValueBucket->putReal(transValueBucket, "data3", 1.1); // The value of datat3 is 1.1
-    transValueBucket->putText(transValueBucket, "data4", "1"); // The value of datat4 is 1
+    transValueBucket->putInt64(transValueBucket, "data1", 1); // The value of data1 is 1
+    transValueBucket->putInt64(transValueBucket, "data2", 2); // The value of data2 is 2
+    transValueBucket->putReal(transValueBucket, "data3", 1.1); // The value of data3 is 1.1
+    transValueBucket->putText(transValueBucket, "data4", "1"); // The value of data4 is 1
     transValueBucket->putBlob(transValueBucket, "data5", val, sizeof(val) / sizeof(val[0]));
     int64_t insertRowId = -1;
     // 通过事务对象执行OH_VBucket数据插入
     int insertRet = OH_RdbTrans_Insert(trans, "transaction_table", transValueBucket, &insertRowId);
     transValueBucket->destroy(transValueBucket);
-    
+        
     OH_VBucket *transValueBucket2 = OH_Rdb_CreateValuesBucket();
     transValueBucket2->putInt64(transValueBucket2, "id", 1); // The value of id is 1
-    transValueBucket2->putInt64(transValueBucket2, "data2", 2); // The value of datat2 is 2
-    transValueBucket2->putReal(transValueBucket2, "data3", 1.2); // The value of datat3 is 1.2
-    
+    transValueBucket2->putInt64(transValueBucket2, "data2", 2); // The value of data2 is 2
+    transValueBucket2->putReal(transValueBucket2, "data3", 1.2); // The value of data3 is 1.2
+        
     int64_t transInsertRow = -1;
     // 支持插入数据时配置冲突策略
     int result = OH_RdbTrans_InsertWithConflictResolution(
         trans, "transaction_table", transValueBucket2, Rdb_ConflictResolution::RDB_CONFLICT_REPLACE, &transInsertRow);
+        
+    transValueBucket2->destroy(transValueBucket2);
+    ```
     
     transValueBucket2->destroy(transValueBucket2);
     ```
@@ -648,11 +651,8 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     调用attach接口后，数据库切换为非WAL模式，性能会存在一定的劣化。切换模式需要确保所有的OH_Cursor都已经销毁，所有的写操作已经结束，否则会报错14800015。
     
     attach不能并发调用，可能出现未响应情况，报错14800015，需要重试。
-    
-    当不再使用附加数据时，可调用OH_Rdb_Detach分离附加数据库。
-
     <!--@[rdb_OH_Rdb_Attach_and_Detach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)--> 
-
+    
     ``` C++
     char attachStoreTableCreateSql[] = "CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, "
         "NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)";
@@ -667,17 +667,17 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     OH_Rdb_SetStoreName(attachDbConfig, "RdbAttach.db");
     OH_Rdb_SetSecurityLevel(attachDbConfig, OH_Rdb_SecurityLevel::S3);
     OH_Rdb_SetBundleName(attachDbConfig, "com.example.nativedemo");
-
+    
     int errCode1 = 0;
     // 创建附加示例数据库 RdbAttach.db
     OH_Rdb_Store *attachStore = OH_Rdb_CreateOrOpen(attachDbConfig, &errCode1);
-    
+        
     if (attachStore == NULL) {
         OH_LOG_ERROR(LOG_APP, "Create attachStore failed, errCode: %{public}d", errCode1);
         OH_Rdb_DestroyConfig(attachDbConfig);
         return;
     }
-    
+        
     if (errCode1 != OH_Rdb_ErrCode::RDB_OK) {
         OH_LOG_ERROR(LOG_APP, "Create attachStore failed, errCode: %{public}d", errCode1);
         OH_Rdb_DestroyConfig(attachDbConfig);
@@ -694,7 +694,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     OH_VBucket *valueBucket = OH_Rdb_CreateValuesBucket();
     valueBucket->putText(valueBucket, "NAME", "Lisa");
     valueBucket->putInt64(valueBucket, "AGE", 18); // The value of AGE is 18
-    valueBucket->putReal(valueBucket, "SALARY", 100.5); // The value of AGE is 100.5
+    valueBucket->putReal(valueBucket, "SALARY", 100.5); // The value of SALARY is 100.5
     uint8_t arr[] = {1, 2, 3, 4, 5};
     int len = sizeof(arr) / sizeof(arr[0]);
     valueBucket->putBlob(valueBucket, "CODES", arr, len);
@@ -702,7 +702,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     OH_LOG_INFO(LOG_APP, "Insert data result: %{public}d", rowId);
     valueBucket->destroy(valueBucket);
     OH_Rdb_CloseStore(attachStore);
-
+    // ...
     // 附加数据库
     size_t attachedNumber = 0;
     // The maximum waiting time allowed for attaching databases is 10
@@ -742,6 +742,9 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     predicates->destroy(predicates);
     // 分离数据库
     // The maximum waiting time allowed for detaching databases is 10
+    errCode = OH_Rdb_Detach(store_, "attach", 10, &attachedNumber);
+    OH_LOG_INFO(LOG_APP, "Detach result: %{public}d", errCode);
+    ```
     errCode = OH_Rdb_Detach(store_, "attach", 10, &attachedNumber);
     OH_LOG_INFO(LOG_APP, "Detach result: %{public}d", errCode);
     ```
