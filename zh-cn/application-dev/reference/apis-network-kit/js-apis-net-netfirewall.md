@@ -167,7 +167,7 @@ addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 
 | 参数名   | 类型                                              | 必填 | 说明         |
 | -------- | ------------------------------------------------- | ---- | ------------ |
-| rule    |  [NetFirewallRule](#netfirewallrule)               | 是   | 防火墙规则。 |
+| rule    |  [NetFirewallRule](#netfirewallrule15)               | 是   | 防火墙规则。 |
 
 **返回值：**
 
@@ -365,7 +365,7 @@ updateNetFirewallRule(rule: NetFirewallRule): Promise\<void>
 
 | 参数名  | 类型                                   | 必填 | 说明                             |
 | ------- | -------------------------------------- | ---- | -------------------------------- |
-| rule    | [NetFirewallRule](#netfirewallrule)    | 是   | 防火墙规则。                     |
+| rule    | [NetFirewallRule](#netfirewallrule15)    | 是   | 防火墙规则。                     |
 
 **返回值：**
 
@@ -505,7 +505,7 @@ getNetFirewallRule(userId: number, ruleId: number): Promise\<NetFirewallRule>
 
 | 类型                                            | 说明                                     |
 | ----------------------------------------------- | ---------------------------------------- |
-| Promise\<[NetFirewallRule](#netfirewallrule)>   | 以Promise形式返回防火墙规则。            |
+| Promise\<[NetFirewallRule](#netfirewallrule15)>   | 以Promise形式返回防火墙规则。            |
 
 **错误码：**
 
@@ -585,7 +585,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 | page       | number                                      | 否  |否 |当前页码，值范围：[1,1000]。    |
 | pageSize   | number                                      | 否  |否 |页大小，值范围：[1,50]。      |
 | totalPage  | number                                      | 否   |否 |总页数，值范围：[1,1000]。      |
-| data       | Array\<[NetFirewallRule](#netfirewallrule)> | 否   |否 |页面数据。    |
+| data       | Array\<[NetFirewallRule](#netfirewallrule15)> | 否   |否 |页面数据。    |
 
 ## NetFirewallPolicy
 
