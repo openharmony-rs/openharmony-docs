@@ -53,7 +53,7 @@ createMediaKeySystem(name: string): MediaKeySystem
 ```ts
 import { drm } from '@kit.DrmKit';
 // name为DRM解决方案名称，可通过drm.getMediaKeySystems接口获取设备支持的DRM解决方案名称，如"com.clearplay.drm"。
-let name = "com.clearplay.drm";
+let name = 'com.clearplay.drm';
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem(name);
 console.info(`createMediaKeySystem success, name: ${name}`);
 ```
@@ -95,7 +95,7 @@ isMediaKeySystemSupported(name: string): boolean
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let supported: boolean = drm.isMediaKeySystemSupported("com.clearplay.drm");
+let supported: boolean = drm.isMediaKeySystemSupported('com.clearplay.drm');
 console.info("isMediaKeySystemSupported: ", supported);
 ```
 
@@ -137,7 +137,7 @@ isMediaKeySystemSupported(name: string, mimeType: string): boolean
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let supported: boolean = drm.isMediaKeySystemSupported("com.clearplay.drm", "video/avc");
+let supported: boolean = drm.isMediaKeySystemSupported('com.clearplay.drm', 'video/avc');
 console.info("isMediaKeySystemSupported: ", supported);
 ```
 
@@ -157,7 +157,7 @@ isMediaKeySystemSupported(name: string, mimeType: string, level: ContentProtecti
 | -------- | ----------------------------------------------- | ---- |-------------------------------------------------------------------------------------------------------------------------------|
 | name  | string     | 是   | DRM解决方案名称。可通过[drm.getMediaKeySystems](arkts-apis-drm-f.md#drmgetmediakeysystems12)接口获取设备支持的DRM解决方案名称，如"com.clearplay.drm"。          |
 | mimeType  | string     | 是   | 媒体类型，支持的媒体类型取决于DRM解决方案。 |
-| level  | [ContentProtectionLevel](arkts-apis-drm-e.md#contentprotectionlevel)     | 是   | 内容保护级别。                                                                                                                       |
+| level  | [ContentProtectionLevel](arkts-apis-drm-e.md#contentprotectionlevel)     | 是   | 内容保护级别，用于指定DRM内容的安全保护程度，不同级别对应不同的解密能力和安全要求。                                                                                                                       |
 
 **返回值：**
 
@@ -180,13 +180,13 @@ isMediaKeySystemSupported(name: string, mimeType: string, level: ContentProtecti
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let supported: boolean = drm.isMediaKeySystemSupported("com.clearplay.drm", "video/avc", drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
+let supported: boolean = drm.isMediaKeySystemSupported('com.clearplay.drm', 'video/avc', drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
 console.info("isMediaKeySystemSupported: ", supported);
 ```
 
 ## drm.getMediaKeySystemUuid<sup>12+</sup>
 
-getMediaKeySystemUuid(name: string): string;
+getMediaKeySystemUuid(name: string): string
 
 获取DRM解决方案支持的DRM内容保护系统唯一标识。
 
@@ -212,7 +212,7 @@ getMediaKeySystemUuid(name: string): string;
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 401                |  The parameter check failed.Possibly because: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.                |
+| 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.                |
 | 24700101                |  All unknown errors                  |
 | 24700201                |  Fatal service error, for example, service died                  |
 
@@ -221,7 +221,7 @@ getMediaKeySystemUuid(name: string): string;
 ```ts
 import { drm } from '@kit.DrmKit';
 
-let uuid: string = drm.getMediaKeySystemUuid("com.clearplay.drm");
+let uuid: string = drm.getMediaKeySystemUuid('com.clearplay.drm');
 console.info("getMediaKeySystemUuid: ", uuid);
 ```
 
