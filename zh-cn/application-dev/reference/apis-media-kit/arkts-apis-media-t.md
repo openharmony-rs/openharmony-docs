@@ -300,6 +300,8 @@ type SourceReadCallback = (uuid: number, requestedOffset: number, requestedLengt
 **示例：**
 
 ```ts
+import { media } from '@kit.MediaKit';
+
 let sourceReadCallback: media.SourceReadCallback = (uuid: number, requestedOffset: number, requestedLength: number) => {
   console.info(`Reading resource with handle ${uuid}, offset: ${requestedOffset}, length: ${requestedLength}`);
   // 判断uuid是否合法、存储read请求，不要在read请求阻塞去推送数据和头信息。
