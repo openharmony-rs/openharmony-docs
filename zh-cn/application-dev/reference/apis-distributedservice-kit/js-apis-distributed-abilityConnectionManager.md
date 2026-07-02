@@ -318,18 +318,18 @@ connect(sessionId:&nbsp;number):&nbsp;Promise&lt;ConnectResult&gt;
 设备A上创建协同会话成功并获得会话ID后，调用connect()方法启动UIAbility连接，并拉起设备B应用。
 
   ```ts
-import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-let sessionId = 100;
-abilityConnectionManager.connect(sessionId).then((ConnectResult) => {
-  if (!ConnectResult.isConnected) {
-    hilog.info(0x0000, 'testTag', 'connect failed');
-    return;
-  }
-}).catch(() => {
-  hilog.error(0x0000, 'testTag', "connect failed");
-})
+   import { abilityConnectionManager } from '@kit.DistributedServiceKit';	 
+   import { hilog } from '@kit.PerformanceAnalysisKit';	 
+ 
+   let sessionId = 100;	 
+   abilityConnectionManager.connect(sessionId).then((ConnectResult) => {	 
+     if (!ConnectResult.isConnected) {	 
+       hilog.info(0x0000, 'testTag', 'connect failed');	 
+       return;	 
+     }	 
+   }).catch(() => {	 
+     hilog.error(0x0000, 'testTag', "connect failed");	 
+   })
   ```
 
 ## abilityConnectionManager.acceptConnect
@@ -860,15 +860,16 @@ sendMessage(sessionId:&nbsp;number,&nbsp;msg:&nbsp;string):&nbsp;Promise&lt;void
 **示例：**
 
   ```ts
-import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-let sessionId = 100;
-abilityConnectionManager.sendMessage(sessionId, "message send success").then(() => {
-  hilog.info(0x0000, 'testTag', "sendMessage success");
-}).catch(() => {
-  hilog.error(0x0000, 'testTag', "connect failed");
-})
+   import { abilityConnectionManager } from '@kit.DistributedServiceKit';	 
+   import { hilog } from '@kit.PerformanceAnalysisKit';	 
+ 
+ 
+   let sessionId = 100;	 
+   abilityConnectionManager.sendMessage(sessionId, "message send success").then(() => {	 
+     hilog.info(0x0000, 'testTag', "sendMessage success");	 
+   }).catch(() => {	 
+     hilog.error(0x0000, 'testTag', "connect failed");	 
+   })
   ```
 
 ## abilityConnectionManager.sendData
@@ -907,19 +908,21 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
 **示例：**
 
   ```ts
-import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { util } from '@kit.ArkTS';
-
-let textEncoder = util.TextEncoder.create("utf-8");
-const arrayBuffer  = textEncoder.encodeInto("data send success");
-
-let sessionId = 100;
-abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
-  hilog.info(0x0000, 'testTag', "sendMessage success");
-}).catch(() => {
-  hilog.error(0x0000, 'testTag', "sendMessage failed");
-})
+   import { abilityConnectionManager } from '@kit.DistributedServiceKit';	 
+   import { hilog } from '@kit.PerformanceAnalysisKit';	 
+   import { util } from '@kit.ArkTS';	 
+ 
+ 
+   let textEncoder = util.TextEncoder.create("utf-8");	 
+   const arrayBuffer  = textEncoder.encodeInto("data send success");	 
+ 
+ 
+   let sessionId = 100;	 
+   abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {	 
+     hilog.info(0x0000, 'testTag', "sendMessage success");	 
+   }).catch(() => {	 
+     hilog.error(0x0000, 'testTag', "sendMessage failed");	 
+   })
   ```
 
 ## PeerInfo
