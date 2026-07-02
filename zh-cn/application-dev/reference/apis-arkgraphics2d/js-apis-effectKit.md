@@ -7,7 +7,9 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
-图像效果模块提供了处理图像的基础能力，包括亮度调节、模糊化、灰度调节和智能取色等，适用于图片编辑应用中添加滤镜效果、应用启动页背景图模糊处理、UI主题色自动提取、图片配色分析等场景。effectKit（图像效果模块）用于离线处理pixelmap以获得视觉效果，而uiEffect（UI效果服务）则实时接入渲染服务，针对屏幕帧缓存进行处理以获得动态视觉效果。Filter采用链式处理设计，每个效果方法将效果标识添加到效果链表中，最终通过getEffectPixelMap方法统一执行链表中的所有效果，处理顺序为链表添加顺序。使用该模块可以快速实现图像效果处理，无需开发者掌握复杂的图像处理算法。
+图像效果模块提供了处理图像的基础能力，包括亮度调节、模糊化、灰度调节和智能取色等，适用于图片编辑应用中添加滤镜效果、应用启动页背景图模糊处理、UI主题色自动提取、图片配色分析等场景。
+
+本模块用于离线处理[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)以获得视觉效果，而uiEffect（UI效果服务）则实时接入渲染服务，针对屏幕帧缓存进行处理以获得动态视觉效果。
 
 该模块提供以下图像效果相关的常用功能：
 
@@ -28,7 +30,7 @@ import { effectKit } from '@kit.ArkGraphics2D';
 ## effectKit.createEffect
 createEffect(source: image.PixelMap): Filter
 
-通过传入的PixelMap创建Filter实例。该方法基于PixelMap创建一个空的滤镜链表头节点，后续可通过链式调用添加各种图像效果，最终通过getEffectPixelMap获取处理后的图像。常用于需要对图片进行离线效果处理的场景，如图片编辑应用中添加滤镜效果、应用启动页背景图模糊处理或图片预览时的亮度调节等。
+通过传入的PixelMap创建Filter实例。后续可通过链式调用添加各种图像效果，最终通过[getEffectPixelMap](#geteffectpixelmap11)获取处理后的图像。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -94,7 +96,7 @@ createColorPicker(source: image.PixelMap): Promise\<ColorPicker>
 
 | 类型                   | 说明           |
 | ---------------------- | -------------- |
-| Promise\<[ColorPicker](#colorpicker)>  | Promise对象。成功时返回创建的ColorPicker实例，失败时通过reject返回错误信息。 |
+| Promise\<[ColorPicker](#colorpicker)>  | Promise对象。返回创建的ColorPicker实例。 |
 
 **错误码：**
 
@@ -151,13 +153,13 @@ createColorPicker(source: image.PixelMap, region: Array\<number>): Promise\<Colo
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | ----------- | ---- | -------------------------- |
 | source   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   |  image模块创建的PixelMap实例。可通过图片解码或直接创建获得，具体可见[Image Kit简介](../../media/image/image-overview.md)。 |
-| region   | Array\<number> | 是   |  指定图片的取色区域。<br>数组元素个数为4，取值范围为[0, 1]，分别表示图片区域的左、上、右、下位置，图片最左侧和最上侧对应位置0，最右侧和最下侧对应位置1。数组第三个元素需大于第一个元素，第四个元素需大于第二个元素。设置不同的区域值将提取该区域内的主要颜色（即该区域内最具代表性的颜色），区域越大提取的颜色范围越广，区域越小提取的颜色越精确。超出范围或违反限制时返回错误码401。|
+| region   | Array\<number> | 是   |  指定图片的取色区域。<br>数组元素个数为4，取值范围为[0, 1]，超出边界会在实现时自动截断。分别表示图片区域的左、上、右、下位置，图片最左侧和最上侧对应位置0，最右侧和最下侧对应位置1。数组第三个元素需大于第一个元素，第四个元素需大于第二个元素，违反限制时返回null。|
 
 **返回值：**
 
 | 类型                   | 说明           |
-| :---------------------- | :---------------------------------------------- |
-| Promise\<[ColorPicker](#colorpicker)>  | Promise对象。成功时返回创建的ColorPicker实例，失败时通过reject返回错误信息。 |
+| ---------------------- | -------------- |
+| Promise\<[ColorPicker](#colorpicker)>  | Promise对象。返回创建的ColorPicker实例。 |
 
 **错误码：**
 
@@ -214,7 +216,7 @@ createColorPicker(source: image.PixelMap, callback: AsyncCallback\<ColorPicker>)
 | 参数名     | 类型                | 必填 | 说明                       |
 | -------- | ------------------ | ---- | -------------------------- |
 | source   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是  |image模块创建的PixelMap实例。可通过图片解码或直接创建获得，具体可见[Image Kit简介](../../media/image/image-overview.md)。  |
-| callback | AsyncCallback\<[ColorPicker](#colorpicker)> | 是  | 回调函数，用于接收创建ColorPicker实例的结果。回调签名：(error: BusinessError, colorPicker: ColorPicker) => void，其中error为错误对象，成功时为null；colorPicker为创建的ColorPicker实例。 |
+| callback | AsyncCallback\<[ColorPicker](#colorpicker)> | 是  | 回调函数。返回创建的ColorPicker实例。 |
 
 **错误码：**
 
@@ -271,8 +273,8 @@ createColorPicker(source: image.PixelMap, region:Array\<number>, callback: Async
 | 参数名     | 类型                | 必填 | 说明                       |
 | -------- | ------------------ | ---- | -------------------------- |
 | source   | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是  |image模块创建的PixelMap实例。可通过图片解码或直接创建获得，具体可见[Image Kit简介](../../media/image/image-overview.md)。  |
-| region   | Array\<number> | 是   |  指定图片的取色区域。<br>数组元素个数为4，取值范围为[0, 1]，分别表示图片区域的左、上、右、下位置，图片最左侧和最上侧对应位置0，最右侧和最下侧对应位置1。数组第三个元素需大于第一个元素，第四个元素需大于第二个元素。设置不同的区域值将提取该区域内的主要颜色（即该区域内最具代表性的颜色），区域越大提取的颜色范围越广，区域越小提取的颜色越精确。超出范围或违反限制时返回错误码401。|
-| callback | AsyncCallback\<[ColorPicker](#colorpicker)> | 是  | 回调函数，用于接收创建ColorPicker实例的结果。回调签名：(error: BusinessError, colorPicker: ColorPicker) => void，其中error为错误对象，成功时为null；colorPicker为创建的ColorPicker实例。 |
+| region   | Array\<number> | 是   |  指定图片的取色区域。<br>数组元素个数为4，取值范围为[0, 1]，超出边界会在实现时自动截断。分别表示图片区域的左、上、右、下位置，图片最左侧和最上侧对应位置0，最右侧和最下侧对应位置1。数组第三个元素需大于第一个元素，第四个元素需大于第二个元素，违反限制时返回null。|
+| callback | AsyncCallback\<[ColorPicker](#colorpicker)> | 是  | 回调函数。返回创建的ColorPicker实例。 |
 
 **错误码：**
 
@@ -324,10 +326,10 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 
 | 名称   | 类型   | 只读 | 可选 | 说明              |
 | ------ | ----- | ---- | ---- | ---------------- |
-| red   | number | 否   | 否   | 红色分量值 |
-| green | number | 否   | 否   | 绿色分量值 |
-| blue  | number | 否   | 否   | 蓝色分量值 |
-| alpha | number | 否   | 否   | 透明通道分量值 |
+| red   | number | 否   | 否   | 红色分量值，取值范围为[0x0, 0xFF]。           |
+| green | number | 否   | 否   | 绿色分量值，取值范围为[0x0, 0xFF]。           |
+| blue  | number | 否   | 否   | 蓝色分量值，取值范围为[0x0, 0xFF]。           |
+| alpha | number | 否   | 否   | 透明通道分量值，取值范围为[0x0, 0xFF]。       |
 
 ## TileMode<sup>14+</sup>
 
@@ -345,6 +347,7 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 > **说明：**
 >
 > CPU渲染下，着色器平铺模式仅支持DECAL。
+>
 > GPU渲染下，DECAL、CLAMP、REPEAT、MIRROR模式均支持。
 
 ## ColorPicker
@@ -367,7 +370,7 @@ getMainColor(): Promise\<Color>
 
 | 类型           | 说明                                            |
 | :------------- | :---------------------------------------------- |
-| Promise\<[Color](#color)> | Promise对象。成功时返回图像主色对应的颜色值，失败时通过reject返回错误信息。 |
+| Promise\<[Color](#color)> | Promise对象。返回图像主色对应的颜色值，失败时返回错误信息。 |
 
 **示例：**
 
@@ -690,7 +693,7 @@ isBlackOrWhiteOrGrayColor(color: number): boolean
 
 | 参数名     | 类型         | 必填 | 说明                       |
 | -------- | ----------- | ---- | -------------------------- |
-| color | number | 是   | 需要判断是否黑白灰色的颜色值，格式为0xAARRGGBB，取值范围[0x0, 0xFFFFFFFF]。 |
+| color | number | 是   | 需要判断是否黑白灰色的颜色值，格式为0xAARRGGBB，取值范围为[0x0, 0xFFFFFFFF]。 |
 
 **返回值：**
 
@@ -739,7 +742,7 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 
 blur(radius: number): Filter
 
-将模糊效果添加到效果链表中，返回链表的头节点。该方法使用高斯模糊算法，radius参数决定模糊半径，值越大模糊效果越明显。常用于实现背景虚化效果、隐私信息遮挡、毛玻璃背景效果、弹窗背景模糊等场景。
+将模糊效果添加到效果链表中，返回链表的实例。着色器平铺模式使用DECAL，如需指定平铺模式，可使用[blur<sup>14+</sup>](#blur14)接口。常用于实现背景虚化效果、隐私信息遮挡、毛玻璃背景效果、弹窗背景模糊等场景。
 
 >  **说明：**
 >
@@ -755,13 +758,13 @@ blur(radius: number): Filter
 
 | 参数名 | 类型        | 必填 | 说明                                                         |
 | ------ | ----------- | ---- | ------------------------------------------------------------ |
-|  radius   | number | 是   | 模糊半径，单位为px，取值范围[0, +∞)。模糊半径值越大，模糊效果越明显。传入负数时无效果。 |
+|  radius   | number | 是   | 模糊半径，单位为px，取值范围为[0, +∞)。模糊半径值越大，模糊效果越明显。传入负数时无效果。 |
 
 **返回值：**
 
 | 类型           | 说明                                            |
 | :------------- | :---------------------------------------------- |
-| [Filter](#filter) | 返回已添加效果的Filter链表头节点，用于继续添加效果或获取处理后的图像。 |
+| [Filter](#filter) | 返回已添加效果的Filter实例，用于继续添加效果或获取处理后的图像。 |
 
 **示例：**
 
@@ -834,7 +837,7 @@ struct Index {
 
 blur(radius: number, tileMode: TileMode): Filter
 
-将模糊效果添加到效果链表中，返回链表的头节点。该方法使用高斯模糊算法，radius参数决定模糊半径，值越大模糊效果越明显。常用于实现背景虚化效果、隐私信息遮挡、毛玻璃背景效果、弹窗背景模糊等场景。
+将模糊效果添加到效果链表中，返回链表的实例。支持选择着色器效果平铺模式，常用于实现背景虚化效果、隐私信息遮挡、毛玻璃背景效果、弹窗背景模糊等场景。
 
 >  **说明：**
 >
@@ -846,14 +849,14 @@ blur(radius: number, tileMode: TileMode): Filter
 
 | 参数名 | 类型        | 必填 | 说明                                                         |
 | ------ | ----------- | ---- | ------------------------------------------------------------ |
-|  radius   | number | 是   | 模糊半径，单位为px，取值范围[0, +∞)。模糊半径值越大，模糊效果越明显。传入负数时无效果。 |
-|  tileMode   | [TileMode](#tilemode14) | 是   | 着色器效果平铺模式。影响图像边缘的模糊效果。不同渲染模式对TileMode的支持范围不同，CPU渲染仅支持DECAL模式，GPU渲染支持所有模式，详见[TileMode<sup>14+</sup>](#tilemode14)。 |
+|  radius   | number | 是   | 模糊半径，单位为px，取值范围为[0, +∞)。模糊半径值越大，模糊效果越明显。传入负数时无效果。 |
+|  tileMode   | [TileMode](#tilemode14) | 是   | 着色器效果平铺模式。影响图像边缘的模糊效果。 |
 
 **返回值：**
 
 | 类型           | 说明                                            |
 | :------------- | :---------------------------------------------- |
-| [Filter](#filter) | 返回已添加效果的Filter链表头节点，用于继续添加效果或获取处理后的图像。 |
+| [Filter](#filter) | 返回已添加效果的Filter实例，用于继续添加效果或获取处理后的图像。 |
 
 **示例：**
 
@@ -926,7 +929,7 @@ struct Index {
 
 invert(): Filter
 
-将反转效果添加到效果链表中，返回链表的头节点。该方法将图像的RGB颜色值进行反转，常用于实现底片效果、图片艺术处理、夜间模式适配等场景。
+将反转效果添加到效果链表中，返回链表的实例。该方法将图像的RGB颜色值进行反转，常用于实现底片效果、图片艺术处理、夜间模式适配等场景。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -934,7 +937,7 @@ invert(): Filter
 
 | 类型           | 说明                                            |
 | :------------- | :---------------------------------------------- |
-| [Filter](#filter) | 返回已添加效果的Filter链表头节点，用于继续添加效果或获取处理后的图像。 |
+| [Filter](#filter) | 返回已添加效果的Filter实例，用于继续添加效果或获取处理后的图像。 |
 
 **示例：**
 
@@ -1005,11 +1008,7 @@ struct Index {
 
 setColorMatrix(colorMatrix: Array\<number>): Filter
 
-通过自定义颜色矩阵对图像进行颜色变换处理，将效果添加到效果链表中，返回链表的头节点。常用于实现预设滤镜不支持的自定义颜色效果，如复古色调、冷暖色调调整、图片艺术风格化等场景。
-
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+通过自定义颜色矩阵对图像进行颜色变换处理，将效果添加到效果链表中，返回链表的实例。常用于实现预设滤镜不支持的自定义颜色效果，如复古色调、冷暖色调调整等场景。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -1017,13 +1016,13 @@ setColorMatrix(colorMatrix: Array\<number>): Filter
 
 | 参数名 | 类型        | 必填 | 说明                                                         |
 | ------ | ----------- | ---- | ------------------------------------------------------------ |
-|  colorMatrix  |   Array\<number> | 是   | 自定义颜色矩阵。 <br>用于创建效果滤镜的 4x5 大小的矩阵，数组长度必须为20，前4列对应R、G、B、A通道的变换系数，第5列为常量偏移值。建议元素取值为[-1, 1]，超出此范围可能导致颜色值溢出或产生非预期效果。数组长度不为20时返回null。 |
+|  colorMatrix  |   Array\<number> | 是   | 自定义颜色矩阵。 <br>用于创建效果滤镜的4x5大小的矩阵，数组长度必须为20，前4列对应R、G、B、A通道的变换系数，第5列为常量偏移值。建议元素取值为[-1, 1]，超出此范围可能导致颜色值溢出或产生非预期效果。数组长度不为20时返回null。 |
 
 **返回值：**
 
 | 类型           | 说明                                            |
 | :------------- | :---------------------------------------------- |
-| [Filter](#filter) | 返回已添加效果的Filter链表头节点，用于继续添加效果或获取处理后的图像。 |
+| [Filter](#filter) | 返回已添加效果的Filter实例，用于继续添加效果或获取处理后的图像。 |
 
 **错误码：**
 
@@ -1109,7 +1108,7 @@ struct Index {
 
 brightness(bright: number): Filter
 
-将高亮效果添加到效果链表中，返回链表的头节点。该方法通过调整图像亮度实现高亮效果，bright参数表示高亮程度，取值为0时图像保持不变，取值为1时图像亮度提升到最大值（每个像素的RGB分量趋近255），取值越大图像越亮。常用于暗图增亮处理、图片预览亮度增强、夜间模式图片适配等场景。
+将高亮效果添加到效果链表中，返回链表的实例。该方法通过调整图像亮度实现高亮效果，常用于暗图增亮处理、图片预览亮度增强、夜间模式图片适配等场景。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -1127,7 +1126,7 @@ brightness(bright: number): Filter
 
 | 类型           | 说明                                            |
 | :------------- | :---------------------------------------------- |
-| [Filter](#filter) | 返回已添加效果的Filter链表头节点，用于继续添加效果或获取处理后的图像。 |
+| [Filter](#filter) | 返回已添加效果的Filter实例，用于继续添加效果或获取处理后的图像。 |
 
 **示例：**
 
@@ -1200,7 +1199,7 @@ struct Index {
 
 grayscale(): Filter
 
-将灰度效果添加到效果链表中，返回链表的头节点。该方法将彩色图像转换为灰度图像，通过加权计算RGB值得到灰度值。常用于黑白风格照片生成、图片预处理去色、灰度图标制作等场景。
+将灰度效果添加到效果链表中，返回链表的实例。该方法将彩色图像转换为灰度图像，通过加权计算RGB值得到灰度值。常用于黑白风格照片生成、图片预处理去色、灰度图标制作等场景。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -1212,7 +1211,7 @@ grayscale(): Filter
 
 | 类型           | 说明                                            |
 | :------------- | :---------------------------------------------- |
-| [Filter](#filter) | 返回已添加效果的Filter链表头节点，用于继续添加效果或获取处理后的图像。 |
+| [Filter](#filter) | 返回已添加效果的Filter实例，用于继续添加效果或获取处理后的图像。 |
 
 **示例：**
 
@@ -1299,7 +1298,7 @@ getEffectPixelMap(): Promise\<image.PixelMap>
 
 | 类型                   | 说明           |
 | ---------------------- | -------------- |
-| Promise\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>  | Promise对象。成功时返回已添加链表效果的源图像的image.PixelMap，失败时通过reject返回错误信息。 |
+| Promise\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>  | Promise对象。返回创建的ColorPicker实例。 |
 
 
 **示例：**
@@ -1336,7 +1335,7 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 
 getEffectPixelMap(useCpuRender : boolean): Promise\<image.PixelMap>
 
-获取已添加链表效果的源图像的image.PixelMap，支持指定渲染模式（CPU渲染或者GPU渲染），使用Promise异步回调。常用于需要根据设备性能选择渲染方式的场景，GPU渲染适用于多张图片并发处理的场景，CPU渲染适用于对设备兼容性要求较高的场景。
+获取已添加链表效果的源图像的image.PixelMap，支持指定渲染模式（CPU渲染或者GPU渲染），使用Promise异步回调。
 
 **卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
 
@@ -1348,13 +1347,13 @@ getEffectPixelMap(useCpuRender : boolean): Promise\<image.PixelMap>
 
 | 参数名 | 类型        | 必填 | 说明                                                         |
 | ------ | ----------- | ---- | ------------------------------------------------------------ |
-|  useCpuRender   | boolean | 是   | 指定渲染模式。true表示使用CPU渲染（适合需要更高兼容性和稳定性的场景），false表示使用GPU渲染（适合大量图片并发处理等性能要求高的场景）。使用GPU渲染时，着色器效果平铺模式[TileMode](#tilemode14)的支持范围与CPU渲染不同，详见TileMode说明。 |
+|  useCpuRender   | boolean | 是   | 指定渲染模式。true表示使用CPU渲染，false表示使用GPU渲染。使用GPU渲染时，着色器效果平铺模式[TileMode](#tilemode14)的支持范围与CPU渲染不同，详见TileMode说明。 |
 
 **返回值：**
 
 | 类型                   | 说明           |
 | ---------------------- | -------------- |
-| Promise\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>  | Promise对象。成功时返回已添加链表效果的源图像的image.PixelMap，失败时通过reject返回错误信息。 |
+| Promise\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>  | Promise对象。返回已添加链表效果的源图像的image.PixelMap。 |
 
 
 **示例：**

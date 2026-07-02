@@ -7,12 +7,10 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
-本模块提供组件效果的基础能力，包括模糊、提亮等。效果被分为Filter和VisualEffect大类，同类效果可以级联在一个效果大类的实例下。在实际开发中，模糊可用于背景虚化等场景，提亮可用于亮屏显示等场景。使用本模块可以提升应用的视觉效果，增强用户体验。
+本模块提供组件效果的一些基础能力，包括模糊、提亮等。效果被分为Filter和VisualEffect大类，同类效果可以级联在一个效果大类的实例下。使用该模块可以快速实现复杂的视觉效果，无需开发者掌握底层的图像处理算法，降低了开发复杂度，提升了用户体验。在实际开发中，模糊可用于背景虚化，提亮可用于亮屏显示等。
 
-- [Filter](#filter)：用于添加指定Filter效果到组件上，支持模糊、HDR提亮等视觉效果。
+- [Filter](#filter)：用于添加指定Filter效果到组件上。
 - [VisualEffect](#visualeffect)：用于添加指定VisualEffect效果到组件上。
-
-**Filter与VisualEffect的选择：** 两者分别属于不同的效果大类，支持的视觉效果类型不同，根据实际需求的效果类型选择对应的效果类。
 
 > **说明：**
 >
@@ -29,7 +27,7 @@ import { uiEffect } from '@kit.ArkGraphics2D';
 ## uiEffect.createFilter
 createFilter(): Filter
 
-创建Filter实例用于给组件添加多种filter效果。
+创建Filter实例用于给组件添加多种Filter效果。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -37,7 +35,7 @@ createFilter(): Filter
 
 | 类型              | 说明                 |
 | ------------------| ------------------- |
-| [Filter](#filter) | 返回Filter实例，支持添加多种filter效果。 |
+| [Filter](#filter) | 返回Filter实例，支持添加多种Filter效果。 |
 
 **示例：**
 
@@ -49,7 +47,7 @@ let filter : uiEffect.Filter = uiEffect.createFilter();
 ## uiEffect.createEffect
 createEffect(): VisualEffect
 
-创建VisualEffect实例用于给组件添加多种effect效果。
+创建VisualEffect实例用于给组件添加多种VisualEffect效果。
 
 **卡片能力：** 从API version 24开始，该接口支持在ArkTS卡片中使用。
 
@@ -59,7 +57,7 @@ createEffect(): VisualEffect
 
 | 类型                          | 说明                       |
 | ----------------------------- | ------------------------- |
-| [VisualEffect](#visualeffect) | 返回VisualEffect实例，支持添加多种effect效果。 |
+| [VisualEffect](#visualeffect) | 返回VisualEffect实例，支持添加多种VisualEffect效果。 |
 
 **示例：**
 

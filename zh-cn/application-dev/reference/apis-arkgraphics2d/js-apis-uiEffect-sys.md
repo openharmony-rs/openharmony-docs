@@ -7,10 +7,12 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
-本模块提供组件效果的一些基础能力，包括模糊、边缘像素扩展、提亮等。效果被分为Filter（效果过滤器）和VisualEffect（视觉效果）大类，同类效果可以级联在一个效果大类的实例下。使用该模块可以快速实现复杂的视觉效果，无需开发者掌握底层的图像处理算法，降低了开发复杂度，提升了用户体验。在实际开发中，模糊可用于背景虚化，提亮可用于亮屏显示等。
+本模块提供组件效果的一些基础能力，包括模糊、提亮等。效果被分为Filter和VisualEffect大类，同类效果可以级联在一个效果大类的实例下。使用该模块可以快速实现复杂的视觉效果，无需开发者掌握底层的图像处理算法，降低了开发复杂度，提升了用户体验。在实际开发中，模糊可用于背景虚化，提亮可用于亮屏显示等。
 
 - [Filter](#filter)：用于添加指定Filter效果到组件上。
 - [VisualEffect](#visualeffect)：用于添加指定VisualEffect效果到组件上。
+
+**Filter与VisualEffect的选择：** 两者分别属于不同的效果大类，支持的视觉效果类型不同，根据实际需求的效果类型选择对应的效果类。
 
 > **说明：**
 >
@@ -24,17 +26,12 @@
 import { uiEffect } from "@kit.ArkGraphics2D";
 ```
 
-## 错误码
-本模块所有系统接口可能返回的错误码如下，详细介绍请参见[通用错误码](../errorcode-universal.md)。
-| 错误码ID | 错误信息 |
-| ------- | -------------------------------- |
-| 202 | Permission verification failed. A non-system application calls a system API. |
-错误码202适用于本模块大部分系统接口。
-
 ## uiEffect.createBrightnessBlender
 createBrightnessBlender(param: BrightnessBlenderParam): BrightnessBlender
 
 创建BrightnessBlender实例用于给组件添加提亮效果。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -137,7 +134,7 @@ createHdrDarkenBlender(hdrBrightnessRatio: number, grayscaleFactor?: [number, nu
 
 | 参数名               | 类型                        | 必填  | 说明                                                              |
 | ------------------- | -------------------------- | ----  | ---------------------------------------------------------------- |
-| hdrBrightnessRatio           | number                    | 是   | HDR的提亮倍数。<br>取值范围[1.0, 设备当前支持最大提亮倍数]。<br>设置小于1.0的值时，按值为1.0处理；<br>当值等于1.0时，为组件原本亮度；<br>设置大于设备当前支持最大提亮倍数的值时，按值为设备当前支持最大提亮倍数处理，支持最大提亮倍数 = 设备最大亮度 / 设备默认亮度。<br>设备最大亮度通过hdc命令获取：hdc shell param get const.display.brightness.max <br>设备默认亮度通过hdc命令获取：hdc shell param get const.display.brightness.default                       |
+| hdrBrightnessRatio           | number                    | 是   | HDR的提亮倍数。<br>取值范围为[1.0, 设备当前支持最大提亮倍数]。<br>设置小于1.0的值时，按值为1.0处理；<br>当值等于1.0时，为组件原本亮度；<br>设置大于设备当前支持最大提亮倍数的值时，按值为设备当前支持最大提亮倍数处理，支持最大提亮倍数 = 设备最大亮度 / 设备默认亮度。<br>设备最大亮度通过hdc命令获取：hdc shell param get const.display.brightness.max <br>设备默认亮度通过hdc命令获取：hdc shell param get const.display.brightness.default                       |
 | grayscaleFactor       | [number, number, number]                      | 否   | 将RGB颜色转换为灰度值。灰度转换公式的权重可随当前色域自动调整，不同色域下使用不同的权重计算方式；适用于sRGB等标准色域场景。当需要根据特定色域或视觉效果自定义灰度转换权重时传入此参数。三个分量均无边界限制。默认值为标准灰度权重[0.299, 0.587, 0.114]。 |
 
 **返回值：**
@@ -145,6 +142,14 @@ createHdrDarkenBlender(hdrBrightnessRatio: number, grayscaleFactor?: [number, nu
 | 类型                                   | 说明                       |
 | ---------------------------------------- | ------------------------- |
 | [HdrDarkenBlender](#hdrdarkenblender) | 返回HDR压暗混合器，用于将压暗效果添加到指定的组件上。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 401  | CreateHdrDarkenBlender failed, parameter is null or undefined. |
 
 **示例：**
 ```ts
@@ -175,17 +180,10 @@ struct Example {
 
 Filter效果类，用于将模糊、边缘像素扩展、水波纹等效果添加到组件上。在调用Filter的方法前，需要先通过[createFilter](js-apis-uiEffect.md#uieffectcreatefilter)创建一个Filter实例。
 
-**效果叠加说明：**
-
-- Filter支持链式调用，可在一个Filter实例上连续调用多个效果方法
-- 效果叠加顺序：按调用顺序依次应用，后调用的效果叠加在前效果之上
-- 组合使用示例：`uiEffect.createFilter().pixelStretch([0.2, 0.2, 0.2, 0.2], uiEffect.TileMode.CLAMP).waterRipple(0.5, 2, 0.5, 0.5, uiEffect.WaterRippleMode.SMALL2SMALL)`
-- 注意：多个效果叠加可能影响性能，建议评估叠加效果对性能的影响后选择合适的效果组合，避免同时叠加过多效果
-
 ### pixelStretch
 pixelStretch(stretchSizes: Array\<number\>, tileMode: TileMode): Filter
 
-为组件内容添加边缘像素扩展效果。
+将边缘像素扩展效果添加至组件上。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -239,7 +237,7 @@ waterRipple(progress: number, waveCount: number, x: number, y: number, rippleMod
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -277,7 +275,7 @@ flyInFlyOutEffect(degree: number, flyMode: FlyMode): Filter
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
@@ -387,7 +385,7 @@ struct RadiusGradientBlurExample {
 ### bezierWarp<sup>20+</sup>
 bezierWarp(controlPoints: Array<common2D.Point>): Filter
 
-将贝塞尔曲线变形的效果添加至组件上。该效果通过在图层边界上创建封闭的贝塞尔曲线，实现对图像的精准扭曲和形状调整。贝塞尔曲线共有四段，首尾顺次相连，每段包含一个顶点和两个切点。典型应用场景包括创意海报设计、人脸形变特效、卡片透视变形、广告创意效果等。
+将贝塞尔曲线变形的效果添加至组件上。该效果通过在图层边界上创建封闭的贝塞尔曲线，实现对图像的精准扭曲和形状调整。贝塞尔曲线共有四段，首尾顺次相连，每段包含一个顶点和两个切点。典型应用场景包括人脸形变特效、卡片透视变形等。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -396,7 +394,7 @@ bezierWarp(controlPoints: Array<common2D.Point>): Filter
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| controlPoints  | Array<[common2D.Point](js-apis-graphics-common2D.md#point12)>| 是   | 12个贝塞尔形变控制点，数组长度必须为12，更改控制点的位置可改变形成边缘的曲线形状，从而扭曲图像。控制点坐标使用归一化坐标系（默认范围[0, 1]），且坐标值可大于1或小于0。数组长度不为12时效果不生效。|
+| controlPoints  | Array<[common2D.Point](js-apis-graphics-common2D.md#point12)>| 是   | 12个贝塞尔形变控制点，数组长度必须为12，更改控制点的位置可改变形成边缘的曲线形状，从而扭曲图像。控制点坐标使用归一化坐标系（默认范围为[0, 1]），且坐标值可大于1或小于0。数组长度不为12时效果不生效。|
 
 **返回值：**
 
@@ -448,9 +446,9 @@ colorGradient(colors: Array\<Color>, positions: Array\<common2D.Point>, strength
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| colors  | Array\<[Color](#color20)>         | 是   | 颜色数组，多个颜色的渐变。数组长度取值范围[0, 12]，每个颜色值取值范围需大于等于0，无上限限制。数组长度等于0或大于12时无效果，colors、positions和strengths的数组长度不相等时无效果。|
-| positions  | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)>         | 是   | 位置数组，颜色对应的分布位置。数组长度取值范围[0, 12]。数组长度等于0或大于12时无效果，colors、positions和strengths的数组长度不相等时无效果。|
-| strengths  | Array\<number>         | 是   | 强度数组，颜色对应的扩散强度。数组长度取值范围[0, 12]，每一个强度值需大于等于0，无上限限制。数组长度等于0或大于12时无效果，colors、positions和strengths的数组长度不相等时无效果。|
+| colors  | Array\<[Color](#color20)>         | 是   | 颜色数组，多个颜色的渐变。数组长度取值范围为[0, 12]，每个颜色值取值范围需大于等于0，无上限限制。数组长度等于0或大于12时无效果，colors、positions和strengths的数组长度不相等时无效果。|
+| positions  | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)>         | 是   | 位置数组，颜色对应的分布位置。数组长度取值范围为[0, 12]。数组长度等于0或大于12时无效果，colors、positions和strengths的数组长度不相等时无效果。|
+| strengths  | Array\<number>         | 是   | 强度数组，颜色对应的扩散强度。数组长度取值范围为[0, 12]，每一个强度值需大于等于0，无上限限制。数组长度等于0或大于12时无效果，colors、positions和strengths的数组长度不相等时无效果。|
 | alphaMask  | [Mask](#mask20)         | 否   | 控制渐变效果透明度分布的遮罩。可通过Mask类的创建方法（如[createRippleMask](#createripplemask20)、[createRadialGradientMask](#createradialgradientmask20)等）创建Mask实例。当需要控制颜色渐变效果的透明度分布（如局部透明或动态透明效果）时传入此参数。不设置时，颜色渐变效果的透明度完全由colors参数决定。|
 
 **返回值：**
@@ -510,9 +508,9 @@ contentLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightI
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| lightPosition | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12) | 是 | 光源在组件空间的位置，[-1, -1, 0]为组件左上角，[1, 1, 0]为组件的右下角，z轴分量越大光源离组件平面越远，可照射区域越大。<br> x分量取值范围[-10, 10]，y分量取值范围[-10, 10]，z分量取值范围[0, 10]，超出范围会自动截断。 |
-| lightColor | [common2D.Color](js-apis-graphics-common2D.md#color) | 是 | 光源颜色，rgba各分量取值范围为[0, 1]，超出范围会自动截断。 |
-| lightIntensity | number | 是 | 光源强度，取值范围[0, 1]，数值越大光源亮度越大，超出范围会自动截断。|
+| lightPosition | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12) | 是 | 光源在组件空间的位置，[-1, -1, 0]为组件左上角，[1, 1, 0]为组件的右下角，z轴分量越大光源离组件平面越远，可照射区域越大。<br> x分量取值范围为[-10, 10]，y分量取值范围为[-10, 10]，z分量取值范围为[0, 10]，超出范围会自动截断。 |
+| lightColor | [common2D.Color](js-apis-graphics-common2D.md#color) | 是 | 光源颜色，RGBA各分量取值范围为[0, 1]，超出范围会自动截断。 |
+| lightIntensity | number | 是 | 光源强度，取值范围为[0, 1]，数值越大光源亮度越大，超出范围会自动截断。|
 | displacementMap | [Mask](#mask20) | 否 | 置换贴图参数，该参数暂不生效，不建议传入。不设置时对功能无影响。 |
 
 **返回值：**
@@ -572,7 +570,7 @@ struct Index {
 ### edgeLight<sup>20+</sup>
 edgeLight(alpha: number, color?: Color, mask?: Mask, bloom?: boolean): Filter
 
-为组件内容检测边缘，并添加边缘高亮效果。该效果自动检测组件内容的边缘轮廓并叠加高亮描边，alpha控制描边透明度，color可自定义高光颜色，bloom控制是否添加发光扩散效果，Mask可限定高亮作用区域。
+为组件内容检测边缘，并添加边缘高亮效果。该效果自动检测组件内容的边缘轮廓并叠加高亮描边。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -582,7 +580,7 @@ edgeLight(alpha: number, color?: Color, mask?: Mask, bloom?: boolean): Filter
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
 | alpha  | number         | 是   | 指定描边高光透明度，越大描边越明显。取值范围为[0, 1]。设置为0时无描边；设置小于0的值时，按值为0处理；设置大于1的值时，按值为1处理。|
-| color  | [Color](#color20) | 否   | 指定描边高光颜色。当需要自定义描边高光颜色（如强调特定颜色效果）时传入此参数。不设置时，默认使用组件内容的原始颜色。设置了color参数时，Color中的alpha不发挥作用，仅使用rgb。|
+| color  | [Color](#color20) | 否   | 指定描边高光颜色，RGB各分量取值范围为[0, +∞)。当需要自定义描边高光颜色（如强调特定颜色效果）时传入此参数。不设置时，默认使用组件内容的原始颜色。设置了color参数时，Color中的alpha不发挥作用，仅使用rgb。|
 | mask  | [Mask](#mask20) | 否   | 指定描边高光强度遮罩。可通过Mask类的创建方法（如[createRippleMask](#createripplemask20)、[createRadialGradientMask](#createradialgradientmask20)等）创建Mask实例。当需要控制描边高光效果的作用区域（如局部高光而非全局高光）时传入此参数。不设置时，默认组件内容全部有描边高光效果。|
 | bloom  | boolean | 否   | 指定描边是否发光。当需要增强视觉效果时设置为true；当需要简洁描边效果时设置为false。不设置时默认为true（带发光效果）。小于16*16的图片默认只有描边效果，无发光效果，此参数失去作用。 |
 
@@ -628,7 +626,7 @@ struct EdgeLightExample {
 ### displacementDistort<sup>20+</sup>
 displacementDistort(displacementMap: Mask, factor?: [number, number]): Filter
 
-为组件内容添加扭曲效果。该效果基于置换映射技术，通过displacementMap的灰度值决定扭曲方向和强度，factor系数控制扭曲程度，两者相乘共同决定最终扭曲效果。factor绝对值越大扭曲越明显，设置为0时无扭曲效果。
+为组件内容添加扭曲效果。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -680,7 +678,7 @@ struct DisplacementDistortExample {
 ### maskDispersion<sup>20+</sup>
 maskDispersion(dispersionMask: Mask, alpha: number, rFactor?: [number, number], gFactor?: [number, number], bFactor?: [number, number]): Filter
 
-为组件内容添加由置换贴图控制的色散效果。色散效果通过置换贴图的灰度值控制RGB三通道的像素偏移，模拟光线通过棱镜时的色散现象。rFactor、gFactor、bFactor参数分别控制红、绿、蓝通道的偏移强度和方向，产生彩虹般的色散视觉效果。典型应用场景包括炫彩特效、科幻视觉效果、光影渲染、棱镜折射模拟等。
+为组件内容添加由置换贴图控制的色散效果，模拟光线通过棱镜时的色散现象。典型应用场景包括炫彩特效、棱镜折射模拟等。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -762,7 +760,7 @@ struct MaskDispersion {
 ### maskTransition<sup>20+</sup>
 maskTransition(alphaMask: Mask, factor?: number, inverse?: boolean): Filter
 
-为组件内容提供基于[Mask](#mask20)的转场效果，可用于页面切换动画、场景过渡效果、动态遮罩转场等场景。转场效果通过Mask控制作用区域；factor控制整体过渡进度，值越大画面越接近转场后页面。
+为组件内容提供基于[Mask](#mask20)的转场效果，可用于页面切换动画、场景过渡效果等场景。
 
 不建议在屏幕尺寸发生改变的过程中使用此效果，如：旋转屏幕，折叠屏开合屏幕等。
 
@@ -774,7 +772,7 @@ maskTransition(alphaMask: Mask, factor?: number, inverse?: boolean): Filter
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
 | alphaMask     | [Mask](#mask20)       | 是   | 通过遮罩指定转场效果的作用区域。可通过Mask类的创建方法（如[createRippleMask](#createripplemask20)、[createRadialGradientMask](#createradialgradientmask20)等）创建Mask实例。Mask的灰度值决定转场效果的作用程度，灰度值越大的区域转场效果越明显。|
-| factor        | number                | 否   | 转场过渡系数。当需要控制转场进度（如动画中途或动态调整）时传入此参数，值越大画面越接近转场后页面。不设置时默认值为1.0（转场完成状态）。取值范围[0.0, 1.0]，超出范围自动截断到[0.0, 1.0]。 |
+| factor        | number                | 否   | 转场过渡系数。当需要控制转场进度（如动画中途或动态调整）时传入此参数，值越大画面越接近转场后页面。不设置时默认值为1.0（转场完成状态）。取值范围为[0.0, 1.0]，超出范围自动截断到[0.0, 1.0]。 |
 | inverse       | boolean               | 否   | 是否启用反向转场。当需要反向转场效果（如从后页面向前页面过渡）时设置为true；当需要正向转场效果（从前页面向后页面过渡）时设置为false。默认值为false（正向转场）。 |
 
 **返回值：**
@@ -851,8 +849,8 @@ directionLight(direction: common2D.Point3d, color: Color, intensity: number, mas
 | ------------- | --------------------- | ---- | ------------------------- |
 | direction  | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12)         | 是   | 入射光的方向，通过三维坐标表示光线的入射方向。|
 | color  | [Color](#color20)         | 是   | 光照颜色。|
-| intensity  | number         | 是   | 光照强度，取值范围[0, +∞)，数值越大光源亮度越大。|
-| mask  | [Mask](#mask20)         | 否   | 置换贴图，用于描述二维图像表面的三维细节。可通过Mask类的创建方法（如[createRippleMask](#createripplemask20)、[createRadialGradientMask](#createradialgradientmask20)等）创建Mask实例。当需要增强局部细节和光照反射效果（如浮雕、凹凸纹理）时传入此参数。通过法线或高度图实现，若输入为高度图须与factor参数配合使用。不设置时默认为空，表现为全局无细节的平面光照效果。|
+| intensity  | number         | 是   | 光照强度，取值范围为[0, +∞)，数值越大光源亮度越大。|
+| mask  | [Mask](#mask20)         | 否   | 置换贴图，用于描述二维图像表面的三维细节。可通过Mask类的创建方法（如[createRippleMask](#createripplemask20)、[createRadialGradientMask](#createradialgradientmask20)等）创建Mask实例。当需要增强局部细节和光照反射效果（如浮雕、凹凸纹理）时传入此参数。通过法线或高度图实现，若输入为高度图需与factor参数配合使用。不设置时默认为空，表现为全局无细节的平面光照效果。|
 | factor  | number         | 否   | 采样缩放系数。当使用高度图作为mask且需要控制高度缩放时传入此参数。不设置时mask作为法线图采样直接使用；设置了值时mask作为高度图采样，实际高度值为mask采样值与factor的乘积。|
 
 **返回值：**
@@ -963,7 +961,7 @@ struct VariableRadiusBlurExample {
 
 heatDistortion(param: HeatDistortionEffectParam): Filter
 
-应用热浪扭曲效果到图像，模拟热空气流动产生的视觉扭曲效果。该效果通过噪声纹理生成扭曲模式，intensity控制整体扭曲幅度，noiseScale控制噪声纹理频率，riseWeight控制上升运动权重使扭曲呈现上下波动的趋势，progress控制动画进度。
+应用热浪扭曲效果到图像，模拟热空气流动产生的视觉扭曲效果。
 
 **起始版本：** 26.0.0
 
@@ -1021,7 +1019,7 @@ struct HeatDistortionExample {
 
 blurBubblesRise(param: BlurBubblesRiseEffectParam): Filter
 
-应用模糊气泡上升效果到图像，模拟气泡在液体中上升的梦幻模糊扭曲效果。blurIntensity控制高斯模糊程度，mixStrength控制原图与模糊图的混合比例，maskImage为模糊效果区域的mask图像（遮罩区域有模糊效果），progress控制动画进度。
+应用模糊气泡上升效果到图像，模拟气泡在液体中上升的梦幻模糊扭曲效果。
 
 **起始版本：** 26.0.0
 
@@ -1138,12 +1136,6 @@ struct BlurBubblesRiseExample {
 ## VisualEffect
 VisualEffect效果类，用于将背景颜色混合、边框光照、颜色渐变等效果添加到组件上。在调用VisualEffect的方法前，需要先通过[createEffect](js-apis-uiEffect.md#uieffectcreateeffect)创建一个VisualEffect实例。
 
-**效果叠加说明：**
-- VisualEffect支持链式调用，可在一个VisualEffect实例上连续调用多个效果方法。
-- 效果叠加顺序：按调用顺序依次应用，后调用的效果与前效果叠加。
-- 组合使用示例：`uiEffect.createEffect().borderLight(point, color, intensity, width).colorGradient(colors, positions, strengths)`
-- 注意：在同一VisualEffect实例上链式调用多个效果方法时，效果按调用顺序叠加。多个效果叠加可能影响性能，建议评估叠加效果对性能的影响后选择合适的效果组合。
-
 ### backgroundColorBlender
 backgroundColorBlender(blender: BrightnessBlender): VisualEffect
 
@@ -1156,7 +1148,7 @@ backgroundColorBlender(blender: BrightnessBlender): VisualEffect
 **参数：**
 | 参数名  | 类型                                      | 必填 | 说明                       |
 | ------- | ---------------------------------------- | ---- | ------------------------- |
-| blender | [BrightnessBlender](#brightnessblender) | 是   | 用于混合背景颜色的blender，目前仅支持提亮混合器（BrightnessBlender）。 |
+| blender | [BrightnessBlender](#brightnessblender) | 是   | 用于混合背景颜色的blender。 |
 
 **返回值：**
 
@@ -1188,9 +1180,9 @@ borderLight(lightPosition: common2D.Point3d, lightColor: common2D.Color, lightIn
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| lightPosition | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12) | 是 | 光源在组件空间的3D位置，[-1, -1, 0]为组件左上角，[1, 1, 0]为组件的右下角，z轴分量越大，光源离组件平面越远，可照射区域越大。<br> x轴分量取值范围[-10, 10]，y轴分量取值范围[-10, 10]，z轴分量取值范围[0, 10]，超出范围会自动截断。 |
+| lightPosition | [common2D.Point3d](js-apis-graphics-common2D.md#point3d12) | 是 | 光源在组件空间的3D位置，[-1, -1, 0]为组件左上角，[1, 1, 0]为组件的右下角，z轴分量越大，光源离组件平面越远，可照射区域越大。<br> x轴分量取值范围为[-10, 10]，y轴分量取值范围为[-10, 10]，z轴分量取值范围为[0, 10]，超出范围会自动截断。 |
 | lightColor | [common2D.Color](js-apis-graphics-common2D.md#color) | 是 | 光源颜色，各元素取值范围为[0, 1]，超出范围会自动截断。 |
-| lightIntensity | number | 是 | 光源强度，取值范围[0, 1]，数值越大光源亮度越大，超出范围会自动截断。|
+| lightIntensity | number | 是 | 光源强度，取值范围为[0, 1]，数值越大光源亮度越大，超出范围会自动截断。|
 | borderWidth | number | 是 | 组件边框的受光宽度，取值范围为[0.0, 30.0]，超出范围会自动截断。设置为0.0时，组件边框无光照效果，数值越大，光可照亮的区域越宽。 |
 
 **返回值：**
@@ -1261,7 +1253,7 @@ colorGradient(colors: Array\<Color>, positions: Array\<common2D.Point>, strength
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| colors  | Array\<[Color](#color20)>         | 是   | 颜色数组，用于实现多颜色渐变。数组长度范围0到12，每个颜色值取值范围需大于等于0，无上限限制。数组长度为0或大于12，或colors、positions和strengths的数组长度不一致，则无颜色渐变效果。|
+| colors  | Array\<[Color](#color20)>         | 是   | 颜色数组，用于实现多颜色渐变。数组长度范围为0到12，每个颜色值取值范围需大于等于0，无上限限制。数组长度为0或大于12，或colors、positions和strengths的数组长度不一致，则无颜色渐变效果。|
 | positions  | Array\<[common2D.Point](js-apis-graphics-common2D.md#point12)>         | 是   | 位置数组，颜色对应的位置。数组长度范围为0到12。数组长度为0或大于12，或colors、positions和strengths的数组长度不一致，则无颜色渐变效果。|
 | strengths  | Array\<number>         | 是   | 强度数组，表示颜色对应的强度。数组长度范围为0到12，每一个强度值需大于等于0，无上限限制。数组长度为0或大于12，或colors、positions和strengths的数组长度不一致时，则无颜色渐变效果。|
 | alphaMask  | [Mask](#mask20)         | 否   | 遮罩alpha，颜色对应的alpha遮罩。可通过Mask类的创建方法（如[createRippleMask](#createripplemask20)、[createRadialGradientMask](#createradialgradientmask20)等）创建Mask实例。当需要控制颜色渐变效果的透明度分布（如局部透明或动态透明效果）时传入此参数。不设置时，颜色渐变效果的透明度完全由colors参数决定。|
@@ -1322,7 +1314,7 @@ struct ColorGradientExample {
 
 liquidMaterial(param: LiquidMaterialEffectParam, useEffectMask: Mask, distortMask?: Mask, brightnessParam?: BrightnessParam): VisualEffect
 
-此方法为组件添加材质效果。材质效果通过模拟物理材质的光学特性（折射、反射）和动态扰动效果，实现玻璃、金属等材质的视觉呈现。可用于模拟玻璃质感UI、流体材质动画、磨砂玻璃效果等场景。使用时需通过useEffectMask控制是否使用模糊缓存以提升性能，通过distortMask提供扰动纹理实现动态效果。
+此方法为组件添加材质效果。材质效果通过模拟物理材质的光学特性（折射、反射）和动态扰动效果，实现玻璃、金属等材质的视觉呈现。可用于模拟玻璃质感UI、流体材质动画、磨砂玻璃效果等场景。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1493,14 +1485,14 @@ type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender
 
 | 名称                | 类型                        | 只读 | 可选 | 说明                                                              |
 | ------------------- | -------------------------- | ---- | ---- | ---------------------------------------------------------------- |
-| cubicRate           | number                     | 否   | 否   | 灰度调整的三阶系数，值越大灰度调整效果越强。<br>取值范围[-20, 20]，超出边界会在实现时自动截断。                        |
-| quadraticRate       | number                     | 否   | 否   | 灰度调整的二阶系数，值越大灰度调整效果越强。<br>取值范围[-20, 20]，超出边界会在实现时自动截断。                        |
-| linearRate          | number                     | 否   | 否   | 灰度调整的线性系数，值越大灰度调整效果越强。<br>取值范围[-20, 20]，超出边界会在实现时自动截断。                        |
-| degree              | number                     | 否   | 否   | 灰度调整的比例，值越大灰度调整效果越强。<br>取值范围[-20, 20]，超出边界会在实现时自动截断。                            |
-| saturation          | number                     | 否   | 否   | 提亮的基准饱和度，值越大基准饱和度越高。<br>取值范围[0, 20]，超出边界会在实现时自动截断。                            |
-| positiveCoefficient | [number, number, number]   | 否   | 否   | 基于基准饱和度的RGB正向调整参数。<br>每个number的取值范围[-20, 20]，超出边界会在实现时自动截断。 |
-| negativeCoefficient | [number, number, number]   | 否   | 否   | 基于基准饱和度的RGB负向调整参数。<br>每个number的取值范围[-20, 20]，超出边界会在实现时自动截断。 |
-| fraction            | number                     | 否   | 否   | 提亮效果的混合比例。<br>取值范围[0, 1]，超出边界会在实现时自动截断。  |
+| cubicRate           | number                     | 否   | 否   | 灰度调整的三阶系数。<br>取值范围为[-20, 20]，超出边界会在实现时自动截断。                        |
+| quadraticRate       | number                     | 否   | 否   | 灰度调整的二阶系数。<br>取值范围为[-20, 20]，超出边界会在实现时自动截断。                        |
+| linearRate          | number                     | 否   | 否   | 灰度调整的线性系数。<br>取值范围为[-20, 20]，超出边界会在实现时自动截断。                        |
+| degree              | number                     | 否   | 否   | 灰度调整的比例。<br>取值范围为[-20, 20]，超出边界会在实现时自动截断。                            |
+| saturation          | number                     | 否   | 否   | 提亮的基准饱和度。<br>取值范围为[0, 20]，超出边界会在实现时自动截断。                            |
+| positiveCoefficient | [number, number, number]   | 否   | 否   | 基于基准饱和度的RGB正向调整参数。<br>每个number的取值范围为[-20, 20]，超出边界会在实现时自动截断。 |
+| negativeCoefficient | [number, number, number]   | 否   | 否   | 基于基准饱和度的RGB负向调整参数。<br>每个number的取值范围为[-20, 20]，超出边界会在实现时自动截断。 |
+| fraction            | number                     | 否   | 否   | 提亮效果的混合比例。<br>取值范围为[0, 1]，超出边界会在实现时自动截断。  |
 
 ## HdrBrightnessBlender<sup>20+</sup>
 支持HDR的提亮混合器（继承自[BrightnessBlender](#brightnessblender)），用于将提亮效果添加到指定的组件上。在调用HdrBrightnessBlender前，需要先通过[createHdrBrightnessBlender](#uieffectcreatehdrbrightnessblender20)创建一个HdrBrightnessBlender实例。
@@ -1525,7 +1517,7 @@ type Blender = BrightnessBlender | HdrBrightnessBlender | HdrDarkenBlender
 
 | 名称  | 类型   | 只读 | 可选 | 说明                                     |
 | ----- | ------ | ---- | ---- | ---------------------------------------- |
-| hdrBrightnessRatio   | number | 否   | 否   | HDR的提亮倍数。<br>取值范围[1.0, 设备当前支持最大提亮倍数]。<br>设置小于1.0的值时，按值为1.0处理；<br>当值等于1.0时，为组件原本亮度；<br>设置大于设备当前支持最大提亮倍数的值时，按值为设备当前支持最大提亮倍数处理，支持最大提亮倍数 = 设备最大亮度 / 设备默认亮度。<br>设备最大亮度通过hdc命令获取：hdc shell param get const.display.brightness.max <br>设备默认亮度通过hdc命令获取：hdc shell param get const.display.brightness.default |
+| hdrBrightnessRatio   | number | 否   | 否   | HDR的提亮倍数。<br>取值范围为[1.0, 设备当前支持最大提亮倍数]。<br>设置小于1.0的值时，按值为1.0处理；<br>当值等于1.0时，为组件原本亮度；<br>设置大于设备当前支持最大提亮倍数的值时，按值为设备当前支持最大提亮倍数处理，支持最大提亮倍数 = 设备最大亮度 / 设备默认亮度。<br>设备最大亮度通过hdc命令获取：hdc shell param get const.display.brightness.max <br>设备默认亮度通过hdc命令获取：hdc shell param get const.display.brightness.default |
 | grayscaleFactor | [number, number, number] | 否   | 是   | 将RGB颜色转换为灰度值。灰度转换公式的权重可随当前色域自动调整，不同色域下使用不同的权重计算方式；适用于sRGB等标准色域场景。当需要根据特定色域或视觉效果自定义灰度转换权重时传入此参数。三个分量均无边界限制。默认值为标准灰度权重[0.299, 0.587, 0.114]。 |
 
 
@@ -1551,14 +1543,14 @@ RGBA格式的颜色描述。
 | 名称             | 类型                             | 只读 | 可选 | 说明                                                         |
 | ---------------- | -------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | enable           | boolean                          | 否   | 否   | 是否开启材质效果。true表示开启，false表示关闭。 |
-| distortProgress  | number                           | 否   | 否   | 扰动效果进度。取值范围[0, 1]，小于0时取值为0，大于1时取值为1。0表示开始扰动，1表示结束扰动。 |
+| distortProgress  | number                           | 否   | 否   | 扰动效果进度。取值范围为[0, 1]，小于0时取值为0，大于1时取值为1。0表示开始扰动，1表示结束扰动。 |
 | distortFactor    | number                           | 否   | 否   | 扰动效果系数。值大于等于0，值小于0时表示无扰动效果。         |
 | rippleProgress   | number                           | 否   | 否   | 水波效果进度。值大于等于0，值小于0时表示无水波效果。         |
 | ripplePosition   | Array<[number, number]>          | 否   | 是   | 水波效果作用的位置。当需要在多个指定位置同时触发水波效果时传入此参数。不传入时默认无水波位置，水波效果不生效。数组中每个位置包含x和y两个维度，坐标为归一化坐标，[0, 0]表示左上角，[1, 1]表示右下角。最多支持10个位置坐标，超出则整体无效。 |
-| refractionFactor | number                           | 否   | 否   | 折射效果系数。取值范围[0, 10]，小于0时取值为0，大于10时取值为10。值为0表示无折射效果，值越大折射强度越高。 |
-| reflectionFactor | number                           | 否   | 否   | 反射系数。取值范围[0, 10]，小于0时取值为0，大于10时取值为10。值为0表示无反射效果，值越大反射强度越高。 |
-| materialFactor   | number                           | 否   | 否   | 材质系数。取值范围[0, 1]，小于0时取值为0，大于1时取值为1。值为0表示无材质效果，使用叠加颜色填充，值越大材质效果越明显。 |
-| tintColor        | [number, number, number, number] | 否   | 否   | 材质叠加的颜色，四个变量分别对应RGBA。取值范围[0, 1]，小于0时取值为0，大于1时取值为1。 |
+| refractionFactor | number                           | 否   | 否   | 折射效果系数。取值范围为[0, 10]，小于0时取值为0，大于10时取值为10。值为0表示无折射效果，值越大折射强度越高。 |
+| reflectionFactor | number                           | 否   | 否   | 反射系数。取值范围为[0, 10]，小于0时取值为0，大于10时取值为10。值为0表示无反射效果，值越大反射强度越高。 |
+| materialFactor   | number                           | 否   | 否   | 材质系数。取值范围为[0, 1]，小于0时取值为0，大于1时取值为1。值为0表示无材质效果，使用叠加颜色填充，值越大材质效果越明显。 |
+| tintColor        | [number, number, number, number] | 否   | 否   | 材质叠加的颜色，四个变量分别对应RGBA。取值范围为[0, 1]，小于0时取值为0，大于1时取值为1。 |
 
 ## BrightnessParam<sup>22+</sup>
 
@@ -1568,18 +1560,18 @@ RGBA格式的颜色描述。
 
 | 名称          | 类型                     | 只读 | 可选 | 说明                                                         |
 | ------------- | ------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| rate          | number                   | 否   | 否   | 灰度调整线性系数。取值范围[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大，灰度调整效果越强。 |
-| lightUpDegree | number                   | 否   | 否   | 灰度调整比例。取值范围[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大，灰度调整效果越强。 |
-| cubicCoeff    | number                   | 否   | 否   | 灰度调整三阶系数。取值范围[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大，灰度调整效果越强。 |
-| quadCoeff     | number                   | 否   | 否   | 灰度调整二阶系数。取值范围[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大，灰度调整效果越强。 |
-| saturation    | number                   | 否   | 否   | 提亮基准饱和度。取值范围[0, 1]，小于0时取值为0，大于1时取值为1，值越大基准饱和度越高。 |
-| posRgb        | [number, number, number] | 否   | 否   | 基于基准饱和度的正向调整系数。取值范围[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大饱和度越高。 |
-| negRgb        | [number, number, number] | 否   | 否   | 基于基准饱和度的负向调整系数。取值范围[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大饱和度越低。 |
-| fraction      | number                   | 否   | 否   | 提亮效果混合比例。取值范围[0, 1]，小于0时取值为0，大于1时取值为1，值越大，提亮效果越弱。 |
+| rate          | number                   | 否   | 否   | 灰度调整线性系数。取值范围为[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大，灰度调整效果越强。 |
+| lightUpDegree | number                   | 否   | 否   | 灰度调整比例。取值范围为[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大，灰度调整效果越强。 |
+| cubicCoeff    | number                   | 否   | 否   | 灰度调整三阶系数。取值范围为[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大，灰度调整效果越强。 |
+| quadCoeff     | number                   | 否   | 否   | 灰度调整二阶系数。取值范围为[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大，灰度调整效果越强。 |
+| saturation    | number                   | 否   | 否   | 提亮基准饱和度。取值范围为[0, 1]，小于0时取值为0，大于1时取值为1，值越大基准饱和度越高。 |
+| posRgb        | [number, number, number] | 否   | 否   | 基于基准饱和度的正向调整系数。取值范围为[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大饱和度越高。 |
+| negRgb        | [number, number, number] | 否   | 否   | 基于基准饱和度的负向调整系数。取值范围为[-1, 1]，小于-1时取值为-1，大于1时取值为1，值越大饱和度越低。 |
+| fraction      | number                   | 否   | 否   | 提亮效果混合比例。取值范围为[0, 1]，小于0时取值为0，大于1时取值为1，值越大，提亮效果越弱。 |
 
 
 ## Mask<sup>20+</sup>
-Mask效果类，作为[Filter](#filter)以及[VisualEffect](#visualeffect)的输入使用。Mask通过灰度值控制效果的作用区域和强度，灰度值越大的区域效果越明显，灰度值为0的区域无效果。不同类型的Mask提供不同的灰度分布模式，如波环遮罩、径向渐变、像素图遮罩等。
+Mask效果类，作为[Filter](#filter)以及[VisualEffect](#visualeffect)的输入使用。不同类型的Mask提供不同的灰度分布模式，如波环遮罩、径向渐变、像素图遮罩等。
 
 ### createRippleMask<sup>20+</sup>
 static createRippleMask(center: common2D.Point, radius: number, width: number, offset?: number): Mask
@@ -1593,10 +1585,10 @@ static createRippleMask(center: common2D.Point, radius: number, width: number, o
 **参数：**
 | 参数名  | 类型                                      | 必填 | 说明                       |
 | ------- | ---------------------------------------- | ---- | ------------------------- |
-| center | [common2D.Point](js-apis-graphics-common2D.md#point12) | 是 | 设置波环圆心在组件上的位置，[0, 0]为组件左上角，[1, 1]为组件的右下角。<br>取值范围[-10, 10]，超出边界会在实现时自动截断。 |
-| radius | number | 是 | 设置波环的半径，使用归一化值。半径为1时，波环半径等于组件高度。<br>取值范围[0, 10]，超出边界会在实现时自动截断。 |
-| width | number | 是 | 设置波环的宽度，使用归一化值。宽度为1时，波环宽度等于组件高度。。<br>取值范围[0, 10]，超出边界会在实现时自动截断。 |
-| offset | number | 否 | 设置波峰位置的偏移。<br>默认值为0，表示波峰在波环的正中心；<br>-1.0表示波峰在波环的最内侧；<br>1.0表示波峰在波环的最外侧。<br>取值范围[-1, 1]，超出边界会在实现时自动截断。 |
+| center | [common2D.Point](js-apis-graphics-common2D.md#point12) | 是 | 设置波环圆心在组件上的位置，[0, 0]为组件左上角，[1, 1]为组件的右下角。<br>取值范围为[-10, 10]，超出边界会在实现时自动截断。 |
+| radius | number | 是 | 设置波环的半径，使用归一化值。半径为1时，波环半径等于组件高度。<br>取值范围为[0, 10]，超出边界会在实现时自动截断。 |
+| width | number | 是 | 设置波环的宽度，使用归一化值。宽度为1时，波环宽度等于组件高度。。<br>取值范围为[0, 10]，超出边界会在实现时自动截断。 |
+| offset | number | 否 | 设置波峰位置的偏移。<br>默认值为0，表示波峰在波环的正中心；<br>-1.0表示波峰在波环的最内侧；<br>1.0表示波峰在波环的最外侧。<br>取值范围为[-1, 1]，超出边界会在实现时自动截断。 |
 
 **返回值：**
 
@@ -1823,10 +1815,10 @@ static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY
 **参数：**
 | 参数名  | 类型                                      | 必填 | 说明                       |
 | ------- | ---------------------------------------- | ---- | ------------------------- |
-| center | [common2D.Point](js-apis-graphics-common2D.md#point12)  | 是 | 设置椭圆的中心点，[0, 0]为组件左上角，[1, 1]为组件的右下角。<br>取值范围[-10, 10]，可取浮点数，超出边界会在实现时自动截断。 |
-| radiusX | number  | 是 | 设置椭圆的长轴，半径为1等于组件的高度。<br>取值范围[0, 10]，可取浮点数，超出边界会在实现时自动截断。 |
-| radiusY | number  | 是 | 设置椭圆的短轴，半径为1等于组件的高度。<br>取值范围[0, 10]，可取浮点数，超出边界会在实现时自动截断。 |
-| values | Array<[number, number]>     | 是 | 数组中保存的二元数组表示梯度：[RGBA颜色, 位置]。RGBA颜色四通道使用相同的值，可看作一个灰度值；位置表示沿径向方向向外时RGBA颜色对应的分布位置；RGBA颜色与位置的取值范围均为[0, 1]，可取浮点数，小于0的转为0，大于1的转为1。<br>位置参数值须严格递增，Array数组中二元数组个数必须大于等于2，二元数组中的元素不能为空，否则该椭圆分布效果不生效。 |
+| center | [common2D.Point](js-apis-graphics-common2D.md#point12)  | 是 | 设置椭圆的中心点，[0, 0]为组件左上角，[1, 1]为组件的右下角。<br>取值范围为[-10, 10]，可取浮点数，超出边界会在实现时自动截断。 |
+| radiusX | number  | 是 | 设置椭圆的长轴，半径为1等于组件的高度。<br>取值范围为[0, 10]，可取浮点数，超出边界会在实现时自动截断。 |
+| radiusY | number  | 是 | 设置椭圆的短轴，半径为1等于组件的高度。<br>取值范围为[0, 10]，可取浮点数，超出边界会在实现时自动截断。 |
+| values | Array<[number, number]>     | 是 | 数组中保存的二元数组表示梯度：[RGBA颜色, 位置]。RGBA颜色四通道使用相同的值，可看作一个灰度值；位置表示沿径向方向向外时RGBA颜色对应的分布位置；RGBA颜色与位置的取值范围均为[0, 1]，可取浮点数，小于0的转为0，大于1的转为1。<br>位置参数值需严格递增，Array数组中二元数组个数必须大于等于2，二元数组中的元素不能为空，否则该椭圆分布效果不生效。 |
 
 **返回值：**
 
@@ -1875,11 +1867,11 @@ static createWaveGradientMask(center: common2D.Point, width: number, propagation
 **参数：**
 | 参数名  | 类型                                      | 必填 | 说明                       |
 | ------- | ---------------------------------------- | ---- | ------------------------- |
-| center | [common2D.Point](js-apis-graphics-common2D.md#point12)  | 是 | 设置单波波源的中心点，[0, 0]为组件左上角，[1, 1]为组件的右下角。<br>取值范围[-10, 10]，可取浮点数，超出边界会在实现时自动截断。 |
-| width | number  | 是 | 设置单波圆环的宽度。<br>取值范围[0, 5]，可取浮点数，超出边界会在实现时自动截断。 |
-| propagationRadius | number  | 是 | 设置单波圆环的扩散外径。<br>取值范围[0, 10]，可取浮点数，超出边界会在实现时自动截断。 |
-| blurRadius | number  | 是 | 设置单波圆环的模糊外径，模糊半径为0则是实边圆环，否则是虚边圆环。<br>取值范围[0, 5]，可取浮点数，超出边界会在实现时自动截断。 |
-| turbulenceStrength | number  | 否 | 设置单波圆环的湍流强度，默认值为0，强度为0则是规则圆环，否则圆环边缘会湍流扭曲。<br>取值范围[-1, 1]，可取浮点数，超出边界会在实现时自动截断。 |
+| center | [common2D.Point](js-apis-graphics-common2D.md#point12)  | 是 | 设置单波波源的中心点，[0, 0]为组件左上角，[1, 1]为组件的右下角。<br>取值范围为[-10, 10]，可取浮点数，超出边界会在实现时自动截断。 |
+| width | number  | 是 | 设置单波圆环的宽度。<br>取值范围为[0, 5]，可取浮点数，超出边界会在实现时自动截断。 |
+| propagationRadius | number  | 是 | 设置单波圆环的扩散外径。<br>取值范围为[0, 10]，可取浮点数，超出边界会在实现时自动截断。 |
+| blurRadius | number  | 是 | 设置单波圆环的模糊外径，模糊半径为0则是实边圆环，否则是虚边圆环。<br>取值范围为[0, 5]，可取浮点数，超出边界会在实现时自动截断。 |
+| turbulenceStrength | number  | 否 | 设置单波圆环的湍流强度，默认值为0，强度为0则是规则圆环，否则圆环边缘会湍流扭曲。<br>取值范围为[-1, 1]，可取浮点数，超出边界会在实现时自动截断。 |
 
 **返回值：**
 
@@ -1920,7 +1912,7 @@ struct WaveGradientMaskExample {
 
 static createUseEffectMask(useEffect: boolean): Mask
 
-创建并设置[Mask](#mask20)实例是否使用模糊缓存。此Mask实例专为[liquidMaterial](#liquidmaterial22)方法的useEffectMask参数设计，用于声明材质效果是否使用模糊缓存以提升性能。当useEffect为true时使用模糊缓存，适用于需要复用模糊结果的场景；当useEffect为false时不使用模糊缓存，适用于模糊效果频繁变化的场景。将此Mask实例用于其他Filter或VisualEffect方法时，useEffect属性可能不生效。
+创建并设置[Mask](#mask20)实例是否使用模糊缓存。此Mask实例专为[liquidMaterial](#liquidmaterial22)方法的useEffectMask参数设计，用于声明材质效果是否使用模糊缓存以提升性能。将此Mask实例用于其他Filter或VisualEffect方法时，useEffect属性可能不生效。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -2013,14 +2005,14 @@ BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包
 
 | 名称                | 类型                        | 只读 | 可选 | 说明                                                              |
 | ------------------- | -------------------------- | ---- | ---- | ---------------------------------------------------------------- |
-| cubicRate           | number                     | 否   | 否   | 灰度调整的三阶系数，值越大灰度调整效果越强。<br>取值范围[-20, 20]，超出边界会在实现时自动截断。                        |
-| quadraticRate       | number                     | 否   | 否   | 灰度调整的二阶系数，值越大灰度调整效果越强。<br>取值范围[-20, 20]，超出边界会在实现时自动截断。                        |
-| linearRate          | number                     | 否   | 否   | 灰度调整的线性系数，值越大灰度调整效果越强。<br>取值范围[-20, 20]，超出边界会在实现时自动截断。                        |
-| degree              | number                     | 否   | 否   | 灰度调整的比例，值越大灰度调整效果越强。<br>取值范围[-20, 20]，超出边界会在实现时自动截断。                            |
-| saturation          | number                     | 否   | 否   | 提亮的基准饱和度，值越大基准饱和度越高。<br>取值范围[0, 20]，超出边界会在实现时自动截断。                            |
-| positiveCoefficient | [number, number, number]   | 否   | 否   | 基于基准饱和度的RGB正向调整参数。<br>每个number的取值范围[-20, 20]，超出边界会在实现时自动截断。 |
-| negativeCoefficient | [number, number, number]   | 否   | 否   | 基于基准饱和度的RGB负向调整参数。<br>每个number的取值范围[-20, 20]，超出边界会在实现时自动截断。 |
-| fraction            | number                     | 否   | 否   | 提亮效果的混合比例。<br>取值范围[0, 1]，超出边界会在实现时自动截断。  |
+| cubicRate           | number                     | 否   | 否   | 灰度调整的三阶系数。<br>取值范围为[-20, 20]，超出边界会在实现时自动截断。                        |
+| quadraticRate       | number                     | 否   | 否   | 灰度调整的二阶系数。<br>取值范围为[-20, 20]，超出边界会在实现时自动截断。                        |
+| linearRate          | number                     | 否   | 否   | 灰度调整的线性系数。<br>取值范围为[-20, 20]，超出边界会在实现时自动截断。                        |
+| degree              | number                     | 否   | 否   | 灰度调整的比例。<br>取值范围为[-20, 20]，超出边界会在实现时自动截断。                            |
+| saturation          | number                     | 否   | 否   | 提亮的基准饱和度。<br>取值范围为[0, 20]，超出边界会在实现时自动截断。                            |
+| positiveCoefficient | [number, number, number]   | 否   | 否   | 基于基准饱和度的RGB正向调整参数。<br>每个number的取值范围为[-20, 20]，超出边界会在实现时自动截断。 |
+| negativeCoefficient | [number, number, number]   | 否   | 否   | 基于基准饱和度的RGB负向调整参数。<br>每个number的取值范围为[-20, 20]，超出边界会在实现时自动截断。 |
+| fraction            | number                     | 否   | 否   | 提亮效果的混合比例。<br>取值范围为[0, 1]，超出边界会在实现时自动截断。  |
 
 ## HeatDistortionEffectParam
 
@@ -2036,10 +2028,10 @@ BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| intensity | number | 否 | 否 | 热浪扭曲的强度。<br>取值范围[0, 1]，超出边界会在实现时自动截断。<br>0表示无扭曲，1表示最大扭曲程度。 |
-| noiseScale | number | 否 | 否 | 热浪扭曲的噪声缩放，控制噪声纹理的细度。<br>取值范围[0.1, 5.0]，超出边界会在实现时自动截断。<br>值越大，噪声纹理越细腻。 |
-| riseWeight | number | 否 | 否 | 热浪扭曲的上升权重，控制气泡的上升速度。<br>取值范围[0, 1]，超出边界会在实现时自动截断。<br>值越大，向上运动越明显。 |
-| progress | number | 否 | 否 | 热浪扭曲的动画进度。<br>取值范围[0, 1]，超出边界会在实现时自动截断。<br>0对应动画开始，1对应动画结束。 |
+| intensity | number | 否 | 否 | 热浪扭曲的强度。<br>取值范围为[0, 1]，超出边界会在实现时自动截断。<br>0表示无扭曲，1表示最大扭曲程度。 |
+| noiseScale | number | 否 | 否 | 热浪扭曲的噪声缩放，控制噪声纹理的细度。<br>取值范围为[0.1, 5.0]，超出边界会在实现时自动截断。<br>值越大，噪声纹理越细腻。 |
+| riseWeight | number | 否 | 否 | 热浪扭曲的上升权重，控制气泡的上升速度。<br>取值范围为[0, 1]，超出边界会在实现时自动截断。<br>值越大，向上运动越明显。 |
+| progress | number | 否 | 否 | 热浪扭曲的动画进度。<br>取值范围为[0, 1]，超出边界会在实现时自动截断。<br>0对应动画开始，1对应动画结束。 |
 
 ## BlurBubblesRiseEffectParam
 
@@ -2055,7 +2047,7 @@ BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| blurIntensity | number | 否 | 否 | 模糊气泡上升效果的高斯模糊强度。<br>取值范围[0, 1]，超出边界会在实现时自动截断。<br>0表示无模糊，1表示最大模糊程度。 |
-| mixStrength | number | 否 | 否 | 原图与模糊图的混合强度。<br>取值范围[0, 1]，超出边界会在实现时自动截断。<br>0对应原图，1对应模糊后的图像。 |
-| progress | number | 否 | 否 | 模糊气泡上升效果的动画进度。<br>取值范围[0, 1]，超出边界会在实现时自动截断。<br>0对应动画开始，1对应动画结束。 |
+| blurIntensity | number | 否 | 否 | 模糊气泡上升效果的高斯模糊强度。<br>取值范围为[0, 1]，超出边界会在实现时自动截断。<br>0表示无模糊，1表示最大模糊程度。 |
+| mixStrength | number | 否 | 否 | 原图与模糊图的混合强度。<br>取值范围为[0, 1]，超出边界会在实现时自动截断。<br>0对应原图，1对应模糊后的图像。 |
+| progress | number | 否 | 否 | 模糊气泡上升效果的动画进度。<br>取值范围为[0, 1]，超出边界会在实现时自动截断。<br>0对应动画开始，1对应动画结束。 |
 | maskImage | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 否 | 否 | 模糊气泡上升效果的遮罩图像，控制模糊气泡区域。<br>被遮罩的区域有模糊效果，未遮罩的区域无模糊效果。 |

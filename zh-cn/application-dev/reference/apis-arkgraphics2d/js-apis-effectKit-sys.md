@@ -7,7 +7,9 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
-图像效果模块提供了处理图像的基础能力，包括亮度调节、模糊化、灰度调节和智能取色等。effectKit用于离线处理图像（如pixelmap、png、jpeg）以获得视觉效果，而uiEffect则实时接入渲染服务，针对屏幕帧缓存进行处理以获得动态视觉效果。
+图像效果模块提供了处理图像的基础能力，包括亮度调节、模糊化、灰度调节和智能取色等，适用于图片编辑应用中添加滤镜效果、应用启动页背景图模糊处理、UI主题色自动提取、图片配色分析等场景。
+
+本模块用于离线处理[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)以获得视觉效果，而uiEffect（UI效果服务）则实时接入渲染服务，针对屏幕帧缓存进行处理以获得动态视觉效果。
 
 该模块提供以下图像效果相关的常用功能：
 
@@ -90,7 +92,7 @@ import { effectKit } from "@kit.ArkGraphics2D";
 
 getTopProportionColorsAndPercentage(colorCount: number): Map<Color | null, number | null>
 
-同步返回图像占比靠前的主色及其对应比例，个数由`colorCount`指定。返回值为主色与比例的映射Map。
+同步返回图像占比靠前的颜色值及其对应比例，个数由`colorCount`指定。
 
 **卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
@@ -101,7 +103,7 @@ getTopProportionColorsAndPercentage(colorCount: number): Map<Color | null, numbe
 **参数：**
 | 参数名      | 类型   | 必填 | 说明              |
 | ---------- | ------ | ---- | ------------------------------------------- |
-| colorCount | number | 是   | 主色及对应比例的个数，向下取整。<br>**说明：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，取值范围为[1, 10]，取色个数大于10视为取前10个；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，取值范围为[1, 20]，取色个数大于20视为取前20个。   |
+| colorCount | number | 是   | 颜色值及对应比例的个数，向下取整。<br>**说明：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，取值范围为[1, 10]，取色个数大于10视为取前10个；从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，取值范围为[1, 20]，取色个数大于20视为取前20个。   |
 
 **返回值：**
 
@@ -647,7 +649,7 @@ ellipticalGradientBlur(blurRadius: number, center: EllipticalMaskCenter, maskRad
 |  blurRadius   | number | 是   | 模糊半径，取正整数，单位为px，模糊半径大于60px时自动截断。模糊效果与所设置的模糊半径值成正比，值越大效果越明显。 |
 |  center   | [EllipticalMaskCenter](#ellipticalmaskcenter23) | 是 | 椭圆形遮罩的中心点坐标。 |
 |  maskRadius   | [EllipticalMaskRadius](#ellipticalmaskradius23) | 是 | 椭圆形遮罩在X轴和Y轴方向的半径。 |
-|  fractionStops   | [FractionStop](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#fractionstop12)[] | 是 | 渐变模糊位置与程度数组。数组元素为二元数组，第一个元素表示位置，第二个元素表示模糊程度。位置取值范围为[0, 1]，椭圆中心对应位置0，椭圆边界对应位置1。模糊程度取值范围为[0, 1]，0表示无模糊，大于1的值自动转为1。位置参数值须严格递增，数组长度不能小于2，最大为12。 |
+|  fractionStops   | [FractionStop](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#fractionstop12)[] | 是 | 渐变模糊位置与程度数组。数组元素为二元数组，第一个元素表示位置，第二个元素表示模糊程度。位置取值范围为[0, 1]，椭圆中心对应位置0，椭圆边界对应位置1。模糊程度取值范围为[0, 1]，0表示无模糊，大于1的值自动转为1。位置参数值需严格递增，数组长度不能小于2，最大为12。 |
 
 **返回值：**
 
