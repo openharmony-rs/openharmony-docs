@@ -16,7 +16,7 @@ Before reading this topic, you are advised to read [Basic Syntax Overview](./ark
 
 The differences between the @Builder decorator and [@Component decorator](./arkts-create-custom-components.md#component) in functions and usage are as follows:
 
-1. The @Builder decorator is used to encapsulate reusable UI structures, improving development efficiency by extracting repetitive layout code. This decorator strictly prohibits defining [state variables](./arkts-state-management-glossary.md#state-variables) or using [custom component lifecycle functions](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md) within it. Data interaction must be completed through parameter passing or by accessing the state variables of the owning component.
+1. The @Builder decorator is used to encapsulate reusable UI structures, improving development efficiency by extracting repetitive layout code. This decorator strictly prohibits defining [state variables](./arkts-state-management-glossary.md#state-variable) or using [custom component lifecycle functions](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md) within it. Data interaction must be completed through parameter passing or by accessing the state variables of the owning component.
 
 2. In the ArkUI framework, the @Component decorator is the core mechanism for encapsulating complex UI components. It allows developers to combine multiple basic components to build a reusable composite UI. This decorator not only supports the definition of internal state variables, but also manages the lifecycle of components.
 

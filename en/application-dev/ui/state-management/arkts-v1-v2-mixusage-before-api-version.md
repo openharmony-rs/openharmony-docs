@@ -42,7 +42,7 @@ Before API version 19, mixed usage scenarios are subject to relatively strict va
 
   - V2 state variable (decorated with a state variable decorator) passed to a V1 custom component:
 
-     If V1 uses a state variable decorator (again, only \@State, \@Prop, and \@Provide are supported) to decorate the received data, built-in type data such as Array, Set, Map, and Date are not supported. Note that V2 state variables support the Function type, but none of the V1 state variable decorators support the Function type. Passing a Function type will cause a runtime verification error. Taking \@State as an example, see [@State restrictions](./arkts-state.md#restrictions) for details.
+     If V1 uses a state variable decorator (again, only \@State, \@Prop, and \@Provide are supported) to decorate the received data, built-in type data such as Array, Set, Map, and Date are not supported. Note that V2 state variables support the Function type, but none of the V1 state variable decorators support the Function type. Passing a Function type will cause a runtime verification error. Taking \@State as an example, see [@State restrictions](./arkts-state.md#constraints) for details.
 
   - [@Link](./arkts-link.md) in V1 follows its original initialization rules and can only be initialized by a V1 state variable. For details, see [@Link initialization rule diagram](./arkts-link.md#variable-transferaccess-rules).
 
@@ -715,7 +715,7 @@ struct ThirdPartyComp {
 
   build() {
     Column() {
-      Text(`ThirdPartyComp：${this.prop}`)
+      Text(`ThirdPartyComp: ${this.prop}`)
     }
   }
 }
@@ -727,7 +727,7 @@ struct V2Comp2 {
 
   build() {
     Column() {
-      Text(`V2Comp2：${this.param}`)
+      Text(`V2Comp2: ${this.param}`)
 
       // V2 component passes a simple state variable to a V1 third-party library
       ThirdPartyComp({ prop: this.param })
