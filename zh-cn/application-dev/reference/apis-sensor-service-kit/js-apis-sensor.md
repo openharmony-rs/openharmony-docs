@@ -11519,7 +11519,7 @@ getSingleSensor(type: SensorId, callback: AsyncCallback&lt;Sensor&gt;): void
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
-| 14500102 | The sensor is not supported by the device.                   |
+| 14500102 | The sensor is not supported by the device. [since 12]                   |
 
 **示例**：
 
@@ -11582,7 +11582,7 @@ try {
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
-| 14500102 | The sensor is not supported by the device.                   |
+| 14500102 | The sensor is not supported by the device. [since 12]                   |
 
 **示例**：
 
