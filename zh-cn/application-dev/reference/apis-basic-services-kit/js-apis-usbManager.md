@@ -7,7 +7,7 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
 
-本模块主要提供管理USB设备的相关功能，包括主机端的查询USB设备列表、批量数据传输、控制命令传输、权限控制等；设备端的端口管理、功能切换及查询等。
+本模块主要提供管理USB设备的相关功能，包括主机端的查询USB设备列表、批量数据传输、控制命令传输、权限控制等；设备端的端口管理、功能切换及查询等。适用于需要与USB设备进行通信的场景，解决了设备连接、数据传输和权限管理的复杂性问题，为开发者提供统一的USB设备访问接口，降低开发难度，提升开发效率。
 
 > **说明：**
 > 
@@ -140,7 +140,7 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Readonly&lt;[USBDevicePipe](#usbdevicepipe)&gt; | 指定的传输通道对象。 |
+| Readonly&lt;[USBDevicePipe](#usbdevicepipe)&gt; | USB设备消息传输通道对象，用于后续的数据传输和设备控制操作。 |
 
 **错误码：**
 
@@ -155,7 +155,7 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 **示例：**
 
 ```ts
-function connectDevice() {
+async function connectDevice() {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
     console.info(`device list is empty`);
@@ -163,7 +163,7 @@ function connectDevice() {
   }
 
   let device: usbManager.USBDevice = devicesList?.[0];
-  usbManager.requestRight(device.name);
+  await usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   console.info(`devicepipe = ${devicepipe}`);
   usbManager.closePipe(devicepipe);
@@ -204,7 +204,7 @@ hasRight(deviceName: string): boolean
 **示例：**
 
 ```ts
-function hasRight(): boolean {
+async function hasRight(): boolean {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
     console.info(`device list is empty`);
@@ -212,7 +212,7 @@ function hasRight(): boolean {
   }
 
   let device: usbManager.USBDevice = devicesList?.[0];
-  usbManager.requestRight(device.name);
+  await usbManager.requestRight(device.name);
   let right: boolean = usbManager.hasRight(device.name);
   console.info(`${right}`);
   return right;
@@ -262,7 +262,7 @@ function requestRight() {
   usbManager.requestRight(device.name).then(ret => {
     console.info(`requestRight = ${ret}`);
   }).catch((error: BusinessError) => {
-    console.error(`requestRight failed : ${error}`);
+    console.error(`Failed to request right. Code: ${error.code}, message: ${error.message}`);
   });
 }
 ```
@@ -334,7 +334,7 @@ claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): numb
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 | iface | [USBInterface](#usbinterface) | 是 | 用于确定需要获取控制的接口对象，需要调用[getDevices](#usbmanagergetdevices)获取设备信息并通过id确定唯一接口。|
-| force | boolean | 否 | 可选参数，是否强制获取。默认值为false，表示不强制获取；设置为true时，将强制从内核驱动或其他程序中释放该接口的控制权并交由用户空间程序控制。用户按需选择。|
+| force | boolean | 否 | 可选参数，是否强制获取。默认值为false，表示不强制获取；设置为true时，将强制从内核驱动或其他程序中释放该接口的控制权并交由用户空间程序控制。如果接口已被其他程序占用，使用true可强制获取但可能导致该程序功能异常；如果接口未被占用，建议使用false以避免不必要的强制操作。用户按需选择。|
 
 **返回值：**
 
@@ -354,7 +354,7 @@ claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): numb
 **示例：**
 
 ```ts
-function claimInterface() {
+async function claimInterface() {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
     console.info(`device list is empty`);
@@ -362,10 +362,10 @@ function claimInterface() {
   }
 
   let device: usbManager.USBDevice = devicesList?.[0];
-  usbManager.requestRight(device.name);
+  await usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
-  let ret: number= usbManager.claimInterface(devicepipe, interfaces);
+  let ret: number = usbManager.claimInterface(devicepipe, interfaces);
   console.info(`claimInterface = ${ret}`);
   ret = usbManager.releaseInterface(devicepipe, interfaces);
   console.info(`releaseInterface = ${ret}`);
@@ -410,7 +410,7 @@ releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number
 **示例：**
 
 ```ts
-function releaseInterface() {
+async function releaseInterface() {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
     console.info(`device list is empty`);
@@ -418,7 +418,7 @@ function releaseInterface() {
   }
 
   let device: usbManager.USBDevice = devicesList?.[0];
-  usbManager.requestRight(device.name);
+  await usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   let ret: number = usbManager.claimInterface(devicepipe, interfaces);
@@ -447,7 +447,7 @@ setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 设置设备配置成功返回0；设置设备配置失败返回其他错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。<br>- -17：I/O失败。|
+| number | 返回设置设备配置操作的结果。设置设备配置成功返回0；设置设备配置失败返回其他错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。<br>- -17：I/O失败。|
 
 **错误码：**
 
@@ -461,7 +461,7 @@ setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): number
 **示例：**
 
 ```ts
-function setConfiguration() {
+async function setConfiguration() {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
     console.info(`device list is empty`);
@@ -469,10 +469,10 @@ function setConfiguration() {
   }
 
   let device: usbManager.USBDevice = devicesList?.[0];
-  usbManager.requestRight(device.name);
+  await usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   let config: usbManager.USBConfiguration = device.configs?.[0];
-  let ret: number= usbManager.setConfiguration(devicepipe, config);
+  let ret: number = usbManager.setConfiguration(devicepipe, config);
   console.info(`setConfiguration = ${ret}`);
   usbManager.closePipe(devicepipe);
 }
@@ -503,7 +503,7 @@ setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 设置设备接口成功返回0；设置设备接口失败返回其他错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。|
+| number | 返回设置设备接口操作的结果。设置设备接口成功返回0；设置设备接口失败返回其他错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。可能原因：1、设备连接不稳定或已断开；2、USB驱动加载失败；3、内核USB模块异常。|
 
 **错误码：**
 
@@ -517,7 +517,7 @@ setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 **示例：**
 
 ```ts
-function setInterface() {
+async function setInterface() {
   let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
   if (!devicesList || devicesList.length == 0) {
     console.info(`device list is empty`);
@@ -525,7 +525,7 @@ function setInterface() {
   }
 
   let device: usbManager.USBDevice = devicesList?.[0];
-  usbManager.requestRight(device.name);
+  await usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   let ret: number = usbManager.claimInterface(devicepipe, interfaces);
@@ -643,7 +643,7 @@ usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, ti
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线地址和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。 |
 | requestparam | [USBDeviceRequestParams](#usbdevicerequestparams12) | 是 | 控制传输参数，包含bmRequestType、bRequest、wValue、wIndex、wLength、data等字段，参数传参类型请参考USB协议规范，根据具体设备和控制请求类型设置。 |
-| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。用户按需选择。 |
+| timeout | number | 否 | 超时时间（单位：毫秒），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认值为0，表示无限等待直到传输完成。用户按需选择。取值范围：[0, +∞)。 |
 
 **返回值：**
 
@@ -667,7 +667,7 @@ let param: usbManager.USBDeviceRequestParams = {
   bmRequestType: 0x80,
   bRequest: 0x06,
 
-  wValue:0x01 << 8 | 0,
+  wValue: 0x01 << 8 | 0,
   wIndex: 0,
   wLength: 18,
   data: new Uint8Array(18)
@@ -683,9 +683,12 @@ function usbControlTransfer() {
   usbManager.requestRight(devicesList?.[0]?.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   usbManager.usbControlTransfer(devicepipe, param).then((ret: number) => {
-  console.info(`usbControlTransfer = ${ret}`);
-  })
-  usbManager.closePipe(devicepipe);
+    console.info(`usbControlTransfer = ${ret}`);
+  }).catch((error: BusinessError) => {
+    console.error(`usbControlTransfer failed: ${error.code}, message: ${error.message}`);
+  }).finally(() => {
+    usbManager.closePipe(devicepipe);
+  });
 }
 ```
 
@@ -693,7 +696,7 @@ function usbControlTransfer() {
 
 bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, timeout ?: number): Promise&lt;number&gt;
 
-批量传输。调用成功后完成批量数据传输，返回实际传输或接收到的数据块大小。使用Promise异步回调。
+批量传输。调用成功后完成批量数据传输，返回实际传输或接收到的数据块大小。使用Promise异步回调。与usbSubmitTransfer相比，bulkTransfer适合简单的批量传输场景，通过独立参数直接传递数据和端点，使用Promise异步返回结果；usbSubmitTransfer适合需要更灵活控制的场景，通过UsbDataTransferParams对象封装参数，支持异步callback回调，并可通过usbCancelTransfer取消传输请求。
 
 > **说明：** 
 >
