@@ -2046,7 +2046,7 @@ getAddressesByNameWithOptions(host: string, option?: QueryOptions): Promise\<Arr
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -2096,7 +2096,7 @@ connection.getAddressesByNameWithOptions("www.example.com", option).then((data: 
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称 | 类型  | 只读 | 可选 | 说明               |
 | ------ | ------| ---- | ---- | ------------------ |
@@ -2110,7 +2110,7 @@ connection.getAddressesByNameWithOptions("www.example.com", option).then((data: 
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称  |值         | 说明               |
 | ------ |---------- | ------------------ |
@@ -2548,7 +2548,7 @@ setPacFileUrl(pacFileUrl: string): void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -2583,7 +2583,7 @@ getPacFileUrl(): string
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **返回值：**
 
@@ -2624,7 +2624,7 @@ findProxyForUrl(url: string): string
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -2953,7 +2953,7 @@ getIpNeighTable(): Promise\<Array\<NetIpMacInfo>>
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -3009,7 +3009,7 @@ ArkTS-Dyn: getConnectOwnerUid(protocol: ProtocolType, local: NetAddress, remote:
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -3073,7 +3073,7 @@ ArkTS-Sta: getConnectOwnerUidSync(protocol: ProtocolType, local: NetAddress, rem
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3184,7 +3184,7 @@ getDnsUnicode(host: string, flag?: ConversionProcess): string
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -3242,7 +3242,7 @@ getSystemNetPortStates(): Promise\<NetPortStatesInfo>
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -3542,7 +3542,7 @@ netCon.unregister((error: BusinessError|null) => {
 
 ### on('netAvailable')
 
-on(type: 'netAvailable', callback: Callback\<NetHandle>): void
+on(type: 'netAvailable', callback: Callback\<NetHandle\>): void
 
 订阅网络可用事件。此接口需在调用register接口之前调用。若无需接收网络状态变化的回调通知，应使用unregister取消订阅默认的网络状态变化通知。
 
@@ -3552,7 +3552,7 @@ on(type: 'netAvailable', callback: Callback\<NetHandle>): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -3562,8 +3562,6 @@ on(type: 'netAvailable', callback: Callback\<NetHandle>): void
 | callback | Callback\<[NetHandle](#nethandle)> | 是   | 回调函数，返回数据网络句柄。|
 
 **示例：**
-
-ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3588,30 +3586,6 @@ netCon.unregister((error: BusinessError) => {
 
 ```
 
-ArkTS-Sta示例：
-```ts
-import { connection } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 创建NetConnection对象。
-let netCon: connection.NetConnection = connection.createNetConnection();
-
-// 先使用on接口订阅网络可用事件。
-netCon.on('netAvailable', (data: connection.NetHandle|undefined) => {
-  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
-});
-
-// 注册网络状态变化事件。此接口要在调用on后调用。
-netCon.register((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
-});
-
-// 使用unregister接口取消订阅网络可用事件。
-netCon.unregister((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
-});
-```
-
 ### on('netBlockStatusChange')
 
 on(type: 'netBlockStatusChange', callback: Callback\<NetBlockStatusInfo>): void
@@ -3621,8 +3595,6 @@ on(type: 'netBlockStatusChange', callback: Callback\<NetBlockStatusInfo>): void
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
 **ArkTS-Dyn起始版本：** 8
-
-**ArkTS-Sta起始版本：** 23
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3661,34 +3633,9 @@ netCon.unregister((error: BusinessError) => {
 
 ```
 
-ArkTS-Sta示例：
-```ts
-import { connection } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 创建NetConnection对象。
-let netCon: connection.NetConnection = connection.createNetConnection();
-
-// 先使用on接口订阅网络阻塞状态事件。
-netCon.on('netBlockStatusChange', (data: connection.NetBlockStatusInfo|undefined) => {
-  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
-});
-
-// 注册网络状态变化事件。此接口要在调用on后调用。
-netCon.register((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
-});
-
-// 使用unregister接口取消订阅网络阻塞状态事件。
-netCon.unregister((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
-});
-```
-
-
 ### onNetBlockStatusChange
 
-onNetBlockStatusChange(callback: Callback\<NetBlockStatusInfo>): void;
+onNetBlockStatusChange(callback: Callback\<NetBlockStatusInfo\>): void;
 
 订阅网络阻塞状态事件。此接口需要在调用register接口之前调用。若无需接收网络状态变化的回调通知，应使用unregister取消订阅默认的网络状态变化通知。
 
@@ -3744,9 +3691,7 @@ on(type: 'netCapabilitiesChange', callback: Callback\<NetCapabilityInfo\>): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 23
-  
- **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -3757,7 +3702,6 @@ on(type: 'netCapabilitiesChange', callback: Callback\<NetCapabilityInfo\>): void
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3781,30 +3725,6 @@ netCon.unregister((error: BusinessError) => {
 });
 ```
 
-ArkTS-Sta示例：
-```ts
-import { connection } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 创建NetConnection对象。
-let netCon: connection.NetConnection = connection.createNetConnection();
-
-// 先使用on接口订阅网络能力变化事件。
-netCon.on('netCapabilitiesChange', (data: connection.NetCapabilityInfo|undefined) => {
-  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
-});
-
-// 注册网络状态变化事件。此接口要在调用on后调用。
-netCon.register((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
-});
-
-// 使用unregister接口取消订阅网络能力变化事件。
-netCon.unregister((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
-});
-```
-
 ### on('netConnectionPropertiesChange')
 
 on(type: 'netConnectionPropertiesChange', callback: Callback\<NetConnectionPropertyInfo\>): void
@@ -3815,7 +3735,7 @@ on(type: 'netConnectionPropertiesChange', callback: Callback\<NetConnectionPrope
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -3826,7 +3746,6 @@ on(type: 'netConnectionPropertiesChange', callback: Callback\<NetConnectionPrope
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3851,30 +3770,6 @@ netCon.unregister((error: BusinessError) => {
 
 ```
 
-ArkTS-Sta示例：
-```ts
-import { connection } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 创建NetConnection对象。
-let netCon: connection.NetConnection = connection.createNetConnection();
-
-// 先使用on接口订阅网络连接信息变化事件。
-netCon.on('netConnectionPropertiesChange', (data: connection.NetConnectionPropertyInfo|undefined) => {
-  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
-});
-
-// 注册网络状态变化事件。此接口要在调用on后调用。
-netCon.register((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
-});
-
-// 使用unregister接口取消订阅网络连接信息变化事件。
-netCon.unregister((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
-});
-```
-
 ### on('netLost')
 
 on(type: 'netLost', callback: Callback\<NetHandle>): void
@@ -3887,8 +3782,6 @@ on(type: 'netLost', callback: Callback\<NetHandle>): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 23
-
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
@@ -3899,8 +3792,6 @@ on(type: 'netLost', callback: Callback\<NetHandle>): void
 | callback | Callback\<[NetHandle](#nethandle)> | 是   | 回调函数，数据网络句柄(netHandle)。|
 
 **示例：**
-
-ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3924,34 +3815,10 @@ netCon.unregister((error: BusinessError) => {
 });
 
 ```
-
-ArkTS-Sta示例：
-```ts
-import { connection } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 创建NetConnection对象。
-let netCon: connection.NetConnection = connection.createNetConnection();
-
-// 先使用on接口订阅网络丢失事件
-netCon.on('netLost', (data: connection.NetHandle|undefined) => {
-  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
-});
-
-// 注册网络状态变化事件。此接口要在调用on后调用。
-netCon.register((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
-});
-
-// 使用unregister接口取消订阅网络丢失事件。
-netCon.unregister((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
-});
-```
   
 ### onNetLost
 
-onNetLost(callback: Callback\<NetHandle>): void
+onNetLost(callback: Callback\<NetHandle\>): void
 
 订阅网络丢失事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
 
@@ -4007,8 +3874,6 @@ on(type: 'netUnavailable', callback: Callback\<void>): void
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 23
-
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
@@ -4019,8 +3884,6 @@ on(type: 'netUnavailable', callback: Callback\<void>): void
 | callback | Callback\<void> | 是   | 回调函数，无返回结果。|
 
 **示例：**
-
-ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -4045,33 +3908,9 @@ netCon.unregister((error: BusinessError) => {
 
 ```
 
-ArkTS-Sta示例：
-```ts
-import { connection } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-// 创建NetConnection对象。
-let netCon: connection.NetConnection = connection.createNetConnection();
-
-// 先使用on接口订阅网络不可用事件。
-netCon.on('netUnavailable', () => {
-  console.info("Succeeded to get unavailable net event");
-});
-
-// 注册网络状态变化事件。此接口要在调用on后调用。
-netCon.register((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
-});
-
-// 使用unregister接口取消订阅网络不可用事件。
-netCon.unregister((error: BusinessError|null) => {
-  console.error(JSON.stringify(error));
-});
-```
-
 ### onNetUnavailable
 
-onNetUnavailable(callback: Callback\<void>): void
+onNetUnavailable(callback: Callback\<void\>): void
 
 订阅网络不可用事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
 
@@ -4659,6 +4498,10 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                  | 值   | 说明                   |
 | ------------------------ | ---- | ---------------------- |
 | NET_CAPABILITY_MMS | 0 | 表示网络可以访问运营商的MMSC（Multimedia&nbsp;Message&nbsp;Service，多媒体短信服务）发送和接收彩信。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 23 |
@@ -4675,6 +4518,9 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 |            名称         | 值   | 说明        |
 | ----------------------- | ---- | ---------- |
@@ -4692,7 +4538,7 @@ ASCII/Unicode转码转换流程参数的枚举。
 
 **ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称 | 值 | 说明 |
 | ---------------- | --------------- | --------------------------- |
@@ -4710,7 +4556,7 @@ TCP状态。
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 |            名称         | 值   | 说明        |
 | ----------------------- | ---- | ---------- |
@@ -5059,7 +4905,7 @@ IP邻居表条目信息。
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
@@ -5098,7 +4944,7 @@ TCP端口状态信息。
 | ------ | ------ | --- |---|------------------------- |
 | tcpLocalIp    | string | 否 | 否 |TCP网络本地IP地址。                       |
 | tcpLocalPort  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 |TCP网络本地端口，取值范围\[0, 65535]。 |
-| tcpRemoteIp   | string | 否 | 是 |TCP网络远程IP地址。  |
+| tcpRemoteIp   | string | 否 | 否 |TCP网络远程IP地址。  |
 | tcpRemotePort | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 |TCP网络远程端口，取值范围\[0, 65535]。 |
 | tcpUid        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 |监听该TCP端口的用户UID。 |
 | tcpPid        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 |监听该TCP端口的进程PID。 |
