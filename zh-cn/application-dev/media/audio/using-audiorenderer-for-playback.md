@@ -293,7 +293,7 @@ async function initArguments(context: common.UIAbilityContext) {
       if (bufferSize > file.length) {
         let view = new DataView(buffer);
         for (let i = bufferSize - file.length; i < buffer.byteLength; i++) {
-          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x7F为静音数据，使用其他采样格式时0为静音数据。
+          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x80为静音数据，使用其他采样格式时0为静音数据。
           view.setUint8(i, 0);
         }
       }
@@ -321,7 +321,7 @@ async function init() {
         // ...
       }
     } else {
-      console.info(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
+      console.error(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
       // ...
     }
   });
@@ -395,7 +395,7 @@ async function stop() {
 }
 
 // 销毁实例，释放资源。
-async function release() {
+async function release(context: common.UIAbilityContext) {
   if (audioRenderer !== undefined) {
     // 渲染器状态不是released状态，才能release。
     if (audioRenderer.state.valueOf() === audio.AudioState.STATE_RELEASED) {
@@ -412,10 +412,11 @@ async function release() {
         console.error(`Failed to release audio renderer. Code: ${err.code}, message: ${err.message}`);
         // ...
       } else {
-        // 关闭沙箱文件。
         console.info('Succeeded in releasing audio renderer.');
         // ...
       }
+      // 关闭沙箱文件。
+ 	    await context.resourceManager.closeRawFd('S16LE_2_48000.pcm');
     });
   }
 }

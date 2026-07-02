@@ -136,8 +136,8 @@ OH_AudioStreamBuilder_Destroy(builder);
    {
        // 将待播放的数据，按audioDataSize长度写入audioData。
        // 如果开发者不希望播放某段audioData，返回AUDIO_DATA_CALLBACK_RESULT_INVALID即可。
-       int32_t readCount = fread(audioData, audioDataSize, 1, g_fp);
-       if (readCount < 0) {
+       size_t readCount = fread(audioData, audioDataSize, 1, g_fp);
+       if (readCount == 0) {
            return AUDIO_DATA_CALLBACK_RESULT_INVALID;
        }
        if (feof(g_fp)) {
@@ -223,7 +223,7 @@ OH_AudioStreamBuilder_Destroy(builder);
 <!-- @[Render_SetVolume](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
 ``` C++
-float volume = 0.5f;
+float volume = 0.1f;
 
 // 设置当前音频流音量值。
 OH_AudioRenderer_SetVolume(audioRenderer, volume);
@@ -243,7 +243,9 @@ OH_AudioRenderer_SetVolume(audioRenderer, volume);
 <!-- @[Render_SetLatencyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
 ``` C++
-OH_AudioStreamBuilder_SetLatencyMode(builder, AUDIOSTREAM_LATENCY_MODE_FAST);
+OH_AudioStream_LatencyMode latencyMode = g_mode == 0 ? AUDIOSTREAM_LATENCY_MODE_NORMAL :
+    AUDIOSTREAM_LATENCY_MODE_FAST;
+OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 ```
 
 ### 设置音频声道布局
