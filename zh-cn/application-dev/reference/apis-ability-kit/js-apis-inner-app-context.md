@@ -134,7 +134,7 @@ bundle.getBundleInfo('com.context.test', 1, (err: BusinessError, datainfo: bundl
     });
 });
 ```
-示例代码中出现的getBundleInfo相关描述可参考对应[文档](js-apis-bundleManager.md)。
+示例代码中出现的getBundleInfo相关描述可参考对应[@ohos.bundle.bundleManager (应用程序包管理模块)](js-apis-bundleManager.md)。
 
 
 
