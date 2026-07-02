@@ -1269,7 +1269,7 @@ observer.onCommunicationStateChange(callback, options);
 
 offCommunicationStateChange\(callback?: Callback\<boolean\>, options?:ObserverOptions\): void
 
-去订阅5A网络状态变化事件，使用callback异步回调。
+取消订阅5A网络状态变化事件，使用callback异步回调。
 
 **起始版本：** 26.0.0
 
