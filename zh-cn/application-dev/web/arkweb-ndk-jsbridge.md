@@ -142,15 +142,16 @@
   ``` C++
   // 注册对象
   OH_LOG_Print(
-      LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit RegisterJavaScriptProxy begin");
+      LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "Native Development Kit registerJavaScriptProxyEx begin");
   ArkWeb_ProxyMethodWithResult method1 = {
       "method1", ProxyMethod1, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr())};
   ArkWeb_ProxyMethodWithResult method2 = {
       "method2", ProxyMethod2, static_cast<void *>(jsbridge_object_ptr->GetWeakPtr())};
   ArkWeb_ProxyMethodWithResult methodList[2] = {method1, method2};
   // 调用Native Development Kit接口注册对象
-  // 如此注册的情况下，在H5页面就可以使用proxy.method1、proxy.method1调用此文件下的ProxyMethod1和ProxyMethod2方法了
+  // 如此注册的情况下，在H5页面就可以使用proxy.method1、proxy.method2调用此文件下的ProxyMethod1和ProxyMethod2方法了
   ArkWeb_ProxyObjectWithResult proxyObject = {"ndkProxy", methodList, 2};
+  // 参数permission为空，表示不进行权限管控
   controller->registerJavaScriptProxyEx(webTag, &proxyObject, "");
   ```
 
