@@ -8193,6 +8193,16 @@
 						"start_line":19
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/InputDeviceRoutingSwitching.ets",
+				"functions":[
+					{
+						"end_line":239,
+						"name":"select_MediaInputDevice",
+						"start_line":17
+					}
+				]
 			}
 		]
 	},
@@ -8276,6 +8286,36 @@
 						"end_line":337,
 						"name":"onCurrentOutputDeviceChanged",
 						"start_line":26
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioOutputDevice.ets",
+				"functions":[
+					{
+						"end_line":77,
+						"name":"deviceChange_output",
+						"start_line":18
+					},
+					{
+						"end_line":187,
+						"name":"get_PreferOutputDeviceForRendererInfo",
+						"start_line":19
+					},
+					{
+						"end_line":141,
+						"name":"listen_OutputDeviceChangeForRendererInfo",
+						"start_line":20
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/ListenDeviceByAudioSession.ets",
+				"functions":[
+					{
+						"end_line":165,
+						"name":"set_DefaultOutputDevice",
+						"start_line":16
 					}
 				]
 			}
