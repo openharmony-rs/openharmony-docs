@@ -116,7 +116,7 @@
 ## 为组件添加角度渐变效果
 
 
-  <!-- @[Direction_Gradient_Effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GradientEffect/entry/src/main/ets/homePage/DirectionGradientEffect.ets) -->
+  <!-- @[Direction_Gradient_Effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GradientEffect/entry/src/main/ets/homePage/DirectionGradientEffect.ets) -->  
   
   ``` TypeScript
   @Entry
@@ -226,6 +226,7 @@
     }
   }
   ```
+
 ![zh-cn_image_0000001641177073](figures/zh-cn_image_0000001641177073.png)
 
 
@@ -336,4 +337,5 @@
     }
   }
   ```
+
 ![zh-cn_image_0000001592904050](figures/zh-cn_image_0000001592904050.png)
