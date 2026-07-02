@@ -29,7 +29,7 @@ import { backup } from '@kit.CoreFileKit';
 | ---------- | ------ | ---- | ---- |--------------------------------------------------------------------------------------------------- |
 | bundleName | string | 否   | 否 | 应用名称，可通过[bundleManager.BundleInfo](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md)提供的获取方式获取。 |
 | uri        | string | 否   | 否 | 应用沙箱内待传输文件的名称，当前uri尚未升级为标准格式，仅接受0-9a-zA-Z下划线(_)点(.)组成的名称。      |
-| uris        | Array&lt;string&gt; | 否   | 是 | 应用沙箱内待传输文件的名称数组，当前uris尚未升级为标准格式，仅接受0-9a-zA-Z下划线(_)点(.)组成的名称。      |
+| uris        | Array&lt;string&gt; | 否   | 是 | 应用沙箱内待传输文件的名称数组，当前uris尚未升级为标准格式，仅接受0-9a-zA-Z下划线(_)点(.)组成的名称。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**起始版本**：26.0.0      |
 
 ## FileData
 
@@ -459,26 +459,28 @@ onProcess (bundleName: string, process: string): void
 
 ### onFileReadyBatch
 
-**起始版本**：26.0.0
-
 onFileReadyBatch: OnFileReadyBatch
 
-当一批文件准备好发送给客户端时调用。如果回调成功执行，则返回[Array&lt;File&gt;](#file)。否则，返回一个**err**对象。
+回调函数。当一批文件准备好发送给客户端时调用。使用callback异步回调。当获取文件句柄成功，error为undefined，files为获取到的文件句柄数组；否则为错误对象。
 
-> **NOTE**
+> **说明**
 >
-> **OnFileReadyBatch**返回的**Array&lt;File&gt;**是文件数组 file.backup.[File](#file)。返回的文件属于备份服务。一旦文件关闭，备份服务应清理该文件所使用的资源。但是，客户端必须先关闭文件句柄。
+> OnFileReadyBatch返回的Array&lt;File&gt;是文件数组[backup.File](#file)。返回的文件属于备份服务。一旦文件关闭，备份服务应清理该文件所使用的资源。但是，客户端必须先关闭文件句柄。
+
+**系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
 **系统接口**：此接口为系统接口。
 
-**系统能力**：SystemCapability.FileManagement.StorageService.Backup
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**起始版本**：26.0.0
 
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                            |
 | ---------- | ------ | ---- | ------------------------------- |
-| error | BusinessError&lt;void&gt; | 是   | 返回错误。                        |
-| files     | Array&lt;File&gt; | 是   | [Array&lt;File&gt;](#file) 的信息。 |
+| error | BusinessError&lt;void&gt; | 是   | 当获取文件句柄成功，error为undefined；否则为错误对象。 |
+| files     | Array&lt;[File](#file)&gt; | 是   | 当获取文件句柄成功，返回获取到的文件句柄数组。 |
 
 **错误码：**
 
@@ -486,6 +488,7 @@ onFileReadyBatch: OnFileReadyBatch
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
+| 202      | Permission verification failed, application which is not a system application uses system API. |
 | 13600001 | IPC error.               |
 | 13900005 | I/O error.               |
 | 13900011 | Out of memory.           |
@@ -499,9 +502,9 @@ onFileReadyBatch: OnFileReadyBatch
   import { BusinessError } from '@kit.BasicServicesKit';
   import { fileIo, backup } from '@kit.CoreFileKit';
 
-  onFileReadyBatch: (error: BusinessError<void>, files: Array<File>) => void {
-    if (err) {
-      console.error(`onFileReadyBatch failed. Code: ${err.code}, message: ${err.message}`);
+  const onFileReadyBatch: backup.OnFileReadyBatch = (error: BusinessError<void>, files: Array<backup.File>): void => {
+    if (error) {
+      console.error(`onFileReadyBatch failed. Code: ${error.code}, message: ${error.message}`);
       return;
     }
     for (let file of files) {
@@ -1015,22 +1018,24 @@ type OnBackupSizeReport = (reportInfo: string) => void
 
 ## OnFileReadyBatch
 
-**起始版本**：26.0.0
+type OnFileReadyBatch = (error: BusinessError&lt;void&gt;, files: Array&lt;[File](#file)&gt;) => void
 
-type OnFileReadyBatch = (error: BusinessError&lt;void&gt;, files: Array&lt;File&gt;) => void
+当服务器将文件发送回客户端时触发的回调函数。当获取文件句柄成功，error为undefined，files为获取到的文件句柄数组；否则为错误对象。
 
-当服务器将文件发送回客户端时，如果回调成功触发，则返回一个包含文件内容的数组；如果回调失败，则返回一个**err**错误对象。
+**系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
 **系统接口**：此接口为系统接口。
 
-**系统能力**：SystemCapability.FileManagement.StorageService.Backup
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**起始版本**：26.0.0
 
 **参数：**
 
 | 参数名     | 类型   | 必填 | 说明                            |
 | ---------- | ------ | ---- | ------------------------------- |
-| error | BusinessError&lt;void&gt; | 是   | 返回错误。                        |
-| files     | Array&lt;File&gt; | 是   | [Array&lt;File&gt;](#file) 的信息。 |
+| error | BusinessError&lt;void&gt; | 是   | 当获取文件句柄成功，error为undefined；否则为错误对象。 |
+| files     | Array&lt;[File](#file)&gt; | 是   | 当获取文件句柄成功，返回获取到的文件句柄数组。 |
 
 **示例：**
 
@@ -1038,9 +1043,9 @@ type OnFileReadyBatch = (error: BusinessError&lt;void&gt;, files: Array&lt;File&
   import { BusinessError } from '@kit.BasicServicesKit';
   import { fileIo, backup } from '@kit.CoreFileKit';
 
-  onFileReadyBatch: (error: BusinessError<void>, files: Array<File>) => void {
-    if (err) {
-      console.error(`onFileReadyBatch failed. Code: ${err.code}, message: ${err.message}`);
+  const onFileReadyBatch: backup.OnFileReadyBatch = (error: BusinessError<void>, files: Array<backup.File>): void => {
+    if (error) {
+      console.error(`onFileReadyBatch failed. Code: ${error.code}, message: ${error.message}`);
       return;
     }
     for (let file of files) {
@@ -3577,11 +3582,9 @@ async function testGetApkFileHandle() {
 
 ### getFileHandles
 
-**起始版本**：26.0.0
-
 getFileHandles(fileMeta: FileMeta): Promise&lt;void&gt;
 
-从服务中获取共享文件的句柄。该接口使用Promise方式返回结果。
+从服务中获取共享文件的句柄。使用Promise异步回调。
 
 > **说明**
 >
@@ -3591,11 +3594,15 @@ getFileHandles(fileMeta: FileMeta): Promise&lt;void&gt;
 > - 根据待恢复文件数量，可多次调用**getFileHandles**接口。
 > - 待恢复文件不能是相对路径（../）或软链接。
 
+**系统能力**：SystemCapability.FileManagement.StorageService.Backup
+
 **系统接口**：此接口为系统接口。
 
-**需要权限**：ohos.permission.BACKUP
+**模型约束**：此接口仅可在Stage模型下使用。
 
-**系统能力**：SystemCapability.FileManagement.StorageService.Backup
+**起始版本**：26.0.0
+
+**需要权限**：ohos.permission.BACKUP
 
 **参数：**
 
@@ -3611,19 +3618,20 @@ getFileHandles(fileMeta: FileMeta): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
+| 202      | Permission verification failed, application which is not a system application uses system API. |
 | 13600001 | IPC error.              |
 | 13900001 | Operation not permitted. |
 | 13900020 | Invalid argument.        |
-| 13900042 | Unknown error.          |
 
 **示例：**
 
   ```ts
-  import { fileIo, backup} from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let generalCallbacks: backup.GeneralCallbacks = {
@@ -3635,9 +3643,9 @@ getFileHandles(fileMeta: FileMeta): Promise&lt;void&gt;
       console.info('onFileReady success');
       fileIo.closeSync(file.fd);
     },
-    onFileReadyBatch: (error: BusinessError<void>, files: Array<File>) => void {
-      if (err) {
-        console.error(`onFileReadyBatch failed. Code: ${err.code}, message: ${err.message}`);
+    onFileReadyBatch: (error: BusinessError<void>, files: Array<backup.File>): void => {
+      if (error) {
+        console.error(`onFileReadyBatch failed. Code: ${error.code}, message: ${error.message}`);
         return;
       }
       for (let file of files) {
@@ -3684,7 +3692,7 @@ getFileHandles(fileMeta: FileMeta): Promise&lt;void&gt;
         bundleName: "com.example.hiworld",
         uri: "test.txt",
         uris: testArray
-      }
+      };
       await sessionRestore.getFileHandles(fileMeta);
       console.info('getFileHandles success');
     } catch (error) {
