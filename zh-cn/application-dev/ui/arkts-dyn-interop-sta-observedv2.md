@@ -13,7 +13,7 @@
 
 - 不能在非UI线程中直接修改ArkTS-Dyn组件中使用的ArkTS-Sta @ObservedV2装饰的数据成员的值，否则会运行异常；
 
-- 遵循ArkTS-Sta互操作规范，如不支持ArkTS-Sta对象继承ArkTS-Dyn对象。
+- 遵循[ArkTS-Sta互操作](../quick-start/arkts-interop-overview.md)规范，如不支持ArkTS-Sta对象继承ArkTS-Dyn对象。
 
 
 ## 使用场景

@@ -2132,7 +2132,7 @@ struct Index {
 
 使用[resolveUIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#resolveuicontext22)方法获取[ResolvedUIContext](../reference/apis-arkui/arkts-apis-uicontext-resolveduicontext.md)实例，再通过此实例调用对应方法来作为替代。
 
-对于在自定义组件中使用废弃接口的场景，UI组件适配（特殊场景）中介绍了一种替代的适配方法。
+对于在自定义组件中使用废弃接口的场景，[UI组件适配（特殊场景）](./arkts-sta-deprecated-special-scene.md)中介绍了一种替代的适配方法。
 
 **示例：**
 
@@ -2495,7 +2495,7 @@ struct Index {
 
 **规则解释：**
 
-在ArkTS-Sta中，[@ComponentReuse](../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentreuse)装饰的方法，接受的入参类型由`Record`变更为ReuseObject。
+在ArkTS-Sta中，[@ComponentReuse](../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentreuse)装饰的方法，接受的入参类型由`Record`变更为[ReuseObject](../reference/apis-arkui/arkui-ts/ts-custom-component-api-sta.md#reuseobject)。
 
 **变更原因：**
 
