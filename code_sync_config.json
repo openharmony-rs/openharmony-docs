@@ -16058,7 +16058,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template11/OnWillDismiss_Dismiss.ets",
 				"functions":[
 					{
-						"end_line":86,
+						"end_line":87,
 						"name":"onWillDismiss_Dismiss",
 						"start_line":16
 					}
@@ -25418,7 +25418,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template3/Index.ets",
 				"functions":[
 					{
-						"end_line":111,
+						"end_line":112,
 						"name":"animator_template3_start",
 						"start_line":15
 					}
