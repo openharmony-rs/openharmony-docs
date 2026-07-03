@@ -90,6 +90,18 @@
 3. 查询绝对静止状态的进入事件。
 
    <!-- @[stationary_getStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/Stationary/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   try {
+     stationary.once('still', (data) => {
+       console.info('data=' + JSON.stringify(data));
+     })
+     // ...
+   } catch (error) {
+     let message = (error as BusinessError).message;
+     console.error('stationary once failed:' + message);
+   }
+   ```
 
 4. 取消订阅绝对静止状态的进入事件。
 
