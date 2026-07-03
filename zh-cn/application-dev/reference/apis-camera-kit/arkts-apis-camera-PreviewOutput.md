@@ -730,7 +730,7 @@ async function preview(cameraManager: camera.CameraManager, cameraInfo: camera.C
 
 isLogViewAssistSupported(): boolean
 
-LOG视频下，查询是否支持辅助监看功能。
+LOG视频下，查询是否支持辅助监看功能。辅助监看开启后，预览画面恢复至原色域，录制出的视频仍然是LOG视频格式。
 
 > **说明：**
 >
