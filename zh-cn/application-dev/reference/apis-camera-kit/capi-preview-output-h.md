@@ -592,4 +592,4 @@ Camera_ErrorCode OH_PreviewOutput_SetLogViewAssistEnable(Camera_PreviewOutput* p
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     CAMERA_ERROR_CAPABILITY_NOT_SUPPORTED: 表示设备当前不支持该能力。<br>    CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SESSION_NOT_CONFIG：相机会话未配置。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>     CAMERA_ERROR_CAPABILITY_NOT_SUPPORTED：表示设备当前不支持该能力。<br>    CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_SESSION_NOT_CONFIG：相机会话未配置。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
