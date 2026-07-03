@@ -1079,7 +1079,7 @@ Obtains the public key data that complies with the ASN.1 syntax and DER encoding
 
 | Name| Type                 | Mandatory| Description                |
 | ---- | --------------------- | ---- | -------------------- |
-| format  | string | Yes  | Format of the key. The value can be **X509|COMPRESSED** or **X509|UNCOMPRESSED**.|
+| format  | string | Yes  | Format of the key. The value can be **X509\|COMPRESSED** or **X509|UNCOMPRESSED**.|
 
 **Return value**
 
@@ -7429,7 +7429,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name | Type  | Mandatory| Description                             |
 | ------- | ------ | ---- | --------------------------------- |
-| algName | string | Yes  | Key derivation algorithm (including the hash function for the HMAC). Currently, only PBKDF2, HKDF, and scrypt are supported. For example, **PBKDF2|SHA256**, **HKDF|SHA256**, or **SCRYPT**.<br>For details about the supported specifications, see [Key Derivation Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-key-derivation-overview.md).|
+| algName | string | Yes  | Key derivation algorithm (including the hash function for the HMAC). Currently, only PBKDF2, HKDF, and scrypt are supported. For example, **PBKDF2\|SHA256**, **HKDF\|SHA256**, or **SCRYPT**.<br>For details about the supported specifications, see [Key Derivation Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-key-derivation-overview.md).|
 
 **Return value**
 
