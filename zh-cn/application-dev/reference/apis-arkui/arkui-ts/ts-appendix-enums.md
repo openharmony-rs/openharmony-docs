@@ -896,17 +896,17 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称          | 说明    |
-| ----------- | ----- |
-| Left        | 从右向左。 |
-| Top         | 从下向上。 |
-| Right       | 从左向右。 |
-| Bottom      | 从上向下。 |
-| LeftTop     | 从左上向右下。   |
-| LeftBottom  | 从左下向右上。   |
-| RightTop    | 从右上向左下。   |
-| RightBottom | 从右下向左上。   |
-| None        | 无。    |
+| 名称          | 值 | 说明    |
+| ----------- | - | ----- |
+| Left        | 0 | 从右向左。 |
+| Top         | 1 | 从下向上。 |
+| Right       | 2 | 从左向右。 |
+| Bottom      | 3 | 从上向下。 |
+| LeftTop     | 4 | 从左上向右下。   |
+| LeftBottom  | 5 | 从左下向右上。   |
+| RightTop    | 6 | 从右上向左下。   |
+| RightBottom | 7 | 从右下向左上。   |
+| None        | 8 | 无。    |
 
 ## GestureShortcut
 
