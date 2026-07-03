@@ -28,15 +28,6 @@
 
 1. 导入模块。
 
-    ArkTS-Dyn示例：
-
-    ```typescript
-    import { notificationManager } from '@kit.NotificationKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    ```
-
-    ArkTS-Sta示例：
-
     ```typescript
     import { notificationManager } from '@kit.NotificationKit';
     import { BusinessError } from '@kit.BasicServicesKit';
