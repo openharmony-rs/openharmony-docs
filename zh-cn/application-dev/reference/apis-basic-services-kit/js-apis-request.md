@@ -7652,7 +7652,6 @@ start(): Promise&lt;void&gt;
   | -------- | -------- |
   | 201 | Permission denied. |
   | 13400003 | Task service ability error. |
-  | 21900005 | Operation with wrong task mode.<br> 适用版本：10-10 |
   | 21900007 | Operation with wrong task state. |
 
 **示例：**
@@ -8146,6 +8145,7 @@ resume(): Promise&lt;void&gt;
   | -------- | -------- |
   | 201 | Permission denied. |
   | 13400003 | Task service ability error. |
+  | 21900005 | Operation with wrong task mode.<br> 适用版本：10-10 |
   | 21900007 | Operation with wrong task state. |
 
 **示例：**
