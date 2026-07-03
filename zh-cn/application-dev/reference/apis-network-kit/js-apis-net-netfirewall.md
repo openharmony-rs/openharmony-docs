@@ -539,7 +539,9 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 防火墙规则信息结构。
 
 **系统能力**：SystemCapability.Communication.NetManager.NetFirewall
+
 **起始版本**：26.0.0
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 | 名称        | 类型                                                        |只读| 可选|说明                                                           |
