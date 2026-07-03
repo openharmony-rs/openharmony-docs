@@ -1403,3 +1403,17 @@ Allows an application to record downlink data of cellular calls.
 **Supported devices**: phones | tablets
 
 **Since**: 26.0.0
+
+## ohos.permission.DETECT_DEVICE
+
+Allows an application to invoke the smart diagnosis service to obtain data.
+
+<!--RP98--><!--RP98End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0
