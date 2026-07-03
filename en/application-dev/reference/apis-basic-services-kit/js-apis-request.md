@@ -4326,7 +4326,7 @@ Tasks in the following states can be started:
 | ------------------- | ------------------------- |
 | Promise&lt;void&gt; | Promise that returns no value.|
 
-**Error codes:**
+**Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
