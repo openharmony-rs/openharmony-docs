@@ -33,7 +33,7 @@ AudioHaptic提供音频与振动协同播放及管理的方法，适用于需要
 
    > **注意：**
    >
-   > - 单个应用最多支持同时注册128个资源，超过之后将会注册失败，返回注册的资源Id为负数。
+   > - 单个应用最多支持同时注册128个资源，超过之后将会注册失败，返回注册的资源ID为负数。
    > - 推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
 
    <!-- @[get_haptic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/haptic.ets) -->
