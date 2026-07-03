@@ -25,11 +25,11 @@ import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 
 applyEfficiencyResources(request: EfficiencyResourcesRequest): void
 
-申请或释放能效资源。
+申请或释放能效资源。释放操作仅对本次申请的资源生效。
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -84,7 +84,7 @@ resetAllEfficiencyResources(): void
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **错误码：**
 
@@ -122,7 +122,7 @@ getAllEfficiencyResources(): Promise&lt;EfficiencyResourcesInfo[]&gt;
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **返回值：**
 
@@ -170,7 +170,7 @@ setBackgroundTaskState(stateInfo: BackgroundTaskStateInfo): void
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -222,7 +222,7 @@ getBackgroundTaskState(stateInfo: BackgroundTaskStateInfo): UserAuthResult
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -279,7 +279,7 @@ obtainAllContinuousTasks(): Promise&lt;ContinuousTaskInfo[]&gt;
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **返回值：**
 
@@ -327,7 +327,7 @@ subscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -384,7 +384,7 @@ unsubscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -437,7 +437,7 @@ try {
 
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
-| WIFI_INTERACTION        | 7    | WLAN相关。<br>**系统API：** 此接口为系统接口。 |
+| WIFI_INTERACTION        | 7    | WLAN相关。<br>**系统接口：** 此接口为系统接口。 |
 
 ## EfficiencyResourcesRequest
 
@@ -445,7 +445,7 @@ try {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称             | 类型     | 只读   | 可选   | 说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
@@ -463,7 +463,7 @@ try {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
@@ -483,7 +483,7 @@ try {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称                             | 类型      | 只读   | 可选   | 说明          |
 |--------------------------------|---------| ---- | ---- |-------------|
@@ -502,7 +502,7 @@ try {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称                      | 值  | 说明                    |
 | ------------------------ | ---- | ---------------------  |
@@ -516,7 +516,7 @@ try {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称                     | 值  | 说明                    |
 | ------------------------ | ---- | --------------------- |
@@ -530,7 +530,7 @@ try {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称 | 类型                                  | 只读   | 可选 | 说明      |
 |--|-------------------------------------| ---- |----|---------|
@@ -547,7 +547,7 @@ try {
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 ### onContinuousTaskStart<sup>23+</sup>
 
@@ -559,7 +559,7 @@ onContinuousTaskStart(info: ContinuousTaskInfo): void
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -595,7 +595,7 @@ onContinuousTaskUpdate(info: ContinuousTaskInfo): void
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -631,7 +631,7 @@ onContinuousTaskStop(info: ContinuousTaskInfo): void
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-**系统API：** 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
