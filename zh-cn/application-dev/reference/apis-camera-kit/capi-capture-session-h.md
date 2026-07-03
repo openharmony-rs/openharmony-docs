@@ -3458,7 +3458,7 @@ typedef void (*OH_CaptureSession_OnNotificationReceive)(void* context, OH_Camera
 | 参数项 | 描述 |
 | -- | -- |
 | void* context | 指向注册回调时传入的用户自定义上下文的指针。 |
-| [OH_Camera_NotificationInfo](capi-camera-notification-info.md)* notificationInfo | 指向OH_Camera_NotificationInfo实例的指针。 |
+| [OH_Camera_NotificationInfo](capi-camera-notification-info.md#oh_cameranotificationinfo_getnotificationname)* notificationInfo | 指向OH_Camera_NotificationInfo实例的指针。 |
 
 ### OH_CaptureSession_RegisterNotificationReceivedCallback()
 
