@@ -6,7 +6,7 @@
 <!--Designer: @tanyihua-->
 <!--Tester: @panny060-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=906890335bf480362f63f05961ebc2618e5bb601 translatedAt=2026-07-02T12:58:18.985Z pushedAt=2026-07-03T10:42:31.360Z -->
+<!-- md-trans-meta sourceCommit=906890335bf480362f63f05961ebc2618e5bb601 translatedAt=2026-07-02T12:58:18.985Z pushedAt=2026-07-03T11:04:15.495Z -->
 
 ## When to Use
 
@@ -166,7 +166,7 @@ The parameters of the `OH_QoS_GewuOnResponse` callback function are as follows:
 
         * **"stop"**: stopped normally.
 
-        * **"abort": proactively aborted by the user.
+        * **"abort"**: proactively aborted by the user.
 
         * **"length"**: the number of tokens exceeds the limit.
 
