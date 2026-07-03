@@ -1452,3 +1452,302 @@ The V1 decorator is used for a variable of the **Function** or **() => void** ty
 
 **Solution**<br>
 Delete the V1 decorator used for the variable of the **Function** or **() => void** type based on the error description.
+
+## 10905360 Name of the @Extend Decorated Function Cannot Be the Same as an Attribute Name
+**Error Message**<br>
+The \'@Extend\' function cannot have the same name as the built-in style attribute \'xxx\' of the component \'yyy\'.
+
+**Description**<br>
+This error code is reported when the name of the [\@Extend](../../../application-dev/ui/state-management/arkts-extend.md) decorated function is the same as the name of a built-in attribute of the corresponding component.
+
+**Possible Cause**<br>
+You name the \@Extend decorated function of the component the same as a built-in attribute of the component.
+
+**Solution**<br>
+Modify the name of the \@Extend decorated function to ensure that it is different from the name of any built-in attribute of the component.
+
+## 10905361 Variables Decorated with \@Env Cannot Have Initial Values
+**Error Message**<br>
+The \'@Env\' property cannot be specified a default value.
+
+**Description**<br>
+This error code is reported when variables decorated with [\@Env](../../../application-dev/ui/state-management/arkts-environment.md) are assigned initial values.
+
+**Possible Cause**<br>
+You assign initial values to variables decorated with \@Env.
+
+**Solution**<br>
+Avoid assigning initial values to variables decorated with \@Env.
+
+##  10905250 \@Env Decorator Can Be Used Only in Structs Decorated with \@Component and \@ComponentV2
+**Error Message**<br>
+The \'@Env\' decorator can only be used in structs decorated by \'@Component\' or \'@ComponentV2\'.
+
+**Description**<br>
+This error code is reported when the \@Env decorator is used in structs other than those decorated with \@Component and \@ComponentV2.
+
+**Possible Cause**<br>
+You use the @Env decorator in a class or globally.
+
+**Solution**<br>
+Ensure that the \@Env decorator is used only in structs decorated with \@Component and \@ComponentV2.
+
+##  10905251 \@Env Decorator Can Be Used Only to Decorate Instances of a Specific Class or Its Child Classes
+**Error Message**<br>
+The \'@Env\' decorator can only decorate \'WindowSizeLayoutBreakpointInfo\', \'SizeInVP\', \'Size\', \'UIEnvWindowAvoidAreaInfoPX\', \'UIEnvWindowAvoidAreaInfoVP\' classes or their child classes.
+
+**Description**<br>
+This error code is reported when the \@Env decorator is used to decorate instances of classes other than a specific class or its child classes.
+
+**Possible Cause**<br>
+You use the \@Env decorator to decorate instances of classes other than the specified type and its child classes.
+
+**Solution**<br>
+Use the \@Env decorator to decorate only instances of the specific class and its child classes.
+
+##  10905252 Variables Decorated with \@Env Can Only Initialize the State Variables Decorated with \@Param When a Struct Decorated with \@ComponentV2 Is Constructed
+**Error Message**<br>
+Within structs decorated with \'@ComponentV2\', \'@Env\' can only initialize variables decorated with \'@Param\'.
+
+**Description**<br>
+This error code is reported in the following scenario: When a struct decorated with \@ComponentV2 is constructed, variables decorated with \@Env initialize state variables decorated with decorators other than \@Param.
+
+**Possible Cause**<br>
+When constructing a struct decorated with \@ComponentV2, you use variables decorated with \@Env to initialize state variables decorated with decorators other than \@Param.
+
+**Solution**<br>
+Do not use variables decorated with \@Env to initialize state variables decorated with V2 decorators other than \@Param.
+
+## 10905253 Variables Decorated with \@Env Can Only Initialize Common Variables When a Struct Decorated with \@Component Is Constructed
+**Error Message**<br>
+Within structs decorated with \'@Component\', \'@Env\' can only initialize regular (non-decorated) variables.
+
+**Description**<br>
+This error code is reported in the following scenario: When a struct decorated with \@Component is constructed, variables decorated with \@Env initialize variables other than common variables.
+
+**Possible Cause**<br>
+When constructing a struct decorated with \@Component, you use variables decorated with \@Env to initialize state variables.
+
+**Solution**<br>
+When constructing a struct decorated with \@Component, do not use variables decorated with \@Env to initialize state variables.
+
+## 10905364 Enhanced Verification on the Data Source of State Variables Decorated with \@Link
+**Error Message**<br>
+The type of the parent component's state variable initializing the \'@Link\' variable \'xxx\' must match the \'@Link\' variable's declared type.
+
+**Description**<br>
+This error code is reported when the data source used by the parent component to initialize the state variable decorated with \@Link in the child component is not a state variable of the corresponding type.
+
+**Possible Cause**<br>
+You use the properties of a state variable or a state variable of an incorrect type to initialize the state variables decorated with \@Link.
+
+**Solution**<br>
+Use the state variable of the corresponding type to initialize the state variables decorated with \@Link.
+
+## 10905365 \@SyncMonitor Decorator Accepts Only Constant Strings as Parameters and Does Not Allow Variables to Be Passed
+**Error Message**<br>
+Only constant expressions are supported as parameters in \'@SyncMonitor\'. Variables are not allowed.
+
+**Description**<br>
+This error code is reported when the following condition is not met: The [\@SyncMonitor](../../../application-dev/ui/state-management/arkts-new-syncmonitor.md) decorator accepts only constant strings as parameters and does not allow variables to be passed.
+
+**Possible Cause**<br>
+You pass a variable, constant, or function's return value as the parameter of the \@SyncMonitor decorator.
+
+**Solution**<br>
+To ensure the certainty of the input value, pass a constant string as the parameter of the \@SyncMonitor decorator.
+
+## 10905366 \@SyncMonitor Cannot Observe Non-existent Variables or Non-state Variables (Except in Wildcard Mode)
+**Error Message**<br>
+\'@SyncMonitor\' cannot observe non-existent variables or non-state variables, except in wildcard-based monitoring scenarios.
+
+**Description**<br>
+This error code is reported when the following condition is not met: \@SyncMonitor cannot observe non-existent variables or non-state variables (except in wildcard mode).
+
+**Possible Cause**<br>
+You pass a non-existent variable or a non-state variable in the parameters of the \@SyncMonitor decorator.
+
+**Solution**<br>
+Pass an existing state variable in the parameters of the \@SyncMonitor decorator.
+
+## 10905367 Symbol '.*' Must Be Placed at the End of the String in the Wildcard-based Observation Scenario of \@SyncMonitor and \@Monitor
+**Error Message**<br>
+In wildcard-based monitoring scenarios with \'xxx\', the .* pattern must be placed at the end of the string.
+
+**Description**<br>
+This error code is reported when symbol '.*' is not placed at the end of the string in the wildcard-based observation scenario of \@SyncMonitor and \@Monitor.
+
+**Possible Cause**<br>
+You place symbol '.*' in an incorrect position in the wildcard-based observation scenario of \@SyncMonitor or \@Monitor.
+
+**Solution**<br>
+Place symbol '.*' at the end of the string.
+
+## 10905368 Strict Key-Value Matching Between Parameters of the \@Env Decorator and Decorated Variable Types
+**Error Message**<br>
+Invalid parameter. State variables decorated with \'@Env\' of type \'xxx\' can only accept \'yyy\'.
+
+**Description**<br>
+This error code is reported when the strict key-value matching between parameters of the \@Env decorator and decorated variable types is not met.
+
+**Possible Cause**<br>
+You do pass values based on the strict key-value matching between parameters of the \@Env decorator and decorated variable types.
+
+**Solution**<br>
+Pass the correct decorator parameters based on the matching.
+
+## 10905369 \@ComponentReuse Decorated Function Must Define Specific Parameter Types in the Struct Decorated with \@Component
+**Error Message**<br>
+In a struct decorated with \'@Component\', the function decorated with \'@ComponentReuse\' has the following input parameter: params : Record\<string, Object | null | undefined\>.
+
+**Description**<br>
+This error code is reported when the \@ComponentReuse decorated function does not define specific parameter types in the struct decorated with \@Component.
+
+**Possible Cause**<br>
+No parameter is defined or the parameter type is incorrect in the function decorated with \@ComponentReuse in the struct decorated with \@Component.
+
+**Solution**<br>
+Define the corresponding parameter type in the function decorated with \@ComponentReuse.
+
+## 10905370 \@ComponentReuse Decorated Function Cannot Have Input Parameters in the Struct Decorated with \@ComponentV2
+**Error Message**<br>
+Methods decorated with \'@ComponentReuse\' in \'@ComponentV2\' cannot have input parameters.
+
+**Description**<br>
+This error code is reported when the \@ComponentReuse decorated function has input parameters in the struct decorated with \@ComponentV2.
+
+**Possible Cause**<br>
+You define parameters in the function decorated with \@ComponentReuse in the struct decorated with \@ComponentV2.
+
+**Solution**<br>
+Delete the defined parameters from the function decorated with \@ComponentReuse.
+
+## 10905371 Method Decorated with a Specific Lifecycle Decorator Cannot Have Input Parameters
+**Error Message**<br>
+Methods decorated with \'xxx\' cannot have input parameters.
+
+**Description**<br>
+This error code is reported when the method decorated with a specific lifecycle decorator (for example, [\@ComponentRecycle](../../../application-dev/ui/state-management/arkts-custom-components-new-lifecycle.md)) has input parameters.
+
+**Possible Cause**<br>
+You define parameters in the method decorated with a specific lifecycle decorator.
+
+**Solution**<br>
+Delete the defined parameters from the function decorated with a specific lifecycle decorator.
+
+## 10905372 Value Passed to enableWildcard Must Be a Boolean Keyword When \@Monitor Uses Wildcards
+**Error Message**<br>
+The value of 'enableWildcard' must be a Boolean keyword.
+
+**Description**<br>
+This error code is reported when the value passed to **enableWildcard** is not a Boolean keyword.
+
+**Possible Cause**<br>
+When \@Monitor uses wildcards, you pass a non-Boolean keyword value to the **enableWildcard** attribute.
+
+**Solution**<br>
+Use the true or false keyword for the **enableWildcard** attribute.
+
+## 10905373 poolAccepts Cannot Accept a Non-reusable Component After Global Reuse Is Enabled
+**Error Message**<br>
+\'xxx\' is not a \'@Reusable\' or \'@ReusableV2\' component and cannot be added to poolAccepts.
+
+**Description**<br>
+This error code is reported when the **poolAccepts** attribute cannot accept a non-reuse component after global reuse is enabled.
+
+**Possible Cause**<br>
+After global reuse is enabled, a non-reusable component is passed to the **poolAccepts** attribute.
+
+**Solution**<br>
+When global reuse is used, only reused components can be passed to **poolAccepts**.
+
+## 10905374 Component Itself Cannot Be Passed in poolAccepts After Global Reuse Is Enabled
+**Error Message**<br>
+\'xxx\' cannot list itself in poolAccepts. The pool is not yet ready when \'xxx\' is being constructed.
+
+**Description**<br>
+This error code is reported when a component itself cannot be passed in the **poolAccepts** attribute after global reuse is enabled because the reuse pool is not ready during component build.
+
+**Possible Cause**<br>
+After global reuse is enabled, the component itself is passed in the **poolAccepts** attribute.
+
+**Solution**<br>
+When global reuse is used, do not pass the component itself in **poolAccepts**.
+
+## 10905375 reusePool and poolAccepts Must Be Passed When Global Reuse Is Enabled for the Component
+**Error Message**<br>
+\'xxx\' must provide both reusePool and poolAccepts. Neither can be omitted when using the global reuse pool.
+
+**Description**<br>
+This error code is reported when **reusePool** and **poolAccepts** are not both passed at the same time for the global reuse pool.
+
+**Possible Cause**<br>
+Only one of the **reusePool** and **poolAccepts** attributes is passed when you use the global reuse pool.
+
+**Solution**<br>
+Pass both **reusePool** and **poolAccepts** when using the global reuse pool.
+
+## 10905376 poolAccepts Cannot Be an Empty Array for the Global Reuse Pool
+**Error Message**<br>
+PoolAccepts cannot be an empty array. Provide at least one \'@Reusable\' or \'@ReusableV2\' component.
+
+**Description**<br>
+This error code is reported when **poolAccepts** is an empty array for the global reuse pool. (At least one reusable component must be passed.)
+
+**Possible Cause**<br>
+You pass an empty array to the **poolAccepts** attribute for the global reuse pool.
+
+**Solution**<br>
+Pass at least one reusable component in **poolAccepts** for the global reuse pool.
+
+## 10905377 reusePool of the Global Reuse Pool Must Be of the Correct Type
+**Error Message**<br>
+ReusePool must be either \'shared\' or \'perInstance\'. The value \'xxx\' is not valid.
+
+**Description**<br>
+This error code is reported when an invalid value (such as \'xxx\') is passed in **reusePool** for the global reuse pool.
+
+**Possible Cause**<br>
+You pass an invalid value other than \'shared\' or \'perInstance\' in the **reusePool** attribute for the global reuse pool.
+
+**Solution**<br>
+Pass \'shared\' or \'perInstance\' in the **reusePool** attribute for the global reuse pool.
+
+## 10905378 reusePool of the Global Reuse Pool Must Be a String
+**Error Message**<br>
+ReusePool can only accept string literal.
+
+**Description**<br>
+This error code is reported when the **reusePool** attribute of the global reuse pool is not a string.
+
+**Possible Cause**<br>
+You pass a variable, constant, or function's return value in the **reusePool** attribute of the global reuse pool.
+
+**Solution**<br>
+Ensure that the **reusePool** attribute of the global reuse pool is a string.
+
+## 10905381 Variable Type Decorated with \@CustomEnv or \@Env Decorator Must Be Consistent with the Generic Type of the Decorator Parameter
+**Error Message**<br>
+The type of the property decorated with \'xxx\' must be consistent with the generic type of the key.
+
+**Description**<br>
+This error code is reported when the variable type decorated with \@CustomEnv or \@Env Decorator is inconsistent with the generic type of the decorator parameter.
+
+**Possible Cause**<br>
+The variable type decorated with the \@CustomEnv or \@Env Decorator is inconsistent with the generic type of the decorator parameter.
+
+**Solution**<br>
+Ensure that the variable type is consistent with the generic type of the decorator parameter.
+
+## 10905382 Parameter in \@CustomEnv Must Comply with a Specific Syntax Format
+**Error Message**<br>
+Invalid key for \'@CustomEnv\', \'@CustomEnv\' key must be global const and created from CustomEnvKey.create\<T\>().
+
+**Description**<br>
+This error code is reported when the parameter in the \@CustomEnv decorator does not comply with a specific syntax format (constants initialized by **CustomEnvKey.create\<T\>()**).
+
+**Possible Cause**<br>
+The parameter passed in the \@CustomEnv decorator does not comply with a specific syntax format.
+
+**Solution**<br>
+Modify the parameter passed in the \@CustomEnv decorator based on the requirements of constants initialized by **CustomEnvKey.create\<T\>()**.

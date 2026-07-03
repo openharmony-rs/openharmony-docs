@@ -438,7 +438,7 @@ struct Index {
         console.info("errCode: " + error?.code);
         console.info("errMessage: " + error?.message);
       } else {
-        console.error(`errCode: ${error.code}, errMessage: ${error.message}`);
+        console.error(`errCode: ${error?.code}, errMessage: ${error?.message}`);
       }
     };
 

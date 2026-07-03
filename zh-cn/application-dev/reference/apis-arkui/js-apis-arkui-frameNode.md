@@ -6,7 +6,7 @@
 <!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
-FrameNode表示组件树的实体节点。[NodeController](./js-apis-arkui-nodeController.md)可通过[BuilderNode](./js-apis-arkui-builderNode.md)持有的FrameNode将其挂载到[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)上，也可通过FrameNode获取[RenderNode](./js-apis-arkui-renderNode.md)，挂载到其他FrameNode上。最佳实践请参考[组件动态创建-组件动态添加、更新和删除](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-ui-dynamic-operations#section153921947151012)。
+FrameNode表示组件树的实体节点。[NodeController](./js-apis-arkui-nodeController.md)可通过[BuilderNode](./js-apis-arkui-builderNode.md)持有的FrameNode将其挂载到[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)上，也可通过FrameNode获取[RenderNode](./js-apis-arkui-renderNode.md)，挂载到其他FrameNode上。<!--RP2--><!--RP2End-->
 
 > **说明：**
 >
@@ -266,7 +266,7 @@ appendChild(node: FrameNode): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
-| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: it cannot be adopted." |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: it cannot be adopted." <br>适用版本：22+ |
 
 **示例：**
 
@@ -298,7 +298,7 @@ insertChildAfter(child: FrameNode, sibling: FrameNode | null): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
-| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be adopted." |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be adopted." <br>适用版本：22+ |
 
 **示例：**
 
@@ -572,7 +572,7 @@ getChildrenCount(): number
 
 ### getChildrenCount
 
-getChildrenCount(countMode?: ChildrenCountMode): int
+getChildrenCount(countMode?: ChildrenCountMode): number
 
 根据指定的计数模式获取当前FrameNode的子节点数量。
 
@@ -592,7 +592,7 @@ getChildrenCount(countMode?: ChildrenCountMode): int
 **返回值：**
 | 类型     | 说明                            |
 | -------- | ------------------------------- |
-| int | 根据计数模式返回的，当前FrameNode的子节点数量。 |
+| number | 根据计数模式返回的，当前FrameNode的子节点数量。 |
 
 **示例：**
 
@@ -851,7 +851,7 @@ moveTo(targetParent: FrameNode, index?: number): void
 | 错误码ID | 错误信息                          |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
-| 100027   | The current node has been adopted. |
+| 100027   | The current node has been adopted. <br>适用版本：22+ |
 
 **示例：**
 
@@ -5358,7 +5358,7 @@ bindController(node: FrameNode, controller: Scroller, nodeType: 'Scroll'): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 401      | Parameter error. Possible causes: 1. the type of the node is error. 2. the node is null or undefined. |
-| 100021   | The FrameNode is not modifiable.<br>适用版本：15-24 |
+| 100021   | The FrameNode is not modifiable. Introduced in API version 15 and will not be threw above API version 24. <br>适用版本：15-24 |
 
 **示例：**
 
@@ -6233,7 +6233,7 @@ bindController(node: FrameNode, controller: Scroller, nodeType: 'List'): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. Introduced in API 20 and will not be threw above API 24. [since 20 - 24] |
+| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be threw above API version 24. <br>适用版本：20-24 |
 
 **示例：**
 
@@ -6938,7 +6938,7 @@ bindController(node: FrameNode, controller: Scroller, nodeType: 'WaterFlow'): vo
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. Introduced in API 20 and will not be threw above API 24. [since 20 - 24]|
+| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be threw above API version 24. <br>适用版本：20-24 |
 
 **示例：** 
 
@@ -7553,7 +7553,7 @@ bindController(node: FrameNode, controller: Scroller, nodeType: 'Grid'): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
-| 100021   | The FrameNode is not modifiable. Introduced in API 20 and will not be threw above API 24. [since 20 - 24] |
+| 100021   | The FrameNode is not modifiable. Introduced in API version 20 and will not be threw above API version 24. <br>适用版本：20-24 |
 
 **示例：** 
 
@@ -9117,6 +9117,12 @@ getAllAvailableItems(): Array&lt;FrameNode&gt;
 onAttachToNode?(target: FrameNode): void
 
 FrameNode绑定NodeAdapter时回调。
+
+> **说明：**
+>
+> 在API版本26.0.0之前，该回调在宿主节点挂载到主树时触发。如果通过动态赋值方式设置该回调，开发者可以在调用[attachNodeAdapter](#attachnodeadapter12)后、宿主节点挂载到主树前完成设置，并在宿主节点挂载到主树时收到该回调。
+>
+> 从API版本26.0.0开始，该回调会在NodeAdapter绑定到宿主节点时立即触发，而不是在宿主节点挂载到主树时触发。此时宿主节点可能尚未挂载到主树。如果回调逻辑依赖节点已挂载（例如访问布局信息或执行动画），建议在该回调中注册[onAppear](./arkui-ts/ts-universal-events-show-hide.md#onappear)，并将相关逻辑放入onAppear中执行。如果通过动态赋值方式设置该回调，请在调用[attachNodeAdapter](#attachnodeadapter12)前完成设置，否则回调可能无法触发。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

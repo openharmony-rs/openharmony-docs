@@ -150,7 +150,7 @@ export default {
   ```html
   <!-- xxx.hml -->
   <div>
-     <!-- 使用事件冒泡模式绑定事件回调函数。5+ -->;
+     <!-- 使用事件冒泡模式绑定事件回调函数。5+ -->
       <div on:touchstart.bubble="touchstartfunc" style="background-color: red; width: 10%; height: 100%"></div>
       <div on:touchstart="touchstartfunc" style="background-color: orange; width: 10%; height: 100%"></div>
       <!-- 绑定事件回调函数，但阻止事件向上传递。5+ -->

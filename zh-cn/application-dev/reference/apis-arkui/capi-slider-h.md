@@ -10,7 +10,7 @@
 
 为NativeNode API提供Slider节点类型定义。
 
-**引用文件：** <arkui/slider.h>
+**引用文件：** <arkui/node_attributes/slider.h>
 
 **库：** libace_ndk.z.so
 

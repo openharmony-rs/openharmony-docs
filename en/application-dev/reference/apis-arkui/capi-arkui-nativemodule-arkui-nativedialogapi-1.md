@@ -154,7 +154,7 @@ Sets the alignment mode of a custom dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | Pointer to the custom dialog box controller.|
-|  int32_t alignment | Alignment mode. The parameter type is [ArkUI_Alignment](capi-native-type-h.md#arkui_alignment).|
+|  int32_t alignment | Alignment mode. The parameter type is [ArkUI_Alignment](capi-layout-h.md#arkui_alignment).|
 |  float offsetX | Horizontal offset of the dialog box. The value is a floating point number, in vp.|
 |  float offsetY | Vertical offset of the dialog box. The value is a floating point number, in vp.|
 
@@ -172,7 +172,7 @@ int32_t (*resetContentAlignment)(ArkUI_NativeDialogHandle handle)
 
 **Description**
 
-Resets the alignment mode of a custom dialog box to its default settings. The default value is **ARKUI_ALIGNMENT_TOP_START**. For details, see [ArkUI_Alignment](capi-native-type-h.md#arkui_alignment).
+Resets the alignment mode of a custom dialog box to its default settings. The default value is **ARKUI_ALIGNMENT_TOP_START**. For details, see [ArkUI_Alignment](capi-layout-h.md#arkui_alignment).
 
 > **NOTE**
 >

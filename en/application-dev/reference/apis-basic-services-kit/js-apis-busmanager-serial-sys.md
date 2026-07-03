@@ -48,7 +48,7 @@ Adds the authorization for the application to access the serial port. This API i
 
 For details about the error codes, see [Common Error Codes](../errorcode-universal.md) and [Serial Port Management Error Codes](errorcode-busmanager-serial.md).
 
-| Error Code| Error Message                                         |
+| ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
 | 202      | Permission denied. Called by non-system application. |
 | 35700001 | Service error.                                    |

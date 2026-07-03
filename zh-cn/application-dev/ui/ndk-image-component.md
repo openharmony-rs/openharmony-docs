@@ -313,7 +313,6 @@ nativeNodeApi->setAttribute(image, NODE_IMAGE_ORIENTATION, &orientationItem);
 void GlobalEventReceiver(ArkUI_NodeEvent* event)
 {
     auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
-    auto nodeHandle = OH_ArkUI_NodeEvent_GetNodeHandle(event);
 
     // 根据事件类型处理
     switch (eventType) {

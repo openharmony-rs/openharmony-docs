@@ -10,7 +10,7 @@
 
 定义布局相关的枚举和接口。
 
-**引用文件：** <arkui/layout.h>
+**引用文件：** <arkui/node_attributes/layout.h>
 
 **库：** libace_ndk.z.so
 
@@ -798,8 +798,8 @@ const char* OH_ArkUI_BarrierOption_GetId(ArkUI_BarrierOption* barrierStyle, int3
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | 辅助线信息。 |
-| int32_t index | 辅助线索引值。 |
+| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | 屏障信息。 |
+| int32_t index | 屏障索引值。 |
 
 **返回：**
 
@@ -823,8 +823,8 @@ ArkUI_BarrierDirection OH_ArkUI_BarrierOption_GetDirection(ArkUI_BarrierOption* 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | 辅助线信息。 |
-| int32_t index | 辅助线索引值。 |
+| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | 屏障信息。 |
+| int32_t index | 屏障索引值。 |
 
 **返回：**
 
@@ -848,8 +848,8 @@ const char* OH_ArkUI_BarrierOption_GetReferencedId(ArkUI_BarrierOption* barrierS
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | 辅助线信息。 |
-| index | 辅助线索引值。 |
+| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | 屏障信息。 |
+| index | 屏障索引值。 |
 | int32_t referencedIndex | 依赖的组件Id索引值。 |
 
 **返回：**
@@ -874,8 +874,8 @@ int32_t OH_ArkUI_BarrierOption_GetReferencedIdSize(ArkUI_BarrierOption* barrierS
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | 辅助线信息。 |
-| int32_t index | 辅助线索引值。 |
+| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | 屏障信息。 |
+| int32_t index | 屏障索引值。 |
 
 **返回：**
 
