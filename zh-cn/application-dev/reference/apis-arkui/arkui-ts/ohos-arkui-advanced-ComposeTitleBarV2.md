@@ -6,7 +6,7 @@
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
 
-一种普通标题栏，支持设置标题、头像（可选）和副标题（可选），可用于一级页面、二级及其以上界面配置返回键。
+ComposeTitleBarV2组件是一种标题栏，支持设置标题、头像（可选）和副标题（可选），可用于一级页面、二级及其以上界面配置返回键。
 
 该组件基于[状态管理（V2）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)实现，相较于[状态管理（V1）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，状态管理（V2）增强了对数据对象的深度观察与管理能力，不再局限于组件层级。借助状态管理（V2），开发者可以通过该组件更灵活地控制普通标题栏的数据和状态，实现更高效的用户界面刷新。
 
@@ -32,7 +32,7 @@ import { ComposeTitleBarV2, ComposeTitleBarV2MenuItem } from '@kit.ArkUI';
 
 ComposeTitleBarV2({item?: ComposeTitleBarV2MenuItem, title: ResourceStr, subtitle?: ResourceStr, menuItems?: Array&lt;ComposeTitleBarV2MenuItem&gt;})
 
-一种普通标题栏，支持设置标题、头像（可选）和副标题（可选），可用于一级页面、二级及其以上界面配置返回键。
+ComposeTitleBarV2组件是一种标题栏，支持设置标题、头像（可选）和副标题（可选），可用于一级页面、二级及其以上界面配置返回键。
 
 > **说明：**
 > 
@@ -50,7 +50,7 @@ ComposeTitleBarV2({item?: ComposeTitleBarV2MenuItem, title: ResourceStr, subtitl
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 | 名称    | 类型   | 必填 | 装饰器类型 | 说明      |
 | -------- | -------- | -------- | -------- | -------- |
@@ -73,7 +73,7 @@ ComposeTitleBarV2({item?: ComposeTitleBarV2MenuItem, title: ResourceStr, subtitl
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -88,9 +88,19 @@ ComposeTitleBarV2({item?: ComposeTitleBarV2MenuItem, title: ResourceStr, subtitl
 
 ### constructor
 
-constructor(params?: ComposeTitleBarV2MenuItemParams);
+constructor(params?: ComposeTitleBarV2MenuItemParams)
 
-ComposeTitleBarV2MenuItem的构造函数
+ComposeTitleBarV2MenuItem的构造函数。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **参数：**
 
@@ -110,7 +120,7 @@ ComposeTitleBarV2MenuItem的构造函数
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -137,7 +147,7 @@ type OnActionCallback = () => void
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 ## 事件
 不支持[通用事件](ts-component-general-events.md)。
