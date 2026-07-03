@@ -729,6 +729,7 @@
     - [oh_display_info.h](capi-oh-display-info-h.md)
     - [oh_display_manager.h](capi-oh-display-manager-h.md)
     - [xcomponent.h](capi-xcomponent-h.md)
+    - [error_code.h](capi-arkui-nativemodule-arkui-error-code-h.md)
   - 结构体<!--arkui-struct-->
     - [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md)
     - [ArkUI_Context](capi-arkui-nativemodule-arkui-context.md)
