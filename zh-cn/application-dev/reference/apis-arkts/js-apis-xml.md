@@ -164,7 +164,7 @@ startElement(name: string): void
 >
 >- 调用该接口后须调用[endElement](#endelement)写入元素结束标记，以确保节点正确闭合。
 >
->- 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。比如不允许添加数字开头的元素名称。
+>- 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。例如不允许添加数字开头的元素名称。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -298,7 +298,7 @@ setCDATA(text: string): void
 
 > **说明：**
 >
-> 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。比如不允许在CDATA标签中添加包含"\]\]\>"字符串的数据。
+> 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。例如不允许在CDATA标签中添加包含"\]\]\>"字符串的数据。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -463,7 +463,7 @@ setAttributes(name: string, value: string): void
 >
 > 该接口必须在[startElement<sup>20+</sup>](#startelement20)之后调用，用于为当前已开启的元素设置属性。
 >
-> 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。比如不允许添加数字开头的属性名称以及添加多个同名的属性名称。
+> 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。例如不允许添加数字开头的属性名称以及添加多个同名的属性名称。
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -473,8 +473,8 @@ setAttributes(name: string, value: string): void
 
 | 参数名 | 类型   | 必填 | 说明            |
 | ------ | ------ | ---- | --------------- |
-| name   | string | 是   | 属性名。所组成的XML长度不能超过100000，不可为空字符。|
-| value  | string | 是   | 属性值。所组成的XML长度不能超过100000字符。|
+| name   | string | 是   | 属性名。所组成的XML长度不能超过100000，不可为空字符串。|
+| value  | string | 是   | 属性值。所组成的XML长度不能超过100000个字符。|
 
 **错误码：**
 
@@ -509,7 +509,7 @@ addEmptyElement(name: string): void
 
 > **说明：**
 >
-> 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。比如不允许添加数字开头的元素名称。
+> 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。例如不允许添加数字开头的元素名称。
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -585,7 +585,7 @@ startElement(name: string): void
 >
 >- 调用该接口后须调用[endElement<sup>20+</sup>](#endelement20)写入元素结束标记，以确保节点正确闭合。
 >
->- 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。比如不允许添加数字开头的元素名称。
+>- 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。例如不允许添加数字开头的元素名称。
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -669,7 +669,7 @@ setNamespace(prefix: string, namespace: string): void
 >
 > 该接口应在[startElement<sup>20+</sup>](#startelement20)之前调用，为即将开启的元素设置命名空间前缀。调用顺序：先调用setNamespace设置命名空间，再调用startElement开启元素。
 >
-> 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。比如不允许添加数字开头的前缀以及对同一个元素设置多个命名空间。
+> 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。例如不允许添加数字开头的前缀以及对同一个元素设置多个命名空间。
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -752,7 +752,7 @@ setCdata(text: string): void
 
 > **说明：**
 >
-> 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。比如不允许在CDATA标签中添加包含"\]\]\>"字符串的数据。
+> 该接口对所添加数据不做标准XML校验处理，请确保所添加的数据符合标准XML规范。例如不允许在CDATA标签中添加包含"\]\]\>"字符串的数据。
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -923,13 +923,13 @@ parseXml(option: ParseOptions): void
 ```ts
 import { xml, util } from '@kit.ArkTS';
 
-let strxml =
+let strXml =
   '<?xml version="1.0" encoding="utf-8"?>' +
     '<note importance="high" logged="true">' +
     '    <title><![CDATA[测试\n测试]]></title>' +
     '</note>';
 let textEncoder = new util.TextEncoder();
-let uint8 = textEncoder.encodeInto(strxml);
+let uint8 = textEncoder.encodeInto(strXml);
 
 function onParseEvent(key: xml.EventType, value: xml.ParseInfo) {
   if (key == xml.EventType.CDSECT) {
@@ -1053,7 +1053,7 @@ getColumnNumber(): number
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 返回当前列号，从1开始计数。 |
+| number | 当前元素的列号（从1开始），用于定位XML解析位置。 |
 
 **示例：**
 
@@ -1093,7 +1093,7 @@ getDepth(): number
 
 | 类型   | 说明                 |
 | ------ | -------------------- |
-| number | 返回元素的当前深度，从0开始计数。 |
+| number | 元素的嵌套深度（从0开始），用于判断XML层级结构。 |
 
 **示例：**
 
@@ -1133,7 +1133,7 @@ getLineNumber(): number
 
 | 类型   | 说明           |
 | ------ | -------------- |
-| number | 返回当前行号，从1开始。 |
+| number | 当前元素的行号（从1开始），用于定位XML解析位置。 |
 
 **示例：**
 
@@ -1169,7 +1169,7 @@ getName(): string
 
 | 类型   | 说明               |
 | ------ | ------------------ |
-| string | 返回当前元素的名称（不包含命名空间前缀）。 |
+| string | 当前元素的名称（不包含命名空间前缀），用于标识XML元素。 |
 
 **示例：**
 
@@ -1283,7 +1283,7 @@ getText(): string
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| string | 返回当前事件的文本内容。 |
+| string | 当前事件的文本内容（如标签值、注释等），用于获取解析的XML数据。 |
 
 **示例：**
 
@@ -1347,7 +1347,7 @@ console.info(str);
 
 isWhitespace(): boolean
 
-判断当前事件是否仅包含空格字符。
+判断当前事件是否只包含空格字符。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1386,7 +1386,7 @@ console.info(str);
 
 getAttributeCount(): number
 
-获取当前开始标记的属性数。
+获取当前开始标记的属性数量。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1395,7 +1395,7 @@ getAttributeCount(): number
 **返回值：**
 | 类型   | 说明                   |
 | ------ | ---------------------- |
-| number | 当前开始标记的属性数。 |
+| number | 当前开始标记的属性数量，用于遍历和处理XML属性。 |
 
 **示例：**
 
