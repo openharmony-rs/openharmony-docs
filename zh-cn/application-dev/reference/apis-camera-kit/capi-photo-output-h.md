@@ -1162,7 +1162,7 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetCompressionQuality(OH_Camera_Photo
 | 参数项 | 描述 | 
 | -- | -- | 
 | [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)* photoCaptureSettingExt | 指向扩展拍照设置对象的指针。 | 
-| uint8_t compressionQuality | 图像压缩质量。 | 
+| uint8_t compressionQuality | 图片压缩质量，取值范围（1, 100），取值越大生成的图片质量越高，1 为最低质量，100 为最高质量。 | 
 
 **返回：** 
 
