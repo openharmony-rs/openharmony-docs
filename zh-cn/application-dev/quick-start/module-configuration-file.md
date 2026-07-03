@@ -1451,10 +1451,12 @@ executableBinaryPaths示例：
 <!--Table: 15%; 60%; 10%; 15%-->
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
-| name | 标识技能的名称，确保该名称在当前模块中唯一。命名规则如下：<br/>-&nbsp;仅允许使用小写字母、数字和连字符-。<br/>-&nbsp;必须以小写字母或数字开头。<br/>-&nbsp;必须以小写字母或数字结尾。<br/>-&nbsp;不能以连字符开头或结尾。<br/>-&nbsp;最大长度为64字节。 | 字符串 | 该标签不可缺省。 |
+| name | 标识技能的名称，确保该名称在当前模块中唯一。命名规则如下：<br/>-&nbsp;仅允许使用小写字母、数字和连字符-。<br/>-&nbsp;必须以小写字母或数字开头。<br/>-&nbsp;必须以小写字母或数字结尾。<br/>-&nbsp;不能以连字符开头或结尾，且不能连续多个连字符。<br/>-&nbsp;最大长度为64字节。 | 字符串 | 该标签不可缺省。 |
 | abilityName | 标识与该技能关联的组件名称，必须配置为[abilities标签](#abilities标签)下的UIAbility或[extensionAbilities标签](#extensionabilities标签)下type为service的ServiceExtension组件名称。取值为长度不超过127字节的字符串，以字母开头，可包含字母、数字、下划线（_）或点号（.）。<br/>**说明：**<br/>该字段仅适用于entry、feature、shared类型的模块。对于skill类型的模块，不支持该字段。 | 字符串 | 该标签可缺省，缺省值为入口Ability名称。如果没有入口Ability，则取值为空字符串。 |
 | srcEntries | 标识实现技能的代码文件路径列表，指向技能实现逻辑的.ets文件。数组中的每个元素都是相对于当前模块的skills目录的文件路径。<br/>**说明：**<br/>srcEntries指定的.ets文件应放置在skills/{skill-name}/scripts目录下，其中{skill-name}为skillProfiles中配置的技能名称。例如，若技能名称为"my-skill"，则.ets文件应放置在模块根目录下的skills/my-skill/scripts/目录中。最多支持100个文件路径。 | 字符串数组 | 该标签可缺省，缺省值为空。 |
 | permissions | 标识调用该技能所需要的权限列表。当其他应用调用该技能时，需要申请相应的权限。一个数组元素为一个权限名称，不超过255字节，取值请参考[应用权限列表](../security/AccessToken/app-permissions.md)。 | 字符串数组 | 该标签可缺省，缺省值为空。 |
+| version | 标识技能的版本号，格式为`主版本号.次版本号.补丁版本号`，其中各版本号均为非负整数，且不能以0开头（除非本身为0）。<br/>**示例：** 1.0.1、0.1.1 | 字符串 | 该标签不可缺省。 |
+| visibility | 标识技能的可见性，用于控制技能的可见范围。支持的取值如下：<br/>-&nbsp;private：私有，仅当前应用可见。<br/>-&nbsp;system：系统级，系统应用和当前应用可见。<br/>-&nbsp;public：公开，所有应用都可见。<br/>**说明：**<br/>该标签缺省值为system。 | 字符串 | 该标签可缺省，缺省值为system。 |
 
 skillProfiles标签示例：
 <!-- @[module_skillProfiles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
