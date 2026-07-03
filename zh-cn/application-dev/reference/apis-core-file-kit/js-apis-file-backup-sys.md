@@ -966,11 +966,11 @@ type OnFileReadyBatch = (error: BusinessError&lt;void&gt;, files: Array&lt;[File
 
 当服务器将文件发送回客户端时触发的回调函数。
 
-**系统能力**：SystemCapability.FileManagement.StorageService.Backup
-
 **系统接口**：此接口为系统接口。
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
 **起始版本**：26.0.0
 
@@ -3530,23 +3530,23 @@ getFileHandles(fileMeta: FileMeta): Promise&lt;void&gt;
 
 从服务中获取共享文件的句柄。使用Promise异步回调。
 
-> **说明**
+> **说明：**
 >
 > - 该接口属于零拷贝特性，可以减少不必要的内存拷贝，提升传输效率。零拷贝方法详见[@ohos.file.fs](js-apis-file-fs.md)提供的零拷贝接口，如[fileIo.copyFile](js-apis-file-fs.md#fileiocopyfile)。
-> - 使用getFileHandles接口前，需要先获取SessionRestore实例，并通过appendBundles方法添加需要恢复数据的应用。
-> - 可以通过onFileReadyBatch获取文件句柄，当客户端文件操作完成后，需要使用publishFile发布文件。
+> - 使用[getFileHandles](#getfilehandles)接口前，需要先获取[SessionRestore](#sessionrestore)实例，并通过[appendBundles](#appendbundles-2)方法添加需要恢复数据的应用。
+> - 可以通过[onFileReadyBatch](#onfilereadybatch)获取文件句柄，当客户端文件操作完成后，需要使用[publishFile](#publishfile)发布文件。
 > - 根据待恢复文件数量，可多次调用getFileHandles接口。
 > - 待恢复文件不能是相对路径（../）或软链接。
-
-**系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
 **系统接口**：此接口为系统接口。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**起始版本**：26.0.0
-
 **需要权限**：ohos.permission.BACKUP
+
+**系统能力**：SystemCapability.FileManagement.StorageService.Backup
+
+**起始版本**：26.0.0
 
 **参数：**
 
