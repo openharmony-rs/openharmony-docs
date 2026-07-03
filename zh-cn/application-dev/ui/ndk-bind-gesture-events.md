@@ -174,7 +174,7 @@ ArkUI开发框架在NDK接口主要提供点击手势、滑动手势、快滑手
 
 顺序识别组合手势对应的ArkUI_GroupGestureMode为SEQUENTIAL_GROUP。顺序识别组合手势将按照手势的注册顺序识别手势，直到所有的手势识别成功。当顺序识别组合手势中有一个手势识别失败时，后续手势识别均失败。顺序识别手势组仅有最后一个手势可以响应[GESTURE_EVENT_ACTION_END](../reference/apis-arkui/capi-native-gesture-h.md#arkui_gestureeventactiontype)。
 
-以顺序识别长按和滑动手势为例：
+以顺序识别长按和快滑手势为例：
 
 <!-- @[long_press_and_swipe_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/LongPressAndSwipeGesture.h) -->
 
@@ -582,7 +582,8 @@ ArkUI_NodeHandle SwipeAndPinchExclusiveGesture()
                      "NdkAddInteractionEvent_GestureSampleLog, addChildGesture panGesture");
     }
     // 创建捏合手势
-    auto pinchGesture = gestureApi->createPinchGesture(0, 0);
+    // NUMBER_2 = 2，NUMBER_10 = 10
+    auto pinchGesture = gestureApi->createPinchGesture(NUMBER_2, NUMBER_10);
     if (gestureApi->getGestureType) {
         ArkUI_GestureRecognizerType type = gestureApi->getGestureType(pinchGesture);
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",

@@ -27,6 +27,7 @@
 
 1. 导入模块。
 
+    ArkTS-Dyn示例：
     <!-- @[specified_customized_ringtone_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
     
     ``` TypeScript
@@ -41,13 +42,38 @@
     const SOUND_FILE_NAME: string = 'ringtone_demo.mp3'; // 实际项目中请替换为自己的音频文件
     ```
 
+    ArkTS-Sta示例：
+    <!-- @[specified_customized_ringtone_header](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
+    
+    ``` TypeScript
+    import { notificationManager } from '@kit.NotificationKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    import { contextConstant, common } from '@kit.AbilityKit';
+    import fs from '@ohos.file.fs';
+    import fileUri from '@ohos.file.fileuri';
+    
+    const TAG: string = '[SpecifiedCustomizedRingtone]';
+    const DOMAIN_NUMBER: int = 0xFF00;
+    const SOUND_FILE_NAME: string = 'ringtone_demo.mp3'; // 实际项目中请替换为自己的音频文件
+    ```
+
 2. 准备音频资源。
 
    场景一：使用应用预置的音频资源作为通知铃声。
 
    (1) 将音频资源放入项目的resources/rawfile目录下。<br/>
    (2) 创建发布通知的sound信息。
+
+    ArkTS-Dyn示例：
     <!-- @[specified_resources_rawfile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
+    
+    ``` TypeScript
+    let soundFile: string = SOUND_FILE_NAME; // 需要替换为resources/rawfile目录下对应的音频文件
+    ```
+
+    ArkTS-Sta示例：
+    <!-- @[specified_resources_rawfile](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
     
     ``` TypeScript
     let soundFile: string = SOUND_FILE_NAME; // 需要替换为resources/rawfile目录下对应的音频文件
@@ -56,6 +82,8 @@
    场景二：使用沙箱内音频资源作为通知铃声。
 
    (1) 生成沙箱内音频资源路径。
+
+    ArkTS-Dyn示例：
     <!-- @[specified_customized_ringtone_getAppContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
     
     ``` TypeScript
@@ -72,9 +100,46 @@
     let sandboxFilePath: string = sandboxDir + '/' + SOUND_FILE_NAME;
     ```
 
+    ArkTS-Sta示例：
+    <!-- @[specified_customized_ringtone_getAppContext](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
+    
+    ``` TypeScript
+    // 生成沙箱内音频资源路径
+    let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    if (!context) {
+      hilog.error(DOMAIN_NUMBER, TAG, 'Context is not initialized.');
+      return;
+    }
+    const applicationContext: common.ApplicationContext = context.getApplicationContext();
+    applicationContext.area = contextConstant.AreaMode.EL1; // 必须在EL1沙箱下
+    const sandboxDir: string = applicationContext.filesDir;
+    let sandboxFilePath: string = sandboxDir + '/' + SOUND_FILE_NAME;
+    ```
+
    (2) 将网络下载或者用户生成的音频资源放在[沙箱文件目录](../file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)EL1区域的files目录下或者其子目录下，下面示例展示了如何将resources/rawfile目录下的音频资源拷贝到指定沙箱目录。
 
+    ArkTS-Dyn示例：
     <!-- @[specified_customized_ringtone_copyToSandbox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
+    
+    ``` TypeScript
+    // 拷贝resources/rawfile/目录下的音频文件到应用沙箱EL1的files目录下
+    try {
+      let rawFileData: Uint8Array = context.resourceManager.getRawFileContentSync(SOUND_FILE_NAME);
+      if (!fs.accessSync(sandboxDir)) {
+        fs.mkdirSync(sandboxDir, true);
+      }
+      const file = fs.openSync(sandboxFilePath, fs.OpenMode.CREATE | fs.OpenMode.WRITE_ONLY);
+      fs.writeSync(file.fd, rawFileData.buffer);
+      fs.closeSync(file);
+      hilog.info(DOMAIN_NUMBER, TAG, 'copy file to sandbox success.');
+    } catch (error) {
+      hilog.error(DOMAIN_NUMBER, TAG, `copy file to sandbox error: ${JSON.stringify(error)}`);
+      return;
+    }
+    ```
+
+    ArkTS-Sta示例：
+    <!-- @[specified_customized_ringtone_copyToSandbox](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
     
     ``` TypeScript
     // 拷贝resources/rawfile/目录下的音频文件到应用沙箱EL1的files目录下
@@ -95,6 +160,7 @@
 
    (3) 创建发布通知的sound信息。
 
+    ArkTS-Dyn示例：
     <!-- @[specified_sandbox_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
     
     ``` TypeScript
@@ -102,8 +168,18 @@
     let sandboxFileUri: string = fileUri.getUriFromPath(sandboxFilePath)
     let soundFile: string = 'uri::' + sandboxFileUri; // 必须以uri::开头，且路径中不能包含'../'和'/..'
     ```
+
+    ArkTS-Sta示例：
+    <!-- @[specified_sandbox_file](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
+    
+    ``` TypeScript
+    // 获取沙箱文件uri
+    let sandboxFileUri: string = fileUri.getUriFromPath(sandboxFilePath)
+    let soundFile: string = 'uri::' + sandboxFileUri; // 必须以uri::开头, 且路径中不能包含'../'和'/..'
+    ```
 3. 发布携带自定义铃声的通知。
 
+    ArkTS-Dyn示例：
     <!-- @[specified_customized_ringtone_publish_notification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
     
     ``` TypeScript
@@ -124,6 +200,31 @@
     notificationManager.publish(notificationRequest).then(() => {
       hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in publishing notification.');
     }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN_NUMBER, TAG, `Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
+    });
+    ```
+
+    ArkTS-Sta示例：
+    <!-- @[specified_customized_ringtone_publish_notification](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
+    
+    ``` TypeScript
+    let notificationRequest: notificationManager.NotificationRequest = {
+      id: 0,
+      notificationSlotType: notificationManager.SlotType.SOCIAL_COMMUNICATION,
+      content: {
+        notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+        normal: {
+          title: 'title',
+          text: 'text',
+          additionalText: 'test_additionalText'
+        }
+      },
+      sound: soundFile
+    }
+    
+    notificationManager.publish(notificationRequest).then(() => {
+      hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in publishing notification.`);
+    }).catch((err) => {
       hilog.error(DOMAIN_NUMBER, TAG, `Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
     });
     ```
