@@ -29,7 +29,7 @@
 | [image.h](capi-image-h.md) | 为NativeNode API提供Image节点类型定义。 |
 | [image_animator.h](capi-image-animator-h.md) | 为NativeNode API提供ImageAnimator节点类型定义。 |
 | [layout.h](capi-layout-h.md) | 定义布局相关的枚举和接口。 |
-| [node_attr_custom.h](capi-native-node-node-attributes-node-attr-custom-h.md) | 为NativeNode API提供自定义节点事件定义。 |
+| [node_attr_custom.h](capi-native-node-node-attributes-custom-attributes-h.md) | 为NativeNode API提供自定义节点事件定义。 |
 | [grid.h](capi-grid-h.md) | 定义Grid组件的枚举和接口。 |
 | [list.h](capi-list-h.md) | 定义List组件的枚举和接口。 |
 | [navigation_router.h](capi-navigation-router-h.md) | 定义Navigation或Router组件的枚举和接口。 |
