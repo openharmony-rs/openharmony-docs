@@ -32345,5 +32345,60 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/state-management/arkts-v1-v2-migration-card.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/widget/pages/WidgetCardV1.ets",
+				"functions":[
+					{
+						"end_line":53,
+						"name":"CardMigrationV1",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/widget/pages/WidgetCard.ets",
+				"functions":[
+					{
+						"end_line":51,
+						"name":"CardMigrationV2",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/entryformability/EntryFormAbility.ets",
+				"functions":[
+					{
+						"end_line":55,
+						"name":"CardMigrationFormAbility",
+						"start_line":39
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/sharewidget/pages/ShareWidgetCardV1.ets",
+				"functions":[
+					{
+						"end_line":66,
+						"name":"CardMigrationShareV1",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/sharewidget/pages/ShareWidgetCard.ets",
+				"functions":[
+					{
+						"end_line":65,
+						"name":"CardMigrationShareV2",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
