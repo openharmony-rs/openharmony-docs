@@ -494,7 +494,6 @@ onFileReadyBatch: OnFileReadyBatch
 | 13900011 | Out of memory.           |
 | 13900020 | Invalid argument.        |
 | 13900025 | No space left on device. |
-| 13900042 | Unknown error.           |
 
 **示例：**
 
