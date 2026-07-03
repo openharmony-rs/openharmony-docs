@@ -5574,9 +5574,9 @@
 						"start_line":200
 					},
 					{
-						"end_line":375,
+						"end_line":374,
 						"name":"unified_data_channels_c_delete_data",
-						"start_line":277
+						"start_line":276
 					},
 					{
 						"end_line":394,
@@ -5624,19 +5624,19 @@
 						"start_line":16
 					},
 					{
-						"end_line":82,
+						"end_line":70,
 						"name":"uniform_type_descriptor_test",
 						"start_line":22
 					},
 					{
-						"end_line":103,
+						"end_line":87,
 						"name":"get_filename_extensions_by_mimeType",
-						"start_line":85
+						"start_line":73
 					},
 					{
-						"end_line":125,
+						"end_line":105,
 						"name":"get_filename_extension_by_mimeType",
-						"start_line":107
+						"start_line":91
 					}
 				]
 			}
