@@ -142,8 +142,8 @@ PromptOptionsV2的构造函数。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| DEFAULT_MARGIN | 0 | 默认边距：<br />左边距：引用$r('sys.float.ohos_id_card_margin_start')。<br />右边距：引用$r('sys.float.ohos_id_card_margin_end')。 |
-| FIT_MARGIN | 1 | 可适配边距：<br />左边距：引用$r('sys.float.ohos_id_max_padding_start')。<br />右边距：引用$r('sys.float.ohos_id_max_padding_end')。 |
+| DEFAULT_MARGIN | 0 | 默认边距：<br />左边距：引用\$r('sys.float.ohos_id_card_margin_start')。<br />右边距：引用\$r('sys.float.ohos_id_card_margin_end')。 |
+| FIT_MARGIN | 1 | 可适配边距：<br />左边距：引用\$r('sys.float.ohos_id_max_padding_start')。<br />右边距：引用\$r('sys.float.ohos_id_max_padding_end')。 |
 
 ## OnTipClickCallback
 
