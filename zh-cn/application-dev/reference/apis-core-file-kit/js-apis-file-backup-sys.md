@@ -3594,9 +3594,9 @@ getFileHandles(fileMeta: FileMeta): Promise&lt;void&gt;
 > **说明**
 >
 > - 该接口属于零拷贝特性，可以减少不必要的内存拷贝，提升传输效率。零拷贝方法详见[@ohos.file.fs](js-apis-file-fs.md)提供的零拷贝接口，如[fileIo.copyFile](js-apis-file-fs.md#fileiocopyfile)。
-> - 使用**getFileHandles**接口前，需要先获取**SessionRestore**实例，并通过**appendBundles**方法添加需要恢复数据的应用。
-> - 可以通过**onFileReadyBatch**获取文件句柄，当客户端文件操作完成后，需要使用**publishFile**发布文件。
-> - 根据待恢复文件数量，可多次调用**getFileHandles**接口。
+> - 使用getFileHandles接口前，需要先获取SessionRestore实例，并通过appendBundles方法添加需要恢复数据的应用。
+> - 可以通过onFileReadyBatch获取文件句柄，当客户端文件操作完成后，需要使用publishFile发布文件。
+> - 根据待恢复文件数量，可多次调用getFileHandles接口。
 > - 待恢复文件不能是相对路径（../）或软链接。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
