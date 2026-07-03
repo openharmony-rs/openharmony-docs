@@ -12,7 +12,7 @@ typedef struct OH_Camera_PhotoCaptureSettingExt OH_Camera_PhotoCaptureSettingExt
 
 ## 概述
 
-扩展拍照设置对象。
+扩展拍照设置对象（扩展了基础拍照配置的能力范围，新增了支持连续调节图片压缩质量的接口）。
 
 **起始版本：** 26.0.0
 

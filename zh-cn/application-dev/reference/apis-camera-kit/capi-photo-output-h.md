@@ -29,7 +29,7 @@
 | -- | -- | -- |
 | [PhotoOutput_Callbacks](capi-oh-camera-photooutput-callbacks.md) | PhotoOutput_Callbacks | 拍照输出的回调。 |
 | [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md) | Camera_PhotoOutput | 拍照输出对象。<br> 可以使用[OH_CameraManager_CreatePhotoOutput](capi-camera-manager-h.md#oh_cameramanager_createphotooutput)方法创建指针。 |
-| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md) | OH_Camera_PhotoCaptureSettingExt | 拍照捕获扩展设置。 |
+| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md) | OH_Camera_PhotoCaptureSettingExt | 扩展拍照设置对象（扩展了基础拍照配置的能力范围，新增了支持连续调节图片压缩质量的接口）。 |
 
 ### 函数
 
@@ -75,13 +75,13 @@
 | [Camera_ErrorCode OH_PhotoOutput_EnableMovingPhoto(Camera_PhotoOutput* photoOutput, bool enabled)](#oh_photooutput_enablemovingphoto) | - | 是否启用动态照片。 |
 | [Camera_ErrorCode OH_PhotoOutput_IsPhotoQualityPrioritizationSupported(Camera_PhotoOutput* photoOutput, Camera_PhotoQualityPrioritization qualityPrioritization, bool* isSupported)](#oh_photooutput_isphotoqualityprioritizationsupported) | - | 检查是否支持指定的拍照画质优先策略。 |
 | [Camera_ErrorCode OH_PhotoOutput_SetPhotoQualityPrioritization(Camera_PhotoOutput* photoOutput, Camera_PhotoQualityPrioritization qualityPrioritization)](#oh_photooutput_setphotoqualityprioritization) | - | 设置拍照画质优先策略。 |
- | [Camera_ErrorCode OH_PhotoOutput_CreatePhotoCaptureSettingExt(Camera_PhotoOutput* photoOutput, OH_Camera_PhotoCaptureSettingExt** setting)](#oh_photooutput_createphotocapturesettingext) | - | 创建OH_Camera_PhotoCaptureSettingExt实例。 |
-| [Camera_ErrorCode OH_PhotoOutput_DestroyPhotoCaptureSettingExt(OH_Camera_PhotoCaptureSettingExt* setting)](#oh_photooutput_destroyphotocapturesettingext) | - | 销毁拍照捕获扩展设置。 |
-| [Camera_ErrorCode OH_PhotoCaptureSettingExt_SetImageRotation(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, Camera_ImageRotation rotation)](#oh_photocapturesettingext_setimagerotation) | - | 设置拍照捕获扩展配置的图像旋转角度。 |
-| [Camera_ErrorCode OH_PhotoCaptureSettingExt_SetLocation(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, Camera_Location location)](#oh_photocapturesettingext_setlocation) | - | 设置拍照捕获扩展配置的图像位置。 |
-| [Camera_ErrorCode OH_PhotoCaptureSettingExt_SetMirror(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, bool mirror)](#oh_photocapturesettingext_setmirror) | - | 设置拍照捕获扩展配置的图像镜像。 |
-| [Camera_ErrorCode OH_PhotoCaptureSettingExt_SetCompressionQuality(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, uint8_t compressionQuality)](#oh_photocapturesettingext_setcompressionquality) | - | 设置拍照捕获扩展配置的图像压缩质量。 |
-| [Camera_ErrorCode OH_PhotoOutput_Capture_WithCaptureSettingExt(Camera_PhotoOutput* photoOutput, OH_Camera_PhotoCaptureSettingExt* setting)](#oh_photooutput_capture_withcapturesettingext) | - | 使用拍照捕获扩展设置拍摄照片。 |
+ | [Camera_ErrorCode OH_PhotoOutput_CreatePhotoCaptureSettingExt(Camera_PhotoOutput* photoOutput, OH_Camera_PhotoCaptureSettingExt** setting)](#oh_photooutput_createphotocapturesettingext) | - | 创建指向扩展拍照设置对象实例。 |
+| [Camera_ErrorCode OH_PhotoOutput_DestroyPhotoCaptureSettingExt(OH_Camera_PhotoCaptureSettingExt* setting)](#oh_photooutput_destroyphotocapturesettingext) | - | 销毁拍照扩展设置对象的实例。 |
+| [Camera_ErrorCode OH_PhotoCaptureSettingExt_SetImageRotation(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, Camera_ImageRotation rotation)](#oh_photocapturesettingext_setimagerotation) | - | 拍照扩展设置中的图像旋转角度。 |
+| [Camera_ErrorCode OH_PhotoCaptureSettingExt_SetLocation(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, Camera_Location location)](#oh_photocapturesettingext_setlocation) | - | 拍照扩展设置中的图片位置信息。 |
+| [Camera_ErrorCode OH_PhotoCaptureSettingExt_SetMirror(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, bool mirror)](#oh_photocapturesettingext_setmirror) | - | 拍照扩展设置中的镜像效果。 |
+| [Camera_ErrorCode OH_PhotoCaptureSettingExt_SetCompressionQuality(OH_Camera_PhotoCaptureSettingExt* photoCaptureSettingExt, uint8_t compressionQuality)](#oh_photocapturesettingext_setcompressionquality) | - | 拍照扩展设置中的图片压缩质量。 |
+| [Camera_ErrorCode OH_PhotoOutput_Capture_WithCaptureSettingExt(Camera_PhotoOutput* photoOutput, OH_Camera_PhotoCaptureSettingExt* setting)](#oh_photooutput_capture_withcapturesettingext) | - | 使用拍照扩展设置拍摄照片。 |
 
 ## 函数说明
 
@@ -1029,7 +1029,7 @@ Camera_ErrorCode OH_PhotoOutput_CreatePhotoCaptureSettingExt(Camera_PhotoOutput*
 
 **描述** 
 
-创建**OH_Camera_PhotoCaptureSettingExt**实例。调用[OH_PhotoOutput_DestroyPhotoCaptureSettingExt](#oh_photooutput_destroyphotocapturesettingext)释放拍照捕获扩展设置内存。 
+创建指向扩展拍照设置对象实例。 
 
 **起始版本：** 26.0.0 
 
@@ -1037,8 +1037,8 @@ Camera_ErrorCode OH_PhotoOutput_CreatePhotoCaptureSettingExt(Camera_PhotoOutput*
 
 | 参数项 | 描述 | 
 | -- | -- | 
-| [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | 目标PhotoOutput实例指针。 | 
-| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)** setting | 如果方法调用成功，将记录创建的**OH_Camera_PhotoCaptureSettingExt**实例的二级指针。 | 
+| [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | photoOutput 拍照输出实例。 | 
+| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)** setting | 如果方法调用成功，如果函数调用成功, setting 指向创建的 OH_Camera_PhotoCaptureSettingExt 实例。 | 
 
 **返回：** 
 
@@ -1054,7 +1054,7 @@ Camera_ErrorCode OH_PhotoOutput_DestroyPhotoCaptureSettingExt(OH_Camera_PhotoCap
 
 **描述** 
 
-销毁拍照捕获扩展设置。 
+销毁拍照扩展设置对象的实例。 
 
 **起始版本：** 26.0.0 
 
@@ -1062,7 +1062,7 @@ Camera_ErrorCode OH_PhotoOutput_DestroyPhotoCaptureSettingExt(OH_Camera_PhotoCap
 
 | 参数项 | 描述 | 
 | -- | -- | 
-| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)* setting | 要销毁的目标**OH_Camera_PhotoCaptureSettingExt**实例。 | 
+| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)* setting | 指向扩展拍照设置对象的指针。 | 
 
 **返回：** 
 
@@ -1078,7 +1078,7 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetImageRotation(OH_Camera_PhotoCaptu
 
 **描述** 
 
-设置拍照捕获扩展配置的图像旋转角度。 
+拍照扩展设置中的图像旋转角度。 
 
 **起始版本：** 26.0.0 
 
@@ -1086,7 +1086,7 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetImageRotation(OH_Camera_PhotoCaptu
 
 | 参数项 | 描述 | 
 | -- | -- | 
-| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)* photoCaptureSettingExt | 拍照捕获扩展设置对象指针。 | 
+| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)* photoCaptureSettingExt | 指向扩展拍照设置对象的指针。 | 
 | [Camera_ImageRotation](capi-camera-h.md#camera_imagerotation) rotation | 图像旋转角度，定义在[Camera_ImageRotation](capi-camera-h.md#camera_imagerotation)枚举中。 | 
 
 **返回：** 
@@ -1103,7 +1103,7 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetLocation(OH_Camera_PhotoCaptureSet
 
 **描述** 
 
-设置拍照捕获扩展配置的图像位置。 
+拍照扩展设置中的图片位置信息。 
 
 **起始版本：** 26.0.0 
 
@@ -1111,8 +1111,8 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetLocation(OH_Camera_PhotoCaptureSet
 
 | 参数项 | 描述 | 
 | -- | -- | 
-| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)* photoCaptureSettingExt | 拍照捕获扩展设置对象指针。 | 
-| [Camera_Location](capi-oh-camera-camera-location.md) location | 图像位置。 | 
+| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)* photoCaptureSettingExt | 指向扩展拍照设置对象的指针。 | 
+| [Camera_Location](capi-oh-camera-camera-location.md) location | 图片位置，在Camera_Location枚举中定义。 | 
 
 **返回：** 
 
@@ -1128,7 +1128,7 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetMirror(OH_Camera_PhotoCaptureSetti
 
 **描述** 
 
-设置拍照捕获扩展配置的图像镜像。 
+拍照扩展设置中的镜像效果。 
 
 **起始版本：** 26.0.0 
 
@@ -1136,7 +1136,7 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetMirror(OH_Camera_PhotoCaptureSetti
 
 | 参数项 | 描述 | 
 | -- | -- | 
-| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)* photoCaptureSettingExt | 拍照捕获扩展设置对象指针。 | 
+| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)* photoCaptureSettingExt | 指向扩展拍照设置对象的指针。 | 
 | bool mirror | 镜像效果开关。**true**表示启用，**false**表示禁用。 | 
 
 **返回：** 
@@ -1153,7 +1153,7 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetCompressionQuality(OH_Camera_Photo
 
 **描述** 
 
-设置拍照捕获扩展配置的图像压缩质量。 
+拍照扩展设置中的图片压缩质量。 
 
 **起始版本：** 26.0.0 
 
@@ -1161,7 +1161,7 @@ Camera_ErrorCode OH_PhotoCaptureSettingExt_SetCompressionQuality(OH_Camera_Photo
 
 | 参数项 | 描述 | 
 | -- | -- | 
-| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)* photoCaptureSettingExt | 拍照捕获扩展设置对象指针。 | 
+| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)* photoCaptureSettingExt | 指向扩展拍照设置对象的指针。 | 
 | uint8_t compressionQuality | 图像压缩质量。 | 
 
 **返回：** 
@@ -1186,8 +1186,8 @@ Camera_ErrorCode OH_PhotoOutput_Capture_WithCaptureSettingExt(Camera_PhotoOutput
 
 | 参数项 | 描述 | 
 | -- | -- | 
-| [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | 目标PhotoOutput实例指针。 | 
-| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)* setting | 目标**OH_Camera_PhotoCaptureSettingExt**实例指针。 | 
+| [Camera_PhotoOutput](capi-oh-camera-camera-photooutput.md)* photoOutput | 拍照输出实例。 | 
+| [OH_Camera_PhotoCaptureSettingExt](capi-oh-camera-camera-photocapturesettingExt.md)* setting | 指向创建的**OH_Camera_PhotoCaptureSettingExt**实例的双指针。 | 
 
 **返回：** 
 
