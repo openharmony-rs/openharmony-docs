@@ -3350,13 +3350,13 @@ ArkTS-Sta: onPermissionRequest(callback: Callback\<OnPermissionRequestEvent\> | 
                 primaryButton: {
                   value: 'deny',
                   action: () => {
-                    event.request.deny();//拒绝权限请求
+                    event.request.deny(); //拒绝权限请求
                   }
                 },
                 secondaryButton: {
                   value: 'onConfirm',
                   action: () => {
-                    event.request.grant(event.request.getAccessibleResource());//授权请求的权限资源
+                    event.request.grant(event.request.getAccessibleResource()); //授权请求的权限资源
                   }
                 },
                 cancel: () => {
@@ -4292,7 +4292,7 @@ ArkTS-Dyn示例：
           .onFullScreenExit(() => {
             console.info("onFullScreenExit...")
             if (this.handler) {
-              this.handler.exitFullScreen();//退出全屏模式
+              this.handler.exitFullScreen(); //退出全屏模式
             }
           })
           .onFullScreenEnter((event) => {
@@ -5858,13 +5858,13 @@ ArkTS-Dyn示例：
                 primaryButton: {
                   value: 'deny',
                   action: () => {
-                    event.handler.deny();//拒绝屏幕捕获请求
+                    event.handler.deny(); //拒绝屏幕捕获请求
                   }
                 },
                 secondaryButton: {
                   value: 'onConfirm',
                   action: () => {
-                    event.handler.grant({ captureMode: WebCaptureMode.HOME_SCREEN });//授权屏幕捕获请求，设置捕获模式为主屏幕
+                    event.handler.grant({ captureMode: WebCaptureMode.HOME_SCREEN }); //授权屏幕捕获请求，设置捕获模式为主屏幕
                   }
                 },
                 cancel: () => {
