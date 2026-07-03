@@ -364,8 +364,7 @@ SQL语句中的函数，如下所示：
      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
      resultSet?.close();
    }
-   
-    
+
    // 搭载OpenHarmony 7.0.0及以上版本的设备，支持使用表达式进行加权打分，基于表达式得分排序查询
    try {
      // 创建第二张表
@@ -376,6 +375,7 @@ SQL语句中的函数，如下所示：
    } catch (err) {
      console.error(`query failed, code is ${err.code}, message is ${err.message}`);
    }
+
    // 子查询
    try {
      // 创建第二张表
