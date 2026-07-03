@@ -467,7 +467,7 @@ onFileReadyBatch: OnFileReadyBatch
 
 > **说明**
 >
-> OnFileReadyBatch返回的Array&lt;File&gt;是文件数组[backup.File](#file)。返回的文件属于备份服务。一旦文件关闭，备份服务应清理该文件所使用的资源。但是，客户端必须先关闭文件句柄。
+> OnFileReadyBatch返回的Array&lt;File&gt;是文件数组[backup.File](#file)。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
