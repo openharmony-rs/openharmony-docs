@@ -1,4 +1,4 @@
-capi-oh-camera-camera-photocapturesettingExt.md# Interface (Flash)
+# Interface (Flash)
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
