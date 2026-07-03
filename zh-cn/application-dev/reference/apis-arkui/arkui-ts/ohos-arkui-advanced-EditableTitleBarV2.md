@@ -50,7 +50,7 @@ EditableTitleBarV2({leftIcon?: EditableLeftIconV2, title: ResourceStr \| Editabl
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -76,6 +76,8 @@ type OnActionCallback = () => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
+
 
 ## EditableLeftIconTypeV2
 
@@ -89,7 +91,7 @@ type OnActionCallback = () => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -108,10 +110,12 @@ type OnActionCallback = () => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| iconType | [EditableLeftIconTypeV2](#editablelefticontypev2) | 否 | 是 | 图标类型，Back或Cancel。 |
-| defaultFocus | boolean | 否 | 是 | 是否默认获取焦点。<br/>默认值：false。 |
+| iconType | [EditableLeftIconTypeV2](#editablelefticontypev2) | 否 | 是 | 图标类型。 |
+| defaultFocus | boolean | 否 | 是 | 是否默认获取焦点。<br/>true：获焦。<br/>false：不获焦。<br/>默认值：false。 |
 | onAction | [OnActionCallback](#onactioncallback) | 否 | 是 | 点击左侧图标的回调函数。未设置时，Back类型默认执行路由返回，Cancel类型无操作。 |
 
 ## EditableLeftIconV2
@@ -128,13 +132,13 @@ type OnActionCallback = () => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | iconType | [EditableLeftIconTypeV2](#editablelefticontypev2) | 否 | 否 | 图标类型。<br/>默认值：EditableLeftIconTypeV2.Back。<br>**装饰器类型：** @Trace |
-| defaultFocus | boolean | 否 | 否 | 是否默认获取焦点。<br/>默认值：false。<br>**装饰器类型：** @Trace |
+| defaultFocus | boolean | 否 | 否 | 是否默认获取焦点。<br/>true：获焦。<br/>false：不获焦。<br/>默认值：false。<br>**装饰器类型：** @Trace |
 | onAction | [OnActionCallback](#onactioncallback) | 否 | 是 | 点击左侧图标的回调函数。<br>**装饰器类型：** @Trace |
 
 ### constructor
@@ -151,7 +155,7 @@ EditableLeftIconV2的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **参数：**
 
@@ -172,6 +176,8 @@ EditableLeftIconV2的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | mainTitle | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 主标题内容。 |
@@ -191,7 +197,7 @@ EditableLeftIconV2的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -212,7 +218,7 @@ EditableTitleV2的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **参数：**
 
@@ -233,9 +239,11 @@ EditableTitleV2的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| value | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 图标资源，支持Symbol或Image。 |
+| value | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 图标资源，支持Symbol类型图标或Image类型图标。 |
 | symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | Symbol图标样式修饰器，优先级大于value。 |
 | isEnabled | boolean | 否 | 是 | 是否启用。<br/>默认值：true，表示启用。<br/>isEnabled为false时，表示禁用。 |
 | label | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 长按对话框的标签文本。 |
@@ -259,7 +267,7 @@ EditableTitleV2的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -268,10 +276,10 @@ EditableTitleV2的构造函数。
 | isEnabled | boolean | 否 | 否 | 是否启用。<br/>默认值：true，表示启用。<br/>isEnabled为false时，表示禁用。<br>**装饰器类型：** @Trace |
 | label | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 长按对话框的标签文本。<br>**装饰器类型：** @Trace |
 | action | [OnActionCallback](#onactioncallback) | 否 | 是 | 点击菜单项的回调函数。<br>**装饰器类型：** @Trace |
-| accessibilityLevel | string | 否 | 否 | 可访问性级别。<br/>默认值："auto"。<br>**装饰器类型：** @Trace  |
-| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 屏幕阅读器的可访问性文本。<br>**装饰器类型：** @Trace |
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 可访问性描述。<br>**装饰器类型：** @Trace |
-| defaultFocus | boolean | 否 | 否 | 是否设置为默认获焦。<br/>默认值：false。<br>**装饰器类型：** @Trace |
+| accessibilityLevel | string | 否 | 否 | 可访问性级别，用于控制当前项是否可被无障碍辅助服务所识别。<br/>支持的值为：<br/>"auto"：当前组件会转换为"yes"。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"。<br>**装饰器类型：** @Trace  |
+| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 屏幕阅读器的可访问性文本。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容。<br/>默认值：有label时默认值为当前项label属性内容，没有设置label时，默认值为" "。<br>**装饰器类型：** @Trace |
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 可访问性描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br/>默认值："单指双击即可执行"。<br>**装饰器类型：** @Trace |
+| defaultFocus | boolean | 否 | 否 | 是否设置为默认获焦。<br/>true：获焦。<br/>false：不获焦。<br/>默认值：false。<br>**装饰器类型：** @Trace |
 
 ### constructor
 
@@ -287,7 +295,7 @@ EditableTitleBarMenuItemV2的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **参数：**
 
@@ -309,7 +317,7 @@ type EditableTitleBarItemV2 = EditableTitleBarMenuItemV2
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -329,6 +337,8 @@ type EditableTitleBarItemV2Options = EditableTitleBarMenuItemV2Options
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
+
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -346,10 +356,12 @@ type EditableTitleBarItemV2Options = EditableTitleBarMenuItemV2Options
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | isRequired | boolean | 否 | 是 | 是否显示保存按钮。<br/>默认值：true，表示显示保存按钮。 |
-| defaultFocus | boolean | 否 | 是 | 是否默认获取焦点。<br/>默认值：false。 |
+| defaultFocus | boolean | 否 | 是 | 是否默认获取焦点。<br/>true：获焦。<br/>false：不获焦。<br/>默认值：false。 |
 | onAction | [OnActionCallback](#onactioncallback) | 否 | 是 | 点击保存按钮的回调函数。未设置时点击按钮无响应。 |
 
 ## EditableSaveButtonV2
@@ -366,12 +378,12 @@ type EditableTitleBarItemV2Options = EditableTitleBarMenuItemV2Options
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | isRequired | boolean | 否 | 否 | 是否显示保存按钮。<br/>默认值：true，表示显示保存按钮。<br>**装饰器类型：** @Trace |
-| defaultFocus | boolean | 否 | 否 | 是否默认获取焦点。<br/>默认值：false。<br>**装饰器类型：** @Trace |
+| defaultFocus | boolean | 否 | 否 | 是否默认获取焦点。<br/>true：获焦。<br/>false：不获焦。<br/>默认值：false。<br>**装饰器类型：** @Trace |
 | onAction | [OnActionCallback](#onactioncallback) | 否 | 是 | 点击保存按钮的回调函数。<br>**装饰器类型：** @Trace |
 
 ### constructor
@@ -388,7 +400,7 @@ EditableSaveButtonV2的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **参数：**
 
@@ -408,13 +420,15 @@ EditableSaveButtonV2的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | backgroundColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 标题栏背景色。<br/>默认值：'#00000000'，表示背景透明。  |
 | backgroundBlurStyle | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | 否 | 是 | 标题栏背景模糊样式。<br/>默认值：BlurStyle.NONE，表示无模糊效果。  |
 | safeAreaTypes | Array&lt;[SafeAreaType](ts-universal-attributes-expand-safe-area.md#safeareatype)&gt; | 否 | 是 | 扩展安全区域的类型。<br/>默认值：[SafeAreaType.SYSTEM]。  |
 | safeAreaEdges | Array&lt;[SafeAreaEdge](ts-universal-attributes-expand-safe-area.md#safeareaedge)&gt; | 否 | 是 | 扩展安全区域的方向。<br/>默认值：[SafeAreaEdge.TOP]。  |
-| contentMargin | [LocalizedMargin](ts-types.md#localizedmargin12) | 否 | 是 | 标题栏外边距，不支持设置负数。支持RTL布局，使用start和end替代left和right。<br/>默认值：<br/>{<br/>start: LengthMetrics.resource($r('sys.float.margin_left')),<br/>end: LengthMetrics.resource($r('sys.float.margin_right'))<br/>}。  |
+| contentMargin | [LocalizedMargin](ts-types.md#localizedmargin12) | 否 | 是 | 标题栏外边距，不支持设置负数。<br/>默认值：<br/>{<br/>start: LengthMetrics.resource(\$r('sys.float.margin_left')),<br/>end: LengthMetrics.resource(\$r('sys.float.margin_right'))<br/>}。  |
 
 ## EditableTitleBarStyleV2
 
@@ -430,7 +444,7 @@ EditableSaveButtonV2的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -454,7 +468,7 @@ EditableTitleBarStyleV2的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Car）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable、Car）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
 
 **参数：**
 
@@ -470,7 +484,9 @@ EditableTitleBarStyleV2的构造函数。
 
 ### 示例1（右侧图标自定义标题栏）
 
-从API版本26.0.0开始，通过EditableTitleBarV2接口设置左侧图标、主标题及自定义右侧图标区的效果。
+本示例通过EditableTitleBarV2接口实现了编辑型标题栏左侧图标、主标题及自定义右侧图标区内容的展示。
+
+从API版本26.0.0开始，支持。
 
 ```ts
 import { Prompt } from '@kit.ArkUI';
@@ -541,7 +557,9 @@ struct EditableTitleBarV2Demo01 {
 
 ### 示例2（头像与背景模糊标题栏）
 
-从API版本26.0.0开始，通过EditableTitleBarV2接口设置背景模糊、头像；取消右侧保存图标及自定义标题栏外边距的效果。
+本示例通过EditableTitleBarV2接口leftIcon、title、saveButton等，实现了编辑型标题栏设置背景模糊、头像、取消右侧保存图标及自定义标题栏外边距的功能。
+
+从API版本26.0.0开始，支持。
 
 ```ts
 import { LengthMetrics, Prompt } from '@kit.ArkUI';
@@ -686,7 +704,9 @@ struct EditableTitleBarV2Demo02 {
 
 ### 示例3（右侧自定义按钮播报）
 
-从API版本26.0.0开始，通过设置标题栏的右侧自定义按钮属性接口accessibilityText、accessibilityDescription、accessibilityLevel自定义屏幕朗读播报文本。
+本示例通过EditableTitleBarV2接口右侧自定义按钮属性接口accessibilityText、accessibilityDescription、accessibilityLevel等，实现了编辑型标题栏屏幕朗读播报文本内容的自定义功能。
+
+从API版本26.0.0开始，支持。
 
 ```ts
 import { Prompt } from '@kit.ArkUI';
@@ -764,7 +784,9 @@ struct EditableTitleBarV2Demo03 {
 
 ### 示例4（左侧图标设置为默认焦点）
 
-从API版本26.0.0开始，在获焦状态下，通过设置标题栏属性leftIconDefaultFocus接口使左侧图标默认获焦。
+在获焦状态下，本示例通过EditableTitleBarV2接口leftIconDefaultFocus等，实现了编辑型标题栏左侧图标默认获焦功能。
+
+从API版本26.0.0开始，支持。
 
 ```ts
 import { Prompt } from '@kit.ArkUI';
@@ -798,7 +820,9 @@ struct EditableTitleBarV2Demo04 {
 
 ### 示例5（右侧自定义图标设置为默认焦点）
 
-从API版本26.0.0开始，在获焦状态下，通过设置标题栏右侧图标属性defaultFocus接口使右侧图标默认获焦。
+在获焦状态下，本示例通过EditableTitleBarV2接口右侧图标属性defaultFocus接口，实现了编辑型标题栏右侧图标默认获焦功能。
+
+从API版本26.0.0开始，支持。
 
 ```ts
 import { Prompt } from '@kit.ArkUI';
@@ -855,7 +879,9 @@ struct EditableTitleBarV2Demo05 {
 
 ### 示例6（设置Symbol类型图标）
 
-从API版本26.0.0开始，通过设置EditableTitleBarMenuItem的属性接口symbolStyle，实现自定义Symbol类型图标。
+本示例通过EditableTitleBarV2接口symbolStyle，实现了编辑型标题栏自定义Symbol类型图标功能。
+
+从API版本26.0.0开始，支持。
 
 ```ts
 import { Prompt, SymbolGlyphModifier } from '@kit.ArkUI';
