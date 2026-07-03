@@ -272,7 +272,7 @@ MyDataSource实现了LazyForEach数据源接口[IDataSource](ts-rendering-contro
 <!--code_no_check-->
 ```ts
 import { LengthMetrics, LazyVWaterFlowLayout, LazyVWaterFlowLayoutAttribute } from '@kit.ArkUI';
-// MyDataSource是自定义数据源类，实现了LazyForEach所需的IDataSource接口。
+// MyDataSource是自定义数据源类，实现了LazyForEach所需的IDataSource接口
 import { MyDataSource } from './MyDataSource';
 
 @Entry
@@ -441,7 +441,7 @@ export class MyDataSource<T> extends BasicDataSource<T> {
 <!--code_no_check-->
 ```ts
 import { LengthMetrics, LazyVWaterFlowLayout, LazyVWaterFlowLayoutAttribute } from '@kit.ArkUI';
-// MyDataSource是自定义数据源类，实现了LazyForEach所需的IDataSource接口。
+// MyDataSource是自定义数据源类，实现了LazyForEach所需的IDataSource接口
 import { MyDataSource } from './MyDataSource';
 
 @Entry
@@ -459,6 +459,7 @@ struct LazyVWaterFlowLayoutStickyDemo {
     return colors[index % colors.length]
   }
 
+  // 构建头部组件
   @Builder
   HeaderBuilder() {
     Column() {
@@ -509,6 +510,7 @@ struct LazyVWaterFlowLayoutStickyDemo {
         .columnsGap(LengthMetrics.vp(10))
         .header(this.HeaderBuilder)
         .footer(this.FooterBuilder)
+        // 设置头部和尾部同时吸附
         .sticky(StickyStyle.BOTH)
         .onVisibleIndexesChange((start: number, end: number) => {
           console.info('LazyVWaterFlowLayout visible indexes: start: ' + start + ', end: ' + end);
@@ -554,7 +556,7 @@ import {
   LazyVWaterFlowLayout,
   LazyVWaterFlowLayoutAttribute,
 } from '@kit.ArkUI';
-// MyDataSource是自定义数据源类，实现了LazyForEach所需的IDataSource接口。
+// MyDataSource是自定义数据源类，实现了LazyForEach所需的IDataSource接口
 import { MyDataSource } from './MyDataSource';
 
 @Entry

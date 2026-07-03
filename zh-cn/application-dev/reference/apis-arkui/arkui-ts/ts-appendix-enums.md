@@ -253,11 +253,11 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 说明               | 动效参数                          | 默认缩放比                     |
-| ------ | --------------------------------- | --------------------------------- | --------------------------------- |
-| LIGHT  | 小面积（轻盈） | 弹簧动效， 刚性：410，阻尼：38，初始速度：1 | 90% |
-| MIDDLE | 中面积（稳定） | 弹簧动效， 刚性：350，阻尼：35，初始速度：0.5 | 95% |
-| HEAVY  | 大面积（厚重） | 弹簧动效， 刚性：240，阻尼：28，初始速度：0 | 95% |
+| 名称   | 值 | 说明                            |
+| ------ | --- | ----------------------------- |
+| LIGHT  | 0 | 小面积（轻盈），弹簧动效，刚性：410，阻尼：38，初始速度：1，默认缩放比90%。 |
+| MIDDLE | 1 | 中面积（稳定），弹簧动效，刚性：350，阻尼：35，初始速度：0.5，默认缩放比95%。 |
+| HEAVY  | 2 | 大面积（厚重），弹簧动效，刚性：240，阻尼：28，初始速度：0，默认缩放比95%。 |
 
 ## Color
 
@@ -617,8 +617,8 @@
 | 名称            | 值 | 说明               |
 | ------------- | ------ | ---------------- |
 | Row           | 0 | 主轴与行方向一致作为布局模式。  |
-| RowReverse    | 1 | 与Row方向相反方向进行布局。  |
-| Column        | 2 | 主轴与列方向一致作为布局模式。  |
+| Column        | 1 | 主轴与列方向一致作为布局模式。  |
+| RowReverse    | 2 | 与Row方向相反方向进行布局。  |
 | ColumnReverse | 3 | 与Column相反方向进行布局。 |
 
 ## FlexWrap
@@ -741,17 +741,17 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 说明    |
-| ----------- | ----- |
-| Left        | 从右向左。 |
-| Top         | 从下向上。 |
-| Right       | 从左向右。 |
-| Bottom      | 从上向下。 |
-| LeftTop     | 从左上向右下。   |
-| LeftBottom  | 从左下向右上。   |
-| RightTop    | 从右上向左下。   |
-| RightBottom | 从右下向左上。   |
-| None        | 无。    |
+| 名称          | 值 | 说明    |
+| ----------- | - | ----- |
+| Left        | 0 | 从右向左。 |
+| Top         | 1 | 从下向上。 |
+| Right       | 2 | 从左向右。 |
+| Bottom      | 3 | 从上向下。 |
+| LeftTop     | 4 | 从左上向右下。   |
+| LeftBottom  | 5 | 从左下向右上。   |
+| RightTop    | 6 | 从右上向左下。   |
+| RightBottom | 7 | 从右下向左上。   |
+| None        | 8 | 无。    |
 
 ## GestureCollectIntervention
 
@@ -937,8 +937,8 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 | Start    | 1 | 元素在Flex容器中，沿交叉轴方向首部对齐。                    |
 | Center   | 2 | 元素在Flex容器中，沿交叉轴方向居中对齐。                    |
 | End      | 3 | 元素在Flex容器中，沿交叉轴方向底部对齐。                    |
-| Stretch  | 4 | 元素在Flex容器中，沿交叉轴方向拉伸填充。容器为Flex且设置Wrap为FlexWrap.Wrap或FlexWrap.WrapReverse时，元素拉伸到与当前行/列交叉轴长度最长的元素尺寸。其余情况下，无论元素尺寸是否设置，均拉伸到容器尺寸。 |
-| Baseline | 5 | 元素在Flex容器中，交叉轴方向文本基线对齐。                  |
+| Baseline | 4 | 元素在Flex容器中，交叉轴方向文本基线对齐。                  |
+| Stretch  | 5 | 元素在Flex容器中，沿交叉轴方向拉伸填充。容器为Flex且设置Wrap为FlexWrap.Wrap或FlexWrap.WrapReverse时，元素拉伸到与当前行/列交叉轴长度最长的元素尺寸。其余情况下，无论元素尺寸是否设置，均拉伸到容器尺寸。 |
 
 ## ImageRepeat
 
@@ -1708,15 +1708,15 @@ type Nullable\<T> = T | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 说明   |
-| ---- | ---- |
-| Mon  | 星期一。  |
-| Tue  | 星期二。  |
-| Wed  | 星期三。  |
-| Thur | 星期四。  |
-| Fri  | 星期五。  |
-| Sat  | 星期六。  |
-| Sun  | 星期日。  |
+| 名称   | 值 | 说明   |
+| ---- | - | ---- |
+| Mon  | 0 | 星期一。  |
+| Tue  | 1 | 星期二。  |
+| Wed  | 2 | 星期三。  |
+| Thur | 3 | 星期四。  |
+| Fri  | 4 | 星期五。  |
+| Sat  | 5 | 星期六。  |
+| Sun  | 6 | 星期日。  |
 
 ## WidthBreakpoint<sup>13+</sup>
 

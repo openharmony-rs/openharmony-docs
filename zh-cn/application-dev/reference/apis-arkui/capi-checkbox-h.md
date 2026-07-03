@@ -10,7 +10,7 @@
 
 为NativeNode API提供Checkbox节点类型定义。
 
-**引用文件：** <arkui/checkbox.h>
+**引用文件：** <arkui/node_attributes/checkbox.h>
 
 **库：** libace_ndk.z.so
 
