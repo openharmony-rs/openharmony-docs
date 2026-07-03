@@ -5879,20 +5879,6 @@
 
 **起始版本**：26.0.0
 
-## ohos.permission.vehicle.CAR_LOG_SERVICE
-
-允许系统应用发送指令以获取日志。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**是否支持证书授权**：true
-
-**支持设备**：Car
-
-**起始版本**：26.0.0
-
 ## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
 允许应用订阅通知服务。
