@@ -74,6 +74,9 @@ struct SmartGestureControllerExample {
           .borderRadius(10)
           .borderWidth(1)
           .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
+          .onClick(() => {
+            console.info('smartGesture click is triggered');
+          })
       }.width('100%')
     }
     .layoutWeight(1)
@@ -1447,6 +1450,9 @@ struct SmartGestureControllerExample {
                   .borderRadius(10)
                   .borderWidth(1)
                   .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
+                  .onClick(() => {
+                    console.info('smartGesture click is triggered');
+                  })
               }
               .width('100%')
             }
@@ -1631,6 +1637,9 @@ struct SmartGestureControllerExample {
           .borderRadius(10)
           .borderWidth(1)
           .smartGestureShortcut({ action: GestureShortcut.PRIMARY, enabled: true, selectable: true })
+          .onClick(() => {
+            console.info('smartGesture click is triggered');
+          })
 
         // 目标节点：按钮
         Button(`按钮组件 / 点击=${this.clickCount}`)
