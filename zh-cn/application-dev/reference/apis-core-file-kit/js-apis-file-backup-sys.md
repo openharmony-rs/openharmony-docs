@@ -3562,7 +3562,7 @@ getFileHandles(fileMeta: FileMeta): Promise&lt;void&gt;
 
 | 参数名   | 类型                  | 必填 | 说明               |
 | -------- | --------------------- | ---- | ------------------ |
-| fileMeta | [FileMeta](#filemeta) | 是   | 待发送文件的元数据，文件应来自备份流程或[getLocalCapabilities](#getlocalcapabilities)方法。 |
+| fileMeta | [FileMeta](#filemeta) | 是   | 待发送文件的元数据，文件应来自备份流程或[getLocalCapabilities](#getlocalcapabilities18-1)方法。 |
 
 **返回值：**
 
