@@ -143,7 +143,7 @@ int32_t (*addChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)
 
 | 类型 | 说明                                                                                                                                                                                                                                                                                                                                     |
 | -- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 不支持对ArkTS创建的节点执行对应的操作。 <br>             [ARKUI_ERROR_CODE_NODE_IS_ADOPTED](capi-native-type-h.md#arkui_errorcode) 节点已被接纳为附属节点。从API version 22开始支持。|
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 不支持对ArkTS创建的节点执行对应的操作。 <br>             [ARKUI_ERROR_CODE_NODE_IS_ADOPTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 节点已被接纳为附属节点。从API version 22开始支持。|
 
 ### removeChild()
 
@@ -169,7 +169,7 @@ int32_t (*removeChild)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 不支持对ArkTS创建的节点执行对应的操作。<br>             [ARKUI_ERROR_CODE_ADAPTER_EXIST](capi-native-type-h.md#arkui_errorcode) NodeAdapter已经存在。|
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 不支持对ArkTS创建的节点执行对应的操作。<br>             [ARKUI_ERROR_CODE_ADAPTER_EXIST](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) NodeAdapter已经存在。|
 
 ### insertChildAfter()
 
@@ -196,7 +196,7 @@ int32_t (*insertChildAfter)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, Ark
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 不支持对ArkTS创建的节点执行对应的操作。<br>             [ARKUI_ERROR_CODE_NODE_IS_ADOPTED](capi-native-type-h.md#arkui_errorcode) 节点已被接纳为附属节点。从API version 22开始支持。|
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 不支持对ArkTS创建的节点执行对应的操作。<br>             [ARKUI_ERROR_CODE_NODE_IS_ADOPTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 节点已被接纳为附属节点。从API version 22开始支持。|
 
 ### insertChildBefore()
 
@@ -223,7 +223,7 @@ int32_t (*insertChildBefore)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, Ar
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 不支持对ArkTS创建的节点执行对应的操作。<br>             [ARKUI_ERROR_CODE_NODE_IS_ADOPTED](capi-native-type-h.md#arkui_errorcode) 节点已被接纳为附属节点。从API version 22开始支持。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 不支持对ArkTS创建的节点执行对应的操作。<br>             [ARKUI_ERROR_CODE_NODE_IS_ADOPTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 节点已被接纳为附属节点。从API version 22开始支持。 |
 
 ### insertChildAt()
 
@@ -250,7 +250,7 @@ int32_t (*insertChildAt)(ArkUI_NodeHandle parent, ArkUI_NodeHandle child, int32_
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 不支持对ArkTS创建的节点执行对应的操作。<br>             [ARKUI_ERROR_CODE_NODE_IS_ADOPTED](capi-native-type-h.md#arkui_errorcode) 节点已被接纳为附属节点。从API version 22开始支持。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 不支持对ArkTS创建的节点执行对应的操作。<br>             [ARKUI_ERROR_CODE_NODE_IS_ADOPTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 节点已被接纳为附属节点。从API version 22开始支持。 |
 
 ### setAttribute()
 
@@ -279,7 +279,7 @@ int32_t (*setAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribute
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 组件不支持该属性。<br>             [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 不支持对ArkTS创建的节点执行对应的操作。<br>             [ARKUI_ERROR_CODE_ADAPTER_EXIST](capi-native-type-h.md#arkui_errorcode) NodeAdapter已经存在。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 组件不支持该属性。<br>             [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 不支持对ArkTS创建的节点执行对应的操作。<br>             [ARKUI_ERROR_CODE_ADAPTER_EXIST](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) NodeAdapter已经存在。 |
 
 ### getAttribute()
 
@@ -331,7 +331,7 @@ int32_t (*resetAttribute)(ArkUI_NodeHandle node, ArkUI_NodeAttributeType attribu
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 组件不支持该属性。<br>             [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 不支持对ArkTS创建的节点执行对应的操作。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 组件不支持该属性。<br>             [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 不支持对ArkTS创建的节点执行对应的操作。 |
 
 ### registerNodeEvent()
 
@@ -359,7 +359,7 @@ int32_t (*registerNodeEvent)(ArkUI_NodeHandle node, ArkUI_NodeEventType eventTyp
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 组件不支持该事件。<br>             [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 不支持对ArkTS创建的节点执行对应的操作。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 组件不支持该事件。<br>             [ARKUI_ERROR_CODE_ARKTS_NODE_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 不支持对ArkTS创建的节点执行对应的操作。 |
 
 ### unregisterNodeEvent()
 
@@ -610,7 +610,7 @@ int32_t (*registerNodeCustomEvent)(ArkUI_NodeHandle node, ArkUI_NodeCustomEventT
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-native-type-h.md#arkui_errorcode) 组件不支持该事件。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。<br>             [ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 组件不支持该事件。 |
 
 ### unregisterNodeCustomEvent()
 
@@ -689,7 +689,7 @@ int32_t (*setMeasuredSize)(ArkUI_NodeHandle node, int32_t width, int32_t height)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 
 ### setLayoutPosition()
@@ -716,7 +716,7 @@ int32_t (*setLayoutPosition)(ArkUI_NodeHandle node, int32_t positionX, int32_t p
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### getMeasuredSize()
 
@@ -791,7 +791,7 @@ int32_t (*measureNode)(ArkUI_NodeHandle node, ArkUI_LayoutConstraint* Constraint
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### layoutNode()
 
@@ -818,7 +818,7 @@ int32_t (*layoutNode)(ArkUI_NodeHandle node, int32_t positionX, int32_t position
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### addNodeEventReceiver()
 
@@ -844,7 +844,7 @@ int32_t (*addNodeEventReceiver)(ArkUI_NodeHandle node, void (*eventReceiver)(Ark
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### removeNodeEventReceiver()
 
@@ -870,7 +870,7 @@ int32_t (*removeNodeEventReceiver)(ArkUI_NodeHandle node, void (*eventReceiver)(
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### addNodeCustomEventReceiver()
 
@@ -896,7 +896,7 @@ int32_t (*addNodeCustomEventReceiver)(ArkUI_NodeHandle node, void (*eventReceive
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### removeNodeCustomEventReceiver()
 
@@ -922,7 +922,7 @@ int32_t (*removeNodeCustomEventReceiver)(ArkUI_NodeHandle node, void (*eventRece
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### setUserData()
 
@@ -948,7 +948,7 @@ int32_t (*setUserData)(ArkUI_NodeHandle node, void* userData)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### getUserData()
 
@@ -999,7 +999,7 @@ int32_t (*setLengthMetricUnit)(ArkUI_NodeHandle node, ArkUI_LengthMetricUnit uni
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
 ### getParent()
 
@@ -1049,4 +1049,4 @@ int32_t (*removeAllChildren)(ArkUI_NodeHandle parent)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | 错误码。<br>             [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>             [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
