@@ -610,7 +610,7 @@ try {
       let backupFilePath = context.databaseDir + '/rdb/Backup.db';
       const backupExist: boolean = await fileIo.access(backupFilePath);
       if (!backupExist) {
-        hilog.info(DOMAIN, 'BackupAndRestore', 'Backup is not exist.');
+        hilog.info(DOMAIN, 'BackupAndRestore', 'Backup does not exist.');
         // todo 开库建表
         // todo 自行生成数据
         return;
