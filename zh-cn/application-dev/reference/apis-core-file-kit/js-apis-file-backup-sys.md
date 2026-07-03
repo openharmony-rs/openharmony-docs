@@ -1019,7 +1019,7 @@ type OnBackupSizeReport = (reportInfo: string) => void
 
 type OnFileReadyBatch = (error: BusinessError&lt;void&gt;, files: Array&lt;[File](#file)&gt;) => void
 
-当服务器将文件发送回客户端时触发的回调函数。当获取文件句柄成功，error为undefined，files为获取到的文件句柄数组；否则为错误对象。
+当服务器将文件发送回客户端时触发的回调函数。
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
