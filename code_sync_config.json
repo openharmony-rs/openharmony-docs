@@ -14121,6 +14121,11 @@
 						"end_line":211,
 						"name":"set_on_drop_call",
 						"start_line":197
+					},
+					{
+						"end_line":233,
+						"name":"default_drag",
+						"start_line":16
 					}
 				]
 			},
@@ -14176,6 +14181,11 @@
 						"end_line":156,
 						"name":"gridExample_onclick",
 						"start_line":121
+					},
+					{
+						"end_line":204,
+						"name":"gridExample_start",
+						"start_line":15
 					}
 				]
 			},
@@ -14413,6 +14423,26 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/OnFocusOnBlurEvents.ets",
+				"functions":[
+					{
+						"end_line":77,
+						"name":"dynamic_focus_blur",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/Focusable.ets",
+				"functions":[
+					{
+						"end_line":115,
+						"name":"dynamic_focus_control_manage",
+						"start_line":18
+					}
+				]
 			}
 		]
 	},
@@ -14588,6 +14618,26 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestures.ets",
+				"functions":[
+					{
+						"end_line":69,
+						"name":"set_gestures",
+						"start_line":50
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestureDetermination.ets",
+				"functions":[
+					{
+						"end_line":90,
+						"name":"custom_gestures",
+						"start_line":15
+					}
+				]
 			}
 		]
 	},
@@ -14670,6 +14720,16 @@
 					{
 						"end_line":69,
 						"name":"click_event",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/SwipeGesture.ets",
+				"functions":[
+					{
+						"end_line":59,
+						"name":"catch_swipe_gesture_event",
 						"start_line":16
 					}
 				]
@@ -14860,6 +14920,16 @@
 					{
 						"end_line":75,
 						"name":"mouse_wheel",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/mouseMove/MouseMove.ets",
+				"functions":[
+					{
+						"end_line":65,
+						"name":"mouse_move",
 						"start_line":16
 					}
 				]
@@ -32626,6 +32696,21 @@
 						"end_line":47,
 						"name":"counter_example",
 						"start_line":17
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/ndk-drag-event.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/firstmodule.h",
+				"functions":[
+					{
+						"end_line":225,
+						"name":"on_drop",
+						"start_line":88
 					}
 				]
 			}
