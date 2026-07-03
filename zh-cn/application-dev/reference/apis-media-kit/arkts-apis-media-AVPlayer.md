@@ -504,7 +504,7 @@ clearPlaybackList(): Promise\<void>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 5400102  | operation not allowed . Returned via promise . |
+| 5400102  | operation not allowed . Returned via promise. |
 
 **示例：**
 
