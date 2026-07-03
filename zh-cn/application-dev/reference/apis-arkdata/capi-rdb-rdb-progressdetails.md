@@ -26,7 +26,7 @@ typedef struct Rdb_ProgressDetails {...} Rdb_ProgressDetails
 
 | 名称                | 描述                                    |
 | ------------------- | --------------------------------------- |
-| int version         | 用于唯一标识OH_TableDetails结构的版本。 |
+| int version         | 表示Rdb_ProgressDetails结构的版本。 |
 | int schedule        | 表示端云同步过程。                      |
 | int code            | 表示端云同步过程的状态。                |
 | int32_t tableLength | 表示端云同步的表的数量。                |

@@ -26,5 +26,5 @@ union Rdb_KeyData { ... }
 | ---------------- | ------------------------ |
 | uint64_t integer | 存放uint64_t类型的数据。 |
 | double real      | 存放double类型的数据。   |
-| const char* text | 存放char类型的数据。     |
+| const char* text | 存放字符串类型的数据。     |
 

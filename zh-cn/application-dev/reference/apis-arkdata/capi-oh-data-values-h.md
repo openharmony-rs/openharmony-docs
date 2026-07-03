@@ -32,7 +32,7 @@
 
 | 名称                                                         | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [OH_Data_Values *OH_Values_Create(void)](#oh_values_create)  | 创建[OH_Data_Values](capi-rdb-oh-data-values.md)实例，用于储存多条键值对数据。 |
+| [OH_Data_Values *OH_Values_Create(void)](#oh_values_create)  | 创建[OH_Data_Values](capi-rdb-oh-data-values.md)实例，用于存储多个数据值。 |
 | [int OH_Values_Destroy(OH_Data_Values *values)](#oh_values_destroy) | 销毁[OH_Data_Values](capi-rdb-oh-data-values.md)对象。           |
 | [int OH_Values_Put(OH_Data_Values *values, const OH_Data_Value *val)](#oh_values_put) | 添加OH_Data_Value类型数据给OH_Data_Values对象。              |
 | [int OH_Values_PutNull(OH_Data_Values *values)](#oh_values_putnull) | 添加空数据给OH_Data_Values对象。                             |
@@ -70,7 +70,7 @@ OH_Data_Values *OH_Values_Create(void)
 
 **描述**
 
-创建[OH_Data_Values](capi-rdb-oh-data-values.md)实例，用于储存多条键值对数据。
+创建[OH_Data_Values](capi-rdb-oh-data-values.md)实例，用于存储多个数据值。
 
 **起始版本：** 18
 

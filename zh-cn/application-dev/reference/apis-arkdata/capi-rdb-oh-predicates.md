@@ -40,7 +40,7 @@ typedef struct {...} OH_Predicates
 | [OH_Predicates *(*isNotNull)(OH_Predicates *predicates, const char *field)](#isnotnull) | 函数指针，配置谓词以匹配值不为null的指定字段。<br>该方法等同于SQL语句中的“IS NOT NULL”。 |
 | [OH_Predicates *(*like)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)](#like) | 函数指针，配置谓词以匹配数据字段为field且值类似于指定字符串的字段。<br>该方法等同于SQL语句中的“LIKE”。 |
 | [OH_Predicates *(*between)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)](#between) | 函数指针，将谓词配置为匹配数据字段为field且其值在给定范围内的指定字段。<br>该方法等同于SQL语句中的“BETWEEN”。 |
-| [OH_Predicates *(*notBetween)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)](#notbetween) | 函数指针，将谓词配置为匹配数据字段为field且其值超出给定范围内的指定字段。<br>该方法等同于SQL语句中的“NOT BETWEEN”。 |
+| [OH_Predicates *(*notBetween)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)](#notbetween) | 函数指针，配置谓词以匹配数据字段为field且其值不在给定范围内的指定字段。<br>该方法等同于SQL语句中的“NOT BETWEEN”。 |
 | [OH_Predicates *(*greaterThan)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)](#greaterthan) | 函数指针，配置谓词以匹配数据字段为field且值大于指定值valueObject的字段。<br>该方法等同于SQL语句中的“>”。 |
 | [OH_Predicates *(*lessThan)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)](#lessthan) | 函数指针，配置谓词以匹配数据字段为field且值小于指定值valueObject的字段。<br>该方法等同于SQL语句中的“<”。 |
 | [OH_Predicates *(*greaterThanOrEqualTo)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)](#greaterthanorequalto) | 函数指针，配置谓词以匹配数据字段为field且值大于或等于指定值valueObject的字段。<br>该方法等同于SQL语句中的“>=”。 |
@@ -50,8 +50,8 @@ typedef struct {...} OH_Predicates
 | [OH_Predicates *(*limit)(OH_Predicates *predicates, unsigned int value)](#limit) | 函数指针，设置最大数据记录数的谓词。<br>该方法等同于SQL语句中的“LIMIT”。 |
 | [OH_Predicates *(*offset)(OH_Predicates *predicates, unsigned int rowOffset)](#offset) | 函数指针，配置谓词以指定返回结果的起始位置。<br>该方法等同于SQL语句中的“OFFSET”。 |
 | [OH_Predicates *(*groupBy)(OH_Predicates *predicates, char const *const *fields, int length)](#groupby) | 函数指针，配置谓词按指定列分组查询结果。<br>该方法等同于SQL语句中的“GROUP BY”。 |
-| [OH_Predicates *(*in)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)](#in) | 函数指针，配置谓词以匹配数据字段为field且值在给定范围内的指定字段。<br>该方法等同于SQL语句中的“IN”。 |
-| [OH_Predicates *(*notIn)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)](#notin) | 函数指针，配置谓词以匹配数据字段为field且值超出给定范围内的指定字段。<br>该方法等同于SQL语句中的“NOT IN”。 |
+| [OH_Predicates *(*in)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)](#in) | 函数指针，配置谓词以匹配数据字段为field且其值在给定集合内的指定字段。<br>该方法等同于SQL语句中的“IN”。 |
+| [OH_Predicates *(*notIn)(OH_Predicates *predicates, const char *field, OH_VObject *valueObject)](#notin) | 函数指针，配置谓词以匹配数据字段为field且其值不在给定集合内的指定字段。<br>该方法等同于SQL语句中的“NOT IN”。 |
 | [OH_Predicates *(*clear)(OH_Predicates *predicates)](#clear) | 函数指针，清空谓词。                                         |
 | [int (*destroy)(OH_Predicates *predicates)](#destroy)        | 销毁OH_Predicates对象，并回收该对象占用的内存。              |
 
@@ -317,7 +317,7 @@ OH_Predicates *(*notBetween)(OH_Predicates *predicates, const char *field, OH_VO
 
 **描述**
 
-函数指针，将谓词配置为匹配数据字段为field且其值超出给定范围内的指定字段。<br>该方法等同于SQL语句中的“NOT BETWEEN”。
+函数指针，配置谓词以匹配数据字段为field且其值不在给定范围内的指定字段。<br>该方法等同于SQL语句中的“NOT BETWEEN”。
 
 **起始版本：** 10
 
@@ -573,7 +573,7 @@ OH_Predicates *(*in)(OH_Predicates *predicates, const char *field, OH_VObject *v
 
 **描述**
 
-函数指针，配置谓词以匹配数据字段为field且值在给定范围内的指定字段。<br>该方法等同于SQL语句中的“IN”。
+函数指针，配置谓词以匹配数据字段为field且其值在给定集合内的指定字段。<br>该方法等同于SQL语句中的“IN”。
 
 **起始版本：** 10
 
@@ -599,7 +599,7 @@ OH_Predicates *(*notIn)(OH_Predicates *predicates, const char *field, OH_VObject
 
 **描述**
 
-函数指针，配置谓词以匹配数据字段为field且值超出给定范围内的指定字段。<br>该方法等同于SQL语句中的“NOT IN”。
+函数指针，配置谓词以匹配数据字段为field且其值不在给定集合内的指定字段。<br>该方法等同于SQL语句中的“NOT IN”。
 
 **起始版本：** 10
 

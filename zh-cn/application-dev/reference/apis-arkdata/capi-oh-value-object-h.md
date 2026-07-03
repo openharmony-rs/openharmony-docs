@@ -20,11 +20,17 @@
 
 **相关模块：** [RDB](capi-rdb.md)
 
+## OH_VObject
+
+表示支持int64、double、text等多种数据类型的值对象。
+
+**起始版本：** 10
+
 ## 汇总
 
 ### 结构体
 
 | 名称                             | typedef关键字 | 描述               |
 | -------------------------------- | ------------- | ------------------ |
-| [OH_VObject](capi-rdb-oh-vobject.md) | OH_VObject    | 表示允许的数据字段类型。 |
+| [OH_VObject](capi-rdb-oh-vobject.md) | OH_VObject    | 表示支持int64、double、text等多种数据类型的值对象。 |
 

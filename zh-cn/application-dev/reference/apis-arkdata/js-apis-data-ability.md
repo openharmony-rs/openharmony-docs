@@ -38,7 +38,7 @@ createRdbPredicates(name: string, dataAbilityPredicates: DataAbilityPredicates):
 
 | 类型 | 说明 |
 | -------- | -------- |
-| rdb.[RdbPredicates](js-apis-data-rdb.md#rdbpredicates) | 返回RdbPredicates对象。 |
+| rdb.[RdbPredicates](js-apis-data-rdb.md#rdbpredicates) | 返回与指定字段匹配的RdbPredicates对象。 |
 
 **示例：**
 
@@ -65,7 +65,7 @@ equalTo(field: string, value: ValueType): DataAbilityPredicates
 
 配置谓词以匹配数据，数据的指定字段数据类型为ValueType且值等于指定值。
 
-此方法类似于SQL语句的“=”。
+此方法类似于SQL语句的"="。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -74,7 +74,7 @@ equalTo(field: string, value: ValueType): DataAbilityPredicates
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
-| value | [ValueType](#valuetype) | 是 | 指示要与谓词匹配的值。 |
+| value | [ValueType](#ValueType) | 是 | 指示要与谓词匹配的值。 |
 
 **返回值：**
 
@@ -94,7 +94,7 @@ notEqualTo(field: string, value: ValueType): DataAbilityPredicates
 
 配置谓词以匹配数据，数据的指定字段数据类型为ValueType且不等于指定值。
 
-此方法类似于SQL语句的“!=”。
+此方法类似于SQL语句的"!="。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -103,7 +103,7 @@ notEqualTo(field: string, value: ValueType): DataAbilityPredicates
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
-| value | [ValueType](#valuetype) | 是 | 指示要与谓词匹配的值。 |
+| value | [ValueType](#ValueType) | 是 | 指示要与谓词匹配的值。 |
 
 **返回值：**
 
@@ -121,7 +121,7 @@ notEqualTo(field: string, value: ValueType): DataAbilityPredicates
 
 beginWrap(): DataAbilityPredicates
 
-在谓词中添加左括号。此方法类似于SQL语句的“(”，需要与[endWrap](#endwrap)一起使用。
+在谓词中添加左括号。此方法类似于SQL语句的"("，需要与[endWrap](#endwrap)一起使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -129,7 +129,7 @@ beginWrap(): DataAbilityPredicates
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [DataAbilityPredicates](#dataabilitypredicates) | 返回带有左括号的DataAbility谓词。 |
+| [DataAbilityPredicates](#dataabilitypredicates) | 返回带有左括号的谓词。 |
 
 **示例：**
 
@@ -146,7 +146,7 @@ beginWrap(): DataAbilityPredicates
 
 endWrap(): DataAbilityPredicates
 
-在谓词中添加右括号。此方法类似于SQL语句的“)”，需要和[beginWrap](#beginwrap)一起使用。
+在谓词中添加右括号。此方法类似于SQL语句的")"，需要和[beginWrap](#beginwrap)一起使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -154,7 +154,7 @@ endWrap(): DataAbilityPredicates
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [DataAbilityPredicates](#dataabilitypredicates) | 返回带有右括号的DataAbility谓词。 |
+| [DataAbilityPredicates](#dataabilitypredicates) | 返回带有右括号的谓词。 |
 
 **示例：**
 
@@ -173,7 +173,7 @@ or(): DataAbilityPredicates
 
 将或条件添加到谓词中。
 
-此方法类似于SQL语句“or”。
+此方法类似于SQL语句"or"。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -181,7 +181,7 @@ or(): DataAbilityPredicates
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [DataAbilityPredicates](#dataabilitypredicates) | 返回带有或条件的DataAbility谓词。 |
+| [DataAbilityPredicates](#dataabilitypredicates) | 返回带有或条件的谓词。 |
 
 **示例：**
 
@@ -203,7 +203,7 @@ and(): DataAbilityPredicates
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [DataAbilityPredicates](#dataabilitypredicates) | 返回带有和条件的DataAbility谓词。 |
+| [DataAbilityPredicates](#dataabilitypredicates) | 返回带有和条件的谓词。 |
 
 **示例：**
 
@@ -246,7 +246,7 @@ beginsWith(field: string, value: string): DataAbilityPredicates
 
 配置谓词以匹配数据类型为string且值以指定字符串开头的字段。
 
-此方法类似于SQL语句的“value%”。
+此方法类似于SQL语句的"value%"。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -275,7 +275,7 @@ endsWith(field: string, value: string): DataAbilityPredicates
 
 配置谓词以匹配数据类型为string且值以指定字符串结尾的字段。
 
-此方法类似于SQL语句的“%value”。
+此方法类似于SQL语句的"%value"。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -356,7 +356,7 @@ like(field: string, value: string): DataAbilityPredicates
 
 配置谓词以匹配数据类型为string且值类似于指定字符串的字段。
 
-此方法类似于SQL语句“like”。
+此方法类似于SQL语句"like"。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -405,11 +405,11 @@ glob(field: string, value: string): DataAbilityPredicates
   ```js
   dataAbilityPredicates.glob("NAME", "?h*g")
 
-  // 仅可匹配到"name"字段值为“Lisa” 
+  // 仅可匹配到"NAME"字段值为"Lisa"
   dataAbilityPredicates.glob("NAME", "Lisa")
 
-  // 仅可以匹配到"name"字段值为“lisa” 
-  dataAbilityPredicates.glob("NAME", "lisa")
+  // 仅可以匹配到"name"字段值为"lisa"
+  dataAbilityPredicates.glob("name", "lisa")
   ```
 
 ### between
@@ -425,8 +425,8 @@ between(field: string, low: ValueType, high: ValueType): DataAbilityPredicates
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
-| low | [ValueType](#valuetype) | 是 | 指示与谓词匹配的最小值。 |
-| high | [ValueType](#valuetype) | 是 | 指示与谓词匹配的最大值。 |
+| low | [ValueType](#ValueType) | 是 | 指示与谓词匹配的最小值。 |
+| high | [ValueType](#ValueType) | 是 | 指示与谓词匹配的最大值。 |
 
 **返回值：**
 
@@ -453,8 +453,8 @@ notBetween(field: string, low: ValueType, high: ValueType): DataAbilityPredicate
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
-| low | [ValueType](#valuetype) | 是 | 指示与谓词匹配的最小值。 |
-| high | [ValueType](#valuetype) | 是 | 指示与谓词匹配的最大值。 |
+| low | [ValueType](#ValueType) | 是 | 指示与谓词匹配的最小值。 |
+| high | [ValueType](#ValueType) | 是 | 指示与谓词匹配的最大值。 |
 
 **返回值：**
 
@@ -481,7 +481,7 @@ greaterThan(field: string, value: ValueType): DataAbilityPredicates
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
-| value | [ValueType](#valuetype) | 是 | 指示要与谓词匹配的值。 |
+| value | [ValueType](#ValueType) | 是 | 指示要与谓词匹配的值。 |
 
 **返回值：**
 
@@ -508,7 +508,7 @@ lessThan(field: string, value: ValueType): DataAbilityPredicates
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
-| value | [ValueType](#valuetype) | 是 | 指示要与谓词匹配的值。 |
+| value | [ValueType](#ValueType) | 是 | 指示要与谓词匹配的值。 |
 
 **返回值：**
 
@@ -535,7 +535,7 @@ greaterThanOrEqualTo(field: string, value: ValueType): DataAbilityPredicates
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
-| value | [ValueType](#valuetype) | 是 | 指示要与谓词匹配的值。 |
+| value | [ValueType](#ValueType) | 是 | 指示要与谓词匹配的值。 |
 
 **返回值：**
 
@@ -562,7 +562,7 @@ lessThanOrEqualTo(field: string, value: ValueType): DataAbilityPredicates
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
-| value | [ValueType](#valuetype) | 是 | 指示要与谓词匹配的值。 |
+| value | [ValueType](#ValueType) | 是 | 指示要与谓词匹配的值。 |
 
 **返回值：**
 
@@ -599,7 +599,7 @@ orderByAsc(field: string): DataAbilityPredicates
 **示例：**
 
   ```js
-  // 先按“name”字段排序，相同时按“AGE”字段排序，其次按“SALARY”排序
+  // 先按"NAME"字段排序，相同时按"AGE"字段排序，其次按"SALARY"排序
   dataAbilityPredicates.orderByAsc("NAME").orderByAsc("AGE").orderByAsc("SALARY")
   ```
 
@@ -626,7 +626,7 @@ orderByDesc(field: string): DataAbilityPredicates
 **示例：**
 
   ```js
-  // 优先按“AGE”排序，相同时按“SALARY”排序
+  // 优先按"AGE"排序，相同时按"SALARY"排序
   dataAbilityPredicates.orderByDesc("AGE").orderByDesc("SALARY")
   ```
 
@@ -808,7 +808,7 @@ in(field: string, value: Array&lt;ValueType&gt;): DataAbilityPredicates
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
-| value | Array&lt;[ValueType](#valuetype)&gt; | 是 | 以ValueType类型数组形式指定的要匹配的值。 |
+| value | Array&lt;[ValueType](#ValueType)&gt; | 是 | 以ValueType类型数组形式指定的要匹配的值。 |
 
 
 **返回值：**
@@ -836,7 +836,7 @@ notIn(field: string, value: Array&lt;ValueType&gt;): DataAbilityPredicates
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | field | string | 是 | 数据库表中的列名，不能为空字符串。 |
-| value | Array&lt;[ValueType](#valuetype)&gt; | 是 | 以ValueType类型数组形式指定的要匹配的值。 |
+| value | Array&lt;[ValueType](#ValueType)&gt; | 是 | 以ValueType类型数组形式指定的要匹配的值。 |
 
 **返回值：**
 
