@@ -35,6 +35,16 @@ import { usbManager } from '@kit.BasicServicesKit';
 
 调用[usbManager.closePipe](#usbmanagerclosepipe)关闭设备消息控制通道。
 
+```mermaid
+graph LR
+    A[开始] --> B[调用getDevices获取设备列表]
+    B --> C[调用requestRight获取权限]
+    C --> D[调用connectDevice获取USBDevicePipe]
+    D --> E[调用相关接口进行操作]
+    E --> F[调用closePipe关闭通道]
+    F --> G[结束]
+```
+
 ## usbManager.getDevices
 
 getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
@@ -320,6 +330,8 @@ function removeRight(): boolean {
 claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): number
 
 声明对USB设备某个接口的控制权。调用成功后应用程序获得该接口的独占控制权可以进行数据传输等操作，其他程序无法访问该接口。使用完后需调用[releaseInterface](#usbmanagerreleaseinterface)释放该接口的控制权。
+
+**使用场景**：在需要进行USB数据传输时，需要先声明接口控制权以独占访问该接口。例如，在USB存储设备读写、USB摄像头数据采集、USB串口通信等场景中，都需要先声明接口控制权。
 
 > **说明：**
 >
@@ -663,10 +675,16 @@ usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, ti
 **示例：**
 
 ```ts
+// 控制传输参数：根据USB协议规范、设备描述符或设备规格文档设置各字段值
+// bmRequestType：请求控制类型，常见取值0x00(标准设备请求)、0x01(类请求)、0x02(厂商请求)
+// bRequest：具体控制请求命令（如获取描述符、设置地址等）
+// wValue：请求参数内容
+// wIndex：请求参数的索引值
+// wLength：数据长度
+// data：用于写入或读取的缓冲区
 let param: usbManager.USBDeviceRequestParams = {
   bmRequestType: 0x80,
   bRequest: 0x06,
-
   wValue: 0x01 << 8 | 0,
   wIndex: 0,
   wLength: 18,
@@ -762,6 +780,9 @@ async function bulkTransfer() {
       let buffer =  new Uint8Array(128);
       usbManager.bulkTransfer(devicepipe, endpoint, buffer).then((ret: number) => {
         console.info(`bulkTransfer = ${ret}`);
+        if (i === device.configs?.[0]?.interfaces.length - 1) {
+          usbManager.closePipe(devicepipe);
+        }
       }).catch((error: BusinessError) => {
         console.error(`Failed to transfer. Code: ${error.code}, message: ${error.message}`);
       });
@@ -1291,6 +1312,10 @@ resetUsbDevice(pipe: USBDevicePipe): boolean
 >
 > 本接口调用后会重置此前设置的配置和接口设置，请在调用之前确认相关业务已结束。
 
+1. 调用[usbManager.getDevices](#usbmanagergetdevices)获取设备列表。
+2. 调用[usbManager.requestRight](#usbmanagerrequestright)获取设备请求权限。
+3. 调用[usbManager.connectDevice](#usbmanagerconnectdevice)得到devicepipe作为参数。
+
 **系统能力：**  SystemCapability.USB.USBManager
 
 **参数：**
@@ -1411,6 +1436,19 @@ async function controlTransfer() {
 > 主机控制器按照Endpoint类型调度，不同类型的端点采用不同的调度策略：批量端点(bulk)采用宽带共享调度适合大量数据非实时传输；中断端点(interrupt)采用固定轮询调度适合小数据量实时传输；实时端点(isochronous)采用宽带预留调度，适合音视频等实时数据流。
 >
 > 协议层打包时依赖type决定传输特性，包括数据包格式、错误处理机制、超时策略等。
+
+```mermaid
+graph LR
+    A[端点类型] --> B[批量端点 bulk]
+    A --> C[中断端点 interrupt]
+    A --> D[实时端点 isoc]
+    B --> B1[宽带共享调度]
+    B1 --> B2[适合大量数据非实时传输]
+    C --> C1[固定轮询调度]
+    C1 --> C2[适合小数据量实时传输]
+    D --> D1[宽带预留调度]
+    D1 --> D2[适合音视频等实时数据流]
+```
 
 **系统能力：** SystemCapability.USB.USBManager
 
