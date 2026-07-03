@@ -366,7 +366,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     }
     // 配置谓词以NOT LIKE模式匹配
     OH_Predicates_NotLike(notLikePredicates, "NAME", "zh%");
-    auto *notLikeQueryCursor = OH_Rdb_Query(store_, notLikePredicates, colName, 2); // the length ofcolumnNames is 2
+    auto *notLikeQueryCursor = OH_Rdb_Query(store_, notLikePredicates, colName, 2); // the length of columnNames is 2
     if (notLikeQueryCursor == NULL) {
         notLikePredicates->destroy(notLikePredicates);
         return;
@@ -397,7 +397,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     OH_Predicates_Glob(globPredicates, "NAME", "zh*");
     
     char *colName[] = { "NAME", "AGE" };
-    auto *globQueryCursor = OH_Rdb_Query(store_, globPredicates, colName, 2); // the length of columnNamesis 2
+    auto *globQueryCursor = OH_Rdb_Query(store_, globPredicates, colName, 2); // the length of columnNames is 2
     if (globQueryCursor == NULL) {
         OH_LOG_ERROR(LOG_APP, "Query failed.");
         globPredicates->destroy(globPredicates);
@@ -422,7 +422,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     }
     // 配置谓词以NOT GLOB模式匹配
     OH_Predicates_NotGlob(notGlobPredicates, "NAME", "zh*");
-    auto *notGlobQueryCursor = OH_Rdb_Query(store_, notGlobPredicates, colName, 2); // the length ofcolumnNames is 2
+    auto *notGlobQueryCursor = OH_Rdb_Query(store_, notGlobPredicates, colName, 2); // the length of columnNames is 2
     if (notGlobQueryCursor == NULL) {
         OH_LOG_ERROR(LOG_APP, "Query failed.");
         notGlobPredicates->destroy(notGlobPredicates);
@@ -494,9 +494,9 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     // 创建OH_Data_Values实例
     OH_Data_Values *values = OH_Values_Create();
     ret = OH_Values_PutInt(values, 1); // The value of id is 1
-    ret = OH_Values_PutInt(values, 2); // The value of datat2 is 2
-    ret = OH_Values_PutReal(values, 1.1); // The value of datat3 is 1.1
-    ret = OH_Values_PutText(values, "1"); // The value of datat3 is 1
+    ret = OH_Values_PutInt(values, 2); // The value of data2 is 2
+    ret = OH_Values_PutReal(values, 1.1); // The value of data3 is 1.1
+    ret = OH_Values_PutText(values, "1"); // The value of data3 is 1
     unsigned char val[] = {1, 2};
     ret = OH_Values_PutBlob(values, val, sizeof(val) / sizeof(val[0]));
     
@@ -524,10 +524,10 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     OH_Values_Destroy(values);
     
     OH_VBucket *transValueBucket = OH_Rdb_CreateValuesBucket();
-    transValueBucket->putInt64(transValueBucket, "data1", 1); // The value of datat1 is 1
-    transValueBucket->putInt64(transValueBucket, "data2", 2); // The value of datat2 is 2
-    transValueBucket->putReal(transValueBucket, "data3", 1.1); // The value of datat3 is 1.1
-    transValueBucket->putText(transValueBucket, "data4", "1"); // The value of datat4 is 1
+    transValueBucket->putInt64(transValueBucket, "data1", 1); // The value of data1 is 1
+    transValueBucket->putInt64(transValueBucket, "data2", 2); // The value of data2 is 2
+    transValueBucket->putReal(transValueBucket, "data3", 1.1); // The value of data3 is 1.1
+    transValueBucket->putText(transValueBucket, "data4", "1"); // The value of data4 is 1
     transValueBucket->putBlob(transValueBucket, "data5", val, sizeof(val) / sizeof(val[0]));
     int64_t insertRowId = -1;
     // 通过事务对象执行OH_VBucket数据插入
@@ -536,8 +536,8 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     
     OH_VBucket *transValueBucket2 = OH_Rdb_CreateValuesBucket();
     transValueBucket2->putInt64(transValueBucket2, "id", 1); // The value of id is 1
-    transValueBucket2->putInt64(transValueBucket2, "data2", 2); // The value of datat2 is 2
-    transValueBucket2->putReal(transValueBucket2, "data3", 1.2); // The value of datat3 is 1.2
+    transValueBucket2->putInt64(transValueBucket2, "data2", 2); // The value of data2 is 2
+    transValueBucket2->putReal(transValueBucket2, "data3", 1.2); // The value of data3 is 1.2
     
     int64_t transInsertRow = -1;
     // 支持插入数据时配置冲突策略
@@ -694,7 +694,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     OH_VBucket *valueBucket = OH_Rdb_CreateValuesBucket();
     valueBucket->putText(valueBucket, "NAME", "Lisa");
     valueBucket->putInt64(valueBucket, "AGE", 18); // The value of AGE is 18
-    valueBucket->putReal(valueBucket, "SALARY", 100.5); // The value of AGE is 100.5
+    valueBucket->putReal(valueBucket, "SALARY", 100.5); // The value of SALARY is 100.5
     uint8_t arr[] = {1, 2, 3, 4, 5};
     int len = sizeof(arr) / sizeof(arr[0]);
     valueBucket->putBlob(valueBucket, "CODES", arr, len);
@@ -702,7 +702,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     OH_LOG_INFO(LOG_APP, "Insert data result: %{public}d", rowId);
     valueBucket->destroy(valueBucket);
     OH_Rdb_CloseStore(attachStore);
-
+    // ...
     // 附加数据库
     size_t attachedNumber = 0;
     // The maximum waiting time allowed for attaching databases is 10
