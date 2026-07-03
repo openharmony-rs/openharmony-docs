@@ -68,7 +68,7 @@ import { DistributedExtensionAbility } from '@kit.DistributedServiceKit';
 
 | 名称    | 类型                          | 只读 | 可选 | 说明                                                       |
 | ------- | ----------------------------- | ---- | ---- | ---------------------------------------------------------- |
-| context | [DistributedExtensionContext](js-apis-distributedExtensionContext.md) | 否   | 否   | DistributedExtension（协同Extension）的上下文环境，继承自ExtensionContext。DistributedExtensionContext的设计说明请参见[DistributedExtensionContext接口](js-apis-distributedExtensionContext.md)。 |
+| context | [DistributedExtensionContext](js-apis-distributedExtensionContext.md) | 否   | 否   | DistributedExtension（协同Extension）的上下文环境，继承自ExtensionContext。|
 
 ### onCreate
 
