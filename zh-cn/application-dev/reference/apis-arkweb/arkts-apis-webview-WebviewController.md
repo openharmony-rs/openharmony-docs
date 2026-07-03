@@ -11300,7 +11300,7 @@ struct WebComponent {
 
 setErrorPageEnabled(enable: boolean, includeSubframe: boolean): void
 
-设置是否启用subframe默认错误页。
+该方法用于设置是否启用subframe默认错误页。
 
 在当前接口的enable参数和includeSubframe参数都设置为true时，如果页面加载发生错误将触发[onOverrideErrorPage](./arkts-basic-components-web-events.md#onoverrideerrorpage20)回调，可在该回调接口中设置自定义的错误展示页面。
 
@@ -11319,7 +11319,7 @@ setErrorPageEnabled(enable: boolean, includeSubframe: boolean): void
 | -------- | ------- | ---- | -------------------------------------- |
 | enable | boolean | 是 | 表示是否启用默认错误页。true表示启用，false表示不启用。 |                |
 | -------- | ------- | ---- | -------------------------------------- |
-| includeSubframe | boolean | 是 | 表示是否启用Subframe默认错误页。true表示启用，false表示不启用。如果enable设置为false，该配置项无效。 |
+| includeSubframe | boolean | 是 | 表示是否启用subframe默认错误页。true表示启用，false表示不启用。如果enable设置为false，该配置项无效。 |
 
 **错误码：**
 
@@ -11370,7 +11370,7 @@ getSubframeErrorPageEnabled(): boolean
 
 | 类型                 | 说明                      |
 | -------------------- | ------------------------- |
-| boolean | 返回是否启用subframe默认错误页功能。<br>true：已启用；false：未启用默认错误页功能或者未启用subframe默认错误页功能。 |
+| boolean | 返回是否启用subframe默认错误页功能。<br>true：已启用；false：未启用。 |
 
 **错误码：**
 
@@ -11393,7 +11393,7 @@ struct WebComponent {
     Column() {
       Web({ src: 'www.example.com', controller: this.controller })
        .onControllerAttached(() => {
-            this.controller.setErrorPageEnabled(true，false);
+            this.controller.setErrorPageEnabled(true,false);
             if (!this.controller.getSubframeErrorPageEnabled()) {
                 this.controller.setErrorPageEnabled(true, true);
             }
