@@ -800,4 +800,4 @@ struct TestNewInterface {
   }
 }
 ```
-![arcSwiper](figures/arcSwiper1.gif)
+![arcSwiper](figures/arcSwiper.gif)
