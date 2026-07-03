@@ -75,9 +75,9 @@ ComposeListItemV2({ contentItemV2?: ContentItemV2, operateItemV2?: OperateItemV2
 | iconStyle | [IconTypeV2](#icontypev2) | 否 | 是 | 左侧元素的图标样式。<br/>默认不设置或设置为undefined，表示不显示icon图标资源。<br>**装饰器类型：** @Trace       |
 | icon | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 左侧元素的图标资源。<br/>默认不设置或设置为undefined，表示不显示icon图标资源。<br>**装饰器类型：** @Trace        |
 | symbolStyle | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是  | 左侧元素的Symbol图标资源，优先级大于icon，同时设置了icon和Symbol图标，只显示Symbol图标。<br/>默认不设置或设置为undefined，Symbol图标不显示。<br>**装饰器类型：** @Trace |
-| primaryText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 中间元素的标题内容。<br/>默认不设置或设置为undefined，标题内容不显示。<br/>**文字处理规则:** 文本超长后无限换行显示。<br>**装饰器类型：** @Trace    |
-| secondaryText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 中间元素的副标题内容。<br/>默认不设置或设置为undefine，副标题内容不显示。<br/>**文字处理规则:** 文本超长后无限换行显示。<br>**装饰器类型：** @Trace     |
-| description | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 中间元素的描述内容。<br/>默认不设置或设置为undefined，描述内容不显示。<br/>**文字处理规则:** 文本超长后无限换行显示。<br>**装饰器类型：** @Trace     |
+| primaryText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 中间元素的标题内容。<br/>默认不设置或设置为undefined，不显示标题内容。<br/>**文字处理规则:** 文本超长后无限换行显示。<br>**装饰器类型：** @Trace    |
+| secondaryText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 中间元素的副标题内容。<br/>默认不设置或设置为undefined，不显示副标题内容。<br/>**文字处理规则:** 文本超长后无限换行显示。<br>**装饰器类型：** @Trace     |
+| description | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 中间元素的描述内容。<br/>默认不设置或设置为undefined，不显示描述内容。<br/>**文字处理规则:** 文本超长后无限换行显示。<br>**装饰器类型：** @Trace     |
 
 ### constructor
 
@@ -433,7 +433,7 @@ OperateCheckV2构造函数的参数选项。
 | onChange | [OnChangeCallback](#onchangecallback) | 否 | 是 | 列表项右侧元素Switch/CheckBox/Radio选中状态改变时触发回调。 |
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 列表项右侧元素Switch/CheckBox/Radio的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。<br/>默认值:"" |
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 列表项右侧元素Switch/CheckBox/Radio的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br/>默认跟随基础组件Switch/CheckBox/Radio播报规则。 |
-| accessibilityLevel | string | 否 | 是 | 列表项右侧元素Switch/CheckBox/Radio的无障碍重要性。列表项右侧元素Switch/CheckBox/Radio的无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br/>支持的值为:<br/>"auto":当前组件会转换"no"。<br/>"yes":当前组件可被无障碍辅助服务所识别。<br/>"no":当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants":当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值:"auto" |
+| accessibilityLevel | string | 否 | 是 | 列表项右侧元素Switch/CheckBox/Radio的无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br/>支持的值为:<br/>"auto":当前组件会转换"no"。<br/>"yes":当前组件可被无障碍辅助服务所识别。<br/>"no":当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants":当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值:"auto" |
 
 ## OnActionCallback
 
