@@ -274,6 +274,7 @@ struct Index {
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { KeyCode } from '@kit.InputKit';
 
 const TAG = '[Sample_Eventproject]';
 const DOMAIN = 0xF811;
@@ -292,7 +293,7 @@ struct TextAreaDemo {
       TextArea({ controller: this.controller, text: this.text })
         .onKeyPreIme((event: KeyEvent) => {
           hilog.info(DOMAIN, TAG, `${BUNDLE + JSON.stringify(event)}`);
-          if (event.keyCode === 2054 && event.type === KeyType.Down) { // 回车键物理码
+          if (event.keyCode === KeyCode.KEYCODE_ENTER && event.type === KeyType.Down) { // 回车键物理码
             const hasCtrl = event?.getModifierKeyState?.(['Ctrl']);
             if (hasCtrl) {
               hilog.info(DOMAIN, TAG, BUNDLE + 'Line break');
