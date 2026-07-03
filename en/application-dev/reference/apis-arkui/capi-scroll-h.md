@@ -6,43 +6,43 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
-## 概述
+## Overview
 
-定义Scroll组件相关的枚举。
+Defines the enumerations related to the **Scroll** component.
 
-**引用文件：** <arkui/scroll.h>
+**File to include:** <arkui/scroll.h>
 
-**库：** libace_ndk.z.so
+**Library:** libace_ndk.z.so
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 12
+**Since:** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module:** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**相关示例：** <!--RP1-->[ScrollableNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ScrollableNDK)<!--RP1End-->
+**Sample**: <!--RP1-->[ScrollableNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ScrollableNDK)<!--RP1End-->
 
-## 汇总
+## Summary
 
-### 枚举
+### Enums
 
-| 名称 | typedef关键字 | 描述 |
+| Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [ArkUI_EdgeEffect](#arkui_edgeeffect) | ArkUI_EdgeEffect | 定义边缘滑动效果枚举值。 |
-| [ArkUI_BarState](#arkui_barstate) | ArkUI_BarState | 定义文本控制滚动条状态枚举值。 |
-| [ArkUI_EffectEdge](#arkui_effectedge) | ArkUI_EffectEdge | 定义边缘效果生效边缘的方向枚举值。 |
-| [ArkUI_ScrollDirection](#arkui_scrolldirection) | ArkUI_ScrollDirection | 定义[Scroll](../apis-arkui/arkui-ts/ts-container-scroll.md)组件排列方向枚举值。 |
-| [ArkUI_ScrollSnapAlign](#arkui_scrollsnapalign) | ArkUI_ScrollSnapAlign | 定义列表项滚动结束对齐效果枚举值。 |
-| [ArkUI_ScrollBarDisplayMode](#arkui_scrollbardisplaymode) | ArkUI_ScrollBarDisplayMode | 定义滚动条状态枚举值。 |
-| [ArkUI_ContentClipMode](#arkui_contentclipmode) | ArkUI_ContentClipMode | 定义滚动容器的内容层裁剪区域枚举值。 |
-| [ArkUI_ScrollNestedMode](#arkui_scrollnestedmode) | ArkUI_ScrollNestedMode | 定义嵌套滚动选项。 |
-| [ArkUI_ScrollEdge](#arkui_scrolledge) | ArkUI_ScrollEdge | 定义滚动到的边缘位置。 |
-| [ArkUI_ScrollAlignment](#arkui_scrollalignment) | ArkUI_ScrollAlignment | 滚动到具体item时的对齐方式。 |
-| [ArkUI_ScrollState](#arkui_scrollstate) | ArkUI_ScrollState | 定义当前滚动状态。 |
-| [ArkUI_ScrollSource](#arkui_scrollsource) | ArkUI_ScrollSource | 定义滚动来源枚举值。 |
-| [ArkUI_ScrollSnapAnimationSpeed](#arkui_scrollsnapanimationspeed) | ArkUI_ScrollSnapAnimationSpeed | 列表限位滚动动画速度。 |
+| [ArkUI_EdgeEffect](#arkui_edgeeffect) | ArkUI_EdgeEffect | Enumerates the effects used at the edges of the component when the boundary of the scrollable content is reached.|
+| [ArkUI_BarState](#arkui_barstate) | ArkUI_BarState | Enumerates the text control scrollbar states.|
+| [ArkUI_EffectEdge](#arkui_effectedge) | ArkUI_EffectEdge | Enumerates the edges for which the effect takes effect when the boundary of the scrollable content is reached.|
+| [ArkUI_ScrollDirection](#arkui_scrolldirection) | ArkUI_ScrollDirection | Enumerates the scrolling directions of the [Scroll](../apis-arkui/arkui-ts/ts-container-scroll.md) component.|
+| [ArkUI_ScrollSnapAlign](#arkui_scrollsnapalign) | ArkUI_ScrollSnapAlign | Enumerates the alignment modes of list items when scrolling ends.|
+| [ArkUI_ScrollBarDisplayMode](#arkui_scrollbardisplaymode) | ArkUI_ScrollBarDisplayMode | Enumerates the scrollbar display modes.|
+| [ArkUI_ContentClipMode](#arkui_contentclipmode) | ArkUI_ContentClipMode | Enumerates the content clipping modes of scrollable components.|
+| [ArkUI_ScrollNestedMode](#arkui_scrollnestedmode) | ArkUI_ScrollNestedMode | Enumerates nested scrolling modes.|
+| [ArkUI_ScrollEdge](#arkui_scrolledge) | ArkUI_ScrollEdge | Enumerates the edges to which the component scrolls.|
+| [ArkUI_ScrollAlignment](#arkui_scrollalignment) | ArkUI_ScrollAlignment | Enumerates how the list item to scroll to is aligned with the container.|
+| [ArkUI_ScrollState](#arkui_scrollstate) | ArkUI_ScrollState | Enumerates the scrolling states.|
+| [ArkUI_ScrollSource](#arkui_scrollsource) | ArkUI_ScrollSource | Enumerates scroll sources.|
+| [ArkUI_ScrollSnapAnimationSpeed](#arkui_scrollsnapanimationspeed) | ArkUI_ScrollSnapAnimationSpeed | Enumerates scroll snap animation speeds for list components.|
 
-## 枚举类型说明
+## Enum Description
 
 ### ArkUI_EdgeEffect
 
@@ -50,18 +50,18 @@
 enum ArkUI_EdgeEffect
 ```
 
-**描述：**
+**Description**
 
 
-定义边缘滑动效果枚举值。Grid、Scroll、WaterFlow组件默认值为ARKUI_EDGE_EFFECT_NONE，List组件默认值为ARKUI_EDGE_EFFECT_SPRING。
+Enumerates the effects used at the edges of the component when the boundary of the scrollable content is reached. The default value is **ARKUI_EDGE_EFFECT_NONE** for the **Grid**, **Scroll**, and **WaterFlow** components, and **ARKUI_EDGE_EFFECT_SPRING** for the **List** component.
 
-**起始版本：** 12
+**Since:** 12
 
-| 枚举项 | 描述 |
+| Value| Description|
 | -- | -- |
-| ARKUI_EDGE_EFFECT_SPRING = 0 | 弹性物理动效，滑动到边缘后可以根据初始速度或通过触摸事件继续滑动一段距离，松手后回弹。 |
-| ARKUI_EDGE_EFFECT_FADE = 1 | 阴影效果，滑动到边缘后会有圆弧状的阴影。 |
-| ARKUI_EDGE_EFFECT_NONE = 2 | 滑动到边缘后无效果。 |
+| ARKUI_EDGE_EFFECT_SPRING = 0 | Spring effect. When at one of the edges, the component can move beyond the bounds based on the initial speed or through touches, and produces a bounce effect when the user releases their finger.|
+| ARKUI_EDGE_EFFECT_FADE = 1 | Fade effect. When at one of the edges, the component produces a fade effect.|
+| ARKUI_EDGE_EFFECT_NONE = 2 | No effect when the component is at one of the edges.|
 
 ### ArkUI_BarState
 
@@ -69,18 +69,18 @@ enum ArkUI_EdgeEffect
 enum ArkUI_BarState
 ```
 
-**描述：**
+**Description**
 
 
-定义文本控制滚动条状态枚举值。
+Enumerates the text control scrollbar states.
 
-**起始版本：** 22
+**Since:** 22
 
-| 枚举项 | 描述 |
+| Value| Description|
 | -- | -- |
-| ARKUI_BAR_STATE_OFF = 0 | 不显示。 |
-| ARKUI_BAR_STATE_AUTO = 1 | 按需显示（在触摸时显示滚动条，2秒后自动消失）。 |
-| ARKUI_BAR_STATE_ON = 2 | 常驻显示。 |
+| ARKUI_BAR_STATE_OFF = 0 | Not displayed.|
+| ARKUI_BAR_STATE_AUTO = 1 | Displayed on demand (The scrollbar is displayed when being touched and disappears 2 seconds later.)|
+| ARKUI_BAR_STATE_ON = 2 | Always displayed.|
 
 ### ArkUI_EffectEdge
 
@@ -88,17 +88,17 @@ enum ArkUI_BarState
 enum ArkUI_EffectEdge
 ```
 
-**描述：**
+**Description**
 
 
-定义边缘效果生效边缘的方向枚举值。
+Enumerates the edges for which the effect takes effect when the boundary of the scrollable content is reached.
 
-**起始版本：** 18
+**Since:** 18
 
-| 枚举项 | 描述                    |
+| Value| Description                   |
 | -- |-----------------------|
-| ARKUI_EFFECT_EDGE_START = 1 | 起始边生效。                |
-| ARKUI_EFFECT_EDGE_END = 2 | 末尾边生效。                |
+| ARKUI_EFFECT_EDGE_START = 1 | Start edge.               |
+| ARKUI_EFFECT_EDGE_END = 2 | End edge.               |
 
 ### ArkUI_ScrollDirection
 
@@ -106,19 +106,19 @@ enum ArkUI_EffectEdge
 enum ArkUI_ScrollDirection
 ```
 
-**描述：**
+**Description**
 
 
-定义[Scroll](../apis-arkui/arkui-ts/ts-container-scroll.md)组件排列方向枚举值。
+Enumerates the scrolling directions of the [Scroll](../apis-arkui/arkui-ts/ts-container-scroll.md) component.
 
-**起始版本：** 12
+**Since:** 12
 
-| 枚举项 | 描述 |
+| Value| Description|
 | -- | -- |
-| ARKUI_SCROLL_DIRECTION_VERTICAL = 0 | 仅支持竖直方向滚动。 |
-| ARKUI_SCROLL_DIRECTION_HORIZONTAL = 1 | 仅支持水平方向滚动。 |
-| ARKUI_SCROLL_DIRECTION_NONE = 3 | 禁止滚动。 |
-| ARKUI_SCROLL_DIRECTION_FREE = 4 | 自由滚动。<br>**起始版本：** 20 |
+| ARKUI_SCROLL_DIRECTION_VERTICAL = 0 | Vertical scrolling only.|
+| ARKUI_SCROLL_DIRECTION_HORIZONTAL = 1 | Horizontal scrolling only.|
+| ARKUI_SCROLL_DIRECTION_NONE = 3 | Scrolling disabled.|
+| ARKUI_SCROLL_DIRECTION_FREE = 4 | Free scrolling in both directions.<br>**Since:** 20|
 
 ### ArkUI_ScrollSnapAlign
 
@@ -126,19 +126,19 @@ enum ArkUI_ScrollDirection
 enum ArkUI_ScrollSnapAlign
 ```
 
-**描述：**
+**Description**
 
 
-定义列表项滚动结束对齐效果枚举值。
+Enumerates the alignment modes of list items when scrolling ends.
 
-**起始版本：** 12
+**Since:** 12
 
-| 枚举项 | 描述 |
+| Value| Description|
 | -- | -- |
-| ARKUI_SCROLL_SNAP_ALIGN_NONE = 0 | 默认无列表滚动对齐效果。 |
-| ARKUI_SCROLL_SNAP_ALIGN_START = 1 | 视图中的第一项将在列表的开头对齐。 |
-| ARKUI_SCROLL_SNAP_ALIGN_CENTER = 2 | 视图中的中间项将在列表中心对齐。 |
-| ARKUI_SCROLL_SNAP_ALIGN_END = 3 | 视图中的最后一项将在列表末尾对齐。 |
+| ARKUI_SCROLL_SNAP_ALIGN_NONE = 0 | No alignment mode.|
+| ARKUI_SCROLL_SNAP_ALIGN_START = 1 | The first item in the view is aligned at the start of the list.|
+| ARKUI_SCROLL_SNAP_ALIGN_CENTER = 2 | The middle items in the view are aligned in the center of the list.|
+| ARKUI_SCROLL_SNAP_ALIGN_END = 3 | The last item in the view is aligned at the end of the list.|
 
 ### ArkUI_ScrollBarDisplayMode
 
@@ -146,18 +146,18 @@ enum ArkUI_ScrollSnapAlign
 enum ArkUI_ScrollBarDisplayMode
 ```
 
-**描述：**
+**Description**
 
 
-定义滚动条状态枚举值。
+Enumerates the scrollbar display modes.
 
-**起始版本：** 12
+**Since:** 12
 
-| 枚举项 | 描述 |
+| Value| Description|
 | -- | -- |
-| ARKUI_SCROLL_BAR_DISPLAY_MODE_OFF = 0 | 不显示。 |
-| ARKUI_SCROLL_BAR_DISPLAY_MODE_AUTO = 1 | 按需显示(触摸时显示，2s后消失)。 |
-| ARKUI_SCROLL_BAR_DISPLAY_MODE_ON = 2 | 常驻显示。 |
+| ARKUI_SCROLL_BAR_DISPLAY_MODE_OFF = 0 | Not displayed.|
+| ARKUI_SCROLL_BAR_DISPLAY_MODE_AUTO = 1 | Displayed when the screen is touched and hidden after 2s.|
+| ARKUI_SCROLL_BAR_DISPLAY_MODE_ON = 2 | Always displayed.|
 
 ### ArkUI_ContentClipMode
 
@@ -165,18 +165,18 @@ enum ArkUI_ScrollBarDisplayMode
 enum ArkUI_ContentClipMode
 ```
 
-**描述：**
+**Description**
 
 
-定义滚动容器的内容层裁剪区域枚举值。
+Enumerates the content clipping modes of scrollable components.
 
-**起始版本：** 18
+**Since:** 18
 
-| 枚举项 | 描述 |
+| Value| Description|
 | -- | -- |
-| ARKUI_CONTENT_CLIP_MODE_CONTENT_ONLY = 0 | 按内容区裁剪。 |
-| ARKUI_CONTENT_CLIP_MODE_BOUNDARY = 1 | 按组件区域裁剪。 |
-| ARKUI_CONTENT_CLIP_MODE_SAFE_AREA = 2 | 按组件配置的[安全区域](./arkui-ts/ts-universal-attributes-expand-safe-area.md)裁剪。 |
+| ARKUI_CONTENT_CLIP_MODE_CONTENT_ONLY = 0 | Clip to the content area only.|
+| ARKUI_CONTENT_CLIP_MODE_BOUNDARY = 1 | Clip to the component's boundary area.|
+| ARKUI_CONTENT_CLIP_MODE_SAFE_AREA = 2 | Clip to the [safe area](./arkui-ts/ts-universal-attributes-expand-safe-area.md) configured for the component.|
 
 ### ArkUI_ScrollNestedMode
 
@@ -184,19 +184,19 @@ enum ArkUI_ContentClipMode
 enum ArkUI_ScrollNestedMode
 ```
 
-**描述：**
+**Description**
 
 
-定义嵌套滚动选项。
+Enumerates nested scrolling modes.
 
-**起始版本：** 12
+**Since:** 12
 
-| 枚举项 | 描述 |
+| Value| Description|
 | -- | -- |
-| ARKUI_SCROLL_NESTED_MODE_SELF_ONLY = 0 | 只自身滚动，不与父组件联动。 |
-| ARKUI_SCROLL_NESTED_MODE_SELF_FIRST = 1 | 自身先滚动，自身滚动到边缘以后父组件滚动。父组件滚动到边缘以后，如果父组件有边缘效果，则父组件触发边缘效果，否则子组件触发边缘效果。 |
-| ARKUI_SCROLL_NESTED_MODE_PARENT_FIRST = 2 | 父组件先滚动，父组件滚动到边缘以后自身滚动。自身滚动到边缘后，如果有边缘效果，会触发自身的边缘效果，否则触发父组件的边缘效果。 |
-| ARKUI_SCROLL_NESTED_MODE_PARALLEL = 3 | 自身和父组件同时滚动，自身和父组件都到达边缘以后，如果自身有边缘效果，则自身触发边缘效果，否则父组件触发边缘效果。 |
+| ARKUI_SCROLL_NESTED_MODE_SELF_ONLY = 0 | The scrolling is contained within the component, and no scroll chaining occurs, that is, the parent component does not scroll when the component scrolling reaches the boundary.|
+| ARKUI_SCROLL_NESTED_MODE_SELF_FIRST = 1 | The component scrolls first, and when it hits the boundary, the parent component scrolls. When the parent component hits the boundary, its edge effect is displayed. If no edge effect is specified for the parent component, the edge effect of the child component is displayed instead.|
+| ARKUI_SCROLL_NESTED_MODE_PARENT_FIRST = 2 | The parent component scrolls first, and when it hits the boundary, the component scrolls. When the component hits the boundary, its edge effect is displayed. If no edge effect is specified for the component, the edge effect of the parent component is displayed instead.|
+| ARKUI_SCROLL_NESTED_MODE_PARALLEL = 3 | The component and its parent component scroll at the same time. When both the component and its parent component hit the boundary, the edge effect of the component is displayed. If no edge effect is specified for the component, the edge effect of the parent component is displayed instead.|
 
 ### ArkUI_ScrollEdge
 
@@ -204,19 +204,19 @@ enum ArkUI_ScrollNestedMode
 enum ArkUI_ScrollEdge
 ```
 
-**描述：**
+**Description**
 
 
-定义滚动到的边缘位置。
+Enumerates the edges to which the component scrolls.
 
-**起始版本：** 12
+**Since:** 12
 
-| 枚举项 | 描述 |
+| Value| Description|
 | -- | -- |
-| ARKUI_SCROLL_EDGE_TOP = 0 | 竖直方向上边缘。 |
-| ARKUI_SCROLL_EDGE_BOTTOM = 1 | 竖直方向下边缘。 |
-| ARKUI_SCROLL_EDGE_START = 2 | 水平方向起始位置。 |
-| ARKUI_SCROLL_EDGE_END = 3 | 水平方向末尾位置。 |
+| ARKUI_SCROLL_EDGE_TOP = 0 | Top edge in the vertical direction.|
+| ARKUI_SCROLL_EDGE_BOTTOM = 1 | Bottom edge in the vertical direction.|
+| ARKUI_SCROLL_EDGE_START = 2 | Start position in the horizontal direction.|
+| ARKUI_SCROLL_EDGE_END = 3 | End position in the horizontal direction.|
 
 ### ArkUI_ScrollAlignment
 
@@ -224,19 +224,19 @@ enum ArkUI_ScrollEdge
 enum ArkUI_ScrollAlignment
 ```
 
-**描述：**
+**Description**
 
 
-滚动到具体item时的对齐方式。
+Enumerates how the list item to scroll to is aligned with the container.
 
-**起始版本：** 12
+**Since:** 12
 
-| 枚举项 | 描述 |
+| Value| Description|
 | -- | -- |
-| ARKUI_SCROLL_ALIGNMENT_START = 0 | 首部对齐。指定item首部与容器首部对齐。 |
-| ARKUI_SCROLL_ALIGNMENT_CENTER = 1 | 居中对齐。指定item主轴方向居中对齐于容器。 |
-| ARKUI_SCROLL_ALIGNMENT_END = 2 | 尾部对齐。指定item尾部与容器尾部对齐。 |
-| ARKUI_SCROLL_ALIGNMENT_AUTO = 3 | 自动对齐。若指定item完全处于显示区，不做调整。否则依照滑动距离最短的原则，将指定item首部对齐或尾部对齐于容器，使指定item完全处于显示区。 |
+| ARKUI_SCROLL_ALIGNMENT_START = 0 | The start edge of the list item is flush with the start edge of the container.|
+| ARKUI_SCROLL_ALIGNMENT_CENTER = 1 | The list item is centered along the main axis of the container.|
+| ARKUI_SCROLL_ALIGNMENT_END = 2 | The end edge of the list item is flush with the end edge of the container.|
+| ARKUI_SCROLL_ALIGNMENT_AUTO = 3 | The list item is automatically aligned. If the item is fully contained within the display area, no adjustment is performed. Otherwise, the item is aligned so that its start or end edge is flush with the start or end edge of the container, whichever requires a shorter scrolling distance.|
 
 ### ArkUI_ScrollState
 
@@ -244,18 +244,18 @@ enum ArkUI_ScrollAlignment
 enum ArkUI_ScrollState
 ```
 
-**描述：**
+**Description**
 
 
-定义当前滚动状态。
+Enumerates the scrolling states.
 
-**起始版本：** 12
+**Since:** 12
 
-| 枚举项 | 描述 |
+| Value| Description|
 | -- | -- |
-| ARKUI_SCROLL_STATE_IDLE = 0 | 空闲状态。使用控制器提供的方法控制滚动时触发，拖动滚动条滚动时触发。 |
-| ARKUI_SCROLL_STATE_SCROLL = 1 | 滚动状态。使用手指拖动容器滚动时触发。 |
-| ARKUI_SCROLL_STATE_FLING = 2 | 惯性滚动状态。快速划动松手后进行惯性滚动和划动到边缘回弹时触发。 |
+| ARKUI_SCROLL_STATE_IDLE = 0 | Idle. The container enters this state when an API in the controller is used to scroll the container or when the scrollbar is dragged.|
+| ARKUI_SCROLL_STATE_SCROLL = 1 | Scrolling. The container enters this state when the user drags the container to scroll.|
+| ARKUI_SCROLL_STATE_FLING = 2 | Inertial scrolling. The container enters this state when inertial scrolling occurs or when the container bounces back after being released from a fling.|
 
 ### ArkUI_ScrollSource
 
@@ -263,23 +263,23 @@ enum ArkUI_ScrollState
 enum ArkUI_ScrollSource
 ```
 
-**描述：**
+**Description**
 
 
-定义滚动来源枚举值。
+Enumerates scroll sources.
 
-**起始版本：** 12
+**Since:** 12
 
-| 枚举项 | 描述 |
+| Value| Description|
 | -- | -- |
-| ARKUI_SCROLL_SOURCE_DRAG = 0 | 手指拖动。 |
-| ARKUI_SCROLL_SOURCE_FLING = 1 | 手指拖动后的惯性滚动。 |
-| ARKUI_SCROLL_SOURCE_EDGE_EFFECT = 2 | 在过界时执行[EdgeEffect.Spring](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)边缘特效。 |
-| ARKUI_SCROLL_SOURCE_OTHER_USER_INPUT = 3 | 除了拖动以外的其他用户输入，如鼠标滚轮、键盘事件等。 |
-| ARKUI_SCROLL_SOURCE_SCROLL_BAR = 4 | 拖动滚动条。 |
-| ARKUI_SCROLL_SOURCE_SCROLL_BAR_FLING = 5 | 拖动滚动条后的惯性滚动。 |
-| ARKUI_SCROLL_SOURCE_SCROLLER = 6 | 滚动控制器引起的无动画的滚动。 |
-| ARKUI_SCROLL_SOURCE_ANIMATION = 7 | 滚动控制器引起的带动画的滚动。 |
+| ARKUI_SCROLL_SOURCE_DRAG = 0 | Finger dragging.|
+| ARKUI_SCROLL_SOURCE_FLING = 1 | Inertia scrolling after finger dragging.|
+| ARKUI_SCROLL_SOURCE_EDGE_EFFECT = 2 | [EdgeEffect.Spring](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect) for boundary crossing.|
+| ARKUI_SCROLL_SOURCE_OTHER_USER_INPUT = 3 | User input other than dragging, such as mouse wheel and keyboard events.|
+| ARKUI_SCROLL_SOURCE_SCROLL_BAR = 4 | Scrollbar dragging.|
+| ARKUI_SCROLL_SOURCE_SCROLL_BAR_FLING = 5 | Inertial scrolling after scrollbar dragging.|
+| ARKUI_SCROLL_SOURCE_SCROLLER = 6 | Scrolling by the scroll controller (without animation).|
+| ARKUI_SCROLL_SOURCE_ANIMATION = 7 | Scrolling by the scroll controller (with animation).|
 
 ### ArkUI_ScrollSnapAnimationSpeed
 
@@ -287,14 +287,14 @@ enum ArkUI_ScrollSource
 enum ArkUI_ScrollSnapAnimationSpeed
 ```
 
-**描述：**
+**Description**
 
 
-列表限位滚动动画速度。
+Enumerates scroll snap animation speeds for list components.
 
-**起始版本：** 22
+**Since:** 22
 
-| 枚举项 | 描述 |
+| Value| Description|
 | -- | -- |
-| ARKUI_SCROLL_SNAP_ANIMATION_NORMAL = 0 | 限位滚动动画速度正常。 |
-| ARKUI_SCROLL_SNAP_ANIMATION_SLOW = 1 | 限位滚动动画速度慢。 |
+| ARKUI_SCROLL_SNAP_ANIMATION_NORMAL = 0 | Normal scroll snap animation speed.|
+| ARKUI_SCROLL_SNAP_ANIMATION_SLOW = 1 | Slow scroll snap animation speed.|

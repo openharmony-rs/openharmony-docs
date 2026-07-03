@@ -6,67 +6,67 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
-## 概述
+## Overview
 
-定义Grid组件相关的枚举和接口。
+Defines enumerations and APIs related to **Grid**.
 
-**引用文件：** <arkui/grid.h>
+**File to include:** <arkui/grid.h>
 
-**库：** libace_ndk.z.so
+**Library:** libace_ndk.z.so
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 22
+**Since:** 22
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module:** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**相关示例：** <!--RP1-->[NDKGridSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKGridSample)<!--RP1End-->
+**Sample**: <!--RP1-->[NDKGridSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKGridSample)<!--RP1End-->
 
-## 汇总
+## Summary
 
-### 结构体
+### Structs
 
-| 名称 | typedef关键字 | 描述 |
+| Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [ArkUI_GridItemSize](capi-arkui-nativemodule-arkui-griditemsize.md) | ArkUI_GridItemSize | 定义Grid布局选项onGetIrregularSizeByIndex回调返回值结构体。 |
-| [ArkUI_GridItemRect](capi-arkui-nativemodule-arkui-griditemrect.md) | ArkUI_GridItemRect | 定义Grid布局选项onGetRectByIndex回调返回值结构体。 |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md) | ArkUI_GridLayoutOptions | 定义Grid布局选项。 |
+| [ArkUI_GridItemSize](capi-arkui-nativemodule-arkui-griditemsize.md) | ArkUI_GridItemSize | Defines the return value for the **onGetIrregularSizeByIndex** callback in **Grid** layout options.|
+| [ArkUI_GridItemRect](capi-arkui-nativemodule-arkui-griditemrect.md) | ArkUI_GridItemRect | Defines the return value for the **onGetRectByIndex** callback in **Grid** layout options.|
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md) | ArkUI_GridLayoutOptions | Defines the **Grid** layout options.|
 
-### 枚举
+### Enums
 
-| 名称 | typedef关键字 | 描述 |
+| Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [ArkUI_GridItemAlignment](#arkui_griditemalignment) | ArkUI_GridItemAlignment | [GridItem](../apis-arkui/arkui-ts/ts-container-griditem.md)对齐方式枚举。 |
-| [ArkUI_GridItemStyle](#arkui_griditemstyle) | ArkUI_GridItemStyle | GridItem样式枚举。 |
+| [ArkUI_GridItemAlignment](#arkui_griditemalignment) | ArkUI_GridItemAlignment | Enumerates the alignment modes of the [GridItem](../apis-arkui/arkui-ts/ts-container-griditem.md) component.|
+| [ArkUI_GridItemStyle](#arkui_griditemstyle) | ArkUI_GridItemStyle | Enumerates styles of grid items.|
 
-### 函数
+### Functions
 
-| 名称 | 描述 |
+| Name| Description|
 | -- | -- |
-| [ArkUI_GridLayoutOptions* OH_ArkUI_GridLayoutOptions_Create()](#oh_arkui_gridlayoutoptions_create) | 创建Grid布局选项。 |
-| [void OH_ArkUI_GridLayoutOptions_Dispose(ArkUI_GridLayoutOptions* option)](#oh_arkui_gridlayoutoptions_dispose) | 销毁Grid布局选项。 |
-| [int32_t OH_ArkUI_GridLayoutOptions_SetIrregularIndexes(ArkUI_GridLayoutOptions* option, uint32_t* irregularIndexes, int32_t size)](#oh_arkui_gridlayoutoptions_setirregularindexes) | 设置Grid中不规则GridItem的索引数组。 |
-| [int32_t OH_ArkUI_GridLayoutOptions_GetIrregularIndexes(ArkUI_GridLayoutOptions* option, uint32_t* irregularIndexes, int32_t* size)](#oh_arkui_gridlayoutoptions_getirregularindexes) | 获取Grid中不规则GridItem的索引数组。当不设置OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback时，irregularIndexes中GridItem的默认大小为垂直滚动Grid的一整行或水平滚动Grid的一整列。 |
-| [void OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback(ArkUI_GridLayoutOptions* option, void* userData, ArkUI_GridItemSize(\*callback)(int32_t itemIndex, void* userData))](#oh_arkui_gridlayoutoptions_registergetirregularsizebyindexcallback) | Grid布局选项通过GridItem索引获取指定Item占用的行列数。 |
-| [void OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback(ArkUI_GridLayoutOptions* option, void* userData, ArkUI_GridItemRect (\*callback)(int32_t itemIndex, void* userData))](#oh_arkui_gridlayoutoptions_registergetrectbyindexcallback) | Grid布局选项通过GridItem索引获取指定Item的起始行列和占用的行列数。 |
+| [ArkUI_GridLayoutOptions* OH_ArkUI_GridLayoutOptions_Create()](#oh_arkui_gridlayoutoptions_create) | Creates **Grid** layout options.|
+| [void OH_ArkUI_GridLayoutOptions_Dispose(ArkUI_GridLayoutOptions* option)](#oh_arkui_gridlayoutoptions_dispose) | Disposes of the **Grid** layout option.|
+| [int32_t OH_ArkUI_GridLayoutOptions_SetIrregularIndexes(ArkUI_GridLayoutOptions* option, uint32_t* irregularIndexes, int32_t size)](#oh_arkui_gridlayoutoptions_setirregularindexes) | Sets the irregular grid item index array for the grid layout.|
+| [int32_t OH_ArkUI_GridLayoutOptions_GetIrregularIndexes(ArkUI_GridLayoutOptions* option, uint32_t* irregularIndexes, int32_t* size)](#oh_arkui_gridlayoutoptions_getirregularindexes) | Obtains the irregular grid item index array for the grid layout. When **OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback** is not set, the grid item specified in this parameter occupies an entire row of the grid that scrolls vertically or an entire column of the grid that scrolls horizontally.|
+| [void OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback(ArkUI_GridLayoutOptions* option, void* userData, ArkUI_GridItemSize(\*callback)(int32_t itemIndex, void* userData))](#oh_arkui_gridlayoutoptions_registergetirregularsizebyindexcallback) | Registers a callback to obtain the row and column span for the grid item at the specified index.|
+| [void OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback(ArkUI_GridLayoutOptions* option, void* userData, ArkUI_GridItemRect (\*callback)(int32_t itemIndex, void* userData))](#oh_arkui_gridlayoutoptions_registergetrectbyindexcallback) | Registers a callback to obtain the starting row, starting column, row span, and column span for the grid item at the specified index.|
 
-## 枚举类型说明
+## Enum Description
 
 ### ArkUI_GridItemAlignment
 
 ```c
 enum ArkUI_GridItemAlignment
 ```
-**描述：**
+**Description**
 
-[GridItem](../apis-arkui/arkui-ts/ts-container-griditem.md)对齐方式枚举。
+Enumerates the alignment modes of the [GridItem](../apis-arkui/arkui-ts/ts-container-griditem.md) component.
 
-**起始版本：** 22
+**Since:** 22
 
-| 枚举项 | 描述 |
+| Value| Description|
 | -- | -- |
-| GRID_ITEM_ALIGNMENT_DEFAULT = 0 | Grid的默认对齐方式。 |
-| GRID_ITEM_ALIGNMENT_STRETCH  = 1  | 以一行中的最高的GridItem作为其他GridItem的高度。 |
+| GRID_ITEM_ALIGNMENT_DEFAULT = 0 | Use the default alignment mode of the grid.|
+| GRID_ITEM_ALIGNMENT_STRETCH  = 1  | Use the height of the tallest grid item in a row as the height for all other grid items in that row.|
 
 
 ### ArkUI_GridItemStyle
@@ -75,19 +75,19 @@ enum ArkUI_GridItemAlignment
 enum ArkUI_GridItemStyle
 ```
 
-**描述：**
+**Description**
 
 
-GridItem样式枚举。
+Enumerates styles of grid items.
 
-**起始版本：** 22
+**Since:** 22
 
-| 枚举项 | 描述 |
+| Value| Description|
 | -- | -- |
-| GRID_ITEM_STYLE_NONE  = 0 | 无样式。 |
-| GRID_ITEM_STYLE_PLAIN  = 1  | 显示Hover、Press态样式。 |
+| GRID_ITEM_STYLE_NONE  = 0 | No style.|
+| GRID_ITEM_STYLE_PLAIN  = 1  | Hover or press style.|
 
-## 函数说明
+## Function Description
 
 ### OH_ArkUI_GridLayoutOptions_Create()
 
@@ -95,17 +95,17 @@ GridItem样式枚举。
 ArkUI_GridLayoutOptions* OH_ArkUI_GridLayoutOptions_Create()
 ```
 
-**描述：**
+**Description**
 
-创建Grid布局选项。
+Creates **Grid** layout options.
 
-**起始版本：** 22
+**Since:** 22
 
-**返回：**
+**Returns**
 
-| 类型                                | 说明 |
+| Type                               | Description|
 |-----------------------------------| -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* | Grid布局选项。 |
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* | Pointer to the **Grid** layout option array.|
 
 ### OH_ArkUI_GridLayoutOptions_Dispose()
 
@@ -113,18 +113,18 @@ ArkUI_GridLayoutOptions* OH_ArkUI_GridLayoutOptions_Create()
 void OH_ArkUI_GridLayoutOptions_Dispose(ArkUI_GridLayoutOptions* option)
 ```
 
-**描述：**
+**Description**
 
-销毁Grid布局选项。
+Disposes of the **Grid** layout option.
 
-**起始版本：** 22
+**Since**: 22
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Grid布局选项。 |
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout option array.|
 
 
 ### OH_ArkUI_GridLayoutOptions_SetIrregularIndexes()
@@ -133,26 +133,26 @@ void OH_ArkUI_GridLayoutOptions_Dispose(ArkUI_GridLayoutOptions* option)
 int32_t OH_ArkUI_GridLayoutOptions_SetIrregularIndexes(ArkUI_GridLayoutOptions* option, uint32_t* irregularIndexes, int32_t size)
 ```
 
-**描述：**
+**Description**
 
-设置Grid中不规则GridItem的索引数组。
+Sets the irregular grid item index array for the grid layout.
 
-**起始版本：** 22
+**Since**: 22
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Grid布局选项。 |
-| uint32_t* irregularIndexes |  GridItem索引数组。 |
-| int32_t size | GridItem索引数组大小。 |
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout option array.|
+| uint32_t* irregularIndexes |  Pointer to the **GridItem** index array.|
+| int32_t size | Size of the **GridItem** index array.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)  函数参数异常。<br>         异常原因：传入参数验证失败，参数不能为空。 |
+| int32_t | Error code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         A possible cause is that mandatory parameters are left unspecified.|
 
 ### OH_ArkUI_GridLayoutOptions_GetIrregularIndexes()
 
@@ -160,26 +160,26 @@ int32_t OH_ArkUI_GridLayoutOptions_SetIrregularIndexes(ArkUI_GridLayoutOptions* 
 int32_t OH_ArkUI_GridLayoutOptions_GetIrregularIndexes(ArkUI_GridLayoutOptions* option, uint32_t* irregularIndexes, int32_t* size)
 ```
 
-**描述：**
+**Description**
 
-获取Grid中不规则GridItem的索引数组。当不设置OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback时，irregularIndexes中GridItem的默认大小为垂直滚动Grid的一整行或水平滚动Grid的一整列。
+Obtains the irregular grid item index array for the grid layout. When **OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback** is not set, the grid item specified in this parameter occupies an entire row of the grid that scrolls vertically or an entire column of the grid that scrolls horizontally.
 
-**起始版本：** 22
+**Since**: 22
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Grid布局选项。 |
-| uint32_t* irregularIndexes |  GridItem索引数组。 |
-| int32_t size | GridItem索引数组大小。 |
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout option array.|
+| uint32_t* irregularIndexes |  Pointer to the **GridItem** index array.|
+| int32_t size | Size of the **GridItem** index array.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) 数组大小不够。<br>         异常原因：传入参数验证失败，参数不能为空。 |
+| int32_t | Error code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the array size is insufficient.<br>         A possible cause is that mandatory parameters are left unspecified.|
 
 ### OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback()
 
@@ -187,20 +187,20 @@ int32_t OH_ArkUI_GridLayoutOptions_GetIrregularIndexes(ArkUI_GridLayoutOptions* 
 void OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback(ArkUI_GridLayoutOptions* option, void* userData, ArkUI_GridItemSize (*callback)(int32_t itemIndex, void* userData))
 ```
 
-**描述：**
+**Description**
 
-Grid布局选项通过GridItem索引获取指定Item占用的行列数。
+Registers a callback to obtain the row and column span for the grid item at the specified index.
 
-**起始版本：** 22
+**Since**: 22
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Grid布局选项。 |
-| void* userData | 用户自定义数据。 |
-| ArkUI_GridItemSize (\*callback)(int32_t itemIndex, void* userData) | 根据index获取指定Item占用的行列数。<br> itemIndex: GridItem索引值，取值范围来自[OH_ArkUI_GridLayoutOptions_SetIrregularIndexes](#oh_arkui_gridlayoutoptions_setirregularindexes)。 |
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout option array.|
+| void* userData | Pointer to the user-defined data.|
+| ArkUI_GridItemSize (\*callback)(int32_t itemIndex, void* userData) | Pointer to the callback that returns the row and column span for the grid item at the specified index.<br> **itemIndex**: grid item index, whose value range is obtained from [OH_ArkUI_GridLayoutOptions_SetIrregularIndexes](#oh_arkui_gridlayoutoptions_setirregularindexes).|
 
 ### OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback()
 
@@ -208,17 +208,17 @@ Grid布局选项通过GridItem索引获取指定Item占用的行列数。
 void OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback(ArkUI_GridLayoutOptions* option, void* userData, ArkUI_GridItemRect (*callback)(int32_t itemIndex, void* userData))
 ```
 
-**描述：**
+**Description**
 
-Grid布局选项通过GridItem索引获取指定Item的起始行列和占用的行列数。
+Registers a callback to obtain the starting row, starting column, row span, and column span for the grid item at the specified index.
 
-**起始版本：** 22
+**Since**: 22
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Grid布局选项。 |
-| void* userData | 用户自定义数据。 |
-| ArkUI_GridItemRect (\*callback)(int32_t itemIndex, void* userData) | 根据index获取指定Item的起始行列和占用的行列数。<br>   itemIndex: GridItem索引值。 |
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout option array.|
+| void* userData | Pointer to the user-defined data.|
+| ArkUI_GridItemRect (\*callback)(int32_t itemIndex, void* userData) | Pointer to the callback that returns the starting row, starting column, row span, and column span for the grid item at the specified index.<br>   **itemIndex**: grid item index.|

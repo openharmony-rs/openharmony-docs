@@ -6,52 +6,52 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
-## 概述
+## Overview
 
-定义List组件相关的枚举和接口。
+Defines enumerations and APIs related to **List**.
 
-**引用文件：** <arkui/list.h>
+**File to include:** <arkui/list.h>
 
-**库：** libace_ndk.z.so
+**Library:** libace_ndk.z.so
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 12
+**Since:** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module:** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**相关示例：** <!--RP1-->[ScrollableNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ScrollableNDK)<!--RP1End-->
+**Sample**: <!--RP1-->[ScrollableNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ScrollableNDK)<!--RP1End-->
 
-## 汇总
+## Summary
 
-### 结构体
+### Structs
 
-| 名称 | typedef关键字 | 描述 |
+| Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md) | ArkUI_ListChildrenMainSize | 定义List的ChildrenMainSize类信息。 |
+| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md) | ArkUI_ListChildrenMainSize | Defines the **ChildrenMainSize** information of the **List** component.|
 
-### 枚举
+### Enums
 
-| 名称 | typedef关键字 | 描述 |
+| Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [ArkUI_ListItemAlignment](#arkui_listitemalignment) | ArkUI_ListItemAlignment | 交叉轴方向的布局方式。 |
-| [ArkUI_StickyStyle](#arkui_stickystyle) | ArkUI_StickyStyle | 定义列表是否吸顶和吸底枚举值。 |
-| [ArkUI_ListItemGroupArea](#arkui_listitemgrouparea) | ArkUI_ListItemGroupArea | 定义ListItemGroup组件区域。 |
+| [ArkUI_ListItemAlignment](#arkui_listitemalignment) | ArkUI_ListItemAlignment | Enumerates the alignment modes of items along the cross axis.|
+| [ArkUI_StickyStyle](#arkui_stickystyle) | ArkUI_StickyStyle | Enumerates the modes for pinning the header to the top or the footer to the bottom.|
+| [ArkUI_ListItemGroupArea](#arkui_listitemgrouparea) | ArkUI_ListItemGroupArea | Enumerates areas of the **ListItemGroup** component.|
 
-### 函数
+### Functions
 
-| 名称 | 描述 |
+| Name| Description|
 | -- | -- |
-| [ArkUI_ListChildrenMainSize* OH_ArkUI_ListChildrenMainSizeOption_Create()](#oh_arkui_listchildrenmainsizeoption_create) | 创建ListChildrenMainSize接口设置的配置项。 |
-| [void OH_ArkUI_ListChildrenMainSizeOption_Dispose(ArkUI_ListChildrenMainSize* option)](#oh_arkui_listchildrenmainsizeoption_dispose) | 销毁ListChildrenMainSize实例。 |
-| [int32_t OH_ArkUI_ListChildrenMainSizeOption_SetDefaultMainSize(ArkUI_ListChildrenMainSize* option, float defaultMainSize)](#oh_arkui_listchildrenmainsizeoption_setdefaultmainsize) | 设置List组件列表项在主轴方向的默认尺寸。主轴方向为纵向时表示高度，为横向时表示宽度。 |
-| [float OH_ArkUI_ListChildrenMainSizeOption_GetDefaultMainSize(ArkUI_ListChildrenMainSize* option)](#oh_arkui_listchildrenmainsizeoption_getdefaultmainsize) | 获取List组件的列表项在主轴方向的默认尺寸。主轴方向为纵向时表示高度，为横向时表示宽度。 |
-| [void OH_ArkUI_ListChildrenMainSizeOption_Resize(ArkUI_ListChildrenMainSize* option, int32_t totalSize)](#oh_arkui_listchildrenmainsizeoption_resize) | 调整List组件子项主轴尺寸数组的容量大小。 |
-| [int32_t OH_ArkUI_ListChildrenMainSizeOption_Splice(ArkUI_ListChildrenMainSize* option, int32_t index, int32_t deleteCount, int32_t addCount)](#oh_arkui_listchildrenmainsizeoption_splice) | 对List组件子项主轴尺寸数组进行大小调整。 |
-| [int32_t OH_ArkUI_ListChildrenMainSizeOption_UpdateSize(ArkUI_ListChildrenMainSize* option, int32_t index, float mainSize)](#oh_arkui_listchildrenmainsizeoption_updatesize) | 更新List组件子项主轴尺寸数组中指定索引位置的尺寸。主轴方向为纵向时表示高度，为横向时表示宽度。 |
-| [float OH_ArkUI_ListChildrenMainSizeOption_GetMainSize(ArkUI_ListChildrenMainSize* option, int32_t index)](#oh_arkui_listchildrenmainsizeoption_getmainsize) | 获取List组件子项主轴尺寸数组中指定索引位置的尺寸。主轴方向为纵向时表示高度，为横向时表示宽度。 |
+| [ArkUI_ListChildrenMainSize* OH_ArkUI_ListChildrenMainSizeOption_Create()](#oh_arkui_listchildrenmainsizeoption_create) | Creates a **ListChildrenMainSize** instance.|
+| [void OH_ArkUI_ListChildrenMainSizeOption_Dispose(ArkUI_ListChildrenMainSize* option)](#oh_arkui_listchildrenmainsizeoption_dispose) | Disposes of a **ListChildrenMainSize** instance.|
+| [int32_t OH_ArkUI_ListChildrenMainSizeOption_SetDefaultMainSize(ArkUI_ListChildrenMainSize* option, float defaultMainSize)](#oh_arkui_listchildrenmainsizeoption_setdefaultmainsize) | Sets the default size of the list item in the **List** component along the main axis. The vertical direction indicates the height, and the horizontal direction indicates the width.|
+| [float OH_ArkUI_ListChildrenMainSizeOption_GetDefaultMainSize(ArkUI_ListChildrenMainSize* option)](#oh_arkui_listchildrenmainsizeoption_getdefaultmainsize) | Obtains the default size of the list item in the **List** component along the main axis. The vertical direction indicates the height, and the horizontal direction indicates the width.|
+| [void OH_ArkUI_ListChildrenMainSizeOption_Resize(ArkUI_ListChildrenMainSize* option, int32_t totalSize)](#oh_arkui_listchildrenmainsizeoption_resize) | Adjusts the capacity of the child item size array in the **List** component along the main axis.|
+| [int32_t OH_ArkUI_ListChildrenMainSizeOption_Splice(ArkUI_ListChildrenMainSize* option, int32_t index, int32_t deleteCount, int32_t addCount)](#oh_arkui_listchildrenmainsizeoption_splice) | Adjusts the child item size array in the **List** component along the main axis.|
+| [int32_t OH_ArkUI_ListChildrenMainSizeOption_UpdateSize(ArkUI_ListChildrenMainSize* option, int32_t index, float mainSize)](#oh_arkui_listchildrenmainsizeoption_updatesize) | Updates the size at the specified index in the child item size array of the **List** component along the main axis. The vertical direction indicates the height, and the horizontal direction indicates the width.|
+| [float OH_ArkUI_ListChildrenMainSizeOption_GetMainSize(ArkUI_ListChildrenMainSize* option, int32_t index)](#oh_arkui_listchildrenmainsizeoption_getmainsize) | Obtains the size at the specified index in the child item size array of the **List** component along the main axis. The vertical direction indicates the height, and the horizontal direction indicates the width.|
 
-## 枚举类型说明
+## Enum Description
 
 ### ArkUI_ListItemAlignment
 
@@ -59,18 +59,18 @@
 enum ArkUI_ListItemAlignment
 ```
 
-**描述：**
+**Description**
 
 
-交叉轴方向的布局方式，默认值为ARKUI_LIST_ITEM_ALIGNMENT_START。
+Enumerates the alignment modes of items along the cross axis. The default value is **ARKUI_LIST_ITEM_ALIGNMENT_START**.
 
-**起始版本：** 12
+**Since:** 12
 
-| 枚举项 | 描述 |
+| Value| Description|
 | -- | -- |
-| ARKUI_LIST_ITEM_ALIGNMENT_START = 0 | [ListItem](./arkui-ts/ts-container-listitem.md#listitem10)在List中，交叉轴方向首部对齐。 |
-| ARKUI_LIST_ITEM_ALIGNMENT_CENTER = 1 | ListItem在List中，交叉轴方向居中对齐。 |
-| ARKUI_LIST_ITEM_ALIGNMENT_END = 2 | ListItem在List中，交叉轴方向尾部对齐。 |
+| ARKUI_LIST_ITEM_ALIGNMENT_START = 0 | The [list items](./arkui-ts/ts-container-listitem.md#listitem10) are packed toward the start edge of the **List** component along the cross axis.|
+| ARKUI_LIST_ITEM_ALIGNMENT_CENTER = 1 | The list items are centered in the **List** component along the cross axis.|
+| ARKUI_LIST_ITEM_ALIGNMENT_END = 2 | The list items are packed toward the end edge of the **List** component along the cross axis.|
 
 ### ArkUI_StickyStyle
 
@@ -78,19 +78,19 @@ enum ArkUI_ListItemAlignment
 enum ArkUI_StickyStyle
 ```
 
-**描述：**
+**Description**
 
 
-定义列表是否吸顶和吸底枚举值。
+Enumerates the modes for pinning the header to the top or the footer to the bottom.
 
-**起始版本：** 12
+**Since:** 12
 
-| 枚举项 | 描述 |
+| Value| Description|
 | -- | -- |
-| ARKUI_STICKY_STYLE_NONE = 0 | [ListItemGroup](./arkui-ts/ts-container-listitemgroup.md)的[header](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions对象说明)不吸顶，[footer](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions对象说明)不吸底。 |
-| ARKUI_STICKY_STYLE_HEADER = 1 | [ListItemGroup](./arkui-ts/ts-container-listitemgroup.md)的[header](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions对象说明)吸顶，[footer](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions对象说明)不吸底。 |
-| ARKUI_STICKY_STYLE_FOOTER = 2 | [ListItemGroup](./arkui-ts/ts-container-listitemgroup.md)的[header](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions对象说明)不吸顶，[footer](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions对象说明)吸底。 |
-| ARKUI_STICKY_STYLE_BOTH = 3 | [ListItemGroup](./arkui-ts/ts-container-listitemgroup.md)的[header](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions对象说明)吸顶，[footer](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions对象说明)吸底。 |
+| ARKUI_STICKY_STYLE_NONE = 0 | [header](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions) and [footer](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions) of [ListItemGroup](./arkui-ts/ts-container-listitemgroup.md) are not pinned to the top and bottom, respectively.|
+| ARKUI_STICKY_STYLE_HEADER = 1 | [header](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions) of [ListItemGroup](./arkui-ts/ts-container-listitemgroup.md) is pinned to the top, and [footer](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions) is not pinned to the bottom.|
+| ARKUI_STICKY_STYLE_FOOTER = 2 | [header](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions) of [ListItemGroup](./arkui-ts/ts-container-listitemgroup.md) is not pinned to the top, and [footer](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions) is pinned to the bottom.|
+| ARKUI_STICKY_STYLE_BOTH = 3 | [header](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions) of [ListItemGroup](./arkui-ts/ts-container-listitemgroup.md) is pinned to the top, and [footer](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions) is pinned to the bottom.|
 
 ### ArkUI_ListItemGroupArea
 
@@ -98,22 +98,22 @@ enum ArkUI_StickyStyle
 enum ArkUI_ListItemGroupArea
 ```
 
-**描述：**
+**Description**
 
 
-定义[ListItemGroup](./arkui-ts/ts-container-listitemgroup.md)组件区域，默认值为ARKUI_LIST_ITEM_GROUP_AREA_OUTSIDE。
+Enumerates the areas in the [ListItemGroup](./arkui-ts/ts-container-listitemgroup.md) component. The default value is **ARKUI_LIST_ITEM_GROUP_AREA_OUTSIDE**.
 
-**起始版本：** 15
+**Since:** 15
 
-| 枚举项 | 描述 |
+| Value| Description|
 | -- | -- |
-| ARKUI_LIST_ITEM_GROUP_AREA_OUTSIDE = 0 | ListItemGroup区域外。 |
-| ARKUI_LIST_ITEM_SWIPE_AREA_NONE = 1 | ListItemGroup没有[header](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions对象说明)、[footer](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions对象说明)和[ListItem](./arkui-ts/ts-container-listitem.md#listitem10)时的区域。 |
-| ARKUI_LIST_ITEM_SWIPE_AREA_ITEM = 2 | ListItemGroup的ListItem区域。 |
-| ARKUI_LIST_ITEM_SWIPE_AREA_HEADER = 3 | ListItemGroup的header区域。 |
-| ARKUI_LIST_ITEM_SWIPE_AREA_FOOTER = 4 | ListItemGroup的footer区域。 |
+| ARKUI_LIST_ITEM_GROUP_AREA_OUTSIDE = 0 | Outside the area of the **ListItemGroup** component.|
+| ARKUI_LIST_ITEM_SWIPE_AREA_NONE = 1 | Area without the [header](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions), [footer](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions), and [ListItem](./arkui-ts/ts-container-listitem.md#listitem10) in the **ListItemGroup** component.|
+| ARKUI_LIST_ITEM_SWIPE_AREA_ITEM = 2 | List item area of the **ListItemGroup** component.|
+| ARKUI_LIST_ITEM_SWIPE_AREA_HEADER = 3 | Header area of the **ListItemGroup** component.|
+| ARKUI_LIST_ITEM_SWIPE_AREA_FOOTER = 4 | Footer area of the **ListItemGroup** component.|
 
-## 函数说明
+## Function Description
 
 ### OH_ArkUI_ListChildrenMainSizeOption_Create()
 
@@ -121,18 +121,18 @@ enum ArkUI_ListItemGroupArea
 ArkUI_ListChildrenMainSize* OH_ArkUI_ListChildrenMainSizeOption_Create()
 ```
 
-**描述：**
+**Description**
 
 
-创建ListChildrenMainSize接口设置的配置项。
+Creates a **ListChildrenMainSize** instance.
 
-**起始版本：** 12
+**Since:** 12
 
-**返回：**
+**Returns**
 
-| 类型                              | 说明 |
+| Type                             | Description|
 |---------------------------------| -- |
-| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* | ListChildrenMainSize配置项实例。 |
+| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* | Pointer to the **ListChildrenMainSize** instance.|
 
 ### OH_ArkUI_ListChildrenMainSizeOption_Dispose()
 
@@ -140,19 +140,19 @@ ArkUI_ListChildrenMainSize* OH_ArkUI_ListChildrenMainSizeOption_Create()
 void OH_ArkUI_ListChildrenMainSizeOption_Dispose(ArkUI_ListChildrenMainSize* option)
 ```
 
-**描述：**
+**Description**
 
 
-销毁ListChildrenMainSize实例。
+Disposes of a **ListChildrenMainSize** instance.
 
-**起始版本：** 12
+**Since:** 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | 要销毁的ListChildrenMainSize实例。 |
+| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | Pointer to the **ListChildrenMainSize** instance to dispose of.|
 
 ### OH_ArkUI_ListChildrenMainSizeOption_SetDefaultMainSize()
 
@@ -160,26 +160,26 @@ void OH_ArkUI_ListChildrenMainSizeOption_Dispose(ArkUI_ListChildrenMainSize* opt
 int32_t OH_ArkUI_ListChildrenMainSizeOption_SetDefaultMainSize(ArkUI_ListChildrenMainSize* option, float defaultMainSize)
 ```
 
-**描述：**
+**Description**
 
 
-设置[List](./arkui-ts/ts-container-list.md)组件列表项在主轴方向的默认尺寸。主轴方向为纵向时表示高度，为横向时表示宽度。
+Sets the default size of the list item in the [List](./arkui-ts/ts-container-list.md) component along the main axis. The vertical direction indicates the height, and the horizontal direction indicates the width.
 
-**起始版本：** 12
+**Since:** 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | ListChildrenMainSize实例。 |
-| float defaultMainSize | 列表项在主轴方向的默认尺寸值，单位为vp。 |
+| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | Pointer to the **ListChildrenMainSize** instance.|
+| float defaultMainSize | Default size of the list item along the main axis, in vp.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | Error code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_ListChildrenMainSizeOption_GetDefaultMainSize()
 
@@ -187,25 +187,25 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_SetDefaultMainSize(ArkUI_ListChildre
 float OH_ArkUI_ListChildrenMainSizeOption_GetDefaultMainSize(ArkUI_ListChildrenMainSize* option)
 ```
 
-**描述：**
+**Description**
 
 
-获取[List](./arkui-ts/ts-container-list.md)组件的列表项在主轴方向的默认尺寸。主轴方向为纵向时表示高度，为横向时表示宽度。
+Obtains the default size of the list item in the [List](./arkui-ts/ts-container-list.md) component along the main axis. The vertical direction indicates the height, and the horizontal direction indicates the width.
 
-**起始版本：** 12
+**Since:** 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | ListChildrenMainSize实例。 |
+| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | Pointer to the **ListChildrenMainSize** instance.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| float | 列表项在主轴方向的默认尺寸值，默认为0，单位为[vp](../apis-arkui/arkui-ts/ts-types.md#vp10)，option为空指针时返回-1。 |
+| float | Default size of the list item along the main axis. The default value is **0**. The unit is [vp](../apis-arkui/arkui-ts/ts-types.md#vp10). If **option** is a null pointer, **-1** is returned.|
 
 ### OH_ArkUI_ListChildrenMainSizeOption_Resize()
 
@@ -213,20 +213,20 @@ float OH_ArkUI_ListChildrenMainSizeOption_GetDefaultMainSize(ArkUI_ListChildrenM
 void OH_ArkUI_ListChildrenMainSizeOption_Resize(ArkUI_ListChildrenMainSize* option, int32_t totalSize)
 ```
 
-**描述：**
+**Description**
 
 
-调整[List](./arkui-ts/ts-container-list.md)组件子项主轴尺寸数组的容量大小。
+Adjusts the capacity of the child item size array in the [List](./arkui-ts/ts-container-list.md) component along the main axis.
 
-**起始版本：** 12
+**Since:** 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | ListChildrenMainSize实例。 |
-| int32_t totalSize | 目标数组容量大小。 |
+| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | Pointer to the **ListChildrenMainSize** instance.|
+| int32_t totalSize | Capacity of the target array.|
 
 ### OH_ArkUI_ListChildrenMainSizeOption_Splice()
 
@@ -234,28 +234,28 @@ void OH_ArkUI_ListChildrenMainSizeOption_Resize(ArkUI_ListChildrenMainSize* opti
 int32_t OH_ArkUI_ListChildrenMainSizeOption_Splice(ArkUI_ListChildrenMainSize* option, int32_t index, int32_t deleteCount, int32_t addCount)
 ```
 
-**描述：**
+**Description**
 
 
-对[List](./arkui-ts/ts-container-list.md)组件子项主轴尺寸数组进行大小调整。
+Adjusts the child item size array in the [List](./arkui-ts/ts-container-list.md) component along the main axis.
 
-**起始版本：** 12
+**Since:** 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | ListChildrenMainSize实例。 |
-| int32_t index | 操作起始索引位置。 |
-| int32_t deleteCount | 从起始位置开始删除的元素数量。 |
-| int32_t addCount | 从起始位置开始新增的元素数量。 |
+| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | Pointer to the **ListChildrenMainSize** instance.|
+| int32_t index | Start index.|
+| int32_t deleteCount | Number of elements to be deleted from the start position.|
+| int32_t addCount | Number of elements to be added from the start position.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | Error code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_ListChildrenMainSizeOption_UpdateSize()
 
@@ -263,27 +263,27 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_Splice(ArkUI_ListChildrenMainSize* o
 int32_t OH_ArkUI_ListChildrenMainSizeOption_UpdateSize(ArkUI_ListChildrenMainSize* option, int32_t index, float mainSize)
 ```
 
-**描述：**
+**Description**
 
 
-更新[List](./arkui-ts/ts-container-list.md)组件子项主轴尺寸数组中指定索引位置的尺寸。主轴方向为纵向时表示高度，为横向时表示宽度。
+Updates the size at the specified index in the child item size array of the [List](./arkui-ts/ts-container-list.md) component along the main axis. The vertical direction indicates the height, and the horizontal direction indicates the width.
 
-**起始版本：** 12
+**Since:** 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | ListChildrenMainSize实例。 |
-| int32_t index | 目标元素的数组索引位置。 |
-| float mainSize | 要设置的主轴尺寸值，单位为vp。 |
+| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | Pointer to the **ListChildrenMainSize** instance.|
+| int32_t index | Array index of the target element.|
+| float mainSize | Size along the main axis, in vp.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+| int32_t | Error code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_ListChildrenMainSizeOption_GetMainSize()
 
@@ -291,23 +291,23 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_UpdateSize(ArkUI_ListChildrenMainSiz
 float OH_ArkUI_ListChildrenMainSizeOption_GetMainSize(ArkUI_ListChildrenMainSize* option, int32_t index)
 ```
 
-**描述：**
+**Description**
 
 
-获取[List](./arkui-ts/ts-container-list.md)组件子项主轴尺寸数组中指定索引位置的尺寸。主轴方向为纵向时表示高度，为横向时表示宽度。
+Obtains the size at the specified index in the child item size array of the [List](./arkui-ts/ts-container-list.md) component along the main axis. The vertical direction indicates the height, and the horizontal direction indicates the width.
 
-**起始版本：** 12
+**Since:** 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | ListChildrenMainSize实例。 |
-| int32_t index | 目标元素的数组索引位置。 |
+| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | Pointer to the **ListChildrenMainSize** instance.|
+| int32_t index | Array index of the target element.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| float | 数组具体位置的值。若函数参数异常，返回-1。 |
+| float | Value at the specified index. If a parameter error occurs, **-1** is returned.|

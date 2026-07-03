@@ -6,59 +6,59 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
-## 概述
+## Overview
 
-定义WaterFlow组件相关的枚举和接口。
+Defines enumerations and APIs related to **WaterFlow**.
 
-**引用文件：** <arkui/water_flow.h>
+**File to include:** <arkui/water_flow.h>
 
-**库：** libace_ndk.z.so
+**Library:** libace_ndk.z.so
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 12
+**Since:** 12
 
-**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module:** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**相关示例：** <!--RP1-->[NDKWaterFlowSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKWaterFlowSample)<!--RP1End-->
+**Sample**: <!--RP1-->[NDKWaterFlowSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKWaterFlowSample)<!--RP1End-->
 
-## 汇总
+## Summary
 
-### 结构体
+### Structs
 
-| 名称 | typedef关键字 | 描述 |
+| Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [ArkUI_Margin](capi-arkui-nativemodule-arkui-margin.md) | ArkUI_Margin | 外边距属性，用于描述组件的外边距属性。 |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md) | ArkUI_WaterFlowSectionOption | 定义[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
+| [ArkUI_Margin](capi-arkui-nativemodule-arkui-margin.md) | ArkUI_Margin | Describes the margins of a component.|
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md) | ArkUI_WaterFlowSectionOption | Defines the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.|
 
-### 枚举
+### Enums
 
-| 名称 | typedef关键字 | 描述 |
+| Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [ArkUI_WaterFlowLayoutMode](#arkui_waterflowlayoutmode) | ArkUI_WaterFlowLayoutMode | 定义[WaterFlow](../apis-arkui/arkui-ts/ts-container-waterflow.md)组件布局模式枚举值。 |
+| [ArkUI_WaterFlowLayoutMode](#arkui_waterflowlayoutmode) | ArkUI_WaterFlowLayoutMode | Enumerates the layout modes of the [WaterFlow](../apis-arkui/arkui-ts/ts-container-waterflow.md) component.|
 
-### 函数
+### Functions
 
-| 名称 | typedef关键字 | 描述 |
+| Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [ArkUI_WaterFlowSectionOption* OH_ArkUI_WaterFlowSectionOption_Create()](#oh_arkui_waterflowsectionoption_create) | - | 创建FlowItem分组配置信息。 |
-| [void OH_ArkUI_WaterFlowSectionOption_Dispose(ArkUI_WaterFlowSectionOption* option)](#oh_arkui_waterflowsectionoption_dispose) | - | 销毁FlowItem分组配置信息指针。 |
-| [void OH_ArkUI_WaterFlowSectionOption_SetSize(ArkUI_WaterFlowSectionOption* option, int32_t size)](#oh_arkui_waterflowsectionoption_setsize) | - | 设置FlowItem分组配置信息数组长度。 |
-| [int32_t OH_ArkUI_WaterFlowSectionOption_GetSize(ArkUI_WaterFlowSectionOption* option)](#oh_arkui_waterflowsectionoption_getsize) | - | 获取FlowItem分组配置信息数组长度。 |
-| [void OH_ArkUI_WaterFlowSectionOption_SetItemCount(ArkUI_WaterFlowSectionOption* option, int32_t index, int32_t itemCount)](#oh_arkui_waterflowsectionoption_setitemcount) | - | 设置分组中FlowItem数量。 |
-| [int32_t OH_ArkUI_WaterFlowSectionOption_GetItemCount(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getitemcount) | - | 通过FlowItem分组配置信息获取对应索引下的FlowItem数量。 |
-| [void OH_ArkUI_WaterFlowSectionOption_SetCrossCount(ArkUI_WaterFlowSectionOption* option, int32_t index, int32_t crossCount)](#oh_arkui_waterflowsectionoption_setcrosscount) | - | 设置布局栅格，纵向布局时为列数，横向布局时为行数。 |
-| [int32_t OH_ArkUI_WaterFlowSectionOption_GetCrossCount(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getcrosscount) | - | 通过FlowItem分组配置信息获取对应索引下的布局栅格数。 |
-| [void OH_ArkUI_WaterFlowSectionOption_SetColumnGap(ArkUI_WaterFlowSectionOption* option, int32_t index, float columnGap)](#oh_arkui_waterflowsectionoption_setcolumngap) | - | 设置分组的列间距。 |
-| [float OH_ArkUI_WaterFlowSectionOption_GetColumnGap(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getcolumngap) | - | 通过FlowItem分组配置信息获取对应索引下的分组的列间距。 |
-| [void OH_ArkUI_WaterFlowSectionOption_SetRowGap(ArkUI_WaterFlowSectionOption* option, int32_t index, float rowGap)](#oh_arkui_waterflowsectionoption_setrowgap) | - | 设置分组的行间距。 |
-| [float OH_ArkUI_WaterFlowSectionOption_GetRowGap(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getrowgap) | - | 通过FlowItem分组配置信息获取对应索引下的分组的行间距。 |
-| [void OH_ArkUI_WaterFlowSectionOption_SetMargin(ArkUI_WaterFlowSectionOption* option, int32_t index,float marginTop, float marginRight, float marginBottom, float marginLeft)](#oh_arkui_waterflowsectionoption_setmargin) | - | 设置分组的外边距。 |
-| [ArkUI_Margin OH_ArkUI_WaterFlowSectionOption_GetMargin(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getmargin) | - | 通过FlowItem分组配置信息获取对应索引下的分组的外边距。 |
-| [void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex (ArkUI_WaterFlowSectionOption* option, int32_t index, float(\*callback)(int32_t itemIndex))](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindex) | - | 通过FlowItem分组配置信息根据itemIndex获取指定FlowItem的主轴大小。如需在回调中使用自定义数据，可使用[OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindexwithuserdata)。 |
-| [void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData (ArkUI_WaterFlowSectionOption* option, int32_t index, void* userData, float (\*callback)(int32_t itemIndex, void* userData))](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindexwithuserdata) | - | 通过FlowItem分组配置信息根据itemIndex获取指定Item的主轴大小。与[OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindex)的区别在于，该接口支持传入自定义数据userData，并在回调函数中接收该数据。 |
+| [ArkUI_WaterFlowSectionOption* OH_ArkUI_WaterFlowSectionOption_Create()](#oh_arkui_waterflowsectionoption_create) | - | Creates a water flow section configuration.|
+| [void OH_ArkUI_WaterFlowSectionOption_Dispose(ArkUI_WaterFlowSectionOption* option)](#oh_arkui_waterflowsectionoption_dispose) | - | Disposes of the pointer to a water flow section configuration.|
+| [void OH_ArkUI_WaterFlowSectionOption_SetSize(ArkUI_WaterFlowSectionOption* option, int32_t size)](#oh_arkui_waterflowsectionoption_setsize) | - | Sets the array length for a water flow section configuration.|
+| [int32_t OH_ArkUI_WaterFlowSectionOption_GetSize(ArkUI_WaterFlowSectionOption* option)](#oh_arkui_waterflowsectionoption_getsize) | - | Obtains the array length of a water flow section configuration.|
+| [void OH_ArkUI_WaterFlowSectionOption_SetItemCount(ArkUI_WaterFlowSectionOption* option, int32_t index, int32_t itemCount)](#oh_arkui_waterflowsectionoption_setitemcount) | - | Sets the number of items in a water flow section.|
+| [int32_t OH_ArkUI_WaterFlowSectionOption_GetItemCount(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getitemcount) | - | Obtains the number of items in the water flow section that matches the specified index.|
+| [void OH_ArkUI_WaterFlowSectionOption_SetCrossCount(ArkUI_WaterFlowSectionOption* option, int32_t index, int32_t crossCount)](#oh_arkui_waterflowsectionoption_setcrosscount) | - | Sets the number of columns (in a vertical layout) or rows (in a horizontal layout) of a water flow section.|
+| [int32_t OH_ArkUI_WaterFlowSectionOption_GetCrossCount(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getcrosscount) | - | Obtains the number of columns (in a vertical layout) or rows (in a horizontal layout) of a water flow section.|
+| [void OH_ArkUI_WaterFlowSectionOption_SetColumnGap(ArkUI_WaterFlowSectionOption* option, int32_t index, float columnGap)](#oh_arkui_waterflowsectionoption_setcolumngap) | - | Sets the gap between columns in the specified water flow section.|
+| [float OH_ArkUI_WaterFlowSectionOption_GetColumnGap(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getcolumngap) | - | Obtains the gap between columns in the water flow section that matches the specified index.|
+| [void OH_ArkUI_WaterFlowSectionOption_SetRowGap(ArkUI_WaterFlowSectionOption* option, int32_t index, float rowGap)](#oh_arkui_waterflowsectionoption_setrowgap) | - | Sets the gap between rows in the specified water flow section.|
+| [float OH_ArkUI_WaterFlowSectionOption_GetRowGap(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getrowgap) | - | Obtains the gap between rows in the water flow section that matches the specified index.|
+| [void OH_ArkUI_WaterFlowSectionOption_SetMargin(ArkUI_WaterFlowSectionOption* option, int32_t index,float marginTop, float marginRight, float marginBottom, float marginLeft)](#oh_arkui_waterflowsectionoption_setmargin) | - | Sets the margins for the specified water flow section.|
+| [ArkUI_Margin OH_ArkUI_WaterFlowSectionOption_GetMargin(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getmargin) | - | Obtains the margins of the water flow section that matches the specified index.|
+| [void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex (ArkUI_WaterFlowSectionOption* option, int32_t index, float(\*callback)(int32_t itemIndex))](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindex) | - | Obtains the main axis size of a specified water flow item based on **itemIndex** in the water flow section configuration. To use custom data in the callback, call [OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindexwithuserdata).|
+| [void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData (ArkUI_WaterFlowSectionOption* option, int32_t index, void* userData, float (\*callback)(int32_t itemIndex, void* userData))](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindexwithuserdata) | - | Obtains the main axis size of a specified item based on **itemIndex** in the water flow section configuration. The difference between this API and [OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindex) is that this API allows you to pass custom data (**userData**) and receive the data in the callback function.|
 
-## 枚举类型说明
+## Enum Description
 
 ### ArkUI_WaterFlowLayoutMode
 
@@ -66,19 +66,19 @@
 enum ArkUI_WaterFlowLayoutMode
 ```
 
-**描述：**
+**Description**
 
 
-定义[WaterFlow](../apis-arkui/arkui-ts/ts-container-waterflow.md)组件布局模式枚举值。
+Enumerates the layout modes of the [WaterFlow](../apis-arkui/arkui-ts/ts-container-waterflow.md) component.
 
-**起始版本：** 18
+**Since:** 18
 
-| 枚举项 | 描述 |
+| Value| Description|
 | -- | -- |
-| ARKUI_WATER_FLOW_LAYOUT_MODE_ALWAYS_TOP_DOWN = 0 | 从上到下布局。列数切换场景需要从第一个[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)开始布局到当前显示的[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)。 |
-| ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW = 1 | 移动窗口布局。列数切换场景只重新布局当前显示范围到[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)，手指向下滑动再布局从上方进入显示范围的[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)。 |
+| ARKUI_WATER_FLOW_LAYOUT_MODE_ALWAYS_TOP_DOWN = 0 | Layout from top to bottom. In scenarios where column switching occurs, the layout starts from the first [water flow item](../apis-arkui/arkui-ts/ts-container-flowitem.md) to the currently displayed [water flow item](../apis-arkui/arkui-ts/ts-container-flowitem.md).|
+| ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW = 1 | Sliding window layout. In scenarios where column switching occurs, only the range of [water flow items](../apis-arkui/arkui-ts/ts-container-flowitem.md) currently on display is re-laid out. As the user scrolls down with their finger, [water flow items](../apis-arkui/arkui-ts/ts-container-flowitem.md) that enter the display range from above are subsequently laid out.|
 
-## 函数说明
+## Function Description
 
 ### OH_ArkUI_WaterFlowSectionOption_Create()
 
@@ -86,18 +86,18 @@ enum ArkUI_WaterFlowLayoutMode
 ArkUI_WaterFlowSectionOption* OH_ArkUI_WaterFlowSectionOption_Create()
 ```
 
-**描述：**
+**Description**
 
 
-创建[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。
+Creates the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.
 
-**起始版本：** 12
+**Since:** 12
 
-**返回：**
+**Returns**
 
-| 类型                                | 说明 |
+| Type                               | Description|
 |-----------------------------------| -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* | Pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.|
 
 ### OH_ArkUI_WaterFlowSectionOption_Dispose()
 
@@ -105,19 +105,19 @@ ArkUI_WaterFlowSectionOption* OH_ArkUI_WaterFlowSectionOption_Create()
 void OH_ArkUI_WaterFlowSectionOption_Dispose(ArkUI_WaterFlowSectionOption* option)
 ```
 
-**描述：**
+**Description**
 
 
-销毁[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息指针。
+Disposes of the pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.
 
-**起始版本：** 12
+**Since:** 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.|
 
 ### OH_ArkUI_WaterFlowSectionOption_SetSize()
 
@@ -125,20 +125,20 @@ void OH_ArkUI_WaterFlowSectionOption_Dispose(ArkUI_WaterFlowSectionOption* optio
 void OH_ArkUI_WaterFlowSectionOption_SetSize(ArkUI_WaterFlowSectionOption* option,int32_t size)
 ```
 
-**描述：**
+**Description**
 
 
-设置FlowItem分组配置信息数组长度。
+Sets the array length for a water flow section configuration.
 
-**起始版本：** 12
+**Since:** 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | FlowItem分组配置信息。 |
-| int32_t size | 数组长度。 |
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to a water flow section configuration.|
+| int32_t size | Size of the array.|
 
 ### OH_ArkUI_WaterFlowSectionOption_GetSize()
 
@@ -146,25 +146,25 @@ void OH_ArkUI_WaterFlowSectionOption_SetSize(ArkUI_WaterFlowSectionOption* optio
 int32_t OH_ArkUI_WaterFlowSectionOption_GetSize(ArkUI_WaterFlowSectionOption* option)
 ```
 
-**描述：**
+**Description**
 
 
-获取[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息数组长度。
+Obtains the length of the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration array.
 
-**起始版本：** 12
+**Since:** 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | FlowItem分组配置信息。 |
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to a water flow section configuration.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| int32_t | 数组长度。如果返回-1，则返回失败。失败的原因可能是option参数异常，如空指针。 |
+| int32_t | Size of the array. If **-1** is returned, an error code indicating failure is returned. The possible cause is that the **option** parameter is abnormal, for example, a null pointer.|
 
 ### OH_ArkUI_WaterFlowSectionOption_SetItemCount()
 
@@ -172,21 +172,21 @@ int32_t OH_ArkUI_WaterFlowSectionOption_GetSize(ArkUI_WaterFlowSectionOption* op
 void OH_ArkUI_WaterFlowSectionOption_SetItemCount(ArkUI_WaterFlowSectionOption* option,int32_t index, int32_t itemCount)
 ```
 
-**描述：**
+**Description**
 
 
-设置分组中[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)数量。
+Sets the number of [water flow items](../apis-arkui/arkui-ts/ts-container-flowitem.md) in the section.
 
-**起始版本：** 12
+**Since:** 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
-| int32_t index | 分组配置信息数组索引值。 |
-| int32_t itemCount | 分组中[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)数量。 |
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.|
+| int32_t index | Index of the target water flow section.|
+| int32_t itemCount | Number of [water flow items](../apis-arkui/arkui-ts/ts-container-flowitem.md) in the section.|
 
 ### OH_ArkUI_WaterFlowSectionOption_GetItemCount()
 
@@ -194,26 +194,26 @@ void OH_ArkUI_WaterFlowSectionOption_SetItemCount(ArkUI_WaterFlowSectionOption* 
 int32_t OH_ArkUI_WaterFlowSectionOption_GetItemCount(ArkUI_WaterFlowSectionOption* option, int32_t index)
 ```
 
-**描述：**
+**Description**
 
 
-通过[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息获取对应索引下的[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)数量。
+Obtains the number of [water flow items](../apis-arkui/arkui-ts/ts-container-flowitem.md) at the corresponding index based on the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.
 
-**起始版本：** 12
+**Since:** 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
-| int32_t index | 分组配置信息数组索引值。 |
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.|
+| int32_t index | Index of the target water flow section.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| int32_t | 分组中FlowItem数量。 |
+| int32_t | Number of items in the water flow section.|
 
 ### OH_ArkUI_WaterFlowSectionOption_SetCrossCount()
 
@@ -221,21 +221,21 @@ int32_t OH_ArkUI_WaterFlowSectionOption_GetItemCount(ArkUI_WaterFlowSectionOptio
 void OH_ArkUI_WaterFlowSectionOption_SetCrossCount(ArkUI_WaterFlowSectionOption* option,int32_t index, int32_t crossCount)
 ```
 
-**描述：**
+**Description**
 
 
-设置布局栅格，纵向布局时为列数，横向布局时为行数。
+Sets the number of columns (in a vertical layout) or rows (in a horizontal layout) of a water flow section.
 
-**起始版本：** 12
+**Since:** 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | FlowItem分组配置信息。 |
-| int32_t index | 分组配置信息数组索引值。 |
-| int32_t crossCount | 布局栅格数量。 |
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to a water flow section configuration.|
+| int32_t index | Index of the target water flow section.|
+| int32_t crossCount | Number of columns or rows, depending on the layout direction.|
 
 ### OH_ArkUI_WaterFlowSectionOption_GetCrossCount()
 
@@ -243,26 +243,26 @@ void OH_ArkUI_WaterFlowSectionOption_SetCrossCount(ArkUI_WaterFlowSectionOption*
 int32_t OH_ArkUI_WaterFlowSectionOption_GetCrossCount(ArkUI_WaterFlowSectionOption* option, int32_t index)
 ```
 
-**描述：**
+**Description**
 
 
-通过[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息获取对应索引下的布局栅格数。
+Obtains the number of layout grids at the corresponding index based on the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.
 
-**起始版本：** 12
+**Since:** 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | FlowItem分组配置信息。 |
-| int32_t index | 分组配置信息数组索引值。 |
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to a water flow section configuration.|
+| int32_t index | Index of the target water flow section.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| int32_t | 布局栅格数量。 |
+| int32_t | Number of columns or rows, depending on the layout direction.|
 
 ### OH_ArkUI_WaterFlowSectionOption_SetColumnGap()
 
@@ -270,21 +270,21 @@ int32_t OH_ArkUI_WaterFlowSectionOption_GetCrossCount(ArkUI_WaterFlowSectionOpti
 void OH_ArkUI_WaterFlowSectionOption_SetColumnGap(ArkUI_WaterFlowSectionOption* option,int32_t index, float columnGap)
 ```
 
-**描述：**
+**Description**
 
 
-设置分组的列间距。
+Sets the gap between columns in the specified water flow section.
 
-**起始版本：** 12
+**Since:** 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | FlowItem分组配置信息。 |
-| int32_t index | 分组配置信息数组索引值。 |
-| float columnGap | 列间距。单位：vp。 |
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to a water flow section configuration.|
+| int32_t index | Index of the target water flow section.|
+| float columnGap | Gap between columns. The unit is vp.|
 
 ### OH_ArkUI_WaterFlowSectionOption_GetColumnGap()
 
@@ -292,26 +292,26 @@ void OH_ArkUI_WaterFlowSectionOption_SetColumnGap(ArkUI_WaterFlowSectionOption* 
 float OH_ArkUI_WaterFlowSectionOption_GetColumnGap(ArkUI_WaterFlowSectionOption* option, int32_t index)
 ```
 
-**描述：**
+**Description**
 
 
-通过FlowItem分组配置信息获取对应索引下的分组的列间距。
+Obtains the gap between columns in the water flow section that matches the specified index.
 
-**起始版本：** 12
+**Since:** 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | FlowItem分组配置信息。 |
-| int32_t index | 分组配置信息数组索引值。 |
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to a water flow section configuration.|
+| int32_t index | Index of the target water flow section.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| float | 列间距。单位：vp。 |
+| float | Gap between columns. The unit is vp.|
 
 ### OH_ArkUI_WaterFlowSectionOption_SetRowGap()
 
@@ -319,21 +319,21 @@ float OH_ArkUI_WaterFlowSectionOption_GetColumnGap(ArkUI_WaterFlowSectionOption*
 void OH_ArkUI_WaterFlowSectionOption_SetRowGap(ArkUI_WaterFlowSectionOption* option,int32_t index, float rowGap)
 ```
 
-**描述：**
+**Description**
 
 
-设置FlowItem分组的行间距。
+Sets the gap between rows in the **FlowItem** section.
 
-**起始版本：** 12
+**Since:** 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | FlowItem分组配置信息。 |
-| int32_t index | FlowItem分组配置信息数组索引值。 |
-| float rowGap | 行间距。单位：vp。 |
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to a water flow section configuration.|
+| int32_t index | Index of the target water flow section.|
+| float rowGap | Gap between rows. The unit is vp.|
 
 ### OH_ArkUI_WaterFlowSectionOption_GetRowGap()
 
@@ -341,26 +341,26 @@ void OH_ArkUI_WaterFlowSectionOption_SetRowGap(ArkUI_WaterFlowSectionOption* opt
 float OH_ArkUI_WaterFlowSectionOption_GetRowGap(ArkUI_WaterFlowSectionOption* option, int32_t index)
 ```
 
-**描述：**
+**Description**
 
 
-通过[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息获取对应索引下的分组的行间距。
+Obtains the gap between rows in the section at the corresponding index based on the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.
 
-**起始版本：** 12
+**Since:** 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
-| int32_t index | 分组配置信息数组索引值。 |
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.|
+| int32_t index | Index of the target water flow section.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| float | 行间距。单位：vp。 |
+| float | Gap between rows. The unit is vp.|
 
 ### OH_ArkUI_WaterFlowSectionOption_SetMargin()
 
@@ -368,24 +368,24 @@ float OH_ArkUI_WaterFlowSectionOption_GetRowGap(ArkUI_WaterFlowSectionOption* op
 void OH_ArkUI_WaterFlowSectionOption_SetMargin(ArkUI_WaterFlowSectionOption* option, int32_t index,float marginTop, float marginRight, float marginBottom, float marginLeft)
 ```
 
-**描述：**
+**Description**
 
 
-设置分组的外边距。
+Sets the margins for the specified water flow section.
 
-**起始版本：** 12
+**Since:** 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
-| int32_t index | 分组配置信息数组索引值。 |
-| float marginTop | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)上外边距。 |
-| float marginRight | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)右外边距。 |
-| float marginBottom | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)下外边距。 |
-| float marginLeft | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)左外边距。 |
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.|
+| int32_t index | Index of the target water flow section.|
+| float marginTop | Top margin of [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md).|
+| float marginRight | Right margin of [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md).|
+| float marginBottom | Bottom margin of [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md).|
+| float marginLeft | Left margin of [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md).|
 
 ### OH_ArkUI_WaterFlowSectionOption_GetMargin()
 
@@ -393,26 +393,26 @@ void OH_ArkUI_WaterFlowSectionOption_SetMargin(ArkUI_WaterFlowSectionOption* opt
 ArkUI_Margin OH_ArkUI_WaterFlowSectionOption_GetMargin(ArkUI_WaterFlowSectionOption* option, int32_t index)
 ```
 
-**描述：**
+**Description**
 
 
-通过[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息获取对应索引下的分组的外边距。
+Obtains the margins of the section at the corresponding index based on the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.
 
-**起始版本：** 12
+**Since:** 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
-| int32_t index | 分组配置信息数组索引值。 |
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.|
+| int32_t index | Index of the target water flow section.|
 
-**返回：**
+**Returns**
 
-| 类型 | 说明 |
+| Type| Description|
 | -- | -- |
-| [ArkUI_Margin](capi-arkui-nativemodule-arkui-margin.md) | 外边距。单位：vp。 |
+| [ArkUI_Margin](capi-arkui-nativemodule-arkui-margin.md) | Margin. The unit is vp.|
 
 ### OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex()
 
@@ -420,21 +420,21 @@ ArkUI_Margin OH_ArkUI_WaterFlowSectionOption_GetMargin(ArkUI_WaterFlowSectionOpt
 void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex(ArkUI_WaterFlowSectionOption* option,int32_t index, float(*callback)(int32_t itemIndex))
 ```
 
-**描述：**
+**Description**
 
 
-通过[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息根据itemIndex获取指定FlowItem的主轴大小。如需在回调中使用自定义数据，可使用[OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindexwithuserdata)。
+Obtains the main axis size of a specified water flow item based on **itemIndex** in the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration. To use custom data in the callback, call [OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindexwithuserdata).
 
-**起始版本：** 12
+**Since:** 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项                                            | 描述 |
+| Name                                           | Description|
 |------------------------------------------------| -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
-| int32_t index                                  | 分组配置信息数组索引值。 |
-| callback                                       | 根据index获取指定Item的主轴大小。itemIndex：[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)索引值。 |
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.|
+| int32_t index                                  | Index of the target water flow section.|
+| callback                                       | Callback used to return the result. **itemIndex** indicates the index of [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md).|
 
 ### OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData()
 
@@ -442,19 +442,19 @@ void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex(ArkU
 void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData(ArkUI_WaterFlowSectionOption* option, int32_t index, void* userData,float (*callback)(int32_t itemIndex, void* userData))
 ```
 
-**描述：**
+**Description**
 
 
-通过[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息根据itemIndex获取指定Item的主轴大小。与[OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindex)的区别在于，该接口支持传入自定义数据userData，并在回调函数中接收该数据。
+Obtains the main axis size of a specified item based on **itemIndex** in the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration. The difference between this API and [OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindex) is that this API allows you to pass custom data (**userData**) and receive the data in the callback function.
 
-**起始版本：** 12
+**Since:** 12
 
 
-**参数：**
+**Parameters**
 
-| 参数项 | 描述 |
+| Name| Description|
 | -- | -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
-| int32_t index | 分组配置信息数组索引值。 |
-|  void* userData |用户自定义数据指针，将在回调函数中回传给用户。 |
-| callback | 根据index获取指定Item的主轴大小。itemIndex: [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)索引值；userData: 用户自定义数据。 |
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.|
+| int32_t index | Index of the target water flow section.|
+|  void* userData |Pointer to user-defined data, which will be passed back to the user in the callback.|
+| callback | Callback used to return the result. **itemIndex**: index of the [water flow item](../apis-arkui/arkui-ts/ts-container-flowitem.md); **userData**: user-defined data.|
