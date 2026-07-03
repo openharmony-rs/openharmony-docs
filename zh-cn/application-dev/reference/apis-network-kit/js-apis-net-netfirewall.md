@@ -167,7 +167,7 @@ addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 
 | 参数名   | 类型                                              | 必填 | 说明         |
 | -------- | ------------------------------------------------- | ---- | ------------ |
-| rule    |  [NetFirewallRule](#netfirewallrule15)               | 是   | 防火墙规则。 |
+| rule    |  [NetFirewallRule](#netfirewallrule)               | 是   | 防火墙规则。 |
 
 **返回值：**
 
@@ -365,7 +365,7 @@ updateNetFirewallRule(rule: NetFirewallRule): Promise\<void>
 
 | 参数名  | 类型                                   | 必填 | 说明                             |
 | ------- | -------------------------------------- | ---- | -------------------------------- |
-| rule    | [NetFirewallRule](#netfirewallrule15)    | 是   | 防火墙规则。                     |
+| rule    | [NetFirewallRule](#netfirewallrule)    | 是   | 防火墙规则。                     |
 
 **返回值：**
 
@@ -505,7 +505,7 @@ getNetFirewallRule(userId: number, ruleId: number): Promise\<NetFirewallRule>
 
 | 类型                                            | 说明                                     |
 | ----------------------------------------------- | ---------------------------------------- |
-| Promise\<[NetFirewallRule](#netfirewallrule15)>   | 以Promise形式返回防火墙规则。            |
+| Promise\<[NetFirewallRule](#netfirewallrule)>   | 以Promise形式返回防火墙规则。            |
 
 **错误码：**
 
@@ -534,11 +534,13 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 });
 ```
 
-## NetFirewallRule<sup>15+</sup>
+## NetFirewallRule
 
 防火墙规则信息结构。
 
 **系统能力**：SystemCapability.Communication.NetManager.NetFirewall
+**起始版本**：26.0.0
+**模型约束**：此接口仅可在Stage模型下使用。
 
 | 名称        | 类型                                                        |只读| 可选|说明                                                           |
 | ------------|-------------------------------------------------------------|----|---|-----------------------------------------------------------  |
@@ -558,7 +560,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 | remotePorts | Array\<[NetFirewallPortParams](#netfirewallportparams)>     | 否 |是 |远端端口。当type=RULE_IP时有效，否则将被忽略。最多10个。   |
 | domains     | Array\<[NetFirewallDomainParams](#netfirewalldomainparams)> | 否 |是 |域名列表，当type=RULE_DOMAIN时有效，否则将被忽略，目前不支持中文域名。         |
 | dns         | [NetFirewallDnsParams](#netfirewalldnsparams)               | 否 |是 |DNS：当type=RULE_DNS时有效，否则将被忽略。当type=RULE_DNS时，该字段不能为空。                 |
-| interface   | string                                                      | 否 |否 |物理网口特定接口，当type=RULE_IP时有效，否则将被忽略。可选，最多16个字符。                   |
+| interface   | string                                                      | 否 |是 |物理网口特定接口，当type=RULE_IP时有效，否则将被忽略。可选，最多16个字符。                   |
 
 ## RequestParam
 
@@ -585,7 +587,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 | page       | number                                      | 否  |否 |当前页码，值范围：[1,1000]。    |
 | pageSize   | number                                      | 否  |否 |页大小，值范围：[1,50]。      |
 | totalPage  | number                                      | 否   |否 |总页数，值范围：[1,1000]。      |
-| data       | Array\<[NetFirewallRule](#netfirewallrule15)> | 否   |否 |页面数据。    |
+| data       | Array\<[NetFirewallRule](#netfirewallrule)> | 否   |否 |页面数据。    |
 
 ## NetFirewallPolicy
 
