@@ -73,3 +73,75 @@ try {
   console.error(`Failed to reset factory. Code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+## deviceControl.operateDevice
+
+operateDevice(admin: Want, operation: Operation, addition?: string): void
+
+允许管理员操作设备，例如磁盘擦除。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.ENTERPRISE_OPERATE_DEVICE
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+<!--Table: 10%; 10%; 10%; 70%-->
+| 参数名    | 类型                                                     | 必填 | 说明                                                         |
+| --------- | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| operation | [Operation](#operation)                                  | 是   | 要执行的操作。                                               |
+| addition  | string                                                   | 否   | 执行时附加参数。当operation类型为磁盘擦除时，附加参数为图片的沙箱路径。若磁盘擦除成功后需给用户展示信息，可设置该参数传递信息，该图片大小需小于5KB（建议使用二维码图片）。长度限制为1024字节 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200010 | A conflict policy has been configured. |
+| 9200012  | Parameter verification failed.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { deviceControl } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let filePath: string = '/test.png';
+
+try {
+  // 参数需根据实际情况进行替换
+  deviceControl.operateDevice(wantTemp, deviceControl.Operation.DISK_ERASURE, filePath);
+} catch (err) {
+  console.error(`Failed to disk erase. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## Operation
+
+设备操作。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称          | 值   | 说明                                                         |
+| ------------- | ---- | ------------------------------------------------------------ |
+| DISK_ERASURE  | 0    | 磁盘擦除。接口调用后，设备将立即执行磁盘擦除操作。磁盘擦除完成后，整机设备数据将全部被擦除且无法恢复。企业需要做好应用的安全设计，防止应用被攻击导致企业数据丢失。仅支持PC/2in1设备。 |
