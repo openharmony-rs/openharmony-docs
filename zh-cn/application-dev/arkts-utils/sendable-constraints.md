@@ -30,7 +30,6 @@ class B extends A {
     super()
   }
 }
-
 ```
 
 **反例：**
@@ -71,7 +70,6 @@ class B extends A {
     super()
   }
 }
-
 ```
 
 **反例：**
@@ -223,7 +221,6 @@ class A {
     return this.num1 + this.num2;
   }
 }
-
 ```
 
 **反例：**
@@ -347,7 +344,6 @@ class C {
     return B.bar();
   }
 }
-
 ```
 
 **反例：**
