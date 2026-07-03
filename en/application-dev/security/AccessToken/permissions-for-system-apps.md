@@ -5841,7 +5841,7 @@ Allows a system application to send commands to collect logs.
 
 **Supported devices**: cars
 
-**Since**: 26.0.0
+**Since**: 26.1.0
 
 ## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
 
