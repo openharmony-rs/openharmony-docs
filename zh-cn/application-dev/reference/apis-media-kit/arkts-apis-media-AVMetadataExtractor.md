@@ -99,7 +99,7 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 | 5400102  | Operation not allowed. Returned by promise. |
 | 5400106  | Unsupported format. Returned by promise.  |
 | 5400108  | Parameter check failed. Returned by promise. |
-| 5411012  | Http cleartext traffic is not permitted. |
+| 5411012  | Http cleartext traffic is not permitted. <br>适用版本：23+ |
 
 **示例：**
 
@@ -398,7 +398,7 @@ fetchMetadata(callback: AsyncCallback\<AVMetadata>): void
 | -------- | ------------------------------------------ |
 | 5400102  | Operation not allowed. Returned by callback. |
 | 5400106  | Unsupported format. Returned by callback.  |
-| 5411012  | Http cleartext traffic is not permitted. |
+| 5411012  | Http cleartext traffic is not permitted. <br>适用版本：23+ |
 
 **示例：**
 
@@ -441,7 +441,7 @@ fetchMetadata(): Promise\<AVMetadata>
 | -------- | ----------------------------------------- |
 | 5400102  | Operation not allowed. Returned by promise. |
 | 5400106  | Unsupported format. Returned by promise.  |
-| 5411012  | Http cleartext traffic is not permitted. |
+| 5411012  | Http cleartext traffic is not permitted. <br>适用版本：23+ |
 
 **示例：**
 
