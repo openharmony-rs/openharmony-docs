@@ -335,7 +335,7 @@ An internal error occurs when the system executes the current request.
 **Possible Causes**
 
 1. The system is busy.
-2. The internal data of the system is abnormal.
+2. The internal data of the system is abnormal currently.
 
 **Solution**
 
@@ -440,4 +440,3 @@ An internal service execution exception occurs.
 
 1. Restart the system and try again.
 2. If the restart still fails, submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#) to obtain help.
-<!--no_check-->
