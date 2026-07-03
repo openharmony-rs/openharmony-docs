@@ -535,13 +535,13 @@ NODE_IMAGE_ORIENTATION = 4020
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 期望的图像内容显示方向[ArkUI_Orientation](capi-image-h.md#arkui_imagerotateorientation)，默认值为ARKUI_ORIENTATION_UP。 |
+| .value[0].i32 | 期望的图像内容显示方向[ArkUI_ImageRotateOrientation](capi-image-h.md#arkui_imagerotateorientation)，默认值为ARKUI_ORIENTATION_UP。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 期望的图像内容显示方向[ArkUI_Orientation](capi-image-h.md#arkui_imagerotateorientation)。 |
+| .value[0].i32 | 期望的图像内容显示方向[ArkUI_ImageRotateOrientation](capi-image-h.md#arkui_imagerotateorientation)。 |
 
 ## NODE_IMAGE_SUPPORT_SVG2
 
@@ -594,7 +594,7 @@ NODE_IMAGE_CONTENT_TRANSITION = 4022
 ## NODE_IMAGE_ALT_PLACEHOLDER
 
 ```c
-NODE_IMAGE_ALT_PLACEHOLDER  = 4023
+NODE_IMAGE_ALT_PLACEHOLDER = 4023
 ```
 
 支持加载过程中的占位图的配置，支持属性设置，属性重置，属性获取接口。<br>
@@ -620,7 +620,7 @@ NODE_IMAGE_ALT_PLACEHOLDER  = 4023
 ## NODE_IMAGE_ALT_ERROR
 
 ```c
-NODE_IMAGE_ALT_ERROR  = 4024
+NODE_IMAGE_ALT_ERROR = 4024
 ```
 
 支持加载失败时的占位图的配置，支持属性设置，属性重置，属性获取接口。<br>
